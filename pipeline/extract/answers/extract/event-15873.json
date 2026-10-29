@@ -1,39 +1,46 @@
 {
- "batch": "event-15873",
- "events": [
-  {
-   "event_id": 15873,
-   "artists": [
-    {
-     "name_as_written": "@lospambosevents",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "@lospambosevents"
-    }
-   ],
-   "features": [
-    {
-     "feature": "meals_included",
-     "quote": "All Inclusive : Breakfast – Lunch – Dinner – Drinks: Alcahol and Non Alcahol",
-     "rationale": "The All Inclusive line lists breakfast, lunch, dinner and drinks, so meals are included in the offer."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Package of Full Pass & Accomodation & All Inclusive till 10 May 2026",
-     "rationale": "The package explicitly combines the full pass with accommodation."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "pool parties",
-     "rationale": "The description promises pool parties as part of the holiday."
-    },
-    {
-     "feature": "workshops",
-     "quote": "elite lessons",
-     "rationale": "Elite lessons are offered as part of the event, which means dance classes are included."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15873",
+  "events": [
+   {
+    "event_id": 15873,
+    "artists": [
+     {
+      "name_as_written": "@lospambosevents",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "@lospambosevents"
+     }
+    ],
+    "features": [
+     {
+      "feature": "meals_included",
+      "quote": "All Inclusive : Breakfast – Lunch – Dinner – Drinks: Alcahol and Non Alcahol",
+      "rationale": "The All Inclusive line lists breakfast, lunch, dinner and drinks, so meals are included in the offer."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Package of Full Pass & Accomodation & All Inclusive till 10 May 2026",
+      "rationale": "The package explicitly combines the full pass with accommodation."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "pool parties",
+      "rationale": "The description promises pool parties as part of the holiday."
+     },
+     {
+      "feature": "workshops",
+      "quote": "elite lessons",
+      "rationale": "Elite lessons are offered as part of the event, which means dance classes are included."
+     }
+    ]
+   }
+  ]
+ }
 }

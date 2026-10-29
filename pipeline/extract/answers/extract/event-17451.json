@@ -1,56 +1,63 @@
 {
- "batch": "event-17451",
- "events": [
-  {
-   "event_id": 17451,
-   "artists": [
-    {
-     "name_as_written": "Rui Djassi Morácen",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Welcome to the 9th edition of #BeyondKizomba, the cultural immersion program in Angola that is designed by Rui Djassi Morácen, the founder of the University of Kizomba initiative, in partnership with – and backed by the logistics support of – Kunanga Life, a legally registered Angolan cultural tourism agency."
-    },
-    {
-     "name_as_written": "Kunanga Life",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Welcome to the 9th edition of #BeyondKizomba, the cultural immersion program in Angola that is designed by Rui Djassi Morácen, the founder of the University of Kizomba initiative, in partnership with – and backed by the logistics support of – Kunanga Life, a legally registered Angolan cultural tourism agency."
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "ALL group dance classes (incl. kizomba, semba, etc)",
-     "rationale": "The package explicitly includes group dance classes in kizomba and semba."
-    },
-    {
-     "feature": "private_classes",
-     "quote": "private classes are booked and paid individually out of pocket",
-     "rationale": "The text states private dance classes are offered and booked separately."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Hotel accommodation (12 days, 11 nights)",
-     "rationale": "The package listing includes hotel accommodation for the trip."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Three (3) meals a day (breakfast, lunch, dinner)",
-     "rationale": "The package includes three meals a day."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Airport transfers (pick-up & airport drop-off)",
-     "rationale": "The package includes airport pick-up and drop-off transfers."
-    },
-    {
-     "feature": "live_music",
-     "quote": "music concerts",
-     "rationale": "The nightlife activities included in the package feature music concerts."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17451",
+  "events": [
+   {
+    "event_id": 17451,
+    "artists": [
+     {
+      "name_as_written": "Rui Djassi Morácen",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Welcome to the 9th edition of #BeyondKizomba, the cultural immersion program in Angola that is designed by Rui Djassi Morácen, the founder of the University of Kizomba initiative, in partnership with – and backed by the logistics support of – Kunanga Life, a legally registered Angolan cultural tourism agency."
+     },
+     {
+      "name_as_written": "Kunanga Life",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Welcome to the 9th edition of #BeyondKizomba, the cultural immersion program in Angola that is designed by Rui Djassi Morácen, the founder of the University of Kizomba initiative, in partnership with – and backed by the logistics support of – Kunanga Life, a legally registered Angolan cultural tourism agency."
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "ALL group dance classes (incl. kizomba, semba, etc)",
+      "rationale": "The package explicitly includes group dance classes in kizomba and semba."
+     },
+     {
+      "feature": "private_classes",
+      "quote": "private classes are booked and paid individually out of pocket",
+      "rationale": "The text states private dance classes are offered and booked separately."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Hotel accommodation (12 days, 11 nights)",
+      "rationale": "The package listing includes hotel accommodation for the trip."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Three (3) meals a day (breakfast, lunch, dinner)",
+      "rationale": "The package includes three meals a day."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Airport transfers (pick-up & airport drop-off)",
+      "rationale": "The package includes airport pick-up and drop-off transfers."
+     },
+     {
+      "feature": "live_music",
+      "quote": "music concerts",
+      "rationale": "The nightlife activities included in the package feature music concerts."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:katalin@katalin+mathias",
+ "key_b": "p:katalin@katalin+matthias",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "0da9cbdbee0e5c29",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Mathias & Katalin and Matthias & Katalin are the same couple under a spelling variant of the partner name, with Katalin and Austria in both."
+ }
+}

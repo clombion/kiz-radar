@@ -1,64 +1,71 @@
 {
- "batch": "event-16276",
- "events": [
-  {
-   "event_id": 16276,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 free dance floors"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Urbankiz",
-     "kind": "unspecified",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "Urbankiz + Kizomba/Semba Room"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16276",
+  "events": [
+   {
+    "event_id": 16276,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 free dance floors"
     },
-    {
-     "name_as_written": "Kizomba/Semba Room",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "semba"
-     ],
-     "quote": "Urbankiz + Kizomba/Semba Room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarracho",
-     "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba/Semba Room"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Urbankiz",
+      "kind": "unspecified",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "Urbankiz + Kizomba/Semba Room"
+     },
+     {
+      "name_as_written": "Kizomba/Semba Room",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "semba"
+      ],
+      "quote": "Urbankiz + Kizomba/Semba Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarracho",
+      "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba/Semba Room"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,95 +1,102 @@
 {
- "batch": "event-15531",
- "events": [
-  {
-   "event_id": 15531,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 87.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": true,
-       "quote": "FULLPASS (Workshops + Party + Social): Now only €87.00!"
-      },
-      {
-       "amount": 149.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Regular price will be €149.00"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 59.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "FUN-PASS (Party + Social only): €59.00"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "EARLY BIRD HOTEL PACKAGE",
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 149.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 20,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Price: Only €149.00 / person!"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Attention, prices valid only until limited capacity sells out!"
-   ]
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:58:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15531",
+  "events": [
+   {
+    "event_id": 15531,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 87.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": true,
+        "quote": "FULLPASS (Workshops + Party + Social): Now only €87.00!"
+       },
+       {
+        "amount": 149.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Regular price will be €149.00"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 59.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "FUN-PASS (Party + Social only): €59.00"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "EARLY BIRD HOTEL PACKAGE",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 149.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 20,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Price: Only €149.00 / person!"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Attention, prices valid only until limited capacity sells out!"
+    ]
+   }
+  ]
+ }
 }

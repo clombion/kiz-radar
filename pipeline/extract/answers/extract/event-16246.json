@@ -1,66 +1,73 @@
 {
- "batch": "event-16246",
- "events": [
-  {
-   "event_id": 16246,
-   "artists": [
-    {
-     "name_as_written": "ILKSF",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "ILKSF invests in new talents and helps developing new events with the its vision"
-    },
-    {
-     "name_as_written": "𝐇𝐎𝐓 𝐈𝐂𝐄 𝐊𝐈𝐙",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "ᴡᴇʟᴄᴏᴍᴇ ʙᴀᴄᴋ ᴛᴏ ɪʟᴋꜱꜰ ʀɪɢᴀ ᴇᴅɪᴛɪᴏɴ. Together with our partners 𝐇𝐎𝐓 𝐈𝐂𝐄 𝐊𝐈𝐙 from Riga, we are super excited to organize this event for the fifth time in Latvia. After the last and successful edition, we can assure you that we will take you to the next level. This festival will be “All-in One Hotel”."
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "This festival will be “All-in One Hotel”.",
-     "rationale": "The description states the festival is an all-in-one hotel event, meaning the parties take place in the hotel where dancers stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "MAIN HOTEL: Bellevue Park Hotel**",
-     "rationale": "A main hotel is named for the event, which points dancers to a recommended venue."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Thursday preparty",
-     "rationale": "A Thursday preparty is listed before the main three days of parties."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 days of social",
-     "rationale": "Socials are listed as taking place over three days, which are daytime socials."
-    },
-    {
-     "feature": "workshops",
-     "quote": "3 days of workshops",
-     "rationale": "Workshops are listed as part of the event across three days."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Masterclasses",
-     "rationale": "Masterclasses are listed in the expectations section of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "Dance competition",
-     "rationale": "A dance competition is listed among the expectations."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "taxi/guest dancers",
-     "rationale": "Taxi and guest dancers are listed as present at the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16246",
+  "events": [
+   {
+    "event_id": 16246,
+    "artists": [
+     {
+      "name_as_written": "ILKSF",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "ILKSF invests in new talents and helps developing new events with the its vision"
+     },
+     {
+      "name_as_written": "𝐇𝐎𝐓 𝐈𝐂𝐄 𝐊𝐈𝐙",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "ᴡᴇʟᴄᴏᴍᴇ ʙᴀᴄᴋ ᴛᴏ ɪʟᴋꜱꜰ ʀɪɢᴀ ᴇᴅɪᴛɪᴏɴ. Together with our partners 𝐇𝐎𝐓 𝐈𝐂𝐄 𝐊𝐈𝐙 from Riga, we are super excited to organize this event for the fifth time in Latvia. After the last and successful edition, we can assure you that we will take you to the next level. This festival will be “All-in One Hotel”."
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "This festival will be “All-in One Hotel”.",
+      "rationale": "The description states the festival is an all-in-one hotel event, meaning the parties take place in the hotel where dancers stay."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "MAIN HOTEL: Bellevue Park Hotel**",
+      "rationale": "A main hotel is named for the event, which points dancers to a recommended venue."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Thursday preparty",
+      "rationale": "A Thursday preparty is listed before the main three days of parties."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 days of social",
+      "rationale": "Socials are listed as taking place over three days, which are daytime socials."
+     },
+     {
+      "feature": "workshops",
+      "quote": "3 days of workshops",
+      "rationale": "Workshops are listed as part of the event across three days."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclasses",
+      "rationale": "Masterclasses are listed in the expectations section of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "Dance competition",
+      "rationale": "A dance competition is listed among the expectations."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "taxi/guest dancers",
+      "rationale": "Taxi and guest dancers are listed as present at the event."
+     }
+    ]
+   }
+  ]
+ }
 }

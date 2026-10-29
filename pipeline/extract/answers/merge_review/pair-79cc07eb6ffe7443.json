@@ -1,0 +1,13 @@
+{
+ "key_a": "p:edwinrodrigues",
+ "key_b": "p:edwinrodriguez",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "79cc07eb6ffe7443",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Full name Edwin Rodrigues and Edwin Rodriguez differ by one surname spelling, both teachers in the UK teaching salsa."
+ }
+}

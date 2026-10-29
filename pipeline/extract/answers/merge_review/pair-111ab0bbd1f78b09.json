@@ -1,0 +1,13 @@
+{
+ "key_a": "p:konstantinos@anna+konstantinos",
+ "key_b": "p:konstantinos@konstantinos+zoe",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "111ab0bbd1f78b09",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Konstantinos & Anna (Salsa) and Konstantinos & Zoe (Bachata) appear at the same Sensualonica session on the same day with different partners."
+ }
+}

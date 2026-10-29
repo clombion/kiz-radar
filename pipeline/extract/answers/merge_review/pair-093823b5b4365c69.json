@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tpeak@dance",
+ "key_b": "p:tpeak@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "093823b5b4365c69",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The teacher T'Peak and the DJ T'Peak are in Gothenburg on 2026-01-22 and Lyon on 2026-04-09, the same event and date for both roles."
+ }
+}

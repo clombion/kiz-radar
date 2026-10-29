@@ -1,236 +1,243 @@
 {
- "batch": "event-16024",
- "events": [
-  {
-   "event_id": 16024,
-   "artists": [
-    {
-     "name_as_written": "LION KINGS EVENTS",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The LION KINGS EVENTS team present the 6th Edition of the LION KINGS WEEKEND – LKW !"
-    },
-    {
-     "name_as_written": "DJ PARAISO",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔱🎧 DJ PARAISO ( Goodfater )"
-    },
-    {
-     "name_as_written": "DJ MADISS",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔱🎧 DJ MADISS"
-    },
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔱🎧 DJ NAO"
-    },
-    {
-     "name_as_written": "DJ STOMPY",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔱🎧 DJ STOMPY"
-    },
-    {
-     "name_as_written": "DJ DIABLO",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔱🎧 DJ DIABLO"
-    },
-    {
-     "name_as_written": "VAL’R & SARAH",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔱🗣 VAL’R & SARAH"
-    },
-    {
-     "name_as_written": "LILIAN & IVANA",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔱🗣 LILIAN & IVANA"
-    },
-    {
-     "name_as_written": "MIK’IZ & PAO LOU",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔱🗣 MIK’IZ & PAO LOU"
-    },
-    {
-     "name_as_written": "BLACKCHINESE",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔱🗣 BLACKCHINESE"
-    },
-    {
-     "name_as_written": "DJ MIRO KIKOLA",
-     "role": "dj",
-     "style": "KIZOMBA SEMBA",
-     "country": null,
-     "source_line": "🔱🎧 DJ MIRO KIKOLA"
-    },
-    {
-     "name_as_written": "DJ VASCO",
-     "role": "dj",
-     "style": "KIZOMBA SEMBA",
-     "country": null,
-     "source_line": "🔱🎧 DJ VASCO"
-    },
-    {
-     "name_as_written": "DJ MTEE",
-     "role": "dj",
-     "style": "KIZOMBA SEMBA",
-     "country": null,
-     "source_line": "🔱🎧 DJ MTEE"
-    },
-    {
-     "name_as_written": "DJ ANGELO",
-     "role": "dj",
-     "style": "KIZOMBA SEMBA",
-     "country": null,
-     "source_line": "🔱🎧 DJ ANGELO"
-    },
-    {
-     "name_as_written": "DJ SAUDADE",
-     "role": "dj",
-     "style": "KIZOMBA SEMBA",
-     "country": null,
-     "source_line": "🔱🎧 DJ SAUDADE"
-    },
-    {
-     "name_as_written": "FABRICIO DO ZANGADO & MAME",
-     "role": "teacher",
-     "style": "KIZOMBA SEMBA",
-     "country": null,
-     "source_line": "🔱🗣 FABRICIO DO ZANGADO & MAME"
-    },
-    {
-     "name_as_written": "ONCLE KANI",
-     "role": "teacher",
-     "style": "KIZOMBA SEMBA",
-     "country": null,
-     "source_line": "🔱🗣 ONCLE KANI"
-    },
-    {
-     "name_as_written": "ELHADJ & JENNA",
-     "role": "teacher",
-     "style": "KIZOMBA SEMBA",
-     "country": null,
-     "source_line": "🔱🗣 ELHADJ & JENNA"
-    },
-    {
-     "name_as_written": "MANU & OLIVIA",
-     "role": "teacher",
-     "style": "KIZOMBA SEMBA",
-     "country": null,
-     "source_line": "🔱🗣 MANU & OLIVIA"
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔱🎧 DJ ICHIGO"
-    },
-    {
-     "name_as_written": "DJ POEMA BEATS",
-     "role": "dj",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔱🎧 DJ POEMA BEATS"
-    },
-    {
-     "name_as_written": "DJ WILLY – G",
-     "role": "dj",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔱🎧 DJ WILLY – G"
-    },
-    {
-     "name_as_written": "DJ COLTS",
-     "role": "dj",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔱🎧 DJ COLTS"
-    },
-    {
-     "name_as_written": "DJ JACK",
-     "role": "dj",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔱🎧 DJ JACK"
-    },
-    {
-     "name_as_written": "GWANY & LILIANA",
-     "role": "teacher",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔱🗣 GWANY & LILIANA"
-    },
-    {
-     "name_as_written": "JACK & SARAH",
-     "role": "teacher",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔱🗣 JACK & SARAH"
-    },
-    {
-     "name_as_written": "AXEL & LUCCY",
-     "role": "teacher",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔱🗣 AXEL & LUCCY"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE",
-     "rationale": "The title and body state the event is all in one, and the hotel is listed as the official hotel."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 ROOMS",
-     "rationale": "The description states the event has 3 dance rooms."
-    },
-    {
-     "feature": "workshops",
-     "quote": "22H00-00H00 Workshops",
-     "rationale": "The program lists workshops on Friday, Saturday and Sunday."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Workshops & Masterclass",
-     "rationale": "The Saturday and Sunday program lists masterclasses."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "15H00-20H00 Social",
-     "rationale": "The program lists afternoon social sessions from 15h00 to 20h00."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "5 – Taxis dancers",
-     "rationale": "The summary lists a taxi dancers section for the event."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "7 – Dress codes",
-     "rationale": "The summary lists a dress codes section, indicating a dress code is stated."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16024",
+  "events": [
+   {
+    "event_id": 16024,
+    "artists": [
+     {
+      "name_as_written": "LION KINGS EVENTS",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The LION KINGS EVENTS team present the 6th Edition of the LION KINGS WEEKEND – LKW !"
+     },
+     {
+      "name_as_written": "DJ PARAISO",
+      "role": "dj",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🔱🎧 DJ PARAISO ( Goodfater )"
+     },
+     {
+      "name_as_written": "DJ MADISS",
+      "role": "dj",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🔱🎧 DJ MADISS"
+     },
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🔱🎧 DJ NAO"
+     },
+     {
+      "name_as_written": "DJ STOMPY",
+      "role": "dj",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🔱🎧 DJ STOMPY"
+     },
+     {
+      "name_as_written": "DJ DIABLO",
+      "role": "dj",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🔱🎧 DJ DIABLO"
+     },
+     {
+      "name_as_written": "VAL’R & SARAH",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🔱🗣 VAL’R & SARAH"
+     },
+     {
+      "name_as_written": "LILIAN & IVANA",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🔱🗣 LILIAN & IVANA"
+     },
+     {
+      "name_as_written": "MIK’IZ & PAO LOU",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🔱🗣 MIK’IZ & PAO LOU"
+     },
+     {
+      "name_as_written": "BLACKCHINESE",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🔱🗣 BLACKCHINESE"
+     },
+     {
+      "name_as_written": "DJ MIRO KIKOLA",
+      "role": "dj",
+      "style": "KIZOMBA SEMBA",
+      "country": null,
+      "source_line": "🔱🎧 DJ MIRO KIKOLA"
+     },
+     {
+      "name_as_written": "DJ VASCO",
+      "role": "dj",
+      "style": "KIZOMBA SEMBA",
+      "country": null,
+      "source_line": "🔱🎧 DJ VASCO"
+     },
+     {
+      "name_as_written": "DJ MTEE",
+      "role": "dj",
+      "style": "KIZOMBA SEMBA",
+      "country": null,
+      "source_line": "🔱🎧 DJ MTEE"
+     },
+     {
+      "name_as_written": "DJ ANGELO",
+      "role": "dj",
+      "style": "KIZOMBA SEMBA",
+      "country": null,
+      "source_line": "🔱🎧 DJ ANGELO"
+     },
+     {
+      "name_as_written": "DJ SAUDADE",
+      "role": "dj",
+      "style": "KIZOMBA SEMBA",
+      "country": null,
+      "source_line": "🔱🎧 DJ SAUDADE"
+     },
+     {
+      "name_as_written": "FABRICIO DO ZANGADO & MAME",
+      "role": "teacher",
+      "style": "KIZOMBA SEMBA",
+      "country": null,
+      "source_line": "🔱🗣 FABRICIO DO ZANGADO & MAME"
+     },
+     {
+      "name_as_written": "ONCLE KANI",
+      "role": "teacher",
+      "style": "KIZOMBA SEMBA",
+      "country": null,
+      "source_line": "🔱🗣 ONCLE KANI"
+     },
+     {
+      "name_as_written": "ELHADJ & JENNA",
+      "role": "teacher",
+      "style": "KIZOMBA SEMBA",
+      "country": null,
+      "source_line": "🔱🗣 ELHADJ & JENNA"
+     },
+     {
+      "name_as_written": "MANU & OLIVIA",
+      "role": "teacher",
+      "style": "KIZOMBA SEMBA",
+      "country": null,
+      "source_line": "🔱🗣 MANU & OLIVIA"
+     },
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": "TARRAXO",
+      "country": null,
+      "source_line": "🔱🎧 DJ ICHIGO"
+     },
+     {
+      "name_as_written": "DJ POEMA BEATS",
+      "role": "dj",
+      "style": "TARRAXO",
+      "country": null,
+      "source_line": "🔱🎧 DJ POEMA BEATS"
+     },
+     {
+      "name_as_written": "DJ WILLY – G",
+      "role": "dj",
+      "style": "TARRAXO",
+      "country": null,
+      "source_line": "🔱🎧 DJ WILLY – G"
+     },
+     {
+      "name_as_written": "DJ COLTS",
+      "role": "dj",
+      "style": "TARRAXO",
+      "country": null,
+      "source_line": "🔱🎧 DJ COLTS"
+     },
+     {
+      "name_as_written": "DJ JACK",
+      "role": "dj",
+      "style": "TARRAXO",
+      "country": null,
+      "source_line": "🔱🎧 DJ JACK"
+     },
+     {
+      "name_as_written": "GWANY & LILIANA",
+      "role": "teacher",
+      "style": "TARRAXO",
+      "country": null,
+      "source_line": "🔱🗣 GWANY & LILIANA"
+     },
+     {
+      "name_as_written": "JACK & SARAH",
+      "role": "teacher",
+      "style": "TARRAXO",
+      "country": null,
+      "source_line": "🔱🗣 JACK & SARAH"
+     },
+     {
+      "name_as_written": "AXEL & LUCCY",
+      "role": "teacher",
+      "style": "TARRAXO",
+      "country": null,
+      "source_line": "🔱🗣 AXEL & LUCCY"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE",
+      "rationale": "The title and body state the event is all in one, and the hotel is listed as the official hotel."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 ROOMS",
+      "rationale": "The description states the event has 3 dance rooms."
+     },
+     {
+      "feature": "workshops",
+      "quote": "22H00-00H00 Workshops",
+      "rationale": "The program lists workshops on Friday, Saturday and Sunday."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Workshops & Masterclass",
+      "rationale": "The Saturday and Sunday program lists masterclasses."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "15H00-20H00 Social",
+      "rationale": "The program lists afternoon social sessions from 15h00 to 20h00."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "5 – Taxis dancers",
+      "rationale": "The summary lists a taxi dancers section for the event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "7 – Dress codes",
+      "rationale": "The summary lists a dress codes section, indicating a dress code is stated."
+     }
+    ]
+   }
+  ]
+ }
 }

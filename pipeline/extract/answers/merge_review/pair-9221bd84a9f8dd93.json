@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alba@alba+ronald",
+ "key_b": "p:alba@alba+victor",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "9221bd84a9f8dd93",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Ronald & Alba and Victor & Alba are two couples with different partners; the only shared evidence is the common first name Alba and Spain."
+ }
+}

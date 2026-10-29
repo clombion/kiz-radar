@@ -1,28 +1,35 @@
 {
- "batch": "event-16105",
- "events": [
-  {
-   "event_id": 16105,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "celebrate Kizomba & Urban Kiz in all their facets"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "celebrate Kizomba & Urban Kiz in all their facets"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "tarraxo",
-     "quote": "urban kiz and tarraxo artists and DJs"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16105",
+  "events": [
+   {
+    "event_id": 16105,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "celebrate Kizomba & Urban Kiz in all their facets"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "celebrate Kizomba & Urban Kiz in all their facets"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "tarraxo",
+      "quote": "urban kiz and tarraxo artists and DJs"
+     }
+    ]
+   }
+  ]
+ }
 }

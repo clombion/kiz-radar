@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ledoukingsman",
+ "key_b": "p:ledouxkingsman",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ba427b5426814f43",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Ledou Kingsman & Amina and Ledoux Kingsman share the distinctive surname Kingsman with a spelling variant of the first name, and France is stated on both sides."
+ }
+}

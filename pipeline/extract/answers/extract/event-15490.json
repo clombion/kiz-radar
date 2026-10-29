@@ -1,207 +1,214 @@
 {
- "batch": "event-15490",
- "events": [
-  {
-   "event_id": 15490,
-   "artists": [
-    {
-     "name_as_written": "Dj Hugo Smile",
-     "role": "dj",
-     "style": "Urban kizz",
-     "country": "🇫🇷",
-     "source_line": "🎧 Dj Hugo Smile 🇫🇷"
-    },
-    {
-     "name_as_written": "Dj Snakes",
-     "role": "dj",
-     "style": "Urban kizz",
-     "country": "🇫🇷",
-     "source_line": "🎧 Dj Snakes 🇫🇷"
-    },
-    {
-     "name_as_written": "Dj F.A.Z.E",
-     "role": "dj",
-     "style": "Urban kizz",
-     "country": "🇪🇸",
-     "source_line": "🎧 Dj F.A.Z.E 🇪🇸"
-    },
-    {
-     "name_as_written": "Dj Pingusso",
-     "role": "dj",
-     "style": "Urban kizz",
-     "country": "🇱🇺",
-     "source_line": "🎧 Dj Pingusso 🇱🇺"
-    },
-    {
-     "name_as_written": "Dj Jozsi",
-     "role": "dj",
-     "style": "Urban kizz",
-     "country": "🇷🇴",
-     "source_line": "🎧 Dj Jozsi 🇷🇴"
-    },
-    {
-     "name_as_written": "Said & Oksana",
-     "role": "teacher",
-     "style": "Urban kizz",
-     "country": "🇫🇷 🇺🇦",
-     "source_line": "⭐️ Said & Oksana 🇫🇷 🇺🇦"
-    },
-    {
-     "name_as_written": "Dwe & gaby",
-     "role": "teacher",
-     "style": "Urban kizz",
-     "country": "🇳🇱",
-     "source_line": "⭐️ Dwe & gaby 🇳🇱"
-    },
-    {
-     "name_as_written": "Radu & Judit",
-     "role": "teacher",
-     "style": "Urban kizz",
-     "country": "🇷🇴",
-     "source_line": "⭐️ Radu & Judit 🇷🇴"
-    },
-    {
-     "name_as_written": "Rita & Eddy",
-     "role": "teacher",
-     "style": "Urban kizz",
-     "country": "🇭🇺",
-     "source_line": "⭐️ Rita & Eddy 🇭🇺"
-    },
-    {
-     "name_as_written": "Fuego & Kiki",
-     "role": "teacher",
-     "style": "Urban kizz",
-     "country": "🇫🇷 🇩🇪",
-     "source_line": "⭐️ Fuego & Kiki 🇫🇷 🇩🇪"
-    },
-    {
-     "name_as_written": "Rebirth",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Rebirth"
-    },
-    {
-     "name_as_written": "Taxidancers Team",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Taxidancers Team"
-    },
-    {
-     "name_as_written": "Funomen",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Funomen"
-    },
-    {
-     "name_as_written": "Kizomba Club Hungary",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Kizomba Club Hungary"
-    },
-    {
-     "name_as_written": "Alonso & Noelia",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇪🇸",
-     "source_line": "⭐️ Alonso & Noelia 🇪🇸"
-    },
-    {
-     "name_as_written": "Zoran & Andjela",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇷🇸",
-     "source_line": "⭐️ Zoran & Andjela 🇷🇸"
-    },
-    {
-     "name_as_written": "Alexandros",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇬🇷",
-     "source_line": "⭐️ Alexandros 🇬🇷"
-    },
-    {
-     "name_as_written": "Gabesz & Reka",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇭🇺",
-     "source_line": "⭐️ Gabesz & Reka 🇭🇺"
-    },
-    {
-     "name_as_written": "Claudio & Aleksandra",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇵🇱",
-     "source_line": "⭐️ Claudio & Aleksandra 🇵🇱"
-    },
-    {
-     "name_as_written": "Nikola & Mina",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇭🇷",
-     "source_line": "⭐️ Nikola & Mina 🇭🇷"
-    },
-    {
-     "name_as_written": "Dj Momolatino",
-     "role": "dj",
-     "style": "Bachata",
-     "country": "🇨🇿",
-     "source_line": "🎧 Dj Momolatino 🇨🇿"
-    },
-    {
-     "name_as_written": "DJ Balito",
-     "role": "dj",
-     "style": "Bachata",
-     "country": "🇭🇺",
-     "source_line": "🎧 DJ Balito🇭🇺"
-    },
-    {
-     "name_as_written": "Dj Brumi",
-     "role": "dj",
-     "style": "Bachata",
-     "country": "🇭🇺",
-     "source_line": "🎧 Dj Brumi🇭🇺"
-    },
-    {
-     "name_as_written": "Dj Hike",
-     "role": "dj",
-     "style": "Bachata",
-     "country": "🇭🇺",
-     "source_line": "🎧 Dj Hike🇭🇺"
-    },
-    {
-     "name_as_written": "The Mouvement",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Created by dancers, for dancers, The Mouvement connects people through passion, quality, and authenticity."
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "Pre Party on Thursday",
-     "rationale": "The description announces a pre-party on Thursday before the festival."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Rooms, 2 Styles Urban kiz & Bachata",
-     "rationale": "Two dance rooms are offered, one for each style."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Taxidancers Team",
-     "rationale": "A taxi-dancer team is listed as part of the event crew."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Novotel Budapest Congress: 4 min walk",
-     "rationale": "Hotels are listed as nearby recommendations with walking times, without being part of a pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15490",
+  "events": [
+   {
+    "event_id": 15490,
+    "artists": [
+     {
+      "name_as_written": "Dj Hugo Smile",
+      "role": "dj",
+      "style": "Urban kizz",
+      "country": "🇫🇷",
+      "source_line": "🎧 Dj Hugo Smile 🇫🇷"
+     },
+     {
+      "name_as_written": "Dj Snakes",
+      "role": "dj",
+      "style": "Urban kizz",
+      "country": "🇫🇷",
+      "source_line": "🎧 Dj Snakes 🇫🇷"
+     },
+     {
+      "name_as_written": "Dj F.A.Z.E",
+      "role": "dj",
+      "style": "Urban kizz",
+      "country": "🇪🇸",
+      "source_line": "🎧 Dj F.A.Z.E 🇪🇸"
+     },
+     {
+      "name_as_written": "Dj Pingusso",
+      "role": "dj",
+      "style": "Urban kizz",
+      "country": "🇱🇺",
+      "source_line": "🎧 Dj Pingusso 🇱🇺"
+     },
+     {
+      "name_as_written": "Dj Jozsi",
+      "role": "dj",
+      "style": "Urban kizz",
+      "country": "🇷🇴",
+      "source_line": "🎧 Dj Jozsi 🇷🇴"
+     },
+     {
+      "name_as_written": "Said & Oksana",
+      "role": "teacher",
+      "style": "Urban kizz",
+      "country": "🇫🇷 🇺🇦",
+      "source_line": "⭐️ Said & Oksana 🇫🇷 🇺🇦"
+     },
+     {
+      "name_as_written": "Dwe & gaby",
+      "role": "teacher",
+      "style": "Urban kizz",
+      "country": "🇳🇱",
+      "source_line": "⭐️ Dwe & gaby 🇳🇱"
+     },
+     {
+      "name_as_written": "Radu & Judit",
+      "role": "teacher",
+      "style": "Urban kizz",
+      "country": "🇷🇴",
+      "source_line": "⭐️ Radu & Judit 🇷🇴"
+     },
+     {
+      "name_as_written": "Rita & Eddy",
+      "role": "teacher",
+      "style": "Urban kizz",
+      "country": "🇭🇺",
+      "source_line": "⭐️ Rita & Eddy 🇭🇺"
+     },
+     {
+      "name_as_written": "Fuego & Kiki",
+      "role": "teacher",
+      "style": "Urban kizz",
+      "country": "🇫🇷 🇩🇪",
+      "source_line": "⭐️ Fuego & Kiki 🇫🇷 🇩🇪"
+     },
+     {
+      "name_as_written": "Rebirth",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Rebirth"
+     },
+     {
+      "name_as_written": "Taxidancers Team",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Taxidancers Team"
+     },
+     {
+      "name_as_written": "Funomen",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Funomen"
+     },
+     {
+      "name_as_written": "Kizomba Club Hungary",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Kizomba Club Hungary"
+     },
+     {
+      "name_as_written": "Alonso & Noelia",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇪🇸",
+      "source_line": "⭐️ Alonso & Noelia 🇪🇸"
+     },
+     {
+      "name_as_written": "Zoran & Andjela",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇷🇸",
+      "source_line": "⭐️ Zoran & Andjela 🇷🇸"
+     },
+     {
+      "name_as_written": "Alexandros",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇬🇷",
+      "source_line": "⭐️ Alexandros 🇬🇷"
+     },
+     {
+      "name_as_written": "Gabesz & Reka",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇭🇺",
+      "source_line": "⭐️ Gabesz & Reka 🇭🇺"
+     },
+     {
+      "name_as_written": "Claudio & Aleksandra",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇵🇱",
+      "source_line": "⭐️ Claudio & Aleksandra 🇵🇱"
+     },
+     {
+      "name_as_written": "Nikola & Mina",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇭🇷",
+      "source_line": "⭐️ Nikola & Mina 🇭🇷"
+     },
+     {
+      "name_as_written": "Dj Momolatino",
+      "role": "dj",
+      "style": "Bachata",
+      "country": "🇨🇿",
+      "source_line": "🎧 Dj Momolatino 🇨🇿"
+     },
+     {
+      "name_as_written": "DJ Balito",
+      "role": "dj",
+      "style": "Bachata",
+      "country": "🇭🇺",
+      "source_line": "🎧 DJ Balito🇭🇺"
+     },
+     {
+      "name_as_written": "Dj Brumi",
+      "role": "dj",
+      "style": "Bachata",
+      "country": "🇭🇺",
+      "source_line": "🎧 Dj Brumi🇭🇺"
+     },
+     {
+      "name_as_written": "Dj Hike",
+      "role": "dj",
+      "style": "Bachata",
+      "country": "🇭🇺",
+      "source_line": "🎧 Dj Hike🇭🇺"
+     },
+     {
+      "name_as_written": "The Mouvement",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Created by dancers, for dancers, The Mouvement connects people through passion, quality, and authenticity."
+     }
+    ],
+    "features": [
+     {
+      "feature": "pre_party",
+      "quote": "Pre Party on Thursday",
+      "rationale": "The description announces a pre-party on Thursday before the festival."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Rooms, 2 Styles Urban kiz & Bachata",
+      "rationale": "Two dance rooms are offered, one for each style."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Taxidancers Team",
+      "rationale": "A taxi-dancer team is listed as part of the event crew."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Novotel Budapest Congress: 4 min walk",
+      "rationale": "Hotels are listed as nearby recommendations with walking times, without being part of a pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,41 +1,48 @@
 {
- "batch": "event-18516",
- "events": [
-  {
-   "event_id": 18516,
-   "artists": [
-    {
-     "name_as_written": "Salsa Zone",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Salsa Zone and Brighton Fiesta Latinos are thrilled to announce our second International SBK Summer Festival this year!"
-    },
-    {
-     "name_as_written": "Brighton Fiesta Latinos",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Salsa Zone and Brighton Fiesta Latinos are thrilled to announce our second International SBK Summer Festival this year!"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops run from 2:00 PM to 5:00 PM",
-     "rationale": "The description schedules workshops during the event, so dance classes are part of it."
-    },
-    {
-     "feature": "shows",
-     "quote": "outstanding performances and shows",
-     "rationale": "The description promises shows and performances by artists."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 rooms",
-     "rationale": "The description states the event has three dance rooms."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18516",
+  "events": [
+   {
+    "event_id": 18516,
+    "artists": [
+     {
+      "name_as_written": "Salsa Zone",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Salsa Zone and Brighton Fiesta Latinos are thrilled to announce our second International SBK Summer Festival this year!"
+     },
+     {
+      "name_as_written": "Brighton Fiesta Latinos",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Salsa Zone and Brighton Fiesta Latinos are thrilled to announce our second International SBK Summer Festival this year!"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops run from 2:00 PM to 5:00 PM",
+      "rationale": "The description schedules workshops during the event, so dance classes are part of it."
+     },
+     {
+      "feature": "shows",
+      "quote": "outstanding performances and shows",
+      "rationale": "The description promises shows and performances by artists."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 rooms",
+      "rationale": "The description states the event has three dance rooms."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,99 +1,106 @@
 {
- "batch": "event-16461",
- "events": [
-  {
-   "event_id": 16461,
-   "artists": [
-    {
-     "name_as_written": "DJ Mous",
-     "role": "dj",
-     "style": null,
-     "country": "Cameroon",
-     "source_line": "DJ Mous (Cameroon)"
-    },
-    {
-     "name_as_written": "DJ Monteyro",
-     "role": "dj",
-     "style": null,
-     "country": "Cape Verde",
-     "source_line": "DJ Monteyro (Cape Verde)"
-    },
-    {
-     "name_as_written": "DJ Sabura",
-     "role": "dj",
-     "style": null,
-     "country": "Portugal",
-     "source_line": "DJ Sabura (Portugal)"
-    },
-    {
-     "name_as_written": "DJ Galo",
-     "role": "dj",
-     "style": null,
-     "country": "Angola",
-     "source_line": "DJ Galo (Angola)"
-    },
-    {
-     "name_as_written": "Walter",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Walter"
-    },
-    {
-     "name_as_written": "Semedo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Semedo"
-    },
-    {
-     "name_as_written": "Johnny",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Johnny"
-    },
-    {
-     "name_as_written": "Vanessa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Vanessa"
-    },
-    {
-     "name_as_written": "Bheki",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Bheki"
-    },
-    {
-     "name_as_written": "Eddy Vents",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Eddy Vents"
-    },
-    {
-     "name_as_written": "Issa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Issa"
-    }
-   ],
-   "features": [
-    {
-     "feature": "live_music",
-     "quote": "we gonna have a singer from Guinea Bissau",
-     "rationale": "A singer is announced as performing at the event, which is live music."
-    },
-    {
-     "feature": "workshops",
-     "quote": "teach you stuff you haven’t seen before",
-     "rationale": "The teachers will give classes that teach dancers new material, so dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16461",
+  "events": [
+   {
+    "event_id": 16461,
+    "artists": [
+     {
+      "name_as_written": "DJ Mous",
+      "role": "dj",
+      "style": null,
+      "country": "Cameroon",
+      "source_line": "DJ Mous (Cameroon)"
+     },
+     {
+      "name_as_written": "DJ Monteyro",
+      "role": "dj",
+      "style": null,
+      "country": "Cape Verde",
+      "source_line": "DJ Monteyro (Cape Verde)"
+     },
+     {
+      "name_as_written": "DJ Sabura",
+      "role": "dj",
+      "style": null,
+      "country": "Portugal",
+      "source_line": "DJ Sabura (Portugal)"
+     },
+     {
+      "name_as_written": "DJ Galo",
+      "role": "dj",
+      "style": null,
+      "country": "Angola",
+      "source_line": "DJ Galo (Angola)"
+     },
+     {
+      "name_as_written": "Walter",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Walter"
+     },
+     {
+      "name_as_written": "Semedo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Semedo"
+     },
+     {
+      "name_as_written": "Johnny",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Johnny"
+     },
+     {
+      "name_as_written": "Vanessa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Vanessa"
+     },
+     {
+      "name_as_written": "Bheki",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Bheki"
+     },
+     {
+      "name_as_written": "Eddy Vents",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Eddy Vents"
+     },
+     {
+      "name_as_written": "Issa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Issa"
+     }
+    ],
+    "features": [
+     {
+      "feature": "live_music",
+      "quote": "we gonna have a singer from Guinea Bissau",
+      "rationale": "A singer is announced as performing at the event, which is live music."
+     },
+     {
+      "feature": "workshops",
+      "quote": "teach you stuff you haven’t seen before",
+      "rationale": "The teachers will give classes that teach dancers new material, so dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

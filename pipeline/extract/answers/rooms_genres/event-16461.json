@@ -1,73 +1,80 @@
 {
- "batch": "event-16461",
- "events": [
-  {
-   "event_id": 16461,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "We will dance to Kizomba, Semba, Tarraxinha"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "We will dance to Kizomba, Semba, Tarraxinha"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Semba, Tarraxinha, Kompa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Tarraxinha, Kompa, Zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Kompa, Zouk, Koladera"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Koladera",
-     "quote": "Zouk, Koladera, Funana"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Funana",
-     "quote": "Koladera, Funana, Gumbe"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Gumbe",
-     "quote": "Funana, Gumbe, Tina"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Tina",
-     "quote": "Gumbe, Tina, Ndombolo"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Ndombolo",
-     "quote": "Tina, Ndombolo, Decale"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Decale",
-     "quote": "Ndombolo, Decale, Afrohouse"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrohouse",
-     "quote": "Decale, Afrohouse"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16461",
+  "events": [
+   {
+    "event_id": 16461,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "We will dance to Kizomba, Semba, Tarraxinha"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "We will dance to Kizomba, Semba, Tarraxinha"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Semba, Tarraxinha, Kompa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Tarraxinha, Kompa, Zouk"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Kompa, Zouk, Koladera"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Koladera",
+      "quote": "Zouk, Koladera, Funana"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Funana",
+      "quote": "Koladera, Funana, Gumbe"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Gumbe",
+      "quote": "Funana, Gumbe, Tina"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Tina",
+      "quote": "Gumbe, Tina, Ndombolo"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Ndombolo",
+      "quote": "Tina, Ndombolo, Decale"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Decale",
+      "quote": "Ndombolo, Decale, Afrohouse"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrohouse",
+      "quote": "Decale, Afrohouse"
+     }
+    ]
+   }
+  ]
+ }
 }

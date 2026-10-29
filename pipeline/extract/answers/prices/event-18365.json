@@ -1,128 +1,135 @@
 {
- "batch": "event-18365",
- "events": [
-  {
-   "event_id": 18365,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "Lead Single Pass",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 179.99,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "$179.99 → $169.99 with code AFROKIZZ"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "Follow Single Pass",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 179.99,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "$179.99 → $169.99 with code AFROKIZZ"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "Lead + Lead Pass",
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 299.99,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "$299.99 (Save $40!)"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "Lead + Follow Pass",
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 319.99,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "$319.99 (Save $30!)"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": "Party Pass",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 129.99,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "$129.99"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "NEXT PRICE INCREASE: SEPT 3RD!"
-   ]
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T18:01:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18365",
+  "events": [
+   {
+    "event_id": 18365,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "Lead Single Pass",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 179.99,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "$179.99 → $169.99 with code AFROKIZZ"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "Follow Single Pass",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 179.99,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "$179.99 → $169.99 with code AFROKIZZ"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "Lead + Lead Pass",
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 299.99,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "$299.99 (Save $40!)"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "Lead + Follow Pass",
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 319.99,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "$319.99 (Save $30!)"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": "Party Pass",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 129.99,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "$129.99"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "NEXT PRICE INCREASE: SEPT 3RD!"
+    ]
+   }
+  ]
+ }
 }

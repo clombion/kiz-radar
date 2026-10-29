@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dosanjos",
+ "key_b": "p:dosanos",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "db8b3d2c55ac6244",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Dos Anjos and DJ Dos Anos differ by a typo of a distinctive stage name, with Poland appearing on both sides."
+ }
+}

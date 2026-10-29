@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johnny@cristinazebri+johnny",
+ "key_b": "p:johnnyagostino",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "a970425d17b21e8f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Johnny Agostino (solo, Bern, January 2027) and Johnny & Cristina Zebri (Bern, March 2027) share a city and first name, but the surnames differ and no partner or event links them."
+ }
+}

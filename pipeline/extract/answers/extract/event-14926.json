@@ -1,98 +1,105 @@
 {
- "batch": "event-14926",
- "events": [
-  {
-   "event_id": 14926,
-   "artists": [
-    {
-     "name_as_written": "Val’r & Sarah",
-     "role": "teacher",
-     "style": null,
-     "country": "FRANCE",
-     "source_line": "Val’r & Sarah (FRANCE)"
-    },
-    {
-     "name_as_written": "Yannick & Ama",
-     "role": "teacher",
-     "style": null,
-     "country": "AUSTRALIA",
-     "source_line": "Yannick & Ama (AUSTRALIA)"
-    },
-    {
-     "name_as_written": "Chris & Yasmin",
-     "role": "teacher",
-     "style": null,
-     "country": "AUSTRALIA",
-     "source_line": "Chris & Yasmin (AUSTRALIA)Sydney Battle Kiz Winners 2025"
-    },
-    {
-     "name_as_written": "Kudzi & Maddy",
-     "role": "teacher",
-     "style": null,
-     "country": "AUSTRALIA",
-     "source_line": "Kudzi & Maddy (AUSTRALIA) Sydney Battle Kiz Finalists 2025"
-    },
-    {
-     "name_as_written": "Jérémy & Léa",
-     "role": "teacher",
-     "style": null,
-     "country": "NEW CALEDONIA",
-     "source_line": "Jérémy & Léa (NEW CALEDONIA)"
-    },
-    {
-     "name_as_written": "DB Chris",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DB Chris"
-    },
-    {
-     "name_as_written": "Ama",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Ama"
-    },
-    {
-     "name_as_written": "JAYJAY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "JAYJAY"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS :",
-     "rationale": "The description lists dance workshops such as Kizomba Fusion, UrbanKiz and Semba as part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "des shows",
-     "rationale": "The event includes shows by artists, mentioned in the French text."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After party le lundi 12 janvier",
-     "rationale": "An after party on Monday 12 January is announced."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "incredible themed parties",
-     "rationale": "The English text describes the evenings as themed parties with specific vibes and dress codes."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress code : tenues tropicales et colorées",
-     "rationale": "A dress code for the Friday night is explicitly stated."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Code promo spécial : KIZ15 pour vos réservations",
-     "rationale": "A promo code for discounted bookings at the Ramada Hôtel indicates a negotiated hotel rate, not included in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14926",
+  "events": [
+   {
+    "event_id": 14926,
+    "artists": [
+     {
+      "name_as_written": "Val’r & Sarah",
+      "role": "teacher",
+      "style": null,
+      "country": "FRANCE",
+      "source_line": "Val’r & Sarah (FRANCE)"
+     },
+     {
+      "name_as_written": "Yannick & Ama",
+      "role": "teacher",
+      "style": null,
+      "country": "AUSTRALIA",
+      "source_line": "Yannick & Ama (AUSTRALIA)"
+     },
+     {
+      "name_as_written": "Chris & Yasmin",
+      "role": "teacher",
+      "style": null,
+      "country": "AUSTRALIA",
+      "source_line": "Chris & Yasmin (AUSTRALIA)Sydney Battle Kiz Winners 2025"
+     },
+     {
+      "name_as_written": "Kudzi & Maddy",
+      "role": "teacher",
+      "style": null,
+      "country": "AUSTRALIA",
+      "source_line": "Kudzi & Maddy (AUSTRALIA) Sydney Battle Kiz Finalists 2025"
+     },
+     {
+      "name_as_written": "Jérémy & Léa",
+      "role": "teacher",
+      "style": null,
+      "country": "NEW CALEDONIA",
+      "source_line": "Jérémy & Léa (NEW CALEDONIA)"
+     },
+     {
+      "name_as_written": "DB Chris",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DB Chris"
+     },
+     {
+      "name_as_written": "Ama",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Ama"
+     },
+     {
+      "name_as_written": "JAYJAY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "JAYJAY"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS :",
+      "rationale": "The description lists dance workshops such as Kizomba Fusion, UrbanKiz and Semba as part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "des shows",
+      "rationale": "The event includes shows by artists, mentioned in the French text."
+     },
+     {
+      "feature": "after_party",
+      "quote": "After party le lundi 12 janvier",
+      "rationale": "An after party on Monday 12 January is announced."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "incredible themed parties",
+      "rationale": "The English text describes the evenings as themed parties with specific vibes and dress codes."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress code : tenues tropicales et colorées",
+      "rationale": "A dress code for the Friday night is explicitly stated."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Code promo spécial : KIZ15 pour vos réservations",
+      "rationale": "A promo code for discounted bookings at the Ramada Hôtel indicates a negotiated hotel rate, not included in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

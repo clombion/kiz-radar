@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+silvia",
+ "key_b": "p:andreamurgia",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "e1fe47e61aff0b5d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Andrea & Silvia against solo Andrea Murgia: a common first name and a shared country only, with no distinctive link."
+ }
+}

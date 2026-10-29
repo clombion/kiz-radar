@@ -1,185 +1,192 @@
 {
- "batch": "event-16922",
- "events": [
-  {
-   "event_id": 16922,
-   "artists": [
-    {
-     "name_as_written": "DJ MALONCY BEATZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "-DJ MALONCY BEATZ"
-    },
-    {
-     "name_as_written": "DJ J’LARIOUS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "-DJ J’LARIOUS"
-    },
-    {
-     "name_as_written": "DJ BOBBY-MIX",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "-DJ BOBBY-MIX"
-    },
-    {
-     "name_as_written": "DJ CALIPH",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "-DJ CALIPH"
-    },
-    {
-     "name_as_written": "DJ TONY SAMSON",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "-DJ TONY SAMSON"
-    },
-    {
-     "name_as_written": "DJ BERRY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "-DJ BERRY"
-    },
-    {
-     "name_as_written": "DJ GROOVE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "-DJ GROOVE"
-    },
-    {
-     "name_as_written": "DADIE SACKOO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-DADIE SACKOO"
-    },
-    {
-     "name_as_written": "RITA SZABO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-RITA SZABO"
-    },
-    {
-     "name_as_written": "SANI GROOVE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-SANI GROOVE"
-    },
-    {
-     "name_as_written": "CHRIS DA WHITE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-CHRIS DA WHITE"
-    },
-    {
-     "name_as_written": "FAJUL KIZZTALK",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-FAJUL KIZZTALK"
-    },
-    {
-     "name_as_written": "GLOIRE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-GLOIRE"
-    },
-    {
-     "name_as_written": "HAGEN & SEJA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-HAGEN & SEJA"
-    },
-    {
-     "name_as_written": "WOOKIE & NICOLE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-WOOKIE & NICOLE"
-    },
-    {
-     "name_as_written": "SIMONE & JENNIFER",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-SIMONE & JENNIFER"
-    },
-    {
-     "name_as_written": "DON PERRY-AFROSTYLE & NIKE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-DON PERRY-AFROSTYLE & NIKE"
-    },
-    {
-     "name_as_written": "MAJESTIC KIZZ & OANA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-MAJESTIC KIZZ & OANA"
-    },
-    {
-     "name_as_written": "OLIADE GRANT & LARA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "-OLIADE GRANT & LARA"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL-IN-1 Hotel in Prague, Czech Republic.",
-     "rationale": "The event is described as an all-in-one hotel, so the parties and accommodation share the same venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotel Booking: >>HOTEL OLYMPIK, SOKOLOVSKA 138, PRAGUE 8<<",
-     "rationale": "A specific hotel is named for booking, which indicates a recommended or partner hotel."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party Included in the Full Pass.",
-     "rationale": "A pre-party is explicitly offered and included in the full pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "4 Days Workshop",
-     "rationale": "The description lists four days of workshops as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 Days Socials",
-     "rationale": "The description lists three days of socials, which are daytime events."
-    },
-    {
-     "feature": "competition",
-     "quote": "LeadX & DamsKiz Groove Competition",
-     "rationale": "A named competition for leaders and followers is part of the programme."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Guest/Taxi Dancers",
-     "rationale": "The event lists taxi dancers among its guests."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed Night Parties from 10pm.",
-     "rationale": "The description lists themed night parties as part of the schedule."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16922",
+  "events": [
+   {
+    "event_id": 16922,
+    "artists": [
+     {
+      "name_as_written": "DJ MALONCY BEATZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "-DJ MALONCY BEATZ"
+     },
+     {
+      "name_as_written": "DJ J’LARIOUS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "-DJ J’LARIOUS"
+     },
+     {
+      "name_as_written": "DJ BOBBY-MIX",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "-DJ BOBBY-MIX"
+     },
+     {
+      "name_as_written": "DJ CALIPH",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "-DJ CALIPH"
+     },
+     {
+      "name_as_written": "DJ TONY SAMSON",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "-DJ TONY SAMSON"
+     },
+     {
+      "name_as_written": "DJ BERRY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "-DJ BERRY"
+     },
+     {
+      "name_as_written": "DJ GROOVE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "-DJ GROOVE"
+     },
+     {
+      "name_as_written": "DADIE SACKOO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-DADIE SACKOO"
+     },
+     {
+      "name_as_written": "RITA SZABO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-RITA SZABO"
+     },
+     {
+      "name_as_written": "SANI GROOVE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-SANI GROOVE"
+     },
+     {
+      "name_as_written": "CHRIS DA WHITE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-CHRIS DA WHITE"
+     },
+     {
+      "name_as_written": "FAJUL KIZZTALK",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-FAJUL KIZZTALK"
+     },
+     {
+      "name_as_written": "GLOIRE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-GLOIRE"
+     },
+     {
+      "name_as_written": "HAGEN & SEJA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-HAGEN & SEJA"
+     },
+     {
+      "name_as_written": "WOOKIE & NICOLE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-WOOKIE & NICOLE"
+     },
+     {
+      "name_as_written": "SIMONE & JENNIFER",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-SIMONE & JENNIFER"
+     },
+     {
+      "name_as_written": "DON PERRY-AFROSTYLE & NIKE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-DON PERRY-AFROSTYLE & NIKE"
+     },
+     {
+      "name_as_written": "MAJESTIC KIZZ & OANA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-MAJESTIC KIZZ & OANA"
+     },
+     {
+      "name_as_written": "OLIADE GRANT & LARA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "-OLIADE GRANT & LARA"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL-IN-1 Hotel in Prague, Czech Republic.",
+      "rationale": "The event is described as an all-in-one hotel, so the parties and accommodation share the same venue."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotel Booking: >>HOTEL OLYMPIK, SOKOLOVSKA 138, PRAGUE 8<<",
+      "rationale": "A specific hotel is named for booking, which indicates a recommended or partner hotel."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party Included in the Full Pass.",
+      "rationale": "A pre-party is explicitly offered and included in the full pass."
+     },
+     {
+      "feature": "workshops",
+      "quote": "4 Days Workshop",
+      "rationale": "The description lists four days of workshops as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 Days Socials",
+      "rationale": "The description lists three days of socials, which are daytime events."
+     },
+     {
+      "feature": "competition",
+      "quote": "LeadX & DamsKiz Groove Competition",
+      "rationale": "A named competition for leaders and followers is part of the programme."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Guest/Taxi Dancers",
+      "rationale": "The event lists taxi dancers among its guests."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Themed Night Parties from 10pm.",
+      "rationale": "The description lists themed night parties as part of the schedule."
+     }
+    ]
+   }
+  ]
+ }
 }

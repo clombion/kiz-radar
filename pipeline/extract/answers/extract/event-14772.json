@@ -1,144 +1,151 @@
 {
- "batch": "event-14772",
- "events": [
-  {
-   "event_id": 14772,
-   "artists": [
-    {
-     "name_as_written": "LOGIA",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 LOGIA + MKC 2026: SURVIVORS 🔥"
-    },
-    {
-     "name_as_written": "Mexico Kizomba Congress",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🚀 Welcome to the ultimate evolution. In 2026, LOGIA and the Mexico Kizomba Congress join forces to create an unprecedented experience: SURVIVORS. An event where only the most passionate, the boldest, and the true dance lovers dare to make it to the end. 💃🔥🕺"
-    },
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "* JP & Stephy (France)"
-    },
-    {
-     "name_as_written": "Leo Lorenzo",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "* Leo Lorenzo (France)"
-    },
-    {
-     "name_as_written": "Daniela Elena",
-     "role": "teacher",
-     "style": null,
-     "country": "Romania",
-     "source_line": "* Daniela Elena (Romania)"
-    },
-    {
-     "name_as_written": "Eric & Annalise",
-     "role": "teacher",
-     "style": null,
-     "country": "USA",
-     "source_line": "*Eric & Annalise (USA)"
-    },
-    {
-     "name_as_written": "Teresa Jimenez",
-     "role": "teacher",
-     "style": null,
-     "country": "Swedeen",
-     "source_line": "Teresa Jimenez (Swedeen)"
-    },
-    {
-     "name_as_written": "Asia Voronova",
-     "role": "teacher",
-     "style": null,
-     "country": "Ukraine",
-     "source_line": "* Asia Voronova (Ukraine)"
-    },
-    {
-     "name_as_written": "Beto Alifh",
-     "role": "teacher",
-     "style": null,
-     "country": "Mexico",
-     "source_line": "* Beto Alifh (Mexico)"
-    },
-    {
-     "name_as_written": "Juan Kizomba",
-     "role": "teacher",
-     "style": null,
-     "country": "Mexico",
-     "source_line": "* Juan Kizomba (Mexico)"
-    },
-    {
-     "name_as_written": "Ross & Jahaira",
-     "role": "teacher",
-     "style": null,
-     "country": "USA",
-     "source_line": "* Ross & Jahaira (USA)"
-    },
-    {
-     "name_as_written": "Chamalo & Jalyssa",
-     "role": "teacher",
-     "style": null,
-     "country": "France / Holland",
-     "source_line": "* Chamalo & Jalyssa (France / Holland)"
-    },
-    {
-     "name_as_written": "Jorge Velasco & Gaby Lorenzana",
-     "role": "teacher",
-     "style": null,
-     "country": "Mexico",
-     "source_line": "* Jorge Velasco & Gaby Lorenzana (Mexico)"
-    },
-    {
-     "name_as_written": "Gerardo y Madian",
-     "role": "teacher",
-     "style": null,
-     "country": "Mexico",
-     "source_line": "* Gerardo y Madian (Mexico)"
-    },
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Shark"
-    },
-    {
-     "name_as_written": "DJ Kayel",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Kayel"
-    },
-    {
-     "name_as_written": "DJ Mike",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Mike"
-    },
-    {
-     "name_as_written": "DJ Morelasoul",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Morelasoul"
-    },
-    {
-     "name_as_written": "EL JEFE",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "EL JEFE WhatsApp 5543602094"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14772",
+  "events": [
+   {
+    "event_id": 14772,
+    "artists": [
+     {
+      "name_as_written": "LOGIA",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 LOGIA + MKC 2026: SURVIVORS 🔥"
+     },
+     {
+      "name_as_written": "Mexico Kizomba Congress",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🚀 Welcome to the ultimate evolution. In 2026, LOGIA and the Mexico Kizomba Congress join forces to create an unprecedented experience: SURVIVORS. An event where only the most passionate, the boldest, and the true dance lovers dare to make it to the end. 💃🔥🕺"
+     },
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "* JP & Stephy (France)"
+     },
+     {
+      "name_as_written": "Leo Lorenzo",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "* Leo Lorenzo (France)"
+     },
+     {
+      "name_as_written": "Daniela Elena",
+      "role": "teacher",
+      "style": null,
+      "country": "Romania",
+      "source_line": "* Daniela Elena (Romania)"
+     },
+     {
+      "name_as_written": "Eric & Annalise",
+      "role": "teacher",
+      "style": null,
+      "country": "USA",
+      "source_line": "*Eric & Annalise (USA)"
+     },
+     {
+      "name_as_written": "Teresa Jimenez",
+      "role": "teacher",
+      "style": null,
+      "country": "Swedeen",
+      "source_line": "Teresa Jimenez (Swedeen)"
+     },
+     {
+      "name_as_written": "Asia Voronova",
+      "role": "teacher",
+      "style": null,
+      "country": "Ukraine",
+      "source_line": "* Asia Voronova (Ukraine)"
+     },
+     {
+      "name_as_written": "Beto Alifh",
+      "role": "teacher",
+      "style": null,
+      "country": "Mexico",
+      "source_line": "* Beto Alifh (Mexico)"
+     },
+     {
+      "name_as_written": "Juan Kizomba",
+      "role": "teacher",
+      "style": null,
+      "country": "Mexico",
+      "source_line": "* Juan Kizomba (Mexico)"
+     },
+     {
+      "name_as_written": "Ross & Jahaira",
+      "role": "teacher",
+      "style": null,
+      "country": "USA",
+      "source_line": "* Ross & Jahaira (USA)"
+     },
+     {
+      "name_as_written": "Chamalo & Jalyssa",
+      "role": "teacher",
+      "style": null,
+      "country": "France / Holland",
+      "source_line": "* Chamalo & Jalyssa (France / Holland)"
+     },
+     {
+      "name_as_written": "Jorge Velasco & Gaby Lorenzana",
+      "role": "teacher",
+      "style": null,
+      "country": "Mexico",
+      "source_line": "* Jorge Velasco & Gaby Lorenzana (Mexico)"
+     },
+     {
+      "name_as_written": "Gerardo y Madian",
+      "role": "teacher",
+      "style": null,
+      "country": "Mexico",
+      "source_line": "* Gerardo y Madian (Mexico)"
+     },
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Shark"
+     },
+     {
+      "name_as_written": "DJ Kayel",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Kayel"
+     },
+     {
+      "name_as_written": "DJ Mike",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Mike"
+     },
+     {
+      "name_as_written": "DJ Morelasoul",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Morelasoul"
+     },
+     {
+      "name_as_written": "EL JEFE",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "EL JEFE WhatsApp 5543602094"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

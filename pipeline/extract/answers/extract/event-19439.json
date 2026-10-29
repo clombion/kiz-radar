@@ -1,36 +1,43 @@
 {
- "batch": "event-19439",
- "events": [
-  {
-   "event_id": 19439,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "daily workshops",
-     "rationale": "The description says the weekend includes daily workshops."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "afternoon socials",
-     "rationale": "The description advertises afternoon socials."
-    },
-    {
-     "feature": "shows",
-     "quote": "nightly performances",
-     "rationale": "The description advertises nightly performances."
-    },
-    {
-     "feature": "competition",
-     "quote": "Jack & Jill Competition",
-     "rationale": "The event hosts a Brazilian Zouk Jack & Jill competition."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTEL INFO",
-     "rationale": "A hotel info section with a hotel link points dancers to a recommended hotel, though it is not stated as part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19439",
+  "events": [
+   {
+    "event_id": 19439,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "daily workshops",
+      "rationale": "The description says the weekend includes daily workshops."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "afternoon socials",
+      "rationale": "The description advertises afternoon socials."
+     },
+     {
+      "feature": "shows",
+      "quote": "nightly performances",
+      "rationale": "The description advertises nightly performances."
+     },
+     {
+      "feature": "competition",
+      "quote": "Jack & Jill Competition",
+      "rationale": "The event hosts a Brazilian Zouk Jack & Jill competition."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTEL INFO",
+      "rationale": "A hotel info section with a hotel link points dancers to a recommended hotel, though it is not stated as part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

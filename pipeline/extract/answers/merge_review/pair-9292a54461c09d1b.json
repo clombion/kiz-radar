@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cazuzakinvula",
+ "key_b": "p:cazuzaquinvula",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "9292a54461c09d1b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Cazuza Kinvula and Cazuza Quinvula share the first name and a one-letter surname variant, and the Angola/Switzerland stated countries."
+ }
+}

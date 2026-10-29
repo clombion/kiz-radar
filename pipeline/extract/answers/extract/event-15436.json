@@ -1,97 +1,104 @@
 {
- "batch": "event-15436",
- "events": [
-  {
-   "event_id": 15436,
-   "artists": [
-    {
-     "name_as_written": "ANDRIUS 🇱🇹& DOTI 🇵🇱",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👣 ANDRIUS 🇱🇹& DOTI 🇵🇱"
-    },
-    {
-     "name_as_written": "ZÉ RUI 🇵🇹& ELENA 🇺🇦",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👣 ZÉ RUI 🇵🇹& ELENA 🇺🇦"
-    },
-    {
-     "name_as_written": "CAPITAO 🇵🇹& PRIS 🇵🇹",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👣 CAPITAO 🇵🇹& PRIS 🇵🇹"
-    },
-    {
-     "name_as_written": "DJ SUPAMAN",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🎧 DJ SUPAMAN 🇵🇹"
-    },
-    {
-     "name_as_written": "DJ M. KAZUKUTA",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🎧 DJ M. KAZUKUTA 🇵🇹"
-    },
-    {
-     "name_as_written": "DJ DOTIZINHA",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "🎧 DJ DOTIZINHA 🇵🇱"
-    },
-    {
-     "name_as_written": "DJ CALMA",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇹",
-     "source_line": "🎧 DJ CALMA 🇱🇹"
-    },
-    {
-     "name_as_written": "Rasa Seliukaitė",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Rasa Seliukaitė: +37060303875 ( Lt / Eng )"
-    },
-    {
-     "name_as_written": "Nijole Nija",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Nijole Nija: +37061658278 ( Lt / Rus / Eng )"
-    },
-    {
-     "name_as_written": "Vasco Dias",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Vasco Dias: +351963948319 ( Pt / Esp / Fr / Eng )"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "different high-level workshops",
-     "rationale": "The organisers state that the instructors will bring different high-level workshops."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Day time socials.",
-     "rationale": "The description lists daytime socials as part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Calvary Hotel Vilnius offers an exclusive promo code LKF for our event guests:",
-     "rationale": "A partner hotel offers a negotiated discount for participants, and accommodation is not stated as part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15436",
+  "events": [
+   {
+    "event_id": 15436,
+    "artists": [
+     {
+      "name_as_written": "ANDRIUS 🇱🇹& DOTI 🇵🇱",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👣 ANDRIUS 🇱🇹& DOTI 🇵🇱"
+     },
+     {
+      "name_as_written": "ZÉ RUI 🇵🇹& ELENA 🇺🇦",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👣 ZÉ RUI 🇵🇹& ELENA 🇺🇦"
+     },
+     {
+      "name_as_written": "CAPITAO 🇵🇹& PRIS 🇵🇹",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👣 CAPITAO 🇵🇹& PRIS 🇵🇹"
+     },
+     {
+      "name_as_written": "DJ SUPAMAN",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🎧 DJ SUPAMAN 🇵🇹"
+     },
+     {
+      "name_as_written": "DJ M. KAZUKUTA",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🎧 DJ M. KAZUKUTA 🇵🇹"
+     },
+     {
+      "name_as_written": "DJ DOTIZINHA",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "🎧 DJ DOTIZINHA 🇵🇱"
+     },
+     {
+      "name_as_written": "DJ CALMA",
+      "role": "dj",
+      "style": null,
+      "country": "🇱🇹",
+      "source_line": "🎧 DJ CALMA 🇱🇹"
+     },
+     {
+      "name_as_written": "Rasa Seliukaitė",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Rasa Seliukaitė: +37060303875 ( Lt / Eng )"
+     },
+     {
+      "name_as_written": "Nijole Nija",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Nijole Nija: +37061658278 ( Lt / Rus / Eng )"
+     },
+     {
+      "name_as_written": "Vasco Dias",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Vasco Dias: +351963948319 ( Pt / Esp / Fr / Eng )"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "different high-level workshops",
+      "rationale": "The organisers state that the instructors will bring different high-level workshops."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Day time socials.",
+      "rationale": "The description lists daytime socials as part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Calvary Hotel Vilnius offers an exclusive promo code LKF for our event guests:",
+      "rationale": "A partner hotel offers a negotiated discount for participants, and accommodation is not stated as part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

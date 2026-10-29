@@ -1,180 +1,187 @@
 {
- "batch": "event-15395",
- "events": [
-  {
-   "event_id": 15395,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Fullpasses Earlybirds. €75,00"
-      },
-      {
-       "amount": 80.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Regularbird .€80,00"
-      },
-      {
-       "amount": 85.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "LastBird. €85,00"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 50.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Party passes Earlybirds €50,00"
-      },
-      {
-       "amount": 55.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Regularbird €55.00"
-      },
-      {
-       "amount": 60.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "LastBird. €60,00"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 25.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Friday party. €25,-"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 25.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Saturdayparty €25,-"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 20.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Sunday party. :€20,-"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Ticket name change is free until 23th of Oktober 2025 After that theres a name changefee of €10."
-   ]
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:57:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15395",
+  "events": [
+   {
+    "event_id": 15395,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 75.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Fullpasses Earlybirds. €75,00"
+       },
+       {
+        "amount": 80.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Regularbird .€80,00"
+       },
+       {
+        "amount": 85.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "LastBird. €85,00"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 50.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Party passes Earlybirds €50,00"
+       },
+       {
+        "amount": 55.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Regularbird €55.00"
+       },
+       {
+        "amount": 60.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "LastBird. €60,00"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 25.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": true,
+        "sold_out": false,
+        "current": false,
+        "quote": "Friday party. €25,-"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 25.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": true,
+        "sold_out": false,
+        "current": false,
+        "quote": "Saturdayparty €25,-"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 20.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": true,
+        "sold_out": false,
+        "current": false,
+        "quote": "Sunday party. :€20,-"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Ticket name change is free until 23th of Oktober 2025 After that theres a name changefee of €10."
+    ]
+   }
+  ]
+ }
 }

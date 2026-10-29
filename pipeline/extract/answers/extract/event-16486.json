@@ -1,256 +1,263 @@
 {
- "batch": "event-16486",
- "events": [
-  {
-   "event_id": 16486,
-   "artists": [
-    {
-     "name_as_written": "Jojo & Jenny",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎 Jojo & Jenny"
-    },
-    {
-     "name_as_written": "Iron Mams & Moorea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Iron Mams & Moorea"
-    },
-    {
-     "name_as_written": "Saber & Majdouline",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Saber & Majdouline"
-    },
-    {
-     "name_as_written": "Stephane",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Stephane"
-    },
-    {
-     "name_as_written": "Said",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Said"
-    },
-    {
-     "name_as_written": "Willy Ledoux",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Willy Ledoux"
-    },
-    {
-     "name_as_written": "Stone Rock",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Stone Rock"
-    },
-    {
-     "name_as_written": "Victoria Kizzarte",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Victoria Kizzarte"
-    },
-    {
-     "name_as_written": "Selim & Sandra",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Selim & Sandra"
-    },
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Ary & Maura"
-    },
-    {
-     "name_as_written": "Elhajd & Jena",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Elhajd & Jena"
-    },
-    {
-     "name_as_written": "Do zongado",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🤎Do zongado"
-    },
-    {
-     "name_as_written": "DJ Delahoy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Delahoy"
-    },
-    {
-     "name_as_written": "DJ Stefanio Lima",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Stefanio Lima"
-    },
-    {
-     "name_as_written": "DJ Pingusso",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Pingusso"
-    },
-    {
-     "name_as_written": "DJ Snakes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Snakes"
-    },
-    {
-     "name_as_written": "D&L Beats",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️D&L Beats"
-    },
-    {
-     "name_as_written": "DJ Bartef",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Bartef"
-    },
-    {
-     "name_as_written": "DJ Nao",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Nao"
-    },
-    {
-     "name_as_written": "DJ Traybeats",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Traybeats"
-    },
-    {
-     "name_as_written": "DJ Do zongado",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Do zongado"
-    },
-    {
-     "name_as_written": "DJ Onfire",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Onfire"
-    },
-    {
-     "name_as_written": "DJ Sabura",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Sabura"
-    },
-    {
-     "name_as_written": "DJ Trevor Anthony",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Trevor Anthony"
-    },
-    {
-     "name_as_written": "DJ X-Tra",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ X-Tra"
-    },
-    {
-     "name_as_written": "DJ Dennis",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Dennis"
-    },
-    {
-     "name_as_written": "DJ Marianna",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️DJ Marianna"
-    },
-    {
-     "name_as_written": "CHERYSTYL",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🧡 CHERYSTYL (videographer)"
-    },
-    {
-     "name_as_written": "DANI",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🧡 DANI (videographer)"
-    },
-    {
-     "name_as_written": "FARANTINI",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🧡 FARANTINI (Photographer)"
-    },
-    {
-     "name_as_written": "ALFIL",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🧡 ALFIL (Photographer)"
-    },
-    {
-     "name_as_written": "LEGACY MEDIA",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🧡 LEGACY MEDIA (Social Media Expert)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-one resort",
-     "rationale": "The event is held at an all-in-one resort, so the parties take place where dancers stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 Dancefloors",
-     "rationale": "The description states there are three dancefloors."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "I DRESS CODES I",
-     "rationale": "A section headed dress codes lists a dress code for each day of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "I HOTEL OPTIONS BOOKING I",
-     "rationale": "A hotel options booking section offers hotel choices without stating that accommodation is part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16486",
+  "events": [
+   {
+    "event_id": 16486,
+    "artists": [
+     {
+      "name_as_written": "Jojo & Jenny",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎 Jojo & Jenny"
+     },
+     {
+      "name_as_written": "Iron Mams & Moorea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Iron Mams & Moorea"
+     },
+     {
+      "name_as_written": "Saber & Majdouline",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Saber & Majdouline"
+     },
+     {
+      "name_as_written": "Stephane",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Stephane"
+     },
+     {
+      "name_as_written": "Said",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Said"
+     },
+     {
+      "name_as_written": "Willy Ledoux",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Willy Ledoux"
+     },
+     {
+      "name_as_written": "Stone Rock",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Stone Rock"
+     },
+     {
+      "name_as_written": "Victoria Kizzarte",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Victoria Kizzarte"
+     },
+     {
+      "name_as_written": "Selim & Sandra",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Selim & Sandra"
+     },
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Ary & Maura"
+     },
+     {
+      "name_as_written": "Elhajd & Jena",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Elhajd & Jena"
+     },
+     {
+      "name_as_written": "Do zongado",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🤎Do zongado"
+     },
+     {
+      "name_as_written": "DJ Delahoy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Delahoy"
+     },
+     {
+      "name_as_written": "DJ Stefanio Lima",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Stefanio Lima"
+     },
+     {
+      "name_as_written": "DJ Pingusso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Pingusso"
+     },
+     {
+      "name_as_written": "DJ Snakes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Snakes"
+     },
+     {
+      "name_as_written": "D&L Beats",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️D&L Beats"
+     },
+     {
+      "name_as_written": "DJ Bartef",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Bartef"
+     },
+     {
+      "name_as_written": "DJ Nao",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Nao"
+     },
+     {
+      "name_as_written": "DJ Traybeats",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Traybeats"
+     },
+     {
+      "name_as_written": "DJ Do zongado",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Do zongado"
+     },
+     {
+      "name_as_written": "DJ Onfire",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Onfire"
+     },
+     {
+      "name_as_written": "DJ Sabura",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Sabura"
+     },
+     {
+      "name_as_written": "DJ Trevor Anthony",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Trevor Anthony"
+     },
+     {
+      "name_as_written": "DJ X-Tra",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ X-Tra"
+     },
+     {
+      "name_as_written": "DJ Dennis",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Dennis"
+     },
+     {
+      "name_as_written": "DJ Marianna",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️DJ Marianna"
+     },
+     {
+      "name_as_written": "CHERYSTYL",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🧡 CHERYSTYL (videographer)"
+     },
+     {
+      "name_as_written": "DANI",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🧡 DANI (videographer)"
+     },
+     {
+      "name_as_written": "FARANTINI",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🧡 FARANTINI (Photographer)"
+     },
+     {
+      "name_as_written": "ALFIL",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🧡 ALFIL (Photographer)"
+     },
+     {
+      "name_as_written": "LEGACY MEDIA",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🧡 LEGACY MEDIA (Social Media Expert)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-one resort",
+      "rationale": "The event is held at an all-in-one resort, so the parties take place where dancers stay."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 Dancefloors",
+      "rationale": "The description states there are three dancefloors."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "I DRESS CODES I",
+      "rationale": "A section headed dress codes lists a dress code for each day of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "I HOTEL OPTIONS BOOKING I",
+      "rationale": "A hotel options booking section offers hotel choices without stating that accommodation is part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,64 +1,71 @@
 {
- "batch": "event-16044",
- "events": [
-  {
-   "event_id": 16044,
-   "artists": [
-    {
-     "name_as_written": "BDC",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "BDC offers you…"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Introductory classes AND Level Up classes for each discipline",
-     "rationale": "Introductory classes alongside Level Up classes show that beginners are catered for."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "A 4-person bungalow",
-     "rationale": "The event's package includes a bungalow for accommodation."
-    },
-    {
-     "feature": "camping",
-     "quote": "We’ve booked the entire campsite for you!",
-     "rationale": "The event takes place on a booked campsite."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Catering",
-     "rationale": "Catering is listed as part of the package."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Classes to try all the Disciplines",
-     "rationale": "Dance classes in several disciplines are part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "Fun and friendly BDC Olympics",
-     "rationale": "The BDC Olympics is a competitive event."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress code: Murder Mystery party",
-     "rationale": "A dress code is explicitly stated for the Murder Mystery party."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Dress code: CARNIVAL",
-     "rationale": "A carnival-themed dress code applies to the Saturday party."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "There will be 2 rooms, 2 DJs, 2 vibes",
-     "rationale": "The event explicitly has two dance rooms."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16044",
+  "events": [
+   {
+    "event_id": 16044,
+    "artists": [
+     {
+      "name_as_written": "BDC",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "BDC offers you…"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Introductory classes AND Level Up classes for each discipline",
+      "rationale": "Introductory classes alongside Level Up classes show that beginners are catered for."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "A 4-person bungalow",
+      "rationale": "The event's package includes a bungalow for accommodation."
+     },
+     {
+      "feature": "camping",
+      "quote": "We’ve booked the entire campsite for you!",
+      "rationale": "The event takes place on a booked campsite."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Catering",
+      "rationale": "Catering is listed as part of the package."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Classes to try all the Disciplines",
+      "rationale": "Dance classes in several disciplines are part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "Fun and friendly BDC Olympics",
+      "rationale": "The BDC Olympics is a competitive event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress code: Murder Mystery party",
+      "rationale": "A dress code is explicitly stated for the Murder Mystery party."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Dress code: CARNIVAL",
+      "rationale": "A carnival-themed dress code applies to the Saturday party."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "There will be 2 rooms, 2 DJs, 2 vibes",
+      "rationale": "The event explicitly has two dance rooms."
+     }
+    ]
+   }
+  ]
+ }
 }

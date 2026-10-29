@@ -1,0 +1,13 @@
+{
+ "key_a": "p:abigail@dance",
+ "key_b": "p:abigail@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "827f57de011321d0",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Abigail and Abigail share the same country (UK) and appear at the same event on the same date, with a DJ prefix on one side."
+ }
+}

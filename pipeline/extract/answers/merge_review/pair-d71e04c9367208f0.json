@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@crisandra+david",
+ "key_b": "p:david@daria+david",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d71e04c9367208f0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Common first name David with different partners (Crisandra vs Daria), different event countries and an overlapping Canada flag; nothing distinctive links them."
+ }
+}

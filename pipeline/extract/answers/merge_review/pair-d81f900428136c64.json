@@ -1,0 +1,13 @@
+{
+ "key_a": "p:axel@axel+nora",
+ "key_b": "p:axel@axel+victoria",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d81f900428136c64",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Axel & Nora and Axel & Victoria share the first name and Estonia as stated country, but the partners differ, so the evidence does not settle it."
+ }
+}

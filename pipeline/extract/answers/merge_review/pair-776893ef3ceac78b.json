@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paolou",
+ "key_b": "p:paoulou",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "776893ef3ceac78b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Paou Lou is a spelling variant of Pao Lou, and the same Mik'iz partner appears in the same French festival listings on both sides."
+ }
+}

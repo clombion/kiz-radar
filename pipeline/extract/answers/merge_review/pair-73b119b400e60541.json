@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dani@dani+kizzg",
+ "key_b": "p:dani@dani+ziggy",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "73b119b400e60541",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Dani appears with two different partners (KizZG vs Ziggy); KizZG may be the same person as Ziggy but the evidence does not settle it."
+ }
+}

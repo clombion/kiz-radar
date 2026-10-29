@@ -1,0 +1,13 @@
+{
+ "key_a": "p:virgil@juneline+virgil",
+ "key_b": "p:virgile@juneline+virgile",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "8fdb6da52517aa58",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Virgil and Virgile are spelling variants with the same partner Juneline, the same city Amsterdam and the Netherlands flag."
+ }
+}

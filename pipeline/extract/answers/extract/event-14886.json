@@ -1,31 +1,38 @@
 {
- "batch": "event-14886",
- "events": [
-  {
-   "event_id": 14886,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "15+ Hours of Workshops & Masterclasses",
-     "rationale": "The description states that workshops are part of the event, with 15+ hours of them."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "15+ Hours of Workshops & Masterclasses",
-     "rationale": "The description lists masterclasses as part of the programme."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live Music",
-     "rationale": "The description lists live music among the event's offerings."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows",
-     "rationale": "The description lists shows as part of the event's offerings."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14886",
+  "events": [
+   {
+    "event_id": 14886,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "15+ Hours of Workshops & Masterclasses",
+      "rationale": "The description states that workshops are part of the event, with 15+ hours of them."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "15+ Hours of Workshops & Masterclasses",
+      "rationale": "The description lists masterclasses as part of the programme."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live Music",
+      "rationale": "The description lists live music among the event's offerings."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows",
+      "rationale": "The description lists shows as part of the event's offerings."
+     }
+    ]
+   }
+  ]
+ }
 }

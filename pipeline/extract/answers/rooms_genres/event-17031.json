@@ -1,28 +1,35 @@
 {
- "batch": "event-17031",
- "events": [
-  {
-   "event_id": 17031,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "24 hour Latin dance lessons (Bachata/Salsa/Kizomba)"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "24 hour Latin dance lessons (Bachata/Salsa/Kizomba)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "24 hour Latin dance lessons (Bachata/Salsa/Kizomba)"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17031",
+  "events": [
+   {
+    "event_id": 17031,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "24 hour Latin dance lessons (Bachata/Salsa/Kizomba)"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "24 hour Latin dance lessons (Bachata/Salsa/Kizomba)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "24 hour Latin dance lessons (Bachata/Salsa/Kizomba)"
+     }
+    ]
+   }
+  ]
+ }
 }

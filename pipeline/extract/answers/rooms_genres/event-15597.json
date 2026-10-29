@@ -1,38 +1,45 @@
 {
- "batch": "event-15597",
- "events": [
-  {
-   "event_id": 15597,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba & Semba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba & Semba"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrohouse",
-     "quote": "Styles: Kizomba, Semba, Afrohouse, Kuduro, Traditional Angolan Dances"
-    },
-    {
-     "genre": "kuduro",
-     "genre_as_written": "Kuduro",
-     "quote": "Afrohouse, Kuduro, Traditional Angolan Dances"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Traditional Angolan Dances",
-     "quote": "Traditional Angolan Dance Workshop"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15597",
+  "events": [
+   {
+    "event_id": 15597,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba & Semba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba & Semba"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrohouse",
+      "quote": "Styles: Kizomba, Semba, Afrohouse, Kuduro, Traditional Angolan Dances"
+     },
+     {
+      "genre": "kuduro",
+      "genre_as_written": "Kuduro",
+      "quote": "Afrohouse, Kuduro, Traditional Angolan Dances"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Traditional Angolan Dances",
+      "quote": "Traditional Angolan Dance Workshop"
+     }
+    ]
+   }
+  ]
+ }
 }

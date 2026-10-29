@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jorge@angela+jorge",
+ "key_b": "p:jorge@jorge+monica",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "3b95f58de660845d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Jorge & Angela and Jorge y Monica / Jorge & Monica have different partners, and the only shared elements are the common first name Jorge and Spain."
+ }
+}

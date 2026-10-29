@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elina@daniel+elina",
+ "key_b": "p:elina@danielschauenburg+elina",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2c62cc2953fad9af",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Daniel & Elina is the same couple as Daniel Schauenburg & Elina, with the same partner, and both list the Germany and Czech stated countries."
+ }
+}

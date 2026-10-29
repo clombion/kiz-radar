@@ -1,16 +1,23 @@
 {
- "batch": "event-17434",
- "events": [
-  {
-   "event_id": 17434,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "allows entry to all workshops",
-     "rationale": "The ticket description states that the pass allows entry to all workshops, so dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17434",
+  "events": [
+   {
+    "event_id": 17434,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "allows entry to all workshops",
+      "rationale": "The ticket description states that the pass allows entry to all workshops, so dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fanioaraujo",
+ "key_b": "p:faniodearaujo",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c049229cad8f4dad",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Fanio Araujo and Fanio de Araujo are the same distinctive name with a spelling variant of the surname, both teaching in Europe with Angola stated."
+ }
+}

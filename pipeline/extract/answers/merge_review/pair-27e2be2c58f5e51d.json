@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manu@dance",
+ "key_b": "p:manukizmamie",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "27e2be2c58f5e51d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Common first name Manu with France stated on both sides, but side B is a couple with Daisy in Germany with no shared event."
+ }
+}

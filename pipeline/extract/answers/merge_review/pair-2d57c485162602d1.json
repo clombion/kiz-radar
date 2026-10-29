@@ -1,0 +1,13 @@
+{
+ "key_a": "p:giuseppe@giuseppe+klaudyna",
+ "key_b": "p:giuseppeandrea",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2d57c485162602d1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Giuseppe & Klaudyna and Giuseppe Andrea are both listed at the same Milano event on the same date with the same style, so one person or two cannot be settled."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:chicho@chicho+lisa",
+ "key_b": "p:chico@chico+lisa",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "af84656026724294",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Chicho/Chico is a one-letter spelling variant with the same partner Lisa and the same Bachata style."
+ }
+}

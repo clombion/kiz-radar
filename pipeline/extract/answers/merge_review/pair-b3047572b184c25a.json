@@ -1,0 +1,13 @@
+{
+ "key_a": "p:karl@dance",
+ "key_b": "p:karlconklass",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "b3047572b184c25a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Karl (teacher) and Karl Conklass (DJ) share only the first name and stated France, and the different surnames and roles do not settle it."
+ }
+}

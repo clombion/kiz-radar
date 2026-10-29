@@ -1,83 +1,90 @@
 {
- "batch": "event-16570",
- "events": [
-  {
-   "event_id": 16570,
-   "artists": [
-    {
-     "name_as_written": "Giorgio & Angie",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▶️ Giorgio & Angie (Paris)"
-    },
-    {
-     "name_as_written": "Franck & Laure SalsaHora",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▶️ Franck & Laure SalsaHora (Rouen)"
-    },
-    {
-     "name_as_written": "Guins & Barbarita",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▶️ Guins & Barbarita (Reims)"
-    },
-    {
-     "name_as_written": "Rodrigue & Léa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▶️ Rodrigue & Léa (Paris)"
-    },
-    {
-     "name_as_written": "Evan & Eugénia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▶️ Evan & Eugénia (Paris)"
-    },
-    {
-     "name_as_written": "Ydel Gomez",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▶️ Ydel Gomez (Quimper)"
-    },
-    {
-     "name_as_written": "Dj Giorgio Rod",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "▶️ Dj Giorgio Rod"
-    },
-    {
-     "name_as_written": "Dj Tagada",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "▶️Dj Tagada"
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "Accommodation + Welcome Drink + Full Pass = €179",
-     "rationale": "The package price explicitly combines accommodation with the full pass."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "PARIS ROOM – INTERMEDIATE LEVEL – Upper Room",
-     "rationale": "The schedule lists two separate dance rooms, the Paris Room and the Honfleur Room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Full Saturday Pass (Access to all Saturday classes + evening) = €60",
-     "rationale": "The passes give access to the dance classes that form part of the event schedule."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16570",
+  "events": [
+   {
+    "event_id": 16570,
+    "artists": [
+     {
+      "name_as_written": "Giorgio & Angie",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▶️ Giorgio & Angie (Paris)"
+     },
+     {
+      "name_as_written": "Franck & Laure SalsaHora",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▶️ Franck & Laure SalsaHora (Rouen)"
+     },
+     {
+      "name_as_written": "Guins & Barbarita",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▶️ Guins & Barbarita (Reims)"
+     },
+     {
+      "name_as_written": "Rodrigue & Léa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▶️ Rodrigue & Léa (Paris)"
+     },
+     {
+      "name_as_written": "Evan & Eugénia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▶️ Evan & Eugénia (Paris)"
+     },
+     {
+      "name_as_written": "Ydel Gomez",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▶️ Ydel Gomez (Quimper)"
+     },
+     {
+      "name_as_written": "Dj Giorgio Rod",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "▶️ Dj Giorgio Rod"
+     },
+     {
+      "name_as_written": "Dj Tagada",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "▶️Dj Tagada"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "Accommodation + Welcome Drink + Full Pass = €179",
+      "rationale": "The package price explicitly combines accommodation with the full pass."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "PARIS ROOM – INTERMEDIATE LEVEL – Upper Room",
+      "rationale": "The schedule lists two separate dance rooms, the Paris Room and the Honfleur Room."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Full Saturday Pass (Access to all Saturday classes + evening) = €60",
+      "rationale": "The passes give access to the dance classes that form part of the event schedule."
+     }
+    ]
+   }
+  ]
+ }
 }

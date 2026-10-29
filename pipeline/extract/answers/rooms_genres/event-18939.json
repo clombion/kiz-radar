@@ -1,41 +1,48 @@
 {
- "batch": "event-18939",
- "events": [
-  {
-   "event_id": 18939,
-   "party_rooms": {
-    "count": 2,
-    "quote": "TWO ROOMS • TWO VIBES"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba • Afro • Semba"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18939",
+  "events": [
+   {
+    "event_id": 18939,
+    "party_rooms": {
+     "count": 2,
+     "quote": "TWO ROOMS • TWO VIBES"
     },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Kizomba • Afro • Semba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba • Afro • Semba"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa • Bachata"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Salsa • Bachata"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba • Afro • Semba"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Kizomba • Afro • Semba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba • Afro • Semba"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa • Bachata"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Salsa • Bachata"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,99 +1,106 @@
 {
- "batch": "event-16804",
- "events": [
-  {
-   "event_id": 16804,
-   "artists": [
-    {
-     "name_as_written": "DJ Paraiso",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 On the decks & on the dance floor:"
-    },
-    {
-     "name_as_written": "DJ Kin",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 On the decks & on the dance floor:"
-    },
-    {
-     "name_as_written": "DJ Dany",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 On the decks & on the dance floor:"
-    },
-    {
-     "name_as_written": "DJ Max",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 On the decks & on the dance floor:"
-    },
-    {
-     "name_as_written": "DJ Lova",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 On the decks & on the dance floor:"
-    },
-    {
-     "name_as_written": "DJ MKY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 On the decks & on the dance floor:"
-    },
-    {
-     "name_as_written": "DJ Lcslow",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 On the decks & on the dance floor:"
-    },
-    {
-     "name_as_written": "Josué & Céline",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
-    },
-    {
-     "name_as_written": "Mervil",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
-    },
-    {
-     "name_as_written": "Roxane & Corentin",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
-    },
-    {
-     "name_as_written": "Chacha",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 ROOMS. 2 ATMOSPHERES. 1 SINGLE ENERGY.",
-     "rationale": "The description states there are two rooms, so more than one dance floor is present."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "CONEXAO HALLOWEEN 2",
-     "rationale": "The event is a Halloween-themed night, as shown by the title and the description heading."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16804",
+  "events": [
+   {
+    "event_id": 16804,
+    "artists": [
+     {
+      "name_as_written": "DJ Paraiso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 On the decks & on the dance floor:"
+     },
+     {
+      "name_as_written": "DJ Kin",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 On the decks & on the dance floor:"
+     },
+     {
+      "name_as_written": "DJ Dany",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 On the decks & on the dance floor:"
+     },
+     {
+      "name_as_written": "DJ Max",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 On the decks & on the dance floor:"
+     },
+     {
+      "name_as_written": "DJ Lova",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 On the decks & on the dance floor:"
+     },
+     {
+      "name_as_written": "DJ MKY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 On the decks & on the dance floor:"
+     },
+     {
+      "name_as_written": "DJ Lcslow",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 On the decks & on the dance floor:"
+     },
+     {
+      "name_as_written": "Josué & Céline",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
+     },
+     {
+      "name_as_written": "Mervil",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
+     },
+     {
+      "name_as_written": "Roxane & Corentin",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
+     },
+     {
+      "name_as_written": "Chacha",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 ROOMS. 2 ATMOSPHERES. 1 SINGLE ENERGY.",
+      "rationale": "The description states there are two rooms, so more than one dance floor is present."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "CONEXAO HALLOWEEN 2",
+      "rationale": "The event is a Halloween-themed night, as shown by the title and the description heading."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,62 +1,69 @@
 {
- "batch": "event-16870",
- "events": [
-  {
-   "event_id": 16870,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 rooms, 2 atmospheres in the evening"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "urbankiz",
-      "tarraxo"
-     ],
-     "quote": "Room 1: Kizomba, Urbankiz, Tarraxo"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16870",
+  "events": [
+   {
+    "event_id": 16870,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 rooms, 2 atmospheres in the evening"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "kompa"
-     ],
-     "quote": "Room 2: Authentic Kizomba, Semba, Kompa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Room 1: Kizomba, Urbankiz, Tarraxo"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Room 1: Kizomba, Urbankiz, Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Room 1: Kizomba, Urbankiz, Tarraxo"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Room 2: Authentic Kizomba, Semba, Kompa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Room 2: Authentic Kizomba, Semba, Kompa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "urbankiz",
+       "tarraxo"
+      ],
+      "quote": "Room 1: Kizomba, Urbankiz, Tarraxo"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "kompa"
+      ],
+      "quote": "Room 2: Authentic Kizomba, Semba, Kompa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Room 1: Kizomba, Urbankiz, Tarraxo"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Room 1: Kizomba, Urbankiz, Tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Room 1: Kizomba, Urbankiz, Tarraxo"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Room 2: Authentic Kizomba, Semba, Kompa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Room 2: Authentic Kizomba, Semba, Kompa"
+     }
+    ]
+   }
+  ]
+ }
 }

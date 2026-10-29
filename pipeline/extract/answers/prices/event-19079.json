@@ -1,495 +1,502 @@
 {
- "batch": "event-19079",
- "events": [
-  {
-   "event_id": 19079,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "EARLY BIRD – BIG PROMOTION!!",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 200.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "09-20",
-       "quantity": 50,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "PROMOTION: 50/ FULL PASS (ERLY BIRD) 200 euros P/P –"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "FULL PASS + HOTEL+ BREAKFAST+2 NIGHT IN TRIPLE ROOM!",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 270.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "09-20",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "PRICE: 270 EUROS P/P!"
-      },
-      {
-       "amount": 320.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "10-20",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "PRICE: 320 EUROS P/P!"
-      },
-      {
-       "amount": 370.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "11-20",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "PRICE: 370 EUROS P/p!"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "INDIVIDUAL FULL PASS ( 1 PERSON)!",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 150.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "1 DAY – 150 EUROS"
-      },
-      {
-       "amount": 200.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "1 DAY- 200 EUROS"
-      },
-      {
-       "amount": 250.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "1 DAY-250 EUROS"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "INDIVIDUAL FULL PASS ( 1 PERSON)!",
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 200.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2 DAYS- 200 EUROS"
-      },
-      {
-       "amount": 250.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2 DAYS -250 EUROS"
-      },
-      {
-       "amount": 300.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2 DAYS-300 EUROS"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "INDIVIDUAL FULL PASS ( 1 PERSON)!",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 250.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3 DAYS -250 EUROS"
-      },
-      {
-       "amount": 300.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3 DAYS -300 EUROS"
-      },
-      {
-       "amount": 350.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3 DAYS-350 EUROS"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "COUPLES FULL PASS !( 2 PERSON /MAN+WOMAN)!",
-     "group_size": 2,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 200.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "1 DAY -200 EUROS"
-      },
-      {
-       "amount": 250.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "1 DAY -250 EUROS"
-      },
-      {
-       "amount": 300.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "1 DAY-300"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "COUPLES FULL PASS !( 2 PERSON /MAN+WOMAN)!",
-     "group_size": 2,
-     "days": 2,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 250.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2 DAYS-250 EUROS"
-      },
-      {
-       "amount": 300.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2 DAYS-300 EUROS"
-      },
-      {
-       "amount": 350.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2-DAYS-350"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "COUPLES FULL PASS !( 2 PERSON /MAN+WOMAN)!",
-     "group_size": 2,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 300.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3 DAYS-300 EUROS"
-      },
-      {
-       "amount": 350.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3 DAYS-350 EUROS"
-      },
-      {
-       "amount": 400.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3-DAYS-400"
-      }
-     ]
-    },
-    {
-     "kind": "other",
-     "style": null,
-     "label_quote": "FULL PASS VIP- ( 1 PERSON/ ONLY 3 DAYS)!",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 350.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3-DAYS/350 EUROS"
-      },
-      {
-       "amount": 400.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3-DAYS/ 400 EUROS"
-      },
-      {
-       "amount": 450.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3-DAYS / 450 EUROS"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/ ( 1 PERSON)",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 140.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "1-DAY-140 EUROS"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/ ( 1 PERSON)",
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 180.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2-DAYS-180 EUROS"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/ ( 1 PERSON)",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 220.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3-DAYS-220 EUROS"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T18:02:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19079",
+  "events": [
+   {
+    "event_id": 19079,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "EARLY BIRD – BIG PROMOTION!!",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 200.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "09-20",
+        "quantity": 50,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "PROMOTION: 50/ FULL PASS (ERLY BIRD) 200 euros P/P –"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "FULL PASS + HOTEL+ BREAKFAST+2 NIGHT IN TRIPLE ROOM!",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 270.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": "09-20",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "PRICE: 270 EUROS P/P!"
+       },
+       {
+        "amount": 320.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": "10-20",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "PRICE: 320 EUROS P/P!"
+       },
+       {
+        "amount": 370.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": "11-20",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "PRICE: 370 EUROS P/p!"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "INDIVIDUAL FULL PASS ( 1 PERSON)!",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 150.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "1 DAY – 150 EUROS"
+       },
+       {
+        "amount": 200.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "1 DAY- 200 EUROS"
+       },
+       {
+        "amount": 250.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "1 DAY-250 EUROS"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "INDIVIDUAL FULL PASS ( 1 PERSON)!",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 200.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "2 DAYS- 200 EUROS"
+       },
+       {
+        "amount": 250.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "2 DAYS -250 EUROS"
+       },
+       {
+        "amount": 300.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "2 DAYS-300 EUROS"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "INDIVIDUAL FULL PASS ( 1 PERSON)!",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 250.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "3 DAYS -250 EUROS"
+       },
+       {
+        "amount": 300.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "3 DAYS -300 EUROS"
+       },
+       {
+        "amount": 350.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "3 DAYS-350 EUROS"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "COUPLES FULL PASS !( 2 PERSON /MAN+WOMAN)!",
+      "group_size": 2,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 200.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "1 DAY -200 EUROS"
+       },
+       {
+        "amount": 250.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "1 DAY -250 EUROS"
+       },
+       {
+        "amount": 300.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "1 DAY-300"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "COUPLES FULL PASS !( 2 PERSON /MAN+WOMAN)!",
+      "group_size": 2,
+      "days": 2,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 250.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "2 DAYS-250 EUROS"
+       },
+       {
+        "amount": 300.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "2 DAYS-300 EUROS"
+       },
+       {
+        "amount": 350.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "2-DAYS-350"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "COUPLES FULL PASS !( 2 PERSON /MAN+WOMAN)!",
+      "group_size": 2,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 300.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "3 DAYS-300 EUROS"
+       },
+       {
+        "amount": 350.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "3 DAYS-350 EUROS"
+       },
+       {
+        "amount": 400.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "3-DAYS-400"
+       }
+      ]
+     },
+     {
+      "kind": "other",
+      "style": null,
+      "label_quote": "FULL PASS VIP- ( 1 PERSON/ ONLY 3 DAYS)!",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 350.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "3-DAYS/350 EUROS"
+       },
+       {
+        "amount": 400.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "3-DAYS/ 400 EUROS"
+       },
+       {
+        "amount": 450.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "3-DAYS / 450 EUROS"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/ ( 1 PERSON)",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 140.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "1-DAY-140 EUROS"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/ ( 1 PERSON)",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 180.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "2-DAYS-180 EUROS"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/ ( 1 PERSON)",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 220.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "3-DAYS-220 EUROS"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

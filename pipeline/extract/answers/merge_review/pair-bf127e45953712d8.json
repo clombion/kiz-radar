@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manuel@benedicte+manuel",
+ "key_b": "p:manuelmartins",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "bf127e45953712d8",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Manuel Martins on side B and Manuel & Benedicte on side A appear at the same Freedom Romantic Rennes festival series with Portugal stated."
+ }
+}

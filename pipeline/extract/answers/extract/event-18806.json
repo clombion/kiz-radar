@@ -1,284 +1,291 @@
 {
- "batch": "event-18806",
- "events": [
-  {
-   "event_id": 18806,
-   "artists": [
-    {
-     "name_as_written": "Agustín & Alba",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Aitor & Angelica",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Alonso & Noelia",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Carlos & Paz",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Melonito",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Kornel & Catherine",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Issam & Charlott",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Xi & Alina",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Otko & Vika",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Talal & Edyta",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "William & Irene",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Chicho & Lisa",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Alicia Velasco",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Alexistyle Ruiz",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Chloe Loh",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Samuel Funflow & Irene Silvia",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Virgile & Juneline",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Victor Ortega",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Victor Ortega • Panagiotis & Myrto • Victor & Alba • Victor & Monika"
-    },
-    {
-     "name_as_written": "Panagiotis & Myrto",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Victor Ortega • Panagiotis & Myrto • Victor & Alba • Victor & Monika"
-    },
-    {
-     "name_as_written": "Victor & Alba",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Victor Ortega • Panagiotis & Myrto • Victor & Alba • Victor & Monika"
-    },
-    {
-     "name_as_written": "Victor & Monika",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Victor Ortega • Panagiotis & Myrto • Victor & Alba • Victor & Monika"
-    },
-    {
-     "name_as_written": "Albir Rojas",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Albir Rojas • Women’s League"
-    },
-    {
-     "name_as_written": "Women’s League",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Albir Rojas • Women’s League"
-    },
-    {
-     "name_as_written": "DJ Dmitri",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Rumbero",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Michelle",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Yasser",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Miguel",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Miss Maya",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Pablo G",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Fran",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Traybeatz",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Morelasoul",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Wicca Mix",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    },
-    {
-     "name_as_written": "DJ Firenz",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "with workshops, shows, social dancing, parties",
-     "rationale": "The description states that the festival includes workshops."
-    },
-    {
-     "feature": "shows",
-     "quote": "workshops, shows, social dancing",
-     "rationale": "The description states that shows are part of the festival."
-    },
-    {
-     "feature": "competition",
-     "quote": "shows and competitions throughout the weekend",
-     "rationale": "The description mentions competitions during the weekend."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "multiple dance floors",
-     "rationale": "The festival is said to feature multiple dance floors, meaning more than one dance room."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18806",
+  "events": [
+   {
+    "event_id": 18806,
+    "artists": [
+     {
+      "name_as_written": "Agustín & Alba",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Aitor & Angelica",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Alonso & Noelia",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Carlos & Paz",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Melonito",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Kornel & Catherine",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Issam & Charlott",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Xi & Alina",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Otko & Vika",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Talal & Edyta",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "William & Irene",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Chicho & Lisa",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Alicia Velasco",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Alexistyle Ruiz",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Chloe Loh",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Samuel Funflow & Irene Silvia",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Virgile & Juneline",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Agustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Victor Ortega",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Victor Ortega • Panagiotis & Myrto • Victor & Alba • Victor & Monika"
+     },
+     {
+      "name_as_written": "Panagiotis & Myrto",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Victor Ortega • Panagiotis & Myrto • Victor & Alba • Victor & Monika"
+     },
+     {
+      "name_as_written": "Victor & Alba",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Victor Ortega • Panagiotis & Myrto • Victor & Alba • Victor & Monika"
+     },
+     {
+      "name_as_written": "Victor & Monika",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Victor Ortega • Panagiotis & Myrto • Victor & Alba • Victor & Monika"
+     },
+     {
+      "name_as_written": "Albir Rojas",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Albir Rojas • Women’s League"
+     },
+     {
+      "name_as_written": "Women’s League",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Albir Rojas • Women’s League"
+     },
+     {
+      "name_as_written": "DJ Dmitri",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Rumbero",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Michelle",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Yasser",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Miguel",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Miss Maya",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Pablo G",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Fran",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Traybeatz",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Morelasoul",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Wicca Mix",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     },
+     {
+      "name_as_written": "DJ Firenz",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "with workshops, shows, social dancing, parties",
+      "rationale": "The description states that the festival includes workshops."
+     },
+     {
+      "feature": "shows",
+      "quote": "workshops, shows, social dancing",
+      "rationale": "The description states that shows are part of the festival."
+     },
+     {
+      "feature": "competition",
+      "quote": "shows and competitions throughout the weekend",
+      "rationale": "The description mentions competitions during the weekend."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "multiple dance floors",
+      "rationale": "The festival is said to feature multiple dance floors, meaning more than one dance room."
+     }
+    ]
+   }
+  ]
+ }
 }

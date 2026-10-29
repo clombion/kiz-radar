@@ -1,0 +1,13 @@
+{
+ "key_a": "p:davide@davide+laura",
+ "key_b": "p:davidenola",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "8f7f3df279c79424",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Davide with different partners (Laura vs Cilene) in Italy; the Davide Nola surname appears only on one side, so the evidence does not settle it."
+ }
+}

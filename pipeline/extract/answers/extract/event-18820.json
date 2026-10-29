@@ -1,87 +1,94 @@
 {
- "batch": "event-18820",
- "events": [
-  {
-   "event_id": 18820,
-   "artists": [
-    {
-     "name_as_written": "𝘛𝘖𝘕𝘠 𝘝𝘐𝘚𝘌𝘙 & 𝘊𝘈𝘙𝘓𝘈",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "𝘛𝘖𝘕𝘠 𝘝𝘐𝘚𝘌𝘙 & 𝘊𝘈𝘙𝘓𝘈"
-    },
-    {
-     "name_as_written": "𝘈𝘙𝘠 & 𝘔𝘈𝘜𝘙𝘈",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "𝘈𝘙𝘠 & 𝘔𝘈𝘜𝘙𝘈"
-    },
-    {
-     "name_as_written": "𝘌𝘓𝘏𝘈𝘋𝘑 & 𝘑𝘌𝘕𝘕𝘈",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "𝘌𝘓𝘏𝘈𝘋𝘑 & 𝘑𝘌𝘕𝘕𝘈"
-    },
-    {
-     "name_as_written": "𝘉𝘖𝘕𝘐𝘍𝘈𝘊𝘐𝘖 𝘈𝘜𝘙𝘐𝘖",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "𝘉𝘖𝘕𝘐𝘍𝘈𝘊𝘐𝘖 𝘈𝘜𝘙𝘐𝘖"
-    },
-    {
-     "name_as_written": "𝘕-𝘗𝘠 𝘋𝘈 𝘉𝘈𝘐𝘓𝘈",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "𝘕-𝘗𝘠 𝘋𝘈 𝘉𝘈𝘐𝘓𝘈"
-    },
-    {
-     "name_as_written": "𝘔𝘐𝘙𝘖 𝘒𝘐𝘒𝘖𝘓𝘈",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "𝘔𝘐𝘙𝘖 𝘒𝘐𝘒𝘖𝘓𝘈"
-    },
-    {
-     "name_as_written": "𝘉𝘈𝘒𝘖𝘕𝘎𝘖",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "𝘉𝘈𝘒𝘖𝘕𝘎𝘖"
-    },
-    {
-     "name_as_written": "𝘓𝘐𝘕𝘋𝘜𝘒𝘈",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "𝘓𝘐𝘕𝘋𝘜𝘒𝘈"
-    },
-    {
-     "name_as_written": "𝘚𝘊𝘈𝘕",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "𝘚𝘊𝘈𝘕"
-    },
-    {
-     "name_as_written": "𝘔𝘈𝘜𝘙𝘐𝘕𝘖",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "𝘔𝘈𝘜𝘙𝘐𝘕𝘖"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "𝑨𝒍𝒍 𝒊𝒏 𝒐𝒏𝒆",
-     "rationale": "The description labels the event as all in one, indicating the parties and accommodation take place in the same hotel venue."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18820",
+  "events": [
+   {
+    "event_id": 18820,
+    "artists": [
+     {
+      "name_as_written": "𝘛𝘖𝘕𝘠 𝘝𝘐𝘚𝘌𝘙 & 𝘊𝘈𝘙𝘓𝘈",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "𝘛𝘖𝘕𝘠 𝘝𝘐𝘚𝘌𝘙 & 𝘊𝘈𝘙𝘓𝘈"
+     },
+     {
+      "name_as_written": "𝘈𝘙𝘠 & 𝘔𝘈𝘜𝘙𝘈",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "𝘈𝘙𝘠 & 𝘔𝘈𝘜𝘙𝘈"
+     },
+     {
+      "name_as_written": "𝘌𝘓𝘏𝘈𝘋𝘑 & 𝘑𝘌𝘕𝘕𝘈",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "𝘌𝘓𝘏𝘈𝘋𝘑 & 𝘑𝘌𝘕𝘕𝘈"
+     },
+     {
+      "name_as_written": "𝘉𝘖𝘕𝘐𝘍𝘈𝘊𝘐𝘖 𝘈𝘜𝘙𝘐𝘖",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "𝘉𝘖𝘕𝘐𝘍𝘈𝘊𝘐𝘖 𝘈𝘜𝘙𝘐𝘖"
+     },
+     {
+      "name_as_written": "𝘕-𝘗𝘠 𝘋𝘈 𝘉𝘈𝘐𝘓𝘈",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "𝘕-𝘗𝘠 𝘋𝘈 𝘉𝘈𝘐𝘓𝘈"
+     },
+     {
+      "name_as_written": "𝘔𝘐𝘙𝘖 𝘒𝘐𝘒𝘖𝘓𝘈",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "𝘔𝘐𝘙𝘖 𝘒𝘐𝘒𝘖𝘓𝘈"
+     },
+     {
+      "name_as_written": "𝘉𝘈𝘒𝘖𝘕𝘎𝘖",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "𝘉𝘈𝘒𝘖𝘕𝘎𝘖"
+     },
+     {
+      "name_as_written": "𝘓𝘐𝘕𝘋𝘜𝘒𝘈",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "𝘓𝘐𝘕𝘋𝘜𝘒𝘈"
+     },
+     {
+      "name_as_written": "𝘚𝘊𝘈𝘕",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "𝘚𝘊𝘈𝘕"
+     },
+     {
+      "name_as_written": "𝘔𝘈𝘜𝘙𝘐𝘕𝘖",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "𝘔𝘈𝘜𝘙𝘐𝘕𝘖"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "𝑨𝒍𝒍 𝒊𝒏 𝒐𝒏𝒆",
+      "rationale": "The description labels the event as all in one, indicating the parties and accommodation take place in the same hotel venue."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jeydicksonlima",
+ "key_b": "p:jeydiksonlima",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2ae75a2a510137c7",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Jeydickson Lima and Jeydikson Lima are a one-letter spelling variant of a distinctive name, both teachers in the UK with Kizomba style."
+ }
+}

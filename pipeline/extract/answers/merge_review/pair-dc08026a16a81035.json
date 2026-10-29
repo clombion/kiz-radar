@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fernando@fernando+micaela",
+ "key_b": "p:fernando@fernando+michela",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "dc08026a16a81035",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Fernando & Micaela and Fernando & Michela share the partner name in a one-letter variant, which could be a typo or two different partners."
+ }
+}

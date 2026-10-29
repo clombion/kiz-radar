@@ -38,8 +38,8 @@ thing a consumer must treat differently.
 | **people**, each pass, by how many people one price is for | `one`, `couple`, `group`, `per_room` | prices.people, from group_size and kind |
 | **fee**, each price tier, by its booking fee | `none`, `included` | the prices pass; the first read |
 | **re_read**, a festival with a first read, by when its page is read again | `dated`, `monthly` | tickets_store.recheck |
-| **first_read**, a festival, by whether it needs a (new) first read | `not_needed`, `none`, `past`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_page`, `redo_unread`, `disputed` | tickets_state.why_first_read |
-| **answer**, a festival's answer of one extraction pass | `none`, `current`, `stale` | ask.answer_state |
+| **first_read**, a festival, by whether it needs a (new) first read | `not_needed`, `none`, `past`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_festival`, `redo_page`, `redo_unread`, `disputed` | tickets_state.why_first_read |
+| **answer**, a festival's answer of one extraction pass | `none`, `current`, `stale` | answers.state |
 | **waits_for**, each festival, by what its prices from its ticket page wait for | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | tickets_state.waiting, in tickets/status.csv |
 | **price**, each festival, by what its card can say of its price | `priced`, `other_passes_only`, `page_unread`, `page_empty`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | prices.price_state, in price_status |
 | **tier_today**, a pass's price on the day it is viewed | `now`, `from`, `next`, `sold_out`, `ended` | pricing.ts tierNow |
@@ -55,7 +55,6 @@ thing a consumer must treat differently.
 | **home_basis**, an artist's home country, by how it is known | `given`, `stated`, `contested` | build_site_db |
 | **merge_decision**, each artist merge reviewed | `merge`, `separate`, `unsure` | the merge review; a merge claim |
 | **merge_reason**, each pair of artists that may be one, for the merge review | `same name, different keys`, `first words of the other`, `same partner, shortened name`, `similar spelling`, `single name, several countries`, `couples with matching names` | resolve_artists |
-| **pending**, a festival waiting for its extraction passes | `new`, `description changed` | scrape |
 | **suggestion_countries**, each merge suggestion, by the countries line-ups state for its two artists | `unknown`, `same`, `different` | merge_suggestions |
 | **suggestion_calendar**, each merge suggestion, by where and when its two artists are booked | `same line-up`, `clash`, `shared circuit`, `no clash` | merge_suggestions |
 | **via**, each appearance of an artist at an event (artist_events) | `direct`, `member` | resolve_artists; build_site_db |

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+luis",
+ "key_b": "p:andrea@andrea+pablo",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ef880c4781d71c92",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Same first name Andrea and same stated country (Spain), but the partners differ (Luis vs Pablo), so the evidence does not settle it."
+ }
+}

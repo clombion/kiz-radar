@@ -1,53 +1,60 @@
 {
- "batch": "event-19760",
- "events": [
-  {
-   "event_id": 19760,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
-    },
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
-    },
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "International Competition ( Salsa & Bachata )"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "International Competition ( Salsa & Bachata )"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:57:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19760",
+  "events": [
+   {
+    "event_id": 19760,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+     },
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+     },
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "International Competition ( Salsa & Bachata )"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "International Competition ( Salsa & Bachata )"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+     }
+    ]
+   }
+  ]
+ }
 }

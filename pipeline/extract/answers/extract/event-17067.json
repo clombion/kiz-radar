@@ -1,31 +1,38 @@
 {
- "batch": "event-17067",
- "events": [
-  {
-   "event_id": 17067,
-   "artists": [],
-   "features": [
-    {
-     "feature": "beach_party",
-     "quote": "Beach & Boat parties on the magical Red Sea",
-     "rationale": "The Hurghada program explicitly lists beach parties."
-    },
-    {
-     "feature": "boat_party",
-     "quote": "Beach & Boat parties on the magical Red Sea",
-     "rationale": "The Hurghada program explicitly lists boat parties."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Crazy parties; Beach, Pool, Boat, Foam, Garden & more!",
-     "rationale": "The highlights list pool parties among the parties offered."
-    },
-    {
-     "feature": "workshops",
-     "quote": "A bit of workshops!",
-     "rationale": "The highlights state that workshops are part of the festival."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17067",
+  "events": [
+   {
+    "event_id": 17067,
+    "artists": [],
+    "features": [
+     {
+      "feature": "beach_party",
+      "quote": "Beach & Boat parties on the magical Red Sea",
+      "rationale": "The Hurghada program explicitly lists beach parties."
+     },
+     {
+      "feature": "boat_party",
+      "quote": "Beach & Boat parties on the magical Red Sea",
+      "rationale": "The Hurghada program explicitly lists boat parties."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Crazy parties; Beach, Pool, Boat, Foam, Garden & more!",
+      "rationale": "The highlights list pool parties among the parties offered."
+     },
+     {
+      "feature": "workshops",
+      "quote": "A bit of workshops!",
+      "rationale": "The highlights state that workshops are part of the festival."
+     }
+    ]
+   }
+  ]
+ }
 }

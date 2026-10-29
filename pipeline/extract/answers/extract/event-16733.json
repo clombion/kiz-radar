@@ -1,121 +1,128 @@
 {
- "batch": "event-16733",
- "events": [
-  {
-   "event_id": 16733,
-   "artists": [
-    {
-     "name_as_written": "JULIEN & AMI",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ JULIEN & AMI (Paris)"
-    },
-    {
-     "name_as_written": "PY & SARAH",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ PY & SARAH (Paris)"
-    },
-    {
-     "name_as_written": "RODRIGUE & LEA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ RODRIGUE & LEA (Paris)"
-    },
-    {
-     "name_as_written": "MAX DOUSEY",
-     "role": "teacher",
-     "style": null,
-     "country": "IT",
-     "source_line": "⭐️ MAX DOUSEY (IT)"
-    },
-    {
-     "name_as_written": "SYLVIE & QUENTIN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ SYLVIE & QUENTIN (Lille)"
-    },
-    {
-     "name_as_written": "GUINS & BARBARITA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ GUINS & BARBARITA (Reims)"
-    },
-    {
-     "name_as_written": "JORDANE & MELISSA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ JORDANE & MELISSA (Lille)"
-    },
-    {
-     "name_as_written": "DJ DRICO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ DRICO (Paris)"
-    },
-    {
-     "name_as_written": "DJ HAEMER",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ HAEMER (Paris)"
-    },
-    {
-     "name_as_written": "DJ CHICO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ CHICO (Orléans)"
-    },
-    {
-     "name_as_written": "DJ SHINIZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ SHINIZ (Lille)"
-    },
-    {
-     "name_as_written": "JORDANE LECLERE",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "DJ HAEMER / JORDANE LECLERE"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE – Beautiful Venue",
-     "rationale": "The event is advertised as all in one at a venue that is a hotel where dancers can stay."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress Code: “Blue and mauve”",
-     "rationale": "A dress code colour scheme is explicitly stated."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Looking for accommodation during the Kizomba Weekend? Look no further, it’s right here!",
-     "rationale": "The organiser recommends an accommodation link, which is a partner hotel offer separate from the pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "access to the entire 3-day event: classes, social events & parties",
-     "rationale": "The pass gives access to classes as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Perfect Dance Floors",
-     "rationale": "The plural dance floors indicate more than one dance floor at the venue."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16733",
+  "events": [
+   {
+    "event_id": 16733,
+    "artists": [
+     {
+      "name_as_written": "JULIEN & AMI",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ JULIEN & AMI (Paris)"
+     },
+     {
+      "name_as_written": "PY & SARAH",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ PY & SARAH (Paris)"
+     },
+     {
+      "name_as_written": "RODRIGUE & LEA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ RODRIGUE & LEA (Paris)"
+     },
+     {
+      "name_as_written": "MAX DOUSEY",
+      "role": "teacher",
+      "style": null,
+      "country": "IT",
+      "source_line": "⭐️ MAX DOUSEY (IT)"
+     },
+     {
+      "name_as_written": "SYLVIE & QUENTIN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ SYLVIE & QUENTIN (Lille)"
+     },
+     {
+      "name_as_written": "GUINS & BARBARITA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ GUINS & BARBARITA (Reims)"
+     },
+     {
+      "name_as_written": "JORDANE & MELISSA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ JORDANE & MELISSA (Lille)"
+     },
+     {
+      "name_as_written": "DJ DRICO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ DRICO (Paris)"
+     },
+     {
+      "name_as_written": "DJ HAEMER",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ HAEMER (Paris)"
+     },
+     {
+      "name_as_written": "DJ CHICO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ CHICO (Orléans)"
+     },
+     {
+      "name_as_written": "DJ SHINIZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ SHINIZ (Lille)"
+     },
+     {
+      "name_as_written": "JORDANE LECLERE",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "DJ HAEMER / JORDANE LECLERE"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE – Beautiful Venue",
+      "rationale": "The event is advertised as all in one at a venue that is a hotel where dancers can stay."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress Code: “Blue and mauve”",
+      "rationale": "A dress code colour scheme is explicitly stated."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Looking for accommodation during the Kizomba Weekend? Look no further, it’s right here!",
+      "rationale": "The organiser recommends an accommodation link, which is a partner hotel offer separate from the pass."
+     },
+     {
+      "feature": "workshops",
+      "quote": "access to the entire 3-day event: classes, social events & parties",
+      "rationale": "The pass gives access to classes as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Perfect Dance Floors",
+      "rationale": "The plural dance floors indicate more than one dance floor at the venue."
+     }
+    ]
+   }
+  ]
+ }
 }

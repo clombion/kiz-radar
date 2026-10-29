@@ -1,36 +1,43 @@
 {
- "batch": "event-16894",
- "events": [
-  {
-   "event_id": 16894,
-   "party_rooms": {
-    "count": 2,
-    "quote": "Kizombada party 22.00-04.00 (2 rooms)"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba & Semba Champions Festival 2026"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16894",
+  "events": [
+   {
+    "event_id": 16894,
+    "party_rooms": {
+     "count": 2,
+     "quote": "Kizombada party 22.00-04.00 (2 rooms)"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "kizomba and semba festival"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "afro",
-     "quote": "afro animations"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Samba",
-     "quote": "Samba+carnaval animations"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba & Semba Champions Festival 2026"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "kizomba and semba festival"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "afro",
+      "quote": "afro animations"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Samba",
+      "quote": "Samba+carnaval animations"
+     }
+    ]
+   }
+  ]
+ }
 }

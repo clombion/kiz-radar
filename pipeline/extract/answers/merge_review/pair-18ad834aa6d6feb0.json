@@ -1,0 +1,13 @@
+{
+ "key_a": "p:putox",
+ "key_b": "p:putox@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "18ad834aa6d6feb0",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Puto X on side A and DJ PUTO-X on side B are the same name with a DJ prefix and a hyphen variant, both listed with France as the stated country."
+ }
+}

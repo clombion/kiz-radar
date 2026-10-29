@@ -1,75 +1,82 @@
 {
- "batch": "event-18814",
- "events": [
-  {
-   "event_id": 18814,
-   "artists": [
-    {
-     "name_as_written": "Elo & Adil",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "✪ Elo & Adil (2026 World Champions – Bachata)"
-    },
-    {
-     "name_as_written": "DJ ASH",
-     "role": "dj",
-     "style": "Kiz/Semba",
-     "country": null,
-     "source_line": "🎧 DJ ASH (Kiz/Semba)"
-    },
-    {
-     "name_as_written": "DJ MANGO",
-     "role": "dj",
-     "style": "Salsa/Bachata",
-     "country": null,
-     "source_line": "🎧 DJ MANGO (Salsa/Bachata)"
-    },
-    {
-     "name_as_written": "Photobox",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📷 Photobox"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "30 hours of workshops",
-     "rationale": "The programme lists 30 hours of workshops as part of the event."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Guest Team/Taxi Dancers (for workshops)",
-     "rationale": "The description states that taxi dancers are present for the workshops."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms/2 vibes",
-     "rationale": "Two dance rooms are advertised."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "3 simple dress codes",
-     "rationale": "The event states a dress code for each day."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "3 simple dress codes > 2027: PINK theme",
-     "rationale": "The parties carry a pink dress theme with daily dress codes."
-    },
-    {
-     "feature": "shows",
-     "quote": "1 Instructor show/demo",
-     "rationale": "Instructors perform a show or demonstration at the event."
-    },
-    {
-     "feature": "adults_only",
-     "quote": "Our events are not suitable for minors",
-     "rationale": "The organisers exclude minors, so the events are restricted to adults."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18814",
+  "events": [
+   {
+    "event_id": 18814,
+    "artists": [
+     {
+      "name_as_written": "Elo & Adil",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "✪ Elo & Adil (2026 World Champions – Bachata)"
+     },
+     {
+      "name_as_written": "DJ ASH",
+      "role": "dj",
+      "style": "Kiz/Semba",
+      "country": null,
+      "source_line": "🎧 DJ ASH (Kiz/Semba)"
+     },
+     {
+      "name_as_written": "DJ MANGO",
+      "role": "dj",
+      "style": "Salsa/Bachata",
+      "country": null,
+      "source_line": "🎧 DJ MANGO (Salsa/Bachata)"
+     },
+     {
+      "name_as_written": "Photobox",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📷 Photobox"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "30 hours of workshops",
+      "rationale": "The programme lists 30 hours of workshops as part of the event."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Guest Team/Taxi Dancers (for workshops)",
+      "rationale": "The description states that taxi dancers are present for the workshops."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms/2 vibes",
+      "rationale": "Two dance rooms are advertised."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "3 simple dress codes",
+      "rationale": "The event states a dress code for each day."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "3 simple dress codes > 2027: PINK theme",
+      "rationale": "The parties carry a pink dress theme with daily dress codes."
+     },
+     {
+      "feature": "shows",
+      "quote": "1 Instructor show/demo",
+      "rationale": "Instructors perform a show or demonstration at the event."
+     },
+     {
+      "feature": "adults_only",
+      "quote": "Our events are not suitable for minors",
+      "rationale": "The organisers exclude minors, so the events are restricted to adults."
+     }
+    ]
+   }
+  ]
+ }
 }

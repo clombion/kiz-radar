@@ -1,0 +1,13 @@
+{
+ "key_a": "p:franck@franck+laure",
+ "key_b": "p:francksalsahora",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "274864bf18a53c00",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Franck & Laure on side A and Franck Salsahora & Laure on side B are the same couple in France, with Laure as the shared partner."
+ }
+}

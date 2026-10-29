@@ -1,112 +1,119 @@
 {
- "batch": "event-16595",
- "events": [
-  {
-   "event_id": 16595,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "FULL WEEKEND PASS: Early bird Weekend pass",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 105.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "02-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£105 – 1st Feb"
-      },
-      {
-       "amount": 115.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "03-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£115 – 1st Mar"
-      },
-      {
-       "amount": 125.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "04-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£125 – 1st Apr"
-      },
-      {
-       "amount": 135.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "05-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£135 – 1st May"
-      },
-      {
-       "amount": 145.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "06-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£145 – 1st June"
-      },
-      {
-       "amount": 155.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "07-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£155 – 1st July"
-      },
-      {
-       "amount": 165.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "£165 on the Day"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T18:00:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16595",
+  "events": [
+   {
+    "event_id": 16595,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "FULL WEEKEND PASS: Early bird Weekend pass",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 105.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": "02-01",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "£105 – 1st Feb"
+       },
+       {
+        "amount": 115.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": "03-01",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "£115 – 1st Mar"
+       },
+       {
+        "amount": 125.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": "04-01",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "£125 – 1st Apr"
+       },
+       {
+        "amount": 135.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": "05-01",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "£135 – 1st May"
+       },
+       {
+        "amount": 145.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": "06-01",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "£145 – 1st June"
+       },
+       {
+        "amount": 155.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": "07-01",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "£155 – 1st July"
+       },
+       {
+        "amount": 165.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": true,
+        "sold_out": false,
+        "current": false,
+        "quote": "£165 on the Day"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

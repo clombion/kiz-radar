@@ -1,25 +1,32 @@
 {
- "batch": "event-14629",
- "events": [
-  {
-   "event_id": 14629,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "CHILL & SHOP ROOMS",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "CHILL & SHOP ROOMS"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "The Bern is Kizomba Weekend is back"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14629",
+  "events": [
+   {
+    "event_id": 14629,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "CHILL & SHOP ROOMS",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "CHILL & SHOP ROOMS"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "The Bern is Kizomba Weekend is back"
+     }
+    ]
+   }
+  ]
+ }
 }

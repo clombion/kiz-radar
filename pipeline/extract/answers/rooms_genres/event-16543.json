@@ -1,79 +1,86 @@
 {
- "batch": "event-16543",
- "events": [
-  {
-   "event_id": 16543,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 different rooms"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "𝐑𝐎𝐎𝐌 1",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "zouk",
-      "kompa"
-     ],
-     "quote": "𝐑𝐎𝐎𝐌 1: Kizomba, Semba, Zouk & Konpa"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16543",
+  "events": [
+   {
+    "event_id": 16543,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 different rooms"
     },
-    {
-     "name_as_written": "𝐑𝐎𝐎𝐌 2",
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "tarraxo",
-      "tarraxinha",
-      "other"
-     ],
-     "quote": "𝐑𝐎𝐎𝐌 2: Urban, Tarraxo, Tarraxhina & Gouyad"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba community & connection."
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "𝐑𝐎𝐎𝐌 1: Kizomba, Semba, Zouk & Konpa"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "𝐑𝐎𝐎𝐌 1: Kizomba, Semba, Zouk & Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Zouk & Konpa"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban",
-     "quote": "𝐑𝐎𝐎𝐌 2: Urban, Tarraxo, Tarraxhina & Gouyad"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "𝐑𝐎𝐎𝐌 2: Urban, Tarraxo, Tarraxhina & Gouyad"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxhina",
-     "quote": "Tarraxhina vibes"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Gouyad",
-     "quote": "Tarraxo, Tarraxhina & Gouyad"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "𝐑𝐎𝐎𝐌 1",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "zouk",
+       "kompa"
+      ],
+      "quote": "𝐑𝐎𝐎𝐌 1: Kizomba, Semba, Zouk & Konpa"
+     },
+     {
+      "name_as_written": "𝐑𝐎𝐎𝐌 2",
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "tarraxo",
+       "tarraxinha",
+       "other"
+      ],
+      "quote": "𝐑𝐎𝐎𝐌 2: Urban, Tarraxo, Tarraxhina & Gouyad"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba community & connection."
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "𝐑𝐎𝐎𝐌 1: Kizomba, Semba, Zouk & Konpa"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "𝐑𝐎𝐎𝐌 1: Kizomba, Semba, Zouk & Konpa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Zouk & Konpa"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban",
+      "quote": "𝐑𝐎𝐎𝐌 2: Urban, Tarraxo, Tarraxhina & Gouyad"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "𝐑𝐎𝐎𝐌 2: Urban, Tarraxo, Tarraxhina & Gouyad"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxhina",
+      "quote": "Tarraxhina vibes"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Gouyad",
+      "quote": "Tarraxo, Tarraxhina & Gouyad"
+     }
+    ]
+   }
+  ]
+ }
 }

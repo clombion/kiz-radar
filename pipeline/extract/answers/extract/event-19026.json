@@ -1,214 +1,221 @@
 {
- "batch": "event-19026",
- "events": [
-  {
-   "event_id": 19026,
-   "artists": [
-    {
-     "name_as_written": "Trésor & Auréa",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Trésor & Auréa (Amsterdam)"
-    },
-    {
-     "name_as_written": "Malick & Carla",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Malick & Carla (Bordeaux)"
-    },
-    {
-     "name_as_written": "Axel & Lucy",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Axel & Lucy (Lyon)"
-    },
-    {
-     "name_as_written": "Armand & Aidah",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Armand & Aidah (Paris/Nantes)"
-    },
-    {
-     "name_as_written": "Juni & Sarah",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Juni & Sarah (Tours)"
-    },
-    {
-     "name_as_written": "Kelly & Curtis",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Kelly & Curtis (Tours)"
-    },
-    {
-     "name_as_written": "Chico & Njie",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Chico & Njie (Orléans)"
-    },
-    {
-     "name_as_written": "Jovany & Céline",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Jovany & Céline (Tours)"
-    },
-    {
-     "name_as_written": "Sabrine et nicholas",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Sabrine et nicholas (Paris)"
-    },
-    {
-     "name_as_written": "Alex Boz & Ziva",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Alex Boz & Ziva (Blois/Tours)"
-    },
-    {
-     "name_as_written": "Oscar & Sophia",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "⭐Oscar & Sophia (Chateauroux/Tours)"
-    },
-    {
-     "name_as_written": "François & Edyta",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "⭐François & Edyta (Tours)"
-    },
-    {
-     "name_as_written": "Stéphane",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "⭐Stéphane (Angers)"
-    },
-    {
-     "name_as_written": "Dj Stefanio Lima",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Dj Stefanio Lima (Amsterdam)"
-    },
-    {
-     "name_as_written": "Dj David Ruela",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Dj David Ruela (Rotterdam)"
-    },
-    {
-     "name_as_written": "Dj Etniks",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Dj Etniks (Tours)"
-    },
-    {
-     "name_as_written": "Dj Chico",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Dj Chico (Orléans)"
-    },
-    {
-     "name_as_written": "Dj Cisco",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⭐Dj Cisco (Tours)"
-    },
-    {
-     "name_as_written": "Dj Pedron",
-     "role": "dj",
-     "style": "Bachata/Salsa",
-     "country": null,
-     "source_line": "⭐Dj Pedron (Paris)"
-    },
-    {
-     "name_as_written": "Dj Karim",
-     "role": "dj",
-     "style": "Bachata/Salsa",
-     "country": null,
-     "source_line": "⭐Dj Karim (Paris)"
-    },
-    {
-     "name_as_written": "Dj Kaiser",
-     "role": "dj",
-     "style": "Bachata/Salsa",
-     "country": null,
-     "source_line": "⭐Dj Kaiser (Paris)"
-    },
-    {
-     "name_as_written": "DJ Moncef",
-     "role": "dj",
-     "style": "Bachata/Salsa",
-     "country": null,
-     "source_line": "⭐DJ Moncef (Tours)"
-    },
-    {
-     "name_as_written": "KIZATOURS",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Facebook/Insta/Tik Tok : KIZATOURS"
-    },
-    {
-     "name_as_written": "Alexandre Bozkurt",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📷Alexandre Bozkurt"
-    },
-    {
-     "name_as_written": "Farantini",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥Farantini"
-    },
-    {
-     "name_as_written": "Alex Boz",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥Alex Boz"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "More than 20 hours of workshops",
-     "rationale": "The description states that more than 20 hours of workshops are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 dance rooms – 3 different vibes",
-     "rationale": "The event has three separate dance rooms."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows & performances",
-     "rationale": "The highlights list promises shows and performances."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "IBIS TOURS NORD",
-     "rationale": "Hotels are listed as recommended accommodation options near the venue without being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19026",
+  "events": [
+   {
+    "event_id": 19026,
+    "artists": [
+     {
+      "name_as_written": "Trésor & Auréa",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Trésor & Auréa (Amsterdam)"
+     },
+     {
+      "name_as_written": "Malick & Carla",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Malick & Carla (Bordeaux)"
+     },
+     {
+      "name_as_written": "Axel & Lucy",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Axel & Lucy (Lyon)"
+     },
+     {
+      "name_as_written": "Armand & Aidah",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Armand & Aidah (Paris/Nantes)"
+     },
+     {
+      "name_as_written": "Juni & Sarah",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Juni & Sarah (Tours)"
+     },
+     {
+      "name_as_written": "Kelly & Curtis",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Kelly & Curtis (Tours)"
+     },
+     {
+      "name_as_written": "Chico & Njie",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Chico & Njie (Orléans)"
+     },
+     {
+      "name_as_written": "Jovany & Céline",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Jovany & Céline (Tours)"
+     },
+     {
+      "name_as_written": "Sabrine et nicholas",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Sabrine et nicholas (Paris)"
+     },
+     {
+      "name_as_written": "Alex Boz & Ziva",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Alex Boz & Ziva (Blois/Tours)"
+     },
+     {
+      "name_as_written": "Oscar & Sophia",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "⭐Oscar & Sophia (Chateauroux/Tours)"
+     },
+     {
+      "name_as_written": "François & Edyta",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "⭐François & Edyta (Tours)"
+     },
+     {
+      "name_as_written": "Stéphane",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "⭐Stéphane (Angers)"
+     },
+     {
+      "name_as_written": "Dj Stefanio Lima",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Dj Stefanio Lima (Amsterdam)"
+     },
+     {
+      "name_as_written": "Dj David Ruela",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Dj David Ruela (Rotterdam)"
+     },
+     {
+      "name_as_written": "Dj Etniks",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Dj Etniks (Tours)"
+     },
+     {
+      "name_as_written": "Dj Chico",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Dj Chico (Orléans)"
+     },
+     {
+      "name_as_written": "Dj Cisco",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⭐Dj Cisco (Tours)"
+     },
+     {
+      "name_as_written": "Dj Pedron",
+      "role": "dj",
+      "style": "Bachata/Salsa",
+      "country": null,
+      "source_line": "⭐Dj Pedron (Paris)"
+     },
+     {
+      "name_as_written": "Dj Karim",
+      "role": "dj",
+      "style": "Bachata/Salsa",
+      "country": null,
+      "source_line": "⭐Dj Karim (Paris)"
+     },
+     {
+      "name_as_written": "Dj Kaiser",
+      "role": "dj",
+      "style": "Bachata/Salsa",
+      "country": null,
+      "source_line": "⭐Dj Kaiser (Paris)"
+     },
+     {
+      "name_as_written": "DJ Moncef",
+      "role": "dj",
+      "style": "Bachata/Salsa",
+      "country": null,
+      "source_line": "⭐DJ Moncef (Tours)"
+     },
+     {
+      "name_as_written": "KIZATOURS",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Facebook/Insta/Tik Tok : KIZATOURS"
+     },
+     {
+      "name_as_written": "Alexandre Bozkurt",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📷Alexandre Bozkurt"
+     },
+     {
+      "name_as_written": "Farantini",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥Farantini"
+     },
+     {
+      "name_as_written": "Alex Boz",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥Alex Boz"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "More than 20 hours of workshops",
+      "rationale": "The description states that more than 20 hours of workshops are part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 dance rooms – 3 different vibes",
+      "rationale": "The event has three separate dance rooms."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows & performances",
+      "rationale": "The highlights list promises shows and performances."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "IBIS TOURS NORD",
+      "rationale": "Hotels are listed as recommended accommodation options near the venue without being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

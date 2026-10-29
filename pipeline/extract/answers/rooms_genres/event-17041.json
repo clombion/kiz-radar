@@ -1,38 +1,45 @@
 {
- "batch": "event-17041",
- "events": [
-  {
-   "event_id": 17041,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "your ultimate Salsa, Bachata & Kizomba cruise"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "SIMON & LOLAHONTAS (Italy & Spain) – Bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "CHRYS PY & LALY (Nice) – Kizomba – Afro"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "CHRYS PY & LALY (Nice) – Kizomba – Afro"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "RODRIGUE & LÉA (Paris) – Kizomba – Semba"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17041",
+  "events": [
+   {
+    "event_id": 17041,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "your ultimate Salsa, Bachata & Kizomba cruise"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "SIMON & LOLAHONTAS (Italy & Spain) – Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "CHRYS PY & LALY (Nice) – Kizomba – Afro"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "CHRYS PY & LALY (Nice) – Kizomba – Afro"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "RODRIGUE & LÉA (Paris) – Kizomba – Semba"
+     }
+    ]
+   }
+  ]
+ }
 }

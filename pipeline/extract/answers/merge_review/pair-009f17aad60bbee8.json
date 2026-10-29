@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lolahontas@enah+lolahontas",
+ "key_b": "p:lolahontas@lolahontas+simon",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "009f17aad60bbee8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Distinctive name Lolahontas is shared, but the partners differ (Enah vs Simon), the styles differ, and the stated countries overlap only on Spain."
+ }
+}

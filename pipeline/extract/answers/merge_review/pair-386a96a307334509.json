@@ -1,0 +1,13 @@
+{
+ "key_a": "p:curtis@clemence+curtis",
+ "key_b": "p:curtis@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "386a96a307334509",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The solo performer Curtis is listed at the same Vienna event on the same date with the same stated France country as the Curtis and Clemence couple."
+ }
+}

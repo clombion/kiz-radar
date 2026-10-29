@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@cristina+johnny",
+ "key_b": "p:cristinacricri",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "6af60af614aa8f22",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Cristina is a common first name; Cristina Cri Cri shares only the stated Italy and Switzerland countries and the partner evidence is absent."
+ }
+}

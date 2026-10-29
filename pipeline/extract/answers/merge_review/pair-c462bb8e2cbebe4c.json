@@ -1,0 +1,13 @@
+{
+ "key_a": "p:isabel@felicien+isabel",
+ "key_b": "p:isabelle@felicien+isabelle",
+ "prompt": "7af5fef02cae3622",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:32:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c462bb8e2cbebe4c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Same partner Felicien in every mention, Isabel and Isabelle are short and long forms, and France is stated on both sides."
+ }
+}

@@ -1,33 +1,40 @@
 {
- "batch": "event-14634",
- "events": [
-  {
-   "event_id": 14634,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Festival de · Kizomba · Semba · Tarraxinha · Afrohouse…"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Festival de · Kizomba · Semba · Tarraxinha · Afrohouse…"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Festival de · Kizomba · Semba · Tarraxinha · Afrohouse…"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrohouse",
-     "quote": "Festival de · Kizomba · Semba · Tarraxinha · Afrohouse…"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14634",
+  "events": [
+   {
+    "event_id": 14634,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Festival de · Kizomba · Semba · Tarraxinha · Afrohouse…"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Festival de · Kizomba · Semba · Tarraxinha · Afrohouse…"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Festival de · Kizomba · Semba · Tarraxinha · Afrohouse…"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrohouse",
+      "quote": "Festival de · Kizomba · Semba · Tarraxinha · Afrohouse…"
+     }
+    ]
+   }
+  ]
+ }
 }

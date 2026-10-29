@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@fanio+sara",
+ "key_b": "p:sara@juninho+sara",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "16e649fe090fc333",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Fanio & Sara and Juninho & Sara are couples with different partners and no shared event; a common first name and Angola/Portugal hints are too weak."
+ }
+}

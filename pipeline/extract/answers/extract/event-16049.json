@@ -1,78 +1,85 @@
 {
- "batch": "event-16049",
- "events": [
-  {
-   "event_id": 16049,
-   "artists": [
-    {
-     "name_as_written": "Sara Rodriguez",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️Sara Rodriguez"
-    },
-    {
-     "name_as_written": "Chris Dawhite",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️Chris Dawhite"
-    },
-    {
-     "name_as_written": "Dan & Shelly",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️Dan & Shelly"
-    },
-    {
-     "name_as_written": "Fabrice",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️Fabrice"
-    },
-    {
-     "name_as_written": "Dj7even",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️Dj7even"
-    },
-    {
-     "name_as_written": "DjCelly",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️DjCelly"
-    },
-    {
-     "name_as_written": "DjPatrick",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️DjPatrick"
-    },
-    {
-     "name_as_written": "Lekryptonien",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️Lekryptonien"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "7 hours of workshops with:",
-     "rationale": "The event offers seven hours of dance workshops."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "IBIS BUDGET Belfort centre",
-     "rationale": "A hotel is listed under the Hôtels heading as a recommended venue for the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16049",
+  "events": [
+   {
+    "event_id": 16049,
+    "artists": [
+     {
+      "name_as_written": "Sara Rodriguez",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️Sara Rodriguez"
+     },
+     {
+      "name_as_written": "Chris Dawhite",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️Chris Dawhite"
+     },
+     {
+      "name_as_written": "Dan & Shelly",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️Dan & Shelly"
+     },
+     {
+      "name_as_written": "Fabrice",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️Fabrice"
+     },
+     {
+      "name_as_written": "Dj7even",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️Dj7even"
+     },
+     {
+      "name_as_written": "DjCelly",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️DjCelly"
+     },
+     {
+      "name_as_written": "DjPatrick",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️DjPatrick"
+     },
+     {
+      "name_as_written": "Lekryptonien",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️Lekryptonien"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "7 hours of workshops with:",
+      "rationale": "The event offers seven hours of dance workshops."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "IBIS BUDGET Belfort centre",
+      "rationale": "A hotel is listed under the Hôtels heading as a recommended venue for the event."
+     }
+    ]
+   }
+  ]
+ }
 }

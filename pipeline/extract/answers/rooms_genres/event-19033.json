@@ -1,55 +1,62 @@
 {
- "batch": "event-19033",
- "events": [
-  {
-   "event_id": 19033,
-   "party_rooms": {
-    "count": 2,
-    "quote": "Djs 2 rooms"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Kizomba Room",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "LIVE CONCERT TO DANCE, Kizomba Room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "💃🕺 Semba"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19033",
+  "events": [
+   {
+    "event_id": 19033,
+    "party_rooms": {
+     "count": 2,
+     "quote": "Djs 2 rooms"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "💃🕺 Kizomba"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "💃🕺 Urban Kiz"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "💃🕺 Tarraxinha"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "💃🕺 Tarraxo"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "💃🕺 Konpa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Kizomba Room",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "LIVE CONCERT TO DANCE, Kizomba Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "💃🕺 Semba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "💃🕺 Kizomba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "💃🕺 Urban Kiz"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "💃🕺 Tarraxinha"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "💃🕺 Tarraxo"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "💃🕺 Konpa"
+     }
+    ]
+   }
+  ]
+ }
 }

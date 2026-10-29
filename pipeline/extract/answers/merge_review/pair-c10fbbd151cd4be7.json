@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cilene@cilene+davide",
+ "key_b": "p:cilene@cilene+davidenola",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c10fbbd151cd4be7",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Davide and Cilene appear together with the same partner, the same Italy and Cape Verde countries; the Davide Nola entry adds only a surname."
+ }
+}

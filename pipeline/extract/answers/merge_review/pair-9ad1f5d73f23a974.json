@@ -1,0 +1,13 @@
+{
+ "key_a": "p:onclekani",
+ "key_b": "p:unclekani",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "9ad1f5d73f23a974",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Oncle and Uncle are the French and English forms of the same name Kani, and both sides are listed as France-based teachers."
+ }
+}

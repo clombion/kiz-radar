@@ -1,101 +1,108 @@
 {
- "batch": "event-16753",
- "events": [
-  {
-   "event_id": 16753,
-   "artists": [
-    {
-     "name_as_written": "MARCIO KAZUKUTA",
-     "role": "dj",
-     "style": null,
-     "country": "ANG",
-     "source_line": "🎧 DJS Already confirmed: MARCIO KAZUKUTA (ANG) & HUGO BOSS (MOZ)."
-    },
-    {
-     "name_as_written": "HUGO BOSS",
-     "role": "dj",
-     "style": null,
-     "country": "MOZ",
-     "source_line": "🎧 DJS Already confirmed: MARCIO KAZUKUTA (ANG) & HUGO BOSS (MOZ)."
-    },
-    {
-     "name_as_written": "MATS (CV)& STEPHANIE (CV)",
-     "role": "teacher",
-     "style": null,
-     "country": "CV",
-     "source_line": "👨‍🎓 ✨ National and international instructors already confirmed: MATS (CV)& STEPHANIE (CV); LUKASZ & KAROLINA (VAMULA PL); DAVIDE (IT) & CILENE (CV); ESTEBAN & SANDRA (ESP); Soon more news…"
-    },
-    {
-     "name_as_written": "LUKASZ & KAROLINA",
-     "role": "teacher",
-     "style": null,
-     "country": "PL",
-     "source_line": "👨‍🎓 ✨ National and international instructors already confirmed: MATS (CV)& STEPHANIE (CV); LUKASZ & KAROLINA (VAMULA PL); DAVIDE (IT) & CILENE (CV); ESTEBAN & SANDRA (ESP); Soon more news…"
-    },
-    {
-     "name_as_written": "DAVIDE (IT) & CILENE (CV)",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👨‍🎓 ✨ National and international instructors already confirmed: MATS (CV)& STEPHANIE (CV); LUKASZ & KAROLINA (VAMULA PL); DAVIDE (IT) & CILENE (CV); ESTEBAN & SANDRA (ESP); Soon more news…"
-    },
-    {
-     "name_as_written": "ESTEBAN & SANDRA",
-     "role": "teacher",
-     "style": null,
-     "country": "ESP",
-     "source_line": "👨‍🎓 ✨ National and international instructors already confirmed: MATS (CV)& STEPHANIE (CV); LUKASZ & KAROLINA (VAMULA PL); DAVIDE (IT) & CILENE (CV); ESTEBAN & SANDRA (ESP); Soon more news…"
-    },
-    {
-     "name_as_written": "VASCO DIAS & AGÊNCIA DE VIAGENS / TRAVEL AGENCY WORLDVIP",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "VASCO DIAS & AGÊNCIA DE VIAGENS / TRAVEL AGENCY WORLDVIP"
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "7 Nights accommodation on an ALL-INCLUSIVE basis (Meals, drinks and snacks).",
-     "rationale": "The flight package explicitly includes seven nights of accommodation."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "7 Nights accommodation on an ALL-INCLUSIVE basis (Meals, drinks and snacks).",
-     "rationale": "The all-inclusive basis lists meals, drinks and snacks as included in the package."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Private transfers airport / hotel / airport with assistance.",
-     "rationale": "The packages include private airport and hotel transfers."
-    },
-    {
-     "feature": "shows",
-     "quote": "Daily shows and animation at hotel.",
-     "rationale": "The included items list daily shows at the hotel."
-    },
-    {
-     "feature": "workshops",
-     "quote": "FULL PASS (Workshops, Social dance by the pool and Beach parties).",
-     "rationale": "The full pass explicitly includes workshops."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Social dance by the pool",
-     "rationale": "Social dancing by the pool is offered as part of the full pass."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Beach parties",
-     "rationale": "The full pass explicitly includes beach parties."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Beginners and advanced dancers!",
-     "rationale": "The description explicitly welcomes beginners alongside advanced dancers."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16753",
+  "events": [
+   {
+    "event_id": 16753,
+    "artists": [
+     {
+      "name_as_written": "MARCIO KAZUKUTA",
+      "role": "dj",
+      "style": null,
+      "country": "ANG",
+      "source_line": "🎧 DJS Already confirmed: MARCIO KAZUKUTA (ANG) & HUGO BOSS (MOZ)."
+     },
+     {
+      "name_as_written": "HUGO BOSS",
+      "role": "dj",
+      "style": null,
+      "country": "MOZ",
+      "source_line": "🎧 DJS Already confirmed: MARCIO KAZUKUTA (ANG) & HUGO BOSS (MOZ)."
+     },
+     {
+      "name_as_written": "MATS (CV)& STEPHANIE (CV)",
+      "role": "teacher",
+      "style": null,
+      "country": "CV",
+      "source_line": "👨‍🎓 ✨ National and international instructors already confirmed: MATS (CV)& STEPHANIE (CV); LUKASZ & KAROLINA (VAMULA PL); DAVIDE (IT) & CILENE (CV); ESTEBAN & SANDRA (ESP); Soon more news…"
+     },
+     {
+      "name_as_written": "LUKASZ & KAROLINA",
+      "role": "teacher",
+      "style": null,
+      "country": "PL",
+      "source_line": "👨‍🎓 ✨ National and international instructors already confirmed: MATS (CV)& STEPHANIE (CV); LUKASZ & KAROLINA (VAMULA PL); DAVIDE (IT) & CILENE (CV); ESTEBAN & SANDRA (ESP); Soon more news…"
+     },
+     {
+      "name_as_written": "DAVIDE (IT) & CILENE (CV)",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👨‍🎓 ✨ National and international instructors already confirmed: MATS (CV)& STEPHANIE (CV); LUKASZ & KAROLINA (VAMULA PL); DAVIDE (IT) & CILENE (CV); ESTEBAN & SANDRA (ESP); Soon more news…"
+     },
+     {
+      "name_as_written": "ESTEBAN & SANDRA",
+      "role": "teacher",
+      "style": null,
+      "country": "ESP",
+      "source_line": "👨‍🎓 ✨ National and international instructors already confirmed: MATS (CV)& STEPHANIE (CV); LUKASZ & KAROLINA (VAMULA PL); DAVIDE (IT) & CILENE (CV); ESTEBAN & SANDRA (ESP); Soon more news…"
+     },
+     {
+      "name_as_written": "VASCO DIAS & AGÊNCIA DE VIAGENS / TRAVEL AGENCY WORLDVIP",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "VASCO DIAS & AGÊNCIA DE VIAGENS / TRAVEL AGENCY WORLDVIP"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "7 Nights accommodation on an ALL-INCLUSIVE basis (Meals, drinks and snacks).",
+      "rationale": "The flight package explicitly includes seven nights of accommodation."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "7 Nights accommodation on an ALL-INCLUSIVE basis (Meals, drinks and snacks).",
+      "rationale": "The all-inclusive basis lists meals, drinks and snacks as included in the package."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Private transfers airport / hotel / airport with assistance.",
+      "rationale": "The packages include private airport and hotel transfers."
+     },
+     {
+      "feature": "shows",
+      "quote": "Daily shows and animation at hotel.",
+      "rationale": "The included items list daily shows at the hotel."
+     },
+     {
+      "feature": "workshops",
+      "quote": "FULL PASS (Workshops, Social dance by the pool and Beach parties).",
+      "rationale": "The full pass explicitly includes workshops."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Social dance by the pool",
+      "rationale": "Social dancing by the pool is offered as part of the full pass."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Beach parties",
+      "rationale": "The full pass explicitly includes beach parties."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Beginners and advanced dancers!",
+      "rationale": "The description explicitly welcomes beginners alongside advanced dancers."
+     }
+    ]
+   }
+  ]
+ }
 }

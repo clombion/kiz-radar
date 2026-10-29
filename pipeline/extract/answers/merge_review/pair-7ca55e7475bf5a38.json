@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marta@dance",
+ "key_b": "p:martha@azael+martha",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "7ca55e7475bf5a38",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Solo Marta with a Poland flag shares a common first name and a one-letter variant with Martha, but no partner or other distinctive detail links her to the couple."
+ }
+}

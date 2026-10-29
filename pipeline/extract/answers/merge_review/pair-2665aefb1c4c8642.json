@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@david+quinn",
+ "key_b": "p:davidcohen",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2665aefb1c4c8642",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Only the common first name David links a partnership with no surname to David Cohen; the South Africa stated country overlaps, so the evidence does not settle it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anastasia@anastasia+richard",
+ "key_b": "p:anastasiia@anastasiia+flowly",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "baeee242b12e314a",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Richard & Anastasia and Flowly & Anastasiia are different couples with different partners; the spelling variant does not overcome the partner mismatch."
+ }
+}

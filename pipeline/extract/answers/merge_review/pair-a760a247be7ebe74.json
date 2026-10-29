@@ -1,0 +1,13 @@
+{
+ "key_a": "p:clemence@clemence+curtis",
+ "key_b": "p:clemence@clemence+erwan",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "a760a247be7ebe74",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Clemence has two different partners (Curtis vs Erwan); the shared France country is common and does not settle whether one dancer partners both."
+ }
+}

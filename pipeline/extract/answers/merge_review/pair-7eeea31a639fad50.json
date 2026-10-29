@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ines@dance",
+ "key_b": "p:ines@ines+pedro",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "7eeea31a639fad50",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Inès solo and Pedro & Inês share the first name and the Portugal flag, but the couple's partner is Pedro and neither side settles the identity."
+ }
+}

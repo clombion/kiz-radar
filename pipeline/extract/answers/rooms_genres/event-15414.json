@@ -1,46 +1,53 @@
 {
- "batch": "event-15414",
- "events": [
-  {
-   "event_id": 15414,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 Rooms"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa:"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15414",
+  "events": [
+   {
+    "event_id": 15414,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 Rooms"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata:"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba:"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Brazilian Zouk",
-     "quote": "Brazilian Zouk:"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "Reggaeton",
-     "quote": "(Reggaeton)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Femme",
-     "quote": "(Femme)"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa:"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata:"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba:"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Brazilian Zouk",
+      "quote": "Brazilian Zouk:"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "Reggaeton",
+      "quote": "(Reggaeton)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Femme",
+      "quote": "(Femme)"
+     }
+    ]
+   }
+  ]
+ }
 }

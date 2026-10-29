@@ -1,34 +1,41 @@
 {
- "batch": "event-16379",
- "events": [
-  {
-   "event_id": 16379,
-   "artists": [
-    {
-     "name_as_written": "LTP",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "LTP presents: BACHAKIZ NOTTINGHAM FESTIVAL 8TH EDITION"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Anything and everything will take place under one roof at BachaKiz:",
-     "rationale": "The description says all events take place under one roof at the Mercure hotel venue, where dancers are also invited to book rooms."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "The 2 party rooms at the moment",
-     "rationale": "The text states there are two party rooms, meaning more than one dance room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "the comfort of everyone attending the workshops",
-     "rationale": "The text refers to attendees of the workshops, so dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16379",
+  "events": [
+   {
+    "event_id": 16379,
+    "artists": [
+     {
+      "name_as_written": "LTP",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "LTP presents: BACHAKIZ NOTTINGHAM FESTIVAL 8TH EDITION"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "Anything and everything will take place under one roof at BachaKiz:",
+      "rationale": "The description says all events take place under one roof at the Mercure hotel venue, where dancers are also invited to book rooms."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "The 2 party rooms at the moment",
+      "rationale": "The text states there are two party rooms, meaning more than one dance room."
+     },
+     {
+      "feature": "workshops",
+      "quote": "the comfort of everyone attending the workshops",
+      "rationale": "The text refers to attendees of the workshops, so dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:morgan@fred+morgan",
+ "key_b": "p:morgane@fred+morgane",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "814f08875c9aade0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Fred is the shared partner, but Morgan and Morgane differ by one letter and the Bari and Toulon entries do not show the same couple's details."
+ }
+}

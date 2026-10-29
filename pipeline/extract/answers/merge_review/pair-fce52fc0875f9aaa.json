@@ -1,0 +1,13 @@
+{
+ "key_a": "p:asia@dance",
+ "key_b": "p:asiavoronova",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "fce52fc0875f9aaa",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Asia and Asia Voronova share the name, the Ukraine stated country and the same festival series (Alegria Bordeaux), with the surname as the fuller form."
+ }
+}

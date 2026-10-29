@@ -1,192 +1,199 @@
 {
- "batch": "event-18985",
- "events": [
-  {
-   "event_id": 18985,
-   "artists": [
-    {
-     "name_as_written": "VIKF 8th Edition",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "VIKF 8th Edition is offering you:"
-    },
-    {
-     "name_as_written": "Jesus & Anni",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "Spain",
-     "source_line": "✅ Jesus & Anni (Madrid – Spain)"
-    },
-    {
-     "name_as_written": "Akram & Sara",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "Switzerland",
-     "source_line": "✅ Akram & Sara (Bale – Switzerland)"
-    },
-    {
-     "name_as_written": "ElHadj Bak & Flavie",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "🇨🇦",
-     "source_line": "✅ ElHadj Bak & Flavie (Paris – Montreal 🇨🇦)"
-    },
-    {
-     "name_as_written": "Mike Ahombi",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "Canada",
-     "source_line": "✅ Mike Ahombi (Regina – Canada 🇨🇦)"
-    },
-    {
-     "name_as_written": "Justin & Angi",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✅ Justin & Angi (Paris – Berlin)"
-    },
-    {
-     "name_as_written": "DJ Sink",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "Canada",
-     "source_line": "✅ DJ Sink (Montreal – Canada 🇨🇦)"
-    },
-    {
-     "name_as_written": "DJ On Fire",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "Netherlands",
-     "source_line": "✅ DJ On Fire (Amsterdam – Netherlands )"
-    },
-    {
-     "name_as_written": "DJ Guelas",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "USA",
-     "source_line": "✅ DJ Guelas (Miami – USA 🇺🇸)"
-    },
-    {
-     "name_as_written": "DJ Mojo",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "USA",
-     "source_line": "✅ DJ Mojo (Seattle – USA 🇺🇸)"
-    },
-    {
-     "name_as_written": "DJ Yawo",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "USA",
-     "source_line": "✅ DJ Yawo (Seattle – USA 🇺🇸)"
-    },
-    {
-     "name_as_written": "DJ Gaz",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "Canada",
-     "source_line": "✅ DJ Gaz (Vancouver – Canada 🇨🇦)"
-    },
-    {
-     "name_as_written": "Alex & Desirée",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Dom Rep & USA",
-     "source_line": "✅ Alex & Desirée (Dom Rep & USA 🇺🇸)"
-    },
-    {
-     "name_as_written": "Andres & Yesisica",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Spain",
-     "source_line": "✅ Andres & Yesisica (Madrid – Spain )"
-    },
-    {
-     "name_as_written": "Monica",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Canada",
-     "source_line": "✅ Monica (Vancouver – Canada 🇨🇦)"
-    },
-    {
-     "name_as_written": "Sebastian & Hannah",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Canada",
-     "source_line": "✅ Sebastian & Hannah (Victoria – Canada 🇨🇦)"
-    },
-    {
-     "name_as_written": "Sergio & Natalia",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Canada",
-     "source_line": "✅ Sergio & Natalia (Nanaimo – Canada 🇨🇦)"
-    },
-    {
-     "name_as_written": "DJ Sefa",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": "Canada",
-     "source_line": "✅ DJ Sefa (Vancouver – Canada 🇨🇦)"
-    },
-    {
-     "name_as_written": "Wayne & Kristal",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "Canada",
-     "source_line": "✅ Wayne & Kristal (Vancouver – Canada 🇨🇦)"
-    },
-    {
-     "name_as_written": "Christina Morison",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "Canada",
-     "source_line": "✅ Christina Morison(Victoria – Canada 🇨🇦)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "4 days of workshops",
-     "rationale": "The offer lists four days of workshops as part of the festival."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 day-time socials",
-     "rationale": "The offer lists three daytime socials."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 ROOMS:",
-     "rationale": "The festival describes four separate dance rooms."
-    },
-    {
-     "feature": "shows",
-     "quote": "performances and fashion shows by African Designers",
-     "rationale": "The gala night includes performances and fashion shows."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Bootcamps",
-     "rationale": "Bootcamps are offered as a separate intensive training, excluded from the full pass."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Master Classes",
-     "rationale": "Master classes are offered as a separate paid component."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "VICTORIA MARRIOTT INNER HARBOUR HOTEL DEALS",
-     "rationale": "A negotiated hotel rate is offered, but the accommodation is not part of the pass."
-    },
-    {
-     "feature": "adults_only",
-     "quote": "Must be 18+ to attend this event",
-     "rationale": "The event is restricted to attendees aged 18 and over."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18985",
+  "events": [
+   {
+    "event_id": 18985,
+    "artists": [
+     {
+      "name_as_written": "VIKF 8th Edition",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "VIKF 8th Edition is offering you:"
+     },
+     {
+      "name_as_written": "Jesus & Anni",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "Spain",
+      "source_line": "✅ Jesus & Anni (Madrid – Spain)"
+     },
+     {
+      "name_as_written": "Akram & Sara",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "Switzerland",
+      "source_line": "✅ Akram & Sara (Bale – Switzerland)"
+     },
+     {
+      "name_as_written": "ElHadj Bak & Flavie",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "🇨🇦",
+      "source_line": "✅ ElHadj Bak & Flavie (Paris – Montreal 🇨🇦)"
+     },
+     {
+      "name_as_written": "Mike Ahombi",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "Canada",
+      "source_line": "✅ Mike Ahombi (Regina – Canada 🇨🇦)"
+     },
+     {
+      "name_as_written": "Justin & Angi",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✅ Justin & Angi (Paris – Berlin)"
+     },
+     {
+      "name_as_written": "DJ Sink",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "Canada",
+      "source_line": "✅ DJ Sink (Montreal – Canada 🇨🇦)"
+     },
+     {
+      "name_as_written": "DJ On Fire",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "Netherlands",
+      "source_line": "✅ DJ On Fire (Amsterdam – Netherlands )"
+     },
+     {
+      "name_as_written": "DJ Guelas",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "USA",
+      "source_line": "✅ DJ Guelas (Miami – USA 🇺🇸)"
+     },
+     {
+      "name_as_written": "DJ Mojo",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "USA",
+      "source_line": "✅ DJ Mojo (Seattle – USA 🇺🇸)"
+     },
+     {
+      "name_as_written": "DJ Yawo",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "USA",
+      "source_line": "✅ DJ Yawo (Seattle – USA 🇺🇸)"
+     },
+     {
+      "name_as_written": "DJ Gaz",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "Canada",
+      "source_line": "✅ DJ Gaz (Vancouver – Canada 🇨🇦)"
+     },
+     {
+      "name_as_written": "Alex & Desirée",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Dom Rep & USA",
+      "source_line": "✅ Alex & Desirée (Dom Rep & USA 🇺🇸)"
+     },
+     {
+      "name_as_written": "Andres & Yesisica",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Spain",
+      "source_line": "✅ Andres & Yesisica (Madrid – Spain )"
+     },
+     {
+      "name_as_written": "Monica",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Canada",
+      "source_line": "✅ Monica (Vancouver – Canada 🇨🇦)"
+     },
+     {
+      "name_as_written": "Sebastian & Hannah",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Canada",
+      "source_line": "✅ Sebastian & Hannah (Victoria – Canada 🇨🇦)"
+     },
+     {
+      "name_as_written": "Sergio & Natalia",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Canada",
+      "source_line": "✅ Sergio & Natalia (Nanaimo – Canada 🇨🇦)"
+     },
+     {
+      "name_as_written": "DJ Sefa",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": "Canada",
+      "source_line": "✅ DJ Sefa (Vancouver – Canada 🇨🇦)"
+     },
+     {
+      "name_as_written": "Wayne & Kristal",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "Canada",
+      "source_line": "✅ Wayne & Kristal (Vancouver – Canada 🇨🇦)"
+     },
+     {
+      "name_as_written": "Christina Morison",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "Canada",
+      "source_line": "✅ Christina Morison(Victoria – Canada 🇨🇦)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "4 days of workshops",
+      "rationale": "The offer lists four days of workshops as part of the festival."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 day-time socials",
+      "rationale": "The offer lists three daytime socials."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "4 ROOMS:",
+      "rationale": "The festival describes four separate dance rooms."
+     },
+     {
+      "feature": "shows",
+      "quote": "performances and fashion shows by African Designers",
+      "rationale": "The gala night includes performances and fashion shows."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Bootcamps",
+      "rationale": "Bootcamps are offered as a separate intensive training, excluded from the full pass."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Master Classes",
+      "rationale": "Master classes are offered as a separate paid component."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "VICTORIA MARRIOTT INNER HARBOUR HOTEL DEALS",
+      "rationale": "A negotiated hotel rate is offered, but the accommodation is not part of the pass."
+     },
+     {
+      "feature": "adults_only",
+      "quote": "Must be 18+ to attend this event",
+      "rationale": "The event is restricted to attendees aged 18 and over."
+     }
+    ]
+   }
+  ]
+ }
 }

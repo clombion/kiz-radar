@@ -1,23 +1,30 @@
 {
- "batch": "event-18263",
- "events": [
-  {
-   "event_id": 18263,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Daily workshops of Kizomba, Semba and traditional dances"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Daily workshops of Kizomba, Semba and traditional dances"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18263",
+  "events": [
+   {
+    "event_id": 18263,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Daily workshops of Kizomba, Semba and traditional dances"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Daily workshops of Kizomba, Semba and traditional dances"
+     }
+    ]
+   }
+  ]
+ }
 }

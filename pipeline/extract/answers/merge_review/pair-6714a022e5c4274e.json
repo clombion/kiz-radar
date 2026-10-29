@@ -1,0 +1,13 @@
+{
+ "key_a": "p:angelozacaria",
+ "key_b": "p:angelozacarias",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "6714a022e5c4274e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Angelo Zacaria and Angelo Zacarias are a one-letter spelling variant of a distinctive surname, both teachers in Italy."
+ }
+}

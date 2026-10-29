@@ -1,0 +1,13 @@
+{
+ "key_a": "p:steven@audrey+steven",
+ "key_b": "p:stevens@audrey+stevens",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "84dec6de501da5a4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Steven or Stevens is paired with Audrey in every entry, the surname differs only by spelling, and the entries are in France."
+ }
+}

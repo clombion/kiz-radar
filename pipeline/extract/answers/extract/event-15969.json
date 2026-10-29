@@ -1,137 +1,144 @@
 {
- "batch": "event-15969",
- "events": [
-  {
-   "event_id": 15969,
-   "artists": [
-    {
-     "name_as_written": "DANI J",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "🎤 DANI J is coming to Reims for an EXCLUSIVE SHOWCASE 🔥"
-    },
-    {
-     "name_as_written": "David Pedron",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎶 David Pedron (Bachata)"
-    },
-    {
-     "name_as_written": "ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 ICHIGO"
-    },
-    {
-     "name_as_written": "SCIO",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎶 SCIO (Bachata)"
-    },
-    {
-     "name_as_written": "Ti Wosh",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Ti Wosh"
-    },
-    {
-     "name_as_written": "Diablo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Diablo"
-    },
-    {
-     "name_as_written": "DJ JDN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 DJ JDN"
-    },
-    {
-     "name_as_written": "Will MP & Nad",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨ Will MP & Nad"
-    },
-    {
-     "name_as_written": "Brice & Manue",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨ Brice & Manue"
-    },
-    {
-     "name_as_written": "Océane & Hamza",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨ Océane & Hamza"
-    },
-    {
-     "name_as_written": "Océane & Thiphaine",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨ Océane & Thiphaine"
-    },
-    {
-     "name_as_written": "Dex & Law",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🔥 Dex & Law"
-    },
-    {
-     "name_as_written": "Guy Tawa",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🔥 Guy Tawa"
-    },
-    {
-     "name_as_written": "Emma & Sensei",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🔥 Emma & Sensei"
-    },
-    {
-     "name_as_written": "JM Bandal",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🔥 JM Bandal"
-    }
-   ],
-   "features": [
-    {
-     "feature": "shows",
-     "quote": "10:00 PM – 11:00 PM: Showcase",
-     "rationale": "A showcase slot in the programme means artists perform on stage."
-    },
-    {
-     "feature": "workshops",
-     "quote": "8:00 PM – 10:00 PM: Classes",
-     "rationale": "Scheduled classes are part of the event programme."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2-Room Party – 2 Atmospheres",
-     "rationale": "The party takes place in two separate rooms."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "5:00 PM – 7:00 PM: Social KB",
-     "rationale": "An afternoon social is listed in the schedule."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15969",
+  "events": [
+   {
+    "event_id": 15969,
+    "artists": [
+     {
+      "name_as_written": "DANI J",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "🎤 DANI J is coming to Reims for an EXCLUSIVE SHOWCASE 🔥"
+     },
+     {
+      "name_as_written": "David Pedron",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎶 David Pedron (Bachata)"
+     },
+     {
+      "name_as_written": "ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 ICHIGO"
+     },
+     {
+      "name_as_written": "SCIO",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎶 SCIO (Bachata)"
+     },
+     {
+      "name_as_written": "Ti Wosh",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 Ti Wosh"
+     },
+     {
+      "name_as_written": "Diablo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 Diablo"
+     },
+     {
+      "name_as_written": "DJ JDN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 DJ JDN"
+     },
+     {
+      "name_as_written": "Will MP & Nad",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨ Will MP & Nad"
+     },
+     {
+      "name_as_written": "Brice & Manue",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨ Brice & Manue"
+     },
+     {
+      "name_as_written": "Océane & Hamza",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨ Océane & Hamza"
+     },
+     {
+      "name_as_written": "Océane & Thiphaine",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨ Océane & Thiphaine"
+     },
+     {
+      "name_as_written": "Dex & Law",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🔥 Dex & Law"
+     },
+     {
+      "name_as_written": "Guy Tawa",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🔥 Guy Tawa"
+     },
+     {
+      "name_as_written": "Emma & Sensei",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🔥 Emma & Sensei"
+     },
+     {
+      "name_as_written": "JM Bandal",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🔥 JM Bandal"
+     }
+    ],
+    "features": [
+     {
+      "feature": "shows",
+      "quote": "10:00 PM – 11:00 PM: Showcase",
+      "rationale": "A showcase slot in the programme means artists perform on stage."
+     },
+     {
+      "feature": "workshops",
+      "quote": "8:00 PM – 10:00 PM: Classes",
+      "rationale": "Scheduled classes are part of the event programme."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2-Room Party – 2 Atmospheres",
+      "rationale": "The party takes place in two separate rooms."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "5:00 PM – 7:00 PM: Social KB",
+      "rationale": "An afternoon social is listed in the schedule."
+     }
+    ]
+   }
+  ]
+ }
 }

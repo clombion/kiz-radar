@@ -1,33 +1,40 @@
 {
- "batch": "event-16620",
- "events": [
-  {
-   "event_id": 16620,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16620",
+  "events": [
+   {
+    "event_id": 16620,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
+     }
+    ]
+   }
+  ]
+ }
 }

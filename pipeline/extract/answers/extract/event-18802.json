@@ -1,239 +1,246 @@
 {
- "batch": "event-18802",
- "events": [
-  {
-   "event_id": 18802,
-   "artists": [
-    {
-     "name_as_written": "JADILISON SANTAROSA",
-     "role": "mc",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ JADILISON SANTAROSA ⭐"
-    },
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ Shark"
-    },
-    {
-     "name_as_written": "DJ Pingusso",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ Pingusso"
-    },
-    {
-     "name_as_written": "DJ Neo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ Neo"
-    },
-    {
-     "name_as_written": "DJ Lucas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ Lucas"
-    },
-    {
-     "name_as_written": "DJ Estefanio Lima",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ Estefanio Lima"
-    },
-    {
-     "name_as_written": "DJ Nice Life",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ Nice Life"
-    },
-    {
-     "name_as_written": "DJ Nao",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ Nao"
-    },
-    {
-     "name_as_written": "DJ Sabura",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ Sabura"
-    },
-    {
-     "name_as_written": "DJ Oceano",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ Oceano"
-    },
-    {
-     "name_as_written": "DJ Hegza",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ Hegza"
-    },
-    {
-     "name_as_written": "DJ’s D&L Beats",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DJ’s D&L Beats"
-    },
-    {
-     "name_as_written": "Jojo & Jenny",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Jojo & Jenny"
-    },
-    {
-     "name_as_written": "Fred Nelson & Morgane",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Fred Nelson & Morgane"
-    },
-    {
-     "name_as_written": "Jesus & Anni",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Jesus & Anni"
-    },
-    {
-     "name_as_written": "Tony Pirata",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Tony Pirata"
-    },
-    {
-     "name_as_written": "Enah & Pocahontas",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Enah & Pocahontas"
-    },
-    {
-     "name_as_written": "Dwe & Gabi",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Dwe & Gabi"
-    },
-    {
-     "name_as_written": "Aurea & Tresor",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Aurea & Tresor"
-    },
-    {
-     "name_as_written": "Akran & Sara",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Akran & Sara"
-    },
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ JP & Stephy"
-    },
-    {
-     "name_as_written": "Eddy Vents",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Eddy Vents"
-    },
-    {
-     "name_as_written": "Jack & Sara",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Jack & Sara"
-    },
-    {
-     "name_as_written": "Luis & Karen",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Luis & Karen"
-    },
-    {
-     "name_as_written": "Morenasso & Naïs",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Morenasso & Naïs"
-    },
-    {
-     "name_as_written": "Moorea",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Moorea"
-    },
-    {
-     "name_as_written": "Miguel & Monica",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Miguel & Monica"
-    },
-    {
-     "name_as_written": "Keco & Monica",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Keco & Monica"
-    },
-    {
-     "name_as_written": "Tomas Keita",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Tomas Keita"
-    },
-    {
-     "name_as_written": "Tabanka",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Tabanka"
-    },
-    {
-     "name_as_written": "Dr Kizomba & Laura",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": null,
-     "source_line": "⭐ Dr Kizomba & Laura"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 ROOMS",
-     "rationale": "The heading states there are three rooms, which means more than one dance room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "KIZOMBA & SEMBA — INSTRUCTORS",
-     "rationale": "A list of instructors under this heading shows that dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18802",
+  "events": [
+   {
+    "event_id": 18802,
+    "artists": [
+     {
+      "name_as_written": "JADILISON SANTAROSA",
+      "role": "mc",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ JADILISON SANTAROSA ⭐"
+     },
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ Shark"
+     },
+     {
+      "name_as_written": "DJ Pingusso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ Pingusso"
+     },
+     {
+      "name_as_written": "DJ Neo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ Neo"
+     },
+     {
+      "name_as_written": "DJ Lucas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ Lucas"
+     },
+     {
+      "name_as_written": "DJ Estefanio Lima",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ Estefanio Lima"
+     },
+     {
+      "name_as_written": "DJ Nice Life",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ Nice Life"
+     },
+     {
+      "name_as_written": "DJ Nao",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ Nao"
+     },
+     {
+      "name_as_written": "DJ Sabura",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ Sabura"
+     },
+     {
+      "name_as_written": "DJ Oceano",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ Oceano"
+     },
+     {
+      "name_as_written": "DJ Hegza",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ Hegza"
+     },
+     {
+      "name_as_written": "DJ’s D&L Beats",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DJ’s D&L Beats"
+     },
+     {
+      "name_as_written": "Jojo & Jenny",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Jojo & Jenny"
+     },
+     {
+      "name_as_written": "Fred Nelson & Morgane",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Fred Nelson & Morgane"
+     },
+     {
+      "name_as_written": "Jesus & Anni",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Jesus & Anni"
+     },
+     {
+      "name_as_written": "Tony Pirata",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Tony Pirata"
+     },
+     {
+      "name_as_written": "Enah & Pocahontas",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Enah & Pocahontas"
+     },
+     {
+      "name_as_written": "Dwe & Gabi",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Dwe & Gabi"
+     },
+     {
+      "name_as_written": "Aurea & Tresor",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Aurea & Tresor"
+     },
+     {
+      "name_as_written": "Akran & Sara",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Akran & Sara"
+     },
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ JP & Stephy"
+     },
+     {
+      "name_as_written": "Eddy Vents",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Eddy Vents"
+     },
+     {
+      "name_as_written": "Jack & Sara",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Jack & Sara"
+     },
+     {
+      "name_as_written": "Luis & Karen",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Luis & Karen"
+     },
+     {
+      "name_as_written": "Morenasso & Naïs",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Morenasso & Naïs"
+     },
+     {
+      "name_as_written": "Moorea",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Moorea"
+     },
+     {
+      "name_as_written": "Miguel & Monica",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Miguel & Monica"
+     },
+     {
+      "name_as_written": "Keco & Monica",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Keco & Monica"
+     },
+     {
+      "name_as_written": "Tomas Keita",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Tomas Keita"
+     },
+     {
+      "name_as_written": "Tabanka",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Tabanka"
+     },
+     {
+      "name_as_written": "Dr Kizomba & Laura",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "⭐ Dr Kizomba & Laura"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 ROOMS",
+      "rationale": "The heading states there are three rooms, which means more than one dance room."
+     },
+     {
+      "feature": "workshops",
+      "quote": "KIZOMBA & SEMBA — INSTRUCTORS",
+      "rationale": "A list of instructors under this heading shows that dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

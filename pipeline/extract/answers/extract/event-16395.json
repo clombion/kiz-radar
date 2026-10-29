@@ -1,111 +1,118 @@
 {
- "batch": "event-16395",
- "events": [
-  {
-   "event_id": 16395,
-   "artists": [
-    {
-     "name_as_written": "Saïd & Oksana",
-     "role": "teacher",
-     "style": null,
-     "country": "FR / UA",
-     "source_line": "👊🏽Saïd & Oksana (FR / UA)"
-    },
-    {
-     "name_as_written": "Sélim & Kiki",
-     "role": "teacher",
-     "style": null,
-     "country": "FR / D",
-     "source_line": "👊🏽Sélim & Kiki (FR / D)"
-    },
-    {
-     "name_as_written": "Chris MSKL",
-     "role": "teacher",
-     "style": null,
-     "country": "FR",
-     "source_line": "👊🏽Chris MSKL (FR)"
-    },
-    {
-     "name_as_written": "José & Coralie",
-     "role": "teacher",
-     "style": null,
-     "country": "CH",
-     "source_line": "👊🏽José & Coralie (CH)"
-    },
-    {
-     "name_as_written": "JP & Ramona",
-     "role": "teacher",
-     "style": null,
-     "country": "CH",
-     "source_line": "👊🏽JP & Ramona (CH)"
-    },
-    {
-     "name_as_written": "Kalypso & Adé",
-     "role": "teacher",
-     "style": null,
-     "country": "CH",
-     "source_line": "👊🏽Kalypso & Adé (CH)"
-    },
-    {
-     "name_as_written": "Chris & Ruth",
-     "role": "teacher",
-     "style": null,
-     "country": "CH",
-     "source_line": "👊🏽Chris & Ruth (CH)"
-    },
-    {
-     "name_as_written": "DJ Levi’s",
-     "role": "dj",
-     "style": null,
-     "country": "FR",
-     "source_line": "👊🏽DJ Levi’s (FR)"
-    },
-    {
-     "name_as_written": "DJ Nam’s",
-     "role": "dj",
-     "style": null,
-     "country": "FR",
-     "source_line": "👊🏽DJ Nam’s (FR)"
-    },
-    {
-     "name_as_written": "DJ AlexDre",
-     "role": "dj",
-     "style": null,
-     "country": "CH",
-     "source_line": "👊🏽DJ AlexDre (CH)"
-    },
-    {
-     "name_as_written": "DJ Klima",
-     "role": "dj",
-     "style": null,
-     "country": "CH",
-     "source_line": "👊🏽DJ Klima (CH)"
-    },
-    {
-     "name_as_written": "DJ Jahnaï",
-     "role": "dj",
-     "style": null,
-     "country": "CH",
-     "source_line": "👊🏽DJ Jahnaï (CH)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "workshops given by national",
-     "rationale": "The description states that workshops are given by national and international instructors."
-    },
-    {
-     "feature": "competition",
-     "quote": "Who will be the first Swiss champions in the couples",
-     "rationale": "The event is a qualification battle to choose Swiss champions in couples and solo categories."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "has rooms available at a special rate",
-     "rationale": "A hotel near the venue offers a negotiated special rate for festival participants, while accommodation is not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16395",
+  "events": [
+   {
+    "event_id": 16395,
+    "artists": [
+     {
+      "name_as_written": "Saïd & Oksana",
+      "role": "teacher",
+      "style": null,
+      "country": "FR / UA",
+      "source_line": "👊🏽Saïd & Oksana (FR / UA)"
+     },
+     {
+      "name_as_written": "Sélim & Kiki",
+      "role": "teacher",
+      "style": null,
+      "country": "FR / D",
+      "source_line": "👊🏽Sélim & Kiki (FR / D)"
+     },
+     {
+      "name_as_written": "Chris MSKL",
+      "role": "teacher",
+      "style": null,
+      "country": "FR",
+      "source_line": "👊🏽Chris MSKL (FR)"
+     },
+     {
+      "name_as_written": "José & Coralie",
+      "role": "teacher",
+      "style": null,
+      "country": "CH",
+      "source_line": "👊🏽José & Coralie (CH)"
+     },
+     {
+      "name_as_written": "JP & Ramona",
+      "role": "teacher",
+      "style": null,
+      "country": "CH",
+      "source_line": "👊🏽JP & Ramona (CH)"
+     },
+     {
+      "name_as_written": "Kalypso & Adé",
+      "role": "teacher",
+      "style": null,
+      "country": "CH",
+      "source_line": "👊🏽Kalypso & Adé (CH)"
+     },
+     {
+      "name_as_written": "Chris & Ruth",
+      "role": "teacher",
+      "style": null,
+      "country": "CH",
+      "source_line": "👊🏽Chris & Ruth (CH)"
+     },
+     {
+      "name_as_written": "DJ Levi’s",
+      "role": "dj",
+      "style": null,
+      "country": "FR",
+      "source_line": "👊🏽DJ Levi’s (FR)"
+     },
+     {
+      "name_as_written": "DJ Nam’s",
+      "role": "dj",
+      "style": null,
+      "country": "FR",
+      "source_line": "👊🏽DJ Nam’s (FR)"
+     },
+     {
+      "name_as_written": "DJ AlexDre",
+      "role": "dj",
+      "style": null,
+      "country": "CH",
+      "source_line": "👊🏽DJ AlexDre (CH)"
+     },
+     {
+      "name_as_written": "DJ Klima",
+      "role": "dj",
+      "style": null,
+      "country": "CH",
+      "source_line": "👊🏽DJ Klima (CH)"
+     },
+     {
+      "name_as_written": "DJ Jahnaï",
+      "role": "dj",
+      "style": null,
+      "country": "CH",
+      "source_line": "👊🏽DJ Jahnaï (CH)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "workshops given by national",
+      "rationale": "The description states that workshops are given by national and international instructors."
+     },
+     {
+      "feature": "competition",
+      "quote": "Who will be the first Swiss champions in the couples",
+      "rationale": "The event is a qualification battle to choose Swiss champions in couples and solo categories."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "has rooms available at a special rate",
+      "rationale": "A hotel near the venue offers a negotiated special rate for festival participants, while accommodation is not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

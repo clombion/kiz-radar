@@ -1,36 +1,43 @@
 {
- "batch": "event-16600",
- "events": [
-  {
-   "event_id": 16600,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Dance workshops (Semba, Kizomba, Kuduro)",
-     "rationale": "The schedule lists dance classes as part of the weekend."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live Angolan music & DJ sets",
-     "rationale": "The opening night includes live music alongside DJ sets."
-    },
-    {
-     "feature": "shows",
-     "quote": "Cultural dance showcases",
-     "rationale": "The 'What to Expect' section promises dance showcases."
-    },
-    {
-     "feature": "competition",
-     "quote": "Mr. & Miss Angola Canada Competition, a prestigious cultural pageant",
-     "rationale": "The event centres on a pageant competition for contestants."
-    },
-    {
-     "feature": "after_party",
-     "quote": "concert and after‑party",
-     "rationale": "The final night ends with an after-party following the concert."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16600",
+  "events": [
+   {
+    "event_id": 16600,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Dance workshops (Semba, Kizomba, Kuduro)",
+      "rationale": "The schedule lists dance classes as part of the weekend."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live Angolan music & DJ sets",
+      "rationale": "The opening night includes live music alongside DJ sets."
+     },
+     {
+      "feature": "shows",
+      "quote": "Cultural dance showcases",
+      "rationale": "The 'What to Expect' section promises dance showcases."
+     },
+     {
+      "feature": "competition",
+      "quote": "Mr. & Miss Angola Canada Competition, a prestigious cultural pageant",
+      "rationale": "The event centres on a pageant competition for contestants."
+     },
+     {
+      "feature": "after_party",
+      "quote": "concert and after‑party",
+      "rationale": "The final night ends with an after-party following the concert."
+     }
+    ]
+   }
+  ]
+ }
 }

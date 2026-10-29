@@ -1,207 +1,214 @@
 {
- "batch": "event-14589",
- "events": [
-  {
-   "event_id": 14589,
-   "artists": [
-    {
-     "name_as_written": "DJ DANI FERNANDES",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🔴 DJ DANI FERNANDES 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ LISA ROSE",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🔴 DJ LISA ROSE 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ LUCAS",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🔴 DJ LUCAS 🇵🇹"
-    },
-    {
-     "name_as_written": "DJ SHARK",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🔴 DJ SHARK 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ BARTEF",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "🔴 DJ BARTEF 🇵🇱"
-    },
-    {
-     "name_as_written": "DJ HUGO SMILE",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🔴 DJ HUGO SMILE 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ CHAD",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🔴 DJ CHAD 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ DAVID RUELA",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🔴 DJ DAVID RUELA 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ MADEJ",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "🔴 DJ MADEJ 🇵🇱"
-    },
-    {
-     "name_as_written": "DJ DO ZANGADO",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🔴 DJ DO ZANGADO 🇵🇹"
-    },
-    {
-     "name_as_written": "ALBIR",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🔴 ALBIR 🇪🇸"
-    },
-    {
-     "name_as_written": "AUDI & LAURA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇺🇸 🇪🇸",
-     "source_line": "🔴 AUDI & LAURA 🇺🇸 🇪🇸"
-    },
-    {
-     "name_as_written": "SAID & OKSANA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷 🇺🇦",
-     "source_line": "🔴 SAID & OKSANA 🇫🇷 🇺🇦"
-    },
-    {
-     "name_as_written": "LEDOUX KINGSMAN",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🔴 LEDOUX KINGSMAN 🇫🇷"
-    },
-    {
-     "name_as_written": "TRESOR & AUREA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱 🇪🇸",
-     "source_line": "🔴 TRESOR & AUREA 🇳🇱 🇪🇸"
-    },
-    {
-     "name_as_written": "LUIS & KAREN",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🔴 LUIS & KAREN 🇪🇸"
-    },
-    {
-     "name_as_written": "FABRICIO DO ZANGADO",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🔴 FABRICIO DO ZANGADO 🇵🇹"
-    },
-    {
-     "name_as_written": "KAMA & PAWEL",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "🔴 KAMA & PAWEL 🇵🇱"
-    },
-    {
-     "name_as_written": "ANA LEGACY AGENCY MEDIA",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "1 – ANA LEGACY AGENCY MEDIA 📲"
-    },
-    {
-     "name_as_written": "Alla Luksha",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "1 – Alla Luksha"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL-IN-ONE HOTEL",
-     "rationale": "The event is described as an all-in-one hotel, meaning the parties take place in the hotel where dancers stay."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Book your PASS AND ROOM HERE",
-     "rationale": "The pass and room are booked together as a package, suggesting accommodation is part of the pass."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "BREAKFAST INCLUDED",
-     "rationale": "Breakfast is stated as included in the hotel services."
-    },
-    {
-     "feature": "workshops",
-     "quote": "OVER 20H OF AMAZING WORKSHOPS",
-     "rationale": "Over 20 hours of dance workshops are listed as part of the program."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXI DANCERS",
-     "rationale": "The description explicitly lists taxi dancers among the features."
-    },
-    {
-     "feature": "competition",
-     "quote": "BATTLE KIZZ CONTEST",
-     "rationale": "A battle contest is part of the program."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "1 PRE-PARTY ON WEDNESDAY",
-     "rationale": "A pre-party on Wednesday is listed before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "AFTER PARTIES (6AM TO 9AM)",
-     "rationale": "After parties are scheduled from 6AM to 9AM."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "4 SOCIALS (3PM TO 8PM)",
-     "rationale": "Four daytime socials from 3PM to 8PM are listed."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "excluding Masterclasses",
-     "rationale": "The pass description refers to masterclasses being offered as separate from the pass."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "LARGE DANCE FLOORS",
-     "rationale": "The plural dance floors indicate more than one dance floor."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:39:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14589",
+  "events": [
+   {
+    "event_id": 14589,
+    "artists": [
+     {
+      "name_as_written": "DJ DANI FERNANDES",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🔴 DJ DANI FERNANDES 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ LISA ROSE",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🔴 DJ LISA ROSE 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ LUCAS",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🔴 DJ LUCAS 🇵🇹"
+     },
+     {
+      "name_as_written": "DJ SHARK",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🔴 DJ SHARK 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ BARTEF",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "🔴 DJ BARTEF 🇵🇱"
+     },
+     {
+      "name_as_written": "DJ HUGO SMILE",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🔴 DJ HUGO SMILE 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ CHAD",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🔴 DJ CHAD 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ DAVID RUELA",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🔴 DJ DAVID RUELA 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ MADEJ",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "🔴 DJ MADEJ 🇵🇱"
+     },
+     {
+      "name_as_written": "DJ DO ZANGADO",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🔴 DJ DO ZANGADO 🇵🇹"
+     },
+     {
+      "name_as_written": "ALBIR",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🔴 ALBIR 🇪🇸"
+     },
+     {
+      "name_as_written": "AUDI & LAURA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇺🇸 🇪🇸",
+      "source_line": "🔴 AUDI & LAURA 🇺🇸 🇪🇸"
+     },
+     {
+      "name_as_written": "SAID & OKSANA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷 🇺🇦",
+      "source_line": "🔴 SAID & OKSANA 🇫🇷 🇺🇦"
+     },
+     {
+      "name_as_written": "LEDOUX KINGSMAN",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🔴 LEDOUX KINGSMAN 🇫🇷"
+     },
+     {
+      "name_as_written": "TRESOR & AUREA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱 🇪🇸",
+      "source_line": "🔴 TRESOR & AUREA 🇳🇱 🇪🇸"
+     },
+     {
+      "name_as_written": "LUIS & KAREN",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🔴 LUIS & KAREN 🇪🇸"
+     },
+     {
+      "name_as_written": "FABRICIO DO ZANGADO",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🔴 FABRICIO DO ZANGADO 🇵🇹"
+     },
+     {
+      "name_as_written": "KAMA & PAWEL",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "🔴 KAMA & PAWEL 🇵🇱"
+     },
+     {
+      "name_as_written": "ANA LEGACY AGENCY MEDIA",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "1 – ANA LEGACY AGENCY MEDIA 📲"
+     },
+     {
+      "name_as_written": "Alla Luksha",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "1 – Alla Luksha"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL-IN-ONE HOTEL",
+      "rationale": "The event is described as an all-in-one hotel, meaning the parties take place in the hotel where dancers stay."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Book your PASS AND ROOM HERE",
+      "rationale": "The pass and room are booked together as a package, suggesting accommodation is part of the pass."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "BREAKFAST INCLUDED",
+      "rationale": "Breakfast is stated as included in the hotel services."
+     },
+     {
+      "feature": "workshops",
+      "quote": "OVER 20H OF AMAZING WORKSHOPS",
+      "rationale": "Over 20 hours of dance workshops are listed as part of the program."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXI DANCERS",
+      "rationale": "The description explicitly lists taxi dancers among the features."
+     },
+     {
+      "feature": "competition",
+      "quote": "BATTLE KIZZ CONTEST",
+      "rationale": "A battle contest is part of the program."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "1 PRE-PARTY ON WEDNESDAY",
+      "rationale": "A pre-party on Wednesday is listed before the main event."
+     },
+     {
+      "feature": "after_party",
+      "quote": "AFTER PARTIES (6AM TO 9AM)",
+      "rationale": "After parties are scheduled from 6AM to 9AM."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "4 SOCIALS (3PM TO 8PM)",
+      "rationale": "Four daytime socials from 3PM to 8PM are listed."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "excluding Masterclasses",
+      "rationale": "The pass description refers to masterclasses being offered as separate from the pass."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "LARGE DANCE FLOORS",
+      "rationale": "The plural dance floors indicate more than one dance floor."
+     }
+    ]
+   }
+  ]
+ }
 }

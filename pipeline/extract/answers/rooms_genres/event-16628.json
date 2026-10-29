@@ -1,33 +1,40 @@
 {
- "batch": "event-16628",
- "events": [
-  {
-   "event_id": 16628,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "other",
-     "genre_as_written": "West Coast Swing",
-     "quote": "1 day and 1 evening 100% West Coast Swing (Friday)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "rock",
-     "quote": "3 days of dancing (rock, swing, Latin dances, WCS…)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "swing",
-     "quote": "2 days of rock/swing and Latin dances (Saturday and Sunday)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Latin dances",
-     "quote": "2 days of rock/swing and Latin dances (Saturday and Sunday)"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16628",
+  "events": [
+   {
+    "event_id": 16628,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "other",
+      "genre_as_written": "West Coast Swing",
+      "quote": "1 day and 1 evening 100% West Coast Swing (Friday)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "rock",
+      "quote": "3 days of dancing (rock, swing, Latin dances, WCS…)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "swing",
+      "quote": "2 days of rock/swing and Latin dances (Saturday and Sunday)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Latin dances",
+      "quote": "2 days of rock/swing and Latin dances (Saturday and Sunday)"
+     }
+    ]
+   }
+  ]
+ }
 }

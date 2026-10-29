@@ -1,16 +1,23 @@
 {
- "batch": "event-16748",
- "events": [
-  {
-   "event_id": 16748,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Teachers will share their knowledge",
-     "rationale": "The line says teachers will share their knowledge at the event, which indicates dance classes or workshops are part of it."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16748",
+  "events": [
+   {
+    "event_id": 16748,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Teachers will share their knowledge",
+      "rationale": "The line says teachers will share their knowledge at the event, which indicates dance classes or workshops are part of it."
+     }
+    ]
+   }
+  ]
+ }
 }

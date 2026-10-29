@@ -1,44 +1,51 @@
 {
- "batch": "event-15275",
- "events": [
-  {
-   "event_id": 15275,
-   "artists": [
-    {
-     "name_as_written": "Steve Bakoula",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Registration & information: [Steve Bakoula 0616588178]"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)",
-     "rationale": "The description states that Latin dance workshops are part of the event."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "all levels welcome",
-     "rationale": "The workshops are explicitly open to all levels."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Includes 3 days, 2 nights",
-     "rationale": "The full pass is stated to include nights, meaning accommodation is part of the package."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board",
-     "rationale": "Full board is listed as part of the pass or package."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms, 3 atmospheres with 1 class",
-     "rationale": "The evening parties take place in two rooms with three atmospheres."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15275",
+  "events": [
+   {
+    "event_id": 15275,
+    "artists": [
+     {
+      "name_as_written": "Steve Bakoula",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Registration & information: [Steve Bakoula 0616588178]"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)",
+      "rationale": "The description states that Latin dance workshops are part of the event."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "all levels welcome",
+      "rationale": "The workshops are explicitly open to all levels."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Includes 3 days, 2 nights",
+      "rationale": "The full pass is stated to include nights, meaning accommodation is part of the package."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Full board",
+      "rationale": "Full board is listed as part of the pass or package."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms, 3 atmospheres with 1 class",
+      "rationale": "The evening parties take place in two rooms with three atmospheres."
+     }
+    ]
+   }
+  ]
+ }
 }

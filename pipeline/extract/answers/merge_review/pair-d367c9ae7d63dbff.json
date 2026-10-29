@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@alex+delphine",
+ "key_b": "p:alex@alex+maylie",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d367c9ae7d63dbff",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Alex & Delphine and Alex & Maylie are different couples with different partners; only the common first name Alex and France match."
+ }
+}

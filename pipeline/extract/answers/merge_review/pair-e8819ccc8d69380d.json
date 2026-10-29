@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+natalia",
+ "key_b": "p:andrea@andrea+silvia",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "e8819ccc8d69380d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Common first name Andrea with different partners (Natalia vs Silvia); the shared Italy presence is weak evidence and does not settle it."
+ }
+}

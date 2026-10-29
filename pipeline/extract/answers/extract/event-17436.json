@@ -1,21 +1,28 @@
 {
- "batch": "event-17436",
- "events": [
-  {
-   "event_id": 17436,
-   "artists": [],
-   "features": [
-    {
-     "feature": "camping",
-     "quote": "tent-only camping experience",
-     "rationale": "The description states the event is a tent-only camping experience."
-    },
-    {
-     "feature": "competition",
-     "quote": "friendly competitions",
-     "rationale": "The event lists friendly competitions among its activities."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17436",
+  "events": [
+   {
+    "event_id": 17436,
+    "artists": [],
+    "features": [
+     {
+      "feature": "camping",
+      "quote": "tent-only camping experience",
+      "rationale": "The description states the event is a tent-only camping experience."
+     },
+     {
+      "feature": "competition",
+      "quote": "friendly competitions",
+      "rationale": "The event lists friendly competitions among its activities."
+     }
+    ]
+   }
+  ]
+ }
 }

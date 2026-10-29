@@ -1,103 +1,110 @@
 {
- "batch": "event-16160",
- "events": [
-  {
-   "event_id": 16160,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "Package 1 – Angola Cultural Experience (10 days)",
-     "group_size": 1,
-     "days": 10,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 1800.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Single room: €1,800 (deposit €200)"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "Package 1 – Angola Cultural Experience (10 days)",
-     "group_size": null,
-     "days": 10,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 1500.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Double room: €1,500 (deposit €150)"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "Package 2 – Culture & Desert Experience (13 days)",
-     "group_size": 1,
-     "days": 13,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 2800.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Single room: €2,800 (deposit €700)"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "Package 2 – Culture & Desert Experience (13 days)",
-     "group_size": null,
-     "days": 13,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 2500.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Double room: €2,500 (deposit €600)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:59:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16160",
+  "events": [
+   {
+    "event_id": 16160,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Package 1 – Angola Cultural Experience (10 days)",
+      "group_size": 1,
+      "days": 10,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 1800.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Single room: €1,800 (deposit €200)"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Package 1 – Angola Cultural Experience (10 days)",
+      "group_size": null,
+      "days": 10,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 1500.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Double room: €1,500 (deposit €150)"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Package 2 – Culture & Desert Experience (13 days)",
+      "group_size": 1,
+      "days": 13,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 2800.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Single room: €2,800 (deposit €700)"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Package 2 – Culture & Desert Experience (13 days)",
+      "group_size": null,
+      "days": 13,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 2500.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Double room: €2,500 (deposit €600)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

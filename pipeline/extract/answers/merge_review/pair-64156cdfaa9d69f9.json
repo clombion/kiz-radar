@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lucie@johann+lucie",
+ "key_b": "p:lucie@lucie+titony",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "64156cdfaa9d69f9",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Common first name Lucie with different partners (Johann vs Titony) and no shared event; France stated on both sides is weak evidence."
+ }
+}

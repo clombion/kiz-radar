@@ -1,38 +1,45 @@
 {
- "batch": "event-15810",
- "events": [
-  {
-   "event_id": 15810,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Over 25 Master Dance Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Over 25 Master Dance Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Over 25 Master Dance Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cha-Cha-Cha",
-     "quote": "Over 25 Master Dance Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Mambo",
-     "quote": "Over 25 Master Dance Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15810",
+  "events": [
+   {
+    "event_id": 15810,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Over 25 Master Dance Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Over 25 Master Dance Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Over 25 Master Dance Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cha-Cha-Cha",
+      "quote": "Over 25 Master Dance Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Mambo",
+      "quote": "Over 25 Master Dance Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
+     }
+    ]
+   }
+  ]
+ }
 }

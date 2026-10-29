@@ -1,41 +1,48 @@
 {
- "batch": "event-18180",
- "events": [
-  {
-   "event_id": 18180,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops throughout the morning and afternoon",
-     "rationale": "The program lists workshops on each day of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Access to all workshops, Shows and parties",
-     "rationale": "The full pass grants access to shows, so shows are part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Daytime social",
-     "rationale": "The program lists daytime socials on Saturday and Sunday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Latino Room",
-     "rationale": "The program names a Latino Room in addition to the Kizomba Room, so there is more than one dance room."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "CENTRAL HOTEL – SAN CRISTÓBAL SCHOOL HOTEL",
-     "rationale": "The description gives a recommended hotel with negotiated per-person room rates, and the accommodation is not part of the pass."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "A FULL PASS is required to stay at the host hotel.",
-     "rationale": "Dancers stay at the host hotel, which is the same school venue where the event takes place."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18180",
+  "events": [
+   {
+    "event_id": 18180,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops throughout the morning and afternoon",
+      "rationale": "The program lists workshops on each day of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "Access to all workshops, Shows and parties",
+      "rationale": "The full pass grants access to shows, so shows are part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Daytime social",
+      "rationale": "The program lists daytime socials on Saturday and Sunday."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Latino Room",
+      "rationale": "The program names a Latino Room in addition to the Kizomba Room, so there is more than one dance room."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "CENTRAL HOTEL – SAN CRISTÓBAL SCHOOL HOTEL",
+      "rationale": "The description gives a recommended hotel with negotiated per-person room rates, and the accommodation is not part of the pass."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "A FULL PASS is required to stay at the host hotel.",
+      "rationale": "Dancers stay at the host hotel, which is the same school venue where the event takes place."
+     }
+    ]
+   }
+  ]
+ }
 }

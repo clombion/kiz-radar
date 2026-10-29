@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manu@manu+olivia",
+ "key_b": "p:manusaudade",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "78d5c046617833ed",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Manu with partner Olivia appears on both sides, with the full name Manu Saudade and France events on each side."
+ }
+}

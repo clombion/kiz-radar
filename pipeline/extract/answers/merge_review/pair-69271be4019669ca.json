@@ -1,0 +1,13 @@
+{
+ "key_a": "p:heneco@heneco+kiki",
+ "key_b": "p:heneco@heneco+marta",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "69271be4019669ca",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The distinctive stage name Heneco is the common element of two couples, both stated France, and the partner change alone does not separate them."
+ }
+}

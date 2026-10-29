@@ -1,0 +1,13 @@
+{
+ "key_a": "p:george@evgenia+george",
+ "key_b": "p:georgeplom",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "e6314206bba7bb3c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "George & Evgenia and George Plom are both listed as bachata teachers at the same Thessaloniki event on the same date with Greece stated."
+ }
+}

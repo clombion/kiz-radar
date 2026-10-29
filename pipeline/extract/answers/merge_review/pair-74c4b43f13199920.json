@@ -1,0 +1,13 @@
+{
+ "key_a": "p:enah@enah+lolahontas",
+ "key_b": "p:enah@enah+pocahontas",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "74c4b43f13199920",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Enah is distinctive and the partner Lolahontas is a spelling variant of Pocahontas, with France and Spain stated on both sides."
+ }
+}

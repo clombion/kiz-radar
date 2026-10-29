@@ -1,0 +1,13 @@
+{
+ "key_a": "p:max@max+silvia",
+ "key_b": "p:maxdousey",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "dd01556208c9e7d4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Silvia is the shared partner in the same couple, and Max Dousey is the full form of the Max entry in the same Italian scene."
+ }
+}

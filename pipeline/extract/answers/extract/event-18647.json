@@ -1,26 +1,33 @@
 {
- "batch": "event-18647",
- "events": [
-  {
-   "event_id": 18647,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "An ALL-IN-ONE experience featuring 6 official rooms",
-     "rationale": "The description calls the event an all-in-one experience held at the Logis Hôtel Lyon Est, which suggests the parties take place in the hotel where dancers stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "featuring 6 official rooms",
-     "rationale": "Six official dance rooms are explicitly stated, plus a secret seventh bonus room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "more than 30 hours of workshops",
-     "rationale": "The event explicitly offers more than 30 hours of workshops."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18647",
+  "events": [
+   {
+    "event_id": 18647,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "An ALL-IN-ONE experience featuring 6 official rooms",
+      "rationale": "The description calls the event an all-in-one experience held at the Logis Hôtel Lyon Est, which suggests the parties take place in the hotel where dancers stay."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "featuring 6 official rooms",
+      "rationale": "Six official dance rooms are explicitly stated, plus a secret seventh bonus room."
+     },
+     {
+      "feature": "workshops",
+      "quote": "more than 30 hours of workshops",
+      "rationale": "The event explicitly offers more than 30 hours of workshops."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:latinmaster",
+ "key_b": "p:latinpromaster",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "22e61fe6ba6343a1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "DJ Latin Master (Rotterdam, Salsa) and DJ Latin Pro Master (Groningen) differ by an inserted word, and two Dutch DJs with similar names do not settle it."
+ }
+}

@@ -1,205 +1,212 @@
 {
- "batch": "event-18722",
- "events": [
-  {
-   "event_id": 18722,
-   "artists": [
-    {
-     "name_as_written": "DJ Sabura",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "DJ Sabura 🇵🇹"
-    },
-    {
-     "name_as_written": "DJ Miro Kikola",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇬🇧",
-     "source_line": "DJ Miro Kikola 🇦🇴🇬🇧"
-    },
-    {
-     "name_as_written": "DJ Chad",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Chad 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Hugo Smile",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Hugo Smile 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Traybeatz",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ Traybeatz 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ J’Larious",
-     "role": "dj",
-     "style": null,
-     "country": "🇯🇲🇺🇸",
-     "source_line": "DJ J’Larious 🇯🇲🇺🇸"
-    },
-    {
-     "name_as_written": "DJ Fouss",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Fouss 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Dany",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇿",
-     "source_line": "DJ Dany 🇨🇿"
-    },
-    {
-     "name_as_written": "DJ Djeemix",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷🇩🇪",
-     "source_line": "DJ Djeemix 🇫🇷🇩🇪"
-    },
-    {
-     "name_as_written": "DJ Diva-in",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇻",
-     "source_line": "DJ Diva-in 🇱🇻"
-    },
-    {
-     "name_as_written": "DJ Mia",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇪",
-     "source_line": "DJ Mia 🇪🇪"
-    },
-    {
-     "name_as_written": "DJ D’Dah",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇪",
-     "source_line": "DJ D’Dah 🇪🇪"
-    },
-    {
-     "name_as_written": "Said Dstreet",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Said Dstreet 🇫🇷"
-    },
-    {
-     "name_as_written": "Jules & Yuna TarraxoPop",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Jules & Yuna TarraxoPop 🇫🇷"
-    },
-    {
-     "name_as_written": "Val Danza & Jossy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪🇨🇺🇳🇴",
-     "source_line": "Val Danza & Jossy 🇩🇪🇨🇺🇳🇴"
-    },
-    {
-     "name_as_written": "Vanildo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇻 🇳🇱",
-     "source_line": "Vanildo 🇨🇻 🇳🇱"
-    },
-    {
-     "name_as_written": "Justinho",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇳🇫🇷",
-     "source_line": "Justinho 🇸🇳🇫🇷"
-    },
-    {
-     "name_as_written": "M-Xtrela Diogo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "M-Xtrela Diogo 🇦🇴"
-    },
-    {
-     "name_as_written": "Teresa Freitas & Emanuel N.Pedro",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "Teresa Freitas & Emanuel N.Pedro 🇦🇴"
-    },
-    {
-     "name_as_written": "Sven & Zane",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇮🇱🇻",
-     "source_line": "Sven & Zane 🇫🇮🇱🇻"
-    },
-    {
-     "name_as_written": "Nemanja Sonero",
-     "role": "teacher",
-     "style": null,
-     "country": "🇷🇸",
-     "source_line": "Nemanja Sonero 🇷🇸"
-    },
-    {
-     "name_as_written": "Miguel Brandao & Maria",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "Miguel Brandao & Maria 🇵🇹"
-    },
-    {
-     "name_as_written": "Riikka",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇮",
-     "source_line": "Riikka 🇫🇮"
-    },
-    {
-     "name_as_written": "Sofie",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "Sofie 🇸🇪"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 NIGHT PARTIES- 2 rooms",
-     "rationale": "The night parties are listed as taking place in 2 rooms, so there is more than one dance floor."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 DAY SOCIALS- 2 rooms",
-     "rationale": "The programme includes three daytime socials."
-    },
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS- 2 rooms",
-     "rationale": "Dance workshops are part of the programme."
-    },
-    {
-     "feature": "competition",
-     "quote": "BATTLE KIZZ Qualifications",
-     "rationale": "A battle qualification round is part of the event."
-    },
-    {
-     "feature": "private_classes",
-     "quote": "PRIVATE CLASSES",
-     "rationale": "Private classes are listed among the offerings."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18722",
+  "events": [
+   {
+    "event_id": 18722,
+    "artists": [
+     {
+      "name_as_written": "DJ Sabura",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "DJ Sabura 🇵🇹"
+     },
+     {
+      "name_as_written": "DJ Miro Kikola",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇬🇧",
+      "source_line": "DJ Miro Kikola 🇦🇴🇬🇧"
+     },
+     {
+      "name_as_written": "DJ Chad",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Chad 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Hugo Smile",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Hugo Smile 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Traybeatz",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ Traybeatz 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ J’Larious",
+      "role": "dj",
+      "style": null,
+      "country": "🇯🇲🇺🇸",
+      "source_line": "DJ J’Larious 🇯🇲🇺🇸"
+     },
+     {
+      "name_as_written": "DJ Fouss",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Fouss 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Dany",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇿",
+      "source_line": "DJ Dany 🇨🇿"
+     },
+     {
+      "name_as_written": "DJ Djeemix",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷🇩🇪",
+      "source_line": "DJ Djeemix 🇫🇷🇩🇪"
+     },
+     {
+      "name_as_written": "DJ Diva-in",
+      "role": "dj",
+      "style": null,
+      "country": "🇱🇻",
+      "source_line": "DJ Diva-in 🇱🇻"
+     },
+     {
+      "name_as_written": "DJ Mia",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇪",
+      "source_line": "DJ Mia 🇪🇪"
+     },
+     {
+      "name_as_written": "DJ D’Dah",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇪",
+      "source_line": "DJ D’Dah 🇪🇪"
+     },
+     {
+      "name_as_written": "Said Dstreet",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Said Dstreet 🇫🇷"
+     },
+     {
+      "name_as_written": "Jules & Yuna TarraxoPop",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Jules & Yuna TarraxoPop 🇫🇷"
+     },
+     {
+      "name_as_written": "Val Danza & Jossy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪🇨🇺🇳🇴",
+      "source_line": "Val Danza & Jossy 🇩🇪🇨🇺🇳🇴"
+     },
+     {
+      "name_as_written": "Vanildo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇻 🇳🇱",
+      "source_line": "Vanildo 🇨🇻 🇳🇱"
+     },
+     {
+      "name_as_written": "Justinho",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇳🇫🇷",
+      "source_line": "Justinho 🇸🇳🇫🇷"
+     },
+     {
+      "name_as_written": "M-Xtrela Diogo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "M-Xtrela Diogo 🇦🇴"
+     },
+     {
+      "name_as_written": "Teresa Freitas & Emanuel N.Pedro",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "Teresa Freitas & Emanuel N.Pedro 🇦🇴"
+     },
+     {
+      "name_as_written": "Sven & Zane",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇮🇱🇻",
+      "source_line": "Sven & Zane 🇫🇮🇱🇻"
+     },
+     {
+      "name_as_written": "Nemanja Sonero",
+      "role": "teacher",
+      "style": null,
+      "country": "🇷🇸",
+      "source_line": "Nemanja Sonero 🇷🇸"
+     },
+     {
+      "name_as_written": "Miguel Brandao & Maria",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "Miguel Brandao & Maria 🇵🇹"
+     },
+     {
+      "name_as_written": "Riikka",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇮",
+      "source_line": "Riikka 🇫🇮"
+     },
+     {
+      "name_as_written": "Sofie",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "Sofie 🇸🇪"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "4 NIGHT PARTIES- 2 rooms",
+      "rationale": "The night parties are listed as taking place in 2 rooms, so there is more than one dance floor."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 DAY SOCIALS- 2 rooms",
+      "rationale": "The programme includes three daytime socials."
+     },
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS- 2 rooms",
+      "rationale": "Dance workshops are part of the programme."
+     },
+     {
+      "feature": "competition",
+      "quote": "BATTLE KIZZ Qualifications",
+      "rationale": "A battle qualification round is part of the event."
+     },
+     {
+      "feature": "private_classes",
+      "quote": "PRIVATE CLASSES",
+      "rationale": "Private classes are listed among the offerings."
+     }
+    ]
+   }
+  ]
+ }
 }

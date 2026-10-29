@@ -1,106 +1,113 @@
 {
- "batch": "event-18295",
- "events": [
-  {
-   "event_id": 18295,
-   "artists": [
-    {
-     "name_as_written": "Liliana De Lima",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Liliana De Lima"
-    },
-    {
-     "name_as_written": "Rokhaya",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Rokhaya"
-    },
-    {
-     "name_as_written": "Anni",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Anni"
-    },
-    {
-     "name_as_written": "Juneline",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Juneline"
-    },
-    {
-     "name_as_written": "Yousra",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Yousra"
-    },
-    {
-     "name_as_written": "Stre",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Stre"
-    },
-    {
-     "name_as_written": "Maria & Lena",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Maria & Lena"
-    },
-    {
-     "name_as_written": "Pidjay & Enora",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Pidjay & Enora"
-    },
-    {
-     "name_as_written": "DJ Neiken",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Neiken"
-    },
-    {
-     "name_as_written": "DJ Romi",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Romi"
-    },
-    {
-     "name_as_written": "DJ Loka",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Loka"
-    },
-    {
-     "name_as_written": "WOW Kizomba",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "fb: WOW Kizomba"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Offers tailor-made workshops to develop all aspects of your dance",
-     "rationale": "The event offers tailor-made dance workshops."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTEL RECOMMENDATIONS:",
-     "rationale": "The event recommends hotels, which are not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18295",
+  "events": [
+   {
+    "event_id": 18295,
+    "artists": [
+     {
+      "name_as_written": "Liliana De Lima",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Liliana De Lima"
+     },
+     {
+      "name_as_written": "Rokhaya",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Rokhaya"
+     },
+     {
+      "name_as_written": "Anni",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Anni"
+     },
+     {
+      "name_as_written": "Juneline",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Juneline"
+     },
+     {
+      "name_as_written": "Yousra",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Yousra"
+     },
+     {
+      "name_as_written": "Stre",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Stre"
+     },
+     {
+      "name_as_written": "Maria & Lena",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Maria & Lena"
+     },
+     {
+      "name_as_written": "Pidjay & Enora",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Pidjay & Enora"
+     },
+     {
+      "name_as_written": "DJ Neiken",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Neiken"
+     },
+     {
+      "name_as_written": "DJ Romi",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Romi"
+     },
+     {
+      "name_as_written": "DJ Loka",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Loka"
+     },
+     {
+      "name_as_written": "WOW Kizomba",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "fb: WOW Kizomba"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Offers tailor-made workshops to develop all aspects of your dance",
+      "rationale": "The event offers tailor-made dance workshops."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTEL RECOMMENDATIONS:",
+      "rationale": "The event recommends hotels, which are not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

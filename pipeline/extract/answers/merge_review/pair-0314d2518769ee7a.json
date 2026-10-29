@@ -1,0 +1,13 @@
+{
+ "key_a": "p:moni@keco+moni",
+ "key_b": "p:monica@keco+monica",
+ "prompt": "7af5fef02cae3622",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:32:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "0314d2518769ee7a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Same partner Keco in every mention, Moni and Monica are short and long forms, and both sides are Spain-based teachers."
+ }
+}

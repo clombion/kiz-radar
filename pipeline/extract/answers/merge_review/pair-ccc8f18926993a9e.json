@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mathias@katalin+mathias",
+ "key_b": "p:matthias@katalin+matthias",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ccc8f18926993a9e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Katalin is the shared partner, Mathias and Matthias are a spelling variant, and both entries are Austrian."
+ }
+}

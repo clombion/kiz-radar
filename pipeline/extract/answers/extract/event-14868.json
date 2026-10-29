@@ -1,307 +1,314 @@
 {
- "batch": "event-14868",
- "events": [
-  {
-   "event_id": 14868,
-   "artists": [
-    {
-     "name_as_written": "I WILL DANCE team",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The I WILL DANCE team wants to announce you the launching of it’s 5th EDITION in PARIS with the participation of the best dancers from FRANCE and INTERNATIONAL"
-    },
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ SNAKES"
-    },
-    {
-     "name_as_written": "DJ POEMA BEATZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ POEMA BEATZ"
-    },
-    {
-     "name_as_written": "DJ CHAD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ CHAD"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ NICE LIFE"
-    },
-    {
-     "name_as_written": "DJ LENHY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ LENHY"
-    },
-    {
-     "name_as_written": "DJ SHARK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ SHARK"
-    },
-    {
-     "name_as_written": "DJ DANI FERNANDES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ DANI FERNANDES (D&L BEATS)"
-    },
-    {
-     "name_as_written": "DJ LISA ROSE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ LISA ROSE (D&L BEATS)"
-    },
-    {
-     "name_as_written": "DJ PARAISO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ PARAISO"
-    },
-    {
-     "name_as_written": "DJ CHARLEY RAYMDTC",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ CHARLEY RAYMDTC"
-    },
-    {
-     "name_as_written": "DJ REMCY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ REMCY"
-    },
-    {
-     "name_as_written": "DJ LEVIS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ LEVIS"
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ ICHIGO"
-    },
-    {
-     "name_as_written": "DJ TIWOSH",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ TIWOSH"
-    },
-    {
-     "name_as_written": "DJ MB",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ MB"
-    },
-    {
-     "name_as_written": "GWANY & LILIANA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅GWANY & LILIANA"
-    },
-    {
-     "name_as_written": "DWE & GABY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅DWE & GABY"
-    },
-    {
-     "name_as_written": "SOPHIE MADISON",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅SOPHIE MADISON"
-    },
-    {
-     "name_as_written": "GEORGES & LAURA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅GEORGES & LAURA"
-    },
-    {
-     "name_as_written": "MIK’IZ & PAO LOU",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅MIK’IZ & PAO LOU"
-    },
-    {
-     "name_as_written": "GAËLLE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅GAËLLE (ZUMBA)"
-    },
-    {
-     "name_as_written": "NINJA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅NINJA (YOGA)"
-    },
-    {
-     "name_as_written": "DIM’S & ARANTXA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅DIM’S & ARANTXA"
-    },
-    {
-     "name_as_written": "VERONICA KORE & KATYA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅VERONICA KORE & KATYA"
-    },
-    {
-     "name_as_written": "IZI & MARIE JO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅IZI & MARIE JO"
-    },
-    {
-     "name_as_written": "PSBK",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "PSBK"
-    },
-    {
-     "name_as_written": "LSkiz",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "LSkiz"
-    },
-    {
-     "name_as_written": "Kizmanie",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Kizmanie"
-    },
-    {
-     "name_as_written": "Women’s League",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Women’s League"
-    },
-    {
-     "name_as_written": "Independants",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Independants"
-    },
-    {
-     "name_as_written": "WILSON EBOT",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✅WILSON EBOT"
-    },
-    {
-     "name_as_written": "NDAMOSE",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✅NDAMOSE"
-    },
-    {
-     "name_as_written": "LAUREN KA",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✅LAUREN KA"
-    },
-    {
-     "name_as_written": "BENKOS",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✅BENKOS"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "🏩 HOTEL RESIDHOME SUITES PARIS SENART – 12 Allée du Trait d’Union – 77127 – Lieusaint (FRANCE)",
-     "rationale": "The main venue is a hotel, so the event and the accommodation are in the same place."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "NOVOTEL Senart Golf de Greenparc (4min by car)",
-     "rationale": "The description recommends a nearby hotel that is not part of the pass."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "brunch, social dance) 12H – 15H included in the fullpass",
-     "rationale": "The brunch at the goodbye party is included in the full pass."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 SOCIALS (afternoon)",
-     "rationale": "Three afternoon socials are listed in the program."
-    },
-    {
-     "feature": "after_party",
-     "quote": "2 AFTER PARTIES",
-     "rationale": "Two after parties are listed in the program."
-    },
-    {
-     "feature": "workshops",
-     "quote": "17 hours of WORKSHOPS (KIZOMBA, SEMBA, URBAN KIZ, TARRAXO and AFRO HOUSE)",
-     "rationale": "Dance workshops in several styles are part of the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "4 DRESSED UP PARTIES DURING THE WEEKEND",
-     "rationale": "Dressed-up parties are themed nights across the weekend."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "SATURDAY SOCIAL: I Will Dance Style",
-     "rationale": "A dress style is stated for the Saturday social."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "ROOM 1 : Urban kiz, Tarraxo, Tarraxinha, Douceur, GhettoZouk, Afrobeat",
-     "rationale": "The event has two rooms, each with its own styles."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXIS DANCERS TEAMS",
-     "rationale": "A section lists taxi dancer teams."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14868",
+  "events": [
+   {
+    "event_id": 14868,
+    "artists": [
+     {
+      "name_as_written": "I WILL DANCE team",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The I WILL DANCE team wants to announce you the launching of it’s 5th EDITION in PARIS with the participation of the best dancers from FRANCE and INTERNATIONAL"
+     },
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ SNAKES"
+     },
+     {
+      "name_as_written": "DJ POEMA BEATZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ POEMA BEATZ"
+     },
+     {
+      "name_as_written": "DJ CHAD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ CHAD"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ NICE LIFE"
+     },
+     {
+      "name_as_written": "DJ LENHY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ LENHY"
+     },
+     {
+      "name_as_written": "DJ SHARK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ SHARK"
+     },
+     {
+      "name_as_written": "DJ DANI FERNANDES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ DANI FERNANDES (D&L BEATS)"
+     },
+     {
+      "name_as_written": "DJ LISA ROSE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ LISA ROSE (D&L BEATS)"
+     },
+     {
+      "name_as_written": "DJ PARAISO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ PARAISO"
+     },
+     {
+      "name_as_written": "DJ CHARLEY RAYMDTC",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ CHARLEY RAYMDTC"
+     },
+     {
+      "name_as_written": "DJ REMCY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ REMCY"
+     },
+     {
+      "name_as_written": "DJ LEVIS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ LEVIS"
+     },
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ ICHIGO"
+     },
+     {
+      "name_as_written": "DJ TIWOSH",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ TIWOSH"
+     },
+     {
+      "name_as_written": "DJ MB",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ MB"
+     },
+     {
+      "name_as_written": "GWANY & LILIANA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅GWANY & LILIANA"
+     },
+     {
+      "name_as_written": "DWE & GABY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅DWE & GABY"
+     },
+     {
+      "name_as_written": "SOPHIE MADISON",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅SOPHIE MADISON"
+     },
+     {
+      "name_as_written": "GEORGES & LAURA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅GEORGES & LAURA"
+     },
+     {
+      "name_as_written": "MIK’IZ & PAO LOU",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅MIK’IZ & PAO LOU"
+     },
+     {
+      "name_as_written": "GAËLLE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅GAËLLE (ZUMBA)"
+     },
+     {
+      "name_as_written": "NINJA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅NINJA (YOGA)"
+     },
+     {
+      "name_as_written": "DIM’S & ARANTXA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅DIM’S & ARANTXA"
+     },
+     {
+      "name_as_written": "VERONICA KORE & KATYA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅VERONICA KORE & KATYA"
+     },
+     {
+      "name_as_written": "IZI & MARIE JO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅IZI & MARIE JO"
+     },
+     {
+      "name_as_written": "PSBK",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "PSBK"
+     },
+     {
+      "name_as_written": "LSkiz",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "LSkiz"
+     },
+     {
+      "name_as_written": "Kizmanie",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Kizmanie"
+     },
+     {
+      "name_as_written": "Women’s League",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Women’s League"
+     },
+     {
+      "name_as_written": "Independants",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Independants"
+     },
+     {
+      "name_as_written": "WILSON EBOT",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✅WILSON EBOT"
+     },
+     {
+      "name_as_written": "NDAMOSE",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✅NDAMOSE"
+     },
+     {
+      "name_as_written": "LAUREN KA",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✅LAUREN KA"
+     },
+     {
+      "name_as_written": "BENKOS",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✅BENKOS"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "🏩 HOTEL RESIDHOME SUITES PARIS SENART – 12 Allée du Trait d’Union – 77127 – Lieusaint (FRANCE)",
+      "rationale": "The main venue is a hotel, so the event and the accommodation are in the same place."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "NOVOTEL Senart Golf de Greenparc (4min by car)",
+      "rationale": "The description recommends a nearby hotel that is not part of the pass."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "brunch, social dance) 12H – 15H included in the fullpass",
+      "rationale": "The brunch at the goodbye party is included in the full pass."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 SOCIALS (afternoon)",
+      "rationale": "Three afternoon socials are listed in the program."
+     },
+     {
+      "feature": "after_party",
+      "quote": "2 AFTER PARTIES",
+      "rationale": "Two after parties are listed in the program."
+     },
+     {
+      "feature": "workshops",
+      "quote": "17 hours of WORKSHOPS (KIZOMBA, SEMBA, URBAN KIZ, TARRAXO and AFRO HOUSE)",
+      "rationale": "Dance workshops in several styles are part of the event."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "4 DRESSED UP PARTIES DURING THE WEEKEND",
+      "rationale": "Dressed-up parties are themed nights across the weekend."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "SATURDAY SOCIAL: I Will Dance Style",
+      "rationale": "A dress style is stated for the Saturday social."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "ROOM 1 : Urban kiz, Tarraxo, Tarraxinha, Douceur, GhettoZouk, Afrobeat",
+      "rationale": "The event has two rooms, each with its own styles."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXIS DANCERS TEAMS",
+      "rationale": "A section lists taxi dancer teams."
+     }
+    ]
+   }
+  ]
+ }
 }

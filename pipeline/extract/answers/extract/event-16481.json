@@ -1,106 +1,113 @@
 {
- "batch": "event-16481",
- "events": [
-  {
-   "event_id": 16481,
-   "artists": [
-    {
-     "name_as_written": "Luis&Karen",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "✅Luis&Karen🇪🇸"
-    },
-    {
-     "name_as_written": "Cecilien&Lucie",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✅Cecilien&Lucie🇫🇷"
-    },
-    {
-     "name_as_written": "JP&Stephy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✅JP&Stephy🇫🇷"
-    },
-    {
-     "name_as_written": "Gibson&Amelia",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✅Gibson&Amelia🇫🇷"
-    },
-    {
-     "name_as_written": "Karl BEKENE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✅Karl BEKENE 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Levis",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "❇️DJ Levis🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Phazem",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "❇️DJ Phazem🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Valet",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "❇️DJ Valet🇫🇷"
-    },
-    {
-     "name_as_written": "DJ S-Line",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "❇️DJ S-Line🇫🇷"
-    },
-    {
-     "name_as_written": "DJ MG",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "❇️DJ MG🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Lehny",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "❇️DJ Lehny🇫🇷"
-    },
-    {
-     "name_as_written": "Shallwedanse association",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The Shallwedanse association is pleased to present the 3rd edition of the KIZME SOFTLY festival. In the same spirit and with the same vibes as the first two editions, we have selected a top-quality lineup. International instructors, international DJs, as well as local instructors and DJs will be there."
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "More than 10 hours of workshops",
-     "rationale": "The description states that the event includes more than 10 hours of workshops."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "4:00 PM – 8:00 PM Social",
-     "rationale": "The program lists afternoon socials from 4:00 PM to 8:00 PM on Saturday and Sunday."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16481",
+  "events": [
+   {
+    "event_id": 16481,
+    "artists": [
+     {
+      "name_as_written": "Luis&Karen",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "✅Luis&Karen🇪🇸"
+     },
+     {
+      "name_as_written": "Cecilien&Lucie",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✅Cecilien&Lucie🇫🇷"
+     },
+     {
+      "name_as_written": "JP&Stephy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✅JP&Stephy🇫🇷"
+     },
+     {
+      "name_as_written": "Gibson&Amelia",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✅Gibson&Amelia🇫🇷"
+     },
+     {
+      "name_as_written": "Karl BEKENE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✅Karl BEKENE 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Levis",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "❇️DJ Levis🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Phazem",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "❇️DJ Phazem🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Valet",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "❇️DJ Valet🇫🇷"
+     },
+     {
+      "name_as_written": "DJ S-Line",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "❇️DJ S-Line🇫🇷"
+     },
+     {
+      "name_as_written": "DJ MG",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "❇️DJ MG🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Lehny",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "❇️DJ Lehny🇫🇷"
+     },
+     {
+      "name_as_written": "Shallwedanse association",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The Shallwedanse association is pleased to present the 3rd edition of the KIZME SOFTLY festival. In the same spirit and with the same vibes as the first two editions, we have selected a top-quality lineup. International instructors, international DJs, as well as local instructors and DJs will be there."
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "More than 10 hours of workshops",
+      "rationale": "The description states that the event includes more than 10 hours of workshops."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "4:00 PM – 8:00 PM Social",
+      "rationale": "The program lists afternoon socials from 4:00 PM to 8:00 PM on Saturday and Sunday."
+     }
+    ]
+   }
+  ]
+ }
 }

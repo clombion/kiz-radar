@@ -1,0 +1,13 @@
+{
+ "key_a": "p:christina@cedric+christina",
+ "key_b": "p:christina@christina+daviddasilva",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "fe7ce50db23fdb9d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Christina is a common first name with two different partners (Cedric vs David Da Silva); both stated France, which is weak evidence alone."
+ }
+}

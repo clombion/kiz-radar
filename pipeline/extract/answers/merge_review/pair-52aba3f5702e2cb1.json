@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kiki@heneco+kiki",
+ "key_b": "p:kiki@kiki+selim",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "52aba3f5702e2cb1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Heneco & Kiki and Selim & Kiki have different partners, and the shared first name Kiki and the stated France and Germany do not settle it."
+ }
+}

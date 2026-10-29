@@ -1,0 +1,13 @@
+{
+ "key_a": "p:raul@daniela+raul",
+ "key_b": "p:raultorres",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ecb038d83b74fa7c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Raul and Colombia are shared, but side A is a teacher in a couple with Daniela while side B is a DJ with the surname Torres, and side A gives no surname."
+ }
+}

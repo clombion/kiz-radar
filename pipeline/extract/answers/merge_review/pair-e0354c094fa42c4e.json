@@ -1,0 +1,13 @@
+{
+ "key_a": "p:guilherme@dance",
+ "key_b": "p:guillherme@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "e0354c094fa42c4e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Guilhermé and Guillhermé are a one-letter spelling variant in the same city (Bern), with the same Angola and Swiss flags."
+ }
+}

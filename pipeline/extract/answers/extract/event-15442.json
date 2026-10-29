@@ -1,144 +1,151 @@
 {
- "batch": "event-15442",
- "events": [
-  {
-   "event_id": 15442,
-   "artists": [
-    {
-     "name_as_written": "ALC team",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The ALC team is thrilled to present its first festival: “Orléans Kizomba Festival”!"
-    },
-    {
-     "name_as_written": "Lilian and Ivana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✳️Lilian and Ivana"
-    },
-    {
-     "name_as_written": "Landry and Windy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✳️Landry and Windy"
-    },
-    {
-     "name_as_written": "Steven’s Mkz’Fa and Audrey Csty Mkz’Fa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✳️Steven’s Mkz’Fa and Audrey Csty Mkz’Fa"
-    },
-    {
-     "name_as_written": "Curtis Lpk and Kelly",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✳️Curtis Lpk and Kelly"
-    },
-    {
-     "name_as_written": "BeePee and Marta",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✳️BeePee and Marta"
-    },
-    {
-     "name_as_written": "DJ Lisa Rose",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✴️DJ Lisa Rose"
-    },
-    {
-     "name_as_written": "Dj Dani Fernandes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✴️Dj Dani Fernandes"
-    },
-    {
-     "name_as_written": "Dj Angelo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✴️Dj Angelo"
-    },
-    {
-     "name_as_written": "Dj Kouan",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✴️Dj Kouan"
-    },
-    {
-     "name_as_written": "Dj Chico",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✴️Dj Chico"
-    },
-    {
-     "name_as_written": "O-ney Team",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔸O-ney Team"
-    },
-    {
-     "name_as_written": "KCS",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔸KCS"
-    },
-    {
-     "name_as_written": "Liberty kiz",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Liberty kiz"
-    },
-    {
-     "name_as_written": "Babou One Shot",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Babou One Shot"
-    },
-    {
-     "name_as_written": "Alexandre Bozkurt",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Alexandre Bozkurt"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Approximately 12 hours of workshops over the weekend",
-     "rationale": "The description states that about 12 hours of workshops take place over the weekend."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "2 Socials",
-     "rationale": "Two socials are listed, held on Saturday and Sunday afternoons."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXIS",
-     "rationale": "A TAXIS section lists taxi-dancer teams."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Partner hotels for the event:",
-     "rationale": "The description names partner hotels for the event, with a discount for attendees."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15442",
+  "events": [
+   {
+    "event_id": 15442,
+    "artists": [
+     {
+      "name_as_written": "ALC team",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The ALC team is thrilled to present its first festival: “Orléans Kizomba Festival”!"
+     },
+     {
+      "name_as_written": "Lilian and Ivana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✳️Lilian and Ivana"
+     },
+     {
+      "name_as_written": "Landry and Windy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✳️Landry and Windy"
+     },
+     {
+      "name_as_written": "Steven’s Mkz’Fa and Audrey Csty Mkz’Fa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✳️Steven’s Mkz’Fa and Audrey Csty Mkz’Fa"
+     },
+     {
+      "name_as_written": "Curtis Lpk and Kelly",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✳️Curtis Lpk and Kelly"
+     },
+     {
+      "name_as_written": "BeePee and Marta",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✳️BeePee and Marta"
+     },
+     {
+      "name_as_written": "DJ Lisa Rose",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✴️DJ Lisa Rose"
+     },
+     {
+      "name_as_written": "Dj Dani Fernandes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✴️Dj Dani Fernandes"
+     },
+     {
+      "name_as_written": "Dj Angelo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✴️Dj Angelo"
+     },
+     {
+      "name_as_written": "Dj Kouan",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✴️Dj Kouan"
+     },
+     {
+      "name_as_written": "Dj Chico",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✴️Dj Chico"
+     },
+     {
+      "name_as_written": "O-ney Team",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔸O-ney Team"
+     },
+     {
+      "name_as_written": "KCS",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔸KCS"
+     },
+     {
+      "name_as_written": "Liberty kiz",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Liberty kiz"
+     },
+     {
+      "name_as_written": "Babou One Shot",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Babou One Shot"
+     },
+     {
+      "name_as_written": "Alexandre Bozkurt",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Alexandre Bozkurt"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Approximately 12 hours of workshops over the weekend",
+      "rationale": "The description states that about 12 hours of workshops take place over the weekend."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "2 Socials",
+      "rationale": "Two socials are listed, held on Saturday and Sunday afternoons."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXIS",
+      "rationale": "A TAXIS section lists taxi-dancer teams."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Partner hotels for the event:",
+      "rationale": "The description names partner hotels for the event, with a discount for attendees."
+     }
+    ]
+   }
+  ]
+ }
 }

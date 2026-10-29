@@ -1,501 +1,508 @@
 {
- "batch": "event-18479",
- "events": [
-  {
-   "event_id": 18479,
-   "artists": [
-    {
-     "name_as_written": "ALBIR & NATALIA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 ALBIR & NATALIA 💃"
-    },
-    {
-     "name_as_written": "FRED-NELSON & MORGANE",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 FRED-NELSON & MORGANE 💃"
-    },
-    {
-     "name_as_written": "VAL’R & SARAH",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 VAL’R & SARAH 💃"
-    },
-    {
-     "name_as_written": "JACK & SARA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 JACK & SARA 💃"
-    },
-    {
-     "name_as_written": "BENOIT & SNEJA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 BENOIT & SNEJA 💃"
-    },
-    {
-     "name_as_written": "DAVIDE & LAURA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 DAVIDE & LAURA 💃"
-    },
-    {
-     "name_as_written": "EDO & GIULY",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 EDO & GIULY 💃"
-    },
-    {
-     "name_as_written": "MIRKO SPANO",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 MIRKO SPANO"
-    },
-    {
-     "name_as_written": "DINARA SALYKOVA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "💃 DINARA SALYKOVA"
-    },
-    {
-     "name_as_written": "LUCA ARRIGONI & ELENA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 LUCA ARRIGONI & ELENA 💃"
-    },
-    {
-     "name_as_written": "OSCAR & CLAUDIA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 OSCAR & CLAUDIA 💃"
-    },
-    {
-     "name_as_written": "CARLO & VERONICA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 CARLO & VERONICA 💃"
-    },
-    {
-     "name_as_written": "BA & CLAUDIA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 BA & CLAUDIA 💃"
-    },
-    {
-     "name_as_written": "FABRIZIO & NICOLETTA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 FABRIZIO & NICOLETTA 💃"
-    },
-    {
-     "name_as_written": "SIMONE & JENNIFER",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 SIMONE & JENNIFER 💃"
-    },
-    {
-     "name_as_written": "SONIA DANIELE",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "💃 SONIA DANIELE"
-    },
-    {
-     "name_as_written": "DAVIDE & NOEMI",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 DAVIDE & NOEMI 💃"
-    },
-    {
-     "name_as_written": "GIUSEPPE ANDREA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 GIUSEPPE ANDREA"
-    },
-    {
-     "name_as_written": "STEFANO & MAURA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 STEFANO & MAURA 💃"
-    },
-    {
-     "name_as_written": "LUCA & FRANCESCA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 LUCA & FRANCESCA 💃"
-    },
-    {
-     "name_as_written": "NATALIA & ANDREA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "💃 NATALIA & ANDREA 🕺"
-    },
-    {
-     "name_as_written": "BRUNO & GIULIA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 BRUNO & GIULIA 💃"
-    },
-    {
-     "name_as_written": "CHRISTIAN & FRANCESCA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 CHRISTIAN & FRANCESCA 💃"
-    },
-    {
-     "name_as_written": "GERI & MAGDI",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 GERI & MAGDI 💃"
-    },
-    {
-     "name_as_written": "CARLO & ALESSANDRA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 CARLO & ALESSANDRA 💃"
-    },
-    {
-     "name_as_written": "PAOLO & ANGELICA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 PAOLO & ANGELICA 💃"
-    },
-    {
-     "name_as_written": "RAUL & LUCIA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 RAUL & LUCIA 💃"
-    },
-    {
-     "name_as_written": "CHRISTIAN & TINA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 CHRISTIAN & TINA 💃"
-    },
-    {
-     "name_as_written": "MASSIMO & ANTONELLA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 MASSIMO & ANTONELLA 💃"
-    },
-    {
-     "name_as_written": "GIUSEPPE & KLAUDYNA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 GIUSEPPE & KLAUDYNA 💃"
-    },
-    {
-     "name_as_written": "MARCO & CINZIA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 MARCO & CINZIA 💃"
-    },
-    {
-     "name_as_written": "BEPPE & SABINA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 BEPPE & SABINA 💃"
-    },
-    {
-     "name_as_written": "CLAUDIO & LUCIA",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 CLAUDIO & LUCIA 💃"
-    },
-    {
-     "name_as_written": "LALI",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "💃 LALI"
-    },
-    {
-     "name_as_written": "MIKY VISSANI",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "💃 MIKY VISSANI"
-    },
-    {
-     "name_as_written": "MANUELA & LUIGI",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "💃 MANUELA & LUIGI 🕺"
-    },
-    {
-     "name_as_written": "SUSANNA VERNIER",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "💃 SUSANNA VERNIER"
-    },
-    {
-     "name_as_written": "PETRAX",
-     "role": "teacher",
-     "style": "Fusion/Urban/Tarraxo",
-     "country": null,
-     "source_line": "🕺 PETRAX"
-    },
-    {
-     "name_as_written": "EDDY VENTS",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/AFROHOUSE",
-     "country": null,
-     "source_line": "🕺 EDDY VENTS"
-    },
-    {
-     "name_as_written": "DR KIZOMBA & LAURA",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/AFROHOUSE",
-     "country": null,
-     "source_line": "🕺 DR KIZOMBA & LAURA 💃"
-    },
-    {
-     "name_as_written": "TERESA & EMANUEL",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/AFROHOUSE",
-     "country": null,
-     "source_line": "🕺 TERESA & EMANUEL 💃"
-    },
-    {
-     "name_as_written": "DAVIDE & CILENE",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/AFROHOUSE",
-     "country": null,
-     "source_line": "🕺 DAVIDE & CILENE 💃"
-    },
-    {
-     "name_as_written": "SALVATORE & ELEONORA",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/AFROHOUSE",
-     "country": null,
-     "source_line": "🕺 SALVATORE & ELEONORA 💃"
-    },
-    {
-     "name_as_written": "GIANFRANCO & CHANTAL",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/AFROHOUSE",
-     "country": null,
-     "source_line": "🕺 GIANFRANCO & CHANTAL 💃"
-    },
-    {
-     "name_as_written": "LINDA GHIGGI",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/AFROHOUSE",
-     "country": null,
-     "source_line": "💃 LINDA GHIGGI"
-    },
-    {
-     "name_as_written": "Dj SHARK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj SHARK 🎧"
-    },
-    {
-     "name_as_written": "Dj NONO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj NONO🎧"
-    },
-    {
-     "name_as_written": "Dj JACK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj JACK 🎧"
-    },
-    {
-     "name_as_written": "Dj LUCAS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj LUCAS 🎧"
-    },
-    {
-     "name_as_written": "Dj GHOST FACE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj GHOST FACE 🎧"
-    },
-    {
-     "name_as_written": "Dj ANILSON",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj ANILSON 🎧"
-    },
-    {
-     "name_as_written": "Dj MASTER BEAT",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj MASTER BEAT 🎧"
-    },
-    {
-     "name_as_written": "Dj CARLONE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj CARLONE 🎧"
-    },
-    {
-     "name_as_written": "Dj RELAMPAGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj RELAMPAGO 🎧"
-    },
-    {
-     "name_as_written": "Dj EMESS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj EMESS 🎧"
-    },
-    {
-     "name_as_written": "Dj DU’ARTE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj DU’ARTE 🎧"
-    },
-    {
-     "name_as_written": "Dj OMBRE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj OMBRE 🎧"
-    },
-    {
-     "name_as_written": "Dj BDJ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj BDJ 🎧"
-    },
-    {
-     "name_as_written": "Dj TED",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj TED 🎧"
-    },
-    {
-     "name_as_written": "Dj DREW",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj DREW 🎧"
-    },
-    {
-     "name_as_written": "Dj R.A.H.T.",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj R.A.H.T. 🎧"
-    },
-    {
-     "name_as_written": "Dj NEKO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj NEKO 🎧"
-    },
-    {
-     "name_as_written": "Dj DIABOLIK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj DIABOLIK 🎧"
-    },
-    {
-     "name_as_written": "Dj PRINCE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj PRINCE 🎧"
-    },
-    {
-     "name_as_written": "Dj KLOD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj KLOD 🎧"
-    },
-    {
-     "name_as_written": "Dj BONE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj BONE 🎧"
-    },
-    {
-     "name_as_written": "Dj DADA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dj DADA 🎧"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE LOCATION",
-     "rationale": "The description says the parties and workshops take place all in one location, at the KLIMA Hotel venue."
-    },
-    {
-     "feature": "workshops",
-     "quote": "3 DAYS of Workshops",
-     "rationale": "The description advertises three days of workshops within the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 Dance Floors",
-     "rationale": "The event has four separate dance floors or rooms."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16.30 – 20.30 Social Room",
-     "rationale": "A daytime social room runs in the afternoon on Friday."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18479",
+  "events": [
+   {
+    "event_id": 18479,
+    "artists": [
+     {
+      "name_as_written": "ALBIR & NATALIA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 ALBIR & NATALIA 💃"
+     },
+     {
+      "name_as_written": "FRED-NELSON & MORGANE",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 FRED-NELSON & MORGANE 💃"
+     },
+     {
+      "name_as_written": "VAL’R & SARAH",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 VAL’R & SARAH 💃"
+     },
+     {
+      "name_as_written": "JACK & SARA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 JACK & SARA 💃"
+     },
+     {
+      "name_as_written": "BENOIT & SNEJA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 BENOIT & SNEJA 💃"
+     },
+     {
+      "name_as_written": "DAVIDE & LAURA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 DAVIDE & LAURA 💃"
+     },
+     {
+      "name_as_written": "EDO & GIULY",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 EDO & GIULY 💃"
+     },
+     {
+      "name_as_written": "MIRKO SPANO",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 MIRKO SPANO"
+     },
+     {
+      "name_as_written": "DINARA SALYKOVA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "💃 DINARA SALYKOVA"
+     },
+     {
+      "name_as_written": "LUCA ARRIGONI & ELENA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 LUCA ARRIGONI & ELENA 💃"
+     },
+     {
+      "name_as_written": "OSCAR & CLAUDIA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 OSCAR & CLAUDIA 💃"
+     },
+     {
+      "name_as_written": "CARLO & VERONICA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 CARLO & VERONICA 💃"
+     },
+     {
+      "name_as_written": "BA & CLAUDIA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 BA & CLAUDIA 💃"
+     },
+     {
+      "name_as_written": "FABRIZIO & NICOLETTA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 FABRIZIO & NICOLETTA 💃"
+     },
+     {
+      "name_as_written": "SIMONE & JENNIFER",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 SIMONE & JENNIFER 💃"
+     },
+     {
+      "name_as_written": "SONIA DANIELE",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "💃 SONIA DANIELE"
+     },
+     {
+      "name_as_written": "DAVIDE & NOEMI",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 DAVIDE & NOEMI 💃"
+     },
+     {
+      "name_as_written": "GIUSEPPE ANDREA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 GIUSEPPE ANDREA"
+     },
+     {
+      "name_as_written": "STEFANO & MAURA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 STEFANO & MAURA 💃"
+     },
+     {
+      "name_as_written": "LUCA & FRANCESCA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 LUCA & FRANCESCA 💃"
+     },
+     {
+      "name_as_written": "NATALIA & ANDREA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "💃 NATALIA & ANDREA 🕺"
+     },
+     {
+      "name_as_written": "BRUNO & GIULIA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 BRUNO & GIULIA 💃"
+     },
+     {
+      "name_as_written": "CHRISTIAN & FRANCESCA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 CHRISTIAN & FRANCESCA 💃"
+     },
+     {
+      "name_as_written": "GERI & MAGDI",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 GERI & MAGDI 💃"
+     },
+     {
+      "name_as_written": "CARLO & ALESSANDRA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 CARLO & ALESSANDRA 💃"
+     },
+     {
+      "name_as_written": "PAOLO & ANGELICA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 PAOLO & ANGELICA 💃"
+     },
+     {
+      "name_as_written": "RAUL & LUCIA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 RAUL & LUCIA 💃"
+     },
+     {
+      "name_as_written": "CHRISTIAN & TINA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 CHRISTIAN & TINA 💃"
+     },
+     {
+      "name_as_written": "MASSIMO & ANTONELLA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 MASSIMO & ANTONELLA 💃"
+     },
+     {
+      "name_as_written": "GIUSEPPE & KLAUDYNA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 GIUSEPPE & KLAUDYNA 💃"
+     },
+     {
+      "name_as_written": "MARCO & CINZIA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 MARCO & CINZIA 💃"
+     },
+     {
+      "name_as_written": "BEPPE & SABINA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 BEPPE & SABINA 💃"
+     },
+     {
+      "name_as_written": "CLAUDIO & LUCIA",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 CLAUDIO & LUCIA 💃"
+     },
+     {
+      "name_as_written": "LALI",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "💃 LALI"
+     },
+     {
+      "name_as_written": "MIKY VISSANI",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "💃 MIKY VISSANI"
+     },
+     {
+      "name_as_written": "MANUELA & LUIGI",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "💃 MANUELA & LUIGI 🕺"
+     },
+     {
+      "name_as_written": "SUSANNA VERNIER",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "💃 SUSANNA VERNIER"
+     },
+     {
+      "name_as_written": "PETRAX",
+      "role": "teacher",
+      "style": "Fusion/Urban/Tarraxo",
+      "country": null,
+      "source_line": "🕺 PETRAX"
+     },
+     {
+      "name_as_written": "EDDY VENTS",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/AFROHOUSE",
+      "country": null,
+      "source_line": "🕺 EDDY VENTS"
+     },
+     {
+      "name_as_written": "DR KIZOMBA & LAURA",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/AFROHOUSE",
+      "country": null,
+      "source_line": "🕺 DR KIZOMBA & LAURA 💃"
+     },
+     {
+      "name_as_written": "TERESA & EMANUEL",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/AFROHOUSE",
+      "country": null,
+      "source_line": "🕺 TERESA & EMANUEL 💃"
+     },
+     {
+      "name_as_written": "DAVIDE & CILENE",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/AFROHOUSE",
+      "country": null,
+      "source_line": "🕺 DAVIDE & CILENE 💃"
+     },
+     {
+      "name_as_written": "SALVATORE & ELEONORA",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/AFROHOUSE",
+      "country": null,
+      "source_line": "🕺 SALVATORE & ELEONORA 💃"
+     },
+     {
+      "name_as_written": "GIANFRANCO & CHANTAL",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/AFROHOUSE",
+      "country": null,
+      "source_line": "🕺 GIANFRANCO & CHANTAL 💃"
+     },
+     {
+      "name_as_written": "LINDA GHIGGI",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/AFROHOUSE",
+      "country": null,
+      "source_line": "💃 LINDA GHIGGI"
+     },
+     {
+      "name_as_written": "Dj SHARK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj SHARK 🎧"
+     },
+     {
+      "name_as_written": "Dj NONO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj NONO🎧"
+     },
+     {
+      "name_as_written": "Dj JACK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj JACK 🎧"
+     },
+     {
+      "name_as_written": "Dj LUCAS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj LUCAS 🎧"
+     },
+     {
+      "name_as_written": "Dj GHOST FACE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj GHOST FACE 🎧"
+     },
+     {
+      "name_as_written": "Dj ANILSON",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj ANILSON 🎧"
+     },
+     {
+      "name_as_written": "Dj MASTER BEAT",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj MASTER BEAT 🎧"
+     },
+     {
+      "name_as_written": "Dj CARLONE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj CARLONE 🎧"
+     },
+     {
+      "name_as_written": "Dj RELAMPAGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj RELAMPAGO 🎧"
+     },
+     {
+      "name_as_written": "Dj EMESS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj EMESS 🎧"
+     },
+     {
+      "name_as_written": "Dj DU’ARTE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj DU’ARTE 🎧"
+     },
+     {
+      "name_as_written": "Dj OMBRE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj OMBRE 🎧"
+     },
+     {
+      "name_as_written": "Dj BDJ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj BDJ 🎧"
+     },
+     {
+      "name_as_written": "Dj TED",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj TED 🎧"
+     },
+     {
+      "name_as_written": "Dj DREW",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj DREW 🎧"
+     },
+     {
+      "name_as_written": "Dj R.A.H.T.",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj R.A.H.T. 🎧"
+     },
+     {
+      "name_as_written": "Dj NEKO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj NEKO 🎧"
+     },
+     {
+      "name_as_written": "Dj DIABOLIK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj DIABOLIK 🎧"
+     },
+     {
+      "name_as_written": "Dj PRINCE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj PRINCE 🎧"
+     },
+     {
+      "name_as_written": "Dj KLOD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj KLOD 🎧"
+     },
+     {
+      "name_as_written": "Dj BONE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj BONE 🎧"
+     },
+     {
+      "name_as_written": "Dj DADA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dj DADA 🎧"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE LOCATION",
+      "rationale": "The description says the parties and workshops take place all in one location, at the KLIMA Hotel venue."
+     },
+     {
+      "feature": "workshops",
+      "quote": "3 DAYS of Workshops",
+      "rationale": "The description advertises three days of workshops within the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "4 Dance Floors",
+      "rationale": "The event has four separate dance floors or rooms."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16.30 – 20.30 Social Room",
+      "rationale": "A daytime social room runs in the afternoon on Friday."
+     }
+    ]
+   }
+  ]
+ }
 }

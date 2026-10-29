@@ -1,28 +1,35 @@
 {
- "batch": "event-16069",
- "events": [
-  {
-   "event_id": 16069,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 ROOMS — 2 VIBES"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Room 1"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16069",
+  "events": [
+   {
+    "event_id": 16069,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 ROOMS — 2 VIBES"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Room 2"
-    }
-   ],
-   "genres": []
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Room 1"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Room 2"
+     }
+    ],
+    "genres": []
+   }
+  ]
+ }
 }

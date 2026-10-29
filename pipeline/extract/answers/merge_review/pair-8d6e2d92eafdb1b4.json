@@ -1,0 +1,13 @@
+{
+ "key_a": "p:safirbeats",
+ "key_b": "p:safirsbeats",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "8d6e2d92eafdb1b4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "All records are DJs in France under one stage name (Safir Beats / Safir's Beats) in spelling and punctuation variants only."
+ }
+}

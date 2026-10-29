@@ -1,39 +1,46 @@
 {
- "batch": "event-16293",
- "events": [
-  {
-   "event_id": 16293,
-   "artists": [
-    {
-     "name_as_written": "HUGO SMILE & EVREN KABACIOGLU",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "HUGO SMILE & EVREN KABACIOGLU are proud to announce the 10TH CONTRATEMPO."
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "More than 22 hours of WORKSHOPS",
-     "rationale": "The description states that more than 22 hours of workshops are included, so dance classes are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "AFRO ROOM",
-     "rationale": "The listed venue areas include an Afro room and a main room, so there is more than one dance room."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "4 THEMED PARTIES DURING THE WEEKEND",
-     "rationale": "The event has four themed parties during the weekend."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Free shuttle between the hotels and the venue of the event",
-     "rationale": "A free shuttle runs between the partner hotels and the event venue."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16293",
+  "events": [
+   {
+    "event_id": 16293,
+    "artists": [
+     {
+      "name_as_written": "HUGO SMILE & EVREN KABACIOGLU",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "HUGO SMILE & EVREN KABACIOGLU are proud to announce the 10TH CONTRATEMPO."
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "More than 22 hours of WORKSHOPS",
+      "rationale": "The description states that more than 22 hours of workshops are included, so dance classes are part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "AFRO ROOM",
+      "rationale": "The listed venue areas include an Afro room and a main room, so there is more than one dance room."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "4 THEMED PARTIES DURING THE WEEKEND",
+      "rationale": "The event has four themed parties during the weekend."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Free shuttle between the hotels and the venue of the event",
+      "rationale": "A free shuttle runs between the partner hotels and the event venue."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:susan@dance",
+ "key_b": "p:susan@susan+tomasdansar",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "50bd4f7b95235fb3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is a solo Susan in Stockholm and side B is Tomas Dansar & Susan in Stockholm; the same first name and country are weak evidence alone."
+ }
+}

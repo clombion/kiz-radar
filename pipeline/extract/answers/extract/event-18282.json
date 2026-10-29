@@ -1,185 +1,192 @@
 {
- "batch": "event-18282",
- "events": [
-  {
-   "event_id": 18282,
-   "artists": [
-    {
-     "name_as_written": "Enah Lebon",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 Enah Lebon"
-    },
-    {
-     "name_as_written": "Methodz",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔹️ Methodz"
-    },
-    {
-     "name_as_written": "Jenny",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 Jenny"
-    },
-    {
-     "name_as_written": "Ti Wosh",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔹️ Ti Wosh"
-    },
-    {
-     "name_as_written": "Sanjay MJ",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️ Sanjay MJ"
-    },
-    {
-     "name_as_written": "Daniel Schauenburg",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔹️ Daniel Schauenburg"
-    },
-    {
-     "name_as_written": "Benoit & Sneja",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️ Benoit & Sneja"
-    },
-    {
-     "name_as_written": "Lucas",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔹️ Lucas"
-    },
-    {
-     "name_as_written": "Onça",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️ Onça"
-    },
-    {
-     "name_as_written": "Luca Arrigoni",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔹️ Luca Arrigoni"
-    },
-    {
-     "name_as_written": "Luca & Francesca",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️ Luca & Francesca"
-    },
-    {
-     "name_as_written": "Stef Matt",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔹️ Stef Matt"
-    },
-    {
-     "name_as_written": "Lali",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️ Lali"
-    },
-    {
-     "name_as_written": "Valentina Conci",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔹️ Valentina Conci"
-    },
-    {
-     "name_as_written": "Stefano Montanari",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️ Stefano Montanari"
-    },
-    {
-     "name_as_written": "DJ Le Grand Ti Wosh",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Le Grand Ti Wosh"
-    },
-    {
-     "name_as_written": "DJ High Energy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ High Energy"
-    },
-    {
-     "name_as_written": "DJ Rax",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Rax"
-    },
-    {
-     "name_as_written": "DJ Bikini",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Bikini"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS WITH INTERNATIONAL ARTISTS",
-     "rationale": "The description lists workshops with international artists as part of the event."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXI DANCERS",
-     "rationale": "The description explicitly states that taxi dancers are present."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Location: Hotel Verri, Via Beata Vergine, 4, 24040 Misano di Gera d’Adda (BG)",
-     "rationale": "The event location is the hotel where dancers can book rooms, so the parties and accommodation share one venue."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress Code: GOLD",
-     "rationale": "A dress code is stated for the gala party."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "22:30: Friday Party – Dress Code: RED",
-     "rationale": "Parties with colour dress codes such as RED and WHITE are themed nights."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "SOCIAL ROOM",
-     "rationale": "A separate social room is mentioned alongside the main dance space, indicating more than one dance room."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "11:00 – 13:00: Social Kiz",
-     "rationale": "Daytime social dance sessions are listed in the programme."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "(includes breakfast and city tax)",
-     "rationale": "The room rate package explicitly includes breakfast."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18282",
+  "events": [
+   {
+    "event_id": 18282,
+    "artists": [
+     {
+      "name_as_written": "Enah Lebon",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 Enah Lebon"
+     },
+     {
+      "name_as_written": "Methodz",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔹️ Methodz"
+     },
+     {
+      "name_as_written": "Jenny",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 Jenny"
+     },
+     {
+      "name_as_written": "Ti Wosh",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔹️ Ti Wosh"
+     },
+     {
+      "name_as_written": "Sanjay MJ",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️ Sanjay MJ"
+     },
+     {
+      "name_as_written": "Daniel Schauenburg",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔹️ Daniel Schauenburg"
+     },
+     {
+      "name_as_written": "Benoit & Sneja",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️ Benoit & Sneja"
+     },
+     {
+      "name_as_written": "Lucas",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔹️ Lucas"
+     },
+     {
+      "name_as_written": "Onça",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️ Onça"
+     },
+     {
+      "name_as_written": "Luca Arrigoni",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔹️ Luca Arrigoni"
+     },
+     {
+      "name_as_written": "Luca & Francesca",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️ Luca & Francesca"
+     },
+     {
+      "name_as_written": "Stef Matt",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔹️ Stef Matt"
+     },
+     {
+      "name_as_written": "Lali",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️ Lali"
+     },
+     {
+      "name_as_written": "Valentina Conci",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔹️ Valentina Conci"
+     },
+     {
+      "name_as_written": "Stefano Montanari",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️ Stefano Montanari"
+     },
+     {
+      "name_as_written": "DJ Le Grand Ti Wosh",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Le Grand Ti Wosh"
+     },
+     {
+      "name_as_written": "DJ High Energy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ High Energy"
+     },
+     {
+      "name_as_written": "DJ Rax",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Rax"
+     },
+     {
+      "name_as_written": "DJ Bikini",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Bikini"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS WITH INTERNATIONAL ARTISTS",
+      "rationale": "The description lists workshops with international artists as part of the event."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXI DANCERS",
+      "rationale": "The description explicitly states that taxi dancers are present."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Location: Hotel Verri, Via Beata Vergine, 4, 24040 Misano di Gera d’Adda (BG)",
+      "rationale": "The event location is the hotel where dancers can book rooms, so the parties and accommodation share one venue."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress Code: GOLD",
+      "rationale": "A dress code is stated for the gala party."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "22:30: Friday Party – Dress Code: RED",
+      "rationale": "Parties with colour dress codes such as RED and WHITE are themed nights."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "SOCIAL ROOM",
+      "rationale": "A separate social room is mentioned alongside the main dance space, indicating more than one dance room."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "11:00 – 13:00: Social Kiz",
+      "rationale": "Daytime social dance sessions are listed in the programme."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "(includes breakfast and city tax)",
+      "rationale": "The room rate package explicitly includes breakfast."
+     }
+    ]
+   }
+  ]
+ }
 }

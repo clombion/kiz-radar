@@ -1,26 +1,33 @@
 {
- "batch": "event-18890",
- "events": [
-  {
-   "event_id": 18890,
-   "artists": [],
-   "features": [
-    {
-     "feature": "boat_party",
-     "quote": "Boat Party: 20 May 2027",
-     "rationale": "The description lists a boat party on 20 May 2027."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-One Hotel at the Beach",
-     "rationale": "The event is described as all-in-one with a hotel at the beach, which indicates the parties take place in the hotel where dancers stay."
-    },
-    {
-     "feature": "competition",
-     "quote": "Competition with Full Pass prizes to win!",
-     "rationale": "The event includes a competition with prizes to win."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18890",
+  "events": [
+   {
+    "event_id": 18890,
+    "artists": [],
+    "features": [
+     {
+      "feature": "boat_party",
+      "quote": "Boat Party: 20 May 2027",
+      "rationale": "The description lists a boat party on 20 May 2027."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-One Hotel at the Beach",
+      "rationale": "The event is described as all-in-one with a hotel at the beach, which indicates the parties take place in the hotel where dancers stay."
+     },
+     {
+      "feature": "competition",
+      "quote": "Competition with Full Pass prizes to win!",
+      "rationale": "The event includes a competition with prizes to win."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,73 +1,80 @@
 {
- "batch": "event-17420",
- "events": [
-  {
-   "event_id": 17420,
-   "party_rooms": {
-    "count": 2,
-    "quote": "– Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa\n– Room 2 Football WM Spiele live on a big Wall, after Douceur"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "tarraxo",
-      "zouk",
-      "kizomba",
-      "kompa"
-     ],
-     "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17420",
+  "events": [
+   {
+    "event_id": 17420,
+    "party_rooms": {
+     "count": 2,
+     "quote": "– Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa\n– Room 2 Football WM Spiele live on a big Wall, after Douceur"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "party",
-     "genres": [
-      "douceur"
-     ],
-     "quote": "Room 2 Football WM Spiele live on a big Wall, after Douceur"
-    },
-    {
-     "name_as_written": "Social Room",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Social Room: 14:00-15:00 / 18:00-21:00"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Room 2 Football WM Spiele live on a big Wall, after Douceur"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "tarraxo",
+       "zouk",
+       "kizomba",
+       "kompa"
+      ],
+      "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "party",
+      "genres": [
+       "douceur"
+      ],
+      "quote": "Room 2 Football WM Spiele live on a big Wall, after Douceur"
+     },
+     {
+      "name_as_written": "Social Room",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Social Room: 14:00-15:00 / 18:00-21:00"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Room 2 Football WM Spiele live on a big Wall, after Douceur"
+     }
+    ]
+   }
+  ]
+ }
 }

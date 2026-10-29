@@ -1,18 +1,25 @@
 {
- "batch": "event-16271",
- "events": [
-  {
-   "event_id": 16271,
-   "artists": [
-    {
-     "name_as_written": "Bachata Addiction®",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Bachata Addiction® is honored to carry the torch as the new DFF owners and you won’t want to miss what we have in store for you next year!"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16271",
+  "events": [
+   {
+    "event_id": 16271,
+    "artists": [
+     {
+      "name_as_written": "Bachata Addiction®",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Bachata Addiction® is honored to carry the torch as the new DFF owners and you won’t want to miss what we have in store for you next year!"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

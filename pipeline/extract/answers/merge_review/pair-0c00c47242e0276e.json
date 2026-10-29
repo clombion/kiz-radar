@@ -1,0 +1,13 @@
+{
+ "key_a": "p:celia@celia+mauro",
+ "key_b": "p:celia@celia+maurodone",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "0c00c47242e0276e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Mauro & Celia and Mauro D-One & Celia share the partner Celia, the name Mauro, the same stated countries (Angola, Portugal, Switzerland) and the city of Bern."
+ }
+}

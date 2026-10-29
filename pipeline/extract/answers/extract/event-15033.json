@@ -1,176 +1,183 @@
 {
- "batch": "event-15033",
- "events": [
-  {
-   "event_id": 15033,
-   "artists": [
-    {
-     "name_as_written": "Suave Dance Festival",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "✨️After Paris 🇫🇷🥖, Suave Dance Festival lands in Belgium for its first Easter Edition – All in One 🐇🥚🍫 in a 4 ⭐️ prestigious hotel from Apr. 2nd to 6th, 2026! 🇧🇪 Join us for a weekend of Bachata & Urban vibes with international artists and dancers.🕺🏾💃🏾"
-    },
-    {
-     "name_as_written": "DJ D&L BEATS",
-     "role": "dj",
-     "style": "Urban",
-     "country": "🇳🇱",
-     "source_line": "🎼 DJ D&L BEATS (Urban) 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ HUGO SMILE",
-     "role": "dj",
-     "style": "Urban",
-     "country": "🇫🇷",
-     "source_line": "🎼 DJ HUGO SMILE (Urban) 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ POEMA BEATZ",
-     "role": "dj",
-     "style": "Urban",
-     "country": "🇸🇪",
-     "source_line": "🎼 DJ POEMA BEATZ (Urban) 🇸🇪"
-    },
-    {
-     "name_as_written": "DJ BLVCK SKYLE",
-     "role": "dj",
-     "style": "Urban/Tarraxo",
-     "country": "🇫🇷",
-     "source_line": "🎼 DJ BLVCK SKYLE (Urban/Tarraxo) 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ KIN",
-     "role": "dj",
-     "style": "Urban",
-     "country": "🇫🇷",
-     "source_line": "🎼 DJ KIN (Urban) 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": "Urban",
-     "country": "🇳🇱",
-     "source_line": "🎼 DJ NICE LIFE (Urban) 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ ANKIT",
-     "role": "dj",
-     "style": "Urban",
-     "country": "🇩🇪",
-     "source_line": "🎼 DJ ANKIT (Urban) 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ QDS",
-     "role": "dj",
-     "style": "Urban",
-     "country": "🇫🇷",
-     "source_line": "🎼 DJ QDS (Urban) 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ HUSKY",
-     "role": "dj",
-     "style": "Bachata",
-     "country": "🇪🇸",
-     "source_line": "🎼 DJ HUSKY (Bachata) 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ DIMEN5IONS",
-     "role": "dj",
-     "style": "Bachata",
-     "country": "🇪🇸",
-     "source_line": "🎼 DJ DIMEN5IONS (Bachata) 🇪🇸"
-    },
-    {
-     "name_as_written": "GUIU VILANOVA",
-     "role": "teacher",
-     "style": "Urban/Tarraxo",
-     "country": "🇪🇸",
-     "source_line": "✨ GUIU VILANOVA (Urban/Tarraxo) 🇪🇸"
-    },
-    {
-     "name_as_written": "GUY TAWA & BICKY",
-     "role": "teacher",
-     "style": "Urban",
-     "country": "🇧🇪",
-     "source_line": "✨ GUY TAWA & BICKY (Urban) 🇧🇪"
-    },
-    {
-     "name_as_written": "POEMA BEATZ",
-     "role": "teacher",
-     "style": "Urban/Tarraxo",
-     "country": "🇸🇪",
-     "source_line": "✨ POEMA BEATZ (Urban/Tarraxo) 🇸🇪"
-    },
-    {
-     "name_as_written": "JUSTIN WELCOME",
-     "role": "teacher",
-     "style": "Urban",
-     "country": "🇫🇷",
-     "source_line": "✨ JUSTIN WELCOME (Urban) 🇫🇷"
-    },
-    {
-     "name_as_written": "LES CACTUS",
-     "role": "teacher",
-     "style": "Urban",
-     "country": "🇧🇪",
-     "source_line": "✨ LES CACTUS (Urban) 🇧🇪"
-    },
-    {
-     "name_as_written": "ISSA",
-     "role": "teacher",
-     "style": "Afro",
-     "country": "🇨🇭",
-     "source_line": "✨ ISSA (Afro) 🇨🇭"
-    },
-    {
-     "name_as_written": "CELINE",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇧🇪",
-     "source_line": "✨ CELINE (Kizomba) 🇧🇪"
-    },
-    {
-     "name_as_written": "ABDEL & LETY",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇪🇸",
-     "source_line": "✨ ABDEL & LETY (Bachata) 🇪🇸"
-    },
-    {
-     "name_as_written": "VICTOR & ALBA",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇪🇸",
-     "source_line": "✨ VICTOR & ALBA (Bachata) 🇪🇸"
-    },
-    {
-     "name_as_written": "ANASS & LOUISE",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇫🇷🇩🇪",
-     "source_line": "✨ ANASS & LOUISE (Bachata) 🇫🇷🇩🇪"
-    },
-    {
-     "name_as_written": "FLOWLY & ANASTASIIA",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇧🇪🇺🇦",
-     "source_line": "✨ FLOWLY & ANASTASIIA (Bachata) 🇧🇪🇺🇦"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in One 🐇🥚🍫 in a 4 ⭐️ prestigious hotel",
-     "rationale": "The event is held in a prestigious hotel, so the parties and the accommodation are in the same venue."
-    },
-    {
-     "feature": "workshops",
-     "quote": "INSTRUCTORS",
-     "rationale": "A list of instructors teaching the event shows that dance classes are part of it."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15033",
+  "events": [
+   {
+    "event_id": 15033,
+    "artists": [
+     {
+      "name_as_written": "Suave Dance Festival",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "✨️After Paris 🇫🇷🥖, Suave Dance Festival lands in Belgium for its first Easter Edition – All in One 🐇🥚🍫 in a 4 ⭐️ prestigious hotel from Apr. 2nd to 6th, 2026! 🇧🇪 Join us for a weekend of Bachata & Urban vibes with international artists and dancers.🕺🏾💃🏾"
+     },
+     {
+      "name_as_written": "DJ D&L BEATS",
+      "role": "dj",
+      "style": "Urban",
+      "country": "🇳🇱",
+      "source_line": "🎼 DJ D&L BEATS (Urban) 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ HUGO SMILE",
+      "role": "dj",
+      "style": "Urban",
+      "country": "🇫🇷",
+      "source_line": "🎼 DJ HUGO SMILE (Urban) 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ POEMA BEATZ",
+      "role": "dj",
+      "style": "Urban",
+      "country": "🇸🇪",
+      "source_line": "🎼 DJ POEMA BEATZ (Urban) 🇸🇪"
+     },
+     {
+      "name_as_written": "DJ BLVCK SKYLE",
+      "role": "dj",
+      "style": "Urban/Tarraxo",
+      "country": "🇫🇷",
+      "source_line": "🎼 DJ BLVCK SKYLE (Urban/Tarraxo) 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ KIN",
+      "role": "dj",
+      "style": "Urban",
+      "country": "🇫🇷",
+      "source_line": "🎼 DJ KIN (Urban) 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": "Urban",
+      "country": "🇳🇱",
+      "source_line": "🎼 DJ NICE LIFE (Urban) 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ ANKIT",
+      "role": "dj",
+      "style": "Urban",
+      "country": "🇩🇪",
+      "source_line": "🎼 DJ ANKIT (Urban) 🇩🇪"
+     },
+     {
+      "name_as_written": "DJ QDS",
+      "role": "dj",
+      "style": "Urban",
+      "country": "🇫🇷",
+      "source_line": "🎼 DJ QDS (Urban) 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ HUSKY",
+      "role": "dj",
+      "style": "Bachata",
+      "country": "🇪🇸",
+      "source_line": "🎼 DJ HUSKY (Bachata) 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ DIMEN5IONS",
+      "role": "dj",
+      "style": "Bachata",
+      "country": "🇪🇸",
+      "source_line": "🎼 DJ DIMEN5IONS (Bachata) 🇪🇸"
+     },
+     {
+      "name_as_written": "GUIU VILANOVA",
+      "role": "teacher",
+      "style": "Urban/Tarraxo",
+      "country": "🇪🇸",
+      "source_line": "✨ GUIU VILANOVA (Urban/Tarraxo) 🇪🇸"
+     },
+     {
+      "name_as_written": "GUY TAWA & BICKY",
+      "role": "teacher",
+      "style": "Urban",
+      "country": "🇧🇪",
+      "source_line": "✨ GUY TAWA & BICKY (Urban) 🇧🇪"
+     },
+     {
+      "name_as_written": "POEMA BEATZ",
+      "role": "teacher",
+      "style": "Urban/Tarraxo",
+      "country": "🇸🇪",
+      "source_line": "✨ POEMA BEATZ (Urban/Tarraxo) 🇸🇪"
+     },
+     {
+      "name_as_written": "JUSTIN WELCOME",
+      "role": "teacher",
+      "style": "Urban",
+      "country": "🇫🇷",
+      "source_line": "✨ JUSTIN WELCOME (Urban) 🇫🇷"
+     },
+     {
+      "name_as_written": "LES CACTUS",
+      "role": "teacher",
+      "style": "Urban",
+      "country": "🇧🇪",
+      "source_line": "✨ LES CACTUS (Urban) 🇧🇪"
+     },
+     {
+      "name_as_written": "ISSA",
+      "role": "teacher",
+      "style": "Afro",
+      "country": "🇨🇭",
+      "source_line": "✨ ISSA (Afro) 🇨🇭"
+     },
+     {
+      "name_as_written": "CELINE",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇧🇪",
+      "source_line": "✨ CELINE (Kizomba) 🇧🇪"
+     },
+     {
+      "name_as_written": "ABDEL & LETY",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇪🇸",
+      "source_line": "✨ ABDEL & LETY (Bachata) 🇪🇸"
+     },
+     {
+      "name_as_written": "VICTOR & ALBA",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇪🇸",
+      "source_line": "✨ VICTOR & ALBA (Bachata) 🇪🇸"
+     },
+     {
+      "name_as_written": "ANASS & LOUISE",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇫🇷🇩🇪",
+      "source_line": "✨ ANASS & LOUISE (Bachata) 🇫🇷🇩🇪"
+     },
+     {
+      "name_as_written": "FLOWLY & ANASTASIIA",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇧🇪🇺🇦",
+      "source_line": "✨ FLOWLY & ANASTASIIA (Bachata) 🇧🇪🇺🇦"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in One 🐇🥚🍫 in a 4 ⭐️ prestigious hotel",
+      "rationale": "The event is held in a prestigious hotel, so the parties and the accommodation are in the same venue."
+     },
+     {
+      "feature": "workshops",
+      "quote": "INSTRUCTORS",
+      "rationale": "A list of instructors teaching the event shows that dance classes are part of it."
+     }
+    ]
+   }
+  ]
+ }
 }

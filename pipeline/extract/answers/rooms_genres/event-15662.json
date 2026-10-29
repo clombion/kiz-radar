@@ -1,33 +1,40 @@
 {
- "batch": "event-15662",
- "events": [
-  {
-   "event_id": 15662,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "UrbanKiz – Kizomba – Tarraxo"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "UrbanKiz – Kizomba – Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "UrbanKiz – Kizomba – Tarraxo"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Dom. Bachata",
-     "quote": "Dom. Bachata"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15662",
+  "events": [
+   {
+    "event_id": 15662,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "UrbanKiz – Kizomba – Tarraxo"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "UrbanKiz – Kizomba – Tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "UrbanKiz – Kizomba – Tarraxo"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Dom. Bachata",
+      "quote": "Dom. Bachata"
+     }
+    ]
+   }
+  ]
+ }
 }

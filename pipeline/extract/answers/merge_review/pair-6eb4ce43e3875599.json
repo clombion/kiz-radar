@@ -1,0 +1,13 @@
+{
+ "key_a": "p:radu@judit+radu",
+ "key_b": "p:radu@judith+radu",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "6eb4ce43e3875599",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The partner is Radu in both couples and Judit against Judith is a spelling variant of the same partner name, with Romania as the stated country on both sides."
+ }
+}

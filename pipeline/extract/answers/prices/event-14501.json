@@ -1,133 +1,140 @@
 {
- "batch": "event-14501",
- "events": [
-  {
-   "event_id": 14501,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "🎟 FULL PASS 🎟",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 950.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 85.0,
-        "currency": "EUR"
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:57:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14501",
+  "events": [
+   {
+    "event_id": 14501,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "🎟 FULL PASS 🎟",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 950.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 85.0,
+         "currency": "EUR"
+        },
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Early Bird – 950 SEK (€85)"
        },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Early Bird – 950 SEK (€85)"
-      },
-      {
-       "amount": 1000.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 90.0,
-        "currency": "EUR"
+       {
+        "amount": 1000.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 90.0,
+         "currency": "EUR"
+        },
+        "from": "03-27",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "From 27th March – 1000 SEK (€90)"
        },
-       "from": "03-27",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "From 27th March – 1000 SEK (€90)"
-      },
-      {
-       "amount": 1100.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 99.0,
-        "currency": "EUR"
+       {
+        "amount": 1100.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 99.0,
+         "currency": "EUR"
+        },
+        "from": "05-27",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "From 27th May – 1100 SEK (€99)"
        },
-       "from": "05-27",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "From 27th May – 1100 SEK (€99)"
-      },
-      {
-       "amount": 1200.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 108.0,
-        "currency": "EUR"
+       {
+        "amount": 1200.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 108.0,
+         "currency": "EUR"
+        },
+        "from": "07-27",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "From 27th July – 1200 SEK (€108)"
        },
-       "from": "07-27",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "From 27th July – 1200 SEK (€108)"
-      },
-      {
-       "amount": 1300.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 118.0,
-        "currency": "EUR"
+       {
+        "amount": 1300.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 118.0,
+         "currency": "EUR"
+        },
+        "from": "09-27",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "From 27th September – 1300 SEK (€118)"
        },
-       "from": "09-27",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "From 27th September – 1300 SEK (€118)"
-      },
-      {
-       "amount": 1400.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 127.0,
-        "currency": "EUR"
+       {
+        "amount": 1400.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 127.0,
+         "currency": "EUR"
+        },
+        "from": "11-27",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "From 27th November – 1400 SEK (€127)"
        },
-       "from": "11-27",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "From 27th November – 1400 SEK (€127)"
-      },
-      {
-       "amount": 1500.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 136.0,
-        "currency": "EUR"
-       },
-       "from": "01-17",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "From 17th January – 1500 SEK (€136)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+       {
+        "amount": 1500.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 136.0,
+         "currency": "EUR"
+        },
+        "from": "01-17",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "From 17th January – 1500 SEK (€136)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

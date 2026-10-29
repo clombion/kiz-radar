@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mamadou@amina+mamadou",
+ "key_b": "p:mamadou@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "644ad315e354198f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Common first name Mamadou with the same Stockholm and Sweden, but side A has no style and the partner evidence is absent."
+ }
+}

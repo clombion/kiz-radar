@@ -1,44 +1,51 @@
 {
- "batch": "event-16927",
- "events": [
-  {
-   "event_id": 16927,
-   "artists": [
-    {
-     "name_as_written": "Jaoying",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Or Contact Jaoying"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "30+ Workshops with International Artists",
-     "rationale": "The description states that the festival includes more than 30 workshops."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Epic Party Rooms every night",
-     "rationale": "Two party rooms are run each night, so there is more than one dance floor."
-    },
-    {
-     "feature": "shows",
-     "quote": "Energetic shows and fun animations",
-     "rationale": "The festival offers energetic shows as part of its programme."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Party to wrap it all up in style",
-     "rationale": "A pool party is explicitly listed as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Outdoor SBK Day Social",
-     "rationale": "A daytime social is listed in the programme."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16927",
+  "events": [
+   {
+    "event_id": 16927,
+    "artists": [
+     {
+      "name_as_written": "Jaoying",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Or Contact Jaoying"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "30+ Workshops with International Artists",
+      "rationale": "The description states that the festival includes more than 30 workshops."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Epic Party Rooms every night",
+      "rationale": "Two party rooms are run each night, so there is more than one dance floor."
+     },
+     {
+      "feature": "shows",
+      "quote": "Energetic shows and fun animations",
+      "rationale": "The festival offers energetic shows as part of its programme."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool Party to wrap it all up in style",
+      "rationale": "A pool party is explicitly listed as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Outdoor SBK Day Social",
+      "rationale": "A daytime social is listed in the programme."
+     }
+    ]
+   }
+  ]
+ }
 }

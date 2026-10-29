@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michel@aga+michel",
+ "key_b": "p:michel@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "77bbf59859499c99",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Michel is a common name matching the France flag on the Michel and Aga couple, but the solo entry has no partner, surname or style to link it."
+ }
+}

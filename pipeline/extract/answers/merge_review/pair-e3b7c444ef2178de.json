@@ -1,0 +1,13 @@
+{
+ "key_a": "p:curtis@clemence+curtis",
+ "key_b": "p:curtis@curtis+gaya",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "e3b7c444ef2178de",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Curtis is a common first name with two different partners (Clemence vs Gaya); the shared France country alone does not settle it."
+ }
+}

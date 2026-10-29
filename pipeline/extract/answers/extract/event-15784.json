@@ -1,78 +1,85 @@
 {
- "batch": "event-15784",
- "events": [
-  {
-   "event_id": 15784,
-   "artists": [
-    {
-     "name_as_written": "T’Peak and Djé",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🖤 T’Peak and Djé 🇫🇷"
-    },
-    {
-     "name_as_written": "Liliana de Lima",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇰🇧🇷",
-     "source_line": "🖤 Liliana de Lima 🇩🇰🇧🇷"
-    },
-    {
-     "name_as_written": "Catherine and Nora",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇰🇸🇪",
-     "source_line": "🖤 Catherine and Nora 🇩🇰🇸🇪"
-    },
-    {
-     "name_as_written": "Leslie Ando",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "🖤 Leslie Ando 🇩🇪"
-    },
-    {
-     "name_as_written": "Mariana Inmarcesible",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇪🇨🇱",
-     "source_line": "🖤 Mariana Inmarcesible 🇸🇪🇨🇱"
-    },
-    {
-     "name_as_written": "DJ Neiken",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹🇵🇹",
-     "source_line": "🖤 DJ Neiken 🇮🇹🇵🇹"
-    },
-    {
-     "name_as_written": "DJ Ando",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "🖤 DJ Ando 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ T’Peak",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷🇬🇵",
-     "source_line": "🖤 DJ T’Peak 🇫🇷🇬🇵"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "we expect you to lead in all workshops",
-     "rationale": "The passes are tied to participation in workshops, which shows dance classes are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Friday & Saturday: værkstedet\nSunday: støberiet",
-     "rationale": "The description lists different named rooms used on different days, so there is more than one dance room."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15784",
+  "events": [
+   {
+    "event_id": 15784,
+    "artists": [
+     {
+      "name_as_written": "T’Peak and Djé",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🖤 T’Peak and Djé 🇫🇷"
+     },
+     {
+      "name_as_written": "Liliana de Lima",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇰🇧🇷",
+      "source_line": "🖤 Liliana de Lima 🇩🇰🇧🇷"
+     },
+     {
+      "name_as_written": "Catherine and Nora",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇰🇸🇪",
+      "source_line": "🖤 Catherine and Nora 🇩🇰🇸🇪"
+     },
+     {
+      "name_as_written": "Leslie Ando",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "🖤 Leslie Ando 🇩🇪"
+     },
+     {
+      "name_as_written": "Mariana Inmarcesible",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇪🇨🇱",
+      "source_line": "🖤 Mariana Inmarcesible 🇸🇪🇨🇱"
+     },
+     {
+      "name_as_written": "DJ Neiken",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹🇵🇹",
+      "source_line": "🖤 DJ Neiken 🇮🇹🇵🇹"
+     },
+     {
+      "name_as_written": "DJ Ando",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "🖤 DJ Ando 🇩🇪"
+     },
+     {
+      "name_as_written": "DJ T’Peak",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷🇬🇵",
+      "source_line": "🖤 DJ T’Peak 🇫🇷🇬🇵"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "we expect you to lead in all workshops",
+      "rationale": "The passes are tied to participation in workshops, which shows dance classes are part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Friday & Saturday: værkstedet\nSunday: støberiet",
+      "rationale": "The description lists different named rooms used on different days, so there is more than one dance room."
+     }
+    ]
+   }
+  ]
+ }
 }

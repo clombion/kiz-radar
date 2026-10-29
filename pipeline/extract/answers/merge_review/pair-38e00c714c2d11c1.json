@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dex@dex+lau",
+ "key_b": "p:dex@dex+law",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "38e00c714c2d11c1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Dex is shared and the partner names differ by one letter (Lau vs Law) with an overlapping France stated country, but the partner spelling alone does not settle it."
+ }
+}

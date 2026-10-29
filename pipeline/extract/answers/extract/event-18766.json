@@ -1,34 +1,41 @@
 {
- "batch": "event-18766",
- "events": [
-  {
-   "event_id": 18766,
-   "artists": [
-    {
-     "name_as_written": "KIZZ ESSENCE",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Welcome to the KIZZ ESSENCE ALL IN ONE BEDBURG 2027!🎉"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "MAIN HOTEL – Landhaus Danielshof",
-     "rationale": "The event's location is the main hotel, Landhaus Danielshof, where guests can also book rooms, so the parties take place in the hotel where dancers are invited to stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "OTHER HOTEL RECOMMENDATION",
-     "rationale": "The description recommends a further hotel, Hotel Gut Hohenholz, and the room booking is separate from the pass."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESSCODE",
-     "rationale": "A DRESSCODE heading with Friday, Saturday and Sunday entries is given, so a dress code is stated."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18766",
+  "events": [
+   {
+    "event_id": 18766,
+    "artists": [
+     {
+      "name_as_written": "KIZZ ESSENCE",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Welcome to the KIZZ ESSENCE ALL IN ONE BEDBURG 2027!🎉"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "MAIN HOTEL – Landhaus Danielshof",
+      "rationale": "The event's location is the main hotel, Landhaus Danielshof, where guests can also book rooms, so the parties take place in the hotel where dancers are invited to stay."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "OTHER HOTEL RECOMMENDATION",
+      "rationale": "The description recommends a further hotel, Hotel Gut Hohenholz, and the room booking is separate from the pass."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESSCODE",
+      "rationale": "A DRESSCODE heading with Friday, Saturday and Sunday entries is given, so a dress code is stated."
+     }
+    ]
+   }
+  ]
+ }
 }

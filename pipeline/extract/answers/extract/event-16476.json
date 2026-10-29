@@ -1,54 +1,61 @@
 {
- "batch": "event-16476",
- "events": [
-  {
-   "event_id": 16476,
-   "artists": [
-    {
-     "name_as_written": "Kizz-N Organisation",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Kizz-N Organisation has the right to update the Festival."
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 BIG ROOMS",
-     "rationale": "The listed venue features state three big rooms, meaning more than one dance room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "35 HOURS WORKSHOPS",
-     "rationale": "The venue section lists 35 hours of workshops as part of the festival."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXI TEAMS",
-     "rationale": "The venue section lists taxi teams among the festival's features."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "MASTERCLASSES",
-     "rationale": "Masterclasses are listed as a ticket option, booked extra."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social from 16:00 – 20:00",
-     "rationale": "The Saturday program includes a social in the afternoon and early evening."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "MAIN HOTEL FOR BOOKING:",
-     "rationale": "A main booking hotel is recommended, with a special discount code, without the accommodation being part of the pass."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Transfer",
-     "rationale": "A transfer section lists the airport, main station and bus station with travel times from the venue."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16476",
+  "events": [
+   {
+    "event_id": 16476,
+    "artists": [
+     {
+      "name_as_written": "Kizz-N Organisation",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Kizz-N Organisation has the right to update the Festival."
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 BIG ROOMS",
+      "rationale": "The listed venue features state three big rooms, meaning more than one dance room."
+     },
+     {
+      "feature": "workshops",
+      "quote": "35 HOURS WORKSHOPS",
+      "rationale": "The venue section lists 35 hours of workshops as part of the festival."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXI TEAMS",
+      "rationale": "The venue section lists taxi teams among the festival's features."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "MASTERCLASSES",
+      "rationale": "Masterclasses are listed as a ticket option, booked extra."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Social from 16:00 – 20:00",
+      "rationale": "The Saturday program includes a social in the afternoon and early evening."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "MAIN HOTEL FOR BOOKING:",
+      "rationale": "A main booking hotel is recommended, with a special discount code, without the accommodation being part of the pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Transfer",
+      "rationale": "A transfer section lists the airport, main station and bus station with travel times from the venue."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,63 +1,70 @@
 {
- "batch": "event-15707",
- "events": [
-  {
-   "event_id": 15707,
-   "artists": [
-    {
-     "name_as_written": "Steve Bakoula",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Dance to the rhythms of salsa, bachata, and kizomba with your captain, Steve Bakoula! 🎵💃🕺"
-    },
-    {
-     "name_as_written": "SBK Cruise",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Dance through Greece on an unforgettable cruise with SBK Cruise, from May 2nd to 9th, 2026"
-    },
-    {
-     "name_as_written": "Martini Voyages",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "– Gaelle / Martini Voyages:"
-    }
-   ],
-   "features": [
-    {
-     "feature": "cruise",
-     "quote": "Cruise on the Costa Deliziosa",
-     "rationale": "The description states the event takes place aboard a cruise ship."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Daily dance lessons (2 hours of lessons per day onboard)",
-     "rationale": "Daily dance lessons are part of the cruise package."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "themed SBK evenings",
-     "rationale": "The event offers themed evenings with a dress theme."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Mandatory onboard accommodation package",
-     "rationale": "The price includes the onboard accommodation package."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board onboard",
-     "rationale": "Full board meals are included in the price."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Round-trip bus transfer Nice/Venice",
-     "rationale": "A round-trip bus transfer is included in the price."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15707",
+  "events": [
+   {
+    "event_id": 15707,
+    "artists": [
+     {
+      "name_as_written": "Steve Bakoula",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Dance to the rhythms of salsa, bachata, and kizomba with your captain, Steve Bakoula! 🎵💃🕺"
+     },
+     {
+      "name_as_written": "SBK Cruise",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Dance through Greece on an unforgettable cruise with SBK Cruise, from May 2nd to 9th, 2026"
+     },
+     {
+      "name_as_written": "Martini Voyages",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "– Gaelle / Martini Voyages:"
+     }
+    ],
+    "features": [
+     {
+      "feature": "cruise",
+      "quote": "Cruise on the Costa Deliziosa",
+      "rationale": "The description states the event takes place aboard a cruise ship."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Daily dance lessons (2 hours of lessons per day onboard)",
+      "rationale": "Daily dance lessons are part of the cruise package."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "themed SBK evenings",
+      "rationale": "The event offers themed evenings with a dress theme."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Mandatory onboard accommodation package",
+      "rationale": "The price includes the onboard accommodation package."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Full board onboard",
+      "rationale": "Full board meals are included in the price."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Round-trip bus transfer Nice/Venice",
+      "rationale": "A round-trip bus transfer is included in the price."
+     }
+    ]
+   }
+  ]
+ }
 }

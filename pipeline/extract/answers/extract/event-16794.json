@@ -1,332 +1,339 @@
 {
- "batch": "event-16794",
- "events": [
-  {
-   "event_id": 16794,
-   "artists": [
-    {
-     "name_as_written": "CARINE & RAFAEL",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "CARINE & RAFAEL"
-    },
-    {
-     "name_as_written": "FAUSTO & TAMARA",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "FAUSTO & TAMARA"
-    },
-    {
-     "name_as_written": "TATY & LEO",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "TATY & LEO"
-    },
-    {
-     "name_as_written": "ANA & GUGGIE",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "ANA & GUGGIE"
-    },
-    {
-     "name_as_written": "RODRIGO & WENDY",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "RODRIGO & WENDY"
-    },
-    {
-     "name_as_written": "JENNIFER & EDUARDO",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "JENNIFER & EDUARDO"
-    },
-    {
-     "name_as_written": "AL & NIYA",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "AL & NIYA"
-    },
-    {
-     "name_as_written": "RANDI ROLLEN",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "RANDI ROLLEN"
-    },
-    {
-     "name_as_written": "LORRAINE CRITTENDON",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "LORRAINE CRITTENDON"
-    },
-    {
-     "name_as_written": "DJ JULIO SABROSO",
-     "role": "dj",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "DJ JULIO SABROSO"
-    },
-    {
-     "name_as_written": "DJ CARMONA",
-     "role": "dj",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "DJ CARMONA"
-    },
-    {
-     "name_as_written": "DJ SONORO",
-     "role": "dj",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "DJ SONORO"
-    },
-    {
-     "name_as_written": "DJ JAY WEST",
-     "role": "dj",
-     "style": "SALSA/BACHATA",
-     "country": null,
-     "source_line": "DJ JAY WEST"
-    },
-    {
-     "name_as_written": "ELIZA SALA",
-     "role": "teacher",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "ELIZA SALA"
-    },
-    {
-     "name_as_written": "ADILSON MAIZA",
-     "role": "teacher",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "ADILSON MAIZA"
-    },
-    {
-     "name_as_written": "SONY & JANELLE",
-     "role": "teacher",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "SONY & JANELLE"
-    },
-    {
-     "name_as_written": "BRANDON & HAZEL",
-     "role": "teacher",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "BRANDON & HAZEL"
-    },
-    {
-     "name_as_written": "VERONIKA & CLAUDE",
-     "role": "teacher",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "VERONIKA & CLAUDE"
-    },
-    {
-     "name_as_written": "JAMES & EMMY",
-     "role": "teacher",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "JAMES & EMMY"
-    },
-    {
-     "name_as_written": "ASH THEO",
-     "role": "teacher",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "ASH THEO"
-    },
-    {
-     "name_as_written": "DJ SABURA",
-     "role": "dj",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "DJ SABURA"
-    },
-    {
-     "name_as_written": "DJ GUELAS",
-     "role": "dj",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "DJ GUELAS"
-    },
-    {
-     "name_as_written": "DJ NS",
-     "role": "dj",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "DJ NS"
-    },
-    {
-     "name_as_written": "DJ SHAMS",
-     "role": "dj",
-     "style": "KIZOMBA/KONPA",
-     "country": null,
-     "source_line": "DJ SHAMS"
-    },
-    {
-     "name_as_written": "DREWRY ALEXANDER",
-     "role": "teacher",
-     "style": "CHICAGO STEPPING/DETROIT BALLROOM",
-     "country": null,
-     "source_line": "DREWRY ALEXANDER"
-    },
-    {
-     "name_as_written": "CHOC JAMES",
-     "role": "teacher",
-     "style": "CHICAGO STEPPING/DETROIT BALLROOM",
-     "country": null,
-     "source_line": "CHOC JAMES"
-    },
-    {
-     "name_as_written": "DEMETRIUS JONES",
-     "role": "teacher",
-     "style": "CHICAGO STEPPING/DETROIT BALLROOM",
-     "country": null,
-     "source_line": "DEMETRIUS JONES"
-    },
-    {
-     "name_as_written": "DEMOND CARTER",
-     "role": "teacher",
-     "style": "CHICAGO STEPPING/DETROIT BALLROOM",
-     "country": null,
-     "source_line": "DEMOND CARTER"
-    },
-    {
-     "name_as_written": "DJ SHORTY SMOOTH",
-     "role": "dj",
-     "style": "CHICAGO STEPPING/DETROIT BALLROOM",
-     "country": null,
-     "source_line": "DJ SHORTY SMOOTH"
-    },
-    {
-     "name_as_written": "DJ NEW WAVE",
-     "role": "dj",
-     "style": "CHICAGO STEPPING/DETROIT BALLROOM",
-     "country": null,
-     "source_line": "DJ NEW WAVE"
-    },
-    {
-     "name_as_written": "DJ JAYCO",
-     "role": "dj",
-     "style": "CHICAGO STEPPING/DETROIT BALLROOM",
-     "country": null,
-     "source_line": "DJ JAYCO"
-    },
-    {
-     "name_as_written": "CEIJAY & BRUNA",
-     "role": "teacher",
-     "style": "URBANKIZ/ZOUK",
-     "country": null,
-     "source_line": "CEIJAY & BRUNA"
-    },
-    {
-     "name_as_written": "JERAMIE & ALYSSA",
-     "role": "teacher",
-     "style": "URBANKIZ/ZOUK",
-     "country": null,
-     "source_line": "JERAMIE & ALYSSA"
-    },
-    {
-     "name_as_written": "HQ.DREW",
-     "role": "teacher",
-     "style": "URBANKIZ/ZOUK",
-     "country": null,
-     "source_line": "HQ.DREW"
-    },
-    {
-     "name_as_written": "PAMELITA",
-     "role": "teacher",
-     "style": "URBANKIZ/ZOUK",
-     "country": null,
-     "source_line": "PAMELITA"
-    },
-    {
-     "name_as_written": "ANNIE",
-     "role": "teacher",
-     "style": "URBANKIZ/ZOUK",
-     "country": null,
-     "source_line": "ANNIE"
-    },
-    {
-     "name_as_written": "CARLKIZ",
-     "role": "teacher",
-     "style": "URBANKIZ/ZOUK",
-     "country": null,
-     "source_line": "CARLKIZ"
-    },
-    {
-     "name_as_written": "DJ CASANOVA",
-     "role": "dj",
-     "style": "URBANKIZ/ZOUK",
-     "country": null,
-     "source_line": "DJ CASANOVA"
-    },
-    {
-     "name_as_written": "DJ YAWO",
-     "role": "dj",
-     "style": "URBANKIZ/ZOUK",
-     "country": null,
-     "source_line": "DJ YAWO"
-    },
-    {
-     "name_as_written": "DJ ALLETTA",
-     "role": "dj",
-     "style": "URBANKIZ/ZOUK",
-     "country": null,
-     "source_line": "DJ ALLETTA"
-    }
-   ],
-   "features": [
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "BEGINNER BOOTCAMPS",
-     "rationale": "The event offers four days of beginner bootcamps."
-    },
-    {
-     "feature": "workshops",
-     "quote": "immersive workshops",
-     "rationale": "Each day is filled with immersive workshops."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "For all levels, Beginners to Advanced",
-     "rationale": "The workshops are explicitly open to all levels including beginners."
-    },
-    {
-     "feature": "shows",
-     "quote": "inspiring performances",
-     "rationale": "Each day includes inspiring performances by artists."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "4 Nights of Theme Parties till 5am!",
-     "rationale": "Theme parties are held on four nights."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "5 Dance rooms",
-     "rationale": "The festival has five dance rooms, each with a different style."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "day and night parties",
-     "rationale": "The festival includes daytime parties as well as night parties."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "walk straight from your room to the dance floor",
-     "rationale": "Dancers are invited to stay at the hotel where the dance parties take place."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16794",
+  "events": [
+   {
+    "event_id": 16794,
+    "artists": [
+     {
+      "name_as_written": "CARINE & RAFAEL",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "CARINE & RAFAEL"
+     },
+     {
+      "name_as_written": "FAUSTO & TAMARA",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "FAUSTO & TAMARA"
+     },
+     {
+      "name_as_written": "TATY & LEO",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "TATY & LEO"
+     },
+     {
+      "name_as_written": "ANA & GUGGIE",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "ANA & GUGGIE"
+     },
+     {
+      "name_as_written": "RODRIGO & WENDY",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "RODRIGO & WENDY"
+     },
+     {
+      "name_as_written": "JENNIFER & EDUARDO",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "JENNIFER & EDUARDO"
+     },
+     {
+      "name_as_written": "AL & NIYA",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "AL & NIYA"
+     },
+     {
+      "name_as_written": "RANDI ROLLEN",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "RANDI ROLLEN"
+     },
+     {
+      "name_as_written": "LORRAINE CRITTENDON",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "LORRAINE CRITTENDON"
+     },
+     {
+      "name_as_written": "DJ JULIO SABROSO",
+      "role": "dj",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "DJ JULIO SABROSO"
+     },
+     {
+      "name_as_written": "DJ CARMONA",
+      "role": "dj",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "DJ CARMONA"
+     },
+     {
+      "name_as_written": "DJ SONORO",
+      "role": "dj",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "DJ SONORO"
+     },
+     {
+      "name_as_written": "DJ JAY WEST",
+      "role": "dj",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "DJ JAY WEST"
+     },
+     {
+      "name_as_written": "ELIZA SALA",
+      "role": "teacher",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "ELIZA SALA"
+     },
+     {
+      "name_as_written": "ADILSON MAIZA",
+      "role": "teacher",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "ADILSON MAIZA"
+     },
+     {
+      "name_as_written": "SONY & JANELLE",
+      "role": "teacher",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "SONY & JANELLE"
+     },
+     {
+      "name_as_written": "BRANDON & HAZEL",
+      "role": "teacher",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "BRANDON & HAZEL"
+     },
+     {
+      "name_as_written": "VERONIKA & CLAUDE",
+      "role": "teacher",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "VERONIKA & CLAUDE"
+     },
+     {
+      "name_as_written": "JAMES & EMMY",
+      "role": "teacher",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "JAMES & EMMY"
+     },
+     {
+      "name_as_written": "ASH THEO",
+      "role": "teacher",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "ASH THEO"
+     },
+     {
+      "name_as_written": "DJ SABURA",
+      "role": "dj",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "DJ SABURA"
+     },
+     {
+      "name_as_written": "DJ GUELAS",
+      "role": "dj",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "DJ GUELAS"
+     },
+     {
+      "name_as_written": "DJ NS",
+      "role": "dj",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "DJ NS"
+     },
+     {
+      "name_as_written": "DJ SHAMS",
+      "role": "dj",
+      "style": "KIZOMBA/KONPA",
+      "country": null,
+      "source_line": "DJ SHAMS"
+     },
+     {
+      "name_as_written": "DREWRY ALEXANDER",
+      "role": "teacher",
+      "style": "CHICAGO STEPPING/DETROIT BALLROOM",
+      "country": null,
+      "source_line": "DREWRY ALEXANDER"
+     },
+     {
+      "name_as_written": "CHOC JAMES",
+      "role": "teacher",
+      "style": "CHICAGO STEPPING/DETROIT BALLROOM",
+      "country": null,
+      "source_line": "CHOC JAMES"
+     },
+     {
+      "name_as_written": "DEMETRIUS JONES",
+      "role": "teacher",
+      "style": "CHICAGO STEPPING/DETROIT BALLROOM",
+      "country": null,
+      "source_line": "DEMETRIUS JONES"
+     },
+     {
+      "name_as_written": "DEMOND CARTER",
+      "role": "teacher",
+      "style": "CHICAGO STEPPING/DETROIT BALLROOM",
+      "country": null,
+      "source_line": "DEMOND CARTER"
+     },
+     {
+      "name_as_written": "DJ SHORTY SMOOTH",
+      "role": "dj",
+      "style": "CHICAGO STEPPING/DETROIT BALLROOM",
+      "country": null,
+      "source_line": "DJ SHORTY SMOOTH"
+     },
+     {
+      "name_as_written": "DJ NEW WAVE",
+      "role": "dj",
+      "style": "CHICAGO STEPPING/DETROIT BALLROOM",
+      "country": null,
+      "source_line": "DJ NEW WAVE"
+     },
+     {
+      "name_as_written": "DJ JAYCO",
+      "role": "dj",
+      "style": "CHICAGO STEPPING/DETROIT BALLROOM",
+      "country": null,
+      "source_line": "DJ JAYCO"
+     },
+     {
+      "name_as_written": "CEIJAY & BRUNA",
+      "role": "teacher",
+      "style": "URBANKIZ/ZOUK",
+      "country": null,
+      "source_line": "CEIJAY & BRUNA"
+     },
+     {
+      "name_as_written": "JERAMIE & ALYSSA",
+      "role": "teacher",
+      "style": "URBANKIZ/ZOUK",
+      "country": null,
+      "source_line": "JERAMIE & ALYSSA"
+     },
+     {
+      "name_as_written": "HQ.DREW",
+      "role": "teacher",
+      "style": "URBANKIZ/ZOUK",
+      "country": null,
+      "source_line": "HQ.DREW"
+     },
+     {
+      "name_as_written": "PAMELITA",
+      "role": "teacher",
+      "style": "URBANKIZ/ZOUK",
+      "country": null,
+      "source_line": "PAMELITA"
+     },
+     {
+      "name_as_written": "ANNIE",
+      "role": "teacher",
+      "style": "URBANKIZ/ZOUK",
+      "country": null,
+      "source_line": "ANNIE"
+     },
+     {
+      "name_as_written": "CARLKIZ",
+      "role": "teacher",
+      "style": "URBANKIZ/ZOUK",
+      "country": null,
+      "source_line": "CARLKIZ"
+     },
+     {
+      "name_as_written": "DJ CASANOVA",
+      "role": "dj",
+      "style": "URBANKIZ/ZOUK",
+      "country": null,
+      "source_line": "DJ CASANOVA"
+     },
+     {
+      "name_as_written": "DJ YAWO",
+      "role": "dj",
+      "style": "URBANKIZ/ZOUK",
+      "country": null,
+      "source_line": "DJ YAWO"
+     },
+     {
+      "name_as_written": "DJ ALLETTA",
+      "role": "dj",
+      "style": "URBANKIZ/ZOUK",
+      "country": null,
+      "source_line": "DJ ALLETTA"
+     }
+    ],
+    "features": [
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "BEGINNER BOOTCAMPS",
+      "rationale": "The event offers four days of beginner bootcamps."
+     },
+     {
+      "feature": "workshops",
+      "quote": "immersive workshops",
+      "rationale": "Each day is filled with immersive workshops."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "For all levels, Beginners to Advanced",
+      "rationale": "The workshops are explicitly open to all levels including beginners."
+     },
+     {
+      "feature": "shows",
+      "quote": "inspiring performances",
+      "rationale": "Each day includes inspiring performances by artists."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "4 Nights of Theme Parties till 5am!",
+      "rationale": "Theme parties are held on four nights."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "5 Dance rooms",
+      "rationale": "The festival has five dance rooms, each with a different style."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "day and night parties",
+      "rationale": "The festival includes daytime parties as well as night parties."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "walk straight from your room to the dance floor",
+      "rationale": "Dancers are invited to stay at the hotel where the dance parties take place."
+     }
+    ]
+   }
+  ]
+ }
 }

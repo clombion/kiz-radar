@@ -1,105 +1,112 @@
 {
- "batch": "event-17858",
- "events": [
-  {
-   "event_id": 17858,
-   "artists": [
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "JP & Stephy 🇫🇷"
-    },
-    {
-     "name_as_written": "Said",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Said 🇫🇷"
-    },
-    {
-     "name_as_written": "Karl",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Karl 🇫🇷"
-    },
-    {
-     "name_as_written": "JP & Ramona",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "JP & Ramona 🇨🇭"
-    },
-    {
-     "name_as_written": "Mou & Laura",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷🇦🇺",
-     "source_line": "Mou & Laura 🇫🇷🇦🇺"
-    },
-    {
-     "name_as_written": "DJ Snakes",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Snakes 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Hugo Smile",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Hugo Smile 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Selva",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇾",
-     "source_line": "DJ Selva 🇲🇾"
-    },
-    {
-     "name_as_written": "DJ Tysh",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇩",
-     "source_line": "DJ Tysh 🇮🇩"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Main Venue & Official Hotel",
-     "rationale": "The main venue is also the official hotel, so the parties and accommodation are in the same place."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Second Hotel",
-     "rationale": "A second recommended hotel is named for dancers."
-    },
-    {
-     "feature": "workshops",
-     "quote": "inspiring workshops",
-     "rationale": "The description promises workshops as part of the festival."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "beach parties",
-     "rationale": "Beach parties are listed among the festival experiences."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party: Thursday, 3 December",
-     "rationale": "A pre-party is scheduled before the festival starts."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After Party: Tuesday, 8 December",
-     "rationale": "An after-party is scheduled after the festival."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17858",
+  "events": [
+   {
+    "event_id": 17858,
+    "artists": [
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "JP & Stephy 🇫🇷"
+     },
+     {
+      "name_as_written": "Said",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Said 🇫🇷"
+     },
+     {
+      "name_as_written": "Karl",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Karl 🇫🇷"
+     },
+     {
+      "name_as_written": "JP & Ramona",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "JP & Ramona 🇨🇭"
+     },
+     {
+      "name_as_written": "Mou & Laura",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷🇦🇺",
+      "source_line": "Mou & Laura 🇫🇷🇦🇺"
+     },
+     {
+      "name_as_written": "DJ Snakes",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Snakes 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Hugo Smile",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Hugo Smile 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Selva",
+      "role": "dj",
+      "style": null,
+      "country": "🇲🇾",
+      "source_line": "DJ Selva 🇲🇾"
+     },
+     {
+      "name_as_written": "DJ Tysh",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇩",
+      "source_line": "DJ Tysh 🇮🇩"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "Main Venue & Official Hotel",
+      "rationale": "The main venue is also the official hotel, so the parties and accommodation are in the same place."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Second Hotel",
+      "rationale": "A second recommended hotel is named for dancers."
+     },
+     {
+      "feature": "workshops",
+      "quote": "inspiring workshops",
+      "rationale": "The description promises workshops as part of the festival."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "beach parties",
+      "rationale": "Beach parties are listed among the festival experiences."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party: Thursday, 3 December",
+      "rationale": "A pre-party is scheduled before the festival starts."
+     },
+     {
+      "feature": "after_party",
+      "quote": "After Party: Tuesday, 8 December",
+      "rationale": "An after-party is scheduled after the festival."
+     }
+    ]
+   }
+  ]
+ }
 }

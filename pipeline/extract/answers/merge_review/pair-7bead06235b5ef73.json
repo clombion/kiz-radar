@@ -1,0 +1,13 @@
+{
+ "key_a": "p:oscar@claudia+oscar",
+ "key_b": "p:oscaramore",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "7bead06235b5ef73",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Only the first name Oscar is shared and the partners differ (Claudia on side A, Silvia on side B's couple entry), so the evidence does not settle identity."
+ }
+}

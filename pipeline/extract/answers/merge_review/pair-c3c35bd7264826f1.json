@@ -1,0 +1,13 @@
+{
+ "key_a": "p:richardvooght",
+ "key_b": "p:richardvoogt",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c3c35bd7264826f1",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Vooght and Voogt are a spelling variant of the same surname, with the same first name and both teachers listed at London events."
+ }
+}

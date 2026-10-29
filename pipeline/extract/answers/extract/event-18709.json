@@ -1,131 +1,138 @@
 {
- "batch": "event-18709",
- "events": [
-  {
-   "event_id": 18709,
-   "artists": [
-    {
-     "name_as_written": "Akram & Sara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏻💃🏻Akram & Sara"
-    },
-    {
-     "name_as_written": "Said & Oksana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏻💃🏻Said & Oksana"
-    },
-    {
-     "name_as_written": "Ledoux Kingsman",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏻Ledoux Kingsman"
-    },
-    {
-     "name_as_written": "Asia Voronova",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🏻Asia Voronova"
-    },
-    {
-     "name_as_written": "David Ruach",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏻David Ruach"
-    },
-    {
-     "name_as_written": "Dawou",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏻Dawou"
-    },
-    {
-     "name_as_written": "Elsy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🏻Elsy"
-    },
-    {
-     "name_as_written": "Loyal",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏻Loyal"
-    },
-    {
-     "name_as_written": "DJ Nao",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧DJ Nao"
-    },
-    {
-     "name_as_written": "DJ Neiken",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧DJ Neiken"
-    },
-    {
-     "name_as_written": "DJ David Ruela",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧DJ David Ruela"
-    },
-    {
-     "name_as_written": "DJ Faris",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧DJ Faris"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "World-class workshops",
-     "rationale": "The event lists workshops in Kizomba, Urban Kiz, Tarraxo and Fusion as part of the programme."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "High-energy themed night parties",
-     "rationale": "The description promises themed night parties."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool parties",
-     "rationale": "The expectations list includes pool parties."
-    },
-    {
-     "feature": "boat_party",
-     "quote": "Signature boat party",
-     "rationale": "The event advertises a signature boat party."
-    },
-    {
-     "feature": "competition",
-     "quote": "The Battle Kizz Qualifications",
-     "rationale": "The battle qualifications are a competition within the event."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-one venue experience",
-     "rationale": "The event is described as an all-in-one venue experience, matching the main venue hotel where dancers stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Avani Ibn Battuta Hotel",
-     "rationale": "The main venue hotel is linked to a group booking code, indicating a negotiated hotel rate outside the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18709",
+  "events": [
+   {
+    "event_id": 18709,
+    "artists": [
+     {
+      "name_as_written": "Akram & Sara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻💃🏻Akram & Sara"
+     },
+     {
+      "name_as_written": "Said & Oksana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻💃🏻Said & Oksana"
+     },
+     {
+      "name_as_written": "Ledoux Kingsman",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻Ledoux Kingsman"
+     },
+     {
+      "name_as_written": "Asia Voronova",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🏻Asia Voronova"
+     },
+     {
+      "name_as_written": "David Ruach",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻David Ruach"
+     },
+     {
+      "name_as_written": "Dawou",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻Dawou"
+     },
+     {
+      "name_as_written": "Elsy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🏻Elsy"
+     },
+     {
+      "name_as_written": "Loyal",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻Loyal"
+     },
+     {
+      "name_as_written": "DJ Nao",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧DJ Nao"
+     },
+     {
+      "name_as_written": "DJ Neiken",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧DJ Neiken"
+     },
+     {
+      "name_as_written": "DJ David Ruela",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧DJ David Ruela"
+     },
+     {
+      "name_as_written": "DJ Faris",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧DJ Faris"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "World-class workshops",
+      "rationale": "The event lists workshops in Kizomba, Urban Kiz, Tarraxo and Fusion as part of the programme."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "High-energy themed night parties",
+      "rationale": "The description promises themed night parties."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool parties",
+      "rationale": "The expectations list includes pool parties."
+     },
+     {
+      "feature": "boat_party",
+      "quote": "Signature boat party",
+      "rationale": "The event advertises a signature boat party."
+     },
+     {
+      "feature": "competition",
+      "quote": "The Battle Kizz Qualifications",
+      "rationale": "The battle qualifications are a competition within the event."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-one venue experience",
+      "rationale": "The event is described as an all-in-one venue experience, matching the main venue hotel where dancers stay."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Avani Ibn Battuta Hotel",
+      "rationale": "The main venue hotel is linked to a group booking code, indicating a negotiated hotel rate outside the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

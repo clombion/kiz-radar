@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lavinia@armand+lavinia",
+ "key_b": "p:lavinia@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "40daaaa59684b687",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Armand & Lavinia and the solo LAVINIA (Malaga) share the first name and stated Romania, but the solo entry has no partner name to link it."
+ }
+}

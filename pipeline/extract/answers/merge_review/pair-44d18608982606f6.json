@@ -1,0 +1,13 @@
+{
+ "key_a": "p:justinhno@dance",
+ "key_b": "p:justinho@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "44d18608982606f6",
+ "answer": {
+  "decision": "merge",
+  "rationale": "JUSTINHNO and Justinho share a near-identical spelling, Senegal as stated country, and the URBANKIZ and Kizomba styles at matching France and Luxembourg events."
+ }
+}

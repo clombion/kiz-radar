@@ -1,0 +1,13 @@
+{
+ "key_a": "p:christian@christian+tina",
+ "key_b": "p:christine@christine+stef",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "69f774d4834a3f30",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Christian and Christine are distinct names one letter apart, and both are listed as separate teachers at the same Massa event on the same date."
+ }
+}

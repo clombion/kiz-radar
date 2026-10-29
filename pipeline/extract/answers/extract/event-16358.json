@@ -1,299 +1,306 @@
 {
- "batch": "event-16358",
- "events": [
-  {
-   "event_id": 16358,
-   "artists": [
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🎧 DJ Shark 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ Lenhy",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Lenhy 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Snakes",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Snakes 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Do Zangado",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🎧 DJ Do Zangado 🇵🇹"
-    },
-    {
-     "name_as_written": "DJ Paraïso",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Paraïso 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Lionnax",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Lionnax 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Mams",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "🎧 DJ Mams 🇨🇭"
-    },
-    {
-     "name_as_written": "DJ Chad",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Chad 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Sam Gold",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Sam Gold 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Vasco",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Vasco 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Dwe",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🎧 DJ Dwe 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ J-Kee",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ J-Kee 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Mous",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "🎧 DJ Mous 🇨🇭"
-    },
-    {
-     "name_as_written": "DJ Stompy",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Stompy 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Diablo",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Diablo 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Siwo",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Siwo 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Billy Chorron",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Billy Chorron 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Nao",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🎧 DJ Nao 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ Clarita",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "🎧 DJ Clarita 🇨🇭"
-    },
-    {
-     "name_as_written": "Diana Paixao",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🤓 Diana Paixao 🇫🇷"
-    },
-    {
-     "name_as_written": "Vasco",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🤓 Vasco 🇫🇷"
-    },
-    {
-     "name_as_written": "Fabricio Do Zangado",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🤓 Fabricio Do Zangado 🇵🇹"
-    },
-    {
-     "name_as_written": "João Makassi Yetu",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🤓 João Makassi Yetu 🇫🇷"
-    },
-    {
-     "name_as_written": "Stre",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🤓 Stre 🇫🇷"
-    },
-    {
-     "name_as_written": "Dwe & Gaby",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🤓🤓 Dwe & Gaby 🇳🇱"
-    },
-    {
-     "name_as_written": "El Hadj & Jenna",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🤓🤓 El Hadj & Jenna 🇫🇷"
-    },
-    {
-     "name_as_written": "J-Kee & Dadou",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🤓🤓 J-Kee & Dadou 🇫🇷"
-    },
-    {
-     "name_as_written": "Iron Mams & Moorea",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇫🇷",
-     "source_line": "🤓🤓 Iron Mams & Moorea 🇨🇭🇫🇷"
-    },
-    {
-     "name_as_written": "Jah J’a & Jeisy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇨🇭",
-     "source_line": "🤓🤓 Jah J’a & Jeisy 🇨🇭🇨🇭"
-    },
-    {
-     "name_as_written": "David Da Silva & Christina",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🤓🤓 David Da Silva & Christina 🇫🇷"
-    },
-    {
-     "name_as_written": "Axel & Lucy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷🇫🇷",
-     "source_line": "🤓🤓 Axel & Lucy 🇫🇷🇫🇷"
-    },
-    {
-     "name_as_written": "Mik’iz & Pao Lou",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🤓🤓 Mik’iz & Pao Lou 🇫🇷"
-    },
-    {
-     "name_as_written": "Margaux & Pao Lou",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🤓🤓 Margaux & Pao Lou 🇫🇷"
-    },
-    {
-     "name_as_written": "Fis & Krissy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷🇫🇷",
-     "source_line": "🤓🤓 Fis & Krissy 🇫🇷🇫🇷"
-    },
-    {
-     "name_as_written": "Lastar & Natacha Claude",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷🇫🇷",
-     "source_line": "🤓🤓 Lastar & Natacha Claude 🇫🇷🇫🇷"
-    },
-    {
-     "name_as_written": "Abdoulaye & Clarita",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇨🇭",
-     "source_line": "🤓🤓 Abdoulaye & Clarita 🇨🇭🇨🇭"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE – 6 ROOMS / 6 VIBES",
-     "rationale": "The title line states the event is all in one, and the party schedule places the parties at the Main Hotel."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "6 Rooms / 6 Universes",
-     "rationale": "The description explicitly states there are six dance rooms."
-    },
-    {
-     "feature": "workshops",
-     "quote": "30+ Hours of Workshops",
-     "rationale": "Dance workshops are listed as part of the programme."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party – 1 Room (Main Hotel)",
-     "rationale": "A pre-party on Thursday night is listed in the programme."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After-Party – 1 Room (Main Hotel)",
-     "rationale": "An after-party on Monday night is listed in the programme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 Socials – 3pm to 8pm / 2 Rooms – 2 Vibes",
-     "rationale": "Afternoon socials from 3pm to 8pm are part of the programme."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "partner hotels nearby",
-     "rationale": "The description mentions partner hotels nearby, without including accommodation in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16358",
+  "events": [
+   {
+    "event_id": 16358,
+    "artists": [
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🎧 DJ Shark 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ Lenhy",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Lenhy 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Snakes",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Snakes 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Do Zangado",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🎧 DJ Do Zangado 🇵🇹"
+     },
+     {
+      "name_as_written": "DJ Paraïso",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Paraïso 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Lionnax",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Lionnax 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Mams",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "🎧 DJ Mams 🇨🇭"
+     },
+     {
+      "name_as_written": "DJ Chad",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Chad 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Sam Gold",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Sam Gold 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Vasco",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Vasco 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Dwe",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🎧 DJ Dwe 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ J-Kee",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ J-Kee 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Mous",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "🎧 DJ Mous 🇨🇭"
+     },
+     {
+      "name_as_written": "DJ Stompy",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Stompy 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Diablo",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Diablo 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Siwo",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Siwo 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Billy Chorron",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Billy Chorron 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Nao",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🎧 DJ Nao 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ Clarita",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "🎧 DJ Clarita 🇨🇭"
+     },
+     {
+      "name_as_written": "Diana Paixao",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🤓 Diana Paixao 🇫🇷"
+     },
+     {
+      "name_as_written": "Vasco",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🤓 Vasco 🇫🇷"
+     },
+     {
+      "name_as_written": "Fabricio Do Zangado",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🤓 Fabricio Do Zangado 🇵🇹"
+     },
+     {
+      "name_as_written": "João Makassi Yetu",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🤓 João Makassi Yetu 🇫🇷"
+     },
+     {
+      "name_as_written": "Stre",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🤓 Stre 🇫🇷"
+     },
+     {
+      "name_as_written": "Dwe & Gaby",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🤓🤓 Dwe & Gaby 🇳🇱"
+     },
+     {
+      "name_as_written": "El Hadj & Jenna",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🤓🤓 El Hadj & Jenna 🇫🇷"
+     },
+     {
+      "name_as_written": "J-Kee & Dadou",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🤓🤓 J-Kee & Dadou 🇫🇷"
+     },
+     {
+      "name_as_written": "Iron Mams & Moorea",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇫🇷",
+      "source_line": "🤓🤓 Iron Mams & Moorea 🇨🇭🇫🇷"
+     },
+     {
+      "name_as_written": "Jah J’a & Jeisy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇨🇭",
+      "source_line": "🤓🤓 Jah J’a & Jeisy 🇨🇭🇨🇭"
+     },
+     {
+      "name_as_written": "David Da Silva & Christina",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🤓🤓 David Da Silva & Christina 🇫🇷"
+     },
+     {
+      "name_as_written": "Axel & Lucy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷🇫🇷",
+      "source_line": "🤓🤓 Axel & Lucy 🇫🇷🇫🇷"
+     },
+     {
+      "name_as_written": "Mik’iz & Pao Lou",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🤓🤓 Mik’iz & Pao Lou 🇫🇷"
+     },
+     {
+      "name_as_written": "Margaux & Pao Lou",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🤓🤓 Margaux & Pao Lou 🇫🇷"
+     },
+     {
+      "name_as_written": "Fis & Krissy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷🇫🇷",
+      "source_line": "🤓🤓 Fis & Krissy 🇫🇷🇫🇷"
+     },
+     {
+      "name_as_written": "Lastar & Natacha Claude",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷🇫🇷",
+      "source_line": "🤓🤓 Lastar & Natacha Claude 🇫🇷🇫🇷"
+     },
+     {
+      "name_as_written": "Abdoulaye & Clarita",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇨🇭",
+      "source_line": "🤓🤓 Abdoulaye & Clarita 🇨🇭🇨🇭"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE – 6 ROOMS / 6 VIBES",
+      "rationale": "The title line states the event is all in one, and the party schedule places the parties at the Main Hotel."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "6 Rooms / 6 Universes",
+      "rationale": "The description explicitly states there are six dance rooms."
+     },
+     {
+      "feature": "workshops",
+      "quote": "30+ Hours of Workshops",
+      "rationale": "Dance workshops are listed as part of the programme."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party – 1 Room (Main Hotel)",
+      "rationale": "A pre-party on Thursday night is listed in the programme."
+     },
+     {
+      "feature": "after_party",
+      "quote": "After-Party – 1 Room (Main Hotel)",
+      "rationale": "An after-party on Monday night is listed in the programme."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 Socials – 3pm to 8pm / 2 Rooms – 2 Vibes",
+      "rationale": "Afternoon socials from 3pm to 8pm are part of the programme."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "partner hotels nearby",
+      "rationale": "The description mentions partner hotels nearby, without including accommodation in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

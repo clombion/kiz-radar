@@ -1,133 +1,140 @@
 {
- "batch": "event-16261",
- "events": [
-  {
-   "event_id": 16261,
-   "artists": [
-    {
-     "name_as_written": "DJ SANTOS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ SANTOS"
-    },
-    {
-     "name_as_written": "DJ FRANK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ FRANK"
-    },
-    {
-     "name_as_written": "DJ DANY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ DANY"
-    },
-    {
-     "name_as_written": "DJ IRON MAMS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ IRON MAMS"
-    },
-    {
-     "name_as_written": "DJ HUGO SMILE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ HUGO SMILE"
-    },
-    {
-     "name_as_written": "DJ ZEN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ ZEN"
-    },
-    {
-     "name_as_written": "DJ LAMIN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ LAMIN"
-    },
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ SNAKES"
-    },
-    {
-     "name_as_written": "JACINTO TECA & LUCY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🕺 JACINTO TECA & LUCY"
-    },
-    {
-     "name_as_written": "MIK’IZ & PAO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🕺 MIK’IZ & PAO"
-    },
-    {
-     "name_as_written": "CHAMALO & JALYSSA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🕺 CHAMALO & JALYSSA"
-    },
-    {
-     "name_as_written": "IRON MAMS & IVANA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🕺 IRON MAMS & IVANA"
-    },
-    {
-     "name_as_written": "Jacinto Teca Events",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Jacinto Teca Events team"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE LOCATION",
-     "rationale": "The event and the hotels where dancers stay are at one location, so the parties take place in the hotel."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "1 PRE-PARTY",
-     "rationale": "The description lists a pre-party as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 ROOMS AIR CONDITIONED",
-     "rationale": "Three dance rooms are offered."
-    },
-    {
-     "feature": "workshops",
-     "quote": "ONLY FEW CLASSES PER DAY",
-     "rationale": "Dance classes are part of the event."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "FOOD – BREAKFAST & LUNCH & DINNER IN THE LOCATION",
-     "rationale": "Breakfast, lunch and dinner are listed as provided at the location."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Accommodation is separately, with the advantage of a discount, which we arranged for you.",
-     "rationale": "A negotiated hotel discount is offered without accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16261",
+  "events": [
+   {
+    "event_id": 16261,
+    "artists": [
+     {
+      "name_as_written": "DJ SANTOS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ SANTOS"
+     },
+     {
+      "name_as_written": "DJ FRANK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ FRANK"
+     },
+     {
+      "name_as_written": "DJ DANY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ DANY"
+     },
+     {
+      "name_as_written": "DJ IRON MAMS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ IRON MAMS"
+     },
+     {
+      "name_as_written": "DJ HUGO SMILE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ HUGO SMILE"
+     },
+     {
+      "name_as_written": "DJ ZEN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ ZEN"
+     },
+     {
+      "name_as_written": "DJ LAMIN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ LAMIN"
+     },
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ SNAKES"
+     },
+     {
+      "name_as_written": "JACINTO TECA & LUCY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🕺 JACINTO TECA & LUCY"
+     },
+     {
+      "name_as_written": "MIK’IZ & PAO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🕺 MIK’IZ & PAO"
+     },
+     {
+      "name_as_written": "CHAMALO & JALYSSA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🕺 CHAMALO & JALYSSA"
+     },
+     {
+      "name_as_written": "IRON MAMS & IVANA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🕺 IRON MAMS & IVANA"
+     },
+     {
+      "name_as_written": "Jacinto Teca Events",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Jacinto Teca Events team"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE LOCATION",
+      "rationale": "The event and the hotels where dancers stay are at one location, so the parties take place in the hotel."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "1 PRE-PARTY",
+      "rationale": "The description lists a pre-party as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 ROOMS AIR CONDITIONED",
+      "rationale": "Three dance rooms are offered."
+     },
+     {
+      "feature": "workshops",
+      "quote": "ONLY FEW CLASSES PER DAY",
+      "rationale": "Dance classes are part of the event."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "FOOD – BREAKFAST & LUNCH & DINNER IN THE LOCATION",
+      "rationale": "Breakfast, lunch and dinner are listed as provided at the location."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Accommodation is separately, with the advantage of a discount, which we arranged for you.",
+      "rationale": "A negotiated hotel discount is offered without accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jossy@jossy+val",
+ "key_b": "p:jossy@jossy+valdanza",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d8520f39f9f61b2b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Val & Jossy appears at the Tallinn festival in 2026 and 2027, and the 2027 entry adds Danza to Val's name as the same couple."
+ }
+}

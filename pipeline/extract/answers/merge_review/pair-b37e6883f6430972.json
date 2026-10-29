@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jovany@celine+jovany",
+ "key_b": "p:jovanykizatours",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "b37e6883f6430972",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Jovany with partner Celine appears in both pairs, and the b-side name adds the Kizatours brand that the 2027 Tours Kizatours event carries."
+ }
+}

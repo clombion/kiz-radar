@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+guilherme",
+ "key_b": "p:anasaavedra",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "6f87ddab04c2208c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Ana & Guilherme and Ana Saavedra share only the common first name and Portugal; no partner or event overlap confirms the link."
+ }
+}

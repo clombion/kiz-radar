@@ -1,39 +1,46 @@
 {
- "batch": "event-18371",
- "events": [
-  {
-   "event_id": 18371,
-   "party_rooms": {
-    "count": 5,
-    "quote": "Amazing parties until sunrise in 5 halls"
-   },
-   "class_rooms": {
-    "count": 8,
-    "quote": "Excellent workshops in 8 halls"
-   },
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "BALKAN SALSA-BACHATA-KIZOMBA CONGRESS"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18371",
+  "events": [
+   {
+    "event_id": 18371,
+    "party_rooms": {
+     "count": 5,
+     "quote": "Amazing parties until sunrise in 5 halls"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Cuban, LA, NY, Cha-cha, Bachata, Kizomba"
+    "class_rooms": {
+     "count": 8,
+     "quote": "Excellent workshops in 8 halls"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Bachata, Kizomba, Traditional dances"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cha-cha",
-     "quote": "Cuban, LA, NY, Cha-cha, Bachata"
-    }
-   ]
-  }
- ]
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "BALKAN SALSA-BACHATA-KIZOMBA CONGRESS"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Cuban, LA, NY, Cha-cha, Bachata, Kizomba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Bachata, Kizomba, Traditional dances"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cha-cha",
+      "quote": "Cuban, LA, NY, Cha-cha, Bachata"
+     }
+    ]
+   }
+  ]
+ }
 }

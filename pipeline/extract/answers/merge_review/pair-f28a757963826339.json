@@ -1,0 +1,13 @@
+{
+ "key_a": "p:silvia@andrea+silvia",
+ "key_b": "p:silvia@andreas+silvia",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "f28a757963826339",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Andrea & Silvia and Andreas & Silvia share the partner Silvia and an Italy hint, but Andrea and Andreas are one letter apart and not confirmed as one person."
+ }
+}

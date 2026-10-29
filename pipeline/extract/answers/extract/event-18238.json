@@ -1,88 +1,95 @@
 {
- "batch": "event-18238",
- "events": [
-  {
-   "event_id": 18238,
-   "artists": [
-    {
-     "name_as_written": "Fred & Chiara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Fred & Chiara"
-    },
-    {
-     "name_as_written": "Ben Cyrille",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Ben Cyrille"
-    },
-    {
-     "name_as_written": "Jazzycubango",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Jazzycubango"
-    },
-    {
-     "name_as_written": "DJ Virus",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DJ Virus"
-    },
-    {
-     "name_as_written": "DJ Jazzy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DJ Jazzy"
-    },
-    {
-     "name_as_written": "DJ SKA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DJ SKA"
-    },
-    {
-     "name_as_written": "MIK Style",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "✨ MIK Style"
-    },
-    {
-     "name_as_written": "Ben Cyrille",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨ VisioArt’s Ben Cyrille ✨"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The style line lists Workshops as part of the event."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Taxi Dancers",
-     "rationale": "A Taxi Dancers heading introduces a named taxi-dancer team."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODE",
-     "rationale": "The description has an explicit DRESS CODE heading."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Halloween Elegance & Dark Vibes",
-     "rationale": "The parties carry a stated Halloween dress theme."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18238",
+  "events": [
+   {
+    "event_id": 18238,
+    "artists": [
+     {
+      "name_as_written": "Fred & Chiara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Fred & Chiara"
+     },
+     {
+      "name_as_written": "Ben Cyrille",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Ben Cyrille"
+     },
+     {
+      "name_as_written": "Jazzycubango",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Jazzycubango"
+     },
+     {
+      "name_as_written": "DJ Virus",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DJ Virus"
+     },
+     {
+      "name_as_written": "DJ Jazzy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DJ Jazzy"
+     },
+     {
+      "name_as_written": "DJ SKA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DJ SKA"
+     },
+     {
+      "name_as_written": "MIK Style",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "✨ MIK Style"
+     },
+     {
+      "name_as_written": "Ben Cyrille",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨ VisioArt’s Ben Cyrille ✨"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops",
+      "rationale": "The style line lists Workshops as part of the event."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Taxi Dancers",
+      "rationale": "A Taxi Dancers heading introduces a named taxi-dancer team."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESS CODE",
+      "rationale": "The description has an explicit DRESS CODE heading."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Halloween Elegance & Dark Vibes",
+      "rationale": "The parties carry a stated Halloween dress theme."
+     }
+    ]
+   }
+  ]
+ }
 }

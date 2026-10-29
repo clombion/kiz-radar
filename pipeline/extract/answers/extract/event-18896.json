@@ -1,49 +1,56 @@
 {
- "batch": "event-18896",
- "events": [
-  {
-   "event_id": 18896,
-   "artists": [
-    {
-     "name_as_written": "C4 Pedro",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "•C4 Pedro concert"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "PRE PARTY",
-     "rationale": "The description lists a PRE PARTY on Thursday 13th May before the main festival."
-    },
-    {
-     "feature": "after_party",
-     "quote": "AFTER PARTY",
-     "rationale": "The description has an AFTER PARTY section on Monday 17th."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE RESORT",
-     "rationale": "The event is described as all in one resort, with the festival held at Hotel Orquidea and a hotel promo for the event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "8 Workshops",
-     "rationale": "The festival lineup includes eight workshops."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live concert with his band",
-     "rationale": "A live concert with a band is part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotel promo: SUNNYC4",
-     "rationale": "A hotel promo code is offered for booking the event hotels, without the accommodation being included in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18896",
+  "events": [
+   {
+    "event_id": 18896,
+    "artists": [
+     {
+      "name_as_written": "C4 Pedro",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "•C4 Pedro concert"
+     }
+    ],
+    "features": [
+     {
+      "feature": "pre_party",
+      "quote": "PRE PARTY",
+      "rationale": "The description lists a PRE PARTY on Thursday 13th May before the main festival."
+     },
+     {
+      "feature": "after_party",
+      "quote": "AFTER PARTY",
+      "rationale": "The description has an AFTER PARTY section on Monday 17th."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE RESORT",
+      "rationale": "The event is described as all in one resort, with the festival held at Hotel Orquidea and a hotel promo for the event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "8 Workshops",
+      "rationale": "The festival lineup includes eight workshops."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live concert with his band",
+      "rationale": "A live concert with a band is part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotel promo: SUNNYC4",
+      "rationale": "A hotel promo code is offered for booking the event hotels, without the accommodation being included in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

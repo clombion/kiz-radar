@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jojo@jenny+jojo",
+ "key_b": "p:jojolpk",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "fc36e7dd47026aad",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The jojolpk key's own Madrid 2026 entry is JOJO LPK & JENNY, so the partner Jenny and the first name Jojo match the Jojo & Jenny couple."
+ }
+}

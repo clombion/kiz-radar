@@ -1,68 +1,75 @@
 {
- "batch": "event-16486",
- "events": [
-  {
-   "event_id": 16486,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 Dancefloors"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "URBANKIZ"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16486",
+  "events": [
+   {
+    "event_id": 16486,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 Dancefloors"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba"
-     ],
-     "quote": "KIZOMBA/SEMBA"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "douceur",
-      "zouk"
-     ],
-     "quote": "DOUCER/GHETTO ZOUK"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBANKIZ",
-     "quote": "URBANKIZ"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA/SEMBA"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "KIZOMBA/SEMBA"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "DOUCER",
-     "quote": "DOUCER/GHETTO ZOUK"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GHETTO ZOUK",
-     "quote": "DOUCER/GHETTO ZOUK"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "URBANKIZ"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba"
+      ],
+      "quote": "KIZOMBA/SEMBA"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "douceur",
+       "zouk"
+      ],
+      "quote": "DOUCER/GHETTO ZOUK"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBANKIZ",
+      "quote": "URBANKIZ"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA/SEMBA"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "KIZOMBA/SEMBA"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "DOUCER",
+      "quote": "DOUCER/GHETTO ZOUK"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GHETTO ZOUK",
+      "quote": "DOUCER/GHETTO ZOUK"
+     }
+    ]
+   }
+  ]
+ }
 }

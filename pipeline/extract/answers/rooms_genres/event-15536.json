@@ -1,56 +1,63 @@
 {
- "batch": "event-15536",
- "events": [
-  {
-   "event_id": 15536,
-   "party_rooms": {
-    "count": 2,
-    "quote": "✅ 2 Dance Party Rooms"
-   },
-   "class_rooms": {
-    "count": 3,
-    "quote": "✅ 3 Workshop Rooms"
-   },
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "• 100% Bachata"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15536",
+  "events": [
+   {
+    "event_id": 15536,
+    "party_rooms": {
+     "count": 2,
+     "quote": "✅ 2 Dance Party Rooms"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "• 100% Kizomba"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "• 100% Bachata"
+    "class_rooms": {
+     "count": 3,
+     "quote": "✅ 3 Workshop Rooms"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "• 100% Kizomba"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "✅ Bachata Battle"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "✅ Kizomba Battle"
-    }
-   ]
-  }
- ]
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "• 100% Bachata"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "• 100% Kizomba"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "• 100% Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "• 100% Kizomba"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "✅ Bachata Battle"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "✅ Kizomba Battle"
+     }
+    ]
+   }
+  ]
+ }
 }

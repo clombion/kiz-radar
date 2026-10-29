@@ -30,9 +30,9 @@ Matching rules:
     when backed by evidence: a shared stated country or a shared partner, or, for two names of several words
     spelled alike, events in a shared country. They are only merged when a merge claim says so.
 
-pipeline/extract/merges.csv, the merge review's decisions (its model claims): key_a, key_b, decision (merge | separate),
-prompt (the review prompt's hash, in pipeline/prompts/asked/), note. Keys are keys mentions produce. A review that
-could not tell (unsure) is never stored: the pair stays in artist_merge_candidates, undecided. A claim's keys are
+Every candidate, and every pair a review answered before, goes to artist_merge_reviews, which the merge review asks
+about (pipeline/extract/merge_review.py); its answers to the current prompt are the model's merge claims. A review
+that could not tell (unsure) decides nothing: the pair stays in artist_merge_candidates, undecided. A claim's keys are
 mentions' (artist_keys.produced): one naming a key no mention produces any more is orphaned, and decides nothing.
 
 pipeline/extract/groups.csv names an act that several people perform as (a DJ duo booked under one name):
@@ -67,16 +67,15 @@ from typing import NamedTuple, Self
 
 from pydantic import BaseModel
 
-from pipeline import claims, data, export, states
+from pipeline import claims, export, states
 from pipeline import db as sqlite_db
 from pipeline.countries import codes
 from pipeline.db import Reader, Transaction
 from pipeline.enums import ArtistKind, ClaimState, MergeDecision, MergeReason, Model, Role, Via
-from pipeline.extract import run_log
-from pipeline.extract.answers import log
+from pipeline.extract import merge_review, run_log
 from pipeline.extract.prices import COUPLE
 from pipeline.names import norm, sim
-from pipeline.records import ANSWERS, Group, MergeReview, Record
+from pipeline.records import Group, MergeQuestion, Record, ReviewMention
 from pipeline.text import tidy_name
 
 SPLIT_ROLES = {Role.TEACHER, Role.DJ, Role.PERFORMER, Role.MC}
@@ -84,7 +83,7 @@ ORG_ROLES = {Role.ORGANISER, Role.MEDIA, Role.CREW}
 SEPARATORS = re.compile(r'\s*&\s*|\s*\+\s*|\s+(?:and|et|e|y|und)\s+', re.IGNORECASE)
 PREFIX = re.compile(r'^(?:dj|deejay|d\.j\.|mc)\s+', re.IGNORECASE)
 SHORTEST_NAME = 2  # a member's name key shorter than this is a letter of a name built around "&" ("D&L Beats")
-REVIEWER = Model.CLAUDE_HAIKU_5_5  # the model of the merge review's subagents
+REVIEWER = Model.CLAUDE_HAIKU_5_5  # the merge review's model (ask.MODEL)
 PAIR = 2  # the keys of a decision on two artists; one key's decides a single name
 
 # the tables this step makes again each time it runs
@@ -123,6 +122,12 @@ CREATE TABLE merge_reason_definitions (
     reason TEXT PRIMARY KEY,
     definition TEXT NOT NULL
 ) STRICT;
+CREATE TABLE artist_merge_reviews (
+    key_a TEXT NOT NULL,
+    key_b TEXT NOT NULL,
+    question TEXT NOT NULL,       -- the pair as the merge review is asked about it (records.MergeQuestion, JSON)
+    PRIMARY KEY (key_a, key_b)
+) STRICT;
 CREATE TABLE artist_merge_candidates (
     key_a TEXT NOT NULL,
     key_b TEXT NOT NULL,
@@ -131,7 +136,7 @@ CREATE TABLE artist_merge_candidates (
     reason TEXT NOT NULL CHECK (reason IN ({merge_reason})),
     similarity REAL NOT NULL,
     evidence TEXT NOT NULL,
-    decision TEXT CHECK (decision IN ({stored_decision})),   -- from pipeline/extract/merges.csv, NULL = not reviewed
+    decision TEXT CHECK (decision IN ({stored_decision})),   -- the merge claim's on it, NULL = none
     PRIMARY KEY (key_a, key_b)
 ) STRICT;
 CREATE TABLE artist_merge_decisions (
@@ -180,7 +185,7 @@ KEPT = sqlite_db.declared("""CREATE TABLE artist_ids (
     match_key TEXT NOT NULL UNIQUE, -- the key it was given to
     retired_into INTEGER            -- the artist its keys went to once no artist had it; NULL while one has
 ) STRICT""")
-# a review that could not tell (unsure) decides nothing: the pair stays a candidate, and merges.csv never holds it
+# a review that could not tell (unsure) decides nothing: the pair stays a candidate, and no claim holds it
 STORED = (MergeDecision.MERGE, MergeDecision.SEPARATE)
 TABLES = sqlite_db.declared(
     DDL.format_map(
@@ -284,6 +289,8 @@ TABLE_DOCS = {
     'artist_merge_candidates': 'Pairs of name keys that may be the same artist, with the reason, similarity and '
     'evidence; decision is NULL when no merge or separate decision exists (left apart).',
     'merge_reason_definitions': 'What each reason in artist_merge_candidates means.',
+    'artist_merge_reviews': 'The pairs the merge review asks about (pipeline/extract/merge_review.py): every '
+    'candidate, and every pair a review answered before, each with its names, reason, evidence and mentions.',
     'artist_merge_decisions': 'Every merge or separate decision applied, with the review prompt that made it (its '
     'hash; null when it was decided by hand) and rationale.',
     'artist_group_definitions': 'Named groups defined by hand (a DJ duo booked under one name), with a note; members '
@@ -318,34 +325,28 @@ class Resolved(NamedTuple):
 def record_steps(con: Transaction, resolved: Resolved, decided: Claimed) -> None:
     n_mentions, kinds_count, n_candidates, n_unsupported, n_groups = resolved
     run_log.document(con, TABLE_DOCS, 'pipeline/extract/resolve_artists.py')
-    followed = log()  # a review the log has no row for answered nothing yet (answers.unlogged)
-    reviews = [
-        f for f in sorted((data(ANSWERS) / 'merge_review').glob('*.json')) if f'merge_review/{f.name}' in followed
-    ]
-    if reviews:
-        counts: defaultdict[str, defaultdict[str, int]] = defaultdict(lambda: defaultdict(int))
-        for f in reviews:
-            for d in MergeReview.parse(f.read_bytes()).decisions:
-                counts[followed[f'merge_review/{f.name}'].prompt][d.decision] += 1
-        for h in counts:
+    if made := merge_review.current():
+        hashes = sorted({r.prompt for r in made})
+        for h in hashes:
             run_log.record_prompt(con, h)
         run_log.record(
             con,
             run_log.Step(
                 '6_merge_review',
-                'Decide, for each pair of artist records the matching rules flagged as possibly the same artist, '
-                'whether they are (merge), are not (separate), or the evidence does not settle it (unsure, left '
-                'unmerged). Decisions are written to pipeline/extract/merges.csv, as model claims: an admin claim on a '
-                'pair comes first.',
-                f'{len(reviews)} subagents ({REVIEWER}), one batch each',
-                performed_at=max(followed[f'merge_review/{f.name}'].answered_at for f in reviews),
+                'Decide, for each pair of artist records the matching rules flagged as possibly the same artist, or a '
+                'review decided before, whether they are (merge), are not (separate), or the evidence does not settle '
+                'it (unsure, left unmerged). Each answer is a model claim: an admin claim on a pair comes first.',
+                f'pipeline/extract/ask.py ({REVIEWER}), one pair',
+                performed_at=max(r.answered_at for r in made),
                 model=REVIEWER,
-                prompt=', '.join(sorted(counts)),
-                inputs='each pair with every mention of both sides',
-                outputs='pipeline/extract/merges.csv; table artist_merge_decisions',
-                details={'decisions_by_prompt': {k: dict(v) for k, v in counts.items()}, 'batches': len(reviews)},
+                prompt=', '.join(hashes),
+                inputs='table artist_merge_reviews: each pair with mentions of both sides',
+                outputs='pipeline/extract/answers/merge_review/; table artist_merge_decisions',
+                details={'decisions': dict(Counter(str(r.answer.decision) for r in made)), 'pairs': len(made)},
             ),
         )
+    else:
+        run_log.forget(con, '6_merge_review')
     run_log.record(
         con,
         run_log.Step(
@@ -422,6 +423,7 @@ class Mention(Record):
     style: str | None
     country: str | None
     event_country: str | None
+    source_line: str
 
 
 @dataclass(frozen=True)
@@ -765,6 +767,55 @@ def candidates(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> tu
     return out, same_name - sum(c.reason == MergeReason.SAME_NAME__DIFFERENT_KEYS for c in out)
 
 
+REVIEWED_MENTIONS = 12  # the mentions of each side a review is shown, the first by event
+
+
+def reviews(
+    keys: Keys, mentions: Sequence[Mention], found: Sequence[Candidate], answered: Iterable[tuple[str, str]]
+) -> list[MergeQuestion]:
+    """The pairs the merge review asks about: every candidate, and every pair of person keys a review answered before
+    (answered), each with its names, the candidate's reason (none for a pair no candidate now), its evidence and each
+    side's mentions."""
+    pairing = Pairing.of(keys)
+    of_key: defaultdict[str, list[Mention]] = defaultdict(list)
+    for m in sorted(mentions, key=lambda m: (m.event_id, m.id)):
+        of_key[keys.mention_key[m.id]].append(m)
+
+    def side(k: str) -> tuple[ReviewMention, ...]:
+        return tuple(
+            ReviewMention(
+                event_id=m.event_id,
+                event_country=m.event_country,
+                role=m.role,
+                name_as_written=m.name_as_written,
+                style=m.style,
+                country=m.country,
+                source_line=m.source_line,
+            )
+            for m in of_key[k][:REVIEWED_MENTIONS]
+        )
+
+    asked: dict[tuple[str, str], tuple[MergeReason | None, str]] = {
+        (c.key_a, c.key_b): (c.reason, c.evidence) for c in found
+    }
+    for a, b in answered:
+        if (a, b) not in asked and a != b and a in pairing.people and b in pairing.people:
+            asked[a, b] = (None, pairing.evidence(a, b))
+    return [
+        MergeQuestion(
+            key_a=a,
+            key_b=b,
+            name_a=keys.names[a][0],
+            name_b=keys.names[b][0],
+            reason=reason,
+            evidence=evidence,
+            a=side(a),
+            b=side(b),
+        )
+        for (a, b), (reason, evidence) in sorted(asked.items())
+    ]
+
+
 def merged(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> UnionFind:
     """The keys joined: a couple's spellings of one member, the reviewed merges, and the same single-word member of
     couples whose partners are one person."""
@@ -895,7 +946,8 @@ def main() -> None:
     with export.opened('rw') as db, db.transaction() as con:
         mentions = con.rows(
             Mention,
-            'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country'
+            'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country,'
+            ' m.source_line'
             ' FROM artist_mentions m JOIN events e ON e.id = m.event_id',
         )
         groups = Group.read()
@@ -918,6 +970,10 @@ def main() -> None:
         con.insert(
             'merge_reason_definitions',
             ({'reason': s.key, 'definition': s.criterion} for s in states.of('merge_reason')),
+        )
+        asked = reviews(keys, mentions, found, merge_review.reviewed())
+        con.insert(
+            merge_review.TABLE, ({'key_a': q.key_a, 'key_b': q.key_b, 'question': q.model_dump_json()} for q in asked)
         )
         found = [c for c in found if c.key_a == c.key_b or final_key[c.key_a] != final_key[c.key_b]]
         artist_of = {m.id: ids[final_key[keys.mention_key[m.id]]] for m in mentions}

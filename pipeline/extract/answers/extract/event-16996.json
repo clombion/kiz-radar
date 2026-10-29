@@ -1,71 +1,78 @@
 {
- "batch": "event-16996",
- "events": [
-  {
-   "event_id": 16996,
-   "artists": [
-    {
-     "name_as_written": "Last & Cécile",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "💃🕺 Last & Cécile"
-    },
-    {
-     "name_as_written": "Ben Cyrille & Mlyn",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "💃🕺 Ben Cyrille & Mlyn"
-    },
-    {
-     "name_as_written": "DJ Virus",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Virus"
-    },
-    {
-     "name_as_written": "DJ Ralp BB",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Ralp BB"
-    },
-    {
-     "name_as_written": "DJ Ska",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Ska"
-    },
-    {
-     "name_as_written": "DJ RC",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ RC"
-    },
-    {
-     "name_as_written": "Dance Taxis",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "⚡Dance Taxis"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Classes & Socials (individual)",
-     "rationale": "The listing offers individual classes and socials, so dance classes are part of the event."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Dance Taxis",
-     "rationale": "The program lists Dance Taxis, which indicates taxi dancers are present."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16996",
+  "events": [
+   {
+    "event_id": 16996,
+    "artists": [
+     {
+      "name_as_written": "Last & Cécile",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "💃🕺 Last & Cécile"
+     },
+     {
+      "name_as_written": "Ben Cyrille & Mlyn",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "💃🕺 Ben Cyrille & Mlyn"
+     },
+     {
+      "name_as_written": "DJ Virus",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Virus"
+     },
+     {
+      "name_as_written": "DJ Ralp BB",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Ralp BB"
+     },
+     {
+      "name_as_written": "DJ Ska",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Ska"
+     },
+     {
+      "name_as_written": "DJ RC",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ RC"
+     },
+     {
+      "name_as_written": "Dance Taxis",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "⚡Dance Taxis"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Classes & Socials (individual)",
+      "rationale": "The listing offers individual classes and socials, so dance classes are part of the event."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Dance Taxis",
+      "rationale": "The program lists Dance Taxis, which indicates taxi dancers are present."
+     }
+    ]
+   }
+  ]
+ }
 }

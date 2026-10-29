@@ -1,80 +1,87 @@
 {
- "batch": "event-16236",
- "events": [
-  {
-   "event_id": 16236,
-   "artists": [
-    {
-     "name_as_written": "Esteban Jr and Bonde",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Esteban Jr and Bonde"
-    },
-    {
-     "name_as_written": "Mel Zamb",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mel Zamb"
-    },
-    {
-     "name_as_written": "Titony",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Titony"
-    },
-    {
-     "name_as_written": "David Ruela",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "David Ruela"
-    },
-    {
-     "name_as_written": "Stefanio Lima",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Stefanio Lima"
-    },
-    {
-     "name_as_written": "Malick",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Malick"
-    },
-    {
-     "name_as_written": "Sol’in",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Sol’in"
-    },
-    {
-     "name_as_written": "Kiss",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Kiss"
-    },
-    {
-     "name_as_written": "Emilie and Emy",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Emilie and Emy"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "6 hours of classes",
-     "rationale": "The program lists six hours of classes, which means dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16236",
+  "events": [
+   {
+    "event_id": 16236,
+    "artists": [
+     {
+      "name_as_written": "Esteban Jr and Bonde",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Esteban Jr and Bonde"
+     },
+     {
+      "name_as_written": "Mel Zamb",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mel Zamb"
+     },
+     {
+      "name_as_written": "Titony",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Titony"
+     },
+     {
+      "name_as_written": "David Ruela",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "David Ruela"
+     },
+     {
+      "name_as_written": "Stefanio Lima",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Stefanio Lima"
+     },
+     {
+      "name_as_written": "Malick",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Malick"
+     },
+     {
+      "name_as_written": "Sol’in",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Sol’in"
+     },
+     {
+      "name_as_written": "Kiss",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Kiss"
+     },
+     {
+      "name_as_written": "Emilie and Emy",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Emilie and Emy"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "6 hours of classes",
+      "rationale": "The program lists six hours of classes, which means dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

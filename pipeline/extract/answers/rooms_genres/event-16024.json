@@ -1,81 +1,88 @@
 {
- "batch": "event-16024",
- "events": [
-  {
-   "event_id": 16024,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 ROOMS"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "unspecified",
-     "genres": [
-      "urbankiz",
-      "other",
-      "douceur"
-     ],
-     "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16024",
+  "events": [
+   {
+    "event_id": 16024,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 ROOMS"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "semba",
-      "other",
-      "other"
-     ],
-     "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
-    },
-    {
-     "name_as_written": "Room 3",
-     "kind": "unspecified",
-     "genres": [
-      "tarraxo"
-     ],
-     "quote": "Room 3 => Tarraxo"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Ghetto",
-     "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Kcma",
-     "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Room 3 => Tarraxo"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "unspecified",
+      "genres": [
+       "urbankiz",
+       "other",
+       "douceur"
+      ],
+      "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "semba",
+       "other",
+       "other"
+      ],
+      "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
+     },
+     {
+      "name_as_written": "Room 3",
+      "kind": "unspecified",
+      "genres": [
+       "tarraxo"
+      ],
+      "quote": "Room 3 => Tarraxo"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Ghetto",
+      "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Kcma",
+      "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Room 3 => Tarraxo"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,366 +1,373 @@
 {
- "batch": "event-14911",
- "events": [
-  {
-   "event_id": 14911,
-   "artists": [
-    {
-     "name_as_written": "Pablo y Raquel",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Pablo y Raquel"
-    },
-    {
-     "name_as_written": "Samy El Magico",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Samy El Magico"
-    },
-    {
-     "name_as_written": "Angel y Almudena",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Angel y Almudena"
-    },
-    {
-     "name_as_written": "Luis y sara",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Luis y sara"
-    },
-    {
-     "name_as_written": "Adrian y Virginia",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Adrian y Virginia"
-    },
-    {
-     "name_as_written": "Jerem y Jade",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Jerem y Jade"
-    },
-    {
-     "name_as_written": "Reda",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Reda"
-    },
-    {
-     "name_as_written": "Bastien",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Bastien"
-    },
-    {
-     "name_as_written": "Maeliss",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Maeliss"
-    },
-    {
-     "name_as_written": "Evan y Eugenia",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Evan y Eugenia"
-    },
-    {
-     "name_as_written": "Diger y marie",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Diger y marie"
-    },
-    {
-     "name_as_written": "JLO y Angele",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨JLO y Angele"
-    },
-    {
-     "name_as_written": "Fabian",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨Fabian"
-    },
-    {
-     "name_as_written": "Dj DAVID PEDRON",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨ Dj DAVID PEDRON"
-    },
-    {
-     "name_as_written": "Dj KARIM",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨ Dj KARIM"
-    },
-    {
-     "name_as_written": "Dj MAK",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨ Dj MAK"
-    },
-    {
-     "name_as_written": "Dj KAMILO",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨ Dj KAMILO"
-    },
-    {
-     "name_as_written": "Dj FABULOUS FAB",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "✨ Dj FABULOUS FAB"
-    },
-    {
-     "name_as_written": "Fred Nelson y Morgane",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Fred Nelson y Morgane"
-    },
-    {
-     "name_as_written": "Fabricio y mame",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Fabricio y mame"
-    },
-    {
-     "name_as_written": "Lydia Laprade",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Lydia Laprade"
-    },
-    {
-     "name_as_written": "Curtis seldon",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Curtis seldon"
-    },
-    {
-     "name_as_written": "Jonathan Kani",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Jonathan Kani"
-    },
-    {
-     "name_as_written": "Benoit y Marta",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Benoit y Marta"
-    },
-    {
-     "name_as_written": "Kristel ju",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Kristel ju"
-    },
-    {
-     "name_as_written": "Énora",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Énora"
-    },
-    {
-     "name_as_written": "Dj PARAISO",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Dj PARAISO"
-    },
-    {
-     "name_as_written": "Dj NAO",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Dj NAO"
-    },
-    {
-     "name_as_written": "Dj ICHIGO",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Dj ICHIGO"
-    },
-    {
-     "name_as_written": "Dj DIABLO",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Dj DIABLO"
-    },
-    {
-     "name_as_written": "Dj JDN",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Dj JDN"
-    },
-    {
-     "name_as_written": "Dj SAM GOLD",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Dj SAM GOLD"
-    },
-    {
-     "name_as_written": "Dj THALES",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Dj THALES"
-    },
-    {
-     "name_as_written": "Dj DO ZANGADO",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "✨ Dj DO ZANGADO"
-    },
-    {
-     "name_as_written": "Philippe gomis",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "✨ Philippe gomis"
-    },
-    {
-     "name_as_written": "Rudy Fabre",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "✨ Rudy Fabre"
-    },
-    {
-     "name_as_written": "Minou",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "✨ Minou"
-    },
-    {
-     "name_as_written": "Dj CHANCHAN",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "✨Dj CHANCHAN"
-    },
-    {
-     "name_as_written": "Dj PHIL GOMIS",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "✨Dj PHIL GOMIS"
-    },
-    {
-     "name_as_written": "Simba y Manon",
-     "role": "teacher",
-     "style": "ZOUK BRESILEN",
-     "country": null,
-     "source_line": "✨ Simba y Manon"
-    },
-    {
-     "name_as_written": "Alex De Carvalho",
-     "role": "teacher",
-     "style": "ZOUK BRESILEN",
-     "country": null,
-     "source_line": "✨ Alex De Carvalho"
-    },
-    {
-     "name_as_written": "Dj SIMBA",
-     "role": "dj",
-     "style": "ZOUK BRESILEN",
-     "country": null,
-     "source_line": "✨Dj SIMBA"
-    },
-    {
-     "name_as_written": "CLAUDY JEMES",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 CLAUDY JEMES"
-    },
-    {
-     "name_as_written": "LDR VIDEO",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 LDR VIDEO"
-    },
-    {
-     "name_as_written": "YANN HENDERSON",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 YANN HENDERSON"
-    },
-    {
-     "name_as_written": "AIRFLEKS PHOTOGRAPHY",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 AIRFLEKS PHOTOGRAPHY"
-    },
-    {
-     "name_as_written": "ALFIL",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 ALFIL"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in One – Marriott Hotel",
-     "rationale": "The event is stated to be held as All in One at the Marriott Hotel, where the parties take place in the hotel."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hôtel Officiel: Paris Marriott Charles de Gaulle Airport Hotel",
-     "rationale": "The description names an official hotel for the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 party Room : Salsa, Bachata and Kizomba",
-     "rationale": "Three separate party rooms are listed for different styles."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Free schuttle",
-     "rationale": "A free shuttle from the airport and station to the venue is offered."
-    },
-    {
-     "feature": "competition",
-     "quote": "𝐎𝐋𝐘𝐌𝐏𝐈𝐀𝐃𝐒 𝐎𝐅 𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
-     "rationale": "Olympiads of Bachata is a dance competition."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14911",
+  "events": [
+   {
+    "event_id": 14911,
+    "artists": [
+     {
+      "name_as_written": "Pablo y Raquel",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Pablo y Raquel"
+     },
+     {
+      "name_as_written": "Samy El Magico",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Samy El Magico"
+     },
+     {
+      "name_as_written": "Angel y Almudena",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Angel y Almudena"
+     },
+     {
+      "name_as_written": "Luis y sara",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Luis y sara"
+     },
+     {
+      "name_as_written": "Adrian y Virginia",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Adrian y Virginia"
+     },
+     {
+      "name_as_written": "Jerem y Jade",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Jerem y Jade"
+     },
+     {
+      "name_as_written": "Reda",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Reda"
+     },
+     {
+      "name_as_written": "Bastien",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Bastien"
+     },
+     {
+      "name_as_written": "Maeliss",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Maeliss"
+     },
+     {
+      "name_as_written": "Evan y Eugenia",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Evan y Eugenia"
+     },
+     {
+      "name_as_written": "Diger y marie",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Diger y marie"
+     },
+     {
+      "name_as_written": "JLO y Angele",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨JLO y Angele"
+     },
+     {
+      "name_as_written": "Fabian",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨Fabian"
+     },
+     {
+      "name_as_written": "Dj DAVID PEDRON",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨ Dj DAVID PEDRON"
+     },
+     {
+      "name_as_written": "Dj KARIM",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨ Dj KARIM"
+     },
+     {
+      "name_as_written": "Dj MAK",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨ Dj MAK"
+     },
+     {
+      "name_as_written": "Dj KAMILO",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨ Dj KAMILO"
+     },
+     {
+      "name_as_written": "Dj FABULOUS FAB",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "✨ Dj FABULOUS FAB"
+     },
+     {
+      "name_as_written": "Fred Nelson y Morgane",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Fred Nelson y Morgane"
+     },
+     {
+      "name_as_written": "Fabricio y mame",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Fabricio y mame"
+     },
+     {
+      "name_as_written": "Lydia Laprade",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Lydia Laprade"
+     },
+     {
+      "name_as_written": "Curtis seldon",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Curtis seldon"
+     },
+     {
+      "name_as_written": "Jonathan Kani",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Jonathan Kani"
+     },
+     {
+      "name_as_written": "Benoit y Marta",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Benoit y Marta"
+     },
+     {
+      "name_as_written": "Kristel ju",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Kristel ju"
+     },
+     {
+      "name_as_written": "Énora",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Énora"
+     },
+     {
+      "name_as_written": "Dj PARAISO",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Dj PARAISO"
+     },
+     {
+      "name_as_written": "Dj NAO",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Dj NAO"
+     },
+     {
+      "name_as_written": "Dj ICHIGO",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Dj ICHIGO"
+     },
+     {
+      "name_as_written": "Dj DIABLO",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Dj DIABLO"
+     },
+     {
+      "name_as_written": "Dj JDN",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Dj JDN"
+     },
+     {
+      "name_as_written": "Dj SAM GOLD",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Dj SAM GOLD"
+     },
+     {
+      "name_as_written": "Dj THALES",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Dj THALES"
+     },
+     {
+      "name_as_written": "Dj DO ZANGADO",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "✨ Dj DO ZANGADO"
+     },
+     {
+      "name_as_written": "Philippe gomis",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "✨ Philippe gomis"
+     },
+     {
+      "name_as_written": "Rudy Fabre",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "✨ Rudy Fabre"
+     },
+     {
+      "name_as_written": "Minou",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "✨ Minou"
+     },
+     {
+      "name_as_written": "Dj CHANCHAN",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "✨Dj CHANCHAN"
+     },
+     {
+      "name_as_written": "Dj PHIL GOMIS",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "✨Dj PHIL GOMIS"
+     },
+     {
+      "name_as_written": "Simba y Manon",
+      "role": "teacher",
+      "style": "ZOUK BRESILEN",
+      "country": null,
+      "source_line": "✨ Simba y Manon"
+     },
+     {
+      "name_as_written": "Alex De Carvalho",
+      "role": "teacher",
+      "style": "ZOUK BRESILEN",
+      "country": null,
+      "source_line": "✨ Alex De Carvalho"
+     },
+     {
+      "name_as_written": "Dj SIMBA",
+      "role": "dj",
+      "style": "ZOUK BRESILEN",
+      "country": null,
+      "source_line": "✨Dj SIMBA"
+     },
+     {
+      "name_as_written": "CLAUDY JEMES",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 CLAUDY JEMES"
+     },
+     {
+      "name_as_written": "LDR VIDEO",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 LDR VIDEO"
+     },
+     {
+      "name_as_written": "YANN HENDERSON",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 YANN HENDERSON"
+     },
+     {
+      "name_as_written": "AIRFLEKS PHOTOGRAPHY",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 AIRFLEKS PHOTOGRAPHY"
+     },
+     {
+      "name_as_written": "ALFIL",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 ALFIL"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in One – Marriott Hotel",
+      "rationale": "The event is stated to be held as All in One at the Marriott Hotel, where the parties take place in the hotel."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hôtel Officiel: Paris Marriott Charles de Gaulle Airport Hotel",
+      "rationale": "The description names an official hotel for the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 party Room : Salsa, Bachata and Kizomba",
+      "rationale": "Three separate party rooms are listed for different styles."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Free schuttle",
+      "rationale": "A free shuttle from the airport and station to the venue is offered."
+     },
+     {
+      "feature": "competition",
+      "quote": "𝐎𝐋𝐘𝐌𝐏𝐈𝐀𝐃𝐒 𝐎𝐅 𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+      "rationale": "Olympiads of Bachata is a dance competition."
+     }
+    ]
+   }
+  ]
+ }
 }

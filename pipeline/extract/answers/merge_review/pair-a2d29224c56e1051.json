@@ -1,0 +1,13 @@
+{
+ "key_a": "p:natalia@alessio+natalia",
+ "key_b": "p:natalia@andrea+natalia",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "a2d29224c56e1051",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Natalia is in couples with two different partners, Alessio and Andrea, and both entries are in Italy, but nothing else links them."
+ }
+}

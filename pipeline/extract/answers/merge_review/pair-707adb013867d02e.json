@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@alfredo+andrea",
+ "key_b": "p:andrea@andrea+pablo",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "707adb013867d02e",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Alfredo & Andrea and Pablo & Andrea appear at the same Quijano event on the same date with different partners, so they are two different couples."
+ }
+}

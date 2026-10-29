@@ -1,74 +1,81 @@
 {
- "batch": "event-15395",
- "events": [
-  {
-   "event_id": 15395,
-   "artists": [
-    {
-     "name_as_written": "Virgil & Juneline",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "19:00 – 21:00 Urbankiz ws by Virgil & Juneline"
-    },
-    {
-     "name_as_written": "Cathy & Remnie",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🕺Cathy & Remnie"
-    },
-    {
-     "name_as_written": "Julian & Nicky",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🕺Julian & Nicky"
-    },
-    {
-     "name_as_written": "DJ Absen",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎵DJ Absen"
-    },
-    {
-     "name_as_written": "DJ Ralph Ravega",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎵DJ Ralph Ravega"
-    },
-    {
-     "name_as_written": "DJ Incognito",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎵DJ Incognito"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "3 awesome Urban & Fusion kizz workshops",
-     "rationale": "The line states that three workshops are part of the weekend experience."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Friday Party White & Shine",
-     "rationale": "The description lists a stated dress code for each party night."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Friday Party White & Shine",
-     "rationale": "The parties carry dress themes such as White & Shine and Black is Beautiful."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotels ….nearby….",
-     "rationale": "The description recommends nearby hotels with links, without the accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15395",
+  "events": [
+   {
+    "event_id": 15395,
+    "artists": [
+     {
+      "name_as_written": "Virgil & Juneline",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "19:00 – 21:00 Urbankiz ws by Virgil & Juneline"
+     },
+     {
+      "name_as_written": "Cathy & Remnie",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🕺Cathy & Remnie"
+     },
+     {
+      "name_as_written": "Julian & Nicky",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🕺Julian & Nicky"
+     },
+     {
+      "name_as_written": "DJ Absen",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎵DJ Absen"
+     },
+     {
+      "name_as_written": "DJ Ralph Ravega",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎵DJ Ralph Ravega"
+     },
+     {
+      "name_as_written": "DJ Incognito",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎵DJ Incognito"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "3 awesome Urban & Fusion kizz workshops",
+      "rationale": "The line states that three workshops are part of the weekend experience."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Friday Party White & Shine",
+      "rationale": "The description lists a stated dress code for each party night."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Friday Party White & Shine",
+      "rationale": "The parties carry dress themes such as White & Shine and Black is Beautiful."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotels ….nearby….",
+      "rationale": "The description recommends nearby hotels with links, without the accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:linda@jacopo+linda",
+ "key_b": "p:lindaghiggisemba",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c409c7eebda2b8c3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Jacopo & Linda and Linda Ghiggi Semba share only a first name and a stated Italy country, with no shared event or partner."
+ }
+}

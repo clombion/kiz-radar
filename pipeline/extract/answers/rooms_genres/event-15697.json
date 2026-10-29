@@ -1,79 +1,86 @@
 {
- "batch": "event-15697",
- "events": [
-  {
-   "event_id": 15697,
-   "party_rooms": {
-    "count": 4,
-    "quote": "4 Dancefloors / 4 Rooms"
-   },
-   "class_rooms": {
-    "count": 4,
-    "quote": "1- Sensual & Modern Bachata 💃🏽\n2- Cuban & Puerto Rican Salsa 🕺🏻\n3- Dominican Bachata, Merengue, Zouk 💃🏽\n4- Kizomba 🕺🏻"
-   },
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "class",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "1- Sensual & Modern Bachata"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15697",
+  "events": [
+   {
+    "event_id": 15697,
+    "party_rooms": {
+     "count": 4,
+     "quote": "4 Dancefloors / 4 Rooms"
     },
-    {
-     "name_as_written": null,
-     "kind": "class",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "2- Cuban & Puerto Rican Salsa"
+    "class_rooms": {
+     "count": 4,
+     "quote": "1- Sensual & Modern Bachata 💃🏽\n2- Cuban & Puerto Rican Salsa 🕺🏻\n3- Dominican Bachata, Merengue, Zouk 💃🏽\n4- Kizomba 🕺🏻"
     },
-    {
-     "name_as_written": null,
-     "kind": "class",
-     "genres": [
-      "bachata",
-      "other",
-      "zouk"
-     ],
-     "quote": "3- Dominican Bachata, Merengue, Zouk"
-    },
-    {
-     "name_as_written": null,
-     "kind": "class",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "4- Kizomba"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "BACHATA BEACH FEVER BSK FESTIVAL"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Cuban & Puerto Rican Salsa"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "4- Kizomba"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Dominican Bachata, Merengue, Zouk"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Merengue",
-     "quote": "Dominican Bachata, Merengue, Zouk"
-    }
-   ]
-  }
- ]
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "class",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "1- Sensual & Modern Bachata"
+     },
+     {
+      "name_as_written": null,
+      "kind": "class",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "2- Cuban & Puerto Rican Salsa"
+     },
+     {
+      "name_as_written": null,
+      "kind": "class",
+      "genres": [
+       "bachata",
+       "other",
+       "zouk"
+      ],
+      "quote": "3- Dominican Bachata, Merengue, Zouk"
+     },
+     {
+      "name_as_written": null,
+      "kind": "class",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "4- Kizomba"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "BACHATA BEACH FEVER BSK FESTIVAL"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Cuban & Puerto Rican Salsa"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "4- Kizomba"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Dominican Bachata, Merengue, Zouk"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Merengue",
+      "quote": "Dominican Bachata, Merengue, Zouk"
+     }
+    ]
+   }
+  ]
+ }
 }

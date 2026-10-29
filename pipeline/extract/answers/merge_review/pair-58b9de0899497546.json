@@ -1,0 +1,13 @@
+{
+ "key_a": "p:said@dance",
+ "key_b": "p:saidmrbattlekiz",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "58b9de0899497546",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Said Mr Battle Kiz is a single event record whose suffix does not appear in Said's events, so the first name and France flag alone do not settle it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:steve@bianca+steve",
+ "key_b": "p:stevesteven",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "184c81a4ff3db512",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Steve is paired with Bianca on side A and with Jasmine on side B, and the names are not the same."
+ }
+}

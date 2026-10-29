@@ -1,16 +1,23 @@
 {
- "batch": "event-17125",
- "events": [
-  {
-   "event_id": 17125,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Whether you’re a seasoned kizomba dancer or just starting out",
-     "rationale": "The description says the event suits both experienced dancers and those just starting out, which explicitly welcomes beginners."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17125",
+  "events": [
+   {
+    "event_id": 17125,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Whether you’re a seasoned kizomba dancer or just starting out",
+      "rationale": "The description says the event suits both experienced dancers and those just starting out, which explicitly welcomes beginners."
+     }
+    ]
+   }
+  ]
+ }
 }

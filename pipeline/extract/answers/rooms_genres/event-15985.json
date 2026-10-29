@@ -1,61 +1,68 @@
 {
- "batch": "event-15985",
- "events": [
-  {
-   "event_id": 15985,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 rooms, 2 different vibes"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "semba"
-     ],
-     "quote": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆 Kizomba & Semba"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15985",
+  "events": [
+   {
+    "event_id": 15985,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 rooms, 2 different vibes"
     },
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [
-      "zouk",
-      "tarraxinha",
-      "kompa"
-     ],
-     "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆 Kizomba & Semba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆 Kizomba & Semba"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghettozouk",
-     "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "semba"
+      ],
+      "quote": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆 Kizomba & Semba"
+     },
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "zouk",
+       "tarraxinha",
+       "kompa"
+      ],
+      "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆 Kizomba & Semba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆 Kizomba & Semba"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghettozouk",
+      "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,71 +1,78 @@
 {
- "batch": "event-15627",
- "events": [
-  {
-   "event_id": 15627,
-   "artists": [
-    {
-     "name_as_written": "André Pisco & Carolina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "André Pisco & Carolina | Anna & Guga | Capela & Sônia |"
-    },
-    {
-     "name_as_written": "Anna & Guga",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "André Pisco & Carolina | Anna & Guga | Capela & Sônia |"
-    },
-    {
-     "name_as_written": "Capela & Sônia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "André Pisco & Carolina | Anna & Guga | Capela & Sônia |"
-    },
-    {
-     "name_as_written": "Humberto & Juliana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Humberto & Juliana | Sara & Bruno | Cátia Almeida"
-    },
-    {
-     "name_as_written": "Sara & Bruno",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Humberto & Juliana | Sara & Bruno | Cátia Almeida"
-    },
-    {
-     "name_as_written": "Cátia Almeida",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Humberto & Juliana | Sara & Bruno | Cátia Almeida"
-    },
-    {
-     "name_as_written": "DJ Márcio Kazakuta",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Márcio Kazakuta"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops | Teachers",
-     "rationale": "The listed header 'Workshops' shows that dance classes or workshops are part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Parties | Shows | Dinners",
-     "rationale": "The description lists 'Shows' among the event's activities, indicating shows by artists."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15627",
+  "events": [
+   {
+    "event_id": 15627,
+    "artists": [
+     {
+      "name_as_written": "André Pisco & Carolina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "André Pisco & Carolina | Anna & Guga | Capela & Sônia |"
+     },
+     {
+      "name_as_written": "Anna & Guga",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "André Pisco & Carolina | Anna & Guga | Capela & Sônia |"
+     },
+     {
+      "name_as_written": "Capela & Sônia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "André Pisco & Carolina | Anna & Guga | Capela & Sônia |"
+     },
+     {
+      "name_as_written": "Humberto & Juliana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Humberto & Juliana | Sara & Bruno | Cátia Almeida"
+     },
+     {
+      "name_as_written": "Sara & Bruno",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Humberto & Juliana | Sara & Bruno | Cátia Almeida"
+     },
+     {
+      "name_as_written": "Cátia Almeida",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Humberto & Juliana | Sara & Bruno | Cátia Almeida"
+     },
+     {
+      "name_as_written": "DJ Márcio Kazakuta",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Márcio Kazakuta"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops | Teachers",
+      "rationale": "The listed header 'Workshops' shows that dance classes or workshops are part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "Parties | Shows | Dinners",
+      "rationale": "The description lists 'Shows' among the event's activities, indicating shows by artists."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:karen@camille+karen",
+ "key_b": "p:karen@karen+luis",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "405f59c33a8e88da",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Camille & Karen and Luis & Karen have different partners, and the shared first name Karen and Spain do not settle it."
+ }
+}

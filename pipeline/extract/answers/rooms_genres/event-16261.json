@@ -1,69 +1,76 @@
 {
- "batch": "event-16261",
- "events": [
-  {
-   "event_id": 16261,
-   "party_rooms": {
-    "count": 2,
-    "quote": "PARTIES IN 2 ROOMS"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "ROOM 1",
-     "kind": "party",
-     "genres": [],
-     "quote": "ROOM 1"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16261",
+  "events": [
+   {
+    "event_id": 16261,
+    "party_rooms": {
+     "count": 2,
+     "quote": "PARTIES IN 2 ROOMS"
     },
-    {
-     "name_as_written": "ROOM 2",
-     "kind": "party",
-     "genres": [],
-     "quote": "ROOM 2"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBANKIZ",
-     "quote": "URBANKIZ"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
-     "quote": "TARRAXO"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "TARRAXINHA",
-     "quote": "TARRAXINHA"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "SEMBA"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "KONPA",
-     "quote": "KONPA"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GHETTO ZOUK",
-     "quote": "GHETTO ZOUK"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "DOUCEUR",
-     "quote": "DOUCEUR"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "ROOM 1",
+      "kind": "party",
+      "genres": [],
+      "quote": "ROOM 1"
+     },
+     {
+      "name_as_written": "ROOM 2",
+      "kind": "party",
+      "genres": [],
+      "quote": "ROOM 2"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBANKIZ",
+      "quote": "URBANKIZ"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "TARRAXO"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "TARRAXINHA",
+      "quote": "TARRAXINHA"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "SEMBA"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "KONPA",
+      "quote": "KONPA"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GHETTO ZOUK",
+      "quote": "GHETTO ZOUK"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "DOUCEUR",
+      "quote": "DOUCEUR"
+     }
+    ]
+   }
+  ]
+ }
 }

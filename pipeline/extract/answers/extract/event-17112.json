@@ -1,107 +1,114 @@
 {
- "batch": "event-17112",
- "events": [
-  {
-   "event_id": 17112,
-   "artists": [
-    {
-     "name_as_written": "KYAKU KYADAFF",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "🎤 KYAKU KYADAFF"
-    },
-    {
-     "name_as_written": "KLAUDIO HOSHAI",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "🎤 KLAUDIO HOSHAI"
-    },
-    {
-     "name_as_written": "BAKONGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 BAKONGO"
-    },
-    {
-     "name_as_written": "COBIÇADO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 COBIÇADO"
-    },
-    {
-     "name_as_written": "ELYDIO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 ELYDIO"
-    },
-    {
-     "name_as_written": "MIRO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 MIRO"
-    },
-    {
-     "name_as_written": "ARY & MAURA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 ARY & MAURA"
-    },
-    {
-     "name_as_written": "CLAUDIO & VANESSA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 CLAUDIO & VANESSA"
-    },
-    {
-     "name_as_written": "FABRICIO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 FABRICIO"
-    },
-    {
-     "name_as_written": "PAULO & LANNA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 PAULO & LANNA"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops with top teachers",
-     "rationale": "The event lists workshops with top teachers as part of what is prepared."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Afternoon Social",
-     "rationale": "An afternoon social is offered as part of the event."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODES 🕺",
-     "rationale": "The description states dress codes for each party and the Sunday social."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Singers",
-     "rationale": "The line-up includes singers who perform at the event."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Venue: Novotel Airport – Warsaw, Poland",
-     "rationale": "The venue is the Novotel Airport hotel, which is also the hotel listed for the event, so parties and accommodation are in the same place."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17112",
+  "events": [
+   {
+    "event_id": 17112,
+    "artists": [
+     {
+      "name_as_written": "KYAKU KYADAFF",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "🎤 KYAKU KYADAFF"
+     },
+     {
+      "name_as_written": "KLAUDIO HOSHAI",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "🎤 KLAUDIO HOSHAI"
+     },
+     {
+      "name_as_written": "BAKONGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 BAKONGO"
+     },
+     {
+      "name_as_written": "COBIÇADO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 COBIÇADO"
+     },
+     {
+      "name_as_written": "ELYDIO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 ELYDIO"
+     },
+     {
+      "name_as_written": "MIRO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 MIRO"
+     },
+     {
+      "name_as_written": "ARY & MAURA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 ARY & MAURA"
+     },
+     {
+      "name_as_written": "CLAUDIO & VANESSA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 CLAUDIO & VANESSA"
+     },
+     {
+      "name_as_written": "FABRICIO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 FABRICIO"
+     },
+     {
+      "name_as_written": "PAULO & LANNA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 PAULO & LANNA"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops with top teachers",
+      "rationale": "The event lists workshops with top teachers as part of what is prepared."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Afternoon Social",
+      "rationale": "An afternoon social is offered as part of the event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESS CODES 🕺",
+      "rationale": "The description states dress codes for each party and the Sunday social."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Singers",
+      "rationale": "The line-up includes singers who perform at the event."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Venue: Novotel Airport – Warsaw, Poland",
+      "rationale": "The venue is the Novotel Airport hotel, which is also the hotel listed for the event, so parties and accommodation are in the same place."
+     }
+    ]
+   }
+  ]
+ }
 }

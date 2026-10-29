@@ -1,39 +1,46 @@
 {
- "batch": "event-15933",
- "events": [
-  {
-   "event_id": 15933,
-   "artists": [
-    {
-     "name_as_written": "Detroit Kizomba Community",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Join the Detroit Kizomba Community as we celebrate our 10th Annual Kizomba Tá Doce Connection Weekender!"
-    },
-    {
-     "name_as_written": "Steve Ciki",
-     "role": "teacher",
-     "style": "Semba, Kizomba & Urban Kiz",
-     "country": null,
-     "source_line": "• Steve Ciki – NYC"
-    },
-    {
-     "name_as_written": "Tin Man & Breezy",
-     "role": "teacher",
-     "style": "Semba, Kizomba & Urban Kiz",
-     "country": null,
-     "source_line": "• Tin Man & Breezy – Rochester, NY"
-    },
-    {
-     "name_as_written": "DJ NS",
-     "role": "dj",
-     "style": "Semba, Kizomba & Urban Kiz",
-     "country": null,
-     "source_line": "• DJ NS – Toronto, Canada"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15933",
+  "events": [
+   {
+    "event_id": 15933,
+    "artists": [
+     {
+      "name_as_written": "Detroit Kizomba Community",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Join the Detroit Kizomba Community as we celebrate our 10th Annual Kizomba Tá Doce Connection Weekender!"
+     },
+     {
+      "name_as_written": "Steve Ciki",
+      "role": "teacher",
+      "style": "Semba, Kizomba & Urban Kiz",
+      "country": null,
+      "source_line": "• Steve Ciki – NYC"
+     },
+     {
+      "name_as_written": "Tin Man & Breezy",
+      "role": "teacher",
+      "style": "Semba, Kizomba & Urban Kiz",
+      "country": null,
+      "source_line": "• Tin Man & Breezy – Rochester, NY"
+     },
+     {
+      "name_as_written": "DJ NS",
+      "role": "dj",
+      "style": "Semba, Kizomba & Urban Kiz",
+      "country": null,
+      "source_line": "• DJ NS – Toronto, Canada"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

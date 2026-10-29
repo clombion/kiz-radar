@@ -1,61 +1,68 @@
 {
- "batch": "event-16668",
- "events": [
-  {
-   "event_id": 16668,
-   "artists": [
-    {
-     "name_as_written": "@elisaveta_hristova",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "@elisaveta_hristova"
-    },
-    {
-     "name_as_written": "@pambos.agapiou",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "@pambos.agapiou"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pool_party",
-     "quote": "Access to all daytime pool parties with animators.",
-     "rationale": "The description lists access to daytime pool parties as part of the event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Access to all dance lessons and seminars",
-     "rationale": "Dance lessons and seminars with instructors are included in the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Access and participation (at the request of the participants) in the evening shows.",
-     "rationale": "Evening shows are offered to participants as part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "shows, lessons and competitions",
-     "rationale": "Competitions are named as part of the event programme."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Package of Full Pass & Accomodation & Breakfasts & Dinners till 15 August 2026",
-     "rationale": "The package with the full pass explicitly includes accommodation."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Half board buffet meals – breakfasts & dinners",
-     "rationale": "Half board meals are listed as included in the prices."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Accommodation of the participants in the hotel of the event",
-     "rationale": "The event takes place in the hotel where participants are accommodated."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16668",
+  "events": [
+   {
+    "event_id": 16668,
+    "artists": [
+     {
+      "name_as_written": "@elisaveta_hristova",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "@elisaveta_hristova"
+     },
+     {
+      "name_as_written": "@pambos.agapiou",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "@pambos.agapiou"
+     }
+    ],
+    "features": [
+     {
+      "feature": "pool_party",
+      "quote": "Access to all daytime pool parties with animators.",
+      "rationale": "The description lists access to daytime pool parties as part of the event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Access to all dance lessons and seminars",
+      "rationale": "Dance lessons and seminars with instructors are included in the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "Access and participation (at the request of the participants) in the evening shows.",
+      "rationale": "Evening shows are offered to participants as part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "shows, lessons and competitions",
+      "rationale": "Competitions are named as part of the event programme."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Package of Full Pass & Accomodation & Breakfasts & Dinners till 15 August 2026",
+      "rationale": "The package with the full pass explicitly includes accommodation."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Half board buffet meals – breakfasts & dinners",
+      "rationale": "Half board meals are listed as included in the prices."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Accommodation of the participants in the hotel of the event",
+      "rationale": "The event takes place in the hotel where participants are accommodated."
+     }
+    ]
+   }
+  ]
+ }
 }

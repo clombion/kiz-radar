@@ -1,21 +1,28 @@
 {
- "batch": "event-16298",
- "events": [
-  {
-   "event_id": 16298,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-1 hotel: Crowne Plaza Düsseldorf Neuss",
-     "rationale": "The description names the event hotel as an all-in-one venue, so the event and accommodation share the same hotel."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Book hotel: https://tinyurl.com/stepstephotel",
-     "rationale": "A link to book the event hotel is given, which points to a recommended hotel without the accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16298",
+  "events": [
+   {
+    "event_id": 16298,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-1 hotel: Crowne Plaza Düsseldorf Neuss",
+      "rationale": "The description names the event hotel as an all-in-one venue, so the event and accommodation share the same hotel."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Book hotel: https://tinyurl.com/stepstephotel",
+      "rationale": "A link to book the event hotel is given, which points to a recommended hotel without the accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

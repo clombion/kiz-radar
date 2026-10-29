@@ -1,0 +1,13 @@
+{
+ "key_a": "p:justinho@a2man+justinho",
+ "key_b": "p:justinho@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ec419a24b8a85ae8",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Justinho & A2Man and the solo Justinho share the exact stage name, France as stated country, and URBANKIZ and Kizomba styles across matching events."
+ }
+}

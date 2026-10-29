@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anonytarraxa",
+ "key_b": "p:antonytarraxa",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "f121046e1a95f359",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Anony Tarraxa and DJ Antony Tarraxa differ by one missing letter in a distinctive stage name (typo), and both are DJs stated as Spanish."
+ }
+}

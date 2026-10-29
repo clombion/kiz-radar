@@ -1,0 +1,13 @@
+{
+ "key_a": "p:angelica@alessio+angelica",
+ "key_b": "p:angelica@angelica+paolo",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2aa26ec51abf2257",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Angelica is the only shared name, with different partners (Alessio vs Paolo) and no distinctive stage name, so the evidence does not settle it."
+ }
+}

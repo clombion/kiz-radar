@@ -1,21 +1,28 @@
 {
- "batch": "event-14496",
- "events": [
-  {
-   "event_id": 14496,
-   "artists": [],
-   "features": [
-    {
-     "feature": "transfers_shuttle",
-     "quote": "we’ll take you by taxi from the Nord station (RENFE and FGC) to FDS",
-     "rationale": "The organisers state they will provide taxi transfers from Terrassa Nord station to the venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Accommodation: Hotel Terrassa Confort (4-star hotel, a 6-minute walk from the venue)",
-     "rationale": "A recommended hotel is named for accommodation, with a discount code, and it is not stated to be part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:39:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14496",
+  "events": [
+   {
+    "event_id": 14496,
+    "artists": [],
+    "features": [
+     {
+      "feature": "transfers_shuttle",
+      "quote": "we’ll take you by taxi from the Nord station (RENFE and FGC) to FDS",
+      "rationale": "The organisers state they will provide taxi transfers from Terrassa Nord station to the venue."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Accommodation: Hotel Terrassa Confort (4-star hotel, a 6-minute walk from the venue)",
+      "rationale": "A recommended hotel is named for accommodation, with a discount code, and it is not stated to be part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,142 +1,149 @@
 {
- "batch": "event-16358",
- "events": [
-  {
-   "event_id": 16358,
-   "party_rooms": {
-    "count": 6,
-    "quote": "6 Rooms – 6 Vibes"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "zouk"
-     ],
-     "quote": "UrbanKiz – GhettoZouk – Kizomba Fusion"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16358",
+  "events": [
+   {
+    "event_id": 16358,
+    "party_rooms": {
+     "count": 6,
+     "quote": "6 Rooms – 6 Vibes"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "other"
-     ],
-     "quote": "Kizomba – Semba – Coladeira – Kazukuta"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "KCMA (Kizomba Classics – “Kizomba Was Better Before”)"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "zouk",
-      "kompa",
-      "other"
-     ],
-     "quote": "Sweet ZoukLove – Konpa – Gouyad"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "tarraxo",
-      "tarraxinha"
-     ],
-     "quote": "Tarraxo – Tarraxinha – Urban Tarrax"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "other",
-      "afro"
-     ],
-     "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba – Semba – Coladeira – Kazukuta"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba – Semba – Coladeira – Kazukuta"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Coladeira",
-     "quote": "Kizomba – Semba – Coladeira – Kazukuta"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Kazukuta",
-     "quote": "Kizomba – Semba – Coladeira – Kazukuta"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "UrbanKiz – GhettoZouk – Kizomba Fusion"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GhettoZouk",
-     "quote": "UrbanKiz – GhettoZouk – Kizomba Fusion"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "ZoukLove",
-     "quote": "Sweet ZoukLove – Konpa – Gouyad"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Sweet ZoukLove – Konpa – Gouyad"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Gouyad",
-     "quote": "Sweet ZoukLove – Konpa – Gouyad"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo – Tarraxinha – Urban Tarrax"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Tarraxo – Tarraxinha – Urban Tarrax"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeat",
-     "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Caribbean",
-     "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Coupé Décalé",
-     "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "zouk"
+      ],
+      "quote": "UrbanKiz – GhettoZouk – Kizomba Fusion"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "other"
+      ],
+      "quote": "Kizomba – Semba – Coladeira – Kazukuta"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "KCMA (Kizomba Classics – “Kizomba Was Better Before”)"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "zouk",
+       "kompa",
+       "other"
+      ],
+      "quote": "Sweet ZoukLove – Konpa – Gouyad"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "tarraxo",
+       "tarraxinha"
+      ],
+      "quote": "Tarraxo – Tarraxinha – Urban Tarrax"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "other",
+       "afro"
+      ],
+      "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba – Semba – Coladeira – Kazukuta"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba – Semba – Coladeira – Kazukuta"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Coladeira",
+      "quote": "Kizomba – Semba – Coladeira – Kazukuta"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Kazukuta",
+      "quote": "Kizomba – Semba – Coladeira – Kazukuta"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "UrbanKiz – GhettoZouk – Kizomba Fusion"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GhettoZouk",
+      "quote": "UrbanKiz – GhettoZouk – Kizomba Fusion"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "ZoukLove",
+      "quote": "Sweet ZoukLove – Konpa – Gouyad"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Sweet ZoukLove – Konpa – Gouyad"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Gouyad",
+      "quote": "Sweet ZoukLove – Konpa – Gouyad"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Tarraxo – Tarraxinha – Urban Tarrax"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Tarraxo – Tarraxinha – Urban Tarrax"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeat",
+      "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Caribbean",
+      "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Coupé Décalé",
+      "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
+     }
+    ]
+   }
+  ]
+ }
 }

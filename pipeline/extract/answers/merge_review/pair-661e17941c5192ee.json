@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sink@dance",
+ "key_b": "p:sink@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "661e17941c5192ee",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Sink and DJ Sink are at the same festival on the same date with the same stated country and the same stage name."
+ }
+}

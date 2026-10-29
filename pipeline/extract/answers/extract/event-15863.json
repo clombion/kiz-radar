@@ -1,220 +1,227 @@
 {
- "batch": "event-15863",
- "events": [
-  {
-   "event_id": 15863,
-   "artists": [
-    {
-     "name_as_written": "𝗖𝗵𝗮𝗺𝗮𝗹𝗼",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗖𝗵𝗮𝗺𝗮𝗹𝗼"
-    },
-    {
-     "name_as_written": "𝗝𝗲𝘀𝘂𝘀",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗝𝗲𝘀𝘂𝘀"
-    },
-    {
-     "name_as_written": "𝗗𝘄𝗲",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗗𝘄𝗲"
-    },
-    {
-     "name_as_written": "𝗝𝗣",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗝𝗣"
-    },
-    {
-     "name_as_written": "𝗝𝗮𝗰𝗸",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗝𝗮𝗰𝗸"
-    },
-    {
-     "name_as_written": "𝗠𝗮𝗺’𝘀",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗠𝗮𝗺’𝘀"
-    },
-    {
-     "name_as_written": "𝗔𝗸𝗿𝗮𝗺",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗔𝗸𝗿𝗮𝗺"
-    },
-    {
-     "name_as_written": "𝗦𝘁𝗲𝗽𝗵𝗮𝗻𝗲",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗦𝘁𝗲𝗽𝗵𝗮𝗻𝗲"
-    },
-    {
-     "name_as_written": "Kevin",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Prince Kevin"
-    },
-    {
-     "name_as_written": "𝗞𝗶𝗻𝗴𝘀𝗺𝗮𝗻 𝗟𝗲𝗱𝗼𝘂𝘅",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗞𝗶𝗻𝗴𝘀𝗺𝗮𝗻 𝗟𝗲𝗱𝗼𝘂𝘅"
-    },
-    {
-     "name_as_written": "𝗙𝗮𝗯𝗿𝗶𝗰𝗶𝗼",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗙𝗮𝗯𝗿𝗶𝗰𝗶𝗼"
-    },
-    {
-     "name_as_written": "𝗠𝗮𝗿𝗰𝗶𝗼",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗠𝗮𝗿𝗰𝗶𝗼"
-    },
-    {
-     "name_as_written": "𝗝𝘂𝘀𝘁𝗶𝗻𝗵𝗼",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗝𝘂𝘀𝘁𝗶𝗻𝗵𝗼"
-    },
-    {
-     "name_as_written": "𝗚𝘂𝗶𝘂 𝗗’𝗔𝗿𝘁𝘀",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Prince 𝗚𝘂𝗶𝘂 𝗗’𝗔𝗿𝘁𝘀"
-    },
-    {
-     "name_as_written": "𝗗𝗮𝗻𝗶 𝗙𝗲𝗿𝗻𝗮𝗻𝗱𝗲𝘀",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Prince 𝗗𝗮𝗻𝗶 𝗙𝗲𝗿𝗻𝗮𝗻𝗱𝗲𝘀"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗣𝗮𝗿𝗮ï𝘀𝗼",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Prince 𝗗𝗝 𝗣𝗮𝗿𝗮ï𝘀𝗼"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗦𝘁𝗲𝗳𝗮𝗻𝗶𝗼 𝗟𝗶𝗺𝗮",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Prince 𝗗𝗝 𝗦𝘁𝗲𝗳𝗮𝗻𝗶𝗼 𝗟𝗶𝗺𝗮"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗡𝗮𝗼",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Prince 𝗗𝗝 𝗡𝗮𝗼"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗟𝗲𝗻𝗻𝘆",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Prince 𝗗𝗝 𝗟𝗲𝗻𝗻𝘆"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗟𝘂𝗰𝗮𝘀",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Prince 𝗗𝗝 𝗟𝘂𝗰𝗮𝘀"
-    },
-    {
-     "name_as_written": "𝗝𝗮𝗹𝘆𝘀𝘀𝗮",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Princess 𝗝𝗮𝗹𝘆𝘀𝘀𝗮"
-    },
-    {
-     "name_as_written": "𝗔𝗻𝗻𝗶",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Princess 𝗔𝗻𝗻𝗶"
-    },
-    {
-     "name_as_written": "𝗚𝗮𝗯𝗶",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Princess 𝗚𝗮𝗯𝗶"
-    },
-    {
-     "name_as_written": "𝗦𝘁𝗲𝗽𝗵𝘆",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Princess 𝗦𝘁𝗲𝗽𝗵𝘆"
-    },
-    {
-     "name_as_written": "𝗦𝗮𝗿𝗮 𝗗𝗲𝗹𝗵𝗼𝗺",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Princess 𝗦𝗮𝗿𝗮 𝗗𝗲𝗹𝗵𝗼𝗺"
-    },
-    {
-     "name_as_written": "𝗠𝗼𝗼𝗿𝗲𝗮",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Princess 𝗠𝗼𝗼𝗿𝗲𝗮"
-    },
-    {
-     "name_as_written": "𝗦𝗮𝗿𝗮 𝗣𝗮𝘅𝗼𝗹𝗶𝗲𝘁𝗮",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨️ Princess 𝗦𝗮𝗿𝗮 𝗣𝗮𝘅𝗼𝗹𝗶𝗲𝘁𝗮"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗟𝗶𝘀𝗮 𝗥𝗼𝘀𝗲",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Princess 𝗗𝗝 𝗟𝗶𝘀𝗮 𝗥𝗼𝘀𝗲"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗟𝗼𝗸𝗮",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Princess 𝗗𝗝 𝗟𝗼𝗸𝗮"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "𝗛𝗼𝘁𝗲𝗹 𝗘𝘃𝗲𝗻𝗶𝗮",
-     "rationale": "A named hotel is linked for room booking, which indicates a recommended partner hotel outside the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15863",
+  "events": [
+   {
+    "event_id": 15863,
+    "artists": [
+     {
+      "name_as_written": "𝗖𝗵𝗮𝗺𝗮𝗹𝗼",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗖𝗵𝗮𝗺𝗮𝗹𝗼"
+     },
+     {
+      "name_as_written": "𝗝𝗲𝘀𝘂𝘀",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗝𝗲𝘀𝘂𝘀"
+     },
+     {
+      "name_as_written": "𝗗𝘄𝗲",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗗𝘄𝗲"
+     },
+     {
+      "name_as_written": "𝗝𝗣",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗝𝗣"
+     },
+     {
+      "name_as_written": "𝗝𝗮𝗰𝗸",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗝𝗮𝗰𝗸"
+     },
+     {
+      "name_as_written": "𝗠𝗮𝗺’𝘀",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗠𝗮𝗺’𝘀"
+     },
+     {
+      "name_as_written": "𝗔𝗸𝗿𝗮𝗺",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗔𝗸𝗿𝗮𝗺"
+     },
+     {
+      "name_as_written": "𝗦𝘁𝗲𝗽𝗵𝗮𝗻𝗲",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗦𝘁𝗲𝗽𝗵𝗮𝗻𝗲"
+     },
+     {
+      "name_as_written": "Kevin",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Prince Kevin"
+     },
+     {
+      "name_as_written": "𝗞𝗶𝗻𝗴𝘀𝗺𝗮𝗻 𝗟𝗲𝗱𝗼𝘂𝘅",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗞𝗶𝗻𝗴𝘀𝗺𝗮𝗻 𝗟𝗲𝗱𝗼𝘂𝘅"
+     },
+     {
+      "name_as_written": "𝗙𝗮𝗯𝗿𝗶𝗰𝗶𝗼",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗙𝗮𝗯𝗿𝗶𝗰𝗶𝗼"
+     },
+     {
+      "name_as_written": "𝗠𝗮𝗿𝗰𝗶𝗼",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗠𝗮𝗿𝗰𝗶𝗼"
+     },
+     {
+      "name_as_written": "𝗝𝘂𝘀𝘁𝗶𝗻𝗵𝗼",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗝𝘂𝘀𝘁𝗶𝗻𝗵𝗼"
+     },
+     {
+      "name_as_written": "𝗚𝘂𝗶𝘂 𝗗’𝗔𝗿𝘁𝘀",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Prince 𝗚𝘂𝗶𝘂 𝗗’𝗔𝗿𝘁𝘀"
+     },
+     {
+      "name_as_written": "𝗗𝗮𝗻𝗶 𝗙𝗲𝗿𝗻𝗮𝗻𝗱𝗲𝘀",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 Prince 𝗗𝗮𝗻𝗶 𝗙𝗲𝗿𝗻𝗮𝗻𝗱𝗲𝘀"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗣𝗮𝗿𝗮ï𝘀𝗼",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 Prince 𝗗𝗝 𝗣𝗮𝗿𝗮ï𝘀𝗼"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗦𝘁𝗲𝗳𝗮𝗻𝗶𝗼 𝗟𝗶𝗺𝗮",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 Prince 𝗗𝗝 𝗦𝘁𝗲𝗳𝗮𝗻𝗶𝗼 𝗟𝗶𝗺𝗮"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗡𝗮𝗼",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 Prince 𝗗𝗝 𝗡𝗮𝗼"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗟𝗲𝗻𝗻𝘆",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 Prince 𝗗𝗝 𝗟𝗲𝗻𝗻𝘆"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗟𝘂𝗰𝗮𝘀",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 Prince 𝗗𝗝 𝗟𝘂𝗰𝗮𝘀"
+     },
+     {
+      "name_as_written": "𝗝𝗮𝗹𝘆𝘀𝘀𝗮",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Princess 𝗝𝗮𝗹𝘆𝘀𝘀𝗮"
+     },
+     {
+      "name_as_written": "𝗔𝗻𝗻𝗶",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Princess 𝗔𝗻𝗻𝗶"
+     },
+     {
+      "name_as_written": "𝗚𝗮𝗯𝗶",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Princess 𝗚𝗮𝗯𝗶"
+     },
+     {
+      "name_as_written": "𝗦𝘁𝗲𝗽𝗵𝘆",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Princess 𝗦𝘁𝗲𝗽𝗵𝘆"
+     },
+     {
+      "name_as_written": "𝗦𝗮𝗿𝗮 𝗗𝗲𝗹𝗵𝗼𝗺",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Princess 𝗦𝗮𝗿𝗮 𝗗𝗲𝗹𝗵𝗼𝗺"
+     },
+     {
+      "name_as_written": "𝗠𝗼𝗼𝗿𝗲𝗮",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Princess 𝗠𝗼𝗼𝗿𝗲𝗮"
+     },
+     {
+      "name_as_written": "𝗦𝗮𝗿𝗮 𝗣𝗮𝘅𝗼𝗹𝗶𝗲𝘁𝗮",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨️ Princess 𝗦𝗮𝗿𝗮 𝗣𝗮𝘅𝗼𝗹𝗶𝗲𝘁𝗮"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗟𝗶𝘀𝗮 𝗥𝗼𝘀𝗲",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 Princess 𝗗𝗝 𝗟𝗶𝘀𝗮 𝗥𝗼𝘀𝗲"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗟𝗼𝗸𝗮",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 Princess 𝗗𝗝 𝗟𝗼𝗸𝗮"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "𝗛𝗼𝘁𝗲𝗹 𝗘𝘃𝗲𝗻𝗶𝗮",
+      "rationale": "A named hotel is linked for room booking, which indicates a recommended partner hotel outside the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

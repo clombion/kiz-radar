@@ -1,135 +1,142 @@
 {
- "batch": "event-15774",
- "events": [
-  {
-   "event_id": 15774,
-   "artists": [
-    {
-     "name_as_written": "Santee Hernandez",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Santee Hernandez"
-    },
-    {
-     "name_as_written": "Rasa Pauzaite",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Rasa Pauzaite"
-    },
-    {
-     "name_as_written": "Tamba Hissirou",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Tamba Hissirou"
-    },
-    {
-     "name_as_written": "Jennifer Benavidez",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Jennifer Benavidez"
-    },
-    {
-     "name_as_written": "Adreas Ru",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Adreas Ru"
-    },
-    {
-     "name_as_written": "Eddie Hunt",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Eddie Hunt"
-    },
-    {
-     "name_as_written": "JayJay & Natalia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "JayJay & Natalia"
-    },
-    {
-     "name_as_written": "Edu Costa & Veronica Barroso",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Edu Costa & Veronica Barroso"
-    },
-    {
-     "name_as_written": "Maribel Torres",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Maribel Torres"
-    },
-    {
-     "name_as_written": "Fernando Traquino",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Fernando Traquino"
-    },
-    {
-     "name_as_written": "DJ Dennis the Chemist",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dennis the Chemist"
-    },
-    {
-     "name_as_written": "DJ Petit Sarr",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Petit Sarr"
-    },
-    {
-     "name_as_written": "DJ Eddie Hunt",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Eddie Hunt"
-    },
-    {
-     "name_as_written": "DJ DIco",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ DIco"
-    }
-   ],
-   "features": [
-    {
-     "feature": "beach_party",
-     "quote": "Our legendary Beach Party on Great Western Beach",
-     "rationale": "The event includes a beach party on Great Western Beach."
-    },
-    {
-     "feature": "workshops",
-     "quote": "world-class workshops",
-     "rationale": "The description states that dance workshops are part of the festival."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "We have three beautiful dance spaces",
-     "rationale": "Three dance spaces means more than one dance room."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Every class, every party, every laugh — all under one roof.",
-     "rationale": "Classes and parties take place in the same hotel where dancers are invited to stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "To book the hotel, please call 01637 872851 and quote ‘Dança Bonita’.",
-     "rationale": "A festival hotel is recommended with a negotiated room rate, and the accommodation is not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15774",
+  "events": [
+   {
+    "event_id": 15774,
+    "artists": [
+     {
+      "name_as_written": "Santee Hernandez",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Santee Hernandez"
+     },
+     {
+      "name_as_written": "Rasa Pauzaite",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Rasa Pauzaite"
+     },
+     {
+      "name_as_written": "Tamba Hissirou",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Tamba Hissirou"
+     },
+     {
+      "name_as_written": "Jennifer Benavidez",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Jennifer Benavidez"
+     },
+     {
+      "name_as_written": "Adreas Ru",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Adreas Ru"
+     },
+     {
+      "name_as_written": "Eddie Hunt",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Eddie Hunt"
+     },
+     {
+      "name_as_written": "JayJay & Natalia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "JayJay & Natalia"
+     },
+     {
+      "name_as_written": "Edu Costa & Veronica Barroso",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Edu Costa & Veronica Barroso"
+     },
+     {
+      "name_as_written": "Maribel Torres",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Maribel Torres"
+     },
+     {
+      "name_as_written": "Fernando Traquino",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Fernando Traquino"
+     },
+     {
+      "name_as_written": "DJ Dennis the Chemist",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dennis the Chemist"
+     },
+     {
+      "name_as_written": "DJ Petit Sarr",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Petit Sarr"
+     },
+     {
+      "name_as_written": "DJ Eddie Hunt",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Eddie Hunt"
+     },
+     {
+      "name_as_written": "DJ DIco",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ DIco"
+     }
+    ],
+    "features": [
+     {
+      "feature": "beach_party",
+      "quote": "Our legendary Beach Party on Great Western Beach",
+      "rationale": "The event includes a beach party on Great Western Beach."
+     },
+     {
+      "feature": "workshops",
+      "quote": "world-class workshops",
+      "rationale": "The description states that dance workshops are part of the festival."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "We have three beautiful dance spaces",
+      "rationale": "Three dance spaces means more than one dance room."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Every class, every party, every laugh — all under one roof.",
+      "rationale": "Classes and parties take place in the same hotel where dancers are invited to stay."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "To book the hotel, please call 01637 872851 and quote ‘Dança Bonita’.",
+      "rationale": "A festival hotel is recommended with a negotiated room rate, and the accommodation is not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

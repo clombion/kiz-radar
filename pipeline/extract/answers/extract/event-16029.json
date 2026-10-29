@@ -1,16 +1,23 @@
 {
- "batch": "event-16029",
- "events": [
-  {
-   "event_id": 16029,
-   "artists": [],
-   "features": [
-    {
-     "feature": "taxi_dancers",
-     "quote": "taxi dancers",
-     "rationale": "The description says taxi dancers will be part of the event, although they are not named yet."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16029",
+  "events": [
+   {
+    "event_id": 16029,
+    "artists": [],
+    "features": [
+     {
+      "feature": "taxi_dancers",
+      "quote": "taxi dancers",
+      "rationale": "The description says taxi dancers will be part of the event, although they are not named yet."
+     }
+    ]
+   }
+  ]
+ }
 }

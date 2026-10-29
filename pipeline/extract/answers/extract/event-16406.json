@@ -1,171 +1,178 @@
 {
- "batch": "event-16406",
- "events": [
-  {
-   "event_id": 16406,
-   "artists": [
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": "🇪🇸",
-     "source_line": "🇪🇸 DJ Shark"
-    },
-    {
-     "name_as_written": "DJ Stefanio Lima",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": "🇨🇻",
-     "source_line": "🇨🇻 DJ Stefanio Lima"
-    },
-    {
-     "name_as_written": "D&L Beats",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": "🇳🇱",
-     "source_line": "🇳🇱 D&L Beats"
-    },
-    {
-     "name_as_written": "DJ Pingusso",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": "🇱🇺",
-     "source_line": "🇱🇺 DJ Pingusso"
-    },
-    {
-     "name_as_written": "DJ Neiken",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": "🇵🇹 🇮🇹",
-     "source_line": "🇵🇹 🇮🇹 DJ Neiken"
-    },
-    {
-     "name_as_written": "Jesus & Anni",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": "🇪🇸",
-     "source_line": "🇪🇸 Jesus & Anni"
-    },
-    {
-     "name_as_written": "Jojo and Jenny",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Jojo and Jenny"
-    },
-    {
-     "name_as_written": "Quinn",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": "🇹🇭",
-     "source_line": "🇹🇭 Quinn"
-    },
-    {
-     "name_as_written": "Cedric",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Cedric"
-    },
-    {
-     "name_as_written": "DJ Miro Kikola",
-     "role": "dj",
-     "style": "KIZOMBA + SEMBA",
-     "country": "🇦🇴",
-     "source_line": "🇦🇴 DJ Miro Kikola"
-    },
-    {
-     "name_as_written": "DJ Ellen",
-     "role": "dj",
-     "style": "KIZOMBA + SEMBA",
-     "country": "🇳🇱",
-     "source_line": "🇳🇱 DJ Ellen"
-    },
-    {
-     "name_as_written": "DJ Sabura",
-     "role": "dj",
-     "style": "KIZOMBA + SEMBA",
-     "country": "🇵🇹",
-     "source_line": "🇵🇹 DJ Sabura"
-    },
-    {
-     "name_as_written": "DJ Afterparty",
-     "role": "dj",
-     "style": "KIZOMBA + SEMBA",
-     "country": "🇸🇩",
-     "source_line": "🇸🇩 DJ Afterparty"
-    },
-    {
-     "name_as_written": "DJ Ra",
-     "role": "dj",
-     "style": "KIZOMBA + SEMBA",
-     "country": "🇧🇮",
-     "source_line": "🇧🇮 DJ Ra"
-    },
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": "KIZOMBA + SEMBA",
-     "country": "🇦🇴",
-     "source_line": "🇦🇴 Ary & Maura"
-    },
-    {
-     "name_as_written": "Fabricio",
-     "role": "teacher",
-     "style": "KIZOMBA + SEMBA",
-     "country": "🇵🇹",
-     "source_line": "🇵🇹 Fabricio"
-    },
-    {
-     "name_as_written": "Rabbil + Allana",
-     "role": "teacher",
-     "style": "KIZOMBA + SEMBA",
-     "country": "🇧🇮🇲🇩",
-     "source_line": "🇧🇮🇲🇩 Rabbil + Allana"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in One Seaside Resort",
-     "rationale": "The description says the event is held at the seaside resort where the hotel is, so the parties and accommodation share one venue."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Hotel residents get exclusive special perks – breakfast party and more included with hotel BB pass",
-     "rationale": "The hotel BB pass is described as including perks, which indicates accommodation is part of that package."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Add-on nights at our reduced rate",
-     "rationale": "The organiser offers a negotiated reduced hotel rate for extra nights."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "poolside parties & seaside parties",
-     "rationale": "The description explicitly lists poolside parties as part of the event."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Welcome Pre-party",
-     "rationale": "A Welcome Pre-party is listed before the main dance experience dates."
-    },
-    {
-     "feature": "workshops",
-     "quote": "High-quality classes & workshops",
-     "rationale": "The description states that classes and workshops are part of the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed day and night parties",
-     "rationale": "The event lists themed day and night parties."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms* Semba + Urban",
-     "rationale": "The description states there are two rooms for dancing."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16406",
+  "events": [
+   {
+    "event_id": 16406,
+    "artists": [
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": "URBAN KIZ",
+      "country": "🇪🇸",
+      "source_line": "🇪🇸 DJ Shark"
+     },
+     {
+      "name_as_written": "DJ Stefanio Lima",
+      "role": "dj",
+      "style": "URBAN KIZ",
+      "country": "🇨🇻",
+      "source_line": "🇨🇻 DJ Stefanio Lima"
+     },
+     {
+      "name_as_written": "D&L Beats",
+      "role": "dj",
+      "style": "URBAN KIZ",
+      "country": "🇳🇱",
+      "source_line": "🇳🇱 D&L Beats"
+     },
+     {
+      "name_as_written": "DJ Pingusso",
+      "role": "dj",
+      "style": "URBAN KIZ",
+      "country": "🇱🇺",
+      "source_line": "🇱🇺 DJ Pingusso"
+     },
+     {
+      "name_as_written": "DJ Neiken",
+      "role": "dj",
+      "style": "URBAN KIZ",
+      "country": "🇵🇹 🇮🇹",
+      "source_line": "🇵🇹 🇮🇹 DJ Neiken"
+     },
+     {
+      "name_as_written": "Jesus & Anni",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": "🇪🇸",
+      "source_line": "🇪🇸 Jesus & Anni"
+     },
+     {
+      "name_as_written": "Jojo and Jenny",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Jojo and Jenny"
+     },
+     {
+      "name_as_written": "Quinn",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": "🇹🇭",
+      "source_line": "🇹🇭 Quinn"
+     },
+     {
+      "name_as_written": "Cedric",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Cedric"
+     },
+     {
+      "name_as_written": "DJ Miro Kikola",
+      "role": "dj",
+      "style": "KIZOMBA + SEMBA",
+      "country": "🇦🇴",
+      "source_line": "🇦🇴 DJ Miro Kikola"
+     },
+     {
+      "name_as_written": "DJ Ellen",
+      "role": "dj",
+      "style": "KIZOMBA + SEMBA",
+      "country": "🇳🇱",
+      "source_line": "🇳🇱 DJ Ellen"
+     },
+     {
+      "name_as_written": "DJ Sabura",
+      "role": "dj",
+      "style": "KIZOMBA + SEMBA",
+      "country": "🇵🇹",
+      "source_line": "🇵🇹 DJ Sabura"
+     },
+     {
+      "name_as_written": "DJ Afterparty",
+      "role": "dj",
+      "style": "KIZOMBA + SEMBA",
+      "country": "🇸🇩",
+      "source_line": "🇸🇩 DJ Afterparty"
+     },
+     {
+      "name_as_written": "DJ Ra",
+      "role": "dj",
+      "style": "KIZOMBA + SEMBA",
+      "country": "🇧🇮",
+      "source_line": "🇧🇮 DJ Ra"
+     },
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": "KIZOMBA + SEMBA",
+      "country": "🇦🇴",
+      "source_line": "🇦🇴 Ary & Maura"
+     },
+     {
+      "name_as_written": "Fabricio",
+      "role": "teacher",
+      "style": "KIZOMBA + SEMBA",
+      "country": "🇵🇹",
+      "source_line": "🇵🇹 Fabricio"
+     },
+     {
+      "name_as_written": "Rabbil + Allana",
+      "role": "teacher",
+      "style": "KIZOMBA + SEMBA",
+      "country": "🇧🇮🇲🇩",
+      "source_line": "🇧🇮🇲🇩 Rabbil + Allana"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in One Seaside Resort",
+      "rationale": "The description says the event is held at the seaside resort where the hotel is, so the parties and accommodation share one venue."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Hotel residents get exclusive special perks – breakfast party and more included with hotel BB pass",
+      "rationale": "The hotel BB pass is described as including perks, which indicates accommodation is part of that package."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Add-on nights at our reduced rate",
+      "rationale": "The organiser offers a negotiated reduced hotel rate for extra nights."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "poolside parties & seaside parties",
+      "rationale": "The description explicitly lists poolside parties as part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Welcome Pre-party",
+      "rationale": "A Welcome Pre-party is listed before the main dance experience dates."
+     },
+     {
+      "feature": "workshops",
+      "quote": "High-quality classes & workshops",
+      "rationale": "The description states that classes and workshops are part of the event."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Themed day and night parties",
+      "rationale": "The event lists themed day and night parties."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms* Semba + Urban",
+      "rationale": "The description states there are two rooms for dancing."
+     }
+    ]
+   }
+  ]
+ }
 }

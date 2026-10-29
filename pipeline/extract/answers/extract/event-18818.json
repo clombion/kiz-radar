@@ -1,36 +1,43 @@
 {
- "batch": "event-18818",
- "events": [
-  {
-   "event_id": 18818,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "More than 25h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)",
-     "rationale": "The description states that more than 25 hours of workshops are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 free dance floors",
-     "rationale": "Three dance floors are offered, so there is more than one dance room."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESSCODE :",
-     "rationale": "The description has a dress code heading, which shows that a dress code applies."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotelempfehlung (Hotel recommendations):",
-     "rationale": "The event lists recommended hotels separately from the pass, so it gives partner hotel recommendations."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social Dance from 12 p.m. to 5 p.m",
-     "rationale": "A daytime social dance running from noon to 5 p.m. is listed on the Monday."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18818",
+  "events": [
+   {
+    "event_id": 18818,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "More than 25h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)",
+      "rationale": "The description states that more than 25 hours of workshops are part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 free dance floors",
+      "rationale": "Three dance floors are offered, so there is more than one dance room."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESSCODE :",
+      "rationale": "The description has a dress code heading, which shows that a dress code applies."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotelempfehlung (Hotel recommendations):",
+      "rationale": "The event lists recommended hotels separately from the pass, so it gives partner hotel recommendations."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Social Dance from 12 p.m. to 5 p.m",
+      "rationale": "A daytime social dance running from noon to 5 p.m. is listed on the Monday."
+     }
+    ]
+   }
+  ]
+ }
 }

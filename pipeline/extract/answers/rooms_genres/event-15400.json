@@ -1,53 +1,60 @@
 {
- "batch": "event-15400",
- "events": [
-  {
-   "event_id": 15400,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "𝑲𝑰𝒁𝑶𝑴𝑩𝑨",
-     "quote": "𝑲𝑰𝒁𝑶𝑴𝑩𝑨 / 𝑺𝑬𝑴𝑩𝑨"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "𝑺𝑬𝑴𝑩𝑨",
-     "quote": "𝑲𝑰𝒁𝑶𝑴𝑩𝑨 / 𝑺𝑬𝑴𝑩𝑨"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "𝘊𝘢𝘣𝘰-𝘓𝘰𝘷𝘦",
-     "quote": "– 𝘎𝘩𝘦𝘵𝘵𝘰 𝘡𝘰𝘶𝘬 / 𝘊𝘢𝘣𝘰-𝘓𝘰𝘷𝘦"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "𝘎𝘩𝘦𝘵𝘵𝘰 𝘡𝘰𝘶𝘬",
-     "quote": "– 𝘎𝘩𝘦𝘵𝘵𝘰 𝘡𝘰𝘶𝘬 / 𝘊𝘢𝘣𝘰-𝘓𝘰𝘷𝘦"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "𝘛𝘢𝘳𝘳𝘢𝘹𝘪𝘯𝘩𝘢",
-     "quote": "– 𝘛𝘢𝘳𝘳𝘢𝘹𝘪𝘯𝘩𝘢 / 𝘊𝘰𝘭𝘢𝘥𝘦𝘪𝘳𝘢"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "𝘊𝘰𝘭𝘢𝘥𝘦𝘪𝘳𝘢",
-     "quote": "– 𝘛𝘢𝘳𝘳𝘢𝘹𝘪𝘯𝘩𝘢 / 𝘊𝘰𝘭𝘢𝘥𝘦𝘪𝘳𝘢"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "𝘒𝘰𝘯𝘱𝘢",
-     "quote": "𝘒𝘰𝘯𝘱𝘢 / 𝘡𝘰𝘶𝘬 / 𝘈𝘧𝘳𝘰-𝘩𝘰𝘶𝘴𝘦"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "𝘈𝘧𝘳𝘰-𝘩𝘰𝘶𝘴𝘦",
-     "quote": "𝘒𝘰𝘯𝘱𝘢 / 𝘡𝘰𝘶𝘬 / 𝘈𝘧𝘳𝘰-𝘩𝘰𝘶𝘴𝘦"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15400",
+  "events": [
+   {
+    "event_id": 15400,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "𝑲𝑰𝒁𝑶𝑴𝑩𝑨",
+      "quote": "𝑲𝑰𝒁𝑶𝑴𝑩𝑨 / 𝑺𝑬𝑴𝑩𝑨"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "𝑺𝑬𝑴𝑩𝑨",
+      "quote": "𝑲𝑰𝒁𝑶𝑴𝑩𝑨 / 𝑺𝑬𝑴𝑩𝑨"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "𝘊𝘢𝘣𝘰-𝘓𝘰𝘷𝘦",
+      "quote": "– 𝘎𝘩𝘦𝘵𝘵𝘰 𝘡𝘰𝘶𝘬 / 𝘊𝘢𝘣𝘰-𝘓𝘰𝘷𝘦"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "𝘎𝘩𝘦𝘵𝘵𝘰 𝘡𝘰𝘶𝘬",
+      "quote": "– 𝘎𝘩𝘦𝘵𝘵𝘰 𝘡𝘰𝘶𝘬 / 𝘊𝘢𝘣𝘰-𝘓𝘰𝘷𝘦"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "𝘛𝘢𝘳𝘳𝘢𝘹𝘪𝘯𝘩𝘢",
+      "quote": "– 𝘛𝘢𝘳𝘳𝘢𝘹𝘪𝘯𝘩𝘢 / 𝘊𝘰𝘭𝘢𝘥𝘦𝘪𝘳𝘢"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "𝘊𝘰𝘭𝘢𝘥𝘦𝘪𝘳𝘢",
+      "quote": "– 𝘛𝘢𝘳𝘳𝘢𝘹𝘪𝘯𝘩𝘢 / 𝘊𝘰𝘭𝘢𝘥𝘦𝘪𝘳𝘢"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "𝘒𝘰𝘯𝘱𝘢",
+      "quote": "𝘒𝘰𝘯𝘱𝘢 / 𝘡𝘰𝘶𝘬 / 𝘈𝘧𝘳𝘰-𝘩𝘰𝘶𝘴𝘦"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "𝘈𝘧𝘳𝘰-𝘩𝘰𝘶𝘴𝘦",
+      "quote": "𝘒𝘰𝘯𝘱𝘢 / 𝘡𝘰𝘶𝘬 / 𝘈𝘧𝘳𝘰-𝘩𝘰𝘶𝘴𝘦"
+     }
+    ]
+   }
+  ]
+ }
 }

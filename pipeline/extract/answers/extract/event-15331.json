@@ -1,284 +1,291 @@
 {
- "batch": "event-15331",
- "events": [
-  {
-   "event_id": 15331,
-   "artists": [
-    {
-     "name_as_written": "Gero & Migle",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Gero & Migle ✅"
-    },
-    {
-     "name_as_written": "Lisa & York",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Lisa & York ✅"
-    },
-    {
-     "name_as_written": "Simone & Danila",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Simone & Danila ✅"
-    },
-    {
-     "name_as_written": "Dario & Sara",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Dario & Sara ✅"
-    },
-    {
-     "name_as_written": "Manuel & Nergiz",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Manuel & Nergiz ✅"
-    },
-    {
-     "name_as_written": "Diego & Lidia",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Diego & Lidia ✅"
-    },
-    {
-     "name_as_written": "Derek & Isabel",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Derek & Isabel ✅"
-    },
-    {
-     "name_as_written": "Casito Bachata",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Casito Bachata ✅"
-    },
-    {
-     "name_as_written": "Xi & Alina",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Xi & Alina ✅"
-    },
-    {
-     "name_as_written": "Bastien & Amélie",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Bastien & Amélie ✅"
-    },
-    {
-     "name_as_written": "Hugo & Ezo",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Hugo & Ezo ✅"
-    },
-    {
-     "name_as_written": "Kevin & Viktoriia",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Kevin & Viktoriia ✅"
-    },
-    {
-     "name_as_written": "Methodz & Juliaa",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Methodz & Juliaa ✅"
-    },
-    {
-     "name_as_written": "Sensei & Emma",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Sensei & Emma ✅"
-    },
-    {
-     "name_as_written": "Dim & Ophelie",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Dim & Ophelie ✅"
-    },
-    {
-     "name_as_written": "Tchint & Janina",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Tchint & Janina✅"
-    },
-    {
-     "name_as_written": "Donald Wilson",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Donald Wilson ✅"
-    },
-    {
-     "name_as_written": "Ronie Saleh",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Ronie Saleh ✅"
-    },
-    {
-     "name_as_written": "Seo Fernandez & Sara",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Seo Fernandez & Sara ✅"
-    },
-    {
-     "name_as_written": "Adrian & Anita",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Adrian & Anita ✅"
-    },
-    {
-     "name_as_written": "Luis Vazquez",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Luis Vazquez ✅"
-    },
-    {
-     "name_as_written": "Gizem & Salim",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Gizem & Salim ✅"
-    },
-    {
-     "name_as_written": "Gilles & Mady",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Gilles & Mady ✅"
-    },
-    {
-     "name_as_written": "Antonio Di Cera",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Antonio Di Cera ✅"
-    },
-    {
-     "name_as_written": "Dj Tronky",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Dj Tronky ✅ (Bachata)"
-    },
-    {
-     "name_as_written": "Dj York",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Dj York ✅ (Bachata)"
-    },
-    {
-     "name_as_written": "Dj David Pedron",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Dj David Pedron ✅ (Bachata)"
-    },
-    {
-     "name_as_written": "Dj Alma",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Dj Alma ✅ (Bachata)"
-    },
-    {
-     "name_as_written": "Dj Toxica",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Dj Toxica ✅ (Bachata)"
-    },
-    {
-     "name_as_written": "Dj Sai Sai",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dj Sai Sai ✅ (Kizomba)"
-    },
-    {
-     "name_as_written": "Dj SamGold",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dj SamGold ✅(Kizomba)"
-    },
-    {
-     "name_as_written": "Dj Ichigo",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dj Ichigo ✅(Kizomba)"
-    },
-    {
-     "name_as_written": "Dj Siwo",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dj Siwo ✅(Kizomba)"
-    },
-    {
-     "name_as_written": "Dj Williy Viper",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Dj Williy Viper ✅ (Salsa)"
-    },
-    {
-     "name_as_written": "Dj Geno",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Dj Geno ✅ (Salsa)"
-    },
-    {
-     "name_as_written": "Dj Dennis The Chemist",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Dj Dennis The Chemist ✅ (Salsa)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "60 + Workshops",
-     "rationale": "The listed '60 + Workshops' shows dance workshops are part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows",
-     "rationale": "The event lists 'Shows' among its offerings."
-    },
-    {
-     "feature": "competition",
-     "quote": "Jack & Jill",
-     "rationale": "Jack & Jill is a partner dance competition format listed in the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 dance floors",
-     "rationale": "Stating four dance floors means more than one dance room is available."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15331",
+  "events": [
+   {
+    "event_id": 15331,
+    "artists": [
+     {
+      "name_as_written": "Gero & Migle",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Gero & Migle ✅"
+     },
+     {
+      "name_as_written": "Lisa & York",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Lisa & York ✅"
+     },
+     {
+      "name_as_written": "Simone & Danila",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Simone & Danila ✅"
+     },
+     {
+      "name_as_written": "Dario & Sara",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Dario & Sara ✅"
+     },
+     {
+      "name_as_written": "Manuel & Nergiz",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Manuel & Nergiz ✅"
+     },
+     {
+      "name_as_written": "Diego & Lidia",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Diego & Lidia ✅"
+     },
+     {
+      "name_as_written": "Derek & Isabel",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Derek & Isabel ✅"
+     },
+     {
+      "name_as_written": "Casito Bachata",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Casito Bachata ✅"
+     },
+     {
+      "name_as_written": "Xi & Alina",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Xi & Alina ✅"
+     },
+     {
+      "name_as_written": "Bastien & Amélie",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Bastien & Amélie ✅"
+     },
+     {
+      "name_as_written": "Hugo & Ezo",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Hugo & Ezo ✅"
+     },
+     {
+      "name_as_written": "Kevin & Viktoriia",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Kevin & Viktoriia ✅"
+     },
+     {
+      "name_as_written": "Methodz & Juliaa",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Methodz & Juliaa ✅"
+     },
+     {
+      "name_as_written": "Sensei & Emma",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Sensei & Emma ✅"
+     },
+     {
+      "name_as_written": "Dim & Ophelie",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Dim & Ophelie ✅"
+     },
+     {
+      "name_as_written": "Tchint & Janina",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Tchint & Janina✅"
+     },
+     {
+      "name_as_written": "Donald Wilson",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Donald Wilson ✅"
+     },
+     {
+      "name_as_written": "Ronie Saleh",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Ronie Saleh ✅"
+     },
+     {
+      "name_as_written": "Seo Fernandez & Sara",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Seo Fernandez & Sara ✅"
+     },
+     {
+      "name_as_written": "Adrian & Anita",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Adrian & Anita ✅"
+     },
+     {
+      "name_as_written": "Luis Vazquez",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Luis Vazquez ✅"
+     },
+     {
+      "name_as_written": "Gizem & Salim",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Gizem & Salim ✅"
+     },
+     {
+      "name_as_written": "Gilles & Mady",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Gilles & Mady ✅"
+     },
+     {
+      "name_as_written": "Antonio Di Cera",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Antonio Di Cera ✅"
+     },
+     {
+      "name_as_written": "Dj Tronky",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Dj Tronky ✅ (Bachata)"
+     },
+     {
+      "name_as_written": "Dj York",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Dj York ✅ (Bachata)"
+     },
+     {
+      "name_as_written": "Dj David Pedron",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Dj David Pedron ✅ (Bachata)"
+     },
+     {
+      "name_as_written": "Dj Alma",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Dj Alma ✅ (Bachata)"
+     },
+     {
+      "name_as_written": "Dj Toxica",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Dj Toxica ✅ (Bachata)"
+     },
+     {
+      "name_as_written": "Dj Sai Sai",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Sai Sai ✅ (Kizomba)"
+     },
+     {
+      "name_as_written": "Dj SamGold",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj SamGold ✅(Kizomba)"
+     },
+     {
+      "name_as_written": "Dj Ichigo",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Ichigo ✅(Kizomba)"
+     },
+     {
+      "name_as_written": "Dj Siwo",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Siwo ✅(Kizomba)"
+     },
+     {
+      "name_as_written": "Dj Williy Viper",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Dj Williy Viper ✅ (Salsa)"
+     },
+     {
+      "name_as_written": "Dj Geno",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Dj Geno ✅ (Salsa)"
+     },
+     {
+      "name_as_written": "Dj Dennis The Chemist",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Dj Dennis The Chemist ✅ (Salsa)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "60 + Workshops",
+      "rationale": "The listed '60 + Workshops' shows dance workshops are part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows",
+      "rationale": "The event lists 'Shows' among its offerings."
+     },
+     {
+      "feature": "competition",
+      "quote": "Jack & Jill",
+      "rationale": "Jack & Jill is a partner dance competition format listed in the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "4 dance floors",
+      "rationale": "Stating four dance floors means more than one dance room is available."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,145 +1,152 @@
 {
- "batch": "event-18964",
- "events": [
-  {
-   "event_id": 18964,
-   "artists": [
-    {
-     "name_as_written": "The African Dance Association",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The African Dance Association (ADA) is beyond thrilled to welcome you to The People’s KIZOMBA Festival – SCOTLAND Edition 5.0! 🙌🏾🙌🏾"
-    },
-    {
-     "name_as_written": "BRUNO & MINA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ BRUNO & MINA"
-    },
-    {
-     "name_as_written": "STEVEN & MARTYNA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨STEVEN & MARTYNA"
-    },
-    {
-     "name_as_written": "AFRO DANCE ACADEMY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨AFRO DANCE ACADEMY"
-    },
-    {
-     "name_as_written": "MARIBEL",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨MARIBEL"
-    },
-    {
-     "name_as_written": "CHRISTINA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨CHRISTINA"
-    },
-    {
-     "name_as_written": "SIAN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨SIAN"
-    },
-    {
-     "name_as_written": "RICARDO FERREIRA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨RICARDO FERREIRA"
-    },
-    {
-     "name_as_written": "DICO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨DICO"
-    },
-    {
-     "name_as_written": "D VENT",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨D VENT"
-    },
-    {
-     "name_as_written": "XEQUE MATE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨XEQUE MATE"
-    },
-    {
-     "name_as_written": "ANDRINA",
-     "role": "teacher",
-     "style": "STRETCHING",
-     "country": null,
-     "source_line": "✨ANDRINA"
-    },
-    {
-     "name_as_written": "JONATHAN",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨JONATHAN"
-    },
-    {
-     "name_as_written": "QU4TRO",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨QU4TRO"
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "Full pass & accommodation deals available",
-     "rationale": "The description offers passes combined with accommodation deals."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "FULL BOARD",
-     "rationale": "Full board group deals include meals as well as accommodation."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "FULL BOARD",
-     "rationale": "Full board group deals include the accommodation."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops (all levels)",
-     "rationale": "Dance workshops are listed as part of the event."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Workshops (all levels)",
-     "rationale": "The workshops are stated to be open to all levels."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "taxi dancers present",
-     "rationale": "The event states that taxi dancers are present."
-    },
-    {
-     "feature": "after_party",
-     "quote": "AFTERPARTY",
-     "rationale": "An afterparty is listed in the DJ lineup."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18964",
+  "events": [
+   {
+    "event_id": 18964,
+    "artists": [
+     {
+      "name_as_written": "The African Dance Association",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The African Dance Association (ADA) is beyond thrilled to welcome you to The People’s KIZOMBA Festival – SCOTLAND Edition 5.0! 🙌🏾🙌🏾"
+     },
+     {
+      "name_as_written": "BRUNO & MINA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ BRUNO & MINA"
+     },
+     {
+      "name_as_written": "STEVEN & MARTYNA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨STEVEN & MARTYNA"
+     },
+     {
+      "name_as_written": "AFRO DANCE ACADEMY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨AFRO DANCE ACADEMY"
+     },
+     {
+      "name_as_written": "MARIBEL",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨MARIBEL"
+     },
+     {
+      "name_as_written": "CHRISTINA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨CHRISTINA"
+     },
+     {
+      "name_as_written": "SIAN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨SIAN"
+     },
+     {
+      "name_as_written": "RICARDO FERREIRA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨RICARDO FERREIRA"
+     },
+     {
+      "name_as_written": "DICO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨DICO"
+     },
+     {
+      "name_as_written": "D VENT",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨D VENT"
+     },
+     {
+      "name_as_written": "XEQUE MATE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨XEQUE MATE"
+     },
+     {
+      "name_as_written": "ANDRINA",
+      "role": "teacher",
+      "style": "STRETCHING",
+      "country": null,
+      "source_line": "✨ANDRINA"
+     },
+     {
+      "name_as_written": "JONATHAN",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨JONATHAN"
+     },
+     {
+      "name_as_written": "QU4TRO",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨QU4TRO"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "Full pass & accommodation deals available",
+      "rationale": "The description offers passes combined with accommodation deals."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "FULL BOARD",
+      "rationale": "Full board group deals include meals as well as accommodation."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "FULL BOARD",
+      "rationale": "Full board group deals include the accommodation."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops (all levels)",
+      "rationale": "Dance workshops are listed as part of the event."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Workshops (all levels)",
+      "rationale": "The workshops are stated to be open to all levels."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "taxi dancers present",
+      "rationale": "The event states that taxi dancers are present."
+     },
+     {
+      "feature": "after_party",
+      "quote": "AFTERPARTY",
+      "rationale": "An afterparty is listed in the DJ lineup."
+     }
+    ]
+   }
+  ]
+ }
 }

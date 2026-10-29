@@ -1,0 +1,13 @@
+{
+ "key_a": "p:katalin@azmael+katalin",
+ "key_b": "p:katalin@katalin+mathias",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d02743009169d8c2",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Azmael & Katalin and Mathias & Katalin have different partners, and the shared first name Katalin and Austria are not enough to merge or separate."
+ }
+}

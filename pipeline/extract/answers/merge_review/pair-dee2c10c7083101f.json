@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@kevin+sara",
+ "key_b": "p:sarah@kevin+sarah",
+ "prompt": "7af5fef02cae3622",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:32:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "dee2c10c7083101f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both Sara & Kevin and Sarah & Kevin are listed at the same Manchester event on the same date, the pattern the rule treats as two couples; the roles also differ (performer vs teacher)."
+ }
+}

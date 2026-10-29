@@ -1,0 +1,13 @@
+{
+ "key_a": "p:riikka@dance",
+ "key_b": "p:riikkamaria",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c224b81b665ad6d3",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Riikka and Riikka Maria share the first name, both are teachers with Finland as the stated country, and the full form only adds a second given name."
+ }
+}

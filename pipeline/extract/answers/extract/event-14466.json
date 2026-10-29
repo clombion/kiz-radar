@@ -1,194 +1,201 @@
 {
- "batch": "event-14466",
- "events": [
-  {
-   "event_id": 14466,
-   "artists": [
-    {
-     "name_as_written": "DJ Lenhy",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "– DJ Lenhy 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Dani Fernandes",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "– DJ Dani Fernandes 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Lisa Rose",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "– DJ Lisa Rose 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Diablo",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "– DJ Diablo 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Mtee",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "– DJ Mtee 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Jahnaï",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "– DJ Jahnaï 🇨🇭"
-    },
-    {
-     "name_as_written": "DJ Relampago",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "– DJ Relampago 🇨🇭"
-    },
-    {
-     "name_as_written": "Jojo & Jenny",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "– Jojo & Jenny 🇫🇷"
-    },
-    {
-     "name_as_written": "Jp & Stephy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "– Jp & Stephy 🇫🇷"
-    },
-    {
-     "name_as_written": "Heneco",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "– Heneco 🇫🇷"
-    },
-    {
-     "name_as_written": "Axel & Lucy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "– Axel & Lucy 🇫🇷"
-    },
-    {
-     "name_as_written": "Ati",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "– Ati 🇫🇷"
-    },
-    {
-     "name_as_written": "Relampago",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇦🇴",
-     "source_line": "– Relampago 🇨🇭🇦🇴"
-    },
-    {
-     "name_as_written": "Kalypso & Adé",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "– Kalypso & Adé 🇨🇭"
-    },
-    {
-     "name_as_written": "Benkos Tarehi ProdArts",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "– Benkos Tarehi ProdArts"
-    },
-    {
-     "name_as_written": "Yoan Perrin",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "– Yoan Perrin"
-    },
-    {
-     "name_as_written": "KIZMANIE",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– KIZMANIE"
-    },
-    {
-     "name_as_written": "PSBK",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– PSBK"
-    },
-    {
-     "name_as_written": "UNIT KIZ",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– UNIT KIZ"
-    },
-    {
-     "name_as_written": "VVK",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– VVK"
-    },
-    {
-     "name_as_written": "Association Kizomba Genève",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "– Association Kizomba Genève"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE",
-     "rationale": "The title says all in one and the parties are held in the 4 star hotel where guests stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Rooms, 2 Atmospheres",
-     "rationale": "The event has two rooms with different atmospheres."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTEL MERCURE GENEVA AIRPORT: Special festival rates",
-     "rationale": "A partner hotel offers negotiated festival rates, and accommodation is not part of the pass."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "FREE SHUTTLES",
-     "rationale": "Free airport shuttles are offered to attendees."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODES:",
-     "rationale": "The description states dress codes for the parties."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TEAM TAXIS/GUESTS",
-     "rationale": "A taxi-dancer team is listed for the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Sunday social",
-     "rationale": "A Sunday social runs from 12H00 to 20H00, which is a daytime social."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:39:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14466",
+  "events": [
+   {
+    "event_id": 14466,
+    "artists": [
+     {
+      "name_as_written": "DJ Lenhy",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "– DJ Lenhy 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Dani Fernandes",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "– DJ Dani Fernandes 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Lisa Rose",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "– DJ Lisa Rose 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Diablo",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "– DJ Diablo 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Mtee",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "– DJ Mtee 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Jahnaï",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "– DJ Jahnaï 🇨🇭"
+     },
+     {
+      "name_as_written": "DJ Relampago",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "– DJ Relampago 🇨🇭"
+     },
+     {
+      "name_as_written": "Jojo & Jenny",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "– Jojo & Jenny 🇫🇷"
+     },
+     {
+      "name_as_written": "Jp & Stephy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "– Jp & Stephy 🇫🇷"
+     },
+     {
+      "name_as_written": "Heneco",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "– Heneco 🇫🇷"
+     },
+     {
+      "name_as_written": "Axel & Lucy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "– Axel & Lucy 🇫🇷"
+     },
+     {
+      "name_as_written": "Ati",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "– Ati 🇫🇷"
+     },
+     {
+      "name_as_written": "Relampago",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇦🇴",
+      "source_line": "– Relampago 🇨🇭🇦🇴"
+     },
+     {
+      "name_as_written": "Kalypso & Adé",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "– Kalypso & Adé 🇨🇭"
+     },
+     {
+      "name_as_written": "Benkos Tarehi ProdArts",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "– Benkos Tarehi ProdArts"
+     },
+     {
+      "name_as_written": "Yoan Perrin",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "– Yoan Perrin"
+     },
+     {
+      "name_as_written": "KIZMANIE",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "– KIZMANIE"
+     },
+     {
+      "name_as_written": "PSBK",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "– PSBK"
+     },
+     {
+      "name_as_written": "UNIT KIZ",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "– UNIT KIZ"
+     },
+     {
+      "name_as_written": "VVK",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "– VVK"
+     },
+     {
+      "name_as_written": "Association Kizomba Genève",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "– Association Kizomba Genève"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE",
+      "rationale": "The title says all in one and the parties are held in the 4 star hotel where guests stay."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Rooms, 2 Atmospheres",
+      "rationale": "The event has two rooms with different atmospheres."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTEL MERCURE GENEVA AIRPORT: Special festival rates",
+      "rationale": "A partner hotel offers negotiated festival rates, and accommodation is not part of the pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "FREE SHUTTLES",
+      "rationale": "Free airport shuttles are offered to attendees."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESS CODES:",
+      "rationale": "The description states dress codes for the parties."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TEAM TAXIS/GUESTS",
+      "rationale": "A taxi-dancer team is listed for the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Sunday social",
+      "rationale": "A Sunday social runs from 12H00 to 20H00, which is a daytime social."
+     }
+    ]
+   }
+  ]
+ }
 }

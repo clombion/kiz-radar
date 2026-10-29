@@ -1,24 +1,31 @@
 {
- "batch": "event-17927",
- "events": [
-  {
-   "event_id": 17927,
-   "artists": [
-    {
-     "name_as_written": "La Kizomba Project",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Organised by La Kizomba Project, this festival aims to polish technique and style from Angolan professionals already well-known in the European and worldwide dance community."
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "7 hours of workshops per day",
-     "rationale": "The description states that the event offers 7 hours of workshops per day, so dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17927",
+  "events": [
+   {
+    "event_id": 17927,
+    "artists": [
+     {
+      "name_as_written": "La Kizomba Project",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Organised by La Kizomba Project, this festival aims to polish technique and style from Angolan professionals already well-known in the European and worldwide dance community."
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "7 hours of workshops per day",
+      "rationale": "The description states that the event offers 7 hours of workshops per day, so dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

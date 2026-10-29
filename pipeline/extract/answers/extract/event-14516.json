@@ -1,36 +1,43 @@
 {
- "batch": "event-14516",
- "events": [
-  {
-   "event_id": 14516,
-   "artists": [],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 dance floors : Bachata, Salsa, Kizomba on 4800 sq meters",
-     "rationale": "Three dance floors are listed, so the event has more than one dance room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "50+ hours of workshops",
-     "rationale": "The description promises more than fifty hours of dance workshops."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows by the world’s top artists",
-     "rationale": "Performances by top artists are explicitly offered."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 Night Parties & 2 Day Socials",
-     "rationale": "Two day socials are part of the event schedule."
-    },
-    {
-     "feature": "competition",
-     "quote": "Jack & Jill Competition",
-     "rationale": "A Jack & Jill competition is listed among the event activities."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:39:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14516",
+  "events": [
+   {
+    "event_id": 14516,
+    "artists": [],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 dance floors : Bachata, Salsa, Kizomba on 4800 sq meters",
+      "rationale": "Three dance floors are listed, so the event has more than one dance room."
+     },
+     {
+      "feature": "workshops",
+      "quote": "50+ hours of workshops",
+      "rationale": "The description promises more than fifty hours of dance workshops."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows by the world’s top artists",
+      "rationale": "Performances by top artists are explicitly offered."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 Night Parties & 2 Day Socials",
+      "rationale": "Two day socials are part of the event schedule."
+     },
+     {
+      "feature": "competition",
+      "quote": "Jack & Jill Competition",
+      "rationale": "A Jack & Jill competition is listed among the event activities."
+     }
+    ]
+   }
+  ]
+ }
 }

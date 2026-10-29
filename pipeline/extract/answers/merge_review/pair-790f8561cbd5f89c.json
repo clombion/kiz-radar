@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+natalia",
+ "key_b": "p:andreamurgia",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "790f8561cbd5f89c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Couple Natalia & Andrea (Italy) against solo Andrea Murgia (Italy stated): same first name and country but no shared partner, event or distinctive name."
+ }
+}

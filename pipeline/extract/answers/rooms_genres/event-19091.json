@@ -1,43 +1,50 @@
 {
- "batch": "event-19091",
- "events": [
-  {
-   "event_id": 19091,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "– Kizomba"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "– Urbankiz"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeats",
-     "quote": "– Afrobeats"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "– Semba"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "– Tarraxo"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "– Konpa"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19091",
+  "events": [
+   {
+    "event_id": 19091,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "– Kizomba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "– Urbankiz"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeats",
+      "quote": "– Afrobeats"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "– Semba"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "– Tarraxo"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "– Konpa"
+     }
+    ]
+   }
+  ]
+ }
 }

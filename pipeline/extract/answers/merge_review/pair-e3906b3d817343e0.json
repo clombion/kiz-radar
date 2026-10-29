@@ -1,0 +1,13 @@
+{
+ "key_a": "p:charles@dance",
+ "key_b": "p:charlessemba",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "e3906b3d817343e0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Charles is a common first name; Charles Semba shares only the stated France country and the style/role evidence does not line up."
+ }
+}

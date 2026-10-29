@@ -1,0 +1,13 @@
+{
+ "key_a": "p:donaldwillson",
+ "key_b": "p:donaldwilson",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "41a9d24bb086526a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Donald Willson and Donald Wilson differ only in a spelling of a common surname, with no shared partner or stated country; the evidence does not settle it."
+ }
+}

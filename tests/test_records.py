@@ -2,10 +2,13 @@
 values."""
 
 import subprocess
+import typing
 
 import pytest
+from pydantic import BaseModel
 
-from pipeline import ROOT
+from pipeline import ROOT, records
+from pipeline.enums import Role
 from pipeline.records import CsvRow, number_text
 from tests.exports import committed
 
@@ -26,3 +29,52 @@ def test_a_csv_file_is_what_its_record_writes(record: type[CsvRow]) -> None:
     rows = record.read()
     record.write(rows)
     assert record.path().read_bytes() == (ROOT / record.FILE).read_bytes()
+
+
+def marked_fields(record: type[BaseModel], where: str = '') -> set[str]:
+    """The paths of a record type's Verbatim texts, through the records it holds."""
+    out: set[str] = set()
+    for name, info in record.model_fields.items():
+        here = f'{where}.{name}' if where else name
+        if records.verbatim(info):
+            out.add(here)
+        args: tuple[object, ...] = (info.annotation, *typing.get_args(info.annotation))
+        for a in (x for arg in args for x in (arg, *typing.get_args(arg))):
+            if isinstance(a, type) and issubclass(a, BaseModel):
+                out |= marked_fields(a, here)
+    return out
+
+
+def test_every_text_an_answer_copies_is_marked_verbatim() -> None:
+    """The checker looks for a marked text in the festival's words (check_output.found_in); a copied text left
+    unmarked would go unchecked, as genre_as_written and an artist's country and style once did."""
+    assert marked_fields(records.Extracted) == {
+        'artists.name_as_written',
+        'artists.style',
+        'artists.country',
+        'artists.source_line',
+        'features.quote',
+    }
+    assert marked_fields(records.RoomsGenres) == {
+        'party_rooms.quote',
+        'class_rooms.quote',
+        'rooms.name_as_written',
+        'rooms.quote',
+        'genres.genre_as_written',
+        'genres.quote',
+    }
+    assert marked_fields(records.Priced) == {'passes.label_quote', 'passes.tiers.quote', 'rule_quotes'}
+    # a first read's are checked each against its own text, its tickets' or the description's (read_problems)
+    assert marked_fields(records.FirstReadAnswer) == {'passes.label_quote', 'passes.tiers.date_quote', 'rule_quotes'}
+
+
+def test_copied_finds_each_marked_text_by_its_path() -> None:
+    artist = records.Artist(
+        name_as_written='DJ Ana', role=Role.DJ, style=None, country='(PT)', source_line='DJ Ana (PT)'
+    )
+    found = records.copied(records.Extracted(event_id=1, artists=(artist,), features=()))
+    assert found == [
+        ('artists[0].name_as_written', 'DJ Ana'),
+        ('artists[0].country', '(PT)'),
+        ('artists[0].source_line', 'DJ Ana (PT)'),
+    ]

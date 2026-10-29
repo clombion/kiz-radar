@@ -1,12 +1,19 @@
 {
- "batch": "event-18513",
- "events": [
-  {
-   "event_id": 18513,
-   "passes": [],
-   "rule_quotes": [
-    "Tickets purchased directly on-site will cost CHF 5.– more than the online price."
-   ]
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T18:01:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18513",
+  "events": [
+   {
+    "event_id": 18513,
+    "passes": [],
+    "rule_quotes": [
+     "Tickets purchased directly on-site will cost CHF 5.– more than the online price."
+    ]
+   }
+  ]
+ }
 }

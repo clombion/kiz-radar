@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jenny@elhadj+jenny",
+ "key_b": "p:jenny@jenny+jojo",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "87ec01582f20521a",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Elhadj & Jenny and Jojo & Jenny are couples with different partners and no shared event or date, so only the first name Jenny is shared."
+ }
+}

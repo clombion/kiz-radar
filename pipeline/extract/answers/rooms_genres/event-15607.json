@@ -1,19 +1,26 @@
 {
- "batch": "event-15607",
- "events": [
-  {
-   "event_id": 15607,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Big Luxury Dancefloor",
-     "kind": "party",
-     "genres": [],
-     "quote": "Big Luxury Dancefloor"
-    }
-   ],
-   "genres": []
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15607",
+  "events": [
+   {
+    "event_id": 15607,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Big Luxury Dancefloor",
+      "kind": "party",
+      "genres": [],
+      "quote": "Big Luxury Dancefloor"
+     }
+    ],
+    "genres": []
+   }
+  ]
+ }
 }

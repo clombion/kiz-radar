@@ -1,53 +1,60 @@
 {
- "batch": "event-17410",
- "events": [
-  {
-   "event_id": 17410,
-   "artists": [
-    {
-     "name_as_written": "Dilson Kizomba",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The trip is organised by Dilson Kizomba and his team, in collaboration with The American Schools of Angola. Dilson is a world-renowned dancer, teacher, and choreographer, as well as the leader and artistic director of the Kotas Que Bailam group. He has extensive experience bringing international guests to Angola for cultural trips."
-    },
-    {
-     "name_as_written": "Dilson Kizomba",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "The trip is organised by Dilson Kizomba and his team, in collaboration with The American Schools of Angola. Dilson is a world-renowned dancer, teacher, and choreographer, as well as the leader and artistic director of the Kotas Que Bailam group. He has extensive experience bringing international guests to Angola for cultural trips."
-    },
-    {
-     "name_as_written": "The American Schools of Angola",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The trip is organised by Dilson Kizomba and his team, in collaboration with The American Schools of Angola. Dilson is a world-renowned dancer, teacher, and choreographer, as well as the leader and artistic director of the Kotas Que Bailam group. He has extensive experience bringing international guests to Angola for cultural trips."
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "10-day hotel stay in a double room.",
-     "rationale": "The package explicitly includes a 10-day hotel stay."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board: breakfast, lunch, and dinner.",
-     "rationale": "The package includes full board meals."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Airport transfers to and from the hotel",
-     "rationale": "The package includes airport transfers to and from the hotel."
-    },
-    {
-     "feature": "workshops",
-     "quote": "All dance workshops and classes.",
-     "rationale": "The package includes all dance workshops and classes."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17410",
+  "events": [
+   {
+    "event_id": 17410,
+    "artists": [
+     {
+      "name_as_written": "Dilson Kizomba",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The trip is organised by Dilson Kizomba and his team, in collaboration with The American Schools of Angola. Dilson is a world-renowned dancer, teacher, and choreographer, as well as the leader and artistic director of the Kotas Que Bailam group. He has extensive experience bringing international guests to Angola for cultural trips."
+     },
+     {
+      "name_as_written": "Dilson Kizomba",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "The trip is organised by Dilson Kizomba and his team, in collaboration with The American Schools of Angola. Dilson is a world-renowned dancer, teacher, and choreographer, as well as the leader and artistic director of the Kotas Que Bailam group. He has extensive experience bringing international guests to Angola for cultural trips."
+     },
+     {
+      "name_as_written": "The American Schools of Angola",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The trip is organised by Dilson Kizomba and his team, in collaboration with The American Schools of Angola. Dilson is a world-renowned dancer, teacher, and choreographer, as well as the leader and artistic director of the Kotas Que Bailam group. He has extensive experience bringing international guests to Angola for cultural trips."
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "10-day hotel stay in a double room.",
+      "rationale": "The package explicitly includes a 10-day hotel stay."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Full board: breakfast, lunch, and dinner.",
+      "rationale": "The package includes full board meals."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Airport transfers to and from the hotel",
+      "rationale": "The package includes airport transfers to and from the hotel."
+     },
+     {
+      "feature": "workshops",
+      "quote": "All dance workshops and classes.",
+      "rationale": "The package includes all dance workshops and classes."
+     }
+    ]
+   }
+  ]
+ }
 }

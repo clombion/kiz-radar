@@ -1,0 +1,13 @@
+{
+ "key_a": "p:pedro@ana+pedro",
+ "key_b": "p:pedro@ines+pedro",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "508c77cd4733fdd9",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Only the first name Pedro and Portugal are shared, and the partners Ana and Ines differ, a common name."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tpeak@dj",
+ "key_b": "p:tpeak@dje+tpeak",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2a4a8c82d453eacf",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ T'Peak and the T'Peak & Djé teacher pair are in Gothenburg on 2027-01-14 and Copenhagen on 2026-05-15 with the same France flag."
+ }
+}

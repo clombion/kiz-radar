@@ -1,170 +1,177 @@
 {
- "batch": "event-19033",
- "events": [
-  {
-   "event_id": 19033,
-   "artists": [
-    {
-     "name_as_written": "Mikas Cabral",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌍 Mikas Cabral"
-    },
-    {
-     "name_as_written": "Ricardo Ferreira",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "Portugal",
-     "source_line": "🌍 Ricardo Ferreira (Portugal)"
-    },
-    {
-     "name_as_written": "Riikka Maria",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "Finland",
-     "source_line": "🌍 Riikka Maria (Finland)"
-    },
-    {
-     "name_as_written": "Helio Santos",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "Cape Verde",
-     "source_line": "🌍 Helio Santos (Cape Verde)"
-    },
-    {
-     "name_as_written": "Lucas, Exclusive",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "Portugal",
-     "source_line": "🌍 Lucas, Exclusive (Portugal)"
-    },
-    {
-     "name_as_written": "Ebe Nezer",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "Norway",
-     "source_line": "🌍 Ebe Nezer (Norway)"
-    },
-    {
-     "name_as_written": "Valdemiro Machado",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "Angola",
-     "source_line": "🌍 Valdemiro Machado (Angola)"
-    },
-    {
-     "name_as_written": "Skate Stome",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🌍 Skate Stome (Paris)"
-    },
-    {
-     "name_as_written": "Romeo Kuolo",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": "Swe",
-     "source_line": "🌍 Romeo Kuolo (Swe)"
-    },
-    {
-     "name_as_written": "Mårten Angner",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": "Swe",
-     "source_line": "🌍 Mårten Angner (Swe)"
-    },
-    {
-     "name_as_written": "Christina & Cédric",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🌍 Christina & Cédric (Bergen)"
-    },
-    {
-     "name_as_written": "Uliana & Daniel",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": "Ukr & Nor",
-     "source_line": "🌍 Uliana & Daniel (Ukr & Nor)"
-    },
-    {
-     "name_as_written": "Kyioshi",
-     "role": "teacher",
-     "style": "URBAN KIZ",
-     "country": "Norway",
-     "source_line": "🌍 Kyioshi (Norway)"
-    },
-    {
-     "name_as_written": "Taxi Dancers from Stockholm",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Taxi Dancers from Stockholm"
-    },
-    {
-     "name_as_written": "Taxi Dancers from Bergen",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Taxi Dancers from Bergen"
-    },
-    {
-     "name_as_written": "Mikas Cabral",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "MIKAS CABRAL"
-    },
-    {
-     "name_as_written": "Dance In Norway",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Dance In Norway"
-    },
-    {
-     "name_as_written": "Ricardo Ferreira",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Ricardo Ferreira"
-    },
-    {
-     "name_as_written": "Anneli Erichsen",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Anneli Erichsen"
-    }
-   ],
-   "features": [
-    {
-     "feature": "live_music",
-     "quote": "LIVE MUSIC, MIKAS CABRAL",
-     "rationale": "The description advertises live music with Mikas Cabral performing."
-    },
-    {
-     "feature": "workshops",
-     "quote": "workshop Kizomba",
-     "rationale": "The party schedule lists dance workshops in Kizomba and Urban Kiz before the parties."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Taxi Dancers from Stockholm",
-     "rationale": "Taxi dancers from Stockholm and Bergen are listed as present at the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "22.Nov Sunday SOCIAL",
-     "rationale": "A daytime Sunday social is scheduled from 15:00 to 18:00 with DJs."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Djs 2 rooms",
-     "rationale": "The parties have DJs in two rooms, meaning more than one dance floor."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19033",
+  "events": [
+   {
+    "event_id": 19033,
+    "artists": [
+     {
+      "name_as_written": "Mikas Cabral",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌍 Mikas Cabral"
+     },
+     {
+      "name_as_written": "Ricardo Ferreira",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "Portugal",
+      "source_line": "🌍 Ricardo Ferreira (Portugal)"
+     },
+     {
+      "name_as_written": "Riikka Maria",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "Finland",
+      "source_line": "🌍 Riikka Maria (Finland)"
+     },
+     {
+      "name_as_written": "Helio Santos",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "Cape Verde",
+      "source_line": "🌍 Helio Santos (Cape Verde)"
+     },
+     {
+      "name_as_written": "Lucas, Exclusive",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "Portugal",
+      "source_line": "🌍 Lucas, Exclusive (Portugal)"
+     },
+     {
+      "name_as_written": "Ebe Nezer",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "Norway",
+      "source_line": "🌍 Ebe Nezer (Norway)"
+     },
+     {
+      "name_as_written": "Valdemiro Machado",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "Angola",
+      "source_line": "🌍 Valdemiro Machado (Angola)"
+     },
+     {
+      "name_as_written": "Skate Stome",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🌍 Skate Stome (Paris)"
+     },
+     {
+      "name_as_written": "Romeo Kuolo",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": "Swe",
+      "source_line": "🌍 Romeo Kuolo (Swe)"
+     },
+     {
+      "name_as_written": "Mårten Angner",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": "Swe",
+      "source_line": "🌍 Mårten Angner (Swe)"
+     },
+     {
+      "name_as_written": "Christina & Cédric",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": null,
+      "source_line": "🌍 Christina & Cédric (Bergen)"
+     },
+     {
+      "name_as_written": "Uliana & Daniel",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": "Ukr & Nor",
+      "source_line": "🌍 Uliana & Daniel (Ukr & Nor)"
+     },
+     {
+      "name_as_written": "Kyioshi",
+      "role": "teacher",
+      "style": "URBAN KIZ",
+      "country": "Norway",
+      "source_line": "🌍 Kyioshi (Norway)"
+     },
+     {
+      "name_as_written": "Taxi Dancers from Stockholm",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Taxi Dancers from Stockholm"
+     },
+     {
+      "name_as_written": "Taxi Dancers from Bergen",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Taxi Dancers from Bergen"
+     },
+     {
+      "name_as_written": "Mikas Cabral",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "MIKAS CABRAL"
+     },
+     {
+      "name_as_written": "Dance In Norway",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Dance In Norway"
+     },
+     {
+      "name_as_written": "Ricardo Ferreira",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Ricardo Ferreira"
+     },
+     {
+      "name_as_written": "Anneli Erichsen",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Anneli Erichsen"
+     }
+    ],
+    "features": [
+     {
+      "feature": "live_music",
+      "quote": "LIVE MUSIC, MIKAS CABRAL",
+      "rationale": "The description advertises live music with Mikas Cabral performing."
+     },
+     {
+      "feature": "workshops",
+      "quote": "workshop Kizomba",
+      "rationale": "The party schedule lists dance workshops in Kizomba and Urban Kiz before the parties."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Taxi Dancers from Stockholm",
+      "rationale": "Taxi dancers from Stockholm and Bergen are listed as present at the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "22.Nov Sunday SOCIAL",
+      "rationale": "A daytime Sunday social is scheduled from 15:00 to 18:00 with DJs."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Djs 2 rooms",
+      "rationale": "The parties have DJs in two rooms, meaning more than one dance floor."
+     }
+    ]
+   }
+  ]
+ }
 }

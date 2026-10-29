@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tecas@dj",
+ "key_b": "p:tecas@tasha+tecas",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d328820b04b86df1",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Tecas and Tecas & Tasha teach or play at the same Amsterdam event on the same date, with the same stated country (France), which fits one person in two roles."
+ }
+}

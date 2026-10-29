@@ -1,0 +1,13 @@
+{
+ "key_a": "p:adelaide@dance",
+ "key_b": "p:adelaidecarvalho",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "61c8a81f204b1654",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Adelaide and Adelaide Carvalho share event, date, role and Portugal, but their listed styles conflict (Salsa/Bachata vs LadyStyling/AfroHouse)."
+ }
+}

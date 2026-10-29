@@ -1,0 +1,13 @@
+{
+ "key_a": "p:klaudia@jailson+klaudia",
+ "key_b": "p:klaudia@klaudia+mateusz",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "645d4210362351f5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Klaudia & Jailson and Klaudia & Mateusz have different partners, and the shared first name Klaudia and Poland do not settle it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:katalin@dance",
+ "key_b": "p:katalin@katalin+mathias",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "121ae20e8316affa",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Solo KATALIN at Crystal Kizomba Congress Vienna 2026 and Mathias & Katalin at the same congress in 2027 share name and city, but the solo entry could belong to either partnered couple."
+ }
+}

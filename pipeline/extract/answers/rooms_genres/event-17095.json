@@ -1,69 +1,76 @@
 {
- "batch": "event-17095",
- "events": [
-  {
-   "event_id": 17095,
-   "party_rooms": {
-    "count": 4,
-    "quote": "At 4 unique Outdoor stages:"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Kizomba – in Ralitsa Aquaclub"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17095",
+  "events": [
+   {
+    "event_id": 17095,
+    "party_rooms": {
+     "count": 4,
+     "quote": "At 4 unique Outdoor stages:"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "Salsa – at the pool of Maritim Hotel Paradise Blue"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "Bachata – On the Beach"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "zouk"
-     ],
-     "quote": "Zouk – it the Aquapark"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba – in Ralitsa Aquaclub"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa – at the pool of Maritim Hotel Paradise Blue"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata – On the Beach"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Zouk – it the Aquapark"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba – in Ralitsa Aquaclub"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "Salsa – at the pool of Maritim Hotel Paradise Blue"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "Bachata – On the Beach"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "zouk"
+      ],
+      "quote": "Zouk – it the Aquapark"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba – in Ralitsa Aquaclub"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa – at the pool of Maritim Hotel Paradise Blue"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata – On the Beach"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Zouk – it the Aquapark"
+     }
+    ]
+   }
+  ]
+ }
 }

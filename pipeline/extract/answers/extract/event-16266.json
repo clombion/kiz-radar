@@ -1,45 +1,52 @@
 {
- "batch": "event-16266",
- "events": [
-  {
-   "event_id": 16266,
-   "artists": [
-    {
-     "name_as_written": "Miro Kikola",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇬🇧",
-     "source_line": "⭐️ Miro Kikola (🇦🇴🇬🇧)"
-    },
-    {
-     "name_as_written": "Bakongo",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇵🇹",
-     "source_line": "⭐️ Bakongo (🇦🇴🇵🇹)"
-    },
-    {
-     "name_as_written": "Beleza",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "⭐️ Beleza (🇦🇴)"
-    },
-    {
-     "name_as_written": "Cayolla",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "⭐️ Cayolla (🇵🇹)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotel Ibis Sintra",
-     "rationale": "The description names a hotel under the accommodation heading, 10 minutes from the venue, without saying it is included in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16266",
+  "events": [
+   {
+    "event_id": 16266,
+    "artists": [
+     {
+      "name_as_written": "Miro Kikola",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇬🇧",
+      "source_line": "⭐️ Miro Kikola (🇦🇴🇬🇧)"
+     },
+     {
+      "name_as_written": "Bakongo",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇵🇹",
+      "source_line": "⭐️ Bakongo (🇦🇴🇵🇹)"
+     },
+     {
+      "name_as_written": "Beleza",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "⭐️ Beleza (🇦🇴)"
+     },
+     {
+      "name_as_written": "Cayolla",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "⭐️ Cayolla (🇵🇹)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotel Ibis Sintra",
+      "rationale": "The description names a hotel under the accommodation heading, 10 minutes from the venue, without saying it is included in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

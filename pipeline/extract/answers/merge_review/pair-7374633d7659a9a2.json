@@ -1,0 +1,13 @@
+{
+ "key_a": "p:franck@dj",
+ "key_b": "p:franckm",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "7374633d7659a9a2",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Franck and DJ Franck M are both DJs with Germany stated on both sides, and the initial is the only difference in the name."
+ }
+}

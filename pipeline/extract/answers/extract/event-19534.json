@@ -1,34 +1,41 @@
 {
- "batch": "event-19534",
- "events": [
-  {
-   "event_id": 19534,
-   "artists": [
-    {
-     "name_as_written": "Karibean Trip Kiz",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "From May 1st to 9th, 2027, Karibean Trip Kiz takes you to Bali for a new experience blending travel, discovery, escapism, and dance."
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "Accommodation",
-     "rationale": "The trip package under 'THE TRIP INCLUDES' lists accommodation as included."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Breakfast",
-     "rationale": "Breakfast is listed under 'THE TRIP INCLUDES', so meals are included in the package."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Transfers",
-     "rationale": "Transfers are listed as part of what the trip includes."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19534",
+  "events": [
+   {
+    "event_id": 19534,
+    "artists": [
+     {
+      "name_as_written": "Karibean Trip Kiz",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "From May 1st to 9th, 2027, Karibean Trip Kiz takes you to Bali for a new experience blending travel, discovery, escapism, and dance."
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "Accommodation",
+      "rationale": "The trip package under 'THE TRIP INCLUDES' lists accommodation as included."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Breakfast",
+      "rationale": "Breakfast is listed under 'THE TRIP INCLUDES', so meals are included in the package."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Transfers",
+      "rationale": "Transfers are listed as part of what the trip includes."
+     }
+    ]
+   }
+  ]
+ }
 }

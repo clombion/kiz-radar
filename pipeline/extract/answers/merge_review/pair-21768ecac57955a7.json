@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alessandra@alessandra+marc",
+ "key_b": "p:alessandrasillano",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "21768ecac57955a7",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Marc & Alessandra (Italy) and Alessandra Sillano (Italy) share the first name and country, but the A side has no style and the B side has no partner to compare."
+ }
+}

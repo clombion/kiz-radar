@@ -1,122 +1,129 @@
 {
- "batch": "event-16167",
- "events": [
-  {
-   "event_id": 16167,
-   "artists": [
-    {
-     "name_as_written": "YACE & CAMILLE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☄️YACE & CAMILLE (Geneva)"
-    },
-    {
-     "name_as_written": "AXEL & LUCY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☄️AXEL & LUCY (Lyon)"
-    },
-    {
-     "name_as_written": "AMI & JULIEN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☄️AMI & JULIEN (Paris)"
-    },
-    {
-     "name_as_written": "DJ PUMBA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔊 DJ PUMBA"
-    },
-    {
-     "name_as_written": "DJ WILLY G",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔊 DJ WILLY G"
-    },
-    {
-     "name_as_written": "DJ DIABLO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔊 DJ DIABLO"
-    },
-    {
-     "name_as_written": "DJ MTEE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔊 DJ MTEE"
-    },
-    {
-     "name_as_written": "DEEJAY ELSON",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔊 DEEJAY ELSON"
-    },
-    {
-     "name_as_written": "DJ MATT KIZOMBA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔊DJ MATT KIZOMBA"
-    },
-    {
-     "name_as_written": "KITOKO Dance",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📷📹 Photographer/Videographer: KITOKO Dance"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "8 hours of workshops",
-     "rationale": "The line states that there are 8 hours of workshops."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Independent Taxis",
-     "rationale": "The line lists Independent Taxis, indicating taxi dancers are present."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "1 FREE outdoor pre-party",
-     "rationale": "A free outdoor pre-party is announced before the main evenings."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "PARTNER HOTEL:",
-     "rationale": "A partner hotel is named, with a 10% discount code, and accommodation is not part of the pass."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "2 Themes for 2 evenings",
-     "rationale": "Two evenings have themes, which are themed parties."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODES",
-     "rationale": "The description has a dress codes section listing codes for each night."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Saturday social event from 4 PM to 8 PM",
-     "rationale": "A daytime social event runs from 4 PM to 8 PM on Saturday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Social rooms at the Academy",
-     "rationale": "Two social rooms at the venue means more than one dance room."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16167",
+  "events": [
+   {
+    "event_id": 16167,
+    "artists": [
+     {
+      "name_as_written": "YACE & CAMILLE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☄️YACE & CAMILLE (Geneva)"
+     },
+     {
+      "name_as_written": "AXEL & LUCY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☄️AXEL & LUCY (Lyon)"
+     },
+     {
+      "name_as_written": "AMI & JULIEN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☄️AMI & JULIEN (Paris)"
+     },
+     {
+      "name_as_written": "DJ PUMBA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔊 DJ PUMBA"
+     },
+     {
+      "name_as_written": "DJ WILLY G",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔊 DJ WILLY G"
+     },
+     {
+      "name_as_written": "DJ DIABLO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔊 DJ DIABLO"
+     },
+     {
+      "name_as_written": "DJ MTEE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔊 DJ MTEE"
+     },
+     {
+      "name_as_written": "DEEJAY ELSON",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔊 DEEJAY ELSON"
+     },
+     {
+      "name_as_written": "DJ MATT KIZOMBA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔊DJ MATT KIZOMBA"
+     },
+     {
+      "name_as_written": "KITOKO Dance",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📷📹 Photographer/Videographer: KITOKO Dance"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "8 hours of workshops",
+      "rationale": "The line states that there are 8 hours of workshops."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Independent Taxis",
+      "rationale": "The line lists Independent Taxis, indicating taxi dancers are present."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "1 FREE outdoor pre-party",
+      "rationale": "A free outdoor pre-party is announced before the main evenings."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "PARTNER HOTEL:",
+      "rationale": "A partner hotel is named, with a 10% discount code, and accommodation is not part of the pass."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "2 Themes for 2 evenings",
+      "rationale": "Two evenings have themes, which are themed parties."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESS CODES",
+      "rationale": "The description has a dress codes section listing codes for each night."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Saturday social event from 4 PM to 8 PM",
+      "rationale": "A daytime social event runs from 4 PM to 8 PM on Saturday."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Social rooms at the Academy",
+      "rationale": "Two social rooms at the venue means more than one dance room."
+     }
+    ]
+   }
+  ]
+ }
 }

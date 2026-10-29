@@ -1,39 +1,46 @@
 {
- "batch": "event-16364",
- "events": [
-  {
-   "event_id": 16364,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 parties until dawn in 3 different rooms"
-   },
-   "class_rooms": {
-    "count": 3,
-    "quote": "Workshops (3 Rooms)"
-   },
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "16 DOMINICAN / MODERN / SENSUAL / FUSION BACHATA ARTISTS"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16364",
+  "events": [
+   {
+    "event_id": 16364,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 parties until dawn in 3 different rooms"
     },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "14 CUBAN / PUERTO SALSA ARTISTS"
+    "class_rooms": {
+     "count": 3,
+     "quote": "Workshops (3 Rooms)"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "12 KIZOMBA / SEMBA ARTISTS"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "12 KIZOMBA / SEMBA ARTISTS"
-    }
-   ]
-  }
- ]
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "16 DOMINICAN / MODERN / SENSUAL / FUSION BACHATA ARTISTS"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "14 CUBAN / PUERTO SALSA ARTISTS"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "12 KIZOMBA / SEMBA ARTISTS"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "12 KIZOMBA / SEMBA ARTISTS"
+     }
+    ]
+   }
+  ]
+ }
 }

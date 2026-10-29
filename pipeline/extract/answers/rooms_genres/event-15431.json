@@ -1,67 +1,74 @@
 {
- "batch": "event-15431",
- "events": [
-  {
-   "event_id": 15431,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 Dancefloors and 2 Atmospheres"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Golden Wave I",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "urbankiz",
-      "tarraxo"
-     ],
-     "quote": "Golden Wave I – 494 m2 (Workshops, Social, Party and Showcase)"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15431",
+  "events": [
+   {
+    "event_id": 15431,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 Dancefloors and 2 Atmospheres"
     },
-    {
-     "name_as_written": "Golden Wave II",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "kompa"
-     ],
-     "quote": "Golden Wave II – 222 m2 (Workshops and Party)"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba and its vibrant family of dance styles"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Semba, Urban Kiz, Kizomba Fusion"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Golden Wave I – Kizomba, Urban Kiz, Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Golden Wave I – Kizomba, Urban Kiz, Tarraxo"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Golden Wave II – Authentic Kizomba, Semba, Kompa"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Tarraxo or Afro"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Golden Wave I",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "urbankiz",
+       "tarraxo"
+      ],
+      "quote": "Golden Wave I – 494 m2 (Workshops, Social, Party and Showcase)"
+     },
+     {
+      "name_as_written": "Golden Wave II",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "kompa"
+      ],
+      "quote": "Golden Wave II – 222 m2 (Workshops and Party)"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba and its vibrant family of dance styles"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Semba, Urban Kiz, Kizomba Fusion"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Golden Wave I – Kizomba, Urban Kiz, Tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Golden Wave I – Kizomba, Urban Kiz, Tarraxo"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Golden Wave II – Authentic Kizomba, Semba, Kompa"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Tarraxo or Afro"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:eddy@dance",
+ "key_b": "p:eddy@eddy+rita",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "b626743e001f334f",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Solo EDDY teaching at the Vienna event of 2026-03-20 is the same name as DJ EDDY there, and the Eddy & Rita couples share events with that DJ."
+ }
+}

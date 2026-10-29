@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tpeak@dance",
+ "key_b": "p:tpeak@dje+tpeak",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "bfe23133f1e6255e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "T'Peak as teacher in Gothenburg on 2026-01-22 and 2027-01-14 matches the T'Peak & Djé entries in the same city on the same date."
+ }
+}

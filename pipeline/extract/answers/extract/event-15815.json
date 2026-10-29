@@ -1,438 +1,445 @@
 {
- "batch": "event-15815",
- "events": [
-  {
-   "event_id": 15815,
-   "artists": [
-    {
-     "name_as_written": "DJ SHARK",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ SHARK"
-    },
-    {
-     "name_as_written": "DJ LUCAS",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ LUCAS"
-    },
-    {
-     "name_as_written": "DJ PINGUSSO",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ PINGUSSO"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ NICE LIFE"
-    },
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ NAO"
-    },
-    {
-     "name_as_written": "DJ LISA ROSE",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ LISA ROSE"
-    },
-    {
-     "name_as_written": "DJ NEO",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ NEO"
-    },
-    {
-     "name_as_written": "DJ STEFANIO LIMA",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ STEFANIO LIMA"
-    },
-    {
-     "name_as_written": "DJ DANI FERNANDES",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ DANI FERNANDES"
-    },
-    {
-     "name_as_written": "DJ HEGZA",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ HEGZA"
-    },
-    {
-     "name_as_written": "DJ OCEANO",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ OCEANO"
-    },
-    {
-     "name_as_written": "DJ SABURA",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🎧 DJ SABURA"
-    },
-    {
-     "name_as_written": "F. NELSON & MORGANE",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 F. NELSON & MORGANE"
-    },
-    {
-     "name_as_written": "JOJO & JENNY",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 JOJO & JENNY"
-    },
-    {
-     "name_as_written": "TONY PIRATA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 TONY PIRATA"
-    },
-    {
-     "name_as_written": "JP & STEPHY",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 JP & STEPHY"
-    },
-    {
-     "name_as_written": "DWE & GABI",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 DWE & GABI"
-    },
-    {
-     "name_as_written": "JESUS & ANNI",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 JESUS & ANNI"
-    },
-    {
-     "name_as_written": "AUREA & TRESOR",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 AUREA & TRESOR"
-    },
-    {
-     "name_as_written": "TONY & CARLA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 TONY & CARLA"
-    },
-    {
-     "name_as_written": "SAID STREET",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 SAID STREET"
-    },
-    {
-     "name_as_written": "AKRAM & SARA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 AKRAM & SARA"
-    },
-    {
-     "name_as_written": "ENAH LEBON",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 ENAH LEBON"
-    },
-    {
-     "name_as_written": "JACK & SARA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 JACK & SARA"
-    },
-    {
-     "name_as_written": "MIGUEL & MONICA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 MIGUEL & MONICA"
-    },
-    {
-     "name_as_written": "EDDY VENTS",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 EDDY VENTS"
-    },
-    {
-     "name_as_written": "KECO & MONICA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 KECO & MONICA"
-    },
-    {
-     "name_as_written": "LUIS & KAREN",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 LUIS & KAREN"
-    },
-    {
-     "name_as_written": "BONI & VANE",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 BONI & VANE"
-    },
-    {
-     "name_as_written": "BONGA & ALINE",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 BONGA & ALINE"
-    },
-    {
-     "name_as_written": "SPENCER",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 SPENCER"
-    },
-    {
-     "name_as_written": "DR KIZOMBA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 DR KIZOMBA"
-    },
-    {
-     "name_as_written": "FANIO ARAUJO",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 FANIO ARAUJO"
-    },
-    {
-     "name_as_written": "CARLOS TABANKA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 CARLOS TABANKA"
-    },
-    {
-     "name_as_written": "NUNO & CATIA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 NUNO & CATIA"
-    },
-    {
-     "name_as_written": "JAMAICA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 JAMAICA"
-    },
-    {
-     "name_as_written": "EL CEPRINO",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 EL CEPRINO"
-    },
-    {
-     "name_as_written": "PABLO & ELODIE",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 PABLO & ELODIE"
-    },
-    {
-     "name_as_written": "JOANA MACHADO",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 JOANA MACHADO"
-    },
-    {
-     "name_as_written": "PEDRO & KELLY",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "🌟 PEDRO & KELLY"
-    },
-    {
-     "name_as_written": "GABY & ESTEFY",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 GABY & ESTEFY"
-    },
-    {
-     "name_as_written": "ALEX JT & ADRIANA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 ALEX JT & ADRIANA"
-    },
-    {
-     "name_as_written": "WILLIAM & LAURA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 WILLIAM & LAURA"
-    },
-    {
-     "name_as_written": "SERGIO OSORIO",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 SERGIO OSORIO"
-    },
-    {
-     "name_as_written": "PABLO & LUCHI",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 PABLO & LUCHI"
-    },
-    {
-     "name_as_written": "JUNIOR & ALICIA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 JUNIOR & ALICIA"
-    },
-    {
-     "name_as_written": "SERGIO & KATINA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 SERGIO & KATINA"
-    },
-    {
-     "name_as_written": "JUAN & MARTA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 JUAN & MARTA"
-    },
-    {
-     "name_as_written": "BERNARDO & JOANA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 BERNARDO & JOANA"
-    },
-    {
-     "name_as_written": "LUNA & VANESKA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 LUNA & VANESKA"
-    },
-    {
-     "name_as_written": "JORGE ESTEFI",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 JORGE ESTEFI"
-    },
-    {
-     "name_as_written": "ALBERTO & MARTA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 ALBERTO & MARTA"
-    },
-    {
-     "name_as_written": "PISCO & CAROLINA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 PISCO & CAROLINA"
-    },
-    {
-     "name_as_written": "GUSTAVO SILVA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 GUSTAVO SILVA"
-    },
-    {
-     "name_as_written": "LUZ G.",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🌟 LUZ G."
-    },
-    {
-     "name_as_written": "DJ TEVES",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🎧 DJ TEVES"
-    },
-    {
-     "name_as_written": "DJ ROBUSTO",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🎧 DJ ROBUSTO"
-    },
-    {
-     "name_as_written": "DJ SERGIO OSORIO",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "🎧 DJ SERGIO OSORIO"
-    }
-   ],
-   "features": [
-    {
-     "feature": "taxi_dancers",
-     "quote": "recognized teams of taxi dancers from different countries",
-     "rationale": "The description says recognized teams of taxi dancers from different countries will attend."
-    },
-    {
-     "feature": "workshops",
-     "quote": "with the best national and international teachers and DJs",
-     "rationale": "The festival features teachers giving classes, so dance classes are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "𝑺𝑶𝑪𝑰𝑨𝑳 𝑹𝑶𝑶𝑴",
-     "rationale": "The description lists several social rooms (Lisboa, Caribbean) with different dance styles."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "𝘼𝙇𝙇 𝙄𝙉 𝙊𝙉𝙀",
-     "rationale": "The event is held in the hotel where the accommodation is offered, so parties and rooms are in the same venue."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15815",
+  "events": [
+   {
+    "event_id": 15815,
+    "artists": [
+     {
+      "name_as_written": "DJ SHARK",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ SHARK"
+     },
+     {
+      "name_as_written": "DJ LUCAS",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ LUCAS"
+     },
+     {
+      "name_as_written": "DJ PINGUSSO",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ PINGUSSO"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ NICE LIFE"
+     },
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ NAO"
+     },
+     {
+      "name_as_written": "DJ LISA ROSE",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ LISA ROSE"
+     },
+     {
+      "name_as_written": "DJ NEO",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ NEO"
+     },
+     {
+      "name_as_written": "DJ STEFANIO LIMA",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ STEFANIO LIMA"
+     },
+     {
+      "name_as_written": "DJ DANI FERNANDES",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ DANI FERNANDES"
+     },
+     {
+      "name_as_written": "DJ HEGZA",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ HEGZA"
+     },
+     {
+      "name_as_written": "DJ OCEANO",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ OCEANO"
+     },
+     {
+      "name_as_written": "DJ SABURA",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🎧 DJ SABURA"
+     },
+     {
+      "name_as_written": "F. NELSON & MORGANE",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 F. NELSON & MORGANE"
+     },
+     {
+      "name_as_written": "JOJO & JENNY",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 JOJO & JENNY"
+     },
+     {
+      "name_as_written": "TONY PIRATA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 TONY PIRATA"
+     },
+     {
+      "name_as_written": "JP & STEPHY",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 JP & STEPHY"
+     },
+     {
+      "name_as_written": "DWE & GABI",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 DWE & GABI"
+     },
+     {
+      "name_as_written": "JESUS & ANNI",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 JESUS & ANNI"
+     },
+     {
+      "name_as_written": "AUREA & TRESOR",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 AUREA & TRESOR"
+     },
+     {
+      "name_as_written": "TONY & CARLA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 TONY & CARLA"
+     },
+     {
+      "name_as_written": "SAID STREET",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 SAID STREET"
+     },
+     {
+      "name_as_written": "AKRAM & SARA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 AKRAM & SARA"
+     },
+     {
+      "name_as_written": "ENAH LEBON",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 ENAH LEBON"
+     },
+     {
+      "name_as_written": "JACK & SARA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 JACK & SARA"
+     },
+     {
+      "name_as_written": "MIGUEL & MONICA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 MIGUEL & MONICA"
+     },
+     {
+      "name_as_written": "EDDY VENTS",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 EDDY VENTS"
+     },
+     {
+      "name_as_written": "KECO & MONICA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 KECO & MONICA"
+     },
+     {
+      "name_as_written": "LUIS & KAREN",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 LUIS & KAREN"
+     },
+     {
+      "name_as_written": "BONI & VANE",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 BONI & VANE"
+     },
+     {
+      "name_as_written": "BONGA & ALINE",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 BONGA & ALINE"
+     },
+     {
+      "name_as_written": "SPENCER",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 SPENCER"
+     },
+     {
+      "name_as_written": "DR KIZOMBA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 DR KIZOMBA"
+     },
+     {
+      "name_as_written": "FANIO ARAUJO",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 FANIO ARAUJO"
+     },
+     {
+      "name_as_written": "CARLOS TABANKA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 CARLOS TABANKA"
+     },
+     {
+      "name_as_written": "NUNO & CATIA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 NUNO & CATIA"
+     },
+     {
+      "name_as_written": "JAMAICA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 JAMAICA"
+     },
+     {
+      "name_as_written": "EL CEPRINO",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 EL CEPRINO"
+     },
+     {
+      "name_as_written": "PABLO & ELODIE",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 PABLO & ELODIE"
+     },
+     {
+      "name_as_written": "JOANA MACHADO",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 JOANA MACHADO"
+     },
+     {
+      "name_as_written": "PEDRO & KELLY",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🌟 PEDRO & KELLY"
+     },
+     {
+      "name_as_written": "GABY & ESTEFY",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 GABY & ESTEFY"
+     },
+     {
+      "name_as_written": "ALEX JT & ADRIANA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 ALEX JT & ADRIANA"
+     },
+     {
+      "name_as_written": "WILLIAM & LAURA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 WILLIAM & LAURA"
+     },
+     {
+      "name_as_written": "SERGIO OSORIO",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 SERGIO OSORIO"
+     },
+     {
+      "name_as_written": "PABLO & LUCHI",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 PABLO & LUCHI"
+     },
+     {
+      "name_as_written": "JUNIOR & ALICIA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 JUNIOR & ALICIA"
+     },
+     {
+      "name_as_written": "SERGIO & KATINA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 SERGIO & KATINA"
+     },
+     {
+      "name_as_written": "JUAN & MARTA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 JUAN & MARTA"
+     },
+     {
+      "name_as_written": "BERNARDO & JOANA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 BERNARDO & JOANA"
+     },
+     {
+      "name_as_written": "LUNA & VANESKA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 LUNA & VANESKA"
+     },
+     {
+      "name_as_written": "JORGE ESTEFI",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 JORGE ESTEFI"
+     },
+     {
+      "name_as_written": "ALBERTO & MARTA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 ALBERTO & MARTA"
+     },
+     {
+      "name_as_written": "PISCO & CAROLINA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 PISCO & CAROLINA"
+     },
+     {
+      "name_as_written": "GUSTAVO SILVA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 GUSTAVO SILVA"
+     },
+     {
+      "name_as_written": "LUZ G.",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌟 LUZ G."
+     },
+     {
+      "name_as_written": "DJ TEVES",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🎧 DJ TEVES"
+     },
+     {
+      "name_as_written": "DJ ROBUSTO",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🎧 DJ ROBUSTO"
+     },
+     {
+      "name_as_written": "DJ SERGIO OSORIO",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🎧 DJ SERGIO OSORIO"
+     }
+    ],
+    "features": [
+     {
+      "feature": "taxi_dancers",
+      "quote": "recognized teams of taxi dancers from different countries",
+      "rationale": "The description says recognized teams of taxi dancers from different countries will attend."
+     },
+     {
+      "feature": "workshops",
+      "quote": "with the best national and international teachers and DJs",
+      "rationale": "The festival features teachers giving classes, so dance classes are part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "𝑺𝑶𝑪𝑰𝑨𝑳 𝑹𝑶𝑶𝑴",
+      "rationale": "The description lists several social rooms (Lisboa, Caribbean) with different dance styles."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "𝘼𝙇𝙇 𝙄𝙉 𝙊𝙉𝙀",
+      "rationale": "The event is held in the hotel where the accommodation is offered, so parties and rooms are in the same venue."
+     }
+    ]
+   }
+  ]
+ }
 }

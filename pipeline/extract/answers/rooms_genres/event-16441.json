@@ -1,48 +1,55 @@
 {
- "batch": "event-16441",
- "events": [
-  {
-   "event_id": 16441,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Multiple styles:\nKizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Semba • Konpa • Urban Kiz"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Konpa • Urban Kiz • Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Urban Kiz • Tarraxo • Ghetto Zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Tarraxo • Ghetto Zouk • Afro"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Ghetto Zouk • Afro"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16441",
+  "events": [
+   {
+    "event_id": 16441,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Multiple styles:\nKizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Semba • Konpa • Urban Kiz"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Konpa • Urban Kiz • Tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Urban Kiz • Tarraxo • Ghetto Zouk"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "Tarraxo • Ghetto Zouk • Afro"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Ghetto Zouk • Afro"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -2,9 +2,9 @@
 
 Every step opens the export itself, through opened (python -m pipeline.export prints its path). The derived tables are
 rebuilt by the step that owns them each time it runs, so their shape is the code's. The rest are kept: the source's
-own tables (scrape's) and the history no rebuild can recreate (artist_ids, prompts, pipeline_steps, table_docs,
-pending_extraction). Their shape changes by numbered migrations, applied once each, in order, to the export as the
-repository holds it; the database's user_version is how many it has had. A step that writes the export opens it
+own tables (scrape's) and the history no rebuild can recreate (artist_ids, prompts, pipeline_steps, table_docs).
+Their shape changes by numbered migrations, applied once each, in order, to the export as the repository holds it;
+the database's user_version is how many it has had. A step that writes the export opens it
 migrated (opened('rw')); a step that only reads it refuses an export of another version, which a writing step has not
 migrated yet, or which a newer version of the code wrote.
 """
@@ -207,6 +207,10 @@ insert into source_ids (source, source_id, event_id) select 'kizomba-world', id,
     ),
     # 6: no page_fetched: a page that gave no answer leaves its event as it was (scrape), so every row's was fetched
     'alter table events drop column page_fetched;',
+    # 7: no pending_extraction: an answer is stale when the message it answered is no longer the one the festival
+    # would be asked with (pipeline/extract/answers.py state), which the extraction steps find themselves
+    """drop table pending_extraction;
+    delete from table_docs where name = 'pending_extraction';""",
 )
 
 

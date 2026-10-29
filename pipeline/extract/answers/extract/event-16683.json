@@ -1,102 +1,109 @@
 {
- "batch": "event-16683",
- "events": [
-  {
-   "event_id": 16683,
-   "artists": [
-    {
-     "name_as_written": "DJ Pankadas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 DJ Pankadas on the decks"
-    },
-    {
-     "name_as_written": "DJ Valet",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 DJ Valet on the decks"
-    },
-    {
-     "name_as_written": "Chris Py & Laly",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Chris Py & Laly – Kizomba – CLK Dance School"
-    },
-    {
-     "name_as_written": "Élodie Catena & Fransoa",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Élodie Catena & Fransoa – Kizomba – Latica Dance School"
-    },
-    {
-     "name_as_written": "Franck & Sandra",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Franck & Sandra – Kizomba – CLK Dance School"
-    },
-    {
-     "name_as_written": "Amadou",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Amadou – Kizomba – Bordeaux"
-    },
-    {
-     "name_as_written": "Fabien",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Fabien – Kizomba – Toulon"
-    },
-    {
-     "name_as_written": "Pere",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Pere – Bachata – GDS Dance School"
-    },
-    {
-     "name_as_written": "Steeve Bakoula",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Steeve Bakoula – Bachata – Sbk06 School"
-    },
-    {
-     "name_as_written": "Bianka",
-     "role": "teacher",
-     "style": "Lady Styling Bachata",
-     "country": null,
-     "source_line": "Bianka – Lady Styling Bachata"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Dance classes",
-     "rationale": "The program lists dance classes as part of the event."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool party",
-     "rationale": "The program explicitly lists a pool party."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board included",
-     "rationale": "Full board, meaning meals, is included in the event package."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Just unpack your bags, we’ll take care of everything.",
-     "rationale": "Telling guests to just unpack their bags implies accommodation is included in the package."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16683",
+  "events": [
+   {
+    "event_id": 16683,
+    "artists": [
+     {
+      "name_as_written": "DJ Pankadas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 DJ Pankadas on the decks"
+     },
+     {
+      "name_as_written": "DJ Valet",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎶 DJ Valet on the decks"
+     },
+     {
+      "name_as_written": "Chris Py & Laly",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Chris Py & Laly – Kizomba – CLK Dance School"
+     },
+     {
+      "name_as_written": "Élodie Catena & Fransoa",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Élodie Catena & Fransoa – Kizomba – Latica Dance School"
+     },
+     {
+      "name_as_written": "Franck & Sandra",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Franck & Sandra – Kizomba – CLK Dance School"
+     },
+     {
+      "name_as_written": "Amadou",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Amadou – Kizomba – Bordeaux"
+     },
+     {
+      "name_as_written": "Fabien",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Fabien – Kizomba – Toulon"
+     },
+     {
+      "name_as_written": "Pere",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Pere – Bachata – GDS Dance School"
+     },
+     {
+      "name_as_written": "Steeve Bakoula",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Steeve Bakoula – Bachata – Sbk06 School"
+     },
+     {
+      "name_as_written": "Bianka",
+      "role": "teacher",
+      "style": "Lady Styling Bachata",
+      "country": null,
+      "source_line": "Bianka – Lady Styling Bachata"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Dance classes",
+      "rationale": "The program lists dance classes as part of the event."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool party",
+      "rationale": "The program explicitly lists a pool party."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Full board included",
+      "rationale": "Full board, meaning meals, is included in the event package."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Just unpack your bags, we’ll take care of everything.",
+      "rationale": "Telling guests to just unpack their bags implies accommodation is included in the package."
+     }
+    ]
+   }
+  ]
+ }
 }

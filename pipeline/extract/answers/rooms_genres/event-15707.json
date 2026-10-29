@@ -1,28 +1,35 @@
 {
- "batch": "event-15707",
- "events": [
-  {
-   "event_id": 15707,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "Dance to the rhythms of salsa, bachata, and kizomba"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "bachata",
-     "quote": "Dance to the rhythms of salsa, bachata, and kizomba"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "Dance to the rhythms of salsa, bachata, and kizomba"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15707",
+  "events": [
+   {
+    "event_id": 15707,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "salsa",
+      "quote": "Dance to the rhythms of salsa, bachata, and kizomba"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "bachata",
+      "quote": "Dance to the rhythms of salsa, bachata, and kizomba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "Dance to the rhythms of salsa, bachata, and kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

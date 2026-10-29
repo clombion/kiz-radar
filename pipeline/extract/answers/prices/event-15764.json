@@ -1,83 +1,90 @@
 {
- "batch": "event-15764",
- "events": [
-  {
-   "event_id": 15764,
-   "passes": [
-    {
-     "kind": "other",
-     "style": null,
-     "label_quote": "▶️ VIP Pass (2 Masterclasses + 3 days WS + Party)",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 42000.0,
-       "currency": "JPY",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "Super Early Bird: ¥42,000 Sold out❌"
-      },
-      {
-       "amount": 48000.0,
-       "currency": "JPY",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "VIP Pass: ¥48000 ⭕️"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "▶️ Full Pass (3 days WS + Party)",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 24000.0,
-       "currency": "JPY",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "Super Early Bird: ¥24,000 Sold out❌"
-      },
-      {
-       "amount": 28000.0,
-       "currency": "JPY",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full Pass: ¥28,000 ⭕️"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:58:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15764",
+  "events": [
+   {
+    "event_id": 15764,
+    "passes": [
+     {
+      "kind": "other",
+      "style": null,
+      "label_quote": "▶️ VIP Pass (2 Masterclasses + 3 days WS + Party)",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 42000.0,
+        "currency": "JPY",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": true,
+        "current": false,
+        "quote": "Super Early Bird: ¥42,000 Sold out❌"
+       },
+       {
+        "amount": 48000.0,
+        "currency": "JPY",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "VIP Pass: ¥48000 ⭕️"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "▶️ Full Pass (3 days WS + Party)",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 24000.0,
+        "currency": "JPY",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": true,
+        "current": false,
+        "quote": "Super Early Bird: ¥24,000 Sold out❌"
+       },
+       {
+        "amount": 28000.0,
+        "currency": "JPY",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Full Pass: ¥28,000 ⭕️"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

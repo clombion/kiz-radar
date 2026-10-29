@@ -1,67 +1,74 @@
 {
- "batch": "event-17448",
- "events": [
-  {
-   "event_id": 17448,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 Social Rooms"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Kizomba/Semba/Afrohouse",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "afro"
-     ],
-     "quote": "Kizomba/Semba/Afrohouse"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17448",
+  "events": [
+   {
+    "event_id": 17448,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 Social Rooms"
     },
-    {
-     "name_as_written": "Tarraxinha/Ghetto Zouk",
-     "kind": "party",
-     "genres": [
-      "tarraxinha",
-      "zouk"
-     ],
-     "quote": "Tarraxinha/Ghetto Zouk"
-    },
-    {
-     "name_as_written": "Latin Rhythms",
-     "kind": "party",
-     "genres": [],
-     "quote": "Latin Rhythms"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba/Semba/Afrohouse"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba/Semba/Afrohouse"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrohouse",
-     "quote": "Kizomba/Semba/Afrohouse"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Tarraxinha/Ghetto Zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Tarraxinha/Ghetto Zouk"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Kizomba/Semba/Afrohouse",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "afro"
+      ],
+      "quote": "Kizomba/Semba/Afrohouse"
+     },
+     {
+      "name_as_written": "Tarraxinha/Ghetto Zouk",
+      "kind": "party",
+      "genres": [
+       "tarraxinha",
+       "zouk"
+      ],
+      "quote": "Tarraxinha/Ghetto Zouk"
+     },
+     {
+      "name_as_written": "Latin Rhythms",
+      "kind": "party",
+      "genres": [],
+      "quote": "Latin Rhythms"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba/Semba/Afrohouse"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba/Semba/Afrohouse"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrohouse",
+      "quote": "Kizomba/Semba/Afrohouse"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Tarraxinha/Ghetto Zouk"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "Tarraxinha/Ghetto Zouk"
+     }
+    ]
+   }
+  ]
+ }
 }

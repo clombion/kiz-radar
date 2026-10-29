@@ -1,92 +1,99 @@
 {
- "batch": "event-15749",
- "events": [
-  {
-   "event_id": 15749,
-   "artists": [
-    {
-     "name_as_written": "DJ Hugo Smile",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Hugo Smile"
-    },
-    {
-     "name_as_written": "DJ Akym",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Akym"
-    },
-    {
-     "name_as_written": "DJ Levi’s",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Levi’s"
-    },
-    {
-     "name_as_written": "DJ Ralph BB",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Ralph BB"
-    },
-    {
-     "name_as_written": "DJ Smach",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Smach"
-    },
-    {
-     "name_as_written": "DJ Haemer",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Haemer"
-    },
-    {
-     "name_as_written": "DJ Mwan’Afrika",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Mwan’Afrika"
-    },
-    {
-     "name_as_written": "DJ Lova",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Lova"
-    },
-    {
-     "name_as_written": "Olaïde & Lara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Olaïde & Lara (Brussels)"
-    },
-    {
-     "name_as_written": "Boki & Élodie",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Boki & Élodie (Bordeaux)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "6 hours of Workshop",
-     "rationale": "The program lists six hours of workshop, so dance classes are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "1st Room: Kizomba, Urban Kiz, Tarraxo, Semba",
-     "rationale": "The description names a 1st Room and a 2nd Room, so there is more than one dance room."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15749",
+  "events": [
+   {
+    "event_id": 15749,
+    "artists": [
+     {
+      "name_as_written": "DJ Hugo Smile",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Hugo Smile"
+     },
+     {
+      "name_as_written": "DJ Akym",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Akym"
+     },
+     {
+      "name_as_written": "DJ Levi’s",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Levi’s"
+     },
+     {
+      "name_as_written": "DJ Ralph BB",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Ralph BB"
+     },
+     {
+      "name_as_written": "DJ Smach",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Smach"
+     },
+     {
+      "name_as_written": "DJ Haemer",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Haemer"
+     },
+     {
+      "name_as_written": "DJ Mwan’Afrika",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Mwan’Afrika"
+     },
+     {
+      "name_as_written": "DJ Lova",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Lova"
+     },
+     {
+      "name_as_written": "Olaïde & Lara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Olaïde & Lara (Brussels)"
+     },
+     {
+      "name_as_written": "Boki & Élodie",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Boki & Élodie (Bordeaux)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "6 hours of Workshop",
+      "rationale": "The program lists six hours of workshop, so dance classes are part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "1st Room: Kizomba, Urban Kiz, Tarraxo, Semba",
+      "rationale": "The description names a 1st Room and a 2nd Room, so there is more than one dance room."
+     }
+    ]
+   }
+  ]
+ }
 }

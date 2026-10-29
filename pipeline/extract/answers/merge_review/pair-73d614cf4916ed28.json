@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sarah@sarah+stef",
+ "key_b": "p:sarah@sarah+valr",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "73d614cf4916ed28",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Sarah & Stef and Val'R & Sarah have different partners and no shared event; the common first name is weak evidence."
+ }
+}

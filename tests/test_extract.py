@@ -17,7 +17,7 @@ import anthropic
 import httpx2
 import pytest
 from anthropic.types import Message
-from pydantic import BaseModel, Field, ValidationError
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from pipeline import (
     calls,
@@ -35,22 +35,38 @@ from pipeline import (
 )
 from pipeline.calls import Declined
 from pipeline.db import Db, Transaction
-from pipeline.enums import AnswerState, ArtistKind, CallCause, MergeDecision, MergeReason, Model, PassKind, Role, Style
-from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
+from pipeline.enums import (
+    AnswerState,
+    ArtistKind,
+    CallCause,
+    Genre,
+    MergeDecision,
+    MergeReason,
+    Model,
+    PassKind,
+    Role,
+    Style,
+)
+from pipeline.extract import answers, ask, check_output, load_extract, prices, questions, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
 from pipeline.records import (
     ANSWERS,
     JSON,
+    Answered,
+    AskedPrices,
     Batch,
+    GenreFound,
     Group,
-    Logged,
-    MergeRow,
+    Pair,
     Priced,
     PricedPass,
     PricedTier,
+    Provenance,
     Rate,
     Record,
+    RoomsGenres,
+    Sale,
     Spent,
     Stamped,
     day_of,
@@ -58,7 +74,7 @@ from pipeline.records import (
 )
 from tests import jsons
 from tests.exports import EXPORT, committed, festival, shaped
-from tests.fakes import AT, Client, Cut, Memory, message, status_error
+from tests.fakes import Client, Cut, Memory, message, status_error
 
 
 @pytest.fixture(autouse=True)
@@ -97,12 +113,13 @@ def tier(
         currency=currency,
         fee=fee,
         alt=None,
-        from_=None if from_ is None else real_day(from_),
-        until=None if until is None else real_day(until),
-        quantity=None,
-        door=False,
+        sale=Sale(
+            from_=None if from_ is None else real_day(from_),
+            until=None if until is None else real_day(until),
+            quantity=None,
+            current=False,
+        ),
         sold_out=False,
-        current=False,
         quote=quote,
     )
 
@@ -249,19 +266,34 @@ def test_the_pairs_judged_are_every_pair_a_candidate_can_be() -> None:
                 style=None,
                 country=places[i // 5 % 4],
                 event_country=places[i // 11 % 4],
+                source_line='',
             )
         )
     alike = [('Yaw Mensah', 'Ghana'), ('Yaw Mensha', 'Ghana'), ('Kojo Boateng', 'Ghana'), ('Kojo Boateg', 'Togo')]
     for i, (name, place) in enumerate(alike, 402):  # spelled alike, at events in one country or two
         mentions.append(
             resolve_artists.Mention(
-                id=i, event_id=i, role=Role.DJ, name_as_written=name, style=None, country=None, event_country=place
+                id=i,
+                event_id=i,
+                role=Role.DJ,
+                name_as_written=name,
+                style=None,
+                country=None,
+                event_country=place,
+                source_line='',
             )
         )
     for i, place in enumerate(['France', 'Angola'], 400):  # one single name, stated with two countries
         mentions.append(
             resolve_artists.Mention(
-                id=i, event_id=i, role=Role.DJ, name_as_written='Kizzy', style=None, country=place, event_country=None
+                id=i,
+                event_id=i,
+                role=Role.DJ,
+                name_as_written='Kizzy',
+                style=None,
+                country=place,
+                event_country=None,
+                source_line='',
             )
         )
     keys = resolve_artists.keyed(mentions, [])
@@ -299,7 +331,14 @@ def test_each_reason_gives_the_pairs_it_names() -> None:
     ]
     mentions = [
         resolve_artists.Mention(
-            id=i, event_id=i, role=Role.TEACHER, name_as_written=n, style=None, country=c, event_country=e
+            id=i,
+            event_id=i,
+            role=Role.TEACHER,
+            name_as_written=n,
+            style=None,
+            country=c,
+            event_country=e,
+            source_line='',
         )
         for i, (n, c, e) in enumerate(written)
     ]
@@ -314,10 +353,11 @@ def test_each_reason_gives_the_pairs_it_names() -> None:
 
 # the prompts asked now: a change to one re-asks everything it answered (CLAUDE.md), so it is made on purpose, here too
 ASKED_NOW = {
-    'extract': '94fcf4070f2eda95',
-    'rooms_genres': '675627cd45d26393',
-    'prices': '6659bdf7507764a9',
-    'first_read': '1a3b603636d758ee',
+    'extract': '35e8616c28d2d460',
+    'rooms_genres': '9b8b37910b200507',
+    'prices': '128a9cb603333383',
+    'first_read': 'b1d060bbebb24369',
+    'merge_review': 'f5df854e7dca41bb',
 }
 
 
@@ -342,7 +382,7 @@ def named(*names: str, role: Role = Role.DJ) -> list[resolve_artists.Mention]:
     """One mention of each name, at an event of its own, stating no country."""
     return [
         resolve_artists.Mention(
-            id=i, event_id=i, role=role, name_as_written=n, style=None, country=None, event_country=None
+            id=i, event_id=i, role=role, name_as_written=n, style=None, country=None, event_country=None, source_line=''
         )
         for i, n in enumerate(names)
     ]
@@ -405,9 +445,7 @@ def test_an_alias_two_groups_claim_is_refused() -> None:
     [
         (lambda: duo('ab', 'p:absound'), 'pattern'),
         (
-            lambda: MergeRow.model_validate(
-                {'key_a': 'p:b', 'key_b': 'p:a', 'decision': 'merge', 'prompt': '0' * 16, 'note': ''}
-            ),
+            lambda: Pair.model_validate({'key_a': 'p:b', 'key_b': 'p:a'}),
             'key order',
         ),
     ],
@@ -454,7 +492,7 @@ def test_returning_artist_gets_its_old_id_back(memory: Memory) -> None:
     assert stable_ids(con, {'p:a': 'p:a'}) == {'p:a': 4}
 
 
-FEST = ask.Festival(
+FEST = questions.Festival(
     id=5,
     title='Test Fest',
     description_text='Full pass 80€ until 31.01\nDJ Neiken',
@@ -462,6 +500,8 @@ FEST = ask.Festival(
     end_date=dt.date(2026, 3, 22),
     country='Norway',
 )
+NOW = questions.Now({5: FEST, 6: FEST.model_copy(update={'id': 6})}, {})
+JOB = ask.job(NOW, prompt.PRICES, 5)
 
 
 def prices_answer(quote: str, style: Style | None = None) -> str:
@@ -470,9 +510,10 @@ def prices_answer(quote: str, style: Style | None = None) -> str:
 
 def test_answer_retried_once_with_the_checkers_lines() -> None:
     client = Client(prices_answer('Full pass 90€'), prices_answer('Full pass 80€ until 31.01'))
-    out = ask.ask(client, prompt.PRICES, FEST)
+    out = ask.ask(client, JOB)
     assert not isinstance(out, Declined)
-    assert out.events[0].passes[0].tiers[0].amount == 80
+    assert isinstance(entry := out.events[0], Priced)
+    assert entry.passes[0].tiers[0].amount == 80
     retry = str(client.messages.asked[1][-1]['content'])
     assert 'verbatim' in retry
     assert 'Full pass 90€' in retry
@@ -480,14 +521,14 @@ def test_answer_retried_once_with_the_checkers_lines() -> None:
 
 def test_two_failures_leave_the_festival_unanswered() -> None:
     client = Client(prices_answer('Full pass 90€'), prices_answer('Full pass 85€'))
-    out = ask.ask(client, prompt.PRICES, FEST)
+    out = ask.ask(client, JOB)
     assert isinstance(out, Declined)
     assert out.cause == CallCause.CHECKER
 
 
 def test_an_answer_off_its_record_is_asked_again() -> None:
     client = Client('{"batch": "event-5"', prices_answer('Full pass 80€ until 31.01'))
-    assert not isinstance(ask.ask(client, prompt.PRICES, FEST), Declined)
+    assert not isinstance(ask.ask(client, JOB), Declined)
     assert 'schema' in str(client.messages.asked[1][-1]['content'])
 
 
@@ -529,18 +570,42 @@ class Shorter(Record):  # Batched with a constraint the checker alone holds
     batch: Annotated[str, Field(max_length=99)]
 
 
-def test_a_prompt_is_known_by_the_hash_of_its_text_and_both_schemas() -> None:
+def made(system: str, record: type[Record], question: type[Record] = Batched, framing: str = prompt.QUESTION) -> Prompt:
+    return Prompt(system, record, question, framing)
+
+
+def test_a_prompt_is_known_by_the_hash_of_its_text_both_schemas_and_its_message() -> None:
     base = prompt.current('prices')
-    assert Prompt(base.system, base.record).hash == base.hash  # hashing twice: one hash
-    assert Prompt(base.system + ' ', base.record).hash != base.hash  # a template edited
-    grown = Prompt('s', GrownKinded)
-    assert Prompt('s', Kinded).hash != grown.hash  # a state added to an enum
-    assert json.dumps(Prompt('s', Kinded).schema).replace('Kinded', 'X').replace('Kind', 'X') != json.dumps(
+    assert Prompt(base.system, base.record, base.question, base.framing).hash == base.hash  # hashing twice: one hash
+    assert Prompt(base.system + ' ', base.record, base.question, base.framing).hash != base.hash  # a template edited
+    grown = made('s', GrownKinded)
+    assert made('s', Kinded).hash != grown.hash  # a state added to an enum
+    assert json.dumps(made('s', Kinded).schema).replace('Kinded', 'X').replace('Kind', 'X') != json.dumps(
         grown.schema
     ).replace('GrownKinded', 'X').replace('Grown', 'X')
-    checked = Prompt('s', Shorter)
-    assert api_schema(checked.schema) == api_schema(Prompt('s', Batched).schema)  # sent alike
-    assert checked.hash != Prompt('s', Batched).hash  # a constraint the checker alone holds
+    checked = made('s', Shorter)
+    assert api_schema(checked.schema) == api_schema(made('s', Batched).schema)  # sent alike
+    assert checked.hash != made('s', Batched).hash  # a constraint the checker alone holds
+    assert made('s', Batched, Shorter).hash != made('s', Batched).hash  # the question asked otherwise
+    assert made('s', Batched, framing=f'Input:\n{prompt.QUESTION}').hash != made('s', Batched).hash  # framed otherwise
+
+
+def test_a_prompt_asks_its_own_question_once_in_its_framing() -> None:
+    p = made('s', Batched, Batched, f'Input:\n{prompt.QUESTION}')
+    assert p.message(Batched(batch='b')) == 'Input:\n{\n "batch": "b"\n}'
+    with pytest.raises(TypeError, match='asks a Batched'):
+        _ = p.message(Shorter(batch='b'))
+    with pytest.raises(ValueError, match='once'):
+        _ = made('s', Batched, framing='no place for it')
+
+
+def test_an_archived_prompt_is_read_only_under_its_own_hash() -> None:
+    p = prompt.current('prices')
+    archived = p.archive()
+    assert prompt.asked(archived.hash) == p.text
+    _ = archived.path.write_text(p.text + 'edited', encoding='utf-8')
+    with pytest.raises(ValueError, match='another hash'):
+        _ = prompt.asked(archived.hash)
 
 
 def test_a_criterion_edited_changes_the_prompts_it_is_in() -> None:
@@ -558,24 +623,19 @@ def test_a_criterion_edited_changes_the_prompts_it_is_in() -> None:
 
 
 @pytest.mark.usefixtures('answered_here')
-def test_an_answer_saved_archives_its_prompt_first() -> None:
+def test_an_answer_is_saved_with_where_it_comes_from_and_is_current_while_its_message_is() -> None:
     p = prompt.current('prices')
     archived = data(prompt.ASKED) / f'{p.hash}.md'
     archived.unlink(missing_ok=True)
     out = Batch[Priced].parse(prices_answer('Full pass 80€ until 31.01'))
-    _ = answers.save('prices', out, Model.CLAUDE_HAIKU_5_5, p, 'test')
+    saved = answers.save('prices', out, answers.Asking(p.archive(), Model.CLAUDE_HAIKU_5_5, 'test', JOB.inputs))
     assert archived.read_text(encoding='utf-8') == p.text
-    assert answers.log()['prices/event-5.json'].prompt == p.hash
-    assert answers.current(prompt.PRICES, {5})[5].entry == out.events[0]
-
-
-def test_an_answer_saved_but_not_logged_answers_nothing_and_the_audit_names_it(answered_here: Path) -> None:
-    """A run stopped between the answer's file and its log row: the answer is asked again, and no reader stops."""
-    out = Batch[Priced].parse(prices_answer('Full pass 80€ until 31.01'))
-    _ = answers.save('prices', out, Model.CLAUDE_HAIKU_5_5, prompt.current('prices'), 'test')
-    Logged.write([])
-    assert answers.answered('prices', {5}) == {}
-    assert answers.unlogged() == [answered_here / 'prices' / 'event-5.json']
+    filed = Answered[Priced].parse(saved.read_bytes())
+    assert (filed.prompt, filed.model, filed.inputs, filed.answer) == (p.hash, Model.CLAUDE_HAIKU_5_5, JOB.inputs, out)
+    assert answers.current(prompt.PRICES, {5: JOB.inputs})[5].entry == out.events[0]
+    changed = NOW.festivals[5].model_copy(update={'description_text': 'Full pass 90€'})
+    asked_now = questions.Now({5: changed}, {}).inputs(prompt.PRICES, 5)
+    assert answers.current(prompt.PRICES, {5: asked_now}) == {}  # the festival changed since: stale
 
 
 def test_a_file_is_written_whole_or_not_at_all(tmp_path: Path) -> None:
@@ -598,26 +658,17 @@ def test_a_file_is_written_whole_or_not_at_all(tmp_path: Path) -> None:
 
 def test_only_an_answer_to_the_current_prompt_is_read_as_its_record(answered_here: Path) -> None:
     (answered_here / 'prices').mkdir()
-    _ = (answered_here / 'prices' / 'prices-001.json').write_text(
-        json.dumps({'batch': 'b', 'events': [{'event_id': 5, 'old': 1}]})
-    )
-    rows = [
-        Logged(
-            file='prices/prices-001.json',
-            answered_at=AT,
-            model=Model.CLAUDE_HAIKU_5_5,
-            prompt='0' * 16,
-            answered_by='x',
-        )
-    ]
-    Logged.write(rows)
+    old = {'batch': 'b', 'events': [{'event_id': 5, 'old': 1}]}
+    provenance = {'prompt': '0' * 16, 'model': 'claude-haiku-5-5', 'answered_by': 'x', 'inputs': None}
+    filed = provenance | {'answered_at': '2026-10-02T09:00:00+00:00', 'answer': old}
+    _ = (answered_here / 'prices' / 'prices-001.json').write_text(json.dumps(filed))
     assert list(answers.answered('prices', {5})) == [5]  # its festivals are known, whatever its shape
-    assert answers.current(prompt.PRICES, {5}) == {}
+    assert answers.current(prompt.PRICES, {5: JOB.inputs}) == {}
 
 
 def test_an_archive_cut_short_is_written_again() -> None:
     p = prompt.current('prices')
-    archived = p.archive()
+    archived = p.archive().path
     _ = archived.write_text(p.text[:100], encoding='utf-8')
     _ = p.archive()
     assert archived.read_text(encoding='utf-8') == p.text
@@ -626,7 +677,7 @@ def test_an_archive_cut_short_is_written_again() -> None:
 
 def test_the_system_text_sent_is_the_prompts() -> None:
     client = Client(prices_answer('Full pass 80€ until 31.01'))
-    _ = ask.ask(client, prompt.PRICES, FEST)
+    _ = ask.ask(client, JOB)
     assert client.messages.requests[0]['system'] == prompt.current('prices').system
 
 
@@ -644,9 +695,17 @@ def export_prompts() -> set[str]:
     return named
 
 
+class Named(BaseModel):
+    """The prompt a file answered, whatever else it holds."""
+
+    model_config = ConfigDict(extra='ignore')
+
+    prompt: str
+
+
 def test_every_prompt_the_answers_reads_and_export_name_is_archived_under_its_hash() -> None:
-    committed(Logged.FILE, tickets_store.READS, prompt.ASKED)
-    named = {r.prompt for r in answers.log().values()}
+    committed(ANSWERS, tickets_store.READS, prompt.ASKED)
+    named = {Named.model_validate_json(p.read_bytes()).prompt for p in data(ANSWERS).glob('*/*.json')}
     named |= {Stamped.model_validate_json(p.read_bytes()).prompt for p in data(tickets_store.READS).glob('*.json')}
     named |= export_prompts()
     archived = {p.stem: p.read_text(encoding='utf-8') for p in data(prompt.ASKED).glob('*.md') if p.name != 'README.md'}
@@ -665,9 +724,9 @@ def test_a_template_with_a_marker_left_fails() -> None:
 def test_requests_stop_once_the_months_budget_is_spent() -> None:
     _ = spend.record('prices', Model.CLAUDE_OPUS_5_5, 1_000_000, 5_000_000)  # $104, about €93
     client = Client(prices_answer('Full pass 80€ until 31.01'))
-    assert not isinstance(ask.ask(client, prompt.PRICES, FEST), Declined)
+    assert not isinstance(ask.ask(client, JOB), Declined)
     _ = spend.record('prices', Model.CLAUDE_OPUS_5_5, 0, 1_000_000)  # $20 more: over €100
-    out = ask.ask(client, prompt.PRICES, FEST)
+    out = ask.ask(client, JOB)
     assert isinstance(out, Declined)
     assert out.cause == CallCause.BUDGET
     assert out.stops
@@ -703,7 +762,7 @@ def test_the_months_spending_reads_the_ledger_once_and_then_counts_each_request(
     ],
 )
 def test_a_call_that_gives_no_answer_says_why(reply: Message | Cut, cause: CallCause) -> None:
-    out = ask.ask(Client(reply), prompt.PRICES, FEST)
+    out = ask.ask(Client(reply), JOB)
     assert isinstance(out, Declined)
     assert out.cause == cause
 
@@ -711,15 +770,15 @@ def test_a_call_that_gives_no_answer_says_why(reply: Message | Cut, cause: CallC
 def test_a_structural_failure_stops_the_questions_and_the_run_fails_naming_them(answered_here: Path) -> None:
     """A bad key answers every question alike: after the first, none is asked, and the run's exit names all of
     them, with the stop first."""
-    other = FEST.model_copy(update={'id': 6})
     client = Client(Cut(status_error(401)), prices_answer('Full pass 80€ until 31.01'))
-    declined = ask.answer_all(client, [(FEST, prompt.PRICES), (other, prompt.PRICES)], {}, workers=1)
+    todo = [ask.PassQuestion(JOB), ask.PassQuestion(ask.job(NOW, prompt.PRICES, 6))]
+    declined = ask.answer_all(client, todo, workers=1)
     assert len(client.messages.asked) == 1
     assert {k: d.cause for k, d in declined.items()} == {
-        (5, 'prices'): CallCause.STRUCTURAL,
-        (6, 'prices'): CallCause.STRUCTURAL,
+        '5 prices': CallCause.STRUCTURAL,
+        '6 prices': CallCause.STRUCTURAL,
     }
-    why = calls.failed('questions', ((f'{i} {p}', d) for (i, p), d in declined.items()))
+    why = calls.failed('questions', declined.items())
     assert why is not None
     assert why.startswith('API error 401')
     assert '2 questions gave no answer (structural 2): 5 prices: API error 401' in why
@@ -729,8 +788,8 @@ def test_a_structural_failure_stops_the_questions_and_the_run_fails_naming_them(
 def test_a_reply_cut_short_mid_stream_is_in_the_ledger() -> None:
     """The tokens of a stream broken off once its message started are billed, so they are spent; one broken off
     before is not."""
-    _ = ask.ask(Client(Cut(httpx2.ReadError('reset'))), prompt.PRICES, FEST)
-    _ = ask.ask(Client(Cut(httpx2.ReadError('reset'), started=False)), prompt.PRICES, FEST)
+    _ = ask.ask(Client(Cut(httpx2.ReadError('reset'))), JOB)
+    _ = ask.ask(Client(Cut(httpx2.ReadError('reset'), started=False)), JOB)
     assert len(Spent.read()) == 1
 
 
@@ -747,81 +806,77 @@ def source(con: Db, *events: tuple[int, str | None]) -> Db:
     return con
 
 
-def no_answers(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Logged]]:
+def no_answers(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Provenance]]:
     return {}
 
 
-def test_only_the_named_festivals_are_asked(memory: Memory, monkeypatch: pytest.MonkeyPatch) -> None:
-    con = source(memory(), (1, 'a'), (2, 'b'), (3, None))
+def test_a_festival_with_no_answer_of_a_pass_is_asked(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(ask.answers, 'answered', no_answers)
-    assert {f.id for f, _ in ask.due(con, ['prices'])[0]} == {1, 2}
-    assert {f.id for f, _ in ask.due(con, ['prices'], {2})[0]} == {2}
-    with pytest.raises(SystemExit, match=r'\[3\]'):
-        _ = ask.due(con, ['prices'], {2, 3})  # no description: nothing to ask it
+    assert [(j.asked.event_id, j.pass_.name) for j in ask.due(NOW, [prompt.PRICES], {5, 6})] == [
+        (5, 'prices'),
+        (6, 'prices'),
+    ]
+    assert [j.asked.event_id for j in ask.due(NOW, [prompt.PRICES], {6})] == [6]
 
 
-def logged(prompt_: str, at: dt.datetime = dt.datetime(2026, 10, 2, 9, tzinfo=dt.UTC)) -> Logged:
-    return Logged(
-        file='prices/event-1.json', answered_at=at, model=Model.CLAUDE_HAIKU_5_5, prompt=prompt_, answered_by='x'
+def provenance(prompt_: str, inputs: str | None) -> Provenance:
+    return Provenance(
+        prompt=prompt_,
+        model=Model.CLAUDE_HAIKU_5_5,
+        answered_at=dt.datetime(2026, 10, 2, 9, tzinfo=dt.UTC),
+        answered_by='x',
+        inputs=inputs,
     )
 
 
-NOW = logged(prompt.current('prices').hash)
+ANSWERED_NOW = provenance(prompt.current('prices').hash, JOB.inputs)
 
 
-def test_an_answer_to_an_older_prompt_is_asked_again(memory: Memory, monkeypatch: pytest.MonkeyPatch) -> None:
-    con = source(memory(), (1, 'a'), (2, 'b'))
-    have = {1: (Path('a'), logged('0' * 16)), 2: (Path('b'), NOW)}
+def test_an_answer_to_an_older_prompt_or_message_is_asked_again(monkeypatch: pytest.MonkeyPatch) -> None:
+    have = {5: (Path('a'), provenance('0' * 16, JOB.inputs)), 6: (Path('b'), ANSWERED_NOW)}
 
-    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Logged]]:
+    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Provenance]]:
         return have
 
     monkeypatch.setattr(ask.answers, 'answered', answered)
-    assert [f.id for f, _ in ask.due(con, ['prices'])[0]] == [1]
+    assert [j.asked.event_id for j in ask.due(NOW, [prompt.PRICES], {5, 6})] == [5, 6]  # 6 asked of 5's message
+    have[6] = (Path('b'), provenance(prompt.current('prices').hash, ask.job(NOW, prompt.PRICES, 6).inputs))
+    assert [j.asked.event_id for j in ask.due(NOW, [prompt.PRICES], {5, 6})] == [5]
 
 
-# (an answer asked on 2 October, the day its festival's description last changed when it is pending)
-ANSWER_CASES: list[tuple[tuple[Logged | None, dt.date | None], AnswerState]] = [
-    ((None, None), AnswerState.NONE),
-    ((None, dt.date(2026, 10, 1)), AnswerState.NONE),
-    ((logged('0' * 16), None), AnswerState.STALE),
-    ((NOW, dt.date(2026, 10, 3)), AnswerState.STALE),  # asked before the change
-    (
-        (NOW, dt.date(2026, 10, 2)),
-        AnswerState.CURRENT,
-    ),  # asked on the day of the change: after the refresh that found it
-    ((NOW, dt.date(2026, 10, 1)), AnswerState.CURRENT),
-    ((NOW, None), AnswerState.CURRENT),
+ANSWER_CASES: list[tuple[Provenance | None, AnswerState]] = [
+    (None, AnswerState.NONE),
+    (provenance('0' * 16, JOB.inputs), AnswerState.STALE),  # another prompt
+    (provenance(prompt.current('prices').hash, '0' * 16), AnswerState.STALE),  # another message
+    (provenance(prompt.current('prices').hash, None), AnswerState.STALE),  # a batch, which kept no message
+    (ANSWERED_NOW, AnswerState.CURRENT),
 ]
 
 
-@pytest.mark.parametrize(('args', 'state'), ANSWER_CASES)
-def test_every_state_of_an_answer_that_due_tells_apart(
-    args: tuple[Logged | None, dt.date | None], state: AnswerState
-) -> None:
-    answer, since = args
-    assert ask.answer_state('prices', answer, since=since) == state
+@pytest.mark.parametrize(('answer', 'state'), ANSWER_CASES)
+def test_every_state_of_an_answer(answer: Provenance | None, state: AnswerState) -> None:
+    assert answers.state('prices', answer, JOB.inputs) == state
 
 
 def test_the_answer_states_tested_are_all_of_them() -> None:
     assert {s for _, s in ANSWER_CASES} == set(AnswerState)
 
 
-def test_a_festival_stays_pending_until_every_pass_has_an_answer_since_its_change(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    # 1 has only its prices answered, 2 every pass, 3 nothing, 4 every pass but before its description changed
-    now = {p.name: logged(prompt.current(p.name).hash) for p in prompt.PASSES}
-    have = {'prices': {1: now['prices'], 2: now['prices'], 4: now['prices']}} | {
-        p: {2: now[p], 4: now[p]} for p in ('extract', 'rooms_genres')
-    }
-
-    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Logged]]:
-        return {i: (Path(f'{pass_name}/event-{i}.json'), a) for i, a in have[pass_name].items() if i in ids}
-
-    monkeypatch.setattr(ask.answers, 'answered', answered)
-    since = dt.date(2026, 10, 1)
-    assert ask.settled({1: since, 2: since, 3: since, 4: dt.date(2026, 10, 3)}) == [2]
+def test_the_prices_question_follows_the_styles_the_rooms_genres_answer_gives() -> None:
+    """The prices pass is asked with the festival's styles, which its genres give: a rooms-genres answer that names
+    another dance makes the prices answer stale, and ask asks the prices pass after it (WAVES)."""
+    bachata = RoomsGenres(
+        event_id=5,
+        party_rooms=None,
+        class_rooms=None,
+        rooms=(),
+        genres=(GenreFound(genre=Genre.BACHATA, genre_as_written='Bachata', quote='Bachata'),),
+    )
+    assert NOW.styles(5, None) == []
+    assert NOW.styles(5, bachata) == [Style.BACHATA]
+    assert NOW.inputs(prompt.PRICES, 5, bachata) != NOW.inputs(prompt.PRICES, 5)
+    assert NOW.inputs(prompt.EXTRACT, 5, bachata) == NOW.inputs(prompt.EXTRACT, 5)  # no other pass asks styles
+    assert ask.WAVES == ((prompt.EXTRACT, prompt.ROOMS_GENRES), (prompt.PRICES,))
 
 
 @pytest.mark.parametrize(
@@ -846,22 +901,37 @@ def test_a_limit_is_one_at_least(text: str, n: int | None) -> None:
         assert db.at_least_one(text) == n
 
 
+def styled(*styles: Style) -> ask.Job:
+    """JOB, as asked of a festival of these styles."""
+    asked = AskedPrices(
+        event_id=5,
+        title=FEST.title,
+        description=FEST.description_text,
+        start_date=FEST.start_date,
+        end_date=FEST.end_date,
+        country=FEST.country,
+        styles=styles,
+    )
+    question = prompt.PRICES.question.model_validate({'batch': 'event-5', 'events': (asked,)})
+    return ask.Job(prompt.PRICES, asked, question, records.digest(prompt.current('prices').message(question)))
+
+
 def test_a_description_answer_gives_a_style_only_at_a_festival_of_several() -> None:
     answer = prices_answer('Full pass 80€ until 31.01', Style.KIZOMBA)
     client = Client(answer, answer)
-    assert isinstance(ask.ask(client, prompt.PRICES, FEST, [Style.KIZOMBA]), Declined)
+    assert isinstance(ask.ask(client, styled(Style.KIZOMBA)), Declined)
     assert 'one style only' in str(client.messages.asked[1])
-    assert not isinstance(ask.ask(Client(answer), prompt.PRICES, FEST, [Style.BACHATA, Style.KIZOMBA]), Declined)
+    assert not isinstance(ask.ask(Client(answer), styled(Style.BACHATA, Style.KIZOMBA)), Declined)
 
 
 def test_the_question_asked_is_the_festival_as_its_pass_asks() -> None:
-    message, asked = ask.question(prompt.PRICES, FEST, [Style.KIZOMBA])
-    assert asked.event_id == 5
-    assert message.startswith('Batch input (event-5.json):')
+    message = prompt.current('prices').message(styled(Style.KIZOMBA).question)
+    assert message.startswith('Batch input:\n')
     assert jsons.at(JSON.validate_json(message.split('\n', 1)[1]), 'events', 0, 'styles') == ['kizomba']
-    extract = jsons.at(JSON.validate_json(ask.question(prompt.EXTRACT, FEST)[0].split('\n', 1)[1]), 'events', 0)
-    assert isinstance(extract, dict)
-    assert 'styles' not in extract
+    extract = prompt.current('extract').message(NOW.question(prompt.EXTRACT, 5))
+    found = jsons.at(JSON.validate_json(extract.split('\n', 1)[1]), 'events', 0)
+    assert isinstance(found, dict)
+    assert 'styles' not in found
 
 
 class StoppedError(Exception):
@@ -941,7 +1011,7 @@ def test_a_row_outside_the_table_or_its_rules_is_refused_when_written(memory: Me
 def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices(memory: Memory) -> None:
     full = priced(tier('Full pass 80€ until 31.01'))
     party = priced(tier('Full pass 80€ until 31.01'), kind=PassKind.PARTY, event_id=6)
-    described = {e.event_id: answers.Answer(e, logged('0' * 16)) for e in (full, party)}
+    described = {e.event_id: answers.Answer(e, provenance('0' * 16, None), Path('x')) for e in (full, party)}
     with loaded(memory()) as con:
         load_extract.load_prices(con, described, {}, {6: (enums.Sales.SHOP, 'https://shop.example/6')})
         statuses = con.rows(PriceStatus, 'SELECT event_id, price, page, card_pass FROM price_status ORDER BY event_id')
@@ -953,13 +1023,13 @@ def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices(memory:
 
 @pytest.fixture
 def answered_here() -> Path:
-    """The answers folder of the test's data folder, with an empty log."""
-    Logged.write([])
+    """The answers folder of the test's data folder."""
+    data(ANSWERS).mkdir(parents=True, exist_ok=True)
     return data(ANSWERS)
 
 
 def source_file() -> Path:
-    """An export in the test's data folder holding FEST, pending extraction."""
+    """An export in the test's data folder holding FEST."""
     path = data(export.SOURCE) / 'source.sqlite'
     path.parent.mkdir(parents=True)
     with db.opened(path, 'rwc') as con, shaped(con).transaction() as tx:
@@ -972,7 +1042,6 @@ def source_file() -> Path:
             end_date=FEST.end_date,
             country=FEST.country,
         )
-        tx.insert('pending_extraction', [{'event_id': FEST.id, 'reason': 'description changed', 'since': '2026-01-01'}])
     return path
 
 
@@ -982,7 +1051,7 @@ def run_ask(monkeypatch: pytest.MonkeyPatch, client: Client, *args: object) -> N
     ask.main()
 
 
-def test_a_festival_is_asked_its_passes_and_leaves_pending_once_all_are_answered(
+def test_a_festival_is_asked_a_pass_once_while_the_question_stays_the_same(
     tmp_path: Path, answered_here: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
     src = source_file()
@@ -991,9 +1060,9 @@ def test_a_festival_is_asked_its_passes_and_leaves_pending_once_all_are_answered
     assert capsys.readouterr().out.startswith('1 festivals to ask about: ')
     assert client.messages.asked == []
     run_ask(monkeypatch, client, '--pass', 'prices')
-    assert answers.current(prompt.PRICES, {5})[5].entry.passes[0].tiers[0].amount == 80
     with db.opened(src, 'ro') as con:
-        assert con.column(int, 'select event_id from pending_extraction') == [5]  # the other passes wait
+        found = questions.now(con).current(prompt.PRICES)
+    assert found[5].entry.passes[0].tiers[0].amount == 80
     run_ask(monkeypatch, client, '--pass', 'prices')
     assert 'festivals to ask about: ' in capsys.readouterr().out
     assert len(client.messages.asked) == 1  # answered to the current prompt: not asked again
@@ -1006,9 +1075,7 @@ def run_check(monkeypatch: pytest.MonkeyPatch, tmp_path: Path, question: str, an
     check_output.main()
 
 
-QUESTION = Batch[ask.Asked](batch='event-5', events=(ask.asked(prompt.PRICES, FEST),)).model_dump_json(
-    serialize_as_any=True  # the prices pass's question, with its own fields
-)
+QUESTION = JOB.question.model_dump_json()  # the prices pass's question, with its own fields
 
 
 def test_an_answer_file_is_checked_against_the_festivals_it_was_asked_about(

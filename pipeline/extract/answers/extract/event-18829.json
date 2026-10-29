@@ -1,148 +1,155 @@
 {
- "batch": "event-18829",
- "events": [
-  {
-   "event_id": 18829,
-   "artists": [
-    {
-     "name_as_written": "JOJO & JENNY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 JOJO & JENNY"
-    },
-    {
-     "name_as_written": "JP & STEPHY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 JP & STEPHY"
-    },
-    {
-     "name_as_written": "JAG J’A & JEISY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 JAG J’A & JEISY"
-    },
-    {
-     "name_as_written": "PY & SARAH",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 PY & SARAH"
-    },
-    {
-     "name_as_written": "JUSTINHO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 JUSTINHO"
-    },
-    {
-     "name_as_written": "DADIÉ",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 DADIÉ"
-    },
-    {
-     "name_as_written": "YOAN & SYLVIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 YOAN & SYLVIE"
-    },
-    {
-     "name_as_written": "VINCENT & CÉCILIA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 VINCENT & CÉCILIA"
-    },
-    {
-     "name_as_written": "GIBSON & AMÉLIA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 GIBSON & AMÉLIA"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ NICE LIFE"
-    },
-    {
-     "name_as_written": "DJ PARAISO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ PARAISO"
-    },
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ NAO"
-    },
-    {
-     "name_as_written": "DJ WILLY G",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ WILLY G"
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ ICHIGO"
-    },
-    {
-     "name_as_written": "DJETTE KISS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJETTE KISS"
-    },
-    {
-     "name_as_written": "DJ MG",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ MG"
-    },
-    {
-     "name_as_written": "DJ S-LINE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ S-LINE"
-    },
-    {
-     "name_as_written": "Kiz Relax",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "A huge thank you to the entire Kiz Relax team, the artists, the volunteers, and above all to YOU—you bring this festival to life and give it its soul 🫶🏻"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "15% discount on your booking",
-     "rationale": "A negotiated hotel discount is offered for the main hotel while the accommodation is not included in the pass."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODE",
-     "rationale": "The description has a DRESS CODE section, so a dress code is stated."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18829",
+  "events": [
+   {
+    "event_id": 18829,
+    "artists": [
+     {
+      "name_as_written": "JOJO & JENNY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 JOJO & JENNY"
+     },
+     {
+      "name_as_written": "JP & STEPHY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 JP & STEPHY"
+     },
+     {
+      "name_as_written": "JAG J’A & JEISY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 JAG J’A & JEISY"
+     },
+     {
+      "name_as_written": "PY & SARAH",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 PY & SARAH"
+     },
+     {
+      "name_as_written": "JUSTINHO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 JUSTINHO"
+     },
+     {
+      "name_as_written": "DADIÉ",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 DADIÉ"
+     },
+     {
+      "name_as_written": "YOAN & SYLVIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 YOAN & SYLVIE"
+     },
+     {
+      "name_as_written": "VINCENT & CÉCILIA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 VINCENT & CÉCILIA"
+     },
+     {
+      "name_as_written": "GIBSON & AMÉLIA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 GIBSON & AMÉLIA"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ NICE LIFE"
+     },
+     {
+      "name_as_written": "DJ PARAISO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ PARAISO"
+     },
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ NAO"
+     },
+     {
+      "name_as_written": "DJ WILLY G",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ WILLY G"
+     },
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ ICHIGO"
+     },
+     {
+      "name_as_written": "DJETTE KISS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJETTE KISS"
+     },
+     {
+      "name_as_written": "DJ MG",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ MG"
+     },
+     {
+      "name_as_written": "DJ S-LINE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ S-LINE"
+     },
+     {
+      "name_as_written": "Kiz Relax",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "A huge thank you to the entire Kiz Relax team, the artists, the volunteers, and above all to YOU—you bring this festival to life and give it its soul 🫶🏻"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "15% discount on your booking",
+      "rationale": "A negotiated hotel discount is offered for the main hotel while the accommodation is not included in the pass."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESS CODE",
+      "rationale": "The description has a DRESS CODE section, so a dress code is stated."
+     }
+    ]
+   }
+  ]
+ }
 }

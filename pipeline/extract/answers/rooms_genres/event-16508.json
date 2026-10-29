@@ -1,51 +1,58 @@
 {
- "batch": "event-16508",
- "events": [
-  {
-   "event_id": 16508,
-   "party_rooms": {
-    "count": 1,
-    "quote": "one dance area"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16508",
+  "events": [
+   {
+    "event_id": 16508,
+    "party_rooms": {
+     "count": 1,
+     "quote": "one dance area"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AfroHouse",
-     "quote": "AfroHouse & Kuduro"
-    },
-    {
-     "genre": "kuduro",
-     "genre_as_written": "Kuduro",
-     "quote": "AfroHouse & Kuduro"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "AfroHouse",
+      "quote": "AfroHouse & Kuduro"
+     },
+     {
+      "genre": "kuduro",
+      "genre_as_written": "Kuduro",
+      "quote": "AfroHouse & Kuduro"
+     }
+    ]
+   }
+  ]
+ }
 }

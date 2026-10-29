@@ -1,175 +1,182 @@
 {
- "batch": "event-15597",
- "events": [
-  {
-   "event_id": 15597,
-   "artists": [
-    {
-     "name_as_written": "Bonga Kwenda",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "• Bonga Kwenda (with live band)"
-    },
-    {
-     "name_as_written": "Mr. Tecas",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mr. Tecas"
-    },
-    {
-     "name_as_written": "Pires & Silvia Bento",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "• Pires & Silvia Bento – Kizomba"
-    },
-    {
-     "name_as_written": "M’Xtrela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• M’Xtrela"
-    },
-    {
-     "name_as_written": "Alberto Celmo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Alberto Celmo"
-    },
-    {
-     "name_as_written": "Paulo Selele",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Paulo Selele"
-    },
-    {
-     "name_as_written": "Emmanuel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Emmanuel"
-    },
-    {
-     "name_as_written": "Tabanca",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Tabanca"
-    },
-    {
-     "name_as_written": "Jamaica Negro",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Jamaica Negro"
-    },
-    {
-     "name_as_written": "Zaca Straga",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Zaca Straga"
-    },
-    {
-     "name_as_written": "Esteban & Sandra",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Esteban & Sandra"
-    },
-    {
-     "name_as_written": "Njinga Gomes & Francisco",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Njinga Gomes & Francisco"
-    },
-    {
-     "name_as_written": "Dj Matt",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Matt"
-    },
-    {
-     "name_as_written": "DJ Elao Gama",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ Elao Gama"
-    },
-    {
-     "name_as_written": "DJ Adelino",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ Adelino"
-    },
-    {
-     "name_as_written": "DJ Aurel Zola",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ Aurel Zola"
-    },
-    {
-     "name_as_written": "DJ Karmen",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ Karmen"
-    },
-    {
-     "name_as_written": "DJ Bigu",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ Bigu"
-    },
-    {
-     "name_as_written": "DJ Vadinho",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ Vadinho"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Dance Workshops",
-     "rationale": "The festival program lists dance workshops on each day."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Bonga Kwenda (with live band)",
-     "rationale": "A musical artist is listed as performing with a live band."
-    },
-    {
-     "feature": "shows",
-     "quote": "live show 45 minutes Showcase (afternoon)",
-     "rationale": "The afternoon Muzongue includes a live show showcase performed by artists."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Muzongue (Social ) with live show 45 minutes Showcase (afternoon)",
-     "rationale": "The Muzongue social is held in the afternoon."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "A Full Immersive Dance & Culture Experience – 6 hours per day",
-     "rationale": "The 360° workshops are a full immersive program of 6 hours per day."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "here are some accommodation options within 1/2 km of the festival venue",
-     "rationale": "The description recommends nearby hotels and hostels without including them in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15597",
+  "events": [
+   {
+    "event_id": 15597,
+    "artists": [
+     {
+      "name_as_written": "Bonga Kwenda",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "• Bonga Kwenda (with live band)"
+     },
+     {
+      "name_as_written": "Mr. Tecas",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mr. Tecas"
+     },
+     {
+      "name_as_written": "Pires & Silvia Bento",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "• Pires & Silvia Bento – Kizomba"
+     },
+     {
+      "name_as_written": "M’Xtrela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• M’Xtrela"
+     },
+     {
+      "name_as_written": "Alberto Celmo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Alberto Celmo"
+     },
+     {
+      "name_as_written": "Paulo Selele",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Paulo Selele"
+     },
+     {
+      "name_as_written": "Emmanuel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Emmanuel"
+     },
+     {
+      "name_as_written": "Tabanca",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Tabanca"
+     },
+     {
+      "name_as_written": "Jamaica Negro",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Jamaica Negro"
+     },
+     {
+      "name_as_written": "Zaca Straga",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Zaca Straga"
+     },
+     {
+      "name_as_written": "Esteban & Sandra",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Esteban & Sandra"
+     },
+     {
+      "name_as_written": "Njinga Gomes & Francisco",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Njinga Gomes & Francisco"
+     },
+     {
+      "name_as_written": "Dj Matt",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Matt"
+     },
+     {
+      "name_as_written": "DJ Elao Gama",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "• DJ Elao Gama"
+     },
+     {
+      "name_as_written": "DJ Adelino",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "• DJ Adelino"
+     },
+     {
+      "name_as_written": "DJ Aurel Zola",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "• DJ Aurel Zola"
+     },
+     {
+      "name_as_written": "DJ Karmen",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "• DJ Karmen"
+     },
+     {
+      "name_as_written": "DJ Bigu",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "• DJ Bigu"
+     },
+     {
+      "name_as_written": "DJ Vadinho",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "• DJ Vadinho"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Dance Workshops",
+      "rationale": "The festival program lists dance workshops on each day."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Bonga Kwenda (with live band)",
+      "rationale": "A musical artist is listed as performing with a live band."
+     },
+     {
+      "feature": "shows",
+      "quote": "live show 45 minutes Showcase (afternoon)",
+      "rationale": "The afternoon Muzongue includes a live show showcase performed by artists."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Muzongue (Social ) with live show 45 minutes Showcase (afternoon)",
+      "rationale": "The Muzongue social is held in the afternoon."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "A Full Immersive Dance & Culture Experience – 6 hours per day",
+      "rationale": "The 360° workshops are a full immersive program of 6 hours per day."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "here are some accommodation options within 1/2 km of the festival venue",
+      "rationale": "The description recommends nearby hotels and hostels without including them in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

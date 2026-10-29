@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@davide+laura",
+ "key_b": "p:laura@doctorkizomba+laura",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "3d44f10e1b8dc1e7",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Davide & Laura and Dr Kizomba & Laura both appear at KIZMI Milano on 2026-12-17 (batch pair 346), so they are two different Laura couples with different partners."
+ }
+}

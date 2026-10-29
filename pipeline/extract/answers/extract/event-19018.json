@@ -1,142 +1,149 @@
 {
- "batch": "event-19018",
- "events": [
-  {
-   "event_id": 19018,
-   "artists": [
-    {
-     "name_as_written": "PAULO & LENNA",
-     "role": "teacher",
-     "style": null,
-     "country": "PORTUGAL",
-     "source_line": "◢ PAULO & LENNA (PORTUGAL)"
-    },
-    {
-     "name_as_written": "STEFF & SONIA",
-     "role": "teacher",
-     "style": null,
-     "country": "FRANCE",
-     "source_line": "◢ STEFF & SONIA (FRANCE)"
-    },
-    {
-     "name_as_written": "MAURO D-ONE & CELIA",
-     "role": "teacher",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ MAURO D-ONE & CELIA (SWITZERLAND)"
-    },
-    {
-     "name_as_written": "JP & RAMONA",
-     "role": "teacher",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ JP & RAMONA (SWITZERLAND)"
-    },
-    {
-     "name_as_written": "ANA & PEDRO",
-     "role": "teacher",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ ANA & PEDRO (SWITZERLAND)"
-    },
-    {
-     "name_as_written": "JOSE & ANJA",
-     "role": "teacher",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ JOSE & ANJA (SWITZERLAND)"
-    },
-    {
-     "name_as_written": "JOHNNY & CRISTINA",
-     "role": "teacher",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ JOHNNY & CRISTINA (SWITZERLAND)"
-    },
-    {
-     "name_as_written": "ELENA & ZE RUI",
-     "role": "teacher",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ ELENA & ZE RUI (SWITZERLAND)"
-    },
-    {
-     "name_as_written": "GONZALO & MYA",
-     "role": "teacher",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ GONZALO & MYA (SWITZERLAND)"
-    },
-    {
-     "name_as_written": "DEDINHO",
-     "role": "teacher",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ DEDINHO (SWITZERLAND)"
-    },
-    {
-     "name_as_written": "DJ WILLY G",
-     "role": "dj",
-     "style": null,
-     "country": "FRANCE",
-     "source_line": "◢ DJ WILLY G (FRANCE)"
-    },
-    {
-     "name_as_written": "DJ OCEANO",
-     "role": "dj",
-     "style": null,
-     "country": "PORTUGAL",
-     "source_line": "◢ DJ OCEANO (PORTUGAL)"
-    },
-    {
-     "name_as_written": "DJ LO",
-     "role": "dj",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ DJ LO (SWITZERLAND)"
-    },
-    {
-     "name_as_written": "DJ MOUS",
-     "role": "dj",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ DJ MOUS (SWITZERLAND)"
-    },
-    {
-     "name_as_written": "DJ KAD",
-     "role": "dj",
-     "style": null,
-     "country": "SWITZERLAND",
-     "source_line": "◢ DJ KAD (SWITZERLAND)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS FOR ALL LEVELS",
-     "rationale": "The event lists workshops for all levels as part of the programme."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "WORKSHOPS FOR ALL LEVELS",
-     "rationale": "The workshops are stated to be for all levels, including beginners."
-    },
-    {
-     "feature": "after_party",
-     "quote": "AFTER-PARTY (SATURDAY)",
-     "rationale": "An after-party on Saturday is listed among the event's parties."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "SOCIAL DANCEFLOOR",
-     "rationale": "Naming a separate social dancefloor alongside the main dancefloor shows more than one dance floor."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Beautiful hotel opposite Salle Grenette (1-minute walk)",
-     "rationale": "A recommended hotel with negotiated room rates is given, and accommodation is not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19018",
+  "events": [
+   {
+    "event_id": 19018,
+    "artists": [
+     {
+      "name_as_written": "PAULO & LENNA",
+      "role": "teacher",
+      "style": null,
+      "country": "PORTUGAL",
+      "source_line": "◢ PAULO & LENNA (PORTUGAL)"
+     },
+     {
+      "name_as_written": "STEFF & SONIA",
+      "role": "teacher",
+      "style": null,
+      "country": "FRANCE",
+      "source_line": "◢ STEFF & SONIA (FRANCE)"
+     },
+     {
+      "name_as_written": "MAURO D-ONE & CELIA",
+      "role": "teacher",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ MAURO D-ONE & CELIA (SWITZERLAND)"
+     },
+     {
+      "name_as_written": "JP & RAMONA",
+      "role": "teacher",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ JP & RAMONA (SWITZERLAND)"
+     },
+     {
+      "name_as_written": "ANA & PEDRO",
+      "role": "teacher",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ ANA & PEDRO (SWITZERLAND)"
+     },
+     {
+      "name_as_written": "JOSE & ANJA",
+      "role": "teacher",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ JOSE & ANJA (SWITZERLAND)"
+     },
+     {
+      "name_as_written": "JOHNNY & CRISTINA",
+      "role": "teacher",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ JOHNNY & CRISTINA (SWITZERLAND)"
+     },
+     {
+      "name_as_written": "ELENA & ZE RUI",
+      "role": "teacher",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ ELENA & ZE RUI (SWITZERLAND)"
+     },
+     {
+      "name_as_written": "GONZALO & MYA",
+      "role": "teacher",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ GONZALO & MYA (SWITZERLAND)"
+     },
+     {
+      "name_as_written": "DEDINHO",
+      "role": "teacher",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ DEDINHO (SWITZERLAND)"
+     },
+     {
+      "name_as_written": "DJ WILLY G",
+      "role": "dj",
+      "style": null,
+      "country": "FRANCE",
+      "source_line": "◢ DJ WILLY G (FRANCE)"
+     },
+     {
+      "name_as_written": "DJ OCEANO",
+      "role": "dj",
+      "style": null,
+      "country": "PORTUGAL",
+      "source_line": "◢ DJ OCEANO (PORTUGAL)"
+     },
+     {
+      "name_as_written": "DJ LO",
+      "role": "dj",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ DJ LO (SWITZERLAND)"
+     },
+     {
+      "name_as_written": "DJ MOUS",
+      "role": "dj",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ DJ MOUS (SWITZERLAND)"
+     },
+     {
+      "name_as_written": "DJ KAD",
+      "role": "dj",
+      "style": null,
+      "country": "SWITZERLAND",
+      "source_line": "◢ DJ KAD (SWITZERLAND)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS FOR ALL LEVELS",
+      "rationale": "The event lists workshops for all levels as part of the programme."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "WORKSHOPS FOR ALL LEVELS",
+      "rationale": "The workshops are stated to be for all levels, including beginners."
+     },
+     {
+      "feature": "after_party",
+      "quote": "AFTER-PARTY (SATURDAY)",
+      "rationale": "An after-party on Saturday is listed among the event's parties."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "SOCIAL DANCEFLOOR",
+      "rationale": "Naming a separate social dancefloor alongside the main dancefloor shows more than one dance floor."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Beautiful hotel opposite Salle Grenette (1-minute walk)",
+      "rationale": "A recommended hotel with negotiated room rates is given, and accommodation is not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,76 +1,83 @@
 {
- "batch": "event-14531",
- "events": [
-  {
-   "event_id": 14531,
-   "artists": [
-    {
-     "name_as_written": "RONIE SALEH",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 RONIE SALEH"
-    },
-    {
-     "name_as_written": "GWANY & LILIANA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 GWANY & LILIANA"
-    },
-    {
-     "name_as_written": "CHAMALO & JALYSSA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 CHAMALO & JALYSSA"
-    },
-    {
-     "name_as_written": "MIK’IZ",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 MIK’IZ"
-    },
-    {
-     "name_as_written": "ENJOYOURKIZ EVENTS",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "*** ENJOYOURKIZ EVENTS ***"
-    },
-    {
-     "name_as_written": "Martin I’m Your Média",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "10/ ✅ Event videographer: Martin I’m Your Média"
-    },
-    {
-     "name_as_written": "Elron",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "11/ ✅ Photographer: Elron"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "1 Additional Room for Social Events and Classes",
-     "rationale": "The description announces an additional room, so there is more than one dance room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Social Events and Classes",
-     "rationale": "Classes are announced as part of the event alongside social events."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "THE DANCING TAXIS",
-     "rationale": "A section announces dancing taxis, so taxi dancers are present."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:39:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14531",
+  "events": [
+   {
+    "event_id": 14531,
+    "artists": [
+     {
+      "name_as_written": "RONIE SALEH",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 RONIE SALEH"
+     },
+     {
+      "name_as_written": "GWANY & LILIANA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 GWANY & LILIANA"
+     },
+     {
+      "name_as_written": "CHAMALO & JALYSSA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 CHAMALO & JALYSSA"
+     },
+     {
+      "name_as_written": "MIK’IZ",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 MIK’IZ"
+     },
+     {
+      "name_as_written": "ENJOYOURKIZ EVENTS",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "*** ENJOYOURKIZ EVENTS ***"
+     },
+     {
+      "name_as_written": "Martin I’m Your Média",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "10/ ✅ Event videographer: Martin I’m Your Média"
+     },
+     {
+      "name_as_written": "Elron",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "11/ ✅ Photographer: Elron"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "1 Additional Room for Social Events and Classes",
+      "rationale": "The description announces an additional room, so there is more than one dance room."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Social Events and Classes",
+      "rationale": "Classes are announced as part of the event alongside social events."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "THE DANCING TAXIS",
+      "rationale": "A section announces dancing taxis, so taxi dancers are present."
+     }
+    ]
+   }
+  ]
+ }
 }

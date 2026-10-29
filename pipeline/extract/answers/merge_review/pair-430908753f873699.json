@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kal@dance",
+ "key_b": "p:kal@kal+ludolskiz",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "430908753f873699",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Kal appears at the Atlantik Corazon Festival in Nantes 2026, and Ludo LSKiz & Kal appears at the same festival series in Saint-Nazaire 2027, both in France."
+ }
+}

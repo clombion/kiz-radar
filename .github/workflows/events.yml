@@ -11,7 +11,8 @@ name: Refresh events
 #
 # Three jobs, each holding only what it needs: read fetches the web's pages (kizomba-world's, the ticket pages in a
 # browser) with neither the key nor a token that can push; ask gives them to the models with the key and no such
-# token; commit loads and pushes, with the token and no key. Each hands its changes to the next (.github/actions/
+# token, the merge review last, of the pairs the line-ups just answered give (pipeline/extract/merge_review.py);
+# commit loads and pushes, with the token and no key. Each hands its changes to the next (.github/actions/
 # handoff).
 on:
   schedule:
@@ -81,6 +82,7 @@ jobs:
     outputs:
       ask: ${{ steps.ask.outcome }}
       tickets: ${{ steps.tickets.outcome }}
+      review: ${{ steps.review.outcome }}
       handed: ${{ steps.handed.outcome == 'success' }}
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -97,12 +99,25 @@ jobs:
         id: ask
         continue-on-error: true
         timeout-minutes: 60   # each answer is saved as it comes
-        run: mise run ask -- ${LIMIT:+--limit "$LIMIT"} ${ONLY:+--only "$ONLY"}
+        run: >-
+          mise run ask -- --pass extract --pass rooms_genres --pass prices
+          ${LIMIT:+--limit "$LIMIT"} ${ONLY:+--only "$ONLY"}
       - name: First-read the ticket pages read today
         id: tickets
         continue-on-error: true
         timeout-minutes: 25
         run: mise run tickets -- run --part models ${LIMIT:+--limit "$LIMIT"} ${ONLY:+--only "$ONLY"}
+      - name: The pairs of artists to review, from the line-ups just answered
+        if: ${{ !inputs.festivals }}
+        run: |
+          mise run load
+          mise run resolve
+      - name: Ask Claude whether each pair is one artist
+        id: review
+        if: ${{ !inputs.festivals }}
+        continue-on-error: true
+        timeout-minutes: 30
+        run: mise run ask -- --pass merge_review ${LIMIT:+--limit "$LIMIT"}
       - id: handed
         uses: ./.github/actions/handoff
         if: ${{ !cancelled() }}   # the answers paid for, even when a step failed or ran out of time
@@ -146,5 +161,6 @@ jobs:
       - name: Fail if the refresh, asking Claude or a ticket page failed
         if: >-
           needs.read.outputs.scrape == 'failure' || needs.read.outputs.tickets == 'failure' ||
-          needs.ask.outputs.ask == 'failure' || needs.ask.outputs.tickets == 'failure'
+          needs.ask.outputs.ask == 'failure' || needs.ask.outputs.tickets == 'failure' ||
+          needs.ask.outputs.review == 'failure'
         run: exit 1

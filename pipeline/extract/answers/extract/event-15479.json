@@ -1,134 +1,141 @@
 {
- "batch": "event-15479",
- "events": [
-  {
-   "event_id": 15479,
-   "artists": [
-    {
-     "name_as_written": "DJ Wesss",
-     "role": "dj",
-     "style": "KIZOMBA & URBANKIZ",
-     "country": "France",
-     "source_line": "🏛️DJ Wesss (France)"
-    },
-    {
-     "name_as_written": "DJ J’Larious",
-     "role": "dj",
-     "style": "KIZOMBA & URBANKIZ",
-     "country": "United States",
-     "source_line": "🏛️DJ J’Larious (United States)"
-    },
-    {
-     "name_as_written": "DJ Tecas",
-     "role": "dj",
-     "style": "KIZOMBA & URBANKIZ",
-     "country": "France",
-     "source_line": "🏛️DJ Tecas (France)"
-    },
-    {
-     "name_as_written": "DJ Tony Samson",
-     "role": "dj",
-     "style": "KIZOMBA & URBANKIZ",
-     "country": "Holland",
-     "source_line": "🏛️DJ Tony Samson(Holland)"
-    },
-    {
-     "name_as_written": "DJ Walter",
-     "role": "dj",
-     "style": "KIZOMBA & URBANKIZ",
-     "country": "Holland",
-     "source_line": "🏛️DJ Walter(Holland)"
-    },
-    {
-     "name_as_written": "DJ Joe",
-     "role": "dj",
-     "style": "KIZOMBA & URBANKIZ",
-     "country": "United States",
-     "source_line": "🏛️DJ Joe (United States)"
-    },
-    {
-     "name_as_written": "DJ Matt de Carmona",
-     "role": "dj",
-     "style": "KIZOMBA & URBANKIZ",
-     "country": "France",
-     "source_line": "🏛️DJ Matt de Carmona (France)We Love Semba"
-    },
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "France",
-     "source_line": "👨🏿‍🎓JP & Stephy(France)UrbanKiz"
-    },
-    {
-     "name_as_written": "MR.Tecas",
-     "role": "teacher",
-     "style": "Semba",
-     "country": "France",
-     "source_line": "👨🏿‍🎓MR.Tecas (France)Semba"
-    },
-    {
-     "name_as_written": "Jocelyn Loubaki",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "Belgium",
-     "source_line": "👨🏿‍🎓Jocelyn Loubaki (Belgium) UrbanKiz"
-    },
-    {
-     "name_as_written": "Alvine Brown",
-     "role": "teacher",
-     "style": "Afro all steps",
-     "country": "France",
-     "source_line": "👨🏿‍🎓Alvine Brown(France)Afro all steps"
-    },
-    {
-     "name_as_written": "Jaqui & Fola",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "Germany",
-     "source_line": "👨🏿‍🎓Jaqui & Fola(Germany)UrbanKiz"
-    },
-    {
-     "name_as_written": "Mady Keita",
-     "role": "teacher",
-     "style": "Kompa",
-     "country": "Germany",
-     "source_line": "👨🏿‍🎓Mady Keita (Germany)Kompa"
-    },
-    {
-     "name_as_written": "Pat Ollo",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "Finland",
-     "source_line": "👨🏿‍🎓Pat Ollo (Finland)Kizomba"
-    },
-    {
-     "name_as_written": "Master Didier",
-     "role": "mc",
-     "style": null,
-     "country": null,
-     "source_line": "🏛️Master Didier"
-    },
-    {
-     "name_as_written": "Farantini Lemairo",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥Farantini Lemairo"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "We present hours of workshops",
-     "rationale": "The description states that workshops are presented as part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotel and venue are next door to each other. booking link coming soon!with a discount",
-     "rationale": "A nearby hotel is recommended with a booking discount, without the accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15479",
+  "events": [
+   {
+    "event_id": 15479,
+    "artists": [
+     {
+      "name_as_written": "DJ Wesss",
+      "role": "dj",
+      "style": "KIZOMBA & URBANKIZ",
+      "country": "France",
+      "source_line": "🏛️DJ Wesss (France)"
+     },
+     {
+      "name_as_written": "DJ J’Larious",
+      "role": "dj",
+      "style": "KIZOMBA & URBANKIZ",
+      "country": "United States",
+      "source_line": "🏛️DJ J’Larious (United States)"
+     },
+     {
+      "name_as_written": "DJ Tecas",
+      "role": "dj",
+      "style": "KIZOMBA & URBANKIZ",
+      "country": "France",
+      "source_line": "🏛️DJ Tecas (France)"
+     },
+     {
+      "name_as_written": "DJ Tony Samson",
+      "role": "dj",
+      "style": "KIZOMBA & URBANKIZ",
+      "country": "Holland",
+      "source_line": "🏛️DJ Tony Samson(Holland)"
+     },
+     {
+      "name_as_written": "DJ Walter",
+      "role": "dj",
+      "style": "KIZOMBA & URBANKIZ",
+      "country": "Holland",
+      "source_line": "🏛️DJ Walter(Holland)"
+     },
+     {
+      "name_as_written": "DJ Joe",
+      "role": "dj",
+      "style": "KIZOMBA & URBANKIZ",
+      "country": "United States",
+      "source_line": "🏛️DJ Joe (United States)"
+     },
+     {
+      "name_as_written": "DJ Matt de Carmona",
+      "role": "dj",
+      "style": "KIZOMBA & URBANKIZ",
+      "country": "France",
+      "source_line": "🏛️DJ Matt de Carmona (France)We Love Semba"
+     },
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": "France",
+      "source_line": "👨🏿‍🎓JP & Stephy(France)UrbanKiz"
+     },
+     {
+      "name_as_written": "MR.Tecas",
+      "role": "teacher",
+      "style": "Semba",
+      "country": "France",
+      "source_line": "👨🏿‍🎓MR.Tecas (France)Semba"
+     },
+     {
+      "name_as_written": "Jocelyn Loubaki",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": "Belgium",
+      "source_line": "👨🏿‍🎓Jocelyn Loubaki (Belgium) UrbanKiz"
+     },
+     {
+      "name_as_written": "Alvine Brown",
+      "role": "teacher",
+      "style": "Afro all steps",
+      "country": "France",
+      "source_line": "👨🏿‍🎓Alvine Brown(France)Afro all steps"
+     },
+     {
+      "name_as_written": "Jaqui & Fola",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": "Germany",
+      "source_line": "👨🏿‍🎓Jaqui & Fola(Germany)UrbanKiz"
+     },
+     {
+      "name_as_written": "Mady Keita",
+      "role": "teacher",
+      "style": "Kompa",
+      "country": "Germany",
+      "source_line": "👨🏿‍🎓Mady Keita (Germany)Kompa"
+     },
+     {
+      "name_as_written": "Pat Ollo",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "Finland",
+      "source_line": "👨🏿‍🎓Pat Ollo (Finland)Kizomba"
+     },
+     {
+      "name_as_written": "Master Didier",
+      "role": "mc",
+      "style": null,
+      "country": null,
+      "source_line": "🏛️Master Didier"
+     },
+     {
+      "name_as_written": "Farantini Lemairo",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥Farantini Lemairo"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "We present hours of workshops",
+      "rationale": "The description states that workshops are presented as part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotel and venue are next door to each other. booking link coming soon!with a discount",
+      "rationale": "A nearby hotel is recommended with a booking discount, without the accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

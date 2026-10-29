@@ -1,0 +1,13 @@
+{
+ "key_a": "p:gabrielbravoriviera",
+ "key_b": "p:grabrielbravoriviera",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "1baceca3961928b1",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Gabriel Bravo Riviera and Grabriel Bravo Riviera are the same distinctive name at the same event on the same day, differing by one letter."
+ }
+}

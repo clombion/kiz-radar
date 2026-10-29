@@ -1,0 +1,13 @@
+{
+ "key_a": "p:albir@dance",
+ "key_b": "p:albirrojas",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c1e12572068ea4f1",
+ "answer": {
+  "decision": "merge",
+  "rationale": "ALBIR (teacher, Spain) and Albir Rojas (teacher, Spain) share the distinctive first name and country, and the full name extends the same stage name."
+ }
+}

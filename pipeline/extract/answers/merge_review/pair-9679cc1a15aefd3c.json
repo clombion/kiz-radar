@@ -1,0 +1,13 @@
+{
+ "key_a": "p:charlieelponceno",
+ "key_b": "p:charliponceno",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "9679cc1a15aefd3c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Same DJ role, same city (Malaga) and same distinctive surname Ponceno with a one-letter spelling variant (Charlie El / Charli)."
+ }
+}

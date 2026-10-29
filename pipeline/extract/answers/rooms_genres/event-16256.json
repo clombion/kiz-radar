@@ -1,64 +1,71 @@
 {
- "batch": "event-16256",
- "events": [
-  {
-   "event_id": 16256,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 DEDICATED ROOMS, with WORKSHOPS and PARTIES"
-   },
-   "class_rooms": {
-    "count": 2,
-    "quote": "2 DEDICATED ROOMS, with WORKSHOPS and PARTIES"
-   },
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "urbankiz",
-      "tarraxo"
-     ],
-     "quote": "KIZOMBA – URBAN – TARRAXA"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16256",
+  "events": [
+   {
+    "event_id": 16256,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 DEDICATED ROOMS, with WORKSHOPS and PARTIES"
     },
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [
-      "salsa",
-      "bachata"
-     ],
-     "quote": "SALSA and BACHATA"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA – URBAN – TARRAXA"
+    "class_rooms": {
+     "count": 2,
+     "quote": "2 DEDICATED ROOMS, with WORKSHOPS and PARTIES"
     },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN",
-     "quote": "KIZOMBA – URBAN – TARRAXA"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXA",
-     "quote": "KIZOMBA – URBAN – TARRAXA"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "SALSA and BACHATA"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "SALSA and BACHATA"
-    }
-   ]
-  }
- ]
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "urbankiz",
+       "tarraxo"
+      ],
+      "quote": "KIZOMBA – URBAN – TARRAXA"
+     },
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "salsa",
+       "bachata"
+      ],
+      "quote": "SALSA and BACHATA"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA – URBAN – TARRAXA"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN",
+      "quote": "KIZOMBA – URBAN – TARRAXA"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXA",
+      "quote": "KIZOMBA – URBAN – TARRAXA"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "SALSA and BACHATA"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "SALSA and BACHATA"
+     }
+    ]
+   }
+  ]
+ }
 }

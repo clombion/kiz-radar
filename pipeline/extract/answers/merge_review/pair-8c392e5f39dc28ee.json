@@ -1,0 +1,13 @@
+{
+ "key_a": "p:agnes@agnes+fajul",
+ "key_b": "p:agnes@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "8c392e5f39dc28ee",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Solo Agnes entries are Swedish and Fajul & Agnes lists Sweden only in a combined country field; a common first name plus a partial country overlap does not settle it."
+ }
+}

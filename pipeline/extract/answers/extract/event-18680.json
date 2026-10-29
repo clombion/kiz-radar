@@ -1,292 +1,299 @@
 {
- "batch": "event-18680",
- "events": [
-  {
-   "event_id": 18680,
-   "artists": [
-    {
-     "name_as_written": "Fred & Morgane",
-     "role": "teacher",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇫🇷🇫🇷",
-     "source_line": "🩶 🇫🇷🇫🇷 Fred & Morgane (Kizomba Influence)"
-    },
-    {
-     "name_as_written": "Jesus Y Anni",
-     "role": "teacher",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇪🇸🇪🇸",
-     "source_line": "🩶 🇪🇸🇪🇸 Jesus Y Anni (metakizz)"
-    },
-    {
-     "name_as_written": "Michael & Anika",
-     "role": "teacher",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇳🇱🇦🇹",
-     "source_line": "🩶 🇳🇱🇦🇹 Michael & Anika (kizz ryders)"
-    },
-    {
-     "name_as_written": "Benoit & Sneja",
-     "role": "teacher",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇫🇷🇮🇹",
-     "source_line": "🩶 🇫🇷🇮🇹 Benoit & Sneja (crazy kiz)"
-    },
-    {
-     "name_as_written": "Chris Da White",
-     "role": "teacher",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇫🇷",
-     "source_line": "🩶 🇫🇷 Chris Da White (kizz kiss)"
-    },
-    {
-     "name_as_written": "Rita Szabo",
-     "role": "teacher",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇭🇺",
-     "source_line": "🩶 🇭🇺 Rita Szabo (kizomba club hungary)"
-    },
-    {
-     "name_as_written": "Larisa & Vlado",
-     "role": "teacher",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇭🇷🇭🇷",
-     "source_line": "🩶 🇭🇷🇭🇷Larisa & Vlado (kizomba club croatia)"
-    },
-    {
-     "name_as_written": "Heartbeatkiz",
-     "role": "teacher",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇸🇮",
-     "source_line": "🩶 🇸🇮 Heartbeatkiz"
-    },
-    {
-     "name_as_written": "Funomen",
-     "role": "teacher",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇫🇷",
-     "source_line": "🩶 🇫🇷 Funomen"
-    },
-    {
-     "name_as_written": "Dex & Lau",
-     "role": "teacher",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": "🇨🇬🇫🇷",
-     "source_line": "🩶 🇨🇬🇫🇷 Dex & Lau (olympiades semba 2025 – 1st)"
-    },
-    {
-     "name_as_written": "Oncle Kani",
-     "role": "teacher",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": "🇫🇷",
-     "source_line": "🩶 🇫🇷 Oncle Kani (Wakanda)"
-    },
-    {
-     "name_as_written": "Laura Buffone",
-     "role": "teacher",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": "🇮🇹",
-     "source_line": "🩶 🇮🇹 Laura Buffone"
-    },
-    {
-     "name_as_written": "Michel & Aga",
-     "role": "teacher",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": "🇫🇷",
-     "source_line": "🩶 🇫🇷 Michel & Aga"
-    },
-    {
-     "name_as_written": "Sani Groove",
-     "role": "teacher",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": "🇬🇭🇨🇿",
-     "source_line": "🩶 🇬🇭🇨🇿 Sani Groove"
-    },
-    {
-     "name_as_written": "Stefanio Lima",
-     "role": "dj",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇳🇱",
-     "source_line": "❤️ 🇳🇱 Stefanio Lima (legacy)"
-    },
-    {
-     "name_as_written": "Dj Snakes",
-     "role": "dj",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇫🇷",
-     "source_line": "❤️ 🇫🇷 Dj Snakes"
-    },
-    {
-     "name_as_written": "Dj Lehny",
-     "role": "dj",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇫🇷",
-     "source_line": "❤️ 🇫🇷 Dj Lehny (bushido)"
-    },
-    {
-     "name_as_written": "Dj Omega",
-     "role": "dj",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇩🇪",
-     "source_line": "❤️ 🇩🇪 Dj Omega (8 times 2gether)"
-    },
-    {
-     "name_as_written": "Dj Biju’",
-     "role": "dj",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇷🇴",
-     "source_line": "❤️ 🇷🇴 Dj Biju’ (colors ds)"
-    },
-    {
-     "name_as_written": "Dj Yomi G",
-     "role": "dj",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇫🇷",
-     "source_line": "❤️ 🇫🇷 Dj Yomi G (funomen)"
-    },
-    {
-     "name_as_written": "Dj Lucky Lux",
-     "role": "dj",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇸🇮",
-     "source_line": "❤️ 🇸🇮 Dj Lucky Lux (kizz kiss)"
-    },
-    {
-     "name_as_written": "Poema Beatz",
-     "role": "dj",
-     "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
-     "country": "🇸🇪",
-     "source_line": "❤️ 🇸🇪 Poema Beatz (kizz kiss)"
-    },
-    {
-     "name_as_written": "Dj Jarod",
-     "role": "dj",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": "🇫🇷",
-     "source_line": "❤️ 🇫🇷 Dj Jarod"
-    },
-    {
-     "name_as_written": "Dj Igor",
-     "role": "dj",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": "🇭🇷",
-     "source_line": "❤️ 🇭🇷 Dj Igor"
-    },
-    {
-     "name_as_written": "Dj Caliph",
-     "role": "dj",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": "🇬🇭",
-     "source_line": "❤️ 🇬🇭 Dj Caliph"
-    },
-    {
-     "name_as_written": "Dj Prince",
-     "role": "dj",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": "🇮🇹",
-     "source_line": "❤️ 🇮🇹 Dj Prince (prince events)"
-    },
-    {
-     "name_as_written": "Dj Tiwosh",
-     "role": "dj",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": "🇫🇷",
-     "source_line": "❤️ 🇫🇷 Dj Tiwosh (kizz kiss)"
-    },
-    {
-     "name_as_written": "Funomen",
-     "role": "crew",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🖤 🇫🇷 Funomen"
-    },
-    {
-     "name_as_written": "Kiz Alpha Pack",
-     "role": "crew",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🖤 🇮🇹 Kiz Alpha Pack"
-    },
-    {
-     "name_as_written": "Kizomba Club Hungary",
-     "role": "crew",
-     "style": null,
-     "country": "🇭🇺",
-     "source_line": "🖤 🇭🇺 Kizomba Club Hungary"
-    },
-    {
-     "name_as_written": "Heartbeatkiz",
-     "role": "crew",
-     "style": null,
-     "country": "🇸🇮",
-     "source_line": "🖤 🇸🇮 Heartbeatkiz"
-    },
-    {
-     "name_as_written": "Mozaik",
-     "role": "crew",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🖤 🇫🇷 Mozaik"
-    },
-    {
-     "name_as_written": "Dani To The Dance",
-     "role": "media",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💗 🇩🇪 Dani To The Dance 🎥"
-    },
-    {
-     "name_as_written": "Bianka",
-     "role": "media",
-     "style": null,
-     "country": "🇭🇺",
-     "source_line": "💗 🇭🇺 Bianka 📸"
-    },
-    {
-     "name_as_written": "Mvivanov",
-     "role": "media",
-     "style": null,
-     "country": "🇧🇬",
-     "source_line": "💗 🇧🇬 Mvivanov 📸"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops with top international artists",
-     "rationale": "The description states that workshops with international artists are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 Rooms",
-     "rationale": "The event has three rooms for dancing, so more than one dance room is present."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Your status, your color party",
-     "rationale": "A colour-themed party is announced as part of the programme."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "taxi teams return in 2027",
-     "rationale": "Taxi teams are said to return, and a taxi team section lists them."
-    },
-    {
-     "feature": "shows",
-     "quote": "Live performances full of emotion",
-     "rationale": "Live performances by artists are advertised as part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "The Kizz Factor – TV show original competition",
-     "rationale": "A competition called The Kizz Factor is listed among the activities."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Exclusive masterclasses",
-     "rationale": "Masterclasses are explicitly offered."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18680",
+  "events": [
+   {
+    "event_id": 18680,
+    "artists": [
+     {
+      "name_as_written": "Fred & Morgane",
+      "role": "teacher",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇫🇷🇫🇷",
+      "source_line": "🩶 🇫🇷🇫🇷 Fred & Morgane (Kizomba Influence)"
+     },
+     {
+      "name_as_written": "Jesus Y Anni",
+      "role": "teacher",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇪🇸🇪🇸",
+      "source_line": "🩶 🇪🇸🇪🇸 Jesus Y Anni (metakizz)"
+     },
+     {
+      "name_as_written": "Michael & Anika",
+      "role": "teacher",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇳🇱🇦🇹",
+      "source_line": "🩶 🇳🇱🇦🇹 Michael & Anika (kizz ryders)"
+     },
+     {
+      "name_as_written": "Benoit & Sneja",
+      "role": "teacher",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇫🇷🇮🇹",
+      "source_line": "🩶 🇫🇷🇮🇹 Benoit & Sneja (crazy kiz)"
+     },
+     {
+      "name_as_written": "Chris Da White",
+      "role": "teacher",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇫🇷",
+      "source_line": "🩶 🇫🇷 Chris Da White (kizz kiss)"
+     },
+     {
+      "name_as_written": "Rita Szabo",
+      "role": "teacher",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇭🇺",
+      "source_line": "🩶 🇭🇺 Rita Szabo (kizomba club hungary)"
+     },
+     {
+      "name_as_written": "Larisa & Vlado",
+      "role": "teacher",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇭🇷🇭🇷",
+      "source_line": "🩶 🇭🇷🇭🇷Larisa & Vlado (kizomba club croatia)"
+     },
+     {
+      "name_as_written": "Heartbeatkiz",
+      "role": "teacher",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇸🇮",
+      "source_line": "🩶 🇸🇮 Heartbeatkiz"
+     },
+     {
+      "name_as_written": "Funomen",
+      "role": "teacher",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇫🇷",
+      "source_line": "🩶 🇫🇷 Funomen"
+     },
+     {
+      "name_as_written": "Dex & Lau",
+      "role": "teacher",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
+      "country": "🇨🇬🇫🇷",
+      "source_line": "🩶 🇨🇬🇫🇷 Dex & Lau (olympiades semba 2025 – 1st)"
+     },
+     {
+      "name_as_written": "Oncle Kani",
+      "role": "teacher",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
+      "country": "🇫🇷",
+      "source_line": "🩶 🇫🇷 Oncle Kani (Wakanda)"
+     },
+     {
+      "name_as_written": "Laura Buffone",
+      "role": "teacher",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
+      "country": "🇮🇹",
+      "source_line": "🩶 🇮🇹 Laura Buffone"
+     },
+     {
+      "name_as_written": "Michel & Aga",
+      "role": "teacher",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
+      "country": "🇫🇷",
+      "source_line": "🩶 🇫🇷 Michel & Aga"
+     },
+     {
+      "name_as_written": "Sani Groove",
+      "role": "teacher",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
+      "country": "🇬🇭🇨🇿",
+      "source_line": "🩶 🇬🇭🇨🇿 Sani Groove"
+     },
+     {
+      "name_as_written": "Stefanio Lima",
+      "role": "dj",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇳🇱",
+      "source_line": "❤️ 🇳🇱 Stefanio Lima (legacy)"
+     },
+     {
+      "name_as_written": "Dj Snakes",
+      "role": "dj",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇫🇷",
+      "source_line": "❤️ 🇫🇷 Dj Snakes"
+     },
+     {
+      "name_as_written": "Dj Lehny",
+      "role": "dj",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇫🇷",
+      "source_line": "❤️ 🇫🇷 Dj Lehny (bushido)"
+     },
+     {
+      "name_as_written": "Dj Omega",
+      "role": "dj",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇩🇪",
+      "source_line": "❤️ 🇩🇪 Dj Omega (8 times 2gether)"
+     },
+     {
+      "name_as_written": "Dj Biju’",
+      "role": "dj",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇷🇴",
+      "source_line": "❤️ 🇷🇴 Dj Biju’ (colors ds)"
+     },
+     {
+      "name_as_written": "Dj Yomi G",
+      "role": "dj",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇫🇷",
+      "source_line": "❤️ 🇫🇷 Dj Yomi G (funomen)"
+     },
+     {
+      "name_as_written": "Dj Lucky Lux",
+      "role": "dj",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇸🇮",
+      "source_line": "❤️ 🇸🇮 Dj Lucky Lux (kizz kiss)"
+     },
+     {
+      "name_as_written": "Poema Beatz",
+      "role": "dj",
+      "style": "𝐔𝐑𝐁𝐀𝐍 / 𝐅𝐔𝐒𝐈𝐎𝐍",
+      "country": "🇸🇪",
+      "source_line": "❤️ 🇸🇪 Poema Beatz (kizz kiss)"
+     },
+     {
+      "name_as_written": "Dj Jarod",
+      "role": "dj",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
+      "country": "🇫🇷",
+      "source_line": "❤️ 🇫🇷 Dj Jarod"
+     },
+     {
+      "name_as_written": "Dj Igor",
+      "role": "dj",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
+      "country": "🇭🇷",
+      "source_line": "❤️ 🇭🇷 Dj Igor"
+     },
+     {
+      "name_as_written": "Dj Caliph",
+      "role": "dj",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
+      "country": "🇬🇭",
+      "source_line": "❤️ 🇬🇭 Dj Caliph"
+     },
+     {
+      "name_as_written": "Dj Prince",
+      "role": "dj",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
+      "country": "🇮🇹",
+      "source_line": "❤️ 🇮🇹 Dj Prince (prince events)"
+     },
+     {
+      "name_as_written": "Dj Tiwosh",
+      "role": "dj",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
+      "country": "🇫🇷",
+      "source_line": "❤️ 🇫🇷 Dj Tiwosh (kizz kiss)"
+     },
+     {
+      "name_as_written": "Funomen",
+      "role": "crew",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🖤 🇫🇷 Funomen"
+     },
+     {
+      "name_as_written": "Kiz Alpha Pack",
+      "role": "crew",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🖤 🇮🇹 Kiz Alpha Pack"
+     },
+     {
+      "name_as_written": "Kizomba Club Hungary",
+      "role": "crew",
+      "style": null,
+      "country": "🇭🇺",
+      "source_line": "🖤 🇭🇺 Kizomba Club Hungary"
+     },
+     {
+      "name_as_written": "Heartbeatkiz",
+      "role": "crew",
+      "style": null,
+      "country": "🇸🇮",
+      "source_line": "🖤 🇸🇮 Heartbeatkiz"
+     },
+     {
+      "name_as_written": "Mozaik",
+      "role": "crew",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🖤 🇫🇷 Mozaik"
+     },
+     {
+      "name_as_written": "Dani To The Dance",
+      "role": "media",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💗 🇩🇪 Dani To The Dance 🎥"
+     },
+     {
+      "name_as_written": "Bianka",
+      "role": "media",
+      "style": null,
+      "country": "🇭🇺",
+      "source_line": "💗 🇭🇺 Bianka 📸"
+     },
+     {
+      "name_as_written": "Mvivanov",
+      "role": "media",
+      "style": null,
+      "country": "🇧🇬",
+      "source_line": "💗 🇧🇬 Mvivanov 📸"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops with top international artists",
+      "rationale": "The description states that workshops with international artists are part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 Rooms",
+      "rationale": "The event has three rooms for dancing, so more than one dance room is present."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Your status, your color party",
+      "rationale": "A colour-themed party is announced as part of the programme."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "taxi teams return in 2027",
+      "rationale": "Taxi teams are said to return, and a taxi team section lists them."
+     },
+     {
+      "feature": "shows",
+      "quote": "Live performances full of emotion",
+      "rationale": "Live performances by artists are advertised as part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "The Kizz Factor – TV show original competition",
+      "rationale": "A competition called The Kizz Factor is listed among the activities."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Exclusive masterclasses",
+      "rationale": "Masterclasses are explicitly offered."
+     }
+    ]
+   }
+  ]
+ }
 }

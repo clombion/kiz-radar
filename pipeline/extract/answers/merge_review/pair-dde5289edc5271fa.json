@@ -1,0 +1,13 @@
+{
+ "key_a": "p:simkiz",
+ "key_b": "p:simkizz",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "dde5289edc5271fa",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Sim Kiz and Sim Kizz are one stage name in a spelling variant, both teachers in Germany."
+ }
+}

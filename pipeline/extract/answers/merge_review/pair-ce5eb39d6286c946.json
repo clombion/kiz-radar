@@ -1,0 +1,13 @@
+{
+ "key_a": "p:davidyaye",
+ "key_b": "p:daviyaye",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ce5eb39d6286c946",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Distinctive surname Yaye with a spelling variant of the first name (Davi/David) and the same French stated country."
+ }
+}

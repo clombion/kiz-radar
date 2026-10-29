@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marco@ivana+marco",
+ "key_b": "p:marcopalladino",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "a7a7e538d2df0977",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Common first name Marco with Italy stated on both sides, but different partners (Ivana vs none) and no shared event."
+ }
+}

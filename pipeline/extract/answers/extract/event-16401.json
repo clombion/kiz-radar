@@ -1,200 +1,207 @@
 {
- "batch": "event-16401",
- "events": [
-  {
-   "event_id": 16401,
-   "artists": [
-    {
-     "name_as_written": "Willy & Jessy",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "Italy",
-     "source_line": "– Willy & Jessy (Italy)"
-    },
-    {
-     "name_as_written": "Jose & Maria",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "Spain",
-     "source_line": "– Jose & Maria (Spain)"
-    },
-    {
-     "name_as_written": "Anichi Perez",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "Spain",
-     "source_line": "– Anichi Perez (Spain)"
-    },
-    {
-     "name_as_written": "Jerko Cvitanic",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "Croatia",
-     "source_line": "– Jerko Cvitanic (Croatia)"
-    },
-    {
-     "name_as_written": "Marga & Nando",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "Greece / Netherlands",
-     "source_line": "– Marga & Nando (Greece / Netherlands)"
-    },
-    {
-     "name_as_written": "DJ Rocco Loco",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "🎧 DJ Rocco Loco"
-    },
-    {
-     "name_as_written": "Cuban Flex",
-     "role": "teacher",
-     "style": "CUBAN",
-     "country": "Cuba / Italy",
-     "source_line": "– Cuban Flex (Cuba / Italy)"
-    },
-    {
-     "name_as_written": "Mercedes Sayut",
-     "role": "teacher",
-     "style": "CUBAN",
-     "country": "Spain",
-     "source_line": "– Mercedes Sayut (Spain)"
-    },
-    {
-     "name_as_written": "Lazaro & Irena",
-     "role": "teacher",
-     "style": "CUBAN",
-     "country": "Croatia",
-     "source_line": "– Lazaro & Irena (Croatia)"
-    },
-    {
-     "name_as_written": "DJ Javier La Rosa",
-     "role": "dj",
-     "style": "CUBAN",
-     "country": "Cuba / UK",
-     "source_line": "🎧 DJ Javier La Rosa (Cuba / UK)"
-    },
-    {
-     "name_as_written": "DJ Wasia",
-     "role": "dj",
-     "style": "CUBAN",
-     "country": "Poland",
-     "source_line": "🎧 DJ Wasia (Poland)"
-    },
-    {
-     "name_as_written": "Giovana & Rafael",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Brazil",
-     "source_line": "– Giovana & Rafael (Brazil)"
-    },
-    {
-     "name_as_written": "Roger Cracco",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "UK",
-     "source_line": "– Roger Cracco (UK)"
-    },
-    {
-     "name_as_written": "Daniel & Monika",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Poland",
-     "source_line": "– Daniel & Monika (Poland)"
-    },
-    {
-     "name_as_written": "Claudio & Aleksandra",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Italy / Poland",
-     "source_line": "– Claudio & Aleksandra (Italy / Poland)"
-    },
-    {
-     "name_as_written": "Luka & Ema",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Croatia",
-     "source_line": "– Luka & Ema (Croatia)"
-    },
-    {
-     "name_as_written": "DJ Momo Latino",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": "Italy / Czech Republic",
-     "source_line": "🎧 DJ Momo Latino (Italy / Czech Republic)"
-    },
-    {
-     "name_as_written": "DJ eMotion",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": "Italy",
-     "source_line": "🎧 DJ eMotion (Italy)"
-    },
-    {
-     "name_as_written": "DJ Trevor Anthony",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": "UK",
-     "source_line": "🎧 DJ Trevor Anthony (UK)"
-    },
-    {
-     "name_as_written": "Asia Voronova",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "Ukraine / France",
-     "source_line": "– Asia Voronova (Ukraine / France)"
-    },
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "France",
-     "source_line": "– JP & Stephy (France)"
-    },
-    {
-     "name_as_written": "DJ Lenhy",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "France",
-     "source_line": "🎧 DJ Lenhy (France)"
-    },
-    {
-     "name_as_written": "DJ Le Grand Ti Wosh",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "France",
-     "source_line": "🎧 DJ Le Grand Ti Wosh (France)"
-    },
-    {
-     "name_as_written": "DJ Paraiso",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "France",
-     "source_line": "🎧 DJ Paraiso (France)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "5 days of workshops & open-air socials",
-     "rationale": "The description lists workshops as part of the five-day event."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "7 nights of beach parties",
-     "rationale": "The description states that there are beach parties on seven nights."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-party: 15.09",
-     "rationale": "A pre-party is announced for 15.09."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After-party: 21.09",
-     "rationale": "An after-party is announced for 21.09."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16401",
+  "events": [
+   {
+    "event_id": 16401,
+    "artists": [
+     {
+      "name_as_written": "Willy & Jessy",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "Italy",
+      "source_line": "– Willy & Jessy (Italy)"
+     },
+     {
+      "name_as_written": "Jose & Maria",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "Spain",
+      "source_line": "– Jose & Maria (Spain)"
+     },
+     {
+      "name_as_written": "Anichi Perez",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "Spain",
+      "source_line": "– Anichi Perez (Spain)"
+     },
+     {
+      "name_as_written": "Jerko Cvitanic",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "Croatia",
+      "source_line": "– Jerko Cvitanic (Croatia)"
+     },
+     {
+      "name_as_written": "Marga & Nando",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "Greece / Netherlands",
+      "source_line": "– Marga & Nando (Greece / Netherlands)"
+     },
+     {
+      "name_as_written": "DJ Rocco Loco",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "🎧 DJ Rocco Loco"
+     },
+     {
+      "name_as_written": "Cuban Flex",
+      "role": "teacher",
+      "style": "CUBAN",
+      "country": "Cuba / Italy",
+      "source_line": "– Cuban Flex (Cuba / Italy)"
+     },
+     {
+      "name_as_written": "Mercedes Sayut",
+      "role": "teacher",
+      "style": "CUBAN",
+      "country": "Spain",
+      "source_line": "– Mercedes Sayut (Spain)"
+     },
+     {
+      "name_as_written": "Lazaro & Irena",
+      "role": "teacher",
+      "style": "CUBAN",
+      "country": "Croatia",
+      "source_line": "– Lazaro & Irena (Croatia)"
+     },
+     {
+      "name_as_written": "DJ Javier La Rosa",
+      "role": "dj",
+      "style": "CUBAN",
+      "country": "Cuba / UK",
+      "source_line": "🎧 DJ Javier La Rosa (Cuba / UK)"
+     },
+     {
+      "name_as_written": "DJ Wasia",
+      "role": "dj",
+      "style": "CUBAN",
+      "country": "Poland",
+      "source_line": "🎧 DJ Wasia (Poland)"
+     },
+     {
+      "name_as_written": "Giovana & Rafael",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Brazil",
+      "source_line": "– Giovana & Rafael (Brazil)"
+     },
+     {
+      "name_as_written": "Roger Cracco",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "UK",
+      "source_line": "– Roger Cracco (UK)"
+     },
+     {
+      "name_as_written": "Daniel & Monika",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Poland",
+      "source_line": "– Daniel & Monika (Poland)"
+     },
+     {
+      "name_as_written": "Claudio & Aleksandra",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Italy / Poland",
+      "source_line": "– Claudio & Aleksandra (Italy / Poland)"
+     },
+     {
+      "name_as_written": "Luka & Ema",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Croatia",
+      "source_line": "– Luka & Ema (Croatia)"
+     },
+     {
+      "name_as_written": "DJ Momo Latino",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": "Italy / Czech Republic",
+      "source_line": "🎧 DJ Momo Latino (Italy / Czech Republic)"
+     },
+     {
+      "name_as_written": "DJ eMotion",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": "Italy",
+      "source_line": "🎧 DJ eMotion (Italy)"
+     },
+     {
+      "name_as_written": "DJ Trevor Anthony",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": "UK",
+      "source_line": "🎧 DJ Trevor Anthony (UK)"
+     },
+     {
+      "name_as_written": "Asia Voronova",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "Ukraine / France",
+      "source_line": "– Asia Voronova (Ukraine / France)"
+     },
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "France",
+      "source_line": "– JP & Stephy (France)"
+     },
+     {
+      "name_as_written": "DJ Lenhy",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "France",
+      "source_line": "🎧 DJ Lenhy (France)"
+     },
+     {
+      "name_as_written": "DJ Le Grand Ti Wosh",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "France",
+      "source_line": "🎧 DJ Le Grand Ti Wosh (France)"
+     },
+     {
+      "name_as_written": "DJ Paraiso",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "France",
+      "source_line": "🎧 DJ Paraiso (France)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "5 days of workshops & open-air socials",
+      "rationale": "The description lists workshops as part of the five-day event."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "7 nights of beach parties",
+      "rationale": "The description states that there are beach parties on seven nights."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-party: 15.09",
+      "rationale": "A pre-party is announced for 15.09."
+     },
+     {
+      "feature": "after_party",
+      "quote": "After-party: 21.09",
+      "rationale": "An after-party is announced for 21.09."
+     }
+    ]
+   }
+  ]
+ }
 }

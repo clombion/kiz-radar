@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dotizinha@dj",
+ "key_b": "p:dotizinhavamula",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "7d892fd830024966",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Dotizinha is the same stage name with the surname Vamula added, both DJs with Poland stated."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@cristina+manu",
+ "key_b": "p:cristinaolmos",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "191b161ab04aca14",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Cristina is a common first name; Manu y Cristina and the solo Cristina Olmos share only the Spain country."
+ }
+}

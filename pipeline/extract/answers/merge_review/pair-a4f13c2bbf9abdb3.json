@@ -1,0 +1,13 @@
+{
+ "key_a": "p:arnaud@arnaud+roya",
+ "key_b": "p:arnauddjbn",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "a4f13c2bbf9abdb3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Arnaud & Roya and Arnaud DJBN share a common first name and the France/Germany countries, but no partner or distinctive name links them."
+ }
+}

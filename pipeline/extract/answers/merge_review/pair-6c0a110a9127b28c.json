@@ -1,0 +1,13 @@
+{
+ "key_a": "p:isabelle@felicien+isabelle",
+ "key_b": "p:isabelle@gazl+isabelle",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "6c0a110a9127b28c",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Isabelle & Felicien and Gazl & Isabelle are couples with different partners that share only the common first name Isabelle."
+ }
+}

@@ -1,63 +1,70 @@
 {
- "batch": "event-16226",
- "events": [
-  {
-   "event_id": 16226,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 800.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 80.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": 15,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full pass (WS + 2 parties) – 800 SEK (80EUR)"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 500.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 50.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Party full pass – 500 SEK (50 EUR)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:59:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16226",
+  "events": [
+   {
+    "event_id": 16226,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 800.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 80.0,
+         "currency": "EUR"
+        },
+        "from": null,
+        "until": null,
+        "quantity": 15,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Full pass (WS + 2 parties) – 800 SEK (80EUR)"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 500.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 50.0,
+         "currency": "EUR"
+        },
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Party full pass – 500 SEK (50 EUR)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

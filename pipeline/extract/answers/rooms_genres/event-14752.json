@@ -1,26 +1,33 @@
 {
- "batch": "event-14752",
- "events": [
-  {
-   "event_id": 14752,
-   "party_rooms": {
-    "count": 4,
-    "quote": "Rooms, 4 unique atmospheres"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Pure Kizomba & Semba"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14752",
+  "events": [
+   {
+    "event_id": 14752,
+    "party_rooms": {
+     "count": 4,
+     "quote": "Rooms, 4 unique atmospheres"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Pure Kizomba & Semba"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Pure Kizomba & Semba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Pure Kizomba & Semba"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,26 +1,33 @@
 {
- "batch": "event-17064",
- "events": [
-  {
-   "event_id": 17064,
-   "artists": [],
-   "features": [
-    {
-     "feature": "day_socials",
-     "quote": "SOCIAL DANCING BY DAY",
-     "rationale": "Daytime social dancing is offered, which matches the daytime socials feature."
-    },
-    {
-     "feature": "workshops",
-     "quote": "OVER 15 HOURS OF WORKSHOP",
-     "rationale": "The event includes more than 15 hours of workshops, so dance classes are part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "JACK&JILL",
-     "rationale": "A Jack & Jill is listed, which is a competition format."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17064",
+  "events": [
+   {
+    "event_id": 17064,
+    "artists": [],
+    "features": [
+     {
+      "feature": "day_socials",
+      "quote": "SOCIAL DANCING BY DAY",
+      "rationale": "Daytime social dancing is offered, which matches the daytime socials feature."
+     },
+     {
+      "feature": "workshops",
+      "quote": "OVER 15 HOURS OF WORKSHOP",
+      "rationale": "The event includes more than 15 hours of workshops, so dance classes are part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "JACK&JILL",
+      "rationale": "A Jack & Jill is listed, which is a competition format."
+     }
+    ]
+   }
+  ]
+ }
 }

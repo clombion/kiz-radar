@@ -1,139 +1,146 @@
 {
- "batch": "event-18308",
- "events": [
-  {
-   "event_id": 18308,
-   "artists": [
-    {
-     "name_as_written": "POEMA BEATZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 POEMA BEATZ"
-    },
-    {
-     "name_as_written": "DJ KIN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ KIN"
-    },
-    {
-     "name_as_written": "DJ RALPH BB",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ RALPH BB"
-    },
-    {
-     "name_as_written": "DJ PASCAL",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ PASCAL"
-    },
-    {
-     "name_as_written": "DJ NAM’S",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ NAM’S"
-    },
-    {
-     "name_as_written": "DJ QDS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ QDS"
-    },
-    {
-     "name_as_written": "DJ AKYM",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ AKYM"
-    },
-    {
-     "name_as_written": "DJ CLAUDIO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ CLAUDIO"
-    },
-    {
-     "name_as_written": "MALICK & CARLA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 MALICK & CARLA"
-    },
-    {
-     "name_as_written": "MEHDI & TITIA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟣 MEHDI & TITIA"
-    },
-    {
-     "name_as_written": "LUCCHY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 LUCCHY"
-    },
-    {
-     "name_as_written": "STEPHANIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟣 STEPHANIE"
-    },
-    {
-     "name_as_written": "BAPTISTE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 BAPTISTE"
-    },
-    {
-     "name_as_written": "LAHO LEONE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟣LAHO LEONE"
-    },
-    {
-     "name_as_written": "TITONY & ADRIEN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟠TITONY & ADRIEN"
-    },
-    {
-     "name_as_written": "CLAUDE GOMIS",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟣CLAUDE GOMIS"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "10 hours of classes",
-     "rationale": "The program lists 10 hours of classes, which are dance classes that form part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms, multiple vibes!",
-     "rationale": "The description states the event has two dance rooms."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "🏨 Hotels",
-     "rationale": "The event lists several hotels with contact details, which act as recommended hotels without accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18308",
+  "events": [
+   {
+    "event_id": 18308,
+    "artists": [
+     {
+      "name_as_written": "POEMA BEATZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 POEMA BEATZ"
+     },
+     {
+      "name_as_written": "DJ KIN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ KIN"
+     },
+     {
+      "name_as_written": "DJ RALPH BB",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ RALPH BB"
+     },
+     {
+      "name_as_written": "DJ PASCAL",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ PASCAL"
+     },
+     {
+      "name_as_written": "DJ NAM’S",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ NAM’S"
+     },
+     {
+      "name_as_written": "DJ QDS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ QDS"
+     },
+     {
+      "name_as_written": "DJ AKYM",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ AKYM"
+     },
+     {
+      "name_as_written": "DJ CLAUDIO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ CLAUDIO"
+     },
+     {
+      "name_as_written": "MALICK & CARLA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 MALICK & CARLA"
+     },
+     {
+      "name_as_written": "MEHDI & TITIA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟣 MEHDI & TITIA"
+     },
+     {
+      "name_as_written": "LUCCHY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 LUCCHY"
+     },
+     {
+      "name_as_written": "STEPHANIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟣 STEPHANIE"
+     },
+     {
+      "name_as_written": "BAPTISTE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 BAPTISTE"
+     },
+     {
+      "name_as_written": "LAHO LEONE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟣LAHO LEONE"
+     },
+     {
+      "name_as_written": "TITONY & ADRIEN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟠TITONY & ADRIEN"
+     },
+     {
+      "name_as_written": "CLAUDE GOMIS",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟣CLAUDE GOMIS"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "10 hours of classes",
+      "rationale": "The program lists 10 hours of classes, which are dance classes that form part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms, multiple vibes!",
+      "rationale": "The description states the event has two dance rooms."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "🏨 Hotels",
+      "rationale": "The event lists several hotels with contact details, which act as recommended hotels without accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

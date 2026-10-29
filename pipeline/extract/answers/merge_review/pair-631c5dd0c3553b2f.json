@@ -1,0 +1,13 @@
+{
+ "key_a": "p:adrian@adrian+marina",
+ "key_b": "p:adrian@adrian+ruxi",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "631c5dd0c3553b2f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Adrian & Marina and Adrian & Ruxi are two couples with different partners; the only shared evidence is the common first name Adrian and Romania."
+ }
+}

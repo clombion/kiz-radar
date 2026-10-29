@@ -1,163 +1,170 @@
 {
- "batch": "event-18697",
- "events": [
-  {
-   "event_id": 18697,
-   "artists": [
-    {
-     "name_as_written": "DJ Lenhy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Godfather: DJ Lenhy"
-    },
-    {
-     "name_as_written": "DJ Snakes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Snakes"
-    },
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Shark"
-    },
-    {
-     "name_as_written": "DJ Diablo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Diablo"
-    },
-    {
-     "name_as_written": "DJ Jahnaï",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Jahnaï"
-    },
-    {
-     "name_as_written": "DJ Mtee",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Mtee"
-    },
-    {
-     "name_as_written": "DJ Relampago",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Relampago"
-    },
-    {
-     "name_as_written": "Jesus & Anni",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Jesus & Anni"
-    },
-    {
-     "name_as_written": "Val’r & Sarah",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Val’r & Sarah"
-    },
-    {
-     "name_as_written": "Karl Bekene & Kiki",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Karl Bekene & Kiki"
-    },
-    {
-     "name_as_written": "Jah J’a & Jeisy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Jah J’a & Jeisy"
-    },
-    {
-     "name_as_written": "Ati",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Ati"
-    },
-    {
-     "name_as_written": "Ariel & Mylena",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Ariel & Mylena"
-    },
-    {
-     "name_as_written": "Relampago",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Relampago"
-    },
-    {
-     "name_as_written": "Kalypso & Adé",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Kalypso & Adé"
-    },
-    {
-     "name_as_written": "Benkos Tarehi ProdArts",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "– Benkos Tarehi ProdArts"
-    },
-    {
-     "name_as_written": "Yoan Perrin",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "– Yoan Perrin"
-    },
-    {
-     "name_as_written": "Association Kizomba Genève",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "– Association Kizomba Genève"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Exceptional setting in a 4 stars hotel between lake and mountains",
-     "rationale": "The event is held in a hotel setting where the parties take place, matching the all-in-one format named in the title."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 Rooms, 3 Atmospheres",
-     "rationale": "The text states the festival has three rooms."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Special festival rates, please be aware that rooms are limited.",
-     "rationale": "A partner hotel offers negotiated festival rates without the accommodation being part of a pass."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "FREE SHUTTLES",
-     "rationale": "Free shuttles to and from the airport are offered."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TEAM TAXIS & STANDS",
-     "rationale": "A taxi team is listed as part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18697",
+  "events": [
+   {
+    "event_id": 18697,
+    "artists": [
+     {
+      "name_as_written": "DJ Lenhy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Godfather: DJ Lenhy"
+     },
+     {
+      "name_as_written": "DJ Snakes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Snakes"
+     },
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Shark"
+     },
+     {
+      "name_as_written": "DJ Diablo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Diablo"
+     },
+     {
+      "name_as_written": "DJ Jahnaï",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Jahnaï"
+     },
+     {
+      "name_as_written": "DJ Mtee",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Mtee"
+     },
+     {
+      "name_as_written": "DJ Relampago",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Relampago"
+     },
+     {
+      "name_as_written": "Jesus & Anni",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Jesus & Anni"
+     },
+     {
+      "name_as_written": "Val’r & Sarah",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Val’r & Sarah"
+     },
+     {
+      "name_as_written": "Karl Bekene & Kiki",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Karl Bekene & Kiki"
+     },
+     {
+      "name_as_written": "Jah J’a & Jeisy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Jah J’a & Jeisy"
+     },
+     {
+      "name_as_written": "Ati",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Ati"
+     },
+     {
+      "name_as_written": "Ariel & Mylena",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Ariel & Mylena"
+     },
+     {
+      "name_as_written": "Relampago",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Relampago"
+     },
+     {
+      "name_as_written": "Kalypso & Adé",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Kalypso & Adé"
+     },
+     {
+      "name_as_written": "Benkos Tarehi ProdArts",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "– Benkos Tarehi ProdArts"
+     },
+     {
+      "name_as_written": "Yoan Perrin",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "– Yoan Perrin"
+     },
+     {
+      "name_as_written": "Association Kizomba Genève",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "– Association Kizomba Genève"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "Exceptional setting in a 4 stars hotel between lake and mountains",
+      "rationale": "The event is held in a hotel setting where the parties take place, matching the all-in-one format named in the title."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 Rooms, 3 Atmospheres",
+      "rationale": "The text states the festival has three rooms."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Special festival rates, please be aware that rooms are limited.",
+      "rationale": "A partner hotel offers negotiated festival rates without the accommodation being part of a pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "FREE SHUTTLES",
+      "rationale": "Free shuttles to and from the airport are offered."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TEAM TAXIS & STANDS",
+      "rationale": "A taxi team is listed as part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

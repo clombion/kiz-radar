@@ -1,36 +1,43 @@
 {
- "batch": "event-16698",
- "events": [
-  {
-   "event_id": 16698,
-   "artists": [
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ DJ ICHIGO 🇫🇷"
-    },
-    {
-     "name_as_written": "Tokoos Dance",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Contact us on our page Tokoos Dance"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE LOCATION",
-     "rationale": "The title says the festival is all in one location, which suggests the parties and the hotel are in the same venue."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Hotel and pass:",
-     "rationale": "The ticket section lists the hotel together with the pass, which suggests accommodation is part of the package."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16698",
+  "events": [
+   {
+    "event_id": 16698,
+    "artists": [
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ DJ ICHIGO 🇫🇷"
+     },
+     {
+      "name_as_written": "Tokoos Dance",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Contact us on our page Tokoos Dance"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE LOCATION",
+      "rationale": "The title says the festival is all in one location, which suggests the parties and the hotel are in the same venue."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Hotel and pass:",
+      "rationale": "The ticket section lists the hotel together with the pass, which suggests accommodation is part of the package."
+     }
+    ]
+   }
+  ]
+ }
 }

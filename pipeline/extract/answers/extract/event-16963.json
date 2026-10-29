@@ -1,92 +1,99 @@
 {
- "batch": "event-16963",
- "events": [
-  {
-   "event_id": 16963,
-   "artists": [
-    {
-     "name_as_written": "VALR & SARAH",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "▫️✔️ VALR & SARAH 🇫🇷"
-    },
-    {
-     "name_as_written": "LIENE & ELINA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇱🇻",
-     "source_line": "▫️✔️ LIENE & ELINA 🇱🇻"
-    },
-    {
-     "name_as_written": "RODRIGUE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "▫️✔️ RODRIGUE 🇫🇷"
-    },
-    {
-     "name_as_written": "FAREL & EVE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "▫️✔️ FAREL & EVE 🇫🇷"
-    },
-    {
-     "name_as_written": "DIMA & KSENIA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇱🇻",
-     "source_line": "▫️✔️DIMA & KSENIA 🇱🇻"
-    },
-    {
-     "name_as_written": "DJ ANGELO",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ ANGELO 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ LOY-J",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ DJ LOY-J 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ OMG",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇻",
-     "source_line": "🎧 DJ OMG 🇱🇻"
-    },
-    {
-     "name_as_written": "DJ RX",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇻",
-     "source_line": "🎧DJ RX 🇱🇻"
-    },
-    {
-     "name_as_written": "DJ X",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇻",
-     "source_line": "🎧DJ X 🇱🇻"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "𝐋𝐞𝐚𝐫𝐧 𝐰𝐢𝐭𝐡 𝐈𝐍𝐓𝐄𝐑𝐍𝐀𝐓𝐈𝐎𝐍𝐀𝐋 𝐅𝐑𝐀𝐍𝐂𝐄 𝐭𝐞𝐚𝐜𝐡𝐞𝐫𝐬",
-     "rationale": "The description says attendees learn from international French teachers, so dance classes are part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "🏢𝐇𝐎𝐓𝐄𝐋𝐒 ⏬️",
-     "rationale": "A list of recommended hotels is given under a hotels heading, separate from the venue and not stated as included in a pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16963",
+  "events": [
+   {
+    "event_id": 16963,
+    "artists": [
+     {
+      "name_as_written": "VALR & SARAH",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "▫️✔️ VALR & SARAH 🇫🇷"
+     },
+     {
+      "name_as_written": "LIENE & ELINA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇱🇻",
+      "source_line": "▫️✔️ LIENE & ELINA 🇱🇻"
+     },
+     {
+      "name_as_written": "RODRIGUE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "▫️✔️ RODRIGUE 🇫🇷"
+     },
+     {
+      "name_as_written": "FAREL & EVE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "▫️✔️ FAREL & EVE 🇫🇷"
+     },
+     {
+      "name_as_written": "DIMA & KSENIA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇱🇻",
+      "source_line": "▫️✔️DIMA & KSENIA 🇱🇻"
+     },
+     {
+      "name_as_written": "DJ ANGELO",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ ANGELO 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ LOY-J",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ DJ LOY-J 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ OMG",
+      "role": "dj",
+      "style": null,
+      "country": "🇱🇻",
+      "source_line": "🎧 DJ OMG 🇱🇻"
+     },
+     {
+      "name_as_written": "DJ RX",
+      "role": "dj",
+      "style": null,
+      "country": "🇱🇻",
+      "source_line": "🎧DJ RX 🇱🇻"
+     },
+     {
+      "name_as_written": "DJ X",
+      "role": "dj",
+      "style": null,
+      "country": "🇱🇻",
+      "source_line": "🎧DJ X 🇱🇻"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "𝐋𝐞𝐚𝐫𝐧 𝐰𝐢𝐭𝐡 𝐈𝐍𝐓𝐄𝐑𝐍𝐀𝐓𝐈𝐎𝐍𝐀𝐋 𝐅𝐑𝐀𝐍𝐂𝐄 𝐭𝐞𝐚𝐜𝐡𝐞𝐫𝐬",
+      "rationale": "The description says attendees learn from international French teachers, so dance classes are part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "🏢𝐇𝐎𝐓𝐄𝐋𝐒 ⏬️",
+      "rationale": "A list of recommended hotels is given under a hotels heading, separate from the venue and not stated as included in a pass."
+     }
+    ]
+   }
+  ]
+ }
 }

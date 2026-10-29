@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabrizio@dj",
+ "key_b": "p:fabriziozoro",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "947ca088edf66e1c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Fabrizio and DJ Fabrizio Zoro are both DJs with Italy stated on both sides, the same pattern as a DJ prefix plus a fuller stage name."
+ }
+}

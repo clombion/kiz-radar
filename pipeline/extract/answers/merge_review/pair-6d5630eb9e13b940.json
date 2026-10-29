@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johann@estelle+johann",
+ "key_b": "p:johann@johann+lucie",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "6d5630eb9e13b940",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Johann & Estelle and Johann & Lucie are couples with different partners at different events, so only the common first name Johann is shared."
+ }
+}

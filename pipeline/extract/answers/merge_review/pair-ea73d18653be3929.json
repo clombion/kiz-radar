@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marvinramos",
+ "key_b": "p:marvinramosacosta",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ea73d18653be3929",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Marvin Ramos is the same salsa teacher with the same Colombia country, and Marvin Ramos Acosta is the full form of that name."
+ }
+}

@@ -1,69 +1,76 @@
 {
- "batch": "event-16503",
- "events": [
-  {
-   "event_id": 16503,
-   "artists": [
-    {
-     "name_as_written": "Jesus & Anni",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Jesus & Anni"
-    },
-    {
-     "name_as_written": "Meggie & Stophy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Meggie & Stophy"
-    },
-    {
-     "name_as_written": "Eric & Annalise",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Eric & Annalise"
-    },
-    {
-     "name_as_written": "Samy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Samy"
-    },
-    {
-     "name_as_written": "Flavie",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Flavie"
-    },
-    {
-     "name_as_written": "DJ NS",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "💛 Presented by DJ NS"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Exclusive Bootcamps & Workshops",
-     "rationale": "The description lists Bootcamps & Workshops as part of the event."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Exclusive Bootcamps & Workshops",
-     "rationale": "Bootcamps are explicitly offered as part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Surprise Performances & Media Moments",
-     "rationale": "Surprise performances are announced as part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16503",
+  "events": [
+   {
+    "event_id": 16503,
+    "artists": [
+     {
+      "name_as_written": "Jesus & Anni",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Jesus & Anni"
+     },
+     {
+      "name_as_written": "Meggie & Stophy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Meggie & Stophy"
+     },
+     {
+      "name_as_written": "Eric & Annalise",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Eric & Annalise"
+     },
+     {
+      "name_as_written": "Samy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Samy"
+     },
+     {
+      "name_as_written": "Flavie",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Flavie"
+     },
+     {
+      "name_as_written": "DJ NS",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "💛 Presented by DJ NS"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Exclusive Bootcamps & Workshops",
+      "rationale": "The description lists Bootcamps & Workshops as part of the event."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Exclusive Bootcamps & Workshops",
+      "rationale": "Bootcamps are explicitly offered as part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "Surprise Performances & Media Moments",
+      "rationale": "Surprise performances are announced as part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

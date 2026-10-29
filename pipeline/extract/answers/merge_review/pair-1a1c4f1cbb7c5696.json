@@ -1,0 +1,13 @@
+{
+ "key_a": "p:daniela@allan+daniela",
+ "key_b": "p:danielaelena",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "1a1c4f1cbb7c5696",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Daniela is a common first name; Allan and Daniela and Daniela Elena share only the Romania country within a multi-country list."
+ }
+}

@@ -1,224 +1,231 @@
 {
- "batch": "event-15759",
- "events": [
-  {
-   "event_id": 15759,
-   "artists": [
-    {
-     "name_as_written": "Victor y Alba",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Spain",
-     "source_line": "Victor y Alba 🇪🇸 Spain"
-    },
-    {
-     "name_as_written": "Anita y Varea",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Spain",
-     "source_line": "Anita y Varea 🇪🇸 Spain"
-    },
-    {
-     "name_as_written": "Luismi y Marian",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Spain",
-     "source_line": "Luismi y Marian 🇪🇸 Spain"
-    },
-    {
-     "name_as_written": "Jack & Sara",
-     "role": "teacher",
-     "style": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐",
-     "country": "Spain",
-     "source_line": "Jack & Sara 🇪🇸 Spain"
-    },
-    {
-     "name_as_written": "Akram & Sara",
-     "role": "teacher",
-     "style": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐",
-     "country": "Switzerland",
-     "source_line": "Akram & Sara 🇨🇭 Switzerland"
-    },
-    {
-     "name_as_written": "Viktor & Monica",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Japan",
-     "source_line": "Viktor & Monica 🇯🇵 Japan"
-    },
-    {
-     "name_as_written": "Franklong",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Vietnam",
-     "source_line": "Franklong 🇻🇳 Vietnam"
-    },
-    {
-     "name_as_written": "Stella",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Korea",
-     "source_line": "Stella 🇰🇷 Korea"
-    },
-    {
-     "name_as_written": "Paul & Ariane",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Philippines",
-     "source_line": "Paul & Ariane 🇵🇭 Philippines"
-    },
-    {
-     "name_as_written": "Alex & Saori",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Japan",
-     "source_line": "Alex & Saori 🇯🇵 Japan"
-    },
-    {
-     "name_as_written": "Nari Son",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Korea",
-     "source_line": "Nari Son 🇰🇷 Korea"
-    },
-    {
-     "name_as_written": "Kick & Mitsu",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Japan",
-     "source_line": "Kick & Mitsu 🇯🇵 Japan"
-    },
-    {
-     "name_as_written": "Ian & Lauren",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Japan",
-     "source_line": "Ian & Lauren 🇯🇵 Japan"
-    },
-    {
-     "name_as_written": "Daewoo & Dream",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Korea",
-     "source_line": "Daewoo & Dream 🇰🇷 Korea"
-    },
-    {
-     "name_as_written": "Zhandos & Aida",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Kazakhstan",
-     "source_line": "Zhandos & Aida 🇰🇿 Kazakhstan"
-    },
-    {
-     "name_as_written": "Oscar & Anna",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Vietnam / 🇦🇷 Argentina",
-     "source_line": "Oscar & Anna 🇻🇳 Vietnam / 🇦🇷 Argentina"
-    },
-    {
-     "name_as_written": "Nam & Bingo",
-     "role": "teacher",
-     "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Vietnam",
-     "source_line": "Nam & Bingo 🇻🇳 Vietnam"
-    },
-    {
-     "name_as_written": "Adrian y Yoli",
-     "role": "teacher",
-     "style": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐",
-     "country": "China",
-     "source_line": "Adrian y Yoli 🇨🇳 China"
-    },
-    {
-     "name_as_written": "Kevin",
-     "role": "teacher",
-     "style": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐",
-     "country": "Philippines",
-     "source_line": "Kevin 🇵🇭 Philippines"
-    },
-    {
-     "name_as_written": "DJ Harry",
-     "role": "dj",
-     "style": null,
-     "country": "Malaysia",
-     "source_line": "DJ Harry 🇲🇾 Malaysia"
-    },
-    {
-     "name_as_written": "DJ Nam",
-     "role": "dj",
-     "style": null,
-     "country": "Viet Nam",
-     "source_line": "DJ Nam 🇻🇳 Viet Nam"
-    },
-    {
-     "name_as_written": "DJ Akram",
-     "role": "dj",
-     "style": null,
-     "country": "Spain",
-     "source_line": "DJ Akram 🇪🇸 Spain"
-    },
-    {
-     "name_as_written": "DJ Hugo Boss",
-     "role": "dj",
-     "style": null,
-     "country": "Spain",
-     "source_line": "DJ Hugo Boss 🇪🇸 Spain"
-    },
-    {
-     "name_as_written": "DJ Amy",
-     "role": "dj",
-     "style": null,
-     "country": "China",
-     "source_line": "DJ Amy 🇨🇳 China"
-    },
-    {
-     "name_as_written": "DJ BLD",
-     "role": "dj",
-     "style": null,
-     "country": "Korea",
-     "source_line": "DJ BLD 🇰🇷 Korea"
-    },
-    {
-     "name_as_written": "John Anthony",
-     "role": "mc",
-     "style": null,
-     "country": null,
-     "source_line": "𝑰𝒏𝒕𝒆𝒓𝒏𝒂𝒕𝒊𝒐𝒏𝒂𝒍 𝑴𝑪 John Anthony"
-    }
-   ],
-   "features": [
-    {
-     "feature": "beach_party",
-     "quote": "𝑩𝒆𝒂𝒄𝒉 𝒑𝒂𝒓𝒕𝒚",
-     "rationale": "The description lists a beach party as part of the festival."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 𝑫𝒚𝒏𝒂𝒎𝒊𝒄 𝑫𝒂𝒏𝒄𝒆 𝑹𝒐𝒐𝒎𝒔",
-     "rationale": "Three dance rooms are advertised, meaning more than one dance floor."
-    },
-    {
-     "feature": "workshops",
-     "quote": "𝑴𝒐𝒓𝒆 𝒕𝒉𝒂𝒏 50 𝒐𝒇 𝑬𝒙𝒄𝒊𝒕𝒊𝒏𝒈 𝑾𝒐𝒓𝒌𝒔𝒉𝒐𝒑𝒔",
-     "rationale": "More than 50 workshops are offered as part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "𝑨𝒔𝒊𝒂 𝑱𝒂𝒄𝒌 & 𝑱𝒊𝒍𝒍 𝑪𝒐𝒎𝒑𝒆𝒕𝒊𝒕𝒊𝒐𝒏",
-     "rationale": "An Asia Jack & Jill competition is announced."
-    },
-    {
-     "feature": "shows",
-     "quote": "𝑰𝒏𝒄𝒓𝒆𝒅𝒊𝒃𝒍𝒆 𝑺𝒉𝒐𝒘𝒔 𝒂𝒏𝒅 𝑷𝒆𝒓𝒇𝒐𝒓𝒎𝒂𝒏𝒄𝒆𝒔",
-     "rationale": "Shows and performances by artists are advertised."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-parties: Thursday",
-     "rationale": "Pre-parties are scheduled before the three main nights."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15759",
+  "events": [
+   {
+    "event_id": 15759,
+    "artists": [
+     {
+      "name_as_written": "Victor y Alba",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Spain",
+      "source_line": "Victor y Alba 🇪🇸 Spain"
+     },
+     {
+      "name_as_written": "Anita y Varea",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Spain",
+      "source_line": "Anita y Varea 🇪🇸 Spain"
+     },
+     {
+      "name_as_written": "Luismi y Marian",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Spain",
+      "source_line": "Luismi y Marian 🇪🇸 Spain"
+     },
+     {
+      "name_as_written": "Jack & Sara",
+      "role": "teacher",
+      "style": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐",
+      "country": "Spain",
+      "source_line": "Jack & Sara 🇪🇸 Spain"
+     },
+     {
+      "name_as_written": "Akram & Sara",
+      "role": "teacher",
+      "style": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐",
+      "country": "Switzerland",
+      "source_line": "Akram & Sara 🇨🇭 Switzerland"
+     },
+     {
+      "name_as_written": "Viktor & Monica",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Japan",
+      "source_line": "Viktor & Monica 🇯🇵 Japan"
+     },
+     {
+      "name_as_written": "Franklong",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Vietnam",
+      "source_line": "Franklong 🇻🇳 Vietnam"
+     },
+     {
+      "name_as_written": "Stella",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Korea",
+      "source_line": "Stella 🇰🇷 Korea"
+     },
+     {
+      "name_as_written": "Paul & Ariane",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Philippines",
+      "source_line": "Paul & Ariane 🇵🇭 Philippines"
+     },
+     {
+      "name_as_written": "Alex & Saori",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Japan",
+      "source_line": "Alex & Saori 🇯🇵 Japan"
+     },
+     {
+      "name_as_written": "Nari Son",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Korea",
+      "source_line": "Nari Son 🇰🇷 Korea"
+     },
+     {
+      "name_as_written": "Kick & Mitsu",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Japan",
+      "source_line": "Kick & Mitsu 🇯🇵 Japan"
+     },
+     {
+      "name_as_written": "Ian & Lauren",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Japan",
+      "source_line": "Ian & Lauren 🇯🇵 Japan"
+     },
+     {
+      "name_as_written": "Daewoo & Dream",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Korea",
+      "source_line": "Daewoo & Dream 🇰🇷 Korea"
+     },
+     {
+      "name_as_written": "Zhandos & Aida",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Kazakhstan",
+      "source_line": "Zhandos & Aida 🇰🇿 Kazakhstan"
+     },
+     {
+      "name_as_written": "Oscar & Anna",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Vietnam / 🇦🇷 Argentina",
+      "source_line": "Oscar & Anna 🇻🇳 Vietnam / 🇦🇷 Argentina"
+     },
+     {
+      "name_as_written": "Nam & Bingo",
+      "role": "teacher",
+      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "country": "Vietnam",
+      "source_line": "Nam & Bingo 🇻🇳 Vietnam"
+     },
+     {
+      "name_as_written": "Adrian y Yoli",
+      "role": "teacher",
+      "style": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐",
+      "country": "China",
+      "source_line": "Adrian y Yoli 🇨🇳 China"
+     },
+     {
+      "name_as_written": "Kevin",
+      "role": "teacher",
+      "style": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐",
+      "country": "Philippines",
+      "source_line": "Kevin 🇵🇭 Philippines"
+     },
+     {
+      "name_as_written": "DJ Harry",
+      "role": "dj",
+      "style": null,
+      "country": "Malaysia",
+      "source_line": "DJ Harry 🇲🇾 Malaysia"
+     },
+     {
+      "name_as_written": "DJ Nam",
+      "role": "dj",
+      "style": null,
+      "country": "Viet Nam",
+      "source_line": "DJ Nam 🇻🇳 Viet Nam"
+     },
+     {
+      "name_as_written": "DJ Akram",
+      "role": "dj",
+      "style": null,
+      "country": "Spain",
+      "source_line": "DJ Akram 🇪🇸 Spain"
+     },
+     {
+      "name_as_written": "DJ Hugo Boss",
+      "role": "dj",
+      "style": null,
+      "country": "Spain",
+      "source_line": "DJ Hugo Boss 🇪🇸 Spain"
+     },
+     {
+      "name_as_written": "DJ Amy",
+      "role": "dj",
+      "style": null,
+      "country": "China",
+      "source_line": "DJ Amy 🇨🇳 China"
+     },
+     {
+      "name_as_written": "DJ BLD",
+      "role": "dj",
+      "style": null,
+      "country": "Korea",
+      "source_line": "DJ BLD 🇰🇷 Korea"
+     },
+     {
+      "name_as_written": "John Anthony",
+      "role": "mc",
+      "style": null,
+      "country": null,
+      "source_line": "𝑰𝒏𝒕𝒆𝒓𝒏𝒂𝒕𝒊𝒐𝒏𝒂𝒍 𝑴𝑪 John Anthony"
+     }
+    ],
+    "features": [
+     {
+      "feature": "beach_party",
+      "quote": "𝑩𝒆𝒂𝒄𝒉 𝒑𝒂𝒓𝒕𝒚",
+      "rationale": "The description lists a beach party as part of the festival."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 𝑫𝒚𝒏𝒂𝒎𝒊𝒄 𝑫𝒂𝒏𝒄𝒆 𝑹𝒐𝒐𝒎𝒔",
+      "rationale": "Three dance rooms are advertised, meaning more than one dance floor."
+     },
+     {
+      "feature": "workshops",
+      "quote": "𝑴𝒐𝒓𝒆 𝒕𝒉𝒂𝒏 50 𝒐𝒇 𝑬𝒙𝒄𝒊𝒕𝒊𝒏𝒈 𝑾𝒐𝒓𝒌𝒔𝒉𝒐𝒑𝒔",
+      "rationale": "More than 50 workshops are offered as part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "𝑨𝒔𝒊𝒂 𝑱𝒂𝒄𝒌 & 𝑱𝒊𝒍𝒍 𝑪𝒐𝒎𝒑𝒆𝒕𝒊𝒕𝒊𝒐𝒏",
+      "rationale": "An Asia Jack & Jill competition is announced."
+     },
+     {
+      "feature": "shows",
+      "quote": "𝑰𝒏𝒄𝒓𝒆𝒅𝒊𝒃𝒍𝒆 𝑺𝒉𝒐𝒘𝒔 𝒂𝒏𝒅 𝑷𝒆𝒓𝒇𝒐𝒓𝒎𝒂𝒏𝒄𝒆𝒔",
+      "rationale": "Shows and performances by artists are advertised."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-parties: Thursday",
+      "rationale": "Pre-parties are scheduled before the three main nights."
+     }
+    ]
+   }
+  ]
+ }
 }

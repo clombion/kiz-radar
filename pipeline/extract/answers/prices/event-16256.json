@@ -1,109 +1,116 @@
 {
- "batch": "event-16256",
- "events": [
-  {
-   "event_id": 16256,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "☀️ Full Pass + Half-Board Room Package, for 3 days and 2 nights (Price per person), excluding tourist taxes:",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 230.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Double/Twin Room: €230"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "☀️ Full Pass + Half-Board Room Package, for 3 days and 2 nights (Price per person), excluding tourist taxes:",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 220.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Triple Room: €220"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "☀️ Full Pass + Half-Board Room Package, for 3 days and 2 nights (Price per person), excluding tourist taxes:",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 210.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Quadruple Room: €210"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 80.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full Pass Only: €80"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "The price of all packages will be subject to the following increases:",
-    "Increase in March 2026 ➡️ €20",
-    "Increase in June 2026 ➡️ €20",
-    "Increase in September 2026 ➡️ €20",
-    "Buy your package by March 2026 to save €60"
-   ]
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:59:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16256",
+  "events": [
+   {
+    "event_id": 16256,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "☀️ Full Pass + Half-Board Room Package, for 3 days and 2 nights (Price per person), excluding tourist taxes:",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 230.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Double/Twin Room: €230"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "☀️ Full Pass + Half-Board Room Package, for 3 days and 2 nights (Price per person), excluding tourist taxes:",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 220.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Triple Room: €220"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "☀️ Full Pass + Half-Board Room Package, for 3 days and 2 nights (Price per person), excluding tourist taxes:",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 210.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Quadruple Room: €210"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 80.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "Full Pass Only: €80"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "The price of all packages will be subject to the following increases:",
+     "Increase in March 2026 ➡️ €20",
+     "Increase in June 2026 ➡️ €20",
+     "Increase in September 2026 ➡️ €20",
+     "Buy your package by March 2026 to save €60"
+    ]
+   }
+  ]
+ }
 }

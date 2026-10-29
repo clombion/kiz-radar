@@ -1,284 +1,291 @@
 {
- "batch": "event-18747",
- "events": [
-  {
-   "event_id": 18747,
-   "artists": [
-    {
-     "name_as_written": "DJ WILLO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ WILLO"
-    },
-    {
-     "name_as_written": "DJ PASTAGUERO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ PASTAGUERO"
-    },
-    {
-     "name_as_written": "DJ CHANCHAN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ CHANCHAN"
-    },
-    {
-     "name_as_written": "DJ GIORGIO ROD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ GIORGIO ROD"
-    },
-    {
-     "name_as_written": "DJ MO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ MO"
-    },
-    {
-     "name_as_written": "DJ KARIM",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ KARIM"
-    },
-    {
-     "name_as_written": "DJ SAM GOLD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ SAM GOLD"
-    },
-    {
-     "name_as_written": "DJ WILLY G",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ WILLY G"
-    },
-    {
-     "name_as_written": "DJ GE CHICO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ GE CHICO"
-    },
-    {
-     "name_as_written": "DJ DIDI ELCYCLON",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ DIDI ELCYCLON"
-    },
-    {
-     "name_as_written": "DJ PHILL",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ PHILL"
-    },
-    {
-     "name_as_written": "DJ TOVO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ TOVO"
-    },
-    {
-     "name_as_written": "DJ KEV",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ KEV"
-    },
-    {
-     "name_as_written": "JORGE & INDIRA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️JORGE & INDIRA"
-    },
-    {
-     "name_as_written": "ALAIN & KATERINA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️ALAIN & KATERINA"
-    },
-    {
-     "name_as_written": "YDEL GOMEZ",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️YDEL GOMEZ"
-    },
-    {
-     "name_as_written": "YANNICK EL MAMBO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️YANNICK EL MAMBO"
-    },
-    {
-     "name_as_written": "DIDIER DES SABLES D’OLONNE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️DIDIER DES SABLES D’OLONNE"
-    },
-    {
-     "name_as_written": "EDU & FATI",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️EDU & FATI"
-    },
-    {
-     "name_as_written": "ALEXANDRE SISMERO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️ALEXANDRE SISMERO"
-    },
-    {
-     "name_as_written": "WILL MP & NAD",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️WILL MP & NAD"
-    },
-    {
-     "name_as_written": "MIKA & SOLENE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️MIKA & SOLENE"
-    },
-    {
-     "name_as_written": "DAVID & NOÉMIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️DAVID & NOÉMIE"
-    },
-    {
-     "name_as_written": "SAID & OKSANA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️SAID & OKSANA"
-    },
-    {
-     "name_as_written": "FRED & CHIARA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️FRED & CHIARA"
-    },
-    {
-     "name_as_written": "HOPE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️HOPE"
-    },
-    {
-     "name_as_written": "AMANDINE JEN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️AMANDINE JEN"
-    },
-    {
-     "name_as_written": "YVAR MAMBO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️YVAR MAMBO"
-    },
-    {
-     "name_as_written": "WINDYE & STEEVE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️WINDYE & STEEVE"
-    },
-    {
-     "name_as_written": "KEVIN KYTHO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️KEVIN KYTHO"
-    },
-    {
-     "name_as_written": "HÉLÈNE BERTHELOT",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "♦️HÉLÈNE BERTHELOT"
-    },
-    {
-     "name_as_written": "ROBERTO BURGOS",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️OUR SPEAKER ROBERTO BURGOS⭐️"
-    },
-    {
-     "name_as_written": "Sebastien & Stephan",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "With Sebastien & Stephan"
-    },
-    {
-     "name_as_written": "Dav Tibs",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 Dav Tibs"
-    },
-    {
-     "name_as_written": "SWING TURNPROD",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 SWING TURNPROD"
-    },
-    {
-     "name_as_written": "JHDRONEPRODUCTION",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 JHDRONEPRODUCTION"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "dance workshops",
-     "rationale": "The description states that dance workshops are part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "and shows",
-     "rationale": "The description lists shows as part of the event, and the schedule includes an artist showcase."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 rooms/3 vibes",
-     "rationale": "Parties take place in three separate rooms with different vibes."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "5-minute walk",
-     "rationale": "Several hotels are listed as nearby options near the venue, which indicates recommended hotels without accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18747",
+  "events": [
+   {
+    "event_id": 18747,
+    "artists": [
+     {
+      "name_as_written": "DJ WILLO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ WILLO"
+     },
+     {
+      "name_as_written": "DJ PASTAGUERO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ PASTAGUERO"
+     },
+     {
+      "name_as_written": "DJ CHANCHAN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ CHANCHAN"
+     },
+     {
+      "name_as_written": "DJ GIORGIO ROD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ GIORGIO ROD"
+     },
+     {
+      "name_as_written": "DJ MO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ MO"
+     },
+     {
+      "name_as_written": "DJ KARIM",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ KARIM"
+     },
+     {
+      "name_as_written": "DJ SAM GOLD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ SAM GOLD"
+     },
+     {
+      "name_as_written": "DJ WILLY G",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ WILLY G"
+     },
+     {
+      "name_as_written": "DJ GE CHICO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ GE CHICO"
+     },
+     {
+      "name_as_written": "DJ DIDI ELCYCLON",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ DIDI ELCYCLON"
+     },
+     {
+      "name_as_written": "DJ PHILL",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ PHILL"
+     },
+     {
+      "name_as_written": "DJ TOVO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ TOVO"
+     },
+     {
+      "name_as_written": "DJ KEV",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ KEV"
+     },
+     {
+      "name_as_written": "JORGE & INDIRA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️JORGE & INDIRA"
+     },
+     {
+      "name_as_written": "ALAIN & KATERINA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️ALAIN & KATERINA"
+     },
+     {
+      "name_as_written": "YDEL GOMEZ",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️YDEL GOMEZ"
+     },
+     {
+      "name_as_written": "YANNICK EL MAMBO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️YANNICK EL MAMBO"
+     },
+     {
+      "name_as_written": "DIDIER DES SABLES D’OLONNE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️DIDIER DES SABLES D’OLONNE"
+     },
+     {
+      "name_as_written": "EDU & FATI",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️EDU & FATI"
+     },
+     {
+      "name_as_written": "ALEXANDRE SISMERO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️ALEXANDRE SISMERO"
+     },
+     {
+      "name_as_written": "WILL MP & NAD",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️WILL MP & NAD"
+     },
+     {
+      "name_as_written": "MIKA & SOLENE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️MIKA & SOLENE"
+     },
+     {
+      "name_as_written": "DAVID & NOÉMIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️DAVID & NOÉMIE"
+     },
+     {
+      "name_as_written": "SAID & OKSANA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️SAID & OKSANA"
+     },
+     {
+      "name_as_written": "FRED & CHIARA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️FRED & CHIARA"
+     },
+     {
+      "name_as_written": "HOPE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️HOPE"
+     },
+     {
+      "name_as_written": "AMANDINE JEN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️AMANDINE JEN"
+     },
+     {
+      "name_as_written": "YVAR MAMBO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️YVAR MAMBO"
+     },
+     {
+      "name_as_written": "WINDYE & STEEVE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️WINDYE & STEEVE"
+     },
+     {
+      "name_as_written": "KEVIN KYTHO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️KEVIN KYTHO"
+     },
+     {
+      "name_as_written": "HÉLÈNE BERTHELOT",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "♦️HÉLÈNE BERTHELOT"
+     },
+     {
+      "name_as_written": "ROBERTO BURGOS",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️OUR SPEAKER ROBERTO BURGOS⭐️"
+     },
+     {
+      "name_as_written": "Sebastien & Stephan",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "With Sebastien & Stephan"
+     },
+     {
+      "name_as_written": "Dav Tibs",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 Dav Tibs"
+     },
+     {
+      "name_as_written": "SWING TURNPROD",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 SWING TURNPROD"
+     },
+     {
+      "name_as_written": "JHDRONEPRODUCTION",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 JHDRONEPRODUCTION"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "dance workshops",
+      "rationale": "The description states that dance workshops are part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "and shows",
+      "rationale": "The description lists shows as part of the event, and the schedule includes an artist showcase."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 rooms/3 vibes",
+      "rationale": "Parties take place in three separate rooms with different vibes."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "5-minute walk",
+      "rationale": "Several hotels are listed as nearby options near the venue, which indicates recommended hotels without accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

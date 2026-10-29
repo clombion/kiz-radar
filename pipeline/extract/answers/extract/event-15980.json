@@ -1,173 +1,180 @@
 {
- "batch": "event-15980",
- "events": [
-  {
-   "event_id": 15980,
-   "artists": [
-    {
-     "name_as_written": "FUEGO & DORIAN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ FUEGO & DORIAN ✨"
-    },
-    {
-     "name_as_written": "HENECO & AIMÉE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ HENECO & AIMÉE ✨"
-    },
-    {
-     "name_as_written": "JULES & YUNA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ JULES & YUNA ✨"
-    },
-    {
-     "name_as_written": "LILIAN & IVANA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ LILIAN & IVANA ✨"
-    },
-    {
-     "name_as_written": "AVINASH & EMMA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ AVINASH & EMMA✨"
-    },
-    {
-     "name_as_written": "HARVEY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ HARVEY ✨"
-    },
-    {
-     "name_as_written": "ANDERSON",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ ANDERSON✨"
-    },
-    {
-     "name_as_written": "JUSTIN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ JUSTIN✨"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ NICE LIFE 🎧"
-    },
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ SNAKES 🎧"
-    },
-    {
-     "name_as_written": "DJ LEVI’S",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ LEVI’S 🎧"
-    },
-    {
-     "name_as_written": "DJ LONGCHAMP",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ LONGCHAMP 🎧"
-    },
-    {
-     "name_as_written": "DJ DJEEMIX",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ DJEEMIX 🎧"
-    },
-    {
-     "name_as_written": "DJ TJE’",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ TJE’ 🎧"
-    },
-    {
-     "name_as_written": "DJ VAXX",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ VAXX🎧"
-    },
-    {
-     "name_as_written": "DJ SAVVY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ SAVVY🎧"
-    },
-    {
-     "name_as_written": "MISTER ZOOM",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 MISTER ZOOM"
-    },
-    {
-     "name_as_written": "NDAMOSÉ",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 NDAMOSÉ"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE",
-     "rationale": "The description states the event is all in one, with the parties held at the venue where dancers stay."
-    },
-    {
-     "feature": "camping",
-     "quote": "Camping De Schatberg",
-     "rationale": "The venue listed is a campsite, so the event takes place at camping accommodation."
-    },
-    {
-     "feature": "workshops",
-     "quote": "3 DAYS OF WORKSHOPS",
-     "rationale": "The description announces three days of workshops as part of the congress."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 DAYS OF SOCIALS",
-     "rationale": "The description announces three days of socials, which are daytime events."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "THURSDAY PRE PARTY",
-     "rationale": "A Thursday pre party is listed in the schedule before the main event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 AREAS TO PARTY",
-     "rationale": "Three separate areas to party imply more than one dance room or floor."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "AIRPORT EINDHOVEN",
-     "rationale": "The travel section lists airport and train station transfers to the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15980",
+  "events": [
+   {
+    "event_id": 15980,
+    "artists": [
+     {
+      "name_as_written": "FUEGO & DORIAN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ FUEGO & DORIAN ✨"
+     },
+     {
+      "name_as_written": "HENECO & AIMÉE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ HENECO & AIMÉE ✨"
+     },
+     {
+      "name_as_written": "JULES & YUNA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ JULES & YUNA ✨"
+     },
+     {
+      "name_as_written": "LILIAN & IVANA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ LILIAN & IVANA ✨"
+     },
+     {
+      "name_as_written": "AVINASH & EMMA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ AVINASH & EMMA✨"
+     },
+     {
+      "name_as_written": "HARVEY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ HARVEY ✨"
+     },
+     {
+      "name_as_written": "ANDERSON",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ ANDERSON✨"
+     },
+     {
+      "name_as_written": "JUSTIN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ JUSTIN✨"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ NICE LIFE 🎧"
+     },
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ SNAKES 🎧"
+     },
+     {
+      "name_as_written": "DJ LEVI’S",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ LEVI’S 🎧"
+     },
+     {
+      "name_as_written": "DJ LONGCHAMP",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ LONGCHAMP 🎧"
+     },
+     {
+      "name_as_written": "DJ DJEEMIX",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ DJEEMIX 🎧"
+     },
+     {
+      "name_as_written": "DJ TJE’",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ TJE’ 🎧"
+     },
+     {
+      "name_as_written": "DJ VAXX",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ VAXX🎧"
+     },
+     {
+      "name_as_written": "DJ SAVVY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ SAVVY🎧"
+     },
+     {
+      "name_as_written": "MISTER ZOOM",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 MISTER ZOOM"
+     },
+     {
+      "name_as_written": "NDAMOSÉ",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 NDAMOSÉ"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE",
+      "rationale": "The description states the event is all in one, with the parties held at the venue where dancers stay."
+     },
+     {
+      "feature": "camping",
+      "quote": "Camping De Schatberg",
+      "rationale": "The venue listed is a campsite, so the event takes place at camping accommodation."
+     },
+     {
+      "feature": "workshops",
+      "quote": "3 DAYS OF WORKSHOPS",
+      "rationale": "The description announces three days of workshops as part of the congress."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 DAYS OF SOCIALS",
+      "rationale": "The description announces three days of socials, which are daytime events."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "THURSDAY PRE PARTY",
+      "rationale": "A Thursday pre party is listed in the schedule before the main event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 AREAS TO PARTY",
+      "rationale": "Three separate areas to party imply more than one dance room or floor."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "AIRPORT EINDHOVEN",
+      "rationale": "The travel section lists airport and train station transfers to the event."
+     }
+    ]
+   }
+  ]
+ }
 }

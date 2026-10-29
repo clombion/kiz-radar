@@ -1,0 +1,13 @@
+{
+ "key_a": "p:york@dj",
+ "key_b": "p:york@lisa+york",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "1b971bdf3066f2e8",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ York and York & Lisa appear at the same city on the same dates across the whole batch, which fits one person as DJ and teacher."
+ }
+}

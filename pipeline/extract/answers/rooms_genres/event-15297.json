@@ -1,42 +1,49 @@
 {
- "batch": "event-15297",
- "events": [
-  {
-   "event_id": 15297,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Kizomba social room",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Kizomba social room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata, Kizomba, Salsa on1 & on2, Salsa Cubana, Zouk"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Bachata, Kizomba, Salsa on1 & on2, Salsa Cubana, Zouk"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa on1 & on2",
-     "quote": "Salsa on1 & on2"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Zouk + styling master classes"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15297",
+  "events": [
+   {
+    "event_id": 15297,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Kizomba social room",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba social room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata, Kizomba, Salsa on1 & on2, Salsa Cubana, Zouk"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Bachata, Kizomba, Salsa on1 & on2, Salsa Cubana, Zouk"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa on1 & on2",
+      "quote": "Salsa on1 & on2"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Zouk + styling master classes"
+     }
+    ]
+   }
+  ]
+ }
 }

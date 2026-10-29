@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marc@alessandra+marc",
+ "key_b": "p:marc@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "e0e9c3a1c77806f5",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Marc & Alessandra and DJ Marc appear at the same Calas Weekend festival on the same date, so Marc is one artist as dancer and DJ."
+ }
+}

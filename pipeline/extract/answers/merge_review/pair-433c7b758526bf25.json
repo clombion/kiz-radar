@@ -1,0 +1,13 @@
+{
+ "key_a": "p:rita@eddy+rita",
+ "key_b": "p:ritaszabo",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "433c7b758526bf25",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Rita & Eddy and Rita Szabo have different partners in the events shown (Eddy vs Chris da White) and no shared event, so the evidence neither joins nor splits them."
+ }
+}

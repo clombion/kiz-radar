@@ -1,41 +1,48 @@
 {
- "batch": "event-15702",
- "events": [
-  {
-   "event_id": 15702,
-   "artists": [],
-   "features": [
-    {
-     "feature": "masterclass",
-     "quote": "with a masterclass and pre-party in the days before",
-     "rationale": "The description states that a masterclass takes place in the days before the event."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "pre-party",
-     "rationale": "The description mentions a pre-party held in the days before the official start."
-    },
-    {
-     "feature": "workshops",
-     "quote": "8+ hours of workshops",
-     "rationale": "The description lists more than eight hours of workshops as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "close to 20 hours of day and evening socials",
-     "rationale": "The description promises close to 20 hours of daytime and evening socials."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "memorable party themes",
-     "rationale": "The description mentions memorable party themes for the socials."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "airport shuttle service",
-     "rationale": "The description states that an airport shuttle service is offered."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15702",
+  "events": [
+   {
+    "event_id": 15702,
+    "artists": [],
+    "features": [
+     {
+      "feature": "masterclass",
+      "quote": "with a masterclass and pre-party in the days before",
+      "rationale": "The description states that a masterclass takes place in the days before the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "pre-party",
+      "rationale": "The description mentions a pre-party held in the days before the official start."
+     },
+     {
+      "feature": "workshops",
+      "quote": "8+ hours of workshops",
+      "rationale": "The description lists more than eight hours of workshops as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "close to 20 hours of day and evening socials",
+      "rationale": "The description promises close to 20 hours of daytime and evening socials."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "memorable party themes",
+      "rationale": "The description mentions memorable party themes for the socials."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "airport shuttle service",
+      "rationale": "The description states that an airport shuttle service is offered."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ralpbb",
+ "key_b": "p:ralphbb",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "7d448e3d213429fb",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Ralp BB and DJ Ralph BB are a spelling variant of the same DJ name, both France-based with no conflicting evidence."
+ }
+}

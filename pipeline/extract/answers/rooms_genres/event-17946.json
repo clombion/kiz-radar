@@ -1,107 +1,114 @@
 {
- "batch": "event-17946",
- "events": [
-  {
-   "event_id": 17946,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 AREAS ✨ 3 ATMOSPHERES"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "ROOM 💯 TARRAXO",
-     "kind": "unspecified",
-     "genres": [
-      "tarraxo"
-     ],
-     "quote": "ROOM 💯 TARRAXO"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17946",
+  "events": [
+   {
+    "event_id": 17946,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 AREAS ✨ 3 ATMOSPHERES"
     },
-    {
-     "name_as_written": "ROOM 💯 URBAN KIZ",
-     "kind": "unspecified",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "ROOM 💯 URBAN KIZ"
-    },
-    {
-     "name_as_written": "ROOM 💯 KIZOMBA / GUETTO ZOUK",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "zouk"
-     ],
-     "quote": "ROOM 💯 KIZOMBA / GUETTO ZOUK"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
-     "quote": "ROOM 💯 TARRAXO"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "ROOM 💯 URBAN KIZ"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "ROOM 💯 KIZOMBA / GUETTO ZOUK"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GUETTO ZOUK",
-     "quote": "ROOM 💯 KIZOMBA / GUETTO ZOUK"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro house",
-     "quote": "===== Afro house"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeat",
-     "quote": "=== Afrobeat"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "=== Douceur"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kᴏᴍᴘᴀ",
-     "quote": "===== Kᴏᴍᴘᴀ"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "dancehall",
-     "quote": "=== dancehall"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "hip hop",
-     "quote": "==== hip hop"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "amapiano",
-     "quote": "===== amapiano"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "RnB",
-     "quote": "==== RnB"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Shatta",
-     "quote": "===== Shatta"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "ROOM 💯 TARRAXO",
+      "kind": "unspecified",
+      "genres": [
+       "tarraxo"
+      ],
+      "quote": "ROOM 💯 TARRAXO"
+     },
+     {
+      "name_as_written": "ROOM 💯 URBAN KIZ",
+      "kind": "unspecified",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "ROOM 💯 URBAN KIZ"
+     },
+     {
+      "name_as_written": "ROOM 💯 KIZOMBA / GUETTO ZOUK",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "zouk"
+      ],
+      "quote": "ROOM 💯 KIZOMBA / GUETTO ZOUK"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "ROOM 💯 TARRAXO"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "ROOM 💯 URBAN KIZ"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "ROOM 💯 KIZOMBA / GUETTO ZOUK"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GUETTO ZOUK",
+      "quote": "ROOM 💯 KIZOMBA / GUETTO ZOUK"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro house",
+      "quote": "===== Afro house"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeat",
+      "quote": "=== Afrobeat"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "=== Douceur"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kᴏᴍᴘᴀ",
+      "quote": "===== Kᴏᴍᴘᴀ"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "dancehall",
+      "quote": "=== dancehall"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "hip hop",
+      "quote": "==== hip hop"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "amapiano",
+      "quote": "===== amapiano"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "RnB",
+      "quote": "==== RnB"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Shatta",
+      "quote": "===== Shatta"
+     }
+    ]
+   }
+  ]
+ }
 }

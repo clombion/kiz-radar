@@ -1,98 +1,105 @@
 {
- "batch": "event-17026",
- "events": [
-  {
-   "event_id": 17026,
-   "artists": [
-    {
-     "name_as_written": "Teresa & Emanuel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ Teresa & Emanuel"
-    },
-    {
-     "name_as_written": "Ana Maria & Stephane",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ Ana Maria & Stephane"
-    },
-    {
-     "name_as_written": "Inês Miranda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ Inês Miranda"
-    },
-    {
-     "name_as_written": "Álvaro Gustavo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ Álvaro Gustavo"
-    },
-    {
-     "name_as_written": "Daniela Horta",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ Daniela Horta"
-    },
-    {
-     "name_as_written": "DJ Supaman",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ Supaman"
-    },
-    {
-     "name_as_written": "DJ Swari",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ Swari"
-    },
-    {
-     "name_as_written": "Daniela, Lisbeth",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Daniela, Lisbeth & our beautiful team ❤️"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Whether you’re a beginner or a seasoned dancer",
-     "rationale": "The text explicitly welcomes beginners alongside seasoned dancers."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Inspiring workshops with talented teachers",
-     "rationale": "The description lists workshops with teachers as part of the festival."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Friday: Red and/or white",
-     "rationale": "The parties carry a colour-based dress theme for Friday night."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress Code",
-     "rationale": "A dress code section gives outfit guidance for each day."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Special hotel deals for our participants",
-     "rationale": "Negotiated hotel deals are offered without accommodation being part of the pass."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "A cozy Sunday social to close the weekend",
-     "rationale": "A Sunday social running 10:00 to 19:00 is a daytime social."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17026",
+  "events": [
+   {
+    "event_id": 17026,
+    "artists": [
+     {
+      "name_as_written": "Teresa & Emanuel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ Teresa & Emanuel"
+     },
+     {
+      "name_as_written": "Ana Maria & Stephane",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ Ana Maria & Stephane"
+     },
+     {
+      "name_as_written": "Inês Miranda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ Inês Miranda"
+     },
+     {
+      "name_as_written": "Álvaro Gustavo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ Álvaro Gustavo"
+     },
+     {
+      "name_as_written": "Daniela Horta",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ Daniela Horta"
+     },
+     {
+      "name_as_written": "DJ Supaman",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ Supaman"
+     },
+     {
+      "name_as_written": "DJ Swari",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ Swari"
+     },
+     {
+      "name_as_written": "Daniela, Lisbeth",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Daniela, Lisbeth & our beautiful team ❤️"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Whether you’re a beginner or a seasoned dancer",
+      "rationale": "The text explicitly welcomes beginners alongside seasoned dancers."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Inspiring workshops with talented teachers",
+      "rationale": "The description lists workshops with teachers as part of the festival."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Friday: Red and/or white",
+      "rationale": "The parties carry a colour-based dress theme for Friday night."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress Code",
+      "rationale": "A dress code section gives outfit guidance for each day."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Special hotel deals for our participants",
+      "rationale": "Negotiated hotel deals are offered without accommodation being part of the pass."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "A cozy Sunday social to close the weekend",
+      "rationale": "A Sunday social running 10:00 to 19:00 is a daytime social."
+     }
+    ]
+   }
+  ]
+ }
 }

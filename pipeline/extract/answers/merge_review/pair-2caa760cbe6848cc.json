@@ -1,0 +1,13 @@
+{
+ "key_a": "p:isa@isa+madykeita",
+ "key_b": "p:isabelle@isabelle+madykeita",
+ "prompt": "7af5fef02cae3622",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:32:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2caa760cbe6848cc",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Same partner Mady Keita; ISA and Isabelle are a short and long form of one name."
+ }
+}

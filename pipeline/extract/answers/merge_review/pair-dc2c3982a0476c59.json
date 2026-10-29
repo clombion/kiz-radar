@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lena@dance",
+ "key_b": "p:lena@elvis+lena",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "dc2c3982a0476c59",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Common first name Lena on both sides with Canada stated, but side B is a couple with Elvis and no shared event or partner."
+ }
+}

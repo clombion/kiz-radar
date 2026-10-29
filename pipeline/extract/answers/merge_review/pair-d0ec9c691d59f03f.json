@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elena@elena+sergio",
+ "key_b": "p:selena@selena+sergio",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d0ec9c691d59f03f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Partner Sergio is shared, but Elena and Selena are different names one letter apart, and the events are in different countries."
+ }
+}

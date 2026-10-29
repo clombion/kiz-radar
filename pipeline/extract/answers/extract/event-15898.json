@@ -1,24 +1,31 @@
 {
- "batch": "event-15898",
- "events": [
-  {
-   "event_id": 15898,
-   "artists": [
-    {
-     "name_as_written": "Elevate your Kiz",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Elevate your Kiz Dance Studio"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "Bastion Hotel Rotterdam Alexander",
-     "rationale": "The description lists hotels near the venue under a 'Hotels nearby' heading, which points to recommended hotels that are not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15898",
+  "events": [
+   {
+    "event_id": 15898,
+    "artists": [
+     {
+      "name_as_written": "Elevate your Kiz",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Elevate your Kiz Dance Studio"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "Bastion Hotel Rotterdam Alexander",
+      "rationale": "The description lists hotels near the venue under a 'Hotels nearby' heading, which points to recommended hotels that are not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

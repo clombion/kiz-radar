@@ -1,241 +1,248 @@
 {
- "batch": "event-14526",
- "events": [
-  {
-   "event_id": 14526,
-   "artists": [
-    {
-     "name_as_written": "DJ Colts",
-     "role": "dj",
-     "style": "KIZOMBA/SEMBA",
-     "country": null,
-     "source_line": "🎼 DJ Colts"
-    },
-    {
-     "name_as_written": "DJ Vasco",
-     "role": "dj",
-     "style": "KIZOMBA/SEMBA",
-     "country": null,
-     "source_line": "🎼 DJ Vasco"
-    },
-    {
-     "name_as_written": "DJ Lionnax",
-     "role": "dj",
-     "style": "KIZOMBA/SEMBA",
-     "country": null,
-     "source_line": "🎼 DJ Lionnax"
-    },
-    {
-     "name_as_written": "DJ Chad",
-     "role": "dj",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "🎼 DJ Chad"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "🎼 DJ Ichigo"
-    },
-    {
-     "name_as_written": "DJ Neiken",
-     "role": "dj",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "🎼 DJ Neiken"
-    },
-    {
-     "name_as_written": "DJ Snakes",
-     "role": "dj",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "🎼 DJ Snakes"
-    },
-    {
-     "name_as_written": "DJ Tati",
-     "role": "dj",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "🎼 DJ Tati"
-    },
-    {
-     "name_as_written": "DJ Valet",
-     "role": "dj",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "🎼 DJ Valet"
-    },
-    {
-     "name_as_written": "Adilson & Telma",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA",
-     "country": null,
-     "source_line": "✨ Adilson & Telma"
-    },
-    {
-     "name_as_written": "Eden Kims",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA",
-     "country": null,
-     "source_line": "✨ Eden Kims"
-    },
-    {
-     "name_as_written": "El Hadj & Jenna",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA",
-     "country": null,
-     "source_line": "✨ El Hadj & Jenna"
-    },
-    {
-     "name_as_written": "Georges & Laura",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA",
-     "country": null,
-     "source_line": "✨ Georges & Laura"
-    },
-    {
-     "name_as_written": "Iron Mams & Moorea",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA",
-     "country": null,
-     "source_line": "✨ Iron Mams & Moorea"
-    },
-    {
-     "name_as_written": "Asia Voronova",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Asia Voronova"
-    },
-    {
-     "name_as_written": "Azzedine",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Azzedine"
-    },
-    {
-     "name_as_written": "Bachir",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Bachir"
-    },
-    {
-     "name_as_written": "Clarita",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Clarita"
-    },
-    {
-     "name_as_written": "Guiu",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Guiu"
-    },
-    {
-     "name_as_written": "Borboleta",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Borboleta"
-    },
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ JP & Stephy"
-    },
-    {
-     "name_as_written": "Jules & Juna",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Jules & Juna"
-    },
-    {
-     "name_as_written": "Justin",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Justin"
-    },
-    {
-     "name_as_written": "Justinho",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Justinho"
-    },
-    {
-     "name_as_written": "Knzo",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Knzo"
-    },
-    {
-     "name_as_written": "Lilian & Ivana",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Lilian & Ivana"
-    },
-    {
-     "name_as_written": "Luis & Karen",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Luis & Karen"
-    },
-    {
-     "name_as_written": "Lydia Laprade",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Lydia Laprade"
-    },
-    {
-     "name_as_written": "Nick & Alex",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Nick & Alex"
-    },
-    {
-     "name_as_written": "Stevens & Audrey",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Stevens & Audrey"
-    },
-    {
-     "name_as_written": "Ulan & Marzha",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": null,
-     "source_line": "✨ Ulan & Marzha"
-    },
-    {
-     "name_as_written": "Trécy",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "🎀 Trécy (Meninos Do Semba)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE VENUE FESTIVAL",
-     "rationale": "The festival is described as all in one venue, and the venue is the Novotel hotel where dancers stay."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:39:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14526",
+  "events": [
+   {
+    "event_id": 14526,
+    "artists": [
+     {
+      "name_as_written": "DJ Colts",
+      "role": "dj",
+      "style": "KIZOMBA/SEMBA",
+      "country": null,
+      "source_line": "🎼 DJ Colts"
+     },
+     {
+      "name_as_written": "DJ Vasco",
+      "role": "dj",
+      "style": "KIZOMBA/SEMBA",
+      "country": null,
+      "source_line": "🎼 DJ Vasco"
+     },
+     {
+      "name_as_written": "DJ Lionnax",
+      "role": "dj",
+      "style": "KIZOMBA/SEMBA",
+      "country": null,
+      "source_line": "🎼 DJ Lionnax"
+     },
+     {
+      "name_as_written": "DJ Chad",
+      "role": "dj",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "🎼 DJ Chad"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "🎼 DJ Ichigo"
+     },
+     {
+      "name_as_written": "DJ Neiken",
+      "role": "dj",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "🎼 DJ Neiken"
+     },
+     {
+      "name_as_written": "DJ Snakes",
+      "role": "dj",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "🎼 DJ Snakes"
+     },
+     {
+      "name_as_written": "DJ Tati",
+      "role": "dj",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "🎼 DJ Tati"
+     },
+     {
+      "name_as_written": "DJ Valet",
+      "role": "dj",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "🎼 DJ Valet"
+     },
+     {
+      "name_as_written": "Adilson & Telma",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA",
+      "country": null,
+      "source_line": "✨ Adilson & Telma"
+     },
+     {
+      "name_as_written": "Eden Kims",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA",
+      "country": null,
+      "source_line": "✨ Eden Kims"
+     },
+     {
+      "name_as_written": "El Hadj & Jenna",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA",
+      "country": null,
+      "source_line": "✨ El Hadj & Jenna"
+     },
+     {
+      "name_as_written": "Georges & Laura",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA",
+      "country": null,
+      "source_line": "✨ Georges & Laura"
+     },
+     {
+      "name_as_written": "Iron Mams & Moorea",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA",
+      "country": null,
+      "source_line": "✨ Iron Mams & Moorea"
+     },
+     {
+      "name_as_written": "Asia Voronova",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Asia Voronova"
+     },
+     {
+      "name_as_written": "Azzedine",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Azzedine"
+     },
+     {
+      "name_as_written": "Bachir",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Bachir"
+     },
+     {
+      "name_as_written": "Clarita",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Clarita"
+     },
+     {
+      "name_as_written": "Guiu",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Guiu"
+     },
+     {
+      "name_as_written": "Borboleta",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Borboleta"
+     },
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ JP & Stephy"
+     },
+     {
+      "name_as_written": "Jules & Juna",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Jules & Juna"
+     },
+     {
+      "name_as_written": "Justin",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Justin"
+     },
+     {
+      "name_as_written": "Justinho",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Justinho"
+     },
+     {
+      "name_as_written": "Knzo",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Knzo"
+     },
+     {
+      "name_as_written": "Lilian & Ivana",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Lilian & Ivana"
+     },
+     {
+      "name_as_written": "Luis & Karen",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Luis & Karen"
+     },
+     {
+      "name_as_written": "Lydia Laprade",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Lydia Laprade"
+     },
+     {
+      "name_as_written": "Nick & Alex",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Nick & Alex"
+     },
+     {
+      "name_as_written": "Stevens & Audrey",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Stevens & Audrey"
+     },
+     {
+      "name_as_written": "Ulan & Marzha",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "✨ Ulan & Marzha"
+     },
+     {
+      "name_as_written": "Trécy",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "🎀 Trécy (Meninos Do Semba)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE VENUE FESTIVAL",
+      "rationale": "The festival is described as all in one venue, and the venue is the Novotel hotel where dancers stay."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alessio@alessio+angelica",
+ "key_b": "p:alessio@alessio+natalia",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "a93d5bc48dcfd117",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Alessio & Angelica and Alessio & Natalia are different couples with different partners; only the common first name Alessio and Italy match."
+ }
+}

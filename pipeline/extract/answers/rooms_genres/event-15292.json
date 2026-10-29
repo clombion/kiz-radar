@@ -1,44 +1,51 @@
 {
- "batch": "event-15292",
- "events": [
-  {
-   "event_id": 15292,
-   "party_rooms": {
-    "count": 5,
-    "quote": "Amazing parties until sunrise in 5 halls"
-   },
-   "class_rooms": {
-    "count": 5,
-    "quote": "Excellent workshops in 5 halls"
-   },
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "15TH INTERNATIONAL SALSA – BACHATA – KIZOMBA CONGRESS"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15292",
+  "events": [
+   {
+    "event_id": 15292,
+    "party_rooms": {
+     "count": 5,
+     "quote": "Amazing parties until sunrise in 5 halls"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata"
+    "class_rooms": {
+     "count": 5,
+     "quote": "Excellent workshops in 5 halls"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Traditional dances"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cha-cha",
-     "quote": "Cha-cha"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Rueda",
-     "quote": "Rueda"
-    }
-   ]
-  }
- ]
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "15TH INTERNATIONAL SALSA – BACHATA – KIZOMBA CONGRESS"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba, Traditional dances"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cha-cha",
+      "quote": "Cha-cha"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Rueda",
+      "quote": "Rueda"
+     }
+    ]
+   }
+  ]
+ }
 }

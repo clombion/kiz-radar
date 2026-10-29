@@ -1,83 +1,90 @@
 {
- "batch": "event-16855",
- "events": [
-  {
-   "event_id": 16855,
-   "artists": [
-    {
-     "name_as_written": "JOHAN VORGAARD",
-     "role": "teacher",
-     "style": "Cuban Salsa",
-     "country": null,
-     "source_line": "– JOHAN VORGAARD – Cuban Salsa"
-    },
-    {
-     "name_as_written": "R. ORNELAS",
-     "role": "teacher",
-     "style": "Bachata Sensual",
-     "country": null,
-     "source_line": "– R. ORNELAS – Bachata Sensual"
-    },
-    {
-     "name_as_written": "RICARDO FERREIRA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "– RICARDO FERREIRA – Kizomba"
-    },
-    {
-     "name_as_written": "DAO",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "– DAO – Kizomba"
-    },
-    {
-     "name_as_written": "OLOF & MIKE",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "– OLOF & MIKE – Bachata"
-    },
-    {
-     "name_as_written": "CELINA & KAROL",
-     "role": "teacher",
-     "style": "B.Zouk",
-     "country": null,
-     "source_line": "– CELINA & KAROL – B.Zouk"
-    },
-    {
-     "name_as_written": "JULIAN & HEIðA",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": null,
-     "source_line": "– JULIAN & HEIðA – Urban Kiz"
-    },
-    {
-     "name_as_written": "Dance In Norway",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Dance In Norway"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "From the foundation till more advanced dance",
-     "rationale": "The description states the festival runs from the foundation level up to more advanced dance, so it welcomes beginners."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "5 nights hotel",
-     "rationale": "The special touristic package lists five nights of hotel, so accommodation is included in the package."
-    },
-    {
-     "feature": "workshops",
-     "quote": "TEACHING",
-     "rationale": "The program has a teaching section listing dance classes by teacher and style."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16855",
+  "events": [
+   {
+    "event_id": 16855,
+    "artists": [
+     {
+      "name_as_written": "JOHAN VORGAARD",
+      "role": "teacher",
+      "style": "Cuban Salsa",
+      "country": null,
+      "source_line": "– JOHAN VORGAARD – Cuban Salsa"
+     },
+     {
+      "name_as_written": "R. ORNELAS",
+      "role": "teacher",
+      "style": "Bachata Sensual",
+      "country": null,
+      "source_line": "– R. ORNELAS – Bachata Sensual"
+     },
+     {
+      "name_as_written": "RICARDO FERREIRA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "– RICARDO FERREIRA – Kizomba"
+     },
+     {
+      "name_as_written": "DAO",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "– DAO – Kizomba"
+     },
+     {
+      "name_as_written": "OLOF & MIKE",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "– OLOF & MIKE – Bachata"
+     },
+     {
+      "name_as_written": "CELINA & KAROL",
+      "role": "teacher",
+      "style": "B.Zouk",
+      "country": null,
+      "source_line": "– CELINA & KAROL – B.Zouk"
+     },
+     {
+      "name_as_written": "JULIAN & HEIðA",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": null,
+      "source_line": "– JULIAN & HEIðA – Urban Kiz"
+     },
+     {
+      "name_as_written": "Dance In Norway",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Dance In Norway"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "From the foundation till more advanced dance",
+      "rationale": "The description states the festival runs from the foundation level up to more advanced dance, so it welcomes beginners."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "5 nights hotel",
+      "rationale": "The special touristic package lists five nights of hotel, so accommodation is included in the package."
+     },
+     {
+      "feature": "workshops",
+      "quote": "TEACHING",
+      "rationale": "The program has a teaching section listing dance classes by teacher and style."
+     }
+    ]
+   }
+  ]
+ }
 }

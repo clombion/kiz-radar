@@ -1,61 +1,68 @@
 {
- "batch": "event-17016",
- "events": [
-  {
-   "event_id": 17016,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 Rooms"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "#Kizomba #Semba #Urbankiz #Tarraxo"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17016",
+  "events": [
+   {
+    "event_id": 17016,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 Rooms"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "SEMBA*"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "#Kizomba #Semba #Urbankiz #Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "#Kizomba #Semba #Urbankiz #Tarraxo"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "TARRAXINHA",
-     "quote": "TARRAXINHA*"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "DOUCER",
-     "quote": "DOUCER*"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AfroHouse",
-     "quote": "#AfroHouse"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "#Salsa"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "#Bachata"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "#Kizomba #Semba #Urbankiz #Tarraxo"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "SEMBA*"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "#Kizomba #Semba #Urbankiz #Tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "#Kizomba #Semba #Urbankiz #Tarraxo"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "TARRAXINHA",
+      "quote": "TARRAXINHA*"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "DOUCER",
+      "quote": "DOUCER*"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "AfroHouse",
+      "quote": "#AfroHouse"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "#Salsa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "#Bachata"
+     }
+    ]
+   }
+  ]
+ }
 }

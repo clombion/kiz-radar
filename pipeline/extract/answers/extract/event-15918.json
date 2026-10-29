@@ -1,44 +1,51 @@
 {
- "batch": "event-15918",
- "events": [
-  {
-   "event_id": 15918,
-   "artists": [
-    {
-     "name_as_written": "Marseille Danse Academy",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "💃🕺 The Marseille Danse Academy team invites you to join us for 4 days of pure fun. 😘"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "10 hours of dance classes for all levels",
-     "rationale": "The quote states the dance classes are for all levels, which means beginners are welcome."
-    },
-    {
-     "feature": "workshops",
-     "quote": "10 hours of dance classes for all levels",
-     "rationale": "The event includes 10 hours of dance classes as part of the programme."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "3 vibrant themed evenings",
-     "rationale": "The programme lists three themed evenings."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "pool parties",
-     "rationale": "The programme includes pool parties."
-    },
-    {
-     "feature": "camping",
-     "quote": "Camping Les Cigales 4****",
-     "rationale": "The venue is a campsite, and the bungalows are the accommodation on site."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15918",
+  "events": [
+   {
+    "event_id": 15918,
+    "artists": [
+     {
+      "name_as_written": "Marseille Danse Academy",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "💃🕺 The Marseille Danse Academy team invites you to join us for 4 days of pure fun. 😘"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "10 hours of dance classes for all levels",
+      "rationale": "The quote states the dance classes are for all levels, which means beginners are welcome."
+     },
+     {
+      "feature": "workshops",
+      "quote": "10 hours of dance classes for all levels",
+      "rationale": "The event includes 10 hours of dance classes as part of the programme."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "3 vibrant themed evenings",
+      "rationale": "The programme lists three themed evenings."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "pool parties",
+      "rationale": "The programme includes pool parties."
+     },
+     {
+      "feature": "camping",
+      "quote": "Camping Les Cigales 4****",
+      "rationale": "The venue is a campsite, and the bungalows are the accommodation on site."
+     }
+    ]
+   }
+  ]
+ }
 }

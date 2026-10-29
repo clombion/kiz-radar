@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ange@ange+flo",
+ "key_b": "p:angel@angel+flo",
+ "prompt": "7af5fef02cae3622",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:32:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "374ee0fb19dfbb23",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Same partner Flo, Ange and Angel are short and long forms, both salsa teachers in France."
+ }
+}

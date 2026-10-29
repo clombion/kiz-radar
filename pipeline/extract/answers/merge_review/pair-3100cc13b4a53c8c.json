@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sarai@nuno+sarai",
+ "key_b": "p:sarainavalon",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "3100cc13b4a53c8c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Nuno & Sarai and Sarai Navalon share the distinctive first name Sarai and a Spain flag, but side A has no style or surname to confirm a match."
+ }
+}

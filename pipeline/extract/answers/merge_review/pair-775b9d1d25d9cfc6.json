@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fred@chiara+fred",
+ "key_b": "p:fredag",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "775b9d1d25d9cfc6",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Fred & Chiara on side A and Fred Ag & Chiara on side B share the same partner Chiara and France, with a small variant in the first name."
+ }
+}

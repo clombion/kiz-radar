@@ -1,41 +1,48 @@
 {
- "batch": "event-19459",
- "events": [
-  {
-   "event_id": 19459,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "engaging workshops",
-     "rationale": "The description advertises workshops as part of the festival programme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "lively afternoon parties",
-     "rationale": "Afternoon parties are explicitly offered, which are daytime socials."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
-     "rationale": "The venue is a hotel and the parties take place there, so event and accommodation share one venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "hotel room at special discounted festival rates",
-     "rationale": "Discounted festival rates for a hotel room are offered separately from the ticket."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "multiple Kizomba party rooms",
-     "rationale": "The event has several dance rooms, each with its own rhythm style."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "MASTERCLASS",
-     "rationale": "A masterclass section is listed in the programme, with the teacher to be confirmed."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19459",
+  "events": [
+   {
+    "event_id": 19459,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "engaging workshops",
+      "rationale": "The description advertises workshops as part of the festival programme."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "lively afternoon parties",
+      "rationale": "Afternoon parties are explicitly offered, which are daytime socials."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
+      "rationale": "The venue is a hotel and the parties take place there, so event and accommodation share one venue."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "hotel room at special discounted festival rates",
+      "rationale": "Discounted festival rates for a hotel room are offered separately from the ticket."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "multiple Kizomba party rooms",
+      "rationale": "The event has several dance rooms, each with its own rhythm style."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "MASTERCLASS",
+      "rationale": "A masterclass section is listed in the programme, with the teacher to be confirmed."
+     }
+    ]
+   }
+  ]
+ }
 }

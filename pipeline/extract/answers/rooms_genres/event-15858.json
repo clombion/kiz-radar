@@ -1,46 +1,53 @@
 {
- "batch": "event-15858",
- "events": [
-  {
-   "event_id": 15858,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Salsa & Bachata Room",
-     "kind": "unspecified",
-     "genres": [
-      "salsa",
-      "bachata"
-     ],
-     "quote": "Salsa & Bachata Room"
-    },
-    {
-     "name_as_written": "Kizomba Room",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Kizomba Room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "a unique Salsa, Bachata & Kizomba Festival"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "a unique Salsa, Bachata & Kizomba Festival"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "a unique Salsa, Bachata & Kizomba Festival"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15858",
+  "events": [
+   {
+    "event_id": 15858,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Salsa & Bachata Room",
+      "kind": "unspecified",
+      "genres": [
+       "salsa",
+       "bachata"
+      ],
+      "quote": "Salsa & Bachata Room"
+     },
+     {
+      "name_as_written": "Kizomba Room",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "a unique Salsa, Bachata & Kizomba Festival"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "a unique Salsa, Bachata & Kizomba Festival"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "a unique Salsa, Bachata & Kizomba Festival"
+     }
+    ]
+   }
+  ]
+ }
 }

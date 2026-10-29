@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manon@dj",
+ "key_b": "p:manon@jeff+manon",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "7d3f64dd8951e2b0",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Manon and Jeff & Manon both appear at the same SXM Experience festival on the same date with Guadeloupe stated on both."
+ }
+}

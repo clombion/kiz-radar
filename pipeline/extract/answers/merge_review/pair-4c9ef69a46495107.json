@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marc@alessandra+marc",
+ "key_b": "p:marcfranettdejesus",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "4c9ef69a46495107",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Marc & Alessandra and Alessandra & Marc Franett De Jesus are the same couple at the same Calas Weekend on the same date."
+ }
+}

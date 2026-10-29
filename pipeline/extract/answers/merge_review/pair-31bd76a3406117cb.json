@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elena@elena+valter",
+ "key_b": "p:elenaarcangeli",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "31bd76a3406117cb",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Elena Arcangeli is the full name of Elena with partner Valter, both in Italy, and both appear at the same Milan event on 2026-09-04."
+ }
+}

@@ -1,97 +1,104 @@
 {
- "batch": "event-18276",
- "events": [
-  {
-   "event_id": 18276,
-   "artists": [
-    {
-     "name_as_written": "DJ WILLY G",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⚓️ DJ WILLY G"
-    },
-    {
-     "name_as_written": "DJ KISS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⚓️ DJ KISS"
-    },
-    {
-     "name_as_written": "DJ SOL’IN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⚓️ DJ SOL’IN"
-    },
-    {
-     "name_as_written": "KELLY & CURTIS",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⚓️ KELLY & CURTIS"
-    },
-    {
-     "name_as_written": "ARMAND & AÏDAH",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⚓️ ARMAND & AÏDAH"
-    },
-    {
-     "name_as_written": "BG",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⚓️ BG"
-    },
-    {
-     "name_as_written": "ROXANE & CORENTIN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⚓️ ROXANE & CORENTIN"
-    },
-    {
-     "name_as_written": "MEL ZAMB",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⚓️ MEL ZAMB"
-    },
-    {
-     "name_as_written": "KCS TAXI TEAM",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "⚓️ KCS TAXI TEAM"
-    },
-    {
-     "name_as_written": "KIZ FOR LIFE TEAM",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "& the KIZ FOR LIFE TEAM 🔥"
-    }
-   ],
-   "features": [
-    {
-     "feature": "taxi_dancers",
-     "quote": "A high-energy team of taxi dancers will be there all weekend long",
-     "rationale": "The description states that a team of taxi dancers will be present throughout the weekend."
-    },
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS",
-     "rationale": "The program lists workshop sessions on Friday, Saturday and Sunday."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "4:00 PM – 8:00 PM | SOCIAL",
-     "rationale": "The Saturday program lists a daytime social from 4:00 PM to 8:00 PM."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18276",
+  "events": [
+   {
+    "event_id": 18276,
+    "artists": [
+     {
+      "name_as_written": "DJ WILLY G",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⚓️ DJ WILLY G"
+     },
+     {
+      "name_as_written": "DJ KISS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⚓️ DJ KISS"
+     },
+     {
+      "name_as_written": "DJ SOL’IN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⚓️ DJ SOL’IN"
+     },
+     {
+      "name_as_written": "KELLY & CURTIS",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⚓️ KELLY & CURTIS"
+     },
+     {
+      "name_as_written": "ARMAND & AÏDAH",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⚓️ ARMAND & AÏDAH"
+     },
+     {
+      "name_as_written": "BG",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⚓️ BG"
+     },
+     {
+      "name_as_written": "ROXANE & CORENTIN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⚓️ ROXANE & CORENTIN"
+     },
+     {
+      "name_as_written": "MEL ZAMB",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⚓️ MEL ZAMB"
+     },
+     {
+      "name_as_written": "KCS TAXI TEAM",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "⚓️ KCS TAXI TEAM"
+     },
+     {
+      "name_as_written": "KIZ FOR LIFE TEAM",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "& the KIZ FOR LIFE TEAM 🔥"
+     }
+    ],
+    "features": [
+     {
+      "feature": "taxi_dancers",
+      "quote": "A high-energy team of taxi dancers will be there all weekend long",
+      "rationale": "The description states that a team of taxi dancers will be present throughout the weekend."
+     },
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS",
+      "rationale": "The program lists workshop sessions on Friday, Saturday and Sunday."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "4:00 PM – 8:00 PM | SOCIAL",
+      "rationale": "The Saturday program lists a daytime social from 4:00 PM to 8:00 PM."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:stefano@elisa+stefano",
+ "key_b": "p:stefano@maura+stefano",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "31e0836d8cd826cb",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Stefano is listed with Elisa and with Maura at the same events on the same dates (Milan 2026-03-20, Massa 2026-06-05), so they are different couples."
+ }
+}

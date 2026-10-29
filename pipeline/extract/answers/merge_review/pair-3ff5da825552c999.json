@@ -1,0 +1,13 @@
+{
+ "key_a": "p:relampago@dance",
+ "key_b": "p:relampago@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "3ff5da825552c999",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Relampago the teacher and DJ Relampago are listed at the same Geneva festival on the same date, the DJ-and-dancer case, with Switzerland and Angola as the stated countries."
+ }
+}

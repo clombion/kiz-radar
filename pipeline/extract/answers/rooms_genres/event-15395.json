@@ -1,48 +1,55 @@
 {
- "batch": "event-15395",
- "events": [
-  {
-   "event_id": 15395,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Semba, UrbanKizz, Konpa, GhettoZouk, Tarraxinha"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba, UrbanKizz, Konpa, GhettoZouk, Tarraxinha"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Urbankiz ws by Virgil & Juneline"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Kizomba, Semba, UrbanKizz, Konpa, GhettoZouk, Tarraxinha"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GhettoZouk",
-     "quote": "GhettoZouk"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Kizomba, Semba, UrbanKizz, Konpa, GhettoZouk, Tarraxinha"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Konpa🎶Douceur"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15395",
+  "events": [
+   {
+    "event_id": 15395,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba, Semba, UrbanKizz, Konpa, GhettoZouk, Tarraxinha"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba, Semba, UrbanKizz, Konpa, GhettoZouk, Tarraxinha"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Urbankiz ws by Virgil & Juneline"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Kizomba, Semba, UrbanKizz, Konpa, GhettoZouk, Tarraxinha"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GhettoZouk",
+      "quote": "GhettoZouk"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Kizomba, Semba, UrbanKizz, Konpa, GhettoZouk, Tarraxinha"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Konpa🎶Douceur"
+     }
+    ]
+   }
+  ]
+ }
 }

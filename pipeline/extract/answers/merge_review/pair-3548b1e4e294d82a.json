@@ -1,0 +1,13 @@
+{
+ "key_a": "p:linda@linda+rossi",
+ "key_b": "p:lindaguiteriez",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "3548b1e4e294d82a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Linda & Rossi (salsa) and Linda Guiteriez (bachata) teach at the same WISHES festival on the same date, which could be one teacher or two Lindas."
+ }
+}

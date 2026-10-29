@@ -1,47 +1,54 @@
 {
- "batch": "event-15307",
- "events": [
-  {
-   "event_id": 15307,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "✔️ PRICES",
-     "group_size": 1,
-     "days": 7,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 399.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "From €399 per week"
-      },
-      {
-       "amount": 419.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2025-12-05",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "From December 5, 2025 at 2 PM → price €419"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:57:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15307",
+  "events": [
+   {
+    "event_id": 15307,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "✔️ PRICES",
+      "group_size": 1,
+      "days": 7,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 399.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "From €399 per week"
+       },
+       {
+        "amount": 419.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": "2025-12-05",
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "From December 5, 2025 at 2 PM → price €419"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

@@ -64,7 +64,6 @@ with a visible browser. run --limit N first-reads N festivals at most, as the Ac
 import argparse
 import collections
 import datetime as dt
-import json
 import re
 import sys
 from collections.abc import Mapping, Sequence
@@ -91,8 +90,11 @@ from pipeline.records import (
     FoundRow,
     LogEntry,
     ModelReads,
+    QuestionTicket,
     Read,
+    ReadFestival,
     ReadHeader,
+    ReadQuestion,
     errors,
     today,
 )
@@ -137,22 +139,23 @@ TIE_BREAK = Model.CLAUDE_FABLE_5_1  # reads too when they don't, so that two of 
 # ---- first reads by the models
 
 
-def question(f: Festival, entry: Read) -> str:
-    tickets = [{'key': r.key, 'name': r.name, 'price': r.price, 'sold_out': r.sold_out} for r in entry.rows]
-    return json.dumps(
-        {
-            'event_id': f.id,
-            'title': f.title,
-            'start_date': f.start_date.isoformat(),
-            'end_date': f.end_date.isoformat(),
-            'country': f.country,
-            'styles': list(f.styles),
-            'description': f.description,
-            'tickets': tickets,
-        },
-        ensure_ascii=False,
-        indent=1,
+def asked_of(f: Festival) -> ReadFestival:
+    """The festival as a first read is asked about it, and records it."""
+    return ReadFestival(
+        event_id=f.id,
+        title=f.title,
+        start_date=f.start_date,
+        end_date=f.end_date,
+        country=f.country,
+        styles=f.styles,
+        description=f.description,
     )
+
+
+def question(f: Festival, entry: Read) -> ReadQuestion:
+    """The festival and its page's tickets, as a first read is asked about them."""
+    tickets = tuple(QuestionTicket(key=r.key, name=r.name, price=r.price, sold_out=r.sold_out) for r in entry.rows)
+    return ReadQuestion.model_validate(asked_of(f).model_dump() | {'tickets': tickets})
 
 
 def joined(header: ReadHeader, answer: FirstReadAnswer) -> FirstRead:
@@ -161,6 +164,8 @@ def joined(header: ReadHeader, answer: FirstReadAnswer) -> FirstRead:
         event_id=header.event_id,
         title=header.title,
         start_date=header.start_date,
+        end_date=header.end_date,
+        country=header.country,
         read_by=header.read_by,
         prompt=header.prompt,
         rows_at=header.rows_at,
@@ -185,7 +190,8 @@ def ask_read(
             return errors(e, 'schema')
         return read_problems(fr, entries) or fr
 
-    request = ask.Request(model, prompts.current('first_read'), question(f, entry), f'{f.id} {model}', 'first_read')
+    prompt = prompts.current('first_read')
+    request = ask.Request(model, prompt, prompt.message(question(f, entry)), f'{f.id} {model}', 'first_read')
     return ask.structured(client, request, check)
 
 
@@ -297,16 +303,8 @@ def full_url(url: str) -> str:
 
 
 def draft_of(f: Festival, entry: Read, by: str) -> ReadHeader:
-    return ReadHeader(
-        event_id=f.id,
-        title=f.title,
-        start_date=f.start_date,
-        read_by=by,
-        prompt=prompts.current('first_read').hash,
-        rows_at=entry.at,
-        styles=f.styles,
-        description=f.description,
-    )
+    header = {'read_by': by, 'prompt': prompts.current('first_read').hash, 'rows_at': entry.at}
+    return ReadHeader.model_validate(asked_of(f).model_dump() | header)
 
 
 def one(db: sqlite_db.Reader, event_id: int, page: str | None = None) -> Festival:
@@ -364,9 +362,8 @@ def cmd_draft(db: sqlite_db.Reader, event_id: int) -> None:
         sys.exit(f'{event_id}: no read rows yet; run: mise run tickets -- read {event_id}')
     save_draft(draft_of(f, entry, 'agent'))
     asked = data(DRAFTS) / f'{event_id}.prompt.md'
-    files.write(
-        asked, prompts.current('first_read').text + '\n======== the festival ========\n\n' + question(f, entry) + '\n'
-    )
+    prompt = prompts.current('first_read')
+    files.write(asked, prompt.text + '\n======== the message ========\n\n' + prompt.message(question(f, entry)) + '\n')
     print(
         f'Fill passes, skipped and rule_quotes in {shown(path)} following {shown(asked)}, the prompt the models '
         f'answer, with the festival and the tickets of the read at {entry.at.isoformat()}; '

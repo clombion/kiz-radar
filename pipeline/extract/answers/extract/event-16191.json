@@ -1,159 +1,166 @@
 {
- "batch": "event-16191",
- "events": [
-  {
-   "event_id": 16191,
-   "artists": [
-    {
-     "name_as_written": "MAD and Giorgio Rod Event",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "MAD and Giorgio Rod Event present:"
-    },
-    {
-     "name_as_written": "Giorgio Rod",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Giorgio Rod"
-    },
-    {
-     "name_as_written": "Luis Costa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Luis Costa"
-    },
-    {
-     "name_as_written": "Johan & Lucie",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Johan & Lucie"
-    },
-    {
-     "name_as_written": "Franck & Laure",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Franck & Laure"
-    },
-    {
-     "name_as_written": "Guins & Barbarita",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Guins & Barbarita"
-    },
-    {
-     "name_as_written": "Ludivine Fit Dance",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Ludivine Fit Dance"
-    },
-    {
-     "name_as_written": "Jean Claude Occo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Jean Claude Occo"
-    },
-    {
-     "name_as_written": "Aurore Limmois",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Aurore Limmois"
-    },
-    {
-     "name_as_written": "Oscar Fitness",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Oscar Fitness"
-    },
-    {
-     "name_as_written": "Solène Yoga",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Solène Yoga"
-    },
-    {
-     "name_as_written": "DJ Rico",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "👉 DJ Rico"
-    },
-    {
-     "name_as_written": "DJ Tagada",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "👉 DJ Tagada"
-    },
-    {
-     "name_as_written": "DJ Johann",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "👉 DJ Johann"
-    },
-    {
-     "name_as_written": "DJ Willo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "👉 DJ Willo"
-    },
-    {
-     "name_as_written": "Airfleks",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "👉 Airfleks"
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "Accommodation + Classes + Evening Events",
-     "rationale": "The offer packages list accommodation as part of the priced pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Accommodation + Classes + Evening Events",
-     "rationale": "Classes are listed as part of the packaged week."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party",
-     "rationale": "The packages explicitly include a Pre-Party."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Party",
-     "rationale": "The packages explicitly include a Pool Party."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Beach Party After-Parties",
-     "rationale": "The leisure activities list beach party after-parties."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Beach Party After-Parties",
-     "rationale": "The leisure activities list after-parties held after the beach parties."
-    },
-    {
-     "feature": "competition",
-     "quote": "Beach Volleyball Tournament",
-     "rationale": "A beach volleyball tournament is listed among the extra activities."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16191",
+  "events": [
+   {
+    "event_id": 16191,
+    "artists": [
+     {
+      "name_as_written": "MAD and Giorgio Rod Event",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "MAD and Giorgio Rod Event present:"
+     },
+     {
+      "name_as_written": "Giorgio Rod",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Giorgio Rod"
+     },
+     {
+      "name_as_written": "Luis Costa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Luis Costa"
+     },
+     {
+      "name_as_written": "Johan & Lucie",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Johan & Lucie"
+     },
+     {
+      "name_as_written": "Franck & Laure",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Franck & Laure"
+     },
+     {
+      "name_as_written": "Guins & Barbarita",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Guins & Barbarita"
+     },
+     {
+      "name_as_written": "Ludivine Fit Dance",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Ludivine Fit Dance"
+     },
+     {
+      "name_as_written": "Jean Claude Occo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Jean Claude Occo"
+     },
+     {
+      "name_as_written": "Aurore Limmois",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Aurore Limmois"
+     },
+     {
+      "name_as_written": "Oscar Fitness",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Oscar Fitness"
+     },
+     {
+      "name_as_written": "Solène Yoga",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Solène Yoga"
+     },
+     {
+      "name_as_written": "DJ Rico",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "👉 DJ Rico"
+     },
+     {
+      "name_as_written": "DJ Tagada",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "👉 DJ Tagada"
+     },
+     {
+      "name_as_written": "DJ Johann",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "👉 DJ Johann"
+     },
+     {
+      "name_as_written": "DJ Willo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "👉 DJ Willo"
+     },
+     {
+      "name_as_written": "Airfleks",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "👉 Airfleks"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "Accommodation + Classes + Evening Events",
+      "rationale": "The offer packages list accommodation as part of the priced pass."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Accommodation + Classes + Evening Events",
+      "rationale": "Classes are listed as part of the packaged week."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party",
+      "rationale": "The packages explicitly include a Pre-Party."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool Party",
+      "rationale": "The packages explicitly include a Pool Party."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Beach Party After-Parties",
+      "rationale": "The leisure activities list beach party after-parties."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Beach Party After-Parties",
+      "rationale": "The leisure activities list after-parties held after the beach parties."
+     },
+     {
+      "feature": "competition",
+      "quote": "Beach Volleyball Tournament",
+      "rationale": "A beach volleyball tournament is listed among the extra activities."
+     }
+    ]
+   }
+  ]
+ }
 }

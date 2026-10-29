@@ -1,38 +1,45 @@
 {
- "batch": "event-18981",
- "events": [
-  {
-   "event_id": 18981,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "DONAUKIZZ KIZOMBA FESTIVAL 2027"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18981",
+  "events": [
+   {
+    "event_id": 18981,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "DONAUKIZZ KIZOMBA FESTIVAL 2027"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
+     }
+    ]
+   }
+  ]
+ }
 }

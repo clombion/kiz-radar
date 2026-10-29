@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fanio@fanio+sara",
+ "key_b": "p:faniodearaujo",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "818e2180f7cac6b1",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Fanio & Sara on side A and Fanio de Araujo on side B share the distinctive name Fanio and the Angola stated country, with the same surname in a spelling variant."
+ }
+}

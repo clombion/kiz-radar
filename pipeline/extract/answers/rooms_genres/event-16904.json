@@ -1,45 +1,52 @@
 {
- "batch": "event-16904",
- "events": [
-  {
-   "event_id": 16904,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "SOCIAL ROOM",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "SOCIAL ROOM"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxhinha",
-     "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro house",
-     "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "African Danse",
-     "quote": "African Danse"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16904",
+  "events": [
+   {
+    "event_id": 16904,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "SOCIAL ROOM",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "SOCIAL ROOM"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxhinha",
+      "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro house",
+      "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "African Danse",
+      "quote": "African Danse"
+     }
+    ]
+   }
+  ]
+ }
 }

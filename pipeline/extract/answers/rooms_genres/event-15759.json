@@ -1,26 +1,33 @@
 {
- "batch": "event-15759",
- "events": [
-  {
-   "event_id": 15759,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 𝑫𝒚𝒏𝒂𝒎𝒊𝒄 𝑫𝒂𝒏𝒄𝒆 𝑹𝒐𝒐𝒎𝒔"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "quote": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15759",
+  "events": [
+   {
+    "event_id": 15759,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 𝑫𝒚𝒏𝒂𝒎𝒊𝒄 𝑫𝒂𝒏𝒄𝒆 𝑹𝒐𝒐𝒎𝒔"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐",
-     "quote": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
+      "quote": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐",
+      "quote": "𝓚𝓘𝓩𝓞𝓜𝓑𝓐"
+     }
+    ]
+   }
+  ]
+ }
 }

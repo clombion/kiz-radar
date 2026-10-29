@@ -1,236 +1,243 @@
 {
- "batch": "event-18861",
- "events": [
-  {
-   "event_id": 18861,
-   "artists": [
-    {
-     "name_as_written": "PARAÍSO",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "DJ -» PARAÍSO 🇦🇴"
-    },
-    {
-     "name_as_written": "TRONKY",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "DJ -» TRONKY 🇮🇹"
-    },
-    {
-     "name_as_written": "PAPARAZY",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "DJ -» PAPARAZY 🇦🇴"
-    },
-    {
-     "name_as_written": "PANKADAS",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "DJ -» PANKADAS 🇵🇹"
-    },
-    {
-     "name_as_written": "MKY",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "DJ -» MKY 🇨🇭"
-    },
-    {
-     "name_as_written": "CORAZON",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "DJ -» CORAZON 🇲🇫"
-    },
-    {
-     "name_as_written": "FAB",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "DJ -» FAB 🇲🇫"
-    },
-    {
-     "name_as_written": "MYCO",
-     "role": "dj",
-     "style": null,
-     "country": "🇬🇵",
-     "source_line": "DJ -» MYCO 🇬🇵"
-    },
-    {
-     "name_as_written": "DIAS",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "DJ -» DIAS 🇵🇹"
-    },
-    {
-     "name_as_written": "SAM/MAS",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "DJ -» SAM/MAS🇲🇫"
-    },
-    {
-     "name_as_written": "KORDJEE",
-     "role": "dj",
-     "style": null,
-     "country": "🇷🇪",
-     "source_line": "DJ -» KORDJEE 🇷🇪"
-    },
-    {
-     "name_as_written": "AÏZEN",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "DJ -» AÏZEN 🇵🇹"
-    },
-    {
-     "name_as_written": "OPHELIE DEBROISE",
-     "role": "performer",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "🎻 – » OPHELIE DEBROISE 🇲🇫"
-    },
-    {
-     "name_as_written": "PABLO & RAQUEL",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇦",
-     "source_line": "-» PABLO & RAQUEL 🇪🇦"
-    },
-    {
-     "name_as_written": "JUAN & SARA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇦",
-     "source_line": "-» JUAN & SARA 🇪🇦"
-    },
-    {
-     "name_as_written": "FRED & CHIARA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇲🇫 🇮🇹",
-     "source_line": "-» FRED & CHIARA 🇲🇫 🇮🇹"
-    },
-    {
-     "name_as_written": "CHRYS PY & LALY",
-     "role": "teacher",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "-» CHRYS PY & LALY 🇲🇫"
-    },
-    {
-     "name_as_written": "AMI & JULIEN",
-     "role": "teacher",
-     "style": null,
-     "country": "🇯🇵 🇨🇵",
-     "source_line": "-» AMI & JULIEN 🇯🇵 🇨🇵"
-    },
-    {
-     "name_as_written": "NUNO & CATIA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹 🇪🇦",
-     "source_line": "-» NUNO & CATIA 🇵🇹 🇪🇦"
-    },
-    {
-     "name_as_written": "ALKS & DASHA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇺🇦",
-     "source_line": "-» ALKS & DASHA 🇺🇦"
-    },
-    {
-     "name_as_written": "JOEL & GUYLÈNE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "-» JOEL & GUYLÈNE 🇲🇫"
-    },
-    {
-     "name_as_written": "EDU DIAS",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "-» EDU DIAS 🇵🇹"
-    },
-    {
-     "name_as_written": "ARIANE JARIGUE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "-» ARIANE JARIGUE 🇲🇫"
-    },
-    {
-     "name_as_written": "CAROL XAVIER",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇷",
-     "source_line": "-» CAROL XAVIER 🇧🇷"
-    },
-    {
-     "name_as_written": "ANA & GUI ZAMORA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇺 🇵🇹",
-     "source_line": "-» ANA & GUI ZAMORA 🇨🇺 🇵🇹"
-    },
-    {
-     "name_as_written": "MANUEL MARTINS",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "-» MANUEL MARTINS 🇵🇹"
-    },
-    {
-     "name_as_written": "STÉPHANE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "– » STÉPHANE 🇲🇫"
-    }
-   ],
-   "features": [
-    {
-     "feature": "taxi_dancers",
-     "quote": "+- 100 TAXIS",
-     "rationale": "The description lists about 100 taxis and a taxi team, so taxi dancers are present."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "full-pass duo/couple included",
-     "rationale": "The hotel package states that the full pass for a couple is included with the room."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "petit dejeuner",
-     "rationale": "Breakfast is part of the hotel package together with the pass."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "PARTNERS HOTELS:",
-     "rationale": "The description has a partners hotels section recommending Apart city."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "HOURS TRANSFERS:",
-     "rationale": "The description gives shuttle times from airports and stations."
-    },
-    {
-     "feature": "live_music",
-     "quote": "OPHELIE DEBROISE",
-     "rationale": "A violinist is listed as a performer, which means live music."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "4 rooms in the domain of the chateau 100m from the living room",
-     "rationale": "Rooms in the chateau domain are offered next to the event venue, so the event and accommodation are in the same place."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18861",
+  "events": [
+   {
+    "event_id": 18861,
+    "artists": [
+     {
+      "name_as_written": "PARAÍSO",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "DJ -» PARAÍSO 🇦🇴"
+     },
+     {
+      "name_as_written": "TRONKY",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "DJ -» TRONKY 🇮🇹"
+     },
+     {
+      "name_as_written": "PAPARAZY",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "DJ -» PAPARAZY 🇦🇴"
+     },
+     {
+      "name_as_written": "PANKADAS",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "DJ -» PANKADAS 🇵🇹"
+     },
+     {
+      "name_as_written": "MKY",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "DJ -» MKY 🇨🇭"
+     },
+     {
+      "name_as_written": "CORAZON",
+      "role": "dj",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "DJ -» CORAZON 🇲🇫"
+     },
+     {
+      "name_as_written": "FAB",
+      "role": "dj",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "DJ -» FAB 🇲🇫"
+     },
+     {
+      "name_as_written": "MYCO",
+      "role": "dj",
+      "style": null,
+      "country": "🇬🇵",
+      "source_line": "DJ -» MYCO 🇬🇵"
+     },
+     {
+      "name_as_written": "DIAS",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "DJ -» DIAS 🇵🇹"
+     },
+     {
+      "name_as_written": "SAM/MAS",
+      "role": "dj",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "DJ -» SAM/MAS🇲🇫"
+     },
+     {
+      "name_as_written": "KORDJEE",
+      "role": "dj",
+      "style": null,
+      "country": "🇷🇪",
+      "source_line": "DJ -» KORDJEE 🇷🇪"
+     },
+     {
+      "name_as_written": "AÏZEN",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "DJ -» AÏZEN 🇵🇹"
+     },
+     {
+      "name_as_written": "OPHELIE DEBROISE",
+      "role": "performer",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "🎻 – » OPHELIE DEBROISE 🇲🇫"
+     },
+     {
+      "name_as_written": "PABLO & RAQUEL",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇦",
+      "source_line": "-» PABLO & RAQUEL 🇪🇦"
+     },
+     {
+      "name_as_written": "JUAN & SARA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇦",
+      "source_line": "-» JUAN & SARA 🇪🇦"
+     },
+     {
+      "name_as_written": "FRED & CHIARA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇲🇫 🇮🇹",
+      "source_line": "-» FRED & CHIARA 🇲🇫 🇮🇹"
+     },
+     {
+      "name_as_written": "CHRYS PY & LALY",
+      "role": "teacher",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "-» CHRYS PY & LALY 🇲🇫"
+     },
+     {
+      "name_as_written": "AMI & JULIEN",
+      "role": "teacher",
+      "style": null,
+      "country": "🇯🇵 🇨🇵",
+      "source_line": "-» AMI & JULIEN 🇯🇵 🇨🇵"
+     },
+     {
+      "name_as_written": "NUNO & CATIA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹 🇪🇦",
+      "source_line": "-» NUNO & CATIA 🇵🇹 🇪🇦"
+     },
+     {
+      "name_as_written": "ALKS & DASHA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇺🇦",
+      "source_line": "-» ALKS & DASHA 🇺🇦"
+     },
+     {
+      "name_as_written": "JOEL & GUYLÈNE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "-» JOEL & GUYLÈNE 🇲🇫"
+     },
+     {
+      "name_as_written": "EDU DIAS",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "-» EDU DIAS 🇵🇹"
+     },
+     {
+      "name_as_written": "ARIANE JARIGUE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "-» ARIANE JARIGUE 🇲🇫"
+     },
+     {
+      "name_as_written": "CAROL XAVIER",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇷",
+      "source_line": "-» CAROL XAVIER 🇧🇷"
+     },
+     {
+      "name_as_written": "ANA & GUI ZAMORA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇺 🇵🇹",
+      "source_line": "-» ANA & GUI ZAMORA 🇨🇺 🇵🇹"
+     },
+     {
+      "name_as_written": "MANUEL MARTINS",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "-» MANUEL MARTINS 🇵🇹"
+     },
+     {
+      "name_as_written": "STÉPHANE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "– » STÉPHANE 🇲🇫"
+     }
+    ],
+    "features": [
+     {
+      "feature": "taxi_dancers",
+      "quote": "+- 100 TAXIS",
+      "rationale": "The description lists about 100 taxis and a taxi team, so taxi dancers are present."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "full-pass duo/couple included",
+      "rationale": "The hotel package states that the full pass for a couple is included with the room."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "petit dejeuner",
+      "rationale": "Breakfast is part of the hotel package together with the pass."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "PARTNERS HOTELS:",
+      "rationale": "The description has a partners hotels section recommending Apart city."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "HOURS TRANSFERS:",
+      "rationale": "The description gives shuttle times from airports and stations."
+     },
+     {
+      "feature": "live_music",
+      "quote": "OPHELIE DEBROISE",
+      "rationale": "A violinist is listed as a performer, which means live music."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "4 rooms in the domain of the chateau 100m from the living room",
+      "rationale": "Rooms in the chateau domain are offered next to the event venue, so the event and accommodation are in the same place."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,68 +1,75 @@
 {
- "batch": "event-18802",
- "events": [
-  {
-   "event_id": 18802,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 ROOMS"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "URBAN KIZ",
-     "kind": "party",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "URBAN KIZ"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18802",
+  "events": [
+   {
+    "event_id": 18802,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 ROOMS"
     },
-    {
-     "name_as_written": "KIZOMBA & SEMBA",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba"
-     ],
-     "quote": "KIZOMBA & SEMBA"
-    },
-    {
-     "name_as_written": "BACHATA & SALSA",
-     "kind": "party",
-     "genres": [
-      "bachata",
-      "salsa"
-     ],
-     "quote": "BACHATA & SALSA"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "URBAN KIZ"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA & SEMBA"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "KIZOMBA & SEMBA"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "BACHATA & SALSA"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "BACHATA & SALSA"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "URBAN KIZ",
+      "kind": "party",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "URBAN KIZ"
+     },
+     {
+      "name_as_written": "KIZOMBA & SEMBA",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba"
+      ],
+      "quote": "KIZOMBA & SEMBA"
+     },
+     {
+      "name_as_written": "BACHATA & SALSA",
+      "kind": "party",
+      "genres": [
+       "bachata",
+       "salsa"
+      ],
+      "quote": "BACHATA & SALSA"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "URBAN KIZ"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA & SEMBA"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "KIZOMBA & SEMBA"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "BACHATA & SALSA"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "BACHATA & SALSA"
+     }
+    ]
+   }
+  ]
+ }
 }

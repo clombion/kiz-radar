@@ -1,0 +1,13 @@
+{
+ "key_a": "p:martin@esra+martin",
+ "key_b": "p:martina@martina+sonia",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "5bc2d37ff7002aa8",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Martin and Esra and Martina and Sónia have different first names and different partners, with no shared distinctive element."
+ }
+}

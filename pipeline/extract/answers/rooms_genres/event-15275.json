@@ -1,36 +1,43 @@
 {
- "batch": "event-15275",
- "events": [
-  {
-   "event_id": 15275,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 rooms, 3 atmospheres with 1 class"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15275",
+  "events": [
+   {
+    "event_id": 15275,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 rooms, 3 atmospheres with 1 class"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "bachata",
-     "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Brazilian zouk",
-     "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "salsa",
+      "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "bachata",
+      "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Brazilian zouk",
+      "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
+     }
+    ]
+   }
+  ]
+ }
 }

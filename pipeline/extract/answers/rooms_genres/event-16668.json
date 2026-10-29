@@ -1,53 +1,60 @@
 {
- "batch": "event-16668",
- "events": [
-  {
-   "event_id": 16668,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "LA / NY salsa"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cha-cha",
-     "quote": "Cha-cha"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Traditional Balkan Folklore",
-     "quote": "Traditional Balkan Folklore"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "reggaeton",
-     "quote": "reggaeton"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "zumba",
-     "quote": "zumba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "modern",
-     "quote": "modern"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16668",
+  "events": [
+   {
+    "event_id": 16668,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "salsa",
+      "quote": "LA / NY salsa"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cha-cha",
+      "quote": "Cha-cha"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Traditional Balkan Folklore",
+      "quote": "Traditional Balkan Folklore"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "reggaeton",
+      "quote": "reggaeton"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "zumba",
+      "quote": "zumba"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "modern",
+      "quote": "modern"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manuel@laura+manuel",
+ "key_b": "p:manueladosesantos",
+ "prompt": "7af5fef02cae3622",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:32:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "bb1cb059cf8b72e1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Manuel and Manuela Dose Santos differ by gender form, and the only shared link is the common first name Laura, with both listed in Italy; no evidence settles whether they are one person."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:daniel@daniel+elina",
+ "key_b": "p:daniela@daniela+maik",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "770fb3e71fd2a31f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Daniel and Daniela are distinct names one letter apart, and the partners Elina and Maik differ."
+ }
+}

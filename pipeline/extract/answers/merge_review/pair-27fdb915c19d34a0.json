@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@cristina+fadik",
+ "key_b": "p:cristinavarga",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "27fdb915c19d34a0",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Fadi K and Cristina appear with the same partner and the same Salsa style, with the second entry adding the surname Varga."
+ }
+}

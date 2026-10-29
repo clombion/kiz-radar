@@ -1,137 +1,144 @@
 {
- "batch": "event-17906",
- "events": [
-  {
-   "event_id": 17906,
-   "artists": [
-    {
-     "name_as_written": "Elisa Sala",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Elisa Sala"
-    },
-    {
-     "name_as_written": "Rico & Manon",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Rico & Manon"
-    },
-    {
-     "name_as_written": "Stephane & Teresa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Stephane & Teresa"
-    },
-    {
-     "name_as_written": "Lucas & Jeyda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Lucas & Jeyda"
-    },
-    {
-     "name_as_written": "Petite Madame",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Petite Madame"
-    },
-    {
-     "name_as_written": "Maribel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Maribel"
-    },
-    {
-     "name_as_written": "DJ 5Starkid",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ 5Starkid"
-    },
-    {
-     "name_as_written": "DJ David Ruela",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ David Ruela"
-    },
-    {
-     "name_as_written": "DJ G Sousa",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ G Sousa"
-    },
-    {
-     "name_as_written": "DJ Sabura",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Sabura"
-    },
-    {
-     "name_as_written": "DJ Dico",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dico"
-    },
-    {
-     "name_as_written": "DJ Pux",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Pux"
-    },
-    {
-     "name_as_written": "DJ After Party",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ After Party"
-    },
-    {
-     "name_as_written": "DJ Yana",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Yana"
-    },
-    {
-     "name_as_written": "DJ Cubanito",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Cubanito"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "10 hours of high-quality workshops",
-     "rationale": "The description lists workshops as part of what is included."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 dedicated rooms",
-     "rationale": "The event has two dedicated rooms."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Whether you’re new to Kizomba or an experienced dancer",
-     "rationale": "The event explicitly welcomes newcomers to Kizomba as well as experienced dancers."
-    },
-    {
-     "feature": "adults_only",
-     "quote": "No ID = No Entry (18+)",
-     "rationale": "Entry is restricted to adults aged 18 and over."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17906",
+  "events": [
+   {
+    "event_id": 17906,
+    "artists": [
+     {
+      "name_as_written": "Elisa Sala",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Elisa Sala"
+     },
+     {
+      "name_as_written": "Rico & Manon",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Rico & Manon"
+     },
+     {
+      "name_as_written": "Stephane & Teresa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Stephane & Teresa"
+     },
+     {
+      "name_as_written": "Lucas & Jeyda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Lucas & Jeyda"
+     },
+     {
+      "name_as_written": "Petite Madame",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Petite Madame"
+     },
+     {
+      "name_as_written": "Maribel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Maribel"
+     },
+     {
+      "name_as_written": "DJ 5Starkid",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ 5Starkid"
+     },
+     {
+      "name_as_written": "DJ David Ruela",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ David Ruela"
+     },
+     {
+      "name_as_written": "DJ G Sousa",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ G Sousa"
+     },
+     {
+      "name_as_written": "DJ Sabura",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Sabura"
+     },
+     {
+      "name_as_written": "DJ Dico",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dico"
+     },
+     {
+      "name_as_written": "DJ Pux",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Pux"
+     },
+     {
+      "name_as_written": "DJ After Party",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ After Party"
+     },
+     {
+      "name_as_written": "DJ Yana",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Yana"
+     },
+     {
+      "name_as_written": "DJ Cubanito",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Cubanito"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "10 hours of high-quality workshops",
+      "rationale": "The description lists workshops as part of what is included."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 dedicated rooms",
+      "rationale": "The event has two dedicated rooms."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Whether you’re new to Kizomba or an experienced dancer",
+      "rationale": "The event explicitly welcomes newcomers to Kizomba as well as experienced dancers."
+     },
+     {
+      "feature": "adults_only",
+      "quote": "No ID = No Entry (18+)",
+      "rationale": "Entry is restricted to adults aged 18 and over."
+     }
+    ]
+   }
+  ]
+ }
 }

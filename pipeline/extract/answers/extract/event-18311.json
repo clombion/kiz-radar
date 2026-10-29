@@ -1,195 +1,202 @@
 {
- "batch": "event-18311",
- "events": [
-  {
-   "event_id": 18311,
-   "artists": [
-    {
-     "name_as_written": "DJ PUTO-X",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ PUTO-X – 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ SNAKES – 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ POEMA BEATZ",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "🎧 DJ POEMA BEATZ – 🇸🇪"
-    },
-    {
-     "name_as_written": "DJ HUGO SMILE",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ HUGO SMILE – 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ ANTONY TARRAXA",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🎧 DJ ANTONY TARRAXA – 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ FOFO JAH",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ FOFO JAH – 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ BAD",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ BAD – 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ KRANES",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "🎧 DJ KRANES – 🇵🇱"
-    },
-    {
-     "name_as_written": "DJ IKA",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ IKA – 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ SAUDADE",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ SAUDADE – 🇫🇷"
-    },
-    {
-     "name_as_written": "JOJO & JENNY",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": "🇫🇷",
-     "source_line": "✔ JOJO & JENNY – 🇫🇷 (Urban Kiz)"
-    },
-    {
-     "name_as_written": "AUDI & LAURA",
-     "role": "teacher",
-     "style": "Urban Kiz / Tarraxo",
-     "country": "🇪🇸",
-     "source_line": "✔ AUDI & LAURA – 🇪🇸 (Urban Kiz / Tarraxo)"
-    },
-    {
-     "name_as_written": "SAID",
-     "role": "teacher",
-     "style": "Urban Kiz / Tarraxo",
-     "country": "🇫🇷",
-     "source_line": "✔ SAID – 🇫🇷 (Urban Kiz / Tarraxo)"
-    },
-    {
-     "name_as_written": "LEDOUX KINGSMAN",
-     "role": "teacher",
-     "style": "Urban Kiz / Kizomba Fusion",
-     "country": "🇫🇷",
-     "source_line": "✔ LEDOUX KINGSMAN – 🇫🇷 (Urban Kiz / Kizomba Fusion)"
-    },
-    {
-     "name_as_written": "JONATHAN KANI",
-     "role": "teacher",
-     "style": "Afro / Kizomba Fusion",
-     "country": "🇫🇷",
-     "source_line": "✔ JONATHAN KANI – 🇫🇷 (Afro / Kizomba Fusion)"
-    },
-    {
-     "name_as_written": "BENJAMINE & STEPHANIE",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": "🇫🇷",
-     "source_line": "✔ BENJAMINE & STEPHANIE – 🇫🇷 (Urban Kiz)"
-    },
-    {
-     "name_as_written": "MANU & OLIVIA",
-     "role": "teacher",
-     "style": "Kizomba/Semba",
-     "country": "🇫🇷",
-     "source_line": "✔ MANU & OLIVIA – 🇫🇷 (Kizomba/Semba)"
-    },
-    {
-     "name_as_written": "NAS",
-     "role": "teacher",
-     "style": "Kizomba Fusion",
-     "country": "🇫🇷",
-     "source_line": "✔ NAS – 🇫🇷 (Kizomba Fusion)"
-    },
-    {
-     "name_as_written": "JULIE JULY",
-     "role": "teacher",
-     "style": "Kizomba Fusion",
-     "country": "🇫🇷",
-     "source_line": "✔ JULIE JULY – 🇫🇷 (Kizomba Fusion)"
-    },
-    {
-     "name_as_written": "NUNO & SARAI",
-     "role": "teacher",
-     "style": "Kizomba Fusion",
-     "country": "🇪🇸",
-     "source_line": "✔ NUNO & SARAI – 🇪🇸 (Kizomba Fusion)"
-    },
-    {
-     "name_as_written": "ANDREA MURGIA",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": "🇮🇹",
-     "source_line": "✔ ANDREA MURGIA – 🇮🇹 (Urban Kiz)"
-    },
-    {
-     "name_as_written": "TITONY & LUCIE",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": "🇫🇷",
-     "source_line": "✔ TITONY & LUCIE (2025 BATTLE KIZZ WINNERS) – 🇫🇷 (Urban Kiz)"
-    },
-    {
-     "name_as_written": "ELSA & SERGI",
-     "role": "teacher",
-     "style": "Kizomba Fusion",
-     "country": "🇪🇸",
-     "source_line": "✔ ELSA & SERGI – 🇪🇸 (Kizomba Fusion)"
-    },
-    {
-     "name_as_written": "ELIAS & VICKY",
-     "role": "teacher",
-     "style": "Kizomba Fusion",
-     "country": "🇪🇸",
-     "source_line": "✔ ELIAS & VICKY – 🇪🇸 (Kizomba Fusion)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE",
-     "rationale": "The description states the event is all in one, and the venue is the Hotel Nautic Park where the parties take place."
-    },
-    {
-     "feature": "workshops",
-     "quote": "+24H OF WORKSHOPS",
-     "rationale": "The festival includes more than 24 hours of workshops."
-    },
-    {
-     "feature": "competition",
-     "quote": "THE BATTLE KIZZ (SPAIN FINAL)",
-     "rationale": "A Battle Kizz competition final is part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18311",
+  "events": [
+   {
+    "event_id": 18311,
+    "artists": [
+     {
+      "name_as_written": "DJ PUTO-X",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ PUTO-X – 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ SNAKES – 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ POEMA BEATZ",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "🎧 DJ POEMA BEATZ – 🇸🇪"
+     },
+     {
+      "name_as_written": "DJ HUGO SMILE",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ HUGO SMILE – 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ ANTONY TARRAXA",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🎧 DJ ANTONY TARRAXA – 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ FOFO JAH",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ FOFO JAH – 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ BAD",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ BAD – 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ KRANES",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "🎧 DJ KRANES – 🇵🇱"
+     },
+     {
+      "name_as_written": "DJ IKA",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ IKA – 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ SAUDADE",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ SAUDADE – 🇫🇷"
+     },
+     {
+      "name_as_written": "JOJO & JENNY",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": "🇫🇷",
+      "source_line": "✔ JOJO & JENNY – 🇫🇷 (Urban Kiz)"
+     },
+     {
+      "name_as_written": "AUDI & LAURA",
+      "role": "teacher",
+      "style": "Urban Kiz / Tarraxo",
+      "country": "🇪🇸",
+      "source_line": "✔ AUDI & LAURA – 🇪🇸 (Urban Kiz / Tarraxo)"
+     },
+     {
+      "name_as_written": "SAID",
+      "role": "teacher",
+      "style": "Urban Kiz / Tarraxo",
+      "country": "🇫🇷",
+      "source_line": "✔ SAID – 🇫🇷 (Urban Kiz / Tarraxo)"
+     },
+     {
+      "name_as_written": "LEDOUX KINGSMAN",
+      "role": "teacher",
+      "style": "Urban Kiz / Kizomba Fusion",
+      "country": "🇫🇷",
+      "source_line": "✔ LEDOUX KINGSMAN – 🇫🇷 (Urban Kiz / Kizomba Fusion)"
+     },
+     {
+      "name_as_written": "JONATHAN KANI",
+      "role": "teacher",
+      "style": "Afro / Kizomba Fusion",
+      "country": "🇫🇷",
+      "source_line": "✔ JONATHAN KANI – 🇫🇷 (Afro / Kizomba Fusion)"
+     },
+     {
+      "name_as_written": "BENJAMINE & STEPHANIE",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": "🇫🇷",
+      "source_line": "✔ BENJAMINE & STEPHANIE – 🇫🇷 (Urban Kiz)"
+     },
+     {
+      "name_as_written": "MANU & OLIVIA",
+      "role": "teacher",
+      "style": "Kizomba/Semba",
+      "country": "🇫🇷",
+      "source_line": "✔ MANU & OLIVIA – 🇫🇷 (Kizomba/Semba)"
+     },
+     {
+      "name_as_written": "NAS",
+      "role": "teacher",
+      "style": "Kizomba Fusion",
+      "country": "🇫🇷",
+      "source_line": "✔ NAS – 🇫🇷 (Kizomba Fusion)"
+     },
+     {
+      "name_as_written": "JULIE JULY",
+      "role": "teacher",
+      "style": "Kizomba Fusion",
+      "country": "🇫🇷",
+      "source_line": "✔ JULIE JULY – 🇫🇷 (Kizomba Fusion)"
+     },
+     {
+      "name_as_written": "NUNO & SARAI",
+      "role": "teacher",
+      "style": "Kizomba Fusion",
+      "country": "🇪🇸",
+      "source_line": "✔ NUNO & SARAI – 🇪🇸 (Kizomba Fusion)"
+     },
+     {
+      "name_as_written": "ANDREA MURGIA",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": "🇮🇹",
+      "source_line": "✔ ANDREA MURGIA – 🇮🇹 (Urban Kiz)"
+     },
+     {
+      "name_as_written": "TITONY & LUCIE",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": "🇫🇷",
+      "source_line": "✔ TITONY & LUCIE (2025 BATTLE KIZZ WINNERS) – 🇫🇷 (Urban Kiz)"
+     },
+     {
+      "name_as_written": "ELSA & SERGI",
+      "role": "teacher",
+      "style": "Kizomba Fusion",
+      "country": "🇪🇸",
+      "source_line": "✔ ELSA & SERGI – 🇪🇸 (Kizomba Fusion)"
+     },
+     {
+      "name_as_written": "ELIAS & VICKY",
+      "role": "teacher",
+      "style": "Kizomba Fusion",
+      "country": "🇪🇸",
+      "source_line": "✔ ELIAS & VICKY – 🇪🇸 (Kizomba Fusion)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE",
+      "rationale": "The description states the event is all in one, and the venue is the Hotel Nautic Park where the parties take place."
+     },
+     {
+      "feature": "workshops",
+      "quote": "+24H OF WORKSHOPS",
+      "rationale": "The festival includes more than 24 hours of workshops."
+     },
+     {
+      "feature": "competition",
+      "quote": "THE BATTLE KIZZ (SPAIN FINAL)",
+      "rationale": "A Battle Kizz competition final is part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

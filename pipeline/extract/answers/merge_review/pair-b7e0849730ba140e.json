@@ -1,0 +1,13 @@
+{
+ "key_a": "p:benjamin@benjamin+stephanie",
+ "key_b": "p:benjamine@benjamine+stephanie",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "b7e0849730ba140e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Benjamin and Benjamine differ by a gendered letter (the Daniel/Daniela pattern), while the shared partner Stephanie points the other way, so it is not settled."
+ }
+}

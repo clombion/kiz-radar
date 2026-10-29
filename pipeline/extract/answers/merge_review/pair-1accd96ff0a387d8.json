@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cedric@cedric+christina",
+ "key_b": "p:cedric@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "1accd96ff0a387d8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Cedric & Christina and solo Cedric share only the first name and the France stated country, with no partner or event in common."
+ }
+}

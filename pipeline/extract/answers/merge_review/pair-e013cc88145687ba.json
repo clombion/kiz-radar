@@ -1,0 +1,13 @@
+{
+ "key_a": "p:karl@dance",
+ "key_b": "p:karlbekene",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "e013cc88145687ba",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Karl and Karl Bekene share the first name, France as stated country on most entries, and Kizomba styles, with Bekene as the full form."
+ }
+}

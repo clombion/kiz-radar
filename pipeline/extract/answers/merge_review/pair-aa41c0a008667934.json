@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paulo@lenna+paulo",
+ "key_b": "p:paulo@mafalda+paulo",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "aa41c0a008667934",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Only the first name Paulo and Portugal are shared, and the partners Lenna and Mafalda differ, so the evidence does not settle identity."
+ }
+}

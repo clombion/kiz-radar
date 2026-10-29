@@ -1,0 +1,13 @@
+{
+ "key_a": "p:emanuel@emanuel+teresa",
+ "key_b": "p:emanuelnpedro",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "00194d155ff19903",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Teresa & Emanuel shares partner Teresa, with the full name Emanuel N. Pedro on the other side, and Angola stated on both."
+ }
+}

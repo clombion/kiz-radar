@@ -1,56 +1,63 @@
 {
- "batch": "event-16160",
- "events": [
-  {
-   "event_id": 16160,
-   "artists": [
-    {
-     "name_as_written": "Lápis Eventos",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The Angolan Dances Trip is an immersive cultural experience created by Lápis Eventos, led by Gabriel Cabinda, the producer behind the internationally recognized Angolan Dances Festival (Lisbon)."
-    },
-    {
-     "name_as_written": "Gabriel Cabinda",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Organizer: Gabriel Cabinda"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)",
-     "rationale": "The included list names dance workshops in several styles."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Intensive training: 1 hour/day in small groups (1 instructor per 3 participants)",
-     "rationale": "A daily intensive training course is listed as included."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live music, backyard parties & street celebrations",
-     "rationale": "Live music is explicitly listed as part of the experience."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Includes accommodation, transport, activities & 2 meals per day",
-     "rationale": "The package explicitly includes accommodation."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Includes accommodation, transport, activities & 2 meals per day",
-     "rationale": "The package explicitly includes two meals per day."
-    },
-    {
-     "feature": "camping",
-     "quote": "Desert camping & hotel stays",
-     "rationale": "Desert camping is part of the Package 2 accommodation."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16160",
+  "events": [
+   {
+    "event_id": 16160,
+    "artists": [
+     {
+      "name_as_written": "Lápis Eventos",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The Angolan Dances Trip is an immersive cultural experience created by Lápis Eventos, led by Gabriel Cabinda, the producer behind the internationally recognized Angolan Dances Festival (Lisbon)."
+     },
+     {
+      "name_as_written": "Gabriel Cabinda",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Organizer: Gabriel Cabinda"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)",
+      "rationale": "The included list names dance workshops in several styles."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Intensive training: 1 hour/day in small groups (1 instructor per 3 participants)",
+      "rationale": "A daily intensive training course is listed as included."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live music, backyard parties & street celebrations",
+      "rationale": "Live music is explicitly listed as part of the experience."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Includes accommodation, transport, activities & 2 meals per day",
+      "rationale": "The package explicitly includes accommodation."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Includes accommodation, transport, activities & 2 meals per day",
+      "rationale": "The package explicitly includes two meals per day."
+     },
+     {
+      "feature": "camping",
+      "quote": "Desert camping & hotel stays",
+      "rationale": "Desert camping is part of the Package 2 accommodation."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:christina@christina+joanna",
+ "key_b": "p:christinachrysanthou",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "885953e970314f1d",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Joanna and Christina and the solo Christina Chrysanthou are listed separately at the same Thessaloniki event on the same date."
+ }
+}

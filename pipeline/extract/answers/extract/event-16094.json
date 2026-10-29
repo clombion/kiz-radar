@@ -1,285 +1,292 @@
 {
- "batch": "event-16094",
- "events": [
-  {
-   "event_id": 16094,
-   "artists": [
-    {
-     "name_as_written": "Lorenys and Manolo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Lorenys and Manolo"
-    },
-    {
-     "name_as_written": "Franck and Laure",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Franck and Laure"
-    },
-    {
-     "name_as_written": "Alex De Carvalho and Laure Lalanne",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Alex De Carvalho and Laure Lalanne"
-    },
-    {
-     "name_as_written": "Simba and Manon",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Simba and Manon"
-    },
-    {
-     "name_as_written": "Cornel and Rithika",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Cornel and Rithika"
-    },
-    {
-     "name_as_written": "Micka and Laura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Micka and Laura"
-    },
-    {
-     "name_as_written": "Brice and Manue",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Brice and Manue"
-    },
-    {
-     "name_as_written": "Fred-Nelson and Morgane",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Fred-Nelson and Morgane"
-    },
-    {
-     "name_as_written": "Chamalo and Jalyssa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Chamalo and Jalyssa"
-    },
-    {
-     "name_as_written": "Inès Miranda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Inès Miranda"
-    },
-    {
-     "name_as_written": "Kristel Ju and Ichigo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Kristel Ju and Ichigo"
-    },
-    {
-     "name_as_written": "Ti wosh",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ti wosh"
-    },
-    {
-     "name_as_written": "Jonathan Kani",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Jonathan Kani"
-    },
-    {
-     "name_as_written": "Christilla Garraud",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Christilla Garraud"
-    },
-    {
-     "name_as_written": "DJ Cesc",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Cesc"
-    },
-    {
-     "name_as_written": "DJ Karim SBK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Karim SBK"
-    },
-    {
-     "name_as_written": "DJ Dada",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dada"
-    },
-    {
-     "name_as_written": "DJ JDN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ JDN"
-    },
-    {
-     "name_as_written": "DJ Diablo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Diablo"
-    },
-    {
-     "name_as_written": "DJ Pastaguero",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Pastaguero"
-    },
-    {
-     "name_as_written": "DJ The Duro",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ The Duro"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Ichigo"
-    },
-    {
-     "name_as_written": "DJ Ti wosh",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Ti wosh"
-    },
-    {
-     "name_as_written": "DJ Chanchan",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Chanchan"
-    },
-    {
-     "name_as_written": "DJ Nico",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Nico"
-    },
-    {
-     "name_as_written": "Mylah Pless",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Mylah Pless"
-    },
-    {
-     "name_as_written": "Misié Ludo",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Misié Ludo"
-    },
-    {
-     "name_as_written": "Laurent Yishu",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Laurent Yishu"
-    },
-    {
-     "name_as_written": "PPZ Dance TV",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "PPZ Dance TV"
-    },
-    {
-     "name_as_written": "LDR",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "LDR"
-    },
-    {
-     "name_as_written": "Alfil Regis",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Alfil Regis"
-    },
-    {
-     "name_as_written": "Airfleks",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Airfleks"
-    },
-    {
-     "name_as_written": "Yann",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Yann"
-    },
-    {
-     "name_as_written": "ju Afro Latine Event",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "On our Facebook page > ju Afro Latine Event"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "8:30 PM to 10:30 PM Workshops (included with Friday evening)",
-     "rationale": "The schedule lists workshops as part of the Friday evening programme, and Sunday also has dance classes."
-    },
-    {
-     "feature": "shows",
-     "quote": "10:00 PM: 2K Show",
-     "rationale": "The programme includes a 2K Show on Saturday evening."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 rooms = salsa, bachata, kizomba, and mix",
-     "rationale": "The party is stated to take place across four rooms."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS SETTINGS:",
-     "rationale": "A dress setting section specifies the dress for each evening and afternoon."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "2 PM to 6 PM SBKZ Social on the beach at Sand",
-     "rationale": "An afternoon social runs from 2 PM to 6 PM on Friday."
-    },
-    {
-     "feature": "competition",
-     "quote": "1:00 PM to 2:00 PM: SYS Battle",
-     "rationale": "A SYS Battle is scheduled on Sunday, which is a competition."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "with local shuttles between the station and Le Touquet",
-     "rationale": "Local shuttles run between the train station and Le Touquet."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16094",
+  "events": [
+   {
+    "event_id": 16094,
+    "artists": [
+     {
+      "name_as_written": "Lorenys and Manolo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Lorenys and Manolo"
+     },
+     {
+      "name_as_written": "Franck and Laure",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Franck and Laure"
+     },
+     {
+      "name_as_written": "Alex De Carvalho and Laure Lalanne",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Alex De Carvalho and Laure Lalanne"
+     },
+     {
+      "name_as_written": "Simba and Manon",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Simba and Manon"
+     },
+     {
+      "name_as_written": "Cornel and Rithika",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Cornel and Rithika"
+     },
+     {
+      "name_as_written": "Micka and Laura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Micka and Laura"
+     },
+     {
+      "name_as_written": "Brice and Manue",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Brice and Manue"
+     },
+     {
+      "name_as_written": "Fred-Nelson and Morgane",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Fred-Nelson and Morgane"
+     },
+     {
+      "name_as_written": "Chamalo and Jalyssa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Chamalo and Jalyssa"
+     },
+     {
+      "name_as_written": "Inès Miranda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Inès Miranda"
+     },
+     {
+      "name_as_written": "Kristel Ju and Ichigo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Kristel Ju and Ichigo"
+     },
+     {
+      "name_as_written": "Ti wosh",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ti wosh"
+     },
+     {
+      "name_as_written": "Jonathan Kani",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Jonathan Kani"
+     },
+     {
+      "name_as_written": "Christilla Garraud",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Christilla Garraud"
+     },
+     {
+      "name_as_written": "DJ Cesc",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Cesc"
+     },
+     {
+      "name_as_written": "DJ Karim SBK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Karim SBK"
+     },
+     {
+      "name_as_written": "DJ Dada",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dada"
+     },
+     {
+      "name_as_written": "DJ JDN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ JDN"
+     },
+     {
+      "name_as_written": "DJ Diablo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Diablo"
+     },
+     {
+      "name_as_written": "DJ Pastaguero",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Pastaguero"
+     },
+     {
+      "name_as_written": "DJ The Duro",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ The Duro"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Ichigo"
+     },
+     {
+      "name_as_written": "DJ Ti wosh",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Ti wosh"
+     },
+     {
+      "name_as_written": "DJ Chanchan",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Chanchan"
+     },
+     {
+      "name_as_written": "DJ Nico",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Nico"
+     },
+     {
+      "name_as_written": "Mylah Pless",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Mylah Pless"
+     },
+     {
+      "name_as_written": "Misié Ludo",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Misié Ludo"
+     },
+     {
+      "name_as_written": "Laurent Yishu",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Laurent Yishu"
+     },
+     {
+      "name_as_written": "PPZ Dance TV",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "PPZ Dance TV"
+     },
+     {
+      "name_as_written": "LDR",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "LDR"
+     },
+     {
+      "name_as_written": "Alfil Regis",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Alfil Regis"
+     },
+     {
+      "name_as_written": "Airfleks",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Airfleks"
+     },
+     {
+      "name_as_written": "Yann",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Yann"
+     },
+     {
+      "name_as_written": "ju Afro Latine Event",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "On our Facebook page > ju Afro Latine Event"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "8:30 PM to 10:30 PM Workshops (included with Friday evening)",
+      "rationale": "The schedule lists workshops as part of the Friday evening programme, and Sunday also has dance classes."
+     },
+     {
+      "feature": "shows",
+      "quote": "10:00 PM: 2K Show",
+      "rationale": "The programme includes a 2K Show on Saturday evening."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "4 rooms = salsa, bachata, kizomba, and mix",
+      "rationale": "The party is stated to take place across four rooms."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESS SETTINGS:",
+      "rationale": "A dress setting section specifies the dress for each evening and afternoon."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "2 PM to 6 PM SBKZ Social on the beach at Sand",
+      "rationale": "An afternoon social runs from 2 PM to 6 PM on Friday."
+     },
+     {
+      "feature": "competition",
+      "quote": "1:00 PM to 2:00 PM: SYS Battle",
+      "rationale": "A SYS Battle is scheduled on Sunday, which is a competition."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "with local shuttles between the station and Le Touquet",
+      "rationale": "Local shuttles run between the train station and Le Touquet."
+     }
+    ]
+   }
+  ]
+ }
 }

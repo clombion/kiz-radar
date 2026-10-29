@@ -1,36 +1,43 @@
 {
- "batch": "event-17965",
- "events": [
-  {
-   "event_id": 17965,
-   "artists": [],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 rooms • 3 styles • 3 atmospheres",
-     "rationale": "The description states the event has three rooms, which means more than one dance floor."
-    },
-    {
-     "feature": "workshops",
-     "quote": "4 HOURS OF WORKSHOPS",
-     "rationale": "The Saturday schedule explicitly lists dance workshops as part of the event."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "intensive workshops",
-     "rationale": "The description promotes intensive workshops as part of the New Year programme."
-    },
-    {
-     "feature": "shows",
-     "quote": "Entertainment & surprises (live show)",
-     "rationale": "A live show is listed as part of the New Year's Eve programme."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Gala Buffet",
-     "rationale": "The ROYAL VIP FULL PASS lists the Gala Buffet as one of its inclusions."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17965",
+  "events": [
+   {
+    "event_id": 17965,
+    "artists": [],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 rooms • 3 styles • 3 atmospheres",
+      "rationale": "The description states the event has three rooms, which means more than one dance floor."
+     },
+     {
+      "feature": "workshops",
+      "quote": "4 HOURS OF WORKSHOPS",
+      "rationale": "The Saturday schedule explicitly lists dance workshops as part of the event."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "intensive workshops",
+      "rationale": "The description promotes intensive workshops as part of the New Year programme."
+     },
+     {
+      "feature": "shows",
+      "quote": "Entertainment & surprises (live show)",
+      "rationale": "A live show is listed as part of the New Year's Eve programme."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Gala Buffet",
+      "rationale": "The ROYAL VIP FULL PASS lists the Gala Buffet as one of its inclusions."
+     }
+    ]
+   }
+  ]
+ }
 }

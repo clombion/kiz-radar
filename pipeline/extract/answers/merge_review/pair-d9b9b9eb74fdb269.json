@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johnny@cristina+johnny",
+ "key_b": "p:johnnyagostino",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d9b9b9eb74fdb269",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Johnny Agostino is a solo entry with a distinctive surname, and the only shared element with the Johnny & Cristina couple is the first name Johnny in Switzerland."
+ }
+}

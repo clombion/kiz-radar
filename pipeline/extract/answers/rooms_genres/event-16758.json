@@ -1,97 +1,104 @@
 {
- "batch": "event-16758",
- "events": [
-  {
-   "event_id": 16758,
-   "party_rooms": {
-    "count": 2,
-    "quote": "❚2 AMBIANCES❚"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "🅢🅐🅛🅛🅔【①】|Urban",
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "tarraxinha",
-      "other",
-      "kizomba",
-      "semba",
-      "other",
-      "zouk"
-     ],
-     "quote": "🅢🅐🅛🅛🅔【①】|Urban"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16758",
+  "events": [
+   {
+    "event_id": 16758,
+    "party_rooms": {
+     "count": 2,
+     "quote": "❚2 AMBIANCES❚"
     },
-    {
-     "name_as_written": "🅢🅐🅛🅛🅔【②】",
-     "kind": "party",
-     "genres": [
-      "salsa",
-      "bachata",
-      "other",
-      "reggaeton"
-     ],
-     "quote": "🅢🅐🅛🅛🅔【②】|●Salsa ●Bachata ●Mérengué ●Reggaeton"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba takes center stage"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "● Semba"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "● UrbanKiz"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "● Tarraxinha"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Softness",
-     "quote": "● Softness"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cabo Love",
-     "quote": "● Cabo Love"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto zouk",
-     "quote": "●Ghetto zouk"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "●Salsa"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "●Bachata"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Mérengué",
-     "quote": "●Mérengué"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "Reggaeton",
-     "quote": "●Reggaeton"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "🅢🅐🅛🅛🅔【①】|Urban",
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "tarraxinha",
+       "other",
+       "kizomba",
+       "semba",
+       "other",
+       "zouk"
+      ],
+      "quote": "🅢🅐🅛🅛🅔【①】|Urban"
+     },
+     {
+      "name_as_written": "🅢🅐🅛🅛🅔【②】",
+      "kind": "party",
+      "genres": [
+       "salsa",
+       "bachata",
+       "other",
+       "reggaeton"
+      ],
+      "quote": "🅢🅐🅛🅛🅔【②】|●Salsa ●Bachata ●Mérengué ●Reggaeton"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba takes center stage"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "● Semba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "● UrbanKiz"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "● Tarraxinha"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Softness",
+      "quote": "● Softness"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cabo Love",
+      "quote": "● Cabo Love"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto zouk",
+      "quote": "●Ghetto zouk"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "●Salsa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "●Bachata"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Mérengué",
+      "quote": "●Mérengué"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "Reggaeton",
+      "quote": "●Reggaeton"
+     }
+    ]
+   }
+  ]
+ }
 }

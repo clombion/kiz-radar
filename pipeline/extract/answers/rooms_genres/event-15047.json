@@ -1,49 +1,56 @@
 {
- "batch": "event-15047",
- "events": [
-  {
-   "event_id": 15047,
-   "party_rooms": {
-    "count": 2,
-    "quote": "1 100,000% Kizomba room / 1 Salsa Bachata Fun room"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "100,000% Kizomba room",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "1 100,000% Kizomba room"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15047",
+  "events": [
+   {
+    "event_id": 15047,
+    "party_rooms": {
+     "count": 2,
+     "quote": "1 100,000% Kizomba room / 1 Salsa Bachata Fun room"
     },
-    {
-     "name_as_written": "Salsa Bachata Fun room",
-     "kind": "party",
-     "genres": [
-      "salsa",
-      "bachata"
-     ],
-     "quote": "1 Salsa Bachata Fun room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "1 100,000% Kizomba room"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "1 Salsa Bachata Fun room"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "1 Salsa Bachata Fun room"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "100,000% Kizomba room",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "1 100,000% Kizomba room"
+     },
+     {
+      "name_as_written": "Salsa Bachata Fun room",
+      "kind": "party",
+      "genres": [
+       "salsa",
+       "bachata"
+      ],
+      "quote": "1 Salsa Bachata Fun room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "1 100,000% Kizomba room"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "1 Salsa Bachata Fun room"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "1 Salsa Bachata Fun room"
+     }
+    ]
+   }
+  ]
+ }
 }

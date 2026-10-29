@@ -4,10 +4,9 @@ that its record refuses, such as a hand edit of a CSV naming no state, or a clai
 
     mise run audit
 
-Refused: every row of the CSV files the steps share (tickets/pages.csv, tickets/status.csv, the answers' log, the
+Refused: every row of the CSV files the steps share (tickets/pages.csv, tickets/status.csv, the
 hand-kept decisions and plans), each read as its record (pipeline/records.py); every claim of the claims repository,
-read as its record and named by its digest; an answer file the log has no row for (a run stopped between the two
-writes: it answers nothing until asked again); and the data the load takes: every answer and first read to its current
+read as its record and named by its digest; and the data the load takes: every answer and first read to its current
 prompt (one to another prompt waits to be asked again, and is not loaded), read as its record. Stale: a site claim for
 a site a recipe now reads, or one no festival the source database lists has its known ticket page on. Each finding goes
 to stderr; then "N refused, M stale", exiting 1 when either is not 0.
@@ -26,9 +25,9 @@ from pipeline import prompt as prompts
 from pipeline.claims import SiteClaim
 from pipeline.extract import answers
 from pipeline.records import (
+    Answered,
     CsvRow,
     FirstRead,
-    Logged,
     Stamped,
     errors,
     today,
@@ -50,12 +49,11 @@ def refused(event_ids: set[int]) -> list[str]:
             except ValidationError as e:
                 out += errors(e, f'{record.FILE} line {n}')
     out += [line for path in claims.claim_files() if isinstance(why := claims.parsed(path), list) for line in why]
-    out += [f'{shown(p)}: no row in {Logged.FILE}; it answers nothing until asked again' for p in answers.unlogged()]
     for pass_ in prompts.PASSES:
         answered = answers.answered(pass_.name, event_ids).values()
         for path in sorted({path for path, meta in answered if prompts.is_current(pass_.name, meta.prompt)}):
             try:
-                _ = prompts.answer(pass_).parse(path.read_bytes())
+                _ = Answered[pass_.entry].parse(path.read_bytes())
             except ValidationError as e:
                 out += errors(e, shown(path))
     for path in sorted(data(tickets_store.READS).glob('*.json')):

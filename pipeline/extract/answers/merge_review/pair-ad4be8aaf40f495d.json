@@ -1,0 +1,13 @@
+{
+ "key_a": "p:atou@dance",
+ "key_b": "p:atoubaakaa2man",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ad4be8aaf40f495d",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Atou and Atou Ba aka A2Man share a distinctive first name and the Senegal stated country on one event each."
+ }
+}

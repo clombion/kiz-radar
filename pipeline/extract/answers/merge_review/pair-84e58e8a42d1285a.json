@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@dance",
+ "key_b": "p:saramartins",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "84e58e8a42d1285a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Sara and Sara Martins appear at the same festival and country, but a first-name-only record beside a fuller name at one festival leaves two Saras possible."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:florian@audrey+florian",
+ "key_b": "p:floriansensacion",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2339aacead6bcadb",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Florian and Audrey on side A and DJ Florian Sensacion on side B share the first name and France, but the role and the style differ."
+ }
+}

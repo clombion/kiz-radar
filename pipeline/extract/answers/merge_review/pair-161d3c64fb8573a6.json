@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@doctorkizomba+laura",
+ "key_b": "p:laurabuffone",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "161d3c64fb8573a6",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Doctor Kizomba & Laura (Bern 2027) and Dr Kizomba & Laura Buffone (Florence 2027) share the same partner name, with Laura Buffone as the full form."
+ }
+}

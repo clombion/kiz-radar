@@ -1,38 +1,45 @@
 {
- "batch": "event-14609",
- "events": [
-  {
-   "event_id": 14609,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cape Verdean Traditional Dances",
-     "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14609",
+  "events": [
+   {
+    "event_id": 14609,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cape Verdean Traditional Dances",
+      "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
+     }
+    ]
+   }
+  ]
+ }
 }

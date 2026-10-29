@@ -1,0 +1,13 @@
+{
+ "key_a": "p:rita@dance",
+ "key_b": "p:rita@eddy+rita",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "85a3a0bb151420c4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Only the first name RITA is shared; side A has no surname or partner, and the Hungarian flag is a weak country match for a common name."
+ }
+}

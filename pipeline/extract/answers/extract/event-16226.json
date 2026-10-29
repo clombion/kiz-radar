@@ -1,71 +1,78 @@
 {
- "batch": "event-16226",
- "events": [
-  {
-   "event_id": 16226,
-   "artists": [
-    {
-     "name_as_written": "Diamond Fam",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Kizomberos! Diamond Fam welcomes you to our party of the year!!! 28-/08-29/08/2026 A weekend packed with inspiration and joy. We offer workshops with international instructors from Paris and (Sweden) Parties with DJs from Sthlm/Gtbg. Our international instructors are fantastic teachers and dancers in Urbankiz, Kizomba, Tarraxo and Konpa. There will also be more than 20 fantastic taxi dancers for social dancing during the party. Check out who will be coming under “discussion” here in the event."
-    },
-    {
-     "name_as_written": "Val’R & Sara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Val’R & Sara (Paris?"
-    },
-    {
-     "name_as_written": "Mickaela",
-     "role": "teacher",
-     "style": null,
-     "country": "Sweden",
-     "source_line": "Mickaela (Sweden)"
-    },
-    {
-     "name_as_written": "Mamadou & Amina",
-     "role": "teacher",
-     "style": null,
-     "country": "Sweden",
-     "source_line": "Mamadou & Amina (Sweden)"
-    },
-    {
-     "name_as_written": "Dadie Sacko",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Dadie Sacko (Paris)"
-    },
-    {
-     "name_as_written": "Dj Poema beat",
-     "role": "dj",
-     "style": null,
-     "country": "Sweden",
-     "source_line": "Dj Poema beat (Sweden)"
-    },
-    {
-     "name_as_written": "Dj Joey",
-     "role": "dj",
-     "style": null,
-     "country": "Sweden",
-     "source_line": "Dj Joey (Sweden)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "We offer workshops with international instructors",
-     "rationale": "The description states that workshops with international instructors are offered."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "more than 20 fantastic taxi dancers",
-     "rationale": "The description says more than 20 taxi dancers will be present for social dancing."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16226",
+  "events": [
+   {
+    "event_id": 16226,
+    "artists": [
+     {
+      "name_as_written": "Diamond Fam",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Kizomberos! Diamond Fam welcomes you to our party of the year!!! 28-/08-29/08/2026 A weekend packed with inspiration and joy. We offer workshops with international instructors from Paris and (Sweden) Parties with DJs from Sthlm/Gtbg. Our international instructors are fantastic teachers and dancers in Urbankiz, Kizomba, Tarraxo and Konpa. There will also be more than 20 fantastic taxi dancers for social dancing during the party. Check out who will be coming under “discussion” here in the event."
+     },
+     {
+      "name_as_written": "Val’R & Sara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Val’R & Sara (Paris?"
+     },
+     {
+      "name_as_written": "Mickaela",
+      "role": "teacher",
+      "style": null,
+      "country": "Sweden",
+      "source_line": "Mickaela (Sweden)"
+     },
+     {
+      "name_as_written": "Mamadou & Amina",
+      "role": "teacher",
+      "style": null,
+      "country": "Sweden",
+      "source_line": "Mamadou & Amina (Sweden)"
+     },
+     {
+      "name_as_written": "Dadie Sacko",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Dadie Sacko (Paris)"
+     },
+     {
+      "name_as_written": "Dj Poema beat",
+      "role": "dj",
+      "style": null,
+      "country": "Sweden",
+      "source_line": "Dj Poema beat (Sweden)"
+     },
+     {
+      "name_as_written": "Dj Joey",
+      "role": "dj",
+      "style": null,
+      "country": "Sweden",
+      "source_line": "Dj Joey (Sweden)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "We offer workshops with international instructors",
+      "rationale": "The description states that workshops with international instructors are offered."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "more than 20 fantastic taxi dancers",
+      "rationale": "The description says more than 20 taxi dancers will be present for social dancing."
+     }
+    ]
+   }
+  ]
+ }
 }

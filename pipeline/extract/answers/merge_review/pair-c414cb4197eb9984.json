@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabrizio@fabrizio+giulia",
+ "key_b": "p:fabriziochiarenza",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c414cb4197eb9984",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Fabrizio & Giulia on side A and Fabrizio Chiarenza on side B share Italy and a common first name, but side B shows no partner and no shared event."
+ }
+}

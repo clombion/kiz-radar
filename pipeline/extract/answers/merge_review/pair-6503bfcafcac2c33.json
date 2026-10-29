@@ -1,0 +1,13 @@
+{
+ "key_a": "p:portu@dj",
+ "key_b": "p:portu@mada+portu",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "6503bfcafcac2c33",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Portu and Portu and Mada are listed at the same Constance festival on the same date, the DJ-and-dancer case, with Spain as the stated country on both sides."
+ }
+}

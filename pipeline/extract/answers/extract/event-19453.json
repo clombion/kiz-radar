@@ -1,139 +1,146 @@
 {
- "batch": "event-19453",
- "events": [
-  {
-   "event_id": 19453,
-   "artists": [
-    {
-     "name_as_written": "DJ Sabura",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🔥 DJ Sabura 🇵🇹"
-    },
-    {
-     "name_as_written": "Dj Paparazzi",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇵🇹",
-     "source_line": "🔥Dj Paparazzi 🇦🇴🇵🇹"
-    },
-    {
-     "name_as_written": "DJ Emess",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇨🇭",
-     "source_line": "🔥 DJ Emess 🇦🇴🇨🇭"
-    },
-    {
-     "name_as_written": "DJ Tecas",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇫🇷",
-     "source_line": "🔥 DJ Tecas. 🇦🇴🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Xavix",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇨🇭",
-     "source_line": "🔥 DJ Xavix. 🇦🇴🇨🇭"
-    },
-    {
-     "name_as_written": "DJ Relâmpago",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇨🇭",
-     "source_line": "🔥 DJ Relâmpago 🇦🇴🇨🇭"
-    },
-    {
-     "name_as_written": "Marcio Junqueira",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇱🇺",
-     "source_line": "🔥Marcio Junqueira 🇦🇴🇱🇺"
-    },
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇵🇹",
-     "source_line": "🔥Ary & Maura 🇦🇴🇵🇹"
-    },
-    {
-     "name_as_written": "Ybra & Gina",
-     "role": "teacher",
-     "style": null,
-     "country": "🇬🇳🇨🇭",
-     "source_line": "🔥Ybra & Gina🇬🇳🇨🇭"
-    },
-    {
-     "name_as_written": "Doctor kizomba & Laura",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇮🇹",
-     "source_line": "🔥Doctor kizomba & Laura 🇦🇴🇮🇹"
-    },
-    {
-     "name_as_written": "Johnny & Cristina Zebri",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇨🇭🇮🇹",
-     "source_line": "🔥Johnny & Cristina Zebri 🇦🇴🇨🇭🇮🇹"
-    },
-    {
-     "name_as_written": "Franet. & Jade.",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷🇦🇴",
-     "source_line": "🔥Franet. & Jade. 🇫🇷🇦🇴"
-    },
-    {
-     "name_as_written": "Mauro & Celia",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇨🇭🇵🇹",
-     "source_line": "🔥Mauro & Celia 🇦🇴🇨🇭🇵🇹"
-    },
-    {
-     "name_as_written": "Ze Rui & Elena",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹🇨🇭🇺🇦",
-     "source_line": "🔥Ze Rui & Elena🇵🇹🇨🇭🇺🇦"
-    },
-    {
-     "name_as_written": "Bruce",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇨🇩",
-     "source_line": "🔥Bruce 🇨🇭🇨🇩"
-    },
-    {
-     "name_as_written": "Cazuza quinvula",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇦🇴",
-     "source_line": "🔥Cazuza quinvula🇨🇭🇦🇴"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "educational workshops",
-     "rationale": "The description says the festival includes educational workshops."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "More Masterclasses",
-     "rationale": "The announcement highlights more masterclasses as part of the event."
-    },
-    {
-     "feature": "live_music",
-     "quote": "LIVE ACT with singer",
-     "rationale": "A live act with a singer is announced for the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19453",
+  "events": [
+   {
+    "event_id": 19453,
+    "artists": [
+     {
+      "name_as_written": "DJ Sabura",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🔥 DJ Sabura 🇵🇹"
+     },
+     {
+      "name_as_written": "Dj Paparazzi",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇵🇹",
+      "source_line": "🔥Dj Paparazzi 🇦🇴🇵🇹"
+     },
+     {
+      "name_as_written": "DJ Emess",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇨🇭",
+      "source_line": "🔥 DJ Emess 🇦🇴🇨🇭"
+     },
+     {
+      "name_as_written": "DJ Tecas",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇫🇷",
+      "source_line": "🔥 DJ Tecas. 🇦🇴🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Xavix",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇨🇭",
+      "source_line": "🔥 DJ Xavix. 🇦🇴🇨🇭"
+     },
+     {
+      "name_as_written": "DJ Relâmpago",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇨🇭",
+      "source_line": "🔥 DJ Relâmpago 🇦🇴🇨🇭"
+     },
+     {
+      "name_as_written": "Marcio Junqueira",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇱🇺",
+      "source_line": "🔥Marcio Junqueira 🇦🇴🇱🇺"
+     },
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇵🇹",
+      "source_line": "🔥Ary & Maura 🇦🇴🇵🇹"
+     },
+     {
+      "name_as_written": "Ybra & Gina",
+      "role": "teacher",
+      "style": null,
+      "country": "🇬🇳🇨🇭",
+      "source_line": "🔥Ybra & Gina🇬🇳🇨🇭"
+     },
+     {
+      "name_as_written": "Doctor kizomba & Laura",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇮🇹",
+      "source_line": "🔥Doctor kizomba & Laura 🇦🇴🇮🇹"
+     },
+     {
+      "name_as_written": "Johnny & Cristina Zebri",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇨🇭🇮🇹",
+      "source_line": "🔥Johnny & Cristina Zebri 🇦🇴🇨🇭🇮🇹"
+     },
+     {
+      "name_as_written": "Franet. & Jade.",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷🇦🇴",
+      "source_line": "🔥Franet. & Jade. 🇫🇷🇦🇴"
+     },
+     {
+      "name_as_written": "Mauro & Celia",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇨🇭🇵🇹",
+      "source_line": "🔥Mauro & Celia 🇦🇴🇨🇭🇵🇹"
+     },
+     {
+      "name_as_written": "Ze Rui & Elena",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹🇨🇭🇺🇦",
+      "source_line": "🔥Ze Rui & Elena🇵🇹🇨🇭🇺🇦"
+     },
+     {
+      "name_as_written": "Bruce",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇨🇩",
+      "source_line": "🔥Bruce 🇨🇭🇨🇩"
+     },
+     {
+      "name_as_written": "Cazuza quinvula",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇦🇴",
+      "source_line": "🔥Cazuza quinvula🇨🇭🇦🇴"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "educational workshops",
+      "rationale": "The description says the festival includes educational workshops."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "More Masterclasses",
+      "rationale": "The announcement highlights more masterclasses as part of the event."
+     },
+     {
+      "feature": "live_music",
+      "quote": "LIVE ACT with singer",
+      "rationale": "A live act with a singer is announced for the event."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,95 +1,102 @@
 {
- "batch": "event-16303",
- "events": [
-  {
-   "event_id": 16303,
-   "artists": [
-    {
-     "name_as_written": "DJ MIRO KIKOLA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟢 DJ MIRO KIKOLA"
-    },
-    {
-     "name_as_written": "DJ BAKONGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟢 DJ BAKONGO"
-    },
-    {
-     "name_as_written": "DJ BELEZA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟢 DJ BELEZA"
-    },
-    {
-     "name_as_written": "DJ VASCO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟢 DJ VASCO"
-    },
-    {
-     "name_as_written": "DJ JAROD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟢 DJ JAROD"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟢 DJ NICE LIFE"
-    },
-    {
-     "name_as_written": "DJ NEIKEN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟢 DJ NEIKEN"
-    },
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟢 Ary & Maura"
-    },
-    {
-     "name_as_written": "Lukasz & Karolina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟢 Lukasz & Karolina (Vamula)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "13:00–16:00 Workshops",
-     "rationale": "The programme lists workshops on Saturday and Sunday afternoons."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00–20:00 Social",
-     "rationale": "The programme lists daytime socials from 16:00 to 20:00 on several days."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 dance floors",
-     "rationale": "The event has two dance floors, Room 1 and Room 2."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "➖➖➖ 𝐀𝐋𝐋 𝐈𝐍 𝐎𝐍𝐄 𝐕𝐄𝐍𝐔𝐄",
-     "rationale": "The all-in-one venue section names the hotel where the event and accommodation take place together."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16303",
+  "events": [
+   {
+    "event_id": 16303,
+    "artists": [
+     {
+      "name_as_written": "DJ MIRO KIKOLA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟢 DJ MIRO KIKOLA"
+     },
+     {
+      "name_as_written": "DJ BAKONGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟢 DJ BAKONGO"
+     },
+     {
+      "name_as_written": "DJ BELEZA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟢 DJ BELEZA"
+     },
+     {
+      "name_as_written": "DJ VASCO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟢 DJ VASCO"
+     },
+     {
+      "name_as_written": "DJ JAROD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟢 DJ JAROD"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟢 DJ NICE LIFE"
+     },
+     {
+      "name_as_written": "DJ NEIKEN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟢 DJ NEIKEN"
+     },
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟢 Ary & Maura"
+     },
+     {
+      "name_as_written": "Lukasz & Karolina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟢 Lukasz & Karolina (Vamula)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "13:00–16:00 Workshops",
+      "rationale": "The programme lists workshops on Saturday and Sunday afternoons."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16:00–20:00 Social",
+      "rationale": "The programme lists daytime socials from 16:00 to 20:00 on several days."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 dance floors",
+      "rationale": "The event has two dance floors, Room 1 and Room 2."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "➖➖➖ 𝐀𝐋𝐋 𝐈𝐍 𝐎𝐍𝐄 𝐕𝐄𝐍𝐔𝐄",
+      "rationale": "The all-in-one venue section names the hotel where the event and accommodation take place together."
+     }
+    ]
+   }
+  ]
+ }
 }

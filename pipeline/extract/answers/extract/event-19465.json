@@ -1,58 +1,65 @@
 {
- "batch": "event-19465",
- "events": [
-  {
-   "event_id": 19465,
-   "artists": [
-    {
-     "name_as_written": "DJ Lucern",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Beats by: DJ Lucern, DJ BLD & DJ Zé"
-    },
-    {
-     "name_as_written": "DJ BLD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Beats by: DJ Lucern, DJ BLD & DJ Zé"
-    },
-    {
-     "name_as_written": "DJ Zé",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Beats by: DJ Lucern, DJ BLD & DJ Zé"
-    }
-   ],
-   "features": [
-    {
-     "feature": "beach_party",
-     "quote": "BEACH PARTY",
-     "rationale": "The description lists a beach party among its party offerings."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "POOL PARTIES",
-     "rationale": "The description lists pool parties among its party offerings."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Unwind after the dance workshops with us",
-     "rationale": "The dance workshops are referred to as part of the event."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "MASTERCLASSES",
-     "rationale": "The description lists masterclasses alongside workshops."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "by the pool on Saturday, Oct 3rd (4 PM – 8 PM)",
-     "rationale": "The pool party runs in the afternoon and early evening, which is a daytime social."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19465",
+  "events": [
+   {
+    "event_id": 19465,
+    "artists": [
+     {
+      "name_as_written": "DJ Lucern",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Beats by: DJ Lucern, DJ BLD & DJ Zé"
+     },
+     {
+      "name_as_written": "DJ BLD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Beats by: DJ Lucern, DJ BLD & DJ Zé"
+     },
+     {
+      "name_as_written": "DJ Zé",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Beats by: DJ Lucern, DJ BLD & DJ Zé"
+     }
+    ],
+    "features": [
+     {
+      "feature": "beach_party",
+      "quote": "BEACH PARTY",
+      "rationale": "The description lists a beach party among its party offerings."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "POOL PARTIES",
+      "rationale": "The description lists pool parties among its party offerings."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Unwind after the dance workshops with us",
+      "rationale": "The dance workshops are referred to as part of the event."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "MASTERCLASSES",
+      "rationale": "The description lists masterclasses alongside workshops."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "by the pool on Saturday, Oct 3rd (4 PM – 8 PM)",
+      "rationale": "The pool party runs in the afternoon and early evening, which is a daytime social."
+     }
+    ]
+   }
+  ]
+ }
 }

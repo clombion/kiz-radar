@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tomasia@alvaro+tomasia",
+ "key_b": "p:tomasina@alvaro+tomasina",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d52c7d402797ae7e",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The partners Tomásia and Tomasina are different names, and Alvaro is the only shared element."
+ }
+}

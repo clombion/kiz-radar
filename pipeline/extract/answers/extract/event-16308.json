@@ -1,41 +1,48 @@
 {
- "batch": "event-16308",
- "events": [
-  {
-   "event_id": 16308,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "OVER 50 WORKSHOPS",
-     "rationale": "The description states that over 50 workshops are part of the congress."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "5 PARTY ROOMS",
-     "rationale": "Five separate party rooms are listed, so there is more than one dance floor."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "ALL UNDER 1 ROOF",
-     "rationale": "The parties are held in the same venue as the hotel where dancers are invited to stay."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "THEMED PARTY Night",
-     "rationale": "A themed party night is listed among the event's features."
-    },
-    {
-     "feature": "shows",
-     "quote": "SHOWS & ANIMATIONS",
-     "rationale": "Shows and animations are advertised as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "2 Afternoon Socials",
-     "rationale": "Two afternoon socials are listed, which are daytime social events."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16308",
+  "events": [
+   {
+    "event_id": 16308,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "OVER 50 WORKSHOPS",
+      "rationale": "The description states that over 50 workshops are part of the congress."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "5 PARTY ROOMS",
+      "rationale": "Five separate party rooms are listed, so there is more than one dance floor."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "ALL UNDER 1 ROOF",
+      "rationale": "The parties are held in the same venue as the hotel where dancers are invited to stay."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "THEMED PARTY Night",
+      "rationale": "A themed party night is listed among the event's features."
+     },
+     {
+      "feature": "shows",
+      "quote": "SHOWS & ANIMATIONS",
+      "rationale": "Shows and animations are advertised as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "2 Afternoon Socials",
+      "rationale": "Two afternoon socials are listed, which are daytime social events."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manon@didier+manon",
+ "key_b": "p:manon@jeff+manon",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "901f94b7fa035cb8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Manon appears with different partners (Didier vs Jeff) and only Guadeloupe stated in common."
+ }
+}

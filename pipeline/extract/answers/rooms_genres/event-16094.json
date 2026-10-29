@@ -1,36 +1,43 @@
 {
- "batch": "event-16094",
- "events": [
-  {
-   "event_id": 16094,
-   "party_rooms": {
-    "count": 4,
-    "quote": "4 rooms = salsa, bachata, kizomba, and mix"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "SALSA BACHATA KIZOMBA & CO"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16094",
+  "events": [
+   {
+    "event_id": 16094,
+    "party_rooms": {
+     "count": 4,
+     "quote": "4 rooms = salsa, bachata, kizomba, and mix"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "SALSA BACHATA KIZOMBA & CO"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "SALSA BACHATA KIZOMBA & CO"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Brazilian Zouk",
-     "quote": "Brazilian Zouk with Alex De Carvalho and Laure Lalanne"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "SALSA BACHATA KIZOMBA & CO"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "SALSA BACHATA KIZOMBA & CO"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "SALSA BACHATA KIZOMBA & CO"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Brazilian Zouk",
+      "quote": "Brazilian Zouk with Alex De Carvalho and Laure Lalanne"
+     }
+    ]
+   }
+  ]
+ }
 }

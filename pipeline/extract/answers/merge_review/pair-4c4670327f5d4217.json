@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fred@chiara+fred",
+ "key_b": "p:fred@fred+morgane",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "4c4670327f5d4217",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Fred & Chiara and Fred & Morgane are different couples in France, and a common first name with different partners does not settle identity."
+ }
+}

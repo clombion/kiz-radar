@@ -1,0 +1,13 @@
+{
+ "key_a": "p:adilson@adilson+telma",
+ "key_b": "p:adilsonmaiza",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "caf41f0ff1b0dd6a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Adilson Maíza & Telma shares the partner Telma and the Angolan country with Adilson & Telma, and the Adilson Maíza name is spelled the same on the solo entries."
+ }
+}

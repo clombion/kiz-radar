@@ -1,119 +1,126 @@
 {
- "batch": "event-15447",
- "events": [
-  {
-   "event_id": 15447,
-   "artists": [
-    {
-     "name_as_written": "Kizomba Asangi",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Kizomba Asangi presents for the second time,"
-    },
-    {
-     "name_as_written": "Bernadeth Mabungo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇵🇹",
-     "source_line": "Bernadeth Mabungo (Record Champion in Kizomba, Ginga, Semba, and Afro) 🇦🇴🇵🇹"
-    },
-    {
-     "name_as_written": "Daniela Gmür",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "Daniela Gmür 🇨🇭"
-    },
-    {
-     "name_as_written": "Fernando Monteiro",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹🇨🇭",
-     "source_line": "Fernando Monteiro 🇵🇹🇨🇭"
-    },
-    {
-     "name_as_written": "Magnus Kaindl",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "Magnus Kaindl (Dance Master) 🇩🇪"
-    },
-    {
-     "name_as_written": "Ludi",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "Ludi 🇩🇪"
-    },
-    {
-     "name_as_written": "Joao Dontana",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇩🇪",
-     "source_line": "Joao Dontana 🇦🇴🇩🇪"
-    },
-    {
-     "name_as_written": "Massanari Brass Band",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Massanari Brass Band"
-    },
-    {
-     "name_as_written": "Joao Dontana",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "& Joao Dontana"
-    },
-    {
-     "name_as_written": "DJ Frank",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Frank"
-    },
-    {
-     "name_as_written": "DJ Eloy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Eloy"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "In our dance workshops",
-     "rationale": "The text says dance workshops are part of the event."
-    },
-    {
-     "feature": "live_music",
-     "quote": "experience live music with the Massanari band",
-     "rationale": "The event offers live music from a band."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Master Class",
-     "rationale": "The Sunday programme lists an AfroGinga Master Class."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party",
-     "rationale": "The programme lists a Pre-Party on Friday evening before the main event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Dance Social",
-     "rationale": "The programme lists daytime Dance Socials on Saturday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Kizomba Workshop (Room 2) & Dance Social (Room 3)",
-     "rationale": "Two sessions run in separate numbered rooms at the same time."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15447",
+  "events": [
+   {
+    "event_id": 15447,
+    "artists": [
+     {
+      "name_as_written": "Kizomba Asangi",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Kizomba Asangi presents for the second time,"
+     },
+     {
+      "name_as_written": "Bernadeth Mabungo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇵🇹",
+      "source_line": "Bernadeth Mabungo (Record Champion in Kizomba, Ginga, Semba, and Afro) 🇦🇴🇵🇹"
+     },
+     {
+      "name_as_written": "Daniela Gmür",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "Daniela Gmür 🇨🇭"
+     },
+     {
+      "name_as_written": "Fernando Monteiro",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹🇨🇭",
+      "source_line": "Fernando Monteiro 🇵🇹🇨🇭"
+     },
+     {
+      "name_as_written": "Magnus Kaindl",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "Magnus Kaindl (Dance Master) 🇩🇪"
+     },
+     {
+      "name_as_written": "Ludi",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "Ludi 🇩🇪"
+     },
+     {
+      "name_as_written": "Joao Dontana",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇩🇪",
+      "source_line": "Joao Dontana 🇦🇴🇩🇪"
+     },
+     {
+      "name_as_written": "Massanari Brass Band",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Massanari Brass Band"
+     },
+     {
+      "name_as_written": "Joao Dontana",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "& Joao Dontana"
+     },
+     {
+      "name_as_written": "DJ Frank",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Frank"
+     },
+     {
+      "name_as_written": "DJ Eloy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Eloy"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "In our dance workshops",
+      "rationale": "The text says dance workshops are part of the event."
+     },
+     {
+      "feature": "live_music",
+      "quote": "experience live music with the Massanari band",
+      "rationale": "The event offers live music from a band."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Master Class",
+      "rationale": "The Sunday programme lists an AfroGinga Master Class."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party",
+      "rationale": "The programme lists a Pre-Party on Friday evening before the main event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Dance Social",
+      "rationale": "The programme lists daytime Dance Socials on Saturday."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Kizomba Workshop (Room 2) & Dance Social (Room 3)",
+      "rationale": "Two sessions run in separate numbered rooms at the same time."
+     }
+    ]
+   }
+  ]
+ }
 }

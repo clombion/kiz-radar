@@ -1,264 +1,271 @@
 {
- "batch": "event-16256",
- "events": [
-  {
-   "event_id": 16256,
-   "artists": [
-    {
-     "name_as_written": "Sonia & Ledoux Kingsman",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Sonia & Ledoux Kingsman"
-    },
-    {
-     "name_as_written": "Luis & Karen",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Luis & Karen"
-    },
-    {
-     "name_as_written": "Davide & Laura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Davide & Laura"
-    },
-    {
-     "name_as_written": "Edo & Giuly",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Edo & Giuly"
-    },
-    {
-     "name_as_written": "Mirko Spano",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Mirko Spano"
-    },
-    {
-     "name_as_written": "Dinara Salykova",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Dinara Salykova"
-    },
-    {
-     "name_as_written": "Luca & Elena",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Luca & Elena"
-    },
-    {
-     "name_as_written": "Oscar & Claudia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Oscar & Claudia"
-    },
-    {
-     "name_as_written": "Ba & Claudia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Ba & Claudia"
-    },
-    {
-     "name_as_written": "Stefano & Beatrice",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Stefano & Beatrice"
-    },
-    {
-     "name_as_written": "Alay & Lara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Alay & Lara"
-    },
-    {
-     "name_as_written": "Stefano & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Stefano & Maura"
-    },
-    {
-     "name_as_written": "Luca & Francesca",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Luca & Francesca"
-    },
-    {
-     "name_as_written": "Elena Arcangeli",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Elena Arcangeli"
-    },
-    {
-     "name_as_written": "Valter & Elena",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Valter & Elena"
-    },
-    {
-     "name_as_written": "Beppe & Sabina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Beppe & Sabina"
-    },
-    {
-     "name_as_written": "Andrea & Daniela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Andrea & Daniela Club Tortuga"
-    },
-    {
-     "name_as_written": "Graziella & Ivan",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Graziella & Ivan Kizomba Cesena"
-    },
-    {
-     "name_as_written": "Bianca Iulia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Bianca Iulia"
-    },
-    {
-     "name_as_written": "Mary Valencia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Mary Valencia"
-    },
-    {
-     "name_as_written": "Susanna Vernier",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Susanna Vernier"
-    },
-    {
-     "name_as_written": "Fabrizio Chiarenza",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Fabrizio Chiarenza"
-    },
-    {
-     "name_as_written": "Franco & Daniela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Franco & Daniela"
-    },
-    {
-     "name_as_written": "Patty & Marco",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ Patty & Marco"
-    },
-    {
-     "name_as_written": "DJ Lenhy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ DJ Lenhy"
-    },
-    {
-     "name_as_written": "DJ Ghost Face",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ DJ Ghost Face"
-    },
-    {
-     "name_as_written": "DJ Anilson",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ DJ Anilson"
-    },
-    {
-     "name_as_written": "DJ Master Beat",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ DJ Master Beat"
-    },
-    {
-     "name_as_written": "DJ Ted",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ DJ Ted"
-    },
-    {
-     "name_as_written": "DJ Ale",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ DJ Ale"
-    },
-    {
-     "name_as_written": "DJ Mikizplay",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☀️ DJ Mikizplay"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Location: Hotel Balance, Milano Marittima (RA), 4*S hotel facing the sea",
-     "rationale": "The event is held at Hotel Balance, the same hotel where the rooms are sold, so event and accommodation share one venue."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Half-board room for 3 days and 2 nights and Full Event Pass",
-     "rationale": "The package bundles the half-board room with the Full Event Pass."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Half-board room for 3 days and 2 nights",
-     "rationale": "Half-board means meals are included in the room package."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "POOL PARTY",
-     "rationale": "The event lists a pool party among its activities."
-    },
-    {
-     "feature": "workshops",
-     "quote": "with WORKSHOPS and PARTIES",
-     "rationale": "The description states that the dedicated rooms host workshops."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 DEDICATED ROOMS",
-     "rationale": "Two dedicated dance rooms are mentioned."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "other partner hotels will be provided",
-     "rationale": "Partner hotels are offered once the main hotel is sold out."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16256",
+  "events": [
+   {
+    "event_id": 16256,
+    "artists": [
+     {
+      "name_as_written": "Sonia & Ledoux Kingsman",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Sonia & Ledoux Kingsman"
+     },
+     {
+      "name_as_written": "Luis & Karen",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Luis & Karen"
+     },
+     {
+      "name_as_written": "Davide & Laura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Davide & Laura"
+     },
+     {
+      "name_as_written": "Edo & Giuly",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Edo & Giuly"
+     },
+     {
+      "name_as_written": "Mirko Spano",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Mirko Spano"
+     },
+     {
+      "name_as_written": "Dinara Salykova",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Dinara Salykova"
+     },
+     {
+      "name_as_written": "Luca & Elena",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Luca & Elena"
+     },
+     {
+      "name_as_written": "Oscar & Claudia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Oscar & Claudia"
+     },
+     {
+      "name_as_written": "Ba & Claudia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Ba & Claudia"
+     },
+     {
+      "name_as_written": "Stefano & Beatrice",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Stefano & Beatrice"
+     },
+     {
+      "name_as_written": "Alay & Lara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Alay & Lara"
+     },
+     {
+      "name_as_written": "Stefano & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Stefano & Maura"
+     },
+     {
+      "name_as_written": "Luca & Francesca",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Luca & Francesca"
+     },
+     {
+      "name_as_written": "Elena Arcangeli",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Elena Arcangeli"
+     },
+     {
+      "name_as_written": "Valter & Elena",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Valter & Elena"
+     },
+     {
+      "name_as_written": "Beppe & Sabina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Beppe & Sabina"
+     },
+     {
+      "name_as_written": "Andrea & Daniela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Andrea & Daniela Club Tortuga"
+     },
+     {
+      "name_as_written": "Graziella & Ivan",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Graziella & Ivan Kizomba Cesena"
+     },
+     {
+      "name_as_written": "Bianca Iulia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Bianca Iulia"
+     },
+     {
+      "name_as_written": "Mary Valencia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Mary Valencia"
+     },
+     {
+      "name_as_written": "Susanna Vernier",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Susanna Vernier"
+     },
+     {
+      "name_as_written": "Fabrizio Chiarenza",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Fabrizio Chiarenza"
+     },
+     {
+      "name_as_written": "Franco & Daniela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Franco & Daniela"
+     },
+     {
+      "name_as_written": "Patty & Marco",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ Patty & Marco"
+     },
+     {
+      "name_as_written": "DJ Lenhy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ DJ Lenhy"
+     },
+     {
+      "name_as_written": "DJ Ghost Face",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ DJ Ghost Face"
+     },
+     {
+      "name_as_written": "DJ Anilson",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ DJ Anilson"
+     },
+     {
+      "name_as_written": "DJ Master Beat",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ DJ Master Beat"
+     },
+     {
+      "name_as_written": "DJ Ted",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ DJ Ted"
+     },
+     {
+      "name_as_written": "DJ Ale",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ DJ Ale"
+     },
+     {
+      "name_as_written": "DJ Mikizplay",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☀️ DJ Mikizplay"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "Location: Hotel Balance, Milano Marittima (RA), 4*S hotel facing the sea",
+      "rationale": "The event is held at Hotel Balance, the same hotel where the rooms are sold, so event and accommodation share one venue."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Half-board room for 3 days and 2 nights and Full Event Pass",
+      "rationale": "The package bundles the half-board room with the Full Event Pass."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Half-board room for 3 days and 2 nights",
+      "rationale": "Half-board means meals are included in the room package."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "POOL PARTY",
+      "rationale": "The event lists a pool party among its activities."
+     },
+     {
+      "feature": "workshops",
+      "quote": "with WORKSHOPS and PARTIES",
+      "rationale": "The description states that the dedicated rooms host workshops."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 DEDICATED ROOMS",
+      "rationale": "Two dedicated dance rooms are mentioned."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "other partner hotels will be provided",
+      "rationale": "Partner hotels are offered once the main hotel is sold out."
+     }
+    ]
+   }
+  ]
+ }
 }

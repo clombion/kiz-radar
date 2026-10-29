@@ -1,0 +1,13 @@
+{
+ "key_a": "p:luismi@arantxa+luismi",
+ "key_b": "p:luismi@luismi+marian",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "dafb0a18e9352cd5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Luismi appears with different partners (Arantxa vs Marian) at different events, and the Quijano event listing puts Arantxa and Mariangela in the same festival."
+ }
+}

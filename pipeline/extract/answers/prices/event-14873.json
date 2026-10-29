@@ -1,86 +1,93 @@
 {
- "batch": "event-14873",
- "events": [
-  {
-   "event_id": 14873,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "Full pass:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 60.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 50,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "60€ (only 50 fp)"
-      },
-      {
-       "amount": 70.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 100,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "70€ (100 Full Pass)"
-      },
-      {
-       "amount": 80.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 100,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "80€ (100 Full Pass)"
-      },
-      {
-       "amount": 90.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 100,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "90€ (100 Full Pass)"
-      },
-      {
-       "amount": 100.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "100€ (at the door)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:57:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14873",
+  "events": [
+   {
+    "event_id": 14873,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "Full pass:",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 60.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 50,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "60€ (only 50 fp)"
+       },
+       {
+        "amount": 70.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 100,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "70€ (100 Full Pass)"
+       },
+       {
+        "amount": 80.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 100,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "80€ (100 Full Pass)"
+       },
+       {
+        "amount": 90.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 100,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "90€ (100 Full Pass)"
+       },
+       {
+        "amount": 100.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": true,
+        "sold_out": false,
+        "current": false,
+        "quote": "100€ (at the door)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

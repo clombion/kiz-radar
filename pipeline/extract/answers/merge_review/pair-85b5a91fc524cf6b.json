@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+natalia",
+ "key_b": "p:andreas@andreas+silvia",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "85b5a91fc524cf6b",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Andrea & Natalia and Andreas & Silvia differ in partner and in the first name (Andrea vs Andreas, one letter apart), so they are different artists."
+ }
+}

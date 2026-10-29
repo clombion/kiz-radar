@@ -1,0 +1,13 @@
+{
+ "key_a": "p:claudia@claudia+oscar",
+ "key_b": "p:claudiamoise",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2b32082c4ebd7ef5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Claudia is a common first name; Claudia Moise shares only the stated Italy country with the Oscar and Claudia couple and the partner differs."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:arthur@dj",
+ "key_b": "p:arthursantos",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "46d54c52b3910f33",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Arthur and Arthur Santos played the same event on the same day with the same country (Brazil) and Zouk style, a DJ prefix on one side."
+ }
+}

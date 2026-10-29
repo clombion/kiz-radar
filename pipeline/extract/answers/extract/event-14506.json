@@ -1,31 +1,38 @@
 {
- "batch": "event-14506",
- "events": [
-  {
-   "event_id": 14506,
-   "artists": [],
-   "features": [
-    {
-     "feature": "shows",
-     "quote": "Live Performances",
-     "rationale": "The event lists live performances as a highlight, which are shows by artists."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Official Afterparties Every Night",
-     "rationale": "The description states that official afterparties take place every night."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Lets GO All Out in 2 Rooms",
-     "rationale": "Saturday is explicitly described as taking place in 2 rooms, so there is more than one dance room."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Aparthotel Adagio Birmingham City Centre",
-     "rationale": "A list of recommended hotels is given under a Hotels heading, without the accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:39:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14506",
+  "events": [
+   {
+    "event_id": 14506,
+    "artists": [],
+    "features": [
+     {
+      "feature": "shows",
+      "quote": "Live Performances",
+      "rationale": "The event lists live performances as a highlight, which are shows by artists."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Official Afterparties Every Night",
+      "rationale": "The description states that official afterparties take place every night."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Lets GO All Out in 2 Rooms",
+      "rationale": "Saturday is explicitly described as taking place in 2 rooms, so there is more than one dance room."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Aparthotel Adagio Birmingham City Centre",
+      "rationale": "A list of recommended hotels is given under a Hotels heading, without the accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

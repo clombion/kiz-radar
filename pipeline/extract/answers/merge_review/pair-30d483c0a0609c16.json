@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fernando@dj",
+ "key_b": "p:fernando@fernando+michela",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "30d483c0a0609c16",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "DJ Fernando (Manchester, UK and Angola stated) and Fernando & Michela (Italy) differ in role and listed country, so the evidence does not settle it."
+ }
+}

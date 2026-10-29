@@ -1,48 +1,55 @@
 {
- "batch": "event-14604",
- "events": [
-  {
-   "event_id": 14604,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "tarraxo",
-     "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "tarraxinha",
-     "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "semba",
-     "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "urbankiz",
-     "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "ghetto zouk",
-     "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "kompa",
-     "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14604",
+  "events": [
+   {
+    "event_id": 14604,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "tarraxo",
+      "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "tarraxinha",
+      "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "semba",
+      "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "urbankiz",
+      "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "ghetto zouk",
+      "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "kompa",
+      "quote": "Kizomba, tarraxo, tarraxinha, semba, urbankiz, ghetto zouk, kompa"
+     }
+    ]
+   }
+  ]
+ }
 }

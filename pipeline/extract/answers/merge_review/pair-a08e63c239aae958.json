@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marciokazakuta",
+ "key_b": "p:marciokazukuta",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "a08e63c239aae958",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Marcio Kazakuta and DJ Marcio Kazukuta are a spelling variant of a distinctive stage name, with Portugal in common."
+ }
+}

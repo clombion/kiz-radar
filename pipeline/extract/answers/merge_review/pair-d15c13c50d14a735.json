@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laure@dimitri+laure",
+ "key_b": "p:laurie@laurie+thierry",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d15c13c50d14a735",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Laure and Laurie are names one letter apart, and their partners Dimitri and Thierry are different."
+ }
+}

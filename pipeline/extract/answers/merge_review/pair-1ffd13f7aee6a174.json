@@ -1,0 +1,13 @@
+{
+ "key_a": "p:quinn@dance",
+ "key_b": "p:quinn@david+quinn",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "1ffd13f7aee6a174",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Only the first name Quinn and a shared Thailand stated country appear, and the couple with David is not matched by any partner evidence on side A."
+ }
+}

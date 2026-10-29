@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sandra@esteban+sandra",
+ "key_b": "p:sandrag",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "8f2d50ed9589e02f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Sandra G is a solo record whose initial gives no surname to compare, and the Esteban & Sandra record has no surname, so only a common first name and Spain connect them."
+ }
+}

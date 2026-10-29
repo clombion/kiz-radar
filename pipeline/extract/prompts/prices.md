@@ -53,16 +53,17 @@ One entry per pass the festival sells, with its price tiers:
     United States, CAD in Canada, AUD in Australia.
   - `alt`: the same price in a second currency when the line gives one, as `{"amount", "currency"}`
     ("95€ OR 2375CZK" gives `{"amount": 2375, "currency": "CZK"}`); else null.
-  - `from`, `until`: the first and last day the tier's price applies, when the description says so, as
-    `YYYY-MM-DD`, or `MM-DD` when the description gives no year (never guess the year). "Until 15 June" is
-    `until` 06-15; "from 1 September" is `from` 09-01; "1.10–30.11" gives both; "until end of January" is
-    `until` 01-31. Else null. A date that says only when sales open, or a deadline written as a number of
-    tickets, is not a `from` or `until`.
-  - `quantity`: the number of tickets at this price when limited ("first 50", "10 tickets", "25 EARLY BIRD
-    WOMAN"), else null.
-  - `door`: true for the price at the door or on site.
+  - `sale`: how the price is sold before the festival, as `{"from", "until", "quantity", "current"}`; null for
+    the price at the door or on site, which has none of them (a door price for one night is a pass of that night):
+    - `from`, `until`: the first and last day the tier's price applies, when the description says so, as
+      `YYYY-MM-DD`, or `MM-DD` when the description gives no year (never guess the year). "Until 15 June" is
+      `until` 06-15; "from 1 September" is `from` 09-01; "1.10–30.11" gives both; "until end of January" is
+      `until` 01-31. Else null. A date that says only when sales open, or a deadline written as a number of
+      tickets, is not a `from` or `until`.
+    - `quantity`: the number of tickets at this price when limited ("first 50", "10 tickets", "25 EARLY BIRD
+      WOMAN"), else null.
+    - `current`: true when the description calls this the current or actual price, without dates.
   - `sold_out`: true when the description marks this tier sold out, gone or closed (or strikes it through).
-  - `current`: true when the description calls this the current or actual price, without dates.
   - `quote`: the line that gives this price, copied exactly, as one contiguous span that contains the amount, or
     the price and the fee when the amount adds them.
 

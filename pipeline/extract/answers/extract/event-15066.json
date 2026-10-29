@@ -1,138 +1,145 @@
 {
- "batch": "event-15066",
- "events": [
-  {
-   "event_id": 15066,
-   "artists": [
-    {
-     "name_as_written": "DJ Pumba",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "🎧 DJ Pumba (France)"
-    },
-    {
-     "name_as_written": "DJ Diablo",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "🎧 DJ Diablo (France)"
-    },
-    {
-     "name_as_written": "DJ Bartef",
-     "role": "dj",
-     "style": null,
-     "country": "Poland",
-     "source_line": "🎧 DJ Bartef (Poland)"
-    },
-    {
-     "name_as_written": "DJ Dva",
-     "role": "dj",
-     "style": null,
-     "country": "Poland/Egypt",
-     "source_line": "🎧 DJ Dva (Poland/Egypt)"
-    },
-    {
-     "name_as_written": "DJ Laak",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "🎧 DJ Laak (France)"
-    },
-    {
-     "name_as_written": "DJ Leão",
-     "role": "dj",
-     "style": null,
-     "country": "Poland",
-     "source_line": "🎧 DJ Leão (Poland)"
-    },
-    {
-     "name_as_written": "DJ Kemena",
-     "role": "dj",
-     "style": null,
-     "country": "Poland/Portugal",
-     "source_line": "🎧 DJ Kemena (Poland/Portugal)"
-    },
-    {
-     "name_as_written": "Clémence & Erwan",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": "France",
-     "source_line": "💃🕺 Clémence & Erwan (France)"
-    },
-    {
-     "name_as_written": "Vanildo & Mara",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": "Netherlands",
-     "source_line": "💃🕺 Vanildo & Mara (Netherlands)"
-    },
-    {
-     "name_as_written": "Helen & Lio",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": "Germany",
-     "source_line": "💃🕺 Helen & Lio (Germany)"
-    },
-    {
-     "name_as_written": "Selim & Anastasia",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": "France/Ukraine",
-     "source_line": "💃🕺 Selim & Anastasia (France/Ukraine)"
-    },
-    {
-     "name_as_written": "Olga",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": "Ukraine/Portugal",
-     "source_line": "💃🕺 Olga (Ukraine/Portugal)"
-    },
-    {
-     "name_as_written": "Byron Jastaz",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": "Switzerland/Guadeloupe",
-     "source_line": "💃🕺 Byron Jastaz (Switzerland/Guadeloupe)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL-IN-ONE HOTEL (4⭐ Hotel Hyatt Place Krakow)",
-     "rationale": "The parties take place in the hotel where dancers are invited to stay, so event and accommodation share one venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "special discounted rates are already applied",
-     "rationale": "A negotiated hotel rate is offered for the partner hotel, while accommodation is not part of the pass."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "THURSDAY – Pre-Party",
-     "rationale": "A pre-party is listed on Thursday before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "MONDAY – After Party",
-     "rationale": "An after-party is listed on Monday after the main event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "22:00 – 23:00 Workshops",
-     "rationale": "Dance workshops are scheduled as part of the programme on Friday and other days."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00 – 20:00 Social",
-     "rationale": "Afternoon social sessions are listed in the programme."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "We ensure leader/follower balance with taxi teams and guest dancers",
-     "rationale": "The description states that taxi teams are used to balance leaders and followers."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15066",
+  "events": [
+   {
+    "event_id": 15066,
+    "artists": [
+     {
+      "name_as_written": "DJ Pumba",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "🎧 DJ Pumba (France)"
+     },
+     {
+      "name_as_written": "DJ Diablo",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "🎧 DJ Diablo (France)"
+     },
+     {
+      "name_as_written": "DJ Bartef",
+      "role": "dj",
+      "style": null,
+      "country": "Poland",
+      "source_line": "🎧 DJ Bartef (Poland)"
+     },
+     {
+      "name_as_written": "DJ Dva",
+      "role": "dj",
+      "style": null,
+      "country": "Poland/Egypt",
+      "source_line": "🎧 DJ Dva (Poland/Egypt)"
+     },
+     {
+      "name_as_written": "DJ Laak",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "🎧 DJ Laak (France)"
+     },
+     {
+      "name_as_written": "DJ Leão",
+      "role": "dj",
+      "style": null,
+      "country": "Poland",
+      "source_line": "🎧 DJ Leão (Poland)"
+     },
+     {
+      "name_as_written": "DJ Kemena",
+      "role": "dj",
+      "style": null,
+      "country": "Poland/Portugal",
+      "source_line": "🎧 DJ Kemena (Poland/Portugal)"
+     },
+     {
+      "name_as_written": "Clémence & Erwan",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": "France",
+      "source_line": "💃🕺 Clémence & Erwan (France)"
+     },
+     {
+      "name_as_written": "Vanildo & Mara",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": "Netherlands",
+      "source_line": "💃🕺 Vanildo & Mara (Netherlands)"
+     },
+     {
+      "name_as_written": "Helen & Lio",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": "Germany",
+      "source_line": "💃🕺 Helen & Lio (Germany)"
+     },
+     {
+      "name_as_written": "Selim & Anastasia",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": "France/Ukraine",
+      "source_line": "💃🕺 Selim & Anastasia (France/Ukraine)"
+     },
+     {
+      "name_as_written": "Olga",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": "Ukraine/Portugal",
+      "source_line": "💃🕺 Olga (Ukraine/Portugal)"
+     },
+     {
+      "name_as_written": "Byron Jastaz",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": "Switzerland/Guadeloupe",
+      "source_line": "💃🕺 Byron Jastaz (Switzerland/Guadeloupe)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL-IN-ONE HOTEL (4⭐ Hotel Hyatt Place Krakow)",
+      "rationale": "The parties take place in the hotel where dancers are invited to stay, so event and accommodation share one venue."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "special discounted rates are already applied",
+      "rationale": "A negotiated hotel rate is offered for the partner hotel, while accommodation is not part of the pass."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "THURSDAY – Pre-Party",
+      "rationale": "A pre-party is listed on Thursday before the main event."
+     },
+     {
+      "feature": "after_party",
+      "quote": "MONDAY – After Party",
+      "rationale": "An after-party is listed on Monday after the main event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "22:00 – 23:00 Workshops",
+      "rationale": "Dance workshops are scheduled as part of the programme on Friday and other days."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16:00 – 20:00 Social",
+      "rationale": "Afternoon social sessions are listed in the programme."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "We ensure leader/follower balance with taxi teams and guest dancers",
+      "rationale": "The description states that taxi teams are used to balance leaders and followers."
+     }
+    ]
+   }
+  ]
+ }
 }

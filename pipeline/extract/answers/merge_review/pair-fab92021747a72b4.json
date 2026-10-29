@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cazuza@dance",
+ "key_b": "p:cazuzaquinvula",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "fab92021747a72b4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Cazuza (Malaga) and Cazuza Quinvula (Bern) share the Angola stated country and a one-letter variant of the distinctive surname."
+ }
+}

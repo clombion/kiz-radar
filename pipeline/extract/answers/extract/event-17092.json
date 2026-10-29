@@ -1,39 +1,46 @@
 {
- "batch": "event-17092",
- "events": [
-  {
-   "event_id": 17092,
-   "artists": [
-    {
-     "name_as_written": "Melvin & Gatica",
-     "role": "teacher",
-     "style": "BACHATA:",
-     "country": null,
-     "source_line": "Melvin & Gatica"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 DANCEFLOORS WITH 4 DIFFERENT TYPES OF MUSIC",
-     "rationale": "Four dance floors are stated, which means more than one dance room."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "4 STARS OFFICIAL HOTEL",
-     "rationale": "An official hotel is named, and guests are directed to book rooms there."
-    },
-    {
-     "feature": "shows",
-     "quote": "NEW SHOWS",
-     "rationale": "The description advertises new shows as part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "BACHATA JACK & JILL COMPETITION",
-     "rationale": "A Bachata Jack & Jill competition is listed as part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17092",
+  "events": [
+   {
+    "event_id": 17092,
+    "artists": [
+     {
+      "name_as_written": "Melvin & Gatica",
+      "role": "teacher",
+      "style": "BACHATA:",
+      "country": null,
+      "source_line": "Melvin & Gatica"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "4 DANCEFLOORS WITH 4 DIFFERENT TYPES OF MUSIC",
+      "rationale": "Four dance floors are stated, which means more than one dance room."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "4 STARS OFFICIAL HOTEL",
+      "rationale": "An official hotel is named, and guests are directed to book rooms there."
+     },
+     {
+      "feature": "shows",
+      "quote": "NEW SHOWS",
+      "rationale": "The description advertises new shows as part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "BACHATA JACK & JILL COMPETITION",
+      "rationale": "A Bachata Jack & Jill competition is listed as part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

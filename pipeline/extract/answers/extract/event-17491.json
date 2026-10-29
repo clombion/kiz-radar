@@ -1,62 +1,69 @@
 {
- "batch": "event-17491",
- "events": [
-  {
-   "event_id": 17491,
-   "artists": [
-    {
-     "name_as_written": "DJ G-Sousa",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ G-Sousa"
-    },
-    {
-     "name_as_written": "DJ Frank",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Frank"
-    },
-    {
-     "name_as_written": "DJ Supaman",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Supaman"
-    },
-    {
-     "name_as_written": "DJ LHeat",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ LHeat"
-    },
-    {
-     "name_as_written": "Mik’iz and May",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏿💃🏿 Mik’iz and May"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "High-quality workshops",
-     "rationale": "The description lists high-quality workshops as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Daytime socials",
-     "rationale": "The description lists daytime socials as part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Ibis Vilnius Centre Hotel",
-     "rationale": "The official accommodation is a named hotel with a special event rate, not included in a pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17491",
+  "events": [
+   {
+    "event_id": 17491,
+    "artists": [
+     {
+      "name_as_written": "DJ G-Sousa",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ G-Sousa"
+     },
+     {
+      "name_as_written": "DJ Frank",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Frank"
+     },
+     {
+      "name_as_written": "DJ Supaman",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Supaman"
+     },
+     {
+      "name_as_written": "DJ LHeat",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ LHeat"
+     },
+     {
+      "name_as_written": "Mik’iz and May",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏿💃🏿 Mik’iz and May"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "High-quality workshops",
+      "rationale": "The description lists high-quality workshops as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Daytime socials",
+      "rationale": "The description lists daytime socials as part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Ibis Vilnius Centre Hotel",
+      "rationale": "The official accommodation is a named hotel with a special event rate, not included in a pass."
+     }
+    ]
+   }
+  ]
+ }
 }

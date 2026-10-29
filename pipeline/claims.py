@@ -9,8 +9,8 @@ whatever their order (resolved).
 
 The admin channel is the repository clombion/kiz-radar-claims, which kiz-radar holds as a git submodule (CLAIMS): one
 JSON file per claim, named by its digest, so that writing a claim again changes nothing and two claims never share a
-file. The model channel is the merge review's decisions (pipeline/extract/merges.csv, the rows that name the prompt that
-made them).
+file. The model channel is the merge review's answers to its current prompt (pipeline/extract/merge_review.py), each
+made when it was answered.
 """
 
 import datetime as dt
@@ -23,11 +23,10 @@ from pydantic import AfterValidator, Discriminator, Field, TypeAdapter, Validati
 
 from pipeline import countries, data, files, states
 from pipeline.enums import ClaimSource, MergeDecision, Waiting
-from pipeline.records import MergeRow, Record, Stamp, Text, digest, errors
+from pipeline.extract import merge_review
+from pipeline.records import Record, Stamp, Text, digest, errors
 
 CLAIMS = 'claims'  # the submodule of clombion/kiz-radar-claims: every admin claim, <its digest>.json
-# a model claim's time, which no model claim records: one that comes before every claim made at a time
-UNDATED = dt.datetime(2026, 1, 1, tzinfo=dt.UTC)
 
 
 def country(code: str) -> str:
@@ -171,16 +170,20 @@ def admin() -> list[Made]:
 
 
 def model() -> list[Made]:
-    """The merge review's decisions (pipeline/extract/merges.csv); one it could not settle (unsure) decides nothing."""
+    """The merge review's current answers (merge_review.current); one it could not settle (unsure) decides nothing."""
     return [
         Made(
             MergeClaim(
-                field='merge', keys=(r.key_a, r.key_b), decision=r.decision, made_at=UNDATED, note=r.note or '(none)'
+                field='merge',
+                keys=(r.key_a, r.key_b),
+                decision=r.answer.decision,
+                made_at=r.answered_at,
+                note=r.answer.rationale,
             ),
             ClaimSource.MODEL,
         )
-        for r in MergeRow.read()
-        if r.decision != MergeDecision.UNSURE
+        for r in merge_review.current()
+        if r.answer.decision != MergeDecision.UNSURE
     ]
 
 

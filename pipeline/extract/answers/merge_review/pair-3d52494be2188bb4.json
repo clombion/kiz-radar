@@ -1,0 +1,13 @@
+{
+ "key_a": "p:agnes@agnes+fajul",
+ "key_b": "p:agnes@agnes+vassil",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "3d52494be2188bb4",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Fajul & Agnes and Vassil & Agnes are different couples with different partners; the only shared evidence is the common first name Agnes and Germany."
+ }
+}

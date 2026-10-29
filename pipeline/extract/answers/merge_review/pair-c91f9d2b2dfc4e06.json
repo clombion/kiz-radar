@@ -1,0 +1,13 @@
+{
+ "key_a": "p:balito@balito+viola",
+ "key_b": "p:balito@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c91f9d2b2dfc4e06",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Balito & Viola and DJ Balito share the stage name, Hungary as stated country, the same event and date, and the same Bachata style."
+ }
+}

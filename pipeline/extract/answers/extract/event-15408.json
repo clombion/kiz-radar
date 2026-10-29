@@ -1,41 +1,48 @@
 {
- "batch": "event-15408",
- "events": [
-  {
-   "event_id": 15408,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Daily Workshops",
-     "rationale": "The description advertises daily workshops as part of the event."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Parties",
-     "rationale": "The description lists pool parties among the event's offerings."
-    },
-    {
-     "feature": "shows",
-     "quote": "International Shows",
-     "rationale": "The description advertises international shows as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 Dance Floors",
-     "rationale": "The description states that there are four dance floors."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Not just accommodation, food, and drinks – but all the extras included in the price!",
-     "rationale": "The quote says accommodation is included in the price under the all-inclusive concept."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Not just accommodation, food, and drinks – but all the extras included in the price!",
-     "rationale": "The quote says food is included in the price under the all-inclusive concept."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15408",
+  "events": [
+   {
+    "event_id": 15408,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Daily Workshops",
+      "rationale": "The description advertises daily workshops as part of the event."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool Parties",
+      "rationale": "The description lists pool parties among the event's offerings."
+     },
+     {
+      "feature": "shows",
+      "quote": "International Shows",
+      "rationale": "The description advertises international shows as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "4 Dance Floors",
+      "rationale": "The description states that there are four dance floors."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Not just accommodation, food, and drinks – but all the extras included in the price!",
+      "rationale": "The quote says accommodation is included in the price under the all-inclusive concept."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Not just accommodation, food, and drinks – but all the extras included in the price!",
+      "rationale": "The quote says food is included in the price under the all-inclusive concept."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,85 +1,92 @@
 {
- "batch": "event-18680",
- "events": [
-  {
-   "event_id": 18680,
-   "party_rooms": {
-    "count": 3,
-    "quote": "4 magical Valentine’s Parties (Thu–Sun) / 3 Rooms"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "𝐑𝐎𝐎𝐌 𝟏",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "𝐑𝐎𝐎𝐌 𝟏 : Urbankiz – Tarraxo- Ghettozouk – Afrobeat – Douceur"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18680",
+  "events": [
+   {
+    "event_id": 18680,
+    "party_rooms": {
+     "count": 3,
+     "quote": "4 magical Valentine’s Parties (Thu–Sun) / 3 Rooms"
     },
-    {
-     "name_as_written": "𝐑𝐎𝐎𝐌 𝟐",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "𝐑𝐎𝐎𝐌 𝟐 : Kizomba – Semba – Afrozouk – Konpa"
-    },
-    {
-     "name_as_written": "𝐑𝐎𝐎𝐌 𝟑",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "𝐑𝐎𝐎𝐌 𝟑 : Ghettozouk soft – Tarraxinha – Tarraxo Softness"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Urbankiz – Kizomba – Semba – Ghetto – Tarraxa(o) – Afrobeat"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Urbankiz – Kizomba – Semba – Ghetto – Tarraxa(o) – Afrobeat"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Urbankiz – Kizomba – Semba – Ghetto – Tarraxa(o) – Afrobeat"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Urban → Urban Kiz & Ghetto Zouk"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxa(o)",
-     "quote": "Tarraxa(o)"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeat",
-     "quote": "Afrobeat"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Douceur"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Afrozouk",
-     "quote": "Afrozouk"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Konpa"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Tarraxinha"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "𝐑𝐎𝐎𝐌 𝟏",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "𝐑𝐎𝐎𝐌 𝟏 : Urbankiz – Tarraxo- Ghettozouk – Afrobeat – Douceur"
+     },
+     {
+      "name_as_written": "𝐑𝐎𝐎𝐌 𝟐",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "𝐑𝐎𝐎𝐌 𝟐 : Kizomba – Semba – Afrozouk – Konpa"
+     },
+     {
+      "name_as_written": "𝐑𝐎𝐎𝐌 𝟑",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "𝐑𝐎𝐎𝐌 𝟑 : Ghettozouk soft – Tarraxinha – Tarraxo Softness"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Urbankiz – Kizomba – Semba – Ghetto – Tarraxa(o) – Afrobeat"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Urbankiz – Kizomba – Semba – Ghetto – Tarraxa(o) – Afrobeat"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Urbankiz – Kizomba – Semba – Ghetto – Tarraxa(o) – Afrobeat"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "Urban → Urban Kiz & Ghetto Zouk"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxa(o)",
+      "quote": "Tarraxa(o)"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeat",
+      "quote": "Afrobeat"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Douceur"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Afrozouk",
+      "quote": "Afrozouk"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Konpa"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Tarraxinha"
+     }
+    ]
+   }
+  ]
+ }
 }

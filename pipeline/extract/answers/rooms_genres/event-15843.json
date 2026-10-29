@@ -1,58 +1,65 @@
 {
- "batch": "event-15843",
- "events": [
-  {
-   "event_id": 15843,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Coladeira",
-     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cabozouk",
-     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GhettoZouk",
-     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afropop",
-     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrohouse",
-     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Laly & Chris’Py – Urban Kiz 🇫🇷"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15843",
+  "events": [
+   {
+    "event_id": 15843,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Coladeira",
+      "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cabozouk",
+      "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GhettoZouk",
+      "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afropop",
+      "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrohouse",
+      "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Laly & Chris’Py – Urban Kiz 🇫🇷"
+     }
+    ]
+   }
+  ]
+ }
 }

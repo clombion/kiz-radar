@@ -1,0 +1,13 @@
+{
+ "key_a": "p:carla@carla+tonyviser",
+ "key_b": "p:carlaandrade",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2d257d0ab4c6c540",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Tony Viser & Carla and Tony Viser & Carla Andrade share the full name Tony Viser and the partner Carla, with the surname added on one side."
+ }
+}

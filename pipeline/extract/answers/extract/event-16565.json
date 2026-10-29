@@ -1,150 +1,157 @@
 {
- "batch": "event-16565",
- "events": [
-  {
-   "event_id": 16565,
-   "artists": [
-    {
-     "name_as_written": "Dayeline",
-     "role": "teacher",
-     "style": "Cuban Salsa",
-     "country": null,
-     "source_line": "🌺 Dayeline – Cuban Salsa"
-    },
-    {
-     "name_as_written": "Jory",
-     "role": "teacher",
-     "style": "Kizomba / Konpa",
-     "country": null,
-     "source_line": "🌺 Jory – Kizomba / Konpa"
-    },
-    {
-     "name_as_written": "Audrey & Sébastien",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌺 Audrey & Sébastien – Bachata"
-    },
-    {
-     "name_as_written": "Yannick El Mambo",
-     "role": "teacher",
-     "style": "Afro",
-     "country": null,
-     "source_line": "🌺 Yannick El Mambo – Afro"
-    },
-    {
-     "name_as_written": "Saimy",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌺 Saimy – Bachata"
-    },
-    {
-     "name_as_written": "Aline & Matthieu",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🌺 Aline & Matthieu – Kizomba"
-    },
-    {
-     "name_as_written": "Pauline",
-     "role": "teacher",
-     "style": "Irish / Crossdance",
-     "country": null,
-     "source_line": "🌺 Pauline – Irish / Crossdance"
-    },
-    {
-     "name_as_written": "DJ Kiss",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Kiss •"
-    },
-    {
-     "name_as_written": "DJ Motu",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Motu"
-    },
-    {
-     "name_as_written": "DJ Amor",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Amor •"
-    },
-    {
-     "name_as_written": "DJ Isaac",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Isaac"
-    },
-    {
-     "name_as_written": "DJ Wess",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Wess"
-    },
-    {
-     "name_as_written": "DJ Djeep",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Djeep"
-    },
-    {
-     "name_as_written": "DJ Gaetane",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Gaetane"
-    },
-    {
-     "name_as_written": "DJ Yannick",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Yannick"
-    },
-    {
-     "name_as_written": "DJ Lau Fwi",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Lau Fwi •"
-    },
-    {
-     "name_as_written": "DJ Sylvain LS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Sylvain LS"
-    },
-    {
-     "name_as_written": "DJ Jory",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Jory"
-    },
-    {
-     "name_as_written": "DJ Pap’s",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💛 DJ Pap’s"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Single Class: €20 (subject to availability)",
-     "rationale": "A single class is offered for purchase, showing that dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16565",
+  "events": [
+   {
+    "event_id": 16565,
+    "artists": [
+     {
+      "name_as_written": "Dayeline",
+      "role": "teacher",
+      "style": "Cuban Salsa",
+      "country": null,
+      "source_line": "🌺 Dayeline – Cuban Salsa"
+     },
+     {
+      "name_as_written": "Jory",
+      "role": "teacher",
+      "style": "Kizomba / Konpa",
+      "country": null,
+      "source_line": "🌺 Jory – Kizomba / Konpa"
+     },
+     {
+      "name_as_written": "Audrey & Sébastien",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🌺 Audrey & Sébastien – Bachata"
+     },
+     {
+      "name_as_written": "Yannick El Mambo",
+      "role": "teacher",
+      "style": "Afro",
+      "country": null,
+      "source_line": "🌺 Yannick El Mambo – Afro"
+     },
+     {
+      "name_as_written": "Saimy",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🌺 Saimy – Bachata"
+     },
+     {
+      "name_as_written": "Aline & Matthieu",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🌺 Aline & Matthieu – Kizomba"
+     },
+     {
+      "name_as_written": "Pauline",
+      "role": "teacher",
+      "style": "Irish / Crossdance",
+      "country": null,
+      "source_line": "🌺 Pauline – Irish / Crossdance"
+     },
+     {
+      "name_as_written": "DJ Kiss",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Kiss •"
+     },
+     {
+      "name_as_written": "DJ Motu",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Motu"
+     },
+     {
+      "name_as_written": "DJ Amor",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Amor •"
+     },
+     {
+      "name_as_written": "DJ Isaac",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Isaac"
+     },
+     {
+      "name_as_written": "DJ Wess",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Wess"
+     },
+     {
+      "name_as_written": "DJ Djeep",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Djeep"
+     },
+     {
+      "name_as_written": "DJ Gaetane",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Gaetane"
+     },
+     {
+      "name_as_written": "DJ Yannick",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Yannick"
+     },
+     {
+      "name_as_written": "DJ Lau Fwi",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Lau Fwi •"
+     },
+     {
+      "name_as_written": "DJ Sylvain LS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Sylvain LS"
+     },
+     {
+      "name_as_written": "DJ Jory",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Jory"
+     },
+     {
+      "name_as_written": "DJ Pap’s",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💛 DJ Pap’s"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Single Class: €20 (subject to availability)",
+      "rationale": "A single class is offered for purchase, showing that dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

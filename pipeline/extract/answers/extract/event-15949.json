@@ -1,73 +1,80 @@
 {
- "batch": "event-15949",
- "events": [
-  {
-   "event_id": 15949,
-   "artists": [
-    {
-     "name_as_written": "DJ PINGUSSO",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇺",
-     "source_line": "🔸DJ PINGUSSO 🇱🇺"
-    },
-    {
-     "name_as_written": "DJ PARAISO",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🔸DJ PARAISO 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🔸DJ NAO 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ STEFANIO LIMA",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🔸DJ STEFANIO LIMA 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ IRON MAMS",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "🔸DJ IRON MAMS 🇨🇭"
-    },
-    {
-     "name_as_written": "DJ GUELAS",
-     "role": "dj",
-     "style": null,
-     "country": "🇺🇸",
-     "source_line": "🔸DJ GUELAS 🇺🇸"
-    },
-    {
-     "name_as_written": "AMADOU KANE",
-     "role": "media",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "🔹AMADOU KANE 🇨🇦"
-    },
-    {
-     "name_as_written": "AKIM",
-     "role": "media",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "🔹AKIM 🇨🇦"
-    }
-   ],
-   "features": [
-    {
-     "feature": "after_party",
-     "quote": "After Party Kizo Fest Beach Club!",
-     "rationale": "The description announces an after-party at the Beach Club."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15949",
+  "events": [
+   {
+    "event_id": 15949,
+    "artists": [
+     {
+      "name_as_written": "DJ PINGUSSO",
+      "role": "dj",
+      "style": null,
+      "country": "🇱🇺",
+      "source_line": "🔸DJ PINGUSSO 🇱🇺"
+     },
+     {
+      "name_as_written": "DJ PARAISO",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🔸DJ PARAISO 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🔸DJ NAO 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ STEFANIO LIMA",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🔸DJ STEFANIO LIMA 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ IRON MAMS",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "🔸DJ IRON MAMS 🇨🇭"
+     },
+     {
+      "name_as_written": "DJ GUELAS",
+      "role": "dj",
+      "style": null,
+      "country": "🇺🇸",
+      "source_line": "🔸DJ GUELAS 🇺🇸"
+     },
+     {
+      "name_as_written": "AMADOU KANE",
+      "role": "media",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "🔹AMADOU KANE 🇨🇦"
+     },
+     {
+      "name_as_written": "AKIM",
+      "role": "media",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "🔹AKIM 🇨🇦"
+     }
+    ],
+    "features": [
+     {
+      "feature": "after_party",
+      "quote": "After Party Kizo Fest Beach Club!",
+      "rationale": "The description announces an after-party at the Beach Club."
+     }
+    ]
+   }
+  ]
+ }
 }

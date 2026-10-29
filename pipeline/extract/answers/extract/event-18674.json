@@ -1,101 +1,108 @@
 {
- "batch": "event-18674",
- "events": [
-  {
-   "event_id": 18674,
-   "artists": [
-    {
-     "name_as_written": "Rafael & Virginie",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "How does an SBK festival in the snow sound? Rafael & Virginie are taking you along for a new SBK festival in the mountains!"
-    },
-    {
-     "name_as_written": "Virginie & Rafael",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Virginie & Rafael"
-    },
-    {
-     "name_as_written": "Ben",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Ben"
-    },
-    {
-     "name_as_written": "Yordan el Cubano",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Yordan el Cubano"
-    },
-    {
-     "name_as_written": "Romeo & Laura",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Romeo & Laura"
-    },
-    {
-     "name_as_written": "Anousone & Pauline",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Anousone & Pauline"
-    },
-    {
-     "name_as_written": "Mous & Sam",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Mous & Sam"
-    },
-    {
-     "name_as_written": "Ali",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Ali"
-    },
-    {
-     "name_as_written": "Julien",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Julien"
-    },
-    {
-     "name_as_written": "Gordon & Marion",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Gordon & Marion"
-    },
-    {
-     "name_as_written": "Cebo & Emmanuelle",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Cebo & Emmanuelle"
-    },
-    {
-     "name_as_written": "Fitz",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Fitz"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Salsa, Bachata, and Kizomba workshops with talented artists",
-     "rationale": "The concept lists Salsa, Bachata and Kizomba workshops as part of the festival's dance activities."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18674",
+  "events": [
+   {
+    "event_id": 18674,
+    "artists": [
+     {
+      "name_as_written": "Rafael & Virginie",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "How does an SBK festival in the snow sound? Rafael & Virginie are taking you along for a new SBK festival in the mountains!"
+     },
+     {
+      "name_as_written": "Virginie & Rafael",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Virginie & Rafael"
+     },
+     {
+      "name_as_written": "Ben",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Ben"
+     },
+     {
+      "name_as_written": "Yordan el Cubano",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Yordan el Cubano"
+     },
+     {
+      "name_as_written": "Romeo & Laura",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Romeo & Laura"
+     },
+     {
+      "name_as_written": "Anousone & Pauline",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Anousone & Pauline"
+     },
+     {
+      "name_as_written": "Mous & Sam",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Mous & Sam"
+     },
+     {
+      "name_as_written": "Ali",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Ali"
+     },
+     {
+      "name_as_written": "Julien",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Julien"
+     },
+     {
+      "name_as_written": "Gordon & Marion",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Gordon & Marion"
+     },
+     {
+      "name_as_written": "Cebo & Emmanuelle",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Cebo & Emmanuelle"
+     },
+     {
+      "name_as_written": "Fitz",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Fitz"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Salsa, Bachata, and Kizomba workshops with talented artists",
+      "rationale": "The concept lists Salsa, Bachata and Kizomba workshops as part of the festival's dance activities."
+     }
+    ]
+   }
+  ]
+ }
 }

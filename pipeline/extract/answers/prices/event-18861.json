@@ -1,148 +1,155 @@
 {
- "batch": "event-18861",
- "events": [
-  {
-   "event_id": 18861,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 80.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "07-06",
-       "quantity": 100,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "100 Full-pass a €80 au 06/07 ÉPUISÉS"
-      },
-      {
-       "amount": 90.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "09-21",
-       "quantity": 100,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "100 Full-pass at €90 just on 21/09 (-12)"
-      },
-      {
-       "amount": 110.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "12-14",
-       "quantity": 100,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "100 Full-pass at €110 just until December 14th"
-      },
-      {
-       "amount": 130.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-14",
-       "quantity": 100,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "100 Full-pass at €130 just on February 14th"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "HEBERGEMENT:",
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 400.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 10,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "10 bedrooms – 400€ ( ÉPUISÉS )"
-      },
-      {
-       "amount": 430.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 10,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "10 bedrooms – 430€ ( ÉPUISÉS )"
-      },
-      {
-       "amount": 450.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 10,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "10 bedrooms – €450 (EPUISÉS)"
-      },
-      {
-       "amount": 470.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 5,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "5 bedrooms – €470 ( -2 )"
-      },
-      {
-       "amount": 500.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 5,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "5 bedrooms – €500"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T18:02:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18861",
+  "events": [
+   {
+    "event_id": 18861,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 80.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "07-06",
+        "quantity": 100,
+        "door": false,
+        "sold_out": true,
+        "current": false,
+        "quote": "100 Full-pass a €80 au 06/07 ÉPUISÉS"
+       },
+       {
+        "amount": 90.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "09-21",
+        "quantity": 100,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "100 Full-pass at €90 just on 21/09 (-12)"
+       },
+       {
+        "amount": 110.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "12-14",
+        "quantity": 100,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "100 Full-pass at €110 just until December 14th"
+       },
+       {
+        "amount": 130.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "02-14",
+        "quantity": 100,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "100 Full-pass at €130 just on February 14th"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "HEBERGEMENT:",
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 400.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 10,
+        "door": false,
+        "sold_out": true,
+        "current": false,
+        "quote": "10 bedrooms – 400€ ( ÉPUISÉS )"
+       },
+       {
+        "amount": 430.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 10,
+        "door": false,
+        "sold_out": true,
+        "current": false,
+        "quote": "10 bedrooms – 430€ ( ÉPUISÉS )"
+       },
+       {
+        "amount": 450.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 10,
+        "door": false,
+        "sold_out": true,
+        "current": false,
+        "quote": "10 bedrooms – €450 (EPUISÉS)"
+       },
+       {
+        "amount": 470.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 5,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "5 bedrooms – €470 ( -2 )"
+       },
+       {
+        "amount": 500.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 5,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "5 bedrooms – €500"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

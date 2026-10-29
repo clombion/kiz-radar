@@ -1,217 +1,224 @@
 {
- "batch": "event-15878",
- "events": [
-  {
-   "event_id": 15878,
-   "artists": [
-    {
-     "name_as_written": "KIZ ME UP",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "PAGE FB : KIZ ME UP"
-    },
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰DJ SNAKES ( Confirmed)"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰DJ NICE LIFE ( Confirmed)"
-    },
-    {
-     "name_as_written": "DJ LENHY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰DJ LENHY ( Confirmed )"
-    },
-    {
-     "name_as_written": "DJ EDEN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰DJ EDEN (Confirmed)"
-    },
-    {
-     "name_as_written": "DJ POEMA BEATZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰DJ POEMA BEATZ ( Confirmrd)"
-    },
-    {
-     "name_as_written": "DJ LE GD TIWOSH",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰DJ LE GD TIWOSH ( Confirmed)"
-    },
-    {
-     "name_as_written": "DJ LOWELO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰DJ LOWELO (Confirmed)"
-    },
-    {
-     "name_as_written": "DJ FOFO-JAH",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰DJ FOFO-JAH ( Confirmed)"
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰DJ ICHIGO ( Confimed )"
-    },
-    {
-     "name_as_written": "JACK & SARAH",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔰JACK & SARAH ( Confirmed )"
-    },
-    {
-     "name_as_written": "JP & STEPHY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔰JP & STEPHY ( Confirmed)"
-    },
-    {
-     "name_as_written": "JOHN & LEA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔰JOHN & LEA. ( Confirmed)"
-    },
-    {
-     "name_as_written": "AMI & JULIEN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔰AMI & JULIEN ( Confirmed )"
-    },
-    {
-     "name_as_written": "STEVEN & AUDREY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔰STEVEN & AUDREY ( Confirmed )"
-    },
-    {
-     "name_as_written": "KARL BEKENE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔰 KARL BEKENE ( ( Confirmed )"
-    },
-    {
-     "name_as_written": "DADIE SACKO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔰 DADIE SACKO ( Confimed)"
-    },
-    {
-     "name_as_written": "ASIA AVONOVA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔰 ASIA AVONOVA ( Confirmed )"
-    },
-    {
-     "name_as_written": "DOUDA",
-     "role": "teacher",
-     "style": "konpa",
-     "country": null,
-     "source_line": "🔰 DOUDA – konpa ( confirmed )"
-    },
-    {
-     "name_as_written": "AMAR",
-     "role": "teacher",
-     "style": "Konpa",
-     "country": null,
-     "source_line": "🔰AMAR – Konpa ( Confirmed )"
-    },
-    {
-     "name_as_written": "VAIR & TROPIKALINE",
-     "role": "teacher",
-     "style": "Konpa",
-     "country": null,
-     "source_line": "🔰VAIR & TROPIKALINE – Konpa ( Confirmed)"
-    },
-    {
-     "name_as_written": "TEAM REBIRTH",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "TEAM REBIRTH ( PARIS )"
-    },
-    {
-     "name_as_written": "TEAM UNIT’KIZ",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "TEAM UNIT’KIZ (PARIS)"
-    },
-    {
-     "name_as_written": "TEAM FUNOMEN",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "TEAM FUNOMEN (PARIS)"
-    },
-    {
-     "name_as_written": "TEAM VVK",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "TEAM VVK (PARIS)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in one Hotel",
-     "rationale": "The description says the festival is all in one hotel, where the parties take place."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Thursday PREPARTY",
-     "rationale": "A Thursday pre-party is listed before the main festival days."
-    },
-    {
-     "feature": "workshops",
-     "quote": "21:00 – 23:00 : Workshops",
-     "rationale": "Workshops appear in the daily schedule as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "14:00 pm – 21:00 : Social",
-     "rationale": "Afternoon socials are scheduled on Friday."
-    },
-    {
-     "feature": "after_party",
-     "quote": "8:00 am – 11:00 am : After party",
-     "rationale": "An after-party is scheduled in the morning hours."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "GUEST TAXIS TEAMS",
-     "rationale": "Guest taxi-dancer teams are listed as present at the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15878",
+  "events": [
+   {
+    "event_id": 15878,
+    "artists": [
+     {
+      "name_as_written": "KIZ ME UP",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "PAGE FB : KIZ ME UP"
+     },
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰DJ SNAKES ( Confirmed)"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰DJ NICE LIFE ( Confirmed)"
+     },
+     {
+      "name_as_written": "DJ LENHY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰DJ LENHY ( Confirmed )"
+     },
+     {
+      "name_as_written": "DJ EDEN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰DJ EDEN (Confirmed)"
+     },
+     {
+      "name_as_written": "DJ POEMA BEATZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰DJ POEMA BEATZ ( Confirmrd)"
+     },
+     {
+      "name_as_written": "DJ LE GD TIWOSH",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰DJ LE GD TIWOSH ( Confirmed)"
+     },
+     {
+      "name_as_written": "DJ LOWELO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰DJ LOWELO (Confirmed)"
+     },
+     {
+      "name_as_written": "DJ FOFO-JAH",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰DJ FOFO-JAH ( Confirmed)"
+     },
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰DJ ICHIGO ( Confimed )"
+     },
+     {
+      "name_as_written": "JACK & SARAH",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔰JACK & SARAH ( Confirmed )"
+     },
+     {
+      "name_as_written": "JP & STEPHY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔰JP & STEPHY ( Confirmed)"
+     },
+     {
+      "name_as_written": "JOHN & LEA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔰JOHN & LEA. ( Confirmed)"
+     },
+     {
+      "name_as_written": "AMI & JULIEN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔰AMI & JULIEN ( Confirmed )"
+     },
+     {
+      "name_as_written": "STEVEN & AUDREY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔰STEVEN & AUDREY ( Confirmed )"
+     },
+     {
+      "name_as_written": "KARL BEKENE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔰 KARL BEKENE ( ( Confirmed )"
+     },
+     {
+      "name_as_written": "DADIE SACKO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔰 DADIE SACKO ( Confimed)"
+     },
+     {
+      "name_as_written": "ASIA AVONOVA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔰 ASIA AVONOVA ( Confirmed )"
+     },
+     {
+      "name_as_written": "DOUDA",
+      "role": "teacher",
+      "style": "konpa",
+      "country": null,
+      "source_line": "🔰 DOUDA – konpa ( confirmed )"
+     },
+     {
+      "name_as_written": "AMAR",
+      "role": "teacher",
+      "style": "Konpa",
+      "country": null,
+      "source_line": "🔰AMAR – Konpa ( Confirmed )"
+     },
+     {
+      "name_as_written": "VAIR & TROPIKALINE",
+      "role": "teacher",
+      "style": "Konpa",
+      "country": null,
+      "source_line": "🔰VAIR & TROPIKALINE – Konpa ( Confirmed)"
+     },
+     {
+      "name_as_written": "TEAM REBIRTH",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "TEAM REBIRTH ( PARIS )"
+     },
+     {
+      "name_as_written": "TEAM UNIT’KIZ",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "TEAM UNIT’KIZ (PARIS)"
+     },
+     {
+      "name_as_written": "TEAM FUNOMEN",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "TEAM FUNOMEN (PARIS)"
+     },
+     {
+      "name_as_written": "TEAM VVK",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "TEAM VVK (PARIS)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in one Hotel",
+      "rationale": "The description says the festival is all in one hotel, where the parties take place."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Thursday PREPARTY",
+      "rationale": "A Thursday pre-party is listed before the main festival days."
+     },
+     {
+      "feature": "workshops",
+      "quote": "21:00 – 23:00 : Workshops",
+      "rationale": "Workshops appear in the daily schedule as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "14:00 pm – 21:00 : Social",
+      "rationale": "Afternoon socials are scheduled on Friday."
+     },
+     {
+      "feature": "after_party",
+      "quote": "8:00 am – 11:00 am : After party",
+      "rationale": "An after-party is scheduled in the morning hours."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "GUEST TAXIS TEAMS",
+      "rationale": "Guest taxi-dancer teams are listed as present at the event."
+     }
+    ]
+   }
+  ]
+ }
 }

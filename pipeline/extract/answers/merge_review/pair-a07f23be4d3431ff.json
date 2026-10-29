@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabrizio@fabrizio+giulia",
+ "key_b": "p:fabriziozoro",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "a07f23be4d3431ff",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Fabrizio & Giulia (teacher, Italy) and DJ Fabrizio Zoro (Belgium event, Italy stated) differ in role, with only a common first name and country in common."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ilias@adina+ilias",
+ "key_b": "p:ilias@ilias+sandra",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "fd00804b4b550011",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Ilias & Adina and Ilias & Sandra have different partners and no shared event or date, so only the first name is shared."
+ }
+}

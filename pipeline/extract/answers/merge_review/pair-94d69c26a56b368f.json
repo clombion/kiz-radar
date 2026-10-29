@@ -1,0 +1,13 @@
+{
+ "key_a": "p:luismi@luismi+marian",
+ "key_b": "p:luismi@luismi+mariangela",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "94d69c26a56b368f",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Marian is the short form of Mariangela, so the partner is the same, the name Luismi is the same, and both sides list Spain."
+ }
+}

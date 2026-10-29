@@ -1,69 +1,76 @@
 {
- "batch": "event-15297",
- "events": [
-  {
-   "event_id": 15297,
-   "artists": [
-    {
-     "name_as_written": "Starlight",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• A unique format of master classes with the participation of foreign star teachers Starlight."
-    }
-   ],
-   "features": [
-    {
-     "feature": "masterclass",
-     "quote": "Master classes and parties in 5 directions",
-     "rationale": "The festival offers master classes in several dance styles."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "styling master classes for all levels",
-     "rationale": "The styling master classes are explicitly aimed at all levels."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Everything in one location — dancing, accommodation, relaxation without unnecessary travel.",
-     "rationale": "Dancing and accommodation are described as being in one location, so the parties are in the same venue where dancers stay."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Afterparty for guests staying in festival hotels.",
-     "rationale": "An afterparty is explicitly listed."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live salsa concert",
-     "rationale": "A live concert is part of the programme."
-    },
-    {
-     "feature": "shows",
-     "quote": "shows, animations, bootcamps, flash mobs",
-     "rationale": "Shows are listed among the event's offerings."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "bootcamps",
-     "rationale": "Bootcamps are listed as part of the programme."
-    },
-    {
-     "feature": "competition",
-     "quote": "World Bachata Social World Cup qualifying round (amateurs and professionals)",
-     "rationale": "A qualifying round of a world cup is a competition."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "themed halls and parties",
-     "rationale": "Themed parties are explicitly offered."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Kizomba social room",
-     "rationale": "The event has several dance rooms, including a separate Kizomba social room and themed halls."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15297",
+  "events": [
+   {
+    "event_id": 15297,
+    "artists": [
+     {
+      "name_as_written": "Starlight",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• A unique format of master classes with the participation of foreign star teachers Starlight."
+     }
+    ],
+    "features": [
+     {
+      "feature": "masterclass",
+      "quote": "Master classes and parties in 5 directions",
+      "rationale": "The festival offers master classes in several dance styles."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "styling master classes for all levels",
+      "rationale": "The styling master classes are explicitly aimed at all levels."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Everything in one location — dancing, accommodation, relaxation without unnecessary travel.",
+      "rationale": "Dancing and accommodation are described as being in one location, so the parties are in the same venue where dancers stay."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Afterparty for guests staying in festival hotels.",
+      "rationale": "An afterparty is explicitly listed."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live salsa concert",
+      "rationale": "A live concert is part of the programme."
+     },
+     {
+      "feature": "shows",
+      "quote": "shows, animations, bootcamps, flash mobs",
+      "rationale": "Shows are listed among the event's offerings."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "bootcamps",
+      "rationale": "Bootcamps are listed as part of the programme."
+     },
+     {
+      "feature": "competition",
+      "quote": "World Bachata Social World Cup qualifying round (amateurs and professionals)",
+      "rationale": "A qualifying round of a world cup is a competition."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "themed halls and parties",
+      "rationale": "Themed parties are explicitly offered."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Kizomba social room",
+      "rationale": "The event has several dance rooms, including a separate Kizomba social room and themed halls."
+     }
+    ]
+   }
+  ]
+ }
 }

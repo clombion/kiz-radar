@@ -1,34 +1,41 @@
 {
- "batch": "event-16231",
- "events": [
-  {
-   "event_id": 16231,
-   "artists": [
-    {
-     "name_as_written": "8times2gether",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Write us an email in German, English, or French to 📧 info@8times2gether.com"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Carefully selected workshops to improve your skills",
-     "rationale": "The description states that dance workshops are part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "A fantastic venue with easy access and a hotel nearby",
-     "rationale": "The description points to hotels near the venue, listed with links, without saying the accommodation is part of the pass."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "11:00 – 20:00 – Workshops & Social",
-     "rationale": "The Saturday programme lists a daytime social from 11:00 to 20:00."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16231",
+  "events": [
+   {
+    "event_id": 16231,
+    "artists": [
+     {
+      "name_as_written": "8times2gether",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Write us an email in German, English, or French to 📧 info@8times2gether.com"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Carefully selected workshops to improve your skills",
+      "rationale": "The description states that dance workshops are part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "A fantastic venue with easy access and a hotel nearby",
+      "rationale": "The description points to hotels near the venue, listed with links, without saying the accommodation is part of the pass."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "11:00 – 20:00 – Workshops & Social",
+      "rationale": "The Saturday programme lists a daytime social from 11:00 to 20:00."
+     }
+    ]
+   }
+  ]
+ }
 }

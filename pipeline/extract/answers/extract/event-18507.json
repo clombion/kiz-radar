@@ -1,118 +1,125 @@
 {
- "batch": "event-18507",
- "events": [
-  {
-   "event_id": 18507,
-   "artists": [
-    {
-     "name_as_written": "Tresor & Aurea",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱 – 🇪🇸",
-     "source_line": "🔥 Tresor & Aurea 🇳🇱 – 🇪🇸"
-    },
-    {
-     "name_as_written": "Akram & Sarah",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱 –🇨🇭",
-     "source_line": "🔥 Akram & Sarah 🇳🇱 –🇨🇭"
-    },
-    {
-     "name_as_written": "Clemence & Erwan",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷 – 🇫🇷",
-     "source_line": "🔥 Clemence & Erwan 🇫🇷 – 🇫🇷"
-    },
-    {
-     "name_as_written": "Ferris & Elina",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪 – 🇨🇿",
-     "source_line": "🔥 Ferris & Elina 🇩🇪 – 🇨🇿"
-    },
-    {
-     "name_as_written": "Chris & Clara",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪 – 🇩🇪",
-     "source_line": "🔥 Chris & Clara 🇩🇪 – 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ Morelasoul",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🔥DJ Morelasoul, 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Remcy",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "🔥DJ Remcy , 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ Rene Amplo",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🔥 DJ Rene Amplo , 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Dino",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "🔥 DJ Dino , 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ You",
-     "role": "dj",
-     "style": null,
-     "country": "🇯🇵",
-     "source_line": "🔥 DJ You, 🇯🇵"
-    },
-    {
-     "name_as_written": "DJ Dia",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🔥 DJ Dia 🇵🇹"
-    },
-    {
-     "name_as_written": "Kizz Empire",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Kizz Empire New Year‘s Eve 🥳 🎊"
-    },
-    {
-     "name_as_written": "Dance Empire dance School Böblingen",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "In Cooperation with Dance Empire dance School Böblingen."
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "3 days of Workshops/Parties/Socials",
-     "rationale": "The description lists workshops as part of the three-day event."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress code",
-     "rationale": "The description states a dress code and gives one per day."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Accommodations:",
-     "rationale": "The description recommends several nearby hotels with booking links, without including them in a pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18507",
+  "events": [
+   {
+    "event_id": 18507,
+    "artists": [
+     {
+      "name_as_written": "Tresor & Aurea",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱 – 🇪🇸",
+      "source_line": "🔥 Tresor & Aurea 🇳🇱 – 🇪🇸"
+     },
+     {
+      "name_as_written": "Akram & Sarah",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱 –🇨🇭",
+      "source_line": "🔥 Akram & Sarah 🇳🇱 –🇨🇭"
+     },
+     {
+      "name_as_written": "Clemence & Erwan",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷 – 🇫🇷",
+      "source_line": "🔥 Clemence & Erwan 🇫🇷 – 🇫🇷"
+     },
+     {
+      "name_as_written": "Ferris & Elina",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪 – 🇨🇿",
+      "source_line": "🔥 Ferris & Elina 🇩🇪 – 🇨🇿"
+     },
+     {
+      "name_as_written": "Chris & Clara",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪 – 🇩🇪",
+      "source_line": "🔥 Chris & Clara 🇩🇪 – 🇩🇪"
+     },
+     {
+      "name_as_written": "DJ Morelasoul",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🔥DJ Morelasoul, 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Remcy",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "🔥DJ Remcy , 🇩🇪"
+     },
+     {
+      "name_as_written": "DJ Rene Amplo",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🔥 DJ Rene Amplo , 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Dino",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "🔥 DJ Dino , 🇩🇪"
+     },
+     {
+      "name_as_written": "DJ You",
+      "role": "dj",
+      "style": null,
+      "country": "🇯🇵",
+      "source_line": "🔥 DJ You, 🇯🇵"
+     },
+     {
+      "name_as_written": "DJ Dia",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🔥 DJ Dia 🇵🇹"
+     },
+     {
+      "name_as_written": "Kizz Empire",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Kizz Empire New Year‘s Eve 🥳 🎊"
+     },
+     {
+      "name_as_written": "Dance Empire dance School Böblingen",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "In Cooperation with Dance Empire dance School Böblingen."
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "3 days of Workshops/Parties/Socials",
+      "rationale": "The description lists workshops as part of the three-day event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress code",
+      "rationale": "The description states a dress code and gives one per day."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Accommodations:",
+      "rationale": "The description recommends several nearby hotels with booking links, without including them in a pass."
+     }
+    ]
+   }
+  ]
+ }
 }

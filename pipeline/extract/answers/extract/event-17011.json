@@ -1,44 +1,51 @@
 {
- "batch": "event-17011",
- "events": [
-  {
-   "event_id": 17011,
-   "artists": [
-    {
-     "name_as_written": "Germany Dance Festival",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🎉 *INTERNATIONAL GALA DANCE BOAT “REGINA DANUBIA meets DDF”* 🎉 Germany Dance Festival"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "intensive workshops",
-     "rationale": "The description says the weekend combines intensive workshops with parties and a boat trip."
-    },
-    {
-     "feature": "cruise",
-     "quote": "Danube Dance Cruise 2026",
-     "rationale": "The event is a dance cruise on the Danube riverboat Regina Danubia."
-    },
-    {
-     "feature": "boat_party",
-     "quote": "you dance on a real Danube riverboat",
-     "rationale": "Dancing takes place on a riverboat during the Danube dance boat trip."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Afterparty",
-     "rationale": "An afterparty is listed for the Saturday schedule after the boat trip, back at the Redoute Theater."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTELS IN PASSAU (within walking distance)",
-     "rationale": "The description recommends hotels in Passau without stating that accommodation is part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17011",
+  "events": [
+   {
+    "event_id": 17011,
+    "artists": [
+     {
+      "name_as_written": "Germany Dance Festival",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🎉 *INTERNATIONAL GALA DANCE BOAT “REGINA DANUBIA meets DDF”* 🎉 Germany Dance Festival"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "intensive workshops",
+      "rationale": "The description says the weekend combines intensive workshops with parties and a boat trip."
+     },
+     {
+      "feature": "cruise",
+      "quote": "Danube Dance Cruise 2026",
+      "rationale": "The event is a dance cruise on the Danube riverboat Regina Danubia."
+     },
+     {
+      "feature": "boat_party",
+      "quote": "you dance on a real Danube riverboat",
+      "rationale": "Dancing takes place on a riverboat during the Danube dance boat trip."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Afterparty",
+      "rationale": "An afterparty is listed for the Saturday schedule after the boat trip, back at the Redoute Theater."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTELS IN PASSAU (within walking distance)",
+      "rationale": "The description recommends hotels in Passau without stating that accommodation is part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

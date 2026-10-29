@@ -1,116 +1,123 @@
 {
- "batch": "event-14629",
- "events": [
-  {
-   "event_id": 14629,
-   "artists": [
-    {
-     "name_as_written": "Eddy Vents",
-     "role": "teacher",
-     "style": null,
-     "country": "🇬🇼🇺🇸",
-     "source_line": "▪︎ Eddy Vents 🇬🇼🇺🇸"
-    },
-    {
-     "name_as_written": "Fanio de Araújo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇵🇹",
-     "source_line": "▪︎ Fanio de Araújo 🇦🇴🇵🇹"
-    },
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇵🇹",
-     "source_line": "▪︎ Ary & Maura 🇦🇴🇵🇹"
-    },
-    {
-     "name_as_written": "Ybra & Gina",
-     "role": "teacher",
-     "style": null,
-     "country": "🇬🇼🇨🇭",
-     "source_line": "▪︎ Ybra & Gina 🇬🇼🇨🇭"
-    },
-    {
-     "name_as_written": "Mauro D-One & Célia",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇵🇹🇨🇭",
-     "source_line": "▪︎ Mauro D-One & Célia 🇦🇴🇵🇹🇨🇭"
-    },
-    {
-     "name_as_written": "Pedro & Ana",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹🇨🇭",
-     "source_line": "▪︎ Pedro & Ana 🇵🇹🇨🇭"
-    },
-    {
-     "name_as_written": "Guillhermé",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇨🇭",
-     "source_line": "▪︎ Guillhermé 🇦🇴🇨🇭"
-    },
-    {
-     "name_as_written": "Cristina",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹🇨🇭",
-     "source_line": "▪︎ Cristina 🇮🇹🇨🇭"
-    },
-    {
-     "name_as_written": "Dj Paparazzi",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸🇦🇴",
-     "source_line": "▪︎ Dj Paparazzi 🇪🇸🇦🇴"
-    },
-    {
-     "name_as_written": "Dj Kindoki",
-     "role": "dj",
-     "style": null,
-     "country": "🇬🇧🇦🇴",
-     "source_line": "▪︎ Dj Kindoki 🇬🇧🇦🇴"
-    },
-    {
-     "name_as_written": "Dj Relampago",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇨🇭",
-     "source_line": "▪︎ Dj Relampago 🇦🇴🇨🇭"
-    },
-    {
-     "name_as_written": "Dj Emess",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇨🇭",
-     "source_line": "▪︎ Dj Emess 🇦🇴🇨🇭"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "3 DAYS THEMATIC WORKSHOPS FOR ALL DANCE LEVELS",
-     "rationale": "The event lists thematic workshops over three days."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "3 DAYS THEMATIC WORKSHOPS FOR ALL DANCE LEVELS",
-     "rationale": "The workshops are stated to be for all dance levels."
-    },
-    {
-     "feature": "shows",
-     "quote": "SHOW & ENTERTAINMENT",
-     "rationale": "The event advertises shows and entertainment."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Get a 10% discount on your room reservation with our hotel partners!",
-     "rationale": "Partner hotels are named and offer a discount, without accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:39:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14629",
+  "events": [
+   {
+    "event_id": 14629,
+    "artists": [
+     {
+      "name_as_written": "Eddy Vents",
+      "role": "teacher",
+      "style": null,
+      "country": "🇬🇼🇺🇸",
+      "source_line": "▪︎ Eddy Vents 🇬🇼🇺🇸"
+     },
+     {
+      "name_as_written": "Fanio de Araújo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇵🇹",
+      "source_line": "▪︎ Fanio de Araújo 🇦🇴🇵🇹"
+     },
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇵🇹",
+      "source_line": "▪︎ Ary & Maura 🇦🇴🇵🇹"
+     },
+     {
+      "name_as_written": "Ybra & Gina",
+      "role": "teacher",
+      "style": null,
+      "country": "🇬🇼🇨🇭",
+      "source_line": "▪︎ Ybra & Gina 🇬🇼🇨🇭"
+     },
+     {
+      "name_as_written": "Mauro D-One & Célia",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇵🇹🇨🇭",
+      "source_line": "▪︎ Mauro D-One & Célia 🇦🇴🇵🇹🇨🇭"
+     },
+     {
+      "name_as_written": "Pedro & Ana",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹🇨🇭",
+      "source_line": "▪︎ Pedro & Ana 🇵🇹🇨🇭"
+     },
+     {
+      "name_as_written": "Guillhermé",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇨🇭",
+      "source_line": "▪︎ Guillhermé 🇦🇴🇨🇭"
+     },
+     {
+      "name_as_written": "Cristina",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹🇨🇭",
+      "source_line": "▪︎ Cristina 🇮🇹🇨🇭"
+     },
+     {
+      "name_as_written": "Dj Paparazzi",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸🇦🇴",
+      "source_line": "▪︎ Dj Paparazzi 🇪🇸🇦🇴"
+     },
+     {
+      "name_as_written": "Dj Kindoki",
+      "role": "dj",
+      "style": null,
+      "country": "🇬🇧🇦🇴",
+      "source_line": "▪︎ Dj Kindoki 🇬🇧🇦🇴"
+     },
+     {
+      "name_as_written": "Dj Relampago",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇨🇭",
+      "source_line": "▪︎ Dj Relampago 🇦🇴🇨🇭"
+     },
+     {
+      "name_as_written": "Dj Emess",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇨🇭",
+      "source_line": "▪︎ Dj Emess 🇦🇴🇨🇭"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "3 DAYS THEMATIC WORKSHOPS FOR ALL DANCE LEVELS",
+      "rationale": "The event lists thematic workshops over three days."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "3 DAYS THEMATIC WORKSHOPS FOR ALL DANCE LEVELS",
+      "rationale": "The workshops are stated to be for all dance levels."
+     },
+     {
+      "feature": "shows",
+      "quote": "SHOW & ENTERTAINMENT",
+      "rationale": "The event advertises shows and entertainment."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Get a 10% discount on your room reservation with our hotel partners!",
+      "rationale": "Partner hotels are named and offer a discount, without accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

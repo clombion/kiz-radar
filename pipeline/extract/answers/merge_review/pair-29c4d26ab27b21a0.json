@@ -1,0 +1,13 @@
+{
+ "key_a": "p:radu@judith+radu",
+ "key_b": "p:radumanole",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "29c4d26ab27b21a0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Radu and Romania are shared, but side A is a couple with Judith while side B gives the full name Radu Manole as a solo teacher, and both are listed at the same Cluj festival."
+ }
+}

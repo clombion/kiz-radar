@@ -1,161 +1,168 @@
 {
- "batch": "event-15913",
- "events": [
-  {
-   "event_id": 15913,
-   "artists": [
-    {
-     "name_as_written": "Vanessa Pura Ginga",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Vanessa Pura Ginga"
-    },
-    {
-     "name_as_written": "Bonifacio",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Bonifacio"
-    },
-    {
-     "name_as_written": "Alexandra De Brito",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Alexandra De Brito"
-    },
-    {
-     "name_as_written": "Xtrela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Xtrela"
-    },
-    {
-     "name_as_written": "N-Py",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 N-Py"
-    },
-    {
-     "name_as_written": "Issa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Issa"
-    },
-    {
-     "name_as_written": "Laura Bufone",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Laura Bufone"
-    },
-    {
-     "name_as_written": "Lukasz & Karolina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Lukasz & Karolina (Vamula)"
-    },
-    {
-     "name_as_written": "Fil & Daniela Andrade",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Fil & Daniela Andrade"
-    },
-    {
-     "name_as_written": "Aline & Bonga",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Aline & Bonga"
-    },
-    {
-     "name_as_written": "Romarey & Echedey",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Romarey & Echedey"
-    },
-    {
-     "name_as_written": "DJ Frank",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💎 DJ Frank (Munich)"
-    },
-    {
-     "name_as_written": "DJ Makaroff",
-     "role": "dj",
-     "style": null,
-     "country": "Netherlands",
-     "source_line": "💎 DJ Makaroff (Netherlands)"
-    },
-    {
-     "name_as_written": "DJ Porron",
-     "role": "dj",
-     "style": null,
-     "country": "Portugal",
-     "source_line": "💎 DJ Porron (Portugal)"
-    },
-    {
-     "name_as_written": "DJ Mãos Mágicas",
-     "role": "dj",
-     "style": null,
-     "country": "Portugal",
-     "source_line": "💎 DJ Mãos Mágicas (Portugal)"
-    },
-    {
-     "name_as_written": "Zola Lopes",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Zola Lopes"
-    },
-    {
-     "name_as_written": "GRÂCE EVORA",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "🎤 Live Concert GRÂCE EVORA"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL-IN-ONE CONCEPT",
-     "rationale": "The heading presents the event as all-in-one, and the surrounding lines describe a single hotel hosting the festival."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "ACCOMMODATION + FULL BOARD (drinks included)",
-     "rationale": "The accommodation package explicitly includes full board meals."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops, parties, pool party, jacuzzi & many surprises",
-     "rationale": "The main program lists workshops as part of the event."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Masterclasses",
-     "rationale": "The main program lists masterclasses."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "pool party",
-     "rationale": "A pool party is listed in the main program."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live Concert GRÂCE EVORA",
-     "rationale": "A live concert by a singer is part of the program."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15913",
+  "events": [
+   {
+    "event_id": 15913,
+    "artists": [
+     {
+      "name_as_written": "Vanessa Pura Ginga",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Vanessa Pura Ginga"
+     },
+     {
+      "name_as_written": "Bonifacio",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Bonifacio"
+     },
+     {
+      "name_as_written": "Alexandra De Brito",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Alexandra De Brito"
+     },
+     {
+      "name_as_written": "Xtrela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Xtrela"
+     },
+     {
+      "name_as_written": "N-Py",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 N-Py"
+     },
+     {
+      "name_as_written": "Issa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Issa"
+     },
+     {
+      "name_as_written": "Laura Bufone",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Laura Bufone"
+     },
+     {
+      "name_as_written": "Lukasz & Karolina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Lukasz & Karolina (Vamula)"
+     },
+     {
+      "name_as_written": "Fil & Daniela Andrade",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Fil & Daniela Andrade"
+     },
+     {
+      "name_as_written": "Aline & Bonga",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Aline & Bonga"
+     },
+     {
+      "name_as_written": "Romarey & Echedey",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Romarey & Echedey"
+     },
+     {
+      "name_as_written": "DJ Frank",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💎 DJ Frank (Munich)"
+     },
+     {
+      "name_as_written": "DJ Makaroff",
+      "role": "dj",
+      "style": null,
+      "country": "Netherlands",
+      "source_line": "💎 DJ Makaroff (Netherlands)"
+     },
+     {
+      "name_as_written": "DJ Porron",
+      "role": "dj",
+      "style": null,
+      "country": "Portugal",
+      "source_line": "💎 DJ Porron (Portugal)"
+     },
+     {
+      "name_as_written": "DJ Mãos Mágicas",
+      "role": "dj",
+      "style": null,
+      "country": "Portugal",
+      "source_line": "💎 DJ Mãos Mágicas (Portugal)"
+     },
+     {
+      "name_as_written": "Zola Lopes",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Zola Lopes"
+     },
+     {
+      "name_as_written": "GRÂCE EVORA",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "🎤 Live Concert GRÂCE EVORA"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL-IN-ONE CONCEPT",
+      "rationale": "The heading presents the event as all-in-one, and the surrounding lines describe a single hotel hosting the festival."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "ACCOMMODATION + FULL BOARD (drinks included)",
+      "rationale": "The accommodation package explicitly includes full board meals."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops, parties, pool party, jacuzzi & many surprises",
+      "rationale": "The main program lists workshops as part of the event."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclasses",
+      "rationale": "The main program lists masterclasses."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "pool party",
+      "rationale": "A pool party is listed in the main program."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live Concert GRÂCE EVORA",
+      "rationale": "A live concert by a singer is part of the program."
+     }
+    ]
+   }
+  ]
+ }
 }

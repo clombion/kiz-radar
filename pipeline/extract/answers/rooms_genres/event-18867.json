@@ -1,31 +1,38 @@
 {
- "batch": "event-18867",
- "events": [
-  {
-   "event_id": 18867,
-   "party_rooms": {
-    "count": 3,
-    "quote": "Three rooms, Three atmospheres"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata, Kizomba & Salsa"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18867",
+  "events": [
+   {
+    "event_id": 18867,
+    "party_rooms": {
+     "count": 3,
+     "quote": "Three rooms, Three atmospheres"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Bachata, Kizomba & Salsa"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Bachata, Kizomba & Salsa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata, Kizomba & Salsa"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Bachata, Kizomba & Salsa"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Bachata, Kizomba & Salsa"
+     }
+    ]
+   }
+  ]
+ }
 }

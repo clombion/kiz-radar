@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@dj",
+ "key_b": "p:alexalberola",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ac5bf8ff10aadade",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The generic DJ Alex appears at four unrelated events, and only one entry matches Spain and Bachata with Alex Alberola; that is not enough to join a common name."
+ }
+}

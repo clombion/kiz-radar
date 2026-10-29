@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jefe@diana+jefe",
+ "key_b": "p:jefe@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "8bfbdf1e7e6c6b44",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Jefe and the couple Jefe & Diana are at the same Philipsburg event on the same date with the same stated country."
+ }
+}

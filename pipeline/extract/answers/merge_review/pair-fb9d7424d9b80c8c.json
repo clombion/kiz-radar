@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mickaela@jahja+mickaela",
+ "key_b": "p:mickaela@mamadou+mickaela",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "fb9d7424d9b80c8c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Mickaela is the shared name in two Swedish couples with different partners, Jah J'a and Mamadou, and nothing else links them."
+ }
+}

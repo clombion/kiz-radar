@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@dance",
+ "key_b": "p:cristinacricri",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ca9019237f565852",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Cristina alone in Bern and Cristina Cri Cri share the exact stated Italy and Switzerland countries, but the first name is common and there is no partner link."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:klaudiohosai",
+ "key_b": "p:kludiohoshai",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ffc9b6ee222b6277",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Klaudio Hosai and Kludio Hoshai are spelling variants of one distinctive surname, and both entries state Angola."
+ }
+}

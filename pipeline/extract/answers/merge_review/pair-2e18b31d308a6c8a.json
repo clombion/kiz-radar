@@ -1,0 +1,13 @@
+{
+ "key_a": "p:vanildo@dance",
+ "key_b": "p:vanildo@mara+vanildo",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2e18b31d308a6c8a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Vanildo is a distinctive name with the Netherlands flag on both sides, and both sides teach Urban Kiz."
+ }
+}

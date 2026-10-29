@@ -1,40 +1,47 @@
 {
- "batch": "event-17497",
- "events": [
-  {
-   "event_id": 17497,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "a dedicated social space throughout the event"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz, Kizomba, Konpa, and Afro"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Urban Kiz, Kizomba, Konpa, and Afro"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Urban Kiz, Kizomba, Konpa, and Afro"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Urban Kiz, Kizomba, Konpa, and Afro"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17497",
+  "events": [
+   {
+    "event_id": 17497,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "a dedicated social space throughout the event"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Urban Kiz, Kizomba, Konpa, and Afro"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Urban Kiz, Kizomba, Konpa, and Afro"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Urban Kiz, Kizomba, Konpa, and Afro"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Urban Kiz, Kizomba, Konpa, and Afro"
+     }
+    ]
+   }
+  ]
+ }
 }

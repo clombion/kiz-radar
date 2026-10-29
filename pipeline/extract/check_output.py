@@ -19,34 +19,11 @@ from pathlib import Path
 from pydantic import ValidationError
 
 from pipeline import prompt as prompts
-from pipeline.records import Asked, Batch, Entry, FirstRead, Json, errors
-
-VERBATIM_KEYS = frozenset({'quote', 'label_quote', 'rule_quotes', 'source_line', 'name_as_written', 'names'})
+from pipeline.records import Asked, Batch, Entry, FirstRead, copied, errors
 
 
 def norm(s: str) -> str:
     return ' '.join(s.split()).casefold()
-
-
-def verbatim_fields(node: Json, path: str = '') -> list[tuple[str, str]]:
-    """(where, text) pairs that must appear in the description: every value under a VERBATIM_KEYS key."""
-    out: list[tuple[str, str]] = []
-    if isinstance(node, dict):
-        for k, v in node.items():
-            where = f'{path}.{k}' if path else k
-            if k in VERBATIM_KEYS:
-                out += [(where, s) for s in (v if isinstance(v, list) else [v]) if isinstance(s, str) and s]
-            else:
-                out += verbatim_fields(v, where)
-    elif isinstance(node, list):
-        for i, v in enumerate(node):
-            out += verbatim_fields(v, f'{path}[{i}]')
-    return out
-
-
-def entry_json(entry: Entry) -> dict[str, Json]:
-    dumped: dict[str, Json] = entry.model_dump(mode='json', by_alias=True)
-    return dumped
 
 
 def source_text(festival: Asked | FirstRead, *rows: str) -> str:
@@ -71,7 +48,7 @@ def found_in[E: Entry](answer: Batch[E], texts: Mapping[int, str]) -> list[str]:
             continue
         found += [
             f'verbatim: event {ev.event_id}: {where} {text!r} is not in the description; copy it exactly or drop it'
-            for where, text in verbatim_fields({k: v for k, v in entry_json(ev).items() if k != 'event_id'})
+            for where, text in copied(ev)
             if norm(text) not in desc
         ]
     return found

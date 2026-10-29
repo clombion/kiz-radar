@@ -1,158 +1,165 @@
 {
- "batch": "event-18139",
- "events": [
-  {
-   "event_id": 18139,
-   "artists": [
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Ary & Maura"
-    },
-    {
-     "name_as_written": "Fernando & Michela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Fernando & Michela"
-    },
-    {
-     "name_as_written": "Marcio Junqueira",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Marcio Junqueira"
-    },
-    {
-     "name_as_written": "Jadilson Santarosa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Jadilson Santarosa"
-    },
-    {
-     "name_as_written": "Alex Vunda & MaryJay",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Alex Vunda & MaryJay"
-    },
-    {
-     "name_as_written": "Pacavira & Celine",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Pacavira & Celine"
-    },
-    {
-     "name_as_written": "Alberto Celmo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Alberto Celmo"
-    },
-    {
-     "name_as_written": "Francis & Lucy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Francis & Lucy"
-    },
-    {
-     "name_as_written": "Melania Andrei",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Melania Andrei"
-    },
-    {
-     "name_as_written": "Sara Iacobacci",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Sara Iacobacci"
-    },
-    {
-     "name_as_written": "Alessandro & Tiziana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Alessandro & Tiziana"
-    },
-    {
-     "name_as_written": "Federica Lucarelli",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Federica Lucarelli"
-    },
-    {
-     "name_as_written": "Dj Bakongo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Dj Bakongo"
-    },
-    {
-     "name_as_written": "Dj LadyJay",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Dj LadyJay"
-    },
-    {
-     "name_as_written": "Dj Emess",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Dj Emess"
-    },
-    {
-     "name_as_written": "Dj Tiago Tuga",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Dj Tiago Tuga"
-    },
-    {
-     "name_as_written": "Dj Marc",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Dj Marc"
-    },
-    {
-     "name_as_written": "Dj Salvyne",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧨Dj Salvyne"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE LOCATION (Hotel + Classes + Parties)",
-     "rationale": "The description says the event is all in one location, covering hotel, classes and parties together."
-    },
-    {
-     "feature": "workshops",
-     "quote": "all workshops & socials",
-     "rationale": "The full pass and couple pass include all workshops, so dance classes are part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "€53 per night per person, half board (breakfast and dinner included)",
-     "rationale": "A negotiated hotel rate is offered for the venue hotel, separate from the pass."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Shuttle service from the hotel to Fiumicino and Ciampino airports",
-     "rationale": "The description offers a shuttle between the hotel and the airports."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18139",
+  "events": [
+   {
+    "event_id": 18139,
+    "artists": [
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Ary & Maura"
+     },
+     {
+      "name_as_written": "Fernando & Michela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Fernando & Michela"
+     },
+     {
+      "name_as_written": "Marcio Junqueira",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Marcio Junqueira"
+     },
+     {
+      "name_as_written": "Jadilson Santarosa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Jadilson Santarosa"
+     },
+     {
+      "name_as_written": "Alex Vunda & MaryJay",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Alex Vunda & MaryJay"
+     },
+     {
+      "name_as_written": "Pacavira & Celine",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Pacavira & Celine"
+     },
+     {
+      "name_as_written": "Alberto Celmo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Alberto Celmo"
+     },
+     {
+      "name_as_written": "Francis & Lucy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Francis & Lucy"
+     },
+     {
+      "name_as_written": "Melania Andrei",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Melania Andrei"
+     },
+     {
+      "name_as_written": "Sara Iacobacci",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Sara Iacobacci"
+     },
+     {
+      "name_as_written": "Alessandro & Tiziana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Alessandro & Tiziana"
+     },
+     {
+      "name_as_written": "Federica Lucarelli",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Federica Lucarelli"
+     },
+     {
+      "name_as_written": "Dj Bakongo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Dj Bakongo"
+     },
+     {
+      "name_as_written": "Dj LadyJay",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Dj LadyJay"
+     },
+     {
+      "name_as_written": "Dj Emess",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Dj Emess"
+     },
+     {
+      "name_as_written": "Dj Tiago Tuga",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Dj Tiago Tuga"
+     },
+     {
+      "name_as_written": "Dj Marc",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Dj Marc"
+     },
+     {
+      "name_as_written": "Dj Salvyne",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧨Dj Salvyne"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE LOCATION (Hotel + Classes + Parties)",
+      "rationale": "The description says the event is all in one location, covering hotel, classes and parties together."
+     },
+     {
+      "feature": "workshops",
+      "quote": "all workshops & socials",
+      "rationale": "The full pass and couple pass include all workshops, so dance classes are part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "€53 per night per person, half board (breakfast and dinner included)",
+      "rationale": "A negotiated hotel rate is offered for the venue hotel, separate from the pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Shuttle service from the hotel to Fiumicino and Ciampino airports",
+      "rationale": "The description offers a shuttle between the hotel and the airports."
+     }
+    ]
+   }
+  ]
+ }
 }

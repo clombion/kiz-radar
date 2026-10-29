@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ducu@dj",
+ "key_b": "p:ducu@ducu+jojo",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "479af47bdd29d175",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Ducu and Ducu & Jojo share the same events and dates (Cluj 2026-01-30, Budapest 2026-11-05), so the DJ and the dancer are one person."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nicole@dance",
+ "key_b": "p:nicole@nicole+wookie",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "94eeb87779f2001b",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Only the first name Nicole is shared; side A is a solo teacher with Bulgaria as the stated country and side B is a couple with Wookie, so the evidence does not settle identity."
+ }
+}

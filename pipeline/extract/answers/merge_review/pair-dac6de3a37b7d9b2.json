@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tony@carla+tony",
+ "key_b": "p:tonyviser",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "dac6de3a37b7d9b2",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Carla is the partner in both, the entries name Tony & Carla and Tony Viser & Carla Andrade, and the Angola and Cape Verde flags match."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anna@anna+carlos",
+ "key_b": "p:anna@anna+carloscamba",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "99649672a931e348",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Carlos & Anna and Carlos Camba & Anna share the same partner Anna and the same stated countries (Angola/Finland)."
+ }
+}

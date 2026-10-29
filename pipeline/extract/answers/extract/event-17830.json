@@ -1,44 +1,51 @@
 {
- "batch": "event-17830",
- "events": [
-  {
-   "event_id": 17830,
-   "artists": [
-    {
-     "name_as_written": "Jacinto Teca Events",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "✈️ A unique trip to beautiful Angola with accommodation and half board provided, organized by Jacinto Teca Events."
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "accommodation 14 nights",
-     "rationale": "The package list includes accommodation for 14 nights."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "half board (breakfast, one warm food -lunch or dinner plus non alcoholic drinks during meals)",
-     "rationale": "The package includes half board meals."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "airport pick-up",
-     "rationale": "Airport pick-up is included in the package."
-    },
-    {
-     "feature": "workshops",
-     "quote": "opportunity joining workshops in local dance schools",
-     "rationale": "Participants can join dance workshops at local dance schools as part of the trip."
-    },
-    {
-     "feature": "live_music",
-     "quote": "night parties, concerts and more",
-     "rationale": "Concerts are listed among the trip's activities."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17830",
+  "events": [
+   {
+    "event_id": 17830,
+    "artists": [
+     {
+      "name_as_written": "Jacinto Teca Events",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "✈️ A unique trip to beautiful Angola with accommodation and half board provided, organized by Jacinto Teca Events."
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "accommodation 14 nights",
+      "rationale": "The package list includes accommodation for 14 nights."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "half board (breakfast, one warm food -lunch or dinner plus non alcoholic drinks during meals)",
+      "rationale": "The package includes half board meals."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "airport pick-up",
+      "rationale": "Airport pick-up is included in the package."
+     },
+     {
+      "feature": "workshops",
+      "quote": "opportunity joining workshops in local dance schools",
+      "rationale": "Participants can join dance workshops at local dance schools as part of the trip."
+     },
+     {
+      "feature": "live_music",
+      "quote": "night parties, concerts and more",
+      "rationale": "Concerts are listed among the trip's activities."
+     }
+    ]
+   }
+  ]
+ }
 }

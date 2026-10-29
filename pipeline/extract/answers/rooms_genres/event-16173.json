@@ -1,31 +1,38 @@
 {
- "batch": "event-16173",
- "events": [
-  {
-   "event_id": 16173,
-   "party_rooms": {
-    "count": 5,
-    "quote": "5 Different Dancing rooms at Night"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Seminary About the Kizomba History"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16173",
+  "events": [
+   {
+    "event_id": 16173,
+    "party_rooms": {
+     "count": 5,
+     "quote": "5 Different Dancing rooms at Night"
     },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Rising Star Competition “Urbankiz”"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Rising Star Competition “Semba” – NEW"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Seminary About the Kizomba History"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Rising Star Competition “Urbankiz”"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Rising Star Competition “Semba” – NEW"
+     }
+    ]
+   }
+  ]
+ }
 }

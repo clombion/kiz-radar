@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anso@dance",
+ "key_b": "p:ansocubango",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "67c086a11ca83aee",
+ "answer": {
+  "decision": "merge",
+  "rationale": "An'So and An'So Cubango share the stage name and the same stated country (France), with the surname as the fuller form."
+ }
+}

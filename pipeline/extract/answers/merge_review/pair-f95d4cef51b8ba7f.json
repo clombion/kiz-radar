@@ -1,0 +1,13 @@
+{
+ "key_a": "p:danceproject",
+ "key_b": "p:danceprojet",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "f95d4cef51b8ba7f",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DANCE PROJECT and Dance projet are a spelling variant of the same distinctive name with the same Malaga city and Salsa style."
+ }
+}

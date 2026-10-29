@@ -1,0 +1,13 @@
+{
+ "key_a": "p:frida@frida+ronie",
+ "key_b": "p:fridaellinor",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d96fbfff8bf9d4e4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Frida is a single first name shared with side A's Frida in a couple with Ronie, and Sweden stated on both, which is weak for a common name."
+ }
+}

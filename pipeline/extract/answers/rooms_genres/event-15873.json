@@ -1,43 +1,50 @@
 {
- "batch": "event-15873",
- "events": [
-  {
-   "event_id": 15873,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "LA / NY salsa"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "– Bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "– Kizomba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cha-cha",
-     "quote": "Cha-cha"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cuban",
-     "quote": "– Cuban"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Traditional Greek, Bulgarian and Romanian Dances",
-     "quote": "Traditional Greek, Bulgarian and Romanian Dances"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15873",
+  "events": [
+   {
+    "event_id": 15873,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "salsa",
+      "quote": "LA / NY salsa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "– Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "– Kizomba"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cha-cha",
+      "quote": "Cha-cha"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cuban",
+      "quote": "– Cuban"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Traditional Greek, Bulgarian and Romanian Dances",
+      "quote": "Traditional Greek, Bulgarian and Romanian Dances"
+     }
+    ]
+   }
+  ]
+ }
 }

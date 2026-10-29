@@ -1,0 +1,13 @@
+{
+ "key_a": "p:isabelle@felicien+isabelle",
+ "key_b": "p:isabellecrepin",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "1f6f0d689edb5374",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Isabelle Crepin and Isabelle & Felicien share only the first name and a France flag, which does not settle whether they are one person."
+ }
+}

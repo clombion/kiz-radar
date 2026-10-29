@@ -1,170 +1,177 @@
 {
- "batch": "event-18728",
- "events": [
-  {
-   "event_id": 18728,
-   "artists": [
-    {
-     "name_as_written": "Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Ichigo 🇫🇷"
-    },
-    {
-     "name_as_written": "Sink",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "✔ Sink 🇨🇦"
-    },
-    {
-     "name_as_written": "Paraiso",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Paraiso 🇫🇷"
-    },
-    {
-     "name_as_written": "Nao",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "✔ Nao 🇧🇪"
-    },
-    {
-     "name_as_written": "JDN",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ JDN 🇫🇷"
-    },
-    {
-     "name_as_written": "Diablo",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Diablo 🇫🇷"
-    },
-    {
-     "name_as_written": "Mehdi",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "✔ Mehdi 🇧🇪"
-    },
-    {
-     "name_as_written": "Hugo Smile",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Hugo Smile 🇫🇷"
-    },
-    {
-     "name_as_written": "Clarita",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Clarita 🇫🇷"
-    },
-    {
-     "name_as_written": "Thales",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Thales 🇫🇷"
-    },
-    {
-     "name_as_written": "Aurea 🇪🇸 & Tresor 🇳🇱",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✔ Aurea 🇪🇸 & Tresor 🇳🇱"
-    },
-    {
-     "name_as_written": "Jojo & Jenny",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Jojo & Jenny 🇫🇷"
-    },
-    {
-     "name_as_written": "Dex & Law",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Dex & Law 🇫🇷"
-    },
-    {
-     "name_as_written": "Kristel Ju",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Kristel Ju 🇫🇷"
-    },
-    {
-     "name_as_written": "Ichigo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Ichigo 🇫🇷"
-    },
-    {
-     "name_as_written": "Oncle Kani",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Oncle Kani 🇫🇷"
-    },
-    {
-     "name_as_written": "LNACARLA",
-     "role": "media",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ LNACARLA 🇫🇷"
-    },
-    {
-     "name_as_written": "Benkos",
-     "role": "media",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ Benkos 🇫🇷"
-    },
-    {
-     "name_as_written": "Team Wakanda",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Contact us on our Facebook page Team Wakanda, instagram thewakandafestival or via email wakandafestival.organisers@gmail.com"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "For your comfort, we have chosen the luxurious 4-star hotel 𝗩𝗮𝗻 𝗱𝗲𝗿 𝗩𝗮𝗹𝗸 𝗛𝗼𝘁𝗲𝗹 𝗣𝗮𝗿𝗶𝘀 𝗖𝗗𝗚 𝗔𝗶𝗿𝗽𝗼𝗿𝘁 with more than 600 m2 of dance space.",
-     "rationale": "The main hotel hosts the dance space, so the parties take place where dancers are invited to stay."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Main hotel and pass:",
-     "rationale": "The pass is listed together with the main hotel, indicating accommodation is part of the package."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Second hotels, 2min walk:",
-     "rationale": "A list of recommended nearby hotels is given for dancers to stay in."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "The two rooms have air conditioning.",
-     "rationale": "The event has two dance rooms, Room 1 and Room 2."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social 4PM-8PM / party 23PM-7AM",
-     "rationale": "Daytime social sessions are scheduled before the evening parties."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:49:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18728",
+  "events": [
+   {
+    "event_id": 18728,
+    "artists": [
+     {
+      "name_as_written": "Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Ichigo 🇫🇷"
+     },
+     {
+      "name_as_written": "Sink",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "✔ Sink 🇨🇦"
+     },
+     {
+      "name_as_written": "Paraiso",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Paraiso 🇫🇷"
+     },
+     {
+      "name_as_written": "Nao",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "✔ Nao 🇧🇪"
+     },
+     {
+      "name_as_written": "JDN",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ JDN 🇫🇷"
+     },
+     {
+      "name_as_written": "Diablo",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Diablo 🇫🇷"
+     },
+     {
+      "name_as_written": "Mehdi",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "✔ Mehdi 🇧🇪"
+     },
+     {
+      "name_as_written": "Hugo Smile",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Hugo Smile 🇫🇷"
+     },
+     {
+      "name_as_written": "Clarita",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Clarita 🇫🇷"
+     },
+     {
+      "name_as_written": "Thales",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Thales 🇫🇷"
+     },
+     {
+      "name_as_written": "Aurea 🇪🇸 & Tresor 🇳🇱",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✔ Aurea 🇪🇸 & Tresor 🇳🇱"
+     },
+     {
+      "name_as_written": "Jojo & Jenny",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Jojo & Jenny 🇫🇷"
+     },
+     {
+      "name_as_written": "Dex & Law",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Dex & Law 🇫🇷"
+     },
+     {
+      "name_as_written": "Kristel Ju",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Kristel Ju 🇫🇷"
+     },
+     {
+      "name_as_written": "Ichigo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Ichigo 🇫🇷"
+     },
+     {
+      "name_as_written": "Oncle Kani",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Oncle Kani 🇫🇷"
+     },
+     {
+      "name_as_written": "LNACARLA",
+      "role": "media",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ LNACARLA 🇫🇷"
+     },
+     {
+      "name_as_written": "Benkos",
+      "role": "media",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ Benkos 🇫🇷"
+     },
+     {
+      "name_as_written": "Team Wakanda",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Contact us on our Facebook page Team Wakanda, instagram thewakandafestival or via email wakandafestival.organisers@gmail.com"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "For your comfort, we have chosen the luxurious 4-star hotel 𝗩𝗮𝗻 𝗱𝗲𝗿 𝗩𝗮𝗹𝗸 𝗛𝗼𝘁𝗲𝗹 𝗣𝗮𝗿𝗶𝘀 𝗖𝗗𝗚 𝗔𝗶𝗿𝗽𝗼𝗿𝘁 with more than 600 m2 of dance space.",
+      "rationale": "The main hotel hosts the dance space, so the parties take place where dancers are invited to stay."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Main hotel and pass:",
+      "rationale": "The pass is listed together with the main hotel, indicating accommodation is part of the package."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Second hotels, 2min walk:",
+      "rationale": "A list of recommended nearby hotels is given for dancers to stay in."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "The two rooms have air conditioning.",
+      "rationale": "The event has two dance rooms, Room 1 and Room 2."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Social 4PM-8PM / party 23PM-7AM",
+      "rationale": "Daytime social sessions are scheduled before the evening parties."
+     }
+    ]
+   }
+  ]
+ }
 }

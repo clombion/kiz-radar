@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jack@dj",
+ "key_b": "p:jack@jack+sara",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "7194220245b33c82",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Jack and Jack & Sara appear at the same Madrid, Lyon, Vienna, Barcelona and Sevilla events on the same dates with the same Spain flag."
+ }
+}

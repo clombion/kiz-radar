@@ -1,0 +1,13 @@
+{
+ "key_a": "p:gaz@dance",
+ "key_b": "p:gaz@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "69c53991306eaf40",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Gaz (Canada) on side A and DJ Gaz (Canada) on side B share the distinctive stage name and country, with the DJ prefix on one side only."
+ }
+}

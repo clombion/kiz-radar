@@ -1,59 +1,66 @@
 {
- "batch": "event-17407",
- "events": [
-  {
-   "event_id": 17407,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 ROOMS"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Kizomba room",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Kizomba room"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17407",
+  "events": [
+   {
+    "event_id": 17407,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 ROOMS"
     },
-    {
-     "name_as_written": "Room Zouk Konpa",
-     "kind": "party",
-     "genres": [
-      "zouk",
-      "kompa"
-     ],
-     "quote": "Room Zouk Konpa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "With a 100% Kizomba area"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "a Zouk and Konpa area"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "a Zouk and Konpa area"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Taraxxo",
-     "quote": "Taraxxo Workshop"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kizomba",
-     "quote": "Kizomba/Urban Kizomba Classes"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Kizomba room",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba room"
+     },
+     {
+      "name_as_written": "Room Zouk Konpa",
+      "kind": "party",
+      "genres": [
+       "zouk",
+       "kompa"
+      ],
+      "quote": "Room Zouk Konpa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "With a 100% Kizomba area"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "a Zouk and Konpa area"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "a Zouk and Konpa area"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Taraxxo",
+      "quote": "Taraxxo Workshop"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kizomba",
+      "quote": "Kizomba/Urban Kizomba Classes"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,64 +1,71 @@
 {
- "batch": "event-17790",
- "events": [
-  {
-   "event_id": 17790,
-   "artists": [
-    {
-     "name_as_written": "Pedro sp",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔆Pedro sp"
-    },
-    {
-     "name_as_written": "Tony & Carla",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔆Tony & Carla"
-    },
-    {
-     "name_as_written": "DJ Ash",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔆DJ Ash"
-    },
-    {
-     "name_as_written": "DJ Linduka",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔆DJ Linduka"
-    },
-    {
-     "name_as_written": "DJ Paparazzi",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔆DJ Paparazzi"
-    },
-    {
-     "name_as_written": "DJ Bakongo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔆DJ Bakongo"
-    }
-   ],
-   "features": [
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Intensive classes",
-     "rationale": "The description lists intensive classes as part of the event program."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Closest Hotels",
-     "rationale": "The description lists nearby recommended hotels with their websites, without including accommodation in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17790",
+  "events": [
+   {
+    "event_id": 17790,
+    "artists": [
+     {
+      "name_as_written": "Pedro sp",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔆Pedro sp"
+     },
+     {
+      "name_as_written": "Tony & Carla",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔆Tony & Carla"
+     },
+     {
+      "name_as_written": "DJ Ash",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔆DJ Ash"
+     },
+     {
+      "name_as_written": "DJ Linduka",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔆DJ Linduka"
+     },
+     {
+      "name_as_written": "DJ Paparazzi",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔆DJ Paparazzi"
+     },
+     {
+      "name_as_written": "DJ Bakongo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔆DJ Bakongo"
+     }
+    ],
+    "features": [
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Intensive classes",
+      "rationale": "The description lists intensive classes as part of the event program."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Closest Hotels",
+      "rationale": "The description lists nearby recommended hotels with their websites, without including accommodation in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

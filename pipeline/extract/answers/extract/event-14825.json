@@ -1,219 +1,226 @@
 {
- "batch": "event-14825",
- "events": [
-  {
-   "event_id": 14825,
-   "artists": [
-    {
-     "name_as_written": "Dj Sabura",
-     "role": "dj",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "Dj Sabura"
-    },
-    {
-     "name_as_written": "Dj Frank",
-     "role": "dj",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "Dj Frank"
-    },
-    {
-     "name_as_written": "Dj Fofinho",
-     "role": "dj",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "Dj Fofinho"
-    },
-    {
-     "name_as_written": "Dj Fouss",
-     "role": "dj",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "Dj Fouss"
-    },
-    {
-     "name_as_written": "Dj Manito",
-     "role": "dj",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "Dj Manito"
-    },
-    {
-     "name_as_written": "Dj Le Grand Tiwosh",
-     "role": "dj",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "Dj Le Grand Tiwosh"
-    },
-    {
-     "name_as_written": "Eddy Vents",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "Eddy Vents"
-    },
-    {
-     "name_as_written": "Carlos Camba & Anna",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "Carlos Camba & Anna"
-    },
-    {
-     "name_as_written": "Lukash & Karolina Vamula",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "Lukash & Karolina Vamula"
-    },
-    {
-     "name_as_written": "Dj Lenhy",
-     "role": "dj",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Dj Lenhy"
-    },
-    {
-     "name_as_written": "Dj Poema Beats",
-     "role": "dj",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Dj Poema Beats"
-    },
-    {
-     "name_as_written": "Dj Nima",
-     "role": "dj",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Dj Nima"
-    },
-    {
-     "name_as_written": "Dj Darxxide",
-     "role": "dj",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Dj Darxxide"
-    },
-    {
-     "name_as_written": "Dj Art",
-     "role": "dj",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Dj Art"
-    },
-    {
-     "name_as_written": "Jonathan Mahoto",
-     "role": "teacher",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Jonathan Mahoto"
-    },
-    {
-     "name_as_written": "Karl Bekene",
-     "role": "teacher",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Karl Bekene"
-    },
-    {
-     "name_as_written": "Val & Jossy",
-     "role": "teacher",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Val & Jossy"
-    },
-    {
-     "name_as_written": "Skate",
-     "role": "teacher",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Skate"
-    },
-    {
-     "name_as_written": "Tatjana & Juri",
-     "role": "teacher",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Tatjana & Juri"
-    },
-    {
-     "name_as_written": "Alex & Sirly",
-     "role": "teacher",
-     "style": "𝗨𝗥𝗕𝗔𝗡",
-     "country": null,
-     "source_line": "Alex & Sirly"
-    },
-    {
-     "name_as_written": "Dj Dimen5ions",
-     "role": "dj",
-     "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
-     "country": null,
-     "source_line": "Dj Dimen5ions"
-    },
-    {
-     "name_as_written": "Brice & Manue",
-     "role": "teacher",
-     "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
-     "country": null,
-     "source_line": "Brice & Manue"
-    },
-    {
-     "name_as_written": "Gadir & Kate",
-     "role": "teacher",
-     "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
-     "country": null,
-     "source_line": "Gadir & Kate"
-    },
-    {
-     "name_as_written": "Esme & Nora",
-     "role": "teacher",
-     "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
-     "country": null,
-     "source_line": "Esme & Nora"
-    },
-    {
-     "name_as_written": "Danielle De Jong",
-     "role": "teacher",
-     "style": "𝗙𝗘𝗠𝗜𝗡𝗜𝗧𝗬 𝗙𝗟𝗢𝗪 𝗕𝗢𝗢𝗧𝗖𝗔𝗠𝗣",
-     "country": null,
-     "source_line": "Danielle De Jong"
-    },
-    {
-     "name_as_written": "Nora Bre",
-     "role": "teacher",
-     "style": "𝗙𝗘𝗠𝗜𝗡𝗜𝗧𝗬 𝗙𝗟𝗢𝗪 𝗕𝗢𝗢𝗧𝗖𝗔𝗠𝗣",
-     "country": null,
-     "source_line": "Nora Bre"
-    }
-   ],
-   "features": [
-    {
-     "feature": "day_socials",
-     "quote": "DAY SOCIALS",
-     "rationale": "The description lists day socials as part of the event programme."
-    },
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS",
-     "rationale": "The description lists workshops as part of the event programme."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "BOOTCAMP",
-     "rationale": "The description lists a bootcamp as part of the event programme."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "MASTERCLASSES",
-     "rationale": "The description lists masterclasses as part of the event programme."
-    },
-    {
-     "feature": "private_classes",
-     "quote": "PRIVATE CLASSES",
-     "rationale": "The description lists private classes as part of the event programme."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14825",
+  "events": [
+   {
+    "event_id": 14825,
+    "artists": [
+     {
+      "name_as_written": "Dj Sabura",
+      "role": "dj",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "Dj Sabura"
+     },
+     {
+      "name_as_written": "Dj Frank",
+      "role": "dj",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "Dj Frank"
+     },
+     {
+      "name_as_written": "Dj Fofinho",
+      "role": "dj",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "Dj Fofinho"
+     },
+     {
+      "name_as_written": "Dj Fouss",
+      "role": "dj",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "Dj Fouss"
+     },
+     {
+      "name_as_written": "Dj Manito",
+      "role": "dj",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "Dj Manito"
+     },
+     {
+      "name_as_written": "Dj Le Grand Tiwosh",
+      "role": "dj",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "Dj Le Grand Tiwosh"
+     },
+     {
+      "name_as_written": "Eddy Vents",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "Eddy Vents"
+     },
+     {
+      "name_as_written": "Carlos Camba & Anna",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "Carlos Camba & Anna"
+     },
+     {
+      "name_as_written": "Lukash & Karolina Vamula",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "Lukash & Karolina Vamula"
+     },
+     {
+      "name_as_written": "Dj Lenhy",
+      "role": "dj",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Dj Lenhy"
+     },
+     {
+      "name_as_written": "Dj Poema Beats",
+      "role": "dj",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Dj Poema Beats"
+     },
+     {
+      "name_as_written": "Dj Nima",
+      "role": "dj",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Dj Nima"
+     },
+     {
+      "name_as_written": "Dj Darxxide",
+      "role": "dj",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Dj Darxxide"
+     },
+     {
+      "name_as_written": "Dj Art",
+      "role": "dj",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Dj Art"
+     },
+     {
+      "name_as_written": "Jonathan Mahoto",
+      "role": "teacher",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Jonathan Mahoto"
+     },
+     {
+      "name_as_written": "Karl Bekene",
+      "role": "teacher",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Karl Bekene"
+     },
+     {
+      "name_as_written": "Val & Jossy",
+      "role": "teacher",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Val & Jossy"
+     },
+     {
+      "name_as_written": "Skate",
+      "role": "teacher",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Skate"
+     },
+     {
+      "name_as_written": "Tatjana & Juri",
+      "role": "teacher",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Tatjana & Juri"
+     },
+     {
+      "name_as_written": "Alex & Sirly",
+      "role": "teacher",
+      "style": "𝗨𝗥𝗕𝗔𝗡",
+      "country": null,
+      "source_line": "Alex & Sirly"
+     },
+     {
+      "name_as_written": "Dj Dimen5ions",
+      "role": "dj",
+      "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+      "country": null,
+      "source_line": "Dj Dimen5ions"
+     },
+     {
+      "name_as_written": "Brice & Manue",
+      "role": "teacher",
+      "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+      "country": null,
+      "source_line": "Brice & Manue"
+     },
+     {
+      "name_as_written": "Gadir & Kate",
+      "role": "teacher",
+      "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+      "country": null,
+      "source_line": "Gadir & Kate"
+     },
+     {
+      "name_as_written": "Esme & Nora",
+      "role": "teacher",
+      "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+      "country": null,
+      "source_line": "Esme & Nora"
+     },
+     {
+      "name_as_written": "Danielle De Jong",
+      "role": "teacher",
+      "style": "𝗙𝗘𝗠𝗜𝗡𝗜𝗧𝗬 𝗙𝗟𝗢𝗪 𝗕𝗢𝗢𝗧𝗖𝗔𝗠𝗣",
+      "country": null,
+      "source_line": "Danielle De Jong"
+     },
+     {
+      "name_as_written": "Nora Bre",
+      "role": "teacher",
+      "style": "𝗙𝗘𝗠𝗜𝗡𝗜𝗧𝗬 𝗙𝗟𝗢𝗪 𝗕𝗢𝗢𝗧𝗖𝗔𝗠𝗣",
+      "country": null,
+      "source_line": "Nora Bre"
+     }
+    ],
+    "features": [
+     {
+      "feature": "day_socials",
+      "quote": "DAY SOCIALS",
+      "rationale": "The description lists day socials as part of the event programme."
+     },
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS",
+      "rationale": "The description lists workshops as part of the event programme."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "BOOTCAMP",
+      "rationale": "The description lists a bootcamp as part of the event programme."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "MASTERCLASSES",
+      "rationale": "The description lists masterclasses as part of the event programme."
+     },
+     {
+      "feature": "private_classes",
+      "quote": "PRIVATE CLASSES",
+      "rationale": "The description lists private classes as part of the event programme."
+     }
+    ]
+   }
+  ]
+ }
 }

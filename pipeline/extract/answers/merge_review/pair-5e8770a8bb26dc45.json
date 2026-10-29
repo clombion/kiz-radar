@@ -1,0 +1,13 @@
+{
+ "key_a": "p:styleofmusc",
+ "key_b": "p:styleofmusic",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "5e8770a8bb26dc45",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ STYLE OF MUSC is a typo of the distinctive DJ name Style of Music, and both sides are DJs in Switzerland (Geneva and Constance)."
+ }
+}

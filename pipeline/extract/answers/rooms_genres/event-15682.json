@@ -1,38 +1,45 @@
 {
- "batch": "event-15682",
- "events": [
-  {
-   "event_id": 15682,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Samba",
-     "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15682",
+  "events": [
+   {
+    "event_id": 15682,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Samba",
+      "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
+     }
+    ]
+   }
+  ]
+ }
 }

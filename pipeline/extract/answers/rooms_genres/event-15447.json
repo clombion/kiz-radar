@@ -1,48 +1,55 @@
 {
- "batch": "event-15447",
- "events": [
-  {
-   "event_id": 15447,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 2",
-     "kind": "class",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Kizomba Workshop (Room 2)"
-    },
-    {
-     "name_as_written": "Room 3",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Dance Social (Room 3)"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba Asangi presents for the second time,"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Do you enjoy authentic Kizomba, Semba, and Bavarian dances?"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro dance",
-     "quote": "Afro dance instructors"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Bavarian dances",
-     "quote": "Do you enjoy authentic Kizomba, Semba, and Bavarian dances?"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15447",
+  "events": [
+   {
+    "event_id": 15447,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 2",
+      "kind": "class",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba Workshop (Room 2)"
+     },
+     {
+      "name_as_written": "Room 3",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Dance Social (Room 3)"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba Asangi presents for the second time,"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Do you enjoy authentic Kizomba, Semba, and Bavarian dances?"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro dance",
+      "quote": "Afro dance instructors"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Bavarian dances",
+      "quote": "Do you enjoy authentic Kizomba, Semba, and Bavarian dances?"
+     }
+    ]
+   }
+  ]
+ }
 }

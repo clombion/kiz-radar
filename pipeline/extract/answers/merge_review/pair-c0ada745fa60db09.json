@@ -1,0 +1,13 @@
+{
+ "key_a": "p:telma@adilson+telma",
+ "key_b": "p:telma@adilsonmaiza+telma",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c0ada745fa60db09",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Telma is always paired with Adilson, the Warsaw entry names him Adilson Maíza, and the Angola flag matches the other entries."
+ }
+}

@@ -1,289 +1,296 @@
 {
- "batch": "event-16723",
- "events": [
-  {
-   "event_id": 16723,
-   "artists": [
-    {
-     "name_as_written": "Dasmara & Lolanda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dasmara & Lolanda"
-    },
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Ary & Maura"
-    },
-    {
-     "name_as_written": "Carlos Camba & Anna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Carlos Camba & Anna"
-    },
-    {
-     "name_as_written": "Mr. Tecas & Tasha",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Mr. Tecas & Tasha"
-    },
-    {
-     "name_as_written": "Dwé & Gaby",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dwé & Gaby"
-    },
-    {
-     "name_as_written": "Aurea & Tresor",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Aurea & Tresor"
-    },
-    {
-     "name_as_written": "Isabelle & Felicien",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Isabelle & Felicien"
-    },
-    {
-     "name_as_written": "Rabbil & Allana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Rabbil & Allana"
-    },
-    {
-     "name_as_written": "Vasco",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Vasco"
-    },
-    {
-     "name_as_written": "Volkan & Xenia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Volkan & Xenia"
-    },
-    {
-     "name_as_written": "Richard Voogt & Kyla",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Richard Voogt & Kyla"
-    },
-    {
-     "name_as_written": "Rico & Manon",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Rico & Manon"
-    },
-    {
-     "name_as_written": "JayJay & Natalia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 JayJay & Natalia"
-    },
-    {
-     "name_as_written": "El Ceprino",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 El Ceprino"
-    },
-    {
-     "name_as_written": "Juma & Luigia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Juma & Luigia"
-    },
-    {
-     "name_as_written": "Demjan",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Demjan"
-    },
-    {
-     "name_as_written": "Petite Madame",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Petite Madame"
-    },
-    {
-     "name_as_written": "Tracey",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Tracey"
-    },
-    {
-     "name_as_written": "Dj Miro Kikola",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Miro Kikola"
-    },
-    {
-     "name_as_written": "Dj Gatito",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Gatito"
-    },
-    {
-     "name_as_written": "Dj G-Sousa",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj G-Sousa"
-    },
-    {
-     "name_as_written": "Dj Nao",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Nao"
-    },
-    {
-     "name_as_written": "Dj Stefanio Lima",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Stefanio Lima"
-    },
-    {
-     "name_as_written": "Dj Saisai",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Saisai"
-    },
-    {
-     "name_as_written": "Dj Lucas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Lucas"
-    },
-    {
-     "name_as_written": "Dj Savvy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Savvy"
-    },
-    {
-     "name_as_written": "Mr. Tecas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Mr. Tecas"
-    },
-    {
-     "name_as_written": "Dj Vasco",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Vasco"
-    },
-    {
-     "name_as_written": "Dj Dico",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Dico"
-    },
-    {
-     "name_as_written": "Dj Djeemix",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Djeemix"
-    },
-    {
-     "name_as_written": "Dj Pux",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Pux"
-    },
-    {
-     "name_as_written": "Dj Rabbil",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Rabbil"
-    },
-    {
-     "name_as_written": "Dj Rivas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Rivas"
-    },
-    {
-     "name_as_written": "Dj Jody San",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Jody San"
-    },
-    {
-     "name_as_written": "Dj Afterparty",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Afterparty"
-    },
-    {
-     "name_as_written": "Dj Femi",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Dj Femi"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
-     "rationale": "The parties are held in the Radisson Blu Hotel, which is the venue where dancers can stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "our 4 distinct party rooms",
-     "rationale": "The event has four separate party rooms, each with its own rhythm."
-    },
-    {
-     "feature": "workshops",
-     "quote": "engaging workshops",
-     "rationale": "Workshops are advertised as part of the festival."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "lively afternoon parties",
-     "rationale": "Afternoon parties and socials are part of the daytime program."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "book your festival ticket, and hotel room at special discounted festival rates",
-     "rationale": "A negotiated discounted hotel rate is offered separately from the festival pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16723",
+  "events": [
+   {
+    "event_id": 16723,
+    "artists": [
+     {
+      "name_as_written": "Dasmara & Lolanda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dasmara & Lolanda"
+     },
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Ary & Maura"
+     },
+     {
+      "name_as_written": "Carlos Camba & Anna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Carlos Camba & Anna"
+     },
+     {
+      "name_as_written": "Mr. Tecas & Tasha",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Mr. Tecas & Tasha"
+     },
+     {
+      "name_as_written": "Dwé & Gaby",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dwé & Gaby"
+     },
+     {
+      "name_as_written": "Aurea & Tresor",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Aurea & Tresor"
+     },
+     {
+      "name_as_written": "Isabelle & Felicien",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Isabelle & Felicien"
+     },
+     {
+      "name_as_written": "Rabbil & Allana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Rabbil & Allana"
+     },
+     {
+      "name_as_written": "Vasco",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Vasco"
+     },
+     {
+      "name_as_written": "Volkan & Xenia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Volkan & Xenia"
+     },
+     {
+      "name_as_written": "Richard Voogt & Kyla",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Richard Voogt & Kyla"
+     },
+     {
+      "name_as_written": "Rico & Manon",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Rico & Manon"
+     },
+     {
+      "name_as_written": "JayJay & Natalia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 JayJay & Natalia"
+     },
+     {
+      "name_as_written": "El Ceprino",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 El Ceprino"
+     },
+     {
+      "name_as_written": "Juma & Luigia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Juma & Luigia"
+     },
+     {
+      "name_as_written": "Demjan",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Demjan"
+     },
+     {
+      "name_as_written": "Petite Madame",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Petite Madame"
+     },
+     {
+      "name_as_written": "Tracey",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Tracey"
+     },
+     {
+      "name_as_written": "Dj Miro Kikola",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Miro Kikola"
+     },
+     {
+      "name_as_written": "Dj Gatito",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Gatito"
+     },
+     {
+      "name_as_written": "Dj G-Sousa",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj G-Sousa"
+     },
+     {
+      "name_as_written": "Dj Nao",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Nao"
+     },
+     {
+      "name_as_written": "Dj Stefanio Lima",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Stefanio Lima"
+     },
+     {
+      "name_as_written": "Dj Saisai",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Saisai"
+     },
+     {
+      "name_as_written": "Dj Lucas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Lucas"
+     },
+     {
+      "name_as_written": "Dj Savvy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Savvy"
+     },
+     {
+      "name_as_written": "Mr. Tecas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Mr. Tecas"
+     },
+     {
+      "name_as_written": "Dj Vasco",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Vasco"
+     },
+     {
+      "name_as_written": "Dj Dico",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Dico"
+     },
+     {
+      "name_as_written": "Dj Djeemix",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Djeemix"
+     },
+     {
+      "name_as_written": "Dj Pux",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Pux"
+     },
+     {
+      "name_as_written": "Dj Rabbil",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Rabbil"
+     },
+     {
+      "name_as_written": "Dj Rivas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Rivas"
+     },
+     {
+      "name_as_written": "Dj Jody San",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Jody San"
+     },
+     {
+      "name_as_written": "Dj Afterparty",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Afterparty"
+     },
+     {
+      "name_as_written": "Dj Femi",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💥 Dj Femi"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
+      "rationale": "The parties are held in the Radisson Blu Hotel, which is the venue where dancers can stay."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "our 4 distinct party rooms",
+      "rationale": "The event has four separate party rooms, each with its own rhythm."
+     },
+     {
+      "feature": "workshops",
+      "quote": "engaging workshops",
+      "rationale": "Workshops are advertised as part of the festival."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "lively afternoon parties",
+      "rationale": "Afternoon parties and socials are part of the daytime program."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "book your festival ticket, and hotel room at special discounted festival rates",
+      "rationale": "A negotiated discounted hotel rate is offered separately from the festival pass."
+     }
+    ]
+   }
+  ]
+ }
 }

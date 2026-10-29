@@ -1,113 +1,120 @@
 {
- "batch": "event-15790",
- "events": [
-  {
-   "event_id": 15790,
-   "artists": [
-    {
-     "name_as_written": "JP & STEPHY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 JP & STEPHY"
-    },
-    {
-     "name_as_written": "JUSTHINO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 JUSTHINO"
-    },
-    {
-     "name_as_written": "FRANKY & KERSTIN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 FRANKY & KERSTIN"
-    },
-    {
-     "name_as_written": "INSEN & SARA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 FUNOMEN : INSEN & SARA"
-    },
-    {
-     "name_as_written": "DAMIR",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 DAMIR"
-    },
-    {
-     "name_as_written": "NICOLE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 NICOLE ( Yoga Teacher )"
-    },
-    {
-     "name_as_written": "STEF KIZZ & SONIA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 STEF KIZZ & SONIA"
-    },
-    {
-     "name_as_written": "DJ PARAISO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 DJ PARAISO"
-    },
-    {
-     "name_as_written": "DJ STEFANIO LIMA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 DJ STEFANIO LIMA"
-    },
-    {
-     "name_as_written": "DJ MOUS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 DJ MOUS"
-    },
-    {
-     "name_as_written": "DJ IRON MAMS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 DJ IRON MAMS"
-    },
-    {
-     "name_as_written": "DJ HARRYZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟠 DJ HARRYZ"
-    },
-    {
-     "name_as_written": "Funomen",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🟢 Funomen ( Paris )"
-    }
-   ],
-   "features": [
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXI TEAMS",
-     "rationale": "The description has a taxi teams section listing taxi-dancer teams."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Mercure Bâle Mulhouse Aéroport",
-     "rationale": "The description lists recommended hotels with booking links and distance to the venue, without saying they are part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15790",
+  "events": [
+   {
+    "event_id": 15790,
+    "artists": [
+     {
+      "name_as_written": "JP & STEPHY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 JP & STEPHY"
+     },
+     {
+      "name_as_written": "JUSTHINO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 JUSTHINO"
+     },
+     {
+      "name_as_written": "FRANKY & KERSTIN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 FRANKY & KERSTIN"
+     },
+     {
+      "name_as_written": "INSEN & SARA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 FUNOMEN : INSEN & SARA"
+     },
+     {
+      "name_as_written": "DAMIR",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 DAMIR"
+     },
+     {
+      "name_as_written": "NICOLE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 NICOLE ( Yoga Teacher )"
+     },
+     {
+      "name_as_written": "STEF KIZZ & SONIA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 STEF KIZZ & SONIA"
+     },
+     {
+      "name_as_written": "DJ PARAISO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 DJ PARAISO"
+     },
+     {
+      "name_as_written": "DJ STEFANIO LIMA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 DJ STEFANIO LIMA"
+     },
+     {
+      "name_as_written": "DJ MOUS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 DJ MOUS"
+     },
+     {
+      "name_as_written": "DJ IRON MAMS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 DJ IRON MAMS"
+     },
+     {
+      "name_as_written": "DJ HARRYZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟠 DJ HARRYZ"
+     },
+     {
+      "name_as_written": "Funomen",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🟢 Funomen ( Paris )"
+     }
+    ],
+    "features": [
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXI TEAMS",
+      "rationale": "The description has a taxi teams section listing taxi-dancer teams."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Mercure Bâle Mulhouse Aéroport",
+      "rationale": "The description lists recommended hotels with booking links and distance to the venue, without saying they are part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

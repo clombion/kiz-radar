@@ -1,93 +1,100 @@
 {
- "batch": "event-18900",
- "events": [
-  {
-   "event_id": 18900,
-   "artists": [
-    {
-     "name_as_written": "DIKANZA DO SEMBA",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "DIKANZA DO SEMBA is pleased to present the very first edition of its Weekender International, which will take place on April 3 and 4, 2027 in Saint-Germain-en-Laye, in the Yvelines (France)"
-    },
-    {
-     "name_as_written": "Jó & Sara",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🕐 1:00 PM – 2:00 PM | Kizomba | Jó & Sara"
-    },
-    {
-     "name_as_written": "Mário & Carla",
-     "role": "teacher",
-     "style": "Semba",
-     "country": null,
-     "source_line": "🕑 2:00 PM – 3:00 PM | Semba | Mário & Carla"
-    },
-    {
-     "name_as_written": "M-Xtrela",
-     "role": "teacher",
-     "style": "Semba",
-     "country": null,
-     "source_line": "🕒 3:00 PM – 4:00 PM | Semba | M-Xtrela"
-    },
-    {
-     "name_as_written": "Bonifácio Aurio",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🕓 4:00 PM – 5:00 PM | Kizomba | Bonifácio Aurio"
-    },
-    {
-     "name_as_written": "DJ Lemzo & DJ Kapitula",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🕔 5:00 PM – 8:00 PM | DJ Lemzo & DJ Kapitula"
-    },
-    {
-     "name_as_written": "Eliza Sala",
-     "role": "teacher",
-     "style": "Ginga",
-     "country": null,
-     "source_line": "🕛 12:00 pm – 2:00 pm | Ginga | Eliza Sala"
-    },
-    {
-     "name_as_written": "Frans & Sarah",
-     "role": "teacher",
-     "style": "Semba Intermédiaire",
-     "country": null,
-     "source_line": "🕑 2:00 PM – 3:00 PM | Semba Intermédiaire | Frans & Sarah"
-    }
-   ],
-   "features": [
-    {
-     "feature": "masterclass",
-     "quote": "Masterclass",
-     "rationale": "The event lists a masterclass session on Sunday with Eliza Sala."
-    },
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS",
-     "rationale": "A WORKSHOPS section lists dance classes on both days."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "5:00 PM – 8:00 PM | DJ Lemzo & DJ Kapitula",
-     "rationale": "A daytime social runs from 5 PM to 8 PM on Saturday with DJs."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress Code: Elegant in Red & Black",
-     "rationale": "A dress code is explicitly stated for Saturday evening."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotels Nearby",
-     "rationale": "The description recommends several nearby hotels without including accommodation in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18900",
+  "events": [
+   {
+    "event_id": 18900,
+    "artists": [
+     {
+      "name_as_written": "DIKANZA DO SEMBA",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "DIKANZA DO SEMBA is pleased to present the very first edition of its Weekender International, which will take place on April 3 and 4, 2027 in Saint-Germain-en-Laye, in the Yvelines (France)"
+     },
+     {
+      "name_as_written": "Jó & Sara",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🕐 1:00 PM – 2:00 PM | Kizomba | Jó & Sara"
+     },
+     {
+      "name_as_written": "Mário & Carla",
+      "role": "teacher",
+      "style": "Semba",
+      "country": null,
+      "source_line": "🕑 2:00 PM – 3:00 PM | Semba | Mário & Carla"
+     },
+     {
+      "name_as_written": "M-Xtrela",
+      "role": "teacher",
+      "style": "Semba",
+      "country": null,
+      "source_line": "🕒 3:00 PM – 4:00 PM | Semba | M-Xtrela"
+     },
+     {
+      "name_as_written": "Bonifácio Aurio",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🕓 4:00 PM – 5:00 PM | Kizomba | Bonifácio Aurio"
+     },
+     {
+      "name_as_written": "DJ Lemzo & DJ Kapitula",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🕔 5:00 PM – 8:00 PM | DJ Lemzo & DJ Kapitula"
+     },
+     {
+      "name_as_written": "Eliza Sala",
+      "role": "teacher",
+      "style": "Ginga",
+      "country": null,
+      "source_line": "🕛 12:00 pm – 2:00 pm | Ginga | Eliza Sala"
+     },
+     {
+      "name_as_written": "Frans & Sarah",
+      "role": "teacher",
+      "style": "Semba Intermédiaire",
+      "country": null,
+      "source_line": "🕑 2:00 PM – 3:00 PM | Semba Intermédiaire | Frans & Sarah"
+     }
+    ],
+    "features": [
+     {
+      "feature": "masterclass",
+      "quote": "Masterclass",
+      "rationale": "The event lists a masterclass session on Sunday with Eliza Sala."
+     },
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS",
+      "rationale": "A WORKSHOPS section lists dance classes on both days."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "5:00 PM – 8:00 PM | DJ Lemzo & DJ Kapitula",
+      "rationale": "A daytime social runs from 5 PM to 8 PM on Saturday with DJs."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress Code: Elegant in Red & Black",
+      "rationale": "A dress code is explicitly stated for Saturday evening."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotels Nearby",
+      "rationale": "The description recommends several nearby hotels without including accommodation in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

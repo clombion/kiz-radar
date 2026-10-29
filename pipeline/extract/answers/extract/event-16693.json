@@ -1,39 +1,46 @@
 {
- "batch": "event-16693",
- "events": [
-  {
-   "event_id": 16693,
-   "artists": [
-    {
-     "name_as_written": "TNT- The New Touch",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "▷ Facebook Page: TNT- The New Touch"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "everything is in one place",
-     "rationale": "The package says everything is in one place, alongside on-site accommodation and socials and parties, so the event and accommodation share a venue."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "On-site accommodation",
-     "rationale": "On-site accommodation is listed as part of the All Inclusive Package."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Half-board included",
-     "rationale": "The package lists half-board as included."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Kizomba & Afro workshops with professional couples",
-     "rationale": "Dance workshops are listed as part of the event package."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16693",
+  "events": [
+   {
+    "event_id": 16693,
+    "artists": [
+     {
+      "name_as_written": "TNT- The New Touch",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "▷ Facebook Page: TNT- The New Touch"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "everything is in one place",
+      "rationale": "The package says everything is in one place, alongside on-site accommodation and socials and parties, so the event and accommodation share a venue."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "On-site accommodation",
+      "rationale": "On-site accommodation is listed as part of the All Inclusive Package."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Half-board included",
+      "rationale": "The package lists half-board as included."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Kizomba & Afro workshops with professional couples",
+      "rationale": "Dance workshops are listed as part of the event package."
+     }
+    ]
+   }
+  ]
+ }
 }

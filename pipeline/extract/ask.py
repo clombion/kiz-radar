@@ -5,51 +5,59 @@
     mise run ask -- --limit 3   # ask about three festivals only
     mise run ask -- --only 16909,18806   # these festivals only
 
-A festival needs a pass when its answer is due (enums.AnswerState): the pass has no answer for it yet, its answer was
-asked with another prompt than the pass's current one (pipeline/prompt.py, known by its hash), or it was asked before
-the day the festival's description last changed (pending_extraction's since). Each question is one festival and one
-pass, with the pass's prompt and its record's schema as the required answer format. check_output.checked() (and
+A festival needs a pass when its answer is due (answers.state): the pass has no answer for it yet, or its answer
+answered another prompt than the pass's current one (pipeline/prompt.py, known by its hash) or another message than
+the one the festival would be asked with today (questions.py): its description, title, dates or country changed, or,
+for the prices pass, the styles its genres give. The extraction and rooms-genres passes are asked first, then the
+prices pass, with the styles the rooms-genres answers now give (WAVES). Each question is one festival and one pass,
+with the pass's prompt and its record's schema as the required answer format. check_output.checked() (and
 prices.problems() for prices) checks the answer; on a failure Claude gets the checker's lines and answers once more. A
-checked answer is saved as answers/<pass>/event-<id>.json, its prompt archived. A festival leaves pending_extraction
-once every pass has an answer that is current, from this run or an earlier one, so a run of some passes leaves it there
-and the next asks only the rest.
+checked answer is saved as answers/<pass>/event-<id>.json with where it comes from, its prompt archived.
 
 A question that gets no answer (pipeline/calls.py: a second checker failure, a reply cut short, a failed call) leaves
-the festival pending, and the run fails naming each such question. A call that can never succeed as made (structural,
+its answer due, and the run fails naming each such question. A call that can never succeed as made (structural,
 a bad key say) or the month's budget for Claude spent (pipeline/spend.py) stops the run's requests: the questions left
 wait for the next run. Needs ANTHROPIC_API_KEY.
 """
 
 import argparse
-import datetime as dt
-import json
 import sys
 import threading
-from collections.abc import Callable, Mapping, Sequence
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Protocol, assert_never
+from typing import Protocol, assert_never
 
 import anthropic
 import httpx2
 from anthropic.types import Message, MessageParam, OutputConfigParam, TextBlock, Usage
+from pydantic import ValidationError
 
-from pipeline import calls, export, spend
+from pipeline import calls, export, records, spend
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.calls import Declined
 from pipeline.enums import AnswerState, CallCause, Model, Style
-from pipeline.extract import answers, check_output, prices
+from pipeline.extract import answers, check_output, merge_review, prices, questions
 from pipeline.prompt import Pass, Prompt
-from pipeline.records import Asked, AskedPrices, Batch, Date, Entry, On, Priced, Record
-
-if TYPE_CHECKING:
-    from pathlib import Path
+from pipeline.records import (
+    Asked,
+    AskedPrices,
+    Batch,
+    Entry,
+    MergeAnswer,
+    MergeQuestion,
+    Priced,
+    Record,
+    RoomsGenres,
+    errors,
+)
 
 MODEL = Model.CLAUDE_HAIKU_5_5
 WORKERS = 8
 BY = 'pipeline/extract/ask.py (Messages API), one festival'
+BY_PAIR = 'pipeline/extract/ask.py (Messages API), one pair'
 
 
 TOO_MANY, SERVER_ERROR = 429, 500
@@ -114,47 +122,6 @@ class Client(Protocol):
 
     @property
     def messages(self) -> Streams: ...
-
-
-class Festival(Record):
-    """A festival with a description, as the source database has it."""
-
-    id: int
-    title: str
-    description_text: str
-    start_date: On
-    end_date: On
-    country: str | None
-
-
-class Pending(Record):
-    """A festival pending_extraction holds: the day its description last changed."""
-
-    event_id: int
-    since: Date
-
-
-def asked(pass_: Pass[Entry, Asked], f: Festival, styles: Sequence[Style] = ()) -> Asked:
-    """The festival as the pass asks about it; styles are the festival's (prices.styles), for the prices pass."""
-    if pass_.asked is AskedPrices:
-        return AskedPrices(
-            event_id=f.id,
-            title=f.title,
-            description=f.description_text,
-            start_date=f.start_date,
-            end_date=f.end_date,
-            country=f.country,
-            styles=tuple(styles),
-        )
-    return Asked(event_id=f.id, title=f.title, description=f.description_text)
-
-
-def question(pass_: Pass[Entry, Asked], f: Festival, styles: Sequence[Style] = ()) -> tuple[str, Asked]:
-    """(the message asking one festival's pass, the festival as asked)."""
-    event, batch = asked(pass_, f, styles), f'event-{f.id}'
-    events: list[dict[str, object]] = [event.model_dump(mode='json')]  # as its own record, whichever it is
-    text = json.dumps({'batch': batch, 'events': events}, ensure_ascii=False, indent=1)
-    return f'Batch input ({batch}.json):\n{text}', event
 
 
 @dataclass(frozen=True)
@@ -239,109 +206,153 @@ def own_problems[E: Entry](answer: Batch[E], styles: Sequence[Style]) -> list[st
     return [p for ev in answer.events if isinstance(ev, Priced) for p in prices.problems(ev, styles)]
 
 
-def ask[E: Entry, Q: Asked](
-    client: Client, pass_: Pass[E, Q], f: Festival, styles: Sequence[Style] = ()
-) -> Batch[E] | Declined:
-    """A checked answer for one festival and pass, or why there is none; styles are the festival's (prices.styles),
-    for the prices pass."""
-    content, event = question(pass_, f, styles)
-    texts = {event.event_id: check_output.source_text(event)}
+@dataclass(frozen=True)
+class Job:
+    """A question to ask: a festival, a pass, the festival as the pass asks about it, and the digest of the message
+    asking it (questions.Now.inputs)."""
 
-    def check(text: str) -> Batch[E] | list[str]:
-        match check_output.checked(prompts.answer(pass_), text, texts):
+    pass_: Pass[Entry, Asked]
+    asked: Asked
+    question: Record
+    inputs: str
+
+
+def job(now: questions.Now, pass_: Pass[Entry, Asked], event_id: int, rooms: RoomsGenres | None = None) -> Job:
+    question = now.question(pass_, event_id, rooms)
+    message = prompts.current(pass_.name).message(question)
+    return Job(pass_, now.asked(pass_, event_id, rooms), question, records.digest(message))
+
+
+def ask(client: Client, j: Job) -> Batch[Entry] | Declined:
+    """A checked answer for one festival and pass, or why there is none."""
+    styles = j.asked.styles if isinstance(j.asked, AskedPrices) else ()
+    texts = {j.asked.event_id: check_output.source_text(j.asked)}
+    prompt = prompts.current(j.pass_.name)
+
+    def check(text: str) -> Batch[Entry] | list[str]:
+        match check_output.checked(prompts.answer(j.pass_), text, texts):
             case list() as found:
                 return found
             case answer:
                 return own_problems(answer, styles) or answer
 
-    request = Request(MODEL, prompts.current(pass_.name), content, f'{f.id} {pass_.name}', pass_.name)
+    request = Request(MODEL, prompt, prompt.message(j.question), f'{j.asked.event_id} {j.pass_.name}', j.pass_.name)
     return structured(client, request, check)
 
 
-type Job = tuple[Festival, Pass[Entry, Asked]]
-
-
 def due(
-    db: sqlite_db.Reader, only: Sequence[prompts.PassName] | None, ids: set[int] | None = None
-) -> tuple[list[Job], dict[int, dt.date]]:
-    """((festival, pass) pairs to ask: each pass whose answer for a festival is none or stale (answer_state), of the
-    festivals ids names when it names some; the festivals pending_extraction holds, with the day their description
-    last changed)."""
-    query = 'select id, title, description_text, start_date, end_date, country from events'
-    rows = {f.id: f for f in db.rows(Festival, query + ' where description_text is not null order by id')}
-    if ids:
-        if missing := ids - set(rows):
-            sys.exit(f'no festival with a description: {sorted(missing)}')
-        rows = {i: r for i, r in rows.items() if i in ids}
-    pending = {p.event_id: p.since for p in db.rows(Pending, 'select event_id, since from pending_extraction')}
+    now: questions.Now,
+    passes: Sequence[Pass[Entry, Asked]],
+    ids: Iterable[int],
+    rooms: Mapping[int, RoomsGenres] | None = None,
+) -> list[Job]:
+    """The questions to ask of these festivals and passes: each whose answer is none or stale (answers.state); the
+    prices pass asked with the styles the rooms-genres answers make (rooms, current ones by festival)."""
     out: list[Job] = []
-    for pass_ in (p for p in prompts.PASSES if not only or p.name in only):
-        have = answers.answered(pass_.name, set(rows))
-        out += [
-            (rows[i], pass_)
-            for i in rows
-            if answer_state(pass_.name, have[i][1] if i in have else None, since=pending.get(i)) != AnswerState.CURRENT
-        ]
-    return out, pending
+    for pass_ in passes:
+        have = answers.answered(pass_.name, set(ids))
+        for i in sorted(ids):
+            j = job(now, pass_, i, (rooms or {}).get(i))
+            if answers.state(pass_.name, have[i][1] if i in have else None, j.inputs) != AnswerState.CURRENT:
+                out.append(j)
+    return out
 
 
-def answer_state(pass_name: prompts.PassName, answer: answers.Logged | None, *, since: dt.date | None) -> AnswerState:
-    """A festival's answer of a pass (its file's log row, None when it has none): none, stale (to another prompt, or
-    asked before since, the day its description last changed, when it is pending), or current. An answer asked on that
-    day counts as asked after it: the refresh that finds a change runs before the questions."""
-    if answer is None:
-        return AnswerState.NONE
-    if not prompts.is_current(pass_name, answer.prompt) or (since is not None and answer.answered_at.date() < since):
-        return AnswerState.STALE
-    return AnswerState.CURRENT
+def current_rooms(now: questions.Now) -> dict[int, RoomsGenres]:
+    """The festivals' current rooms-genres answers, which the prices pass is asked with."""
+    return {i: a.entry for i, a in now.current(prompts.ROOMS_GENRES).items()}
 
 
-def settled(pending: Mapping[int, dt.date]) -> list[int]:
-    """The pending festivals whose every pass now has a current answer: they leave pending_extraction. One whose
-    passes were asked only in part (--pass) stays, and the next run asks the rest."""
-    have: list[tuple[prompts.PassName, dict[int, tuple[Path, answers.Logged]]]] = [
-        (p.name, answers.answered(p.name, set(pending))) for p in prompts.PASSES
-    ]
-    return sorted(
-        i
-        for i, since in pending.items()
-        if all(
-            i in found and answer_state(name, found[i][1], since=since) == AnswerState.CURRENT for name, found in have
-        )
-    )
+class Question[R](Protocol):
+    """A question to ask: its label, how to ask it, and how to save its answer."""
+
+    @property
+    def label(self) -> str: ...
+
+    def ask(self, client: Client) -> R | Declined: ...
+
+    def save(self, answer: R) -> None: ...
 
 
-def answer_all(
-    client: Client, todo: Sequence[Job], styles: Mapping[int, Sequence[Style]], workers: int = WORKERS
-) -> dict[tuple[int, prompts.PassName], Declined]:
-    """Ask every question, saving each answer; the ones that got none, and why. After a call that stops the run
-    (pipeline/calls.py), no further question is asked: each is declined for the same reason."""
+@dataclass(frozen=True)
+class PassQuestion:
+    """A festival's question of one pass."""
+
+    j: Job
+
+    @property
+    def label(self) -> str:
+        return f'{self.j.asked.event_id} {self.j.pass_.name}'
+
+    def ask(self, client: Client) -> Batch[Entry] | Declined:
+        return ask(client, self.j)
+
+    def save(self, answer: Batch[Entry]) -> None:
+        asking = answers.Asking(prompts.current(self.j.pass_.name).archive(), MODEL, BY, self.j.inputs)
+        _ = answers.save(self.j.pass_.name, answer, asking)
+
+
+@dataclass(frozen=True)
+class PairQuestion:
+    """A pair's question of the merge review."""
+
+    q: MergeQuestion
+
+    @property
+    def label(self) -> str:
+        return f'{self.q.key_a} / {self.q.key_b} merge_review'
+
+    def ask(self, client: Client) -> MergeAnswer | Declined:
+        prompt = prompts.current('merge_review')
+
+        def check(text: str) -> MergeAnswer | list[str]:
+            try:
+                return MergeAnswer.parse(text)
+            except ValidationError as e:
+                return errors(e, 'schema')
+
+        return structured(client, Request(MODEL, prompt, prompt.message(self.q), self.label, 'merge_review'), check)
+
+    def save(self, answer: MergeAnswer) -> None:
+        asking = answers.Asking(prompts.current('merge_review').archive(), MODEL, BY_PAIR, merge_review.inputs(self.q))
+        _ = merge_review.save(self.q, answer, asking)
+
+
+def answer_all[R](
+    client: Client, todo: Sequence[Question[R]], stop: Declined | None = None, workers: int = WORKERS
+) -> dict[str, Declined]:
+    """Ask every question, saving each answer; the ones that got none, by label, and why. After a call that stops the
+    run (pipeline/calls.py), or when stop is already one, no further question is asked: each is declined for the same
+    reason."""
     lock = threading.Lock()
-    declined: dict[tuple[int, prompts.PassName], Declined] = {}
+    declined: dict[str, Declined] = {}
 
-    def one(job: Job) -> None:
-        f, pass_ = job
+    def one(q: Question[R]) -> None:
         with lock:
-            stop = next((d for d in declined.values() if d.stops), None)
-        output = stop or ask(client, pass_, f, styles.get(f.id, ()))
+            stopped = stop or next((d for d in declined.values() if d.stops), None)
+        output = stopped or q.ask(client)
         with lock:
             match output:
                 case Declined():
-                    declined[f.id, pass_.name] = output
-                    if output is not stop:
-                        print(f'{f.id} {pass_.name}: {output.cause}: {output.why}; left pending', file=sys.stderr)
+                    declined[q.label] = output
+                    if output is not stopped:
+                        print(f'{q.label}: {output.cause}: {output.why}', file=sys.stderr)
                 case _:
-                    _ = answers.save(pass_.name, output, MODEL, prompts.current(pass_.name), BY)
+                    q.save(output)
 
     with ThreadPoolExecutor(workers) as pool:
         _ = list(pool.map(one, todo))
     return declined
 
 
+# the passes in the order they are asked: the prices pass after the rooms-genres one, whose answers give its styles
+WAVES: tuple[tuple[Pass[Entry, Asked], ...], ...] = ((prompts.EXTRACT, prompts.ROOMS_GENRES), (prompts.PRICES,))
+
+
 class Args(argparse.Namespace):
     dry_run: bool = False
     limit: int | None = None
-    passes: list[prompts.PassName] | None = None
+    passes: list[prompts.Name] | None = None
     only: set[int] | None = None
 
 
@@ -353,37 +364,57 @@ def main() -> None:
         '--pass',
         dest='passes',
         action='append',
-        choices=[p.name for p in prompts.PASSES],
+        choices=[*(p.name for p in prompts.PASSES), 'merge_review'],
         help='only this pass (repeatable)',
     )
     _ = ap.add_argument('--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"')
     a = ap.parse_args(namespace=Args())
 
-    with export.opened('rw') as db:  # festivals leave its pending_extraction once answered
-        todo, pending = due(db, a.passes, a.only)
-        if a.limit is not None:
-            keep = sorted({f.id for f, _ in todo})[: a.limit]
-            todo = [(f, p) for f, p in todo if f.id in keep]
-        counts = {p.name: sum(1 for _, q in todo if q is p) for p in prompts.PASSES}
-        print(f'{len({f.id for f, _ in todo})} festivals to ask about: {counts}; {len(pending)} pending')
-        if a.dry_run or not todo:
-            return
+    with export.opened('ro') as db:
+        now = questions.now(db)
+        # the merge review, unless only some festivals or other passes are asked
+        merging = not a.only and (not a.passes or 'merge_review' in a.passes)
+        reviews = merge_review.due(db) if merging else []
+    ids = set(now.festivals)
+    if a.only:
+        if missing := a.only - ids:
+            sys.exit(f'no festival with a description: {sorted(missing)}')
+        ids = a.only
+    waves = [[p for p in wave if not a.passes or p.name in a.passes] for wave in WAVES]
+    # what is due now; the prices questions as the rooms-genres answers stand before this run
+    planned = [due(now, wave, ids, current_rooms(now)) for wave in waves]
+    if a.limit is not None:
+        ids = set(sorted({j.asked.event_id for wave in planned for j in wave})[: a.limit])
+        planned = [[j for j in wave if j.asked.event_id in ids] for wave in planned]
+    if a.limit is not None:
+        reviews = reviews[: a.limit]
+    counts = {p.name: sum(1 for wave in planned for j in wave if j.pass_ is p) for p in prompts.PASSES}
+    print(
+        f'{len({j.asked.event_id for wave in planned for j in wave})} festivals to ask about: {counts}; '
+        f'{len(reviews)} pairs to review'
+    )
+    if a.dry_run or not (any(planned) or reviews):
+        return
 
-        # read here, since the workers don't share the connection; genres a new festival's answers add load after this
-        # run
-        styles = {f.id: prices.styles(db, f.id) for f, p in todo if p is prompts.PRICES}
-        before = spend.month_usd()
-        declined = answer_all(anthropic.Anthropic(), todo, styles)
-        failed = {i for i, _ in declined}
-        with db.transaction() as tx:
-            tx.executemany('delete from pending_extraction where event_id = ?', [(i,) for i in settled(pending)])
-        print(
-            f'{len({f.id for f, _ in todo} - failed)} festivals answered, {len(failed)} not; '
-            f'${spend.month_usd() - before:.2f} this run, '
-            f'€{spend.eur(spend.month_usd()):.2f} of €{spend.BUDGET_EUR} this month'
-        )
-        if why := calls.failed('questions', ((f'{i} {p}', d) for (i, p), d in declined.items())):
-            sys.exit(why)
+    client, before = anthropic.Anthropic(), spend.month_usd()
+    declined: dict[str, Declined] = {}
+    for n, wave in enumerate(waves):
+        # a later wave is asked as the answers of the earlier ones now stand
+        todo = planned[0] if n == 0 else due(now, wave, ids, current_rooms(now))
+        declined |= answer_all(client, [PassQuestion(j) for j in todo], stopped(declined))
+    if reviews:
+        declined |= answer_all(client, [PairQuestion(q) for q in reviews], stopped(declined))
+    print(
+        f'{len(declined)} questions got no answer; ${spend.month_usd() - before:.2f} this run, '
+        f'€{spend.eur(spend.month_usd()):.2f} of €{spend.BUDGET_EUR} this month'
+    )
+    if why := calls.failed('questions', declined.items()):
+        sys.exit(why)
+
+
+def stopped(declined: Mapping[str, Declined]) -> Declined | None:
+    """What stops the questions still to ask: a call that stopped the run."""
+    return next((d for d in declined.values() if d.stops), None)
 
 
 if __name__ == '__main__':

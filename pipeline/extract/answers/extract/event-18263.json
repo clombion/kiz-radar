@@ -1,41 +1,48 @@
 {
- "batch": "event-18263",
- "events": [
-  {
-   "event_id": 18263,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Daily workshops of Kizomba, Semba and traditional dances with local masters.",
-     "rationale": "The program explicitly includes daily dance workshops."
-    },
-    {
-     "feature": "shows",
-     "quote": "Showcases and meet-and-greets with musicians and artists",
-     "rationale": "Showcases by musicians and artists are part of the program."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live dance experiences with traditional and contemporary music",
-     "rationale": "The program includes live experiences with live music."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Accommodation in double rooms at Semba House by Lápis Turism",
-     "rationale": "Accommodation is listed as part of the included program."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Breakfast included throughout the stay",
-     "rationale": "Breakfast is stated as included during the stay."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Organized transportation for all program activities",
-     "rationale": "Organised transportation is provided for program activities."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18263",
+  "events": [
+   {
+    "event_id": 18263,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Daily workshops of Kizomba, Semba and traditional dances with local masters.",
+      "rationale": "The program explicitly includes daily dance workshops."
+     },
+     {
+      "feature": "shows",
+      "quote": "Showcases and meet-and-greets with musicians and artists",
+      "rationale": "Showcases by musicians and artists are part of the program."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live dance experiences with traditional and contemporary music",
+      "rationale": "The program includes live experiences with live music."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Accommodation in double rooms at Semba House by Lápis Turism",
+      "rationale": "Accommodation is listed as part of the included program."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Breakfast included throughout the stay",
+      "rationale": "Breakfast is stated as included during the stay."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Organized transportation for all program activities",
+      "rationale": "Organised transportation is provided for program activities."
+     }
+    ]
+   }
+  ]
+ }
 }

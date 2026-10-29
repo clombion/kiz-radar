@@ -1,0 +1,13 @@
+{
+ "key_a": "p:panaghiotis@katia+panaghiotis",
+ "key_b": "p:panagiotis@christina+panagiotis",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c0f99bdcd51c33eb",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The spelling Panaghiotis is a likely typo of Panagiotis and both are Greek, but the partners Katia and Christina differ and the name is common."
+ }
+}

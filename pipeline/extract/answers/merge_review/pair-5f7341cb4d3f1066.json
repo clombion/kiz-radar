@@ -1,0 +1,13 @@
+{
+ "key_a": "p:june@june+virgile",
+ "key_b": "p:juneline@juneline+virgile",
+ "prompt": "7af5fef02cae3622",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:32:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "5f7341cb4d3f1066",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Same partner Virgile in every mention, June and Juneline are short and long forms, and both sides teach in the Netherlands/Amsterdam circuit."
+ }
+}

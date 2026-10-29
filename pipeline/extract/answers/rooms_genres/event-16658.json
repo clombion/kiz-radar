@@ -1,41 +1,48 @@
 {
- "batch": "event-16658",
- "events": [
-  {
-   "event_id": 16658,
-   "party_rooms": {
-    "count": 4,
-    "quote": "4 rooms for the parties with"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa On1/On2"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16658",
+  "events": [
+   {
+    "event_id": 16658,
+    "party_rooms": {
+     "count": 4,
+     "quote": "4 rooms for the parties with"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Semba, Chacha, Lady Styling"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Chacha",
-     "quote": "Semba, Chacha, Lady Styling"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa On1/On2"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Semba, Chacha, Lady Styling"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Chacha",
+      "quote": "Semba, Chacha, Lady Styling"
+     }
+    ]
+   }
+  ]
+ }
 }

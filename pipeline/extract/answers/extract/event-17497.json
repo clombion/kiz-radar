@@ -1,83 +1,90 @@
 {
- "batch": "event-17497",
- "events": [
-  {
-   "event_id": 17497,
-   "artists": [
-    {
-     "name_as_written": "Inna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Inna (Munich)"
-    },
-    {
-     "name_as_written": "Agnes",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Agnes (Stockholm)"
-    },
-    {
-     "name_as_written": "Sim Kiz",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Sim Kiz (Heilbronn)"
-    },
-    {
-     "name_as_written": "Adeline Suédois",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Adeline Suédois (Paris)"
-    },
-    {
-     "name_as_written": "Claudia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Claudia (Munich)"
-    },
-    {
-     "name_as_written": "Iva",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Iva (Munich)"
-    },
-    {
-     "name_as_written": "DJ Dany",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dany (Prague)"
-    },
-    {
-     "name_as_written": "DJ Nipz",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Nipz (Oslo)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "focused workshops",
-     "rationale": "The description states that the Friday evening includes focused workshops."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "exclusive masterclass",
-     "rationale": "The description presents an exclusive masterclass as a highlight of the event."
-    },
-    {
-     "feature": "private_classes",
-     "quote": "private class opportunities",
-     "rationale": "The description lists private class opportunities as part of the weekend."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17497",
+  "events": [
+   {
+    "event_id": 17497,
+    "artists": [
+     {
+      "name_as_written": "Inna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Inna (Munich)"
+     },
+     {
+      "name_as_written": "Agnes",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Agnes (Stockholm)"
+     },
+     {
+      "name_as_written": "Sim Kiz",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Sim Kiz (Heilbronn)"
+     },
+     {
+      "name_as_written": "Adeline Suédois",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Adeline Suédois (Paris)"
+     },
+     {
+      "name_as_written": "Claudia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Claudia (Munich)"
+     },
+     {
+      "name_as_written": "Iva",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Iva (Munich)"
+     },
+     {
+      "name_as_written": "DJ Dany",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dany (Prague)"
+     },
+     {
+      "name_as_written": "DJ Nipz",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Nipz (Oslo)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "focused workshops",
+      "rationale": "The description states that the Friday evening includes focused workshops."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "exclusive masterclass",
+      "rationale": "The description presents an exclusive masterclass as a highlight of the event."
+     },
+     {
+      "feature": "private_classes",
+      "quote": "private class opportunities",
+      "rationale": "The description lists private class opportunities as part of the weekend."
+     }
+    ]
+   }
+  ]
+ }
 }

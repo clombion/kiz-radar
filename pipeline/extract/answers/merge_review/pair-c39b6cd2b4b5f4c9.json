@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@christina+david",
+ "key_b": "p:daviddasilva",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "c39b6cd2b4b5f4c9",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Same first name, same partner Christina, same city (Lyon) and both listed as teachers; the full name only adds the surname Da Silva."
+ }
+}

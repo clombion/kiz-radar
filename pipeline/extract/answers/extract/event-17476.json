@@ -1,88 +1,95 @@
 {
- "batch": "event-17476",
- "events": [
-  {
-   "event_id": 17476,
-   "artists": [
-    {
-     "name_as_written": "Ledoux Kingsman",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Ledoux Kingsman"
-    },
-    {
-     "name_as_written": "Selim & Anastasia",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Selim & Anastasia"
-    },
-    {
-     "name_as_written": "Loyal",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Loyal"
-    },
-    {
-     "name_as_written": "EVOKEEZ Team Paris",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "EVOKEEZ Team Paris"
-    },
-    {
-     "name_as_written": "Daniel & Elina",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Daniel & Elina"
-    },
-    {
-     "name_as_written": "Dj Le Grand Tiwosh",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dj Le Grand Tiwosh"
-    },
-    {
-     "name_as_written": "Dj Timeline",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dj Timeline"
-    },
-    {
-     "name_as_written": "Dj Galaxy",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dj Galaxy"
-    }
-   ],
-   "features": [
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Each bootcamp is led by 6 international teachers working 3 hrs together",
-     "rationale": "The festival is built around bootcamps, which are long intensive training sessions led by teachers."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops & Immersive bootcamps with international teachers",
-     "rationale": "The event explicitly lists workshops as part of what to expect."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 dance floors",
-     "rationale": "The event has two dance floors, meaning more than one dance room."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 days of Day Socials & Night Parties with international DJs",
-     "rationale": "Day Socials are explicitly offered as part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17476",
+  "events": [
+   {
+    "event_id": 17476,
+    "artists": [
+     {
+      "name_as_written": "Ledoux Kingsman",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Ledoux Kingsman"
+     },
+     {
+      "name_as_written": "Selim & Anastasia",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Selim & Anastasia"
+     },
+     {
+      "name_as_written": "Loyal",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Loyal"
+     },
+     {
+      "name_as_written": "EVOKEEZ Team Paris",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "EVOKEEZ Team Paris"
+     },
+     {
+      "name_as_written": "Daniel & Elina",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Daniel & Elina"
+     },
+     {
+      "name_as_written": "Dj Le Grand Tiwosh",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Le Grand Tiwosh"
+     },
+     {
+      "name_as_written": "Dj Timeline",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Timeline"
+     },
+     {
+      "name_as_written": "Dj Galaxy",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Galaxy"
+     }
+    ],
+    "features": [
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Each bootcamp is led by 6 international teachers working 3 hrs together",
+      "rationale": "The festival is built around bootcamps, which are long intensive training sessions led by teachers."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops & Immersive bootcamps with international teachers",
+      "rationale": "The event explicitly lists workshops as part of what to expect."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 dance floors",
+      "rationale": "The event has two dance floors, meaning more than one dance room."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 days of Day Socials & Night Parties with international DJs",
+      "rationale": "Day Socials are explicitly offered as part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,44 +1,51 @@
 {
- "batch": "event-16124",
- "events": [
-  {
-   "event_id": 16124,
-   "artists": [
-    {
-     "name_as_written": "SABAKI SPAIN",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "💙🩷🧡 SABAKI SPAIN present:"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE!",
-     "rationale": "The description says the event is all in one, and that guests can have everything without ever leaving the hotel."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 fully air-conditioned rooms with different vibes",
-     "rationale": "The event has two dance rooms with different dance styles."
-    },
-    {
-     "feature": "workshops",
-     "quote": "3 days of workshops in 2 simultaneous rooms to choose from",
-     "rationale": "Dance workshops are explicitly part of the event."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "The best Pool Party of the summer",
-     "rationale": "A pool party is explicitly offered as part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "2 nights of shows with companies and guest artists",
-     "rationale": "Shows by companies and guest artists are explicitly part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16124",
+  "events": [
+   {
+    "event_id": 16124,
+    "artists": [
+     {
+      "name_as_written": "SABAKI SPAIN",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "💙🩷🧡 SABAKI SPAIN present:"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE!",
+      "rationale": "The description says the event is all in one, and that guests can have everything without ever leaving the hotel."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 fully air-conditioned rooms with different vibes",
+      "rationale": "The event has two dance rooms with different dance styles."
+     },
+     {
+      "feature": "workshops",
+      "quote": "3 days of workshops in 2 simultaneous rooms to choose from",
+      "rationale": "Dance workshops are explicitly part of the event."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "The best Pool Party of the summer",
+      "rationale": "A pool party is explicitly offered as part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "2 nights of shows with companies and guest artists",
+      "rationale": "Shows by companies and guest artists are explicitly part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

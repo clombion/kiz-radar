@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tpeak",
+ "key_b": "p:tpeak@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "140f985b678c0560",
+ "answer": {
+  "decision": "merge",
+  "rationale": "T'Peak appears as teacher in Gothenburg on 2026-01-22 and 2027-01-14 with the same entries as the T'Peak & Djé pair, and the Lyon entries match."
+ }
+}

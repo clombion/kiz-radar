@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ines@ines+pedro",
+ "key_b": "p:inesmiranda",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "35f10f64acc0a71d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Pedro & Inês and Inês Miranda share the first name and the Portugal flag, but the couple partner and the common first name leave it open."
+ }
+}

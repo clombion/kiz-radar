@@ -1,106 +1,113 @@
 {
- "batch": "event-16638",
- "events": [
-  {
-   "event_id": 16638,
-   "artists": [
-    {
-     "name_as_written": "Albir & Natalia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "UNIDOS is proud to present; Kizomba International super stars Albir & Natalia! Melbourne Kizomba Weekender."
-    },
-    {
-     "name_as_written": "Albir Rojas",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "The charismatic Pioneer of Kizomba fusion, Albir Rojas returns to Melbourne with his incredibly talented partner (and co creator of MKIZ) Natalia to share their skills, concepts and talents along side our local Kizomba artists for this specialised Unidos Kizomba Weekender in Melbourne."
-    },
-    {
-     "name_as_written": "Kudzi & Maddy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Kudzi & Maddy (Sydney)"
-    },
-    {
-     "name_as_written": "Carlos & Amal",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Carlos & Amal (Melbourne)"
-    },
-    {
-     "name_as_written": "Lukas & Kimmy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Lukas & Kimmy (Melbourne)"
-    },
-    {
-     "name_as_written": "Leonardo Quiroz",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Leonardo Quiroz (Melbourne)"
-    },
-    {
-     "name_as_written": "CUTXU",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "CUTXU"
-    },
-    {
-     "name_as_written": "AMA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "AMA"
-    },
-    {
-     "name_as_written": "BERRIES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "BERRIES"
-    },
-    {
-     "name_as_written": "LUKALOKO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "LUKALOKO"
-    },
-    {
-     "name_as_written": "VISSER",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "VISSER"
-    },
-    {
-     "name_as_written": "NONO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "NONO"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "2 full days of workshops",
-     "rationale": "The event lists two full days of workshops as part of what attendees can expect."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "2 x 1.5 hour masterclasses",
-     "rationale": "The event explicitly offers two 1.5 hour masterclasses with Albir & Natalia."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16638",
+  "events": [
+   {
+    "event_id": 16638,
+    "artists": [
+     {
+      "name_as_written": "Albir & Natalia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "UNIDOS is proud to present; Kizomba International super stars Albir & Natalia! Melbourne Kizomba Weekender."
+     },
+     {
+      "name_as_written": "Albir Rojas",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "The charismatic Pioneer of Kizomba fusion, Albir Rojas returns to Melbourne with his incredibly talented partner (and co creator of MKIZ) Natalia to share their skills, concepts and talents along side our local Kizomba artists for this specialised Unidos Kizomba Weekender in Melbourne."
+     },
+     {
+      "name_as_written": "Kudzi & Maddy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Kudzi & Maddy (Sydney)"
+     },
+     {
+      "name_as_written": "Carlos & Amal",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Carlos & Amal (Melbourne)"
+     },
+     {
+      "name_as_written": "Lukas & Kimmy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Lukas & Kimmy (Melbourne)"
+     },
+     {
+      "name_as_written": "Leonardo Quiroz",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Leonardo Quiroz (Melbourne)"
+     },
+     {
+      "name_as_written": "CUTXU",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "CUTXU"
+     },
+     {
+      "name_as_written": "AMA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "AMA"
+     },
+     {
+      "name_as_written": "BERRIES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "BERRIES"
+     },
+     {
+      "name_as_written": "LUKALOKO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "LUKALOKO"
+     },
+     {
+      "name_as_written": "VISSER",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "VISSER"
+     },
+     {
+      "name_as_written": "NONO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "NONO"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "2 full days of workshops",
+      "rationale": "The event lists two full days of workshops as part of what attendees can expect."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "2 x 1.5 hour masterclasses",
+      "rationale": "The event explicitly offers two 1.5 hour masterclasses with Albir & Natalia."
+     }
+    ]
+   }
+  ]
+ }
 }

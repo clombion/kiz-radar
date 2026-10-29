@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marzha@marzha+ulan",
+ "key_b": "p:marzhan@marzhan+ulan",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "994b165c86244dc0",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Ulan is the shared partner in both couples, Marzha and Marzhan are a near-identical spelling of one Kazakh name, and both sides use Urban Kiz."
+ }
+}

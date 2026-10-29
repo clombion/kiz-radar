@@ -1,87 +1,94 @@
 {
- "batch": "event-16251",
- "events": [
-  {
-   "event_id": 16251,
-   "artists": [
-    {
-     "name_as_written": "DJ Nao",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Nao"
-    },
-    {
-     "name_as_written": "DJ Nice Life",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Nice Life"
-    },
-    {
-     "name_as_written": "DJ Paraiso",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Paraiso"
-    },
-    {
-     "name_as_written": "Farantini Photography",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 Farantini Photography"
-    },
-    {
-     "name_as_written": "Amadou Kane",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 Amadou Kane"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "4 days of workshops",
-     "rationale": "The included items list names workshops as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Two dedicated workshop rooms",
-     "rationale": "Two dedicated workshop rooms means more than one dance room."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-party",
-     "rationale": "A pre-party is listed among the included items."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After-party",
-     "rationale": "An after-party is listed among the included items."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Party",
-     "rationale": "A pool party is listed among the included items."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Day socials",
-     "rationale": "Daytime socials are part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "OFFICIAL HOTEL – BOOK NOW",
-     "rationale": "The Holiday Inn is the official hotel with a booking link, while accommodation is not part of the pass."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Stay where the party lives!",
-     "rationale": "The text implies the parties take place at the hotel where dancers are invited to stay."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16251",
+  "events": [
+   {
+    "event_id": 16251,
+    "artists": [
+     {
+      "name_as_written": "DJ Nao",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Nao"
+     },
+     {
+      "name_as_written": "DJ Nice Life",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Nice Life"
+     },
+     {
+      "name_as_written": "DJ Paraiso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Paraiso"
+     },
+     {
+      "name_as_written": "Farantini Photography",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 Farantini Photography"
+     },
+     {
+      "name_as_written": "Amadou Kane",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 Amadou Kane"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "4 days of workshops",
+      "rationale": "The included items list names workshops as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Two dedicated workshop rooms",
+      "rationale": "Two dedicated workshop rooms means more than one dance room."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-party",
+      "rationale": "A pre-party is listed among the included items."
+     },
+     {
+      "feature": "after_party",
+      "quote": "After-party",
+      "rationale": "An after-party is listed among the included items."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool Party",
+      "rationale": "A pool party is listed among the included items."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Day socials",
+      "rationale": "Daytime socials are part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "OFFICIAL HOTEL – BOOK NOW",
+      "rationale": "The Holiday Inn is the official hotel with a booking link, while accommodation is not part of the pass."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Stay where the party lives!",
+      "rationale": "The text implies the parties take place at the hotel where dancers are invited to stay."
+     }
+    ]
+   }
+  ]
+ }
 }

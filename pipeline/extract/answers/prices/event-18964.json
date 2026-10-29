@@ -1,276 +1,283 @@
 {
- "batch": "event-18964",
- "events": [
-  {
-   "event_id": 18964,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 20,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "★FIRST 20 FULL PASSES AT ONLY £75 (SOLD OUT)"
-      },
-      {
-       "amount": 80.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "08-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ Full pass – £80 until the 30th of AUG"
-      },
-      {
-       "amount": 85.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "09-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ Full pass – £85 until the 30th of SEPT"
-      },
-      {
-       "amount": 90.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "10-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ Full pass – £90 until the 30th of OCT"
-      },
-      {
-       "amount": 100.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "11-06",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ Full pass – £100 until MIDNIGHT 6th of NOV"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "FIRST 10 FULL COUPLE PASSES",
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 140.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 10,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "★FIRST 10 FULL COUPLE PASSES AT ONLY £140 (SOLD OUT)"
-      },
-      {
-       "amount": 150.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "08-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ Full pass – £150 until the 30th of AUG"
-      },
-      {
-       "amount": 160.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "09-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ Full pass – £160 until the 30th of SEPT"
-      },
-      {
-       "amount": 170.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "10-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ Full pass – £170 until the 30th of OCT"
-      },
-      {
-       "amount": 180.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "11-06",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ Full pass – £180 until MIDNIGHT 6th of NOV"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "💫Early Birds Group deals💫",
-     "group_size": 5,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 350.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★Group of 5 full passes £350"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "💫Early Birds Group deals💫",
-     "group_size": 10,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 650.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★Group of 10 full passes £650"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
-     "group_size": 4,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 800.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "09-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★Group of 4 £800"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
-     "group_size": 6,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 1000.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "09-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★Group of 6 £1000"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
-     "group_size": 8,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 1400.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "09-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★Group of 8 £1400"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T18:02:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18964",
+  "events": [
+   {
+    "event_id": 18964,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 75.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 20,
+        "door": false,
+        "sold_out": true,
+        "current": false,
+        "quote": "★FIRST 20 FULL PASSES AT ONLY £75 (SOLD OUT)"
+       },
+       {
+        "amount": 80.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "08-30",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★ Full pass – £80 until the 30th of AUG"
+       },
+       {
+        "amount": 85.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "09-30",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★ Full pass – £85 until the 30th of SEPT"
+       },
+       {
+        "amount": 90.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "10-30",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★ Full pass – £90 until the 30th of OCT"
+       },
+       {
+        "amount": 100.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "11-06",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★ Full pass – £100 until MIDNIGHT 6th of NOV"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "FIRST 10 FULL COUPLE PASSES",
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 140.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 10,
+        "door": false,
+        "sold_out": true,
+        "current": false,
+        "quote": "★FIRST 10 FULL COUPLE PASSES AT ONLY £140 (SOLD OUT)"
+       },
+       {
+        "amount": 150.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "08-30",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★ Full pass – £150 until the 30th of AUG"
+       },
+       {
+        "amount": 160.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "09-30",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★ Full pass – £160 until the 30th of SEPT"
+       },
+       {
+        "amount": 170.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "10-30",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★ Full pass – £170 until the 30th of OCT"
+       },
+       {
+        "amount": 180.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "11-06",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★ Full pass – £180 until MIDNIGHT 6th of NOV"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "💫Early Birds Group deals💫",
+      "group_size": 5,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 350.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★Group of 5 full passes £350"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "💫Early Birds Group deals💫",
+      "group_size": 10,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 650.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★Group of 10 full passes £650"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
+      "group_size": 4,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 800.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "09-30",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★Group of 4 £800"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
+      "group_size": 6,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 1000.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "09-30",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★Group of 6 £1000"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
+      "group_size": 8,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 1400.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "09-30",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "★Group of 8 £1400"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

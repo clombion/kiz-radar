@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ricardo@alcpaula+ricardo",
+ "key_b": "p:ricardoferreira",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "63dd100ff8a502f3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Ricardo and Portugal are shared, but side A is a couple with Alc Paula while side B gives the common surname Ferreira as a solo Kizomba teacher."
+ }
+}

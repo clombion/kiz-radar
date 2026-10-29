@@ -1,66 +1,73 @@
 {
- "batch": "event-17122",
- "events": [
-  {
-   "event_id": 17122,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 separate ROOMS of entertainment"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba | Urbankiz"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17122",
+  "events": [
+   {
+    "event_id": 17122,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 separate ROOMS of entertainment"
     },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Kizomba | Urbankiz"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa Gouyad",
-     "quote": "Konpa Gouyad | Zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Konpa Gouyad | Zouk"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeat",
-     "quote": "Zouk | Afrobeat"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Afrobeat | Douceur"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Douceur | Tarraxo"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Tarraxo | Tarraxinha"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Afro-Amapiano",
-     "quote": "Jonay — Afro-Amapiano"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "PAMELA K — Live Konpa/Zouk"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba | Urbankiz"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Kizomba | Urbankiz"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa Gouyad",
+      "quote": "Konpa Gouyad | Zouk"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Konpa Gouyad | Zouk"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeat",
+      "quote": "Zouk | Afrobeat"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Afrobeat | Douceur"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Douceur | Tarraxo"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Tarraxo | Tarraxinha"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Afro-Amapiano",
+      "quote": "Jonay — Afro-Amapiano"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "PAMELA K — Live Konpa/Zouk"
+     }
+    ]
+   }
+  ]
+ }
 }

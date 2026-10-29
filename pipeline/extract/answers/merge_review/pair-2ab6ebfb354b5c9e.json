@@ -1,0 +1,13 @@
+{
+ "key_a": "p:luis@andrea+luis",
+ "key_b": "p:luis@karen+luis",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2ab6ebfb354b5c9e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Common first name Luis with different partners (Andrea vs Karen) and only Spain stated in common."
+ }
+}

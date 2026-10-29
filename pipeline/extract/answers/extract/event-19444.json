@@ -1,162 +1,169 @@
 {
- "batch": "event-19444",
- "events": [
-  {
-   "event_id": 19444,
-   "artists": [
-    {
-     "name_as_written": "Albír & Natalia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Albír & Natalia"
-    },
-    {
-     "name_as_written": "Audi & Laura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Audi & Laura"
-    },
-    {
-     "name_as_written": "Said & Oksana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Said & Oksana"
-    },
-    {
-     "name_as_written": "Tresor & Aurea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Tresor & Aurea"
-    },
-    {
-     "name_as_written": "Luis & Karen",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Luis & Karen"
-    },
-    {
-     "name_as_written": "DWé & Gaby",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ DWé & Gaby"
-    },
-    {
-     "name_as_written": "Tony Viser & Carla",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Tony Viser & Carla"
-    },
-    {
-     "name_as_written": "Fabricio do Zangado",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Fabricio do Zangado"
-    },
-    {
-     "name_as_written": "Kama & Pawel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Kama & Pawel"
-    },
-    {
-     "name_as_written": "Dani Fernandes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    },
-    {
-     "name_as_written": "Lisa Rose",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    },
-    {
-     "name_as_written": "Lucas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    },
-    {
-     "name_as_written": "Shark",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    },
-    {
-     "name_as_written": "Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    },
-    {
-     "name_as_written": "Snakes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    },
-    {
-     "name_as_written": "Bartef",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    },
-    {
-     "name_as_written": "Hugo Smile",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    },
-    {
-     "name_as_written": "David Ruela",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    },
-    {
-     "name_as_written": "Madej",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    },
-    {
-     "name_as_written": "Do Zangado",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE HOTEL",
-     "rationale": "The heading says the event is held in one hotel, so event and accommodation share a venue."
-    },
-    {
-     "feature": "workshops",
-     "quote": "workshops",
-     "rationale": "The description lists workshops as part of the congress program."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19444",
+  "events": [
+   {
+    "event_id": 19444,
+    "artists": [
+     {
+      "name_as_written": "Albír & Natalia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Albír & Natalia"
+     },
+     {
+      "name_as_written": "Audi & Laura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Audi & Laura"
+     },
+     {
+      "name_as_written": "Said & Oksana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Said & Oksana"
+     },
+     {
+      "name_as_written": "Tresor & Aurea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Tresor & Aurea"
+     },
+     {
+      "name_as_written": "Luis & Karen",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Luis & Karen"
+     },
+     {
+      "name_as_written": "DWé & Gaby",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ DWé & Gaby"
+     },
+     {
+      "name_as_written": "Tony Viser & Carla",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Tony Viser & Carla"
+     },
+     {
+      "name_as_written": "Fabricio do Zangado",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Fabricio do Zangado"
+     },
+     {
+      "name_as_written": "Kama & Pawel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Kama & Pawel"
+     },
+     {
+      "name_as_written": "Dani Fernandes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     },
+     {
+      "name_as_written": "Lisa Rose",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     },
+     {
+      "name_as_written": "Lucas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     },
+     {
+      "name_as_written": "Shark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     },
+     {
+      "name_as_written": "Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     },
+     {
+      "name_as_written": "Snakes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     },
+     {
+      "name_as_written": "Bartef",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     },
+     {
+      "name_as_written": "Hugo Smile",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     },
+     {
+      "name_as_written": "David Ruela",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     },
+     {
+      "name_as_written": "Madej",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     },
+     {
+      "name_as_written": "Do Zangado",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE HOTEL",
+      "rationale": "The heading says the event is held in one hotel, so event and accommodation share a venue."
+     },
+     {
+      "feature": "workshops",
+      "quote": "workshops",
+      "rationale": "The description lists workshops as part of the congress program."
+     }
+    ]
+   }
+  ]
+ }
 }

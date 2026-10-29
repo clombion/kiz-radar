@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nii@astrid+nii",
+ "key_b": "p:nii@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "5f3ea95b4382d349",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Nii is shared and Ghana appears on both sides, but side A is a Kizomba/Semba couple with Astrid while side B is a solo Urbankiz/Konpa act, so the styles do not line up."
+ }
+}

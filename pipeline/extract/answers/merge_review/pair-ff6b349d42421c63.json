@@ -1,0 +1,13 @@
+{
+ "key_a": "p:daniel@daniel+desiree",
+ "key_b": "p:daniel@daniel+irati",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ff6b349d42421c63",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Daniel is a common first name with two different partners (Desiree vs Irati); the shared Spain country is weak evidence."
+ }
+}

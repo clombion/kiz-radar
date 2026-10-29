@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fernando@fernando+micaela",
+ "key_b": "p:fernandobumbum",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "ea880b25cf1dfdd4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Fernando & Micaela and Fernando Bumbum & Michela differ in partner spelling (Micaela and Michela), a near-miss that the evidence does not settle."
+ }
+}

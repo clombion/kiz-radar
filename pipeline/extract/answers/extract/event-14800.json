@@ -1,227 +1,234 @@
 {
- "batch": "event-14800",
- "events": [
-  {
-   "event_id": 14800,
-   "artists": [
-    {
-     "name_as_written": "DJ PAPARAZY",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇦",
-     "source_line": "DJ PAPARAZY 🇪🇦"
-    },
-    {
-     "name_as_written": "DJ NUNO MKY",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "DJ NUNO MKY 🇨🇭"
-    },
-    {
-     "name_as_written": "DJ CORAZON",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "DJ CORAZON 🇨🇵"
-    },
-    {
-     "name_as_written": "DJ BODYSOUL",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "DJ BODYSOUL 🇵🇹"
-    },
-    {
-     "name_as_written": "DJ MYCO",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "DJ MYCO 🇲🇫"
-    },
-    {
-     "name_as_written": "DJ FAB TARAXA",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "DJ FAB TARAXA 🇨🇵"
-    },
-    {
-     "name_as_written": "DJ SAM MAS",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "DJ SAM MAS 🇨🇵"
-    },
-    {
-     "name_as_written": "DJ MARCOS",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "DJ MARCOS 🇲🇫"
-    },
-    {
-     "name_as_written": "DJ DIAS",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "DJ DIAS 🇵🇹"
-    },
-    {
-     "name_as_written": "DJ KORDJEE",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "DJ KORDJEE 🇲🇫"
-    },
-    {
-     "name_as_written": "DJ EL MAMBO",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "DJ EL MAMBO 🇨🇵"
-    },
-    {
-     "name_as_written": "DJ L.FIGO",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇫",
-     "source_line": "DJ L.FIGO 🇲🇫"
-    },
-    {
-     "name_as_written": "DJ AÏZEN",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "DJ AÏZEN 🇵🇹"
-    },
-    {
-     "name_as_written": "OPHELIE DEBROISE",
-     "role": "performer",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "🎻OPHELIE DEBROISE 🇨🇵"
-    },
-    {
-     "name_as_written": "NUNO & CÁTIA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹🇪🇦",
-     "source_line": "NUNO & CÁTIA 🇵🇹🇪🇦"
-    },
-    {
-     "name_as_written": "DASHA & ALEKSY",
-     "role": "teacher",
-     "style": null,
-     "country": "🇺🇦",
-     "source_line": "DASHA & ALEKSY 🇺🇦"
-    },
-    {
-     "name_as_written": "BONGA & ALINE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇳🇵🇹",
-     "source_line": "BONGA & ALINE 🇸🇳🇵🇹"
-    },
-    {
-     "name_as_written": "JOEL & GUYLENE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "JOEL & GUYLENE 🇨🇵"
-    },
-    {
-     "name_as_written": "JEREMY & JUSTINE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "JEREMY & JUSTINE 🇨🇵"
-    },
-    {
-     "name_as_written": "ALEJANDRO & OCEANE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇦🇨🇵",
-     "source_line": "ALEJANDRO & OCEANE 🇪🇦🇨🇵"
-    },
-    {
-     "name_as_written": "ANA & GUILHERME",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇺🇵🇹",
-     "source_line": "ANA & GUILHERME 🇨🇺🇵🇹"
-    },
-    {
-     "name_as_written": "MANUEL & BENEDICTE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹🇨🇵",
-     "source_line": "MANUEL & BENEDICTE 🇵🇹🇨🇵"
-    },
-    {
-     "name_as_written": "DHOIRIF & CELINE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "DHOIRIF & CELINE 🇨🇵"
-    },
-    {
-     "name_as_written": "EDU DIAS",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "EDU DIAS 🇵🇹"
-    },
-    {
-     "name_as_written": "NYURIS",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇺",
-     "source_line": "NYURIS 🇨🇺"
-    },
-    {
-     "name_as_written": "DAVI YAYE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "DAVI YAYE 🇨🇵"
-    },
-    {
-     "name_as_written": "LOIC ART",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "LOIC ART 🇨🇵"
-    },
-    {
-     "name_as_written": "YANNICK",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "YANNICK 🇨🇵"
-    },
-    {
-     "name_as_written": "ALEXANDER",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇺",
-     "source_line": "ALEXANDER 🇨🇺"
-    },
-    {
-     "name_as_written": "CAROL",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇷",
-     "source_line": "CAROL 🇧🇷"
-    }
-   ],
-   "features": [
-    {
-     "feature": "taxi_dancers",
-     "quote": "35 TAXIS",
-     "rationale": "The line '🚖 + 35 TAXIS' states that about 35 taxi dancers are present."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14800",
+  "events": [
+   {
+    "event_id": 14800,
+    "artists": [
+     {
+      "name_as_written": "DJ PAPARAZY",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇦",
+      "source_line": "DJ PAPARAZY 🇪🇦"
+     },
+     {
+      "name_as_written": "DJ NUNO MKY",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "DJ NUNO MKY 🇨🇭"
+     },
+     {
+      "name_as_written": "DJ CORAZON",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "DJ CORAZON 🇨🇵"
+     },
+     {
+      "name_as_written": "DJ BODYSOUL",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "DJ BODYSOUL 🇵🇹"
+     },
+     {
+      "name_as_written": "DJ MYCO",
+      "role": "dj",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "DJ MYCO 🇲🇫"
+     },
+     {
+      "name_as_written": "DJ FAB TARAXA",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "DJ FAB TARAXA 🇨🇵"
+     },
+     {
+      "name_as_written": "DJ SAM MAS",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "DJ SAM MAS 🇨🇵"
+     },
+     {
+      "name_as_written": "DJ MARCOS",
+      "role": "dj",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "DJ MARCOS 🇲🇫"
+     },
+     {
+      "name_as_written": "DJ DIAS",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "DJ DIAS 🇵🇹"
+     },
+     {
+      "name_as_written": "DJ KORDJEE",
+      "role": "dj",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "DJ KORDJEE 🇲🇫"
+     },
+     {
+      "name_as_written": "DJ EL MAMBO",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "DJ EL MAMBO 🇨🇵"
+     },
+     {
+      "name_as_written": "DJ L.FIGO",
+      "role": "dj",
+      "style": null,
+      "country": "🇲🇫",
+      "source_line": "DJ L.FIGO 🇲🇫"
+     },
+     {
+      "name_as_written": "DJ AÏZEN",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "DJ AÏZEN 🇵🇹"
+     },
+     {
+      "name_as_written": "OPHELIE DEBROISE",
+      "role": "performer",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "🎻OPHELIE DEBROISE 🇨🇵"
+     },
+     {
+      "name_as_written": "NUNO & CÁTIA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹🇪🇦",
+      "source_line": "NUNO & CÁTIA 🇵🇹🇪🇦"
+     },
+     {
+      "name_as_written": "DASHA & ALEKSY",
+      "role": "teacher",
+      "style": null,
+      "country": "🇺🇦",
+      "source_line": "DASHA & ALEKSY 🇺🇦"
+     },
+     {
+      "name_as_written": "BONGA & ALINE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇳🇵🇹",
+      "source_line": "BONGA & ALINE 🇸🇳🇵🇹"
+     },
+     {
+      "name_as_written": "JOEL & GUYLENE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "JOEL & GUYLENE 🇨🇵"
+     },
+     {
+      "name_as_written": "JEREMY & JUSTINE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "JEREMY & JUSTINE 🇨🇵"
+     },
+     {
+      "name_as_written": "ALEJANDRO & OCEANE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇦🇨🇵",
+      "source_line": "ALEJANDRO & OCEANE 🇪🇦🇨🇵"
+     },
+     {
+      "name_as_written": "ANA & GUILHERME",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇺🇵🇹",
+      "source_line": "ANA & GUILHERME 🇨🇺🇵🇹"
+     },
+     {
+      "name_as_written": "MANUEL & BENEDICTE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹🇨🇵",
+      "source_line": "MANUEL & BENEDICTE 🇵🇹🇨🇵"
+     },
+     {
+      "name_as_written": "DHOIRIF & CELINE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "DHOIRIF & CELINE 🇨🇵"
+     },
+     {
+      "name_as_written": "EDU DIAS",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "EDU DIAS 🇵🇹"
+     },
+     {
+      "name_as_written": "NYURIS",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇺",
+      "source_line": "NYURIS 🇨🇺"
+     },
+     {
+      "name_as_written": "DAVI YAYE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "DAVI YAYE 🇨🇵"
+     },
+     {
+      "name_as_written": "LOIC ART",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "LOIC ART 🇨🇵"
+     },
+     {
+      "name_as_written": "YANNICK",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "YANNICK 🇨🇵"
+     },
+     {
+      "name_as_written": "ALEXANDER",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇺",
+      "source_line": "ALEXANDER 🇨🇺"
+     },
+     {
+      "name_as_written": "CAROL",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇷",
+      "source_line": "CAROL 🇧🇷"
+     }
+    ],
+    "features": [
+     {
+      "feature": "taxi_dancers",
+      "quote": "35 TAXIS",
+      "rationale": "The line '🚖 + 35 TAXIS' states that about 35 taxi dancers are present."
+     }
+    ]
+   }
+  ]
+ }
 }

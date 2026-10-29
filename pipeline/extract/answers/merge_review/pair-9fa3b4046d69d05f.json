@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lilian@ivana+lilian",
+ "key_b": "p:liliana@gwany+liliana",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "9fa3b4046d69d05f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Lilian and Liliana differ by one letter, the partners are Ivana and Gwany, and both couples appear at LKW Lyon on 2026-07-02."
+ }
+}

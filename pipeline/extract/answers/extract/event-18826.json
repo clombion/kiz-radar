@@ -1,354 +1,361 @@
 {
- "batch": "event-18826",
- "events": [
-  {
-   "event_id": 18826,
-   "artists": [
-    {
-     "name_as_written": "Moustapha Thyane",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Moustapha Thyane https://www.instagram.com/mousta_thyane/"
-    },
-    {
-     "name_as_written": "Ataca & La Alemana",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "☀️ Ataca & La Alemana – Bachata"
-    },
-    {
-     "name_as_written": "El Tiguere & Bianca",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "☀️ El Tiguere & Bianca – Bachata"
-    },
-    {
-     "name_as_written": "Pura Pasión",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ Pura Pasión – Salsa"
-    },
-    {
-     "name_as_written": "Junior & Alicia",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "☀️ Junior & Alicia – Bachata"
-    },
-    {
-     "name_as_written": "Dance projet",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ Dance projet – Salsa"
-    },
-    {
-     "name_as_written": "Ivan & Lyudmila",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "☀️ Ivan & Lyudmila – Bachata"
-    },
-    {
-     "name_as_written": "César & Kerstin",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ César & Kerstin – Salsa"
-    },
-    {
-     "name_as_written": "Angel Guirao",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ Angel Guirao – Salsa"
-    },
-    {
-     "name_as_written": "Alberto & Vanessa",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "☀️ Alberto & Vanessa – Bachata"
-    },
-    {
-     "name_as_written": "Fernando de la Vega",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "☀️ Fernando de la Vega – Bachata"
-    },
-    {
-     "name_as_written": "Riky & Gina",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "☀️ Riky & Gina – Bachata"
-    },
-    {
-     "name_as_written": "Fran fusión & Melody",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ Fran fusión & Melody – Salsa"
-    },
-    {
-     "name_as_written": "Edu & Silvana",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "☀️ Edu & Silvana – Bachata"
-    },
-    {
-     "name_as_written": "Niko Valiente & Marisa",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ Niko Valiente & Marisa – Salsa"
-    },
-    {
-     "name_as_written": "José Mesa & Tania",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ José Mesa & Tania – Salsa"
-    },
-    {
-     "name_as_written": "Inma Fénix & Jesús",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ Inma Fénix & Jesús – Salsa"
-    },
-    {
-     "name_as_written": "Miguel Ojos Negros",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ Miguel Ojos Negros – Salsa"
-    },
-    {
-     "name_as_written": "Endrick Gutiérrez",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ Endrick Gutiérrez – Salsa"
-    },
-    {
-     "name_as_written": "Cristian Guayo",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "☀️ Cristian Guayo – Salsa"
-    },
-    {
-     "name_as_written": "DJ Kevin RG",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Kevin RG"
-    },
-    {
-     "name_as_written": "DJ Charlie El Ponceño",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Charlie El Ponceño"
-    },
-    {
-     "name_as_written": "DJ Charly Brown",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Charly Brown"
-    },
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": "KIZOMBA / URBAN",
-     "country": null,
-     "source_line": "🎧 DJ Shark"
-    },
-    {
-     "name_as_written": "DJ Lucas",
-     "role": "dj",
-     "style": "KIZOMBA / URBAN",
-     "country": null,
-     "source_line": "🎧 DJ Lucas"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": "KIZOMBA / URBAN",
-     "country": null,
-     "source_line": "🎧 DJ Ichigo"
-    },
-    {
-     "name_as_written": "DJ Loka",
-     "role": "dj",
-     "style": "KIZOMBA / URBAN",
-     "country": null,
-     "source_line": "🎧 DJ Loka"
-    },
-    {
-     "name_as_written": "DJ Tegs",
-     "role": "dj",
-     "style": "KIZOMBA / URBAN",
-     "country": null,
-     "source_line": "🎧 DJ Tegs"
-    },
-    {
-     "name_as_written": "DJ Monkey",
-     "role": "dj",
-     "style": "KIZOMBA / URBAN",
-     "country": null,
-     "source_line": "🎧 DJ Monkey"
-    },
-    {
-     "name_as_written": "Jp & Stephy",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "☀️ Jp & Stephy – Urbankiz"
-    },
-    {
-     "name_as_written": "Said Dstreet",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "☀️ Said Dstreet – Urbankiz"
-    },
-    {
-     "name_as_written": "Ichigo & kristel",
-     "role": "teacher",
-     "style": "Tarraxo",
-     "country": null,
-     "source_line": "☀️ Ichigo & kristel – Tarraxo"
-    },
-    {
-     "name_as_written": "A2man",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "☀️ A2man – Urbankiz"
-    },
-    {
-     "name_as_written": "Justinho",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "☀️ Justinho – Urbankiz"
-    },
-    {
-     "name_as_written": "Tomas keita",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "☀️ Tomas keita – Kizomba"
-    },
-    {
-     "name_as_written": "Che & Sara",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "☀️ Che & Sara – Urbankiz"
-    },
-    {
-     "name_as_written": "Fani",
-     "role": "teacher",
-     "style": "Lady Style",
-     "country": null,
-     "source_line": "☀️ Fani – Lady Style"
-    },
-    {
-     "name_as_written": "Mousta Thyane",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "☀️ Mousta Thyane – Kizomba"
-    },
-    {
-     "name_as_written": "Max Dousey",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "☀️ Max Dousey – Kizomba"
-    },
-    {
-     "name_as_written": "Abes Cisse",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "☀️ Abes Cisse – Kizomba"
-    },
-    {
-     "name_as_written": "Josema",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "☀️ Josema – Urbankiz"
-    },
-    {
-     "name_as_written": "Carlos Rojas",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "☀️ Carlos Rojas – Urbankiz"
-    },
-    {
-     "name_as_written": "Javi & Fuensi",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "☀️ Javi & Fuensi – Kizomba"
-    },
-    {
-     "name_as_written": "Nelson & Araceli",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "☀️ Nelson & Araceli – Urbankiz"
-    },
-    {
-     "name_as_written": "Erik & Salma",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "☀️ Erik & Salma – Kizomba"
-    },
-    {
-     "name_as_written": "Cornelius",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "☀️ Cornelius – Urbankiz"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops with top-tier artists, both national and international",
-     "rationale": "The full pass includes workshops with artists."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows that will leave you speechless.",
-     "rationale": "The description promises shows by the artists at the congress."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Spectacular 4⭐ superior hotel included",
-     "rationale": "The FULL PASS + HOTEL package explicitly includes the hotel."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE: HOTEL ESTIVAL TORREQUEBRADA",
-     "rationale": "The congress takes place in the hotel where dancers are invited to stay."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18826",
+  "events": [
+   {
+    "event_id": 18826,
+    "artists": [
+     {
+      "name_as_written": "Moustapha Thyane",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Moustapha Thyane https://www.instagram.com/mousta_thyane/"
+     },
+     {
+      "name_as_written": "Ataca & La Alemana",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "☀️ Ataca & La Alemana – Bachata"
+     },
+     {
+      "name_as_written": "El Tiguere & Bianca",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "☀️ El Tiguere & Bianca – Bachata"
+     },
+     {
+      "name_as_written": "Pura Pasión",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ Pura Pasión – Salsa"
+     },
+     {
+      "name_as_written": "Junior & Alicia",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "☀️ Junior & Alicia – Bachata"
+     },
+     {
+      "name_as_written": "Dance projet",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ Dance projet – Salsa"
+     },
+     {
+      "name_as_written": "Ivan & Lyudmila",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "☀️ Ivan & Lyudmila – Bachata"
+     },
+     {
+      "name_as_written": "César & Kerstin",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ César & Kerstin – Salsa"
+     },
+     {
+      "name_as_written": "Angel Guirao",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ Angel Guirao – Salsa"
+     },
+     {
+      "name_as_written": "Alberto & Vanessa",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "☀️ Alberto & Vanessa – Bachata"
+     },
+     {
+      "name_as_written": "Fernando de la Vega",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "☀️ Fernando de la Vega – Bachata"
+     },
+     {
+      "name_as_written": "Riky & Gina",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "☀️ Riky & Gina – Bachata"
+     },
+     {
+      "name_as_written": "Fran fusión & Melody",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ Fran fusión & Melody – Salsa"
+     },
+     {
+      "name_as_written": "Edu & Silvana",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "☀️ Edu & Silvana – Bachata"
+     },
+     {
+      "name_as_written": "Niko Valiente & Marisa",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ Niko Valiente & Marisa – Salsa"
+     },
+     {
+      "name_as_written": "José Mesa & Tania",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ José Mesa & Tania – Salsa"
+     },
+     {
+      "name_as_written": "Inma Fénix & Jesús",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ Inma Fénix & Jesús – Salsa"
+     },
+     {
+      "name_as_written": "Miguel Ojos Negros",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ Miguel Ojos Negros – Salsa"
+     },
+     {
+      "name_as_written": "Endrick Gutiérrez",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ Endrick Gutiérrez – Salsa"
+     },
+     {
+      "name_as_written": "Cristian Guayo",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "☀️ Cristian Guayo – Salsa"
+     },
+     {
+      "name_as_written": "DJ Kevin RG",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Kevin RG"
+     },
+     {
+      "name_as_written": "DJ Charlie El Ponceño",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Charlie El Ponceño"
+     },
+     {
+      "name_as_written": "DJ Charly Brown",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Charly Brown"
+     },
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": "KIZOMBA / URBAN",
+      "country": null,
+      "source_line": "🎧 DJ Shark"
+     },
+     {
+      "name_as_written": "DJ Lucas",
+      "role": "dj",
+      "style": "KIZOMBA / URBAN",
+      "country": null,
+      "source_line": "🎧 DJ Lucas"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": "KIZOMBA / URBAN",
+      "country": null,
+      "source_line": "🎧 DJ Ichigo"
+     },
+     {
+      "name_as_written": "DJ Loka",
+      "role": "dj",
+      "style": "KIZOMBA / URBAN",
+      "country": null,
+      "source_line": "🎧 DJ Loka"
+     },
+     {
+      "name_as_written": "DJ Tegs",
+      "role": "dj",
+      "style": "KIZOMBA / URBAN",
+      "country": null,
+      "source_line": "🎧 DJ Tegs"
+     },
+     {
+      "name_as_written": "DJ Monkey",
+      "role": "dj",
+      "style": "KIZOMBA / URBAN",
+      "country": null,
+      "source_line": "🎧 DJ Monkey"
+     },
+     {
+      "name_as_written": "Jp & Stephy",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "☀️ Jp & Stephy – Urbankiz"
+     },
+     {
+      "name_as_written": "Said Dstreet",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "☀️ Said Dstreet – Urbankiz"
+     },
+     {
+      "name_as_written": "Ichigo & kristel",
+      "role": "teacher",
+      "style": "Tarraxo",
+      "country": null,
+      "source_line": "☀️ Ichigo & kristel – Tarraxo"
+     },
+     {
+      "name_as_written": "A2man",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "☀️ A2man – Urbankiz"
+     },
+     {
+      "name_as_written": "Justinho",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "☀️ Justinho – Urbankiz"
+     },
+     {
+      "name_as_written": "Tomas keita",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "☀️ Tomas keita – Kizomba"
+     },
+     {
+      "name_as_written": "Che & Sara",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "☀️ Che & Sara – Urbankiz"
+     },
+     {
+      "name_as_written": "Fani",
+      "role": "teacher",
+      "style": "Lady Style",
+      "country": null,
+      "source_line": "☀️ Fani – Lady Style"
+     },
+     {
+      "name_as_written": "Mousta Thyane",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "☀️ Mousta Thyane – Kizomba"
+     },
+     {
+      "name_as_written": "Max Dousey",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "☀️ Max Dousey – Kizomba"
+     },
+     {
+      "name_as_written": "Abes Cisse",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "☀️ Abes Cisse – Kizomba"
+     },
+     {
+      "name_as_written": "Josema",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "☀️ Josema – Urbankiz"
+     },
+     {
+      "name_as_written": "Carlos Rojas",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "☀️ Carlos Rojas – Urbankiz"
+     },
+     {
+      "name_as_written": "Javi & Fuensi",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "☀️ Javi & Fuensi – Kizomba"
+     },
+     {
+      "name_as_written": "Nelson & Araceli",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "☀️ Nelson & Araceli – Urbankiz"
+     },
+     {
+      "name_as_written": "Erik & Salma",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "☀️ Erik & Salma – Kizomba"
+     },
+     {
+      "name_as_written": "Cornelius",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "☀️ Cornelius – Urbankiz"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops with top-tier artists, both national and international",
+      "rationale": "The full pass includes workshops with artists."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows that will leave you speechless.",
+      "rationale": "The description promises shows by the artists at the congress."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Spectacular 4⭐ superior hotel included",
+      "rationale": "The FULL PASS + HOTEL package explicitly includes the hotel."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE: HOTEL ESTIVAL TORREQUEBRADA",
+      "rationale": "The congress takes place in the hotel where dancers are invited to stay."
+     }
+    ]
+   }
+  ]
+ }
 }

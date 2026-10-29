@@ -1,0 +1,13 @@
+{
+ "key_a": "p:simon@lolahontas+simon",
+ "key_b": "p:simone@jennifer+simone",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "9d1d7b8471a77212",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Simon & Lolahontas and Simone & Jennifer have different partners and genuinely different names one letter apart."
+ }
+}

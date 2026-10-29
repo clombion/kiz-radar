@@ -1,65 +1,72 @@
 {
- "batch": "event-18977",
- "events": [
-  {
-   "event_id": 18977,
-   "party_rooms": {
-    "count": 7,
-    "quote": "Party until 7 am in 7 rooms"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "urbankiz"
-     ],
-     "quote": "Social in 2 rooms: Kizomba / Urban kiz and Bachata / Salsa"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18977",
+  "events": [
+   {
+    "event_id": 18977,
+    "party_rooms": {
+     "count": 7,
+     "quote": "Party until 7 am in 7 rooms"
     },
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [
-      "bachata",
-      "salsa"
-     ],
-     "quote": "Social in 2 rooms: Kizomba / Urban kiz and Bachata / Salsa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "BACHATA"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "URBAN KIZ"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "CROSS BODY SALSA",
-     "quote": "CROSS BODY SALSA"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "BRAZILIAN ZOUK",
-     "quote": "BRAZILIAN ZOUK"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
-     "quote": "URBAN KIZ & TARRAXO"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "urbankiz"
+      ],
+      "quote": "Social in 2 rooms: Kizomba / Urban kiz and Bachata / Salsa"
+     },
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "bachata",
+       "salsa"
+      ],
+      "quote": "Social in 2 rooms: Kizomba / Urban kiz and Bachata / Salsa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "BACHATA"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "URBAN KIZ"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "CROSS BODY SALSA",
+      "quote": "CROSS BODY SALSA"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "BRAZILIAN ZOUK",
+      "quote": "BRAZILIAN ZOUK"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "URBAN KIZ & TARRAXO"
+     }
+    ]
+   }
+  ]
+ }
 }

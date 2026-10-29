@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johann@johann+lucie",
+ "key_b": "p:johannorsinet",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "691c6130b2a62491",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Johann & Lucie and DJ Johann Orsinet are listed at the same Mulhouse event on the same date with the same France flag."
+ }
+}

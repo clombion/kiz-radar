@@ -1,41 +1,48 @@
 {
- "batch": "event-17098",
- "events": [
-  {
-   "event_id": 17098,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Dance Workshops",
-     "rationale": "The festival lists signature Dance Workshops as part of the programme."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Specialty Bootcamp",
-     "rationale": "A Specialty Bootcamp is listed among the festival's offerings."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Specialty Bootcamps./Masterclass",
-     "rationale": "Masterclasses are named as an optional purchasable element."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Day Social",
-     "rationale": "A Day Social is named as part of the festival."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "ALL Sawa Sawa Kizomba Festival activities will take place at the host Hotel, Hyatt Regency Bethesda.",
-     "rationale": "All festival activities take place at the hotel where the discounted sleeping rooms are offered, so event and accommodation share one venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Steeply discounted Sawa Sawa sleeping rooms are currently available on sale.",
-     "rationale": "A negotiated discounted room rate at the host hotel is offered, though accommodation is not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17098",
+  "events": [
+   {
+    "event_id": 17098,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Dance Workshops",
+      "rationale": "The festival lists signature Dance Workshops as part of the programme."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Specialty Bootcamp",
+      "rationale": "A Specialty Bootcamp is listed among the festival's offerings."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Specialty Bootcamps./Masterclass",
+      "rationale": "Masterclasses are named as an optional purchasable element."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Day Social",
+      "rationale": "A Day Social is named as part of the festival."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "ALL Sawa Sawa Kizomba Festival activities will take place at the host Hotel, Hyatt Regency Bethesda.",
+      "rationale": "All festival activities take place at the hotel where the discounted sleeping rooms are offered, so event and accommodation share one venue."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Steeply discounted Sawa Sawa sleeping rooms are currently available on sale.",
+      "rationale": "A negotiated discounted room rate at the host hotel is offered, though accommodation is not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

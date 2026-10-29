@@ -1,0 +1,13 @@
+{
+ "key_a": "p:monica@dance",
+ "key_b": "p:monica@jorelle+monica",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "7167e2cc1de08694",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Monica in Victoria Canada matches the city, country and Bachata style of the Jorelle and Monica couple, but the partner is different and Monica is common."
+ }
+}

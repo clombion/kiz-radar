@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johan@johan+lucie",
+ "key_b": "p:johann@johann+lucie",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "db70f642f6c7fb78",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Johan & Lucie and Johann & Lucie share the same partner Lucie in France, with a one-letter spelling variant of the first name."
+ }
+}

@@ -1,64 +1,71 @@
 {
- "batch": "event-16079",
- "events": [
-  {
-   "event_id": 16079,
-   "artists": [
-    {
-     "name_as_written": "DANCE TRAVEL",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "For information contact with DANCE TRAVEL:"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in one hotel",
-     "rationale": "The parties take place in Don Angel Hotel, the same hotel where dancers are invited to stay."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "A Pool Party",
-     "rationale": "The description lists a pool party from 17h to 21h."
-    },
-    {
-     "feature": "workshops",
-     "quote": "exclusive rooms for workshops",
-     "rationale": "Daytime workshops in dedicated rooms are part of the programme."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms for the parties during the night",
-     "rationale": "Two separate dance rooms are used for the night parties."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party",
-     "rationale": "A Wednesday pre-party is listed in the programme before the main parties."
-    },
-    {
-     "feature": "shows",
-     "quote": "workshops, parties, shows",
-     "rationale": "The location section says the event includes shows."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "PRICE (per person and day with FULL BOARD):",
-     "rationale": "The per-day room prices are for full-board packages that include accommodation."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "FULL BOARD",
-     "rationale": "The room prices are stated as full board, so meals are included in the package."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "INFORMATION ABOUT SHUTTLE FROM BARCELONA AIRPORT OR GIRONA AIRPORT",
-     "rationale": "The description gives bus and train shuttle options from the airports to the hotel."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16079",
+  "events": [
+   {
+    "event_id": 16079,
+    "artists": [
+     {
+      "name_as_written": "DANCE TRAVEL",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "For information contact with DANCE TRAVEL:"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in one hotel",
+      "rationale": "The parties take place in Don Angel Hotel, the same hotel where dancers are invited to stay."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "A Pool Party",
+      "rationale": "The description lists a pool party from 17h to 21h."
+     },
+     {
+      "feature": "workshops",
+      "quote": "exclusive rooms for workshops",
+      "rationale": "Daytime workshops in dedicated rooms are part of the programme."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms for the parties during the night",
+      "rationale": "Two separate dance rooms are used for the night parties."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party",
+      "rationale": "A Wednesday pre-party is listed in the programme before the main parties."
+     },
+     {
+      "feature": "shows",
+      "quote": "workshops, parties, shows",
+      "rationale": "The location section says the event includes shows."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "PRICE (per person and day with FULL BOARD):",
+      "rationale": "The per-day room prices are for full-board packages that include accommodation."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "FULL BOARD",
+      "rationale": "The room prices are stated as full board, so meals are included in the package."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "INFORMATION ABOUT SHUTTLE FROM BARCELONA AIRPORT OR GIRONA AIRPORT",
+      "rationale": "The description gives bus and train shuttle options from the airports to the hotel."
+     }
+    ]
+   }
+  ]
+ }
 }

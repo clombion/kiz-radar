@@ -1,130 +1,137 @@
 {
- "batch": "event-15828",
- "events": [
-  {
-   "event_id": 15828,
-   "artists": [
-    {
-     "name_as_written": "Fanio De Araujo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🟡 Fanio De Araujo 🇦🇴"
-    },
-    {
-     "name_as_written": "Landry & Windy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🟡 Landry & Windy 🇫🇷"
-    },
-    {
-     "name_as_written": "Eduardo Menezes",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇷",
-     "source_line": "🟡 Eduardo Menezes 🇧🇷"
-    },
-    {
-     "name_as_written": "Elvis & Namrata",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇳",
-     "source_line": "🟡 Elvis & Namrata 🇮🇳"
-    },
-    {
-     "name_as_written": "Rabbil & Allana",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇮🇲🇩",
-     "source_line": "🟡 Rabbil & Allana 🇧🇮🇲🇩"
-    },
-    {
-     "name_as_written": "Dj Beleza",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🟡 Dj Beleza 🇦🇴"
-    },
-    {
-     "name_as_written": "Dj Adelino",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🟡 Dj Adelino 🇦🇴"
-    },
-    {
-     "name_as_written": "Dj Bakongo",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🟡 Dj Bakongo 🇦🇴"
-    },
-    {
-     "name_as_written": "Dj RM Keta",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🟡 Dj RM Keta 🇦🇴"
-    },
-    {
-     "name_as_written": "Dj Tó Costa",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🟡 Dj Tó Costa 🇦🇴"
-    },
-    {
-     "name_as_written": "Dj Ra",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇮",
-     "source_line": "🟡 Dj Ra 🇧🇮"
-    },
-    {
-     "name_as_written": "Kyaku Kyadaff",
-     "role": "performer",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🟡 Kyaku Kyadaff 🇦🇴"
-    },
-    {
-     "name_as_written": "Zola Lopez",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 Zola Lopez"
-    },
-    {
-     "name_as_written": "TAREHI PRODART",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 TAREHI PRODART"
-    }
-   ],
-   "features": [
-    {
-     "feature": "live_music",
-     "quote": "An immersive live concert with a singer straight from Angola.",
-     "rationale": "The quote announces a live concert with a singer, which is live music."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "hand picked exclusive Kizomba, Semba, Konpa & surprise masterclasses",
-     "rationale": "The quote states that the festival includes masterclasses."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 unforgettable Socials & 3 Night Parties",
-     "rationale": "The quote lists Socials, which are daytime social sessions, alongside night parties."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotel booking link:",
-     "rationale": "A hotel booking link with a promotion code points to a recommended hotel rate without the accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15828",
+  "events": [
+   {
+    "event_id": 15828,
+    "artists": [
+     {
+      "name_as_written": "Fanio De Araujo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🟡 Fanio De Araujo 🇦🇴"
+     },
+     {
+      "name_as_written": "Landry & Windy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🟡 Landry & Windy 🇫🇷"
+     },
+     {
+      "name_as_written": "Eduardo Menezes",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇷",
+      "source_line": "🟡 Eduardo Menezes 🇧🇷"
+     },
+     {
+      "name_as_written": "Elvis & Namrata",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇳",
+      "source_line": "🟡 Elvis & Namrata 🇮🇳"
+     },
+     {
+      "name_as_written": "Rabbil & Allana",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇮🇲🇩",
+      "source_line": "🟡 Rabbil & Allana 🇧🇮🇲🇩"
+     },
+     {
+      "name_as_written": "Dj Beleza",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🟡 Dj Beleza 🇦🇴"
+     },
+     {
+      "name_as_written": "Dj Adelino",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🟡 Dj Adelino 🇦🇴"
+     },
+     {
+      "name_as_written": "Dj Bakongo",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🟡 Dj Bakongo 🇦🇴"
+     },
+     {
+      "name_as_written": "Dj RM Keta",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🟡 Dj RM Keta 🇦🇴"
+     },
+     {
+      "name_as_written": "Dj Tó Costa",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🟡 Dj Tó Costa 🇦🇴"
+     },
+     {
+      "name_as_written": "Dj Ra",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇮",
+      "source_line": "🟡 Dj Ra 🇧🇮"
+     },
+     {
+      "name_as_written": "Kyaku Kyadaff",
+      "role": "performer",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🟡 Kyaku Kyadaff 🇦🇴"
+     },
+     {
+      "name_as_written": "Zola Lopez",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 Zola Lopez"
+     },
+     {
+      "name_as_written": "TAREHI PRODART",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 TAREHI PRODART"
+     }
+    ],
+    "features": [
+     {
+      "feature": "live_music",
+      "quote": "An immersive live concert with a singer straight from Angola.",
+      "rationale": "The quote announces a live concert with a singer, which is live music."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "hand picked exclusive Kizomba, Semba, Konpa & surprise masterclasses",
+      "rationale": "The quote states that the festival includes masterclasses."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 unforgettable Socials & 3 Night Parties",
+      "rationale": "The quote lists Socials, which are daytime social sessions, alongside night parties."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotel booking link:",
+      "rationale": "A hotel booking link with a promotion code points to a recommended hotel rate without the accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

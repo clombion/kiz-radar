@@ -1,160 +1,167 @@
 {
- "batch": "event-18350",
- "events": [
-  {
-   "event_id": 18350,
-   "artists": [
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💜 DJ NAO"
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💜 DJ ICHIGO"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💜 DJ NICE LIFE"
-    },
-    {
-     "name_as_written": "DJ NO LIMIT",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💜 DJ NO LIMIT"
-    },
-    {
-     "name_as_written": "DJ MKY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💜 DJ MKY"
-    },
-    {
-     "name_as_written": "DJ GEERO BEATS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💜 DJ GEERO BEATS"
-    },
-    {
-     "name_as_written": "DJ STYLE OF MUSC",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💜 DJ STYLE OF MUSC"
-    },
-    {
-     "name_as_written": "DJ DEDINHO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "💜 DJ DEDINHO"
-    },
-    {
-     "name_as_written": "INÈS MIRANDA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💜 INÈS MIRANDA"
-    },
-    {
-     "name_as_written": "ASIA VORONOVA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💜 ASIA VORONOVA"
-    },
-    {
-     "name_as_written": "JOHN & LÉA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💜 JOHN & LÉA"
-    },
-    {
-     "name_as_written": "DADIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💜 DADIE"
-    },
-    {
-     "name_as_written": "CAARL & PATI",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💜 CAARL & PATI"
-    },
-    {
-     "name_as_written": "MOUSSA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💜 MOUSSA"
-    },
-    {
-     "name_as_written": "YACE GALANTA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💜 YACE GALANTA"
-    },
-    {
-     "name_as_written": "YANNIS GLT",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💜 YANNIS GLT"
-    },
-    {
-     "name_as_written": "BAIDY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💜 BAIDY"
-    },
-    {
-     "name_as_written": "LEA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💜 LEA"
-    },
-    {
-     "name_as_written": "BENKOS",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "💜 BENKOS 💜"
-    }
-   ],
-   "features": [
-    {
-     "feature": "transfers_shuttle",
-     "quote": "FREE SHUTTLE",
-     "rationale": "The description advertises a free shuttle between the hotel and the venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Partner Hotel Mercure Geneva Airport",
-     "rationale": "The event names a partner hotel where dancers can stay, without saying accommodation is part of the pass."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXIS DANCERS",
-     "rationale": "A section heading states that taxi dancers are present."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:48:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18350",
+  "events": [
+   {
+    "event_id": 18350,
+    "artists": [
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💜 DJ NAO"
+     },
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💜 DJ ICHIGO"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💜 DJ NICE LIFE"
+     },
+     {
+      "name_as_written": "DJ NO LIMIT",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💜 DJ NO LIMIT"
+     },
+     {
+      "name_as_written": "DJ MKY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💜 DJ MKY"
+     },
+     {
+      "name_as_written": "DJ GEERO BEATS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💜 DJ GEERO BEATS"
+     },
+     {
+      "name_as_written": "DJ STYLE OF MUSC",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💜 DJ STYLE OF MUSC"
+     },
+     {
+      "name_as_written": "DJ DEDINHO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💜 DJ DEDINHO"
+     },
+     {
+      "name_as_written": "INÈS MIRANDA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💜 INÈS MIRANDA"
+     },
+     {
+      "name_as_written": "ASIA VORONOVA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💜 ASIA VORONOVA"
+     },
+     {
+      "name_as_written": "JOHN & LÉA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💜 JOHN & LÉA"
+     },
+     {
+      "name_as_written": "DADIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💜 DADIE"
+     },
+     {
+      "name_as_written": "CAARL & PATI",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💜 CAARL & PATI"
+     },
+     {
+      "name_as_written": "MOUSSA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💜 MOUSSA"
+     },
+     {
+      "name_as_written": "YACE GALANTA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💜 YACE GALANTA"
+     },
+     {
+      "name_as_written": "YANNIS GLT",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💜 YANNIS GLT"
+     },
+     {
+      "name_as_written": "BAIDY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💜 BAIDY"
+     },
+     {
+      "name_as_written": "LEA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💜 LEA"
+     },
+     {
+      "name_as_written": "BENKOS",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "💜 BENKOS 💜"
+     }
+    ],
+    "features": [
+     {
+      "feature": "transfers_shuttle",
+      "quote": "FREE SHUTTLE",
+      "rationale": "The description advertises a free shuttle between the hotel and the venue."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Partner Hotel Mercure Geneva Airport",
+      "rationale": "The event names a partner hotel where dancers can stay, without saying accommodation is part of the pass."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXIS DANCERS",
+      "rationale": "A section heading states that taxi dancers are present."
+     }
+    ]
+   }
+  ]
+ }
 }

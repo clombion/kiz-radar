@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ronie@frida+ronie",
+ "key_b": "p:roniesaleh",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "273ef45e968e7746",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Ronie & Frida and Ronie Saleh share only the first name and a stated Sweden flag; no partner, style or shared event links them."
+ }
+}

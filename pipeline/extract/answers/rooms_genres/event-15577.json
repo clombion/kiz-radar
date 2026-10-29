@@ -1,48 +1,55 @@
 {
- "batch": "event-15577",
- "events": [
-  {
-   "event_id": 15577,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Cuban Salsa",
-     "quote": "Cuban Salsa, Crossbody Salsa"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Sensual Bachata, Dominican Bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba and Semba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba and Semba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Dominican Footwork",
-     "quote": "Dominican Footwork"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Rueda de Casino",
-     "quote": "Rueda de Casino"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cuban Son",
-     "quote": "Cuban Son"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15577",
+  "events": [
+   {
+    "event_id": 15577,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Cuban Salsa",
+      "quote": "Cuban Salsa, Crossbody Salsa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Sensual Bachata, Dominican Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba and Semba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba and Semba"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Dominican Footwork",
+      "quote": "Dominican Footwork"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Rueda de Casino",
+      "quote": "Rueda de Casino"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cuban Son",
+      "quote": "Cuban Son"
+     }
+    ]
+   }
+  ]
+ }
 }

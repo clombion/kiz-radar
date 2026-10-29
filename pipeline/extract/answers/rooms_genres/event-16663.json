@@ -1,53 +1,60 @@
 {
- "batch": "event-16663",
- "events": [
-  {
-   "event_id": 16663,
-   "party_rooms": {
-    "count": 5,
-    "quote": "5 dance floors for evening parties – Bachata, Salsa, Cubana, Kizomba, UrbanKiz"
-   },
-   "class_rooms": {
-    "count": 10,
-    "quote": "Minimum 10 workshop rooms"
-   },
-   "rooms": [
-    {
-     "name_as_written": "bachata floor",
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "only the bachata floor will be available"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "BACHATA DJs"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16663",
+  "events": [
+   {
+    "event_id": 16663,
+    "party_rooms": {
+     "count": 5,
+     "quote": "5 dance floors for evening parties – Bachata, Salsa, Cubana, Kizomba, UrbanKiz"
     },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "SALSA DJs"
+    "class_rooms": {
+     "count": 10,
+     "quote": "Minimum 10 workshop rooms"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA DJs"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "Bachata, Salsa, Cubana, Kizomba, UrbanKiz"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cubana",
-     "quote": "CUBANA DJs"
-    }
-   ]
-  }
- ]
+    "rooms": [
+     {
+      "name_as_written": "bachata floor",
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "only the bachata floor will be available"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "BACHATA DJs"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "SALSA DJs"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA DJs"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "Bachata, Salsa, Cubana, Kizomba, UrbanKiz"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cubana",
+      "quote": "CUBANA DJs"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@davide+laura",
+ "key_b": "p:laurabuffone",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "419e6545bb557894",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Laura Buffone is paired with Dr Kizomba in Florence, and Dr Kizomba & Laura teach at KIZMI Milano on the same day as Davide & Laura, so Davide's Laura is not the Laura Buffone entry."
+ }
+}

@@ -1,125 +1,132 @@
 {
- "batch": "event-15858",
- "events": [
-  {
-   "event_id": 15858,
-   "artists": [
-    {
-     "name_as_written": "Willy & Jessica",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "Italy / Mexico",
-     "source_line": "Willy & Jessica 🇮🇹🇲🇽 (Italy / Mexico)"
-    },
-    {
-     "name_as_written": "Marwan & Rena",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "Egypt",
-     "source_line": "Marwan & Rena 🇪🇬 (Egypt)"
-    },
-    {
-     "name_as_written": "Johann & Lucie",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "France",
-     "source_line": "Johann & Lucie 🇫🇷 (France)"
-    },
-    {
-     "name_as_written": "Adel & Hanna",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "France / Germany",
-     "source_line": "Adel & Hanna 🇫🇷🇩🇪 (France / Germany)"
-    },
-    {
-     "name_as_written": "Ilhan & Kira",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "Switzerland",
-     "source_line": "Ilhan & Kira 🇨🇭 (Switzerland)"
-    },
-    {
-     "name_as_written": "Martin & Esra",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "Germany",
-     "source_line": "Martin & Esra 🇩🇪 (Germany)"
-    },
-    {
-     "name_as_written": "Chris Da White",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "France",
-     "source_line": "Chris Da White 🇫🇷 (France)"
-    },
-    {
-     "name_as_written": "Kyle & Kate",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "France",
-     "source_line": "Kyle & Kate 🇫🇷 (France)"
-    },
-    {
-     "name_as_written": "Dan & Shelly",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "France",
-     "source_line": "Dan & Shelly 🇫🇷 (France)"
-    },
-    {
-     "name_as_written": "Pepe",
-     "role": "dj",
-     "style": null,
-     "country": "Switzerland",
-     "source_line": "Pepe 🇨🇭 (Switzerland)"
-    },
-    {
-     "name_as_written": "Adel Dasalsa",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "Adel Dasalsa 🇫🇷 (France)"
-    },
-    {
-     "name_as_written": "Johann Orsinet",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "Johann Orsinet 🇫🇷 (France)"
-    },
-    {
-     "name_as_written": "Celly",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "Celly 🇫🇷 (France)"
-    },
-    {
-     "name_as_written": "Selekta Mao",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "Selekta Mao 🇫🇷 (France)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "3 days of workshops with international artists",
-     "rationale": "The description states that there are three days of workshops."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "open to all levels",
-     "rationale": "The festival is explicitly open to all levels, including beginners."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Two dedicated dance rooms:",
-     "rationale": "The festival has two separate dance rooms, one for salsa and bachata and one for kizomba."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15858",
+  "events": [
+   {
+    "event_id": 15858,
+    "artists": [
+     {
+      "name_as_written": "Willy & Jessica",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "Italy / Mexico",
+      "source_line": "Willy & Jessica 🇮🇹🇲🇽 (Italy / Mexico)"
+     },
+     {
+      "name_as_written": "Marwan & Rena",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "Egypt",
+      "source_line": "Marwan & Rena 🇪🇬 (Egypt)"
+     },
+     {
+      "name_as_written": "Johann & Lucie",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "France",
+      "source_line": "Johann & Lucie 🇫🇷 (France)"
+     },
+     {
+      "name_as_written": "Adel & Hanna",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "France / Germany",
+      "source_line": "Adel & Hanna 🇫🇷🇩🇪 (France / Germany)"
+     },
+     {
+      "name_as_written": "Ilhan & Kira",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "Switzerland",
+      "source_line": "Ilhan & Kira 🇨🇭 (Switzerland)"
+     },
+     {
+      "name_as_written": "Martin & Esra",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "Germany",
+      "source_line": "Martin & Esra 🇩🇪 (Germany)"
+     },
+     {
+      "name_as_written": "Chris Da White",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "France",
+      "source_line": "Chris Da White 🇫🇷 (France)"
+     },
+     {
+      "name_as_written": "Kyle & Kate",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "France",
+      "source_line": "Kyle & Kate 🇫🇷 (France)"
+     },
+     {
+      "name_as_written": "Dan & Shelly",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "France",
+      "source_line": "Dan & Shelly 🇫🇷 (France)"
+     },
+     {
+      "name_as_written": "Pepe",
+      "role": "dj",
+      "style": null,
+      "country": "Switzerland",
+      "source_line": "Pepe 🇨🇭 (Switzerland)"
+     },
+     {
+      "name_as_written": "Adel Dasalsa",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "Adel Dasalsa 🇫🇷 (France)"
+     },
+     {
+      "name_as_written": "Johann Orsinet",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "Johann Orsinet 🇫🇷 (France)"
+     },
+     {
+      "name_as_written": "Celly",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "Celly 🇫🇷 (France)"
+     },
+     {
+      "name_as_written": "Selekta Mao",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "Selekta Mao 🇫🇷 (France)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "3 days of workshops with international artists",
+      "rationale": "The description states that there are three days of workshops."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "open to all levels",
+      "rationale": "The festival is explicitly open to all levels, including beginners."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Two dedicated dance rooms:",
+      "rationale": "The festival has two separate dance rooms, one for salsa and bachata and one for kizomba."
+     }
+    ]
+   }
+  ]
+ }
 }

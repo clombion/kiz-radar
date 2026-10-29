@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fajul@fajul+tabea",
+ "key_b": "p:fajulkizztalk",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "0e8cca33bf100a51",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Fajul & Tabea and Fajul KizzTalk share the distinctive name Fajul, and side B lists Fajul Kizztalk & Tabea with the same partner."
+ }
+}

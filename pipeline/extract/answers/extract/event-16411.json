@@ -1,36 +1,43 @@
 {
- "batch": "event-16411",
- "events": [
-  {
-   "event_id": 16411,
-   "artists": [],
-   "features": [
-    {
-     "feature": "pool_party",
-     "quote": "Pool Parties",
-     "rationale": "The description lists Pool Parties among the event's offerings."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The list of event elements includes Workshops."
-    },
-    {
-     "feature": "shows",
-     "quote": "International Shows",
-     "rationale": "The event lists International Shows, which are performances by artists."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "5 Rooms, 5 Atmospheres",
-     "rationale": "The description states the event has five rooms."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "On-site accommodation with a swimming pool",
-     "rationale": "The festival takes place at a complex that also offers on-site accommodation, so event and accommodation share one venue."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16411",
+  "events": [
+   {
+    "event_id": 16411,
+    "artists": [],
+    "features": [
+     {
+      "feature": "pool_party",
+      "quote": "Pool Parties",
+      "rationale": "The description lists Pool Parties among the event's offerings."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops",
+      "rationale": "The list of event elements includes Workshops."
+     },
+     {
+      "feature": "shows",
+      "quote": "International Shows",
+      "rationale": "The event lists International Shows, which are performances by artists."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "5 Rooms, 5 Atmospheres",
+      "rationale": "The description states the event has five rooms."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "On-site accommodation with a swimming pool",
+      "rationale": "The festival takes place at a complex that also offers on-site accommodation, so event and accommodation share one venue."
+     }
+    ]
+   }
+  ]
+ }
 }

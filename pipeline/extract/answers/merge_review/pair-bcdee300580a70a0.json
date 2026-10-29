@@ -1,0 +1,13 @@
+{
+ "key_a": "p:katalin@azmael+katalin",
+ "key_b": "p:katalin@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "bcdee300580a70a0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Solo KATALIN and Azmael & Katalin (Budapest) share the name and Austria, but the solo entry could belong to any of her partnered couples."
+ }
+}

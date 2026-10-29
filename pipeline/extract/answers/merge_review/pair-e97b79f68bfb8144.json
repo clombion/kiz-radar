@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elo@adil+elo",
+ "key_b": "p:elo@elo+mike",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "e97b79f68bfb8144",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Shared first name Elo with different partners (Adil vs Mike) and a shared France stated country; the evidence does not settle it."
+ }
+}

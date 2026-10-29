@@ -1,28 +1,35 @@
 {
- "batch": "event-14901",
- "events": [
-  {
-   "event_id": 14901,
-   "party_rooms": null,
-   "class_rooms": {
-    "count": 2,
-    "quote": "2 exclusive rooms for workshops."
-   },
-   "rooms": [
-    {
-     "name_as_written": "Social Dance Room",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Social room during the evening, from 17h to 20h."
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Because Kizomba IS Love"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14901",
+  "events": [
+   {
+    "event_id": 14901,
+    "party_rooms": null,
+    "class_rooms": {
+     "count": 2,
+     "quote": "2 exclusive rooms for workshops."
+    },
+    "rooms": [
+     {
+      "name_as_written": "Social Dance Room",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Social room during the evening, from 17h to 20h."
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Because Kizomba IS Love"
+     }
+    ]
+   }
+  ]
+ }
 }

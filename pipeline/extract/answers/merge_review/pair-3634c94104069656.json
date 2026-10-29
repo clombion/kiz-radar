@@ -1,0 +1,13 @@
+{
+ "key_a": "p:theo@dance",
+ "key_b": "p:theoawadzi",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "3634c94104069656",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The teacher Theo and DJ Theo Awadzi are listed in Stockholm on the same date (2026-01-08) with the same stated countries."
+ }
+}

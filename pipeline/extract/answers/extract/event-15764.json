@@ -1,275 +1,282 @@
 {
- "batch": "event-15764",
- "events": [
-  {
-   "event_id": 15764,
-   "artists": [
-    {
-     "name_as_written": "Val’R & Sarah",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Val’R & Sarah"
-    },
-    {
-     "name_as_written": "Elhadj & Jenna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Elhadj & Jenna"
-    },
-    {
-     "name_as_written": "Lydia Laprade",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Lydia Laprade"
-    },
-    {
-     "name_as_written": "Selim",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Selim"
-    },
-    {
-     "name_as_written": "Karthik & Biina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Karthik & Biina"
-    },
-    {
-     "name_as_written": "Jean Michel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Jean Michel"
-    },
-    {
-     "name_as_written": "David & Quinn",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• David & Quinn"
-    },
-    {
-     "name_as_written": "Stefanos",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Stefanos"
-    },
-    {
-     "name_as_written": "Lio Frei",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "• Lio Frei"
-    },
-    {
-     "name_as_written": "DJ You",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ You"
-    },
-    {
-     "name_as_written": "DJ Smith",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ Smith"
-    },
-    {
-     "name_as_written": "DJ KJ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ KJ"
-    },
-    {
-     "name_as_written": "DJ Jasmine",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ Jasmine"
-    },
-    {
-     "name_as_written": "Anna Mo",
-     "role": "crew",
-     "style": null,
-     "country": "🇷🇺",
-     "source_line": "• Anna Mo🇷🇺"
-    },
-    {
-     "name_as_written": "Ariel",
-     "role": "crew",
-     "style": null,
-     "country": "🇹🇼",
-     "source_line": "• Ariel🇹🇼"
-    },
-    {
-     "name_as_written": "Chole",
-     "role": "crew",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "• Chole🇫🇷"
-    },
-    {
-     "name_as_written": "Ismaël",
-     "role": "crew",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "• Ismaël🇫🇷"
-    },
-    {
-     "name_as_written": "Jamie Tsai",
-     "role": "crew",
-     "style": null,
-     "country": "🇹🇼",
-     "source_line": "• Jamie Tsai🇹🇼"
-    },
-    {
-     "name_as_written": "Jesse Larkin",
-     "role": "crew",
-     "style": null,
-     "country": "🇺🇸",
-     "source_line": "• Jesse Larkin🇺🇸"
-    },
-    {
-     "name_as_written": "KD",
-     "role": "crew",
-     "style": null,
-     "country": "🇵🇭",
-     "source_line": "• KD🇵🇭"
-    },
-    {
-     "name_as_written": "Manuel",
-     "role": "crew",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "• Manuel🇩🇪"
-    },
-    {
-     "name_as_written": "Mel Chua",
-     "role": "crew",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "• Mel Chua🇨🇦"
-    },
-    {
-     "name_as_written": "Milena",
-     "role": "crew",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "• Milena🇫🇷"
-    },
-    {
-     "name_as_written": "Mourad Berra",
-     "role": "crew",
-     "style": null,
-     "country": "🇩🇿",
-     "source_line": "• Mourad Berra 🇩🇿"
-    },
-    {
-     "name_as_written": "Paul",
-     "role": "crew",
-     "style": null,
-     "country": "🇦🇺",
-     "source_line": "• Paul🇦🇺"
-    },
-    {
-     "name_as_written": "Ridhi",
-     "role": "crew",
-     "style": null,
-     "country": "🇮🇳",
-     "source_line": "• Ridhi🇮🇳"
-    },
-    {
-     "name_as_written": "Sareeta",
-     "role": "crew",
-     "style": null,
-     "country": "🇮🇳",
-     "source_line": "• Sareeta🇮🇳"
-    },
-    {
-     "name_as_written": "Savina",
-     "role": "crew",
-     "style": null,
-     "country": "🇦🇺",
-     "source_line": "• Savina🇦🇺"
-    },
-    {
-     "name_as_written": "Yusrah",
-     "role": "crew",
-     "style": null,
-     "country": "🇳🇬🇬🇧",
-     "source_line": "• Yusrah🇳🇬🇬🇧"
-    },
-    {
-     "name_as_written": "Vivek",
-     "role": "crew",
-     "style": null,
-     "country": "🇮🇳",
-     "source_line": "• Vivek🇮🇳"
-    },
-    {
-     "name_as_written": "Les Cactus",
-     "role": "performer",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "• Les Cactus 🇧🇪"
-    },
-    {
-     "name_as_written": "Ryu",
-     "role": "performer",
-     "style": null,
-     "country": "🇨🇴🇯🇵",
-     "source_line": "• Ryu 🇨🇴🇯🇵"
-    },
-    {
-     "name_as_written": "Clayton",
-     "role": "performer",
-     "style": null,
-     "country": "🇮🇳",
-     "source_line": "• Clayton 🇮🇳"
-    },
-    {
-     "name_as_written": "Rei",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "• Rei"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "19:30–20:30 Workshop",
-     "rationale": "The schedule lists workshop sessions as part of the event."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "13:00 Bootcamp",
-     "rationale": "The schedule lists a bootcamp session on Saturday and Sunday."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Tetris Masterclass by Val’r & Sarah",
-     "rationale": "A masterclass is offered as part of the VIP pass."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "【Taxi Dancer Team】",
-     "rationale": "A taxi dancer team is listed with named dancers."
-    },
-    {
-     "feature": "after_party",
-     "quote": "24:00–5:00 After Party",
-     "rationale": "The schedule includes an after party on Saturday night."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15764",
+  "events": [
+   {
+    "event_id": 15764,
+    "artists": [
+     {
+      "name_as_written": "Val’R & Sarah",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Val’R & Sarah"
+     },
+     {
+      "name_as_written": "Elhadj & Jenna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Elhadj & Jenna"
+     },
+     {
+      "name_as_written": "Lydia Laprade",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Lydia Laprade"
+     },
+     {
+      "name_as_written": "Selim",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Selim"
+     },
+     {
+      "name_as_written": "Karthik & Biina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Karthik & Biina"
+     },
+     {
+      "name_as_written": "Jean Michel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Jean Michel"
+     },
+     {
+      "name_as_written": "David & Quinn",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• David & Quinn"
+     },
+     {
+      "name_as_written": "Stefanos",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Stefanos"
+     },
+     {
+      "name_as_written": "Lio Frei",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "• Lio Frei"
+     },
+     {
+      "name_as_written": "DJ You",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "• DJ You"
+     },
+     {
+      "name_as_written": "DJ Smith",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "• DJ Smith"
+     },
+     {
+      "name_as_written": "DJ KJ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "• DJ KJ"
+     },
+     {
+      "name_as_written": "DJ Jasmine",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "• DJ Jasmine"
+     },
+     {
+      "name_as_written": "Anna Mo",
+      "role": "crew",
+      "style": null,
+      "country": "🇷🇺",
+      "source_line": "• Anna Mo🇷🇺"
+     },
+     {
+      "name_as_written": "Ariel",
+      "role": "crew",
+      "style": null,
+      "country": "🇹🇼",
+      "source_line": "• Ariel🇹🇼"
+     },
+     {
+      "name_as_written": "Chole",
+      "role": "crew",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "• Chole🇫🇷"
+     },
+     {
+      "name_as_written": "Ismaël",
+      "role": "crew",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "• Ismaël🇫🇷"
+     },
+     {
+      "name_as_written": "Jamie Tsai",
+      "role": "crew",
+      "style": null,
+      "country": "🇹🇼",
+      "source_line": "• Jamie Tsai🇹🇼"
+     },
+     {
+      "name_as_written": "Jesse Larkin",
+      "role": "crew",
+      "style": null,
+      "country": "🇺🇸",
+      "source_line": "• Jesse Larkin🇺🇸"
+     },
+     {
+      "name_as_written": "KD",
+      "role": "crew",
+      "style": null,
+      "country": "🇵🇭",
+      "source_line": "• KD🇵🇭"
+     },
+     {
+      "name_as_written": "Manuel",
+      "role": "crew",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "• Manuel🇩🇪"
+     },
+     {
+      "name_as_written": "Mel Chua",
+      "role": "crew",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "• Mel Chua🇨🇦"
+     },
+     {
+      "name_as_written": "Milena",
+      "role": "crew",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "• Milena🇫🇷"
+     },
+     {
+      "name_as_written": "Mourad Berra",
+      "role": "crew",
+      "style": null,
+      "country": "🇩🇿",
+      "source_line": "• Mourad Berra 🇩🇿"
+     },
+     {
+      "name_as_written": "Paul",
+      "role": "crew",
+      "style": null,
+      "country": "🇦🇺",
+      "source_line": "• Paul🇦🇺"
+     },
+     {
+      "name_as_written": "Ridhi",
+      "role": "crew",
+      "style": null,
+      "country": "🇮🇳",
+      "source_line": "• Ridhi🇮🇳"
+     },
+     {
+      "name_as_written": "Sareeta",
+      "role": "crew",
+      "style": null,
+      "country": "🇮🇳",
+      "source_line": "• Sareeta🇮🇳"
+     },
+     {
+      "name_as_written": "Savina",
+      "role": "crew",
+      "style": null,
+      "country": "🇦🇺",
+      "source_line": "• Savina🇦🇺"
+     },
+     {
+      "name_as_written": "Yusrah",
+      "role": "crew",
+      "style": null,
+      "country": "🇳🇬🇬🇧",
+      "source_line": "• Yusrah🇳🇬🇬🇧"
+     },
+     {
+      "name_as_written": "Vivek",
+      "role": "crew",
+      "style": null,
+      "country": "🇮🇳",
+      "source_line": "• Vivek🇮🇳"
+     },
+     {
+      "name_as_written": "Les Cactus",
+      "role": "performer",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "• Les Cactus 🇧🇪"
+     },
+     {
+      "name_as_written": "Ryu",
+      "role": "performer",
+      "style": null,
+      "country": "🇨🇴🇯🇵",
+      "source_line": "• Ryu 🇨🇴🇯🇵"
+     },
+     {
+      "name_as_written": "Clayton",
+      "role": "performer",
+      "style": null,
+      "country": "🇮🇳",
+      "source_line": "• Clayton 🇮🇳"
+     },
+     {
+      "name_as_written": "Rei",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "• Rei"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "19:30–20:30 Workshop",
+      "rationale": "The schedule lists workshop sessions as part of the event."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "13:00 Bootcamp",
+      "rationale": "The schedule lists a bootcamp session on Saturday and Sunday."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Tetris Masterclass by Val’r & Sarah",
+      "rationale": "A masterclass is offered as part of the VIP pass."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "【Taxi Dancer Team】",
+      "rationale": "A taxi dancer team is listed with named dancers."
+     },
+     {
+      "feature": "after_party",
+      "quote": "24:00–5:00 After Party",
+      "rationale": "The schedule includes an after party on Saturday night."
+     }
+    ]
+   }
+  ]
+ }
 }

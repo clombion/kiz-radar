@@ -1,77 +1,84 @@
 {
- "batch": "event-16688",
- "events": [
-  {
-   "event_id": 16688,
-   "artists": [
-    {
-     "name_as_written": "DJ PUTO X",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "• DJ PUTO X 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "• DJ NAO 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ ANONY TARRAXA",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "• DJ ANONY TARRAXA 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ BAD",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "• DJ BAD 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ YOUSS",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "• DJ YOUSS 🇫🇷"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE concept:",
-     "rationale": "The description presents the event as an ALL IN ONE concept held at the hotel where guests stay."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "• Accommodation",
-     "rationale": "Accommodation is listed as part of the ALL IN ONE concept."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "• Meals",
-     "rationale": "Meals are listed as part of the ALL IN ONE concept."
-    },
-    {
-     "feature": "workshops",
-     "quote": "• Workshops",
-     "rationale": "Workshops are listed as part of the event package."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "A team of 50+ taxi dancers",
-     "rationale": "The description states that a team of taxi dancers will be present."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODE (coming soon)",
-     "rationale": "A dress code section is announced, though its details are still to come."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16688",
+  "events": [
+   {
+    "event_id": 16688,
+    "artists": [
+     {
+      "name_as_written": "DJ PUTO X",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "• DJ PUTO X 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "• DJ NAO 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ ANONY TARRAXA",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "• DJ ANONY TARRAXA 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ BAD",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "• DJ BAD 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ YOUSS",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "• DJ YOUSS 🇫🇷"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE concept:",
+      "rationale": "The description presents the event as an ALL IN ONE concept held at the hotel where guests stay."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "• Accommodation",
+      "rationale": "Accommodation is listed as part of the ALL IN ONE concept."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "• Meals",
+      "rationale": "Meals are listed as part of the ALL IN ONE concept."
+     },
+     {
+      "feature": "workshops",
+      "quote": "• Workshops",
+      "rationale": "Workshops are listed as part of the event package."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "A team of 50+ taxi dancers",
+      "rationale": "The description states that a team of taxi dancers will be present."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESS CODE (coming soon)",
+      "rationale": "A dress code section is announced, though its details are still to come."
+     }
+    ]
+   }
+  ]
+ }
 }

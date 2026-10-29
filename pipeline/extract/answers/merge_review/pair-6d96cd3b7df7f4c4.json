@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabrizio@fabrizio+nicoletta",
+ "key_b": "p:fabriziocampanella",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:06+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "6d96cd3b7df7f4c4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Fabrizio & Nicoletta on side A and Fabrizio Campanella & Nicoletta on side B are the same couple, with Nicoletta as the shared partner in Italy."
+ }
+}

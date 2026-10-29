@@ -1,0 +1,13 @@
+{
+ "key_a": "p:telma@adilson+telma",
+ "key_b": "p:telma@maiza+telma",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "086469d1412c56a9",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Telma's partner is Adilson on side A and Maiza on side B; the Warsaw entry Adilson Maíza & Telma links Maiza to Adilson, and both sides carry the Angola flag."
+ }
+}

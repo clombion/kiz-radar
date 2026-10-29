@@ -1,0 +1,13 @@
+{
+ "key_a": "p:poema@dj",
+ "key_b": "p:poemabeats",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "bff2b79b4fd9063b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Poema and DJ Poema Beats are the same stage name with a DJ prefix and a trailing word, both DJs with Sweden as the stated country."
+ }
+}

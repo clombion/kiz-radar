@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nuno@catia+nuno",
+ "key_b": "p:nunopesqueira",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "765e8b87e5cccd81",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side B gives the full name Nuno Pesqueira as a solo Portuguese teacher while side A is a couple with Catia, and no event or partner evidence links them."
+ }
+}

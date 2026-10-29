@@ -1,0 +1,13 @@
+{
+ "key_a": "p:stefmat",
+ "key_b": "p:stefmatt",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "e617732f2af15dd6",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Stef Mat (performer, Pisa) and Stef Matt (teacher, Milan) differ by one letter with no shared event, partner or stated country."
+ }
+}

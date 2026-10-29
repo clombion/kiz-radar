@@ -1,0 +1,13 @@
+{
+ "key_a": "p:bonifacio@bonifacio+jessica",
+ "key_b": "p:bonifacioaurio",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "cdbe1edd5bd73bc9",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Bonifacio & Jessica and Bonifacio Aurio share the distinctive first name Bonifacio and Portugal as stated country."
+ }
+}

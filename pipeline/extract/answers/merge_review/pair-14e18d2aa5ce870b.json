@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anastasia@anastasia+richard",
+ "key_b": "p:anastasia@anastasia+selim",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "14e18d2aa5ce870b",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Richard & Anastasia and Selim & Anastasia are different couples with different partners; only the common name Anastasia match."
+ }
+}

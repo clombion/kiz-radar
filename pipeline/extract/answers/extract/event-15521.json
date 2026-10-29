@@ -1,350 +1,357 @@
 {
- "batch": "event-15521",
- "events": [
-  {
-   "event_id": 15521,
-   "artists": [
-    {
-     "name_as_written": "DJ Pepito",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Pepito"
-    },
-    {
-     "name_as_written": "DJ Nas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Nas"
-    },
-    {
-     "name_as_written": "DJ SparkL",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ SparkL"
-    },
-    {
-     "name_as_written": "DJ Daniel",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Daniel"
-    },
-    {
-     "name_as_written": "DJ Seb",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Seb"
-    },
-    {
-     "name_as_written": "DJ Felito",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Felito"
-    },
-    {
-     "name_as_written": "DJ Lukas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Lukas"
-    },
-    {
-     "name_as_written": "DJ Cisko",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Cisko"
-    },
-    {
-     "name_as_written": "DJ Solercito",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Solercito"
-    },
-    {
-     "name_as_written": "DJ Jeremie",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Jeremie"
-    },
-    {
-     "name_as_written": "Masa & Polina",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Masa & Polina (International)"
-    },
-    {
-     "name_as_written": "Diego&Lidia",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Diego&Lidia"
-    },
-    {
-     "name_as_written": "Sam & Emona",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Sam & Emona"
-    },
-    {
-     "name_as_written": "Julien&Theo",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Julien&Theo"
-    },
-    {
-     "name_as_written": "Annelies&Ivona",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Annelies&Ivona"
-    },
-    {
-     "name_as_written": "Pieter&Sanne",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Pieter&Sanne"
-    },
-    {
-     "name_as_written": "Nyna",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Nyna"
-    },
-    {
-     "name_as_written": "Koen",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Koen"
-    },
-    {
-     "name_as_written": "Mathieu&Sara",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Mathieu&Sara"
-    },
-    {
-     "name_as_written": "Kley",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Kley"
-    },
-    {
-     "name_as_written": "Clara",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Clara"
-    },
-    {
-     "name_as_written": "Gaetan&Laurie",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Gaetan&Laurie"
-    },
-    {
-     "name_as_written": "Estefane&Laura",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Estefane&Laura"
-    },
-    {
-     "name_as_written": "Lowran&Nan",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Lowran&Nan"
-    },
-    {
-     "name_as_written": "Gaby",
-     "role": "teacher",
-     "style": "Bachata Dominincaine",
-     "country": null,
-     "source_line": "Gaby"
-    },
-    {
-     "name_as_written": "Didi",
-     "role": "teacher",
-     "style": "Bachata Dominincaine",
-     "country": null,
-     "source_line": "Didi (international)"
-    },
-    {
-     "name_as_written": "Gianni",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Gianni"
-    },
-    {
-     "name_as_written": "Rinus&Joan",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Rinus&Joan"
-    },
-    {
-     "name_as_written": "Ricco & Antonella",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Ricco & Antonella"
-    },
-    {
-     "name_as_written": "Kevin&Karen",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Kevin&Karen"
-    },
-    {
-     "name_as_written": "Zoli",
-     "role": "teacher",
-     "style": "Salsa Cubaine",
-     "country": null,
-     "source_line": "Zoli"
-    },
-    {
-     "name_as_written": "Raffa",
-     "role": "teacher",
-     "style": "Salsa Cubaine",
-     "country": null,
-     "source_line": "Raffa"
-    },
-    {
-     "name_as_written": "William",
-     "role": "teacher",
-     "style": "Zouk",
-     "country": null,
-     "source_line": "William"
-    },
-    {
-     "name_as_written": "Paulo&Sofia",
-     "role": "teacher",
-     "style": "Zouk",
-     "country": null,
-     "source_line": "Paulo&Sofia"
-    },
-    {
-     "name_as_written": "Les Cactus amoureux",
-     "role": "teacher",
-     "style": "Kiz",
-     "country": null,
-     "source_line": "Les Cactus amoureux"
-    },
-    {
-     "name_as_written": "Lee",
-     "role": "teacher",
-     "style": "Kiz",
-     "country": null,
-     "source_line": "Lee"
-    },
-    {
-     "name_as_written": "Ahmedy Teams",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata"
-    },
-    {
-     "name_as_written": "Gaetan",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata"
-    },
-    {
-     "name_as_written": "Éléonora",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata"
-    },
-    {
-     "name_as_written": "Ellas bachata",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata"
-    },
-    {
-     "name_as_written": "Sophie",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Media Team : Sophie, Marnix, Mojo Prod, Nyna"
-    },
-    {
-     "name_as_written": "Marnix",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Media Team : Sophie, Marnix, Mojo Prod, Nyna"
-    },
-    {
-     "name_as_written": "Mojo Prod",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Media Team : Sophie, Marnix, Mojo Prod, Nyna"
-    },
-    {
-     "name_as_written": "Nyna",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Media Team : Sophie, Marnix, Mojo Prod, Nyna"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "5 Dance Rooms",
-     "rationale": "The event runs across five separate dance rooms."
-    },
-    {
-     "feature": "workshops",
-     "quote": "30+ Workshops",
-     "rationale": "The event lists more than thirty workshops."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "a 3-hour beginner bootcamp",
-     "rationale": "The Bachata Room 2 offering is a three-hour bootcamp."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Bootcamp Bachata beginner",
-     "rationale": "The bootcamp is explicitly aimed at beginners."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata",
-     "rationale": "Several acts are listed to perform shows during the event."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress Code: 🤍🤍Withe and Red",
-     "rationale": "A dress code for the Friday is stated."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15521",
+  "events": [
+   {
+    "event_id": 15521,
+    "artists": [
+     {
+      "name_as_written": "DJ Pepito",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Pepito"
+     },
+     {
+      "name_as_written": "DJ Nas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Nas"
+     },
+     {
+      "name_as_written": "DJ SparkL",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ SparkL"
+     },
+     {
+      "name_as_written": "DJ Daniel",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Daniel"
+     },
+     {
+      "name_as_written": "DJ Seb",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Seb"
+     },
+     {
+      "name_as_written": "DJ Felito",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Felito"
+     },
+     {
+      "name_as_written": "DJ Lukas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Lukas"
+     },
+     {
+      "name_as_written": "DJ Cisko",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Cisko"
+     },
+     {
+      "name_as_written": "DJ Solercito",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Solercito"
+     },
+     {
+      "name_as_written": "DJ Jeremie",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Jeremie"
+     },
+     {
+      "name_as_written": "Masa & Polina",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Masa & Polina (International)"
+     },
+     {
+      "name_as_written": "Diego&Lidia",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Diego&Lidia"
+     },
+     {
+      "name_as_written": "Sam & Emona",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Sam & Emona"
+     },
+     {
+      "name_as_written": "Julien&Theo",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Julien&Theo"
+     },
+     {
+      "name_as_written": "Annelies&Ivona",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Annelies&Ivona"
+     },
+     {
+      "name_as_written": "Pieter&Sanne",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Pieter&Sanne"
+     },
+     {
+      "name_as_written": "Nyna",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Nyna"
+     },
+     {
+      "name_as_written": "Koen",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Koen"
+     },
+     {
+      "name_as_written": "Mathieu&Sara",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Mathieu&Sara"
+     },
+     {
+      "name_as_written": "Kley",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Kley"
+     },
+     {
+      "name_as_written": "Clara",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Clara"
+     },
+     {
+      "name_as_written": "Gaetan&Laurie",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Gaetan&Laurie"
+     },
+     {
+      "name_as_written": "Estefane&Laura",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Estefane&Laura"
+     },
+     {
+      "name_as_written": "Lowran&Nan",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Lowran&Nan"
+     },
+     {
+      "name_as_written": "Gaby",
+      "role": "teacher",
+      "style": "Bachata Dominincaine",
+      "country": null,
+      "source_line": "Gaby"
+     },
+     {
+      "name_as_written": "Didi",
+      "role": "teacher",
+      "style": "Bachata Dominincaine",
+      "country": null,
+      "source_line": "Didi (international)"
+     },
+     {
+      "name_as_written": "Gianni",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Gianni"
+     },
+     {
+      "name_as_written": "Rinus&Joan",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Rinus&Joan"
+     },
+     {
+      "name_as_written": "Ricco & Antonella",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Ricco & Antonella"
+     },
+     {
+      "name_as_written": "Kevin&Karen",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Kevin&Karen"
+     },
+     {
+      "name_as_written": "Zoli",
+      "role": "teacher",
+      "style": "Salsa Cubaine",
+      "country": null,
+      "source_line": "Zoli"
+     },
+     {
+      "name_as_written": "Raffa",
+      "role": "teacher",
+      "style": "Salsa Cubaine",
+      "country": null,
+      "source_line": "Raffa"
+     },
+     {
+      "name_as_written": "William",
+      "role": "teacher",
+      "style": "Zouk",
+      "country": null,
+      "source_line": "William"
+     },
+     {
+      "name_as_written": "Paulo&Sofia",
+      "role": "teacher",
+      "style": "Zouk",
+      "country": null,
+      "source_line": "Paulo&Sofia"
+     },
+     {
+      "name_as_written": "Les Cactus amoureux",
+      "role": "teacher",
+      "style": "Kiz",
+      "country": null,
+      "source_line": "Les Cactus amoureux"
+     },
+     {
+      "name_as_written": "Lee",
+      "role": "teacher",
+      "style": "Kiz",
+      "country": null,
+      "source_line": "Lee"
+     },
+     {
+      "name_as_written": "Ahmedy Teams",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata"
+     },
+     {
+      "name_as_written": "Gaetan",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata"
+     },
+     {
+      "name_as_written": "Éléonora",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata"
+     },
+     {
+      "name_as_written": "Ellas bachata",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata"
+     },
+     {
+      "name_as_written": "Sophie",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Media Team : Sophie, Marnix, Mojo Prod, Nyna"
+     },
+     {
+      "name_as_written": "Marnix",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Media Team : Sophie, Marnix, Mojo Prod, Nyna"
+     },
+     {
+      "name_as_written": "Mojo Prod",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Media Team : Sophie, Marnix, Mojo Prod, Nyna"
+     },
+     {
+      "name_as_written": "Nyna",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Media Team : Sophie, Marnix, Mojo Prod, Nyna"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "5 Dance Rooms",
+      "rationale": "The event runs across five separate dance rooms."
+     },
+     {
+      "feature": "workshops",
+      "quote": "30+ Workshops",
+      "rationale": "The event lists more than thirty workshops."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "a 3-hour beginner bootcamp",
+      "rationale": "The Bachata Room 2 offering is a three-hour bootcamp."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Bootcamp Bachata beginner",
+      "rationale": "The bootcamp is explicitly aimed at beginners."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata",
+      "rationale": "Several acts are listed to perform shows during the event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress Code: 🤍🤍Withe and Red",
+      "rationale": "A dress code for the Friday is stated."
+     }
+    ]
+   }
+  ]
+ }
 }

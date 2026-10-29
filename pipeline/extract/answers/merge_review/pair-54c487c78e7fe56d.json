@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sonia@martina+sonia",
+ "key_b": "p:sonia@sonia+stefkizz",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "54c487c78e7fe56d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Martina & Sónia and Stef Kizz & Sonia have different partners and no shared event; the common first name is weak evidence."
+ }
+}

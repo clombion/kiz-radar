@@ -1,0 +1,13 @@
+{
+ "key_a": "p:danifernandes",
+ "key_b": "p:danifernandez",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d5b9dbe6747b40a1",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Dani Fernandes and Dani FERNANDEZ are both DJs with the same stated Netherlands country, differing only by a one-letter spelling variant."
+ }
+}

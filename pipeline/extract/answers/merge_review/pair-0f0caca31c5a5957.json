@@ -1,0 +1,13 @@
+{
+ "key_a": "p:katalin@dance",
+ "key_b": "p:katalin@katalin+matthias",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "0f0caca31c5a5957",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Solo KATALIN (Vienna, April 2026) and Matthias & Katalin (Wels, March 2026) share the name and Austria, but a solo entry with a different partner does not settle it."
+ }
+}

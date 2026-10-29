@@ -1,92 +1,99 @@
 {
- "batch": "event-16575",
- "events": [
-  {
-   "event_id": 16575,
-   "artists": [
-    {
-     "name_as_written": "DJ Ziggy",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇬",
-     "source_line": "DJ Ziggy 🇧🇬"
-    },
-    {
-     "name_as_written": "DJ Al”ben",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇬",
-     "source_line": "DJ Al”ben 🇧🇬"
-    },
-    {
-     "name_as_written": "DJ Jovince",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "DJ Jovince 🇦🇴"
-    },
-    {
-     "name_as_written": "Eliza Sala",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "💥 Eliza Sala 🇦🇴"
-    },
-    {
-     "name_as_written": "Tony & Sylwia",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇪",
-     "source_line": "💥Tony & Sylwia 🇮🇪"
-    },
-    {
-     "name_as_written": "Ziggy & Dani",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇬",
-     "source_line": "💥Ziggy & Dani 🇧🇬"
-    },
-    {
-     "name_as_written": "Alben & Dobi",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇬",
-     "source_line": "💥Alben & Dobi 🇧🇬"
-    },
-    {
-     "name_as_written": "Lady Gery",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇬",
-     "source_line": "💥Lady Gery 🇧🇬"
-    },
-    {
-     "name_as_written": "Esmeraldo Black Diamond",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "💥Esmeraldo Black Diamond 🇦🇴"
-    },
-    {
-     "name_as_written": "Nacim",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "💥Nacim 🇨🇵"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The description lists 'Workshops' as something to expect, and the schedule includes 2 and 6 workshops per day."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows",
-     "rationale": "The 'What to Expect' list includes 'Shows' as part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16575",
+  "events": [
+   {
+    "event_id": 16575,
+    "artists": [
+     {
+      "name_as_written": "DJ Ziggy",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇬",
+      "source_line": "DJ Ziggy 🇧🇬"
+     },
+     {
+      "name_as_written": "DJ Al”ben",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇬",
+      "source_line": "DJ Al”ben 🇧🇬"
+     },
+     {
+      "name_as_written": "DJ Jovince",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "DJ Jovince 🇦🇴"
+     },
+     {
+      "name_as_written": "Eliza Sala",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "💥 Eliza Sala 🇦🇴"
+     },
+     {
+      "name_as_written": "Tony & Sylwia",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇪",
+      "source_line": "💥Tony & Sylwia 🇮🇪"
+     },
+     {
+      "name_as_written": "Ziggy & Dani",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇬",
+      "source_line": "💥Ziggy & Dani 🇧🇬"
+     },
+     {
+      "name_as_written": "Alben & Dobi",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇬",
+      "source_line": "💥Alben & Dobi 🇧🇬"
+     },
+     {
+      "name_as_written": "Lady Gery",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇬",
+      "source_line": "💥Lady Gery 🇧🇬"
+     },
+     {
+      "name_as_written": "Esmeraldo Black Diamond",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "💥Esmeraldo Black Diamond 🇦🇴"
+     },
+     {
+      "name_as_written": "Nacim",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "💥Nacim 🇨🇵"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops",
+      "rationale": "The description lists 'Workshops' as something to expect, and the schedule includes 2 and 6 workshops per day."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows",
+      "rationale": "The 'What to Expect' list includes 'Shows' as part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

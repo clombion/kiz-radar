@@ -1,0 +1,13 @@
+{
+ "key_a": "p:yuna@jules+yuna",
+ "key_b": "p:yunatarraxopop",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "1049c1981fa95359",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Jules & Yuna TarraxoPop is the same couple as Yuna & Jules TarraxoPop, with the same partners, style and Tarraxo Pop name."
+ }
+}

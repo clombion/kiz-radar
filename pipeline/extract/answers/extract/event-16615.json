@@ -1,21 +1,28 @@
 {
- "batch": "event-16615",
- "events": [
-  {
-   "event_id": 16615,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE – 6 ROOMS / 6 ATMOSPHERES",
-     "rationale": "The event is billed as all in one, and the venue is the Logis Hôtel Lyon Est, so the parties appear to take place in the hotel."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "6 Rooms · 6 Music Universes",
-     "rationale": "The description states there are six rooms, each a separate music universe."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16615",
+  "events": [
+   {
+    "event_id": 16615,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE – 6 ROOMS / 6 ATMOSPHERES",
+      "rationale": "The event is billed as all in one, and the venue is the Logis Hôtel Lyon Est, so the parties appear to take place in the hotel."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "6 Rooms · 6 Music Universes",
+      "rationale": "The description states there are six rooms, each a separate music universe."
+     }
+    ]
+   }
+  ]
+ }
 }

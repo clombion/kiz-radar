@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@cristina+johnny",
+ "key_b": "p:cristinazebri",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "739936c77b43e93c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Johnny and Cristina share the same partner and the same Switzerland country; the Bern entry adds only the surname Zebri."
+ }
+}

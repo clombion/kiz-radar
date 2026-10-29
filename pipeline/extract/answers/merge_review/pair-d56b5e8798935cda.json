@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jorge@jorge+rocio",
+ "key_b": "p:jorgeaz",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "d56b5e8798935cda",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Jorge AZ (DJ) and Jorge & Rocio (teacher) share a Vigo event and date, and one person can teach and DJ, but Jorge is a common first name and no name element links them."
+ }
+}

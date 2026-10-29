@@ -1,51 +1,58 @@
 {
- "batch": "event-15541",
- "events": [
-  {
-   "event_id": 15541,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "250+ Workshops in multiple dance styles and levels",
-     "rationale": "The description states that over 250 workshops in multiple dance styles and levels are offered."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "on 7 different Dance Floors",
-     "rationale": "Seven different dance floors are mentioned, so there is more than one dance room."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live Concerts",
-     "rationale": "Salsa-Bachata-Kizomba live concerts are part of the programme."
-    },
-    {
-     "feature": "shows",
-     "quote": "Live Concerts, Shows, Competitions",
-     "rationale": "Shows are listed among the event's offerings."
-    },
-    {
-     "feature": "competition",
-     "quote": "Competitions",
-     "rationale": "Competitions are listed among the event's offerings."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Day & Night Parties",
-     "rationale": "Day parties are offered alongside night parties."
-    },
-    {
-     "feature": "cruise",
-     "quote": "Bosphorus Welcome Dance Cruise",
-     "rationale": "The welcome event is a dance cruise on the Bosphorus."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Island Beach Parties",
-     "rationale": "Beach parties on the Princess' Islands are part of the programme."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15541",
+  "events": [
+   {
+    "event_id": 15541,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "250+ Workshops in multiple dance styles and levels",
+      "rationale": "The description states that over 250 workshops in multiple dance styles and levels are offered."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "on 7 different Dance Floors",
+      "rationale": "Seven different dance floors are mentioned, so there is more than one dance room."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live Concerts",
+      "rationale": "Salsa-Bachata-Kizomba live concerts are part of the programme."
+     },
+     {
+      "feature": "shows",
+      "quote": "Live Concerts, Shows, Competitions",
+      "rationale": "Shows are listed among the event's offerings."
+     },
+     {
+      "feature": "competition",
+      "quote": "Competitions",
+      "rationale": "Competitions are listed among the event's offerings."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Day & Night Parties",
+      "rationale": "Day parties are offered alongside night parties."
+     },
+     {
+      "feature": "cruise",
+      "quote": "Bosphorus Welcome Dance Cruise",
+      "rationale": "The welcome event is a dance cruise on the Bosphorus."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Island Beach Parties",
+      "rationale": "Beach parties on the Princess' Islands are part of the programme."
+     }
+    ]
+   }
+  ]
+ }
 }

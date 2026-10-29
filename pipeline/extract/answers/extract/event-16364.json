@@ -1,31 +1,38 @@
 {
- "batch": "event-16364",
- "events": [
-  {
-   "event_id": 16364,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "45 hours of themed SBK classes",
-     "rationale": "The event offers 45 hours of dance classes across three levels, which are workshops."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 parties until dawn in 3 different rooms",
-     "rationale": "The parties take place in three different rooms, so there is more than one dance floor."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "SBK Pre-Party Workshop (3 Rooms)",
-     "rationale": "An SBK Pre-Party is scheduled before the main party on Friday and Saturday."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "SBK Social Happy Hour (Indoor/Outdoor)",
-     "rationale": "The SBK Social Happy Hour is an afternoon social held from 5:30 PM."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16364",
+  "events": [
+   {
+    "event_id": 16364,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "45 hours of themed SBK classes",
+      "rationale": "The event offers 45 hours of dance classes across three levels, which are workshops."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 parties until dawn in 3 different rooms",
+      "rationale": "The parties take place in three different rooms, so there is more than one dance floor."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "SBK Pre-Party Workshop (3 Rooms)",
+      "rationale": "An SBK Pre-Party is scheduled before the main party on Friday and Saturday."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "SBK Social Happy Hour (Indoor/Outdoor)",
+      "rationale": "The SBK Social Happy Hour is an afternoon social held from 5:30 PM."
+     }
+    ]
+   }
+  ]
+ }
 }

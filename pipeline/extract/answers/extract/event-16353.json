@@ -1,26 +1,33 @@
 {
- "batch": "event-16353",
- "events": [
-  {
-   "event_id": 16353,
-   "artists": [],
-   "features": [
-    {
-     "feature": "beach_party",
-     "quote": "the final day ended with an unforgettable beach party at the hotel’s chiringuito",
-     "rationale": "The text describes a beach party held at the hotel's chiringuito on the final day."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "The afternoon social took place in a lovely outdoor area of the hotel",
-     "rationale": "An afternoon social is described as part of the event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "The workshops were intense and inspiring",
-     "rationale": "The text reports that workshops took place during the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16353",
+  "events": [
+   {
+    "event_id": 16353,
+    "artists": [],
+    "features": [
+     {
+      "feature": "beach_party",
+      "quote": "the final day ended with an unforgettable beach party at the hotel’s chiringuito",
+      "rationale": "The text describes a beach party held at the hotel's chiringuito on the final day."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "The afternoon social took place in a lovely outdoor area of the hotel",
+      "rationale": "An afternoon social is described as part of the event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "The workshops were intense and inspiring",
+      "rationale": "The text reports that workshops took place during the event."
+     }
+    ]
+   }
+  ]
+ }
 }

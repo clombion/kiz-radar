@@ -1,31 +1,38 @@
 {
- "batch": "event-16728",
- "events": [
-  {
-   "event_id": 16728,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Through workshops, parties, concerts, and an international dance competition",
-     "rationale": "The description states that workshops are part of the festival's program."
-    },
-    {
-     "feature": "competition",
-     "quote": "an international dance competition",
-     "rationale": "The event includes an international dance competition, and a Street Dance Competition Final is also scheduled."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Social with Live Band",
-     "rationale": "A live band is scheduled to perform at the Sunday social."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "14:00 – 22:00 → Social with Live Band",
-     "rationale": "The Sunday social is a daytime social running from 14:00 to 22:00."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16728",
+  "events": [
+   {
+    "event_id": 16728,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Through workshops, parties, concerts, and an international dance competition",
+      "rationale": "The description states that workshops are part of the festival's program."
+     },
+     {
+      "feature": "competition",
+      "quote": "an international dance competition",
+      "rationale": "The event includes an international dance competition, and a Street Dance Competition Final is also scheduled."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Social with Live Band",
+      "rationale": "A live band is scheduled to perform at the Sunday social."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "14:00 – 22:00 → Social with Live Band",
+      "rationale": "The Sunday social is a daytime social running from 14:00 to 22:00."
+     }
+    ]
+   }
+  ]
+ }
 }

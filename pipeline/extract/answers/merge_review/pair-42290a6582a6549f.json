@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marisa@jorge+marisa",
+ "key_b": "p:marisapita",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "42290a6582a6549f",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Marisa and Jorge in Madrid share the partner Jorge, the same city and country, and Marisa Pita is the full form of the first-name entry."
+ }
+}

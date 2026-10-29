@@ -1,18 +1,25 @@
 {
- "batch": "event-16134",
- "events": [
-  {
-   "event_id": 16134,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "your FIRST Kizomba (all styles) Festival"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:53:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16134",
+  "events": [
+   {
+    "event_id": 16134,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "your FIRST Kizomba (all styles) Festival"
+     }
+    ]
+   }
+  ]
+ }
 }

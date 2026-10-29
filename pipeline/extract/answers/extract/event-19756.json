@@ -1,326 +1,333 @@
 {
- "batch": "event-19756",
- "events": [
-  {
-   "event_id": 19756,
-   "artists": [
-    {
-     "name_as_written": "Terry & Cecile",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Terry & Cecile"
-    },
-    {
-     "name_as_written": "Panagiotis & Myrto",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Panagiotis & Myrto"
-    },
-    {
-     "name_as_written": "Super Mario & Kristina",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Super Mario & Kristina"
-    },
-    {
-     "name_as_written": "Eloy Rojas",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Eloy Rojas"
-    },
-    {
-     "name_as_written": "Alexis Ruiz & Iselin",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Alexis Ruiz & Iselin"
-    },
-    {
-     "name_as_written": "Jose Diaz & Nerea",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Jose Diaz & Nerea"
-    },
-    {
-     "name_as_written": "Samuel Funflow & Sasha",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Samuel Funflow & Sasha"
-    },
-    {
-     "name_as_written": "Nando & Margarita",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Nando & Margarita"
-    },
-    {
-     "name_as_written": "Grupo Alafia",
-     "role": "performer",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Grupo Alafia"
-    },
-    {
-     "name_as_written": "Paul & Ioana",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Paul & Ioana"
-    },
-    {
-     "name_as_written": "Tzoompy & Luky",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Tzoompy & Luky"
-    },
-    {
-     "name_as_written": "Radu Manole",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Radu Manole"
-    },
-    {
-     "name_as_written": "Catalincho & Andreea",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Catalincho & Andreea"
-    },
-    {
-     "name_as_written": "Miguel & Sunsire",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Miguel & Sunsire"
-    },
-    {
-     "name_as_written": "Sakis & Mia",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Sakis & Mia"
-    },
-    {
-     "name_as_written": "Farid Ferchach",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Farid Ferchach"
-    },
-    {
-     "name_as_written": "Ady & Allișor",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Ady & Allișor"
-    },
-    {
-     "name_as_written": "Marius Turcu",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Marius Turcu"
-    },
-    {
-     "name_as_written": "Jack & Sara",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Jack & Sara"
-    },
-    {
-     "name_as_written": "Radu & Judit",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Radu & Judit"
-    },
-    {
-     "name_as_written": "Karl Bekene",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Karl Bekene"
-    },
-    {
-     "name_as_written": "Sifu & Adelina",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Sifu & Adelina"
-    },
-    {
-     "name_as_written": "Sifu & Alice",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Sifu & Alice"
-    },
-    {
-     "name_as_written": "Farid Ferchach",
-     "role": "mc",
-     "style": null,
-     "country": null,
-     "source_line": "🎤 MC: Farid Ferchach"
-    },
-    {
-     "name_as_written": "DJ Willy",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "DJ Willy"
-    },
-    {
-     "name_as_written": "DJ Dmitri",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "DJ Dmitri"
-    },
-    {
-     "name_as_written": "DJ Asmadi",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "DJ Asmadi"
-    },
-    {
-     "name_as_written": "DJ Sergio",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "DJ Sergio"
-    },
-    {
-     "name_as_written": "DJ Tuli",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "DJ Tuli"
-    },
-    {
-     "name_as_written": "DJ Morandi",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "DJ Morandi"
-    },
-    {
-     "name_as_written": "DJ David Pedron",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "DJ David Pedron"
-    },
-    {
-     "name_as_written": "DJ Clau",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "DJ Clau"
-    },
-    {
-     "name_as_written": "DJ Marc",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "DJ Marc"
-    },
-    {
-     "name_as_written": "DJ Baloo",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "DJ Baloo"
-    },
-    {
-     "name_as_written": "DJ Andu",
-     "role": "dj",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "DJ Andu"
-    },
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "DJ Shark"
-    },
-    {
-     "name_as_written": "DJ David Ruela",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "DJ David Ruela"
-    },
-    {
-     "name_as_written": "DJ Jack",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "DJ Jack"
-    },
-    {
-     "name_as_written": "DJ Jozsi",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "DJ Jozsi"
-    },
-    {
-     "name_as_written": "DJ B!JU",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "DJ B!JU"
-    },
-    {
-     "name_as_written": "Cotiso",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "+40 747 171 850 – Cotiso"
-    },
-    {
-     "name_as_written": "Andrada",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "+40 752 608 043 – Andrada"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "3 days of workshops",
-     "rationale": "The description states that there are three days of workshops."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows, energy, connection and bloody memories",
-     "rationale": "The description lists shows as part of the event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "1 Monday After Party",
-     "rationale": "The description announces a Monday after party."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social by day",
-     "rationale": "The description mentions daytime socials."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19756",
+  "events": [
+   {
+    "event_id": 19756,
+    "artists": [
+     {
+      "name_as_written": "Terry & Cecile",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Terry & Cecile"
+     },
+     {
+      "name_as_written": "Panagiotis & Myrto",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Panagiotis & Myrto"
+     },
+     {
+      "name_as_written": "Super Mario & Kristina",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Super Mario & Kristina"
+     },
+     {
+      "name_as_written": "Eloy Rojas",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Eloy Rojas"
+     },
+     {
+      "name_as_written": "Alexis Ruiz & Iselin",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Alexis Ruiz & Iselin"
+     },
+     {
+      "name_as_written": "Jose Diaz & Nerea",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Jose Diaz & Nerea"
+     },
+     {
+      "name_as_written": "Samuel Funflow & Sasha",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Samuel Funflow & Sasha"
+     },
+     {
+      "name_as_written": "Nando & Margarita",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Nando & Margarita"
+     },
+     {
+      "name_as_written": "Grupo Alafia",
+      "role": "performer",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Grupo Alafia"
+     },
+     {
+      "name_as_written": "Paul & Ioana",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Paul & Ioana"
+     },
+     {
+      "name_as_written": "Tzoompy & Luky",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Tzoompy & Luky"
+     },
+     {
+      "name_as_written": "Radu Manole",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Radu Manole"
+     },
+     {
+      "name_as_written": "Catalincho & Andreea",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Catalincho & Andreea"
+     },
+     {
+      "name_as_written": "Miguel & Sunsire",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Miguel & Sunsire"
+     },
+     {
+      "name_as_written": "Sakis & Mia",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Sakis & Mia"
+     },
+     {
+      "name_as_written": "Farid Ferchach",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Farid Ferchach"
+     },
+     {
+      "name_as_written": "Ady & Allișor",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Ady & Allișor"
+     },
+     {
+      "name_as_written": "Marius Turcu",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Marius Turcu"
+     },
+     {
+      "name_as_written": "Jack & Sara",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Jack & Sara"
+     },
+     {
+      "name_as_written": "Radu & Judit",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Radu & Judit"
+     },
+     {
+      "name_as_written": "Karl Bekene",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Karl Bekene"
+     },
+     {
+      "name_as_written": "Sifu & Adelina",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Sifu & Adelina"
+     },
+     {
+      "name_as_written": "Sifu & Alice",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Sifu & Alice"
+     },
+     {
+      "name_as_written": "Farid Ferchach",
+      "role": "mc",
+      "style": null,
+      "country": null,
+      "source_line": "🎤 MC: Farid Ferchach"
+     },
+     {
+      "name_as_written": "DJ Willy",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "DJ Willy"
+     },
+     {
+      "name_as_written": "DJ Dmitri",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "DJ Dmitri"
+     },
+     {
+      "name_as_written": "DJ Asmadi",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "DJ Asmadi"
+     },
+     {
+      "name_as_written": "DJ Sergio",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "DJ Sergio"
+     },
+     {
+      "name_as_written": "DJ Tuli",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "DJ Tuli"
+     },
+     {
+      "name_as_written": "DJ Morandi",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "DJ Morandi"
+     },
+     {
+      "name_as_written": "DJ David Pedron",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "DJ David Pedron"
+     },
+     {
+      "name_as_written": "DJ Clau",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "DJ Clau"
+     },
+     {
+      "name_as_written": "DJ Marc",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "DJ Marc"
+     },
+     {
+      "name_as_written": "DJ Baloo",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "DJ Baloo"
+     },
+     {
+      "name_as_written": "DJ Andu",
+      "role": "dj",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "DJ Andu"
+     },
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "DJ Shark"
+     },
+     {
+      "name_as_written": "DJ David Ruela",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "DJ David Ruela"
+     },
+     {
+      "name_as_written": "DJ Jack",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "DJ Jack"
+     },
+     {
+      "name_as_written": "DJ Jozsi",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "DJ Jozsi"
+     },
+     {
+      "name_as_written": "DJ B!JU",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "DJ B!JU"
+     },
+     {
+      "name_as_written": "Cotiso",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "+40 747 171 850 – Cotiso"
+     },
+     {
+      "name_as_written": "Andrada",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "+40 752 608 043 – Andrada"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "3 days of workshops",
+      "rationale": "The description states that there are three days of workshops."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows, energy, connection and bloody memories",
+      "rationale": "The description lists shows as part of the event."
+     },
+     {
+      "feature": "after_party",
+      "quote": "1 Monday After Party",
+      "rationale": "The description announces a Monday after party."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Social by day",
+      "rationale": "The description mentions daytime socials."
+     }
+    ]
+   }
+  ]
+ }
 }

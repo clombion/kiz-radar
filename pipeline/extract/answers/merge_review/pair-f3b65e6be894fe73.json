@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@dance",
+ "key_b": "p:cristinazebri",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "f3b65e6be894fe73",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Cristina alone in Bern and Johnny and Cristina Zebri share the Bern city and stated countries, but the first name is common and the partner differs."
+ }
+}

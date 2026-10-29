@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johnny@cristina+johnny",
+ "key_b": "p:johnny@cristinazebri+johnny",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "2aa44bcea08e28db",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Johnny with partner Cristina appears in both pairs, the 2027 entry adds the Zebri surname as the full form of the same couple, and both are Swiss-stated."
+ }
+}

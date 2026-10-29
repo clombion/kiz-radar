@@ -1,110 +1,117 @@
 {
- "batch": "event-16324",
- "events": [
-  {
-   "event_id": 16324,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 ROOMS for 2 VIBES"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "1 room dedicated entirely to Salsa"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16324",
+  "events": [
+   {
+    "event_id": 16324,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 ROOMS for 2 VIBES"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "bachata",
-      "kizomba",
-      "urbankiz"
-     ],
-     "quote": "1 room: Bachata, Kizomba, Urbankiz"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "FESTIVAL: Salsa | Bachata | Kizomba | Rock & Lindy Hop"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Dominican Bachata, Sensual Bachata, Modern Bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxa",
-     "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Rock",
-     "quote": "Rock, Lindy Hop"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Lindy Hop",
-     "quote": "Rock, Lindy Hop"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "Reggaeton",
-     "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Afro-Cuban",
-     "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cuban Rumba",
-     "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Timba",
-     "quote": "Cuban Salsa, Timba, Rueda de Casino, Cuban Son"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Rueda de Casino",
-     "quote": "Cuban Salsa, Timba, Rueda de Casino, Cuban Son"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cuban Son",
-     "quote": "Cuban Salsa, Timba, Rueda de Casino, Cuban Son"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "DJs Salsa, Bachata, Kizomba, Urbankiz, Kompa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "1 room dedicated entirely to Salsa"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "bachata",
+       "kizomba",
+       "urbankiz"
+      ],
+      "quote": "1 room: Bachata, Kizomba, Urbankiz"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "FESTIVAL: Salsa | Bachata | Kizomba | Rock & Lindy Hop"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Dominican Bachata, Sensual Bachata, Modern Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxa",
+      "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Rock",
+      "quote": "Rock, Lindy Hop"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Lindy Hop",
+      "quote": "Rock, Lindy Hop"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "Reggaeton",
+      "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Afro-Cuban",
+      "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cuban Rumba",
+      "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Timba",
+      "quote": "Cuban Salsa, Timba, Rueda de Casino, Cuban Son"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Rueda de Casino",
+      "quote": "Cuban Salsa, Timba, Rueda de Casino, Cuban Son"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cuban Son",
+      "quote": "Cuban Salsa, Timba, Rueda de Casino, Cuban Son"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "DJs Salsa, Bachata, Kizomba, Urbankiz, Kompa"
+     }
+    ]
+   }
+  ]
+ }
 }

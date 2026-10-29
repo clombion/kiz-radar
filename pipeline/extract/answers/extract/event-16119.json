@@ -1,21 +1,28 @@
 {
- "batch": "event-16119",
- "events": [
-  {
-   "event_id": 16119,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Divers cours",
-     "rationale": "The description lists various dance classes (ginga, banga, urban Kiz, sensual, tarraxo, kizomba, semba, lady styling heels, afro) as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 salles, 3 ambiances, 100% vibes !",
-     "rationale": "Stating three separate dance rooms (salles) shows the event has more than one dance room."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16119",
+  "events": [
+   {
+    "event_id": 16119,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Divers cours",
+      "rationale": "The description lists various dance classes (ginga, banga, urban Kiz, sensual, tarraxo, kizomba, semba, lady styling heels, afro) as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 salles, 3 ambiances, 100% vibes !",
+      "rationale": "Stating three separate dance rooms (salles) shows the event has more than one dance room."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paolo@angelica+paolo",
+ "key_b": "p:paolopetrax",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "af1afca433f585dd",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side B gives the full name Paolo Petrax with Italy as the stated country, while side A is the common first name Paolo with a partner, and nothing else links them."
+ }
+}

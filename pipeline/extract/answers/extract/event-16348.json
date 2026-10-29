@@ -1,191 +1,198 @@
 {
- "batch": "event-16348",
- "events": [
-  {
-   "event_id": 16348,
-   "artists": [
-    {
-     "name_as_written": "Josué and Céline",
-     "role": "teacher",
-     "style": "KIZOMBA – TARRAXO – KOMPA",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Josué and Céline – (Bordeaux)"
-    },
-    {
-     "name_as_written": "Lolo Waki",
-     "role": "teacher",
-     "style": "KIZOMBA – TARRAXO – KOMPA",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Lolo Waki ​​- (Bordeaux)"
-    },
-    {
-     "name_as_written": "Asia Voronova",
-     "role": "teacher",
-     "style": "KIZOMBA – TARRAXO – KOMPA",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Asia Voronova – (Bordeaux)"
-    },
-    {
-     "name_as_written": "Malick and Carla",
-     "role": "teacher",
-     "style": "KIZOMBA – TARRAXO – KOMPA",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Malick and Carla – (Bordeaux)"
-    },
-    {
-     "name_as_written": "Sacha and Alyssa",
-     "role": "teacher",
-     "style": "KIZOMBA – TARRAXO – KOMPA",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Sacha and Alyssa – (Tarbes)"
-    },
-    {
-     "name_as_written": "Florian and Audrey",
-     "role": "teacher",
-     "style": "KIZOMBA – TARRAXO – KOMPA",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Florian and Audrey – (Mont-de-Marsan)"
-    },
-    {
-     "name_as_written": "Imad and Nahikari",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Spain",
-     "source_line": "🇪🇸 Imad and Nahikari – (Spain)"
-    },
-    {
-     "name_as_written": "Vilmar and Sara",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "🇮🇹",
-     "source_line": "🇮🇹 Vilmar and Sara – (Sardinia)"
-    },
-    {
-     "name_as_written": "Bastien and Morgane",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Bastien and Morgane – (Toulouse)"
-    },
-    {
-     "name_as_written": "Alex and Delphine",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Alex and Delphine – (Bordeaux)"
-    },
-    {
-     "name_as_written": "Jean-Denis",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Jean-Denis – (Pau)"
-    },
-    {
-     "name_as_written": "Felipe Murcia",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "Spain",
-     "source_line": "🇪🇸 Felipe Murcia – (Spain)"
-    },
-    {
-     "name_as_written": "Dayeline",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Dayeline – (Bordeaux)"
-    },
-    {
-     "name_as_written": "Gaston",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "Argentina",
-     "source_line": "🇦🇷 Gaston – (Argentina)"
-    },
-    {
-     "name_as_written": "Gaston",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Gaston"
-    },
-    {
-     "name_as_written": "DJ Webster",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Webster"
-    },
-    {
-     "name_as_written": "DJette KISS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJette KISS"
-    },
-    {
-     "name_as_written": "DJ Dark",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Dark"
-    },
-    {
-     "name_as_written": "Fred",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 Fred"
-    },
-    {
-     "name_as_written": "David Marguerite",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 David Marguerite"
-    },
-    {
-     "name_as_written": "Eric Tessier",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 Eric Tessier"
-    },
-    {
-     "name_as_written": "Yanis",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 Yanis"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "Three rooms to dance, learn, and fully enjoy yourself",
-     "rationale": "Three rooms to dance in are announced, so there is more than one dance floor."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "whatever your level",
-     "rationale": "The event states it is suitable whatever the dancer's level."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops from 11 AM to 5 PM",
-     "rationale": "The program lists daytime workshops as part of the event."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODES",
-     "rationale": "A section announces dress codes for the nights, with colours specified."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "white and gold",
-     "rationale": "The Saturday party has a colour-based dress theme, El Dorado in white and gold."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16348",
+  "events": [
+   {
+    "event_id": 16348,
+    "artists": [
+     {
+      "name_as_written": "Josué and Céline",
+      "role": "teacher",
+      "style": "KIZOMBA – TARRAXO – KOMPA",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Josué and Céline – (Bordeaux)"
+     },
+     {
+      "name_as_written": "Lolo Waki",
+      "role": "teacher",
+      "style": "KIZOMBA – TARRAXO – KOMPA",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Lolo Waki ​​- (Bordeaux)"
+     },
+     {
+      "name_as_written": "Asia Voronova",
+      "role": "teacher",
+      "style": "KIZOMBA – TARRAXO – KOMPA",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Asia Voronova – (Bordeaux)"
+     },
+     {
+      "name_as_written": "Malick and Carla",
+      "role": "teacher",
+      "style": "KIZOMBA – TARRAXO – KOMPA",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Malick and Carla – (Bordeaux)"
+     },
+     {
+      "name_as_written": "Sacha and Alyssa",
+      "role": "teacher",
+      "style": "KIZOMBA – TARRAXO – KOMPA",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Sacha and Alyssa – (Tarbes)"
+     },
+     {
+      "name_as_written": "Florian and Audrey",
+      "role": "teacher",
+      "style": "KIZOMBA – TARRAXO – KOMPA",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Florian and Audrey – (Mont-de-Marsan)"
+     },
+     {
+      "name_as_written": "Imad and Nahikari",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Spain",
+      "source_line": "🇪🇸 Imad and Nahikari – (Spain)"
+     },
+     {
+      "name_as_written": "Vilmar and Sara",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "🇮🇹",
+      "source_line": "🇮🇹 Vilmar and Sara – (Sardinia)"
+     },
+     {
+      "name_as_written": "Bastien and Morgane",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Bastien and Morgane – (Toulouse)"
+     },
+     {
+      "name_as_written": "Alex and Delphine",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Alex and Delphine – (Bordeaux)"
+     },
+     {
+      "name_as_written": "Jean-Denis",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Jean-Denis – (Pau)"
+     },
+     {
+      "name_as_written": "Felipe Murcia",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "Spain",
+      "source_line": "🇪🇸 Felipe Murcia – (Spain)"
+     },
+     {
+      "name_as_written": "Dayeline",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Dayeline – (Bordeaux)"
+     },
+     {
+      "name_as_written": "Gaston",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "Argentina",
+      "source_line": "🇦🇷 Gaston – (Argentina)"
+     },
+     {
+      "name_as_written": "Gaston",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Gaston"
+     },
+     {
+      "name_as_written": "DJ Webster",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Webster"
+     },
+     {
+      "name_as_written": "DJette KISS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJette KISS"
+     },
+     {
+      "name_as_written": "DJ Dark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Dark"
+     },
+     {
+      "name_as_written": "Fred",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 Fred"
+     },
+     {
+      "name_as_written": "David Marguerite",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 David Marguerite"
+     },
+     {
+      "name_as_written": "Eric Tessier",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 Eric Tessier"
+     },
+     {
+      "name_as_written": "Yanis",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 Yanis"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "Three rooms to dance, learn, and fully enjoy yourself",
+      "rationale": "Three rooms to dance in are announced, so there is more than one dance floor."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "whatever your level",
+      "rationale": "The event states it is suitable whatever the dancer's level."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops from 11 AM to 5 PM",
+      "rationale": "The program lists daytime workshops as part of the event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESS CODES",
+      "rationale": "A section announces dress codes for the nights, with colours specified."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "white and gold",
+      "rationale": "The Saturday party has a colour-based dress theme, El Dorado in white and gold."
+     }
+    ]
+   }
+  ]
+ }
 }

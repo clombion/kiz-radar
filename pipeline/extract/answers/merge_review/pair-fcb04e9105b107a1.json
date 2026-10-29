@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@david+laura",
+ "key_b": "p:davide@davide+laura",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "fcb04e9105b107a1",
+ "answer": {
+  "decision": "separate",
+  "rationale": "David and Davide are different forms of the first name (one letter apart) and the UK event against Italian events gives no shared distinctive evidence."
+ }
+}

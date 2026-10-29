@@ -1,48 +1,55 @@
 {
- "batch": "event-16565",
- "events": [
-  {
-   "event_id": 16565,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Cuban Salsa",
-     "quote": "Dayeline – Cuban Salsa"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Jory – Kizomba / Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Jory – Kizomba / Konpa"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Audrey & Sébastien – Bachata"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Yannick El Mambo – Afro"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Irish",
-     "quote": "Pauline – Irish / Crossdance"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Crossdance",
-     "quote": "Pauline – Irish / Crossdance"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:54:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16565",
+  "events": [
+   {
+    "event_id": 16565,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Cuban Salsa",
+      "quote": "Dayeline – Cuban Salsa"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Jory – Kizomba / Konpa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Jory – Kizomba / Konpa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Audrey & Sébastien – Bachata"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Yannick El Mambo – Afro"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Irish",
+      "quote": "Pauline – Irish / Crossdance"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Crossdance",
+      "quote": "Pauline – Irish / Crossdance"
+     }
+    ]
+   }
+  ]
+ }
 }

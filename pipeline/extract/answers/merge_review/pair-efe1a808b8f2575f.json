@@ -1,0 +1,13 @@
+{
+ "key_a": "p:aleksandra@aleksandra+claudio",
+ "key_b": "p:alessandra@alessandra+marc",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:21:56+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "efe1a808b8f2575f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Aleksandra and Alessandra have different spellings, different partners and different stated countries (Poland vs Italy)."
+ }
+}

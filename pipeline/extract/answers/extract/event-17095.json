@@ -1,357 +1,364 @@
 {
- "batch": "event-17095",
- "events": [
-  {
-   "event_id": 17095,
-   "artists": [
-    {
-     "name_as_written": "Yami & Kali",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Yami & Kali"
-    },
-    {
-     "name_as_written": "Karl Bekene",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Karl Bekene"
-    },
-    {
-     "name_as_written": "DJ Sam Gold",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 DJ Sam Gold"
-    },
-    {
-     "name_as_written": "DJ Yami SO",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 DJ Yami SO"
-    },
-    {
-     "name_as_written": "Mirela",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Mirela"
-    },
-    {
-     "name_as_written": "Krasi & Plamy",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Krasi & Plamy"
-    },
-    {
-     "name_as_written": "Otavio & Sara",
-     "role": "teacher",
-     "style": "Zouk",
-     "country": "🇧🇷",
-     "source_line": "🇧🇷 Otavio & Sara"
-    },
-    {
-     "name_as_written": "Arthur Santos",
-     "role": "teacher",
-     "style": "Zouk",
-     "country": "🇧🇷",
-     "source_line": "🇧🇷 Arthur Santos"
-    },
-    {
-     "name_as_written": "Kadu & Carolina",
-     "role": "teacher",
-     "style": "Zouk",
-     "country": "🇧🇷 🇪🇸",
-     "source_line": "🇧🇷 🇪🇸 Kadu & Carolina"
-    },
-    {
-     "name_as_written": "Klaudia & Mateusz",
-     "role": "teacher",
-     "style": "Zouk",
-     "country": "🇵🇱",
-     "source_line": "🇵🇱 Klaudia & Mateusz"
-    },
-    {
-     "name_as_written": "Rado & Elly",
-     "role": "teacher",
-     "style": "Zouk",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Rado & Elly"
-    },
-    {
-     "name_as_written": "DJ Klaudinha",
-     "role": "dj",
-     "style": "Zouk",
-     "country": "🇵🇱",
-     "source_line": "🇵🇱 DJ Klaudinha"
-    },
-    {
-     "name_as_written": "DJ Arthur",
-     "role": "dj",
-     "style": "Zouk",
-     "country": "🇧🇷",
-     "source_line": "🇧🇷 DJ Arthur"
-    },
-    {
-     "name_as_written": "DJ Fiores",
-     "role": "dj",
-     "style": "Zouk",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 DJ Fiores"
-    },
-    {
-     "name_as_written": "DJ Slava",
-     "role": "dj",
-     "style": "Zouk",
-     "country": "🇺🇦",
-     "source_line": "🇺🇦 DJ Slava"
-    },
-    {
-     "name_as_written": "DJ Senzen",
-     "role": "dj",
-     "style": "Zouk",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 DJ Senzen"
-    },
-    {
-     "name_as_written": "Korke & Judith",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇪🇸",
-     "source_line": "🇪🇸 Korke & Judith"
-    },
-    {
-     "name_as_written": "Jorge & Angela",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇪🇸",
-     "source_line": "🇪🇸Jorge & Angela"
-    },
-    {
-     "name_as_written": "Marco Palladino",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇮🇹",
-     "source_line": "🇮🇹 Marco Palladino"
-    },
-    {
-     "name_as_written": "Adrian & Ruxi",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇷🇴",
-     "source_line": "🇷🇴 Adrian & Ruxi"
-    },
-    {
-     "name_as_written": "Mihai & Carla",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇷🇴",
-     "source_line": "🇷🇴 Mihai & Carla"
-    },
-    {
-     "name_as_written": "Edi & Raluca",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇷🇴",
-     "source_line": "🇷🇴 Edi & Raluca"
-    },
-    {
-     "name_as_written": "Alex & Amira",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇷🇴",
-     "source_line": "🇷🇴 Alex & Amira"
-    },
-    {
-     "name_as_written": "Alma",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇪🇸",
-     "source_line": "🇪🇸 Alma"
-    },
-    {
-     "name_as_written": "DJ Alex",
-     "role": "dj",
-     "style": "Bachata",
-     "country": "🇪🇸",
-     "source_line": "🇪🇸 DJ Alex"
-    },
-    {
-     "name_as_written": "DJ Dia",
-     "role": "dj",
-     "style": "Bachata",
-     "country": "🇩🇪",
-     "source_line": "🇩🇪 DJ Dia"
-    },
-    {
-     "name_as_written": "Nawir & Greta",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇫🇷🇧🇬",
-     "source_line": "🇫🇷🇧🇬 Nawir & Greta"
-    },
-    {
-     "name_as_written": "Georgi & Patrisia",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Georgi & Patrisia"
-    },
-    {
-     "name_as_written": "Velizar & Jacklin",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Velizar & Jacklin"
-    },
-    {
-     "name_as_written": "Niko & Teodora",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Niko & Teodora"
-    },
-    {
-     "name_as_written": "Stan & Rossie",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Stan & Rossie"
-    },
-    {
-     "name_as_written": "Vicky Rudolf",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Vicky Rudolf"
-    },
-    {
-     "name_as_written": "Stuni & Lily",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Stuni & Lily"
-    },
-    {
-     "name_as_written": "Neko & Fede",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Neko & Fede"
-    },
-    {
-     "name_as_written": "Rumen & Yulia",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Rumen & Yulia"
-    },
-    {
-     "name_as_written": "Ivo & Silvia",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Ivo & Silvia"
-    },
-    {
-     "name_as_written": "Teodora & Niko",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Teodora & Niko"
-    },
-    {
-     "name_as_written": "Valentin Poromanski",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 Valentin Poromanski"
-    },
-    {
-     "name_as_written": "DJ Gery",
-     "role": "dj",
-     "style": "Salsa",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 DJ Gery"
-    },
-    {
-     "name_as_written": "DJ Valentino",
-     "role": "dj",
-     "style": "Salsa",
-     "country": "🇧🇬",
-     "source_line": "🇧🇬 DJ Valentino"
-    },
-    {
-     "name_as_written": "Smiley",
-     "role": "teacher",
-     "style": "Holistic Track",
-     "country": "🇮🇱",
-     "source_line": "🇮🇱 Smiley"
-    },
-    {
-     "name_as_written": "Silvie",
-     "role": "teacher",
-     "style": "Holistic Track",
-     "country": "🇩🇪",
-     "source_line": "🇩🇪 Silvie"
-    },
-    {
-     "name_as_written": "Eva",
-     "role": "teacher",
-     "style": "Holistic Track",
-     "country": "🇩🇪",
-     "source_line": "🇩🇪 Eva"
-    },
-    {
-     "name_as_written": "Sabi",
-     "role": "teacher",
-     "style": "Holistic Track",
-     "country": "🇮🇪",
-     "source_line": "🇮🇪 Sabi"
-    },
-    {
-     "name_as_written": "Zuzi",
-     "role": "teacher",
-     "style": "Holistic Track",
-     "country": "🇸🇰",
-     "source_line": "🇸🇰 Zuzi"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops & Daytime socials",
-     "rationale": "The description lists workshops as part of the 75H programme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Daytime socials",
-     "rationale": "The programme explicitly includes daytime socials."
-    },
-    {
-     "feature": "shows",
-     "quote": "Saturday shows on the beach",
-     "rationale": "Shows on the beach on Saturday are promised."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Friday Community Dinner included in the Full Pass",
-     "rationale": "A meal is stated to be included in the Full Pass."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "All hotels below offer Double & Private rooms",
-     "rationale": "Negotiated hotel options with per-person rates are listed without accommodation being part of the pass."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "At 4 unique Outdoor stages",
-     "rationale": "There are four separate dance stages running at once."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17095",
+  "events": [
+   {
+    "event_id": 17095,
+    "artists": [
+     {
+      "name_as_written": "Yami & Kali",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Yami & Kali"
+     },
+     {
+      "name_as_written": "Karl Bekene",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Karl Bekene"
+     },
+     {
+      "name_as_written": "DJ Sam Gold",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 DJ Sam Gold"
+     },
+     {
+      "name_as_written": "DJ Yami SO",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 DJ Yami SO"
+     },
+     {
+      "name_as_written": "Mirela",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Mirela"
+     },
+     {
+      "name_as_written": "Krasi & Plamy",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Krasi & Plamy"
+     },
+     {
+      "name_as_written": "Otavio & Sara",
+      "role": "teacher",
+      "style": "Zouk",
+      "country": "🇧🇷",
+      "source_line": "🇧🇷 Otavio & Sara"
+     },
+     {
+      "name_as_written": "Arthur Santos",
+      "role": "teacher",
+      "style": "Zouk",
+      "country": "🇧🇷",
+      "source_line": "🇧🇷 Arthur Santos"
+     },
+     {
+      "name_as_written": "Kadu & Carolina",
+      "role": "teacher",
+      "style": "Zouk",
+      "country": "🇧🇷 🇪🇸",
+      "source_line": "🇧🇷 🇪🇸 Kadu & Carolina"
+     },
+     {
+      "name_as_written": "Klaudia & Mateusz",
+      "role": "teacher",
+      "style": "Zouk",
+      "country": "🇵🇱",
+      "source_line": "🇵🇱 Klaudia & Mateusz"
+     },
+     {
+      "name_as_written": "Rado & Elly",
+      "role": "teacher",
+      "style": "Zouk",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Rado & Elly"
+     },
+     {
+      "name_as_written": "DJ Klaudinha",
+      "role": "dj",
+      "style": "Zouk",
+      "country": "🇵🇱",
+      "source_line": "🇵🇱 DJ Klaudinha"
+     },
+     {
+      "name_as_written": "DJ Arthur",
+      "role": "dj",
+      "style": "Zouk",
+      "country": "🇧🇷",
+      "source_line": "🇧🇷 DJ Arthur"
+     },
+     {
+      "name_as_written": "DJ Fiores",
+      "role": "dj",
+      "style": "Zouk",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 DJ Fiores"
+     },
+     {
+      "name_as_written": "DJ Slava",
+      "role": "dj",
+      "style": "Zouk",
+      "country": "🇺🇦",
+      "source_line": "🇺🇦 DJ Slava"
+     },
+     {
+      "name_as_written": "DJ Senzen",
+      "role": "dj",
+      "style": "Zouk",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 DJ Senzen"
+     },
+     {
+      "name_as_written": "Korke & Judith",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇪🇸",
+      "source_line": "🇪🇸 Korke & Judith"
+     },
+     {
+      "name_as_written": "Jorge & Angela",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇪🇸",
+      "source_line": "🇪🇸Jorge & Angela"
+     },
+     {
+      "name_as_written": "Marco Palladino",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇮🇹",
+      "source_line": "🇮🇹 Marco Palladino"
+     },
+     {
+      "name_as_written": "Adrian & Ruxi",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇷🇴",
+      "source_line": "🇷🇴 Adrian & Ruxi"
+     },
+     {
+      "name_as_written": "Mihai & Carla",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇷🇴",
+      "source_line": "🇷🇴 Mihai & Carla"
+     },
+     {
+      "name_as_written": "Edi & Raluca",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇷🇴",
+      "source_line": "🇷🇴 Edi & Raluca"
+     },
+     {
+      "name_as_written": "Alex & Amira",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇷🇴",
+      "source_line": "🇷🇴 Alex & Amira"
+     },
+     {
+      "name_as_written": "Alma",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇪🇸",
+      "source_line": "🇪🇸 Alma"
+     },
+     {
+      "name_as_written": "DJ Alex",
+      "role": "dj",
+      "style": "Bachata",
+      "country": "🇪🇸",
+      "source_line": "🇪🇸 DJ Alex"
+     },
+     {
+      "name_as_written": "DJ Dia",
+      "role": "dj",
+      "style": "Bachata",
+      "country": "🇩🇪",
+      "source_line": "🇩🇪 DJ Dia"
+     },
+     {
+      "name_as_written": "Nawir & Greta",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇫🇷🇧🇬",
+      "source_line": "🇫🇷🇧🇬 Nawir & Greta"
+     },
+     {
+      "name_as_written": "Georgi & Patrisia",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Georgi & Patrisia"
+     },
+     {
+      "name_as_written": "Velizar & Jacklin",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Velizar & Jacklin"
+     },
+     {
+      "name_as_written": "Niko & Teodora",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Niko & Teodora"
+     },
+     {
+      "name_as_written": "Stan & Rossie",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Stan & Rossie"
+     },
+     {
+      "name_as_written": "Vicky Rudolf",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Vicky Rudolf"
+     },
+     {
+      "name_as_written": "Stuni & Lily",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Stuni & Lily"
+     },
+     {
+      "name_as_written": "Neko & Fede",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Neko & Fede"
+     },
+     {
+      "name_as_written": "Rumen & Yulia",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Rumen & Yulia"
+     },
+     {
+      "name_as_written": "Ivo & Silvia",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Ivo & Silvia"
+     },
+     {
+      "name_as_written": "Teodora & Niko",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Teodora & Niko"
+     },
+     {
+      "name_as_written": "Valentin Poromanski",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 Valentin Poromanski"
+     },
+     {
+      "name_as_written": "DJ Gery",
+      "role": "dj",
+      "style": "Salsa",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 DJ Gery"
+     },
+     {
+      "name_as_written": "DJ Valentino",
+      "role": "dj",
+      "style": "Salsa",
+      "country": "🇧🇬",
+      "source_line": "🇧🇬 DJ Valentino"
+     },
+     {
+      "name_as_written": "Smiley",
+      "role": "teacher",
+      "style": "Holistic Track",
+      "country": "🇮🇱",
+      "source_line": "🇮🇱 Smiley"
+     },
+     {
+      "name_as_written": "Silvie",
+      "role": "teacher",
+      "style": "Holistic Track",
+      "country": "🇩🇪",
+      "source_line": "🇩🇪 Silvie"
+     },
+     {
+      "name_as_written": "Eva",
+      "role": "teacher",
+      "style": "Holistic Track",
+      "country": "🇩🇪",
+      "source_line": "🇩🇪 Eva"
+     },
+     {
+      "name_as_written": "Sabi",
+      "role": "teacher",
+      "style": "Holistic Track",
+      "country": "🇮🇪",
+      "source_line": "🇮🇪 Sabi"
+     },
+     {
+      "name_as_written": "Zuzi",
+      "role": "teacher",
+      "style": "Holistic Track",
+      "country": "🇸🇰",
+      "source_line": "🇸🇰 Zuzi"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops & Daytime socials",
+      "rationale": "The description lists workshops as part of the 75H programme."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Daytime socials",
+      "rationale": "The programme explicitly includes daytime socials."
+     },
+     {
+      "feature": "shows",
+      "quote": "Saturday shows on the beach",
+      "rationale": "Shows on the beach on Saturday are promised."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Friday Community Dinner included in the Full Pass",
+      "rationale": "A meal is stated to be included in the Full Pass."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "All hotels below offer Double & Private rooms",
+      "rationale": "Negotiated hotel options with per-person rates are listed without accommodation being part of the pass."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "At 4 unique Outdoor stages",
+      "rationale": "There are four separate dance stages running at once."
+     }
+    ]
+   }
+  ]
+ }
 }

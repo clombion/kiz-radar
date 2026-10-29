@@ -1,121 +1,128 @@
 {
- "batch": "event-18884",
- "events": [
-  {
-   "event_id": 18884,
-   "artists": [
-    {
-     "name_as_written": "Alvaro & Tomasina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Alvaro & Tomasina"
-    },
-    {
-     "name_as_written": "Paola & Miguel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Paola & Miguel"
-    },
-    {
-     "name_as_written": "Alberto Celma",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Alberto Celma"
-    },
-    {
-     "name_as_written": "Vanessa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Vanessa"
-    },
-    {
-     "name_as_written": "Issa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Issa"
-    },
-    {
-     "name_as_written": "Jamba",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Jamba"
-    },
-    {
-     "name_as_written": "NZO Pablo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 NZO Pablo"
-    },
-    {
-     "name_as_written": "DJ Yha",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "〰 DJ Yha"
-    },
-    {
-     "name_as_written": "DJ Xavix",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "〰 DJ Xavix"
-    },
-    {
-     "name_as_written": "DJ Relampago",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "〰 DJ Relampago"
-    },
-    {
-     "name_as_written": "Anna Paula Photography",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Anna Paula Photography"
-    },
-    {
-     "name_as_written": "Kianda Festival Switzerland",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "(c) 2026/2027 Kianda Festival Switzerland. Änderungen vorbehalten. Sous réserve de modifications. Subject to change."
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Inspiring workshops",
-     "rationale": "The description lists inspiring workshops as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Beautiful socials",
-     "rationale": "Socials are listed as part of the event, and the programme includes a 15:00-18:00 social party."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Stylish themed parties",
-     "rationale": "The description explicitly advertises stylish themed parties."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Party Dress Code: to be announced",
-     "rationale": "A party dress code is stated, with details to be announced."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "City Hotel Biel Bienne",
-     "rationale": "The city hotel is named as the Kianda partner hotel, without being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18884",
+  "events": [
+   {
+    "event_id": 18884,
+    "artists": [
+     {
+      "name_as_written": "Alvaro & Tomasina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Alvaro & Tomasina"
+     },
+     {
+      "name_as_written": "Paola & Miguel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Paola & Miguel"
+     },
+     {
+      "name_as_written": "Alberto Celma",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Alberto Celma"
+     },
+     {
+      "name_as_written": "Vanessa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Vanessa"
+     },
+     {
+      "name_as_written": "Issa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Issa"
+     },
+     {
+      "name_as_written": "Jamba",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Jamba"
+     },
+     {
+      "name_as_written": "NZO Pablo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 NZO Pablo"
+     },
+     {
+      "name_as_written": "DJ Yha",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "〰 DJ Yha"
+     },
+     {
+      "name_as_written": "DJ Xavix",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "〰 DJ Xavix"
+     },
+     {
+      "name_as_written": "DJ Relampago",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "〰 DJ Relampago"
+     },
+     {
+      "name_as_written": "Anna Paula Photography",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Anna Paula Photography"
+     },
+     {
+      "name_as_written": "Kianda Festival Switzerland",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "(c) 2026/2027 Kianda Festival Switzerland. Änderungen vorbehalten. Sous réserve de modifications. Subject to change."
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Inspiring workshops",
+      "rationale": "The description lists inspiring workshops as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Beautiful socials",
+      "rationale": "Socials are listed as part of the event, and the programme includes a 15:00-18:00 social party."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Stylish themed parties",
+      "rationale": "The description explicitly advertises stylish themed parties."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Party Dress Code: to be announced",
+      "rationale": "A party dress code is stated, with details to be announced."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "City Hotel Biel Bienne",
+      "rationale": "The city hotel is named as the Kianda partner hotel, without being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

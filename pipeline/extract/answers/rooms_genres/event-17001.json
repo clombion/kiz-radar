@@ -1,38 +1,45 @@
 {
- "batch": "event-17001",
- "events": [
-  {
-   "event_id": 17001,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban kiz",
-     "quote": "à prédominance Urban kiz, Tarraxo et Douceur"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Stage Tarraxo avec JessyPop et Mélanie (Tours)"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "à prédominance Urban kiz, Tarraxo et Douceur"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GHETTO ZOUK",
-     "quote": "𝐆𝐇𝐄𝐓𝐓𝐎 𝐙𝐎U𝐊"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17001",
+  "events": [
+   {
+    "event_id": 17001,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban kiz",
+      "quote": "à prédominance Urban kiz, Tarraxo et Douceur"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Stage Tarraxo avec JessyPop et Mélanie (Tours)"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "à prédominance Urban kiz, Tarraxo et Douceur"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GHETTO ZOUK",
+      "quote": "𝐆𝐇𝐄𝐓𝐓𝐎 𝐙𝐎U𝐊"
+     }
+    ]
+   }
+  ]
+ }
 }

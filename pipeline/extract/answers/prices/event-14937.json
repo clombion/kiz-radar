@@ -1,124 +1,131 @@
 {
- "batch": "event-14937",
- "events": [
-  {
-   "event_id": 14937,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "BLIND 𝙁𝙐𝙇𝙇 𝙋𝙖𝙨𝙨*",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 90.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 50,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "90 𝙀𝙐𝙍𝙊 first 50 passes – SOLD OUT"
-      },
-      {
-       "amount": 95.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 50,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "95 𝙀𝙐𝙍𝙊 next 50 passes – SOLD OUT"
-      },
-      {
-       "amount": 110.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "09-01",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "FULL Pass – 110 euro"
-      },
-      {
-       "amount": 115.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "10-01",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "FULL Pass – 115 euro"
-      },
-      {
-       "amount": 160.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "FULL Pass – 160 euro"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 95.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "10-01",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "PARTY Pass – 95 euro"
-      },
-      {
-       "amount": 140.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "PARTY Pass – 140 euro"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Prices go up 5 euro every month"
-   ]
-  }
- ]
+ "prompt": "6659bdf7507764a9",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:57:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14937",
+  "events": [
+   {
+    "event_id": 14937,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "BLIND 𝙁𝙐𝙇𝙇 𝙋𝙖𝙨𝙨*",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 90.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 50,
+        "door": false,
+        "sold_out": true,
+        "current": false,
+        "quote": "90 𝙀𝙐𝙍𝙊 first 50 passes – SOLD OUT"
+       },
+       {
+        "amount": 95.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": 50,
+        "door": false,
+        "sold_out": true,
+        "current": false,
+        "quote": "95 𝙀𝙐𝙍𝙊 next 50 passes – SOLD OUT"
+       },
+       {
+        "amount": 110.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "09-01",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "FULL Pass – 110 euro"
+       },
+       {
+        "amount": 115.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "10-01",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "FULL Pass – 115 euro"
+       },
+       {
+        "amount": 160.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": true,
+        "sold_out": false,
+        "current": false,
+        "quote": "FULL Pass – 160 euro"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 95.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": "10-01",
+        "quantity": null,
+        "door": false,
+        "sold_out": false,
+        "current": false,
+        "quote": "PARTY Pass – 95 euro"
+       },
+       {
+        "amount": 140.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "from": null,
+        "until": null,
+        "quantity": null,
+        "door": true,
+        "sold_out": false,
+        "current": false,
+        "quote": "PARTY Pass – 140 euro"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Prices go up 5 euro every month"
+    ]
+   }
+  ]
+ }
 }

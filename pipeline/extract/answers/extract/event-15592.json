@@ -1,98 +1,105 @@
 {
- "batch": "event-15592",
- "events": [
-  {
-   "event_id": 15592,
-   "artists": [
-    {
-     "name_as_written": "Fred & Chiara",
-     "role": "teacher",
-     "style": "Urbankiz & Fusion",
-     "country": "🇫🇷🇮🇹",
-     "source_line": "✅⚜️ Fred & Chiara 🇫🇷🇮🇹 Urbankiz & Fusion"
-    },
-    {
-     "name_as_written": "Cindy & Patrick",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": "🇫🇷🇵🇹",
-     "source_line": "✅⚜️ Cindy & Patrick 🇫🇷🇵🇹 Urbankiz"
-    },
-    {
-     "name_as_written": "Jo & Mila",
-     "role": "teacher",
-     "style": "Kizomba Semba",
-     "country": "🇫🇷",
-     "source_line": "✅⚜️ Jo & Mila 🇫🇷 Kizomba Semba"
-    },
-    {
-     "name_as_written": "Richard & Sonia",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇮🇹🇫🇷",
-     "source_line": "✅⚜️ Richard & Sonia 🇮🇹🇫🇷 Salsa"
-    },
-    {
-     "name_as_written": "Stephanie & Greg",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇫🇷",
-     "source_line": "✅⚜️ Stephanie & Greg 🇫🇷 Bachata"
-    },
-    {
-     "name_as_written": "DJ MH Marseille",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✅⚜️ DJ MH Marseille 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Kaz Paris",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✅⚜️ DJ Kaz Paris – Marseille 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Tina",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✅⚜️ DJ Tina 🇫🇷"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The description lists Workshops as part of the event's offerings."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "A crazy weekend (all in one) KBS",
-     "rationale": "The weekend is described as all in one at the Hotel Stella Di Mare, where the parties and accommodation are held."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows & Entertainment",
-     "rationale": "Shows & Entertainment is listed among the event's offerings."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 ROOMS",
-     "rationale": "The event has two dance rooms, one for Kizomba and Urbankiz and one for Salsa and Bachata."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Dancing taxis from Paris, Toulon, Marseille",
-     "rationale": "Dancing taxis from several cities are stated to be present."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "All-inclusive packages with meal and Full Pass",
-     "rationale": "The all-inclusive packages explicitly include a meal."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15592",
+  "events": [
+   {
+    "event_id": 15592,
+    "artists": [
+     {
+      "name_as_written": "Fred & Chiara",
+      "role": "teacher",
+      "style": "Urbankiz & Fusion",
+      "country": "🇫🇷🇮🇹",
+      "source_line": "✅⚜️ Fred & Chiara 🇫🇷🇮🇹 Urbankiz & Fusion"
+     },
+     {
+      "name_as_written": "Cindy & Patrick",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": "🇫🇷🇵🇹",
+      "source_line": "✅⚜️ Cindy & Patrick 🇫🇷🇵🇹 Urbankiz"
+     },
+     {
+      "name_as_written": "Jo & Mila",
+      "role": "teacher",
+      "style": "Kizomba Semba",
+      "country": "🇫🇷",
+      "source_line": "✅⚜️ Jo & Mila 🇫🇷 Kizomba Semba"
+     },
+     {
+      "name_as_written": "Richard & Sonia",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇮🇹🇫🇷",
+      "source_line": "✅⚜️ Richard & Sonia 🇮🇹🇫🇷 Salsa"
+     },
+     {
+      "name_as_written": "Stephanie & Greg",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇫🇷",
+      "source_line": "✅⚜️ Stephanie & Greg 🇫🇷 Bachata"
+     },
+     {
+      "name_as_written": "DJ MH Marseille",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✅⚜️ DJ MH Marseille 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Kaz Paris",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✅⚜️ DJ Kaz Paris – Marseille 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Tina",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✅⚜️ DJ Tina 🇫🇷"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops",
+      "rationale": "The description lists Workshops as part of the event's offerings."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "A crazy weekend (all in one) KBS",
+      "rationale": "The weekend is described as all in one at the Hotel Stella Di Mare, where the parties and accommodation are held."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows & Entertainment",
+      "rationale": "Shows & Entertainment is listed among the event's offerings."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 ROOMS",
+      "rationale": "The event has two dance rooms, one for Kizomba and Urbankiz and one for Salsa and Bachata."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Dancing taxis from Paris, Toulon, Marseille",
+      "rationale": "Dancing taxis from several cities are stated to be present."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "All-inclusive packages with meal and Full Pass",
+      "rationale": "The all-inclusive packages explicitly include a meal."
+     }
+    ]
+   }
+  ]
+ }
 }

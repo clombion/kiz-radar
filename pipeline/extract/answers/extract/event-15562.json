@@ -1,215 +1,222 @@
 {
- "batch": "event-15562",
- "events": [
-  {
-   "event_id": 15562,
-   "artists": [
-    {
-     "name_as_written": "Hugo Smile & Evren",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Hugo Smile & Evren present INSIDE FESTIVAL, All in One at the Le M & Spa Bordeaux Aéroport by Hôtels & Préférence !"
-    },
-    {
-     "name_as_written": "Fred-Nelson & Morgane",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Fred-Nelson & Morgane"
-    },
-    {
-     "name_as_written": "Jesùs & Anni",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Jesùs & Anni"
-    },
-    {
-     "name_as_written": "Val’R & Sarah",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Val’R & Sarah"
-    },
-    {
-     "name_as_written": "Jonathan Kani",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Jonathan Kani"
-    },
-    {
-     "name_as_written": "Jah J’a & Jeisy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Jah J’a & Jeisy"
-    },
-    {
-     "name_as_written": "Justinho",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Justinho"
-    },
-    {
-     "name_as_written": "Kamil & Amandine",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Kamil & Amandine"
-    },
-    {
-     "name_as_written": "Lilian & Ivana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Lilian & Ivana"
-    },
-    {
-     "name_as_written": "Malick & Carla",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Malick & Carla"
-    },
-    {
-     "name_as_written": "Volkan & Xenia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Volkan & Xenia"
-    },
-    {
-     "name_as_written": "Miléna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Miléna"
-    },
-    {
-     "name_as_written": "DJ Baillie",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨DJ Baillie"
-    },
-    {
-     "name_as_written": "DJ Snakes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨DJ Snakes"
-    },
-    {
-     "name_as_written": "DJ Valet",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DJ Valet"
-    },
-    {
-     "name_as_written": "DJ David Ruela",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨DJ David Ruela"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨DJ Ichigo"
-    },
-    {
-     "name_as_written": "DJ LENHY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨DJ LENHY"
-    },
-    {
-     "name_as_written": "DJ Man",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨DJ Man"
-    },
-    {
-     "name_as_written": "DJ Hugo Smile",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨DJ Hugo Smile"
-    },
-    {
-     "name_as_written": "Benkos",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨Benkos"
-    },
-    {
-     "name_as_written": "Alain Ronteix",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨Alain Ronteix"
-    },
-    {
-     "name_as_written": "Julien Boudet",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨Julien Boudet"
-    },
-    {
-     "name_as_written": "Ana Legacy Media",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨Ana Legacy Media"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Everything happens at the Pullman hotel in Bordeaux.",
-     "rationale": "The parties take place at the Pullman hotel, which is where dancers are invited to stay."
-    },
-    {
-     "feature": "workshops",
-     "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control.",
-     "rationale": "The weekend pass includes 20 hours of dance workshops in several styles."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Master classes are not included in the pass.",
-     "rationale": "The text states that master classes are offered, though they are not part of the pass."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Preparty isn’t included in the pass",
-     "rationale": "A preparty is mentioned as part of the event, though it is not included in the pass."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 socials (Friday, Saturday, Sunday).",
-     "rationale": "The pass includes socials on each day of the weekend."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "FAIRY WORLD EDITION",
-     "rationale": "The event has a theme party with a Fairy World edition dress theme."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODE : coming soon",
-     "rationale": "The description states that a dress code will be announced."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15562",
+  "events": [
+   {
+    "event_id": 15562,
+    "artists": [
+     {
+      "name_as_written": "Hugo Smile & Evren",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Hugo Smile & Evren present INSIDE FESTIVAL, All in One at the Le M & Spa Bordeaux Aéroport by Hôtels & Préférence !"
+     },
+     {
+      "name_as_written": "Fred-Nelson & Morgane",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Fred-Nelson & Morgane"
+     },
+     {
+      "name_as_written": "Jesùs & Anni",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Jesùs & Anni"
+     },
+     {
+      "name_as_written": "Val’R & Sarah",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Val’R & Sarah"
+     },
+     {
+      "name_as_written": "Jonathan Kani",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Jonathan Kani"
+     },
+     {
+      "name_as_written": "Jah J’a & Jeisy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Jah J’a & Jeisy"
+     },
+     {
+      "name_as_written": "Justinho",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Justinho"
+     },
+     {
+      "name_as_written": "Kamil & Amandine",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Kamil & Amandine"
+     },
+     {
+      "name_as_written": "Lilian & Ivana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Lilian & Ivana"
+     },
+     {
+      "name_as_written": "Malick & Carla",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Malick & Carla"
+     },
+     {
+      "name_as_written": "Volkan & Xenia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Volkan & Xenia"
+     },
+     {
+      "name_as_written": "Miléna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Miléna"
+     },
+     {
+      "name_as_written": "DJ Baillie",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨DJ Baillie"
+     },
+     {
+      "name_as_written": "DJ Snakes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨DJ Snakes"
+     },
+     {
+      "name_as_written": "DJ Valet",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DJ Valet"
+     },
+     {
+      "name_as_written": "DJ David Ruela",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨DJ David Ruela"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨DJ Ichigo"
+     },
+     {
+      "name_as_written": "DJ LENHY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨DJ LENHY"
+     },
+     {
+      "name_as_written": "DJ Man",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨DJ Man"
+     },
+     {
+      "name_as_written": "DJ Hugo Smile",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨DJ Hugo Smile"
+     },
+     {
+      "name_as_written": "Benkos",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨Benkos"
+     },
+     {
+      "name_as_written": "Alain Ronteix",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨Alain Ronteix"
+     },
+     {
+      "name_as_written": "Julien Boudet",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨Julien Boudet"
+     },
+     {
+      "name_as_written": "Ana Legacy Media",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨Ana Legacy Media"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "Everything happens at the Pullman hotel in Bordeaux.",
+      "rationale": "The parties take place at the Pullman hotel, which is where dancers are invited to stay."
+     },
+     {
+      "feature": "workshops",
+      "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control.",
+      "rationale": "The weekend pass includes 20 hours of dance workshops in several styles."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Master classes are not included in the pass.",
+      "rationale": "The text states that master classes are offered, though they are not part of the pass."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Preparty isn’t included in the pass",
+      "rationale": "A preparty is mentioned as part of the event, though it is not included in the pass."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 socials (Friday, Saturday, Sunday).",
+      "rationale": "The pass includes socials on each day of the weekend."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "FAIRY WORLD EDITION",
+      "rationale": "The event has a theme party with a Fairy World edition dress theme."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESS CODE : coming soon",
+      "rationale": "The description states that a dress code will be announced."
+     }
+    ]
+   }
+  ]
+ }
 }

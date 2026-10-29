@@ -1,391 +1,398 @@
 {
- "batch": "event-18960",
- "events": [
-  {
-   "event_id": 18960,
-   "artists": [
-    {
-     "name_as_written": "Dr Kizomba & Laura Buffone",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Dr Kizomba & Laura Buffone"
-    },
-    {
-     "name_as_written": "Davide Venturi & Laura Maino",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Davide Venturi & Laura Maino"
-    },
-    {
-     "name_as_written": "David Pacavira",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "David Pacavira"
-    },
-    {
-     "name_as_written": "Maurizio & Claudia",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Maurizio & Claudia"
-    },
-    {
-     "name_as_written": "Mirko & Mara",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Mirko & Mara"
-    },
-    {
-     "name_as_written": "Alex Vunda",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Alex Vunda"
-    },
-    {
-     "name_as_written": "Sandro Francis",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Sandro Francis"
-    },
-    {
-     "name_as_written": "Giorgio & Maura",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Giorgio & Maura"
-    },
-    {
-     "name_as_written": "Pamela",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Pamela"
-    },
-    {
-     "name_as_written": "Adriana",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Adriana"
-    },
-    {
-     "name_as_written": "Bianca",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Bianca"
-    },
-    {
-     "name_as_written": "Chiara",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Chiara"
-    },
-    {
-     "name_as_written": "Lorella",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Lorella"
-    },
-    {
-     "name_as_written": "Luca & Francesca",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Luca & Francesca"
-    },
-    {
-     "name_as_written": "John & Stefania",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "John & Stefania"
-    },
-    {
-     "name_as_written": "Linda",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Linda"
-    },
-    {
-     "name_as_written": "Carmine & Stefania",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Carmine & Stefania"
-    },
-    {
-     "name_as_written": "Franco & Daniela",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Franco & Daniela"
-    },
-    {
-     "name_as_written": "La Ross",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "La Ross"
-    },
-    {
-     "name_as_written": "Pietro & Lisa",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Pietro & Lisa"
-    },
-    {
-     "name_as_written": "Tony Manero",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Tony Manero"
-    },
-    {
-     "name_as_written": "Nicola & Sabrina",
-     "role": "teacher",
-     "style": "SALSA & BACHATA & KIZOMBA",
-     "country": null,
-     "source_line": "Nicola & Sabrina"
-    },
-    {
-     "name_as_written": "Paul Jordan",
-     "role": "teacher",
-     "style": "Salsa & Bachata",
-     "country": null,
-     "source_line": "Paul Jordan"
-    },
-    {
-     "name_as_written": "Davide Taccini",
-     "role": "teacher",
-     "style": "Salsa & Bachata",
-     "country": null,
-     "source_line": "Davide Taccini"
-    },
-    {
-     "name_as_written": "Mascalzone & Cristina",
-     "role": "teacher",
-     "style": "Salsa & Bachata",
-     "country": null,
-     "source_line": "Mascalzone & Cristina"
-    },
-    {
-     "name_as_written": "Marzio & Alessandra",
-     "role": "teacher",
-     "style": "Salsa & Bachata",
-     "country": null,
-     "source_line": "Marzio & Alessandra"
-    },
-    {
-     "name_as_written": "Davide & Sonia",
-     "role": "teacher",
-     "style": "Salsa & Bachata",
-     "country": null,
-     "source_line": "Davide & Sonia"
-    },
-    {
-     "name_as_written": "Bobo & Cinzia",
-     "role": "teacher",
-     "style": "Salsa & Bachata",
-     "country": null,
-     "source_line": "Bobo & Cinzia"
-    },
-    {
-     "name_as_written": "Marco & Silvia",
-     "role": "teacher",
-     "style": "Salsa & Bachata",
-     "country": null,
-     "source_line": "Marco & Silvia"
-    },
-    {
-     "name_as_written": "Giorgio & Anna",
-     "role": "teacher",
-     "style": "Salsa & Bachata",
-     "country": null,
-     "source_line": "Giorgio & Anna"
-    },
-    {
-     "name_as_written": "MasterBeat",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "MasterBeat"
-    },
-    {
-     "name_as_written": "Ladeejay",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Ladeejay"
-    },
-    {
-     "name_as_written": "Anilson",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Anilson"
-    },
-    {
-     "name_as_written": "Vandy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Vandy"
-    },
-    {
-     "name_as_written": "Dj Mark",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Mark"
-    },
-    {
-     "name_as_written": "Dj Jordan",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Jordan"
-    },
-    {
-     "name_as_written": "Francesco",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Francesco"
-    },
-    {
-     "name_as_written": "Alessandro",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Alessandro"
-    },
-    {
-     "name_as_written": "Lello",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Lello"
-    },
-    {
-     "name_as_written": "Paulo",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Paulo"
-    },
-    {
-     "name_as_written": "Sasha",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Sasha"
-    },
-    {
-     "name_as_written": "Assan",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Assan"
-    },
-    {
-     "name_as_written": "Antonio",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Antonio"
-    },
-    {
-     "name_as_written": "Gianluca",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Gianluca"
-    },
-    {
-     "name_as_written": "Paola",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Paola"
-    },
-    {
-     "name_as_written": "Cheyenne",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Cheyenne"
-    },
-    {
-     "name_as_written": "Claudia Iannoli",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "📞 3299410647 Claudia Iannoli"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Everything in the same hotel",
-     "rationale": "The description states that everything takes place in the same hotel, which is where the event and accommodation are held together."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "2:00 PM – 8:00 PM: Kizomba Social Room",
-     "rationale": "A daytime social room is scheduled in the afternoon."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "11:00 AM – 2:00 PM: Masterclasses",
-     "rationale": "Masterclasses are listed in the program."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "5 workshop rooms",
-     "rationale": "The event has five workshop rooms, meaning more than one dance room."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTEL ACCOMMODATION BOOKING AVAILABLE",
-     "rationale": "The event offers hotel booking at the partner hotel, separate from the pass."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "10:00 PM: Pre-party workshop",
-     "rationale": "A pre-party workshop takes place before the main party."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows",
-     "rationale": "Shows are listed as part of the event and pass packages."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Taxi dancer team",
-     "rationale": "The event explicitly lists a taxi dancer team."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed party nights across 4 dance floors",
-     "rationale": "Themed party nights are offered across four dance floors."
-    },
-    {
-     "feature": "workshops",
-     "quote": "over 45 hours of workshops",
-     "rationale": "The event features more than 45 hours of dance workshops."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:50:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18960",
+  "events": [
+   {
+    "event_id": 18960,
+    "artists": [
+     {
+      "name_as_written": "Dr Kizomba & Laura Buffone",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Dr Kizomba & Laura Buffone"
+     },
+     {
+      "name_as_written": "Davide Venturi & Laura Maino",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Davide Venturi & Laura Maino"
+     },
+     {
+      "name_as_written": "David Pacavira",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "David Pacavira"
+     },
+     {
+      "name_as_written": "Maurizio & Claudia",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Maurizio & Claudia"
+     },
+     {
+      "name_as_written": "Mirko & Mara",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Mirko & Mara"
+     },
+     {
+      "name_as_written": "Alex Vunda",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Alex Vunda"
+     },
+     {
+      "name_as_written": "Sandro Francis",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Sandro Francis"
+     },
+     {
+      "name_as_written": "Giorgio & Maura",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Giorgio & Maura"
+     },
+     {
+      "name_as_written": "Pamela",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Pamela"
+     },
+     {
+      "name_as_written": "Adriana",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Adriana"
+     },
+     {
+      "name_as_written": "Bianca",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Bianca"
+     },
+     {
+      "name_as_written": "Chiara",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Chiara"
+     },
+     {
+      "name_as_written": "Lorella",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Lorella"
+     },
+     {
+      "name_as_written": "Luca & Francesca",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Luca & Francesca"
+     },
+     {
+      "name_as_written": "John & Stefania",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "John & Stefania"
+     },
+     {
+      "name_as_written": "Linda",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Linda"
+     },
+     {
+      "name_as_written": "Carmine & Stefania",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Carmine & Stefania"
+     },
+     {
+      "name_as_written": "Franco & Daniela",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Franco & Daniela"
+     },
+     {
+      "name_as_written": "La Ross",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "La Ross"
+     },
+     {
+      "name_as_written": "Pietro & Lisa",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Pietro & Lisa"
+     },
+     {
+      "name_as_written": "Tony Manero",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Tony Manero"
+     },
+     {
+      "name_as_written": "Nicola & Sabrina",
+      "role": "teacher",
+      "style": "SALSA & BACHATA & KIZOMBA",
+      "country": null,
+      "source_line": "Nicola & Sabrina"
+     },
+     {
+      "name_as_written": "Paul Jordan",
+      "role": "teacher",
+      "style": "Salsa & Bachata",
+      "country": null,
+      "source_line": "Paul Jordan"
+     },
+     {
+      "name_as_written": "Davide Taccini",
+      "role": "teacher",
+      "style": "Salsa & Bachata",
+      "country": null,
+      "source_line": "Davide Taccini"
+     },
+     {
+      "name_as_written": "Mascalzone & Cristina",
+      "role": "teacher",
+      "style": "Salsa & Bachata",
+      "country": null,
+      "source_line": "Mascalzone & Cristina"
+     },
+     {
+      "name_as_written": "Marzio & Alessandra",
+      "role": "teacher",
+      "style": "Salsa & Bachata",
+      "country": null,
+      "source_line": "Marzio & Alessandra"
+     },
+     {
+      "name_as_written": "Davide & Sonia",
+      "role": "teacher",
+      "style": "Salsa & Bachata",
+      "country": null,
+      "source_line": "Davide & Sonia"
+     },
+     {
+      "name_as_written": "Bobo & Cinzia",
+      "role": "teacher",
+      "style": "Salsa & Bachata",
+      "country": null,
+      "source_line": "Bobo & Cinzia"
+     },
+     {
+      "name_as_written": "Marco & Silvia",
+      "role": "teacher",
+      "style": "Salsa & Bachata",
+      "country": null,
+      "source_line": "Marco & Silvia"
+     },
+     {
+      "name_as_written": "Giorgio & Anna",
+      "role": "teacher",
+      "style": "Salsa & Bachata",
+      "country": null,
+      "source_line": "Giorgio & Anna"
+     },
+     {
+      "name_as_written": "MasterBeat",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "MasterBeat"
+     },
+     {
+      "name_as_written": "Ladeejay",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Ladeejay"
+     },
+     {
+      "name_as_written": "Anilson",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Anilson"
+     },
+     {
+      "name_as_written": "Vandy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Vandy"
+     },
+     {
+      "name_as_written": "Dj Mark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Mark"
+     },
+     {
+      "name_as_written": "Dj Jordan",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Jordan"
+     },
+     {
+      "name_as_written": "Francesco",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Francesco"
+     },
+     {
+      "name_as_written": "Alessandro",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Alessandro"
+     },
+     {
+      "name_as_written": "Lello",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Lello"
+     },
+     {
+      "name_as_written": "Paulo",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Paulo"
+     },
+     {
+      "name_as_written": "Sasha",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Sasha"
+     },
+     {
+      "name_as_written": "Assan",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Assan"
+     },
+     {
+      "name_as_written": "Antonio",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Antonio"
+     },
+     {
+      "name_as_written": "Gianluca",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Gianluca"
+     },
+     {
+      "name_as_written": "Paola",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Paola"
+     },
+     {
+      "name_as_written": "Cheyenne",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Cheyenne"
+     },
+     {
+      "name_as_written": "Claudia Iannoli",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "📞 3299410647 Claudia Iannoli"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "Everything in the same hotel",
+      "rationale": "The description states that everything takes place in the same hotel, which is where the event and accommodation are held together."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "2:00 PM – 8:00 PM: Kizomba Social Room",
+      "rationale": "A daytime social room is scheduled in the afternoon."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "11:00 AM – 2:00 PM: Masterclasses",
+      "rationale": "Masterclasses are listed in the program."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "5 workshop rooms",
+      "rationale": "The event has five workshop rooms, meaning more than one dance room."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTEL ACCOMMODATION BOOKING AVAILABLE",
+      "rationale": "The event offers hotel booking at the partner hotel, separate from the pass."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "10:00 PM: Pre-party workshop",
+      "rationale": "A pre-party workshop takes place before the main party."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows",
+      "rationale": "Shows are listed as part of the event and pass packages."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Taxi dancer team",
+      "rationale": "The event explicitly lists a taxi dancer team."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Themed party nights across 4 dance floors",
+      "rationale": "Themed party nights are offered across four dance floors."
+     },
+     {
+      "feature": "workshops",
+      "quote": "over 45 hours of workshops",
+      "rationale": "The event features more than 45 hours of dance workshops."
+     }
+    ]
+   }
+  ]
+ }
 }

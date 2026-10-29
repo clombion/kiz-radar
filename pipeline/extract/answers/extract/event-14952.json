@@ -1,21 +1,28 @@
 {
- "batch": "event-14952",
- "events": [
-  {
-   "event_id": 14952,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "workshops de qualités",
-     "rationale": "The description promises quality workshops as part of the weekend programme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "De 17H00 à 20H00 : 🔆SOCIALE 🔆",
-     "rationale": "A social is scheduled in the afternoon and early evening on Sunday."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14952",
+  "events": [
+   {
+    "event_id": 14952,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "workshops de qualités",
+      "rationale": "The description promises quality workshops as part of the weekend programme."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "De 17H00 à 20H00 : 🔆SOCIALE 🔆",
+      "rationale": "A social is scheduled in the afternoon and early evening on Sunday."
+     }
+    ]
+   }
+  ]
+ }
 }

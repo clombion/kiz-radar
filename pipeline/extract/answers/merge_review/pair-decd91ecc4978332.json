@@ -1,0 +1,13 @@
+{
+ "key_a": "p:clarita@abdoulaye+clarita",
+ "key_b": "p:clarita@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "decd91ecc4978332",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The DJ Clarita entry in Lyon on the same date as the Abdoulaye and Clarita couple, with the same stated Switzerland country, matches a DJ-prefix stage name."
+ }
+}

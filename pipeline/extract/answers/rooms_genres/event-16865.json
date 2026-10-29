@@ -1,43 +1,50 @@
 {
- "batch": "event-16865",
- "events": [
-  {
-   "event_id": 16865,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16865",
+  "events": [
+   {
+    "event_id": 16865,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "parties of Kizomba, Semba, Salsa, Bachata, Kompa, and Afro"
+     }
+    ]
+   }
+  ]
+ }
 }

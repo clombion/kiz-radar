@@ -1,0 +1,13 @@
+{
+ "key_a": "p:curtis@curtis+gaya",
+ "key_b": "p:curtis@dance",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:26+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "64a48a75ef5da54a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Curtis is a common first name; the solo Vienna performer and the Curtis and Gaya couple share only the France country."
+ }
+}

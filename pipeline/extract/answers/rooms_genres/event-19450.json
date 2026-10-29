@@ -1,73 +1,80 @@
 {
- "batch": "event-19450",
- "events": [
-  {
-   "event_id": 19450,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 rooms – 2 different vibes"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "kompa"
-     ],
-     "quote": "Room 1: Kizomba, Semba & Konpa"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19450",
+  "events": [
+   {
+    "event_id": 19450,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 rooms – 2 different vibes"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "party",
-     "genres": [
-      "zouk",
-      "tarraxinha",
-      "tarraxo"
-     ],
-     "quote": "Room 2: Ghetto Zouk, Tarraxinha, Tarraxo softness"
-    },
-    {
-     "name_as_written": "Room 3",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Room 3 – Free access for all participants"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "A full weekend of Kizomba & Semba in one place"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "A full weekend of Kizomba & Semba in one place"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Room 1: Kizomba, Semba & Konpa"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Room 2: Ghetto Zouk, Tarraxinha, Tarraxo softness"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Room 2: Ghetto Zouk, Tarraxinha, Tarraxo softness"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo softness"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "kompa"
+      ],
+      "quote": "Room 1: Kizomba, Semba & Konpa"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "party",
+      "genres": [
+       "zouk",
+       "tarraxinha",
+       "tarraxo"
+      ],
+      "quote": "Room 2: Ghetto Zouk, Tarraxinha, Tarraxo softness"
+     },
+     {
+      "name_as_written": "Room 3",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Room 3 – Free access for all participants"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "A full weekend of Kizomba & Semba in one place"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "A full weekend of Kizomba & Semba in one place"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Room 1: Kizomba, Semba & Konpa"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "Room 2: Ghetto Zouk, Tarraxinha, Tarraxo softness"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Room 2: Ghetto Zouk, Tarraxinha, Tarraxo softness"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Tarraxo softness"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:hugosmile",
+ "key_b": "p:hugosmile@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:07+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "eb0fe0f0da8c8382",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The distinctive stage name Hugo Smile appears as DJ on both sides, with a #HugoSmile variant and the same France flag."
+ }
+}

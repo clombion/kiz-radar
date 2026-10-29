@@ -1,24 +1,31 @@
 {
- "batch": "event-18706",
- "events": [
-  {
-   "event_id": 18706,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 Rooms for Parties"
-   },
-   "class_rooms": {
-    "count": 2,
-    "quote": "2 Rooms of Classes"
-   },
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA FESTIVAL"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18706",
+  "events": [
+   {
+    "event_id": 18706,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 Rooms for Parties"
+    },
+    "class_rooms": {
+     "count": 2,
+     "quote": "2 Rooms of Classes"
+    },
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA FESTIVAL"
+     }
+    ]
+   }
+  ]
+ }
 }

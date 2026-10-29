@@ -1,0 +1,13 @@
+{
+ "key_a": "p:emanuel@emanuel+teresa",
+ "key_b": "p:manuel@benedicte+manuel",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "439dee9d9894eaaa",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Emanuel and Manuel are close, but the partners Teresa and Benedicte are different names and the stated countries only partly overlap."
+ }
+}

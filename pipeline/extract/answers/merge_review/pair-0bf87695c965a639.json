@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sergi@elsa+sergi",
+ "key_b": "p:sergio@elena+sergio",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "0bf87695c965a639",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Elsa & Sergi and Sergio & Elena have different partners (Elsa vs Elena) and different spellings of the first name, in different cities, so they are two couples."
+ }
+}

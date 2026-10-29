@@ -1,147 +1,154 @@
 {
- "batch": "event-15959",
- "events": [
-  {
-   "event_id": 15959,
-   "artists": [
-    {
-     "name_as_written": "DAVID RUELA",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱🇵🇹",
-     "source_line": "◾️ DAVID RUELA 🇳🇱🇵🇹"
-    },
-    {
-     "name_as_written": "DJ REMCY",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪🇭🇺",
-     "source_line": "◾️ DJ REMCY 🇩🇪🇭🇺"
-    },
-    {
-     "name_as_written": "DJ FAZE",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "◾️ DJ FAZE 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ RENE AMPLO",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "◾️ DJ RENE AMPLO 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ LAU",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "◾️ DJ LAU 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ BARTEF",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "◾️ DJ BARTEF 🇵🇱"
-    },
-    {
-     "name_as_written": "ASIA VORONOVA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇺🇦",
-     "source_line": "◾️ ASIA VORONOVA 🇺🇦"
-    },
-    {
-     "name_as_written": "JAH J’A",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "◾️ JAH J’A 🇫🇷"
-    },
-    {
-     "name_as_written": "DADIÉ SACKO",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "◾️ DADIÉ SACKO 🇫🇷"
-    },
-    {
-     "name_as_written": "SAMAT",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ SAMAT 🇰🇿"
-    },
-    {
-     "name_as_written": "ANIKA ELENA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇹🇸🇰",
-     "source_line": "◾️ ANIKA ELENA 🇦🇹🇸🇰"
-    },
-    {
-     "name_as_written": "ALEKSANDRA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "◾️ ALEKSANDRA 🇵🇱"
-    },
-    {
-     "name_as_written": "MICHAEL DAIMON",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱🇸🇷",
-     "source_line": "◾️ MICHAEL DAIMON 🇳🇱🇸🇷"
-    },
-    {
-     "name_as_written": "PAWEL & KAMA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "◾️ PAWEL & KAMA 🇵🇱"
-    },
-    {
-     "name_as_written": "BARTEK",
-     "role": "media",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "▪️ BARTEK 🇵🇱"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "8 hours of premium workshops",
-     "rationale": "The event offers hours of premium workshops, which are dance classes."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "2 hours of exclusive masterclasses",
-     "rationale": "Exclusive masterclasses are explicitly listed as part of the event."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "A Vibrant Thursday Pre-Party to kick things off",
-     "rationale": "The description names a Thursday Pre-Party that opens the event."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "All happening under one roof at a stylish 4-star hotel in Kraków’s lively city center!",
-     "rationale": "The events take place under one roof in the hotel, so event and accommodation share a venue."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00 – 20:00 – SOCIAL",
-     "rationale": "The program lists an afternoon social from 16:00 to 20:00."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Wardrobe is mandatory",
-     "rationale": "The house rules state that a specific wardrobe is mandatory, which is a dress requirement."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:43:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15959",
+  "events": [
+   {
+    "event_id": 15959,
+    "artists": [
+     {
+      "name_as_written": "DAVID RUELA",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱🇵🇹",
+      "source_line": "◾️ DAVID RUELA 🇳🇱🇵🇹"
+     },
+     {
+      "name_as_written": "DJ REMCY",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪🇭🇺",
+      "source_line": "◾️ DJ REMCY 🇩🇪🇭🇺"
+     },
+     {
+      "name_as_written": "DJ FAZE",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "◾️ DJ FAZE 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ RENE AMPLO",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "◾️ DJ RENE AMPLO 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ LAU",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "◾️ DJ LAU 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ BARTEF",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "◾️ DJ BARTEF 🇵🇱"
+     },
+     {
+      "name_as_written": "ASIA VORONOVA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇺🇦",
+      "source_line": "◾️ ASIA VORONOVA 🇺🇦"
+     },
+     {
+      "name_as_written": "JAH J’A",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "◾️ JAH J’A 🇫🇷"
+     },
+     {
+      "name_as_written": "DADIÉ SACKO",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "◾️ DADIÉ SACKO 🇫🇷"
+     },
+     {
+      "name_as_written": "SAMAT",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ SAMAT 🇰🇿"
+     },
+     {
+      "name_as_written": "ANIKA ELENA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇹🇸🇰",
+      "source_line": "◾️ ANIKA ELENA 🇦🇹🇸🇰"
+     },
+     {
+      "name_as_written": "ALEKSANDRA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "◾️ ALEKSANDRA 🇵🇱"
+     },
+     {
+      "name_as_written": "MICHAEL DAIMON",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱🇸🇷",
+      "source_line": "◾️ MICHAEL DAIMON 🇳🇱🇸🇷"
+     },
+     {
+      "name_as_written": "PAWEL & KAMA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "◾️ PAWEL & KAMA 🇵🇱"
+     },
+     {
+      "name_as_written": "BARTEK",
+      "role": "media",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "▪️ BARTEK 🇵🇱"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "8 hours of premium workshops",
+      "rationale": "The event offers hours of premium workshops, which are dance classes."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "2 hours of exclusive masterclasses",
+      "rationale": "Exclusive masterclasses are explicitly listed as part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "A Vibrant Thursday Pre-Party to kick things off",
+      "rationale": "The description names a Thursday Pre-Party that opens the event."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "All happening under one roof at a stylish 4-star hotel in Kraków’s lively city center!",
+      "rationale": "The events take place under one roof in the hotel, so event and accommodation share a venue."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16:00 – 20:00 – SOCIAL",
+      "rationale": "The program lists an afternoon social from 16:00 to 20:00."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Wardrobe is mandatory",
+      "rationale": "The house rules state that a specific wardrobe is mandatory, which is a dress requirement."
+     }
+    ]
+   }
+  ]
+ }
 }

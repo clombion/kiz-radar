@@ -1,0 +1,13 @@
+{
+ "key_a": "p:yesisica@andres+yesisica",
+ "key_b": "p:yessica@andres+yessica",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:46+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "75e2beef6268042b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Andres with Yesisica and Andrés with Yessica share the partner, the Bachata style and Spain, with a spelling variant of the partner name."
+ }
+}

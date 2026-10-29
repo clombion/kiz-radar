@@ -1,99 +1,106 @@
 {
- "batch": "event-14972",
- "events": [
-  {
-   "event_id": 14972,
-   "artists": [
-    {
-     "name_as_written": "Kizz Me More",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Kizz Me More presents"
-    },
-    {
-     "name_as_written": "JOJO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 JOJO #lpk"
-    },
-    {
-     "name_as_written": "Rita & Eddy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Rita & Eddy"
-    },
-    {
-     "name_as_written": "Anda and Sorin",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Anda and Sorin"
-    },
-    {
-     "name_as_written": "Wesss",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💎 Wesss 🇫🇷"
-    },
-    {
-     "name_as_written": "Madara",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💎 Madara 🇫🇷"
-    },
-    {
-     "name_as_written": "aCid",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💎 aCid 🇩🇪"
-    },
-    {
-     "name_as_written": "Karl Conklass",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💎 Karl Conklass 🇫🇷"
-    },
-    {
-     "name_as_written": "Matt",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "💎 Matt 🇧🇪"
-    },
-    {
-     "name_as_written": "Vaxx",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💎 Vaxx 🇫🇷"
-    },
-    {
-     "name_as_written": "Eddy",
-     "role": "dj",
-     "style": null,
-     "country": "🇭🇺",
-     "source_line": "💎Eddy 🇭🇺"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "1 Pre-Party",
-     "rationale": "The description announces a pre-party before the main festival parties."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "The All In One venue brings all the shiny souls together.",
-     "rationale": "The description presents the All In One venue as the single place where the festival gathers, and the modern hotel is part of that venue."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14972",
+  "events": [
+   {
+    "event_id": 14972,
+    "artists": [
+     {
+      "name_as_written": "Kizz Me More",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Kizz Me More presents"
+     },
+     {
+      "name_as_written": "JOJO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 JOJO #lpk"
+     },
+     {
+      "name_as_written": "Rita & Eddy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Rita & Eddy"
+     },
+     {
+      "name_as_written": "Anda and Sorin",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Anda and Sorin"
+     },
+     {
+      "name_as_written": "Wesss",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💎 Wesss 🇫🇷"
+     },
+     {
+      "name_as_written": "Madara",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💎 Madara 🇫🇷"
+     },
+     {
+      "name_as_written": "aCid",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💎 aCid 🇩🇪"
+     },
+     {
+      "name_as_written": "Karl Conklass",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💎 Karl Conklass 🇫🇷"
+     },
+     {
+      "name_as_written": "Matt",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "💎 Matt 🇧🇪"
+     },
+     {
+      "name_as_written": "Vaxx",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💎 Vaxx 🇫🇷"
+     },
+     {
+      "name_as_written": "Eddy",
+      "role": "dj",
+      "style": null,
+      "country": "🇭🇺",
+      "source_line": "💎Eddy 🇭🇺"
+     }
+    ],
+    "features": [
+     {
+      "feature": "pre_party",
+      "quote": "1 Pre-Party",
+      "rationale": "The description announces a pre-party before the main festival parties."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "The All In One venue brings all the shiny souls together.",
+      "rationale": "The description presents the All In One venue as the single place where the festival gathers, and the modern hotel is part of that venue."
+     }
+    ]
+   }
+  ]
+ }
 }

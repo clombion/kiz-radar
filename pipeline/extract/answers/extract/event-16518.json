@@ -1,449 +1,456 @@
 {
- "batch": "event-16518",
- "events": [
-  {
-   "event_id": 16518,
-   "artists": [
-    {
-     "name_as_written": "DJ BI-ONE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ BI-ONE"
-    },
-    {
-     "name_as_written": "DJ DREW",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ DREW"
-    },
-    {
-     "name_as_written": "DJ GHOSTFACE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ GHOSTFACE"
-    },
-    {
-     "name_as_written": "DJ FOX",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ FOX"
-    },
-    {
-     "name_as_written": "DJ MAGIC",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ MAGIC"
-    },
-    {
-     "name_as_written": "DJ MARK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ MARK"
-    },
-    {
-     "name_as_written": "DJ MASTER BEAT",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ MASTER BEAT"
-    },
-    {
-     "name_as_written": "DJ OMBRE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ OMBRE"
-    },
-    {
-     "name_as_written": "DJ RAX",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ RAX"
-    },
-    {
-     "name_as_written": "DJ VANDY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ VANDY"
-    },
-    {
-     "name_as_written": "Mirko Spano",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mirko Spano"
-    },
-    {
-     "name_as_written": "Nicola Berrettoni",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Nicola Berrettoni"
-    },
-    {
-     "name_as_written": "Josè Capitani",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Josè Capitani"
-    },
-    {
-     "name_as_written": "Stef Mat",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Stef Mat"
-    },
-    {
-     "name_as_written": "Giuseppe Andrea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Giuseppe Andrea"
-    },
-    {
-     "name_as_written": "Fabrizio Chiarenza",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Fabrizio Chiarenza"
-    },
-    {
-     "name_as_written": "Pietro Micali",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Pietro Micali"
-    },
-    {
-     "name_as_written": "Adriana Becchino",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Adriana Becchino"
-    },
-    {
-     "name_as_written": "Claudia Moise",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Claudia Moise"
-    },
-    {
-     "name_as_written": "Mary Valencia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mary Valencia"
-    },
-    {
-     "name_as_written": "Linda Ghiggi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Linda Ghiggi"
-    },
-    {
-     "name_as_written": "Chiara Guarnieri",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Chiara Guarnieri"
-    },
-    {
-     "name_as_written": "Valentina Cangemi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Valentina Cangemi"
-    },
-    {
-     "name_as_written": "Glenda Penafiel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Glenda Penafiel"
-    },
-    {
-     "name_as_written": "Luca & Francesca",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Luca & Francesca"
-    },
-    {
-     "name_as_written": "Daniel & Miki",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Daniel & Miki"
-    },
-    {
-     "name_as_written": "Matteo & Diana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Matteo & Diana"
-    },
-    {
-     "name_as_written": "Ba & Claudia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ba & Claudia"
-    },
-    {
-     "name_as_written": "Max & Silvia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Max & Silvia"
-    },
-    {
-     "name_as_written": "Raul & Lucia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Raul & Lucia"
-    },
-    {
-     "name_as_written": "Christian & Tina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Christian & Tina"
-    },
-    {
-     "name_as_written": "Carlo & Alessandra",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Carlo & Alessandra"
-    },
-    {
-     "name_as_written": "Michele & Monica",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Michele & Monica"
-    },
-    {
-     "name_as_written": "Jack & Pamela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Jack & Pamela"
-    },
-    {
-     "name_as_written": "Lorenzo & Federica",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Lorenzo & Federica"
-    },
-    {
-     "name_as_written": "Stefano & Elena",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Stefano & Elena"
-    },
-    {
-     "name_as_written": "Beppe & Sabina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Beppe & Sabina"
-    },
-    {
-     "name_as_written": "Valter & Valery",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Valter & Valery"
-    },
-    {
-     "name_as_written": "Chris & Francy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Chris & Francy"
-    },
-    {
-     "name_as_written": "Daniele Pezzino",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Daniele Pezzino"
-    },
-    {
-     "name_as_written": "Matteo Rizzo",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Matteo Rizzo"
-    },
-    {
-     "name_as_written": "Marco Carta",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Marco Carta"
-    },
-    {
-     "name_as_written": "Jahia",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Jahia"
-    },
-    {
-     "name_as_written": "Simona Bonetto",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Simona Bonetto"
-    },
-    {
-     "name_as_written": "Claudio Prato",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Claudio Prato"
-    },
-    {
-     "name_as_written": "Davide Biginelli",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Davide Biginelli"
-    },
-    {
-     "name_as_written": "Francesca Frontera",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Francesca Frontera"
-    },
-    {
-     "name_as_written": "Cheyenne",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Cheyenne"
-    },
-    {
-     "name_as_written": "Sonko",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Sonko"
-    },
-    {
-     "name_as_written": "Marco Maselli",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Marco Maselli"
-    },
-    {
-     "name_as_written": "Stefano Mambrini",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Stefano Mambrini"
-    },
-    {
-     "name_as_written": "Enrico Scalabri",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Enrico Scalabri"
-    },
-    {
-     "name_as_written": "Luca Ballabio",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Luca Ballabio"
-    },
-    {
-     "name_as_written": "Il Riga",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Il Riga"
-    },
-    {
-     "name_as_written": "Andrea Perelli",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Andrea Perelli"
-    },
-    {
-     "name_as_written": "Serena Orlando",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Serena Orlando"
-    },
-    {
-     "name_as_written": "Francesco Roncari",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Francesco Roncari"
-    },
-    {
-     "name_as_written": "Simone Finotti",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Simone Finotti"
-    },
-    {
-     "name_as_written": "Michelangelo Sciortino",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 Michelangelo Sciortino"
-    },
-    {
-     "name_as_written": "Simoni Edoardo",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥🎥🎥 Simoni Edoardo"
-    },
-    {
-     "name_as_written": "Bernieri Maurizio",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📷📷📷 Bernieri Maurizio"
-    }
-   ],
-   "features": [
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXI DANCERS",
-     "rationale": "The description has a heading TAXI DANCERS followed by a list of named taxi dancers."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress Code",
-     "rationale": "The description states a dress code under the Dress Code heading."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16518",
+  "events": [
+   {
+    "event_id": 16518,
+    "artists": [
+     {
+      "name_as_written": "DJ BI-ONE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ BI-ONE"
+     },
+     {
+      "name_as_written": "DJ DREW",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ DREW"
+     },
+     {
+      "name_as_written": "DJ GHOSTFACE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ GHOSTFACE"
+     },
+     {
+      "name_as_written": "DJ FOX",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ FOX"
+     },
+     {
+      "name_as_written": "DJ MAGIC",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ MAGIC"
+     },
+     {
+      "name_as_written": "DJ MARK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ MARK"
+     },
+     {
+      "name_as_written": "DJ MASTER BEAT",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ MASTER BEAT"
+     },
+     {
+      "name_as_written": "DJ OMBRE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ OMBRE"
+     },
+     {
+      "name_as_written": "DJ RAX",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ RAX"
+     },
+     {
+      "name_as_written": "DJ VANDY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ VANDY"
+     },
+     {
+      "name_as_written": "Mirko Spano",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mirko Spano"
+     },
+     {
+      "name_as_written": "Nicola Berrettoni",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Nicola Berrettoni"
+     },
+     {
+      "name_as_written": "Josè Capitani",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Josè Capitani"
+     },
+     {
+      "name_as_written": "Stef Mat",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Stef Mat"
+     },
+     {
+      "name_as_written": "Giuseppe Andrea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Giuseppe Andrea"
+     },
+     {
+      "name_as_written": "Fabrizio Chiarenza",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Fabrizio Chiarenza"
+     },
+     {
+      "name_as_written": "Pietro Micali",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Pietro Micali"
+     },
+     {
+      "name_as_written": "Adriana Becchino",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Adriana Becchino"
+     },
+     {
+      "name_as_written": "Claudia Moise",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Claudia Moise"
+     },
+     {
+      "name_as_written": "Mary Valencia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mary Valencia"
+     },
+     {
+      "name_as_written": "Linda Ghiggi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Linda Ghiggi"
+     },
+     {
+      "name_as_written": "Chiara Guarnieri",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Chiara Guarnieri"
+     },
+     {
+      "name_as_written": "Valentina Cangemi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Valentina Cangemi"
+     },
+     {
+      "name_as_written": "Glenda Penafiel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Glenda Penafiel"
+     },
+     {
+      "name_as_written": "Luca & Francesca",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Luca & Francesca"
+     },
+     {
+      "name_as_written": "Daniel & Miki",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Daniel & Miki"
+     },
+     {
+      "name_as_written": "Matteo & Diana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Matteo & Diana"
+     },
+     {
+      "name_as_written": "Ba & Claudia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ba & Claudia"
+     },
+     {
+      "name_as_written": "Max & Silvia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Max & Silvia"
+     },
+     {
+      "name_as_written": "Raul & Lucia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Raul & Lucia"
+     },
+     {
+      "name_as_written": "Christian & Tina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Christian & Tina"
+     },
+     {
+      "name_as_written": "Carlo & Alessandra",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Carlo & Alessandra"
+     },
+     {
+      "name_as_written": "Michele & Monica",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Michele & Monica"
+     },
+     {
+      "name_as_written": "Jack & Pamela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Jack & Pamela"
+     },
+     {
+      "name_as_written": "Lorenzo & Federica",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Lorenzo & Federica"
+     },
+     {
+      "name_as_written": "Stefano & Elena",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Stefano & Elena"
+     },
+     {
+      "name_as_written": "Beppe & Sabina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Beppe & Sabina"
+     },
+     {
+      "name_as_written": "Valter & Valery",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Valter & Valery"
+     },
+     {
+      "name_as_written": "Chris & Francy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Chris & Francy"
+     },
+     {
+      "name_as_written": "Daniele Pezzino",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Daniele Pezzino"
+     },
+     {
+      "name_as_written": "Matteo Rizzo",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Matteo Rizzo"
+     },
+     {
+      "name_as_written": "Marco Carta",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Marco Carta"
+     },
+     {
+      "name_as_written": "Jahia",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Jahia"
+     },
+     {
+      "name_as_written": "Simona Bonetto",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Simona Bonetto"
+     },
+     {
+      "name_as_written": "Claudio Prato",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Claudio Prato"
+     },
+     {
+      "name_as_written": "Davide Biginelli",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Davide Biginelli"
+     },
+     {
+      "name_as_written": "Francesca Frontera",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Francesca Frontera"
+     },
+     {
+      "name_as_written": "Cheyenne",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Cheyenne"
+     },
+     {
+      "name_as_written": "Sonko",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Sonko"
+     },
+     {
+      "name_as_written": "Marco Maselli",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Marco Maselli"
+     },
+     {
+      "name_as_written": "Stefano Mambrini",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Stefano Mambrini"
+     },
+     {
+      "name_as_written": "Enrico Scalabri",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Enrico Scalabri"
+     },
+     {
+      "name_as_written": "Luca Ballabio",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Luca Ballabio"
+     },
+     {
+      "name_as_written": "Il Riga",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Il Riga"
+     },
+     {
+      "name_as_written": "Andrea Perelli",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Andrea Perelli"
+     },
+     {
+      "name_as_written": "Serena Orlando",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Serena Orlando"
+     },
+     {
+      "name_as_written": "Francesco Roncari",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Francesco Roncari"
+     },
+     {
+      "name_as_written": "Simone Finotti",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Simone Finotti"
+     },
+     {
+      "name_as_written": "Michelangelo Sciortino",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🚕 Michelangelo Sciortino"
+     },
+     {
+      "name_as_written": "Simoni Edoardo",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥🎥🎥 Simoni Edoardo"
+     },
+     {
+      "name_as_written": "Bernieri Maurizio",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📷📷📷 Bernieri Maurizio"
+     }
+    ],
+    "features": [
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXI DANCERS",
+      "rationale": "The description has a heading TAXI DANCERS followed by a list of named taxi dancers."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress Code",
+      "rationale": "The description states a dress code under the Dress Code heading."
+     }
+    ]
+   }
+  ]
+ }
 }

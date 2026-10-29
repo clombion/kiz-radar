@@ -1,0 +1,13 @@
+{
+ "key_a": "p:davide@cilene+davide",
+ "key_b": "p:davide@davide+laura",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:30+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "354c1d4c957afaeb",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Davide is a common name with different partners (Cilene vs Laura), though all these events are in Italy; the evidence does not settle whether one person changed partner."
+ }
+}

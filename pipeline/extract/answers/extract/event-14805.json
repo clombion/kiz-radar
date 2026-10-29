@@ -1,36 +1,43 @@
 {
- "batch": "event-14805",
- "events": [
-  {
-   "event_id": 14805,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "30+ hours of premium workshops",
-     "rationale": "The description states that over 30 hours of workshops are part of the congress."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 vibrant dancefloors",
-     "rationale": "Three dancefloors are offered, which means more than one dance floor."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "5 unforgettable socials (evening, daytime, and open-air)",
-     "rationale": "The listed socials include daytime socials."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "set in the luxurious Le Meridien Lav Hotel in Split, Croatia",
-     "rationale": "The congress is held in the same hotel where dancers are invited to stay, so the event and accommodation share one venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Accommodation at Hotel Le Meridien Lav:",
-     "rationale": "A negotiated hotel room rate list is offered for the partner hotel, and the rates are not part of the congress pass."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:39:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14805",
+  "events": [
+   {
+    "event_id": 14805,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "30+ hours of premium workshops",
+      "rationale": "The description states that over 30 hours of workshops are part of the congress."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 vibrant dancefloors",
+      "rationale": "Three dancefloors are offered, which means more than one dance floor."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "5 unforgettable socials (evening, daytime, and open-air)",
+      "rationale": "The listed socials include daytime socials."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "set in the luxurious Le Meridien Lav Hotel in Split, Croatia",
+      "rationale": "The congress is held in the same hotel where dancers are invited to stay, so the event and accommodation share one venue."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Accommodation at Hotel Le Meridien Lav:",
+      "rationale": "A negotiated hotel room rate list is offered for the partner hotel, and the rates are not part of the congress pass."
+     }
+    ]
+   }
+  ]
+ }
 }

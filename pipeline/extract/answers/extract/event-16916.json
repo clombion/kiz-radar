@@ -1,305 +1,312 @@
 {
- "batch": "event-16916",
- "events": [
-  {
-   "event_id": 16916,
-   "artists": [
-    {
-     "name_as_written": "Melvin & Gatica",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Melvin & Gatica"
-    },
-    {
-     "name_as_written": "Ronald & Alba",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ronald & Alba"
-    },
-    {
-     "name_as_written": "Kike & Nahir",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Kike & Nahir"
-    },
-    {
-     "name_as_written": "Alfredo & Andrea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Alfredo & Andrea"
-    },
-    {
-     "name_as_written": "Sergio & Elena",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Sergio & Elena"
-    },
-    {
-     "name_as_written": "Carlos & Paz",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Carlos & Paz"
-    },
-    {
-     "name_as_written": "Miguel & Sunsire",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Miguel & Sunsire"
-    },
-    {
-     "name_as_written": "Carlos & Fernanda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Carlos & Fernanda"
-    },
-    {
-     "name_as_written": "Émilien & Tehina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Émilien & Tehina"
-    },
-    {
-     "name_as_written": "Jorge & Azahara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Jorge & Azahara"
-    },
-    {
-     "name_as_written": "Javi & Fuensi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Javi & Fuensi"
-    },
-    {
-     "name_as_written": "Dj Khalid",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Khalid"
-    },
-    {
-     "name_as_written": "Dj Manuel Citro",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Manuel Citro"
-    },
-    {
-     "name_as_written": "Dj Pecino",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Pecino"
-    },
-    {
-     "name_as_written": "Dj One Bachata",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj One Bachata"
-    },
-    {
-     "name_as_written": "Dj Killo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Killo"
-    },
-    {
-     "name_as_written": "Dj Macky",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Macky"
-    },
-    {
-     "name_as_written": "Jojo & Jenni",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Jojo & Jenni"
-    },
-    {
-     "name_as_written": "Jesús & Anni",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Jesús & Anni"
-    },
-    {
-     "name_as_written": "Dwe & Gabi",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dwe & Gabi"
-    },
-    {
-     "name_as_written": "JP & Estefi",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "JP & Estefi"
-    },
-    {
-     "name_as_written": "Jack & Sara",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Jack & Sara"
-    },
-    {
-     "name_as_written": "Adilson & Telma",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Adilson & Telma"
-    },
-    {
-     "name_as_written": "Luis & Karen",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Luis & Karen"
-    },
-    {
-     "name_as_written": "Jamaica",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Jamaica"
-    },
-    {
-     "name_as_written": "Costa",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Costa"
-    },
-    {
-     "name_as_written": "Miguel",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Miguel"
-    },
-    {
-     "name_as_written": "Nelson Areceli",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Nelson Areceli"
-    },
-    {
-     "name_as_written": "Justinho",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Justinho"
-    },
-    {
-     "name_as_written": "Atou",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Atou"
-    },
-    {
-     "name_as_written": "Massemba",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Massemba"
-    },
-    {
-     "name_as_written": "Dj Paraíso",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Paraíso"
-    },
-    {
-     "name_as_written": "Dj Pingusso",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Pingusso"
-    },
-    {
-     "name_as_written": "Dj Stefanio",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Stefanio"
-    },
-    {
-     "name_as_written": "Dj Nice Life",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Nice Life"
-    },
-    {
-     "name_as_written": "Dj Shark",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Shark"
-    },
-    {
-     "name_as_written": "Dj Dani",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Dani"
-    },
-    {
-     "name_as_written": "Dj Lisa",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Lisa"
-    },
-    {
-     "name_as_written": "Dj Nao",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Nao"
-    },
-    {
-     "name_as_written": "Dj Loka",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Loka"
-    },
-    {
-     "name_as_written": "Dj Carlos King",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Carlos King"
-    },
-    {
-     "name_as_written": "Dj Santos",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Santos"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16916",
+  "events": [
+   {
+    "event_id": 16916,
+    "artists": [
+     {
+      "name_as_written": "Melvin & Gatica",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Melvin & Gatica"
+     },
+     {
+      "name_as_written": "Ronald & Alba",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ronald & Alba"
+     },
+     {
+      "name_as_written": "Kike & Nahir",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Kike & Nahir"
+     },
+     {
+      "name_as_written": "Alfredo & Andrea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Alfredo & Andrea"
+     },
+     {
+      "name_as_written": "Sergio & Elena",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Sergio & Elena"
+     },
+     {
+      "name_as_written": "Carlos & Paz",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Carlos & Paz"
+     },
+     {
+      "name_as_written": "Miguel & Sunsire",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Miguel & Sunsire"
+     },
+     {
+      "name_as_written": "Carlos & Fernanda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Carlos & Fernanda"
+     },
+     {
+      "name_as_written": "Émilien & Tehina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Émilien & Tehina"
+     },
+     {
+      "name_as_written": "Jorge & Azahara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Jorge & Azahara"
+     },
+     {
+      "name_as_written": "Javi & Fuensi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Javi & Fuensi"
+     },
+     {
+      "name_as_written": "Dj Khalid",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Khalid"
+     },
+     {
+      "name_as_written": "Dj Manuel Citro",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Manuel Citro"
+     },
+     {
+      "name_as_written": "Dj Pecino",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Pecino"
+     },
+     {
+      "name_as_written": "Dj One Bachata",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj One Bachata"
+     },
+     {
+      "name_as_written": "Dj Killo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Killo"
+     },
+     {
+      "name_as_written": "Dj Macky",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Macky"
+     },
+     {
+      "name_as_written": "Jojo & Jenni",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Jojo & Jenni"
+     },
+     {
+      "name_as_written": "Jesús & Anni",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Jesús & Anni"
+     },
+     {
+      "name_as_written": "Dwe & Gabi",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dwe & Gabi"
+     },
+     {
+      "name_as_written": "JP & Estefi",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "JP & Estefi"
+     },
+     {
+      "name_as_written": "Jack & Sara",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Jack & Sara"
+     },
+     {
+      "name_as_written": "Adilson & Telma",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Adilson & Telma"
+     },
+     {
+      "name_as_written": "Luis & Karen",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Luis & Karen"
+     },
+     {
+      "name_as_written": "Jamaica",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Jamaica"
+     },
+     {
+      "name_as_written": "Costa",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Costa"
+     },
+     {
+      "name_as_written": "Miguel",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Miguel"
+     },
+     {
+      "name_as_written": "Nelson Areceli",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Nelson Areceli"
+     },
+     {
+      "name_as_written": "Justinho",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Justinho"
+     },
+     {
+      "name_as_written": "Atou",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Atou"
+     },
+     {
+      "name_as_written": "Massemba",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Massemba"
+     },
+     {
+      "name_as_written": "Dj Paraíso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Paraíso"
+     },
+     {
+      "name_as_written": "Dj Pingusso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Pingusso"
+     },
+     {
+      "name_as_written": "Dj Stefanio",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Stefanio"
+     },
+     {
+      "name_as_written": "Dj Nice Life",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Nice Life"
+     },
+     {
+      "name_as_written": "Dj Shark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Shark"
+     },
+     {
+      "name_as_written": "Dj Dani",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Dani"
+     },
+     {
+      "name_as_written": "Dj Lisa",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Lisa"
+     },
+     {
+      "name_as_written": "Dj Nao",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Nao"
+     },
+     {
+      "name_as_written": "Dj Loka",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Loka"
+     },
+     {
+      "name_as_written": "Dj Carlos King",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Carlos King"
+     },
+     {
+      "name_as_written": "Dj Santos",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj Santos"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

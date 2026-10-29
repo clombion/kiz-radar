@@ -1,130 +1,137 @@
 {
- "batch": "event-15800",
- "events": [
-  {
-   "event_id": 15800,
-   "artists": [
-    {
-     "name_as_written": "@carlosypaz",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@carlosypaz"
-    },
-    {
-     "name_as_written": "@miguelysunsire",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@miguelysunsire"
-    },
-    {
-     "name_as_written": "@leandroyjomanteoficial",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@leandroyjomanteoficial"
-    },
-    {
-     "name_as_written": "@emilien.tehina.bachata",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@emilien.tehina.bachata"
-    },
-    {
-     "name_as_written": "@andiysilviabs",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@andiysilviabs"
-    },
-    {
-     "name_as_written": "@alma_urbansensual",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@alma_urbansensual"
-    },
-    {
-     "name_as_written": "@antonella_bellantuono",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@antonella_bellantuono"
-    },
-    {
-     "name_as_written": "@andreitiganus @andreea.husman",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@andreitiganus @andreea.husman"
-    },
-    {
-     "name_as_written": "@jorgeyangelaofficial",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@jorgeyangelaofficial"
-    },
-    {
-     "name_as_written": "@katrinlazo_",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@katrinlazo_"
-    },
-    {
-     "name_as_written": "@laiadelafuente",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@laiadelafuente"
-    },
-    {
-     "name_as_written": "@your.aventura.bachata",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@your.aventura.bachata"
-    },
-    {
-     "name_as_written": "@dancemaniacs_kasiadominik",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "@dancemaniacs_kasiadominik"
-    },
-    {
-     "name_as_written": "@djhuskybachata",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "@djhuskybachata"
-    },
-    {
-     "name_as_written": "@djtonypecino",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "@djtonypecino"
-    },
-    {
-     "name_as_written": "@djcorack",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "@djcorack"
-    },
-    {
-     "name_as_written": "@dj.dia92",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "@dj.dia92"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:42:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15800",
+  "events": [
+   {
+    "event_id": 15800,
+    "artists": [
+     {
+      "name_as_written": "@carlosypaz",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@carlosypaz"
+     },
+     {
+      "name_as_written": "@miguelysunsire",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@miguelysunsire"
+     },
+     {
+      "name_as_written": "@leandroyjomanteoficial",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@leandroyjomanteoficial"
+     },
+     {
+      "name_as_written": "@emilien.tehina.bachata",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@emilien.tehina.bachata"
+     },
+     {
+      "name_as_written": "@andiysilviabs",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@andiysilviabs"
+     },
+     {
+      "name_as_written": "@alma_urbansensual",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@alma_urbansensual"
+     },
+     {
+      "name_as_written": "@antonella_bellantuono",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@antonella_bellantuono"
+     },
+     {
+      "name_as_written": "@andreitiganus @andreea.husman",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@andreitiganus @andreea.husman"
+     },
+     {
+      "name_as_written": "@jorgeyangelaofficial",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@jorgeyangelaofficial"
+     },
+     {
+      "name_as_written": "@katrinlazo_",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@katrinlazo_"
+     },
+     {
+      "name_as_written": "@laiadelafuente",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@laiadelafuente"
+     },
+     {
+      "name_as_written": "@your.aventura.bachata",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@your.aventura.bachata"
+     },
+     {
+      "name_as_written": "@dancemaniacs_kasiadominik",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "@dancemaniacs_kasiadominik"
+     },
+     {
+      "name_as_written": "@djhuskybachata",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "@djhuskybachata"
+     },
+     {
+      "name_as_written": "@djtonypecino",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "@djtonypecino"
+     },
+     {
+      "name_as_written": "@djcorack",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "@djcorack"
+     },
+     {
+      "name_as_written": "@dj.dia92",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "@dj.dia92"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

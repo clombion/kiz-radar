@@ -1,137 +1,144 @@
 {
- "batch": "event-17006",
- "events": [
-  {
-   "event_id": 17006,
-   "artists": [
-    {
-     "name_as_written": "Sensation Kizomba",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Sensation Kizomba presents an unmissable event…"
-    },
-    {
-     "name_as_written": "DJ Hugo Smile",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Hugo Smile"
-    },
-    {
-     "name_as_written": "DJ Colts",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Colts"
-    },
-    {
-     "name_as_written": "DJ Ti Wosh",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Ti Wosh"
-    },
-    {
-     "name_as_written": "DJ LD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ LD"
-    },
-    {
-     "name_as_written": "DJ L-GI",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ L-GI"
-    },
-    {
-     "name_as_written": "DJ Nam’s",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Nam’s"
-    },
-    {
-     "name_as_written": "DJ Blu",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Blu"
-    },
-    {
-     "name_as_written": "DJ Swimy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Swimy"
-    },
-    {
-     "name_as_written": "Fuego & Clarita",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Fuego & Clarita"
-    },
-    {
-     "name_as_written": "Jonathan Kani",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Jonathan Kani"
-    },
-    {
-     "name_as_written": "Stef & Sara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Stef & Sara"
-    },
-    {
-     "name_as_written": "Mervil",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Mervil"
-    },
-    {
-     "name_as_written": "Damyss",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Damyss"
-    },
-    {
-     "name_as_written": "Dan & Anais",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Dan & Anais"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pool_party",
-     "quote": "An amazing pool party",
-     "rationale": "The program explicitly lists a pool party."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Dance classes for all levels",
-     "rationale": "Dance classes are part of the program."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Dance classes for all levels",
-     "rationale": "The dance classes are stated to be for all levels."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "MEN’S SWIM SHORTS REQUIRED",
-     "rationale": "A required clothing item is stated for men."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17006",
+  "events": [
+   {
+    "event_id": 17006,
+    "artists": [
+     {
+      "name_as_written": "Sensation Kizomba",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Sensation Kizomba presents an unmissable event…"
+     },
+     {
+      "name_as_written": "DJ Hugo Smile",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Hugo Smile"
+     },
+     {
+      "name_as_written": "DJ Colts",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Colts"
+     },
+     {
+      "name_as_written": "DJ Ti Wosh",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Ti Wosh"
+     },
+     {
+      "name_as_written": "DJ LD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ LD"
+     },
+     {
+      "name_as_written": "DJ L-GI",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ L-GI"
+     },
+     {
+      "name_as_written": "DJ Nam’s",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Nam’s"
+     },
+     {
+      "name_as_written": "DJ Blu",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Blu"
+     },
+     {
+      "name_as_written": "DJ Swimy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Swimy"
+     },
+     {
+      "name_as_written": "Fuego & Clarita",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Fuego & Clarita"
+     },
+     {
+      "name_as_written": "Jonathan Kani",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Jonathan Kani"
+     },
+     {
+      "name_as_written": "Stef & Sara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Stef & Sara"
+     },
+     {
+      "name_as_written": "Mervil",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Mervil"
+     },
+     {
+      "name_as_written": "Damyss",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Damyss"
+     },
+     {
+      "name_as_written": "Dan & Anais",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Dan & Anais"
+     }
+    ],
+    "features": [
+     {
+      "feature": "pool_party",
+      "quote": "An amazing pool party",
+      "rationale": "The program explicitly lists a pool party."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Dance classes for all levels",
+      "rationale": "Dance classes are part of the program."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Dance classes for all levels",
+      "rationale": "The dance classes are stated to be for all levels."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "MEN’S SWIM SHORTS REQUIRED",
+      "rationale": "A required clothing item is stated for men."
+     }
+    ]
+   }
+  ]
+ }
 }

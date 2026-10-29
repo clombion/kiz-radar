@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@laura+romeo",
+ "key_b": "p:lauralise@lauralise+romeo",
+ "prompt": "7af5fef02cae3622",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:32:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "bcdf046932e9c718",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Same partner Romeo, Laura and Laura-Lise share the first name, and both sides are bachata teachers."
+ }
+}

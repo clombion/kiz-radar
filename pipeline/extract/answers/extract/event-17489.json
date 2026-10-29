@@ -1,97 +1,104 @@
 {
- "batch": "event-17489",
- "events": [
-  {
-   "event_id": 17489,
-   "artists": [
-    {
-     "name_as_written": "Francis & Sabine",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Francis & Sabine (Orléans)"
-    },
-    {
-     "name_as_written": "Alex & Karine",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Alex & Karine (Amiens)"
-    },
-    {
-     "name_as_written": "Yace Galanta",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Yace Galanta (Geneva)"
-    },
-    {
-     "name_as_written": "Blackchinese",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Blackchinese (Nice)"
-    },
-    {
-     "name_as_written": "Emy Ly",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Emy Ly (Béziers)"
-    },
-    {
-     "name_as_written": "DJ MKY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ MKY (Geneva) – Godfather"
-    },
-    {
-     "name_as_written": "DJ DRIM",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ DRIM (Geneva)"
-    },
-    {
-     "name_as_written": "DJ Galanta",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Galanta (Geneva)"
-    },
-    {
-     "name_as_written": "DJ MARKIZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ MARKIZ (Perpignan)"
-    },
-    {
-     "name_as_written": "DJ Ralph BB",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Ralph BB (Toulouse)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Social dance, workshops & party",
-     "rationale": "The programme lists workshops alongside social dancing and parties on the Friday and Saturday."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Non-stop workshops & social dancing until 9 PM",
-     "rationale": "Sunday's social dancing runs through the day until 9 PM, which is a daytime social."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "On-site rooms & brunch (9 AM – 1 PM)",
-     "rationale": "Accommodation is offered in on-site rooms at the same venue as the event, suggesting the parties and stay share one location."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17489",
+  "events": [
+   {
+    "event_id": 17489,
+    "artists": [
+     {
+      "name_as_written": "Francis & Sabine",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Francis & Sabine (Orléans)"
+     },
+     {
+      "name_as_written": "Alex & Karine",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Alex & Karine (Amiens)"
+     },
+     {
+      "name_as_written": "Yace Galanta",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Yace Galanta (Geneva)"
+     },
+     {
+      "name_as_written": "Blackchinese",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Blackchinese (Nice)"
+     },
+     {
+      "name_as_written": "Emy Ly",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Emy Ly (Béziers)"
+     },
+     {
+      "name_as_written": "DJ MKY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ MKY (Geneva) – Godfather"
+     },
+     {
+      "name_as_written": "DJ DRIM",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ DRIM (Geneva)"
+     },
+     {
+      "name_as_written": "DJ Galanta",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Galanta (Geneva)"
+     },
+     {
+      "name_as_written": "DJ MARKIZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ MARKIZ (Perpignan)"
+     },
+     {
+      "name_as_written": "DJ Ralph BB",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Ralph BB (Toulouse)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Social dance, workshops & party",
+      "rationale": "The programme lists workshops alongside social dancing and parties on the Friday and Saturday."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Non-stop workshops & social dancing until 9 PM",
+      "rationale": "Sunday's social dancing runs through the day until 9 PM, which is a daytime social."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "On-site rooms & brunch (9 AM – 1 PM)",
+      "rationale": "Accommodation is offered in on-site rooms at the same venue as the event, suggesting the parties and stay share one location."
+     }
+    ]
+   }
+  ]
+ }
 }

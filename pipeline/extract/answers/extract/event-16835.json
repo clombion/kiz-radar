@@ -1,81 +1,88 @@
 {
- "batch": "event-16835",
- "events": [
-  {
-   "event_id": 16835,
-   "artists": [
-    {
-     "name_as_written": "Zaca & Shauna",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴 🇨🇵",
-     "source_line": "Zaca & Shauna 🇦🇴 🇨🇵"
-    },
-    {
-     "name_as_written": "Teresa & Emanuel",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴 🇵🇹",
-     "source_line": "Teresa & Emanuel 🇦🇴 🇵🇹"
-    },
-    {
-     "name_as_written": "Nacito",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴 🇫🇷",
-     "source_line": "Nacito 🇦🇴 🇫🇷"
-    },
-    {
-     "name_as_written": "Iza Semba",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Iza Semba 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Gaelico",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Gaelico 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Nacimao",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴 🇫🇷",
-     "source_line": "DJ Nacimao 🇦🇴 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Ak-S",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷 🇵🇹",
-     "source_line": "DJ Ak-S 🔥🇫🇷 🇵🇹"
-    }
-   ],
-   "features": [
-    {
-     "feature": "shows",
-     "quote": "2 festive evenings with DJs, shows & an amazing atmosphere",
-     "rationale": "The program lists shows as part of the festive evenings."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops with passionate artists for all levels",
-     "rationale": "The event explicitly offers workshops with artists."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Workshops with passionate artists for all levels",
-     "rationale": "The workshops are explicitly stated to be for all levels."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Whether you’re a beginner or an experienced dancer, come experience Palanca Negra.",
-     "rationale": "The description explicitly welcomes beginners."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:46:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16835",
+  "events": [
+   {
+    "event_id": 16835,
+    "artists": [
+     {
+      "name_as_written": "Zaca & Shauna",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴 🇨🇵",
+      "source_line": "Zaca & Shauna 🇦🇴 🇨🇵"
+     },
+     {
+      "name_as_written": "Teresa & Emanuel",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴 🇵🇹",
+      "source_line": "Teresa & Emanuel 🇦🇴 🇵🇹"
+     },
+     {
+      "name_as_written": "Nacito",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴 🇫🇷",
+      "source_line": "Nacito 🇦🇴 🇫🇷"
+     },
+     {
+      "name_as_written": "Iza Semba",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Iza Semba 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Gaelico",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Gaelico 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Nacimao",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴 🇫🇷",
+      "source_line": "DJ Nacimao 🇦🇴 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Ak-S",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷 🇵🇹",
+      "source_line": "DJ Ak-S 🔥🇫🇷 🇵🇹"
+     }
+    ],
+    "features": [
+     {
+      "feature": "shows",
+      "quote": "2 festive evenings with DJs, shows & an amazing atmosphere",
+      "rationale": "The program lists shows as part of the festive evenings."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops with passionate artists for all levels",
+      "rationale": "The event explicitly offers workshops with artists."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Workshops with passionate artists for all levels",
+      "rationale": "The workshops are explicitly stated to be for all levels."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Whether you’re a beginner or an experienced dancer, come experience Palanca Negra.",
+      "rationale": "The description explicitly welcomes beginners."
+     }
+    ]
+   }
+  ]
+ }
 }

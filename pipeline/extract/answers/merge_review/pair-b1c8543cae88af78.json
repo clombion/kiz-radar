@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sarah@py+sarah",
+ "key_b": "p:sarah@sarah+valr",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:24:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "b1c8543cae88af78",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Py & Sarah and Val'R & Sarah are both listed at Tamasha Summer Kizomba Carnaval on the same date with different partners, so they are different dancers."
+ }
+}

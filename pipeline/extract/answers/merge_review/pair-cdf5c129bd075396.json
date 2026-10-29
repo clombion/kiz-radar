@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nam@bingo+nam",
+ "key_b": "p:nam@dj",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:22+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "cdf5c129bd075396",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Nam is the same stage name with a DJ prefix on one side, and both entries are Vietnamese at the same event on the same date."
+ }
+}

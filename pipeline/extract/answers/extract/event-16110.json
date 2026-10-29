@@ -1,82 +1,89 @@
 {
- "batch": "event-16110",
- "events": [
-  {
-   "event_id": 16110,
-   "artists": [
-    {
-     "name_as_written": "Adilson & Telma",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "Adilson & Telma 🇦🇴"
-    },
-    {
-     "name_as_written": "Jojo & Jenny",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Jojo & Jenny 🇫🇷"
-    },
-    {
-     "name_as_written": "Dj Shark",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "Dj Shark 🇪🇸"
-    },
-    {
-     "name_as_written": "Dj Ellen",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇶",
-     "source_line": "Dj Ellen 🇧🇶"
-    },
-    {
-     "name_as_written": "Dj Lucas",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "Dj Lucas 🇵🇹"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE – SHERATON HOTEL LAVAL",
-     "rationale": "The parties take place in the Sheraton hotel where the event and accommodation share the same venue."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Excellent workshops",
-     "rationale": "The description lists workshops as part of the event."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "PRE-PARTY",
-     "rationale": "A pre-party is listed on Thursday before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "GNK FESTIVAL – AFTER-PARTY",
-     "rationale": "An after-party is listed for Monday July 27th."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "day socials",
-     "rationale": "Daytime socials are listed in the Friday to Sunday schedule."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 rooms",
-     "rationale": "The schedule states there are three dance rooms."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "SHUTTLE SERVICE (NEW)",
-     "rationale": "A shuttle service is announced as a heading for the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:44:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16110",
+  "events": [
+   {
+    "event_id": 16110,
+    "artists": [
+     {
+      "name_as_written": "Adilson & Telma",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "Adilson & Telma 🇦🇴"
+     },
+     {
+      "name_as_written": "Jojo & Jenny",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Jojo & Jenny 🇫🇷"
+     },
+     {
+      "name_as_written": "Dj Shark",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "Dj Shark 🇪🇸"
+     },
+     {
+      "name_as_written": "Dj Ellen",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇶",
+      "source_line": "Dj Ellen 🇧🇶"
+     },
+     {
+      "name_as_written": "Dj Lucas",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "Dj Lucas 🇵🇹"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE – SHERATON HOTEL LAVAL",
+      "rationale": "The parties take place in the Sheraton hotel where the event and accommodation share the same venue."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Excellent workshops",
+      "rationale": "The description lists workshops as part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "PRE-PARTY",
+      "rationale": "A pre-party is listed on Thursday before the main event."
+     },
+     {
+      "feature": "after_party",
+      "quote": "GNK FESTIVAL – AFTER-PARTY",
+      "rationale": "An after-party is listed for Monday July 27th."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "day socials",
+      "rationale": "Daytime socials are listed in the Friday to Sunday schedule."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 rooms",
+      "rationale": "The schedule states there are three dance rooms."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "SHUTTLE SERVICE (NEW)",
+      "rationale": "A shuttle service is announced as a heading for the event."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,67 +1,74 @@
 {
- "batch": "event-15592",
- "events": [
-  {
-   "event_id": 15592,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 ROOMS"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "ROOM 1",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "urbankiz",
-      "semba",
-      "kompa"
-     ],
-     "quote": "ROOM 1: Kizomba, Urbankiz, Semba, Kompa"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15592",
+  "events": [
+   {
+    "event_id": 15592,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 ROOMS"
     },
-    {
-     "name_as_written": "ROOM 2",
-     "kind": "party",
-     "genres": [
-      "salsa",
-      "bachata"
-     ],
-     "quote": "ROOM 2: Salsa and Bachata"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "ROOM 1: Kizomba, Urbankiz, Semba, Kompa"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "ROOM 1: Kizomba, Urbankiz, Semba, Kompa"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "ROOM 1: Kizomba, Urbankiz, Semba, Kompa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "ROOM 1: Kizomba, Urbankiz, Semba, Kompa"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "ROOM 2: Salsa and Bachata"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "ROOM 2: Salsa and Bachata"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "ROOM 1",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "urbankiz",
+       "semba",
+       "kompa"
+      ],
+      "quote": "ROOM 1: Kizomba, Urbankiz, Semba, Kompa"
+     },
+     {
+      "name_as_written": "ROOM 2",
+      "kind": "party",
+      "genres": [
+       "salsa",
+       "bachata"
+      ],
+      "quote": "ROOM 2: Salsa and Bachata"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "ROOM 1: Kizomba, Urbankiz, Semba, Kompa"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "ROOM 1: Kizomba, Urbankiz, Semba, Kompa"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "ROOM 1: Kizomba, Urbankiz, Semba, Kompa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "ROOM 1: Kizomba, Urbankiz, Semba, Kompa"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "ROOM 2: Salsa and Bachata"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "ROOM 2: Salsa and Bachata"
+     }
+    ]
+   }
+  ]
+ }
 }

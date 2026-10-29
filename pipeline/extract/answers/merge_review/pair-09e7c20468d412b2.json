@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lucas@dj",
+ "key_b": "p:lucasexclusive",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "09e7c20468d412b2",
+ "answer": {
+  "decision": "merge",
+  "rationale": "DJ Lucas on side A and DJ Lucas Exclusive on side B share the stage name, and both sides list Portugal as stated country."
+ }
+}

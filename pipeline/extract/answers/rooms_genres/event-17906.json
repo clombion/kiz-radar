@@ -1,25 +1,32 @@
 {
- "batch": "event-17906",
- "events": [
-  {
-   "event_id": 17906,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "2 dedicated rooms"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "BOM BALANÇO KIZOMBA WEEKENDER MANCHESTER 2026"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17906",
+  "events": [
+   {
+    "event_id": 17906,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "2 dedicated rooms"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "BOM BALANÇO KIZOMBA WEEKENDER MANCHESTER 2026"
+     }
+    ]
+   }
+  ]
+ }
 }

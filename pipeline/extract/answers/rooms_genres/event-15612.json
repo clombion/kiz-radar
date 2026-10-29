@@ -1,59 +1,66 @@
 {
- "batch": "event-15612",
- "events": [
-  {
-   "event_id": 15612,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
-   },
-   "class_rooms": {
-    "count": 3,
-    "quote": "3 rooms simultaneously"
-   },
-   "rooms": [
-    {
-     "name_as_written": "Salsa",
-     "kind": "unspecified",
-     "genres": [
-      "salsa"
-     ],
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:52:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15612",
+  "events": [
+   {
+    "event_id": 15612,
+    "party_rooms": {
+     "count": 3,
      "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
     },
-    {
-     "name_as_written": "Bachata",
-     "kind": "unspecified",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
+    "class_rooms": {
+     "count": 3,
+     "quote": "3 rooms simultaneously"
     },
-    {
-     "name_as_written": "Kizomba",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
-    }
-   ]
-  }
- ]
+    "rooms": [
+     {
+      "name_as_written": "Salsa",
+      "kind": "unspecified",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
+     },
+     {
+      "name_as_written": "Bachata",
+      "kind": "unspecified",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
+     },
+     {
+      "name_as_written": "Kizomba",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

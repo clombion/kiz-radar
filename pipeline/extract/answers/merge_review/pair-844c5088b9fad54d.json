@@ -1,0 +1,13 @@
+{
+ "key_a": "p:catharine@catharine+kornel",
+ "key_b": "p:catherine@catherine+kornel",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "844c5088b9fad54d",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Kornel & Catharine and Kornel & Catherine share the partner Kornel and the same name in a spelling variant."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:pierre@dance",
+ "key_b": "p:pierre@pierre+ulyana",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "f2c7d6a0d0c5740e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The solo Pierre and the Pierre and Ulyana couple share the first name, Sweden as the stated country, Gothenburg and Stockholm events, and an overlapping Urban Kiz style."
+ }
+}

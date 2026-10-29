@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kristel@ichigo+kristel",
+ "key_b": "p:kristelju",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:23:21+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "374bd9dd2000ef28",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Ichigo & Kristel and Kristel Ju share the partner Ichigo, and the b-side entries pair Kristel Ju with Ichigo, so Ju is the surname form."
+ }
+}

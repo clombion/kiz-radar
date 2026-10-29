@@ -1,61 +1,68 @@
 {
- "batch": "event-18308",
- "events": [
-  {
-   "event_id": 18308,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 rooms, multiple vibes!"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "zouk"
-     ],
-     "quote": "One dedicated to Kizomba / Semba / Ghetto Zouk"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:55:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18308",
+  "events": [
+   {
+    "event_id": 18308,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 rooms, multiple vibes!"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "tarraxo"
-     ],
-     "quote": "One dedicated to Urban Kiz / Tarraxo"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "to the depth of Kizomba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "From the roots of Semba"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "One dedicated to Kizomba / Semba / Ghetto Zouk"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "to the burning intensity of Urban Kiz"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "One dedicated to Urban Kiz / Tarraxo"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "zouk"
+      ],
+      "quote": "One dedicated to Kizomba / Semba / Ghetto Zouk"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "tarraxo"
+      ],
+      "quote": "One dedicated to Urban Kiz / Tarraxo"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "to the depth of Kizomba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "From the roots of Semba"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "One dedicated to Kizomba / Semba / Ghetto Zouk"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "to the burning intensity of Urban Kiz"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "One dedicated to Urban Kiz / Tarraxo"
+     }
+    ]
+   }
+  ]
+ }
 }

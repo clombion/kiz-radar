@@ -1,0 +1,13 @@
+{
+ "key_a": "p:pascal@dj",
+ "key_b": "p:pascalgomis",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:28+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "7405dd170e3d5c6a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "DJ Pascal and Pascal Gomis share a common first name and France as the stated country, but the surname is absent on side A and the roles differ."
+ }
+}

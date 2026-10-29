@@ -1,59 +1,66 @@
 {
- "batch": "event-19048",
- "events": [
-  {
-   "event_id": 19048,
-   "party_rooms": {
-    "count": 2,
-    "quote": "+13 hours of Social dancing on 2 floors"
-   },
-   "class_rooms": {
-    "count": 2,
-    "quote": "+12 hours of Workshops in 2 rooms"
-   },
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata, Salsa/Casino, Konpa, Kizomba, Merengue and more"
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19048",
+  "events": [
+   {
+    "event_id": 19048,
+    "party_rooms": {
+     "count": 2,
+     "quote": "+13 hours of Social dancing on 2 floors"
     },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa/Casino",
-     "quote": "Bachata, Salsa/Casino, Konpa, Kizomba, Merengue and more"
+    "class_rooms": {
+     "count": 2,
+     "quote": "+12 hours of Workshops in 2 rooms"
     },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Mariana (Konpa)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Daniela (Kizomba)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Merengue",
-     "quote": "Juan Pablo Paredes (Bachata / Merengue)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Son Cubano",
-     "quote": "(Casino / Son Cubano)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Son Dominicano",
-     "quote": "Frank E (Son Dominicano / Bolero)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Bolero",
-     "quote": "Frank E (Son Dominicano / Bolero)"
-    }
-   ]
-  }
- ]
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata, Salsa/Casino, Konpa, Kizomba, Merengue and more"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa/Casino",
+      "quote": "Bachata, Salsa/Casino, Konpa, Kizomba, Merengue and more"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Mariana (Konpa)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Daniela (Kizomba)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Merengue",
+      "quote": "Juan Pablo Paredes (Bachata / Merengue)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Son Cubano",
+      "quote": "(Casino / Son Cubano)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Son Dominicano",
+      "quote": "Frank E (Son Dominicano / Bolero)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Bolero",
+      "quote": "Frank E (Son Dominicano / Bolero)"
+     }
+    ]
+   }
+  ]
+ }
 }

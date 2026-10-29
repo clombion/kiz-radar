@@ -1,31 +1,38 @@
 {
- "batch": "event-14599",
- "events": [
-  {
-   "event_id": 14599,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "full weekend of daily workshops",
-     "rationale": "The description says the weekend includes daily workshops, so dance classes are part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "afternoon socials",
-     "rationale": "Afternoon socials are explicitly offered, which matches daytime socials."
-    },
-    {
-     "feature": "shows",
-     "quote": "nightly performances",
-     "rationale": "Nightly performances indicate shows or performances by artists."
-    },
-    {
-     "feature": "competition",
-     "quote": "Jack & Jill Competition",
-     "rationale": "A Jack & Jill competition is explicitly hosted at the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:39:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14599",
+  "events": [
+   {
+    "event_id": 14599,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "full weekend of daily workshops",
+      "rationale": "The description says the weekend includes daily workshops, so dance classes are part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "afternoon socials",
+      "rationale": "Afternoon socials are explicitly offered, which matches daytime socials."
+     },
+     {
+      "feature": "shows",
+      "quote": "nightly performances",
+      "rationale": "Nightly performances indicate shows or performances by artists."
+     },
+     {
+      "feature": "competition",
+      "quote": "Jack & Jill Competition",
+      "rationale": "A Jack & Jill competition is explicitly hosted at the event."
+     }
+    ]
+   }
+  ]
+ }
 }

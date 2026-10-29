@@ -74,7 +74,7 @@ page on kizomba-world. The fares are our own searches.
 | `docs/data/site.json` | What the page shows before the database loads: home airport, destinations, dates covered | the same build |
 | `docs/data/fares.csv` | Friday-to-Monday return fares, one row per airport and weekend | the **Refresh fares** Action |
 | `pipeline/fare_jobs.csv` | When each festival weekend was last searched (its fare, when one was found, is in `docs/data/fares.csv`) | the same Action |
-| `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices | the **Refresh events** Action |
+| `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices, and the merge review's, each with where it comes from | the **Refresh events** Action |
 | `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Refresh places and rates** Action |
 | `pipeline/tickets/` | Ticket-page recipes, read logs, first reads, from which the load takes the prices read there, and what each festival waits for (`tickets/status.csv`) | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
 | `pipeline/states.py` | Every state a data point can be in, what it means and the site's words for it | by hand (see "States") |
@@ -160,9 +160,10 @@ A claim decides a fact no step can derive: that two artists are one (`merge`, wi
 artist is from (`home`), which artist one festival's line-up means (`booking`), or what the festivals on a ticket site
 wait for instead of their default (`site`, for a site a recipe can't read). `pipeline/claims.py` holds their records.
 Each claim names its subject by keys mentions produce, has a time and a note, and comes by one of three channels, which
-give it its priority: the admin's, then an organiser's (to come), then the pipeline's own (the merge review's decisions
-in `pipeline/extract/merges.csv`). Per subject the highest channel decides, then the latest claim, then the claim with
-the greater digest, so the outcome doesn't depend on the order claims are read in.
+give it its priority: the admin's, then an organiser's (to come), then the pipeline's own (the merge review's answers to
+its current prompt, `pipeline/extract/merge_review.py`, each made when it was answered). Per subject the highest channel
+decides, then the latest claim, then the claim with the greater digest, so the outcome doesn't depend on the order
+claims are read in.
 
 The admin's claims live in [kiz-radar-claims](https://github.com/clombion/kiz-radar-claims), checked out here as the
 `claims/` submodule (`mise run hooks` checks it out). Each claim is one JSON file named by the digest of its text, so
@@ -358,27 +359,32 @@ through [curl_cffi](https://github.com/lexiforest/curl_cffi). If Cloudflare stop
 and the site keeps the last export.
 
 Line-ups, highlights from descriptions, rooms, genres and pass prices are read from each description by Claude
-(claude-haiku-5-5). After the scrape, the same Action runs `pipeline/extract/ask.py`: festivals in the export's
-`pending_extraction` table (new, or with a changed description, a pass for each answer older than the change) and
-festivals a pass has no answer for are asked about, one festival and one pass at a time, with that pass's prompt (its
-template in `pipeline/extract/prompts/`, the definitions of its states filled in from `pipeline/states.py`) and its
-record's schema as the required answer format. A checker then confirms that the answer is its record
-(`pipeline/records.py`), and that every name, quote and price appears in the description, and that a pass has a style
-only at a festival whose genres name two dance styles or more (`prices.styles`). A failing answer goes back to Claude
-once, with the checker's lines. A second failure leaves the festival pending, to try again next month, as does any call
-that gives no answer (`pipeline/calls.py`: a reply cut short, the service busy or unreachable), and the run fails naming
-each question left unanswered; a call that can never succeed as made (a bad key, say) stops the run's requests. A
-festival leaves pending once every pass has an answer since its change, from that run or an earlier one. A prompt is
-known by the hash of everything fixed in its request: its text, its record's schema as the checker holds the answer to
-it, and that schema as sent (`pipeline/prompt.py`); each answer and first read records the hash it answered, and saving
+(claude-haiku-5-5). After the scrape, the same Action runs `pipeline/extract/ask.py`: a festival is asked a pass when
+the pass has no answer for it, or its answer is stale: it answered another prompt, or another message than the one the
+festival would be asked with today, since its description, title, dates or country changed, or, for the prices pass, the
+styles its genres give (`pipeline/extract/questions.py`; each answer keeps the digest of the message it answered). The
+extraction and rooms-genres passes are asked first, then the prices pass, with the styles their answers give. Each
+question is one festival and one pass, with that pass's prompt (its template in `pipeline/extract/prompts/`, the
+definitions of its states filled in from `pipeline/states.py`) and its record's schema as the required answer format. A
+checker then confirms that the answer is its record (`pipeline/records.py`), and that every name, quote and price
+appears in the description, and that a pass has a style only at a festival whose genres name two dance styles or more
+(`prices.styles`). A failing answer goes back to Claude once, with the checker's lines. A second failure leaves the
+answer due, to ask again next month, as does any call that gives no answer (`pipeline/calls.py`: a reply cut short, the
+service busy or unreachable), and the run fails naming each question left unanswered; a call that can never succeed as
+made (a bad key, say) stops the run's requests. A prompt is known by the hash of everything fixed in its request: its
+text, its record's schema as the checker holds the answer to it, that schema as sent, and the record of its question and
+the framing it is sent in (`pipeline/prompt.py`); each answer and first read records the hash it answered, and saving
 one first saves the text in `pipeline/prompts/asked/<hash>.md`. Editing a template, a state's criterion or a record
 changes the hash of every prompt it is in, which makes every answer to that prompt, and every first read when it is the
 first read's, wait to be asked again, out of the database until then; so start **Refresh events** by hand once it is
 pushed, before anything reloads the database. Started with festival ids in `festivals` ("16909,18806"), it skips the
 scrape, and asks and reads those festivals only (`ask.py --only`, `tickets.py run --only`): after a fixed recipe, say,
-or to try a prompt on a few festivals first. The answers are saved in `pipeline/extract/answers/` and committed;
-`answers/log.csv` says who answered each file, with which model and prompt, and when. The first extraction's answers,
-from Claude Code subagents, are kept there too; rebuilding from them reproduces the export's tables exactly.
+or to try a prompt on a few festivals first. The answers are saved in `pipeline/extract/answers/` and committed, each
+file with who answered it, with which model and prompt, when, and the digest of the message it answered. The first
+extraction's answers, from Claude Code subagents in batches, are kept there too, as what the first export was built
+from. Last, the Action loads the answers and resolves the artists, and asks the merge review about every pair the
+matching rules flag and every pair a review answered before (`pipeline/extract/merge_review.py`): its answers to the
+current prompt are the pipeline's merge claims.
 
 `load_extract.py` then loads every festival's newest answer to each pass's current prompt, and the prices read on ticket
 pages to the current first-read prompt, into the export, in one transaction: a value a check refuses leaves the export

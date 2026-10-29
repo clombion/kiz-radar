@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+silvia",
+ "key_b": "p:andreas@andreas+silvia",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "8a0144a9b90afa50",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Same partner Silvia and a shared stated country, but Andrea and Andreas differ by a letter, so the evidence conflicts."
+ }
+}

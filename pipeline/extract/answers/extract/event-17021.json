@@ -1,100 +1,107 @@
 {
- "batch": "event-17021",
- "events": [
-  {
-   "event_id": 17021,
-   "artists": [
-    {
-     "name_as_written": "PUTO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🦄 PUTO"
-    },
-    {
-     "name_as_written": "DJ NUO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🦄 DJ NUO"
-    },
-    {
-     "name_as_written": "DJ TATI",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🦄 DJ TATI"
-    },
-    {
-     "name_as_written": "DJ CORAZÓN CORAÇÃO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🦄 DJ CORAZÓN CORAÇÃO"
-    },
-    {
-     "name_as_written": "DJ LFIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🦄 DJ LFIGO"
-    },
-    {
-     "name_as_written": "KALYPSO & ADE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🦄 KALYPSO & ADE"
-    },
-    {
-     "name_as_written": "MANU SAUDADE & OLIVIA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🦄 MANU SAUDADE & OLIVIA"
-    },
-    {
-     "name_as_written": "ALEX MALEMBE & MAYLIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🦄 ALEX MALEMBE & MAYLIE"
-    },
-    {
-     "name_as_written": "MERVIL",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🦄 MERVIL"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Urban Kizomba Charm Class with Alex Malembe & Maylie",
-     "rationale": "The schedule lists dance classes taught by named teachers."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Alchimie Kizomba Class (All Levels)",
-     "rationale": "The class is explicitly labelled as open to all levels."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Urban Kiz Ritual Pre-Party Class",
-     "rationale": "A pre-party session is scheduled before the main party of the evening."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Webinar & Beach Paraty",
-     "rationale": "The event title and header name a beach party as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Grand FEERIK Social Party",
-     "rationale": "A social party is scheduled in the afternoon at 4:00 PM on the beach day."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:47:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-17021",
+  "events": [
+   {
+    "event_id": 17021,
+    "artists": [
+     {
+      "name_as_written": "PUTO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦄 PUTO"
+     },
+     {
+      "name_as_written": "DJ NUO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦄 DJ NUO"
+     },
+     {
+      "name_as_written": "DJ TATI",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦄 DJ TATI"
+     },
+     {
+      "name_as_written": "DJ CORAZÓN CORAÇÃO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦄 DJ CORAZÓN CORAÇÃO"
+     },
+     {
+      "name_as_written": "DJ LFIGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦄 DJ LFIGO"
+     },
+     {
+      "name_as_written": "KALYPSO & ADE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🦄 KALYPSO & ADE"
+     },
+     {
+      "name_as_written": "MANU SAUDADE & OLIVIA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🦄 MANU SAUDADE & OLIVIA"
+     },
+     {
+      "name_as_written": "ALEX MALEMBE & MAYLIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🦄 ALEX MALEMBE & MAYLIE"
+     },
+     {
+      "name_as_written": "MERVIL",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🦄 MERVIL"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Urban Kizomba Charm Class with Alex Malembe & Maylie",
+      "rationale": "The schedule lists dance classes taught by named teachers."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Alchimie Kizomba Class (All Levels)",
+      "rationale": "The class is explicitly labelled as open to all levels."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Urban Kiz Ritual Pre-Party Class",
+      "rationale": "A pre-party session is scheduled before the main party of the evening."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Webinar & Beach Paraty",
+      "rationale": "The event title and header name a beach party as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Grand FEERIK Social Party",
+      "rationale": "A social party is scheduled in the afternoon at 4:00 PM on the beach day."
+     }
+    ]
+   }
+  ]
+ }
 }

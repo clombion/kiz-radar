@@ -1,38 +1,45 @@
 {
- "batch": "event-18741",
- "events": [
-  {
-   "event_id": 18741,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeats",
-     "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Gouyad",
-     "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
-    }
-   ]
-  }
- ]
+ "prompt": "675627cd45d26393",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:56:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-18741",
+  "events": [
+   {
+    "event_id": 18741,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeats",
+      "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Gouyad",
+      "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
+     }
+    ]
+   }
+  ]
+ }
 }

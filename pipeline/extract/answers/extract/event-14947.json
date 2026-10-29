@@ -1,127 +1,134 @@
 {
- "batch": "event-14947",
- "events": [
-  {
-   "event_id": 14947,
-   "artists": [
-    {
-     "name_as_written": "JP & STEPHY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 JP & STEPHY"
-    },
-    {
-     "name_as_written": "KINGSMAN LEDOUX",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 KINGSMAN LEDOUX"
-    },
-    {
-     "name_as_written": "JAH J’A & JEISY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 JAH J’A & JEISY"
-    },
-    {
-     "name_as_written": "JUSTINHO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 JUSTINHO"
-    },
-    {
-     "name_as_written": "BENJAMIN & STÉPHANIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 BENJAMIN & STÉPHANIE"
-    },
-    {
-     "name_as_written": "GIBSON & AMÉLIA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 GIBSON & AMÉLIA"
-    },
-    {
-     "name_as_written": "VINCENT & CECILIA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 VINCENT & CECILIA"
-    },
-    {
-     "name_as_written": "DJ PARAISO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ PARAISO"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ NICE LIFE"
-    },
-    {
-     "name_as_written": "DJ LENHY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ LENHY"
-    },
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ NAO"
-    },
-    {
-     "name_as_written": "DJ NO LIMITS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ NO LIMITS"
-    },
-    {
-     "name_as_written": "DJ FOFO JAH",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ FOFO JAH"
-    },
-    {
-     "name_as_written": "DJ MG",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ MG"
-    },
-    {
-     "name_as_written": "DJ DREEKS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔘 🎧 DJ DREEKS"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "The Originals City, Hôtel Ecoparc, Montpellier Est (Inter-Hotel)",
-     "rationale": "A partner hotel is named with a 15% discount on bookings, and it is not part of the pass."
-    },
-    {
-     "feature": "camping",
-     "quote": "Hotels, campsites, and Airbnbs available near the new venue",
-     "rationale": "The description states that campsite accommodation is available near the venue."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14947",
+  "events": [
+   {
+    "event_id": 14947,
+    "artists": [
+     {
+      "name_as_written": "JP & STEPHY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 JP & STEPHY"
+     },
+     {
+      "name_as_written": "KINGSMAN LEDOUX",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 KINGSMAN LEDOUX"
+     },
+     {
+      "name_as_written": "JAH J’A & JEISY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 JAH J’A & JEISY"
+     },
+     {
+      "name_as_written": "JUSTINHO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 JUSTINHO"
+     },
+     {
+      "name_as_written": "BENJAMIN & STÉPHANIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 BENJAMIN & STÉPHANIE"
+     },
+     {
+      "name_as_written": "GIBSON & AMÉLIA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 GIBSON & AMÉLIA"
+     },
+     {
+      "name_as_written": "VINCENT & CECILIA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 VINCENT & CECILIA"
+     },
+     {
+      "name_as_written": "DJ PARAISO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ PARAISO"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ NICE LIFE"
+     },
+     {
+      "name_as_written": "DJ LENHY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ LENHY"
+     },
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ NAO"
+     },
+     {
+      "name_as_written": "DJ NO LIMITS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ NO LIMITS"
+     },
+     {
+      "name_as_written": "DJ FOFO JAH",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ FOFO JAH"
+     },
+     {
+      "name_as_written": "DJ MG",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ MG"
+     },
+     {
+      "name_as_written": "DJ DREEKS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔘 🎧 DJ DREEKS"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "The Originals City, Hôtel Ecoparc, Montpellier Est (Inter-Hotel)",
+      "rationale": "A partner hotel is named with a 15% discount on bookings, and it is not part of the pass."
+     },
+     {
+      "feature": "camping",
+      "quote": "Hotels, campsites, and Airbnbs available near the new venue",
+      "rationale": "The description states that campsite accommodation is available near the venue."
+     }
+    ]
+   }
+  ]
+ }
 }

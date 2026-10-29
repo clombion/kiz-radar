@@ -1,56 +1,63 @@
 {
- "batch": "event-15536",
- "events": [
-  {
-   "event_id": 15536,
-   "artists": [],
-   "features": [
-    {
-     "feature": "masterclass",
-     "quote": "Masterclasses & Intensive Bootcamps",
-     "rationale": "The line lists Masterclasses as part of the festival offer."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Intensive Bootcamps",
-     "rationale": "The line lists Intensive Bootcamps as part of the festival offer."
-    },
-    {
-     "feature": "workshops",
-     "quote": "3 Workshop Rooms",
-     "rationale": "Three workshop rooms are offered, so dance classes are part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows & Animations",
-     "rationale": "The description lists shows and animations as part of the event."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Party & Boat Party",
-     "rationale": "A pool party is explicitly listed as part of the event."
-    },
-    {
-     "feature": "boat_party",
-     "quote": "Boat Party",
-     "rationale": "A boat party is explicitly listed, including a Sunset Boat Party on 16 April."
-    },
-    {
-     "feature": "competition",
-     "quote": "Jack & Jill – Notion Cup",
-     "rationale": "A Jack & Jill competition is explicitly listed as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Dance Party Rooms",
-     "rationale": "Two dance party rooms are offered, so there is more than one dance floor."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Night Pre-Party",
-     "rationale": "A Night Pre-Party on 16 April is listed before the festival days."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:41:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-15536",
+  "events": [
+   {
+    "event_id": 15536,
+    "artists": [],
+    "features": [
+     {
+      "feature": "masterclass",
+      "quote": "Masterclasses & Intensive Bootcamps",
+      "rationale": "The line lists Masterclasses as part of the festival offer."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Intensive Bootcamps",
+      "rationale": "The line lists Intensive Bootcamps as part of the festival offer."
+     },
+     {
+      "feature": "workshops",
+      "quote": "3 Workshop Rooms",
+      "rationale": "Three workshop rooms are offered, so dance classes are part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows & Animations",
+      "rationale": "The description lists shows and animations as part of the event."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool Party & Boat Party",
+      "rationale": "A pool party is explicitly listed as part of the event."
+     },
+     {
+      "feature": "boat_party",
+      "quote": "Boat Party",
+      "rationale": "A boat party is explicitly listed, including a Sunset Boat Party on 16 April."
+     },
+     {
+      "feature": "competition",
+      "quote": "Jack & Jill – Notion Cup",
+      "rationale": "A Jack & Jill competition is explicitly listed as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Dance Party Rooms",
+      "rationale": "Two dance party rooms are offered, so there is more than one dance floor."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Night Pre-Party",
+      "rationale": "A Night Pre-Party on 16 April is listed before the festival days."
+     }
+    ]
+   }
+  ]
+ }
 }

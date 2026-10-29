@@ -1,658 +1,665 @@
 {
- "batch": "event-16196",
- "events": [
-  {
-   "event_id": 16196,
-   "artists": [
-    {
-     "name_as_written": "𝑨𝒍𝒃𝒊𝒓 𝑹𝒐𝒋𝒂𝒔",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑨𝒍𝒃𝒊𝒓 𝑹𝒐𝒋𝒂𝒔"
-    },
-    {
-     "name_as_written": "𝑱𝒆𝒔𝒖𝒔 & 𝑨𝒏𝒏𝒊",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒆𝒔𝒖𝒔 & 𝑨𝒏𝒏𝒊"
-    },
-    {
-     "name_as_written": "𝑽𝒂𝒍’𝒓 & 𝑺𝒂𝒓𝒂𝒉",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑽𝒂𝒍’𝒓 & 𝑺𝒂𝒓𝒂𝒉"
-    },
-    {
-     "name_as_written": "𝑺𝒂𝒃𝒆𝒓 & 𝑴𝒂𝒋𝒅𝒐𝒖𝒍𝒊𝒏𝒆",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑺𝒂𝒃𝒆𝒓 & 𝑴𝒂𝒋𝒅𝒐𝒖𝒍𝒊𝒏𝒆"
-    },
-    {
-     "name_as_written": "𝑱𝒑 & 𝑺𝒕𝒆𝒑𝒉𝒚",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒑 & 𝑺𝒕𝒆𝒑𝒉𝒚"
-    },
-    {
-     "name_as_written": "𝑫𝒘𝒆 & 𝑮𝒂𝒃𝒚",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑫𝒘𝒆 & 𝑮𝒂𝒃𝒚"
-    },
-    {
-     "name_as_written": "𝑱𝒂𝒄𝒌 & 𝑺𝒂𝒓𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒂𝒄𝒌 & 𝑺𝒂𝒓𝒂"
-    },
-    {
-     "name_as_written": "𝑱𝒖𝒍𝒆𝒔 & 𝒀𝒖𝒏𝒂 𝑻𝒂𝒓𝒓𝒂𝒙𝒐𝑷𝒐𝒑",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒖𝒍𝒆𝒔 & 𝒀𝒖𝒏𝒂 𝑻𝒂𝒓𝒓𝒂𝒙𝒐𝑷𝒐𝒑"
-    },
-    {
-     "name_as_written": "𝑱𝒐𝒉𝒏 & 𝑳𝒆𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒐𝒉𝒏 & 𝑳𝒆𝒂"
-    },
-    {
-     "name_as_written": "𝑱𝒖𝒏𝒊𝒐𝒓 𝑲𝒊𝒏𝒈",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒖𝒏𝒊𝒐𝒓 𝑲𝒊𝒏𝒈"
-    },
-    {
-     "name_as_written": "𝑬𝒅𝒐 & 𝑮𝒊𝒖𝒍𝒚",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑬𝒅𝒐 & 𝑮𝒊𝒖𝒍𝒚"
-    },
-    {
-     "name_as_written": "𝑴𝒓. 𝑺𝒎𝒊𝒍𝒆 𝑴𝒂𝒏𝒐𝒏",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑴𝒓. 𝑺𝒎𝒊𝒍𝒆 𝑴𝒂𝒏𝒐𝒏"
-    },
-    {
-     "name_as_written": "𝑮𝒆𝒓𝒊 & 𝑴𝒂𝒈𝒅𝒊",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑮𝒆𝒓𝒊 & 𝑴𝒂𝒈𝒅𝒊"
-    },
-    {
-     "name_as_written": "𝑴𝒊𝒓𝒌𝒐 𝑺𝒑𝒂𝒏𝒐",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑴𝒊𝒓𝒌𝒐 𝑺𝒑𝒂𝒏𝒐"
-    },
-    {
-     "name_as_written": "𝑭𝒂𝒃𝒓𝒊𝒛𝒊𝒐 𝑪𝒂𝒎𝒑𝒂𝒏𝒆𝒍𝒍𝒂 𝒆 𝑵𝒊𝒄𝒐",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑭𝒂𝒃𝒓𝒊𝒛𝒊𝒐 𝑪𝒂𝒎𝒑𝒂𝒏𝒆𝒍𝒍𝒂 𝒆 𝑵𝒊𝒄𝒐"
-    },
-    {
-     "name_as_written": "𝑴𝒓. 𝑪𝒂𝒂𝒓𝒍 & 𝑷𝒂𝒕𝒊𝒊",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑴𝒓. 𝑪𝒂𝒂𝒓𝒍 & 𝑷𝒂𝒕𝒊𝒊"
-    },
-    {
-     "name_as_written": "𝑳𝒐𝒓𝒆𝒏𝒛 & 𝑭𝒆𝒅𝒆",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑳𝒐𝒓𝒆𝒏𝒛 & 𝑭𝒆𝒅𝒆"
-    },
-    {
-     "name_as_written": "𝑽𝒂𝒕𝒉𝒂 & 𝑬𝒍𝒆𝒏𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑽𝒂𝒕𝒉𝒂 & 𝑬𝒍𝒆𝒏𝒂"
-    },
-    {
-     "name_as_written": "𝑷𝒂𝒐𝒍𝒐 & 𝑨𝒏𝒈𝒚",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑷𝒂𝒐𝒍𝒐 & 𝑨𝒏𝒈𝒚"
-    },
-    {
-     "name_as_written": "𝑫𝒂𝒏𝒊𝒍𝒐 & 𝑭𝒂𝒖𝒔𝒕𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑫𝒂𝒏𝒊𝒍𝒐 & 𝑭𝒂𝒖𝒔𝒕𝒂"
-    },
-    {
-     "name_as_written": "𝑨𝒏𝒅𝒓𝒆𝒂 𝑲𝑲",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑨𝒏𝒅𝒓𝒆𝒂 𝑲𝑲"
-    },
-    {
-     "name_as_written": "𝑱𝒐𝒉𝒏 & 𝑺𝒕𝒆𝒇𝒚",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒐𝒉𝒏 & 𝑺𝒕𝒆𝒇𝒚"
-    },
-    {
-     "name_as_written": "𝑺𝒕𝒆𝒇𝒂𝒏𝒐 & 𝑴𝒂𝒖𝒓𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑺𝒕𝒆𝒇𝒂𝒏𝒐 & 𝑴𝒂𝒖𝒓𝒂"
-    },
-    {
-     "name_as_written": "𝑵𝒊𝒄𝒐𝒍𝒂 & 𝑺𝒂𝒓𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑵𝒊𝒄𝒐𝒍𝒂 & 𝑺𝒂𝒓𝒂"
-    },
-    {
-     "name_as_written": "𝑮𝒊𝒖𝒔𝒆𝒑𝒑𝒆 𝑨𝒏𝒅𝒓𝒆𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑮𝒊𝒖𝒔𝒆𝒑𝒑𝒆 𝑨𝒏𝒅𝒓𝒆𝒂"
-    },
-    {
-     "name_as_written": "𝑱𝒖𝒅𝒊𝒕𝒉 𝑻𝒉𝒆𝒕𝒊𝒔",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒖𝒅𝒊𝒕𝒉 𝑻𝒉𝒆𝒕𝒊𝒔"
-    },
-    {
-     "name_as_written": "𝑳𝒖𝒄𝒂 & 𝑭𝒓𝒂𝒏𝒄𝒆𝒔𝒄𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑳𝒖𝒄𝒂 & 𝑭𝒓𝒂𝒏𝒄𝒆𝒔𝒄𝒂"
-    },
-    {
-     "name_as_written": "𝑨𝒅𝒉𝒂𝒎 𝑲𝒐𝒕𝒃",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑨𝒅𝒉𝒂𝒎 𝑲𝒐𝒕𝒃"
-    },
-    {
-     "name_as_written": "𝑨𝒍𝒆𝒔𝒔𝒂𝒏𝒅𝒓𝒐 & 𝑻𝒊𝒛𝒊𝒂𝒏𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑨𝒍𝒆𝒔𝒔𝒂𝒏𝒅𝒓𝒐 & 𝑻𝒊𝒛𝒊𝒂𝒏𝒂"
-    },
-    {
-     "name_as_written": "𝑫𝒐𝒎𝒆𝒏𝒊𝒄𝒐 𝑪𝒖𝒃𝒂𝒐 & 𝑨𝒍𝒆𝒔𝒔𝒂𝒏𝒅𝒓𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑫𝒐𝒎𝒆𝒏𝒊𝒄𝒐 𝑪𝒖𝒃𝒂𝒐 & 𝑨𝒍𝒆𝒔𝒔𝒂𝒏𝒅𝒓𝒂"
-    },
-    {
-     "name_as_written": "𝑮𝒊𝒐𝒗𝒂𝒏𝒏𝒂 𝑫’𝑨𝒈𝒐𝒔𝒕𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑮𝒊𝒐𝒗𝒂𝒏𝒏𝒂 𝑫’𝑨𝒈𝒐𝒔𝒕𝒂"
-    },
-    {
-     "name_as_written": "𝑮𝒊𝒖𝒍𝒊𝒂 𝑳𝑷𝑲",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑮𝒊𝒖𝒍𝒊𝒂 𝑳𝑷𝑲"
-    },
-    {
-     "name_as_written": "𝑮𝒍𝒐𝒓𝒊𝒂 𝑭𝒐𝒕𝒊𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑮𝒍𝒐𝒓𝒊𝒂 𝑭𝒐𝒕𝒊𝒂"
-    },
-    {
-     "name_as_written": "𝑭𝒆𝒅𝒆𝒓𝒊𝒄𝒂 𝑳𝒖𝒄𝒂𝒓𝒆𝒍𝒍𝒊",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑭𝒆𝒅𝒆𝒓𝒊𝒄𝒂 𝑳𝒖𝒄𝒂𝒓𝒆𝒍𝒍𝒊"
-    },
-    {
-     "name_as_written": "𝑽𝒂𝒏𝒅𝒊",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑽𝒂𝒏𝒅𝒊"
-    },
-    {
-     "name_as_written": "𝑳𝒂𝒖𝒓𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑳𝒂𝒖𝒓𝒂"
-    },
-    {
-     "name_as_written": "𝑳𝒂𝒍𝒊",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑳𝒂𝒍𝒊"
-    },
-    {
-     "name_as_written": "𝑺𝒂𝒓𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑺𝒂𝒓𝒂"
-    },
-    {
-     "name_as_written": "𝑴𝒊𝒄𝒉𝒆𝒍𝒂",
-     "role": "teacher",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑴𝒊𝒄𝒉𝒆𝒍𝒂"
-    },
-    {
-     "name_as_written": "𝑳𝒆𝒉𝒏𝒚",
-     "role": "dj",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑳𝒆𝒉𝒏𝒚"
-    },
-    {
-     "name_as_written": "𝑴𝒂𝒅𝒊𝒔𝒔",
-     "role": "dj",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑴𝒂𝒅𝒊𝒔𝒔"
-    },
-    {
-     "name_as_written": "𝑺𝒂𝒊 𝑺𝒂𝒊",
-     "role": "dj",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑺𝒂𝒊 𝑺𝒂𝒊"
-    },
-    {
-     "name_as_written": "𝑺𝒂𝒂𝒃𝒆𝒓",
-     "role": "dj",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑺𝒂𝒂𝒃𝒆𝒓"
-    },
-    {
-     "name_as_written": "𝑮𝒉𝒐𝒔𝒕-𝒇𝒂𝒄𝒆",
-     "role": "dj",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑮𝒉𝒐𝒔𝒕-𝒇𝒂𝒄𝒆"
-    },
-    {
-     "name_as_written": "𝑹𝒆𝒗𝒆𝒏𝒈𝒆",
-     "role": "dj",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑹𝒆𝒗𝒆𝒏𝒈𝒆"
-    },
-    {
-     "name_as_written": "𝑴𝒆𝒑 𝒅𝒂 𝑯𝒊𝒑𝒔𝒕𝒆𝒓",
-     "role": "dj",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "� 𝑴𝒆𝒑 𝒅𝒂 𝑯𝒊𝒑𝒔𝒕𝒆𝒓"
-    },
-    {
-     "name_as_written": "𝑮𝒆𝒑𝒑𝒐",
-     "role": "dj",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "� 𝑮𝒆𝒑𝒑𝒐"
-    },
-    {
-     "name_as_written": "𝑨𝒍𝒂𝒏",
-     "role": "dj",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "� 𝑨𝒍𝒂𝒏"
-    },
-    {
-     "name_as_written": "𝑵𝒆𝒌𝒐",
-     "role": "dj",
-     "style": "𝐊I𝐙O𝐌B𝐀",
-     "country": null,
-     "source_line": "� 𝑵𝒆𝒌𝒐"
-    },
-    {
-     "name_as_written": "𝑨𝒛𝒂𝒆𝒍 𝒚 𝑴𝒂𝒓𝒕𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑨𝒛𝒂𝒆𝒍 𝒚 𝑴𝒂𝒓𝒕𝒂"
-    },
-    {
-     "name_as_written": "𝑨𝒏𝒅𝒓𝒆𝒂 𝒚 𝑺𝒊𝒍𝒗𝒊𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑨𝒏𝒅𝒓𝒆𝒂 𝒚 𝑺𝒊𝒍𝒗𝒊𝒂"
-    },
-    {
-     "name_as_written": "𝑹𝒊𝒄𝒄𝒂𝒓𝒅𝒐 𝒚 𝑺𝒊𝒍𝒗𝒊𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑹𝒊𝒄𝒄𝒂𝒓𝒅𝒐 𝒚 𝑺𝒊𝒍𝒗𝒊𝒂"
-    },
-    {
-     "name_as_written": "𝑴𝒂𝒈𝒅𝒂 𝒚 𝑽𝒂𝒍𝒆𝒓𝒊𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑴𝒂𝒈𝒅𝒂 𝒚 𝑽𝒂𝒍𝒆𝒓𝒊𝒂"
-    },
-    {
-     "name_as_written": "𝑮𝒂𝒃𝒓𝒊𝒆𝒍𝒆 𝒚 𝑺𝑰𝒍𝒗𝒊𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑮𝒂𝒃𝒓𝒊𝒆𝒍𝒆 𝒚 𝑺𝑰𝒍𝒗𝒊𝒂"
-    },
-    {
-     "name_as_written": "𝑺𝒐𝒍 𝒚 𝑳𝒂𝒖𝒓𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑺𝒐𝒍 𝒚 𝑳𝒂𝒖𝒓𝒂"
-    },
-    {
-     "name_as_written": "𝑭𝒍𝒐𝒘𝒍𝒚 𝒚 𝑨𝒏𝒂𝒔𝒕𝒂𝒔𝒊𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑭𝒍𝒐𝒘𝒍𝒚 𝒚 𝑨𝒏𝒂𝒔𝒕𝒂𝒔𝒊𝒂"
-    },
-    {
-     "name_as_written": "𝑪𝒂𝒔𝒊𝒕𝒐",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑪𝒂𝒔𝒊𝒕𝒐"
-    },
-    {
-     "name_as_written": "𝑱𝒐𝒔𝒖𝒆́ 𝑨𝒌𝒐𝒔𝒅𝒂𝒏𝒄𝒆",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒐𝒔𝒖𝒆́ 𝑨𝒌𝒐𝒔𝒅𝒂𝒏𝒄𝒆"
-    },
-    {
-     "name_as_written": "𝑺𝒖𝒏𝒏𝒚 𝒚 𝑽𝒊𝒐𝒍𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑺𝒖𝒏𝒏𝒚 𝒚 𝑽𝒊𝒐𝒍𝒂"
-    },
-    {
-     "name_as_written": "𝑮𝒆𝒓𝒎𝒂𝒊𝒏 & 𝑷𝒂𝒍𝒐𝒎𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑮𝒆𝒓𝒎𝒂𝒊𝒏 & 𝑷𝒂𝒍𝒐𝒎𝒂"
-    },
-    {
-     "name_as_written": "𝑫𝒐𝒓 𝒚 𝑷𝒂𝒖𝒍𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑫𝒐𝒓 𝒚 𝑷𝒂𝒖𝒍𝒂"
-    },
-    {
-     "name_as_written": "𝑱𝒐𝒓𝒊𝒔 𝒚 𝑪𝒂𝒎𝒚",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒐𝒓𝒊𝒔 𝒚 𝑪𝒂𝒎𝒚"
-    },
-    {
-     "name_as_written": "𝑱𝒐𝒆 𝒚 𝑺𝒐𝒇𝒊𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒐𝒆 𝒚 𝑺𝒐𝒇𝒊𝒂"
-    },
-    {
-     "name_as_written": "𝑷𝒂𝒐𝒍𝒐 𝒚 𝑴𝒂𝒓𝒕𝒚",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑷𝒂𝒐𝒍𝒐 𝒚 𝑴𝒂𝒓𝒕𝒚"
-    },
-    {
-     "name_as_written": "𝑪𝒉𝒓𝒊𝒔 𝒚 𝑭𝒓𝒂𝒏𝒄𝒚",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑪𝒉𝒓𝒊𝒔 𝒚 𝑭𝒓𝒂𝒏𝒄𝒚"
-    },
-    {
-     "name_as_written": "𝑫𝒂𝒏𝒊𝒆𝒍𝒆 𝒚 𝑺𝒆𝒍𝒆𝒏𝒆",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑫𝒂𝒏𝒊𝒆𝒍𝒆 𝒚 𝑺𝒆𝒍𝒆𝒏𝒆"
-    },
-    {
-     "name_as_written": "𝑪𝒍𝒆𝒐𝒑𝒂𝒕𝒓𝒂 𝑫𝒐𝒌𝒐𝒖",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑪𝒍𝒆𝒐𝒑𝒂𝒕𝒓𝒂 𝑫𝒐𝒌𝒐𝒖"
-    },
-    {
-     "name_as_written": "𝑨𝒓𝒄𝒉𝒊𝒍𝒆𝒐 𝒚 𝑲𝒂𝒓𝒆𝒏",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑨𝒓𝒄𝒉𝒊𝒍𝒆𝒐 𝒚 𝑲𝒂𝒓𝒆𝒏"
-    },
-    {
-     "name_as_written": "𝑬𝒓𝒍𝒂𝒏𝒅 𝒚 𝑨𝒏𝒏𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑬𝒓𝒍𝒂𝒏𝒅 𝒚 𝑨𝒏𝒏𝒂"
-    },
-    {
-     "name_as_written": "𝑱𝒂𝒗𝒊 𝒚 𝑺𝒊𝒎𝒐",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒂𝒗𝒊 𝒚 𝑺𝒊𝒎𝒐"
-    },
-    {
-     "name_as_written": "𝑱𝒐𝒓𝒅𝒊 𝒚 𝑺𝒂𝒓𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒐𝒓𝒅𝒊 𝒚 𝑺𝒂𝒓𝒂"
-    },
-    {
-     "name_as_written": "𝑹𝒖𝒃𝒆𝒏 𝒚 𝑹𝒂𝒎𝒐𝒏𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑹𝒖𝒃𝒆𝒏 𝒚 𝑹𝒂𝒎𝒐𝒏𝒂"
-    },
-    {
-     "name_as_written": "𝒀𝒂𝒔 𝒚 𝑳𝒊𝒔𝒐𝒏𝒅𝒓𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝒀𝒂𝒔 𝒚 𝑳𝒊𝒔𝒐𝒏𝒅𝒓𝒂"
-    },
-    {
-     "name_as_written": "𝑪𝒓𝒊𝒔𝒕𝒊𝒂𝒏𝒐 𝒚 𝑵𝒐𝒆𝒎𝒊",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑪𝒓𝒊𝒔𝒕𝒊𝒂𝒏𝒐 𝒚 𝑵𝒐𝒆𝒎𝒊"
-    },
-    {
-     "name_as_written": "𝑩𝒂𝒄𝒉𝒂𝒃𝒓𝒐𝒕𝒉𝒆𝒓𝒔",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑩𝒂𝒄𝒉𝒂𝒃𝒓𝒐𝒕𝒉𝒆𝒓𝒔"
-    },
-    {
-     "name_as_written": "𝑨𝒍𝒅𝒋𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑨𝒍𝒅𝒋𝒂"
-    },
-    {
-     "name_as_written": "𝑱𝒆𝒏𝒏𝒚 𝑳𝒆𝒐𝒏𝒆",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑱𝒆𝒏𝒏𝒚 𝑳𝒆𝒐𝒏𝒆"
-    },
-    {
-     "name_as_written": "𝑳𝒊𝒐𝒏𝒆𝒔𝒔 𝑸𝒖𝒆𝒆𝒏𝒔",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑳𝒊𝒐𝒏𝒆𝒔𝒔 𝑸𝒖𝒆𝒆𝒏𝒔"
-    },
-    {
-     "name_as_written": "𝑻𝒆𝒉𝒊𝒍𝒂 𝑻𝒂𝒏𝒚𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑻𝒆𝒉𝒊𝒍𝒂 𝑻𝒂𝒏𝒚𝒂"
-    },
-    {
-     "name_as_written": "𝑩𝒆𝒏𝒏𝒚 𝑻𝒉𝒆 𝑮𝒓𝒊𝒏𝒄𝒉",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑩𝒆𝒏𝒏𝒚 𝑻𝒉𝒆 𝑮𝒓𝒊𝒏𝒄𝒉"
-    },
-    {
-     "name_as_written": "𝑴𝒂𝒏𝒖𝒆𝒍 𝑪𝒊𝒕𝒓𝒐",
-     "role": "dj",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑴𝒂𝒏𝒖𝒆𝒍 𝑪𝒊𝒕𝒓𝒐"
-    },
-    {
-     "name_as_written": "𝑹𝒚𝒂𝒏 𝑴𝒊𝒍𝒆𝒔",
-     "role": "dj",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑹𝒚𝒂𝒏 𝑴𝒊𝒍𝒆𝒔"
-    },
-    {
-     "name_as_written": "𝑪𝒚𝒃𝒆𝒓",
-     "role": "dj",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑪𝒚𝒃𝒆𝒓"
-    },
-    {
-     "name_as_written": "𝑩𝒆𝒂𝒓",
-     "role": "dj",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑩𝒆𝒂𝒓"
-    },
-    {
-     "name_as_written": "𝑽𝒂𝒍𝒆𝒓𝒊𝒐 𝑬𝒍 𝑫𝒊𝒓𝒆𝒄𝒕𝒐r",
-     "role": "dj",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑽𝒂𝒍𝒆𝒓𝒊𝒐 𝑬𝒍 𝑫𝒊𝒓𝒆𝒄𝒕𝒐r"
-    },
-    {
-     "name_as_written": "𝑮𝒂𝒃𝒓𝒊𝒆𝒍",
-     "role": "dj",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑮𝒂𝒃𝒓𝒊𝒆𝒍"
-    },
-    {
-     "name_as_written": "𝑮𝒖𝒂𝒑𝒐",
-     "role": "dj",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑮𝒖𝒂𝒑𝒐"
-    },
-    {
-     "name_as_written": "𝑳𝒖𝒄𝒂 𝑱",
-     "role": "dj",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑳𝒖𝒄𝒂 𝑱"
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "5 Nights in the Main Hotel",
-     "rationale": "The full pass package explicitly includes five nights in the main hotel."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "a single location for 5 days of workshops and fun",
-     "rationale": "The event is held in one location, with the hotel hosting the parties and workshops."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "𝟰 𝘿𝘼𝙔𝙎 𝙎𝙊𝘾𝙄𝘼𝙇 𝙍𝙊𝙊𝙈",
-     "rationale": "A social room open for four days is offered during the day."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 ROOMS",
-     "rationale": "The parties run in four separate dance rooms, one per style."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "𝟰 𝗣𝗢𝗢𝗟 𝗣𝗔𝗥𝗧𝗜𝗘𝗦",
-     "rationale": "Four pool parties are listed as part of the event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "𝟭𝟬𝟬+ 𝗪𝗢𝗥𝗞𝗦𝗛𝗢𝗣𝗦",
-     "rationale": "Over 100 workshops are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:45:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-16196",
+  "events": [
+   {
+    "event_id": 16196,
+    "artists": [
+     {
+      "name_as_written": "𝑨𝒍𝒃𝒊𝒓 𝑹𝒐𝒋𝒂𝒔",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑨𝒍𝒃𝒊𝒓 𝑹𝒐𝒋𝒂𝒔"
+     },
+     {
+      "name_as_written": "𝑱𝒆𝒔𝒖𝒔 & 𝑨𝒏𝒏𝒊",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒆𝒔𝒖𝒔 & 𝑨𝒏𝒏𝒊"
+     },
+     {
+      "name_as_written": "𝑽𝒂𝒍’𝒓 & 𝑺𝒂𝒓𝒂𝒉",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑽𝒂𝒍’𝒓 & 𝑺𝒂𝒓𝒂𝒉"
+     },
+     {
+      "name_as_written": "𝑺𝒂𝒃𝒆𝒓 & 𝑴𝒂𝒋𝒅𝒐𝒖𝒍𝒊𝒏𝒆",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑺𝒂𝒃𝒆𝒓 & 𝑴𝒂𝒋𝒅𝒐𝒖𝒍𝒊𝒏𝒆"
+     },
+     {
+      "name_as_written": "𝑱𝒑 & 𝑺𝒕𝒆𝒑𝒉𝒚",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒑 & 𝑺𝒕𝒆𝒑𝒉𝒚"
+     },
+     {
+      "name_as_written": "𝑫𝒘𝒆 & 𝑮𝒂𝒃𝒚",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑫𝒘𝒆 & 𝑮𝒂𝒃𝒚"
+     },
+     {
+      "name_as_written": "𝑱𝒂𝒄𝒌 & 𝑺𝒂𝒓𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒂𝒄𝒌 & 𝑺𝒂𝒓𝒂"
+     },
+     {
+      "name_as_written": "𝑱𝒖𝒍𝒆𝒔 & 𝒀𝒖𝒏𝒂 𝑻𝒂𝒓𝒓𝒂𝒙𝒐𝑷𝒐𝒑",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒖𝒍𝒆𝒔 & 𝒀𝒖𝒏𝒂 𝑻𝒂𝒓𝒓𝒂𝒙𝒐𝑷𝒐𝒑"
+     },
+     {
+      "name_as_written": "𝑱𝒐𝒉𝒏 & 𝑳𝒆𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒐𝒉𝒏 & 𝑳𝒆𝒂"
+     },
+     {
+      "name_as_written": "𝑱𝒖𝒏𝒊𝒐𝒓 𝑲𝒊𝒏𝒈",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒖𝒏𝒊𝒐𝒓 𝑲𝒊𝒏𝒈"
+     },
+     {
+      "name_as_written": "𝑬𝒅𝒐 & 𝑮𝒊𝒖𝒍𝒚",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑬𝒅𝒐 & 𝑮𝒊𝒖𝒍𝒚"
+     },
+     {
+      "name_as_written": "𝑴𝒓. 𝑺𝒎𝒊𝒍𝒆 𝑴𝒂𝒏𝒐𝒏",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑴𝒓. 𝑺𝒎𝒊𝒍𝒆 𝑴𝒂𝒏𝒐𝒏"
+     },
+     {
+      "name_as_written": "𝑮𝒆𝒓𝒊 & 𝑴𝒂𝒈𝒅𝒊",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑮𝒆𝒓𝒊 & 𝑴𝒂𝒈𝒅𝒊"
+     },
+     {
+      "name_as_written": "𝑴𝒊𝒓𝒌𝒐 𝑺𝒑𝒂𝒏𝒐",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑴𝒊𝒓𝒌𝒐 𝑺𝒑𝒂𝒏𝒐"
+     },
+     {
+      "name_as_written": "𝑭𝒂𝒃𝒓𝒊𝒛𝒊𝒐 𝑪𝒂𝒎𝒑𝒂𝒏𝒆𝒍𝒍𝒂 𝒆 𝑵𝒊𝒄𝒐",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑭𝒂𝒃𝒓𝒊𝒛𝒊𝒐 𝑪𝒂𝒎𝒑𝒂𝒏𝒆𝒍𝒍𝒂 𝒆 𝑵𝒊𝒄𝒐"
+     },
+     {
+      "name_as_written": "𝑴𝒓. 𝑪𝒂𝒂𝒓𝒍 & 𝑷𝒂𝒕𝒊𝒊",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑴𝒓. 𝑪𝒂𝒂𝒓𝒍 & 𝑷𝒂𝒕𝒊𝒊"
+     },
+     {
+      "name_as_written": "𝑳𝒐𝒓𝒆𝒏𝒛 & 𝑭𝒆𝒅𝒆",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑳𝒐𝒓𝒆𝒏𝒛 & 𝑭𝒆𝒅𝒆"
+     },
+     {
+      "name_as_written": "𝑽𝒂𝒕𝒉𝒂 & 𝑬𝒍𝒆𝒏𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑽𝒂𝒕𝒉𝒂 & 𝑬𝒍𝒆𝒏𝒂"
+     },
+     {
+      "name_as_written": "𝑷𝒂𝒐𝒍𝒐 & 𝑨𝒏𝒈𝒚",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑷𝒂𝒐𝒍𝒐 & 𝑨𝒏𝒈𝒚"
+     },
+     {
+      "name_as_written": "𝑫𝒂𝒏𝒊𝒍𝒐 & 𝑭𝒂𝒖𝒔𝒕𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑫𝒂𝒏𝒊𝒍𝒐 & 𝑭𝒂𝒖𝒔𝒕𝒂"
+     },
+     {
+      "name_as_written": "𝑨𝒏𝒅𝒓𝒆𝒂 𝑲𝑲",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑨𝒏𝒅𝒓𝒆𝒂 𝑲𝑲"
+     },
+     {
+      "name_as_written": "𝑱𝒐𝒉𝒏 & 𝑺𝒕𝒆𝒇𝒚",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒐𝒉𝒏 & 𝑺𝒕𝒆𝒇𝒚"
+     },
+     {
+      "name_as_written": "𝑺𝒕𝒆𝒇𝒂𝒏𝒐 & 𝑴𝒂𝒖𝒓𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑺𝒕𝒆𝒇𝒂𝒏𝒐 & 𝑴𝒂𝒖𝒓𝒂"
+     },
+     {
+      "name_as_written": "𝑵𝒊𝒄𝒐𝒍𝒂 & 𝑺𝒂𝒓𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑵𝒊𝒄𝒐𝒍𝒂 & 𝑺𝒂𝒓𝒂"
+     },
+     {
+      "name_as_written": "𝑮𝒊𝒖𝒔𝒆𝒑𝒑𝒆 𝑨𝒏𝒅𝒓𝒆𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑮𝒊𝒖𝒔𝒆𝒑𝒑𝒆 𝑨𝒏𝒅𝒓𝒆𝒂"
+     },
+     {
+      "name_as_written": "𝑱𝒖𝒅𝒊𝒕𝒉 𝑻𝒉𝒆𝒕𝒊𝒔",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒖𝒅𝒊𝒕𝒉 𝑻𝒉𝒆𝒕𝒊𝒔"
+     },
+     {
+      "name_as_written": "𝑳𝒖𝒄𝒂 & 𝑭𝒓𝒂𝒏𝒄𝒆𝒔𝒄𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑳𝒖𝒄𝒂 & 𝑭𝒓𝒂𝒏𝒄𝒆𝒔𝒄𝒂"
+     },
+     {
+      "name_as_written": "𝑨𝒅𝒉𝒂𝒎 𝑲𝒐𝒕𝒃",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑨𝒅𝒉𝒂𝒎 𝑲𝒐𝒕𝒃"
+     },
+     {
+      "name_as_written": "𝑨𝒍𝒆𝒔𝒔𝒂𝒏𝒅𝒓𝒐 & 𝑻𝒊𝒛𝒊𝒂𝒏𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑨𝒍𝒆𝒔𝒔𝒂𝒏𝒅𝒓𝒐 & 𝑻𝒊𝒛𝒊𝒂𝒏𝒂"
+     },
+     {
+      "name_as_written": "𝑫𝒐𝒎𝒆𝒏𝒊𝒄𝒐 𝑪𝒖𝒃𝒂𝒐 & 𝑨𝒍𝒆𝒔𝒔𝒂𝒏𝒅𝒓𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑫𝒐𝒎𝒆𝒏𝒊𝒄𝒐 𝑪𝒖𝒃𝒂𝒐 & 𝑨𝒍𝒆𝒔𝒔𝒂𝒏𝒅𝒓𝒂"
+     },
+     {
+      "name_as_written": "𝑮𝒊𝒐𝒗𝒂𝒏𝒏𝒂 𝑫’𝑨𝒈𝒐𝒔𝒕𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑮𝒊𝒐𝒗𝒂𝒏𝒏𝒂 𝑫’𝑨𝒈𝒐𝒔𝒕𝒂"
+     },
+     {
+      "name_as_written": "𝑮𝒊𝒖𝒍𝒊𝒂 𝑳𝑷𝑲",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑮𝒊𝒖𝒍𝒊𝒂 𝑳𝑷𝑲"
+     },
+     {
+      "name_as_written": "𝑮𝒍𝒐𝒓𝒊𝒂 𝑭𝒐𝒕𝒊𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑮𝒍𝒐𝒓𝒊𝒂 𝑭𝒐𝒕𝒊𝒂"
+     },
+     {
+      "name_as_written": "𝑭𝒆𝒅𝒆𝒓𝒊𝒄𝒂 𝑳𝒖𝒄𝒂𝒓𝒆𝒍𝒍𝒊",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑭𝒆𝒅𝒆𝒓𝒊𝒄𝒂 𝑳𝒖𝒄𝒂𝒓𝒆𝒍𝒍𝒊"
+     },
+     {
+      "name_as_written": "𝑽𝒂𝒏𝒅𝒊",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑽𝒂𝒏𝒅𝒊"
+     },
+     {
+      "name_as_written": "𝑳𝒂𝒖𝒓𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑳𝒂𝒖𝒓𝒂"
+     },
+     {
+      "name_as_written": "𝑳𝒂𝒍𝒊",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑳𝒂𝒍𝒊"
+     },
+     {
+      "name_as_written": "𝑺𝒂𝒓𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑺𝒂𝒓𝒂"
+     },
+     {
+      "name_as_written": "𝑴𝒊𝒄𝒉𝒆𝒍𝒂",
+      "role": "teacher",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑴𝒊𝒄𝒉𝒆𝒍𝒂"
+     },
+     {
+      "name_as_written": "𝑳𝒆𝒉𝒏𝒚",
+      "role": "dj",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑳𝒆𝒉𝒏𝒚"
+     },
+     {
+      "name_as_written": "𝑴𝒂𝒅𝒊𝒔𝒔",
+      "role": "dj",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑴𝒂𝒅𝒊𝒔𝒔"
+     },
+     {
+      "name_as_written": "𝑺𝒂𝒊 𝑺𝒂𝒊",
+      "role": "dj",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑺𝒂𝒊 𝑺𝒂𝒊"
+     },
+     {
+      "name_as_written": "𝑺𝒂𝒂𝒃𝒆𝒓",
+      "role": "dj",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑺𝒂𝒂𝒃𝒆𝒓"
+     },
+     {
+      "name_as_written": "𝑮𝒉𝒐𝒔𝒕-𝒇𝒂𝒄𝒆",
+      "role": "dj",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑮𝒉𝒐𝒔𝒕-𝒇𝒂𝒄𝒆"
+     },
+     {
+      "name_as_written": "𝑹𝒆𝒗𝒆𝒏𝒈𝒆",
+      "role": "dj",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑹𝒆𝒗𝒆𝒏𝒈𝒆"
+     },
+     {
+      "name_as_written": "𝑴𝒆𝒑 𝒅𝒂 𝑯𝒊𝒑𝒔𝒕𝒆𝒓",
+      "role": "dj",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "� 𝑴𝒆𝒑 𝒅𝒂 𝑯𝒊𝒑𝒔𝒕𝒆𝒓"
+     },
+     {
+      "name_as_written": "𝑮𝒆𝒑𝒑𝒐",
+      "role": "dj",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "� 𝑮𝒆𝒑𝒑𝒐"
+     },
+     {
+      "name_as_written": "𝑨𝒍𝒂𝒏",
+      "role": "dj",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "� 𝑨𝒍𝒂𝒏"
+     },
+     {
+      "name_as_written": "𝑵𝒆𝒌𝒐",
+      "role": "dj",
+      "style": "𝐊I𝐙O𝐌B𝐀",
+      "country": null,
+      "source_line": "� 𝑵𝒆𝒌𝒐"
+     },
+     {
+      "name_as_written": "𝑨𝒛𝒂𝒆𝒍 𝒚 𝑴𝒂𝒓𝒕𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑨𝒛𝒂𝒆𝒍 𝒚 𝑴𝒂𝒓𝒕𝒂"
+     },
+     {
+      "name_as_written": "𝑨𝒏𝒅𝒓𝒆𝒂 𝒚 𝑺𝒊𝒍𝒗𝒊𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑨𝒏𝒅𝒓𝒆𝒂 𝒚 𝑺𝒊𝒍𝒗𝒊𝒂"
+     },
+     {
+      "name_as_written": "𝑹𝒊𝒄𝒄𝒂𝒓𝒅𝒐 𝒚 𝑺𝒊𝒍𝒗𝒊𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑹𝒊𝒄𝒄𝒂𝒓𝒅𝒐 𝒚 𝑺𝒊𝒍𝒗𝒊𝒂"
+     },
+     {
+      "name_as_written": "𝑴𝒂𝒈𝒅𝒂 𝒚 𝑽𝒂𝒍𝒆𝒓𝒊𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑴𝒂𝒈𝒅𝒂 𝒚 𝑽𝒂𝒍𝒆𝒓𝒊𝒂"
+     },
+     {
+      "name_as_written": "𝑮𝒂𝒃𝒓𝒊𝒆𝒍𝒆 𝒚 𝑺𝑰𝒍𝒗𝒊𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑮𝒂𝒃𝒓𝒊𝒆𝒍𝒆 𝒚 𝑺𝑰𝒍𝒗𝒊𝒂"
+     },
+     {
+      "name_as_written": "𝑺𝒐𝒍 𝒚 𝑳𝒂𝒖𝒓𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑺𝒐𝒍 𝒚 𝑳𝒂𝒖𝒓𝒂"
+     },
+     {
+      "name_as_written": "𝑭𝒍𝒐𝒘𝒍𝒚 𝒚 𝑨𝒏𝒂𝒔𝒕𝒂𝒔𝒊𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑭𝒍𝒐𝒘𝒍𝒚 𝒚 𝑨𝒏𝒂𝒔𝒕𝒂𝒔𝒊𝒂"
+     },
+     {
+      "name_as_written": "𝑪𝒂𝒔𝒊𝒕𝒐",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑪𝒂𝒔𝒊𝒕𝒐"
+     },
+     {
+      "name_as_written": "𝑱𝒐𝒔𝒖𝒆́ 𝑨𝒌𝒐𝒔𝒅𝒂𝒏𝒄𝒆",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒐𝒔𝒖𝒆́ 𝑨𝒌𝒐𝒔𝒅𝒂𝒏𝒄𝒆"
+     },
+     {
+      "name_as_written": "𝑺𝒖𝒏𝒏𝒚 𝒚 𝑽𝒊𝒐𝒍𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑺𝒖𝒏𝒏𝒚 𝒚 𝑽𝒊𝒐𝒍𝒂"
+     },
+     {
+      "name_as_written": "𝑮𝒆𝒓𝒎𝒂𝒊𝒏 & 𝑷𝒂𝒍𝒐𝒎𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑮𝒆𝒓𝒎𝒂𝒊𝒏 & 𝑷𝒂𝒍𝒐𝒎𝒂"
+     },
+     {
+      "name_as_written": "𝑫𝒐𝒓 𝒚 𝑷𝒂𝒖𝒍𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑫𝒐𝒓 𝒚 𝑷𝒂𝒖𝒍𝒂"
+     },
+     {
+      "name_as_written": "𝑱𝒐𝒓𝒊𝒔 𝒚 𝑪𝒂𝒎𝒚",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒐𝒓𝒊𝒔 𝒚 𝑪𝒂𝒎𝒚"
+     },
+     {
+      "name_as_written": "𝑱𝒐𝒆 𝒚 𝑺𝒐𝒇𝒊𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒐𝒆 𝒚 𝑺𝒐𝒇𝒊𝒂"
+     },
+     {
+      "name_as_written": "𝑷𝒂𝒐𝒍𝒐 𝒚 𝑴𝒂𝒓𝒕𝒚",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑷𝒂𝒐𝒍𝒐 𝒚 𝑴𝒂𝒓𝒕𝒚"
+     },
+     {
+      "name_as_written": "𝑪𝒉𝒓𝒊𝒔 𝒚 𝑭𝒓𝒂𝒏𝒄𝒚",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑪𝒉𝒓𝒊𝒔 𝒚 𝑭𝒓𝒂𝒏𝒄𝒚"
+     },
+     {
+      "name_as_written": "𝑫𝒂𝒏𝒊𝒆𝒍𝒆 𝒚 𝑺𝒆𝒍𝒆𝒏𝒆",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑫𝒂𝒏𝒊𝒆𝒍𝒆 𝒚 𝑺𝒆𝒍𝒆𝒏𝒆"
+     },
+     {
+      "name_as_written": "𝑪𝒍𝒆𝒐𝒑𝒂𝒕𝒓𝒂 𝑫𝒐𝒌𝒐𝒖",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑪𝒍𝒆𝒐𝒑𝒂𝒕𝒓𝒂 𝑫𝒐𝒌𝒐𝒖"
+     },
+     {
+      "name_as_written": "𝑨𝒓𝒄𝒉𝒊𝒍𝒆𝒐 𝒚 𝑲𝒂𝒓𝒆𝒏",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑨𝒓𝒄𝒉𝒊𝒍𝒆𝒐 𝒚 𝑲𝒂𝒓𝒆𝒏"
+     },
+     {
+      "name_as_written": "𝑬𝒓𝒍𝒂𝒏𝒅 𝒚 𝑨𝒏𝒏𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑬𝒓𝒍𝒂𝒏𝒅 𝒚 𝑨𝒏𝒏𝒂"
+     },
+     {
+      "name_as_written": "𝑱𝒂𝒗𝒊 𝒚 𝑺𝒊𝒎𝒐",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒂𝒗𝒊 𝒚 𝑺𝒊𝒎𝒐"
+     },
+     {
+      "name_as_written": "𝑱𝒐𝒓𝒅𝒊 𝒚 𝑺𝒂𝒓𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒐𝒓𝒅𝒊 𝒚 𝑺𝒂𝒓𝒂"
+     },
+     {
+      "name_as_written": "𝑹𝒖𝒃𝒆𝒏 𝒚 𝑹𝒂𝒎𝒐𝒏𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑹𝒖𝒃𝒆𝒏 𝒚 𝑹𝒂𝒎𝒐𝒏𝒂"
+     },
+     {
+      "name_as_written": "𝒀𝒂𝒔 𝒚 𝑳𝒊𝒔𝒐𝒏𝒅𝒓𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝒀𝒂𝒔 𝒚 𝑳𝒊𝒔𝒐𝒏𝒅𝒓𝒂"
+     },
+     {
+      "name_as_written": "𝑪𝒓𝒊𝒔𝒕𝒊𝒂𝒏𝒐 𝒚 𝑵𝒐𝒆𝒎𝒊",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑪𝒓𝒊𝒔𝒕𝒊𝒂𝒏𝒐 𝒚 𝑵𝒐𝒆𝒎𝒊"
+     },
+     {
+      "name_as_written": "𝑩𝒂𝒄𝒉𝒂𝒃𝒓𝒐𝒕𝒉𝒆𝒓𝒔",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑩𝒂𝒄𝒉𝒂𝒃𝒓𝒐𝒕𝒉𝒆𝒓𝒔"
+     },
+     {
+      "name_as_written": "𝑨𝒍𝒅𝒋𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑨𝒍𝒅𝒋𝒂"
+     },
+     {
+      "name_as_written": "𝑱𝒆𝒏𝒏𝒚 𝑳𝒆𝒐𝒏𝒆",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑱𝒆𝒏𝒏𝒚 𝑳𝒆𝒐𝒏𝒆"
+     },
+     {
+      "name_as_written": "𝑳𝒊𝒐𝒏𝒆𝒔𝒔 𝑸𝒖𝒆𝒆𝒏𝒔",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑳𝒊𝒐𝒏𝒆𝒔𝒔 𝑸𝒖𝒆𝒆𝒏𝒔"
+     },
+     {
+      "name_as_written": "𝑻𝒆𝒉𝒊𝒍𝒂 𝑻𝒂𝒏𝒚𝒂",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑻𝒆𝒉𝒊𝒍𝒂 𝑻𝒂𝒏𝒚𝒂"
+     },
+     {
+      "name_as_written": "𝑩𝒆𝒏𝒏𝒚 𝑻𝒉𝒆 𝑮𝒓𝒊𝒏𝒄𝒉",
+      "role": "teacher",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑩𝒆𝒏𝒏𝒚 𝑻𝒉𝒆 𝑮𝒓𝒊𝒏𝒄𝒉"
+     },
+     {
+      "name_as_written": "𝑴𝒂𝒏𝒖𝒆𝒍 𝑪𝒊𝒕𝒓𝒐",
+      "role": "dj",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑴𝒂𝒏𝒖𝒆𝒍 𝑪𝒊𝒕𝒓𝒐"
+     },
+     {
+      "name_as_written": "𝑹𝒚𝒂𝒏 𝑴𝒊𝒍𝒆𝒔",
+      "role": "dj",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑹𝒚𝒂𝒏 𝑴𝒊𝒍𝒆𝒔"
+     },
+     {
+      "name_as_written": "𝑪𝒚𝒃𝒆𝒓",
+      "role": "dj",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑪𝒚𝒃𝒆𝒓"
+     },
+     {
+      "name_as_written": "𝑩𝒆𝒂𝒓",
+      "role": "dj",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑩𝒆𝒂𝒓"
+     },
+     {
+      "name_as_written": "𝑽𝒂𝒍𝒆𝒓𝒊𝒐 𝑬𝒍 𝑫𝒊𝒓𝒆𝒄𝒕𝒐r",
+      "role": "dj",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑽𝒂𝒍𝒆𝒓𝒊𝒐 𝑬𝒍 𝑫𝒊𝒓𝒆𝒄𝒕𝒐r"
+     },
+     {
+      "name_as_written": "𝑮𝒂𝒃𝒓𝒊𝒆𝒍",
+      "role": "dj",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑮𝒂𝒃𝒓𝒊𝒆𝒍"
+     },
+     {
+      "name_as_written": "𝑮𝒖𝒂𝒑𝒐",
+      "role": "dj",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑮𝒖𝒂𝒑𝒐"
+     },
+     {
+      "name_as_written": "𝑳𝒖𝒄𝒂 𝑱",
+      "role": "dj",
+      "style": "𝐁A𝐂H𝐀T𝐀",
+      "country": null,
+      "source_line": "✔️ 𝑳𝒖𝒄𝒂 𝑱"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "5 Nights in the Main Hotel",
+      "rationale": "The full pass package explicitly includes five nights in the main hotel."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "a single location for 5 days of workshops and fun",
+      "rationale": "The event is held in one location, with the hotel hosting the parties and workshops."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "𝟰 𝘿𝘼𝙔𝙎 𝙎𝙊𝘾𝙄𝘼𝙇 𝙍𝙊𝙊𝙈",
+      "rationale": "A social room open for four days is offered during the day."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "4 ROOMS",
+      "rationale": "The parties run in four separate dance rooms, one per style."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "𝟰 𝗣𝗢𝗢𝗟 𝗣𝗔𝗥𝗧𝗜𝗘𝗦",
+      "rationale": "Four pool parties are listed as part of the event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "𝟭𝟬𝟬+ 𝗪𝗢𝗥𝗞𝗦𝗛𝗢𝗣𝗦",
+      "rationale": "Over 100 workshops are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

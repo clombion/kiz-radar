@@ -1,31 +1,38 @@
 {
- "batch": "event-19102",
- "events": [
-  {
-   "event_id": 19102,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Beginners welcome",
-     "rationale": "The description explicitly welcomes beginners in its Open-Level Environment section."
-    },
-    {
-     "feature": "workshops",
-     "quote": "5 Hours of Workshops",
-     "rationale": "The event includes five hours of dance workshops."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre Party Thurs",
-     "rationale": "A pre-party is scheduled on Thursday before the main weekend."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "1 Day Social on Sunday",
-     "rationale": "A daytime social is held on Sunday."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:51:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-19102",
+  "events": [
+   {
+    "event_id": 19102,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Beginners welcome",
+      "rationale": "The description explicitly welcomes beginners in its Open-Level Environment section."
+     },
+     {
+      "feature": "workshops",
+      "quote": "5 Hours of Workshops",
+      "rationale": "The event includes five hours of dance workshops."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre Party Thurs",
+      "rationale": "A pre-party is scheduled on Thursday before the main weekend."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "1 Day Social on Sunday",
+      "rationale": "A daytime social is held on Sunday."
+     }
+    ]
+   }
+  ]
+ }
 }
