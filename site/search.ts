@@ -459,7 +459,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
         void go(artistHref(item.a.id));
         return;
       case 'city':
-        void go(cityOnMapHref(item.city.city, item.city.cc ?? ''));
+        void go(cityOnMapHref(item.city));
         return;
       case 'country':
         void go(festivalsHref({ ...finderParams(), country: item.country.code }));

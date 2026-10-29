@@ -7,7 +7,7 @@ import { button, dropdown, h, moreButton } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, readState, withDetails } from './festivals.ts';
 import { convert, currency, money, step } from './money.ts';
-import { cityOnMapHref, eventOnMapHref, mapHref, type Show, showInAddressBar } from './routes.ts';
+import { cityOf, cityOnMapHref, eventOnMapHref, mapHref, type Show, showInAddressBar } from './routes.ts';
 import { EVENT } from './rows.ts';
 import { flag, home } from './ui.ts';
 
@@ -104,6 +104,14 @@ const WHEN: readonly (readonly [string, string])[] = [
 const DEFAULTS: { when: string; color: string; country: string } = { when: 'upcoming', color: 'fare', country: '' };
 const placed = (e: Festival): e is Placed => e.city !== null && e.lat !== null && e.lon !== null;
 
+// the festivals of the city the address picks: the opened festival's (map/event/<id>), or the one map/city/<country>/
+// <city> names (routes.cityOf)
+function pickedIn(sub: readonly string[], events: readonly Placed[], opened: Placed | undefined): Placed[] {
+  if (opened !== undefined) return [opened];
+  const named = sub[0] === 'city' ? cityOf(sub.slice(1)) : null;
+  return named ? events.filter((e) => e.country_code === named.cc && e.city === named.city) : [];
+}
+
 export const mapView: Show = (root, sub, qs, { signal }) => {
   const events = withDetails(q(EVENT, sql`SELECT * FROM event_rows WHERE lat IS NOT NULL ORDER BY start_date`)).filter(
     placed,
@@ -120,21 +128,12 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     city: null,
     event: sub[0] === 'event' && byId.has(Number(sub[1])) ? Number(sub[1]) : null,
   };
-  const opened = state.event === null ? undefined : byId.get(state.event);
   // a festival or a city picked, rather than every festival in view
   const picked = () => state.event !== null || state.city !== null;
-  if (opened !== undefined) {
-    state.city = cityKey(opened);
-    if (state.when === 'upcoming' && !opened.upcoming) state.when = 'all';
-  }
-  // map/city/<country>/<city>: that city picked, with its past festivals too when none is coming up
-  const inCity =
-    sub[0] === 'city'
-      ? events.filter((e) => e.country_code === sub[1] && e.city === decodeURIComponent(sub[2] || ''))
-      : [];
-  if (inCity[0]) {
-    state.city = cityKey(inCity[0]);
-    if (state.when === 'upcoming' && !inCity.some((e) => e.upcoming)) state.when = 'all';
+  const there = pickedIn(sub, events, state.event === null ? undefined : byId.get(state.event));
+  if (there[0]) {
+    state.city = cityKey(there[0]);
+    if (state.when === 'upcoming' && !there.some((e) => e.upcoming)) state.when = 'all'; // its past ones too
   }
 
   // ----- layout -----
@@ -305,7 +304,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     showInAddressBar(
       state.event === null
         ? city
-          ? cityOnMapHref(city.city, city.cc ?? '', params)
+          ? cityOnMapHref(city, params)
           : mapHref(params)
         : eventOnMapHref(state.event, params),
     );
@@ -476,12 +475,9 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   document.addEventListener('keydown', esc, { signal });
 
   whenSel.value = state.when;
-  redraw({ fit: state.event === null && inCity.length === 0 }); // open on every festival shown, wherever it is
-  if (opened !== undefined) {
-    map.setView([opened.lat, opened.lon], Math.max(map.getZoom(), 5));
-    setSheet(true);
-  } else if (inCity[0]) {
-    map.setView([inCity[0].lat, inCity[0].lon], Math.max(map.getZoom(), 6));
+  redraw({ fit: there.length === 0 }); // open on every festival shown, wherever it is
+  if (there[0]) {
+    map.setView([there[0].lat, there[0].lon], Math.max(map.getZoom(), state.event === null ? 6 : 5)); // a city closer
     setSheet(true);
   }
   const settle = setTimeout(() => {
