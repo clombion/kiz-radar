@@ -1025,20 +1025,19 @@ class Place(CsvRow):
 
 
 class Fare(CsvRow):
-    """A Friday-to-Monday return's price."""
+    """A weekend's return flight from home: out on the Friday, back fares.NIGHTS later; its price in whole euros, the
+    currency fares asks fli for."""
 
-    FILE = 'docs/data/fares.csv'
+    FILE = 'pipeline/fares.csv'
 
     airport: str
     depart: Date
-    return_: Date = Field(validation_alias='return', serialization_alias='return')
-    price: Count  # in whole euros
-    currency: Literal['EUR']  # the one fares asks fli for
+    price: Count
     fetched_at: Stamp
 
 
 class Job(CsvRow):
-    """When a festival weekend was last searched; how it went is in docs/data/fares.csv, which has its fare when the
+    """When a festival weekend was last searched; how it went is in pipeline/fares.csv, which has its fare when the
     search found one."""
 
     FILE = 'pipeline/fare_jobs.csv'

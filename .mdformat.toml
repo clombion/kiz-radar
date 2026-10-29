@@ -8,7 +8,7 @@ exclude = [
     "pipeline/extract/prompts/*.md",
     "pipeline/tickets/prompts/*.md",
     "pipeline/prompts/asked/[0-9a-f]*.md",
-    "docs/fonts/LICENSE.md",
+    "public/fonts/LICENSE.md",
 ]
 
 [plugin.tables]

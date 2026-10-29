@@ -1,10 +1,13 @@
-// Loads the site summary (small, so the page can show itself straight away), then sql.js, the database and the
-// latest fares, and exposes the query helpers: each reads its rows by a shape (rows.ts).
+// Loads the site summary (small, so the page can show itself straight away), and alongside it sql.js and the
+// database, and exposes the query helpers: each reads its rows by a shape (rows.ts). The two data files come from one
+// build: both are asked again of the server each visit, and a database of another build than the summary's (a
+// publish between the two requests) is refused.
 import type { BindParams, Database, QueryExecResult } from 'sql.js';
 import { today } from './days.ts';
+import { get } from './net.ts';
 import { type RowOf, read, type Shape } from './rows.ts';
 
-const SQLJS = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/';
+const SQLJS = new URL('../vendor/', import.meta.url); // sql-wasm.wasm, beside the script index.html loads
 const DATA = new URL('../data/', import.meta.url);
 
 // site.json, written by the same build as kiz.sqlite: home airport, destinations, dates covered, build time
@@ -53,30 +56,43 @@ function summaryOf(v: unknown): Summary {
 }
 
 let db: Database | undefined;
+let openCopy: (() => Database) | undefined; // another database from the same file, for the SQL page
+let copy: Database | undefined;
 let summary: Summary | undefined;
 
 export async function loadSite(): Promise<void> {
-  const r = await fetch(new URL('site.json', DATA));
-  if (!r.ok) throw new Error(`data/site.json: ${r.status}`);
-  summary = summaryOf(await r.json());
+  summary = summaryOf(await (await get(new URL('site.json', DATA), { revalidate: true })).json());
 }
 export const site = (): Summary => {
   if (!summary) throw new Error('site.json is not loaded yet');
   return summary;
 };
 
-export async function load(): Promise<Database> {
-  const [SQL, dbBuf, faresText] = await Promise.all([
-    initSqlJs({ locateFile: (f) => SQLJS + f }),
-    fetch(new URL('kiz.sqlite', DATA)).then((r) => {
-      if (!r.ok) throw new Error(`data/kiz.sqlite: ${r.status}`);
-      return r.arrayBuffer();
-    }),
-    fetch(new URL('fares.csv', DATA), { cache: 'no-cache' }).then((r) => (r.ok ? r.text() : '')),
+// a library index.html loads as a script, which a failed load leaves undefined: said by the file that did not load
+export function needs(name: string, file: string): void {
+  if (!Reflect.has(globalThis, name)) throw new Error(`${file} did not load`);
+}
+
+// the database, once it and the summary are in (siteLoaded)
+export async function load(siteLoaded: Promise<void>): Promise<Database> {
+  needs('initSqlJs', 'vendor/sql-wasm.js');
+  const [SQL, dbBuf] = await Promise.all([
+    initSqlJs({ locateFile: (f) => new URL(f, SQLJS).href }),
+    get(new URL('kiz.sqlite', DATA), { revalidate: true }).then((r) => r.arrayBuffer()),
   ]);
-  db = new SQL.Database(new Uint8Array(dbBuf));
-  db.run('UPDATE today SET day = ?', [today()]); // the festivals as seen from the visitor's own day (event_rows)
-  if (faresText) replaceFares(db, faresText);
+  const bytes = new Uint8Array(dbBuf);
+  // the festivals as seen from the visitor's own day (event_rows)
+  const open = (): Database => {
+    const d = new SQL.Database(bytes);
+    d.run('UPDATE today SET day = ?', [today()]);
+    return d;
+  };
+  const opening = open();
+  await siteLoaded;
+  const [built] = opening.exec("SELECT value FROM meta WHERE key = 'built_at'")[0]?.values[0] ?? [];
+  if (built !== site().built_at) throw new Error('the site was updated while the page loaded: reload the page');
+  db = opening;
+  openCopy = open;
   return db;
 }
 
@@ -84,24 +100,6 @@ const opened = (): Database => {
   if (!db) throw new Error('the database is not loaded yet');
   return db;
 };
-
-const LINE_BREAK = /\r?\n/u;
-// The DB ships with a fares snapshot; the CSV is refreshed by the GitHub Action more often.
-function replaceFares(to: Database, csv: string): void {
-  const [first = '', ...lines] = csv.trim().split(LINE_BREAK);
-  const head = first.split(',');
-  const cols = ['airport', 'depart', 'return', 'price', 'currency', 'fetched_at'].map((name) => head.indexOf(name));
-  if (cols.some((i) => i < 0)) throw new Error(`data/fares.csv: unexpected columns ${head.join(',')}`);
-  to.run('BEGIN');
-  to.run('DELETE FROM fares');
-  const st = to.prepare('INSERT OR REPLACE INTO fares VALUES (?,?,?,?,?,?)');
-  for (const line of lines) {
-    const v = line.split(',');
-    st.run(cols.map((i, k) => (k === 3 ? Number(v[i]) : (v[i] ?? null))));
-  }
-  st.free();
-  to.run('COMMIT');
-}
 
 // SQL written in the code. A query is one, joined only from others (sql`… ${other} …`, Sql.joined), so a value from
 // outside is never part of its text: it is bound to a ? instead.
@@ -135,5 +133,10 @@ export function q<S extends Shape>(shape: S, query: Sql, params: BindParams = []
 export const one = <S extends Shape>(shape: S, query: Sql, params?: BindParams): RowOf<S> | undefined =>
   q(shape, query, params)[0];
 
-// a query someone types (the SQL page): its columns and values as they are
-export const exec = (typed: string): QueryExecResult[] => opened().exec(typed);
+// a query someone types (the SQL page): its columns and values as they are. It runs on a copy of the database, opened
+// on the first one, so what it changes (a DELETE, say) changes nothing the other pages read.
+export function exec(typed: string): QueryExecResult[] {
+  if (!openCopy) throw new Error('the database is not loaded yet');
+  copy ??= openCopy();
+  return copy.exec(typed);
+}

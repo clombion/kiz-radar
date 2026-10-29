@@ -22,6 +22,7 @@ import {
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
 import { currency, money, type Step, step } from './money.ts';
 import { friendsIn } from './plans.ts';
+import { done } from './report.ts';
 import { festivalsHref, showInAddressBar } from './routes.ts';
 import { KEY } from './states.ts';
 import { flag, home, loading } from './ui.ts';
@@ -510,19 +511,18 @@ export function sentenceView(
     results.replaceChildren(resultList(rows, widened));
   }
   render();
-  data.then(
-    () => {
+  data
+    .then(() => {
       if (!signal.aborted) {
         all = festivals();
         render();
       }
-    },
-    (e: unknown) => {
+    })
+    .catch((e: unknown) => {
       live.replaceChildren(
         h('span', { class: 'error' }, `Could not load the festivals: ${e instanceof Error ? e.message : String(e)}`),
       );
-    },
-  );
+    });
   const refit = () => {
     for (const el of Object.values(sentenceBlanks)) sizeToFit(el);
     layout();
@@ -530,11 +530,14 @@ export function sentenceView(
   requestAnimationFrame(refit); // and again once the web font has loaded
   // The sentence fades in once its fonts are in (or after a second at most), so it is laid out once, in its own
   // fonts, instead of jumping when they swap in.
-  void Promise.race([document.fonts.ready, new Promise((done) => setTimeout(done, 1000))]).then(() => {
-    if (signal.aborted) return;
-    refit();
-    requestAnimationFrame(() => hero.classList.remove('arriving'));
-  });
+  done(
+    Promise.race([document.fonts.ready, new Promise((fontsOrNot) => setTimeout(fontsOrNot, 1000))]).then(() => {
+      if (signal.aborted) return;
+      refit();
+      requestAnimationFrame(() => hero.classList.remove('arriving'));
+    }),
+    'showing the sentence',
+  );
   addEventListener('resize', layout, { signal });
 }
 
@@ -571,12 +574,12 @@ function rotate(el: HTMLElement, n: HTMLElement, signal: AbortSignal): void {
     );
     eases = seen.size === 1;
     show();
-    void el.offsetWidth; // a reflow, so the transition starts from here
+    el.getBoundingClientRect(); // a reflow, so the transition starts from here
     el.style.transition = '';
     n.style.transition = '';
   }
   measure();
-  void document.fonts.ready.then(measure); // widths change once the web font is in
+  done(document.fonts.ready.then(measure), 'measuring the dances'); // widths change once the web font is in
   addEventListener('resize', measure, { signal });
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const timer = setInterval(() => {

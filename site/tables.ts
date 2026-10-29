@@ -114,7 +114,7 @@ export function sqlView(root: HTMLElement): void {
         h(
           'p',
           { class: 'muted' },
-          'The whole database runs in your browser (sql.js). Queries cannot change the published data.',
+          'The whole database runs in your browser (sql.js), on a copy for this page: a query that changes it changes nothing elsewhere, and reloading the page starts over.',
         ),
         h(
           'div',

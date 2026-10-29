@@ -6,7 +6,7 @@ description = "The pipeline's tests, on every core in a new order, and the branc
 run = "uv run --group dev pytest -q --cov"
 
 ["build:data"]
-description = "docs/data/kiz.sqlite and site.json, which the site loads, built from the export (they are never committed)"
+description = "public/data/kiz.sqlite and site.json, which the site loads, built from the export (they are never committed)"
 run = "uv run -m pipeline.build_site_db"
 
 # The pipeline's steps, each run with the dependency group its module needs (pyproject.toml); what follows -- is the
@@ -65,14 +65,14 @@ description = "The site's tools, as pnpm-lock.yaml pins them"
 run = "pnpm install --frozen-lockfile"
 
 ["build:site"]
-description = "The site's TypeScript (site/) compiled into docs/js/, which the page loads"
+description = "The site's TypeScript (site/) compiled into public/js/, and the libraries it loads copied into public/vendor/ from the pinned packages"
 depends = ["install:site"]
 run = "pnpm run build"
 
 [serve]
 description = "The site and its data built, and served at http://localhost:8000"
 depends = ["build:site", "build:data"]
-run = "python3 -m http.server -d docs 8000"
+run = "python3 -m http.server -d public 8000"
 
 ["types:site"]
 description = "tsc, strict, on the site and its tests"

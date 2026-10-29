@@ -2,17 +2,19 @@
 // On a phone the list is a sheet over the map that peeks at the bottom and slides up.
 import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
-import { q, sql } from './db.ts';
+import { needs, q, sql } from './db.ts';
 import { button, choices, dropdown, h, moreButton } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, leftOut, readState, withDetails } from './festivals.ts';
 import { currency, money, step, within } from './money.ts';
+import { get } from './net.ts';
+import { done } from './report.ts';
 import { cityOf, cityOnMapHref, eventOnMapHref, mapHref, type Show, showInAddressBar } from './routes.ts';
 import { EVENT } from './rows.ts';
 import { countryName, flag, home } from './ui.ts';
 import { plural } from './wording.ts';
 
-const WORLD = 'https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json';
+const WORLD = new URL('../vendor/countries-50m.json', import.meta.url); // world-atlas, copied by the build
 type Land = FeatureCollection<Polygon | MultiPolygon, { name: string }>;
 let worldGeo: Land | undefined; // cached across visits to the tab
 const css = (name: string) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -254,6 +256,8 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     [Math.max(padded.getSouth(), -85), Math.max(padded.getWest(), -180)],
     [Math.min(padded.getNorth(), 85), Math.min(padded.getEast(), 180)],
   );
+  needs('L', 'vendor/leaflet/leaflet.js');
+  needs('topojson', 'vendor/topojson-client.min.js');
   const map = L.map(mapEl, {
     zoomControl: false,
     attributionControl: true,
@@ -278,7 +282,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   map.createPane('land').style.zIndex = '350';
   const land = L.layerGroup().addTo(map);
   const bubbles = L.layerGroup().addTo(map);
-  void drawWorld(land);
+  done(drawWorld(land, signal), 'drawing the map');
   // the legend sits on the map, where the colours are
   const legendEl = h('div', { class: 'map-legend' });
   const Legend = L.Control.extend({ onAdd: () => legendEl });
@@ -311,7 +315,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     }
     legendEl.replaceChildren(
       h('strong', {}, scheme.title()),
-      ...scheme.bands.map((b) => h('span', {}, h('i', { style: `background:${css(b[2])}` }), b[0])),
+      ...scheme.bands.map((b) => h('span', {}, h('i', { style: { background: css(b[2]) } }), b[0])),
       h('span', { class: 'size' }, h('i', { class: 'ring' }), 'bigger = more festivals'),
     );
     paintFiltersBtn();
@@ -530,10 +534,10 @@ const isWorld = (v: unknown): v is World =>
   typeof v.objects === 'object' &&
   v.objects !== null &&
   'countries' in v.objects;
-async function drawWorld(layer: L.LayerGroup): Promise<void> {
+async function drawWorld(layer: L.LayerGroup, signal: AbortSignal): Promise<void> {
   if (!worldGeo) {
-    const topo: unknown = await fetch(WORLD).then((r) => r.json());
-    if (!isWorld(topo)) throw new Error(`${WORLD}: not the world topology`);
+    const topo: unknown = await (await get(WORLD, { signal })).json();
+    if (!isWorld(topo)) throw new Error(`${WORLD.pathname}: not the world topology`);
     const world = topojson.feature(topo, topo.objects.countries);
     worldGeo = {
       ...world,

@@ -12,10 +12,10 @@ const COMMENT_BLOCK = /\/\*[\s\S]*?\*\//gu;
 // a // comment, but not the // of a URL in a string or a regex
 const COMMENT_LINE = /(?<before>^|[^:'"`\\])\/\/.*$/gmu;
 
-export const html = read('docs/index.html');
+export const html = read('public/index.html');
 // each stylesheet without its comments
 export const css: ReadonlyMap<string, string> = new Map(
-  filesIn('docs/css/', '.css').map((f) => [f, read(`docs/css/${f}`).replace(COMMENT_BLOCK, '')]),
+  filesIn('public/css/', '.css').map((f) => [f, read(`public/css/${f}`).replace(COMMENT_BLOCK, '')]),
 );
 export const modules: ReadonlyMap<string, string> = new Map(filesIn('site/', '.ts').map((f) => [f, read(`site/${f}`)]));
 // each module but the generated state table, without its comments, where words may be quoted

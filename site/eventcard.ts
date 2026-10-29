@@ -1,7 +1,6 @@
 // The festival card used across the site: date, place, title, styles, highlights, a few names and the flight,
 // opening in place to the full line-up and practical details. Rows come from festivals.ts (withDetails).
 
-import { addDays } from './days.ts';
 import { cardDetails, traitItems } from './details.ts';
 import type { Kid } from './dom.ts';
 import { button, h, own } from './dom.ts';
@@ -11,6 +10,7 @@ import { TRAITS } from './icons.ts';
 import { approximately, money, within } from './money.ts';
 import { openPasses, riseNote } from './passes.ts';
 import { goingLine } from './plans.ts';
+import { done } from './report.ts';
 import { artistHref } from './routes.ts';
 import { KEY, LINK } from './states.ts';
 import { away, dayParts, flightsUrl, home, otherYear, place } from './ui.ts';
@@ -42,7 +42,7 @@ const flightLink = (e: Flown, words: string) =>
   h(
     'a',
     {
-      href: flightsUrl(e.airport, e.depart, addDays(e.depart, 3)),
+      href: flightsUrl(e.airport, e.depart, e.fare.back),
       target: '_blank',
       rel: 'noopener',
       title: `Friday to Monday return from ${home().city}; check it on Google Flights`,
@@ -170,13 +170,16 @@ function smoothly(card: HTMLElement, change: () => void, opening: boolean): void
     const r = card.getBoundingClientRect();
     if (r.top < 0 || r.top > innerHeight - 80) card.scrollIntoView({ block: 'nearest' }); // keep the card in view
   });
-  void t.finished.finally(() => {
-    for (const c of onScreen) {
-      c.style.viewTransitionName = '';
-      c.style.removeProperty('view-transition-class');
-    }
-    root.removeAttribute('data-vt');
-  });
+  done(
+    t.finished.finally(() => {
+      for (const c of onScreen) {
+        c.style.viewTransitionName = '';
+        c.style.removeProperty('view-transition-class');
+      }
+      root.removeAttribute('data-vt');
+    }),
+    'opening a card',
+  );
 }
 
 export function eventCard(

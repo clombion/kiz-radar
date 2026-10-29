@@ -2871,3 +2871,8 @@ html[data-vt="back"]::view-transition-new(section) {
     transform: translateX(-100%);
   }
 }
+
+/* the SVG filters the page defines once (index.html), taking no room */
+svg.defs {
+  position: absolute;
+}

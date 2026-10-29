@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-  "files": { "includes": ["site/**", "tests/**/*.ts", "docs/css/**", "*.json", "*.jsonc", "!pnpm-lock.yaml"] },
+  "files": { "includes": ["site/**", "tests/**/*.ts", "public/css/**", "*.json", "*.jsonc", "!pnpm-lock.yaml"] },
   // site/states.ts is laid out by its generator (pipeline/states.py), and checked against it by generate:check
   "formatter": { "indentStyle": "space", "indentWidth": 2, "lineWidth": 120, "includes": ["**", "!site/states.ts"] },
   "javascript": { "formatter": { "quoteStyle": "single" } },
@@ -11,7 +11,9 @@
     "./lint/formats.grit",
     "./lint/home.grit",
     "./lint/clicks.grit",
-    "./lint/buttons.grit"
+    "./lint/buttons.grit",
+    "./lint/promises.grit",
+    "./lint/fetch.grit"
   ],
   "linter": {
     "rules": {
@@ -34,7 +36,6 @@
         "useConsistentTypeDefinitions": "off" // a shape that must fit a Record is a type: an interface has no index signature
       },
       "complexity": {
-        "noVoid": "off", // void marks a promise left to run on its own (noFloatingPromises)
         "useLiteralKeys": "off", // tsconfig's noPropertyAccessFromIndexSignature wants dataset['nav']
         "noExcessiveLinesPerFunction": "off" // a view is one closure over its state; complexity is bounded instead
       },
@@ -75,6 +76,11 @@
     }
   },
   "overrides": [
+    {
+      // the one place the site writes to the console: what went wrong, with where (report.ts)
+      "includes": ["site/report.ts"],
+      "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
+    },
     {
       // the tests and their config run in Node, and a test is test() wherever it is
       "includes": ["tests/**", "vitest.config.ts"],

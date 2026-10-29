@@ -12,6 +12,7 @@ import { fold, words } from './fold.ts';
 import { icon } from './icons.ts';
 import { leaving, modal } from './modal.ts';
 import { person, withPlans } from './plans.ts';
+import { done } from './report.ts';
 import { roleLabel } from './roles.ts';
 import {
   artistHref,
@@ -385,7 +386,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
   const status = h('p', { class: 'visually-hidden', 'aria-live': 'polite' });
   const glass = h('span', { class: 'search-glass', 'aria-hidden': 'true' });
   glass.innerHTML = trigger.querySelector('svg')?.outerHTML ?? '';
-  const cancel = button({ class: 'search-cancel', onclick: () => void shut() }, 'Cancel');
+  const cancel = button({ class: 'search-cancel', onclick: () => done(shut(), 'search') }, 'Cancel');
   // past festivals, and places with nothing coming up, only when asked for: what people share is what's ahead
   const pastBox = h('input', {
     type: 'checkbox',
@@ -433,25 +434,25 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
         if (item.e.lat === null) {
           // nowhere on the map
           window.open(item.e.url, '_blank', 'noopener');
-          void shut();
+          done(shut(), 'search');
           return;
         }
-        void go(eventOnMapHref(item.e.id));
+        done(go(eventOnMapHref(item.e.id)), 'search');
         return;
       case 'person':
-        void go(personHref(item.p.key));
+        done(go(personHref(item.p.key)), 'search');
         return;
       case 'artist':
-        void go(artistHref(item.a.id));
+        done(go(artistHref(item.a.id)), 'search');
         return;
       case 'city':
-        void go(cityOnMapHref(item.city));
+        done(go(cityOnMapHref(item.city)), 'search');
         return;
       case 'country':
-        void go(festivalsHref({ ...finderParams(), country: item.country.code }));
+        done(go(festivalsHref({ ...finderParams(), country: item.country.code })), 'search');
         return;
       case 'tag':
-        void go(festivalsHref({ ...finderParams(), ...item.params }));
+        done(go(festivalsHref({ ...finderParams(), ...item.params })), 'search');
     }
   }
 
@@ -678,10 +679,13 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
     input.select(); // the last query stays, ready to refine or type over
     render();
     if (!items)
-      void data.then(() => {
-        items = buildIndex();
-        if (dlg.open) render();
-      });
+      done(
+        data.then(() => {
+          items = buildIndex();
+          if (dlg.open) render();
+        }),
+        'search',
+      );
   }
   trigger.addEventListener('click', open);
   addEventListener('keydown', (ev) => {

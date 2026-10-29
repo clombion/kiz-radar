@@ -1,0 +1,8 @@
+language js
+
+// Every request goes through net.ts's get(): a deadline, the view's signal, and a failure for an answer that is no
+// success.
+`fetch($...)` as $use where {
+  $filename <: not r".*/net\.ts",
+  register_diagnostic(span=$use, message="Requests go through net.ts's get(), with its deadline and the view's signal.")
+}

@@ -10,6 +10,7 @@ import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
 import { personView } from './people.ts';
+import { done, guarded, reportUncaught } from './report.ts';
 import { EXPLORE, parseRoute, type Route, type Show, sectionAt, TABS, type Tab } from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';
@@ -27,7 +28,8 @@ const part = (selector: string): HTMLElement => {
 const main = part('#main'),
   tabs = part('nav.tabs'),
   subnav = part('#subnav');
-const data = load(); // starts now, alongside site.json
+const siteLoaded = loadSite();
+const data = load(siteLoaded); // starts now, alongside site.json
 let leave: AbortController | undefined;
 let at: string | null = null; // the view shown, by name
 
@@ -99,28 +101,31 @@ function show(name: string, sub: readonly string[], qs: string): void {
   const root = h('div', { class: 'view' });
   main.replaceChildren(root);
   const { signal } = leave;
+  const build = () => guarded(root, name, () => view.show(root, sub, qs, { signal, data }));
   if (view.waitsForData) {
     root.append(loading('Loading the festival database…'));
-    data.then(
-      () => {
+    data
+      .then(() => {
         if (!signal.aborted) {
           root.replaceChildren();
-          view.show(root, sub, qs, { signal, data });
+          build();
         }
-      },
-      (e: unknown) => failed(root, e),
-    );
-  } else view.show(root, sub, qs, { signal, data });
+      })
+      .catch((e: unknown) => failed(root, e));
+  } else build();
   document.title = view.title === null ? 'Kiz Radar' : `${view.title} · Kiz Radar`;
 }
 
-addEventListener('hashchange', () => route({ scrollUp: true }));
+reportUncaught();
 addEventListener('resize', () => {
   for (const row of tabRows()) pill(row, { still: true });
 });
-void document.fonts.ready.then(() => {
-  for (const row of tabRows()) pill(row, { still: true });
-});
+done(
+  document.fonts.ready.then(() => {
+    for (const row of tabRows()) pill(row, { still: true });
+  }),
+  'laying out the tabs',
+);
 
 swipeBetweenSections();
 
@@ -132,18 +137,25 @@ const toTop = button(
 document.body.append(toTop);
 addEventListener('scroll', () => toTop.classList.toggle('shown', scrollY > 2 * innerHeight), { passive: true });
 
-void loadSite().then(
-  () => {
-    const {
-      events_range: [from, to],
-      built_at,
-    } = site();
-    part('#freshness').textContent =
-      `It covers ${monthYear(from)} to ${monthYear(to)} and was last updated on ${dayYear(built_at)}.`;
-    for (const el of document.querySelectorAll('[data-home-city]')) el.textContent = home().city;
-    part('#currency-switch').replaceWith(currencySwitch());
-    initSearch(part('#search-btn'), data);
-    route();
-  },
-  (e) => failed(main, e),
-); // only a failed load is reported as one; errors in a view surface as errors
+// the page once site.json is in: what the data covers, the home city, search, and the view the address names, then
+// each address it moves to; a summary that fails to load is said in the page's place
+async function start(): Promise<void> {
+  try {
+    await siteLoaded;
+  } catch (e) {
+    failed(main, e);
+    return;
+  }
+  const {
+    events_range: [from, to],
+    built_at,
+  } = site();
+  part('#freshness').textContent =
+    `It covers ${monthYear(from)} to ${monthYear(to)} and was last updated on ${dayYear(built_at)}.`;
+  for (const el of document.querySelectorAll('[data-home-city]')) el.textContent = home().city;
+  part('#currency-switch').replaceWith(currencySwitch());
+  initSearch(part('#search-btn'), data);
+  addEventListener('hashchange', () => route({ scrollUp: true }));
+  route();
+}
+done(start(), 'starting the page');

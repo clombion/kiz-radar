@@ -4,7 +4,10 @@ Kiz Radar finds Kizomba, Urban Kiz and Tarraxo festivals worth flying to from Be
 [kizomba-world.com](https://kizomba-world.com/), prices the Friday-to-Monday flight to each, and lets you explore who
 teaches where. It runs as a static site on GitHub Pages: the browser loads a SQLite database with
 [sql.js](https://sql.js.org/) and runs every query itself. The site's code is TypeScript (`site/`), compiled module by
-module into `docs/js/` by the **Publish site** Action whenever `main` changes; `docs/js/` is not committed.
+module into `public/js/` by the **Publish site** Action whenever `main` changes, and the libraries it loads (sql.js,
+Leaflet, topojson-client and the world-atlas outlines) are copied into `public/vendor/` from the packages `package.json`
+pins; neither is committed. The page loads nothing from elsewhere: its Content-Security-Policy (`public/index.html`)
+allows only its own files.
 
 ## What the site does
 
@@ -48,14 +51,14 @@ isn't a choice); when those then hide everything, the list offers to widen them.
 
 The footer links to an SQL page for querying the whole database.
 
-A shared link shows a preview card, `docs/share-card.png`, and the site has icons for browser tabs, bookmarks and phone
-home screens. The card is drawn from `design/share-card.html`, with a map of the festivals coming up taken from the site
-database, and the icons from `docs/mark.svg`. The mark shows two dancers in an embrace, their bodies closing into a
-radar ring, and the favicon made from it switches colours on dark browser tabs. To redraw the PNGs after changing
+A shared link shows a preview card, `public/share-card.png`, and the site has icons for browser tabs, bookmarks and
+phone home screens. The card is drawn from `design/share-card.html`, with a map of the festivals coming up taken from
+the site database, and the icons from `public/mark.svg`. The mark shows two dancers in an embrace, their bodies closing
+into a radar ring, and the favicon made from it switches colours on dark browser tabs. To redraw the PNGs after changing
 either, or to bring the card's map up to date, run `NODE_PATH="$(npm root -g)" node design/render.cjs` (it needs
-Playwright). It also makes `docs/loading.svg`, the animated mark shown while the page loads. The fonts, Inter and
-Caveat, are served from `docs/fonts` under the SIL Open Font License (see `docs/fonts/LICENSE.md`), so they arrive with
-the page.
+Playwright). It also makes `public/loading.svg`, the animated mark shown while the page loads. The fonts, Inter and
+Caveat, are served from `public/fonts` under the SIL Open Font License (see `public/fonts/LICENSE.md`), so they arrive
+with the page.
 
 ## Where the data comes from
 
@@ -64,23 +67,23 @@ loads; the site never reads `source/` itself.
 
 Kizomba-world publishes its listings under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The festival
 data in this repository adapts them, so it is shared under the same licence: the export in `source/`, the database and
-summary the site serves from `docs/data/`, and the artist merge files in `pipeline/`. Each festival card links to its
+summary the site serves from `public/data/`, and the artist merge files in `pipeline/`. Each festival card links to its
 page on kizomba-world. The fares are our own searches.
 
 | File | What it holds | Updated by |
 | -- | -- | -- |
 | `source/*.sqlite` | The full kizomba-world export, with descriptions and images | the **Refresh events** Action, monthly |
-| `docs/data/kiz.sqlite` | What the site queries: events, line-ups, artists, statistics, airports, a fares snapshot | built from the export and the files of `pipeline/`, never committed: by **Publish site** for the site, `mise run build:data` locally, and for each step that reads it |
-| `docs/data/site.json` | What the page shows before the database loads: home airport, destinations, dates covered | the same build |
-| `docs/data/fares.csv` | Friday-to-Monday return fares, one row per airport and weekend | the **Refresh fares** Action |
-| `pipeline/fare_jobs.csv` | When each festival weekend was last searched (its fare, when one was found, is in `docs/data/fares.csv`) | the same Action |
+| `public/data/kiz.sqlite` | What the site queries: events, line-ups, artists, statistics, airports, fares | built from the export and the files of `pipeline/`, never committed: by **Publish site** for the site, `mise run build:data` locally, and for each step that reads it |
+| `public/data/site.json` | What the page shows before the database loads: home airport, destinations, dates covered | the same build |
+| `pipeline/fares.csv` | Friday-to-Monday return fares, one row per airport and weekend | the **Refresh fares** Action |
+| `pipeline/fare_jobs.csv` | When each festival weekend was last searched (its fare, when one was found, is in `pipeline/fares.csv`) | the same Action |
 | `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices, and the merge review's, each with where it comes from | the **Refresh events** Action |
 | `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Refresh places and rates** Action |
 | `pipeline/tickets/` | Ticket-page recipes, read logs, first reads, from which the load takes the prices read there, and what each festival waits for (`tickets/status.csv`) | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
 | `pipeline/states.py` | Every state a data point can be in, what it means and the site's words for it | by hand (see "States") |
 | `claims/` | The admin's claims (see "Claims") | the claims repository; its pin by the **Refresh events** Action |
 | `pipeline/prompts/asked/` | Every prompt asked, by its hash | whatever saves an answer or a first read, before it names the hash |
-| `site/*.ts` | The site's code, which the **Publish site** Action compiles into `docs/js/` and publishes with `docs/` | by hand; `site/states.ts` by `mise run generate` |
+| `site/*.ts` | The site's code, which the **Publish site** Action compiles into `public/js/` and publishes with `public/` | by hand; `site/states.ts` by `mise run generate` |
 
 The build also tidies the text. Artist names get one casing ("AMI & JULIEN" becomes "Ami & Julien"). Festival titles
 lose dates, years and shouting capitals; `events.listed_title` keeps them as listed. Venues are recased. The rules live
@@ -122,9 +125,9 @@ weekend falls due depends on how far away it is:
 
 Each weekend has its own weekday, so each day's run checks about a seventh of them; a weekend never searched, or overdue
 by twice its interval, doesn't wait for its day. Past weekends and weekends no festival uses any more leave
-`docs/data/fares.csv` and `pipeline/fare_jobs.csv`. A weekend with no price on Google loses the fare it had, and is
-tried again at its next interval. If Google refuses a search, the run keeps what it found and is marked failed. A
-festival's airport is the nearest one in `pipeline/airports.csv` within 250 km. To see what is due today, run
+`pipeline/fares.csv` and `pipeline/fare_jobs.csv`. A weekend with no price on Google loses the fare it had, and is tried
+again at its next interval. If Google refuses a search, the run keeps what it found and is marked failed. A festival's
+airport is the nearest one in `pipeline/airports.csv` within 250 km. To see what is due today, run
 `mise run fares -- plan`.
 
 ## Duplicate artists
@@ -410,7 +413,7 @@ mise run resolve
 mise run rates                       # exchange rates for the site's prices
 mise run suggest-merges              # on a site database built for it
 mise run fares -- refresh --budget 4 # searches festival weekends due today
-mise run build:data                  # docs/data/kiz.sqlite and site.json, never committed
+mise run build:data                  # public/data/kiz.sqlite and site.json, never committed
 mise run serve                       # builds the site and its data, then open http://localhost:8000
 ```
 

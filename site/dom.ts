@@ -4,23 +4,25 @@ const ON = /^on/u;
 
 // what an element holds: nodes and text, nested as lists; null, undefined and false hold nothing
 export type Kid = Node | string | number | false | null | undefined | readonly Kid[];
-// an element's attributes: on… a listener, class its classes, dataset its data-…, the rest as written (true: present)
+// an element's attributes: on… a listener, class its classes, dataset its data-…, style its properties (set one by
+// one, which the page's CSP allows where it refuses a style attribute), the rest as written (true: present)
 type Value = string | number | boolean | null | undefined;
 export type Attrs = Readonly<Record<string, Value | EventListener | Readonly<Record<string, string>>>>;
 
+const set = (el: HTMLElement, k: string, v: Attrs[string]): void => {
+  if (v == null || v === false) return;
+  if (typeof v === 'function') el.addEventListener(k.replace(ON, ''), v);
+  else if (typeof v !== 'object') el.setAttribute(k, v === true ? '' : String(v));
+  else if (k === 'style') for (const [p, x] of Object.entries(v)) el.style.setProperty(p, x);
+  else Object.assign(el.dataset, v);
+};
 export function h<K extends keyof HTMLElementTagNameMap>(
   tag: K,
   attrs: Attrs = {},
   ...kids: Kid[]
 ): HTMLElementTagNameMap[K] {
   const el = document.createElement(tag);
-  for (const [k, v] of Object.entries(attrs)) {
-    if (v == null || v === false) continue;
-    if (typeof v === 'function') el.addEventListener(k.replace(ON, ''), v);
-    else if (typeof v === 'object') Object.assign(el.dataset, v);
-    else if (k === 'class') el.className = String(v);
-    else el.setAttribute(k, v === true ? '' : String(v));
-  }
+  for (const [k, v] of Object.entries(attrs)) set(el, k, v);
   el.append(...nodes(kids));
   return el;
 }

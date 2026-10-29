@@ -65,7 +65,7 @@ TS_EXPECT = re.compile(r'@ts-expect-error: \S.*')
 SITE_SUPPRESSION = re.compile(r'(?:biome-ignore|@ts-|eslint-disable)[^*]*')
 SITE_ALLOWED = Counter(
     {
-        ('docs/css/site.css', 'lint/complexity/noImportantStyles'): 1,
+        ('public/css/site.css', 'lint/complexity/noImportantStyles'): 1,
         ('site/festivals.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
         ('site/rows.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
         ('site/wording.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
@@ -90,7 +90,7 @@ def site_suppressions(path: Path) -> list[str]:
 
 
 def test_every_site_suppression_is_allowed() -> None:
-    files = sorted([*ROOT.glob('site/*.ts'), *ROOT.glob('tests/site/*.ts'), *ROOT.glob('docs/css/*.css')])
+    files = sorted([*ROOT.glob('site/*.ts'), *ROOT.glob('tests/site/*.ts'), *ROOT.glob('public/css/*.css')])
     found = Counter((p.relative_to(ROOT).as_posix(), rules) for p in files for rules in site_suppressions(p))
     assert found == SITE_ALLOWED
 

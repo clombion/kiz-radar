@@ -1,5 +1,5 @@
 {
-  // The site's TypeScript (site/), compiled module by module into docs/js/ for the browser: no bundler. The imports name
+  // The site's TypeScript (site/), compiled module by module into public/js/ for the browser: no bundler. The imports name
   // the .ts files, and tsc rewrites them to the .js files the browser loads.
   "compilerOptions": {
     "target": "es2023",
@@ -8,7 +8,7 @@
     "moduleResolution": "bundler",
     "rewriteRelativeImportExtensions": true,
     "rootDir": "site",
-    "outDir": "docs/js",
+    "outDir": "public/js",
     "types": [],
     "allowUmdGlobalAccess": true,
     "strict": true,

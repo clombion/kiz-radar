@@ -4,12 +4,13 @@
   "type": "module",
   "packageManager": "pnpm@10.30.0",
   "scripts": {
-    "build": "rm -rf docs/js && tsc -p .",
+    "build": "rm -rf public/js public/vendor && tsc -p . && pnpm run vendor",
     "types": "tsc --noEmit -p . && tsc -p tests/site",
     "lint": "biome check --error-on-warnings",
     "knip": "knip",
     "test": "vitest run",
-    "dup": "jscpd"
+    "dup": "jscpd",
+    "vendor": "mkdir -p public/vendor/leaflet && cp node_modules/sql.js/dist/sql-wasm.js node_modules/sql.js/dist/sql-wasm.wasm public/vendor/ && cp node_modules/topojson-client/dist/topojson-client.min.js node_modules/world-atlas/countries-50m.json public/vendor/ && cp -r node_modules/leaflet/dist/leaflet.js node_modules/leaflet/dist/leaflet.css node_modules/leaflet/dist/images public/vendor/leaflet/"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
@@ -22,9 +23,12 @@
     "@vitest/browser-playwright": "5.0.5",
     "jscpd": "4.0.5",
     "knip": "6.43.0",
+    "leaflet": "1.9.4",
     "playwright": "1.56.1",
     "sql.js": "1.10.3",
+    "topojson-client": "3.1.0",
     "typescript": "7.0.2",
-    "vitest": "5.0.5"
+    "vitest": "5.0.5",
+    "world-atlas": "2.0.2"
   }
 }

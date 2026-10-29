@@ -97,8 +97,13 @@ PRICED = '{"success": true, "dates": [{"price": 123.4, "departure_date": "2026-1
             '',
             (CallCause.STRUCTURAL, 'fli gave a price in SEK, not the EUR it was asked'),
         ),
+        (
+            PRICED.replace('2026-11-09', '2026-11-08'),
+            '',
+            (CallCause.STRUCTURAL, f'fli gave a return on 2026-11-08, not {fares.NIGHTS} nights later'),
+        ),
     ],
-    ids=['priced', 'no flights', 'refused', 'no answer', 'another friday only', 'another currency'],
+    ids=['priced', 'no flights', 'refused', 'no answer', 'another friday only', 'another currency', 'another return'],
 )
 def test_a_search_reads_fli_s_answer(
     stdout: str, stderr: str, expected: tuple[str, object], monkeypatch: pytest.MonkeyPatch
@@ -134,9 +139,7 @@ def weekends(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     monkeypatch.setattr(fares, 'weekends', two_weekends)
     monkeypatch.setattr('time.sleep', no_wait)
     fares.Job.write([])
-    gone = fares.Fare(
-        airport='OSL', depart=dt.date(2026, 1, 2), return_=dt.date(2026, 1, 5), price=1, currency='EUR', fetched_at=AT
-    )
+    gone = fares.Fare(airport='OSL', depart=dt.date(2026, 1, 2), price=1, fetched_at=AT)
     fares.Fare.write([gone])
     return tmp_path
 
@@ -153,7 +156,7 @@ def searched(found: dict[str, Searched]) -> Callable[[str, dt.date], Searched]:
 
 
 def test_a_refresh_keeps_the_fares_found_and_logs_every_search(weekends: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    fare = fares.Fare(airport='GLA', depart=SOON, return_=SOON, price=80, currency='EUR', fetched_at=AT)
+    fare = fares.Fare(airport='GLA', depart=SOON, price=80, fetched_at=AT)
     monkeypatch.setattr(fares, 'search', searched({'GLA': fare, 'LIS': fares.Missed('none')}))
     monkeypatch.setattr('sys.argv', ['fares', 'refresh'])
     fares.main()
@@ -164,10 +167,7 @@ def test_a_refresh_keeps_the_fares_found_and_logs_every_search(weekends: Path, m
 def test_a_weekend_with_no_price_now_loses_its_old_fare_and_one_with_no_answer_keeps_all(
     weekends: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    old = [
-        fares.Fare(airport=a, depart=SOON, return_=SOON, price=80, currency='EUR', fetched_at=LONG_AGO)
-        for a in ('GLA', 'LIS')
-    ]
+    old = [fares.Fare(airport=a, depart=SOON, price=80, fetched_at=LONG_AGO) for a in ('GLA', 'LIS')]
     fares.Fare.write(old)
     late = Declined(CallCause.TRANSIENT, 'fli took over 300 s')
     monkeypatch.setattr(fares, 'search', searched({'GLA': fares.Missed('none'), 'LIS': late}))

@@ -411,7 +411,7 @@ function bookedIn(id: number, ownOnly: boolean): HTMLElement | null {
             countryName(c.country_code),
             c.is_home ? h('small', { class: 'muted' }, ' home') : null,
           ),
-          h('span', { class: 'bar', style: `--w:${((100 * c.bookings) / max).toFixed(1)}%` }),
+          h('span', { class: 'bar', style: { '--w': `${((100 * c.bookings) / max).toFixed(1)}%` } }),
           h('span', { class: 'n' }, c.bookings),
         ),
       ),

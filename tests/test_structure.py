@@ -135,7 +135,7 @@ def test_mise_toml_holds_the_tools_alone() -> None:
     assert set(tomllib.loads((ROOT / 'mise.toml').read_text(encoding='utf-8'))) == {'tools', 'task_config', 'hooks'}
 
 
-BUILT = ('docs/js/', 'docs/data/kiz.sqlite', 'docs/data/site.json')  # what a build makes from what is committed
+BUILT = ('public/js/', 'public/vendor/', 'public/data/kiz.sqlite', 'public/data/site.json')  # what builds make
 
 
 def test_what_a_build_makes_is_not_committed() -> None:

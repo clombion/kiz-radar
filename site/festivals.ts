@@ -16,8 +16,8 @@ import { type Key, text, where } from './wording.ts';
 // description's and its kizomba-world tags), what its card says of its price today (passes.ts) and the trip: the
 // card's pass plus the flight in the visitor's currency, null when either is unknown or the pass has no price today.
 // how a festival is reached from home: in the home city, with no flight; or by the return flight found for its
-// weekend from its airport, its price in euros
-export type Fare = { readonly home: true } | { readonly home: false; readonly price: number };
+// weekend from its airport, its price in euros and the day it flies back (fares.return)
+export type Fare = { readonly home: true } | { readonly home: false; readonly price: number; readonly back: string };
 // what the flight costs, in euros: nothing from home, null when no fare is known
 export const flightEur = (fare: Fare | null): number | null => (fare === null ? null : fare.home ? 0 : fare.price);
 // a festival as every card has it
@@ -36,7 +36,7 @@ export type Festival = Omit<EventRow, 'features'> & {
 let cache:
   | {
       heads: Map<number, { id: number; name: string }[]>;
-      fares: Map<string, number>;
+      fares: Map<string, { price: number; back: string }>;
       promos: Map<number, { code: string; offer: string | null }>;
     }
   | undefined;
@@ -57,7 +57,10 @@ function details() {
     ))
       heads.set(r.event_id, [...(heads.get(r.event_id) ?? []), { id: r.id, name: r.display_name }]);
     const fares = new Map(
-      q({ k: str, price: num }, sql`SELECT airport || depart AS k, price FROM fares`).map((f) => [f.k, f.price]),
+      q(
+        { airport: str, depart: str, back: str, price: num },
+        sql`SELECT airport, depart, return AS back, price FROM fares`,
+      ).map((f) => [f.airport + f.depart, { price: f.price, back: f.back }]),
     );
     const promos = new Map(
       q({ event_id: num, code: str, offer: opt(str) }, sql`SELECT event_id, code, offer FROM event_promos`).map((p) => [
@@ -70,10 +73,10 @@ function details() {
   return cache;
 }
 // the flight to a festival: none from home, else the fare found for its weekend from its airport
-function fareOf(e: EventRow, fares: ReadonlyMap<string, number>): Festival['fare'] {
+function fareOf(e: EventRow, fares: ReadonlyMap<string, { price: number; back: string }>): Festival['fare'] {
   if (e.airport === home().code) return { home: true };
   const flown = e.airport === null || e.weekend_friday === null ? undefined : fares.get(e.airport + e.weekend_friday);
-  return flown === undefined ? null : { home: false, price: flown };
+  return flown === undefined ? null : { home: false, ...flown };
 }
 // the pass and the flight together, in the visitor's currency and rounded as the card shows it (so that a price limit
 // keeps what the card says is within it), when both have a price

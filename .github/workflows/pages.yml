@@ -1,7 +1,7 @@
 name: Publish site
 
-# Compiles the site's TypeScript (site/) into docs/js/, builds its database from the export into docs/data/, and
-# publishes docs/ to GitHub Pages, whenever main changes: on a push, and when a workflow that commits to main with the
+# Compiles the site's TypeScript (site/) into public/js/, builds its database from the export into public/data/, and
+# publishes public/ to GitHub Pages, whenever main changes: on a push, and when a workflow that commits to main with the
 # Actions token, whose pushes start no workflow of their own, starts it once it has pushed (Refresh places and rates,
 # which Refresh events starts too, and Refresh fares). It publishes only data that every state in it is one of
 # pipeline/states.py (pipeline/audit.py).
@@ -42,7 +42,7 @@ jobs:
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b  # v5.0.0
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa  # v3.0.1
         with:
-          path: docs
+          path: public
   publish:
     needs: build
     runs-on: ubuntu-latest

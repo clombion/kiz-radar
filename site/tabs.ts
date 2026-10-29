@@ -6,6 +6,7 @@
 // page itself slides like a phone's: the next section comes in from the side the swipe or the tab is on. With
 // reduced motion, the oval moves at once and the page only changes.
 import { h } from './dom.ts';
+import { done } from './report.ts';
 
 const calm = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 // a box in a row of tabs, in px
@@ -139,12 +140,12 @@ function absorb(row: Oval, was: Box, to: Box): void {
     { duration: SLIME.ms, easing: 'linear' },
   );
   // once it rests, or when the next move cancels it
-  const done = () => {
+  const rest = () => {
     for (const shape of moving.splice(0)) shape.remove();
     oval.style.transformOrigin = '';
   };
-  grow.addEventListener('finish', done);
-  grow.addEventListener('cancel', done);
+  grow.addEventListener('finish', rest);
+  grow.addEventListener('cancel', rest);
 }
 
 // Change the page as a slide to the next (1) or previous (-1) section, or at once
@@ -157,8 +158,11 @@ export function slide(direction: number, change: () => void): void {
   const root = document.documentElement;
   root.dataset['vt'] = direction > 0 ? 'ahead' : 'back';
   main.style.viewTransitionName = 'section';
-  void document.startViewTransition(change).finished.finally(() => {
-    main.style.viewTransitionName = '';
-    root.removeAttribute('data-vt');
-  });
+  done(
+    document.startViewTransition(change).finished.finally(() => {
+      main.style.viewTransitionName = '';
+      root.removeAttribute('data-vt');
+    }),
+    'changing section',
+  );
 }

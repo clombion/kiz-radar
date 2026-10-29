@@ -1,5 +1,5 @@
 {
-  "path": ["pipeline", "site", "tests", "docs/css", ".github", "lint"],
+  "path": ["pipeline", "site", "tests", "public/css", ".github", "lint"],
   "format": ["python", "typescript", "css", "yaml"],
   "ignore": ["**/pipeline/enums.py", "**/site/states.ts"],
   "minTokens": 20,

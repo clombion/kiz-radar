@@ -1,0 +1,7 @@
+language js
+
+// A promise's failure goes to its .catch (or report.ts's done), never to a second argument of .then, which misses
+// a throw in the first.
+`$p.then($ok, $failed)` as $use where {
+  register_diagnostic(span=$use, message="Handle the failure with .catch, or report.ts's done, not .then's second argument.")
+}

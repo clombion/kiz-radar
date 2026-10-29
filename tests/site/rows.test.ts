@@ -6,7 +6,7 @@ import { expect, test } from 'vitest';
 import { ARTIST_STATS, EVENT, PASS, read, type Shape, TIER } from '../../site/rows.ts';
 
 const SQL = await initSqlJs();
-const db = new SQL.Database(readFileSync(new URL('../../docs/data/kiz.sqlite', import.meta.url)));
+const db = new SQL.Database(readFileSync(new URL('../../public/data/kiz.sqlite', import.meta.url)));
 const rowsOf = (table: string): Record<string, SqlValue>[] => {
   const [result] = db.exec(`SELECT * FROM ${table}`);
   if (!result) return [];

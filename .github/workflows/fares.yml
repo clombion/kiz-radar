@@ -40,7 +40,7 @@ jobs:
         run: echo "at=$(date -u +%Y-%m-%dT%H:%MZ)" >> "$GITHUB_OUTPUT"
       - uses: ./.github/actions/push
         with:
-          paths: docs/data/fares.csv pipeline/fare_jobs.csv
+          paths: pipeline/fares.csv pipeline/fare_jobs.csv
           bot: fares-bot
           message: Refresh fares (${{ steps.now.outputs.at }})
           then: pages.yml

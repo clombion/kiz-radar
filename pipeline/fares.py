@@ -1,6 +1,7 @@
 """Fare store and refresh scheduler.
 
-docs/data/fares.csv      one row per (airport, Friday out, Monday back): price in EUR and when it was fetched
+pipeline/fares.csv       one row per (airport, Friday out): the price in EUR of the return NIGHTS later, and when it was
+                         fetched
 pipeline/fare_jobs.csv   one row per festival weekend (airport, Friday): when it was last searched
 
 Only festival weekends are searched: the Friday-to-Monday return from home to the airport of each upcoming festival,
@@ -42,6 +43,7 @@ from pipeline.records import Date, Fare, Job, Record, day_of, now
 
 FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'  # punitarani/fli, the only place the version is pinned
 FLI = os.environ.get('FLI_CMD', f'uvx -q --from git+https://github.com/punitarani/fli@{FLI_SHA} fli')
+NIGHTS = 3  # a weekend's flight is out on the Friday and back on the Monday, the one place this is said
 SELLS_DAYS = 330  # Google sells about 11 months ahead
 # (days until the Friday, days between searches): weekly when it is close, every six weeks when it is far
 WEEKS_APART = [(35, 7), (91, 14), (182, 28), (SELLS_DAYS, 42)]
@@ -70,7 +72,7 @@ class FliDate(Fli):
     price: float | None = None
     departure_date: Date | None = None
     return_date: Date | None = None
-    currency: str = 'EUR'  # the one asked for, which a Fare holds
+    currency: str = 'EUR'  # the one asked for, in which a Fare's price is
 
 
 class FliError(Fli):
@@ -160,7 +162,7 @@ def search(airport: str, friday: dt.date) -> Fare | Missed | Declined:
     """One Friday-to-Monday return: its fare, Google's answer that it has none, or why there is no answer (refused,
     the one transient cause the run stops on)."""
     day = friday.isoformat()
-    args = ['dates', airports.home(), airport, '--from', day, '--to', day, '-d', '3', '--round', '--friday']
+    args = ['dates', airports.home(), airport, '--from', day, '--to', day, '-d', str(NIGHTS), '--round', '--friday']
     cmd = [*shlex.split(FLI), *args, '--currency', 'EUR', '--format', 'json']
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=TIMEOUT, check=False)  # noqa: S603 (fli, pinned in FLI, with arguments of ours)
@@ -173,19 +175,20 @@ def search(airport: str, friday: dt.date) -> Fare | Missed | Declined:
     except (ValueError, ValidationError):
         why = (p.stderr.strip().splitlines() or ['no output'])[-1][:NOTE_LENGTH]
         return Declined(CallCause.TRANSIENT, f'fli wrote no answer: {why}')
+    return fare_in(d, airport, friday)
+
+
+def fare_in(d: FliAnswer, airport: str, friday: dt.date) -> Fare | Missed | Declined:
+    """The fare fli's answer gives for the weekend: none, when Google has no price; refused, when it is not the
+    return asked for (NIGHTS later, in EUR)."""
     x = next((x for x in d.dates if x.price and x.departure_date == friday), None)
     if not d.success or not x or x.price is None or x.return_date is None:
         return Missed((d.error.message if d.error else '')[:NOTE_LENGTH])
     if x.currency != 'EUR':
         return Declined(CallCause.STRUCTURAL, f'fli gave a price in {x.currency}, not the EUR it was asked')
-    return Fare(
-        airport=airport,
-        depart=friday,
-        return_=x.return_date,
-        price=round(x.price),
-        currency='EUR',
-        fetched_at=now(),
-    )
+    if x.return_date != friday + dt.timedelta(days=NIGHTS):
+        return Declined(CallCause.STRUCTURAL, f'fli gave a return on {x.return_date}, not {NIGHTS} nights later')
+    return Fare(airport=airport, depart=friday, price=round(x.price), fetched_at=now())
 
 
 def refresh(budget: int, max_seconds: int) -> None:
@@ -193,7 +196,7 @@ def refresh(budget: int, max_seconds: int) -> None:
     that gave no answer, a refusal or a stop first."""
     start, today = time.time(), now().date()
     live = weekends(today)
-    fares = {(r.airport, r.depart, r.return_): r for r in Fare.read() if (r.airport, r.depart) in live}
+    fares = {(r.airport, r.depart): r for r in Fare.read() if (r.airport, r.depart) in live}
     jobs = {(j.airport, j.depart): j for j in Job.read() if (j.airport, j.depart) in live}
     save(fares, jobs)  # past weekends and ones no festival uses any more leave both files
     done, declined = 0, list[tuple[str, Declined]]()
@@ -213,10 +216,10 @@ def refresh(budget: int, max_seconds: int) -> None:
                     break
                 continue
             case Fare():
-                fares[(found.airport, found.depart, found.return_)] = found
+                fares[(found.airport, found.depart)] = found
                 said = f'{found.price} EUR'
             case Missed(note):
-                fares = {k: f for k, f in fares.items() if (f.airport, f.depart) != (item.airport, item.friday)}
+                _ = fares.pop((item.airport, item.friday), None)
                 said = f'no price {note}'
         print(f'{where} ({item.days_away} days away): {said}', flush=True)
         jobs[(item.airport, item.friday)] = Job(airport=item.airport, depart=item.friday, last_run=now())
@@ -228,8 +231,8 @@ def refresh(budget: int, max_seconds: int) -> None:
         sys.exit(why)
 
 
-def save(fares: Mapping[tuple[str, dt.date, dt.date], Fare], jobs: Mapping[tuple[str, dt.date], Job]) -> None:
-    Fare.write(sorted(fares.values(), key=lambda f: (f.airport, f.depart, f.return_)))
+def save(fares: Mapping[tuple[str, dt.date], Fare], jobs: Mapping[tuple[str, dt.date], Job]) -> None:
+    Fare.write(sorted(fares.values(), key=lambda f: (f.airport, f.depart)))
     Job.write(sorted(jobs.values(), key=lambda j: (j.airport, j.depart)))
 
 

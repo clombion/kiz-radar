@@ -1,9 +1,9 @@
-"""Build docs/data/kiz.sqlite, the database the site loads, from the kizomba-world source DB. It is built, never
+"""Build public/data/kiz.sqlite, the database the site loads, from the kizomba-world source DB. It is built, never
 committed: Publish builds it with the site (mise run build:data), and a step that reads it reads one built() for it.
 
 Keeps facts (titles, dates, places, genres, features, line-ups) and links back to kizomba-world;
 drops descriptions, images and extraction quotes. Adds places, airports, per-event and per-artist
-statistics, a fares table filled from docs/data/fares.csv, and the states every coded column can hold (states, from
+statistics, a fares table filled from pipeline/fares.csv, and the states every coded column can hold (states, from
 pipeline/states.py).
 
     mise run build:data
@@ -11,6 +11,7 @@ pipeline/states.py).
 
 import argparse
 import collections
+import datetime as dt
 import json
 import sys
 import tempfile
@@ -24,6 +25,7 @@ from pydantic import BaseModel
 
 from pipeline import airports, data, enums, export, files, states
 from pipeline import db as sqlite_db
+from pipeline import fares as fare_search
 from pipeline.countries import NAMES, codes
 from pipeline.db import Reader, Transaction
 from pipeline.enums import Feature, Genre, HomeBasis, PassKind, People, Role, Style
@@ -37,7 +39,7 @@ from pipeline.records import (
     now,
 )
 
-SITE_DATA = 'docs/data'  # the site's data files, published with it
+SITE_DATA = 'public/data'  # the site's data files, published with it
 OUT = f'{SITE_DATA}/kiz.sqlite'
 SITE_JSON = f'{SITE_DATA}/site.json'  # what the page shows before the database loads
 POPULAR = 10  # bookings that make an artist "popular"
@@ -72,7 +74,7 @@ create table events (
     id integer primary key,
     title text not null,          -- as a card shows it (the export's event_display)
     listed_title text not null,   -- as kizomba-world lists it
-    url text not null unique,
+    url text not null unique check (url like 'https://%' or url like 'http://%'),  -- a link the site makes
     slug text,
     start_date text not null check (length(start_date) = 10 and date(start_date) = start_date),
     end_date text not null check (length(end_date) = 10 and date(end_date) = end_date),
@@ -211,9 +213,8 @@ create table fares (
     depart text not null,
     return text not null,
     price real not null,
-    currency text not null,
     fetched_at text not null,
-    primary key (airport, depart, return)
+    primary key (airport, depart)
 ) strict, without rowid;
 create table artist_origin (
     artist_id integer not null references artists(id) deferrable initially deferred,
@@ -263,7 +264,7 @@ create table event_passes (
 ) strict, without rowid;
 create table ticket_pages (
     event_id integer primary key references events(id) deferrable initially deferred,
-    page text not null,
+    page text not null check (page like 'https://%' or page like 'http://%'),
     reseller text,
     read_on text not null,
     unread integer not null check (unread >= 0)
@@ -271,7 +272,7 @@ create table ticket_pages (
 create table price_status (
     event_id integer primary key references events(id) deferrable initially deferred,
     price text not null check (price in ({price})),
-    page text,
+    page text check (page like 'https://%' or page like 'http://%'),
     card_pass integer,
     check ((price = '{priced}') = (card_pass is not null)),
     foreign key (event_id, card_pass) references event_passes(event_id, pass_no) deferrable initially deferred
@@ -598,8 +599,16 @@ def places(x: Transaction) -> None:
 
 
 def fares(x: Transaction) -> None:
-    """A snapshot of docs/data/fares.csv (the site reloads the live file), which event_fares joins to the events."""
-    x.insert('fares', (r.model_dump(mode='json', by_alias=True) | {'price': float(r.price)} for r in Fare.read()))
+    """pipeline/fares.csv, each fare with the day it flies back (fares.NIGHTS after the Friday), which event_fares
+    joins to the events. Refresh fares starts Publish once it has pushed, so the site has the latest."""
+    back = dt.timedelta(days=fare_search.NIGHTS)
+    x.insert(
+        'fares',
+        (
+            r.model_dump(mode='json') | {'return': (r.depart + back).isoformat(), 'price': float(r.price)}
+            for r in Fare.read()
+        ),
+    )
 
 
 @dataclass(frozen=True)
@@ -845,9 +854,8 @@ DOCS = {
     'in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
     'airports': 'Airports a festival can fly to, with the city they serve; a festival flies to the nearest within '
     'max_airport_km. home = 1 is where flights leave from.',
-    'fares': 'Round-trip economy fares from the home airport (airports.home = 1), one adult, Friday out and Monday '
-    'back, from Google Flights via '
-    'fli. Reloaded from data/fares.csv when the page opens.',
+    'fares': 'Round-trip economy fares from the home airport (airports.home = 1), one adult, Friday out (depart) and '
+    'Monday back (return), in euros, from Google Flights via fli.',
     'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest '
     'fare that month to the same airport.',
     'artist_stats': 'Per artist with bookings of their own: bookings (as '
@@ -943,6 +951,7 @@ def build(src: Path, out: Path) -> dict[str, object]:
     """Build the site database from the export into out, and give the summary site.json holds. It is built beside out
     and swapped in at the end, so a build that stops halfway leaves out as it was."""
     building = out.with_name(out.name + '.building')
+    out.parent.mkdir(parents=True, exist_ok=True)
     building.unlink(missing_ok=True)
     with sqlite_db.opened(building, 'rwc') as db:
         db.attach('src', src, 'ro')
@@ -979,7 +988,7 @@ def built(src: Path) -> Generator[sqlite_db.Db]:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description='Build docs/data/kiz.sqlite and site.json, which the site loads.')
+    ap = argparse.ArgumentParser(description='Build public/data/kiz.sqlite and site.json, which the site loads.')
     _ = ap.parse_args()
     out = data(OUT)
     site = build(export.path(), out)

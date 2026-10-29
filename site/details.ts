@@ -7,6 +7,7 @@ import type { Festival } from './festivals.ts';
 import { icon as featureIcon, MORE_TRAITS, TRAITS, type Trait } from './icons.ts';
 import { openPasses } from './passes.ts';
 import { whoIsGoing } from './plans.ts';
+import { done } from './report.ts';
 import { artistHref, eventOnMapHref } from './routes.ts';
 import { flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
 import { KEY, LINK } from './states.ts';
@@ -72,12 +73,15 @@ function promoLine({ code, offer }: NonNullable<Festival['promo']>): HTMLElement
     {
       class: 'link copy',
       onclick: () =>
-        void navigator.clipboard.writeText(code).then(() => {
-          copy.textContent = 'Copied';
-          setTimeout(() => {
-            copy.textContent = 'Copy';
-          }, 2000);
-        }),
+        done(
+          navigator.clipboard.writeText(code).then(() => {
+            copy.textContent = 'Copied';
+            setTimeout(() => {
+              copy.textContent = 'Copy';
+            }, 2000);
+          }),
+          'copying the code',
+        ),
     },
     'Copy',
   );

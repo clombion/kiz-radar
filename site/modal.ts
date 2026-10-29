@@ -2,6 +2,7 @@
 // phone's back button closes it instead of leaving the page; closing it any other way (×, Escape, a tap outside)
 // removes that entry. go() opens a link once the entry is gone, so the link isn't undone by it.
 import { button, h, type Kid } from './dom.ts';
+import { done } from './report.ts';
 
 export interface Modal {
   open: (from?: Element | null) => boolean;
@@ -16,16 +17,16 @@ export function modal(dlg: HTMLDialogElement): Modal {
     if (dlg.open) dlg.close();
     if (!pushed) return Promise.resolve();
     pushed = false;
-    return new Promise((done) => {
-      addEventListener('popstate', done, { once: true });
+    return new Promise((gone) => {
+      addEventListener('popstate', gone, { once: true });
       history.back();
     });
   }
   dlg.addEventListener('click', (ev) => {
-    if (ev.target === dlg) void shut();
+    if (ev.target === dlg) done(shut(), 'closing a dialog');
   }); // a tap on the backdrop
   dlg.addEventListener('close', () => {
-    void shut();
+    done(shut(), 'closing a dialog');
     if (returnTo instanceof HTMLElement) returnTo.focus();
   }); // Escape, or any of the above
   addEventListener('popstate', () => {
@@ -59,7 +60,7 @@ export const leaving = (m: Modal, href: string, ...kids: Kid[]): HTMLAnchorEleme
       href,
       onclick: (ev: Event) => {
         ev.preventDefault();
-        void m.go(href);
+        done(m.go(href), 'leaving a dialog');
       },
     },
     ...kids,
@@ -91,6 +92,6 @@ export function peek(id: string): Peek {
       foot,
     ),
   );
-  close.addEventListener('click', () => void m.shut());
+  close.addEventListener('click', () => done(m.shut(), 'closing a dialog'));
   return { m, lead, title, sub, body, foot };
 }
