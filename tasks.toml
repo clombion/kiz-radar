@@ -139,6 +139,10 @@ run = "uv run --group dev prek install && git submodule update --init"
 description = "The workflows and their actions: actionlint, and zizmor's security rules (.github/zizmor.yml)"
 run = "actionlint && uv run --group dev zizmor --offline -q .github"
 
+["update:actions"]
+description = "Move each pinned action to its latest release two weeks old (pinact), then check the workflows"
+run = "pinact run --update --min-age 14 && mise run lint:actions"
+
 ["hooks:check"]
 description = "prek.toml is a configuration prek reads"
 run = "uv run --group dev prek validate-config prek.toml"

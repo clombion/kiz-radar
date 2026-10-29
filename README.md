@@ -349,8 +349,9 @@ run beside the key or a token that can push: `read` scrapes kizomba-world and re
 (`tickets.py run --part pages`) with neither; `ask` asks the models the passes and the first reads (`--part models`,
 from the rows read that day) with the key and no such token; `commit` loads, resolves and pushes, with the token and no
 key. Each hands the next its changes as a patch (`.github/actions/handoff`). Every action a workflow uses is pinned by
-its commit, which Dependabot moves to each new release two weeks old (`.github/dependabot.yml`), and `lint:actions`
-holds the workflows to actionlint and to zizmor's security rules.
+its commit. **Actions up to date** fails once a month naming each pin with a release at least two weeks old it isn't on;
+`mise run update:actions` moves them (pinact) in a session, which commits to main, since a push of the Actions token
+can't change a workflow. `lint:actions` holds the workflows to actionlint and to zizmor's security rules.
 
 The site sits behind Cloudflare, which refuses ordinary scripts, so the scraper sends its requests the way Chrome does,
 through [curl_cffi](https://github.com/lexiforest/curl_cffi). If Cloudflare stops letting it through, the Action fails

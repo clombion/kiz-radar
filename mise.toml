@@ -6,6 +6,7 @@ node = "22.22.0"
 pnpm = "10.30.0"
 uv = "0.11.32"
 actionlint = "1.7.12"
+pinact = "5.0.2"
 
 # the tasks, in a file of their own: the Actions cache the tools by this file, so a task edited leaves the cache
 [task_config]
