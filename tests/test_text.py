@@ -41,6 +41,9 @@ def test_names(raw: str, tidy: str) -> None:
         ),
         ('KIZZ KISS Festival 2026 – Dream Reloaded', 'KIZZ KISS Festival – Dream Reloaded'),
         ('Dubai Kizomba Fusion x ILKSF 2026', 'Dubai Kizomba Fusion x ILKSF'),
+        ('SoWeKiz 7.0', 'SoWeKiz 7.0'),  # an edition's number is no date
+        ('Glasgow Kizomba Festival 5.0', 'Glasgow Kizomba Festival 5.0'),
+        ('Iceland Social Dance – 17/19.April 2026', 'Iceland Social Dance'),
         ('2026', '2026'),  # nothing left: keep what was listed
     ],
 )

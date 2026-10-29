@@ -51,7 +51,7 @@ MONTHS = (
     'nov(?:ember|embre|iembre)?|dec(?:ember)?|d[ée]c(?:embre)?|diciembre'
 )
 DAY = r'\d{1,2}(?:st|nd|rd|th|er)?'
-JOIN = r'\s*(?:-|–|—|au|to|&|and|y|al|et)\s*'
+JOIN = r'\s*(?:-|–|—|/|,|au|to|&|and|y|al|et)\s*'
 DATE = re.compile(
     rf'\b{DAY}(?:{JOIN}{DAY})*\.?\s*(?:{MONTHS})\b\.?(?:{JOIN}{DAY}\s*(?:{MONTHS})\b\.?)?(?:,?\s*20\d\d)?',
     re.IGNORECASE | re.ASCII,
@@ -136,7 +136,8 @@ def soften_caps(text: str) -> str:
 def tidy_title(title: str) -> str:
     s = unicodedata.normalize('NFKC', title)  # 𝐁𝐄𝐂𝐀𝐔𝐒𝐄 → BECAUSE
     s = re.sub(r'\b20\d\d(?:\s*[-–/]\s*20\d\d)?\b', ' ', DATE.sub(' ', s), flags=re.ASCII)
-    s = re.sub(r'\b\d{1,2}(?:\s*[,./-]\s*\d{1,2}){1,3}\b', ' ', s, flags=re.ASCII)  # 16,17,18-01
+    # 16,17,18-01: days, then their month, which a number of an edition (SoWeKiz 7.0) has none of
+    s = re.sub(r'\b\d{1,2}(?:\s*[,./-]\s*\d{1,2}){0,2}\s*[./-]\s*(?:0?[1-9]|1[0-2])\b', ' ', s, flags=re.ASCII)
     s = re.sub(
         r'\bofficial(?:\s+event)?\b\s*',
         '',

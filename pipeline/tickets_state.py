@@ -87,9 +87,17 @@ def links(db: sqlite_db.Reader, event_id: int) -> list[str]:
     """The festival's links that may sell tickets, full ones first; a cut-short one ends in …."""
     linked = db.column(str, 'select url from event_links where event_id = ?', (event_id,))
     described = db.column(str, "select coalesce(description_text, '') from events where id = ?", (event_id,))
-    urls = linked + [m[0] for text in described for m in re.finditer(r'https?://[^\s<>"|)]+', text)]
-    keep = {u for u in urls if (h := host(u)) and not any(n in h for n in NOT_TICKETS)}
+    urls = linked + [m[0].rstrip('.,;:!?') for text in described for m in re.finditer(r'https?://[^\s<>"|)]+', text)]
+    keep = {u for u in urls if (h := host(u)) and not sells_nothing(h)}
     return sorted(keep, key=lambda u: ('…' in u, u))
+
+
+def sells_nothing(h: str) -> bool:
+    """Whether a host is one of NOT_TICKETS: the domain or a subdomain of a name with a dot (booking.com, never
+    trybooking.com), and a host with the word in a label of its name for one without (any hotel's)."""
+    return any(
+        h == n or h.endswith('.' + n) if '.' in n else any(n in label for label in h.split('.')) for n in NOT_TICKETS
+    )
 
 
 def shop_hosts(known: Mapping[str, Site]) -> set[str]:

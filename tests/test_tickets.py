@@ -925,6 +925,29 @@ def test_a_ticket_of_embedded_json_is_read_from_its_own_record() -> None:
     ]
 
 
+@pytest.mark.parametrize(
+    ('host', 'nothing'),
+    [
+        ('www.booking.com', True),
+        ('booking.com', True),
+        ('www.trybooking.com', False),  # a ticket shop whose name ends like a hotel site's
+        ('www.facebook.com', True),
+        ('grandhotel-lisboa.pt', True),
+        ('maps.app.goo.gl', True),
+        ('www.weezevent.com', False),
+    ],
+)
+def test_a_host_sells_nothing_by_its_domain_or_a_word_of_its_name(host: str, nothing: bool) -> None:
+    assert tickets_state.sells_nothing(host) == nothing
+
+
+def test_a_link_in_a_description_leaves_the_punctuation_after_it(memory: Memory) -> None:
+    db = shaped(memory())
+    with db.transaction() as tx:
+        exports.festival(tx, 7, description_text='Tickets: https://www.trybooking.com/DCHEZ. See you!')
+    assert tickets_state.links(db, 7) == ['https://www.trybooking.com/DCHEZ']
+
+
 def test_a_recipe_reads_the_page_or_the_api_never_a_mix() -> None:
     api, page = (
         jsons.read(ROOT / tickets_store.SITES / 'goandance.json'),
