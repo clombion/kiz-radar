@@ -33,16 +33,15 @@ again with the checker's lines. A festival needs one when it is still to come an
 current prompt gives the pass a card prices (prices.card_pass) no dated price (until that answer is asked, it awaits
 it), or again when its description or its ticket page changes, its page shows tickets the first read doesn't know, or
 the first read follows another prompt (for a festival now past, made again from its latest logged rows). A first read to
-another prompt is never written: record refuses it, and writing both files leaves it out until it is made again. Saving
-a first read archives the prompt it names (pipeline/prompts/asked/).
+another prompt is never written: record refuses it, and the prices leave it out until it is made again. Saving a first
+read archives the prompt it names (pipeline/prompts/asked/).
 
-record builds the passes from the first read and the latest read rows of the same page: amount, currency, sold out
-and quote from the rows, the rest from the first read. A ticket the first read doesn't know is counted as unread; a
-tier whose tickets are all gone is left out. It runs the prices pass's checks on what it writes, then replaces the
-festival's rows in pipeline/pass_prices.csv (one per tier) and pipeline/ticket_pages.csv (one per festival: page,
-read date, who made the first read and with which prompt, recipe version, unread tickets, price notes). It writes
-both from every first read and its log, so they hold what the reads and logs say and nothing else: a festival whose
-first read no longer fits its page is left out until it is read again, and recording twice writes the same files.
+A festival's prices are what its first read and the latest read rows of the same page record (tickets_store.written):
+amount, currency, sold out and quote from the rows, the rest from the first read. A ticket the first read doesn't know
+is counted as unread; a tier whose tickets are all gone is left out. The load takes them from every first read and its
+log (tickets_store.recorded), so they are what the reads and logs say and nothing else, and no file holds them in
+between: a festival whose first read no longer fits its page is left out until it is read again. record checks a draft
+or a first read the same way, moving the draft to tickets/reads/ once it passes.
 
 A festival's ticket page is known when it is its first read's, the shop an agent found it sells in, or its first
 full link to a ticket shop (a site a recipe reads, or one a site claim says no recipe can). Each festival
@@ -116,6 +115,7 @@ from pipeline.tickets_store import (
     read_problems,
     recheck,
     record,
+    recorded,
     save_draft,
     save_read,
     settle_dispute,
@@ -123,7 +123,6 @@ from pipeline.tickets_store import (
     site_for,
     sites,
     streak,
-    write_all,
     written,
 )
 
@@ -371,8 +370,11 @@ def cmd_check(event_id: int) -> None:
         case _:
             pass
     match written(event_id, fr, log(event_id), sites()):
-        case Written(tiers, _, unread):
-            print(f'{event_id}: passes; {len(tiers)} prices' + (f', {len(unread)} tickets not read' if unread else ''))
+        case Written() as w:
+            print(
+                f'{event_id}: passes; {len(w.tiers)} prices'
+                + (f', {len(w.unread)} tickets not read' if w.unread else '')
+            )
         case list() as found:
             sys.exit('\n'.join(found))
 
@@ -558,7 +560,7 @@ class Run:
 def cmd_run(db: sqlite_db.Reader, ids: set[int] | None = None, limit: int | None = None) -> None:
     """Re-read what is due and retry failures, first-read with the models what needs it (at most limit festivals),
     and make again, from their latest logged rows, the first reads of festivals now past that follow another prompt
-    (of the festivals ids names, when it names some); then write both files. Exits 1 naming each festival whose page
+    (of the festivals ids names, when it names some). Exits 1 naming each festival whose page
     broke its recipe, reached REFUSALS failures, no longer fits its first read, or got no first read from the models
     (pipeline/calls.py)."""
     day = today()
@@ -572,7 +574,7 @@ def cmd_run(db: sqlite_db.Reader, ids: set[int] | None = None, limit: int | None
         redo = f.over and (not ids or f.id in ids) and f.need == FirstReadState.REDO_PROMPT
         if redo and (entry := latest_read(f.log)):
             run.make(f, entry)  # its page sells nothing any more; its logged rows still say what it sold
-    run.alarms += write_all()
+    run.alarms += recorded().problems
     counts = status(db)
     print('waits for: ' + '; '.join(f'{n} {w}' for w, n in counts.most_common()))
     if why := run.verdict():

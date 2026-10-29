@@ -2,9 +2,8 @@
 
 - The README explains the data flow, the Actions and the files; read it before changing the pipeline. Each step is a
   task of `tasks.toml`, run as `mise run <step> -- <its arguments>` (README, "Running the steps").
-- Prices from a festival's ticket page: never edit `pipeline/pass_prices.csv`, `pipeline/ticket_pages.csv`,
-  `pipeline/tickets/pages.csv` or `pipeline/tickets/log/` by hand. Go through `pipeline/tickets.py`, one festival at a
-  time:
+- Prices from a festival's ticket page: never edit `pipeline/tickets/pages.csv` or `pipeline/tickets/log/` by hand. Go
+  through `pipeline/tickets.py`, one festival at a time:
   1. `mise run tickets -- todo` lists what needs doing, and what each festival waits for (`pipeline/tickets/status.csv`
      holds it for every festival). A festival waiting for its page has a link kizomba-world cut short (ending in `…`),
      or links to no ticket shop (its own site, say): find the real ticket page (the festival's site, a search) and
@@ -27,9 +26,8 @@
      `pipeline/tickets/reads/ID.json`, with the prompt it followed archived in `pipeline/prompts/asked/`. On a failure,
      fix what it names and record again.
   5. `mise run load` and `mise run resolve`, then commit the export (`mise run export` names it) with
-     `pipeline/tickets/` (with its `status.csv`), `pipeline/prompts/asked/`, `pipeline/pass_prices.csv` and
-     `pipeline/ticket_pages.csv`. The site's database is built from them, never committed: `mise run build:data` builds
-     it to look at locally, and Publish for the site.
+     `pipeline/tickets/` (with its `status.csv`) and `pipeline/prompts/asked/`. The site's database is built from them,
+     never committed: `mise run build:data` builds it to look at locally, and Publish for the site.
 - Every state a data point can be in is one row of `pipeline/states.py`, with its words on the site: the enums (and
   through them the records and their schemas), the prompts' definitions, the SQL checks and `site/states.ts` are built
   from it, so a new state is one new row there and nowhere else (then `mise run generate`). `mise run audit` names any

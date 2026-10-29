@@ -120,7 +120,7 @@ def test_an_empty_value_is_allowed_only_where_its_column_allows_it(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     root = copied()
-    edited(root / 'pipeline/pass_prices.csv', 2, 3, '')  # a pass for all its styles
+    edited(root / 'pipeline/promo_codes.csv', 2, 2, '')  # a code with no offer stated
     assert audit.refused(set()) == []
     edited(root / 'pipeline/tickets/status.csv', 2, 3, '')
     found = audit.refused(set())

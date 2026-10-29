@@ -27,16 +27,15 @@ from pipeline.records import (
     FirstRead,
     LogEntry,
     PageRecipe,
-    PageRow,
     Priced,
     PricedPass,
     PricedTier,
-    PriceRow,
     Read,
     ReadHeader,
     ReadTier,
     Row,
     Stamped,
+    TicketPage,
     digest,
     errors,
 )
@@ -388,43 +387,27 @@ def build(fr: FirstRead, entry: Read) -> tuple[Priced, list[str], list[str]]:
 
 
 class Written(NamedTuple):
-    tiers: list[PriceRow]  # its pass_prices.csv rows
-    page: PageRow  # its ticket_pages.csv row
+    answer: Priced  # its passes, shaped as a prices answer
+    page: TicketPage
     unread: list[str]  # the keys of its tickets the first read doesn't know
 
+    @property
+    def tiers(self) -> tuple[PricedTier, ...]:
+        """Every tier of every pass: its prices."""
+        return tuple(t for p in self.answer.passes for t in p.tiers)
 
-def price_rows(answer: Priced) -> list[PriceRow]:
-    return [
-        PriceRow(
-            event_id=answer.event_id,
-            pass_no=n,
-            kind=p.kind,
-            style=p.style,
-            label=p.label_quote,
-            group_size=p.group_size,
-            days=p.days,
-            includes_hotel=p.includes_hotel,
-            amount=t.amount,
-            currency=t.currency,
-            fee=t.fee,
-            alt_amount=t.alt and t.alt.amount,
-            alt_currency=t.alt and t.alt.currency,
-            from_=t.from_,
-            until=t.until,
-            quantity=t.quantity,
-            sold_out=t.sold_out,
-            quote=t.quote,
-        )
-        for n, p in enumerate(answer.passes, 1)
-        for t in p.tiers
-    ]
+
+class Recorded(NamedTuple):
+    written: dict[int, Written]  # by festival
+    problems: list[str]  # of the festivals whose first read no longer fits their rows
+    other_prompt: int  # first reads to another prompt, waiting to be made again
 
 
 def written(
     event_id: int, fr: FirstRead | Stamped, entries: Sequence[LogEntry], known: Mapping[str, Site]
 ) -> Written | list[str]:
-    """What a festival writes (Written), or the problems that stop it, a list; known is sites(), for the reseller its
-    page is on."""
+    """What a festival's first read and its latest rows record (Written), or the problems that stop it, a list; known
+    is sites(), for the reseller its page is on."""
     if isinstance(fr, Stamped) or not prompts.is_current('first_read', fr.prompt):
         return [
             (
@@ -443,9 +426,8 @@ def written(
     if found:
         return [f'{event_id}: {p}' for p in found]
     site = known.get(entry.recipe.split('@')[0])
-    page = PageRow(
+    page = TicketPage(
         event_id=event_id,
-        event=fr.title,
         page=entry.page,
         reseller=site.recipe.reseller if site else None,
         read_on=entry.at.date(),
@@ -453,37 +435,34 @@ def written(
         prompt=fr.prompt,
         recipe=entry.recipe,
         unread=len(unread),
-        notes='\n'.join(fr.rule_quotes),
     )
-    return Written(price_rows(answer), page, unread)
+    return Written(answer, page, unread)
 
 
-def write_all() -> list[str]:
-    """Write pass_prices.csv and ticket_pages.csv from every first read to the current prompt and its log, so both
-    are what the reads and logs say and nothing else; the problems of the festivals left out. A first read to another
-    prompt is left out quietly: its festival waits for it to be made again (redo_prompt)."""
-    prices_rows: list[PriceRow] = []
-    pages: list[PageRow] = []
+def recorded() -> Recorded:
+    """What every first read to the current prompt records with its latest rows, so that prices are what the reads and
+    logs say and nothing else; a first read to another prompt is left out quietly: its festival waits for it to be made
+    again (redo_prompt)."""
+    out: dict[int, Written] = {}
     found: list[str] = []
+    other = 0
     known = sites()
     for path in sorted(data(READS).glob('*.json'), key=lambda p: int(p.stem)):
         i = int(path.stem)
         if not isinstance(fr := first_read(i), FirstRead):
+            other += 1
             continue
         match written(i, fr, log(i), known):
-            case Written(tiers, page):
-                prices_rows += tiers
-                pages.append(page)
+            case Written() as w:
+                out[i] = w
             case list() as problems_:
                 found += problems_
-    PriceRow.write(prices_rows)
-    PageRow.write(pages)
-    return found
+    return Recorded(out, found, other)
 
 
 def record(event_id: int) -> list[str]:
     """Check the festival's draft (moved to tickets/reads/ once it passes) or its first read against its latest read
-    rows, then write both files and settle its dispute; the festival's problems, empty when it is written."""
+    rows, and settle its dispute; the festival's problems, empty when it records its prices."""
     entries = log(event_id)
     text = draft(event_id)
     if text is not None:
@@ -500,7 +479,7 @@ def record(event_id: int) -> list[str]:
             )
         ]
     match written(event_id, fr, entries, sites()):
-        case Written(tiers, page, unread):
+        case Written() as w:
             pass
         case list() as found:
             return found
@@ -508,15 +487,12 @@ def record(event_id: int) -> list[str]:
         save_read(fr)
         (data(DRAFTS) / f'{event_id}.json').unlink()
         (data(DRAFTS) / f'{event_id}.prompt.md').unlink(missing_ok=True)
-    others = write_all()
     if isinstance(fr, FirstRead):
         settle_dispute(event_id, fr)
     print(
-        f'{event_id}: {len(tiers)} prices recorded, read {page.read_on}'
-        + (f'; {len(unread)} tickets not read yet ({", ".join(unread)})' if unread else '')
+        f'{event_id}: {len(w.tiers)} prices recorded, read {w.page.read_on}'
+        + (f'; {len(w.unread)} tickets not read yet ({", ".join(w.unread)})' if w.unread else '')
     )
-    for p in others:
-        print(f'left out: {p}', file=sys.stderr)
     return []
 
 
@@ -545,8 +521,8 @@ def changes(entries: Sequence[LogEntry]) -> list[tuple[str, str]]:
     return out
 
 
-def recheck(tiers: Sequence[PriceRow], start: dt.date, today: dt.date) -> tuple[Recheck, bool, str]:
-    """(class, due, why) from a festival's recorded tiers (its pass_prices.csv rows)."""
+def recheck(tiers: Sequence[PricedTier], start: dt.date, today: dt.date) -> tuple[Recheck, bool, str]:
+    """(class, due, why) from a festival's recorded tiers (written)."""
     on_sale = [t for t in tiers if not t.sold_out]
     if on_sale and all(t.until and not t.quantity for t in on_sale):
         last = max(d for t in on_sale if (d := prices.window(t.from_, t.until, start).until) is not None)

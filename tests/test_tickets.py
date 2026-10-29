@@ -32,11 +32,9 @@ from pipeline.records import (
     LogEntry,
     ModelReads,
     PageRecipe,
-    PageRow,
     Priced,
     PricedPass,
     PricedTier,
-    PriceRow,
     Rate,
     Read,
     ReadPass,
@@ -278,28 +276,31 @@ def files() -> Path:
     return data(tickets_store.TICKETS)
 
 
-def test_recording_twice_writes_the_same_files(files: Path) -> None:
+def recorded_7() -> tickets_store.Written:
+    found = tickets_store.recorded()
+    assert found.problems == []
+    return found.written[7]
+
+
+def test_recording_twice_records_the_same(files: Path) -> None:
     assert tickets_store.record(7) == []
-    before = [r.path().read_bytes() for r in (PriceRow, PageRow)]
+    before = recorded_7()
     assert tickets_store.record(7) == []
-    assert [r.path().read_bytes() for r in (PriceRow, PageRow)] == before
+    assert recorded_7() == before
 
 
 def test_an_unchanged_page_changes_only_the_read_date(files: Path) -> None:
-    assert tickets_store.record(7) == []
-    prices_before, pages_before = [r.path().read_text() for r in (PriceRow, PageRow)]
+    before = recorded_7()
     tickets_store.append(7, entry(ROWS, at=LATER))
-    assert tickets_store.record(7) == []
-    assert (PriceRow.path()).read_text() == prices_before
-    assert (PageRow.path()).read_text() == pages_before.replace('2026-10-01', '2026-11-03')
+    now = recorded_7()
+    assert now.answer == before.answer
+    assert now.page == before.page.model_copy(update={'read_on': LATER.date()})
 
 
 def test_a_failed_read_keeps_the_last_prices(files: Path) -> None:
-    assert tickets_store.record(7) == []
-    before = (PageRow.path()).read_text()
+    before = recorded_7()
     tickets_store.append(7, refused(LATER))
-    assert tickets_store.record(7) == []
-    assert (PageRow.path()).read_text() == before
+    assert recorded_7() == before
 
 
 def test_changes_between_reads() -> None:
@@ -316,29 +317,43 @@ def test_changes_between_reads() -> None:
     assert tickets_store.changes([entry(ROWS), entry(ROWS, at=LATER)]) == []
 
 
-def csv_tier(until: str = '', quantity: str = '', sold_out: str = '0') -> PriceRow:
-    """A row of pass_prices.csv, as read."""
-    return PriceRow.model_validate(
-        dict.fromkeys(PriceRow.columns(), '')
-        | {'event_id': '7', 'pass_no': '1', 'kind': 'full', 'includes_hotel': '0', 'amount': '90', 'currency': 'EUR'}
-        | {'quote': 'q', 'until': until, 'quantity': quantity, 'sold_out': sold_out}
+def recorded_tier(until: str | None = None, quantity: int | None = None, *, sold_out: bool = False) -> PricedTier:
+    """A tier a first read records."""
+    return PricedTier.model_validate(
+        {
+            'amount': 90,
+            'currency': 'EUR',
+            'fee': None,
+            'alt': None,
+            'from': None,
+            'until': until,
+            'quantity': quantity,
+            'door': False,
+            'sold_out': sold_out,
+            'current': False,
+            'quote': 'q',
+        }
     )
 
 
 @pytest.mark.parametrize(
     ('tiers', 'today', 'expected'),
     [
-        ([csv_tier('11-30'), csv_tier('2026-12-31'), csv_tier(sold_out='1')], '2026-11-15', (Recheck.DATED, False)),
-        ([csv_tier('11-30'), csv_tier('12-31')], '2027-01-01', (Recheck.DATED, True)),
-        ([csv_tier('11-30', quantity='50'), csv_tier('12-31')], '2026-11-15', (Recheck.MONTHLY, True)),
-        ([csv_tier('11-30'), csv_tier()], '2026-11-15', (Recheck.MONTHLY, True)),
-        ([csv_tier(), csv_tier(sold_out='1')], '2026-11-15', (Recheck.MONTHLY, True)),
-        ([csv_tier('11-30', sold_out='1')], '2026-11-15', (Recheck.MONTHLY, True)),
-        ([csv_tier('2026-11-15')], '2026-11-15', (Recheck.DATED, False)),  # its last date is today: not yet
-        ([csv_tier('2026-11-14')], '2026-11-15', (Recheck.DATED, True)),
+        (
+            [recorded_tier('11-30'), recorded_tier('2026-12-31'), recorded_tier(sold_out=True)],
+            '2026-11-15',
+            (Recheck.DATED, False),
+        ),
+        ([recorded_tier('11-30'), recorded_tier('12-31')], '2027-01-01', (Recheck.DATED, True)),
+        ([recorded_tier('11-30', quantity=50), recorded_tier('12-31')], '2026-11-15', (Recheck.MONTHLY, True)),
+        ([recorded_tier('11-30'), recorded_tier()], '2026-11-15', (Recheck.MONTHLY, True)),
+        ([recorded_tier(), recorded_tier(sold_out=True)], '2026-11-15', (Recheck.MONTHLY, True)),
+        ([recorded_tier('11-30', sold_out=True)], '2026-11-15', (Recheck.MONTHLY, True)),
+        ([recorded_tier('2026-11-15')], '2026-11-15', (Recheck.DATED, False)),  # its last date is today: not yet
+        ([recorded_tier('2026-11-14')], '2026-11-15', (Recheck.DATED, True)),
     ],
 )
-def test_recheck_classes(tiers: list[PriceRow], today: str, expected: tuple[Recheck, bool]) -> None:
+def test_recheck_classes(tiers: list[PricedTier], today: str, expected: tuple[Recheck, bool]) -> None:
     assert tickets_store.recheck(tiers, dt.date(2027, 2, 5), dt.date.fromisoformat(today))[:2] == expected
     assert {Recheck.DATED, Recheck.MONTHLY} == set(Recheck)
 
@@ -636,18 +651,12 @@ def test_a_model_that_misreads_answers_again_with_the_checkers_lines(files: Path
     assert 'neither in a tier nor skipped' in str(client.messages.asked[1][-1]['content'])
 
 
-def test_both_files_hold_what_the_reads_and_logs_say_and_nothing_else(files: Path) -> None:
-    _ = (PriceRow.path()).write_text('event_id,stale\n9,1\n')
-    assert tickets_store.record(7) == []
-    assert {r.event_id for r in PriceRow.read()} == {7}
-    assert (PriceRow.path()).read_text().splitlines()[0] == ','.join(PriceRow.columns())
-
-
 def test_a_festival_that_no_longer_fits_its_first_read_is_left_out(files: Path) -> None:
     assert tickets_store.record(7) == []
     tickets_store.append(7, entry(changed(ROWS, 3, amount=128.21, price='€128.21'), at=LATER))
-    assert 'the first read needs doing again' in tickets_store.write_all()[0]
-    assert PageRow.read() == []
+    found = tickets_store.recorded()
+    assert 'the first read needs doing again' in found.problems[0]
+    assert found.written == {}
 
 
 HELD = SITE_CLAIMS[0]  # a site a site claim says no recipe can read
@@ -1007,10 +1016,9 @@ def test_a_first_read_without_a_pass_style_is_refused() -> None:
     assert any('style' in p for p in found)
 
 
-def test_a_pass_keeps_its_style_in_pass_prices_csv(files: Path) -> None:
+def test_a_pass_keeps_its_style(files: Path) -> None:
     tickets_store.save_read(with_pass(read(), style=Style.KIZOMBA))
-    assert tickets_store.record(7) == []
-    assert {r.style for r in PriceRow.read()} == {Style.KIZOMBA}
+    assert {p.style for p in recorded_7().answer.passes} == {Style.KIZOMBA}
 
 
 def old_read(files: Path, **change: object) -> None:
@@ -1036,8 +1044,7 @@ def test_a_first_read_to_another_prompt_is_never_written(files: Path) -> None:
         tickets_store.save_read(read(prompt_='0' * 16))
     old_read(files)
     assert 'make it again' in tickets_store.record(7)[0]
-    assert tickets_store.write_all() == []
-    assert PageRow.read() == []
+    assert tickets_store.recorded() == tickets_store.Recorded({}, [], 1)
 
 
 def described(*passes: PricedPass) -> answers.Answer[Priced]:
@@ -1172,7 +1179,7 @@ def test_passes_alike_in_every_field_load_back_as_the_passes_they_are(
     one = read().passes[0]
     tickets_store.save_read(read(passes=[one.model_copy(update={'tiers': (t,)}) for t in one.tiers]))
     assert tickets_store.record(7) == []
-    loaded, _ = load_extract.page_prices({7})[0][7]
+    loaded = load_extract.page_prices({7})[0][7].answer
     assert [len(p.tiers) for p in loaded.passes] == [1, 1]
 
 
@@ -1265,8 +1272,9 @@ def test_a_festival_with_three_problems_is_left_out_like_any_other(files: Path) 
     )
     assert len(tickets_store.read_problems(fr, tickets_store.log(7))) == 3
     tickets_store.save_read(fr)
-    assert len(tickets_store.write_all()) == 3
-    assert PageRow.read() == []
+    found = tickets_store.recorded()
+    assert len(found.problems) == 3
+    assert found.written == {}
 
 
 @pytest.mark.parametrize(
@@ -1334,7 +1342,7 @@ def test_a_url_given_to_read_is_a_full_address(memory: Memory) -> None:
         tickets.cmd_read(memory(), 7, 'https://my.weezevent.com/x…')
 
 
-def test_a_second_price_is_one_value_in_the_answer_and_two_columns_in_the_file(files: Path) -> None:
+def test_a_second_price_is_one_value_in_the_answer(files: Path) -> None:
     rows = changed(
         changed(ROWS, 2, alt_amount=3050.0, alt_currency='CZK', alt_price='3 050 CZK'),
         3,
@@ -1345,12 +1353,7 @@ def test_a_second_price_is_one_value_in_the_answer_and_two_columns_in_the_file(f
     alts = [t.alt for t in tiers_of(tickets_store.build(read(), entry(rows))[0])]
     assert [a and (a.amount, a.currency) for a in alts] == [None, (3050.0, 'CZK')]
     tickets_store.append(7, entry(rows, at=LATER))
-    assert tickets_store.record(7) == []
-    assert [(r.alt_amount, r.alt_currency) for r in PriceRow.read()] == [
-        (None, None),
-        (3050, 'CZK'),
-    ]
-    assert (PriceRow.path()).read_text().splitlines()[2].split(',')[11:13] == ['3050', 'CZK']
+    assert [t.alt for t in recorded_7().tiers] == alts
 
 
 def test_a_first_reads_prompt_is_a_hash_as_long_as_the_prompts() -> None:

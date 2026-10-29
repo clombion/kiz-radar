@@ -10,7 +10,7 @@ from contextlib import AbstractContextManager
 from dataclasses import dataclass, replace
 from typing import NamedTuple
 
-from pipeline import claims, data, export, states
+from pipeline import claims, data, export, states, tickets_store
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.enums import FirstRead as FirstReadState
@@ -23,7 +23,7 @@ from pipeline.records import (
     LogEntry,
     On,
     Priced,
-    PriceRow,
+    PricedTier,
     Record,
     Stamped,
     StatusRow,
@@ -178,7 +178,7 @@ class Festival:
     found: FoundRow | None  # its tickets/pages.csv row, unless a search that found nothing was of other links
     first_read: FirstRead | Stamped | None  # first_read()
     log: tuple[LogEntry, ...]
-    tiers: tuple[PriceRow, ...]  # its pass_prices.csv rows
+    tiers: tuple[PricedTier, ...]  # the tiers its first read records (tickets_store.recorded)
     described: answers.Answer[Priced] | None  # its description's prices answer to the current prompt
     page: KnownPage | None  # known_page()
     disputed: bool  # tickets/disputed/<id>.json exists
@@ -257,9 +257,7 @@ def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, 
     described = answers.current(prompts.PRICES, {e.id for e in events})
     known, found = sites(), found_pages()
     shops = shop_hosts(known)
-    tiers: dict[int, list[PriceRow]] = {}
-    for r in PriceRow.read():
-        tiers.setdefault(r.event_id, []).append(r)
+    recorded = tickets_store.recorded().written
     out: list[Festival] = []
     for e in events:
         fr, entries, urls = first_read(e.id), log(e.id), links(db, e.id)
@@ -280,7 +278,7 @@ def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, 
             found=sold,
             first_read=fr,
             log=tuple(entries),
-            tiers=tuple(tiers.get(e.id, [])),
+            tiers=w.tiers if (w := recorded.get(e.id)) else (),
             described=described.get(e.id),
             page=KnownPage(page, site_for(page, known)) if page else None,
             disputed=disputed(e.id),

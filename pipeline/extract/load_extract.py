@@ -14,9 +14,9 @@ Creates (replacing any previous load):
   event_rooms           per event: stated number of party rooms and class rooms, with quotes
   event_room_list       rooms the description describes one by one, with their genres
   event_passes          the passes a festival sells, from the prices pass, and pass_tiers their prices tier
-                        by tier; event_price_notes the price rules the tiers can't hold. A festival in
-                        pipeline/ticket_pages.csv takes its passes from its ticket page instead
-                        (pipeline/pass_prices.csv, written by pipeline/tickets.py)
+                        by tier; event_price_notes the price rules the tiers can't hold. A festival whose first
+                        read of its ticket page records its prices takes its passes from there instead
+                        (pipeline/tickets_store.py, recorded)
   ticket_pages          per festival read on its ticket page: the page, the day it was last read, how many of its
                         tickets are not read yet
   price_status          per festival, what its card can say of its price (pipeline/states.py, price) and the pass
@@ -33,7 +33,6 @@ Usage: mise run load
 import argparse
 import json
 import re
-import sys
 import unicodedata
 from collections.abc import Mapping, Sequence
 from collections.abc import Set as AbstractSet
@@ -42,7 +41,7 @@ from typing import NamedTuple
 from pydantic import BaseModel
 
 from pipeline import db as sqlite_db
-from pipeline import export, states
+from pipeline import export, states, tickets_store
 from pipeline import prompt as prompts
 from pipeline.db import Reader, Transaction
 from pipeline.enums import Genre, GenreRule, Sales, Source
@@ -52,15 +51,11 @@ from pipeline.extract.answers import Answer
 from pipeline.extract.prices import window
 from pipeline.prompt import Pass
 from pipeline.records import (
-    Alt,
     Asked,
     Entry,
     Extracted,
-    PageRow,
     Priced,
     PricedPass,
-    PricedTier,
-    PriceRow,
     RoomsGenres,
     StatusRow,
     day_of,
@@ -279,65 +274,13 @@ def performed_by[E: Entry](got: Mapping[int, Answer[E]]) -> str:
     return '; '.join(f'{len(fs)} answer files by {who}' for who, fs in sorted(by.items()))
 
 
-def page_tier(r: PriceRow) -> PricedTier:
-    """A tier of pass_prices.csv as a prices answer's: a page sells online what is on sale, so no door price and no
-    'current' price."""
-    alt = None if r.alt_amount is None or r.alt_currency is None else Alt(amount=r.alt_amount, currency=r.alt_currency)
-    return PricedTier(
-        amount=r.amount,
-        currency=r.currency,
-        fee=r.fee,
-        alt=alt,
-        from_=r.from_,
-        until=r.until,
-        quantity=r.quantity,
-        door=False,
-        sold_out=r.sold_out,
-        current=False,
-        quote=r.quote,
-    )
-
-
-def page_prices(event_ids: set[int]) -> tuple[dict[int, tuple[Priced, PageRow]], int]:
-    """(prices read from festivals' ticket pages, written by pipeline/tickets.py: {event_id: (entry shaped like a
-    prices answer, the festival's ticket_pages.csv row)}, how many are to another first-read prompt). In
-    pass_prices.csv (one row per tier, in order) a pass is the rows with one pass_no; the price notes are
-    ticket_pages.csv's, one per line. A page read to another prompt is left out, as an answer is."""
-    rows = PageRow.read()
-    for r in rows:
-        if r.event_id not in event_ids:
-            sys.exit(f'ticket_pages.csv: no festival {r.event_id} ({r.event})')
-    pages = {r.event_id: r for r in rows if prompts.is_current('first_read', r.prompt)}
-    passes: dict[int, list[tuple[PriceRow, list[PricedTier]]]] = {}
-    for r in PriceRow.read():
-        if r.event_id in pages:
-            got = passes.setdefault(r.event_id, [])
-            if len(got) < r.pass_no:
-                got.append((r, []))
-            got[-1][1].append(page_tier(r))
-    out = {
-        i: (
-            Priced(
-                event_id=i,
-                passes=tuple(
-                    PricedPass(
-                        kind=r.kind,
-                        style=r.style,
-                        label_quote=r.label,
-                        group_size=r.group_size,
-                        days=r.days,
-                        includes_hotel=r.includes_hotel,
-                        tiers=tuple(tiers),
-                    )
-                    for r, tiers in passes.get(i, [])
-                ),
-                rule_quotes=tuple(page.notes.splitlines()),
-            ),
-            page,
-        )
-        for i, page in pages.items()
-    }
-    return out, len(rows) - len(out)
+def page_prices(event_ids: set[int]) -> tuple[dict[int, tickets_store.Written], int]:
+    """(the prices read on festivals' ticket pages, as every first read to the current prompt records them with its
+    latest rows (pipeline/tickets_store.py): {event_id: Written}, how many first reads are to another prompt). A page
+    read to another prompt is left out, as an answer is, and so is a first read that no longer fits its rows, which
+    the ticket run names; a first read of a festival the export no longer has holds nothing for it."""
+    found = tickets_store.recorded()
+    return {i: w for i, w in found.written.items() if i in event_ids}, found.other_prompt
 
 
 def current[E: Entry, Q: Asked](pass_: Pass[E, Q], event_ids: set[int]) -> tuple[dict[int, Answer[E]], int]:
@@ -355,17 +298,17 @@ def status() -> dict[int, tuple[Sales | None, str | None]]:
 def load_prices(
     con: Transaction,
     described: Mapping[int, Answer[Priced]],
-    pages: Mapping[int, tuple[Priced, PageRow]],
+    pages: Mapping[int, tickets_store.Written],
     sold: Mapping[int, tuple[Sales | None, str | None]],
 ) -> None:
-    """Each festival's passes: from its ticket page when ticket_pages.csv has it, else from its description; and what
-    its card can say of its price, and the pass it prices, from them and how it sells (sold: status())."""
+    """Each festival's passes: from its ticket page when a first read records them there, else from its description;
+    and what its card can say of its price, and the pass it prices, from them and how it sells (sold: status())."""
     dates = {
         e.id: (day_of(e.start_date), day_of(e.modified_at))
         for e in con.rows(Dated, 'SELECT id, start_date, modified_at FROM events')
     }
     rows = [(a.entry, 'description', a.logged.prompt, a.logged.model) for e, a in described.items() if e not in pages]
-    rows += [(entry, 'ticket_page', page.prompt, page.read_by) for entry, page in pages.values()]
+    rows += [(w.answer, 'ticket_page', w.page.prompt, w.page.read_by) for w in pages.values()]
     con.insert(
         'ticket_pages',
         (
@@ -377,7 +320,7 @@ def load_prices(
                 'recipe': p.recipe,
                 'unread': p.unread,
             }
-            for e, (_, p) in pages.items()
+            for e, p in ((e, w.page) for e, w in pages.items())
         ),
     )
     passes: dict[int, tuple[PricedPass, ...]] = {}
@@ -501,7 +444,7 @@ def record_steps(
     extract: Mapping[int, Answer[Extracted]],
     rooms_genres: Mapping[int, Answer[RoomsGenres]],
     prices: Mapping[int, Answer[Priced]],
-    pages: Mapping[int, tuple[Priced, PageRow]],
+    pages: Mapping[int, tickets_store.Written],
 ) -> None:
     run_log.document(con, TABLE_DOCS, 'pipeline/extract/load_extract.py')
     record_pass(
@@ -552,7 +495,7 @@ def record_steps(
             'passes': count(con, 'SELECT count(*) FROM event_passes'),
             'tiers': count(con, 'SELECT count(*) FROM pass_tiers'),
         },
-        also={page.prompt for _, page in pages.values()},
+        also={w.page.prompt for w in pages.values()},
     )
     run_log.record(
         con,

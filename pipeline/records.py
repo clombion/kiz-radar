@@ -765,52 +765,18 @@ class CsvRow(BaseModel):
             w.writerow(self.text())
 
 
-class PriceRow(CsvRow):
-    """A tier of a pass read on a festival's ticket page."""
-
-    FILE = 'pipeline/pass_prices.csv'
-
-    event_id: int
-    pass_no: int
-    kind: PassKind
-    style: Blank[Style]
-    label: Blank[str]
-    group_size: Blank[Count]
-    days: Blank[Count]
-    includes_hotel: Flag
-    amount: Amount
-    currency: Currency
-    fee: Blank[Amount]
-    alt_amount: Blank[Amount]
-    alt_currency: Blank[Currency]
-    from_: Blank[Day] = Field(validation_alias='from', serialization_alias='from')
-    until: Blank[Day]
-    quantity: Blank[Count]
-    sold_out: Flag
-    quote: Text
-
-    @model_validator(mode='after')
-    def one_second_price(self) -> Self:
-        if (self.alt_amount is None) != (self.alt_currency is None):
-            raise ValueError('a second price has its amount and its currency, or neither')
-        return self
-
-
-class PageRow(CsvRow):
-    """A festival whose prices are read on its ticket page."""
-
-    FILE = 'pipeline/ticket_pages.csv'
+class TicketPage(Record):
+    """A festival whose prices are read on its ticket page: which page, when and how (pipeline/tickets_store.py,
+    written), as the export's ticket_pages has it."""
 
     event_id: int
-    event: str
     page: Url
-    reseller: Blank[str]
+    reseller: str | None
     read_on: Date
     read_by: Text
     prompt: Hash
     recipe: Version
     unread: Annotated[int, Field(ge=0)]  # its tickets the first read doesn't know
-    notes: str  # its first read's rule quotes, one per line
 
 
 class FoundRow(CsvRow):

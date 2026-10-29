@@ -4,8 +4,8 @@ that its record refuses, such as a hand edit of a CSV naming no state, or a clai
 
     mise run audit
 
-Refused: every row of the CSV files the steps share (tickets/pages.csv, tickets/status.csv, pass_prices.csv,
-ticket_pages.csv, the answers' log, the hand-kept decisions and plans), each read as its record
+Refused: every row of the CSV files the steps share (tickets/pages.csv, tickets/status.csv, the answers' log, the
+hand-kept decisions and plans), each read as its record
 (pipeline/records.py); every claim of the claims repository, read as its record and named by its digest; and the data
 the load takes: every answer and first read to its current prompt (one to another prompt waits to be asked again, and
 is not loaded), read as its record. Stale: an override for a site a

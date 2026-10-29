@@ -76,7 +76,7 @@ page on kizomba-world. The fares are our own searches.
 | `pipeline/fare_jobs.csv` | When each festival weekend was last searched, and how it went | the same Action |
 | `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices | the **Refresh events** Action |
 | `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Refresh places and rates** Action |
-| `pipeline/tickets/`, `pipeline/pass_prices.csv`, `pipeline/ticket_pages.csv` | Ticket-page recipes, read logs, first reads, the prices read there, and what each festival waits for (`tickets/status.csv`) | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
+| `pipeline/tickets/` | Ticket-page recipes, read logs, first reads, from which the load takes the prices read there, and what each festival waits for (`tickets/status.csv`) | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
 | `pipeline/states.py` | Every state a data point can be in, what it means and the site's words for it | by hand (see "States") |
 | `claims/` | The admin's claims (see "Claims") | the claims repository; its pin by the **Refresh events** Action |
 | `pipeline/prompts/asked/` | Every prompt asked, by its hash | whatever saves an answer or a first read, before it names the hash |
@@ -227,19 +227,17 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   festival whose genres name two dance styles or more, and it is one of them. Only checked first reads are kept there:
   an agent fills a draft (`pipeline/tickets/drafts/`, not committed), following the prompt the models answer
   (`drafts/<event_id>.prompt.md`, written with the draft), which `record` moves there once it passes.
-- **`record`** writes the prices: amount, currency, sold out and the quote (the ticket's name and price) from the latest
-  read rows of the same page, the rest from the first read. It checks the first read against the rows it was made from
-  and the prices against their quotes, then writes `pipeline/pass_prices.csv` (one row per tier) and
-  `pipeline/ticket_pages.csv` (one per festival: page, read date, who made the first read and with which prompt, recipe
-  version, unread tickets, price notes). It is the only writer of both and writes them from every first read and its
-  log, so they hold what the reads and logs say and nothing else: a festival whose first read no longer fits its page is
-  left out (and the monthly run fails naming it) until it is read again. Recording twice writes the same files, and a
-  read that changed nothing on the page changes only the read date. A ticket the first read doesn't know is counted as
-  unread, and the passes quick view says the page has new tickets not read yet; a tier whose tickets are all gone from
-  the page is left out.
+- **The prices** are what a first read and the latest read rows of the same page record: amount, currency, sold out and
+  the quote (the ticket's name and price) from the rows, the rest from the first read. `record` checks a first read (or
+  a draft, which it then moves into `reads/`) against the rows it was made from and the prices against their quotes. The
+  load takes the prices from every first read and its log (`pipeline/tickets_store.py`, `recorded`), so they are what
+  the reads and logs say and nothing else, and no file holds them in between: a festival whose first read no longer fits
+  its page is left out (and the monthly run fails naming it) until it is read again, and a read that changed nothing on
+  the page changes only the read date. A ticket the first read doesn't know is counted as unread, and the passes quick
+  view says the page has new tickets not read yet; a tier whose tickets are all gone from the page is left out.
 
-A festival in `ticket_pages.csv` takes its passes from its page in place of its description (`event_passes.source` is
-`ticket_page`), and the quick view says when the page was read.
+A festival whose first read records its prices takes its passes from its page in place of its description
+(`event_passes.source` is `ticket_page`), and the quick view says when the page was read.
 
 ```bash
 mise run tickets -- todo               # what needs doing
