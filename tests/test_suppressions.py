@@ -33,7 +33,7 @@ FINDINGS = TypeAdapter(list[Finding])
 SUPPRESSION = re.compile(r'#\s*(?:noqa|ruff\s*:|pyright\s*:|type\s*:\s*ignore)[^#]*', re.IGNORECASE)
 ALLOWED = Counter(
     {
-        ('pipeline/build_site_db.py', 'S608'): 3,
+        ('pipeline/build_site_db.py', 'S608'): 1,
         ('pipeline/extract/check_output.py', 'S105'): 1,
         ('pipeline/db.py', 'S608'): 2,
         ('pipeline/export.py', 'S608'): 2,

@@ -1,11 +1,16 @@
 name: The pipeline's steps
-description: uv as mise.toml pins it (the steps need no node), and SRC, the export the steps work on (pipeline/db.py)
+description: >-
+  uv as mise.toml pins it (the steps need no node), the admin's claims (claims/, a submodule: pipeline/claims.py), and
+  SRC, the export the steps work on (pipeline/db.py)
 runs:
   using: composite
   steps:
     - uses: jdx/mise-action@v2
       with:
         install_args: uv
+    - name: The admin's claims
+      shell: bash
+      run: git submodule update --init
     - name: The export the steps work on
       shell: bash
       run: echo "SRC=$(mise run -q export)" >> "$GITHUB_ENV"

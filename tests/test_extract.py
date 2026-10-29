@@ -18,7 +18,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 from pipeline import data, db, enums, export, generate, prompt, records, spend, states, tickets
 from pipeline.db import Db, Transaction
-from pipeline.enums import AnswerState, MergeReason, Model, PassKind, Role, Style
+from pipeline.enums import AnswerState, ArtistKind, MergeDecision, MergeReason, Model, PassKind, Role, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
@@ -293,30 +293,64 @@ def test_the_spelling_filter_finds_every_pair_alike_enough() -> None:
     assert resolve_artists.spelled_alike(names) == alike
 
 
+def named(*names: str, role: Role = Role.DJ) -> list[resolve_artists.Mention]:
+    """One mention of each name, at an event of its own, stating no country."""
+    return [
+        resolve_artists.Mention(
+            id=i, event_id=i, role=role, name_as_written=n, style=None, country=None, event_country=None
+        )
+        for i, n in enumerate(names)
+    ]
+
+
 def duo(key: str, aliases: str) -> Group:
     return Group.model_validate({'group_key': key, 'display_name': key, 'members': '', 'aliases': aliases, 'note': ''})
 
 
 def test_a_named_group_absorbs_its_aliases_whatever_their_keys() -> None:
     """A group stays the artist of its aliases, a couple's key ("c:...", which sorts before "g:") among them."""
-    mentions = [
-        resolve_artists.Mention(
-            id=i, event_id=i, role=Role.DJ, name_as_written=n, style=None, country=None, event_country=None
-        )
-        for i, n in enumerate(['Ana & Bea', 'AB Sound'])
-    ]
     groups = [duo('g:ab', 'c:ana+bea;p:absound')]
-    keys = resolve_artists.keyed(mentions, groups)
+    keys = resolve_artists.keyed(named('Ana & Bea', 'AB Sound'), groups)
     final = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), groups)
     assert final['c:ana+bea'] == final['p:absound'] == 'g:ab'
 
 
+def test_members_who_share_a_name_are_a_couple_of_two() -> None:
+    keys = resolve_artists.keyed(named('Chiara & Chiara', role=Role.TEACHER), [])
+    assert keys.members['c:chiara+chiara'] == ['p:chiara@chiara+chiara#1', 'p:chiara@chiara+chiara#2']
+    assert keys.kinds['c:chiara+chiara'] == ArtistKind.COUPLE
+    final = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), [])
+    assert final['p:chiara@chiara+chiara#1'] != final['p:chiara@chiara+chiara#2']  # no spelling of one another
+
+
+def test_merges_apply_alike_in_any_order() -> None:
+    """Merges are unordered pairs: the artists they make, and each artist's key, are one function of the set."""
+    keys = resolve_artists.keyed(named('Ana & Bea', 'Anna & Bea', 'Ana & Beatriz', 'Kizzy', 'Kizy', 'Kizzi'), [])
+    merges = [
+        (frozenset({'c:ana+bea', 'c:anna+bea'}), MergeDecision.MERGE),
+        (frozenset({'c:ana+beatriz', 'c:anna+bea'}), MergeDecision.MERGE),
+        (frozenset({'p:kizy@dj', 'p:kizzy@dj'}), MergeDecision.MERGE),
+        (frozenset({'p:kizzi@dj', 'p:kizzy@dj'}), MergeDecision.SEPARATE),
+    ]
+    finals = {
+        tuple(sorted(resolve_artists.final_keys(keys, resolve_artists.merged(keys, dict(order)), []).items()))
+        for order in itertools.permutations(merges)
+    }
+    assert len(finals) == 1
+    final = dict(finals.pop())
+    assert final['c:ana+bea'] == final['c:anna+bea'] == final['c:ana+beatriz']
+    assert final['p:kizy@dj'] == final['p:kizzy@dj'] != final['p:kizzi@dj']
+
+
+def test_a_split_artist_gets_its_own_id_back(memory: Memory) -> None:
+    # p:b was merged into p:a (id 7), keeping its own id 3 among those issued; apart again, it has it back
+    con = db_with(memory(), {'p:a': 7, 'p:b': 7}, {'p:a': 7, 'p:b': 3})
+    assert stable_ids(con, {'p:a': 'p:a', 'p:b': 'p:b'}) == {'p:a': 7, 'p:b': 3}
+
+
 def test_an_alias_two_groups_claim_is_refused() -> None:
-    mention = resolve_artists.Mention(
-        id=0, event_id=0, role=Role.DJ, name_as_written='AB Sound', style=None, country=None, event_country=None
-    )
     groups = [duo('g:ab', 'p:absound'), duo('g:ba', 'p:absound')]
-    keys = resolve_artists.keyed([mention], groups)
+    keys = resolve_artists.keyed(named('AB Sound'), groups)
     with pytest.raises(SystemExit, match='g:ba: its aliases are already the group g:ab'):
         _ = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), groups)
 
@@ -327,7 +361,7 @@ def test_an_alias_two_groups_claim_is_refused() -> None:
         (lambda: duo('ab', 'p:absound'), 'pattern'),
         (
             lambda: MergeRow.model_validate(
-                {'key_a': 'p:b', 'key_b': 'p:a', 'decision': 'merge', 'prompt': '', 'note': ''}
+                {'key_a': 'p:b', 'key_b': 'p:a', 'decision': 'merge', 'prompt': '0' * 16, 'note': ''}
             ),
             'key order',
         ),
@@ -341,12 +375,14 @@ def test_a_row_of_the_artists_csvs_is_written_one_way(row: Callable[[], object],
 
 def db_with(con: Db, keys: dict[str, int], issued: dict[str, int]) -> Db:
     """The export's tables stable_ids reads: each spelling's artist, and every id given."""
+    owner = {i: k for k, i in sorted(keys.items(), reverse=True)}
     with shaped(con).transaction() as tx:
         tx.insert(
             'artists',
-            ({'id': i, 'display_name': k, 'kind': 'person', 'match_key': k} for k, i in sorted(keys.items())),
+            # one artist per id, keyed by the least of its keys
+            ({'id': i, 'display_name': k, 'kind': 'person', 'match_key': k} for i, k in owner.items()),
         )
-        tx.insert('artist_keys', ({'match_key': k, 'artist_id': i} for k, i in keys.items()))
+        tx.insert('artist_keys', ({'match_key': k, 'artist_id': i, 'produced': 1} for k, i in keys.items()))
         tx.insert('artist_ids', ({'artist_id': i, 'match_key': k} for k, i in issued.items()))
     return con
 

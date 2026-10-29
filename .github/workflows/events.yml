@@ -2,10 +2,11 @@ name: Refresh events
 
 # Once a month, update the export in source/ from kizomba-world.com (see pipeline/scrape.py), ask Claude
 # the extraction passes for new and changed festivals (pipeline/extract/ask.py), read ticket pages
-# (pipeline/tickets.py run: re-reads that are due, retries, first reads by two models), reload what the answers say,
-# commit it all, then start the Refresh places and rates workflow, which a push made with the Actions token doesn't
-# start by itself. A failed ask, or a ticket page that broke its recipe or failed three times in a row, still
-# commits the refresh, then marks the run failed. Started by hand with festival ids, it skips the refresh and asks
+# (pipeline/tickets.py run: re-reads that are due, retries, first reads by two models), reload what the answers say
+# and resolve the artists under the admin's latest claims (pipeline/claims.py), commit it all with the claims' pin,
+# then start the Refresh places and rates workflow, which a push made with the Actions token doesn't start by itself.
+# A failed ask, or a ticket page that broke its recipe or failed three times in a row, still commits the refresh, then
+# marks the run failed. Started by hand with festival ids, it skips the refresh and asks
 # and reads those festivals only: after a prompt change that touches a few of them.
 on:
   schedule:
@@ -54,6 +55,8 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ONLY: ${{ inputs.festivals }}
+      - name: The admin's latest claims, which the commit pins with the export they made
+        run: git submodule update --remote claims
       - name: Load the answers and resolve the artists
         run: |
           mise run load
@@ -62,7 +65,7 @@ jobs:
       - name: Commit
         id: commit
         run: |
-          git add "$SRC" pipeline/extract/answers pipeline/prompts/asked pipeline/artist_merge_suggestions.csv \
+          git add "$SRC" claims pipeline/extract/answers pipeline/prompts/asked pipeline/artist_merge_suggestions.csv \
             pipeline/pass_prices.csv pipeline/ticket_pages.csv pipeline/tickets pipeline/spend.csv
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git config user.name "events-bot"   # the rebase below re-commits, so it needs the name as well

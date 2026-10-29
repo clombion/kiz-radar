@@ -89,12 +89,12 @@ def test_resolving_the_artists_again_changes_nothing(tmp_path: Path, monkeypatch
 def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked(site_db: Path) -> None:
     with sqlite_db.opened(EXPORT, 'ro') as c, sqlite_db.opened(site_db, 'ro') as site:
         rows = merge_suggestions.suggestions(c, site)
+        done = merge_suggestions.decided(c)
+        ids = {k.match_key: k.artist_id for k in c.rows(merge_suggestions.Keyed, 'select * from artist_keys')}
     assert rows
     assert [r.score for r in rows] == sorted((r.score for r in rows), reverse=True)
     assert all(r.keep_bookings >= r.merge_bookings for r in rows)
-    done, _ = merge_suggestions.decided()
-    assert not [r for r in rows if frozenset((r.keep_key, r.merge_key)) in done]
-    assert all(r.decision is None for r in rows)
+    assert not [r for r in rows if frozenset((ids[r.keep_key], ids[r.merge_key])) in done]
 
 
 # a reference, its table and columns matched whole, and what it does when its row goes, that is not held until commit

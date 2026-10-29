@@ -32,9 +32,13 @@
      it to look at locally, and Publish for the site.
 - Every state a data point can be in is one row of `pipeline/states.py`, with its words on the site: the enums (and
   through them the records and their schemas), the prompts' definitions, the SQL checks and `site/states.ts` are built
-  from it, so a new state is one new row there and nowhere else (then `mise run generate`). An instance that departs
-  from its state's default is a row of `pipeline/exceptions.py`. `mise run audit` names any value in the data its record
-  refuses (one that is no state, say), and any override that departs from nothing any more.
+  from it, so a new state is one new row there and nowhere else (then `mise run generate`). `mise run audit` names any
+  value in the data its record refuses (one that is no state, say), and any site claim that departs from nothing any
+  more.
+- A fact no step derives (two artists are one, an artist's home country, the artist a line-up means, what a ticket
+  site's festivals wait for) is a claim (`pipeline/claims.py`, README "Claims"). The admin's are the files of the
+  `claims/` submodule, each named by its digest: never edit one; write a new one (`claims.write`), which comes first by
+  being later, and commit it in the claims repository.
 - A prompt is known by the hash of its text and its record's schema (`pipeline/prompt.py`), so editing a template, a
   state's criterion or a record re-asks everything that prompt answered. After pushing such a change, start the
   **Refresh events** Action at once: answers and first reads to another prompt stay out of the database until asked

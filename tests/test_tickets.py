@@ -48,7 +48,7 @@ from pipeline.records import (
 from pipeline.tickets import KnownPage
 from tests import exports, jsons
 from tests.exports import committed, shaped
-from tests.fakes import AT, REGISTER, Client, Memory
+from tests.fakes import AT, SITE_CLAIMS, Client, Memory
 
 LATER = dt.datetime(2026, 11, 3, 5, tzinfo=dt.UTC)
 DAY = dt.date(2026, 11, 1)  # a day after the reads
@@ -596,7 +596,7 @@ def test_a_festival_that_no_longer_fits_its_first_read_is_left_out(files: Path) 
     assert PageRow.read() == []
 
 
-HELD = REGISTER[0]  # a site the register says no recipe can read
+HELD = SITE_CLAIMS[0]  # a site a site claim says no recipe can read
 
 
 def sold(state: Sales, page: str | None = None) -> FoundRow:
@@ -610,7 +610,7 @@ def sold(state: Sales, page: str | None = None) -> FoundRow:
     [
         (festival(), Waiting.PAGE),
         (festival(page=KnownPage('https://example.org/tickets', None)), Waiting.RECIPE),
-        (festival(page=KnownPage(f'https://{HELD.host}/x', None)), HELD.then),  # pipeline/exceptions.py
+        (festival(page=KnownPage(f'https://{HELD.host}/x', None)), HELD.then),  # a site claim
         (festival(page=KnownPage(PAGE, SITE)), Waiting.NOTHING),
         (festival(found=sold(Sales.OFFLINE)), Waiting.NOTHING),
         (festival(found=sold(Sales.NOT_YET)), Waiting.SALES_OPEN),

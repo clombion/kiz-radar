@@ -41,11 +41,11 @@ both from every first read and its log, so they hold what the reads and logs say
 first read no longer fits its page is left out until it is read again, and recording twice writes the same files.
 
 A festival's ticket page is known when it is its first read's, the shop an agent found it sells in, or its first
-full link to a ticket shop (a site a recipe reads, or one pipeline/exceptions.py says no recipe can). Each festival
+full link to a ticket shop (a site a recipe reads, or one a site claim says no recipe can). Each festival
 still to come waits for something (enums.Waiting), or for nothing: its ticket page found (its links are cut short
 or go to no ticket shop; tickets/pages.csv, written by page, records how an agent found it sells them: its shop's
 page, or that its sales haven't opened, happen offline or are closed, or that a search found no page, which holds
-until its links change), a recipe for its site (unless pipeline/exceptions.py says a recipe can't read the site),
+until its links change), a recipe for its site (unless a site claim says a recipe can't read the site),
 its recipe fixed, its sales to open, or an agent when no two models agreed; one whose reads keep failing waits
 for a session. tickets/status.csv holds, for every festival the source database lists, what it waits for (nothing
 once it is over), its first_read state, how it sells and its known page; page, read, retry, record and run write it
@@ -72,7 +72,7 @@ from urllib.parse import urlparse
 import anthropic
 from pydantic import TypeAdapter, ValidationError
 
-from pipeline import data, exceptions, export, spend, states
+from pipeline import claims, data, export, spend, states
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.enums import FirstRead as FirstReadState
@@ -891,8 +891,8 @@ def links(db: sqlite_db.Reader, event_id: int) -> list[str]:
 
 
 def shop_hosts(known: Mapping[str, Site]) -> set[str]:
-    """The hosts of ticket shops: the ones a recipe reads, and the ones the register says no recipe can."""
-    return {h for site in known.values() for h in site.recipe.hosts} | exceptions.by_host().keys()
+    """The hosts of ticket shops: the ones a recipe reads, and the ones a site claim says no recipe can."""
+    return {h for site in known.values() for h in site.recipe.hosts} | claims.sites().keys()
 
 
 def known_page(
@@ -1096,9 +1096,9 @@ UNSOLD = states.total(
 
 def waiting(f: Festival) -> Waiting:
     """What the festival waits for before its prices can come from its ticket page (enums.Waiting): what it waits for
-    by default, unless an override for its page's site (pipeline/exceptions.py) replaces that."""
+    by default, unless a claim for its page's site (pipeline/claims.py) replaces that."""
     w = waits_by_default(f)
-    o = exceptions.by_host().get(host(f.page.url)) if f.page else None
+    o = claims.sites().get(host(f.page.url)) if f.page else None
     return o.then if o and w == o.instead_of else w
 
 

@@ -11,10 +11,10 @@ from pathlib import Path
 import pytest
 
 import pipeline
-from pipeline import ROOT, build_site_db, db, exceptions
+from pipeline import ROOT, build_site_db, claims, db
 from pipeline.records import Spent
 from tests import exports
-from tests.fakes import REGISTER, Memory
+from tests.fakes import SITE_CLAIMS, Memory
 
 # what running the checks writes, which is no data
 UNWATCHED = frozenset({'.git', '.venv', 'node_modules', '__pycache__', '.pytest_cache', '.ruff_cache', '.vitest'})
@@ -54,9 +54,9 @@ def data_folder(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
 
 
 @pytest.fixture(autouse=True)
-def register(monkeypatch: pytest.MonkeyPatch) -> None:
-    """The tests' own register of exceptions, so that a test depends on no row of the committed one."""
-    monkeypatch.setattr(exceptions, 'OVERRIDES', REGISTER)
+def site_claims(data_folder: Path) -> None:
+    """The tests' own claims in the test's data folder, so that a test depends on no claim of the committed ones."""
+    claims.write(SITE_CLAIMS)
 
 
 @pytest.fixture(scope='session')

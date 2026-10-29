@@ -1,7 +1,7 @@
 """The repository's Python, read as code: a function is written once, in the module the others import it from; the
 repository's folder is found once, as pipeline.ROOT, and a step finds its data through pipeline.data(); and a table of
-the export is the export's, which no step creates when it is missing. The Actions take their tools from mise.toml, and
-the steps their export from pipeline/export.py, at its schema's version."""
+the export is the export's, which no step creates when it is missing. The Actions take their tools from mise.toml and
+check the claims out, and the steps their export from pipeline/export.py, at its schema's version."""
 
 import ast
 import collections
@@ -79,6 +79,15 @@ def test_the_actions_take_their_tools_from_mise() -> None:
         for m in setups.finditer(p.read_text(encoding='utf-8'))
     ]
     assert found == []
+
+
+def test_the_steps_and_the_checks_check_the_claims_out() -> None:
+    """claims/ is a submodule (pipeline/claims.py): the steps, which every Action that runs one takes, and the checks
+    (the audit) read it, and a checkout without it finds no admin claim."""
+    steps = (ROOT / '.github/actions/steps/action.yml').read_text(encoding='utf-8')
+    tests = (ROOT / '.github/workflows/tests.yml').read_text(encoding='utf-8')
+    assert 'run: git submodule update --init' in steps
+    assert re.search(r'- uses: actions/checkout@\S+\n(\s+)with:\n\1  submodules: true\b', tests)
 
 
 def test_only_export_looks_for_the_export() -> None:

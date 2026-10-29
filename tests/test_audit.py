@@ -10,11 +10,11 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import audit, data, exceptions, prompt, tickets
+from pipeline import audit, data, prompt, tickets
 from pipeline.enums import FirstRead, Model
 from pipeline.records import CsvRow, Logged, PageRecipe
 from tests.exports import committed, shaped
-from tests.fakes import AT, REGISTER, Memory
+from tests.fakes import AT, SITE_CLAIMS, Memory
 
 
 def copied() -> Path:
@@ -65,8 +65,8 @@ def festival(page: str | None, **change: object) -> tickets.Festival:
 
 
 def test_an_override_is_stale_once_a_recipe_reads_its_site_or_no_festival_has_its_page_there() -> None:
-    o = exceptions.OVERRIDES[0]
-    others = [festival(f'https://{p.host}/e') for p in exceptions.OVERRIDES[1:]]
+    o = SITE_CLAIMS[0]
+    others = [festival(f'https://{p.host}/e') for p in SITE_CLAIMS[1:]]
     committed(tickets.SITES)
     known = tickets.sites()
     assert audit.stale([*others, festival(f'https://{o.host}/e', over=True)], known) == []  # past festivals count
@@ -80,7 +80,7 @@ def test_an_override_is_stale_once_a_recipe_reads_its_site_or_no_festival_has_it
 
 
 def test_an_override_replaces_only_the_state_it_names() -> None:
-    o = exceptions.OVERRIDES[0]
+    o = SITE_CLAIMS[0]
     assert tickets.waiting(festival(f'https://{o.host}/e')) == o.then
     assert tickets.waiting(festival(f'https://{o.host}/e', need=FirstRead.DISPUTED)) != o.then
 
@@ -148,5 +148,5 @@ def test_the_audit_exits_1_naming_what_it_found_on_stderr(
         audit.main()
     out = capsys.readouterr()
     assert e.value.code == 1
-    assert out.out.startswith(f'1 refused, {len(REGISTER)} stale')
+    assert out.out.startswith(f'1 refused, {len(SITE_CLAIMS)} stale')
     assert 'pages.csv line 2' in out.err

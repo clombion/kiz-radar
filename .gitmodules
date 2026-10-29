@@ -1,0 +1,3 @@
+[submodule "claims"]
+	path = claims
+	url = https://github.com/clombion/kiz-radar-claims

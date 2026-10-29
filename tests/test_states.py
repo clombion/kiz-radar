@@ -2,7 +2,6 @@
 its states, and each function that chooses between states reaches every one of them."""
 
 import ast
-import dataclasses
 import itertools
 import json
 import re
@@ -11,8 +10,8 @@ from collections.abc import Callable, Sequence
 import pytest
 from pydantic import ValidationError
 
-from pipeline import ROOT, enums, exceptions, generate, prompt, states
-from pipeline.enums import PassKind, People, Price, Sales, Style, Waiting
+from pipeline import ROOT, enums, generate, prompt, states
+from pipeline.enums import PassKind, People, Price, Sales, Style
 from pipeline.extract import prices
 from pipeline.records import LOG_ENTRY, PricedPass, PricedTier
 from pipeline.states import Disposition, Link, State
@@ -225,16 +224,6 @@ def test_the_people_states_tested_are_all_of_them() -> None:
     assert {p for _, p in PEOPLE_CASES} == set(People)
 
 
-def test_an_override_is_typed_dated_and_changes_something() -> None:
-    o = exceptions.OVERRIDES[0]
-    with pytest.raises(ValidationError):
-        _ = dataclasses.replace(o, then='later')  # no state of waits_for
-    with pytest.raises(ValidationError):
-        _ = dataclasses.replace(o, decided_on='26 Oct')
-    with pytest.raises(ValueError, match='to itself'):
-        _ = dataclasses.replace(o, then=Waiting.RECIPE)  # an override from a state to itself
-
-
 def test_the_log_says_each_page_read_state() -> None:
     row = {'key': '1', 'name': 'n', 'price': '€9', 'amount': 9, 'currency': 'EUR', 'fee': None, 'sold_out': False}
     row |= {'alt_price': None, 'alt_amount': None, 'alt_currency': None}
@@ -259,6 +248,7 @@ LITERALS = {
     frozenset({'ro', 'rw', 'rwc'}),  # SQLite's open modes, db.opened
     frozenset({'ro', 'rw'}),  # the export's, which no step creates, export.opened
     frozenset(p.name for p in states.POINTS),  # the points' names, enums.Point
+    *(frozenset({f}) for f in ('merge', 'home', 'booking', 'site')),  # each claim's field, its discriminator (claims)
 }
 
 

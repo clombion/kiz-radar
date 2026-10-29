@@ -50,6 +50,8 @@ from pipeline.enums import (
     SkipReason,
     Status,
     Style,
+    SuggestionCalendar,
+    SuggestionCountries,
     Waiting,
 )
 from pipeline.enums import FirstRead as FirstReadState
@@ -834,7 +836,9 @@ class MergeRow(CsvRow):
     key_a: str
     key_b: str
     decision: MergeDecision
-    prompt: Blank[Hash]  # the review prompt that decided it (answers/log.csv); empty when decided by hand
+    prompt: (
+        Hash  # the review prompt that decided it (answers/log.csv); a decision by hand is a claim (pipeline/claims.py)
+    )
     note: str
 
     @model_validator(mode='after')
@@ -842,19 +846,6 @@ class MergeRow(CsvRow):
         if self.key_a > self.key_b:
             raise ValueError('a pair is written in key order, key_a first, so that it is written one way')
         return self
-
-
-class ArtistMergeRow(CsvRow):
-    """A merge of two artists the source pipeline keeps apart, decided by hand."""
-
-    FILE = 'pipeline/artist_merges.csv'
-
-    decision: MergeDecision
-    keep_key: str
-    merge_key: str
-    keep_name: str
-    merge_name: str
-    note: str
 
 
 class PlanRow(CsvRow):
@@ -966,31 +957,6 @@ class Rate(CsvRow):
     date: Date
 
 
-class Booking(CsvRow):
-    """One festival's booking moved from the artist record it was filed under to the person it is."""
-
-    FILE = 'pipeline/artist_bookings.csv'
-
-    event_id: int
-    from_key: str
-    to_key: str
-    event: str
-    from_name: str
-    to_name: str
-    note: str
-
-
-class HomeCountry(CsvRow):
-    """An artist's home country known from outside the line-ups."""
-
-    FILE = 'pipeline/artist_countries.csv'
-
-    match_key: str
-    country: str
-    name: str
-    note: str
-
-
 class Promo(CsvRow):
     """A promo code for a festival, ours, not kizomba-world's."""
 
@@ -1046,8 +1012,7 @@ class Suggestion(CsvRow):
 
     FILE = 'pipeline/artist_merge_suggestions.csv'
 
-    decision: Blank[MergeDecision]  # empty: the reviewer copies the row into artist_merges.csv with merge or separate
-    keep_key: str
+    keep_key: str  # a key a mention produces, which a merge claim names (pipeline/claims.py)
     merge_key: str
     keep_name: str
     merge_name: str
@@ -1055,8 +1020,8 @@ class Suggestion(CsvRow):
     merge_bookings: int
     keep_countries: str
     merge_countries: str
-    countries: str
-    calendar: str
+    countries: SuggestionCountries
+    calendar: SuggestionCalendar
     calendar_note: str
     similarity: float
     score: float

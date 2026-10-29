@@ -33,6 +33,8 @@ type Point = Literal[
     'merge_decision',
     'merge_reason',
     'pending',
+    'suggestion_countries',
+    'suggestion_calendar',
     'via',
     'listing',
     'event_source',
@@ -40,6 +42,8 @@ type Point = Literal[
     'fare_search',
     'next_change',
     'hotel',
+    'claim_source',
+    'claim',
     'model',
 ]
 
@@ -361,6 +365,25 @@ class Pending(StrEnum):
 
 
 @unique
+class SuggestionCountries(StrEnum):
+    """the suggestion_countries states"""
+
+    UNKNOWN = 'unknown'
+    SAME = 'same'
+    DIFFERENT = 'different'
+
+
+@unique
+class SuggestionCalendar(StrEnum):
+    """the suggestion_calendar states"""
+
+    SAME_LINE_UP = 'same line-up'
+    CLASH = 'clash'
+    SHARED_CIRCUIT = 'shared circuit'
+    NO_CLASH = 'no clash'
+
+
+@unique
 class Via(StrEnum):
     """the via states"""
 
@@ -414,6 +437,24 @@ class Hotel(StrEnum):
 
     INCLUDED = 'included'
     NONE = 'none'
+
+
+@unique
+class ClaimSource(StrEnum):
+    """the claim_source states"""
+
+    ADMIN = 'admin'
+    ORGANISER = 'organiser'
+    MODEL = 'model'
+
+
+@unique
+class ClaimState(StrEnum):
+    """the claim states"""
+
+    APPLIED = 'applied'
+    OVERRIDDEN = 'overridden'
+    ORPHANED = 'orphaned'
 
 
 @unique

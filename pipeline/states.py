@@ -54,6 +54,15 @@ class Link(StrEnum):
     PASSES = 'passes'  # the passes view
 
 
+class Counts(StrEnum):
+    """What counts a role, each level within the next: a line-up's size counts its lineup roles, an artist's bookings
+    its booking ones too, the calendar of where an artist is (merge_suggestions) its present ones too."""
+
+    LINEUP = 'lineup'
+    BOOKING = 'booking'
+    PRESENT = 'present'
+
+
 ROW = ConfigDict(strict=True, extra='forbid')  # a field of another type, or one no row has, is refused
 
 
@@ -82,6 +91,7 @@ class State:
     title: str | None = None
     tags: tuple[str, ...] = ()
     genres: tuple[str, ...] = ()
+    counts: Counts | None = None  # a role's: what counts it; None, nothing (an organiser is not at their event as one)
 
     def __post_init__(self) -> None:
         object.__setattr__(self, 'forms', types.MappingProxyType(dict(self.forms)))
@@ -90,6 +100,7 @@ class State:
 P, S = Point, State
 CARD, VIEW, NOTE, FILTER, KEPT, WAITS = Disposition
 PAGE, PASSES = Link
+LINEUP, BOOKING, PRESENT = Counts
 
 POINTS = (
     P('page_read', 'Status', 'each logged attempt to read a ticket page', 'tickets.attempt'),
@@ -143,9 +154,21 @@ POINTS = (
     P('role', 'Role', 'each artist named in a description', 'the extract pass'),
     P('artist_kind', 'ArtistKind', 'each artist', 'resolve_artists'),
     P('home_basis', 'HomeBasis', "an artist's home country, by how it is known", 'build_site_db'),
-    P('merge_decision', 'MergeDecision', 'each artist merge reviewed', 'the merge review; pipeline/artist_merges.csv'),
+    P('merge_decision', 'MergeDecision', 'each artist merge reviewed', 'the merge review; a merge claim'),
     P('merge_reason', 'MergeReason', 'each pair of artists that may be one, for the merge review', 'resolve_artists'),
     P('pending', 'Pending', 'a festival waiting for its extraction passes', 'scrape'),
+    P(
+        'suggestion_countries',
+        'SuggestionCountries',
+        'each merge suggestion, by the countries line-ups state for its two artists',
+        'merge_suggestions',
+    ),
+    P(
+        'suggestion_calendar',
+        'SuggestionCalendar',
+        'each merge suggestion, by where and when its two artists are booked',
+        'merge_suggestions',
+    ),
     P('via', 'Via', 'each appearance of an artist at an event (artist_events)', 'resolve_artists; build_site_db'),
     P('listing', 'Listing', 'each festival, by whether the site it comes from still lists it', 'scrape'),
     P('event_source', 'EventSource', "the site a festival's listing comes from (source_ids)", 'scrape'),
@@ -158,6 +181,8 @@ POINTS = (
     ),
     P('next_change', 'NextChange', "a pass's next price change on the day it is viewed", 'pricing.ts nextChange'),
     P('hotel', 'Hotel', 'each pass, by whether its price includes a hotel', 'the prices pass; the first read'),
+    P('claim_source', 'ClaimSource', 'the channel a claim comes by, the earlier the higher its priority', 'claims'),
+    P('claim', 'ClaimState', 'each claim, by whether it decides its subject', 'resolve_artists'),
     P('model', 'Model', 'each Claude model the pipeline asks, which spend.PRICES prices', 'ask; tickets; merge review'),
 )
 
@@ -366,7 +391,7 @@ ROWS = (
         'waits_for',
         'nothing',
         'nothing: its prices are read, or it needs no first read, sells offline, has closed its '
-        'sales, is over, or an exception says so (pipeline/exceptions.py)',
+        'sales, is over, or a site claim says so (pipeline/claims.py)',
         KEPT,
     ),
     # ---- what a card says of a festival's price
@@ -667,8 +692,9 @@ ROWS = (
         VIEW,
         'Teachers',
         forms={'singular': 'Teacher', 'pair': 'Teaching couple'},
+        counts=LINEUP,
     ),
-    S('role', 'dj', 'DJs', VIEW, 'DJs', forms={'singular': 'DJ'}),
+    S('role', 'dj', 'DJs', VIEW, 'DJs', forms={'singular': 'DJ'}, counts=LINEUP),
     S(
         'role',
         'performer',
@@ -676,8 +702,9 @@ ROWS = (
         VIEW,
         'Performers',
         forms={'singular': 'Performer', 'pair': 'Performing couple'},
+        counts=BOOKING,
     ),
-    S('role', 'mc', 'MCs, hosts, presenters of the event', VIEW, 'MCs', forms={'singular': 'MC'}),
+    S('role', 'mc', 'MCs, hosts, presenters of the event', VIEW, 'MCs', forms={'singular': 'MC'}, counts=BOOKING),
     S(
         'role',
         'organiser',
@@ -686,13 +713,13 @@ ROWS = (
         'Organised by',
         forms={'singular': 'Organiser'},
     ),
-    S('role', 'media', 'Photographers, videographers, media teams', KEPT),
-    S('role', 'crew', 'Named teams that serve the dancers: taxi-dancer teams, host teams', KEPT),
+    S('role', 'media', 'Photographers, videographers, media teams', KEPT, counts=PRESENT),
+    S('role', 'crew', 'Named teams that serve the dancers: taxi-dancer teams, host teams', KEPT, counts=PRESENT),
     S('artist_kind', 'person', 'one person', VIEW, 'People', forms={'singular': 'Artist'}),
     S('artist_kind', 'couple', 'two people booked together', VIEW, 'Couples', forms={'singular': 'Couple'}),
     S('artist_kind', 'group', 'a band, a dance company or a team', KEPT),
     S('artist_kind', 'organisation', 'a school, an association or a company', KEPT),
-    S('home_basis', 'given', 'given in pipeline/artist_countries.csv', VIEW, 'Home country added by hand.'),
+    S('home_basis', 'given', 'given by a home claim (pipeline/claims.py)', VIEW, 'Home country added by hand.'),
     S(
         'home_basis',
         'stated',
@@ -751,6 +778,13 @@ ROWS = (
     ),
     S('pending', 'new', 'the festival is new', WAITS, owner='the next run'),
     S('pending', 'description changed', 'its description changed', WAITS, owner='the next run'),
+    S('suggestion_countries', 'unknown', 'line-ups state no country for one of the two', KEPT),
+    S('suggestion_countries', 'same', 'line-ups state a country for both that they share', KEPT),
+    S('suggestion_countries', 'different', 'line-ups state countries for both, and they share none', KEPT),
+    S('suggestion_calendar', 'same line-up', 'both are named in one line-up, in one role', KEPT),
+    S('suggestion_calendar', 'clash', 'both are booked at short events in different cities at the same time', KEPT),
+    S('suggestion_calendar', 'shared circuit', 'both are booked in one city, or by one organiser', KEPT),
+    S('suggestion_calendar', 'no clash', 'none of these', KEPT),
     S('via', 'direct', 'the artist is named in the line-up', KEPT),
     S('via', 'member', 'a couple or group the artist is in is named in the line-up', KEPT),
     S('listing', 'listed', 'the site lists the festival', KEPT),
@@ -794,6 +828,23 @@ ROWS = (
     ),
     S('hotel', 'included', 'the price includes accommodation', VIEW, 'with hotel'),
     S('hotel', 'none', 'the price includes no accommodation', VIEW),
+    S(
+        'claim_source',
+        'admin',
+        'a file of the claims repository (clombion/kiz-radar-claims), written by its owner',
+        KEPT,
+    ),
+    S('claim_source', 'organiser', "a festival's organiser, through the organisers' channel", KEPT),
+    S('claim_source', 'model', "the pipeline's own answers (the merge review)", KEPT),
+    S('claim', 'applied', 'the highest claim on its subject: it decides it', KEPT),
+    S('claim', 'overridden', 'another claim on its subject comes first: a higher source, or a later one', KEPT),
+    S(
+        'claim',
+        'orphaned',
+        'it names a key no mention produces any more (a re-extraction respelled it): ignored until re-pointed',
+        WAITS,
+        owner='admin: point it at the key the artist has now',
+    ),
     S('model', 'claude-fable-5-1', "the first read's tie-break, when the two models' reads differ", KEPT),
     S('model', 'claude-opus-5-5', 'a model of the first read', KEPT),
     S('model', 'claude-sonnet-5-5', 'a model of the first read', KEPT),
@@ -830,7 +881,12 @@ def check(points: tuple[Point, ...], rows: tuple[State, ...]) -> None:
 
 
 # the fields only some points' states have
-FIELDS_OF = {'title': {'genre'}, 'tags': {'genre', 'feature', 'genre_rule'}, 'genres': {'genre_rule'}}
+FIELDS_OF = {
+    'title': {'genre'},
+    'tags': {'genre', 'feature', 'genre_rule'},
+    'genres': {'genre_rule'},
+    'counts': {'role'},
+}
 
 
 def check_fields(rows: tuple[State, ...]) -> None:
@@ -897,6 +953,12 @@ def total[K: str, V](point: PointName, mapping: dict[K, V], where: str) -> dict[
     if extra := [k for k in mapping if k not in keys(point)]:
         raise LookupError(f'{where}: {extra} are no {point} states (pipeline/states.py)')
     return mapping
+
+
+def counted(at: Counts) -> tuple[str, ...]:
+    """The roles that count at a level: its own, and those of every level within it."""
+    levels = list(Counts)[: list(Counts).index(at) + 1]
+    return tuple(s.key for s in of('role') if s.counts in levels)
 
 
 def sql_in(point: PointName, keys_: Iterable[str] | None = None) -> str:

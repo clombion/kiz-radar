@@ -1,13 +1,14 @@
 """What the build fails on that writing and Tests can't catch (pipeline/STATES.md §4): a value in the committed data
-that its record refuses, such as a hand edit of a CSV naming no state; and an override in pipeline/exceptions.py that
-no longer departs from anything.
+that its record refuses, such as a hand edit of a CSV naming no state, or a claim that is none; and a site claim
+(pipeline/claims.py) that no longer departs from anything.
 
     mise run audit
 
 Refused: every row of the CSV files the steps share (tickets/pages.csv, tickets/status.csv, pass_prices.csv,
 ticket_pages.csv, the answers' log, the hand-kept decisions and plans), each read as its record
-(pipeline/records.py); and the data the load takes: every answer and first read to its current prompt (one to
-another prompt waits to be asked again, and is not loaded), read as its record. Stale: an override for a site a
+(pipeline/records.py); every claim of the claims repository, read as its record and named by its digest; and the data
+the load takes: every answer and first read to its current prompt (one to another prompt waits to be asked again, and
+is not loaded), read as its record. Stale: an override for a site a
 recipe now reads, or one no festival the source database lists has its known ticket page on. Each finding goes to
 stderr; then "N refused, M stale", exiting 1 when either is not 0.
 """
@@ -20,9 +21,9 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from pipeline import data, exceptions, tables, tickets
+from pipeline import claims, data, tables, tickets
 from pipeline import prompt as prompts
-from pipeline.exceptions import Override
+from pipeline.claims import SiteClaim
 from pipeline.extract import answers
 from pipeline.records import (
     CsvRow,
@@ -47,6 +48,7 @@ def refused(event_ids: set[int]) -> list[str]:
                 _ = record.model_validate(record.cells(row))
             except ValidationError as e:
                 out += errors(e, f'{record.FILE} line {n}')
+    out += [line for path in claims.files() if isinstance(why := claims.parsed(path), list) for line in why]
     for pass_ in prompts.PASSES:
         answered = answers.answered(pass_.name, event_ids).values()
         for path in sorted({path for path, meta in answered if prompts.is_current(pass_.name, meta.prompt)}):
@@ -63,16 +65,16 @@ def refused(event_ids: set[int]) -> list[str]:
     return out
 
 
-def stale(fs: Sequence[tickets.Festival], known: dict[str, tickets.Site]) -> list[tuple[Override, str]]:
-    """(override, why) for each override that departs from nothing any more: a recipe reads its site now, or no
+def stale(fs: Sequence[tickets.Festival], known: dict[str, tickets.Site]) -> list[tuple[SiteClaim, str]]:
+    """(site claim, why) for each site claim that departs from nothing any more: a recipe reads its site now, or no
     festival has its known ticket page there; fs is every festival (tickets.festivals(every=True)), known
     tickets.sites()."""
     on: defaultdict[str, list[int]] = defaultdict(list)
     for f in fs:
         if f.page:
             on[tickets.host(f.page.url)].append(f.id)
-    out: list[tuple[Override, str]] = []
-    for o in exceptions.OVERRIDES:
+    out: list[tuple[SiteClaim, str]] = []
+    for o in claims.sites().values():
         if site := tickets.site_for(f'https://{o.host}/', known):
             out.append(
                 (o, f'the recipe {site.version} reads it (festivals {", ".join(map(str, on[o.host])) or "none"})')
@@ -85,7 +87,7 @@ def stale(fs: Sequence[tickets.Festival], known: dict[str, tickets.Site]) -> lis
 def main() -> None:
     _ = argparse.ArgumentParser(
         description='Name each value in the data its record refuses (a value that is no state of '
-        'pipeline/states.py, say), and each override of pipeline/exceptions.py that departs from nothing any more.'
+        'pipeline/states.py, say), and each site claim (pipeline/claims.py) that departs from nothing any more.'
     ).parse_args()
     with tickets.src_db() as db:
         bad = refused(set(db.column(int, 'SELECT id FROM events')))
@@ -93,7 +95,7 @@ def main() -> None:
     for line in bad:
         print(f'refused: {line}', file=sys.stderr)
     for o, why in old:
-        print(f'stale: pipeline/exceptions.py, {o.host}: {why}', file=sys.stderr)
+        print(f'stale: the site claim of {o.host}: {why}', file=sys.stderr)
     print(f'{len(bad)} refused, {len(old)} stale')
     if bad or old:
         sys.exit(1)

@@ -132,8 +132,8 @@ description = "The files built from pipeline/states.py still say what it does"
 run = "uv run -m pipeline.generate --check"
 
 [hooks]
-description = "Install the git hooks (prek.toml): the quick checks before a commit, every check before a push"
-run = "uv run --group dev prek install"
+description = "Install the git hooks (prek.toml): the quick checks before a commit, every check before a push; and check the claims submodule out"
+run = "uv run --group dev prek install && git submodule update --init"
 
 ["hooks:check"]
 description = "prek.toml is a configuration prek reads"

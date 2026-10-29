@@ -52,9 +52,11 @@ thing a consumer must treat differently.
 | **role**, each artist named in a description | `teacher`, `dj`, `performer`, `mc`, `organiser`, `media`, `crew` | the extract pass |
 | **artist_kind**, each artist | `person`, `couple`, `group`, `organisation` | resolve_artists |
 | **home_basis**, an artist's home country, by how it is known | `given`, `stated`, `contested` | build_site_db |
-| **merge_decision**, each artist merge reviewed | `merge`, `separate`, `unsure` | the merge review; pipeline/artist_merges.csv |
+| **merge_decision**, each artist merge reviewed | `merge`, `separate`, `unsure` | the merge review; a merge claim |
 | **merge_reason**, each pair of artists that may be one, for the merge review | `same name, different keys`, `first words of the other`, `same partner, shortened name`, `similar spelling`, `single name, several countries`, `couples with matching names` | resolve_artists |
 | **pending**, a festival waiting for its extraction passes | `new`, `description changed` | scrape |
+| **suggestion_countries**, each merge suggestion, by the countries line-ups state for its two artists | `unknown`, `same`, `different` | merge_suggestions |
+| **suggestion_calendar**, each merge suggestion, by where and when its two artists are booked | `same line-up`, `clash`, `shared circuit`, `no clash` | merge_suggestions |
 | **via**, each appearance of an artist at an event (artist_events) | `direct`, `member` | resolve_artists; build_site_db |
 | **listing**, each festival, by whether the site it comes from still lists it | `listed`, `gone` | scrape |
 | **event_source**, the site a festival's listing comes from (source_ids) | `kizomba-world` | scrape |
@@ -62,6 +64,8 @@ thing a consumer must treat differently.
 | **fare_search**, a festival weekend's latest flight search (pipeline/fare_jobs.csv) | `priced`, `no price`, `refused` | fares.search |
 | **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.ts nextChange |
 | **hotel**, each pass, by whether its price includes a hotel | `included`, `none` | the prices pass; the first read |
+| **claim_source**, the channel a claim comes by, the earlier the higher its priority | `admin`, `organiser`, `model` | claims |
+| **claim**, each claim, by whether it decides its subject | `applied`, `overridden`, `orphaned` | resolve_artists |
 | **model**, each Claude model the pipeline asks, which spend.PRICES prices | `claude-fable-5-1`, `claude-opus-5-5`, `claude-sonnet-5-5`, `claude-haiku-5-5` | ask; tickets; merge review |
 
 <!-- points:end -->
@@ -72,7 +76,7 @@ thing a consumer must treat differently.
   `priced` when they include the pass a card prices (`prices.card_pass`, stored beside it as `price_status.card_pass`,
   and a check holds a festival priced exactly when it has one), else `other_passes_only`; one without is said by how it
   sells and whether its ticket page is known. A ticket page is known when it is a first read's, the shop an agent
-  recorded, or a festival's first full link to a ticket shop (a site a recipe reads, or one the register names); a link
+  recorded, or a festival's first full link to a ticket shop (a site a recipe reads, or one a site claim names); a link
   to anything else is no ticket page, and the festival waits for its `page`.
 - **The browser** decides `tier_today`, `next_change` and `card_price`, because they depend on today's date.
   `pricing.ts` takes the day as an argument and touches nothing on the page, so a test reaches each of their states, and
@@ -163,23 +167,19 @@ treats differently, which the table decides:
 - the same passes, tiers and skipped tickets;
 - for every skip reason whose disposition is not `kept`, the same reason. No reason has another disposition today.
 
-## 3. Exception register: dispositions as data, keyed by identity
+## 3. Site claims: dispositions as data, keyed by identity
 
-`pipeline/exceptions.py` holds one typed `Override` per site whose festivals depart from what they would wait for by
-default: `host, instead_of, then, why, decided_by, decided_on`, the two states of `waits_for`. The register is separate
-from the mapping: a row overrides the instances on one site, never a state. Its sites are ticket shops, so a festival's
-link to one is a known ticket page. `tickets.waiting` gives what a festival waits for by its own data
-(`waits_by_default`), and an override for its page's site replaces that state when it is the one the row names.
+A site claim (`pipeline/claims.py`, `field: site`) says that every festival whose ticket page is on one site departs
+from what it would wait for by default: `host, instead_of, then, made_at, note`, the two states of `waits_for`. It is
+separate from the mapping: a claim overrides the instances on one site, never a state. Its sites are ticket shops, so a
+festival's link to one is a known ticket page. `tickets.waiting` gives what a festival waits for by its own data
+(`waits_by_default`), and the claim for its page's site replaces that state when it is the one the claim names. The
+admin's site claims are files of the `claims/` submodule; today they are sites behind a check that a visitor is human
+(not to be bypassed), sites whose prices change with the visitor's currency or are images, and a site with no ticket ids
+on its page, each waiting for `nothing` instead of `recipe`.
 
-| Identity | Override | Why |
-| -- | -- | -- |
-| host `www.helloasso.com`, `www.tickettailor.com`, `buytickets.at` | waits for `nothing` instead of `recipe` | a check that a visitor is human, not to be bypassed (user, 26 Oct) |
-| host `www.tikello.com` | the same | prices are shown in the visitor's currency, changing between loads |
-| host `kizomba.lt` | the same | no ticket ids on the page |
-| host `www.sarajevosalsa.com` | the same | prices are images |
-
-A row is stale once it departs from nothing: a recipe reads its site now, or no festival the source database lists has
-its known ticket page there. Both change only with a commit (a recipe, the export), never with the date.
+A site claim is stale once it departs from nothing: a recipe reads its site now, or no festival the source database
+lists has its known ticket page there. Both change only with a commit (a recipe, the export), never with the date.
 
 A `none_found` search records a hash of the festival's links in `pages.csv`. When the links change, the search no longer
 holds, and the festival waits for a `page` again.
@@ -194,12 +194,12 @@ A new or unmapped state fails at the first of these that meets it:
    one in its code, and the per-state tests of each choosing function fail.
 3. **The audit:** `uv run --group tickets -m pipeline.audit` runs in **Tests** and first in **Refresh places and
    rates**. It catches what bypasses the first two, such as a hand edit of `pages.csv`, `status.csv`, `pass_prices.csv`,
-   the decisions and plans, or the register. It reads every row of the shared CSVs, and the first reads and answers to
-   their current prompts (one to another prompt waits to be asked again, and is not loaded), each as its record. It
-   reports *"0 refused, 0 stale"*, and otherwise exits 1, naming each instance on stderr:
+   the decisions and plans, or a claim. It reads every row of the shared CSVs, and the first reads and answers to their
+   current prompts (one to another prompt waits to be asked again, and is not loaded), each as its record. It reports
+   *"0 refused, 0 stale"*, and otherwise exits 1, naming each instance on stderr:
    - **Refused:** a value its record refuses, such as one that is no state of its point, named by file, line or place in
      it, and what the record allows.
-   - **Stale:** a register row for a site a recipe now reads, or one no festival has its known ticket page on.
+   - **Stale:** a site claim for a site a recipe now reads, or one no festival has its known ticket page on.
 
 **Waits** states don't fail it. They have an owner, `status.csv` lists them, and the site words them, so a dispute, a
 broken recipe or a ticket no reason fits never stops the site from updating.

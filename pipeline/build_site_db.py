@@ -19,7 +19,7 @@ import tempfile
 import unicodedata
 from collections.abc import Generator, Mapping
 from contextlib import contextmanager
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 from pydantic import BaseModel
@@ -28,14 +28,9 @@ from pipeline import airports, data, enums, export, states
 from pipeline import db as sqlite_db
 from pipeline.countries import NAMES, codes
 from pipeline.db import Reader, Transaction
-from pipeline.enums import Feature, Genre, HomeBasis, MergeDecision, PassKind, People, Role, Style
-from pipeline.extract.prices import COUPLE
-from pipeline.names import norm, sim
+from pipeline.enums import Feature, Genre, HomeBasis, PassKind, People, Role, Style
 from pipeline.records import (
-    ArtistMergeRow,
-    Booking,
     Fare,
-    HomeCountry,
     Person,
     Place,
     PlanRow,
@@ -52,8 +47,8 @@ POPULAR = 10  # bookings that make an artist "popular"
 MAX_AIRPORT_KM = 250
 EARTH_KM = 6371  # the Earth's radius
 KIZ = tuple(g for g, s in states.STYLE_OF.items() if s == Style.KIZOMBA)
-BOOKED_ROLES = (Role.TEACHER, Role.DJ, Role.PERFORMER)
-LINEUP_ROLES = (Role.TEACHER, Role.DJ)  # the roles a line-up counts
+BOOKED_ROLES = tuple(map(Role, states.counted(states.BOOKING)))  # the roles an artist's bookings count
+LINEUP_ROLES = tuple(map(Role, states.counted(states.LINEUP)))  # the roles a line-up counts
 FRIDAY, LATEST_START = 4, 3  # a Friday's weekday; a trip leaves on the Friday after a start this many days before
 COPIED = (  # the export's tables the site keeps, each in the order it refers to the others
     'event_categories',
@@ -235,9 +230,7 @@ create table artist_origin (
 create table artist_stats (
     artist_id integer primary key references artists(id) deferrable initially deferred,
     bookings integer not null,
-    teacher integer not null,
-    dj integer not null,
-    performer integer not null,
+    {booked_roles},  -- the events booked in each role
     first_date text not null,
     last_date text not null,
     home_country text,
@@ -407,7 +400,8 @@ TABLES = sqlite_db.declared(
     DDL.format_map(
         states.SQL_IN
         | {
-            'booked_as': states.sql_in('role', (*BOOKED_ROLES, Role.MC)),
+            'booked_as': states.sql_in('role', BOOKED_ROLES),
+            'booked_roles': ',\n    '.join(f'{r} integer not null' for r in BOOKED_ROLES),
             'priced': enums.Price.PRICED,
             'teacher': Role.TEACHER,
             'listed': enums.Listing.LISTED,
@@ -454,6 +448,11 @@ class Member(BaseModel):
     couple_id: int
     member_id: int
     display_name: str
+
+
+class Given(BaseModel):
+    artist_id: int
+    country: str
 
 
 class Redirect(BaseModel):
@@ -542,119 +541,34 @@ def copied(x: Transaction, table: str) -> None:
     x.execute(f'insert into {t} ({columns}) select {columns} from src.{t}')  # noqa: S608 (the declared names, quoted)
 
 
-@dataclass
-class Artists:
-    """The artists as the site has them: each source key's artist, and the artists folded into others."""
-
-    key_id: dict[str, int]
-    parent: dict[int, int] = field(default_factory=dict[int, int])
-
-    def root(self, a: int) -> int:
-        while self.parent.get(a, a) != a:
-            a = self.parent[a]
-        return a
-
-    def join(self, keep: int, merge: int) -> None:
-        keep, merge = self.root(keep), self.root(merge)
-        if keep != merge:
-            self.parent[merge] = keep
-
-
-def merged(x: Transaction) -> tuple[Artists, int]:
-    """The manual artist merges (pipeline/artist_merges.csv), and how many merge rows there are. Each "merge" row
-    folds merge_key's artist into keep_key's. Merging two couples also merges their members pairwise, by closest
-    name."""
-    keys = x.rows(Keyed, 'select match_key, artist_id from src.artist_keys')
-    own = x.rows(Keyed, 'select match_key, id as artist_id from artists')
-    found = Artists({k.match_key: k.artist_id for k in [*keys, *own]})
-    merge_rows = [r for r in ArtistMergeRow.read() if r.decision == MergeDecision.MERGE]
-    members_of: collections.defaultdict[int, list[tuple[int, str]]] = collections.defaultdict(list)
-    for m in x.rows(
-        Member,
-        'select cm.couple_id, cm.member_id, a.display_name'
-        ' from couple_members cm join artists a on a.id = cm.member_id',
-    ):
-        members_of[m.couple_id].append((m.member_id, norm(m.display_name)))
-    for r in merge_rows:
-        keep, merge = found.key_id.get(r.keep_key), found.key_id.get(r.merge_key)
-        if not keep or not merge:
-            print(f'artist_merges.csv: unknown key in {r.keep_name} / {r.merge_name}; skipped', file=sys.stderr)
-            continue
-        found.join(keep, merge)
-        km_, mm = members_of.get(keep, []), members_of.get(merge, [])
-        if len(km_) == len(mm) == COUPLE:
-            straight = sim(km_[0][1], mm[0][1]) + sim(km_[1][1], mm[1][1])
-            crossed = sim(km_[0][1], mm[1][1]) + sim(km_[1][1], mm[0][1])
-            pairs = zip(km_, mm, strict=True) if straight >= crossed else zip(km_, reversed(mm), strict=True)
-            for (k_id, _), (m_id, _) in pairs:
-                found.join(k_id, m_id)
-    return found, len(merge_rows)
-
-
-def fold(x: Transaction, old: int, new: int) -> None:
-    """An artist folded into another: its mentions, members and spellings (its name among them) become the other's."""
-    x.execute('update mentions set artist_id = ? where artist_id = ?', (new, old))
-    for side in ('couple_id', 'member_id'):  # a pair the other already has is left to the delete
-        x.execute(f'update or ignore couple_members set {side} = ? where {side} = ?', (new, old))  # noqa: S608 (a column of ours)
-        x.execute(f'delete from couple_members where {side} = ?', (old,))  # noqa: S608 (a column of ours)
-    # its spellings join the other's, their mentions added up
-    x.execute(
-        """insert into artist_aliases (artist_id, alias, mentions)
-         select ?, alias, mentions from artist_aliases where artist_id = ?
-         on conflict (artist_id, alias) do update set mentions = mentions + excluded.mentions""",
-        (new, old),
-    )
-    x.execute('delete from artist_aliases where artist_id = ?', (old,))
-    x.execute('delete from artists where id = ?', (old,))
-
-
-def merge_artists(x: Transaction) -> Artists:
-    """Apply the manual merges and the moved bookings to the mentions' artists (a table of this build alone), and
-    book each artist once per event and role; old ids stay reachable through artist_redirects."""
-    x.execute("""create temp table mentions (mention_id integer primary key, event_id integer not null,
-       artist_id integer not null, role text not null, country text)""")
-    x.execute("""insert into mentions select ma.mention_id, m.event_id, ma.artist_id, m.role, m.country
-       from src.mention_artists ma join src.artist_mentions m on m.id = ma.mention_id""")
-    artists, n_merges = merged(x)
-    root = artists.root
-    redirects = [(a, root(a)) for a in list(artists.parent) if root(a) != a]
-    x.insert('artist_redirects', ({'old_id': old, 'new_id': new} for old, new in redirects))
-    for old, new in redirects:
-        fold(x, old, new)
-    # ids the source pipeline retired when it merged artists (src.artist_ids keeps every id it gave) read as the
-    # artist their key belongs to now, so a shared link to one still opens
-    retired = x.rows(
-        Redirect,
-        """select i.artist_id as old_id, k.artist_id as new_id
-           from src.artist_ids i join src.artist_keys k on k.match_key = i.match_key
-           where i.artist_id not in (select id from src.artists)""",
-    )
-    x.insert('artist_redirects', ({'old_id': r.old_id, 'new_id': root(r.new_id)} for r in retired), unless=('old_id',))
-    # A name listed alone can stand for different people across festivals ("Christina"). Each row of
-    # pipeline/artist_bookings.csv moves one festival's booking from the record it was filed under to the person it is.
-    moves = Booking.read()
-    for r in moves:
-        frm, to = artists.key_id.get(r.from_key), artists.key_id.get(r.to_key)
-        if not frm or not to:
-            sys.exit(f'artist_bookings.csv: unknown key in {r.from_name} → {r.to_name}')
-        if not x.exists('select 1 from mentions where event_id = ? and artist_id = ?', (r.event_id, root(frm))):
-            sys.exit(f'artist_bookings.csv: {r.from_name} is not booked at {r.event}')
-        x.execute(
-            'update mentions set artist_id = ? where event_id = ? and artist_id = ?',
-            (root(to), r.event_id, root(frm)),
-        )
-    # a merge or a moved booking can name the same artist twice in one line-up, booked once. A couple's booking counts
-    # for the couple, not each member: a member listed in the same role as their couple at the same event repeats the
-    # couple's booking, so it is marked (as_couple) and left out of line-ups and statistics; a different role (the
-    # couple teaches, one of them DJs) is a solo booking.
-    x.execute("""with booked as (select distinct event_id, artist_id, role from mentions)
-       insert into event_artists (event_id, artist_id, role, as_couple)
+def booked(x: Transaction) -> dict[str, int]:
+    """Each artist booked at an event in a role once (event_artists), marked as_couple when a member is listed in the
+    same role as their couple at the same event: that repeats the couple's booking, so it is left out of line-ups and
+    statistics, while a different role (the couple teaches, one of them DJs) is a solo booking. Old ids read as the
+    artist they went to (artist_redirects). Each key's artist (artist_keys), for the files that name artists by key."""
+    x.execute("""insert into event_artists (event_id, artist_id, role, as_couple)
        select b.event_id, b.artist_id, b.role,
-         (select min(c.artist_id) from booked c join couple_members cm on cm.couple_id = c.artist_id
+         (select min(c.artist_id) from src.event_artists c join couple_members cm on cm.couple_id = c.artist_id
           where c.event_id = b.event_id and c.role = b.role and cm.member_id = b.artist_id)
-       from booked b""")
-    print(f'{n_merges} merge rows, {len(redirects)} artists folded into others, {len(moves)} bookings moved')
-    return artists
+       from src.event_artists b""")
+    # an id no artist has now reads as the artist its keys went to, through the ids that went on in their turn
+    went = {
+        r.old_id: r.new_id
+        for r in x.rows(
+            Redirect,
+            'select artist_id as old_id, retired_into as new_id from src.artist_ids where retired_into is not null',
+        )
+    }
+    x.insert('artist_redirects', ({'old_id': o, 'new_id': settled(went, o)} for o in went))
+    return {k.match_key: k.artist_id for k in x.rows(Keyed, 'select match_key, artist_id from src.artist_keys')}
+
+
+def settled(went: Mapping[int, int], old: int) -> int:
+    """Where an old id ends up, following the ids it went to."""
+    seen = {old}
+    while (old := went[old]) in went and old not in seen:
+        seen.add(old)
+    return old
 
 
 def places(x: Transaction) -> None:
@@ -712,9 +626,9 @@ class Booked:
 
 
 def home(given: str | None, stated: collections.Counter[str]) -> tuple[str | None, HomeBasis | None]:
-    """An artist's home country, only as a source states it: given (pipeline/artist_countries.csv), else the one country
-    line-ups state most often next to their name (each festival's once); when several are stated equally often, the
-    home is contested and none is shown. Where they are booked says nothing of it."""
+    """An artist's home country, only as a source states it: given (a home claim, pipeline/claims.py), else the one
+    country line-ups state most often next to their name (each festival's once); when several are stated equally often,
+    the home is contested and none is shown. Where they are booked says nothing of it."""
     if given:
         return given, HomeBasis.GIVEN
     top = stated.most_common(2)
@@ -725,19 +639,12 @@ def home(given: str | None, stated: collections.Counter[str]) -> tuple[str | Non
     return top[0][0], HomeBasis.STATED
 
 
-def given_homes(x: Transaction, artists: Artists) -> dict[int, str]:
-    """Home countries known from outside the line-ups (pipeline/artist_countries.csv), by the source's match_key."""
-    given: dict[int, str] = {}
-    for r in HomeCountry.read():
-        if r.match_key not in artists.key_id:
-            sys.exit(f'artist_countries.csv: unknown match_key {r.match_key} ({r.name})')
-        if not x.exists('select 1 from countries where code = ?', (r.country,)):
-            sys.exit(f'artist_countries.csv: unknown country {r.country} ({r.name})')
-        given[artists.root(artists.key_id[r.match_key])] = r.country
-    return given
+def given_homes(x: Transaction) -> dict[int, str]:
+    """Home countries a claim gives (the export's artist_homes, pipeline/claims.py)."""
+    return {h.artist_id: h.country for h in x.rows(Given, 'select artist_id, country from src.artist_homes')}
 
 
-def artist_stats(x: Transaction, artists: Artists) -> Booked:
+def artist_stats(x: Transaction) -> Booked:
     """Each artist's bookings, roles, countries and home. A couple's booking counts for the couple, not for each
     member: a member's own bookings are their solo work (event_artists.as_couple)."""
     roles = (json.dumps(BOOKED_ROLES),)
@@ -763,19 +670,20 @@ def artist_stats(x: Transaction, artists: Artists) -> Booked:
     # the countries each festival's line-up states next to an artist's name, once each
     said: collections.defaultdict[int, set[tuple[int, str]]] = collections.defaultdict(set)
     for m in x.rows(
-        Stated, "select artist_id, event_id, country from mentions where country is not null and country != ''"
+        Stated,
+        'select ma.artist_id, m.event_id, m.country from src.mention_artists ma'
+        " join src.artist_mentions m on m.id = ma.mention_id where m.country is not null and m.country != ''",
     ):
         said[m.artist_id] |= {(m.event_id, c) for c in codes(m.country)}
     stated = collections.defaultdict(
         collections.Counter, {a: collections.Counter(c for _, c in s) for a, s in said.items()}
     )
-    x.execute('drop table temp.mentions')
     x.insert(
         'artist_origin',
         ({'artist_id': a, 'country_code': c, 'festivals': n} for a, cnt in stated.items() for c, n in cnt.items()),
     )
     dates = {e.id: e.start_date for e in x.rows(Started, 'select id, start_date from events')}
-    given = given_homes(x, artists)
+    given = given_homes(x)
     # where a home country isn't known, none stands in for it: the artist is of unknown country in the statistics
     # (imported artists, bookings abroad), and booked_most_in only says where they are booked most
     home_of: dict[int, str | None] = {}
@@ -792,9 +700,7 @@ def artist_stats(x: Transaction, artists: Artists) -> Booked:
             {
                 'artist_id': a,
                 'bookings': len(evs),
-                'teacher': role_count[a][Role.TEACHER],
-                'dj': role_count[a][Role.DJ],
-                'performer': role_count[a][Role.PERFORMER],
+                **{r: role_count[a][r] for r in BOOKED_ROLES},
                 'first_date': ds[0],
                 'last_date': ds[-1],
                 'home_country': country,
@@ -876,7 +782,7 @@ def event_stats(x: Transaction, booked: Booked) -> None:
     x.insert('event_stats', rows)
 
 
-def plans(x: Transaction, artists: Artists) -> None:
+def plans(x: Transaction, key_id: Mapping[str, int]) -> None:
     """Who's going (pipeline/people.csv, pipeline/plans.csv). People are ours, not the source's: a name, the artist
     records they are (if any), and whether the site names them on festival cards (featured) or only counts them. A
     plan says a person is going to a festival; booked_as says when they are in its line-up too, as themselves or in a
@@ -884,16 +790,12 @@ def plans(x: Transaction, artists: Artists) -> None:
     people = Person.read()
     person_id = {r.key: i for i, r in enumerate(people, 1)}
     for r in people:
-        if unknown := [k for k in r.artist_keys if k not in artists.key_id]:
+        if unknown := [k for k in r.artist_keys if k not in key_id]:
             sys.exit(f'people.csv: unknown artist key {unknown[0]} ({r.name})')
     x.insert('people', ({'id': person_id[r.key], 'key': r.key, 'name': r.name, 'featured': r.featured} for r in people))
     x.insert(
         'person_artists',
-        (
-            {'person_id': person_id[r.key], 'artist_id': artists.root(artists.key_id[k])}
-            for r in people
-            for k in r.artist_keys
-        ),
+        ({'person_id': person_id[r.key], 'artist_id': key_id[k]} for r in people for k in r.artist_keys),
     )
     plans_ = PlanRow.read()
     for r in plans_:
@@ -963,18 +865,19 @@ DOCS = {
     'fli. Reloaded from data/fares.csv when the page opens.',
     'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest '
     'fare that month to the same airport.',
-    'artist_stats': f'Per artist with bookings of their own: bookings (teacher, DJ or performer at distinct events; a '
-    'couple’s bookings count for the couple, not its members), the events booked as teacher, DJ and performer (one '
-    'event can count in two), home_country when a source states it (home_basis: given in '
-    'pipeline/artist_countries.csv, or the one country line-ups state most often next to their name; contested when '
-    'several are stated equally often, with no home), booked_most_in (the country with most of their bookings, which '
+    'artist_stats': 'Per artist with bookings of their own: bookings (as '
+    f'{", ".join(BOOKED_ROLES)} at distinct events; a couple’s bookings count for the couple, not its members), the '
+    'events booked in each of these roles (one event can count in two), home_country when a source states it '
+    '(home_basis: given by a claim, or the one '
+    'country line-ups state most often next to their name; contested when several are stated equally often, with no '
+    'home), booked_most_in (the country with most of their bookings, which '
     'says nothing of where they are from), countries booked in, bookings abroad (outside the home country; null when '
     f'that is not known), popular = at least {POPULAR} bookings, couple_bookings '
     '= further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
     'event_artists': 'Each artist booked at an event, in a role: once however often its line-up names them. as_couple '
     'is set when a member is listed in the same role as their couple at the same event: that row repeats the '
     'couple’s booking and is left out of line-ups and statistics.',
-    'artist_redirects': 'Artists merged into another, by pipeline/artist_merges.csv or by the source pipeline: old_id '
+    'artist_redirects': 'Artist ids no artist has now (merged into another, by a claim or a reviewed decision): old_id '
     'now reads as new_id.',
     'artist_events': 'Every appearance of an artist: direct (their own booking) or member (via a booked couple, '
     'via_artist_id).',
@@ -1061,10 +964,10 @@ def build(src: Path, out: Path) -> dict[str, object]:
             for table in COPIED:
                 copied(x, table)
             places(x)
-            artists = merge_artists(x)
+            key_id = booked(x)
             fares(x)
-            event_stats(x, artist_stats(x, artists))
-            plans(x, artists)
+            event_stats(x, artist_stats(x))
+            plans(x, key_id)
             built_at = now().isoformat()
             meta(x, built_at)
             site = site_json(x, built_at)

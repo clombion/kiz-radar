@@ -77,7 +77,8 @@ page on kizomba-world. The fares are our own searches.
 | `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices | the **Refresh events** Action |
 | `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Refresh places and rates** Action |
 | `pipeline/tickets/`, `pipeline/pass_prices.csv`, `pipeline/ticket_pages.csv` | Ticket-page recipes, read logs, first reads, the prices read there, and what each festival waits for (`tickets/status.csv`) | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
-| `pipeline/states.py`, `pipeline/exceptions.py` | Every state a data point can be in, what it means and the site's words for it; the instances that depart from their state's default | by hand (see "States") |
+| `pipeline/states.py` | Every state a data point can be in, what it means and the site's words for it | by hand (see "States") |
+| `claims/` | The admin's claims (see "Claims") | the claims repository; its pin by the **Refresh events** Action |
 | `pipeline/prompts/asked/` | Every prompt asked, by its hash | whatever saves an answer or a first read, before it names the hash |
 | `site/*.ts` | The site's code, which the **Publish site** Action compiles into `docs/js/` and publishes with `docs/` | by hand; `site/states.ts` by `mise run generate` |
 
@@ -128,22 +129,16 @@ nearest one in `pipeline/airports.csv` within 250 km. To see what is due today, 
 ## Duplicate artists
 
 The source sometimes splits one act into several records. Names vary in spelling ("Jojo & Jenni" and "Jojo & Jenny") or
-order ("Lukasz & Karolina" and "Karolina & Łukasz"), and some couples appear once per partner (five "JP" records). The
-build merges them using `pipeline/artist_merges.csv`:
+order ("Lukasz & Karolina" and "Karolina & Łukasz"), and some couples appear once per partner (five "JP" records).
+`pipeline/extract/resolve_artists.py` keys every mention, flags the pairs that may be one artist, and merges a pair only
+when a merge claim says so (see "Claims"). Merging two couples also merges their members, paired by the closest name; an
+artist keeps its id, and an id no artist has any more redirects to the artist that absorbed it.
 
-| Column | Meaning |
-| -- | -- |
-| `decision` | `merge` folds `merge_key` into `keep_key`; `separate` records that two artists are different people |
-| `keep_key`, `merge_key` | the source's `match_key` values, which stay stable across exports |
-| `keep_name`, `merge_name`, `note` | for people reading the file; the build ignores them |
-
-Merging two couples also merges their members, paired by the closest name. Bookings, aliases and line-ups move to the
-kept artist, and `artist_redirects` records which old ids went where.
-
-To find the next duplicates, open `pipeline/artist_merge_suggestions.csv`. It lists likely pairs still undecided, ranked
-by `score`. The score starts from name similarity. It rises when both artists come from the same country and falls when
-line-ups state different countries for them; French overseas territories count as France. A `~` in `keep_countries` or
-`merge_countries` marks a country inferred from where the artist is booked, which never counts against a match.
+To find the next duplicates, open `pipeline/artist_merge_suggestions.csv` (`mise run suggest-merges`). It lists likely
+pairs still undecided, ranked by `score`. The score starts from name similarity. It rises when line-ups state a country
+for both artists that they share, and falls when they state countries for both that they don't (`countries`: `same`,
+`different`, `unknown`); French overseas territories count as France, and where an artist is booked says nothing of
+where they are from. Bookings are the site's: festivals as teacher, DJ, performer or MC, a couple's counted once.
 
 The `calendar` column checks dates:
 
@@ -152,13 +147,29 @@ The `calendar` column checks dates:
 - **same line-up:** named in one line-up. Shown for review but not scored, since festivals list artists per room.
 - **no clash:** nothing either way.
 
-`calendar_note` names the events behind each verdict. To decide a pair, copy its row into `artist_merges.csv` and fill
-in `decision`. Pushing the change rebuilds the site and refreshes the suggestions.
+`calendar_note` names the events behind each verdict. To decide a pair, write a merge claim naming its `keep_key` and
+`merge_key` with `merge` or `separate`.
 
 A name listed on its own can stand for different people at different festivals: every solo "Christina" lands in one
-record. `pipeline/artist_bookings.csv` moves one festival's booking to the person it belongs to. Each row gives the
-`event_id`, the `from_key` it was filed under, the `to_key` of the person (both `match_key` values), and names and a
-note for people reading the file. The build stops if a key is unknown or the booking isn't there.
+record. A booking claim moves one festival's booking from the key it was filed under to the person it belongs to.
+
+## Claims
+
+A claim decides a fact no step can derive: that two artists are one (`merge`, with `merge` or `separate`), where an
+artist is from (`home`), which artist one festival's line-up means (`booking`), or what the festivals on a ticket site
+wait for instead of their default (`site`, for a site a recipe can't read). `pipeline/claims.py` holds their records.
+Each claim names its subject by keys mentions produce, has a time and a note, and comes by one of three channels, which
+give it its priority: the admin's, then an organiser's (to come), then the pipeline's own (the merge review's decisions
+in `pipeline/extract/merges.csv`). Per subject the highest channel decides, then the latest claim, then the claim with
+the greater digest, so the outcome doesn't depend on the order claims are read in.
+
+The admin's claims live in [kiz-radar-claims](https://github.com/clombion/kiz-radar-claims), checked out here as the
+`claims/` submodule (`mise run hooks` checks it out). Each claim is one JSON file named by the digest of its text, so
+writing it again changes nothing. **Refresh events** resolves the artists under the latest claims and commits their pin
+with the export they made, so reverting a commit restores both. The export's `claims` table holds every claim and
+whether it decides its subject (`applied`), another comes first (`overridden`), or it names a key no mention produces
+any more (`orphaned`, decided by nothing until it is re-pointed). `mise run audit` names a claim file its record refuses
+or that is misnamed.
 
 ## Who's going
 
@@ -259,17 +270,17 @@ weekdays or dance styles are different passes; a pass sold with a meal is a pack
 its model once with the checker's lines. The run fails, after committing, when a page broke its recipe, a festival's
 read failed three times in a row, or a festival no longer fits its first read; `todo` then marks it for a session, where
 `retry` reads it with a visible browser. A festival's ticket page is known when it is its first read's, the shop an
-agent recorded, or its first full link to a ticket shop (a site a recipe reads, or one `pipeline/exceptions.py` names);
-a link to anything else, the festival's own site say, is no ticket page. Every festival to come waits for something or
-for nothing, and `pipeline/tickets/status.csv` (written by `page`, `read`, `retry`, `record` and `run`, for every
-festival the export lists, a past one waiting for nothing) says which, with its first-read state, how it sells and its
-known page: its ticket page found (kizomba-world cut the link short, gave none, or gave no link to a ticket shop; an
-agent records in `pipeline/tickets/pages.csv`, through `tickets.py page`, how the festival sells: in a shop, with its
-page; not yet, when sales are announced but not open; offline, by message, e-mail, form or bank transfer; closed; or
-none found, when a search of its links and the web found no ticket page, which holds until its links change), a recipe
-for its site, its recipe fixed, its sales to open, an agent to settle a dispute, or a session for a page that keeps
-refusing. A site a recipe can't read (behind a check that a visitor is human, say) has a row in
-`pipeline/exceptions.py`, and its festivals wait for nothing. That is backlog, so it never fails the run.
+agent recorded, or its first full link to a ticket shop (a site a recipe reads, or one a site claim names); a link to
+anything else, the festival's own site say, is no ticket page. Every festival to come waits for something or for
+nothing, and `pipeline/tickets/status.csv` (written by `page`, `read`, `retry`, `record` and `run`, for every festival
+the export lists, a past one waiting for nothing) says which, with its first-read state, how it sells and its known
+page: its ticket page found (kizomba-world cut the link short, gave none, or gave no link to a ticket shop; an agent
+records in `pipeline/tickets/pages.csv`, through `tickets.py page`, how the festival sells: in a shop, with its page;
+not yet, when sales are announced but not open; offline, by message, e-mail, form or bank transfer; closed; or none
+found, when a search of its links and the web found no ticket page, which holds until its links change), a recipe for
+its site, its recipe fixed, its sales to open, an agent to settle a dispute, or a session for a page that keeps
+refusing. A site a recipe can't read (behind a check that a visitor is human, say) has a site claim, and its festivals
+wait for nothing. That is backlog, so it never fails the run.
 
 `pipeline/read_page.py` reads any one page as a browser shows it, for one-off checks; `tickets.py` is the one scheduled
 reader that uses it:
@@ -290,7 +301,7 @@ and the schemas the models answer to, generated from those records; the definiti
 So a new state is one new row, words included, and a value that is no state fails: when it is written or read (a record,
 a check), in the tests (a name in the code the table doesn't have), or in `pipeline/audit.py`, which runs first in
 **Refresh places and rates** and in **Tests** and names each value its record refuses in the shared files and in the
-answers and first reads the load takes (those to the current prompt), and each row of `pipeline/exceptions.py` that
+answers and first reads the load takes (those to the current prompt) and in the admin's claims, and each site claim that
 departs from nothing any more: a recipe reads its site now, or no festival has its known ticket page there.
 
 ```bash
@@ -308,10 +319,10 @@ to one edition, so next year's needs a row of its own. The build stops if an `ev
 
 ## Artists' home countries
 
-The site shows where an artist is from only when it is known: given in `pipeline/artist_countries.csv`, or stated next
-to their name in a line-up. Each row of that file gives the source's `match_key` (as in `artist_merges.csv`), the
-country code, and a name and note for people reading the file. Where nothing is known, the artist's page says where they
-are booked most instead, without a flag; the statistics on imported artists use that country too.
+The site shows where an artist is from only when a source says so: a home claim, else the one country line-ups state
+most often next to their name, each festival once. When line-ups state several countries equally often, the home is
+contested and none is shown. Where nothing is known, no country stands in for it: the statistics count the artist as of
+unknown country, and their page says only where they are booked most, without a flag.
 
 ## Updating the events
 

@@ -195,6 +195,16 @@ create index source_ids_event on source_ids(event_id);
 insert into source_ids (source, source_id, event_id) select 'kizomba-world', id, id from events;
 """,
     ),
+    # 5: where a retired artist id went, so that a link to it still opens the artist (resolve_artists.retired_into)
+    rebuilt(
+        """CREATE TABLE artist_ids (
+    artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
+    match_key TEXT NOT NULL UNIQUE, -- the key it was given to
+    retired_into INTEGER            -- the artist its keys went to once no artist had it; NULL while one has
+) STRICT;
+""",
+        added={'artist_ids': ('retired_into',)},
+    ),
 )
 
 

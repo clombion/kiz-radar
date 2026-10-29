@@ -1,6 +1,6 @@
 """Resolve artist mentions into artists, couples and groups, and link them to events.
 
-Reads artist_mentions (from load_extract.py) and pipeline/extract/merges.csv; writes:
+Reads artist_mentions (from load_extract.py) and every claim (pipeline/claims.py); writes:
   artists                 id, display_name, kind (person | couple | group | organisation), match_key
   artist_aliases          every name an artist was written as
   couple_members          couple/group id -> member person id
@@ -9,7 +9,9 @@ Reads artist_mentions (from load_extract.py) and pipeline/extract/merges.csv; wr
   artist_merge_candidates pairs that may be the same artist, with evidence, for review
   merge_reason_definitions
                           reason -> definition, from pipeline/states.py (the reasons artist_merge_candidates gives)
-  artist_merge_decisions  every merge/separate decision applied, copied from pipeline/extract/merges.csv
+  artist_merge_decisions  every merge/separate decision applied: the merge claims that decide their pair
+  artist_homes            each artist's home country as a home claim gives it
+  claims                  every claim, with whether it decides its subject (claim states, pipeline/states.py)
   artist_group_definitions, artist_group_aliases
                           the named groups from pipeline/extract/groups.csv: note,
                           members and the spellings that mean them
@@ -26,11 +28,12 @@ Matching rules:
     (dj / dance), and a single-word couple member to that couple.
   - Near-matches are written to artist_merge_candidates, with their reason (pipeline/states.py, merge_reason), only
     when backed by evidence: a shared stated country or a shared partner, or, for two names of several words
-    spelled alike, events in a shared country. They are only merged when pipeline/extract/merges.csv says so.
+    spelled alike, events in a shared country. They are only merged when a merge claim says so.
 
-pipeline/extract/merges.csv columns: key_a, key_b, decision (merge | separate), prompt (the review prompt's hash, in
-pipeline/prompts/asked/; empty when decided by hand), note. Keys are match_key values. A review that could not tell
-(unsure) is never stored: the pair stays in artist_merge_candidates, undecided.
+pipeline/extract/merges.csv, the merge review's decisions (its model claims): key_a, key_b, decision (merge | separate),
+prompt (the review prompt's hash, in pipeline/prompts/asked/), note. Keys are keys mentions produce. A review that
+could not tell (unsure) is never stored: the pair stays in artist_merge_candidates, undecided. A claim's keys are
+mentions' (artist_keys.produced): one naming a key no mention produces any more is orphaned, and decides nothing.
 
 pipeline/extract/groups.csv names an act that several people perform as (a DJ duo booked under one name):
 group_key, display_name, members and aliases (both ';'-separated match_key values), note. Every alias
@@ -39,15 +42,17 @@ include the group's bookings.
 
 Artist ids are stable: artist_ids keeps every id ever given and the match_key it was given to. An artist
 keeps the id of its own key, else the lowest earlier id among the keys it absorbed; a new artist gets the
-next id never used. An id whose artist was merged into another reads, through its key in artist_keys, as
-the artist that absorbed it.
+next id never used. An id no artist has any more is retired into the artist its keys resolve to now
+(artist_ids.retired_into), which the site redirects it to.
 
 Usage: mise run resolve
 """
 
 import argparse
+import collections
 import functools
 import itertools
+import json
 import math
 import re
 import sys
@@ -62,15 +67,16 @@ from typing import NamedTuple, Self
 
 from pydantic import BaseModel
 
-from pipeline import data, export, states
+from pipeline import claims, data, export, states
 from pipeline import db as sqlite_db
 from pipeline.countries import codes
 from pipeline.db import Reader, Transaction
-from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Model, Role, Via
+from pipeline.enums import ArtistKind, ClaimState, MergeDecision, MergeReason, Model, Role, Via
 from pipeline.extract import run_log
 from pipeline.extract.answers import log, logged
 from pipeline.extract.prices import COUPLE
-from pipeline.records import ANSWERS, Group, MergeReview, MergeRow, Record
+from pipeline.names import norm, sim
+from pipeline.records import ANSWERS, Group, MergeReview, Record
 from pipeline.text import tidy_name
 
 SPLIT_ROLES = {Role.TEACHER, Role.DJ, Role.PERFORMER, Role.MC}
@@ -90,8 +96,9 @@ CREATE TABLE artists (
     match_key TEXT NOT NULL UNIQUE
 ) STRICT;
 CREATE TABLE artist_keys (
-    match_key TEXT PRIMARY KEY,   -- every key a mention or member produced, including merged ones
-    artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED
+    match_key TEXT PRIMARY KEY,   -- every key a mention or member produced, merged ones included, and each artist's
+    artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
+    produced INTEGER NOT NULL CHECK (produced IN (0, 1))  -- a mention's key, which a claim names; else an artist's own
 ) STRICT;
 CREATE TABLE artist_aliases (
     artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
@@ -128,12 +135,26 @@ CREATE TABLE artist_merge_candidates (
     PRIMARY KEY (key_a, key_b)
 ) STRICT;
 CREATE TABLE artist_merge_decisions (
-    key_a TEXT NOT NULL,          -- match_key values, as in artist_keys
+    key_a TEXT NOT NULL,          -- the keys mentions produce, as in artist_keys
     key_b TEXT NOT NULL,
     decision TEXT NOT NULL CHECK (decision IN ({stored_decision})),
-    prompt TEXT,                  -- the hash of the review prompt that decided it, NULL when decided by hand
-    note TEXT,
+    source TEXT NOT NULL CHECK (source IN ({claim_source})),  -- the claim's that decides it (claims)
+    note TEXT NOT NULL,
     PRIMARY KEY (key_a, key_b)
+) STRICT;
+CREATE TABLE artist_homes (
+    artist_id INTEGER PRIMARY KEY REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
+    country TEXT NOT NULL,        -- where a claim says the artist is from
+    source TEXT NOT NULL CHECK (source IN ({claim_source})),
+    note TEXT NOT NULL
+) STRICT;
+CREATE TABLE claims (
+    id TEXT PRIMARY KEY,          -- the digest of its text
+    source TEXT NOT NULL CHECK (source IN ({claim_source})),
+    subject TEXT NOT NULL,        -- JSON: its field, and the thing of that field it is about
+    claim TEXT NOT NULL,          -- JSON: the claim, as its file holds it
+    made_at TEXT NOT NULL,
+    state TEXT NOT NULL CHECK (state IN ({claim}))
 ) STRICT;
 CREATE TABLE artist_group_definitions (
     group_key TEXT PRIMARY KEY,
@@ -156,7 +177,8 @@ CREATE VIEW artist_events AS
 # the export's table of every id given, which this step only adds to (tests/test_steps.py holds the export to it)
 KEPT = sqlite_db.declared("""CREATE TABLE artist_ids (
     artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
-    match_key TEXT NOT NULL UNIQUE  -- the key it was given to
+    match_key TEXT NOT NULL UNIQUE, -- the key it was given to
+    retired_into INTEGER            -- the artist its keys went to once no artist had it; NULL while one has
 ) STRICT""")
 # a review that could not tell (unsure) decides nothing: the pair stays a candidate, and merges.csv never holds it
 STORED = (MergeDecision.MERGE, MergeDecision.SEPARATE)
@@ -210,11 +232,6 @@ def person_key(name: str, role: Role, couple_scope: str | None) -> str:
     if len(words_of(name)) > 1:
         return f'p:{k}'
     return f'p:{k}@{couple_scope}' if couple_scope else f'p:{k}@{role_family(role)}'
-
-
-def decided(rows: Iterable[MergeRow]) -> dict[frozenset[str], MergeDecision]:
-    """Each decision, by the keys it decides."""
-    return {frozenset((r.key_a, r.key_b)): r.decision for r in rows}
 
 
 class UnionFind:
@@ -277,6 +294,16 @@ TABLE_DOCS = {
 }
 
 
+@dataclass(frozen=True)
+class Claimed:
+    """The claims that decide, each on keys a mention produces; and every claim's state."""
+
+    merges: Mapping[frozenset[str], claims.Made[claims.MergeClaim]]
+    homes: Sequence[claims.Made[claims.HomeClaim]]
+    bookings: Sequence[claims.Made[claims.BookingClaim]]
+    state: dict[str, ClaimState]  # by claim id
+
+
 class Resolved(NamedTuple):
     """What resolving the mentions came to: how many mentions, artists of each kind, candidates listed, same-name
     pairs kept apart for want of evidence, and named groups."""
@@ -288,7 +315,7 @@ class Resolved(NamedTuple):
     groups: int
 
 
-def record_steps(con: Transaction, resolved: Resolved, rows: Sequence[MergeRow]) -> None:
+def record_steps(con: Transaction, resolved: Resolved, decided: Claimed) -> None:
     n_mentions, kinds_count, n_candidates, n_unsupported, n_groups = resolved
     run_log.document(con, TABLE_DOCS, 'pipeline/extract/resolve_artists.py')
     reviews = sorted((data(ANSWERS) / 'merge_review').glob('*.json'))
@@ -306,8 +333,8 @@ def record_steps(con: Transaction, resolved: Resolved, rows: Sequence[MergeRow])
                 '6_merge_review',
                 'Decide, for each pair of artist records the matching rules flagged as possibly the same artist, '
                 'whether they are (merge), are not (separate), or the evidence does not settle it (unsure, left '
-                'unmerged). '
-                'Decisions are written to pipeline/extract/merges.csv, where manual decisions override them.',
+                'unmerged). Decisions are written to pipeline/extract/merges.csv, as model claims: an admin claim on a '
+                'pair comes first.',
                 f'{len(reviews)} subagents ({REVIEWER}), one batch each',
                 performed_at=max(logged(followed, f'merge_review/{f.name}').answered_at for f in reviews),
                 model=REVIEWER,
@@ -322,20 +349,20 @@ def record_steps(con: Transaction, resolved: Resolved, rows: Sequence[MergeRow])
         run_log.Step(
             '7_resolve_artists',
             'Group artist mentions into people, couples, groups and organisations: exact name keys merge automatically '
-            '(single-word names only within their couple or role family), reviewed and manual merge decisions are '
-            'applied, named groups from pipeline/extract/groups.csv absorb their spellings, and near-matches without a '
-            'decision are kept apart and listed in artist_merge_candidates.',
+            '(single-word names only within their couple or role family), the claims decide merges (two merged '
+            "couples' members too), moved bookings and given homes, named groups from pipeline/extract/groups.csv "
+            'absorb their spellings, and near-matches without a decision are kept apart and listed in '
+            'artist_merge_candidates.',
             'pipeline/extract/resolve_artists.py',
-            inputs='table artist_mentions; pipeline/extract/merges.csv; pipeline/extract/groups.csv',
+            inputs='table artist_mentions; the claims (pipeline/claims.py); pipeline/extract/groups.csv',
             outputs='tables artists, artist_aliases, artist_keys, couple_members, mention_artists, '
-            'artist_merge_candidates, merge_reason_definitions, artist_merge_decisions, artist_group_definitions, '
-            'artist_group_aliases; '
-            'views event_artists, artist_events',
+            'artist_merge_candidates, merge_reason_definitions, artist_merge_decisions, artist_homes, claims, '
+            'artist_group_definitions, artist_group_aliases; views event_artists, artist_events',
             details={
                 'mentions': n_mentions,
                 'artists_by_kind': kinds_count,
-                'merge_decisions': {str(d): sum(1 for r in rows if r.decision == d) for d in STORED},
-                'manual_decisions': sum(1 for r in rows if r.prompt is None),
+                'claims': dict(Counter(str(v) for v in decided.state.values())),
+                'merge_decisions': dict(Counter(f'{m.source} {m.claim.decision}' for m in decided.merges.values())),
                 'named_groups': n_groups,
                 'candidates_listed': n_candidates,
                 'same_name_pairs_kept_apart_without_evidence': n_unsupported,
@@ -371,6 +398,16 @@ def stable_ids(con: Reader, final_key: Mapping[str, str]) -> dict[str, int]:
             ids[fk], next_id = next_id, next_id + 1
         taken.add(ids[fk])
     return ids
+
+
+def retired_into(con: Reader, final_key: Mapping[str, str], ids: Mapping[str, int]) -> dict[int, int]:
+    """Each id no artist has now, and the artist its keys of the last run mostly resolve to now, when any does."""
+    current = set(ids.values())
+    was: defaultdict[int, Counter[int]] = defaultdict(Counter)
+    for r in con.rows(Keyed, 'SELECT match_key, artist_id FROM artist_keys'):
+        if r.artist_id not in current and r.match_key in final_key:
+            was[r.artist_id][ids[final_key[r.match_key]]] += 1
+    return {old: now.most_common(1)[0][0] for old, now in was.items()}
 
 
 class Mention(Record):
@@ -435,11 +472,22 @@ class Gathered:
         )
 
 
+def apart(pkeys: list[str]) -> list[str]:
+    """Members' keys, each its own: members who share a name ("Chiara & Chiara") are two people, keyed by their
+    place among those who share it (#1, #2)."""
+    seen: collections.Counter[str] = collections.Counter()
+    out: list[str] = []
+    for pk in pkeys:
+        seen[pk] += 1
+        out.append(f'{pk}#{seen[pk]}' if pkeys.count(pk) > 1 else pk)
+    return out
+
+
 def person_keys(keys: Gathered, m: Mention) -> tuple[str, list[str]]:
     """(the mention's key, the person keys of its members) for a mention of people: one, a couple or a group."""
     parts = members_of(m.name_as_written, m.role)
     scope = '+'.join(sorted(token_key(p) for p in parts)) if len(parts) > 1 else None
-    pkeys = [person_key(p, m.role, scope) for p in parts]
+    pkeys = apart([person_key(p, m.role, scope) for p in parts])
     for p, pk in zip(parts, pkeys, strict=True):
         keys.names[pk].append(p)
         keys.kinds[pk] = ArtistKind.PERSON
@@ -454,8 +502,8 @@ def person_keys(keys: Gathered, m: Mention) -> tuple[str, list[str]]:
     key = 'c:' + scope
     keys.kinds[key] = ArtistKind.COUPLE if len(pkeys) == COUPLE else ArtistKind.GROUP
     keys.members[key] = pkeys
-    for p, pk in zip(parts, pkeys, strict=True):
-        keys.member_forms[key][token_key(p)].add(pk)
+    for form, pk in zip(apart([token_key(p) for p in parts]), pkeys, strict=True):  # a member's spellings, by place
+        keys.member_forms[key][form].add(pk)
     return key, pkeys
 
 
@@ -478,6 +526,43 @@ def keyed(mentions: Iterable[Mention], groups: Iterable[Group]) -> Keys:
         keys.kinds[g.group_key] = ArtistKind.GROUP
         keys.members[g.group_key] = [m for m in g.members if m in keys.kinds]
     return keys.keys()
+
+
+def named(c: claims.AnyClaim) -> tuple[str, ...]:
+    """The keys a claim names, which a mention must produce for it to apply."""
+    match c:
+        case claims.MergeClaim():
+            return c.keys
+        case claims.HomeClaim():
+            return (c.key,)
+        case claims.BookingClaim():
+            return (c.from_key, c.to_key)
+        case claims.SiteClaim():  # tickets applies it
+            return ()
+
+
+def claimed(keys: Keys, made: Sequence[claims.Made]) -> Claimed:
+    """Each subject's deciding claim, kept when every key it names is one a mention produces, else orphaned (ignored
+    until re-pointed, never stopping the run); the others are overridden."""
+    state = {m.id: ClaimState.OVERRIDDEN for m in made}
+    merges: dict[frozenset[str], claims.Made[claims.MergeClaim]] = {}
+    homes: list[claims.Made[claims.HomeClaim]] = []
+    bookings: list[claims.Made[claims.BookingClaim]] = []
+    for m in claims.resolved(made).values():
+        if any(k not in keys.kinds for k in named(m.claim)):
+            state[m.id] = ClaimState.ORPHANED
+            continue
+        state[m.id] = ClaimState.APPLIED
+        match m.claim:
+            case claims.MergeClaim() as c:
+                merges[frozenset(c.keys)] = claims.Made(c, m.source)
+            case claims.HomeClaim() as c:
+                homes.append(claims.Made(c, m.source))
+            case claims.BookingClaim() as c:
+                bookings.append(claims.Made(c, m.source))
+            case claims.SiteClaim():
+                pass
+    return Claimed(merges, homes, bookings, state)
 
 
 class Candidate(NamedTuple):
@@ -690,6 +775,8 @@ def merged(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> UnionF
     for pair, decision in merges.items():
         if decision == MergeDecision.MERGE and len(pair) == PAIR and all(k in keys.kinds for k in pair):
             uf.join(pair)
+            for members in paired(keys, *sorted(pair)):
+                uf.join(members)
     # Once partners are merged, further couples' single-word members align: repeat until no new merge appears.
     before = 0
     while (now := uf.roots(keys.kinds)) != before:
@@ -697,6 +784,20 @@ def merged(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> UnionF
         for spellings in same_members(keys, uf):
             uf.join(spellings)
     return uf
+
+
+def paired(keys: Keys, a: str, b: str) -> list[tuple[str, str]]:
+    """Two couples' members, each with the other's member of the closest name: the people two merged couples are."""
+    ma, mb = keys.members.get(a, ()), keys.members.get(b, ())
+    if not len(ma) == len(mb) == COUPLE:
+        return []
+
+    def alike(x: str, y: str) -> float:
+        return sim(norm(keys.names[x][0]), norm(keys.names[y][0]))
+
+    straight = alike(ma[0], mb[0]) + alike(ma[1], mb[1])
+    crossed = alike(ma[0], mb[1]) + alike(ma[1], mb[0])
+    return list(zip(ma, mb if straight >= crossed else list(reversed(mb)), strict=True))
 
 
 def same_members(keys: Keys, uf: UnionFind) -> list[set[str]]:
@@ -762,7 +863,14 @@ def write_artists(
             for a, n in alias_counts[fk].items()
         ),
     )
-    con.insert('artist_keys', ({'match_key': k, 'artist_id': ids[fk]} for k, fk in final_key.items()))
+    con.insert(
+        'artist_keys', ({'match_key': k, 'artist_id': ids[fk], 'produced': 1} for k, fk in sorted(final_key.items()))
+    )
+    con.insert(  # each artist's own key, a couple's made of its members' when no mention produced it
+        'artist_keys',
+        ({'match_key': fk, 'artist_id': i, 'produced': 0} for fk, i in sorted(ids.items())),
+        unless=('match_key',),
+    )
     con.insert(
         'couple_members',
         (
@@ -790,32 +898,73 @@ def main() -> None:
         )
         groups = Group.read()
         keys = keyed(mentions, groups)
-        rows = MergeRow.read()
-        merges = decided(rows)
+        made = claims.every()
+        decided = claimed(keys, made)
+        merges = {pair: MergeDecision(m.claim.decision) for pair, m in decided.merges.items()}
         found, unsupported_same_name = candidates(keys, merges)
         final_key = final_keys(keys, merged(keys, merges), groups)
 
-        # keeping the ids artists had
+        # keeping the ids artists had, and where the ids no artist has now went
         ids = stable_ids(con, final_key)
+        moved_on = retired_into(con, final_key, ids)
         con.remake(TABLES)
         con.insert('artist_ids', ({'artist_id': i, 'match_key': fk} for fk, i in ids.items()), unless=('artist_id',))
+        con.executemany(
+            'UPDATE artist_ids SET retired_into = ? WHERE artist_id = ?', [(n, o) for o, n in moved_on.items()]
+        )
         write_artists(con, keys, final_key, groups, ids)
         con.insert(
             'merge_reason_definitions',
             ({'reason': s.key, 'definition': s.criterion} for s in states.of('merge_reason')),
         )
         found = [c for c in found if c.key_a == c.key_b or final_key[c.key_a] != final_key[c.key_b]]
+        artist_of = {m.id: ids[final_key[keys.mention_key[m.id]]] for m in mentions}
+        for b in decided.bookings:  # one festival's line-up means another artist
+            c = b.claim
+            frm, to = ids[final_key[c.from_key]], ids[final_key[c.to_key]]
+            hits = [m.id for m in mentions if m.event_id == c.event_id and artist_of[m.id] == frm]
+            if not hits:
+                decided.state[b.id] = ClaimState.ORPHANED
+            artist_of |= dict.fromkeys(hits, to)
+        con.insert('mention_artists', ({'mention_id': i, 'artist_id': a} for i, a in artist_of.items()))
+        homes: dict[int, claims.Made[claims.HomeClaim]] = {}
+        for h in sorted(decided.homes, key=lambda h: h.rank()):  # one artist's keys: the claim that comes first
+            homes[ids[final_key[h.claim.key]]] = h
         con.insert(
-            'mention_artists',
-            ({'mention_id': m.id, 'artist_id': ids[final_key[keys.mention_key[m.id]]]} for m in mentions),
+            'artist_homes',
+            (
+                {'artist_id': a, 'country': h.claim.country, 'source': h.source, 'note': h.claim.note}
+                for a, h in homes.items()
+            ),
         )
         con.insert('artist_merge_candidates', (c._asdict() for c in found))
         con.insert(
             'artist_merge_decisions',
             (
-                {'key_a': r.key_a, 'key_b': r.key_b, 'decision': r.decision, 'prompt': r.prompt, 'note': r.note}
-                for r in rows
+                {
+                    'key_a': m.claim.keys[0],
+                    'key_b': m.claim.keys[1],
+                    'decision': m.claim.decision,
+                    'source': m.source,
+                    'note': m.claim.note,
+                }
+                for m in decided.merges.values()
             ),
+        )
+        con.insert(
+            'claims',
+            (
+                {
+                    'id': m.id,
+                    'source': m.source,
+                    'subject': json.dumps(claims.subject(m.claim)),
+                    'claim': claims.text(m.claim),
+                    'made_at': m.claim.made_at,
+                    'state': decided.state[m.id],
+                }
+                for m in made
+            ),
+            unless=('id',),
         )
         con.insert(
             'artist_group_definitions',
@@ -833,11 +982,12 @@ def main() -> None:
             'artist_group_aliases', ({'group_key': g.group_key, 'match_key': a} for g in groups for a in g.aliases)
         )
         kinds_count = {k.kind: k.n for k in con.rows(Counted, 'SELECT kind, count(*) AS n FROM artists GROUP BY kind')}
-        record_steps(con, Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups)), rows)
+        record_steps(con, Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups)), decided)
         print(
             f'mentions {len(mentions)} -> artists {sum(kinds_count.values())} {kinds_count};'
             f' candidates {len(found)} ({sum(1 for c in found if c.decision)} reviewed);'
-            f' same-name pairs kept apart for lack of evidence: {unsupported_same_name}'
+            f' same-name pairs kept apart for lack of evidence: {unsupported_same_name};'
+            f' claims {dict(Counter(str(v) for v in decided.state.values()))}'
         )
 
 
