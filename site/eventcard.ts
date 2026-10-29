@@ -8,7 +8,7 @@ import { button, h, own } from './dom.ts';
 import { type Festival, styleLine } from './festivals.ts';
 import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
-import { convert, money, step, total } from './money.ts';
+import { approximately, convert, money, step } from './money.ts';
 import { openPasses, riseNote } from './passes.ts';
 import { goingLine } from './plans.ts';
 import { artistHref } from './routes.ts';
@@ -113,13 +113,7 @@ function prices(e: Festival): HTMLElement[] {
     }),
   );
   const rise = now.next ? ` · ${riseNote(now.next)}` : '';
-  const sum =
-    flown(e) || e.fare?.home
-      ? total([
-          [now.tier.amount, now.tier.currency],
-          [e.fare?.home ? 0 : (e.fare?.price ?? 0), 'EUR'],
-        ])
-      : null;
+  const sum = e.trip === null ? null : approximately(e.trip);
   if (sum === null) return [h('p', { class: 'pass-price' }, '🎟 ', pass, rise), flight(e)];
   return [
     h(

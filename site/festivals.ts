@@ -3,7 +3,7 @@
 import { q, sql } from './db.ts';
 import type { Kid } from './dom.ts';
 import { MORE_TRAITS, TRAITS } from './icons.ts';
-import { convert } from './money.ts';
+import { convert, rounded } from './money.ts';
 import { priceToday } from './passes.ts';
 import { type Goer, goersOf } from './plans.ts';
 import type { PriceLine } from './pricing.ts';
@@ -69,11 +69,12 @@ function fareOf(e: EventRow, fares: ReadonlyMap<string, number>): Festival['fare
   const flown = e.airport === null || e.weekend_friday === null ? undefined : fares.get(e.airport + e.weekend_friday);
   return flown === undefined ? null : { price: flown };
 }
-// the pass and the flight together, in the visitor's currency, when both have a price
+// the pass and the flight together, in the visitor's currency and rounded as the card shows it (so that a price limit
+// keeps what the card says is within it), when both have a price
 function tripOf(price: Festival['price'], fare: Festival['fare']): number | null {
   const pass = 'now' in price ? convert(price.now.tier.amount, price.now.tier.currency) : null,
     flight = fare ? convert(fare.price) : null;
-  return pass === null || flight === null ? null : pass + flight;
+  return pass === null || flight === null ? null : rounded(pass + flight);
 }
 export function withDetails(rows: readonly EventRow[]): Festival[] {
   const { heads, fares, promos } = details();

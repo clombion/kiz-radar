@@ -42,23 +42,17 @@ function written(n: number, c: string): string {
   if (c === 'USD') return `$${decimals(n)}`;
   return `${decimals(n)} ${c}`;
 }
+// an amount converted, as an approximation shows it: whole, and in kroner to the ten
+export const rounded = (n: number): number => (currency === 'NOK' ? Math.round(n / 10) * 10 : Math.round(n));
+// an amount already in the visitor's currency and rounded, as an approximation: "~4 130 kr"
+export const approximately = (n: number): string => `~${written(n, currency)}`;
 // "~1 850 kr" for €160; "€160" when euros are chosen; "160 CHF" when there is no rate to convert with. An approx
 // amount (a flight price, which changes by the hour) reads "~" in every currency.
 export function money(amount: number, from = 'EUR', { approx = false } = {}): string {
   const n = convert(amount, from);
   if (n == null) return written(amount, from);
   if (from === currency) return (approx ? '~' : '') + written(n, currency);
-  return `~${written(currency === 'NOK' ? Math.round(n / 10) * 10 : Math.round(n), currency)}`;
-}
-// the sum of [amount, currency] pairs in the visitor's currency, "~4 130 kr"; null when one has no rate
-export function total(parts: readonly (readonly [number, string])[]): string | null {
-  let n = 0;
-  for (const [a, c] of parts) {
-    const x = convert(a, c);
-    if (x == null) return null;
-    n += x;
-  }
-  return `~${written(currency === 'NOK' ? Math.round(n / 10) * 10 : Math.round(n), currency)}`;
+  return approximately(rounded(n));
 }
 
 // "Prices in: kr · € · $": each reloads this page, at the same place, in that currency
