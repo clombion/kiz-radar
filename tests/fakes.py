@@ -1,12 +1,16 @@
 """What the tests stand in for: Claude's Messages API, as a client (ask.Client) answering each request with the next of
-its replies, as a real message of the SDK, and keeping what it was asked; and a database, as the type of the memory
+its replies, as a real message of the SDK, or failing with the next error (Cut: mid-stream, once the message is billed),
+and keeping what it was asked; and a database, as the type of the memory
 fixture (conftest.py); time.sleep, without the wait; and the claims, the tests' own."""
 
 import datetime as dt
 from collections.abc import Callable, Sequence
+from dataclasses import dataclass
 from types import TracebackType
 from typing import Self
 
+import anthropic
+import httpx2
 from anthropic.types import Message, MessageParam, StopReason, TextBlock, Usage
 
 from pipeline.claims import SiteClaim
@@ -52,8 +56,23 @@ def message(text: str, stop_reason: StopReason = 'end_turn') -> Message:
     )
 
 
+@dataclass(frozen=True)
+class Cut:
+    """A reply the stream breaks off with this error, once the message started (so its tokens so far are billed) or
+    before."""
+
+    error: Exception
+    started: bool = True
+
+
+def status_error(status: int) -> anthropic.APIStatusError:
+    """What the SDK raises for an HTTP error status."""
+    request = httpx2.Request('POST', 'https://api.anthropic.com/v1/messages')
+    return anthropic.APIStatusError('refused', response=httpx2.Response(status, request=request), body=None)
+
+
 class Stream:
-    def __init__(self, reply: Message) -> None:
+    def __init__(self, reply: Message | Cut) -> None:
         self.reply = reply
 
     def __enter__(self) -> Self:
@@ -65,11 +84,21 @@ class Stream:
         return None
 
     def get_final_message(self) -> Message:
+        if isinstance(self.reply, Cut):
+            raise self.reply.error
+        return self.reply
+
+    @property
+    def current_message_snapshot(self) -> Message:
+        if isinstance(self.reply, Cut):
+            if not self.reply.started:
+                raise AssertionError('no message yet')  # as the SDK's stream does
+            return message('')
         return self.reply
 
 
 class Messages:
-    def __init__(self, replies: Sequence[Message]) -> None:
+    def __init__(self, replies: Sequence[Message | Cut]) -> None:
         self.replies = list(replies)
         self.asked: list[list[MessageParam]] = []  # each request's messages, as sent
         self.requests: list[dict[str, object]] = []  # the rest of each request: its model, system text, schema
@@ -81,5 +110,5 @@ class Messages:
 
 
 class Client:
-    def __init__(self, *replies: str | Message) -> None:
+    def __init__(self, *replies: str | Message | Cut) -> None:
         self.messages = Messages([message(r) if isinstance(r, str) else r for r in replies])

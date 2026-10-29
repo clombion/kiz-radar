@@ -44,20 +44,36 @@ class RecipeError(Exception):
     """A site recipe's selectors or patterns fail on the page that loaded."""
 
 
+class UnreachableError(Exception):
+    """The page could not be reached or would not load: the connection was reset or timed out, the host is unknown."""
+
+
+class NoBrowserError(Exception):
+    """Chromium would not start: no read can be made here (see the module's notes on finding it)."""
+
+
 @contextlib.contextmanager
 def opened(
     url: str, wait: int = 10, *, visible: bool = False, browser: str | None = None
-) -> Generator[tuple['Page', int | None]]:
-    """(the page, its HTTP status) once loaded and settled. visible needs a display (see on_display)."""
-    from patchright.sync_api import sync_playwright
+) -> Generator[tuple['Page', int | None, str]]:
+    """(the page, its HTTP status, its title) once loaded and settled: UnreachableError when it would not load,
+    NoBrowserError when no browser would start. visible needs a display (see on_display)."""
+    from patchright.sync_api import Error, sync_playwright
 
     with sync_playwright() as p:
-        b = p.chromium.launch(executable_path=browser or chromium(), headless=not visible)
+        try:
+            b = p.chromium.launch(executable_path=browser or chromium(), headless=not visible)
+        except Error as e:
+            raise NoBrowserError(str(e).splitlines()[0]) from e
         try:
             page = b.new_page(locale='en-GB')
-            response = page.goto(url, wait_until='domcontentloaded', timeout=60000)
-            page.wait_for_timeout(wait * 1000)
-            yield page, response.status if response else None
+            try:
+                response = page.goto(url, wait_until='domcontentloaded', timeout=60000)
+                page.wait_for_timeout(wait * 1000)
+                title = page.title()
+            except Error as e:  # a timeout among them
+                raise UnreachableError(str(e).splitlines()[0]) from e
+            yield page, response.status if response else None, title
         finally:
             b.close()
 
@@ -81,8 +97,8 @@ def page_text(
     url: str, wait: int = 10, *, visible: bool = False, browser: str | None = None, screenshot: str | None = None
 ) -> tuple[str, int | None, str]:
     """(title, HTTP status, the page's text as shown)."""
-    with opened(url, wait, visible=visible, browser=browser) as (page, status):
-        out = page.title(), status, page.inner_text('body')
+    with opened(url, wait, visible=visible, browser=browser) as (page, status, title):
+        out = title, status, page.inner_text('body')
         if screenshot:
             _ = page.screenshot(path=screenshot, full_page=True)
     return out
@@ -125,13 +141,12 @@ def rows(
     url: str, recipe: PageRecipe, *, visible: bool | None = None, browser: str | None = None
 ) -> tuple[int | None, str, list[dict[str, str | None]]]:
     """(HTTP status, title, the page's ticket rows) read by a site recipe (pipeline/records.py, PageRecipe): each
-    row maps the recipe's fields to the string found, or None. Patchright's errors are the page's (it would not
-    load); RecipeError is the recipe's."""
+    row maps the recipe's fields to the string found, or None. RecipeError is the recipe's failing on the page that
+    loaded; UnreachableError and NoBrowserError as opened() raises them."""
     from patchright.sync_api import Error
 
     shown = recipe.visible if visible is None else visible
-    with opened(url, recipe.wait, visible=shown, browser=browser) as (page, status):
-        title = page.title()
+    with opened(url, recipe.wait, visible=shown, browser=browser) as (page, status, title):
         try:
             if recipe.open:
                 click_all(page, recipe.open)

@@ -225,8 +225,22 @@ def opened(path: Path | str, mode: Mode) -> Generator[Db]:
 
 
 def festival_ids(text: str) -> set[int]:
-    """Festival ids written "16909,18806", as a set."""
+    """Festival ids written "16909,18806", as a set: one at least, as no festival is no filter."""
     try:
-        return {int(i) for i in text.split(',') if i.strip()}
+        ids = {int(i) for i in text.split(',') if i.strip()}
     except ValueError as e:
         raise argparse.ArgumentTypeError(f'{text}: festival ids, separated by commas') from e
+    if not ids:
+        raise argparse.ArgumentTypeError(f'{text!r}: no festival id')
+    return ids
+
+
+def at_least_one(text: str) -> int:
+    """A count of one or more, as an option such as --limit takes it: none would be no limit."""
+    try:
+        n = int(text)
+    except ValueError as e:
+        raise argparse.ArgumentTypeError(f'{text}: a whole number') from e
+    if n < 1:
+        raise argparse.ArgumentTypeError(f'{text}: one at least')
+    return n

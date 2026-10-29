@@ -7,6 +7,7 @@ from typing import Literal
 # every data point of pipeline/states.py, by name
 type Point = Literal[
     'page_read',
+    'call_cause',
     'sales',
     'ticket',
     'skip_reason',
@@ -54,7 +55,19 @@ class Status(StrEnum):
 
     READ = 'read'
     REFUSED = 'refused'
+    UNREACHABLE = 'unreachable'
     LAYOUT_BROKEN = 'layout_broken'
+
+
+@unique
+class CallCause(StrEnum):
+    """the call_cause states"""
+
+    CHECKER = 'checker'
+    TRUNCATED = 'truncated'
+    TRANSIENT = 'transient'
+    STRUCTURAL = 'structural'
+    BUDGET = 'budget'
 
 
 @unique

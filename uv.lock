@@ -491,6 +491,7 @@ dependencies = [
 [package.dev-dependencies]
 ask = [
     { name = "anthropic" },
+    { name = "httpx2" },
 ]
 browser = [
     { name = "patchright" },
@@ -499,6 +500,7 @@ dev = [
     { name = "anthropic" },
     { name = "basedpyright" },
     { name = "curl-cffi" },
+    { name = "httpx2" },
     { name = "mdformat" },
     { name = "mdformat-gfm" },
     { name = "patchright" },
@@ -517,6 +519,7 @@ scrape = [
 tickets = [
     { name = "anthropic" },
     { name = "curl-cffi" },
+    { name = "httpx2" },
     { name = "patchright" },
 ]
 
@@ -524,12 +527,16 @@ tickets = [
 requires-dist = [{ name = "pydantic", specifier = "==2.14.1" }]
 
 [package.metadata.requires-dev]
-ask = [{ name = "anthropic", specifier = "==2.3.0" }]
+ask = [
+    { name = "anthropic", specifier = "==2.3.0" },
+    { name = "httpx2", specifier = "==2.16.0" },
+]
 browser = [{ name = "patchright", specifier = "==1.55.2" }]
 dev = [
     { name = "anthropic", specifier = "==2.3.0" },
     { name = "basedpyright", specifier = "==1.40.2" },
     { name = "curl-cffi", specifier = "==0.13.0" },
+    { name = "httpx2", specifier = "==2.16.0" },
     { name = "mdformat", specifier = "==1.0.0" },
     { name = "mdformat-gfm", specifier = "==1.0.0" },
     { name = "patchright", specifier = "==1.55.2" },
@@ -546,6 +553,7 @@ scrape = [{ name = "curl-cffi", specifier = "==0.13.0" }]
 tickets = [
     { name = "anthropic", specifier = "==2.3.0" },
     { name = "curl-cffi", specifier = "==0.13.0" },
+    { name = "httpx2", specifier = "==2.16.0" },
     { name = "patchright", specifier = "==1.55.2" },
 ]
 

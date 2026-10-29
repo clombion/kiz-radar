@@ -28,7 +28,8 @@ thing a consumer must treat differently.
 
 | Data point | States | Produced by |
 | -- | -- | -- |
-| **page_read**, each logged attempt to read a ticket page | `read`, `refused`, `layout_broken` | tickets.attempt |
+| **page_read**, each logged attempt to read a ticket page | `read`, `refused`, `unreachable`, `layout_broken` | tickets.attempt |
+| **call_cause**, each call that gave no answer, by what kept it from one (pipeline/calls.py); a ticket page's own failures are page_read states | `checker`, `truncated`, `transient`, `structural`, `budget` | calls |
 | **sales**, a festival with no full link to its ticket page, as an agent found it (tickets/pages.csv) | `shop`, `not_yet`, `offline`, `closed`, `none_found` | tickets.py page --state |
 | **ticket**, each ticket of a read ticket page | `in_tier`, `skipped`, `unread` | the first read; tickets.unread_keys |
 | **skip_reason**, each ticket a first read skips | `room`, `class`, `competition`, `merchandise`, `food_drink`, `excursion`, `fee`, `deposit`, `discount`, `donation`, `not_public`, `no_amount` | the first read |

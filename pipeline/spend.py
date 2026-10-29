@@ -1,10 +1,10 @@
 """What asking Claude costs the pipeline, and the monthly budget it keeps to.
 
 Every request to Claude adds a line to pipeline/spend.csv: when, which step, which model, its tokens in and out
-(thinking counts as output) and what that costs in dollars. Before each request a step calls check(): once this
-calendar month's spending, in euros at pipeline/rates.csv's dollar rate, has reached BUDGET_EUR, it raises
-BudgetSpentError; the step stops asking, leaves the rest for next month, and its run fails so the stop is seen. Requests
-already under way can take the month a little over.
+(thinking counts as output) and what that costs in dollars. Before each request a step asks spent(): once this
+calendar month's spending, in euros at pipeline/rates.csv's dollar rate, has reached BUDGET_EUR, it says so, and the
+request is declined for the budget (pipeline/calls.py); the step stops asking, leaves the rest for next month, and its
+run fails so the stop is seen. Requests already under way can take the month a little over.
 """
 
 import threading
@@ -30,10 +30,6 @@ LONG = {Model.CLAUDE_HAIKU_5_5: (100_000, 0.50, 2.50)}
 _lock = threading.Lock()
 
 
-class BudgetSpentError(Exception):
-    pass
-
-
 def usd(model: Model, input_tokens: int, output_tokens: int) -> float:
     rate_in, rate_out = PRICES[model]
     if model in LONG and input_tokens > LONG[model][0]:
@@ -51,10 +47,11 @@ def eur(dollars: float) -> float:
     return dollars / next(r.per_eur for r in Rate.read() if r.currency == 'USD')
 
 
-def check() -> None:
-    """Before a request: BudgetSpentError once the month's budget is spent."""
-    if (spent := eur(month_usd())) >= BUDGET_EUR:
-        raise BudgetSpentError(f'this month has spent €{spent:.2f} of its €{BUDGET_EUR} budget for Claude')
+def spent() -> str | None:
+    """Before a request: what says the month's budget is spent, once it is; else None."""
+    if (total := eur(month_usd())) >= BUDGET_EUR:
+        return f'this month has spent €{total:.2f} of its €{BUDGET_EUR} budget for Claude'
+    return None
 
 
 def record(step: Name, model: Model, input_tokens: int, output_tokens: int) -> float:

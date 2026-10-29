@@ -362,7 +362,7 @@ class Failed(Record):
     recipe: Version
     url: Url | None = None  # None when no address was reached
     http: int | None = None
-    status: Literal[Status.REFUSED, Status.LAYOUT_BROKEN]
+    status: Literal[Status.REFUSED, Status.UNREACHABLE, Status.LAYOUT_BROKEN]
     why: Text
 
 
@@ -460,11 +460,34 @@ class Stamped(Dated):
     prompt: Hash
 
 
-class Dispute(Record):
-    """The first reads of the models, no two of which agreed (tickets/disputed/<event_id>.json)."""
+AGREE = 2  # the first reads it takes to agree, or to disagree
+
+
+class ModelReads(Record):
+    """The models' first reads of one festival's logged rows, to one prompt, by model: the ones that answered (a
+    model whose read failed has none). The ones paid for are kept (tickets/partial/<event_id>.json) until two agree or
+    they make a dispute."""
 
     rows_at: Stamp
-    reads: dict[Model, FirstRead | None]  # by model; None when its read failed the checker twice
+    prompt: Hash
+    reads: dict[Model, FirstRead]
+
+    @model_validator(mode='after')
+    def of_one_read(self) -> Self:
+        if off := [m for m, r in self.reads.items() if (r.rows_at, r.prompt) != (self.rows_at, self.prompt)]:
+            raise ValueError(f'reads of other rows or to another prompt: {off}')
+        return self
+
+
+class Dispute(ModelReads):
+    """The first reads of two models or more, no two of which agreed (tickets/disputed/<event_id>.json): a dispute is
+    of reads made, never of reads that failed."""
+
+    @model_validator(mode='after')
+    def of_two(self) -> Self:
+        if len(self.reads) < AGREE:
+            raise ValueError('a dispute is of two reads at least')
+        return self
 
 
 # ---- site recipes

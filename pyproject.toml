@@ -8,7 +8,7 @@ dependencies = ["pydantic==2.14.1"]   # every step reads and writes its records 
 # packages includes that group, so every version is written once.
 [dependency-groups]
 scrape = ["curl_cffi==0.13.0"]
-ask = ["anthropic==2.3.0"]
+ask = ["anthropic==2.3.0", "httpx2==2.16.0"]   # httpx2: its transport errors, which the SDK lets through mid-stream
 browser = ["patchright==1.55.2"]
 tickets = [{include-group = "ask"}, {include-group = "scrape"}, {include-group = "browser"}]
 dev = [

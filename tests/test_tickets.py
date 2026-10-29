@@ -12,9 +12,10 @@ from pathlib import Path
 import pytest
 
 from pipeline import ROOT, data, prompt, spend, tickets
+from pipeline.calls import Declined
 from pipeline.db import Db, Reader
+from pipeline.enums import CallCause, Model, PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.enums import FirstRead as FirstReadState
-from pipeline.enums import Model, PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import answers, load_extract, prices
 from pipeline.records import (
     JSON,
@@ -29,6 +30,7 @@ from pipeline.records import (
     FromText,
     Json,
     LogEntry,
+    ModelReads,
     PageRecipe,
     PageRow,
     Priced,
@@ -48,7 +50,7 @@ from pipeline.records import (
 from pipeline.tickets import KnownPage
 from tests import exports, jsons
 from tests.exports import committed, shaped
-from tests.fakes import AT, SITE_CLAIMS, Client, Memory
+from tests.fakes import AT, SITE_CLAIMS, Client, Cut, Memory, status_error
 
 LATER = dt.datetime(2026, 11, 3, 5, tzinfo=dt.UTC)
 DAY = dt.date(2026, 11, 1)  # a day after the reads
@@ -340,9 +342,11 @@ def test_recheck_classes(tiers: list[PriceRow], today: str, expected: tuple[Rech
     assert {Recheck.DATED, Recheck.MONTHLY} == set(Recheck)
 
 
-def test_failures_count_back_to_the_last_read() -> None:
-    assert tickets.failures([entry(ROWS), refused(stamp(2)), refused(stamp(3))]) == 2
-    assert tickets.failures([refused(stamp(1)), entry(ROWS)]) == 0
+def test_a_streak_counts_the_refused_and_unreachable_reads_back_to_the_last_other() -> None:
+    gone = refused(stamp(3)).model_copy(update={'status': Status.UNREACHABLE})
+    assert tickets.streak([entry(ROWS), refused(stamp(2)), gone]) == 2
+    assert tickets.streak([refused(stamp(1)), entry(ROWS)]) == 0
+    assert tickets.streak([refused(stamp(1)), broken(stamp(2))]) == 0  # a broken recipe waits for its fix instead
 
 
 def test_two_reads_agree_on_meaning_not_on_wording() -> None:
@@ -394,9 +398,9 @@ RAW: dict[str, str | None] = {
 }
 
 
-def attempt_with(
+def attempted(
     monkeypatch: pytest.MonkeyPatch, raw: Sequence[dict[str, str | None]] = (), error: Exception | None = None
-) -> LogEntry:
+) -> LogEntry | Declined:
     """attempt() on a page whose recipe finds these rows, or fails with this error."""
     from pipeline import read_page
 
@@ -407,6 +411,15 @@ def attempt_with(
 
     monkeypatch.setattr(read_page, 'rows', rows)
     return tickets.attempt(PAGE, SITE._replace(recipe=SITE.recipe.model_copy(update={'widget': None})))
+
+
+def attempt_with(
+    monkeypatch: pytest.MonkeyPatch, raw: Sequence[dict[str, str | None]] = (), error: Exception | None = None
+) -> LogEntry:
+    """attempted(), a read that made a log entry."""
+    got = attempted(monkeypatch, raw, error)
+    assert not isinstance(got, Declined)
+    return got
 
 
 def why(entry_: LogEntry) -> str:
@@ -436,15 +449,22 @@ def test_two_rows_with_one_key_break_the_layout(monkeypatch: pytest.MonkeyPatch)
     assert 'two rows with key 1' in why(got)
 
 
-def test_a_recipe_failing_on_the_page_breaks_the_layout_and_a_page_that_wont_load_is_refused(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    from patchright.sync_api import Error
-
+def test_a_read_that_fails_says_whose_failure_it_is(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The recipe's (layout_broken), the address's (unreachable), or no read at all for want of a browser, which is no
+    entry of the festival's log."""
     from pipeline import read_page
 
-    assert attempt_with(monkeypatch, error=read_page.RecipeError('bad selector')).status == Status.LAYOUT_BROKEN
-    assert attempt_with(monkeypatch, error=Error('net::ERR_CONNECTION_RESET')).status == Status.REFUSED
+    def status(error: Exception) -> Status | Declined:
+        got = attempted(monkeypatch, error=error)
+        return got if isinstance(got, Declined) else got.status
+
+    assert status(read_page.RecipeError('bad selector')) == Status.LAYOUT_BROKEN
+    assert status(read_page.UnreachableError('net::ERR_CONNECTION_RESET')) == Status.UNREACHABLE
+    match status(read_page.NoBrowserError("Executable doesn't exist")):
+        case Declined() as d:
+            assert d.cause == CallCause.STRUCTURAL
+        case other:
+            pytest.fail(f'a read with no browser is {other}')
 
 
 def test_a_good_row_is_read_with_its_currency_code(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -551,7 +571,7 @@ def answer(kind: PassKind = PassKind.FULL, label: str | None = 'Fullpass') -> st
 
 def test_two_models_that_agree_give_the_first_ones_read(files: Path) -> None:
     fr = tickets.models_read(Client(answer(), answer(label=None)), FEST, entry(ROWS), [entry(ROWS)])
-    assert fr is not None
+    assert isinstance(fr, FirstRead)
     assert fr.passes == ANSWER.passes
     assert fr.read_by == 'claude-opus-5-5 + claude-sonnet-5-5'
     assert not (files / 'disputed' / '7.json').exists()
@@ -560,7 +580,7 @@ def test_two_models_that_agree_give_the_first_ones_read(files: Path) -> None:
 def test_when_two_models_disagree_a_third_read_settles_it(files: Path) -> None:
     replies = answer(), answer(PassKind.PARTY), answer(PassKind.PARTY)
     fr = tickets.models_read(Client(*replies), FEST, entry(ROWS), [entry(ROWS)])
-    assert fr is not None
+    assert isinstance(fr, FirstRead)
     assert fr.passes[0].kind == PassKind.PARTY
     assert fr.read_by == 'claude-sonnet-5-5 + claude-fable-5-1'
     assert not (files / 'disputed' / '7.json').exists()
@@ -568,16 +588,49 @@ def test_when_two_models_disagree_a_third_read_settles_it(files: Path) -> None:
 
 def test_when_no_two_models_agree_all_reads_wait_for_an_agent(files: Path) -> None:
     replies = answer(), answer(PassKind.PARTY), answer(PassKind.OTHER)
-    assert tickets.models_read(Client(*replies), FEST, entry(ROWS), [entry(ROWS)]) is None
+    assert isinstance(tickets.models_read(Client(*replies), FEST, entry(ROWS), [entry(ROWS)]), Dispute)
     disputed = Dispute.parse((files / 'disputed' / '7.json').read_bytes())
     assert set(disputed.reads) == {*tickets.MODELS, tickets.TIE_BREAK}
+
+
+def test_a_read_that_failed_makes_no_dispute_and_the_reads_made_are_kept(files: Path) -> None:
+    """One model's read and two failed calls: no dispute (a dispute is of reads made), the festival is read again
+    next run, and the read made is kept, so that the next run asks only the others."""
+    busy = Cut(status_error(529))
+    out = tickets.models_read(Client(answer(), busy, busy), FEST, entry(ROWS), [entry(ROWS)])
+    assert isinstance(out, Declined)
+    assert out.cause == CallCause.TRANSIENT
+    assert not (files / 'disputed' / '7.json').exists()
+    client = Client(answer(label=None))
+    found = tickets.models_read(client, FEST, entry(ROWS), [entry(ROWS)])
+    assert isinstance(found, FirstRead)
+    assert len(client.messages.asked) == 1  # Opus's read was kept: only Sonnet was asked
+    assert not (files / 'partial' / '7.json').exists()
+
+
+def test_the_budget_spent_between_two_models_keeps_the_read_paid_for(files: Path) -> None:
+    client = Client(answer())
+    original = spend.spent
+    calls_made: list[None] = []
+
+    def spent() -> str | None:
+        calls_made.append(None)
+        return 'spent' if len(calls_made) > 1 else original()
+
+    with pytest.MonkeyPatch.context() as m:
+        m.setattr(spend, 'spent', spent)
+        out = tickets.models_read(client, FEST, entry(ROWS), [entry(ROWS)])
+    assert isinstance(out, Declined)
+    assert out.stops
+    kept = ModelReads.parse((files / 'partial' / '7.json').read_bytes())
+    assert set(kept.reads) == {tickets.MODELS[0]}
 
 
 def test_a_model_that_misreads_answers_again_with_the_checkers_lines(files: Path) -> None:
     wrong = ANSWER.model_copy(update={'skipped': ()}).model_dump_json()
     client = Client(wrong, answer())
     fr = tickets.ask_read(client, Model.CLAUDE_OPUS_5_5, FEST, entry(ROWS), [entry(ROWS)])
-    assert fr is not None
+    assert isinstance(fr, FirstRead)
     assert fr.read_by == Model.CLAUDE_OPUS_5_5
     assert 'neither in a tier nor skipped' in str(client.messages.asked[1][-1]['content'])
 
@@ -636,10 +689,10 @@ def sold(state: Sales, page: str | None = None) -> FoundRow:
         (
             festival(
                 need=FirstReadState.CURRENT,
-                first_read=read(),  # failures before a broken recipe
+                first_read=read(),  # refusals, then a broken recipe: it waits for the recipe's fix
                 log=(refused(stamp(1)), refused(stamp(2)), broken(stamp(3))),
             ),
-            Waiting.SESSION,
+            Waiting.RECIPE_FIX,
         ),
     ],
 )
@@ -1228,6 +1281,17 @@ def test_a_festival_with_links_to_no_shop_waits_for_its_page_and_has_no_page_to_
     f = festival(links=('https://fest.example/',))
     assert tickets.waiting(f) == Waiting.PAGE
     assert prices.price_state([], None, None) == Price.NOT_LOOKED
+
+
+def test_a_dispute_to_another_prompt_is_none(files: Path) -> None:
+    """A prompt changed since the models disagreed: their reads are made again, as any first read to another prompt
+    is."""
+    (files / 'disputed').mkdir()
+    disputed: dict[str, object] = {'rows_at': AT.isoformat(), 'prompt': prompt.current('first_read').hash, 'reads': {}}
+    _ = (files / 'disputed' / '7.json').write_text(json.dumps(disputed))
+    assert tickets.disputed(7)
+    _ = (files / 'disputed' / '7.json').write_text(json.dumps(disputed | {'prompt': '0' * 16}))
+    assert not tickets.disputed(7)
 
 
 def test_a_dispute_is_settled_by_a_first_read_of_rows_as_new(files: Path) -> None:

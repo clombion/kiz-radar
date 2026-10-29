@@ -13,12 +13,16 @@ from enum import StrEnum
 from pathlib import Path
 from typing import Annotated
 
+import anthropic
+import httpx2
 import pytest
+from anthropic.types import Message
 from pydantic import BaseModel, Field, ValidationError
 
-from pipeline import data, db, enums, export, generate, prompt, records, spend, states, tickets
+from pipeline import calls, data, db, enums, export, generate, prompt, records, spend, states, tickets
+from pipeline.calls import Declined
 from pipeline.db import Db, Transaction
-from pipeline.enums import AnswerState, ArtistKind, MergeDecision, MergeReason, Model, PassKind, Role, Style
+from pipeline.enums import AnswerState, ArtistKind, CallCause, MergeDecision, MergeReason, Model, PassKind, Role, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
@@ -34,13 +38,14 @@ from pipeline.records import (
     PricedTier,
     Rate,
     Record,
+    Spent,
     Stamped,
     day_of,
     real_day,
 )
 from tests import jsons
 from tests.exports import EXPORT, committed, festival, shaped
-from tests.fakes import AT, Client, Memory
+from tests.fakes import AT, Client, Cut, Memory, message, status_error
 
 
 @pytest.fixture(autouse=True)
@@ -426,7 +431,7 @@ def prices_answer(quote: str, style: Style | None = None) -> str:
 def test_answer_retried_once_with_the_checkers_lines() -> None:
     client = Client(prices_answer('Full pass 90€'), prices_answer('Full pass 80€ until 31.01'))
     out = ask.ask(client, prompt.PRICES, FEST)
-    assert out is not None
+    assert not isinstance(out, Declined)
     assert out.events[0].passes[0].tiers[0].amount == 80
     retry = str(client.messages.asked[1][-1]['content'])
     assert 'verbatim' in retry
@@ -435,12 +440,14 @@ def test_answer_retried_once_with_the_checkers_lines() -> None:
 
 def test_two_failures_leave_the_festival_unanswered() -> None:
     client = Client(prices_answer('Full pass 90€'), prices_answer('Full pass 85€'))
-    assert ask.ask(client, prompt.PRICES, FEST) is None
+    out = ask.ask(client, prompt.PRICES, FEST)
+    assert isinstance(out, Declined)
+    assert out.cause == CallCause.CHECKER
 
 
-def test_an_answer_cut_short_or_off_its_record_is_asked_again() -> None:
+def test_an_answer_off_its_record_is_asked_again() -> None:
     client = Client('{"batch": "event-5"', prices_answer('Full pass 80€ until 31.01'))
-    assert ask.ask(client, prompt.PRICES, FEST) is not None
+    assert not isinstance(ask.ask(client, prompt.PRICES, FEST), Declined)
     assert 'schema' in str(client.messages.asked[1][-1]['content'])
 
 
@@ -591,11 +598,57 @@ def test_a_template_with_a_marker_left_fails() -> None:
 def test_requests_stop_once_the_months_budget_is_spent() -> None:
     _ = spend.record('prices', Model.CLAUDE_OPUS_5_5, 1_000_000, 5_000_000)  # $104, about €93
     client = Client(prices_answer('Full pass 80€ until 31.01'))
-    assert ask.ask(client, prompt.PRICES, FEST) is not None
+    assert not isinstance(ask.ask(client, prompt.PRICES, FEST), Declined)
     _ = spend.record('prices', Model.CLAUDE_OPUS_5_5, 0, 1_000_000)  # $20 more: over €100
-    with pytest.raises(spend.BudgetSpentError):
-        _ = ask.ask(client, prompt.PRICES, FEST)
+    out = ask.ask(client, prompt.PRICES, FEST)
+    assert isinstance(out, Declined)
+    assert out.cause == CallCause.BUDGET
+    assert out.stops
     assert len(client.messages.asked) == 1
+
+
+@pytest.mark.parametrize(
+    ('reply', 'cause'),
+    [
+        (message('{}', stop_reason='max_tokens'), CallCause.TRUNCATED),
+        (Cut(status_error(529)), CallCause.TRANSIENT),
+        (Cut(status_error(429)), CallCause.TRANSIENT),
+        (Cut(status_error(401)), CallCause.STRUCTURAL),  # a bad key: no request will do better
+        (Cut(status_error(409)), CallCause.STRUCTURAL),
+        (Cut(httpx2.ReadError('reset mid-stream')), CallCause.TRANSIENT),  # what the SDK lets through
+        (Cut(anthropic.APITimeoutError(httpx2.Request('POST', 'https://api.anthropic.com'))), CallCause.TRANSIENT),
+    ],
+)
+def test_a_call_that_gives_no_answer_says_why(reply: Message | Cut, cause: CallCause) -> None:
+    out = ask.ask(Client(reply), prompt.PRICES, FEST)
+    assert isinstance(out, Declined)
+    assert out.cause == cause
+
+
+def test_a_structural_failure_stops_the_questions_and_the_run_fails_naming_them(answered_here: Path) -> None:
+    """A bad key answers every question alike: after the first, none is asked, and the run's exit names all of
+    them, with the stop first."""
+    other = FEST.model_copy(update={'id': 6})
+    client = Client(Cut(status_error(401)), prices_answer('Full pass 80€ until 31.01'))
+    declined = ask.answer_all(client, [(FEST, prompt.PRICES), (other, prompt.PRICES)], {}, workers=1)
+    assert len(client.messages.asked) == 1
+    assert {k: d.cause for k, d in declined.items()} == {
+        (5, 'prices'): CallCause.STRUCTURAL,
+        (6, 'prices'): CallCause.STRUCTURAL,
+    }
+    why = calls.failed('questions', ((f'{i} {p}', d) for (i, p), d in declined.items()))
+    assert why is not None
+    assert why.startswith('API error 401')
+    assert '2 questions gave no answer: structural: 2 (5 prices, 6 prices)' in why
+    assert calls.failed('questions', []) is None
+
+
+def test_a_reply_cut_short_mid_stream_is_in_the_ledger() -> None:
+    """The tokens of a stream broken off once its message started are billed, so they are spent; one broken off
+    before is not."""
+    _ = ask.ask(Client(Cut(httpx2.ReadError('reset'))), prompt.PRICES, FEST)
+    _ = ask.ask(Client(Cut(httpx2.ReadError('reset'), started=False)), prompt.PRICES, FEST)
+    assert len(Spent.read()) == 1
 
 
 def test_a_request_costs_its_models_prices() -> None:
@@ -689,7 +742,8 @@ def test_a_festival_stays_pending_until_every_pass_has_an_answer_since_its_chang
 
 
 @pytest.mark.parametrize(
-    ('text', 'ids'), [('16909,18806', {16909, 18806}), ('16909, 18806,', {16909, 18806}), ('x', None)]
+    ('text', 'ids'),
+    [('16909,18806', {16909, 18806}), ('16909, 18806,', {16909, 18806}), ('x', None), (',', None), ('', None)],
 )
 def test_festival_ids_are_read_from_commas(text: str, ids: set[int] | None) -> None:
     if ids is None:
@@ -699,12 +753,22 @@ def test_festival_ids_are_read_from_commas(text: str, ids: set[int] | None) -> N
         assert db.festival_ids(text) == ids
 
 
+@pytest.mark.parametrize(('text', 'n'), [('3', 3), ('0', None), ('-1', None), ('x', None)])
+def test_a_limit_is_one_at_least(text: str, n: int | None) -> None:
+    """--limit 0 would be no limit, as an empty --only would be no filter: both are refused."""
+    if n is None:
+        with pytest.raises(argparse.ArgumentTypeError):
+            _ = db.at_least_one(text)
+    else:
+        assert db.at_least_one(text) == n
+
+
 def test_a_description_answer_gives_a_style_only_at_a_festival_of_several() -> None:
     answer = prices_answer('Full pass 80€ until 31.01', Style.KIZOMBA)
     client = Client(answer, answer)
-    assert ask.ask(client, prompt.PRICES, FEST, [Style.KIZOMBA]) is None
+    assert isinstance(ask.ask(client, prompt.PRICES, FEST, [Style.KIZOMBA]), Declined)
     assert 'one style only' in str(client.messages.asked[1])
-    assert ask.ask(Client(answer), prompt.PRICES, FEST, [Style.BACHATA, Style.KIZOMBA]) is not None
+    assert not isinstance(ask.ask(Client(answer), prompt.PRICES, FEST, [Style.BACHATA, Style.KIZOMBA]), Declined)
 
 
 def test_the_question_asked_is_the_festival_as_its_pass_asks() -> None:

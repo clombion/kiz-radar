@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       limit:
-        description: Ask Claude about at most this many festivals (empty for all that need it)
+        description: Ask Claude about at most this many festivals, and first-read at most this many (empty for all that need it)
         required: false
       festivals:
         description: Only these festivals, by id ("16909,18806"), without refreshing the events (empty for all)
@@ -32,6 +32,9 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    env:  # the inputs, for the steps that ask the models (the key goes to those steps only)
+      LIMIT: ${{ inputs.limit }}
+      ONLY: ${{ inputs.festivals }}
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/steps
@@ -44,17 +47,14 @@ jobs:
         run: mise run ask -- ${LIMIT:+--limit "$LIMIT"} ${ONLY:+--only "$ONLY"}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          LIMIT: ${{ inputs.limit }}
-          ONLY: ${{ inputs.festivals }}
       - name: Install a browser for ticket pages (the runner has a virtual display, xvfb)
         run: uv run -q --group browser patchright install --with-deps chromium
       - name: Read ticket pages
         id: tickets
         continue-on-error: true
-        run: xvfb-run -a mise run tickets -- run ${ONLY:+--only "$ONLY"}
+        run: xvfb-run -a mise run tickets -- run ${LIMIT:+--limit "$LIMIT"} ${ONLY:+--only "$ONLY"}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          ONLY: ${{ inputs.festivals }}
       - name: The admin's latest claims, which the commit pins with the export they made
         run: git submodule update --remote claims
       - name: Load the answers and resolve the artists

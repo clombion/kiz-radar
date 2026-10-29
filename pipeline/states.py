@@ -105,6 +105,13 @@ LINEUP, BOOKING, PRESENT = Counts
 POINTS = (
     P('page_read', 'Status', 'each logged attempt to read a ticket page', 'tickets.attempt'),
     P(
+        'call_cause',
+        'CallCause',
+        "each call that gave no answer, by what kept it from one (pipeline/calls.py); a ticket page's own failures "
+        'are page_read states',
+        'calls',
+    ),
+    P(
         'sales',
         'Sales',
         'a festival with no full link to its ticket page, as an agent found it (tickets/pages.csv)',
@@ -200,6 +207,34 @@ ROWS = (
         'no rows and an HTTP error, or the page would not load',
         WAITS,
         owner='the next run; after three in a row, an agent in a session',
+    ),
+    S(
+        'page_read',
+        'unreachable',
+        'the address could not be reached: the connection was reset or timed out, or the host is unknown',
+        WAITS,
+        owner='the next run; after three in a row, an agent in a session',
+    ),
+    S('call_cause', 'checker', "the answer failed the checker twice, the second time with the checker's lines", KEPT),
+    S('call_cause', 'truncated', 'the answer stopped before its end (stop_reason other than end_turn)', KEPT),
+    S(
+        'call_cause',
+        'transient',
+        'the service was busy or unreachable for now: a timeout, a lost connection, HTTP 429 or 5xx',
+        KEPT,
+    ),
+    S(
+        'call_cause',
+        'structural',
+        'the call cannot succeed as made: any other HTTP error (a bad key, a malformed request), a reply of '
+        'another shape, or no browser to read with; the run stops calling',
+        KEPT,
+    ),
+    S(
+        'call_cause',
+        'budget',
+        "the month's budget for Claude is spent (pipeline/spend.py); the run stops calling",
+        KEPT,
     ),
     S(
         'page_read',

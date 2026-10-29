@@ -214,10 +214,10 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   into a ticket's JSON, a pattern on the page, or a text built from JSON values; it reads with plain requests, no
   browser. An agent writes one per site; FairPlay's needs a visible browser (it is behind a browser check).
 - **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`, a `LogEntry` a line, checked on every write and read)
-  gets one entry per read: `read` with every row, `refused` (no rows and an HTTP error, or the page would not load), or
-  `layout_broken` (the recipe's selectors fail, no rows, two rows with one key, or a row missing its key, name, price,
-  amount or currency: the recipe needs an agent). Git merges these files line by line (`.gitattributes`), so a session
-  and the monthly run never conflict.
+  gets one entry per read: `read` with every row, `refused` (no rows and an HTTP error), `unreachable` (the page could
+  not be reached or would not load), or `layout_broken` (the recipe's selectors fail, no rows, two rows with one key, or
+  a row missing its key, name, price, amount or currency: the recipe needs an agent). Git merges these files line by
+  line (`.gitattributes`), so a session and the monthly run never conflict.
 - **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, a `FirstRead`) says, from one logged read and
   the festival's description, which pass each ticket is, in the prices pass's terms (the template
   `pipeline/tickets/prompts/first-read.md` on top of the prices pass's `prices.md`): every ticket is in a tier, by its
@@ -264,21 +264,24 @@ needs one on a site with a recipe (no first read yet, or one made with a changed
 another prompt). The two read independently, and the first read is kept when they agree on every ticket's pass, style,
 tier, skip and dates (and on why a ticket is skipped, for a skip reason the site tells apart). When they don't, Fable
 reads it too, and a read two of the three agree on is kept; when no two agree, all are kept in
-`pipeline/tickets/disputed/<event_id>.json` for an agent and the festival waits. Each read is checked before it counts,
-and one that misreads what its tickets' names say (a package for 3 nights covers 3 days; tickets naming different
-weekdays or dance styles are different passes; a pass sold with a meal is a package; a bootcamp is a pass) goes back to
-its model once with the checker's lines. The run fails, after committing, when a page broke its recipe, a festival's
-read failed three times in a row, or a festival no longer fits its first read; `todo` then marks it for a session, where
-`retry` reads it with a visible browser. A festival's ticket page is known when it is its first read's, the shop an
-agent recorded, or its first full link to a ticket shop (a site a recipe reads, or one a site claim names); a link to
-anything else, the festival's own site say, is no ticket page. Every festival to come waits for something or for
-nothing, and `pipeline/tickets/status.csv` (written by `page`, `read`, `retry`, `record` and `run`, for every festival
-the export lists, a past one waiting for nothing) says which, with its first-read state, how it sells and its known
-page: its ticket page found (kizomba-world cut the link short, gave none, or gave no link to a ticket shop; an agent
-records in `pipeline/tickets/pages.csv`, through `tickets.py page`, how the festival sells: in a shop, with its page;
-not yet, when sales are announced but not open; offline, by message, e-mail, form or bank transfer; closed; or none
-found, when a search of its links and the web found no ticket page, which holds until its links change), a recipe for
-its site, its recipe fixed, its sales to open, an agent to settle a dispute, or a session for a page that keeps
+`pipeline/tickets/disputed/<event_id>.json` for an agent and the festival waits, until the first-read prompt changes. A
+dispute is of reads made: when a call fails and fewer than two models made a read, the festival is read again next run,
+with the reads made kept in `pipeline/tickets/partial/` so that none is paid for twice. Each read is checked before it
+counts, and one that misreads what its tickets' names say (a package for 3 nights covers 3 days; tickets naming
+different weekdays or dance styles are different passes; a pass sold with a meal is a package; a bootcamp is a pass)
+goes back to its model once with the checker's lines. The run fails, after committing, when a page broke its recipe, a
+festival's page was refused or unreachable three times in a row, a festival no longer fits its first read, or the models
+made no first read for a festival that needed one (a call failed, the month's budget is spent); `todo` then marks it for
+a session, where `retry` reads it with a visible browser. A festival's ticket page is known when it is its first read's,
+the shop an agent recorded, or its first full link to a ticket shop (a site a recipe reads, or one a site claim names);
+a link to anything else, the festival's own site say, is no ticket page. Every festival to come waits for something or
+for nothing, and `pipeline/tickets/status.csv` (written by `page`, `read`, `retry`, `record` and `run`, for every
+festival the export lists, a past one waiting for nothing) says which, with its first-read state, how it sells and its
+known page: its ticket page found (kizomba-world cut the link short, gave none, or gave no link to a ticket shop; an
+agent records in `pipeline/tickets/pages.csv`, through `tickets.py page`, how the festival sells: in a shop, with its
+page; not yet, when sales are announced but not open; offline, by message, e-mail, form or bank transfer; closed; or
+none found, when a search of its links and the web found no ticket page, which holds until its links change), a recipe
+for its site, its recipe fixed, its sales to open, an agent to settle a dispute, or a session for a page that keeps
 refusing. A site a recipe can't read (behind a check that a visitor is human, say) has a site claim, and its festivals
 wait for nothing. That is backlog, so it never fails the run.
 
@@ -351,18 +354,20 @@ template in `pipeline/extract/prompts/`, the definitions of its states filled in
 record's schema as the required answer format. A checker then confirms that the answer is its record
 (`pipeline/records.py`), and that every name, quote and price appears in the description, and that a pass has a style
 only at a festival whose genres name two dance styles or more (`prices.styles`). A failing answer goes back to Claude
-once, with the checker's lines. A second failure leaves the festival pending, to try again next month; a festival leaves
-pending once every pass has an answer since its change, from that run or an earlier one. A prompt is known by the hash
-of everything fixed in its request: its text, its record's schema as the checker holds the answer to it, and that schema
-as sent (`pipeline/prompt.py`); each answer and first read records the hash it answered, and saving one first saves the
-text in `pipeline/prompts/asked/<hash>.md`. Editing a template, a state's criterion or a record changes the hash of
-every prompt it is in, which makes every answer to that prompt, and every first read when it is the first read's, wait
-to be asked again, out of the database until then; so start **Refresh events** by hand once it is pushed, before
-anything reloads the database. Started with festival ids in `festivals` ("16909,18806"), it skips the scrape, and asks
-and reads those festivals only (`ask.py --only`, `tickets.py run --only`): after a fixed recipe, say, or to try a prompt
-on a few festivals first. The answers are saved in `pipeline/extract/answers/` and committed; `answers/log.csv` says who
-answered each file, with which model and prompt, and when. The first extraction's answers, from Claude Code subagents,
-are kept there too; rebuilding from them reproduces the export's tables exactly.
+once, with the checker's lines. A second failure leaves the festival pending, to try again next month, as does any call
+that gives no answer (`pipeline/calls.py`: a reply cut short, the service busy or unreachable), and the run fails naming
+each question left unanswered; a call that can never succeed as made (a bad key, say) stops the run's requests. A
+festival leaves pending once every pass has an answer since its change, from that run or an earlier one. A prompt is
+known by the hash of everything fixed in its request: its text, its record's schema as the checker holds the answer to
+it, and that schema as sent (`pipeline/prompt.py`); each answer and first read records the hash it answered, and saving
+one first saves the text in `pipeline/prompts/asked/<hash>.md`. Editing a template, a state's criterion or a record
+changes the hash of every prompt it is in, which makes every answer to that prompt, and every first read when it is the
+first read's, wait to be asked again, out of the database until then; so start **Refresh events** by hand once it is
+pushed, before anything reloads the database. Started with festival ids in `festivals` ("16909,18806"), it skips the
+scrape, and asks and reads those festivals only (`ask.py --only`, `tickets.py run --only`): after a fixed recipe, say,
+or to try a prompt on a few festivals first. The answers are saved in `pipeline/extract/answers/` and committed;
+`answers/log.csv` says who answered each file, with which model and prompt, and when. The first extraction's answers,
+from Claude Code subagents, are kept there too; rebuilding from them reproduces the export's tables exactly.
 
 `load_extract.py` then loads every festival's newest answer to each pass's current prompt, and the prices read on ticket
 pages to the current first-read prompt, into the export, in one transaction: a value a check refuses leaves the export
@@ -372,8 +377,8 @@ opens the one it was merged into. Pairs of names that might be one artist go to 
 for review; nothing is merged without a decision. The key is the repository secret `ANTHROPIC_API_KEY`. Asking Claude
 has a budget of €100 a month (`pipeline/spend.py`): every request, from the extraction passes and from the ticket pages'
 first reads, goes in `pipeline/spend.csv` with its model, tokens and cost, and once the month's spending reaches the
-budget the steps stop asking, leave the rest for next month, and the run fails so the stop is seen. Each run prints what
-it spent and the month's total.
+budget the steps stop asking, leave the rest for next month, and the run fails so the stop is seen; the tokens of a
+reply cut off mid-stream are billed, so they go in too. Each run prints what it spent and the month's total.
 
 To do the same locally:
 

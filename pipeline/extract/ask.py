@@ -9,11 +9,15 @@ A festival needs a pass when its answer is due (enums.AnswerState): the pass has
 asked with another prompt than the pass's current one (pipeline/prompt.py, known by its hash), or it was asked before
 the day the festival's description last changed (pending_extraction's since). Each question is one festival and one
 pass, with the pass's prompt and its record's schema as the required answer format. check_output.checked() (and
-prices.problems() for prices) checks the answer; on a failure Claude gets the checker's lines and answers once more, and
-a second failure leaves the festival pending. A checked answer is saved as answers/<pass>/event-<id>.json, its prompt
-archived. A festival leaves pending_extraction once every pass has an answer that is current, from this run or an
-earlier one, so a run of some passes leaves it there and the next asks only the rest. Requests stop once the month's
-budget for Claude is spent (pipeline/spend.py), and the run then fails. Needs ANTHROPIC_API_KEY.
+prices.problems() for prices) checks the answer; on a failure Claude gets the checker's lines and answers once more. A
+checked answer is saved as answers/<pass>/event-<id>.json, its prompt archived. A festival leaves pending_extraction
+once every pass has an answer that is current, from this run or an earlier one, so a run of some passes leaves it there
+and the next asks only the rest.
+
+A question that gets no answer (pipeline/calls.py: a second checker failure, a reply cut short, a failed call) leaves
+the festival pending, and the run fails naming each such question. A call that can never succeed as made (structural,
+a bad key say) or the month's budget for Claude spent (pipeline/spend.py) stops the run's requests: the questions left
+wait for the next run. Needs ANTHROPIC_API_KEY.
 """
 
 import argparse
@@ -28,12 +32,13 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING, Protocol
 
 import anthropic
-from anthropic.types import Message, MessageParam, OutputConfigParam, TextBlock
+from anthropic.types import Message, MessageParam, OutputConfigParam, TextBlock, Usage
 
+from pipeline import calls, export, spend
 from pipeline import db as sqlite_db
-from pipeline import export, spend
 from pipeline import prompt as prompts
-from pipeline.enums import AnswerState, Model, Style
+from pipeline.calls import Declined
+from pipeline.enums import AnswerState, CallCause, Model, Style
 from pipeline.extract import answers, check_output, prices
 from pipeline.prompt import Pass, Prompt
 from pipeline.records import Asked, AskedPrices, Batch, Date, Entry, On, Priced, Record
@@ -48,6 +53,9 @@ BY = 'pipeline/extract/ask.py (Messages API), one festival'
 
 class Stream(Protocol):
     def get_final_message(self) -> Message: ...
+
+    @property
+    def current_message_snapshot(self) -> Message: ...
 
 
 class Streams(Protocol):
@@ -122,41 +130,61 @@ class Request:
     step: prompts.Name
 
 
-def structured[R: Record](client: Client, request: Request, check: Callable[[str], R | list[str]]) -> R | None:
-    """Claude's answer to the prompt and the message, as the prompt's record, once check() finds no problems in it;
-    or None after two tries: on a failure Claude gets the checker's lines and answers once more. Each request is
-    checked first against the month's budget (spend.BudgetSpentError once it is spent) and the model's price and goes
-    in the ledger under its step."""
-    model, prompt, label = request.model, request.prompt, request.label
-    messages: list[MessageParam] = [{'role': 'user', 'content': request.content}]
-    for attempt in (1, 2):
-        spend.check()
-        try:
-            with client.messages.stream(
-                model=model,
-                max_tokens=64000,
-                system=prompt.system,
-                messages=messages,
-                output_config={'format': {'type': 'json_schema', 'schema': dict(prompt.sent_schema)}},
-            ) as stream:
+def billed(stream: Stream) -> Usage | None:
+    """The tokens a stream cut short was billed for so far; None when no message had started (nothing billed)."""
+    try:
+        return stream.current_message_snapshot.usage
+    except AssertionError:  # the SDK's: no message_start yet
+        return None
+
+
+def reply_to(client: Client, request: Request, messages: list[MessageParam]) -> Message | Declined:
+    """One request's reply, in the ledger under its step whatever became of it; or why there is none."""
+    if why := spend.spent():
+        return Declined(CallCause.BUDGET, why)
+    try:
+        with client.messages.stream(
+            model=request.model,
+            max_tokens=64000,
+            system=request.prompt.system,
+            messages=messages,
+            output_config={'format': {'type': 'json_schema', 'schema': dict(request.prompt.sent_schema)}},
+        ) as stream:
+            try:
                 reply = stream.get_final_message()
-        except anthropic.APIStatusError as e:
-            print(f'{label}: API error {e.status_code} ({e.message}); left pending', file=sys.stderr)
-            return None
-        except anthropic.APIConnectionError as e:
-            print(f'{label}: connection failed ({e}); left pending', file=sys.stderr)
-            return None
-        _ = spend.record(request.step, model, reply.usage.input_tokens, reply.usage.output_tokens)
+            except calls.CALL_ERRORS:
+                if usage := billed(stream):
+                    _ = spend.record(request.step, request.model, usage.input_tokens, usage.output_tokens)
+                raise
+    except calls.CALL_ERRORS as e:
+        return calls.declined(e)
+    _ = spend.record(request.step, request.model, reply.usage.input_tokens, reply.usage.output_tokens)
+    return reply
+
+
+def structured[R: Record](client: Client, request: Request, check: Callable[[str], R | list[str]]) -> R | Declined:
+    """Claude's answer to the prompt and the message, as the prompt's record, once check() finds no problems in it;
+    or why there is none (pipeline/calls.py): it failed the checker twice (on a failure Claude gets the checker's lines
+    and answers once more), it stopped short, the call failed, or the month's budget is spent, which is checked before
+    each request. Every request goes in the ledger under its step."""
+    messages: list[MessageParam] = [{'role': 'user', 'content': request.content}]
+    found: list[str] = []
+    for attempt in (1, 2):
+        match reply_to(client, request, messages):
+            case Declined() as d:
+                return d
+            case reply:
+                pass
         if reply.stop_reason != 'end_turn':
-            print(f'{label}: stopped on {reply.stop_reason} (message {reply.id}); left pending', file=sys.stderr)
-            return None
-        text = next(b.text for b in reply.content if isinstance(b, TextBlock))
+            return Declined(CallCause.TRUNCATED, f'stopped on {reply.stop_reason} (message {reply.id})')
+        if (text := next((b.text for b in reply.content if isinstance(b, TextBlock)), None)) is None:
+            return Declined(CallCause.STRUCTURAL, f'a reply with no text (message {reply.id})')
         match check(text):
             case list() as found:
                 pass
             case output:
                 return output
-        print(f'{label}: try {attempt} failed the checker: ' + ' | '.join(found), file=sys.stderr)
+        print(f'{request.label}: try {attempt} failed the checker: ' + ' | '.join(found), file=sys.stderr)
         again = (
             'The checker found these problems:\n'
             + '\n'.join(found)
@@ -164,7 +192,7 @@ def structured[R: Record](client: Client, request: Request, check: Callable[[str
         )
         messages.append({'role': 'assistant', 'content': text})
         messages.append({'role': 'user', 'content': again})
-    return None
+    return Declined(CallCause.CHECKER, ' | '.join(found))
 
 
 def own_problems[E: Entry](answer: Batch[E], styles: Sequence[Style]) -> list[str]:
@@ -174,9 +202,9 @@ def own_problems[E: Entry](answer: Batch[E], styles: Sequence[Style]) -> list[st
 
 def ask[E: Entry, Q: Asked](
     client: Client, pass_: Pass[E, Q], f: Festival, styles: Sequence[Style] = ()
-) -> Batch[E] | None:
-    """A checked answer for one festival and pass, or None after two failed tries; styles are the festival's
-    (prices.styles), for the prices pass."""
+) -> Batch[E] | Declined:
+    """A checked answer for one festival and pass, or why there is none; styles are the festival's (prices.styles),
+    for the prices pass."""
     content, event = question(pass_, f, styles)
     texts = {event.event_id: check_output.source_text(event)}
 
@@ -244,6 +272,33 @@ def settled(pending: Mapping[int, dt.date]) -> list[int]:
     )
 
 
+def answer_all(
+    client: Client, todo: Sequence[Job], styles: Mapping[int, Sequence[Style]], workers: int = WORKERS
+) -> dict[tuple[int, prompts.PassName], Declined]:
+    """Ask every question, saving each answer; the ones that got none, and why. After a call that stops the run
+    (pipeline/calls.py), no further question is asked: each is declined for the same reason."""
+    lock = threading.Lock()
+    declined: dict[tuple[int, prompts.PassName], Declined] = {}
+
+    def one(job: Job) -> None:
+        f, pass_ = job
+        with lock:
+            stop = next((d for d in declined.values() if d.stops), None)
+        output = stop or ask(client, pass_, f, styles.get(f.id, ()))
+        with lock:
+            match output:
+                case Declined():
+                    declined[f.id, pass_.name] = output
+                    if output is not stop:
+                        print(f'{f.id} {pass_.name}: {output.cause}: {output.why}; left pending', file=sys.stderr)
+                case _:
+                    _ = answers.save(pass_.name, output, MODEL, prompts.current(pass_.name), BY)
+
+    with ThreadPoolExecutor(workers) as pool:
+        _ = list(pool.map(one, todo))
+    return declined
+
+
 class Args(argparse.Namespace):
     dry_run: bool = False
     limit: int | None = None
@@ -254,7 +309,7 @@ class Args(argparse.Namespace):
 def main() -> None:
     ap = argparse.ArgumentParser(description='Ask Claude the extraction passes for the festivals that need them.')
     _ = ap.add_argument('--dry-run', action='store_true', help='list what would be asked, without asking')
-    _ = ap.add_argument('--limit', type=int, help='ask about at most this many festivals')
+    _ = ap.add_argument('--limit', type=sqlite_db.at_least_one, help='ask about at most this many festivals')
     _ = ap.add_argument(
         '--pass',
         dest='passes',
@@ -267,7 +322,7 @@ def main() -> None:
 
     with export.opened('rw') as db:  # festivals leave its pending_extraction once answered
         todo, pending = due(db, a.passes, a.only)
-        if a.limit:
+        if a.limit is not None:
             keep = sorted({f.id for f, _ in todo})[: a.limit]
             todo = [(f, p) for f, p in todo if f.id in keep]
         counts = {p.name: sum(1 for _, q in todo if q is p) for p in prompts.PASSES}
@@ -278,37 +333,18 @@ def main() -> None:
         # read here, since the workers don't share the connection; genres a new festival's answers add load after this
         # run
         styles = {f.id: prices.styles(db, f.id) for f, p in todo if p is prompts.PRICES}
-        client: Client = anthropic.Anthropic()
-        lock, before = threading.Lock(), spend.month_usd()
-        failed: set[int] = set()
-        stopped: list[str] = []
-
-        def one(job: Job) -> None:
-            f, pass_ = job
-            try:
-                output = ask(client, pass_, f, styles.get(f.id, ()))
-            except spend.BudgetSpentError as e:
-                output = None
-                stopped[:1] = [str(e)]
-            with lock:
-                if output is None:
-                    failed.add(f.id)
-                else:
-                    _ = answers.save(pass_.name, output, MODEL, prompts.current(pass_.name), BY)
-
-        with ThreadPoolExecutor(WORKERS) as pool:
-            _ = list(pool.map(one, todo))
-
-        done = {f.id for f, _ in todo} - failed
+        before = spend.month_usd()
+        declined = answer_all(anthropic.Anthropic(), todo, styles)
+        failed = {i for i, _ in declined}
         with db.transaction() as tx:
             tx.executemany('delete from pending_extraction where event_id = ?', [(i,) for i in settled(pending)])
         print(
-            f'{len(done)} festivals answered, {len(failed)} failed {sorted(failed)}; '
+            f'{len({f.id for f, _ in todo} - failed)} festivals answered, {len(failed)} not; '
             f'${spend.month_usd() - before:.2f} this run, '
             f'€{spend.eur(spend.month_usd()):.2f} of €{spend.BUDGET_EUR} this month'
         )
-        if stopped:
-            sys.exit(f'{stopped[0]}: the rest waits for next month')
+        if why := calls.failed('questions', ((f'{i} {p}', d) for (i, p), d in declined.items())):
+            sys.exit(why)
 
 
 if __name__ == '__main__':

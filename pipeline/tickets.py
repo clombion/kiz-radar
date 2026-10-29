@@ -14,16 +14,20 @@
 A site recipe (tickets/sites/<site>.json, a records.Recipe) says where a site's ticket rows are; an
 agent writes one per site. read applies it in a browser (read_page.rows) and appends one entry per attempt to
 tickets/log/<event_id>.jsonl (records.LogEntry): read (with every row: key, name, price as shown,
-amount, currency, a second price when the site shows one, sold out), refused (no rows and an HTTP error, or the page
-would not load), or layout_broken (the recipe's selectors fail, no rows, two rows with one key, or a row without its
-key, name, price, amount or currency: the recipe needs an agent).
+amount, currency, a second price when the site shows one, sold out), refused (no rows and an HTTP error), unreachable
+(the page could not be reached or would not load), or layout_broken (the recipe's selectors fail, no rows, two rows
+with one key, or a row without its key, name, price, amount or currency: the recipe needs an agent). A read that can't
+be made here at all (no browser would start) is no entry: the run stops reading pages, and fails.
 
 A first read (tickets/reads/<event_id>.json, a records.FirstRead) says which pass each ticket is, by its key, from the
 rows of one logged read (rows_at) and the festival's description: every ticket is in a tier or skipped, and dates and
 price notes are quoted from the description or the tickets; its page is that read's. Only checked first reads are saved
 there: an agent fills a draft (tickets/drafts/, not committed) that record moves there once it passes, and in the Action
 Opus and Sonnet each write one, kept when they agree; when they don't, Fable writes a third, and one two of the three
-agree on is kept (else tickets/disputed/<event_id>.json holds them all for an agent). Besides its record and the quotes,
+agree on is kept (else tickets/disputed/<event_id>.json holds them all for an agent, until the first-read prompt
+changes). A dispute is of reads made: when fewer than two models made one (a call failed, pipeline/calls.py), the
+festival is read again next run, the reads made kept in tickets/partial/ so that none is paid for twice; the month's
+budget spent, or a call that can never succeed as made, stops the run's first reads. Besides its record and the quotes,
 the checker holds a first read to what its tickets' names say (rules_problems), so a model that misreads them answers
 again with the checker's lines. A festival needs one when it is still to come and its description's prices answer to the
 current prompt gives the pass a card prices (prices.card_pass) no dated price (until that answer is asked, it awaits
@@ -53,7 +57,8 @@ again. Waiting is backlog, not a failure.
 
 Re-reads: a dated festival (every tier on sale has an end date and none is limited to a number of tickets) once its
 last date has passed; every other festival on every monthly run. A festival whose latest read failed is retried on
-every run; after REFUSALS failures in a row, todo marks it for a session, where retry reads it with a visible browser.
+every run; after REFUSALS reads in a row refused or unreachable (streak), it waits for a session, where retry reads it
+with a visible browser. run --limit N first-reads N festivals at most, as the Action's limit input asks.
 """
 
 import argparse
@@ -72,13 +77,15 @@ from urllib.parse import urlparse
 import anthropic
 from pydantic import TypeAdapter, ValidationError
 
-from pipeline import claims, data, export, spend, states
+from pipeline import calls, claims, data, export, states
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
+from pipeline.calls import Declined
+from pipeline.enums import CallCause, Listing, Model, PassKind, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.enums import FirstRead as FirstReadState
-from pipeline.enums import Listing, Model, PassKind, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import answers, ask, check_output, prices
 from pipeline.records import (
+    AGREE,
     JSON,
     LOG_ENTRY,
     RECIPE,
@@ -97,6 +104,7 @@ from pipeline.records import (
     FromText,
     Json,
     LogEntry,
+    ModelReads,
     On,
     PageRecipe,
     PageRow,
@@ -119,7 +127,9 @@ from pipeline.records import (
 
 TICKETS = 'pipeline/tickets'
 # each a folder of TICKETS: the sites' recipes, first reads, drafts, the log of reads, and reads no two models agreed on
-SITES, READS, DRAFTS, LOG, DISPUTED = (f'{TICKETS}/{d}' for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
+SITES, READS, DRAFTS, LOG, DISPUTED, PARTIAL = (
+    f'{TICKETS}/{d}' for d in ('sites', 'reads', 'drafts', 'log', 'disputed', 'partial')
+)
 # each makes a first read; the first one's is kept when they agree
 MODELS = (Model.CLAUDE_OPUS_5_5, Model.CLAUDE_SONNET_5_5)
 TIE_BREAK = Model.CLAUDE_FABLE_5_1  # reads too when they don't, so that two of three may agree
@@ -332,7 +342,7 @@ class Attempt:
     url: str | None = None
     http: int | None = None
 
-    def failed(self, status: Literal[Status.REFUSED, Status.LAYOUT_BROKEN], why: str) -> Failed:
+    def failed(self, status: Literal[Status.REFUSED, Status.UNREACHABLE, Status.LAYOUT_BROKEN], why: str) -> Failed:
         """The log entry of a read that failed, and why."""
         return Failed(
             at=self.at,
@@ -357,13 +367,19 @@ class Attempt:
         )
 
 
-def attempt(page: str, site: Site, *, visible: bool | None = None) -> LogEntry:
-    """One read of a ticket page, as its log entry."""
+def attempt(page: str, site: Site, *, visible: bool | None = None) -> LogEntry | Declined:
+    """One read of a ticket page, as its log entry; or, when no read can be made here at all (no browser would
+    start), why, which is no entry of the festival's log."""
+    from pipeline.read_page import NoBrowserError
+
     started = Attempt(now(), page, site.version)
     recipe = site.recipe
     if isinstance(recipe, ApiRecipe):
         return api_attempt(started, recipe)
-    return page_attempt(started, recipe, visible=visible)
+    try:
+        return page_attempt(started, recipe, visible=visible)
+    except NoBrowserError as e:
+        return Declined(CallCause.STRUCTURAL, f'no browser would start: {e}')
 
 
 def api_attempt(started: Attempt, recipe: ApiRecipe) -> LogEntry:
@@ -374,36 +390,36 @@ def api_attempt(started: Attempt, recipe: ApiRecipe) -> LogEntry:
         status, url, raw = api_rows(started.page, recipe)
     except (LookupError, ValueError) as e:  # no event id, no ticket list, or no JSON
         return started.failed(Status.LAYOUT_BROKEN, f'{type(e).__name__}: {e}')
-    except RequestException as e:
-        return started.failed(Status.REFUSED, f'{type(e).__name__}: {e}')
+    except RequestException as e:  # the request failed: no HTTP answer to judge
+        return started.failed(Status.UNREACHABLE, f'{type(e).__name__}: {e}')
     return judged(replace(started, url=url, http=status), url, url, raw, recipe.symbols)
 
 
 def page_attempt(started: Attempt, recipe: PageRecipe, *, visible: bool | None) -> LogEntry:
     """A read of a ticket page in a browser: its tickets, or why it failed."""
     from curl_cffi.requests.exceptions import RequestException
-    from patchright.sync_api import Error
 
-    from pipeline.read_page import RecipeError, rows
+    from pipeline.read_page import RecipeError, UnreachableError, rows
 
     try:
         url = widget(started.page, recipe)
     except LookupError as e:
         return started.failed(Status.LAYOUT_BROKEN, str(e))
     except RequestException as e:
-        return started.failed(Status.REFUSED, f'{type(e).__name__}: {e}')
+        return started.failed(Status.UNREACHABLE, f'{type(e).__name__}: {e}')
     reached = replace(started, url=url)
     try:
         status, title, raw = rows(url, recipe, visible=visible)
     except RecipeError as e:
         return reached.failed(Status.LAYOUT_BROKEN, f'the recipe fails on the page: {e}')
-    except Error as e:  # the page would not load
-        return reached.failed(Status.REFUSED, f'{type(e).__name__}: {e}')
+    except UnreachableError as e:
+        return reached.failed(Status.UNREACHABLE, str(e))
     return judged(replace(reached, http=status), url, title, raw, recipe.symbols)
 
 
 def judged(reached: Attempt, url: str, title: str, raw: Sequence[Raw], symbols: Mapping[str, str]) -> LogEntry:
-    """The log entry for a read that got this far: refused, layout_broken, or read with its rows."""
+    """The log entry for a read that got an answer: refused (an HTTP error, and no rows), layout_broken, or read with
+    its rows."""
     # a browser check answers 4xx, then shows the page once it has passed, so the status alone decides nothing
     if not raw and reached.http and reached.http >= HTTP_ERROR:
         return reached.failed(Status.REFUSED, f'HTTP {reached.http} ({title})')
@@ -457,11 +473,12 @@ def latest_read(entries: Sequence[LogEntry]) -> Read | None:
     return next((e for e in reversed(entries) if isinstance(e, Read)), None)
 
 
-def failures(entries: Sequence[LogEntry]) -> int:
-    """How many attempts in a row have failed, counting back from the latest."""
+def streak(entries: Sequence[LogEntry]) -> int:
+    """How many reads in a row the page refused or could not be reached, counting back from the latest: the one rule
+    for when a festival waits for a session (REFUSALS). A broken recipe ends it, as it waits for its fix instead."""
     n = 0
     for e in reversed(entries):
-        if isinstance(e, Read):
+        if e.status not in {Status.REFUSED, Status.UNREACHABLE}:
             break
         n += 1
     return n
@@ -1026,6 +1043,13 @@ def assessed(f: Festival, today: dt.date) -> Festival:
     return replace(f, need=need, unread=unread)
 
 
+def disputed(event_id: int) -> bool:
+    """Whether the festival's models disagreed in reads to the current prompt: a dispute to another is no dispute, and
+    the reads are made again."""
+    path = data(DISPUTED) / f'{event_id}.json'
+    return path.exists() and prompts.is_current('first_read', Stamped.model_validate_json(path.read_bytes()).prompt)
+
+
 def links_hash(urls: Iterable[str]) -> str:
     """What a none_found search was made of: the festival's links."""
     return digest('\n'.join(sorted(urls)))
@@ -1074,7 +1098,7 @@ def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, 
             tiers=tuple(tiers.get(e.id, [])),
             described=described.get(e.id),
             page=KnownPage(page, site_for(page, known)) if page else None,
-            disputed=(data(DISPUTED) / f'{e.id}.json').exists(),
+            disputed=disputed(e.id),
         )
         out.append(assessed(f, today))
     return out
@@ -1107,7 +1131,7 @@ def waits_by_default(f: Festival) -> Waiting:
     needs a first read, and how it sells and where."""
     if f.over:
         return Waiting.NOTHING
-    if failures(f.log) >= REFUSALS:
+    if streak(f.log) >= REFUSALS:
         return Waiting.SESSION
     if f.log and f.log[-1].status == Status.LAYOUT_BROKEN:
         return Waiting.RECIPE_FIX
@@ -1190,8 +1214,8 @@ def joined(header: ReadHeader, answer: FirstReadAnswer) -> FirstRead:
 
 def ask_read(
     client: ask.Client, model: Model, f: Festival, entry: Read, entries: Sequence[LogEntry]
-) -> FirstRead | None:
-    """One model's first read, checked, with one retry on the checker's lines; None when it fails twice."""
+) -> FirstRead | Declined:
+    """One model's first read, checked, with one retry on the checker's lines; or why there is none."""
     header = draft_of(f, entry, model)
 
     def check(text: str) -> FirstRead | list[str]:
@@ -1239,28 +1263,67 @@ def meaning(fr: FirstRead) -> Meaning:
     ), frozenset((s.key, s.reason if s.reason in told else None) for s in fr.skipped)
 
 
-def agreed(reads: Mapping[Model, FirstRead | None]) -> FirstRead | None:
-    """Of the models' reads ({model: read, or None when it failed}), the first that another agrees with, its read_by
-    naming every model that agrees; else None."""
-    done = [(m, r) for m, r in reads.items() if r]
-    for _, r in done:
-        if len(same := [n for n, other in done if meaning(other) == meaning(r)]) > 1:
+def agreed(reads: Mapping[Model, FirstRead]) -> FirstRead | None:
+    """Of the models' reads, the first that another agrees with, its read_by naming every model that agrees; else
+    None."""
+    for r in reads.values():
+        if len(same := [n for n, other in reads.items() if meaning(other) == meaning(r)]) >= AGREE:
             return r.model_copy(update={'read_by': ' + '.join(same)})
     return None
 
 
-def models_read(client: ask.Client, f: Festival, entry: Read, entries: Sequence[LogEntry]) -> FirstRead | None:
-    """The first read two models agree on: MODELS', or when they don't, one TIE_BREAK agrees with; else None, with
-    every read in tickets/disputed/ for an agent."""
-    reads = {m: ask_read(client, m, f, entry, entries) for m in MODELS}
-    if found := agreed(reads):
-        return found
-    reads[TIE_BREAK] = ask_read(client, TIE_BREAK, f, entry, entries)
-    if found := agreed(reads):
-        return found
+def kept(event_id: int, entry: Read) -> dict[Model, FirstRead]:
+    """The models' reads already paid for of these rows, to the current prompt (tickets/partial/)."""
+    path = data(PARTIAL) / f'{event_id}.json'
+    if not path.exists():
+        return {}
+    found = ModelReads.model_validate_json(path.read_bytes())
+    current = found.rows_at == entry.at and prompts.is_current('first_read', found.prompt)
+    return dict(found.reads) if current else {}
+
+
+def keep(event_id: int, entry: Read, reads: Mapping[Model, FirstRead]) -> None:
+    """Keep the reads paid for until they settle, or forget them once they have (none to keep)."""
+    path = data(PARTIAL) / f'{event_id}.json'
+    if not reads:
+        path.unlink(missing_ok=True)
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    prompt = prompts.current('first_read').hash
+    _ = path.write_text(ModelReads(rows_at=entry.at, prompt=prompt, reads=dict(reads)).dumped(), encoding='utf-8')
+
+
+def models_read(
+    client: ask.Client, f: Festival, entry: Read, entries: Sequence[LogEntry]
+) -> FirstRead | Dispute | Declined:
+    """The first read two models agree on: MODELS', or when they don't, one TIE_BREAK agrees with. Two reads made or
+    more and no two agreeing are a dispute, in tickets/disputed/ for an agent. Fewer, and the festival is read again
+    next run: why, the reads made kept, so that none is paid for twice; a call that stops the run (pipeline/calls.py)
+    asks no further model."""
+    reads = kept(f.id, entry)
+    missed: list[Declined] = []
+    for group in (MODELS, (TIE_BREAK,)):
+        for m in (m for m in group if m not in reads):
+            match ask_read(client, m, f, entry, entries):
+                case Declined() as d if d.stops:
+                    keep(f.id, entry, reads)
+                    return d
+                case Declined() as d:
+                    missed.append(d)
+                case read:
+                    reads[m] = read
+        if found := agreed(reads):
+            keep(f.id, entry, {})
+            return found
+    if len(reads) < AGREE:
+        keep(f.id, entry, reads)
+        d = missed[0]
+        return Declined(d.cause, f'{len(reads)} model read made ({d.why})')
+    keep(f.id, entry, {})
+    dispute = Dispute(rows_at=entry.at, prompt=prompts.current('first_read').hash, reads=reads)
     data(DISPUTED).mkdir(parents=True, exist_ok=True)
-    _ = (data(DISPUTED) / f'{f.id}.json').write_text(Dispute(rows_at=entry.at, reads=reads).dumped(), encoding='utf-8')
-    return None
+    _ = (data(DISPUTED) / f'{f.id}.json').write_text(dispute.dumped(), encoding='utf-8')
+    return dispute
 
 
 # ---- commands
@@ -1305,6 +1368,8 @@ def cmd_read(db: sqlite_db.Reader, event_id: int, url: str | None = None, *, vis
             '(its record: pipeline/records.py, Recipe) from the page, then read again'
         )
     entry = attempt(url, site, visible=visible)
+    if isinstance(entry, Declined):
+        sys.exit(f'{event_id}: {entry.why}')
     append(event_id, entry)
     _ = status(db)
     if isinstance(entry, Failed):
@@ -1367,9 +1432,11 @@ def todo_notes(f: Festival, today: dt.date) -> list[str]:
     if f.first_read:
         kind, due, why = recheck(f.tiers, f.start_date, today)
         notes.append(f'{kind}: {"due" if due else "not due"}, {why}')
-        if (n := failures(f.log)) and isinstance(last := f.log[-1], Failed):
+        if f.log and isinstance(last := f.log[-1], Failed):
+            n = streak(f.log)
             notes.append(
-                f'{n} failed reads in a row ({last.status}: {last.why})'
+                f'latest read failed ({last.status}: {last.why})'
+                + (f', {n} in a row' if n > 1 else '')
                 + (f'; read it in a session: mise run tickets -- retry {f.id}' if n >= REFUSALS else '')
             )
     if f.needs_read:
@@ -1456,49 +1523,68 @@ def cmd_retry(db: sqlite_db.Reader, event_id: int) -> None:
 
 
 class Run:
-    """The monthly Action's run: the reads it makes, what it found wrong, and whether the month's budget stopped
-    the first reads."""
+    """The monthly Action's run: the reads it makes, what it found wrong, and what stopped its calls: a page read
+    that can be made nowhere here (no browser) stops the page reads; the month's budget, or a call to the models that
+    cannot succeed as made, stops the first reads; limit bounds how many festivals the models read."""
 
-    def __init__(self, db: sqlite_db.Reader, today: dt.date) -> None:
-        self.db, self.today = db, today
+    def __init__(self, db: sqlite_db.Reader, today: dt.date, limit: int | None = None) -> None:
+        self.db, self.today, self.limit = db, today, limit
         self.client: ask.Client | None = None
         self.alarms: list[str] = []
-        self.budget: str | None = None
+        self.pages: Declined | None = None  # what stopped the page reads
+        self.models: Declined | None = None  # what stopped the first reads
+        self.unread: list[tuple[int, Declined]] = []  # the festivals the models left without a first read, and why
+        self.asked = 0
 
     def make(self, f: Festival, entry: Read) -> None:
         """A first read of the festival by the models, saved when two agree."""
+        if self.models or (self.limit is not None and self.asked >= self.limit):
+            return
+        self.asked += 1
         self.client = self.client or anthropic.Anthropic()
-        try:
-            new = models_read(self.client, f, entry, log(f.id))
-            if new:
+        match models_read(self.client, f, entry, log(f.id)):
+            case FirstRead() as new:
                 save_read(new)
                 settle_dispute(f.id, new)
-            print(f'{f.id}: first read ' + (f'by {new.read_by}' if new else f'disputed: tickets/disputed/{f.id}.json'))
-        except spend.BudgetSpentError as e:
-            self.budget = f'{e}: the other first reads wait for next month'
-            self.alarms.append(self.budget)
+                print(f'{f.id}: first read by {new.read_by}')
+            case Dispute():
+                print(f'{f.id}: first read disputed: tickets/disputed/{f.id}.json')
+            case Declined() as d:
+                print(f'{f.id}: no first read: {d.cause}: {d.why}', file=sys.stderr)
+                self.unread.append((f.id, d))
+                if d.stops:
+                    self.models = d
 
-    def broken(self, i: int, entry: LogEntry) -> None:
-        if isinstance(entry, Failed) and entry.status == Status.LAYOUT_BROKEN:
-            self.alarms.append(f'{i}: layout broken ({entry.why}); the recipe {entry.recipe} needs an agent')
+    def read(self, f: Festival) -> LogEntry | None:
+        """A new read of the festival's page, logged; None once the page reads have stopped."""
+        if self.pages or not (f.page and f.page.site):
+            return None
+        match attempt(f.page.url, f.page.site):
+            case Declined() as d:
+                self.pages = d
+                self.alarms.append(f'{d.why}: no ticket page was read from here on')
+                return None
+            case entry:
+                append(f.id, entry)
+                print(f'{f.id}: {entry.status}' + (f': {entry.why}' if isinstance(entry, Failed) else ''))
+                if isinstance(entry, Failed) and entry.status == Status.LAYOUT_BROKEN:
+                    self.alarms.append(f'{f.id}: layout broken ({entry.why}); the recipe {entry.recipe} needs an agent')
+                elif streak(log(f.id)) == REFUSALS:
+                    self.alarms.append(
+                        f'{f.id}: {REFUSALS} failed reads in a row; read it in a session: mise run tickets -- retry '
+                        f'{f.id}'
+                    )
+                return entry
 
     def reread(self, f: Festival) -> Festival:
-        """Read again a festival whose prices are due or whose reads failed, raising the alarm on a broken recipe or
-        the REFUSALS-th failure; the festival as of the new read."""
-        if not (f.first_read and f.page and f.page.site):
+        """Read again a festival whose prices are due or whose latest read failed; the festival as of the new read."""
+        if not f.first_read:
             return f
-        if not (recheck(f.tiers, f.start_date, self.today)[1] or failures(f.log)):
+        if not (recheck(f.tiers, f.start_date, self.today)[1] or (f.log and isinstance(f.log[-1], Failed))):
             return f
-        i, entry = f.id, attempt(f.page.url, f.page.site)
-        append(i, entry)
-        print(f'{i}: {entry.status}' + (f': {entry.why}' if isinstance(entry, Failed) else ''))
-        self.broken(i, entry)
-        if not (isinstance(entry, Failed) and entry.status == Status.LAYOUT_BROKEN) and failures(log(i)) == REFUSALS:
-            self.alarms.append(
-                f'{i}: {REFUSALS} failed reads in a row; read it in a session: uv run --group tickets -m '
-                f'pipeline.tickets retry {i}'
-            )
-        return assessed(replace(f, log=tuple(log(i))), self.today)
+        if self.read(f) is None:
+            return f
+        return assessed(replace(f, log=tuple(log(f.id))), self.today)
 
     def first_reads(self, f: Festival) -> None:
         """A first read for a festival that needs one, from rows read today."""
@@ -1506,36 +1592,38 @@ class Run:
             return
         entry = latest_read(f.log)
         if entry is None or entry.at.date() != self.today:
-            append(f.id, fresh := attempt(f.page.url, f.page.site))
-            entry = fresh
-        if isinstance(entry, Read) and not self.budget:
+            entry = self.read(f)
+        if isinstance(entry, Read):
             self.make(f, entry)
-        elif isinstance(entry, Failed):
-            print(f'{f.id}: {entry.status}: {entry.why}')
-            self.broken(f.id, entry)
+
+    def verdict(self) -> str | None:
+        """What the run exits with: every alarm, and the festivals left without a first read."""
+        unread = calls.failed('first reads', self.unread)
+        return '\n'.join([*self.alarms, *([unread] if unread else [])]) or None
 
 
-def cmd_run(db: sqlite_db.Reader, ids: set[int] | None = None) -> None:
-    """Re-read what is due and retry failures, first-read with the models what needs it, and make again, from their
-    latest logged rows, the first reads of festivals now past that follow another prompt (of the festivals ids
-    names, when it names some); then write both files. Exits 1 naming each festival whose page broke its recipe,
-    reached REFUSALS failures, or no longer fits its first read."""
+def cmd_run(db: sqlite_db.Reader, ids: set[int] | None = None, limit: int | None = None) -> None:
+    """Re-read what is due and retry failures, first-read with the models what needs it (at most limit festivals),
+    and make again, from their latest logged rows, the first reads of festivals now past that follow another prompt
+    (of the festivals ids names, when it names some); then write both files. Exits 1 naming each festival whose page
+    broke its recipe, reached REFUSALS failures, no longer fits its first read, or got no first read from the models
+    (pipeline/calls.py)."""
     day = today()
     every = set(db.column(int, 'select id from events'))
     if ids and (missing := ids - every):
         sys.exit(f'no such festival: {sorted(missing)}')
-    run = Run(db, day)
+    run = Run(db, day, limit)
     for f in (f for f in festivals(db, day) if not ids or f.id in ids):
         run.first_reads(run.reread(f))
     for f in festivals(db, day, every=True):
-        redo = f.over and (not ids or f.id in ids) and f.need == FirstReadState.REDO_PROMPT and not run.budget
+        redo = f.over and (not ids or f.id in ids) and f.need == FirstReadState.REDO_PROMPT
         if redo and (entry := latest_read(f.log)):
             run.make(f, entry)  # its page sells nothing any more; its logged rows still say what it sold
     run.alarms += write_all()
     counts = status(db)
     print('waits for: ' + '; '.join(f'{n} {w}' for w, n in counts.most_common()))
-    if run.alarms:
-        sys.exit('\n'.join(run.alarms))
+    if why := run.verdict():
+        sys.exit(why)
 
 
 class Args(argparse.Namespace):
@@ -1546,6 +1634,7 @@ class Args(argparse.Namespace):
     note: str = ''
     by: str = 'agent'
     only: set[int] | None = None
+    limit: int | None = None
 
 
 def parser() -> argparse.ArgumentParser:
@@ -1575,9 +1664,9 @@ def parser() -> argparse.ArgumentParser:
     )
     _ = pg.add_argument('--note', required=True, help='how it was found, or why there is none')
     _ = pg.add_argument('--by', default='agent', help='who found it')
-    _ = sub.add_parser('run', help='the monthly Action').add_argument(
-        '--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"'
-    )
+    run = sub.add_parser('run', help='the monthly Action')
+    _ = run.add_argument('--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"')
+    _ = run.add_argument('--limit', type=sqlite_db.at_least_one, help='first reads by the models for this many at most')
     return ap
 
 
@@ -1610,7 +1699,7 @@ def main() -> None:
             case 'page':
                 cmd_page(db, i, Sold(a.url, a.state, a.note, a.by))
             case _:
-                cmd_run(db, a.only)
+                cmd_run(db, a.only, a.limit)
     return None
 
 
