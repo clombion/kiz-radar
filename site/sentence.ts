@@ -3,7 +3,7 @@
 
 import { addDays, today } from './days.ts';
 import { site } from './db.ts';
-import { button, choices, dropdown, h, type Kid, moreButton, nodes, own } from './dom.ts';
+import { button, choices, dropdown, h, type Kid, moreButton, nodes, onResize, own, paged } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import {
   CHECKED,
@@ -153,7 +153,7 @@ export function sentenceView(
   qs: string,
   { signal, data }: { signal: AbortSignal; data: Promise<unknown> },
 ): void {
-  let all: Festival[] | null = null; // the festivals, once the database is in
+  let all: readonly Festival[] | null = null; // the festivals, once the database is in
   const countries = site().destinations;
   const allowed: { [K in keyof Choices]?: readonly Choices[K][] } = {
     months: WHEN.map(([v]) => v),
@@ -374,7 +374,7 @@ export function sentenceView(
     if (header) bar.style.top = `${header.getBoundingClientRect().height}px`;
   };
   place_();
-  addEventListener('resize', place_, { signal });
+  onResize(place_, signal);
   // a hint under the Explore tab, until someone has been there
   const tab = document.querySelector('a[data-nav="explore"]');
   const tabNote = exploreHint.seen() ? null : note('note-tab', 'up', 'psst… more here');
@@ -482,15 +482,14 @@ export function sentenceView(
   function resultList(rows: readonly Festival[], widened: number): HTMLElement {
     if (rows.length > 0) {
       const hinted = artistHint.seen() ? -1 : firstWithArtists(rows);
-      return h(
-        'div',
-        { class: 'festival-cards' },
-        rows.map((e, i) =>
-          eventCard(e, {
-            hint: i === hinted ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null,
-          }),
-        ),
+      const cards = h('div', { class: 'festival-cards' }),
+        more = button({ class: 'more-btn show-more' });
+      paged({ list: cards, more }, rows, PAGE, (e, i) =>
+        eventCard(e, {
+          hint: i === hinted ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null,
+        }),
       );
+      return h('div', {}, cards, more);
     }
     if (widened) return h('p', { class: 'empty' }, 'No festival fits that time and price. ', widen(widened));
     return h('p', { class: 'empty' }, 'No festival fits all of that. ', choose(LOOSEST, 'Show all events instead'));
@@ -538,7 +537,7 @@ export function sentenceView(
     }),
     'showing the sentence',
   );
-  addEventListener('resize', layout, { signal });
+  onResize(layout, signal);
 }
 
 // Each dance shows for a few seconds, then cross-fades to the next while its slot eases to the new width, so the
@@ -546,6 +545,7 @@ export function sentenceView(
 // Should a dance's width still change the line breaks at some screen width, the slot keeps the widest width there.
 // With reduced motion the first dance stays.
 const SHOWN_MS = 3000;
+const PAGE = 30; // festival cards shown at once, then 30 more at a time
 function rotate(el: HTMLElement, n: HTMLElement, signal: AbortSignal): void {
   const words = [...el.children].filter((w): w is HTMLElement => w instanceof HTMLElement),
     sentence = el.closest('.sentence');
@@ -580,9 +580,10 @@ function rotate(el: HTMLElement, n: HTMLElement, signal: AbortSignal): void {
   }
   measure();
   done(document.fonts.ready.then(measure), 'measuring the dances'); // widths change once the web font is in
-  addEventListener('resize', measure, { signal });
+  onResize(measure, signal);
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const timer = setInterval(() => {
+    if (document.hidden) return; // no one is looking: the next dance waits
     i = (i + 1) % words.length;
     show();
   }, SHOWN_MS);

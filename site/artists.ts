@@ -1,7 +1,7 @@
 // Artists: a scannable list (who, from where, how often booked, where next) and a page per artist that
 // leads with their upcoming festivals.
 import { one, q, Sql, sql } from './db.ts';
-import { button, choices, dropdown, h, type Kid, moreButton, segments } from './dom.ts';
+import { button, choices, debounced, dropdown, h, type Kid, moreButton, paged, segments } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, leftOut, readState, withDetails } from './festivals.ts';
 import { fold } from './fold.ts';
@@ -95,6 +95,41 @@ export const artistCountries = (): string[] =>
     .map((r) => r.c)
     .sort((a, b) => countryName(a).localeCompare(countryName(b)));
 
+// the artists the choices keep, in the order chosen; next has each one's next festival
+type Choices = typeof DEFAULTS;
+function chosenArtists(st: Readonly<Choices>, next: ReadonlyMap<number, { start_date: string }>): Artist[] {
+  const cond = [sql`1=1`],
+    args: string[] = [];
+  if (st.role) cond.push(sql`${COUNTS[st.role]} > 0`);
+  if (st.kind) {
+    cond.push(sql`a.kind = ?`);
+    args.push(st.kind);
+  }
+  if (st.popular) cond.push(sql`st.popular = 1`);
+  if (st.country) {
+    cond.push(sql`a.id IN (SELECT artist_id FROM artist_countries WHERE country_code = ?)`);
+    args.push(st.country);
+  }
+  let rows = q(
+    ARTIST,
+    sql`SELECT st.*, a.display_name, a.kind FROM artist_stats st JOIN artists a ON a.id = st.artist_id
+    WHERE ${Sql.joined(cond, sql` AND `)} ORDER BY ${ORDER_BY[st.sort]}`,
+    args,
+  );
+  if (st.q) {
+    const typed = fold(st.q);
+    rows = rows.filter((a) =>
+      namesOf()
+        .get(a.artist_id)
+        ?.some((n) => n.includes(typed)),
+    );
+  }
+  // an order orders and keeps everyone: those with no festival coming after the rest, most booked first
+  const soonest = (a: Artist) => next.get(a.artist_id)?.start_date ?? '9999'; // after every date
+  if (st.sort === 'next') rows = rows.toSorted((a, b) => soonest(a).localeCompare(soonest(b)));
+  return rows;
+}
+
 export const artistsView: Show = (root, sub, qs, { signal }) => {
   if (sub[0]) {
     artistPage(root, Number(sub[0]));
@@ -180,8 +215,6 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
   const summary = h('p', { class: 'list-summary' });
   const list = h('ul', { class: 'artist-list' });
   const showMore = button({ class: 'more-btn show-more' });
-  let shown = PAGE,
-    rows: Artist[] = [];
 
   root.replaceChildren(
     h(
@@ -200,56 +233,17 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
     paintRoles();
     const extra = [st.kind, st.country, st.sort !== 'bookings', st.popular].filter(Boolean).length;
     moreBtn.textContent = `More${extra ? ` (${extra})` : ''} ▾`;
-    const cond = [sql`1=1`],
-      args: string[] = [];
-    if (st.role) cond.push(sql`${COUNTS[st.role]} > 0`);
-    if (st.kind) {
-      cond.push(sql`a.kind = ?`);
-      args.push(st.kind);
-    }
-    if (st.popular) cond.push(sql`st.popular = 1`);
-    if (st.country) {
-      cond.push(sql`a.id IN (SELECT artist_id FROM artist_countries WHERE country_code = ?)`);
-      args.push(st.country);
-    }
-    rows = q(
-      ARTIST,
-      sql`SELECT st.*, a.display_name, a.kind FROM artist_stats st JOIN artists a ON a.id = st.artist_id
-      WHERE ${Sql.joined(cond, sql` AND `)} ORDER BY ${ORDER_BY[st.sort]}`,
-      args,
-    );
-    if (st.q) {
-      const typed = fold(st.q);
-      rows = rows.filter((a) =>
-        namesOf()
-          .get(a.artist_id)
-          ?.some((n) => n.includes(typed)),
-      );
-    }
-    // an order orders and keeps everyone: those with no festival coming after the rest, most booked first
-    const soonest = (a: Artist) => next.get(a.artist_id)?.start_date ?? '9999'; // after every date
-    if (st.sort === 'next') rows = rows.toSorted((a, b) => soonest(a).localeCompare(soonest(b)));
-    shown = PAGE;
-    paint();
-  }
-  function paint() {
+    const rows = chosenArtists(st, next);
     summary.textContent = `${plural(rows.length, 'artist')}${st.country ? ` booked in ${countryName(st.country)}` : ''}`;
-    list.replaceChildren(...rows.slice(0, shown).map((a) => row(a, next.get(a.artist_id))));
-    showMore.hidden = shown >= rows.length;
-    showMore.textContent = `Show ${Math.min(PAGE, rows.length - shown)} more`;
+    paged({ list, more: showMore }, rows, PAGE, (a) => row(a, next.get(a.artist_id)));
   }
-  showMore.addEventListener('click', () => {
-    shown += PAGE;
-    paint();
-  });
-  let pending: ReturnType<typeof setTimeout> | undefined;
-  search.addEventListener('input', () => {
-    clearTimeout(pending);
-    pending = setTimeout(() => {
+  search.addEventListener(
+    'input',
+    debounced(() => {
       st.q = search.value.trim();
       render();
-    }, 150);
-  });
+    }),
+  );
   render();
 };
 

@@ -5,7 +5,7 @@
 import { artistsView } from './artists.ts';
 import { countriesView } from './countries.ts';
 import { load, loadSite, site } from './db.ts';
-import { button, h } from './dom.ts';
+import { button, h, onResize } from './dom.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
@@ -117,7 +117,7 @@ function show(name: string, sub: readonly string[], qs: string): void {
 }
 
 reportUncaught();
-addEventListener('resize', () => {
+onResize(() => {
   for (const row of tabRows()) pill(row, { still: true });
 });
 done(

@@ -99,3 +99,47 @@ export const segments = <V extends string>(
   options.map(([v, words]) =>
     button({ class: v === on ? 'on' : '', 'aria-pressed': String(v === on), onclick: () => choose(v) }, words),
   );
+
+// A list shown a page at a time: its first page now, and the more button (in the list, last, or anywhere else) adding
+// the next page to what is there, so the rows already shown are kept as they are. Showing other items starts over.
+export function paged<T>(
+  { list, more }: { list: HTMLElement; more: HTMLButtonElement },
+  items: readonly T[],
+  page: number,
+  row: (item: T, i: number) => Node,
+): void {
+  let shown = 0;
+  const next = () => {
+    const rows = items.slice(shown, shown + page).map((x, i) => row(x, shown + i));
+    if (more.parentElement === list) more.before(...rows);
+    else list.append(...rows);
+    shown += rows.length;
+    more.hidden = shown >= items.length;
+    more.textContent = `Show ${Math.min(page, items.length - shown)} more`;
+  };
+  list.replaceChildren(...(more.parentElement === list ? [more] : []));
+  more.onclick = next; // the one listener, so a list shown again never adds to the one before
+  next();
+}
+
+// f, called once calls to it have paused for ms (typing in a search box, say)
+export function debounced<A extends unknown[]>(f: (...args: A) => void, ms = 150): (...args: A) => void {
+  let waiting: ReturnType<typeof setTimeout> | undefined;
+  return (...args) => {
+    clearTimeout(waiting);
+    waiting = setTimeout(() => f(...args), ms);
+  };
+}
+
+// f on every resize, at most once a frame, until signal (a view's) fires
+export function onResize(f: () => void, signal?: AbortSignal): void {
+  let frame = 0;
+  addEventListener(
+    'resize',
+    () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(f);
+    },
+    signal === undefined ? { passive: true } : { passive: true, signal },
+  );
+}

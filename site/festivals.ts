@@ -106,8 +106,12 @@ export function withDetails(rows: readonly EventRow[]): Festival[] {
   });
 }
 
-// Everything still to come.
-export const festivals = (): Festival[] => withDetails(q(EVENT, sql`SELECT * FROM event_rows WHERE upcoming`));
+// Everything still to come, built once for the festival list and search alike (the database doesn't change).
+let upcoming: readonly Festival[] | undefined;
+export function festivals(): readonly Festival[] {
+  upcoming ??= withDetails(q(EVENT, sql`SELECT * FROM event_rows WHERE upcoming`));
+  return upcoming;
+}
 
 // the genres a card names, in the order pipeline/states.py lists them
 const DANCES = where('genre', 'card');

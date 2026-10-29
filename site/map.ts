@@ -3,7 +3,7 @@
 import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 import { needs, q, sql } from './db.ts';
-import { button, choices, dropdown, h, moreButton } from './dom.ts';
+import { button, choices, debounced, dropdown, h, moreButton, paged } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, leftOut, readState, withDetails } from './festivals.ts';
 import { currency, money, step, within } from './money.ts';
@@ -17,7 +17,15 @@ import { plural } from './wording.ts';
 const WORLD = new URL('../vendor/countries-50m.json', import.meta.url); // world-atlas, copied by the build
 type Land = FeatureCollection<Polygon | MultiPolygon, { name: string }>;
 let worldGeo: Land | undefined; // cached across visits to the tab
-const css = (name: string) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+// a colour of the stylesheet's (its custom property), read once: the page has one theme
+const palette = new Map<string, string>();
+const css = (name: string): string => {
+  const known = palette.get(name);
+  if (known !== undefined) return known;
+  const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  palette.set(name, value);
+  return value;
+};
 const PAGE = 40;
 
 // a festival with a place on the map, and a city's bubble
@@ -291,7 +299,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
 
   let cities: City[] = [],
     markers = new Map<string, L.CircleMarker>(),
-    shown = PAGE;
+    listed = ''; // the festivals the panel lists, by id, so a move that keeps them keeps the panel
   function visible() {
     const t = state.text.toLowerCase();
     return events.filter(
@@ -306,6 +314,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     cities = citiesOf(visible());
     bubbles.clearLayers();
     markers = new Map();
+    lit = new Set(); // the new bubbles are drawn plain
     const scheme = COLOR_BY[state.color];
     for (const c of cities.sort((a, b) => b.n - a.n)) {
       // big cities first so small bubbles stay clickable
@@ -325,16 +334,20 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
         padding: [24, 24],
         maxZoom: 7,
       });
-    shown = PAGE;
     renderPanel();
   }
 
+  // the picked city's bubble and the hovered one's stand out; only bubbles that change are restyled
+  let lit = new Set<string>();
   function highlight(hoverKey?: string) {
-    for (const [k, m] of markers) {
-      const on = k === state.city || k === hoverKey;
-      m.setStyle({ weight: on ? 4 : 1.5, color: on ? css('--accent') : css('--bubble-stroke') });
-      if (on) m.bringToFront();
+    const on = new Set([state.city, hoverKey].filter((k) => k != null));
+    for (const k of new Set([...lit, ...on])) {
+      const m = markers.get(k);
+      if (m === undefined) continue;
+      m.setStyle({ weight: on.has(k) ? 4 : 1.5, color: on.has(k) ? css('--accent') : css('--bubble-stroke') });
+      if (on.has(k)) m.bringToFront();
     }
+    lit = on;
   }
   const save = () => {
     const params = changed({ when: state.when, color: state.color, country: state.country }, DEFAULTS);
@@ -359,29 +372,14 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   const count = (n: number) => plural(n, 'festival');
 
   function cards(list: readonly Placed[]): HTMLElement {
-    const wrap = h(
-      'div',
-      { class: 'panel-cards' },
-      list.slice(0, shown).map((e) => {
-        const c = eventCard(e, { onMap: true });
-        c.addEventListener('mouseenter', () => highlight(cityKey(e)));
-        c.addEventListener('mouseleave', () => highlight());
-        return c;
-      }),
-    );
-    if (list.length > shown)
-      wrap.append(
-        button(
-          {
-            class: 'more-btn show-more',
-            onclick: () => {
-              shown += PAGE;
-              renderPanel();
-            },
-          },
-          `Show ${Math.min(PAGE, list.length - shown)} more`,
-        ),
-      );
+    const more = button({ class: 'more-btn show-more' });
+    const wrap = h('div', { class: 'panel-cards' }, more);
+    paged({ list: wrap, more }, list, PAGE, (e) => {
+      const c = eventCard(e, { onMap: true });
+      c.addEventListener('mouseenter', () => highlight(cityKey(e)));
+      c.addEventListener('mouseleave', () => highlight());
+      return c;
+    });
     return wrap;
   }
 
@@ -425,13 +423,18 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
       cards(c.events),
     );
   }
-  function inViewPanel(): void {
+  // the festivals of the cities in view, soonest first
+  const festivalsInView = (): Placed[] => {
     const b = map.getBounds();
-    const inView = cities
+    return cities
       .filter((c) => b.contains([c.lat, c.lon]))
       .flatMap((c) => c.events)
       .sort((a, z) => a.start_date.localeCompare(z.start_date));
+  };
+  function inViewPanel(): void {
+    const inView = festivalsInView();
     const total = cities.reduce((sum, c) => sum + c.n, 0);
+    listed = inView.map((e) => e.id).join();
     title.textContent = `${count(inView.length)} on the map`;
     body.replaceChildren(
       h(
@@ -464,16 +467,17 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     }
   }
 
-  let settling: ReturnType<typeof setTimeout> | undefined;
-  map.on('moveend', () => {
-    clearTimeout(settling);
-    settling = setTimeout(() => {
-      if (!picked()) {
-        shown = PAGE;
-        renderPanel();
-      }
-    }, 120);
-  });
+  // once the map rests, the panel lists what is in view, unless that is what it lists already
+  const settled = debounced(() => {
+    if (
+      !(picked() || signal.aborted) &&
+      festivalsInView()
+        .map((e) => e.id)
+        .join() !== listed
+    )
+      renderPanel();
+  }, 120);
+  map.on('moveend', settled);
   map.on('click', () => {
     if (picked()) {
       state.city = null;
@@ -484,14 +488,14 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     }
     setSheet(false);
   });
-  let typing: ReturnType<typeof setTimeout> | undefined;
-  search.addEventListener('input', () => {
-    clearTimeout(typing);
-    typing = setTimeout(() => {
+  search.addEventListener(
+    'input',
+    debounced(() => {
+      if (signal.aborted) return;
       state.text = search.value;
       redraw();
-    }, 150);
-  });
+    }),
+  );
   const esc = (ev: KeyboardEvent) => {
     if (ev.key !== 'Escape' || !picked()) return;
     if (state.event === null) state.city = null;
@@ -516,8 +520,6 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   // (it ends 250 ms after it starts), has finished with it.
   signal.addEventListener('abort', () => {
     clearTimeout(settle);
-    clearTimeout(settling);
-    clearTimeout(typing);
     map.off();
     setTimeout(() => map.remove(), 300);
   });
