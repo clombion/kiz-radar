@@ -113,6 +113,7 @@ from pipeline.tickets_store import (
     latest_read,
     line,
     log,
+    misstated,
     read_problems,
     recheck,
     record,
@@ -395,6 +396,12 @@ def cmd_check(event_id: int) -> None:
 
 
 def cmd_record(db: sqlite_db.Reader, event_id: int) -> None:
+    """Record the festival's draft, or check its first read, once a draft says of the festival what the export
+    does."""
+    if (text := draft(event_id)) is not None and isinstance(fr := checked_read(text), FirstRead):
+        f = one(db, event_id)
+        if (entry := latest_read(f.log)) and (wrong := misstated(fr, draft_of(f, entry, fr.read_by))):
+            sys.exit('\n'.join(f'{event_id}: {w}' for w in wrong))
     if found := record(event_id):
         sys.exit('\n'.join(found))
     _ = status(db)

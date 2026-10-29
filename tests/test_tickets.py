@@ -1533,6 +1533,14 @@ def test_a_page_read_with_its_url_is_the_known_page_from_then_on(command: Comman
     assert [(r.state, r.page) for r in FoundRow.read()] == [(Sales.SHOP, 'https://fest.example/t')]
 
 
+def test_a_draft_that_says_another_description_than_the_festivals_is_refused(files: Path, command: Command) -> None:
+    """A draft's quotes are checked against the description it carries, so it carries the festival's own."""
+    draft_file(files, read(description='Full pass 10€, a price nobody gave.'))
+    with pytest.raises(SystemExit, match='description: the draft says'):
+        _ = command('record', 7)
+    assert (files / 'drafts' / '7.json').exists()
+
+
 def test_todo_lists_what_a_festival_needs_and_what_all_wait_for(command: Command) -> None:
     out = command('todo')
     assert out.startswith('7  2027-02-05  Fest\n')

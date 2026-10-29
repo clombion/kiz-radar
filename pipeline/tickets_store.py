@@ -212,6 +212,20 @@ def settle_dispute(event_id: int, fr: FirstRead) -> None:
         path.unlink()
 
 
+# what a draft says of its festival, which the export says too and the checks take its quotes against
+STATED = ('event_id', 'title', 'start_date', 'description', 'styles', 'prompt')
+
+
+def misstated(fr: FirstRead, festival: ReadHeader) -> list[str]:
+    """What a draft says of its festival that the festival, as the export has it now, doesn't: a draft is checked
+    against what it says, so it says what the export does."""
+    return [
+        f'{field}: the draft says {getattr(fr, field)!r}, the festival {getattr(festival, field)!r}'
+        for field in STATED
+        if getattr(fr, field) != getattr(festival, field)
+    ]
+
+
 def read_at(fr: Dated | FirstRead, entries: Sequence[LogEntry]) -> Read | None:
     """The logged read a first read was made from, or None."""
     return next((e for e in entries if isinstance(e, Read) and e.at == fr.rows_at), None)
