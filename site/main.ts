@@ -27,7 +27,13 @@ const part = (selector: string): HTMLElement => {
 };
 const main = part('#main'),
   tabs = part('nav.tabs'),
-  subnav = part('#subnav');
+  subnav = part('#subnav'),
+  header = part('header.top');
+// the header's height on this screen, which what sticks under it (the festival list's bar) reads as --header-h
+const measureHeader = () =>
+  document.documentElement.style.setProperty('--header-h', `${header.getBoundingClientRect().height}px`);
+measureHeader();
+onResize(measureHeader);
 const siteLoaded = loadSite();
 const data = load(siteLoaded); // starts now, alongside site.json
 let leave: AbortController | undefined;
@@ -126,6 +132,7 @@ onResize(() => {
 });
 done(
   document.fonts.ready.then(() => {
+    measureHeader(); // the web font may change its height
     for (const row of tabRows()) pill(row, { still: true });
   }),
   'laying out the tabs',

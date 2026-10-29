@@ -374,13 +374,6 @@ export function sentenceView(
   root.replaceChildren(h('div', { class: 'sentence-page' }, hero, bar, results));
   leftOut(root, dropped);
   rotate(dance, n, signal);
-  // sit flush under the site header, whatever its height on this screen
-  const header = document.querySelector('header.top');
-  const place_ = () => {
-    if (header) bar.style.top = `${header.getBoundingClientRect().height}px`;
-  };
-  place_();
-  onResize(place_, signal);
   // a hint under the Explore tab, until someone has been there
   const tab = document.querySelector('a[data-nav="explore"]');
   const tabNote = exploreHint.seen() ? null : note('note-tab', 'up', 'psst… more here');

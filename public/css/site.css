@@ -363,14 +363,8 @@ th[aria-sort="descending"] button.sort::after {
 body {
   margin: 0;
   color: var(--text);
-  font:
-    15px / 1.5 system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  font: 15px / 1.5 var(--font);
   background: var(--bg);
-  font-family: var(--font);
 }
 h1 {
   line-height: 1.25;
@@ -563,7 +557,7 @@ select.blank:focus-visible {
 }
 .sticky-bar {
   position: sticky;
-  top: 58px;
+  top: var(--header-h); /* measured by main.ts */
   z-index: var(--z-sticky);
   margin: 0 calc(-1 * var(--gutter));
   padding: 0 var(--gutter);
@@ -1551,58 +1545,7 @@ body:has(.pmap) .to-top {
     gap: 0.8rem;
   }
 }
-@media (max-width: 640px) {
-  .month > h2 {
-    font-size: 1.3rem;
-  }
-  .datebox .dd {
-    font-size: 1.3rem;
-  }
-  .sentence {
-    font-size: 1.5rem;
-  }
-  .sticky-bar {
-    top: 54px;
-  }
-  .bar-count {
-    display: none;
-  }
-  .sentence-hero {
-    padding: 1rem 0 2.5rem;
-    min-height: 62vh;
-  }
-  .wide-only {
-    display: none;
-  }
-  select.mini {
-    font-size: 0.85rem;
-    min-width: 0;
-    padding-left: 0.8rem;
-    padding-right: 1.9rem;
-    background-position: right 0.7rem center;
-  }
-  .bar-inner {
-    flex-wrap: nowrap;
-    overflow: visible;
-  }
-  .wide {
-    display: none;
-  }
-  .narrow {
-    display: inline;
-  }
-  .core-fields {
-    display: flex;
-  }
-  .sticky-bar .more-panel {
-    right: 0;
-    left: 0;
-    margin: 0 var(--gutter);
-    width: auto;
-    max-height: 70vh;
-    overflow-y: auto;
-  }
-}
+
 @media (hover: hover) and (pointer: fine) {
   .click {
     display: inline;
@@ -1611,22 +1554,7 @@ body:has(.pmap) .to-top {
     display: none;
   }
 }
-@media (max-width: 640px) {
-  .note-bottom {
-    display: none;
-  }
-  .note-inline {
-    display: flex;
-  }
-  .sentence-hero .live {
-    margin-top: 3.4rem;
-    min-height: 7.4em;
-    line-height: 1.55;
-  } /* on a phone each of the two lines can take two */
-  .note-artist {
-    display: flex;
-  }
-}
+
 @media (max-width: 760px) {
   .map-bar .mini-search {
     flex: 1 1 0;
@@ -1732,16 +1660,7 @@ body:has(.pmap) .to-top {
     display: none;
   }
 }
-@media (max-width: 640px) {
-  .artists-page .map-bar .mini-search {
-    flex-basis: 100%;
-    max-width: none;
-  }
-  .artist-profile .past .when {
-    display: block;
-    min-width: 0;
-  }
-}
+
 @media (max-width: 900px) {
   .site-footer {
     grid-template-columns: 1fr 1fr;
@@ -1819,27 +1738,8 @@ body:has(.pmap) .to-top {
   clip-path: inset(50%);
   white-space: nowrap;
 }
-@media (max-width: 640px) {
-  .phone-break {
-    display: inline;
-  }
-}
+
 /* on a phone, the Map and Artists filter panels span the whole filter row instead of hanging off the button */
-@media (max-width: 640px) {
-  .map-bar {
-    position: relative;
-  }
-  .filters-wrap {
-    position: static;
-  }
-  .filters-wrap .more-panel {
-    left: 0;
-    right: 0;
-    width: auto;
-    max-height: 70vh;
-    overflow-y: auto;
-  }
-}
 
 /* Opening and closing a card (eventcard.ts). Durations and curves follow Material 3's motion tokens: opening uses
    emphasized-decelerate over 350ms, since the card travels far and arrives; closing and the neighbours' moves use
@@ -2122,23 +2022,7 @@ html:has(dialog.search[open]) {
   color: var(--accent);
   border-color: var(--accent);
 }
-@media (max-width: 640px) {
-  .search-btn {
-    padding: 0.45rem;
-  }
-  .search-btn .search-word,
-  .search-btn kbd {
-    display: none;
-  }
-  dialog.search {
-    width: 100%;
-    height: 100%;
-    max-height: none;
-    margin: 0;
-    border: 0;
-    border-radius: 0;
-  }
-}
+
 @media (hover: none) {
   .search-btn kbd {
     display: none;
@@ -2329,33 +2213,6 @@ html:has(dialog.search[open]) {
 .plan-list .goer {
   white-space: nowrap;
 }
-@media (max-width: 640px) {
-  .plan-list li {
-    grid-template-columns: 1fr;
-  }
-  .plan-list .when {
-    grid-row: auto;
-  }
-}
-@media (max-width: 640px) {
-  /* a phone shows one card at a time: give its parts room, and the cards more space between them */
-  .festival-card {
-    gap: 0.7rem;
-  }
-  .festival-card .note-artist {
-    margin: -0.25rem 0 0 0.4rem;
-  }
-  .sentence-results {
-    padding-top: 2.4rem;
-  }
-  /* more air between the sentence's parts: the hint, the count, who's going, and "Never mind" */
-  .sentence-hero .live .friends {
-    margin-top: 1.2rem;
-  }
-  .nevermind {
-    margin-top: 1.6rem;
-  }
-}
 
 /* the quick view of who's going: over the page on a computer, a sheet from the bottom on a phone */
 dialog.peek {
@@ -2495,6 +2352,137 @@ html:has(dialog.peek[open]) {
   display: none;
 }
 @media (max-width: 640px) {
+  .month > h2 {
+    font-size: 1.3rem;
+  }
+  .datebox .dd {
+    font-size: 1.3rem;
+  }
+  .sentence {
+    font-size: 1.5rem;
+  }
+  .bar-count {
+    display: none;
+  }
+  .sentence-hero {
+    padding: 1rem 0 2.5rem;
+    min-height: 62vh;
+  }
+  .wide-only {
+    display: none;
+  }
+  select.mini {
+    font-size: 0.85rem;
+    min-width: 0;
+    padding-left: 0.8rem;
+    padding-right: 1.9rem;
+    background-position: right 0.7rem center;
+  }
+  .bar-inner {
+    flex-wrap: nowrap;
+    overflow: visible;
+  }
+  .wide {
+    display: none;
+  }
+  .narrow {
+    display: inline;
+  }
+  .core-fields {
+    display: flex;
+  }
+  .sticky-bar .more-panel {
+    right: 0;
+    left: 0;
+    margin: 0 var(--gutter);
+    width: auto;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+
+  .note-bottom {
+    display: none;
+  }
+  .note-inline {
+    display: flex;
+  }
+  .sentence-hero .live {
+    margin-top: 3.4rem;
+    min-height: 7.4em;
+    line-height: 1.55;
+  } /* on a phone each of the two lines can take two */
+  .note-artist {
+    display: flex;
+  }
+
+  .artists-page .map-bar .mini-search {
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .artist-profile .past .when {
+    display: block;
+    min-width: 0;
+  }
+
+  .phone-break {
+    display: inline;
+  }
+
+  .map-bar {
+    position: relative;
+  }
+  .filters-wrap {
+    position: static;
+  }
+  .filters-wrap .more-panel {
+    left: 0;
+    right: 0;
+    width: auto;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+
+  .search-btn {
+    padding: 0.45rem;
+  }
+  .search-btn .search-word,
+  .search-btn kbd {
+    display: none;
+  }
+  dialog.search {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .plan-list li {
+    grid-template-columns: 1fr;
+  }
+  .plan-list .when {
+    grid-row: auto;
+  }
+
+  /* a phone shows one card at a time: give its parts room, and the cards more space between them */
+  .festival-card {
+    gap: 0.7rem;
+  }
+  .festival-card .note-artist {
+    margin: -0.25rem 0 0 0.4rem;
+  }
+  .sentence-results {
+    padding-top: 2.4rem;
+  }
+  /* more air between the sentence's parts: the hint, the count, who's going, and "Never mind" */
+  .sentence-hero .live .friends {
+    margin-top: 1.2rem;
+  }
+  .nevermind {
+    margin-top: 1.6rem;
+  }
+
   /* a sheet: slides up from the bottom, solid. It opens over longer with a soft landing (the curve phone sheets
      use) and leaves faster, speeding up out of view; the dimming keeps the same pace. */
   dialog.peek {
