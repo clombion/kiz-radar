@@ -175,10 +175,10 @@ to="${PRE_COMMIT_TO_REF:-$(git rev-parse HEAD)}"
 tree="$(mktemp -d)/check"
 git worktree add -q --detach "$tree" "$to"
 trap 'git worktree remove --force "$tree"' EXIT
-# the claims at the commit's pin, from this clone's own copy of them (the audit reads them), with no fetch
+# the claims at the commit's pin (the audit reads them), cloned from this clone's own copy of them: no fetch, and no
+# submodule setting, which the worktrees share with the clone
 claims="$(git rev-parse --path-format=absolute --git-common-dir)/modules/claims"
-cd "$tree" && git submodule init -q claims && git config submodule.claims.url "$claims"
-git -c protocol.file.allow=always submodule update -q claims
+cd "$tree" && git clone -q --shared --no-checkout "$claims" claims && git -C claims checkout -q --detach "$(git rev-parse HEAD:claims)"
 mise trust -q && mise run check
 """
 
