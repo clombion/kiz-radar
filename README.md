@@ -270,16 +270,17 @@ different weekdays or dance styles are different passes; a pass sold with a meal
 goes back to its model once with the checker's lines. The run fails, after committing, when a page broke its recipe, a
 festival's page was refused or unreachable three times in a row, a festival no longer fits its first read, or the models
 made no first read for a festival that needed one (a call failed, the month's budget is spent); `todo` then marks it for
-a session, where `retry` reads it with a visible browser. A festival's ticket page is known when it is its first read's,
-the shop an agent recorded, or its first full link to a ticket shop (a site a recipe reads, or one a site claim names);
-a link to anything else, the festival's own site say, is no ticket page. Every festival to come waits for something or
-for nothing, and `pipeline/tickets/status.csv` (written by `page`, `read`, `retry`, `record` and `run`, for every
-festival the export lists, a past one waiting for nothing) says which, with its first-read state, how it sells and its
-known page: its ticket page found (kizomba-world cut the link short, gave none, or gave no link to a ticket shop; an
-agent records in `pipeline/tickets/pages.csv`, through `tickets.py page`, how the festival sells: in a shop, with its
-page; not yet, when sales are announced but not open; offline, by message, e-mail, form or bank transfer; closed; or
-none found, when a search of its links and the web found no ticket page, which holds until its links change), a recipe
-for its site, its recipe fixed, its sales to open, an agent to settle a dispute, or a session for a page that keeps
+a session, where `retry` reads it with a visible browser. A festival's ticket page is known when it is the shop's page
+an agent recorded (with `page`, or with `read --url`, which replaces the first read's page and so asks for a new first
+read), its first read's, or its first full link to a ticket shop (a site a recipe reads, or one a site claim names); a
+link to anything else, the festival's own site say, is no ticket page. Every festival to come waits for something or for
+nothing, and `pipeline/tickets/status.csv` (written by `page`, `read`, `retry`, `record` and `run`, for every festival
+the export lists, a past one waiting for nothing) says which, with its first-read state, how it sells and its known
+page: its ticket page found (kizomba-world cut the link short, gave none, or gave no link to a ticket shop; an agent
+records in `pipeline/tickets/pages.csv`, through `tickets.py page`, how the festival sells: in a shop, with its page;
+not yet, when sales are announced but not open; offline, by message, e-mail, form or bank transfer; closed; or none
+found, when a search of its links and the web found no ticket page, which holds until its links change), a recipe for
+its site, its recipe fixed, its sales to open, an agent to settle a dispute, or a session for a page that keeps
 refusing. A site a recipe can't read (behind a check that a visitor is human, say) has a site claim, and its festivals
 wait for nothing. That is backlog, so it never fails the run.
 

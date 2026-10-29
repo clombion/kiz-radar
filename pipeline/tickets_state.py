@@ -104,14 +104,17 @@ def known_page(
     urls: Sequence[str],
     shops: set[str],
 ) -> str | None:
-    """The festival's ticket page when it is known, else None: its first read's, the shop an agent found it sells in
-    (tickets/pages.csv), or its first full link to a ticket shop."""
+    """The festival's ticket page when it is known, else None: the shop's page an agent chose for it (tickets/pages.csv,
+    written by page and read --url), else its first read's, else none when an agent found it sells no page, else its
+    first full link to a ticket shop."""
+    if sold and sold.state == Sales.SHOP and sold.page:
+        return sold.page
     if fr:
         if (at := read_at(fr, entries)) is None:
             sys.exit(f'a first read of rows at {fr.rows_at.isoformat()}, which its log has no read of')
         return at.page
     if sold:
-        return sold.page if sold.state == Sales.SHOP else None
+        return None
     return next((u for u in urls if '…' not in u and host(u) in shops), None)
 
 
@@ -214,7 +217,7 @@ def why_first_read(f: Festival, today: dt.date) -> tuple[FirstReadState, tuple[s
                 FirstReadState.REDO_DESCRIPTION
                 if fr.description != f.description
                 else FirstReadState.REDO_PAGE
-                if entry.page != at.page
+                if f.page and f.page.url != at.page
                 else FirstReadState.REDO_UNREAD
                 if unread
                 else FirstReadState.CURRENT

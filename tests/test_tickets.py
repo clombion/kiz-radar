@@ -1078,7 +1078,7 @@ FIRST_READ_CASES: list[tuple[dict[str, object], FirstReadState]] = [
     ({}, FirstReadState.CURRENT),
     ({'disputed': True}, FirstReadState.CURRENT),  # a dispute settled by a current first read
     ({'description': 'New prices.'}, FirstReadState.REDO_DESCRIPTION),
-    ({'log': (entry(ROWS), entry(ROWS, at=LATER, page='https://my.weezevent.com/y'))}, FirstReadState.REDO_PAGE),
+    ({'page': KnownPage('https://my.weezevent.com/y', SITE)}, FirstReadState.REDO_PAGE),  # an agent chose another
     ({'log': (entry((*ROWS, row('6', 'Fullpass Male 140€', 143.59))),)}, FirstReadState.REDO_UNREAD),
     ({'first_read': STAMPED}, FirstReadState.REDO_PROMPT),
     ({'first_read': STAMPED, 'disputed': True}, FirstReadState.DISPUTED),
@@ -1298,6 +1298,8 @@ def test_a_page_an_agent_found_or_a_first_read_is_known_whatever_its_site(files:
     )
     assert tickets_state.known_page(None, [], sold(Sales.OFFLINE), [PAGE], shops) is None
     assert tickets_state.known_page(read(), tickets_store.log(7), None, [], shops) == PAGE
+    chosen = sold(Sales.SHOP, 'https://my.weezevent.com/y')  # with read --url, after the first read
+    assert tickets_state.known_page(read(), tickets_store.log(7), chosen, [], shops) == 'https://my.weezevent.com/y'
 
 
 def test_a_festival_with_links_to_no_shop_waits_for_its_page_and_has_no_page_to_link() -> None:
@@ -1450,6 +1452,13 @@ def test_a_first_read_is_drafted_checked_and_recorded_by_its_commands(files: Pat
     assert command('check', 7).startswith('7: passes; ')
     assert command('record', 7).startswith('7: 2 prices recorded, read 2026-10-01\nThen: mise run load')
     assert not (files / 'drafts' / '7.json').exists()
+
+
+def test_a_page_read_with_its_url_is_the_known_page_from_then_on(command: Command, memory: Memory) -> None:
+    FoundRow.write([])
+    with pytest.raises(SystemExit, match=r'no recipe for fest\.example'):
+        tickets.cmd_read(memory(), 7, 'https://fest.example/t')  # as read 7 --url does, without its display
+    assert [(r.state, r.page) for r in FoundRow.read()] == [(Sales.SHOP, 'https://fest.example/t')]
 
 
 def test_todo_lists_what_a_festival_needs_and_what_all_wait_for(command: Command) -> None:

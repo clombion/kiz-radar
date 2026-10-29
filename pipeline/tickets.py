@@ -43,8 +43,9 @@ log (tickets_store.recorded), so they are what the reads and logs say and nothin
 between: a festival whose first read no longer fits its page is left out until it is read again. record checks a draft
 or a first read the same way, moving the draft to tickets/reads/ once it passes.
 
-A festival's ticket page is known when it is its first read's, the shop an agent found it sells in, or its first
-full link to a ticket shop (a site a recipe reads, or one a site claim says no recipe can). Each festival
+A festival's ticket page is known when it is the shop's page an agent chose (tickets/pages.csv: page, or read --url,
+which replaces its first read's page, which then needs making again), its first read's, or its first full link to a
+ticket shop (a site a recipe reads, or one a site claim says no recipe can). Each festival
 still to come waits for something (enums.Waiting), or for nothing: its ticket page found (its links are cut short
 or go to no ticket shop; tickets/pages.csv, written by page, records how an agent found it sells them: its shop's
 page, or that its sales haven't opened, happen offline or are closed, or that a search found no page, which holds
@@ -315,7 +316,21 @@ def one(db: sqlite_db.Reader, event_id: int, page: str | None = None) -> Festiva
 
 
 def cmd_read(db: sqlite_db.Reader, event_id: int, url: str | None = None, *, visible: bool | None = None) -> None:
+    """Read the festival's known ticket page, or the one url names, which becomes its known page (tickets/pages.csv),
+    so that the next run reads it too."""
     f = one(db, event_id, url and full_url(url))
+    if url and f.page:
+        found(
+            FoundRow(
+                event_id=event_id,
+                event=f.title,
+                state=Sales.SHOP,
+                page=f.page.url,
+                links=None,
+                found_by='agent',
+                note='read --url',
+            )
+        )
     if not f.page:
         sys.exit(f'{event_id}: no known ticket page; find it and pass --url')
     url, site = f.page
@@ -435,6 +450,12 @@ class Sold(NamedTuple):
     by: str
 
 
+def found(row: FoundRow) -> None:
+    """Record how a festival sells (tickets/pages.csv), in place of what was recorded before."""
+    rows = [r for r in FoundRow.read() if r.event_id != row.event_id]
+    FoundRow.write(sorted([*rows, row], key=lambda r: r.event_id))
+
+
 def cmd_page(db: sqlite_db.Reader, event_id: int, sold: Sold) -> None:
     """Record how a festival with no known ticket page sells its tickets: its shop's page, or that its sales haven't
     opened, happen offline, are closed, or that a search of its links and the web found no page."""
@@ -445,7 +466,7 @@ def cmd_page(db: sqlite_db.Reader, event_id: int, sold: Sold) -> None:
     if url:
         _ = full_url(url)
     try:
-        found = FoundRow(
+        row = FoundRow(
             event_id=event_id,
             event=f.title,
             state=state,
@@ -456,8 +477,7 @@ def cmd_page(db: sqlite_db.Reader, event_id: int, sold: Sold) -> None:
         )
     except ValidationError as e:
         sys.exit('\n'.join(errors(e, f'{event_id}')))
-    rows = [r for r in FoundRow.read() if r.event_id != event_id]
-    FoundRow.write(sorted([*rows, found], key=lambda r: r.event_id))
+    found(row)
     _ = status(db)
     print(
         f'{event_id}: {state}'
