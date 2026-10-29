@@ -18,6 +18,10 @@ const asked = new URLSearchParams(location.search).get('cur')?.toUpperCase();
 export const currency: Currency = isCurrency(asked) ? asked : 'NOK';
 // step('flight', 'cheap'), step('trip', 'fair'): in the visitor's currency
 export const step = (what: 'flight' | 'trip', name: keyof Steps): number => CURRENCIES[currency][what][name];
+// whether a euro amount is within a step in the visitor's currency: a cheap flight (green), a fair one; never one
+// with no rate to convert it by
+export const within = (eur: number, what: 'flight' | 'trip', name: keyof Steps): boolean =>
+  (convert(eur) ?? Number.POSITIVE_INFINITY) <= step(what, name);
 
 let rates: Map<string, number> | undefined;
 const rate = (c: string): number | undefined => {

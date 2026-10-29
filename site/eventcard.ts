@@ -5,10 +5,10 @@ import { addDays, today } from './days.ts';
 import { cardDetails, traitItems } from './details.ts';
 import type { Kid } from './dom.ts';
 import { button, h, own } from './dom.ts';
-import { type Festival, styleLine } from './festivals.ts';
+import { type Fare, type Festival, styleLine } from './festivals.ts';
 import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
-import { approximately, convert, money, step } from './money.ts';
+import { approximately, money, within } from './money.ts';
 import { openPasses, riseNote } from './passes.ts';
 import { goingLine } from './plans.ts';
 import { artistHref } from './routes.ts';
@@ -39,8 +39,8 @@ function dateBox(start: string, end: string): HTMLElement {
 // "✈ ~5 150 kr to Brussels, then 104 km": a Fri→Mon return from home to the nearest airport with prices, and how far
 // the festival is from it. The price links to Google Flights for that weekend.
 // a festival with a fare, so with an airport and a weekend
-type Flown = Festival & { airport: string; depart: string; fare: NonNullable<Festival['fare']> };
-const flown = (e: Festival): e is Flown => e.airport !== null && e.depart !== null && e.fare !== null;
+type Flown = Festival & { airport: string; depart: string; fare: Extract<Fare, { home: false }> };
+const flown = (e: Festival): e is Flown => e.airport !== null && e.depart !== null && e.fare !== null && !e.fare.home;
 const flightLink = (e: Flown, words: string) =>
   h(
     'a',
@@ -56,12 +56,12 @@ const after = (e: Festival): string[] => [
   ` to ${e.airport_city}`,
   e.airport_km !== null && e.airport_km > 30 ? `, then ${e.airport_km} km` : '',
 ];
-const cheap = (e: Flown) => (convert(e.fare.price) ?? Number.POSITIVE_INFINITY) <= step('flight', 'cheap');
+const cheap = (e: Flown) => within(e.fare.price, 'flight', 'cheap');
 function flight(e: Festival): HTMLElement {
   if (e.phase === KEY.phase.GONE) return h('p', { class: 'flight muted' }, text('listing', e.listing));
   if (e.phase !== KEY.phase.AHEAD) return h('p', { class: 'flight muted' }, text('phase', e.phase));
   if (!e.airport) return h('p', { class: 'flight muted' }, `✈ too far from ${home().city} for our flight prices`);
-  if (e.fare?.home) return h('p', { class: 'flight easy' }, `In ${home().city}, no flight needed`);
+  if (e.fare?.home === true) return h('p', { class: 'flight easy' }, `In ${home().city}, no flight needed`);
   if (!flown(e)) return h('p', { class: 'flight muted' }, '✈ flight not checked yet');
   return h(
     'p',
@@ -126,7 +126,7 @@ function prices(e: Festival): HTMLElement[] {
       { class: 'cost-parts' },
       pass,
       ' + ',
-      e.fare?.home || !flown(e)
+      e.fare?.home === true || !flown(e)
         ? `no flight, in ${home().city}`
         : [
             h(

@@ -15,6 +15,11 @@ import { type Key, text, where } from './wording.ts';
 // Each row with the fare for its weekend, the best-known names on its line-up, its genres (event_stats: its
 // description's and its kizomba-world tags), what its card says of its price today (passes.ts) and the trip: the
 // card's pass plus the flight in the visitor's currency, null when either is unknown or the pass has no price today.
+// how a festival is reached from home: in the home city, with no flight; or by the return flight found for its
+// weekend from its airport, its price in euros
+export type Fare = { readonly home: true } | { readonly home: false; readonly price: number };
+// what the flight costs, in euros: nothing from home, null when no fare is known
+export const flightEur = (fare: Fare | null): number | null => (fare === null ? null : fare.home ? 0 : fare.price);
 // a festival as every card has it
 export type Festival = Omit<EventRow, 'features'> & {
   depart: string | null;
@@ -23,7 +28,7 @@ export type Festival = Omit<EventRow, 'features'> & {
   goers: Goer[];
   headliners: { id: number; name: string }[];
   styles: Set<Key<'genre'>>;
-  fare: { price: number; home?: true } | null;
+  fare: Fare | null;
   price: PriceLine;
   trip: number | null;
 };
@@ -65,15 +70,16 @@ function details() {
 }
 // the flight to a festival: none from home, else the fare found for its weekend from its airport
 function fareOf(e: EventRow, fares: ReadonlyMap<string, number>): Festival['fare'] {
-  if (e.airport === home().code) return { price: 0, home: true };
+  if (e.airport === home().code) return { home: true };
   const flown = e.airport === null || e.weekend_friday === null ? undefined : fares.get(e.airport + e.weekend_friday);
-  return flown === undefined ? null : { price: flown };
+  return flown === undefined ? null : { home: false, price: flown };
 }
 // the pass and the flight together, in the visitor's currency and rounded as the card shows it (so that a price limit
 // keeps what the card says is within it), when both have a price
 function tripOf(price: Festival['price'], fare: Festival['fare']): number | null {
   const pass = 'now' in price ? convert(price.now.tier.amount, price.now.tier.currency) : null,
-    flight = fare ? convert(fare.price) : null;
+    eur = flightEur(fare),
+    flight = eur === null ? null : convert(eur);
   return pass === null || flight === null ? null : rounded(pass + flight);
 }
 export function withDetails(rows: readonly EventRow[]): Festival[] {

@@ -11,6 +11,7 @@ import {
   changed,
   type Festival,
   festivals,
+  flightEur,
   hasWith,
   isWith,
   readState,
@@ -145,7 +146,7 @@ function matches(all: readonly Festival[], s: Readonly<Choices>): Festival[] {
       s.sort === 'fare'
         ? (a, b) =>
             (a.trip ?? 1e9) - (b.trip ?? 1e9) ||
-            (a.fare?.price ?? 1e9) - (b.fare?.price ?? 1e9) ||
+            (flightEur(a.fare) ?? 1e9) - (flightEur(b.fare) ?? 1e9) ||
             a.depart.localeCompare(b.depart)
         : (a, b) => a.depart.localeCompare(b.depart),
     );

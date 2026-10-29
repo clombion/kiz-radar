@@ -3,7 +3,7 @@
 import { one, q, sql } from './db.ts';
 import { h, segments } from './dom.ts';
 import { changed, readState } from './festivals.ts';
-import { convert, money, step } from './money.ts';
+import { money, within } from './money.ts';
 import { artistsHref, countriesHref, festivalsHref, mapHref, showInAddressBar } from './routes.ts';
 import { num, opt, str } from './rows.ts';
 import { countryName, flag, home, monthYear } from './ui.ts';
@@ -126,7 +126,7 @@ export function countriesView(root: HTMLElement, qs: string): void {
 
 // the cheapest flight to a country, or why there is none
 function flightLine(r: Country): HTMLElement {
-  const cheap = r.fare !== null && (convert(r.fare.price) ?? Number.POSITIVE_INFINITY) <= step('flight', 'cheap');
+  const cheap = r.fare !== null && within(r.fare.price, 'flight', 'cheap');
   return h(
     'p',
     { class: `flight${cheap ? ' easy' : ''}` },

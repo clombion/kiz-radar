@@ -6,7 +6,7 @@ import { q, sql } from './db.ts';
 import { button, dropdown, h, moreButton } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, readState, withDetails } from './festivals.ts';
-import { convert, currency, money, step } from './money.ts';
+import { currency, money, step, within } from './money.ts';
 import { cityOf, cityOnMapHref, eventOnMapHref, mapHref, type Show, showInAddressBar } from './routes.ts';
 import { EVENT } from './rows.ts';
 import { flag, home } from './ui.ts';
@@ -29,11 +29,12 @@ interface City {
   n: number;
   popular: number;
   minFare: number | null;
+  home: boolean; // a festival there is in the home city
 }
 const cityKey = (e: Placed) => `${e.city}|${e.country_code}`;
 // the festivals in view, by city, with what each city's bubble shows
 function citiesOf(events: readonly Placed[]): City[] {
-  const groups = new Map<string, Omit<City, 'n' | 'popular' | 'minFare'>>();
+  const groups = new Map<string, Omit<City, 'n' | 'popular' | 'minFare' | 'home'>>();
   for (const e of events) {
     const k = cityKey(e);
     const g = groups.get(k) ?? { key: k, city: e.city, cc: e.country_code, lat: e.lat, lon: e.lon, events: [] };
@@ -41,9 +42,10 @@ function citiesOf(events: readonly Placed[]): City[] {
     groups.set(k, g);
   }
   return [...groups.values()].map((c) => {
-    const fares = c.events.flatMap((e) => (e.fare ? [e.fare.price] : []));
+    const fares = c.events.flatMap((e) => (e.fare && !e.fare.home ? [e.fare.price] : []));
     return {
       ...c,
+      home: c.events.some((e) => e.fare?.home === true),
       n: c.events.length,
       popular: c.events.reduce((sum, e) => sum + (e.popular_artists ?? 0), 0),
       minFare: fares.length > 0 ? Math.min(...fares) : null,
@@ -62,7 +64,7 @@ const bubble = (c: City, scheme: Scheme) =>
     fillOpacity: 0.85,
     bubblingMouseEvents: false,
   }).bindTooltip(
-    `${c.city} · ${c.n} festival${c.n > 1 ? 's' : ''}${c.minFare === null ? '' : ` · flights from ${money(c.minFare)}`}`,
+    `${c.city} · ${c.n} festival${c.n > 1 ? 's' : ''}${c.home ? ' · no flight needed' : c.minFare === null ? '' : ` · flights from ${money(c.minFare)}`}`,
     { direction: 'top', offset: [0, -6] },
   );
 const COLOR_BY: Readonly<Record<string, Scheme>> = {
@@ -72,12 +74,12 @@ const COLOR_BY: Readonly<Record<string, Scheme>> = {
     bands: [
       [
         `under ${money(step('flight', 'cheap'), currency)}`,
-        (c) => c.minFare != null && (convert(c.minFare) ?? Number.POSITIVE_INFINITY) <= step('flight', 'cheap'),
+        (c) => c.home || (c.minFare != null && within(c.minFare, 'flight', 'cheap')), // home: no flight needed
         '--good',
       ],
       [
         `${money(step('flight', 'cheap'), currency)}–${money(step('flight', 'fair'), currency)}`,
-        (c) => c.minFare != null && (convert(c.minFare) ?? Number.POSITIVE_INFINITY) <= step('flight', 'fair'),
+        (c) => c.minFare != null && within(c.minFare, 'flight', 'fair'),
         '--mid',
       ],
       [`over ${money(step('flight', 'fair'), currency)}`, (c) => c.minFare != null, '--bad'],
