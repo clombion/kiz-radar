@@ -434,7 +434,6 @@ class FareSearch(StrEnum):
 
     PRICED = 'priced'
     NO_PRICE = 'no price'
-    REFUSED = 'refused'
 
 
 @unique

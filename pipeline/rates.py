@@ -10,6 +10,7 @@ import re
 import sys
 
 from pipeline import web
+from pipeline.calls import Declined
 from pipeline.records import Rate
 
 ECB = web.Https('www.ecb.europa.eu', '/stats/eurofxref/eurofxref-daily.xml')
@@ -29,9 +30,14 @@ def main() -> None:
     _ = argparse.ArgumentParser(
         description="Refresh pipeline/rates.csv from the European Central Bank's reference rates."
     ).parse_args()
+    match web.get(ECB):
+        case Declined() as d:
+            sys.exit(f'{d.cause}: {d.why}; {Rate.FILE} left as it was')
+        case body:
+            pass
     try:
-        day, per_eur = rates(web.get(ECB).decode())
-    except (OSError, ValueError) as e:
+        day, per_eur = rates(body.decode())
+    except ValueError as e:
         sys.exit(f'{ECB.url()}: {e}; {Rate.FILE} left as it was')
     Rate.write([Rate(currency=c, per_eur=per_eur[c], date=day) for c in sorted(per_eur)])
     print(f'{len(per_eur)} rates of {day}')

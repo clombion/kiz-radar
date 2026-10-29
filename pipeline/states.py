@@ -851,8 +851,7 @@ ROWS = (
     S('event_source', 'kizomba-world', 'kizomba-world.com, whose ids its source_id are', KEPT),
     S('plan', 'going', 'they said they are going', VIEW),
     S('fare_search', 'priced', 'Google gave a return for the weekend; its price is in docs/data/fares.csv', KEPT),
-    S('fare_search', 'no price', 'Google gave no return, or fli failed or timed out; note says which', KEPT),
-    S('fare_search', 'refused', 'Google refused the search twice (HTTP 429); the run stops there', KEPT),
+    S('fare_search', 'no price', 'Google gave no return for the weekend; note gives its words', KEPT),
     S(
         'next_change',
         'door',

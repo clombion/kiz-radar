@@ -10,9 +10,11 @@ each day's run checks about a seventh of the weekends. A weekend that has never 
 twice its interval, doesn't wait for its weekday. Weekends further ahead than Google sells (SELLS_DAYS) wait.
 
 Past weekends, and weekends no upcoming festival uses any more, leave both files. A weekend Google returns no price
-for is recorded as such and tried again at its next interval. Google sometimes refuses a single search (HTTP 429), so
-a refused search is tried once more after a minute; refused again, it stops the run, which then exits with an error
-after saving what it found.
+for is recorded as such, its old fare dropped, and tried again at its next interval. A search that gives no answer
+(pipeline/calls.py: fli timed out, or wrote what can't be read) records nothing, so the weekend is tried again on the
+next run, which fails naming it. Google sometimes refuses a single search (HTTP 429), so a refused search is tried once
+more after a minute; refused again, it stops the run. Both files are saved after every search, so a run stopped half
+way keeps what it found. The weekends are the festivals' in the export, by the flight rule of pipeline/airports.py.
 
     mise run fares -- refresh --budget 20      # what the GitHub Action runs
     mise run fares -- plan                     # show what is due, without searching
@@ -27,14 +29,16 @@ import subprocess
 import sys
 import time
 import zlib
+from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import NamedTuple
 
 from pydantic import BaseModel, ConfigDict, ValidationError
 
-from pipeline import airports, build_site_db, export
-from pipeline.enums import FareSearch, Listing
-from pipeline.records import Date, Fare, Job, Record, now
+from pipeline import airports, calls, export
+from pipeline.calls import Declined
+from pipeline.enums import CallCause, FareSearch, Listing
+from pipeline.records import Date, Fare, Job, Record, day_of, now
 
 FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'  # punitarani/fli, the only place the version is pinned
 FLI = os.environ.get('FLI_CMD', f'uvx -q --from git+https://github.com/punitarani/fli@{FLI_SHA} fli')
@@ -44,15 +48,15 @@ WEEKS_APART = [(35, 7), (91, 14), (182, 28), (SELLS_DAYS, 42)]
 PAUSE = 10  # seconds between searches; Google refuses after about 20 searches 5 seconds apart
 RETRY_AFTER = 60  # seconds to wait before trying a refused search once more
 TIMEOUT = 300  # seconds a search may take
+REFUSED = 'Google refused the search (HTTP 429)'
 NOTE_LENGTH = 200  # a search's note is cut to this many characters
 DAY = 86400  # seconds
 NEVER = 99  # how overdue a weekend never searched counts as, in intervals
 
 
 class Missed(NamedTuple):
-    """A search that found no fare: why (FareSearch.NO_PRICE or REFUSED), and fli's words."""
+    """A search Google answered with no fare, and fli's words."""
 
-    status: FareSearch
     note: str
 
 
@@ -66,7 +70,7 @@ class FliDate(Fli):
     price: float | None = None
     departure_date: Date | None = None
     return_date: Date | None = None
-    currency: str = 'EUR'
+    currency: str = 'EUR'  # the one asked for, which a Fare holds
 
 
 class FliError(Fli):
@@ -97,21 +101,32 @@ class Weekend:
         return self.age / self.every if self.age is not None and self.every else NEVER
 
 
-class Flown(Record):
-    """A festival weekend with flights to search: the airport near it, and the Friday a trip to it leaves on."""
+class Listed(Record):
+    """A festival of the export still listed and not cancelled: its city and its first day."""
 
-    airport: str
-    weekend_friday: Date
+    city: str | None
+    country: str | None
+    start_date: str
 
 
 @functools.cache
 def weekends(today: dt.date) -> set[tuple[str, dt.date]]:
-    """(airport, Friday) of every upcoming festival still listed and not cancelled, with an airport other than home,
-    from the site DB built for it from the export."""
-    with build_site_db.built(export.path()) as c:
-        query = """select airport, weekend_friday from events where airport is not null and airport != ?
-            and cancelled is not 1 and listing = ? and weekend_friday > ?"""
-        return {(w.airport, w.weekend_friday) for w in c.rows(Flown, query, (airports.home(), Listing.LISTED, today))}
+    """(airport, Friday) of every festival still listed and not cancelled, a trip to which leaves after today, to an
+    airport other than home (pipeline/airports.py)."""
+    with export.opened('ro') as db:
+        listed = db.rows(
+            Listed,
+            "select nullif(city, '') as city, nullif(country, '') as country, start_date from events"
+            ' where cancelled is not 1 and listing = ?',
+            (Listing.LISTED,),
+        )
+    geo, to, home = airports.places(), airports.known(), airports.home()
+    out: set[tuple[str, dt.date]] = set()
+    for e in listed:
+        friday = airports.weekend_friday(day_of(e.start_date))
+        if (p := airports.placed(e.city, e.country, geo, to)) and p.airport and p.airport != home and friday > today:
+            out.add((p.airport, friday))
+    return out
 
 
 def interval(days_away: int) -> int | None:
@@ -145,73 +160,83 @@ def queue(t: dt.datetime | None = None) -> list[Weekend]:
     return sorted(q, key=lambda w: (not w.due, -w.overdue, w.friday))
 
 
-def search(airport: str, friday: dt.date) -> Fare | Missed:
-    """One Friday-to-Monday return: its fare, or why there is none."""
+def search(airport: str, friday: dt.date) -> Fare | Missed | Declined:
+    """One Friday-to-Monday return: its fare, Google's answer that it has none, or why there is no answer (refused,
+    the one transient cause the run stops on)."""
     day = friday.isoformat()
     args = ['dates', airports.home(), airport, '--from', day, '--to', day, '-d', '3', '--round', '--friday']
     cmd = [*shlex.split(FLI), *args, '--currency', 'EUR', '--format', 'json']
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=TIMEOUT, check=False)  # noqa: S603 (fli, pinned in FLI, with arguments of ours)
     except subprocess.TimeoutExpired:
-        return Missed(FareSearch.NO_PRICE, 'timeout')
+        return Declined(CallCause.TRANSIENT, f'fli took over {TIMEOUT} s')
     if 'HTTP 429' in p.stderr or '"http_status": 429' in p.stdout:
-        return Missed(FareSearch.REFUSED, 'HTTP 429')
+        return Declined(CallCause.TRANSIENT, REFUSED)
     try:
         d = FliAnswer.model_validate_json(p.stdout[p.stdout.index('{') :])
     except (ValueError, ValidationError):
-        return Missed(FareSearch.NO_PRICE, (p.stderr.strip().splitlines() or ['no output'])[-1][:NOTE_LENGTH])
+        why = (p.stderr.strip().splitlines() or ['no output'])[-1][:NOTE_LENGTH]
+        return Declined(CallCause.TRANSIENT, f'fli wrote no answer: {why}')
     x = next((x for x in d.dates if x.price and x.departure_date == friday), None)
     if not d.success or not x or x.price is None or x.return_date is None:
-        return Missed(FareSearch.NO_PRICE, (d.error.message if d.error else '')[:NOTE_LENGTH])
+        return Missed((d.error.message if d.error else '')[:NOTE_LENGTH])
+    if x.currency != 'EUR':
+        return Declined(CallCause.STRUCTURAL, f'fli gave a price in {x.currency}, not the EUR it was asked')
     return Fare(
         airport=airport,
         depart=friday,
         return_=x.return_date,
         price=round(x.price),
-        currency=x.currency,
+        currency='EUR',
         fetched_at=now(),
     )
 
 
 def refresh(budget: int, max_seconds: int) -> None:
+    """Search the weekends due today, most overdue first, saving both files after each; exits 1 naming the searches
+    that gave no answer, a refusal or a stop first."""
     start, today = time.time(), now().date()
-    fares = {(r.airport, r.depart, r.return_): r for r in Fare.read()}
-    jobs = {(j.airport, j.depart): j for j in Job.read()}
-    done, refused = 0, False
+    live = weekends(today)
+    fares = {(r.airport, r.depart, r.return_): r for r in Fare.read() if (r.airport, r.depart) in live}
+    jobs = {(j.airport, j.depart): j for j in Job.read() if (j.airport, j.depart) in live}
+    save(fares, jobs)  # past weekends and ones no festival uses any more leave both files
+    done, declined = 0, list[tuple[str, Declined]]()
     for item in queue():
         if not item.due or done >= budget or time.time() - start > max_seconds:
             break
         found = search(item.airport, item.friday)
-        if isinstance(found, Missed) and found.status is FareSearch.REFUSED:
+        if isinstance(found, Declined) and found.why == REFUSED:
             time.sleep(RETRY_AFTER)
             found = search(item.airport, item.friday)
+        where = f'{item.airport} {item.friday}'
         match found:
+            case Declined():
+                print(f'{where} ({item.days_away} days away): no answer: {found.why}', flush=True)
+                declined.append((where, found))
+                if found.why == REFUSED or found.stops:
+                    break
+                continue
             case Fare():
                 fares[(found.airport, found.depart, found.return_)] = found
-                status, said = FareSearch.PRICED, f'{found.price} EUR'
-                note = ''
-            case Missed(FareSearch.REFUSED):
-                print(f'{item.airport} {item.friday} ({item.days_away} days away): refused {found.note}', flush=True)
-                refused = True
-                break
-            case Missed(status, note):
-                said = note
-        print(f'{item.airport} {item.friday} ({item.days_away} days away): {status} {said}', flush=True)
+                status, note, said = FareSearch.PRICED, '', f'{found.price} EUR'
+            case Missed(note):
+                fares = {k: f for k, f in fares.items() if (f.airport, f.depart) != (item.airport, item.friday)}
+                status, said = FareSearch.NO_PRICE, note
+        print(f'{where} ({item.days_away} days away): {status} {said}', flush=True)
         jobs[(item.airport, item.friday)] = Job(
             airport=item.airport, depart=item.friday, last_run=now(), status=status, note=note
         )
+        save(fares, jobs)
         done += 1
         time.sleep(PAUSE)
-    live = weekends(today)
-    kept_fares = sorted(
-        (f for f in fares.values() if (f.airport, f.depart) in live), key=lambda f: (f.airport, f.depart, f.return_)
-    )
-    kept_jobs = sorted((j for j in jobs.values() if (j.airport, j.depart) in live), key=lambda j: (j.airport, j.depart))
-    Fare.write(kept_fares)
-    Job.write(kept_jobs)
-    print(f'{done} searches; {len(kept_fares)} fares stored for {len(live)} festival weekends')
-    if refused:
-        sys.exit('Google refused a search (HTTP 429); the rest waits for the next run')
+    print(f'{done} searches; {len(fares)} fares stored for {len(live)} festival weekends')
+    if why := calls.failed('searches', declined):
+        sys.exit(why)
+
+
+def save(fares: Mapping[tuple[str, dt.date, dt.date], Fare], jobs: Mapping[tuple[str, dt.date], Job]) -> None:
+    Fare.write(sorted(fares.values(), key=lambda f: (f.airport, f.depart, f.return_)))
+    Job.write(sorted(jobs.values(), key=lambda j: (j.airport, j.depart)))
 
 
 def plan() -> None:

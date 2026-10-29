@@ -11,9 +11,7 @@ pipeline/states.py).
 
 import argparse
 import collections
-import datetime as dt
 import json
-import math
 import sys
 import tempfile
 import unicodedata
@@ -32,7 +30,6 @@ from pipeline.enums import Feature, Genre, HomeBasis, PassKind, People, Role, St
 from pipeline.records import (
     Fare,
     Person,
-    Place,
     PlanRow,
     Promo,
     Rate,
@@ -44,12 +41,9 @@ SITE_DATA = 'docs/data'  # the site's data files, published with it
 OUT = f'{SITE_DATA}/kiz.sqlite'
 SITE_JSON = f'{SITE_DATA}/site.json'  # what the page shows before the database loads
 POPULAR = 10  # bookings that make an artist "popular"
-MAX_AIRPORT_KM = 250
-EARTH_KM = 6371  # the Earth's radius
 KIZ = tuple(g for g, s in states.STYLE_OF.items() if s == Style.KIZOMBA)
 BOOKED_ROLES = tuple(map(Role, states.counted(states.BOOKING)))  # the roles an artist's bookings count
 LINEUP_ROLES = tuple(map(Role, states.counted(states.LINEUP)))  # the roles a line-up counts
-FRIDAY, LATEST_START = 4, 3  # a Friday's weekday; a trip leaves on the Friday after a start this many days before
 COPIED = (  # the export's tables the site keeps, each in the order it refers to the others
     'event_categories',
     'event_tags',
@@ -519,21 +513,6 @@ class Doc(BaseModel):
     description: str
 
 
-def km(a: float, b: float, c: float, d: float) -> float:
-    a, b, c, d = map(math.radians, (a, b, c, d))
-    return (
-        EARTH_KM
-        * 2
-        * math.asin(math.sqrt(math.sin((c - a) / 2) ** 2 + math.cos(a) * math.cos(c) * math.sin((d - b) / 2) ** 2))
-    )
-
-
-def weekend_friday(start: dt.date) -> dt.date:
-    """The Friday a Fri→Mon trip would leave on: the event's own Friday, or the next one for a Wed/Thu start."""
-    off = (FRIDAY - start.weekday()) % 7
-    return start + dt.timedelta(days=off if off <= LATEST_START else off - 7)
-
-
 def copied(x: Transaction, table: str) -> None:
     """A site table's rows from the export's table of its name, column for column."""
     t = sqlite_db.name(table)
@@ -576,8 +555,7 @@ def places(x: Transaction) -> None:
     weekend a trip to it leaves on; the airports and countries they name."""
     x.insert('airports', (a.model_dump() | {'home': int(a.home)} for a in airports.known()))
     x.insert('countries', ({'code': c, 'name': n} for c, n in sorted(NAMES.items())))
-    geo = {(p.city, p.country): p for p in Place.read()}
-    places_to_fly = airports.known()
+    geo, to = airports.places(), airports.known()
     listed = x.rows(
         Listed,
         """select e.id, d.title, e.title as listed_title, e.url, e.slug, e.start_date, e.end_date, e.timezone,
@@ -587,13 +565,7 @@ def places(x: Transaction) -> None:
     )
     rows: list[Mapping[str, object]] = []
     for e in listed:
-        g = None if e.city is None else geo.get((e.city, e.country))
-        lat, lon = (g.found.lat, g.found.lon) if g and g.found else (None, None)
-        ap = dist = None
-        if lat is not None and lon is not None:
-            dist, ap = min((km(lat, lon, a.lat, a.lon), a.code) for a in places_to_fly)
-            if dist > MAX_AIRPORT_KM:
-                ap = dist = None
+        p = airports.placed(e.city, e.country, geo, to)
         start = day_of(e.start_date)
         rows.append(
             e.model_dump()
@@ -601,11 +573,11 @@ def places(x: Transaction) -> None:
                 'start_date': start,
                 'end_date': day_of(e.end_date),
                 'country_code': (codes(e.country) or [None])[0],
-                'lat': lat,
-                'lon': lon,
-                'airport': ap,
-                'airport_km': None if dist is None else round(dist),
-                'weekend_friday': weekend_friday(start),
+                'lat': p and p.lat,
+                'lon': p and p.lon,
+                'airport': p and p.airport,
+                'airport_km': p and p.km,
+                'weekend_friday': airports.weekend_friday(start),
             }
         )
     x.insert('events', rows)
@@ -836,7 +808,7 @@ def meta(x: Transaction, built_at: str) -> None:
             for k, v in [
                 ('home_airport', airports.home()),
                 ('popular_threshold', str(POPULAR)),
-                ('max_airport_km', str(MAX_AIRPORT_KM)),
+                ('max_airport_km', str(airports.MAX_AIRPORT_KM)),
                 ('built_at', built_at),
                 ('events_source', 'https://kizomba-world.com/'),
                 (

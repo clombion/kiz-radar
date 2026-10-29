@@ -38,6 +38,6 @@ jobs:
           git commit -m "Refresh fares ($(date -u +%Y-%m-%dT%H:%MZ))"
           git pull --rebase --quiet
           git push
-      - name: Fail if Google refused a search
+      - name: Fail if a search gave no answer (refused, timed out, unread)
         if: steps.search.outcome == 'failure'
         run: exit 1

@@ -251,7 +251,10 @@ LITERALS = {
     frozenset({'ro', 'rw', 'rwc'}),  # SQLite's open modes, db.opened
     frozenset({'ro', 'rw'}),  # the export's, which no step creates, export.opened
     frozenset(p.name for p in states.POINTS),  # the points' names, enums.Point
-    *(frozenset({f}) for f in ('merge', 'home', 'booking', 'site')),  # each claim's field, its discriminator (claims)
+    *(frozenset({f}) for f in ('merge', 'home', 'booking', 'site')),
+    frozenset(
+        {'EUR'}
+    ),  # the currency fares asks fli for, records.Fare  # each claim's field, its discriminator (claims)
 }
 
 

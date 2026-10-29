@@ -706,7 +706,7 @@ def test_a_structural_failure_stops_the_questions_and_the_run_fails_naming_them(
     why = calls.failed('questions', ((f'{i} {p}', d) for (i, p), d in declined.items()))
     assert why is not None
     assert why.startswith('API error 401')
-    assert '2 questions gave no answer: structural: 2 (5 prices, 6 prices)' in why
+    assert '2 questions gave no answer (structural 2): 5 prices: API error 401' in why
     assert calls.failed('questions', []) is None
 
 

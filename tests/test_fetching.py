@@ -2,9 +2,13 @@
 places and kizomba-world's listings. No test reaches the network (pytest-socket)."""
 
 import datetime as dt
+import http.client
 import json
+import urllib.error
+import urllib.request
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
+from email.message import Message
 from pathlib import Path
 
 import pytest
@@ -12,8 +16,9 @@ from pydantic import BaseModel
 
 from pipeline import data, export, geocode, rates, scrape, web
 from pipeline import db as sqlite_db
+from pipeline.calls import Declined
 from pipeline.db import Reader
-from pipeline.enums import Listing
+from pipeline.enums import CallCause, Listing
 from pipeline.records import JSON, Place, Rate, Spot, today
 from tests import jsons
 from tests.exports import content, festival, run, shaped, trimmed
@@ -46,16 +51,16 @@ def test_the_rates_are_the_banks_and_the_fixed_ones(tmp_path: Path, monkeypatch:
     ]
 
 
-@pytest.mark.parametrize('answer', [OSError('unreachable'), b'<html>moved</html>'], ids=['unreachable', 'no day'])
+@pytest.mark.parametrize(
+    'answer', [Declined(CallCause.TRANSIENT, 'unreachable'), b'<html>moved</html>'], ids=['unreachable', 'no day']
+)
 def test_the_rates_stay_as_they_were_when_the_bank_gives_none(
-    answer: OSError | bytes, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    answer: Declined | bytes, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     out = Rate.path()
     _ = out.write_text('currency,per_eur,date\nNOK,11,2026-10-01\n')
 
-    def get(*_: object) -> bytes:
-        if isinstance(answer, OSError):
-            raise answer
+    def get(*_: object) -> bytes | Declined:
         return answer
 
     monkeypatch.setattr(web, 'get', get)
@@ -72,12 +77,12 @@ class Nominatim:
     asked: list[Mapping[str, str]] = field(default_factory=list[Mapping[str, str]])
     down: bool = False
 
-    def get(self, address: web.Https, query: Mapping[str, str], headers: Mapping[str, str]) -> bytes:
+    def get(self, address: web.Https, query: Mapping[str, str], headers: Mapping[str, str]) -> bytes | Declined:
         assert address == geocode.SEARCH
         assert 'User-Agent' in headers
         self.asked.append(query)
         if self.down:
-            raise OSError('timed out')
+            return Declined(CallCause.TRANSIENT, 'timed out')
         key = query.get('q') or ', '.join(v for k, v in query.items() if k in {'city', 'country'})
         return json.dumps([self.places[key]] if key in self.places else []).encode()
 
@@ -128,8 +133,30 @@ def test_a_place_nominatim_fails_on_is_left_for_the_next_run(tmp_path: Path, mon
     monkeypatch.setattr('time.sleep', no_wait)
     monkeypatch.setattr(web, 'get', Nominatim({}, down=True).get)
     source_with([('Lisbon', 'Portugal')])
-    run(geocode.main, monkeypatch)
+    with pytest.raises(SystemExit, match=r'1 places gave no answer \(transient 1\): Lisbon, Portugal: timed out'):
+        run(geocode.main, monkeypatch)
     assert Place.read() == []
+
+
+@pytest.mark.parametrize(
+    ('error', 'cause'),
+    [
+        (urllib.error.HTTPError('https://x', 503, 'busy', Message(), None), CallCause.TRANSIENT),
+        (urllib.error.HTTPError('https://x', 429, 'slow down', Message(), None), CallCause.TRANSIENT),
+        (urllib.error.HTTPError('https://x', 403, 'forbidden', Message(), None), CallCause.STRUCTURAL),
+        (urllib.error.URLError('no such host'), CallCause.TRANSIENT),
+        (TimeoutError('timed out'), CallCause.TRANSIENT),
+        (http.client.IncompleteRead(b'par'), CallCause.TRANSIENT),  # no OSError, which urllib may raise too
+    ],
+)
+def test_a_fetch_that_fails_says_why(error: Exception, cause: CallCause, monkeypatch: pytest.MonkeyPatch) -> None:
+    def urlopen(*_: object, **__: object) -> object:
+        raise error
+
+    monkeypatch.setattr(urllib.request, 'urlopen', urlopen)
+    got = web.get(web.Https('example.org', '/a'))
+    assert isinstance(got, Declined)
+    assert got.cause == cause
 
 
 @dataclass(frozen=True)

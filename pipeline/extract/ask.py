@@ -29,9 +29,10 @@ from collections.abc import Callable, Mapping, Sequence
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Protocol
+from typing import TYPE_CHECKING, Protocol, assert_never
 
 import anthropic
+import httpx2
 from anthropic.types import Message, MessageParam, OutputConfigParam, TextBlock, Usage
 
 from pipeline import calls, export, spend
@@ -49,6 +50,44 @@ if TYPE_CHECKING:
 MODEL = Model.CLAUDE_HAIKU_5_5
 WORKERS = 8
 BY = 'pipeline/extract/ask.py (Messages API), one festival'
+
+
+TOO_MANY, SERVER_ERROR = 429, 500
+# what Claude's SDK raises for a call (anthropic 2.3.0), and httpx2's transport errors, which it lets through mid-stream
+type SdkError = (
+    anthropic.APIConnectionError
+    | anthropic.APIStatusError
+    | anthropic.APIResponseValidationError
+    | httpx2.TransportError
+)
+SDK_ERRORS = (
+    anthropic.APIConnectionError,
+    anthropic.APIStatusError,
+    anthropic.APIResponseValidationError,
+    httpx2.TransportError,
+)
+
+
+def cause(e: SdkError) -> CallCause:
+    """Total over what the SDK raises: a lost connection or a timeout, or HTTP 429 or 5xx, is transient; any other
+    HTTP status (409 included), or a reply the SDK can't read, is structural."""
+    match e:
+        case anthropic.APIConnectionError() | httpx2.TransportError():  # a timeout is a connection error
+            return CallCause.TRANSIENT
+        case anthropic.APIStatusError(status_code=status):
+            return CallCause.TRANSIENT if status == TOO_MANY or status >= SERVER_ERROR else CallCause.STRUCTURAL
+        case anthropic.APIResponseValidationError():
+            return CallCause.STRUCTURAL
+        case _:
+            assert_never(e)
+
+
+def sdk_declined(e: SdkError) -> Declined:
+    match e:
+        case anthropic.APIStatusError():
+            return Declined(cause(e), f'API error {e.status_code} ({e.message})')
+        case _:
+            return Declined(cause(e), f'{type(e).__name__}: {e}')
 
 
 class Stream(Protocol):
@@ -152,12 +191,12 @@ def reply_to(client: Client, request: Request, messages: list[MessageParam]) -> 
         ) as stream:
             try:
                 reply = stream.get_final_message()
-            except calls.CALL_ERRORS:
+            except SDK_ERRORS:
                 if usage := billed(stream):
                     _ = spend.record(request.step, request.model, usage.input_tokens, usage.output_tokens)
                 raise
-    except calls.CALL_ERRORS as e:
-        return calls.declined(e)
+    except SDK_ERRORS as e:
+        return sdk_declined(e)
     _ = spend.record(request.step, request.model, reply.usage.input_tokens, reply.usage.output_tokens)
     return reply
 

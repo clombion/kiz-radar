@@ -2,8 +2,9 @@ name: Refresh places and rates
 
 # When a new kizomba-world export or anything in pipeline/ is pushed, check every state in the data is one of
 # pipeline/states.py (pipeline/audit.py), geocode any new cities, refresh the exchange rates and the merge
-# suggestions, from the export in source/ (pipeline/db.py export), and commit what changed. Publish then builds the
-# site's database from them.
+# suggestions, from the export in source/ (pipeline/db.py export), and commit what changed; a geocode or rates that
+# failed still commits what the others found, then marks the run failed. Publish then builds the site's database from
+# them.
 on:
   push:
     branches: [main]
@@ -29,9 +30,13 @@ jobs:
       - name: Every state in the data is in pipeline/states.py
         run: mise run audit
       - name: Geocode new cities
+        id: geocode
+        continue-on-error: true   # it saves each place found; one it got no answer for waits for the next run
         run: mise run geocode
       - name: Refresh the exchange rates
-        run: mise run rates || true   # when the bank can't be reached, the last rates stay
+        id: rates
+        continue-on-error: true   # when the bank can't be reached, the last rates stay
+        run: mise run rates
       - name: Refresh merge suggestions
         run: mise run suggest-merges
       - name: Commit
@@ -43,3 +48,6 @@ jobs:
           git commit -m "Refresh places, rates and merge suggestions from $(basename "$SRC")"
           git pull --rebase --quiet
           git push
+      - name: Fail if geocoding or the rates failed
+        if: steps.geocode.outcome == 'failure' || steps.rates.outcome == 'failure'
+        run: exit 1

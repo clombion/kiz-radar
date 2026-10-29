@@ -927,7 +927,7 @@ class Fare(CsvRow):
     depart: Date
     return_: Date = Field(validation_alias='return', serialization_alias='return')
     price: Count  # in whole euros
-    currency: Currency
+    currency: Literal['EUR']  # the one fares asks fli for
     fetched_at: Stamp
 
 

@@ -8,8 +8,9 @@ from pathlib import Path
 import pytest
 
 from pipeline import fares
-from pipeline.enums import FareSearch
-from pipeline.records import Airport, today
+from pipeline.calls import Declined
+from pipeline.enums import CallCause, FareSearch
+from pipeline.records import Airport, now, today
 from tests.exports import committed
 from tests.fakes import no_wait
 
@@ -87,31 +88,43 @@ PRICED = '{"success": true, "dates": [{"price": 123.4, "departure_date": "2026-1
     ('stdout', 'stderr', 'expected'),
     [
         (f'searching…\n{PRICED}', '', ('priced', 123)),
-        ('{"success": false, "error": {"message": "no flights"}}', '', (FareSearch.NO_PRICE, 'no flights')),
-        ('', 'Traceback…\nHTTP 429 Too Many Requests', (FareSearch.REFUSED, 'HTTP 429')),
-        ('not json', 'it broke\nfor good', (FareSearch.NO_PRICE, 'for good')),
-        ('{"success": true, "dates": [{"price": 99, "departure_date": "2026-11-13"}]}', '', (FareSearch.NO_PRICE, '')),
+        ('{"success": false, "error": {"message": "no flights"}}', '', ('no price', 'no flights')),
+        ('', 'Traceback…\nHTTP 429 Too Many Requests', (CallCause.TRANSIENT, fares.REFUSED)),
+        ('not json', 'it broke\nfor good', (CallCause.TRANSIENT, 'fli wrote no answer: for good')),
+        ('{"success": true, "dates": [{"price": 99, "departure_date": "2026-11-13"}]}', '', ('no price', '')),
+        (
+            PRICED.replace('"return_date"', '"currency": "SEK", "return_date"'),
+            '',
+            (CallCause.STRUCTURAL, 'fli gave a price in SEK, not the EUR it was asked'),
+        ),
     ],
-    ids=['priced', 'no flights', 'refused', 'no answer', 'another friday only'],
+    ids=['priced', 'no flights', 'refused', 'no answer', 'another friday only', 'another currency'],
 )
 def test_a_search_reads_fli_s_answer(
     stdout: str, stderr: str, expected: tuple[str, object], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     monkeypatch.setattr(subprocess, 'run', fli(stdout, stderr))
     found = fares.search('GLA', FRIDAY)
-    got = ('priced', found.price) if isinstance(found, fares.Fare) else (found.status, found.note)
+    match found:
+        case fares.Fare():
+            got: tuple[str, object] = ('priced', found.price)
+        case fares.Missed():
+            got = ('no price', found.note)
+        case Declined():
+            got = (found.cause, found.why)
     assert got == expected
 
 
-def test_a_search_that_takes_too_long_finds_no_price(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_a_search_that_takes_too_long_gives_no_answer(monkeypatch: pytest.MonkeyPatch) -> None:
     def run(cmd: list[str], **_: object) -> subprocess.CompletedProcess[str]:
         raise subprocess.TimeoutExpired(cmd, fares.TIMEOUT)
 
     monkeypatch.setattr(subprocess, 'run', run)
-    assert fares.search('GLA', FRIDAY) == fares.Missed(FareSearch.NO_PRICE, 'timeout')
+    assert fares.search('GLA', FRIDAY) == Declined(CallCause.TRANSIENT, f'fli took over {fares.TIMEOUT} s')
 
 
 AT = dt.datetime(2026, 10, 27, 6, tzinfo=dt.UTC)  # when a fare was found
+LONG_AGO = now() - dt.timedelta(days=60)  # a fare found so long ago that its weekend is due again
 SOON = today() + dt.timedelta(days=10)  # due, weekly, never searched
 
 
@@ -132,13 +145,16 @@ def two_weekends(_: dt.date) -> set[tuple[str, dt.date]]:
     return {('GLA', SOON), ('LIS', SOON)}
 
 
-def searched(found: dict[str, fares.Fare | fares.Missed]) -> Callable[[str, dt.date], fares.Fare | fares.Missed]:
+type Searched = fares.Fare | fares.Missed | Declined
+
+
+def searched(found: dict[str, Searched]) -> Callable[[str, dt.date], Searched]:
     return lambda airport, _: found[airport]
 
 
 def test_a_refresh_keeps_the_fares_found_and_logs_every_search(weekends: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     fare = fares.Fare(airport='GLA', depart=SOON, return_=SOON, price=80, currency='EUR', fetched_at=AT)
-    monkeypatch.setattr(fares, 'search', searched({'GLA': fare, 'LIS': fares.Missed(FareSearch.NO_PRICE, 'none')}))
+    monkeypatch.setattr(fares, 'search', searched({'GLA': fare, 'LIS': fares.Missed('none')}))
     monkeypatch.setattr('sys.argv', ['fares', 'refresh'])
     fares.main()
     assert fares.Fare.read() == [fare]  # the weekend gone took its fare with it
@@ -148,17 +164,33 @@ def test_a_refresh_keeps_the_fares_found_and_logs_every_search(weekends: Path, m
     }
 
 
+def test_a_weekend_with_no_price_now_loses_its_old_fare_and_one_with_no_answer_keeps_all(
+    weekends: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    old = [
+        fares.Fare(airport=a, depart=SOON, return_=SOON, price=80, currency='EUR', fetched_at=LONG_AGO)
+        for a in ('GLA', 'LIS')
+    ]
+    fares.Fare.write(old)
+    late = Declined(CallCause.TRANSIENT, 'fli took over 300 s')
+    monkeypatch.setattr(fares, 'search', searched({'GLA': fares.Missed('none'), 'LIS': late}))
+    with pytest.raises(SystemExit, match=r'1 searches gave no answer \(transient 1\): LIS'):
+        fares.refresh(budget=5, max_seconds=60)
+    assert fares.Fare.read() == [old[1]]
+    assert [(j.airport, j.status) for j in fares.Job.read()] == [('GLA', FareSearch.NO_PRICE)]  # LIS: tried next run
+
+
 def test_a_refused_search_is_tried_once_more_then_the_rest_waits(
     weekends: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     tries: list[str] = []
 
-    def refused(airport: str, friday: str) -> fares.Missed:
+    def refused(airport: str, friday: str) -> Declined:
         tries.append(airport)
-        return fares.Missed(FareSearch.REFUSED, 'HTTP 429')
+        return Declined(CallCause.TRANSIENT, fares.REFUSED)
 
     monkeypatch.setattr(fares, 'search', refused)
-    with pytest.raises(SystemExit, match='Google refused a search'):
+    with pytest.raises(SystemExit, match='Google refused the search'):
         fares.refresh(budget=5, max_seconds=60)
     assert len(tries) == 2  # the first weekend, twice; the second waits
     assert fares.Job.read() == []  # a refused search is no search
