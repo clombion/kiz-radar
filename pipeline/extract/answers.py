@@ -37,10 +37,9 @@ class Listed(BaseModel):
 
 @dataclass(frozen=True)
 class Answer[E: Entry]:
-    """A festival's answer to the current prompt of a pass: its entry, and the file's batch and log row."""
+    """A festival's answer to the current prompt of a pass: its entry, and its file's log row."""
 
     entry: E
-    batch: str
     logged: Logged
 
 
@@ -85,7 +84,7 @@ def current[E: Entry, Q: Asked](pass_: Pass[E, Q], event_ids: set[int]) -> dict[
         if path not in read:
             read[path] = prompts.answer(pass_).parse(path.read_bytes())
         batch = read[path]
-        out[i] = Answer(next(e for e in batch.events if e.event_id == i), batch.batch, meta)
+        out[i] = Answer(next(e for e in batch.events if e.event_id == i), meta)
     return out
 
 

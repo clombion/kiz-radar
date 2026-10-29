@@ -925,7 +925,7 @@ def test_a_row_outside_the_table_or_its_rules_is_refused_when_written(memory: Me
 def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices(memory: Memory) -> None:
     full = priced(tier('Full pass 80€ until 31.01'))
     party = priced(tier('Full pass 80€ until 31.01'), kind=PassKind.PARTY, event_id=6)
-    described = {e.event_id: answers.Answer(e, 'b', logged('0' * 16)) for e in (full, party)}
+    described = {e.event_id: answers.Answer(e, logged('0' * 16)) for e in (full, party)}
     with loaded(memory()) as con:
         load_extract.load_prices(con, described, {}, {6: (enums.Sales.SHOP, 'https://shop.example/6')})
         statuses = con.rows(PriceStatus, 'SELECT event_id, price, page, card_pass FROM price_status ORDER BY event_id')

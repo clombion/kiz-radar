@@ -1123,7 +1123,7 @@ def described(*passes: PricedPass) -> answers.Answer[Priced]:
     logged = answers.Logged(
         file='prices/event-7.json', answered_at=AT, model=Model.CLAUDE_HAIKU_5_5, prompt='0' * 16, answered_by='x'
     )
-    return answers.Answer(Priced(event_id=7, passes=passes, rule_quotes=()), 'b', logged)
+    return answers.Answer(Priced(event_id=7, passes=passes, rule_quotes=()), logged)
 
 
 def card(kind: PassKind = PassKind.FULL, until: str | None = '2027-01-31') -> PricedPass:

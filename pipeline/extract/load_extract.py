@@ -20,7 +20,7 @@ Creates (replacing any previous load):
   ticket_pages          per festival read on its ticket page: the page, the day it was last read, how many of its
                         tickets are not read yet
   price_status          per festival, what its card can say of its price (pipeline/states.py, price) and the pass
-                        it prices, from its passes and pipeline/tickets/status.csv
+                        it prices, from its passes and how it sells (pipeline/tickets_state.py)
 
 Each festival's newest answer of each pass, and each ticket page's prices, are loaded when they were asked with the
 current prompt (pipeline/prompt.py); one to another prompt waits to be asked again, and answers for festivals no
@@ -41,7 +41,7 @@ from typing import NamedTuple
 from pydantic import BaseModel
 
 from pipeline import db as sqlite_db
-from pipeline import export, states, tickets_store
+from pipeline import export, states, tickets_state, tickets_store
 from pipeline import prompt as prompts
 from pipeline.db import Reader, Transaction
 from pipeline.enums import Genre, GenreRule, Sales, Source
@@ -57,8 +57,8 @@ from pipeline.records import (
     Priced,
     PricedPass,
     RoomsGenres,
-    StatusRow,
     day_of,
+    today,
     yearless,
 )
 from pipeline.text import soften_caps, tidy_title
@@ -193,7 +193,6 @@ CREATE TABLE artist_mentions (
     style TEXT,
     country TEXT,
     source_line TEXT NOT NULL,
-    batch TEXT NOT NULL,
     prompt TEXT NOT NULL,
     model TEXT NOT NULL
 ) STRICT;
@@ -257,7 +256,7 @@ TABLE_DOCS = {
     'out, and the quote it came from.',
     'price_status': "What each festival's card can say of its price (pipeline/states.py, price): priced, with the "
     'pass it prices (card_pass), or why not, from its passes and how it sells '
-    '(pipeline/tickets/status.csv), with its ticket page when one is known.',
+    '(pipeline/tickets_state.py), with its ticket page when one is known.',
     'ticket_pages': 'Festivals whose prices are read on their ticket page (pipeline/tickets.py): the page, the '
     "reseller selling there at its own prices when it isn't the organiser, the day it was last read, "
     'the site recipe that read it, and how many of its tickets are not read yet.',
@@ -290,9 +289,14 @@ def current[E: Entry, Q: Asked](pass_: Pass[E, Q], event_ids: set[int]) -> tuple
     return now, len(answers.answered(pass_.name, event_ids)) - len(now)
 
 
-def status() -> dict[int, tuple[Sales | None, str | None]]:
-    """tickets/status.csv by festival: (how an agent found it sells, None when none did; its known ticket page)."""
-    return {r.event_id: (r.sales, r.page) for r in StatusRow.read()}
+def sold(con: Reader) -> dict[int, tuple[Sales | None, str | None]]:
+    """Each festival still listed: (how an agent found it sells, None when none did; its known ticket page), as the
+    tickets' own files say (pipeline/tickets_state.py), not as tickets/status.csv, which says it for people, last said
+    it."""
+    return {
+        f.id: (f.found.state if f.found else None, f.page.url if f.page else None)
+        for f in tickets_state.festivals(con, today(), every=True)
+    }
 
 
 def load_prices(
@@ -302,7 +306,7 @@ def load_prices(
     sold: Mapping[int, tuple[Sales | None, str | None]],
 ) -> None:
     """Each festival's passes: from its ticket page when a first read records them there, else from its description;
-    and what its card can say of its price, and the pass it prices, from them and how it sells (sold: status())."""
+    and what its card can say of its price, and the pass it prices, from them and how it sells (sold: sold())."""
     dates = {
         e.id: (day_of(e.start_date), day_of(e.modified_at))
         for e in con.rows(Dated, 'SELECT id, start_date, modified_at FROM events')
@@ -646,7 +650,6 @@ def load_extracted(con: Transaction, got: Mapping[int, Answer[Extracted]]) -> No
                     'style': m.style,
                     'country': m.country,
                     'source_line': m.source_line,
-                    'batch': a.batch,
                     'prompt': prompt,
                     'model': model,
                 }
@@ -700,7 +703,7 @@ def main() -> None:
             ),
             unless=FEATURE_KEY,
         )
-        load_prices(con, prices, pages, status())
+        load_prices(con, prices, pages, sold(con))
         record_steps(con, extract, rooms_genres, prices, pages)
         for table in (
             'event_features',
