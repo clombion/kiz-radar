@@ -5,15 +5,22 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
+env:
+  UV_LOCKED: 1   # uv.lock as committed, or the check fails
+
 jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
         with:
           submodules: true  # claims/, the admin's claims (pipeline/claims.py)
-      - uses: jdx/mise-action@v2
+          persist-credentials: false
+      - uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac  # v2.4.4
       - name: The site's tools, and the browser its tests run in
         run: |
           mise run install:site

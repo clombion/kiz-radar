@@ -9,7 +9,7 @@
     mise run tickets -- changes [ID]   # what changed between consecutive reads
     mise run tickets -- page ID URL --note N  # where a festival with no known page sells
     mise run tickets -- page ID --state S --note N  # or not_yet, offline, closed, none_found
-    mise run tickets -- run            # the monthly Action
+    mise run tickets -- run            # the monthly Action, in two parts: run --part pages, then run --part models
 
 A site recipe (tickets/sites/<site>.json, a records.Recipe) says where a site's ticket rows are; an
 agent writes one per site. read applies it in a browser (read_page.rows) and appends one entry per attempt to
@@ -69,7 +69,7 @@ import re
 import sys
 from collections.abc import Mapping, Sequence
 from dataclasses import replace
-from typing import NamedTuple
+from typing import Literal, NamedTuple
 
 import anthropic
 from pydantic import ValidationError
@@ -504,13 +504,26 @@ def cmd_retry(db: sqlite_db.Reader, event_id: int) -> None:
     cmd_record(db, event_id)
 
 
+type Part = Literal['pages', 'models']
+PARTS: tuple[Part, ...] = ('pages', 'models')
+
+
 class Run:
     """The monthly Action's run: the reads it makes, what it found wrong, and what stopped its calls: a page read
     that can be made nowhere here (no browser) stops the page reads; the month's budget, or a call to the models that
-    cannot succeed as made, stops the first reads; limit bounds how many festivals the models read."""
+    cannot succeed as made, stops the first reads; limit bounds how many festivals the models read. parts are what it
+    does: its page reads, which need no key, and its first reads by the models, from the rows read today, which need
+    no browser; the Action makes them in jobs of their own, so that the pages' content never meets the key."""
 
-    def __init__(self, db: sqlite_db.Reader, today: dt.date, browsers: Browsers, limit: int | None = None) -> None:
-        self.db, self.today, self.browsers, self.limit = db, today, browsers, limit
+    def __init__(
+        self,
+        db: sqlite_db.Reader,
+        today: dt.date,
+        browsers: Browsers,
+        limit: int | None = None,
+        parts: Sequence[Part] = PARTS,
+    ) -> None:
+        self.db, self.today, self.browsers, self.limit, self.parts = db, today, browsers, limit, parts
         self.client: ask.Client | None = None
         self.alarms: list[str] = []
         self.pages: Declined | None = None  # what stopped the page reads
@@ -520,7 +533,7 @@ class Run:
 
     def make(self, f: Festival, entry: Read) -> None:
         """A first read of the festival by the models, saved when two agree."""
-        if self.models or (self.limit is not None and self.asked >= self.limit):
+        if 'models' not in self.parts or self.models or (self.limit is not None and self.asked >= self.limit):
             return
         self.asked += 1
         self.client = self.client or anthropic.Anthropic()
@@ -538,8 +551,9 @@ class Run:
                     self.models = d
 
     def read(self, f: Festival) -> LogEntry | None:
-        """A new read of the festival's page, logged; None once the page reads have stopped."""
-        if self.pages or not (f.page and f.page.site):
+        """A new read of the festival's page, logged; None once the page reads have stopped, or when this run reads
+        none."""
+        if 'pages' not in self.parts or self.pages or not (f.page and f.page.site):
             return None
         match attempt(f.page.url, f.page.site, self.browsers):
             case Declined() as d:
@@ -584,25 +598,28 @@ class Run:
         return '\n'.join([*self.alarms, *([unread] if unread else [])]) or None
 
 
-def cmd_run(db: sqlite_db.Reader, ids: set[int] | None = None, limit: int | None = None) -> None:
+def cmd_run(
+    db: sqlite_db.Reader, ids: set[int] | None = None, limit: int | None = None, parts: Sequence[Part] = PARTS
+) -> None:
     """Re-read what is due and retry failures, first-read with the models what needs it (at most limit festivals),
     and make again, from their latest logged rows, the first reads of festivals now past that follow another prompt
-    (of the festivals ids names, when it names some). Exits 1 naming each festival whose page
-    broke its recipe, reached REFUSALS failures, no longer fits its first read, or got no first read from the models
-    (pipeline/calls.py)."""
+    (of the festivals ids names, when it names some); of these, the parts named (Run). Exits 1 naming each festival
+    whose page broke its recipe, reached REFUSALS failures, no longer fits its first read, or got no first read from
+    the models (pipeline/calls.py)."""
     day = today()
     every = set(db.column(int, 'select id from events'))
     if ids and (missing := ids - every):
         sys.exit(f'no such festival: {sorted(missing)}')
     with Browsers() as browsers:
-        run = Run(db, day, browsers, limit)
+        run = Run(db, day, browsers, limit, parts)
         for f in (f for f in festivals(db, day) if not ids or f.id in ids):
             run.first_reads(run.reread(f))
         for f in festivals(db, day, every=True):
             redo = f.over and (not ids or f.id in ids) and f.need == FirstReadState.REDO_PROMPT
             if redo and (entry := latest_read(f.log)):
                 run.make(f, entry)  # its page sells nothing any more; its logged rows still say what it sold
-    run.alarms += recorded().problems
+    if 'models' in parts:  # the reads as the first reads now stand
+        run.alarms += recorded().problems
     counts = status(db)
     print('waits for: ' + '; '.join(f'{n} {w}' for w, n in counts.most_common()))
     if why := run.verdict():
@@ -618,6 +635,7 @@ class Args(argparse.Namespace):
     by: str = 'agent'
     only: set[int] | None = None
     limit: int | None = None
+    part: Part | None = None
 
 
 def parser() -> argparse.ArgumentParser:
@@ -650,12 +668,15 @@ def parser() -> argparse.ArgumentParser:
     run = sub.add_parser('run', help='the monthly Action')
     _ = run.add_argument('--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"')
     _ = run.add_argument('--limit', type=sqlite_db.at_least_one, help='first reads by the models for this many at most')
+    _ = run.add_argument(
+        '--part', choices=PARTS, help='only the page reads (no key needed), or only the first reads by the models'
+    )
     return ap
 
 
 def main() -> None:
     a = parser().parse_args(namespace=Args())
-    if a.cmd in {'read', 'retry', 'run'}:  # a recipe may need a visible browser
+    if a.cmd in {'read', 'retry'} or (a.cmd == 'run' and a.part != 'models'):  # a recipe may need a visible browser
         from pipeline import read_page
 
         read_page.on_display()
@@ -682,7 +703,7 @@ def main() -> None:
             case 'page':
                 cmd_page(db, i, Sold(a.url, a.state, a.note, a.by))
             case _:
-                cmd_run(db, a.only, a.limit)
+                cmd_run(db, a.only, a.limit, (a.part,) if a.part else PARTS)
     return None
 
 

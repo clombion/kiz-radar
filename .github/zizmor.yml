@@ -1,0 +1,4 @@
+# zizmor (mise run lint:actions) as the repository runs it.
+rules:
+  self-repository:
+    disable: true   # its '$/...' form for the repository's own actions is not one GitHub's documentation describes

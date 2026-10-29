@@ -340,8 +340,16 @@ are the same for every festival listed before ids were ours. A festival the site
 since that day, so plans and links to it still hold; its card says it is no longer listed, and the listings leave it
 out. Once the export is committed, the Action starts **Refresh places and rates** on the same branch, which checks every
 state in the data (`pipeline/audit.py`), geocodes new cities, refreshes the exchange rates and the merge suggestions,
-and commits them; **Publish site** then builds the database from it all and publishes it. That workflow also runs on any
-push to `source/` or `pipeline/` on `main`.
+and commits them, then starts **Publish site**, which checks every state again, builds the database from it all and
+publishes it only if that passes. That workflow also runs on any push to `source/` or `pipeline/` on `main`.
+
+**Refresh events** runs in three jobs, each holding only what it needs, so that the pages it fetches from the web never
+run beside the key or a token that can push: `read` scrapes kizomba-world and reads the ticket pages in a browser
+(`tickets.py run --part pages`) with neither; `ask` asks the models the passes and the first reads (`--part models`,
+from the rows read that day) with the key and no such token; `commit` loads, resolves and pushes, with the token and no
+key. Each hands the next its changes as a patch (`.github/actions/handoff`). Every action a workflow uses is pinned by
+its commit, which Dependabot moves to each new release two weeks old (`.github/dependabot.yml`), and `lint:actions`
+holds the workflows to actionlint and to zizmor's security rules.
 
 The site sits behind Cloudflare, which refuses ordinary scripts, so the scraper sends its requests the way Chrome does,
 through [curl_cffi](https://github.com/lexiforest/curl_cffi). If Cloudflare stops letting it through, the Action fails
@@ -417,7 +425,7 @@ uv), and the **Tests** Action runs the same command on every push:
 mise run check        # everything
 mise run check:fast   # the quick part: lint, format, types, the site's tests, the generated files
 mise tasks            # each check on its own: lock:py, lint:py, format:py, format:md, types:py, test:py, lint:site,
-                      # types:site, knip, dup, test:site, generate:check, hooks:check, audit
+                      # types:site, knip, dup, test:site, generate:check, hooks:check, lint:actions, audit
 mise install          # the tools, and the git hooks of prek.toml with them (mise run hooks installs them alone;
                       # an agent's session does on start, .claude/settings.json)
 ```

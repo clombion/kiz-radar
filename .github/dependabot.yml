@@ -1,0 +1,12 @@
+# The Actions the workflows use are pinned by commit; Dependabot proposes each new release's commit.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directories: ['/', '/.github/actions/*']
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 14   # a release two weeks old, which its users have had time to find wrong
+    groups:
+      actions:
+        patterns: ['*']

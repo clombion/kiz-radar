@@ -100,7 +100,7 @@ def test_the_steps_and_the_checks_check_the_claims_out() -> None:
     steps = (ROOT / '.github/actions/steps/action.yml').read_text(encoding='utf-8')
     tests = (ROOT / '.github/workflows/tests.yml').read_text(encoding='utf-8')
     assert 'run: git submodule update --init' in steps
-    assert re.search(r'- uses: actions/checkout@\S+\n(\s+)with:\n\1  submodules: true\b', tests)
+    assert re.search(r'- uses: actions/checkout@\S+[^\n]*\n(\s+)with:\n\1  submodules: true\b', tests)
 
 
 def test_only_export_looks_for_the_export() -> None:

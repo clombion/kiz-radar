@@ -1,22 +1,19 @@
 name: Publish site
 
 # Compiles the site's TypeScript (site/) into docs/js/, builds its database from the export into docs/data/, and
-# publishes docs/ to GitHub Pages, whenever main changes: on a push, and after the workflows that commit to main with
-# the Actions token, whose pushes start no workflow of their own (Refresh places and rates, which Refresh events starts
-# too, and Refresh fares).
+# publishes docs/ to GitHub Pages, whenever main changes: on a push, and when a workflow that commits to main with the
+# Actions token, whose pushes start no workflow of their own, starts it once it has pushed (Refresh places and rates,
+# which Refresh events starts too, and Refresh fares). It publishes only data that every state in it is one of
+# pipeline/states.py (pipeline/audit.py).
 on:
   push:
     branches: [main]
-  workflow_run:
-    workflows: [Refresh places and rates, Refresh fares]
-    types: [completed]
-    branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: {}
+
+env:
+  UV_LOCKED: 1   # uv.lock as committed, or the build fails
 
 # one publish at a time, each of main as it is when it starts
 concurrency:
@@ -27,26 +24,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
         with:
           ref: main
-      - uses: jdx/mise-action@v2
+          submodules: true  # claims/, the admin's claims, which the audit and the database read
+          persist-credentials: false
+      - uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac  # v2.4.4
+      - name: Every state in the data is in pipeline/states.py
+        run: mise run audit
       - name: Compile the site, and build its data from the export
         run: |
           mise run build:site
           mise run build:data
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b  # v5.0.0
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa  # v3.0.1
         with:
           path: docs
   publish:
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e  # v4.0.5

@@ -135,6 +135,10 @@ run = "uv run -m pipeline.generate --check"
 description = "Install the git hooks (prek.toml): the quick checks before a commit, every check before a push; and check the claims submodule out"
 run = "uv run --group dev prek install && git submodule update --init"
 
+["lint:actions"]
+description = "The workflows and their actions: actionlint, and zizmor's security rules (.github/zizmor.yml)"
+run = "actionlint && uv run --group dev zizmor --offline -q .github"
+
 ["hooks:check"]
 description = "prek.toml is a configuration prek reads"
 run = "uv run --group dev prek validate-config prek.toml"
@@ -154,6 +158,7 @@ depends = [
   "test:site",
   "generate:check",
   "hooks:check",
+  "lint:actions",
 ]
 
 ["check:commit"]

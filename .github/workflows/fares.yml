@@ -1,7 +1,8 @@
 name: Refresh fares
 
 # Once a day, search the festival weekends due today (see pipeline/fares.py) and commit the updated fares. If Google
-# refuses a search, the run saves what it found, then is marked failed; the next run carries on.
+# refuses a search, the run saves what it found, then is marked failed; the next run carries on. Publish runs once the
+# fares are pushed.
 on:
   schedule:
     - cron: '41 5 * * *'
@@ -13,6 +14,11 @@ on:
 
 permissions:
   contents: write
+  actions: write   # to start Publish
+
+env:
+  UV_LOCKED: 1   # uv.lock as committed, or the step fails
+  BUDGET: ${{ inputs.budget || '20' }}
 
 concurrency:
   group: data-commit
@@ -23,21 +29,21 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0  # zizmor: ignore[artipacked] this job pushes, and uploads no artifact
       - uses: ./.github/actions/steps
       - name: Search the festival weekends due today
         id: search
         continue-on-error: true
-        run: mise run fares -- refresh --budget "${{ inputs.budget || '20' }}" --max-seconds 1200
-      - name: Commit new fares
-        run: |
-          git add docs/data/fares.csv pipeline/fare_jobs.csv
-          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
-          git config user.name "fares-bot"   # the rebase below re-commits, so it needs the name as well
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Refresh fares ($(date -u +%Y-%m-%dT%H:%MZ))"
-          git pull --rebase --quiet
-          git push
+        run: mise run fares -- refresh --budget "$BUDGET" --max-seconds 1200
+      - name: The time, for the commit
+        id: now
+        run: echo "at=$(date -u +%Y-%m-%dT%H:%MZ)" >> "$GITHUB_OUTPUT"
+      - uses: ./.github/actions/push
+        with:
+          paths: docs/data/fares.csv pipeline/fare_jobs.csv
+          bot: fares-bot
+          message: Refresh fares (${{ steps.now.outputs.at }})
+          then: pages.yml
       - name: Fail if a search gave no answer (refused, timed out, unread)
         if: steps.search.outcome == 'failure'
         run: exit 1

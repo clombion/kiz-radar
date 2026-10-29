@@ -1,0 +1,47 @@
+name: Commit and push
+description: >-
+  Commit the paths named, when they changed, as the bot named, onto the branch as it now is, and push; then start the
+  workflow named, which a push made with the Actions token doesn't start by itself (the job needs actions: write).
+inputs:
+  paths:
+    description: what to commit, as git add takes it
+    required: true
+  bot:
+    description: the committer's name
+    required: true
+  message:
+    description: the commit's message
+    required: true
+  then:
+    description: the workflow to start once pushed (its file), if any
+    required: false
+    default: ''
+outputs:
+  pushed:
+    description: 1 when a commit was pushed
+    value: ${{ steps.push.outputs.pushed }}
+runs:
+  using: composite
+  steps:
+    - id: push
+      shell: bash
+      env:
+        PATHS: ${{ inputs.paths }}
+        BOT: ${{ inputs.bot }}
+        MESSAGE: ${{ inputs.message }}
+      run: |
+        read -ra paths <<< "$PATHS"
+        git add -- "${paths[@]}"
+        if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+        git config user.name "$BOT"   # the rebase below re-commits, so it needs the name as well
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git commit -m "$MESSAGE"
+        git pull --rebase --quiet
+        git push
+        echo "pushed=1" >> "$GITHUB_OUTPUT"
+    - if: inputs.then && steps.push.outputs.pushed
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+        THEN: ${{ inputs.then }}
+      run: gh workflow run "$THEN" --ref "$GITHUB_REF_NAME"   # on the branch the commit went to

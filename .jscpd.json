@@ -8,6 +8,6 @@
   "exitCode": 1,
   "gitignore": true,
   "ignorePattern": [
-    "runs-on: ubuntu-latest\\s+timeout-minutes: \\d+\\s+steps:\\s+- uses: actions/checkout@v4\\s+- uses: \\./\\.github/actions/steps"
+    "runs-on: ubuntu-latest\\s+timeout-minutes: \\d+\\s+steps:\\s+- uses: actions/checkout@[0-9a-f]{40}[^\\n]*\\s+- uses: \\./\\.github/actions/steps"
   ]
 }

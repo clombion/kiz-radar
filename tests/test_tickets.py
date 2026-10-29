@@ -1246,6 +1246,35 @@ def test_a_run_reads_every_page_in_the_same_browsers(
     assert used[0] is used[1]
 
 
+@pytest.mark.parametrize(('part', 'reads', 'asks'), [('pages', 1, 0), ('models', 0, 1)])
+def test_a_runs_page_reads_and_its_first_reads_are_made_apart(
+    part: tickets.Part, reads: int, asks: int, memory: Memory, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The Action reads the pages in a job without the key, and asks the models in one without a browser, from the
+    rows read that day."""
+    import anthropic
+
+    read_today = entry(ROWS)
+    f = festival(page=KnownPage(PAGE, SITE), log=(read_today,) if part == 'models' else ())
+    read: list[str] = []
+    asked: list[int] = []
+
+    def attempt(page: str, site: tickets_store.Site, browsers: Browsers, *, visible: bool | None = None) -> LogEntry:
+        read.append(page)
+        return read_today
+
+    def models_read(client: object, f: tickets_state.Festival, entry: Read, log: object) -> Declined:
+        asked.append(f.id)
+        return Declined(CallCause.TRANSIENT, 'overloaded')
+
+    monkeypatch.setattr(tickets, 'attempt', attempt)
+    monkeypatch.setattr(tickets, 'append', no_append)
+    monkeypatch.setattr(tickets, 'models_read', models_read)
+    monkeypatch.setattr(anthropic, 'Anthropic', object)
+    tickets.Run(memory(), read_today.at.date(), Browsers(), parts=(part,)).first_reads(f)
+    assert (len(read), len(asked)) == (reads, asks)
+
+
 def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_logged_rows(
     memory: Memory, files: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

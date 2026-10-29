@@ -250,6 +250,7 @@ LITERALS = {
     frozenset({'first_read'}),  # the prompt that is no pass, prompt.Name
     frozenset({'ro', 'rw', 'rwc'}),  # SQLite's open modes, db.opened
     frozenset({'ro', 'rw'}),  # the export's, which no step creates, export.opened
+    frozenset({'pages', 'models'}),  # the parts of the tickets run, which the Action makes apart, tickets.Part
     frozenset(p.name for p in states.POINTS),  # the points' names, enums.Point
     *(frozenset({f}) for f in ('merge', 'home', 'booking', 'site')),
     frozenset(

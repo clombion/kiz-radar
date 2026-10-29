@@ -23,6 +23,7 @@ dev = [
     "mdformat==1.0.0",
     "mdformat-gfm==1.0.0",
     "prek==0.5.7",              # the git hooks (prek.toml)
+    "zizmor==1.31.1",           # the workflows' security (lint:actions)
     {include-group = "tickets"},
 ]
 

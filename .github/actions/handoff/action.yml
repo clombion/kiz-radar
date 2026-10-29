@@ -1,0 +1,40 @@
+name: Hand the work on
+description: >-
+  Between the jobs of one run, which each start from the commit the run is on: give is what this job changed in
+  source/ and pipeline/, as a binary patch against that commit (so a deleted file stays deleted), uploaded as the
+  artifact name; take applies the patch an earlier job gave, under that name, leaving it unstaged.
+inputs:
+  mode:
+    description: give or take
+    required: true
+  name:
+    description: the artifact's name
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: The changes so far
+      if: inputs.mode == 'give'
+      shell: bash
+      run: |
+        git add -A source pipeline
+        git diff --cached --binary --full-index > "$RUNNER_TEMP/changes.patch"
+        git diff --cached --stat | tail -1
+    - if: inputs.mode == 'give'
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ runner.temp }}/changes.patch
+        retention-days: 3
+    - if: inputs.mode == 'take'
+      uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4.3.0
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ runner.temp }}
+    - name: Apply the changes so far
+      if: inputs.mode == 'take'
+      shell: bash
+      run: |
+        if [ -s "$RUNNER_TEMP/changes.patch" ]; then git apply --index --binary "$RUNNER_TEMP/changes.patch"; fi
+        git diff --cached --stat | tail -1
+        git reset -q   # staged by the job that commits, as it chooses
