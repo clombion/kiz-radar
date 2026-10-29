@@ -72,7 +72,7 @@ interface Base {
   name: string;
   words: string[];
   nameWords: string[];
-  past: boolean;
+  past: boolean; // nothing coming up: a festival over, someone with no plans ahead, a place with no festival ahead
   rank: number;
 }
 type Item = Base &
@@ -419,7 +419,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
     'dialog',
     { class: 'search', 'aria-label': 'Search' },
     h('div', { class: 'search-top' }, glass, input, cancel),
-    h('label', { class: 'search-past' }, pastBox, ' Include past festivals'),
+    h('label', { class: 'search-past' }, pastBox, ' Include what has nothing coming up'),
     status,
     list,
   );
@@ -609,13 +609,13 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
     highlight(-1);
   }
 
-  // the past festivals that match too, left out until asked for
+  // the matches with nothing coming up, of every kind, left out until asked for
   const pastMatches = (n: number) =>
     h(
       'p',
       { class: 'search-note' },
-      `${plural(n, 'past festival')} ${n === 1 ? 'matches' : 'match'} too. `,
-      button({ class: 'link', onclick: includePast }, 'Include past festivals'),
+      `${n} ${n === 1 ? 'match has' : 'matches have'} nothing coming up. `,
+      button({ class: 'link', onclick: includePast }, n === 1 ? 'Include it' : 'Include them'),
     );
   function render(): void {
     nextId = 0;
@@ -635,14 +635,14 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
       .sort((a, b) => b.s - a.s || b.item.rank - a.item.rank)
       .map((r) => r.item);
     const found = matched.filter((item) => withPast || !item.past);
-    const hiddenPast = withPast ? 0 : matched.filter((item) => item.past && item.kind === 'festival').length;
+    const hiddenPast = withPast ? 0 : matched.length - found.length;
     const pastNote = hiddenPast > 0 ? pastMatches(hiddenPast) : null;
     const groups = GROUPS.map(
       ([kind, title]) => [kind, title, found.filter((item) => groupOf(item) === kind)] as const,
     ).filter(([, , f]) => f.length > 0);
     if (groups.length === 0 && pastNote) {
       list.replaceChildren(
-        h('div', { class: 'search-none' }, h('p', {}, 'No festival coming up matches “', query.trim(), '”.'), pastNote),
+        h('div', { class: 'search-none' }, h('p', {}, 'Nothing coming up matches “', query.trim(), '”.'), pastNote),
       );
       status.textContent = 'No upcoming results';
       highlight(-1);
