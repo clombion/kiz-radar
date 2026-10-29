@@ -1,6 +1,7 @@
 """Every state a data point can be in, one typed row each, and what each state means to the consumers that read it
-(pipeline/STATES.md). The code's enums, the schemas' enums, the prompts' definitions, the SQL checks and the site's
-words are all built from these rows, so adding a state is one row here.
+(docs/concepts/states.md). The code's enums, the schemas' enums, the prompts' definitions, the SQL checks, the site's
+words and the reference's table (docs/reference/states.md) are all built from these rows, so adding a state is one row
+here.
 
 A Point is a data point: what one instance is, what produces its states, and the point its states fall under, if
 any (a genre's dance style). A State is one of them:
@@ -1153,12 +1154,6 @@ def ts_module() -> str:
 # the code's enums (pipeline/enums.py): each enum's point, and whether it holds only the states the point's own
 # producer makes (a schema's enum) rather than all of them; every point has one (Point.enum)
 ENUMS = {p.enum: (p.name, False) for p in POINTS} | {'ExtractedFeature': ('feature', True)}
-
-
-def points_table() -> str:
-    """The data points as a Markdown table, for pipeline/STATES.md: what one instance is, its states, its producer."""
-    rows = [f'| **{p.name}**, {p.of} | {", ".join(f"`{k}`" for k in KEYS[p.name])} | {p.produced_by} |' for p in POINTS]
-    return '\n'.join(['| Data point | States | Produced by |', '| -- | -- | -- |', *rows])  # as mdformat writes it
 
 
 def enum_keys(name: str) -> list[str]:

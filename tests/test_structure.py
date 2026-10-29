@@ -6,11 +6,11 @@ check the claims out, and the steps their export from pipeline/export.py, at its
 import ast
 import collections
 import re
-import subprocess
 import tomllib
 from pathlib import Path
 
 from pipeline import ROOT
+from tests.repository import tracked
 
 
 def body(fn: ast.FunctionDef | ast.AsyncFunctionDef) -> str | None:
@@ -47,15 +47,15 @@ def test_the_repository_is_found_from_one_file() -> None:
 
 
 def test_a_step_finds_its_data_through_the_data_folder() -> None:
-    """ROOT is where the code is: only the modules that read or write code (the prompt templates, the generated
-    modules) name it, and every data file is found through pipeline.data(), which a test points elsewhere."""
+    """ROOT is where the code is: only the modules that read or write code (the prompt templates, the generated files)
+    name it, and every data file is found through pipeline.data(), which a test points elsewhere."""
     naming = {
         p.relative_to(ROOT).as_posix()
         for p in sorted((ROOT / 'pipeline').rglob('*.py'))
         if p != ROOT / 'pipeline' / '__init__.py'
         and any(isinstance(n, ast.Name) and n.id == 'ROOT' for n in ast.walk(ast.parse(p.read_text(encoding='utf-8'))))
     }
-    assert naming == {'pipeline/prompt.py', 'pipeline/generate.py'}
+    assert naming == {'pipeline/prompt.py', 'pipeline/generate.py', 'pipeline/reference.py'}
 
 
 def test_no_step_creates_a_table_when_it_is_missing() -> None:
@@ -140,9 +140,7 @@ BUILT = ('public/js/', 'public/vendor/', 'public/data/kiz.sqlite', 'public/data/
 
 def test_what_a_build_makes_is_not_committed() -> None:
     """A built file committed would drift from what it is built from, between a change and its rebuild."""
-    ls = ['git', 'ls-files', '--', *BUILT]
-    tracked = subprocess.run(ls, cwd=ROOT, capture_output=True, text=True, check=True).stdout.split()  # noqa: S603 (git, on this repository)
-    assert tracked == []
+    assert tracked(*BUILT) == []
 
 
 def test_only_the_build_names_the_site_database() -> None:

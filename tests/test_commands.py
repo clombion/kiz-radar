@@ -24,6 +24,8 @@ SOURCES = [
     *sorted((ROOT / '.github' / 'actions').rglob('*.yml')),
     ROOT / 'README.md',
     ROOT / 'CLAUDE.md',
+    ROOT / 'CONTRIBUTING.md',
+    *sorted((ROOT / 'docs').rglob('*.md')),
     *sorted((ROOT / 'pipeline').rglob('*.py')),
 ]
 COMMAND = re.compile(r'(?:uv run(?: -q)?((?: --group [\w-]+)*)|python3) -m (pipeline(?:\.\w+)+)')

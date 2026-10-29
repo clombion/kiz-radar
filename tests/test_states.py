@@ -1,4 +1,4 @@
-"""The closed world of states (pipeline/STATES.md): the table checks itself, everything built from it holds exactly
+"""The closed world of states (docs/concepts/states.md): the table checks itself, everything built from it holds exactly
 its states, and each function that chooses between states reaches every one of them."""
 
 import ast

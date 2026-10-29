@@ -1,4 +1,4 @@
-// The closed world of states (pipeline/STATES.md): the site holds no words or keys of its own, and asking the table
+// The closed world of states (docs/concepts/states.md): the site holds no words or keys of its own, and asking the table
 // for something it doesn't have fails.
 import { expect, test } from 'vitest';
 import { MORE_TRAITS, TRAITS } from '../../site/icons.ts';

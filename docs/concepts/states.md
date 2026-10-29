@@ -17,58 +17,14 @@ A failure *by construction* means one from the type checker, at import, when a v
 - Tests scan the site's code for state words or browser-made keys the table doesn't have;
 - every function that chooses between states has a test reaching each of them.
 
-## 1. State table: the census
+## 1. The census
 
 `pipeline/states.py` holds one typed `Point` per data point (what one instance is, and what produces its states) and one
 typed `State` row per state: `point, key, criterion, disposition, wording, owner, made_by, icon, link, under, forms`.
 The states are what the code and the records **can** emit (their enums, their return sites, their sentinels), one per
 thing a consumer must treat differently.
 
-<!-- generated from pipeline/states.py (states.points_table): mise run generate -->
-
-| Data point | States | Produced by |
-| -- | -- | -- |
-| **page_read**, each logged attempt to read a ticket page | `read`, `refused`, `empty`, `unreachable`, `layout_broken` | tickets_reading.attempt |
-| **call_cause**, each call that gave no answer, by what kept it from one (pipeline/calls.py); a ticket page's own failures are page_read states | `checker`, `truncated`, `transient`, `structural`, `budget` | calls |
-| **sales**, a festival with no full link to its ticket page, as an agent found it (tickets/pages.csv) | `shop`, `not_yet`, `offline`, `closed`, `none_found` | tickets.py page --state |
-| **ticket**, each ticket of a read ticket page | `in_tier`, `skipped`, `unread` | the first read; tickets_store.unread_keys |
-| **skip_reason**, each ticket a first read skips | `room`, `class`, `competition`, `merchandise`, `food_drink`, `excursion`, `fee`, `deposit`, `discount`, `donation`, `not_public`, `no_amount` | the first read |
-| **pass_kind**, each pass a festival sells | `full`, `party`, `day`, `workshop`, `package`, `other` | the prices pass; the first read |
-| **style**, a dance style: of a festival, by its genres, or the one a pass is limited to (null: all the festival's styles) | `kizomba`, `zouk`, `bachata`, `salsa`, `other` | prices.styles; the prices pass; the first read |
-| **people**, each pass, by how many people one price is for | `one`, `couple`, `group`, `per_room` | prices.people, from group_size and kind |
-| **fee**, each price tier, by its booking fee | `none`, `included` | the prices pass; the first read |
-| **re_read**, a festival with a first read, by when its page is read again | `dated`, `monthly` | tickets_store.recheck |
-| **first_read**, a festival, by whether it needs a (new) first read | `not_needed`, `none`, `past`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_festival`, `redo_page`, `redo_unread`, `disputed` | tickets_state.why_first_read |
-| **answer**, a festival's answer of one extraction pass | `none`, `current`, `stale` | answers.state |
-| **waits_for**, each festival, by what its prices from its ticket page wait for | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | tickets_state.waiting, in tickets/status.csv |
-| **price**, each festival, by what its card can say of its price | `priced`, `other_passes_only`, `page_unread`, `page_empty`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | prices.price_state, in price_status |
-| **tier_today**, a pass's price on the day it is viewed | `now`, `from`, `next`, `sold_out`, `ended` | pricing.ts tierNow |
-| **card_price**, a priced festival, by what its card says on the day it is viewed | `full_pass`, `package`, `sold_out`, `ended` | pricing.ts cardPrice |
-| **genre**, each dance genre a festival covers | `kizomba`, `semba`, `urbankiz`, `tarraxo`, `tarraxinha`, `douceur`, `kompa`, `zouk`, `bachata`, `salsa`, `afro`, `reggaeton`, `kuduro`, `other` | the rooms-genres pass; the genre rules; the site tags |
-| **genre_rule**, a genre the rules add | `sbk`, `title` | load_extract |
-| **source**, where a genre or feature row comes from | `description`, `site_tag` | load_extract |
-| **pass_source**, where a festival's passes come from | `description`, `ticket_page` | load_extract |
-| **room_kind**, each room a description lists | `party`, `class`, `unspecified` | the rooms-genres pass |
-| **feature**, each feature of a festival | `promo_code`, `all_levels_beginners`, `taxi_dancers`, `accommodation_included`, `group_deals`, `meals_included`, `transfers_shuttle`, `pool_party`, `beach_party`, `boat_party`, `cruise`, `live_music`, `bootcamp_intensive`, `competition`, `camping`, `masterclass`, `private_classes`, `shows`, `themed_parties`, `pre_party`, `after_party`, `day_socials`, `partner_hotel`, `multiple_rooms`, `adults_only`, `all_in_one`, `workshops`, `dress_code` | the extract pass |
-| **role**, each artist named in a description | `teacher`, `dj`, `performer`, `mc`, `organiser`, `media`, `crew` | the extract pass |
-| **artist_kind**, each artist | `person`, `couple`, `group`, `organisation` | resolve_artists |
-| **home_basis**, an artist's home country, by how it is known | `given`, `stated`, `contested` | build_site_db |
-| **merge_decision**, each artist merge reviewed | `merge`, `separate`, `unsure` | the merge review; a merge claim |
-| **merge_reason**, each pair of artists that may be one, for the merge review | `same name, different keys`, `first words of the other`, `same partner, shortened name`, `similar spelling`, `single name, several countries`, `couples with matching names` | resolve_artists |
-| **suggestion_countries**, each merge suggestion, by the countries line-ups state for its two artists | `unknown`, `same`, `different` | merge_suggestions |
-| **suggestion_calendar**, each merge suggestion, by where and when its two artists are booked | `same line-up`, `clash`, `shared circuit`, `no clash` | merge_suggestions |
-| **via**, each appearance of an artist at an event (artist_events) | `direct`, `member` | resolve_artists; build_site_db |
-| **listing**, each festival, by whether the site it comes from still lists it | `listed`, `gone` | scrape |
-| **phase**, each festival, by where it stands on the visitor's day: to come, over, cancelled or no longer listed | `ahead`, `ended`, `cancelled`, `gone` | build_site_db event_rows |
-| **event_source**, the site a festival's listing comes from (source_ids) | `kizomba-world` | scrape |
-| **plan**, each plan someone shares (pipeline/plans.csv) | `going` | pipeline/plans.csv |
-| **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.ts nextChange |
-| **hotel**, each pass, by whether its price includes a hotel | `included`, `none` | the prices pass; the first read |
-| **claim_source**, the channel a claim comes by, the earlier the higher its priority | `admin`, `organiser`, `model` | claims |
-| **claim**, each claim, by whether it decides its subject | `applied`, `overridden`, `orphaned` | resolve_artists |
-| **model**, each Claude model the pipeline asks, which spend.PRICES prices | `claude-fable-5-1`, `claude-opus-5-5`, `claude-sonnet-5-5`, `claude-haiku-5-5` | ask; tickets; merge review |
-
-<!-- points:end -->
+Every point and state today is in the [States table](../reference/states.md).
 
 **Who decides.**
 
@@ -86,7 +42,7 @@ thing a consumer must treat differently.
 reason fits can't be skipped, so its read fails the checker and the festival waits for an agent, who adds a reason or
 decides.
 
-## 2. Mapping table: one owner per meaning
+## 2. Mapping: one owner per meaning
 
 The same rows carry the mapping:
 
@@ -126,27 +82,8 @@ The same rows carry the mapping:
   the data.
 
 **Wording** is at the data's precision: it explains the state, never the pipeline's mechanism. States a reader needn't
-tell apart share their wording, but keep their own key and owner. Some rows:
-
-| Point · state | Disposition | Wording | Owner |
-| -- | -- | -- | -- |
-| price · `none_found`, `not_looked` | note | No price published | agent: once its links change · agent: find the page |
-| price · `other_passes_only` | note | No full pass price (a button to the passes) | — |
-| price · `page_unread` | note | Prices on the ticket page ↗ (a link to it) | — (waits_for says who acts) |
-| price · `not_yet` | note | Tickets not on sale yet | organiser |
-| price · `offline` | note | Tickets by message or form, no price online | — |
-| price · `closed` | note | Ticket sales closed | — |
-| card_price · `ended` | note | Prices no longer listed | organiser |
-| card_price · `sold_out` | card | Full pass sold out · Package sold out | — |
-| card_price · `full_pass` (form cost) | card | Cost {sum}, without accommodation | — |
-| next_change · `dated` (form then) | card | price goes up {day} (then {price} from {day}) | — |
-| tier_today · `ended` (form all) | view | No passes on sale any more. | — |
-| ticket · `unread` | waits | The ticket page has more tickets than shown here | the next run's first read |
-| waits_for · `agent`, `recipe_fix`, `session` | waits | (the last prices stay) | agent |
-| skip_reason · each | kept | — | the first read |
-| pass_kind · each | view | Full pass · Party pass · Day pass · Workshop pass · Package · *the pass's own name* | — |
-| style · each | view | Kizomba · Zouk · Bachata · Salsa · Other style | — |
-| feature · `all_in_one` | filter | All-in-one hotel | — |
+tell apart share their wording, but keep their own key and owner. Every state's wording is in the
+[States table](../reference/states.md).
 
 **Prompt identity.** A prompt the pipeline sends to a model is identified by the hash of everything fixed in its
 request: its text sets down the system text, the schema of the record the checker holds the answer to, and that schema
@@ -192,11 +129,11 @@ A new or unmapped state fails at the first of these that meets it:
    row with a value outside the table is refused.
 2. **In the type check and Tests:** basedpyright refuses a state name the code's enums don't have, the site's scans find
    one in its code, and the per-state tests of each choosing function fail.
-3. **The audit:** `uv run --group tickets -m pipeline.audit` runs in **Tests** and first in **Refresh places and
-   rates**. It catches what bypasses the first two, such as a hand edit of `pages.csv`, `status.csv`, the decisions and
-   plans, or a claim. It reads every row of the shared CSVs, and the first reads and answers to their current prompts
-   (one to another prompt waits to be asked again, and is not loaded), each as its record. It reports *"0 refused, 0
-   stale"*, and otherwise exits 1, naming each instance on stderr:
+3. **The audit:** `mise run audit` runs in **Tests** and first in **Refresh places and rates**. It catches what bypasses
+   the first two, such as a hand edit of `pages.csv`, `status.csv`, the decisions and plans, or a claim. It reads every
+   row of the shared CSVs, and the first reads and answers to their current prompts (one to another prompt waits to be
+   asked again, and is not loaded), each as its record. It reports *"0 refused, 0 stale"*, and otherwise exits 1, naming
+   each instance on stderr:
    - **Refused:** a value its record refuses, such as one that is no state of its point, named by file, line or place in
      it, and what the record allows.
    - **Stale:** a site claim for a site a recipe now reads, or one no festival has its known ticket page on.

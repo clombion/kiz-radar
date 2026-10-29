@@ -1,5 +1,5 @@
-"""What the build fails on that writing and Tests can't catch (pipeline/STATES.md §4): a value in the committed data
-that its record refuses, such as a hand edit of a CSV naming no state, or a claim that is none; and a site claim
+"""What the build fails on that writing and Tests can't catch (docs/concepts/states.md, §4): a value in the committed
+data that its record refuses, such as a hand edit of a CSV naming no state, or a claim that is none; and a site claim
 (pipeline/claims.py) that no longer departs from anything.
 
     mise run audit

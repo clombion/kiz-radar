@@ -1,12 +1,12 @@
-"""Write the files built from pipeline/states.py and the site's stylesheets, or check that they still say what those do.
+"""Write the files built from the code, or check that they still say what it does.
 
     mise run generate          # write them
     mise run generate:check    # exit 1 naming each one that differs
 
-pipeline/enums.py holds the code's enums of the states, site/states.ts the site's words for them and
-pipeline/STATES.md's table the data points; each is written here and nowhere else, so a new state is one row of
-pipeline/states.py and then this command. site/classes.ts names the classes public/css/ defines, the only ones the
-site's h() takes, so a class is one rule of the stylesheet and then this command.
+pipeline/enums.py holds the code's enums of the states and site/states.ts the site's words for them; each is
+written here and nowhere else, so a new state is one row of pipeline/states.py and then this command. site/classes.ts
+names the classes public/css/ defines, the only ones the site's h() takes, so a class is one rule of the stylesheet and
+then this command. docs/reference/ holds the commands, the files and the states (pipeline/reference.py).
 """
 
 import argparse
@@ -15,20 +15,7 @@ import sys
 from collections.abc import Callable
 from pathlib import Path
 
-from pipeline import ROOT, files, states
-
-STATES_MD = ROOT / 'pipeline' / 'STATES.md'
-BEGIN = '<!-- generated from pipeline/states.py (states.points_table): mise run generate -->'
-END = '<!-- points:end -->'
-
-
-def states_md() -> str:
-    """pipeline/STATES.md with its table of the data points written between its markers; the rest is prose."""
-    text = STATES_MD.read_text(encoding='utf-8')
-    head, rest = text.split(BEGIN, 1)
-    _, tail = rest.split(END, 1)
-    return f'{head}{BEGIN}\n\n{states.points_table()}\n\n{END}{tail}'
-
+from pipeline import ROOT, files, reference, states
 
 CSS = ROOT / 'public' / 'css'
 COMMENT = re.compile(r'/\*.*?\*/', re.DOTALL)
@@ -52,8 +39,8 @@ def classes_module() -> str:
 FILES: dict[Path, Callable[[], str]] = {
     ROOT / 'pipeline' / 'enums.py': states.enums_module,
     ROOT / 'site' / 'states.ts': states.ts_module,
-    STATES_MD: states_md,
     ROOT / 'site' / 'classes.ts': classes_module,
+    **reference.PAGES,
 }
 
 
@@ -62,7 +49,7 @@ class Args(argparse.Namespace):
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description='Write the files built from pipeline/states.py, or check them.')
+    ap = argparse.ArgumentParser(description='Write the files built from the code, or check them.')
     ap.add_argument('--check', action='store_true', help='exit 1 naming each file that differs, writing nothing')
     check = ap.parse_args(namespace=Args()).check
     stale = [path for path, build in FILES.items() if not path.exists() or path.read_text(encoding='utf-8') != build()]

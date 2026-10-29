@@ -95,7 +95,7 @@ depends = ["install:site", "build:data"]
 run = "pnpm run test"
 
 [dup]
-description = "No block of 30 tokens or more written twice, in the code, tests, stylesheet or Actions (.jscpd.json); the generated files aside"
+description = "No block written twice, in the code, tests, stylesheet or Actions, at the length .jscpd.json sets; the generated files aside"
 depends = ["install:site"]
 run = "pnpm run dup"
 
@@ -124,11 +124,11 @@ description = "Every state in the data is one of pipeline/states.py"
 run = "uv run -q --group tickets -m pipeline.audit"
 
 [generate]
-description = "Write the files built from pipeline/states.py"
+description = "Write the files built from the code: the enums and words of pipeline/states.py, the stylesheet's classes, docs/reference/"
 run = "uv run -m pipeline.generate"
 
 ["generate:check"]
-description = "The files built from pipeline/states.py still say what it does"
+description = "The files built from the code still say what it does"
 run = "uv run -m pipeline.generate --check"
 
 [hooks]

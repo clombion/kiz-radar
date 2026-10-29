@@ -1,4 +1,4 @@
-// What a pass costs on a day (pipeline/STATES.md: the tier today, its next change, and the card's price), from its
+// What a pass costs on a day (docs/concepts/states.md: the tier today, its next change, and the card's price), from its
 // tiers alone: the day is an argument and nothing here touches the page, so every state is reached in
 // tests/site/pricing.test.ts.
 //
