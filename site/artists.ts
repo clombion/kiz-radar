@@ -4,6 +4,7 @@ import { one, q, Sql, sql } from './db.ts';
 import { button, choices, dropdown, h, type Kid, moreButton, segments } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, leftOut, readState, withDetails } from './festivals.ts';
+import { fold } from './fold.ts';
 import { alsoGoingTo, peopleOf } from './plans.ts';
 import { alone, roleLabel } from './roles.ts';
 import { artistHref, artistsHref, eventOnMapHref, personHref, type Show, showInAddressBar } from './routes.ts';
@@ -63,6 +64,24 @@ const DEFAULTS: { q: string; role: '' | Role; country: string; sort: Order; popu
   kind: '',
 };
 
+// each artist's names, folded as the search folds what is typed (fold.ts): their own, their aliases, and a couple's
+// members'; read once, on the first search
+let names: ReadonlyMap<number, readonly string[]> | undefined;
+function namesOf(): ReadonlyMap<number, readonly string[]> {
+  if (names === undefined) {
+    const all = new Map<number, string[]>();
+    for (const r of q(
+      { id: num, name: str },
+      sql`SELECT id, display_name AS name FROM artists
+      UNION ALL SELECT artist_id, alias FROM artist_aliases
+      UNION ALL SELECT cm.couple_id, m.display_name FROM couple_members cm JOIN artists m ON m.id = cm.member_id`,
+    ))
+      all.set(r.id, [...(all.get(r.id) ?? []), fold(r.name)]);
+    names = all;
+  }
+  return names;
+}
+
 // the countries the list can be narrowed to, by name: those its artists were booked in (artist_countries)
 export const artistCountries = (): string[] =>
   q({ c: str }, sql`SELECT DISTINCT country_code AS c FROM artist_countries WHERE country_code IS NOT NULL`)
@@ -86,9 +105,12 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
   const next = new Map(
     q(
       { artist_id: num, city: opt(str), country_code: opt(str), start_date: str },
-      sql`SELECT ae.artist_id, e.city, e.country_code, min(e.start_date) AS start_date
-      FROM artist_events ae JOIN event_rows e ON e.id = ae.event_id
-      WHERE ae.via = 'direct' AND e.upcoming GROUP BY ae.artist_id`,
+      sql`SELECT artist_id, city, country_code, start_date FROM (
+        SELECT ae.artist_id, e.city, e.country_code, e.start_date,
+          row_number() OVER (PARTITION BY ae.artist_id ORDER BY e.start_date, e.id) AS n
+        FROM artist_events ae JOIN event_rows e ON e.id = ae.event_id
+        WHERE ae.via = 'direct' AND e.upcoming
+      ) WHERE n = 1`,
     ).map((r) => [r.artist_id, r]),
   );
 
@@ -173,11 +195,6 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
     moreBtn.textContent = `More${extra ? ` (${extra})` : ''} ▾`;
     const cond = [sql`1=1`],
       args: string[] = [];
-    if (st.q) {
-      cond.push(sql`(a.display_name LIKE ? OR a.id IN (SELECT artist_id FROM artist_aliases WHERE alias LIKE ?)
-        OR a.id IN (SELECT cm.couple_id FROM couple_members cm JOIN artists m ON m.id = cm.member_id WHERE m.display_name LIKE ?))`);
-      args.push(`%${st.q}%`, `%${st.q}%`, `%${st.q}%`);
-    }
     if (st.role) cond.push(sql`${COUNTS[st.role]} > 0`);
     if (st.kind) {
       cond.push(sql`a.kind = ?`);
@@ -194,6 +211,14 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
       WHERE ${Sql.joined(cond, sql` AND `)} ORDER BY ${ORDER_BY[st.sort]}`,
       args,
     );
+    if (st.q) {
+      const typed = fold(st.q);
+      rows = rows.filter((a) =>
+        namesOf()
+          .get(a.artist_id)
+          ?.some((n) => n.includes(typed)),
+      );
+    }
     // an order orders and keeps everyone: those with no festival coming after the rest, most booked first
     const soonest = (a: Artist) => next.get(a.artist_id)?.start_date ?? '9999'; // after every date
     if (st.sort === 'next') rows = rows.toSorted((a, b) => soonest(a).localeCompare(soonest(b)));

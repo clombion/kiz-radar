@@ -21,7 +21,6 @@ const HOMONYMS = new Set([
   "icons.ts: 'none'", // an SVG's fill="none"
   "search.ts: 'none'",
   'sentence.ts: full pass', // the price limit's own sum: pass and flight
-  "tables.ts: 'now'", // SQL's date('now')
   "festivals.ts: 'now'", // a price line with today's tier ('now' in price)
   "pricing.ts: 'door'", // pass_tiers' door column
 ]);

@@ -30,7 +30,8 @@ FROM artist_stats st JOIN artists a ON a.id = st.artist_id ORDER BY st.countries
   [
     'Fares per airport (next 3 months)',
     `SELECT airport, count(*) AS weekends, min(price) AS cheapest, round(avg(price)) AS average
-FROM fares WHERE depart BETWEEN date('now') AND date('now', '+3 months') GROUP BY airport ORDER BY average;`,
+FROM fares WHERE depart BETWEEN (SELECT day FROM today) AND date((SELECT day FROM today), '+3 months')
+GROUP BY airport ORDER BY average;`,
   ],
   ['What each table holds', 'SELECT name, description FROM table_docs ORDER BY name;'],
 ];

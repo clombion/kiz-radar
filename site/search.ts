@@ -9,6 +9,7 @@ import { today } from './days.ts';
 import { q, site, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
 import { CHECKED, type Checked, type Festival, festivals, hasWith, isDance, WITH, type With } from './festivals.ts';
+import { fold, words } from './fold.ts';
 import { icon } from './icons.ts';
 import { leaving, modal } from './modal.ts';
 import { person } from './plans.ts';
@@ -98,21 +99,6 @@ const groupOf = (item: Item): Group => (item.kind === 'country' || item.kind ===
 // different kinds, each on its own scale, are never compared
 const KIND_ORDER: Readonly<Record<Kind, number>> = { person: 0, festival: 1, artist: 2, country: 3, city: 4, tag: 5 };
 const before = (a: Item, b: Item): number => KIND_ORDER[a.kind] - KIND_ORDER[b.kind] || b.rank - a.rank;
-
-// "Łódź" and "lodz" match, and so do "Rencontres" and "rencontrés"
-const fold = (s: string) =>
-  s
-    .normalize('NFKD')
-    .replace(/[̀-ͯ]/gu, '')
-    .toLowerCase()
-    .replace(/ł/gu, 'l')
-    .replace(/[øœ]/gu, 'o')
-    .replace(/æ/gu, 'ae')
-    .replace(/ß/gu, 'ss')
-    .replace(/đ/gu, 'd')
-    .replace(/ı/gu, 'i');
-const BETWEEN_WORDS = /[^a-z0-9]+/u;
-const words = (s: string) => fold(s).split(BETWEEN_WORDS).filter(Boolean);
 
 // Every token typed must start a word of the item; an item whose name is the query, or starts with it, comes first.
 function score(item: Item, tokens: readonly string[], query: string): 0 | 1 | 2 | 3 | 4 {

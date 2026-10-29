@@ -52,9 +52,12 @@ export function countriesView(root: HTMLElement, qs: string): void {
   const fares = new Map(
     q(
       { country_code: opt(str), airport_city: opt(str), price: num },
-      sql`SELECT e.country_code, e.airport_city, min(f.price) AS price FROM event_rows e
-      JOIN fares f ON f.airport = e.airport AND f.depart = e.weekend_friday
-      WHERE e.upcoming AND e.airport != ? GROUP BY e.country_code`,
+      sql`SELECT country_code, airport_city, price FROM (
+        SELECT e.country_code, e.airport_city, f.price,
+          row_number() OVER (PARTITION BY e.country_code ORDER BY f.price, e.airport_city) AS n
+        FROM event_rows e JOIN fares f ON f.airport = e.airport AND f.depart = e.weekend_friday
+        WHERE e.upcoming AND e.airport != ?
+      ) WHERE n = 1`,
       [home().code],
     ).map((r) => [r.country_code, r]),
   );

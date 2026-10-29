@@ -43,18 +43,19 @@ let cache:
 function details() {
   if (!cache) {
     const heads = new Map<number, { id: number; name: string }[]>();
-    // the best-known teachers and DJs (couples count as one act)
-    // one row per person: someone listed as both teacher and DJ is still one name
+    // the three best-known teachers and DJs of each festival (couples count as one act, someone listed as both
+    // teacher and DJ is one name), the most booked first
     for (const r of q(
       { event_id: num, id: num, display_name: str },
-      sql`SELECT ea.event_id, a.id, a.display_name FROM event_artists ea
-        JOIN artists a ON a.id = ea.artist_id JOIN artist_stats st ON st.artist_id = a.id WHERE ea.role IN (?, ?) AND ea.as_couple IS NULL
-        GROUP BY ea.event_id, a.id ORDER BY ea.event_id, st.bookings DESC`,
+      sql`SELECT event_id, id, display_name FROM (
+        SELECT ea.event_id, a.id, a.display_name,
+          row_number() OVER (PARTITION BY ea.event_id ORDER BY st.bookings DESC, a.id) AS n
+        FROM (SELECT DISTINCT event_id, artist_id FROM event_artists WHERE role IN (?, ?) AND as_couple IS NULL) ea
+        JOIN artists a ON a.id = ea.artist_id JOIN artist_stats st ON st.artist_id = a.id
+      ) WHERE n <= 3 ORDER BY event_id, n`,
       [KEY.role.TEACHER, KEY.role.DJ],
-    )) {
-      const at = heads.get(r.event_id) ?? [];
-      if (at.length < 3) heads.set(r.event_id, [...at, { id: r.id, name: r.display_name }]);
-    }
+    ))
+      heads.set(r.event_id, [...(heads.get(r.event_id) ?? []), { id: r.id, name: r.display_name }]);
     const fares = new Map(
       q({ k: str, price: num }, sql`SELECT airport || depart AS k, price FROM fares`).map((f) => [f.k, f.price]),
     );

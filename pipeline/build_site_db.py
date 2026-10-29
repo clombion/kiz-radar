@@ -373,7 +373,7 @@ create view country_stats as
       round(100.0 * sum(s.imported) / nullif(sum(s.lineup) - sum(s.unknown_country), 0)) as imported_pct,
       sum(s.unknown_country) as unknown_country,
       (select airport from events e2 where e2.country_code = e.country_code and e2.airport is not null
-         group by airport order by count(*) desc limit 1) as main_airport
+         group by airport order by count(*) desc, airport limit 1) as main_airport
     from events e join event_stats s on s.event_id = e.id left join countries c on c.code = e.country_code
     where e.cancelled is not 1 and e.listing = '{listed}' group by e.country_code;
 -- what the site reads for festivals: each event with its statistics, and where it stands on the day in today (phase,
@@ -396,7 +396,7 @@ create view plan_rows as
          and (ea.artist_id = pa.artist_id
               or ea.artist_id in (select couple_id from couple_members where member_id = pa.artist_id))
        where pa.person_id = p.person_id and ea.role in ({booked_as})
-       order by ea.role = '{teacher}' desc limit 1) as booked_as
+       order by ea.role = '{teacher}' desc, ea.role limit 1) as booked_as
     from plans p join people pe on pe.id = p.person_id;
 """
 TABLES = sqlite_db.declared(

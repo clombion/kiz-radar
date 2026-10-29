@@ -64,9 +64,10 @@ function load(): { byEvent: Map<number, Goer[]>; couples: Couple[] } {
     byEvent.set(r.event_id, [...(byEvent.get(r.event_id) ?? []), r]);
   const couples = q(
     { id: num, display_name: str, people: str, n: num, members: num },
-    sql`SELECT a.id, a.display_name,
-      group_concat(pa.person_id) AS people, count(*) AS n, (SELECT count(*) FROM couple_members WHERE couple_id = a.id) AS members
-    FROM couple_members cm JOIN artists a ON a.id = cm.couple_id JOIN person_artists pa ON pa.artist_id = cm.member_id GROUP BY a.id`,
+    sql`SELECT a.id, a.display_name, group_concat(pa.person_id) AS people, count(*) AS n, m.members
+    FROM couple_members cm JOIN artists a ON a.id = cm.couple_id JOIN person_artists pa ON pa.artist_id = cm.member_id
+      JOIN (SELECT couple_id, count(*) AS members FROM couple_members GROUP BY couple_id) m ON m.couple_id = a.id
+    GROUP BY a.id, a.display_name, m.members`,
   )
     .filter((c) => c.n === c.members)
     .map((c) => ({ artist: c.id, name: c.display_name, people: c.people.split(',').map(Number) }));
@@ -327,26 +328,35 @@ function peekEvent(e: Going, from?: EventTarget | null) {
 
 // A person, and the artist records they are, directly or as half of a couple: those with bookings of their own,
 // since a partner's record alone only repeats the couple's.
-export function person(key: string): {
+export interface Person {
   id: number;
   key: string;
   name: string;
   featured: boolean;
   artists: { id: number; display_name: string }[];
-} | null {
-  const p = one({ id: num, key: str, name: str, featured: flagCol }, sql`SELECT * FROM people WHERE key = ?`, [key]);
-  if (!p) return null;
-  return {
-    ...p,
-    artists: q(
-      { id: num, display_name: str },
-      sql`SELECT a.id, a.display_name FROM artists a JOIN artist_stats st ON st.artist_id = a.id WHERE a.id IN (
-      SELECT artist_id FROM person_artists WHERE person_id = ?
-      UNION SELECT cm.couple_id FROM person_artists pa JOIN couple_members cm ON cm.member_id = pa.artist_id WHERE pa.person_id = ?)
-    ORDER BY st.bookings DESC`,
-      [p.id, p.id],
-    ),
-  };
+}
+// everyone sharing plans, by key, each with the artists they are, a couple they are in among them, most booked first;
+// read once
+let sharing: ReadonlyMap<string, Person> | undefined;
+export function person(key: string): Person | null {
+  if (sharing === undefined) {
+    const artists = new Map<number, Person['artists']>();
+    for (const r of q(
+      { person_id: num, id: num, display_name: str },
+      sql`SELECT pa.person_id, a.id, a.display_name FROM (
+        SELECT person_id, artist_id FROM person_artists
+        UNION SELECT pa.person_id, cm.couple_id FROM person_artists pa JOIN couple_members cm ON cm.member_id = pa.artist_id
+      ) pa JOIN artists a ON a.id = pa.artist_id JOIN artist_stats st ON st.artist_id = a.id
+      ORDER BY st.bookings DESC, a.id`,
+    ))
+      artists.set(r.person_id, [...(artists.get(r.person_id) ?? []), { id: r.id, display_name: r.display_name }]);
+    sharing = new Map(
+      q({ id: num, key: str, name: str, featured: flagCol }, sql`SELECT id, key, name, featured FROM people`).map(
+        (p) => [p.key, { ...p, artists: artists.get(p.id) ?? [] }],
+      ),
+    );
+  }
+  return sharing.get(key) ?? null;
 }
 // The festivals still to come that some of these people said they're going to, where they aren't in the line-up,
 // leaving out the ones the page lists already (an artist's page lists every festival the artist is named at).
