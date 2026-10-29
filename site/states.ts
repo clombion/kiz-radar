@@ -221,6 +221,13 @@ export const STATES = {
    "icon": null,
    "link": "page"
   },
+  "page_empty": {
+   "disposition": "note",
+   "wording": "No tickets listed yet",
+   "forms": {},
+   "icon": null,
+   "link": "page"
+  },
   "not_yet": {
    "disposition": "note",
    "wording": "Tickets not on sale yet",
@@ -843,6 +850,7 @@ export const KEY = {
   "PRICED": "priced",
   "OTHER_PASSES_ONLY": "other_passes_only",
   "PAGE_UNREAD": "page_unread",
+  "PAGE_EMPTY": "page_empty",
   "NOT_YET": "not_yet",
   "OFFLINE": "offline",
   "CLOSED": "closed",

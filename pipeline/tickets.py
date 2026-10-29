@@ -568,7 +568,7 @@ class Run:
         entry = latest_read(f.log)
         if entry is None or entry.at.date() != self.today:
             entry = self.read(f)
-        if isinstance(entry, Read):
+        if isinstance(entry, Read) and entry.rows:  # a page that lists nothing has nothing to read
             self.make(f, entry)
 
     def verdict(self) -> str | None:

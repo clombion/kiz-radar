@@ -31,7 +31,7 @@
     "amount": {
       "css": "div.items-end > p",
       "attr": null,
-      "match": "([\\d.,]+)"
+      "match": "(\\d[\\d\\s.,]*\\d|\\d)"
     },
     "currency": {
       "css": "div.items-end > p",

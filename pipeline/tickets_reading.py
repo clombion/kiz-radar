@@ -170,14 +170,14 @@ class Attempt:
         )
 
     def read(self, url: str, rows: Sequence[Row]) -> Read:
-        """The log entry of a read of these rows at this address."""
+        """The log entry of a read of these rows at this address: empty when there are none."""
         return Read(
             at=self.at,
             page=self.page,
             recipe=self.recipe,
             url=url,
             http=self.http,
-            status=Status.READ,
+            status=Status.READ if rows else Status.EMPTY,
             rows=tuple(rows),
         )
 
@@ -207,7 +207,7 @@ def api_attempt(started: Attempt, recipe: ApiRecipe) -> LogEntry:
         return started.failed(Status.LAYOUT_BROKEN, f'{type(e).__name__}: {e}')
     except RequestException as e:  # the request failed: no HTTP answer to judge
         return started.failed(Status.UNREACHABLE, f'{type(e).__name__}: {e}')
-    return judged(replace(started, url=url, http=status), url, url, raw)
+    return judged(replace(started, url=url, http=status), url, url, raw, listed=True)
 
 
 def page_attempt(started: Attempt, recipe: PageRecipe, *, visible: bool | None) -> LogEntry:
@@ -232,9 +232,9 @@ def page_attempt(started: Attempt, recipe: PageRecipe, *, visible: bool | None) 
     return judged(replace(reached, http=status), url, title, raw)
 
 
-def judged(reached: Attempt, url: str, title: str, raw: Sequence[Raw]) -> LogEntry:
-    """The log entry for a read that got an answer: refused (an HTTP error, and no rows), layout_broken, or read with
-    its rows."""
+def judged(reached: Attempt, url: str, title: str, raw: Sequence[Raw], *, listed: bool = False) -> LogEntry:
+    """The log entry for a read that got an answer: refused (an HTTP error, and no rows), layout_broken, read with its
+    rows, or empty when listed (the site answered a list of its tickets, an API's) and the list has none."""
     # a browser check answers 4xx, then shows the page once it has passed, so the status alone decides nothing
     if not raw and reached.http and reached.http >= HTTP_ERROR:
         return reached.failed(Status.REFUSED, f'HTTP {reached.http} ({title})')
@@ -248,6 +248,6 @@ def judged(reached: Attempt, url: str, title: str, raw: Sequence[Raw]) -> LogEnt
             bad += errors(e, f'row {i} ({row["name"] or row["key"]})')
     keys = [r.key for r in got]
     bad += [f'two rows with key {k}' for k in sorted({k for k in keys if keys.count(k) > 1})]
-    if bad or not got:
+    if bad or not (got or listed):
         return reached.failed(Status.LAYOUT_BROKEN, '; '.join(bad or ['no ticket rows']))
     return reached.read(url, got)

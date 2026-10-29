@@ -28,7 +28,7 @@ thing a consumer must treat differently.
 
 | Data point | States | Produced by |
 | -- | -- | -- |
-| **page_read**, each logged attempt to read a ticket page | `read`, `refused`, `unreachable`, `layout_broken` | tickets_reading.attempt |
+| **page_read**, each logged attempt to read a ticket page | `read`, `refused`, `empty`, `unreachable`, `layout_broken` | tickets_reading.attempt |
 | **call_cause**, each call that gave no answer, by what kept it from one (pipeline/calls.py); a ticket page's own failures are page_read states | `checker`, `truncated`, `transient`, `structural`, `budget` | calls |
 | **sales**, a festival with no full link to its ticket page, as an agent found it (tickets/pages.csv) | `shop`, `not_yet`, `offline`, `closed`, `none_found` | tickets.py page --state |
 | **ticket**, each ticket of a read ticket page | `in_tier`, `skipped`, `unread` | the first read; tickets_store.unread_keys |
@@ -41,7 +41,7 @@ thing a consumer must treat differently.
 | **first_read**, a festival, by whether it needs a (new) first read | `not_needed`, `none`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_page`, `redo_unread`, `disputed` | tickets_state.why_first_read |
 | **answer**, a festival's answer of one extraction pass | `none`, `current`, `stale` | ask.answer_state |
 | **waits_for**, each festival, by what its prices from its ticket page wait for | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | tickets_state.waiting, in tickets/status.csv |
-| **price**, each festival, by what its card can say of its price | `priced`, `other_passes_only`, `page_unread`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | prices.price_state, in price_status |
+| **price**, each festival, by what its card can say of its price | `priced`, `other_passes_only`, `page_unread`, `page_empty`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | prices.price_state, in price_status |
 | **tier_today**, a pass's price on the day it is viewed | `now`, `from`, `next`, `sold_out`, `ended` | pricing.ts tierNow |
 | **card_price**, a priced festival, by what its card says on the day it is viewed | `full_pass`, `package`, `sold_out`, `ended` | pricing.ts cardPrice |
 | **genre**, each dance genre a festival covers | `kizomba`, `semba`, `urbankiz`, `tarraxo`, `tarraxinha`, `douceur`, `kompa`, `zouk`, `bachata`, `salsa`, `afro`, `reggaeton`, `kuduro`, `other` | the rooms-genres pass; the genre rules; the site tags |

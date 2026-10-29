@@ -145,26 +145,29 @@ def passes(
 
 
 FULL, PACKAGE = PassKind.FULL, PassKind.PACKAGE
-PRICE_CASES: list[tuple[tuple[Sequence[PricedPass], Sales | None, str | None], Price]] = [
-    ((passes(FULL), None, None), Price.PRICED),
-    ((passes(PACKAGE, includes_hotel=True), None, None), Price.PRICED),
-    ((passes(PACKAGE), None, None), Price.OTHER_PASSES_ONLY),  # a package without a hotel
-    ((passes(PassKind.DAY, PassKind.PARTY), Sales.CLOSED, None), Price.OTHER_PASSES_ONLY),
-    ((passes(FULL, group_size=2), None, None), Price.OTHER_PASSES_ONLY),
-    ((passes(FULL, includes_hotel=True), None, None), Price.OTHER_PASSES_ONLY),
-    (([], Sales.SHOP, 'https://shop.example'), Price.PAGE_UNREAD),
-    (([], None, 'https://shop.example'), Price.PAGE_UNREAD),
-    (([], Sales.NOT_YET, None), Price.NOT_YET),
-    (([], Sales.OFFLINE, None), Price.OFFLINE),
-    (([], Sales.CLOSED, None), Price.CLOSED),
-    (([], Sales.NONE_FOUND, None), Price.NONE_FOUND),
-    (([], None, None), Price.NOT_LOOKED),
+PRICE_CASES: list[tuple[tuple[Sequence[PricedPass], Sales | None, str | None, bool], Price]] = [
+    ((passes(FULL), None, None, False), Price.PRICED),
+    ((passes(PACKAGE, includes_hotel=True), None, None, False), Price.PRICED),
+    ((passes(PACKAGE), None, None, False), Price.OTHER_PASSES_ONLY),  # a package without a hotel
+    ((passes(PassKind.DAY, PassKind.PARTY), Sales.CLOSED, None, False), Price.OTHER_PASSES_ONLY),
+    ((passes(FULL, group_size=2), None, None, False), Price.OTHER_PASSES_ONLY),
+    ((passes(FULL, includes_hotel=True), None, None, False), Price.OTHER_PASSES_ONLY),
+    (([], Sales.SHOP, 'https://shop.example', False), Price.PAGE_UNREAD),
+    (([], None, 'https://shop.example', False), Price.PAGE_UNREAD),
+    (([], Sales.SHOP, 'https://shop.example', True), Price.PAGE_EMPTY),  # its latest read lists no tickets
+    ((passes(FULL), None, 'https://shop.example', True), Price.PRICED),
+    (([], Sales.NOT_YET, None, False), Price.NOT_YET),
+    (([], Sales.OFFLINE, None, False), Price.OFFLINE),
+    (([], Sales.CLOSED, None, False), Price.CLOSED),
+    (([], Sales.NONE_FOUND, None, False), Price.NONE_FOUND),
+    (([], None, None, False), Price.NOT_LOOKED),
 ]
 
 
 @pytest.mark.parametrize(('args', 'state'), PRICE_CASES)
-def test_every_price_state(args: tuple[Sequence[PricedPass], Sales | None, str | None], state: Price) -> None:
-    assert prices.price_state(*args) == state
+def test_every_price_state(args: tuple[Sequence[PricedPass], Sales | None, str | None, bool], state: Price) -> None:
+    passes_, sales, page, empty = args
+    assert prices.price_state(passes_, sales, page, empty=empty) == state
 
 
 def test_the_price_states_tested_are_all_of_them() -> None:
@@ -230,8 +233,8 @@ def test_the_log_says_each_page_read_state() -> None:
     base = {'at': '2026-10-01T00:00:00+00:00', 'page': 'https://x.org', 'recipe': 'x@0123abcd'}
     for key in states.keys('page_read'):
         said = (
-            {'status': key, 'url': 'https://x.org', 'http': 200, 'rows': [row]}
-            if key == 'read'
+            {'status': key, 'url': 'https://x.org', 'http': 200, 'rows': [row] if key == 'read' else []}
+            if key in {'read', 'empty'}
             else {'status': key, 'why': 'w'}
         )
         assert LOG_ENTRY.validate_json(json.dumps(base | said)).status == key

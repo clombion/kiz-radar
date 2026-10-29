@@ -55,6 +55,7 @@ class Status(StrEnum):
 
     READ = 'read'
     REFUSED = 'refused'
+    EMPTY = 'empty'
     UNREACHABLE = 'unreachable'
     LAYOUT_BROKEN = 'layout_broken'
 
@@ -201,6 +202,7 @@ class Price(StrEnum):
     PRICED = 'priced'
     OTHER_PASSES_ONLY = 'other_passes_only'
     PAGE_UNREAD = 'page_unread'
+    PAGE_EMPTY = 'page_empty'
     NOT_YET = 'not_yet'
     OFFLINE = 'offline'
     CLOSED = 'closed'

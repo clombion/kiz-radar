@@ -381,7 +381,8 @@ def load_prices(
     for e in dates:
         sales, page = sold.get(e, (None, None))
         card = price_rules.card_pass(passes.get(e, ()))
-        price = price_rules.price_state(passes.get(e, ()), sales, page)
+        empty = page is not None and tickets_store.lists_nothing(e, page)
+        price = price_rules.price_state(passes.get(e, ()), sales, page, empty=empty)
         status_rows.append(
             {'event_id': e, 'price': price, 'page': page, 'card_pass': None if card is None else card + 1}
         )

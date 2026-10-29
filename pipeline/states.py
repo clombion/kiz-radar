@@ -210,6 +210,13 @@ ROWS = (
     ),
     S(
         'page_read',
+        'empty',
+        "the site answered a list of its tickets, and it is empty: none is listed now (a page's rows can't say so, as "
+        'a recipe that finds none may be broken)',
+        KEPT,
+    ),
+    S(
+        'page_read',
         'unreachable',
         'the address could not be reached: the connection was reset or timed out, or the host is unknown',
         WAITS,
@@ -451,6 +458,15 @@ ROWS = (
         NOTE,
         'Prices on the ticket page',
         link=PAGE,
+    ),
+    S(
+        'price',
+        'page_empty',
+        'no passes; its ticket page, read, lists no tickets now',
+        NOTE,
+        'No tickets listed yet',
+        link=PAGE,
+        owner='the next run',
     ),
     S(
         'price',

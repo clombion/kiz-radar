@@ -140,6 +140,12 @@ def latest_read(entries: Sequence[LogEntry]) -> Read | None:
     return next((e for e in reversed(entries) if isinstance(e, Read)), None)
 
 
+def lists_nothing(event_id: int, page: str) -> bool:
+    """Whether the latest read of the festival's page found it lists no tickets now (empty)."""
+    entry = latest_read(log(event_id))
+    return entry is not None and entry.page == page and entry.status == Status.EMPTY
+
+
 def streak(entries: Sequence[LogEntry]) -> int:
     """How many reads in a row the page refused or could not be reached, counting back from the latest: the one rule
     for when a festival waits for a session (REFUSALS). A broken recipe ends it, as it waits for its fix instead."""

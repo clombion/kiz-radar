@@ -219,11 +219,13 @@ NO_PASSES = states.total(
 )
 
 
-def price_state(passes: Sequence[PricedPass], sales: Sales | None, page: str | None) -> Price:
-    """What a festival's card can say of its price, from its passes, how it sells (None when no agent recorded it)
-    and its known ticket page."""
+def price_state(passes: Sequence[PricedPass], sales: Sales | None, page: str | None, *, empty: bool) -> Price:
+    """What a festival's card can say of its price, from its passes, how it sells (None when no agent recorded it),
+    its known ticket page, and whether its latest read of that page found it lists no tickets (empty)."""
     if passes:
         return Price.PRICED if card_pass(passes) is not None else Price.OTHER_PASSES_ONLY
+    if page and empty:
+        return Price.PAGE_EMPTY
     if sales:
         return NO_PASSES[sales]
     return Price.PAGE_UNREAD if page else Price.NOT_LOOKED

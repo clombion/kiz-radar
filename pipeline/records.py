@@ -352,8 +352,14 @@ class Read(Record):
     recipe: Version
     url: Url  # the address read: the page's, or its widget's or API's
     http: int | None
-    status: Literal[Status.READ]
-    rows: Annotated[tuple[Row, ...], Field(min_length=1)]
+    status: Literal[Status.READ, Status.EMPTY]
+    rows: tuple[Row, ...]
+
+    @model_validator(mode='after')
+    def rows_as_said(self) -> Self:
+        if (self.status == Status.EMPTY) != (not self.rows):
+            raise ValueError('a read lists its rows, every one of them; an empty one, none')
+        return self
 
 
 class Failed(Record):

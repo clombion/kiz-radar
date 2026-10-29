@@ -915,6 +915,23 @@ def test_a_recipe_reads_the_page_or_the_api_never_a_mix() -> None:
     assert not valid(page | {'fields': api['fields'], 'row': page['row']})  # page rows read by api fields
 
 
+def test_an_empty_list_a_site_answers_is_an_empty_page_and_no_rows_on_a_page_a_broken_recipe() -> None:
+    started = tickets_reading.Attempt(AT, PAGE, 'goandance@0123abcd', url=PAGE, http=200)
+    empty = tickets_reading.judged(started, PAGE, PAGE, [], listed=True)
+    assert isinstance(empty, Read)
+    assert (empty.status, empty.rows) == (Status.EMPTY, ())
+    assert tickets_reading.judged(started, PAGE, 'Tickets', []).status == Status.LAYOUT_BROKEN
+
+
+def test_a_page_that_lists_nothing_now_records_no_pass_and_says_so(files: Path) -> None:
+    tickets_store.append(
+        7, Read(at=LATER, page=PAGE, recipe='weezevent@0123abcd', url=PAGE, http=200, status=Status.EMPTY, rows=())
+    )
+    assert recorded_7().answer.passes == ()  # every ticket is gone
+    assert tickets_store.lists_nothing(7, PAGE)
+    assert not tickets_store.lists_nothing(7, 'https://another.example/t')
+
+
 def test_a_first_read_with_no_pass_is_refused() -> None:
     found = tickets_store.checked_read(read_json(passes=[], skipped=[{'key': k, 'reason': 'room'} for k in '12345']))
     assert isinstance(found, list)
@@ -1305,7 +1322,7 @@ def test_a_page_an_agent_found_or_a_first_read_is_known_whatever_its_site(files:
 def test_a_festival_with_links_to_no_shop_waits_for_its_page_and_has_no_page_to_link() -> None:
     f = festival(links=('https://fest.example/',))
     assert tickets_state.waiting(f) == Waiting.PAGE
-    assert prices.price_state([], None, None) == Price.NOT_LOOKED
+    assert prices.price_state([], None, None, empty=False) == Price.NOT_LOOKED
 
 
 def test_a_dispute_to_another_prompt_is_none(files: Path) -> None:
