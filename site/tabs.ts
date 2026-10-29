@@ -30,7 +30,7 @@ const box = (a: HTMLElement): Box => ({
 });
 const px = (b: Readonly<Record<string, number>>): Record<string, string> =>
   Object.fromEntries(Object.entries(b).map(([k, v]) => [k, `${v}px`]));
-const PAD = 12; // px: the goo layer reaches this far past its row (site.css .goo), so the blur isn't cut
+export const PAD = 12; // px: the goo layer reaches this far past its row (site.css .goo), so the blur isn't cut
 const SLIME = { ms: 760, arm: 0.36, drop: 0.62 }; // ms; the arm's and the drop's share of a tab's height
 // a damped spring: past the mark, back, and still (samples of 1 - e^(-ζωt)(cos ω_d t + ζ/√(1-ζ²) sin ω_d t))
 const SPRING =

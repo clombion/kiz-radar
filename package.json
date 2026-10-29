@@ -21,6 +21,7 @@
     "@types/topojson-client": "3.1.5",
     "@types/topojson-specification": "1.0.5",
     "@vitest/browser-playwright": "5.0.5",
+    "@vitest/coverage-v8": "5.0.5",
     "jscpd": "4.0.5",
     "knip": "6.43.0",
     "leaflet": "1.9.4",

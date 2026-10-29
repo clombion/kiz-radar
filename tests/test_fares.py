@@ -72,9 +72,22 @@ def test_due_again_on_its_own_weekday_only(tmp_path: Path, monkeypatch: pytest.M
 
 
 def fli(stdout: str, stderr: str = '') -> Callable[..., subprocess.CompletedProcess[str]]:
-    """subprocess.run, as fli answers: these words on its outputs."""
+    """subprocess.run, as fli answers a search for GLA on FRIDAY: these words on its outputs; asked anything else,
+    the test fails."""
 
     def run(cmd: list[str], **_: object) -> subprocess.CompletedProcess[str]:
+        day = FRIDAY.isoformat()
+        assert cmd[cmd.index('dates') + 2 :][:9] == [
+            'GLA',
+            '--from',
+            day,
+            '--to',
+            day,
+            '-d',
+            str(fares.NIGHTS),
+            '--round',
+            '--friday',
+        ]
         assert cmd[-4:] == ['--currency', 'EUR', '--format', 'json']
         return subprocess.CompletedProcess(cmd, 0, stdout, stderr)
 

@@ -134,33 +134,8 @@ def page_text(
 # first match of its css inside the row (the row itself when css is null), or with page set every match on the page,
 # joined by line; css and match may name the row's other fields as {field} and the row element's attributes as
 # {@attr} (a name starting with a letter, so {3} stays a regex count), filled in, escaped, once those are read.
-ROWS_JS = """([row, fields]) => {
-  const all = [...document.querySelectorAll(row)];
-  const escRe = s => s.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');
-  const fill = (t, el, vals, re) => t.replace(/\\{(@?)([A-Za-z_][\\w-]*)\\}/g, (_, at, k) => {
-    const v = at ? el.getAttribute(k) : vals[k];
-    return v == null ? '\\u0000' : (re ? escRe(v) : CSS.escape(v));
-  });
-  const templated = f => f && /\\{@?[A-Za-z_][\\w-]*\\}/.test((f.css || '') + (f.match || ''));
-  const get = (el, f, vals) => {
-    if (!f) return null;
-    const css = f.css && fill(f.css, el, vals, false);
-    const base = f.up ? el.closest(f.up) : el;
-    const targets = f.page ? [...document.querySelectorAll(css)] : !base ? [] :
-      f.all ? [...base.querySelectorAll(css)] : [css ? base.querySelector(css) : base];
-    const vs = targets.filter(Boolean).map(t => f.attr ? t.getAttribute(f.attr) : t.innerText).filter(v => v != null);
-    if (!vs.length) return null;
-    if (f.all) return vs.map(v => v.trim()).join(' · ');
-    const m = f.match ? vs.join('\\n').match(new RegExp(fill(f.match, el, vals, true))) : [vs.join('\\n')];
-    return m ? (m[1] ?? m[0]) : null;
-  };
-  return all.filter(el => !all.some(o => o !== el && el.contains(o))).map(el => {
-    const vals = {};
-    for (const [k, f] of Object.entries(fields)) if (!templated(f)) vals[k] = get(el, f, vals);
-    for (const [k, f] of Object.entries(fields)) if (templated(f)) vals[k] = get(el, f, vals);
-    return Object.fromEntries(Object.keys(fields).map(k => [k, vals[k] ?? null]));
-  });
-}"""
+# pipeline/rows.js's function, which the page runs (its module's comment and export left out)
+ROWS_JS = (Path(__file__).parent / 'rows.js').read_text(encoding='utf-8').split('export default ', 1)[1]
 
 
 def rows(

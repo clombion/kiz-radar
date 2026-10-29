@@ -1,9 +1,9 @@
 // What the page does, in Chromium: elements as h() builds them, the tab's oval as it moves, the page's slide, and a
 // dialog's history entry.
 import { afterEach, expect, test } from 'vitest';
-import { button, h } from '../../site/dom.ts';
+import { button, choices, h, paged, toggle } from '../../site/dom.ts';
 import { modal } from '../../site/modal.ts';
-import { pill, slide } from '../../site/tabs.ts';
+import { PAD, pill, slide } from '../../site/tabs.ts';
 
 afterEach(() => {
   document.body.replaceChildren();
@@ -100,7 +100,7 @@ test('a move begun before the last one ends leaves the oval behind the tab it we
   expect(pills(nav)).toHaveLength(4);
   await settled();
   await expect.poll(() => pills(nav)).toHaveLength(1);
-  expect(pills(nav).map((p) => p.style.left)).toEqual([`${(nav.querySelector('a')?.offsetLeft ?? 0) + 12}px`]);
+  expect(pills(nav).map((p) => p.style.left)).toEqual([`${(nav.querySelector('a')?.offsetLeft ?? 0) + PAD}px`]);
 });
 
 test('a slide changes the page at once with no direction, and marks its direction while it runs', async () => {
@@ -142,4 +142,49 @@ test('a dialog has a history entry of its own: the back button closes it, and cl
   await expect.poll(() => document.activeElement).toBe(opener);
   expect(dlg.open).toBe(false);
   await expect.poll((): unknown => history.state).toEqual(state); // back on the entry before the dialog's
+});
+
+test('a class list leaves out what is false, a style object sets each property, toggle sets one class', () => {
+  const el = h('p', { class: ['status', false, 'error', null], style: { '--w': '40%', color: 'red' } });
+  expect(el.getAttribute('class')).toBe('status error');
+  expect(el.style.getPropertyValue('--w')).toBe('40%');
+  expect(el.style.color).toBe('red');
+  toggle(el, 'muted', true);
+  toggle(el, 'error', false);
+  expect(el.getAttribute('class')).toBe('status muted');
+});
+
+test('a paged list adds the next page to the rows shown, and showing it again starts over', () => {
+  const list = h('ul', {}),
+    more = button({});
+  document.body.append(list, more);
+  const row = (n: number) => h('li', {}, String(n));
+  paged({ list, more }, [1, 2, 3, 4, 5], 2, row);
+  const first = list.firstElementChild;
+  expect([...list.children].map((li) => li.textContent)).toEqual(['1', '2']);
+  expect(more.textContent).toBe('Show 2 more');
+  more.click();
+  more.click();
+  expect([...list.children].map((li) => li.textContent)).toEqual(['1', '2', '3', '4', '5']);
+  expect(list.firstElementChild).toBe(first); // the rows shown stay as they are
+  expect(more.hidden).toBe(true);
+  paged({ list, more }, [9], 2, row);
+  more.click(); // the old list's listener is gone: nothing more to add
+  expect([...list.children].map((li) => li.textContent)).toEqual(['9']);
+});
+
+test('a select of choices gives back the picked option as the value it was built with', () => {
+  const picked: number[] = [];
+  const sel = choices(
+    [
+      [1, 'one'],
+      [12, 'twelve'],
+    ],
+    1,
+    (v) => picked.push(v),
+  );
+  document.body.append(sel);
+  sel.selectedIndex = 1;
+  sel.dispatchEvent(new Event('change'));
+  expect(picked).toEqual([12]); // a number, not the option's text
 });

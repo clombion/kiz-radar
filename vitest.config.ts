@@ -5,6 +5,14 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
+    // the modules of pure logic, which run on values alone: each must be covered by the tests, line and branch
+    coverage: {
+      enabled: true,
+      provider: 'v8',
+      include: ['site/{days,fold,pricing,roles,routes,rows,wording}.ts'],
+      reporter: ['text-summary', 'text'],
+      thresholds: { perFile: true, lines: 95, branches: 90, functions: 95, statements: 95 },
+    },
     projects: [
       {
         test: {
