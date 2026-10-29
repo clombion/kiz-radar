@@ -4,6 +4,7 @@ import collections
 import contextlib
 import dataclasses
 import datetime as dt
+import html
 import json
 import re
 from collections.abc import Callable, Sequence
@@ -20,7 +21,9 @@ from pipeline.extract import answers, load_extract, prices
 from pipeline.records import (
     JSON,
     RECIPE,
+    ApiRecipe,
     Dispute,
+    Embedded,
     Failed,
     FirstRead,
     FirstReadAnswer,
@@ -891,6 +894,35 @@ TICKET: dict[str, object] = {
 def test_api_fields_read_a_ticket_and_its_page(field: FromJson | FromPage | FromText | None, value: str | None) -> None:
     ticket = JSON.validate_python(TICKET)
     assert tickets_reading.api_value(field, ticket, '<script>{"priceCurrency":"EUR"}</script>') == value
+
+
+def test_a_ticket_of_embedded_json_is_read_from_its_own_record() -> None:
+    """Kizzbee's page embeds its variations as JSON; one in stock listed before one sold out is in stock (a pattern
+    over the whole attribute ran on into the next variation)."""
+    variations = [
+        {'attributes': {'attribute_pa_pass': 'full-men'}, 'variation_id': 1, 'display_price': 95, 'is_in_stock': True},
+        {
+            'attributes': {'attribute_pa_pass': 'full-women'},
+            'variation_id': 2,
+            'display_price': 90,
+            'is_in_stock': False,
+        },
+    ]
+    page = (
+        f'<form class="variations_form" data-product_variations="{html.escape(json.dumps(variations))}">'
+        '<option value="full-men">Full Pass Men</option><option value="full-women">Full Pass Women</option></form>'
+        '<script>{"priceCurrency":"EUR"}</script>'
+    )
+    recipe = tickets_store.sites()['kizzbee'].recipe
+    assert isinstance(recipe, ApiRecipe)
+    assert isinstance(recipe.api, Embedded)
+    found = re.search(recipe.api.json_, page)
+    assert found is not None
+    rows = [tickets_reading.parsed(r) for r in tickets_reading.json_rows(html.unescape(found[1]), recipe, page, PAGE)]
+    assert [(r['key'], r['name'], r['amount'], r['currency'], r['sold_out']) for r in rows] == [
+        ('1', 'Full Pass Men', 95.0, 'EUR', False),
+        ('2', 'Full Pass Women', 90.0, 'EUR', True),
+    ]
 
 
 def test_a_recipe_reads_the_page_or_the_api_never_a_mix() -> None:

@@ -5,6 +5,7 @@ import datetime as dt
 import re
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, replace
+from html import unescape
 from typing import Literal
 
 from pydantic import TypeAdapter, ValidationError
@@ -15,6 +16,7 @@ from pipeline.enums import CallCause, Status
 from pipeline.records import (
     JSON,
     ApiRecipe,
+    Embedded,
     Failed,
     FromJson,
     FromPage,
@@ -97,8 +99,11 @@ def fill(template: str, match: re.Match[str], url: str) -> str:
 
 
 def dotted(value: Json, path: str) -> Json:
-    for part in path.split('.'):
-        value = value.get(part) if isinstance(value, dict) else None
+    """The value at a dotted path ('' is the value itself); * is any key of a dict, its first."""
+    for part in path.split('.') if path else ():
+        if not isinstance(value, dict):
+            return None
+        value = next(iter(value.values()), None) if part == '*' else value.get(part)
     return value
 
 
@@ -119,31 +124,43 @@ def api_value(f: FromJson | FromPage | FromText | None, item: Json, html: str) -
         case FromJson():
             v = as_text(dotted(item, f.json_))
         case FromPage():
-            v = first_group(f.page, html)
+            pattern = re.sub(r'\{([A-Za-z_][\w.*-]*)\}', lambda m: re.escape(as_text(dotted(item, m[1])) or ''), f.page)
+            v = None if (found := first_group(pattern, html)) is None else unescape(found)
         case FromText():
             v = re.sub(r'\{([\w.]+)\}', lambda m: as_text(dotted(item, m[1])) or '', f.text)
     return first_group(f.match, v) if v is not None and f.match else v
 
 
 def api_rows(page: str, recipe: ApiRecipe) -> tuple[int, str, list[dict[str, str | None]]]:
-    """(HTTP status, the API's address, the tickets as read_page.rows() gives rows) for a site whose page carries no
-    ticket ids but whose API does: the event's id from the page, then each ticket of the API's list."""
+    """(HTTP status, the address read, the tickets as read_page.rows() gives rows) for a site whose tickets come as
+    JSON: each ticket of its API's list (the event's id from the page, then the API), or of the list its page embeds."""
     from curl_cffi import requests
 
     html = requests.get(page, impersonate='chrome', timeout=60)
     html.raise_for_status()
-    if not (m := re.search(recipe.api.id, html.text)):
-        raise LookupError(f'no event id on {page}')
-    url = recipe.api.url.replace('{id}', m[1])
-    response = requests.get(url, impersonate='chrome', timeout=60)
-    if response.status_code >= HTTP_ERROR:
-        return response.status_code, url, []
+    if isinstance(recipe.api, Embedded):
+        if not (m := re.search(recipe.api.json_, html.text)):
+            raise LookupError(f'no tickets in JSON on {page}')
+        status, url, text = html.status_code, page, unescape(m[1])
+    else:
+        if not (m := re.search(recipe.api.id, html.text)):
+            raise LookupError(f'no event id on {page}')
+        url = recipe.api.url.replace('{id}', m[1])
+        response = requests.get(url, impersonate='chrome', timeout=60)
+        if response.status_code >= HTTP_ERROR:
+            return response.status_code, url, []
+        status, text = response.status_code, response.text
+    return status, url, json_rows(text, recipe, html.text, url)
+
+
+def json_rows(text: str, recipe: ApiRecipe, html: str, where: str) -> list[dict[str, str | None]]:
+    """The tickets of a JSON text by the recipe, as read_page.rows() gives rows: each of its list, read on its own
+    (html is the festival's page, which page fields read)."""
     try:
-        items = LIST.validate_python(dotted(JSON.validate_json(response.content), recipe.api.items))
+        items = LIST.validate_python(dotted(JSON.validate_json(text), recipe.api.items))
     except ValidationError as e:
-        raise ValueError(f'{url}: no list of tickets at {recipe.api.items} in its JSON') from e
-    fields = recipe.fields.named()
-    return response.status_code, url, [{k: api_value(f, item, html.text) for k, f in fields} for item in items]
+        raise ValueError(f'{where}: no list of tickets at {recipe.api.items!r} in its JSON') from e
+    return [{k: api_value(f, item, html) for k, f in recipe.fields.named()} for item in items]
 
 
 @dataclass(frozen=True)

@@ -210,10 +210,11 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   as `{field}` and its attributes as `{@attr}`: Tikoria's ticket ids sit in its script data next to each ticket's name,
   and Kizzbee's prices in a JSON attribute keyed by each option's value. A recipe names the reseller when the site sells
   other organisers' festivals at its own prices (Kizzbee); it is used only when the festival sells nowhere else, and the
-  passes view says so. A site whose page carries no ticket ids but whose API does (go&dance) gets an API recipe: the
-  event's id found on its page, the API's address, and each field a path into a ticket's JSON, a pattern on the page, or
-  a text built from JSON values; it reads with plain requests, no browser. An agent writes one per site; FairPlay's
-  needs a visible browser (it is behind a browser check).
+  passes view says so. A site whose tickets come as JSON gets an API recipe: from its API (go&dance: the event's id
+  found on its page, then the API's address), or embedded in its page (Kizzbee's variations); each field is a path into
+  a ticket's JSON, a pattern on the page that may name the ticket's values, or a text built from them, so that each
+  ticket is read from its own record. It reads with plain requests, no browser; an empty list is a page that lists
+  nothing. An agent writes one per site; FairPlay's needs a visible browser (it is behind a browser check).
 - **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`, a `LogEntry` a line, checked on every write and read)
   gets one entry per read: `read` with every row, `refused` (no rows and an HTTP error), `unreachable` (the page could
   not be reached or would not load), or `layout_broken` (the recipe's selectors fail, no rows, two rows with one key, or

@@ -544,13 +544,19 @@ class Find(Record):
 
 class FromJson(Record):
     json_: Text = Field(
-        validation_alias='json', serialization_alias='json', description='A dotted path into the ticket.'
+        validation_alias='json',
+        serialization_alias='json',
+        description='A dotted path into the ticket; * is any key, the first (an attribute each product names).',
     )
     match: Text | None = None
 
 
 class FromPage(Record):
-    page: Text = Field(description="A pattern on the festival's page (its first group).")
+    page: Text = Field(
+        description="A pattern on the festival's page (its first group, its HTML entities read); {path} names the "
+        "ticket's value at a dotted path, matched as it is written (a name starting with a letter, so {3} stays a "
+        'count).'
+    )
     match: Text | None = None
 
 
@@ -644,11 +650,21 @@ class PageRecipe(Site):
     fields: Fields[Find]
 
 
+class Embedded(Record):
+    """When the site's page carries its tickets as JSON (an attribute's, a script's): a pattern whose first group is
+    that JSON as the page writes it (its HTML entities read), and the dotted path to the list in it, empty when the
+    JSON is the list."""
+
+    json_: Text = Field(validation_alias='json', serialization_alias='json')
+    items: str
+
+
 class ApiRecipe(Site):
-    """A site whose API gives its tickets."""
+    """A site whose tickets come as JSON: from its API, or embedded in its page; each ticket is a record of its own,
+    which no field's pattern can read past."""
 
     row: None
-    api: Api
+    api: Api | Embedded
     fields: Fields[ApiFind]
 
 
