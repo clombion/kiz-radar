@@ -12,7 +12,7 @@ import pytest
 from pydantic import BaseModel
 
 import pipeline
-from pipeline import ROOT, export, prompt, tickets
+from pipeline import ROOT, export, prompt, tickets_store
 from pipeline import db as sqlite_db
 from pipeline.db import Transaction
 from pipeline.records import ANSWERS, CsvRow
@@ -26,7 +26,7 @@ WHEN_ROWS = {'meta': "key != 'built_at'"}
 
 # everything the steps read beside the export: every CSV file, the answers, the ticket reads and their log, and the
 # prompts they followed
-EVERYTHING = (*(r.FILE for r in CsvRow.records()), ANSWERS, tickets.READS, tickets.LOG, prompt.ASKED)
+EVERYTHING = (*(r.FILE for r in CsvRow.records()), ANSWERS, tickets_store.READS, tickets_store.LOG, prompt.ASKED)
 
 
 def committed(*paths: str) -> None:

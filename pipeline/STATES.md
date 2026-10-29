@@ -28,19 +28,19 @@ thing a consumer must treat differently.
 
 | Data point | States | Produced by |
 | -- | -- | -- |
-| **page_read**, each logged attempt to read a ticket page | `read`, `refused`, `unreachable`, `layout_broken` | tickets.attempt |
+| **page_read**, each logged attempt to read a ticket page | `read`, `refused`, `unreachable`, `layout_broken` | tickets_reading.attempt |
 | **call_cause**, each call that gave no answer, by what kept it from one (pipeline/calls.py); a ticket page's own failures are page_read states | `checker`, `truncated`, `transient`, `structural`, `budget` | calls |
 | **sales**, a festival with no full link to its ticket page, as an agent found it (tickets/pages.csv) | `shop`, `not_yet`, `offline`, `closed`, `none_found` | tickets.py page --state |
-| **ticket**, each ticket of a read ticket page | `in_tier`, `skipped`, `unread` | the first read; tickets.unread_keys |
+| **ticket**, each ticket of a read ticket page | `in_tier`, `skipped`, `unread` | the first read; tickets_store.unread_keys |
 | **skip_reason**, each ticket a first read skips | `room`, `class`, `competition`, `merchandise`, `food_drink`, `excursion`, `fee`, `deposit`, `discount`, `donation`, `not_public`, `no_amount` | the first read |
 | **pass_kind**, each pass a festival sells | `full`, `party`, `day`, `workshop`, `package`, `other` | the prices pass; the first read |
 | **style**, a dance style: of a festival, by its genres, or the one a pass is limited to (null: all the festival's styles) | `kizomba`, `zouk`, `bachata`, `salsa`, `other` | prices.styles; the prices pass; the first read |
 | **people**, each pass, by how many people one price is for | `one`, `couple`, `group`, `per_room` | prices.people, from group_size and kind |
 | **fee**, each price tier, by its booking fee | `none`, `included` | the prices pass; the first read |
-| **re_read**, a festival with a first read, by when its page is read again | `dated`, `monthly` | tickets.recheck |
-| **first_read**, a festival, by whether it needs a (new) first read | `not_needed`, `none`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_page`, `redo_unread`, `disputed` | tickets.why_first_read |
+| **re_read**, a festival with a first read, by when its page is read again | `dated`, `monthly` | tickets_store.recheck |
+| **first_read**, a festival, by whether it needs a (new) first read | `not_needed`, `none`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_page`, `redo_unread`, `disputed` | tickets_state.why_first_read |
 | **answer**, a festival's answer of one extraction pass | `none`, `current`, `stale` | ask.answer_state |
-| **waits_for**, each festival, by what its prices from its ticket page wait for | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | tickets.waiting, in tickets/status.csv |
+| **waits_for**, each festival, by what its prices from its ticket page wait for | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | tickets_state.waiting, in tickets/status.csv |
 | **price**, each festival, by what its card can say of its price | `priced`, `other_passes_only`, `page_unread`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | prices.price_state, in price_status |
 | **tier_today**, a pass's price on the day it is viewed | `now`, `from`, `next`, `sold_out`, `ended` | pricing.ts tierNow |
 | **card_price**, a priced festival, by what its card says on the day it is viewed | `full_pass`, `package`, `sold_out`, `ended` | pricing.ts cardPrice |

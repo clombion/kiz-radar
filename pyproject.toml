@@ -94,6 +94,7 @@ ignore = [
 # their imports inside functions keep each step to its own dependency group (pyproject.toml)
 "pipeline/read_page.py" = ["PLC0415"]
 "pipeline/tickets.py" = ["PLC0415"]
+"pipeline/tickets_reading.py" = ["PLC0415"]
 "tests/test_tickets.py" = ["PLC0415"]
 # written from pipeline/states.py: FULL_PASS is a ticket, no password; a line is as long as its state's key
 "pipeline/enums.py" = ["S105", "E501"]

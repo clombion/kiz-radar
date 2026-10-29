@@ -21,7 +21,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from pipeline import claims, data, tables, tickets
+from pipeline import claims, data, tables, tickets_state, tickets_store
 from pipeline import prompt as prompts
 from pipeline.claims import SiteClaim
 from pipeline.extract import answers
@@ -56,7 +56,7 @@ def refused(event_ids: set[int]) -> list[str]:
                 _ = prompts.answer(pass_).parse(path.read_bytes())
             except ValidationError as e:
                 out += errors(e, shown(path))
-    for path in sorted(data(tickets.READS).glob('*.json')):
+    for path in sorted(data(tickets_store.READS).glob('*.json')):
         if prompts.is_current('first_read', Stamped.model_validate_json(path.read_bytes()).prompt):
             try:
                 _ = FirstRead.parse(path.read_bytes())
@@ -65,17 +65,17 @@ def refused(event_ids: set[int]) -> list[str]:
     return out
 
 
-def stale(fs: Sequence[tickets.Festival], known: dict[str, tickets.Site]) -> list[tuple[SiteClaim, str]]:
+def stale(fs: Sequence[tickets_state.Festival], known: dict[str, tickets_store.Site]) -> list[tuple[SiteClaim, str]]:
     """(site claim, why) for each site claim that departs from nothing any more: a recipe reads its site now, or no
-    festival has its known ticket page there; fs is every festival (tickets.festivals(every=True)), known
-    tickets.sites()."""
+    festival has its known ticket page there; fs is every festival (tickets_state.festivals(every=True)), known
+    tickets_store.sites()."""
     on: defaultdict[str, list[int]] = defaultdict(list)
     for f in fs:
         if f.page:
-            on[tickets.host(f.page.url)].append(f.id)
+            on[tickets_state.host(f.page.url)].append(f.id)
     out: list[tuple[SiteClaim, str]] = []
     for o in claims.sites().values():
-        if site := tickets.site_for(f'https://{o.host}/', known):
+        if site := tickets_store.site_for(f'https://{o.host}/', known):
             out.append(
                 (o, f'the recipe {site.version} reads it (festivals {", ".join(map(str, on[o.host])) or "none"})')
             )
@@ -89,9 +89,9 @@ def main() -> None:
         description='Name each value in the data its record refuses (a value that is no state of '
         'pipeline/states.py, say), and each site claim (pipeline/claims.py) that departs from nothing any more.'
     ).parse_args()
-    with tickets.src_db() as db:
+    with tickets_state.src_db() as db:
         bad = refused(set(db.column(int, 'SELECT id FROM events')))
-        old = stale(tickets.festivals(db, today(), every=True), tickets.sites())
+        old = stale(tickets_state.festivals(db, today(), every=True), tickets_store.sites())
     for line in bad:
         print(f'refused: {line}', file=sys.stderr)
     for o, why in old:

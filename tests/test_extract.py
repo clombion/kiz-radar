@@ -19,7 +19,7 @@ import pytest
 from anthropic.types import Message
 from pydantic import BaseModel, Field, ValidationError
 
-from pipeline import calls, data, db, enums, export, generate, prompt, records, spend, states, tickets
+from pipeline import calls, data, db, enums, export, generate, prompt, records, spend, states, tickets_store
 from pipeline.calls import Declined
 from pipeline.db import Db, Transaction
 from pipeline.enums import AnswerState, ArtistKind, CallCause, MergeDecision, MergeReason, Model, PassKind, Role, Style
@@ -578,9 +578,9 @@ def export_prompts() -> set[str]:
 
 
 def test_every_prompt_the_answers_reads_and_export_name_is_archived_under_its_hash() -> None:
-    committed(Logged.FILE, tickets.READS, prompt.ASKED)
+    committed(Logged.FILE, tickets_store.READS, prompt.ASKED)
     named = {r.prompt for r in answers.log().values()}
-    named |= {Stamped.model_validate_json(p.read_bytes()).prompt for p in data(tickets.READS).glob('*.json')}
+    named |= {Stamped.model_validate_json(p.read_bytes()).prompt for p in data(tickets_store.READS).glob('*.json')}
     named |= export_prompts()
     archived = {p.stem: p.read_text(encoding='utf-8') for p in data(prompt.ASKED).glob('*.md') if p.name != 'README.md'}
     assert named <= set(archived)

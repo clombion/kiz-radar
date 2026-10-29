@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import audit, data, prompt, tickets
+from pipeline import audit, data, prompt, tickets_state, tickets_store
 from pipeline.enums import FirstRead, Model
 from pipeline.records import CsvRow, Logged, PageRecipe
 from tests.exports import committed, shaped
@@ -41,8 +41,8 @@ def test_a_hand_edited_state_is_named_with_its_file_and_place(tmp_path: Path, mo
     assert audit.refused(set()) == found  # the same report each time
 
 
-def festival(page: str | None, **change: object) -> tickets.Festival:
-    base = tickets.Festival(
+def festival(page: str | None, **change: object) -> tickets_state.Festival:
+    base = tickets_state.Festival(
         id=1,
         title='F',
         start_date=dt.date(2027, 1, 1),
@@ -57,7 +57,7 @@ def festival(page: str | None, **change: object) -> tickets.Festival:
         log=(),
         tiers=(),
         described=None,
-        page=tickets.KnownPage(page, None) if page else None,
+        page=tickets_state.KnownPage(page, None) if page else None,
         disputed=False,
         need=FirstRead.NONE,
     )
@@ -67,22 +67,24 @@ def festival(page: str | None, **change: object) -> tickets.Festival:
 def test_an_override_is_stale_once_a_recipe_reads_its_site_or_no_festival_has_its_page_there() -> None:
     o = SITE_CLAIMS[0]
     others = [festival(f'https://{p.host}/e') for p in SITE_CLAIMS[1:]]
-    committed(tickets.SITES)
-    known = tickets.sites()
+    committed(tickets_store.SITES)
+    known = tickets_store.sites()
     assert audit.stale([*others, festival(f'https://{o.host}/e', over=True)], known) == []  # past festivals count
     assert [s for s, _ in audit.stale(others, known)] == [o]  # no festival uses the site
     weezevent = known['weezevent']
     assert isinstance(weezevent.recipe, PageRecipe)
     recipe = weezevent.recipe.model_copy(update={'hosts': (o.host,), 'site': 'x'})
-    stale = audit.stale([*others, festival(f'https://{o.host}/e')], known | {'x': tickets.Site(recipe, 'x@0123abcd')})
+    stale = audit.stale(
+        [*others, festival(f'https://{o.host}/e')], known | {'x': tickets_store.Site(recipe, 'x@0123abcd')}
+    )
     assert [s for s, _ in stale] == [o]
     assert 'festivals 1' in stale[0][1]
 
 
 def test_an_override_replaces_only_the_state_it_names() -> None:
     o = SITE_CLAIMS[0]
-    assert tickets.waiting(festival(f'https://{o.host}/e')) == o.then
-    assert tickets.waiting(festival(f'https://{o.host}/e', need=FirstRead.DISPUTED)) != o.then
+    assert tickets_state.waiting(festival(f'https://{o.host}/e')) == o.then
+    assert tickets_state.waiting(festival(f'https://{o.host}/e', need=FirstRead.DISPUTED)) != o.then
 
 
 def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
@@ -133,16 +135,16 @@ def test_the_audit_exits_1_naming_what_it_found_on_stderr(
 
     def festivals(
         db: sqlite3.Connection, today: str, only: int | None = None, *, every: bool = False
-    ) -> list[tickets.Festival]:
+    ) -> list[tickets_state.Festival]:
         return []
 
-    monkeypatch.setattr(audit.tickets, 'src_db', lambda: contextlib.nullcontext(db))
+    monkeypatch.setattr(audit.tickets_state, 'src_db', lambda: contextlib.nullcontext(db))
 
     def refused(ids: set[int]) -> list[str]:
         return ['pages.csv line 2: state: no state']
 
     monkeypatch.setattr(audit, 'refused', refused)
-    monkeypatch.setattr(audit.tickets, 'festivals', festivals)
+    monkeypatch.setattr(audit.tickets_state, 'festivals', festivals)
     monkeypatch.setattr('sys.argv', ['audit'])
     with pytest.raises(SystemExit) as e:
         audit.main()

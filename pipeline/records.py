@@ -824,7 +824,7 @@ class FoundRow(CsvRow):
     event: str
     state: Sales
     page: Blank[Url]
-    links: Blank[Hash]  # what a search that found nothing was of (tickets.links_hash)
+    links: Blank[Hash]  # what a search that found nothing was of (tickets_state.links_hash)
     found_by: Text
     note: Text
 

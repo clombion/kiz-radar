@@ -103,7 +103,7 @@ PAGE, PASSES = Link
 LINEUP, BOOKING, PRESENT = Counts
 
 POINTS = (
-    P('page_read', 'Status', 'each logged attempt to read a ticket page', 'tickets.attempt'),
+    P('page_read', 'Status', 'each logged attempt to read a ticket page', 'tickets_reading.attempt'),
     P(
         'call_cause',
         'CallCause',
@@ -117,7 +117,7 @@ POINTS = (
         'a festival with no full link to its ticket page, as an agent found it (tickets/pages.csv)',
         'tickets.py page --state',
     ),
-    P('ticket', 'Ticket', 'each ticket of a read ticket page', 'the first read; tickets.unread_keys'),
+    P('ticket', 'Ticket', 'each ticket of a read ticket page', 'the first read; tickets_store.unread_keys'),
     P('skip_reason', 'SkipReason', 'each ticket a first read skips', 'the first read'),
     P('pass_kind', 'PassKind', 'each pass a festival sells', 'the prices pass; the first read'),
     P(
@@ -129,14 +129,14 @@ POINTS = (
     ),
     P('people', 'People', 'each pass, by how many people one price is for', 'prices.people, from group_size and kind'),
     P('fee', 'Fee', 'each price tier, by its booking fee', 'the prices pass; the first read'),
-    P('re_read', 'Recheck', 'a festival with a first read, by when its page is read again', 'tickets.recheck'),
-    P('first_read', 'FirstRead', 'a festival, by whether it needs a (new) first read', 'tickets.why_first_read'),
+    P('re_read', 'Recheck', 'a festival with a first read, by when its page is read again', 'tickets_store.recheck'),
+    P('first_read', 'FirstRead', 'a festival, by whether it needs a (new) first read', 'tickets_state.why_first_read'),
     P('answer', 'AnswerState', "a festival's answer of one extraction pass", 'ask.answer_state'),
     P(
         'waits_for',
         'Waiting',
         'each festival, by what its prices from its ticket page wait for',
-        'tickets.waiting, in tickets/status.csv',
+        'tickets_state.waiting, in tickets/status.csv',
     ),
     P('price', 'Price', 'each festival, by what its card can say of its price', 'prices.price_state, in price_status'),
     P('tier_today', 'TierToday', "a pass's price on the day it is viewed", 'pricing.ts tierNow'),
