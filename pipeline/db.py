@@ -11,6 +11,7 @@ pipeline/export.py."""
 
 import argparse
 import datetime as dt
+import functools
 import sqlite3
 from collections.abc import Generator, Iterable, Mapping, Sequence
 from contextlib import contextmanager
@@ -53,6 +54,12 @@ class Made(BaseModel):
     sql: str
 
 
+@functools.cache
+def adapter_of[T](kind: type[T]) -> TypeAdapter[T]:
+    """A type's validator, built once: building one costs more than reading most columns."""
+    return TypeAdapter(kind)
+
+
 class Reader:
     """What any use of a database may do: read rows, each as a record."""
 
@@ -75,7 +82,7 @@ class Reader:
         if len(cursor.description) != 1:
             raise ValueError(f'a column is one: {[d[0] for d in cursor.description]}')
         fetched: list[tuple[object]] = cursor.fetchall()
-        adapter = TypeAdapter(kind)
+        adapter = adapter_of(kind)
         return [adapter.validate_python(v, strict=False) for (v,) in fetched]
 
     def value[T](self, kind: type[T], sql: str, params: Sequence[object] = ()) -> T:
