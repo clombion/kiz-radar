@@ -45,6 +45,7 @@ jobs:
     outputs:
       scrape: ${{ steps.scrape.outcome }}
       tickets: ${{ steps.tickets.outcome }}
+      handed: ${{ steps.handed.outcome == 'success' }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
         with:
@@ -54,27 +55,33 @@ jobs:
         id: scrape
         if: ${{ !inputs.festivals }}
         continue-on-error: true   # each event is written as it is read; one whose page gave no answer waits
+        timeout-minutes: 40
         run: mise run scrape
       - name: Install a browser for ticket pages (the runner has a virtual display, xvfb)
         run: uv run -q --group browser patchright install --with-deps chromium
       - name: Read ticket pages
         id: tickets
         continue-on-error: true
+        timeout-minutes: 30
         run: xvfb-run -a mise run tickets -- run --part pages ${ONLY:+--only "$ONLY"}
-      - uses: ./.github/actions/handoff
+      - id: handed
+        uses: ./.github/actions/handoff
+        if: ${{ !cancelled() }}   # what was read, even when a step failed or ran out of time
         with:
           mode: give
           name: read
 
   ask:
     needs: read
+    if: ${{ !cancelled() && needs.read.outputs.handed == 'true' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 100
     permissions:
       contents: read
     outputs:
       ask: ${{ steps.ask.outcome }}
       tickets: ${{ steps.tickets.outcome }}
+      handed: ${{ steps.handed.outcome == 'success' }}
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
@@ -89,18 +96,23 @@ jobs:
       - name: Ask Claude about new and changed festivals
         id: ask
         continue-on-error: true
+        timeout-minutes: 60   # each answer is saved as it comes
         run: mise run ask -- ${LIMIT:+--limit "$LIMIT"} ${ONLY:+--only "$ONLY"}
       - name: First-read the ticket pages read today
         id: tickets
         continue-on-error: true
+        timeout-minutes: 25
         run: mise run tickets -- run --part models ${LIMIT:+--limit "$LIMIT"} ${ONLY:+--only "$ONLY"}
-      - uses: ./.github/actions/handoff
+      - id: handed
+        uses: ./.github/actions/handoff
+        if: ${{ !cancelled() }}   # the answers paid for, even when a step failed or ran out of time
         with:
           mode: give
           name: asked
 
   commit:
     needs: [read, ask]
+    if: ${{ !cancelled() && needs.ask.outputs.handed == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
