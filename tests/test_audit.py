@@ -12,7 +12,7 @@ import pytest
 
 from pipeline import audit, data, prompt, tickets_state, tickets_store
 from pipeline.enums import FirstRead, Model
-from pipeline.records import CsvRow, Logged, PageRecipe
+from pipeline.records import ANSWERS, CsvRow, Logged, PageRecipe
 from tests.exports import committed, shaped
 from tests.fakes import AT, SITE_CLAIMS, Memory
 
@@ -114,6 +114,16 @@ def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
     found = [f for f in audit.refused({1, 2}) if 'event-' in f]
     assert len(found) == 1
     assert 'event-1.json: events/0/features/0/feature: Input should be' in found[0]
+
+
+def test_an_answer_file_the_log_has_no_row_for_is_named() -> None:
+    root = copied()
+    path = root / ANSWERS / 'prices' / 'event-99999.json'
+    path.parent.mkdir(parents=True, exist_ok=True)
+    _ = path.write_text('{"batch": "event-99999", "events": []}')
+    assert audit.refused(set()) == [
+        f'{ANSWERS}/prices/event-99999.json: no row in {Logged.FILE}; it answers nothing until asked again'
+    ]
 
 
 def test_an_empty_value_is_allowed_only_where_its_column_allows_it(

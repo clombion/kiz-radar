@@ -73,7 +73,7 @@ from pipeline.countries import codes
 from pipeline.db import Reader, Transaction
 from pipeline.enums import ArtistKind, ClaimState, MergeDecision, MergeReason, Model, Role, Via
 from pipeline.extract import run_log
-from pipeline.extract.answers import log, logged
+from pipeline.extract.answers import log
 from pipeline.extract.prices import COUPLE
 from pipeline.names import norm, sim
 from pipeline.records import ANSWERS, Group, MergeReview, Record
@@ -318,13 +318,15 @@ class Resolved(NamedTuple):
 def record_steps(con: Transaction, resolved: Resolved, decided: Claimed) -> None:
     n_mentions, kinds_count, n_candidates, n_unsupported, n_groups = resolved
     run_log.document(con, TABLE_DOCS, 'pipeline/extract/resolve_artists.py')
-    reviews = sorted((data(ANSWERS) / 'merge_review').glob('*.json'))
+    followed = log()  # a review the log has no row for answered nothing yet (answers.unlogged)
+    reviews = [
+        f for f in sorted((data(ANSWERS) / 'merge_review').glob('*.json')) if f'merge_review/{f.name}' in followed
+    ]
     if reviews:
         counts: defaultdict[str, defaultdict[str, int]] = defaultdict(lambda: defaultdict(int))
-        followed = log()
         for f in reviews:
             for d in MergeReview.parse(f.read_bytes()).decisions:
-                counts[logged(followed, f'merge_review/{f.name}').prompt][d.decision] += 1
+                counts[followed[f'merge_review/{f.name}'].prompt][d.decision] += 1
         for h in counts:
             run_log.record_prompt(con, h)
         run_log.record(
@@ -336,7 +338,7 @@ def record_steps(con: Transaction, resolved: Resolved, decided: Claimed) -> None
                 'unmerged). Decisions are written to pipeline/extract/merges.csv, as model claims: an admin claim on a '
                 'pair comes first.',
                 f'{len(reviews)} subagents ({REVIEWER}), one batch each',
-                performed_at=max(logged(followed, f'merge_review/{f.name}').answered_at for f in reviews),
+                performed_at=max(followed[f'merge_review/{f.name}'].answered_at for f in reviews),
                 model=REVIEWER,
                 prompt=', '.join(sorted(counts)),
                 inputs='each pair with every mention of both sides',

@@ -81,6 +81,19 @@ def test_the_actions_take_their_tools_from_mise() -> None:
     assert found == []
 
 
+def test_a_file_is_written_only_whole() -> None:
+    """Every file a step replaces goes through pipeline/files.py, whole or not at all; a log only appends a line."""
+    writes = re.compile(r"\.write_(?:text|bytes)\(|\.open\(\s*'w|\bopen\([^)]*,\s*'w")
+    found = [
+        f'{p.relative_to(ROOT)}:{n}'
+        for p in sorted((ROOT / 'pipeline').rglob('*.py'))
+        if p != ROOT / 'pipeline' / 'files.py'
+        for n, line in enumerate(p.read_text(encoding='utf-8').splitlines(), 1)
+        if writes.search(line)
+    ]
+    assert found == []
+
+
 def test_the_steps_and_the_checks_check_the_claims_out() -> None:
     """claims/ is a submodule (pipeline/claims.py): the steps, which every Action that runs one takes, and the checks
     (the audit) read it, and a checkout without it finds no admin claim."""

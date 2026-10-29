@@ -24,7 +24,7 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from pipeline import airports, data, enums, export, states
+from pipeline import airports, data, enums, export, files, states
 from pipeline import db as sqlite_db
 from pipeline.countries import NAMES, codes
 from pipeline.db import Reader, Transaction
@@ -994,7 +994,7 @@ def main() -> None:
     _ = ap.parse_args()
     out = data(OUT)
     site = build(export.path(), out)
-    _ = data(SITE_JSON).write_text(json.dumps(site, ensure_ascii=False, indent=1), encoding='utf-8')
+    files.write(data(SITE_JSON), json.dumps(site, ensure_ascii=False, indent=1))
     print(OUT, out.stat().st_size // 1024, 'KB')
 
 

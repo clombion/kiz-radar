@@ -14,7 +14,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, ConfigDict
 
-from pipeline import data
+from pipeline import data, files
 from pipeline import prompt as prompts
 from pipeline.enums import Model
 from pipeline.prompt import Pass, Prompt
@@ -48,14 +48,14 @@ def log() -> dict[str, Logged]:
     return {r.file: r for r in Logged.read()}
 
 
-def logged(known: dict[str, Logged], rel: str) -> Logged:
-    """The log's row for an answer file (rel, relative to answers/), which every answer file has."""
-    if rel not in known:
-        raise SystemExit(f'{rel} is not in {Logged.FILE}')
-    return known[rel]
+def unlogged() -> list[Path]:
+    """Answer files the log has no row for: saved by a run stopped before it logged them; no answer of anything, so
+    asked again, and named by the audit."""
+    known = log()
+    return [p for p in sorted(data(ANSWERS).glob('*/*.json')) if str(p.relative_to(data(ANSWERS))) not in known]
 
 
-def files(pass_name: str) -> list[Path]:
+def answer_files(pass_name: str) -> list[Path]:
     """The pass's answer files, batches first, so a festival's own file is read after the batch that had it."""
     folder = data(ANSWERS) / pass_name
     return sorted(folder.glob('*.json'), key=lambda p: (p.name.startswith('event-'), p.name))
@@ -65,8 +65,9 @@ def answered(pass_name: str, event_ids: set[int]) -> dict[int, tuple[Path, Logge
     """The file of the newest answer for each of these festivals, and its log row, in the order they were read."""
     known: dict[str, Logged] = log()
     out: dict[int, tuple[Path, Logged]] = {}
-    for path in files(pass_name):
-        meta = logged(known, str(path.relative_to(data(ANSWERS))))
+    for path in answer_files(pass_name):
+        if (meta := known.get(str(path.relative_to(data(ANSWERS))))) is None:
+            continue  # unlogged: no answer yet
         for entry in Listed.model_validate_json(path.read_bytes()).events:
             if entry.event_id in event_ids:
                 _ = out.pop(entry.event_id, None)  # a newer answer moves to the end
@@ -93,8 +94,7 @@ def save[E: Entry](pass_name: str, output: Batch[E], model: Model, prompt: Promp
     (entry,) = output.events
     _ = prompt.archive()
     path = data(ANSWERS) / pass_name / f'event-{entry.event_id}.json'
-    path.parent.mkdir(parents=True, exist_ok=True)
-    _ = path.write_text(output.dumped(), encoding='utf-8')
+    files.write(path, output.dumped())  # then its log row: an answer saved but not logged is asked again
     rows = log()
     rel = str(path.relative_to(data(ANSWERS)))
     rows[rel] = Logged(

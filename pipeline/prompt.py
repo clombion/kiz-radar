@@ -15,12 +15,11 @@ hash it answered, and is current while is_current(name, hash). Whatever writes o
 """
 
 import json
-import tempfile
 from dataclasses import dataclass
 from functools import cache, cached_property
 from pathlib import Path
 
-from pipeline import ROOT, data, records, states
+from pipeline import ROOT, data, files, records, states
 from pipeline.records import (
     Asked,
     AskedPrices,
@@ -134,15 +133,11 @@ class Prompt:
         return records.digest(self.text)
 
     def archive(self) -> Path:
-        """Save the prompt's text under its hash, unless the file there already holds it: written whole beside it,
-        then renamed, so no reader sees part of it."""
+        """Save the prompt's text under its hash, unless the file there already holds it."""
         path = data(ASKED) / f'{self.hash}.md'
         if path.exists() and records.digest(path.read_text(encoding='utf-8')) == self.hash:
             return path
-        path.parent.mkdir(parents=True, exist_ok=True)
-        with tempfile.NamedTemporaryFile('w', encoding='utf-8', dir=path.parent, suffix='.part', delete=False) as f:
-            _ = f.write(self.text)
-        _ = Path(f.name).replace(path)
+        files.write(path, self.text)
         return path
 
 

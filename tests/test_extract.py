@@ -19,7 +19,20 @@ import pytest
 from anthropic.types import Message
 from pydantic import BaseModel, Field, ValidationError
 
-from pipeline import calls, data, db, enums, export, generate, prompt, records, spend, states, tickets_store
+from pipeline import (
+    calls,
+    data,
+    db,
+    enums,
+    export,
+    files,
+    generate,
+    prompt,
+    records,
+    spend,
+    states,
+    tickets_store,
+)
 from pipeline.calls import Declined
 from pipeline.db import Db, Transaction
 from pipeline.enums import AnswerState, ArtistKind, CallCause, MergeDecision, MergeReason, Model, PassKind, Role, Style
@@ -554,6 +567,33 @@ def test_an_answer_saved_archives_its_prompt_first() -> None:
     assert archived.read_text(encoding='utf-8') == p.text
     assert answers.log()['prices/event-5.json'].prompt == p.hash
     assert answers.current(prompt.PRICES, {5})[5].entry == out.events[0]
+
+
+def test_an_answer_saved_but_not_logged_answers_nothing_and_the_audit_names_it(answered_here: Path) -> None:
+    """A run stopped between the answer's file and its log row: the answer is asked again, and no reader stops."""
+    out = Batch[Priced].parse(prices_answer('Full pass 80€ until 31.01'))
+    _ = answers.save('prices', out, Model.CLAUDE_HAIKU_5_5, prompt.current('prices'), 'test')
+    Logged.write([])
+    assert answers.answered('prices', {5}) == {}
+    assert answers.unlogged() == [answered_here / 'prices' / 'event-5.json']
+
+
+def test_a_file_is_written_whole_or_not_at_all(tmp_path: Path) -> None:
+    path = tmp_path / 'written' / 'f.csv'
+    files.write(path, 'before\n')
+
+    class StoppedError(Exception):
+        pass
+
+    def stopped(_: int) -> None:  # the run stops once the text is written, before the file takes its name
+        raise StoppedError
+
+    with pytest.MonkeyPatch.context() as m:
+        m.setattr(files.os, 'fsync', stopped)
+        with pytest.raises(StoppedError):
+            files.write(path, 'after\n')
+    assert path.read_text() == 'before\n'
+    assert [p.name for p in path.parent.iterdir()] == ['f.csv']  # no part of the new one left beside it
 
 
 def test_only_an_answer_to_the_current_prompt_is_read_as_its_record(answered_here: Path) -> None:

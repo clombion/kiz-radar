@@ -74,7 +74,7 @@ from typing import NamedTuple
 import anthropic
 from pydantic import ValidationError
 
-from pipeline import calls, data, states
+from pipeline import calls, data, files, states
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.calls import Declined
@@ -249,7 +249,7 @@ def keep(event_id: int, entry: Read, reads: Mapping[Model, FirstRead]) -> None:
         return
     path.parent.mkdir(parents=True, exist_ok=True)
     prompt = prompts.current('first_read').hash
-    _ = path.write_text(ModelReads(rows_at=entry.at, prompt=prompt, reads=dict(reads)).dumped(), encoding='utf-8')
+    files.write(path, ModelReads(rows_at=entry.at, prompt=prompt, reads=dict(reads)).dumped())
 
 
 def models_read(
@@ -280,8 +280,7 @@ def models_read(
         return Declined(d.cause, f'{len(reads)} model read made ({d.why})')
     keep(f.id, entry, {})
     dispute = Dispute(rows_at=entry.at, prompt=prompts.current('first_read').hash, reads=reads)
-    data(DISPUTED).mkdir(parents=True, exist_ok=True)
-    _ = (data(DISPUTED) / f'{f.id}.json').write_text(dispute.dumped(), encoding='utf-8')
+    files.write(data(DISPUTED) / f'{f.id}.json', dispute.dumped())
     return dispute
 
 
@@ -363,9 +362,8 @@ def cmd_draft(db: sqlite_db.Reader, event_id: int) -> None:
         sys.exit(f'{event_id}: no read rows yet; run: mise run tickets -- read {event_id}')
     save_draft(draft_of(f, entry, 'agent'))
     asked = data(DRAFTS) / f'{event_id}.prompt.md'
-    _ = asked.write_text(
-        prompts.current('first_read').text + '\n======== the festival ========\n\n' + question(f, entry) + '\n',
-        encoding='utf-8',
+    files.write(
+        asked, prompts.current('first_read').text + '\n======== the festival ========\n\n' + question(f, entry) + '\n'
     )
     print(
         f'Fill passes, skipped and rule_quotes in {shown(path)} following {shown(asked)}, the prompt the models '

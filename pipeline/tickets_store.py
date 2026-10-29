@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 
 from pydantic import ValidationError
 
-from pipeline import data, states
+from pipeline import data, files, states
 from pipeline import prompt as prompts
 from pipeline.enums import PassKind, Recheck, SkipReason, Status, Style
 from pipeline.extract import check_output, prices
@@ -189,10 +189,9 @@ def draft(event_id: int) -> str | None:
 
 def save_draft(header: ReadHeader) -> None:
     """A first read to fill: the festival's header, its passes, skipped and rule quotes empty."""
-    data(DRAFTS).mkdir(parents=True, exist_ok=True)
     empty: dict[str, object] = {'passes': [], 'skipped': [], 'rule_quotes': []}
     text = json.dumps(header.model_dump(mode='json') | empty, ensure_ascii=False, indent=1)
-    _ = (data(DRAFTS) / f'{header.event_id}.json').write_text(text + '\n', encoding='utf-8')
+    files.write(data(DRAFTS) / f'{header.event_id}.json', text + '\n')
 
 
 def save_read(fr: FirstRead) -> None:
@@ -201,8 +200,7 @@ def save_read(fr: FirstRead) -> None:
     if fr.prompt != prompt.hash:
         raise ValueError(f'{fr.event_id}: a first read to prompt {fr.prompt}, not the current {prompt.hash}')
     _ = prompt.archive()
-    data(READS).mkdir(parents=True, exist_ok=True)
-    _ = (data(READS) / f'{fr.event_id}.json').write_text(fr.dumped(), encoding='utf-8')
+    files.write(data(READS) / f'{fr.event_id}.json', fr.dumped())
 
 
 def settle_dispute(event_id: int, fr: FirstRead) -> None:

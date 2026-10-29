@@ -21,7 +21,7 @@ from typing import Annotated, Literal, Self
 
 from pydantic import AfterValidator, Discriminator, Field, TypeAdapter, ValidationError, model_validator
 
-from pipeline import countries, data, states
+from pipeline import countries, data, files, states
 from pipeline.enums import ClaimSource, MergeDecision, Waiting
 from pipeline.records import MergeRow, Record, Stamp, Text, digest, errors
 
@@ -145,7 +145,7 @@ def parsed(path: Path) -> AnyClaim | list[str]:
     return c
 
 
-def files() -> list[Path]:
+def claim_files() -> list[Path]:
     return sorted(data(CLAIMS).glob('*.json'))
 
 
@@ -159,7 +159,7 @@ def admin() -> list[Made]:
         )
     out: list[Made] = []
     refused: list[str] = []
-    for path in files():
+    for path in claim_files():
         match parsed(path):
             case list() as why:
                 refused += why
@@ -201,12 +201,10 @@ def resolved(made: Iterable[Made]) -> dict[tuple[str, ...], Made]:
 
 def write(claims: Sequence[AnyClaim]) -> None:
     """Write admin claims into the claims repository, each as its file: one already there is left as it is."""
-    folder = data(CLAIMS)
-    folder.mkdir(parents=True, exist_ok=True)
     for c in claims:
-        path = folder / f'{digest(text(c))}.json'
+        path = data(CLAIMS) / f'{digest(text(c))}.json'
         if not path.exists():
-            _ = path.write_text(text(c), encoding='utf-8')
+            files.write(path, text(c))
 
 
 def sites() -> dict[str, SiteClaim]:

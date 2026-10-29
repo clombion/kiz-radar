@@ -12,6 +12,7 @@ amount and currency, a recipe reads rows from the page or from the site's API.
 import csv
 import datetime as dt
 import hashlib
+import io
 import re
 from collections.abc import Iterable
 from pathlib import Path
@@ -34,7 +35,7 @@ from pydantic import (
     model_validator,
 )
 
-from pipeline import data, tables
+from pipeline import data, files, tables
 from pipeline.enums import (
     ExtractedFeature,
     FareSearch,
@@ -765,11 +766,12 @@ class CsvRow(BaseModel):
 
     @classmethod
     def write(cls, rows: Iterable[Self]) -> None:
-        cls.path().parent.mkdir(parents=True, exist_ok=True)
-        with cls.path().open('w', encoding='utf-8', newline='') as f:
-            w = csv.DictWriter(f, cls.columns(), lineterminator='\n')
-            w.writeheader()
-            w.writerows(r.text() for r in rows)
+        """The file holding these rows, written whole (pipeline/files.py)."""
+        out = io.StringIO(newline='')
+        w = csv.DictWriter(out, cls.columns(), lineterminator='\n')
+        w.writeheader()
+        w.writerows(r.text() for r in rows)
+        files.write(cls.path(), out.getvalue())
 
     def append(self) -> None:
         """Add the row at the end of the file, which gets its header when it is new."""

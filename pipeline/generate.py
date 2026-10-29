@@ -13,7 +13,7 @@ import sys
 from collections.abc import Callable
 from pathlib import Path
 
-from pipeline import ROOT, states
+from pipeline import ROOT, files, states
 
 STATES_MD = ROOT / 'pipeline' / 'STATES.md'
 BEGIN = '<!-- generated from pipeline/states.py (states.points_table): mise run generate -->'
@@ -53,7 +53,7 @@ def main() -> None:
             )
         return
     for path in stale:
-        _ = path.write_text(FILES[path](), encoding='utf-8')
+        files.write(path, FILES[path]())
         print(f'wrote {path.relative_to(ROOT)}')
 
 
