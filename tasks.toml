@@ -175,7 +175,11 @@ to="${PRE_COMMIT_TO_REF:-$(git rev-parse HEAD)}"
 tree="$(mktemp -d)/check"
 git worktree add -q --detach "$tree" "$to"
 trap 'git worktree remove --force "$tree"' EXIT
-cd "$tree" && mise trust -q && mise run check
+# the claims at the commit's pin, from this clone's own copy of them (the audit reads them), with no fetch
+claims="$(git rev-parse --path-format=absolute --git-common-dir)/modules/claims"
+cd "$tree" && git submodule init -q claims && git config submodule.claims.url "$claims"
+git -c protocol.file.allow=always submodule update -q claims
+mise trust -q && mise run check
 """
 
 [check]
