@@ -18,6 +18,7 @@ from pipeline.db import Db, Reader
 from pipeline.enums import CallCause, Model, PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.enums import FirstRead as FirstReadState
 from pipeline.extract import answers, load_extract, prices
+from pipeline.read_page import Browsers
 from pipeline.records import (
     JSON,
     RECIPE,
@@ -423,13 +424,16 @@ def attempted(
     """attempt() on a page whose recipe finds these rows, or fails with this error."""
     from pipeline import read_page
 
-    def rows(url: str, recipe: PageRecipe, *, visible: bool | None) -> tuple[int, str, list[dict[str, str | None]]]:
+    def rows(
+        url: str, recipe: PageRecipe, browsers: read_page.Browsers, *, visible: bool | None
+    ) -> tuple[int, str, list[dict[str, str | None]]]:
         if error:
             raise error
         return 200, 'Tickets', list(raw)
 
     monkeypatch.setattr(read_page, 'rows', rows)
-    return tickets_reading.attempt(PAGE, SITE._replace(recipe=SITE.recipe.model_copy(update={'widget': None})))
+    site = SITE._replace(recipe=SITE.recipe.model_copy(update={'widget': None}))
+    return tickets_reading.attempt(PAGE, site, read_page.Browsers())
 
 
 def attempt_with(
@@ -1182,6 +1186,10 @@ def events(db: Db, *ids: int) -> Db:
     return db
 
 
+def no_append(event_id: int, entry_: LogEntry) -> None:
+    return None
+
+
 def no_status(db: Reader) -> collections.Counter[Waiting]:
     return collections.Counter()
 
@@ -1198,7 +1206,7 @@ def test_a_run_for_named_festivals_reads_only_them(
 
     asked: list[str] = []
 
-    def attempt(page: str, site: tickets_store.Site, *, visible: bool | None = None) -> LogEntry:
+    def attempt(page: str, site: tickets_store.Site, browsers: Browsers, *, visible: bool | None = None) -> LogEntry:
         asked.append(page)
         return Failed(at=AT, page=page, recipe=site.version, status=Status.REFUSED, why='HTTP 403')
 
@@ -1206,14 +1214,36 @@ def test_a_run_for_named_festivals_reads_only_them(
     monkeypatch.setattr(tickets, 'status', no_status)
     monkeypatch.setattr(tickets, 'attempt', attempt)
 
-    def append(event_id: int, entry_: LogEntry) -> None:
-        return None
-
-    monkeypatch.setattr(tickets, 'append', append)
+    monkeypatch.setattr(tickets, 'append', no_append)
     tickets.cmd_run(events(memory(), 6, 7, 8), {8, 6})  # 6 is past: nothing to read there
     assert asked == ['https://shop.example/8']
     with pytest.raises(SystemExit, match=r'\[9\]'):
         tickets.cmd_run(events(memory(), 6, 7, 8), {9})
+
+
+def test_a_run_reads_every_page_in_the_same_browsers(
+    memory: Memory, files: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Starting Chromium for each page costs seconds a page; a run starts its browsers once."""
+
+    def festivals(
+        db: Reader, today: str, only: int | None = None, *, every: bool = False
+    ) -> list[tickets_state.Festival]:
+        return [] if every else [festival(id=i, page=KnownPage(f'https://shop.example/{i}', SITE)) for i in (7, 8)]
+
+    used: list[Browsers] = []
+
+    def attempt(page: str, site: tickets_store.Site, browsers: Browsers, *, visible: bool | None = None) -> LogEntry:
+        used.append(browsers)
+        return Failed(at=AT, page=page, recipe=site.version, status=Status.REFUSED, why='HTTP 403')
+
+    monkeypatch.setattr(tickets, 'festivals', festivals)
+    monkeypatch.setattr(tickets, 'status', no_status)
+    monkeypatch.setattr(tickets, 'attempt', attempt)
+    monkeypatch.setattr(tickets, 'append', no_append)
+    tickets.cmd_run(events(memory(), 7, 8))
+    assert len(used) == 2
+    assert used[0] is used[1]
 
 
 def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_logged_rows(

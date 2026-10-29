@@ -81,6 +81,7 @@ from pipeline.calls import Declined
 from pipeline.enums import FirstRead as FirstReadState
 from pipeline.enums import Model, PassKind, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import ask
+from pipeline.read_page import Browsers
 from pipeline.records import (
     AGREE,
     Dispute,
@@ -339,7 +340,8 @@ def cmd_read(db: sqlite_db.Reader, event_id: int, url: str | None = None, *, vis
             f'{event_id}: no recipe for {host(url)}; write tickets/sites/<site>.json '
             '(its record: pipeline/records.py, Recipe) from the page, then read again'
         )
-    entry = attempt(url, site, visible=visible)
+    with Browsers() as browsers:
+        entry = attempt(url, site, browsers, visible=visible)
     if isinstance(entry, Declined):
         sys.exit(f'{event_id}: {entry.why}')
     append(event_id, entry)
@@ -507,8 +509,8 @@ class Run:
     that can be made nowhere here (no browser) stops the page reads; the month's budget, or a call to the models that
     cannot succeed as made, stops the first reads; limit bounds how many festivals the models read."""
 
-    def __init__(self, db: sqlite_db.Reader, today: dt.date, limit: int | None = None) -> None:
-        self.db, self.today, self.limit = db, today, limit
+    def __init__(self, db: sqlite_db.Reader, today: dt.date, browsers: Browsers, limit: int | None = None) -> None:
+        self.db, self.today, self.browsers, self.limit = db, today, browsers, limit
         self.client: ask.Client | None = None
         self.alarms: list[str] = []
         self.pages: Declined | None = None  # what stopped the page reads
@@ -539,7 +541,7 @@ class Run:
         """A new read of the festival's page, logged; None once the page reads have stopped."""
         if self.pages or not (f.page and f.page.site):
             return None
-        match attempt(f.page.url, f.page.site):
+        match attempt(f.page.url, f.page.site, self.browsers):
             case Declined() as d:
                 self.pages = d
                 self.alarms.append(f'{d.why}: no ticket page was read from here on')
@@ -592,13 +594,14 @@ def cmd_run(db: sqlite_db.Reader, ids: set[int] | None = None, limit: int | None
     every = set(db.column(int, 'select id from events'))
     if ids and (missing := ids - every):
         sys.exit(f'no such festival: {sorted(missing)}')
-    run = Run(db, day, limit)
-    for f in (f for f in festivals(db, day) if not ids or f.id in ids):
-        run.first_reads(run.reread(f))
-    for f in festivals(db, day, every=True):
-        redo = f.over and (not ids or f.id in ids) and f.need == FirstReadState.REDO_PROMPT
-        if redo and (entry := latest_read(f.log)):
-            run.make(f, entry)  # its page sells nothing any more; its logged rows still say what it sold
+    with Browsers() as browsers:
+        run = Run(db, day, browsers, limit)
+        for f in (f for f in festivals(db, day) if not ids or f.id in ids):
+            run.first_reads(run.reread(f))
+        for f in festivals(db, day, every=True):
+            redo = f.over and (not ids or f.id in ids) and f.need == FirstReadState.REDO_PROMPT
+            if redo and (entry := latest_read(f.log)):
+                run.make(f, entry)  # its page sells nothing any more; its logged rows still say what it sold
     run.alarms += recorded().problems
     counts = status(db)
     print('waits for: ' + '; '.join(f'{n} {w}' for w, n in counts.most_common()))

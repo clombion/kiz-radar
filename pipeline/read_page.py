@@ -30,7 +30,7 @@ from pydantic import TypeAdapter
 from pipeline.records import PageRecipe
 
 if TYPE_CHECKING:
-    from patchright.sync_api import Page
+    from patchright.sync_api import Browser, Page, Playwright
 
 RAW: TypeAdapter[list[dict[str, str | None]]] = TypeAdapter(list[dict[str, str | None]])
 
@@ -52,30 +52,56 @@ class NoBrowserError(Exception):
     """Chromium would not start: no read can be made here (see the module's notes on finding it)."""
 
 
+class Browsers(contextlib.AbstractContextManager['Browsers']):
+    """The Chromiums one run reads its pages with: a headless one and a visible one at most, each started at the first
+    page that needs it and closed with the run, every page in a context of its own (no cookies shared between pages).
+    NoBrowserError when one would not start; path is the Chromium to run (default: see the module's notes)."""
+
+    def __init__(self, path: str | None = None) -> None:
+        self.path = path
+        self.started: dict[bool, Browser] = {}
+        self.driver: Playwright | None = None
+
+    def __exit__(self, *_: object) -> None:
+        for b in self.started.values():
+            b.close()
+        if self.driver:
+            self.driver.stop()
+
+    def get(self, *, visible: bool) -> 'Browser':
+        from patchright.sync_api import Error, sync_playwright
+
+        if visible not in self.started:
+            self.driver = self.driver or sync_playwright().start()
+            try:
+                self.started[visible] = self.driver.chromium.launch(
+                    executable_path=self.path or chromium(), headless=not visible
+                )
+            except Error as e:
+                raise NoBrowserError(str(e).splitlines()[0]) from e
+        return self.started[visible]
+
+
 @contextlib.contextmanager
 def opened(
-    url: str, wait: int = 10, *, visible: bool = False, browser: str | None = None
+    url: str, browsers: Browsers, wait: int = 10, *, visible: bool = False
 ) -> Generator[tuple['Page', int | None, str]]:
     """(the page, its HTTP status, its title) once loaded and settled: UnreachableError when it would not load,
     NoBrowserError when no browser would start. visible needs a display (see on_display)."""
-    from patchright.sync_api import Error, sync_playwright
+    from patchright.sync_api import Error
 
-    with sync_playwright() as p:
+    context = browsers.get(visible=visible).new_context(locale='en-GB')
+    try:
+        page = context.new_page()
         try:
-            b = p.chromium.launch(executable_path=browser or chromium(), headless=not visible)
-        except Error as e:
-            raise NoBrowserError(str(e).splitlines()[0]) from e
-        try:
-            page = b.new_page(locale='en-GB')
-            try:
-                response = page.goto(url, wait_until='domcontentloaded', timeout=60000)
-                page.wait_for_timeout(wait * 1000)
-                title = page.title()
-            except Error as e:  # a timeout among them
-                raise UnreachableError(str(e).splitlines()[0]) from e
-            yield page, response.status if response else None, title
-        finally:
-            b.close()
+            response = page.goto(url, wait_until='domcontentloaded', timeout=60000)
+            page.wait_for_timeout(wait * 1000)
+            title = page.title()
+        except Error as e:  # a timeout among them
+            raise UnreachableError(str(e).splitlines()[0]) from e
+        yield page, response.status if response else None, title
+    finally:
+        context.close()
 
 
 def click_all(page: 'Page', selector: str) -> None:
@@ -97,7 +123,7 @@ def page_text(
     url: str, wait: int = 10, *, visible: bool = False, browser: str | None = None, screenshot: str | None = None
 ) -> tuple[str, int | None, str]:
     """(title, HTTP status, the page's text as shown)."""
-    with opened(url, wait, visible=visible, browser=browser) as (page, status, title):
+    with Browsers(browser) as browsers, opened(url, browsers, wait, visible=visible) as (page, status, title):
         out = title, status, page.inner_text('body')
         if screenshot:
             _ = page.screenshot(path=screenshot, full_page=True)
@@ -138,7 +164,7 @@ ROWS_JS = """([row, fields]) => {
 
 
 def rows(
-    url: str, recipe: PageRecipe, *, visible: bool | None = None, browser: str | None = None
+    url: str, recipe: PageRecipe, browsers: Browsers, *, visible: bool | None = None
 ) -> tuple[int | None, str, list[dict[str, str | None]]]:
     """(HTTP status, title, the page's ticket rows) read by a site recipe (pipeline/records.py, PageRecipe): each
     row maps the recipe's fields to the string found, or None. RecipeError is the recipe's failing on the page that
@@ -146,7 +172,7 @@ def rows(
     from patchright.sync_api import Error
 
     shown = recipe.visible if visible is None else visible
-    with opened(url, recipe.wait, visible=shown, browser=browser) as (page, status, title):
+    with opened(url, browsers, recipe.wait, visible=shown) as (page, status, title):
         try:
             if recipe.open:
                 click_all(page, recipe.open)

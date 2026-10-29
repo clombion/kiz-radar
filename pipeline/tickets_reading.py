@@ -6,7 +6,7 @@ import re
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, replace
 from html import unescape
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 
 from pydantic import TypeAdapter, ValidationError
 
@@ -30,6 +30,9 @@ from pipeline.records import (
     now,
 )
 from pipeline.tickets_store import Site, host
+
+if TYPE_CHECKING:
+    from pipeline.read_page import Browsers
 
 WHY_LENGTH = 300  # a failed read's why is cut to this many characters
 HTTP_ERROR = 400  # an HTTP status from this one up is an error
@@ -199,9 +202,9 @@ class Attempt:
         )
 
 
-def attempt(page: str, site: Site, *, visible: bool | None = None) -> LogEntry | Declined:
-    """One read of a ticket page, as its log entry; or, when no read can be made here at all (no browser would
-    start), why, which is no entry of the festival's log."""
+def attempt(page: str, site: Site, browsers: 'Browsers', *, visible: bool | None = None) -> LogEntry | Declined:
+    """One read of a ticket page, as its log entry, in the run's browsers; or, when no read can be made here at all
+    (no browser would start), why, which is no entry of the festival's log."""
     from pipeline.read_page import NoBrowserError
 
     started = Attempt(now(), page, site.version)
@@ -209,7 +212,7 @@ def attempt(page: str, site: Site, *, visible: bool | None = None) -> LogEntry |
     if isinstance(recipe, ApiRecipe):
         return api_attempt(started, recipe)
     try:
-        return page_attempt(started, recipe, visible=visible)
+        return page_attempt(started, recipe, browsers, visible=visible)
     except NoBrowserError as e:
         return Declined(CallCause.STRUCTURAL, f'no browser would start: {e}')
 
@@ -227,7 +230,7 @@ def api_attempt(started: Attempt, recipe: ApiRecipe) -> LogEntry:
     return judged(replace(started, url=url, http=status), url, url, raw, listed=True)
 
 
-def page_attempt(started: Attempt, recipe: PageRecipe, *, visible: bool | None) -> LogEntry:
+def page_attempt(started: Attempt, recipe: PageRecipe, browsers: 'Browsers', *, visible: bool | None) -> LogEntry:
     """A read of a ticket page in a browser: its tickets, or why it failed."""
     from curl_cffi.requests.exceptions import RequestException
 
@@ -241,7 +244,7 @@ def page_attempt(started: Attempt, recipe: PageRecipe, *, visible: bool | None) 
         return started.failed(Status.UNREACHABLE, f'{type(e).__name__}: {e}')
     reached = replace(started, url=url)
     try:
-        status, title, raw = rows(url, recipe, visible=visible)
+        status, title, raw = rows(url, recipe, browsers, visible=visible)
     except RecipeError as e:
         return reached.failed(Status.LAYOUT_BROKEN, f'the recipe fails on the page: {e}')
     except UnreachableError as e:
