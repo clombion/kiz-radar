@@ -7,7 +7,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | Task | What |
 | -- | -- |
 | `test:py` | The pipeline's tests, on every core in a new order, and the branches they reach (pyproject.toml) |
-| `build:data` | public/data/kiz.sqlite and site.json, which the site loads, built from the export (they are never committed) |
+| `build:data` | public/data/kiz.sqlite and site.json, which the site loads, and review.json, which the review dashboard does, built from the export (never committed) |
 | `export` | The path of the kizomba-world export the steps work on |
 | `scrape` | Refresh the export's events from kizomba-world.com |
 | `ask` | Ask Claude the extraction passes for the festivals that need them |

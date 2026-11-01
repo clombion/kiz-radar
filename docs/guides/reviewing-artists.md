@@ -41,9 +41,10 @@ France, and where an artist is booked says nothing of where they are from.
 
 ## Deciding
 
-Write an admin claim (`claims.write`) and commit it in the claims repository, `claims/`: a merge claim naming the pair's
-keys (`keep_key` and `merge_key` of the suggestion, in key order) with `merge` or `separate`. Never edit a claim file; a
-later claim comes first.
+The [review dashboard](the-review-dashboard.md) lists the pairs left `unsure` and the homes no line-up settles, each
+with a form that writes the admin's claim. Otherwise, write an admin claim (`claims.write`) and commit it in the claims
+repository, `claims/`: a merge claim naming the pair's keys (`keep_key` and `merge_key` of the suggestion, in key order)
+with `merge` or `separate`. Never edit a claim file; a later claim comes first.
 
 A name listed alone can stand for different people at different festivals (every solo "Christina" lands in one record):
 a booking claim moves one festival's booking from the key it was filed under to the person it belongs to.

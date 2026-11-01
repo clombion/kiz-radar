@@ -15,21 +15,23 @@ from pipeline import ROOT, build_site_db, claims, db
 from pipeline.records import Spent
 from tests import exports
 from tests.fakes import SITE_CLAIMS, Memory
+from tests.repository import built
 
 # what running the checks writes, which is no data
 UNWATCHED = frozenset({'.git', '.venv', 'node_modules', '__pycache__', '.pytest_cache', '.ruff_cache', '.vitest'})
 
 
 def files() -> dict[str, tuple[int, int]]:
-    """Each file of the repository, by its path, with its size and when it was last written."""
+    """Each file of the repository, by its path, with its size and when it was last written; what builds make aside,
+    which build:data writes while the tests run (mise run check)."""
     out: dict[str, tuple[int, int]] = {}
     for folder, dirs, names in os.walk(ROOT):
         dirs[:] = [d for d in dirs if d not in UNWATCHED]
         for name in names:
-            if not name.startswith('.coverage'):
-                path = Path(folder) / name
+            path = Path(folder) / name
+            if not (name.startswith('.coverage') or built(at := path.relative_to(ROOT).as_posix())):
                 st = path.stat()
-                out[path.relative_to(ROOT).as_posix()] = (st.st_size, st.st_mtime_ns)
+                out[at] = (st.st_size, st.st_mtime_ns)
     return out
 
 
@@ -62,16 +64,17 @@ def site_claims(data_folder: Path) -> None:
 @pytest.fixture(scope='session')
 def site_db(tmp_path_factory: pytest.TempPathFactory) -> Path:
     """The site database, built once from the committed export and data, for the tests that read it, with what the
-    build gives the page beside it (build_site_db.SITE_JSON)."""
+    build gives the pages beside it (build_site_db.SITE_JSON, REVIEW_JSON)."""
     folder = tmp_path_factory.mktemp('site')
     with pytest.MonkeyPatch.context() as m:
         m.setattr(pipeline, 'DATA', folder)
         exports.committed(*exports.EVERYTHING)
         out = folder / 'site.sqlite'
-        site = build_site_db.build(exports.EXPORT, out)
+        made = build_site_db.build(exports.EXPORT, out)
     _ = (folder / Path(build_site_db.SITE_JSON).name).write_text(
-        json.dumps(site, ensure_ascii=False, indent=1), encoding='utf-8'
+        json.dumps(made.site, ensure_ascii=False, indent=1), encoding='utf-8'
     )
+    _ = (folder / Path(build_site_db.REVIEW_JSON).name).write_text(made.review.model_dump_json(), encoding='utf-8')
     return out
 
 

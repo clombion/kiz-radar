@@ -23,7 +23,7 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from pipeline import airports, data, enums, export, files, states
+from pipeline import airports, data, enums, export, files, review, states
 from pipeline import db as sqlite_db
 from pipeline import fares as fare_search
 from pipeline.countries import NAMES, codes
@@ -42,6 +42,7 @@ from pipeline.records import (
 SITE_DATA = 'public/data'  # the site's data files, published with it
 OUT = f'{SITE_DATA}/kiz.sqlite'
 SITE_JSON = f'{SITE_DATA}/site.json'  # what the page shows before the database loads
+REVIEW_JSON = f'{SITE_DATA}/review.json'  # what the review dashboard lists (pipeline/review.py)
 POPULAR = 10  # bookings that make an artist "popular"
 KIZ = tuple(g for g, s in states.STYLE_OF.items() if s == Style.KIZOMBA)
 BOOKED_ROLES = tuple(map(Role, states.counted(states.BOOKING)))  # the roles an artist's bookings count
@@ -947,9 +948,15 @@ def table_docs(x: Transaction) -> None:
             x.insert('table_docs', [{'name': doc.name, 'description': doc.description}], unless=('name',))
 
 
-def build(src: Path, out: Path) -> dict[str, object]:
-    """Build the site database from the export into out, and give the summary site.json holds. It is built beside out
-    and swapped in at the end, so a build that stops halfway leaves out as it was."""
+@dataclass(frozen=True)
+class Built:
+    site: dict[str, object]  # the summary site.json holds
+    review: review.Review  # what review.json holds
+
+
+def build(src: Path, out: Path) -> Built:
+    """Build the site database from the export into out, and give what site.json and review.json hold. It is built
+    beside out and swapped in at the end, so a build that stops halfway leaves out as it was."""
     building = out.with_name(out.name + '.building')
     out.parent.mkdir(parents=True, exist_ok=True)
     building.unlink(missing_ok=True)
@@ -968,12 +975,12 @@ def build(src: Path, out: Path) -> dict[str, object]:
             plans(x, key_id)
             built_at = now().isoformat()
             meta(x, built_at)
-            site = site_json(x, built_at)
+            made = Built(site_json(x, built_at), review.review(x, built_at))
             table_docs(x)
         db.detach('src')
         db.vacuum()
     _ = building.replace(out)
-    return site
+    return made
 
 
 @contextmanager
@@ -988,11 +995,15 @@ def built(src: Path) -> Generator[sqlite_db.Db]:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description='Build public/data/kiz.sqlite and site.json, which the site loads.')
+    ap = argparse.ArgumentParser(
+        description='Build public/data/kiz.sqlite and site.json, which the site loads, and review.json, which the '
+        'review dashboard does.'
+    )
     _ = ap.parse_args()
     out = data(OUT)
-    site = build(export.path(), out)
-    files.write(data(SITE_JSON), json.dumps(site, ensure_ascii=False, indent=1))
+    made = build(export.path(), out)
+    files.write(data(SITE_JSON), json.dumps(made.site, ensure_ascii=False, indent=1))
+    files.write(data(REVIEW_JSON), made.review.model_dump_json())
     print(OUT, out.stat().st_size // 1024, 'KB')
 
 

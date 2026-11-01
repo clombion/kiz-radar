@@ -12,7 +12,8 @@ const COMMENT_BLOCK = /\/\*[\s\S]*?\*\//gu;
 // a // comment, but not the // of a URL in a string or a regex
 const COMMENT_LINE = /(?<before>^|[^:'"`\\])\/\/.*$/gmu;
 
-export const html = read('public/index.html');
+// every page's markup: the site's and the review dashboard's
+export const pages = [read('public/index.html'), read('public/review.html')];
 // each stylesheet without its comments
 export const css: ReadonlyMap<string, string> = new Map(
   filesIn('public/css/', '.css').map((f) => [f, read(`public/css/${f}`).replace(COMMENT_BLOCK, '')]),

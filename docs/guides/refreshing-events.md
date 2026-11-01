@@ -79,7 +79,7 @@ mise run rates
 mise run suggest-merges
 mise run fares -- plan               # what is due today
 mise run fares -- refresh --budget 4
-mise run build:data                  # public/data/kiz.sqlite and site.json, never committed
+mise run build:data                  # public/data/: kiz.sqlite, site.json, review.json; never committed
 mise run serve                       # the site at http://localhost:8000
 ```
 

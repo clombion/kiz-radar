@@ -9,7 +9,7 @@ export default defineConfig({
     coverage: {
       enabled: true,
       provider: 'v8',
-      include: ['site/{days,fold,pricing,roles,routes,rows,wording}.ts'],
+      include: ['site/{claims,days,fold,json,pricing,roles,routes,rows,wording}.ts'],
       reporter: ['text-summary', 'text'],
       thresholds: { perFile: true, lines: 95, branches: 90, functions: 95, statements: 95 },
     },

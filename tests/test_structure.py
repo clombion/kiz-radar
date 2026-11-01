@@ -10,7 +10,7 @@ import tomllib
 from pathlib import Path
 
 from pipeline import ROOT
-from tests.repository import tracked
+from tests.repository import BUILT, tracked
 
 
 def body(fn: ast.FunctionDef | ast.AsyncFunctionDef) -> str | None:
@@ -133,9 +133,6 @@ def test_mise_toml_holds_the_tools_alone() -> None:
     all again (tasks.toml holds the tasks). It holds the tools, where the tasks are, and what installing them also
     installs."""
     assert set(tomllib.loads((ROOT / 'mise.toml').read_text(encoding='utf-8'))) == {'tools', 'task_config', 'hooks'}
-
-
-BUILT = ('public/js/', 'public/vendor/', 'public/data/kiz.sqlite', 'public/data/site.json')  # what builds make
 
 
 def test_what_a_build_makes_is_not_committed() -> None:

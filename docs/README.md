@@ -13,6 +13,7 @@ in a session.
 | get a festival's prices from its ticket page | [Prices from ticket pages](guides/ticket-pages.md) |
 | write or fix a recipe for a ticket site | [Writing a recipe](guides/writing-a-recipe.md) |
 | merge two artists, or say where one is from | [Reviewing artists](guides/reviewing-artists.md) |
+| see what waits for review, and settle a home or a merge from the browser | [The review dashboard](guides/the-review-dashboard.md) |
 | add who's going, or a promo code | [Plans and promo codes](guides/plans-and-promos.md) |
 | add a state a data point can be in | [Adding a state](guides/adding-a-state.md) |
 | understand how the data flows | [Data flow](concepts/data-flow.md) |

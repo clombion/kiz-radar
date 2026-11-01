@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- what the page may load: its own files only; it asks api.github.com alone besides, to write the admin's claims
+     into the claims repository (site/github.ts) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex">
+<title>Kiz Radar review</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<script type="module" src="js/review.js"></script>
+</head>
+<body>
+<main id="main" class="review-page" tabindex="-1">
+<h1>Kiz Radar review</h1>
+<div id="review"><p class="status loading" role="status"><img src="loading.svg" alt="" width="56" height="56"><span>Loading…</span></p></div>
+</main>
+</body>
+</html>

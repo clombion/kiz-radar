@@ -8,6 +8,7 @@
   "plugins": [
     "./lint/routes.grit",
     "./lint/storage.grit",
+    "./lint/session.grit",
     "./lint/formats.grit",
     "./lint/home.grit",
     "./lint/clicks.grit",

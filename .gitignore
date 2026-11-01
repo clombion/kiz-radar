@@ -1,9 +1,10 @@
 __pycache__/
 *.pyc
-public/data/*.building
+public/data/*.building*
 # built from the export (mise run build:data), never committed
 public/data/kiz.sqlite
 public/data/site.json
+public/data/review.json
 pipeline/tickets/drafts/
 .venv/
 node_modules/

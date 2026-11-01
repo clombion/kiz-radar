@@ -1,18 +1,19 @@
 // The stylesheets against the page and its modules: what Biome's CSS rules don't see.
 import { expect, test } from 'vitest';
-import { code, css, html } from './sources.ts';
+import { code, css, pages } from './sources.ts';
 
 const URLS = /url\([^)]*\)/gu;
 const CLASS = /\.(?<name>-?[A-Za-z_][\w-]*)/gu;
 const CLASS_ATTRIBUTE = /\sclass="(?<names>[^"]*)"/gu;
 
 // A class is used when a module names it, quoted, where ClassName (site/classes.ts, generated from these stylesheets)
-// types it, or the page's markup gives it to an element: not when a comment or another word happens to contain it.
+// types it, or a page's markup gives it to an element: not when a comment or another word happens to contain it.
 test('every CSS class is given to an element by the page or a module', () => {
   const named = new Set(
     [...code.values()].flatMap((src) => [...src.matchAll(/'(?<name>[\w-]+)'/gu)].map((m) => m.groups?.['name'] ?? '')),
   );
-  for (const m of html.matchAll(CLASS_ATTRIBUTE)) for (const n of (m.groups?.['names'] ?? '').split(' ')) named.add(n);
+  for (const m of pages.flatMap((p) => [...p.matchAll(CLASS_ATTRIBUTE)]))
+    for (const n of (m.groups?.['names'] ?? '').split(' ')) named.add(n);
   const unused: string[] = [];
   for (const [file, text] of css)
     for (const cls of new Set([...text.replace(URLS, '').matchAll(CLASS)].map((m) => m.groups?.['name'] ?? '')))
