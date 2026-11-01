@@ -6,7 +6,7 @@
   ],
   "reseller": null,
   "widget": null,
-  "visible": false,
+  "visible": true,
   "wait": 12,
   "open": null,
   "row": "tr[ng-repeat^='offer in']:has(button[id^='add-to-cart-'])",
