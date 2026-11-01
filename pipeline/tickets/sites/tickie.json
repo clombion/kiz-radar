@@ -1,0 +1,23 @@
+{
+  "site": "tickie",
+  "hosts": ["tickets.tickie.io"],
+  "reseller": null,
+  "widget": null,
+  "visible": false,
+  "wait": 8,
+  "open": null,
+  "row": null,
+  "api": {"json": "<script id=\"__NEXT_DATA__\" type=\"application/json\">([\\s\\S]*?)</script>", "items": "props.pageProps.shop.tickets"},
+  "fields": {
+    "key": {"json": "_id"},
+    "name": {"json": "name"},
+    "price": {"text": "{price} €"},
+    "amount": {"json": "price"},
+    "currency": {"page": "\"currency\":\"([A-Z]{3})\""},
+    "fee": null,
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {"json": "active", "match": "^false$"}
+  }
+}
