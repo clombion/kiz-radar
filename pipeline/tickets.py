@@ -494,7 +494,7 @@ def cmd_page(db: sqlite_db.Reader, event_id: int, sold: Sold) -> None:
 
 
 def cmd_changes(event_id: int | None = None) -> None:
-    for i in [event_id] if event_id else sorted(int(p.stem) for p in data(LOG).glob('*.jsonl')):
+    for i in [event_id] if event_id is not None else sorted(int(p.stem) for p in data(LOG).glob('*.jsonl')):
         for day, text in changes(log(i)):
             print(f'{i}  {day}  {text}')
 
@@ -661,7 +661,7 @@ def parser() -> argparse.ArgumentParser:
     _ = sub.add_parser('todo', help='what needs doing')
     r = sub.add_parser('read', help="read a festival's ticket page and log its rows")
     _ = r.add_argument('id', type=int)
-    _ = r.add_argument('--url', help='the ticket page, when the festival has no known one')
+    _ = r.add_argument('--url', help='the ticket page to read: it becomes the known one, replacing any other')
     for name, text in (
         ('draft', 'a first read to fill, from the latest rows'),
         ('record', 'check and write the prices'),
@@ -697,27 +697,27 @@ def main() -> None:
         from pipeline import read_page
 
         read_page.on_display()
-    i = a.id or 0
-    match a.cmd:
-        case 'check':
+    # every command but todo, changes and run requires its festival's id (parser), so it is an int there, 0 included
+    match a.cmd, a.id:
+        case 'check', int(i):
             return cmd_check(i)
-        case 'changes':
-            return cmd_changes(a.id)
+        case 'changes', i:
+            return cmd_changes(i)
         case _:
             pass
     with src_db() as db:
-        match a.cmd:
-            case 'todo':
+        match a.cmd, a.id:
+            case 'todo', _:
                 cmd_todo(db)
-            case 'read':
+            case 'read', int(i):
                 cmd_read(db, i, a.url)
-            case 'draft':
+            case 'draft', int(i):
                 cmd_draft(db, i)
-            case 'record':
+            case 'record', int(i):
                 cmd_record(db, i)
-            case 'retry':
+            case 'retry', int(i):
                 cmd_retry(db, i)
-            case 'page':
+            case 'page', int(i):
                 cmd_page(db, i, Sold(a.url, a.state, a.note, a.by))
             case _:
                 cmd_run(db, a.only, a.limit, (a.part,) if a.part else PARTS)

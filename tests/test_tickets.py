@@ -1774,6 +1774,7 @@ def test_changes_name_what_a_read_found_new_or_different(command: Command) -> No
     tickets_store.append(7, entry(changed(ROWS, 2, amount=130.0, price='€130.00'), at=stamp(2)))
     assert command('changes', 7) == command('changes')
     assert '7  2026-10-02  ' in command('changes', 7)
+    assert command('changes', 0) == ''  # festival 0's, which has no log: not every festival's
 
 
 @pytest.mark.parametrize(
