@@ -1136,15 +1136,14 @@ def test_a_festival_is_asked_a_pass_once_while_the_question_stays_the_same(
 def test_a_run_whose_questions_got_no_answer_fails_naming_them(
     answered_here: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """A bad key declines the first question and stops the rest: the run exits with every one named, so the
+    """A bad key declines every question (the ones not yet asked stop): the run exits with each one named, so the
     workflow's step fails."""
     _ = source_file(6)
-    client = Client(Cut(status_error(401)), prices_answer('Full pass 80€ until 31.01'))
+    client = Client(Cut(status_error(401)), Cut(status_error(401)))  # its questions are asked side by side
     with pytest.raises(SystemExit) as stop:
         run_ask(monkeypatch, client, '--pass', 'prices')
     assert str(stop.value.code).startswith('API error 401')
     assert '2 questions gave no answer (structural 2): 5 prices: ' in str(stop.value.code)
-    assert len(client.messages.asked) == 1
 
 
 def test_a_run_asks_about_as_many_festivals_as_its_limit(
