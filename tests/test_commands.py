@@ -28,7 +28,8 @@ SOURCES = [
     *sorted((ROOT / 'docs').rglob('*.md')),
     *sorted((ROOT / 'pipeline').rglob('*.py')),
 ]
-COMMAND = re.compile(r'(?:uv run(?: -q)?((?: --group [\w-]+)*)|python3) -m (pipeline(?:\.\w+)+)')
+# a module run as a command, by uv with any of its options, or by a python
+COMMAND = re.compile(r'(?:\buv run((?: --?[\w-]+(?: (?!-)[\w-]+)?)*?)|\bpython3?) -m (pipeline(?:\.\w+)+)')
 TASK = re.compile(r'\bmise run(?: -q)? ([\w:-]+)')
 NAME = re.compile(r'[=<>~!\[ ]')  # where a requirement's name ends
 
@@ -73,6 +74,24 @@ def test_a_module_is_run_by_its_task_only() -> None:
         f'{p.relative_to(ROOT)}: {m[0]}' for p in SOURCES for m in COMMAND.finditer(p.read_text(encoding='utf-8'))
     ]
     assert written == []
+
+
+@pytest.mark.parametrize(
+    ('written', 'groups'),
+    [
+        ('uv run -m pipeline.export', []),
+        ('uv run -q --group tickets -m pipeline.tickets', ['tickets']),
+        ('uv run --frozen -q --group a --group b -m pipeline.extract.ask', ['a', 'b']),
+        ('uv run --frozen -m pipeline.export', []),
+        ('python -m pipeline.export', []),
+        ('python3 -m pipeline.export', []),
+    ],
+)
+def test_a_command_is_seen_however_it_is_written(written: str, groups: list[str]) -> None:
+    m = COMMAND.search(f'run: {written} --help')
+    assert m
+    assert m[0] == written
+    assert re.findall(r'--group ([\w-]+)', m[1] or '') == groups
 
 
 def test_every_task_named_is_one() -> None:
@@ -145,16 +164,14 @@ def test_every_command_line_module_has_its_task() -> None:
     assert {module for _, module, _ in commands()} == mains
 
 
-def test_every_module_a_command_runs_answers_help() -> None:
+@pytest.mark.parametrize('module', sorted({m for _, m, _ in commands()}))
+def test_every_module_a_command_runs_answers_help(module: str) -> None:
     """A command's module parses its arguments, so a wrong or missing one gets a usage line, not a traceback."""
-    failing: list[str] = []
-    for module in sorted({m for _, m, _ in commands()}):
-        r = subprocess.run(  # noqa: S603 (this interpreter, on a module of the repository)
-            [sys.executable, '-m', module, '--help'], cwd=ROOT, capture_output=True, text=True, timeout=60, check=False
-        )
-        if r.returncode != 0 or 'usage:' not in r.stdout:
-            failing.append(f'{module}: {(r.stderr.strip().splitlines() or ["no usage line"])[-1]}')
-    assert failing == []
+    r = subprocess.run(  # noqa: S603 (this interpreter, on a module of the repository)
+        [sys.executable, '-m', module, '--help'], cwd=ROOT, capture_output=True, text=True, timeout=60, check=False
+    )
+    assert r.returncode == 0, r.stderr
+    assert 'usage:' in r.stdout
 
 
 def test_databases_are_opened_with_a_mode() -> None:

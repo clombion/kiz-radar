@@ -1,6 +1,6 @@
 """The kizomba-world export the steps work on, the one file of the data folder's source/, and its schema's version.
 
-Every step opens the export itself, through opened (python -m pipeline.export prints its path). The derived tables are
+Every step opens the export itself, through opened (mise run export prints its path). The derived tables are
 rebuilt by the step that owns them each time it runs, so their shape is the code's. The rest are kept: the source's
 own tables (scrape's) and the history no rebuild can recreate (artist_ids, prompts, pipeline_steps, table_docs).
 Their shape changes by numbered migrations, applied once each, in order, to the export as the repository holds it;
