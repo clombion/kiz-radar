@@ -10,6 +10,7 @@ import { eventCard } from './eventcard.ts';
 import { type Festival, festivals, leftOut } from './festivals.ts';
 import { CHECKED, type Choices, DEFAULTS, isWith, matches, type Sort, WITH, withPhrase } from './finder.ts';
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
+import { Drawing } from './icons.ts';
 import { currency, money, step } from './money.ts';
 import { friendsIn } from './plans.ts';
 import { done } from './report.ts';
@@ -24,13 +25,9 @@ const WIDEST = { months: 12, reach: '' } as const;
 const LOOSEST: Readonly<Omit<Choices, 'sort'>> = { ...UNSORTED, ...WIDEST };
 type NumberChoice = { [K in keyof Choices]: Choices[K] extends number ? K : never }[keyof Choices];
 
-// Hand-drawn hints next to the blanks. Static SVG, so building it from a string is safe.
-const ARROWS: Readonly<Record<string, string>> = {
-  up: '<svg viewBox="0 0 64 52" width="54" height="44"><path d="M56 44 C36 45 18 34 13 9"/><path d="M13 9 L6 19 M13 9 L21 16"/></svg>',
-};
-function note(cls: ClassName, arrow: string, ...words_: string[]): HTMLElement {
-  const art = h('span', { class: 'arrow' });
-  art.innerHTML = ARROWS[arrow] ?? '';
+// Hand-drawn hints next to the blanks, an arrow pointing up at what they say
+function note(cls: ClassName, ...words_: string[]): HTMLElement {
+  const art = Drawing.ARROW_UP.into(h('span', { class: 'arrow' }));
   const words = h(
     'span',
     { class: 'hand' },
@@ -201,7 +198,7 @@ export function sentenceView(
     }
   };
   // the hint under "anywhere" hangs to the right of it, or to the left where the menu ends near the edge
-  const whereNote = note('note-bottom', 'up', 'click', ' to change where');
+  const whereNote = note('note-bottom', 'click', ' to change where');
   const placeNote = () => {
     toggle(whereNote, 'flip', false);
     if (whereNote.getBoundingClientRect().right > hero.getBoundingClientRect().right) toggle(whereNote, 'flip', true);
@@ -236,7 +233,7 @@ export function sentenceView(
       ruler,
     ),
     withTag,
-    note('note-inline', 'up', 'click', ' to change'),
+    note('note-inline', 'click', ' to change'),
     live,
     h(
       'p',
@@ -310,7 +307,7 @@ export function sentenceView(
   rotate(dance, n, signal);
   // a hint under the Explore tab, until someone has been there
   const tab = document.querySelector('a[data-nav="explore"]');
-  const tabNote = exploreHint.seen() ? null : note('note-tab', 'up', 'psst… more here');
+  const tabNote = exploreHint.seen() ? null : note('note-tab', 'psst… more here');
   if (tabNote) tab?.append(tabNote);
   const io = new IntersectionObserver(
     ([en]) => {
@@ -413,7 +410,7 @@ export function sentenceView(
         more = button({ class: ['more-btn', 'show-more'] });
       paged({ list: cards, more }, rows, PAGE, (e, i) =>
         eventCard(e, {
-          hint: i === hinted ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null,
+          hint: i === hinted ? note('note-artist', 'click', ' a name to see where else they teach') : null,
         }),
       );
       return h('div', {}, cards, more);

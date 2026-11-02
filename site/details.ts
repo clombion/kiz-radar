@@ -4,7 +4,7 @@ import { q, sql } from './db.ts';
 import type { Kid } from './dom.ts';
 import { button, h, own } from './dom.ts';
 import type { Festival } from './festivals.ts';
-import { icon as featureIcon, MORE_TRAITS, TRAITS, type Trait } from './icons.ts';
+import { type Drawing, icon as featureIcon, MORE_TRAITS, TRAITS, type Trait } from './icons.ts';
 import { openPasses } from './passes.ts';
 import { whoIsGoing } from './plans.ts';
 import { done } from './report.ts';
@@ -16,11 +16,7 @@ import { type Key, linkOf, text, where } from './wording.ts';
 
 // the line-up by role, in the order pipeline/states.py lists them; organisers have a line of their own
 const ROLES = where('role', 'view').filter((r) => r !== KEY.role.ORGANISER);
-const icon = (svg: string) => {
-  const el = h('span', { class: 'ic' });
-  el.innerHTML = svg;
-  return el;
-};
+const icon = (drawn: Drawing) => drawn.into(h('span', { class: 'ic' }));
 // a highlight with prices behind it (couple & group deals) opens the passes over the page
 export const traitItems = (list: readonly Trait[], e?: Festival): HTMLElement[] =>
   list.map(([key, label, svg]) =>

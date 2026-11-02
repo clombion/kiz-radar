@@ -15,7 +15,8 @@
     "./lint/buttons.grit",
     "./lint/promises.grit",
     "./lint/fetch.grit",
-    "./lint/classes.grit"
+    "./lint/classes.grit",
+    "./lint/markup.grit"
   ],
   "linter": {
     "rules": {

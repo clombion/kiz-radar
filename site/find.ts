@@ -3,6 +3,7 @@
 // name a typo away. Pure: the items are arguments.
 import type { Checked, With } from './finder.ts';
 import { fold, words } from './fold.ts';
+import type { Drawing } from './icons.ts';
 import type { Person } from './plans.ts';
 import type { Params } from './routes.ts';
 import { BOOKINGS, flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
@@ -58,7 +59,7 @@ export type Item = Base &
     | { kind: 'artist'; a: FoundArtist; shares: boolean }
     | { kind: 'country'; country: { code: string; name: string }; n: number }
     | { kind: 'city'; city: City }
-    | { kind: 'tag'; key: TagKey; params: Params; n: number; icon: string | null; style: boolean }
+    | { kind: 'tag'; key: TagKey; params: Params; n: number; icon: Drawing | null; style: boolean }
   );
 export interface City {
   city: string;

@@ -21,7 +21,7 @@ import {
 } from './find.ts';
 import { CHECKED, hasWith, isDance, WITH } from './finder.ts';
 import { fold, words } from './fold.ts';
-import { icon } from './icons.ts';
+import { type Drawing, icon, NOTE } from './icons.ts';
 import { leaving, modal } from './modal.ts';
 import { person, withPlans } from './plans.ts';
 import { done } from './report.ts';
@@ -153,7 +153,7 @@ interface Tag {
   name: string;
   params: Params;
   test: (e: Festival) => boolean;
-  icon: string | null;
+  icon: Drawing | null;
 }
 function tagEntries(pool: readonly Festival[]): Indexed[] {
   const tags: Tag[] = [
@@ -199,9 +199,6 @@ function buildIndex(): Item[] {
 }
 
 const WORDS_AND_GAPS = /[\p{L}\p{N}]+|[^\p{L}\p{N}]+/gu;
-// a note's icon when its tag has none of its own
-const NOTE =
-  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
 
 // what a result's row shows: its lead (a date, an initial, a flag or an icon) and the line under its name
 type Parts = readonly [HTMLElement, Kid[]];
@@ -243,8 +240,7 @@ const artistParts = ({ a, shares }: Found<'artist'>): Parts => [
   ],
 ];
 function tagParts(item: Found<'tag'>): Parts {
-  const lead = h('span', { class: 'lead' });
-  lead.innerHTML = item.icon ?? NOTE;
+  const lead = (item.icon ?? NOTE).into(h('span', { class: 'lead' }));
   return [lead, [item.style ? 'Dance' : 'Highlight', ' · ', comingUp(item.n, '')]];
 }
 function parts(item: Item): Parts {
@@ -290,8 +286,12 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
   });
   const list = h('div', { class: 'search-list', id: 'search-list', role: 'listbox', 'aria-label': 'Results' });
   const status = h('p', { class: 'visually-hidden', 'aria-live': 'polite' });
-  const glass = h('span', { class: 'search-glass', 'aria-hidden': 'true' });
-  glass.innerHTML = trigger.querySelector('svg')?.outerHTML ?? '';
+  // the magnifying glass of the button that opens it
+  const glass = h(
+    'span',
+    { class: 'search-glass', 'aria-hidden': 'true' },
+    trigger.querySelector('svg')?.cloneNode(true),
+  );
   const cancel = button({ class: 'search-cancel', onclick: () => done(shut(), 'search') }, 'Cancel');
   // past festivals, and places with nothing coming up, only when asked for: what people share is what's ahead
   const pastBox = h('input', {

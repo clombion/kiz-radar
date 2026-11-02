@@ -1,7 +1,7 @@
 // The closed world of states (docs/concepts/states.md): the site holds no words or keys of its own, and asking the table
 // for something it doesn't have fails.
 import { expect, test } from 'vitest';
-import { MORE_TRAITS, TRAITS } from '../../site/icons.ts';
+import { Drawing, MORE_TRAITS, TRAITS } from '../../site/icons.ts';
 import { KEY, STATES } from '../../site/states.ts';
 import { say, where } from '../../site/wording.ts';
 import { code } from './sources.ts';
@@ -87,5 +87,5 @@ test('every feature a card or a view shows has an icon icons.ts draws', () => {
     ...where('feature', 'card'),
     ...where('feature', 'view'),
   ]);
-  expect([...TRAITS, ...MORE_TRAITS].every(([, , svg]) => svg.startsWith('<svg'))).toBe(true);
+  expect([...TRAITS, ...MORE_TRAITS].every(([, , drawn]) => drawn instanceof Drawing)).toBe(true);
 });

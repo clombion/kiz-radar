@@ -6,6 +6,7 @@ import { needs, q, sql } from './db.ts';
 import { button, choices, debounced, dropdown, h, moreButton, paged, toggle } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, leftOut, withDetails } from './festivals.ts';
+import { Drawing } from './icons.ts';
 import { currency, money, step, within } from './money.ts';
 import { get } from './net.ts';
 import { done } from './report.ts';
@@ -220,8 +221,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
 
   const mapEl = h('div', { class: 'map', role: 'region', 'aria-label': 'Map of festivals by city' });
   // a wide chevron that points the way the sheet will move, and a word saying what a tap does
-  const chevron = h('span', { class: 'chevron', 'aria-hidden': 'true' });
-  chevron.innerHTML = '<svg viewBox="0 0 48 12" width="48" height="12"><path d="M3 10 L24 3 L45 10"/></svg>';
+  const chevron = Drawing.CHEVRON.into(h('span', { class: 'chevron', 'aria-hidden': 'true' }));
   const action = h('span', { class: 'sheet-action' }, 'Open');
   const handle = button(
     { class: 'sheet-handle', 'aria-expanded': 'false' },

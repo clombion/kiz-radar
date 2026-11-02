@@ -2,6 +2,7 @@
 // dialog's history entry.
 import { afterEach, expect, test } from 'vitest';
 import { button, choices, h, paged, toggle } from '../../site/dom.ts';
+import { Drawing, NOTE } from '../../site/icons.ts';
 import { modal } from '../../site/modal.ts';
 import { PAD, pill, slide } from '../../site/tabs.ts';
 
@@ -36,6 +37,12 @@ test('h() sets attributes, classes, data and listeners, and leaves out what hold
 
 test('h() puts text in as text, never as HTML', () => {
   expect(h('p', {}, '<b>bold</b>').innerHTML).toBe('&lt;b&gt;bold&lt;/b&gt;');
+});
+
+test('a drawing is put in an element as the SVG icons.ts writes', () => {
+  const el = NOTE.into(h('span', {}));
+  expect(el.firstElementChild?.tagName).toBe('svg');
+  expect(Drawing.CHEVRON.into(h('span', {})).querySelector('path')).not.toBeNull();
 });
 
 // a row of three tabs, the given one current

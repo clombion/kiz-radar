@@ -1,0 +1,23 @@
+language js
+
+// Markup is put in an element by icons.ts alone (Drawing.into), from the SVG written there, so no text from the data or
+// the address ever becomes markup; everywhere else an element is built with dom.ts's h(), which puts text in as text.
+or {
+  `$el.innerHTML`,
+  `$el.outerHTML`,
+  `$el.innerHTML = $v`,
+  `$el.outerHTML = $v`,
+  `$el[$key] = $v` where { $key <: r"['\"`](?:inner|outer)HTML['\"`]" },
+  `$el.insertAdjacentHTML($...)`,
+  `$el.setHTMLUnsafe($...)`,
+  `$el.createContextualFragment($...)`,
+  `$el.parseFromString($...)`,
+  `$doc.write($...)`,
+  `$doc.writeln($...)`,
+  `$el[$key]` where { $key <: r"['\"`](?:inner|outer)HTML['\"`]" }
+} as $use where {
+  $filename <: r".*/site/.*",
+  $filename <: not r".*/tests/.*",
+  $filename <: not r".*/site/icons\.ts",
+  register_diagnostic(span=$use, message="Markup comes from icons.ts's Drawing.into(), from its own SVG; build elements with dom.ts's h().")
+}
