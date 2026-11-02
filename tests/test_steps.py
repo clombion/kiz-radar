@@ -176,6 +176,25 @@ def test_every_table_of_the_export_is_one_steps() -> None:
     assert set(owners) == set(made)
 
 
+class Appearance(BaseModel):
+    artist_id: int
+    event_id: int
+    role: str
+    via: str
+    via_artist_id: int | None
+
+
+def test_an_artists_events_are_the_same_in_the_export_and_on_the_site(site_db: Path) -> None:
+    """artist_events means one thing wherever it is read: a member listed beside their couple in the same role is there
+    through the couple, not booked as themselves."""
+    every = 'select artist_id, event_id, role, via, via_artist_id from artist_events order by 1, 2, 3, 4, 5'
+    with sqlite_db.opened(EXPORT, 'ro') as export_db, sqlite_db.opened(site_db, 'ro') as site:
+        exported = export_db.rows(Appearance, every)
+        assert exported == site.rows(Appearance, every)
+        repeats = 'select count(*) from event_artists where as_couple is not null'
+        assert export_db.value(int, repeats) > 0  # some line-ups name a member beside their couple
+
+
 class Documented(BaseModel):
     name: str
     written_by: str

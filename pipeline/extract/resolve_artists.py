@@ -5,7 +5,8 @@ Reads artist_mentions (from load_extract.py) and every claim (pipeline/claims.py
   artist_aliases          every name an artist was written as
   couple_members          couple/group id -> member person id
   mention_artists         each mention's artist
-  event_artists (view)    each artist booked at an event in a role, once however often its line-up names them
+  event_artists (view)    each artist booked at an event in a role, once however often its line-up names them, and
+                          the couple a member repeats the booking of (as_couple)
   artist_merge_candidates pairs that may be the same artist, with evidence, for review
   merge_reason_definitions
                           reason -> definition, from pipeline/states.py (the reasons artist_merge_candidates gives)
@@ -129,7 +130,10 @@ CREATE TABLE mention_artists (
 ) STRICT;
 CREATE INDEX mention_artists_artist ON mention_artists(artist_id);
 CREATE VIEW event_artists AS
-    SELECT DISTINCT m.event_id, ma.artist_id, m.role
+    SELECT DISTINCT m.event_id, ma.artist_id, m.role,
+      (SELECT min(cm.couple_id) FROM couple_members cm JOIN mention_artists c ON c.artist_id = cm.couple_id
+         JOIN artist_mentions cn ON cn.id = c.mention_id
+       WHERE cm.member_id = ma.artist_id AND cn.event_id = m.event_id AND cn.role = m.role) AS as_couple
     FROM mention_artists ma JOIN artist_mentions m ON m.id = ma.mention_id;
 CREATE TABLE merge_reason_definitions (
     reason TEXT PRIMARY KEY,
@@ -185,13 +189,18 @@ CREATE TABLE artist_group_aliases (
     match_key TEXT NOT NULL,      -- a spelling's key whose mentions count as the group's
     PRIMARY KEY (group_key, match_key)
 ) STRICT;
+"""
+# every event an artist appears at: booked as themselves (a member listed beside their couple in the same role repeats
+# its booking), or through a couple or group; the site's database declares it alike, over its own event_artists
+ARTIST_EVENTS = """
 CREATE VIEW artist_events AS
-    SELECT ea.artist_id, ea.event_id, ea.role, '{direct}' AS via, NULL AS via_artist_id
-    FROM event_artists ea
+    SELECT ea.artist_id, ea.event_id, ea.role, '{via_direct}' AS via, NULL AS via_artist_id
+    FROM event_artists ea WHERE ea.as_couple IS NULL
     UNION ALL
-    SELECT cm.member_id, ea.event_id, ea.role, '{member}', ea.artist_id
+    SELECT cm.member_id, ea.event_id, ea.role, '{via_member}', ea.artist_id
     FROM event_artists ea JOIN couple_members cm ON cm.couple_id = ea.artist_id;
 """
+VIA = {'via_direct': Via.DIRECT, 'via_member': Via.MEMBER}  # the states ARTIST_EVENTS names
 # the export's table of every id given, which this step only adds to (tests/test_steps.py holds the export to it)
 KEPT = sqlite_db.declared("""CREATE TABLE artist_ids (
     artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
@@ -201,10 +210,7 @@ KEPT = sqlite_db.declared("""CREATE TABLE artist_ids (
 # a review that could not tell (unsure) decides nothing: the pair stays a candidate, and no claim holds it
 STORED = (MergeDecision.MERGE, MergeDecision.SEPARATE)
 TABLES = sqlite_db.declared(
-    DDL.format_map(
-        states.SQL_IN
-        | {'stored_decision': states.sql_in('merge_decision', STORED), 'direct': Via.DIRECT, 'member': Via.MEMBER}
-    )
+    (DDL + ARTIST_EVENTS).format_map(states.SQL_IN | VIA | {'stored_decision': states.sql_in('merge_decision', STORED)})
 )
 
 
@@ -299,9 +305,12 @@ TABLE_DOCS = {
     'couple_members': "The people in each couple or group (couple_id is the couple's or group's artist id).",
     'mention_artists': 'The resolved artist of each mention (artist_mentions.id), whose style and stated country '
     'artist_mentions holds.',
-    'event_artists': 'Each artist booked at an event, in a role: once however often its line-up names them.',
-    'artist_events': "Every event an artist appears at: directly (via 'direct') or as a member of a couple or group "
-    "(via 'member', via_artist_id = the couple or group). Use it for a person's full event history.",
+    'event_artists': 'Each artist booked at an event, in a role: once however often its line-up names them. as_couple '
+    'is set when a member is listed in the same role as their couple at the same event: that row repeats the '
+    'couple’s booking and is left out of line-ups and statistics.',
+    'artist_events': "Every event an artist appears at: booked as themselves (via 'direct', the rows of event_artists "
+    "with no as_couple) or as a member of a couple or group (via 'member', via_artist_id = the couple or group). Use "
+    "it for a person's full event history.",
     'artist_merge_candidates': 'Pairs of name keys that may be the same artist, with the reason, similarity and '
     'evidence; decision is NULL when no merge or separate decision exists (left apart).',
     'merge_reason_definitions': 'What each reason in artist_merge_candidates means.',

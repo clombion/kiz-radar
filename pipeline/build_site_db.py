@@ -29,6 +29,7 @@ from pipeline import fares as fare_search
 from pipeline.countries import NAMES, codes
 from pipeline.db import Reader, Transaction
 from pipeline.enums import Feature, Genre, HomeBasis, PassKind, People, Role, Style
+from pipeline.extract import resolve_artists
 from pipeline.records import (
     Fare,
     Person,
@@ -373,12 +374,6 @@ create view event_fares as
       (select min(price) from fares m where m.airport = e.airport
          and substr(m.depart, 1, 7) = substr(e.weekend_friday, 1, 7)) as month_min
     from events e left join fares f on f.airport = e.airport and f.depart = e.weekend_friday;
-create view artist_events as
-    select ea.artist_id, ea.event_id, ea.role, '{direct}' as via, null as via_artist_id from event_artists ea
-    where ea.as_couple is null
-    union all
-    select cm.member_id, ea.event_id, ea.role, '{member}', ea.artist_id
-    from event_artists ea join couple_members cm on cm.couple_id = ea.artist_id;
 create view country_stats as
     select e.country_code, c.name, count(*) as events, sum(s.kiz_only) as kiz_only,
       sum(exists (select 1 from event_features f where f.event_id = e.id and f.feature = '{taxi_dancers}'))
@@ -414,8 +409,9 @@ create view plan_rows as
     from plans p join people pe on pe.id = p.person_id;
 """
 TABLES = sqlite_db.declared(
-    DDL.format_map(
+    (DDL + resolve_artists.ARTIST_EVENTS).format_map(
         states.SQL_IN
+        | resolve_artists.VIA
         | {
             'booked_as': states.sql_in('role', BOOKED_ROLES),
             'booked_roles': ',\n    '.join(f'{r} integer not null' for r in BOOKED_ROLES),
@@ -428,8 +424,6 @@ TABLES = sqlite_db.declared(
             'cancelled': enums.Phase.CANCELLED,
             'phase_gone': enums.Phase.GONE,
             'contested': HomeBasis.CONTESTED,
-            'direct': enums.Via.DIRECT,
-            'member': enums.Via.MEMBER,
         }
     )
 )
@@ -549,15 +543,11 @@ def copied(x: Transaction, table: str, where: str = '1') -> None:
 
 
 def booked(x: Transaction) -> dict[str, int]:
-    """Each artist booked at an event in a role once (event_artists), marked as_couple when a member is listed in the
-    same role as their couple at the same event: that repeats the couple's booking, so it is left out of line-ups and
-    statistics, while a different role (the couple teaches, one of them DJs) is a solo booking. Old ids read as the
-    artist they went to (artist_redirects). Each key's artist (artist_keys), for the files that name artists by key."""
-    x.execute("""insert into event_artists (event_id, artist_id, role, as_couple)
-       select b.event_id, b.artist_id, b.role,
-         (select min(c.artist_id) from src.event_artists c join couple_members cm on cm.couple_id = c.artist_id
-          where c.event_id = b.event_id and c.role = b.role and cm.member_id = b.artist_id)
-       from src.event_artists b""")
+    """Each artist booked at an event in a role once (event_artists), as_couple when it repeats its couple's booking,
+    which is left out of line-ups and statistics (resolve_artists), while a different role (the couple teaches, one of
+    them DJs) is a solo booking. Old ids read as the artist they went to (artist_redirects). Each key's artist
+    (artist_keys), for the files that name artists by key."""
+    copied(x, 'event_artists')
     # an id no artist has now reads as the artist its keys went to, through the ids that went on in their turn
     went = {
         r.old_id: r.new_id
@@ -886,13 +876,8 @@ DOCS = {
     'says nothing of where they are from), countries booked in, bookings abroad (outside the home country; null when '
     f'that is not known), popular = at least {POPULAR} bookings, couple_bookings '
     '= further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
-    'event_artists': 'Each artist booked at an event, in a role: once however often its line-up names them. as_couple '
-    'is set when a member is listed in the same role as their couple at the same event: that row repeats the '
-    'couple’s booking and is left out of line-ups and statistics.',
     'artist_redirects': 'Artist ids no artist has now (merged into another, by a claim or a reviewed decision): old_id '
     'now reads as new_id.',
-    'artist_events': 'Every appearance of an artist: direct (their own booking) or member (via a booked couple, '
-    'via_artist_id).',
     'artist_countries': 'Bookings per artist and country; is_home marks the known home country in artist_stats.',
     'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how many festivals '
     'state each.',
