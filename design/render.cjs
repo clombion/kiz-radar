@@ -1,13 +1,13 @@
 // Renders public/share-card.png from share-card.html, with the cities of the festivals coming up taken from the site
 // database, and the icons from public/mark.svg: the favicon public/icon.svg (the mark, in light colours on dark tabs),
 // the animated public/loading.svg, and the PNGs.
-//   NODE_PATH="$(npm root -g)" node design/render.cjs      (needs Playwright with Chromium, and python3)
+//   mise run render:design      (the repository's Playwright and its Chromium, the site database built, uv's Python)
 const { chromium } = require('playwright');
 const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const here = __dirname, site = path.join(here, '..', 'public');
-const places = execFileSync('python3', ['-c', `import sqlite3, json, sys
+const places = execFileSync('uv', ['run', '-q', 'python', '-c', `import sqlite3, json, sys
 db = sqlite3.connect(sys.argv[1])
 print(json.dumps(db.execute('''select round(avg(lat), 3), round(avg(lon), 3), count(*) from event_rows
   where upcoming and lat is not null group by city, country_code''').fetchall()))`, path.join(site, 'data', 'kiz.sqlite')]).toString();

@@ -23,6 +23,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `install:site` | The site's tools, as pnpm-lock.yaml pins them |
 | `build:site` | The site's TypeScript (site/) compiled into public/js/, and the libraries it loads copied into public/vendor/ from the pinned packages |
 | `serve` | The site and its data built, and served at http://localhost:8000 |
+| `render:design` | The share card (public/share-card.png) and the icons drawn again from design/ and public/mark.svg, with the cities of the festivals to come from the site database |
 | `types:site` | tsc, strict, on the site and its tests |
 | `lint:site` | Biome's rules and format on the site, its tests and its CSS, with the lint/ plugins |
 | `knip` | No module, export or package the site doesn't use |
@@ -32,6 +33,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `lint:py` | Ruff's rules on the Python code |
 | `format:py` | The Python code as ruff formats it |
 | `format:md` | The Markdown as mdformat writes it (.mdformat.toml), the prompts left as they are |
+| `format` | Write the formats the checks hold: ruff's on the Python, mdformat's on the Markdown (the prompts left as they are), Biome's on the site |
 | `types:py` | basedpyright, strict, on the pipeline and its tests |
 | `audit` | Every state in the data is one of pipeline/states.py |
 | `generate` | Write the files built from the code: the enums and words of pipeline/states.py, the stylesheet's classes, docs/reference/ |

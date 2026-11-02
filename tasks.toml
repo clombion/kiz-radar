@@ -72,7 +72,12 @@ run = "pnpm run build"
 [serve]
 description = "The site and its data built, and served at http://localhost:8000"
 depends = ["build:site", "build:data"]
-run = "python3 -m http.server -d public 8000"
+run = "uv run -q python -m http.server -d public 8000"
+
+["render:design"]
+description = "The share card (public/share-card.png) and the icons drawn again from design/ and public/mark.svg, with the cities of the festivals to come from the site database"
+depends = ["install:site", "build:data"]
+run = "node design/render.cjs"
 
 ["types:site"]
 description = "tsc, strict, on the site and its tests"
@@ -114,6 +119,15 @@ run = "uv run --group dev ruff format --check"
 ["format:md"]
 description = "The Markdown as mdformat writes it (.mdformat.toml), the prompts left as they are"
 run = "git ls-files -z '*.md' | xargs -0 uv run --group dev mdformat --check"
+
+[format]
+description = "Write the formats the checks hold: ruff's on the Python, mdformat's on the Markdown (the prompts left as they are), Biome's on the site"
+depends = ["install:site"]
+run = """
+uv run -q --group dev ruff format &&
+  git ls-files -z '*.md' | xargs -0 uv run -q --group dev mdformat &&
+  pnpm exec biome check --write --linter-enabled=false
+"""
 
 ["types:py"]
 description = "basedpyright, strict, on the pipeline and its tests"

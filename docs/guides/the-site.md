@@ -66,6 +66,6 @@ publish between the two) is refused with "reload the page".
 ## The share card and the icons
 
 A shared link shows `public/share-card.png`, drawn from `design/share-card.html` with a map of the festivals coming up;
-the icons come from `public/mark.svg`. To redraw them, run `NODE_PATH="$(npm root -g)" node design/render.cjs` (it needs
-Playwright); it also makes `public/loading.svg`. The fonts, Inter and Caveat, are served from `public/fonts` under the
-SIL Open Font License.
+the icons come from `public/mark.svg`. To redraw them, run `mise run render:design` (it builds the site database first,
+and draws with the repository's Playwright); it also makes `public/loading.svg`. The fonts, Inter and Caveat, are served
+from `public/fonts` under the SIL Open Font License.

@@ -13,3 +13,5 @@ public/vendor/
 .vitest/
 .coverage
 .coverage.*
+# secrets kept beside the code, such as an API key
+.env
