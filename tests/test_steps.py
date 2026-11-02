@@ -68,7 +68,8 @@ def test_a_load_leaves_the_artists_but_none_of_the_mentions_it_replaced(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     """load_extract makes its mentions again, under new ids: the bookings of the old ones go with them (a reference
-    that cascades), and the artists stay, for resolve_artists to book the new mentions."""
+    that cascades), and the artists stay, for resolve_artists to book the new mentions; the site's build refuses the
+    export until it has."""
     src = copied()
     with sqlite_db.opened(src, 'ro') as db:
         artists = db.value(int, 'select count(*) from artists')
@@ -77,6 +78,9 @@ def test_a_load_leaves_the_artists_but_none_of_the_mentions_it_replaced(
     with sqlite_db.opened(src, 'ro') as db:
         assert not db.exists('select 1 from event_artists')
         assert db.value(int, 'select count(*) from artists') == artists
+    # until then, a site built from it would show every line-up empty
+    with pytest.raises(SystemExit, match=r'artist mentions no artist resolves: run mise run resolve'):
+        _ = build_site_db.build(src, tmp_path / 'site.db')
 
 
 def test_resolving_the_artists_again_changes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

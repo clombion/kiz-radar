@@ -972,6 +972,18 @@ def table_docs(x: Transaction) -> None:
     )
 
 
+def resolved(db: Reader) -> None:
+    """Refuse an export whose mentions resolve_artists hasn't resolved: a load makes them again, under new ids, and
+    their bookings go with the old ones until resolve books the new (an empty line-up, built and published)."""
+    unresolved = db.value(
+        int,
+        'select count(*) from src.artist_mentions m'
+        ' where not exists (select 1 from src.mention_artists a where a.mention_id = m.id)',
+    )
+    if unresolved:
+        sys.exit(f'the export has {unresolved} artist mentions no artist resolves: run mise run resolve after the load')
+
+
 @dataclass(frozen=True)
 class Built:
     site: dict[str, object]  # the summary site.json holds
@@ -987,6 +999,7 @@ def build(src: Path, out: Path) -> Built:
     with sqlite_db.opened(building, 'rwc') as db:
         db.attach('src', src, 'ro')
         export.current(db, 'src')
+        resolved(db)
         with db.transaction() as x:
             for ddl in TABLES.values():
                 x.script(ddl)
