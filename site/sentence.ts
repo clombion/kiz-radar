@@ -309,7 +309,9 @@ export function sentenceView(
     h(
       'p',
       { class: 'nevermind' },
-      choose(LOOSEST, 'Never mind, show me all events', () => results.scrollIntoView({ behavior: scrolling() })),
+      choose(LOOSEST, 'Never mind, show me every festival in the coming year', () =>
+        results.scrollIntoView({ behavior: scrolling() }),
+      ),
     ),
   );
 
@@ -485,7 +487,12 @@ export function sentenceView(
       return h('div', {}, cards, more);
     }
     if (widened) return h('p', { class: 'empty' }, 'No festival fits that time and price. ', widen(widened));
-    return h('p', { class: 'empty' }, 'No festival fits all of that. ', choose(LOOSEST, 'Show all events instead'));
+    return h(
+      'p',
+      { class: 'empty' },
+      'No festival fits all of that. ',
+      choose(LOOSEST, 'Show every festival in the coming year instead'),
+    );
   }
 
   function render(): void {

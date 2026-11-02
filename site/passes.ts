@@ -72,7 +72,8 @@ function passesDialog(): PassesView {
   return view;
 }
 
-// Opens over the page; each pass on sale with today's price, and the next change when one is listed.
+// Opens over the page; each pass whose tiers have not all ended, with today's price or why there is none, and the next
+// change when one is listed.
 export function openPasses(e: { id: number; title: string; url: string } & Priced, from?: Element | null): void {
   const v = passesDialog();
   v.title.textContent = `Passes for ${e.title}`;

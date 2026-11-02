@@ -59,7 +59,7 @@ export const loading = (words = '') =>
     h('span', {}, words || h('span', { class: 'visually-hidden' }, 'Loading')),
   );
 
-// Flights leave from the home airport (the tier-0 airport in pipeline/airports.csv).
+// Flights leave from the home airport (the one pipeline/airports.csv marks home).
 export const home = () => site().home;
 
 export function flightsUrl(airport: string, depart: string, ret: string): string {
