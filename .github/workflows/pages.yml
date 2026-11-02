@@ -14,6 +14,7 @@ permissions: {}
 
 env:
   UV_LOCKED: 1   # uv.lock as committed, or the build fails
+  PYTHONUNBUFFERED: 1   # each line a step prints is in the log as it goes, not all at its end
 
 # one publish at a time, each of main as it is when it starts
 concurrency:
