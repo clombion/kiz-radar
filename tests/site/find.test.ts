@@ -107,10 +107,10 @@ test('the matches come by group, the best match first and then the highest rank,
 });
 
 test('a query that matches nothing names the name a typo away, of what is shown', () => {
-  expect(answer(ITEMS, 'portugl', false)).toMatchObject({ kind: 'none', near: { name: 'Portugal' } });
-  expect(answer(ITEMS, 'finlnd', false)).toEqual({ kind: 'none', near: null }); // nothing coming up there
-  expect(answer(ITEMS, 'finlnd', true)).toMatchObject({ kind: 'none', near: { name: 'Finland' } });
-  expect(answer(ITEMS, 'xyzzy', false)).toEqual({ kind: 'none', near: null });
+  expect(answer(ITEMS, 'portugl', false)).toMatchObject({ kind: 'nothing', near: { name: 'Portugal' } });
+  expect(answer(ITEMS, 'finlnd', false)).toEqual({ kind: 'nothing', near: null }); // nothing coming up there
+  expect(answer(ITEMS, 'finlnd', true)).toMatchObject({ kind: 'nothing', near: { name: 'Finland' } });
+  expect(answer(ITEMS, 'xyzzy', false)).toEqual({ kind: 'nothing', near: null });
 });
 
 test('a match scores by how much of the name it is', () => {

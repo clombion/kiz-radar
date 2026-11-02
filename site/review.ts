@@ -41,19 +41,19 @@ const MARKS = /\p{M}/gu; // the accents a search folds away
 const SOON = 14; // days before its expiry the token's state warns
 const RAIL = 60; // items the rail lists at a time
 
-// ----- the token: none, being checked, good (whose), or refused; the page can write only with a good one
+// ----- the token: missing, being checked, good (whose), or refused; the page can write only with a good one
 
 type Access =
-  | { state: 'none' }
+  | { state: 'missing' }
   | { state: 'checking' }
   | { state: 'ok'; login: string }
   | { state: 'refused'; why: string };
-let access: Access = { state: 'none' };
+let access: Access = { state: 'missing' };
 const canWrite = (): boolean => access.state === 'ok';
 
 function accessWords(): string {
   switch (access.state) {
-    case 'none':
+    case 'missing':
       return 'Read-only · add a token';
     case 'checking':
       return 'Checking the token…';
@@ -142,7 +142,7 @@ function tokenDialog(repository: string): HTMLDialogElement {
           class: 'quiet',
           onclick: () => {
             forgetToken();
-            access = { state: 'none' };
+            access = { state: 'missing' };
             said.textContent = 'Forgotten: the page is read-only.';
             render();
           },
@@ -157,11 +157,12 @@ function tokenDialog(repository: string): HTMLDialogElement {
 
 // ----- queues: the items, where the page is in each, and what is settled
 
-type Tab = 'merges' | 'join' | 'contested' | 'unknown' | 'festivals' | 'orphaned' | 'timeline';
+// the contested homes' queue is that state's, named by its key in the address
+type Tab = 'merges' | 'join' | typeof KEY.home_basis.CONTESTED | 'unknown' | 'festivals' | 'orphaned' | 'timeline';
 const TABS: readonly (readonly [Tab, string])[] = [
   ['merges', 'Merges'],
   ['join', 'Join two artists'],
-  ['contested', 'Contested homes'],
+  [KEY.home_basis.CONTESTED, 'Contested homes'],
   ['unknown', 'Unknown homes'],
   ['festivals', 'Festivals'],
   ['orphaned', 'Orphaned claims'],
@@ -201,8 +202,8 @@ function queue(r: Review, tab: Tab): Queue | null {
       sub: (i) => `${plural(m(i)?.shared ?? 0, 'festival')} together`,
     };
   }
-  if (tab === 'contested' || tab === 'unknown') {
-    const items = homes(r, tab === 'contested');
+  if (tab === KEY.home_basis.CONTESTED || tab === 'unknown') {
+    const items = homes(r, tab === KEY.home_basis.CONTESTED);
     const a = (i: number) => items[i];
     return {
       ids: items.map(homeId),

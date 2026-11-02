@@ -14,7 +14,8 @@ A failure *by construction* means one from the type checker, at import, when a v
   a note or a filter without words, a waiting state without an owner, or an `under` naming no state fails;
 - the records (`pipeline/records.py`) and SQL checks are built from the rows, so a value outside them is refused when it
   is written or read;
-- Tests scan the site's code for state words or browser-made keys the table doesn't have;
+- Biome refuses a state's key written in quotes where the site compares or passes one (`lint/states.grit`), and Tests
+  scan the site's code for a state's words;
 - every function that chooses between states has a test reaching each of them.
 
 ## 1. The census
@@ -77,9 +78,11 @@ The same rows carry the mapping:
   the table next to the database, with every state's key by name (`KEY.price.PRICED`) and the links' (`LINK.PAGE`).
   `site/wording.ts` says them. The table types them: a point, a state or a form it doesn't have fails to compile, a key
   from the database is parsed into its point's type where its row is read (`site/rows.ts`), and an icon `icons.ts`
-  doesn't draw fails where it is asked for. Tests scan the site's code for a state's words, a fragment of them between
-  `{names}`, or a key written in quotes. The site's database has the same rows as its `states` table, for whoever reads
-  the data.
+  doesn't draw fails where it is asked for. A key is written `KEY.<point>.<NAME>`: Biome's `lint/states.grit`, generated
+  from the same keys, refuses one in quotes where a state is compared (`===`, a `case`) or passed (a call's argument),
+  so it needs no list of the other things a name like `none` means. Tests scan the site's code for a state's words or a
+  fragment of them between `{names}`. The site's database has the same rows as its `states` table, for whoever reads the
+  data.
 
 **Wording** is at the data's precision: it explains the state, never the pipeline's mechanism. States a reader needn't
 tell apart share their wording, but keep their own key and owner. Every state's wording is in the

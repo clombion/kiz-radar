@@ -9,9 +9,9 @@ import type { Params } from './routes.ts';
 import { BOOKINGS, flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
 
 // the groups results come in, always in this order
-type Group = 'person' | 'festival' | 'artist' | 'place' | 'tag';
+type Group = 'friend' | 'festival' | 'artist' | 'place' | 'tag';
 const GROUPS: readonly (readonly [Group, string])[] = [
-  ['person', 'Friends'],
+  ['friend', 'Friends'],
   ['festival', 'Festivals'],
   ['artist', 'Artists'],
   ['place', 'Places'],
@@ -55,7 +55,7 @@ export interface Base {
 export type Item = Base &
   (
     | { kind: 'festival'; e: FoundEvent }
-    | { kind: 'person'; p: Person; upcoming: number }
+    | { kind: 'friend'; p: Person; upcoming: number }
     | { kind: 'artist'; a: FoundArtist; shares: boolean }
     | { kind: 'country'; country: { code: string; name: string }; n: number }
     | { kind: 'city'; city: City }
@@ -73,7 +73,7 @@ export type Found<K extends Kind> = Extract<Item, { kind: K }>;
 const groupOf = (item: Item): Group => (item.kind === 'country' || item.kind === 'city' ? 'place' : item.kind);
 // of two items, which comes first: by kind (a country before its cities), then by rank within the kind, so ranks of
 // different kinds, each on its own scale, are never compared
-const KIND_ORDER: Readonly<Record<Kind, number>> = { person: 0, festival: 1, artist: 2, country: 3, city: 4, tag: 5 };
+const KIND_ORDER: Readonly<Record<Kind, number>> = { friend: 0, festival: 1, artist: 2, country: 3, city: 4, tag: 5 };
 export const before = (a: Item, b: Item): number => KIND_ORDER[a.kind] - KIND_ORDER[b.kind] || b.rank - a.rank;
 
 // Every token typed must start a word of the item; an item whose name is the query, or starts with it, comes first.
@@ -123,7 +123,7 @@ export type Answer =
   | { kind: 'suggest' }
   | { kind: 'found'; tokens: string[]; groups: (readonly [Group, string, Item[]])[]; count: number; hidden: number }
   | { kind: 'past'; hidden: number }
-  | { kind: 'none'; near: Item | null };
+  | { kind: 'nothing'; near: Item | null };
 export function answer(items: readonly Item[], query: string, withPast: boolean): Answer {
   const tokens = words(query),
     folded = tokens.join(' ');
@@ -141,7 +141,7 @@ export function answer(items: readonly Item[], query: string, withPast: boolean)
   if (groups.length > 0) return { kind: 'found', tokens, groups, count: found.length, hidden };
   if (hidden > 0) return { kind: 'past', hidden };
   return {
-    kind: 'none',
+    kind: 'nothing',
     near: nearest(
       items.filter((item) => withPast || !item.past),
       folded,

@@ -6,7 +6,8 @@
 pipeline/enums.py holds the code's enums of the states and site/states.ts the site's words for them; each is
 written here and nowhere else, so a new state is one row of pipeline/states.py and then this command. site/classes.ts
 names the classes public/css/ defines, the only ones the site's h() takes, so a class is one rule of the stylesheet and
-then this command. public/index.html and public/site.webmanifest name the home city (pipeline/airports.csv's home)
+then this command. lint/states.grit refuses a state's key written in quotes on the site, from the same keys.
+public/index.html and public/site.webmanifest name the home city (pipeline/airports.csv's home)
 where crawlers and installs read it, without the scripts. docs/reference/ holds the commands, the files and the
 states (pipeline/reference.py).
 """
@@ -38,6 +39,38 @@ def classes_module() -> str:
         "// dom.ts's h() takes, so an element can't be given a class no rule styles.\n"
         f'export type ClassName ={union};\n'
     )
+
+
+# the rule, with KEYS where the keys go: a key in quotes, where it is compared or passed in a module of site/
+STATES_RULE = r"""language js
+
+// Written by pipeline/generate.py (mise run generate) from the keys of the states the site shows
+// (pipeline/states.py). A state is compared and passed as KEY.<point>.<NAME>, which the compiler holds to the table:
+// a key in quotes where one is compared (===, !==, a switch's case) or passed (a call's argument) is refused, whatever
+// else the code calls by the same name. plural() takes words, not states.
+pattern state_key() {
+  or { JsStringLiteralExpression(), JsTemplateExpression() } as $key where {
+    $key <: r"^['\"`](?:KEYS)['\"`]$",
+    register_diagnostic(span=$key, message="Write a state as KEY.<point>.<NAME> (site/states.ts), held to the table.")
+  }
+}
+
+or { JsCallExpression(), JsBinaryExpression(), JsCaseClause() } as $use where {
+  $filename <: r".*/site/[^/]+\.ts",
+  $filename <: not r"(?:.*/)?tests/.*",
+  $use <: or {
+    `$f($args)` where { $f <: not `plural`, $args <: some state_key() },
+    or { `$a === $b`, `$a !== $b`, `$a == $b`, `$a != $b` } where { or { $a <: state_key(), $b <: state_key() } },
+    JsCaseClause(test=$test) where { $test <: state_key() }
+  }
+}
+"""
+
+
+def states_rule() -> str:
+    """lint/states.grit: Biome's plugin refusing a state's key written in quotes where a state is compared or passed,
+    so the site reads each through KEY (site/states.ts), which the compiler holds to the table."""
+    return STATES_RULE.replace('KEYS', '|'.join(sorted({k for p in states.SITE_POINTS for k in states.keys(p)})))
 
 
 INDEX = ROOT / 'public' / 'index.html'
@@ -76,6 +109,7 @@ FILES: dict[Path, Callable[[], str]] = {
     ROOT / 'pipeline' / 'enums.py': states.enums_module,
     ROOT / 'site' / 'states.ts': states.ts_module,
     ROOT / 'site' / 'classes.ts': classes_module,
+    ROOT / 'lint' / 'states.grit': states_rule,
     INDEX: index_page,
     MANIFEST: manifest,
     **reference.PAGES,
