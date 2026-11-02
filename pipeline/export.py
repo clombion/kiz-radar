@@ -245,6 +245,18 @@ update artist_ids set match_key = (select a.match_key from artists a where a.id 
 where artist_id in (select id from artists);
 """,
     ),
+    # 10: a group's key says it is a group's (g:), as a person's says p:, a couple's c: and an organisation's o:: a
+    # media team's or crew's was o: (313 artists) and a line-up of three or more c: (2), with the kind written beside it
+    # (pipeline/names.py ArtistKey); every key of those artists, and the ids given to them, renamed so, which the next
+    # run makes the same keys of, so the artists keep their ids
+    """update artist_keys set match_key = 'g:' || substr(match_key, 3)
+    where substr(match_key, 1, 2) in ('c:', 'o:') and artist_id in (select id from artists where kind = 'group');
+    update artist_ids set match_key = 'g:' || substr(match_key, 3)
+    where substr(match_key, 1, 2) in ('c:', 'o:') and artist_id in (select id from artists where kind = 'group');
+    update artist_names set match_key = 'g:' || substr(match_key, 3)
+    where substr(match_key, 1, 2) in ('c:', 'o:') and artist_id in (select id from artists where kind = 'group');
+    update artists set match_key = 'g:' || substr(match_key, 3)
+    where substr(match_key, 1, 2) in ('c:', 'o:') and kind = 'group';""",
 )
 
 

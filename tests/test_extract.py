@@ -50,6 +50,7 @@ from pipeline.enums import (
 )
 from pipeline.extract import answers, ask, check_output, load_extract, prices, questions, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
+from pipeline.names import ArtistKey, kind_of
 from pipeline.prompt import Prompt, api_schema
 from pipeline.records import (
     ANSWERS,
@@ -507,7 +508,9 @@ def test_a_group_key_no_mention_produces_is_orphaned_and_the_group_stands() -> N
 @pytest.mark.parametrize(
     ('row', 'refused'),
     [
-        (lambda: duo('ab', 'p:absound'), 'pattern'),
+        (lambda: duo('ab', 'p:absound'), 'is no artist key'),
+        (lambda: duo('p:ab', 'p:absound'), 'keyed as a group'),
+        (lambda: duo('g:ab', 'p:ab sound'), 'a body without spaces'),
         (
             lambda: Pair.model_validate({'key_a': 'p:b', 'key_b': 'p:a'}),
             'key order',
@@ -515,7 +518,7 @@ def test_a_group_key_no_mention_produces_is_orphaned_and_the_group_stands() -> N
     ],
 )
 def test_a_row_of_the_artists_csvs_is_written_one_way(row: Callable[[], object], refused: str) -> None:
-    """A group's key is apart from every mention's key, and a merge's pair is in key order."""
+    """A group's key is a group's, every key an artist's key, and a merge's pair is in key order."""
     with pytest.raises(ValidationError, match=refused):
         _ = row()
 
@@ -1248,3 +1251,37 @@ def test_two_couples_are_paired_by_their_members_keys_as_the_resolution_keys_the
     assert members[11] == ['carla', 'tony']
     assert members[12] == ['drkizomba', 'laura']
     assert [(i, j) for i, j, _ in merge_suggestions.couple_pairs(members)] == [(10, 11), (12, 13)]
+
+
+def test_a_key_is_its_kind_and_body_and_reads_back_as_it_was_written() -> None:
+    for text, kind in (
+        ('p:chiara@chiara+chiara#1', ArtistKind.PERSON),
+        ('c:ana+bea', ArtistKind.COUPLE),
+        ('g:amira@amira+dafne+raul+dafne@amira+dafne+raul+raul', ArtistKind.GROUP),
+        ('o:kizzryders', ArtistKind.ORGANISATION),
+    ):
+        key = ArtistKey.parse(text)
+        assert (key.kind, str(key)) == (kind, text)
+    assert ArtistKey.parse('p:chiara@chiara+chiara#1').name == 'chiara'
+    for text in ('chiara', 'x:chiara', 'p:', 'p:two words'):
+        with pytest.raises(ValueError, match='is no artist key'):
+            _ = ArtistKey.parse(text)
+
+
+def test_a_mentions_key_says_its_kind() -> None:
+    """A couple is c:, three or more people g:, a team or crew g:, unless a festival names it its organiser (o:)."""
+    mentions = [
+        *named('Ana & Bea', 'Ana & Bea & Cris'),
+        *named('Kizz Ryders', role=Role.ORGANISER),
+        *named('Kizz Ryders', '32 Beats Production', role=Role.CREW),
+    ]
+    mentions = [m.model_copy(update={'id': i}) for i, m in enumerate(mentions)]
+    keys = resolve_artists.keyed(mentions, [])
+    assert [keys.mention_key[m.id] for m in mentions] == [
+        'c:ana+bea',
+        'g:ana+bea+cris',
+        'o:kizzryders',
+        'o:kizzryders',
+        'g:32beatsproduction',
+    ]
+    assert all(kind_of(k) == kind for k, kind in keys.kinds.items())

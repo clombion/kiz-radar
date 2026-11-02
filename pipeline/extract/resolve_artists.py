@@ -23,6 +23,9 @@ Matching rules:
     spaces), the one rule names are keyed and compared by.
   - Dancer, DJ, performer and MC names are split into members on & + and et e y und; organiser, media
     and crew names are never split.
+  - A key says its artist's kind (pipeline/names.py ArtistKey), which the artist is stored as: p: a person, c: a
+    couple, g: a group (three or more people, a media team or a crew, or a group of groups.csv), o: an organisation
+    (a name some festival gives as its organiser, whatever role this one gives it).
   - Mentions merge automatically only on an exact key. A couple's key is its sorted member keys. A person's
     key is their name key when the name has several words. A single-word name is weak evidence of identity
     (many teachers share a first name), so its key is scoped: a solo single-word name to its role family
@@ -77,7 +80,7 @@ from pipeline.db import Reader, Transaction
 from pipeline.enums import ArtistKind, ClaimState, MergeDecision, MergeReason, Model, Role, Via
 from pipeline.extract import merge_review, run_log
 from pipeline.extract.prices import COUPLE
-from pipeline.names import PREFIX, clean_display, sim, token_key
+from pipeline.names import JOINED, PLACE, PREFIX, SCOPE, ArtistKey, clean_display, key_of, kind_of, sim, token_key
 from pipeline.records import Group, MergeQuestion, Record, ReviewMention, today
 from pipeline.text import tidy_name
 
@@ -249,8 +252,8 @@ def words_of(name: str) -> list[str]:
 def person_key(name: str, role: Role, couple_scope: str | None) -> str:
     k = token_key(name)
     if len(words_of(name)) > 1:
-        return f'p:{k}'
-    return f'p:{k}@{couple_scope}' if couple_scope else f'p:{k}@{role_family(role)}'
+        return key_of(ArtistKind.PERSON, k)
+    return key_of(ArtistKind.PERSON, f'{k}{SCOPE}{couple_scope or role_family(role)}')
 
 
 class UnionFind:
@@ -505,6 +508,10 @@ class Gathered:
         default_factory=lambda: defaultdict(lambda: defaultdict(set))
     )
 
+    def known(self, key: str) -> None:
+        """A key a mention or a named group gives, of the kind its prefix says."""
+        self.kinds[key] = kind_of(key)
+
     def keys(self) -> Keys:
         """What was gathered, as plain mappings: reading a key nothing said gives no entry."""
         return Keys(
@@ -527,18 +534,18 @@ def apart(pkeys: list[str]) -> list[str]:
     out: list[str] = []
     for pk in pkeys:
         seen[pk] += 1
-        out.append(f'{pk}#{seen[pk]}' if pkeys.count(pk) > 1 else pk)
+        out.append(f'{pk}{PLACE}{seen[pk]}' if pkeys.count(pk) > 1 else pk)
     return out
 
 
 def person_keys(keys: Gathered, m: Mention) -> tuple[str, list[str]]:
     """(the mention's key, the person keys of its members) for a mention of people: one, a couple or a group."""
     parts = members_of(m.name_as_written, m.role)
-    scope = '+'.join(sorted(token_key(p) for p in parts)) if len(parts) > 1 else None
+    scope = JOINED.join(sorted(token_key(p) for p in parts)) if len(parts) > 1 else None
     pkeys = apart([person_key(p, m.role, scope) for p in parts])
     for p, pk in zip(parts, pkeys, strict=True):
         keys.names[pk].append(p)
-        keys.kinds[pk] = ArtistKind.PERSON
+        keys.known(pk)
         if codes := country_codes(m.country):
             keys.stated_countries[pk].update(codes)
             keys.stated_sets[pk].add(codes)
@@ -547,22 +554,26 @@ def person_keys(keys: Gathered, m: Mention) -> tuple[str, list[str]]:
         keys.partners[pk].update(set(pkeys) - {pk})
     if scope is None:
         return pkeys[0], pkeys
-    key = 'c:' + scope
-    keys.kinds[key] = ArtistKind.COUPLE if len(pkeys) == COUPLE else ArtistKind.GROUP
+    key = key_of(ArtistKind.COUPLE if len(pkeys) == COUPLE else ArtistKind.GROUP, scope)
+    keys.known(key)
     keys.members[key] = pkeys
     for form, pk in zip(apart([token_key(p) for p in parts]), pkeys, strict=True):  # a member's spellings, by place
         keys.member_forms[key][form].add(pk)
     return key, pkeys
 
 
-def keyed(mentions: Iterable[Mention], groups: Iterable[Group]) -> Keys:
-    """The keys of every mention and of its members, and the named groups' keys with their members."""
+def keyed(mentions: Sequence[Mention], groups: Iterable[Group]) -> Keys:
+    """The keys of every mention and of its members, and the named groups' keys with their members. A name of the
+    organiser's roles is an organisation's when some festival names it its organiser, else a group's (a media team, a
+    crew), whichever role this mention gives it."""
     keys = Gathered()
+    organisers = {token_key(m.name_as_written) for m in mentions if m.role == Role.ORGANISER}
     for m in mentions:
         pkeys_seen: list[str] = []
         if m.role in ORG_ROLES:
-            key = f'o:{token_key(m.name_as_written)}'
-            keys.kinds[key] = ArtistKind.ORGANISATION if m.role == Role.ORGANISER else ArtistKind.GROUP
+            name = token_key(m.name_as_written)
+            key = key_of(ArtistKind.ORGANISATION if name in organisers else ArtistKind.GROUP, name)
+            keys.known(key)
         else:
             key, pkeys_seen = person_keys(keys, m)
         if key not in pkeys_seen:  # a solo name was already counted as its single part
@@ -571,7 +582,7 @@ def keyed(mentions: Iterable[Mention], groups: Iterable[Group]) -> Keys:
             keys.event_countries[key].add(m.event_country)
         keys.mention_key[m.id] = key
     for g in groups:
-        keys.kinds[g.group_key] = ArtistKind.GROUP
+        keys.known(g.group_key)
         keys.members[g.group_key] = [m for m in g.members if m in keys.kinds]
     return keys.keys()
 
@@ -733,7 +744,7 @@ class Pairing:
     @classmethod
     def of(cls, keys: Keys) -> Self:
         """The pairing of the person keys."""
-        bare = {k: k[2:].split('@')[0] for k in keys.kinds if k.startswith('p:')}
+        bare = {k: ArtistKey.parse(k).name for k, kind in keys.kinds.items() if kind == ArtistKind.PERSON}
         people = {
             k: Person(
                 b,
@@ -771,7 +782,7 @@ class Pairing:
             p = self.people[x]
             return (
                 f'{k.names[x][0]!r}: countries {sorted(p.stated) or "-"}, events in {sorted(p.events)[:4]},'
-                f' partners {sorted(q[2:] for q in k.partners[x])[:4]}'
+                f' partners {sorted(ArtistKey.parse(q).body for q in k.partners[x])[:4]}'
             )
 
         return f'{side(a)} | {side(b)}'
@@ -791,7 +802,7 @@ def candidates(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> tu
                 Candidate(a, b, names[a][0], names[b][0], reason, round(sim, 3), pairing.evidence(a, b), decision)
             )
     for k, p in sorted(pairing.people.items()):
-        if '@' in k and any(not (x & y) for x, y in itertools.combinations(p.stated_sets, 2)):
+        if ArtistKey.parse(k).scoped and any(not (x & y) for x, y in itertools.combinations(p.stated_sets, 2)):
             name = names[k][0]
             evidence = f'countries {sorted(p.stated)}'
             out.append(
@@ -904,9 +915,9 @@ def same_members(keys: Keys, uf: UnionFind) -> list[set[str]]:
     same: defaultdict[tuple[str, tuple[str, ...]], set[str]] = defaultdict(set)
     for ms in keys.members.values():
         for m in ms:
-            if '@' in m:
+            if (key := ArtistKey.parse(m)).scoped:
                 partner_roots = tuple(sorted(uf.find(x) for x in ms if x != m))
-                same[(m[2:].split('@')[0], partner_roots)].add(m)
+                same[(key.name, partner_roots)].add(m)
     return list(same.values())
 
 
@@ -942,8 +953,8 @@ def final_keys(keys: Keys, uf: UnionFind, groups: Iterable[Group]) -> dict[str, 
         group_keys.add(g.group_key)
         uf.absorb(g.group_key, [a for a in g.aliases if a in keys.kinds])
 
-    def couple_root(k: str) -> str:
-        return 'c:' + '+'.join(sorted(uf.find(m)[2:] for m in keys.members[k]))
+    def couple_root(k: str) -> str:  # a couple or group of mentions, of its members' artists
+        return key_of(keys.kinds[k], JOINED.join(sorted(ArtistKey.parse(uf.find(m)).body for m in keys.members[k])))
 
     out: dict[str, str] = {}
     for k in keys.kinds:
@@ -1055,9 +1066,6 @@ def write_artists(
     for k, ns in keys.names.items():
         for n in ns:
             alias_counts[final_key[k]][n] += 1
-    first: dict[str, str] = {}  # each artist's first key, whose kind it is unless it is a group
-    for k in keys.kinds:
-        _ = first.setdefault(final_key[k], k)
     keys_of: defaultdict[str, list[str]] = defaultdict(list)
     for k, fk in final_key.items():
         keys_of[fk].append(k)
@@ -1070,7 +1078,7 @@ def write_artists(
         new = renamed_key(used, year)
         if new is not None:
             renamed.add(new)
-        if fk not in group_display and keys.kinds[first[fk]] == ArtistKind.PERSON:
+        if kind_of(fk) == ArtistKind.PERSON:
             as_roles |= role_names({k: spelled(keys.names[k]) for k in used}, used)
         display = group_display.get(fk) or (
             spelled(keys.names[new])  # a rename shows the new name
@@ -1079,8 +1087,7 @@ def write_artists(
             if alias_counts[fk]
             else fk
         )
-        kind = ArtistKind.GROUP if fk in group_display else keys.kinds[first[fk]]
-        artists.append({'id': ids[fk], 'display_name': tidy_name(display), 'kind': kind, 'match_key': fk})
+        artists.append({'id': ids[fk], 'display_name': tidy_name(display), 'kind': kind_of(fk), 'match_key': fk})
     con.insert('artists', artists)
     con.insert(
         'artist_aliases',

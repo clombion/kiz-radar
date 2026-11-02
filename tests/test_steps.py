@@ -16,8 +16,9 @@ from pipeline import build_site_db, claims, data, merge_suggestions, scrape
 from pipeline import db as sqlite_db
 from pipeline.claims import HomeClaim, MergeClaim
 from pipeline.db import Reader
-from pipeline.enums import ClaimSource, ClaimState, MergeDecision
+from pipeline.enums import ArtistKind, ClaimSource, ClaimState, MergeDecision
 from pipeline.extract import load_extract, resolve_artists, run_log
+from pipeline.names import kind_of
 from pipeline.records import Group, Json
 from tests import jsons
 from tests.exports import EVERYTHING, EXPORT, Made, committed, content, copied, run, trimmed
@@ -280,6 +281,17 @@ def test_every_artist_is_the_key_its_id_was_last_given_to() -> None:
             ' where not exists (select 1 from artist_ids i where i.artist_id = a.id and i.match_key = a.match_key)',
         )
     assert apart == 0
+
+
+class Kinded(BaseModel):
+    kind: ArtistKind
+    match_key: str
+
+
+def test_every_artists_key_says_its_kind() -> None:
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        artists = db.rows(Kinded, 'select kind, match_key from artists')
+    assert [a for a in artists if kind_of(a.match_key) != a.kind] == []
 
 
 class Documented(BaseModel):

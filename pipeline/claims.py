@@ -19,9 +19,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Annotated, Literal, Self
 
-from pydantic import AfterValidator, Discriminator, Field, TypeAdapter, ValidationError, model_validator
+from pydantic import AfterValidator, Discriminator, TypeAdapter, ValidationError, model_validator
 
-from pipeline import countries, data, files, states
+from pipeline import countries, data, files, names, states
 from pipeline.enums import ClaimSource, MergeDecision, Waiting
 from pipeline.extract import merge_review
 from pipeline.records import Record, Stamp, Text, digest, errors
@@ -36,7 +36,7 @@ def country(code: str) -> str:
 
 
 Country = Annotated[str, AfterValidator(country)]
-Key = Annotated[str, Field(pattern=r'^[pcog]:\S+$')]  # an artist's key as a mention gives it (resolve_artists)
+Key = Annotated[str, AfterValidator(names.checked)]  # an artist's key as a mention gives it (names.ArtistKey)
 Decided = Literal[MergeDecision.MERGE, MergeDecision.SEPARATE]  # what a merge claim decides; unsure decides nothing
 
 
