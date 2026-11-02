@@ -1300,7 +1300,25 @@ def test_passes_alike_in_every_field_load_back_as_the_passes_they_are(
     tickets_store.save_read(read(passes=[one.model_copy(update={'tiers': (t,)}) for t in one.tiers]))
     assert tickets_store.record(7) == []
     loaded = load_extract.page_prices({7})[0][7].answer
-    assert [len(p.tiers) for p in loaded.passes] == [1, 1]
+
+    def priced(amount: float, name: str, *, sold_out: bool) -> PricedPass:
+        sale = Sale(from_=None, until=None, quantity=None, current=False)
+        t = PricedTier(
+            amount=amount, currency='EUR', fee=None, alt=None, sale=sale, sold_out=sold_out, quote=f'{name} €{amount}'
+        )
+        return PricedPass(
+            kind=PassKind.FULL, style=None, label_quote='Fullpass', group_size=1, days=None, includes_hotel=False,
+            tiers=(t,),
+        )  # fmt: skip
+
+    assert loaded == Priced(
+        event_id=7,
+        passes=(
+            priced(102.56, 'Fullpass Male 100€', sold_out=True),
+            priced(123.08, 'Fullpass Male 120€', sold_out=False),
+        ),
+        rule_quotes=(),
+    )
 
 
 @pytest.mark.parametrize(

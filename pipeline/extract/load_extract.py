@@ -110,7 +110,8 @@ CREATE TABLE pass_tiers (
 ) STRICT;
 CREATE TABLE event_price_notes (
     event_id INTEGER PRIMARY KEY REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-    notes TEXT NOT NULL           -- the description's words, one rule per line
+    notes TEXT NOT NULL           -- the description's words: a JSON list of its rules, each as quoted (a quote
+                                  -- may hold a newline, so no line parts one from the next)
 ) STRICT;
 CREATE TABLE price_status (
     event_id INTEGER PRIMARY KEY REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
@@ -337,7 +338,7 @@ def load_prices(
         start, edited = dates[ev.event_id]
         passes[ev.event_id] = ev.passes
         if ev.rule_quotes:
-            notes.append({'event_id': ev.event_id, 'notes': '\n'.join(ev.rule_quotes)})
+            notes.append({'event_id': ev.event_id, 'notes': json.dumps(ev.rule_quotes, ensure_ascii=False)})
         for p, ps in enumerate(ev.passes, 1):
             pass_rows.append(
                 {

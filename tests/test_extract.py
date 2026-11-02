@@ -1075,6 +1075,16 @@ def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices(memory:
     ]
 
 
+def test_price_notes_load_as_the_quotes_they_are_a_newline_in_one_included(memory: Memory) -> None:
+    quotes = ('Prices exclude\nticketing fees', 'the price rises €10 every month')
+    ev = priced(tier('Full pass 80€ until 31.01')).model_copy(update={'rule_quotes': quotes})
+    described = {5: answers.Answer(ev, provenance('0' * 16, None), Path('x'))}
+    with loaded(memory()) as con:
+        load_extract.load_prices(con, described, {}, {})
+        notes = con.column(str, 'SELECT notes FROM event_price_notes WHERE event_id = 5')
+    assert [JSON.validate_json(n) for n in notes] == [list(quotes)]
+
+
 @pytest.fixture
 def answered_here() -> Path:
     """The answers folder of the test's data folder."""
