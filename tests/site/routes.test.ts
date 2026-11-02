@@ -2,11 +2,13 @@ import { expect, test } from 'vitest';
 import {
   artistHref,
   type CityKey,
+  changed,
   cityOf,
   cityOnMapHref,
   eventOnMapHref,
   festivalsHref,
   parseRoute,
+  readState,
 } from '../../site/routes.ts';
 
 // the parts after map/city/ of an address, as the router reads it
@@ -41,4 +43,36 @@ test('parts that are no city are none', () => {
   expect(cityOf(['PT'])).toBeNull();
   expect(cityOf(['PT', 'Lisbon', 'more'])).toBeNull();
   expect(cityOf(['PT', '%'])).toBeNull();
+});
+
+// a view's choices, as the Countries view has them
+const DEFAULTS: { sort: 'upcoming' | 'fare'; all: number; q: string } = { sort: 'upcoming', all: 0, q: '' };
+const ALLOWED = { sort: ['upcoming', 'fare'] as const, all: [0, 1] };
+
+test('a state read from an address keeps each value of its default’s type, and names what it drops', () => {
+  expect(readState('sort=fare&all=1&q=élo', DEFAULTS, ALLOWED)).toEqual({
+    state: { sort: 'fare', all: 1, q: 'élo' },
+    dropped: [],
+  });
+  expect(readState('sort=price&all=2', DEFAULTS, ALLOWED)).toEqual({
+    state: DEFAULTS,
+    dropped: ['sort=price', 'all=2'],
+  });
+  // a number with no list of its own is any finite one
+  expect(readState('all=3', DEFAULTS).state.all).toBe(3);
+  expect(readState('all=x', DEFAULTS)).toEqual({ state: DEFAULTS, dropped: ['all=x'] });
+});
+
+test('a key the defaults don’t have is no state, not even one every object inherits', () => {
+  for (const key of ['constructor', 'toString', '__proto__', 'hasOwnProperty', 'other']) {
+    const { state, dropped } = readState(`${key}=1`, DEFAULTS, ALLOWED);
+    expect(state).toEqual(DEFAULTS);
+    expect(Object.hasOwn(state, key)).toBe(false);
+    expect(dropped).toEqual([]);
+  }
+});
+
+test('the part of a state the address keeps is what differs from the defaults', () => {
+  expect(changed({ ...DEFAULTS, sort: 'fare' }, DEFAULTS)).toEqual({ sort: 'fare' });
+  expect(changed(DEFAULTS, DEFAULTS)).toEqual({});
 });
