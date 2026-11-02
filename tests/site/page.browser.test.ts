@@ -1,12 +1,13 @@
 // What the page does, in Chromium: elements as h() builds them, the tab's oval as it moves, the page's slide, and a
 // dialog's history entry.
-import { afterEach, expect, test } from 'vitest';
+import { afterEach, expect, test, vi } from 'vitest';
 import { button, choices, h, paged, toggle } from '../../site/dom.ts';
 import { Drawing, NOTE } from '../../site/icons.ts';
 import { modal } from '../../site/modal.ts';
 import { PAD, pill, slide } from '../../site/tabs.ts';
 
 afterEach(() => {
+  vi.unstubAllGlobals();
   document.body.replaceChildren();
 });
 
@@ -64,7 +65,7 @@ test('the oval sits behind the current tab, in the goo layer that reaches past t
   const [oval] = pills(nav);
   const tab = nav.querySelector<HTMLElement>('a.active');
   expect(oval?.hidden).toBe(false);
-  expect(oval?.style.left).toBe(`${(tab?.offsetLeft ?? 0) + 12}px`);
+  expect(oval?.style.left).toBe(`${(tab?.offsetLeft ?? 0) + PAD}px`);
   expect(oval?.style.width).toBe(`${tab?.offsetWidth ?? 0}px`);
 });
 
@@ -89,7 +90,18 @@ test('moving to another tab, the slime reaches out an arm and a drop, which are 
   await settled();
   await expect.poll(() => pills(nav)).toHaveLength(1);
   const [oval] = pills(nav);
-  expect(oval?.style.left).toBe(`${(nav.querySelectorAll('a')[2]?.offsetLeft ?? 0) + 12}px`);
+  expect(oval?.style.left).toBe(`${(nav.querySelectorAll('a')[2]?.offsetLeft ?? 0) + PAD}px`);
+});
+
+test('with reduced motion asked for, the oval moves at once, with no arm or drop', () => {
+  vi.stubGlobal('matchMedia', (q: string) => ({ matches: q === '(prefers-reduced-motion: reduce)' }));
+  const nav = tabs(0);
+  pill(nav);
+  nav.querySelector('a.active')?.classList.remove('active');
+  nav.querySelectorAll('a')[2]?.classList.add('active');
+  pill(nav);
+  expect(pills(nav)).toHaveLength(1);
+  expect(pills(nav)[0]?.style.left).toBe(`${(nav.querySelectorAll('a')[2]?.offsetLeft ?? 0) + PAD}px`);
 });
 
 test('a move begun before the last one ends leaves the oval behind the tab it went to', async () => {

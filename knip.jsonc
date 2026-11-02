@@ -3,5 +3,7 @@
   "entry": ["site/main.ts", "site/review.ts", "tests/site/**/*.test.ts"],
   "project": ["site/**/*.ts", "tests/site/**/*.ts"],
   // the world's outlines, which no module imports: package.json's vendor script copies them into public/vendor/
-  "ignoreDependencies": ["world-atlas"]
+  "ignoreDependencies": ["world-atlas"],
+  // the pipeline's runner, which mise.toml installs: the tests' setup builds the data with it
+  "ignoreBinaries": ["uv"]
 }

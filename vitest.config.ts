@@ -5,6 +5,8 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
+    // public/data/, which the tests read, built when the checkout has none
+    globalSetup: ['tests/site/data.setup.ts'],
     // the modules of pure logic, which run on values alone: each must be covered by the tests, line and branch
     coverage: {
       enabled: true,
@@ -29,7 +31,14 @@ export default defineConfig({
         test: {
           name: 'browser',
           include: ['tests/site/**/*.browser.test.ts'],
-          browser: { enabled: true, provider: playwright(), headless: true, instances: [{ browser: 'chromium' }] },
+          browser: {
+            enabled: true,
+            // motion as most visitors have it, whatever the machine's setting: the tabs' tests watch the oval move
+            // (a test of their own stubs reduced motion)
+            provider: playwright({ contextOptions: { reducedMotion: 'no-preference' } }),
+            headless: true,
+            instances: [{ browser: 'chromium' }],
+          },
         },
       },
     ],

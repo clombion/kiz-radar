@@ -1,6 +1,7 @@
 // The views on the database the build ships, in Chromium: loaded as the page loads it (db.ts), from public/data/.
 import initSqlJs from 'sql.js';
 import { beforeAll, expect, test, vi } from 'vitest';
+import { commands } from 'vitest/browser';
 import { artistsView } from '../../site/artists.ts';
 import { load, loadSite } from '../../site/db.ts';
 
@@ -9,11 +10,13 @@ beforeAll(async () => {
   Reflect.set(globalThis, 'initSqlJs', () =>
     initSqlJs({ locateFile: (f: string) => `/node_modules/sql.js/dist/${f}` }),
   );
-  // the data files, from public/data/ wherever the module is served from
+  // the data files, read from public/data/ on disk (written there before the run when missing: data.setup.ts)
   const fetched = fetch;
-  vi.stubGlobal('fetch', (url: URL | string, init?: RequestInit) =>
-    fetched(url instanceof URL ? `/data/${url.pathname.split('/').at(-1) ?? ''}` : url, init),
-  );
+  vi.stubGlobal('fetch', async (url: URL | string, init?: RequestInit) => {
+    if (!(url instanceof URL)) return fetched(url, init);
+    const data = await commands.readFile(`public/data/${url.pathname.split('/').at(-1) ?? ''}`, 'base64');
+    return new Response(Uint8Array.from(atob(data), (c) => c.charCodeAt(0)));
+  });
   const site = loadSite();
   await load(site);
 });
