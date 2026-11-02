@@ -3,6 +3,7 @@
 import { readFileSync } from 'node:fs';
 import initSqlJs, { type SqlValue } from 'sql.js';
 import { expect, test } from 'vitest';
+import { summaryOf } from '../../site/db.ts';
 import { ARTIST_STATS, EVENT, PASS, read, type Shape, TIER } from '../../site/rows.ts';
 
 const SQL = await initSqlJs();
@@ -40,4 +41,18 @@ test('a value of another type, or a column the row lacks, fails to read', () => 
   expect(() => read(TIER, { ...row, door: 2 })).toThrow(/column door: 2 is no flag/u);
   const { currency: _, ...without } = row ?? {};
   expect(() => read(TIER, without)).toThrow(/no column currency/u);
+});
+
+test('the summary the build writes beside the database is the one the page reads', () => {
+  const summary = summaryOf(JSON.parse(readFileSync(new URL('../../public/data/site.json', import.meta.url), 'utf8')));
+  expect(summary.destinations.length).toBeGreaterThan(10);
+  const readSummary = (v: unknown) => {
+    summaryOf(v);
+  };
+  expect(() => readSummary({ ...summary, events_range: [summary.built_at] })).toThrow(
+    /data\/site\.json\.events_range: .* is no pair/u,
+  );
+  expect(() => readSummary({ ...summary, home: { code: summary.home.code } })).toThrow(
+    'data/site.json.home.city: nothing is no field',
+  );
 });

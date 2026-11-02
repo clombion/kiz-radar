@@ -5,7 +5,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it, test } from 'vitest';
 import { claimText, digest, homeClaim, mergeClaim, stamp } from '../../site/claims.ts';
-import { int, list, nullable, type Reader, record, text } from '../../site/json.ts';
+import { int, list, nullable, pair, type Reader, record, text } from '../../site/json.ts';
 import { reviewOf } from '../../site/pending.ts';
 
 const ROOT = new URL('../../', import.meta.url);
@@ -75,6 +75,7 @@ describe('a JSON reader', () => {
   const shape = record({ n: int, s: nullable(text), xs: list(text) });
   it('reads what its shape says', () => {
     expect(shape({ n: 1, s: null, xs: ['a'] }, 'v')).toEqual({ n: 1, s: null, xs: ['a'] });
+    expect(pair(int)([1, 2], 'v')).toEqual([1, 2]);
   });
   it('fails naming where and what', () => {
     expect(() => shape({ n: 1.5, s: null, xs: [] }, 'v')).toThrow('v.n: 1.5 is no whole number');
@@ -83,6 +84,8 @@ describe('a JSON reader', () => {
     expect(() => shape({ n: 1, s: null, xs: 'a' }, 'v')).toThrow('v.xs: "a" is no list');
     expect(() => shape({ n: 1, s: null }, 'v')).toThrow('v.xs: nothing is no field it has');
     expect(() => shape([], 'v')).toThrow('v: [] is no object');
+    expect(() => pair(int)([1, 2, 3], 'v')).toThrow('v: [1,2,3] is no pair');
+    expect(() => pair(int)([1, 'b'], 'v')).toThrow('v[1]: "b" is no whole number');
   });
 });
 

@@ -19,6 +19,11 @@ export const list =
   <T>(read: Reader<T>): Reader<T[]> =>
   (v, at) =>
     Array.isArray(v) ? v.map((x: unknown, i) => read(x, `${at}[${i}]`)) : wrong(at, v, 'list');
+// two values of one reader, such as a range's first and last
+export const pair =
+  <T>(read: Reader<T>): Reader<[T, T]> =>
+  (v, at) =>
+    Array.isArray(v) && v.length === 2 ? [read(v[0], `${at}[0]`), read(v[1], `${at}[1]`)] : wrong(at, v, 'pair');
 export const record =
   <S extends Shape>(shape: S): Reader<Read<S>> =>
   (v, at) => {

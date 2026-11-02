@@ -4,6 +4,7 @@
 // publish between the two requests) is refused.
 import type { BindParams, Database, QueryExecResult } from 'sql.js';
 import { today } from './days.ts';
+import { list, pair, record, text } from './json.ts';
 import { get } from './net.ts';
 import { type RowOf, read, type Shape } from './rows.ts';
 
@@ -11,49 +12,15 @@ const SQLJS = new URL('../vendor/', import.meta.url); // sql-wasm.wasm, beside t
 const DATA = new URL('../data/', import.meta.url);
 
 // site.json, written by the same build as kiz.sqlite: home airport, destinations, dates covered, build time
-export interface Summary {
-  home: { code: string; city: string };
-  destinations: { code: string; name: string }[];
-  events_range: [string, string];
-  built_at: string;
-}
-const isPlace = (v: unknown): v is { code: string; name: string } =>
-  typeof v === 'object' &&
-  v !== null &&
-  'code' in v &&
-  typeof v.code === 'string' &&
-  'name' in v &&
-  typeof v.name === 'string';
-function summaryOf(v: unknown): Summary {
-  if (
-    typeof v === 'object' &&
-    v !== null &&
-    'home' in v &&
-    typeof v.home === 'object' &&
-    v.home !== null &&
-    'code' in v.home &&
-    typeof v.home.code === 'string' &&
-    'city' in v.home &&
-    typeof v.home.city === 'string' &&
-    'destinations' in v &&
-    Array.isArray(v.destinations) &&
-    v.destinations.every(isPlace) &&
-    'events_range' in v &&
-    Array.isArray(v.events_range) &&
-    v.events_range.length === 2 &&
-    typeof v.events_range[0] === 'string' &&
-    typeof v.events_range[1] === 'string' &&
-    'built_at' in v &&
-    typeof v.built_at === 'string'
-  )
-    return {
-      home: { code: v.home.code, city: v.home.city },
-      destinations: v.destinations,
-      events_range: [v.events_range[0], v.events_range[1]],
-      built_at: v.built_at,
-    };
-  throw new TypeError('data/site.json: not the summary the build writes');
-}
+const PLACE = record({ code: text, name: text });
+const SUMMARY = record({
+  home: record({ code: text, city: text }),
+  destinations: list(PLACE),
+  events_range: pair(text),
+  built_at: text,
+});
+type Summary = ReturnType<typeof SUMMARY>;
+export const summaryOf = (v: unknown): Summary => SUMMARY(v, 'data/site.json');
 
 let db: Database | undefined;
 let openCopy: (() => Database) | undefined; // another database from the same file, for the SQL page
@@ -64,7 +31,7 @@ export async function loadSite(): Promise<void> {
   summary = summaryOf(await (await get(new URL('site.json', DATA), { revalidate: true })).json());
 }
 export const site = (): Summary => {
-  if (!summary) throw new Error('site.json is not loaded yet');
+  if (summary === undefined) throw new Error('site.json is not loaded yet');
   return summary;
 };
 
@@ -105,8 +72,8 @@ const opened = (): Database => {
 // outside is never part of its text: it is bound to a ? instead.
 export class Sql {
   readonly #text: string;
-  private constructor(text: string) {
-    this.#text = text;
+  private constructor(query: string) {
+    this.#text = query;
   }
   static of(parts: TemplateStringsArray, ...between: readonly Sql[]): Sql {
     return new Sql(String.raw({ raw: parts.raw }, ...between.map((s) => s.#text)));
