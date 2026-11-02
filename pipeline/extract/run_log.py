@@ -109,7 +109,7 @@ def document(con: Transaction, docs: dict[str, str], written_by: str) -> None:
     kinds = {
         m.name: m.type for m in con.rows(Made, "SELECT name, type FROM sqlite_master WHERE type IN ('table', 'view')")
     }
-    for name, description in {**docs, **OWN_DOCS}.items():
+    for name, description in (docs | OWN_DOCS).items():
         if name not in kinds:
             raise ValueError(f'table_docs: {name} is not a table or view in this database')
         by = written_by if name in docs else 'pipeline/extract/run_log.py'
