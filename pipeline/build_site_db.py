@@ -385,9 +385,7 @@ create view country_stats as
         as taxi_dancers,
       round(avg(s.lineup), 1) as avg_lineup, sum(s.popular_artists) as popular_bookings,
       round(100.0 * sum(s.imported) / nullif(sum(s.lineup) - sum(s.unknown_country), 0)) as imported_pct,
-      sum(s.unknown_country) as unknown_country,
-      (select airport from events e2 where e2.country_code = e.country_code and e2.airport is not null
-         group by airport order by count(*) desc, airport limit 1) as main_airport
+      sum(s.unknown_country) as unknown_country
     from events e join event_stats s on s.event_id = e.id left join countries c on c.code = e.country_code
     where e.cancelled is not 1 and e.listing = '{listed}' group by e.country_code;
 -- what the site reads for festivals: each event with its statistics, and where it stands on the day in today (phase,
@@ -924,8 +922,7 @@ DOCS = {
     'cancelled or gone), and upcoming (phase ahead).',
     'today': "The day the festivals are seen from: the build's, which the site sets to the visitor's own day.",
     'country_stats': 'Per country: events, kiz-only events, taxi dancers, average line-up, bookings of popular '
-    'artists, share of imported artists among those whose home is known, artists of unknown country, most common '
-    'airport.',
+    'artists, share of imported artists among those whose home is known, artists of unknown country.',
     'countries': 'ISO 3166 codes and names.',
     'meta': 'Build settings and provenance.',
 }
