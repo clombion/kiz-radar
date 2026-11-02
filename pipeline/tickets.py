@@ -130,6 +130,7 @@ from pipeline.tickets_store import (
     shown,
     site_for,
     sites,
+    stored,
     streak,
     written,
 )
@@ -636,7 +637,7 @@ def cmd_run(
             if redo and (entry := latest_read(f.log)):
                 run.make(f, entry)  # its page sells nothing any more; its logged rows still say what it sold
     if 'models' in parts:  # the reads as the first reads now stand
-        run.alarms += recorded().problems
+        run.alarms += recorded(stored()).problems
     counts = status(db)
     print('waits for: ' + '; '.join(f'{n} {w}' for w, n in counts.most_common()))
     if why := run.verdict():

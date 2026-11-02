@@ -277,7 +277,7 @@ def page_prices(event_ids: set[int]) -> tuple[dict[int, tickets_store.Written], 
     latest rows (pipeline/tickets_store.py): {event_id: Written}, how many first reads are to another prompt). A page
     read to another prompt is left out, as an answer is, and so is a first read that no longer fits its rows, which
     the ticket run names; a first read of a festival the export no longer has holds nothing for it."""
-    found = tickets_store.recorded()
+    found = tickets_store.recorded(tickets_store.stored())
     return {i: w for i, w in found.written.items() if i in event_ids}, found.other_prompt
 
 

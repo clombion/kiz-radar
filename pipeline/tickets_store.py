@@ -182,6 +182,24 @@ def first_read(event_id: int) -> FirstRead | Stamped | None:
             return fr
 
 
+class Files(NamedTuple):
+    """Every festival's first read (first_read) and log (log), each file read once, by festival: what the steps that
+    look at every festival read (stored)."""
+
+    reads: dict[int, FirstRead | Stamped]
+    logs: dict[int, list[LogEntry]]
+
+
+def stored() -> Files:
+    reads = {i: fr for i in stems(READS, 'json') if (fr := first_read(i)) is not None}
+    return Files(reads, {i: log(i) for i in stems(LOG, 'jsonl')})
+
+
+def stems(folder: str, suffix: str) -> list[int]:
+    """The festivals with a file in the folder, by id."""
+    return sorted(int(p.stem) for p in data(folder).glob(f'*.{suffix}'))
+
+
 def draft(event_id: int) -> str | None:
     """The text of the festival's draft (tickets/drafts/), or None."""
     path = data(DRAFTS) / f'{event_id}.json'
@@ -454,20 +472,19 @@ def written(
     return Written(answer, page, unread)
 
 
-def recorded() -> Recorded:
-    """What every first read to the current prompt records with its latest rows, so that prices are what the reads and
-    logs say and nothing else; a first read to another prompt is left out quietly: its festival waits for it to be made
-    again (redo_prompt)."""
+def recorded(found_in: Files) -> Recorded:
+    """What every first read to the current prompt records with its latest rows (found_in: stored()), so that prices
+    are what the reads and logs say and nothing else; a first read to another prompt is left out quietly: its festival
+    waits for it to be made again (redo_prompt)."""
     out: dict[int, Written] = {}
     found: list[str] = []
     other = 0
     known = sites()
-    for path in sorted(data(READS).glob('*.json'), key=lambda p: int(p.stem)):
-        i = int(path.stem)
-        if not isinstance(fr := first_read(i), FirstRead):
+    for i, fr in sorted(found_in.reads.items()):
+        if not isinstance(fr, FirstRead):
             other += 1
             continue
-        match written(i, fr, log(i), known):
+        match written(i, fr, found_in.logs.get(i, []), known):
             case Written() as w:
                 out[i] = w
             case list() as problems_:

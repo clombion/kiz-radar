@@ -19,6 +19,8 @@ import unicodedata
 from collections.abc import Iterable, Sequence
 from typing import NamedTuple
 
+from pydantic import BaseModel
+
 from pipeline import currencies, states
 from pipeline.db import Reader
 from pipeline.enums import Genre, PassKind, People, Price, Sales, Style
@@ -145,10 +147,18 @@ def day(y: int, m: int, d: int) -> dt.date:
     return dt.date(y, m, 28 if (m, d) == (2, 29) and not calendar.isleap(y) else d)
 
 
-def styles(db: Reader, event_id: int) -> list[Style]:
-    """The dance styles a festival's genres (event_genres: its description's and its kizomba-world tags) name."""
-    genres = db.column(Genre, 'SELECT genre FROM event_genres WHERE event_id = ?', (event_id,))
-    return sorted({Style(states.STYLE_OF[g]) for g in genres})
+class EventGenre(BaseModel):
+    event_id: int
+    genre: Genre
+
+
+def styles(db: Reader) -> dict[int, list[Style]]:
+    """{festival: the dance styles its genres (event_genres: its description's and its kizomba-world tags) name}, in
+    one query for every festival; one with no genre has none."""
+    found: dict[int, set[Style]] = {}
+    for r in db.rows(EventGenre, 'SELECT event_id, genre FROM event_genres'):
+        found.setdefault(r.event_id, set()).add(Style(states.STYLE_OF[r.genre]))
+    return {i: sorted(s) for i, s in found.items()}
 
 
 def style_problems(passes: Sequence[PassTerms], styles: Sequence[Style], where: str = '') -> list[str]:

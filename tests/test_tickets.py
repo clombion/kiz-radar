@@ -297,7 +297,7 @@ def files() -> Path:
 
 
 def recorded_7() -> tickets_store.Written:
-    found = tickets_store.recorded()
+    found = tickets_store.recorded(tickets_store.stored())
     assert found.problems == []
     return found.written[7]
 
@@ -690,7 +690,7 @@ def test_a_model_that_misreads_answers_again_with_the_checkers_lines(files: Path
 def test_a_festival_that_no_longer_fits_its_first_read_is_left_out(files: Path) -> None:
     assert tickets_store.record(7) == []
     tickets_store.append(7, entry(changed(ROWS, 3, amount=128.21, price='€128.21'), at=LATER))
-    found = tickets_store.recorded()
+    found = tickets_store.recorded(tickets_store.stored())
     assert 'the first read needs doing again' in found.problems[0]
     assert found.written == {}
 
@@ -969,7 +969,7 @@ def test_a_link_in_a_description_leaves_the_punctuation_after_it(memory: Memory)
     db = shaped(memory())
     with db.transaction() as tx:
         exports.festival(tx, 7, description_text='Tickets: https://www.trybooking.com/DCHEZ. See you!')
-    assert tickets_state.links(db, 7) == ['https://www.trybooking.com/DCHEZ']
+    assert tickets_state.links(db) == {7: ['https://www.trybooking.com/DCHEZ']}
 
 
 def test_a_recipe_reads_the_page_or_the_api_never_a_mix() -> None:
@@ -1227,7 +1227,7 @@ def test_a_first_read_to_another_prompt_is_never_written(files: Path) -> None:
         tickets_store.save_read(read(prompt_='0' * 16))
     old_read(files)
     assert 'make it again' in tickets_store.record(7)[0]
-    assert tickets_store.recorded() == tickets_store.Recorded({}, [], 1)
+    assert tickets_store.recorded(tickets_store.stored()) == tickets_store.Recorded({}, [], 1)
 
 
 def described(*passes: PricedPass) -> answers.Answer[Priced]:
@@ -1529,8 +1529,8 @@ def test_a_festivals_styles_are_its_genres_styles(memory: Memory) -> None:
                 for e, g in [(1, 'urbankiz'), (1, 'semba'), (2, 'kizomba'), (2, 'zouk'), (2, 'kompa')]
             ),
         )
-    assert prices.styles(db, 1) == [Style.KIZOMBA]
-    assert prices.styles(db, 2) == [Style.KIZOMBA, Style.OTHER, Style.ZOUK]
+    assert prices.styles(db)[1] == [Style.KIZOMBA]
+    assert prices.styles(db)[2] == [Style.KIZOMBA, Style.OTHER, Style.ZOUK]
 
 
 @pytest.mark.parametrize(
@@ -1563,7 +1563,7 @@ def test_a_festival_with_three_problems_is_left_out_like_any_other(files: Path) 
     )
     assert len(tickets_store.read_problems(fr, tickets_store.log(7))) == 3
     tickets_store.save_read(fr)
-    found = tickets_store.recorded()
+    found = tickets_store.recorded(tickets_store.stored())
     assert len(found.problems) == 3
     assert found.written == {}
 
@@ -1605,9 +1605,9 @@ def test_a_dispute_to_another_prompt_is_none(files: Path) -> None:
     (files / 'disputed').mkdir()
     disputed: dict[str, object] = {'rows_at': AT.isoformat(), 'prompt': prompt.current('first_read').hash, 'reads': {}}
     _ = (files / 'disputed' / '7.json').write_text(json.dumps(disputed))
-    assert tickets_state.disputed(7)
+    assert tickets_state.disputed() == {7}
     _ = (files / 'disputed' / '7.json').write_text(json.dumps(disputed | {'prompt': '0' * 16}))
-    assert not tickets_state.disputed(7)
+    assert tickets_state.disputed() == set()
 
 
 def test_a_dispute_is_settled_by_a_first_read_of_rows_as_new(files: Path) -> None:
