@@ -2,8 +2,10 @@
 
 One row per step (the latest run of that step replaces the earlier one): what was done, when, by whom
 (a script, a model, or the human reviewer), with which model and prompts (their hashes, pipeline/prompt.py), from
-which inputs to which outputs, and the step's key numbers as JSON. Every pipeline script records its own step.
-These functions only write, into the export's tables (KEPT, which tests/test_steps.py holds the export to), in the
+which inputs to which outputs, and the step's key numbers as JSON. Each step that writes the export records its own
+run, and describes the tables it makes (table_docs): scrape, load_extract and resolve_artists; the other steps write
+files of the repository, whose history git keeps, and the site's build a database of its own. These functions only
+write, into the export's tables (KEPT, which tests/test_steps.py holds the export to), in the
 caller's transaction, which commits once its step is whole.
 """
 
@@ -89,9 +91,8 @@ def record_prompt(con: Transaction, hash_: str) -> None:
 
 
 OWN_DOCS = {
-    'pipeline_steps': 'How this database was produced: one row per step (scrape, images, extraction passes, rules, '
-    'merge '
-    'review, artist resolution, human review) with when, by whom, model, prompts, inputs, '
+    'pipeline_steps': 'How this database was produced: one row per step (scrape, the extraction passes, the genre '
+    "rules, the merge review, the artists' resolution) with when, by which script and model, prompts, inputs, "
     'outputs and key numbers as JSON. Read in step order.',
     'prompts': 'The full text of every prompt a model ran with, keyed by its hash, as pipeline_steps and the rows it '
     'produced (prompt columns) name it.',
@@ -109,7 +110,7 @@ def document(con: Transaction, docs: dict[str, str], written_by: str) -> None:
     kinds = {
         m.name: m.type for m in con.rows(Made, "SELECT name, type FROM sqlite_master WHERE type IN ('table', 'view')")
     }
-    for name, description in {**docs, **OWN_DOCS}.items():
+    for name, description in (docs | OWN_DOCS).items():
         if name not in kinds:
             raise ValueError(f'table_docs: {name} is not a table or view in this database')
         by = written_by if name in docs else 'pipeline/extract/run_log.py'

@@ -211,6 +211,52 @@ insert into source_ids (source, source_id, event_id) select 'kizomba-world', id,
     # would be asked with (pipeline/extract/answers.py state), which the extraction steps find themselves
     """drop table pending_extraction;
     delete from table_docs where name = 'pending_extraction';""",
+    # 8: no provenance naming a file that isn't there: the compact copy's step (scrape writes the export itself, emoji
+    # as characters, and migration 1 dropped the posters) and the human check of the first extraction, whose page,
+    # sample and scores were never in the repository; scrape's tables described by scrape, which describes them since
+    """delete from pipeline_steps where step in ('9_compact', '8_human_review_artists');
+    insert into table_docs (name, kind, description, written_by) values
+    ('events', 'table', 'One row per kizomba-world.com event dated from 2026-01-01 to the end of next year: its API '
+     || 'record (dates, the featured and sticky flags, the description as HTML, emoji as characters, and as plain '
+     || 'text) and what its page adds (venue, address, city, country, deal link, the URLs of its translations, and the '
+     || 'cancelled flag, null for a past festival never read for it). listing is gone, since unlisted_on, for one the '
+     || 'site no longer lists. id is ours (source_ids).', 'pipeline/scrape.py'),
+    ('event_categories', 'table', 'The site''s categories per event (All, Festivals / WK, Concerts, ...). Nearly '
+     || 'every event is ''Festivals / WK'', so tags and event_features distinguish events better.',
+     'pipeline/scrape.py'),
+    ('event_tags', 'table', 'The site''s tags per event: dance styles (Kizomba, Semba, ...) and features (All in One, '
+     || 'Pool Party, ...).', 'pipeline/scrape.py'),
+    ('event_links', 'table', 'The ''Related Links'' on each event page (mostly Facebook events and Instagram pages).',
+     'pipeline/scrape.py'),
+    ('source_ids', 'table', 'Each festival''s id at its source (kizomba-world''s), and ours (event_id), given once and '
+     || 'never again.', 'pipeline/scrape.py')
+    on conflict (name) do update set description = excluded.description, written_by = excluded.written_by;""",
+    # 9: an id's key the key of the artist that has it now: an artist that kept the id of a key it absorbed was left
+    # under the key the id was given to (70 artists), so the id read as another key's (resolve_artists.retire)
+    rebuilt(
+        """CREATE TABLE artist_ids (
+    artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
+    match_key TEXT NOT NULL UNIQUE, -- the key of the artist that has it, or had it last
+    retired_into INTEGER            -- the artist its keys went to once no artist had it; NULL while one has
+) STRICT;
+""",
+        then="""
+update artist_ids set match_key = (select a.match_key from artists a where a.id = artist_ids.artist_id)
+where artist_id in (select id from artists);
+""",
+    ),
+    # 10: a group's key says it is a group's (g:), as a person's says p:, a couple's c: and an organisation's o:: a
+    # media team's or crew's was o: (313 artists) and a line-up of three or more c: (2), with the kind written beside it
+    # (pipeline/names.py ArtistKey); every key of those artists, and the ids given to them, renamed so, which the next
+    # run makes the same keys of, so the artists keep their ids
+    """update artist_keys set match_key = 'g:' || substr(match_key, 3)
+    where substr(match_key, 1, 2) in ('c:', 'o:') and artist_id in (select id from artists where kind = 'group');
+    update artist_ids set match_key = 'g:' || substr(match_key, 3)
+    where substr(match_key, 1, 2) in ('c:', 'o:') and artist_id in (select id from artists where kind = 'group');
+    update artist_names set match_key = 'g:' || substr(match_key, 3)
+    where substr(match_key, 1, 2) in ('c:', 'o:') and artist_id in (select id from artists where kind = 'group');
+    update artists set match_key = 'g:' || substr(match_key, 3)
+    where substr(match_key, 1, 2) in ('c:', 'o:') and kind = 'group';""",
 )
 
 

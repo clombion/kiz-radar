@@ -68,6 +68,10 @@ APPLIED = (
     '804e761686b9ed45',
     '474bc801197edbcf',
     '6eca8687a5235876',
+    '89b84ee95459fd4f',
+    'ee10c0e108bfe8b7',
+    '42535f1dd4eed090',
+    '9370dbc4dc731b9b',
 )
 
 

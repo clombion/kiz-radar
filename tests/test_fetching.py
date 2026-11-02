@@ -224,6 +224,11 @@ def ours(db: Reader, source_id: int) -> int:
     )
 
 
+class Described(BaseModel):
+    name: str
+    description: str
+
+
 def rows_of(db: Reader, event_id: int) -> dict[str, int]:
     return {
         t: db.value(int, f'select count(*) from {sqlite_db.name(t)} where event_id = ?', (event_id,))  # noqa: S608 (the database's own names, quoted)
@@ -236,8 +241,9 @@ def test_a_refresh_adds_the_new_festivals_and_keeps_the_gone_with_their_rows(
 ) -> None:
     src = trimmed(1)
     [gone] = ids(src)
-    with sqlite_db.opened(src, 'ro') as db:
-        before = rows_of(db, gone)
+    with sqlite_db.opened(src, 'rw') as db, db.transaction() as tx:
+        before = rows_of(tx, gone)
+        tx.execute('delete from table_docs')  # which the refresh describes again, its own tables
     served = site(monkeypatch, [NEW])
     run(scrape.main, monkeypatch)
     assert POSTER not in served.asked  # where its poster is, which nothing downloads
@@ -255,6 +261,10 @@ def test_a_refresh_adds_the_new_festivals_and_keeps_the_gone_with_their_rows(
         tags = set(db.column(str, 'select tag from event_tags where event_id = ?', (new,)))
         assert tags == {'All in One', 'Zouk'}
         logged = db.value(str, "select details from pipeline_steps where step = '1_scrape'")
+        described = db.rows(
+            Described, "select name, description from table_docs where written_by = 'pipeline/scrape.py'"
+        )
+    assert {d.name: d.description for d in described} == scrape.TABLE_DOCS
     details = JSON.validate_json(logged)
     assert [jsons.at(details, k) for k in ('new', 'unlisted')] == [1, 1]
 

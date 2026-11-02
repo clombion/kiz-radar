@@ -59,5 +59,7 @@ festival titles lose dates and shouting capitals (`events.listed_title` keeps th
 ## The database enforces its own rules
 
 Dates are days, required fields are set, coded values are states (checks built from `pipeline/states.py`), links are
-http(s), and references hold at commit. An export that breaks these fails the build instead of reaching the site. For
-the SQL page, every table is described in `table_docs`; `event_rows` is the one to start from.
+http(s), and references hold at commit. An export that breaks these fails the build instead of reaching the site, as
+does one loaded and not resolved since: the load makes the mentions again, and until `mise run resolve` books them every
+line-up would be empty. For the SQL page, every table is described in `table_docs`; `event_rows` is the one to start
+from.

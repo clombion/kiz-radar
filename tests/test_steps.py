@@ -12,14 +12,18 @@ from pathlib import Path
 import pytest
 from pydantic import BaseModel
 
-from pipeline import build_site_db, data, merge_suggestions, scrape
+from pipeline import build_site_db, claims, data, merge_suggestions, scrape
 from pipeline import db as sqlite_db
+from pipeline.claims import HomeClaim, MergeClaim
 from pipeline.db import Reader
+from pipeline.enums import ArtistKind, ClaimSource, ClaimState, MergeDecision
 from pipeline.extract import load_extract, resolve_artists, run_log
-from pipeline.records import Json
+from pipeline.names import kind_of
+from pipeline.records import Group, Json
 from tests import jsons
 from tests.exports import EVERYTHING, EXPORT, Made, committed, content, copied, run, trimmed
-from tests.fakes import Memory
+from tests.fakes import AT, Memory
+from tests.repository import tracked
 
 # a whole run of a step takes seconds, its runs here a few of them
 pytestmark = pytest.mark.timeout(120)
@@ -67,7 +71,8 @@ def test_a_load_leaves_the_artists_but_none_of_the_mentions_it_replaced(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     """load_extract makes its mentions again, under new ids: the bookings of the old ones go with them (a reference
-    that cascades), and the artists stay, for resolve_artists to book the new mentions."""
+    that cascades), and the artists stay, for resolve_artists to book the new mentions; the site's build refuses the
+    export until it has."""
     src = copied()
     with sqlite_db.opened(src, 'ro') as db:
         artists = db.value(int, 'select count(*) from artists')
@@ -76,6 +81,9 @@ def test_a_load_leaves_the_artists_but_none_of_the_mentions_it_replaced(
     with sqlite_db.opened(src, 'ro') as db:
         assert not db.exists('select 1 from event_artists')
         assert db.value(int, 'select count(*) from artists') == artists
+    # until then, a site built from it would show every line-up empty
+    with pytest.raises(SystemExit, match=r'artist mentions no artist resolves: run mise run resolve'):
+        _ = build_site_db.build(src, tmp_path / 'site.db')
 
 
 def test_resolving_the_artists_again_changes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -85,6 +93,80 @@ def test_resolving_the_artists_again_changes_nothing(tmp_path: Path, monkeypatch
     once = content(src)
     assert once['artists']
     run(resolve_artists.main, monkeypatch)
+    assert content(src) == once
+
+
+class Stated(BaseModel):
+    id: str
+    state: ClaimState
+
+
+def resolved_latest(monkeypatch: pytest.MonkeyPatch, keys: int) -> tuple[Path, list[str]]:
+    """The export's latest festivals with line-ups, resolved, and the first keys their mentions produce."""
+    src = trimmed(40)
+    run(resolve_artists.main, monkeypatch)
+    with sqlite_db.opened(src, 'ro') as db:
+        return src, db.column(str, 'select match_key from artist_names order by match_key limit ?', (keys,))
+
+
+def test_a_claim_naming_a_key_no_mention_produces_is_orphaned_and_decides_nothing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    src, [key] = resolved_latest(monkeypatch, 1)
+    made = [
+        HomeClaim(field='home', key=key, country='PT', made_at=AT, note='n'),
+        HomeClaim(field='home', key='p:nomentionnamesthis', country='AO', made_at=AT, note='n'),
+        MergeClaim(
+            field='merge', keys=(key, 'p:nomentionnamesthis'), decision=MergeDecision.MERGE, made_at=AT, note='n'
+        ),
+    ]
+    claims.write(made)
+    run(resolve_artists.main, monkeypatch)  # the run goes on past the orphans
+    with sqlite_db.opened(src, 'ro') as db:
+        state = {s.id: s.state for s in db.rows(Stated, 'select id, state from claims')}
+        homes = db.column(str, 'select country from artist_homes')
+        merged = db.column(
+            str, "select key_b from artist_merge_decisions where 'p:nomentionnamesthis' in (key_a, key_b)"
+        )
+        artists = db.value(int, "select count(*) from artist_keys where match_key = 'p:nomentionnamesthis'")
+    assert [state[claims.Made(c, ClaimSource.ADMIN).id] for c in made] == [
+        ClaimState.APPLIED,
+        ClaimState.ORPHANED,
+        ClaimState.ORPHANED,
+    ]
+    assert (homes, merged, artists) == (['PT'], [], 0)  # neither orphan homes, merges or makes an artist
+
+
+class GroupKey(BaseModel):
+    match_key: str
+    produced: bool
+
+
+def test_a_group_key_no_mention_produces_is_marked_and_two_groups_of_one_artist_are_refused_before_a_write(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    src, [alias, member] = resolved_latest(monkeypatch, 2)
+
+    def group(key: str, aliases: str) -> Group:
+        row = {'group_key': key, 'display_name': key, 'members': f'{member};p:gone', 'aliases': aliases, 'note': ''}
+        return Group.model_validate(row)
+
+    Group.write([group('g:one', f'{alias};p:nomentionnamesthis')])
+    run(resolve_artists.main, monkeypatch)
+    keyed = 'select match_key, produced from {} order by match_key'
+    with sqlite_db.opened(src, 'ro') as db:
+        assert db.rows(GroupKey, keyed.format('artist_group_aliases')) == [
+            GroupKey(match_key=alias, produced=True),
+            GroupKey(match_key='p:nomentionnamesthis', produced=False),
+        ]
+        assert db.rows(GroupKey, keyed.format('artist_group_members')) == [
+            GroupKey(match_key=member, produced=True),
+            GroupKey(match_key='p:gone', produced=False),
+        ]
+    once = content(src)
+    Group.write([group('g:one', alias), group('g:two', alias)])
+    with pytest.raises(SystemExit, match=r'line 2 \(g:one, .*\) and line 3 \(g:two, '):
+        run(resolve_artists.main, monkeypatch)
     assert content(src) == once
 
 
@@ -169,6 +251,92 @@ def test_every_table_of_the_export_is_one_steps() -> None:
     with sqlite_db.opened(EXPORT, 'ro') as db:
         made = db.column(str, "select name from sqlite_master where type in ('table', 'view')")
     assert set(owners) == set(made)
+
+
+class Appearance(BaseModel):
+    artist_id: int
+    event_id: int
+    role: str
+    via: str
+    via_artist_id: int | None
+
+
+def test_an_artists_events_are_the_same_in_the_export_and_on_the_site(site_db: Path) -> None:
+    """artist_events means one thing wherever it is read: a member listed beside their couple in the same role is there
+    through the couple, not booked as themselves."""
+    every = 'select artist_id, event_id, role, via, via_artist_id from artist_events order by 1, 2, 3, 4, 5'
+    with sqlite_db.opened(EXPORT, 'ro') as export_db, sqlite_db.opened(site_db, 'ro') as site:
+        exported = export_db.rows(Appearance, every)
+        assert exported == site.rows(Appearance, every)
+        repeats = 'select count(*) from event_artists where as_couple is not null'
+        assert export_db.value(int, repeats) > 0  # some line-ups name a member beside their couple
+
+
+def test_every_artist_is_the_key_its_id_was_last_given_to() -> None:
+    """artist_ids holds each artist's id with the artist's own key, which the next run keeps it by."""
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        apart = db.value(
+            int,
+            'select count(*) from artists a'
+            ' where not exists (select 1 from artist_ids i where i.artist_id = a.id and i.match_key = a.match_key)',
+        )
+    assert apart == 0
+
+
+class Kinded(BaseModel):
+    kind: ArtistKind
+    match_key: str
+
+
+def test_every_artists_key_says_its_kind() -> None:
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        artists = db.rows(Kinded, 'select kind, match_key from artists')
+    assert [a for a in artists if kind_of(a.match_key) != a.kind] == []
+
+
+SHORT_ROW = 200  # bytes on average: a twentieth of a 4 KB page, under which SQLite advises a table stored by its key
+
+
+def test_a_site_table_stored_by_its_key_has_short_rows(site_db: Path) -> None:
+    """build_site_db's rule: a table is without rowid only when its rows are short, each as SQL writes its values."""
+    rows = content(site_db)
+    with sqlite_db.opened(site_db, 'ro') as db:
+        keyed = db.column(str, "select name from pragma_table_list where wr and schema = 'main'")
+    average = {t: sum(map(len, rows[t])) / len(rows[t]) for t in keyed if rows[t]}
+    assert {t: round(a) for t, a in average.items() if a >= SHORT_ROW} == {}
+
+
+class Documented(BaseModel):
+    name: str
+    written_by: str
+
+
+def test_every_table_of_the_export_is_described_by_the_step_that_makes_it() -> None:
+    """table_docs names, for each table and view, the module that declares it, which keeps its description."""
+    owners = {
+        n: module
+        for module, declared in (
+            ('pipeline/scrape.py', scrape.KEPT),
+            ('pipeline/extract/run_log.py', run_log.KEPT),
+            ('pipeline/extract/resolve_artists.py', resolve_artists.KEPT | resolve_artists.TABLES),
+            ('pipeline/extract/load_extract.py', load_extract.TABLES),
+        )
+        for n in declared
+    }
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        made = db.column(str, "select name from sqlite_master where type in ('table', 'view')")
+        written = {d.name: d.written_by for d in db.rows(Documented, 'select name, written_by from table_docs')}
+    assert written == {n: owners[n] for n in made}
+
+
+def test_every_step_of_the_export_names_the_file_that_performed_it() -> None:
+    """A step's row says which of the repository's scripts ran it (beside the model it asked), never a file that
+    isn't there."""
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        performed = db.column(str, 'select performed_by from pipeline_steps')
+    files = set(tracked('*.py'))
+    named = {p: re.findall(r'[\w/.-]+\.py\b', p) for p in performed}
+    assert {p: n for p, n in named.items() if not n or not set(n) <= files} == {}
 
 
 def tables(db: Reader, names: Iterable[str]) -> dict[str, str]:

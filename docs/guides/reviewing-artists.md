@@ -75,3 +75,8 @@ claim.
 A claim names its artists by the keys mentions produce. When no mention produces a key any more (a spelling the source
 corrected), the claim is `orphaned`: the export's `claims` table says so, and it decides nothing until the admin points
 a new claim at the key the artist has now.
+
+A named group of `pipeline/extract/groups.csv` is held alike: a member or alias no mention produces is orphaned
+(`mise run resolve` names it, and `artist_group_members` and `artist_group_aliases` mark it `produced = 0`), and the
+rest of the group stands until its row names the key the artist has now. Two rows whose aliases are one artist (one key,
+or keys a merge claim joined) are refused, naming both lines, before anything is written.

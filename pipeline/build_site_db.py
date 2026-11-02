@@ -29,6 +29,7 @@ from pipeline import fares as fare_search
 from pipeline.countries import NAMES, codes
 from pipeline.db import Reader, Transaction
 from pipeline.enums import Feature, Genre, HomeBasis, PassKind, People, Role, Style
+from pipeline.extract import resolve_artists
 from pipeline.records import (
     Fare,
     Person,
@@ -68,8 +69,9 @@ COPIED = (  # the export's tables the site keeps, each in the order it refers to
     'pass_tiers',
 )
 # the site's tables, each filled once from the export and the committed data (copied: a column the export has, as it
-# has it); a table whose key is not its row id is stored as its key (without rowid), so the key is the table rather
-# than an index beside it
+# has it); a table whose key is not its row id and whose rows are short (under 200 bytes on average, a twentieth of a
+# 4 KB page, as SQLite advises) is stored as its key (without rowid), so the key is the table rather than an index
+# beside it: the database is 2.7 MB so, 3.8 MB with every table by row id. A table of longer rows keeps its row id.
 DDL = """
 create table events (
     id integer primary key,
@@ -180,7 +182,7 @@ create table pipeline_steps (
     inputs text,
     outputs text,
     details text
-) strict, without rowid;
+) strict;  -- rows of 750 bytes on average: by row id (DDL)
 create table event_genres (
     event_id integer not null references events(id) deferrable initially deferred,
     genre text not null check (genre in ({genre})),
@@ -373,12 +375,6 @@ create view event_fares as
       (select min(price) from fares m where m.airport = e.airport
          and substr(m.depart, 1, 7) = substr(e.weekend_friday, 1, 7)) as month_min
     from events e left join fares f on f.airport = e.airport and f.depart = e.weekend_friday;
-create view artist_events as
-    select ea.artist_id, ea.event_id, ea.role, '{direct}' as via, null as via_artist_id from event_artists ea
-    where ea.as_couple is null
-    union all
-    select cm.member_id, ea.event_id, ea.role, '{member}', ea.artist_id
-    from event_artists ea join couple_members cm on cm.couple_id = ea.artist_id;
 create view country_stats as
     select e.country_code, c.name, count(*) as events, sum(s.kiz_only) as kiz_only,
       sum(exists (select 1 from event_features f where f.event_id = e.id and f.feature = '{taxi_dancers}'))
@@ -412,8 +408,9 @@ create view plan_rows as
     from plans p join people pe on pe.id = p.person_id;
 """
 TABLES = sqlite_db.declared(
-    DDL.format_map(
+    (DDL + resolve_artists.ARTIST_EVENTS).format_map(
         states.SQL_IN
+        | resolve_artists.VIA
         | {
             'booked_as': states.sql_in('role', BOOKED_ROLES),
             'booked_roles': ',\n    '.join(f'{r} integer not null' for r in BOOKED_ROLES),
@@ -426,8 +423,6 @@ TABLES = sqlite_db.declared(
             'cancelled': enums.Phase.CANCELLED,
             'phase_gone': enums.Phase.GONE,
             'contested': HomeBasis.CONTESTED,
-            'direct': enums.Via.DIRECT,
-            'member': enums.Via.MEMBER,
         }
     )
 )
@@ -449,7 +444,7 @@ class Listed(BaseModel):
     timezone: str | None
     all_day: int
     featured: int
-    cancelled: int | None
+    cancelled: bool | None  # None when not known (kizomba_world.Paged)
     listing: enums.Listing
     venue: str | None
     city: str | None
@@ -547,15 +542,11 @@ def copied(x: Transaction, table: str, where: str = '1') -> None:
 
 
 def booked(x: Transaction) -> dict[str, int]:
-    """Each artist booked at an event in a role once (event_artists), marked as_couple when a member is listed in the
-    same role as their couple at the same event: that repeats the couple's booking, so it is left out of line-ups and
-    statistics, while a different role (the couple teaches, one of them DJs) is a solo booking. Old ids read as the
-    artist they went to (artist_redirects). Each key's artist (artist_keys), for the files that name artists by key."""
-    x.execute("""insert into event_artists (event_id, artist_id, role, as_couple)
-       select b.event_id, b.artist_id, b.role,
-         (select min(c.artist_id) from src.event_artists c join couple_members cm on cm.couple_id = c.artist_id
-          where c.event_id = b.event_id and c.role = b.role and cm.member_id = b.artist_id)
-       from src.event_artists b""")
+    """Each artist booked at an event in a role once (event_artists), as_couple when it repeats its couple's booking,
+    which is left out of line-ups and statistics (resolve_artists), while a different role (the couple teaches, one of
+    them DJs) is a solo booking. Old ids read as the artist they went to (artist_redirects). Each key's artist
+    (artist_keys), for the files that name artists by key."""
+    copied(x, 'event_artists')
     # an id no artist has now reads as the artist its keys went to, through the ids that went on in their turn
     went = {
         r.old_id: r.new_id
@@ -650,30 +641,44 @@ def given_homes(x: Transaction) -> dict[int, str]:
     return {h.artist_id: h.country for h in x.rows(Given, 'select artist_id, country from src.artist_homes')}
 
 
-def artist_stats(x: Transaction) -> Booked:
-    """Each artist's bookings, roles, countries and home. A couple's booking counts for the couple, not for each
-    member: a member's own bookings are their solo work (event_artists.as_couple)."""
+@dataclass(frozen=True)
+class Bookings:
+    """Each artist's own bookings (events), the events booked in each role, and the further events they are at only
+    as a member of a couple or group."""
+
+    events: collections.defaultdict[int, set[int]]
+    roles: collections.defaultdict[int, collections.Counter[str]]
+    in_couples: collections.defaultdict[int, set[int]]
+
+
+def bookings_of(x: Transaction) -> Bookings:
+    """Each artist's bookings in the roles that count (BOOKED_ROLES), their own (event_artists without as_couple) and
+    through a couple (artist_events' member rows)."""
     roles = (json.dumps(BOOKED_ROLES),)
-    ev_cc = {e.id: e.country_code for e in x.rows(Coded, 'select id, country_code from events')}
-    bookings: collections.defaultdict[int, set[int]] = collections.defaultdict(set)
-    role_count: collections.defaultdict[int, collections.Counter[str]] = collections.defaultdict(collections.Counter)
+    found = Bookings(
+        collections.defaultdict(set), collections.defaultdict(collections.Counter), collections.defaultdict(set)
+    )
     for b in x.rows(
         BookedRow,
         'select artist_id, event_id, role from event_artists where as_couple is null and role in '
         '(select value from json_each(?))',
         roles,
     ):
-        role_count[b.artist_id][b.role] += 1  # the events booked in each role (a booking is once per event and role)
-        bookings[b.artist_id].add(b.event_id)
-    couple_bookings: collections.defaultdict[int, set[int]] = collections.defaultdict(set)  # events booked in a couple
+        found.roles[b.artist_id][b.role] += 1  # the events booked in each role (a booking is once per event and role)
+        found.events[b.artist_id].add(b.event_id)
     for m in x.rows(
         BookedRow,
         'select artist_id, event_id, role from artist_events where via = ?'
         ' and role in (select value from json_each(?))',
         (enums.Via.MEMBER, *roles),
     ):
-        couple_bookings[m.artist_id].add(m.event_id)
-    # the countries each festival's line-up states next to an artist's name, once each
+        found.in_couples[m.artist_id].add(m.event_id)
+    return found
+
+
+def origins(x: Transaction) -> collections.defaultdict[int, collections.Counter[str]]:
+    """The countries each festival's line-up states next to an artist's name, once each, with how many festivals state
+    each (artist_origin)."""
     said: collections.defaultdict[int, set[tuple[int, str]]] = collections.defaultdict(set)
     for m in x.rows(
         Stated,
@@ -688,6 +693,15 @@ def artist_stats(x: Transaction) -> Booked:
         'artist_origin',
         ({'artist_id': a, 'country_code': c, 'festivals': n} for a, cnt in stated.items() for c, n in cnt.items()),
     )
+    return stated
+
+
+def artist_stats(x: Transaction) -> Booked:
+    """Each artist's bookings, roles, countries and home. A couple's booking counts for the couple, not for each
+    member: a member's own bookings are their solo work (event_artists.as_couple)."""
+    ev_cc = {e.id: e.country_code for e in x.rows(Coded, 'select id, country_code from events')}
+    booked = bookings_of(x)
+    stated = origins(x)
     dates = {e.id: e.start_date for e in x.rows(Started, 'select id, start_date from events')}
     given = given_homes(x)
     # where a home country isn't known, none stands in for it: the artist is of unknown country in the statistics
@@ -695,27 +709,25 @@ def artist_stats(x: Transaction) -> Booked:
     home_of: dict[int, str | None] = {}
     stats: list[dict[str, object]] = []
     countries: list[dict[str, object]] = []
-    for a, evs in bookings.items():
+    for a, evs in booked.events.items():
         where = collections.Counter(c for e in evs if (c := ev_cc[e]))
         country, basis = home(given.get(a), stated[a])
-        most = where.most_common(1)[0][0] if where else None
         home_of[a] = country
         ds = sorted(dates[e] for e in evs)
-        abroad = None if country is None else sum(n for c, n in where.items() if c != country)
         stats.append(
             {
                 'artist_id': a,
                 'bookings': len(evs),
-                **{r: role_count[a][r] for r in BOOKED_ROLES},
+                **{r: booked.roles[a][r] for r in BOOKED_ROLES},
                 'first_date': ds[0],
                 'last_date': ds[-1],
                 'home_country': country,
                 'home_basis': basis,
-                'booked_most_in': most,
+                'booked_most_in': where.most_common(1)[0][0] if where else None,
                 'countries': len(where),
-                'abroad_bookings': abroad,
+                'abroad_bookings': None if country is None else sum(n for c, n in where.items() if c != country),
                 'popular': int(len(evs) >= POPULAR),
-                'couple_bookings': len(couple_bookings[a] - evs),
+                'couple_bookings': len(booked.in_couples[a] - evs),
             }
         )
         countries.extend(
@@ -723,7 +735,7 @@ def artist_stats(x: Transaction) -> Booked:
         )
     x.insert('artist_stats', stats)
     x.insert('artist_countries', countries)
-    return Booked(bookings, home_of, ev_cc)
+    return Booked(booked.events, home_of, ev_cc)
 
 
 def features(x: Transaction) -> collections.defaultdict[int, set[str]]:
@@ -732,13 +744,17 @@ def features(x: Transaction) -> collections.defaultdict[int, set[str]]:
     for f in x.rows(Featured, 'select event_id, feature from event_features'):
         feats[f.event_id].add(f.feature)
     promos = Promo.read()
+    known = set(x.column(int, 'select id from events'))
     for r in promos:
-        if not x.exists('select 1 from events where id = ?', (r.event_id,)):
+        if r.event_id not in known:
             sys.exit(f'promo_codes.csv: no event {r.event_id} ({r.event})')
         feats[r.event_id].add(Feature.PROMO_CODE)
     x.insert(
         'event_promos',
-        ({'event_id': r.event_id, 'code': r.code.strip(), 'offer': r.offer.strip() or None} for r in promos),
+        (
+            {'event_id': r.event_id, 'code': r.code.strip(), 'offer': r.offer and (r.offer.strip() or None)}
+            for r in promos
+        ),
     )
     # a festival selling full, party or package passes for two or more people has the group_deals highlight
     for e in x.column(
@@ -802,10 +818,11 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> None:
         ({'person_id': person_id[r.key], 'artist_id': key_id[k]} for r in people for k in r.artist_keys),
     )
     plans_ = PlanRow.read()
+    known = set(x.column(int, 'select id from events'))
     for r in plans_:
         if r.person not in person_id:
             sys.exit(f'plans.csv: no person {r.person} in people.csv')
-        if not x.exists('select 1 from events where id = ?', (r.event_id,)):
+        if r.event_id not in known:
             sys.exit(f'plans.csv: no event {r.event_id} ({r.event})')
     x.insert('plans', ({'person_id': person_id[r.person], 'event_id': r.event_id, 'status': r.status} for r in plans_))
 
@@ -879,13 +896,8 @@ DOCS = {
     'says nothing of where they are from), countries booked in, bookings abroad (outside the home country; null when '
     f'that is not known), popular = at least {POPULAR} bookings, couple_bookings '
     '= further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
-    'event_artists': 'Each artist booked at an event, in a role: once however often its line-up names them. as_couple '
-    'is set when a member is listed in the same role as their couple at the same event: that row repeats the '
-    'couple’s booking and is left out of line-ups and statistics.',
     'artist_redirects': 'Artist ids no artist has now (merged into another, by a claim or a reviewed decision): old_id '
     'now reads as new_id.',
-    'artist_events': 'Every appearance of an artist: direct (their own booking) or member (via a booked couple, '
-    'via_artist_id).',
     'artist_countries': 'Bookings per artist and country; is_home marks the known home country in artist_stats.',
     'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how many festivals '
     'state each.',
@@ -951,10 +963,29 @@ def site_json(x: Reader, built_at: str) -> dict[str, object]:
 
 
 def table_docs(x: Transaction) -> None:
+    """What each table and view holds: the site's own (DOCS), and the export's for the ones it copies."""
     x.insert('table_docs', ({'name': n, 'description': d} for n, d in DOCS.items()))
-    for doc in x.rows(Doc, 'select name, description from src.table_docs'):
-        if x.exists('select 1 from sqlite_master where name=?', (doc.name,)) and doc.name not in DOCS:
-            x.insert('table_docs', [{'name': doc.name, 'description': doc.description}], unless=('name',))
+    made = set(x.column(str, 'select name from sqlite_master'))
+    x.insert(
+        'table_docs',
+        (
+            {'name': doc.name, 'description': doc.description}
+            for doc in x.rows(Doc, 'select name, description from src.table_docs')
+            if doc.name in made and doc.name not in DOCS
+        ),
+    )
+
+
+def resolved(db: Reader) -> None:
+    """Refuse an export whose mentions resolve_artists hasn't resolved: a load makes them again, under new ids, and
+    their bookings go with the old ones until resolve books the new (an empty line-up, built and published)."""
+    unresolved = db.value(
+        int,
+        'select count(*) from src.artist_mentions m'
+        ' where not exists (select 1 from src.mention_artists a where a.mention_id = m.id)',
+    )
+    if unresolved:
+        sys.exit(f'the export has {unresolved} artist mentions no artist resolves: run mise run resolve after the load')
 
 
 @dataclass(frozen=True)
@@ -972,6 +1003,7 @@ def build(src: Path, out: Path) -> Built:
     with sqlite_db.opened(building, 'rwc') as db:
         db.attach('src', src, 'ro')
         export.current(db, 'src')
+        resolved(db)
         with db.transaction() as x:
             for ddl in TABLES.values():
                 x.script(ddl)

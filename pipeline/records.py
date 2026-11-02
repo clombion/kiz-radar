@@ -36,7 +36,7 @@ from pydantic import (
 )
 from pydantic.fields import FieldInfo
 
-from pipeline import data, files, tables
+from pipeline import data, files, names, tables
 from pipeline.enums import (
     ExtractedFeature,
     Genre,
@@ -844,7 +844,11 @@ def keys_text(value: tuple[str, ...]) -> str:
     return ';'.join(value)
 
 
-type Keys = Annotated[tuple[str, ...], BeforeValidator(split_keys), PlainSerializer(keys_text, return_type=str)]  # a;b
+type Keys = Annotated[
+    tuple[Annotated[str, AfterValidator(names.checked)], ...],  # each an artist's key (names.ArtistKey)
+    BeforeValidator(split_keys),
+    PlainSerializer(keys_text, return_type=str),
+]  # a;b
 
 
 ANSWERS = 'pipeline/extract/answers'  # each pass's answers, a folder per pass
@@ -1077,7 +1081,7 @@ class Promo(CsvRow):
 
     event_id: int
     code: str
-    offer: str
+    offer: Blank[str]  # what it gives, when known
     event: str
     note: str
 
@@ -1101,7 +1105,7 @@ class Group(CsvRow):
 
     FILE = 'pipeline/extract/groups.csv'
 
-    group_key: Annotated[str, Field(pattern=r'^g:')]  # apart from every mention's key (p:, c: or o:)
+    group_key: Annotated[str, AfterValidator(names.group)]  # a group's: a line-up naming it is the group's
     display_name: str
     members: Keys
     aliases: Keys

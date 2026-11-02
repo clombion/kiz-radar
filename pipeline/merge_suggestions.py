@@ -29,13 +29,14 @@ from pipeline.countries import nation
 from pipeline.db import Reader
 from pipeline.enums import MergeReason, Role, SuggestionCalendar, SuggestionCountries, Via
 from pipeline.extract.prices import COUPLE
-from pipeline.names import norm, sim
+from pipeline.names import sim, token_key
 from pipeline.records import Suggestion
 
 COUNTRY_BONUS, COUNTRY_PENALTY = 0.1, 0.25  # score = name similarity, adjusted by country of origin …
 CLASH_PENALTY, CIRCUIT_BONUS = 0.5, 0.05  # … and by the calendar (see calendar_signal)
 SHORT_EVENT_DAYS = 4  # longer events (week-long all-in-ones) never count as a clash
-SIMILAR, SIMILAR_IF_ONE_SAME = 0.72, 0.6  # how alike both of two couples' names must be, or one when the other is
+# how alike (names.sim of their keys) both members' names of two couples must be, or one's when the other's are one key
+COUPLE_NAMES_ALIKE, COUPLE_NAMES_ALIKE_IF_ONE_SAME = 0.72, 0.6
 # French overseas territories count as France: artists list either.
 
 
@@ -217,6 +218,15 @@ def evidence(c: Reader, site: Reader) -> Evidence:
     return found
 
 
+def member_keys(c: Reader, art: dict[int, str]) -> dict[int, list[str]]:
+    """Each couple's or group's members, by the key of the name each is shown by (names.token_key, as the artists'
+    resolution keys them)."""
+    members: collections.defaultdict[int, list[str]] = collections.defaultdict(list)
+    for m in c.rows(Member, 'select couple_id, member_id from couple_members'):
+        members[m.couple_id].append(token_key(art[m.member_id]))
+    return dict(members)
+
+
 def couple_pairs(members: dict[int, list[str]]) -> list[tuple[int, int, float]]:
     """(couple, couple, similarity) of the couples whose two names match, in either order."""
     couples = [i for i, m in members.items() if len(m) == COUPLE]
@@ -233,7 +243,7 @@ def couple_pairs(members: dict[int, list[str]]) -> list[tuple[int, int, float]]:
             a2, b2 = members[j]
             s1, s2 = max(((sim(a1, a2), sim(b1, b2)), (sim(a1, b2), sim(b1, a2))), key=min)
             lo, hi = sorted((s1, s2))
-            if lo >= SIMILAR or (hi == 1 and lo >= SIMILAR_IF_ONE_SAME):
+            if lo >= COUPLE_NAMES_ALIKE or (hi == 1 and lo >= COUPLE_NAMES_ALIKE_IF_ONE_SAME):
                 out.append((i, j, (s1 + s2) / 2))
     return out
 
@@ -246,9 +256,7 @@ def suggestions(c: Reader, site: Reader) -> list[Suggestion]:
     keyed = c.rows(Keyed, 'select match_key, artist_id from artist_keys where produced order by match_key desc')
     key_id = {k.match_key: k.artist_id for k in keyed}
     named = {k.artist_id: k.match_key for k in keyed}  # each artist's least mention key: one a merge claim can name
-    members: collections.defaultdict[int, list[str]] = collections.defaultdict(list)
-    for m in c.rows(Member, 'select couple_id, member_id from couple_members'):
-        members[m.couple_id].append(norm(art[m.member_id]))
+    members = member_keys(c, art)
     done = decided(c)
     rows: dict[tuple[int, int], Suggestion] = {}
 

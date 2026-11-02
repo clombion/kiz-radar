@@ -27,6 +27,7 @@ from pipeline import (
     export,
     files,
     generate,
+    merge_suggestions,
     prompt,
     records,
     spend,
@@ -49,6 +50,7 @@ from pipeline.enums import (
 )
 from pipeline.extract import answers, ask, check_output, load_extract, prices, questions, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
+from pipeline.names import ArtistKey, kind_of
 from pipeline.prompt import Prompt, api_schema
 from pipeline.records import (
     ANSWERS,
@@ -457,17 +459,58 @@ class Went(BaseModel):
     retired_into: int | None
 
 
-def test_an_alias_two_groups_claim_is_refused() -> None:
-    groups = [duo('g:ab', 'p:absound'), duo('g:ba', 'p:absound')]
-    keys = resolve_artists.keyed(named('AB Sound'), groups)
-    with pytest.raises(SystemExit, match='g:ba: its aliases are already the group g:ab'):
-        _ = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), groups)
+def test_an_id_kept_by_the_artist_that_absorbed_its_key_is_that_artists_key(memory: Memory) -> None:
+    """Two spellings merge into a couple key no artist had, which keeps the lower id: that id is the couple's key's
+    now, so the next run gives it the same id from its own key, and the id reads as the artist that has it."""
+    con = db_with(memory(), {'c:x': 12, 'c:y': 5}, {'c:x': 12, 'c:y': 5})
+    ids = stable_ids(con, {'c:x': 'c:z', 'c:y': 'c:z'})
+    with con.transaction() as tx:
+        resolve_artists.retire(tx, ids, {12: 5})
+    given = {
+        k.artist_id: k.match_key for k in con.rows(resolve_artists.Keyed, 'SELECT artist_id, match_key FROM artist_ids')
+    }
+    assert given == {5: 'c:z', 12: 'c:x'}
+
+
+def test_aliases_two_groups_take_are_refused_naming_both_rows() -> None:
+    """One key in two rows, or two keys a claim merged: one artist, which no run can give to both groups."""
+    groups = [duo('g:ab', 'p:absound'), duo('g:ba', 'p:absound'), duo('g:cd', 'p:cdsound'), duo('g:dc', 'p:dcsound')]
+    keys = resolve_artists.keyed(named('AB Sound', 'CD Sound', 'DC Sound'), groups)
+    joined = resolve_artists.merged(keys, {frozenset({'p:cdsound', 'p:dcsound'}): MergeDecision.MERGE})
+    refused = resolve_artists.contested(keys, joined, groups)
+    end = ': one artist, which one group can take'
+    assert refused == [
+        f'{Group.FILE} line 2 (g:ab, alias p:absound) and line 3 (g:ba, alias p:absound){end}',
+        f'{Group.FILE} line 4 (g:cd, alias p:cdsound) and line 5 (g:dc, alias p:dcsound){end}',
+    ]
+    assert resolve_artists.contested(keys, resolve_artists.merged(keys, {}), groups[:1] + groups[2:]) == []
+
+
+def test_a_group_key_no_mention_produces_is_orphaned_and_the_group_stands() -> None:
+    groups = [
+        Group.model_validate(
+            {
+                'group_key': 'g:ab',
+                'display_name': 'AB',
+                'members': 'p:ana@dj;p:gone',
+                'aliases': 'p:absound;p:abgone',
+                'note': '',
+            }
+        )
+    ]
+    keys = resolve_artists.keyed(named('AB Sound', 'Ana'), groups)
+    assert resolve_artists.orphaned(keys, groups) == {'g:ab': ['p:gone', 'p:abgone']}
+    final = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), groups)
+    assert final['p:absound'] == 'g:ab'
+    assert keys.members['g:ab'] == ['p:ana@dj']
 
 
 @pytest.mark.parametrize(
     ('row', 'refused'),
     [
-        (lambda: duo('ab', 'p:absound'), 'pattern'),
+        (lambda: duo('ab', 'p:absound'), 'is no artist key'),
+        (lambda: duo('p:ab', 'p:absound'), 'keyed as a group'),
+        (lambda: duo('g:ab', 'p:ab sound'), 'a body without spaces'),
         (
             lambda: Pair.model_validate({'key_a': 'p:b', 'key_b': 'p:a'}),
             'key order',
@@ -475,7 +518,7 @@ def test_an_alias_two_groups_claim_is_refused() -> None:
     ],
 )
 def test_a_row_of_the_artists_csvs_is_written_one_way(row: Callable[[], object], refused: str) -> None:
-    """A group's key is apart from every mention's key, and a merge's pair is in key order."""
+    """A group's key is a group's, every key an artist's key, and a merge's pair is in key order."""
     with pytest.raises(ValidationError, match=refused):
         _ = row()
 
@@ -1189,3 +1232,56 @@ def test_the_usual_spelling_counts_what_tidies_alike_and_reads_capitals_for_thei
     assert resolve_artists.usual_spelling({'Célia': 1, 'CELIA': 1, 'Celia': 1}) == 'Célia'
     # capitals with accents are as written
     assert resolve_artists.usual_spelling({'GAËLLE': 1, 'Gaélle': 1}) == 'Gaëlle'
+
+
+def test_two_couples_are_paired_by_their_members_keys_as_the_resolution_keys_them(memory: Memory) -> None:
+    """A couple's members are compared by the key resolve_artists gives their names (names.token_key): no DJ in front,
+    no accent, no space, so "Carla & Tony Viser" pairs with "Carla & DJ Tony", and "Dr Kizomba" is not "Kizomba"."""
+    shown = {1: 'Carla', 2: 'Tony Viser', 3: 'Carla', 4: 'DJ Tony', 5: 'Dr Kizomba', 6: 'Laura', 7: 'Kizomba'}
+    couples = {10: (1, 2), 11: (3, 4), 12: (5, 6), 13: (7, 6)}
+    with shaped(memory()).transaction() as tx:
+        tx.insert(
+            'artists', ({'id': i, 'display_name': n, 'kind': 'person', 'match_key': f'p:{i}'} for i, n in shown.items())
+        )
+        tx.insert(
+            'artists', ({'id': c, 'display_name': 'couple', 'kind': 'couple', 'match_key': f'c:{c}'} for c in couples)
+        )
+        tx.insert('couple_members', ({'couple_id': c, 'member_id': m} for c, ms in couples.items() for m in ms))
+        members = merge_suggestions.member_keys(tx, shown)
+    assert members[11] == ['carla', 'tony']
+    assert members[12] == ['drkizomba', 'laura']
+    assert [(i, j) for i, j, _ in merge_suggestions.couple_pairs(members)] == [(10, 11), (12, 13)]
+
+
+def test_a_key_is_its_kind_and_body_and_reads_back_as_it_was_written() -> None:
+    for text, kind in (
+        ('p:chiara@chiara+chiara#1', ArtistKind.PERSON),
+        ('c:ana+bea', ArtistKind.COUPLE),
+        ('g:amira@amira+dafne+raul+dafne@amira+dafne+raul+raul', ArtistKind.GROUP),
+        ('o:kizzryders', ArtistKind.ORGANISATION),
+    ):
+        key = ArtistKey.parse(text)
+        assert (key.kind, str(key)) == (kind, text)
+    assert ArtistKey.parse('p:chiara@chiara+chiara#1').name == 'chiara'
+    for text in ('chiara', 'x:chiara', 'p:', 'p:two words'):
+        with pytest.raises(ValueError, match='is no artist key'):
+            _ = ArtistKey.parse(text)
+
+
+def test_a_mentions_key_says_its_kind() -> None:
+    """A couple is c:, three or more people g:, a team or crew g:, unless a festival names it its organiser (o:)."""
+    mentions = [
+        *named('Ana & Bea', 'Ana & Bea & Cris'),
+        *named('Kizz Ryders', role=Role.ORGANISER),
+        *named('Kizz Ryders', '32 Beats Production', role=Role.CREW),
+    ]
+    mentions = [m.model_copy(update={'id': i}) for i, m in enumerate(mentions)]
+    keys = resolve_artists.keyed(mentions, [])
+    assert [keys.mention_key[m.id] for m in mentions] == [
+        'c:ana+bea',
+        'g:ana+bea+cris',
+        'o:kizzryders',
+        'o:kizzryders',
+        'g:32beatsproduction',
+    ]
+    assert all(kind_of(k) == kind for k, kind in keys.kinds.items())

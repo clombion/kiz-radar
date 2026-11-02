@@ -91,7 +91,7 @@ class Paged(Record):
     url_fr: str | None
     url_es: str | None
     url_pt: str | None
-    cancelled: int | None  # 1 when its page stamps it cancelled; None when not known (a past festival's page read
+    cancelled: bool | None  # True when its page stamps it cancelled; None when not known (a past festival's page read
     # before the scrape looked for the stamp, and not read since)
 
 
@@ -129,7 +129,7 @@ def page_fields(page: str) -> tuple[Paged, list[str]]:
         url_es=translation('es'),
         url_pt=translation('pt'),
         # the site stamps "Cancelled" over the poster of a cancelled event
-        cancelled=int(bool(re.search(r'\.etn-single-event-media::after\s*\{\s*content:\s*"Cancelled"', page))),
+        cancelled=bool(re.search(r'\.etn-single-event-media::after\s*\{\s*content:\s*"Cancelled"', page)),
     )
     return fields, links
 

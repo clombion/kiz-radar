@@ -137,9 +137,10 @@ NAMES = {
 # Flags that are not ISO codes (EA = Ceuta & Melilla, CP = Clipperton, IC = Canaries) count as their state.
 FLAG_ALIAS = {'EA': 'ES', 'IC': 'ES', 'CP': 'FR', 'EU': None}
 
-ALIASES = {n.lower(): c for c, n in NAMES.items()}
-ALIASES.update(
-    {
+# every name a country is written as: its name, the others line-ups use, and its bare ISO code (FR, DE, NL …)
+ALIASES = (
+    {n.lower(): c for c, n in NAMES.items()}
+    | {
         'uk': 'GB',
         'england': 'GB',
         'scotland': 'GB',
@@ -290,8 +291,8 @@ ALIASES.update(
         'etats-unis': 'US',
         'estados unidos': 'US',
     }
+    | {c.lower(): c for c in NAMES}
 )
-ALIASES.update({c.lower(): c for c in NAMES})  # bare ISO codes: FR, DE, NL …
 
 
 INDICATOR_A, INDICATOR_Z = 0x1F1E6, 0x1F1FF  # the regional indicator symbols 🇦 … 🇿, two of which make a flag

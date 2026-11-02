@@ -5,23 +5,27 @@ Reads artist_mentions (from load_extract.py) and every claim (pipeline/claims.py
   artist_aliases          every name an artist was written as
   couple_members          couple/group id -> member person id
   mention_artists         each mention's artist
-  event_artists (view)    each artist booked at an event in a role, once however often its line-up names them
+  event_artists (view)    each artist booked at an event in a role, once however often its line-up names them, and
+                          the couple a member repeats the booking of (as_couple)
   artist_merge_candidates pairs that may be the same artist, with evidence, for review
   merge_reason_definitions
                           reason -> definition, from pipeline/states.py (the reasons artist_merge_candidates gives)
   artist_merge_decisions  every merge/separate decision applied: the merge claims that decide their pair
   artist_homes            each artist's home country as a home claim gives it
   claims                  every claim, with whether it decides its subject (claim states, pipeline/states.py)
-  artist_group_definitions, artist_group_aliases
-                          the named groups from pipeline/extract/groups.csv: note,
-                          members and the spellings that mean them
+  artist_group_definitions, artist_group_aliases, artist_group_members
+                          the named groups from pipeline/extract/groups.csv: note, the spellings that mean them
+                          and members, each key marked when no mention produces it (orphaned)
   artist_events (view)    every event an artist appears at, directly or as a member of a couple/group
 
 Matching rules:
-  - A name's key: Unicode-compatibility folded (styled letters -> plain), "DJ"/"MC" prefix removed,
-    flags/emoji/punctuation removed, accents removed, case folded, spaces removed.
+  - A name's key: pipeline/names.py token_key (no DJ or MC in front, no flags, emoji, punctuation, accents, case or
+    spaces), the one rule names are keyed and compared by.
   - Dancer, DJ, performer and MC names are split into members on & + and et e y und; organiser, media
     and crew names are never split.
+  - A key says its artist's kind (pipeline/names.py ArtistKey), which the artist is stored as: p: a person, c: a
+    couple, g: a group (three or more people, a media team or a crew, or a group of groups.csv), o: an organisation
+    (a name some festival gives as its organiser, whatever role this one gives it).
   - Mentions merge automatically only on an exact key. A couple's key is its sorted member keys. A person's
     key is their name key when the name has several words. A single-word name is weak evidence of identity
     (many teachers share a first name), so its key is scoped: a solo single-word name to its role family
@@ -38,12 +42,14 @@ mentions' (artist_keys.produced): one naming a key no mention produces any more 
 pipeline/extract/groups.csv names an act that several people perform as (a DJ duo booked under one name):
 group_key, display_name, members and aliases (both ';'-separated match_key values), note. Every alias
 mention becomes a mention of the group, and the group is linked to its members, so each member's events
-include the group's bookings.
+include the group's bookings. A member or alias no mention produces is orphaned, as a claim's key is: reported, marked
+in artist_group_members and artist_group_aliases, the rest of its group standing. Two rows whose aliases are one artist
+(one key, or keys the claims merged) are refused, naming both, before anything is written.
 
-Artist ids are stable: artist_ids keeps every id ever given and the match_key it was given to. An artist
-keeps the id of its own key, else the lowest earlier id among the keys it absorbed; a new artist gets the
-next id never used. An id no artist has any more is retired into the artist its keys resolve to now
-(artist_ids.retired_into), which the site redirects it to.
+Artist ids are stable: artist_ids keeps every id ever given and the match_key of the artist that has it now (or had
+it last, for an id no artist has). An artist keeps the id of its own key, else the lowest earlier id among the keys
+it absorbed; a new artist gets the next id never used. An id no artist has any more is retired into the artist its
+keys resolve to now (artist_ids.retired_into), which the site redirects it to.
 
 Usage: mise run resolve
 """
@@ -58,7 +64,7 @@ import re
 import sys
 import unicodedata
 from collections import Counter, defaultdict
-from collections.abc import Iterable, Mapping, Sequence
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from collections.abc import Set as AbstractSet
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
@@ -74,14 +80,13 @@ from pipeline.db import Reader, Transaction
 from pipeline.enums import ArtistKind, ClaimState, MergeDecision, MergeReason, Model, Role, Via
 from pipeline.extract import merge_review, run_log
 from pipeline.extract.prices import COUPLE
-from pipeline.names import norm, sim
+from pipeline.names import JOINED, PLACE, PREFIX, SCOPE, ArtistKey, clean_display, key_of, kind_of, sim, token_key
 from pipeline.records import Group, MergeQuestion, Record, ReviewMention, today
 from pipeline.text import tidy_name
 
 SPLIT_ROLES = {Role.TEACHER, Role.DJ, Role.PERFORMER, Role.MC}
 ORG_ROLES = {Role.ORGANISER, Role.MEDIA, Role.CREW}
 SEPARATORS = re.compile(r'\s*&\s*|\s*\+\s*|\s+(?:and|et|e|y|und)\s+', re.IGNORECASE)
-PREFIX = re.compile(r'^(?:dj|deejay|d\.j\.|mc)\s+', re.IGNORECASE)
 SHORTEST_NAME = 2  # a member's name key shorter than this is a letter of a name built around "&" ("D&L Beats")
 REVIEWER = Model.CLAUDE_HAIKU_5_5  # the merge review's model (ask.MODEL)
 PAIR = 2  # the keys of a decision on two artists; one key's decides a single name
@@ -129,7 +134,10 @@ CREATE TABLE mention_artists (
 ) STRICT;
 CREATE INDEX mention_artists_artist ON mention_artists(artist_id);
 CREATE VIEW event_artists AS
-    SELECT DISTINCT m.event_id, ma.artist_id, m.role
+    SELECT DISTINCT m.event_id, ma.artist_id, m.role,
+      (SELECT min(cm.couple_id) FROM couple_members cm JOIN mention_artists c ON c.artist_id = cm.couple_id
+         JOIN artist_mentions cn ON cn.id = c.mention_id
+       WHERE cm.member_id = ma.artist_id AND cn.event_id = m.event_id AND cn.role = m.role) AS as_couple
     FROM mention_artists ma JOIN artist_mentions m ON m.id = ma.mention_id;
 CREATE TABLE merge_reason_definitions (
     reason TEXT PRIMARY KEY,
@@ -183,47 +191,43 @@ CREATE TABLE artist_group_definitions (
 CREATE TABLE artist_group_aliases (
     group_key TEXT NOT NULL REFERENCES artist_group_definitions(group_key) DEFERRABLE INITIALLY DEFERRED,
     match_key TEXT NOT NULL,      -- a spelling's key whose mentions count as the group's
+    produced INTEGER NOT NULL CHECK (produced IN (0, 1)),  -- 0: no mention produces it, so it is orphaned
     PRIMARY KEY (group_key, match_key)
 ) STRICT;
+CREATE TABLE artist_group_members (
+    group_key TEXT NOT NULL REFERENCES artist_group_definitions(group_key) DEFERRABLE INITIALLY DEFERRED,
+    match_key TEXT NOT NULL,      -- a member's key, which couple_members links the group to
+    produced INTEGER NOT NULL CHECK (produced IN (0, 1)),  -- 0: no mention produces it, so it is orphaned
+    PRIMARY KEY (group_key, match_key)
+) STRICT;
+"""
+# every event an artist appears at: booked as themselves (a member listed beside their couple in the same role repeats
+# its booking), or through a couple or group; the site's database declares it alike, over its own event_artists
+ARTIST_EVENTS = """
 CREATE VIEW artist_events AS
-    SELECT ea.artist_id, ea.event_id, ea.role, '{direct}' AS via, NULL AS via_artist_id
-    FROM event_artists ea
+    SELECT ea.artist_id, ea.event_id, ea.role, '{via_direct}' AS via, NULL AS via_artist_id
+    FROM event_artists ea WHERE ea.as_couple IS NULL
     UNION ALL
-    SELECT cm.member_id, ea.event_id, ea.role, '{member}', ea.artist_id
+    SELECT cm.member_id, ea.event_id, ea.role, '{via_member}', ea.artist_id
     FROM event_artists ea JOIN couple_members cm ON cm.couple_id = ea.artist_id;
 """
+VIA = {'via_direct': Via.DIRECT, 'via_member': Via.MEMBER}  # the states ARTIST_EVENTS names
 # the export's table of every id given, which this step only adds to (tests/test_steps.py holds the export to it)
 KEPT = sqlite_db.declared("""CREATE TABLE artist_ids (
     artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
-    match_key TEXT NOT NULL UNIQUE, -- the key it was given to
+    match_key TEXT NOT NULL UNIQUE, -- the key of the artist that has it, or had it last
     retired_into INTEGER            -- the artist its keys went to once no artist had it; NULL while one has
 ) STRICT""")
 # a review that could not tell (unsure) decides nothing: the pair stays a candidate, and no claim holds it
 STORED = (MergeDecision.MERGE, MergeDecision.SEPARATE)
 TABLES = sqlite_db.declared(
-    DDL.format_map(
-        states.SQL_IN
-        | {'stored_decision': states.sql_in('merge_decision', STORED), 'direct': Via.DIRECT, 'member': Via.MEMBER}
-    )
+    (DDL + ARTIST_EVENTS).format_map(states.SQL_IN | VIA | {'stored_decision': states.sql_in('merge_decision', STORED)})
 )
 
 
 def country_codes(text: str | None) -> frozenset[str]:
     """ISO 3166 alpha-2 codes for a country as written (countries.codes)."""
     return frozenset(codes(text))
-
-
-def clean_display(name: str) -> str:
-    """The name as a reader would want it shown: plain letters, no flags or emoji."""
-    s = re.sub(r'\([^)]*\)|\[[^\]]*\]', ' ', unicodedata.normalize('NFKC', name))
-    s = ''.join(ch for ch in s if unicodedata.category(ch)[0] in 'LNPZ' or ch in "&+'’")
-    return ' '.join(s.split()).strip(' -–—•·*:,;')
-
-
-def token_key(name: str) -> str:
-    s = PREFIX.sub('', clean_display(name))
-    s = unicodedata.normalize('NFKD', s)
-    return ''.join(ch for ch in s if ch.isalnum() and not unicodedata.combining(ch)).casefold()
 
 
 def members_of(name: str, role: Role) -> list[str]:
@@ -248,8 +252,8 @@ def words_of(name: str) -> list[str]:
 def person_key(name: str, role: Role, couple_scope: str | None) -> str:
     k = token_key(name)
     if len(words_of(name)) > 1:
-        return f'p:{k}'
-    return f'p:{k}@{couple_scope}' if couple_scope else f'p:{k}@{role_family(role)}'
+        return key_of(ArtistKind.PERSON, k)
+    return key_of(ArtistKind.PERSON, f'{k}{SCOPE}{couple_scope or role_family(role)}')
 
 
 class UnionFind:
@@ -299,9 +303,12 @@ TABLE_DOCS = {
     'couple_members': "The people in each couple or group (couple_id is the couple's or group's artist id).",
     'mention_artists': 'The resolved artist of each mention (artist_mentions.id), whose style and stated country '
     'artist_mentions holds.',
-    'event_artists': 'Each artist booked at an event, in a role: once however often its line-up names them.',
-    'artist_events': "Every event an artist appears at: directly (via 'direct') or as a member of a couple or group "
-    "(via 'member', via_artist_id = the couple or group). Use it for a person's full event history.",
+    'event_artists': 'Each artist booked at an event, in a role: once however often its line-up names them. as_couple '
+    'is set when a member is listed in the same role as their couple at the same event: that row repeats the '
+    'couple’s booking and is left out of line-ups and statistics.',
+    'artist_events': "Every event an artist appears at: booked as themselves (via 'direct', the rows of event_artists "
+    "with no as_couple) or as a member of a couple or group (via 'member', via_artist_id = the couple or group). Use "
+    "it for a person's full event history.",
     'artist_merge_candidates': 'Pairs of name keys that may be the same artist, with the reason, similarity and '
     'evidence; decision is NULL when no merge or separate decision exists (left apart).',
     'merge_reason_definitions': 'What each reason in artist_merge_candidates means.',
@@ -311,9 +318,18 @@ TABLE_DOCS = {
     'hash; null when it was decided by hand) and rationale.',
     'artist_group_definitions': 'Named groups defined by hand (a DJ duo booked under one name), with a note; members '
     'are in couple_members.',
-    'artist_group_aliases': "The name keys whose mentions count as a named group's.",
-    'artist_ids': 'Every artist id ever given and the match_key it was given to. An id missing from artists was merged '
-    'into another artist: artist_keys gives the artist its key belongs to now.',
+    'artist_group_aliases': "The name keys whose mentions count as a named group's; produced = 0 for one no "
+    'mention produces, which is orphaned (it means nothing until pipeline/extract/groups.csv names the key the artist '
+    'has now).',
+    'artist_group_members': "Each named group's members by key, as pipeline/extract/groups.csv lists them; produced "
+    '= 0 for one no mention produces, which is orphaned (couple_members links the group to the others).',
+    'artist_homes': 'Each artist a home claim says where they are from (pipeline/claims.py): the country, the source '
+    'of the claim that decides it, and its note.',
+    'claims': 'Every claim (pipeline/claims.py), of every source: its subject and text, when it was made, and its '
+    'state: applied (it decides its subject), overridden (another claim comes first) or orphaned (it names a key no '
+    'mention produces, and decides nothing).',
+    'artist_ids': 'Every artist id ever given, and the match_key of the artist that has it now, or had it last. An id '
+    'missing from artists was retired: retired_into is the artist its keys went to, when any did.',
 }
 
 
@@ -329,17 +345,18 @@ class Claimed:
 
 class Resolved(NamedTuple):
     """What resolving the mentions came to: how many mentions, artists of each kind, candidates listed, same-name
-    pairs kept apart for want of evidence, and named groups."""
+    pairs kept apart for want of evidence, named groups, and the keys of theirs no mention produces."""
 
     mentions: int
     kinds: Mapping[str, int]
     candidates: int
     unsupported: int
     groups: int
+    orphaned_group_keys: int
 
 
 def record_steps(con: Transaction, resolved: Resolved, decided: Claimed) -> None:
-    n_mentions, kinds_count, n_candidates, n_unsupported, n_groups = resolved
+    n_mentions, kinds_count, n_candidates, n_unsupported, n_groups, n_orphaned = resolved
     run_log.document(con, TABLE_DOCS, 'pipeline/extract/resolve_artists.py')
     if made := merge_review.current():
         hashes = sorted({r.prompt for r in made})
@@ -376,13 +393,14 @@ def record_steps(con: Transaction, resolved: Resolved, decided: Claimed) -> None
             inputs='table artist_mentions; the claims (pipeline/claims.py); pipeline/extract/groups.csv',
             outputs='tables artists, artist_aliases, artist_keys, couple_members, mention_artists, '
             'artist_merge_candidates, merge_reason_definitions, artist_merge_decisions, artist_homes, claims, '
-            'artist_group_definitions, artist_group_aliases; views event_artists, artist_events',
+            'artist_group_definitions, artist_group_aliases, artist_group_members; views event_artists, artist_events',
             details={
                 'mentions': n_mentions,
                 'artists_by_kind': kinds_count,
                 'claims': dict(Counter(str(v) for v in decided.state.values())),
                 'merge_decisions': dict(Counter(f'{m.source} {m.claim.decision}' for m in decided.merges.values())),
                 'named_groups': n_groups,
+                'named_group_keys_orphaned': n_orphaned,
                 'candidates_listed': n_candidates,
                 'same_name_pairs_kept_apart_without_evidence': n_unsupported,
             },
@@ -432,9 +450,13 @@ def retired_into(con: Reader, final_key: Mapping[str, str], ids: Mapping[str, in
 def retire(con: Transaction, ids: Mapping[str, int], moved_on: Mapping[int, int]) -> None:
     """Record the ids given (artist_ids) and where the ids no artist has now went. An id an artist has again is
     retired into nothing: left as it was, the id it went to could go back to it, and the two would redirect to each
-    other for ever."""
-    con.insert('artist_ids', ({'artist_id': i, 'match_key': fk} for fk, i in ids.items()), unless=('artist_id',))
-    con.executemany('UPDATE artist_ids SET retired_into = NULL WHERE artist_id = ?', [(i,) for i in ids.values()])
+    other for ever. An id an artist keeps under a key of its own (it absorbed the key the id was given to) is the
+    artist's key's now: its key no other id has, as stable_ids gives an artist the id of its key when one was given."""
+    con.executemany(
+        'INSERT INTO artist_ids (artist_id, match_key) VALUES (?, ?)'
+        ' ON CONFLICT (artist_id) DO UPDATE SET match_key = excluded.match_key, retired_into = NULL',
+        [(i, fk) for fk, i in ids.items()],
+    )
     con.executemany('UPDATE artist_ids SET retired_into = ? WHERE artist_id = ?', [(n, o) for o, n in moved_on.items()])
 
 
@@ -486,6 +508,10 @@ class Gathered:
         default_factory=lambda: defaultdict(lambda: defaultdict(set))
     )
 
+    def known(self, key: str) -> None:
+        """A key a mention or a named group gives, of the kind its prefix says."""
+        self.kinds[key] = kind_of(key)
+
     def keys(self) -> Keys:
         """What was gathered, as plain mappings: reading a key nothing said gives no entry."""
         return Keys(
@@ -508,18 +534,18 @@ def apart(pkeys: list[str]) -> list[str]:
     out: list[str] = []
     for pk in pkeys:
         seen[pk] += 1
-        out.append(f'{pk}#{seen[pk]}' if pkeys.count(pk) > 1 else pk)
+        out.append(f'{pk}{PLACE}{seen[pk]}' if pkeys.count(pk) > 1 else pk)
     return out
 
 
 def person_keys(keys: Gathered, m: Mention) -> tuple[str, list[str]]:
     """(the mention's key, the person keys of its members) for a mention of people: one, a couple or a group."""
     parts = members_of(m.name_as_written, m.role)
-    scope = '+'.join(sorted(token_key(p) for p in parts)) if len(parts) > 1 else None
+    scope = JOINED.join(sorted(token_key(p) for p in parts)) if len(parts) > 1 else None
     pkeys = apart([person_key(p, m.role, scope) for p in parts])
     for p, pk in zip(parts, pkeys, strict=True):
         keys.names[pk].append(p)
-        keys.kinds[pk] = ArtistKind.PERSON
+        keys.known(pk)
         if codes := country_codes(m.country):
             keys.stated_countries[pk].update(codes)
             keys.stated_sets[pk].add(codes)
@@ -528,22 +554,26 @@ def person_keys(keys: Gathered, m: Mention) -> tuple[str, list[str]]:
         keys.partners[pk].update(set(pkeys) - {pk})
     if scope is None:
         return pkeys[0], pkeys
-    key = 'c:' + scope
-    keys.kinds[key] = ArtistKind.COUPLE if len(pkeys) == COUPLE else ArtistKind.GROUP
+    key = key_of(ArtistKind.COUPLE if len(pkeys) == COUPLE else ArtistKind.GROUP, scope)
+    keys.known(key)
     keys.members[key] = pkeys
     for form, pk in zip(apart([token_key(p) for p in parts]), pkeys, strict=True):  # a member's spellings, by place
         keys.member_forms[key][form].add(pk)
     return key, pkeys
 
 
-def keyed(mentions: Iterable[Mention], groups: Iterable[Group]) -> Keys:
-    """The keys of every mention and of its members, and the named groups' keys with their members."""
+def keyed(mentions: Sequence[Mention], groups: Iterable[Group]) -> Keys:
+    """The keys of every mention and of its members, and the named groups' keys with their members. A name of the
+    organiser's roles is an organisation's when some festival names it its organiser, else a group's (a media team, a
+    crew), whichever role this mention gives it."""
     keys = Gathered()
+    organisers = {token_key(m.name_as_written) for m in mentions if m.role == Role.ORGANISER}
     for m in mentions:
         pkeys_seen: list[str] = []
         if m.role in ORG_ROLES:
-            key = f'o:{token_key(m.name_as_written)}'
-            keys.kinds[key] = ArtistKind.ORGANISATION if m.role == Role.ORGANISER else ArtistKind.GROUP
+            name = token_key(m.name_as_written)
+            key = key_of(ArtistKind.ORGANISATION if name in organisers else ArtistKind.GROUP, name)
+            keys.known(key)
         else:
             key, pkeys_seen = person_keys(keys, m)
         if key not in pkeys_seen:  # a solo name was already counted as its single part
@@ -552,7 +582,7 @@ def keyed(mentions: Iterable[Mention], groups: Iterable[Group]) -> Keys:
             keys.event_countries[key].add(m.event_country)
         keys.mention_key[m.id] = key
     for g in groups:
-        keys.kinds[g.group_key] = ArtistKind.GROUP
+        keys.known(g.group_key)
         keys.members[g.group_key] = [m for m in g.members if m in keys.kinds]
     return keys.keys()
 
@@ -607,7 +637,7 @@ class Candidate(NamedTuple):
     decision: MergeDecision | None
 
 
-SIMILAR = Fraction(22, 25)  # how alike two spellings must be to be a candidate, exactly
+SIMILAR = Fraction(22, 25)  # how alike two keys must be (names.sim, exactly) to be spellings of one name
 SHORTEST = 3  # the shortest name a name can shorten, or begin
 SIMILAR_SHORTEST = 5  # the shortest name compared by spelling
 
@@ -714,7 +744,7 @@ class Pairing:
     @classmethod
     def of(cls, keys: Keys) -> Self:
         """The pairing of the person keys."""
-        bare = {k: k[2:].split('@')[0] for k in keys.kinds if k.startswith('p:')}
+        bare = {k: ArtistKey.parse(k).name for k, kind in keys.kinds.items() if kind == ArtistKind.PERSON}
         people = {
             k: Person(
                 b,
@@ -752,7 +782,7 @@ class Pairing:
             p = self.people[x]
             return (
                 f'{k.names[x][0]!r}: countries {sorted(p.stated) or "-"}, events in {sorted(p.events)[:4]},'
-                f' partners {sorted(q[2:] for q in k.partners[x])[:4]}'
+                f' partners {sorted(ArtistKey.parse(q).body for q in k.partners[x])[:4]}'
             )
 
         return f'{side(a)} | {side(b)}'
@@ -772,7 +802,7 @@ def candidates(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> tu
                 Candidate(a, b, names[a][0], names[b][0], reason, round(sim, 3), pairing.evidence(a, b), decision)
             )
     for k, p in sorted(pairing.people.items()):
-        if '@' in k and any(not (x & y) for x, y in itertools.combinations(p.stated_sets, 2)):
+        if ArtistKey.parse(k).scoped and any(not (x & y) for x, y in itertools.combinations(p.stated_sets, 2)):
             name = names[k][0]
             evidence = f'countries {sorted(p.stated)}'
             out.append(
@@ -871,7 +901,7 @@ def paired(keys: Keys, a: str, b: str) -> list[tuple[str, str]]:
         return []
 
     def alike(x: str, y: str) -> float:
-        return sim(norm(keys.names[x][0]), norm(keys.names[y][0]))
+        return sim(token_key(keys.names[x][0]), token_key(keys.names[y][0]))
 
     straight = alike(ma[0], mb[0]) + alike(ma[1], mb[1])
     crossed = alike(ma[0], mb[1]) + alike(ma[1], mb[0])
@@ -885,26 +915,46 @@ def same_members(keys: Keys, uf: UnionFind) -> list[set[str]]:
     same: defaultdict[tuple[str, tuple[str, ...]], set[str]] = defaultdict(set)
     for ms in keys.members.values():
         for m in ms:
-            if '@' in m:
+            if (key := ArtistKey.parse(m)).scoped:
                 partner_roots = tuple(sorted(uf.find(x) for x in ms if x != m))
-                same[(m[2:].split('@')[0], partner_roots)].add(m)
+                same[(key.name, partner_roots)].add(m)
     return list(same.values())
+
+
+def orphaned(keys: Keys, groups: Iterable[Group]) -> dict[str, list[str]]:
+    """Each named group's members and aliases no mention produces (a re-extraction respelled them), by group: they
+    mean nothing until groups.csv names the key the artist has now, and the rest of the group stands."""
+    return {g.group_key: dead for g in groups if (dead := [k for k in (*g.members, *g.aliases) if k not in keys.kinds])}
+
+
+def contested(keys: Keys, uf: UnionFind, groups: Sequence[Group]) -> list[str]:
+    """The groups.csv rows whose aliases are one artist with another row's (the same key, or keys the claims merged):
+    each such pair of rows, by line, which no run can fold into one group or the other."""
+    rows: defaultdict[str, list[tuple[int, Group, str]]] = defaultdict(list)
+    for line, g in enumerate(groups, 2):  # the header is line 1
+        for a in g.aliases:
+            if a in keys.kinds:
+                rows[uf.find(a)].append((line, g, a))
+    return [
+        f'{Group.FILE} line {la} ({ga.group_key}, alias {a}) and line {lb} ({gb.group_key}, alias {b}): one artist,'
+        ' which one group can take'
+        for found in rows.values()
+        for (la, ga, a), (lb, gb, b) in itertools.combinations(found, 2)
+        if ga.group_key != gb.group_key
+    ]
 
 
 def final_keys(keys: Keys, uf: UnionFind, groups: Iterable[Group]) -> dict[str, str]:
     """Each key's artist: its named group, its couple re-keyed from its members' artists, or the key it was merged
-    into. Named groups fold in their alias keys and are linked to their members."""
+    into. Named groups fold in their alias keys (none contested: one artist's keys fold into one group) and are linked
+    to their members."""
     group_keys: set[str] = set()
     for g in groups:
-        gk = g.group_key
-        group_keys.add(gk)
-        aliases = [a for a in g.aliases if a in keys.kinds]
-        if taken := sorted({uf.find(a) for a in aliases} & (group_keys - {gk})):
-            sys.exit(f'{gk}: its aliases are already the group {", ".join(taken)}')
-        uf.absorb(gk, aliases)
+        group_keys.add(g.group_key)
+        uf.absorb(g.group_key, [a for a in g.aliases if a in keys.kinds])
 
-    def couple_root(k: str) -> str:
-        return 'c:' + '+'.join(sorted(uf.find(m)[2:] for m in keys.members[k]))
+    def couple_root(k: str) -> str:  # a couple or group of mentions, of its members' artists
+        return key_of(keys.kinds[k], JOINED.join(sorted(ArtistKey.parse(uf.find(m)).body for m in keys.members[k])))
 
     out: dict[str, str] = {}
     for k in keys.kinds:
@@ -1016,9 +1066,6 @@ def write_artists(
     for k, ns in keys.names.items():
         for n in ns:
             alias_counts[final_key[k]][n] += 1
-    first: dict[str, str] = {}  # each artist's first key, whose kind it is unless it is a group
-    for k in keys.kinds:
-        _ = first.setdefault(final_key[k], k)
     keys_of: defaultdict[str, list[str]] = defaultdict(list)
     for k, fk in final_key.items():
         keys_of[fk].append(k)
@@ -1031,7 +1078,7 @@ def write_artists(
         new = renamed_key(used, year)
         if new is not None:
             renamed.add(new)
-        if fk not in group_display and keys.kinds[first[fk]] == ArtistKind.PERSON:
+        if kind_of(fk) == ArtistKind.PERSON:
             as_roles |= role_names({k: spelled(keys.names[k]) for k in used}, used)
         display = group_display.get(fk) or (
             spelled(keys.names[new])  # a rename shows the new name
@@ -1040,8 +1087,7 @@ def write_artists(
             if alias_counts[fk]
             else fk
         )
-        kind = ArtistKind.GROUP if fk in group_display else keys.kinds[first[fk]]
-        artists.append({'id': ids[fk], 'display_name': tidy_name(display), 'kind': kind, 'match_key': fk})
+        artists.append({'id': ids[fk], 'display_name': tidy_name(display), 'kind': kind_of(fk), 'match_key': fk})
     con.insert('artists', artists)
     con.insert(
         'artist_aliases',
@@ -1098,108 +1144,161 @@ class Counted(BaseModel):
     n: int
 
 
+MENTIONS = (
+    'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country, m.source_line'
+    ' FROM artist_mentions m JOIN events e ON e.id = m.event_id'
+)
+
+
+def joined_keys(keys: Keys, merges: Mapping[frozenset[str], MergeDecision], groups: Sequence[Group]) -> UnionFind:
+    """The keys the merges join, once groups.csv is known to fold each artist into one group at most: its rows that
+    would fold one into two are refused, before anything is written; its keys no mention produces are reported."""
+    joined = merged(keys, merges)
+    if refused := contested(keys, joined, groups):
+        sys.exit('\n'.join(refused))
+    for g, dead in orphaned(keys, groups).items():
+        print(f'{Group.FILE}: {g} names keys no mention produces, orphaned: {", ".join(dead)}', file=sys.stderr)
+    return joined
+
+
+def uses_of(con: Reader, keys: Keys, mentions: Sequence[Mention]) -> dict[str, list[Use]]:
+    """Each key's uses: the festivals that name it, when they start, and in which role."""
+    starts = {e.id: e.start_date for e in con.rows(Started, 'SELECT id, start_date FROM events')}
+    uses: defaultdict[str, list[Use]] = defaultdict(list)
+    for m in mentions:
+        uses[keys.mention_key[m.id]].append(Use(m.event_id, starts[m.event_id], m.role))
+    return dict(uses)
+
+
+def write_reviews(con: Transaction, keys: Keys, mentions: Sequence[Mention], found: Sequence[Candidate]) -> None:
+    """The reasons candidates give, and the pairs the merge review asks about."""
+    con.insert(
+        'merge_reason_definitions', ({'reason': s.key, 'definition': s.criterion} for s in states.of('merge_reason'))
+    )
+    asked = reviews(keys, mentions, found, merge_review.reviewed())
+    con.insert(
+        merge_review.TABLE, ({'key_a': q.key_a, 'key_b': q.key_b, 'question': q.model_dump_json()} for q in asked)
+    )
+
+
+def write_bookings(
+    con: Transaction, mentions: Sequence[Mention], artist_of_key: Mapping[str, int], decided: Claimed, keys: Keys
+) -> None:
+    """Each mention's artist, as its key resolves (artist_of_key), but where a booking claim says one festival's
+    line-up means another artist; a claim that moves no mention is orphaned."""
+    artist_of = {m.id: artist_of_key[keys.mention_key[m.id]] for m in mentions}
+    for b in decided.bookings:
+        c = b.claim
+        frm, to = artist_of_key[c.from_key], artist_of_key[c.to_key]
+        hits = [m.id for m in mentions if m.event_id == c.event_id and artist_of[m.id] == frm]
+        if not hits:
+            decided.state[b.id] = ClaimState.ORPHANED
+        artist_of |= dict.fromkeys(hits, to)
+    con.insert('mention_artists', ({'mention_id': i, 'artist_id': a} for i, a in artist_of.items()))
+
+
+def write_claims(
+    con: Transaction, made: Sequence[claims.Made], decided: Claimed, artist_of_key: Mapping[str, int]
+) -> None:
+    """The homes the claims give (one artist's keys: the claim that comes first), the merge decisions applied, and
+    every claim with its state."""
+    homes: dict[int, claims.Made[claims.HomeClaim]] = {}
+    for h in sorted(decided.homes, key=lambda h: h.rank()):
+        homes[artist_of_key[h.claim.key]] = h
+    con.insert(
+        'artist_homes',
+        (
+            {'artist_id': a, 'country': h.claim.country, 'source': h.source, 'note': h.claim.note}
+            for a, h in homes.items()
+        ),
+    )
+    con.insert(
+        'artist_merge_decisions',
+        (
+            {
+                'key_a': m.claim.keys[0],
+                'key_b': m.claim.keys[1],
+                'decision': m.claim.decision,
+                'source': m.source,
+                'note': m.claim.note,
+            }
+            for m in decided.merges.values()
+        ),
+    )
+    con.insert(
+        'claims',
+        (
+            {
+                'id': m.id,
+                'source': m.source,
+                'subject': json.dumps(claims.subject(m.claim)),
+                'claim': claims.text(m.claim),
+                'made_at': m.claim.made_at,
+                'state': decided.state[m.id],
+            }
+            for m in made
+        ),
+        unless=('id',),
+    )
+
+
+def write_groups(con: Transaction, groups: Sequence[Group], keys: Keys, ids: Mapping[str, int]) -> None:
+    """The named groups, their aliases and members, each key marked when no mention produces it."""
+    con.insert(
+        'artist_group_definitions',
+        (
+            {'group_key': g.group_key, 'artist_id': ids[g.group_key], 'display_name': g.display_name, 'note': g.note}
+            for g in groups
+        ),
+    )
+    con.insert('artist_group_aliases', marked(groups, keys, lambda g: g.aliases))
+    con.insert('artist_group_members', marked(groups, keys, lambda g: g.members))
+
+
+def marked(groups: Sequence[Group], keys: Keys, named_by: Callable[[Group], Sequence[str]]) -> list[dict[str, object]]:
+    """The keys each group names so (its aliases, or its members), each marked when a mention produces it."""
+    return [
+        {'group_key': g.group_key, 'match_key': k, 'produced': int(k in keys.kinds)}
+        for g in groups
+        for k in named_by(g)
+    ]
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description='Resolve artist mentions into artists, with stable ids.')
     _ = ap.parse_args()
     with export.opened('rw') as db, db.transaction() as con:
-        mentions = con.rows(
-            Mention,
-            'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country,'
-            ' m.source_line'
-            ' FROM artist_mentions m JOIN events e ON e.id = m.event_id',
-        )
+        mentions = con.rows(Mention, MENTIONS)
         groups = Group.read()
         keys = keyed(mentions, groups)
         made = claims.every()
         decided = claimed(keys, made)
         merges = {pair: MergeDecision(m.claim.decision) for pair, m in decided.merges.items()}
         found, unsupported_same_name = candidates(keys, merges)
-        final_key = final_keys(keys, merged(keys, merges), groups)
-
+        final_key = final_keys(keys, joined_keys(keys, merges, groups), groups)
         # keeping the ids artists had, and where the ids no artist has now went
         ids = stable_ids(con, final_key)
         moved_on = retired_into(con, final_key, ids)
         con.remake(TABLES)
         retire(con, ids, moved_on)
-        starts = {e.id: e.start_date for e in con.rows(Started, 'SELECT id, start_date FROM events')}
-        uses: defaultdict[str, list[Use]] = defaultdict(list)
-        for m in mentions:
-            uses[keys.mention_key[m.id]].append(Use(m.event_id, starts[m.event_id], m.role))
-        write_artists(con, keys, final_key, ids, Named({g.group_key: g.display_name for g in groups}, uses))
-        con.insert(
-            'merge_reason_definitions',
-            ({'reason': s.key, 'definition': s.criterion} for s in states.of('merge_reason')),
+        write_artists(
+            con,
+            keys,
+            final_key,
+            ids,
+            Named({g.group_key: g.display_name for g in groups}, uses_of(con, keys, mentions)),
         )
-        asked = reviews(keys, mentions, found, merge_review.reviewed())
-        con.insert(
-            merge_review.TABLE, ({'key_a': q.key_a, 'key_b': q.key_b, 'question': q.model_dump_json()} for q in asked)
-        )
+        write_reviews(con, keys, mentions, found)
         found = [c for c in found if c.key_a == c.key_b or final_key[c.key_a] != final_key[c.key_b]]
-        artist_of = {m.id: ids[final_key[keys.mention_key[m.id]]] for m in mentions}
-        for b in decided.bookings:  # one festival's line-up means another artist
-            c = b.claim
-            frm, to = ids[final_key[c.from_key]], ids[final_key[c.to_key]]
-            hits = [m.id for m in mentions if m.event_id == c.event_id and artist_of[m.id] == frm]
-            if not hits:
-                decided.state[b.id] = ClaimState.ORPHANED
-            artist_of |= dict.fromkeys(hits, to)
-        con.insert('mention_artists', ({'mention_id': i, 'artist_id': a} for i, a in artist_of.items()))
-        homes: dict[int, claims.Made[claims.HomeClaim]] = {}
-        for h in sorted(decided.homes, key=lambda h: h.rank()):  # one artist's keys: the claim that comes first
-            homes[ids[final_key[h.claim.key]]] = h
-        con.insert(
-            'artist_homes',
-            (
-                {'artist_id': a, 'country': h.claim.country, 'source': h.source, 'note': h.claim.note}
-                for a, h in homes.items()
-            ),
-        )
+        artist_of_key = {k: ids[fk] for k, fk in final_key.items()}
+        write_bookings(con, mentions, artist_of_key, decided, keys)
         con.insert('artist_merge_candidates', (c._asdict() for c in found))
-        con.insert(
-            'artist_merge_decisions',
-            (
-                {
-                    'key_a': m.claim.keys[0],
-                    'key_b': m.claim.keys[1],
-                    'decision': m.claim.decision,
-                    'source': m.source,
-                    'note': m.claim.note,
-                }
-                for m in decided.merges.values()
-            ),
-        )
-        con.insert(
-            'claims',
-            (
-                {
-                    'id': m.id,
-                    'source': m.source,
-                    'subject': json.dumps(claims.subject(m.claim)),
-                    'claim': claims.text(m.claim),
-                    'made_at': m.claim.made_at,
-                    'state': decided.state[m.id],
-                }
-                for m in made
-            ),
-            unless=('id',),
-        )
-        con.insert(
-            'artist_group_definitions',
-            (
-                {
-                    'group_key': g.group_key,
-                    'artist_id': ids[g.group_key],
-                    'display_name': g.display_name,
-                    'note': g.note,
-                }
-                for g in groups
-            ),
-        )
-        con.insert(
-            'artist_group_aliases', ({'group_key': g.group_key, 'match_key': a} for g in groups for a in g.aliases)
-        )
+        write_claims(con, made, decided, artist_of_key)
+        write_groups(con, groups, keys, ids)
         kinds_count = {k.kind: k.n for k in con.rows(Counted, 'SELECT kind, count(*) AS n FROM artists GROUP BY kind')}
-        record_steps(con, Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups)), decided)
+        dead = sum(map(len, orphaned(keys, groups).values()))
+        resolved = Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups), dead)
+        record_steps(con, resolved, decided)
         print(
             f'mentions {len(mentions)} -> artists {sum(kinds_count.values())} {kinds_count};'
             f' candidates {len(found)} ({sum(1 for c in found if c.decision)} reviewed);'

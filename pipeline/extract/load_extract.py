@@ -31,6 +31,7 @@ Usage: mise run load
 """
 
 import argparse
+import datetime as dt
 import json
 from collections.abc import Mapping, Sequence
 from collections.abc import Set as AbstractSet
@@ -53,7 +54,9 @@ from pipeline.records import (
     Extracted,
     Priced,
     PricedPass,
+    PricedTier,
     RoomsGenres,
+    TicketPage,
     day_of,
     today,
     yearless,
@@ -297,6 +300,85 @@ def sold(con: Reader) -> dict[int, tuple[Sales | None, str | None]]:
     }
 
 
+def ticket_page_row(event_id: int, p: TicketPage) -> dict[str, object]:
+    """A festival's row of ticket_pages: the page its prices are read on, and how far it is read."""
+    return {
+        'event_id': event_id,
+        'page': p.page,
+        'reseller': p.reseller,
+        'read_on': p.read_on,
+        'recipe': p.recipe,
+        'unread': p.unread,
+    }
+
+
+class Sourced(NamedTuple):
+    """A festival's priced passes, where they come from (description or ticket_page), and the prompt and model."""
+
+    priced: Priced
+    source: str
+    prompt: str
+    model: str | None
+
+
+def pass_row(s: Sourced, p: int, ps: PricedPass) -> dict[str, object]:
+    """A pass's row of event_passes: the p-th of its festival's."""
+    return {
+        'event_id': s.priced.event_id,
+        'pass_no': p,
+        'kind': ps.kind,
+        'style': ps.style,
+        'label': ps.label_quote,
+        'group_size': ps.group_size,
+        'people': price_rules.people(ps),
+        'days': ps.days,
+        'includes_hotel': int(ps.includes_hotel),
+        'source': s.source,
+        'prompt': s.prompt,
+        'model': s.model,
+    }
+
+
+def tier_row(event_id: int, p: int, t: int, tier: PricedTier, dated: tuple[dt.date, dt.date]) -> dict[str, object]:
+    """A tier's row of pass_tiers: the t-th of pass p, its days of sale given their years from the festival's start,
+    a current price from the day the description was edited (dated: the start and that day)."""
+    start, edited = dated
+    frm, until = price_rules.dates(tier, start)
+    sale = tier.sale
+    if sale and sale.current and frm is None:
+        frm = edited
+    no_year = sale is not None and any(v is not None and yearless(v) for v in (sale.from_, sale.until))
+    return {
+        'event_id': event_id,
+        'pass_no': p,
+        'tier_no': t,
+        'amount': tier.amount,
+        'currency': tier.currency,
+        'fee': tier.fee,
+        'alt_amount': tier.alt.amount if tier.alt else None,
+        'alt_currency': tier.alt.currency if tier.alt else None,
+        'valid_from': frm,
+        'valid_until': until,
+        'dates_as_answered': json.dumps({'from': sale.from_, 'until': sale.until}) if sale and no_year else None,
+        'quantity': sale.quantity if sale else None,
+        'door': int(sale is None),
+        'sold_out': int(tier.sold_out),
+        'current': int(bool(sale and sale.current)),
+        'quote': tier.quote,
+    }
+
+
+def status_row(
+    event_id: int, passes: tuple[PricedPass, ...], sold: tuple[Sales | None, str | None]
+) -> dict[str, object]:
+    """A festival's row of price_status: what its card can say of its price, from its passes and how it sells."""
+    sales, page = sold
+    card = price_rules.card_pass(passes)
+    empty = page is not None and tickets_store.lists_nothing(event_id, page)
+    price = price_rules.price_state(passes, sales, page, empty=empty)
+    return {'event_id': event_id, 'price': price, 'page': page, 'card_pass': None if card is None else card + 1}
+
+
 def load_prices(
     con: Transaction,
     described: Mapping[int, Answer[Priced]],
@@ -310,92 +392,32 @@ def load_prices(
         for e in con.rows(Dated, 'SELECT id, start_date, modified_at FROM events')
     }
     rows = [
-        (a.entry, 'description', a.provenance.prompt, a.provenance.model)
+        Sourced(a.entry, 'description', a.provenance.prompt, a.provenance.model)
         for e, a in described.items()
         if e not in pages
     ]
-    rows += [(w.answer, 'ticket_page', w.page.prompt, w.page.read_by) for w in pages.values()]
+    rows += [Sourced(w.answer, 'ticket_page', w.page.prompt, w.page.read_by) for w in pages.values()]
+    con.insert('ticket_pages', (ticket_page_row(e, w.page) for e, w in pages.items()))
+    passes = {r.priced.event_id: r.priced.passes for r in rows}
     con.insert(
-        'ticket_pages',
-        (
-            {
-                'event_id': e,
-                'page': p.page,
-                'reseller': p.reseller,
-                'read_on': p.read_on,
-                'recipe': p.recipe,
-                'unread': p.unread,
-            }
-            for e, p in ((e, w.page) for e, w in pages.items())
-        ),
+        'event_price_notes',
+        [
+            {'event_id': r.priced.event_id, 'notes': '\n'.join(r.priced.rule_quotes)}
+            for r in rows
+            if r.priced.rule_quotes
+        ],
     )
-    passes: dict[int, tuple[PricedPass, ...]] = {}
-    notes: list[dict[str, object]] = []
-    pass_rows: list[dict[str, object]] = []
-    tier_rows: list[dict[str, object]] = []
-    for ev, source, prompt, model in rows:
-        start, edited = dates[ev.event_id]
-        passes[ev.event_id] = ev.passes
-        if ev.rule_quotes:
-            notes.append({'event_id': ev.event_id, 'notes': '\n'.join(ev.rule_quotes)})
-        for p, ps in enumerate(ev.passes, 1):
-            pass_rows.append(
-                {
-                    'event_id': ev.event_id,
-                    'pass_no': p,
-                    'kind': ps.kind,
-                    'style': ps.style,
-                    'label': ps.label_quote,
-                    'group_size': ps.group_size,
-                    'people': price_rules.people(ps),
-                    'days': ps.days,
-                    'includes_hotel': int(ps.includes_hotel),
-                    'source': source,
-                    'prompt': prompt,
-                    'model': model,
-                }
-            )
-            for t, tier in enumerate(ps.tiers, 1):
-                frm, until = price_rules.dates(tier, start)
-                sale = tier.sale
-                if sale and sale.current and frm is None:
-                    frm = edited
-                no_year = sale is not None and any(v is not None and yearless(v) for v in (sale.from_, sale.until))
-                tier_rows.append(
-                    {
-                        'event_id': ev.event_id,
-                        'pass_no': p,
-                        'tier_no': t,
-                        'amount': tier.amount,
-                        'currency': tier.currency,
-                        'fee': tier.fee,
-                        'alt_amount': tier.alt.amount if tier.alt else None,
-                        'alt_currency': tier.alt.currency if tier.alt else None,
-                        'valid_from': frm,
-                        'valid_until': until,
-                        'dates_as_answered': json.dumps({'from': sale.from_, 'until': sale.until})
-                        if sale and no_year
-                        else None,
-                        'quantity': sale.quantity if sale else None,
-                        'door': int(sale is None),
-                        'sold_out': int(tier.sold_out),
-                        'current': int(bool(sale and sale.current)),
-                        'quote': tier.quote,
-                    }
-                )
-    con.insert('event_price_notes', notes)
-    con.insert('event_passes', pass_rows)
-    con.insert('pass_tiers', tier_rows)
-    status_rows: list[dict[str, object]] = []
-    for e in dates:
-        sales, page = sold.get(e, (None, None))
-        card = price_rules.card_pass(passes.get(e, ()))
-        empty = page is not None and tickets_store.lists_nothing(e, page)
-        price = price_rules.price_state(passes.get(e, ()), sales, page, empty=empty)
-        status_rows.append(
-            {'event_id': e, 'price': price, 'page': page, 'card_pass': None if card is None else card + 1}
-        )
-    con.insert('price_status', status_rows)
+    con.insert('event_passes', [pass_row(r, p, ps) for r in rows for p, ps in enumerate(r.priced.passes, 1)])
+    con.insert(
+        'pass_tiers',
+        [
+            tier_row(r.priced.event_id, p, t, tier, dates[r.priced.event_id])
+            for r in rows
+            for p, ps in enumerate(r.priced.passes, 1)
+            for t, tier in enumerate(ps.tiers, 1)
+        ],
+    )
+    con.insert('price_status', [status_row(e, passes.get(e, ()), sold.get(e, (None, None))) for e in dates])
 
 
 def count(con: Reader, sql: str, params: Sequence[object] = ()) -> int:
@@ -449,6 +471,72 @@ def record_pass[E: Entry](
     )
 
 
+EXTRACT_STEP = PassStep(
+    '3_extract',
+    'Extract, from each event description, the named artists (name as written, role, style, country, source '
+    'line) and the event features (with a supporting quote and a rationale). Every name and quote is checked '
+    'word for word against the description before loading.',
+    "tables artist_mentions, event_features (source 'description')",
+)
+ROOMS_GENRES_STEP = PassStep(
+    '4_rooms_genres',
+    'Extract, from each event description, the stated number of party and class rooms, the rooms described '
+    'one by one, and the dance genres covered, each with a supporting quote checked word for word.',
+    "tables event_rooms, event_room_list, event_genres (source 'description')",
+)
+PRICES_STEP = PassStep(
+    '4b_prices',
+    'Extract, from each event description, the passes it sells and their prices tier by tier, each price '
+    "checked against its quote; dates without a year get the latest year not after the festival's start. "
+    'Festivals read on their ticket page (pipeline/tickets.py) take their passes from there.',
+    'tables event_passes, pass_tiers, event_price_notes, ticket_pages, price_status',
+)
+GENRE_RULES = (
+    "Add genres the rooms-genres pass applied unevenly: 'SBK' anywhere in a title or description means salsa, "
+    'bachata and kizomba (rule sbk); a genre named as a whole word in the title counts (rule title). Rows the '
+    'pass already had are kept as they were.'
+)
+
+
+def extract_numbers(con: Reader) -> dict[str, int]:
+    """The extract pass's key numbers, as loaded."""
+    return {
+        'artist_mentions': count(con, 'SELECT count(*) FROM artist_mentions'),
+        'feature_rows_kept': count(con, "SELECT count(*) FROM event_features WHERE source = 'description'"),
+        'features_defined': count(con, 'SELECT count(*) FROM feature_definitions'),
+    }
+
+
+def rooms_genres_numbers(con: Reader) -> dict[str, int]:
+    """The rooms-genres pass's key numbers, as loaded."""
+    return {
+        'events_with_party_room_count': count(con, 'SELECT count(party_rooms) FROM event_rooms'),
+        'events_with_class_room_count': count(con, 'SELECT count(class_rooms) FROM event_rooms'),
+        'rooms_listed': count(con, 'SELECT count(*) FROM event_room_list'),
+        'genre_rows': count(con, "SELECT count(*) FROM event_genres WHERE source = 'description' AND rule IS NULL"),
+    }
+
+
+def prices_numbers(con: Reader) -> dict[str, int]:
+    """The prices pass's key numbers, as loaded, its ticket pages' among them."""
+    return {
+        'festivals_with_prices': count(con, 'SELECT count(DISTINCT event_id) FROM event_passes'),
+        'festivals_from_ticket_pages': count(con, 'SELECT count(*) FROM ticket_pages'),
+        'passes': count(con, 'SELECT count(*) FROM event_passes'),
+        'tiers': count(con, 'SELECT count(*) FROM pass_tiers'),
+    }
+
+
+def genre_rule_numbers(con: Reader) -> dict[str, int]:
+    """The rows the genre rules and the site's tags gave."""
+    return {
+        'rule_sbk_rows': count(con, 'SELECT count(*) FROM event_genres WHERE rule = ?', (GenreRule.SBK,)),
+        'rule_title_rows': count(con, 'SELECT count(*) FROM event_genres WHERE rule = ?', (GenreRule.TITLE,)),
+        'site_tag_genre_rows': count(con, 'SELECT count(*) FROM event_genres WHERE source = ?', (Source.SITE_TAG,)),
+        'site_tag_feature_rows': count(con, 'SELECT count(*) FROM event_features WHERE source = ?', (Source.SITE_TAG,)),
+    }
+
+
 def record_steps(
     con: Transaction,
     extract: Mapping[int, Answer[Extracted]],
@@ -456,76 +544,19 @@ def record_steps(
     prices: Mapping[int, Answer[Priced]],
     pages: Mapping[int, tickets_store.Written],
 ) -> None:
+    """The load's tables described, and each pass's step and the genre rules' logged."""
     run_log.document(con, TABLE_DOCS, 'pipeline/extract/load_extract.py')
-    record_pass(
-        con,
-        PassStep(
-            '3_extract',
-            'Extract, from each event description, the named artists (name as written, role, style, country, source '
-            'line) and the event features (with a supporting quote and a rationale). Every name and quote is checked '
-            'word for word against the description before loading.',
-            "tables artist_mentions, event_features (source 'description')",
-        ),
-        extract,
-        {
-            'artist_mentions': count(con, 'SELECT count(*) FROM artist_mentions'),
-            'feature_rows_kept': count(con, "SELECT count(*) FROM event_features WHERE source = 'description'"),
-            'features_defined': count(con, 'SELECT count(*) FROM feature_definitions'),
-        },
-    )
-    record_pass(
-        con,
-        PassStep(
-            '4_rooms_genres',
-            'Extract, from each event description, the stated number of party and class rooms, the rooms described '
-            'one by one, and the dance genres covered, each with a supporting quote checked word for word.',
-            "tables event_rooms, event_room_list, event_genres (source 'description')",
-        ),
-        rooms_genres,
-        {
-            'events_with_party_room_count': count(con, 'SELECT count(party_rooms) FROM event_rooms'),
-            'events_with_class_room_count': count(con, 'SELECT count(class_rooms) FROM event_rooms'),
-            'rooms_listed': count(con, 'SELECT count(*) FROM event_room_list'),
-            'genre_rows': count(con, "SELECT count(*) FROM event_genres WHERE source = 'description' AND rule IS NULL"),
-        },
-    )
-    record_pass(
-        con,
-        PassStep(
-            '4b_prices',
-            'Extract, from each event description, the passes it sells and their prices tier by tier, each price '
-            "checked against its quote; dates without a year get the latest year not after the festival's start. "
-            'Festivals read on their ticket page (pipeline/tickets.py) take their passes from there.',
-            'tables event_passes, pass_tiers, event_price_notes, ticket_pages, price_status',
-        ),
-        prices,
-        {
-            'festivals_with_prices': count(con, 'SELECT count(DISTINCT event_id) FROM event_passes'),
-            'festivals_from_ticket_pages': count(con, 'SELECT count(*) FROM ticket_pages'),
-            'passes': count(con, 'SELECT count(*) FROM event_passes'),
-            'tiers': count(con, 'SELECT count(*) FROM pass_tiers'),
-        },
-        also={w.page.prompt for w in pages.values()},
-    )
+    record_pass(con, EXTRACT_STEP, extract, extract_numbers(con))
+    record_pass(con, ROOMS_GENRES_STEP, rooms_genres, rooms_genres_numbers(con))
+    record_pass(con, PRICES_STEP, prices, prices_numbers(con), also={w.page.prompt for w in pages.values()})
     run_log.record(
         con,
         run_log.Step(
             '5_genre_rules',
-            "Add genres the rooms-genres pass applied unevenly: 'SBK' anywhere in a title or description means salsa, "
-            'bachata and kizomba (rule sbk); a genre named as a whole word in the title counts (rule title). Rows the '
-            'pass already had are kept as they were.',
+            GENRE_RULES,
             'pipeline/extract/load_extract.py',
             outputs="table event_genres (rule 'sbk' / 'title')",
-            details={
-                'rule_sbk_rows': count(con, 'SELECT count(*) FROM event_genres WHERE rule = ?', (GenreRule.SBK,)),
-                'rule_title_rows': count(con, 'SELECT count(*) FROM event_genres WHERE rule = ?', (GenreRule.TITLE,)),
-                'site_tag_genre_rows': count(
-                    con, 'SELECT count(*) FROM event_genres WHERE source = ?', (Source.SITE_TAG,)
-                ),
-                'site_tag_feature_rows': count(
-                    con, 'SELECT count(*) FROM event_features WHERE source = ?', (Source.SITE_TAG,)
-                ),
-            },
+            details=genre_rule_numbers(con),
         ),
     )
 
