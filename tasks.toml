@@ -169,7 +169,9 @@ depends = [
 description = "The quick checks, before a commit (prek.toml), on what is staged, in a worktree of its own"
 run = """
 staged="$(git commit-tree "$(git write-tree)" -p HEAD -m staged)"
-unset GIT_INDEX_FILE  # git gives a hook the commit's index; the worktree has its own
+# git gives a hook the commit's index, and in a linked worktree its repository as an absolute GIT_DIR, which the
+# worktree and its claims would take for theirs
+unset GIT_INDEX_FILE GIT_DIR
 tree="$(mktemp -d)/check"
 git worktree add -q --detach "$tree" "$staged"
 trap 'git worktree remove --force "$tree"' EXIT
@@ -184,6 +186,7 @@ description = "Every check, before a push (prek.toml), on the commit pushed, in 
 run = """
 to="${PRE_COMMIT_TO_REF:-$(git rev-parse HEAD)}"
 [ "$to" = 0000000000000000000000000000000000000000 ] && exit 0  # a branch deleted: nothing to check
+unset GIT_DIR  # a linked worktree's, which the worktree and its claims would take for theirs (check:commit)
 tree="$(mktemp -d)/check"
 git worktree add -q --detach "$tree" "$to"
 trap 'git worktree remove --force "$tree"' EXIT
