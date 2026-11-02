@@ -14,14 +14,14 @@ def test_page_fields() -> None:
             url_fr='https://kizomba-world.com/fr/evenement/x/',
             url_es='https://kizomba-world.com/es/evento/x/',
             url_pt=None,
-            cancelled=0,
+            cancelled=False,
         ),
         ['https://www.facebook.com/events/1', 'https://www.instagram.com/x'],
     )
 
 
 def test_cancelled_stamp() -> None:
-    assert page_fields(PAGE + CANCELLED)[0].cancelled == 1
+    assert page_fields(PAGE + CANCELLED)[0].cancelled is True
     # a country without a city leaves the city empty
     only_country = page_fields('<span>Location : </span> <span class="etn-location-name">Portugal</span>')[0]
     assert (only_country.city, only_country.country) == (None, 'Portugal')

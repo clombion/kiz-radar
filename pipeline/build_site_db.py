@@ -451,7 +451,7 @@ class Listed(BaseModel):
     timezone: str | None
     all_day: int
     featured: int
-    cancelled: int | None
+    cancelled: bool | None  # None when not known (kizomba_world.Paged)
     listing: enums.Listing
     venue: str | None
     city: str | None
