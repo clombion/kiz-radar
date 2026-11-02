@@ -1,6 +1,9 @@
-"""Currencies as prices write them: each marker (a symbol, a word; and every ISO code is its own), the currencies it
-can stand for, the first of them the one a ticket site means when it shows the marker alone (SYMBOLS). The one table
-for both readers: a ticket page's currency field (tickets_reading.parsed) and a quote's prices (prices.amounts_in)."""
+"""Currencies as prices write them: each marker (a symbol, a word; and every ISO code is its own) and the currencies it
+can stand for. The one table for both readers: a ticket page's currency field (tickets_reading.parsed), where a marker
+of several currencies means the one its site's recipe settles (records.Symbol), and a quote's prices
+(prices.amounts_in)."""
+
+from collections.abc import Mapping
 
 MARKERS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ('€', ('EUR',)),
@@ -35,7 +38,6 @@ MARKERS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ('lei', ('RON',)),
     ('Ft', ('HUF',)),
 )
-SYMBOLS = {m: codes[0] for m, codes in MARKERS}  # what a ticket site means by a marker shown alone
 # the codes a quote may mark a price with, in any case (470dkk), save the ones that are words too, written in capitals
 # only (TRY, MAD); a word of three letters that is no code, VIP say, marks nothing
 CODES = (
@@ -45,9 +47,21 @@ CODES = (
 WORDS = frozenset({'TRY', 'MAD'})
 
 
-def code(shown: str) -> str:
-    """The currency a ticket site shows, as its code: a code as it is, a marker as SYMBOLS reads it."""
-    return SYMBOLS.get(shown, shown)
+def meanings(shown: str) -> tuple[str, ...]:
+    """The currencies a marker can stand for; none for a marker that is none."""
+    return next((codes for m, codes in MARKERS if m == shown), ())
+
+
+def code(shown: str, settled: Mapping[str, str]) -> str | None:
+    """The currency a ticket site shows, as its code: a code as it is, a marker of one currency as that one, a marker
+    of several as settled says the site means it ({marker: code}); None for a marker of several it doesn't settle."""
+    match meanings(shown):
+        case (one,):
+            return one
+        case ():
+            return shown
+        case _:
+            return settled.get(shown)
 
 
 def markers(currency: str) -> list[str]:

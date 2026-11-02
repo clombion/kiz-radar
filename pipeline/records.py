@@ -36,7 +36,7 @@ from pydantic import (
 )
 from pydantic.fields import FieldInfo
 
-from pipeline import data, files, tables
+from pipeline import currencies, data, files, tables
 from pipeline.enums import (
     ExtractedFeature,
     Genre,
@@ -702,7 +702,10 @@ class Fields[F: Record | ApiFind](Record):
     name: F
     price: F = Field(description='The price as the page shows it.')
     amount: F = Field(description='The price as a number (1,800.00, 1.800,00 and 1800 all read as 1800).')
-    currency: F = Field(description='A currency code, or a symbol pipeline/currencies.py reads (SYMBOLS).')
+    currency: F = Field(
+        description='A currency code, or a symbol pipeline/currencies.py reads: one that names one currency (€), or '
+        "one that names several ($, kr) as the recipe's symbols settle it."
+    )
     fee: F | None = Field(
         description='A booking fee the site adds to the price ("+ €1.00 fee"), when it shows one apart; the amount '
         'logged is the price plus this fee. Null when the price shown is what a buyer pays.'
@@ -714,7 +717,8 @@ class Fields[F: Record | ApiFind](Record):
     alt_amount: F | None = Field(description='The same price in a second currency, when the site shows one.')
     alt_currency: F | None
     sold_out: F | None = Field(
-        description='Sold out when this field finds anything; null for a site that hides sold-out tickets.'
+        description='Sold out when this field finds anything; null for a site that hides sold-out tickets, where a '
+        'page with no ticket rows lists nothing (empty) rather than breaking its recipe.'
     )
 
     def named(self) -> tuple[tuple[str, F | None], ...]:
@@ -752,6 +756,25 @@ class Api(Record):
     items: Text
 
 
+class Symbol(Record):
+    """What a currency symbol that names several currencies (pipeline/currencies.py: $, kr, ¥) means on a site's
+    pages: on every host of its recipe, or on these."""
+
+    shown: Text
+    means: Currency
+    hosts: tuple[str, ...] | None = None
+
+    @model_validator(mode='after')
+    def one_it_names(self) -> Self:
+        if len(codes := currencies.meanings(self.shown)) <= 1:
+            raise ValueError(
+                f'{self.shown!r} names {", ".join(codes) or "no currency"}: only a symbol of several needs settling'
+            )
+        if self.means not in codes:
+            raise ValueError(f'{self.shown!r} names {", ".join(codes)}, not {self.means}')
+        return self
+
+
 class Site(Record):
     site: Annotated[str, Field(pattern=r'^[a-z0-9-]+$')]
     hosts: Annotated[
@@ -767,6 +790,24 @@ class Site(Record):
     open: Text | None = Field(
         description='A CSS selector whose every match is clicked before reading, to open sections shown collapsed.'
     )
+    symbols: tuple[Symbol, ...] = Field(
+        default=(),
+        description='What each currency symbol of several currencies the site shows ($ say) means there; a row '
+        'showing one the recipe does not settle for its host is refused.',
+    )
+
+    @model_validator(mode='after')
+    def settled_once(self) -> Self:
+        said = [(s.shown, h) for s in self.symbols for h in s.hosts or self.hosts]
+        if wrong := sorted({h for _, h in said} - set(self.hosts)):
+            raise ValueError(f'symbols: {", ".join(wrong)} is no host of the recipe')
+        if twice := sorted({k for k in said if said.count(k) > 1}):
+            raise ValueError(f'symbols: {", ".join(f"{s} on {h}" for s, h in twice)} settled twice')
+        return self
+
+    def settled(self, host: str) -> dict[str, str]:
+        """{symbol: currency} for the symbols of several currencies the recipe settles on this host."""
+        return {s.shown: s.means for s in self.symbols if host in (s.hosts or self.hosts)}
 
 
 class PageRecipe(Site):
@@ -775,6 +816,15 @@ class PageRecipe(Site):
     row: Text
     api: None
     fields: Fields[Find]
+
+    @model_validator(mode='after')
+    def sold_out_by_its_value(self) -> Self:
+        if (f := self.fields.sold_out) and f.attr and f.match is None:
+            raise ValueError(
+                f'fields.sold_out reads the attribute {f.attr} with no match: an attribute a row always has would '
+                'make every ticket sold out'
+            )
+        return self
 
 
 class Embedded(Record):
@@ -793,6 +843,16 @@ class ApiRecipe(Site):
     row: None
     api: Api | Embedded
     fields: Fields[ApiFind]
+
+    @model_validator(mode='after')
+    def sold_out_by_its_whole_value(self) -> Self:
+        f = self.fields.sold_out
+        if f and not (f.match and f.match.startswith('^') and f.match.endswith('$')):
+            raise ValueError(
+                'fields.sold_out: a match anchored at both ends (^false$), on the whole of its value: any value '
+                '("true", "10") is text, which an unanchored pattern or none reads as sold out'
+            )
+        return self
 
 
 def recipe_kind(value: object) -> str:

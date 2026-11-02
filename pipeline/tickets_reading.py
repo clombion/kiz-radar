@@ -51,14 +51,15 @@ def number(text: str | None) -> float | None:
     return float(re.sub(r'\D', '', whole) + ('.' + dec if dec else ''))
 
 
-def parsed(raw: Raw) -> dict[str, object]:
+def parsed(raw: Raw, settled: Mapping[str, str]) -> dict[str, object]:
     """A row as logged, from read_page.rows()'s strings: whitespace collapsed, numbers read, currency symbols as codes
-    (pipeline/currencies.py), and the amount what a buyer pays: the price plus the fee the site adds to it, when it
-    shows one."""
+    (pipeline/currencies.py; a symbol of several currencies as settled, its recipe's symbols for the page's host,
+    says, else none), and the amount what a buyer pays: the price plus the fee the site adds to it, when it shows
+    one."""
     text = {k: None if v is None else ' '.join(v.split()) for k, v in raw.items()}
 
     def code(t: str | None) -> str | None:
-        return t and currencies.code(t)
+        return t and currencies.code(t, settled)
 
     amount, fee = number(text['amount']), number(text['fee']) or None  # a fee of 0 is none
     if amount is None and text['price'] and FREE.fullmatch(text['price']):
@@ -227,7 +228,7 @@ def api_attempt(started: Attempt, recipe: ApiRecipe) -> LogEntry:
         return started.failed(Status.LAYOUT_BROKEN, f'{type(e).__name__}: {e}')
     except RequestException as e:  # the request failed: no HTTP answer to judge
         return started.failed(Status.UNREACHABLE, f'{type(e).__name__}: {e}')
-    return judged(replace(started, url=url, http=status), url, url, raw, listed=True)
+    return judged(replace(started, url=url, http=status), url, url, raw, recipe)
 
 
 def page_attempt(started: Attempt, recipe: PageRecipe, browsers: 'Browsers', *, visible: bool | None) -> LogEntry:
@@ -249,19 +250,31 @@ def page_attempt(started: Attempt, recipe: PageRecipe, browsers: 'Browsers', *, 
         return reached.failed(Status.LAYOUT_BROKEN, f'the recipe fails on the page: {e}')
     except UnreachableError as e:
         return reached.failed(Status.UNREACHABLE, str(e))
-    return judged(replace(reached, http=status), url, title, raw)
+    return judged(replace(reached, http=status), url, title, raw, recipe)
 
 
-def judged(reached: Attempt, url: str, title: str, raw: Sequence[Raw], *, listed: bool = False) -> LogEntry:
+def judged(reached: Attempt, url: str, title: str, raw: Sequence[Raw], recipe: PageRecipe | ApiRecipe) -> LogEntry:
     """The log entry for a read that got an answer: refused (an HTTP error, and no rows), layout_broken, read with its
-    rows, or empty when listed (the site answered a list of its tickets, an API's) and the list has none."""
+    rows, or empty when it has none and the site lists its tickets (an API's list) or hides the sold-out ones (a
+    recipe with no sold_out field), so that no rows may be all it sells."""
     # a browser check answers 4xx, then shows the page once it has passed, so the status alone decides nothing
     if not raw and reached.http and reached.http >= HTTP_ERROR:
         return reached.failed(Status.REFUSED, f'HTTP {reached.http} ({title})')
+    listed = isinstance(recipe, ApiRecipe) or recipe.fields.sold_out is None
+    on = host(reached.page)
+    settled = recipe.settled(on)
     got: list[Row] = []
     bad: list[str] = []
     for i, r in enumerate(raw):
-        row = parsed(r)
+        row = parsed(r, settled)
+        unsettled = [
+            f'{k} {shown!r} names {", ".join(currencies.meanings(shown))}: the recipe settles none for {on} (symbols)'
+            for k in ('currency', 'alt_currency')
+            if (shown := ' '.join((r[k] or '').split())) and row[k] is None
+        ]
+        if unsettled:
+            bad += [f'row {i} ({row["name"] or row["key"]}): {u}' for u in unsettled]
+            continue
         try:
             got.append(Row.model_validate(row))
         except ValidationError as e:

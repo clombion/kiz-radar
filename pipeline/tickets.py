@@ -14,9 +14,11 @@
 A site recipe (tickets/sites/<site>.json, a records.Recipe) says where a site's ticket rows are; an
 agent writes one per site. read applies it in a browser (read_page.rows) and appends one entry per attempt to
 tickets/log/<event_id>.jsonl (records.LogEntry): read (with every row: key, name, price as shown,
-amount, currency, a second price when the site shows one, sold out), refused (no rows and an HTTP error), unreachable
-(the page could not be reached or would not load), or layout_broken (the recipe's selectors fail, no rows, two rows
-with one key, or a row without its key, name, price, amount or currency: the recipe needs an agent). A read that can't
+amount, currency, a second price when the site shows one, sold out), empty (none listed: an API's empty list, or no
+rows on a site that hides its sold-out tickets), refused (no rows and an HTTP error), unreachable (the page could not
+be reached or would not load), or layout_broken (the recipe's selectors fail, no rows on a site that shows its
+sold-out tickets, two rows with one key, a row without its key, name, price, amount or currency, or a currency symbol
+of several the recipe doesn't settle: the recipe needs an agent). A read that can't
 be made here at all (no browser would start) is no entry: the run stops reading pages, and fails.
 
 A first read (tickets/reads/<event_id>.json, a records.FirstRead) says which pass each ticket is, by its key, from the

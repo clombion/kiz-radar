@@ -55,7 +55,7 @@ It reads the page by its site's recipe and prints its tickets, and logs the read
 | -- | -- | -- |
 | the tickets | `read` | step 3 |
 | no recipe for the site | the site is new | [write a recipe](writing-a-recipe.md), read again |
-| `layout_broken` | the recipe's selectors fail, or a row lacks its key, name, price, amount or currency | fix the recipe |
+| `layout_broken` | the recipe's selectors fail, no rows on a site that shows its sold-out tickets, a row lacks its key, name, price, amount or currency, or shows a currency symbol of several the recipe doesn't settle | fix the recipe |
 | `refused` | an HTTP error and no rows | `mise run tickets -- retry ID`, with a visible browser |
 | `unreachable` | the page didn't load | check the address; `retry` |
 

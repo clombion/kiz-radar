@@ -914,7 +914,9 @@ def test_a_ticket_of_embedded_json_is_read_from_its_own_record() -> None:
     assert isinstance(recipe.api, Embedded)
     found = re.search(recipe.api.json_, page)
     assert found is not None
-    rows = [tickets_reading.parsed(r) for r in tickets_reading.json_rows(html.unescape(found[1]), recipe, page, PAGE)]
+    rows = [
+        tickets_reading.parsed(r, {}) for r in tickets_reading.json_rows(html.unescape(found[1]), recipe, page, PAGE)
+    ]
     assert [(r['key'], r['name'], r['amount'], r['currency'], r['sold_out']) for r in rows] == [
         ('1', 'Full Pass Men', 95.0, 'EUR', False),
         ('2', 'Full Pass Women', 90.0, 'EUR', True),
@@ -966,12 +968,99 @@ def test_a_recipe_reads_the_page_or_the_api_never_a_mix() -> None:
     assert not valid(page | {'fields': api['fields'], 'row': page['row']})  # page rows read by api fields
 
 
-def test_an_empty_list_a_site_answers_is_an_empty_page_and_no_rows_on_a_page_a_broken_recipe() -> None:
+def test_no_rows_are_an_empty_page_where_a_site_lists_its_tickets_or_hides_sold_out_ones() -> None:
+    """An API's empty list, or a page with no rows on a site that hides sold-out tickets (no sold_out field), lists
+    nothing; no rows on a page that shows its sold-out tickets is a broken recipe."""
     started = tickets_reading.Attempt(AT, PAGE, 'goandance@0123abcd', url=PAGE, http=200)
-    empty = tickets_reading.judged(started, PAGE, PAGE, [], listed=True)
-    assert isinstance(empty, Read)
-    assert (empty.status, empty.rows) == (Status.EMPTY, ())
-    assert tickets_reading.judged(started, PAGE, 'Tickets', []).status == Status.LAYOUT_BROKEN
+    api = tickets_store.sites()['goandance'].recipe
+    page = SITE.recipe
+    assert isinstance(page, PageRecipe)
+    hides = page.model_copy(update={'fields': page.fields.model_copy(update={'sold_out': None})})
+    for recipe, status in ((api, Status.EMPTY), (hides, Status.EMPTY), (page, Status.LAYOUT_BROKEN)):
+        got = tickets_reading.judged(started, PAGE, 'Tickets', [], recipe)
+        assert (got.status, got.rows if isinstance(got, Read) else None) == (
+            status,
+            () if status == Status.EMPTY else None,
+        )
+
+
+def dollar_site(*symbols: dict[str, Json]) -> PageRecipe:
+    """Weezevent's recipe on two hosts, settling the dollar sign as these say."""
+    recipe = jsons.read(ROOT / tickets_store.SITES / 'weezevent.json')
+    assert isinstance(recipe, dict)
+    parsed = RECIPE.validate_json(
+        json.dumps(recipe | {'hosts': ['my.weezevent.com', 'ca.weezevent.com'], 'symbols': list(symbols)})
+    )
+    assert isinstance(parsed, PageRecipe)
+    return parsed
+
+
+@pytest.mark.parametrize(
+    ('symbols', 'page', 'currency'),
+    [
+        ((), PAGE, None),  # $ is no one currency: a recipe that doesn't settle it reads no row
+        (({'shown': '$', 'means': 'USD'},), PAGE, 'USD'),
+        (({'shown': '$', 'means': 'CAD', 'hosts': ['ca.weezevent.com']},), 'https://ca.weezevent.com/x', 'CAD'),
+        (({'shown': '$', 'means': 'CAD', 'hosts': ['ca.weezevent.com']},), PAGE, None),  # settled on another host
+    ],
+)
+def test_a_symbol_of_several_currencies_is_the_one_the_recipe_settles_for_the_host(
+    symbols: tuple[dict[str, Json], ...], page: str, currency: str | None
+) -> None:
+    started = tickets_reading.Attempt(AT, page, 'weezevent@0123abcd', url=page, http=200)
+    got = tickets_reading.judged(
+        started, page, 'Tickets', [RAW | {'price': '$81.03', 'currency': '$'}], dollar_site(*symbols)
+    )
+    if currency is None:
+        assert got.status == Status.LAYOUT_BROKEN
+        assert "currency '$' names USD, CAD" in why(got)
+    else:
+        assert isinstance(got, Read)
+        assert got.rows[0].currency == currency
+
+
+@pytest.mark.parametrize(
+    'symbol',
+    [
+        {'shown': '€', 'means': 'EUR'},  # € is one currency: nothing to settle
+        {'shown': '$', 'means': 'EUR'},  # not one $ names
+        {'shown': '$', 'means': 'USD', 'hosts': ['www.weezevent.com']},  # no host of the recipe
+    ],
+)
+def test_a_recipe_settles_only_a_symbol_of_several_currencies_as_one_of_them_on_its_hosts(
+    symbol: dict[str, Json],
+) -> None:
+    with pytest.raises(ValueError, match=r'symbols|names'):
+        _ = dollar_site(symbol)
+    with pytest.raises(ValueError, match='settled twice'):
+        _ = dollar_site({'shown': '$', 'means': 'USD'}, {'shown': '$', 'means': 'CAD', 'hosts': ['ca.weezevent.com']})
+
+
+@pytest.mark.parametrize(
+    ('site', 'sold_out', 'ok'),
+    [
+        ('kizzbee', {'json': 'is_in_stock', 'match': '^false$'}, True),
+        ('kizzbee', {'json': 'is_in_stock'}, False),  # "true" is text too: every ticket sold out
+        ('kizzbee', {'json': 'is_in_stock', 'match': 'false'}, False),
+        ('goandance', {'json': 'stockLeft', 'match': '0'}, False),  # 10 left would be sold out
+        ('tikoria', {'css': None, 'attr': 'aria-disabled', 'match': '^true$'}, True),
+        ('tikoria', {'css': None, 'attr': 'aria-disabled', 'match': None}, False),  # aria-disabled="false" too
+        ('tikoria', {'css': '.sold-out', 'attr': None, 'match': None}, True),  # a mark found is sold out
+    ],
+)
+def test_a_sold_out_field_reads_sold_out_from_its_value_not_from_any_value(
+    site: str, sold_out: dict[str, Json], ok: bool
+) -> None:
+    recipe = jsons.read(ROOT / tickets_store.SITES / f'{site}.json')
+    fields = jsons.at(recipe, 'fields')
+    assert isinstance(fields, dict)
+    fields['sold_out'] = sold_out
+    try:
+        _ = RECIPE.validate_json(json.dumps(recipe))
+    except ValueError:
+        assert not ok
+    else:
+        assert ok
 
 
 def test_a_page_that_lists_nothing_now_records_no_pass_and_says_so(files: Path) -> None:
@@ -1049,7 +1138,7 @@ def test_a_widget_found_in_the_page_keeps_an_address_that_is_already_its_own(mon
 
 @pytest.mark.parametrize(('price', 'amount'), [('Free', 0.0), ('Gratuit', 0.0), ('€81.03', None)])
 def test_a_free_ticket_costs_0(price: str, amount: float | None) -> None:
-    got = tickets_reading.parsed(RAW | {'price': price, 'amount': None})
+    got = tickets_reading.parsed(RAW | {'price': price, 'amount': None}, {})
     assert got['amount'] == amount
     try:
         _ = Row.model_validate(got)
