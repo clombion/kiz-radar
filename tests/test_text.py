@@ -1,7 +1,8 @@
 import pytest
 
-from pipeline import ROOT
+from pipeline import db
 from pipeline.text import soften_caps, tidy_name, tidy_title
+from tests.exports import EXPORT
 
 
 @pytest.mark.parametrize(
@@ -55,6 +56,13 @@ def test_venue() -> None:
     assert soften_caps('IBIS STYLE NEUVILLE EN FERRAIN') == 'Ibis Style Neuville en Ferrain'
 
 
-def test_home_airport_is_only_named_in_airports_csv() -> None:
-    pipeline = ROOT / 'pipeline'
-    assert [p.name for p in pipeline.glob('*.py') if "'BGO'" in p.read_text() or '"BGO"' in p.read_text()] == []
+def test_a_tidied_name_or_title_is_tidy() -> None:
+    """Tidying what is tidy changes nothing, so a name or title tidied twice is shown as tidied once: over every name
+    the export's line-ups write and every festival title it lists."""
+    with db.opened(EXPORT, 'ro') as con:
+        names = con.column(str, 'select distinct name_as_written from artist_mentions order by 1')
+        titles = con.column(str, 'select distinct title from events order by 1')
+    assert names
+    assert titles
+    assert [n for n in names if tidy_name(tidy_name(n)) != tidy_name(n)] == []
+    assert [t for t in titles if tidy_title(tidy_title(t)) != tidy_title(t)] == []

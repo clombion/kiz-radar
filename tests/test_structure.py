@@ -9,8 +9,10 @@ import re
 import tomllib
 from pathlib import Path
 
+import pytest
+
 from pipeline import ROOT
-from tests.repository import BUILT, tracked
+from tests.repository import BUILDING, BUILT, files, git, tracked, wrote
 
 
 def body(fn: ast.FunctionDef | ast.AsyncFunctionDef) -> str | None:
@@ -31,19 +33,35 @@ def test_no_function_is_written_twice() -> None:
     assert [w for w in written.values() if len(w) > 1] == []
 
 
+def climbs(tree: ast.AST) -> list[int]:
+    """The lines where code climbs from a folder past its parent: .parent.parent, or .parents[...]."""
+    return [
+        n.lineno
+        for n in ast.walk(tree)
+        if isinstance(n, ast.Attribute)
+        and (
+            n.attr == 'parents'
+            or (n.attr == 'parent' and isinstance(n.value, ast.Attribute) and n.value.attr == 'parent')
+        )
+    ]
+
+
+@pytest.mark.parametrize(
+    'code', ['Path(__file__).parent.parent', 'Path(__file__).parents[1]', "Path(__file__).resolve().parents[1] / 'x'"]
+)
+def test_a_climb_is_seen_however_it_is_written(code: str) -> None:
+    assert climbs(ast.parse(code)) == [1]
+
+
 def test_the_repository_is_found_from_one_file() -> None:
-    """Only pipeline/__init__.py climbs from a file's folder to its parent's (.parent.parent)."""
-    climbs = [
-        f'{p.relative_to(ROOT)}:{n.lineno}'
+    """Only pipeline/__init__.py climbs from a file's folder to the repository's (climbs)."""
+    found = [
+        f'{p.relative_to(ROOT)}:{line}'
         for p in sorted([*(ROOT / 'pipeline').rglob('*.py'), *(ROOT / 'tests').rglob('*.py')])
         if p != ROOT / 'pipeline' / '__init__.py'
-        for n in ast.walk(ast.parse(p.read_text(encoding='utf-8')))
-        if isinstance(n, ast.Attribute)
-        and n.attr == 'parent'
-        and isinstance(n.value, ast.Attribute)
-        and n.value.attr == 'parent'
+        for line in climbs(ast.parse(p.read_text(encoding='utf-8')))
     ]
-    assert climbs == []
+    assert found == []
 
 
 def test_a_step_finds_its_data_through_the_data_folder() -> None:
@@ -171,6 +189,35 @@ def test_what_a_build_makes_is_not_committed() -> None:
     assert tracked(*BUILT) == []
 
 
+def test_git_ignores_what_a_build_makes_and_the_guard_leaves_aside() -> None:
+    """.gitignore's lines for public/ are the files and folders a build makes, which the guard leaves aside (BUILT),
+    so that neither gains one without the other."""
+    ignored = (ROOT / '.gitignore').read_text(encoding='utf-8').splitlines()
+    assert {line for line in ignored if line.startswith('public/')} == {*BUILT, BUILDING}
+
+
+def test_the_guard_sees_a_write_git_would_not_tell(tmp_path: Path) -> None:
+    """The repository guard (conftest.py) reads the files themselves, not git's status, so a write into an ignored file
+    or into one changed before the tests ran is a write, as is a new file; a build's files aside."""
+    root = tmp_path / 'repository'
+    root.mkdir()
+    _ = (root / '.gitignore').write_text('ignored/\n', encoding='utf-8')
+    _ = (root / 'dirty.txt').write_text('as committed\n', encoding='utf-8')
+    _ = git('init', '-q', cwd=root)
+    _ = git('add', '.', cwd=root)
+    _ = git('-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '-q', '--no-verify', '-m', 'c', cwd=root)
+    _ = (root / 'dirty.txt').write_text('changed before the tests ran\n', encoding='utf-8')
+    (root / 'ignored').mkdir()
+    _ = (root / 'ignored' / 'kept.txt').write_text('ignored\n', encoding='utf-8')
+    before = files(root)
+    _ = (root / 'dirty.txt').write_text('changed by a test\n', encoding='utf-8')
+    _ = (root / 'ignored' / 'kept.txt').write_text('written by a test\n', encoding='utf-8')
+    _ = (root / 'new.txt').write_text('made by a test\n', encoding='utf-8')
+    (root / 'public' / 'js').mkdir(parents=True)
+    _ = (root / 'public' / 'js' / 'main.js').write_text('built\n', encoding='utf-8')
+    assert wrote(before, files(root)) == ['dirty.txt', 'ignored/kept.txt', 'new.txt']
+
+
 def test_only_the_build_names_the_site_database() -> None:
     """A step reads the site database build_site_db.built() makes for it, never the published one, which may be of
     other files or not built at all."""
@@ -179,5 +226,15 @@ def test_only_the_build_names_the_site_database() -> None:
         for p in sorted([*(ROOT / 'pipeline').rglob('*.py'), *(ROOT / 'tests').rglob('*.py')])
         if p not in {ROOT / 'pipeline' / 'build_site_db.py', Path(__file__)}
         and re.search(r'kiz\.sqlite|site\.json', p.read_text(encoding='utf-8'))
+    ]
+    assert found == []
+
+
+def test_the_home_airport_is_named_only_in_airports_csv() -> None:
+    """Where every fare search leaves from is the data's (pipeline/airports.csv): no module names it."""
+    found = [
+        p.relative_to(ROOT).as_posix()
+        for p in sorted((ROOT / 'pipeline').rglob('*.py'))
+        if "'BGO'" in (text := p.read_text(encoding='utf-8')) or '"BGO"' in text
     ]
     assert found == []

@@ -3,7 +3,6 @@ reads committed data only by copying it in (exports.committed). Each module also
 ignored ones included, are as it found them."""
 
 import json
-import os
 from collections.abc import Iterator
 from contextlib import ExitStack
 from pathlib import Path
@@ -11,37 +10,18 @@ from pathlib import Path
 import pytest
 
 import pipeline
-from pipeline import ROOT, build_site_db, claims, db
+from pipeline import build_site_db, claims, db
 from pipeline.records import Spent
 from tests import exports
 from tests.fakes import SITE_CLAIMS, Memory
-from tests.repository import built
-
-# what running the checks writes, which is no data
-UNWATCHED = frozenset({'.git', '.venv', 'node_modules', '__pycache__', '.pytest_cache', '.ruff_cache', '.vitest'})
-
-
-def files() -> dict[str, tuple[int, int]]:
-    """Each file of the repository, by its path, with its size and when it was last written; what builds make aside,
-    which build:data writes while the tests run (mise run check)."""
-    out: dict[str, tuple[int, int]] = {}
-    for folder, dirs, names in os.walk(ROOT):
-        dirs[:] = [d for d in dirs if d not in UNWATCHED]
-        for name in names:
-            path = Path(folder) / name
-            if not (name.startswith('.coverage') or built(at := path.relative_to(ROOT).as_posix())):
-                st = path.stat()
-                out[at] = (st.st_size, st.st_mtime_ns)
-    return out
+from tests.repository import files, wrote
 
 
 @pytest.fixture(autouse=True, scope='module')
 def repository_untouched() -> Iterator[None]:
     before = files()
     yield
-    after = files()
-    changed = sorted(p for p in before.keys() | after.keys() if before.get(p) != after.get(p))
-    assert not changed, f'a test in this module wrote into the repository: {changed}'
+    assert not (changed := wrote(before, files())), f'a test in this module wrote into the repository: {changed}'
 
 
 @pytest.fixture(autouse=True)
