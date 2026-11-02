@@ -1230,6 +1230,10 @@ FIRST_READ_CASES: list[tuple[dict[str, object], FirstReadState]] = [
     ({'disputed': True}, FirstReadState.CURRENT),  # a dispute settled by a current first read
     ({'description': 'New prices.'}, FirstReadState.REDO_DESCRIPTION),
     ({'end_date': dt.date(2027, 2, 8)}, FirstReadState.REDO_FESTIVAL),  # one more day: its passes may differ
+    ({'start_date': dt.date(2027, 2, 4)}, FirstReadState.REDO_FESTIVAL),  # its tiers' dates take their years from it
+    ({'title': 'Fest Bachata Edition'}, FirstReadState.REDO_FESTIVAL),
+    ({'country': 'Austria'}, FirstReadState.REDO_FESTIVAL),
+    ({'styles': (Style.KIZOMBA,)}, FirstReadState.REDO_FESTIVAL),  # a pass's style is one of the festival's
     ({'page': KnownPage('https://my.weezevent.com/y', SITE)}, FirstReadState.REDO_PAGE),  # an agent chose another
     ({'log': (entry((*ROWS, row('6', 'Fullpass Male 140€', 143.59))),)}, FirstReadState.REDO_UNREAD),
     ({'first_read': STAMPED}, FirstReadState.REDO_PROMPT),
