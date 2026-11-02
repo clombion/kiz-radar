@@ -172,6 +172,22 @@ def test_an_amount_is_a_price_its_quote_gives_in_its_currency(
     assert (prices.problems(ev, []) == []) == ok
 
 
+@pytest.mark.parametrize(
+    ('quote', 'amounts', 'ok'),
+    [
+        ('Early 120€ - Full 180€', (120, 180), True),
+        ('Early 120€ - Full 180€', (120, 120), False),  # the full price is not the early one
+        ('Full pass 59€ online (69 € at the door)', (59, 69), True),
+        ('Full pass: 100€', (100, 100), True),  # one price two passes share: leaders and followers
+    ],
+)
+def test_tiers_quoting_one_line_of_several_prices_take_different_ones(
+    quote: str, amounts: tuple[float, float], ok: bool
+) -> None:
+    ev = priced(*(tier(quote, a, until=None) for a in amounts))
+    assert (prices.problems(ev, []) == []) == ok
+
+
 def test_amount_missing_from_quote_is_a_problem() -> None:
     ev = priced(tier('Full Pass – 180€ (Till Festival)', 150, until=None))
     assert prices.problems(ev, [])[0].startswith('amounts: event 5: passes[0].tiers[0].amount 150')
