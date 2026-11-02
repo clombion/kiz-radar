@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING, Literal
 from pydantic import TypeAdapter, ValidationError
 
 from pipeline import currencies
-from pipeline.calls import Declined
+from pipeline.calls import Declined, why
 from pipeline.enums import CallCause, Status
 from pipeline.records import (
     JSON,
@@ -215,7 +215,7 @@ def attempt(page: str, site: Site, browsers: 'Browsers', *, visible: bool | None
     try:
         return page_attempt(started, recipe, browsers, visible=visible)
     except NoBrowserError as e:
-        return Declined(CallCause.STRUCTURAL, f'no browser would start: {e}')
+        return Declined(CallCause.STRUCTURAL, f'no browser would start: {why(e)}')
 
 
 def api_attempt(started: Attempt, recipe: ApiRecipe) -> LogEntry:
@@ -225,9 +225,9 @@ def api_attempt(started: Attempt, recipe: ApiRecipe) -> LogEntry:
     try:
         status, url, raw = api_rows(started.page, recipe)
     except (LookupError, ValueError) as e:  # no event id, no ticket list, or no JSON
-        return started.failed(Status.LAYOUT_BROKEN, f'{type(e).__name__}: {e}')
+        return started.failed(Status.LAYOUT_BROKEN, why(e))
     except RequestException as e:  # the request failed: no HTTP answer to judge
-        return started.failed(Status.UNREACHABLE, f'{type(e).__name__}: {e}')
+        return started.failed(Status.UNREACHABLE, why(e))
     return judged(replace(started, url=url, http=status), url, url, raw, recipe)
 
 
@@ -240,16 +240,16 @@ def page_attempt(started: Attempt, recipe: PageRecipe, browsers: 'Browsers', *, 
     try:
         url = widget(started.page, recipe)
     except LookupError as e:
-        return started.failed(Status.LAYOUT_BROKEN, str(e))
+        return started.failed(Status.LAYOUT_BROKEN, why(e))
     except RequestException as e:
-        return started.failed(Status.UNREACHABLE, f'{type(e).__name__}: {e}')
+        return started.failed(Status.UNREACHABLE, why(e))
     reached = replace(started, url=url)
     try:
         status, title, raw = rows(url, recipe, browsers, visible=visible)
     except RecipeError as e:
-        return reached.failed(Status.LAYOUT_BROKEN, f'the recipe fails on the page: {e}')
+        return reached.failed(Status.LAYOUT_BROKEN, f'the recipe fails on the page: {why(e)}')
     except UnreachableError as e:
-        return reached.failed(Status.UNREACHABLE, str(e))
+        return reached.failed(Status.UNREACHABLE, why(e))
     return judged(replace(reached, http=status), url, title, raw, recipe)
 
 

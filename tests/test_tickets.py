@@ -12,7 +12,7 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import ROOT, data, prompt, spend, tickets, tickets_reading, tickets_state, tickets_store
+from pipeline import ROOT, calls, data, prompt, spend, tickets, tickets_reading, tickets_state, tickets_store
 from pipeline.calls import Declined
 from pipeline.db import Db, Reader
 from pipeline.enums import CallCause, Model, PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
@@ -491,6 +491,20 @@ def test_a_read_that_fails_says_whose_failure_it_is(monkeypatch: pytest.MonkeyPa
             assert d.cause == CallCause.STRUCTURAL
         case other:
             pytest.fail(f'a read with no browser is {other}')
+
+
+def test_a_failure_is_recorded_with_its_type_and_its_first_line(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A browser's error carries its call log after its first line; every failure keeps the type and that line."""
+    from patchright.sync_api import Error
+
+    from pipeline import read_page
+
+    browser = Error('Timeout 60000ms exceeded.\nCall log:\n  - navigating to "https://my.weezevent.com/x"')
+    assert calls.why(browser) == 'Error: Timeout 60000ms exceeded.'
+    got = attempt_with(monkeypatch, error=read_page.UnreachableError(calls.why(browser)))
+    assert why(got) == 'UnreachableError: Error: Timeout 60000ms exceeded.'
+    got = attempt_with(monkeypatch, error=read_page.RecipeError('no element\nCall log:'))
+    assert why(got) == 'the recipe fails on the page: RecipeError: no element'
 
 
 def test_a_good_row_is_read_with_its_currency_code(monkeypatch: pytest.MonkeyPatch) -> None:

@@ -34,7 +34,7 @@ from pydantic import BaseModel
 
 from pipeline import calls, export, states
 from pipeline import db as sqlite_db
-from pipeline.calls import Declined
+from pipeline.calls import Declined, why
 from pipeline.db import Reader, Transaction
 from pipeline.enums import CallCause, EventSource, Listing
 from pipeline.extract import run_log
@@ -72,7 +72,7 @@ class Fetcher:
             try:
                 r = requests.get(url, impersonate='chrome', timeout=60)
             except RequestException as e:
-                failed = Declined(CallCause.TRANSIENT, f'{url}: {type(e).__name__}: {e}')
+                failed = Declined(CallCause.TRANSIENT, f'{url}: {why(e)}')
             else:
                 if r.status_code == OK:
                     self.last = time.time()

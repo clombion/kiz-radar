@@ -10,7 +10,7 @@ import re
 import sys
 
 from pipeline import web
-from pipeline.calls import Declined
+from pipeline.calls import Declined, why
 from pipeline.records import Rate
 
 ECB = web.Https('www.ecb.europa.eu', '/stats/eurofxref/eurofxref-daily.xml')
@@ -38,7 +38,7 @@ def main() -> None:
     try:
         day, per_eur = rates(body.decode())
     except ValueError as e:
-        sys.exit(f'{ECB.url()}: {e}; {Rate.FILE} left as it was')
+        sys.exit(f'{ECB.url()}: {why(e)}; {Rate.FILE} left as it was')
     Rate.write([Rate(currency=c, per_eur=per_eur[c], date=day) for c in sorted(per_eur)])
     print(f'{len(per_eur)} rates of {day}')
 

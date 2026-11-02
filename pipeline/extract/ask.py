@@ -37,7 +37,7 @@ from pydantic import ValidationError
 from pipeline import calls, export, records, spend
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
-from pipeline.calls import Declined
+from pipeline.calls import Declined, why
 from pipeline.enums import AnswerState, CallCause, Model, Style
 from pipeline.extract import answers, check_output, merge_review, prices, questions
 from pipeline.prompt import Pass, Prompt
@@ -98,7 +98,7 @@ def sdk_declined(e: SdkError) -> Declined:
         case anthropic.APIStatusError():
             return Declined(cause(e), f'API error {e.status_code} ({e.message})')
         case _:
-            return Declined(cause(e), f'{type(e).__name__}: {e}')
+            return Declined(cause(e), why(e))
 
 
 class Stream(Protocol):

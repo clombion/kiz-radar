@@ -27,6 +27,7 @@ from typing import TYPE_CHECKING, cast
 
 from pydantic import TypeAdapter
 
+from pipeline.calls import why
 from pipeline.records import PageRecipe
 
 if TYPE_CHECKING:
@@ -78,7 +79,7 @@ class Browsers(contextlib.AbstractContextManager['Browsers']):
                     executable_path=self.path or chromium(), headless=not visible
                 )
             except Error as e:
-                raise NoBrowserError(str(e).splitlines()[0]) from e
+                raise NoBrowserError(why(e)) from e
         return self.started[visible]
 
 
@@ -98,7 +99,7 @@ def opened(
             page.wait_for_timeout(wait * 1000)
             title = page.title()
         except Error as e:  # a timeout among them
-            raise UnreachableError(str(e).splitlines()[0]) from e
+            raise UnreachableError(why(e)) from e
         yield page, response.status if response else None, title
     finally:
         context.close()
@@ -155,7 +156,7 @@ def rows(
                 'object', page.evaluate(ROWS_JS, [recipe.row, recipe.fields.model_dump(mode='json', by_alias=True)])
             )
         except Error as e:
-            raise RecipeError(str(e).splitlines()[0]) from e
+            raise RecipeError(why(e)) from e
         return status, title, RAW.validate_python(found)
 
 

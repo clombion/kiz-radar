@@ -9,7 +9,7 @@ from collections.abc import Mapping
 from http.client import HTTPResponse
 from typing import NamedTuple, cast
 
-from pipeline.calls import Declined
+from pipeline.calls import Declined, why
 from pipeline.enums import CallCause
 
 TIMEOUT = 30  # seconds
@@ -43,4 +43,4 @@ def get(
         transient = e.code == TOO_MANY or e.code >= SERVER_ERROR
         return Declined(CallCause.TRANSIENT if transient else CallCause.STRUCTURAL, f'{url}: HTTP {e.code} {e.reason}')
     except (OSError, http.client.HTTPException) as e:  # unreachable, timed out, reset, or cut short
-        return Declined(CallCause.TRANSIENT, f'{url}: {type(e).__name__}: {e}')
+        return Declined(CallCause.TRANSIENT, f'{url}: {why(e)}')
