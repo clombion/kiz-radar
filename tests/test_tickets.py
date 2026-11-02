@@ -1306,7 +1306,7 @@ def test_a_run_for_named_festivals_reads_only_them(
     memory: Memory, files: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     def festivals(
-        db: Reader, today: str, only: int | None = None, *, every: bool = False
+        db: Reader, today: dt.date, only: int | None = None, *, every: bool = False
     ) -> list[tickets_state.Festival]:
         return (
             [] if only or every else [festival(id=i, page=KnownPage(f'https://shop.example/{i}', SITE)) for i in (7, 8)]
@@ -1347,7 +1347,7 @@ def test_a_run_reads_every_page_in_the_same_browsers(
     """Starting Chromium for each page costs seconds a page; a run starts its browsers once."""
 
     def festivals(
-        db: Reader, today: str, only: int | None = None, *, every: bool = False
+        db: Reader, today: dt.date, only: int | None = None, *, every: bool = False
     ) -> list[tickets_state.Festival]:
         return [] if every else [festival(id=i, page=KnownPage(f'https://shop.example/{i}', SITE)) for i in (7, 8)]
 
@@ -1432,7 +1432,7 @@ def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_
     )
 
     def festivals(
-        db: Reader, today: str, only: int | None = None, *, every: bool = False
+        db: Reader, today: dt.date, only: int | None = None, *, every: bool = False
     ) -> list[tickets_state.Festival]:
         return [past] if every else []
 
