@@ -15,6 +15,8 @@ const HOMONYMS = new Set([
   "search.ts: 'group'", // a search group
   "currency.ts: 'group'", // a number's thousands separator, as Intl.NumberFormat names its part
   "search.ts: 'person'", // a kind of result
+  "find.ts: 'person'",
+  "find.ts: 'none'", // nothing matches
   "plans.ts: 'person'",
   "main.ts: 'page'", // aria-current="page"
   "map.ts: 'none'", // no filter

@@ -8,7 +8,18 @@
 import { q, site, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
 import { type Festival, festivals } from './festivals.ts';
-import { CHECKED, type Checked, hasWith, isDance, WITH, type With } from './finder.ts';
+import {
+  answer,
+  type Base,
+  type City,
+  FOUND_ARTIST,
+  FOUND_EVENT,
+  type Found,
+  type FoundEvent,
+  type Item,
+  type TagKey,
+} from './find.ts';
+import { CHECKED, hasWith, isDance, WITH } from './finder.ts';
 import { fold, words } from './fold.ts';
 import { icon } from './icons.ts';
 import { leaving, modal } from './modal.ts';
@@ -26,89 +37,16 @@ import {
   parseRoute,
   personHref,
 } from './routes.ts';
-import { BOOKINGS, flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
+import { flag as flagCol, num, opt, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { away, dayMonth, flag, otherYear, place } from './ui.ts';
 import { plural, text } from './wording.ts';
 
 const SHOWN = 5; // results per group until "Show all"
-type Group = 'person' | 'festival' | 'artist' | 'place' | 'tag';
-const GROUPS: readonly (readonly [Group, string])[] = [
-  ['person', 'Friends'],
-  ['festival', 'Festivals'],
-  ['artist', 'Artists'],
-  ['place', 'Places'],
-  ['tag', 'Dances & highlights'],
-];
-// a dance or highlight to search for: one the list narrows to, or one it has a checkbox for
-type TagKey = With | Checked;
 // before anything is typed: what can be searched, as things to tap (tags by their key)
 const SUGGEST_STYLES: readonly TagKey[] = [KEY.genre.SALSA, KEY.genre.ZOUK, KEY.genre.BACHATA, KEY.genre.KOMPA];
 const SUGGEST_HIGHLIGHTS: readonly TagKey[] = [KEY.feature.PROMO_CODE, 'taxi', KEY.feature.POOL_PARTY, 'allin'];
 const SUGGEST_COUNTRIES = 4;
-
-// what the search finds: each kind of thing with what its row shows and where picking it goes
-const FOUND_EVENT = {
-  id: num,
-  title: str,
-  listed_title: str,
-  venue: opt(str),
-  ...PLACE_AND_DAYS,
-  upcoming: flagCol,
-  cancelled: opt(flagCol),
-  listing: state('listing'),
-  lat: opt(num),
-  url: str,
-  code: opt(str),
-} as const;
-type FoundEvent = RowOf<typeof FOUND_EVENT>;
-const FOUND_ARTIST = {
-  id: num,
-  display_name: str,
-  kind: state('artist_kind'),
-  bookings: num,
-  ...BOOKINGS,
-  home_country: opt(str),
-} as const;
-type FoundArtist = RowOf<typeof FOUND_ARTIST>;
-interface Base {
-  name: string;
-  words: string[];
-  nameWords: string[];
-  past: boolean; // nothing coming up: a festival over, someone with no plans ahead, a place with no festival ahead
-  rank: number; // higher first, among items of its kind only (before)
-}
-type Item = Base &
-  (
-    | { kind: 'festival'; e: FoundEvent }
-    | { kind: 'person'; p: NonNullable<ReturnType<typeof person>>; upcoming: number }
-    | { kind: 'artist'; a: FoundArtist; shares: boolean }
-    | { kind: 'country'; country: { code: string; name: string }; n: number }
-    | { kind: 'city'; city: City }
-    | { kind: 'tag'; key: TagKey; params: Params; n: number; icon: string | null; style: boolean }
-  );
-interface City {
-  city: string;
-  cc: string | null;
-  upcoming: number;
-  all: number;
-}
-type Kind = Item['kind'];
-type Found<K extends Kind> = Extract<Item, { kind: K }>;
-// countries and cities are places, the rest are their own group
-const groupOf = (item: Item): Group => (item.kind === 'country' || item.kind === 'city' ? 'place' : item.kind);
-// of two items, which comes first: by kind (a country before its cities), then by rank within the kind, so ranks of
-// different kinds, each on its own scale, are never compared
-const KIND_ORDER: Readonly<Record<Kind, number>> = { person: 0, festival: 1, artist: 2, country: 3, city: 4, tag: 5 };
-const before = (a: Item, b: Item): number => KIND_ORDER[a.kind] - KIND_ORDER[b.kind] || b.rank - a.rank;
-
-// Every token typed must start a word of the item; an item whose name is the query, or starts with it, comes first.
-function score(item: Item, tokens: readonly string[], query: string): 0 | 1 | 2 | 3 | 4 {
-  if (!tokens.every((t) => item.words.some((w) => w.startsWith(t)))) return 0;
-  const name = fold(item.name);
-  const first = tokens[0] ?? '';
-  return name === query ? 4 : name.startsWith(query) ? 3 : item.nameWords.some((w) => w.startsWith(first)) ? 2 : 1;
-}
 
 // Where the festival list is now, so a country or style picked here keeps the time and price already chosen.
 function finderParams(): Record<string, string> {
@@ -258,38 +196,6 @@ function buildIndex(): Item[] {
       nameWords: words(entry.name),
     }),
   );
-}
-
-// the closest name to a query with no results, if it is only a typo or two away
-function nearest(items: readonly Item[], query: string): Item | null {
-  if (query.length < 4) return null;
-  const dist = (a: string, b: string): number => {
-    let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
-    for (let i = 1; i <= a.length; i++) {
-      const cur = [i];
-      for (let j = 1; j <= b.length; j++)
-        cur[j] = Math.min(
-          (prev[j] ?? 0) + 1,
-          (cur[j - 1] ?? 0) + 1,
-          (prev[j - 1] ?? 0) + (a[i - 1] === b[j - 1] ? 0 : 1),
-        );
-      prev = cur;
-    }
-    return prev[b.length] ?? Number.POSITIVE_INFINITY;
-  };
-  const limit = query.length < 7 ? 1 : 2;
-  let best: Item | null = null,
-    bestD = limit + 1;
-  for (const it of items) {
-    const name = fold(it.name);
-    if (Math.abs(name.length - query.length) > limit) continue;
-    const d = dist(query, name);
-    if (d < bestD || (best && d === bestD && before(it, best) < 0)) {
-      best = it;
-      bestD = d;
-    }
-  }
-  return best;
 }
 
 const WORDS_AND_GAPS = /[\p{L}\p{N}]+|[^\p{L}\p{N}]+/gu;
@@ -550,11 +456,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
   }
 
   // nothing found: perhaps a name a typo away, and the lists that hold everything
-  function nothing(all: readonly Item[], folded: string): void {
-    const near = nearest(
-      all.filter((item) => withPast || !item.past),
-      folded,
-    );
+  function nothing(near: Item | null): void {
     const goes = (href: string, words_: string) => leaving(searchModal, href, words_);
     list.replaceChildren(
       h(
@@ -615,41 +517,36 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
       list.replaceChildren(h('p', { class: 'search-note' }, 'Loading festivals…'));
       return;
     }
-    const tokens = words(query),
-      folded = tokens.join(' ');
-    if (tokens.length === 0) {
-      suggest(items);
-      return;
+    const found = answer(items, query, withPast);
+    switch (found.kind) {
+      case 'suggest':
+        suggest(items);
+        return;
+      case 'none':
+        nothing(found.near);
+        return;
+      case 'past':
+        list.replaceChildren(
+          h(
+            'div',
+            { class: 'search-none' },
+            h('p', {}, 'Nothing coming up matches “', query.trim(), '”.'),
+            pastMatches(found.hidden),
+          ),
+        );
+        status.textContent = 'No upcoming results';
+        highlight(-1);
+        return;
+      case 'found': {
+        const { tokens, groups, count, hidden } = found;
+        list.replaceChildren(
+          ...groups.map(([kind, title, f]) => group(kind, title, f, tokens)),
+          ...(hidden > 0 ? [pastMatches(hidden)] : []),
+        );
+        status.textContent = plural(count, 'result');
+        highlight(0); // Enter opens the best match
+      }
     }
-    const matched = items
-      .map((item) => ({ item, s: score(item, tokens, folded) }))
-      .filter((r) => r.s > 0)
-      .sort((a, b) => b.s - a.s || before(a.item, b.item))
-      .map((r) => r.item);
-    const found = matched.filter((item) => withPast || !item.past);
-    const hiddenPast = withPast ? 0 : matched.length - found.length;
-    const pastNote = hiddenPast > 0 ? pastMatches(hiddenPast) : null;
-    const groups = GROUPS.map(
-      ([kind, title]) => [kind, title, found.filter((item) => groupOf(item) === kind)] as const,
-    ).filter(([, , f]) => f.length > 0);
-    if (groups.length === 0 && pastNote) {
-      list.replaceChildren(
-        h('div', { class: 'search-none' }, h('p', {}, 'Nothing coming up matches “', query.trim(), '”.'), pastNote),
-      );
-      status.textContent = 'No upcoming results';
-      highlight(-1);
-      return;
-    }
-    if (groups.length === 0) {
-      nothing(items, folded);
-      return;
-    }
-    list.replaceChildren(
-      ...groups.map(([kind, title, f]) => group(kind, title, f, tokens)),
-      ...(pastNote ? [pastNote] : []),
-    );
-    status.textContent = plural(found.length, 'result');
-    highlight(0); // Enter opens the best match
   }
 
   input.addEventListener('input', () => {
