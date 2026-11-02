@@ -367,9 +367,16 @@ def waits_for_first_read(f: Festival) -> Waiting:
 
 
 def write_status(fs: Sequence[Festival]) -> collections.Counter[Waiting]:
-    """tickets/status.csv: for each festival, what it waits for, its first_read state, how an agent found it sells
-    and its known ticket page; the counts of what they wait for."""
-    rows = [
+    """tickets/status.csv, for people to read (status_rows); the counts of what they wait for."""
+    rows = status_rows(fs)
+    StatusRow.write(rows)
+    return collections.Counter(r.waits_for for r in rows)
+
+
+def status_rows(fs: Sequence[Festival]) -> list[StatusRow]:
+    """For each festival, by id: what it waits for, its first_read state, how an agent found it sells and its known
+    ticket page."""
+    return [
         StatusRow(
             event_id=f.id,
             event=f.title,
@@ -381,8 +388,6 @@ def write_status(fs: Sequence[Festival]) -> collections.Counter[Waiting]:
         )
         for f in sorted(fs, key=lambda f: f.id)
     ]
-    StatusRow.write(rows)
-    return collections.Counter(r.waits_for for r in rows)
 
 
 def status(db: sqlite_db.Reader) -> collections.Counter[Waiting]:

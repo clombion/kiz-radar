@@ -6,10 +6,10 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from pipeline import build_site_db, review
+from pipeline import build_site_db, export, review, tickets_state
 from pipeline import db as sqlite_db
 from pipeline.enums import HomeBasis
-from pipeline.records import StatusRow
+from pipeline.records import today
 from tests import exports
 
 
@@ -50,10 +50,14 @@ def test_no_pair_an_admin_decides_is_asked_again(site_db: Path) -> None:
 
 
 def test_the_festivals_are_those_an_agent_or_the_admin_settles(site_db: Path) -> None:
-    exports.committed(StatusRow.FILE)
+    """As the ticket files say today (tickets_state), as the build's data folder has them, not as a status.csv says."""
+    exports.committed(*exports.EVERYTHING)
+    with export.opened('ro', exports.EXPORT) as db:
+        rows = tickets_state.status_rows(tickets_state.festivals(db, today(), every=True))
     acted = {
         r.event_id
-        for r in StatusRow.read()
+        for r in rows
         if ('waits_for', r.waits_for) in review.ACTED_ON or ('first_read', r.first_read) in review.ACTED_ON
     }
+    assert acted
     assert {f.event_id for f in built(site_db).festivals} == acted
