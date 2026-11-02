@@ -553,7 +553,8 @@ ROWS = (
     S(
         'card_price',
         'ended',
-        "the festival is over, or the priced pass's dated tiers have all ended",
+        'the festival is not ahead (over, cancelled or no longer listed), '
+        "or the priced pass's dated tiers have all ended",
         NOTE,
         'Prices no longer listed',
         'organiser',

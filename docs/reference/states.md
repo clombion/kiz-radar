@@ -139,7 +139,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | card_price · `full_pass` | card | {price} full pass | — | the card prices a full pass, at its tier today |
 | card_price · `package` | card | {price} package with hotel | — | the card prices a package with a hotel, at its tier today |
 | card_price · `sold_out` | card | {pass} sold out | — | the priced pass's tiers are all sold out |
-| card_price · `ended` | note | Prices no longer listed | organiser | the festival is over, or the priced pass's dated tiers have all ended |
+| card_price · `ended` | note | Prices no longer listed | organiser | the festival is not ahead (over, cancelled or no longer listed), or the priced pass's dated tiers have all ended |
 | genre · `kizomba` | card | Kizomba | — | Kizomba (traditional / sensual kizomba) |
 | genre · `semba` | card | Semba | — | Semba |
 | genre · `urbankiz` | card | Urban Kiz | — | Urban Kiz / Urbankiz / Kizomba fusion |

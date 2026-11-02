@@ -21,7 +21,7 @@ import {
 } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayRange, flag, place } from './ui.ts';
-import { joined, text } from './wording.ts';
+import { joined, plural, text } from './wording.ts';
 
 // someone who said they're going to a festival, and what they're booked there as, if they are
 const GOER = {
@@ -135,7 +135,7 @@ const faces = (people: readonly { name: string }[]) =>
     { class: 'faces', 'aria-hidden': 'true' },
     people.map((p) => h('span', { class: 'face' }, p.name[0])),
   );
-const count = (n: number) => `${n} ${n === 1 ? 'person' : 'people'}`;
+const count = (n: number) => plural(n, 'person', 'people');
 
 // A name in a card or under the sentence opens the quick view of that person or couple; "3 more people" opens the
 // list of everyone going. Neither leaves the page.
@@ -169,7 +169,7 @@ export function goingLine(e: Going): HTMLElement | null {
         : null,
       others
         ? groups.length > 0
-          ? [' · ', more(`${others} more ${others === 1 ? 'person' : 'people'}`), ' too']
+          ? [' · ', more(plural(others, 'more person', 'more people')), ' too']
           : [more(count(others)), ' said they’re going']
         : null,
     ),

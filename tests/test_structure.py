@@ -81,6 +81,22 @@ def test_the_actions_take_their_tools_from_mise() -> None:
     assert found == []
 
 
+def test_no_query_takes_its_day_from_the_clock() -> None:
+    """The site's queries see the festivals from the day in its today table, which the page sets to the visitor's own;
+    a date('now') would be the UTC day, a day off for a visitor past midnight east of Greenwich."""
+    clock = re.compile(
+        r"\b(?:date|datetime|julianday|strftime)\s*\([^)]*'now'|current_(?:date|timestamp)\b", re.IGNORECASE
+    )
+    found = [
+        f'{p.relative_to(ROOT)}:{n.lineno}'
+        for p in sorted((ROOT / 'pipeline').rglob('*.py'))
+        for n in ast.walk(ast.parse(p.read_text(encoding='utf-8')))
+        if isinstance(n, ast.Constant) and isinstance(n.value, str) and clock.search(n.value)
+    ]
+    found += [f'{f}' for f in tracked('site/*.ts') if clock.search((ROOT / f).read_text(encoding='utf-8'))]
+    assert found == []
+
+
 def test_a_file_is_written_only_whole() -> None:
     """Every file a step replaces goes through pipeline/files.py, whole or not at all; a log only appends a line."""
     writes = re.compile(r"\.write_(?:text|bytes)\(|\.open\(\s*'w|\bopen\([^)]*,\s*'w")

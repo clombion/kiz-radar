@@ -1,6 +1,7 @@
 // What waits for a review, as review.json holds it (pipeline/review.py, Review): read by its shape, so the page meets
 // only values the build wrote.
 import { int, list, nullable, record, text } from './json.ts';
+import { plural } from './wording.ts';
 
 // one key of a pair, as its mentions show it
 const SIDE = record({
@@ -84,7 +85,7 @@ export function homeNote(a: Home, code: string, name: string): string {
   const festivals = said === undefined ? 0 : said.festivals;
   return said === undefined
     ? `${a.name}: from ${name}`
-    : `${a.name}: from ${name}, as ${festivals === 1 ? '1 line-up states' : `${festivals} line-ups state`}`;
+    : `${a.name}: from ${name}, as ${plural(festivals, 'line-up states', 'line-ups state')}`;
 }
 
 // the whole days from today to the day a token expires (negative once it has), both read as UTC days

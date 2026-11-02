@@ -114,11 +114,12 @@ test('every design token is read, and every one read is defined', () => {
   expect({ unread, undefinedRead: [...new Set(undefinedRead)] }).toEqual({ unread: [], undefinedRead: [] });
 });
 
-// Motion and stacking come from the scales in :root (durations, curves, z-index), so reduced motion zeroes every
-// duration in one rule and no layer lands on another by accident.
+// Motion, stacking and colour come from the scales in :root (durations, curves, z-index, colours), so reduced motion
+// zeroes every duration in one rule, no layer lands on another by accident, and dark mode recolours every rule.
 const DECLARATION = /(?<prop>[\w-]+)\s*:\s*(?<value>[^;{}]*);/gu;
 const DURATION = /(?<![\w.-])\d*\.?\d+m?s\b/u;
-test('durations, curves and layers are the tokens', () => {
+const COLOUR = /#[\da-f]{3,8}\b|\b(?:rgba?|hsla?|oklch|lab|lch)\((?!var\()/iu;
+test('durations, curves, layers and colours are the tokens', () => {
   const literal: string[] = [];
   for (const [file, text] of css)
     for (const m of text.matchAll(DECLARATION)) {
@@ -128,7 +129,8 @@ test('durations, curves and layers are the tokens', () => {
       if (
         (/^(?:transition|animation)/u.test(prop) && DURATION.test(value)) ||
         value.includes('cubic-bezier') ||
-        (prop === 'z-index' && value !== '0' && !value.startsWith('var('))
+        (prop === 'z-index' && value !== '0' && !value.startsWith('var(')) ||
+        COLOUR.test(value)
       )
         literal.push(`${file}: ${prop}: ${value}`);
     }

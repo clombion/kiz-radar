@@ -21,6 +21,8 @@ export default defineConfig({
           include: ['tests/site/**/*.test.ts'],
           exclude: ['tests/site/**/*.browser.test.ts'],
           environment: 'node',
+          // a zone where local midnight is mid-morning the day before in UTC, so a day read in UTC is caught
+          env: { TZ: 'Pacific/Kiritimati' },
         },
       },
       {

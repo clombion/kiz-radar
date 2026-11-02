@@ -2660,14 +2660,14 @@ html[data-vt="ahead"]::view-transition-old(section) {
 }
 html[data-vt="ahead"]::view-transition-new(section) {
   animation: var(--dur-medium) var(--ease-out) both section-in-right;
-  box-shadow: -10px 0 28px rgb(0 0 0 / 0.1);
+  box-shadow: -10px 0 28px rgb(var(--shadow-ink) / 0.1);
 }
 html[data-vt="back"]::view-transition-old(section) {
   animation: var(--dur-medium) var(--ease-out) both section-aside-right;
 }
 html[data-vt="back"]::view-transition-new(section) {
   animation: var(--dur-medium) var(--ease-out) both section-in-left;
-  box-shadow: 10px 0 28px rgb(0 0 0 / 0.1);
+  box-shadow: 10px 0 28px rgb(var(--shadow-ink) / 0.1);
 }
 /* the page coming in is opaque, with a soft shadow on its leading edge, so it covers the one it replaces */
 ::view-transition-new(section) {

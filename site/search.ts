@@ -28,7 +28,7 @@ import {
 import { BOOKINGS, flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { away, dayMonth, flag, otherYear, place } from './ui.ts';
-import { text } from './wording.ts';
+import { plural, text } from './wording.ts';
 
 const SHOWN = 5; // results per group until "Show all"
 type Group = 'person' | 'festival' | 'artist' | 'place' | 'tag';
@@ -292,7 +292,6 @@ function nearest(items: readonly Item[], query: string): Item | null {
 }
 
 const WORDS_AND_GAPS = /[\p{L}\p{N}]+|[^\p{L}\p{N}]+/gu;
-const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
 // a note's icon when its tag has none of its own
 const NOTE =
   '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
@@ -601,7 +600,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
     h(
       'p',
       { class: 'search-note' },
-      `${n} ${n === 1 ? 'match has' : 'matches have'} nothing coming up. `,
+      `${plural(n, 'match has', 'matches have')} nothing coming up. `,
       button({ class: 'link', onclick: includePast }, n === 1 ? 'Include it' : 'Include them'),
     );
   // the list, and whether the box's list is open: while it has options to pick
