@@ -1161,3 +1161,17 @@ def test_a_person_s_names_by_role_are_kept_only_when_they_are_two_names() -> Non
     assert resolve_artists.role_names(names, used) == {'p:ichigo@dj': [Role.DJ], 'p:ichigo@dance': [Role.TEACHER]}
     typo = {'p:johann': uses((1, '2026-01-01', Role.DJ)), 'p:johan': uses((2, '2026-02-01', Role.TEACHER))}
     assert resolve_artists.role_names({'p:johann': 'Johann Orsinet', 'p:johan': 'Johan Orsinet'}, typo) == {}
+
+
+def test_the_usual_spelling_counts_what_tidies_alike_and_reads_capitals_for_their_accents() -> None:
+    # DJ forms written three ways outnumber the bare name
+    assert resolve_artists.usual_spelling({'Vasco': 6, 'DJ Vasco': 4, 'Dj Vasco': 4, 'DJ VASCO': 3}) == 'DJ Vasco'
+    # capitals drop accents: they stand for the accented spelling, or the one written most of two
+    assert (
+        resolve_artists.usual_spelling({'FAJUL & AGNES': 3, 'Fajul & Agnès': 1, 'Fajul & Anne': 2}) == 'Fajul & Agnès'
+    )
+    assert resolve_artists.usual_spelling({'Bonifácio': 2, 'BONIFACIO': 2, 'Bonifacio': 1}) == 'Bonifácio'
+    # and for neither of two written as often, so the tie is kept as it was seen
+    assert resolve_artists.usual_spelling({'Célia': 1, 'CELIA': 1, 'Celia': 1}) == 'Célia'
+    # capitals with accents are as written
+    assert resolve_artists.usual_spelling({'GAËLLE': 1, 'Gaélle': 1}) == 'Gaëlle'

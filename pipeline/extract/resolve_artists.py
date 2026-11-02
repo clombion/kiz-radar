@@ -966,9 +966,37 @@ def role_names(names: Mapping[str, str], uses: Mapping[str, Sequence[Use]]) -> d
     return dict(out)
 
 
+def bare(name: str) -> str:
+    return ''.join(ch for ch in unicodedata.normalize('NFD', name) if not unicodedata.combining(ch))
+
+
+def usual_spelling(counts: Mapping[str, int]) -> str:
+    """The spelling written most often, as the site shows it (tidy_name): spellings it tidies alike count together
+    ("DJ Vasco", "Dj Vasco", "DJ VASCO"). One in capitals with no accent (capitals drop them) stands for the spelling in
+    small letters it could be that is written most ("CESAR" for "César", "BONIFACIO" for "Bonifácio" written twice to
+    "Bonifacio"'s once), and for neither of two written as often; one in capitals with accents is as written. Of two as
+    often, the one written most often as such, then the shorter, then the one seen first."""
+    small: Counter[str] = Counter()
+    for written, n in counts.items():
+        if written != written.upper():
+            small[tidy_name(written)] += n
+    tidied: Counter[str] = Counter()
+    most: Counter[str] = Counter()
+    for written, n in counts.items():
+        t = tidy_name(written)
+        if written == written.upper() and bare(t) == t:  # capitals with no accent: which spelling's?
+            could = sorted((w for w in small if bare(w) == bare(t)), key=lambda w: -small[w])
+            if len(could) > 1 and small[could[0]] == small[could[1]]:
+                continue  # either spelling's, so neither's
+            t = could[0] if could else t
+        tidied[t] += n
+        most[t] = max(most[t], n)
+    return max(tidied, key=lambda t: (tidied[t], most[t], -len(t)))
+
+
 def spelled(names: Sequence[str]) -> str:
-    """A key's spelling written most often (the shorter of two as often)."""
-    return max(Counter(names).items(), key=lambda kv: (kv[1], -len(kv[0])))[0]
+    """A key's usual spelling (usual_spelling)."""
+    return usual_spelling(Counter(names))
 
 
 @dataclass(frozen=True)
@@ -1008,7 +1036,7 @@ def write_artists(
         display = group_display.get(fk) or (
             spelled(keys.names[new])  # a rename shows the new name
             if new is not None and keys.names.get(new)
-            else max(alias_counts[fk].items(), key=lambda kv: (kv[1], -len(kv[0])))[0]
+            else usual_spelling(alias_counts[fk])
             if alias_counts[fk]
             else fk
         )
