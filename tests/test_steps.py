@@ -20,6 +20,7 @@ from pipeline.records import Json
 from tests import jsons
 from tests.exports import EVERYTHING, EXPORT, Made, committed, content, copied, run, trimmed
 from tests.fakes import Memory
+from tests.repository import tracked
 
 # a whole run of a step takes seconds, its runs here a few of them
 pytestmark = pytest.mark.timeout(120)
@@ -169,6 +170,39 @@ def test_every_table_of_the_export_is_one_steps() -> None:
     with sqlite_db.opened(EXPORT, 'ro') as db:
         made = db.column(str, "select name from sqlite_master where type in ('table', 'view')")
     assert set(owners) == set(made)
+
+
+class Documented(BaseModel):
+    name: str
+    written_by: str
+
+
+def test_every_table_of_the_export_is_described_by_the_step_that_makes_it() -> None:
+    """table_docs names, for each table and view, the module that declares it, which keeps its description."""
+    owners = {
+        n: module
+        for module, declared in (
+            ('pipeline/scrape.py', scrape.KEPT),
+            ('pipeline/extract/run_log.py', run_log.KEPT),
+            ('pipeline/extract/resolve_artists.py', resolve_artists.KEPT | resolve_artists.TABLES),
+            ('pipeline/extract/load_extract.py', load_extract.TABLES),
+        )
+        for n in declared
+    }
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        made = db.column(str, "select name from sqlite_master where type in ('table', 'view')")
+        written = {d.name: d.written_by for d in db.rows(Documented, 'select name, written_by from table_docs')}
+    assert written == {n: owners[n] for n in made}
+
+
+def test_every_step_of_the_export_names_the_file_that_performed_it() -> None:
+    """A step's row says which of the repository's scripts ran it (beside the model it asked), never a file that
+    isn't there."""
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        performed = db.column(str, 'select performed_by from pipeline_steps')
+    files = set(tracked('*.py'))
+    named = {p: re.findall(r'[\w/.-]+\.py\b', p) for p in performed}
+    assert {p: n for p, n in named.items() if not n or not set(n) <= files} == {}
 
 
 def tables(db: Reader, names: Iterable[str]) -> dict[str, str]:

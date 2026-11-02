@@ -211,6 +211,26 @@ insert into source_ids (source, source_id, event_id) select 'kizomba-world', id,
     # would be asked with (pipeline/extract/answers.py state), which the extraction steps find themselves
     """drop table pending_extraction;
     delete from table_docs where name = 'pending_extraction';""",
+    # 8: no provenance naming a file that isn't there: the compact copy's step (scrape writes the export itself, emoji
+    # as characters, and migration 1 dropped the posters) and the human check of the first extraction, whose page,
+    # sample and scores were never in the repository; scrape's tables described by scrape, which describes them since
+    """delete from pipeline_steps where step in ('9_compact', '8_human_review_artists');
+    insert into table_docs (name, kind, description, written_by) values
+    ('events', 'table', 'One row per kizomba-world.com event dated from 2026-01-01 to the end of next year: its API '
+     || 'record (dates, the featured and sticky flags, the description as HTML, emoji as characters, and as plain '
+     || 'text) and what its page adds (venue, address, city, country, deal link, the URLs of its translations, and the '
+     || 'cancelled flag, null for a past festival never read for it). listing is gone, since unlisted_on, for one the '
+     || 'site no longer lists. id is ours (source_ids).', 'pipeline/scrape.py'),
+    ('event_categories', 'table', 'The site''s categories per event (All, Festivals / WK, Concerts, ...). Nearly '
+     || 'every event is ''Festivals / WK'', so tags and event_features distinguish events better.',
+     'pipeline/scrape.py'),
+    ('event_tags', 'table', 'The site''s tags per event: dance styles (Kizomba, Semba, ...) and features (All in One, '
+     || 'Pool Party, ...).', 'pipeline/scrape.py'),
+    ('event_links', 'table', 'The ''Related Links'' on each event page (mostly Facebook events and Instagram pages).',
+     'pipeline/scrape.py'),
+    ('source_ids', 'table', 'Each festival''s id at its source (kizomba-world''s), and ours (event_id), given once and '
+     || 'never again.', 'pipeline/scrape.py')
+    on conflict (name) do update set description = excluded.description, written_by = excluded.written_by;""",
 )
 
 

@@ -176,6 +176,20 @@ create index events_start on events(start_date);
 create index events_country on events(country);
 """.format_map(states.SQL_IN)
 )
+TABLE_DOCS = {
+    'events': f'One row per kizomba-world.com event dated from {FIRST_DAY} to the end of next year: its API record '
+    '(dates, the featured and sticky flags, the description as HTML, emoji as characters, and as plain text) and what '
+    'its page adds (venue, address, city, country, deal link, the URLs of its translations, and the cancelled flag, '
+    'null for a past festival never read for it). listing is gone, since unlisted_on, for one the site no longer '
+    'lists. id is ours (source_ids).',
+    'event_categories': "The site's categories per event (All, Festivals / WK, Concerts, ...). Nearly every event is "
+    "'Festivals / WK', so tags and event_features distinguish events better.",
+    'event_tags': "The site's tags per event: dance styles (Kizomba, Semba, ...) and features (All in One, Pool Party, "
+    '...).',
+    'event_links': "The 'Related Links' on each event page (mostly Facebook events and Instagram pages).",
+    'source_ids': "Each festival's id at its source (kizomba-world's), and ours (event_id), given once and never "
+    'again.',
+}
 
 
 def write_event(db: Transaction, row: EventRow, categories: list[str], tags: list[str]) -> None:
@@ -310,6 +324,7 @@ def finish(db: Transaction, report: Report, events: int, gone: list[int], today:
         'changed': len(report.changed),
         'unlisted': len(gone),
     }
+    run_log.document(db, TABLE_DOCS, 'pipeline/scrape.py')
     run_log.record(
         db,
         run_log.Step(

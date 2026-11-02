@@ -312,6 +312,11 @@ TABLE_DOCS = {
     'artist_group_definitions': 'Named groups defined by hand (a DJ duo booked under one name), with a note; members '
     'are in couple_members.',
     'artist_group_aliases': "The name keys whose mentions count as a named group's.",
+    'artist_homes': 'Each artist a home claim says where they are from (pipeline/claims.py): the country, the source '
+    'of the claim that decides it, and its note.',
+    'claims': 'Every claim (pipeline/claims.py), of every source: its subject and text, when it was made, and its '
+    'state: applied (it decides its subject), overridden (another claim comes first) or orphaned (it names a key no '
+    'mention produces, and decides nothing).',
     'artist_ids': 'Every artist id ever given and the match_key it was given to. An id missing from artists was merged '
     'into another artist: artist_keys gives the artist its key belongs to now.',
 }
