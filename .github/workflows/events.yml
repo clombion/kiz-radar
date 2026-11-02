@@ -151,18 +151,16 @@ jobs:
       - name: The admin's latest claims, which the commit pins with the export they made
         run: git submodule update --remote claims
       - name: Load the answers and resolve the artists
-        run: |
+        run: |   # the merge suggestions follow in Refresh places and rates, which reads the export this pushes
           mise run load
           mise run resolve
-          mise run suggest-merges
       - name: The day, for the commit
         id: now
         run: echo "day=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
       - uses: ./.github/actions/push   # then Refresh places and rates, which publishes
         with:
           paths: >-
-            source claims pipeline/extract/answers pipeline/prompts/asked pipeline/artist_merge_suggestions.csv
-            pipeline/tickets pipeline/spend.csv
+            source claims pipeline/extract/answers pipeline/prompts/asked pipeline/tickets pipeline/spend.csv
           bot: events-bot
           message: Refresh events from kizomba-world and their extractions (${{ steps.now.outputs.day }})
           then: build.yml

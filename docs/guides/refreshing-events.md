@@ -45,7 +45,8 @@ cost $11.17, $8.71 of it the ticket pages' first reads.
 
 When the commit job fails, the paid answers are not lost: download the run's `asked` artifact, apply its `changes.patch`
 to the commit the run was on (`git apply --index --binary`), fix what failed, and run what the commit job runs
-(`mise run load`, `mise run resolve`, `mise run suggest-merges`) before committing.
+(`mise run load`, `mise run resolve`) before committing; the push starts **Refresh places and rates**, which refreshes
+the merge suggestions from the export pushed.
 
 ## Fares
 
