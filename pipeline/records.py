@@ -960,10 +960,14 @@ class CsvRow(BaseModel):
         files.write(cls.path(), out.getvalue())
 
     def append(self) -> None:
-        """Add the row at the end of the file, which gets its header when it is new."""
+        """Add the row at the end of the file, which gets its header when it is new (or empty); tables.ShapeError when
+        the file's header is not the record's columns, as a row under it would be read by other columns."""
         path = self.path()
         path.parent.mkdir(parents=True, exist_ok=True)
-        new = not path.exists()
+        found = tables.header(path) if path.exists() else []
+        if found and found != self.columns():
+            raise tables.ShapeError(f'{self.FILE}: its header is {",".join(found)}, not {",".join(self.columns())}')
+        new = not found
         with path.open('a', encoding='utf-8', newline='') as f:
             w = csv.DictWriter(f, self.columns(), lineterminator='\n')
             if new:

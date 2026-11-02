@@ -38,16 +38,26 @@ def shown(path: Path) -> str:
     return str(path.relative_to(data(''))) if path.is_relative_to(data('')) else str(path)
 
 
+def rows_refused(record: type[CsvRow]) -> list[str]:
+    """Each value of the record's file the record refuses, by line; or the file, when a row has more or fewer cells
+    than its header has columns, so that no row can be read by them."""
+    try:
+        found = tables.rows(record.path())
+    except tables.ShapeError as e:
+        return [f'{record.FILE}: {e}']
+    out: list[str] = []
+    for n, row in enumerate(found, 2):
+        try:
+            _ = record.model_validate(record.cells(row))
+        except ValidationError as e:
+            out += errors(e, f'{record.FILE} line {n}')
+    return out
+
+
 def refused(event_ids: set[int]) -> list[str]:
     """Each value its record refuses, with where it is; event_ids are the festivals the source DB has, whose answers
     count."""
-    out: list[str] = []
-    for record in CsvRow.records():
-        for n, row in enumerate(tables.rows(record.path()), 2):
-            try:
-                _ = record.model_validate(record.cells(row))
-            except ValidationError as e:
-                out += errors(e, f'{record.FILE} line {n}')
+    out = [line for record in CsvRow.records() for line in rows_refused(record)]
     out += [line for path in claims.claim_files() if isinstance(why := claims.parsed(path), list) for line in why]
     for pass_ in prompts.PASSES:
         answered = answers.answered(pass_.name, event_ids).values()
