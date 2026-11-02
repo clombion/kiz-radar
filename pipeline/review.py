@@ -51,6 +51,17 @@ class Home(Record):
     booked_in: tuple[str, ...]  # where they are booked most, as many as EVENTS: which says nothing of home
 
 
+class Booked(Record):
+    """An artist booked, as the join tool finds them: the least of the keys their mentions produce, which a merge claim
+    names, their name and kind, and their latest festivals."""
+
+    key: str
+    name: str
+    kind: str
+    bookings: int
+    latest: tuple[str, ...]  # their latest festivals, as many as EVENTS: "Bachaturo Festival 2027"
+
+
 class Side(Record):
     """One key of a pair, as its mentions show it: what the merge review weighed."""
 
@@ -105,6 +116,7 @@ class Review(Record):
     countries: tuple[Place, ...]
     homes: tuple[Home, ...]
     merges: tuple[Merge, ...]
+    artists: tuple[Booked, ...]  # every artist booked, most booked first, for joining any two
     festivals: tuple[Festival, ...]
     orphaned: tuple[Orphaned, ...]
     steps: tuple[Step, ...]
@@ -126,13 +138,26 @@ class StatedRow(BaseModel):
     festivals: int
 
 
+class BookedRow(BaseModel):
+    artist_id: int
+    key: str
+    name: str
+    kind: str
+    bookings: int
+
+
+class LatestRow(BaseModel):
+    artist_id: int
+    event: str
+
+
 class StatedAt(BaseModel):
     artist_id: int
     country: str
     event: str
 
 
-class BookedRow(BaseModel):
+class BookedIn(BaseModel):
     artist_id: int
     code: str
 
@@ -185,7 +210,7 @@ def homes(x: Reader) -> list[Home]:
     booked = firsts(
         (b.artist_id, b.code)
         for b in x.rows(
-            BookedRow, 'select artist_id, country_code as code from artist_countries order by 1, bookings desc, 2'
+            BookedIn, 'select artist_id, country_code as code from artist_countries order by 1, bookings desc, 2'
         )
     )
     return [
@@ -199,6 +224,29 @@ def homes(x: Reader) -> list[Home]:
             stated=tuple(stated.get(r.artist_id, [])),
             booked_in=tuple(booked.get(r.artist_id, [])),
         )
+        for r in rows
+    ]
+
+
+def booked(x: Reader) -> list[Booked]:
+    """Every artist booked, most booked first, by the least key their mentions produce, with their latest festivals."""
+    latest = firsts(
+        (r.artist_id, r.event)
+        for r in x.rows(
+            LatestRow,
+            """select ea.artist_id, e.title || ' ' || substr(e.start_date, 1, 4) as event from event_artists ea
+            join events e on e.id = ea.event_id order by e.start_date desc, e.title""",
+        )
+    )
+    rows = x.rows(
+        BookedRow,
+        """select s.artist_id, min(k.match_key) as key, a.display_name as name, a.kind, s.bookings
+        from artist_stats s join artists a on a.id = s.artist_id
+        join src.artist_keys k on k.artist_id = s.artist_id and k.produced = 1
+        group by s.artist_id order by s.bookings desc, a.display_name, key""",
+    )
+    return [
+        Booked(key=r.key, name=r.name, kind=r.kind, bookings=r.bookings, latest=tuple(latest.get(r.artist_id, [])))
         for r in rows
     ]
 
@@ -284,6 +332,7 @@ def review(x: Reader, built_at: str) -> Review:
         countries=tuple(Place(code=c, name=n) for c, n in sorted(countries.NAMES.items(), key=lambda kv: kv[1])),
         homes=tuple(homes(x)),
         merges=tuple(merges(x, admin_pairs(claimed))),
+        artists=tuple(booked(x)),
         festivals=tuple(festivals(status)),
         orphaned=tuple(Orphaned(id=r.id, claim=r.claim) for r in claimed if r.state == ClaimState.ORPHANED),
         steps=tuple(

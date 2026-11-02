@@ -33,7 +33,7 @@ const isBooked = (v: unknown): v is Booked => typeof v === 'string' && bookedKey
 // a column holding a role an artist is booked in
 export const booked: Column<Booked> = (v, name) => (isBooked(v) ? v : wrong(name, v, 'role an artist is booked in'));
 // a comma-separated list of a point's states, empty when null
-const states =
+export const states =
   <P extends Point>(point: P): Column<Key<P>[]> =>
   (v, name) =>
     v === null

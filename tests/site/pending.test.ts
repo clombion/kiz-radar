@@ -1,7 +1,17 @@
 // The review dashboard's own logic, on values alone: an item's id, the note a choice starts with, the days a token has
 // left, and the next item still open.
 import { expect, test } from 'vitest';
-import { daysLeft, differs, homeId, homeNote, type Merge, mergeId, mergeNote, nextOpen } from '../../site/pending.ts';
+import {
+  daysLeft,
+  differs,
+  homeId,
+  homeNote,
+  type Merge,
+  mergeId,
+  mergeNote,
+  nextOpen,
+  unjoinable,
+} from '../../site/pending.ts';
 import { REVIEW } from './reviewed.ts';
 
 const [ANA] = REVIEW.homes;
@@ -49,4 +59,12 @@ test('two sides differ on a row when each says something and they share nothing'
   expect(differs(['GB'], ['FR'])).toBe(true);
   expect(differs(['GB', 'FR'], ['FR'])).toBe(false);
   expect(differs([], ['FR'])).toBe(false);
+});
+
+test('two artists are joined only when they are two of one kind', () => {
+  const [kwenda, kl, couple] = REVIEW.artists;
+  if (!(kwenda && kl && couple)) throw new Error('the sample review has three artists');
+  expect(unjoinable(kwenda, kl)).toBeNull();
+  expect(unjoinable(kwenda, kwenda)).toBe('They are one artist already.');
+  expect(unjoinable(kwenda, couple)).toBe('A person and a couple are not one artist.');
 });

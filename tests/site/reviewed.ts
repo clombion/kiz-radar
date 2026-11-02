@@ -57,6 +57,11 @@ export const REVIEW: Review = {
       rationale: 'unsure',
     },
   ],
+  artists: [
+    { key: 'p:kwenda', name: 'Kwenda Lima', kind: 'person', bookings: 4, latest: ['Kizz Luanda 2026'] },
+    { key: 'p:kl@dj', name: 'DJ KL', kind: 'person', bookings: 2, latest: ['Lisbon Kiz 2026'] },
+    { key: 'c:ana+bo', name: 'Ana & Bo', kind: 'couple', bookings: 3, latest: [] },
+  ],
   festivals: [],
   orphaned: [],
   steps: [],

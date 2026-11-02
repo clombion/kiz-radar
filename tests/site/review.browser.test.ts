@@ -171,3 +171,29 @@ test('a pair is compared side by side, the row whose sides share nothing marked'
   expect(differing).toEqual(['Line-ups state', 'Roles']);
   expect(root.textContent).toContain('Both named in 1 line-up');
 });
+
+test('two artists found by name are joined by a merge claim of their keys', async () => {
+  const root = await writing('#join/1');
+  const find = (n: number, words: string) => {
+    const box = root.querySelectorAll<HTMLInputElement>('input[type="search"]')[n];
+    if (!box) throw new Error(`no search ${n}`);
+    box.value = words;
+    box.dispatchEvent(new Event('input'));
+    button(root, words === 'kwenda' ? 'Kwenda Lima' : 'DJ KL').click();
+  };
+  find(0, 'kwenda');
+  find(0, 'kl'); // the first side is chosen: the next search is the other's
+  button(root, 'One artist').click();
+  button(root, 'Write the claim').click();
+  await expect.poll(() => writes().length).toBe(1);
+  expect(sentFile(writes()[0]?.init ?? {})).toBe(
+    claimText(
+      mergeClaim({
+        keys: ['p:kwenda', 'p:kl@dj'],
+        decision: 'merge',
+        note: 'Kwenda Lima / DJ KL: one artist, under two names',
+        at: AT,
+      }),
+    ),
+  );
+});

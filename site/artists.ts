@@ -1,14 +1,16 @@
 // Artists: a scannable list (who, from where, how often booked, where next) and a page per artist that
 // leads with their upcoming festivals.
+import { today } from './days.ts';
 import { one, q, Sql, sql } from './db.ts';
 import { button, choices, debounced, dropdown, h, type Kid, moreButton, paged, segments } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, leftOut, readState, withDetails } from './festivals.ts';
 import { fold } from './fold.ts';
+import { type Named, nameLines } from './names.ts';
 import { alsoGoingTo, peopleOf } from './plans.ts';
 import { alone, roleLabel } from './roles.ts';
 import { artistHref, artistsHref, eventOnMapHref, personHref, type Show, showInAddressBar } from './routes.ts';
-import { ARTIST_STATS, EVENT, flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
+import { ARTIST_STATS, EVENT, flag as flagCol, num, opt, type RowOf, state, states, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayMonth, dayYear, flag, place } from './ui.ts';
 import { hasForm, joined, type Key, plural, text, where } from './wording.ts';
@@ -448,18 +450,44 @@ function pastList(id: number, past: readonly Festival[]): HTMLElement | null {
   );
 }
 
-// the other names they're written as, and how their home is known
+// a name they were booked under, as the page says it: its years, whether a rename, and the roles that know them by it
+const NAMED = {
+  name: str,
+  first_date: str,
+  last_date: str,
+  renamed: flagCol,
+  as_roles: states('role'),
+} as const;
+const bookedAs = (id: number): Named[] =>
+  q(
+    NAMED,
+    sql`SELECT name, first_date, last_date, renamed, as_roles FROM artist_names WHERE artist_id = ?
+    ORDER BY last_date DESC, name`,
+    [id],
+  ).map((n) => ({
+    name: n.name,
+    first: n.first_date,
+    last: n.last_date,
+    renamed: n.renamed,
+    as: n.as_roles.map((r) => (hasForm('role', r, 'singular') ? alone(r) : r)),
+  }));
+
+// their names (a rename; the names each role knows them by), the other names they're written as, and how their home
+// is known
 function notes(a: Pick<Artist, 'display_name'>, id: number, stats: Artist | null): HTMLElement {
+  const known = bookedAs(id);
+  const said = new Set([a.display_name, ...known.map((n) => n.name)].map((n) => n.toLowerCase()));
   const aliases = q(
     { alias: str },
     sql`SELECT alias FROM artist_aliases WHERE artist_id = ? ORDER BY mentions DESC LIMIT 6`,
     [id],
   )
     .map((r) => r.alias)
-    .filter((x) => x.toLowerCase() !== a.display_name.toLowerCase());
+    .filter((x) => !said.has(x.toLowerCase()));
   return h(
     'div',
     { class: 'profile-notes' },
+    nameLines(known, today()).map((line) => h('p', {}, line)),
     aliases.length > 0 ? h('p', {}, 'Also written as ', aliases.join(' · ')) : null,
     h(
       'p',

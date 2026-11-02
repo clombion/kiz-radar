@@ -75,7 +75,7 @@ from pipeline.enums import ArtistKind, ClaimState, MergeDecision, MergeReason, M
 from pipeline.extract import merge_review, run_log
 from pipeline.extract.prices import COUPLE
 from pipeline.names import norm, sim
-from pipeline.records import Group, MergeQuestion, Record, ReviewMention
+from pipeline.records import Group, MergeQuestion, Record, ReviewMention, today
 from pipeline.text import tidy_name
 
 SPLIT_ROLES = {Role.TEACHER, Role.DJ, Role.PERFORMER, Role.MC}
@@ -104,6 +104,19 @@ CREATE TABLE artist_aliases (
     alias TEXT NOT NULL,
     mentions INTEGER NOT NULL,
     PRIMARY KEY (artist_id, alias)
+) STRICT;
+CREATE TABLE artist_names (
+    artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
+    match_key TEXT NOT NULL,      -- a key its mentions produce: one of its names, of which a merge joined several
+    name TEXT NOT NULL,           -- that key's spelling written most often
+    roles TEXT NOT NULL,          -- the roles it was named in, comma-separated
+    first_date TEXT NOT NULL,     -- its first and last festivals' start day, which may be editions to come
+    last_date TEXT NOT NULL,
+    festivals INTEGER NOT NULL,
+    renamed INTEGER NOT NULL CHECK (renamed IN (0, 1)),  -- the name recent festivals use instead of the usual one
+    as_roles TEXT,                -- the roles a person is known by this name in, comma-separated, where their roles'
+                                  -- names differ
+    PRIMARY KEY (artist_id, match_key)
 ) STRICT;
 CREATE TABLE couple_members (
     couple_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
@@ -277,6 +290,9 @@ TABLE_DOCS = {
     'a team) or an organisation, with its most common spelling, in one casing (pipeline/text.py tidy_name), as '
     'display name.',
     'artist_aliases': 'Every spelling an artist was written as, with how many mentions used it.',
+    'artist_names': 'Each name an artist was booked under (a key of theirs, a merge having joined several): its usual '
+    'spelling, roles, first and last festivals, whether recent festivals renamed them to it, and the roles it names a '
+    'person in when their roles know them by different names.',
     'artist_keys': 'Every name key a mention or couple member produced, and the artist it resolved to (merged keys '
     'included). The keys in artist_merge_candidates, artist_merge_decisions and artist_group_aliases '
     'are these keys.',
@@ -897,11 +913,77 @@ def final_keys(keys: Keys, uf: UnionFind, groups: Iterable[Group]) -> dict[str, 
     return out
 
 
+@dataclass(frozen=True)
+class Use:
+    """A key named at a festival: when it starts, and in which role."""
+
+    event_id: int
+    start: str
+    role: Role
+
+
+DAY = 10  # a start's day, YYYY-MM-DD, of its date and time
+RECENT = 2  # the seasons (calendar years, this one and the last) a rename shows in
+RENAMED = 2  # the festivals of those seasons a newer name needs, where the usual one appears at none
+
+
+def renamed_key(uses: Mapping[str, Sequence[Use]], year: int) -> str | None:
+    """The key of an artist's that recent festivals use instead of the one named most often: at RENAMED of them in
+    the last RECENT seasons, where the usual one is at none, which is a rename; a one-off spelling or a far-off edition
+    doesn't make one. None when there is no rename."""
+    if not uses:
+        return None
+    usual = max(sorted(uses), key=lambda k: len(uses[k]))
+
+    def recent(k: str) -> set[int]:
+        return {u.event_id for u in uses[k] if int(u.start[:4]) > year - RECENT}
+
+    newer = [k for k in sorted(uses) if k != usual and len(recent(k)) >= RENAMED]
+    return max(newer, key=lambda k: len(recent(k))) if newer and not recent(usual) else None
+
+
+def spelled_apart(a: str, b: str) -> bool:
+    """Whether two names are two names, not two spellings of one: a DJ prefix on one makes a name of its own ("DJ
+    Ichigo" / "Ichigo"); otherwise they are one name written alike (SIMILAR), or two (Kevin Djassy / DJ Kevin)."""
+    ka, kb = token_key(a), token_key(b)
+    if ka == kb:
+        return bool(PREFIX.match(clean_display(a))) != bool(PREFIX.match(clean_display(b)))
+    return SequenceMatcher(None, ka, kb).ratio() < SIMILAR
+
+
+def role_names(names: Mapping[str, str], uses: Mapping[str, Sequence[Use]]) -> dict[str, list[Role]]:
+    """A person's keys that name them in a role, by key, when the names of their roles are two names or more: each
+    role's name is its key named at most festivals there. Empty when every role knows them by one name."""
+    best: dict[Role, str] = {}
+    for role in sorted({u.role for us in uses.values() for u in us}):
+        best[role] = max(sorted(uses), key=lambda k: len({u.event_id for u in uses[k] if u.role == role}))
+    shown = {names[k] for k in best.values()}
+    if not any(spelled_apart(a, b) for a in shown for b in shown):
+        return {}
+    out: dict[str, list[Role]] = defaultdict(list)
+    for role, k in best.items():
+        out[k].append(role)
+    return dict(out)
+
+
+def spelled(names: Sequence[str]) -> str:
+    """A key's spelling written most often (the shorter of two as often)."""
+    return max(Counter(names).items(), key=lambda kv: (kv[1], -len(kv[0])))[0]
+
+
+@dataclass(frozen=True)
+class Named:
+    """What names an artist beside their keys: a named group's own name, and when and as what each key was named."""
+
+    groups: Mapping[str, str]  # a group key's display name (pipeline/extract/groups.csv)
+    uses: Mapping[str, Sequence[Use]]
+
+
 def write_artists(
-    con: Transaction, keys: Keys, final_key: Mapping[str, str], groups: list[Group], ids: Mapping[str, int]
+    con: Transaction, keys: Keys, final_key: Mapping[str, str], ids: Mapping[str, int], named_by: Named
 ) -> None:
-    """The artists, their spellings, keys and members."""
-    group_display = {g.group_key: g.display_name for g in groups}
+    """The artists, their names (each key's, with when and as what it was named), spellings, keys and members."""
+    group_display, uses = named_by.groups, named_by.uses
     alias_counts: defaultdict[str, defaultdict[str, int]] = defaultdict(lambda: defaultdict(int))
     for k, ns in keys.names.items():
         for n in ns:
@@ -909,10 +991,26 @@ def write_artists(
     first: dict[str, str] = {}  # each artist's first key, whose kind it is unless it is a group
     for k in keys.kinds:
         _ = first.setdefault(final_key[k], k)
+    keys_of: defaultdict[str, list[str]] = defaultdict(list)
+    for k, fk in final_key.items():
+        keys_of[fk].append(k)
+    year = today().year
+    renamed: set[str] = set()
+    as_roles: dict[str, list[Role]] = {}
     artists: list[dict[str, object]] = []
     for fk in sorted(set(final_key.values())):
+        used = {k: uses[k] for k in keys_of[fk] if uses.get(k) and keys.names.get(k)}
+        new = renamed_key(used, year)
+        if new is not None:
+            renamed.add(new)
+        if fk not in group_display and keys.kinds[first[fk]] == ArtistKind.PERSON:
+            as_roles |= role_names({k: spelled(keys.names[k]) for k in used}, used)
         display = group_display.get(fk) or (
-            max(alias_counts[fk].items(), key=lambda kv: (kv[1], -len(kv[0])))[0] if alias_counts[fk] else fk
+            spelled(keys.names[new])  # a rename shows the new name
+            if new is not None and keys.names.get(new)
+            else max(alias_counts[fk].items(), key=lambda kv: (kv[1], -len(kv[0])))[0]
+            if alias_counts[fk]
+            else fk
         )
         kind = ArtistKind.GROUP if fk in group_display else keys.kinds[first[fk]]
         artists.append({'id': ids[fk], 'display_name': tidy_name(display), 'kind': kind, 'match_key': fk})
@@ -923,6 +1021,24 @@ def write_artists(
             {'artist_id': ids[fk], 'alias': a, 'mentions': n}
             for fk in sorted(set(final_key.values()))
             for a, n in alias_counts[fk].items()
+        ),
+    )
+    con.insert(
+        'artist_names',
+        (
+            {
+                'artist_id': ids[fk],
+                'match_key': k,
+                'name': tidy_name(spelled(keys.names[k])),
+                'roles': ','.join(sorted({u.role for u in uses[k]})),
+                'first_date': min(u.start for u in uses[k])[:DAY],
+                'last_date': max(u.start for u in uses[k])[:DAY],
+                'festivals': len({u.event_id for u in uses[k]}),
+                'renamed': int(k in renamed),
+                'as_roles': ','.join(sorted(as_roles[k])) if k in as_roles else None,
+            }
+            for k, fk in sorted(final_key.items())
+            if uses.get(k) and keys.names.get(k)
         ),
     )
     con.insert(
@@ -942,6 +1058,11 @@ def write_artists(
         ),
         unless=('couple_id', 'member_id'),
     )
+
+
+class Started(BaseModel):
+    id: int
+    start_date: str
 
 
 class Counted(BaseModel):
@@ -972,7 +1093,11 @@ def main() -> None:
         moved_on = retired_into(con, final_key, ids)
         con.remake(TABLES)
         retire(con, ids, moved_on)
-        write_artists(con, keys, final_key, groups, ids)
+        starts = {e.id: e.start_date for e in con.rows(Started, 'SELECT id, start_date FROM events')}
+        uses: defaultdict[str, list[Use]] = defaultdict(list)
+        for m in mentions:
+            uses[keys.mention_key[m.id]].append(Use(m.event_id, starts[m.event_id], m.role))
+        write_artists(con, keys, final_key, ids, Named({g.group_key: g.display_name for g in groups}, uses))
         con.insert(
             'merge_reason_definitions',
             ({'reason': s.key, 'definition': s.criterion} for s in states.of('merge_reason')),

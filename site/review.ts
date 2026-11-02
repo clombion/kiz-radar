@@ -12,6 +12,7 @@ import { check, write } from './github.ts';
 import { expires, forgetToken, keepExpires, keepToken, markSettled, remembered, settled, token } from './kept.ts';
 import { get } from './net.ts';
 import {
+  type Booked,
   COMPARED,
   daysLeft,
   differs,
@@ -24,6 +25,7 @@ import {
   nextOpen,
   type Review,
   reviewOf,
+  unjoinable,
 } from './pending.ts';
 import { done, guarded, reportUncaught } from './report.ts';
 import { artistHref } from './routes.ts';
@@ -155,9 +157,10 @@ function tokenDialog(repository: string): HTMLDialogElement {
 
 // ----- queues: the items, where the page is in each, and what is settled
 
-type Tab = 'merges' | 'contested' | 'unknown' | 'festivals' | 'orphaned' | 'timeline';
+type Tab = 'merges' | 'join' | 'contested' | 'unknown' | 'festivals' | 'orphaned' | 'timeline';
 const TABS: readonly (readonly [Tab, string])[] = [
   ['merges', 'Merges'],
+  ['join', 'Join two artists'],
   ['contested', 'Contested homes'],
   ['unknown', 'Unknown homes'],
   ['festivals', 'Festivals'],
@@ -211,9 +214,11 @@ function queue(r: Review, tab: Tab): Queue | null {
   }
   return null;
 }
-const count = (r: Review, tab: Tab): number =>
+// a tab's items waiting, none for the tool that joins any two artists
+const count = (r: Review, tab: Tab): number | null =>
   ({
     merges: r.merges.length,
+    join: null,
     contested: homes(r, true).length,
     unknown: homes(r, false).length,
     festivals: r.festivals.length,
@@ -594,7 +599,101 @@ function queueView(q: Queue): Kid {
 }
 
 const when = (s: string) => s.slice(0, 16).replace('T', ' ');
+// ----- joining any two artists: a search for each side, then the merge claim that makes them one
+
+const SHOWN = 8; // the matches a side's search lists
+const picked: [Booked | null, Booked | null] = [null, null];
+
+function bookedCard(a: Booked, change: () => void): Kid {
+  return h(
+    'div',
+    {},
+    h('h3', {}, a.name),
+    h('p', { class: ['small', 'muted'] }, `${a.kind}, ${plural(a.bookings, 'booking')} · `, h('code', {}, a.key)),
+    h('p', { class: 'small' }, a.latest.join(' · ') || '—'),
+    button({ class: 'link', onclick: change }, 'Choose another'),
+  );
+}
+
+function sidePicker(r: Review, n: 0 | 1): HTMLElement {
+  const chosen = picked[n];
+  const title = n === 0 ? 'One name' : 'The other name';
+  if (chosen)
+    return h(
+      'article',
+      { class: 'country-row' },
+      h('h4', {}, title),
+      bookedCard(chosen, () => {
+        picked[n] = null;
+        render();
+      }),
+    );
+  const list = h('ol', { class: 'review-rows' });
+  const search = h('input', { type: 'search', placeholder: `Find among ${r.artists.length}…`, 'aria-label': title });
+  const show = () => {
+    const f = fold(search.value.trim());
+    const found = f === '' ? [] : r.artists.filter((a) => fold(a.name).includes(f)).slice(0, SHOWN);
+    list.replaceChildren(
+      ...found.map((a) =>
+        h(
+          'li',
+          {},
+          button(
+            {
+              class: ['search-row', 'review-row'],
+              onclick: () => {
+                picked[n] = a;
+                render();
+              },
+            },
+            h(
+              'span',
+              { class: 'what' },
+              h('span', { class: 'name' }, a.name),
+              h('span', { class: 'sub' }, `${a.kind}, ${plural(a.bookings, 'booking')} · ${a.latest[0] ?? ''}`),
+            ),
+          ),
+        ),
+      ),
+    );
+  };
+  search.addEventListener('input', show);
+  return h('article', { class: 'country-row' }, h('h4', {}, title), h('div', { class: 'toolbar' }, search), list);
+}
+
+function joinView(r: Review): Kid {
+  const [a, b] = picked;
+  const why = a && b ? unjoinable(a, b) : null;
+  const group = a?.kind === KEY.artist_kind.GROUP || b?.kind === KEY.artist_kind.GROUP;
+  return [
+    h('div', { class: 'review-grid' }, sidePicker(r, 0), sidePicker(r, 1)),
+    a && b
+      ? h(
+          'article',
+          { class: ['country-row', 'review-card'] },
+          h('h2', {}, a.name, h('span', { class: 'muted' }, ' and '), b.name),
+          why === null
+            ? [
+                group
+                  ? h(
+                      'p',
+                      { class: ['small', 'muted'] },
+                      'A name several people share is a group: list it in pipeline/extract/groups.csv rather than merge one member into it.',
+                    )
+                  : null,
+                decision(`merge ${a.key <= b.key ? `${a.key} ${b.key}` : `${b.key} ${a.key}`}`, {
+                  options: [['merge', 'One artist', () => `${a.name} / ${b.name}: one artist, under two names`]],
+                  claim: (_, note) => mergeClaim({ keys: [a.key, b.key], decision: 'merge', note, at: new Date() }),
+                }),
+              ]
+            : h('p', {}, why),
+        )
+      : null,
+  ];
+}
+
 function listView(r: Review, tab: Tab): Kid {
+  if (tab === 'join') return joinView(r);
   if (tab === 'festivals')
     return h(
       'div',
@@ -652,6 +751,7 @@ function listView(r: Review, tab: Tab): Kid {
 }
 
 const ABOUT: Readonly<Record<Tab, string>> = {
+  join: 'Two artists the matching never paired: one who changed their name, or goes by another as a DJ. Find each, then say they are one.',
   merges: 'Pairs the merge review could not settle, which no claim of yours decides: one artist, or two.',
   contested: 'Artists whose line-ups state two or more countries equally often: which one is home.',
   unknown: 'Artists booked whose home no line-up states, most booked first.',
@@ -682,7 +782,7 @@ function render(): void {
           { href: `#${tab}/1`, class: tab === at.tab && 'active', 'aria-current': tab === at.tab ? 'page' : null },
           words,
           ' ',
-          h('small', { class: 'num' }, String(count(r, tab))),
+          count(r, tab) === null ? null : h('small', { class: 'num' }, String(count(r, tab))),
         ),
       ),
     );

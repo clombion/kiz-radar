@@ -128,6 +128,18 @@ create table artist_aliases (
     mentions integer not null,
     primary key (artist_id, alias)
 ) strict, without rowid;
+create table artist_names (  -- the names the artist's page says: a rename, or the names each role knows them by
+    artist_id integer not null references artists(id) deferrable initially deferred,
+    match_key text not null,
+    name text not null,
+    roles text not null,
+    first_date text not null,
+    last_date text not null,
+    festivals integer not null,
+    renamed integer not null check (renamed in (0, 1)),
+    as_roles text,
+    primary key (artist_id, match_key)
+) strict, without rowid;
 create table couple_members (
     couple_id integer not null references artists(id) deferrable initially deferred,
     member_id integer not null references artists(id) deferrable initially deferred,
@@ -529,11 +541,11 @@ class Doc(BaseModel):
     description: str
 
 
-def copied(x: Transaction, table: str) -> None:
-    """A site table's rows from the export's table of its name, column for column."""
+def copied(x: Transaction, table: str, where: str = '1') -> None:
+    """A site table's rows from the export's table of its name, column for column: those where holds (SQL of ours)."""
     t = sqlite_db.name(table)
     columns = ', '.join(map(sqlite_db.name, x.column(str, "select name from pragma_table_info(?, 'main')", (table,))))
-    x.execute(f'insert into {t} ({columns}) select {columns} from src.{t}')  # noqa: S608 (the declared names, quoted)
+    x.execute(f'insert into {t} ({columns}) select {columns} from src.{t} where {where}')  # noqa: S608 (the declared names, quoted)
 
 
 def booked(x: Transaction) -> dict[str, int]:
@@ -968,6 +980,7 @@ def build(src: Path, out: Path) -> Built:
                 x.script(ddl)
             for table in COPIED:
                 copied(x, table)
+            copied(x, 'artist_names', 'renamed = 1 or as_roles is not null')  # the names an artist's page says
             places(x)
             key_id = booked(x)
             fares(x)

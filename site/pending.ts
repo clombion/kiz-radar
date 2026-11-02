@@ -29,6 +29,7 @@ const REVIEW = record({
     }),
   ),
   merges: list(record({ a: SIDE, b: SIDE, shared: int, rationale: text })),
+  artists: list(record({ key: text, name: text, kind: text, bookings: int, latest: list(text) })),
   festivals: list(
     record({
       event_id: int,
@@ -50,6 +51,15 @@ export const reviewOf = (v: unknown): Review => REVIEW(v, 'data/review.json');
 export type Merge = Review['merges'][number];
 export type Home = Review['homes'][number];
 export type Side = Merge['a'];
+export type Booked = Review['artists'][number];
+
+// why two artists can't be joined by a merge, or null when they can: one is the other, or they are of two kinds (a
+// couple is two people, a group several, so neither is one person)
+export function unjoinable(a: Booked, b: Booked) {
+  if (a.key === b.key) return 'They are one artist already.';
+  if (a.kind !== b.kind) return `A ${a.kind} and a ${b.kind} are not one artist.`;
+  return null;
+}
 
 // the rows a pair is compared by: what the merge review weighed, side by side, and whether sides that share nothing
 // there weigh on it (two names are always written differently)

@@ -1129,3 +1129,35 @@ def test_generate_writes_what_differs_and_check_names_it(
     assert capsys.readouterr().out == 'wrote built.md\n'
     monkeypatch.setattr('sys.argv', ['generate', '--check'])
     generate.main()  # nothing differs
+
+
+def uses(*festivals: tuple[int, str, Role]) -> list[resolve_artists.Use]:
+    return [resolve_artists.Use(event_id, start, role) for event_id, start, role in festivals]
+
+
+def test_a_rename_is_a_newer_name_recent_festivals_use_where_the_usual_one_is_at_none() -> None:
+    old = uses((1, '2023-03-01', Role.TEACHER), (2, '2023-06-01', Role.TEACHER), (3, '2024-01-01', Role.TEACHER))
+    new = uses((4, '2026-02-01', Role.TEACHER), (5, '2026-05-01', Role.TEACHER))
+    assert resolve_artists.renamed_key({'p:old': old, 'p:new': new}, 2026) == 'p:new'
+    # one festival with the new name is a one-off, and a usual name still in use is no rename
+    assert resolve_artists.renamed_key({'p:old': old, 'p:new': new[:1]}, 2026) is None
+    still = [*old, *uses((6, '2026-03-01', Role.TEACHER))]
+    assert resolve_artists.renamed_key({'p:old': still, 'p:new': new}, 2026) is None
+
+
+def test_two_names_are_two_when_a_dj_prefix_or_more_than_a_spelling_parts_them() -> None:
+    assert resolve_artists.spelled_apart('DJ Ichigo', 'Ichigo')
+    assert resolve_artists.spelled_apart('DJ Kevin', 'Kevin Djassy')
+    assert not resolve_artists.spelled_apart('Johann Orsinet', 'Johan Orsinet')
+    assert not resolve_artists.spelled_apart('ICHIGO', 'Ichigo')
+
+
+def test_a_person_s_names_by_role_are_kept_only_when_they_are_two_names() -> None:
+    used = {
+        'p:ichigo@dj': uses((1, '2026-01-01', Role.DJ), (2, '2026-02-01', Role.DJ)),
+        'p:ichigo@dance': uses((1, '2026-01-01', Role.TEACHER)),
+    }
+    names = {'p:ichigo@dj': 'DJ Ichigo', 'p:ichigo@dance': 'Ichigo'}
+    assert resolve_artists.role_names(names, used) == {'p:ichigo@dj': [Role.DJ], 'p:ichigo@dance': [Role.TEACHER]}
+    typo = {'p:johann': uses((1, '2026-01-01', Role.DJ)), 'p:johan': uses((2, '2026-02-01', Role.TEACHER))}
+    assert resolve_artists.role_names({'p:johann': 'Johann Orsinet', 'p:johan': 'Johan Orsinet'}, typo) == {}

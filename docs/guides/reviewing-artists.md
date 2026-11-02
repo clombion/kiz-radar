@@ -49,6 +49,20 @@ with `merge` or `separate`. Never edit a claim file; a later claim comes first.
 A name listed alone can stand for different people at different festivals (every solo "Christina" lands in one record):
 a booking claim moves one festival's booking from the key it was filed under to the person it belongs to.
 
+## Several names
+
+One artist can be booked under several names: a DJ name beside a dancer's ("DJ Ichigo" / "Ichigo"), or a new name after
+a rename. A DJ prefix is dropped before names are compared, so names of several words join on their own; a single-word
+name is kept to its role family (many teachers share a first name), so "DJ Abigail" and "Abigail" are a pair for the
+merge review. Names that share nothing are never a pair: join them on the dashboard's **Join two artists** tab, which
+writes a merge claim (a name several people share is a group: `pipeline/extract/groups.csv`).
+
+Once joined, each name keeps its years and roles (the export's `artist_names`). The artist's page says the names each
+role knows a person by when they are two names, not two spellings ("As DJ: DJ Ichigo (since 2026) · as teacher: Ichigo
+(2026)"). The name shown is the one written most often, unless recent festivals renamed them: a newer name at two
+festivals or more of this season and the last, where the usual one is at none; a single misspelling or an edition
+announced far ahead changes nothing. A name only editions to come use reads "booked for" their year.
+
 ## Home countries
 
 The site shows where an artist is from only when a source says so: a home claim, else the one country line-ups state
