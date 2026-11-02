@@ -1,28 +1,12 @@
 // Prices in the visitor's currency: kroner, or euros or dollars when the address says ?cur=eur or ?cur=usd (the
-// footer switches it). Amounts in another currency are converted with the rates table and marked "~". Price steps
-// are round numbers in each currency: for a return flight (the map, a cheap flight in green) and for a trip, the full
-// pass and the flight together (the festival filter).
+// footer switches it). Amounts in another currency are converted with the rates table and marked "~" (currency.ts).
+import { CURRENCIES, type Currency, isCurrency, pricesIn } from './currency.ts';
 import { q, sql } from './db.ts';
 import { button, h } from './dom.ts';
 import { num, str } from './rows.ts';
 
-type Steps = Readonly<{ cheap: number; fair: number }>;
-export type Step = keyof Steps;
-type Currency = 'NOK' | 'EUR' | 'USD';
-const CURRENCIES: Readonly<Record<Currency, { label: string; flight: Steps; trip: Steps }>> = {
-  NOK: { label: 'kr', flight: { cheap: 1500, fair: 2500 }, trip: { cheap: 3000, fair: 5000 } },
-  EUR: { label: '€', flight: { cheap: 150, fair: 250 }, trip: { cheap: 300, fair: 500 } },
-  USD: { label: '$', flight: { cheap: 175, fair: 275 }, trip: { cheap: 350, fair: 550 } },
-};
-const isCurrency = (c: string | undefined): c is Currency => c !== undefined && Object.hasOwn(CURRENCIES, c);
 const asked = new URLSearchParams(location.search).get('cur')?.toUpperCase();
 export const currency: Currency = isCurrency(asked) ? asked : 'NOK';
-// step('flight', 'cheap'), step('trip', 'fair'): in the visitor's currency
-export const step = (what: 'flight' | 'trip', name: keyof Steps): number => CURRENCIES[currency][what][name];
-// whether a euro amount is within a step in the visitor's currency: a cheap flight (green), a fair one; never one
-// with no rate to convert it by
-export const within = (eur: number, what: 'flight' | 'trip', name: keyof Steps): boolean =>
-  (convert(eur) ?? Number.POSITIVE_INFINITY) <= step(what, name);
 
 let rates: Map<string, number> | undefined;
 const rate = (c: string): number | undefined => {
@@ -31,34 +15,7 @@ const rate = (c: string): number | undefined => {
   );
   return rates.get(c);
 };
-// an amount in the visitor's currency, or null when there is no rate for it
-export const convert = (amount: number, from = 'EUR'): number | null => {
-  if (from === currency) return amount;
-  const a = rate(from),
-    b = rate(currency);
-  return a === undefined || b === undefined ? null : (amount / a) * b;
-};
-
-const grouped = (n: number) => Math.round(n).toLocaleString('en-GB').replace(/,/gu, '\u00a0'); // 1 850, kept on one line
-const decimals = (n: number) => (Number.isInteger(n) ? grouped(n) : n.toFixed(2));
-function written(n: number, c: string): string {
-  if (c === 'NOK') return `${grouped(n)} kr`;
-  if (c === 'EUR') return `€${decimals(n)}`;
-  if (c === 'USD') return `$${decimals(n)}`;
-  return `${decimals(n)} ${c}`;
-}
-// an amount converted, as an approximation shows it: whole, and in kroner to the ten
-export const rounded = (n: number): number => (currency === 'NOK' ? Math.round(n / 10) * 10 : Math.round(n));
-// an amount already in the visitor's currency and rounded, as an approximation: "~4 130 kr"
-export const approximately = (n: number): string => `~${written(n, currency)}`;
-// "~1 850 kr" for €160; "€160" when euros are chosen; "160 CHF" when there is no rate to convert with. An approx
-// amount (a flight price, which changes by the hour) reads "~" in every currency.
-export function money(amount: number, from = 'EUR', { approx = false } = {}): string {
-  const n = convert(amount, from);
-  if (n == null) return written(amount, from);
-  if (from === currency) return (approx ? '~' : '') + written(n, currency);
-  return approximately(rounded(n));
-}
+export const { convert, step, within, rounded, approximately, money } = pricesIn(currency, rate);
 
 // "Prices in: kr · € · $": each reloads this page, at the same place, in that currency
 export function currencySwitch(): HTMLElement {

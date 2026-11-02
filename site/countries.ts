@@ -4,7 +4,8 @@
 import { artistCountries } from './artists.ts';
 import { one, q, sql } from './db.ts';
 import { h, segments } from './dom.ts';
-import { leftOut } from './festivals.ts';
+import { cheapestFlights } from './fares.ts';
+import { festivals, leftOut } from './festivals.ts';
 import { money, within } from './money.ts';
 import { artistsHref, changed, countriesHref, festivalsHref, mapHref, readState, showInAddressBar } from './routes.ts';
 import { num, opt, str } from './rows.ts';
@@ -49,18 +50,7 @@ export function countriesView(root: HTMLElement, qs: string): void {
   const { state: st, dropped } = readState(qs, DEFAULTS, { sort: SORTS.map(([v]) => v), all: [0, 1] });
   const withArtists = new Set(artistCountries());
   // the cheapest Fri→Mon return to any of the country's upcoming festivals, and the city it lands in
-  const fares = new Map(
-    q(
-      { country_code: opt(str), airport_city: opt(str), price: num },
-      sql`SELECT country_code, airport_city, price FROM (
-        SELECT e.country_code, e.airport_city, f.price,
-          row_number() OVER (PARTITION BY e.country_code ORDER BY f.price, e.airport_city) AS n
-        FROM event_rows e JOIN fares f ON f.airport = e.airport AND f.depart = e.weekend_friday
-        WHERE e.upcoming AND e.airport != ?
-      ) WHERE n = 1`,
-      [home().code],
-    ).map((r) => [r.country_code, r]),
-  );
+  const fares = cheapestFlights(festivals());
   // "coming up" runs from today to the last listed festival; most are only listed a few months ahead
   const last = one({ d: opt(str) }, sql`SELECT max(start_date) AS d FROM event_rows WHERE upcoming`)?.d ?? null;
   const rows: Country[] = q(

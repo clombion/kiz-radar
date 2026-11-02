@@ -2,16 +2,17 @@
 // (plus "More filters") once the sentence has scrolled away.
 
 import type { ClassName } from './classes.ts';
+import type { Step } from './currency.ts';
 import { addDays, today } from './days.ts';
 import { site } from './db.ts';
 import { button, choices, dropdown, h, type Kid, moreButton, nodes, onResize, own, paged, toggle } from './dom.ts';
 import { eventCard } from './eventcard.ts';
+import { flightEur } from './fares.ts';
 import {
   CHECKED,
   type Checked,
   type Festival,
   festivals,
-  flightEur,
   hasWith,
   isWith,
   leftOut,
@@ -19,7 +20,7 @@ import {
   withPhrase,
 } from './festivals.ts';
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
-import { currency, money, type Step, step } from './money.ts';
+import { currency, money, step } from './money.ts';
 import { friendsIn } from './plans.ts';
 import { done } from './report.ts';
 import { changed, festivalsHref, readState, showInAddressBar } from './routes.ts';

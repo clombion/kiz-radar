@@ -13,6 +13,7 @@ const HOMONYMS = new Set([
   "tabs.ts: 'ahead'", // a view transition's direction
   "countries.ts: 'group'",
   "search.ts: 'group'", // a search group
+  "currency.ts: 'group'", // a number's thousands separator, as Intl.NumberFormat names its part
   "search.ts: 'person'", // a kind of result
   "plans.ts: 'person'",
   "main.ts: 'page'", // aria-current="page"

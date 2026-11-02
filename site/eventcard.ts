@@ -4,7 +4,8 @@
 import { cardDetails, traitItems } from './details.ts';
 import type { Classes, Kid } from './dom.ts';
 import { button, h, own, toggle } from './dom.ts';
-import { type Fare, type Festival, styleLine } from './festivals.ts';
+import type { Fare } from './fares.ts';
+import { type Festival, styleLine } from './festivals.ts';
 import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
 import { approximately, money, within } from './money.ts';

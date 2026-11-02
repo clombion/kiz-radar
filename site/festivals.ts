@@ -2,6 +2,7 @@
 // views share.
 import { q, sql } from './db.ts';
 import { h, type Kid } from './dom.ts';
+import { type Fare, fareKey, fareOf, tripOf } from './fares.ts';
 import { MORE_TRAITS, TRAITS } from './icons.ts';
 import { convert, rounded } from './money.ts';
 import { priceToday } from './passes.ts';
@@ -12,15 +13,10 @@ import { KEY } from './states.ts';
 import { home } from './ui.ts';
 import { type Key, text, where } from './wording.ts';
 
-// Each row with the fare for its weekend, the best-known names on its line-up, its genres (event_stats: its
-// description's and its kizomba-world tags), what its card says of its price today (passes.ts) and the trip: the
-// card's pass plus the flight in the visitor's currency, null when either is unknown or the pass has no price today.
-// how a festival is reached from home: in the home city, with no flight; or by the return flight found for its
-// weekend from its airport, its price in euros and the day it flies back (fares.return)
-export type Fare = { readonly home: true } | { readonly home: false; readonly price: number; readonly back: string };
-// what the flight costs, in euros: nothing from home, null when no fare is known
-export const flightEur = (fare: Fare | null): number | null => (fare === null ? null : fare.home ? 0 : fare.price);
-// a festival as every card has it
+// A festival as every card has it: its row with the fare for its weekend (fares.ts), the best-known names on its
+// line-up, its genres (event_stats: its description's and its kizomba-world tags), what its card says of its price
+// today (passes.ts) and the trip: the card's pass plus the flight in the visitor's currency, null when either is
+// unknown or the pass has no price today.
 export type Festival = Omit<EventRow, 'features'> & {
   depart: string | null;
   features: Set<Key<'feature'>>;
@@ -36,7 +32,7 @@ export type Festival = Omit<EventRow, 'features'> & {
 let cache:
   | {
       heads: Map<number, { id: number; name: string }[]>;
-      fares: Map<string, { price: number; back: string }>;
+      fares: Map<string, { price: number; back: string }>; // by fareKey
       promos: Map<number, { code: string; offer: string | null }>;
     }
   | undefined;
@@ -60,7 +56,7 @@ function details() {
       q(
         { airport: str, depart: str, back: str, price: num },
         sql`SELECT airport, depart, return AS back, price FROM fares`,
-      ).map((f) => [f.airport + f.depart, { price: f.price, back: f.back }]),
+      ).map((f) => [fareKey(f.airport, f.depart), { price: f.price, back: f.back }]),
     );
     const promos = new Map(
       q({ event_id: num, code: str, offer: opt(str) }, sql`SELECT event_id, code, offer FROM event_promos`).map((p) => [
@@ -72,24 +68,10 @@ function details() {
   }
   return cache;
 }
-// the flight to a festival: none from home, else the fare found for its weekend from its airport
-function fareOf(e: EventRow, fares: ReadonlyMap<string, { price: number; back: string }>): Festival['fare'] {
-  if (e.airport === home().code) return { home: true };
-  const flown = e.airport === null || e.weekend_friday === null ? undefined : fares.get(e.airport + e.weekend_friday);
-  return flown === undefined ? null : { home: false, ...flown };
-}
-// the pass and the flight together, in the visitor's currency and rounded as the card shows it (so that a price limit
-// keeps what the card says is within it), when both have a price
-function tripOf(price: Festival['price'], fare: Festival['fare']): number | null {
-  const pass = 'now' in price ? convert(price.now.tier.amount, price.now.tier.currency) : null,
-    eur = flightEur(fare),
-    flight = eur === null ? null : convert(eur);
-  return pass === null || flight === null ? null : rounded(pass + flight);
-}
 export function withDetails(rows: readonly EventRow[]): Festival[] {
   const { heads, fares, promos } = details();
   return rows.map((e) => {
-    const fare = fareOf(e, fares),
+    const fare = fareOf(e, home().code, fares),
       price = priceToday(e);
     return {
       ...e,
@@ -101,7 +83,7 @@ export function withDetails(rows: readonly EventRow[]): Festival[] {
       styles: new Set(e.genres),
       fare,
       price,
-      trip: tripOf(price, fare),
+      trip: tripOf('now' in price ? price.now.tier : null, fare, { convert, rounded }),
     };
   });
 }
