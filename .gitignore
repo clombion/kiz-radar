@@ -15,3 +15,5 @@ public/vendor/
 .coverage.*
 # secrets kept beside the code, such as an API key
 .env
+# the worktrees agents work in
+.claude/worktrees/
