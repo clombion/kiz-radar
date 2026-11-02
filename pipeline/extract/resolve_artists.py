@@ -68,6 +68,7 @@ from collections.abc import Callable, Iterable, Mapping, Sequence
 from collections.abc import Set as AbstractSet
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
+from enum import StrEnum, unique
 from fractions import Fraction
 from typing import NamedTuple, Self
 
@@ -241,8 +242,17 @@ def members_of(name: str, role: Role) -> list[str]:
     return parts
 
 
-def role_family(role: Role) -> str:
-    return 'dj' if role == Role.DJ else 'dance'
+@unique
+class RoleFamily(StrEnum):
+    """What a solo single-word name's key is scoped to (names.SCOPE), by its role: a DJ is not the dancer of that
+    name, and every other role (a teacher, a performer, an MC...) is the dancers'."""
+
+    DJ = 'dj'
+    DANCE = 'dance'
+
+
+def role_family(role: Role) -> RoleFamily:
+    return RoleFamily.DJ if role == Role.DJ else RoleFamily.DANCE
 
 
 def words_of(name: str) -> list[str]:
