@@ -5,12 +5,12 @@ import contextlib
 import dataclasses
 import datetime as dt
 import json
-import sqlite3
 from pathlib import Path
 
 import pytest
 
 from pipeline import audit, data, prompt, tickets_state, tickets_store
+from pipeline.db import Reader
 from pipeline.enums import FirstRead, Model
 from pipeline.records import CsvRow, PageRecipe, Provenance
 from tests.exports import committed, shaped
@@ -107,7 +107,8 @@ def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
         }
         _ = (folder / f'event-{i}.json').write_text(json.dumps(filed))
 
-    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Provenance]]:
+    def answered(pass_name: str, event_ids: set[int]) -> dict[int, tuple[Path, Provenance]]:
+        assert event_ids == {1, 2}  # the festivals audit.refused was given
         if pass_name != 'extract':  # noqa: S105 (a pass is an extraction pass, no password)
             return {}
         return {
@@ -142,13 +143,15 @@ def test_the_audit_exits_1_naming_what_it_found_on_stderr(
     db = shaped(memory())
 
     def festivals(
-        db: sqlite3.Connection, today: str, only: int | None = None, *, every: bool = False
+        db: Reader, today: dt.date, only: int | None = None, *, every: bool = False
     ) -> list[tickets_state.Festival]:
+        assert (only, every) == (None, True)  # the audit reads every festival
         return []
 
     monkeypatch.setattr(audit.tickets_state, 'src_db', lambda: contextlib.nullcontext(db))
 
-    def refused(ids: set[int]) -> list[str]:
+    def refused(event_ids: set[int]) -> list[str]:
+        assert event_ids == set()  # no festival of the empty export has an answer to check
         return ['pages.csv line 2: state: no state']
 
     monkeypatch.setattr(audit, 'refused', refused)

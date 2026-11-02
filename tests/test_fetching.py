@@ -175,7 +175,8 @@ NEW = API | {'image': {'url': POSTER}}  # a festival the export doesn't have yet
 
 @dataclass
 class Site:
-    """kizomba-world as the fake serves it: its event list and each event's page; what it was asked."""
+    """kizomba-world as the fake serves it: its event list and the page of each event it lists; what it was asked.
+    Asked any other address, the test fails."""
 
     listed: Sequence[Mapping[str, object]]
     asked: list[str] = field(default_factory=list[str])
@@ -183,8 +184,9 @@ class Site:
 
     def get(self, url: str) -> Served | Declined:
         self.asked.append(url)
-        if url.startswith(f'{scrape.SITE}/wp-json/'):
+        if url.startswith(f'{scrape.SITE}/wp-json/tribe/events/v1/events?'):
             return Served(json.dumps({'events': self.listed, 'next_rest_url': None}).encode())
+        assert url in {e['url'] for e in self.listed}, f'{url} is no page the site lists'
         if self.down:
             return Declined(CallCause.TRANSIENT, f'{url}: HTTP 503')
         return Served(PAGE.encode())
@@ -288,8 +290,10 @@ def test_a_request_the_site_is_busy_for_is_tried_again(
     answers: list[int | str], tries: int, outcome: int | CallCause, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     left = list(answers)
+    page = 'https://kizomba-world.com/event/x/'
 
-    def get(url: str, **_: object) -> Status:
+    def get(url: str, *, impersonate: str, timeout: float) -> Status:
+        assert (url, impersonate) == (page, 'chrome')
         answer = left.pop(0)
         if isinstance(answer, str):
             raise RequestException(answer)
@@ -297,7 +301,7 @@ def test_a_request_the_site_is_busy_for_is_tried_again(
 
     monkeypatch.setattr(scrape.requests, 'get', get)
     monkeypatch.setattr('time.sleep', no_wait)
-    got = scrape.Fetcher().get('https://kizomba-world.com/event/x/')
+    got = scrape.Fetcher().get(page)
     assert len(answers) - len(left) == tries
     assert (got.cause if isinstance(got, Declined) else got.status_code) == outcome
 

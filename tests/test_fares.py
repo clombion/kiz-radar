@@ -71,11 +71,23 @@ def test_due_again_on_its_own_weekday_only(tmp_path: Path, monkeypatch: pytest.M
     assert due(its_day + dt.timedelta(days=8))  # past twice the interval: no longer waits for its day
 
 
-def fli(stdout: str, stderr: str = '') -> Callable[..., subprocess.CompletedProcess[str]]:
+type Run = Callable[..., subprocess.CompletedProcess[str]]
+
+
+def ran(cmd: list[str], capture_output: bool, text: bool, timeout: float, check: bool) -> None:
+    """How fares.search runs fli: its outputs read as text, for TIMEOUT seconds at most, its exit status its own to
+    read; run otherwise, the test fails."""
+    assert (capture_output, text, timeout, check) == (True, True, fares.TIMEOUT, False), cmd
+
+
+def fli(stdout: str, stderr: str = '') -> Run:
     """subprocess.run, as fli answers a search for GLA on FRIDAY: these words on its outputs; asked anything else,
     the test fails."""
 
-    def run(cmd: list[str], **_: object) -> subprocess.CompletedProcess[str]:
+    def run(
+        cmd: list[str], *, capture_output: bool, text: bool, timeout: float, check: bool
+    ) -> subprocess.CompletedProcess[str]:
+        ran(cmd, capture_output, text, timeout, check)
         day = FRIDAY.isoformat()
         assert cmd[cmd.index('dates') + 2 :][:9] == [
             'GLA',
@@ -134,8 +146,11 @@ def test_a_search_reads_fli_s_answer(
 
 
 def test_a_search_that_takes_too_long_gives_no_answer(monkeypatch: pytest.MonkeyPatch) -> None:
-    def run(cmd: list[str], **_: object) -> subprocess.CompletedProcess[str]:
-        raise subprocess.TimeoutExpired(cmd, fares.TIMEOUT)
+    def run(
+        cmd: list[str], *, capture_output: bool, text: bool, timeout: float, check: bool
+    ) -> subprocess.CompletedProcess[str]:
+        ran(cmd, capture_output, text, timeout, check)
+        raise subprocess.TimeoutExpired(cmd, timeout)
 
     monkeypatch.setattr(subprocess, 'run', run)
     assert fares.search('GLA', FRIDAY) == Declined(CallCause.TRANSIENT, f'fli took over {fares.TIMEOUT} s')
@@ -165,7 +180,13 @@ type Searched = fares.Fare | fares.Missed | Declined
 
 
 def searched(found: dict[str, Searched]) -> Callable[[str, dt.date], Searched]:
-    return lambda airport, _: found[airport]
+    """fares.search, as it answers for each airport the weekend two_weekends gives; asked another, the test fails."""
+
+    def search(airport: str, friday: dt.date) -> Searched:
+        assert friday == SOON
+        return found[airport]
+
+    return search
 
 
 def test_a_refresh_keeps_the_fares_found_and_logs_every_search(weekends: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -195,7 +216,8 @@ def test_a_refused_search_is_tried_once_more_then_the_rest_waits(
 ) -> None:
     tries: list[str] = []
 
-    def refused(airport: str, friday: str) -> Declined:
+    def refused(airport: str, friday: dt.date) -> Declined:
+        assert friday == SOON
         tries.append(airport)
         return Declined(CallCause.TRANSIENT, fares.REFUSED)
 

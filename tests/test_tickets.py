@@ -760,8 +760,9 @@ def paging(files: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
         return festival(id=i, links=('https://example.org/a',))
 
     def festivals(
-        db: Reader, today: str, only: int | None = None, *, every: bool = False
+        db: Reader, today: dt.date, only: int | None = None, *, every: bool = False
     ) -> list[tickets_state.Festival]:
+        assert (only, every) == (None, True)  # status(), which reads every festival
         return [festival()]
 
     monkeypatch.setattr(tickets, 'one', one)
@@ -1551,8 +1552,9 @@ def command(
     fest = festival(page=KnownPage(PAGE, None), log=(entry(ROWS),))
 
     def festivals(
-        db: Reader, today: str, only: int | None = None, *, every: bool = False
+        db: Reader, today: dt.date, only: int | None = None, *, every: bool = False
     ) -> list[tickets_state.Festival]:
+        assert only in {None, fest.id}  # the one festival there is, or all of them
         return [fest]
 
     monkeypatch.setattr(tickets, 'festivals', festivals)
