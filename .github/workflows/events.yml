@@ -95,6 +95,10 @@ jobs:
         with:
           mode: take
           name: read
+          paths: >-
+            source/kizomba_events_2026_2027.compact.sqlite pipeline/tickets/pages.csv pipeline/tickets/status.csv
+            pipeline/tickets/log/ pipeline/tickets/reads/ pipeline/tickets/drafts/ pipeline/tickets/disputed/
+            pipeline/tickets/partial/
       - name: Ask Claude about new and changed festivals
         id: ask
         continue-on-error: true
@@ -140,6 +144,10 @@ jobs:
         with:
           mode: take
           name: asked
+          paths: >-
+            source/kizomba_events_2026_2027.compact.sqlite pipeline/tickets/pages.csv pipeline/tickets/status.csv
+            pipeline/tickets/log/ pipeline/tickets/reads/ pipeline/tickets/drafts/ pipeline/tickets/disputed/
+            pipeline/tickets/partial/ pipeline/extract/answers/ pipeline/prompts/asked/ pipeline/spend.csv
       - name: The admin's latest claims, which the commit pins with the export they made
         run: git submodule update --remote claims
       - name: Load the answers and resolve the artists

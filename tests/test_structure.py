@@ -81,6 +81,21 @@ def test_the_actions_take_their_tools_from_mise() -> None:
     assert found == []
 
 
+def test_a_job_takes_from_the_one_before_only_data() -> None:
+    """A job that reads the web hands its work on as a patch, which the next job (with the API key, or the token that
+    pushes) applies: each take names the paths it may change, and none of them holds code, so a patch that changed
+    code the job then runs is refused (.github/actions/handoff)."""
+    take = re.compile(r'mode: take\n\s+name: (?P<name>\S+)\n(?:\s+paths: >-\n(?P<paths>(?:\s{12,}\S.*\n)+))?')
+    takes = [m for p in sorted((ROOT / '.github').rglob('*.yml')) for m in take.finditer(p.read_text(encoding='utf-8'))]
+    assert takes
+    code = re.compile(r'\.(?:py|ts|js|mjs|toml|ya?ml|sh|grit)$|(?:^|/)(?:\.github|\.claude|lint|site|tests)/')
+    for m in takes:
+        paths = (m['paths'] or '').split()
+        assert paths, f'the take of {m["name"]} names no paths'
+        held = [f for path in paths for f in tracked(path) if code.search(f)]
+        assert [path for path in paths if code.search(path)] + held == [], m['name']
+
+
 def test_no_query_takes_its_day_from_the_clock() -> None:
     """The site's queries see the festivals from the day in its today table, which the page sets to the visitor's own;
     a date('now') would be the UTC day, a day off for a visitor past midnight east of Greenwich."""

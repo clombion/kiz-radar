@@ -2,7 +2,10 @@ name: Hand the work on
 description: >-
   Between the jobs of one run, which each start from the commit the run is on: give is what this job changed in
   source/ and pipeline/, as a binary patch against that commit (so a deleted file stays deleted), uploaded as the
-  artifact name; take applies the patch an earlier job gave, under that name, leaving it unstaged.
+  artifact name; take applies the patch an earlier job gave, under that name, leaving it unstaged. The job that gave
+  it read the web, so take refuses a patch that touches anything but the data paths it may write (paths), or makes
+  anything but a plain file: code it changed, or a link out of the data, would run in this job, with its key or
+  token.
 inputs:
   mode:
     description: give or take
@@ -10,6 +13,9 @@ inputs:
   name:
     description: the artifact's name
     required: true
+  paths:
+    description: take, the paths the giving job may change (folders end with /), space-separated
+    required: false
 runs:
   using: composite
   steps:
@@ -34,7 +40,22 @@ runs:
     - name: Apply the changes so far
       if: inputs.mode == 'take'
       shell: bash
+      env:
+        PATHS: ${{ inputs.paths }}
       run: |
         if [ -s "$RUNNER_TEMP/changes.patch" ]; then git apply --index --binary "$RUNNER_TEMP/changes.patch"; fi
+        refused=0
+        while IFS= read -r line; do
+          mode="${line#:* }"; mode="${mode%% *}"; path="${line#*$'\t'}"
+          allowed=0
+          for p in $PATHS; do
+            if [[ "$path" == "$p" || ( "$p" == */ && "$path" == "$p"* ) ]]; then allowed=1; fi
+          done
+          if [[ $allowed == 0 || ( "$mode" != 100644 && "$mode" != 000000 ) ]]; then
+            echo "::error::the handed-on patch changes $path (mode $mode), which the job that gave it may not"
+            refused=1
+          fi
+        done < <(git diff --cached --raw --no-renames)
+        if [[ $refused == 1 ]]; then git reset -q --hard; exit 1; fi
         git diff --cached --stat | tail -1
         git reset -q   # staged by the job that commits, as it chooses
