@@ -27,6 +27,7 @@ from pipeline import (
     export,
     files,
     generate,
+    merge_suggestions,
     prompt,
     records,
     spend,
@@ -1228,3 +1229,22 @@ def test_the_usual_spelling_counts_what_tidies_alike_and_reads_capitals_for_thei
     assert resolve_artists.usual_spelling({'Célia': 1, 'CELIA': 1, 'Celia': 1}) == 'Célia'
     # capitals with accents are as written
     assert resolve_artists.usual_spelling({'GAËLLE': 1, 'Gaélle': 1}) == 'Gaëlle'
+
+
+def test_two_couples_are_paired_by_their_members_keys_as_the_resolution_keys_them(memory: Memory) -> None:
+    """A couple's members are compared by the key resolve_artists gives their names (names.token_key): no DJ in front,
+    no accent, no space, so "Carla & Tony Viser" pairs with "Carla & DJ Tony", and "Dr Kizomba" is not "Kizomba"."""
+    shown = {1: 'Carla', 2: 'Tony Viser', 3: 'Carla', 4: 'DJ Tony', 5: 'Dr Kizomba', 6: 'Laura', 7: 'Kizomba'}
+    couples = {10: (1, 2), 11: (3, 4), 12: (5, 6), 13: (7, 6)}
+    with shaped(memory()).transaction() as tx:
+        tx.insert(
+            'artists', ({'id': i, 'display_name': n, 'kind': 'person', 'match_key': f'p:{i}'} for i, n in shown.items())
+        )
+        tx.insert(
+            'artists', ({'id': c, 'display_name': 'couple', 'kind': 'couple', 'match_key': f'c:{c}'} for c in couples)
+        )
+        tx.insert('couple_members', ({'couple_id': c, 'member_id': m} for c, ms in couples.items() for m in ms))
+        members = merge_suggestions.member_keys(tx, shown)
+    assert members[11] == ['carla', 'tony']
+    assert members[12] == ['drkizomba', 'laura']
+    assert [(i, j) for i, j, _ in merge_suggestions.couple_pairs(members)] == [(10, 11), (12, 13)]

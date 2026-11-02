@@ -19,8 +19,8 @@ Reads artist_mentions (from load_extract.py) and every claim (pipeline/claims.py
   artist_events (view)    every event an artist appears at, directly or as a member of a couple/group
 
 Matching rules:
-  - A name's key: Unicode-compatibility folded (styled letters -> plain), "DJ"/"MC" prefix removed,
-    flags/emoji/punctuation removed, accents removed, case folded, spaces removed.
+  - A name's key: pipeline/names.py token_key (no DJ or MC in front, no flags, emoji, punctuation, accents, case or
+    spaces), the one rule names are keyed and compared by.
   - Dancer, DJ, performer and MC names are split into members on & + and et e y und; organiser, media
     and crew names are never split.
   - Mentions merge automatically only on an exact key. A couple's key is its sorted member keys. A person's
@@ -77,14 +77,13 @@ from pipeline.db import Reader, Transaction
 from pipeline.enums import ArtistKind, ClaimState, MergeDecision, MergeReason, Model, Role, Via
 from pipeline.extract import merge_review, run_log
 from pipeline.extract.prices import COUPLE
-from pipeline.names import norm, sim
+from pipeline.names import PREFIX, clean_display, sim, token_key
 from pipeline.records import Group, MergeQuestion, Record, ReviewMention, today
 from pipeline.text import tidy_name
 
 SPLIT_ROLES = {Role.TEACHER, Role.DJ, Role.PERFORMER, Role.MC}
 ORG_ROLES = {Role.ORGANISER, Role.MEDIA, Role.CREW}
 SEPARATORS = re.compile(r'\s*&\s*|\s*\+\s*|\s+(?:and|et|e|y|und)\s+', re.IGNORECASE)
-PREFIX = re.compile(r'^(?:dj|deejay|d\.j\.|mc)\s+', re.IGNORECASE)
 SHORTEST_NAME = 2  # a member's name key shorter than this is a letter of a name built around "&" ("D&L Beats")
 REVIEWER = Model.CLAUDE_HAIKU_5_5  # the merge review's model (ask.MODEL)
 PAIR = 2  # the keys of a decision on two artists; one key's decides a single name
@@ -226,19 +225,6 @@ TABLES = sqlite_db.declared(
 def country_codes(text: str | None) -> frozenset[str]:
     """ISO 3166 alpha-2 codes for a country as written (countries.codes)."""
     return frozenset(codes(text))
-
-
-def clean_display(name: str) -> str:
-    """The name as a reader would want it shown: plain letters, no flags or emoji."""
-    s = re.sub(r'\([^)]*\)|\[[^\]]*\]', ' ', unicodedata.normalize('NFKC', name))
-    s = ''.join(ch for ch in s if unicodedata.category(ch)[0] in 'LNPZ' or ch in "&+'’")
-    return ' '.join(s.split()).strip(' -–—•·*:,;')
-
-
-def token_key(name: str) -> str:
-    s = PREFIX.sub('', clean_display(name))
-    s = unicodedata.normalize('NFKD', s)
-    return ''.join(ch for ch in s if ch.isalnum() and not unicodedata.combining(ch)).casefold()
 
 
 def members_of(name: str, role: Role) -> list[str]:
@@ -640,7 +626,7 @@ class Candidate(NamedTuple):
     decision: MergeDecision | None
 
 
-SIMILAR = Fraction(22, 25)  # how alike two spellings must be to be a candidate, exactly
+SIMILAR = Fraction(22, 25)  # how alike two keys must be (names.sim, exactly) to be spellings of one name
 SHORTEST = 3  # the shortest name a name can shorten, or begin
 SIMILAR_SHORTEST = 5  # the shortest name compared by spelling
 
@@ -904,7 +890,7 @@ def paired(keys: Keys, a: str, b: str) -> list[tuple[str, str]]:
         return []
 
     def alike(x: str, y: str) -> float:
-        return sim(norm(keys.names[x][0]), norm(keys.names[y][0]))
+        return sim(token_key(keys.names[x][0]), token_key(keys.names[y][0]))
 
     straight = alike(ma[0], mb[0]) + alike(ma[1], mb[1])
     crossed = alike(ma[0], mb[1]) + alike(ma[1], mb[0])
