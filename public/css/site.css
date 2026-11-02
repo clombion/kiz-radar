@@ -2746,39 +2746,304 @@ svg.defs {
   }
 }
 
-/* ---- the review dashboard (review.html) ---- */
-.review-page {
-  max-width: 60rem;
-  margin: 0 auto;
-  padding: var(--gutter);
+/* ---- the review dashboard (review.html): the site's header, sub-navigation, rows and segments; a queue is the item
+   being decided beside a rail of every item ---- */
+.review-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--none);
 }
-.review-section {
-  margin: 2em 0;
+.review-dot.on {
+  background: var(--good);
 }
-.review-list {
+.review-queue {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .review-queue {
+    grid-template-columns: minmax(0, 1fr) 22rem;
+  }
+  .review-rail {
+    position: sticky;
+    top: 8rem;
+    max-height: calc(100svh - 9rem);
+    overflow-y: auto;
+  }
+}
+.review-card {
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+}
+.review-card > * {
+  min-width: 0;
+}
+.review-card h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.review-card p {
+  margin: 0;
+}
+.review-compare {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+.review-compare th,
+.review-compare td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.review-compare thead th {
+  font-weight: 650;
+}
+.review-compare thead th:first-child {
+  width: 9rem;
+}
+@media (max-width: 640px) {
+  .review-compare thead th:first-child {
+    width: 5.5rem;
+  }
+  .review-card {
+    padding: 1rem;
+  }
+  .review-keys {
+    display: none;
+  }
+  .review-write {
+    flex-direction: column;
+  }
+}
+.review-compare tbody th {
+  font-weight: 500;
+  color: var(--muted);
+}
+.review-compare tr.differs td {
+  color: var(--accent);
+  font-weight: 600;
+}
+.review-why {
+  text-wrap: pretty;
+}
+.review-stated {
   list-style: none;
+  margin: 0;
   padding: 0;
-}
-.review-item {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  padding: 0.6em 0.9em;
-  margin: 0.6em 0;
+  display: grid;
+  gap: 0.35rem;
 }
 .review-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--border);
+}
+.review-choices {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5em;
+  gap: 0.5rem;
   align-items: center;
-  margin-top: 0.4em;
 }
-.review-form input[type="text"] {
-  flex: 1 1 16em;
+.review-choices .seg button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 40px;
+  padding: 0 1rem;
+  font-size: 0.95rem;
+  transition:
+    background-color var(--dur-fast) var(--ease-standard),
+    transform var(--dur-fast) var(--ease-standard);
+}
+.review-choices .seg button:active {
+  transform: scale(0.97);
+}
+.review-choice kbd {
+  font: 600 0.75rem var(--font);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0 0.35rem;
+  color: var(--muted);
+}
+.review-choices select {
+  min-height: 44px;
+}
+.review-write {
+  display: flex;
+  gap: 0.5rem;
+}
+.review-note {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  font: inherit;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4em 0.75em;
+}
+.review-write button {
+  flex: none;
+  min-height: 44px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform var(--dur-fast) var(--ease-standard);
+}
+.review-write button:active {
+  transform: scale(0.97);
+}
+.review-write button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.just-picked {
+  animation: review-pick var(--dur-short) var(--ease-out);
+}
+@keyframes review-pick {
+  0% {
+    transform: scale(0.97);
+  }
+  55% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.review-status {
+  line-height: 1.5;
+  min-height: 1.5em;
+  color: var(--muted);
+}
+.review-readonly {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+.review-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+.review-foot .quiet,
+.review-actions .quiet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  background: none;
+  color: var(--accent);
+}
+.review-place {
+  font-variant-numeric: tabular-nums;
+  min-width: 5.5rem;
+  text-align: center;
+}
+.review-keys {
+  margin-left: auto;
+}
+.review-rail .toolbar input {
+  width: 100%;
+}
+.review-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.review-row {
+  width: 100%;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+.review-row:focus-visible {
+  outline: 2px solid var(--accent);
+}
+.review-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+}
+.review-grid h3 {
+  margin: 0;
+}
+.review-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.review-timeline li {
+  display: grid;
+  gap: 0.1rem;
 }
 .review-claim {
   white-space: pre-wrap;
   background: var(--surface-2);
-  border-radius: var(--radius);
-  padding: 0.6em;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin: 0;
+}
+.review-dialog {
+  width: min(34rem, 100% - 32px);
+  border: 0;
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  color: var(--text);
+  padding: 1.5rem;
+}
+.review-dialog::backdrop {
+  background: rgb(var(--shadow-ink) / 0.4);
+}
+.review-dialog h2 {
+  margin-top: 0;
+}
+.review-field {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0.75rem 0;
+}
+.review-field input {
+  font: inherit;
+  min-height: 44px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4em 0.6em;
+}
+.review-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+}
+.review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.review-actions button {
+  min-height: 44px;
 }

@@ -1,27 +1,24 @@
-// The review dashboard's writes: each claim a file of the claims repository, put at the path its digest names
-// (PUT /repos/<repository>/contents/<digest>.json, with no sha), so writing a claim again finds its file there and
-// changes nothing, and two claims never share a file. The token is the admin's (fine-grained, the claims repository
-// only, Contents read and write), kept for this tab only.
+// The review dashboard's requests to GitHub. A claim is written as a file of the claims repository, put at the path its
+// digest names (PUT /repos/<repository>/contents/<digest>.json, with no sha), so writing a claim again finds its file
+// there and changes nothing, and two claims never share a file. A token is checked by asking GitHub whose it is: no
+// request short of a write shows what a fine-grained token may write, so the first claim shows that.
 import { type Claim, claimText, digest } from './claims.ts';
-import { send } from './net.ts';
+import { get, send } from './net.ts';
 
-const TOKEN = 'kiz-radar-claims-token';
 const API = 'https://api.github.com';
+const headers = (auth: string) => ({
+  Accept: 'application/vnd.github+json',
+  Authorization: `Bearer ${auth}`,
+  'X-GitHub-Api-Version': '2022-11-28',
+});
 
-export function token(): string | null {
-  try {
-    return sessionStorage.getItem(TOKEN);
-  } catch {
-    return null; // storage refused (a private window, say): the page asks again
-  }
-}
-export function keepToken(t: string | null): void {
-  try {
-    if (t === null) sessionStorage.removeItem(TOKEN);
-    else sessionStorage.setItem(TOKEN, t);
-  } catch {
-    // storage refused: the token lasts as long as the page
-  }
+export type Checked = { status: 'ok'; login: string } | { status: 'refused' };
+export async function check(auth: string): Promise<Checked> {
+  const r = await get(new URL('/user', API), { headers: headers(auth), answers: [401, 403] });
+  if (!r.ok) return { status: 'refused' };
+  const body: unknown = await r.json();
+  const login = typeof body === 'object' && body !== null && 'login' in body ? String(body.login) : '';
+  return { status: 'ok', login };
 }
 
 export type Written = { id: string; status: 'written' | 'there' | 'refused' | 'forbidden' };
@@ -35,11 +32,7 @@ export async function write(repository: string, claim: Claim, auth: string): Pro
   const id = await digest(text);
   const r = await send(new URL(`/repos/${repository}/contents/${id}.json`, API), {
     method: 'PUT',
-    headers: {
-      Accept: 'application/vnd.github+json',
-      Authorization: `Bearer ${auth}`,
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
+    headers: headers(auth),
     body: JSON.stringify({ message: `Claim ${id}: ${claim.field} (review dashboard)`, content: base64(text) }),
     answers: [401, 403, 404, 422],
   });

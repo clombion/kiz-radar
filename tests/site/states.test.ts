@@ -23,6 +23,9 @@ const HOMONYMS = new Set([
   'sentence.ts: full pass', // the price limit's own sum: pass and flight
   "festivals.ts: 'now'", // a price line with today's tier ('now' in price)
   "pricing.ts: 'door'", // pass_tiers' door column
+  "review.ts: 'none'", // no token
+  "review.ts: 'contested'", // a queue, named in the address
+  "review.ts: 'day'", // a token's days left
 ]);
 
 // every words of the table, and each form of them, as the fragments a page could compose: whole words in quotes, and

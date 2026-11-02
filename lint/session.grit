@@ -1,6 +1,6 @@
 language js
 
 `sessionStorage` as $use where {
-  $filename <: not r".*/github\.ts",
-  register_diagnostic(span=$use, message="Only github.ts touches sessionStorage: the admin's token, for the tab alone.")
+  $filename <: not r".*/kept\.ts|.*/tests/.*",
+  register_diagnostic(span=$use, message="Only kept.ts touches sessionStorage: the admin's token, for the tab alone.")
 }

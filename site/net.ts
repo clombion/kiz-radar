@@ -20,10 +20,14 @@ async function ask(url: URL, init: RequestInit, { signal, answers = [] }: Asked)
 
 export const get = (
   url: URL,
-  { signal, revalidate }: { signal?: AbortSignal; revalidate?: true } = {},
+  { signal, revalidate, headers, answers }: Asked & { revalidate?: true; headers?: Record<string, string> } = {},
 ): Promise<Response> =>
   // no-cache: asked again of the server, which says if it changed
-  ask(url, { cache: revalidate === true ? 'no-cache' : 'default' }, { signal });
+  ask(
+    url,
+    { cache: revalidate === true ? 'no-cache' : 'default', headers: headers ?? {} },
+    { signal, answers: answers ?? [] },
+  );
 
 export const send = (
   url: URL,

@@ -10,19 +10,21 @@ and the orphaned claims it lists are settled in a session (docs/guides/).
     steps      the pipeline's steps, latest first; reads, the latest ticket-page reads
 """
 
-from collections.abc import Sequence
+from collections.abc import Iterable, Sequence
 
 from pydantic import BaseModel, TypeAdapter
 
 from pipeline import countries, states, tickets_store
+from pipeline.countries import codes
 from pipeline.db import Reader
 from pipeline.enums import ClaimSource, ClaimState, FirstRead, HomeBasis, MergeDecision, Status, Waiting
 from pipeline.extract import merge_review
-from pipeline.records import Date, Record, Stamp, StatusRow
+from pipeline.records import Date, Record, ReviewMention, Stamp, StatusRow
 
 REPOSITORY = 'clombion/kiz-radar-claims'  # where the admin's claims are written (pipeline/claims.py, CLAIMS)
 SUBJECT = TypeAdapter(tuple[str, ...])  # what a claim decides, as the export's claims table holds it (claims.subject)
 READS = 40  # the latest ticket-page reads the timeline shows
+EVENTS = 3  # the festivals, countries or spellings an item shows of each kind
 # the states an agent or the admin settles, and what the one who settles each does
 ACTED_ON = {(s.point, s.key): s.owner for s in states.ROWS if s.owner and s.owner.startswith(('agent', 'admin'))}
 
@@ -35,23 +37,36 @@ class Place(Record):
 class Stated(Record):
     code: str
     festivals: int  # the festivals whose line-ups state it next to the artist's name
+    events: tuple[str, ...]  # those festivals, latest first, as many as EVENTS
 
 
 class Home(Record):
+    artist_id: int  # the artist's page on the site
     key: str  # a key a mention produces, which a home claim names
     name: str
     kind: str
     bookings: int
     basis: HomeBasis | None  # contested, or None: no line-up states a country
     stated: tuple[Stated, ...]
+    booked_in: tuple[str, ...]  # where they are booked most, as many as EVENTS: which says nothing of home
+
+
+class Side(Record):
+    """One key of a pair, as its mentions show it: what the merge review weighed."""
+
+    key: str
+    name: str
+    festivals: int
+    roles: tuple[str, ...]
+    stated: tuple[str, ...]  # the countries its line-ups state next to the name
+    booked_in: tuple[str, ...]  # the countries of its festivals
+    written: tuple[str, ...]  # how line-ups write it, as many as EVENTS
 
 
 class Merge(Record):
-    key_a: str
-    key_b: str
-    name_a: str
-    name_b: str
-    evidence: str
+    a: Side
+    b: Side
+    shared: int  # the festivals whose line-ups name both
     rationale: str  # why the merge review was unsure
 
 
@@ -111,8 +126,15 @@ class StatedRow(BaseModel):
     festivals: int
 
 
-class Question(BaseModel):
-    question: str
+class StatedAt(BaseModel):
+    artist_id: int
+    country: str
+    event: str
+
+
+class BookedRow(BaseModel):
+    artist_id: int
+    code: str
 
 
 class ClaimRow(BaseModel):
@@ -123,8 +145,18 @@ class ClaimRow(BaseModel):
     state: ClaimState
 
 
+def firsts[T](rows: Iterable[tuple[int, T]]) -> dict[int, list[T]]:
+    """Each id's values in order, each once, as many as EVENTS."""
+    out: dict[int, list[T]] = {}
+    for i, v in rows:
+        if v not in (kept := out.setdefault(i, [])) and len(kept) < EVENTS:
+            kept.append(v)
+    return out
+
+
 def homes(x: Reader) -> list[Home]:
-    """Each artist booked with no home, or a contested one, named by the least of the keys its mentions produce."""
+    """Each artist booked with no home, or a contested one, named by the least of the keys its mentions produce: the
+    countries line-ups state with the festivals that state them, and where they are booked."""
     rows = x.rows(
         HomeRow,
         """select s.artist_id, min(k.match_key) as key, a.display_name as name, a.kind, s.bookings,
@@ -132,22 +164,58 @@ def homes(x: Reader) -> list[Home]:
         join src.artist_keys k on k.artist_id = s.artist_id and k.produced = 1
         where s.home_country is null group by s.artist_id order by s.bookings desc, a.display_name, key""",
     )
+    said = x.rows(
+        StatedAt,
+        """select ma.artist_id, m.country, e.title as event from src.mention_artists ma
+        join src.artist_mentions m on m.id = ma.mention_id join events e on e.id = m.event_id
+        where m.country is not null and m.country != '' order by e.start_date desc, e.title""",
+    )
+    events: dict[tuple[int, str], list[str]] = {}
+    for r in said:
+        for c in codes(r.country):
+            if r.event not in (kept := events.setdefault((r.artist_id, c), [])) and len(kept) < EVENTS:
+                kept.append(r.event)
     stated: dict[int, list[Stated]] = {}
     for r in x.rows(
         StatedRow, 'select artist_id, country_code as code, festivals from artist_origin order by 1, 3 desc, 2'
     ):
-        stated.setdefault(r.artist_id, []).append(Stated(code=r.code, festivals=r.festivals))
+        stated.setdefault(r.artist_id, []).append(
+            Stated(code=r.code, festivals=r.festivals, events=tuple(events.get((r.artist_id, r.code), [])))
+        )
+    booked = firsts(
+        (b.artist_id, b.code)
+        for b in x.rows(
+            BookedRow, 'select artist_id, country_code as code from artist_countries order by 1, bookings desc, 2'
+        )
+    )
     return [
         Home(
+            artist_id=r.artist_id,
             key=r.key,
             name=r.name,
             kind=r.kind,
             bookings=r.bookings,
             basis=r.basis,
             stated=tuple(stated.get(r.artist_id, [])),
+            booked_in=tuple(booked.get(r.artist_id, [])),
         )
         for r in rows
     ]
+
+
+def side(key: str, name: str, mentions: Sequence[ReviewMention]) -> Side:
+    def each[T](values: Iterable[T | None]) -> tuple[T, ...]:
+        return tuple(dict.fromkeys(v for v in values if v is not None))
+
+    return Side(
+        key=key,
+        name=name,
+        festivals=len({m.event_id for m in mentions}),
+        roles=each(m.role for m in mentions),
+        stated=each(c for m in mentions for c in codes(m.country or '')),
+        booked_in=each(countries.ALIASES.get((m.event_country or '').lower(), m.event_country) for m in mentions),
+        written=each(m.name_as_written for m in mentions)[:EVENTS],
+    )
 
 
 def admin_pairs(rows: Sequence[ClaimRow]) -> set[tuple[str, str]]:
@@ -171,15 +239,13 @@ def merges(x: Reader, decided: set[tuple[str, str]]) -> list[Merge]:
         if r.answer.decision == MergeDecision.UNSURE and (r.key_a, r.key_b) not in decided and q:
             out.append(
                 Merge(
-                    key_a=r.key_a,
-                    key_b=r.key_b,
-                    name_a=q.name_a,
-                    name_b=q.name_b,
-                    evidence=q.evidence,
+                    a=side(q.key_a, q.name_a, q.a),
+                    b=side(q.key_b, q.name_b, q.b),
+                    shared=len({m.event_id for m in q.a} & {m.event_id for m in q.b}),
                     rationale=r.answer.rationale,
                 )
             )
-    return sorted(out, key=lambda m: (m.key_a, m.key_b))
+    return sorted(out, key=lambda m: (m.a.key, m.b.key))
 
 
 def festivals(rows: Sequence[StatusRow]) -> list[Festival]:

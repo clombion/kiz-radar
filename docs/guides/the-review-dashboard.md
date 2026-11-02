@@ -14,24 +14,34 @@ written by `pipeline/review.py` with the site's database). Anyone can read it; o
 
 ## Writing a claim
 
-1. Mint a [fine-grained token](https://github.com/settings/personal-access-tokens/new): repository access to
-   `clombion/kiz-radar-claims` only, the permission Contents read and write and nothing else, 366 days.
-2. Paste it in the Token field and press **Keep**. It is kept for the tab only (sessionStorage) and sent to
-   api.github.com alone, which the page's CSP allows as its one other address.
-3. Fill a form: a home's country, or one artist or two for a pair, and the note saying why. A claim with no note, or a
-   home with no country, is not sent.
+Without a token the page is read-only: it shows each item and what the machine found, and no choice to make.
+
+1. Make a [fine-grained token](https://github.com/settings/personal-access-tokens/new): resource owner `clombion`,
+   repository access to `clombion/kiz-radar-claims` only, the permission Contents read and write and nothing else, and
+   the expiry you like.
+2. Press the token button at the top right, paste the token, enter the day it expires, and press **Check and keep**. The
+   page asks GitHub whose token it is; once GitHub names you, the button says **Can write as clombion** with the days
+   left, and the choices appear. The token is kept for the tab only, unless you tick **Keep it on this device**. GitHub
+   does not tell a page when a token expires, so the page counts down from the day you entered and warns two weeks
+   before it.
+3. Each tab is a queue: one item at a time, with what the machine found (a pair compared side by side, its differing
+   rows marked; the countries line-ups state and the festivals that state them), and beside it the list of all, which
+   its search box narrows. Pick a choice (or press its number), check the note it starts, and press **Write the claim**
+   (or Enter). The button confirms the write and the page moves to the next open item. ← and → move between items, n
+   goes to the next open one, and the address keeps the place.
+
+What a token may write shows only on a write, so the first claim proves it. The items settled since the last build stay
+marked in the browser until the next build lists what is left.
 
 Each claim is written as the file its digest names, `<digest>.json` in the claims repository, the same text and name
 `claims.write` gives it (`tests/site/claims.test.ts` holds every committed claim to that). The claims go one at a time.
 
-| GitHub answers | The form says | Then |
+| GitHub answers | The page says | Then |
 | -- | -- | -- |
 | 201 | written as `<digest>.json` | it reaches the site at the next run of **Refresh events**, or a manual one |
 | 422 | already written | nothing changed: the file at that name is this claim |
-| 401 | the token was refused | it expired or was revoked: mint a new one; the form can be sent again |
-| 403, 404 | the token may not write there | mint one with Contents read and write on the claims repository |
-
-GitHub does not tell a page when a token expires, so the page cannot show it: a refused write is the sign.
+| 401 | the token was refused, and the page turns read-only | it expired or was revoked: make a new one |
+| 403, 404 | the token may not write there, and the page turns read-only | make one with Contents read and write on the claims repository |
 
 ## Why the claims live apart
 

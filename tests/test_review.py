@@ -46,7 +46,7 @@ def test_no_pair_an_admin_decides_is_asked_again(site_db: Path) -> None:
         rows = db.rows(review.ClaimRow, 'select id, subject, claim, source, state from claims')
     decided = review.admin_pairs(rows)
     assert decided
-    assert [(m.key_a, m.key_b) for m in r.merges if (m.key_a, m.key_b) in decided] == []
+    assert [(m.a.key, m.b.key) for m in r.merges if (m.a.key, m.b.key) in decided] == []
 
 
 def test_the_festivals_are_those_an_agent_or_the_admin_settles(site_db: Path) -> None:
