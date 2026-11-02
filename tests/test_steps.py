@@ -18,7 +18,7 @@ from pipeline.claims import HomeClaim, MergeClaim
 from pipeline.db import Reader
 from pipeline.enums import ClaimSource, ClaimState, MergeDecision
 from pipeline.extract import load_extract, resolve_artists, run_log
-from pipeline.records import Json
+from pipeline.records import Group, Json
 from tests import jsons
 from tests.exports import EVERYTHING, EXPORT, Made, committed, content, copied, run, trimmed
 from tests.fakes import AT, Memory
@@ -100,13 +100,18 @@ class Stated(BaseModel):
     state: ClaimState
 
 
-def test_a_claim_naming_a_key_no_mention_produces_is_orphaned_and_decides_nothing(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def resolved_latest(monkeypatch: pytest.MonkeyPatch, keys: int) -> tuple[Path, list[str]]:
+    """The export's latest festivals with line-ups, resolved, and the first keys their mentions produce."""
     src = trimmed(40)
     run(resolve_artists.main, monkeypatch)
     with sqlite_db.opened(src, 'ro') as db:
-        key = db.value(str, 'select match_key from artist_keys where produced order by match_key limit 1')
+        return src, db.column(str, 'select match_key from artist_names order by match_key limit ?', (keys,))
+
+
+def test_a_claim_naming_a_key_no_mention_produces_is_orphaned_and_decides_nothing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    src, [key] = resolved_latest(monkeypatch, 1)
     made = [
         HomeClaim(field='home', key=key, country='PT', made_at=AT, note='n'),
         HomeClaim(field='home', key='p:nomentionnamesthis', country='AO', made_at=AT, note='n'),
@@ -129,6 +134,39 @@ def test_a_claim_naming_a_key_no_mention_produces_is_orphaned_and_decides_nothin
         ClaimState.ORPHANED,
     ]
     assert (homes, merged, artists) == (['PT'], [], 0)  # neither orphan homes, merges or makes an artist
+
+
+class GroupKey(BaseModel):
+    match_key: str
+    produced: bool
+
+
+def test_a_group_key_no_mention_produces_is_marked_and_two_groups_of_one_artist_are_refused_before_a_write(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    src, [alias, member] = resolved_latest(monkeypatch, 2)
+
+    def group(key: str, aliases: str) -> Group:
+        row = {'group_key': key, 'display_name': key, 'members': f'{member};p:gone', 'aliases': aliases, 'note': ''}
+        return Group.model_validate(row)
+
+    Group.write([group('g:one', f'{alias};p:nomentionnamesthis')])
+    run(resolve_artists.main, monkeypatch)
+    keyed = 'select match_key, produced from {} order by match_key'
+    with sqlite_db.opened(src, 'ro') as db:
+        assert db.rows(GroupKey, keyed.format('artist_group_aliases')) == [
+            GroupKey(match_key=alias, produced=True),
+            GroupKey(match_key='p:nomentionnamesthis', produced=False),
+        ]
+        assert db.rows(GroupKey, keyed.format('artist_group_members')) == [
+            GroupKey(match_key=member, produced=True),
+            GroupKey(match_key='p:gone', produced=False),
+        ]
+    once = content(src)
+    Group.write([group('g:one', alias), group('g:two', alias)])
+    with pytest.raises(SystemExit, match=r'line 2 \(g:one, .*\) and line 3 \(g:two, '):
+        run(resolve_artists.main, monkeypatch)
+    assert content(src) == once
 
 
 def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked(site_db: Path) -> None:

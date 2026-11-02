@@ -13,9 +13,9 @@ Reads artist_mentions (from load_extract.py) and every claim (pipeline/claims.py
   artist_merge_decisions  every merge/separate decision applied: the merge claims that decide their pair
   artist_homes            each artist's home country as a home claim gives it
   claims                  every claim, with whether it decides its subject (claim states, pipeline/states.py)
-  artist_group_definitions, artist_group_aliases
-                          the named groups from pipeline/extract/groups.csv: note,
-                          members and the spellings that mean them
+  artist_group_definitions, artist_group_aliases, artist_group_members
+                          the named groups from pipeline/extract/groups.csv: note, the spellings that mean them
+                          and members, each key marked when no mention produces it (orphaned)
   artist_events (view)    every event an artist appears at, directly or as a member of a couple/group
 
 Matching rules:
@@ -39,7 +39,9 @@ mentions' (artist_keys.produced): one naming a key no mention produces any more 
 pipeline/extract/groups.csv names an act that several people perform as (a DJ duo booked under one name):
 group_key, display_name, members and aliases (both ';'-separated match_key values), note. Every alias
 mention becomes a mention of the group, and the group is linked to its members, so each member's events
-include the group's bookings.
+include the group's bookings. A member or alias no mention produces is orphaned, as a claim's key is: reported, marked
+in artist_group_members and artist_group_aliases, the rest of its group standing. Two rows whose aliases are one artist
+(one key, or keys the claims merged) are refused, naming both, before anything is written.
 
 Artist ids are stable: artist_ids keeps every id ever given and the match_key of the artist that has it now (or had
 it last, for an id no artist has). An artist keeps the id of its own key, else the lowest earlier id among the keys
@@ -187,6 +189,13 @@ CREATE TABLE artist_group_definitions (
 CREATE TABLE artist_group_aliases (
     group_key TEXT NOT NULL REFERENCES artist_group_definitions(group_key) DEFERRABLE INITIALLY DEFERRED,
     match_key TEXT NOT NULL,      -- a spelling's key whose mentions count as the group's
+    produced INTEGER NOT NULL CHECK (produced IN (0, 1)),  -- 0: no mention produces it, so it is orphaned
+    PRIMARY KEY (group_key, match_key)
+) STRICT;
+CREATE TABLE artist_group_members (
+    group_key TEXT NOT NULL REFERENCES artist_group_definitions(group_key) DEFERRABLE INITIALLY DEFERRED,
+    match_key TEXT NOT NULL,      -- a member's key, which couple_members links the group to
+    produced INTEGER NOT NULL CHECK (produced IN (0, 1)),  -- 0: no mention produces it, so it is orphaned
     PRIMARY KEY (group_key, match_key)
 ) STRICT;
 """
@@ -320,7 +329,11 @@ TABLE_DOCS = {
     'hash; null when it was decided by hand) and rationale.',
     'artist_group_definitions': 'Named groups defined by hand (a DJ duo booked under one name), with a note; members '
     'are in couple_members.',
-    'artist_group_aliases': "The name keys whose mentions count as a named group's.",
+    'artist_group_aliases': "The name keys whose mentions count as a named group's; produced = 0 for one no "
+    'mention produces, which is orphaned (it means nothing until pipeline/extract/groups.csv names the key the artist '
+    'has now).',
+    'artist_group_members': "Each named group's members by key, as pipeline/extract/groups.csv lists them; produced "
+    '= 0 for one no mention produces, which is orphaned (couple_members links the group to the others).',
     'artist_homes': 'Each artist a home claim says where they are from (pipeline/claims.py): the country, the source '
     'of the claim that decides it, and its note.',
     'claims': 'Every claim (pipeline/claims.py), of every source: its subject and text, when it was made, and its '
@@ -343,17 +356,18 @@ class Claimed:
 
 class Resolved(NamedTuple):
     """What resolving the mentions came to: how many mentions, artists of each kind, candidates listed, same-name
-    pairs kept apart for want of evidence, and named groups."""
+    pairs kept apart for want of evidence, named groups, and the keys of theirs no mention produces."""
 
     mentions: int
     kinds: Mapping[str, int]
     candidates: int
     unsupported: int
     groups: int
+    orphaned_group_keys: int
 
 
 def record_steps(con: Transaction, resolved: Resolved, decided: Claimed) -> None:
-    n_mentions, kinds_count, n_candidates, n_unsupported, n_groups = resolved
+    n_mentions, kinds_count, n_candidates, n_unsupported, n_groups, n_orphaned = resolved
     run_log.document(con, TABLE_DOCS, 'pipeline/extract/resolve_artists.py')
     if made := merge_review.current():
         hashes = sorted({r.prompt for r in made})
@@ -390,13 +404,14 @@ def record_steps(con: Transaction, resolved: Resolved, decided: Claimed) -> None
             inputs='table artist_mentions; the claims (pipeline/claims.py); pipeline/extract/groups.csv',
             outputs='tables artists, artist_aliases, artist_keys, couple_members, mention_artists, '
             'artist_merge_candidates, merge_reason_definitions, artist_merge_decisions, artist_homes, claims, '
-            'artist_group_definitions, artist_group_aliases; views event_artists, artist_events',
+            'artist_group_definitions, artist_group_aliases, artist_group_members; views event_artists, artist_events',
             details={
                 'mentions': n_mentions,
                 'artists_by_kind': kinds_count,
                 'claims': dict(Counter(str(v) for v in decided.state.values())),
                 'merge_decisions': dict(Counter(f'{m.source} {m.claim.decision}' for m in decided.merges.values())),
                 'named_groups': n_groups,
+                'named_group_keys_orphaned': n_orphaned,
                 'candidates_listed': n_candidates,
                 'same_name_pairs_kept_apart_without_evidence': n_unsupported,
             },
@@ -909,17 +924,37 @@ def same_members(keys: Keys, uf: UnionFind) -> list[set[str]]:
     return list(same.values())
 
 
+def orphaned(keys: Keys, groups: Iterable[Group]) -> dict[str, list[str]]:
+    """Each named group's members and aliases no mention produces (a re-extraction respelled them), by group: they
+    mean nothing until groups.csv names the key the artist has now, and the rest of the group stands."""
+    return {g.group_key: dead for g in groups if (dead := [k for k in (*g.members, *g.aliases) if k not in keys.kinds])}
+
+
+def contested(keys: Keys, uf: UnionFind, groups: Sequence[Group]) -> list[str]:
+    """The groups.csv rows whose aliases are one artist with another row's (the same key, or keys the claims merged):
+    each such pair of rows, by line, which no run can fold into one group or the other."""
+    rows: defaultdict[str, list[tuple[int, Group, str]]] = defaultdict(list)
+    for line, g in enumerate(groups, 2):  # the header is line 1
+        for a in g.aliases:
+            if a in keys.kinds:
+                rows[uf.find(a)].append((line, g, a))
+    return [
+        f'{Group.FILE} line {la} ({ga.group_key}, alias {a}) and line {lb} ({gb.group_key}, alias {b}): one artist,'
+        ' which one group can take'
+        for found in rows.values()
+        for (la, ga, a), (lb, gb, b) in itertools.combinations(found, 2)
+        if ga.group_key != gb.group_key
+    ]
+
+
 def final_keys(keys: Keys, uf: UnionFind, groups: Iterable[Group]) -> dict[str, str]:
     """Each key's artist: its named group, its couple re-keyed from its members' artists, or the key it was merged
-    into. Named groups fold in their alias keys and are linked to their members."""
+    into. Named groups fold in their alias keys (none contested: one artist's keys fold into one group) and are linked
+    to their members."""
     group_keys: set[str] = set()
     for g in groups:
-        gk = g.group_key
-        group_keys.add(gk)
-        aliases = [a for a in g.aliases if a in keys.kinds]
-        if taken := sorted({uf.find(a) for a in aliases} & (group_keys - {gk})):
-            sys.exit(f'{gk}: its aliases are already the group {", ".join(taken)}')
-        uf.absorb(gk, aliases)
+        group_keys.add(g.group_key)
+        uf.absorb(g.group_key, [a for a in g.aliases if a in keys.kinds])
 
     def couple_root(k: str) -> str:
         return 'c:' + '+'.join(sorted(uf.find(m)[2:] for m in keys.members[k]))
@@ -1132,7 +1167,13 @@ def main() -> None:
         decided = claimed(keys, made)
         merges = {pair: MergeDecision(m.claim.decision) for pair, m in decided.merges.items()}
         found, unsupported_same_name = candidates(keys, merges)
-        final_key = final_keys(keys, merged(keys, merges), groups)
+        joined = merged(keys, merges)
+        if refused := contested(keys, joined, groups):
+            sys.exit('\n'.join(refused))  # before anything is written
+        dead_keys = orphaned(keys, groups)
+        for g, dead in dead_keys.items():
+            print(f'{Group.FILE}: {g} names keys no mention produces, orphaned: {", ".join(dead)}', file=sys.stderr)
+        final_key = final_keys(keys, joined, groups)
 
         # keeping the ids artists had, and where the ids no artist has now went
         ids = stable_ids(con, final_key)
@@ -1214,10 +1255,34 @@ def main() -> None:
             ),
         )
         con.insert(
-            'artist_group_aliases', ({'group_key': g.group_key, 'match_key': a} for g in groups for a in g.aliases)
+            'artist_group_aliases',
+            (
+                {'group_key': g.group_key, 'match_key': a, 'produced': int(a in keys.kinds)}
+                for g in groups
+                for a in g.aliases
+            ),
+        )
+        con.insert(
+            'artist_group_members',
+            (
+                {'group_key': g.group_key, 'match_key': m, 'produced': int(m in keys.kinds)}
+                for g in groups
+                for m in g.members
+            ),
         )
         kinds_count = {k.kind: k.n for k in con.rows(Counted, 'SELECT kind, count(*) AS n FROM artists GROUP BY kind')}
-        record_steps(con, Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups)), decided)
+        record_steps(
+            con,
+            Resolved(
+                len(mentions),
+                kinds_count,
+                len(found),
+                unsupported_same_name,
+                len(groups),
+                sum(map(len, dead_keys.values())),
+            ),
+            decided,
+        )
         print(
             f'mentions {len(mentions)} -> artists {sum(kinds_count.values())} {kinds_count};'
             f' candidates {len(found)} ({sum(1 for c in found if c.decision)} reviewed);'

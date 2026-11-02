@@ -470,11 +470,37 @@ def test_an_id_kept_by_the_artist_that_absorbed_its_key_is_that_artists_key(memo
     assert given == {5: 'c:z', 12: 'c:x'}
 
 
-def test_an_alias_two_groups_claim_is_refused() -> None:
-    groups = [duo('g:ab', 'p:absound'), duo('g:ba', 'p:absound')]
-    keys = resolve_artists.keyed(named('AB Sound'), groups)
-    with pytest.raises(SystemExit, match='g:ba: its aliases are already the group g:ab'):
-        _ = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), groups)
+def test_aliases_two_groups_take_are_refused_naming_both_rows() -> None:
+    """One key in two rows, or two keys a claim merged: one artist, which no run can give to both groups."""
+    groups = [duo('g:ab', 'p:absound'), duo('g:ba', 'p:absound'), duo('g:cd', 'p:cdsound'), duo('g:dc', 'p:dcsound')]
+    keys = resolve_artists.keyed(named('AB Sound', 'CD Sound', 'DC Sound'), groups)
+    joined = resolve_artists.merged(keys, {frozenset({'p:cdsound', 'p:dcsound'}): MergeDecision.MERGE})
+    refused = resolve_artists.contested(keys, joined, groups)
+    end = ': one artist, which one group can take'
+    assert refused == [
+        f'{Group.FILE} line 2 (g:ab, alias p:absound) and line 3 (g:ba, alias p:absound){end}',
+        f'{Group.FILE} line 4 (g:cd, alias p:cdsound) and line 5 (g:dc, alias p:dcsound){end}',
+    ]
+    assert resolve_artists.contested(keys, resolve_artists.merged(keys, {}), groups[:1] + groups[2:]) == []
+
+
+def test_a_group_key_no_mention_produces_is_orphaned_and_the_group_stands() -> None:
+    groups = [
+        Group.model_validate(
+            {
+                'group_key': 'g:ab',
+                'display_name': 'AB',
+                'members': 'p:ana@dj;p:gone',
+                'aliases': 'p:absound;p:abgone',
+                'note': '',
+            }
+        )
+    ]
+    keys = resolve_artists.keyed(named('AB Sound', 'Ana'), groups)
+    assert resolve_artists.orphaned(keys, groups) == {'g:ab': ['p:gone', 'p:abgone']}
+    final = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), groups)
+    assert final['p:absound'] == 'g:ab'
+    assert keys.members['g:ab'] == ['p:ana@dj']
 
 
 @pytest.mark.parametrize(
