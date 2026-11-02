@@ -734,8 +734,9 @@ def features(x: Transaction) -> collections.defaultdict[int, set[str]]:
     for f in x.rows(Featured, 'select event_id, feature from event_features'):
         feats[f.event_id].add(f.feature)
     promos = Promo.read()
+    known = set(x.column(int, 'select id from events'))
     for r in promos:
-        if not x.exists('select 1 from events where id = ?', (r.event_id,)):
+        if r.event_id not in known:
             sys.exit(f'promo_codes.csv: no event {r.event_id} ({r.event})')
         feats[r.event_id].add(Feature.PROMO_CODE)
     x.insert(
@@ -804,10 +805,11 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> None:
         ({'person_id': person_id[r.key], 'artist_id': key_id[k]} for r in people for k in r.artist_keys),
     )
     plans_ = PlanRow.read()
+    known = set(x.column(int, 'select id from events'))
     for r in plans_:
         if r.person not in person_id:
             sys.exit(f'plans.csv: no person {r.person} in people.csv')
-        if not x.exists('select 1 from events where id = ?', (r.event_id,)):
+        if r.event_id not in known:
             sys.exit(f'plans.csv: no event {r.event_id} ({r.event})')
     x.insert('plans', ({'person_id': person_id[r.person], 'event_id': r.event_id, 'status': r.status} for r in plans_))
 
@@ -954,10 +956,17 @@ def site_json(x: Reader, built_at: str) -> dict[str, object]:
 
 
 def table_docs(x: Transaction) -> None:
+    """What each table and view holds: the site's own (DOCS), and the export's for the ones it copies."""
     x.insert('table_docs', ({'name': n, 'description': d} for n, d in DOCS.items()))
-    for doc in x.rows(Doc, 'select name, description from src.table_docs'):
-        if x.exists('select 1 from sqlite_master where name=?', (doc.name,)) and doc.name not in DOCS:
-            x.insert('table_docs', [{'name': doc.name, 'description': doc.description}], unless=('name',))
+    made = set(x.column(str, 'select name from sqlite_master'))
+    x.insert(
+        'table_docs',
+        (
+            {'name': doc.name, 'description': doc.description}
+            for doc in x.rows(Doc, 'select name, description from src.table_docs')
+            if doc.name in made and doc.name not in DOCS
+        ),
+    )
 
 
 @dataclass(frozen=True)
