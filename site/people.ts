@@ -35,7 +35,7 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
       onclick: () => {
         const url = location.href,
           title = `${p.name}’s festival plans`;
-        (Reflect.has(navigator, 'share')
+        (typeof navigator.share === 'function'
           ? navigator.share({ title, url })
           : navigator.clipboard.writeText(url).then(() => {
               share.textContent = 'Link copied';
