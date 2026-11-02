@@ -1,10 +1,11 @@
 // What a pass costs on a day: every state of the tier today, of its next change and of the card's price is reached,
 // and each has its words.
 import { expect, test } from 'vitest';
-import type { Pass, Tier } from '../../site/passes.ts';
+import type { Pass } from '../../site/passes.ts';
 import { nextChange, type Priced, priceLine, type TierNow, tierNow } from '../../site/pricing.ts';
 import { KEY } from '../../site/states.ts';
 import { text } from '../../site/wording.ts';
+import { pass, tier } from './samples.ts';
 
 const E: Priced = {
   start_date: '2027-02-05',
@@ -13,31 +14,6 @@ const E: Priced = {
   price_state: KEY.price.PRICED,
   card_pass: 1,
 };
-const tier = (amount: number, k: Partial<Tier> = {}): Tier => ({
-  event_id: 1,
-  pass_no: 1,
-  amount,
-  currency: 'EUR',
-  fee: null,
-  valid_from: null,
-  valid_until: null,
-  door: false,
-  sold_out: false,
-  ...k,
-});
-const pass = (tiers: Tier[], k: Partial<Pass> = {}): Pass => ({
-  event_id: 1,
-  pass_no: 1,
-  kind: KEY.pass_kind.FULL,
-  style: null,
-  label: null,
-  group_size: null,
-  people: KEY.people.ONE,
-  days: null,
-  includes_hotel: false,
-  tiers,
-  ...k,
-});
 const DAY = '2026-11-15';
 // today's tier's price, or null when there is none
 const todays = (now: TierNow) => ('tier' in now ? now.tier.amount : null);

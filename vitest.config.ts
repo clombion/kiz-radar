@@ -10,7 +10,7 @@ export default defineConfig({
       enabled: true,
       provider: 'v8',
       reportsDirectory: '.vitest/coverage', // with vitest's other files: never committed, nothing a test watches
-      include: ['site/{claims,currency,days,fares,fold,json,names,pending,pricing,roles,routes,rows,wording}.ts'],
+      include: ['site/{claims,currency,days,fares,finder,fold,json,names,pending,pricing,roles,routes,rows,wording}.ts'],
       reporter: ['text-summary', 'text'],
       thresholds: { perFile: true, lines: 95, branches: 90, functions: 95, statements: 95 },
     },

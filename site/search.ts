@@ -7,7 +7,8 @@
 
 import { q, site, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
-import { CHECKED, type Checked, type Festival, festivals, hasWith, isDance, WITH, type With } from './festivals.ts';
+import { type Festival, festivals } from './festivals.ts';
+import { CHECKED, type Checked, hasWith, isDance, WITH, type With } from './finder.ts';
 import { fold, words } from './fold.ts';
 import { icon } from './icons.ts';
 import { leaving, modal } from './modal.ts';

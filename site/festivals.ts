@@ -1,9 +1,9 @@
 // The festivals the site works with, in the shape every card expects, and the small helpers the festival
 // views share.
 import { q, sql } from './db.ts';
-import { h, type Kid } from './dom.ts';
+import { h } from './dom.ts';
 import { type Fare, fareKey, fareOf, tripOf } from './fares.ts';
-import { MORE_TRAITS, TRAITS } from './icons.ts';
+import { DANCES } from './finder.ts';
 import { convert, rounded } from './money.ts';
 import { priceToday } from './passes.ts';
 import { type Goer, goersOf } from './plans.ts';
@@ -11,7 +11,7 @@ import type { PriceLine } from './pricing.ts';
 import { EVENT, type EventRow, num, opt, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { home } from './ui.ts';
-import { type Key, text, where } from './wording.ts';
+import { type Key, text } from './wording.ts';
 
 // A festival as every card has it: its row with the fare for its weekend (fares.ts), the best-known names on its
 // line-up, its genres (event_stats: its description's and its kizomba-world tags), what its card says of its price
@@ -95,38 +95,12 @@ export function festivals(): readonly Festival[] {
   return upcoming;
 }
 
-// the genres a card names, in the order pipeline/states.py lists them
-const DANCES = where('genre', 'card');
-const DANCE_KEYS: ReadonlySet<string> = new Set(DANCES);
-export const isDance = (k: string): k is Key<'genre'> => DANCE_KEYS.has(k);
+// the genres a card names, at most four
 export const styleLine = (e: Pick<Festival, 'styles'>): string =>
   DANCES.filter((g) => e.styles.has(g))
     .slice(0, 4)
     .map((g) => text('genre', g))
     .join(' · ');
-
-// What "with" in the Festivals URL can name: a dance or a highlight, by key. Kizomba is on nearly every festival here,
-// so it narrows nothing; taxi dancers and the all-in-one hotel have checkboxes of their own.
-export type With = Key<'genre'> | Key<'feature'>;
-export const WITH = new Map<With, string>([
-  ...DANCES.filter((k) => k !== KEY.genre.KIZOMBA).map((k): [With, string] => [k, text('genre', k)]),
-  ...[...TRAITS, ...MORE_TRAITS]
-    .filter(([k]) => k !== KEY.feature.TAXI_DANCERS)
-    .map(([k, words]): [With, string] => [k, words]),
-]);
-const WITH_KEYS: ReadonlySet<string> = new Set(WITH.keys());
-export const isWith = (k: string): k is With => WITH_KEYS.has(k);
-// how a with filter reads: "Also with Salsa" for a dance (the festivals are Kizomba ones anyway), "With Pool party"
-export const withPhrase = (key: With): Kid[] => [isDance(key) ? 'Also with ' : 'With ', WITH.get(key)];
-export const hasWith = (e: Pick<Festival, 'styles' | 'features'>, key: With): boolean =>
-  isDance(key) ? e.styles.has(key) : e.features.has(key);
-// the highlights the festival list has a checkbox for, as [its address parameter, the feature, whether a festival has
-// it]
-export const CHECKED = [
-  ['taxi', KEY.feature.TAXI_DANCERS, (e: Festival) => e.features.has(KEY.feature.TAXI_DANCERS)],
-  ['allin', KEY.feature.ALL_IN_ONE, (e: Festival) => e.features.has(KEY.feature.ALL_IN_ONE)],
-] as const;
-export type Checked = (typeof CHECKED)[number][0];
 
 // what an address asked that the view has no such choice for, said at the top of the view
 export function leftOut(root: HTMLElement, dropped: readonly string[]): void {

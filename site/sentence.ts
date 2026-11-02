@@ -3,22 +3,12 @@
 
 import type { ClassName } from './classes.ts';
 import type { Step } from './currency.ts';
-import { addDays, today } from './days.ts';
+import { today } from './days.ts';
 import { site } from './db.ts';
 import { button, choices, dropdown, h, type Kid, moreButton, nodes, onResize, own, paged, toggle } from './dom.ts';
 import { eventCard } from './eventcard.ts';
-import { flightEur } from './fares.ts';
-import {
-  CHECKED,
-  type Checked,
-  type Festival,
-  festivals,
-  hasWith,
-  isWith,
-  leftOut,
-  WITH,
-  withPhrase,
-} from './festivals.ts';
+import { type Festival, festivals, leftOut } from './festivals.ts';
+import { CHECKED, type Choices, DEFAULTS, isWith, matches, type Sort, WITH, withPhrase } from './finder.ts';
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
 import { currency, money, step } from './money.ts';
 import { friendsIn } from './plans.ts';
@@ -28,32 +18,6 @@ import { KEY } from './states.ts';
 import { calm, flag, home, loading, scrolling } from './ui.ts';
 import { plural, text } from './wording.ts';
 
-// reach is the step the trip (the full pass and a Fri→Mon return flight) is within, cheap or fair, or '' for any
-// price; unchecked keeps the festivals whose trip is not known within it. with is a dance or highlight picked in the
-// search; friends keeps the festivals that featured people said they're going to.
-type Sort = 'date' | 'fare';
-type Choices = {
-  months: number;
-  reach: '' | Step;
-  country: string;
-  with: string;
-  friends: number;
-  lineup: number;
-  unchecked: number;
-  sort: Sort;
-} & Record<Checked, number>;
-const DEFAULTS: Readonly<Choices> = {
-  months: 6,
-  reach: 'cheap',
-  country: '',
-  with: '',
-  friends: 0,
-  taxi: 0,
-  allin: 0,
-  lineup: 0,
-  unchecked: 0,
-  sort: 'date',
-};
 // every choice at its widest: the defaults with no limit of time or price (the order stays as chosen)
 const { sort: _order, ...UNSORTED } = DEFAULTS;
 const WIDEST = { months: 12, reach: '' } as const;
@@ -116,37 +80,6 @@ const ORDER: readonly (readonly [Sort, string])[] = [
   ['date', 'Soonest first'],
   ['fare', 'Cheapest first'],
 ];
-
-function matches(all: readonly Festival[], s: Readonly<Choices>): Festival[] {
-  const end = addDays(today(), Math.round(s.months * 30.4));
-  const max = limit(s.reach);
-  return all
-    .filter(
-      (e): e is Festival & { depart: string } =>
-        e.depart !== null &&
-        e.depart <= end &&
-        // with a price limit: the trip within it; sold out never; an unknown trip only when asked for
-        (max === null ||
-          (e.price.point === 'card_price' && e.price.key === KEY.card_price.SOLD_OUT
-            ? false
-            : e.trip == null
-              ? Boolean(s.unchecked)
-              : e.trip <= max)) &&
-        (!s.country || e.country_code === s.country) &&
-        (!s.with || (isWith(s.with) && hasWith(e, s.with))) &&
-        (!s.friends || e.goers.some((g) => g.featured)) &&
-        CHECKED.every(([k, , has]) => !s[k] || has(e)) &&
-        e.lineup >= s.lineup,
-    )
-    .sort(
-      s.sort === 'fare'
-        ? (a, b) =>
-            (a.trip ?? 1e9) - (b.trip ?? 1e9) ||
-            (flightEur(a.fare) ?? 1e9) - (flightEur(b.fare) ?? 1e9) ||
-            a.depart.localeCompare(b.depart)
-        : (a, b) => a.depart.localeCompare(b.depart),
-    );
-}
 
 export function sentenceView(
   root: HTMLElement,
@@ -502,8 +435,10 @@ export function sentenceView(
       results.replaceChildren(loading());
       return;
     }
-    const rows = matches(all, s);
-    const widened = rows.length > 0 || (s.months === 12 && !s.reach) ? 0 : matches(all, { ...s, ...WIDEST }).length;
+    const day = today(),
+      rows = matches(all, s, day, limit(s.reach));
+    const widened =
+      rows.length > 0 || (s.months === 12 && !s.reach) ? 0 : matches(all, { ...s, ...WIDEST }, day, null).length;
     live.replaceChildren(...nodes([liveLine(rows, widened)]));
     barCount.textContent = plural(rows.length, 'festival');
     results.replaceChildren(resultList(rows, widened));
