@@ -1092,20 +1092,21 @@ def answered_here() -> Path:
     return data(ANSWERS)
 
 
-def source_file() -> Path:
-    """An export in the test's data folder holding FEST."""
+def source_file(*ids: int) -> Path:
+    """An export in the test's data folder holding FEST, under its own id and these."""
     path = data(export.SOURCE) / 'source.sqlite'
     path.parent.mkdir(parents=True)
     with db.opened(path, 'rwc') as con, shaped(con).transaction() as tx:
-        festival(
-            tx,
-            FEST.id,
-            title=FEST.title,
-            description_text=FEST.description_text,
-            start_date=FEST.start_date,
-            end_date=FEST.end_date,
-            country=FEST.country,
-        )
+        for i in (FEST.id, *ids):
+            festival(
+                tx,
+                i,
+                title=FEST.title,
+                description_text=FEST.description_text,
+                start_date=FEST.start_date,
+                end_date=FEST.end_date,
+                country=FEST.country,
+            )
     return path
 
 
@@ -1130,6 +1131,39 @@ def test_a_festival_is_asked_a_pass_once_while_the_question_stays_the_same(
     run_ask(monkeypatch, client, '--pass', 'prices')
     assert 'festivals to ask about: ' in capsys.readouterr().out
     assert len(client.messages.asked) == 1  # answered to the current prompt: not asked again
+
+
+def test_a_run_whose_questions_got_no_answer_fails_naming_them(
+    answered_here: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A bad key declines the first question and stops the rest: the run exits with every one named, so the
+    workflow's step fails."""
+    _ = source_file(6)
+    client = Client(Cut(status_error(401)), prices_answer('Full pass 80€ until 31.01'))
+    with pytest.raises(SystemExit) as stop:
+        run_ask(monkeypatch, client, '--pass', 'prices')
+    assert str(stop.value.code).startswith('API error 401')
+    assert '2 questions gave no answer (structural 2): 5 prices: ' in str(stop.value.code)
+    assert len(client.messages.asked) == 1
+
+
+def test_a_run_asks_about_as_many_festivals_as_its_limit(
+    answered_here: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    _ = source_file(6, 7)
+    client = Client(prices_answer('Full pass 80€ until 31.01'))
+    run_ask(monkeypatch, client, '--pass', 'prices', '--limit', 1)
+    assert capsys.readouterr().out.startswith(
+        "1 festivals to ask about: {'extract': 0, 'rooms_genres': 0, 'prices': 1}"
+    )
+    assert len(client.messages.asked) == 1
+    assert [p.name for p in (answered_here / 'prices').iterdir()] == ['event-5.json']  # the first by id
+
+
+def test_a_reply_with_no_text_is_no_answer() -> None:
+    out = ask.ask(Client(message('').model_copy(update={'content': []})), JOB)
+    assert isinstance(out, Declined)
+    assert (out.cause, out.why) == (CallCause.STRUCTURAL, 'a reply with no text (message msg_test)')
 
 
 def run_check(monkeypatch: pytest.MonkeyPatch, tmp_path: Path, question: str, answer: str) -> None:

@@ -1357,6 +1357,27 @@ def test_a_runs_page_reads_and_its_first_reads_are_made_apart(
     assert (len(read), len(asked)) == (reads, asks)
 
 
+@pytest.mark.parametrize(('limit', 'asks'), [(None, [7, 8, 9]), (2, [7, 8]), (1, [7])])
+def test_a_run_has_the_models_read_as_many_festivals_as_its_limit(
+    limit: int | None, asks: list[int], memory: Memory, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import anthropic
+
+    read_today = entry(ROWS)
+    asked: list[int] = []
+
+    def models_read(client: object, f: tickets_state.Festival, entry: Read, log: object) -> Declined:
+        asked.append(f.id)
+        return Declined(CallCause.TRANSIENT, 'overloaded')
+
+    monkeypatch.setattr(tickets, 'models_read', models_read)
+    monkeypatch.setattr(anthropic, 'Anthropic', object)
+    run = tickets.Run(memory(), read_today.at.date(), Browsers(), limit, parts=('models',))
+    for i in (7, 8, 9):
+        run.first_reads(festival(id=i, page=KnownPage(PAGE, SITE), log=(read_today,)))
+    assert asked == asks
+
+
 def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_logged_rows(
     memory: Memory, files: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
