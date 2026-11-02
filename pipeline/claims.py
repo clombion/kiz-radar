@@ -19,24 +19,16 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Annotated, Literal, Self
 
-from pydantic import AfterValidator, Discriminator, TypeAdapter, ValidationError, model_validator
+from pydantic import Discriminator, TypeAdapter, ValidationError, model_validator
 
-from pipeline import countries, data, files, names, states
+from pipeline import data, files, states
 from pipeline.enums import ClaimSource, MergeDecision, Waiting
 from pipeline.extract import merge_review
-from pipeline.records import Record, Stamp, Text, digest, errors
+from pipeline.records import CountryCode, Key, Record, Stamp, Text, digest, errors
 
 CLAIMS = 'claims'  # the submodule of clombion/kiz-radar-claims: every admin claim, <its digest>.json
 
 
-def country(code: str) -> str:
-    if code not in countries.NAMES:
-        raise ValueError(f'{code!r} is no country of countries.NAMES')
-    return code
-
-
-Country = Annotated[str, AfterValidator(country)]
-Key = Annotated[str, AfterValidator(names.checked)]  # an artist's key as a mention gives it (names.ArtistKey)
 Decided = Literal[MergeDecision.MERGE, MergeDecision.SEPARATE]  # what a merge claim decides; unsure decides nothing
 
 
@@ -62,7 +54,7 @@ class HomeClaim(Record):
 
     field: Literal['home']
     key: Key
-    country: Country
+    country: CountryCode
     made_at: Stamp
     note: Text
 

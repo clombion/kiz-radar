@@ -36,7 +36,7 @@ from pydantic import (
 )
 from pydantic.fields import FieldInfo
 
-from pipeline import currencies, data, files, names, tables
+from pipeline import countries, currencies, data, files, names, tables
 from pipeline.enums import (
     ExtractedFeature,
     Genre,
@@ -84,6 +84,17 @@ VERBATIM = Verbatim()
 Copied = Annotated[str, Field(min_length=1), VERBATIM]  # a span copied as it is written
 Quote = Annotated[str, Field(min_length=1, max_length=300), VERBATIM]  # a span copied as it is written, a line at most
 Currency = Annotated[str, Field(pattern=r'^[A-Z]{3}$')]  # an ISO 4217 code
+Iata = Annotated[str, Field(pattern=r'^[A-Z]{3}$')]  # an airport's IATA code
+
+
+def country_code(code: str) -> str:
+    if code not in countries.NAMES:
+        raise ValueError(f'{code!r} is no country of countries.NAMES')
+    return code
+
+
+CountryCode = Annotated[str, AfterValidator(country_code)]  # an ISO 3166 alpha-2 code countries.NAMES has
+Key = Annotated[str, AfterValidator(names.checked)]  # an artist's key as a mention gives it (names.ArtistKey)
 RealDay = NewType('RealDay', str)  # a day of the calendar, YYYY-MM-DD or MM-DD; only real_day makes one
 
 
@@ -905,7 +916,7 @@ def keys_text(value: tuple[str, ...]) -> str:
 
 
 type Keys = Annotated[
-    tuple[Annotated[str, AfterValidator(names.checked)], ...],  # each an artist's key (names.ArtistKey)
+    tuple[Key, ...],
     BeforeValidator(split_keys),
     PlainSerializer(keys_text, return_type=str),
 ]  # a;b
@@ -1047,10 +1058,10 @@ class Airport(CsvRow):
 
     FILE = 'pipeline/airports.csv'
 
-    code: str
+    code: Iata
     name: str
     city: str
-    country_code: str
+    country_code: CountryCode
     lat: float
     lon: float
     home: Flag
@@ -1098,7 +1109,7 @@ class Fare(CsvRow):
 
     FILE = 'pipeline/fares.csv'
 
-    airport: str
+    airport: Iata
     depart: Date
     price: Count
     fetched_at: Stamp
@@ -1110,7 +1121,7 @@ class Job(CsvRow):
 
     FILE = 'pipeline/fare_jobs.csv'
 
-    airport: str
+    airport: Iata
     depart: Date
     last_run: Stamp
 
@@ -1181,8 +1192,8 @@ class Suggestion(CsvRow):
 
     FILE = 'pipeline/artist_merge_suggestions.csv'
 
-    keep_key: str  # a key a mention produces, which a merge claim names (pipeline/claims.py)
-    merge_key: str
+    keep_key: Key  # a key a mention produces, which a merge claim names (pipeline/claims.py)
+    merge_key: Key
     keep_name: str
     merge_name: str
     keep_bookings: int

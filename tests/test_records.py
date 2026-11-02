@@ -77,3 +77,53 @@ def test_copied_finds_each_marked_text_by_its_path() -> None:
         ('artists[0].country', '(PT)'),
         ('artists[0].source_line', 'DJ Ana (PT)'),
     ]
+
+
+AIRPORT = {
+    'code': 'OSL',
+    'name': 'Oslo',
+    'city': 'Oslo',
+    'country_code': 'NO',
+    'lat': '60.2',
+    'lon': '11.1',
+    'home': '0',
+}
+FARE = {'airport': 'OSL', 'depart': '2026-11-06', 'price': '120', 'fetched_at': '2026-10-31T11:14:48+00:00'}
+JOB = {'airport': 'OSL', 'depart': '2026-11-06', 'last_run': '2026-10-31T11:14:48+00:00'}
+SUGGESTION = {
+    'keep_key': 'p:ana@dj',
+    'merge_key': 'p:ana@dance',
+    'keep_name': 'DJ Ana',
+    'merge_name': 'Ana',
+    'keep_bookings': '2',
+    'merge_bookings': '1',
+    'keep_countries': 'PT',
+    'merge_countries': 'PT',
+    'countries': 'same',
+    'calendar': 'shared circuit',
+    'calendar_note': '',
+    'similarity': '1.0',
+    'score': '1.15',
+    'reason': 'same name, different keys',
+}
+
+
+@pytest.mark.parametrize(
+    ('record', 'row', 'column', 'value'),
+    [
+        (records.Airport, AIRPORT, 'code', 'osl'),
+        (records.Airport, AIRPORT, 'country_code', 'XX'),
+        (records.Fare, FARE, 'airport', 'OSLO'),
+        (records.Job, JOB, 'airport', 'Os'),
+        (records.Suggestion, SUGGESTION, 'keep_key', 'ana'),
+        (records.Suggestion, SUGGESTION, 'merge_key', 'p:ana dj'),
+    ],
+)
+def test_a_csv_row_refuses_a_value_outside_its_column(
+    record: type[CsvRow], row: dict[str, str], column: str, value: str
+) -> None:
+    """An airport is its IATA code, a country one countries.NAMES has, an artist the key a mention gives: a hand edit
+    that is none is refused where the audit reads the file, not later by the step that uses it."""
+    record.model_validate(record.cells(row))
+    with pytest.raises(ValueError, match=column):
+        record.model_validate(record.cells(row | {column: value}))
