@@ -12,14 +12,16 @@ from pathlib import Path
 import pytest
 from pydantic import BaseModel
 
-from pipeline import build_site_db, data, merge_suggestions, scrape
+from pipeline import build_site_db, claims, data, merge_suggestions, scrape
 from pipeline import db as sqlite_db
+from pipeline.claims import HomeClaim, MergeClaim
 from pipeline.db import Reader
+from pipeline.enums import ClaimSource, ClaimState, MergeDecision
 from pipeline.extract import load_extract, resolve_artists, run_log
 from pipeline.records import Json
 from tests import jsons
 from tests.exports import EVERYTHING, EXPORT, Made, committed, content, copied, run, trimmed
-from tests.fakes import Memory
+from tests.fakes import AT, Memory
 from tests.repository import tracked
 
 # a whole run of a step takes seconds, its runs here a few of them
@@ -91,6 +93,42 @@ def test_resolving_the_artists_again_changes_nothing(tmp_path: Path, monkeypatch
     assert once['artists']
     run(resolve_artists.main, monkeypatch)
     assert content(src) == once
+
+
+class Stated(BaseModel):
+    id: str
+    state: ClaimState
+
+
+def test_a_claim_naming_a_key_no_mention_produces_is_orphaned_and_decides_nothing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    src = trimmed(40)
+    run(resolve_artists.main, monkeypatch)
+    with sqlite_db.opened(src, 'ro') as db:
+        key = db.value(str, 'select match_key from artist_keys where produced order by match_key limit 1')
+    made = [
+        HomeClaim(field='home', key=key, country='PT', made_at=AT, note='n'),
+        HomeClaim(field='home', key='p:nomentionnamesthis', country='AO', made_at=AT, note='n'),
+        MergeClaim(
+            field='merge', keys=(key, 'p:nomentionnamesthis'), decision=MergeDecision.MERGE, made_at=AT, note='n'
+        ),
+    ]
+    claims.write(made)
+    run(resolve_artists.main, monkeypatch)  # the run goes on past the orphans
+    with sqlite_db.opened(src, 'ro') as db:
+        state = {s.id: s.state for s in db.rows(Stated, 'select id, state from claims')}
+        homes = db.column(str, 'select country from artist_homes')
+        merged = db.column(
+            str, "select key_b from artist_merge_decisions where 'p:nomentionnamesthis' in (key_a, key_b)"
+        )
+        artists = db.value(int, "select count(*) from artist_keys where match_key = 'p:nomentionnamesthis'")
+    assert [state[claims.Made(c, ClaimSource.ADMIN).id] for c in made] == [
+        ClaimState.APPLIED,
+        ClaimState.ORPHANED,
+        ClaimState.ORPHANED,
+    ]
+    assert (homes, merged, artists) == (['PT'], [], 0)  # neither orphan homes, merges or makes an artist
 
 
 def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked(site_db: Path) -> None:
