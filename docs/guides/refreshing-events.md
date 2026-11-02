@@ -41,12 +41,20 @@ cost $11.17, $8.71 of it the ticket pages' first reads.
 | a call that can never succeed as made (a bad key) | what was answered before | failed; the run's requests stop |
 | the budget is spent | what was answered before | failed |
 | kizomba-world's Cloudflare refuses the scraper | nothing new; the site keeps the last export | failed |
-| the commit job fails | nothing; the answers are in the `asked` artifact for three days | failed |
+| the claims, the load or the resolve fails in the commit job | the answers, the spend, the prompts asked and the ticket reads, not the export; nothing is started | failed |
+| the commit job fails otherwise (the patch refused, the push) | nothing; the answers are in the `asked` artifact for three days | failed |
 
-When the commit job fails, the paid answers are not lost: download the run's `asked` artifact, apply its `changes.patch`
-to the commit the run was on (`git apply --index --binary`), fix what failed, and run what the commit job runs
-(`mise run load`, `mise run resolve`) before committing; the push starts **Refresh places and rates**, which refreshes
-the merge suggestions from the export pushed.
+When a step between the patch taken and the push fails (the claims' update, `mise run load`, `mise run resolve`), the
+commit job still pushes what was paid for, as the patch gave it: `pipeline/extract/answers/`, `pipeline/prompts/asked/`,
+`pipeline/spend.csv` and `pipeline/tickets/`. Load and resolve write only the export, so these are the patch's own; the
+export and the claims are put back as the run found them first, so the export on `main` stays one that was loaded and
+resolved. Fix what failed; the next run, or `mise run load` and `mise run resolve` by hand, loads what was kept, and its
+push starts **Refresh places and rates**.
+
+When the commit job fails otherwise (the handoff refuses the patch, or the push fails), nothing is pushed: download the
+run's `asked` artifact, apply its `changes.patch` to the commit the run was on (`git apply --index --binary`), fix what
+failed, and run what the commit job runs (`mise run load`, `mise run resolve`) before committing; the push starts
+**Refresh places and rates**, which refreshes the merge suggestions from the export pushed.
 
 ## Fares
 
