@@ -16,6 +16,7 @@ from pathlib import Path
 from pydantic import BaseModel, TypeAdapter
 
 from pipeline import ROOT
+from tests.repository import tracked
 
 NOQA = re.compile(r'# noqa: (?P<rules>[A-Z]+\d+(?:, [A-Z]+\d+)*) \((?P<reason>[^)]+)\)$')
 PYRIGHT = re.compile(r'# pyright: ignore\[(?P<rules>\w+(?:, \w+)*)\]$')
@@ -89,9 +90,22 @@ def site_suppressions(path: Path) -> list[str]:
     return out
 
 
+def biome_files() -> list[str]:
+    """The committed files Biome checks: those biome.jsonc's files.includes names, its globs read as git's."""
+    found = re.search(r'"files": \{ "includes": (\[[^\]]*\])', (ROOT / 'biome.jsonc').read_text(encoding='utf-8'))
+    assert found, 'biome.jsonc names its files on one line'
+    includes = TypeAdapter(list[str]).validate_json(found[1])
+    return tracked(*(f':(exclude){g[1:]}' if g.startswith('!') else f':(glob){g}' for g in includes))
+
+
+def test_the_site_suppressions_are_read_in_every_file_biome_checks() -> None:
+    files = biome_files()
+    assert {'site/main.ts', 'tests/site/states.test.ts', 'public/css/site.css', 'biome.jsonc'} <= set(files)
+    assert 'pnpm-lock.yaml' not in files
+
+
 def test_every_site_suppression_is_allowed() -> None:
-    files = sorted([*ROOT.glob('site/*.ts'), *ROOT.glob('tests/site/*.ts'), *ROOT.glob('public/css/*.css')])
-    found = Counter((p.relative_to(ROOT).as_posix(), rules) for p in files for rules in site_suppressions(p))
+    found = Counter((f, rules) for f in biome_files() for rules in site_suppressions(ROOT / f))
     assert found == SITE_ALLOWED
 
 
