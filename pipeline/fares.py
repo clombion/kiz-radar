@@ -232,6 +232,8 @@ def refresh(budget: int, max_seconds: int) -> None:
 
 
 def save(fares: Mapping[tuple[str, dt.date], Fare], jobs: Mapping[tuple[str, dt.date], Job]) -> None:
+    """Both files, the fares first: a run stopped between them leaves a weekend's new fare beside its old search, so it
+    is searched again, where the other order would keep its old fare (or none) as if the new search had found it."""
     Fare.write(sorted(fares.values(), key=lambda f: (f.airport, f.depart)))
     Job.write(sorted(jobs.values(), key=lambda j: (j.airport, j.depart)))
 
