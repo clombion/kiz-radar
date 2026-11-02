@@ -39,8 +39,9 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list.
 - **Duplicates:** jscpd fails on a block written twice, at the length `.jscpd.json` sets.
-- **Generated files:** `mise run generate` writes `pipeline/enums.py`, `site/states.ts`, `site/classes.ts` and
-  `docs/reference/`; `generate:check` fails when one differs from what it is built from.
+- **Generated files:** `mise run generate` writes `pipeline/enums.py`, `site/states.ts`, `site/classes.ts`,
+  `docs/reference/`, and the home city (`pipeline/airports.csv`'s home) where `public/index.html` and
+  `public/site.webmanifest` name it; `generate:check` fails when one differs from what it is built from.
 
 ## Making changes
 

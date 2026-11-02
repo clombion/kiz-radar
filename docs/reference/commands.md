@@ -36,7 +36,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `format` | Write the formats the checks hold: ruff's on the Python, mdformat's on the Markdown (the prompts left as they are), Biome's on the site |
 | `types:py` | basedpyright, strict, on the pipeline and its tests |
 | `audit` | Every state in the data is one of pipeline/states.py |
-| `generate` | Write the files built from the code: the enums and words of pipeline/states.py, the stylesheet's classes, docs/reference/ |
+| `generate` | Write the files built from the code: the enums and words of pipeline/states.py, the stylesheet's classes, docs/reference/, the home city in the page and the manifest |
 | `generate:check` | The files built from the code still say what it does |
 | `hooks` | Install the git hooks (prek.toml): the quick checks before a commit, every check before a push; and check the claims submodule out |
 | `lint:actions` | The workflows and their actions: actionlint, and zizmor's security rules (.github/zizmor.yml) |

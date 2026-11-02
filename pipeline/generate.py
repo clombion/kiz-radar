@@ -6,16 +6,20 @@
 pipeline/enums.py holds the code's enums of the states and site/states.ts the site's words for them; each is
 written here and nowhere else, so a new state is one row of pipeline/states.py and then this command. site/classes.ts
 names the classes public/css/ defines, the only ones the site's h() takes, so a class is one rule of the stylesheet and
-then this command. docs/reference/ holds the commands, the files and the states (pipeline/reference.py).
+then this command. public/index.html and public/site.webmanifest name the home city (pipeline/airports.csv's home)
+where crawlers and installs read it, without the scripts. docs/reference/ holds the commands, the files and the
+states (pipeline/reference.py).
 """
 
 import argparse
+import html
+import json
 import re
 import sys
 from collections.abc import Callable
 from pathlib import Path
 
-from pipeline import ROOT, files, reference, states
+from pipeline import ROOT, airports, files, reference, states
 
 CSS = ROOT / 'public' / 'css'
 COMMENT = re.compile(r'/\*.*?\*/', re.DOTALL)
@@ -36,10 +40,44 @@ def classes_module() -> str:
     )
 
 
+INDEX = ROOT / 'public' / 'index.html'
+MANIFEST = ROOT / 'public' / 'site.webmanifest'
+HOME_SPAN = re.compile(r'<span data-home-city>([^<]*)</span>')
+HOME_META = re.compile(r'<meta [^>]*\bdata-home-city\b[^>]*>')
+HOME_IN_MANIFEST = re.compile(r'("description": "[^"]* from )([^".]+)')
+
+
+def home_city() -> str:
+    (city,) = [a.city for a in airports.known() if a.home]
+    return city
+
+
+def index_page() -> str:
+    """public/index.html with the home city in each element marked data-home-city: a span's text, and the city a
+    meta tag's content names (the one the page's first span names), for the crawlers that read the page without its
+    scripts."""
+    text = INDEX.read_text(encoding='utf-8')
+    found = HOME_SPAN.search(text)
+    if found is None:
+        sys.exit(f'{INDEX.relative_to(ROOT)} has no <span data-home-city> to name the home city in')
+    was, city = found.group(1), html.escape(home_city())
+    text = HOME_SPAN.sub(lambda _: f'<span data-home-city>{city}</span>', text)
+    return HOME_META.sub(lambda m: m.group(0).replace(was, city), text)
+
+
+def manifest() -> str:
+    """public/site.webmanifest with the home city its description names, for an installed site's listing."""
+    text = MANIFEST.read_text(encoding='utf-8')
+    city = json.dumps(home_city(), ensure_ascii=False)[1:-1]
+    return HOME_IN_MANIFEST.sub(lambda m: m.group(1) + city, text)
+
+
 FILES: dict[Path, Callable[[], str]] = {
     ROOT / 'pipeline' / 'enums.py': states.enums_module,
     ROOT / 'site' / 'states.ts': states.ts_module,
     ROOT / 'site' / 'classes.ts': classes_module,
+    INDEX: index_page,
+    MANIFEST: manifest,
     **reference.PAGES,
 }
 

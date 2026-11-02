@@ -1,5 +1,6 @@
-// Renders public/share-card.png from share-card.html, with the cities of the festivals coming up taken from the site
-// database, and the icons from public/mark.svg: the favicon public/icon.svg (the mark, in light colours on dark tabs),
+// Renders public/share-card.png from share-card.html, with the cities of the festivals coming up and the home city
+// (its airport's place) taken from the site database, and the icons from public/mark.svg: the favicon public/icon.svg
+// (the mark, in light colours on dark tabs),
 // the animated public/loading.svg, and the PNGs.
 //   mise run render:design      (the repository's Playwright and its Chromium, the site database built, uv's Python)
 const { chromium } = require('playwright');
@@ -7,10 +8,11 @@ const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const here = __dirname, site = path.join(here, '..', 'public');
-const places = execFileSync('uv', ['run', '-q', 'python', '-c', `import sqlite3, json, sys
+const drawn = execFileSync('uv', ['run', '-q', 'python', '-c', `import sqlite3, json, sys
 db = sqlite3.connect(sys.argv[1])
-print(json.dumps(db.execute('''select round(avg(lat), 3), round(avg(lon), 3), count(*) from event_rows
-  where upcoming and lat is not null group by city, country_code''').fetchall()))`, path.join(site, 'data', 'kiz.sqlite')]).toString();
+print(json.dumps({'places': db.execute('''select round(avg(lat), 3), round(avg(lon), 3), count(*) from event_rows
+  where upcoming and lat is not null group by city, country_code''').fetchall(),
+  'home': db.execute('select city, lat, lon from airports where home = 1').fetchone()}))`, path.join(site, 'data', 'kiz.sqlite')]).toString();
 
 const mark = fs.readFileSync(path.join(site, 'mark.svg'), 'utf8');
 fs.writeFileSync(path.join(site, 'icon.svg'), mark.replace('</style>',
@@ -26,7 +28,7 @@ fs.writeFileSync(path.join(site, 'loading.svg'), mark.replace('</style>', `
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
-  await page.addInitScript(`window.PLACES = ${places}`);
+  await page.addInitScript(`window.DRAWN = ${drawn}`);
   await page.goto('file://' + path.join(here, 'share-card.html'));
   await page.evaluate(() => Promise.all([document.fonts.ready, window.ready]));
   await page.screenshot({ path: path.join(site, 'share-card.png') });

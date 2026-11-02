@@ -17,7 +17,7 @@ import { sentenceView } from './sentence.ts';
 import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
 import { pill, slide } from './tabs.ts';
-import { dayYear, home, loading, monthYear, scrolling } from './ui.ts';
+import { dayYear, loading, monthYear, scrolling } from './ui.ts';
 
 // the page's own parts, from index.html: one missing is a broken page
 const part = (selector: string): HTMLElement => {
@@ -151,7 +151,7 @@ const toTop = button(
 document.body.append(toTop);
 addEventListener('scroll', () => toggle(toTop, 'shown', scrollY > 2 * innerHeight), { passive: true });
 
-// the page once site.json is in: what the data covers, the home city, search, and the view the address names, then
+// the page once site.json is in: what the data covers, search, and the view the address names, then
 // each address it moves to; a summary that fails to load is said in the page's place
 async function start(): Promise<void> {
   try {
@@ -166,7 +166,6 @@ async function start(): Promise<void> {
   } = site();
   part('#freshness').textContent =
     `It covers ${monthYear(from)} to ${monthYear(to)} and was last updated on ${dayYear(built_at)}.`;
-  for (const el of document.querySelectorAll('[data-home-city]')) el.textContent = home().city;
   part('#currency-switch').replaceWith(currencySwitch());
   initSearch(part('#search-btn'), data);
   addEventListener('hashchange', () => route({ scrollUp: true }));

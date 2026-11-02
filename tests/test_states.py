@@ -15,6 +15,7 @@ from pipeline.enums import PassKind, People, Price, Sales, Style
 from pipeline.extract import prices
 from pipeline.records import LOG_ENTRY, PricedPass, PricedTier, Sale
 from pipeline.states import Disposition, Link, State
+from tests.exports import committed
 
 
 @pytest.mark.parametrize(
@@ -105,6 +106,7 @@ def test_a_prompt_lists_the_states_in_key_order_and_genres_under_their_style() -
 
 
 def test_the_files_written_from_the_table_say_what_it_does() -> None:
+    committed('pipeline/airports.csv')  # the home city the page and the manifest name
     assert {p: p.read_text(encoding='utf-8') for p in generate.FILES} == {p: b() for p, b in generate.FILES.items()}
 
 
