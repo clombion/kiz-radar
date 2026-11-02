@@ -14,7 +14,7 @@ import { done } from './report.ts';
 import { artistHref } from './routes.ts';
 import { KEY, LINK } from './states.ts';
 import { away, calm, dayParts, flightsUrl, home, otherYear, place } from './ui.ts';
-import { type Key, linkOf, type Point, say, text } from './wording.ts';
+import { joined, type Key, linkOf, type Point, say, text } from './wording.ts';
 
 // "23–25 Oct", or "30 Oct – 1 Nov" across a month end: the date is shown once, in the box
 function dateBox(start: string, end: string): HTMLElement {
@@ -224,15 +224,14 @@ export function eventCard(
   const links = e.headliners.map((a) =>
     h('a', { href: artistHref(a.id), class: 'artist', onclick: artistHint.mark }, a.name),
   );
-  const rest = (e.lineup ?? 0) - e.headliners.length;
+  const rest = e.lineup - e.headliners.length;
   const withLine =
     links.length > 0
       ? h(
           'p',
           { class: 'with' },
           'With ',
-          ...links.flatMap((l, i) => (i ? [i === links.length - 1 && rest <= 0 ? ' and ' : ', ', l] : [l])),
-          rest > 0 ? [' and ', toggleBtn(['link', 'more-names'], `${rest} more`)] : null,
+          joined(rest > 0 ? [...links, toggleBtn(['link', 'more-names'], `${rest} more`)] : links),
         )
       : null;
   // up to three features as icon + short word (icons alone are guesswork); the rest are in the details

@@ -137,7 +137,7 @@ function matches(all: readonly Festival[], s: Readonly<Choices>): Festival[] {
         (!s.with || (isWith(s.with) && hasWith(e, s.with))) &&
         (!s.friends || e.goers.some((g) => g.featured)) &&
         CHECKED.every(([k, , has]) => !s[k] || has(e)) &&
-        (e.lineup ?? 0) >= s.lineup,
+        e.lineup >= s.lineup,
     )
     .sort(
       s.sort === 'fare'

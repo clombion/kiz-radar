@@ -58,7 +58,7 @@ function citiesOf(events: readonly Placed[]): City[] {
       ...c,
       home: c.events.some((e) => e.fare?.home === true),
       n: c.events.length,
-      popular: c.events.reduce((sum, e) => sum + (e.popular_artists ?? 0), 0),
+      popular: c.events.reduce((sum, e) => sum + e.popular_artists, 0),
       minFare: fares.length > 0 ? Math.min(...fares) : null,
     };
   });
