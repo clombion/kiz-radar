@@ -741,7 +741,10 @@ def features(x: Transaction) -> collections.defaultdict[int, set[str]]:
         feats[r.event_id].add(Feature.PROMO_CODE)
     x.insert(
         'event_promos',
-        ({'event_id': r.event_id, 'code': r.code.strip(), 'offer': r.offer.strip() or None} for r in promos),
+        (
+            {'event_id': r.event_id, 'code': r.code.strip(), 'offer': r.offer and (r.offer.strip() or None)}
+            for r in promos
+        ),
     )
     # a festival selling full, party or package passes for two or more people has the group_deals highlight
     for e in x.column(

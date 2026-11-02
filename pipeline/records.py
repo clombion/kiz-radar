@@ -1077,7 +1077,7 @@ class Promo(CsvRow):
 
     event_id: int
     code: str
-    offer: str
+    offer: Blank[str]  # what it gives, when known
     event: str
     note: str
 
