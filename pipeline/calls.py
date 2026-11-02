@@ -28,6 +28,12 @@ class Declined:
         return self.cause in STOPS
 
 
+def why(e: BaseException) -> str:
+    """An exception as a failure records it, wherever one is (a Declined's why, a log entry's): its type and the first
+    line of its words ('TimeoutError: Timeout 60000ms exceeded.'), the rest being a browser's call log and the like."""
+    return f'{type(e).__name__}: {next(iter(str(e).splitlines()), "")}'
+
+
 def failed(what: str, declined: Iterable[tuple[object, Declined]]) -> str | None:
     """The message a step exits with when calls gave no answer (None when every one did): how many of what, by
     cause, the first stop's words first, then each one's (the first ten)."""

@@ -32,7 +32,12 @@ script data next to each name, Kizzbee's prices in a JSON attribute keyed by eac
 holding no other match. The fields are the ticket's key (its id on the site, the same on every read), name, price as
 shown, amount, currency, and optionally a booking fee shown apart ("+ €1.00 fee", added to the amount), a second price,
 and a sold-out mark. A free ticket shown as a word ("Free", "Gratuit") costs 0. A currency symbol is read by
-`pipeline/currencies.py`.
+`pipeline/currencies.py`; one that stands for several currencies (`$`, `kr`, `¥`) is the one the recipe's `symbols`
+settle for the page's host (`{"shown": "$", "means": "USD", "hosts": ["www.eventbrite.com"]}`, every host of the recipe
+when `hosts` is left out), and a row showing one they don't settle breaks the recipe. A site that hides its sold-out
+tickets has no sold-out field: a page of it with no rows lists nothing (`empty`), where elsewhere no rows breaks the
+recipe. A sold-out field that reads an attribute has a `match`, and an API recipe's one is anchored at both ends
+(`^false$`), so that it reads sold out from the value, not from there being one.
 
 The recipe also says whether the tickets sit on another address (a widget, built from a pattern in the link or its page:
 Eventbrite's event page leads to its checkout), which sections to click open, whether the site needs a visible browser

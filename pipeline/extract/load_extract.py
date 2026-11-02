@@ -113,7 +113,8 @@ CREATE TABLE pass_tiers (
 ) STRICT;
 CREATE TABLE event_price_notes (
     event_id INTEGER PRIMARY KEY REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-    notes TEXT NOT NULL           -- the description's words, one rule per line
+    notes TEXT NOT NULL           -- the description's words: a JSON list of its rules, each as quoted (a quote
+                                  -- may hold a newline, so no line parts one from the next)
 ) STRICT;
 CREATE TABLE price_status (
     event_id INTEGER PRIMARY KEY REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
@@ -267,7 +268,7 @@ TABLE_DOCS = {
 
 
 def performed_by[E: Entry](got: Mapping[int, Answer[E]]) -> str:
-    """'20 answer files by Claude Code subagent, one batch; 3 answer files by pipeline/extract/ask.py' and the like."""
+    """'577 answer files by pipeline/extract/ask.py (Messages API), one festival' and the like."""
     by: dict[str, set[str]] = {}
     for a in got.values():
         by.setdefault(a.provenance.answered_by, set()).add(str(a.path))
@@ -279,7 +280,7 @@ def page_prices(event_ids: set[int]) -> tuple[dict[int, tickets_store.Written], 
     latest rows (pipeline/tickets_store.py): {event_id: Written}, how many first reads are to another prompt). A page
     read to another prompt is left out, as an answer is, and so is a first read that no longer fits its rows, which
     the ticket run names; a first read of a festival the export no longer has holds nothing for it."""
-    found = tickets_store.recorded()
+    found = tickets_store.recorded(tickets_store.stored())
     return {i: w for i, w in found.written.items() if i in event_ids}, found.other_prompt
 
 
@@ -402,7 +403,7 @@ def load_prices(
     con.insert(
         'event_price_notes',
         [
-            {'event_id': r.priced.event_id, 'notes': '\n'.join(r.priced.rule_quotes)}
+            {'event_id': r.priced.event_id, 'notes': json.dumps(r.priced.rule_quotes, ensure_ascii=False)}
             for r in rows
             if r.priced.rule_quotes
         ],

@@ -12,10 +12,22 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import ROOT, data, prompt, spend, tickets, tickets_reading, tickets_state, tickets_store
+from pipeline import ROOT, calls, data, prompt, spend, tickets, tickets_reading, tickets_state, tickets_store
 from pipeline.calls import Declined
 from pipeline.db import Db, Reader
-from pipeline.enums import CallCause, Model, PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
+from pipeline.enums import (
+    CallCause,
+    Listing,
+    Model,
+    PassKind,
+    Price,
+    Recheck,
+    Sales,
+    SkipReason,
+    Status,
+    Style,
+    Waiting,
+)
 from pipeline.enums import FirstRead as FirstReadState
 from pipeline.extract import answers, load_extract, prices
 from pipeline.read_page import Browsers
@@ -285,7 +297,7 @@ def files() -> Path:
 
 
 def recorded_7() -> tickets_store.Written:
-    found = tickets_store.recorded()
+    found = tickets_store.recorded(tickets_store.stored())
     assert found.problems == []
     return found.written[7]
 
@@ -493,6 +505,20 @@ def test_a_read_that_fails_says_whose_failure_it_is(monkeypatch: pytest.MonkeyPa
             pytest.fail(f'a read with no browser is {other}')
 
 
+def test_a_failure_is_recorded_with_its_type_and_its_first_line(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A browser's error carries its call log after its first line; every failure keeps the type and that line."""
+    from patchright.sync_api import Error
+
+    from pipeline import read_page
+
+    browser = Error('Timeout 60000ms exceeded.\nCall log:\n  - navigating to "https://my.weezevent.com/x"')
+    assert calls.why(browser) == 'Error: Timeout 60000ms exceeded.'
+    got = attempt_with(monkeypatch, error=read_page.UnreachableError(calls.why(browser)))
+    assert why(got) == 'UnreachableError: Error: Timeout 60000ms exceeded.'
+    got = attempt_with(monkeypatch, error=read_page.RecipeError('no element\nCall log:'))
+    assert why(got) == 'the recipe fails on the page: RecipeError: no element'
+
+
 def test_a_good_row_is_read_with_its_currency_code(monkeypatch: pytest.MonkeyPatch) -> None:
     got = attempt_with(monkeypatch, [RAW])
     assert isinstance(got, Read)
@@ -664,7 +690,7 @@ def test_a_model_that_misreads_answers_again_with_the_checkers_lines(files: Path
 def test_a_festival_that_no_longer_fits_its_first_read_is_left_out(files: Path) -> None:
     assert tickets_store.record(7) == []
     tickets_store.append(7, entry(changed(ROWS, 3, amount=128.21, price='€128.21'), at=LATER))
-    found = tickets_store.recorded()
+    found = tickets_store.recorded(tickets_store.stored())
     assert 'the first read needs doing again' in found.problems[0]
     assert found.written == {}
 
@@ -914,7 +940,9 @@ def test_a_ticket_of_embedded_json_is_read_from_its_own_record() -> None:
     assert isinstance(recipe.api, Embedded)
     found = re.search(recipe.api.json_, page)
     assert found is not None
-    rows = [tickets_reading.parsed(r) for r in tickets_reading.json_rows(html.unescape(found[1]), recipe, page, PAGE)]
+    rows = [
+        tickets_reading.parsed(r, {}) for r in tickets_reading.json_rows(html.unescape(found[1]), recipe, page, PAGE)
+    ]
     assert [(r['key'], r['name'], r['amount'], r['currency'], r['sold_out']) for r in rows] == [
         ('1', 'Full Pass Men', 95.0, 'EUR', False),
         ('2', 'Full Pass Women', 90.0, 'EUR', True),
@@ -941,7 +969,7 @@ def test_a_link_in_a_description_leaves_the_punctuation_after_it(memory: Memory)
     db = shaped(memory())
     with db.transaction() as tx:
         exports.festival(tx, 7, description_text='Tickets: https://www.trybooking.com/DCHEZ. See you!')
-    assert tickets_state.links(db, 7) == ['https://www.trybooking.com/DCHEZ']
+    assert tickets_state.links(db) == {7: ['https://www.trybooking.com/DCHEZ']}
 
 
 def test_a_recipe_reads_the_page_or_the_api_never_a_mix() -> None:
@@ -966,12 +994,99 @@ def test_a_recipe_reads_the_page_or_the_api_never_a_mix() -> None:
     assert not valid(page | {'fields': api['fields'], 'row': page['row']})  # page rows read by api fields
 
 
-def test_an_empty_list_a_site_answers_is_an_empty_page_and_no_rows_on_a_page_a_broken_recipe() -> None:
+def test_no_rows_are_an_empty_page_where_a_site_lists_its_tickets_or_hides_sold_out_ones() -> None:
+    """An API's empty list, or a page with no rows on a site that hides sold-out tickets (no sold_out field), lists
+    nothing; no rows on a page that shows its sold-out tickets is a broken recipe."""
     started = tickets_reading.Attempt(AT, PAGE, 'goandance@0123abcd', url=PAGE, http=200)
-    empty = tickets_reading.judged(started, PAGE, PAGE, [], listed=True)
-    assert isinstance(empty, Read)
-    assert (empty.status, empty.rows) == (Status.EMPTY, ())
-    assert tickets_reading.judged(started, PAGE, 'Tickets', []).status == Status.LAYOUT_BROKEN
+    api = tickets_store.sites()['goandance'].recipe
+    page = SITE.recipe
+    assert isinstance(page, PageRecipe)
+    hides = page.model_copy(update={'fields': page.fields.model_copy(update={'sold_out': None})})
+    for recipe, status in ((api, Status.EMPTY), (hides, Status.EMPTY), (page, Status.LAYOUT_BROKEN)):
+        got = tickets_reading.judged(started, PAGE, 'Tickets', [], recipe)
+        assert (got.status, got.rows if isinstance(got, Read) else None) == (
+            status,
+            () if status == Status.EMPTY else None,
+        )
+
+
+def dollar_site(*symbols: dict[str, Json]) -> PageRecipe:
+    """Weezevent's recipe on two hosts, settling the dollar sign as these say."""
+    recipe = jsons.read(ROOT / tickets_store.SITES / 'weezevent.json')
+    assert isinstance(recipe, dict)
+    parsed = RECIPE.validate_json(
+        json.dumps(recipe | {'hosts': ['my.weezevent.com', 'ca.weezevent.com'], 'symbols': list(symbols)})
+    )
+    assert isinstance(parsed, PageRecipe)
+    return parsed
+
+
+@pytest.mark.parametrize(
+    ('symbols', 'page', 'currency'),
+    [
+        ((), PAGE, None),  # $ is no one currency: a recipe that doesn't settle it reads no row
+        (({'shown': '$', 'means': 'USD'},), PAGE, 'USD'),
+        (({'shown': '$', 'means': 'CAD', 'hosts': ['ca.weezevent.com']},), 'https://ca.weezevent.com/x', 'CAD'),
+        (({'shown': '$', 'means': 'CAD', 'hosts': ['ca.weezevent.com']},), PAGE, None),  # settled on another host
+    ],
+)
+def test_a_symbol_of_several_currencies_is_the_one_the_recipe_settles_for_the_host(
+    symbols: tuple[dict[str, Json], ...], page: str, currency: str | None
+) -> None:
+    started = tickets_reading.Attempt(AT, page, 'weezevent@0123abcd', url=page, http=200)
+    got = tickets_reading.judged(
+        started, page, 'Tickets', [RAW | {'price': '$81.03', 'currency': '$'}], dollar_site(*symbols)
+    )
+    if currency is None:
+        assert got.status == Status.LAYOUT_BROKEN
+        assert "currency '$' names USD, CAD" in why(got)
+    else:
+        assert isinstance(got, Read)
+        assert got.rows[0].currency == currency
+
+
+@pytest.mark.parametrize(
+    'symbol',
+    [
+        {'shown': '€', 'means': 'EUR'},  # € is one currency: nothing to settle
+        {'shown': '$', 'means': 'EUR'},  # not one $ names
+        {'shown': '$', 'means': 'USD', 'hosts': ['www.weezevent.com']},  # no host of the recipe
+    ],
+)
+def test_a_recipe_settles_only_a_symbol_of_several_currencies_as_one_of_them_on_its_hosts(
+    symbol: dict[str, Json],
+) -> None:
+    with pytest.raises(ValueError, match=r'symbols|names'):
+        _ = dollar_site(symbol)
+    with pytest.raises(ValueError, match='settled twice'):
+        _ = dollar_site({'shown': '$', 'means': 'USD'}, {'shown': '$', 'means': 'CAD', 'hosts': ['ca.weezevent.com']})
+
+
+@pytest.mark.parametrize(
+    ('site', 'sold_out', 'ok'),
+    [
+        ('kizzbee', {'json': 'is_in_stock', 'match': '^false$'}, True),
+        ('kizzbee', {'json': 'is_in_stock'}, False),  # "true" is text too: every ticket sold out
+        ('kizzbee', {'json': 'is_in_stock', 'match': 'false'}, False),
+        ('goandance', {'json': 'stockLeft', 'match': '0'}, False),  # 10 left would be sold out
+        ('tikoria', {'css': None, 'attr': 'aria-disabled', 'match': '^true$'}, True),
+        ('tikoria', {'css': None, 'attr': 'aria-disabled', 'match': None}, False),  # aria-disabled="false" too
+        ('tikoria', {'css': '.sold-out', 'attr': None, 'match': None}, True),  # a mark found is sold out
+    ],
+)
+def test_a_sold_out_field_reads_sold_out_from_its_value_not_from_any_value(
+    site: str, sold_out: dict[str, Json], ok: bool
+) -> None:
+    recipe = jsons.read(ROOT / tickets_store.SITES / f'{site}.json')
+    fields = jsons.at(recipe, 'fields')
+    assert isinstance(fields, dict)
+    fields['sold_out'] = sold_out
+    try:
+        _ = RECIPE.validate_json(json.dumps(recipe))
+    except ValueError:
+        assert not ok
+    else:
+        assert ok
 
 
 def test_a_page_that_lists_nothing_now_records_no_pass_and_says_so(files: Path) -> None:
@@ -1049,7 +1164,7 @@ def test_a_widget_found_in_the_page_keeps_an_address_that_is_already_its_own(mon
 
 @pytest.mark.parametrize(('price', 'amount'), [('Free', 0.0), ('Gratuit', 0.0), ('€81.03', None)])
 def test_a_free_ticket_costs_0(price: str, amount: float | None) -> None:
-    got = tickets_reading.parsed(RAW | {'price': price, 'amount': None})
+    got = tickets_reading.parsed(RAW | {'price': price, 'amount': None}, {})
     assert got['amount'] == amount
     try:
         _ = Row.model_validate(got)
@@ -1112,7 +1227,7 @@ def test_a_first_read_to_another_prompt_is_never_written(files: Path) -> None:
         tickets_store.save_read(read(prompt_='0' * 16))
     old_read(files)
     assert 'make it again' in tickets_store.record(7)[0]
-    assert tickets_store.recorded() == tickets_store.Recorded({}, [], 1)
+    assert tickets_store.recorded(tickets_store.stored()) == tickets_store.Recorded({}, [], 1)
 
 
 def described(*passes: PricedPass) -> answers.Answer[Priced]:
@@ -1141,6 +1256,10 @@ FIRST_READ_CASES: list[tuple[dict[str, object], FirstReadState]] = [
     ({'disputed': True}, FirstReadState.CURRENT),  # a dispute settled by a current first read
     ({'description': 'New prices.'}, FirstReadState.REDO_DESCRIPTION),
     ({'end_date': dt.date(2027, 2, 8)}, FirstReadState.REDO_FESTIVAL),  # one more day: its passes may differ
+    ({'start_date': dt.date(2027, 2, 4)}, FirstReadState.REDO_FESTIVAL),  # its tiers' dates take their years from it
+    ({'title': 'Fest Bachata Edition'}, FirstReadState.REDO_FESTIVAL),
+    ({'country': 'Austria'}, FirstReadState.REDO_FESTIVAL),
+    ({'styles': (Style.KIZOMBA,)}, FirstReadState.REDO_FESTIVAL),  # a pass's style is one of the festival's
     ({'page': KnownPage('https://my.weezevent.com/y', SITE)}, FirstReadState.REDO_PAGE),  # an agent chose another
     ({'log': (entry((*ROWS, row('6', 'Fullpass Male 140€', 143.59))),)}, FirstReadState.REDO_UNREAD),
     ({'first_read': STAMPED}, FirstReadState.REDO_PROMPT),
@@ -1206,8 +1325,20 @@ def test_a_run_for_named_festivals_reads_only_them(
     monkeypatch.setattr(tickets, 'append', no_append)
     tickets.cmd_run(events(memory(), 6, 7, 8), {8, 6})  # 6 is past: nothing to read there
     assert asked == ['https://shop.example/8']
-    with pytest.raises(SystemExit, match=r'\[9\]'):
+    with pytest.raises(SystemExit, match=r'^no such festival: 9$'):
         tickets.cmd_run(events(memory(), 6, 7, 8), {9})
+
+
+def test_a_run_for_festivals_it_cannot_read_refuses_naming_each_and_why(memory: Memory) -> None:
+    """festivals() leaves out a cancelled festival and one the site no longer lists: a run named only them would do
+    nothing and pass."""
+    db = shaped(memory())
+    with db.transaction() as tx:
+        exports.festival(tx, 7)
+        exports.festival(tx, 8, cancelled=1)
+        exports.festival(tx, 9, listing=Listing.GONE, unlisted_on='2026-10-01')
+    with pytest.raises(SystemExit, match=r'^no such festival: 6; cancelled: 8; no longer listed: 9$'):
+        tickets.cmd_run(db, {6, 7, 8, 9})
 
 
 def test_a_run_reads_every_page_in_the_same_browsers(
@@ -1235,6 +1366,16 @@ def test_a_run_reads_every_page_in_the_same_browsers(
     assert used[0] is used[1]
 
 
+def overloaded(asked: list[int]) -> Callable[[object, tickets_state.Festival, Read, object], Declined]:
+    """tickets.models_read, the models too busy to read: each festival asked about goes in asked."""
+
+    def models_read(client: object, f: tickets_state.Festival, entry: Read, log: object) -> Declined:
+        asked.append(f.id)
+        return Declined(CallCause.TRANSIENT, 'overloaded')
+
+    return models_read
+
+
 @pytest.mark.parametrize(('part', 'reads', 'asks'), [('pages', 1, 0), ('models', 0, 1)])
 def test_a_runs_page_reads_and_its_first_reads_are_made_apart(
     part: tickets.Part, reads: int, asks: int, memory: Memory, monkeypatch: pytest.MonkeyPatch
@@ -1252,16 +1393,28 @@ def test_a_runs_page_reads_and_its_first_reads_are_made_apart(
         read.append(page)
         return read_today
 
-    def models_read(client: object, f: tickets_state.Festival, entry: Read, log: object) -> Declined:
-        asked.append(f.id)
-        return Declined(CallCause.TRANSIENT, 'overloaded')
-
     monkeypatch.setattr(tickets, 'attempt', attempt)
     monkeypatch.setattr(tickets, 'append', no_append)
-    monkeypatch.setattr(tickets, 'models_read', models_read)
+    monkeypatch.setattr(tickets, 'models_read', overloaded(asked))
     monkeypatch.setattr(anthropic, 'Anthropic', object)
     tickets.Run(memory(), read_today.at.date(), Browsers(), parts=(part,)).first_reads(f)
     assert (len(read), len(asked)) == (reads, asks)
+
+
+@pytest.mark.parametrize(('limit', 'asks'), [(None, [7, 8, 9]), (2, [7, 8]), (1, [7])])
+def test_a_run_has_the_models_read_as_many_festivals_as_its_limit(
+    limit: int | None, asks: list[int], memory: Memory, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import anthropic
+
+    read_today = entry(ROWS)
+    asked: list[int] = []
+    monkeypatch.setattr(tickets, 'models_read', overloaded(asked))
+    monkeypatch.setattr(anthropic, 'Anthropic', object)
+    run = tickets.Run(memory(), read_today.at.date(), Browsers(), limit, parts=('models',))
+    for i in (7, 8, 9):
+        run.first_reads(festival(id=i, page=KnownPage(PAGE, SITE), log=(read_today,)))
+    assert asked == asks
 
 
 def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_logged_rows(
@@ -1300,7 +1453,25 @@ def test_passes_alike_in_every_field_load_back_as_the_passes_they_are(
     tickets_store.save_read(read(passes=[one.model_copy(update={'tiers': (t,)}) for t in one.tiers]))
     assert tickets_store.record(7) == []
     loaded = load_extract.page_prices({7})[0][7].answer
-    assert [len(p.tiers) for p in loaded.passes] == [1, 1]
+
+    def priced(amount: float, name: str, *, sold_out: bool) -> PricedPass:
+        sale = Sale(from_=None, until=None, quantity=None, current=False)
+        t = PricedTier(
+            amount=amount, currency='EUR', fee=None, alt=None, sale=sale, sold_out=sold_out, quote=f'{name} €{amount}'
+        )
+        return PricedPass(
+            kind=PassKind.FULL, style=None, label_quote='Fullpass', group_size=1, days=None, includes_hotel=False,
+            tiers=(t,),
+        )  # fmt: skip
+
+    assert loaded == Priced(
+        event_id=7,
+        passes=(
+            priced(102.56, 'Fullpass Male 100€', sold_out=True),
+            priced(123.08, 'Fullpass Male 120€', sold_out=False),
+        ),
+        rule_quotes=(),
+    )
 
 
 @pytest.mark.parametrize(
@@ -1358,8 +1529,8 @@ def test_a_festivals_styles_are_its_genres_styles(memory: Memory) -> None:
                 for e, g in [(1, 'urbankiz'), (1, 'semba'), (2, 'kizomba'), (2, 'zouk'), (2, 'kompa')]
             ),
         )
-    assert prices.styles(db, 1) == [Style.KIZOMBA]
-    assert prices.styles(db, 2) == [Style.KIZOMBA, Style.OTHER, Style.ZOUK]
+    assert prices.styles(db)[1] == [Style.KIZOMBA]
+    assert prices.styles(db)[2] == [Style.KIZOMBA, Style.OTHER, Style.ZOUK]
 
 
 @pytest.mark.parametrize(
@@ -1392,7 +1563,7 @@ def test_a_festival_with_three_problems_is_left_out_like_any_other(files: Path) 
     )
     assert len(tickets_store.read_problems(fr, tickets_store.log(7))) == 3
     tickets_store.save_read(fr)
-    found = tickets_store.recorded()
+    found = tickets_store.recorded(tickets_store.stored())
     assert len(found.problems) == 3
     assert found.written == {}
 
@@ -1434,9 +1605,9 @@ def test_a_dispute_to_another_prompt_is_none(files: Path) -> None:
     (files / 'disputed').mkdir()
     disputed: dict[str, object] = {'rows_at': AT.isoformat(), 'prompt': prompt.current('first_read').hash, 'reads': {}}
     _ = (files / 'disputed' / '7.json').write_text(json.dumps(disputed))
-    assert tickets_state.disputed(7)
+    assert tickets_state.disputed() == {7}
     _ = (files / 'disputed' / '7.json').write_text(json.dumps(disputed | {'prompt': '0' * 16}))
-    assert not tickets_state.disputed(7)
+    assert tickets_state.disputed() == set()
 
 
 def test_a_dispute_is_settled_by_a_first_read_of_rows_as_new(files: Path) -> None:
@@ -1603,6 +1774,7 @@ def test_changes_name_what_a_read_found_new_or_different(command: Command) -> No
     tickets_store.append(7, entry(changed(ROWS, 2, amount=130.0, price='€130.00'), at=stamp(2)))
     assert command('changes', 7) == command('changes')
     assert '7  2026-10-02  ' in command('changes', 7)
+    assert command('changes', 0) == ''  # festival 0's, which has no log: not every festival's
 
 
 @pytest.mark.parametrize(

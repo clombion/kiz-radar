@@ -174,6 +174,22 @@ def test_an_amount_is_a_price_its_quote_gives_in_its_currency(
     assert (prices.problems(ev, []) == []) == ok
 
 
+@pytest.mark.parametrize(
+    ('quote', 'amounts', 'ok'),
+    [
+        ('Early 120€ - Full 180€', (120, 180), True),
+        ('Early 120€ - Full 180€', (120, 120), False),  # the full price is not the early one
+        ('Full pass 59€ online (69 € at the door)', (59, 69), True),
+        ('Full pass: 100€', (100, 100), True),  # one price two passes share: leaders and followers
+    ],
+)
+def test_tiers_quoting_one_line_of_several_prices_take_different_ones(
+    quote: str, amounts: tuple[float, float], ok: bool
+) -> None:
+    ev = priced(*(tier(quote, a, until=None) for a in amounts))
+    assert (prices.problems(ev, []) == []) == ok
+
+
 def test_amount_missing_from_quote_is_a_problem() -> None:
     ev = priced(tier('Full Pass – 180€ (Till Festival)', 150, until=None))
     assert prices.problems(ev, [])[0].startswith('amounts: event 5: passes[0].tiers[0].amount 150')
@@ -725,12 +741,25 @@ def test_a_file_is_written_whole_or_not_at_all(tmp_path: Path) -> None:
 
 def test_only_an_answer_to_the_current_prompt_is_read_as_its_record(answered_here: Path) -> None:
     (answered_here / 'prices').mkdir()
-    old = {'batch': 'b', 'events': [{'event_id': 5, 'old': 1}]}
+    old = {'batch': 'event-5', 'events': [{'event_id': 5, 'old': 1}]}
     provenance = {'prompt': '0' * 16, 'model': 'claude-haiku-5-5', 'answered_by': 'x', 'inputs': None}
     filed = provenance | {'answered_at': '2026-10-02T09:00:00+00:00', 'answer': old}
-    _ = (answered_here / 'prices' / 'prices-001.json').write_text(json.dumps(filed))
+    _ = (answered_here / 'prices' / 'event-5.json').write_text(json.dumps(filed))
     assert list(answers.answered('prices', {5})) == [5]  # its festivals are known, whatever its shape
     assert answers.current(prompt.PRICES, {5: JOB.inputs}) == {}
+
+
+def test_a_festivals_answer_is_its_own_file_read_alone(answered_here: Path) -> None:
+    """answered reads the files of the festivals asked about, not the folder; a file holds its festival's answer."""
+    (answered_here / 'prices').mkdir()
+    provenance = {'prompt': '0' * 16, 'model': 'claude-haiku-5-5', 'answered_by': 'x', 'inputs': None}
+    for name, event_id in (('event-5.json', 5), ('event-6.json', 7)):
+        answer = {'batch': 'b', 'events': [{'event_id': event_id}]}
+        filed = provenance | {'answered_at': '2026-10-02T09:00:00+00:00', 'answer': answer}
+        _ = (answered_here / 'prices' / name).write_text(json.dumps(filed))
+    assert list(answers.answered('prices', {5, 8})) == [5]  # 6's file, which answers 7, is not read
+    with pytest.raises(ValueError, match='an answer of festival 6 alone, not of'):
+        _ = answers.answered('prices', {6})
 
 
 def test_an_archive_cut_short_is_written_again() -> None:
@@ -1102,6 +1131,16 @@ def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices(memory:
     ]
 
 
+def test_price_notes_load_as_the_quotes_they_are_a_newline_in_one_included(memory: Memory) -> None:
+    quotes = ('Prices exclude\nticketing fees', 'the price rises €10 every month')
+    ev = priced(tier('Full pass 80€ until 31.01')).model_copy(update={'rule_quotes': quotes})
+    described = {5: answers.Answer(ev, provenance('0' * 16, None), Path('x'))}
+    with loaded(memory()) as con:
+        load_extract.load_prices(con, described, {}, {})
+        notes = con.column(str, 'SELECT notes FROM event_price_notes WHERE event_id = 5')
+    assert [JSON.validate_json(n) for n in notes] == [list(quotes)]
+
+
 @pytest.fixture
 def answered_here() -> Path:
     """The answers folder of the test's data folder."""
@@ -1109,20 +1148,21 @@ def answered_here() -> Path:
     return data(ANSWERS)
 
 
-def source_file() -> Path:
-    """An export in the test's data folder holding FEST."""
+def source_file(*ids: int) -> Path:
+    """An export in the test's data folder holding FEST, under its own id and these."""
     path = data(export.SOURCE) / 'source.sqlite'
     path.parent.mkdir(parents=True)
     with db.opened(path, 'rwc') as con, shaped(con).transaction() as tx:
-        festival(
-            tx,
-            FEST.id,
-            title=FEST.title,
-            description_text=FEST.description_text,
-            start_date=FEST.start_date,
-            end_date=FEST.end_date,
-            country=FEST.country,
-        )
+        for i in (FEST.id, *ids):
+            festival(
+                tx,
+                i,
+                title=FEST.title,
+                description_text=FEST.description_text,
+                start_date=FEST.start_date,
+                end_date=FEST.end_date,
+                country=FEST.country,
+            )
     return path
 
 
@@ -1147,6 +1187,38 @@ def test_a_festival_is_asked_a_pass_once_while_the_question_stays_the_same(
     run_ask(monkeypatch, client, '--pass', 'prices')
     assert 'festivals to ask about: ' in capsys.readouterr().out
     assert len(client.messages.asked) == 1  # answered to the current prompt: not asked again
+
+
+def test_a_run_whose_questions_got_no_answer_fails_naming_them(
+    answered_here: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A bad key declines every question (the ones not yet asked stop): the run exits with each one named, so the
+    workflow's step fails."""
+    _ = source_file(6)
+    client = Client(Cut(status_error(401)), Cut(status_error(401)))  # its questions are asked side by side
+    with pytest.raises(SystemExit) as stop:
+        run_ask(monkeypatch, client, '--pass', 'prices')
+    assert str(stop.value.code).startswith('API error 401')
+    assert '2 questions gave no answer (structural 2): 5 prices: ' in str(stop.value.code)
+
+
+def test_a_run_asks_about_as_many_festivals_as_its_limit(
+    answered_here: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    _ = source_file(6, 7)
+    client = Client(prices_answer('Full pass 80€ until 31.01'))
+    run_ask(monkeypatch, client, '--pass', 'prices', '--limit', 1)
+    assert capsys.readouterr().out.startswith(
+        "1 festivals to ask about: {'extract': 0, 'rooms_genres': 0, 'prices': 1}"
+    )
+    assert len(client.messages.asked) == 1
+    assert [p.name for p in (answered_here / 'prices').iterdir()] == ['event-5.json']  # the first by id
+
+
+def test_a_reply_with_no_text_is_no_answer() -> None:
+    out = ask.ask(Client(message('').model_copy(update={'content': []})), JOB)
+    assert isinstance(out, Declined)
+    assert (out.cause, out.why) == (CallCause.STRUCTURAL, 'a reply with no text (message msg_test)')
 
 
 def run_check(monkeypatch: pytest.MonkeyPatch, tmp_path: Path, question: str, answer: str) -> None:

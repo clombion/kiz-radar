@@ -37,7 +37,7 @@ from pydantic import ValidationError
 from pipeline import calls, export, records, spend
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
-from pipeline.calls import Declined
+from pipeline.calls import Declined, why
 from pipeline.enums import AnswerState, CallCause, Model, Style
 from pipeline.extract import answers, check_output, merge_review, prices, questions
 from pipeline.prompt import Pass, Prompt
@@ -56,6 +56,9 @@ from pipeline.records import (
 
 MODEL = Model.CLAUDE_HAIKU_5_5
 WORKERS = 8
+# the most tokens a reply may take; no part of a prompt's hash (pipeline/prompt.py), as a reply that needs more is cut
+# short and no answer (truncated)
+MAX_TOKENS = 64000
 BY = 'pipeline/extract/ask.py (Messages API), one festival'
 BY_PAIR = 'pipeline/extract/ask.py (Messages API), one pair'
 
@@ -95,7 +98,7 @@ def sdk_declined(e: SdkError) -> Declined:
         case anthropic.APIStatusError():
             return Declined(cause(e), f'API error {e.status_code} ({e.message})')
         case _:
-            return Declined(cause(e), f'{type(e).__name__}: {e}')
+            return Declined(cause(e), why(e))
 
 
 class Stream(Protocol):
@@ -151,7 +154,7 @@ def reply_to(client: Client, request: Request, messages: list[MessageParam]) -> 
     try:
         with client.messages.stream(
             model=request.model,
-            max_tokens=64000,
+            max_tokens=MAX_TOKENS,
             system=request.prompt.system,
             messages=messages,
             output_config={'format': {'type': 'json_schema', 'schema': dict(request.prompt.sent_schema)}},

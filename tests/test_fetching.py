@@ -129,6 +129,28 @@ def test_new_places_are_asked_for_once_and_kept_with_the_known(tmp_path: Path, m
     assert len(nominatim.asked) == asked  # a place not found is known too
 
 
+class KilledError(Exception):
+    """A run stopped where it stood (the runner's timeout, a crash)."""
+
+
+def test_a_run_stopped_half_way_keeps_the_places_it_found(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    Place.write([])
+    monkeypatch.setattr('time.sleep', no_wait)
+    found: list[Place] = []
+
+    def located(city: str, country: str | None) -> Place:
+        if found:
+            raise KilledError
+        found.append(Place(city=city, country=country, found=None))
+        return found[0]
+
+    monkeypatch.setattr(geocode, 'located', located)
+    source_with([('Lisbon', 'Portugal'), ('Porto', 'Portugal')])
+    with pytest.raises(KilledError):
+        run(geocode.main, monkeypatch)
+    assert Place.read() == found
+
+
 def test_a_place_nominatim_fails_on_is_left_for_the_next_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     Place.write([])
     monkeypatch.setattr('time.sleep', no_wait)

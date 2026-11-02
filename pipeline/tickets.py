@@ -14,9 +14,11 @@
 A site recipe (tickets/sites/<site>.json, a records.Recipe) says where a site's ticket rows are; an
 agent writes one per site. read applies it in a browser (read_page.rows) and appends one entry per attempt to
 tickets/log/<event_id>.jsonl (records.LogEntry): read (with every row: key, name, price as shown,
-amount, currency, a second price when the site shows one, sold out), refused (no rows and an HTTP error), unreachable
-(the page could not be reached or would not load), or layout_broken (the recipe's selectors fail, no rows, two rows
-with one key, or a row without its key, name, price, amount or currency: the recipe needs an agent). A read that can't
+amount, currency, a second price when the site shows one, sold out), empty (none listed: an API's empty list, or no
+rows on a site that hides its sold-out tickets), refused (no rows and an HTTP error), unreachable (the page could not
+be reached or would not load), or layout_broken (the recipe's selectors fail, no rows on a site that shows its
+sold-out tickets, two rows with one key, a row without its key, name, price, amount or currency, or a currency symbol
+of several the recipe doesn't settle: the recipe needs an agent). A read that can't
 be made here at all (no browser would start) is no entry: the run stops reading pages, and fails.
 
 A first read (tickets/reads/<event_id>.json, a records.FirstRead) says which pass each ticket is, by its key, from the
@@ -64,6 +66,7 @@ with a visible browser. run --limit N first-reads N festivals at most, as the Ac
 import argparse
 import collections
 import datetime as dt
+import json
 import re
 import sys
 from collections.abc import Mapping, Sequence
@@ -78,7 +81,7 @@ from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.calls import Declined
 from pipeline.enums import FirstRead as FirstReadState
-from pipeline.enums import Model, PassKind, Sales, SkipReason, Status, Style, Waiting
+from pipeline.enums import Listing, Model, PassKind, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import ask
 from pipeline.read_page import Browsers
 from pipeline.records import (
@@ -127,6 +130,7 @@ from pipeline.tickets_store import (
     shown,
     site_for,
     sites,
+    stored,
     streak,
     written,
 )
@@ -491,7 +495,7 @@ def cmd_page(db: sqlite_db.Reader, event_id: int, sold: Sold) -> None:
 
 
 def cmd_changes(event_id: int | None = None) -> None:
-    for i in [event_id] if event_id else sorted(int(p.stem) for p in data(LOG).glob('*.jsonl')):
+    for i in [event_id] if event_id is not None else sorted(int(p.stem) for p in data(LOG).glob('*.jsonl')):
         for day, text in changes(log(i)):
             print(f'{i}  {day}  {text}')
 
@@ -595,6 +599,24 @@ class Run:
         return '\n'.join([*self.alarms, *([unread] if unread else [])]) or None
 
 
+def unreadable(db: sqlite_db.Reader, ids: set[int]) -> str | None:
+    """Why a run can read some of these festivals not at all, naming each: none in the export, cancelled, or no longer
+    listed (festivals() leaves them out); None when it can read every one."""
+    asked = (json.dumps(sorted(ids)),)
+    found = set(db.column(int, 'select id from events where id in (select value from json_each(?))', asked))
+    cancelled = db.column(
+        int, 'select id from events where cancelled is 1 and id in (select value from json_each(?)) order by id', asked
+    )
+    gone = db.column(
+        int,
+        'select id from events where cancelled is not 1 and listing != ? and id in (select value from json_each(?))'
+        ' order by id',
+        (Listing.LISTED, *asked),
+    )
+    said = [('no such festival', sorted(ids - found)), ('cancelled', cancelled), ('no longer listed', gone)]
+    return '; '.join(f'{why}: {", ".join(map(str, these))}' for why, these in said if these) or None
+
+
 def cmd_run(
     db: sqlite_db.Reader, ids: set[int] | None = None, limit: int | None = None, parts: Sequence[Part] = PARTS
 ) -> None:
@@ -604,9 +626,8 @@ def cmd_run(
     whose page broke its recipe, reached REFUSALS failures, no longer fits its first read, or got no first read from
     the models (pipeline/calls.py)."""
     day = today()
-    every = set(db.column(int, 'select id from events'))
-    if ids and (missing := ids - every):
-        sys.exit(f'no such festival: {sorted(missing)}')
+    if ids and (why := unreadable(db, ids)):
+        sys.exit(why)
     with Browsers() as browsers:
         run = Run(db, day, browsers, limit, parts)
         for f in (f for f in festivals(db, day) if not ids or f.id in ids):
@@ -616,7 +637,7 @@ def cmd_run(
             if redo and (entry := latest_read(f.log)):
                 run.make(f, entry)  # its page sells nothing any more; its logged rows still say what it sold
     if 'models' in parts:  # the reads as the first reads now stand
-        run.alarms += recorded().problems
+        run.alarms += recorded(stored()).problems
     counts = status(db)
     print('waits for: ' + '; '.join(f'{n} {w}' for w, n in counts.most_common()))
     if why := run.verdict():
@@ -641,7 +662,7 @@ def parser() -> argparse.ArgumentParser:
     _ = sub.add_parser('todo', help='what needs doing')
     r = sub.add_parser('read', help="read a festival's ticket page and log its rows")
     _ = r.add_argument('id', type=int)
-    _ = r.add_argument('--url', help='the ticket page, when the festival has no known one')
+    _ = r.add_argument('--url', help='the ticket page to read: it becomes the known one, replacing any other')
     for name, text in (
         ('draft', 'a first read to fill, from the latest rows'),
         ('record', 'check and write the prices'),
@@ -677,27 +698,27 @@ def main() -> None:
         from pipeline import read_page
 
         read_page.on_display()
-    i = a.id or 0
-    match a.cmd:
-        case 'check':
+    # every command but todo, changes and run requires its festival's id (parser), so it is an int there, 0 included
+    match a.cmd, a.id:
+        case 'check', int(i):
             return cmd_check(i)
-        case 'changes':
-            return cmd_changes(a.id)
+        case 'changes', i:
+            return cmd_changes(i)
         case _:
             pass
     with src_db() as db:
-        match a.cmd:
-            case 'todo':
+        match a.cmd, a.id:
+            case 'todo', _:
                 cmd_todo(db)
-            case 'read':
+            case 'read', int(i):
                 cmd_read(db, i, a.url)
-            case 'draft':
+            case 'draft', int(i):
                 cmd_draft(db, i)
-            case 'record':
+            case 'record', int(i):
                 cmd_record(db, i)
-            case 'retry':
+            case 'retry', int(i):
                 cmd_retry(db, i)
-            case 'page':
+            case 'page', int(i):
                 cmd_page(db, i, Sold(a.url, a.state, a.note, a.by))
             case _:
                 cmd_run(db, a.only, a.limit, (a.part,) if a.part else PARTS)

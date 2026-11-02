@@ -54,9 +54,9 @@ Every data point and every state it can be in; why the world is closed is in [St
 | -- | -- | -- | -- | -- |
 | page_read · `read` | kept | — | — | the page loaded and the recipe found every ticket row, each with its key, name, price, amount and currency |
 | page_read · `refused` | waits | — | the next run; after three in a row, an agent in a session | no rows and an HTTP error, or the page would not load |
-| page_read · `empty` | kept | — | — | the site answered a list of its tickets, and it is empty: none is listed now (a page's rows can't say so, as a recipe that finds none may be broken) |
+| page_read · `empty` | kept | — | — | none is listed now: the site answered a list of its tickets and it is empty, or a page of a site that hides its sold-out tickets shows none (elsewhere a page's rows can't say so, as a recipe that finds none may be broken) |
 | page_read · `unreachable` | waits | — | the next run; after three in a row, an agent in a session | the address could not be reached: the connection was reset or timed out, or the host is unknown |
-| page_read · `layout_broken` | waits | — | agent: fix the recipe | the recipe's selectors fail, no rows, two rows with one key, or a row without its key, name, price, amount or currency |
+| page_read · `layout_broken` | waits | — | agent: fix the recipe | the recipe's selectors fail, no rows on a site that shows its sold-out tickets, two rows with one key, a row without its key, name, price, amount or currency, or a currency symbol of several the recipe does not settle |
 | call_cause · `checker` | kept | — | — | the answer failed the checker twice, the second time with the checker's lines |
 | call_cause · `truncated` | kept | — | — | the answer stopped before its end (stop_reason other than end_turn) |
 | call_cause · `transient` | kept | — | — | the service was busy or unreachable for now: a timeout, a lost connection, HTTP 429 or 5xx |

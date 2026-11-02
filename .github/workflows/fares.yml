@@ -18,6 +18,7 @@ permissions:
 
 env:
   UV_LOCKED: 1   # uv.lock as committed, or the step fails
+  PYTHONUNBUFFERED: 1   # each line a step prints is in the log as it goes, not all at its end
   BUDGET: ${{ inputs.budget || '20' }}
 
 concurrency:

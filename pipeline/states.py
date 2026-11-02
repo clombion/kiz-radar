@@ -214,8 +214,9 @@ ROWS = (
     S(
         'page_read',
         'empty',
-        "the site answered a list of its tickets, and it is empty: none is listed now (a page's rows can't say so, as "
-        'a recipe that finds none may be broken)',
+        'none is listed now: the site answered a list of its tickets and it is empty, or a page of a site that hides '
+        "its sold-out tickets shows none (elsewhere a page's rows can't say so, as a recipe that finds none may be "
+        'broken)',
         KEPT,
     ),
     S(
@@ -249,8 +250,8 @@ ROWS = (
     S(
         'page_read',
         'layout_broken',
-        "the recipe's selectors fail, no rows, two rows with one key, or a row without "
-        'its key, name, price, amount or currency',
+        "the recipe's selectors fail, no rows on a site that shows its sold-out tickets, two rows with one key, a row "
+        'without its key, name, price, amount or currency, or a currency symbol of several the recipe does not settle',
         WAITS,
         owner='agent: fix the recipe',
     ),

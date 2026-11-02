@@ -11,7 +11,7 @@ import pytest
 
 import pipeline
 from pipeline import build_site_db, claims, db
-from pipeline.records import Spent
+from pipeline.records import Spent, StatusRow
 from tests import exports
 from tests.fakes import SITE_CLAIMS, Memory
 from tests.repository import files, wrote
@@ -49,6 +49,8 @@ def site_db(tmp_path_factory: pytest.TempPathFactory) -> Path:
     with pytest.MonkeyPatch.context() as m:
         m.setattr(pipeline, 'DATA', folder)
         exports.committed(*exports.EVERYTHING)
+        claims.write(SITE_CLAIMS)
+        StatusRow.write([])  # the build says what festivals wait for from their files, not from status.csv
         out = folder / 'site.sqlite'
         made = build_site_db.build(exports.EXPORT, out)
     _ = (folder / Path(build_site_db.SITE_JSON).name).write_text(

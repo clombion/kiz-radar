@@ -11,15 +11,16 @@ and the orphaned claims it lists are settled in a session (docs/guides/).
 """
 
 from collections.abc import Iterable, Sequence
+from pathlib import Path
 
 from pydantic import BaseModel, TypeAdapter
 
-from pipeline import countries, states, tickets_store
+from pipeline import countries, export, states, tickets_state
 from pipeline.countries import codes
 from pipeline.db import Reader
 from pipeline.enums import ClaimSource, ClaimState, FirstRead, HomeBasis, MergeDecision, Status, Waiting
 from pipeline.extract import merge_review
-from pipeline.records import Date, Record, ReviewMention, Stamp, StatusRow
+from pipeline.records import Date, Record, ReviewMention, Stamp, StatusRow, today
 
 REPOSITORY = 'clombion/kiz-radar-claims'  # where the admin's claims are written (pipeline/claims.py, CLAIMS)
 SUBJECT = TypeAdapter(tuple[str, ...])  # what a claim decides, as the export's claims table holds it (claims.subject)
@@ -312,20 +313,20 @@ def festivals(rows: Sequence[StatusRow]) -> list[Festival]:
     ]
 
 
-def reads(rows: Sequence[StatusRow]) -> list[PageRead]:
+def reads(fs: Sequence[tickets_state.Festival]) -> list[PageRead]:
     """The latest ticket-page reads, of every festival's log."""
-    every = [
-        PageRead(at=e.at, event_id=r.event_id, event=r.event, status=e.status)
-        for r in rows
-        for e in tickets_store.log(r.event_id)
-    ]
+    every = [PageRead(at=e.at, event_id=f.id, event=f.title, status=e.status) for f in fs for e in f.log]
     return sorted(every, key=lambda r: (r.at, r.event_id), reverse=True)[:READS]
 
 
-def review(x: Reader, built_at: str) -> Review:
-    """The read model, from the site's database being built (the export attached as src) and the pipeline's files."""
+def review(x: Reader, built_at: str, src: Path) -> Review:
+    """The read model, from the site's database being built (the export attached as src), the export itself (src)
+    and the pipeline's files. The festivals are as the ticket files say today (tickets_state), not as
+    tickets/status.csv, an output for people, last said it."""
     claimed = x.rows(ClaimRow, 'select id, subject, claim, source, state from src.claims order by id')
-    status = StatusRow.read()
+    with export.opened('ro', src) as db:
+        fs = tickets_state.festivals(db, today(), every=True)
+    status = tickets_state.status_rows(fs)
     return Review(
         built_at=built_at,
         repository=REPOSITORY,
@@ -341,5 +342,5 @@ def review(x: Reader, built_at: str) -> Review:
                 'select step, description, performed_at, performed_by from pipeline_steps order by performed_at desc',
             )
         ),
-        reads=tuple(reads(status)),
+        reads=tuple(reads(fs)),
     )

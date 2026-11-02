@@ -12,7 +12,8 @@ import pytest
 from pipeline import audit, data, prompt, tickets_state, tickets_store
 from pipeline.db import Reader
 from pipeline.enums import FirstRead
-from pipeline.records import ANSWERS, CsvRow, PageRecipe
+from pipeline.records import ANSWERS, CsvRow, PageRecipe, Spent
+from pipeline.tables import ShapeError
 from tests.exports import committed, shaped
 from tests.fakes import SITE_CLAIMS, Memory
 
@@ -39,6 +40,32 @@ def test_a_hand_edited_state_is_named_with_its_file_and_place(tmp_path: Path, mo
     assert len(found) == 1
     assert found[0].startswith('pipeline/tickets/pages.csv line 2: state: Input should be')
     assert audit.refused(set()) == found  # the same report each time
+
+
+def test_a_row_of_more_cells_than_its_header_is_refused_and_the_audit_goes_on(tmp_path: Path) -> None:
+    root = copied()
+    path = root / 'pipeline/tickets/pages.csv'
+    _ = path.write_text(path.read_text(encoding='utf-8') + '1,F,shop,https://x.example/,,agent,a note,one too many\n')
+    edited(root / 'pipeline/tickets/status.csv', 2, 3, 'soon')
+    found = audit.refused(set())
+    assert [f.split(':')[0] for f in found] == ['pipeline/tickets/pages.csv', 'pipeline/tickets/status.csv line 2']
+    assert 'cells, where its header has 7 columns' in found[0]
+
+
+def test_a_row_is_added_only_under_its_records_header(tmp_path: Path) -> None:
+
+    Spent.path().parent.mkdir(parents=True, exist_ok=True)
+    _ = Spent.path().write_text('')  # an empty file gets its header
+    spent = Spent.model_validate(
+        {'at': '2026-10-01T05:00:00+00:00', 'step': 'prices', 'model': 'claude-haiku-5-5', 'input_tokens': '1',
+         'output_tokens': '1', 'usd': '0.01'}
+    )  # fmt: skip
+    spent.append()
+    assert Spent.read() == [spent]
+    _ = Spent.path().write_text('when,cost\n')
+    with pytest.raises(ShapeError, match='its header is when,cost'):
+        spent.append()
+    assert Spent.path().read_text() == 'when,cost\n'
 
 
 def festival(page: str | None, **change: object) -> tickets_state.Festival:

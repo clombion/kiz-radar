@@ -1017,7 +1017,7 @@ def build(src: Path, out: Path) -> Built:
             plans(x, key_id)
             built_at = now().isoformat()
             meta(x, built_at)
-            made = Built(site_json(x, built_at), review.review(x, built_at))
+            made = Built(site_json(x, built_at), review.review(x, built_at, src))
             table_docs(x)
         db.detach('src')
         db.vacuum()

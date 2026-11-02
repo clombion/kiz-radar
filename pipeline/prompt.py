@@ -1,12 +1,15 @@
-"""What the pipeline asks a model, and how a prompt is known: by the hash of everything fixed in its request.
+"""What the pipeline asks a model, and how a prompt is known: by the hash of what is fixed in its request and shapes
+its answer.
 
 A Prompt is what is fixed in a request: the system text, the record the answer must be (pipeline/records.py), and the
 message's shape: the record of its question and the framing it is set in; the question itself is the festival's own
 (message()). Its text sets down the system text, the answer record's schema, which the checker holds the answer to,
 the schema as sent, the question record's schema and the framing; its hash is the first records.DIGITS hex digits of
 that text's SHA-256. So editing a template, a state's criterion (pipeline/states.py) or a record, a constraint only
-the checker enforces included, or the way a question is framed, changes the hash of every prompt it is in. The model
-is no part of it: an answer records the model as where it comes from, not as what it answered.
+the checker enforces included, or the way a question is framed, changes the hash of every prompt it is in. Two things
+fixed in a request are no part of it. The model: an answer records it as where it comes from, not as what it answered.
+And the reply's token ceiling (extract/ask.py, MAX_TOKENS): it shapes no answer that ends, since a reply that reaches
+it is cut short and no answer at all (call_cause truncated); raising it would only ask everything again for nothing.
 
 The current prompts are current(name): the three extraction passes' (pipeline/extract/prompts/<template>.md, answered
 as a records.Batch of its entries; PASSES) and the first read's (the prices prompt,

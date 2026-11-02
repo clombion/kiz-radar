@@ -228,6 +228,43 @@ def test_a_refused_search_is_tried_once_more_then_the_rest_waits(
     assert fares.Job.read() == []  # a refused search is no search
 
 
+class KilledError(Exception):
+    """A run stopped where it stood (the runner's timeout, a crash)."""
+
+
+def test_a_run_stopped_half_way_keeps_the_fares_it_found(weekends: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    found: list[str] = []
+
+    def search(airport: str, friday: dt.date) -> fares.Fare:
+        if found:
+            raise KilledError
+        found.append(airport)
+        return fares.Fare(airport=airport, depart=friday, price=80, fetched_at=AT)
+
+    monkeypatch.setattr(fares, 'search', search)
+    with pytest.raises(KilledError):
+        fares.refresh(budget=5, max_seconds=60)
+    assert [(f.airport, f.price) for f in fares.Fare.read()] == [(found[0], 80)]
+    assert [j.airport for j in fares.Job.read()] == found
+
+
+def test_a_save_stopped_between_its_files_leaves_the_weekend_to_search_again(
+    weekends: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The fares are written before the searches: a fare written whose search is not is searched again; a search
+    written whose fare is not would keep the old fare (or none) as if it were the new one."""
+    fare = fares.Fare(airport='GLA', depart=SOON, price=80, fetched_at=AT)
+
+    def killed(rows: object) -> None:
+        raise KilledError
+
+    monkeypatch.setattr(fares.Job, 'write', killed)
+    with pytest.raises(KilledError):
+        fares.save({('GLA', SOON): fare}, {('GLA', SOON): fares.Job(airport='GLA', depart=SOON, last_run=now())})
+    assert fares.Fare.read() == [fare]
+    assert [w.due for w in fares.queue() if w.airport == 'GLA'] == [True]
+
+
 def test_the_plan_lists_the_weekends_due(weekends: Path, capsys: pytest.CaptureFixture[str]) -> None:
     fares.plan()
     out = capsys.readouterr().out

@@ -6,11 +6,13 @@ Why an answer is used, or asked again.
 
 Line-ups, highlights, rooms, genres and pass prices are read from each description by Claude (claude-haiku-5-5), one
 festival and one pass per question; ticket pages get first reads (Opus and Sonnet, Fable when they disagree), and pairs
-of artists a merge review. A prompt is known by the hash of everything fixed in its request: its text (the template in
-`pipeline/extract/prompts/` or `pipeline/tickets/prompts/`, with the definitions of its states filled in from
-`pipeline/states.py`), its record's schema as the checker holds the answer to it and as sent, and the record of its
-question and the framing it is sent in (`pipeline/prompt.py`). Saving an answer first saves the prompt's text in
-`pipeline/prompts/asked/<hash>.md`, whose digest is checked again when it is read.
+of artists a merge review. A prompt is known by the hash of what is fixed in its request and shapes its answer: its text
+(the template in `pipeline/extract/prompts/` or `pipeline/tickets/prompts/`, with the definitions of its states filled
+in from `pipeline/states.py`), its record's schema as the checker holds the answer to it and as sent, and the record of
+its question and the framing it is sent in (`pipeline/prompt.py`). The model and the reply's token ceiling are fixed in
+the request too but no part of the hash: an answer records its model, and a reply that reaches the ceiling is no answer.
+Saving an answer first saves the prompt's text in `pipeline/prompts/asked/<hash>.md`, whose digest is checked again when
+it is read.
 
 ## An answer is current, stale or none
 
@@ -39,5 +41,5 @@ or more. A failing answer goes back to Claude once, with the checker's lines; a 
 next run, as does any call that gives no answer (`pipeline/calls.py`: cut short, busy, unreachable), and the run fails
 naming each. A call that can never succeed as made (a bad key) stops the run's requests.
 
-The first extraction's answers, from Claude Code subagents in batches of several festivals, are kept beside the later
-ones, as what the first export was built from; a festival's own answer file replaces its entry in a batch.
+Each festival's answer of a pass is one file, `pipeline/extract/answers/<pass>/event-<id>.json`, which a new answer
+replaces; the first extraction's batches of several festivals, every festival of which has its own file since, are gone.

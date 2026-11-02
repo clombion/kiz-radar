@@ -113,8 +113,8 @@ SHORTEST_TITLE = 3  # a tidied title shorter than this gives way to the listed o
 
 
 def soften_caps(text: str) -> str:
-    """Soften shouting capitals word by word. Short words without two vowels (DJ, SBK, MKC, ILKSF, KIZZ) look like
-    acronyms or stylised names, so they stay as written."""
+    """Soften shouting capitals word by word. A word of fewer than two vowels, whatever its length (DJ, SBK, MKC,
+    ILKSF, KIZZ), looks like an acronym or a stylised name, so it stays as written."""
     first = True
 
     def word(m: re.Match[str]) -> str:

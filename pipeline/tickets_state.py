@@ -34,10 +34,8 @@ from pipeline.tickets_store import (
     DISPUTED,
     REFUSALS,
     Site,
-    first_read,
     host,
     latest_read,
-    log,
     read_at,
     site_for,
     sites,
@@ -83,13 +81,26 @@ def src_db() -> AbstractContextManager[sqlite_db.Db]:
     return export.opened('ro')
 
 
-def links(db: sqlite_db.Reader, event_id: int) -> list[str]:
-    """The festival's links that may sell tickets, full ones first; a cut-short one ends in …."""
-    linked = db.column(str, 'select url from event_links where event_id = ?', (event_id,))
-    described = db.column(str, "select coalesce(description_text, '') from events where id = ?", (event_id,))
-    urls = linked + [m[0].rstrip('.,;:!?') for text in described for m in re.finditer(r'https?://[^\s<>"|)]+', text)]
-    keep = {u for u in urls if (h := host(u)) and not sells_nothing(h)}
-    return sorted(keep, key=lambda u: ('…' in u, u))
+class Linked(Record):
+    event_id: int
+    url: str
+
+
+def links(db: sqlite_db.Reader) -> dict[int, list[str]]:
+    """{festival: its links that may sell tickets, full ones first; a cut-short one ends in …}, read in two queries for
+    every festival; one with none has none."""
+    urls: dict[int, list[str]] = {}
+    for r in db.rows(Linked, 'select event_id, url from event_links'):
+        urls.setdefault(r.event_id, []).append(r.url)
+    described = 'select id as event_id, description_text as url from events where description_text is not null'
+    for r in db.rows(Linked, described):
+        urls.setdefault(r.event_id, []).extend(
+            m[0].rstrip('.,;:!?') for m in re.finditer(r'https?://[^\s<>"|)]+', r.url)
+        )
+    return {
+        i: sorted({u for u in found if (h := host(u)) and not sells_nothing(h)}, key=lambda u: ('…' in u, u))
+        for i, found in urls.items()
+    }
 
 
 def sells_nothing(h: str) -> bool:
@@ -244,11 +255,14 @@ def assessed(f: Festival, today: dt.date) -> Festival:
     return replace(f, need=need, unread=unread)
 
 
-def disputed(event_id: int) -> bool:
-    """Whether the festival's models disagreed in reads to the current prompt: a dispute to another is no dispute, and
-    the reads are made again."""
-    path = data(DISPUTED) / f'{event_id}.json'
-    return path.exists() and prompts.is_current('first_read', Stamped.model_validate_json(path.read_bytes()).prompt)
+def disputed() -> set[int]:
+    """The festivals whose models disagreed in reads to the current prompt (tickets/disputed/): a dispute to another
+    is no dispute, and the reads are made again."""
+    return {
+        int(path.stem)
+        for path in data(DISPUTED).glob('*.json')
+        if prompts.is_current('first_read', Stamped.model_validate_json(path.read_bytes()).prompt)
+    }
 
 
 def links_hash(urls: Iterable[str]) -> str:
@@ -273,10 +287,13 @@ def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, 
     described = questions.now(db).current(prompts.PRICES)  # the description's prices, current today
     known, found = sites(), found_pages()
     shops = shop_hosts(known)
-    recorded = tickets_store.recorded().written
+    # each file and table read once for every festival (tickets_store.stored)
+    kept = tickets_store.stored()
+    recorded = tickets_store.recorded(kept).written
+    linked, styled, disputes = links(db), prices.styles(db), disputed()
     out: list[Festival] = []
     for e in events:
-        fr, entries, urls = first_read(e.id), log(e.id), links(db, e.id)
+        fr, entries, urls = kept.reads.get(e.id), kept.logs.get(e.id, []), linked.get(e.id, [])
         sold = found.get(e.id)
         if sold and sold.state == Sales.NONE_FOUND and sold.links != links_hash(urls):
             sold = None
@@ -289,7 +306,7 @@ def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, 
             country=e.country,
             description=e.description_text or '',
             over=e.end_date < today,
-            styles=tuple(prices.styles(db, e.id)),
+            styles=tuple(styled.get(e.id, ())),
             links=tuple(urls),
             found=sold,
             first_read=fr,
@@ -297,7 +314,7 @@ def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, 
             tiers=w.tiers if (w := recorded.get(e.id)) else (),
             described=described.get(e.id),
             page=KnownPage(page, site_for(page, known)) if page else None,
-            disputed=disputed(e.id),
+            disputed=e.id in disputes,
         )
         out.append(assessed(f, today))
     return out
@@ -350,9 +367,16 @@ def waits_for_first_read(f: Festival) -> Waiting:
 
 
 def write_status(fs: Sequence[Festival]) -> collections.Counter[Waiting]:
-    """tickets/status.csv: for each festival, what it waits for, its first_read state, how an agent found it sells
-    and its known ticket page; the counts of what they wait for."""
-    rows = [
+    """tickets/status.csv, for people to read (status_rows); the counts of what they wait for."""
+    rows = status_rows(fs)
+    StatusRow.write(rows)
+    return collections.Counter(r.waits_for for r in rows)
+
+
+def status_rows(fs: Sequence[Festival]) -> list[StatusRow]:
+    """For each festival, by id: what it waits for, its first_read state, how an agent found it sells and its known
+    ticket page."""
+    return [
         StatusRow(
             event_id=f.id,
             event=f.title,
@@ -364,8 +388,6 @@ def write_status(fs: Sequence[Festival]) -> collections.Counter[Waiting]:
         )
         for f in sorted(fs, key=lambda f: f.id)
     ]
-    StatusRow.write(rows)
-    return collections.Counter(r.waits_for for r in rows)
 
 
 def status(db: sqlite_db.Reader) -> collections.Counter[Waiting]:

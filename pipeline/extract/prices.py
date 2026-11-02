@@ -4,7 +4,8 @@ Each tier's quote must price its amount (and its second amount, alt) in its curr
 1800, 1.800, 1,800, 1 800, 8.50 or 8,50, with a marker of the currency before or after it (pipeline/currencies.py),
 which also prices a range or a list it ends or starts ("150 to 190€", "€75, 80, 85"); a number with no marker, a date
 or a count say, prices nothing. A quote that marks no price at all may hold the amount as a bare number. A tier whose
-amount adds a fee must quote the fee and the price before it. Dates come back
+amount adds a fee must quote the fee and the price before it. Tiers quoting one line that prices several amounts take
+different ones of them (shared_problems). Dates come back
 as YYYY-MM-DD, or MM-DD when the description gives no year; window() gives a tier's dates their years.
 
 What a festival's card can say of its price (enums.Price) is decided here too: the pass a card prices (card_pass)
@@ -17,6 +18,8 @@ import re
 import unicodedata
 from collections.abc import Iterable, Sequence
 from typing import NamedTuple
+
+from pydantic import BaseModel
 
 from pipeline import currencies, states
 from pipeline.db import Reader
@@ -56,8 +59,15 @@ EVERY_MARKER = (
 
 def amounts_in(quote: str, currency: str) -> set[float] | None:
     """Every amount the quote prices in the currency, by numbers_in()'s readings; None when it marks no price in any
-    currency. A marker before an amount takes it first, so "under 10 €50" prices 50; a marker of another currency
-    prices nothing of this one ("950 SEK (€85)")."""
+    currency."""
+    written = priced_in(quote, currency)
+    return None if written is None else {n for w in written for n in readings(w)}
+
+
+def priced_in(quote: str, currency: str) -> list[str] | None:
+    """Each amount the quote prices in the currency, as it is written, in the order found; None when it marks no price
+    in any currency. A marker before an amount takes it first, so "under 10 €50" prices 50; a marker of another
+    currency prices nothing of this one ("950 SEK (€85)")."""
     q = unicodedata.normalize('NFKC', quote)  # styled letters and digits: 𝟯𝟱𝟬 𝗥𝗢𝗡 is 350 RON
     mine = re.compile(marked(currencies.markers(currency)) + r'\Z', re.IGNORECASE)
     found: list[str] = []
@@ -78,7 +88,7 @@ def amounts_in(quote: str, currency: str) -> set[float] | None:
             found.append(m[1])
     if not any_price:
         return None
-    return {n for run in found for m in re.finditer(AMOUNT, run) for n in readings(m[0])}
+    return [m[0] for run in found for m in re.finditer(AMOUNT, run)]
 
 
 def readings(amount: str) -> set[float]:
@@ -137,10 +147,18 @@ def day(y: int, m: int, d: int) -> dt.date:
     return dt.date(y, m, 28 if (m, d) == (2, 29) and not calendar.isleap(y) else d)
 
 
-def styles(db: Reader, event_id: int) -> list[Style]:
-    """The dance styles a festival's genres (event_genres: its description's and its kizomba-world tags) name."""
-    genres = db.column(Genre, 'SELECT genre FROM event_genres WHERE event_id = ?', (event_id,))
-    return sorted({Style(states.STYLE_OF[g]) for g in genres})
+class EventGenre(BaseModel):
+    event_id: int
+    genre: Genre
+
+
+def styles(db: Reader) -> dict[int, list[Style]]:
+    """{festival: the dance styles its genres (event_genres: its description's and its kizomba-world tags) name}, in
+    one query for every festival; one with no genre has none."""
+    found: dict[int, set[Style]] = {}
+    for r in db.rows(EventGenre, 'SELECT event_id, genre FROM event_genres'):
+        found.setdefault(r.event_id, set()).add(Style(states.STYLE_OF[r.genre]))
+    return {i: sorted(s) for i, s in found.items()}
 
 
 def style_problems(passes: Sequence[PassTerms], styles: Sequence[Style], where: str = '') -> list[str]:
@@ -156,9 +174,10 @@ def style_problems(passes: Sequence[PassTerms], styles: Sequence[Style], where: 
 
 
 def problems(ev: Priced, styles: Sequence[Style]) -> list[str]:
-    """A festival's tiers whose amounts are not in their quote, or whose dates are no real day; and its passes whose
-    style is none of the festival's (style_problems)."""
-    found: list[str] = []
+    """A festival's tiers whose amounts are not in their quote, or that take the same amount of a quote pricing several
+    (shared_problems); and its passes whose style is none of the festival's (style_problems). That a tier's dates are
+    days of the calendar its record holds (records.Day)."""
+    found: list[str] = shared_problems(ev)
     for p, ps in enumerate(ev.passes):
         for t, tier in enumerate(ps.tiers):
             where = f'event {ev.event_id}: passes[{p}].tiers[{t}]'
@@ -176,6 +195,23 @@ def problems(ev: Priced, styles: Sequence[Style]) -> list[str]:
                         f'in {currency}; quote the line that gives this price'
                     )
     return found + style_problems(ev.passes, styles)
+
+
+def shared_problems(ev: Priced) -> list[str]:
+    """The tiers of a festival that quote one line pricing several amounts in their currency ("Early 120€ - Full
+    180€") and take the same amount of it: each tier is a different price of the line, so it takes the amount the
+    others leave. A line one tier alone quotes is bound no further: a tier names no words of its own to bind it by."""
+    sharing: dict[tuple[str, str, float], list[str]] = {}
+    for p, ps in enumerate(ev.passes):
+        for t, tier in enumerate(ps.tiers):
+            if len(priced_in(tier.quote, tier.currency) or ()) > 1:
+                sharing.setdefault((tier.quote, tier.currency, tier.amount), []).append(f'passes[{p}].tiers[{t}]')
+    return [
+        f'amounts: event {ev.event_id}: {" and ".join(where)} each take {amount:g} {currency} of the quote {quote!r}, '
+        'which gives several prices; each tier takes the price that is its own'
+        for (quote, currency, amount), where in sharing.items()
+        if len(where) > 1
+    ]
 
 
 def people(ps: PassTerms) -> People:
