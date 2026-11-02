@@ -43,8 +43,11 @@ export function needs(name: string, file: string): void {
 // the database, once it and the summary are in (siteLoaded)
 export async function load(siteLoaded: Promise<void>): Promise<Database> {
   needs('initSqlJs', 'vendor/sql-wasm.js');
+  // its WebAssembly asked through get(), with its deadline, rather than by sql.js, which would wait on it for ever
   const [SQL, dbBuf] = await Promise.all([
-    initSqlJs({ locateFile: (f) => new URL(f, SQLJS).href }),
+    get(new URL('sql-wasm.wasm', SQLJS))
+      .then((r) => r.arrayBuffer())
+      .then((wasmBinary) => initSqlJs({ wasmBinary })),
     get(new URL('kiz.sqlite', DATA), { revalidate: true }).then((r) => r.arrayBuffer()),
   ]);
   const bytes = new Uint8Array(dbBuf);
