@@ -642,30 +642,44 @@ def given_homes(x: Transaction) -> dict[int, str]:
     return {h.artist_id: h.country for h in x.rows(Given, 'select artist_id, country from src.artist_homes')}
 
 
-def artist_stats(x: Transaction) -> Booked:
-    """Each artist's bookings, roles, countries and home. A couple's booking counts for the couple, not for each
-    member: a member's own bookings are their solo work (event_artists.as_couple)."""
+@dataclass(frozen=True)
+class Bookings:
+    """Each artist's own bookings (events), the events booked in each role, and the further events they are at only
+    as a member of a couple or group."""
+
+    events: collections.defaultdict[int, set[int]]
+    roles: collections.defaultdict[int, collections.Counter[str]]
+    in_couples: collections.defaultdict[int, set[int]]
+
+
+def bookings_of(x: Transaction) -> Bookings:
+    """Each artist's bookings in the roles that count (BOOKED_ROLES), their own (event_artists without as_couple) and
+    through a couple (artist_events' member rows)."""
     roles = (json.dumps(BOOKED_ROLES),)
-    ev_cc = {e.id: e.country_code for e in x.rows(Coded, 'select id, country_code from events')}
-    bookings: collections.defaultdict[int, set[int]] = collections.defaultdict(set)
-    role_count: collections.defaultdict[int, collections.Counter[str]] = collections.defaultdict(collections.Counter)
+    found = Bookings(
+        collections.defaultdict(set), collections.defaultdict(collections.Counter), collections.defaultdict(set)
+    )
     for b in x.rows(
         BookedRow,
         'select artist_id, event_id, role from event_artists where as_couple is null and role in '
         '(select value from json_each(?))',
         roles,
     ):
-        role_count[b.artist_id][b.role] += 1  # the events booked in each role (a booking is once per event and role)
-        bookings[b.artist_id].add(b.event_id)
-    couple_bookings: collections.defaultdict[int, set[int]] = collections.defaultdict(set)  # events booked in a couple
+        found.roles[b.artist_id][b.role] += 1  # the events booked in each role (a booking is once per event and role)
+        found.events[b.artist_id].add(b.event_id)
     for m in x.rows(
         BookedRow,
         'select artist_id, event_id, role from artist_events where via = ?'
         ' and role in (select value from json_each(?))',
         (enums.Via.MEMBER, *roles),
     ):
-        couple_bookings[m.artist_id].add(m.event_id)
-    # the countries each festival's line-up states next to an artist's name, once each
+        found.in_couples[m.artist_id].add(m.event_id)
+    return found
+
+
+def origins(x: Transaction) -> collections.defaultdict[int, collections.Counter[str]]:
+    """The countries each festival's line-up states next to an artist's name, once each, with how many festivals state
+    each (artist_origin)."""
     said: collections.defaultdict[int, set[tuple[int, str]]] = collections.defaultdict(set)
     for m in x.rows(
         Stated,
@@ -680,6 +694,15 @@ def artist_stats(x: Transaction) -> Booked:
         'artist_origin',
         ({'artist_id': a, 'country_code': c, 'festivals': n} for a, cnt in stated.items() for c, n in cnt.items()),
     )
+    return stated
+
+
+def artist_stats(x: Transaction) -> Booked:
+    """Each artist's bookings, roles, countries and home. A couple's booking counts for the couple, not for each
+    member: a member's own bookings are their solo work (event_artists.as_couple)."""
+    ev_cc = {e.id: e.country_code for e in x.rows(Coded, 'select id, country_code from events')}
+    booked = bookings_of(x)
+    stated = origins(x)
     dates = {e.id: e.start_date for e in x.rows(Started, 'select id, start_date from events')}
     given = given_homes(x)
     # where a home country isn't known, none stands in for it: the artist is of unknown country in the statistics
@@ -687,27 +710,25 @@ def artist_stats(x: Transaction) -> Booked:
     home_of: dict[int, str | None] = {}
     stats: list[dict[str, object]] = []
     countries: list[dict[str, object]] = []
-    for a, evs in bookings.items():
+    for a, evs in booked.events.items():
         where = collections.Counter(c for e in evs if (c := ev_cc[e]))
         country, basis = home(given.get(a), stated[a])
-        most = where.most_common(1)[0][0] if where else None
         home_of[a] = country
         ds = sorted(dates[e] for e in evs)
-        abroad = None if country is None else sum(n for c, n in where.items() if c != country)
         stats.append(
             {
                 'artist_id': a,
                 'bookings': len(evs),
-                **{r: role_count[a][r] for r in BOOKED_ROLES},
+                **{r: booked.roles[a][r] for r in BOOKED_ROLES},
                 'first_date': ds[0],
                 'last_date': ds[-1],
                 'home_country': country,
                 'home_basis': basis,
-                'booked_most_in': most,
+                'booked_most_in': where.most_common(1)[0][0] if where else None,
                 'countries': len(where),
-                'abroad_bookings': abroad,
+                'abroad_bookings': None if country is None else sum(n for c, n in where.items() if c != country),
                 'popular': int(len(evs) >= POPULAR),
-                'couple_bookings': len(couple_bookings[a] - evs),
+                'couple_bookings': len(booked.in_couples[a] - evs),
             }
         )
         countries.extend(
@@ -715,7 +736,7 @@ def artist_stats(x: Transaction) -> Booked:
         )
     x.insert('artist_stats', stats)
     x.insert('artist_countries', countries)
-    return Booked(bookings, home_of, ev_cc)
+    return Booked(booked.events, home_of, ev_cc)
 
 
 def features(x: Transaction) -> collections.defaultdict[int, set[str]]:

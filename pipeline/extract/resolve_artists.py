@@ -64,7 +64,7 @@ import re
 import sys
 import unicodedata
 from collections import Counter, defaultdict
-from collections.abc import Iterable, Mapping, Sequence
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from collections.abc import Set as AbstractSet
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
@@ -1144,138 +1144,161 @@ class Counted(BaseModel):
     n: int
 
 
+MENTIONS = (
+    'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country, m.source_line'
+    ' FROM artist_mentions m JOIN events e ON e.id = m.event_id'
+)
+
+
+def joined_keys(keys: Keys, merges: Mapping[frozenset[str], MergeDecision], groups: Sequence[Group]) -> UnionFind:
+    """The keys the merges join, once groups.csv is known to fold each artist into one group at most: its rows that
+    would fold one into two are refused, before anything is written; its keys no mention produces are reported."""
+    joined = merged(keys, merges)
+    if refused := contested(keys, joined, groups):
+        sys.exit('\n'.join(refused))
+    for g, dead in orphaned(keys, groups).items():
+        print(f'{Group.FILE}: {g} names keys no mention produces, orphaned: {", ".join(dead)}', file=sys.stderr)
+    return joined
+
+
+def uses_of(con: Reader, keys: Keys, mentions: Sequence[Mention]) -> dict[str, list[Use]]:
+    """Each key's uses: the festivals that name it, when they start, and in which role."""
+    starts = {e.id: e.start_date for e in con.rows(Started, 'SELECT id, start_date FROM events')}
+    uses: defaultdict[str, list[Use]] = defaultdict(list)
+    for m in mentions:
+        uses[keys.mention_key[m.id]].append(Use(m.event_id, starts[m.event_id], m.role))
+    return dict(uses)
+
+
+def write_reviews(con: Transaction, keys: Keys, mentions: Sequence[Mention], found: Sequence[Candidate]) -> None:
+    """The reasons candidates give, and the pairs the merge review asks about."""
+    con.insert(
+        'merge_reason_definitions', ({'reason': s.key, 'definition': s.criterion} for s in states.of('merge_reason'))
+    )
+    asked = reviews(keys, mentions, found, merge_review.reviewed())
+    con.insert(
+        merge_review.TABLE, ({'key_a': q.key_a, 'key_b': q.key_b, 'question': q.model_dump_json()} for q in asked)
+    )
+
+
+def write_bookings(
+    con: Transaction, mentions: Sequence[Mention], artist_of_key: Mapping[str, int], decided: Claimed, keys: Keys
+) -> None:
+    """Each mention's artist, as its key resolves (artist_of_key), but where a booking claim says one festival's
+    line-up means another artist; a claim that moves no mention is orphaned."""
+    artist_of = {m.id: artist_of_key[keys.mention_key[m.id]] for m in mentions}
+    for b in decided.bookings:
+        c = b.claim
+        frm, to = artist_of_key[c.from_key], artist_of_key[c.to_key]
+        hits = [m.id for m in mentions if m.event_id == c.event_id and artist_of[m.id] == frm]
+        if not hits:
+            decided.state[b.id] = ClaimState.ORPHANED
+        artist_of |= dict.fromkeys(hits, to)
+    con.insert('mention_artists', ({'mention_id': i, 'artist_id': a} for i, a in artist_of.items()))
+
+
+def write_claims(
+    con: Transaction, made: Sequence[claims.Made], decided: Claimed, artist_of_key: Mapping[str, int]
+) -> None:
+    """The homes the claims give (one artist's keys: the claim that comes first), the merge decisions applied, and
+    every claim with its state."""
+    homes: dict[int, claims.Made[claims.HomeClaim]] = {}
+    for h in sorted(decided.homes, key=lambda h: h.rank()):
+        homes[artist_of_key[h.claim.key]] = h
+    con.insert(
+        'artist_homes',
+        (
+            {'artist_id': a, 'country': h.claim.country, 'source': h.source, 'note': h.claim.note}
+            for a, h in homes.items()
+        ),
+    )
+    con.insert(
+        'artist_merge_decisions',
+        (
+            {
+                'key_a': m.claim.keys[0],
+                'key_b': m.claim.keys[1],
+                'decision': m.claim.decision,
+                'source': m.source,
+                'note': m.claim.note,
+            }
+            for m in decided.merges.values()
+        ),
+    )
+    con.insert(
+        'claims',
+        (
+            {
+                'id': m.id,
+                'source': m.source,
+                'subject': json.dumps(claims.subject(m.claim)),
+                'claim': claims.text(m.claim),
+                'made_at': m.claim.made_at,
+                'state': decided.state[m.id],
+            }
+            for m in made
+        ),
+        unless=('id',),
+    )
+
+
+def write_groups(con: Transaction, groups: Sequence[Group], keys: Keys, ids: Mapping[str, int]) -> None:
+    """The named groups, their aliases and members, each key marked when no mention produces it."""
+    con.insert(
+        'artist_group_definitions',
+        (
+            {'group_key': g.group_key, 'artist_id': ids[g.group_key], 'display_name': g.display_name, 'note': g.note}
+            for g in groups
+        ),
+    )
+    con.insert('artist_group_aliases', marked(groups, keys, lambda g: g.aliases))
+    con.insert('artist_group_members', marked(groups, keys, lambda g: g.members))
+
+
+def marked(groups: Sequence[Group], keys: Keys, named_by: Callable[[Group], Sequence[str]]) -> list[dict[str, object]]:
+    """The keys each group names so (its aliases, or its members), each marked when a mention produces it."""
+    return [
+        {'group_key': g.group_key, 'match_key': k, 'produced': int(k in keys.kinds)}
+        for g in groups
+        for k in named_by(g)
+    ]
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description='Resolve artist mentions into artists, with stable ids.')
     _ = ap.parse_args()
     with export.opened('rw') as db, db.transaction() as con:
-        mentions = con.rows(
-            Mention,
-            'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country,'
-            ' m.source_line'
-            ' FROM artist_mentions m JOIN events e ON e.id = m.event_id',
-        )
+        mentions = con.rows(Mention, MENTIONS)
         groups = Group.read()
         keys = keyed(mentions, groups)
         made = claims.every()
         decided = claimed(keys, made)
         merges = {pair: MergeDecision(m.claim.decision) for pair, m in decided.merges.items()}
         found, unsupported_same_name = candidates(keys, merges)
-        joined = merged(keys, merges)
-        if refused := contested(keys, joined, groups):
-            sys.exit('\n'.join(refused))  # before anything is written
-        dead_keys = orphaned(keys, groups)
-        for g, dead in dead_keys.items():
-            print(f'{Group.FILE}: {g} names keys no mention produces, orphaned: {", ".join(dead)}', file=sys.stderr)
-        final_key = final_keys(keys, joined, groups)
-
+        final_key = final_keys(keys, joined_keys(keys, merges, groups), groups)
         # keeping the ids artists had, and where the ids no artist has now went
         ids = stable_ids(con, final_key)
         moved_on = retired_into(con, final_key, ids)
         con.remake(TABLES)
         retire(con, ids, moved_on)
-        starts = {e.id: e.start_date for e in con.rows(Started, 'SELECT id, start_date FROM events')}
-        uses: defaultdict[str, list[Use]] = defaultdict(list)
-        for m in mentions:
-            uses[keys.mention_key[m.id]].append(Use(m.event_id, starts[m.event_id], m.role))
-        write_artists(con, keys, final_key, ids, Named({g.group_key: g.display_name for g in groups}, uses))
-        con.insert(
-            'merge_reason_definitions',
-            ({'reason': s.key, 'definition': s.criterion} for s in states.of('merge_reason')),
-        )
-        asked = reviews(keys, mentions, found, merge_review.reviewed())
-        con.insert(
-            merge_review.TABLE, ({'key_a': q.key_a, 'key_b': q.key_b, 'question': q.model_dump_json()} for q in asked)
-        )
-        found = [c for c in found if c.key_a == c.key_b or final_key[c.key_a] != final_key[c.key_b]]
-        artist_of = {m.id: ids[final_key[keys.mention_key[m.id]]] for m in mentions}
-        for b in decided.bookings:  # one festival's line-up means another artist
-            c = b.claim
-            frm, to = ids[final_key[c.from_key]], ids[final_key[c.to_key]]
-            hits = [m.id for m in mentions if m.event_id == c.event_id and artist_of[m.id] == frm]
-            if not hits:
-                decided.state[b.id] = ClaimState.ORPHANED
-            artist_of |= dict.fromkeys(hits, to)
-        con.insert('mention_artists', ({'mention_id': i, 'artist_id': a} for i, a in artist_of.items()))
-        homes: dict[int, claims.Made[claims.HomeClaim]] = {}
-        for h in sorted(decided.homes, key=lambda h: h.rank()):  # one artist's keys: the claim that comes first
-            homes[ids[final_key[h.claim.key]]] = h
-        con.insert(
-            'artist_homes',
-            (
-                {'artist_id': a, 'country': h.claim.country, 'source': h.source, 'note': h.claim.note}
-                for a, h in homes.items()
-            ),
-        )
-        con.insert('artist_merge_candidates', (c._asdict() for c in found))
-        con.insert(
-            'artist_merge_decisions',
-            (
-                {
-                    'key_a': m.claim.keys[0],
-                    'key_b': m.claim.keys[1],
-                    'decision': m.claim.decision,
-                    'source': m.source,
-                    'note': m.claim.note,
-                }
-                for m in decided.merges.values()
-            ),
-        )
-        con.insert(
-            'claims',
-            (
-                {
-                    'id': m.id,
-                    'source': m.source,
-                    'subject': json.dumps(claims.subject(m.claim)),
-                    'claim': claims.text(m.claim),
-                    'made_at': m.claim.made_at,
-                    'state': decided.state[m.id],
-                }
-                for m in made
-            ),
-            unless=('id',),
-        )
-        con.insert(
-            'artist_group_definitions',
-            (
-                {
-                    'group_key': g.group_key,
-                    'artist_id': ids[g.group_key],
-                    'display_name': g.display_name,
-                    'note': g.note,
-                }
-                for g in groups
-            ),
-        )
-        con.insert(
-            'artist_group_aliases',
-            (
-                {'group_key': g.group_key, 'match_key': a, 'produced': int(a in keys.kinds)}
-                for g in groups
-                for a in g.aliases
-            ),
-        )
-        con.insert(
-            'artist_group_members',
-            (
-                {'group_key': g.group_key, 'match_key': m, 'produced': int(m in keys.kinds)}
-                for g in groups
-                for m in g.members
-            ),
-        )
-        kinds_count = {k.kind: k.n for k in con.rows(Counted, 'SELECT kind, count(*) AS n FROM artists GROUP BY kind')}
-        record_steps(
+        write_artists(
             con,
-            Resolved(
-                len(mentions),
-                kinds_count,
-                len(found),
-                unsupported_same_name,
-                len(groups),
-                sum(map(len, dead_keys.values())),
-            ),
-            decided,
+            keys,
+            final_key,
+            ids,
+            Named({g.group_key: g.display_name for g in groups}, uses_of(con, keys, mentions)),
         )
+        write_reviews(con, keys, mentions, found)
+        found = [c for c in found if c.key_a == c.key_b or final_key[c.key_a] != final_key[c.key_b]]
+        artist_of_key = {k: ids[fk] for k, fk in final_key.items()}
+        write_bookings(con, mentions, artist_of_key, decided, keys)
+        con.insert('artist_merge_candidates', (c._asdict() for c in found))
+        write_claims(con, made, decided, artist_of_key)
+        write_groups(con, groups, keys, ids)
+        kinds_count = {k.kind: k.n for k in con.rows(Counted, 'SELECT kind, count(*) AS n FROM artists GROUP BY kind')}
+        dead = sum(map(len, orphaned(keys, groups).values()))
+        resolved = Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups), dead)
+        record_steps(con, resolved, decided)
         print(
             f'mentions {len(mentions)} -> artists {sum(kinds_count.values())} {kinds_count};'
             f' candidates {len(found)} ({sum(1 for c in found if c.decision)} reviewed);'
