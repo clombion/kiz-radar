@@ -457,6 +457,19 @@ class Went(BaseModel):
     retired_into: int | None
 
 
+def test_an_id_kept_by_the_artist_that_absorbed_its_key_is_that_artists_key(memory: Memory) -> None:
+    """Two spellings merge into a couple key no artist had, which keeps the lower id: that id is the couple's key's
+    now, so the next run gives it the same id from its own key, and the id reads as the artist that has it."""
+    con = db_with(memory(), {'c:x': 12, 'c:y': 5}, {'c:x': 12, 'c:y': 5})
+    ids = stable_ids(con, {'c:x': 'c:z', 'c:y': 'c:z'})
+    with con.transaction() as tx:
+        resolve_artists.retire(tx, ids, {12: 5})
+    given = {
+        k.artist_id: k.match_key for k in con.rows(resolve_artists.Keyed, 'SELECT artist_id, match_key FROM artist_ids')
+    }
+    assert given == {5: 'c:z', 12: 'c:x'}
+
+
 def test_an_alias_two_groups_claim_is_refused() -> None:
     groups = [duo('g:ab', 'p:absound'), duo('g:ba', 'p:absound')]
     keys = resolve_artists.keyed(named('AB Sound'), groups)

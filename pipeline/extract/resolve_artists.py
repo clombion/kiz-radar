@@ -41,10 +41,10 @@ group_key, display_name, members and aliases (both ';'-separated match_key value
 mention becomes a mention of the group, and the group is linked to its members, so each member's events
 include the group's bookings.
 
-Artist ids are stable: artist_ids keeps every id ever given and the match_key it was given to. An artist
-keeps the id of its own key, else the lowest earlier id among the keys it absorbed; a new artist gets the
-next id never used. An id no artist has any more is retired into the artist its keys resolve to now
-(artist_ids.retired_into), which the site redirects it to.
+Artist ids are stable: artist_ids keeps every id ever given and the match_key of the artist that has it now (or had
+it last, for an id no artist has). An artist keeps the id of its own key, else the lowest earlier id among the keys
+it absorbed; a new artist gets the next id never used. An id no artist has any more is retired into the artist its
+keys resolve to now (artist_ids.retired_into), which the site redirects it to.
 
 Usage: mise run resolve
 """
@@ -204,7 +204,7 @@ VIA = {'via_direct': Via.DIRECT, 'via_member': Via.MEMBER}  # the states ARTIST_
 # the export's table of every id given, which this step only adds to (tests/test_steps.py holds the export to it)
 KEPT = sqlite_db.declared("""CREATE TABLE artist_ids (
     artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
-    match_key TEXT NOT NULL UNIQUE, -- the key it was given to
+    match_key TEXT NOT NULL UNIQUE, -- the key of the artist that has it, or had it last
     retired_into INTEGER            -- the artist its keys went to once no artist had it; NULL while one has
 ) STRICT""")
 # a review that could not tell (unsure) decides nothing: the pair stays a candidate, and no claim holds it
@@ -326,8 +326,8 @@ TABLE_DOCS = {
     'claims': 'Every claim (pipeline/claims.py), of every source: its subject and text, when it was made, and its '
     'state: applied (it decides its subject), overridden (another claim comes first) or orphaned (it names a key no '
     'mention produces, and decides nothing).',
-    'artist_ids': 'Every artist id ever given and the match_key it was given to. An id missing from artists was merged '
-    'into another artist: artist_keys gives the artist its key belongs to now.',
+    'artist_ids': 'Every artist id ever given, and the match_key of the artist that has it now, or had it last. An id '
+    'missing from artists was retired: retired_into is the artist its keys went to, when any did.',
 }
 
 
@@ -446,9 +446,13 @@ def retired_into(con: Reader, final_key: Mapping[str, str], ids: Mapping[str, in
 def retire(con: Transaction, ids: Mapping[str, int], moved_on: Mapping[int, int]) -> None:
     """Record the ids given (artist_ids) and where the ids no artist has now went. An id an artist has again is
     retired into nothing: left as it was, the id it went to could go back to it, and the two would redirect to each
-    other for ever."""
-    con.insert('artist_ids', ({'artist_id': i, 'match_key': fk} for fk, i in ids.items()), unless=('artist_id',))
-    con.executemany('UPDATE artist_ids SET retired_into = NULL WHERE artist_id = ?', [(i,) for i in ids.values()])
+    other for ever. An id an artist keeps under a key of its own (it absorbed the key the id was given to) is the
+    artist's key's now: its key no other id has, as stable_ids gives an artist the id of its key when one was given."""
+    con.executemany(
+        'INSERT INTO artist_ids (artist_id, match_key) VALUES (?, ?)'
+        ' ON CONFLICT (artist_id) DO UPDATE SET match_key = excluded.match_key, retired_into = NULL',
+        [(i, fk) for fk, i in ids.items()],
+    )
     con.executemany('UPDATE artist_ids SET retired_into = ? WHERE artist_id = ?', [(n, o) for o, n in moved_on.items()])
 
 

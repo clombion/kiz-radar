@@ -231,6 +231,20 @@ insert into source_ids (source, source_id, event_id) select 'kizomba-world', id,
     ('source_ids', 'table', 'Each festival''s id at its source (kizomba-world''s), and ours (event_id), given once and '
      || 'never again.', 'pipeline/scrape.py')
     on conflict (name) do update set description = excluded.description, written_by = excluded.written_by;""",
+    # 9: an id's key the key of the artist that has it now: an artist that kept the id of a key it absorbed was left
+    # under the key the id was given to (70 artists), so the id read as another key's (resolve_artists.retire)
+    rebuilt(
+        """CREATE TABLE artist_ids (
+    artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
+    match_key TEXT NOT NULL UNIQUE, -- the key of the artist that has it, or had it last
+    retired_into INTEGER            -- the artist its keys went to once no artist had it; NULL while one has
+) STRICT;
+""",
+        then="""
+update artist_ids set match_key = (select a.match_key from artists a where a.id = artist_ids.artist_id)
+where artist_id in (select id from artists);
+""",
+    ),
 )
 
 

@@ -195,6 +195,17 @@ def test_an_artists_events_are_the_same_in_the_export_and_on_the_site(site_db: P
         assert export_db.value(int, repeats) > 0  # some line-ups name a member beside their couple
 
 
+def test_every_artist_is_the_key_its_id_was_last_given_to() -> None:
+    """artist_ids holds each artist's id with the artist's own key, which the next run keeps it by."""
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        apart = db.value(
+            int,
+            'select count(*) from artists a'
+            ' where not exists (select 1 from artist_ids i where i.artist_id = a.id and i.match_key = a.match_key)',
+        )
+    assert apart == 0
+
+
 class Documented(BaseModel):
     name: str
     written_by: str
