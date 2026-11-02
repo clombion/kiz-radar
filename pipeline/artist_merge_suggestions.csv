@@ -58,7 +58,7 @@ p:dimitris@christina+dimitris,p:dimitris@dimitris+yolena,Dimitris,Dimitris,0,0,,
 p:fabrizio@dj,p:fabrizio@fabrizio+giulia,DJ Fabrizio,Fabrizio,1,0,IT,,unknown,no clash,,1.0,1.0,"same name, different keys"
 p:fernando@dj,p:fernando@fernando+michela,DJ Fernando,Fernando,1,0,AO GB,,unknown,no clash,,1.0,1.0,"same name, different keys"
 p:manon@dj,p:manon@didier+manon,DJ Manon,Manon,1,0,GP,,unknown,no clash,,1.0,1.0,"same name, different keys"
-p:mario@dj,p:mario@carla+mario,DJ Mario,Mario,2,0,FR,,unknown,no clash,,1.0,1.0,"same name, different keys"
+p:mario@dj,p:mario@carla+mario,DJ Mario,Mário,2,0,FR,,unknown,no clash,,1.0,1.0,"same name, different keys"
 p:prince@dj,p:prince@prince+vicky,DJ Prince,Prince,3,0,IT,,unknown,no clash,,1.0,1.0,"same name, different keys"
 p:eden@dj,p:eden@eden+ioury,Eden,Eden,4,0,FR,,unknown,no clash,,1.0,1.0,"same name, different keys"
 p:elo@adil+elo,p:elo@elo+mike,Elo,Elo,0,0,,,unknown,no clash,,1.0,1.0,"same name, different keys"
@@ -99,9 +99,9 @@ p:willy@jessica+willy,p:willy@jessy+willy,Willy,Willy,0,0,,,unknown,no clash,,1.
 p:nolimits,p:nolimit,DJ No Limits,DJ No Limit,2,1,,,unknown,shared circuit,same city: geneva,0.93,0.98,similar spelling
 p:benite@benite+railey,p:beniteb@beniteb+railey,Benite,BENITEb,0,0,,,unknown,shared circuit,same city: vienna,0.92,0.97,"same partner, shortened name"
 p:mario@dj,p:marion@gordon+marion,DJ Mario,Marion,2,0,FR,,unknown,shared circuit,same city: barcelona,0.91,0.96,similar spelling
+p:djstefaniolima,p:estefaniolima,DJ Stefanio Lima,DJ Estefanio Lima,30,1,CV NL,,unknown,no clash,,0.96,0.96,similar spelling
 p:donaldwilson,p:donaldwillson,Donald Wilson,Donald Willson,2,1,,,unknown,no clash,,0.96,0.96,similar spelling
 p:ledouxkingsman,p:ledoukingsman,Ledoux Kingsman,Ledou Kingsman,5,0,FR,,unknown,no clash,,0.96,0.96,similar spelling
-p:djstefaniolima,p:estefaniolima,Stefanio Lima,DJ Estefanio Lima,30,1,CV NL,,unknown,no clash,,0.96,0.96,similar spelling
 c:azael+marta,c:azael+martha,Azael y Marta,Azael & Martha,1,1,,MX PL,unknown,no clash,,0.95,0.95,couples with matching names
 p:moussadiop,p:moustadiop,Moussa Diop,Mousta Diop,1,1,FR,,unknown,shared circuit,same city: malaga,0.9,0.95,similar spelling
 p:paolomieli,p:paolomeli,Paolo Mieli,Paolo Meli,1,0,,,unknown,no clash,,0.95,0.95,similar spelling
@@ -116,7 +116,6 @@ c:jessica+willy,c:jessy+willy,Willy & Jessica,Willy & Jessy,1,1,IT MX,IT,same,no
 p:sandrag,p:sandra@esteban+sandra,Sandra G,Sandra,1,0,ES,,unknown,no clash,,0.92,0.92,first words of the other
 c:alain+katerina,c:alain+katherine,Alain & Katerina,Alain and Katherine,2,1,,,unknown,no clash,,0.91,0.91,couples with matching names
 p:willyg,p:willy@lauriane+willy,DJ Willy G,Willy,9,0,FR,,unknown,no clash,,0.91,0.91,first words of the other
-c:luismi+marian,c:arantxa+luismi,Luismi y Marian,Luismi & Arantxa,3,1,ES,ES,same,same line-up,"both listed as teacher at the event of 2026-09-10 in Liège, Belgium",0.81,0.91,couples with matching names
 p:marta@azael+marta,p:martha@azael+martha,Marta,Martha,0,0,,,unknown,no clash,,0.91,0.91,similar spelling
 p:marta@dance,p:martha@azael+martha,Marta,Martha,1,0,PL,,unknown,no clash,,0.91,0.91,similar spelling
 p:fabrizio@dj,p:fabriziozoro,DJ Fabrizio,DJ Fabrizio Zoro,1,1,IT,IT,same,no clash,,0.8,0.9,first words of the other
@@ -164,7 +163,6 @@ p:jorgeaz,p:jorge@angela+jorge,Jorge Az,Jorge,1,0,ES PT,,unknown,no clash,,0.83,
 c:juan+sara,c:juan+marta,Juan y Sara,Juan & Marta,2,1,ES,,unknown,no clash,,0.83,0.83,couples with matching names
 c:marco+sara,c:marco+maria,Marco & Sara,Marco y Maria,3,1,ES PE,,unknown,no clash,,0.83,0.83,couples with matching names
 c:marco+maria,c:marco+mary,Marco y Maria,Mary y Marco,1,1,,,unknown,no clash,,0.83,0.83,couples with matching names
-c:celia+mauro,c:mauro+melissa,Mauro & Celia,Mauro & Melissa,3,2,AO CH PT,,unknown,no clash,,0.83,0.83,couples with matching names
 c:aleksandra+miguel,c:aleksandra+murmel,Miguel & Aleksandra,Murmel & Aleksandra,1,1,,,unknown,no clash,,0.83,0.83,couples with matching names
 c:ana+stephane,c:sandra+stephane,Stephane & Ana,Stephane & Sandra,5,1,BE RO,,unknown,no clash,,0.83,0.83,couples with matching names
 c:silvia+tony,c:sylwia+tony,Tony & Silvia,Tony & Sylwia,1,1,,IE,unknown,no clash,,0.83,0.83,couples with matching names
@@ -322,7 +320,7 @@ c:eleanna+marco,c:janina+marco,Marco & Eleanna,Marco & Janina,1,1,GR,DE,differen
 c:daria+david,c:david+lidia,David & Daria,David & Lidia,1,1,CA,ES,different,no clash,,0.8,0.55,couples with matching names
 c:jilly+john,c:john+kelly,Jilly & John,John & Kelly,1,1,PH US,GR,different,no clash,,0.8,0.55,couples with matching names
 p:lucaarrigoni,p:luca@elena+luca,Luca Arrigoni,Luca,1,0,,,unknown,shared circuit,same city: milan,0.5,0.55,first words of the other
-c:carla+mario,c:carla+mihai,Mario & Carla,Mihai & Carla,2,2,AO FR,RO,different,no clash,,0.8,0.55,couples with matching names
+c:carla+mario,c:carla+mihai,Mário & Carla,Mihai & Carla,2,2,AO FR,RO,different,no clash,,0.8,0.55,couples with matching names
 p:atou@dance,p:atoubaakaa2man,Atou,Atou Ba aka A2Man,4,1,SN,FR SN,same,no clash,,0.44,0.54,first words of the other
 c:anna+marten,c:jana+martin,Mårten & Anna,Martin & Jana,1,1,SE,CZ,different,no clash,,0.79,0.54,couples with matching names
 c:andrea+silvia,c:ilias+sandra,Andrea & Silvia,Ilias & Sandra,5,1,IT,RO,different,no clash,,0.78,0.53,couples with matching names
