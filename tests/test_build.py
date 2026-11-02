@@ -1,15 +1,22 @@
 """The site database's derived tables against what they are derived from: each count the build computes in Python
 (pipeline/build_site_db.py) is computed again here in SQL from the tables it reads, and the two must agree row for
 row. A derivation that drops a role, counts a couple's booking for its members or a cancelled festival in a country
-shows here as the rows on one side only."""
+shows here as the rows on one side only. The tables the build copies from our files (who's going, where a festival is
+and the airport it flies to, the fares) are read against those files, row for row."""
 
+import datetime as dt
 import json
+import math
+from collections.abc import Mapping
 from pathlib import Path
 
 import pytest
+from pydantic import BaseModel
 
-from pipeline import build_site_db, enums
+from pipeline import airports, build_site_db, enums
 from pipeline import db as sqlite_db
+from pipeline.records import Airport, Fare, Person, Place, PlanRow, Spot
+from tests.exports import committed
 
 # an artist's own bookings in some roles: once per festival and role, a member's booking with their couple left to
 # the couple
@@ -122,3 +129,107 @@ HAS = "select event_id from event_stats where ',' || features || ',' like '%,{fe
 def test_the_derived_highlights_are_in_a_festival_s_features(site_db: Path, feature: str, source: str) -> None:
     """A promo code of ours and group passes add their highlight to the festival's features, which the card reads."""
     assert differ(site_db, HAS.replace('{feature}', f'{{{feature}}}'), source) == []
+
+
+class Going(BaseModel, frozen=True):
+    key: str
+    name: str
+    featured: bool
+
+
+class Is(BaseModel, frozen=True):
+    person: str
+    artist: str
+
+
+class Plans(BaseModel, frozen=True):
+    person: str
+    event_id: int
+    status: enums.Plan
+
+
+class Where(BaseModel, frozen=True):
+    id: int
+    lat: float | None
+    lon: float | None
+    airport: str | None
+    airport_km: int | None
+
+
+class In(BaseModel, frozen=True):
+    id: int
+    city: str | None
+    country: str | None
+
+
+class Flight(BaseModel, frozen=True):
+    airport: str
+    depart: dt.date
+    back: dt.date
+    price: float
+    fetched_at: dt.datetime
+
+
+def built[R: BaseModel](site_db: Path, record: type[R], sql: str) -> set[R]:
+    with sqlite_db.opened(site_db, 'ro') as db:
+        return set(db.rows(record, sql))
+
+
+def test_who_s_going_is_what_people_csv_and_plans_csv_say(site_db: Path) -> None:
+    committed(Person.FILE, PlanRow.FILE)
+    people, plans = Person.read(), PlanRow.read()
+    assert built(site_db, Going, 'select key, name, featured from people') == {
+        Going(key=p.key, name=p.name, featured=p.featured) for p in people
+    }
+    assert built(
+        site_db,
+        Is,
+        'select p.key as person, a.match_key as artist from person_artists pa join people p on p.id = pa.person_id'
+        ' join artists a on a.id = pa.artist_id',
+    ) == {Is(person=p.key, artist=k) for p in people for k in p.artist_keys}
+    assert built(
+        site_db, Plans, 'select p.key as person, l.event_id, l.status from plans l join people p on p.id = l.person_id'
+    ) == {Plans(person=r.person, event_id=r.event_id, status=r.status) for r in plans}
+    assert plans
+
+
+def haversine_km(a: tuple[float, float], b: tuple[float, float]) -> float:
+    (lat1, lon1), (lat2, lon2) = (tuple(map(math.radians, p)) for p in (a, b))
+    h = math.sin((lat2 - lat1) / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin((lon2 - lon1) / 2) ** 2
+    return 2 * 6371 * math.asin(math.sqrt(h))
+
+
+def where(e: In, found: Mapping[tuple[str, str | None], Spot], to: list[Airport]) -> Where:
+    """Where geocode.csv found the festival's city in its country, and the nearest airport within MAX_AIRPORT_KM."""
+    spot = None if e.city is None else found.get((e.city, e.country))
+    if spot is None:
+        return Where(id=e.id, lat=None, lon=None, airport=None, airport_km=None)
+    km, code = min((haversine_km((spot.lat, spot.lon), (a.lat, a.lon)), a.code) for a in to)
+    near = km <= airports.MAX_AIRPORT_KM
+    return Where(
+        id=e.id, lat=spot.lat, lon=spot.lon, airport=code if near else None, airport_km=round(km) if near else None
+    )
+
+
+def test_a_festival_is_where_geocode_csv_puts_its_city_and_flies_to_the_nearest_airport(site_db: Path) -> None:
+    """A festival is on the map where geocode.csv found its city in its country, and flies to the nearest airport of
+    airports.csv within MAX_AIRPORT_KM; a city not found, or with no airport near enough, has none."""
+    committed(Place.FILE, Airport.FILE)
+    found = {(p.city, p.country): p.found for p in Place.read() if p.found}
+    to = Airport.read()
+    assert built(site_db, Airport, 'select code, name, city, country_code, lat, lon, home from airports') == set(to)
+    expected = {where(e, found, to) for e in built(site_db, In, 'select id, city, country from events')}
+    assert built(site_db, Where, 'select id, lat, lon, airport, airport_km from events') == expected
+    # festivals of every kind: not on the map, on it with no airport near enough, flying to one
+    assert {(w.lat is None, w.airport is None) for w in expected} == {(True, True), (False, True), (False, False)}
+
+
+def test_a_fare_is_what_fares_csv_says_back_the_monday_after(site_db: Path) -> None:
+    committed(Fare.FILE)
+    fares = Fare.read()
+    monday = dt.timedelta(days=3)  # out on the Friday, back on the Monday
+    assert built(site_db, Flight, 'select airport, depart, return as back, price, fetched_at from fares') == {
+        Flight(airport=f.airport, depart=f.depart, back=f.depart + monday, price=f.price, fetched_at=f.fetched_at)
+        for f in fares
+    }
+    assert fares
