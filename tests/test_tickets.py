@@ -15,7 +15,19 @@ import pytest
 from pipeline import ROOT, calls, data, prompt, spend, tickets, tickets_reading, tickets_state, tickets_store
 from pipeline.calls import Declined
 from pipeline.db import Db, Reader
-from pipeline.enums import CallCause, Model, PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
+from pipeline.enums import (
+    CallCause,
+    Listing,
+    Model,
+    PassKind,
+    Price,
+    Recheck,
+    Sales,
+    SkipReason,
+    Status,
+    Style,
+    Waiting,
+)
 from pipeline.enums import FirstRead as FirstReadState
 from pipeline.extract import answers, load_extract, prices
 from pipeline.read_page import Browsers
@@ -1313,8 +1325,20 @@ def test_a_run_for_named_festivals_reads_only_them(
     monkeypatch.setattr(tickets, 'append', no_append)
     tickets.cmd_run(events(memory(), 6, 7, 8), {8, 6})  # 6 is past: nothing to read there
     assert asked == ['https://shop.example/8']
-    with pytest.raises(SystemExit, match=r'\[9\]'):
+    with pytest.raises(SystemExit, match=r'^no such festival: 9$'):
         tickets.cmd_run(events(memory(), 6, 7, 8), {9})
+
+
+def test_a_run_for_festivals_it_cannot_read_refuses_naming_each_and_why(memory: Memory) -> None:
+    """festivals() leaves out a cancelled festival and one the site no longer lists: a run named only them would do
+    nothing and pass."""
+    db = shaped(memory())
+    with db.transaction() as tx:
+        exports.festival(tx, 7)
+        exports.festival(tx, 8, cancelled=1)
+        exports.festival(tx, 9, listing=Listing.GONE, unlisted_on='2026-10-01')
+    with pytest.raises(SystemExit, match=r'^no such festival: 6; cancelled: 8; no longer listed: 9$'):
+        tickets.cmd_run(db, {6, 7, 8, 9})
 
 
 def test_a_run_reads_every_page_in_the_same_browsers(

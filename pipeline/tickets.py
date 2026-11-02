@@ -66,6 +66,7 @@ with a visible browser. run --limit N first-reads N festivals at most, as the Ac
 import argparse
 import collections
 import datetime as dt
+import json
 import re
 import sys
 from collections.abc import Mapping, Sequence
@@ -80,7 +81,7 @@ from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.calls import Declined
 from pipeline.enums import FirstRead as FirstReadState
-from pipeline.enums import Model, PassKind, Sales, SkipReason, Status, Style, Waiting
+from pipeline.enums import Listing, Model, PassKind, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import ask
 from pipeline.read_page import Browsers
 from pipeline.records import (
@@ -597,6 +598,24 @@ class Run:
         return '\n'.join([*self.alarms, *([unread] if unread else [])]) or None
 
 
+def unreadable(db: sqlite_db.Reader, ids: set[int]) -> str | None:
+    """Why a run can read some of these festivals not at all, naming each: none in the export, cancelled, or no longer
+    listed (festivals() leaves them out); None when it can read every one."""
+    asked = (json.dumps(sorted(ids)),)
+    found = set(db.column(int, 'select id from events where id in (select value from json_each(?))', asked))
+    cancelled = db.column(
+        int, 'select id from events where cancelled is 1 and id in (select value from json_each(?)) order by id', asked
+    )
+    gone = db.column(
+        int,
+        'select id from events where cancelled is not 1 and listing != ? and id in (select value from json_each(?))'
+        ' order by id',
+        (Listing.LISTED, *asked),
+    )
+    said = [('no such festival', sorted(ids - found)), ('cancelled', cancelled), ('no longer listed', gone)]
+    return '; '.join(f'{why}: {", ".join(map(str, these))}' for why, these in said if these) or None
+
+
 def cmd_run(
     db: sqlite_db.Reader, ids: set[int] | None = None, limit: int | None = None, parts: Sequence[Part] = PARTS
 ) -> None:
@@ -606,9 +625,8 @@ def cmd_run(
     whose page broke its recipe, reached REFUSALS failures, no longer fits its first read, or got no first read from
     the models (pipeline/calls.py)."""
     day = today()
-    every = set(db.column(int, 'select id from events'))
-    if ids and (missing := ids - every):
-        sys.exit(f'no such festival: {sorted(missing)}')
+    if ids and (why := unreadable(db, ids)):
+        sys.exit(why)
     with Browsers() as browsers:
         run = Run(db, day, browsers, limit, parts)
         for f in (f for f in festivals(db, day) if not ids or f.id in ids):
