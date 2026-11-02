@@ -294,6 +294,18 @@ def test_every_artists_key_says_its_kind() -> None:
     assert [a for a in artists if kind_of(a.match_key) != a.kind] == []
 
 
+SHORT_ROW = 200  # bytes on average: a twentieth of a 4 KB page, under which SQLite advises a table stored by its key
+
+
+def test_a_site_table_stored_by_its_key_has_short_rows(site_db: Path) -> None:
+    """build_site_db's rule: a table is without rowid only when its rows are short, each as SQL writes its values."""
+    rows = content(site_db)
+    with sqlite_db.opened(site_db, 'ro') as db:
+        keyed = db.column(str, "select name from pragma_table_list where wr and schema = 'main'")
+    average = {t: sum(map(len, rows[t])) / len(rows[t]) for t in keyed if rows[t]}
+    assert {t: round(a) for t, a in average.items() if a >= SHORT_ROW} == {}
+
+
 class Documented(BaseModel):
     name: str
     written_by: str

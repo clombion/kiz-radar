@@ -69,8 +69,9 @@ COPIED = (  # the export's tables the site keeps, each in the order it refers to
     'pass_tiers',
 )
 # the site's tables, each filled once from the export and the committed data (copied: a column the export has, as it
-# has it); a table whose key is not its row id is stored as its key (without rowid), so the key is the table rather
-# than an index beside it
+# has it); a table whose key is not its row id and whose rows are short (under 200 bytes on average, a twentieth of a
+# 4 KB page, as SQLite advises) is stored as its key (without rowid), so the key is the table rather than an index
+# beside it: the database is 2.7 MB so, 3.8 MB with every table by row id. A table of longer rows keeps its row id.
 DDL = """
 create table events (
     id integer primary key,
@@ -181,7 +182,7 @@ create table pipeline_steps (
     inputs text,
     outputs text,
     details text
-) strict, without rowid;
+) strict;  -- rows of 750 bytes on average: by row id (DDL)
 create table event_genres (
     event_id integer not null references events(id) deferrable initially deferred,
     genre text not null check (genre in ({genre})),
