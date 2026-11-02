@@ -18,13 +18,19 @@ from pipeline.states import Disposition, Link, State
 
 
 @pytest.mark.parametrize(
-    'make',
+    ('make', 'why'),
     [
-        lambda: State('price', 'priced', 'x'),  # a field missing  # pyright: ignore[reportCallIssue]
-        lambda: State('price', 'priced', 'x', 'card'),  # a disposition that is a string  # pyright: ignore[reportArgumentType]
-        lambda: State('price', 'priced', 'x', Disposition.CARD, wording=3),  # wording that is no string  # pyright: ignore[reportArgumentType]
-        lambda: State('price', 'priced', 'x', Disposition.CARD, link='page'),  # a link that is no Link  # pyright: ignore[reportArgumentType]
-        lambda: State('price', 'priced', 'x', Disposition.CARD, forms=3),  # forms that are no mapping  # pyright: ignore[reportArgumentType]
+        (lambda: State('price', 'priced', 'x'), 'disposition\n  Field required'),  # pyright: ignore[reportCallIssue]
+        (lambda: State('price', 'priced', 'x', 'card'), 'instance of Disposition'),  # pyright: ignore[reportArgumentType]
+        (
+            lambda: State('price', 'priced', 'x', Disposition.CARD, wording=3),  # pyright: ignore[reportArgumentType]
+            'wording\n  Input should be a valid string',
+        ),
+        (lambda: State('price', 'priced', 'x', Disposition.CARD, link='page'), 'instance of Link'),  # pyright: ignore[reportArgumentType]
+        (
+            lambda: State('price', 'priced', 'x', Disposition.CARD, forms=3),  # pyright: ignore[reportArgumentType]
+            'forms\n  Input should be a valid dictionary',
+        ),
     ],
     ids=[
         'a field missing',
@@ -34,8 +40,8 @@ from pipeline.states import Disposition, Link, State
         'forms no mapping',
     ],
 )
-def test_a_row_with_a_missing_or_wrong_typed_field_fails(make: Callable[[], State]) -> None:
-    with pytest.raises(ValidationError):
+def test_a_row_with_a_missing_or_wrong_typed_field_fails(make: Callable[[], State], why: str) -> None:
+    with pytest.raises(ValidationError, match=why):
         _ = make()
 
 
@@ -58,7 +64,7 @@ def test_a_table_with_a_clash_or_a_dangling_state_fails(extra: State) -> None:
 
 
 def test_a_rows_forms_cannot_be_changed() -> None:
-    with pytest.raises(TypeError):
+    with pytest.raises(TypeError, match='does not support item assignment'):
         states.state('role', 'dj').forms['singular'] = 'Deejay'  # pyright: ignore[reportIndexIssue]
 
 

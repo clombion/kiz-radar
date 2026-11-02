@@ -11,10 +11,10 @@ import pytest
 
 from pipeline import audit, data, prompt, tickets_state, tickets_store
 from pipeline.db import Reader
-from pipeline.enums import FirstRead, Model
-from pipeline.records import CsvRow, PageRecipe, Provenance
+from pipeline.enums import FirstRead
+from pipeline.records import ANSWERS, CsvRow, PageRecipe
 from tests.exports import committed, shaped
-from tests.fakes import AT, SITE_CLAIMS, Memory
+from tests.fakes import SITE_CLAIMS, Memory
 
 
 def copied() -> Path:
@@ -87,13 +87,11 @@ def test_an_override_replaces_only_the_state_it_names() -> None:
     assert tickets_state.waiting(festival(f'https://{o.host}/e', need=FirstRead.DISPUTED)) != o.then
 
 
-def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes() -> None:
     copied()
     now, old = prompt.current('extract').hash, '0' * 16
-    folder = tmp_path / 'extract'
-    folder.mkdir()
+    folder = data(ANSWERS) / 'extract'
+    folder.mkdir(parents=True)
     feature = {'feature': 'promo_code', 'quote': 'q', 'rationale': 'a code'}  # a feature the build makes
     for i in (1, 2):
         events = [{'event_id': i, 'artists': [], 'features': [feature]}]
@@ -106,20 +104,6 @@ def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
             'answer': {'batch': 'b', 'events': events},
         }
         _ = (folder / f'event-{i}.json').write_text(json.dumps(filed))
-
-    def answered(pass_name: str, event_ids: set[int]) -> dict[int, tuple[Path, Provenance]]:
-        assert event_ids == {1, 2}  # the festivals audit.refused was given
-        if pass_name != 'extract':  # noqa: S105 (a pass is an extraction pass, no password)
-            return {}
-        return {
-            i: (
-                folder / f'event-{i}.json',
-                Provenance(prompt=h, model=Model.CLAUDE_HAIKU_5_5, answered_at=AT, answered_by='x', inputs=None),
-            )
-            for i, h in ((1, now), (2, old))
-        }
-
-    monkeypatch.setattr(audit.answers, 'answered', answered)
     found = [f for f in audit.refused({1, 2}) if 'event-' in f]
     assert len(found) == 1
     assert 'event-1.json: answer/events/0/features/0/feature: Input should be' in found[0]

@@ -699,10 +699,14 @@ def test_an_archive_cut_short_is_written_again() -> None:
     assert not list(data(prompt.ASKED).glob('*.part'))
 
 
-def test_the_system_text_sent_is_the_prompts() -> None:
+def test_the_system_text_and_the_schema_sent_are_the_prompts() -> None:
     client = Client(prices_answer('Full pass 80€ until 31.01'))
     _ = ask.ask(client, JOB)
-    assert client.messages.requests[0]['system'] == prompt.current('prices').system
+    p = prompt.current('prices')
+    assert client.messages.requests[0]['system'] == p.system
+    assert client.messages.requests[0]['output_config'] == {
+        'format': {'type': 'json_schema', 'schema': dict(p.sent_schema)}
+    }
 
 
 def export_prompts() -> set[str]:
@@ -830,12 +834,8 @@ def source(con: Db, *events: tuple[int, str | None]) -> Db:
     return con
 
 
-def no_answers(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Provenance]]:
-    return {}
-
-
-def test_a_festival_with_no_answer_of_a_pass_is_asked(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(ask.answers, 'answered', no_answers)
+@pytest.mark.usefixtures('answered_here')
+def test_a_festival_with_no_answer_of_a_pass_is_asked() -> None:
     assert [(j.asked.event_id, j.pass_.name) for j in ask.due(NOW, [prompt.PRICES], {5, 6})] == [
         (5, 'prices'),
         (6, 'prices'),
@@ -856,15 +856,21 @@ def provenance(prompt_: str, inputs: str | None) -> Provenance:
 ANSWERED_NOW = provenance(prompt.current('prices').hash, JOB.inputs)
 
 
-def test_an_answer_to_an_older_prompt_or_message_is_asked_again(monkeypatch: pytest.MonkeyPatch) -> None:
-    have = {5: (Path('a'), provenance('0' * 16, JOB.inputs)), 6: (Path('b'), ANSWERED_NOW)}
+def filed_answer(folder: Path, event_id: int, came_from: Provenance) -> None:
+    """A festival's answer of the prices pass, as ask files it; answered reads only its provenance and festival."""
+    answer = {'batch': 'b', 'events': [{'event_id': event_id}]}
+    _ = (folder / f'event-{event_id}.json').write_text(
+        json.dumps(came_from.model_dump(mode='json') | {'answer': answer})
+    )
 
-    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Provenance]]:
-        return have
 
-    monkeypatch.setattr(ask.answers, 'answered', answered)
+def test_an_answer_to_an_older_prompt_or_message_is_asked_again(answered_here: Path) -> None:
+    folder = answered_here / 'prices'
+    folder.mkdir()
+    filed_answer(folder, 5, provenance('0' * 16, JOB.inputs))
+    filed_answer(folder, 6, ANSWERED_NOW)
     assert [j.asked.event_id for j in ask.due(NOW, [prompt.PRICES], {5, 6})] == [5, 6]  # 6 asked of 5's message
-    have[6] = (Path('b'), provenance(prompt.current('prices').hash, ask.job(NOW, prompt.PRICES, 6).inputs))
+    filed_answer(folder, 6, provenance(prompt.current('prices').hash, ask.job(NOW, prompt.PRICES, 6).inputs))
     assert [j.asked.event_id for j in ask.due(NOW, [prompt.PRICES], {5, 6})] == [5]
 
 
@@ -905,21 +911,29 @@ def test_the_prices_question_follows_the_styles_the_rooms_genres_answer_gives() 
 
 @pytest.mark.parametrize(
     ('text', 'ids'),
-    [('16909,18806', {16909, 18806}), ('16909, 18806,', {16909, 18806}), ('x', None), (',', None), ('', None)],
+    [
+        ('16909,18806', {16909, 18806}),
+        ('16909, 18806,', {16909, 18806}),
+        ('x', 'festival ids, separated by commas'),
+        (',', 'no festival id'),
+        ('', 'no festival id'),
+    ],
 )
-def test_festival_ids_are_read_from_commas(text: str, ids: set[int] | None) -> None:
-    if ids is None:
-        with pytest.raises(argparse.ArgumentTypeError):
+def test_festival_ids_are_read_from_commas(text: str, ids: set[int] | str) -> None:
+    if isinstance(ids, str):
+        with pytest.raises(argparse.ArgumentTypeError, match=ids):
             _ = db.festival_ids(text)
     else:
         assert db.festival_ids(text) == ids
 
 
-@pytest.mark.parametrize(('text', 'n'), [('3', 3), ('0', None), ('-1', None), ('x', None)])
-def test_a_limit_is_one_at_least(text: str, n: int | None) -> None:
+@pytest.mark.parametrize(
+    ('text', 'n'), [('3', 3), ('0', 'one at least'), ('-1', 'one at least'), ('x', 'a whole number')]
+)
+def test_a_limit_is_one_at_least(text: str, n: int | str) -> None:
     """--limit 0 would be no limit, as an empty --only would be no filter: both are refused."""
-    if n is None:
-        with pytest.raises(argparse.ArgumentTypeError):
+    if isinstance(n, str):
+        with pytest.raises(argparse.ArgumentTypeError, match=n):
             _ = db.at_least_one(text)
     else:
         assert db.at_least_one(text) == n

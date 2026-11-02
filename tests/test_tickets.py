@@ -340,26 +340,29 @@ def recorded_tier(until: str | None = None, quantity: int | None = None, *, sold
     )
 
 
-@pytest.mark.parametrize(
-    ('tiers', 'today', 'expected'),
-    [
-        (
-            [recorded_tier('11-30'), recorded_tier('2026-12-31'), recorded_tier(sold_out=True)],
-            '2026-11-15',
-            (Recheck.DATED, False),
-        ),
-        ([recorded_tier('11-30'), recorded_tier('12-31')], '2027-01-01', (Recheck.DATED, True)),
-        ([recorded_tier('11-30', quantity=50), recorded_tier('12-31')], '2026-11-15', (Recheck.MONTHLY, True)),
-        ([recorded_tier('11-30'), recorded_tier()], '2026-11-15', (Recheck.MONTHLY, True)),
-        ([recorded_tier(), recorded_tier(sold_out=True)], '2026-11-15', (Recheck.MONTHLY, True)),
-        ([recorded_tier('11-30', sold_out=True)], '2026-11-15', (Recheck.MONTHLY, True)),
-        ([recorded_tier('2026-11-15')], '2026-11-15', (Recheck.DATED, False)),  # its last date is today: not yet
-        ([recorded_tier('2026-11-14')], '2026-11-15', (Recheck.DATED, True)),
-    ],
-)
+RECHECK_CASES: list[tuple[list[PricedTier], str, tuple[Recheck, bool]]] = [
+    (
+        [recorded_tier('11-30'), recorded_tier('2026-12-31'), recorded_tier(sold_out=True)],
+        '2026-11-15',
+        (Recheck.DATED, False),
+    ),
+    ([recorded_tier('11-30'), recorded_tier('12-31')], '2027-01-01', (Recheck.DATED, True)),
+    ([recorded_tier('11-30', quantity=50), recorded_tier('12-31')], '2026-11-15', (Recheck.MONTHLY, True)),
+    ([recorded_tier('11-30'), recorded_tier()], '2026-11-15', (Recheck.MONTHLY, True)),
+    ([recorded_tier(), recorded_tier(sold_out=True)], '2026-11-15', (Recheck.MONTHLY, True)),
+    ([recorded_tier('11-30', sold_out=True)], '2026-11-15', (Recheck.MONTHLY, True)),
+    ([recorded_tier('2026-11-15')], '2026-11-15', (Recheck.DATED, False)),  # its last date is today: not yet
+    ([recorded_tier('2026-11-14')], '2026-11-15', (Recheck.DATED, True)),
+]
+
+
+@pytest.mark.parametrize(('tiers', 'today', 'expected'), RECHECK_CASES)
 def test_recheck_classes(tiers: list[PricedTier], today: str, expected: tuple[Recheck, bool]) -> None:
     assert tickets_store.recheck(tiers, dt.date(2027, 2, 5), dt.date.fromisoformat(today))[:2] == expected
-    assert {Recheck.DATED, Recheck.MONTHLY} == set(Recheck)
+
+
+def test_every_recheck_class_is_reached() -> None:
+    assert {expected[0] for *_, expected in RECHECK_CASES} == set(Recheck)
 
 
 def test_a_streak_counts_the_refused_and_unreachable_reads_back_to_the_last_other() -> None:
@@ -675,63 +678,51 @@ def sold(state: Sales, page: str | None = None) -> FoundRow:
     return FoundRow(event_id=7, event='Fest', state=state, page=page, links=links, found_by='agent', note='n')
 
 
-@pytest.mark.parametrize(
-    ('f', 'expected'),
-    [
-        (festival(), Waiting.PAGE),
-        (festival(page=KnownPage('https://example.org/tickets', None)), Waiting.RECIPE),
-        (festival(page=KnownPage(f'https://{HELD.host}/x', None)), HELD.then),  # a site claim
-        (festival(page=KnownPage(PAGE, SITE)), Waiting.NOTHING),
-        (festival(found=sold(Sales.OFFLINE)), Waiting.NOTHING),
-        (festival(found=sold(Sales.NOT_YET)), Waiting.SALES_OPEN),
-        (festival(found=sold(Sales.CLOSED)), Waiting.NOTHING),
-        (festival(found=sold(Sales.NONE_FOUND)), Waiting.NOTHING),
-        (
-            festival(found=sold(Sales.SHOP, 'https://example.org/t'), page=KnownPage('https://example.org/t', None)),
-            Waiting.RECIPE,
+WAITS_CASES: list[tuple[tickets_state.Festival, Waiting]] = [
+    (festival(), Waiting.PAGE),
+    (festival(page=KnownPage('https://example.org/tickets', None)), Waiting.RECIPE),
+    (festival(page=KnownPage(f'https://{HELD.host}/x', None)), HELD.then),  # a site claim
+    (festival(page=KnownPage(PAGE, SITE)), Waiting.NOTHING),
+    (festival(found=sold(Sales.OFFLINE)), Waiting.NOTHING),
+    (festival(found=sold(Sales.NOT_YET)), Waiting.SALES_OPEN),
+    (festival(found=sold(Sales.CLOSED)), Waiting.NOTHING),
+    (festival(found=sold(Sales.NONE_FOUND)), Waiting.NOTHING),
+    (
+        festival(found=sold(Sales.SHOP, 'https://example.org/t'), page=KnownPage('https://example.org/t', None)),
+        Waiting.RECIPE,
+    ),
+    (festival(page=KnownPage(PAGE, SITE), need=FirstReadState.DISPUTED), Waiting.AGENT),
+    (
+        festival(
+            need=FirstReadState.CURRENT,
+            first_read=read(),
+            log=(refused(stamp(1)), refused(stamp(2)), refused(stamp(3))),
         ),
-        (festival(page=KnownPage(PAGE, SITE), need=FirstReadState.DISPUTED), Waiting.AGENT),
-        (
-            festival(
-                need=FirstReadState.CURRENT,
-                first_read=read(),
-                log=(refused(stamp(1)), refused(stamp(2)), refused(stamp(3))),
-            ),
-            Waiting.SESSION,
+        Waiting.SESSION,
+    ),
+    (festival(need=FirstReadState.CURRENT, first_read=read(), log=(entry(ROWS),)), Waiting.NOTHING),
+    (festival(need=FirstReadState.NOT_NEEDED), Waiting.NOTHING),
+    (festival(need=FirstReadState.AWAITS_ANSWER), Waiting.NOTHING),
+    (festival(over=True), Waiting.NOTHING),  # it is over: nothing to wait for
+    (
+        festival(
+            need=FirstReadState.CURRENT,
+            first_read=read(),  # refusals, then a broken recipe: it waits for the recipe's fix
+            log=(refused(stamp(1)), refused(stamp(2)), broken(stamp(3))),
         ),
-        (festival(need=FirstReadState.CURRENT, first_read=read(), log=(entry(ROWS),)), Waiting.NOTHING),
-        (festival(need=FirstReadState.NOT_NEEDED), Waiting.NOTHING),
-        (festival(need=FirstReadState.AWAITS_ANSWER), Waiting.NOTHING),
-        (festival(over=True), Waiting.NOTHING),  # it is over: nothing to wait for
-        (
-            festival(
-                need=FirstReadState.CURRENT,
-                first_read=read(),  # refusals, then a broken recipe: it waits for the recipe's fix
-                log=(refused(stamp(1)), refused(stamp(2)), broken(stamp(3))),
-            ),
-            Waiting.RECIPE_FIX,
-        ),
-    ],
-)
+        Waiting.RECIPE_FIX,
+    ),
+]
+
+
+@pytest.mark.parametrize(('f', 'expected'), WAITS_CASES)
 def test_what_a_festival_waits_for(f: tickets_state.Festival, expected: Waiting) -> None:
     assert tickets_state.waiting(f) == expected
 
 
 def test_every_waits_for_state_is_reached() -> None:
-    """waiting() is total over its states: each case above reaches one, and together they reach them all."""
-    reached = {
-        tickets_state.waiting(f)
-        for f in [
-            festival(),
-            festival(page=KnownPage('https://example.org/t', None)),
-            festival(found=sold(Sales.NOT_YET)),
-            festival(need=FirstReadState.DISPUTED),
-            festival(log=(refused(stamp(1)), refused(stamp(2)), refused(stamp(3)))),
-            festival(log=(broken(stamp(2)),)),
-            festival(need=FirstReadState.CURRENT),
-        ]
-    }
-    assert reached == set(Waiting)
+    """waiting() is total over its states: the cases above reach them all."""
+    assert {expected for _, expected in WAITS_CASES} == set(Waiting)
 
 
 def test_the_status_lists_every_festival_past_ones_too(files: Path) -> None:

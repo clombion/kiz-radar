@@ -45,7 +45,6 @@ ALLOWED = Counter(
         ('pipeline/scrape.py', 'S608'): 1,
         ('pipeline/web.py', 'S310'): 2,
         ('tests/exports.py', 'S608'): 2,
-        ('tests/test_audit.py', 'S105'): 1,
         ('tests/test_commands.py', 'S603'): 1,
         ('tests/test_build.py', 'S608'): 1,
         ('tests/test_extract.py', 'S608'): 1,
