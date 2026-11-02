@@ -1328,6 +1328,16 @@ def test_a_run_reads_every_page_in_the_same_browsers(
     assert used[0] is used[1]
 
 
+def overloaded(asked: list[int]) -> Callable[[object, tickets_state.Festival, Read, object], Declined]:
+    """tickets.models_read, the models too busy to read: each festival asked about goes in asked."""
+
+    def models_read(client: object, f: tickets_state.Festival, entry: Read, log: object) -> Declined:
+        asked.append(f.id)
+        return Declined(CallCause.TRANSIENT, 'overloaded')
+
+    return models_read
+
+
 @pytest.mark.parametrize(('part', 'reads', 'asks'), [('pages', 1, 0), ('models', 0, 1)])
 def test_a_runs_page_reads_and_its_first_reads_are_made_apart(
     part: tickets.Part, reads: int, asks: int, memory: Memory, monkeypatch: pytest.MonkeyPatch
@@ -1345,13 +1355,9 @@ def test_a_runs_page_reads_and_its_first_reads_are_made_apart(
         read.append(page)
         return read_today
 
-    def models_read(client: object, f: tickets_state.Festival, entry: Read, log: object) -> Declined:
-        asked.append(f.id)
-        return Declined(CallCause.TRANSIENT, 'overloaded')
-
     monkeypatch.setattr(tickets, 'attempt', attempt)
     monkeypatch.setattr(tickets, 'append', no_append)
-    monkeypatch.setattr(tickets, 'models_read', models_read)
+    monkeypatch.setattr(tickets, 'models_read', overloaded(asked))
     monkeypatch.setattr(anthropic, 'Anthropic', object)
     tickets.Run(memory(), read_today.at.date(), Browsers(), parts=(part,)).first_reads(f)
     assert (len(read), len(asked)) == (reads, asks)
@@ -1365,12 +1371,7 @@ def test_a_run_has_the_models_read_as_many_festivals_as_its_limit(
 
     read_today = entry(ROWS)
     asked: list[int] = []
-
-    def models_read(client: object, f: tickets_state.Festival, entry: Read, log: object) -> Declined:
-        asked.append(f.id)
-        return Declined(CallCause.TRANSIENT, 'overloaded')
-
-    monkeypatch.setattr(tickets, 'models_read', models_read)
+    monkeypatch.setattr(tickets, 'models_read', overloaded(asked))
     monkeypatch.setattr(anthropic, 'Anthropic', object)
     run = tickets.Run(memory(), read_today.at.date(), Browsers(), limit, parts=('models',))
     for i in (7, 8, 9):
