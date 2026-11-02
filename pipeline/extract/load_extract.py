@@ -265,7 +265,7 @@ TABLE_DOCS = {
 
 
 def performed_by[E: Entry](got: Mapping[int, Answer[E]]) -> str:
-    """'20 answer files by Claude Code subagent, one batch; 3 answer files by pipeline/extract/ask.py' and the like."""
+    """'577 answer files by pipeline/extract/ask.py (Messages API), one festival' and the like."""
     by: dict[str, set[str]] = {}
     for a in got.values():
         by.setdefault(a.provenance.answered_by, set()).add(str(a.path))

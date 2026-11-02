@@ -41,5 +41,5 @@ or more. A failing answer goes back to Claude once, with the checker's lines; a 
 next run, as does any call that gives no answer (`pipeline/calls.py`: cut short, busy, unreachable), and the run fails
 naming each. A call that can never succeed as made (a bad key) stops the run's requests.
 
-The first extraction's answers, from Claude Code subagents in batches of several festivals, are kept beside the later
-ones, as what the first export was built from; a festival's own answer file replaces its entry in a batch.
+Each festival's answer of a pass is one file, `pipeline/extract/answers/<pass>/event-<id>.json`, which a new answer
+replaces; the first extraction's batches of several festivals, every festival of which has its own file since, are gone.

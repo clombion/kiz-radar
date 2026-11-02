@@ -1,13 +1,9 @@
-"""The saved answers of the extraction passes: answers/<pass>/*.json, each an answer and where it comes from (who
-answered it, with which model, to which prompt, when, and the digest of the message it answered), written together
-(records.Answered).
-
-The first answers came in batches written by Claude Code subagents (<pass>-NNN.json, of several festivals, with no
-message digest); later ones come one festival at a time from ask.py (event-<id>.json). A festival's own file replaces
-its entry in a batch. An answer's state (state()) is current while it answered the pass's current prompt
-(pipeline/prompt.py) and the message the festival would be asked with today (questions.Now.inputs), else stale; an
-answer to another prompt may follow another shape, so only a current one is read as its pass's record (current); of
-the others, only which festivals they answer (answered).
+"""The saved answers of the extraction passes: answers/<pass>/event-<id>.json, one festival's answer each and where it
+comes from (who answered it, with which model, to which prompt, when, and the digest of the message it answered),
+written together (records.Answered) by ask.py. An answer's state (state()) is current while it answered the pass's
+current prompt (pipeline/prompt.py) and the message the festival would be asked with today (questions.Now.inputs),
+else stale; an answer to another prompt may follow another shape, so only a current one is read as its pass's record
+(current); of the others, only where they come from (answered).
 """
 
 from collections.abc import Mapping
@@ -55,21 +51,22 @@ class Answer[E: Entry]:
     path: Path
 
 
-def answer_files(pass_name: str) -> list[Path]:
-    """The pass's answer files, batches first, so a festival's own file is read after the batch that had it."""
-    folder = data(ANSWERS) / pass_name
-    return sorted(folder.glob('*.json'), key=lambda p: (p.name.startswith('event-'), p.name))
+def answer_file(pass_name: str, event_id: int) -> Path:
+    """Where the pass's answer for the festival is (or would be) kept."""
+    return data(ANSWERS) / pass_name / f'event-{event_id}.json'
 
 
 def answered(pass_name: str, event_ids: set[int]) -> dict[int, tuple[Path, Provenance]]:
-    """The file of the newest answer for each of these festivals, and where it comes from."""
+    """The answer file of each of these festivals that has one, and where it comes from; only their files are read.
+    ValueError for a file that answers another festival than the one it is named for."""
     out: dict[int, tuple[Path, Provenance]] = {}
-    for path in answer_files(pass_name):
+    for i in sorted(event_ids):
+        if not (path := answer_file(pass_name, i)).exists():
+            continue
         filed = Filed.model_validate_json(path.read_bytes())
-        for entry in filed.answer.events:
-            if entry.event_id in event_ids:
-                _ = out.pop(entry.event_id, None)  # a newer answer moves to the end
-                out[entry.event_id] = path, filed
+        if (of := [e.event_id for e in filed.answer.events]) != [i]:
+            raise ValueError(f'{path}: an answer of festival {i} alone, not of {of}')
+        out[i] = path, filed
     return out
 
 
@@ -112,7 +109,7 @@ class Asking:
 def save[E: Entry](pass_name: str, output: Batch[E], asking: Asking) -> Path:
     """Save one festival's answer (an answer of its one entry) with where it comes from."""
     (entry,) = output.events
-    path = data(ANSWERS) / pass_name / f'event-{entry.event_id}.json'
+    path = answer_file(pass_name, entry.event_id)
     filed = Answered[type(entry)](
         prompt=asking.prompt.hash,
         model=asking.model,

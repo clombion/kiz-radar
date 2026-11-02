@@ -248,8 +248,8 @@ class Provenance(Record):
     answered_by: Text
     inputs: Hash | None = Field(
         description='The digest of the message asked (prompt.Prompt.message), the festival as the pass asked about '
-        'it: the answer is of the festival as it is while the message would be the same. None for a batch of '
-        'several festivals, asked before each answer kept the message it answered.'
+        'it: the answer is of the festival as it is while the message would be the same. None for an answer given '
+        'before answers kept the message they answered.'
     )
 
 

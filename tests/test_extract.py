@@ -698,12 +698,25 @@ def test_a_file_is_written_whole_or_not_at_all(tmp_path: Path) -> None:
 
 def test_only_an_answer_to_the_current_prompt_is_read_as_its_record(answered_here: Path) -> None:
     (answered_here / 'prices').mkdir()
-    old = {'batch': 'b', 'events': [{'event_id': 5, 'old': 1}]}
+    old = {'batch': 'event-5', 'events': [{'event_id': 5, 'old': 1}]}
     provenance = {'prompt': '0' * 16, 'model': 'claude-haiku-5-5', 'answered_by': 'x', 'inputs': None}
     filed = provenance | {'answered_at': '2026-10-02T09:00:00+00:00', 'answer': old}
-    _ = (answered_here / 'prices' / 'prices-001.json').write_text(json.dumps(filed))
+    _ = (answered_here / 'prices' / 'event-5.json').write_text(json.dumps(filed))
     assert list(answers.answered('prices', {5})) == [5]  # its festivals are known, whatever its shape
     assert answers.current(prompt.PRICES, {5: JOB.inputs}) == {}
+
+
+def test_a_festivals_answer_is_its_own_file_read_alone(answered_here: Path) -> None:
+    """answered reads the files of the festivals asked about, not the folder; a file holds its festival's answer."""
+    (answered_here / 'prices').mkdir()
+    provenance = {'prompt': '0' * 16, 'model': 'claude-haiku-5-5', 'answered_by': 'x', 'inputs': None}
+    for name, event_id in (('event-5.json', 5), ('event-6.json', 7)):
+        answer = {'batch': 'b', 'events': [{'event_id': event_id}]}
+        filed = provenance | {'answered_at': '2026-10-02T09:00:00+00:00', 'answer': answer}
+        _ = (answered_here / 'prices' / name).write_text(json.dumps(filed))
+    assert list(answers.answered('prices', {5, 8})) == [5]  # 6's file, which answers 7, is not read
+    with pytest.raises(ValueError, match='an answer of festival 6 alone, not of'):
+        _ = answers.answered('prices', {6})
 
 
 def test_an_archive_cut_short_is_written_again() -> None:
