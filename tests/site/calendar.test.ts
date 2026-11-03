@@ -1,7 +1,17 @@
 // A community's days away, on days alone: who is away on each day (a trip's days, else a festival's, whatever its
 // weekdays), the days most are away at once, the shades, and the weeks the strip draws.
 import { expect, test } from 'vitest';
-import { awayDays, busiest, daysOf, presence, shade, weekday, weeksFrom } from '../../site/calendar.ts';
+import {
+  awayDays,
+  busiest,
+  daysOf,
+  presence,
+  shade,
+  shadeRanges,
+  spanOf,
+  weekday,
+  weeksFrom,
+} from '../../site/calendar.ts';
 
 const festival = (start_date: string, end_date: string) => ({ start_date, end_date });
 
@@ -73,4 +83,33 @@ test('the strip’s weeks run from Monday of today’s week, across a month and 
     ['2027-01-11', '2027-01-17'],
   ]);
   expect(weeksFrom('2026-11-03', '2028-06-01', 53)).toHaveLength(53);
+});
+
+test('a festival’s row runs from the first to arrive, or its start, to the last to leave, or its end', () => {
+  const prague = festival('2027-01-14', '2027-01-18');
+  // flying in the day before it starts
+  expect(spanOf(prague, [{ arrive: '2027-01-13T14:30', leave: '2027-01-18T15:10' }])).toEqual({
+    from: '2027-01-13',
+    to: '2027-01-18',
+  });
+  // the festival goes on after the last one leaves, and one arrives after it starts
+  expect(
+    spanOf(prague, [
+      { arrive: '2027-01-15T10:00', leave: '2027-01-16T20:00' },
+      { arrive: '2027-01-12T08:00', leave: '2027-01-17T09:00' },
+    ]),
+  ).toEqual({ from: '2027-01-12', to: '2027-01-18' });
+  expect(spanOf(prague, [])).toEqual({ from: '2027-01-14', to: '2027-01-18' });
+});
+
+test('the legend gives each shade the counts it stands for, as the steps divide the most', () => {
+  expect(shadeRanges(5)).toEqual([
+    { shade: 1, from: 1, to: 1 },
+    { shade: 2, from: 2, to: 3 },
+    { shade: 3, from: 4, to: 5 },
+  ]);
+  expect(shadeRanges(1)).toEqual([{ shade: 3, from: 1, to: 1 }]);
+  expect(shadeRanges(0)).toEqual([]);
+  // each count in the shade the strip gives it
+  for (const r of shadeRanges(9)) for (let n = r.from; n <= r.to; n++) expect(shade(n, 9)).toBe(r.shade);
 });

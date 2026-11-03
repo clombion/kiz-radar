@@ -43,22 +43,29 @@ The page shows the community's name ("Norwegians in festivals"), its members and
 once ("Most of the community is away 20–22 Nov: 5 people, in Oslo."), who it is meant for ("Visible to the 2 members of
 Norwegians in festivals") and a Share this page button, which opens the device's share sheet or else copies the link.
 
-Under the head, a strip of days draws the year ahead as a contribution graph does: a row for each weekday from Monday, a
-column for each week from today's to the week of the last day anyone is away, 53 at most (a line then counts the trips
-after it). Each day is shaded by how many of the community are away on it: a member with a trip from the day they arrive
-to the day they leave, anyone else (a member without one, someone added) on the festival's own days, whatever weekdays
-those are; someone at two festivals at once counts once. The sentence reads the same counts: the first day as many are
-away as on any, and the days after it with as many. The strip is one stop for the keyboard, whose arrows move a day (up,
-down) or a week (left, right); the day in focus, under the pointer or tapped opens a popover of its festivals, who flies
-in and out that day (by time and airport, a couple as one when both share the flight: "Flying in: Cédric & Christina
-14:30 PRG"), who else is there, and where members stay. Escape or a tap elsewhere closes it.
+Under the head, a strip of days draws the year ahead as a contribution graph does: a row for each weekday from Monday
+(labelled M to S), a column for each week from today's to the week of the last day anyone is away, 53 at most (a line
+then counts the trips after it), each month's name over its first week, with the year in January and over the first.
+Each day is shaded by how many of the community are away on it: a member with a trip from the day they arrive to the day
+they leave, anyone else (a member without one, someone added) on the festival's own days, whatever weekdays those are;
+someone at two festivals at once counts once. The three shades divide the most away on any day in thirds, and the legend
+under the strip says which counts each stands for ("People away: 1 · 2–3 · 4–5", and today's outline); on a computer
+each day writes its count in it. The sentence reads the same counts: the first day as many are away as on any, and the
+days after it with as many. The strip is one stop for the keyboard, whose arrows move a day (up, down) or a week (left,
+right); the day in focus, under the pointer or tapped opens a popover of its festivals, who flies in and out that day
+(by time and airport, a couple as one when both share the flight: "Flying in: Cédric & Christina 14:30 PRG"), who else
+is there, and where members stay. Escape or a tap elsewhere closes it.
 
 Then come the festivals that its members plan or that someone was added to, soonest first: a list of who goes where,
-three festivals shown and "See more" for the rest, then their cards under "Where the community is going". Each says who
-of the community goes: its members as on any card (as their couple when both go, teaching when in the line-up), then the
-people added: "Christina teaching · Sian teaching and Carolina going". Hovering an added name says who added them
-("Added by Cédric"). Whether someone added teaches comes from the festival's line-up and their `artist_keys`, as it does
-for a member; the manager never says it, and someone teaching links to their artist page.
+three festivals shown and "See more" for the rest, each with a row of its days from the first of the community to arrive
+(or the festival's start, when that is sooner) to the last to leave (or its end), each day labelled with its weekday's
+initial and number, the festival's own days banded and the days only travelled hatched, shaded as the strip, with ↓ on a
+day someone flies in and ↑ on one someone flies out; a row is one stop for the keyboard, its arrows moving a day, and
+opens the strip's popover. Then come their cards under "Where the community is going". Each says who of the community
+goes: its members as on any card (as their couple when both go, teaching when in the line-up), then the people added:
+"Christina teaching · Sian teaching and Carolina going". Hovering an added name says who added them ("Added by Cédric").
+Whether someone added teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the
+manager never says it, and someone teaching links to their artist page.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page

@@ -3,7 +3,7 @@
 // cards, under when most of it is away at once and a strip of the days it is away. Only its link reaches it: nothing
 // lists communities. Its members and the people its manager added, who have not joined, are named; an added one's
 // name says on hover who added them. Members say how they travel (pipeline/trips.csv); the people added never do.
-import { type Away, awayDays, busiest, type Day, presence } from './calendar.ts';
+import { type Away, awayDays, busiest, type Day, presence, spanOf } from './calendar.ts';
 import { one, q, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
@@ -12,7 +12,7 @@ import { comingUp, page, personLink, shareButton } from './people.ts';
 import { doingTag, type Goer, goersInline, goingRow, namesOf } from './plans.ts';
 import { artistHref } from './routes.ts';
 import { type Booked, booked, EVENT, num, opt, type RowOf, str } from './rows.ts';
-import { strip } from './strip.ts';
+import { dayRow, popover, strip } from './strip.ts';
 import { dayRange, scrolling, weekDay } from './ui.ts';
 import { joined, plural } from './wording.ts';
 
@@ -129,18 +129,48 @@ export function communityView(root: HTMLElement, [key]: readonly string[], signa
   });
   const members = plural(c.members.length, 'member');
   // who is away on each day, one count for the sentence and the strip's shades alike
-  const days = presence(
-    events.flatMap(({ e, f, who }): Present[] => [
-      ...who.goers.map((g) => {
+  // who of it is away for each festival, and on each day: one count for the sentence, the strip and the rows alike
+  const going = events.map(({ e, f, who }) => ({
+    e,
+    who,
+    aways: [
+      ...who.goers.map((g): Present => {
         const trip = f.trips.find((t) => t.key === g.key) ?? null;
         return { who: `member ${g.key}`, ...awayDays(e, trip ?? undefined), e, goer: g, added: null, trip };
       }),
-      ...f.added.map((a) => ({ who: `added ${a.name}`, ...awayDays(e), e, goer: null, added: a, trip: null })),
-    ]),
-  );
+      ...f.added.map((a): Present => ({ who: `added ${a.name}`, ...awayDays(e), e, goer: null, added: a, trip: null })),
+    ],
+  }));
+  const days = presence(going.flatMap((g) => g.aways));
   const most = busiest(days);
   const today = one({ day: str }, sql`SELECT day FROM today`)?.day ?? '';
-  const list = events.length > 0 ? summary(events.map(({ e, who }) => goingRow(e, who.said()))) : null;
+  const shared = {
+    today,
+    most: most?.people ?? 0,
+    label: (d: string, on: Day<Present> | undefined) =>
+      `${weekDay(d)}: ${on === undefined ? 'no one away' : `${plural(on.people, 'person', 'people')} away, ${placesOf(on.aways)}`}`,
+    pop: popover((d) => dayDetail(d, days.get(d), c.manager), signal),
+  };
+  const list =
+    events.length > 0
+      ? summary(
+          going.map(({ e, who, aways }) => {
+            const trips = aways.flatMap((a) => (a.trip ? [a.trip] : []));
+            const row = goingRow(e, who.said());
+            row.append(
+              dayRow({
+                ...shared,
+                days: presence(aways),
+                ...spanOf(e, trips),
+                festival: e,
+                arriving: new Set(trips.map((t) => t.arrive.slice(0, 10))),
+                leaving: new Set(trips.map((t) => t.leave.slice(0, 10))),
+              }),
+            );
+            return row;
+          }),
+        )
+      : null;
   page(
     root,
     [
@@ -159,14 +189,10 @@ export function communityView(root: HTMLElement, [key]: readonly string[], signa
     ],
     days.size > 0
       ? strip({
-          today,
+          ...shared,
           days,
-          label: (d, on) =>
-            `${weekDay(d)}: ${on === undefined ? 'no one away' : `${plural(on.people, 'person', 'people')} away, ${placesOf(on.aways)}`}`,
-          detail: (d, on) => dayDetail(d, on, c.manager),
           starts: events.map(({ e }) => e.start_date),
           toList: () => list?.scrollIntoView({ behavior: scrolling(), block: 'start' }),
-          signal,
         })
       : null,
     list,
