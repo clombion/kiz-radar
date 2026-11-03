@@ -40,32 +40,35 @@ nobody can create, join or claim one yet, and its rows are written by hand.
   or flight number.
 
 The page shows the community's name ("Norwegians in festivals"), its members and its manager, when most of it is away at
-once ("Most of the community is away 20–22 Nov: 5 people, in Oslo."), who it is meant for ("Visible to the 2 members of
-Norwegians in festivals") and a Share this page button, which opens the device's share sheet or else copies the link.
+once and where it goes next ("Most of the community is away 20–22 Nov: 5 people, in Oslo. Next: Glasgow, this Friday."),
+and a Share this page button, which opens the device's share sheet or else copies the link, beside who the page is meant
+for ("Visible to its 2 members only").
 
-Under the head, a strip of days draws the year ahead as a contribution graph does: a row for each weekday from Monday
-(labelled M to S), a column for each week from today's to the week of the last day anyone is away, 53 at most (a line
-then counts the trips after it), each month's name over its first week, with the year in January and over the first.
-Each day is shaded by how many of the community are away on it: a member with a trip from the day they arrive to the day
-they leave, anyone else (a member without one, someone added) on the festival's own days, whatever weekdays those are;
-someone at two festivals at once counts once. The three shades divide the most away on any day in thirds, and the legend
-under the strip says which counts each stands for ("People away: 1 · 2–3 · 4–5", and today's outline); on a computer
-each day writes its count in it. The sentence reads the same counts: the first day as many are away as on any, and the
-days after it with as many. The strip is one stop for the keyboard, whose arrows move a day (up, down) or a week (left,
-right); the day in focus, under the pointer or tapped opens a popover of its festivals, who flies in and out that day
-(by time and airport, a couple as one when both share the flight: "Flying in: Cédric & Christina 14:30 PRG"), who else
-is there, and where members stay. Escape or a tap elsewhere closes it.
+Under the head, a small grid for today's month and for each month someone is away in (every one of them, however far
+off; a line says which months between them go without: "Nothing planned in August"), two months a row on a phone. A row
+is a week from Monday, a day a square shaded by how many of the community are away on it: a member with a trip from the
+day they arrive to the day they leave, anyone else (a member without one, someone added) on the festival's own days,
+whatever weekdays those are; someone at two festivals at once counts once. The festival's own days carry a pale
+underline, the days only travelled none; today is outlined and the days before it greyed, and at each week's end is the
+most away on any of its days ("·" for none). The three shades divide the most away on any day in thirds, and the legend
+says which counts each stands for ("People away: 1 · 2–3 · 4–5"). The sentence reads the same counts: the first day as
+many are away as on any, and the days after it with as many. Each month is one stop for the keyboard, whose arrows move
+a day (left, right) or a week (up, down); the day in focus, under the pointer or tapped opens a popover of its
+festivals, who flies in and out that day (by time and airport, a couple as one when both share the flight: "Flying in:
+Cédric & Christina 14:30 PRG"), who else is there, and where members stay. Escape or a tap elsewhere closes it.
 
-Then come the festivals that its members plan or that someone was added to, soonest first: a list of who goes where,
-three festivals shown and "See more" for the rest, each with a row of its days from the first of the community to arrive
-(or the festival's start, when that is sooner) to the last to leave (or its end), each day labelled with its weekday's
-initial and number, the festival's own days banded and the days only travelled hatched, shaded as the strip, with ↓ on a
-day someone flies in and ↑ on one someone flies out; a row is one stop for the keyboard, its arrows moving a day, and
-opens the strip's popover. Then come their cards under "Where the community is going". Each says who of the community
-goes: its members as on any card (as their couple when both go, teaching when in the line-up), then the people added:
-"Christina teaching · Sian teaching and Carolina going". Hovering an added name says who added them ("Added by Cédric").
-Whether someone added teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the
-manager never says it, and someone teaching links to their artist page.
+Then the agenda: a heading a month ("November · 3 trips", with the year in January), and a row a trip, soonest first:
+its days ("Fri 20 – Sun 22 Nov"), the festival and where it is, and who of the community goes: its members as on any
+card (as their couple when both go, teaching when in the line-up), then the people added: "Christina teaching · Sian
+teaching and Carolina going". Hovering an added name says who added them ("Added by Cédric"). Whether someone added
+teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the manager never says it,
+and someone teaching links to their artist page. The next trip is open; the others open from their button. An opened
+trip draws who travels when: its days across the top, from the first of the community to arrive (or the festival's
+start, when that is sooner) to the last to leave (or its end), the festival's days a soft band, and a bar for each party
+that shares a flight in and out (a couple as one), from the hour they arrive to the hour they leave, with the times and
+airports at its ends; someone who has not said how they travel, and everyone the manager added, has a dotted bar over
+the festival's days. A line under it says the same in words, then where members stay, and "Line-up & prices" opens the
+festival's card in place.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page

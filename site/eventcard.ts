@@ -183,15 +183,9 @@ function smoothly(card: HTMLElement, change: () => void, opening: boolean): void
   );
 }
 
-// going: who the card says is going, in place of everyone with plans (goingLine): a community's page says who of it is
 export function eventCard(
   e: Festival,
-  {
-    hint = null,
-    open = false,
-    onMap = false,
-    going = goingLine(e),
-  }: { hint?: Kid; open?: boolean; onMap?: boolean; going?: HTMLElement | null } = {},
+  { hint = null, open = false, onMap = false }: { hint?: Kid; open?: boolean; onMap?: boolean } = {},
 ): HTMLElement {
   const more = h('div', { class: 'festival-more', hidden: true });
   const toggles: HTMLElement[] = [];
@@ -272,7 +266,7 @@ export function eventCard(
     traitRow,
     withLine,
     withLine ? hint : null,
-    going,
+    goingLine(e),
     foot,
     more,
   );

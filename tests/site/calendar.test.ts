@@ -1,16 +1,20 @@
 // A community's days away, on days alone: who is away on each day (a trip's days, else a festival's, whatever its
-// weekdays), the days most are away at once, the shades, and the weeks the strip draws.
+// weekdays), the days most are away at once, the shades, the months and weeks the page draws, and a trip's hours.
 import { expect, test } from 'vitest';
 import {
   awayDays,
   busiest,
+  daysInto,
   daysOf,
+  monthsBetween,
+  monthsOf,
   presence,
+  relativeDay,
   shade,
   shadeRanges,
   spanOf,
   weekday,
-  weeksFrom,
+  weeksOf,
 } from '../../site/calendar.ts';
 
 const festival = (start_date: string, end_date: string) => ({ start_date, end_date });
@@ -75,14 +79,39 @@ test('a day’s shade is a third of the most away on any day, and none for no on
   expect(shade(1, 1)).toBe(3);
 });
 
-test('the strip’s weeks run from Monday of today’s week, across a month and a year, a year of them at most', () => {
-  const weeks = weeksFrom('2026-12-30', '2027-01-12', 53);
-  expect(weeks.map((w) => [w[0], w[6]])).toEqual([
-    ['2026-12-28', '2027-01-03'],
-    ['2027-01-04', '2027-01-10'],
-    ['2027-01-11', '2027-01-17'],
+test('the months shown are today’s and those someone is away in, from today’s on, across a year', () => {
+  expect(monthsOf('2026-11-03', ['2027-01-14', '2026-11-20', '2026-10-30', '2027-01-15', '2027-03-01'])).toEqual([
+    '2026-11',
+    '2027-01',
+    '2027-03',
   ]);
-  expect(weeksFrom('2026-11-03', '2028-06-01', 53)).toHaveLength(53);
+  expect(monthsOf('2026-11-03', [])).toEqual(['2026-11']);
+  expect(monthsBetween('2026-11', '2027-03')).toEqual(['2026-12', '2027-01', '2027-02']);
+  expect(monthsBetween('2026-11', '2026-12')).toEqual([]);
+});
+
+test('a month is its weeks from Monday, with the days of other months left empty', () => {
+  const nov = weeksOf('2026-11'); // the 1st is a Sunday
+  expect(nov[0]).toEqual([null, null, null, null, null, null, '2026-11-01']);
+  expect(nov.at(-1)).toEqual(['2026-11-30', null, null, null, null, null, null]);
+  expect(nov.flat().filter(Boolean)).toHaveLength(30);
+  expect(weeksOf('2027-02')[0]?.[0]).toBe('2027-02-01'); // a Monday: no empty day before it
+});
+
+test('a time is so far into a trip’s days, its hour a share of its day, across a month', () => {
+  expect(daysInto('2026-11-19', '2026-11-19T00:00')).toBe(0);
+  expect(daysInto('2026-11-19', '2026-11-19T18:00')).toBe(0.75);
+  expect(daysInto('2026-11-29', '2026-12-01T12:00')).toBe(2.5);
+});
+
+test('a day is said from today: today, tomorrow, this weekday later in its week, and none further off', () => {
+  const tuesday = '2026-11-03';
+  expect(relativeDay(tuesday, '2026-11-03')).toBe('today');
+  expect(relativeDay(tuesday, '2026-11-04')).toBe('tomorrow');
+  expect(relativeDay(tuesday, '2026-11-06')).toBe('this Friday');
+  expect(relativeDay(tuesday, '2026-11-08')).toBe('this Sunday');
+  expect(relativeDay(tuesday, '2026-11-09')).toBeNull(); // next week's Monday
+  expect(relativeDay(tuesday, '2026-11-01')).toBeNull();
 });
 
 test('a festival’s row runs from the first to arrive, or its start, to the last to leave, or its end', () => {

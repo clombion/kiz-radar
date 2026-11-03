@@ -2218,163 +2218,126 @@ html:has(dialog.search[open]) {
   white-space: nowrap;
 }
 
-/* a community's days away: a row a weekday, a column a week, each day a square shaded by how many are away; the
-   columns share the width, so a year of them fits a phone */
-.strip-wrap {
-  position: relative;
-  margin: 1.25rem 0 0.5rem;
+/* a community's months: a small grid each, a row a week from Monday, a day a square shaded by how many are away, the
+   week's most at its end; two months a row on a phone */
+.days-months {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  align-items: start;
+  gap: 0.9rem 1.25rem;
 }
-.strip-clip {
-  overflow: hidden;
-}
-.strip {
-  table-layout: fixed;
+.days-month {
   width: 100%;
+  max-width: 13rem;
   border-collapse: separate;
   border-spacing: 2px;
-  font-size: 0.65rem;
+  table-layout: fixed;
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
 }
-.strip th {
-  position: static;
-  padding: 0;
-  border: 0;
-  background: none;
+.days-month caption {
+  padding: 0 0 0.2rem 2px;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+.days-month caption small {
   color: var(--muted);
   font-weight: 500;
-  text-align: left;
-  white-space: nowrap;
-  overflow: visible;
 }
-.strip thead td,
-.strip tbody th {
-  width: 1.5rem;
+.days-month th,
+.days-month td {
   padding: 0;
   border: 0;
   text-align: center;
+  white-space: nowrap;
 }
-.strip tbody td {
-  position: relative;
-  padding: 0;
-  border: 0;
-  border-radius: 2px;
+.days-month thead th {
+  position: static;
+  background: none;
+  color: var(--muted);
+  font-weight: 500;
+}
+.days-month td[data-day] {
+  height: 1.3rem;
+  border-radius: 3px;
   background: var(--surface-2);
   cursor: pointer;
 }
-.strip tbody td::before {
-  content: "";
-  display: block;
-  padding-top: 100%;
+.days-month td.days-past {
+  color: var(--none);
 }
-.strip tbody td.strip-past {
-  background: transparent;
-}
-.strip tbody td.strip-1,
-.strip-swatch.strip-1,
-.dayrow-day.strip-1 {
+.days-month td.days-1,
+.days-swatch.days-1 {
   background: var(--shade-1);
+  font-weight: 650;
 }
-.strip tbody td.strip-2,
-.strip-swatch.strip-2,
-.dayrow-day.strip-2 {
+.days-month td.days-2,
+.days-swatch.days-2 {
   background: var(--shade-2);
   color: var(--accent-ink);
+  font-weight: 650;
 }
-.strip tbody td.strip-3,
-.strip-swatch.strip-3,
-.dayrow-day.strip-3 {
+.days-month td.days-3,
+.days-swatch.days-3 {
   background: var(--shade-3);
   color: var(--accent-ink);
+  font-weight: 650;
 }
-.strip tbody td.strip-today {
+.days-month td.days-fest {
+  box-shadow: inset 0 -2px 0 var(--surface);
+}
+.days-month td.days-today,
+.days-swatch.days-today {
   box-shadow: inset 0 0 0 1.5px var(--text);
 }
-.strip tbody td:focus-visible,
-.dayrow-day:focus-visible {
+.days-month td:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
-/* a day's count, written in it where the days are wide enough to hold it */
-.strip-n {
-  display: none;
+.days-month td.days-most {
+  width: 1.3rem;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.72rem;
 }
-@media (min-width: 700px) {
-  .strip-n {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-size: 0.6rem;
-    font-weight: 700;
-  }
+.days-month td.days-none {
+  color: var(--none);
+  font-weight: 400;
 }
-.strip-legend {
+.days-wrap {
+  position: relative;
+  margin: 1.25rem 0 0.5rem;
+}
+.days-gap {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 0.3rem;
+  border-top: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.days-legend {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.25rem 0.75rem;
-  margin: 0.4rem 0 0;
+  margin: 0.6rem 0 0;
   font-size: 0.75rem;
   color: var(--muted);
 }
-.strip-key {
+.days-key {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
 }
-.strip-swatch {
+.days-swatch {
   display: inline-block;
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 2px;
 }
-.strip-swatch.strip-today {
-  box-shadow: inset 0 0 0 1.5px var(--text);
-}
-/* a festival's days under its row of the list, from the first to arrive to the last to leave: its own days banded */
-.plan-list .dayrow {
-  position: relative;
-  grid-column: 2;
-  margin-top: 0.35rem;
-}
-.dayrow-days {
-  display: grid;
-  gap: 2px;
-}
-.dayrow-day {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 0;
-  padding: 0.15rem 0 0.3rem;
-  border-radius: 4px;
-  background: var(--surface-2);
-  font-size: 0.65rem;
-  line-height: 1.15;
-  cursor: pointer;
-}
-.dayrow-festival {
-  box-shadow: inset 0 -3px 0 var(--text);
-}
-.dayrow-festival.strip-3 {
-  box-shadow: inset 0 -3px 0 var(--shade-1);
-}
-/* a day only travelled, before or after the festival: hatched, whatever its shade */
-.dayrow-day.dayrow-travel {
-  background-image: repeating-linear-gradient(135deg, transparent 0 3px, rgb(var(--shadow-ink) / 0.16) 3px 5px);
-}
-.dayrow-w {
-  font-size: 0.6rem;
-  opacity: 0.8;
-}
-.dayrow-n {
-  font-weight: 650;
-}
-.dayrow-moves {
-  font-size: 0.6rem;
-  font-weight: 700;
-}
-.strip-pop {
+.day-pop {
   position: absolute;
   z-index: var(--z-popover);
   width: max-content;
@@ -2387,17 +2350,168 @@ html:has(dialog.search[open]) {
   box-shadow: 0 8px 24px rgb(var(--shadow-ink) / 0.18);
   font-size: 0.85rem;
 }
-.strip-pop p {
+.day-pop p {
   margin: 0.15rem 0;
 }
-.strip-when {
+.day-when {
   font-weight: 650;
   color: var(--accent);
 }
-@media (max-width: 480px) {
-  .strip {
-    border-spacing: 1px;
-  }
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+}
+.share-row .more-btn {
+  margin-left: 0;
+}
+
+/* a community's agenda: a heading a month, a row a trip, opening on who travels when */
+.agenda h2 .agenda-n {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+.agenda-list {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+.trip {
+  border-bottom: 1px solid var(--border);
+}
+.trip-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0 0.6rem;
+  padding: 0.5rem 0;
+}
+.trip-head p {
+  grid-column: 1;
+  margin: 0;
+}
+.trip-when {
+  font-weight: 650;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.trip-fest {
+  font-weight: 600;
+}
+.trip-who {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.trip-toggle {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  align-self: start;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent var(--chevron) no-repeat center;
+}
+.trip-toggle[aria-expanded="true"] {
+  rotate: 180deg;
+}
+.trip-body {
+  padding: 0 0 0.8rem;
+  font-size: 0.88rem;
+}
+.trip-body p {
+  margin: 0.25rem 0;
+}
+.trip-label {
+  margin-right: 0.3rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.trip-lineup {
+  margin-top: 0.5rem;
+}
+
+/* a trip's small Gantt: the days across, a bar a party travelling together */
+.gantt {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  max-width: 44rem;
+  gap: 0.25rem 0.5rem;
+  align-items: center;
+  margin: 0.3rem 0 0.2rem;
+  font-size: 0.78rem;
+}
+.gantt-axis {
+  display: grid;
+}
+.gantt-axis span {
+  border-left: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.66rem;
+  line-height: 1.1;
+  text-align: center;
+}
+.gantt-axis span:first-child {
+  border-left: 0;
+}
+.gantt-axis b {
+  display: block;
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+.gantt-axis .gantt-fest,
+.gantt-axis .gantt-fest b {
+  color: var(--accent);
+}
+.gantt-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.gantt-lane {
+  position: relative;
+  height: 1.15rem;
+}
+.gantt-band {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--accent-soft);
+}
+.gantt-bar {
+  position: absolute;
+  top: 0.1rem;
+  display: flex;
+  justify-content: space-between;
+  height: 0.95rem;
+  padding: 0 0.4rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--shade-1);
+  color: var(--text);
+  font-size: 0.6rem;
+  line-height: 0.95rem;
+  white-space: nowrap;
+}
+.gantt-bar.gantt-unsaid {
+  justify-content: center;
+  border: 1.5px dotted var(--shade-2);
+  background: none;
+  color: var(--accent);
+}
+.gantt-said {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.gantt-said b {
+  color: var(--text);
+  font-weight: 600;
 }
 
 /* the quick view of who's going: over the page on a computer, a sheet from the bottom on a phone */
@@ -2646,9 +2760,6 @@ html:has(dialog.peek[open]) {
 
   .plan-list li {
     grid-template-columns: 1fr;
-  }
-  .plan-list .dayrow {
-    grid-column: auto;
   }
   .plan-list .when {
     grid-row: auto;

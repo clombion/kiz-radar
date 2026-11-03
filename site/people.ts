@@ -72,12 +72,12 @@ export function shareButton(label: string, title: string): HTMLButtonElement {
   return share;
 }
 
-// "Coming up (3)" (or another heading) over the cards of the festivals to come, or what to say when there are none
-export const comingUp = (cards: readonly HTMLElement[], none: string, heading = 'Coming up'): HTMLElement =>
+// "Coming up (3)" over the cards of the festivals to come, or what to say when there are none
+const comingUp = (cards: readonly HTMLElement[], none: string): HTMLElement =>
   h(
     'section',
     {},
-    h('h2', {}, cards.length > 0 ? `${heading} (${cards.length})` : heading),
+    h('h2', {}, cards.length > 0 ? `Coming up (${cards.length})` : 'Coming up'),
     cards.length > 0 ? h('div', { class: 'festival-cards' }, cards) : h('p', { class: 'muted' }, none),
   );
 // someone's name, linking to their plans page
