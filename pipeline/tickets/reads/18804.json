@@ -11,7 +11,7 @@
  "description": "☀️☀️☀️TARRAXO SPRING EDITION 2027☀️☀️☀️\n➡️➡️➡️➡️ FROM 8 To 12 APRIL 2027 ⬅️⬅️⬅️\n——————–> 5TH EDITION <——————–\nYou can’t stop the tarraxo wave…\nWill you be there ? 🌪️🔥🚨\n💃🕺2 PARTY ROOMS/2 VIBES\n➡️ROOM 1 : Tarraxo 70 % / Urban Kiz 30 %\n➡️ROOM 2 : Kizomba – Ghetto Zouk – Douceur\n🌍 DJS 🌍\n✔️ Dj Blvck Skyle\n✔️ Dj Ichigo\n✔️ Dj Fofo-Jah\n✔️ Dj Chad\n✔️ Dj Levis\n✔️ Dj Jack\n✔️ Dj T’peak\n✔️ Dj Safir’s Beats\n✔️ Dj J-kee\n✔️ Dj Diablo\n🌍 TEACHERS🌍\n✔️ Jack & Sara\n✔️ Antho & Bene\n✔️ Jah J’a & Jeisy\n✔️ Moorea\n✔️ Axel\n✔️ Lucy\n✔️ T’peak\n🎥 VIDEOGRAPHER 🎥\nDANI TOTHEDANCE\n💟 UNIQUES PASSES 💟\n💵💵 TICKETING 💵💵\nWeezevent :\nhttps://my.weezevent.com/tarraxo-spring-lyon-5th-edition…?\n• 80 EARLY BIRDS\n🔹25 EARLY BIRD WOMAN —> 60 euros\n🔹25 EARLY BIRD MAN —> 60 euros\n🔹30 EARLY BIRD DUO PASS —> 100 euros\nUNIQUE PASS MAN – 60 EUROS\nUNIQUE PASS WOMAN – 60 EUROS\nUNIQUE PASS MAN – 70 EUROS\nUNIQUE PASS WOMAN – 70 EUROS\nUNIQUE PASS MAN – 80 EUROS\nUNIQUE PASS WOMAN – 80 EUROS\nUNIQUE PASS MAN – 90 EUROS\nUNIQUE PASS WOMAN – 90 EUROS\nUNIQUE PASS MAN – 100 EUROS\nUNIQUE PASS WOMAN – 100 EUROS\nUNIQUE PASS MAN – 110 EUROS\nUNIQUE PASS WOMAN – 110 EUROS\nUNIQUE PASS MAN – 120 EUROS\nUNIQUE PASS WOMAN – 1200 EUROS\nUNIQUE PASS MAN – 130 EUROS\nUNIQUE PASS WOMAN – 130 EUROS\nUNIQUE PASS MAN – 140 EUROS\nUNIQUE PASS WOMAN – 140 EUROS\n🏙️ PLACE OF THE EVENT 🏙️\nLOGIS HOTEL LYON-EST\nA42 SORTIE N°5\n01700 SAINT-MAURICE-DE-BEYNOST\n💱 NAME CHANGE 💱\n-15 euros until february 28th\n-20 euros until April 7th\n🔥🔥🔥🕺🏾💃🏾PRE-PARTY💃🏾🕺🏾🔥 🔥 🔥\nNot included in the full Pass\n🏫Place of the PRE-PARTY 🏫\nLOGIS HOTEL LYON-EST\nA42 SORTIE N°5\n01700 SAINT-MAURICE-DE-BEYNOST\n🌇 ACCOMODATION 🌇\nMore informations Soon…\n♦️♦️ CONTACTS♦️♦️\nAXEL KOUMBA\nFacebook\n✔️ Axel Koumba\n✔️ Axel Gabaõ\n📧 tarraxospring@gmail.com",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
  "prompt": "b1d060bbebb24369",
- "rows_at": "2026-10-29T16:20:17+00:00",
+ "rows_at": "2026-11-03T13:13:19+00:00",
  "passes": [
   {
    "kind": "full",
@@ -29,7 +29,7 @@
      "from": null,
      "until": null,
      "quantity": 25,
-     "date_quote": "25 EARLY BIRD WOMAN —> 60 euros"
+     "date_quote": "25 EARLY BIRD WOMAN"
     },
     {
      "keys": [
@@ -78,7 +78,7 @@
      "from": null,
      "until": null,
      "quantity": 30,
-     "date_quote": "30 EARLY BIRD DUO PASS —> 100 euros"
+     "date_quote": "30 EARLY BIRD DUO PASS"
     },
     {
      "keys": [
@@ -103,6 +103,35 @@
    ]
   }
  ],
- "skipped": [],
+ "skipped": [
+  {
+   "key": "5889915",
+   "reason": "room"
+  },
+  {
+   "key": "5889916",
+   "reason": "room"
+  },
+  {
+   "key": "5889922",
+   "reason": "room"
+  },
+  {
+   "key": "5889917",
+   "reason": "room"
+  },
+  {
+   "key": "5889919",
+   "reason": "room"
+  },
+  {
+   "key": "5889920",
+   "reason": "room"
+  },
+  {
+   "key": "5889921",
+   "reason": "room"
+  }
+ ],
  "rule_quotes": []
 }

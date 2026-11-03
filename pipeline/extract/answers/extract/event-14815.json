@@ -1,9 +1,9 @@
 {
- "prompt": "94fcf4070f2eda95",
+ "prompt": "35e8616c28d2d460",
  "model": "claude-haiku-5-5",
- "answered_at": "2026-10-27T17:40:07+00:00",
+ "answered_at": "2026-11-03T13:15:51+00:00",
  "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
- "inputs": null,
+ "inputs": "3097836eecbc3667",
  "answer": {
   "batch": "event-14815",
   "events": [
@@ -140,13 +140,13 @@
     "features": [
      {
       "feature": "workshops",
-      "quote": "More than 20 hours of classes",
-      "rationale": "The description states that more than 20 hours of dance classes are part of the festival."
+      "quote": "More than 20 hours of classes (Salsa, Bachata, Kizomba, etc.)",
+      "rationale": "The event offers more than 20 hours of dance classes in several styles."
      },
      {
       "feature": "taxi_dancers",
       "quote": "Plenty of taxis!",
-      "rationale": "The description promises plenty of taxis, which refers to taxi dancers being present at the event."
+      "rationale": "Taxis, meaning taxi dancers in this scene, are announced as plentiful."
      }
     ]
    }

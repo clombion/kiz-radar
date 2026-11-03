@@ -10,7 +10,7 @@
  "description": "Pure Kizzz Festival 2026 returns to Dortmund for another edition of pure kizomba passion. Set in the welcoming space of Tanzschule Suhrmann, this festival brings together kizomba and urban kiz enthusiasts for an immersive long weekend of workshops, socials, and unforgettable night parties. With a carefully curated lineup of international artists and DJs, Pure Kizzz is known for its intimate, high-energy atmosphere. Whether you come to learn, dance, or simply enjoy the music and community, this festival delivers an authentic kizomba experience in the heart of Germany.",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
  "prompt": "b1d060bbebb24369",
- "rows_at": "2026-10-29T16:10:36+00:00",
+ "rows_at": "2026-11-03T13:04:25+00:00",
  "passes": [
   {
    "kind": "full",
@@ -41,9 +41,9 @@
    "tiers": [
     {
      "keys": [
+      "Switch - Full Pass",
       "Leader - Full Pass",
-      "Follower - Full Pass",
-      "Switch - Full Pass"
+      "Follower - Full Pass"
      ],
      "from": null,
      "until": null,
@@ -94,6 +94,22 @@
   }
  ],
  "skipped": [
+  {
+   "key": "Follower - David Ruela inside a DJs Mind - Masterclass",
+   "reason": "class"
+  },
+  {
+   "key": "Leader - David Ruela inside a DJs Mind - Masterclass",
+   "reason": "class"
+  },
+  {
+   "key": "Follower - Masterclass Val’r & Sarah Urban Kiz",
+   "reason": "class"
+  },
+  {
+   "key": "Leader - Masterclass Val’r & Sarah Urban Kiz",
+   "reason": "class"
+  },
   {
    "key": "Guest Dancer",
    "reason": "not_public"
