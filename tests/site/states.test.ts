@@ -1,34 +1,21 @@
 // The closed world of states (docs/concepts/states.md): the site holds no words or keys of its own, and asking the table
 // for something it doesn't have fails.
+import { spawnSync } from 'node:child_process';
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { expect, test } from 'vitest';
 import { Drawing, MORE_TRAITS, TRAITS } from '../../site/icons.ts';
 import { KEY, STATES } from '../../site/states.ts';
 import { say, where } from '../../site/wording.ts';
 import { code } from './sources.ts';
 
-// words and keys that mean something else where they are written; each must still be found, so none outlives its use
+// words that mean something else where they are written; each must still be found, so none outlives its use. A key
+// is the Grit rule's (lint/states.grit, below): it is refused where a state is compared or passed, whatever its name
+// means elsewhere, so it needs no list.
 const HOMONYMS = new Set([
-  "artists.ts: 'next'", // a sort order
-  "artists.ts: 'group'", // ARIA's role="group"
-  "tabs.ts: 'ahead'", // a view transition's direction
-  "countries.ts: 'group'",
-  "search.ts: 'group'", // a search group
-  "currency.ts: 'group'", // a number's thousands separator, as Intl.NumberFormat names its part
-  "search.ts: 'person'", // a kind of result
-  "find.ts: 'person'",
-  "find.ts: 'none'", // nothing matches
-  "plans.ts: 'person'",
-  "main.ts: 'page'", // aria-current="page"
-  "map.ts: 'none'", // no filter
-  "sentence.ts: 'none'", // no transition
-  "icons.ts: 'none'", // an SVG's fill="none"
-  "search.ts: 'none'",
   'sentence.ts: full pass', // the price limit's own sum: pass and flight
-  "festivals.ts: 'now'", // a price line with today's tier ('now' in price)
-  "pricing.ts: 'door'", // pass_tiers' door column
-  "review.ts: 'none'", // no token
-  "review.ts: 'contested'", // a queue, named in the address
-  "review.ts: 'day'", // a token's days left
 ]);
 
 // every words of the table, and each form of them, as the fragments a page could compose: whole words in quotes, and
@@ -43,7 +30,6 @@ const fragments = forms
   .flatMap((w) => w.split(VALUE))
   .map((f) => f.trim())
   .filter((f) => f.includes(' ') && f.length >= 8);
-const quoted = (k: string) => new RegExp(`['"\`]${k}['"\`]`, 'u');
 
 test('no state’s words are written outside the state table', () => {
   const found = [...code].flatMap(([f, src]) =>
@@ -55,20 +41,10 @@ test('no state’s words are written outside the state table', () => {
   expect(found.filter((w) => !HOMONYMS.has(w))).toEqual([]);
 });
 
-test('no state’s key is written outside the state table', () => {
-  const keys = new Set(Object.values(STATES).flatMap((p) => Object.keys(p)));
-  const found = [...code].flatMap(([f, src]) =>
-    [...keys].filter((k) => quoted(k).test(src)).map((k) => `${f}: '${k}'`),
-  );
-  expect(found.filter((k) => !HOMONYMS.has(k))).toEqual([]);
-});
-
 test('every homonym still occurs where it is said to', () => {
   const gone = [...HOMONYMS].filter((entry) => {
     const [f = '', w = ''] = entry.split(': ');
-    const src = code.get(f) ?? '';
-    const key = /^'(?<key>.*)'$/u.exec(w)?.groups?.['key'];
-    return !(key === undefined ? src.includes(w) : quoted(key).test(src));
+    return !(code.get(f) ?? '').includes(w);
   });
   expect(gone).toEqual([]);
 });
@@ -88,4 +64,56 @@ test('every feature a card or a view shows has an icon icons.ts draws', () => {
     ...where('feature', 'view'),
   ]);
   expect([...TRAITS, ...MORE_TRAITS].every(([, , drawn]) => drawn instanceof Drawing)).toBe(true);
+});
+
+// a module of the site with a state's key in quotes where each kind of use reads one, and uses that are no state's;
+// the lines Biome's rule (lint/states.grit) must refuse end with: refused
+const PLANTED = [
+  'declare const e: { phase: string; kind: string };',
+  "declare const KEY: { phase: { ENDED: 'ended' } };",
+  'declare function say(point: string, key: string): void;',
+  'declare function plural(n: number, word: string): string;',
+  "export const compared = e.phase === 'ended'; // refused",
+  "export const reversed = 'ended' !== e.phase; // refused",
+  'export const loose = e.phase == `ended`; // refused',
+  "say('price', 'priced'); // refused",
+  "export const listed = ['x'].includes('teacher'); // refused",
+  'switch (e.kind) {',
+  "  case 'couple': // refused",
+  '    break;',
+  '  default:',
+  '}',
+  'export const named = e.phase === KEY.phase.ENDED;',
+  "export const word = plural(2, 'day');",
+  "export const other = e.kind === 'tag';",
+  "export const attribute = { role: 'group' };",
+];
+const ROOT = fileURLToPath(new URL('../../', import.meta.url));
+interface Report {
+  diagnostics?: { category: string; location: { start: { line: number } } }[];
+}
+
+test('Biome’s rule refuses a state’s key in quotes where one is compared or passed, and nothing else', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'states-grit-'));
+  try {
+    mkdirSync(join(dir, 'site'));
+    writeFileSync(join(dir, 'site', 'planted.ts'), PLANTED.join('\n'));
+    writeFileSync(join(dir, 'biome.json'), JSON.stringify({ plugins: [`${ROOT}lint/states.grit`] }));
+    const run = spawnSync(`${ROOT}node_modules/.bin/biome`, ['lint', '--reporter=json', 'site/planted.ts'], {
+      cwd: dir,
+      encoding: 'utf8',
+    });
+    const report: Report = JSON.parse(run.stdout.split('\n').find((l) => l.startsWith('{')) ?? '{}');
+    const refused = (report.diagnostics ?? []).filter((d) => d.category === 'plugin').map((d) => d.location.start.line);
+    const marked = PLANTED.flatMap((l, i) => (l.endsWith('// refused') ? [i + 1] : []));
+    expect(refused.toSorted((a, b) => a - b)).toEqual(marked);
+  } finally {
+    rmSync(dir, { recursive: true });
+  }
+});
+
+test('every rule in lint/ is one Biome runs', () => {
+  const config = readFileSync(`${ROOT}biome.jsonc`, 'utf8');
+  const unread = readdirSync(`${ROOT}lint`).filter((f) => !config.includes(`"./lint/${f}"`));
+  expect(unread).toEqual([]);
 });

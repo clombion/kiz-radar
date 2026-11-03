@@ -137,6 +137,7 @@ function chosenArtists(st: Readonly<Choices>, next: ReadonlyMap<number, { start_
   }
   // an order orders and keeps everyone: those with no festival coming after the rest, most booked first
   const soonest = (a: Artist) => next.get(a.artist_id)?.start_date ?? '9999'; // after every date
+  // biome-ignore lint/plugin/states: next is an order the address names (sort=next), not tier_today's state
   if (st.sort === 'next') rows = rows.toSorted((a, b) => soonest(a).localeCompare(soonest(b)));
   return rows;
 }

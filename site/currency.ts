@@ -21,10 +21,7 @@ const CENTS = new Intl.NumberFormat('en-GB', {
   maximumFractionDigits: 2,
   useGrouping: false,
 });
-const grouped = (n: number): string =>
-  WHOLE.formatToParts(n)
-    .map((p) => (p.type === 'group' ? ' ' : p.value))
-    .join('');
+const grouped = (n: number): string => WHOLE.format(n).replaceAll(',', '\u00a0'); // en-GB's thousands separator
 const decimals = (n: number): string => (Number.isInteger(n) ? grouped(n) : CENTS.format(n));
 // an amount in its currency: "1 850 kr", "€160", "$12.50", "160 CHF"
 export function written(n: number, c: string): string {

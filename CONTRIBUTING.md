@@ -34,14 +34,14 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   the branch coverage `pyproject.toml` sets.
 - **Site:** tsc strict, every Biome rule but those `biome.jsonc` turns off, each with its reason, and the plugins in
   `lint/` (links in `routes.ts`, requests in `net.ts`, classes through `dom.ts`, markup only from `icons.ts`, promises
-  reported). A class is one the stylesheet defines (`site/classes.ts`, generated). vitest runs in Node and in Chromium,
-  and fails below the coverage of the pure modules `vitest.config.ts` sets.
+  reported, a state as `KEY`). A class is one the stylesheet defines (`site/classes.ts`, generated). vitest runs in Node
+  and in Chromium, and fails below the coverage of the pure modules `vitest.config.ts` sets.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list.
 - **Duplicates:** jscpd fails on a block written twice, at the length `.jscpd.json` sets.
 - **Generated files:** `mise run generate` writes `pipeline/enums.py`, `site/states.ts`, `site/classes.ts`,
-  `docs/reference/`, and the home city (`pipeline/airports.csv`'s home) where `public/index.html` and
-  `public/site.webmanifest` name it; `generate:check` fails when one differs from what it is built from.
+  `lint/states.grit`, `docs/reference/`, and the home city (`pipeline/airports.csv`'s home) where `public/index.html`
+  and `public/site.webmanifest` name it; `generate:check` fails when one differs from what it is built from.
 
 ## Making changes
 

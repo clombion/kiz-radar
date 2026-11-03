@@ -16,7 +16,8 @@
     "./lint/promises.grit",
     "./lint/fetch.grit",
     "./lint/classes.grit",
-    "./lint/markup.grit"
+    "./lint/markup.grit",
+    "./lint/states.grit"
   ],
   "linter": {
     "rules": {

@@ -88,7 +88,7 @@ const personEntries = (): Indexed[] =>
     return p
       ? [
           [
-            { kind: 'person', name: r.name, p, upcoming: r.upcoming, past: !r.upcoming, rank: r.upcoming },
+            { kind: 'friend', name: r.name, p, upcoming: r.upcoming, past: !r.upcoming, rank: r.upcoming },
             p.artists.map((a) => a.display_name),
           ],
         ]
@@ -222,7 +222,7 @@ function festivalParts(e: FoundEvent): Parts {
 }
 const initial = (name: string) => h('span', { class: ['lead', 'mono'] }, name.trim()[0] ?? '?');
 const comingUp = (n: number, none: string) => (n ? `${plural(n, 'festival')} coming up` : none);
-const personParts = (item: Found<'person'>): Parts => [
+const personParts = (item: Found<'friend'>): Parts => [
   initial(item.name),
   [
     item.upcoming ? `${plural(item.upcoming, 'festival')} planned` : 'no plans coming up',
@@ -247,7 +247,7 @@ function parts(item: Item): Parts {
   switch (item.kind) {
     case 'festival':
       return festivalParts(item.e);
-    case 'person':
+    case 'friend':
       return personParts(item);
     case 'artist':
       return artistParts(item);
@@ -345,7 +345,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
         }
         done(go(eventOnMapHref(item.e.id)), 'search');
         return;
-      case 'person':
+      case 'friend':
         done(go(personHref(item.p.key)), 'search');
         return;
       case 'artist':
@@ -522,7 +522,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
       case 'suggest':
         suggest(items);
         return;
-      case 'none':
+      case 'nothing':
         nothing(found.near);
         return;
       case 'past':
