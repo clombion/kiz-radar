@@ -28,24 +28,6 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
       [p.id],
     ),
   );
-  const share = button(
-    {
-      class: 'more-btn',
-      onclick: () => {
-        const url = location.href,
-          title = `${p.name}’s festival plans`;
-        (typeof navigator.share === 'function'
-          ? navigator.share({ title, url })
-          : navigator.clipboard.writeText(url).then(() => {
-              share.textContent = 'Link copied';
-            })
-        ).catch(() => {
-          /* the visitor closed the share sheet, or the browser refused the clipboard */
-        });
-      },
-    },
-    'Share these plans',
-  );
   page(
     root,
     [
@@ -59,7 +41,7 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
             joined(p.artists.map((a) => h('a', { href: artistHref(a.id), class: 'artist' }, a.display_name))),
           )
         : null,
-      share,
+      shareButton('Share these plans', `${p.name}’s festival plans`),
     ],
     comingUp(
       events.map((e) => eventCard(e)),
@@ -68,12 +50,34 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
   );
 }
 
-// "Coming up (3)" over the cards of the festivals to come, or what to say when there are none
-export const comingUp = (cards: readonly HTMLElement[], none: string): HTMLElement =>
+// A button that shares this page's link under a title: the device's share sheet, or else the link copied.
+export function shareButton(label: string, title: string): HTMLButtonElement {
+  const share = button(
+    {
+      class: 'more-btn',
+      onclick: () => {
+        const url = location.href;
+        (typeof navigator.share === 'function'
+          ? navigator.share({ title, url })
+          : navigator.clipboard.writeText(url).then(() => {
+              share.textContent = 'Link copied';
+            })
+        ).catch(() => {
+          /* the visitor closed the share sheet, or the browser refused the clipboard */
+        });
+      },
+    },
+    label,
+  );
+  return share;
+}
+
+// "Coming up (3)" (or another heading) over the cards of the festivals to come, or what to say when there are none
+export const comingUp = (cards: readonly HTMLElement[], none: string, heading = 'Coming up'): HTMLElement =>
   h(
     'section',
     {},
-    h('h2', {}, cards.length > 0 ? `Coming up (${cards.length})` : 'Coming up'),
+    h('h2', {}, cards.length > 0 ? `${heading} (${cards.length})` : heading),
     cards.length > 0 ? h('div', { class: 'festival-cards' }, cards) : h('p', { class: 'muted' }, none),
   );
 // someone's name, linking to their plans page

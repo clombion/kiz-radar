@@ -256,7 +256,7 @@ def test_a_community_is_what_its_three_files_say(site_db: Path) -> None:
 
 KEY = 'frost-lantern-river-maple'
 OTHER = 'snow-pine-harbour-light'
-MANAGER = Community(key=KEY, name='Dancers in Norway', manager='cedric', note='')
+MANAGER = Community(key=KEY, name='Norwegians in festivals', manager='cedric', note='')
 MEMBER = Membership(community=KEY, person='cedric')
 ADDED = Seeded(
     community=KEY, name='Tonje', artist_keys=('p:tonje@dance',), event_id=1, status=enums.Plan.GOING, event='KUOF'
@@ -268,7 +268,12 @@ ADDED = Seeded(
     [
         ([MANAGER], [MEMBER, MEMBER.model_copy(update={'community': OTHER})], [], f'no community {OTHER}'),
         ([MANAGER], [MEMBER, MEMBER.model_copy(update={'person': 'nobody'})], [], 'no person nobody in people.csv'),
-        ([MANAGER.model_copy(update={'manager': 'nobody'})], [MEMBER], [], 'the manager of Dancers in Norway, nobody'),
+        (
+            [MANAGER.model_copy(update={'manager': 'nobody'})],
+            [MEMBER],
+            [],
+            'the manager of Norwegians in festivals, nobody',
+        ),
         ([MANAGER], [MEMBER], [ADDED.model_copy(update={'community': OTHER})], f'seeded.csv: no community {OTHER}'),
         ([MANAGER], [MEMBER], [ADDED.model_copy(update={'event_id': 2})], r'seeded.csv: no event 2 \(KUOF\)'),
         (

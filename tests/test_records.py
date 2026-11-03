@@ -106,7 +106,7 @@ SUGGESTION = {
     'score': '1.15',
     'reason': 'same name, different keys',
 }
-COMMUNITY = {'key': 'frost-lantern-river-maple', 'name': 'Dancers in Norway', 'manager': 'cedric', 'note': ''}
+COMMUNITY = {'key': 'frost-lantern-river-maple', 'name': 'Norwegians in festivals', 'manager': 'cedric', 'note': ''}
 SEEDED = {
     'community': 'frost-lantern-river-maple',
     'name': 'Tonje',

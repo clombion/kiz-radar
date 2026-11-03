@@ -34,13 +34,22 @@ nobody can create, join or claim one yet, and its rows are written by hand.
   they are, separated by `;`, or empty), the `event_id`, the `status` (a plan's, `going`) and the festival's name for
   people reading the file. A name is only a name: a link, an @handle or an email address is refused.
 
-The page shows the community's name, its members and its manager, and who it is meant for ("Visible to the 2 members of
-Dancers in Norway"). Then come the festivals that its members plan or that someone was added to, soonest first: first as
-a list of who goes where, three festivals shown and "See more" for the rest, then as cards. Each says who of the
-community goes: its members as on any card (as their couple when both go, teaching when in the line-up), then the people
-added, said to be added by the manager: "Christina teaching · Sian teaching and Carolina going (added by Cédric)".
-Whether someone added teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the
-manager never says it, and someone teaching links to their artist page.
+The page shows the community's name ("Norwegians in festivals"), its members and its manager, when most of it travels
+("Most of the community travels the weekend of 20–22 Nov: 5 people, to KUOF – Kizomba & Urban Kiz Oslo Festival in
+Oslo."), who it is meant for ("Visible to the 2 members of Norwegians in festivals") and a Share this page button, which
+opens the device's share sheet or else copies the link. A festival's weekend is the Friday of the Monday-to-Sunday week
+it starts in, and its people (members and people added, a couple as its two) count in that weekend, with those of any
+other festival that weekend; of weekends that tie, the sentence names the soonest.
+
+Under the head, a calendar shows the months from today's through the last festival's month, four at most: today
+outlined, each festival's days shaded, and on each weekend's Friday how many people travel then, the same count as the
+sentence's, larger the more they are, linking to the festival on the map. Then come the festivals that its members plan
+or that someone was added to, soonest first: a list of who goes where, three festivals shown and "See more" for the
+rest, then their cards under "Where the community is going". Each says who of the community goes: its members as on any
+card (as their couple when both go, teaching when in the line-up), then the people added: "Christina teaching · Sian
+teaching and Carolina going". Hovering an added name says who added them ("Added by Cédric"). Whether someone added
+teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the manager never says it,
+and someone teaching links to their artist page.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page

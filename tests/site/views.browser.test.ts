@@ -80,21 +80,32 @@ const communityPage = (key: string): HTMLElement => {
 const said = (el: Element | null | undefined) => el?.textContent?.replace(/\s+/gu, ' ').trim();
 
 // what the community's page says of each festival, on its card and in the list at the top
-const KUOF = 'Cédric & Christina teaching · Tonje, Ragnhild and Maja going (added by Cédric)';
+const KUOF = 'Cédric & Christina teaching · Tonje, Ragnhild and Maja going';
 // Christina alone of the members goes to Glasgow, named as herself; Sian, added by Cédric, teaches there
-const GLASGOW = 'Christina teaching · Sian teaching and Carolina going (added by Cédric)';
+const GLASGOW = 'Christina teaching · Sian teaching and Carolina going';
+// the names in an element that say on hover who added them, each with what it says
+const titled = (el: Element | null | undefined) =>
+  [...(el?.querySelectorAll('[title]') ?? [])].map((n) => [n.textContent, n.getAttribute('title')]);
 
 test('a community names who of it goes to each festival: members as their couple, and the people added', () => {
   const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
-  expect(said(root.querySelector('h1'))).toBe('Dancers in Norway');
+  expect(said(root.querySelector('h1'))).toBe('Norwegians in festivals');
   expect(said(root.querySelector('.lede'))).toBe('2 members · managed by Cédric');
   expect(root.querySelector('.lede a')?.getAttribute('href')).toBe(personHref('cedric'));
-  expect(said(root.querySelector('.profile-head'))).toContain('Visible to the 2 members of Dancers in Norway');
+  expect(said(root.querySelector('.profile-head'))).toContain('Visible to the 2 members of Norwegians in festivals');
   const cards = [...root.querySelectorAll('.festival-card')];
-  expect(said(root.querySelector('section h2'))).toBe(`Coming up (${cards.length})`);
+  expect(said(root.querySelector('section h2'))).toBe(`Where the community is going (${cards.length})`);
   const card = (title: string) => cards.find((c) => c.querySelector('h3')?.textContent?.startsWith(title));
   expect(said(card('KUOF')?.querySelector('.going-line'))).toBe(KUOF);
   expect(said(card('Glasgow')?.querySelector('.going-line'))).toBe(GLASGOW);
+  // who added them is said on hover only, on each added name
+  expect(said(root)).not.toContain('added by');
+  expect(titled(card('KUOF')?.querySelector('.going-line'))).toEqual(
+    ['Tonje', 'Ragnhild', 'Maja'].map((n) => [n, 'Added by Cédric']),
+  );
+  expect(titled(card('Glasgow')?.querySelector('.going-line'))).toEqual(
+    ['Sian', 'Carolina'].map((n) => [n, 'Added by Cédric']),
+  );
   // teaching, so linked to her artist page as a member is; Carolina, only going, has no page
   const sian = one({ id: num }, sql`SELECT id FROM artists WHERE match_key = ?`, ['p:sian@dance'])?.id;
   const links = [...(card('Glasgow')?.querySelectorAll('.going-line a') ?? [])];
@@ -133,7 +144,7 @@ test('the community’s list shows three festivals, soonest first, and See more 
     expect(titles.length).toBeGreaterThan(3);
     expect(listed.map((r) => r.shown)).toEqual(titles.map((_, i) => i < 3));
     expect(listed.slice(0, 2).map((r) => r.who)).toEqual([GLASGOW, KUOF]);
-    const more = root.querySelector<HTMLButtonElement>('button.more-btn');
+    const more = root.querySelector<HTMLButtonElement>('.plan-list + button');
     expect(more?.textContent).toBe('See more');
     expect(more?.getAttribute('aria-expanded')).toBe('false');
     more?.focus();
@@ -155,7 +166,7 @@ test('with three festivals or fewer to come, the list shows them all and has no 
   expect(listed.length).toBeGreaterThan(0);
   expect(listed.length).toBeLessThanOrEqual(3);
   expect(listed.every((r) => r.shown)).toBe(true);
-  expect(root.querySelector('button.more-btn')).toBeNull();
+  expect(root.querySelector('.plan-list + button')).toBeNull();
 });
 
 test('the people a manager added are named on the community’s page only, never on a festival’s card elsewhere', () => {
@@ -165,4 +176,67 @@ test('the people a manager added are named on the community’s page only, never
 
 test('a link to no community says so', () => {
   expect(said(communityPage('no-such-community-here'))).toBe('No community at this link.');
+});
+
+test('the community’s page says the weekend most of it travels, and its calendar counts the same weekends', () => {
+  const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+  const head = [...root.querySelectorAll('.profile-head p')].map((p) => said(p));
+  // KUOF's weekend: Cédric, Christina and the three added; Glasgow's has three
+  expect(head).toContain(
+    'Most of the community travels the weekend of 20–22 Nov: 5 people, to KUOF – Kizomba & Urban Kiz Oslo Festival in Oslo.',
+  );
+  const months = [...root.querySelectorAll('.cal-month')];
+  expect(months.map((m) => said(m.querySelector('caption')))).toEqual([
+    'November 2026',
+    'December 2026',
+    'January 2027',
+    'February 2027',
+  ]);
+  const [november] = months;
+  const today = [...root.querySelectorAll('.cal-month td[aria-current="date"]')];
+  expect(today.map((td) => said(td))).toEqual(['1']);
+  expect(november?.contains(today[0] ?? null)).toBe(true);
+  // Glasgow's days, and the count on its weekend's Friday, said to a screen reader
+  const days = (month: Element | undefined) =>
+    [...(month?.querySelectorAll('td.cal-on') ?? [])].map((td) => Number(td.firstChild?.textContent));
+  expect(days(november).slice(0, 4)).toEqual([6, 7, 8, 9]);
+  const counts = [...root.querySelectorAll('.cal-count')].map((a) => [a.textContent, a.getAttribute('aria-label')]);
+  expect(counts.slice(0, 2)).toEqual([
+    ['3', '6–9 Nov: Glasgow Kizomba Festival 5.0, 3 people'],
+    ['5', '20–22 Nov: KUOF – Kizomba & Urban Kiz Oslo Festival, 5 people'],
+  ]);
+  // the sentence's weekend is the calendar's busiest, by the same count
+  const most = Math.max(...counts.map(([n]) => Number(n)));
+  expect(head.join(' ')).toContain(`${most} people, to KUOF`);
+  expect(counts.find(([n]) => Number(n) === most)?.[1]).toContain('KUOF');
+});
+
+test('with nothing to come, the community’s page has no sentence of where it travels, nor a calendar', () => {
+  const root = onDay('2028-01-01', () => communityPage(COMMUNITY));
+  expect(said(root)).not.toContain('Most of the community');
+  expect(root.querySelector('.cal')).toBeNull();
+});
+
+test('the community’s page shares its link, copied when the browser has no share sheet', async () => {
+  const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+  const share = [...root.querySelectorAll('button')].find((b) => b.textContent === 'Share this page');
+  const copied = vi.fn(() => Promise.resolve());
+  vi.stubGlobal('navigator', { clipboard: { writeText: copied } });
+  try {
+    share?.click();
+    await expect.poll(() => share?.textContent).toBe('Link copied');
+    expect(copied).toHaveBeenCalledWith(location.href);
+  } finally {
+    vi.unstubAllGlobals();
+  }
+});
+
+test('the calendar starts at today’s month, even one without a festival, and shows four months at most', () => {
+  const root = onDay('2026-10-15', () => communityPage(COMMUNITY));
+  expect([...root.querySelectorAll('.cal-month caption')].map((c) => said(c))).toEqual([
+    'October 2026',
+    'November 2026',
+    'December 2026',
+    'January 2027',
+  ]);
 });
