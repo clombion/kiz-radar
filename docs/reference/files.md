@@ -12,6 +12,9 @@ one.
 | `pipeline/tickets/pages.csv` | `FoundRow` | How an agent found a festival with no known ticket page sells: a page exactly when it sells in a shop (a festival whose sales haven't opened may name its coming page), the links searched exactly when a search found nothing. |
 | `pipeline/tickets/status.csv` | `StatusRow` | What a festival waits for. |
 | `pipeline/plans.csv` | `PlanRow` | Who said they are going to which festival. |
+| `pipeline/communities.csv` | `Community` | A community: its key (four words, its page's address), its name, and its manager (a people.csv key), who adds people to it. |
+| `pipeline/community_members.csv` | `Membership` | A person (a people.csv key) who is a member of a community, under their own name. |
+| `pipeline/seeded.csv` | `Seeded` | Someone a community's manager added, who has not joined: a plain name (no link, handle or email) and a festival they are going to. The site counts them and never names them. |
 | `pipeline/airports.csv` | `Airport` | An airport a festival can fly to; home (1) is where flights leave from. |
 | `pipeline/geocode.csv` | `Place` | A place the source DB names, and where it is when Nominatim found it (its columns lat, lon and osm_name, all empty when it found none). A place is a city, in a country when the source DB names one. |
 | `pipeline/fares.csv` | `Fare` | A weekend's return flight from home: out on the Friday, back fares.NIGHTS later; its price in whole euros, the currency fares asks fli for. |

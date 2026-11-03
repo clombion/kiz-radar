@@ -1053,6 +1053,55 @@ class PlanRow(CsvRow):
     event: str
 
 
+# a name and nothing else: a link, an @handle or an email address is a way to reach someone, which a name a manager
+# writes for someone else must not be (the communities' rule 2)
+REACHABLE = re.compile(r'@|://|\bwww\.|\b[\w-]+\.[a-z]{2,}\b')
+
+
+def plain_name(name: str) -> str:
+    if found := REACHABLE.search(name):
+        raise ValueError(f'{name!r} is no plain name: {found.group()!r} reaches someone (a link, a handle or an email)')
+    return name
+
+
+PlainName = Annotated[str, Field(min_length=1), AfterValidator(plain_name)]
+CommunityKey = Annotated[str, Field(pattern=r'^[a-z]+(-[a-z]+){3}$')]  # four words, as frost-lantern-river-maple
+
+
+class Community(CsvRow):
+    """A community: its key (four words, its page's address), its name, and its manager (a people.csv key), who adds
+    people to it."""
+
+    FILE = 'pipeline/communities.csv'
+
+    key: CommunityKey
+    name: Text
+    manager: str
+    note: str
+
+
+class Membership(CsvRow):
+    """A person (a people.csv key) who is a member of a community, under their own name."""
+
+    FILE = 'pipeline/community_members.csv'
+
+    community: str
+    person: str
+
+
+class Seeded(CsvRow):
+    """Someone a community's manager added, who has not joined: a plain name (no link, handle or email) and a
+    festival they are going to. The site counts them and never names them."""
+
+    FILE = 'pipeline/seeded.csv'
+
+    community: str
+    name: PlainName
+    event_id: int
+    status: Plan
+    event: str
+
+
 class Airport(CsvRow):
     """An airport a festival can fly to; home (1) is where flights leave from."""
 

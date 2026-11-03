@@ -7,6 +7,7 @@ import { roleLabel } from '../../site/roles.ts';
 import {
   artistHref,
   artistsHref,
+  communityHref,
   countriesHref,
   festivalsHref,
   mapHref,
@@ -101,9 +102,15 @@ test('an address leaves out a choice with no value, and a section is found by it
   });
   expect(parseRoute(mapHref())).toEqual({ name: 'map', sub: [], qs: '' });
   expect(parseRoute(personHref('cedric'))).toEqual({ name: 'friends', sub: ['cedric'], qs: '' });
+  expect(parseRoute(communityHref('frost-lantern-river-maple'))).toEqual({
+    name: 'community',
+    sub: ['frost-lantern-river-maple'],
+    qs: '',
+  });
   expect(parseRoute(countriesHref({ sort: 'name' }))).toEqual({ name: 'countries', sub: [], qs: 'sort=name' });
   expect(SECTIONS[sectionAt('artists')]?.[1]).toBe(artistsHref());
   expect(sectionAt('sql')).toBe(-1);
+  expect(sectionAt('community')).toBe(-1); // no tab of its own, nor a swipe to it
   expect(sectionAt(null)).toBe(-1);
   const replaceState = vi.fn();
   vi.stubGlobal('history', { replaceState });

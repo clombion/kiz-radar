@@ -31,11 +31,14 @@ from pipeline.db import Reader, Transaction
 from pipeline.enums import Feature, Genre, HomeBasis, PassKind, People, Role, Style
 from pipeline.extract import resolve_artists
 from pipeline.records import (
+    Community,
     Fare,
+    Membership,
     Person,
     PlanRow,
     Promo,
     Rate,
+    Seeded,
     day_of,
     now,
 )
@@ -345,6 +348,25 @@ create table plans (
     primary key (person_id, event_id)
 ) strict, without rowid;
 create index plans_event on plans(event_id);
+create table communities (
+    id integer primary key,
+    key text not null unique,
+    name text not null,
+    manager_id integer not null references people(id) deferrable initially deferred
+) strict;
+create table community_members (
+    community_id integer not null references communities(id) deferrable initially deferred,
+    person_id integer not null references people(id) deferrable initially deferred,
+    primary key (community_id, person_id)
+) strict, without rowid;
+-- the people a community's manager added, counted by festival and status: their names stay in pipeline/seeded.csv
+create table community_seeded (
+    community_id integer not null references communities(id) deferrable initially deferred,
+    event_id integer not null references events(id) deferrable initially deferred,
+    status text not null check (status in ({plan})),
+    n integer not null check (n > 0),
+    primary key (community_id, event_id, status)
+) strict, without rowid;
 create table states (
     point text not null,
     key text not null,
@@ -802,7 +824,7 @@ def event_stats(x: Transaction, booked: Booked) -> None:
     x.insert('event_stats', rows)
 
 
-def plans(x: Transaction, key_id: Mapping[str, int]) -> None:
+def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
     """Who's going (pipeline/people.csv, pipeline/plans.csv). People are ours, not the source's: a name, the artist
     records they are (if any), and whether the site names them on festival cards (featured) or only counts them. A
     plan says a person is going to a festival; booked_as says when they are in its line-up too, as themselves or in a
@@ -825,6 +847,48 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> None:
         if r.event_id not in known:
             sys.exit(f'plans.csv: no event {r.event_id} ({r.event})')
     x.insert('plans', ({'person_id': person_id[r.person], 'event_id': r.event_id, 'status': r.status} for r in plans_))
+    return person_id
+
+
+def communities(x: Transaction, person_id: Mapping[str, int]) -> None:
+    """Communities (pipeline/communities.csv, community_members.csv, seeded.csv): each with its manager, one of its
+    members, and the people its manager added who have not joined, counted by festival and status. Their names never
+    reach the site, as a server would give a member only the counts."""
+    found = Community.read()
+    community_id = {r.key: i for i, r in enumerate(found, 1)}
+    members = Membership.read()
+    for r in members:
+        if r.community not in community_id:
+            sys.exit(f'community_members.csv: no community {r.community} in communities.csv')
+        if r.person not in person_id:
+            sys.exit(f'community_members.csv: no person {r.person} in people.csv')
+    joined = {(r.community, r.person) for r in members}
+    for r in found:
+        if (r.key, r.manager) not in joined:
+            sys.exit(f'communities.csv: the manager of {r.name}, {r.manager}, is no member of it')
+    x.insert(
+        'communities',
+        ({'id': community_id[r.key], 'key': r.key, 'name': r.name, 'manager_id': person_id[r.manager]} for r in found),
+    )
+    x.insert(
+        'community_members',
+        ({'community_id': community_id[r.community], 'person_id': person_id[r.person]} for r in members),
+    )
+    seeded = Seeded.read()
+    known = set(x.column(int, 'select id from events'))
+    for r in seeded:
+        if r.community not in community_id:
+            sys.exit(f'seeded.csv: no community {r.community} in communities.csv')
+        if r.event_id not in known:
+            sys.exit(f'seeded.csv: no event {r.event_id} ({r.event})')
+    counted = collections.Counter((r.community, r.event_id, r.status) for r in seeded)
+    x.insert(
+        'community_seeded',
+        (
+            {'community_id': community_id[c], 'event_id': e, 'status': status, 'n': n}
+            for (c, e, status), n in counted.items()
+        ),
+    )
 
 
 def events_range(x: Reader) -> tuple[str, str]:
@@ -926,6 +990,11 @@ DOCS = {
     'cards, the others counted.',
     'person_artists': 'The artist records a person is, so their bookings and their plans meet.',
     'plans': 'Who said they are going to which festival (pipeline/plans.csv).',
+    'communities': 'Communities (pipeline/communities.csv, ours): a key, which is its page’s address, a name and its '
+    'manager, who is one of its members. Nothing lists them: a community is reached by its link.',
+    'community_members': 'Who is a member of which community (pipeline/community_members.csv).',
+    'community_seeded': 'How many people a community’s manager added, who have not joined, go to each festival '
+    '(pipeline/seeded.csv): counts only, as their names stay in that file.',
     'plan_rows': 'Each plan with the person, and booked_as: their role when they are in that festival’s line-up, alone '
     'or in a couple.',
     'event_rows': 'What the site reads: each event with its event_stats (lineup, popular_artists, kiz_only, genres, '
@@ -1014,7 +1083,7 @@ def build(src: Path, out: Path) -> Built:
             key_id = booked(x)
             fares(x)
             event_stats(x, artist_stats(x))
-            plans(x, key_id)
+            communities(x, plans(x, key_id))
             built_at = now().isoformat()
             meta(x, built_at)
             made = Built(site_json(x, built_at), review.review(x, built_at, src))

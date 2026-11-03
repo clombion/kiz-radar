@@ -5,7 +5,7 @@ import { beforeAll, expect, test, vi } from 'vitest';
 import { commands, page } from 'vitest/browser';
 import { load, loadSite } from '../../site/db.ts';
 import { done } from '../../site/report.ts';
-import { artistsHref, EXPLORE, TABS } from '../../site/routes.ts';
+import { artistsHref, communityHref, EXPLORE, TABS } from '../../site/routes.ts';
 
 const INDEX = new DOMParser().parseFromString(await commands.readFile('public/index.html'), 'text/html');
 // the files the page asks for, by name: the packages the build copies to vendor/, or else the build's data
@@ -62,11 +62,14 @@ const unnamed = (): string[] =>
       .map((c) => `${location.hash} ${role}: <${c.tagName.toLowerCase()} class="${c.getAttribute('class') ?? ''}">`);
   });
 
-// every view the page links to: its tabs and Explore's, and the links index.html has (the SQL page)
+// every view the page links to: its tabs and Explore's, and the links index.html has (the SQL page); and the
+// community's page, which only its link reaches
+const COMMUNITY = communityHref('frost-lantern-river-maple');
 const VIEWS = [
   ...new Set([
     ...[...TABS, ...EXPLORE].map(([, , href]) => href),
     ...[...INDEX.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')].map((a) => a.getAttribute('href') ?? ''),
+    COMMUNITY,
   ]),
 ];
 
@@ -87,7 +90,8 @@ test.for(VIEWS)('%s takes the focus as a new page and names every control', asyn
 });
 
 test('every view the page shows is tested', () => {
-  expect(VIEWS.length).toBe(TABS.length + EXPLORE.length); // Explore's tab is its map; the SQL page has no tab
+  // Explore's tab is its map; the SQL page and a community's have no tab
+  expect(VIEWS.filter((v) => v !== COMMUNITY).length).toBe(TABS.length + EXPLORE.length);
 });
 
 test('the search dialog names every control', async () => {

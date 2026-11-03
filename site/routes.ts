@@ -33,6 +33,8 @@ export const artistsHref = (params?: Params) => hash('artists', params);
 export const artistHref = (id: number) => hash(`artists/${id}`);
 const friendsHref = () => hash('friends');
 export const personHref = (key: string) => hash(`friends/${key}`);
+// a community's page, which only its link reaches: nothing lists communities
+export const communityHref = (key: string) => hash(`community/${key}`);
 export const countriesHref = (params?: Params) => hash('countries', params);
 
 // the views a tab or a swipe goes to, by name, and the tabs of the header
@@ -46,8 +48,8 @@ export type Show = (
   qs: string,
   opts: { signal: AbortSignal; data: Promise<unknown> },
 ) => void;
-// every view an address names: the sections, and the SQL page the footer links to (index.html)
-export type Route = Section | 'sql';
+// every view an address names: the sections, the SQL page the footer links to (index.html), and a community's page
+export type Route = Section | 'sql' | 'community';
 // the header's tabs (a view's nav names its tab), and the second row Explore opens; a swipe on a touch screen steps
 // through the sections in this order: Festivals, Friends, then Explore's
 export const EXPLORE: readonly (readonly [Section, string, string])[] = [

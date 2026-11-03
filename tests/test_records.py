@@ -106,6 +106,14 @@ SUGGESTION = {
     'score': '1.15',
     'reason': 'same name, different keys',
 }
+COMMUNITY = {'key': 'frost-lantern-river-maple', 'name': 'Dancers in Norway', 'manager': 'cedric', 'note': ''}
+SEEDED = {
+    'community': 'frost-lantern-river-maple',
+    'name': 'Tonje',
+    'event_id': '19033',
+    'status': 'going',
+    'event': 'KUOF 2026 – Kizomba & Urban Kiz Oslo Festival',
+}
 
 
 @pytest.mark.parametrize(
@@ -117,13 +125,32 @@ SUGGESTION = {
         (records.Job, JOB, 'airport', 'Os'),
         (records.Suggestion, SUGGESTION, 'keep_key', 'ana'),
         (records.Suggestion, SUGGESTION, 'merge_key', 'p:ana dj'),
+        (records.Community, COMMUNITY, 'key', 'frost-lantern'),
+        *(
+            (records.Seeded, SEEDED, 'name', reach)
+            for reach in (
+                'https://instagram.com/tonje',
+                'http://tonje.no',
+                'www.tonje.no',
+                'tonje.no',
+                '@tonje',
+                'tonje@example.com',
+            )
+        ),
     ],
 )
 def test_a_csv_row_refuses_a_value_outside_its_column(
     record: type[CsvRow], row: dict[str, str], column: str, value: str
 ) -> None:
-    """An airport is its IATA code, a country one countries.NAMES has, an artist the key a mention gives: a hand edit
-    that is none is refused where the audit reads the file, not later by the step that uses it."""
+    """An airport is its IATA code, a country one countries.NAMES has, an artist the key a mention gives, a community
+    four words; a name a manager writes for someone who has not joined is a name, never a link, an @handle or an email
+    address, which would reach them and only they may give (the communities' rule 2). A hand edit that is none is
+    refused where the audit reads the file, not later by the step that uses it."""
     record.model_validate(record.cells(row))
     with pytest.raises(ValueError, match=column):
         record.model_validate(record.cells(row | {column: value}))
+
+
+@pytest.mark.parametrize('name', ['Tonje', 'Ana-Maria', 'Mary J. Blige', 'Ole Kristian', 'Siân'])
+def test_a_name_a_manager_adds_may_be_any_plain_name(name: str) -> None:
+    assert records.Seeded.model_validate(records.Seeded.cells(SEEDED | {'name': name})).name == name

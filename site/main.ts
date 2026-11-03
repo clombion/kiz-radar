@@ -3,6 +3,7 @@
 // it: listeners it adds to document or window pass it, so nothing outlives the view.
 
 import { artistsView } from './artists.ts';
+import { communityView } from './communities.ts';
 import { countriesView } from './countries.ts';
 import { load, loadSite, site } from './db.ts';
 import { button, h, onResize, toggle } from './dom.ts';
@@ -60,6 +61,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, _, qs) => countriesView(root, qs) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) },
   friends: { title: 'Friends', nav: 'friends', waitsForData: true, show: (root, sub) => personView(root, sub) },
+  community: { title: 'Community', nav: 'friends', waitsForData: true, show: (root, sub) => communityView(root, sub) },
 };
 const isRoute = (name: string): name is Route => Object.hasOwn(VIEWS, name);
 const failed = (root: HTMLElement, e: unknown) =>

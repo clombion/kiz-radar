@@ -188,7 +188,12 @@ POINTS = (
         'build_site_db event_rows',
     ),
     P('event_source', 'EventSource', "the site a festival's listing comes from (source_ids)", 'scrape'),
-    P('plan', 'Plan', 'each plan someone shares (pipeline/plans.csv)', 'pipeline/plans.csv'),
+    P(
+        'plan',
+        'Plan',
+        'each plan someone shares (pipeline/plans.csv), and each a community’s manager adds for someone (seeded.csv)',
+        'pipeline/plans.csv; pipeline/seeded.csv',
+    ),
     P('next_change', 'NextChange', "a pass's next price change on the day it is viewed", 'pricing.ts nextChange'),
     P('hotel', 'Hotel', 'each pass, by whether its price includes a hotel', 'the prices pass; the first read'),
     P('claim_source', 'ClaimSource', 'the channel a claim comes by, the earlier the higher its priority', 'claims'),

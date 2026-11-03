@@ -1,7 +1,7 @@
 # Plans and promo codes
 
-Two things the site shows come from files written by hand: who's going where, and our promo codes. The build stops when
-either names a person, an artist key or a festival the data doesn't have.
+Three things the site shows come from files written by hand: who's going where, the communities, and our promo codes.
+The build stops when one names a person, a community, an artist key or a festival the data doesn't have.
 
 ## Who's going
 
@@ -17,6 +17,32 @@ without teaching there. The Friends tab lists every festival someone goes to, so
 keep only those featured people go to.
 
 Plans are public: anyone can see them, so add people only with their agreement.
+
+## Communities
+
+A community is a group of dancers whose page says who of them goes where. This one is a fixed prototype of the
+communities the spec ("Kiz Radar community: user stories") describes, to get the page right before a server exists:
+nobody can create, join or claim one yet, and its rows are written by hand.
+
+- `pipeline/communities.csv`: one row per community, with its `key` (four words, as `frost-lantern-river-maple`; its
+  page is `#community/<key>`), its `name`, its `manager` (a `people.csv` key, who must be one of its members) and a
+  `note`.
+- `pipeline/community_members.csv`: one row per member, with the `community` and the `person` (a `people.csv` key).
+  Members are named on the page and link to their plans page.
+- `pipeline/seeded.csv`: the people the manager added who have not joined, one row per person and festival, with the
+  `community`, their `name`, the `event_id`, the `status` (a plan's, `going`) and the festival's name for people reading
+  the file. A name is only a name: a link, an @handle or an email address is refused.
+
+The page shows the community's name, its members and its manager, who it is meant for ("Visible to the 2 members of
+Dancers in Norway"), and the festivals to come that its members plan or that someone was added to, soonest first. Under
+each, the members going are named as on any card (as their couple when both go, teaching when in the line-up), and the
+people added are counted, however few: "3 people from this community are going". Their names stay in `seeded.csv`: the
+build keeps only how many go to each festival, as the server will give its members counts only, and the counts show on
+the community's page alone, never on the festival's card elsewhere. The page reads its community in the shape that
+server will answer with, so only where it comes from changes then.
+
+Nothing lists communities: a community's page is reached by its link only. Until the server can check who is a member,
+the link is the only thing that keeps it to them, as it is for a person's plans page.
 
 ## Promo codes
 

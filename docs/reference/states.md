@@ -41,7 +41,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | **listing**, each festival, by whether the site it comes from still lists it | `listed`, `gone` | scrape |
 | **phase**, each festival, by where it stands on the visitor's day: to come, over, cancelled or no longer listed | `ahead`, `ended`, `cancelled`, `gone` | build_site_db event_rows |
 | **event_source**, the site a festival's listing comes from (source_ids) | `kizomba-world` | scrape |
-| **plan**, each plan someone shares (pipeline/plans.csv) | `going` | pipeline/plans.csv |
+| **plan**, each plan someone shares (pipeline/plans.csv), and each a community’s manager adds for someone (seeded.csv) | `going` | pipeline/plans.csv; pipeline/seeded.csv |
 | **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.ts nextChange |
 | **hotel**, each pass, by whether its price includes a hotel | `included`, `none` | the prices pass; the first read |
 | **claim_source**, the channel a claim comes by, the earlier the higher its priority | `admin`, `organiser`, `model` | claims |

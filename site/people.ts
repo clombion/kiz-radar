@@ -62,21 +62,24 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
         : null,
       share,
     ],
-    h(
-      'section',
-      {},
-      h('h2', {}, events.length > 0 ? `Coming up (${events.length})` : 'Coming up'),
-
-      events.length > 0
-        ? h(
-            'div',
-            { class: 'festival-cards' },
-            events.map((e) => eventCard(e)),
-          )
-        : h('p', { class: 'muted' }, 'No festival plans shared yet.'),
+    comingUp(
+      events.map((e) => eventCard(e)),
+      'No festival plans shared yet.',
     ),
   );
 }
+
+// "Coming up (3)" over the cards of the festivals to come, or what to say when there are none
+export const comingUp = (cards: readonly HTMLElement[], none: string): HTMLElement =>
+  h(
+    'section',
+    {},
+    h('h2', {}, cards.length > 0 ? `Coming up (${cards.length})` : 'Coming up'),
+    cards.length > 0 ? h('div', { class: 'festival-cards' }, cards) : h('p', { class: 'muted' }, none),
+  );
+// someone's name, linking to their plans page
+export const personLink = (p: { key: string; name: string }): HTMLElement =>
+  h('a', { href: personHref(p.key), class: 'artist' }, p.name);
 
 // The festivals coming up that anyone said they're going to, soonest first, then everyone who shares plans.
 function everyone(root: HTMLElement): void {
@@ -116,23 +119,14 @@ function everyone(root: HTMLElement): void {
           'section',
           {},
           h('h2', {}, 'Friends sharing their plans'),
-          h(
-            'p',
-            {},
-            joined(
-              people.map((p) => [
-                h('a', { href: personHref(p.key), class: 'artist' }, p.name),
-                h('span', { class: 'muted' }, ` (${p.upcoming})`),
-              ]),
-            ),
-          ),
+          h('p', {}, joined(people.map((p) => [personLink(p), h('span', { class: 'muted' }, ` (${p.upcoming})`)]))),
         )
       : null,
   );
 }
 
-// a page of plans: its title and what goes under it in the head, then the rest
-function page(root: HTMLElement, [title, ...head]: readonly [Kid, ...Kid[]], ...rest: Kid[]): void {
+// a page of plans (a person's, everyone's, a community's): its title and what goes under it in the head, then the rest
+export function page(root: HTMLElement, [title, ...head]: readonly [Kid, ...Kid[]], ...rest: Kid[]): void {
   root.replaceChildren(
     h(
       'article',
