@@ -16,7 +16,7 @@ from pydantic import BaseModel
 from pipeline import airports, build_site_db, enums
 from pipeline import db as sqlite_db
 from pipeline.db import Db
-from pipeline.records import Airport, Community, Fare, Membership, Person, Place, PlanRow, Seeded, Spot
+from pipeline.records import Airport, Community, Fare, Membership, Person, Place, PlanRow, Seeded, Spot, Trip
 from tests.exports import committed
 from tests.fakes import Memory
 
@@ -216,8 +216,9 @@ class AddedRow(BaseModel, frozen=True):
 
 def test_a_community_is_what_its_three_files_say(site_db: Path) -> None:
     """A community, its members and its manager are communities.csv and community_members.csv, and the people a
-    manager added are seeded.csv row for row, each with the artist records they are: the community's page names them."""
-    committed(Community.FILE, Membership.FILE, Seeded.FILE)
+    manager added are seeded.csv row for row, each with the artist records they are: the community's page names them;
+    and members' trips are trips.csv."""
+    committed(Community.FILE, Membership.FILE, Seeded.FILE, Trip.FILE)
     found, members, seeded = Community.read(), Membership.read(), Seeded.read()
     assert built(
         site_db,
@@ -252,6 +253,14 @@ def test_a_community_is_what_its_three_files_say(site_db: Path) -> None:
     assert found
     assert members
     assert any(r.artist_keys for r in seeded)  # someone added is in a line-up, as Sian at Glasgow
+    trips = Trip.read()
+    assert built(
+        site_db,
+        Trip,
+        'select p.key as person, t.event_id, t.arrive, t.arrive_at, t.leave, t.leave_from, t.stay from trips t'
+        ' join people p on p.id = t.person_id',
+    ) == set(trips)
+    assert trips  # Cédric and Christina's to Prague
 
 
 KEY = 'frost-lantern-river-maple'
@@ -261,41 +270,62 @@ MEMBER = Membership(community=KEY, person='cedric')
 ADDED = Seeded(
     community=KEY, name='Tonje', artist_keys=('p:tonje@dance',), event_id=1, status=enums.Plan.GOING, event='KUOF'
 )
+TRIP = Trip(
+    person='cedric',
+    event_id=1,
+    arrive='2026-11-19T21:05',
+    arrive_at='OSL',
+    leave='2026-11-23T09:30',
+    leave_from='OSL',
+    stay='Scandic Holberg',
+)
+
+
+class Rows(BaseModel, frozen=True):
+    """What the community files hold: by default a community of cedric alone, with no one added and no trip."""
+
+    found: tuple[Community, ...] = (MANAGER,)
+    members: tuple[Membership, ...] = (MEMBER,)
+    seeded: tuple[Seeded, ...] = ()
+    trips: tuple[Trip, ...] = ()
 
 
 @pytest.mark.parametrize(
-    ('found', 'members', 'seeded', 'said'),
+    ('rows', 'said'),
     [
-        ([MANAGER], [MEMBER, MEMBER.model_copy(update={'community': OTHER})], [], f'no community {OTHER}'),
-        ([MANAGER], [MEMBER, MEMBER.model_copy(update={'person': 'nobody'})], [], 'no person nobody in people.csv'),
+        (Rows(members=(MEMBER, MEMBER.model_copy(update={'community': OTHER}))), f'no community {OTHER}'),
+        (Rows(members=(MEMBER, MEMBER.model_copy(update={'person': 'nobody'}))), 'no person nobody in people.csv'),
         (
-            [MANAGER.model_copy(update={'manager': 'nobody'})],
-            [MEMBER],
-            [],
+            Rows(found=(MANAGER.model_copy(update={'manager': 'nobody'}),)),
             'the manager of Norwegians in festivals, nobody',
         ),
-        ([MANAGER], [MEMBER], [ADDED.model_copy(update={'community': OTHER})], f'seeded.csv: no community {OTHER}'),
-        ([MANAGER], [MEMBER], [ADDED.model_copy(update={'event_id': 2})], r'seeded.csv: no event 2 \(KUOF\)'),
+        (Rows(seeded=(ADDED.model_copy(update={'community': OTHER}),)), f'seeded.csv: no community {OTHER}'),
+        (Rows(seeded=(ADDED.model_copy(update={'event_id': 2}),)), r'seeded.csv: no event 2 \(KUOF\)'),
         (
-            [MANAGER],
-            [MEMBER],
-            [ADDED.model_copy(update={'artist_keys': ('p:nobody',)})],
+            Rows(seeded=(ADDED.model_copy(update={'artist_keys': ('p:nobody',)}),)),
             r'seeded.csv: unknown artist key p:nobody \(Tonje\)',
         ),
+        (Rows(trips=(TRIP.model_copy(update={'person': 'nobody'}),)), 'trips.csv: nobody is no member'),
+        # someone the manager added has no identity to travel under: a trip of theirs names no member
+        (Rows(seeded=(ADDED,), trips=(TRIP.model_copy(update={'person': 'Tonje'}),)), 'trips.csv: Tonje is no member'),
+        (
+            Rows(trips=(TRIP.model_copy(update={'event_id': 2}),)),
+            'trips.csv: cedric has no plan for event 2 in plans.csv',
+        ),
+        (Rows(trips=(TRIP, TRIP)), 'trips.csv: a second trip of cedric to event 1'),
     ],
 )
-def test_a_community_naming_what_the_data_has_not_stops_the_build(
-    memory: Memory, found: list[Community], members: list[Membership], seeded: list[Seeded], said: str
-) -> None:
-    """A community of no one, a member or manager who is no one in people.csv (or a manager who is not a member), and
-    someone added to a festival the export has not, or as an artist it has not, stop the build, saying which."""
+def test_a_community_naming_what_the_data_has_not_stops_the_build(memory: Memory, rows: Rows, said: str) -> None:
+    """A community of no one, a member or manager who is no one in people.csv (or a manager who is not a member),
+    someone added to a festival the export has not, or as an artist it has not, and a trip of anyone but a member, to a
+    festival they don't plan, or a second one, stop the build, saying which."""
 
     def built_from_them() -> Db:
-        """The tables a community's rows go to, with cedric, one festival and one artist in, and the files' rows
-        written there."""
+        """The tables a community's rows go to, with cedric, his plan for the one festival and one artist in, and the
+        files' rows written there."""
         db = memory()
         with db.transaction() as x:
-            for table in ('people', 'communities', 'community_members', 'community_seeded', 'seeded_artists'):
+            for table in ('people', 'communities', 'community_members', 'community_seeded', 'seeded_artists', 'trips'):
                 x.script(build_site_db.TABLES[table])
             # what is checked of a festival or an artist: its id
             x.script('create table events (id integer primary key); create table artists (id integer primary key)')
@@ -306,13 +336,18 @@ def test_a_community_naming_what_the_data_has_not_stops_the_build(
             build_site_db.communities(x, {'cedric': 1}, {'p:tonje@dance': 1})
         return db
 
+    PlanRow.write([PlanRow(person='cedric', event_id=1, status=enums.Plan.GOING, event='KUOF')])
     Community.write([MANAGER])
     Membership.write([MEMBER])
     Seeded.write([ADDED])
-    assert built_from_them().value(int, 'select artist_id from seeded_artists') == 1
-    Community.write(found)
-    Membership.write(members)
-    Seeded.write(seeded)
+    Trip.write([TRIP])
+    made = built_from_them()
+    assert made.value(int, 'select artist_id from seeded_artists') == 1
+    assert made.value(str, 'select stay from trips') == 'Scandic Holberg'
+    Community.write(rows.found)
+    Membership.write(rows.members)
+    Seeded.write(rows.seeded)
+    Trip.write(rows.trips)
     with pytest.raises(SystemExit, match=said):
         _ = built_from_them()
 

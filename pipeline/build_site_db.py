@@ -39,6 +39,7 @@ from pipeline.records import (
     Promo,
     Rate,
     Seeded,
+    Trip,
     day_of,
     now,
 )
@@ -368,6 +369,17 @@ create table community_seeded (
     status text not null check (status in ({plan}))
 ) strict;
 create index community_seeded_community on community_seeded(community_id);
+-- how a member travels to a festival they plan (pipeline/trips.csv): arrive and leave as local times, to the minute
+create table trips (
+    person_id integer not null references people(id) deferrable initially deferred,
+    event_id integer not null references events(id) deferrable initially deferred,
+    arrive text not null,
+    arrive_at text,
+    leave text not null check (leave >= arrive),
+    leave_from text,
+    stay text,
+    primary key (person_id, event_id)
+) strict, without rowid;
 create table seeded_artists (
     seeded_id integer not null references community_seeded(id) deferrable initially deferred,
     artist_id integer not null references artists(id) deferrable initially deferred,
@@ -905,6 +917,7 @@ def communities(x: Transaction, person_id: Mapping[str, int], key_id: Mapping[st
         'community_members',
         ({'community_id': community_id[r.community], 'person_id': person_id[r.person]} for r in members),
     )
+    trips(x, person_id, {r.person for r in members})
     seeded = Seeded.read()
     known = set(x.column(int, 'select id from events'))
     for r in seeded:
@@ -930,6 +943,37 @@ def communities(x: Transaction, person_id: Mapping[str, int], key_id: Mapping[st
     x.insert(
         'seeded_artists',
         ({'seeded_id': i, 'artist_id': key_id[k]} for i, r in enumerate(seeded, 1) for k in r.artist_keys),
+    )
+
+
+def trips(x: Transaction, person_id: Mapping[str, int], members: set[str]) -> None:
+    """How members travel (pipeline/trips.csv): a trip is a member's, to a festival they plan, one each. The people a
+    manager adds are no members, so they never have one."""
+    planned = {(r.person, r.event_id) for r in PlanRow.read()}
+    found = Trip.read()
+    seen: set[tuple[str, int]] = set()
+    for r in found:
+        if r.person not in members:
+            sys.exit(f'trips.csv: {r.person} is no member of a community, and only a member registers a trip')
+        if (r.person, r.event_id) not in planned:
+            sys.exit(f'trips.csv: {r.person} has no plan for event {r.event_id} in plans.csv')
+        if (r.person, r.event_id) in seen:
+            sys.exit(f'trips.csv: a second trip of {r.person} to event {r.event_id}')
+        seen.add((r.person, r.event_id))
+    x.insert(
+        'trips',
+        (
+            {
+                'person_id': person_id[r.person],
+                'event_id': r.event_id,
+                'arrive': r.arrive,
+                'arrive_at': r.arrive_at,
+                'leave': r.leave,
+                'leave_from': r.leave_from,
+                'stay': r.stay,
+            }
+            for r in found
+        ),
     )
 
 
@@ -1037,6 +1081,8 @@ DOCS = {
     'community_members': 'Who is a member of which community (pipeline/community_members.csv).',
     'community_seeded': 'The people a community’s manager added, who have not joined (pipeline/seeded.csv): one row '
     'per person and festival, by their first name; the community’s page names them as added by its manager.',
+    'trips': 'How a member travels to a festival they plan (pipeline/trips.csv): arrive and leave as local times to '
+    'the minute (YYYY-MM-DDTHH:MM), the airports when they fly (arrive_at, leave_from), and where they stay.',
     'seeded_artists': 'The artist records a person a manager added is, so a booking of theirs says they teach there.',
     'seeded_rows': 'Each person a manager added with booked_as, as plan_rows has it, and artist_id, the artist record '
     'their page is.',

@@ -1,19 +1,19 @@
 // A community's page (pipeline/communities.csv, community_members.csv, seeded.csv): who is in it, and the festivals
 // to come that its members plan or that its manager added someone to, first as a list of who goes where, then as
-// cards, under when most of it travels and a calendar of its weekends. Only its link reaches it: nothing lists
-// communities. Its members and the people its manager added, who have not joined, are named; an added one's name says
-// on hover who added them.
-import { busiest, daysOf, monthsFrom, type Weekend, weekends, weeksOf } from './calendar.ts';
-import { addDays } from './days.ts';
+// cards, under when most of it is away at once and a strip of the days it is away. Only its link reaches it: nothing
+// lists communities. Its members and the people its manager added, who have not joined, are named; an added one's
+// name says on hover who added them. Members say how they travel (pipeline/trips.csv); the people added never do.
+import { type Away, awayDays, busiest, type Day, presence } from './calendar.ts';
 import { one, q, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, withDetails } from './festivals.ts';
 import { comingUp, page, personLink, shareButton } from './people.ts';
-import { doingTag, goersInline, goingRow } from './plans.ts';
-import { artistHref, eventOnMapHref } from './routes.ts';
-import { type Booked, booked, EVENT, num, opt, str } from './rows.ts';
-import { dayRange, monthYear } from './ui.ts';
+import { doingTag, type Goer, goersInline, goingRow, namesOf } from './plans.ts';
+import { artistHref } from './routes.ts';
+import { type Booked, booked, EVENT, num, opt, type RowOf, str } from './rows.ts';
+import { strip } from './strip.ts';
+import { dayRange, scrolling, weekDay } from './ui.ts';
 import { joined, plural } from './wording.ts';
 
 // A community as its page reads it, which is what a server will give one of its members. For now it is read from
@@ -29,9 +29,13 @@ interface Added {
   booked_as: Booked | null;
   artist: number | null;
 }
+// how a member travels to a festival: arrive and leave as local times, YYYY-MM-DDTHH:MM
+const TRIP = { key: str, arrive: str, arrive_at: opt(str), leave: str, leave_from: opt(str), stay: opt(str) } as const;
+type Trip = RowOf<typeof TRIP>;
 interface Going {
   members: string[]; // the keys of its members going
   added: Added[]; // the people its manager added who are going, in the order they were added
+  trips: Trip[]; // how its members going travel there, those who said
 }
 interface Community {
   key: string;
@@ -59,7 +63,7 @@ function communityOf(key: string): Community | null {
   // each plan and each added person is going: going is a plan's one state, as every page of plans reads it
   const festivals = new Map<number, Going>();
   const at = (id: number): Going => {
-    const f = festivals.get(id) ?? { members: [], added: [] };
+    const f = festivals.get(id) ?? { members: [], added: [], trips: [] };
     festivals.set(id, f);
     return f;
   };
@@ -80,6 +84,13 @@ function communityOf(key: string): Community | null {
       booked_as: r.booked_as,
       artist: r.booked_as === null ? null : r.artist_id,
     });
+  for (const { event_id, ...trip } of q(
+    { event_id: num, ...TRIP },
+    sql`SELECT t.event_id, p.key, t.arrive, t.arrive_at, t.leave, t.leave_from, t.stay FROM trips t
+    JOIN community_members m ON m.person_id = t.person_id JOIN people p ON p.id = t.person_id WHERE m.community_id = ?`,
+    [c.id],
+  ))
+    at(event_id).trips.push(trip);
   return {
     key: c.key,
     name: c.name,
@@ -90,9 +101,17 @@ function communityOf(key: string): Community | null {
 }
 
 const SHOWN = 3; // the festivals the list shows before "See more"
-const MONTHS = 4; // the calendar's months at most, from this one
 
-export function communityView(root: HTMLElement, [key]: readonly string[]): void {
+// someone of the community away for a festival: a member, with their trip when they said how they travel, or someone
+// the manager added
+interface Present extends Away {
+  e: Festival;
+  goer: Goer | null;
+  added: Added | null;
+  trip: Trip | null;
+}
+
+export function communityView(root: HTMLElement, [key]: readonly string[], signal: AbortSignal): void {
   const c = key === undefined ? null : communityOf(key);
   if (c === null) {
     root.replaceChildren(h('p', {}, 'No community at this link.'));
@@ -106,24 +125,51 @@ export function communityView(root: HTMLElement, [key]: readonly string[]): void
     ),
   ).flatMap((e) => {
     const f = c.festivals.get(e.id);
-    return f === undefined ? [] : [{ e, who: whoGoes(e, f, c.manager) }];
+    return f === undefined ? [] : [{ e, f, who: whoGoes(e, f, c.manager) }];
   });
   const members = plural(c.members.length, 'member');
-  // the weekends its people travel, one count for the sentence and the calendar alike
-  const trips = weekends(events.map(({ e, who }) => ({ festival: e, start: e.start_date, people: who.people })));
-  const most = busiest(trips);
+  // who is away on each day, one count for the sentence and the strip's shades alike
+  const days = presence(
+    events.flatMap(({ e, f, who }): Present[] => [
+      ...who.goers.map((g) => {
+        const trip = f.trips.find((t) => t.key === g.key) ?? null;
+        return { who: `member ${g.key}`, ...awayDays(e, trip ?? undefined), e, goer: g, added: null, trip };
+      }),
+      ...f.added.map((a) => ({ who: `added ${a.name}`, ...awayDays(e), e, goer: null, added: a, trip: null })),
+    ]),
+  );
+  const most = busiest(days);
   const today = one({ day: str }, sql`SELECT day FROM today`)?.day ?? '';
+  const list = events.length > 0 ? summary(events.map(({ e, who }) => goingRow(e, who.said()))) : null;
   page(
     root,
     [
       c.name,
       h('p', { class: 'lede' }, members, ' · managed by ', personLink(c.manager)),
-      most === undefined ? null : h('p', {}, mostTravel(most)),
+      most === undefined
+        ? null
+        : h(
+            'p',
+            {},
+            `Most of the community is away ${dayRange(most.from, most.to)}: `,
+            `${plural(most.people, 'person', 'people')}, ${placesOf(most.aways)}.`,
+          ),
       h('p', { class: 'muted' }, `Visible to the ${members} of ${c.name}`),
       shareButton('Share this page', c.name),
     ],
-    events.length > 0 ? calendar(today, trips) : null,
-    events.length > 0 ? summary(events.map(({ e, who }) => goingRow(e, who.said()))) : null,
+    days.size > 0
+      ? strip({
+          today,
+          days,
+          label: (d, on) =>
+            `${weekDay(d)}: ${on === undefined ? 'no one away' : `${plural(on.people, 'person', 'people')} away, ${placesOf(on.aways)}`}`,
+          detail: (d, on) => dayDetail(d, on, c.manager),
+          starts: events.map(({ e }) => e.start_date),
+          toList: () => list?.scrollIntoView({ behavior: scrolling(), block: 'start' }),
+          signal,
+        })
+      : null,
+    list,
     comingUp(
       events.map(({ e, who }) => card(e, who)),
       'No one in this community has said they’re going anywhere yet.',
@@ -170,89 +216,49 @@ function whoGoes(
   return { goers, people: goers.length + f.added.length, said };
 }
 
-// "Most of the community travels the weekend of 20–22 Nov: 5 people, to KUOF in Oslo."
-const mostTravel = (w: Weekend<Festival>): Kid[] => [
-  `Most of the community travels the weekend of ${dayRange(w.friday, addDays(w.friday, 2))}: `,
-  `${plural(w.people, 'person', 'people')}, to `,
-  joined(w.festivals.map((e) => (e.city === null ? e.title : `${e.title} in ${e.city}`))),
-  '.',
-];
+// where the festivals of these people are: "in Oslo", "in Oslo and Riga"; a festival with no city by its name
+const placesOf = (aways: readonly Present[]): string => {
+  const places = [...new Set(aways.map((a) => a.e.city ?? a.e.title))];
+  return `in ${places.length > 1 ? `${places.slice(0, -1).join(', ')} and ${places.at(-1)}` : places.join('')}`;
+};
 
-// The months from today's through the last festival's, at most MONTHS, a week a row from Monday: today marked, each
-// festival's days marked, and on each weekend's Friday how many people travel then, larger the more they are, linked
-// to its festival on the map and saying its festivals and count.
-const WEEK = [
-  ['Mo', 'Monday'],
-  ['Tu', 'Tuesday'],
-  ['We', 'Wednesday'],
-  ['Th', 'Thursday'],
-  ['Fr', 'Friday'],
-  ['Sa', 'Saturday'],
-  ['Su', 'Sunday'],
-] as const;
-const WEIGHTS = ['cal-w1', 'cal-w2', 'cal-w3'] as const; // a third of the busiest weekend's people, two, all
-function calendar(today: string, trips: readonly Weekend<Festival>[]): HTMLElement {
-  const festivals = trips.flatMap((w) => w.festivals);
-  const last = [today, ...festivals.map((e) => e.end_date)].toSorted((a, b) => a.localeCompare(b)).at(-1) ?? today;
-  const on = new Map<string, Festival[]>();
-  for (const e of festivals) for (const d of daysOf(e.start_date, e.end_date)) on.set(d, [...(on.get(d) ?? []), e]);
-  const fridays = new Map(trips.map((w) => [w.friday, w]));
-  const most = Math.max(...trips.map((w) => w.people));
-  const day = (d: string | null): HTMLElement => {
-    if (d === null) return h('td', {});
-    const here = on.get(d) ?? [];
-    const w = fridays.get(d);
-    return h(
-      'td',
-      {
-        class: [here.length > 0 && 'cal-on', d === today && 'cal-today'],
-        'aria-current': d === today ? 'date' : null,
-        title: here.length > 0 ? here.map((e) => e.title).join(', ') : null,
-      },
-      Number(d.slice(8)),
-      w === undefined ? null : weekendMark(w, most),
-    );
+// What a day's popover says: the day, its festivals, who flies in and out that day (by time and airport, a couple as
+// one when both share the flight), who else is there, and where members stay. The people added are named, each
+// saying on hover who added them, and never travel.
+function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): Kid[] {
+  if (on === undefined)
+    return [h('p', { class: 'strip-when' }, weekDay(day)), h('p', { class: 'muted' }, 'No one away')];
+  const once = [...new Map(on.aways.map((a) => [a.who, a])).values()];
+  const flying = (when: 'arrive' | 'leave', where: 'arrive_at' | 'leave_from'): Kid[] => {
+    const by = new Map<string, Goer[]>();
+    for (const a of once)
+      if (a.trip?.[when].startsWith(day) && a.goer) {
+        const at = `${a.trip[when].slice(11)}${a.trip[where] === null ? '' : ` ${a.trip[where]}`}`;
+        by.set(at, [...(by.get(at) ?? []), a.goer]);
+      }
+    return [...by].map(([at, goers]) => `${namesOf(goers).join(' & ')} ${at}`);
   };
-  return h(
-    'div',
-    { class: 'cal' },
-    monthsFrom(today, last, MONTHS).map((m) =>
-      h(
-        'table',
-        { class: 'cal-month' },
-        h('caption', {}, monthYear(`${m}-01`)),
-        h(
-          'thead',
-          {},
-          h(
-            'tr',
-            {},
-            WEEK.map(([short, long]) => h('th', { scope: 'col', abbr: long }, short)),
-          ),
-        ),
-        h(
-          'tbody',
-          {},
-          weeksOf(m).map((week) => h('tr', {}, week.map(day))),
-        ),
-      ),
+  const flyingIn = flying('arrive', 'arrive_at'),
+    flyingOut = flying('leave', 'leave_from');
+  const moving = (a: Present) => a.trip !== null && (a.trip.arrive.startsWith(day) || a.trip.leave.startsWith(day));
+  const there = once.filter((a) => !moving(a));
+  const title = `Added by ${manager.name}`;
+  const stays = new Map<string, Goer[]>();
+  for (const a of once) if (a.trip?.stay && a.goer) stays.set(a.trip.stay, [...(stays.get(a.trip.stay) ?? []), a.goer]);
+  const line = (what: string, kids: readonly Kid[]) => (kids.length > 0 ? h('p', {}, `${what}: `, joined(kids)) : null);
+  return [
+    h('p', { class: 'strip-when' }, weekDay(day)),
+    [...new Set(on.aways.map((a) => a.e))].map((e) =>
+      h('p', {}, h('b', {}, e.title), e.city === null ? null : ` · ${e.city}`),
     ),
-  );
-}
-// a weekend's count: "6–9 Nov: Glasgow Kizomba Festival 5.0, 3 people" to a screen reader and on hover
-function weekendMark(w: Weekend<Festival>, most: number): HTMLElement {
-  const said = `${w.festivals.map((e) => `${dayRange(e.start_date, e.end_date)}: ${e.title}`).join('; ')}, ${plural(w.people, 'person', 'people')}`;
-  const [first] = w.festivals;
-  return h(
-    'a',
-    {
-      class: ['cal-count', WEIGHTS[Math.min(WEIGHTS.length, Math.ceil((WEIGHTS.length * w.people) / most)) - 1]],
-      href: first === undefined ? null : eventOnMapHref(first.id),
-      'aria-label': said,
-      title: said,
-    },
-    w.people,
-  );
+    line('Flying in', flyingIn),
+    line('Flying out', flyingOut),
+    line('There', [
+      ...namesOf(there.flatMap((a) => (a.goer ? [a.goer] : []))),
+      ...there.flatMap((a) => (a.added ? [h('span', { title }, a.added.name)] : [])),
+    ]),
+    [...stays].map(([stay, goers]) => h('p', {}, `Staying: ${stay}: `, joined(namesOf(goers)))),
+  ];
 }
 
 // a festival's card, its going line saying who of the community is going

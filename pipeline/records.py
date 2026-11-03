@@ -1104,6 +1104,38 @@ class Seeded(CsvRow):
     event: str
 
 
+def real_time(value: str) -> str:
+    """A YYYY-MM-DDTHH:MM that names a moment of the calendar (ValueError when it is none, as 2026-02-30T25:00)."""
+    _ = dt.datetime.fromisoformat(value)
+    return value
+
+
+# a time where it happens, to the minute, as YYYY-MM-DDTHH:MM: a flight's, in the zone of its airport
+LocalTime = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$'), AfterValidator(real_time)]
+
+
+class Trip(CsvRow):
+    """How a member travels to a festival they plan: when they arrive (and at which airport, when they fly), when they
+    leave (and from where), and where they stay, a plain name (no link, handle or email) such as a hotel or "with
+    friends". Only a member, who has a name of their own, registers a trip; the people a manager adds have none."""
+
+    FILE = 'pipeline/trips.csv'
+
+    person: str
+    event_id: int
+    arrive: LocalTime
+    arrive_at: Blank[Iata]
+    leave: LocalTime
+    leave_from: Blank[Iata]
+    stay: Blank[PlainName]
+
+    @model_validator(mode='after')
+    def arrives_first(self) -> Self:
+        if self.arrive > self.leave:  # the same width and order of digits: as text, as time
+            raise ValueError(f'arrive {self.arrive} is after leave {self.leave}')
+        return self
+
+
 class Airport(CsvRow):
     """An airport a festival can fly to; home (1) is where flights leave from."""
 

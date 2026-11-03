@@ -107,6 +107,15 @@ SUGGESTION = {
     'reason': 'same name, different keys',
 }
 COMMUNITY = {'key': 'frost-lantern-river-maple', 'name': 'Norwegians in festivals', 'manager': 'cedric', 'note': ''}
+TRIP = {
+    'person': 'cedric',
+    'event_id': '19033',
+    'arrive': '2026-11-19T21:05',
+    'arrive_at': 'OSL',
+    'leave': '2026-11-23T09:30',
+    'leave_from': '',
+    'stay': 'Scandic Holberg',
+}
 SEEDED = {
     'community': 'frost-lantern-river-maple',
     'name': 'Tonje',
@@ -127,6 +136,13 @@ SEEDED = {
         (records.Suggestion, SUGGESTION, 'keep_key', 'ana'),
         (records.Suggestion, SUGGESTION, 'merge_key', 'p:ana dj'),
         (records.Community, COMMUNITY, 'key', 'frost-lantern'),
+        (records.Trip, TRIP, 'arrive_at', 'osl'),
+        (records.Trip, TRIP, 'arrive', '2026-11-19 21:05'),
+        (records.Trip, TRIP, 'arrive', '2026-02-30T21:05'),
+        (records.Trip, TRIP, 'arrive', '2026-11-24T08:00'),  # after it leaves
+        (records.Trip, TRIP, 'stay', 'https://scandic.no/holberg'),
+        (records.Trip, TRIP, 'stay', '@scandic'),
+        (records.Trip, TRIP, 'stay', 'ana@example.com'),
         *(
             (records.Seeded, SEEDED, 'name', reach)
             for reach in (
@@ -144,9 +160,10 @@ def test_a_csv_row_refuses_a_value_outside_its_column(
     record: type[CsvRow], row: dict[str, str], column: str, value: str
 ) -> None:
     """An airport is its IATA code, a country one countries.NAMES has, an artist the key a mention gives, a community
-    four words; a name a manager writes for someone who has not joined is a name, never a link, an @handle or an email
-    address, which would reach them and only they may give (the communities' rule 2). A hand edit that is none is
-    refused where the audit reads the file, not later by the step that uses it."""
+    four words, a trip's times real ones to the minute, arriving before it leaves, at an airport's code. A name a
+    manager writes for someone who has not joined, and where a member stays, is a name, never a link, an @handle or an
+    email address, which would reach someone and only they may give (the communities' rule 2). A hand edit that is none
+    is refused where the audit reads the file, not later by the step that uses it."""
     record.model_validate(record.cells(row))
     with pytest.raises(ValueError, match=column):
         record.model_validate(record.cells(row | {column: value}))

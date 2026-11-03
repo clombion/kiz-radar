@@ -31,10 +31,14 @@ export function countryName(cc: string | null | undefined): string {
 const DM = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' });
 const DY = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 const MY = new Intl.DateTimeFormat('en-GB', { month: 'long', year: 'numeric' });
+const WD = new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+const MS = new Intl.DateTimeFormat('en-GB', { month: 'short' });
 const asDay = (iso: string) => new Date(`${iso.slice(0, 10)}T12:00`); // dates are days; meta.built_at is a timestamp
 export const dayMonth = (iso: string) => DM.format(asDay(iso)); // 23 Oct
 export const dayYear = (iso: string) => DY.format(asDay(iso)); // 23 Oct 2026
 export const monthYear = (iso: string) => MY.format(asDay(iso)); // October 2026
+export const weekDay = (iso: string) => WD.format(asDay(iso)).replace(',', ''); // Thu 19 Nov
+export const monthShort = (iso: string) => MS.format(asDay(iso)); // Nov
 // " 2027" for a day of another year than the visitor's, '' for one of theirs
 export const otherYear = (iso: string): string =>
   iso.slice(0, 4) === today().slice(0, 4) ? '' : ` ${iso.slice(0, 4)}`;

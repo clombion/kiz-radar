@@ -4,7 +4,8 @@ import { beforeAll, expect, test, vi } from 'vitest';
 import { commands } from 'vitest/browser';
 import { artistsView } from '../../site/artists.ts';
 import { communityView } from '../../site/communities.ts';
-import { exec, load, loadSite, one, sql } from '../../site/db.ts';
+import { exec, load, loadSite, one, q, sql } from '../../site/db.ts';
+import { h } from '../../site/dom.ts';
 import { festivals } from '../../site/festivals.ts';
 import { artistHref, personHref } from '../../site/routes.ts';
 import { num, str } from '../../site/rows.ts';
@@ -74,9 +75,19 @@ function onDay<T>(day: string, then: () => T): T {
 }
 const communityPage = (key: string): HTMLElement => {
   const root = document.createElement('main');
-  communityView(root, [key]);
+  communityView(root, [key], new AbortController().signal);
   return root;
 };
+// the community's page on a day, in the document while then runs, as a visitor has it
+function inPage(day: string, then: (root: HTMLElement) => void): void {
+  const root = onDay(day, () => communityPage(COMMUNITY));
+  document.body.append(root);
+  try {
+    then(root);
+  } finally {
+    root.remove();
+  }
+}
 const said = (el: Element | null | undefined) => el?.textContent?.replace(/\s+/gu, ' ').trim();
 
 // what the community's page says of each festival, on its card and in the list at the top
@@ -135,10 +146,8 @@ const rows = (root: HTMLElement) =>
   }));
 
 test('the community’s list shows three festivals, soonest first, and See more shows the rest in place', () => {
-  const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
-  document.body.append(root);
-  try {
-    const titles = [...root.querySelectorAll('.festival-card h3')].map((h) => said(h));
+  inPage('2026-11-01', (root) => {
+    const titles = [...root.querySelectorAll('.festival-card h3')].map((t) => said(t));
     const listed = rows(root);
     expect(listed.map((r) => r.festival)).toEqual(titles); // a row for each card, in their order
     expect(titles.length).toBeGreaterThan(3);
@@ -154,9 +163,7 @@ test('the community’s list shows three festivals, soonest first, and See more 
     expect(more?.getAttribute('aria-expanded')).toBe('true');
     more?.click();
     expect(rows(root).map((r) => r.shown)).toEqual(titles.map((_, i) => i < 3));
-  } finally {
-    root.remove();
-  }
+  });
 });
 
 test('with three festivals or fewer to come, the list shows them all and has no See more', () => {
@@ -178,45 +185,6 @@ test('a link to no community says so', () => {
   expect(said(communityPage('no-such-community-here'))).toBe('No community at this link.');
 });
 
-test('the community’s page says the weekend most of it travels, and its calendar counts the same weekends', () => {
-  const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
-  const head = [...root.querySelectorAll('.profile-head p')].map((p) => said(p));
-  // KUOF's weekend: Cédric, Christina and the three added; Glasgow's has three
-  expect(head).toContain(
-    'Most of the community travels the weekend of 20–22 Nov: 5 people, to KUOF – Kizomba & Urban Kiz Oslo Festival in Oslo.',
-  );
-  const months = [...root.querySelectorAll('.cal-month')];
-  expect(months.map((m) => said(m.querySelector('caption')))).toEqual([
-    'November 2026',
-    'December 2026',
-    'January 2027',
-    'February 2027',
-  ]);
-  const [november] = months;
-  const today = [...root.querySelectorAll('.cal-month td[aria-current="date"]')];
-  expect(today.map((td) => said(td))).toEqual(['1']);
-  expect(november?.contains(today[0] ?? null)).toBe(true);
-  // Glasgow's days, and the count on its weekend's Friday, said to a screen reader
-  const days = (month: Element | undefined) =>
-    [...(month?.querySelectorAll('td.cal-on') ?? [])].map((td) => Number(td.firstChild?.textContent));
-  expect(days(november).slice(0, 4)).toEqual([6, 7, 8, 9]);
-  const counts = [...root.querySelectorAll('.cal-count')].map((a) => [a.textContent, a.getAttribute('aria-label')]);
-  expect(counts.slice(0, 2)).toEqual([
-    ['3', '6–9 Nov: Glasgow Kizomba Festival 5.0, 3 people'],
-    ['5', '20–22 Nov: KUOF – Kizomba & Urban Kiz Oslo Festival, 5 people'],
-  ]);
-  // the sentence's weekend is the calendar's busiest, by the same count
-  const most = Math.max(...counts.map(([n]) => Number(n)));
-  expect(head.join(' ')).toContain(`${most} people, to KUOF`);
-  expect(counts.find(([n]) => Number(n) === most)?.[1]).toContain('KUOF');
-});
-
-test('with nothing to come, the community’s page has no sentence of where it travels, nor a calendar', () => {
-  const root = onDay('2028-01-01', () => communityPage(COMMUNITY));
-  expect(said(root)).not.toContain('Most of the community');
-  expect(root.querySelector('.cal')).toBeNull();
-});
-
 test('the community’s page shares its link, copied when the browser has no share sheet', async () => {
   const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
   const share = [...root.querySelectorAll('button')].find((b) => b.textContent === 'Share this page');
@@ -231,12 +199,144 @@ test('the community’s page shares its link, copied when the browser has no sha
   }
 });
 
-test('the calendar starts at today’s month, even one without a festival, and shows four months at most', () => {
-  const root = onDay('2026-10-15', () => communityPage(COMMUNITY));
-  expect([...root.querySelectorAll('.cal-month caption')].map((c) => said(c))).toEqual([
-    'October 2026',
-    'November 2026',
-    'December 2026',
-    'January 2027',
+// the strip's days: each cell's day, what it says to a screen reader, and how many people that is
+const cellsOf = (root: HTMLElement) => [...root.querySelectorAll<HTMLElement>('.strip td[data-day]')];
+const cellOn = (root: HTMLElement, day: string) =>
+  root.querySelector<HTMLElement>(`.strip td[data-day="${day}"]`) ?? undefined;
+const awayOn = (cell: HTMLElement) =>
+  Number(/: (?<n>\d+) (?:person|people) away/u.exec(cell.ariaLabel ?? '')?.groups?.['n'] ?? 0);
+const focusedDay = () =>
+  document.activeElement instanceof HTMLElement ? document.activeElement.dataset['day'] : undefined;
+const popover = (root: HTMLElement) => root.querySelector<HTMLElement>('.strip-pop');
+
+test('the strip shades each day by who is away, and the sentence names the days most are, by the same count', () => {
+  const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+  const head = [...root.querySelectorAll('.profile-head p')].map((p) => said(p));
+  // KUOF: Cédric, Christina and the three added; Glasgow has three
+  expect(head).toContain('Most of the community is away 20–22 Nov: 5 people, in Oslo.');
+  const cells = cellsOf(root);
+  const most = Math.max(...cells.map(awayOn));
+  expect(most).toBe(5);
+  expect(cells.filter((c) => awayOn(c) === most).map((c) => c.dataset['day'])).toEqual([
+    '2026-11-20',
+    '2026-11-21',
+    '2026-11-22',
   ]);
+  expect([...root.querySelectorAll<HTMLElement>('.strip td.strip-3')].every((c) => awayOn(c) * 3 > most * 2)).toBe(
+    true,
+  );
+  expect(cellOn(root, '2026-11-20')?.ariaLabel).toBe('Fri 20 Nov: 5 people away, in Oslo');
+  expect(cellOn(root, '2026-11-15')?.ariaLabel).toBe('Sun 15 Nov: no one away');
+  // Glasgow from its Friday to its Monday, all of its days
+  expect(['06', '07', '08', '09', '10'].map((d) => awayOn(cellOn(root, `2026-11-${d}`) ?? root))).toEqual([
+    3, 3, 3, 3, 0,
+  ]);
+  // Cédric and Christina's trip to Prague (trips.csv): away from the Wednesday they fly in to the Monday they leave
+  expect(['12', '13', '14', '18', '19'].map((d) => awayOn(cellOn(root, `2027-01-${d}`) ?? root))).toEqual([
+    0, 2, 2, 2, 0,
+  ]);
+  // today outlined, and the weeks from today's Monday, the months named over them with the year where it turns
+  expect(root.querySelectorAll('.strip td[aria-current="date"]')).toHaveLength(1);
+  expect(cellOn(root, '2026-11-01')?.getAttribute('aria-current')).toBe('date');
+  expect(cells[0]?.dataset['day']).toBe('2026-10-26');
+  const months = [...root.querySelectorAll('.strip thead th')].map((th) => said(th)).filter(Boolean);
+  expect(months).toEqual(['Nov', 'Dec', 'Jan 2027', 'Feb']);
+});
+
+test('the strip is one stop for the keyboard: the arrows move by a day or a week, Escape or a tap elsewhere closes the day', () => {
+  inPage('2026-11-01', (root) => {
+    const stops = () => cellsOf(root).filter((c) => c.tabIndex === 0);
+    expect(stops().map((c) => c.dataset['day'])).toEqual(['2026-11-01']);
+    const key = (k: string) =>
+      document.activeElement?.dispatchEvent(new KeyboardEvent('keydown', { key: k, bubbles: true }));
+    stops()[0]?.focus();
+    expect(popover(root)?.hidden).toBe(false);
+    key('ArrowRight'); // a week on
+    expect(focusedDay()).toBe('2026-11-08');
+    key('ArrowUp'); // a day back
+    key('ArrowUp');
+    expect(focusedDay()).toBe('2026-11-06');
+    expect(stops().map((c) => c.dataset['day'])).toEqual(['2026-11-06']); // still one stop, where the focus is
+    expect(said(popover(root))).toContain('Glasgow Kizomba Festival 5.0 · Glasgow');
+    expect(said(popover(root))).toContain('There: Christina, Sian and Carolina');
+    key('Escape');
+    expect(popover(root)?.hidden).toBe(true);
+    // a tap opens a day, and a tap elsewhere closes it
+    cellOn(root, '2026-11-20')?.click();
+    expect(popover(root)?.hidden).toBe(false);
+    document.body.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+    expect(popover(root)?.hidden).toBe(true);
+  });
+});
+
+test('a day’s popover says who flies in and out, and when, who is there, and where they stay', () => {
+  const ids = q({ id: num }, sql`SELECT id FROM people WHERE key IN ('cedric', 'christina') ORDER BY key`).map(
+    (r) => r.id,
+  );
+  for (const id of ids)
+    db?.run(
+      "INSERT INTO trips VALUES (?, 19033, '2026-11-19T21:05', 'OSL', '2026-11-23T09:30', 'OSL', 'Scandic Holberg')",
+      [id],
+    );
+  try {
+    inPage('2026-11-01', (root) => {
+      const open = (day: string) => {
+        cellOn(root, day)?.focus();
+        return [...(popover(root)?.querySelectorAll('p') ?? [])].map((p) => said(p));
+      };
+      expect(open('2026-11-19')).toEqual([
+        'Thu 19 Nov',
+        'KUOF – Kizomba & Urban Kiz Oslo Festival · Oslo',
+        'Flying in: Cédric & Christina 21:05 OSL', // one flight, so the couple as one
+        'Staying: Scandic Holberg: Cédric & Christina',
+      ]);
+      expect(open('2026-11-20')).toEqual([
+        'Fri 20 Nov',
+        'KUOF – Kizomba & Urban Kiz Oslo Festival · Oslo',
+        'There: Cédric & Christina, Tonje, Ragnhild and Maja',
+        'Staying: Scandic Holberg: Cédric & Christina',
+      ]);
+      expect(open('2026-11-23')).toContain('Flying out: Cédric & Christina 09:30 OSL');
+      expect(titled(popover(root))).toEqual([]); // no one added is there on the 23rd
+      open('2026-11-20');
+      // the people added are named, saying on hover who added them, and never travel
+      expect(titled(popover(root))).toEqual(['Tonje', 'Ragnhild', 'Maja'].map((n) => [n, 'Added by Cédric']));
+      // their trip is the strip's: away from the 19th to the 23rd
+      expect(awayOn(cellOn(root, '2026-11-19') ?? root)).toBe(2);
+      expect(awayOn(cellOn(root, '2026-11-23') ?? root)).toBe(2);
+    });
+  } finally {
+    db?.run('DELETE FROM trips WHERE event_id = 19033');
+  }
+});
+
+test('the strip is a year at most, and says how many trips come after it', () => {
+  const root = onDay('2025-11-01', () => communityPage(COMMUNITY));
+  expect(root.querySelectorAll('.strip thead th')).toHaveLength(53);
+  // the year of weeks ends on Sunday 1 Nov 2026: every festival comes after it
+  expect(said(root.querySelector('.strip-wrap p'))).toBe('and 5 more trips after 1 Nov 2026');
+});
+
+test('on a phone the strip fits the page, with no sideways scroll', async () => {
+  const style = h('style', {}, await commands.readFile('public/css/site.css'));
+  document.head.append(style);
+  const phone = h('div', { style: { width: '358px' } }); // 390px less the gutters
+  document.body.append(phone);
+  try {
+    const root = onDay('2025-11-01', () => communityPage(COMMUNITY)); // the year's 53 weeks
+    phone.append(root);
+    const wrap = root.querySelector<HTMLElement>('.strip-wrap');
+    expect(wrap?.scrollWidth).toBeLessThanOrEqual(358);
+    expect(root.querySelector('.strip')?.getBoundingClientRect().width).toBeLessThanOrEqual(358);
+    expect(cellOn(root, '2026-01-05')?.getBoundingClientRect().width).toBeGreaterThanOrEqual(4.5);
+  } finally {
+    phone.remove();
+    style.remove();
+  }
+});
+
+test('with nothing to come, the community’s page has no sentence of when it is away, nor a strip', () => {
+  const root = onDay('2028-01-01', () => communityPage(COMMUNITY));
+  expect(said(root)).not.toContain('Most of the community');
+  expect(root.querySelector('.strip')).toBeNull();
 });

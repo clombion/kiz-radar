@@ -61,7 +61,12 @@ const VIEWS: Readonly<Record<Route, View>> = {
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, _, qs) => countriesView(root, qs) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) },
   friends: { title: 'Friends', nav: 'friends', waitsForData: true, show: (root, sub) => personView(root, sub) },
-  community: { title: 'Community', nav: 'friends', waitsForData: true, show: (root, sub) => communityView(root, sub) },
+  community: {
+    title: 'Community',
+    nav: 'friends',
+    waitsForData: true,
+    show: (root, sub, _, { signal }) => communityView(root, sub, signal),
+  },
 };
 const isRoute = (name: string): name is Route => Object.hasOwn(VIEWS, name);
 const failed = (root: HTMLElement, e: unknown) =>

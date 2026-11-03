@@ -15,6 +15,7 @@ one.
 | `pipeline/communities.csv` | `Community` | A community: its key (four words, its page's address), its name, and its manager (a people.csv key), who adds people to it. |
 | `pipeline/community_members.csv` | `Membership` | A person (a people.csv key) who is a member of a community, under their own name. |
 | `pipeline/seeded.csv` | `Seeded` | Someone a community's manager added, who has not joined: a plain name (no link, handle or email), the artist records they are (';'-separated match keys, so a booking says they teach there; the manager never says so) and a festival they are going to. The community's page names them, as added by its manager. |
+| `pipeline/trips.csv` | `Trip` | How a member travels to a festival they plan: when they arrive (and at which airport, when they fly), when they leave (and from where), and where they stay, a plain name (no link, handle or email) such as a hotel or "with friends". Only a member, who has a name of their own, registers a trip; the people a manager adds have none. |
 | `pipeline/airports.csv` | `Airport` | An airport a festival can fly to; home (1) is where flights leave from. |
 | `pipeline/geocode.csv` | `Place` | A place the source DB names, and where it is when Nominatim found it (its columns lat, lon and osm_name, all empty when it found none). A place is a city, in a country when the source DB names one. |
 | `pipeline/fares.csv` | `Fare` | A weekend's return flight from home: out on the Friday, back fares.NIGHTS later; its price in whole euros, the currency fares asks fli for. |

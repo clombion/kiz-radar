@@ -1,32 +1,10 @@
-// Days as a calendar lays them out: months of weeks from Monday to Sunday, and the weekends people travel, each the
-// Friday of the week a festival starts in, with how many go that weekend and the busiest of them.
+// Days as a community's strip lays them out: weeks from Monday, one column each, and who is away on each day. A
+// member with a trip is away from the day they arrive to the day they leave; anyone else going, a member without one
+// or someone the manager added, on the festival's own days, whatever weekdays those are.
 import { addDays } from './days.ts';
 
 // Monday 0 to Sunday 6
-const weekday = (iso: string): number => (new Date(`${iso.slice(0, 10)}T12:00Z`).getUTCDay() + 6) % 7;
-// the weekend a festival starting on this day is travelled on: the Friday of its Monday-to-Sunday week
-export const weekendOf = (start: string): string => addDays(start, 4 - weekday(start));
-
-// the months from the one `from` is in through the one `to` is in, at most `cap` of them, each YYYY-MM
-export function monthsFrom(from: string, to: string, cap: number): string[] {
-  const out: string[] = [];
-  let [y, m] = [Number(from.slice(0, 4)), Number(from.slice(5, 7))];
-  while (out.length < cap) {
-    const month = `${y}-${String(m).padStart(2, '0')}`;
-    if (month > to.slice(0, 7)) break;
-    out.push(month);
-    [y, m] = m === 12 ? [y + 1, 1] : [y, m + 1];
-  }
-  return out;
-}
-
-// a month's weeks, Monday first: each day as YYYY-MM-DD, null before its first day and after its last
-export function weeksOf(month: string): (string | null)[][] {
-  const days: (string | null)[] = Array.from({ length: weekday(`${month}-01`) }, () => null);
-  for (let d = `${month}-01`; d.startsWith(month); d = addDays(d, 1)) days.push(d);
-  while (days.length % 7 > 0) days.push(null);
-  return Array.from({ length: days.length / 7 }, (_, w) => days.slice(7 * w, 7 * w + 7));
-}
+export const weekday = (iso: string): number => (new Date(`${iso.slice(0, 10)}T12:00Z`).getUTCDay() + 6) % 7;
 
 // the days from start to end, both in
 export function daysOf(start: string, end: string): string[] {
@@ -35,24 +13,62 @@ export function daysOf(start: string, end: string): string[] {
   return out;
 }
 
-// a weekend people travel: its Friday, how many people go to its festivals, and the festivals
-export interface Weekend<F> {
-  friday: string;
+// the weeks from the one `from` is in through the one `to` is in, at most `cap`, each its seven days from Monday
+export function weeksFrom(from: string, to: string, cap: number): string[][] {
+  const out: string[][] = [];
+  for (let monday = addDays(from, -weekday(from)); monday <= to && out.length < cap; monday = addDays(monday, 7))
+    out.push(Array.from({ length: 7 }, (_, i) => addDays(monday, i)));
+  return out;
+}
+
+// the days someone is away for a festival: their trip's, from the day they arrive to the day they leave (local times,
+// YYYY-MM-DDTHH:MM), or else the festival's
+export const awayDays = (
+  festival: { start_date: string; end_date: string },
+  trip?: { arrive: string; leave: string },
+): { from: string; to: string } =>
+  trip === undefined
+    ? { from: festival.start_date, to: festival.end_date }
+    : { from: trip.arrive.slice(0, 10), to: trip.leave.slice(0, 10) };
+
+// someone away from a day to a day; who is the one person they are, however many festivals they go to
+export interface Away {
+  who: string;
+  from: string;
+  to: string;
+}
+// a day: everyone away on it, and how many people they are
+export interface Day<A extends Away> {
+  aways: A[];
   people: number;
-  festivals: F[];
 }
-// the weekends of these trips, soonest first, each festival's people counted in the weekend it starts
-export function weekends<F>(trips: readonly { festival: F; start: string; people: number }[]): Weekend<F>[] {
-  const by = new Map<string, Weekend<F>>();
-  for (const t of trips) {
-    const friday = weekendOf(t.start);
-    const w = by.get(friday) ?? { friday, people: 0, festivals: [] };
-    w.people += t.people;
-    w.festivals.push(t.festival);
-    by.set(friday, w);
-  }
-  return [...by.values()].sort((a, b) => a.friday.localeCompare(b.friday));
+// each day someone is away, with who is: the one count the strip's shades and the sentence both read
+export function presence<A extends Away>(aways: readonly A[]): Map<string, Day<A>> {
+  const days = new Map<string, Day<A>>();
+  for (const a of aways)
+    for (const d of daysOf(a.from, a.to)) {
+      const day = days.get(d) ?? { aways: [], people: 0 };
+      if (!day.aways.some((b) => b.who === a.who)) day.people++;
+      day.aways.push(a);
+      days.set(d, day);
+    }
+  return days;
 }
-// the weekend most people travel, the soonest of those that tie; undefined when there is none
-export const busiest = <F>(ws: readonly Weekend<F>[]): Weekend<F> | undefined =>
-  ws.reduce<Weekend<F> | undefined>((best, w) => (best === undefined || w.people > best.people ? w : best), undefined);
+
+// The days most people are away at once: the first day as many are away as on any, and the days after it with as many;
+// everyone away on them. undefined when no one is away.
+export function busiest<A extends Away>(
+  days: ReadonlyMap<string, Day<A>>,
+): { from: string; to: string; people: number; aways: A[] } | undefined {
+  const sorted = [...days.keys()].sort((a, b) => a.localeCompare(b));
+  const most = Math.max(0, ...[...days.values()].map((d) => d.people));
+  const from = sorted.find((d) => days.get(d)?.people === most);
+  if (from === undefined || most === 0) return undefined;
+  let to = from;
+  while (days.get(addDays(to, 1))?.people === most) to = addDays(to, 1);
+  return { from, to, people: most, aways: daysOf(from, to).flatMap((d) => days.get(d)?.aways ?? []) };
+}
+
+// a day's shade: 0 when no one is away, else 1 to 3, by thirds of the most away on any day
+export const shade = (people: number, most: number): 0 | 1 | 2 | 3 =>
+  people === 0 ? 0 : people * 3 <= most ? 1 : people * 3 <= most * 2 ? 2 : 3;

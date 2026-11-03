@@ -110,6 +110,8 @@ export const goersInline = (goers: Goer[]): Kid[] =>
     ),
   );
 
+// the names to say of these goers, a couple's when both partners are among them
+export const namesOf = (goers: readonly Goer[]): string[] => named(goers).map((g) => g.name);
 // goers as the names to show: a couple when both partners go, otherwise each person
 function named(goers: readonly Goer[]): Named[] {
   const left = new Map(goers.map((g) => [g.person_id, g])),
