@@ -4,7 +4,6 @@ row. A derivation that drops a role, counts a couple's booking for its members o
 shows here as the rows on one side only. The tables the build copies from our files (who's going, where a festival is
 and the airport it flies to, the fares) are read against those files, row for row."""
 
-import collections
 import datetime as dt
 import json
 import math
@@ -18,7 +17,7 @@ from pipeline import airports, build_site_db, enums
 from pipeline import db as sqlite_db
 from pipeline.db import Db
 from pipeline.records import Airport, Community, Fare, Membership, Person, Place, PlanRow, Seeded, Spot
-from tests.exports import EXPORT, committed, content
+from tests.exports import committed
 from tests.fakes import Memory
 
 # an artist's own bookings in some roles: once per festival and role, a member's booking with their couple left to
@@ -207,22 +206,17 @@ class Member(BaseModel, frozen=True):
     person: str
 
 
-class Counted(BaseModel, frozen=True):
+class AddedRow(BaseModel, frozen=True):
     community: str
+    name: str
     event_id: int
     status: enums.Plan
-    n: int
+    artist_keys: str  # ';'-separated, as seeded.csv writes them
 
 
-def named(path: Path, names: set[str]) -> set[str]:
-    """The names some text of the database holds, alone or in a longer text, in any table."""
-    rows = [r for table, rows in content(path).items() if table for r in rows]
-    return {n for n in names if any(n in r for r in rows)}
-
-
-def test_a_community_is_what_its_three_files_say_its_added_people_only_counted(site_db: Path) -> None:
-    """A community, its members and its manager are communities.csv and community_members.csv; of seeded.csv, the
-    people a manager added, the site has how many go to each festival, not who (the counts a server would give)."""
+def test_a_community_is_what_its_three_files_say(site_db: Path) -> None:
+    """A community, its members and its manager are communities.csv and community_members.csv, and the people a
+    manager added are seeded.csv row for row, each with the artist records they are: the community's page names them."""
     committed(Community.FILE, Membership.FILE, Seeded.FILE)
     found, members, seeded = Community.read(), Membership.read(), Seeded.read()
     assert built(
@@ -236,35 +230,37 @@ def test_a_community_is_what_its_three_files_say_its_added_people_only_counted(s
         'select c.key as community, p.key as person from community_members m'
         ' join communities c on c.id = m.community_id join people p on p.id = m.person_id',
     ) == {Member(community=m.community, person=m.person) for m in members}
-    assert built(
-        site_db,
-        Counted,
-        'select c.key as community, s.event_id, s.status, s.n from community_seeded s'
-        ' join communities c on c.id = s.community_id',
-    ) == {
-        Counted(community=c, event_id=e, status=status, n=n)
-        for (c, e, status), n in collections.Counter((r.community, r.event_id, r.status) for r in seeded).items()
-    }
+    with sqlite_db.opened(site_db, 'ro') as db:
+        added = db.rows(
+            AddedRow,
+            'select c.key as community, s.name, s.event_id, s.status,'
+            " (select coalesce(group_concat(a.match_key, ';'), '') from seeded_artists sa"
+            ' join artists a on a.id = sa.artist_id where sa.seeded_id = s.id) as artist_keys'
+            ' from community_seeded s join communities c on c.id = s.community_id'
+            ' order by s.id',
+        )
+    assert added == [
+        AddedRow(
+            community=r.community,
+            name=r.name,
+            event_id=r.event_id,
+            status=r.status,
+            artist_keys=';'.join(r.artist_keys),
+        )
+        for r in seeded
+    ]
     assert found
     assert members
-    assert seeded
-
-
-def test_no_name_a_manager_added_is_anywhere_in_the_site_database(site_db: Path) -> None:
-    """Members see the people their manager added as counts only: no text of the site database, in any table, holds
-    one of their names, unless the export or people.csv has it too (an artist can be called Maja)."""
-    committed(Seeded.FILE, Person.FILE)
-    names = {r.name for r in Seeded.read()}
-    elsewhere = named(EXPORT, names) | {p.name for p in Person.read()}
-    assert names - elsewhere  # some name is no one else's, or one leaking would go unseen
-    assert named(site_db, names) - elsewhere == set()
+    assert any(r.artist_keys for r in seeded)  # someone added is in a line-up, as Sian at Glasgow
 
 
 KEY = 'frost-lantern-river-maple'
 OTHER = 'snow-pine-harbour-light'
 MANAGER = Community(key=KEY, name='Dancers in Norway', manager='cedric', note='')
 MEMBER = Membership(community=KEY, person='cedric')
-ADDED = Seeded(community=KEY, name='Tonje', event_id=1, status=enums.Plan.GOING, event='KUOF')
+ADDED = Seeded(
+    community=KEY, name='Tonje', artist_keys=('p:tonje@dance',), event_id=1, status=enums.Plan.GOING, event='KUOF'
+)
 
 
 @pytest.mark.parametrize(
@@ -275,31 +271,40 @@ ADDED = Seeded(community=KEY, name='Tonje', event_id=1, status=enums.Plan.GOING,
         ([MANAGER.model_copy(update={'manager': 'nobody'})], [MEMBER], [], 'the manager of Dancers in Norway, nobody'),
         ([MANAGER], [MEMBER], [ADDED.model_copy(update={'community': OTHER})], f'seeded.csv: no community {OTHER}'),
         ([MANAGER], [MEMBER], [ADDED.model_copy(update={'event_id': 2})], r'seeded.csv: no event 2 \(KUOF\)'),
+        (
+            [MANAGER],
+            [MEMBER],
+            [ADDED.model_copy(update={'artist_keys': ('p:nobody',)})],
+            r'seeded.csv: unknown artist key p:nobody \(Tonje\)',
+        ),
     ],
 )
 def test_a_community_naming_what_the_data_has_not_stops_the_build(
     memory: Memory, found: list[Community], members: list[Membership], seeded: list[Seeded], said: str
 ) -> None:
-    """A community of no one, a member or manager who is no one in people.csv (or a manager who is not a member) and
-    someone added to a festival the export has not stop the build, saying which."""
+    """A community of no one, a member or manager who is no one in people.csv (or a manager who is not a member), and
+    someone added to a festival the export has not, or as an artist it has not, stop the build, saying which."""
 
     def built_from_them() -> Db:
-        """The tables a community's rows go to, with cedric and one festival in, and the files' rows written there."""
+        """The tables a community's rows go to, with cedric, one festival and one artist in, and the files' rows
+        written there."""
         db = memory()
         with db.transaction() as x:
-            for table in ('people', 'communities', 'community_members', 'community_seeded'):
+            for table in ('people', 'communities', 'community_members', 'community_seeded', 'seeded_artists'):
                 x.script(build_site_db.TABLES[table])
-            x.script('create table events (id integer primary key)')  # what is checked of a festival: its id
-            x.execute('insert into people (id, key, name, featured) values (1, ?, ?, 1)', ('cedric', 'Cédric'))
+            # what is checked of a festival or an artist: its id
+            x.script('create table events (id integer primary key); create table artists (id integer primary key)')
             x.execute('insert into events (id) values (1)')
+            x.execute('insert into artists (id) values (1)')
+            x.execute('insert into people (id, key, name, featured) values (1, ?, ?, 1)', ('cedric', 'Cédric'))
         with db.transaction() as x:
-            build_site_db.communities(x, {'cedric': 1})
+            build_site_db.communities(x, {'cedric': 1}, {'p:tonje@dance': 1})
         return db
 
     Community.write([MANAGER])
     Membership.write([MEMBER])
     Seeded.write([ADDED])
-    assert built_from_them().value(int, 'select n from community_seeded') == 1
+    assert built_from_them().value(int, 'select artist_id from seeded_artists') == 1
     Community.write(found)
     Membership.write(members)
     Seeded.write(seeded)

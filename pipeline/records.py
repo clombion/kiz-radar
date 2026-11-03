@@ -1090,13 +1090,15 @@ class Membership(CsvRow):
 
 
 class Seeded(CsvRow):
-    """Someone a community's manager added, who has not joined: a plain name (no link, handle or email) and a
-    festival they are going to. The site counts them and never names them."""
+    """Someone a community's manager added, who has not joined: a plain name (no link, handle or email), the artist
+    records they are (';'-separated match keys, so a booking says they teach there; the manager never says so) and a
+    festival they are going to. The community's page names them, as added by its manager."""
 
     FILE = 'pipeline/seeded.csv'
 
     community: str
     name: PlainName
+    artist_keys: Keys
     event_id: int
     status: Plan
     event: str

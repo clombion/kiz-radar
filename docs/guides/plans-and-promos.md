@@ -30,16 +30,21 @@ nobody can create, join or claim one yet, and its rows are written by hand.
 - `pipeline/community_members.csv`: one row per member, with the `community` and the `person` (a `people.csv` key).
   Members are named on the page and link to their plans page.
 - `pipeline/seeded.csv`: the people the manager added who have not joined, one row per person and festival, with the
-  `community`, their `name`, the `event_id`, the `status` (a plan's, `going`) and the festival's name for people reading
-  the file. A name is only a name: a link, an @handle or an email address is refused.
+  `community`, their first `name`, their `artist_keys` (as in `people.csv`: the `match_key` values of the artist records
+  they are, separated by `;`, or empty), the `event_id`, the `status` (a plan's, `going`) and the festival's name for
+  people reading the file. A name is only a name: a link, an @handle or an email address is refused.
 
-The page shows the community's name, its members and its manager, who it is meant for ("Visible to the 2 members of
-Dancers in Norway"), and the festivals to come that its members plan or that someone was added to, soonest first. Under
-each, the members going are named as on any card (as their couple when both go, teaching when in the line-up), and the
-people added are counted, however few: "3 people from this community are going". Their names stay in `seeded.csv`: the
-build keeps only how many go to each festival, as the server will give its members counts only, and the counts show on
-the community's page alone, never on the festival's card elsewhere. The page reads its community in the shape that
-server will answer with, so only where it comes from changes then.
+The page shows the community's name, its members and its manager, and who it is meant for ("Visible to the 2 members of
+Dancers in Norway"). Then come the festivals that its members plan or that someone was added to, soonest first: first as
+a list of who goes where, three festivals shown and "See more" for the rest, then as cards. Each says who of the
+community goes: its members as on any card (as their couple when both go, teaching when in the line-up), then the people
+added, said to be added by the manager: "Christina teaching · Sian teaching and Carolina going (added by Cédric)".
+Whether someone added teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the
+manager never says it, and someone teaching links to their artist page.
+
+The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
+community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page
+reads its community in the shape the server will answer with, so only where it comes from changes then.
 
 Nothing lists communities: a community's page is reached by its link only. Until the server can check who is a member,
 the link is the only thing that keeps it to them, as it is for a person's plans page.

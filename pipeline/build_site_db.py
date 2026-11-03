@@ -359,13 +359,19 @@ create table community_members (
     person_id integer not null references people(id) deferrable initially deferred,
     primary key (community_id, person_id)
 ) strict, without rowid;
--- the people a community's manager added, counted by festival and status: their names stay in pipeline/seeded.csv
+-- the people a community's manager added, who have not joined: one row per person and festival
 create table community_seeded (
+    id integer primary key,
     community_id integer not null references communities(id) deferrable initially deferred,
+    name text not null,
     event_id integer not null references events(id) deferrable initially deferred,
-    status text not null check (status in ({plan})),
-    n integer not null check (n > 0),
-    primary key (community_id, event_id, status)
+    status text not null check (status in ({plan}))
+) strict;
+create index community_seeded_community on community_seeded(community_id);
+create table seeded_artists (
+    seeded_id integer not null references community_seeded(id) deferrable initially deferred,
+    artist_id integer not null references artists(id) deferrable initially deferred,
+    primary key (seeded_id, artist_id)
 ) strict, without rowid;
 create table states (
     point text not null,
@@ -421,20 +427,45 @@ create view event_rows as
         left join price_status p on p.event_id = e.id
     ) r;
 create view plan_rows as
-    select p.person_id, pe.key, pe.name, pe.featured, p.event_id, p.status,
-      (select ea.role from person_artists pa join event_artists ea on ea.event_id = p.event_id and ea.as_couple is null
+    select p.person_id, pe.key, pe.name, pe.featured, p.event_id, p.status, {plan_booked_as} as booked_as
+    from plans p join people pe on pe.id = p.person_id;
+-- each person a manager added, with booked_as as a plan has it, and the artist record a booking of theirs links to
+create view seeded_rows as
+    select s.id, s.community_id, s.name, s.event_id, s.status, {seeded_booked_as} as booked_as,
+      (select min(artist_id) from seeded_artists where seeded_id = s.id) as artist_id
+    from community_seeded s;
+"""
+
+
+# the role someone going to a festival is in its line-up as, from the artist records they are (artists, of whom whose
+# holds), alone or in a couple: teacher first, then the others by name; null when they are in none
+BOOKED_AS = """(select ea.role from {artists} pa join event_artists ea on ea.event_id = {event} and ea.as_couple is null
          and (ea.artist_id = pa.artist_id
               or ea.artist_id in (select couple_id from couple_members where member_id = pa.artist_id))
-       where pa.person_id = p.person_id and ea.role in ({booked_as})
-       order by ea.role = '{teacher}' desc, ea.role limit 1) as booked_as
-    from plans p join people pe on pe.id = p.person_id;
-"""
+       where {whose} and ea.role in ({roles})
+       order by ea.role = '{teacher}' desc, ea.role limit 1)"""
+
+
+def booked_as(artists: str, whose: str, event: str) -> str:
+    """BOOKED_AS for one table of artist records."""
+    return BOOKED_AS.format_map(
+        {
+            'artists': artists,
+            'whose': whose,
+            'event': event,
+            'roles': states.sql_in('role', BOOKED_ROLES),
+            'teacher': Role.TEACHER,
+        }
+    )
+
+
 TABLES = sqlite_db.declared(
     (DDL + resolve_artists.ARTIST_EVENTS).format_map(
         states.SQL_IN
         | resolve_artists.VIA
         | {
-            'booked_as': states.sql_in('role', BOOKED_ROLES),
+            'plan_booked_as': booked_as('person_artists', 'pa.person_id = p.person_id', 'p.event_id'),
+            'seeded_booked_as': booked_as('seeded_artists', 'pa.seeded_id = s.id', 's.event_id'),
             'booked_roles': ',\n    '.join(f'{r} integer not null' for r in BOOKED_ROLES),
             'priced': enums.Price.PRICED,
             'teacher': Role.TEACHER,
@@ -850,10 +881,10 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
     return person_id
 
 
-def communities(x: Transaction, person_id: Mapping[str, int]) -> None:
+def communities(x: Transaction, person_id: Mapping[str, int], key_id: Mapping[str, int]) -> None:
     """Communities (pipeline/communities.csv, community_members.csv, seeded.csv): each with its manager, one of its
-    members, and the people its manager added who have not joined, counted by festival and status. Their names never
-    reach the site, as a server would give a member only the counts."""
+    members, and the people its manager added who have not joined, each by their name and the festivals they go to,
+    and the artist records they are, so a booking of theirs says they teach there (seeded_rows), as a member's does."""
     found = Community.read()
     community_id = {r.key: i for i, r in enumerate(found, 1)}
     members = Membership.read()
@@ -881,13 +912,24 @@ def communities(x: Transaction, person_id: Mapping[str, int]) -> None:
             sys.exit(f'seeded.csv: no community {r.community} in communities.csv')
         if r.event_id not in known:
             sys.exit(f'seeded.csv: no event {r.event_id} ({r.event})')
-    counted = collections.Counter((r.community, r.event_id, r.status) for r in seeded)
+        if unknown := [k for k in r.artist_keys if k not in key_id]:
+            sys.exit(f'seeded.csv: unknown artist key {unknown[0]} ({r.name})')
     x.insert(
         'community_seeded',
         (
-            {'community_id': community_id[c], 'event_id': e, 'status': status, 'n': n}
-            for (c, e, status), n in counted.items()
+            {
+                'id': i,
+                'community_id': community_id[r.community],
+                'name': r.name,
+                'event_id': r.event_id,
+                'status': r.status,
+            }
+            for i, r in enumerate(seeded, 1)
         ),
+    )
+    x.insert(
+        'seeded_artists',
+        ({'seeded_id': i, 'artist_id': key_id[k]} for i, r in enumerate(seeded, 1) for k in r.artist_keys),
     )
 
 
@@ -993,8 +1035,11 @@ DOCS = {
     'communities': 'Communities (pipeline/communities.csv, ours): a key, which is its page’s address, a name and its '
     'manager, who is one of its members. Nothing lists them: a community is reached by its link.',
     'community_members': 'Who is a member of which community (pipeline/community_members.csv).',
-    'community_seeded': 'How many people a community’s manager added, who have not joined, go to each festival '
-    '(pipeline/seeded.csv): counts only, as their names stay in that file.',
+    'community_seeded': 'The people a community’s manager added, who have not joined (pipeline/seeded.csv): one row '
+    'per person and festival, by their first name; the community’s page names them as added by its manager.',
+    'seeded_artists': 'The artist records a person a manager added is, so a booking of theirs says they teach there.',
+    'seeded_rows': 'Each person a manager added with booked_as, as plan_rows has it, and artist_id, the artist record '
+    'their page is.',
     'plan_rows': 'Each plan with the person, and booked_as: their role when they are in that festival’s line-up, alone '
     'or in a couple.',
     'event_rows': 'What the site reads: each event with its event_stats (lineup, popular_artists, kiz_only, genres, '
@@ -1083,7 +1128,7 @@ def build(src: Path, out: Path) -> Built:
             key_id = booked(x)
             fares(x)
             event_stats(x, artist_stats(x))
-            communities(x, plans(x, key_id))
+            communities(x, plans(x, key_id), key_id)
             built_at = now().isoformat()
             meta(x, built_at)
             made = Built(site_json(x, built_at), review.review(x, built_at, src))

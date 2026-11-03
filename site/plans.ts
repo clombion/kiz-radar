@@ -106,7 +106,7 @@ export function friendsIn(
 export const goersInline = (goers: Goer[]): Kid[] =>
   joined(
     named(goers).map((g) =>
-      h('span', { class: 'goer' }, h('a', { href: g.href, class: 'artist' }, g.name), ' ', tagOf(doing(g.people))),
+      h('span', { class: 'goer' }, h('a', { href: g.href, class: 'artist' }, g.name), ' ', doingTag(g.people)),
     ),
   );
 
@@ -144,6 +144,8 @@ const goerName = (words: string, open: (from: Element | null) => void) =>
   button({ class: 'goer-name', onclick: own(open) }, words);
 const nameButton = (g: Named) => goerName(g.name, (b) => peekGroup(g, b));
 const tagOf = (d: string) => h('span', { class: ['plan-tag', d !== 'going' && 'booked'] }, d);
+// what these people do there, as a tag: teaching when all of them are in the line-up, else going
+export const doingTag = (people: readonly Pick<Goer, 'booked_as'>[]): HTMLElement => tagOf(doing(people));
 // someone going, in a list of who's going: their faces, their name opening their plans, and how they're going
 const goerRow = (g: Named, open: (from: Element | null) => void) =>
   h('li', {}, faces(g.people), goerName(g.name, open), ' ', tagOf(doing(g.people)));
@@ -264,25 +266,27 @@ function aboutLine(g: Named): Kid {
   ];
 }
 
-// one festival they're going to, with which of them when only some are
-const planItem = (g: Named, e: Plan, people: readonly Plan[]) =>
+// a festival in a list of who's going: its days, its name (a link to it), its place and what else is said of it, and
+// who
+type Listed = { id: number; title: string } & RowOf<typeof PLACE_AND_DAYS>;
+const planRow = (e: Listed, name: Kid, who: Kid, also = '') =>
   h(
     'li',
     {},
     h('span', { class: 'when' }, dayRange(e.start_date, e.end_date)),
-    h(
-      'span',
-      { class: 'what' },
-      link(eventOnMapHref(e.id), e.title),
-      h(
-        'span',
-        { class: 'muted' },
-        ' · ',
-        place(e),
-        people.length < g.people.length ? ` · ${people.map((p) => p.name).join(', ')}` : '',
-      ),
-    ),
+    h('span', { class: 'what' }, name, h('span', { class: 'muted' }, ' · ', place(e), also)),
+    who,
+  );
+// a festival in a list of everyone's plans (the Friends tab, a community's page): it on the map, and who goes
+export const goingRow = (e: Listed, who: Kid): HTMLElement =>
+  planRow(e, h('a', { href: eventOnMapHref(e.id) }, e.title), h('span', { class: 'who' }, who));
+// one festival they're going to, with which of them when only some are
+const planItem = (g: Named, e: Plan, people: readonly Plan[]) =>
+  planRow(
+    e,
+    link(eventOnMapHref(e.id), e.title),
     tagOf(doing(people)),
+    people.length < g.people.length ? ` · ${people.map((p) => p.name).join(', ')}` : '',
   );
 
 // Where a person or a couple is going: what they're doing there, and which of them when only one goes.

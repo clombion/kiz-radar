@@ -4,10 +4,9 @@ import { q, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { withDetails } from './festivals.ts';
-import { goersInline, goersOf, person, withPlans } from './plans.ts';
-import { artistHref, eventOnMapHref, personHref } from './routes.ts';
+import { goersInline, goersOf, goingRow, person, withPlans } from './plans.ts';
+import { artistHref, personHref } from './routes.ts';
 import { EVENT } from './rows.ts';
-import { dayRange, place } from './ui.ts';
 import { joined } from './wording.ts';
 
 // Anyone with the link sees it; keeping plans to chosen friends needs the accounts that come later.
@@ -88,7 +87,6 @@ function everyone(root: HTMLElement): void {
     sql`SELECT e.* FROM event_rows e WHERE e.upcoming AND e.id IN (SELECT event_id FROM plans) ORDER BY e.start_date`,
   );
   const people = withPlans();
-  const when = (e: { start_date: string; end_date: string }) => dayRange(e.start_date, e.end_date);
   page(
     root,
     ['Who’s going where', h('p', { class: 'lede' }, 'The festivals friends said they’re going to.')],
@@ -97,20 +95,7 @@ function everyone(root: HTMLElement): void {
       ? h(
           'ul',
           { class: 'plan-list' },
-          events.map((e) =>
-            h(
-              'li',
-              {},
-              h('span', { class: 'when' }, when(e)),
-              h(
-                'span',
-                { class: 'what' },
-                h('a', { href: eventOnMapHref(e.id) }, e.title),
-                h('span', { class: 'muted' }, ' · ', place(e)),
-              ),
-              h('span', { class: 'who' }, goersInline(goersOf(e.id))),
-            ),
-          ),
+          events.map((e) => goingRow(e, goersInline(goersOf(e.id)))),
         )
       : h('p', { class: 'muted' }, 'Nobody has shared plans yet.'),
 

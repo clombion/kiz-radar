@@ -110,6 +110,7 @@ COMMUNITY = {'key': 'frost-lantern-river-maple', 'name': 'Dancers in Norway', 'm
 SEEDED = {
     'community': 'frost-lantern-river-maple',
     'name': 'Tonje',
+    'artist_keys': '',
     'event_id': '19033',
     'status': 'going',
     'event': 'KUOF 2026 – Kizomba & Urban Kiz Oslo Festival',
