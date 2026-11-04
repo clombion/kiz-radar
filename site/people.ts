@@ -121,7 +121,7 @@ function everyone(root: HTMLElement): void {
   const home = homeCity();
   page(
     root,
-    ['Who’s going where', h('p', { class: 'lede' }, 'Where dancers are going.')],
+    ['Who’s going where', h('p', { class: 'lede' }, 'All the dancers in the community with public plans.')],
     h('section', { class: 'friends-near' }, nearHere(home ?? null, home?.city ?? 'home')),
     h(
       'section',
@@ -145,7 +145,7 @@ function nearHere(at: Spot | null, name: string): Kid[] {
   });
   const people = withPlans().filter((p) => keys.has(p.key));
   return [
-    ...about(`Near ${name}`, `Only dancers with public plans, within ${NEAR_KM} km of ${name}.`),
+    ...about(`Near ${name}`, `Within ${NEAR_KM} km of ${name}.`),
     events.length > 0
       ? h('ul', { class: 'plan-list' }, events)
       : h('p', { class: 'muted' }, 'No one near here has shared plans yet.'),

@@ -1601,7 +1601,7 @@ test('the Friends tab lists the people near the home city, then the rest of the 
   const home = homeOf()?.city ?? '';
   expect(home).not.toBe('');
   expect(near.heading).toBe(`Near ${home}`);
-  expect(said(root.querySelector('.lede'))).toBe('Where dancers are going.');
+  expect(said(root.querySelector('.lede'))).toBe('All the dancers in the community with public plans.');
   // no line under the heading: what the list is is behind its (i)
   expect(root.querySelector('.friends-near h2 + p')?.matches('.info-card')).toBe(true);
   expect(root.querySelector('.friends-near p.muted')).toBeNull();
@@ -1653,7 +1653,7 @@ test('the Friends tab’s (i) shows what its list is on hover, on focus and on a
       'friends-about',
     ]);
     expect(info?.querySelector('svg')).not.toBeNull();
-    expect(said(card)).toBe(`Only dancers with public plans, within ${NEAR_KM} km of ${homeOf()?.city}.`);
+    expect(said(card)).toBe(`Within ${NEAR_KM} km of ${homeOf()?.city}.`);
     expect(seen()).toEqual(['false', true]);
     info?.dispatchEvent(new MouseEvent('mouseenter'));
     expect(seen()).toEqual(['true', false]);
