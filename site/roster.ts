@@ -10,7 +10,10 @@
 // What a line is called: a line of three people or fewer always names them, and with three units or fewer every line
 // does. Otherwise a line of more than three people is "Everyone" when it is the only line, "Everyone else" when it is
 // more than half of everyone (no other line is then as big), else called by its number ("5 people").
-// The lines go by arrival, then departure, the bigger first, then by their first name; those who have not said last.
+// The lines named come first, by arrival, then departure, then by their first name; then those called by number, by
+// arrival; then "Everyone else"; and those who have not said at the very bottom, whatever they are called.
+//
+// The same people by where they stay (byPlace): a line a place, the most people first, those who said none last.
 
 // how someone travels, each end when they said it: arrive and leave as local times (YYYY-MM-DDTHH:MM), the airports
 export interface Flights {
@@ -160,11 +163,99 @@ export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
       Number(a.none) - Number(b.none) ||
       byText(a.line.travel?.arrive ?? unknown, b.line.travel?.arrive ?? unknown) ||
       byText(a.line.travel?.leave ?? unknown, b.line.travel?.leave ?? unknown) ||
-      b.line.people - a.line.people ||
       byName(a.line.units[0] ?? { name: '' }, b.line.units[0] ?? { name: '' }) ||
       byText(travelKey(a.line.travel), travelKey(b.line.travel)),
   );
   const out = lines.map((l) => l.line);
   call(out, goers.length, all.length);
-  return out;
+  // named lines, then those called by number, then "Everyone else", in their order; those who have not said last
+  const rank = (l: Line<P>, i: number) =>
+    lines[i]?.none ? 3 : l.called === null || l.called === 'Everyone' ? 0 : l.called === 'Everyone else' ? 2 : 1;
+  return out
+    .map((l, i) => ({ l, r: rank(l, i), i }))
+    .sort((a, b) => a.r - b.r || a.i - b.i)
+    .map(({ l }) => l);
+}
+// ----- by where they stay -----
+// a place of a roster seen by where its people stay: the place (null: those who said none), who stays there and on
+// which nights, the nights anyone stays there and those everyone there does (null when they share none), and how many
+// people, its names called by number when more than three
+export interface Place<P> {
+  place: string | null;
+  units: Unit<P>[];
+  people: number;
+  nights: { first: string; last: string } | null;
+  shared: { first: string; last: string } | null;
+  stays: { person: P; first: string; last: string }[];
+  called: string | null;
+}
+
+// The places of a roster: a line a place, the most people first and those who said none last; someone who changes
+// place is on each place's line for their nights there. A couple is one unit at a place when both partners stay there
+// on the same nights.
+export function byPlace<P>(goers: readonly Goes<P>[]): Place<P>[] {
+  type Here = { stays: Place<P>['stays']; who: Map<Goes<P>, string> };
+  const at = new Map<string | null, Here>();
+  const of = (place: string | null): Here => {
+    const p: Here = at.get(place) ?? { stays: [], who: new Map() };
+    at.set(place, p);
+    return p;
+  };
+  for (const g of goers) {
+    if (g.stays.length === 0) of(null).who.set(g, '');
+    for (const s of g.stays) {
+      const p = of(s.place);
+      p.stays.push({ person: g.person, first: s.first, last: s.last });
+      p.who.set(g, `${p.who.get(g) ?? ''};${s.first}..${s.last}`);
+    }
+  }
+  const places = [...at].map(([place, { stays, who }]): Place<P> => {
+    const here = [...who.keys()];
+    const named: Unit<P>[] = [];
+    const done = new Set<Goes<P>>();
+    for (const g of here.toSorted(byName)) {
+      if (done.has(g)) continue;
+      const c = g.couple;
+      const partners = c === null ? [] : here.filter((o) => o.couple?.key === c.key);
+      const alike = c !== null && partners.length > 1 && partners.every((o) => who.get(o) === who.get(g));
+      const one = alike ? partners.toSorted(byName) : [g];
+      named.push({ name: alike && c !== null ? c.name : g.name, people: one.map((o) => o.person) });
+      for (const o of one) done.add(o);
+    }
+    const firsts = stays.map((s) => s.first).toSorted(byText),
+      lasts = stays.map((s) => s.last).toSorted(byText);
+    // the nights all of them stay: from the latest of each one's first night to the earliest of each one's last
+    const spans = here.map((g) => {
+      const mine = stays.filter((s) => s.person === g.person);
+      return {
+        first: mine.map((s) => s.first).toSorted(byText)[0] ?? '',
+        last:
+          mine
+            .map((s) => s.last)
+            .toSorted(byText)
+            .at(-1) ?? '',
+      };
+    });
+    const from =
+        spans
+          .map((s) => s.first)
+          .toSorted(byText)
+          .at(-1) ?? '',
+      to = spans.map((s) => s.last).toSorted(byText)[0] ?? '';
+    return {
+      place,
+      units: named.toSorted(byName),
+      people: here.length,
+      nights: place === null ? null : { first: firsts[0] ?? '', last: lasts.at(-1) ?? '' },
+      shared: place === null || from > to ? null : { first: from, last: to },
+      stays,
+      called: here.length > MANY ? `${here.length} people` : null,
+    };
+  });
+  return places.sort(
+    (a, b) =>
+      Number(a.place === null) - Number(b.place === null) ||
+      b.people - a.people ||
+      (a.place ?? '').localeCompare(b.place ?? '', 'en'),
+  );
 }

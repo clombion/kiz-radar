@@ -876,10 +876,9 @@ async function kuofAt(
   await atWidth(width, async () => {
     document.body.append(root);
     try {
-      // KUOF's card open, and laid out a frame or two, as its roster measures itself
+      // KUOF's card open, and laid out a few frames, as its roster measures itself and places what it measured
       opened(root, 'KUOF');
-      await new Promise(requestAnimationFrame);
-      await new Promise(requestAnimationFrame);
+      for (const _ of [1, 2, 3]) await new Promise(requestAnimationFrame);
       await then(root);
     } finally {
       root.remove();
@@ -1207,42 +1206,52 @@ test('the steps sit on the line of the period’s name, and its months in two ro
     );
 });
 
-// ----- a roster of travels, each with its stays counted -----
-// KUOF's roster, read: its lines' names, their bars (their classes, and what they say), what each line's stay column
-// says, and the words
+// ----- a roster of travels, each with its stays counted, and the same people by hotel -----
+// KUOF's roster, read: its lines' names, their bars (what they say and their titles), the thin lines of what was not
+// said (where they run, in days from the first), what each line's stay column says (and its title), and the words
 const linesOf = (root: HTMLElement) => {
-  const g = opened(root, 'KUOF')?.querySelector('.gantt');
+  const card = opened(root, 'KUOF');
+  const g = card?.querySelector<HTMLElement>('.gantt:not([hidden])');
+  const days = g?.querySelectorAll('.gantt-axis span').length ?? 1;
+  const dayOf = (x: number) => Math.round(((x * days) / 100) * 100) / 100;
   return {
     names: [...(g?.querySelectorAll('.gantt-name') ?? [])].map((n) => said(n.querySelector('button') ?? n)),
     bars: [...(g?.querySelectorAll<HTMLElement>('.gantt-bar') ?? [])].map((b) => ({
-      open: ['gantt-open-start', 'gantt-open-end', 'gantt-stay-only'].filter((c) => b.matches(`.${c}`)),
-      said: [...b.querySelectorAll(':scope > span:not(.gantt-ink, .gantt-cut)')].map((x) => said(x)),
-      cuts: b.querySelectorAll('.gantt-cut').length,
-      segments: [...b.querySelectorAll<HTMLElement>('.gantt-seg')].map((x) => [x.title, x.style.flexGrow]),
+      said: [...b.querySelectorAll(':scope > span:not(.gantt-ink, .gantt-shared)')].map((x) => said(x)),
+      title: b.title,
+      at: [
+        dayOf(Number.parseFloat(b.style.left)),
+        dayOf(Number.parseFloat(b.style.left) + Number.parseFloat(b.style.width)),
+      ],
     })),
-    staying: [...(g?.querySelectorAll('.gantt-name ~ .gantt-stay') ?? [])].map((x) => said(x)),
+    thin: [...(g?.querySelectorAll<HTMLElement>('.gantt-bar ~ .gantt-none, .gantt-none:has(+ .gantt-bar)') ?? [])].map(
+      (x) => [
+        dayOf(Number.parseFloat(x.style.left)),
+        dayOf(Number.parseFloat(x.style.left) + Number.parseFloat(x.style.width)),
+      ],
+    ),
+    staying: [...(g?.querySelectorAll<HTMLElement>('.gantt-name ~ .gantt-stay') ?? [])].map((x) => [said(x), x.title]),
     unsaid: g?.querySelectorAll('.gantt-unsaid').length,
-    words: said(opened(root, 'KUOF')?.querySelector('.gantt-said')),
+    words: said(card?.querySelector('.gantt-said:not([hidden])')),
+    text: said(card?.querySelector('.trip-body')),
   };
 };
 const KUOF_NIGHTS = ['2026-11-19', '2026-11-22'] as const;
+const flown: readonly Planted[] = TO_KUOF.map(([k, e, a, l]) => [k, e, a, l, null] as const);
+const APART: readonly Slept[] = [
+  ['cedric', 19_033, ...KUOF_NIGHTS, 'Scandic Holberg'],
+  ['christina', 19_033, ...KUOF_NIGHTS, 'Comfort Xpress Oslo Sentrum'],
+];
 
-test('a couple flying alike and staying apart is one line, its stays counted, its names by stay on demand', async () => {
-  const apart: readonly Slept[] = [
-    ['cedric', 19_033, ...KUOF_NIGHTS, 'Scandic Holberg'],
-    ['christina', 19_033, ...KUOF_NIGHTS, 'Comfort Xpress Oslo Sentrum'],
-  ];
-  const flown: readonly Planted[] = TO_KUOF.map(([k, e, a, l]) => [k, e, a, l, null] as const);
+test('a couple flying alike and staying apart is one line, its stays a count, never a name cut short', async () => {
   await kuofAt(
     1200,
     (root) => {
       const seen = linesOf(root);
       // one travel, one line: the partners each a unit, named, a button for their stays
       expect(seen.names).toEqual(['Cédric and Christina', 'Maja, Ragnhild and Tonje']);
-      expect(seen.staying).toEqual(['Comfort Xpress Oslo Sentrum 1 · Scandic Holberg 1', '']);
-      // counted in full, wrapped rather than cut
-      const cell = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-name ~ .gantt-stay');
-      expect(cell?.scrollWidth).toBeLessThanOrEqual(cell?.clientWidth ?? 0);
+      // two places: a count, the whole in its title and the words
+      expect(seen.staying[0]).toEqual(['2 hotels', 'Comfort Xpress Oslo Sentrum 1 · Scandic Holberg 1']);
       expect(seen.words).toContain(
         'Cédric and Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying: Comfort Xpress Oslo Sentrum: Christina, Scandic Holberg: Cédric',
       );
@@ -1251,26 +1260,24 @@ test('a couple flying alike and staying apart is one line, its stays counted, it
       expect(said(document.getElementById(who?.getAttribute('aria-controls') ?? ''))).toBe(
         'Comfort Xpress Oslo Sentrum Christina · Scandic Holberg Cédric',
       );
+      // no name shortened, nor "+1", anywhere on the card
+      expect(seen.text).not.toMatch(/…|\+\d/u);
     },
     flown,
-    apart,
+    APART,
   );
-  // on a phone, the bar says the biggest and how many others, the whole in its title
   await kuofAt(
     390,
     (root) => {
       const inBar = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-bar-stay');
-      expect([said(inBar), inBar?.title]).toEqual([
-        'Comfort Xpress Oslo Sentrum +1',
-        'Comfort Xpress Oslo Sentrum 1 · Scandic Holberg 1',
-      ]);
+      expect([said(inBar), inBar?.title]).toEqual(['2 hotels', 'Comfort Xpress Oslo Sentrum 1 · Scandic Holberg 1']);
     },
     flown,
-    apart,
+    APART,
   );
 });
 
-test('a stay that changes cuts the bar where it does, each place as wide as its nights', async () => {
+test('someone moving from one place to another: "2 places", the way in its title and the words', async () => {
   const moving: readonly Slept[] = [
     ['cedric', 19_033, '2026-11-19', '2026-11-19', 'Airbnb'],
     ['cedric', 19_033, '2026-11-20', '2026-11-22', 'Scandic Holberg'],
@@ -1280,43 +1287,118 @@ test('a stay that changes cuts the bar where it does, each place as wide as its 
     1200,
     (root) => {
       const seen = linesOf(root);
-      expect(seen.bars[0]).toEqual({
-        open: [],
-        said: ['17:05 OSL', 'AirbnbScandic Holberg', '09:40 OSL'],
-        cuts: 1,
-        segments: [
-          ['Airbnb', '1'],
-          ['Scandic Holberg', '3'],
-        ],
-      });
-      expect(seen.staying[0]).toBe('Airbnb → Scandic Holberg');
+      expect(seen.bars[0]?.said).toEqual(['17:05 OSL', '2 places', '09:40 OSL']);
+      expect(seen.staying[0]).toEqual(['2 places', 'Airbnb → Scandic Holberg']);
+      expect(seen.words).toContain('Cédric in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Airbnb → Scandic Holberg');
+      expect(opened(root, 'KUOF')?.querySelectorAll('.gantt-cut, .gantt-seg')).toHaveLength(0);
     },
     alone,
     moving,
   );
 });
 
-test('an end not said fades, "in ?" or "out ?"; said only where one stays, a dashed bar over the nights', async () => {
-  // Cédric said only his flight in; Christina only where she stays
+test('what was not said is the thin line: an end not said to the festival’s edge, nights alone between it', async () => {
+  // Cédric said only his flight in; Christina only where she stays, Saturday night
   const halves: readonly Planted[] = [['cedric', 19_033, '2026-11-19T17:05', null, null]];
   await kuofAt(
     1200,
     (root) => {
       const seen = linesOf(root);
+      // the axis from Thursday 19 to Sunday 22, the festival from the 20th to the end of the 22nd: days 1 to 4
       expect(seen.names).toEqual(['Cédric', 'Christina Comfort Xpress', 'Maja, Ragnhild and Tonje']);
-      expect(seen.bars.map((b) => [b.open, b.said])).toEqual([
-        [['gantt-open-end'], ['17:05 OSL', 'out ?']],
-        [
-          ['gantt-open-start', 'gantt-open-end', 'gantt-stay-only'],
-          ['in ?', 'Comfort Xpress', 'out ?'],
-        ],
+      expect(seen.bars.map((b) => [b.said, b.title, b.at])).toEqual([
+        // in at 17:05 on Thursday, known there to its end: the thin line on from Friday to the festival's end
+        [['17:05 OSL', ''], 'Departure not said', [0.71, 1]],
+        // her one night, Saturday into Sunday morning: the thin line over the festival's days before and after it
+        [['', 'Comfort Xpress', ''], 'Arrival not said; Departure not said', [2, 3]],
       ]);
+      expect(seen.thin).toEqual([
+        [1, 4],
+        [1, 2],
+        [3, 4],
+      ]);
+      // no question marks, nor fading, anywhere
+      expect(seen.text).not.toContain('?');
+      const ink = opened(root, 'KUOF')?.querySelector('.gantt-ink');
+      expect(ink ? getComputedStyle(ink).maskImage : '').toMatch(/0\.35rem|5\.6px/u);
       // saying where one stays is saying something: Christina is not among those who have not
       expect(seen.unsaid).toBe(1);
-      expect(seen.words).toContain('Cédric in Thu 17:05 OSL, out not said');
+      expect(seen.words).toContain('Cédric in Thu 17:05 OSL, departure not said');
       expect(seen.words).toContain('Christina, staying at Comfort Xpress');
     },
     halves,
-    [['christina', 19_033, '2026-11-20', '2026-11-21', 'Comfort Xpress']],
+    [['christina', 19_033, '2026-11-21', '2026-11-21', 'Comfort Xpress']],
+  );
+});
+
+// where a card's lines say where they stay on a phone: for each, in its bar or under its name
+const placement = (root: HTMLElement) =>
+  [...(opened(root, 'KUOF')?.querySelectorAll<HTMLElement>('.gantt-name') ?? [])].flatMap((n) => {
+    const under = n.querySelector<HTMLElement>('.gantt-stay-under');
+    return under === null ? [] : [under.checkVisibility() ? 'under' : 'in bar'];
+  });
+
+test('on a phone the card says where its lines stay all in their bars, or all under their names', async () => {
+  // both bars long enough: each in its bar
+  const stays: readonly Slept[] = [
+    ['cedric', 19_033, ...KUOF_NIGHTS, 'Scandic'],
+    ['christina', 19_033, '2026-11-20', '2026-11-22', 'Thon'],
+  ];
+  const long: readonly Planted[] = [
+    ['cedric', 19_033, '2026-11-19T17:05', '2026-11-23T09:40', null],
+    ['christina', 19_033, '2026-11-20T09:00', '2026-11-23T09:40', null],
+  ];
+  await kuofAt(390, (root) => expect(placement(root)).toEqual(['in bar', 'in bar']), long, stays);
+  // Christina's one night too short for her hotel's name: both under their names
+  const short: readonly Planted[] = [
+    ['cedric', 19_033, '2026-11-19T17:05', '2026-11-23T09:40', null],
+    ['christina', 19_033, '2026-11-21T09:00', '2026-11-22T09:00', null],
+  ];
+  const night: readonly Slept[] = [
+    ['cedric', 19_033, ...KUOF_NIGHTS, 'Scandic'],
+    ['christina', 19_033, '2026-11-21', '2026-11-21', 'Thon'],
+  ];
+  await kuofAt(390, (root) => expect(placement(root)).toEqual(['under', 'under']), short, night);
+});
+
+test('a card whose people stay at two places or more can be seen by hotel, its choice kept for the visit', async () => {
+  // one place for everyone: no choice
+  await kuofAt(1200, (root) => expect(opened(root, 'KUOF')?.querySelector('.gantt-views')).toBeNull(), TO_KUOF);
+  await kuofAt(
+    1200,
+    (root) => {
+      const card = opened(root, 'KUOF');
+      const choice = [...(card?.querySelectorAll<HTMLButtonElement>('.gantt-views button') ?? [])];
+      const pressed = () => choice.map((b) => [said(b), b.getAttribute('aria-pressed')]);
+      expect(pressed()).toEqual([
+        ['By travel', 'true'],
+        ['By hotel', 'false'],
+      ]);
+      choice[1]?.click();
+      expect(pressed()).toEqual([
+        ['By travel', 'false'],
+        ['By hotel', 'true'],
+      ]);
+      // a line a place, the most people first, those who said none last, each its people under its name
+      const seen = linesOf(root);
+      expect(seen.names).toEqual([
+        'Comfort Xpress Oslo Sentrum Christina',
+        'Scandic Holberg Cédric',
+        'No place said Maja, Ragnhild and Tonje',
+      ]);
+      expect(seen.bars.map((b) => b.at)).toEqual([
+        [0, 4],
+        [0, 4],
+      ]);
+      expect(seen.words).toBe(
+        'Comfort Xpress Oslo Sentrum, the nights of Thu 19 to Sun 22: Christina; Scandic Holberg, the nights of Thu 19 to Sun 22: Cédric; no place said: Maja, Ragnhild and Tonje',
+      );
+      // drawn again, as when the calendar steps: still by hotel
+      const again = withStays(APART, () => withTrips(flown, () => onDay('2026-11-01', () => communityPage(COMMUNITY))));
+      expect(opened(again, 'KUOF')?.querySelector('.gantt-views [aria-pressed="true"]')?.textContent).toBe('By hotel');
+      opened(again, 'KUOF')?.querySelector<HTMLElement>('.gantt-views button')?.click();
+    },
+    flown,
+    APART,
   );
 });

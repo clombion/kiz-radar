@@ -2544,14 +2544,14 @@ html:has(dialog.search[open]) {
 .gantt-ap {
   display: none;
 }
-/* on a phone a stay is said inside its bar, between its times; under its line's name when the bar is too short
-   (gantt.ts measures it) */
+/* on a phone where the lines stay is said inside every bar, between its times, when every bar holds its text whole;
+   else under every line's name (gantt.ts measures it): one placement for the card, never a name cut short */
 .gantt-stay-under {
   display: none;
   color: var(--muted);
   font-size: 0.7rem;
 }
-.gantt-name.gantt-tight .gantt-stay-under {
+.gantt.gantt-tight .gantt-stay-under {
   display: block;
 }
 .gantt-bar-stay {
@@ -2562,9 +2562,9 @@ html:has(dialog.search[open]) {
   color: var(--muted);
   font-weight: 500;
   text-align: center;
-  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.gantt-name.gantt-tight + .gantt-lane .gantt-bar-stay {
+.gantt.gantt-tight .gantt-bar-stay {
   visibility: hidden;
 }
 @media (min-width: 700px) {
@@ -2585,7 +2585,7 @@ html:has(dialog.search[open]) {
   .gantt-ap {
     display: inline;
   }
-  .gantt-name.gantt-tight .gantt-stay-under,
+  .gantt.gantt-tight .gantt-stay-under,
   .gantt-bar-stay {
     display: none;
   }
@@ -2645,7 +2645,7 @@ html:has(dialog.search[open]) {
   line-height: 0.7rem;
   white-space: nowrap;
 }
-.gantt-bar > span:not(.gantt-ink, .gantt-cut) {
+.gantt-bar > span:not(.gantt-ink, .gantt-shared) {
   position: relative;
 }
 /* a line's time there, a highlighter's swipe as the months' (ink.ts), light: two passes, the second faint, fading at
@@ -2664,53 +2664,43 @@ html:has(dialog.search[open]) {
   background: var(--highlight);
   opacity: 0.3;
 }
-/* an end not said: the ink fades out over a longer way, and its time is a muted "in ?" or "out ?" */
-.gantt-open-start .gantt-ink {
-  mask-image: linear-gradient(to right, transparent, black 2.5rem, black calc(100% - 0.35rem), transparent);
+/* by hotel: the place a line's name, its people under it; the bar deeper over the nights everyone there stays */
+.gantt-place-name {
+  display: block;
+  font-weight: 600;
 }
-.gantt-open-end .gantt-ink {
-  mask-image: linear-gradient(to right, transparent, black 0.35rem, black calc(100% - 2.5rem), transparent);
-}
-.gantt-open-start.gantt-open-end .gantt-ink {
-  mask-image: linear-gradient(to right, transparent, black 2.5rem, black calc(100% - 2.5rem), transparent);
-}
-.gantt-q {
+.gantt-place-who {
+  display: block;
   color: var(--muted);
-  font-weight: 500;
+  font-size: 0.72rem;
 }
-/* said only where they stay: no ink, a dashed outline over their nights */
-.gantt-stay-only .gantt-ink {
-  height: 100%;
-  border: 1px dashed color-mix(in srgb, var(--accent) 45%, transparent);
-  border-radius: 4px;
-  background: none;
-  mask-image: none;
-}
-.gantt-stay-only .gantt-ink::after {
-  display: none;
-}
-/* places one after another: the bar cut by a hairline where they change, each place as wide as its nights */
-.gantt-cut {
+.gantt-shared {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--surface);
+  inset: 0 auto auto;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--highlight);
+  opacity: 0.6;
 }
-.gantt-segs {
-  display: flex;
-  flex: 1 1 0;
-  min-width: 0;
-}
-.gantt-seg {
-  flex: 1 1 0;
-  min-width: 0;
+/* the two views of a card's roster, as two buttons of one control: by travel, by hotel */
+.gantt-views {
+  display: inline-flex;
+  margin: 0 0 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
   overflow: hidden;
-  padding: 0 0.2rem;
+  font-size: 0.78rem;
+}
+.gantt-views button {
+  padding: 0.2rem 0.75rem;
+  border: 0;
+  background: none;
   color: var(--muted);
-  font-weight: 500;
-  text-align: center;
-  text-overflow: ellipsis;
+}
+.gantt-views button[aria-pressed="true"] {
+  background: var(--accent-soft);
+  color: var(--text);
+  font-weight: 600;
 }
 /* a line called collectively ("Everyone else"): in the text's colour, underlined as the other names; its names, while
    the pointer is over it or once opened, in a box on a row of their own under its line, which the card grows to hold */

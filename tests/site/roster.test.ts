@@ -2,7 +2,7 @@
 // travel and stays are alike; what each line is called. The cases of twenty people, then the laws any roster keeps,
 // over rosters drawn at random (from a fixed seed).
 import { describe, expect, it } from 'vitest';
-import { type Flights, type Goes, type Line, roster, type Stay } from '../../site/roster.ts';
+import { byPlace, type Flights, type Goes, type Line, type Place, roster, type Stay } from '../../site/roster.ts';
 
 // how someone flies, in and out, each end said or not, from and to one airport
 const F = (arrive: string | null, leave: string | null, at = 'OSL'): Flights => ({
@@ -108,14 +108,14 @@ const shown = (lines: readonly Line<string>[]) =>
 
 describe('a few more', () => {
   const one = (name: string, said: Said): Goes<string> => ({ person: name, name, couple: null, ...said });
-  it('of two lines alike in their times, the bigger first, whatever their names', () => {
+  it('of two named lines alike in their times, the first by first name, whatever their size', () => {
     const lines = roster([
       one('Ann', T(THU, MON, S, 'TRF')),
       ...['Ola', 'Per', 'Siv'].map((n) => one(n, T(THU, MON, S))),
     ]);
     expect(shown(lines)).toEqual([
-      'Ola, Per, Siv [3] 19T17:05 OSL → 23T09:40 | Scandic Holberg 3',
       'Ann [1] 19T17:05 TRF → 23T09:40 | Scandic Holberg 1',
+      'Ola, Per, Siv [3] 19T17:05 OSL → 23T09:40 | Scandic Holberg 3',
     ]);
   });
   it('a line of three people is named, though it is more than half of everyone of four units', () => {
@@ -166,11 +166,11 @@ describe('twenty people', () => {
     ]);
   });
 
-  it('5 · staggered arrivals, 12, 5 and 3: "Everyone else" for the majority, "5 people", three named', () => {
+  it('5 · staggered arrivals, 12, 5 and 3: the three named first, "5 people", then "Everyone else"', () => {
     expect(shown(roster(CASES['5']))).toEqual([
-      'Everyone else [12] 19T17:05 OSL → 23T09:40 | Scandic Holberg 12',
-      '5 people [5] 20T09:00 OSL → 23T09:40 | Scandic Holberg 5',
       'Erik, Hanna, Lise [3] 20T16:00 OSL → 23T09:40 | Scandic Holberg 3',
+      '5 people [5] 20T09:00 OSL → 23T09:40 | Scandic Holberg 5',
+      'Everyone else [12] 19T17:05 OSL → 23T09:40 | Scandic Holberg 12',
     ]);
   });
 
@@ -196,24 +196,24 @@ describe('twenty people', () => {
     ]);
   });
 
-  it('9 · a couple apart: Cédric on the big line, Christina on her own', () => {
+  it('9 · a couple apart: Christina on her own line, named, before Cédric on the big one', () => {
     expect(shown(roster(CASES['9']))).toEqual([
-      'Everyone else [19] 19T17:05 OSL → 23T09:40 | Scandic Holberg 19',
       'Christina [1] 20T09:00 OSL → 23T09:40 | Scandic Holberg 1',
+      'Everyone else [19] 19T17:05 OSL → 23T09:40 | Scandic Holberg 19',
     ]);
   });
 
-  it('10 · a departure not said: its own line, after the one that said it', () => {
+  it('10 · a departure not said: its own line, of four, before "Everyone else"', () => {
     expect(shown(roster(CASES['10']))).toEqual([
-      'Everyone else [16] 19T17:05 OSL → 23T09:40 | Scandic Holberg 16',
       '4 people [4] 19T17:05 OSL → ? | Scandic Holberg 4',
+      'Everyone else [16] 19T17:05 OSL → 23T09:40 | Scandic Holberg 16',
     ]);
   });
 
   it('11 · only a stay, no flights: a line of its own, not with those who have not said', () => {
     expect(shown(roster(CASES['11']))).toEqual([
-      'Everyone else [17] 19T17:05 OSL → 23T09:40 | Scandic Holberg 17',
       'Erik, Hanna, Lise [3] stays only | Comfort Xpress 3',
+      'Everyone else [17] 19T17:05 OSL → 23T09:40 | Scandic Holberg 17',
     ]);
   });
 
@@ -229,10 +229,8 @@ describe('twenty people', () => {
     ]);
   });
 
-  it('13 · two big groups, neither a majority, and seven alone', () => {
+  it('13 · two big groups, neither a majority, called by number after the seven named', () => {
     expect(shown(roster(CASES['13']))).toEqual([
-      '7 people [7] 19T17:05 OSL → 23T09:40 | Scandic Holberg 7',
-      '6 people [6] 20T09:00 OSL → 22T18:00 | Comfort Xpress 6',
       'Per [1] 20T10:00 OSL → 23T09:40 | Comfort Xpress 1',
       'Nora [1] 20T12:00 OSL → 23T09:40 | Airbnb 1',
       'Erik [1] 20T14:00 OSL → 23T09:40 | Comfort Xpress 1',
@@ -240,6 +238,8 @@ describe('twenty people', () => {
       'Ola [1] 21T11:00 OSL → 22T18:00 | Radisson Blu 1',
       'Emma [1] 21T13:00 OSL → 22T18:00 | Scandic Holberg 1',
       'Lise [1] 21T15:00 OSL → 22T18:00 | Radisson Blu 1',
+      '7 people [7] 19T17:05 OSL → 23T09:40 | Scandic Holberg 7',
+      '6 people [6] 20T09:00 OSL → 22T18:00 | Comfort Xpress 6',
     ]);
   });
 
@@ -280,10 +280,10 @@ describe('twenty people', () => {
     ]);
   });
 
-  it('20 · same days, another airport for three: two lines', () => {
+  it('20 · same days, another airport for three: named, before "Everyone else"', () => {
     expect(shown(roster(CASES['20']))).toEqual([
-      'Everyone else [17] 19T17:05 OSL → 23T09:40 | Scandic Holberg 17',
       'Cédric & Christina, Maja [3] 19T17:05 TRF → 23T09:40 | Scandic Holberg 3',
+      'Everyone else [17] 19T17:05 OSL → 23T09:40 | Scandic Holberg 17',
     ]);
   });
 });
@@ -390,6 +390,27 @@ describe('the laws of any roster', () => {
     }
   });
 
+  it('the named lines come first, by arrival, departure and name; then those by number; "Everyone else"; the silent', () => {
+    const rank = (l: Line<string>) =>
+      l.travel === null && l.nights === null
+        ? 3
+        : l.called === null || l.called === 'Everyone'
+          ? 0
+          : l.called === 'Everyone else'
+            ? 2
+            : 1;
+    const at = (l: Line<string>) => [l.travel?.arrive ?? '~', l.travel?.leave ?? '~', l.units[0]?.name ?? ''];
+    for (const seed of SEEDS) {
+      const lines = roster(drawn(seed));
+      const ranks = lines.map(rank);
+      expect(ranks).toEqual(ranks.toSorted((a, b) => a - b));
+      const named = lines.filter((l) => rank(l) === 0).map(at);
+      expect(named).toEqual(
+        named.toSorted((a, b) => (a.join(' ') < b.join(' ') ? -1 : a.join(' ') > b.join(' ') ? 1 : 0)),
+      );
+    }
+  });
+
   it('saying more of where one stays never puts two people of different lines on one', () => {
     for (const seed of SEEDS) {
       const goers = drawn(seed);
@@ -405,6 +426,62 @@ describe('the laws of any roster', () => {
         );
         expect(joined).toEqual([]);
       }
+    }
+  });
+});
+
+// ----- the same people by where they stay -----
+// a place line as a sentence: the place, its people (or what they are called), its nights and those all share
+const placed = (places: readonly Place<string>[]) =>
+  places.map(
+    (p) =>
+      `${p.place ?? 'no place'} [${p.people}] ${p.called ?? p.units.map((u) => u.name).join(', ')}${
+        p.nights === null ? '' : ` ${p.nights.first.slice(8)}–${p.nights.last.slice(8)}`
+      }${p.shared === null ? '' : ` all ${p.shared.first.slice(8)}–${p.shared.last.slice(8)}`}`,
+  );
+// each person's nights, as person|night
+const nightsOf = (person: string, first: string, last: string) => {
+  const out: string[] = [];
+  for (let d = first; d <= last; d = `2026-11-${String(Number(d.slice(8)) + 1).padStart(2, '0')}`)
+    out.push(`${person}|${d}`);
+  return out;
+};
+
+describe('by where they stay', () => {
+  it('a line a place, the most people first; someone moving on each, for their nights; no place said last', () => {
+    expect(placed(byPlace(CASES['6']))).toEqual([
+      'Scandic Holberg [20] 20 people 19–22 all 20–22',
+      'Airbnb [1] Tonje 19–19 all 19–19',
+    ]);
+    expect(placed(byPlace(CASES['7']))).toEqual([
+      'Scandic Holberg [8] 8 people 19–22 all 19–22',
+      'Comfort Xpress [6] 6 people 19–22 all 19–22',
+      'Radisson Blu [4] 4 people 19–22 all 19–22',
+      'Airbnb [2] Hanna, Lise 19–22 all 19–22',
+    ]);
+    // a couple at one place on the same nights is one unit; three or fewer named, more by number
+    expect(placed(byPlace(CASES['15']))).toEqual([
+      'Scandic Holberg [4] 4 people 19–22 all 19–22',
+      'no place [16] 16 people',
+    ]);
+  });
+
+  it('every night of everyone is on the line of its place, once; everyone with none on the last', () => {
+    for (const seed of SEEDS) {
+      const goers = drawn(seed);
+      const places = byPlace(goers);
+      const said = goers.flatMap((g) => g.stays.flatMap((s) => nightsOf(g.person, s.first, s.last)));
+      const drawnNights = places.flatMap((p) => p.stays.flatMap((s) => nightsOf(s.person, s.first, s.last)));
+      expect(sorted(drawnNights)).toEqual(sorted(said));
+      // each line's people are those with nights there, its count theirs
+      for (const p of places) expect(p.people).toBe(p.units.reduce((n, u) => n + u.people.length, 0));
+      for (const p of places.filter((x) => x.place !== null))
+        expect(new Set(p.stays.map((s) => s.person)).size).toBe(p.people);
+      const none = places.find((p) => p.place === null);
+      expect(sorted(none?.units.flatMap((u) => u.people) ?? [])).toEqual(
+        sorted(goers.filter((g) => g.stays.length === 0).map((g) => g.person)),
+      );
+      expect(places.findIndex((p) => p.place === null)).toBe(none === undefined ? -1 : places.length - 1);
     }
   });
 });
