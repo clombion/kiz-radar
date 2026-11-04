@@ -14,6 +14,7 @@ import datetime as dt
 import hashlib
 import io
 import re
+import unicodedata as ud
 from collections.abc import Iterable
 from pathlib import Path
 from typing import Annotated, ClassVar, Literal, NewType, Self, cast, get_args, get_origin
@@ -1053,14 +1054,83 @@ class PlanRow(CsvRow):
     event: str
 
 
-# a name and nothing else: a link, an @handle or an email address is a way to reach someone, which a name a manager
-# writes for someone else must not be (the communities' rule 2)
-REACHABLE = re.compile(r'@|://|\bwww\.|\b[\w-]+\.[a-z]{2,}\b')
+# A name and nothing else, which a manager writes for someone else, or for where a member stays: a link, a handle, an
+# email address or a phone number is a way to reach someone, which only they may give (the communities' rule 2). So a
+# name is of the shape a name has, not free text with ways to reach someone taken out: words of letters (accents
+# included), each joined by a hyphen or an apostrophe, a dot only after an initial ("Mary J. Blige", "J.Lo"), and
+# digits, four at most, for a place's (Hotel 31). Every word is read whatever its case.
+NAME_MARKS = frozenset(" -'’.")
+MOST_DIGITS = 4  # a place's number (Hotel 31, Room 1408); a phone number has more
+# words that name a way to reach someone, or spell an address out ("tonje at gmail dot com")
+REACHING_WORDS = frozenset(
+    [
+        'at',
+        'dot',
+        'insta',
+        'instagram',
+        'facebook',
+        'fb',
+        'tiktok',
+        'snap',
+        'snapchat',
+        'whatsapp',
+        'telegram',
+        'twitter',
+        'phone',
+        'tel',
+        'mobile',
+        'email',
+    ]
+)
+# what follows a dot in an address: a domain's last part, whatever its case ("tonje.NO", "x.com")
+DOMAIN_ENDS = frozenset(
+    [
+        'com',
+        'net',
+        'org',
+        'no',
+        'io',
+        'me',
+        'co',
+        'uk',
+        'de',
+        'fr',
+        'es',
+        'pt',
+        'se',
+        'dk',
+        'fi',
+        'nl',
+        'be',
+        'it',
+        'info',
+        'app',
+        'link',
+        'page',
+        'site',
+    ]
+)
+INITIAL = re.compile(r'(?:^|(?<=[\s.]))(\w)\.(\w*)')
 
 
 def plain_name(name: str) -> str:
-    if found := REACHABLE.search(name):
-        raise ValueError(f'{name!r} is no plain name: {found.group()!r} reaches someone (a link, a handle or an email)')
+    def refused(why: str) -> ValueError:
+        return ValueError(f'{name!r} is no plain name: {why}, which may reach someone (rule 2)')
+
+    if odd := sorted(
+        {c for c in name if not (c.isalpha() or c.isdigit() or c in NAME_MARKS or ud.category(c) == 'Mn')}
+    ):
+        raise refused(f'it holds {"".join(odd)!r}: a name holds letters, spaces, hyphens, apostrophes and initials')
+    if sum(c.isdigit() for c in name) > MOST_DIGITS:
+        raise refused(f'it holds more than {MOST_DIGITS} digits')
+    if said := REACHING_WORDS & {w.casefold() for w in re.split(r"[\s.\-'’]+", name)}:
+        raise refused(f'it says {", ".join(sorted(said))!r}')
+    dots = name.count('.')
+    initials = [m.group(2) for m in INITIAL.finditer(name)]  # what follows each initial's dot
+    if dots != len(initials):
+        raise refused('a dot that follows no initial')
+    if ends := [after for after in initials if after.casefold() in DOMAIN_ENDS]:
+        raise refused(f'a dot before {ends[0]!r}, as in an address')
     return name
 
 

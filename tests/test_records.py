@@ -160,8 +160,20 @@ SEEDED = {
                 'http://tonje.no',
                 'www.tonje.no',
                 'tonje.no',
+                'TONJE.NO',
+                'x.com',
+                'X.Com',
+                'Hotel.COM',
                 '@tonje',
                 'tonje@example.com',
+                '+47 123 45 678',
+                '47123456',
+                'insta: tonje',
+                'insta tonje',
+                'Tonje on Instagram',
+                'tonje[at]x',
+                'tonje at gmail dot com',
+                'Tonje (tonje_k)',
             )
         ),
     ],
@@ -180,9 +192,19 @@ def test_a_csv_row_refuses_a_value_outside_its_column(
         record.model_validate(record.cells(row | {column: value}))
 
 
-@pytest.mark.parametrize('name', ['Tonje', 'Ana-Maria', 'Mary J. Blige', 'Ole Kristian', 'Siân'])
+@pytest.mark.parametrize(
+    'name',
+    ['Tonje', 'Ana-Maria', 'Mary J. Blige', 'Mary J.Blige', 'J.Lo', 'Ole Kristian', 'Siân', "O'Neill", 'Zoë'],
+)
 def test_a_name_a_manager_adds_may_be_any_plain_name(name: str) -> None:
     assert records.Seeded.model_validate(records.Seeded.cells(SEEDED | {'name': name})).name == name
+
+
+@pytest.mark.parametrize(
+    'place', ['Scandic Holberg', 'Comfort Xpress Oslo Sentrum', 'with friends', 'Hotel 31', 'Airbnb']
+)
+def test_a_place_a_member_stays_at_may_be_any_plain_name(place: str) -> None:
+    assert records.StayRow.model_validate(records.StayRow.cells(STAY | {'place': place})).place == place
 
 
 def test_a_travel_says_one_end_at_least() -> None:

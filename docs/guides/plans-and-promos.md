@@ -34,7 +34,11 @@ nobody can create, join or claim one yet, and its rows are written by hand.
 - `pipeline/seeded.csv`: the people the manager added who have not joined, one row per person and festival, with the
   `community`, their first `name`, their `artist_keys` (as in `people.csv`: the `match_key` values of the artist records
   they are, separated by `;`, or empty), the `event_id`, the `status` (a plan's, `going`) and the festival's name for
-  people reading the file. A name is only a name: a link, an @handle or an email address is refused.
+  people reading the file. A name is only a name, of a name's shape (`plain_name` in `pipeline/records.py`): words of
+  letters, accents included, joined by hyphens or apostrophes, a dot only after an initial ("Mary J. Blige", "J.Lo"),
+  and four digits at most (a place's, "Hotel 31"); anything else, such as a link, an @handle, an email address, a phone
+  number, a domain in any case ("TONJE.NO") or "insta", "at" or "dot" as a word, is refused, since it could reach
+  someone. A stay's place is held to the same.
 - `pipeline/travel.csv`: how members travel, one row per member and festival they plan, as far as they said: the
   `person`, the `event_id`, when they `arrive` and `leave` (local times, `YYYY-MM-DDTHH:MM`, or the day alone,
   `YYYY-MM-DD`, when the time is not known; arriving first), each empty when not known but one of them said, and the
