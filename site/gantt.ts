@@ -7,8 +7,8 @@ import { daysInto, daysOf, WEEKDAYS, weekday } from './calendar.ts';
 import { h } from './dom.ts';
 import { swipe } from './ink.ts';
 
-// a party's swipe, across its lane
-const INK = { height: [0.78, 0.95], drop: [0, 0.12] } as const;
+// a party's swipe, across its lane: level, whatever its length, so a computer's long bar slopes no more than a phone's
+const INK = { height: [0.78, 0.95], drop: [0.02, 0.08], tilt: 0 } as const; // level, however long
 
 // how someone travels: arrive and leave as local times, YYYY-MM-DDTHH:MM, and the airports when they fly
 interface Flight {

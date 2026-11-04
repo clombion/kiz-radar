@@ -108,6 +108,15 @@ async function styled(then: () => Promise<void> | void): Promise<void> {
 // Prague trip trips.csv has stays
 type Planted = readonly [string, number, string, string, string | null];
 function withTrips(trips: readonly Planted[], then: () => void): void {
+  plant(trips);
+  try {
+    then();
+  } finally {
+    uproot(trips);
+  }
+}
+// the trips planted, and taken out again
+function plant(trips: readonly Planted[]): void {
   for (const [key, event, arrive, leave, stay] of trips)
     db?.run("INSERT INTO trips SELECT id, ?, ?, 'OSL', ?, 'OSL', ? FROM people WHERE key = ?", [
       event,
@@ -116,13 +125,11 @@ function withTrips(trips: readonly Planted[], then: () => void): void {
       stay,
       key,
     ]);
-  try {
-    then();
-  } finally {
-    db?.run('DELETE FROM trips WHERE event_id IN (SELECT value FROM json_each(?))', [
-      JSON.stringify(trips.map(([, event]) => event)),
-    ]);
-  }
+}
+function uproot(trips: readonly Planted[]): void {
+  db?.run('DELETE FROM trips WHERE event_id IN (SELECT value FROM json_each(?))', [
+    JSON.stringify(trips.map(([, event]) => event)),
+  ]);
 }
 // people the manager added, planted while then runs, each [name, festival]
 function withAdded(added: readonly (readonly [string, number])[], then: () => void): void {
@@ -784,4 +791,39 @@ test('a count keeps its word: "5 people" never breaks', () => {
   const sentence = root.querySelector('.community-when')?.textContent ?? '';
   expect(sentence).toContain('5\u00a0people');
   expect(sentence).toContain('20–22\u00a0Nov');
+});
+
+test('a trip’s bars lie level, on a computer as on a phone: one end no more than 2px above the other', async () => {
+  // each bar's ink in KUOF's card: how wide it is, and how far one end is above the other (its box's height less its
+  // own)
+  const slopes = () => {
+    const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+    document.body.append(root);
+    try {
+      return [...(opened(root, 'KUOF')?.querySelectorAll<HTMLElement>('.gantt-ink') ?? [])].map((i) => ({
+        wide: i.getBoundingClientRect().width,
+        rise: i.getBoundingClientRect().height - i.offsetHeight,
+      }));
+    } finally {
+      root.remove();
+    }
+  };
+  const parties: readonly Planted[] = [
+    ...TO_KUOF.slice(0, 1),
+    ['christina', 19_033, '2026-11-20T08:00', '2026-11-22T20:00', null],
+  ];
+  plant(parties);
+  try {
+    for (const width of [1200, 390])
+      await atWidth(width, () => {
+        const bars = slopes();
+        expect(bars).toHaveLength(2);
+        for (const b of bars) {
+          expect(b.wide).toBeGreaterThan(width === 1200 ? 150 : 50);
+          expect(b.rise).toBeLessThanOrEqual(2);
+        }
+      });
+  } finally {
+    uproot(parties);
+  }
 });

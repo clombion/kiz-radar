@@ -2,10 +2,13 @@
 // its ink not quite even, the same for one seed however often it is drawn. The months mark a festival's days with it,
 // a trip's Gantt each party's time there. An end where the thing marked goes on (in another week) is cut square.
 
-// how thick a swipe is and how far below its line it sits, each a range in rem
+// how thick a swipe is and how far below its line it sits, each a range in rem, and how far it may tilt, in degrees:
+// a tilt lifts one end above the other the more the longer the swipe, so a long one (a trip's bar on a computer) has
+// none, and its unevenness is in its thickness and corners
 export interface Reach {
   height: readonly [number, number];
   drop: readonly [number, number];
+  tilt: number;
 }
 
 // a swipe's style: its height, offset, tilt, corners and ink, from its seed
@@ -24,7 +27,7 @@ export function swipe(seed: string, reach: Reach, cut: { before: boolean; after:
   return {
     height: `${between(...reach.height)}rem`,
     translate: `0 ${between(...reach.drop)}rem`,
-    rotate: `${between(-1.4, 0.9)}deg`,
+    rotate: `${between(-reach.tilt, reach.tilt * 0.65)}deg`,
     'border-radius': `${tl} ${tr} ${br} ${bl} / ${between(0.2, 0.4)}rem ${between(0.2, 0.4)}rem ${between(0.2, 0.4)}rem ${between(0.2, 0.4)}rem`,
     opacity: between(0.78, 1),
   };

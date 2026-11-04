@@ -144,8 +144,8 @@ export interface Days<A extends Away> {
 }
 
 // a festival's swipe over the lower half of its days' numbers; a second festival's lower and thinner, under it
-const OVER = { height: [0.48, 0.66], drop: [0.18, 0.3] } as const;
-const UNDER = { height: [0.26, 0.36], drop: [0.42, 0.52] } as const;
+const OVER = { height: [0.48, 0.66], drop: [0.18, 0.3], tilt: 1.4 } as const; // a week long at most
+const UNDER = { height: [0.26, 0.36], drop: [0.42, 0.52], tilt: 1.4 } as const;
 
 // The strokes of a week: each festival on any of its days, from its first day in the week to its last, across the
 // columns of those days; open at an end where the festival goes on in the week before or after. A second festival on

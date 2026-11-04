@@ -73,12 +73,12 @@ manager never says it, and someone teaching links to their artist page. The next
 their button, on a card under the row. An opened trip draws who travels when: its days across the top, from the first of
 the community to arrive (or the festival's start, when that is sooner) to the last to leave (or its end), the festival's
 days a soft band, and a highlighter's swipe for each party that shares a flight in and out (a couple as one, each
-party's its own), from the hour they arrive to the hour they leave, with the times and airports at its ends; only those
-who said how they travel have one, so a trip no one has said anything of shows its days and band alone. A line under it
-says the same in words, another names once everyone going who has not said ("Not said yet: Christina, Sian and
-Carolina", the people the manager added among them), then where members stay. The festival's name opens its card on the
-festival's line-up and prices, its own card opened in place, and folds them away again; the next trip's card opens on
-who travels, its line-up folded.
+party's its own, level however long), from the hour they arrive to the hour they leave, with the times and airports at
+its ends; only those who said how they travel have one, so a trip no one has said anything of shows its days and band
+alone. A line under it says the same in words, another names once everyone going who has not said ("Not said yet:
+Christina, Sian and Carolina", the people the manager added among them), then where members stay. The festival's name
+opens its card on the festival's line-up and prices, its own card opened in place, and folds them away again; the next
+trip's card opens on who travels, its line-up folded.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page
