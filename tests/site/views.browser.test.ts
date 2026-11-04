@@ -7,7 +7,7 @@ import { communityView } from '../../site/communities.ts';
 import { exec, load, loadSite, one, q, sql } from '../../site/db.ts';
 import { h } from '../../site/dom.ts';
 import { festivals } from '../../site/festivals.ts';
-import { artistHref, personHref } from '../../site/routes.ts';
+import { artistHref, eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str } from '../../site/rows.ts';
 import { monthShort } from '../../site/ui.ts';
 
@@ -220,12 +220,31 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
   expect(rows[1]?.querySelector<HTMLElement>('.trip-body')?.hidden).toBe(false);
   expect(toggles[1]?.getAttribute('aria-expanded')).toBe('true');
   expect(toggles[1]?.getAttribute('aria-label')).toBe('Who travels when, to KUOF – Kizomba & Urban Kiz Oslo Festival');
-  // its line-up and prices, the festival's card, opened in place
-  const lineup = [...(rows[1]?.querySelectorAll('button') ?? [])].find((b) => b.textContent === 'Line-up & prices ▾');
-  lineup?.click();
-  expect(lineup?.getAttribute('aria-expanded')).toBe('true');
-  expect(rows[1]?.querySelector('.trip-lineup .festival-card.open .card-details')).not.toBeNull();
+  // no link of its own to the line-up: the festival's name shows its line-up and prices, the festival's card opened
+  // in the trip's, and hides them again
+  expect(said(root)).not.toContain('Line-up & prices');
+  const lineup = () => rows[2]?.querySelector<HTMLElement>('.trip-lineup');
+  const name = rows[2]?.querySelector<HTMLButtonElement>('button.trip-fest');
+  expect([name?.textContent, name?.getAttribute('aria-expanded')]).toEqual([
+    'HOT Ice KIZ Festival 11th edition',
+    'false',
+  ]);
+  expect(name?.getAttribute('aria-controls')).toBe(lineup()?.id);
+  name?.click(); // its card was closed: the name opens it, on its line-up
+  expect(rows[2]?.querySelector<HTMLElement>('.trip-body')?.hidden).toBe(false);
+  expect(lineup()?.hidden).toBe(false);
+  expect(name?.getAttribute('aria-expanded')).toBe('true');
+  expect(rows[2]?.querySelector('.trip-toggle')?.getAttribute('aria-expanded')).toBe('true');
+  expect(lineup()?.querySelector('.festival-card.open .card-details')).not.toBeNull();
   expect(root.querySelectorAll('.festival-card')).toHaveLength(1); // no cards but the one opened
+  name?.click();
+  expect([lineup()?.hidden, name?.getAttribute('aria-expanded')]).toEqual([true, 'false']);
+  expect(rows[2]?.querySelector<HTMLElement>('.trip-body')?.hidden).toBe(false); // its card stays open
+  // the next trip's card opens on who travels, its line-up folded
+  expect(rows[0]?.querySelector<HTMLElement>('.trip-lineup')?.hidden).toBe(true);
+  // where a festival is leads to it on the map
+  const place = rows[1]?.querySelector<HTMLAnchorElement>('.trip-head a');
+  expect([said(place), place?.getAttribute('href')]).toEqual(['🇳🇴 Oslo', eventOnMapHref(19_033)]);
   const members = [...root.querySelectorAll(':scope > article > section')].at(-1);
   expect(said(members?.querySelector('p'))).toBe('Cédric manager and Christina');
 });
@@ -493,6 +512,9 @@ const ganttOf = (row: HTMLElement | undefined) => {
       said: said(b),
       left: Number.parseFloat(b.style.left),
       width: Number.parseFloat(b.style.width),
+      ink: ['height', 'translate', 'rotate', 'border-radius', 'opacity']
+        .map((p) => b.querySelector<HTMLElement>('.gantt-ink')?.style.getPropertyValue(p) ?? '')
+        .join(' '),
     })),
     bands: [...(g?.querySelectorAll<HTMLElement>('.gantt-band') ?? [])].map((b) => [
       Number.parseFloat(b.style.left),
@@ -722,4 +744,44 @@ test('each festival’s stroke is a swipe of its own, the same however often it 
   expect(swipes()).toEqual(once); // drawn again, the same
   expect(new Set(once.values()).size).toBe(once.size); // no two alike
   for (const shape of once.values()) expect(shape).toMatch(/^[\d.]+rem 0px [\d.]+rem -?[\d.]+deg /u);
+});
+
+test('a trip’s bars are highlighter swipes, each party its own, the same however often drawn', () => {
+  const parties: readonly Planted[] = [
+    ...TO_KUOF.slice(0, 1),
+    ['christina', 19_033, '2026-11-20T08:00', '2026-11-22T20:00', null],
+  ];
+  withTrips(parties, () => {
+    const bars = () =>
+      ganttOf(
+        opened(
+          onDay('2026-11-01', () => communityPage(COMMUNITY)),
+          'KUOF',
+        ),
+      ).bars;
+    const once = bars();
+    expect(once.map((b) => b.said)).toEqual(['17:05 OSL09:40 OSL', '08:00 OSL20:00 OSL']);
+    for (const b of once) expect(b.ink).toMatch(/^[\d.]+rem 0px( [\d.]+rem)? -?[\d.]+deg /u);
+    expect(once[0]?.ink).not.toBe(once[1]?.ink); // a party's own swipe
+    expect(bars()).toEqual(once); // drawn again, the same
+  });
+});
+
+test('a festival’s stroke runs across the lower half of its days’ numbers', () => {
+  const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+  const strokes = [...root.querySelectorAll<HTMLElement>('.days-week .days-stroke')];
+  expect(strokes.length).toBeGreaterThan(3);
+  for (const s of strokes) {
+    const height = Number.parseFloat(s.style.height),
+      drop = Number.parseFloat(s.style.translate.split(' ')[1] ?? '');
+    expect(height).toBeLessThanOrEqual(0.66); // thinner than a number is tall (1.45rem a row)
+    expect(drop).toBeGreaterThanOrEqual(0.18); // and lower than its middle
+  }
+});
+
+test('a count keeps its word: "5 people" never breaks', () => {
+  const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+  const sentence = root.querySelector('.community-when')?.textContent ?? '';
+  expect(sentence).toContain('5\u00a0people');
+  expect(sentence).toContain('20–22\u00a0Nov');
 });

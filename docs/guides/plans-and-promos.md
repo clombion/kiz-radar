@@ -48,35 +48,37 @@ reader. Who manages it is said with the members, at the foot of the page.
 Under the head, a small grid for today's month and for each month someone travels in (every one of them, however far
 off; a line says which months between them go without: "Nothing planned in August"), two months a row on a phone, light,
 without boxes: a row is a week from Monday, its days placed in their columns. A festival is one highlighter stroke
-behind its days, the same colour whatever the number, a swipe of its own (a little tilted, low or thick, its ink fading
-at a round end, the same each time it is drawn), round at its first and last day and cut where it goes on in the week
-before or after; two at once are two strokes, one under the other. A day someone travels on outside their festival's
-days (they arrive the day before, or leave the day after) has a dot under it; today is ringed by hand and the days
-before it greyed. At a row's end is how many go to the festivals that begin that week, said once, on the week each
-begins: two festivals that begin in one week show their sum, and each its own on hover and to a screen reader. A member
-with a trip travels from the day they arrive to the day they leave, anyone else (a member without one, someone added) on
-the festival's own days, whatever weekdays those are; someone at two festivals at once counts once. The sentence reads
-the same counts: the first day as many travel as on any, and the days after it with as many. Only a day someone travels
-on does anything: each month is one stop for the keyboard, whose arrows move among those days (left, right) or a week or
-more (up, down), and the day in focus, under the pointer or tapped opens a popover of its festivals, who flies in and
-out that day (by time and airport, a couple as one when both share the flight: "Flying in: Cédric & Christina 14:30
-PRG"), who else is there, and where members stay. It never covers the day's month: on a computer it sits beside the
-month, on a phone it is a panel under the day's row of months, moving what follows down. Escape, a tap elsewhere or on
-the day again closes it, and the focus stays on the day.
+across the lower half of its days' numbers, the same colour whatever the number, a swipe of its own (a little tilted,
+low or thick, its ink fading at a round end, the same each time it is drawn), round at its first and last day and cut
+where it goes on in the week before or after; two at once are two strokes, one under the other. A day someone travels on
+outside their festival's days (they arrive the day before, or leave the day after) has a dot under it; today is ringed
+by hand and the days before it greyed. At a row's end is how many go to the festivals that begin that week, said once,
+on the week each begins: two festivals that begin in one week show their sum, and each its own on hover and to a screen
+reader. A member with a trip travels from the day they arrive to the day they leave, anyone else (a member without one,
+someone added) on the festival's own days, whatever weekdays those are; someone at two festivals at once counts once.
+The sentence reads the same counts: the first day as many travel as on any, and the days after it with as many. Only a
+day someone travels on does anything: each month is one stop for the keyboard, whose arrows move among those days (left,
+right) or a week or more (up, down), and the day in focus, under the pointer or tapped opens a popover of its festivals,
+who flies in and out that day (by time and airport, a couple as one when both share the flight: "Flying in: Cédric &
+Christina 14:30 PRG"), who else is there, and where members stay. It never covers the day's month: on a computer it sits
+beside the month, on a phone it is a panel under the day's row of months, moving what follows down. Escape, a tap
+elsewhere or on the day again closes it, and the focus stays on the day.
 
 Then the agenda: a heading a month ("November · 3 trips", with the year in January), and a row a trip, soonest first:
-its days ("Fri 20 – Sun 22 Nov"), the festival and where it is, and who of the community goes: its members as on any
-card (as their couple when both go, teaching when in the line-up), then the people added: "Christina teaching · Sian
-teaching and Carolina going". Hovering an added name says who added them ("Added by Cédric"). Whether someone added
-teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the manager never says it,
-and someone teaching links to their artist page. The next trip is open; the others open from their button, on a card
-under the row. An opened trip draws who travels when: its days across the top, from the first of the community to arrive
-(or the festival's start, when that is sooner) to the last to leave (or its end), the festival's days a soft band, and a
-bar for each party that shares a flight in and out (a couple as one), from the hour they arrive to the hour they leave,
-with the times and airports at its ends; only those who said how they travel have one, so a trip no one has said
-anything of shows its days and band alone. A line under it says the same in words, another names once everyone going who
-has not said ("Not said yet: Christina, Sian and Carolina", the people the manager added among them), then where members
-stay, and "Line-up & prices" opens the festival's card in place.
+its days ("Fri 20 – Sun 22 Nov"), the festival and where it is (which leads to it on the map), and who of the community
+goes: its members as on any card (as their couple when both go, teaching when in the line-up), then the people added:
+"Christina teaching · Sian teaching and Carolina going". Hovering an added name says who added them ("Added by Cédric").
+Whether someone added teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the
+manager never says it, and someone teaching links to their artist page. The next trip is open; the others open from
+their button, on a card under the row. An opened trip draws who travels when: its days across the top, from the first of
+the community to arrive (or the festival's start, when that is sooner) to the last to leave (or its end), the festival's
+days a soft band, and a highlighter's swipe for each party that shares a flight in and out (a couple as one, each
+party's its own), from the hour they arrive to the hour they leave, with the times and airports at its ends; only those
+who said how they travel have one, so a trip no one has said anything of shows its days and band alone. A line under it
+says the same in words, another names once everyone going who has not said ("Not said yet: Christina, Sian and
+Carolina", the people the manager added among them), then where members stay. The festival's name opens its card on the
+festival's line-up and prices, its own card opened in place, and folds them away again; the next trip's card opens on
+who travels, its line-up folded.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page

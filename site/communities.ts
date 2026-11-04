@@ -169,8 +169,8 @@ export function communityView(root: HTMLElement, [key]: readonly string[], signa
             'p',
             { class: 'community-when' },
             'Most members are travelling ',
-            h('b', {}, dayRange(most.from, most.to)),
-            `: ${plural(most.people, 'person', 'people')}, to ${placesOf(most.aways)}.`,
+            h('b', {}, unbroken(dayRange(most.from, most.to))),
+            `: ${unbroken(plural(most.people, 'person', 'people'))}, to ${placesOf(most.aways)}.`,
           ),
       next === undefined
         ? null
@@ -305,19 +305,8 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
   const stays = new Map<string, Goer[]>();
   for (const a of aways)
     if (a.trip?.stay && a.goer) stays.set(a.trip.stay, [...(stays.get(a.trip.stay) ?? []), a.goer]);
-  const lineup = h('div', { class: 'trip-lineup', hidden: true });
-  const lineupBtn = button(
-    {
-      class: 'link',
-      'aria-expanded': 'false',
-      onclick: () => {
-        if (lineup.childElementCount === 0) lineup.append(eventCard({ ...e, goers: who.goers }, { open: true }));
-        lineup.hidden = !lineup.hidden;
-        lineupBtn.setAttribute('aria-expanded', String(!lineup.hidden));
-      },
-    },
-    'Line-up & prices ▾',
-  );
+  // the festival's line-up and prices, its card opened, in the trip's: shown from the festival's name
+  const lineup = h('div', { class: 'trip-lineup', id: `${id}-lineup`, hidden: true });
   const body = h(
     'div',
     { class: 'trip-body', id, hidden: !open },
@@ -327,25 +316,41 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
       place: e.city ?? e.title,
       parties: ps,
       describedBy: said?.id ?? null,
+      seed: String(e.id),
     }),
     said,
     unsaid.length > 0 ? h('p', { class: 'gantt-unsaid' }, 'Not said yet: ', joined(unsaid)) : null,
     [...stays].map(([stay, goers]) =>
       h('p', {}, h('span', { class: 'trip-label' }, 'Staying'), ` ${stay} · `, joined(namesOf(goers))),
     ),
-    h('p', {}, lineupBtn),
     lineup,
   );
+  // the card open or not, and its line-up shown or not; a closed card shows no line-up
+  const show = (opened: boolean, lineupShown: boolean) => {
+    if (lineupShown && lineup.childElementCount === 0)
+      lineup.append(eventCard({ ...e, goers: who.goers }, { open: true }));
+    body.hidden = !opened;
+    lineup.hidden = !(opened && lineupShown);
+    toggle.setAttribute('aria-expanded', String(opened));
+    name.setAttribute('aria-expanded', String(opened && lineupShown));
+  };
   const toggle = button({
     class: 'trip-toggle',
     'aria-expanded': String(open),
     'aria-controls': id,
     'aria-label': `Who travels when, to ${e.title}`,
-    onclick: () => {
-      body.hidden = !body.hidden;
-      toggle.setAttribute('aria-expanded', String(!body.hidden));
-    },
+    onclick: () => show(body.hidden === true, false),
   });
+  // the festival's name opens the card on its line-up and prices, and closes them again
+  const name = button(
+    {
+      class: ['link', 'trip-fest'],
+      'aria-expanded': 'false',
+      'aria-controls': lineup.id,
+      onclick: () => show(true, lineup.hidden === true),
+    },
+    e.title,
+  );
   return h(
     'li',
     { class: 'trip' },
@@ -357,8 +362,10 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
         {},
         h('span', { class: 'trip-when' }, daysSaid(e)),
         ' ',
-        h('a', { href: eventOnMapHref(e.id), class: 'trip-fest' }, e.title),
-        h('span', { class: 'muted' }, ' · ', place(e)),
+        name,
+        h('span', { class: 'muted' }, ' · '),
+        // where it is, which leads to it on the map
+        h('a', { href: eventOnMapHref(e.id) }, place(e)),
       ),
       h('p', { class: 'trip-who' }, who.said()),
       toggle,
@@ -419,6 +426,8 @@ function whoGoes(
   return { goers, people: goers.length + f.added.length, said };
 }
 
+// words kept on one line: "5 people", "20–22 Nov", each space a no-break one
+const unbroken = (words: string): string => words.replaceAll(' ', '\u00a0');
 // whether a day is one of the festival someone travels to
 const atFestival = (a: Present, day: string): boolean => day >= a.e.start_date && day <= a.e.end_date;
 // where the festivals of these people are: "Oslo", "Oslo and Riga"; a festival with no city by its name

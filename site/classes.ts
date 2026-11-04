@@ -102,6 +102,7 @@ export type ClassName =
   | 'gantt-band'
   | 'gantt-bar'
   | 'gantt-fest'
+  | 'gantt-ink'
   | 'gantt-lane'
   | 'gantt-name'
   | 'gantt-said'

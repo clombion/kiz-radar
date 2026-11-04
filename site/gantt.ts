@@ -1,9 +1,14 @@
 // A trip's small Gantt: its days across the top, from the first of the community to arrive to the last to leave, the
-// festival's own days a soft band behind, and a bar for each party travelling together, from the hour they arrive to
-// the hour they leave, its times and airports at its ends. Only those who said how they travel have a bar: when no one
-// has, it is the days and the band alone. It is drawn for the eye: the line under it says the same in words.
+// festival's own days a soft band behind, and for each party travelling together a highlighter's swipe from the hour
+// they arrive to the hour they leave, its times and airports at its ends. Only those who said how they travel have
+// one: when no one has, it is the days and the band alone. It is drawn for the eye: the line under it says the same
+// in words.
 import { daysInto, daysOf, WEEKDAYS, weekday } from './calendar.ts';
 import { h } from './dom.ts';
+import { swipe } from './ink.ts';
+
+// a party's swipe, across its lane
+const INK = { height: [0.78, 0.95], drop: [0, 0.12] } as const;
 
 // how someone travels: arrive and leave as local times, YYYY-MM-DDTHH:MM, and the airports when they fly
 interface Flight {
@@ -32,6 +37,7 @@ export function gantt(t: {
   place: string;
   parties: readonly Party[];
   describedBy: string | null; // the id of the line that says it in words, when anyone travels
+  seed: string; // the festival's, which with a party's name makes its bar's swipe
 }): HTMLElement {
   const days = daysOf(t.from, t.to);
   const share = (n: number) => `${(100 * n) / days.length}%`;
@@ -51,6 +57,12 @@ export function gantt(t: {
         : h(
             'div',
             { class: 'gantt-bar', style: { left: share(at.from), width: share(at.to - at.from) } },
+            // the highlighter's ink, under the times: its own swipe for the party and the festival
+            h('span', {
+              class: 'gantt-ink',
+              style: swipe(`${p?.name ?? ''} ${t.seed}`, INK, { before: false, after: false }),
+              'aria-hidden': 'true',
+            }),
             h('span', {}, timeAt(f.arrive, f.arrive_at)),
             h('span', {}, timeAt(f.leave, f.leave_from)),
           ),
