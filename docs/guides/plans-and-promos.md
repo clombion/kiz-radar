@@ -55,7 +55,9 @@ says which counts each stands for ("People away: 1 · 2–3 · 4–5"). The sent
 many are away as on any, and the days after it with as many. Each month is one stop for the keyboard, whose arrows move
 a day (left, right) or a week (up, down); the day in focus, under the pointer or tapped opens a popover of its
 festivals, who flies in and out that day (by time and airport, a couple as one when both share the flight: "Flying in:
-Cédric & Christina 14:30 PRG"), who else is there, and where members stay. Escape or a tap elsewhere closes it.
+Cédric & Christina 14:30 PRG"), who else is there, and where members stay. It never covers the day's month: on a
+computer it sits beside the month, on a phone it is a panel under the day's row of months, moving what follows down.
+Escape, a tap elsewhere or on the day again closes it, and the focus stays on the day.
 
 Then the agenda: a heading a month ("November · 3 trips", with the year in January), and a row a trip, soonest first:
 its days ("Fri 20 – Sun 22 Nov"), the festival and where it is, and who of the community goes: its members as on any
@@ -66,9 +68,10 @@ and someone teaching links to their artist page. The next trip is open; the othe
 trip draws who travels when: its days across the top, from the first of the community to arrive (or the festival's
 start, when that is sooner) to the last to leave (or its end), the festival's days a soft band, and a bar for each party
 that shares a flight in and out (a couple as one), from the hour they arrive to the hour they leave, with the times and
-airports at its ends; someone who has not said how they travel, and everyone the manager added, has a dotted bar over
-the festival's days. A line under it says the same in words, then where members stay, and "Line-up & prices" opens the
-festival's card in place.
+airports at its ends; only those who said how they travel have one, so a trip no one has said anything of shows its days
+and band alone. A line under it says the same in words, another names once everyone going who has not said ("Not said
+yet: Christina, Sian and Carolina", the people the manager added among them), then where members stay, and "Line-up &
+prices" opens the festival's card in place.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page

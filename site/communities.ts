@@ -18,7 +18,7 @@ import { one, q, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, withDetails } from './festivals.ts';
-import { dayTimeAt, gantt, type Party, partyName } from './gantt.ts';
+import { dayTimeAt, gantt, type Party } from './gantt.ts';
 import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
 import { doingTag, type Goer, goersInline, namesOf } from './plans.ts';
@@ -263,18 +263,26 @@ function agenda(trips: readonly Visit[], today: string, manager: Member): HTMLEl
 function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTMLElement {
   const id = `trip-${e.id}`;
   const flights = aways.flatMap((a) => (a.trip ? [a.trip] : []));
-  const ps = parties(aways, manager);
-  const said = h(
-    'p',
-    { class: 'gantt-said', id: `${id}-said` },
-    ps.map((p, i) => [
-      i > 0 ? ' · ' : null,
-      h('b', {}, partyName(p)),
-      p.flight === null
-        ? ' not said'
-        : ` in ${dayTimeAt(p.flight.arrive, p.flight.arrive_at)}, out ${dayTimeAt(p.flight.leave, p.flight.leave_from)}`,
-    ]),
-  );
+  const ps = parties(aways);
+  const said =
+    ps.length > 0
+      ? h(
+          'p',
+          { class: 'gantt-said', id: `${id}-said` },
+          ps.map((p, i) => [
+            i > 0 ? ' · ' : null,
+            h('b', {}, p.name),
+            ` in ${dayTimeAt(p.flight.arrive, p.flight.arrive_at)}, out ${dayTimeAt(p.flight.leave, p.flight.leave_from)}`,
+          ]),
+        )
+      : null;
+  // everyone going who has not said how they travel, once: the members who have not (a couple as one), and the people
+  // the manager added, who never do
+  const title = `Added by ${manager.name}`;
+  const unsaid = [
+    ...namesOf(aways.flatMap((a) => (a.goer && a.trip === null ? [a.goer] : []))),
+    ...aways.flatMap((a) => (a.added ? [h('span', { title }, a.added.name)] : [])),
+  ];
   const stays = new Map<string, Goer[]>();
   for (const a of aways)
     if (a.trip?.stay && a.goer) stays.set(a.trip.stay, [...(stays.get(a.trip.stay) ?? []), a.goer]);
@@ -299,9 +307,10 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
       festival: e,
       place: e.city ?? e.title,
       parties: ps,
-      describedBy: said.id,
+      describedBy: said?.id ?? null,
     }),
     said,
+    unsaid.length > 0 ? h('p', { class: 'gantt-unsaid' }, 'Not said yet: ', joined(unsaid)) : null,
     [...stays].map(([stay, goers]) =>
       h('p', {}, h('span', { class: 'trip-label' }, 'Staying'), ` ${stay} · `, joined(namesOf(goers))),
     ),
@@ -339,29 +348,19 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
   );
 }
 
-// The parties of a trip: the members who share a flight in and out (a couple as one), each member who has not said
-// (a couple as one), and each person the manager added, who never travels, saying on hover who added them.
-function parties(aways: readonly Present[], manager: Member): Party[] {
+// The parties of a trip: the members who share a flight in and out (a couple as one), first to arrive first.
+function parties(aways: readonly Present[]): Party[] {
   const flying = new Map<string, { goers: Goer[]; flight: Trip }>();
-  const unsaid: Goer[] = [];
-  for (const a of aways) {
-    if (a.goer === null) continue;
-    if (a.trip === null) unsaid.push(a.goer);
-    else {
+  for (const a of aways)
+    if (a.goer && a.trip) {
       const key = [a.trip.arrive, a.trip.arrive_at, a.trip.leave, a.trip.leave_from].join(' ');
       const f = flying.get(key) ?? { goers: [], flight: a.trip };
       f.goers.push(a.goer);
       flying.set(key, f);
     }
-  }
-  const title = `Added by ${manager.name}`;
-  return [
-    ...[...flying.values()]
-      .toSorted((a, b) => a.flight.arrive.localeCompare(b.flight.arrive))
-      .map(({ goers, flight }) => ({ name: and(namesOf(goers)), title: null, flight })),
-    ...namesOf(unsaid).map((name) => ({ name, title: null, flight: null })),
-    ...aways.flatMap((a) => (a.added ? [{ name: a.added.name, title, flight: null }] : [])),
-  ];
+  return [...flying.values()]
+    .toSorted((a, b) => a.flight.arrive.localeCompare(b.flight.arrive))
+    .map(({ goers, flight }) => ({ name: and(namesOf(goers)), flight }));
 }
 
 // Who of the community goes to a festival: its members, as their couple when both go and teaching when in the

@@ -414,11 +414,15 @@ const ganttOf = (row: HTMLElement | undefined) => {
     parties: [...(g?.querySelectorAll('.gantt-name') ?? [])].map((n) => said(n)),
     bars: [...(g?.querySelectorAll<HTMLElement>('.gantt-bar') ?? [])].map((b) => ({
       said: said(b),
-      unsaid: b.matches('.gantt-unsaid'),
       left: Number.parseFloat(b.style.left),
       width: Number.parseFloat(b.style.width),
     })),
+    bands: [...(g?.querySelectorAll<HTMLElement>('.gantt-band') ?? [])].map((b) => [
+      Number.parseFloat(b.style.left),
+      Number.parseFloat(b.style.width),
+    ]),
     said: said(row?.querySelector('.gantt-said')),
+    unsaid: said(row?.querySelector('.gantt-unsaid')),
   };
 };
 const opened = (root: HTMLElement, title: string) => {
@@ -439,33 +443,40 @@ test('an opened trip draws who travels when: the days from the first in to the l
       { day: 'S22', festival: true },
       { day: 'M23', festival: false },
     ]);
-    // the couple as one party, on one flight; the people added, who never travel, not said
-    expect(kuof.parties).toEqual(['Cédric & Christina', 'Tonje', 'Ragnhild', 'Maja']);
-    const [couple, ...unsaid] = kuof.bars;
+    // the couple as one party, on one flight, the one bar; the people added, who never travel, on the line under it
+    expect(kuof.parties).toEqual(['Cédric & Christina']);
+    const [couple, ...others] = kuof.bars;
+    expect(others).toEqual([]);
     expect(couple?.said).toBe('17:05 OSL09:40 OSL');
     expect(couple?.left).toBeCloseTo((100 * (17 + 5 / 60)) / 24 / 5, 3); // 17:05 on the first of five days
     expect((couple?.left ?? 0) + (couple?.width ?? 0)).toBeCloseTo((100 * (4 + (9 + 40 / 60) / 24)) / 5, 3);
-    // over the festival's three days, the second to the fourth of five
-    expect(unsaid.map((b) => [b.unsaid, b.left, b.width])).toEqual(unsaid.map(() => [true, 20, 60]));
-    expect(kuof.said).toBe(
-      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL · Tonje not said · Ragnhild not said · Maja not said',
+    // the festival's band, the second to the fourth of five days
+    expect(kuof.bands).toEqual([[20, 60]]);
+    expect(kuof.said).toBe('Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL');
+    expect(kuof.unsaid).toBe('Not said yet: Tonje, Ragnhild and Maja');
+    expect(titled(agendaRow(root, 'KUOF')?.querySelector('.gantt-unsaid'))).toEqual(
+      ['Tonje', 'Ragnhild', 'Maja'].map((n) => [n, 'Added by Cédric']),
     );
-    expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-body p:nth-of-type(2)'))).toBe(
+    expect(root.querySelectorAll('.gantt-unsaid .gantt-bar, .gantt .gantt-unsaid')).toHaveLength(0);
+    expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-label')?.parentElement)).toBe(
       'Staying Scandic Holberg · Cédric & Christina',
     );
     // Prague from trips.csv: in on the Wednesday before it
     expect(ganttOf(opened(root, 'Prague')).axis.map((a) => a.day)).toEqual(['W13', 'T14', 'F15', 'S16', 'S17', 'M18']);
-    // Glasgow, where no one said how they travel: its own days, every bar dotted over them
+    // Glasgow, where no one said how they travel: its own days and its band, no bar, everyone named once under it
     const glasgow = ganttOf(agendaRow(root, 'Glasgow'));
     expect(glasgow.axis.map((a) => a.day)).toEqual(['F6', 'S7', 'S8', 'M9']);
-    expect(glasgow.bars.map((b) => [b.unsaid, b.left, b.width])).toEqual([
-      [true, 0, 100],
-      [true, 0, 100],
-      [true, 0, 100],
-    ]);
-    expect(titled(agendaRow(root, 'Glasgow')?.querySelector('.gantt'))).toEqual(
+    expect(glasgow.bars).toEqual([]);
+    expect(glasgow.bands).toEqual([[0, 100]]);
+    expect(glasgow.parties).toEqual([]);
+    expect(glasgow.said).toBeUndefined();
+    expect(glasgow.unsaid).toBe('Not said yet: Christina, Sian and Carolina');
+    expect(titled(agendaRow(root, 'Glasgow')?.querySelector('.gantt-unsaid'))).toEqual(
       ['Sian', 'Carolina'].map((n) => [n, 'Added by Cédric']),
     );
+    // a couple who has not said is named as one
+    expect(ganttOf(opened(root, 'HOT Ice')).unsaid).toBe('Not said yet: Cédric & Christina');
+    expect(said(root)).not.toContain('not said');
   });
 });
 
@@ -514,4 +525,76 @@ test('with nothing to come, the community’s page has no sentence of when it is
   expect(said(root)).not.toContain('Most of the community');
   expect(root.querySelector('.days-month')).toBeNull();
   expect(said(root)).toContain('No one in this community has said they’re going anywhere yet.');
+});
+
+// where a day's popover is, against the month the day is in
+const boxes = (root: HTMLElement, day: string) => {
+  const cell = cellOn(root, day);
+  cell?.focus();
+  return {
+    pop: popover(root)?.getBoundingClientRect(),
+    grid: cell?.closest('table')?.getBoundingClientRect(),
+    shown: popover(root)?.hidden === false,
+  };
+};
+const meet = (a?: DOMRect, b?: DOMRect) =>
+  a !== undefined && b !== undefined && a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+
+// the page this wide, with its stylesheet, while then runs
+async function atWidth(width: number, then: () => void): Promise<void> {
+  await styled(async () => {
+    await page.viewport(width, 900);
+    try {
+      then();
+    } finally {
+      await page.viewport(414, 896);
+    }
+  });
+}
+
+test('on a computer a day’s popover opens beside its month, never over it', async () => {
+  await atWidth(1200, () => {
+    inPage('2026-11-01', (root) => {
+      for (const day of ['2026-11-20', '2026-11-06', '2027-01-13', '2027-02-27']) {
+        const b = boxes(root, day);
+        expect(b.shown).toBe(true);
+        expect(meet(b.pop, b.grid)).toBe(false);
+      }
+      // to the right of November, at the day's height
+      const nov = boxes(root, '2026-11-20');
+      expect(nov.pop?.left).toBeGreaterThanOrEqual(nov.grid?.right ?? Number.POSITIVE_INFINITY);
+      expect(
+        Math.abs((nov.pop?.top ?? 0) - (cellOn(root, '2026-11-20')?.getBoundingClientRect().top ?? 0)),
+      ).toBeLessThan(1);
+      expect(document.activeElement).toBe(cellOn(root, '2026-11-20')); // the focus stays in the month
+    });
+  });
+});
+
+test('on a phone a day opens a panel under its row of months, moving what follows down; a tap on it again closes', async () => {
+  await atWidth(390, () => {
+    inPage('2026-11-01', (root) => {
+      const legend = () => root.querySelector('.days-legend')?.getBoundingClientRect().top ?? 0;
+      const before = legend();
+      const b = boxes(root, '2026-11-20');
+      const pop = popover(root);
+      expect(b.shown).toBe(true);
+      expect(pop === null ? '' : getComputedStyle(pop).position).toBe('static'); // in the page's flow
+      expect(meet(b.pop, b.grid)).toBe(false);
+      expect(b.pop?.top).toBeGreaterThanOrEqual(b.grid?.bottom ?? Number.POSITIVE_INFINITY);
+      // under November and December, which share a row, before January
+      const [, december, january] = monthsOf(root);
+      expect(b.pop?.top).toBeGreaterThanOrEqual(december?.getBoundingClientRect().bottom ?? Number.POSITIVE_INFINITY);
+      expect(b.pop?.bottom).toBeLessThanOrEqual(january?.getBoundingClientRect().top ?? 0);
+      expect(b.pop?.width).toBeGreaterThan((b.grid?.width ?? 0) * 1.5); // the page's width, not a month's
+      expect(legend()).toBeGreaterThan(before); // what follows moved down
+      expect(document.activeElement).toBe(cellOn(root, '2026-11-20'));
+      // a tap on the day again closes it
+      const cell = cellOn(root, '2026-11-20');
+      cell?.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+      cell?.click();
+      expect(pop?.hidden).toBe(true);
+      expect(legend()).toBe(before);
+    });
+  });
 });

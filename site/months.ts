@@ -2,13 +2,15 @@
 // people are away on it, in three steps the legend says, and at each week's end the most away on any of its days.
 // Only today's month and those with a trip show; a line says which go without. Each month is one stop for the
 // keyboard, whose arrows move a day (or a week); the day in focus, under the pointer or tapped opens one popover saying
-// who is away, which Escape or a tap elsewhere closes.
+// who is away, which Escape, a tap elsewhere or on the day again closes. It never covers the day's month: on a computer
+// it sits beside it, on a phone it is a panel under its row of months, which moves what follows down.
 import { type Away, type Day, monthsBetween, monthsOf, shade, shadeRanges, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
-import { h, type Kid, nodes } from './dom.ts';
+import { h, type Kid, nodes, toggle } from './dom.ts';
 import { monthShort, monthYear } from './ui.ts';
 
 const SHADES = [null, 'days-1', 'days-2', 'days-3'] as const;
+const WIDE = '(min-width: 700px)'; // a screen with room for the popover beside a month
 
 // The popover of a day, one for the page: the grids attached to it open it on their days.
 export interface Popover {
@@ -23,17 +25,35 @@ export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Po
     described?.removeAttribute('aria-describedby');
   };
   const open = (cell: HTMLElement, container: HTMLElement) => {
-    container.append(pop);
     pop.replaceChildren(...nodes(detail(cell.dataset['day'] ?? '')));
     pop.hidden = false;
     described?.removeAttribute('aria-describedby');
     cell.setAttribute('aria-describedby', pop.id);
     described = cell;
+    const grid = cell.closest('table') ?? cell;
+    const wide = matchMedia(WIDE).matches;
+    toggle(pop, 'day-panel', !wide);
+    if (!wide) {
+      // a panel after the last month of the day's row, the full width of the page
+      pop.style.removeProperty('left');
+      pop.style.removeProperty('top');
+      const row = [...(grid.parentElement?.children ?? [])].filter(
+        (el) => el !== pop && el instanceof HTMLElement && el.offsetTop === grid.offsetTop,
+      );
+      (row.at(-1) ?? grid).after(pop);
+      return;
+    }
+    container.append(pop);
+    // beside the day's month, at the day's height: to its right, or to its left where the right has no room, or else
+    // under it
     const w = container.getBoundingClientRect(),
+      g = grid.getBoundingClientRect(),
       c = cell.getBoundingClientRect();
-    const left = Math.max(0, Math.min(c.left - w.left - 8, w.width - pop.offsetWidth));
-    pop.style.setProperty('left', `${left}px`);
-    pop.style.setProperty('top', `${c.bottom - w.top + 6}px`);
+    const right = g.right - w.left + 8,
+      left = g.left - w.left - 8 - pop.offsetWidth;
+    const x = right + pop.offsetWidth <= w.width ? right : left >= 0 ? left : null;
+    pop.style.setProperty('left', `${x ?? Math.max(0, g.left - w.left)}px`);
+    pop.style.setProperty('top', `${x === null ? g.bottom - w.top + 6 : c.top - w.top}px`);
   };
   const cellOf = (t: EventTarget | null) => (t instanceof HTMLElement ? t.closest<HTMLElement>('[data-day]') : null);
   document.addEventListener(
@@ -53,7 +73,17 @@ export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Po
       };
       container.addEventListener('focusin', show);
       container.addEventListener('mouseover', show);
-      container.addEventListener('click', (e) => cellOf(e.target)?.focus());
+      // a tap on the day whose popover is open closes it; a tap on another day opens that one
+      let again: HTMLElement | null = null;
+      container.addEventListener('pointerdown', (e) => {
+        const cell = cellOf(e.target);
+        again = cell !== null && !pop.hidden && described === cell ? cell : null;
+      });
+      container.addEventListener('click', (e) => {
+        const cell = cellOf(e.target);
+        if (cell !== null && cell === again) close();
+        else cell?.focus();
+      });
       container.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') close();
       });

@@ -2353,6 +2353,14 @@ html:has(dialog.search[open]) {
 .day-pop p {
   margin: 0.15rem 0;
 }
+/* on a phone, a panel under the day's row of months, the page's width, moving what follows down */
+.day-pop.day-panel {
+  position: static;
+  grid-column: 1 / -1;
+  width: auto;
+  max-width: none;
+  box-shadow: none;
+}
 .day-when {
   font-weight: 650;
   color: var(--accent);
@@ -2499,13 +2507,11 @@ html:has(dialog.search[open]) {
   line-height: 0.95rem;
   white-space: nowrap;
 }
-.gantt-bar.gantt-unsaid {
-  justify-content: center;
-  border: 1.5px dotted var(--shade-2);
-  background: none;
-  color: var(--accent);
-}
 .gantt-said {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.gantt-unsaid {
   color: var(--muted);
   font-size: 0.8rem;
 }

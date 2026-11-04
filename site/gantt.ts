@@ -1,9 +1,9 @@
 // A trip's small Gantt: its days across the top, from the first of the community to arrive to the last to leave, the
 // festival's own days a soft band behind, and a bar for each party travelling together, from the hour they arrive to
-// the hour they leave, its times and airports at its ends. Someone who has not said how they travel has a dotted bar
-// over the festival's days. It is drawn for the eye: the line under it says the same in words.
+// the hour they leave, its times and airports at its ends. Only those who said how they travel have a bar: when no one
+// has, it is the days and the band alone. It is drawn for the eye: the line under it says the same in words.
 import { daysInto, daysOf, WEEKDAYS, weekday } from './calendar.ts';
-import { h, type Kid } from './dom.ts';
+import { h } from './dom.ts';
 
 // how someone travels: arrive and leave as local times, YYYY-MM-DDTHH:MM, and the airports when they fly
 interface Flight {
@@ -12,15 +12,11 @@ interface Flight {
   leave: string;
   leave_from: string | null;
 }
-// a party: who travels together (a couple as one), what their name says on hover (who added them), and how they
-// travel, or null when they have not said
+// a party: who travels together, on one flight in and one out (a couple as one), and how
 export interface Party {
   name: string;
-  title: string | null;
-  flight: Flight | null;
+  flight: Flight;
 }
-// a party's name, made anew for each place that shows it
-export const partyName = (p: Party): Kid => (p.title === null ? p.name : h('span', { title: p.title }, p.name));
 
 // "17:05 OSL": a time of a flight, and its airport when known
 const timeAt = (time: string, airport: string | null): string =>
@@ -35,22 +31,23 @@ export function gantt(t: {
   festival: { start_date: string; end_date: string };
   place: string;
   parties: readonly Party[];
-  describedBy: string; // the id of the line that says it in words
+  describedBy: string | null; // the id of the line that says it in words, when anyone travels
 }): HTMLElement {
   const days = daysOf(t.from, t.to);
   const share = (n: number) => `${(100 * n) / days.length}%`;
   const start = days.indexOf(t.festival.start_date),
     end = days.indexOf(t.festival.end_date);
   const band = { left: share(Math.max(0, start)), width: share(end - Math.max(0, start) + 1) };
-  const lane = (p: Party): HTMLElement => {
-    const f = p.flight;
-    const at = f === null ? null : { from: daysInto(t.from, f.arrive), to: daysInto(t.from, f.leave) };
+  // a lane: the festival's band, and the party's bar when there is one
+  const lane = (p?: Party): HTMLElement => {
+    const f = p?.flight;
+    const at = f === undefined ? undefined : { from: daysInto(t.from, f.arrive), to: daysInto(t.from, f.leave) };
     return h(
       'div',
       { class: 'gantt-lane' },
       h('div', { class: 'gantt-band', style: band }),
-      f === null || at === null
-        ? h('div', { class: ['gantt-bar', 'gantt-unsaid'], style: band }, 'not said')
+      f === undefined || at === undefined
+        ? null
         : h(
             'div',
             { class: 'gantt-bar', style: { left: share(at.from), width: share(at.to - at.from) } },
@@ -75,6 +72,8 @@ export function gantt(t: {
         ),
       ),
     ),
-    t.parties.map((p) => [h('div', { class: 'gantt-name' }, partyName(p)), lane(p)]),
+    t.parties.length > 0
+      ? t.parties.map((p) => [h('div', { class: 'gantt-name' }, p.name), lane(p)])
+      : [h('div', {}), lane()],
   );
 }

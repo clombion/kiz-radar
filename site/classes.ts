@@ -50,6 +50,7 @@ export type ClassName =
   | 'dance'
   | 'date'
   | 'datebox'
+  | 'day-panel'
   | 'day-pop'
   | 'day-when'
   | 'days-1'
