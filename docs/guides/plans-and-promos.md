@@ -33,11 +33,16 @@ nobody can create, join or claim one yet, and its rows are written by hand.
   `community`, their first `name`, their `artist_keys` (as in `people.csv`: the `match_key` values of the artist records
   they are, separated by `;`, or empty), the `event_id`, the `status` (a plan's, `going`) and the festival's name for
   people reading the file. A name is only a name: a link, an @handle or an email address is refused.
-- `pipeline/trips.csv`: how members travel, one row per member and festival they plan: the `person`, the `event_id`,
-  when they `arrive` and `leave` (local times, `YYYY-MM-DDTHH:MM`, arriving first), the airports when they fly
-  (`arrive_at`, `leave_from`, IATA codes, or empty) and where they `stay` (a plain name, such as a hotel or "with
-  friends", or empty). Only a member registers a trip: the people a manager added never have one. Write no booking code
-  or flight number.
+- `pipeline/travel.csv`: how members travel, one row per member and festival they plan, as far as they said: the
+  `person`, the `event_id`, when they `arrive` and `leave` (local times, `YYYY-MM-DDTHH:MM`, arriving first), each empty
+  when not known but one of them said, and the airports when they fly (`arrive_at`, `leave_from`, IATA codes, each with
+  its time, or empty). Only a member says how they travel: the people a manager added never do. Write no booking code or
+  flight number.
+- `pipeline/stays.csv`: where members stay, a row a place: the `person`, the `event_id`, the `first_night` and
+  `last_night` there (each night by its evening's date) and the `place` (a plain name, such as a hotel or "with
+  friends"). A member staying at two places has two rows. Their nights never overlap and fall between the day they
+  arrive and the day before they leave, when travel.csv says them; the build stops on a row that breaks this, of anyone
+  but a member, or to a festival they don't plan.
 
 The page shows the community's name ("Norwegians in festivals"), when most members travel at once ("Most members are
 travelling 20–22 Nov: 5 people, to Oslo.") and, on a line of its own, where they go next ("Next: Glasgow, this Friday"),
@@ -77,24 +82,29 @@ says who added them ("Added by Cédric"). Whether someone added teaches comes fr
 `artist_keys`, as it does for a member; the manager never says it, and someone teaching links to their artist page. The
 next trip is open; the others open from their button, on a card under the row. An opened trip is a roster of who travels
 when: its days across the top, from the first of the community to arrive (or the festival's start, when that is sooner)
-to the last to leave (or its end), the festival's days marked on them, and a line for each group that travels alike
-(`site/roster.ts`). A couple is one unit when both partners arrive, leave and stay alike, or both have said nothing;
-otherwise each partner is a unit of their own, as is everyone else. Units that arrive, leave and stay alike are one
-line, and having said nothing is a line of its own (the people the manager added are always on it). With three units or
-fewer every line names its units; with more, the line of the most people, if they are more than three, is "Everyone"
-when it is the only line and "Everyone else" beside others (of two lines alike in size, the first to arrive; those who
-have not said, last). A collective name, in the text's colour and dotted under as the other names, is a button that
-shows its names while the pointer is over it and from a tap or a key, until the next or Escape, in a box on a row of its
-own under the line, which the card grows to hold, covering nothing. Lines go by arrival, those who have not said last.
-Each line has its name (what its people do there is the row's to say), a light highlighter's swipe from the hour they
-arrive to the hour they leave with the times at its ends (and the airports, on a computer), and where it stays: beside
-it on a computer; on a phone, inside the bar between its times (cut short with an ellipsis, its full name on hover), or
-under its name when the bar is too short to hold a few letters of it. Those who have not said are a thin rule of the
-accent across the festival's days instead. A screen reader hears the names, and the rest in words the page does not
-show: each line in and out and where it stays, and who has not said, a collective line by its people too. While a card
-is open its row says only how many go and who teaches ("5 going · Cédric & Christina teaching"), as the card names
-everyone. The festival's name opens its card on the festival's line-up and prices, its own card opened in place, and
-folds them away again; the next trip's card opens on who travels, its line-up folded.
+to the last to leave (or its end), the festival's days marked on them, and a line for each travel (`site/roster.ts`).
+Someone's signature is how they arrive (when, and at which airport), how they leave, and where they stay, night by
+night. A line is everyone who arrives and leaves alike: a bar is a travel, and where they stay never splits it. A couple
+is one unit when its partners' signatures are alike, else each partner is a unit; anyone else is one. Everyone who has
+said nothing is the last line, a thin rule of the accent across the festival's days; someone who has said only where
+they stay has said something, a dashed bar over their nights. An end not said fades out, its time "in ?" or "out ?".
+With three units or fewer every line names its units; with more, the one line is "Everyone"; of several, the line of the
+most people, when no other is as big and it is more than half of everyone, is "Everyone else"; any other line of more
+than three people is called by its number ("5 people"); the rest name their units. Lines go by arrival, then departure,
+the bigger first, then by first name, those who have not said last. A line called by what it is, or whose people stay
+apart, is a button, in the text's colour and dotted under as the other names, that shows its names (by where they stay,
+when they stay apart) while the pointer is over it and from a tap or a key, until the next or Escape, in a box on a row
+of its own under the line, which the card grows to hold. Each line has a light highlighter's swipe from the hour they
+arrive to the hour they leave with the times at its ends (and the airports, on a computer), and where its people stay:
+counted beside it on a computer ("Scandic Holberg 13 · Airbnb 3 · 4 not said", or the one place alone), and on a phone
+inside the bar between its times, the biggest and how many others ("Scandic Holberg +2", the whole on hover), or under
+its name when the bar is too short. A line whose people change places on the way has its bar cut by a hairline at the
+change and each place between the times, as wide as its nights ("Airbnb → Scandic Holberg" beside it). A screen reader
+hears the names, and the rest in words the page does not show: each line in and out and where its people stay, and who
+has not said, a line called by what it is by its people too. While a card is open its row says only how many go and who
+teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The festival's name opens its card on the
+festival's line-up and prices, its own card opened in place, and folds them away again; the next trip's card opens on
+who travels, its line-up folded.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page

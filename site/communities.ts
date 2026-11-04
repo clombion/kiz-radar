@@ -1,4 +1,4 @@
-// A community's page (pipeline/communities.csv, community_members.csv, seeded.csv, trips.csv): who is in it, when most
+// A community's page (pipeline/communities.csv, community_members.csv, seeded.csv, travel.csv, stays.csv): who is in it, when most
 // of it is away, the months it is away in, and an agenda of its trips, each opening on who travels when. Only its link
 // reaches it: nothing lists communities. Its members and the people its manager added, who have not joined, are named;
 // an added one's name says on hover who added them. Members say how they travel; the people added never do.
@@ -25,9 +25,9 @@ import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
 import { couplesAmong, doingTag, type Goer, goersInline, namesOf } from './plans.ts';
-import { type Goes, roster } from './roster.ts';
+import { type Flights, type Goes, type Line, roster, type Stay } from './roster.ts';
 import { artistHref, communityHref, eventOnMapHref, readState, showInAddressBar } from './routes.ts';
-import { type Booked, booked, EVENT, num, opt, type RowOf, str } from './rows.ts';
+import { type Booked, booked, EVENT, num, opt, str } from './rows.ts';
 import { dayMonth, dayParts, dayRange, monthShort, monthYear, place, weekDay } from './ui.ts';
 import { joined, plural } from './wording.ts';
 
@@ -44,13 +44,15 @@ interface Added {
   booked_as: Booked | null;
   artist: number | null;
 }
-// how a member travels to a festival: arrive and leave as local times, YYYY-MM-DDTHH:MM
-const TRIP = { key: str, arrive: str, arrive_at: opt(str), leave: str, leave_from: opt(str), stay: opt(str) } as const;
-type Trip = RowOf<typeof TRIP>;
+// how a member travels to a festival, each end when they said it: arrive and leave as local times, YYYY-MM-DDTHH:MM
+const TRAVEL = { key: str, arrive: opt(str), arrive_at: opt(str), leave: opt(str), leave_from: opt(str) } as const;
+// where a member stays, from a night to a night
+const STAY = { key: str, first: str, last: str, place: str } as const;
 interface Going {
   members: string[]; // the keys of its members going
   added: Added[]; // the people its manager added who are going, in the order they were added
-  trips: Trip[]; // how its members going travel there, those who said
+  travel: Map<string, Flights>; // how its members going travel there, by key, those who said
+  stays: Map<string, Stay[]>; // where they stay, by key, night after night
 }
 interface Community {
   key: string;
@@ -78,7 +80,7 @@ function communityOf(key: string): Community | null {
   // each plan and each added person is going: going is a plan's one state, as every page of plans reads it
   const festivals = new Map<number, Going>();
   const at = (id: number): Going => {
-    const f = festivals.get(id) ?? { members: [], added: [], trips: [] };
+    const f = festivals.get(id) ?? { members: [], added: [], travel: new Map(), stays: new Map() };
     festivals.set(id, f);
     return f;
   };
@@ -99,13 +101,23 @@ function communityOf(key: string): Community | null {
       booked_as: r.booked_as,
       artist: r.booked_as === null ? null : r.artist_id,
     });
-  for (const { event_id, ...trip } of q(
-    { event_id: num, ...TRIP },
-    sql`SELECT t.event_id, p.key, t.arrive, t.arrive_at, t.leave, t.leave_from, t.stay FROM trips t
+  for (const { event_id, key: who, ...flights } of q(
+    { event_id: num, ...TRAVEL },
+    sql`SELECT t.event_id, p.key, t.arrive, t.arrive_at, t.leave, t.leave_from FROM travel t
     JOIN community_members m ON m.person_id = t.person_id JOIN people p ON p.id = t.person_id WHERE m.community_id = ?`,
     [c.id],
   ))
-    at(event_id).trips.push(trip);
+    at(event_id).travel.set(who, flights);
+  for (const { event_id, key: who, ...stay } of q(
+    { event_id: num, ...STAY },
+    sql`SELECT s.event_id, p.key, s.first_night AS first, s.last_night AS last, s.place FROM stays s
+    JOIN community_members m ON m.person_id = s.person_id JOIN people p ON p.id = s.person_id WHERE m.community_id = ?
+    ORDER BY s.first_night`,
+    [c.id],
+  )) {
+    const f = at(event_id);
+    f.stays.set(who, [...(f.stays.get(who) ?? []), stay]);
+  }
   return {
     key: c.key,
     name: c.name,
@@ -115,13 +127,14 @@ function communityOf(key: string): Community | null {
   };
 }
 
-// someone of the community away for a festival: a member, with their trip when they said how they travel, or someone
-// the manager added
+// someone of the community away for a festival: a member, with how they travel and where they stay when they said,
+// or someone the manager added
 interface Present extends Away {
   e: Festival;
   goer: Goer | null;
   added: Added | null;
-  trip: Trip | null;
+  travel: Flights | null;
+  stays: Stay[];
 }
 // a festival the community goes to: who of it goes, and who is away for it from when to when
 interface Visit {
@@ -152,10 +165,16 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
     who,
     aways: [
       ...who.goers.map((g): Present => {
-        const trip = f.trips.find((t) => t.key === g.key) ?? null;
-        return { who: `member ${g.key}`, ...awayDays(e, trip ?? undefined), e, goer: g, added: null, trip };
+        const travel = f.travel.get(g.key) ?? null,
+          stays = f.stays.get(g.key) ?? [];
+        const [first, last] = [stays[0], stays.at(-1)];
+        const nights = first && last ? { first: first.first, last: last.last } : null;
+        const away = awayDays(e, { arrive: travel?.arrive ?? null, leave: travel?.leave ?? null, nights });
+        return { who: `member ${g.key}`, ...away, e, goer: g, added: null, travel, stays };
       }),
-      ...f.added.map((a): Present => ({ who: `added ${a.name}`, ...awayDays(e), e, goer: null, added: a, trip: null })),
+      ...f.added.map(
+        (a): Present => ({ who: `added ${a.name}`, ...awayDays(e), e, goer: null, added: a, travel: null, stays: [] }),
+      ),
     ],
   }));
   const days = presence(trips.flatMap((t) => t.aways));
@@ -299,7 +318,6 @@ function agenda(trips: readonly Visit[], today: string, manager: Member, from: s
 // of who travels when, the same in words, where members stay, and the festival's line-up and prices.
 function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTMLElement {
   const id = `trip-${e.id}`;
-  const flights = aways.flatMap((a) => (a.trip ? [a.trip] : []));
   // its roster: who travels alike, a couple as one when both partners do, and the people the manager added, who never
   // say how they travel, each name of theirs saying on hover who added them
   const couples = couplesAmong(aways.flatMap((a) => (a.goer ? [a.goer] : [])));
@@ -309,33 +327,22 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
         person: a,
         name: a.goer?.name ?? a.added?.name ?? '',
         couple: a.goer ? (couples.get(a.goer.person_id) ?? null) : null,
-        travel: a.trip,
+        travel: a.travel,
+        stays: a.stays,
       }),
     ),
   );
   const title = `Added by ${manager.name}`;
   // the roster in words, for a screen reader: each line in and out and where it stays, and who has not said, a line
   // called collectively by its name and its people's
-  const said = h(
-    'p',
-    { class: ['gantt-said', 'visually-hidden'], id: `${id}-said` },
-    lines
-      .map((l) => {
-        const names = and(l.units.map((u) => u.name));
-        const called = l.collective === null ? names : `${l.collective} (${names})`;
-        const f = l.travel;
-        if (f === null) return `not said yet: ${called}`;
-        return `${called} in ${dayTimeAt(f.arrive, f.arrive_at)}, out ${dayTimeAt(f.leave, f.leave_from)}${f.stay === null ? '' : `, staying at ${f.stay}`}`;
-      })
-      .join('; '),
-  );
+  const said = h('p', { class: ['gantt-said', 'visually-hidden'], id: `${id}-said` }, lines.map(inWords).join('; '));
   // the festival's line-up and prices, its card opened, in the trip's: shown from the festival's name
   const lineup = h('div', { class: 'trip-lineup', id: `${id}-lineup`, hidden: true });
   const body = h(
     'div',
     { class: 'trip-body', id, hidden: !open },
     gantt({
-      ...spanOf(e, flights),
+      ...spanOf(e, aways),
       festival: e,
       place: e.city ?? e.title,
       lines,
@@ -396,6 +403,25 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
     ),
     body,
   );
+}
+
+// A line of a roster in words: who (by its name, and its units when it is called otherwise), in and out (each "not
+// said" when not), and where they stay, each place with who stays there when there are several; or "not said yet".
+function inWords(l: Line<Present>): string {
+  const names = and(l.units.map((u) => u.name));
+  const who = l.called === null ? names : `${l.called} (${names})`;
+  const f = l.travel;
+  if (f === null && l.nights === null) return `not said yet: ${who}`;
+  const end = (time: string | null, at: string | null) => (time === null ? 'not said' : dayTimeAt(time, at));
+  const flights = f === null ? '' : ` in ${end(f.arrive, f.arrive_at)}, out ${end(f.leave, f.leave_from)}`;
+  const [only] = l.buckets;
+  const stays =
+    l.buckets.length === 1 && only
+      ? only.place === null
+        ? ''
+        : `, staying at ${only.place}`
+      : `, staying: ${l.buckets.map((b) => `${b.place ?? 'not said'}: ${and(b.units.map((u) => u.name))}`).join(', ')}`;
+  return `${who}${flights}${stays}`;
 }
 
 // Who of the community goes to a festival: its members, as their couple when both go and teaching when in the
@@ -463,27 +489,29 @@ const and = (xs: readonly string[]): string =>
   xs.length > 1 ? `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}` : xs.join('');
 
 // What a day's popover says: the day, its festivals, who flies in and out that day (by time and airport, a couple as
-// one when both share the flight), who else is there, and where members stay. The people added are named, each
-// saying on hover who added them, and never travel.
+// one when both share the flight), who else is there, and where members stay that night. The people added are named,
+// each saying on hover who added them, and never travel.
 function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): Kid[] {
   if (on === undefined) return [h('p', { class: 'day-when' }, weekDay(day))]; // a day no one travels on opens nothing
   const once = [...new Map(on.aways.map((a) => [a.who, a])).values()];
   const flying = (when: 'arrive' | 'leave', where: 'arrive_at' | 'leave_from'): Kid[] => {
     const by = new Map<string, Goer[]>();
     for (const a of once)
-      if (a.trip?.[when].startsWith(day) && a.goer) {
-        const at = `${a.trip[when].slice(11)}${a.trip[where] === null ? '' : ` ${a.trip[where]}`}`;
+      if (a.travel?.[when]?.startsWith(day) && a.goer) {
+        const at = `${a.travel[when]?.slice(11)}${a.travel[where] === null ? '' : ` ${a.travel[where]}`}`;
         by.set(at, [...(by.get(at) ?? []), a.goer]);
       }
     return [...by].map(([at, goers]) => `${namesOf(goers).join(' & ')} ${at}`);
   };
   const flyingIn = flying('arrive', 'arrive_at'),
     flyingOut = flying('leave', 'leave_from');
-  const moving = (a: Present) => a.trip !== null && (a.trip.arrive.startsWith(day) || a.trip.leave.startsWith(day));
+  const moving = (a: Present) => Boolean(a.travel?.arrive?.startsWith(day) || a.travel?.leave?.startsWith(day));
   const there = once.filter((a) => !moving(a));
   const title = `Added by ${manager.name}`;
   const stays = new Map<string, Goer[]>();
-  for (const a of once) if (a.trip?.stay && a.goer) stays.set(a.trip.stay, [...(stays.get(a.trip.stay) ?? []), a.goer]);
+  for (const a of once)
+    for (const s of a.stays)
+      if (a.goer && s.first <= day && day <= s.last) stays.set(s.place, [...(stays.get(s.place) ?? []), a.goer]);
   const line = (what: string, kids: readonly Kid[]) => (kids.length > 0 ? h('p', {}, `${what}: `, joined(kids)) : null);
   return [
     h('p', { class: 'day-when' }, weekDay(day)),

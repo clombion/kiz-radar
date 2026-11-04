@@ -16,7 +16,19 @@ from pydantic import BaseModel
 from pipeline import airports, build_site_db, enums
 from pipeline import db as sqlite_db
 from pipeline.db import Db
-from pipeline.records import Airport, Community, Fare, Membership, Person, Place, PlanRow, Seeded, Spot, Trip
+from pipeline.records import (
+    Airport,
+    Community,
+    Fare,
+    Membership,
+    Person,
+    Place,
+    PlanRow,
+    Seeded,
+    Spot,
+    StayRow,
+    Travel,
+)
 from tests.exports import committed
 from tests.fakes import Memory
 
@@ -217,8 +229,8 @@ class AddedRow(BaseModel, frozen=True):
 def test_a_community_is_what_its_three_files_say(site_db: Path) -> None:
     """A community, its members and its manager are communities.csv and community_members.csv, and the people a
     manager added are seeded.csv row for row, each with the artist records they are: the community's page names them;
-    and members' trips are trips.csv."""
-    committed(Community.FILE, Membership.FILE, Seeded.FILE, Trip.FILE)
+    and how members travel and where they stay are travel.csv and stays.csv."""
+    committed(Community.FILE, Membership.FILE, Seeded.FILE, Travel.FILE, StayRow.FILE)
     found, members, seeded = Community.read(), Membership.read(), Seeded.read()
     assert built(
         site_db,
@@ -253,14 +265,20 @@ def test_a_community_is_what_its_three_files_say(site_db: Path) -> None:
     assert found
     assert members
     assert any(r.artist_keys for r in seeded)  # someone added is in a line-up, as Siân at Glasgow
-    trips = Trip.read()
+    trips, stays = Travel.read(), StayRow.read()
     assert built(
         site_db,
-        Trip,
-        'select p.key as person, t.event_id, t.arrive, t.arrive_at, t.leave, t.leave_from, t.stay from trips t'
+        Travel,
+        'select p.key as person, t.event_id, t.arrive, t.arrive_at, t.leave, t.leave_from from travel t'
         ' join people p on p.id = t.person_id',
     ) == set(trips)
     assert trips  # Cédric and Christina's to Prague
+    assert built(
+        site_db,
+        StayRow,
+        'select p.key as person, s.event_id, s.first_night, s.last_night, s.place from stays s'
+        ' join people p on p.id = s.person_id',
+    ) == set(stays)
 
 
 KEY = 'frost-lantern-river-maple'
@@ -270,14 +288,11 @@ MEMBER = Membership(community=KEY, person='cedric')
 ADDED = Seeded(
     community=KEY, name='Tonje', artist_keys=('p:tonje@dance',), event_id=1, status=enums.Plan.GOING, event='KUOF'
 )
-TRIP = Trip(
-    person='cedric',
-    event_id=1,
-    arrive='2026-11-19T21:05',
-    arrive_at='OSL',
-    leave='2026-11-23T09:30',
-    leave_from='OSL',
-    stay='Scandic Holberg',
+TRIP = Travel(
+    person='cedric', event_id=1, arrive='2026-11-19T21:05', arrive_at='OSL', leave='2026-11-23T09:30', leave_from='OSL'
+)
+STAY = StayRow.model_validate(
+    {'person': 'cedric', 'event_id': 1, 'first_night': '2026-11-19', 'last_night': '2026-11-22', 'place': 'Scandic'}
 )
 
 
@@ -287,7 +302,8 @@ class Rows(BaseModel, frozen=True):
     found: tuple[Community, ...] = (MANAGER,)
     members: tuple[Membership, ...] = (MEMBER,)
     seeded: tuple[Seeded, ...] = ()
-    trips: tuple[Trip, ...] = ()
+    trips: tuple[Travel, ...] = ()
+    stays: tuple[StayRow, ...] = ()
 
 
 @pytest.mark.parametrize(
@@ -305,27 +321,52 @@ class Rows(BaseModel, frozen=True):
             Rows(seeded=(ADDED.model_copy(update={'artist_keys': ('p:nobody',)}),)),
             r'seeded.csv: unknown artist key p:nobody \(Tonje\)',
         ),
-        (Rows(trips=(TRIP.model_copy(update={'person': 'nobody'}),)), 'trips.csv: nobody is no member'),
-        # someone the manager added has no identity to travel under: a trip of theirs names no member
-        (Rows(seeded=(ADDED,), trips=(TRIP.model_copy(update={'person': 'Tonje'}),)), 'trips.csv: Tonje is no member'),
+        (Rows(trips=(TRIP.model_copy(update={'person': 'nobody'}),)), 'travel.csv: nobody is no member'),
+        # someone the manager added has no identity to travel under: a travel of theirs names no member
+        (Rows(seeded=(ADDED,), trips=(TRIP.model_copy(update={'person': 'Tonje'}),)), 'travel.csv: Tonje is no member'),
         (
             Rows(trips=(TRIP.model_copy(update={'event_id': 2}),)),
-            'trips.csv: cedric has no plan for event 2 in plans.csv',
+            'travel.csv: cedric has no plan for event 2 in plans.csv',
         ),
-        (Rows(trips=(TRIP, TRIP)), 'trips.csv: a second trip of cedric to event 1'),
+        (Rows(trips=(TRIP, TRIP)), 'travel.csv: a second travel of cedric to event 1'),
+        (Rows(stays=(STAY.model_copy(update={'person': 'nobody'}),)), 'stays.csv: nobody is no member'),
+        (Rows(stays=(STAY.model_copy(update={'event_id': 2}),)), 'stays.csv: cedric has no plan for event 2'),
+        # the nights between the day they arrive and the day before they leave
+        (
+            Rows(trips=(TRIP,), stays=(STAY.model_copy(update={'first_night': dt.date(2026, 11, 18)}),)),
+            'stays.csv: cedric stays from 2026-11-18, before they arrive on 2026-11-19',
+        ),
+        (
+            Rows(trips=(TRIP,), stays=(STAY.model_copy(update={'last_night': dt.date(2026, 11, 23)}),)),
+            'stays.csv: cedric stays the night of 2026-11-23, though they leave on 2026-11-23',
+        ),
+        # two places on one night
+        (
+            Rows(stays=(STAY, STAY.model_copy(update={'first_night': dt.date(2026, 11, 22), 'place': 'Airbnb'}))),
+            'stays.csv: cedric stays at Airbnb and at Scandic on the same night',
+        ),
     ],
 )
 def test_a_community_naming_what_the_data_has_not_stops_the_build(memory: Memory, rows: Rows, said: str) -> None:
     """A community of no one, a member or manager who is no one in people.csv (or a manager who is not a member),
-    someone added to a festival the export has not, or as an artist it has not, and a trip of anyone but a member, to a
-    festival they don't plan, or a second one, stop the build, saying which."""
+    someone added to a festival the export has not, or as an artist it has not, a travel or a stay of anyone but a
+    member or to a festival they don't plan, a second travel, and nights before they arrive, from the day they leave or
+    at two places at once, stop the build, saying which."""
 
     def built_from_them() -> Db:
         """The tables a community's rows go to, with cedric, his plan for the one festival and one artist in, and the
         files' rows written there."""
         db = memory()
         with db.transaction() as x:
-            for table in ('people', 'communities', 'community_members', 'community_seeded', 'seeded_artists', 'trips'):
+            for table in (
+                'people',
+                'communities',
+                'community_members',
+                'community_seeded',
+                'seeded_artists',
+                'travel',
+                'stays',
+            ):
                 x.script(build_site_db.TABLES[table])
             # what is checked of a festival or an artist: its id
             x.script('create table events (id integer primary key); create table artists (id integer primary key)')
@@ -340,14 +381,17 @@ def test_a_community_naming_what_the_data_has_not_stops_the_build(memory: Memory
     Community.write([MANAGER])
     Membership.write([MEMBER])
     Seeded.write([ADDED])
-    Trip.write([TRIP])
+    Travel.write([TRIP])
+    StayRow.write([STAY])
     made = built_from_them()
     assert made.value(int, 'select artist_id from seeded_artists') == 1
-    assert made.value(str, 'select stay from trips') == 'Scandic Holberg'
+    assert made.value(str, 'select place from stays') == 'Scandic'
+    assert made.value(str, 'select arrive from travel') == '2026-11-19T21:05'
     Community.write(rows.found)
     Membership.write(rows.members)
     Seeded.write(rows.seeded)
-    Trip.write(rows.trips)
+    Travel.write(rows.trips)
+    StayRow.write(rows.stays)
     with pytest.raises(SystemExit, match=said):
         _ = built_from_them()
 

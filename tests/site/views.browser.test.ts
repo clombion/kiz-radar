@@ -104,9 +104,10 @@ async function styled(then: () => Promise<void> | void): Promise<void> {
   }
 }
 
-// trips planted in the database the views read while then runs, each [person, festival, arrive, leave, stay]; the
-// Prague trip trips.csv has stays
-type Planted = readonly [string, number, string, string, string | null];
+// trips planted in the database the views read while then runs, each [person, festival, arrive, leave, stay], each
+// end null when not said and the stay every night from the day they arrive to the day before they leave; the Prague
+// trip of travel.csv has none
+type Planted = readonly [string, number, string | null, string | null, string | null];
 function withTrips<T>(trips: readonly Planted[], then: () => T): T {
   plant(trips);
   try {
@@ -117,19 +118,27 @@ function withTrips<T>(trips: readonly Planted[], then: () => T): T {
 }
 // the trips planted, and taken out again
 function plant(trips: readonly Planted[]): void {
-  for (const [key, event, arrive, leave, stay] of trips)
-    db?.run("INSERT INTO trips SELECT id, ?, ?, 'OSL', ?, 'OSL', ? FROM people WHERE key = ?", [
-      event,
-      arrive,
-      leave,
-      stay,
-      key,
-    ]);
+  for (const [key, event, arrive, leave, stay] of trips) {
+    if (arrive !== null || leave !== null)
+      db?.run(
+        "INSERT INTO travel SELECT id, ?, ?, iif(? IS NULL, NULL, 'OSL'), ?, iif(? IS NULL, NULL, 'OSL') FROM people WHERE key = ?",
+        [event, arrive, arrive, leave, leave, key],
+      );
+    if (stay !== null && arrive !== null && leave !== null)
+      db?.run("INSERT INTO stays SELECT id, ?, ?, date(?, '-1 day'), ? FROM people WHERE key = ?", [
+        event,
+        arrive.slice(0, 10),
+        leave.slice(0, 10),
+        stay,
+        key,
+      ]);
+  }
 }
 function uproot(trips: readonly Planted[]): void {
-  db?.run('DELETE FROM trips WHERE event_id IN (SELECT value FROM json_each(?))', [
-    JSON.stringify(trips.map(([, event]) => event)),
-  ]);
+  for (const table of ['travel', 'stays'])
+    db?.run(`DELETE FROM ${table} WHERE event_id IN (SELECT value FROM json_each(?))`, [
+      JSON.stringify(trips.map(([, event]) => event)),
+    ]);
 }
 // people the manager added, planted while then runs, each [name, festival]
 function withAdded<T>(added: readonly (readonly [string, number])[], then: () => T): T {
@@ -359,7 +368,7 @@ test('the months are today’s trimester, three of them, a festival one stroke a
   expect(countOn(root, '2026-11-20')).toBe('5');
   expect([countOn(root, '2026-11-06'), countOn(root, '2026-11-09')]).toEqual(['3', '']);
   expect(countOn(root, '2026-12-08')).toBe('');
-  // Prague from trips.csv: in on Wednesday 13, the day before it, a travel day; its stroke from the 14th
+  // Prague from travel.csv: in on Wednesday 13, the day before it, a travel day; its stroke from the 14th
   expect(['12', '13', '18', '19'].map((d) => awayOn(cellOn(root, `2027-01-${d}`)))).toEqual([0, 2, 2, 0]);
   expect(strokesOn(root, '2027-01-14').map((s) => s.columns)).toEqual(['4/8']);
   expect(cellOn(root, '2027-01-13')?.querySelector('.days-dot')).not.toBeNull();
@@ -558,15 +567,16 @@ test('an opened trip draws who travels when: the days from the first in to the l
     expect(agendaRow(root, 'KUOF')?.querySelector('.gantt-lane')?.childElementCount).toBe(1);
     expect(kuof.none.map((n) => n.at)).toEqual([[20, 60]]);
     expect(kuof.said).toBe(
-      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Tonje, Ragnhild and Maja',
+      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Everyone else (Maja, Ragnhild and Tonje)',
     );
-    expect(kuof.unsaid).toBe('Tonje, Ragnhild and Maja');
-    expect(titled(agendaRow(root, 'KUOF')?.querySelector('.gantt-unsaid'))).toEqual(
-      ['Tonje', 'Ragnhild', 'Maja'].map((n) => [n, 'Added by Cédric']),
+    // the three who have not said are more than half of the five: "Everyone else", its names by name under it
+    expect(kuof.unsaid).toBe('Everyone else');
+    expect(titled(agendaRow(root, 'KUOF')?.querySelector('.gantt-who-names'))).toEqual(
+      ['Maja', 'Ragnhild', 'Tonje'].map((n) => [n, 'Added by Cédric']),
     );
     // no sentences about who has not said or where who stays: the lines say it
     expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-body'))).not.toMatch(/Not said yet|Staying /u);
-    // Prague from trips.csv: in on the Wednesday before it
+    // Prague from travel.csv: in on the Wednesday before it
     expect(ganttOf(opened(root, 'Prague')).axis.map((a) => a.day)).toEqual(['W13', 'T14', 'F15', 'S16', 'S17', 'M18']);
     // Glasgow, where no one said how they travel: its own days and its band, no bar, everyone named once under it
     const glasgow = ganttOf(agendaRow(root, 'Glasgow'));
@@ -574,10 +584,10 @@ test('an opened trip draws who travels when: the days from the first in to the l
     expect(glasgow.bars).toEqual([]);
     expect(glasgow.none.map((n) => n.at)).toEqual([[0, 100]]);
     expect(glasgow.parties).toEqual([]);
-    expect(glasgow.said).toBe('not said yet: Christina, Siân and Caroline');
-    expect(glasgow.unsaid).toBe('Christina, Siân and Caroline');
+    expect(glasgow.said).toBe('not said yet: Caroline, Christina and Siân');
+    expect(glasgow.unsaid).toBe('Caroline, Christina and Siân');
     expect(titled(agendaRow(root, 'Glasgow')?.querySelector('.gantt-unsaid'))).toEqual(
-      ['Siân', 'Caroline'].map((n) => [n, 'Added by Cédric']),
+      ['Caroline', 'Siân'].map((n) => [n, 'Added by Cédric']),
     );
     // a couple who has not said is named as one
     expect(ganttOf(opened(root, 'HOT Ice')).unsaid).toBe('Cédric & Christina');
@@ -827,8 +837,24 @@ test('a trip’s bars lie level, on a computer as on a phone: one end no more th
 });
 
 // the community's page on a day with the illustrative KUOF trip, this wide, in the document while then runs
-async function kuofAt(width: number, then: (root: HTMLElement) => unknown, trips = TO_KUOF): Promise<void> {
-  const root = withTrips(trips, () => onDay('2026-11-01', () => communityPage(COMMUNITY)));
+// stays planted while then runs, each [person, festival, first night, last night, place]
+type Slept = readonly [string, number, string, string, string];
+function withStays<T>(stays: readonly Slept[], then: () => T): T {
+  for (const row of stays)
+    db?.run('INSERT INTO stays SELECT id, ?, ?, ?, ? FROM people WHERE key = ?', [...row.slice(1), row[0]]);
+  try {
+    return then();
+  } finally {
+    db?.run("DELETE FROM stays WHERE person_id IN (SELECT id FROM people WHERE key IN ('cedric', 'christina'))");
+  }
+}
+async function kuofAt(
+  width: number,
+  then: (root: HTMLElement) => unknown,
+  trips = TO_KUOF,
+  stays: readonly Slept[] = [],
+): Promise<void> {
+  const root = withStays(stays, () => withTrips(trips, () => onDay('2026-11-01', () => communityPage(COMMUNITY))));
   await atWidth(width, async () => {
     document.body.append(root);
     try {
@@ -855,7 +881,7 @@ test('a trip’s bars are thin, and the chart in words is for a screen reader al
     // the line in words: not shown, but what describes the chart
     const words = row?.querySelector<HTMLElement>('.gantt-said');
     expect(words?.textContent).toBe(
-      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Tonje, Ragnhild and Maja',
+      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Everyone else (Maja, Ragnhild and Tonje)',
     );
     expect(words?.getBoundingClientRect().width).toBeLessThanOrEqual(1);
     expect(row?.querySelector('.gantt')?.getAttribute('aria-describedby')).toBe(words?.id);
@@ -943,7 +969,7 @@ test('a roster of more than three, its biggest line of more than three people "E
       expect(seen.label).toEqual([true, 'dotted']);
       // its names: hidden; shown by a tap, under the line in the card and over nothing, hidden again by Escape; shown while the pointer is over
       // it; and in the words
-      expect(seen.names).toBe('Tonje, Ragnhild, Maja, Ola and Kari');
+      expect(seen.names).toBe('Kari, Maja, Ola, Ragnhild and Tonje');
       expect(seen.inCard).toBe(true);
       expect(seen.covers).toEqual([]);
       expect(seen.states).toEqual([
@@ -953,7 +979,7 @@ test('a roster of more than three, its biggest line of more than three people "E
         ['false', true],
         ['false', false],
       ]);
-      expect(seen.words).toContain('not said yet: Everyone else (Tonje, Ragnhild, Maja, Ola and Kari)');
+      expect(seen.words).toContain('not said yet: Everyone else (Kari, Maja, Ola, Ragnhild and Tonje)');
     });
 });
 
@@ -1126,5 +1152,113 @@ test('on a phone a day’s panel opens under its row of months in a later trimes
       step(root, 'Previous three months');
       expect(pop?.hidden).toBe(true);
     }),
+  );
+});
+
+// ----- a roster of travels, each with its stays counted -----
+// KUOF's roster, read: its lines' names, their bars (their classes, and what they say), what each line's stay column
+// says, and the words
+const linesOf = (root: HTMLElement) => {
+  const g = opened(root, 'KUOF')?.querySelector('.gantt');
+  return {
+    names: [...(g?.querySelectorAll('.gantt-name') ?? [])].map((n) => said(n.querySelector('button') ?? n)),
+    bars: [...(g?.querySelectorAll<HTMLElement>('.gantt-bar') ?? [])].map((b) => ({
+      open: ['gantt-open-start', 'gantt-open-end', 'gantt-stay-only'].filter((c) => b.matches(`.${c}`)),
+      said: [...b.querySelectorAll(':scope > span:not(.gantt-ink, .gantt-cut)')].map((x) => said(x)),
+      cuts: b.querySelectorAll('.gantt-cut').length,
+      segments: [...b.querySelectorAll<HTMLElement>('.gantt-seg')].map((x) => [x.title, x.style.flexGrow]),
+    })),
+    staying: [...(g?.querySelectorAll('.gantt-name ~ .gantt-stay') ?? [])].map((x) => said(x)),
+    unsaid: g?.querySelectorAll('.gantt-unsaid').length,
+    words: said(opened(root, 'KUOF')?.querySelector('.gantt-said')),
+  };
+};
+const KUOF_NIGHTS = ['2026-11-19', '2026-11-22'] as const;
+
+test('a couple flying alike and staying apart is one line, its stays counted, its names by stay on demand', async () => {
+  const apart: readonly Slept[] = [
+    ['cedric', 19_033, ...KUOF_NIGHTS, 'Scandic Holberg'],
+    ['christina', 19_033, ...KUOF_NIGHTS, 'Airbnb'],
+  ];
+  const flown: readonly Planted[] = TO_KUOF.map(([k, e, a, l]) => [k, e, a, l, null] as const);
+  await kuofAt(
+    1200,
+    (root) => {
+      const seen = linesOf(root);
+      // one travel, one line: the partners each a unit, named, a button for their stays
+      expect(seen.names).toEqual(['Cédric and Christina', 'Everyone else']);
+      expect(seen.staying).toEqual(['Airbnb 1 · Scandic Holberg 1', '']);
+      expect(seen.words).toContain(
+        'Cédric and Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying: Airbnb: Christina, Scandic Holberg: Cédric',
+      );
+      const who = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-name button');
+      who?.click();
+      expect(said(document.getElementById(who?.getAttribute('aria-controls') ?? ''))).toBe(
+        'Airbnb Christina · Scandic Holberg Cédric',
+      );
+    },
+    flown,
+    apart,
+  );
+  // on a phone, the bar says the biggest and how many others, the whole in its title
+  await kuofAt(
+    390,
+    (root) => {
+      const inBar = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-bar-stay');
+      expect([said(inBar), inBar?.title]).toEqual(['Airbnb +1', 'Airbnb 1 · Scandic Holberg 1']);
+    },
+    flown,
+    apart,
+  );
+});
+
+test('a stay that changes cuts the bar where it does, each place as wide as its nights', async () => {
+  const moving: readonly Slept[] = [
+    ['cedric', 19_033, '2026-11-19', '2026-11-19', 'Airbnb'],
+    ['cedric', 19_033, '2026-11-20', '2026-11-22', 'Scandic Holberg'],
+  ];
+  const alone: readonly Planted[] = [['cedric', 19_033, '2026-11-19T17:05', '2026-11-23T09:40', null]];
+  await kuofAt(
+    1200,
+    (root) => {
+      const seen = linesOf(root);
+      expect(seen.bars[0]).toEqual({
+        open: [],
+        said: ['17:05 OSL', 'AirbnbScandic Holberg', '09:40 OSL'],
+        cuts: 1,
+        segments: [
+          ['Airbnb', '1'],
+          ['Scandic Holberg', '3'],
+        ],
+      });
+      expect(seen.staying[0]).toBe('Airbnb → Scandic Holberg');
+    },
+    alone,
+    moving,
+  );
+});
+
+test('an end not said fades, "in ?" or "out ?"; said only where one stays, a dashed bar over the nights', async () => {
+  // Cédric said only his flight in; Christina only where she stays
+  const halves: readonly Planted[] = [['cedric', 19_033, '2026-11-19T17:05', null, null]];
+  await kuofAt(
+    1200,
+    (root) => {
+      const seen = linesOf(root);
+      expect(seen.names).toEqual(['Cédric', 'Christina Comfort Xpress', 'Everyone else']);
+      expect(seen.bars.map((b) => [b.open, b.said])).toEqual([
+        [['gantt-open-end'], ['17:05 OSL', 'out ?']],
+        [
+          ['gantt-open-start', 'gantt-open-end', 'gantt-stay-only'],
+          ['in ?', 'Comfort Xpress', 'out ?'],
+        ],
+      ]);
+      // saying where one stays is saying something: Christina is not among those who have not
+      expect(seen.unsaid).toBe(1);
+      expect(seen.words).toContain('Cédric in Thu 17:05 OSL, out not said');
+      expect(seen.words).toContain('Christina, staying at Comfort Xpress');
+    },
+    halves,
+    [['christina', 19_033, '2026-11-20', '2026-11-21', 'Comfort Xpress']],
   );
 });

@@ -20,13 +20,29 @@ import {
 
 const festival = (start_date: string, end_date: string) => ({ start_date, end_date });
 
-test('someone with a trip is away from the day they arrive to the day they leave; anyone else, the festival’s days', () => {
+test('someone is away from the day they arrive to the day they leave, each end else their nights, else the festival’s', () => {
   const kuof = festival('2026-11-20', '2026-11-22');
-  expect(awayDays(kuof, { arrive: '2026-11-19T21:05', leave: '2026-11-23T09:30' })).toEqual({
+  const said = (
+    arrive: string | null,
+    leave: string | null,
+    nights: { first: string; last: string } | null = null,
+  ) => ({
+    arrive,
+    leave,
+    nights,
+  });
+  expect(awayDays(kuof, said('2026-11-19T21:05', '2026-11-23T09:30'))).toEqual({
     from: '2026-11-19',
     to: '2026-11-23',
   });
   expect(awayDays(kuof)).toEqual({ from: '2026-11-20', to: '2026-11-22' });
+  // a departure not said: to the festival's last day, or the morning after their last night
+  expect(awayDays(kuof, said('2026-11-19T21:05', null))).toEqual({ from: '2026-11-19', to: '2026-11-22' });
+  const six = { first: '2026-11-18', last: '2026-11-23' };
+  expect(awayDays(kuof, said('2026-11-18T10:00', null, six))).toEqual({ from: '2026-11-18', to: '2026-11-24' });
+  // only where they stay: from their first night to the morning after their last
+  expect(awayDays(kuof, said(null, null, six))).toEqual({ from: '2026-11-18', to: '2026-11-24' });
+  expect(awayDays(kuof, said(null, '2026-11-23T09:00'))).toEqual({ from: '2026-11-20', to: '2026-11-23' });
 });
 
 test('a festival counts on each of its days, whatever weekdays: Wednesday to Tuesday, or a whole week', () => {
@@ -131,15 +147,15 @@ test('a day is said from today: today, tomorrow, this weekday later in its week,
 test('a festival’s row runs from the first to arrive, or its start, to the last to leave, or its end', () => {
   const prague = festival('2027-01-14', '2027-01-18');
   // flying in the day before it starts
-  expect(spanOf(prague, [{ arrive: '2027-01-13T14:30', leave: '2027-01-18T15:10' }])).toEqual({
+  expect(spanOf(prague, [{ from: '2027-01-13', to: '2027-01-18' }])).toEqual({
     from: '2027-01-13',
     to: '2027-01-18',
   });
   // the festival goes on after the last one leaves, and one arrives after it starts
   expect(
     spanOf(prague, [
-      { arrive: '2027-01-15T10:00', leave: '2027-01-16T20:00' },
-      { arrive: '2027-01-12T08:00', leave: '2027-01-17T09:00' },
+      { from: '2027-01-15', to: '2027-01-16' },
+      { from: '2027-01-12', to: '2027-01-17' },
     ]),
   ).toEqual({ from: '2027-01-12', to: '2027-01-18' });
   expect(spanOf(prague, [])).toEqual({ from: '2027-01-14', to: '2027-01-18' });

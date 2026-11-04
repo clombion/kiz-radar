@@ -1114,25 +1114,52 @@ def real_time(value: str) -> str:
 LocalTime = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$'), AfterValidator(real_time)]
 
 
-class Trip(CsvRow):
-    """How a member travels to a festival they plan: when they arrive (and at which airport, when they fly), when they
-    leave (and from where), and where they stay, a plain name (no link, handle or email) such as a hotel or "with
-    friends". Only a member, who has a name of their own, registers a trip; the people a manager adds have none."""
+class Travel(CsvRow):
+    """How a member travels to a festival they plan, as far as they said: when they arrive (and at which airport, when
+    they fly) and when they leave (and from where), either end left empty when not known. An airport goes with its
+    time, and something is said: a row of four blanks says nothing, which no row does. Only a member, who has a name of
+    their own, registers how they travel; the people a manager adds never do. Where they stay is stays.csv."""
 
-    FILE = 'pipeline/trips.csv'
+    FILE = 'pipeline/travel.csv'
 
     person: str
     event_id: int
-    arrive: LocalTime
+    arrive: Blank[LocalTime]
     arrive_at: Blank[Iata]
-    leave: LocalTime
+    leave: Blank[LocalTime]
     leave_from: Blank[Iata]
-    stay: Blank[PlainName]
 
     @model_validator(mode='after')
-    def arrives_first(self) -> Self:
-        if self.arrive > self.leave:  # the same width and order of digits: as text, as time
-            raise ValueError(f'arrive {self.arrive} is after leave {self.leave}')
+    def said(self) -> Self:
+        if self.arrive is None and self.leave is None:
+            raise ValueError('neither when they arrive nor when they leave: a row says one of them at least')
+        if self.arrive_at is not None and self.arrive is None:
+            raise ValueError(f'arrive_at {self.arrive_at} without the time they arrive')
+        if self.leave_from is not None and self.leave is None:
+            raise ValueError(f'leave_from {self.leave_from} without the time they leave')
+        if self.arrive is not None and self.leave is not None and self.arrive > self.leave:
+            raise ValueError(f'arrive {self.arrive} is after leave {self.leave}')  # as text, as time
+        return self
+
+
+class StayRow(CsvRow):
+    """Where a member stays at a festival they plan, from a night to a night, each night by its evening's date: a
+    plain name (no link, handle or email) such as a hotel or "with friends". A member may stay at several places, one
+    after another; a member's nights never overlap, and fall between the day they arrive and the day before they leave
+    when they said them."""
+
+    FILE = 'pipeline/stays.csv'
+
+    person: str
+    event_id: int
+    first_night: Date
+    last_night: Date
+    place: PlainName
+
+    @model_validator(mode='after')
+    def nights_in_order(self) -> Self:
+        if self.first_night > self.last_night:
+            raise ValueError(f'first_night {self.first_night} is after last_night {self.last_night}')
         return self
 
 

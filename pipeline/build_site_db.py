@@ -16,7 +16,7 @@ import json
 import sys
 import tempfile
 import unicodedata
-from collections.abc import Generator, Mapping
+from collections.abc import Generator, Mapping, Sequence
 from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
@@ -39,7 +39,8 @@ from pipeline.records import (
     Promo,
     Rate,
     Seeded,
-    Trip,
+    StayRow,
+    Travel,
     day_of,
     now,
 )
@@ -369,16 +370,26 @@ create table community_seeded (
     status text not null check (status in ({plan}))
 ) strict;
 create index community_seeded_community on community_seeded(community_id);
--- how a member travels to a festival they plan (pipeline/trips.csv): arrive and leave as local times, to the minute
-create table trips (
+-- how a member travels to a festival they plan (pipeline/travel.csv): arrive and leave as local times, to the minute,
+-- either end null when not said
+create table travel (
     person_id integer not null references people(id) deferrable initially deferred,
     event_id integer not null references events(id) deferrable initially deferred,
-    arrive text not null,
+    arrive text,
     arrive_at text,
-    leave text not null check (leave >= arrive),
+    leave text check (leave >= arrive),
     leave_from text,
-    stay text,
+    check (arrive is not null or leave is not null),
     primary key (person_id, event_id)
+) strict, without rowid;
+-- where a member stays at a festival they plan (pipeline/stays.csv), from a night to a night by their evenings' dates
+create table stays (
+    person_id integer not null references people(id) deferrable initially deferred,
+    event_id integer not null references events(id) deferrable initially deferred,
+    first_night text not null,
+    last_night text not null check (last_night >= first_night),
+    place text not null,
+    primary key (person_id, first_night)
 ) strict, without rowid;
 create table seeded_artists (
     seeded_id integer not null references community_seeded(id) deferrable initially deferred,
@@ -917,7 +928,7 @@ def communities(x: Transaction, person_id: Mapping[str, int], key_id: Mapping[st
         'community_members',
         ({'community_id': community_id[r.community], 'person_id': person_id[r.person]} for r in members),
     )
-    trips(x, person_id, {r.person for r in members})
+    travel(x, person_id, {r.person for r in members})
     seeded = Seeded.read()
     known = set(x.column(int, 'select id from events'))
     for r in seeded:
@@ -946,22 +957,46 @@ def communities(x: Transaction, person_id: Mapping[str, int], key_id: Mapping[st
     )
 
 
-def trips(x: Transaction, person_id: Mapping[str, int], members: set[str]) -> None:
-    """How members travel (pipeline/trips.csv): a trip is a member's, to a festival they plan, one each. The people a
-    manager adds are no members, so they never have one."""
+def nights_kept(stays: Sequence[StayRow], by: Mapping[tuple[str, int], Travel]) -> None:
+    """A member's nights: between the day they arrive and the day before they leave, when they said them, and never
+    two places on one night."""
+    nights: dict[str, list[StayRow]] = {}
+    for r in stays:
+        t = by.get((r.person, r.event_id))
+        if t is not None and t.arrive is not None and r.first_night.isoformat() < t.arrive[:10]:
+            sys.exit(f'stays.csv: {r.person} stays from {r.first_night}, before they arrive on {t.arrive[:10]}')
+        if t is not None and t.leave is not None and r.last_night.isoformat() >= t.leave[:10]:
+            sys.exit(f'stays.csv: {r.person} stays the night of {r.last_night}, though they leave on {t.leave[:10]}')
+        for o in nights.get(r.person, []):
+            if r.first_night <= o.last_night and o.first_night <= r.last_night:
+                sys.exit(f'stays.csv: {r.person} stays at {r.place} and at {o.place} on the same night')
+        nights.setdefault(r.person, []).append(r)
+
+
+def travel(x: Transaction, person_id: Mapping[str, int], members: set[str]) -> None:
+    """How members travel and where they stay (pipeline/travel.csv, stays.csv): each row a member's, to a festival they
+    plan; one travel each; a member's nights never overlapping, and between the day they arrive and the day before they
+    leave when they said them. The people a manager adds are no members, so they never have either."""
     planned = {(r.person, r.event_id) for r in PlanRow.read()}
-    found = Trip.read()
-    seen: set[tuple[str, int]] = set()
-    for r in found:
+    trips, stays = Travel.read(), StayRow.read()
+
+    def theirs(file: str, r: Travel | StayRow) -> None:
         if r.person not in members:
-            sys.exit(f'trips.csv: {r.person} is no member of a community, and only a member registers a trip')
+            sys.exit(f'{file}: {r.person} is no member of a community, and only a member says how they travel')
         if (r.person, r.event_id) not in planned:
-            sys.exit(f'trips.csv: {r.person} has no plan for event {r.event_id} in plans.csv')
-        if (r.person, r.event_id) in seen:
-            sys.exit(f'trips.csv: a second trip of {r.person} to event {r.event_id}')
-        seen.add((r.person, r.event_id))
+            sys.exit(f'{file}: {r.person} has no plan for event {r.event_id} in plans.csv')
+
+    by: dict[tuple[str, int], Travel] = {}
+    for r in trips:
+        theirs('travel.csv', r)
+        if (r.person, r.event_id) in by:
+            sys.exit(f'travel.csv: a second travel of {r.person} to event {r.event_id}')
+        by[r.person, r.event_id] = r
+    for r in stays:
+        theirs('stays.csv', r)
+    nights_kept(stays, by)
     x.insert(
-        'trips',
+        'travel',
         (
             {
                 'person_id': person_id[r.person],
@@ -970,9 +1005,21 @@ def trips(x: Transaction, person_id: Mapping[str, int], members: set[str]) -> No
                 'arrive_at': r.arrive_at,
                 'leave': r.leave,
                 'leave_from': r.leave_from,
-                'stay': r.stay,
             }
-            for r in found
+            for r in trips
+        ),
+    )
+    x.insert(
+        'stays',
+        (
+            {
+                'person_id': person_id[r.person],
+                'event_id': r.event_id,
+                'first_night': r.first_night.isoformat(),
+                'last_night': r.last_night.isoformat(),
+                'place': r.place,
+            }
+            for r in stays
         ),
     )
 
@@ -1081,8 +1128,10 @@ DOCS = {
     'community_members': 'Who is a member of which community (pipeline/community_members.csv).',
     'community_seeded': 'The people a community’s manager added, who have not joined (pipeline/seeded.csv): one row '
     'per person and festival, by their first name; the community’s page names them as added by its manager.',
-    'trips': 'How a member travels to a festival they plan (pipeline/trips.csv): arrive and leave as local times to '
-    'the minute (YYYY-MM-DDTHH:MM), the airports when they fly (arrive_at, leave_from), and where they stay.',
+    'travel': 'How a member travels to a festival they plan (pipeline/travel.csv): arrive and leave as local times to '
+    'the minute (YYYY-MM-DDTHH:MM), either null when not said, and the airports when they fly (arrive_at, leave_from).',
+    'stays': 'Where a member stays at a festival they plan (pipeline/stays.csv): a place, from its first night to its '
+    'last, each by its evening’s date (YYYY-MM-DD); a member’s nights never overlap.',
     'seeded_artists': 'The artist records a person a manager added is, so a booking of theirs says they teach there.',
     'seeded_rows': 'Each person a manager added with booked_as, as plan_rows has it, and artist_id, the artist record '
     'their page is.',

@@ -75,15 +75,22 @@ export function relativeDay(today: string, day: string): string | null {
   return ahead > 1 && ahead < 7 - weekday(today) ? `this ${WEEKDAYS[weekday(day)]}` : null;
 }
 
-// the days someone is away for a festival: their trip's, from the day they arrive to the day they leave (local times,
-// YYYY-MM-DDTHH:MM), or else the festival's
+// what someone said of how they go to a festival: when they arrive and leave (local times, YYYY-MM-DDTHH:MM), each
+// when said, and the nights they stay, from the first to the last (by their evenings' dates), when said
+export interface Said {
+  arrive: string | null;
+  leave: string | null;
+  nights: { first: string; last: string } | null;
+}
+// the days someone is away for a festival: from the day they arrive, or else their first night, or else the
+// festival's first day; to the day they leave, or else the morning after their last night, or else its last day
 export const awayDays = (
   festival: { start_date: string; end_date: string },
-  trip?: { arrive: string; leave: string },
-): { from: string; to: string } =>
-  trip === undefined
-    ? { from: festival.start_date, to: festival.end_date }
-    : { from: trip.arrive.slice(0, 10), to: trip.leave.slice(0, 10) };
+  said?: Said,
+): { from: string; to: string } => ({
+  from: said?.arrive?.slice(0, 10) ?? said?.nights?.first ?? festival.start_date,
+  to: said?.leave?.slice(0, 10) ?? (said?.nights ? addDays(said.nights.last, 1) : festival.end_date),
+});
 
 // someone away from a day to a day; who is the one person they are, however many festivals they go to
 export interface Away {
@@ -128,12 +135,12 @@ export function busiest<A extends Away>(
 // the last to leave, or its end when that is later
 export function spanOf(
   festival: { start_date: string; end_date: string },
-  trips: readonly { arrive: string; leave: string }[],
+  aways: readonly { from: string; to: string }[],
 ): { from: string; to: string } {
   const sooner = (x: string, y: string) => (byText(x, y) <= 0 ? x : y),
     later = (x: string, y: string) => (byText(x, y) >= 0 ? x : y);
   return {
-    from: trips.reduce((d, t) => sooner(d, t.arrive.slice(0, 10)), festival.start_date),
-    to: trips.reduce((d, t) => later(d, t.leave.slice(0, 10)), festival.end_date),
+    from: aways.reduce((d, a) => sooner(d, a.from), festival.start_date),
+    to: aways.reduce((d, a) => later(d, a.to), festival.end_date),
   };
 }
