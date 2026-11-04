@@ -95,30 +95,38 @@ time (the day Christina flies in), the stroke from that day, its start fading, t
 hears "arrival not said", "departure not said" or "arrives Fri 6 Nov, time not said". The axis is the calendar's: the
 festival's days in the accent, a dot under a day only travelled on, dates not bold. A dotted underline is names behind a
 text: a line called by what it is, or places counted, opens them, by place when they stay apart, while the pointer is
-over it and from a tap or a key, until the next or Escape, in a box on a row of its own under the line; a solid
-underline is a link leaving the card. Muted text is a detail or an absence. A line of three people or fewer always names
-its units, and with three units or fewer every line does. Otherwise a line of more than three people is "Everyone" when
-it is the only line, "Everyone else" when it is more than half of everyone, and else called by its number ("5 people").
-The named lines come first, by arrival, then departure, then first name; then those called by number, by arrival; then
-"Everyone else"; and those who have not said at the very bottom. Where a line stays is written when it is one or two
-places ("Airbnb → Scandic Holberg" for one person's way; "Scandic Holberg 8 · Comfort Xpress 2 · 1 not said"), beside
-the stroke on a computer, with no heading over it; under the name on a phone, which writes one and counts two; and
-counted when more ("3 places"), the count opening the names by place; the whole is in its title and to a screen reader.
-When the people of a trip stay at two places or more, two icon buttons at the top of its card, a plane ("By travel") and
-a bed ("By place"), show the same people by where they stay: a line a place, the most people first and "Not said" last,
-the place the line's name and its people under it (three or fewer named, more called by number, which opens them with
-each one's own nights when not all of the place's: "Nora (Fri–Sun)"), and one stroke over the nights anyone stays there,
-from the evening of the first to the morning after the last, its ends their weekdays; someone who moves is on each
-place's line for their nights there. The card keeps the view chosen for the visit. A screen reader hears the names, and
-the rest in words the page does not show: each line in and out and where its people stay, and who has not said, a line
-called by what it is by its people too; by place, each place, its nights and who stays there. While a card is open its
-row says only how many go and who teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The
-festival's name opens its card on the festival's line-up and prices, its own card opened in place, and folds them away
-again; the next trip's card opens on who travels, its line-up folded.
+over it and from a tap or a key, until the next or Escape, in a small card (each place a small heading, those who said
+none last, each name with its own nights, muted, when not all of its place's: "Nora · Fri–Sun"; two columns when many):
+on a phone a row of its own under the line; on a computer floating by its text, below its line or above it, never over
+it, inside the trip's card, or in the flow when the trip's card has no room for it; a solid underline is a link leaving
+the card. Muted text is a detail or an absence. A line of three people or fewer always names its units, and with three
+units or fewer every line does. Otherwise a line of more than three people is "Everyone" when it is the only line,
+"Everyone else" when it is more than half of everyone, and else called by its number ("5 people"). The named lines come
+first, by arrival, then departure, then first name; then those called by number, by arrival; then "Everyone else"; and
+those who have not said at the very bottom. Where a line stays is written when it is one or two places ("Airbnb →
+Scandic Holberg" for one person's way; "Scandic Holberg 8 · Comfort Xpress 2 · 1 not said"), beside the stroke on a
+computer, with no heading over it; under the name on a phone, which writes one and counts two; and counted when more ("3
+places"), the count opening the names by place; the whole is in its title and to a screen reader. When the people of a
+trip stay at two places or more, two icon buttons at the top of its card, a plane ("By travel") and a bed ("By place"),
+show the same people by where they stay: a line a place, the most people first and "Not said" last, the place the line's
+name and its people under it (three or fewer named, more called by number, which opens them with each one's own nights
+when not all of the place's, as in the card above), and one stroke over the nights anyone stays there, from the evening
+of the first to the morning after the last, its ends their weekdays; someone who moves is on each place's line for their
+nights there. The card keeps the view chosen for the visit. A screen reader hears the names, and the rest in words the
+page does not show: each line in and out and where its people stay, and who has not said, a line called by what it is by
+its people too; by place, each place, its nights and who stays there. While a card is open its row says only how many go
+and who teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The festival's name opens its
+card on the festival's line-up and prices, its own card opened in place, and folds them away again; the next trip's card
+opens on who travels, its line-up folded.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page
 reads its community in the shape the server will answer with, so only where it comes from changes then.
+
+Its Share button gives the community's page for a shared link, `…/c/<key>/`, which shows its own card in chat apps and
+goes on at once to its page (The site: the share card and the icons). That card is its name alone, so members joining
+and plans changing leave it as it is; when a community is renamed, draw it again: `mise run render:design`, then
+`mise run generate`.
 
 Nothing lists communities: a community's page is reached by its link only. Until the server can check who is a member,
 the link is the only thing that keeps it to them, as it is for a person's plans page.

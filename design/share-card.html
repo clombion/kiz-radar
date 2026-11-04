@@ -15,9 +15,18 @@ h1{position:absolute;left:80px;top:188px;width:520px;margin:0;font-size:60px;lin
 <h1>Find your next <span class="dance">Kizomba</span> festival</h1>
 <p class="sub">Choose by artist, DJ or flight price from <span id="home"></span></p>
 <script>
-const { places: PLACES, home: [HOME, HOME_LAT, HOME_LON] } = window.DRAWN; // [lat, lon, festivals] per city, and
-// the home city where flights leave from, its airport's place: set by design/render.cjs
+// [lat, lon, festivals] per city, and the home city where flights leave from, its airport's place: set by
+// design/render.cjs; or a community's name alone, for its card (public/c/<key>/share.png), the land with no festival
+// on it, so that nothing but its name changes it
+const { places: PLACES, home: [HOME, HOME_LAT, HOME_LON], community: COMMUNITY } = window.DRAWN;
 document.getElementById('home').textContent = HOME;
+if (COMMUNITY) {
+  const h1 = document.querySelector('h1');
+  h1.textContent = COMMUNITY;
+  document.querySelector('.sub').remove();
+  // a long name made smaller until it fits above where the subtitle was
+  for (let size = 60; h1.offsetHeight > 330 && size > 30; size -= 4) h1.style.fontSize = `${size - 4}px`;
+}
 // Mercator, fitted so Europe sits right of the text
 const lon0 = -47, lon1 = 35, lat1 = 63.2, W = 1200;
 const Y = la => Math.log(Math.tan(Math.PI / 4 + la * Math.PI / 360));
@@ -36,6 +45,7 @@ window.ready = fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-5
     }
   }
   el('path', { d, fill: '#fdf9f2', stroke: '#d5c7b2', 'stroke-width': 1 });
+  if (COMMUNITY) return;
   const [bx, by] = px(HOME_LON, HOME_LAT);
   for (const [la, lo, n] of PLACES) { const [x, y] = px(lo, la); el('line', { x1: bx, y1: by, x2: x, y2: y, stroke: '#7a2850', 'stroke-opacity': .07, 'stroke-width': 1 }); }
   for (const [la, lo, n] of [...PLACES].sort((a, b) => b[2] - a[2])) { const [x, y] = px(lo, la);

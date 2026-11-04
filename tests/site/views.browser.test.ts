@@ -7,6 +7,8 @@ import { communityView } from '../../site/communities.ts';
 import { exec, load, loadSite, one, sql } from '../../site/db.ts';
 import { h } from '../../site/dom.ts';
 import { festivals } from '../../site/festivals.ts';
+import { ganttByPlace } from '../../site/gantt.ts';
+import { byPlace } from '../../site/roster.ts';
 import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str } from '../../site/rows.ts';
 
@@ -295,7 +297,7 @@ test('a link to no community says so', () => {
   expect(said(communityPage('no-such-community-here'))).toBe('No community at this link.');
 });
 
-test('the community’s page shares its link, copied when the browser has no share sheet', async () => {
+test('the community’s page shares its page for a shared link, copied when the browser has no share sheet', async () => {
   const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
   const share = [...root.querySelectorAll('button')].find((b) => b.textContent === 'Share this page');
   const copied = vi.fn(() => Promise.resolve());
@@ -303,7 +305,8 @@ test('the community’s page shares its link, copied when the browser has no sha
   try {
     share?.click();
     await expect.poll(() => share?.textContent).toBe('Link copied');
-    expect(copied).toHaveBeenCalledWith(location.href);
+    // its page for a shared link, which chat apps read for its card, not the site's hash, which they never see
+    expect(copied).toHaveBeenCalledWith(new URL(`c/${COMMUNITY}/`, location.href.split('#')[0]).href);
   } finally {
     vi.unstubAllGlobals();
   }
@@ -902,6 +905,12 @@ test('a trip’s bars are thin, and the chart in words is for a screen reader al
   });
 });
 
+// a card of names, as it reads: each place's heading as "# place", each name (with its own nights)
+const cardOf = (list: Element | null | undefined) =>
+  [...(list?.querySelectorAll('.gantt-who-place, .gantt-who-list li') ?? [])].map((x) =>
+    x.matches('.gantt-who-place') ? `# ${said(x)}` : (said(x) ?? ''),
+  );
+
 // what KUOF's roster shows with two more people added: its lines, its rule, and its collective line's names as they
 // are shown and hidden, by a tap, Escape and the pointer, each time as [aria-expanded, the names seen]
 async function collectiveOf(root: HTMLElement) {
@@ -928,15 +937,16 @@ async function collectiveOf(root: HTMLElement) {
     box.right <= card.right &&
     box.top >= card.top &&
     box.bottom <= card.bottom;
-  // and over nothing else of the roster: the other cells it meets, by their text
-  const meets = (r: DOMRect) =>
+  // and never over its own line: its name and its stroke
+  const meets = (r: DOMRect | undefined) =>
     box !== undefined &&
+    r !== undefined &&
     r.width > 0 &&
     Math.min(r.right, box.right) - Math.max(r.left, box.left) > 0.5 &&
     Math.min(r.bottom, box.bottom) - Math.max(r.top, box.top) > 0.5;
-  const covers = [...(row?.querySelectorAll('.gantt > *') ?? [])]
-    .filter((c) => c !== list && meets(c.getBoundingClientRect()))
-    .map((c) => said(c));
+  const own = who?.closest('.gantt-name');
+  const coversItsLine = meets(own?.getBoundingClientRect()) || meets(own?.nextElementSibling?.getBoundingClientRect());
+  const floats = list ? getComputedStyle(list).position : '';
   who?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
   states.push(state());
   if (who) await userEvent.hover(who);
@@ -948,13 +958,46 @@ async function collectiveOf(root: HTMLElement) {
     unsaid: lines.map((n) => n.matches('.gantt-unsaid')),
     silent: ganttOf(row).bars.at(-1),
     inCard,
-    covers,
+    coversItsLine,
+    floats,
+    columns: list?.querySelector('.gantt-who-list')
+      ? getComputedStyle(list.querySelector('.gantt-who-list') ?? list).columnCount
+      : '',
     label,
-    names: said(list),
+    names: cardOf(list),
     states,
     words: said(row?.querySelector('.gantt-said')),
   };
 }
+
+test('on a computer the card of names floats by its text, in the trip’s card, over no part of its own line', async () => {
+  await atWidth(1200, async () => {
+    // Cédric and Christina flying apart, and five people added: "Everyone else", the third line, its card above it
+    const apart: readonly Planted[] = [
+      ['cedric', 19_033, '2026-11-19T17:05', '2026-11-23T09:40', 'Scandic Holberg'],
+      ['christina', 19_033, '2026-11-20T09:00', '2026-11-23T09:40', 'Scandic Holberg'],
+    ];
+    const added = (['Ola', 'Kari'] as const).map((n) => [n, 19_033] as const);
+    const root = withTrips(apart, () => withAdded(added, () => onDay('2026-11-01', () => communityPage(COMMUNITY))));
+    document.body.append(root);
+    const seen = await collectiveOf(root).finally(() => root.remove());
+    expect(seen.lines).toEqual(['Cédric Scandic Holberg', 'Christina Scandic Holberg', 'Everyone else']);
+    expect([seen.floats, seen.inCard, seen.coversItsLine]).toEqual(['absolute', true, false]);
+    // five names: two columns of them
+    expect(seen.columns).toBe('2');
+  });
+});
+
+test('on a computer a card of names with no room to float by its text in the trip’s card goes in the flow', async () => {
+  await atWidth(1200, async () => {
+    // the couple, and ten people added: two lines, and ten names, too many to float above or below the last
+    const added = ['Ola', 'Kari', 'Per', 'Nils', 'Eva', 'Liv', 'Siri'].map((n) => [n, 19_033] as const);
+    const root = withTrips(TO_KUOF, () => withAdded(added, () => onDay('2026-11-01', () => communityPage(COMMUNITY))));
+    document.body.append(root);
+    const seen = await collectiveOf(root).finally(() => root.remove());
+    expect([seen.floats, seen.inCard, seen.coversItsLine]).toEqual(['static', true, false]);
+  });
+});
 
 test('a roster of more than three, its biggest line of more than three people "Everyone else", names them on demand', async () => {
   for (const width of [1200, 390])
@@ -973,11 +1016,13 @@ test('a roster of more than three, its biggest line of more than three people "E
       expect([seen.silent?.fades, seen.silent?.said]).toEqual([[true, true], '']);
       // its label as dark as the text, dotted under as the other names
       expect(seen.label).toEqual([true, 'dotted']);
-      // its names: hidden; shown by a tap, under the line in the card and over nothing, hidden again by Escape; shown while the pointer is over
-      // it; and in the words
-      expect(seen.names).toBe('Kari, Maja, Ola, Ragnhild and Tonje');
+      // its names, a list: hidden; shown by a tap, hidden again by Escape; shown while the pointer is over it; and in
+      // the words
+      expect(seen.names).toEqual(['Kari', 'Maja', 'Ola', 'Ragnhild', 'Tonje']);
+      // a card in the trip's card, never over its own line: on a phone in the flow, on a computer floating by its text
       expect(seen.inCard).toBe(true);
-      expect(seen.covers).toEqual([]);
+      expect(seen.coversItsLine).toBe(false);
+      expect(seen.floats).toBe(width < 700 ? 'static' : 'absolute');
       expect(seen.states).toEqual([
         ['false', false],
         ['true', true],
@@ -1254,9 +1299,13 @@ test('two places are written beside the stroke, and counted under the name on a 
       expect(linesOf(root).under[0]).toEqual(['2 places', true]);
       const count = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-under button');
       count?.click();
-      expect(said(document.getElementById(count?.getAttribute('aria-controls') ?? ''))).toBe(
-        'Comfort Xpress Oslo Sentrum Christina · Scandic Holberg Cédric',
-      );
+      // a small card of names by place: each place a heading, then its names
+      expect(cardOf(document.getElementById(count?.getAttribute('aria-controls') ?? ''))).toEqual([
+        '# Comfort Xpress Oslo Sentrum',
+        'Christina',
+        '# Scandic Holberg',
+        'Cédric',
+      ]);
       expect(count ? getComputedStyle(count).textDecorationStyle : '').toBe('dotted');
     },
     flown,
@@ -1391,4 +1440,31 @@ test('a card whose people stay at two places or more can be seen by place, from 
     flown,
     APART,
   );
+});
+
+test('by place, the names a count opens say each one’s own nights when they are not all of the place’s', () => {
+  // five at the Scandic, Thursday to Sunday nights, but Nora from Friday
+  const stay = (first: string) => [{ first, last: '2026-11-22', place: 'Scandic Holberg' }];
+  const goes = ['Ann', 'Bo', 'Cy', 'Di', 'Nora'].map((name) => ({
+    person: name,
+    name,
+    couple: null,
+    travel: null,
+    stays: stay(name === 'Nora' ? '2026-11-20' : '2026-11-19'),
+  }));
+  const grid = ganttByPlace({
+    from: '2026-11-19',
+    to: '2026-11-23',
+    festival: { start_date: '2026-11-20', end_date: '2026-11-22' },
+    place: 'Oslo',
+    describedBy: 'places',
+    seed: '1',
+    places: byPlace(goes),
+    named: (u) => u.name,
+  });
+  const count = grid.querySelector<HTMLElement>('.gantt-who');
+  count?.click();
+  expect(said(count)).toBe('5 people');
+  expect(cardOf(grid.querySelector('.gantt-who-names'))).toEqual(['Ann', 'Bo', 'Cy', 'Di', 'Nora · Fri–Sun']);
+  expect(said(grid.querySelector('.gantt-who-nights'))).toBe('· Fri–Sun');
 });

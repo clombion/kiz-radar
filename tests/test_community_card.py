@@ -1,0 +1,81 @@
+"""A community's shared link: its page at public/c/<key>/ and its image, the site's share card with its name alone,
+drawn again only when its name, or the site's card, changes."""
+
+import re
+import shutil
+from pathlib import Path
+
+import pytest
+
+from pipeline import ROOT, generate
+from pipeline.records import Community
+
+KEY = 'frost-lantern-river-maple'
+NAME = 'Norwegians in festivals'
+
+
+@pytest.fixture
+def communities(data_folder: Path) -> list[Community]:
+    """The committed communities, in the test's data folder."""
+    (data_folder / 'pipeline').mkdir(exist_ok=True)
+    _ = shutil.copy(ROOT / Community.FILE, data_folder / Community.FILE)
+    return Community.read()
+
+
+def test_every_community_has_its_card_drawn_from_its_name_and_the_sites_card(communities: list[Community]) -> None:
+    """The committed images (what each was drawn from, public/c/<key>/share.json) are of the communities' names and
+    of the site's card as they are: a name, or design/share-card.html, changed without mise run render:design is
+    caught here."""
+    assert [c.key for c in communities] == [KEY]
+    assert generate.stale_cards() == []
+    assert (generate.COMMUNITY_PAGES / KEY / 'share.png').stat().st_size > 10_000
+
+
+def test_a_card_is_stale_when_its_name_or_the_sites_card_changes_and_only_then(
+    communities: list[Community], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A new name, or another site card: the card is stale; a card of a community that is gone, too; and its members
+    and trips are not what it was drawn from, so no change to them makes it stale."""
+    folder = tmp_path / 'c'
+    _ = shutil.copytree(generate.COMMUNITY_PAGES, folder, ignore=shutil.ignore_patterns('*.png', '*.js', '*.html'))
+    assert generate.stale_cards(folder) == []
+    renamed = communities[0].model_copy(update={'name': 'Norwegians at festivals'})
+    Community.write([renamed])
+    assert generate.stale_cards(folder) == [KEY]
+    Community.write(communities)
+    card = tmp_path / 'share-card.html'
+    _ = card.write_text(generate.SHARE_CARD.read_text(encoding='utf-8') + '\n', encoding='utf-8')
+    monkeypatch.setattr(generate, 'SHARE_CARD', card)
+    assert generate.stale_cards(folder) == [KEY]
+    monkeypatch.undo()
+    drawn = (folder / KEY / 'share.json').read_text(encoding='utf-8')
+    assert set(generate.Drawn.model_validate_json(drawn).model_dump()) == {'key', 'name', 'design'}
+    (folder / 'gone').mkdir()
+    _ = (folder / 'gone' / 'share.json').write_text(drawn, encoding='utf-8')
+    assert generate.stale_cards(folder) == ['gone']
+
+
+def test_a_communitys_page_names_it_shows_its_card_and_sends_on_to_it(communities: list[Community]) -> None:
+    """Its title and og:title its name, its description the one template of its name, its image its card, a large
+    one; no search engine lists it; and it goes on at once to its page on the site."""
+    page = generate.community_page(communities[0])
+    meta = dict(re.findall(r'<meta (?:property|name)="([^"]+)" content="([^"]*)"', page))
+    assert f'<title>{NAME} · Kiz Radar</title>' in page
+    assert meta['og:title'] == NAME
+    assert meta['og:description'] == f'{NAME} · festival plans shared on Kiz Radar'
+    assert meta['og:image'] == f'{generate.SITE}c/{KEY}/share.png'
+    assert meta['og:url'] == f'{generate.SITE}c/{KEY}/'
+    assert meta['twitter:card'] == 'summary_large_image'
+    assert meta['robots'] == 'noindex'
+    assert meta['kiz-community'] == KEY
+    assert f'content="0; url=../../#community/{KEY}"' in page
+    assert '<script src="../redirect.js"></script>' in page
+    assert (generate.COMMUNITY_PAGES / KEY / 'index.html').read_text(encoding='utf-8') == page
+
+
+def test_a_communitys_description_is_its_name_escaped_in_the_one_template() -> None:
+    """Any name reads well in it, and a name's markup stays text."""
+    odd = Community(key='a-b-c-d', name='Kiz & "friends"', manager='cedric', note='')
+    meta = dict(re.findall(r'<meta (?:property|name)="([^"]+)" content="([^"]*)"', generate.community_page(odd)))
+    assert meta['og:description'] == 'Kiz &amp; &quot;friends&quot; · festival plans shared on Kiz Radar'
+    assert meta['og:title'] == 'Kiz &amp; &quot;friends&quot;'

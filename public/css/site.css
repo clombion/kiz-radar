@@ -2532,6 +2532,7 @@ html:has(dialog.search[open]) {
 /* the roster: a line a party, its name, its days and, on a computer, where it stays beside them (on a phone, under
    its name, and its airports left out) */
 .gantt {
+  position: relative; /* what the cards of names float in, on a computer */
   display: grid;
   grid-template-columns: 6.4rem minmax(0, 1fr);
   max-width: 48rem;
@@ -2682,8 +2683,9 @@ html:has(dialog.search[open]) {
   background: var(--accent-soft);
   color: var(--accent);
 }
-/* a line called collectively ("Everyone else"): in the text's colour, underlined as the other names; its names, while
-   the pointer is over it or once opened, in a box on a row of their own under its line, which the card grows to hold */
+/* a text with names behind it ("Everyone else", "5 people", "3 places"): in the text's colour, dotted under as the
+   other names; its names, while the pointer is over it or once opened, in a small card: on a phone a row of its own
+   under its line, which the card grows to hold; on a computer floating by it (gantt.ts places it) */
 .gantt-who {
   color: var(--text);
   white-space: nowrap;
@@ -2692,18 +2694,58 @@ html:has(dialog.search[open]) {
   display: none;
   grid-column: 1 / -1;
   justify-self: start;
-  max-width: 100%;
-  padding: 0.3rem 0.5rem;
+  max-width: min(22rem, 100%);
+  padding: 0.55rem 0.75rem;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 10px;
   background: var(--surface);
-  box-shadow: 0 4px 12px rgb(var(--shadow-ink) / 0.18);
+  box-shadow: 0 8px 24px rgb(var(--shadow-ink) / 0.18);
   color: var(--text);
-  font-size: 0.74rem;
-  line-height: 1.3;
+  font-size: 0.78rem;
+  line-height: 1.35;
 }
 .gantt-who-names.gantt-open {
   display: block;
+}
+/* a place's small heading, then its names in columns when there are many, each one's own nights muted */
+.gantt-who-place {
+  margin: 0.45rem 0 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+.gantt-who-place:first-child {
+  margin-top: 0;
+}
+.gantt-who-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gantt-who-list li {
+  break-inside: avoid;
+}
+.gantt-who-nights {
+  color: var(--muted);
+}
+@media (min-width: 700px) {
+  .gantt-who-names {
+    position: absolute;
+    z-index: var(--z-popover);
+    width: max-content;
+    max-width: 22rem;
+  }
+  /* many names: two columns of them */
+  .gantt-who-names.gantt-who-many {
+    width: 22rem;
+  }
+  .gantt-who-many .gantt-who-list {
+    column-gap: 1.25rem;
+    column-count: 2;
+  }
+  /* no room in the trip's card to float by its text: in the flow, as on a phone */
+  .gantt-who-names.gantt-who-flow {
+    position: static;
+  }
 }
 .gantt-said {
   color: var(--muted);

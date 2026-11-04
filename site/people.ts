@@ -50,13 +50,14 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
   );
 }
 
-// A button that shares this page's link under a title: the device's share sheet, or else the link copied.
-export function shareButton(label: string, title: string): HTMLButtonElement {
+// A button that shares a link under a title, this page's (as it is when pressed) unless another is given: the
+// device's share sheet, or else the link copied.
+export function shareButton(label: string, title: string, link?: string): HTMLButtonElement {
   const share = button(
     {
       class: 'more-btn',
       onclick: () => {
-        const url = location.href;
+        const url = link ?? location.href;
         (typeof navigator.share === 'function'
           ? navigator.share({ title, url })
           : navigator.clipboard.writeText(url).then(() => {

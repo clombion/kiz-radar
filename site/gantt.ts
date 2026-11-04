@@ -50,17 +50,72 @@ const counted = (buckets: readonly Bucket<unknown>[]): string =>
     ? (buckets[0]?.place ?? '')
     : buckets.map((b) => (b.place === null ? `${b.people} not said` : `${b.place} ${b.people}`)).join(' · ');
 
-// A list of names behind a text, on a row of the roster under its line, covering nothing, and the texts that open it
-// (dotted under): shown while the pointer is over one and from a tap or a key until the next (or Escape).
+// names behind a text, in groups: each a place (null: one list, with no heading) and its names, each with its own
+// nights when they are not all of its place's
+interface Group {
+  heading: string | null;
+  names: { name: Kid; nights: string | null }[];
+}
+const WIDE = '(min-width: 700px)'; // a screen with room for the card to float by its text
+
+// Where the card of names goes on a computer: under its text's line, from the text's left, inside the trip's card;
+// above the line when the card has no room below it; never over the line itself; and in the roster's flow, as on a
+// phone, when the card has room neither below nor above, so that the trip's card grows to hold it.
+function place(list: HTMLElement, from: HTMLElement): void {
+  const grid = from.closest<HTMLElement>('.gantt');
+  const card = from.closest<HTMLElement>('.trip-body') ?? grid;
+  const line = from.closest<HTMLElement>('.gantt-name, .gantt-stay') ?? from;
+  if (grid === null || card === null) return;
+  const g = grid.getBoundingClientRect(),
+    c = card.getBoundingClientRect(),
+    l = line.getBoundingClientRect(),
+    t = from.getBoundingClientRect(),
+    b = list.getBoundingClientRect();
+  const gap = 4;
+  const below = l.bottom + gap,
+    above = l.top - gap - b.height;
+  const fits = below + b.height <= c.bottom || above >= c.top;
+  toggle(list, 'gantt-who-flow', !fits);
+  if (!fits) return;
+  const top = below + b.height <= c.bottom ? below : above;
+  const left = Math.max(c.left, Math.min(t.left, c.right - b.width));
+  list.style.top = `${top - g.top}px`;
+  list.style.left = `${left - g.left}px`;
+}
+
+// A small card of names behind a text, and the texts that open it (dotted under): shown while the pointer is over one
+// and from a tap or a key until the next (or Escape). Grouped by place when they stay apart, each place a small
+// heading, those who said none last; each name with its own nights in muted text when they are not all of its
+// place's. On a phone it is in the roster's flow, on a row of its own under its line; on a computer it floats by its
+// text, inside the trip's card.
 function behind(
   id: string,
-  names: readonly Kid[],
+  groups: readonly Group[],
 ): { list: HTMLElement; opener: (said: Kid) => HTMLElement; used: () => boolean } {
-  const list = h('div', { class: 'gantt-who-names', id }, names);
+  const many = groups.reduce((n, g) => n + g.names.length, 0) > 4;
+  const list = h(
+    'div',
+    { class: ['gantt-who-names', many && 'gantt-who-many'], id },
+    groups.map((g) => [
+      g.heading === null ? null : h('p', { class: 'gantt-who-place' }, g.heading),
+      h(
+        'ul',
+        { class: 'gantt-who-list' },
+        g.names.map((n) =>
+          h('li', {}, n.name, n.nights === null ? null : h('span', { class: 'gantt-who-nights' }, ` · ${n.nights}`)),
+        ),
+      ),
+    ]),
+  );
   const openers: HTMLElement[] = [];
-  let over = false;
-  const open = () => openers.some((o) => o.getAttribute('aria-expanded') === 'true');
-  const shown = () => toggle(list, 'gantt-open', over || open());
+  let over: HTMLElement | null = null;
+  const open = () => openers.find((o) => o.getAttribute('aria-expanded') === 'true') ?? null;
+  const shown = () => {
+    const by = over ?? open();
+    toggle(list, 'gantt-open', by !== null);
+    toggle(list, 'gantt-who-flow', false);
+    if (by !== null && matchMedia(WIDE).matches) place(list, by);
+  };
   const opener = (said: Kid): HTMLElement => {
     const o = button(
       {
@@ -69,15 +124,15 @@ function behind(
         'aria-controls': id,
         onclick: () => {
           const on = o.getAttribute('aria-expanded') !== 'true';
-          for (const x of openers) x.setAttribute('aria-expanded', String(on));
+          for (const x of openers) x.setAttribute('aria-expanded', String(on && x === o));
           shown();
         },
         onmouseenter: () => {
-          over = true;
+          over = o;
           shown();
         },
         onmouseleave: () => {
-          over = false;
+          over = null;
           shown();
         },
       },
@@ -212,14 +267,13 @@ export function gantt<P>(
     const names = joined(l.units.map(t.named));
     const said = l.buckets.filter((b) => b.place !== null);
     // its people by where they stay, when they stay apart: "Scandic Holberg A, B · Not said C"
-    const byStay: Kid[] = l.buckets.map((b, j) => [
-      j > 0 ? ' · ' : null,
-      h('b', {}, b.place ?? 'Not said'),
-      ' ',
-      joined(b.units.map(t.named)),
-    ]);
+    const byStay: Group[] = l.buckets.map((b) => ({
+      heading: b.place ?? 'Not said',
+      names: b.units.map((u) => ({ name: t.named(u), nights: null })),
+    }));
     const n = new Set(said.flatMap((b) => b.stays.map((s) => s.place))).size;
-    const list = behind(`${t.describedBy}-names-${i}`, l.buckets.length > 1 || n > 1 ? byStay : names);
+    const plain: Group[] = [{ heading: null, names: l.units.map((u) => ({ name: t.named(u), nights: null })) }];
+    const list = behind(`${t.describedBy}-names-${i}`, l.buckets.length > 1 || n > 1 ? byStay : plain);
     const full = counted(l.buckets);
     // its places, written when at most `most` of them, else counted, the count opening its names by place
     const places = (most: number): Kid =>
@@ -250,12 +304,13 @@ export function ganttByPlace<P>(t: Frame & { places: readonly Place<P>[]; named:
   const d = drawing(t);
   const line = (p: Place<P>, i: number): Kid[] => {
     const { nights } = p;
-    // a unit with its own nights there, when they are not all of the place's: "Nora (Fri–Sun)"
-    const own = (u: Unit<P>): Kid => {
+    // a unit with its own nights there, when they are not all of the place's: "Nora · Fri–Sun"
+    const own = (u: Unit<P>) => {
       const mine = ownNights(p, u);
-      return mine === null ? t.named(u) : [t.named(u), ` (${day3(mine.first)}–${day3(mine.last)})`];
+      return { name: t.named(u), nights: mine === null ? null : `${day3(mine.first)}–${day3(mine.last)}` };
     };
-    const list = p.called === null ? null : behind(`${t.describedBy}-names-${i}`, joined(p.units.map(own)));
+    const list =
+      p.called === null ? null : behind(`${t.describedBy}-names-${i}`, [{ heading: null, names: p.units.map(own) }]);
     return [
       h(
         'div',

@@ -35,6 +35,10 @@ const friendsHref = () => hash('friends');
 export const personHref = (key: string) => hash(`friends/${key}`);
 // a community's page, which only its link reaches: nothing lists communities
 export const communityHref = (key: string, params?: Params) => hash(`community/${key}`, params);
+// a community's page for a shared link (public/c/<key>/, pipeline/generate.py), which a chat app reads for its card and
+// which goes on at once to communityHref: the link its Share button gives, beside the page the site is at
+export const communityShareHref = (key: string) =>
+  new URL(`c/${encodeURIComponent(key)}/`, location.href.split('#')[0]).href;
 export const countriesHref = (params?: Params) => hash('countries', params);
 
 // the views a tab or a swipe goes to, by name, and the tabs of the header

@@ -58,6 +58,7 @@ from pipeline.records import (
     Answered,
     AskedPrices,
     Batch,
+    Community,
     GenreFound,
     Group,
     Pair,
@@ -1249,6 +1250,7 @@ def test_generate_writes_what_differs_and_check_names_it(
     built = tmp_path / 'built.md'
     monkeypatch.setattr(generate, 'ROOT', tmp_path)
     monkeypatch.setattr(generate, 'FILES', {built: lambda: 'from the table\n'})
+    Community.write([])  # no community, so no community's page
     monkeypatch.setattr('sys.argv', ['generate', '--check'])
     with pytest.raises(SystemExit, match=r'built\.md differs from what it is built from'):
         generate.main()

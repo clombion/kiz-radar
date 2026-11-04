@@ -70,5 +70,19 @@ publish between the two) is refused with "reload the page".
 
 A shared link shows `public/share-card.png`, drawn from `design/share-card.html` with a map of the festivals coming up;
 the icons come from `public/mark.svg`. To redraw them, run `mise run render:design` (it builds the site database first,
-and draws with the repository's Playwright); it also makes `public/loading.svg`. The fonts, Inter and Caveat, are served
-from `public/fonts` under the SIL Open Font License.
+and draws with the repository's Playwright); it also makes `public/loading.svg`.
+
+A community's shared link has a page of its own, `public/c/<key>/index.html` (published at `…/kiz-radar/c/<key>/`),
+since a static host serves the page at its path, never its hash, and chat apps read a page without its scripts. Its
+title and `og:title` are the community's name, its description that name in one template ("Norwegians in festivals ·
+festival plans shared on Kiz Radar", `COMMUNITY_SAID` in `pipeline/generate.py`), its image `public/c/<key>/share.png`,
+a large one; no search engine lists it, and it sends a visitor at once to `#community/<key>` (a refresh, and
+`public/c/redirect.js`, which the page's Content Security Policy lets run, as nothing else). The community page's Share
+button gives this link. The image is the site's share card with the community's name in place of its title and subtitle,
+on the land with no festival on it: nothing of a community but its name is on its page or its image, so members joining
+and plans changing leave both as they are. `mise run generate` makes the page from `pipeline/communities.csv`;
+`mise run render:design` draws the image and writes beside it what it was drawn from, `share.json` (the name, and the
+digest of `design/share-card.html`). Both are committed, as the site's share card is. The tests compare each
+`share.json` with the communities and the site's card (`stale_cards`), so a community renamed, or the card's design
+changed, without drawing again fails them. The fonts, Inter and Caveat, are served from `public/fonts` under the SIL
+Open Font License.

@@ -26,7 +26,14 @@ import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
 import { couplesAmong, doingTag, type Goer, goersInline, namesOf } from './plans.ts';
 import { byPlace, type Flights, type Goes, type Line, type Place, roster, type Stay, type Unit } from './roster.ts';
-import { artistHref, communityHref, eventOnMapHref, readState, showInAddressBar } from './routes.ts';
+import {
+  artistHref,
+  communityHref,
+  communityShareHref,
+  eventOnMapHref,
+  readState,
+  showInAddressBar,
+} from './routes.ts';
 import { type Booked, booked, EVENT, num, opt, str } from './rows.ts';
 import { dayMonth, dayParts, dayRange, monthShort, monthYear, place, weekDay } from './ui.ts';
 import { joined, plural } from './wording.ts';
@@ -216,7 +223,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
       h(
         'div',
         { class: 'share-row' },
-        shareButton('Share this page', c.name),
+        shareButton('Share this page', c.name, communityShareHref(c.key)),
         h(
           'span',
           {
