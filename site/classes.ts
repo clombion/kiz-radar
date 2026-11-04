@@ -255,6 +255,7 @@ export type ClassName =
   | 'sheet-row'
   | 'sheet-title'
   | 'show-more'
+  | 'shower'
   | 'shown'
   | 'site-footer'
   | 'size'

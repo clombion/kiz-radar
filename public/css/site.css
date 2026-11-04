@@ -3500,3 +3500,9 @@ svg.defs {
 .review-actions button {
   min-height: 44px;
 }
+/* a button that shows the rest of a list or of the months in place, and hides it again */
+.shower {
+  display: block;
+  margin: 0.4rem 0 0.8rem;
+  font-size: 0.85rem;
+}

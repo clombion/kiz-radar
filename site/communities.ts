@@ -7,6 +7,8 @@ import {
   awayDays,
   busiest,
   type Day,
+  folded,
+  monthsOf,
   presence,
   relativeDay,
   spanOf,
@@ -14,7 +16,7 @@ import {
   weekday,
 } from './calendar.ts';
 import { one, q, sql } from './db.ts';
-import { button, h, type Kid, nodes } from './dom.ts';
+import { button, h, type Kid, nodes, shower } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, withDetails } from './festivals.ts';
 import { dayTimeAt, gantt } from './gantt.ts';
@@ -160,6 +162,10 @@ export function communityView(root: HTMLElement, [key]: readonly string[], signa
   const today = one({ day: str }, sql`SELECT day FROM today`)?.day ?? '';
   const members = plural(c.members.length, 'member');
   const [next] = events;
+  // the agenda shows at first the trips with a day in the months the calendar shows at first, so that every day the
+  // calendar shows has its trips in the agenda; a button shows the rest. The sentence and "Next" are of every trip.
+  const shownTo = folded(monthsOf(today, days.keys())).shown.at(-1) ?? today.slice(0, 7);
+  const later = (v: Visit) => v.aways.every((a) => a.from.slice(0, 7) > shownTo);
   page(
     root,
     [
@@ -213,7 +219,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], signa
         })
       : null,
     trips.length > 0
-      ? agenda(trips, today, c.manager)
+      ? agenda(trips, today, c.manager, later)
       : h('p', { class: 'muted' }, 'No one in this community has said they’re going anywhere yet.'),
     h(
       'section',
@@ -248,34 +254,41 @@ function daysSaid(e: Festival): string {
 }
 
 // The agenda: a heading a month ("November · 3 trips", with its year in January and when it is not this year's),
-// and a row a trip, the next open.
-function agenda(trips: readonly Visit[], today: string, manager: Member): HTMLElement {
+// and a row a trip, the next open; the trips later than the calendar shows at first hidden behind a button ("Show 6
+// more trips"), with their months' headings when all its trips are.
+function agenda(trips: readonly Visit[], today: string, manager: Member, later: (v: Visit) => boolean): HTMLElement {
   const byMonth = new Map<string, Visit[]>();
   for (const t of trips) {
     const m = t.e.start_date.slice(0, 7);
     byMonth.set(m, [...(byMonth.get(m) ?? []), t]);
   }
-  return h(
-    'section',
-    { class: 'agenda' },
-    [...byMonth].map(([m, here], i) => {
-      const [name = '', year = ''] = monthYear(`${m}-01`).split(' ');
-      const yearToo = m.endsWith('-01') || (i === 0 && year !== today.slice(0, 4));
-      return [
-        h(
-          'h2',
-          {},
-          yearToo ? `${name} ${year}` : name,
-          h('span', { class: 'agenda-n' }, ` · ${plural(here.length, 'trip')}`),
-        ),
-        h(
-          'ol',
-          { class: 'agenda-list' },
-          here.map((t) => tripRow(t, manager, t === trips[0])),
-        ),
-      ];
-    }),
-  );
+  const hidden: HTMLElement[] = [];
+  const sections = [...byMonth].map(([m, here], i) => {
+    const [name = '', year = ''] = monthYear(`${m}-01`).split(' ');
+    const yearToo = m.endsWith('-01') || (i === 0 && year !== today.slice(0, 4));
+    const all = here.every(later);
+    const rows = here.map((t) => {
+      const row = tripRow(t, manager, t === trips[0]);
+      if (later(t) && !all) hidden.push(row);
+      return row;
+    });
+    const heading = h(
+      'h2',
+      {},
+      yearToo ? `${name} ${year}` : name,
+      h('span', { class: 'agenda-n' }, ` · ${plural(here.length, 'trip')}`),
+    );
+    const list = h('ol', { class: 'agenda-list' }, rows);
+    // a month all of whose trips are later hidden whole, its heading with them
+    if (all) hidden.push(heading, list);
+    return [heading, list];
+  });
+  const more = trips.filter(later).length;
+  const rest =
+    more === 0
+      ? null
+      : shower('agenda-more', hidden, { more: `Show ${plural(more, 'more trip')}`, fewer: 'Show fewer trips' });
+  return h('section', { class: 'agenda' }, sections, rest);
 }
 
 // A trip's row: its days, the festival (to it on the map) and where, who of the community goes; opened, a small Gantt

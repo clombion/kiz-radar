@@ -1033,3 +1033,113 @@ test('the highlighter is light: its ink at most a quarter, the roster’s lighte
     expect(alpha(stroke, '::after')[1]).toBeLessThanOrEqual(0.45);
   });
 });
+
+// ----- many months: the first four, and a button for the rest, in the months and the agenda alike -----
+// a trip a month from March to September, but August, each of one person added: with the members' four months, ten
+const LATER = [
+  ['Maja', 18_750], // March
+  ['Ragnhild', 19_091], // April
+  ['Tonje', ALBANIA], // May
+  ['Sian', 18_725], // June
+  ['Caroline', 18_766], // July
+  ['Maja', 16_246], // September
+] as const;
+const unhidden = (el: Element) => el.closest('[hidden]') === null;
+// what of the page shows: the months, the lines of months without, the agenda's headings and trips, and each button
+// with whether it has shown what it hides
+const foldOf = (root: HTMLElement) => ({
+  months: monthsOf(root)
+    .filter(unhidden)
+    .map((m) => m.ariaLabel),
+  gaps: [...root.querySelectorAll('.days-gap')].filter(unhidden).map((g) => said(g)),
+  headings: [...root.querySelectorAll('.agenda h2')].filter(unhidden).map((g) => said(g)),
+  trips: [...root.querySelectorAll('.trip')].filter(unhidden).length,
+  buttons: [...root.querySelectorAll('.shower')].map((b) => [said(b), b.getAttribute('aria-expanded')]),
+});
+const pressAll = (root: HTMLElement) => {
+  for (const b of root.querySelectorAll<HTMLElement>('.shower')) b.click();
+};
+
+test('four months or fewer are all shown, with every trip, and no button', () => {
+  const seen = foldOf(onDay('2026-11-04', () => communityPage(COMMUNITY)));
+  expect(seen.months).toEqual(['November 2026', 'December 2026', 'January 2027', 'February 2027']);
+  expect([seen.trips, seen.buttons]).toEqual([5, []]);
+});
+
+test('a fifth month is behind a button, and its trip behind another, each showing it in place and hiding it again', () => {
+  withAdded(LATER.slice(0, 1), () => {
+    const root = onDay('2026-11-04', () => communityPage(COMMUNITY));
+    const closed = foldOf(root);
+    expect(closed.months).toEqual(['November 2026', 'December 2026', 'January 2027', 'February 2027']);
+    expect(closed.headings.at(-1)).toBe('February · 1 trip');
+    expect(closed.trips).toBe(5);
+    expect(closed.buttons).toEqual([
+      ['Show March (1 month)', 'false'],
+      ['Show 1 more trip', 'false'],
+    ]);
+    pressAll(root);
+    const open = foldOf(root);
+    expect(open.months.at(-1)).toBe('March 2027');
+    expect([open.headings.at(-1), open.trips]).toEqual(['March · 1 trip', 6]);
+    expect(open.buttons).toEqual([
+      ['Show fewer months', 'true'],
+      ['Show fewer trips', 'true'],
+    ]);
+    pressAll(root);
+    expect(foldOf(root)).toEqual(closed);
+  });
+});
+
+test('a year of trips shows four months and their trips; the rest, a month without among them, behind the buttons', () => {
+  withAdded(LATER, () => {
+    const root = onDay('2026-11-04', () => communityPage(COMMUNITY));
+    const closed = foldOf(root);
+    expect(closed.months).toHaveLength(4);
+    expect(closed.gaps).toEqual([]); // August's line hidden with the months around it
+    expect(closed.buttons).toEqual([
+      ['Show March to September (6 months)', 'false'],
+      ['Show 6 more trips', 'false'],
+    ]);
+    expect(closed.headings).toEqual(['November · 3 trips', 'January 2027 · 1 trip', 'February · 1 trip']);
+    // the sentence and the next trip are of every trip, shown or not
+    expect(said(root.querySelector('.community-when'))).toBe(
+      'Most members are travelling 20–22 Nov: 5 people, to Oslo.',
+    );
+    expect(said(root.querySelector('.community-next'))).toBe('Next: Glasgow, this Friday');
+    pressAll(root);
+    const open = foldOf(root);
+    expect(open.months).toHaveLength(10);
+    expect(open.gaps).toEqual(['Nothing planned in August']);
+    expect(open.trips).toBe(11);
+  });
+});
+
+test('a trip with a day in the months shown is shown, though its festival is in a month behind the button', () => {
+  // seen from October, the months are October to January, and Cloudkiz, at the end of February, is behind the button
+  const fromOctober = () => foldOf(onDay('2026-10-15', () => communityPage(COMMUNITY)));
+  const alone = fromOctober();
+  expect(alone.months.at(-1)).toBe('January 2027');
+  expect(alone.buttons).toEqual([
+    ['Show February (1 month)', 'false'],
+    ['Show 1 more trip', 'false'],
+  ]);
+  // Cédric flying in on the last day of January: the trip has a day the months show, so it shows with them
+  const early: readonly Planted[] = [['cedric', 18_760, '2027-01-31T20:00', '2027-03-01T10:00', null]];
+  const flown = withTrips(early, fromOctober);
+  expect(flown.months.at(-1)).toBe('January 2027');
+  expect(flown.headings.at(-1)).toBe('February · 1 trip');
+  expect(flown.buttons).toEqual([['Show February to March (2 months)', 'false']]);
+});
+
+test('on a phone a day’s panel opens under its row of months, never after a month folded away', async () => {
+  await atWidth(390, () =>
+    withAdded(LATER.slice(0, 1), () =>
+      inPage('2026-11-04', (root) => {
+        for (const day of ['2026-11-21', '2027-01-15', '2027-02-27']) {
+          cellOn(root, day)?.focus();
+          expect(popover(root)?.checkVisibility()).toBe(true);
+        }
+      }),
+    ),
+  );
+});

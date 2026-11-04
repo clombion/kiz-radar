@@ -25,6 +25,22 @@ export const monthsOf = (today: string, days: Iterable<string>): string[] => {
   const now = today.slice(0, 7);
   return [...new Set([now, ...[...days].map((d) => d.slice(0, 7)).filter((m) => m >= now)])].sort(byText);
 };
+// A page of many months shows the first FOLD of them, and a button the rest: the months shown at first, and the
+// months the button shows
+export const FOLD = 4;
+export const folded = (months: readonly string[]): { shown: string[]; more: string[] } => ({
+  shown: months.slice(0, FOLD),
+  more: months.slice(FOLD),
+});
+// what the button that shows these months says of them: "March to September (5 months)", "September (1 month)", each
+// with its year when they span two ("December 2026 to February 2027 (3 months)"); name gives a month's name
+export function foldSaid(more: readonly string[], name: (month: string) => string): string {
+  const [first = '', last = first] = [more[0], more.at(-1)];
+  const years = first.slice(0, 4) !== last.slice(0, 4);
+  const said = (m: string) => (years ? `${name(m)} ${m.slice(0, 4)}` : name(m));
+  const n = `(${more.length} ${more.length === 1 ? 'month' : 'months'})`;
+  return more.length === 1 ? `${said(first)} ${n}` : `${said(first)} to ${said(last)} ${n}`;
+}
 // the months after one and before another, neither of them
 export function monthsBetween(after: string, before: string): string[] {
   const out: string[] = [];

@@ -1,13 +1,14 @@
 // The months a community travels in, a small grid each: a row a week from Monday, each festival a highlighter stroke
 // behind its days, a dot under a day only travelled, today ringed, and at a row's end how many go to the festivals
-// that begin that week. Only today's month and those with a trip show; a line says which go without. Only a day someone
+// that begin that week. Only today's month and those with a trip show, the first four of them at first and the rest
+// from a button; a line says which go without. Only a day someone
 // travels on does anything: each month is one stop for the keyboard, whose arrows move among those days; the day in
 // focus, under the pointer or tapped opens one popover saying who travels, which Escape, a tap elsewhere or on the day
 // again closes. It never covers the day's month: on a computer
 // it sits beside it, on a phone it is a panel under its row of months, which moves what follows down.
-import { type Away, type Day, monthsBetween, monthsOf, WEEKDAYS, weeksOf } from './calendar.ts';
+import { type Away, type Day, FOLD, folded, foldSaid, monthsBetween, monthsOf, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
-import { h, type Kid, nodes, toggle } from './dom.ts';
+import { h, type Kid, nodes, shower, toggle } from './dom.ts';
 import { Drawing } from './icons.ts';
 import { swipe } from './ink.ts';
 import { monthShort, monthYear, weekDay } from './ui.ts';
@@ -251,20 +252,21 @@ const nothing = (gap: readonly string[]): HTMLElement => {
 
 // The months: today's and each with a trip, a grid each, a line for the months between that go without, the key.
 export function months<A extends Away>(s: Days<A>): HTMLElement {
-  const shown = monthsOf(s.today, s.days.keys());
-  const wrap = h(
-    'div',
-    { class: 'days-wrap' },
-    h(
-      'div',
-      { class: 'days-months' },
-      shown.flatMap((m, i) => {
-        const gap = i === 0 ? [] : monthsBetween(shown[i - 1] ?? m, m);
-        return [gap.length > 0 ? nothing(gap) : null, month(s, m)];
-      }),
-    ),
-    key(),
-  );
+  const all = monthsOf(s.today, s.days.keys());
+  // each month, after the line of the months before it that go without; past the first four, hidden with that line
+  const parts = all.map((m, i) => {
+    const gap = i === 0 ? [] : monthsBetween(all[i - 1] ?? m, m);
+    return [gap.length > 0 ? nothing(gap) : null, month(s, m)].filter((p) => p !== null);
+  });
+  const { more } = folded(all);
+  const rest =
+    more.length === 0
+      ? null
+      : shower('days-more', parts.slice(FOLD).flat(), {
+          more: `Show ${foldSaid(more, (m) => monthYear(`${m}-01`).split(' ')[0] ?? m)}`,
+          fewer: 'Show fewer months',
+        });
+  const wrap = h('div', { class: 'days-wrap' }, h('div', { class: 'days-months' }, parts), rest, key());
   s.pop.attach(wrap);
   return wrap;
 }
