@@ -16,6 +16,7 @@ import io
 import re
 import unicodedata as ud
 from collections.abc import Iterable
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Annotated, ClassVar, Literal, NewType, Self, cast, get_args, get_origin
 
@@ -1174,16 +1175,37 @@ class Seeded(CsvRow):
     event: str
 
 
-def real_time(value: str) -> str:
-    """A YYYY-MM-DDTHH:MM, or a YYYY-MM-DD alone, that names a moment or a day of the calendar (ValueError when it is
-    none, as 2026-02-30T25:00)."""
-    _ = dt.datetime.fromisoformat(value)
-    return value
+@dataclass(frozen=True, order=False)
+class Moment:
+    """When a travel arrives or leaves, where it happens (a flight's, in the zone of its airport): its day, and its time
+    to the minute when said. Read once from its text (YYYY-MM-DD, or YYYY-MM-DDTHH:MM), and written back as it."""
+
+    day: dt.date
+    time: dt.time | None
+
+    @classmethod
+    def read(cls, value: object) -> 'Moment':
+        if isinstance(value, Moment):
+            return value
+        text = str(value)
+        if not MOMENT.fullmatch(text):
+            raise ValueError(f'{text!r} is no day (YYYY-MM-DD) nor a day and time (YYYY-MM-DDTHH:MM)')
+        at = dt.datetime.fromisoformat(text)  # ValueError when it names none, as 2026-02-30T25:00
+        return cls(at.date(), at.time() if 'T' in text else None)
+
+    def __str__(self) -> str:
+        return self.day.isoformat() if self.time is None else f'{self.day.isoformat()}T{self.time:%H:%M}'
+
+    def before(self, other: 'Moment') -> bool:
+        """Whether this is before the other: by their days when either has no time, else by their times."""
+        if self.time is None or other.time is None:
+            return self.day < other.day
+        return (self.day, self.time) < (other.day, other.time)
 
 
-# a time where it happens, to the minute, as YYYY-MM-DDTHH:MM: a flight's, in the zone of its airport; or its day
-# alone, YYYY-MM-DD, when the day is known and not the time
-LocalTime = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2})?$'), AfterValidator(real_time)]
+MOMENT = re.compile(r'\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2})?')
+# a Moment in a CSV cell: its text
+LocalTime = Annotated[Moment, BeforeValidator(Moment.read), PlainSerializer(str, return_type=str)]
 
 
 class Travel(CsvRow):
@@ -1206,12 +1228,13 @@ class Travel(CsvRow):
     def said(self) -> Self:
         if self.arrive is None and self.leave is None:
             raise ValueError('neither when they arrive nor when they leave: a row says one of them at least')
-        if self.arrive_at is not None and self.arrive is None:
+        # an airport goes with a time: a flight's day alone says no flight to name an airport of
+        if self.arrive_at is not None and (self.arrive is None or self.arrive.time is None):
             raise ValueError(f'arrive_at {self.arrive_at} without the time they arrive')
-        if self.leave_from is not None and self.leave is None:
+        if self.leave_from is not None and (self.leave is None or self.leave.time is None):
             raise ValueError(f'leave_from {self.leave_from} without the time they leave')
-        if self.arrive is not None and self.leave is not None and self.arrive > self.leave:
-            raise ValueError(f'arrive {self.arrive} is after leave {self.leave}')  # as text, as time
+        if self.arrive is not None and self.leave is not None and self.leave.before(self.arrive):
+            raise ValueError(f'arrive {self.arrive} is after leave {self.leave}')
         return self
 
 

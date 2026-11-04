@@ -386,9 +386,17 @@ create table travel (
     event_id integer not null references events(id) deferrable initially deferred,
     arrive text,
     arrive_at text,
-    leave text check (leave >= arrive),
+    leave text,
     leave_from text,
     check (arrive is not null or leave is not null),
+    -- a day (YYYY-MM-DD) or a day and time (YYYY-MM-DDTHH:MM), as records.Moment writes them; their order is the
+    -- build's (Moment.before), by day when either has no time
+    check (arrive is null or date(substr(arrive, 1, 10)) = substr(arrive, 1, 10) and (length(arrive) = 10
+      or (substr(arrive, 11, 1) = 'T' and time(substr(arrive, 12) || ':00') = substr(arrive, 12) || ':00'))),
+    check (leave is null or date(substr(leave, 1, 10)) = substr(leave, 1, 10) and (length(leave) = 10
+      or (substr(leave, 11, 1) = 'T' and time(substr(leave, 12) || ':00') = substr(leave, 12) || ':00'))),
+    check (arrive_at is null or arrive is not null and length(arrive) = 16),
+    check (leave_from is null or leave is not null and length(leave) = 16),
     primary key (person_id, event_id)
 ) strict, without rowid;
 -- where a member stays at a festival they plan (pipeline/stays.csv), from a night to a night by their evenings' dates
@@ -996,53 +1004,106 @@ def communities(x: Transaction, person_id: Mapping[str, int], key_id: Mapping[st
     )
 
 
+# a travel's days and a stay's nights are within this many days of their festival's: a later date is a typo
+BOUND_DAYS = 7
+# a flight landing before this time may follow a first night booked the evening before, at its place
+EARLY = dt.time(6, 0)
+
+
+class Festival(BaseModel):
+    id: int
+    title: str
+    start_date: dt.date
+    end_date: dt.date
+
+
 def nights_kept(stays: Sequence[StayRow], by: Mapping[tuple[str, int], Travel]) -> None:
-    """A member's nights: between the day they arrive and the day before they leave, when they said them, and never
-    two places on one night."""
+    """A member's nights: from the day they arrive (or the evening before, when they land before EARLY, as one who
+    books the night they land in does) to the day before they leave, when they said them, and never two places on one
+    night."""
     nights: dict[str, list[StayRow]] = {}
     for r in stays:
         t = by.get((r.person, r.event_id))
-        if t is not None and t.arrive is not None and r.first_night.isoformat() < t.arrive[:10]:
-            sys.exit(f'stays.csv: {r.person} stays from {r.first_night}, before they arrive on {t.arrive[:10]}')
-        if t is not None and t.leave is not None and r.last_night.isoformat() >= t.leave[:10]:
-            sys.exit(f'stays.csv: {r.person} stays the night of {r.last_night}, though they leave on {t.leave[:10]}')
+        came = None if t is None or t.arrive is None else t.arrive
+        if came is not None:
+            first = came.day - dt.timedelta(days=1) if came.time is not None and came.time < EARLY else came.day
+            if r.first_night < first:
+                sys.exit(
+                    f'stays.csv: {r.person} stays at {r.place} from the night of {r.first_night}, before they arrive'
+                    f' on {came} (event {r.event_id})'
+                )
+        if t is not None and t.leave is not None and r.last_night >= t.leave.day:
+            sys.exit(
+                f'stays.csv: {r.person} stays at {r.place} the night of {r.last_night}, though they leave on {t.leave}'
+                f' (event {r.event_id})'
+            )
         for o in nights.get(r.person, []):
             if r.first_night <= o.last_night and o.first_night <= r.last_night:
-                sys.exit(f'stays.csv: {r.person} stays at {r.place} and at {o.place} on the same night')
+                sys.exit(
+                    f'stays.csv: {r.person} stays at {r.place} ({r.first_night} to {r.last_night}, event {r.event_id})'
+                    f' and at {o.place} ({o.first_night} to {o.last_night}, event {o.event_id}) on the same night'
+                )
         nights.setdefault(r.person, []).append(r)
 
 
-class Ends(BaseModel):
-    id: int
-    end_date: dt.date
+def bounded(trips: Sequence[Travel], stays: Sequence[StayRow], festivals: Mapping[int, Festival]) -> None:
+    """A travel's days and a stay's nights within BOUND_DAYS days of their festival's: a date further off (2072 for
+    2027) is a typo, which would draw a calendar of years."""
+    margin = dt.timedelta(days=BOUND_DAYS)
+
+    def near(day: dt.date, f: Festival) -> bool:
+        return f.start_date - margin <= day <= f.end_date + margin
+
+    for t in trips:
+        f = festivals[t.event_id]
+        for end in (t.arrive, t.leave):
+            if end is not None and not near(end.day, f):
+                sys.exit(f'travel.csv: {t.person} travels on {end}, more than {BOUND_DAYS} days from {f.title}')
+    for r in stays:
+        f = festivals[r.event_id]
+        for night in (r.first_night, r.last_night):
+            if not near(night, f):
+                sys.exit(
+                    f'stays.csv: {r.person} stays the night of {night}, more than {BOUND_DAYS} days from {f.title}'
+                )
+
+
+# a member's trip to a festival, which the site shows and retention keeps or not: theirs, by person and festival
+type Trip = tuple[str, int]
 
 
 def trip_ends(
     trips: Sequence[Travel], stays: Sequence[StayRow], festival_ends: Mapping[int, dt.date]
-) -> dict[int, dt.date]:
-    """When the community's trip to each festival ends: the last day any member leaves, or the morning after their
-    last night, or the festival's end when that is later (the days the site's trip spans)."""
-    ends = dict(festival_ends)
+) -> dict[Trip, dt.date]:
+    """When each member's trip to a festival ends, as the site draws it (calendar.ts extent): the day they leave, or
+    else the morning after their last night or the festival's last day, whichever is later; and never before the
+    festival's last day, as the trip's span on the community's page is the festival's at least. A community's trip
+    ends with its last member's."""
+    ends: dict[Trip, dt.date] = {}
     for t in trips:
         if t.leave is not None:
-            ends[t.event_id] = max(ends[t.event_id], dt.date.fromisoformat(t.leave[:10]))
+            ends[t.person, t.event_id] = max(festival_ends[t.event_id], t.leave.day)
     for r in stays:
-        ends[r.event_id] = max(ends[r.event_id], r.last_night + dt.timedelta(days=1))
+        trip = (r.person, r.event_id)
+        if trip not in {(t.person, t.event_id) for t in trips if t.leave is not None}:
+            ends[trip] = max(ends.get(trip, festival_ends[r.event_id]), r.last_night + dt.timedelta(days=1))
+    for t in trips:
+        _ = ends.setdefault((t.person, t.event_id), festival_ends[t.event_id])
     return ends
 
 
-def gone_by(ends: Mapping[int, dt.date], day: dt.date) -> set[int]:
-    """The festivals whose trip ended more than KEPT_DAYS days before the day: their travel and stays are no longer
-    published, and their rows are to be deleted (the build says which)."""
-    return {e for e, end in ends.items() if (day - end).days > KEPT_DAYS}
+def gone_by(ends: Mapping[Trip, dt.date], day: dt.date) -> set[Trip]:
+    """The trips that ended more than KEPT_DAYS days before the day: their travel and stays are no longer published, and
+    their rows are to be deleted (the build says which)."""
+    return {trip for trip, end in ends.items() if (day - end).days > KEPT_DAYS}
 
 
 def travel(x: Transaction, person_id: Mapping[str, int], members: set[str]) -> None:
     """How members travel and where they stay (pipeline/travel.csv, stays.csv): each row a member's, to a festival they
     plan; one travel each; a member's nights never overlapping, and between the day they arrive and the day before they
-    leave when they said them. The people a manager adds are no members, so they never have either. A trip that ended
-    more than KEPT_DAYS days ago is not published: the build warns of each of its rows, to be deleted from the files,
-    and goes on."""
+    leave when they said them; every date within BOUND_DAYS of the festival's. The people a manager adds are no members,
+    so they never have either. A trip that ended more than KEPT_DAYS days ago is not published: the build warns of
+    each of its rows, by what it says, to be deleted from the files, and goes on."""
     planned = {(r.person, r.event_id) for r in PlanRow.read()}
     trips, stays = Travel.read(), StayRow.read()
 
@@ -1060,28 +1121,46 @@ def travel(x: Transaction, person_id: Mapping[str, int], members: set[str]) -> N
         by[r.person, r.event_id] = r
     for r in stays:
         theirs('stays.csv', r)
+    festivals = {f.id: f for f in x.rows(Festival, 'select id, title, start_date, end_date from events')}
+    bounded(trips, stays, festivals)
     nights_kept(stays, by)
-    festival_ends = {r.id: r.end_date for r in x.rows(Ends, 'select id, end_date from events')}
-    gone = gone_by(trip_ends(trips, stays, festival_ends), today())
-    for file, rows in (('travel.csv', trips), ('stays.csv', stays)):
-        for r in rows:
-            if r.event_id in gone:
-                print(
-                    f'warning: {file}: {r.person} to event {r.event_id}: the trip ended more than {KEPT_DAYS} days'
-                    ' ago, so this row is no longer published; delete it',
-                    file=sys.stderr,
-                )
-    trips = [r for r in trips if r.event_id not in gone]
-    stays = [r for r in stays if r.event_id not in gone]
+    ends = trip_ends(trips, stays, {i: f.end_date for i, f in festivals.items()})
+    gone = gone_by(ends, today())
+    # each row of a trip gone, by what it says, its festival and the day the trip ended; then how many
+    said = [
+        (
+            (r.person, r.event_id),
+            f'travel.csv: {r.person}, arriving {r.arrive or "(not said)"} and leaving {r.leave or "(not said)"}',
+        )
+        for r in trips
+    ] + [
+        ((r.person, r.event_id), f'stays.csv: {r.person} at {r.place}, {r.first_night} to {r.last_night}')
+        for r in stays
+    ]
+    said = [(trip, row) for trip, row in said if trip in gone]
+    for (person, event), row in said:
+        print(
+            f'warning: {row}, for {festivals[event].title} (event {event}): the trip ended on {ends[person, event]},'
+            f' more than {KEPT_DAYS} days ago, so the row is no longer published; delete it',
+            file=sys.stderr,
+        )
+    if said:
+        print(
+            f'warning: {len(said)} rows of trips that ended more than {KEPT_DAYS} days ago are no longer published;'
+            ' delete them from travel.csv and stays.csv',
+            file=sys.stderr,
+        )
+    trips = [r for r in trips if (r.person, r.event_id) not in gone]
+    stays = [r for r in stays if (r.person, r.event_id) not in gone]
     x.insert(
         'travel',
         (
             {
                 'person_id': person_id[r.person],
                 'event_id': r.event_id,
-                'arrive': r.arrive,
+                'arrive': None if r.arrive is None else str(r.arrive),
                 'arrive_at': r.arrive_at,
-                'leave': r.leave,
+                'leave': None if r.leave is None else str(r.leave),
                 'leave_from': r.leave_from,
             }
             for r in trips

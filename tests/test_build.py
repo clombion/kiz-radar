@@ -269,9 +269,13 @@ def test_a_community_is_what_its_three_files_say(site_db: Path) -> None:
     trips, stays = Travel.read(), StayRow.read()
     with sqlite_db.opened(site_db, 'ro') as db:
         day = dt.date.fromisoformat(db.value(str, 'select day from today'))
-        ends = {e.id: e.end_date for e in db.rows(build_site_db.Ends, 'select id, end_date from events')}
+        ends = {
+            e.id: e.end_date
+            for e in db.rows(build_site_db.Festival, 'select id, title, start_date, end_date from events')
+        }
     gone = build_site_db.gone_by(build_site_db.trip_ends(trips, stays, ends), day)
-    trips, stays = [t for t in trips if t.event_id not in gone], [r for r in stays if r.event_id not in gone]
+    trips = [t for t in trips if (t.person, t.event_id) not in gone]
+    stays = [r for r in stays if (r.person, r.event_id) not in gone]
     assert built(
         site_db,
         Travel,
@@ -293,8 +297,15 @@ MEMBER = Membership(community=KEY, person='cedric')
 ADDED = Seeded(
     community=KEY, name='Tonje', artist_keys=('p:tonje@dance',), event_id=1, status=enums.Plan.GOING, event='KUOF'
 )
-TRIP = Travel(
-    person='cedric', event_id=1, arrive='2026-11-19T21:05', arrive_at='OSL', leave='2026-11-23T09:30', leave_from='OSL'
+TRIP = Travel.model_validate(
+    {
+        'person': 'cedric',
+        'event_id': 1,
+        'arrive': '2026-11-19T21:05',
+        'arrive_at': 'OSL',
+        'leave': '2026-11-23T09:30',
+        'leave_from': 'OSL',
+    }
 )
 STAY = StayRow.model_validate(
     {'person': 'cedric', 'event_id': 1, 'first_night': '2026-11-19', 'last_night': '2026-11-22', 'place': 'Scandic'}
@@ -329,9 +340,10 @@ def community_tables(memory: Memory) -> Db:
             x.script(build_site_db.TABLES[table])
         # what is checked of a festival or an artist: its id, and a festival's last day
         x.script(
-            'create table events (id integer primary key, end_date text); create table artists (id integer primary key)'
+            'create table events (id integer primary key, title text, start_date text, end_date text);'
+            ' create table artists (id integer primary key)'
         )
-        x.execute("insert into events (id, end_date) values (1, '2026-11-22')")
+        x.execute("insert into events (id, title, start_date, end_date) values (1, 'KUOF', '2026-11-20', '2026-11-22')")
         x.execute('insert into artists (id) values (1)')
         x.execute('insert into people (id, key, name, featured) values (1, ?, ?, 1)', ('cedric', 'Cédric'))
     with db.transaction() as x:
@@ -367,16 +379,19 @@ def community_tables(memory: Memory) -> Db:
         # the nights between the day they arrive and the day before they leave
         (
             Rows(trips=(TRIP,), stays=(STAY.model_copy(update={'first_night': dt.date(2026, 11, 18)}),)),
-            'stays.csv: cedric stays from 2026-11-18, before they arrive on 2026-11-19',
+            'stays.csv: cedric stays at Scandic from the night of 2026-11-18, before they arrive on 2026-11-19T21:05',
         ),
         (
             Rows(trips=(TRIP,), stays=(STAY.model_copy(update={'last_night': dt.date(2026, 11, 23)}),)),
-            'stays.csv: cedric stays the night of 2026-11-23, though they leave on 2026-11-23',
+            'stays.csv: cedric stays at Scandic the night of 2026-11-23, though they leave on 2026-11-23T09:30',
         ),
         # two places on one night
         (
             Rows(stays=(STAY, STAY.model_copy(update={'first_night': dt.date(2026, 11, 22), 'place': 'Airbnb'}))),
-            'stays.csv: cedric stays at Airbnb and at Scandic on the same night',
+            re.escape(
+                'stays.csv: cedric stays at Airbnb (2026-11-22 to 2026-11-22, event 1) and at Scandic (2026-11-19 to'
+                ' 2026-11-22, event 1) on the same night'
+            ),
         ),
     ],
 )
@@ -456,17 +471,59 @@ def test_a_fare_is_what_fares_csv_says_back_the_monday_after(site_db: Path) -> N
 # Glasgow: the festival Friday 6 to Monday 9 November, Christina leaving on the Monday at 19:10, Siân arriving on the
 # Thursday and saying nothing of when she leaves
 GLASGOW = 18964
-GLASGOW_TRIPS = [
-    Travel(
-        person='christina',
-        event_id=GLASGOW,
-        arrive='2026-11-06',
-        arrive_at=None,
-        leave='2026-11-09T19:10',
-        leave_from='ABZ',
-    ),
-    Travel(person='sian', event_id=GLASGOW, arrive='2026-11-05', arrive_at=None, leave=None, leave_from=None),
-]
+GLASGOW_DAYS = (dt.date(2026, 11, 6), dt.date(2026, 11, 9))
+TRIP_ENDS = Path(__file__).parent / 'trip-ends.json'
+
+
+class Said(BaseModel, frozen=True):
+    key: str
+    arrive: str | None
+    leave: str | None
+    nights: dict[str, dt.date] | None
+
+
+class EndCase(BaseModel, frozen=True):
+    said: str
+    festival: dict[str, dt.date]
+    people: list[Said]
+    ends: dict[str, dt.date]
+    trip_end: dt.date
+
+
+class EndCases(BaseModel, frozen=True):
+    about: str
+    cases: list[EndCase]
+
+
+END_CASES = EndCases.model_validate_json(TRIP_ENDS.read_text()).cases
+
+
+@pytest.mark.parametrize('case', END_CASES, ids=[c.said for c in END_CASES])
+def test_a_trip_ends_as_the_site_draws_it(case: EndCase) -> None:
+    """Each member's trip ends on the day they leave, or else the morning after their last night, and never before the
+    festival's last day; a community's with its last member's: the cases the site's tests read too (trip-ends.json)."""
+    trips = [
+        Travel.model_validate(
+            {
+                'person': p.key,
+                'event_id': 1,
+                'arrive': p.arrive,
+                'arrive_at': None,
+                'leave': p.leave,
+                'leave_from': None,
+            }
+        )
+        for p in case.people
+        if p.arrive is not None or p.leave is not None
+    ]
+    stays = [
+        StayRow(person=p.key, event_id=1, first_night=p.nights['first'], last_night=p.nights['last'], place='Scandic')
+        for p in case.people
+        if p.nights is not None
+    ]
+    ends = build_site_db.trip_ends(trips, stays, {1: case.festival['end_date']})
+    assert ends == {(p.key, 1): case.ends[p.key] for p in case.people}
+    assert max(ends.values()) == case.trip_end
 
 
 @pytest.mark.parametrize(
@@ -481,26 +538,24 @@ GLASGOW_TRIPS = [
     ],
 )
 def test_a_trip_is_published_until_three_days_after_it_ends(day: str, kept: bool) -> None:
-    """A trip ends on the last day anyone leaves, or the festival's end when that is later; its travel and stays are
-    published until KEPT_DAYS days after."""
-    ends = build_site_db.trip_ends(GLASGOW_TRIPS, [], {GLASGOW: dt.date(2026, 11, 9)})
-    assert ends == {GLASGOW: dt.date(2026, 11, 9)}
-    assert (GLASGOW not in build_site_db.gone_by(ends, dt.date.fromisoformat(day))) is kept
-    # a stay's last night ends the trip the morning after, the festival's end when no one says more, and a later leave
-    stay = STAY.model_copy(
-        update={'event_id': GLASGOW, 'first_night': dt.date(2026, 11, 8), 'last_night': dt.date(2026, 11, 10)}
-    )
-    assert build_site_db.trip_ends([], [stay], {GLASGOW: dt.date(2026, 11, 9)}) == {GLASGOW: dt.date(2026, 11, 11)}
-    assert build_site_db.trip_ends([], [], {GLASGOW: dt.date(2026, 11, 9)}) == {GLASGOW: dt.date(2026, 11, 9)}
-    later = GLASGOW_TRIPS[0].model_copy(update={'leave': '2026-11-10T07:00'})
-    assert build_site_db.trip_ends([later], [], {GLASGOW: dt.date(2026, 11, 9)}) == {GLASGOW: dt.date(2026, 11, 10)}
+    """A trip's travel and stays are published until KEPT_DAYS days after it ends."""
+    ends = {('christina', GLASGOW): GLASGOW_DAYS[1]}
+    assert (('christina', GLASGOW) not in build_site_db.gone_by(ends, dt.date.fromisoformat(day))) is kept
+
+
+def test_one_members_long_stay_keeps_no_one_elses_trip(memory: Memory, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Retention is each member's: cedric staying on a week keeps his rows, never another member's."""
+    stay = STAY.model_copy(update={'first_night': dt.date(2026, 11, 19), 'last_night': dt.date(2026, 11, 28)})
+    ends = build_site_db.trip_ends([TRIP.model_copy(update={'person': 'ana'})], [stay], {1: dt.date(2026, 11, 22)})
+    assert ends == {('ana', 1): dt.date(2026, 11, 23), ('cedric', 1): dt.date(2026, 11, 29)}
+    assert build_site_db.gone_by(ends, dt.date(2026, 11, 27)) == {('ana', 1)}
 
 
 def test_the_build_leaves_out_a_trip_ended_more_than_three_days_ago_and_warns_of_its_rows(
     memory: Memory, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
     """The trip to KUOF ends on the Monday cedric leaves: on the Thursday after, its rows are still published; on the
-    Friday they are not, and the build says which rows to delete, and goes on."""
+    Friday they are not, and the build says which rows to delete, each by what it says, then how many, and goes on."""
     PlanRow.write([PlanRow(person='cedric', event_id=1, status=enums.Plan.GOING, event='KUOF')])
     Community.write([MANAGER])
     Membership.write([MEMBER])
@@ -514,8 +569,48 @@ def test_the_build_leaves_out_a_trip_ended_more_than_three_days_ago_and_warns_of
     monkeypatch.setattr(build_site_db, 'today', lambda: dt.date(2026, 11, 27))
     made = community_tables(memory)
     assert [made.value(int, 'select count(*) from travel'), made.value(int, 'select count(*) from stays')] == [0, 0]
-    said = 'cedric to event 1: the trip ended more than 3 days ago, so this row is no longer published; delete it'
-    assert capsys.readouterr().err.splitlines() == [f'warning: travel.csv: {said}', f'warning: stays.csv: {said}']
+    gone = 'for KUOF (event 1): the trip ended on 2026-11-23, more than 3 days ago, so the row is no longer published'
+    assert capsys.readouterr().err.splitlines() == [
+        f'warning: travel.csv: cedric, arriving 2026-11-19T21:05 and leaving 2026-11-23T09:30, {gone}; delete it',
+        f'warning: stays.csv: cedric at Scandic, 2026-11-19 to 2026-11-22, {gone}; delete it',
+        (
+            'warning: 2 rows of trips that ended more than 3 days ago are no longer published; delete them from'
+            ' travel.csv and stays.csv'
+        ),
+    ]
+
+
+@pytest.mark.parametrize(
+    ('trip', 'stay', 'said'),
+    [
+        # a flight landing at 00:30 after a first night booked the evening before: kept
+        ({'arrive': '2026-11-20T00:30'}, {'first_night': dt.date(2026, 11, 19)}, None),
+        # the same night before a flight landing at noon: refused
+        (
+            {'arrive': '2026-11-20T12:00'},
+            {'first_night': dt.date(2026, 11, 19)},
+            'before they arrive on 2026-11-20T12:00',
+        ),
+        # a day so far off it is a typo
+        ({'leave': '2072-11-23T09:30'}, {}, 'travels on 2072-11-23T09:30, more than 7 days from KUOF'),
+        ({}, {'last_night': dt.date(2026, 12, 5)}, 'stays the night of 2026-12-05, more than 7 days from KUOF'),
+    ],
+)
+def test_nights_and_days_are_those_of_a_trip_to_the_festival(
+    memory: Memory, monkeypatch: pytest.MonkeyPatch, trip: dict[str, object], stay: dict[str, object], said: str | None
+) -> None:
+    PlanRow.write([PlanRow(person='cedric', event_id=1, status=enums.Plan.GOING, event='KUOF')])
+    Community.write([MANAGER])
+    Membership.write([MEMBER])
+    Seeded.write([])
+    Travel.write([TRIP.model_copy(update=trip)])
+    StayRow.write([STAY.model_copy(update=stay)])
+    monkeypatch.setattr(build_site_db, 'today', lambda: dt.date(2026, 11, 1))
+    if said is None:
+        assert community_tables(memory).value(int, 'select count(*) from stays') == 1
+    else:
+        with pytest.raises(SystemExit, match=re.escape(said)):
+            _ = community_tables(memory)
 
 
 class Lives(BaseModel, frozen=True):

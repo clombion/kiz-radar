@@ -41,21 +41,25 @@ nobody can create, join or claim one yet, and its rows are written by hand.
   someone. A stay's place is held to the same.
 - `pipeline/travel.csv`: how members travel, one row per member and festival they plan, as far as they said: the
   `person`, the `event_id`, when they `arrive` and `leave` (local times, `YYYY-MM-DDTHH:MM`, or the day alone,
-  `YYYY-MM-DD`, when the time is not known; arriving first), each empty when not known but one of them said, and the
-  airports when they fly (`arrive_at`, `leave_from`, IATA codes, each with its time, or empty). Only a member says how
-  they travel: the people a manager added never do. Write no booking code or flight number.
+  `YYYY-MM-DD`, when the time is not known; arriving first, by the day when either has no time), each empty when not
+  known but one of them said, and the airports when they fly (`arrive_at`, `leave_from`, IATA codes, each only with a
+  time, or empty). Every day is within `BOUND_DAYS` (7) of the festival's days; a day further off is taken for a typo
+  and stops the build. A day without its time is drawn whole: from its start when arriving, to its end when leaving.
+  Only a member says how they travel: the people a manager added never do. Write no booking code or flight number.
 - `pipeline/stays.csv`: where members stay, a row a place: the `person`, the `event_id`, the `first_night` and
   `last_night` there (each night by its evening's date) and the `place` (a plain name, such as a hotel or "with
   friends"). A member staying at two places has two rows. Their nights never overlap and fall between the day they
-  arrive and the day before they leave, when travel.csv says them; the build stops on a row that breaks this, of anyone
-  but a member, or to a festival they don't plan.
+  arrive (or the night before, when their flight lands before 06:00) and the day before they leave, when travel.csv says
+  them, within `BOUND_DAYS` of the festival's days; the build stops on a row that breaks this, of anyone but a member,
+  or to a festival they don't plan.
 
-The site shows travel and stays until a few days after a trip; the repository's history keeps them. A trip ends on the
-last day any member leaves (or the morning after their last night), or the festival's last day when that is later; from
-the fourth day after that (more than `KEPT_DAYS`, 3, days after), the build no longer publishes the trip's rows of
-`travel.csv` and `stays.csv`, and prints a warning for each one ("warning: travel.csv: christina to event 18964: the
-trip ended more than 3 days ago, so this row is no longer published; delete it"). It goes on building: delete the rows
-it names, and commit.
+The site shows travel and stays until a few days after a trip; the repository's history keeps them. Each member's trip
+ends on the day they leave (or the morning after their last night), and never before the festival's last day (as the
+community page draws it: `tests/trip-ends.json` holds the cases both read); from the fourth day after that (more than
+`KEPT_DAYS`, 3, days after), the build no longer publishes that member's rows of `travel.csv` and `stays.csv`, and
+prints a warning for each, by what it says, then how many ("warning: travel.csv: christina, arriving 2026-11-06 and
+leaving 2026-11-09T19:10, for Glasgow Kizomba Festival 5.0 (event 18964): the trip ended on 2026-11-09, more than 3 days
+ago, so the row is no longer published; delete it"). It goes on building: delete the rows it names, and commit.
 
 The page shows the community's name ("Norwegians in festivals"), when most members travel at once ("Most members are
 travelling 20–22 Nov: 5 people, to Oslo.") and, on a line of its own, where they go next ("Next: Glasgow, this Friday"),

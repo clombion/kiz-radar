@@ -5,7 +5,7 @@ import { addDays } from './days.ts';
 
 export const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const;
 const DAY_MS = 86_400_000;
-const noon = (iso: string): number => Date.parse(`${iso.slice(0, 10)}T12:00Z`);
+const noon = (day: string): number => Date.parse(`${day}T12:00Z`);
 // Monday 0 to Sunday 6
 export const weekday = (iso: string): number => (new Date(noon(iso)).getUTCDay() + 6) % 7;
 
@@ -62,10 +62,13 @@ export function weeksOf(month: string): (string | null)[][] {
   return Array.from({ length: days.length / 7 }, (_, w) => days.slice(7 * w, 7 * w + 7));
 }
 
-// how far a local time (YYYY-MM-DDTHH:MM) is into the days from `from`, in days: 1.5 is noon of the day after
-export const daysInto = (from: string, time: string): number =>
-  Math.round((noon(time) - noon(from)) / DAY_MS) +
-  (Number(time.slice(11, 13)) * 60 + Number(time.slice(14, 16))) / 1440;
+// how far a moment is into the days from `from`, in days: 1.5 is noon of the day after; a moment whose time is not
+// said is at the start of its day, or at its end when it ends something (a departure drawn to the end of its day)
+export const daysInto = (from: string, at: Moment, edge: 'start' | 'end' = 'start'): number => {
+  const days = Math.round((noon(at.day) - noon(from)) / DAY_MS);
+  if (at.time === null) return days + (edge === 'end' ? 1 : 0);
+  return days + (Number(at.time.slice(0, 2)) * 60 + Number(at.time.slice(3, 5))) / 1440;
+};
 
 // a day said from today: "today", "tomorrow", "this Friday" later in today's week; null for one further off, or past
 export function relativeDay(today: string, day: string): string | null {
@@ -75,22 +78,40 @@ export function relativeDay(today: string, day: string): string | null {
   return ahead > 1 && ahead < 7 - weekday(today) ? `this ${WEEKDAYS[weekday(day)]}` : null;
 }
 
-// what someone said of how they go to a festival: when they arrive and leave (local times, YYYY-MM-DDTHH:MM), each
-// when said, and the nights they stay, from the first to the last (by their evenings' dates), when said
+// A moment of a travel (arrive, leave), as the site database holds it: its day, and its time ("HH:MM") when said. The
+// database writes YYYY-MM-DD or YYYY-MM-DDTHH:MM (records.Moment); this is the one place that reads which.
+export interface Moment {
+  day: string;
+  time: string | null;
+}
+export const moment = (text: string | null): Moment | null =>
+  text === null ? null : { day: text.slice(0, 10), time: text.length > 10 ? text.slice(11, 16) : null };
+
+// what someone said of how they go to a festival: when they arrive and leave, each when said, and the nights they
+// stay, from the first to the last (by their evenings' dates), when said
 export interface Said {
   arrive: string | null;
   leave: string | null;
   nights: { first: string; last: string } | null;
 }
-// the days someone is away for a festival: from the day they arrive, or else their first night, or else the
-// festival's first day; to the day they leave, or else the morning after their last night, or else its last day
+// The days someone is away for a festival, the one rule the calendar and a trip's chart both read: from the day they
+// arrive, or else the festival's first day or their first night, whichever is sooner; to the day they leave, or else
+// the festival's last day or the morning after their last night, whichever is later.
 export const awayDays = (
   festival: { start_date: string; end_date: string },
   said?: Said,
-): { from: string; to: string } => ({
-  from: said?.arrive?.slice(0, 10) ?? said?.nights?.first ?? festival.start_date,
-  to: said?.leave?.slice(0, 10) ?? (said?.nights ? addDays(said.nights.last, 1) : festival.end_date),
-});
+): { from: string; to: string } => {
+  const first = said?.nights?.first,
+    after = said?.nights ? addDays(said.nights.last, 1) : undefined;
+  return {
+    from:
+      moment(said?.arrive ?? null)?.day ??
+      (first !== undefined && first < festival.start_date ? first : festival.start_date),
+    to:
+      moment(said?.leave ?? null)?.day ??
+      (after !== undefined && after > festival.end_date ? after : festival.end_date),
+  };
+};
 
 // someone away from a day to a day; who is the one person they are, however many festivals they go to
 export interface Away {

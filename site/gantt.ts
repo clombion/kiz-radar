@@ -18,7 +18,7 @@
 //
 // It is drawn for the eye: a screen reader hears its names, and a line no one sees says the rest in words.
 
-import { daysInto, daysOf, WEEKDAYS, weekday } from './calendar.ts';
+import { awayDays, daysInto, daysOf, type Moment, moment, WEEKDAYS, weekday } from './calendar.ts';
 import { addDays } from './days.ts';
 import { dismissable } from './dismiss.ts';
 import { button, h, type Kid, toggle } from './dom.ts';
@@ -31,21 +31,15 @@ import { joined, plural } from './wording.ts';
 const INK = { height: [0.55, 0.7], drop: [0, 0.04], tilt: 0 } as const; // thin, and level however long
 
 const day3 = (iso: string) => WEEKDAYS[weekday(iso)]?.slice(0, 3) ?? '';
-// whether a time of a travel says its hour, not only its day
-export const timed = (time: string | null): time is string => time !== null && time.length > 10;
-// "17:05 OSL": a time of a flight, and its airport when known
-const timeAt = (time: string, airport: string | null): string =>
-  `${time.slice(11)}${airport === null ? '' : ` ${airport}`}`;
+// "17:05 OSL": the time of a flight, and its airport when known (an airport goes with a time: records.Travel)
+export const timeAt = (time: string, airport: string | null): string =>
+  `${time}${airport === null ? '' : ` ${airport}`}`;
 // "Thu 17:05 OSL"
-export const dayTimeAt = (time: string, airport: string | null): string => `${day3(time)} ${timeAt(time, airport)}`;
+export const dayTimeAt = (at: Moment, airport: string | null): string =>
+  `${day3(at.day)} ${timeAt(at.time ?? '', airport)}`;
 // a stroke's end: its time, and its airport, which a phone leaves out; nothing when its time is not said
 const end = (time: string | null, airport: string | null): HTMLElement =>
-  h(
-    'span',
-    {},
-    timed(time) ? time.slice(11) : null,
-    timed(time) && airport !== null ? h('span', { class: 'gantt-ap' }, ` ${airport}`) : null,
-  );
+  h('span', {}, time, time !== null && airport !== null ? h('span', { class: 'gantt-ap' }, ` ${airport}`) : null);
 // a line's places in full: "Scandic Holberg 8 · Comfort Xpress 2 · 1 not said", or its one place (or way) alone
 const counted = (buckets: readonly Bucket<unknown>[]): string =>
   buckets.length === 1
@@ -202,10 +196,10 @@ function frame(t: Frame, column: boolean, lines: readonly Kid[]): HTMLElement {
 // the drawing of a frame: where a time is, in days from its first; the festival's opening and close; a lane; a stroke
 function drawing(t: Frame) {
   const days = daysOf(t.from, t.to).length;
-  const at = (time: string) => daysInto(t.from, time.length > 10 ? time : `${time}T00:00`);
+  const at = (day: string, edge: 'start' | 'end' = 'start') => daysInto(t.from, { day, time: null }, edge);
   const share = (n: number) => `${(100 * n) / days}%`;
   const opens = at(t.festival.start_date),
-    closes = at(addDays(t.festival.end_date, 1));
+    closes = at(t.festival.end_date, 'end');
   const lane = (...drawn: Kid[]) => h('div', { class: 'gantt-lane', 'aria-hidden': 'true' }, drawn);
   const stroke = (s: {
     from: number;
@@ -230,15 +224,17 @@ function drawing(t: Frame) {
       }),
       s.ends,
     );
-  return { at, opens, closes, lane, stroke };
+  // a travel's end: its time, or its day's start (arriving) or end (leaving) when its time is not said
+  const ends = (m: Moment, edge: 'start' | 'end') => daysInto(t.from, m, edge);
+  return { at, ends, opens, closes, lane, stroke };
 }
 const morning = (night: string) => addDays(night, 1);
 
 // when an end not said is: "arrival not said", "arrives Fri 6 Nov, time not said"
-export function unsaidEnd(time: string | null, which: 'arrive' | 'leave'): string | null {
-  if (timed(time)) return null;
-  if (time === null) return which === 'arrive' ? 'arrival not said' : 'departure not said';
-  return `${which === 'arrive' ? 'arrives' : 'leaves'} ${dated(time)}, time not said`;
+export function unsaidEnd(at: Moment | null, which: 'arrive' | 'leave'): string | null {
+  if (at?.time != null) return null;
+  if (at === null) return which === 'arrive' ? 'arrival not said' : 'departure not said';
+  return `${which === 'arrive' ? 'arrives' : 'leaves'} ${dated(at.day)}, time not said`;
 }
 // "Fri 6 Nov"
 const dated = (day: string) => `${day3(day)} ${dayMonth(day)}`;
@@ -255,19 +251,21 @@ export function gantt<P>(
   // (else the festival's close, or the morning after their last night when later); hard at a time said, else fading
   const lane = (l: Line<P>, key: string): HTMLElement => {
     const f = l.travel;
-    const arrive = f?.arrive ?? null,
-      leave = f?.leave ?? null;
-    const from = arrive === null ? Math.min(d.opens, l.nights ? d.at(l.nights.first) : d.opens) : d.at(arrive);
-    const to = leave === null ? Math.max(d.closes, l.nights ? d.at(morning(l.nights.last)) : d.closes) : d.at(leave);
+    const arrive = moment(f?.arrive ?? null),
+      leave = moment(f?.leave ?? null);
+    // an end not said where the calendar has it (awayDays): the festival's, or the line's nights when beyond it
+    const away = awayDays(t.festival, { arrive: null, leave: null, nights: l.nights });
+    const from = arrive === null ? d.at(away.from) : d.ends(arrive, 'start');
+    const to = leave === null ? (away.to === t.festival.end_date ? d.closes : d.at(away.to)) : d.ends(leave, 'end');
     const unsaid = [unsaidEnd(arrive, 'arrive'), unsaidEnd(leave, 'leave')].filter((x) => x !== null);
     return d.lane(
       d.stroke({
         from,
         to,
         key,
-        fades: { in: !timed(arrive), out: !timed(leave) },
+        fades: { in: arrive?.time == null, out: leave?.time == null },
         title: unsaid.length > 0 ? unsaid.join('; ') : null,
-        ends: [end(arrive, f?.arrive_at ?? null), end(leave, f?.leave_from ?? null)],
+        ends: [end(arrive?.time ?? null, f?.arrive_at ?? null), end(leave?.time ?? null, f?.leave_from ?? null)],
       }),
     );
   };

@@ -1,6 +1,7 @@
 """A record writes what it read: a CSV file is the text its record writes, and its numbers read back as the same
 values."""
 
+import datetime as dt
 import typing
 
 import pytest
@@ -210,9 +211,20 @@ def test_a_place_a_member_stays_at_may_be_any_plain_name(place: str) -> None:
 def test_a_travel_says_one_end_at_least() -> None:
     """Either end of a travel may be unknown, not both: a row of blanks says nothing."""
     known = records.Travel.model_validate(records.Travel.cells(TRAVEL | {'leave': ''}))
-    assert (known.arrive, known.leave) == ('2026-11-19T21:05', None)
+    assert (str(known.arrive), known.leave) == ('2026-11-19T21:05', None)
     # its day alone, when the time is not known
     day = records.Travel.model_validate(records.Travel.cells(TRAVEL | {'arrive': '2026-11-19', 'arrive_at': ''}))
-    assert day.arrive == '2026-11-19'
+    assert day.arrive == records.Moment(dt.date(2026, 11, 19), None)
+    # an airport goes with a time; and a day alone is before or after another by its day, whatever their times
+    with pytest.raises(ValueError, match='arrive_at OSL without the time they arrive'):
+        records.Travel.model_validate(records.Travel.cells(TRAVEL | {'arrive': '2026-11-19'}))
+    same = records.Travel.model_validate(
+        records.Travel.cells(TRAVEL | {'arrive': '2026-11-23T10:00', 'leave': '2026-11-23', 'leave_from': ''})
+    )
+    assert (str(same.arrive), str(same.leave)) == ('2026-11-23T10:00', '2026-11-23')
+    with pytest.raises(ValueError, match='is after leave'):
+        records.Travel.model_validate(
+            records.Travel.cells(TRAVEL | {'arrive': '2026-11-24', 'arrive_at': '', 'leave': '2026-11-23T10:00'})
+        )
     with pytest.raises(ValueError, match='neither when they arrive nor when they leave'):
         records.Travel.model_validate(records.Travel.cells(TRAVEL | {'arrive': '', 'arrive_at': '', 'leave': ''}))

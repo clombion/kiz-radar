@@ -9,6 +9,8 @@ import {
   busiest,
   type Day,
   inPeriod,
+  type Moment,
+  moment,
   periodSaid,
   periods,
   presence,
@@ -22,7 +24,7 @@ import { one, q, sql } from './db.ts';
 import { button, h, type Kid, nodes } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, withDetails } from './festivals.ts';
-import { dayTimeAt, gantt, ganttByPlace, timed, unsaidEnd } from './gantt.ts';
+import { dayTimeAt, gantt, ganttByPlace, timeAt, unsaidEnd } from './gantt.ts';
 import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
@@ -478,6 +480,10 @@ function tripRow({ e, who, aways, on }: Visit, manager: Member, open: boolean): 
   );
 }
 
+// an end of a travel in words: "in Thu 17:05 OSL", or when not said "arrives Fri 6 Nov, time not said"
+const ends = (at: Moment | null, airport: string | null, which: 'arrive' | 'leave', word: string): string =>
+  unsaidEnd(at, which) ?? (at === null ? '' : `${word} ${dayTimeAt(at, airport)}`);
+
 // A line of a roster in words: who (by its name, and its units when it is called otherwise), in and out (each "not
 // said" when not, a day without its time "arrives Fri 6 Nov, time not said"), and where they stay, each place with
 // who stays there when there are several; or "not said".
@@ -489,9 +495,7 @@ function inWords(l: Line<Present>): string {
   const flights =
     f === null
       ? ''
-      : ` ${unsaidEnd(f.arrive, 'arrive') ?? `in ${dayTimeAt(f.arrive ?? '', f.arrive_at)}`}, ${
-          unsaidEnd(f.leave, 'leave') ?? `out ${dayTimeAt(f.leave ?? '', f.leave_from)}`
-        }`;
+      : ` ${ends(moment(f.arrive), f.arrive_at, 'arrive', 'in')}, ${ends(moment(f.leave), f.leave_from, 'leave', 'out')}`;
   const [only] = l.buckets;
   const stays =
     l.buckets.length === 1 && only
@@ -594,10 +598,8 @@ function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): 
     const by = new Map<string, Goer[]>();
     for (const a of once)
       if (a.travel?.[when]?.startsWith(day) && a.goer) {
-        const time = a.travel[when] ?? '';
-        const at = timed(time)
-          ? `${time.slice(11)}${a.travel[where] === null ? '' : ` ${a.travel[where]}`}`
-          : '(time not said)';
+        const time = moment(a.travel[when])?.time ?? null;
+        const at = time === null ? '(time not said)' : timeAt(time, a.travel[where]);
         by.set(at, [...(by.get(at) ?? []), a.goer]);
       }
     return [...by].map(([at, goers]) => `${namesOf(goers).join(' & ')} ${at}`);

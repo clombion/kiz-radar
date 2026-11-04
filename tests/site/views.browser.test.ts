@@ -145,7 +145,8 @@ function plant(trips: readonly Planted[]): void {
   for (const [key, event, arrive, leave, stay] of trips) {
     if (arrive !== null || leave !== null)
       db?.run(
-        "INSERT INTO travel SELECT id, ?, ?, iif(? IS NULL, NULL, 'OSL'), ?, iif(? IS NULL, NULL, 'OSL') FROM people WHERE key = ?",
+        // an airport with a time only, as records.Travel holds
+        "INSERT INTO travel SELECT id, ?, ?, iif(length(?) = 16, 'OSL', NULL), ?, iif(length(?) = 16, 'OSL', NULL) FROM people WHERE key = ?",
         [event, arrive, arrive, leave, leave, key],
       );
     if (stay !== null && arrive !== null && leave !== null)
@@ -1718,4 +1719,20 @@ test('a day gone by is struck through and readable; a travelled one keeps its we
       root.remove();
     }
   });
+});
+
+test('a day said without its time is drawn whole: arriving from its start, leaving to its end', () => {
+  // Cédric and Christina to KUOF, in on the Friday and out on the Sunday, the days alone
+  const trips: readonly Planted[] = ['cedric', 'christina'].map(
+    (key) => [key, 19_033, '2026-11-20', '2026-11-22', null] as const,
+  );
+  const bar = withTrips(trips, () => {
+    const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+    const row = agendaRow(root, 'KUOF');
+    row?.querySelector<HTMLButtonElement>('.trip-toggle')?.click();
+    return ganttOf(row).bars[0];
+  });
+  // the festival's three days, Friday to Sunday: all of them, the Sunday to its end
+  expect([bar?.left, bar?.width]).toEqual([0, 100]);
+  expect(bar?.fades).toEqual([true, true]);
 });
