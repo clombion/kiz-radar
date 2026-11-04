@@ -105,10 +105,18 @@ function inPage(day: string, then: (root: HTMLElement) => void): void {
     root.remove();
   }
 }
-const said = (el: Element | null | undefined) => el?.textContent?.replace(/\s+/gu, ' ').trim();
+// what an element shows, as text: what only a screen reader hears inside it (visually-hidden) left out
+const said = (el: Element | null | undefined) => {
+  const shown = el?.cloneNode(true);
+  if (!(shown instanceof Element)) return;
+  for (const hidden of shown.querySelectorAll('.visually-hidden')) hidden.remove();
+  return shown.textContent?.replace(/\s+/gu, ' ').trim();
+};
+// what a screen reader hears of an element, its hidden words in
+const heard = (el: Element | null | undefined) => el?.textContent?.replace(/\s+/gu, ' ').trim();
 // the names in an element that say on hover who added them, each with what it says
 const titled = (el: Element | null | undefined) =>
-  [...(el?.querySelectorAll('[title]') ?? [])].map((n) => [n.textContent, n.getAttribute('title')]);
+  [...(el?.querySelectorAll('[title]') ?? [])].map((n) => [said(n), n.getAttribute('title')]);
 // the stylesheet, for a test of how the page is laid out, while then runs
 async function styled(then: () => Promise<void> | void): Promise<void> {
   const style = h('style', {}, await commands.readFile('public/css/site.css'));
@@ -1649,7 +1657,7 @@ test('the Friends tab’s (i) shows what its list is on hover, on focus and on a
     expect(seen()).toEqual(['false', true]);
     info?.focus();
     expect(seen()).toEqual(['true', false]);
-    info?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    info?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
     expect(seen()).toEqual(['false', true]);
     // a tap keeps it, the pointer leaving or not, until the next tap
     info?.click();
@@ -1662,4 +1670,52 @@ test('the Friends tab’s (i) shows what its list is on hover, on focus and on a
   } finally {
     root.remove();
   }
+});
+
+test('who added someone is said to a screen reader too, not on hover alone', () => {
+  const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+  const who = agendaRow(root, 'KUOF')?.querySelector('.trip-who');
+  expect(said(who)).toBe(KUOF);
+  expect(heard(who)).toContain('Tonje (added by Cédric)');
+});
+
+// the contrast of a colour on another, as WCAG measures it
+const luminance = (rgb: string) => {
+  const [r = 0, g = 0, b = 0] = (rgb.match(/\d+(?:\.\d+)?/gu) ?? []).map(Number).map((v) => {
+    const c = v / 255;
+    return c <= 0.039_28 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const contrast = (a: string, b: string) => {
+  const [x, y] = [luminance(a), luminance(b)].toSorted((p, q) => q - p);
+  return ((x ?? 0) + 0.05) / ((y ?? 0) + 0.05);
+};
+
+test('a day gone by is struck through and readable; a travelled one keeps its weight; the view switch shows focus', async () => {
+  await styled(() => {
+    const root = onDay('2026-11-10', () => communityPage(COMMUNITY));
+    document.body.append(root);
+    try {
+      const past = cellOn(root, '2026-11-02'),
+        travelled = cellOn(root, '2026-11-06');
+      const style = (el: Element | undefined) => (el === undefined ? undefined : getComputedStyle(el));
+      const ground = getComputedStyle(document.body).backgroundColor;
+      expect(style(past)?.textDecorationLine).toBe('line-through');
+      expect(contrast(style(past)?.color ?? '', ground)).toBeGreaterThanOrEqual(4.5);
+      expect([style(travelled)?.textDecorationLine, style(travelled)?.fontWeight]).toEqual(['line-through', '650']);
+      // a bar's times at 0.7rem at least
+      root.querySelector<HTMLButtonElement>('.trip-toggle')?.click();
+      const bar = root.querySelector('.gantt-bar');
+      expect(Number.parseFloat(style(bar ?? undefined)?.fontSize ?? '0')).toBeGreaterThanOrEqual(0.7 * 16);
+      // the view switch's focus ring inside its rounded border, which clips what is outside it
+      const view = h('button', { type: 'button' });
+      const views = h('div', { class: 'gantt-views' }, view);
+      root.append(views);
+      view.focus({ focusVisible: true });
+      expect([style(view)?.outlineStyle, style(view)?.outlineOffset]).toEqual(['solid', '-3px']);
+    } finally {
+      root.remove();
+    }
+  });
 });

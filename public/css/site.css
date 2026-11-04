@@ -2315,8 +2315,14 @@ html:has(dialog.search[open]) {
   font-weight: 650;
   cursor: pointer;
 }
+/* a day gone by: struck through, so it does not rest on colour alone, and muted but readable (4.5:1); a day someone
+   travels on keeps its colour and weight, struck through too */
 .days-day.days-past {
-  color: var(--none);
+  text-decoration: line-through;
+  text-decoration-color: var(--none);
+}
+.days-day.days-past:not(.days-on) {
+  color: var(--muted);
 }
 .days-day:focus-visible {
   outline: 2px solid var(--accent);
@@ -2684,19 +2690,20 @@ html:has(dialog.search[open]) {
 }
 .gantt-lane {
   position: relative;
-  height: 1.15rem;
+  height: 1.3rem;
 }
+/* a bar's times at 0.7rem at least, the smallest the site writes */
 .gantt-bar {
   position: absolute;
-  top: 0.22rem;
+  top: 0.2rem;
   display: flex;
   justify-content: space-between;
-  height: 0.7rem;
+  height: 0.9rem;
   padding: 0 0.35rem;
   color: var(--text);
-  font-size: 0.56rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  line-height: 0.7rem;
+  line-height: 0.9rem;
   white-space: nowrap;
 }
 .gantt-bar > span:not(.gantt-ink) {
@@ -2747,6 +2754,12 @@ html:has(dialog.search[open]) {
 .gantt-views button[aria-pressed="true"] {
   background: var(--accent-soft);
   color: var(--accent);
+}
+/* the focus ring inside the control, whose rounded border clips what is outside it */
+.gantt-views button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+  border-radius: 999px;
 }
 /* a text with names behind it ("Everyone else", "5 people", "3 places"): in the text's colour, dotted under as the
    other names; its names, while the pointer is over it or once opened, in a small card: on a phone a row of its own
@@ -3653,4 +3666,20 @@ svg.defs {
 }
 .review-actions button {
   min-height: 44px;
+}
+
+/* forced colours (Windows' high contrast) draw no background: the highlighter's strokes and a roster's bars in the
+   system's highlight, a trip gone by in its grey */
+@media (forced-colors: active) {
+  .days-stroke,
+  .days-stroke::after,
+  .gantt-ink,
+  .gantt-ink::after {
+    forced-color-adjust: none;
+    background: Highlight;
+  }
+  .days-stroke.days-stroke-past,
+  .days-stroke.days-stroke-past::after {
+    background: GrayText;
+  }
 }

@@ -17,8 +17,10 @@
 // person's own nights in the names it opens ("Nora (Fri–Sun)"); those who said no place last.
 //
 // It is drawn for the eye: a screen reader hears its names, and a line no one sees says the rest in words.
+
 import { daysInto, daysOf, WEEKDAYS, weekday } from './calendar.ts';
 import { addDays } from './days.ts';
+import { dismissable } from './dismiss.ts';
 import { button, h, type Kid, toggle } from './dom.ts';
 import { swipe } from './ink.ts';
 import { type Bucket, type Line, ownNights, type Place, type Unit } from './roster.ts';
@@ -115,7 +117,18 @@ function behind(
     toggle(list, 'gantt-open', by !== null);
     toggle(list, 'gantt-who-flow', false);
     if (by !== null && matchMedia(WIDE).matches) place(list, by);
+    if (by === null) one.closed();
+    else one.opened();
   };
+  const one = dismissable({
+    within: () => [list, ...openers],
+    close: () => {
+      over = null;
+      for (const x of openers) x.setAttribute('aria-expanded', 'false');
+      shown();
+    },
+    place: shown,
+  });
   const opener = (said: Kid): HTMLElement => {
     const o = button(
       {
@@ -138,11 +151,6 @@ function behind(
       },
       said,
     );
-    o.addEventListener('keydown', (e) => {
-      if (e.key !== 'Escape') return;
-      for (const x of openers) x.setAttribute('aria-expanded', 'false');
-      shown();
-    });
     openers.push(o);
     return o;
   };

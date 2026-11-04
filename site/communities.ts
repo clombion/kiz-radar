@@ -376,7 +376,7 @@ function tripRow({ e, who, aways, on }: Visit, manager: Member, open: boolean): 
   // called collectively by its name and its people's
   const said = h('p', { class: ['gantt-said', 'visually-hidden'], id: `${id}-said` }, lines.map(inWords).join('; '));
   const frame = { ...spanOf(e, aways), festival: e, place: e.city ?? e.title, seed: String(e.id) };
-  const named = (u: Unit<Present>) => (u.people.some((a) => a.added) ? h('span', { title }, u.name) : u.name);
+  const named = (u: Unit<Present>) => (u.people.some((a) => a.added) ? addedBy(u.name, title) : u.name);
   const byTravel = gantt({ ...frame, lines, named, describedBy: said.id });
   // by place too, when its people stay at two places or more: the same people, a line a place, and a control between
   const places = byPlace(goes);
@@ -541,9 +541,7 @@ function whoGoes(
               ),
             ],
       ),
-      going.length > 0
-        ? h('span', {}, joined(going.map((a) => h('span', { title }, a.name))), ' ', doingTag(going))
-        : null,
+      going.length > 0 ? h('span', {}, joined(going.map((a) => addedBy(a.name, title))), ' ', doingTag(going)) : null,
     ].filter((x) => x !== null);
     return [goersInline(goers), goers.length > 0 && added.length > 0 ? ' · ' : null, joined(added)];
   };
@@ -566,6 +564,15 @@ function whoGoes(
   ];
   return { goers, people, said, counted };
 }
+
+// the name of someone the manager added, which says who added them on hover and to a screen reader alike
+const addedBy = (name: string, title: string): HTMLElement =>
+  h(
+    'span',
+    { title },
+    name,
+    h('span', { class: 'visually-hidden' }, ` (${title.charAt(0).toLowerCase()}${title.slice(1)})`),
+  );
 
 // words kept on one line: "5 people", "20–22 Nov", each space a no-break one
 const unbroken = (words: string): string => words.replaceAll(' ', '\u00a0');
@@ -614,7 +621,7 @@ function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): 
     line('Flying out', flyingOut),
     line('There', [
       ...namesOf(there.flatMap((a) => (a.goer ? [a.goer] : []))),
-      ...there.flatMap((a) => (a.added ? [h('span', { title }, a.added.name)] : [])),
+      ...there.flatMap((a) => (a.added ? [addedBy(a.added.name, title)] : [])),
     ]),
     [...stays].map(([stay, goers]) => h('p', {}, `Staying: ${stay}: `, joined(namesOf(goers)))),
   ];

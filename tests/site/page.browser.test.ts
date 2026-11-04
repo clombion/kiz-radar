@@ -1,6 +1,8 @@
 // What the page does, in Chromium: elements as h() builds them, the tab's oval as it moves, the page's slide, and a
 // dialog's history entry.
+
 import { afterEach, expect, test, vi } from 'vitest';
+import { dismissable } from '../../site/dismiss.ts';
 import { button, choices, h, paged, toggle } from '../../site/dom.ts';
 import { Drawing, NOTE } from '../../site/icons.ts';
 import { modal } from '../../site/modal.ts';
@@ -206,4 +208,62 @@ test('a select of choices gives back the picked option as the value it was built
   sel.selectedIndex = 1;
   sel.dispatchEvent(new Event('change'));
   expect(picked).toEqual([12]); // a number, not the option's text
+});
+
+test('a card over the page is the only one open, and goes on Escape, on the focus leaving and on a tap outside', () => {
+  const made = () => {
+    const opener = button({}, 'open'),
+      card = h('div', {}, button({}, 'in the card'));
+    const state = { open: false, placed: 0 };
+    const shown = dismissable({
+      within: () => [opener, card],
+      close: () => {
+        state.open = false;
+        shown.closed();
+      },
+      place: () => {
+        state.placed += 1;
+      },
+    });
+    document.body.append(opener, card);
+    const open = () => {
+      state.open = true;
+      shown.opened();
+    };
+    return { opener, card, state, open };
+  };
+  const [a, b] = [made(), made()];
+  const elsewhere = button({}, 'elsewhere');
+  document.body.append(elsewhere);
+  try {
+    // one at a time: opening b closes a
+    a.open();
+    b.open();
+    expect([a.state.open, b.state.open]).toEqual([false, true]);
+    // Escape wherever the focus is
+    elsewhere.focus();
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    expect(b.state.open).toBe(false);
+    // the focus leaving for elsewhere on the page, not within the card
+    a.open();
+    a.opener.focus();
+    a.card.querySelector('button')?.focus();
+    expect(a.state.open).toBe(true);
+    elsewhere.focus();
+    expect(a.state.open).toBe(false);
+    // a tap outside, not inside
+    a.open();
+    a.card.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+    expect(a.state.open).toBe(true);
+    elsewhere.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+    expect(a.state.open).toBe(false);
+    // placed again when the window changes size, while it is open only
+    a.open();
+    dispatchEvent(new Event('resize'));
+    a.state.open = false;
+    a.opener.focus();
+    expect([a.state.placed, b.state.placed]).toEqual([1, 0]);
+  } finally {
+    for (const el of [a.opener, a.card, b.opener, b.card, elsewhere]) el.remove();
+  }
 });

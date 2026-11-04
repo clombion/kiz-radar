@@ -6,8 +6,10 @@
 // opens one popover saying who travels, which Escape, a tap elsewhere or on the day again closes. It never covers the
 // day's month: on a computer it sits beside it, on a phone it is a panel under its row of months, which moves what
 // follows down.
+
 import { type Away, type Day, monthsIn, periodSaid, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
+import { dismissable } from './dismiss.ts';
 import { button, h, type Kid, nodes, toggle } from './dom.ts';
 import { Drawing } from './icons.ts';
 import { swipe } from './ink.ts';
@@ -24,17 +26,34 @@ export interface Popover {
 export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Popover {
   const pop = h('div', { class: 'day-pop', role: 'tooltip', id: 'day-pop', hidden: true });
   const containers: HTMLElement[] = [];
-  let described: HTMLElement | undefined;
+  let described: HTMLElement | undefined, // the day it is open on, and the months it is in
+    at: HTMLElement | undefined;
   const close = () => {
     pop.hidden = true;
     described?.removeAttribute('aria-describedby');
+    shown.closed();
   };
+  const shown = dismissable({
+    within: () => [...containers, pop],
+    close,
+    place: () => {
+      if (!pop.hidden && described !== undefined && at !== undefined) placed(described, at);
+    },
+    signal,
+  });
+  // open on a day: its detail drawn once, however often the pointer moves over the day it is already open on
   const open = (cell: HTMLElement, container: HTMLElement) => {
+    if (!pop.hidden && described === cell) return;
     pop.replaceChildren(...nodes(detail(cell.dataset['day'] ?? '')));
     pop.hidden = false;
     described?.removeAttribute('aria-describedby');
     cell.setAttribute('aria-describedby', pop.id);
     described = cell;
+    at = container;
+    shown.opened();
+    placed(cell, container);
+  };
+  const placed = (cell: HTMLElement, container: HTMLElement) => {
     const grid = cell.closest<HTMLElement>('.days-month') ?? cell;
     const wide = matchMedia(WIDE).matches;
     toggle(pop, 'day-panel', !wide);
@@ -61,14 +80,6 @@ export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Po
     pop.style.setProperty('top', `${x === null ? g.bottom - w.top + 6 : c.top - w.top}px`);
   };
   const cellOf = (t: EventTarget | null) => (t instanceof HTMLElement ? t.closest<HTMLElement>('[data-day]') : null);
-  document.addEventListener(
-    'pointerdown',
-    (e) => {
-      const t = e.target;
-      if (!(t instanceof Node && containers.some((c) => c.contains(t)))) close();
-    },
-    { signal },
-  );
   return {
     close,
     attach: (container) => {
@@ -89,9 +100,6 @@ export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Po
         const cell = cellOf(e.target);
         if (cell !== null && cell === again) close();
         else cell?.focus();
-      });
-      container.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') close();
       });
       container.addEventListener('mouseleave', () => {
         if (!container.contains(document.activeElement)) close();

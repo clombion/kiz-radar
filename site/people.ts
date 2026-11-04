@@ -1,6 +1,8 @@
 // Who's going where: the festivals people near a place said they're going to, by date, and each person's plans page
 // with a link to share it.
+
 import { one, q, sql } from './db.ts';
+import { dismissable } from './dismiss.ts';
 import { button, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { withDetails } from './festivals.ts';
@@ -168,7 +170,16 @@ function about(heading: string, said: string): [HTMLElement, HTMLElement] {
   const show = (open: boolean) => {
     card.hidden = !open;
     info.setAttribute('aria-expanded', String(open));
+    if (open) dismiss.opened();
+    else dismiss.closed();
   };
+  const dismiss = dismissable({
+    within: () => [info, card],
+    close: () => {
+      kept = false;
+      show(false);
+    },
+  });
   const info = Drawing.INFO.into(
     button({
       class: 'info-btn',
@@ -182,17 +193,8 @@ function about(heading: string, said: string): [HTMLElement, HTMLElement] {
       onmouseenter: () => show(true),
       onmouseleave: () => show(kept),
       onfocus: () => show(true),
-      onblur: () => {
-        kept = false;
-        show(false);
-      },
     }),
   );
-  info.addEventListener('keydown', (ev) => {
-    if (ev.key !== 'Escape') return;
-    kept = false;
-    show(false);
-  });
   return [h('h2', {}, heading, ' ', info), card];
 }
 
