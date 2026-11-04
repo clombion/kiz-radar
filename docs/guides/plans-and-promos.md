@@ -87,24 +87,24 @@ Someone's signature is how they arrive (when, and at which airport), how they le
 night. A line is everyone who arrives and leaves alike: a bar is a travel, and where they stay never splits it. A couple
 is one unit when its partners' signatures are alike, else each partner is a unit; anyone else is one. Everyone who has
 said nothing is the last line, a thin rule of the accent across the festival's days; someone who has said only where
-they stay has said something, a dashed bar over their nights. An end not said fades out, its time "in ?" or "out ?".
-With three units or fewer every line names its units; with more, the one line is "Everyone"; of several, the line of the
-most people, when no other is as big and it is more than half of everyone, is "Everyone else"; any other line of more
-than three people is called by its number ("5 people"); the rest name their units. Lines go by arrival, then departure,
-the bigger first, then by first name, those who have not said last. A line called by what it is, or whose people stay
-apart, is a button, in the text's colour and dotted under as the other names, that shows its names (by where they stay,
-when they stay apart) while the pointer is over it and from a tap or a key, until the next or Escape, in a box on a row
-of its own under the line, which the card grows to hold. Each line has a light highlighter's swipe from the hour they
-arrive to the hour they leave with the times at its ends (and the airports, on a computer), and where its people stay:
-counted beside it on a computer ("Scandic Holberg 13 · Airbnb 3 · 4 not said", or the one place alone), and on a phone
-inside the bar between its times, the biggest and how many others ("Scandic Holberg +2", the whole on hover), or under
-its name when the bar is too short. A line whose people change places on the way has its bar cut by a hairline at the
-change and each place between the times, as wide as its nights ("Airbnb → Scandic Holberg" beside it). A screen reader
-hears the names, and the rest in words the page does not show: each line in and out and where its people stay, and who
-has not said, a line called by what it is by its people too. While a card is open its row says only how many go and who
-teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The festival's name opens its card on the
-festival's line-up and prices, its own card opened in place, and folds them away again; the next trip's card opens on
-who travels, its line-up folded.
+they stay has said something, a dashed bar over their nights. An end not said fades out, its time "in ?" or "out ?". A
+line of three people or fewer always names its units, and with three units or fewer every line does. Otherwise a line of
+more than three people is "Everyone" when it is the only line, "Everyone else" when it is more than half of everyone,
+and else called by its number ("5 people"). Lines go by arrival, then departure, the bigger first, then by first name,
+those who have not said last. A line called by what it is, or whose people stay apart, is a button, in the text's colour
+and dotted under as the other names, that shows its names (by where they stay, when they stay apart) while the pointer
+is over it and from a tap or a key, until the next or Escape, in a box on a row of its own under the line, which the
+card grows to hold. Each line has a light highlighter's swipe from the hour they arrive to the hour they leave with the
+times at its ends (and the airports, on a computer), and where its people stay: counted beside it on a computer
+("Scandic Holberg 13 · Airbnb 3 · 4 not said", or the one place alone), and on a phone inside the bar between its times,
+the biggest and how many others ("Scandic Holberg +2", the whole on hover), or under its name when the bar is too short.
+A line whose people change places on the way has its bar cut by a hairline at the change and each place between the
+times, as wide as its nights ("Airbnb → Scandic Holberg" beside it). A screen reader hears the names, and the rest in
+words the page does not show: each line in and out and where its people stay, and who has not said, a line called by
+what it is by its people too. While a card is open its row says only how many go and who teaches ("5 going · Cédric &
+Christina teaching"), as the card names everyone. The festival's name opens its card on the festival's line-up and
+prices, its own card opened in place, and folds them away again; the next trip's card opens on who travels, its line-up
+folded.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page

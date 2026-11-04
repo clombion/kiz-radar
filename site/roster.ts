@@ -7,9 +7,9 @@
 // who stay alike together ("Scandic Holberg 13 · Airbnb 3 · 4 not said"). Someone who has said nothing at all is on
 // the last line, of those who have not said; someone who has said only where they stay has said something.
 //
-// What a line is called: with three units or fewer, every line names them. With more, the one line is "Everyone"; of
-// several, the line of the most people, when no other is as big and it is more than half of everyone, is "Everyone
-// else"; any other line of more than three people is called by its number ("5 people"); the rest name their units.
+// What a line is called: a line of three people or fewer always names them, and with three units or fewer every line
+// does. Otherwise a line of more than three people is "Everyone" when it is the only line, "Everyone else" when it is
+// more than half of everyone (no other line is then as big), else called by its number ("5 people").
 // The lines go by arrival, then departure, the bigger first, then by their first name; those who have not said last.
 
 // how someone travels, each end when they said it: arrive and leave as local times (YYYY-MM-DDTHH:MM), the airports
@@ -100,15 +100,9 @@ function units<P>(goers: readonly Goes<P>[]): Placed<P>[] {
 // what a line is called, of all the lines and everyone going
 function call<P>(lines: readonly Line<P>[], total: number, unitCount: number): void {
   if (unitCount <= MANY) return;
-  const [only] = lines;
-  if (lines.length === 1 && only) {
-    only.called = 'Everyone';
-    return;
-  }
   // more than half of everyone is a line no other is as big as: of two alike in size, neither is more than half
-  for (const l of lines)
-    if (2 * l.people > total) l.called = 'Everyone else';
-    else if (l.people > MANY) l.called = `${l.people} people`;
+  for (const l of lines.filter((x) => x.people > MANY))
+    l.called = lines.length === 1 ? 'Everyone' : 2 * l.people > total ? 'Everyone else' : `${l.people} people`;
 }
 
 // The lines of a roster, each with its stays counted and what it is called, in their order.

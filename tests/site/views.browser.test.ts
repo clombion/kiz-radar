@@ -567,11 +567,11 @@ test('an opened trip draws who travels when: the days from the first in to the l
     expect(agendaRow(root, 'KUOF')?.querySelector('.gantt-lane')?.childElementCount).toBe(1);
     expect(kuof.none.map((n) => n.at)).toEqual([[20, 60]]);
     expect(kuof.said).toBe(
-      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Everyone else (Maja, Ragnhild and Tonje)',
+      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Maja, Ragnhild and Tonje',
     );
-    // the three who have not said are more than half of the five: "Everyone else", its names by name under it
-    expect(kuof.unsaid).toBe('Everyone else');
-    expect(titled(agendaRow(root, 'KUOF')?.querySelector('.gantt-who-names'))).toEqual(
+    // the three who have not said, more than half of the five but only three: named
+    expect(kuof.unsaid).toBe('Maja, Ragnhild and Tonje');
+    expect(titled(agendaRow(root, 'KUOF')?.querySelector('.gantt-unsaid'))).toEqual(
       ['Maja', 'Ragnhild', 'Tonje'].map((n) => [n, 'Added by Cédric']),
     );
     // no sentences about who has not said or where who stays: the lines say it
@@ -881,7 +881,7 @@ test('a trip’s bars are thin, and the chart in words is for a screen reader al
     // the line in words: not shown, but what describes the chart
     const words = row?.querySelector<HTMLElement>('.gantt-said');
     expect(words?.textContent).toBe(
-      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Everyone else (Maja, Ragnhild and Tonje)',
+      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Maja, Ragnhild and Tonje',
     );
     expect(words?.getBoundingClientRect().width).toBeLessThanOrEqual(1);
     expect(row?.querySelector('.gantt')?.getAttribute('aria-describedby')).toBe(words?.id);
@@ -1186,7 +1186,7 @@ test('a couple flying alike and staying apart is one line, its stays counted, it
     (root) => {
       const seen = linesOf(root);
       // one travel, one line: the partners each a unit, named, a button for their stays
-      expect(seen.names).toEqual(['Cédric and Christina', 'Everyone else']);
+      expect(seen.names).toEqual(['Cédric and Christina', 'Maja, Ragnhild and Tonje']);
       expect(seen.staying).toEqual(['Comfort Xpress Oslo Sentrum 1 · Scandic Holberg 1', '']);
       // counted in full, wrapped rather than cut
       const cell = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-name ~ .gantt-stay');
@@ -1251,7 +1251,7 @@ test('an end not said fades, "in ?" or "out ?"; said only where one stays, a das
     1200,
     (root) => {
       const seen = linesOf(root);
-      expect(seen.names).toEqual(['Cédric', 'Christina Comfort Xpress', 'Everyone else']);
+      expect(seen.names).toEqual(['Cédric', 'Christina Comfort Xpress', 'Maja, Ragnhild and Tonje']);
       expect(seen.bars.map((b) => [b.open, b.said])).toEqual([
         [['gantt-open-end'], ['17:05 OSL', 'out ?']],
         [

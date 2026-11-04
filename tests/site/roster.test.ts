@@ -114,8 +114,26 @@ describe('a few more', () => {
       ...['Ola', 'Per', 'Siv'].map((n) => one(n, T(THU, MON, S))),
     ]);
     expect(shown(lines)).toEqual([
-      'Everyone else [3] 19T17:05 OSL → 23T09:40 | Scandic Holberg 3',
+      'Ola, Per, Siv [3] 19T17:05 OSL → 23T09:40 | Scandic Holberg 3',
       'Ann [1] 19T17:05 TRF → 23T09:40 | Scandic Holberg 1',
+    ]);
+  });
+  it('a line of three people is named, though it is more than half of everyone of four units', () => {
+    // KUOF: Cédric & Christina on their flight, and the three added, who have said nothing: 3 of 5
+    const kuof = [
+      ...['Cédric', 'Christina'].map(
+        (name): Goes<string> => ({
+          person: name,
+          name,
+          couple: { key: 'cc', name: 'Cédric & Christina' },
+          ...T(THU, MON, S),
+        }),
+      ),
+      ...['Tonje', 'Ragnhild', 'Maja'].map((n) => one(n, NOTHING)),
+    ];
+    expect(shown(roster(kuof))).toEqual([
+      'Cédric & Christina [2] 19T17:05 OSL → 23T09:40 | Scandic Holberg 2',
+      'Maja, Ragnhild, Tonje [3] not said | not said 3',
     ]);
   });
   it('someone who said only where they stay is not among those who have said nothing', () => {
