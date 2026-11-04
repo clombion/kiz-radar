@@ -145,7 +145,7 @@ function nearHere(at: Spot | null, name: string): Kid[] {
   const people = withPlans().filter((p) => keys.has(p.key));
   return [
     h('h2', {}, `Near ${name}`),
-    h('p', { class: 'muted' }, `Dancers living within ${NEAR_KM} km who share their plans.`),
+    h('p', { class: 'muted' }, 'Dancers based in the region with public plans.'),
     events.length > 0
       ? h('ul', { class: 'plan-list' }, events)
       : h('p', { class: 'muted' }, 'No one near here has shared plans yet.'),

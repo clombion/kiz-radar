@@ -1601,10 +1601,9 @@ test('the Friends tab lists the people near the home city, then the rest of the 
   const home = homeOf()?.city ?? '';
   expect(home).not.toBe('');
   expect(near.heading).toBe(`Near ${home}`);
-  expect(said(root.querySelector('.friends-near p'))).toBe(
-    `Dancers living within ${NEAR_KM} km who share their plans.`,
-  );
+  expect(said(root.querySelector('.friends-near p'))).toBe('Dancers based in the region with public plans.');
   expect(NEAR_KM).toBe(150);
+  expect(said(root.querySelector('.friends-near'))).not.toContain(`${NEAR_KM} km`); // the page says no distance
   // Glasgow names Christina and Siân, who both live there; the place is the home city's, with nothing to change it
   expect(near.rows.find((r) => r?.includes('Glasgow'))).toMatch(/Christina.*Siân/u);
   expect(near.sharing).toMatch(/^Sharing their plans: Christina \(\d+\), Cédric \(\d+\) and Siân \(\d+\)$/u);
