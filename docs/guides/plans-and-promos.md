@@ -50,34 +50,35 @@ then a Share this page button, which opens the device's share sheet or else copi
 page is meant for: a lock, people and their number, which says "Visible to its 2 members only" on hover and to a screen
 reader. Who manages it is said with the members, at the foot of the page.
 
-Under the head, the calendar: three months at a time, a trimester from today's month (November to January, then February
-to April, and so on), named between two buttons to the trimesters before and after it ("Nov 2026 – Jan 2027"; "Previous
-three months" and "Next three months" to a screen reader), which draw it in place, from today's trimester to the one of
-the last day anyone travels, each off at its end. The address keeps the trimester shown (`?from=2027-02`), so a reload
-or a shared link shows it again; one the calendar does not step to shows today's. A month is a small grid, two months a
-row on a phone, light, without boxes: a row is a week from Monday, its days placed in their columns. A festival is one
-highlighter stroke across the lower half of its days' numbers, the same colour whatever the number, a swipe of its own
-(a little tilted, low or thick, its ink fading at a round end, the same each time it is drawn), round at its first and
-last day and cut where it goes on in the week before or after; two at once are two strokes, one under the other. A day
-someone travels on outside their festival's days (they arrive the day before, or leave the day after) has a dot under
-it; today is ringed by hand and the days before it greyed. At a row's end is how many go to the festivals that begin
-that week, said once, on the week each begins: two festivals that begin in one week show their sum, and each its own on
-hover and to a screen reader. A member with a trip travels from the day they arrive to the day they leave, anyone else
-(a member without one, someone added) on the festival's own days, whatever weekdays those are; someone at two festivals
-at once counts once. The sentence reads the same counts: the first day as many travel as on any, and the days after it
-with as many. Only a day someone travels on does anything: each month is one stop for the keyboard, whose arrows move
-among those days (left, right) or a week or more (up, down), and the day in focus, under the pointer or tapped opens a
-popover of its festivals, who flies in and out that day (by time and airport, a couple as one when both share the
-flight: "Flying in: Cédric & Christina 14:30 PRG"), who else is there, and where members stay. It never covers the day's
-month: on a computer it sits beside the month, on a phone it is a panel under the day's row of months, moving what
-follows down. Escape, a tap elsewhere or on the day again closes it, and the focus stays on the day.
+Under the head, the calendar: four months at a time, a period from today's month (November to February, then March to
+June, then July to October: three make a year), named between two buttons, on its line, to the periods before and after
+it ("Nov 2026 – Feb 2027"; "Previous four months" and "Next four months" to a screen reader), which draw it in place,
+from today's period to the one of the last day anyone travels, each off at its end. The address keeps the period shown
+(`?from=2027-03`), so a reload or a shared link shows it again; one the calendar does not step to shows today's. A month
+is a small grid, two rows of two months on a phone and one row of four on a computer, light, without boxes: a row is a
+week from Monday, its days placed in their columns. A festival is one highlighter stroke across the lower half of its
+days' numbers, the same colour whatever the number, a swipe of its own (a little tilted, low or thick, its ink fading at
+a round end, the same each time it is drawn), round at its first and last day and cut where it goes on in the week
+before or after; two at once are two strokes, one under the other. A day someone travels on outside their festival's
+days (they arrive the day before, or leave the day after) has a dot under it; today is ringed by hand and the days
+before it greyed. At a row's end is how many go to the festivals that begin that week, said once, on the week each
+begins: two festivals that begin in one week show their sum, and each its own on hover and to a screen reader. A member
+with a trip travels from the day they arrive to the day they leave, anyone else (a member without one, someone added) on
+the festival's own days, whatever weekdays those are; someone at two festivals at once counts once. The sentence reads
+the same counts: the first day as many travel as on any, and the days after it with as many. Only a day someone travels
+on does anything: each month is one stop for the keyboard, whose arrows move among those days (left, right) or a week or
+more (up, down), and the day in focus, under the pointer or tapped opens a popover of its festivals, who flies in and
+out that day (by time and airport, a couple as one when both share the flight: "Flying in: Cédric & Christina 14:30
+PRG"), who else is there, and where members stay. It never covers the day's month: on a computer it sits beside the
+month, on a phone it is a panel under the day's row of months, moving what follows down. Escape, a tap elsewhere or on
+the day again closes it, and the focus stays on the day.
 
-Then the agenda of the trimester shown: its trips, those with a day in it, so every day the calendar shows has its trips
-there ("Nothing planned in May–Jul" when it has none), a heading a month ("November · 3 trips", with the year in January
+Then the agenda of the period shown: its trips, those with a day in it, so every day the calendar shows has its trips
+there ("Nothing planned in Mar–Jun" when it has none), a heading a month ("November · 3 trips", with the year in January
 and on the first when it is not this year's), and a row a trip, soonest first. The sentence and "Next" are of every
-trip, whatever trimester shows. A row has its days ("Fri 20 – Sun 22 Nov"), the festival and where it is (which leads to
-it on the map), and who of the community goes: its members as on any card (as their couple when both go, teaching when
-in the line-up), then the people added: "Christina teaching · Siân teaching and Caroline going". Hovering an added name
+trip, whatever period shows. A row has its days ("Fri 20 – Sun 22 Nov"), the festival and where it is (which leads to it
+on the map), and who of the community goes: its members as on any card (as their couple when both go, teaching when in
+the line-up), then the people added: "Christina teaching · Siân teaching and Caroline going". Hovering an added name
 says who added them ("Added by Cédric"). Whether someone added teaches comes from the festival's line-up and their
 `artist_keys`, as it does for a member; the manager never says it, and someone teaching links to their artist page. The
 next trip is open; the others open from their button, on a card under the row. An opened trip is a roster of who travels

@@ -1,12 +1,12 @@
 // The months a community travels in, a small grid each: a row a week from Monday, each festival a highlighter stroke
 // behind its days, a dot under a day only travelled, today ringed, and at a row's end how many go to the festivals
-// that begin that week. Three months show at a time, a trimester from today's month (calendar.ts), between buttons to
-// the trimesters before and after it, as far as the last trip. Only a day someone travels on does anything: each month
+// that begin that week. Four months show at a time, a period from today's month (calendar.ts), between buttons to
+// the periods before and after it, as far as the last trip. Only a day someone travels on does anything: each month
 // is one stop for the keyboard, whose arrows move among those days; the day in focus, under the pointer or tapped
 // opens one popover saying who travels, which Escape, a tap elsewhere or on the day again closes. It never covers the
 // day's month: on a computer it sits beside it, on a phone it is a panel under its row of months, which moves what
 // follows down.
-import { type Away, type Day, monthsIn, trimesterSaid, WEEKDAYS, weeksOf } from './calendar.ts';
+import { type Away, type Day, monthsIn, periodSaid, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
 import { button, h, type Kid, nodes, toggle } from './dom.ts';
 import { Drawing } from './icons.ts';
@@ -240,8 +240,8 @@ function month<A extends Away>(s: Days<A>, m: string): HTMLElement {
   return grid;
 }
 
-// The calendar: a trimester's three months, a grid each, under its name between the buttons to the trimesters before
-// and after it in steps (each off at its end), and the key. A button draws the trimester it goes to in place, and tells
+// The calendar: a period's four months, a grid each, under its name between the buttons to the periods before and
+// after it in steps (each off at its end), and the key. A button draws the period it goes to in place, and tells
 // moved of it.
 export function months<A extends Away>(
   s: Days<A> & { from: string; steps: readonly string[]; moved: (from: string) => void },
@@ -265,13 +265,13 @@ export function months<A extends Away>(
         },
       }),
     );
-  const back = step(-1, 'Previous three months', Drawing.PREVIOUS),
-    on = step(1, 'Next three months', Drawing.NEXT);
+  const back = step(-1, 'Previous four months', Drawing.PREVIOUS),
+    on = step(1, 'Next four months', Drawing.NEXT);
   const draw = (from: string) => {
     at = from;
     s.pop.close();
     grids.replaceChildren(...monthsIn(from).map((m) => month(s, m)));
-    said.textContent = trimesterSaid(from, (m) => monthShort(`${m}-01`));
+    said.textContent = periodSaid(from, (m) => monthShort(`${m}-01`));
     const i = s.steps.indexOf(from);
     back.disabled = i <= 0;
     on.disabled = i >= s.steps.length - 1;

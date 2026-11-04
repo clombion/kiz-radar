@@ -7,12 +7,12 @@ import {
   awayDays,
   busiest,
   type Day,
-  inTrimester,
+  inPeriod,
+  periodSaid,
+  periods,
   presence,
   relativeDay,
   spanOf,
-  trimesterSaid,
-  trimesters,
   WEEKDAYS,
   weekday,
 } from './calendar.ts';
@@ -182,10 +182,10 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
   const today = one({ day: str }, sql`SELECT day FROM today`)?.day ?? '';
   const members = plural(c.members.length, 'member');
   const [next] = events;
-  // the trimester the calendar shows, from the address (?from=2027-02) when it is one it steps through, else today's;
+  // the period the calendar shows, from the address (?from=2027-02) when it is one it steps through, else today's;
   // the agenda under it its trips, those with a day in it, so that every day the calendar shows has its trips there.
   // The sentence and "Next" are of every trip.
-  const steps = trimesters(today, [...days.keys()].toSorted((a, b) => a.localeCompare(b)).at(-1));
+  const steps = periods(today, [...days.keys()].toSorted((a, b) => a.localeCompare(b)).at(-1));
   const asked = readState(qs, { from: '' }).state.from;
   const from = steps.includes(asked) ? asked : (steps[0] ?? today.slice(0, 7));
   const plan = h('section', { class: 'agenda' }, agenda(trips, today, c.manager, from));
@@ -283,18 +283,16 @@ function daysSaid(e: Festival): string {
     : `${wd(e.start_date)} ${d1} ${m1} – ${wd(e.end_date)} ${d2} ${m2}`;
 }
 
-// The agenda of a trimester: its trips, those with a day in it, a heading a month ("November · 3 trips", with its year
-// in January and when it is not this year's) and a row a trip, the next open; none, "Nothing planned in Feb–Apr".
+// The agenda of a period: its trips, those with a day in it, a heading a month ("November · 3 trips", with its year
+// in January and when it is not this year's) and a row a trip, the next open; none, "Nothing planned in Mar–Jun".
 function agenda(trips: readonly Visit[], today: string, manager: Member, from: string): Kid[] {
   const byMonth = new Map<string, Visit[]>();
-  for (const t of trips.filter((v) => v.aways.some((a) => inTrimester(from, a)))) {
+  for (const t of trips.filter((v) => v.aways.some((a) => inPeriod(from, a)))) {
     const m = t.e.start_date.slice(0, 7);
     byMonth.set(m, [...(byMonth.get(m) ?? []), t]);
   }
   if (byMonth.size === 0)
-    return [
-      h('p', { class: 'muted' }, `Nothing planned in ${trimesterSaid(from, (m) => monthShort(`${m}-01`), true)}`),
-    ];
+    return [h('p', { class: 'muted' }, `Nothing planned in ${periodSaid(from, (m) => monthShort(`${m}-01`), true)}`)];
   return [...byMonth].map(([m, here], i) => {
     const [name = '', year = ''] = monthYear(`${m}-01`).split(' ');
     const yearToo = m.endsWith('-01') || (i === 0 && year !== today.slice(0, 4));

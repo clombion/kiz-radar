@@ -25,30 +25,30 @@ const plusMonths = (month: string, n: number): string => {
 const monthsApart = (from: string, to: string): number =>
   (Number(to.slice(0, 4)) - Number(from.slice(0, 4))) * 12 + Number(to.slice(5, 7)) - Number(from.slice(5, 7));
 
-// A community's calendar shows a trimester at a time: three months from today's, then the three after, and so on
-// (November to January, February to April, …), each named by its first month, YYYY-MM.
-const TRIMESTER = 3;
-// the trimester a day or a month is in, today's for one before it
-export const trimesterOf = (today: string, day: string): string => {
+// A community's calendar shows four months at a time, a period: four months from today's, then the four after, and so
+// on (November to February, March to June, July to October: three make a year), each named by its first month, YYYY-MM.
+const PERIOD = 4;
+// the period a day or a month is in, today's for one before it
+export const periodOf = (today: string, day: string): string => {
   const now = today.slice(0, 7);
-  return plusMonths(now, TRIMESTER * Math.max(0, Math.floor(monthsApart(now, day.slice(0, 7)) / TRIMESTER)));
+  return plusMonths(now, PERIOD * Math.max(0, Math.floor(monthsApart(now, day.slice(0, 7)) / PERIOD)));
 };
-// a trimester's months
-export const monthsIn = (first: string): string[] => Array.from({ length: TRIMESTER }, (_, i) => plusMonths(first, i));
-// the trimesters the calendar steps through: today's, to the one the last day anyone is away is in
-export function trimesters(today: string, last: string | undefined): string[] {
-  const to = trimesterOf(today, last ?? today);
-  const out = [trimesterOf(today, today)];
-  while ((out.at(-1) ?? to) < to) out.push(plusMonths(out.at(-1) ?? to, TRIMESTER));
+// a period's months
+export const monthsIn = (first: string): string[] => Array.from({ length: PERIOD }, (_, i) => plusMonths(first, i));
+// the periods the calendar steps through: today's, to the one the last day anyone is away is in
+export function periods(today: string, last: string | undefined): string[] {
+  const to = periodOf(today, last ?? today);
+  const out = [periodOf(today, today)];
+  while ((out.at(-1) ?? to) < to) out.push(plusMonths(out.at(-1) ?? to, PERIOD));
   return out;
 }
-// whether someone away from a day to a day is away on any day of a trimester
-export const inTrimester = (first: string, away: { from: string; to: string }): boolean =>
-  away.from < `${plusMonths(first, TRIMESTER)}-01` && away.to >= `${first}-01`;
-// a trimester by its months' names (name gives "Nov"): "Nov 2026 – Jan 2027" across two years, else "Feb – Apr 2027";
-// short, "Feb–Apr"
-export function trimesterSaid(first: string, name: (month: string) => string, short = false): string {
-  const last = plusMonths(first, TRIMESTER - 1);
+// whether someone away from a day to a day is away on any day of a period
+export const inPeriod = (first: string, away: { from: string; to: string }): boolean =>
+  away.from < `${plusMonths(first, PERIOD)}-01` && away.to >= `${first}-01`;
+// a period by its months' names (name gives "Nov"): "Nov 2026 – Feb 2027" across two years, else "Mar – Jun 2027";
+// short, "Mar–Jun"
+export function periodSaid(first: string, name: (month: string) => string, short = false): string {
+  const last = plusMonths(first, PERIOD - 1);
   if (short) return `${name(first)}–${name(last)}`;
   return first.slice(0, 4) === last.slice(0, 4)
     ? `${name(first)} – ${name(last)} ${last.slice(0, 4)}`

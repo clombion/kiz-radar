@@ -6,14 +6,14 @@ import {
   busiest,
   daysInto,
   daysOf,
-  inTrimester,
+  inPeriod,
   monthsIn,
+  periodOf,
+  periodSaid,
+  periods,
   presence,
   relativeDay,
   spanOf,
-  trimesterOf,
-  trimesterSaid,
-  trimesters,
   weekday,
   weeksOf,
 } from '../../site/calendar.ts';
@@ -91,33 +91,34 @@ test('the days most are away are the first run with as many as any day, and of t
   expect(busiest(presence([]))).toBeUndefined();
 });
 
-test('the calendar steps by trimesters from today’s month, three months each, to the one of the last day away', () => {
-  // from November: November to January, February to April, …, across years
-  expect(trimesterOf('2026-11-03', '2026-11-20')).toBe('2026-11');
-  expect(trimesterOf('2026-11-03', '2027-01-31')).toBe('2026-11');
-  expect(trimesterOf('2026-11-03', '2027-02-01')).toBe('2027-02');
-  expect(trimesterOf('2026-11-03', '2027-11-01')).toBe('2027-11');
-  expect(trimesterOf('2026-11-03', '2026-10-30')).toBe('2026-11'); // a day before today's month: today's
-  expect(monthsIn('2026-11')).toEqual(['2026-11', '2026-12', '2027-01']);
-  expect(monthsIn('2027-12')).toEqual(['2027-12', '2028-01', '2028-02']);
-  expect(trimesters('2026-11-03', '2027-09-04')).toEqual(['2026-11', '2027-02', '2027-05', '2027-08']);
-  expect(trimesters('2026-11-03', '2026-12-01')).toEqual(['2026-11']);
-  expect(trimesters('2026-11-03', undefined)).toEqual(['2026-11']);
-  // trips only far off: today's trimester, empty, first
-  expect(trimesters('2027-02-10', '2027-06-18')).toEqual(['2027-02', '2027-05']);
-  // someone is in a trimester when any of their days is
-  expect(inTrimester('2027-02', { from: '2027-01-31', to: '2027-02-01' })).toBe(true);
-  expect(inTrimester('2027-02', { from: '2027-04-30', to: '2027-05-02' })).toBe(true);
-  expect(inTrimester('2027-02', { from: '2027-05-01', to: '2027-05-02' })).toBe(false);
-  expect(inTrimester('2027-02', { from: '2027-01-14', to: '2027-01-31' })).toBe(false);
+test('the calendar steps by periods from today’s month, four months each, to the one of the last day away', () => {
+  // from November: November to February, March to June, July to October, across years
+  expect(periodOf('2026-11-03', '2026-11-20')).toBe('2026-11');
+  expect(periodOf('2026-11-03', '2027-02-28')).toBe('2026-11');
+  expect(periodOf('2026-11-03', '2027-03-01')).toBe('2027-03');
+  expect(periodOf('2026-11-03', '2027-11-01')).toBe('2027-11');
+  expect(periodOf('2026-11-03', '2026-10-30')).toBe('2026-11'); // a day before today's month: today's
+  expect(monthsIn('2026-11')).toEqual(['2026-11', '2026-12', '2027-01', '2027-02']);
+  expect(monthsIn('2027-11')).toEqual(['2027-11', '2027-12', '2028-01', '2028-02']);
+  // three periods make a year
+  expect(periods('2026-11-03', '2027-09-04')).toEqual(['2026-11', '2027-03', '2027-07']);
+  expect(periods('2026-11-03', '2026-12-01')).toEqual(['2026-11']);
+  expect(periods('2026-11-03', undefined)).toEqual(['2026-11']);
+  // trips only far off: today's period, empty, first
+  expect(periods('2027-03-10', '2027-07-18')).toEqual(['2027-03', '2027-07']);
+  // someone is in a period when any of their days is
+  expect(inPeriod('2027-03', { from: '2027-02-28', to: '2027-03-01' })).toBe(true);
+  expect(inPeriod('2027-03', { from: '2027-06-30', to: '2027-07-02' })).toBe(true);
+  expect(inPeriod('2027-03', { from: '2027-07-01', to: '2027-07-02' })).toBe(false);
+  expect(inPeriod('2027-03', { from: '2027-02-14', to: '2027-02-28' })).toBe(false);
 });
 
-test('a trimester is said by its months, with each year across two, and short without', () => {
+test('a period is said by its months, with each year across two, and short without', () => {
   const name = (m: string) =>
     ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][Number(m.slice(5)) - 1] ?? m;
-  expect(trimesterSaid('2026-11', name)).toBe('Nov 2026 – Jan 2027');
-  expect(trimesterSaid('2027-02', name)).toBe('Feb – Apr 2027');
-  expect(trimesterSaid('2027-02', name, true)).toBe('Feb–Apr');
+  expect(periodSaid('2026-11', name)).toBe('Nov 2026 – Feb 2027');
+  expect(periodSaid('2027-03', name)).toBe('Mar – Jun 2027');
+  expect(periodSaid('2027-03', name, true)).toBe('Mar–Jun');
 });
 
 test('a month is its weeks from Monday, with the days of other months left empty', () => {

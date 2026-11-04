@@ -199,6 +199,7 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
   expect([...root.querySelectorAll('.agenda h2')].map((h2) => said(h2))).toEqual([
     'November · 3 trips',
     'January 2027 · 1 trip',
+    'February · 2 trips',
   ]);
   const rows = [...root.querySelectorAll<HTMLElement>('.trip')];
   expect(rows.map((r) => said(r.querySelector('.trip-when')))).toEqual([
@@ -206,6 +207,8 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
     'Fri 20 – Sun 22 Nov',
     'Thu 26 Nov – Tue 1 Dec',
     'Thu 14 – Mon 18 Jan',
+    'Thu 11 – Mon 15 Feb',
+    'Fri 26 – Sun 28 Feb',
   ]);
   expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-who'))).toBe(KUOF);
   // Glasgow's card is open: its row says how many go and who teaches; the card names everyone
@@ -234,8 +237,22 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
   agendaRow(root, 'Glasgow')?.querySelector<HTMLElement>('.trip-toggle')?.click();
   // the next trip open, the others closed; a row opens and closes from its button
   const toggles = rows.map((r) => r.querySelector<HTMLElement>('.trip-toggle'));
-  expect(toggles.map((t) => t?.getAttribute('aria-expanded'))).toEqual(['true', 'false', 'false', 'false']);
-  expect(rows.map((r) => r.querySelector<HTMLElement>('.trip-body')?.hidden)).toEqual([false, true, true, true]);
+  expect(toggles.map((t) => t?.getAttribute('aria-expanded'))).toEqual([
+    'true',
+    'false',
+    'false',
+    'false',
+    'false',
+    'false',
+  ]);
+  expect(rows.map((r) => r.querySelector<HTMLElement>('.trip-body')?.hidden)).toEqual([
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+  ]);
   toggles[1]?.click();
   expect(rows[1]?.querySelector<HTMLElement>('.trip-body')?.hidden).toBe(false);
   expect(toggles[1]?.getAttribute('aria-expanded')).toBe('true');
@@ -317,12 +334,13 @@ const popover = (root: HTMLElement) => root.querySelector<HTMLElement>('.day-pop
 const press = (key: string) =>
   document.activeElement?.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
-test('the months are today’s trimester, three of them, a festival one stroke across its days, its count once', () => {
+test('the months are today’s period, four of them, a festival one stroke across its days, its count once', () => {
   const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
   expect(monthsOf(root).map((m) => said(m.querySelector('.days-caption')))).toEqual([
     'Nov 2026',
     'Dec 2026',
     'Jan 2027',
+    'Feb 2027',
   ]);
   expect([...(monthsOf(root)[0]?.querySelectorAll('.days-head span') ?? [])].map((s) => s.textContent)).toEqual([
     'M',
@@ -596,7 +614,7 @@ test('an opened trip draws who travels when: the days from the first in to the l
 
 test('a festival from a Wednesday to a Tuesday, a week long, fills its every day and its Gantt’s axis', () => {
   withAdded([['Ola', ALBANIA]], () => {
-    const root = onDay('2026-11-01', () => communityPage(COMMUNITY, 'from=2027-05'));
+    const root = onDay('2026-11-01', () => communityPage(COMMUNITY, 'from=2027-03'));
     expect(['04', '05', '08', '11', '12'].map((d) => awayOn(cellOn(root, `2027-05-${d}`)))).toEqual([0, 1, 1, 1, 0]);
     expect(ganttOf(opened(root, 'Albania')).axis.map((a) => a.day)).toEqual([
       'W5',
@@ -1033,10 +1051,10 @@ test('the highlighter is light: its ink at most a quarter, the roster’s lighte
   });
 });
 
-// ----- a trimester at a time: the calendar's three months, and the agenda's trips with a day in them -----
-// what the page shows of its trimester: its name, its months, its steps (on or off, by their labels), the agenda's
+// ----- four months at a time: the calendar's period, and the agenda's trips with a day in it -----
+// what the page shows of its period: its name, its months, its steps (on or off, by their labels), the agenda's
 // headings or what it says when it has none, and the sentence and "Next"
-const trimesterOf = (root: HTMLElement) => ({
+const periodOf = (root: HTMLElement) => ({
   said: said(root.querySelector('.days-said')),
   months: monthsOf(root).map((m) => m.ariaLabel),
   steps: [...root.querySelectorAll<HTMLButtonElement>('.days-step')].map((b) => [b.ariaLabel, b.disabled]),
@@ -1046,60 +1064,55 @@ const trimesterOf = (root: HTMLElement) => ({
 const step = (root: HTMLElement, label: string) =>
   root.querySelector<HTMLButtonElement>(`.days-step[aria-label="${label}"]`)?.click();
 const HEAD = ['Most members are travelling 20–22 Nov: 5 people, to Oslo.', 'Next: Glasgow, this Friday'];
+const RIGA = 16_246; // ILKSF Meets HIK Latvia, in Riga, 3–6 September 2027
 
-test('the calendar shows today’s trimester between its steps, the agenda its trips', () => {
-  const seen = trimesterOf(onDay('2026-11-04', () => communityPage(COMMUNITY)));
+test('the calendar shows today’s four months between its steps, the agenda their trips', () => {
+  const seen = periodOf(onDay('2026-11-04', () => communityPage(COMMUNITY)));
+  // every trip of the community is in them: both steps off
   expect(seen).toEqual({
-    said: 'Nov 2026 – Jan 2027',
-    months: ['November 2026', 'December 2026', 'January 2027'],
+    said: 'Nov 2026 – Feb 2027',
+    months: ['November 2026', 'December 2026', 'January 2027', 'February 2027'],
     steps: [
-      ['Previous three months', true],
-      ['Next three months', false],
+      ['Previous four months', true],
+      ['Next four months', true],
     ],
-    agenda: ['November · 3 trips', 'January 2027 · 1 trip'],
+    agenda: ['November · 3 trips', 'January 2027 · 1 trip', 'February · 2 trips'],
     head: HEAD,
   });
   // the steps are drawings, of the icons' module
   expect(onDay('2026-11-04', () => communityPage(COMMUNITY)).querySelector('.days-step svg')).not.toBeNull();
 });
 
-test('the steps go through the trimesters in place to the last trip’s, the agenda with them, the address keeping it', () => {
+test('the steps go through the periods in place to the last trip’s, the agenda with them, the address keeping it', () => {
   const was = location.hash;
   try {
-    // Maja to Riga in September: February to April, May to July with nothing, then August to October
-    withAdded([['Maja', 16_246]], () => {
+    // Maja to Riga in September: March to June with nothing, then July to October
+    withAdded([['Maja', RIGA]], () => {
       const root = onDay('2026-11-04', () => communityPage(COMMUNITY));
-      const seen = [trimesterOf(root)];
+      const seen = [periodOf(root)];
       const addresses: string[] = [];
-      for (const _ of [1, 2, 3]) {
-        step(root, 'Next three months');
-        seen.push(trimesterOf(root));
+      for (const _ of [1, 2]) {
+        step(root, 'Next four months');
+        seen.push(periodOf(root));
         addresses.push(location.hash.split('?')[1] ?? '');
       }
-      expect(seen.map((t) => t.said)).toEqual([
-        'Nov 2026 – Jan 2027',
-        'Feb – Apr 2027',
-        'May – Jul 2027',
-        'Aug – Oct 2027',
-      ]);
-      expect(seen[1]?.months).toEqual(['February 2027', 'March 2027', 'April 2027']);
+      expect(seen.map((t) => t.said)).toEqual(['Nov 2026 – Feb 2027', 'Mar – Jun 2027', 'Jul – Oct 2027']);
+      expect(seen[1]?.months).toEqual(['March 2027', 'April 2027', 'May 2027', 'June 2027']);
       expect(seen.map((t) => t.agenda)).toEqual([
-        ['November · 3 trips', 'January 2027 · 1 trip'],
-        ['February 2027 · 2 trips'],
-        ['Nothing planned in May–Jul'],
+        ['November · 3 trips', 'January 2027 · 1 trip', 'February · 2 trips'],
+        ['Nothing planned in Mar–Jun'],
         ['September 2027 · 1 trip'],
       ]);
       expect(seen.map((t) => t.steps.map(([, off]) => off))).toEqual([
         [true, false],
         [false, false],
-        [false, false],
         [false, true],
       ]);
-      expect(addresses).toEqual(['from=2027-02', 'from=2027-05', 'from=2027-08']);
-      // the sentence and "Next" are of every trip, whatever trimester shows
+      expect(addresses).toEqual(['from=2027-03', 'from=2027-07']);
+      // the sentence and "Next" are of every trip, whatever period shows
       for (const t of seen) expect(t.head).toEqual(HEAD);
-      for (const _ of [1, 2, 3]) step(root, 'Previous three months');
-      expect(trimesterOf(root).said).toBe('Nov 2026 – Jan 2027');
+      for (const _ of [1, 2]) step(root, 'Previous four months');
+      expect(periodOf(root).said).toBe('Nov 2026 – Feb 2027');
       expect(location.hash).not.toContain('from=');
     });
   } finally {
@@ -1107,52 +1120,91 @@ test('the steps go through the trimesters in place to the last trip’s, the age
   }
 });
 
-test('the trimester in the address shows, one the calendar does not step to is today’s', () => {
-  const at = (qs: string) => trimesterOf(onDay('2026-11-04', () => communityPage(COMMUNITY, qs))).said;
-  expect(at('from=2027-02')).toBe('Feb – Apr 2027');
-  expect(at('from=2027-03')).toBe('Nov 2026 – Jan 2027'); // no trimester begins in March
-  expect(at('from=2028-02')).toBe('Nov 2026 – Jan 2027'); // after the last trip
-  expect(at('from=2026-08')).toBe('Nov 2026 – Jan 2027'); // before today's
+test('the period in the address shows, one the calendar does not step to is today’s', () => {
+  withAdded([['Maja', RIGA]], () => {
+    const at = (qs: string) => periodOf(onDay('2026-11-04', () => communityPage(COMMUNITY, qs))).said;
+    expect(at('from=2027-03')).toBe('Mar – Jun 2027');
+    expect(at('from=2027-02')).toBe('Nov 2026 – Feb 2027'); // no period begins in February
+    expect(at('from=2027-11')).toBe('Nov 2026 – Feb 2027'); // after the last trip
+    expect(at('from=2026-07')).toBe('Nov 2026 – Feb 2027'); // before today's
+  });
 });
 
-test('a trip with a day in the trimester is among its trips, though its festival is in the next', () => {
-  // Cédric flying in to Cloudkiz (26–28 Feb) on the last day of January
+test('a trip with a day in the period is among its trips, though its festival is in the next', () => {
+  // seen from October, the first four months are October to January; Cédric flies in to Cloudkiz (26–28 Feb) on the
+  // last day of January
   const early: readonly Planted[] = [['cedric', 18_760, '2027-01-31T20:00', '2027-03-01T10:00', null]];
-  const seen = withTrips(early, () => trimesterOf(onDay('2026-11-04', () => communityPage(COMMUNITY))));
-  expect(seen.agenda).toEqual(['November · 3 trips', 'January 2027 · 1 trip', 'February · 1 trip']);
+  const fromOctober = () => periodOf(onDay('2026-10-15', () => communityPage(COMMUNITY)));
+  expect(fromOctober().agenda).toEqual(['November · 3 trips', 'January 2027 · 1 trip']);
+  expect(withTrips(early, fromOctober).agenda).toEqual([
+    'November · 3 trips',
+    'January 2027 · 1 trip',
+    'February · 1 trip',
+  ]);
 });
 
-test('trips only far off: today’s trimester shows empty, and the next its trips', () => {
-  withAdded([['Maja', 18_725]], () => {
-    // from 1 March 2027: March to May has none of the community; June to August, Maja's
+test('trips only far off: today’s period shows empty, and the next its trips', () => {
+  withAdded([['Maja', 18_766]], () => {
+    // from 1 March 2027: March to June has none of the community; July to October, Maja's
     const root = onDay('2027-03-01', () => communityPage(COMMUNITY));
-    expect(trimesterOf(root).agenda).toEqual(['Nothing planned in Mar–May']);
-    step(root, 'Next three months');
-    expect([trimesterOf(root).said, trimesterOf(root).agenda]).toEqual(['Jun – Aug 2027', ['June · 1 trip']]);
+    expect(periodOf(root).agenda).toEqual(['Nothing planned in Mar–Jun']);
+    step(root, 'Next four months');
+    expect([periodOf(root).said, periodOf(root).agenda]).toEqual(['Jul – Oct 2027', ['July · 1 trip']]);
   });
 });
 
 test('a step that turns itself off leaves the focus on the other', () => {
-  inPage('2026-11-04', (root) => {
-    const next = root.querySelector<HTMLButtonElement>('.days-step[aria-label="Next three months"]');
-    next?.focus();
-    next?.click();
-    expect(document.activeElement?.ariaLabel).toBe('Previous three months');
-  });
-});
-
-test('on a phone a day’s panel opens under its row of months in a later trimester too', async () => {
-  await atWidth(390, () =>
+  withAdded([['Maja', RIGA]], () =>
     inPage('2026-11-04', (root) => {
-      step(root, 'Next three months');
-      cellOn(root, '2027-02-27')?.focus();
-      expect(popover(root)?.checkVisibility()).toBe(true);
-      // a step closes it
-      const pop = popover(root);
-      step(root, 'Previous three months');
-      expect(pop?.hidden).toBe(true);
+      const next = root.querySelector<HTMLButtonElement>('.days-step[aria-label="Next four months"]');
+      next?.focus();
+      next?.click();
+      next?.click();
+      expect(document.activeElement?.ariaLabel).toBe('Previous four months');
     }),
   );
+});
+
+test('on a phone a day’s panel opens under its row of months in a later period too', async () => {
+  await atWidth(390, () =>
+    withAdded([['Maja', RIGA]], () =>
+      inPage('2026-11-04', (root) => {
+        step(root, 'Next four months');
+        step(root, 'Next four months');
+        cellOn(root, '2027-09-04')?.focus();
+        expect(popover(root)?.checkVisibility()).toBe(true);
+        // a step closes it
+        const pop = popover(root);
+        step(root, 'Previous four months');
+        expect(pop?.hidden).toBe(true);
+      }),
+    ),
+  );
+});
+
+test('the steps sit on the line of the period’s name, and its months in two rows on a phone, one on a computer', async () => {
+  for (const width of [390, 600, 1200])
+    await atWidth(width, () =>
+      inPage('2026-11-04', (root) => {
+        const middle = (el: { getBoundingClientRect: () => DOMRect } | null) => {
+          const r = el?.getBoundingClientRect();
+          return r === undefined ? Number.NaN : r.top + r.height / 2;
+        };
+        // the name's text, by a range over it, whatever box its element has
+        const text = document.createRange();
+        const name = root.querySelector('.days-said');
+        text.selectNodeContents(name ?? document.body);
+        const at = middle(text);
+        for (const b of root.querySelectorAll('.days-step')) expect(Math.abs(middle(b) - at)).toBeLessThanOrEqual(1);
+        // the four months: two rows of two on a phone or a small tablet, one row of four on a computer, never three and one
+        const placed = monthsOf(root).map((m) => m.getBoundingClientRect());
+        const grid = [
+          new Set(placed.map((b) => Math.round(b.top))).size,
+          new Set(placed.map((b) => Math.round(b.left))).size,
+        ];
+        expect(grid).toEqual(width < 700 ? [2, 2] : [1, 4]);
+      }),
+    );
 });
 
 // ----- a roster of travels, each with its stays counted -----
