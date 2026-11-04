@@ -334,7 +334,7 @@ th[aria-sort="descending"] button.sort::after {
   --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1.5 1.5 6 6l4.5-4.5' fill='none' stroke='%237a2850' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); /* its stroke is --accent, which a data URL can't read */
   --face-2: #c75a86; /* every second face in a row of who's going */
-  --highlight: rgb(214 96 145 / 0.32); /* a festival's highlighter stroke behind its days, translucent */
+  --highlight: rgb(214 96 145 / 0.24); /* a highlighter's ink: a festival's days, a trip's time there; light */
   --shadow-ink: 42 31 34; /* the colour of shadows and scrims, as rgb() channels */
   /* sizes that must agree wherever they are used */
   --gutter: 16px;
@@ -2311,7 +2311,7 @@ html:has(dialog.search[open]) {
   inset: 22% 6% 30% 3%;
   border-radius: inherit;
   background: var(--highlight);
-  opacity: 0.55;
+  opacity: 0.4;
 }
 .days-stroke.days-stroke-from {
   margin-left: 0;
@@ -2495,27 +2495,52 @@ html:has(dialog.search[open]) {
 .trip-body p {
   margin: 0.25rem 0;
 }
-.trip-label {
-  margin-right: 0.3rem;
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
 .trip-lineup {
   margin-top: 0.5rem;
 }
 
 /* a trip's small Gantt: the days across, a bar a party travelling together */
+/* the roster: a line a party, its name, its days and, on a computer, where it stays beside them (on a phone, under
+   its name, and its airports left out) */
 .gantt {
   display: grid;
-  grid-template-columns: 7rem minmax(0, 1fr);
-  max-width: 44rem;
-  gap: 0.25rem 0.5rem;
+  grid-template-columns: 6.4rem minmax(0, 1fr);
+  max-width: 48rem;
+  gap: 0.3rem 0.5rem;
   align-items: center;
   margin: 0.3rem 0 0.2rem;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
+}
+.gantt-stay,
+.gantt-ap {
+  display: none;
+}
+.gantt-stay-under {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+@media (min-width: 700px) {
+  .gantt {
+    grid-template-columns: 8rem minmax(0, 1fr);
+  }
+  .gantt.gantt-stays {
+    grid-template-columns: 8rem minmax(0, 1fr) 8rem;
+  }
+  .gantt-stay {
+    display: block;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 0.74rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .gantt-ap {
+    display: inline;
+  }
+  .gantt-stay-under {
+    display: none;
+  }
 }
 .gantt-axis {
   display: grid;
@@ -2541,9 +2566,14 @@ html:has(dialog.search[open]) {
   color: var(--accent);
 }
 .gantt-name {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  min-width: 0;
+  line-height: 1.25;
+}
+.gantt-name .plan-tag {
+  font-size: 0.62rem;
+}
+.gantt-name.gantt-unsaid {
+  color: var(--muted);
 }
 .gantt-lane {
   position: relative;
@@ -2585,12 +2615,14 @@ html:has(dialog.search[open]) {
   inset: 12% 4% 18% 2%;
   border-radius: inherit;
   background: var(--highlight);
+  opacity: 0.6;
+}
+/* the band of those who have not said: dotted, across the festival's days */
+.gantt-band.gantt-dotted {
+  border: 1.5px dotted var(--none);
+  background: none;
 }
 .gantt-said {
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-.gantt-unsaid {
   color: var(--muted);
   font-size: 0.8rem;
 }

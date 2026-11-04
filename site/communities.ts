@@ -14,7 +14,7 @@ import {
   weekday,
 } from './calendar.ts';
 import { one, q, sql } from './db.ts';
-import { button, h, type Kid } from './dom.ts';
+import { button, h, type Kid, nodes } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, withDetails } from './festivals.ts';
 import { dayTimeAt, gantt, type Party } from './gantt.ts';
@@ -283,29 +283,25 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
   const id = `trip-${e.id}`;
   const flights = aways.flatMap((a) => (a.trip ? [a.trip] : []));
   const ps = parties(aways);
-  const said =
-    ps.length > 0
-      ? h(
-          'p',
-          // the chart in words, for a screen reader: the chart says it to the eye
-          { class: ['gantt-said', 'visually-hidden'], id: `${id}-said` },
-          ps.map((p, i) => [
-            i > 0 ? ' · ' : null,
-            h('b', {}, p.name),
-            ` in ${dayTimeAt(p.flight.arrive, p.flight.arrive_at)}, out ${dayTimeAt(p.flight.leave, p.flight.leave_from)}`,
-          ]),
-        )
-      : null;
   // everyone going who has not said how they travel, once: the members who have not (a couple as one), and the people
-  // the manager added, who never do
+  // the manager added, who never do, each saying on hover who added them
   const title = `Added by ${manager.name}`;
-  const unsaid = [
-    ...namesOf(aways.flatMap((a) => (a.goer && a.trip === null ? [a.goer] : []))),
-    ...aways.flatMap((a) => (a.added ? [h('span', { title }, a.added.name)] : [])),
-  ];
-  const stays = new Map<string, Goer[]>();
-  for (const a of aways)
-    if (a.trip?.stay && a.goer) stays.set(a.trip.stay, [...(stays.get(a.trip.stay) ?? []), a.goer]);
+  const silent = namesOf(aways.flatMap((a) => (a.goer && a.trip === null ? [a.goer] : [])));
+  const added = aways.flatMap((a) => (a.added ? [a.added.name] : []));
+  // the roster in words, for a screen reader: each party in and out and where it stays, and who has not said
+  const said = h(
+    'p',
+    { class: ['gantt-said', 'visually-hidden'], id: `${id}-said` },
+    [
+      ...ps.map(
+        (p) =>
+          `${p.name} in ${dayTimeAt(p.flight.arrive, p.flight.arrive_at)}, out ${dayTimeAt(p.flight.leave, p.flight.leave_from)}${p.stay === null ? '' : `, staying at ${p.stay}`}`,
+      ),
+      silent.length + added.length > 0 ? `not said yet: ${and([...silent, ...added])}` : null,
+    ]
+      .filter((x) => x !== null)
+      .join('; '),
+  );
   // the festival's line-up and prices, its card opened, in the trip's: shown from the festival's name
   const lineup = h('div', { class: 'trip-lineup', id: `${id}-lineup`, hidden: true });
   const body = h(
@@ -316,14 +312,11 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
       festival: e,
       place: e.city ?? e.title,
       parties: ps,
-      describedBy: said?.id ?? null,
+      unsaid: joined([...silent, ...added.map((n) => h('span', { title }, n))]),
+      describedBy: said.id,
       seed: String(e.id),
     }),
     said,
-    unsaid.length > 0 ? h('p', { class: 'gantt-unsaid' }, 'Not said yet: ', joined(unsaid)) : null,
-    [...stays].map(([stay, goers]) =>
-      h('p', {}, h('span', { class: 'trip-label' }, 'Staying'), ` ${stay} · `, joined(namesOf(goers))),
-    ),
     lineup,
   );
   // the card open or not, and its line-up shown or not; a closed card shows no line-up
@@ -332,9 +325,12 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
       lineup.append(eventCard({ ...e, goers: who.goers }, { open: true }));
     body.hidden = !opened;
     lineup.hidden = !(opened && lineupShown);
+    // the card lists everyone: the row says only how many go, and who teaches
+    whoLine.replaceChildren(...nodes(opened ? who.counted() : who.said()));
     toggle.setAttribute('aria-expanded', String(opened));
     name.setAttribute('aria-expanded', String(opened && lineupShown));
   };
+  const whoLine = h('p', { class: 'trip-who' }, open ? who.counted() : who.said());
   const toggle = button({
     class: 'trip-toggle',
     'aria-expanded': String(open),
@@ -368,26 +364,27 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
         // where it is, which leads to it on the map
         h('a', { href: eventOnMapHref(e.id) }, place(e)),
       ),
-      h('p', { class: 'trip-who' }, who.said()),
+      whoLine,
       toggle,
     ),
     body,
   );
 }
 
-// The parties of a trip: the members who share a flight in and out (a couple as one), first to arrive first.
+// The parties of a trip: the members who share a flight in and out and a stay (a couple as one), first to arrive
+// first, each with what they do there.
 function parties(aways: readonly Present[]): Party[] {
   const flying = new Map<string, { goers: Goer[]; flight: Trip }>();
   for (const a of aways)
     if (a.goer && a.trip) {
-      const key = [a.trip.arrive, a.trip.arrive_at, a.trip.leave, a.trip.leave_from].join(' ');
+      const key = [a.trip.arrive, a.trip.arrive_at, a.trip.leave, a.trip.leave_from, a.trip.stay].join(' ');
       const f = flying.get(key) ?? { goers: [], flight: a.trip };
       f.goers.push(a.goer);
       flying.set(key, f);
     }
   return [...flying.values()]
     .toSorted((a, b) => a.flight.arrive.localeCompare(b.flight.arrive))
-    .map(({ goers, flight }) => ({ name: and(namesOf(goers)), flight }));
+    .map(({ goers, flight }) => ({ name: and(namesOf(goers)), tag: doingTag(goers), stay: flight.stay, flight }));
 }
 
 // Who of the community goes to a festival: its members, as their couple when both go and teaching when in the
@@ -398,7 +395,7 @@ function whoGoes(
   e: Festival,
   f: Going,
   manager: Member,
-): { goers: Festival['goers']; people: number; said: () => Kid[] } {
+): { goers: Festival['goers']; people: number; said: () => Kid[]; counted: () => Kid[] } {
   const members = new Set(f.members),
     goers = e.goers.filter((g) => members.has(g.key));
   const going = f.added.filter((a) => a.artist === null);
@@ -424,7 +421,24 @@ function whoGoes(
     ].filter((x) => x !== null);
     return [goersInline(goers), goers.length > 0 && added.length > 0 ? ' · ' : null, joined(added)];
   };
-  return { goers, people: goers.length + f.added.length, said };
+  const people = goers.length + f.added.length;
+  // "5 going · Cédric & Christina teaching": how many go, and who of them teaches, by name
+  const teaching = [...goers.filter((g) => g.booked_as !== null), ...f.added.filter((a) => a.artist !== null)];
+  const counted = (): Kid[] => [
+    `${people} going`,
+    teaching.length > 0
+      ? [
+          ' · ',
+          and([
+            ...namesOf(goers.filter((g) => g.booked_as !== null)),
+            ...f.added.flatMap((a) => (a.artist === null ? [] : [a.name])),
+          ]),
+          ' ',
+          doingTag(teaching),
+        ]
+      : null,
+  ];
+  return { goers, people, said, counted };
 }
 
 // words kept on one line: "5 people", "20–22 Nov", each space a no-break one

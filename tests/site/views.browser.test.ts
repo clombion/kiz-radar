@@ -201,7 +201,11 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
     'Fri 26 – Sun 28 Feb',
   ]);
   expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-who'))).toBe(KUOF);
+  // Glasgow's card is open: its row says how many go and who teaches; the card names everyone
+  expect(said(agendaRow(root, 'Glasgow')?.querySelector('.trip-who'))).toBe('3 going · Christina and Sian teaching');
+  agendaRow(root, 'Glasgow')?.querySelector<HTMLElement>('.trip-toggle')?.click(); // closed, the whole line again
   expect(said(agendaRow(root, 'Glasgow')?.querySelector('.trip-who'))).toBe(GLASGOW);
+  agendaRow(root, 'Glasgow')?.querySelector<HTMLElement>('.trip-toggle')?.click();
   expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-what'))).toBeUndefined();
   expect(said(agendaRow(root, 'KUOF')?.querySelector('p'))).toContain('· 🇳🇴 Oslo');
   // who added them is said on hover only, on each added name
@@ -210,6 +214,7 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
     ['Tonje', 'Ragnhild', 'Maja'].map((n) => [n, 'Added by Cédric']),
   );
   const sian = one({ id: num }, sql`SELECT id FROM artists WHERE match_key = ?`, ['p:sian@dance'])?.id;
+  agendaRow(root, 'Glasgow')?.querySelector<HTMLElement>('.trip-toggle')?.click(); // closed: its whole who-line
   expect(
     [...(agendaRow(root, 'Glasgow')?.querySelectorAll('.trip-who a') ?? [])].map((a) => [
       a.textContent,
@@ -219,6 +224,7 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
     ['Christina', personHref('christina')],
     ['Sian', artistHref(sian ?? Number.NaN)],
   ]);
+  agendaRow(root, 'Glasgow')?.querySelector<HTMLElement>('.trip-toggle')?.click();
   // the next trip open, the others closed; a row opens and closes from its button
   const toggles = rows.map((r) => r.querySelector<HTMLElement>('.trip-toggle'));
   expect(toggles.map((t) => t?.getAttribute('aria-expanded'))).toEqual(['true', 'false', 'false', 'false', 'false']);
@@ -514,7 +520,7 @@ const ganttOf = (row: HTMLElement | undefined) => {
       day: said(s),
       festival: s.matches('.gantt-fest'),
     })),
-    parties: [...(g?.querySelectorAll('.gantt-name') ?? [])].map((n) => said(n)),
+    parties: [...(g?.querySelectorAll('.gantt-name:not(.gantt-unsaid)') ?? [])].map((n) => said(n)),
     bars: [...(g?.querySelectorAll<HTMLElement>('.gantt-bar') ?? [])].map((b) => ({
       said: said(b),
       left: Number.parseFloat(b.style.left),
@@ -527,6 +533,7 @@ const ganttOf = (row: HTMLElement | undefined) => {
       Number.parseFloat(b.style.left),
       Number.parseFloat(b.style.width),
     ]),
+    dotted: [...(g?.querySelectorAll<HTMLElement>('.gantt-band') ?? [])].map((b) => b.matches('.gantt-dotted')),
     said: said(row?.querySelector('.gantt-said')),
     unsaid: said(row?.querySelector('.gantt-unsaid')),
   };
@@ -549,24 +556,29 @@ test('an opened trip draws who travels when: the days from the first in to the l
       { day: 'S22', festival: true },
       { day: 'M23', festival: false },
     ]);
-    // the couple as one party, on one flight, the one bar; the people added, who never travel, on the line under it
-    expect(kuof.parties).toEqual(['Cédric & Christina']);
+    // the couple as one party, on one flight, the one bar, teaching, and where they stay under their name on a phone
+    // (beside the bar on a computer); the people added, who never travel, on one last line
+    expect(kuof.parties).toEqual(['Cédric & Christina teaching Scandic Holberg']);
     const [couple, ...others] = kuof.bars;
     expect(others).toEqual([]);
     expect(couple?.said).toBe('17:05 OSL09:40 OSL');
     expect(couple?.left).toBeCloseTo((100 * (17 + 5 / 60)) / 24 / 5, 3); // 17:05 on the first of five days
     expect((couple?.left ?? 0) + (couple?.width ?? 0)).toBeCloseTo((100 * (4 + (9 + 40 / 60) / 24)) / 5, 3);
-    // the festival's band, the second to the fourth of five days
-    expect(kuof.bands).toEqual([[20, 60]]);
-    expect(kuof.said).toBe('Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL');
-    expect(kuof.unsaid).toBe('Not said yet: Tonje, Ragnhild and Maja');
+    // the festival's band, the second to the fourth of five days, under each line; the last one's dotted
+    expect(kuof.bands).toEqual([
+      [20, 60],
+      [20, 60],
+    ]);
+    expect(kuof.dotted).toEqual([false, true]);
+    expect(kuof.said).toBe(
+      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Tonje, Ragnhild and Maja',
+    );
+    expect(kuof.unsaid).toBe('Tonje, Ragnhild and Maja');
     expect(titled(agendaRow(root, 'KUOF')?.querySelector('.gantt-unsaid'))).toEqual(
       ['Tonje', 'Ragnhild', 'Maja'].map((n) => [n, 'Added by Cédric']),
     );
-    expect(root.querySelectorAll('.gantt-unsaid .gantt-bar, .gantt .gantt-unsaid')).toHaveLength(0);
-    expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-label')?.parentElement)).toBe(
-      'Staying Scandic Holberg · Cédric & Christina',
-    );
+    // no sentences about who has not said or where who stays: the lines say it
+    expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-body'))).not.toMatch(/Not said yet|Staying /u);
     // Prague from trips.csv: in on the Wednesday before it
     expect(ganttOf(opened(root, 'Prague')).axis.map((a) => a.day)).toEqual(['W13', 'T14', 'F15', 'S16', 'S17', 'M18']);
     // Glasgow, where no one said how they travel: its own days and its band, no bar, everyone named once under it
@@ -574,15 +586,15 @@ test('an opened trip draws who travels when: the days from the first in to the l
     expect(glasgow.axis.map((a) => a.day)).toEqual(['F6', 'S7', 'S8', 'M9']);
     expect(glasgow.bars).toEqual([]);
     expect(glasgow.bands).toEqual([[0, 100]]);
+    expect(glasgow.dotted).toEqual([true]);
     expect(glasgow.parties).toEqual([]);
-    expect(glasgow.said).toBeUndefined();
-    expect(glasgow.unsaid).toBe('Not said yet: Christina, Sian and Carolina');
+    expect(glasgow.said).toBe('not said yet: Christina, Sian and Carolina');
+    expect(glasgow.unsaid).toBe('Christina, Sian and Carolina');
     expect(titled(agendaRow(root, 'Glasgow')?.querySelector('.gantt-unsaid'))).toEqual(
       ['Sian', 'Carolina'].map((n) => [n, 'Added by Cédric']),
     );
     // a couple who has not said is named as one
-    expect(ganttOf(opened(root, 'HOT Ice')).unsaid).toBe('Not said yet: Cédric & Christina');
-    expect(said(root)).not.toContain('not said');
+    expect(ganttOf(opened(root, 'HOT Ice')).unsaid).toBe('Cédric & Christina');
   });
 });
 
@@ -828,33 +840,72 @@ test('a trip’s bars lie level, on a computer as on a phone: one end no more th
   }
 });
 
-test('a trip’s bars are thin, and the chart in words is for a screen reader alone', async () => {
+// the community's page on a day with the illustrative KUOF trip, this wide, in the document while then runs
+async function kuofAt(width: number, then: (root: HTMLElement) => void): Promise<void> {
   plant(TO_KUOF);
   try {
-    await atWidth(1200, () => {
-      const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
-      document.body.append(root);
-      try {
-        const row = opened(root, 'KUOF');
-        const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
-        const ink = [...(row?.querySelectorAll<HTMLElement>('.gantt-ink') ?? [])];
-        expect(ink).toHaveLength(1);
-        for (const i of ink) expect(i.offsetHeight).toBeLessThanOrEqual(0.7 * rem + 0.5);
-        // its times still on it
-        expect(said(row?.querySelector('.gantt-bar'))).toBe('17:05 OSL09:40 OSL');
-        // the line in words: not shown, but what describes the chart
-        const words = row?.querySelector<HTMLElement>('.gantt-said');
-        expect(words?.textContent).toBe('Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL');
-        expect(words?.getBoundingClientRect().width).toBeLessThanOrEqual(1);
-        expect(row?.querySelector('.gantt')?.getAttribute('aria-describedby')).toBe(words?.id);
-        // what is still shown
-        expect(row?.querySelector<HTMLElement>('.gantt-unsaid')?.getBoundingClientRect().width).toBeGreaterThan(50);
-        expect(row?.querySelector<HTMLElement>('.trip-label')?.getBoundingClientRect().width).toBeGreaterThan(10);
-      } finally {
-        root.remove();
-      }
-    });
+    await atWidth(width, () => inPage('2026-11-01', then));
   } finally {
     uproot(TO_KUOF);
   }
+}
+
+test('a trip’s bars are thin, and the chart in words is for a screen reader alone', async () => {
+  await kuofAt(1200, (root) => {
+    const row = opened(root, 'KUOF');
+    const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const ink = [...(row?.querySelectorAll<HTMLElement>('.gantt-ink') ?? [])];
+    expect(ink).toHaveLength(1);
+    for (const i of ink) expect(i.offsetHeight).toBeLessThanOrEqual(0.7 * rem + 0.5);
+    // its times still on it
+    expect(said(row?.querySelector('.gantt-bar'))).toBe('17:05 OSL09:40 OSL');
+    // the line in words: not shown, but what describes the chart
+    const words = row?.querySelector<HTMLElement>('.gantt-said');
+    expect(words?.textContent).toBe(
+      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Tonje, Ragnhild and Maja',
+    );
+    expect(words?.getBoundingClientRect().width).toBeLessThanOrEqual(1);
+    expect(row?.querySelector('.gantt')?.getAttribute('aria-describedby')).toBe(words?.id);
+    // the people who have not said, on their line
+    expect(row?.querySelector<HTMLElement>('.gantt-unsaid')?.getBoundingClientRect().width).toBeGreaterThan(50);
+  });
+});
+
+// a line of the roster laid out: its stay beside the bar or under the name, its airports, the stay's heading
+const rosterAt = (root: HTMLElement) => {
+  const row = opened(root, 'KUOF');
+  const shown = (el: Element | null | undefined) =>
+    el instanceof HTMLElement && el.getBoundingClientRect().width > 0 ? said(el) : null;
+  return {
+    beside: shown(row?.querySelector('.gantt-name ~ .gantt-stay:not(:empty)')),
+    under: shown(row?.querySelector('.gantt-stay-under')),
+    airports: [...(row?.querySelectorAll('.gantt-ap') ?? [])].map((a) => shown(a)),
+    header: shown(row?.querySelector('.gantt > .gantt-stay')),
+  };
+};
+
+test('where a party stays is beside its days on a computer, under its name on a phone, airports only on a computer', async () => {
+  for (const [width, seen] of [
+    [1200, { beside: 'Scandic Holberg', under: null, airports: ['OSL', 'OSL'], header: 'Staying' }],
+    [390, { beside: null, under: 'Scandic Holberg', airports: [null, null], header: null }],
+  ] as const)
+    await kuofAt(width, (root) => expect(rosterAt(root)).toEqual(seen));
+});
+
+// an element's colour's alpha, and its opacity
+const alpha = (el: Element | null | undefined, pseudo?: string): [number, number] => {
+  const st = el ? getComputedStyle(el, pseudo) : undefined;
+  const channels = (st?.backgroundColor ?? '').match(/[\d.]+/gu) ?? [];
+  return [channels.length > 3 ? Number(channels[3]) : 1, Number(st?.opacity ?? 1)];
+};
+
+test('the highlighter is light: its ink at most a quarter, the second passes fainter still', async () => {
+  await kuofAt(1200, (root) => {
+    const ink = opened(root, 'KUOF')?.querySelector('.gantt-ink');
+    const stroke = root.querySelector('.days-week .days-stroke');
+    expect(alpha(ink)[0]).toBeLessThanOrEqual(0.25);
+    expect(alpha(ink, '::after')[1]).toBeLessThanOrEqual(0.6);
+    expect(alpha(stroke)[0]).toBeLessThanOrEqual(0.25);
+    expect(alpha(stroke, '::after')[1]).toBeLessThanOrEqual(0.45);
+  });
 });
