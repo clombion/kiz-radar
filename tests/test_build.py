@@ -347,7 +347,9 @@ def community_tables(memory: Memory) -> Db:
         x.execute('insert into artists (id) values (1)')
         x.execute('insert into people (id, key, name, featured) values (1, ?, ?, 1)', ('cedric', 'Cédric'))
     with db.transaction() as x:
-        build_site_db.communities(x, {'cedric': 1}, {'p:tonje@dance': 1})
+        community_id, members = build_site_db.communities(x, {'cedric': 1})
+        build_site_db.added(x, community_id, members, {'p:tonje@dance': 1})
+        build_site_db.travel(x, {'cedric': 1}, {r.person for r in members})
     return db
 
 
@@ -365,6 +367,12 @@ def community_tables(memory: Memory) -> Db:
         (
             Rows(seeded=(ADDED.model_copy(update={'artist_keys': ('p:nobody',)}),)),
             r'seeded.csv: unknown artist key p:nobody \(Tonje\)',
+        ),
+        # one person a row, never a member's name
+        (Rows(seeded=(ADDED, ADDED)), 'seeded.csv: Tonje twice for event 1'),
+        (
+            Rows(seeded=(ADDED.model_copy(update={'name': 'CÉDRIC'}),)),
+            'seeded.csv: CÉDRIC is the name of a member of frost-lantern-river-maple',
         ),
         (Rows(trips=(TRIP.model_copy(update={'person': 'nobody'}),)), 'travel.csv: nobody is no member'),
         # someone the manager added has no identity to travel under: a travel of theirs names no member

@@ -198,7 +198,7 @@ test('a community’s head says who it is, when most members travel and where ne
   expect(said(root.querySelector('.profile-head'))).not.toMatch(/members ·|managed by/u);
   const head = [...root.querySelectorAll('.profile-head p')].map((p) => said(p));
   // KUOF: Cédric, Christina and the three added; Glasgow, this Friday, comes first
-  expect(head).toContain('Most members are travelling 20–22 Nov: 5 people, to Oslo.');
+  expect(head).toContain('Most people are travelling 20–22 Nov: 5 people, to Oslo.');
   expect(said(root.querySelector('.profile-head .community-next'))).toBe('Next: Glasgow, this Friday');
   expect(said(root)).not.toMatch(/\baway\b|Most of the community/u);
   // who sees it, as a badge beside Share: a lock, people and their number, named in full
@@ -295,8 +295,8 @@ test('the sentence of when most members travel leaves out a trip that has ended'
   const added = ['Ola', 'Kari', 'Per', 'Nils', 'Eva'].map((n) => [n, 18_964] as const);
   const when = (day: string) =>
     withAdded(added, () => said(onDay(day, () => communityPage(COMMUNITY)).querySelector('.community-when')));
-  expect(when('2026-11-04')).toBe('Most members are travelling 6–9 Nov: 8 people, to Glasgow.');
-  expect(when('2026-11-10')).toBe('Most members are travelling 20–22 Nov: 5 people, to Oslo.');
+  expect(when('2026-11-04')).toBe('Most people are travelling 6–9 Nov: 8 people, to Glasgow.');
+  expect(when('2026-11-10')).toBe('Most people are travelling 20–22 Nov: 5 people, to Oslo.');
 });
 
 test('the agenda has a heading a month and a row a trip, soonest first, naming who of the community goes', () => {
@@ -1197,7 +1197,7 @@ const periodOf = (root: HTMLElement) => ({
 });
 const step = (root: HTMLElement, label: string) =>
   root.querySelector<HTMLButtonElement>(`.days-step[aria-label="${label}"]`)?.click();
-const HEAD = ['Most members are travelling 20–22 Nov: 5 people, to Oslo.', 'Next: Glasgow, this Friday'];
+const HEAD = ['Most people are travelling 20–22 Nov: 5 people, to Oslo.', 'Next: Glasgow, this Friday'];
 const RIGA = 16_246; // ILKSF Meets HIK Latvia, in Riga, 3–6 September 2027
 
 test('the calendar shows today’s four months between its steps, the agenda their trips', () => {
@@ -1735,4 +1735,36 @@ test('a day said without its time is drawn whole: arriving from its start, leavi
   // the festival's three days, Friday to Sunday: all of them, the Sunday to its end
   expect([bar?.left, bar?.width]).toEqual([0, 100]);
   expect(bar?.fades).toEqual([true, true]);
+});
+
+test('two people added of one first name are two people, each on the calendar and in the day’s box', () => {
+  withAdded(
+    [
+      ['Anna', 19_033],
+      ['Anna', 19_033],
+    ],
+    () => {
+      inPage('2026-11-01', (root) => {
+        // KUOF's three added and Cédric and Christina, and two Annas
+        expect(awayOn(cellOn(root, '2026-11-21'))).toBe(7);
+        cellOn(root, '2026-11-21')?.focus();
+        const there = [...(popover(root)?.querySelectorAll('p') ?? [])]
+          .map((p) => said(p))
+          .find((t) => t?.startsWith('There'));
+        expect(there?.match(/Anna/gu)).toHaveLength(2);
+      });
+    },
+  );
+});
+
+test('a day someone leaves one festival and flies to another says both', () => {
+  // Christina out of Glasgow on the Monday at 19:10, and into Oslo that night for KUOF
+  withTrips([['christina', 19_033, '2026-11-09T22:30', '2026-11-23T09:40', null]], () => {
+    inPage('2026-11-01', (root) => {
+      cellOn(root, '2026-11-09')?.focus();
+      const box = [...(popover(root)?.querySelectorAll('p') ?? [])].map((p) => said(p));
+      expect(box).toContain('Flying out: Christina 19:10 ABZ');
+      expect(box).toContain('Flying in: Christina 22:30 OSL');
+    });
+  });
 });

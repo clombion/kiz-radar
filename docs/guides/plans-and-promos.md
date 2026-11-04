@@ -61,12 +61,13 @@ prints a warning for each, by what it says, then how many ("warning: travel.csv:
 leaving 2026-11-09T19:10, for Glasgow Kizomba Festival 5.0 (event 18964): the trip ended on 2026-11-09, more than 3 days
 ago, so the row is no longer published; delete it"). It goes on building: delete the rows it names, and commit.
 
-The page shows the community's name ("Norwegians in festivals"), when most members travel at once ("Most members are
-travelling 20–22 Nov: 5 people, to Oslo.") and, on a line of its own, where they go next ("Next: Glasgow, this Friday"),
-or, while a trip is on, where they are and until when, and the trip after it ("Now: Glasgow, until Mon · Next: Oslo, on
-20 Nov"), then a Share this page button, which opens the device's share sheet or else copies the link, beside a badge of
-who sees it: a lock, people and the number of members, which says what is true, "Public · anyone can see this page · 3
-members", on hover and to a screen reader. Who manages it is said with the members, at the foot of the page.
+The page shows the community's name ("Norwegians in festivals"), when most of its people (members and those its manager
+added) travel at once ("Most people are travelling 20–22 Nov: 5 people, to Oslo.") and, on a line of its own, where they
+go next ("Next: Glasgow, this Friday"), or, while a trip is on, where they are and until when, and the trip after it
+("Now: Glasgow, until Mon · Next: Oslo, on 20 Nov"), then a Share this page button, which opens the device's share sheet
+or else copies the link, beside a badge of who sees it: a lock, people and the number of members, which says what is
+true, "Public · anyone can see this page · 3 members", on hover and to a screen reader. Who manages it is said with the
+members, at the foot of the page.
 
 Under the head, the calendar: four months at a time, a period from today's month (November to February, then March to
 June, then July to October: three make a year), named between two buttons, on its line, to the periods before and after

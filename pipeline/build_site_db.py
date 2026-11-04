@@ -928,7 +928,6 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
     for r in people:
         if unknown := [k for k in r.artist_keys if k not in key_id]:
             sys.exit(f'people.csv: unknown artist key {unknown[0]} ({r.name})')
-    homes(x, people)
     x.insert(
         'people',
         (
@@ -951,10 +950,15 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
     return person_id
 
 
-def communities(x: Transaction, person_id: Mapping[str, int], key_id: Mapping[str, int]) -> None:
-    """Communities (pipeline/communities.csv, community_members.csv, seeded.csv): each with its manager, one of its
-    members, and the people its manager added who have not joined, each by their name and the festivals they go to,
-    and the artist records they are, so a booking of theirs says they teach there (seeded_rows), as a member's does."""
+class KeyName(BaseModel):
+    key: str
+    name: str
+
+
+def communities(x: Transaction, person_id: Mapping[str, int]) -> tuple[dict[str, int], list[Membership]]:
+    """Communities (pipeline/communities.csv, community_members.csv): each with its manager, one of its members; each
+    community's id by its key, and the members, which the people added (added) and how members travel (travel)
+    read."""
     found = Community.read()
     community_id = {r.key: i for i, r in enumerate(found, 1)}
     members = Membership.read()
@@ -975,7 +979,15 @@ def communities(x: Transaction, person_id: Mapping[str, int], key_id: Mapping[st
         'community_members',
         ({'community_id': community_id[r.community], 'person_id': person_id[r.person]} for r in members),
     )
-    travel(x, person_id, {r.person for r in members})
+    return community_id, members
+
+
+def added(
+    x: Transaction, community_id: Mapping[str, int], members: Sequence[Membership], key_id: Mapping[str, int]
+) -> None:
+    """The people a community's manager added who have not joined (pipeline/seeded.csv), each by their name and the
+    festivals they go to, one row a person and festival, never a member's name; and the artist records they are, so a
+    booking of theirs says they teach there (seeded_rows), as a member's does."""
     seeded = Seeded.read()
     known = set(x.column(int, 'select id from events'))
     for r in seeded:
@@ -985,6 +997,18 @@ def communities(x: Transaction, person_id: Mapping[str, int], key_id: Mapping[st
             sys.exit(f'seeded.csv: no event {r.event_id} ({r.event})')
         if unknown := [k for k in r.artist_keys if k not in key_id]:
             sys.exit(f'seeded.csv: unknown artist key {unknown[0]} ({r.name})')
+    # one person a row: the same name twice to one festival of one community is one person written twice, and a name a
+    # member has would read as that member
+    name_of = {r.key: r.name for r in x.rows(KeyName, 'select key, name from people')}
+    names = {(m.community, name_of[m.person].casefold()) for m in members}
+    seen: set[tuple[str, str, int]] = set()
+    for r in seeded:
+        row = (r.community, r.name.casefold(), r.event_id)
+        if row in seen:
+            sys.exit(f'seeded.csv: {r.name} twice for event {r.event_id} in {r.community}: one person, one row')
+        seen.add(row)
+        if (r.community, r.name.casefold()) in names:
+            sys.exit(f'seeded.csv: {r.name} is the name of a member of {r.community}, whom it would read as')
     x.insert(
         'community_seeded',
         (
@@ -1382,7 +1406,11 @@ def build(src: Path, out: Path) -> Built:
             key_id = booked(x)
             fares(x)
             event_stats(x, artist_stats(x))
-            communities(x, plans(x, key_id), key_id)
+            person_id = plans(x, key_id)
+            homes(x, Person.read())
+            community_id, members = communities(x, person_id)
+            added(x, community_id, members, key_id)
+            travel(x, person_id, {r.person for r in members})
             built_at = now().isoformat()
             meta(x, built_at)
             made = Built(site_json(x, built_at), review.review(x, built_at, src))

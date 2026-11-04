@@ -52,6 +52,7 @@ interface Member {
 // someone the manager added: their name, and what they are booked as at the festival (from the line-up, never from
 // the manager) with the artist record that booking links to
 interface Added {
+  id: number; // its row of community_seeded: two people added may share a first name
   name: string;
   booked_as: Booked | null;
   artist: number | null;
@@ -104,11 +105,12 @@ function communityOf(key: string): Community | null {
   ))
     at(r.event_id).members.push(r.key);
   for (const r of q(
-    { event_id: num, name: str, booked_as: opt(booked), artist_id: opt(num) },
-    sql`SELECT event_id, name, booked_as, artist_id FROM seeded_rows WHERE community_id = ? ORDER BY id`,
+    { id: num, event_id: num, name: str, booked_as: opt(booked), artist_id: opt(num) },
+    sql`SELECT id, event_id, name, booked_as, artist_id FROM seeded_rows WHERE community_id = ? ORDER BY id`,
     [c.id],
   ))
     at(r.event_id).added.push({
+      id: r.id,
       name: r.name,
       booked_as: r.booked_as,
       artist: r.booked_as === null ? null : r.artist_id,
@@ -189,7 +191,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
         return { who: `member ${g.key}`, ...away, e, goer: g, added: null, travel, stays };
       }),
       ...f.added.map(
-        (a): Present => ({ who: `added ${a.name}`, ...awayDays(e), e, goer: null, added: a, travel: null, stays: [] }),
+        (a): Present => ({ who: `added ${a.id}`, ...awayDays(e), e, goer: null, added: a, travel: null, stays: [] }),
       ),
     ]),
   );
@@ -219,7 +221,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
         : h(
             'p',
             { class: 'community-when' },
-            'Most members are travelling ',
+            'Most people are travelling ',
             h('b', {}, unbroken(dayRange(most.from, most.to))),
             `: ${unbroken(plural(most.people, 'person', 'people'))}, to ${placesOf(most.aways)}.`,
           ),
@@ -593,7 +595,8 @@ const and = (xs: readonly string[]): string =>
 // each saying on hover who added them, and never travel.
 function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): Kid[] {
   if (on === undefined) return [h('p', { class: 'day-when' }, weekDay(day))]; // a day no one travels on opens nothing
-  const once = [...new Map(on.aways.map((a) => [a.who, a])).values()];
+  // each person once a festival: someone leaving one festival and arriving at another that day is at both
+  const once = [...new Map(on.aways.map((a) => [`${a.who} ${a.e.id}`, a])).values()];
   const flying = (when: 'arrive' | 'leave', where: 'arrive_at' | 'leave_from'): Kid[] => {
     const by = new Map<string, Goer[]>();
     for (const a of once)
