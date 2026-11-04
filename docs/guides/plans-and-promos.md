@@ -77,16 +77,19 @@ when both partners arrive, leave and stay alike, or both have said nothing; othe
 own, as is everyone else. Units that arrive, leave and stay alike are one line, and having said nothing is a line of its
 own (the people the manager added are always on it). With three units or fewer every line names its units; with more,
 the line of the most people, if they are more than three, is "Everyone" when it is the only line and "Everyone else"
-beside others (of two lines alike in size, the first to arrive; those who have not said, last). A collective name is a
-button that shows its names while the pointer is over it and from a tap or a key, until the next or Escape. Lines go by
-arrival, those who have not said last. Each line has its name (what its people do there is the row's to say), a light
-highlighter's swipe from the hour they arrive to the hour they leave with the times at its ends (and the airports, on a
-computer), and where it stays, beside it on a computer and under its name on a phone; those who have not said are a thin
-rule across the festival's days instead. A screen reader hears the names, and the rest in words the page does not show:
-each line in and out and where it stays, and who has not said, a collective line by its people too. While a card is open
-its row says only how many go and who teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The
-festival's name opens its card on the festival's line-up and prices, its own card opened in place, and folds them away
-again; the next trip's card opens on who travels, its line-up folded.
+beside others (of two lines alike in size, the first to arrive; those who have not said, last). A collective name, in
+the text's colour and dotted under as the other names, is a button that shows its names while the pointer is over it and
+from a tap or a key, until the next or Escape, in a popover kept inside the card (under the name, or above it when the
+card has no room below). Lines go by arrival, those who have not said last. Each line has its name (what its people do
+there is the row's to say), a light highlighter's swipe from the hour they arrive to the hour they leave with the times
+at its ends (and the airports, on a computer), and where it stays: beside it on a computer; on a phone, inside the bar
+between its times (cut short with an ellipsis, its full name on hover), or under its name when the bar is too short to
+hold a few letters of it. Those who have not said are a thin rule of the accent across the festival's days instead. A
+screen reader hears the names, and the rest in words the page does not show: each line in and out and where it stays,
+and who has not said, a collective line by its people too. While a card is open its row says only how many go and who
+teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The festival's name opens its card on the
+festival's line-up and prices, its own card opened in place, and folds them away again; the next trip's card opens on
+who travels, its line-up folded.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page

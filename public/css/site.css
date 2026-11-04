@@ -2503,6 +2503,7 @@ html:has(dialog.search[open]) {
 /* the roster: a line a party, its name, its days and, on a computer, where it stays beside them (on a phone, under
    its name, and its airports left out) */
 .gantt {
+  position: relative; /* what a popover of names is placed in */
   display: grid;
   grid-template-columns: 6.4rem minmax(0, 1fr);
   max-width: 48rem;
@@ -2515,10 +2516,28 @@ html:has(dialog.search[open]) {
 .gantt-ap {
   display: none;
 }
+/* on a phone a stay is said inside its bar, between its times; under its line's name when the bar is too short
+   (gantt.ts measures it) */
 .gantt-stay-under {
-  display: block;
+  display: none;
   color: var(--muted);
   font-size: 0.7rem;
+}
+.gantt-name.gantt-tight .gantt-stay-under {
+  display: block;
+}
+.gantt-bar-stay {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0 0.3rem;
+  color: var(--muted);
+  font-weight: 500;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+.gantt-name.gantt-tight + .gantt-lane .gantt-bar-stay {
+  visibility: hidden;
 }
 @media (min-width: 700px) {
   .gantt {
@@ -2538,7 +2557,8 @@ html:has(dialog.search[open]) {
   .gantt-ap {
     display: inline;
   }
-  .gantt-stay-under {
+  .gantt-name.gantt-tight .gantt-stay-under,
+  .gantt-bar-stay {
     display: none;
   }
 }
@@ -2576,12 +2596,13 @@ html:has(dialog.search[open]) {
   position: relative;
   height: 1.15rem;
 }
-/* the line of those who have not said: a thin rule across the festival's days, where a bar would be */
+/* the line of those who have not said: a thin rule of the accent across the festival's days, where a bar would be,
+   lighter and thinner than one */
 .gantt-none {
   position: absolute;
-  top: calc(50% - 0.5px);
+  top: calc(50% - 1px);
   height: 0;
-  border-top: 1px solid var(--none);
+  border-top: 2px solid color-mix(in srgb, var(--accent) 40%, transparent);
 }
 .gantt-bar {
   position: absolute;
@@ -2615,21 +2636,23 @@ html:has(dialog.search[open]) {
   background: var(--highlight);
   opacity: 0.3;
 }
-/* a line called collectively ("Everyone else"): its names under it while the pointer is over it, or once opened */
+/* a line called collectively ("Everyone else"): in the text's colour, underlined as the other names; its names in a
+   popover while the pointer is over it, or once opened, placed inside the card (gantt.ts) */
 .gantt-group {
-  position: relative;
+  white-space: nowrap;
 }
 .gantt-who {
-  color: inherit;
+  color: var(--text);
 }
 .gantt-who-names {
   position: absolute;
-  top: calc(100% + 0.2rem);
+  top: 0;
   left: 0;
   z-index: var(--z-popover);
   display: none;
   width: max-content;
-  max-width: 14rem;
+  max-width: min(16rem, 100%);
+  white-space: normal;
   padding: 0.3rem 0.5rem;
   border: 1px solid var(--border);
   border-radius: 6px;

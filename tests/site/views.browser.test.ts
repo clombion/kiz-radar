@@ -513,6 +513,11 @@ test('two festivals on at once both have their row and stroke, a day counts ever
 });
 
 // ----- the Gantt of an opened trip -----
+// a colour's red, green and blue, 0 to 255, however the browser writes it: rgb(…) or color(srgb …) of a mix
+const rgbOf = (colour: string): number[] => {
+  const [r = 0, g = 0, b = 0] = (colour.match(/[\d.]+/gu) ?? []).map(Number);
+  return (colour.startsWith('color(') ? [r * 255, g * 255, b * 255] : [r, g, b]).map(Math.round);
+};
 const ganttOf = (row: HTMLElement | undefined) => {
   const g = row?.querySelector<HTMLElement>('.gantt');
   return {
@@ -522,7 +527,8 @@ const ganttOf = (row: HTMLElement | undefined) => {
     })),
     parties: [...(g?.querySelectorAll('.gantt-name:not(.gantt-unsaid)') ?? [])].map((n) => said(n)),
     bars: [...(g?.querySelectorAll<HTMLElement>('.gantt-bar') ?? [])].map((b) => ({
-      said: said(b),
+      // its times, at its ends
+      said: [...b.querySelectorAll(':scope > span:not(.gantt-ink, .gantt-bar-stay)')].map((t) => said(t)).join(''),
       left: Number.parseFloat(b.style.left),
       width: Number.parseFloat(b.style.width),
       ink: ['height', 'translate', 'rotate', 'border-radius', 'opacity']
@@ -534,9 +540,10 @@ const ganttOf = (row: HTMLElement | undefined) => {
       const css = getComputedStyle(b);
       return {
         at: [Number.parseFloat(b.style.left), Number.parseFloat(b.style.width)],
-        drawn: [css.borderTopStyle, css.borderTopWidth, css.borderBottomStyle, b.getBoundingClientRect().height].join(
-          ' ',
-        ),
+        // how it is drawn: a straight line, its thickness, nothing under it, and its colour's channels
+        drawn: [css.borderTopStyle, css.borderBottomStyle],
+        thick: Number.parseFloat(css.borderTopWidth),
+        rgb: rgbOf(css.borderTopColor),
       };
     }),
     said: said(row?.querySelector('.gantt-said')),
@@ -847,13 +854,20 @@ test('a trip’s bars lie level, on a computer as on a phone: one end no more th
 });
 
 // the community's page on a day with the illustrative KUOF trip, this wide, in the document while then runs
-async function kuofAt(width: number, then: (root: HTMLElement) => void): Promise<void> {
-  plant(TO_KUOF);
-  try {
-    await atWidth(width, () => inPage('2026-11-01', then));
-  } finally {
-    uproot(TO_KUOF);
-  }
+async function kuofAt(width: number, then: (root: HTMLElement) => unknown, trips = TO_KUOF): Promise<void> {
+  const root = withTrips(trips, () => onDay('2026-11-01', () => communityPage(COMMUNITY)));
+  await atWidth(width, async () => {
+    document.body.append(root);
+    try {
+      // KUOF's card open, and laid out a frame or two, as its roster measures itself
+      opened(root, 'KUOF');
+      await new Promise(requestAnimationFrame);
+      await new Promise(requestAnimationFrame);
+      await then(root);
+    } finally {
+      root.remove();
+    }
+  });
 }
 
 test('a trip’s bars are thin, and the chart in words is for a screen reader alone', async () => {
@@ -864,7 +878,7 @@ test('a trip’s bars are thin, and the chart in words is for a screen reader al
     expect(ink).toHaveLength(1);
     for (const i of ink) expect(i.offsetHeight).toBeLessThanOrEqual(0.7 * rem + 0.5);
     // its times still on it
-    expect(said(row?.querySelector('.gantt-bar'))).toBe('17:05 OSL09:40 OSL');
+    expect(ganttOf(row).bars[0]?.said).toBe('17:05 OSL09:40 OSL');
     // the line in words: not shown, but what describes the chart
     const words = row?.querySelector<HTMLElement>('.gantt-said');
     expect(words?.textContent).toBe(
@@ -888,6 +902,17 @@ async function collectiveOf(root: HTMLElement) {
   const states = [state()];
   who?.click();
   states.push(state());
+  // the names opened: their box inside the card's
+  const card = row?.querySelector('.trip-body')?.getBoundingClientRect();
+  const box = list?.getBoundingClientRect();
+  const inCard =
+    card !== undefined &&
+    box !== undefined &&
+    box.width > 0 &&
+    box.left >= card.left &&
+    box.right <= card.right &&
+    box.top >= card.top &&
+    box.bottom <= card.bottom;
   who?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
   states.push(state());
   if (who) await userEvent.hover(who);
@@ -897,7 +922,14 @@ async function collectiveOf(root: HTMLElement) {
   return {
     lines: lines.map((n) => said(n.querySelector('.gantt-who') ?? n)),
     unsaid: lines.map((n) => n.matches('.gantt-unsaid')),
-    rule: ganttOf(row).none.map((n) => n.drawn),
+    rule: ganttOf(row).none,
+    inCard,
+    // its label: the colour of the text around it, underlined dotted as the other names
+    label: who
+      ? [getComputedStyle(who).color === getComputedStyle(root).color, getComputedStyle(who).textDecorationStyle]
+      : [],
+    accent: rgbOf(getComputedStyle(row?.querySelector('.gantt-fest') ?? root).color), // the festival's days, in it
+    ink: row?.querySelector<HTMLElement>('.gantt-ink')?.offsetHeight ?? 0,
     names: said(list),
     states,
     words: said(row?.querySelector('.gantt-said')),
@@ -905,48 +937,69 @@ async function collectiveOf(root: HTMLElement) {
 }
 
 test('a roster of more than three, its biggest line of more than three people "Everyone else", names them on demand', async () => {
-  await atWidth(1200, async () => {
-    // Cédric and Christina flying together, and five people added who never say how they travel: seven people
-    const added = (['Ola', 'Kari'] as const).map((n) => [n, 19_033] as const);
-    const root = withTrips(TO_KUOF, () => withAdded(added, () => onDay('2026-11-01', () => communityPage(COMMUNITY))));
-    document.body.append(root);
-    const seen = await collectiveOf(root).finally(() => root.remove());
-    // the couple's line named, by arrival; the five who have not said "Everyone else", last, on a thin rule, no box
-    expect(seen.lines).toEqual(['Cédric & Christina Scandic Holberg', 'Everyone else']);
-    expect(seen.unsaid).toEqual([false, true]);
-    expect(seen.rule).toEqual(['solid 1px none 1']);
-    // its names: hidden; shown by a tap, hidden again by Escape; shown while the pointer is over it; and in the words
-    expect(seen.names).toBe('Tonje, Ragnhild, Maja, Ola and Kari');
-    expect(seen.states).toEqual([
-      ['false', false],
-      ['true', true],
-      ['false', false],
-      ['false', true],
-      ['false', false],
-    ]);
-    expect(seen.words).toContain('not said yet: Everyone else (Tonje, Ragnhild, Maja, Ola and Kari)');
-  });
+  for (const width of [1200, 390])
+    await atWidth(width, async () => {
+      // Cédric and Christina flying together, and five people added who never say how they travel: seven people
+      const added = (['Ola', 'Kari'] as const).map((n) => [n, 19_033] as const);
+      const root = withTrips(TO_KUOF, () =>
+        withAdded(added, () => onDay('2026-11-01', () => communityPage(COMMUNITY))),
+      );
+      document.body.append(root);
+      const seen = await collectiveOf(root).finally(() => root.remove());
+      // the couple's line named, by arrival; the five who have not said "Everyone else", last, on a rule
+      expect(seen.lines).toEqual(['Cédric & Christina Scandic Holberg', 'Everyone else']);
+      expect(seen.unsaid).toEqual([false, true]);
+      // the rule: a straight line of the accent, 2 to 3px, thinner than a bar's ink
+      const [rule] = seen.rule;
+      expect(rule?.drawn).toEqual(['solid', 'none']);
+      expect(rule?.thick).toBeGreaterThanOrEqual(2);
+      expect(rule?.thick).toBeLessThanOrEqual(3);
+      expect(rule?.thick).toBeLessThan(seen.ink);
+      expect(rule?.rgb).toEqual(seen.accent);
+      // its label as dark as the text, dotted under as the other names
+      expect(seen.label).toEqual([true, 'dotted']);
+      // its names: hidden; shown by a tap, inside the card, hidden again by Escape; shown while the pointer is over
+      // it; and in the words
+      expect(seen.names).toBe('Tonje, Ragnhild, Maja, Ola and Kari');
+      expect(seen.inCard).toBe(true);
+      expect(seen.states).toEqual([
+        ['false', false],
+        ['true', true],
+        ['false', false],
+        ['false', true],
+        ['false', false],
+      ]);
+      expect(seen.words).toContain('not said yet: Everyone else (Tonje, Ragnhild, Maja, Ola and Kari)');
+    });
 });
 
 // a line of the roster laid out: its stay beside the bar or under the name, its airports, the stay's heading
 const rosterAt = (root: HTMLElement) => {
   const row = opened(root, 'KUOF');
   const shown = (el: Element | null | undefined) =>
-    el instanceof HTMLElement && el.getBoundingClientRect().width > 0 ? said(el) : null;
+    el instanceof HTMLElement && el.checkVisibility({ visibilityProperty: true }) && el.offsetWidth > 0
+      ? said(el)
+      : null;
+  const inBar = row?.querySelector<HTMLElement>('.gantt-bar-stay');
   return {
     beside: shown(row?.querySelector('.gantt-name ~ .gantt-stay:not(:empty)')),
     under: shown(row?.querySelector('.gantt-stay-under')),
+    inBar: shown(inBar) === null ? null : [said(inBar), inBar?.title],
     airports: [...(row?.querySelectorAll('.gantt-ap') ?? [])].map((a) => shown(a)),
     header: shown(row?.querySelector('.gantt > .gantt-stay')),
   };
 };
 
-test('where a party stays is beside its days on a computer, under its name on a phone, airports only on a computer', async () => {
-  for (const [width, seen] of [
-    [1200, { beside: 'Scandic Holberg', under: null, airports: ['OSL', 'OSL'], header: 'Staying' }],
-    [390, { beside: null, under: 'Scandic Holberg', airports: [null, null], header: null }],
+test('where a line stays is beside its days on a computer, in its bar on a phone (under its name when too short)', async () => {
+  const stay = 'Scandic Holberg';
+  // a day there: Saturday morning to Sunday morning
+  const short = TO_KUOF.map(([key, event]) => [key, event, '2026-11-21T10:00', '2026-11-22T09:00', stay] as const);
+  for (const [width, trips, seen] of [
+    [1200, TO_KUOF, { beside: stay, under: null, inBar: null, airports: ['OSL', 'OSL'], header: 'Staying' }],
+    [390, TO_KUOF, { beside: null, under: null, inBar: [stay, stay], airports: [null, null], header: null }],
+    [390, short, { beside: null, under: stay, inBar: null, airports: [null, null], header: null }],
   ] as const)
-    await kuofAt(width, (root) => expect(rosterAt(root)).toEqual(seen));
+    await kuofAt(width, (root) => expect(rosterAt(root)).toEqual(seen), trips);
 });
 
 // an element's colour's alpha, and its opacity
