@@ -46,9 +46,10 @@ nobody can create, join or claim one yet, and its rows are written by hand.
 
 The page shows the community's name ("Norwegians in festivals"), when most members travel at once ("Most members are
 travelling 20–22 Nov: 5 people, to Oslo.") and, on a line of its own, where they go next ("Next: Glasgow, this Friday"),
-then a Share this page button, which opens the device's share sheet or else copies the link, beside a badge of who the
-page is meant for: a lock, people and their number, which says "Visible to its 3 members only" on hover and to a screen
-reader. Who manages it is said with the members, at the foot of the page.
+then a Share this page button, which opens the device's share sheet or else copies the link, beside a badge of who sees
+it: a lock, people and the number of members, which says what is true until members sign in, "Anyone with the link can
+see this page · 3 members", on hover and to a screen reader. Who manages it is said with the members, at the foot of the
+page.
 
 Under the head, the calendar: four months at a time, a period from today's month (November to February, then March to
 June, then July to October: three make a year), named between two buttons, on its line, to the periods before and after

@@ -183,8 +183,8 @@ test('a community’s head says who it is, when most members travel and where ne
   expect(said(root.querySelector('.share-row button'))).toBe('Share this page');
   expect([badge?.getAttribute('role'), badge?.ariaLabel, badge?.title]).toEqual([
     'img',
-    'Visible to its 3 members only',
-    'Visible to its 3 members only',
+    'Anyone with the link can see this page · 3 members',
+    'Anyone with the link can see this page · 3 members',
   ]);
   expect([badge?.querySelectorAll('svg').length, said(badge)]).toEqual([2, '3']);
   // a week on, Glasgow is under way and KUOF is two weeks off
