@@ -7,16 +7,17 @@ import {
   awayDays,
   busiest,
   type Day,
-  folded,
-  monthsOf,
+  inTrimester,
   presence,
   relativeDay,
   spanOf,
+  trimesterSaid,
+  trimesters,
   WEEKDAYS,
   weekday,
 } from './calendar.ts';
 import { one, q, sql } from './db.ts';
-import { button, h, type Kid, nodes, shower } from './dom.ts';
+import { button, h, type Kid, nodes } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, withDetails } from './festivals.ts';
 import { dayTimeAt, gantt } from './gantt.ts';
@@ -25,9 +26,9 @@ import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
 import { couplesAmong, doingTag, type Goer, goersInline, namesOf } from './plans.ts';
 import { type Goes, roster } from './roster.ts';
-import { artistHref, eventOnMapHref } from './routes.ts';
+import { artistHref, communityHref, eventOnMapHref, readState, showInAddressBar } from './routes.ts';
 import { type Booked, booked, EVENT, num, opt, type RowOf, str } from './rows.ts';
-import { dayMonth, dayParts, dayRange, monthYear, place, weekDay } from './ui.ts';
+import { dayMonth, dayParts, dayRange, monthShort, monthYear, place, weekDay } from './ui.ts';
 import { joined, plural } from './wording.ts';
 
 // A community as its page reads it, which is what a server will give one of its members. For now it is read from
@@ -129,7 +130,7 @@ interface Visit {
   aways: Present[];
 }
 
-export function communityView(root: HTMLElement, [key]: readonly string[], signal: AbortSignal): void {
+export function communityView(root: HTMLElement, [key]: readonly string[], qs: string, signal: AbortSignal): void {
   const c = key === undefined ? null : communityOf(key);
   if (c === null) {
     root.replaceChildren(h('p', {}, 'No community at this link.'));
@@ -162,10 +163,17 @@ export function communityView(root: HTMLElement, [key]: readonly string[], signa
   const today = one({ day: str }, sql`SELECT day FROM today`)?.day ?? '';
   const members = plural(c.members.length, 'member');
   const [next] = events;
-  // the agenda shows at first the trips with a day in the months the calendar shows at first, so that every day the
-  // calendar shows has its trips in the agenda; a button shows the rest. The sentence and "Next" are of every trip.
-  const shownTo = folded(monthsOf(today, days.keys())).shown.at(-1) ?? today.slice(0, 7);
-  const later = (v: Visit) => v.aways.every((a) => a.from.slice(0, 7) > shownTo);
+  // the trimester the calendar shows, from the address (?from=2027-02) when it is one it steps through, else today's;
+  // the agenda under it its trips, those with a day in it, so that every day the calendar shows has its trips there.
+  // The sentence and "Next" are of every trip.
+  const steps = trimesters(today, [...days.keys()].toSorted((a, b) => a.localeCompare(b)).at(-1));
+  const asked = readState(qs, { from: '' }).state.from;
+  const from = steps.includes(asked) ? asked : (steps[0] ?? today.slice(0, 7));
+  const plan = h('section', { class: 'agenda' }, agenda(trips, today, c.manager, from));
+  const moved = (to: string) => {
+    plan.replaceChildren(...nodes(agenda(trips, today, c.manager, to)));
+    showInAddressBar(communityHref(c.key, { from: to === steps[0] ? null : to }));
+  };
   page(
     root,
     [
@@ -216,10 +224,13 @@ export function communityView(root: HTMLElement, [key]: readonly string[], signa
           // the days someone travels on outside their festival's days: the day before it they arrive, the day after
           travel: new Set([...days].flatMap(([d, on]) => (on.aways.some((a) => !atFestival(a, d)) ? [d] : []))),
           pop: popover((d) => dayDetail(d, days.get(d), c.manager), signal),
+          from,
+          steps,
+          moved,
         })
       : null,
     trips.length > 0
-      ? agenda(trips, today, c.manager, later)
+      ? plan
       : h('p', { class: 'muted' }, 'No one in this community has said they’re going anywhere yet.'),
     h(
       'section',
@@ -253,42 +264,35 @@ function daysSaid(e: Festival): string {
     : `${wd(e.start_date)} ${d1} ${m1} – ${wd(e.end_date)} ${d2} ${m2}`;
 }
 
-// The agenda: a heading a month ("November · 3 trips", with its year in January and when it is not this year's),
-// and a row a trip, the next open; the trips later than the calendar shows at first hidden behind a button ("Show 6
-// more trips"), with their months' headings when all its trips are.
-function agenda(trips: readonly Visit[], today: string, manager: Member, later: (v: Visit) => boolean): HTMLElement {
+// The agenda of a trimester: its trips, those with a day in it, a heading a month ("November · 3 trips", with its year
+// in January and when it is not this year's) and a row a trip, the next open; none, "Nothing planned in Feb–Apr".
+function agenda(trips: readonly Visit[], today: string, manager: Member, from: string): Kid[] {
   const byMonth = new Map<string, Visit[]>();
-  for (const t of trips) {
+  for (const t of trips.filter((v) => v.aways.some((a) => inTrimester(from, a)))) {
     const m = t.e.start_date.slice(0, 7);
     byMonth.set(m, [...(byMonth.get(m) ?? []), t]);
   }
-  const hidden: HTMLElement[] = [];
-  const sections = [...byMonth].map(([m, here], i) => {
+  if (byMonth.size === 0)
+    return [
+      h('p', { class: 'muted' }, `Nothing planned in ${trimesterSaid(from, (m) => monthShort(`${m}-01`), true)}`),
+    ];
+  return [...byMonth].map(([m, here], i) => {
     const [name = '', year = ''] = monthYear(`${m}-01`).split(' ');
     const yearToo = m.endsWith('-01') || (i === 0 && year !== today.slice(0, 4));
-    const all = here.every(later);
-    const rows = here.map((t) => {
-      const row = tripRow(t, manager, t === trips[0]);
-      if (later(t) && !all) hidden.push(row);
-      return row;
-    });
-    const heading = h(
-      'h2',
-      {},
-      yearToo ? `${name} ${year}` : name,
-      h('span', { class: 'agenda-n' }, ` · ${plural(here.length, 'trip')}`),
-    );
-    const list = h('ol', { class: 'agenda-list' }, rows);
-    // a month all of whose trips are later hidden whole, its heading with them
-    if (all) hidden.push(heading, list);
-    return [heading, list];
+    return [
+      h(
+        'h2',
+        {},
+        yearToo ? `${name} ${year}` : name,
+        h('span', { class: 'agenda-n' }, ` · ${plural(here.length, 'trip')}`),
+      ),
+      h(
+        'ol',
+        { class: 'agenda-list' },
+        here.map((t) => tripRow(t, manager, t === trips[0])),
+      ),
+    ];
   });
-  const more = trips.filter(later).length;
-  const rest =
-    more === 0
-      ? null
-      : shower('agenda-more', hidden, { more: `Show ${plural(more, 'more trip')}`, fewer: 'Show fewer trips' });
-  return h('section', { class: 'agenda' }, sections, rest);
 }
 
 // A trip's row: its days, the festival (to it on the map) and where, who of the community goes; opened, a small Gantt

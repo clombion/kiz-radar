@@ -6,13 +6,14 @@ import {
   busiest,
   daysInto,
   daysOf,
-  folded,
-  foldSaid,
-  monthsBetween,
-  monthsOf,
+  inTrimester,
+  monthsIn,
   presence,
   relativeDay,
   spanOf,
+  trimesterOf,
+  trimesterSaid,
+  trimesters,
   weekday,
   weeksOf,
 } from '../../site/calendar.ts';
@@ -74,15 +75,33 @@ test('the days most are away are the first run with as many as any day, and of t
   expect(busiest(presence([]))).toBeUndefined();
 });
 
-test('the months shown are today’s and those someone is away in, from today’s on, across a year', () => {
-  expect(monthsOf('2026-11-03', ['2027-01-14', '2026-11-20', '2026-10-30', '2027-01-15', '2027-03-01'])).toEqual([
-    '2026-11',
-    '2027-01',
-    '2027-03',
-  ]);
-  expect(monthsOf('2026-11-03', [])).toEqual(['2026-11']);
-  expect(monthsBetween('2026-11', '2027-03')).toEqual(['2026-12', '2027-01', '2027-02']);
-  expect(monthsBetween('2026-11', '2026-12')).toEqual([]);
+test('the calendar steps by trimesters from today’s month, three months each, to the one of the last day away', () => {
+  // from November: November to January, February to April, …, across years
+  expect(trimesterOf('2026-11-03', '2026-11-20')).toBe('2026-11');
+  expect(trimesterOf('2026-11-03', '2027-01-31')).toBe('2026-11');
+  expect(trimesterOf('2026-11-03', '2027-02-01')).toBe('2027-02');
+  expect(trimesterOf('2026-11-03', '2027-11-01')).toBe('2027-11');
+  expect(trimesterOf('2026-11-03', '2026-10-30')).toBe('2026-11'); // a day before today's month: today's
+  expect(monthsIn('2026-11')).toEqual(['2026-11', '2026-12', '2027-01']);
+  expect(monthsIn('2027-12')).toEqual(['2027-12', '2028-01', '2028-02']);
+  expect(trimesters('2026-11-03', '2027-09-04')).toEqual(['2026-11', '2027-02', '2027-05', '2027-08']);
+  expect(trimesters('2026-11-03', '2026-12-01')).toEqual(['2026-11']);
+  expect(trimesters('2026-11-03', undefined)).toEqual(['2026-11']);
+  // trips only far off: today's trimester, empty, first
+  expect(trimesters('2027-02-10', '2027-06-18')).toEqual(['2027-02', '2027-05']);
+  // someone is in a trimester when any of their days is
+  expect(inTrimester('2027-02', { from: '2027-01-31', to: '2027-02-01' })).toBe(true);
+  expect(inTrimester('2027-02', { from: '2027-04-30', to: '2027-05-02' })).toBe(true);
+  expect(inTrimester('2027-02', { from: '2027-05-01', to: '2027-05-02' })).toBe(false);
+  expect(inTrimester('2027-02', { from: '2027-01-14', to: '2027-01-31' })).toBe(false);
+});
+
+test('a trimester is said by its months, with each year across two, and short without', () => {
+  const name = (m: string) =>
+    ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][Number(m.slice(5)) - 1] ?? m;
+  expect(trimesterSaid('2026-11', name)).toBe('Nov 2026 – Jan 2027');
+  expect(trimesterSaid('2027-02', name)).toBe('Feb – Apr 2027');
+  expect(trimesterSaid('2027-02', name, true)).toBe('Feb–Apr');
 });
 
 test('a month is its weeks from Monday, with the days of other months left empty', () => {
@@ -124,57 +143,4 @@ test('a festival’s row runs from the first to arrive, or its start, to the las
     ]),
   ).toEqual({ from: '2027-01-12', to: '2027-01-18' });
   expect(spanOf(prague, [])).toEqual({ from: '2027-01-14', to: '2027-01-18' });
-});
-
-// a month's name, as the page says it
-const NAMES = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-const named = (m: string) => NAMES[Number(m.slice(5)) - 1] ?? m;
-
-test('of many months the first four show, and a button says the rest by name, with years across two', () => {
-  const year = [
-    '2026-11',
-    '2026-12',
-    '2027-01',
-    '2027-02',
-    '2027-03',
-    '2027-04',
-    '2027-05',
-    '2027-06',
-    '2027-07',
-    '2027-09',
-  ];
-  // four or fewer: nothing more
-  expect(folded(year.slice(0, 4))).toEqual({ shown: year.slice(0, 4), more: [] });
-  expect(folded(['2026-11'])).toEqual({ shown: ['2026-11'], more: [] });
-  // five: one more, said alone
-  const five = folded(year.slice(0, 5));
-  expect(five).toEqual({ shown: year.slice(0, 4), more: ['2027-03'] });
-  expect(foldSaid(five.more, named)).toBe('March (1 month)');
-  // a year of trips: the six after the first four, from March to September, August among them though it has none
-  const all = folded(year);
-  expect(all.more).toEqual(year.slice(4));
-  expect(foldSaid(all.more, named)).toBe('March to September (6 months)');
-  // across two years, each with its year
-  expect(foldSaid(['2026-12', '2027-01', '2027-02'], named)).toBe('December 2026 to February 2027 (3 months)');
-});
-
-test('trips only far off: today’s month shows empty, as the first of the four, and the last far month is folded', () => {
-  const days = ['2027-03-05', '2027-04-02', '2027-05-06', '2027-06-18'];
-  expect(folded(monthsOf('2027-02-10', days))).toEqual({
-    shown: ['2027-02', '2027-03', '2027-04', '2027-05'],
-    more: ['2027-06'],
-  });
 });

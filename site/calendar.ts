@@ -17,35 +17,42 @@ export function daysOf(start: string, end: string): string[] {
 }
 
 const byText = (a: string, b: string): number => a.localeCompare(b); // days and months sort as text
-// the month after a month, YYYY-MM
-const nextMonth = (month: string): string => addDays(`${month}-28`, 7).slice(0, 7);
-
-// the months the page shows: today's, and each one a day someone is away is in, from today's on, in order
-export const monthsOf = (today: string, days: Iterable<string>): string[] => {
-  const now = today.slice(0, 7);
-  return [...new Set([now, ...[...days].map((d) => d.slice(0, 7)).filter((m) => m >= now)])].sort(byText);
+// a month n months after another (before, when n is negative), YYYY-MM
+const plusMonths = (month: string, n: number): string => {
+  const at = Number(month.slice(0, 4)) * 12 + Number(month.slice(5, 7)) - 1 + n;
+  return `${Math.floor(at / 12)}-${String((at % 12) + 1).padStart(2, '0')}`;
 };
-// A page of many months shows the first FOLD of them, and a button the rest: the months shown at first, and the
-// months the button shows
-export const FOLD = 4;
-export const folded = (months: readonly string[]): { shown: string[]; more: string[] } => ({
-  shown: months.slice(0, FOLD),
-  more: months.slice(FOLD),
-});
-// what the button that shows these months says of them: "March to September (5 months)", "September (1 month)", each
-// with its year when they span two ("December 2026 to February 2027 (3 months)"); name gives a month's name
-export function foldSaid(more: readonly string[], name: (month: string) => string): string {
-  const [first = '', last = first] = [more[0], more.at(-1)];
-  const years = first.slice(0, 4) !== last.slice(0, 4);
-  const said = (m: string) => (years ? `${name(m)} ${m.slice(0, 4)}` : name(m));
-  const n = `(${more.length} ${more.length === 1 ? 'month' : 'months'})`;
-  return more.length === 1 ? `${said(first)} ${n}` : `${said(first)} to ${said(last)} ${n}`;
-}
-// the months after one and before another, neither of them
-export function monthsBetween(after: string, before: string): string[] {
-  const out: string[] = [];
-  for (let m = nextMonth(after); m < before; m = nextMonth(m)) out.push(m);
+const monthsApart = (from: string, to: string): number =>
+  (Number(to.slice(0, 4)) - Number(from.slice(0, 4))) * 12 + Number(to.slice(5, 7)) - Number(from.slice(5, 7));
+
+// A community's calendar shows a trimester at a time: three months from today's, then the three after, and so on
+// (November to January, February to April, …), each named by its first month, YYYY-MM.
+const TRIMESTER = 3;
+// the trimester a day or a month is in, today's for one before it
+export const trimesterOf = (today: string, day: string): string => {
+  const now = today.slice(0, 7);
+  return plusMonths(now, TRIMESTER * Math.max(0, Math.floor(monthsApart(now, day.slice(0, 7)) / TRIMESTER)));
+};
+// a trimester's months
+export const monthsIn = (first: string): string[] => Array.from({ length: TRIMESTER }, (_, i) => plusMonths(first, i));
+// the trimesters the calendar steps through: today's, to the one the last day anyone is away is in
+export function trimesters(today: string, last: string | undefined): string[] {
+  const to = trimesterOf(today, last ?? today);
+  const out = [trimesterOf(today, today)];
+  while ((out.at(-1) ?? to) < to) out.push(plusMonths(out.at(-1) ?? to, TRIMESTER));
   return out;
+}
+// whether someone away from a day to a day is away on any day of a trimester
+export const inTrimester = (first: string, away: { from: string; to: string }): boolean =>
+  away.from < `${plusMonths(first, TRIMESTER)}-01` && away.to >= `${first}-01`;
+// a trimester by its months' names (name gives "Nov"): "Nov 2026 – Jan 2027" across two years, else "Feb – Apr 2027";
+// short, "Feb–Apr"
+export function trimesterSaid(first: string, name: (month: string) => string, short = false): string {
+  const last = plusMonths(first, TRIMESTER - 1);
+  if (short) return `${name(first)}–${name(last)}`;
+  return first.slice(0, 4) === last.slice(0, 4)
+    ? `${name(first)} – ${name(last)} ${last.slice(0, 4)}`
+    : `${name(first)} ${first.slice(0, 4)} – ${name(last)} ${last.slice(0, 4)}`;
 }
 // a month's weeks, Monday first: each day as YYYY-MM-DD, null before its first day and after its last
 export function weeksOf(month: string): (string | null)[][] {

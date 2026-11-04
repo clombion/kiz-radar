@@ -65,7 +65,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
     title: 'Community',
     nav: 'friends',
     waitsForData: true,
-    show: (root, sub, _, { signal }) => communityView(root, sub, signal),
+    show: (root, sub, qs, { signal }) => communityView(root, sub, qs, signal),
   },
 };
 const isRoute = (name: string): name is Route => Object.hasOwn(VIEWS, name);

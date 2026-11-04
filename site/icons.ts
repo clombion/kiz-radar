@@ -30,6 +30,9 @@ export class Drawing {
   static readonly PEOPLE = Drawing.#line(
     '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" />',
   );
+  // a community's calendar's steps to the three months before and after (Lucide's chevron-left and chevron-right)
+  static readonly PREVIOUS = Drawing.#line('<path d="m15 18-6-6 6-6" />');
+  static readonly NEXT = Drawing.#line('<path d="m9 18 6-6-6-6" />');
   // today in a month: a ring drawn by hand around its number, a little uneven, its ends crossing
   static readonly RING = new Drawing(
     '<svg viewBox="0 0 40 32" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M27 4.5C19 2.2 7.5 4 4.2 12.5 1.6 19.6 8.3 28.2 19.8 28.4 31 28.6 37.6 22.4 36.3 14.3 35.2 7.6 27.9 3.6 18.4 4.6" /></svg>',

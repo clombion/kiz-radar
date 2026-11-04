@@ -1,14 +1,14 @@
 // The months a community travels in, a small grid each: a row a week from Monday, each festival a highlighter stroke
 // behind its days, a dot under a day only travelled, today ringed, and at a row's end how many go to the festivals
-// that begin that week. Only today's month and those with a trip show, the first four of them at first and the rest
-// from a button; a line says which go without. Only a day someone
-// travels on does anything: each month is one stop for the keyboard, whose arrows move among those days; the day in
-// focus, under the pointer or tapped opens one popover saying who travels, which Escape, a tap elsewhere or on the day
-// again closes. It never covers the day's month: on a computer
-// it sits beside it, on a phone it is a panel under its row of months, which moves what follows down.
-import { type Away, type Day, FOLD, folded, foldSaid, monthsBetween, monthsOf, WEEKDAYS, weeksOf } from './calendar.ts';
+// that begin that week. Three months show at a time, a trimester from today's month (calendar.ts), between buttons to
+// the trimesters before and after it, as far as the last trip. Only a day someone travels on does anything: each month
+// is one stop for the keyboard, whose arrows move among those days; the day in focus, under the pointer or tapped
+// opens one popover saying who travels, which Escape, a tap elsewhere or on the day again closes. It never covers the
+// day's month: on a computer it sits beside it, on a phone it is a panel under its row of months, which moves what
+// follows down.
+import { type Away, type Day, monthsIn, trimesterSaid, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
-import { h, type Kid, nodes, shower, toggle } from './dom.ts';
+import { button, h, type Kid, nodes, toggle } from './dom.ts';
 import { Drawing } from './icons.ts';
 import { swipe } from './ink.ts';
 import { monthShort, monthYear, weekDay } from './ui.ts';
@@ -16,9 +16,10 @@ import { plural } from './wording.ts';
 
 const WIDE = '(min-width: 700px)'; // a screen with room for the popover beside a month
 
-// The popover of a day, one for the page: the grids attached to it open it on their days.
+// The popover of a day, one for the page: the grids attached to it open it on their days; close closes it.
 export interface Popover {
   attach: (container: HTMLElement) => void;
+  close: () => void;
 }
 export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Popover {
   const pop = h('div', { class: 'day-pop', role: 'tooltip', id: 'day-pop', hidden: true });
@@ -69,6 +70,7 @@ export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Po
     { signal },
   );
   return {
+    close,
     attach: (container) => {
       containers.push(container);
       const show = (e: Event) => {
@@ -238,35 +240,44 @@ function month<A extends Away>(s: Days<A>, m: string): HTMLElement {
   return grid;
 }
 
-// "Nothing planned in December", "Nothing planned Mar–May"
-const nothing = (gap: readonly string[]): HTMLElement => {
-  const [first = '', last = first] = [gap[0], gap.at(-1)];
-  return h(
-    'p',
-    { class: 'days-gap' },
-    gap.length === 1
-      ? `Nothing planned in ${monthYear(`${first}-01`).split(' ')[0]}`
-      : `Nothing planned ${monthShort(`${first}-01`)}–${monthShort(`${last}-01`)}`,
-  );
-};
-
-// The months: today's and each with a trip, a grid each, a line for the months between that go without, the key.
-export function months<A extends Away>(s: Days<A>): HTMLElement {
-  const all = monthsOf(s.today, s.days.keys());
-  // each month, after the line of the months before it that go without; past the first four, hidden with that line
-  const parts = all.map((m, i) => {
-    const gap = i === 0 ? [] : monthsBetween(all[i - 1] ?? m, m);
-    return [gap.length > 0 ? nothing(gap) : null, month(s, m)].filter((p) => p !== null);
-  });
-  const { more } = folded(all);
-  const rest =
-    more.length === 0
-      ? null
-      : shower('days-more', parts.slice(FOLD).flat(), {
-          more: `Show ${foldSaid(more, (m) => monthYear(`${m}-01`).split(' ')[0] ?? m)}`,
-          fewer: 'Show fewer months',
-        });
-  const wrap = h('div', { class: 'days-wrap' }, h('div', { class: 'days-months' }, parts), rest, key());
+// The calendar: a trimester's three months, a grid each, under its name between the buttons to the trimesters before
+// and after it in steps (each off at its end), and the key. A button draws the trimester it goes to in place, and tells
+// moved of it.
+export function months<A extends Away>(
+  s: Days<A> & { from: string; steps: readonly string[]; moved: (from: string) => void },
+): HTMLElement {
+  const grids = h('div', { class: 'days-months' });
+  const said = h('h2', { class: 'days-said', 'aria-live': 'polite' });
+  let at = s.from;
+  const step = (by: -1 | 1, label: string, icon: Drawing): HTMLButtonElement =>
+    icon.into(
+      button({
+        class: 'days-step',
+        'aria-label': label,
+        onclick: () => {
+          const to = s.steps[s.steps.indexOf(at) + by];
+          if (to === undefined) return;
+          draw(to);
+          s.moved(to);
+          // a step its own press turned off leaves the focus to the other
+          const [self, other] = by < 0 ? [back, on] : [on, back];
+          if (self.disabled) other.focus();
+        },
+      }),
+    );
+  const back = step(-1, 'Previous three months', Drawing.PREVIOUS),
+    on = step(1, 'Next three months', Drawing.NEXT);
+  const draw = (from: string) => {
+    at = from;
+    s.pop.close();
+    grids.replaceChildren(...monthsIn(from).map((m) => month(s, m)));
+    said.textContent = trimesterSaid(from, (m) => monthShort(`${m}-01`));
+    const i = s.steps.indexOf(from);
+    back.disabled = i <= 0;
+    on.disabled = i >= s.steps.length - 1;
+  };
+  draw(s.from);
+  const wrap = h('div', { class: 'days-wrap' }, h('div', { class: 'days-nav' }, back, said, on), grids, key());
   s.pop.attach(wrap);
   return wrap;
 }

@@ -38,34 +38,6 @@ export const toggle = (el: Element, cls: ClassName, on: boolean): void => {
 // a button, of type button: it never submits a form, whatever it is put in
 export const button = (attrs: Attrs, ...kids: Kid[]): HTMLButtonElement =>
   h('button', { type: 'button', ...attrs }, ...kids);
-// A button that shows hidden parts of a page in place, saying more ("Show March to September (5 months)"), and hides
-// them again, saying fewer ("Show fewer months"). The parts are hidden from the start, each given an id from id for
-// the button to name.
-export function shower(
-  id: string,
-  parts: readonly HTMLElement[],
-  said: { more: string; fewer: string },
-): HTMLButtonElement {
-  for (const [i, p] of parts.entries()) {
-    p.hidden = true;
-    p.id ||= `${id}-${i}`;
-  }
-  const shown = (on: boolean) => {
-    for (const p of parts) p.hidden = !on;
-    opener.setAttribute('aria-expanded', String(on));
-    opener.textContent = on ? said.fewer : said.more;
-  };
-  const opener = button(
-    {
-      class: ['link', 'shower'],
-      'aria-expanded': 'false',
-      'aria-controls': parts.map((p) => p.id).join(' '),
-      onclick: () => shown(opener.getAttribute('aria-expanded') !== 'true'),
-    },
-    said.more,
-  );
-  return opener;
-}
 export const nodes = (kids: readonly Kid[]): Node[] =>
   kids.flatMap((kid): Node[] =>
     kid == null || kid === false

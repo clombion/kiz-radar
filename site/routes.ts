@@ -34,7 +34,7 @@ export const artistHref = (id: number) => hash(`artists/${id}`);
 const friendsHref = () => hash('friends');
 export const personHref = (key: string) => hash(`friends/${key}`);
 // a community's page, which only its link reaches: nothing lists communities
-export const communityHref = (key: string) => hash(`community/${key}`);
+export const communityHref = (key: string, params?: Params) => hash(`community/${key}`, params);
 export const countriesHref = (params?: Params) => hash('countries', params);
 
 // the views a tab or a swipe goes to, by name, and the tabs of the header
