@@ -2294,30 +2294,36 @@ html:has(dialog.search[open]) {
   width: 100%;
   height: 100%;
 }
-/* a highlighter stroke: translucent, its edges a little uneven, round at the festival's first and last day and cut
-   where it goes on in another week */
+/* a highlighter swipe: translucent, its ink fading at a round end, a fainter second pass along it; each one's size,
+   offset, tilt and corners are its own (months.ts swipe), round at the festival's first and last day and cut where it
+   goes on in another week */
 .days-stroke {
+  position: relative;
   grid-row: 1;
-  height: 1.05rem;
-  margin: 0 -0.1rem;
-  border-radius: 0.6rem 0.45rem 0.55rem 0.4rem / 0.5rem 0.6rem 0.45rem 0.55rem;
+  height: 1rem;
+  margin: 0 -0.12rem;
+  border-radius: 0.5rem;
   background: var(--highlight);
-  rotate: -0.6deg;
+  mask-image: linear-gradient(to right, transparent, black 0.3rem, black calc(100% - 0.3rem), transparent);
 }
-.days-stroke.days-stroke-under {
-  translate: 0 0.32rem;
-  height: 0.5rem;
-  rotate: 0.5deg;
+.days-stroke::after {
+  content: "";
+  position: absolute;
+  inset: 22% 6% 30% 3%;
+  border-radius: inherit;
+  background: var(--highlight);
+  opacity: 0.55;
 }
 .days-stroke.days-stroke-from {
   margin-left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  mask-image: linear-gradient(to right, black calc(100% - 0.3rem), transparent);
 }
 .days-stroke.days-stroke-on {
   margin-right: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  mask-image: linear-gradient(to right, transparent, black 0.3rem);
+}
+.days-stroke.days-stroke-from.days-stroke-on {
+  mask-image: none;
 }
 .days-count {
   grid-row: 1;
@@ -2392,7 +2398,18 @@ html:has(dialog.search[open]) {
   font-weight: 650;
   color: var(--accent);
 }
+/* the head under a community's name: when most travel, its own line with room; what is next, short and quiet; the share
+   row apart */
+.community-when {
+  margin: 0.6rem 0 0;
+  line-height: 1.55;
+}
+.community-next {
+  margin: 0.15rem 0 0;
+  font-size: 0.9rem;
+}
 .share-row {
+  margin-top: 0.9rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -2425,19 +2442,15 @@ html:has(dialog.search[open]) {
   padding: 0;
   list-style: none;
 }
-/* a trip a card, as a festival's: its two lines and its button closed, the rest opening in it */
+/* a trip a row of the agenda, its two lines and its button; what it opens on a card under it, as a festival's */
 .trip {
-  margin-bottom: 0.75rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--card-radius);
-  background: var(--surface);
-  box-shadow: 0 4px 16px rgb(var(--shadow-ink) / 0.06);
+  border-bottom: 1px solid var(--border);
 }
 .trip-head {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 0 0.6rem;
+  padding: 0.6rem 0;
 }
 .trip-head p {
   grid-column: 1;
@@ -2469,7 +2482,12 @@ html:has(dialog.search[open]) {
   rotate: 180deg;
 }
 .trip-body {
-  padding: 0 0 0.8rem;
+  margin: 0 0 0.8rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  box-shadow: 0 4px 16px rgb(var(--shadow-ink) / 0.06);
   font-size: 0.88rem;
 }
 .trip-body p {

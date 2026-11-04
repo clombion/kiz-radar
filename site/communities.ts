@@ -163,16 +163,21 @@ export function communityView(root: HTMLElement, [key]: readonly string[], signa
     root,
     [
       c.name,
-      h('p', { class: 'lede' }, members, ' · managed by ', personLink(c.manager)),
       most === undefined
         ? null
         : h(
             'p',
-            {},
+            { class: 'community-when' },
             'Most members are travelling ',
             h('b', {}, dayRange(most.from, most.to)),
             `: ${plural(most.people, 'person', 'people')}, to ${placesOf(most.aways)}.`,
-            next === undefined ? null : ` Next: ${next.e.city ?? next.e.title}, ${whenFrom(today, next.e)}.`,
+          ),
+      next === undefined
+        ? null
+        : h(
+            'p',
+            { class: ['community-next', 'muted'] },
+            `Next: ${next.e.city ?? next.e.title}, ${whenFrom(today, next.e)}`,
           ),
       h(
         'div',

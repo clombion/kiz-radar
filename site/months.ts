@@ -142,6 +142,30 @@ export interface Days<A extends Away> {
   pop: Popover;
 }
 
+// A highlighter's swipe, as a hand draws it: a little low or high, thicker or thinner, tilted, its corners uneven and
+// its ink not quite even, the same for a festival's week however often it is drawn (seeded by the festival and the
+// week). A second festival's lies lower and thinner; an end where the festival goes on is cut square.
+function swipe(seed: string, under: boolean, before: boolean, after: boolean): Record<string, string> {
+  let h32 = 2_166_136_261;
+  for (const ch of seed) h32 = Math.imul(h32 ^ ch.charCodeAt(0), 16_777_619);
+  const next = () => {
+    h32 = Math.imul(h32 ^ (h32 >>> 15), 2_246_822_507);
+    h32 = Math.imul(h32 ^ (h32 >>> 13), 3_266_489_909);
+    h32 ^= h32 >>> 16;
+    return (h32 >>> 0) / 4_294_967_296;
+  };
+  const between = (lo: number, hi: number) => (lo + (hi - lo) * next()).toFixed(2);
+  const corner = (cut: boolean) => (cut ? '0' : `${between(0.35, 0.75)}rem`);
+  const [tl, tr, br, bl] = [corner(before), corner(after), corner(after), corner(before)];
+  return {
+    height: `${between(under ? 0.42 : 0.82, under ? 0.6 : 1.12)}rem`,
+    translate: `0 ${between(under ? 0.3 : 0.04, under ? 0.42 : 0.24)}rem`,
+    rotate: `${between(-1.4, 0.9)}deg`,
+    'border-radius': `${tl} ${tr} ${br} ${bl} / ${between(0.3, 0.6)}rem ${between(0.3, 0.6)}rem ${between(0.3, 0.6)}rem ${between(0.3, 0.6)}rem`,
+    opacity: between(0.78, 1),
+  };
+}
+
 // The strokes of a week: each festival on any of its days, from its first day in the week to its last, across the
 // columns of those days; open at an end where the festival goes on in the week before or after. A second festival on
 // the same days has its stroke under the first.
@@ -153,14 +177,11 @@ function strokes(week: readonly (string | null)[], festivals: readonly Marked[])
     .map((f, n) => {
       const from = week.findIndex((d) => d !== null && d >= f.start_date),
         to = week.findLastIndex((d) => d !== null && d <= f.end_date);
+      const before = f.start_date < (week[from] ?? ''),
+        after = f.end_date > (week[to] ?? '');
       return h('span', {
-        class: [
-          'days-stroke',
-          n % 2 === 1 && 'days-stroke-under',
-          f.start_date < (week[from] ?? '') && 'days-stroke-from',
-          f.end_date > (week[to] ?? '') && 'days-stroke-on',
-        ],
-        style: { 'grid-column': `${from + 1} / ${to + 2}` },
+        class: ['days-stroke', before && 'days-stroke-from', after && 'days-stroke-on'],
+        style: { 'grid-column': `${from + 1} / ${to + 2}`, ...swipe(`${f.id} ${first}`, n % 2 === 1, before, after) },
         title: f.title,
         'aria-hidden': 'true',
       });

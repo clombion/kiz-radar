@@ -153,11 +153,12 @@ const GLASGOW = 'Christina teaching · Sian teaching and Carolina going';
 test('a community’s head says who it is, when most members travel and where next, and whom it is for', () => {
   const root = onDay('2026-11-03', () => communityPage(COMMUNITY));
   expect(said(root.querySelector('h1'))).toBe('Norwegians in festivals');
-  expect(said(root.querySelector('.lede'))).toBe('2 members · managed by Cédric');
-  expect(root.querySelector('.lede a')?.getAttribute('href')).toBe(personHref('cedric'));
+  // the badge says how many members; who manages it is said with the members, at the foot
+  expect(said(root.querySelector('.profile-head'))).not.toMatch(/members ·|managed by/u);
   const head = [...root.querySelectorAll('.profile-head p')].map((p) => said(p));
   // KUOF: Cédric, Christina and the three added; Glasgow, this Friday, comes first
-  expect(head).toContain('Most members are travelling 20–22 Nov: 5 people, to Oslo. Next: Glasgow, this Friday.');
+  expect(head).toContain('Most members are travelling 20–22 Nov: 5 people, to Oslo.');
+  expect(said(root.querySelector('.profile-head .community-next'))).toBe('Next: Glasgow, this Friday');
   expect(said(root)).not.toMatch(/\baway\b|Most of the community/u);
   // who sees it, as a badge beside Share: a lock, people and their number, named in full
   const badge = root.querySelector<HTMLElement>('.share-row .privacy');
@@ -170,10 +171,10 @@ test('a community’s head says who it is, when most members travel and where ne
   expect([badge?.querySelectorAll('svg').length, said(badge)]).toEqual([2, '2']);
   // a week on, Glasgow is under way and KUOF is two weeks off
   expect(said(onDay('2026-11-07', () => communityPage(COMMUNITY)).querySelector('.profile-head'))).toContain(
-    'Next: Glasgow, now.',
+    'Next: Glasgow, now',
   );
   expect(said(onDay('2026-11-10', () => communityPage(COMMUNITY)).querySelector('.profile-head'))).toContain(
-    'Next: Oslo, on 20 Nov.',
+    'Next: Oslo, on 20 Nov',
   );
 });
 
@@ -675,28 +676,50 @@ test('on a phone a day opens a panel under its row of months, moving what follow
   });
 });
 
-test('each trip is a card, as a festival’s, opening in place; only the next one open', async () => {
+test('a trip is a row of the agenda, and what it opens a card under it, as a festival’s; only the next one open', async () => {
   await styled(() => {
     inPage('2026-11-01', (root) => {
       const trips = [...root.querySelectorAll<HTMLElement>('.agenda .trip')];
       expect(trips.length).toBeGreaterThan(1);
-      const look = (el: HTMLElement) => {
-        const st = getComputedStyle(el);
-        return [st.borderTopLeftRadius, st.backgroundColor, st.boxShadow === 'none', st.borderTopStyle];
+      const look = (el: HTMLElement | null) => {
+        const st = el === null ? undefined : getComputedStyle(el);
+        return [st?.borderTopLeftRadius, st?.backgroundColor, st?.boxShadow !== 'none', st?.borderTopStyle];
       };
       const card = h('article', { class: 'festival-card' });
       document.body.append(card);
       try {
-        const festival = look(card);
-        for (const t of trips) expect(look(t)).toEqual([festival[0], festival[1], false, 'solid']);
+        const [radius, surface] = look(card);
+        for (const t of trips) {
+          // the row is no card: no radius, no shadow, no box but the line under it
+          expect(look(t)).toEqual(['0px', 'rgba(0, 0, 0, 0)', false, 'none']);
+          // what it opens is
+          expect(look(t.querySelector('.trip-body'))).toEqual([radius, surface, true, 'solid']);
+          expect(t.querySelector('.trip-head')?.closest('.trip-body')).toBeNull();
+        }
       } finally {
         card.remove();
       }
-      // the body opens inside its card
       expect(trips.map((t) => t.querySelector<HTMLElement>('.trip-body')?.hidden)).toEqual(
         trips.map((_, i) => i !== 0),
       );
-      expect(trips.every((t) => t.contains(t.querySelector('.trip-body')))).toBe(true);
     });
   });
+});
+
+test('each festival’s stroke is a swipe of its own, the same however often it is drawn', () => {
+  // each week's swipe of each festival: its shape, without where it lies
+  const swipes = () =>
+    new Map(
+      [
+        ...onDay('2026-11-01', () => communityPage(COMMUNITY)).querySelectorAll<HTMLElement>('.days-week .days-stroke'),
+      ].map((s) => [
+        `${s.title} ${s.closest('.days-week')?.querySelector('[data-date]')?.getAttribute('data-date') ?? ''}`,
+        ['height', 'translate', 'rotate', 'border-radius', 'opacity'].map((p) => s.style.getPropertyValue(p)).join(' '),
+      ]),
+    );
+  const once = swipes();
+  expect(once.size).toBeGreaterThan(3);
+  expect(swipes()).toEqual(once); // drawn again, the same
+  expect(new Set(once.values()).size).toBe(once.size); // no two alike
+  for (const shape of once.values()) expect(shape).toMatch(/^[\d.]+rem 0px [\d.]+rem -?[\d.]+deg /u);
 });
