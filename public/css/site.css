@@ -2569,9 +2569,6 @@ html:has(dialog.search[open]) {
   min-width: 0;
   line-height: 1.25;
 }
-.gantt-name .plan-tag {
-  font-size: 0.62rem;
-}
 .gantt-name.gantt-unsaid {
   color: var(--muted);
 }

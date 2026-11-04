@@ -18,11 +18,10 @@ interface Flight {
   leave: string;
   leave_from: string | null;
 }
-// a party: who travels together, on one flight in and one out and to one stay (a couple as one), what they do there,
-// and how they travel
+// a party: who travels together, on one flight in and one out and to one stay (a couple as one), and how they travel;
+// what they do there is said on the trip's row, not again here
 export interface Party {
   name: string;
-  tag: Kid; // "teaching", "going"
   stay: string | null;
   flight: Flight;
 }
@@ -80,8 +79,6 @@ export function gantt(t: {
       'div',
       { class: 'gantt-name' },
       p.name,
-      ' ',
-      p.tag,
       p.stay === null ? null : [' ', h('span', { class: 'gantt-stay-under' }, p.stay)],
     ),
     lane(p),

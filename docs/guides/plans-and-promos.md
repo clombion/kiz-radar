@@ -72,15 +72,15 @@ Whether someone added teaches comes from the festival's line-up and their `artis
 manager never says it, and someone teaching links to their artist page. The next trip is open; the others open from
 their button, on a card under the row. An opened trip is a roster of who travels when: its days across the top, from the
 first of the community to arrive (or the festival's start, when that is sooner) to the last to leave (or its end), and a
-line for each party that shares a flight in and out and a stay (a couple as one): its name and what it does there
-(teaching, going), a light highlighter's swipe from the hour they arrive to the hour they leave with the times at its
-ends (and the airports, on a computer), over the festival's days as a soft band, and where it stays, beside it on a
-computer and under its name on a phone. Everyone who has not said how they travel, the people the manager added among
-them, is named once on a muted last line over a dotted band across the festival's days. A screen reader hears it all in
-words, which the page does not show: each party in and out and where it stays, and who has not said. While a card is
-open its row says only how many go and who teaches ("5 going · Cédric & Christina teaching"), as the card names
-everyone. The festival's name opens its card on the festival's line-up and prices, its own card opened in place, and
-folds them away again; the next trip's card opens on who travels, its line-up folded.
+line for each party that shares a flight in and out and a stay (a couple as one): its name (what it does there is the
+row's to say), a light highlighter's swipe from the hour they arrive to the hour they leave with the times at its ends
+(and the airports, on a computer), over the festival's days as a soft band, and where it stays, beside it on a computer
+and under its name on a phone. Everyone who has not said how they travel, the people the manager added among them, is
+named once on a muted last line over a dotted band across the festival's days. A screen reader hears it all in words,
+which the page does not show: each party in and out and where it stays, and who has not said. While a card is open its
+row says only how many go and who teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The
+festival's name opens its card on the festival's line-up and prices, its own card opened in place, and folds them away
+again; the next trip's card opens on who travels, its line-up folded.
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page

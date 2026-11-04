@@ -372,7 +372,7 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
 }
 
 // The parties of a trip: the members who share a flight in and out and a stay (a couple as one), first to arrive
-// first, each with what they do there.
+// first.
 function parties(aways: readonly Present[]): Party[] {
   const flying = new Map<string, { goers: Goer[]; flight: Trip }>();
   for (const a of aways)
@@ -384,7 +384,7 @@ function parties(aways: readonly Present[]): Party[] {
     }
   return [...flying.values()]
     .toSorted((a, b) => a.flight.arrive.localeCompare(b.flight.arrive))
-    .map(({ goers, flight }) => ({ name: and(namesOf(goers)), tag: doingTag(goers), stay: flight.stay, flight }));
+    .map(({ goers, flight }) => ({ name: and(namesOf(goers)), stay: flight.stay, flight }));
 }
 
 // Who of the community goes to a festival: its members, as their couple when both go and teaching when in the

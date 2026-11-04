@@ -556,9 +556,13 @@ test('an opened trip draws who travels when: the days from the first in to the l
       { day: 'S22', festival: true },
       { day: 'M23', festival: false },
     ]);
-    // the couple as one party, on one flight, the one bar, teaching, and where they stay under their name on a phone
-    // (beside the bar on a computer); the people added, who never travel, on one last line
-    expect(kuof.parties).toEqual(['Cédric & Christina teaching Scandic Holberg']);
+    // the couple as one party, on one flight, the one bar, and where they stay under their name on a phone (beside the
+    // bar on a computer); the people added, who never travel, on one last line. What they do there is the row's to say:
+    // the card has no role tag
+    expect(kuof.parties).toEqual(['Cédric & Christina Scandic Holberg']);
+    const card = agendaRow(root, 'KUOF')?.querySelector('.trip-body');
+    expect(card?.querySelectorAll('.plan-tag')).toHaveLength(0);
+    expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-who'))).toBe('5 going · Cédric & Christina teaching');
     const [couple, ...others] = kuof.bars;
     expect(others).toEqual([]);
     expect(couple?.said).toBe('17:05 OSL09:40 OSL');
