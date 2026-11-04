@@ -135,6 +135,8 @@ export type ClassName =
   | 'held'
   | 'hints-done'
   | 'ic'
+  | 'info-btn'
+  | 'info-card'
   | 'just-picked'
   | 'kicker'
   | 'lead'

@@ -1601,13 +1601,15 @@ test('the Friends tab lists the people near the home city, then the rest of the 
   const home = homeOf()?.city ?? '';
   expect(home).not.toBe('');
   expect(near.heading).toBe(`Near ${home}`);
-  expect(said(root.querySelector('.friends-near p'))).toBe('Dancers based in the region with public plans.');
-  expect(NEAR_KM).toBe(150);
-  expect(said(root.querySelector('.friends-near'))).not.toContain(`${NEAR_KM} km`); // the page says no distance
+  expect(said(root.querySelector('.lede'))).toBe('Where dancers are going.');
+  // no line under the heading: what the list is is behind its (i)
+  expect(root.querySelector('.friends-near h2 + p')?.matches('.info-card')).toBe(true);
+  expect(root.querySelector('.friends-near p.muted')).toBeNull();
+  expect(NEAR_KM).toBe(200);
   // Glasgow names Christina and Siân, who both live there; the place is the home city's, with nothing to change it
   expect(near.rows.find((r) => r?.includes('Glasgow'))).toMatch(/Christina.*Siân/u);
   expect(near.sharing).toMatch(/^Sharing their plans: Christina \(\d+\), Cédric \(\d+\) and Siân \(\d+\)$/u);
-  expect(root.querySelector('button')).toBeNull();
+  expect([...root.querySelectorAll('button')].map((b) => b.ariaLabel)).toEqual(['About this list']);
   expect([...root.querySelectorAll('section > h2')].map((h2) => said(h2))).toEqual([
     `Near ${home}`,
     'Rest of the world',
@@ -1615,7 +1617,7 @@ test('the Friends tab lists the people near the home city, then the rest of the 
   expect(said(root.querySelector('.friends-rest p'))).toBe('Not available yet');
 });
 
-test('the Friends tab lists only the people living within 150 km of the home city', () => {
+test('the Friends tab lists only the people living within 200 km of the home city', () => {
   // Siân moved this far north of the home city, in degrees of latitude (about 111 km each), while then runs
   const movedNorth = (degrees: number, then: () => string | undefined) => {
     db?.run("INSERT INTO homes SELECT 'Elsewhere', lat + ?, lon FROM homes WHERE city = ?", [
@@ -1631,9 +1633,45 @@ test('the Friends tab lists only the people living within 150 km of the home cit
     }
   };
   const sharing = () => nearOf(onDay('2026-11-04', friendsTab)).sharing;
-  expect(movedNorth(1.17, sharing)).toContain('Siân'); // about 130 km
-  expect(movedNorth(1.62, sharing)).not.toContain('Siân'); // about 180 km
+  expect(movedNorth(1.62, sharing)).toContain('Siân'); // about 180 km
+  expect(movedNorth(2.07, sharing)).not.toContain('Siân'); // about 230 km
   // and the festivals name only the people near: Glasgow, Christina without Siân
   const glasgow = () => nearOf(onDay('2026-11-04', friendsTab)).rows.find((r) => r?.includes('Glasgow'));
-  expect(movedNorth(1.62, glasgow)).not.toContain('Siân');
+  expect(movedNorth(2.07, glasgow)).not.toContain('Siân');
+});
+
+test('the Friends tab’s (i) shows what its list is on hover, on focus and on a tap, and Escape hides it', () => {
+  const root = onDay('2026-11-04', friendsTab);
+  document.body.append(root);
+  try {
+    const info = root.querySelector<HTMLButtonElement>('.friends-near h2 .info-btn');
+    const card = root.querySelector<HTMLElement>('.info-card');
+    const seen = () => [info?.getAttribute('aria-expanded'), card?.hidden];
+    expect([info?.ariaLabel, info?.getAttribute('aria-controls'), card?.id]).toEqual([
+      'About this list',
+      'friends-about',
+      'friends-about',
+    ]);
+    expect(info?.querySelector('svg')).not.toBeNull();
+    expect(said(card)).toBe(`Only dancers with public plans, within ${NEAR_KM} km of ${homeOf()?.city}.`);
+    expect(seen()).toEqual(['false', true]);
+    info?.dispatchEvent(new MouseEvent('mouseenter'));
+    expect(seen()).toEqual(['true', false]);
+    info?.dispatchEvent(new MouseEvent('mouseleave'));
+    expect(seen()).toEqual(['false', true]);
+    info?.focus();
+    expect(seen()).toEqual(['true', false]);
+    info?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    expect(seen()).toEqual(['false', true]);
+    // a tap keeps it, the pointer leaving or not, until the next tap
+    info?.click();
+    info?.dispatchEvent(new MouseEvent('mouseleave'));
+    expect(seen()).toEqual(['true', false]);
+    info?.click();
+    expect(seen()).toEqual(['false', true]);
+    info?.blur();
+    expect(seen()).toEqual(['false', true]);
+  } finally {
+    root.remove();
+  }
 });

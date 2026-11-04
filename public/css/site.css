@@ -2193,9 +2193,48 @@ html:has(dialog.search[open]) {
   flex-wrap: wrap;
 }
 /* the Friends tab: the people near the site's home city, and the rest of the world, a section each */
-.friends-near,
 .friends-rest {
   margin-top: 1.25rem;
+}
+/* an (i) by a heading, and the small card of what the list is under it, as a roster's names are shown */
+.friends-near {
+  position: relative;
+  margin-top: 1.25rem;
+}
+.info-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  vertical-align: -0.35rem;
+  cursor: pointer;
+}
+.info-btn:hover,
+.info-btn[aria-expanded="true"] {
+  color: var(--accent);
+}
+.info-card {
+  position: absolute;
+  z-index: var(--z-popover);
+  margin: -0.35rem 0 0;
+  width: max-content;
+  max-width: min(22rem, calc(100vw - 2 * var(--gutter)));
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgb(var(--shadow-ink) / 0.18);
+  color: var(--text);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+.info-card[hidden] {
+  display: none;
 }
 .plan-list {
   list-style: none;

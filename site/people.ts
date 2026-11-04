@@ -4,6 +4,7 @@ import { one, q, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { withDetails } from './festivals.ts';
+import { Drawing } from './icons.ts';
 import { goersInline, goersOf, goingRow, person, withPlans } from './plans.ts';
 import { artistHref, personHref } from './routes.ts';
 import { EVENT, num, str } from './rows.ts';
@@ -86,7 +87,7 @@ export const personLink = (p: { key: string; name: string }): HTMLElement =>
   h('a', { href: personHref(p.key), class: 'artist' }, p.name);
 
 // how far from a place someone lives and is near it, in km
-export const NEAR_KM = 150;
+export const NEAR_KM = 200;
 // where the people near are looked for
 interface Spot {
   lat: number;
@@ -120,7 +121,7 @@ function everyone(root: HTMLElement): void {
   const home = homeCity();
   page(
     root,
-    ['Who’s going where', h('p', { class: 'lede' }, 'The festivals dancers sharing their plans are going to.')],
+    ['Who’s going where', h('p', { class: 'lede' }, 'Where dancers are going.')],
     h('section', { class: 'friends-near' }, nearHere(home ?? null, home?.city ?? 'home')),
     h(
       'section',
@@ -144,8 +145,7 @@ function nearHere(at: Spot | null, name: string): Kid[] {
   });
   const people = withPlans().filter((p) => keys.has(p.key));
   return [
-    h('h2', {}, `Near ${name}`),
-    h('p', { class: 'muted' }, 'Dancers based in the region with public plans.'),
+    ...about(`Near ${name}`, `Only dancers with public plans, within ${NEAR_KM} km of ${name}.`),
     events.length > 0
       ? h('ul', { class: 'plan-list' }, events)
       : h('p', { class: 'muted' }, 'No one near here has shared plans yet.'),
@@ -158,6 +158,42 @@ function nearHere(at: Spot | null, name: string): Kid[] {
         )
       : null,
   ];
+}
+
+// A list's heading with an (i) button after it, and the small card the button shows of what the list is, under the
+// heading: on hover, on focus and on a tap (which keeps it until the next, or Escape)
+function about(heading: string, said: string): [HTMLElement, HTMLElement] {
+  const card = h('p', { class: 'info-card', id: 'friends-about', hidden: true }, said);
+  let kept = false;
+  const show = (open: boolean) => {
+    card.hidden = !open;
+    info.setAttribute('aria-expanded', String(open));
+  };
+  const info = Drawing.INFO.into(
+    button({
+      class: 'info-btn',
+      'aria-label': 'About this list',
+      'aria-expanded': 'false',
+      'aria-controls': card.id,
+      onclick: () => {
+        kept = !kept;
+        show(kept);
+      },
+      onmouseenter: () => show(true),
+      onmouseleave: () => show(kept),
+      onfocus: () => show(true),
+      onblur: () => {
+        kept = false;
+        show(false);
+      },
+    }),
+  );
+  info.addEventListener('keydown', (ev) => {
+    if (ev.key !== 'Escape') return;
+    kept = false;
+    show(false);
+  });
+  return [h('h2', {}, heading, ' ', info), card];
 }
 
 // a page of plans (a person's, everyone's, a community's): its title and what goes under it in the head, then the rest
