@@ -23,6 +23,17 @@ export class Drawing {
   static readonly CHEVRON = new Drawing(
     '<svg viewBox="0 0 48 12" width="48" height="12"><path d="M3 10 L24 3 L45 10"/></svg>',
   );
+  // a community page's privacy: a lock, and people (Lucide's lock and users)
+  static readonly LOCK = Drawing.#line(
+    '<rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" />',
+  );
+  static readonly PEOPLE = Drawing.#line(
+    '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" />',
+  );
+  // today in a month: a ring drawn by hand around its number, a little uneven, its ends crossing
+  static readonly RING = new Drawing(
+    '<svg viewBox="0 0 40 32" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M27 4.5C19 2.2 7.5 4 4.2 12.5 1.6 19.6 8.3 28.2 19.8 28.4 31 28.6 37.6 22.4 36.3 14.3 35.2 7.6 27.9 3.6 18.4 4.6" /></svg>',
+  );
   // the Lucide icons, by name
   static readonly LUCIDE: Readonly<Record<string, Drawing>> = {
     tag: Drawing.#line(

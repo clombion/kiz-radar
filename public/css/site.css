@@ -334,10 +334,8 @@ th[aria-sort="descending"] button.sort::after {
   --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1.5 1.5 6 6l4.5-4.5' fill='none' stroke='%237a2850' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); /* its stroke is --accent, which a data URL can't read */
   --face-2: #c75a86; /* every second face in a row of who's going */
-  /* how many are away on a day, in three steps, each apart from the empty day (--surface-2) and from the next */
-  --shade-1: #e4a9c0;
-  --shade-2: #b9497b;
-  --shade-3: #5e1a3c;
+  --shade-1: #e4a9c0; /* a trip's bar: a light accent, under dark text */
+  --highlight: rgb(214 96 145 / 0.32); /* a festival's highlighter stroke behind its days, translucent */
   --shadow-ink: 42 31 34; /* the colour of shadows and scrims, as rgb() channels */
   /* sizes that must agree wherever they are used */
   --gutter: 16px;
@@ -2218,92 +2216,115 @@ html:has(dialog.search[open]) {
   white-space: nowrap;
 }
 
-/* a community's months: a small grid each, a row a week from Monday, a day a square shaded by how many are away, the
-   week's most at its end; two months a row on a phone */
+/* a community's months: a small grid each, light and without boxes, the days placed in their columns; a festival a
+   highlighter stroke behind its days, a dot under a day only travelled, today ringed by hand; two months a row on a
+   phone */
 .days-months {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
   align-items: start;
-  gap: 0.9rem 1.25rem;
+  gap: 1rem;
 }
 .days-month {
-  width: 100%;
   max-width: 13rem;
-  border-collapse: separate;
-  border-spacing: 2px;
-  table-layout: fixed;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-variant-numeric: tabular-nums;
 }
-.days-month caption {
-  padding: 0 0 0.2rem 2px;
-  text-align: left;
+.days-caption {
+  margin: 0 0 0.15rem;
   font-size: 0.8rem;
   font-weight: 650;
 }
-.days-month caption small {
+.days-caption small {
   color: var(--muted);
   font-weight: 500;
 }
-.days-month th,
-.days-month td {
-  padding: 0;
-  border: 0;
+.days-week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) 1.4rem;
+  align-items: center;
+  min-height: 1.45rem;
+}
+.days-head {
+  min-height: 1.1rem;
+  color: var(--muted);
+  font-size: 0.64rem;
   text-align: center;
-  white-space: nowrap;
 }
-.days-month thead th {
-  position: static;
-  background: none;
+.days-day {
+  position: relative;
+  z-index: var(--z-raised);
+  grid-row: 1;
+  display: grid;
+  place-items: center;
+  height: 1.45rem;
   color: var(--muted);
-  font-weight: 500;
 }
-.days-month td[data-day] {
-  height: 1.3rem;
-  border-radius: 3px;
-  background: var(--surface-2);
+.days-day.days-on {
+  color: var(--text);
+  font-weight: 650;
   cursor: pointer;
 }
-.days-month td.days-past {
+.days-day.days-past {
   color: var(--none);
 }
-.days-month td.days-1,
-.days-swatch.days-1 {
-  background: var(--shade-1);
-  font-weight: 650;
-}
-.days-month td.days-2,
-.days-swatch.days-2 {
-  background: var(--shade-2);
-  color: var(--accent-ink);
-  font-weight: 650;
-}
-.days-month td.days-3,
-.days-swatch.days-3 {
-  background: var(--shade-3);
-  color: var(--accent-ink);
-  font-weight: 650;
-}
-.days-month td.days-fest {
-  box-shadow: inset 0 -2px 0 var(--surface);
-}
-.days-month td.days-today,
-.days-swatch.days-today {
-  box-shadow: inset 0 0 0 1.5px var(--text);
-}
-.days-month td:focus-visible {
+.days-day:focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 1px;
+  outline-offset: -1px;
+  border-radius: 999px;
 }
-.days-month td.days-most {
-  width: 1.3rem;
+.days-dot {
+  position: absolute;
+  bottom: 0.05rem;
+  left: 50%;
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: var(--accent);
+  translate: -50% 0;
+}
+.days-ring {
+  position: absolute;
+  inset: -0.12rem -0.05rem;
+  color: var(--accent);
+  pointer-events: none;
+}
+.days-ring svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* a highlighter stroke: translucent, its edges a little uneven, round at the festival's first and last day and cut
+   where it goes on in another week */
+.days-stroke {
+  grid-row: 1;
+  height: 1.05rem;
+  margin: 0 -0.1rem;
+  border-radius: 0.6rem 0.45rem 0.55rem 0.4rem / 0.5rem 0.6rem 0.45rem 0.55rem;
+  background: var(--highlight);
+  rotate: -0.6deg;
+}
+.days-stroke.days-stroke-under {
+  translate: 0 0.32rem;
+  height: 0.5rem;
+  rotate: 0.5deg;
+}
+.days-stroke.days-stroke-from {
+  margin-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.days-stroke.days-stroke-on {
+  margin-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.days-count {
+  grid-row: 1;
+  grid-column: 8;
   color: var(--accent);
   font-weight: 700;
-  font-size: 0.72rem;
-}
-.days-month td.days-none {
-  color: var(--none);
-  font-weight: 400;
+  text-align: center;
 }
 .days-wrap {
   position: relative;
@@ -2331,11 +2352,17 @@ html:has(dialog.search[open]) {
   align-items: center;
   gap: 0.3rem;
 }
-.days-swatch {
+.days-sample {
+  position: relative;
+  inset: auto;
   display: inline-block;
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 2px;
+  width: 1.2rem;
+  height: 0.8rem;
+  translate: none;
+}
+.days-dot.days-sample {
+  width: 0.28rem;
+  height: 0.28rem;
 }
 .day-pop {
   position: absolute;
@@ -2374,6 +2401,18 @@ html:has(dialog.search[open]) {
 .share-row .more-btn {
   margin-left: 0;
 }
+/* who sees the page: a lock, people and their number, said in full to a screen reader and on hover */
+.privacy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.privacy svg {
+  display: block;
+}
 
 /* a community's agenda: a heading a month, a row a trip, opening on who travels when */
 .agenda h2 .agenda-n {
@@ -2386,14 +2425,19 @@ html:has(dialog.search[open]) {
   padding: 0;
   list-style: none;
 }
+/* a trip a card, as a festival's: its two lines and its button closed, the rest opening in it */
 .trip {
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  box-shadow: 0 4px 16px rgb(var(--shadow-ink) / 0.06);
 }
 .trip-head {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 0 0.6rem;
-  padding: 0.5rem 0;
 }
 .trip-head p {
   grid-column: 1;

@@ -1,5 +1,5 @@
 // A community's days away, on days alone: who is away on each day (a trip's days, else a festival's, whatever its
-// weekdays), the days most are away at once, the shades, the months and weeks the page draws, and a trip's hours.
+// weekdays), the days most are away at once, the months and weeks the page draws, and a trip's hours.
 import { expect, test } from 'vitest';
 import {
   awayDays,
@@ -10,8 +10,6 @@ import {
   monthsOf,
   presence,
   relativeDay,
-  shade,
-  shadeRanges,
   spanOf,
   weekday,
   weeksOf,
@@ -74,11 +72,6 @@ test('the days most are away are the first run with as many as any day, and of t
   expect(busiest(presence([]))).toBeUndefined();
 });
 
-test('a day’s shade is a third of the most away on any day, and none for no one', () => {
-  expect([0, 1, 2, 3, 4, 5, 6].map((n) => shade(n, 6))).toEqual([0, 1, 1, 2, 2, 3, 3]);
-  expect(shade(1, 1)).toBe(3);
-});
-
 test('the months shown are today’s and those someone is away in, from today’s on, across a year', () => {
   expect(monthsOf('2026-11-03', ['2027-01-14', '2026-11-20', '2026-10-30', '2027-01-15', '2027-03-01'])).toEqual([
     '2026-11',
@@ -129,16 +122,4 @@ test('a festival’s row runs from the first to arrive, or its start, to the las
     ]),
   ).toEqual({ from: '2027-01-12', to: '2027-01-18' });
   expect(spanOf(prague, [])).toEqual({ from: '2027-01-14', to: '2027-01-18' });
-});
-
-test('the legend gives each shade the counts it stands for, as the steps divide the most', () => {
-  expect(shadeRanges(5)).toEqual([
-    { shade: 1, from: 1, to: 1 },
-    { shade: 2, from: 2, to: 3 },
-    { shade: 3, from: 4, to: 5 },
-  ]);
-  expect(shadeRanges(1)).toEqual([{ shade: 3, from: 1, to: 1 }]);
-  expect(shadeRanges(0)).toEqual([]);
-  // each count in the shade the strip gives it
-  for (const r of shadeRanges(9)) for (let n = r.from; n <= r.to; n++) expect(shade(n, 9)).toBe(r.shade);
 });

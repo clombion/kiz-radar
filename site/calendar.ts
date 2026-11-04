@@ -101,11 +101,6 @@ export function busiest<A extends Away>(
   return { from, to, people: most, aways: run.flatMap(([, day]) => day.aways) };
 }
 
-// the shade of a day someone is away on: 1 to 3, by thirds of the most away on any day
-const step = (people: number, most: number): 1 | 2 | 3 => (people * 3 <= most ? 1 : people * 3 <= most * 2 ? 2 : 3);
-// a day's shade: 0 when no one is away, else its step
-export const shade = (people: number, most: number): 0 | 1 | 2 | 3 => (people === 0 ? 0 : step(people, most));
-
 // the days a festival's row covers: from the first of the community to arrive, or its start when that is sooner, to
 // the last to leave, or its end when that is later
 export function spanOf(
@@ -118,16 +113,4 @@ export function spanOf(
     from: trips.reduce((d, t) => sooner(d, t.arrive.slice(0, 10)), festival.start_date),
     to: trips.reduce((d, t) => later(d, t.leave.slice(0, 10)), festival.end_date),
   };
-}
-
-// what each shade stands for when at most `most` are away: the counts it takes, from and to, for the legend
-export function shadeRanges(most: number): { shade: 1 | 2 | 3; from: number; to: number }[] {
-  const out: { shade: 1 | 2 | 3; from: number; to: number }[] = [];
-  for (let n = 1; n <= most; n++) {
-    const s = step(n, most);
-    const last = out.at(-1);
-    if (last?.shade === s) last.to = n;
-    else out.push({ shade: s, from: n, to: n });
-  }
-  return out;
 }

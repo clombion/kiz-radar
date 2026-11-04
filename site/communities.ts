@@ -7,7 +7,6 @@ import {
   awayDays,
   busiest,
   type Day,
-  daysOf,
   presence,
   relativeDay,
   spanOf,
@@ -19,6 +18,7 @@ import { button, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, withDetails } from './festivals.ts';
 import { dayTimeAt, gantt, type Party } from './gantt.ts';
+import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
 import { doingTag, type Goer, goersInline, namesOf } from './plans.ts';
@@ -169,26 +169,40 @@ export function communityView(root: HTMLElement, [key]: readonly string[], signa
         : h(
             'p',
             {},
-            'Most of the community is away ',
+            'Most members are travelling ',
             h('b', {}, dayRange(most.from, most.to)),
-            `: ${plural(most.people, 'person', 'people')}, ${placesOf(most.aways)}.`,
+            `: ${plural(most.people, 'person', 'people')}, to ${placesOf(most.aways)}.`,
             next === undefined ? null : ` Next: ${next.e.city ?? next.e.title}, ${whenFrom(today, next.e)}.`,
           ),
       h(
         'div',
         { class: 'share-row' },
         shareButton('Share this page', c.name),
-        h('span', { class: 'muted' }, `Visible to its ${members} only`),
+        h(
+          'span',
+          {
+            class: 'privacy',
+            role: 'img',
+            'aria-label': `Visible to its ${members} only`,
+            title: `Visible to its ${members} only`,
+          },
+          Drawing.LOCK.into(h('span', { 'aria-hidden': 'true' })),
+          Drawing.PEOPLE.into(h('span', { 'aria-hidden': 'true' })),
+          h('span', { 'aria-hidden': 'true' }, c.members.length),
+        ),
       ),
     ],
     days.size > 0
       ? months({
           today,
           days,
-          most: most?.people ?? 0,
           label: (d, on) =>
-            `${weekDay(d)}: ${on === undefined ? 'no one away' : `${plural(on.people, 'person', 'people')} away, ${placesOf(on.aways)}`}`,
-          festival: new Set(events.flatMap(({ e }) => daysOf(e.start_date, e.end_date))),
+            `${weekDay(d)}: ${plural(on.people, 'person', 'people')} ${
+              on.aways.every((a) => atFestival(a, d)) ? 'at the festival in' : 'travelling to'
+            } ${placesOf(on.aways)}`,
+          festivals: trips.map(({ e, who }) => ({ ...e, people: who.people })),
+          // the days someone travels on outside their festival's days: the day before it they arrive, the day after
+          travel: new Set([...days].flatMap(([d, on]) => (on.aways.some((a) => !atFestival(a, d)) ? [d] : []))),
           pop: popover((d) => dayDetail(d, days.get(d), c.manager), signal),
         })
       : null,
@@ -400,9 +414,10 @@ function whoGoes(
   return { goers, people: goers.length + f.added.length, said };
 }
 
-// where the festivals of these people are: "in Oslo", "in Oslo and Riga"; a festival with no city by its name
-const placesOf = (aways: readonly Present[]): string =>
-  `in ${and([...new Set(aways.map((a) => a.e.city ?? a.e.title))])}`;
+// whether a day is one of the festival someone travels to
+const atFestival = (a: Present, day: string): boolean => day >= a.e.start_date && day <= a.e.end_date;
+// where the festivals of these people are: "Oslo", "Oslo and Riga"; a festival with no city by its name
+const placesOf = (aways: readonly Present[]): string => and([...new Set(aways.map((a) => a.e.city ?? a.e.title))]);
 // "A", "A and B", "A, B and C", as text
 const and = (xs: readonly string[]): string =>
   xs.length > 1 ? `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}` : xs.join('');
@@ -411,7 +426,7 @@ const and = (xs: readonly string[]): string =>
 // one when both share the flight), who else is there, and where members stay. The people added are named, each
 // saying on hover who added them, and never travel.
 function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): Kid[] {
-  if (on === undefined) return [h('p', { class: 'day-when' }, weekDay(day)), h('p', { class: 'muted' }, 'No one away')];
+  if (on === undefined) return [h('p', { class: 'day-when' }, weekDay(day))]; // a day no one travels on opens nothing
   const once = [...new Map(on.aways.map((a) => [a.who, a])).values()];
   const flying = (when: 'arrive' | 'leave', where: 'arrive_at' | 'leave_from'): Kid[] => {
     const by = new Map<string, Goer[]>();

@@ -1,15 +1,17 @@
-// The months a community is away in, a small grid each: a row a week from Monday, a day a square shaded by how many
-// people are away on it, in three steps the legend says, and at each week's end the most away on any of its days.
-// Only today's month and those with a trip show; a line says which go without. Each month is one stop for the
-// keyboard, whose arrows move a day (or a week); the day in focus, under the pointer or tapped opens one popover saying
-// who is away, which Escape, a tap elsewhere or on the day again closes. It never covers the day's month: on a computer
+// The months a community travels in, a small grid each: a row a week from Monday, each festival a highlighter stroke
+// behind its days, a dot under a day only travelled, today ringed, and at a row's end how many go to the festivals
+// that begin that week. Only today's month and those with a trip show; a line says which go without. Only a day someone
+// travels on does anything: each month is one stop for the keyboard, whose arrows move among those days; the day in
+// focus, under the pointer or tapped opens one popover saying who travels, which Escape, a tap elsewhere or on the day
+// again closes. It never covers the day's month: on a computer
 // it sits beside it, on a phone it is a panel under its row of months, which moves what follows down.
-import { type Away, type Day, monthsBetween, monthsOf, shade, shadeRanges, WEEKDAYS, weeksOf } from './calendar.ts';
+import { type Away, type Day, monthsBetween, monthsOf, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
 import { h, type Kid, nodes, toggle } from './dom.ts';
-import { monthShort, monthYear } from './ui.ts';
+import { Drawing } from './icons.ts';
+import { monthShort, monthYear, weekDay } from './ui.ts';
+import { plural } from './wording.ts';
 
-const SHADES = [null, 'days-1', 'days-2', 'days-3'] as const;
 const WIDE = '(min-width: 700px)'; // a screen with room for the popover beside a month
 
 // The popover of a day, one for the page: the grids attached to it open it on their days.
@@ -30,7 +32,7 @@ export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Po
     described?.removeAttribute('aria-describedby');
     cell.setAttribute('aria-describedby', pop.id);
     described = cell;
-    const grid = cell.closest('table') ?? cell;
+    const grid = cell.closest<HTMLElement>('.days-month') ?? cell;
     const wide = matchMedia(WIDE).matches;
     toggle(pop, 'day-panel', !wide);
     if (!wide) {
@@ -94,18 +96,27 @@ export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Po
   };
 }
 
-// One stop for the keyboard among these cells, by day: the arrows step this many days, and the focus moves there
-// when a cell is that day.
-function rove(
-  container: HTMLElement,
-  cells: ReadonlyMap<string, HTMLElement>,
-  steps: Readonly<Record<string, number>>,
-) {
+// One stop for the keyboard among a month's days with someone travelling, in their order: left and right move to the
+// one before or after, up and down to the first a week or more before or after. The days no one travels on are
+// passed over.
+function rove(container: HTMLElement, cells: readonly HTMLElement[]) {
+  const dayOf = (c: HTMLElement | undefined) => c?.dataset['day'] ?? '';
   container.addEventListener('keydown', (e) => {
     const cell = e.target instanceof HTMLElement ? e.target.closest<HTMLElement>('[data-day]') : null;
-    const step = steps[e.key];
-    const to = cell === null || step === undefined ? undefined : cells.get(addDays(cell.dataset['day'] ?? '', step));
-    if (cell === null || to === undefined) return;
+    const i = cell === null ? -1 : cells.indexOf(cell);
+    if (cell === null || i < 0) return;
+    const d = dayOf(cell);
+    const to =
+      e.key === 'ArrowRight'
+        ? cells[i + 1]
+        : e.key === 'ArrowLeft'
+          ? cells[i - 1]
+          : e.key === 'ArrowDown'
+            ? cells.find((c) => dayOf(c) >= addDays(d, 7))
+            : e.key === 'ArrowUp'
+              ? cells.findLast((c) => dayOf(c) <= addDays(d, -7))
+              : undefined;
+    if (to === undefined) return;
     e.preventDefault();
     cell.tabIndex = -1;
     to.tabIndex = 0;
@@ -113,76 +124,112 @@ function rove(
   });
 }
 
-// what the grids say of the days: who is away on each, the most on any day, a day's words, the festivals' days
+// a festival the community goes to, as the months draw it: its days, and how many of the community go
+interface Marked {
+  id: number;
+  title: string;
+  start_date: string;
+  end_date: string;
+  people: number;
+}
+// what the months say of the days: who travels on each, a day's words, the festivals, the days only travelled
 export interface Days<A extends Away> {
   today: string;
   days: ReadonlyMap<string, Day<A>>;
-  most: number; // the most away on any day, which the three shades divide
-  label: (day: string, on: Day<A> | undefined) => string; // what a screen reader says of a day
-  festival: ReadonlySet<string>; // the days a festival is on, which carry an underline when someone is away
+  label: (day: string, on: Day<A>) => string; // what a screen reader says of a day someone travels on
+  festivals: readonly Marked[];
+  travel: ReadonlySet<string>; // the days someone travels on outside their festival's: before it, or after
   pop: Popover;
 }
 
-// a month's grid: its name (and year), the weekdays M to S, its weeks, and each week's most away
+// The strokes of a week: each festival on any of its days, from its first day in the week to its last, across the
+// columns of those days; open at an end where the festival goes on in the week before or after. A second festival on
+// the same days has its stroke under the first.
+function strokes(week: readonly (string | null)[], festivals: readonly Marked[]): HTMLElement[] {
+  const days = week.flatMap((d) => (d === null ? [] : [d]));
+  const [first = '', last = first] = [days[0], days.at(-1)];
+  return festivals
+    .filter((f) => f.start_date <= last && f.end_date >= first)
+    .map((f, n) => {
+      const from = week.findIndex((d) => d !== null && d >= f.start_date),
+        to = week.findLastIndex((d) => d !== null && d <= f.end_date);
+      return h('span', {
+        class: [
+          'days-stroke',
+          n % 2 === 1 && 'days-stroke-under',
+          f.start_date < (week[from] ?? '') && 'days-stroke-from',
+          f.end_date > (week[to] ?? '') && 'days-stroke-on',
+        ],
+        style: { 'grid-column': `${from + 1} / ${to + 2}` },
+        title: f.title,
+        'aria-hidden': 'true',
+      });
+    });
+}
+
+// A month: its name and year, the weekdays M to S, and its weeks, each a row of days over the festivals' strokes, a
+// dot under a day only travelled, today ringed, and at the row's end how many go to the festivals beginning that week.
 function month<A extends Away>(s: Days<A>, m: string): HTMLElement {
-  const cells = new Map<string, HTMLElement>();
-  const start = m === s.today.slice(0, 7) ? s.today : `${m}-01`;
-  const day = (d: string | null): HTMLElement => {
-    if (d === null) return h('td', {});
-    const n = s.days.get(d)?.people ?? 0;
+  const cells: HTMLElement[] = [];
+  const day = (d: string | null, col: number): HTMLElement | null => {
+    if (d === null) return null;
+    const on = s.days.get(d);
     const cell = h(
-      'td',
+      'span',
       {
         role: 'gridcell',
-        tabindex: d === start ? 0 : -1,
-        class: [
-          SHADES[shade(n, s.most)],
-          n > 0 && s.festival.has(d) && 'days-fest',
-          d === s.today && 'days-today',
-          d < s.today && 'days-past',
-        ],
+        class: ['days-day', on !== undefined && 'days-on', d < s.today && 'days-past'],
+        style: { 'grid-column': String(col + 1) },
         'aria-current': d === s.today ? 'date' : null,
-        'aria-label': s.label(d, s.days.get(d)),
-        dataset: { day: d },
+        'aria-label': on === undefined ? weekDay(d) : s.label(d, on),
+        tabindex: on === undefined ? null : -1,
+        // every day its date; only one someone travels on opens anything
+        dataset: on === undefined ? { date: d } : { date: d, day: d },
       },
-      Number(d.slice(8)),
+      d === s.today ? Drawing.RING.into(h('span', { class: 'days-ring', 'aria-hidden': 'true' })) : null,
+      h('span', {}, Number(d.slice(8))),
+      s.travel.has(d) ? h('span', { class: 'days-dot', 'aria-hidden': 'true' }) : null,
     );
-    cells.set(d, cell);
+    if (on !== undefined) cells.push(cell);
     return cell;
   };
-  const most = (week: readonly (string | null)[]): HTMLElement => {
-    const n = Math.max(0, ...week.map((d) => (d === null ? 0 : (s.days.get(d)?.people ?? 0))));
+  // how many go to the festivals that begin in the week, said once, where each begins
+  const count = (week: readonly (string | null)[]): HTMLElement => {
+    const days = week.flatMap((d) => (d === null ? [] : [d]));
+    const [first = '', last = first] = [days[0], days.at(-1)];
+    const begin = s.festivals.filter((f) => f.start_date >= first && f.start_date <= last);
+    const n = begin.reduce((sum, f) => sum + f.people, 0);
+    const said = begin.map((f) => `${f.title}: ${plural(f.people, 'person', 'people')}`).join('; ');
     return h(
-      'td',
+      'span',
       {
-        class: ['days-most', n === 0 && 'days-none'],
-        'aria-label': n === 0 ? 'no one away that week' : `at most ${n} away that week`,
+        role: 'gridcell',
+        class: 'days-count',
+        style: { 'grid-column': '8' },
+        title: begin.length > 1 ? said : null,
+        'aria-label': begin.length === 0 ? 'no festival begins this week' : said,
       },
-      n === 0 ? '·' : n,
+      n === 0 ? '' : n,
     );
   };
-  const table = h(
-    'table',
-    { class: 'days-month', role: 'grid' },
-    h('caption', {}, monthShort(`${m}-01`), ' ', h('small', {}, m.slice(0, 4))),
+  const grid = h(
+    'div',
+    { class: 'days-month', role: 'grid', 'aria-label': monthYear(`${m}-01`) },
+    h('p', { class: 'days-caption', 'aria-hidden': 'true' }, monthShort(`${m}-01`), ' ', h('small', {}, m.slice(0, 4))),
     h(
-      'thead',
-      {},
-      h(
-        'tr',
-        {},
-        WEEKDAYS.map((name) => h('th', { scope: 'col', abbr: name, title: name }, name[0])),
-        h('td', {}),
-      ),
+      'div',
+      { class: ['days-week', 'days-head'], role: 'row' },
+      WEEKDAYS.map((name) => h('span', { role: 'columnheader', title: name, 'aria-label': name }, name[0])),
     ),
-    h(
-      'tbody',
-      {},
-      weeksOf(m).map((week) => h('tr', {}, week.map(day), most(week))),
+    weeksOf(m).map((week) =>
+      h('div', { class: 'days-week', role: 'row' }, strokes(week, s.festivals), week.map(day), count(week)),
     ),
   );
-  rove(table, cells, { ArrowUp: -7, ArrowDown: 7, ArrowLeft: -1, ArrowRight: 1 });
-  return table;
+  // the month's one stop: its first day someone travels on from today, or else its first
+  const stop = cells.find((c) => (c.dataset['day'] ?? '') >= s.today) ?? cells[0];
+  if (stop) stop.tabIndex = 0;
+  rove(grid, cells);
+  return grid;
 }
 
 // "Nothing planned in December", "Nothing planned Mar–May"
@@ -197,7 +244,7 @@ const nothing = (gap: readonly string[]): HTMLElement => {
   );
 };
 
-// The months: today's and each with a trip, a grid each, a line for the months between that go without, the legend.
+// The months: today's and each with a trip, a grid each, a line for the months between that go without, the key.
 export function months<A extends Away>(s: Days<A>): HTMLElement {
   const shown = monthsOf(s.today, s.days.keys());
   const wrap = h(
@@ -211,33 +258,37 @@ export function months<A extends Away>(s: Days<A>): HTMLElement {
         return [gap.length > 0 ? nothing(gap) : null, month(s, m)];
       }),
     ),
-    legend(s.most),
+    key(),
   );
   s.pop.attach(wrap);
   return wrap;
 }
 
-// "People away: 1 2–3 4–5 today · the week's most at its end": each shade with the counts it stands for
-const legend = (most: number): HTMLElement =>
+// what the marks mean: "festival · travel day · today · how many go, at the week it begins"
+const key = (): HTMLElement =>
   h(
     'p',
     { class: 'days-legend' },
-    'People away: ',
-    shadeRanges(most).map((r) => [
-      h(
-        'span',
-        { class: 'days-key' },
-        h('span', { class: ['days-swatch', SHADES[r.shade]], 'aria-hidden': 'true' }),
-        r.from === r.to ? String(r.from) : `${r.from}–${r.to}`,
-      ),
-      ' ',
-    ]),
     h(
       'span',
       { class: 'days-key' },
-      h('span', { class: ['days-swatch', 'days-today'], 'aria-hidden': 'true' }),
+      h('span', { class: ['days-stroke', 'days-sample'], 'aria-hidden': 'true' }),
+      'festival',
+    ),
+    ' ',
+    h(
+      'span',
+      { class: 'days-key' },
+      h('span', { class: ['days-dot', 'days-sample'], 'aria-hidden': 'true' }),
+      'travel day',
+    ),
+    ' ',
+    h(
+      'span',
+      { class: 'days-key' },
+      Drawing.RING.into(h('span', { class: ['days-ring', 'days-sample'], 'aria-hidden': 'true' })),
       'today',
     ),
     ' ',
-    h('span', { class: 'days-key' }, '· the week’s most at its end'),
+    h('span', { class: 'days-key' }, '· at a row’s end, how many go to the festivals that begin that week'),
   );

@@ -39,27 +39,31 @@ nobody can create, join or claim one yet, and its rows are written by hand.
   friends", or empty). Only a member registers a trip: the people a manager added never have one. Write no booking code
   or flight number.
 
-The page shows the community's name ("Norwegians in festivals"), its members and its manager, when most of it is away at
-once and where it goes next ("Most of the community is away 20–22 Nov: 5 people, in Oslo. Next: Glasgow, this Friday."),
-and a Share this page button, which opens the device's share sheet or else copies the link, beside who the page is meant
-for ("Visible to its 2 members only").
+The page shows the community's name ("Norwegians in festivals"), its members and its manager, when most members travel
+at once and where they go next ("Most members are travelling 20–22 Nov: 5 people, to Oslo. Next: Glasgow, this
+Friday."), and a Share this page button, which opens the device's share sheet or else copies the link, beside a badge of
+who the page is meant for: a lock, people and their number, which says "Visible to its 2 members only" on hover and to a
+screen reader.
 
-Under the head, a small grid for today's month and for each month someone is away in (every one of them, however far
-off; a line says which months between them go without: "Nothing planned in August"), two months a row on a phone. A row
-is a week from Monday, a day a square shaded by how many of the community are away on it: a member with a trip from the
-day they arrive to the day they leave, anyone else (a member without one, someone added) on the festival's own days,
-whatever weekdays those are; someone at two festivals at once counts once. The festival's own days carry a pale
-underline, the days only travelled none; today is outlined and the days before it greyed, and at each week's end is the
-most away on any of its days ("·" for none). The three shades divide the most away on any day in thirds, and the legend
-says which counts each stands for ("People away: 1 · 2–3 · 4–5"). The sentence reads the same counts: the first day as
-many are away as on any, and the days after it with as many. Each month is one stop for the keyboard, whose arrows move
-a day (left, right) or a week (up, down); the day in focus, under the pointer or tapped opens a popover of its
-festivals, who flies in and out that day (by time and airport, a couple as one when both share the flight: "Flying in:
-Cédric & Christina 14:30 PRG"), who else is there, and where members stay. It never covers the day's month: on a
-computer it sits beside the month, on a phone it is a panel under the day's row of months, moving what follows down.
-Escape, a tap elsewhere or on the day again closes it, and the focus stays on the day.
+Under the head, a small grid for today's month and for each month someone travels in (every one of them, however far
+off; a line says which months between them go without: "Nothing planned in August"), two months a row on a phone, light,
+without boxes: a row is a week from Monday, its days placed in their columns. A festival is one highlighter stroke
+behind its days, the same colour whatever the number, round at its first and last day and cut where it goes on in the
+week before or after; two at once are two strokes, one under the other. A day someone travels on outside their
+festival's days (they arrive the day before, or leave the day after) has a dot under it; today is ringed by hand and the
+days before it greyed. At a row's end is how many go to the festivals that begin that week, said once, on the week each
+begins: two festivals that begin in one week show their sum, and each its own on hover and to a screen reader. A member
+with a trip travels from the day they arrive to the day they leave, anyone else (a member without one, someone added) on
+the festival's own days, whatever weekdays those are; someone at two festivals at once counts once. The sentence reads
+the same counts: the first day as many travel as on any, and the days after it with as many. Only a day someone travels
+on does anything: each month is one stop for the keyboard, whose arrows move among those days (left, right) or a week or
+more (up, down), and the day in focus, under the pointer or tapped opens a popover of its festivals, who flies in and
+out that day (by time and airport, a couple as one when both share the flight: "Flying in: Cédric & Christina 14:30
+PRG"), who else is there, and where members stay. It never covers the day's month: on a computer it sits beside the
+month, on a phone it is a panel under the day's row of months, moving what follows down. Escape, a tap elsewhere or on
+the day again closes it, and the focus stays on the day.
 
-Then the agenda: a heading a month ("November · 3 trips", with the year in January), and a row a trip, soonest first:
+Then the agenda: a heading a month ("November · 3 trips", with the year in January), and a card a trip, soonest first:
 its days ("Fri 20 – Sun 22 Nov"), the festival and where it is, and who of the community goes: its members as on any
 card (as their couple when both go, teaching when in the line-up), then the people added: "Christina teaching · Sian
 teaching and Carolina going". Hovering an added name says who added them ("Added by Cédric"). Whether someone added
