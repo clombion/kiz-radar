@@ -184,7 +184,7 @@ POINTS = (
     P(
         'phase',
         'Phase',
-        "each festival, by where it stands on the visitor's day: to come, over, cancelled or no longer listed",
+        "each festival, by where it stands on the visitor's day: to come, on now, over, cancelled or no longer listed",
         'build_site_db event_rows',
     ),
     P('event_source', 'EventSource', "the site a festival's listing comes from (source_ids)", 'scrape'),
@@ -559,8 +559,7 @@ ROWS = (
     S(
         'card_price',
         'ended',
-        'the festival is not ahead (over, cancelled or no longer listed), '
-        "or the priced pass's dated tiers have all ended",
+        "the festival is over, cancelled or no longer listed, or the priced pass's dated tiers have all ended",
         NOTE,
         'Prices no longer listed',
         'organiser',
@@ -873,7 +872,14 @@ ROWS = (
     S('suggestion_calendar', 'no clash', 'none of these', KEPT),
     S('via', 'direct', 'the artist is named in the line-up', KEPT),
     S('via', 'member', 'a couple or group the artist is in is named in the line-up', KEPT),
-    S('phase', 'ahead', 'listed, not cancelled, and not over by the day it is seen from', KEPT),
+    S('phase', 'ahead', 'listed, not cancelled, and not begun by the day it is seen from', KEPT),
+    S(
+        'phase',
+        'on',
+        'listed, not cancelled, and between its first and its last day, both included, on the day it is seen from',
+        CARD,
+        'On now',
+    ),
     S(
         'phase',
         'ended',

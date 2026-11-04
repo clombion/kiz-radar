@@ -336,7 +336,7 @@ function decision(
   const press = (on: HTMLButtonElement | null) => {
     for (const b of buttons) {
       b.setAttribute('aria-pressed', String(b === on));
-      toggle(b, 'on', b === on);
+      toggle(b, 'is-on', b === on);
     }
   };
   const buttons: HTMLButtonElement[] = options.map(([value, words, noted], n) =>
@@ -769,7 +769,7 @@ function render(): void {
   const accessButton = document.querySelector<HTMLButtonElement>('#access');
   if (accessButton) {
     accessButton.replaceChildren(
-      h('span', { class: ['review-dot', canWrite() && 'on'], 'aria-hidden': 'true' }),
+      h('span', { class: ['review-dot', canWrite() && 'is-on'], 'aria-hidden': 'true' }),
       accessWords(),
     );
     accessButton.onclick = () => dialog?.showModal();

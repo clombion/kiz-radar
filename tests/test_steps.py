@@ -366,15 +366,31 @@ class Phased(BaseModel):
     upcoming: bool
 
 
+class Span(BaseModel):
+    id: int
+    start_date: dt.date
+    end_date: dt.date
+
+
 def test_a_festival_is_seen_from_the_day_in_today(site_db: Path, tmp_path: Path) -> None:
-    """The site sets today to the visitor's day (db.ts): a festival is ahead through its last day, ended the next."""
+    """The site sets today to the visitor's day (db.ts): a festival is ahead until its first day, on from its first to
+    its last day, both included, and ended the next; still to attend (upcoming) until then."""
     copy = tmp_path / 'site.sqlite'
     _ = shutil.copyfile(site_db, copy)
     with sqlite_db.opened(copy, 'rw') as db:
-        last = db.value(str, "select max(end_date) from event_rows where phase in ('ahead', 'ended')")
-        after = (dt.date.fromisoformat(last) + dt.timedelta(days=1)).isoformat()
-        for day, phase in ((last, 'ahead'), (after, 'ended')):
+        (e,) = db.rows(
+            Span,
+            "select id, start_date, end_date from event_rows where phase in ('ahead', 'on', 'ended')"
+            ' and start_date < end_date order by id limit 1',
+        )
+        day = dt.timedelta(days=1)
+        for seen, phase in (
+            (e.start_date - day, 'ahead'),
+            (e.start_date, 'on'),
+            (e.end_date, 'on'),
+            (e.end_date + day, 'ended'),
+        ):
             with db.transaction() as tx:
-                tx.execute('update today set day = ?', (day,))
-            at_end = "select phase, upcoming from event_rows where end_date = ? and phase in ('ahead', 'ended')"
-            assert {(r.phase, r.upcoming) for r in db.rows(Phased, at_end, (last,))} == {(phase, phase == 'ahead')}
+                tx.execute('update today set day = ?', (seen.isoformat(),))
+            (r,) = db.rows(Phased, 'select phase, upcoming from event_rows where id = ?', (e.id,))
+            assert (r.phase, r.upcoming) == (phase, phase != 'ended'), seen

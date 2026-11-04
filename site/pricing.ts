@@ -82,7 +82,7 @@ export interface Priced extends Dates {
 }
 // What the card of a priced festival says on a day: the pass its card prices (card_pass, chosen by the pipeline) at
 // its tier then, as a full pass or a package; or that it is sold out; or that its prices have ended, as they all have
-// once the festival is not ahead: over, cancelled or no longer listed (its card says which beside it).
+// once the festival is no longer still to attend: over, cancelled or no longer listed (its card says which beside it).
 type CardPrice =
   | { key: typeof KEY.card_price.ENDED; pass?: Pass }
   | { key: typeof KEY.card_price.SOLD_OUT; pass: Pass }

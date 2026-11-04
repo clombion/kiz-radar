@@ -1,10 +1,10 @@
 // The views on the database the build ships, in Chromium: loaded as the page loads it (db.ts), from public/data/.
-import initSqlJs, { type Database } from 'sql.js';
+import type { Database } from 'sql.js';
 import { beforeAll, expect, test, vi } from 'vitest';
 import { commands, page, userEvent } from 'vitest/browser';
 import { artistsView } from '../../site/artists.ts';
 import { communityView } from '../../site/communities.ts';
-import { exec, load, loadSite, one, sql } from '../../site/db.ts';
+import { exec, one, sql } from '../../site/db.ts';
 import { h } from '../../site/dom.ts';
 import { festivals } from '../../site/festivals.ts';
 import { ganttByPlace } from '../../site/gantt.ts';
@@ -14,27 +14,14 @@ import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str } from '../../site/rows.ts';
 import { KEY } from '../../site/states.ts';
 import { FIXTURE_COMMUNITY, FIXTURE_FESTIVALS, plantCommunity } from './community.fixture.ts';
+import { loadShipped } from './shipped.ts';
 
 // each file the page asked for, with the signal it was asked with
 const asked = new Map<string, AbortSignal | null | undefined>();
 let db: Database | undefined; // the database the views read
 
 beforeAll(async () => {
-  // the library index.html loads as a script
-  Reflect.set(globalThis, 'initSqlJs', initSqlJs);
-  // every file read from disk: the data from public/data/ (written there before the run when missing: data.setup.ts),
-  // sql.js's WebAssembly from its package, which the build copies to public/vendor/; anything else from the server
-  const fetched = fetch;
-  vi.stubGlobal('fetch', async (url: URL | string, init?: RequestInit) => {
-    if (!(url instanceof URL)) return fetched(url, init);
-    asked.set(url.pathname, init?.signal);
-    const file = url.pathname.split('/').at(-1) ?? '';
-    const path = file === 'sql-wasm.wasm' ? `node_modules/sql.js/dist/${file}` : `public/data/${file}`;
-    const data = await commands.readFile(path, 'base64');
-    return new Response(Uint8Array.from(atob(data), (c) => c.charCodeAt(0)));
-  });
-  const site = loadSite();
-  db = await load(site);
+  db = await loadShipped(asked);
   // the community its tests read is the fixture's, never the real rows, which age and are deleted
   plantCommunity(db);
 });
@@ -231,7 +218,7 @@ const glasgowOn = (day: string) => {
   const row = agendaRow(root, 'Glasgow');
   return {
     next: said(root.querySelector('.community-next')),
-    now: row?.querySelector('.trip-now')?.textContent ?? '',
+    now: row?.querySelector('.now-tag')?.textContent ?? '',
     open: row?.querySelector<HTMLElement>('.trip-body')?.hidden === false,
     first: said(root.querySelector('.trip .trip-fest')),
     opened: [...root.querySelectorAll<HTMLElement>('.trip-body')].filter((b) => !b.hidden).length,

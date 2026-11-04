@@ -920,6 +920,14 @@ export const STATES = {
    "link": null,
    "counts": null
   },
+  "on": {
+   "disposition": "card",
+   "wording": "On now",
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
   "ended": {
    "disposition": "card",
    "wording": "This festival has taken place.",
@@ -1090,6 +1098,7 @@ export const KEY = {
  },
  "phase": {
   "AHEAD": "ahead",
+  "ON": "on",
   "ENDED": "ended",
   "CANCELLED": "cancelled",
   "GONE": "gone"

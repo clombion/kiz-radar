@@ -412,6 +412,7 @@ class Phase(StrEnum):
     """the phase states"""
 
     AHEAD = 'ahead'
+    ON = 'on'
     ENDED = 'ended'
     CANCELLED = 'cancelled'
     GONE = 'gone'

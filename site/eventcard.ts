@@ -59,6 +59,7 @@ const cheap = (e: Flown) => within(e.fare.price, 'flight', 'cheap');
 // the festival is from it. The price links to Google Flights for that weekend.
 function flight(e: Festival): HTMLElement {
   if (e.phase === KEY.phase.GONE) return h('p', { class: ['flight', 'muted'] }, text('listing', e.listing));
+  if (e.phase === KEY.phase.ON) return h('p', { class: ['flight', 'muted'] }, `✈ ${STARTED}`);
   if (e.phase !== KEY.phase.AHEAD) return h('p', { class: ['flight', 'muted'] }, text('phase', e.phase));
   if (!e.airport) return h('p', { class: ['flight', 'muted'] }, `✈ too far from ${home().city} for our flight prices`);
   if (e.fare?.home === true) return h('p', { class: ['flight', 'easy'] }, `In ${home().city}, no flight needed`);
@@ -72,9 +73,13 @@ function flight(e: Festival): HTMLElement {
   );
 }
 
+// what a card says of the flight to a festival on now: its weekend's Friday-to-Monday return has begun
+const STARTED = 'already started, no flight priced';
+
 // The foot's prices. With a pass price and a flight, the total first:
 //   Cost ~4 130 kr, without accommodation · price goes up 15 Dec
 //   1 670 kr full pass + ~2 460 kr flight to Stockholm, then 37 km
+// and once the festival is on, the pass alone: "1 240 kr full pass · already started, no flight priced".
 // The pass opens the passes quick view; the flight opens Google Flights. With only one of the two, that one alone.
 // Without a price, why (price_status, in the words of pipeline/states.py): a link to the ticket page or to the
 // passes when its state renders as one.
@@ -125,17 +130,19 @@ function prices(e: Festival): HTMLElement[] {
       'p',
       { class: 'cost-parts' },
       pass,
-      ' + ',
-      e.fare?.home === true || !flown(e)
-        ? `no flight, in ${home().city}`
-        : [
-            h(
-              'span',
-              { class: cheap(e) ? 'easy' : null },
-              flightLink(e, `${money(e.fare.price, 'EUR', { approx: true })} flight`),
-            ),
-            ...after(e),
-          ],
+      e.phase === KEY.phase.ON ? ` · ${STARTED}` : ' + ',
+      e.phase === KEY.phase.ON
+        ? null
+        : e.fare?.home === true || !flown(e)
+          ? `no flight, in ${home().city}`
+          : [
+              h(
+                'span',
+                { class: cheap(e) ? 'easy' : null },
+                flightLink(e, `${money(e.fare.price, 'EUR', { approx: true })} flight`),
+              ),
+              ...after(e),
+            ],
     ),
   ];
 }
@@ -260,7 +267,18 @@ export function eventCard(
       'div',
       { class: 'c-top' },
       dateBox(e.start_date, e.end_date),
-      h('div', { class: 'c-head' }, h('p', { class: 'where' }, place(e)), h('h3', {}, toggleBtn('title-btn', e.title))),
+      h(
+        'div',
+        { class: 'c-head' },
+        h(
+          'p',
+          { class: 'where' },
+          // a festival on now says so before its place, as a community's trip on now does
+          e.phase === KEY.phase.ON ? [h('span', { class: 'now-tag' }, text('phase', e.phase)), ' '] : null,
+          place(e),
+        ),
+        h('h3', {}, toggleBtn('title-btn', e.title)),
+      ),
     ),
     styleLine(e) ? h('p', { class: 'styles' }, styleLine(e)) : null,
     traitRow,

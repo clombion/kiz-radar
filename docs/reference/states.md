@@ -39,7 +39,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | **suggestion_calendar**, each merge suggestion, by where and when its two artists are booked | `same line-up`, `clash`, `shared circuit`, `no clash` | merge_suggestions |
 | **via**, each appearance of an artist at an event (artist_events) | `direct`, `member` | resolve_artists; build_site_db |
 | **listing**, each festival, by whether the site it comes from still lists it | `listed`, `gone` | scrape |
-| **phase**, each festival, by where it stands on the visitor's day: to come, over, cancelled or no longer listed | `ahead`, `ended`, `cancelled`, `gone` | build_site_db event_rows |
+| **phase**, each festival, by where it stands on the visitor's day: to come, on now, over, cancelled or no longer listed | `ahead`, `on`, `ended`, `cancelled`, `gone` | build_site_db event_rows |
 | **event_source**, the site a festival's listing comes from (source_ids) | `kizomba-world` | scrape |
 | **plan**, each plan someone shares (pipeline/plans.csv), and each a community’s manager adds for someone (seeded.csv) | `going` | pipeline/plans.csv; pipeline/seeded.csv |
 | **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.ts nextChange |
@@ -139,7 +139,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | card_price · `full_pass` | card | {price} full pass | — | the card prices a full pass, at its tier today |
 | card_price · `package` | card | {price} package with hotel | — | the card prices a package with a hotel, at its tier today |
 | card_price · `sold_out` | card | {pass} sold out | — | the priced pass's tiers are all sold out |
-| card_price · `ended` | note | Prices no longer listed | organiser | the festival is not ahead (over, cancelled or no longer listed), or the priced pass's dated tiers have all ended |
+| card_price · `ended` | note | Prices no longer listed | organiser | the festival is over, cancelled or no longer listed, or the priced pass's dated tiers have all ended |
 | genre · `kizomba` | card | Kizomba | — | Kizomba (traditional / sensual kizomba) |
 | genre · `semba` | card | Semba | — | Semba |
 | genre · `urbankiz` | card | Urban Kiz | — | Urban Kiz / Urbankiz / Kizomba fusion |
@@ -225,7 +225,8 @@ Every data point and every state it can be in; why the world is closed is in [St
 | via · `member` | kept | — | — | a couple or group the artist is in is named in the line-up |
 | listing · `listed` | kept | — | — | the site lists the festival |
 | listing · `gone` | card | This festival is no longer listed. | — | the site no longer lists the festival: it is kept (unlisted_on), so plans and links to it still hold, and left out of the festivals listed |
-| phase · `ahead` | kept | — | — | listed, not cancelled, and not over by the day it is seen from |
+| phase · `ahead` | kept | — | — | listed, not cancelled, and not begun by the day it is seen from |
+| phase · `on` | card | On now | — | listed, not cancelled, and between its first and its last day, both included, on the day it is seen from |
 | phase · `ended` | card | This festival has taken place. | — | listed, not cancelled, and over by the day it is seen from |
 | phase · `cancelled` | card | This festival was cancelled. | — | listed, and cancelled |
 | phase · `gone` | kept | — | — | no longer listed: the card says so as its listing does (listing gone) |

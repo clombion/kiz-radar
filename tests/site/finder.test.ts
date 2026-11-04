@@ -1,7 +1,17 @@
 // What the festival list keeps of its festivals for each choice (site/finder.ts), on festivals made here.
 import { expect, test } from 'vitest';
 import type { Festival } from '../../site/festivals.ts';
-import { type Choices, DEFAULTS, hasWith, isDance, isWith, matches, WITH, withPhrase } from '../../site/finder.ts';
+import {
+  type Choices,
+  DEFAULTS,
+  hasWith,
+  isDance,
+  isOn,
+  isWith,
+  matches,
+  WITH,
+  withPhrase,
+} from '../../site/finder.ts';
 import { KEY } from '../../site/states.ts';
 import { pass as passOf } from './samples.ts';
 
@@ -91,6 +101,13 @@ test('a festival is kept by its country, a dance or highlight, friends going, a 
   expect(kept({ taxi: 1 })).toEqual([3]);
   expect(kept({ allin: 1 })).toEqual([5]);
   expect(kept({ lineup: 20 })).toEqual([3]);
+});
+
+test('on now only keeps the festivals on today', () => {
+  const all = [festival(1), festival(2, { phase: KEY.phase.ON }), festival(3, { phase: KEY.phase.ON })];
+  expect(ids(matches(all, { ...CHOICES, onnow: 1 }, DAY, null))).toEqual([2, 3]);
+  expect(ids(matches(all, CHOICES, DAY, null))).toEqual([1, 2, 3]);
+  expect([isOn(all[0] ?? festival(0)), isOn(all[1] ?? festival(0))]).toEqual([false, true]);
 });
 
 test('the soonest first, or the cheapest trip, then the cheapest flight, then the soonest', () => {

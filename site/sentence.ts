@@ -8,7 +8,7 @@ import { site } from './db.ts';
 import { button, choices, dropdown, h, type Kid, moreButton, nodes, onResize, own, paged, toggle } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, festivals, leftOut } from './festivals.ts';
-import { CHECKED, type Choices, DEFAULTS, isWith, matches, type Sort, WITH, withPhrase } from './finder.ts';
+import { CHECKED, type Choices, DEFAULTS, isOn, isWith, matches, type Sort, WITH, withPhrase } from './finder.ts';
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
 import { Drawing } from './icons.ts';
 import { currency, money, step } from './money.ts';
@@ -91,6 +91,7 @@ export function sentenceView(
     country: ['', ...countries.map((c) => c.code)],
     with: ['', ...WITH.keys()],
     friends: FLAGS,
+    onnow: FLAGS,
     lineup: LINEUP.map(([v]) => v),
     sort: ORDER.map(([v]) => v),
     unchecked: FLAGS,
@@ -180,6 +181,13 @@ export function sentenceView(
           }),
         ]
       : []),
+    ...(s.onnow
+      ? [
+          tag(['', text('phase', KEY.phase.ON)], () => {
+            s.onnow = 0;
+          }),
+        ]
+      : []),
   ];
   const festivalIn = h('span', {}, ' festival in ');
   // words where they fit after "festival in", digits where only they do (narrow phones); otherwise words
@@ -252,15 +260,26 @@ export function sentenceView(
   };
   const barCount = h('span', { class: 'bar-count' });
   const moreBtn = moreButton('more-panel', 'More filters ▾');
-  const check = (key: NumberChoice, label: string | null) => {
+  // a filter's checkbox; one that would keep nothing is off and greyed, saying why
+  const check = (key: NumberChoice, label: string | null, why: string | null = null) => {
     const c = h('input', { type: 'checkbox' });
     c.checked = Boolean(s[key]);
+    c.disabled = why !== null && !c.checked;
     c.addEventListener('change', () => {
       s[key] = c.checked ? 1 : 0;
       render();
     });
-    return h('label', { class: 'check' }, c, ' ', label);
+    return h(
+      'label',
+      { class: ['check', c.disabled && 'check-off'] },
+      c,
+      ' ',
+      label,
+      c.disabled ? h('span', { class: 'muted' }, ` (${why})`) : null,
+    );
   };
+  // whether any festival the other choices keep is on today: the On now filter keeps nothing otherwise
+  const anyOn = () => all !== null && matches(all, { ...s, onnow: 0 }, today(), limit(s.reach)).some(isOn);
   const moreFields = () => [
     tags().length > 0 ? h('div', { class: 'with-tag' }, tags()) : null,
     h(
@@ -274,6 +293,7 @@ export function sentenceView(
       'div',
       { class: 'checks' },
       check('friends', 'Only festivals friends go to'),
+      check('onnow', 'On now only', anyOn() ? null : 'none on today'),
       ...CHECKED.map(([k, feature]) => check(k, text('feature', feature))),
       s.reach ? check('unchecked', 'Include festivals with unknown prices') : null, // at any price they are in
     ),
@@ -358,7 +378,7 @@ export function sentenceView(
     }
     layout();
     panel.replaceChildren(...nodes(moreFields()));
-    const extra = (['with', 'friends', 'lineup', 'unchecked', ...CHECKED.map(([k]) => k)] as const).filter(
+    const extra = (['with', 'friends', 'onnow', 'lineup', 'unchecked', ...CHECKED.map(([k]) => k)] as const).filter(
       (k) => s[k] !== DEFAULTS[k],
     ).length;
     const onPhone = extra + (s.country ? 1 : 0); // on a phone the destination is one of the panel's filters
@@ -485,8 +505,8 @@ function rotate(el: HTMLElement, n: HTMLElement, signal: AbortSignal): void {
   const width = (k: number) =>
     `${eases ? (words[k]?.scrollWidth ?? 0) : Math.max(...words.map((w) => w.scrollWidth))}px`;
   const show = () => {
-    for (const [k, w] of words.entries()) toggle(w, 'on', k === i);
-    toggle(n, 'on', takesAn(words[i]?.textContent ?? null));
+    for (const [k, w] of words.entries()) toggle(w, 'is-on', k === i);
+    toggle(n, 'is-on', takesAn(words[i]?.textContent ?? null));
     toggle(n, 'held', !eases); // keeps its space and only fades, like the dance
     el.style.width = width(i);
   };
@@ -499,7 +519,7 @@ function rotate(el: HTMLElement, n: HTMLElement, signal: AbortSignal): void {
       words.map((w) => {
         el.style.width = `${w.scrollWidth}px`;
         toggle(n, 'held', false);
-        toggle(n, 'on', takesAn(w.textContent));
+        toggle(n, 'is-on', takesAn(w.textContent));
         return lines();
       }),
     );

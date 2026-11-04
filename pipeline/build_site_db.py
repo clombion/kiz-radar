@@ -445,15 +445,17 @@ create view country_stats as
     from events e join event_stats s on s.event_id = e.id left join countries c on c.code = e.country_code
     where e.cancelled is not 1 and e.listing = '{listed}' group by e.country_code;
 -- what the site reads for festivals: each event with its statistics, and where it stands on the day in today (phase,
--- evaluated when queried, so it means the same thing on every page), upcoming when it is still to come
+-- evaluated when queried, so it means the same thing on every page), upcoming when it is still to attend: to come, or
+-- on now
 create view event_rows as
-    select r.*, r.phase = '{ahead}' as upcoming from (
+    select r.*, r.phase in ('{ahead}', '{on}') as upcoming from (
       select e.id, e.title, e.url, e.start_date, e.end_date, e.city, e.country_code, e.lat, e.lon, e.airport,
         e.airport_km, a.city as airport_city, e.weekend_friday, e.cancelled, e.listing, e.venue, s.lineup,
         s.popular_artists,
         s.kiz_only, s.genres, s.features,
         case when e.listing != '{listed}' then '{phase_gone}' when e.cancelled = 1 then '{cancelled}'
-             when e.end_date >= (select day from today) then '{ahead}' else '{ended}' end as phase,
+             when e.start_date > (select day from today) then '{ahead}'
+             when e.end_date >= (select day from today) then '{on}' else '{ended}' end as phase,
         p.price as price_state, p.page as ticket_page, p.card_pass
       from events e join event_stats s on s.event_id = e.id left join airports a on a.code = e.airport
         left join price_status p on p.event_id = e.id
@@ -504,6 +506,7 @@ TABLES = sqlite_db.declared(
             'taxi_dancers': Feature.TAXI_DANCERS,
             'listed': enums.Listing.LISTED,
             'ahead': enums.Phase.AHEAD,
+            'on': enums.Phase.ON,
             'ended': enums.Phase.ENDED,
             'cancelled': enums.Phase.CANCELLED,
             'phase_gone': enums.Phase.GONE,
@@ -1216,8 +1219,8 @@ DOCS = {
     'or in a couple.',
     'event_rows': 'What the site reads: each event with its event_stats (lineup, popular_artists, kiz_only, genres, '
     'features), what its card can say of its price '
-    '(price_state, with its ticket_page and card_pass), where it stands on the day in today (phase: ahead, ended, '
-    'cancelled or gone), and upcoming (phase ahead).',
+    '(price_state, with its ticket_page and card_pass), where it stands on the day in today (phase: ahead, on, '
+    'ended, cancelled or gone), and upcoming (phase ahead or on: still to attend).',
     'today': "The day the festivals are seen from: the build's, which the site sets to the visitor's own day.",
     'country_stats': 'Per country: events, kiz-only events, taxi dancers, average line-up, bookings of popular '
     'artists, share of imported artists among those whose home is known, artists of unknown country.',

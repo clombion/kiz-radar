@@ -37,9 +37,12 @@ export const CHECKED = [
 ] as const;
 export type Checked = (typeof CHECKED)[number][0];
 
+// a festival on today: between its first and its last day, on the day the site is seen from
+export const isOn = (e: Pick<Festival, 'phase'>): boolean => e.phase === KEY.phase.ON;
+
 // reach is the step the trip (the full pass and a Fri→Mon return flight) is within, cheap or fair, or '' for any
 // price; unchecked keeps the festivals whose trip is not known within it. with is a dance or highlight picked in the
-// search; friends keeps the festivals that featured people said they're going to.
+// search; friends keeps the festivals that featured people said they're going to; onnow those on today.
 export type Sort = 'date' | 'fare';
 export type Choices = {
   months: number;
@@ -47,6 +50,7 @@ export type Choices = {
   country: string;
   with: string;
   friends: number;
+  onnow: number;
   lineup: number;
   unchecked: number;
   sort: Sort;
@@ -59,6 +63,7 @@ export const DEFAULTS: Readonly<Choices> = {
   country: '',
   with: '',
   friends: 0,
+  onnow: 0,
   taxi: 0,
   allin: 0,
   lineup: 0,
@@ -84,6 +89,7 @@ export function matches(all: readonly Festival[], s: Readonly<Choices>, day: str
         (!s.country || e.country_code === s.country) &&
         (!s.with || (isWith(s.with) && hasWith(e, s.with))) &&
         (!s.friends || e.goers.some((g) => g.featured)) &&
+        (!s.onnow || isOn(e)) &&
         CHECKED.every(([k, , has]) => !s[k] || has(e)) &&
         e.lineup >= s.lineup,
     )

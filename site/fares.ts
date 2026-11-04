@@ -29,10 +29,11 @@ export function tripOf(
   pass: { readonly amount: number; readonly currency: string } | null,
   fare: Fare | null,
   { convert, rounded }: Pick<Prices, 'convert' | 'rounded'>,
+  started = false,
 ): number | null {
   const passed = pass === null ? null : convert(pass.amount, pass.currency),
     eur = flightEur(fare),
-    flight = eur === null ? null : convert(eur);
+    flight = started ? 0 : eur === null ? null : convert(eur);
   return passed === null || flight === null ? null : rounded(passed + flight);
 }
 

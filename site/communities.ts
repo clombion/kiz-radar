@@ -167,8 +167,8 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
   const events = withDetails(
     q(
       EVENT,
-      sql`SELECT * FROM event_rows WHERE phase IN (?, ?) AND id IN (SELECT value FROM json_each(?)) ORDER BY start_date`,
-      [KEY.phase.AHEAD, KEY.phase.ENDED, JSON.stringify([...c.festivals.keys()])],
+      sql`SELECT * FROM event_rows WHERE phase IN (?, ?, ?) AND id IN (SELECT value FROM json_each(?)) ORDER BY start_date`,
+      [KEY.phase.AHEAD, KEY.phase.ON, KEY.phase.ENDED, JSON.stringify([...c.festivals.keys()])],
     ),
   ).flatMap((e) => {
     const f = c.festivals.get(e.id);
@@ -460,7 +460,7 @@ function tripRow({ e, who, aways, on }: Visit, manager: Member, open: boolean): 
       h(
         'p',
         {},
-        on ? [h('span', { class: 'trip-now' }, 'Now'), ' '] : null,
+        on ? [h('span', { class: 'now-tag' }, 'Now'), ' '] : null,
         h('span', { class: 'trip-when' }, daysSaid(e)),
         ' ',
         name,

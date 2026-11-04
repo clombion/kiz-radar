@@ -96,6 +96,12 @@ test('a trip is the pass and the flight in the visitor’s currency, rounded as 
   expect(tripOf({ amount: 90, currency: 'GBP' }, AWAY, nok)).toBeNull();
 });
 
+test('once a festival is on, its trip is the pass alone: its weekend’s return has begun', () => {
+  expect(tripOf({ amount: 1000, currency: 'NOK' }, AWAY, nok, true)).toBe(1000);
+  expect(tripOf({ amount: 1000, currency: 'NOK' }, null, nok, true)).toBe(1000); // no fare needed
+  expect(tripOf(null, AWAY, nok, true)).toBeNull();
+});
+
 test('a country’s cheapest flight is of its festivals flown to, the city first by name at one price', () => {
   const at = (country_code: string | null, airport_city: string | null, fare: Fare | null) => ({
     country_code,

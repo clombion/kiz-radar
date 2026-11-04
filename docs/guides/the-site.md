@@ -14,7 +14,9 @@ rest under Filters. The choices live in the address, so a view can be bookmarked
 choice the page doesn't have (an old link's `reach=150`, say) says so at the top, and the page shows its defaults for
 it.
 
-The price is the trip's: the full pass at today's price plus the Friday-to-Monday return flight.
+The price is the trip's: the full pass at today's price plus the Friday-to-Monday return flight. A festival on now
+(between its first and its last day, both included, on the visitor's day: phase `on`) is still listed, but its weekend's
+return has begun, so its trip is the full pass alone, for the price filter and "Cheapest first" as on its card.
 
 | Price chosen | Shown | Sold-out passes | Unknown pass or flight price |
 | -- | -- | -- | -- |
@@ -23,12 +25,16 @@ The price is the trip's: the full pass at today's price plus the Friday-to-Monda
 | any price | every festival | shown, marked | shown (the checkbox isn't offered: they are in already) |
 
 "Cheapest first" orders by the trip, then the flight. When the time and price leave nothing, the list offers to widen
-just those.
+just those. Filters has "On now only", which keeps the festivals on today (a tag under the sentence, "On now", takes it
+off again; `onnow=1` in the address); when none of the festivals the other choices keep is on today, it is off and
+greyed, saying "(none on today)".
 
 A card shows the dates, the city, the styles, up to three highlights (taxi dancers, a hotel in the pass), a few names
 from the line-up, and the cost: "Cost ~2 810 kr, without accommodation", then "1 500 kr full pass + ~1 310 kr flight to
 Oslo, then 37 km" (the airport priced, and the distance on). Opening a card shows the full line-up, the other
-highlights, the venue and the organisers. A festival in Bergen needs no flight; its card says so.
+highlights, the venue and the organisers. A festival in Bergen needs no flight; its card says so. A festival on now has
+a small "On now" tag before its place, as a community's trip under way has "Now", and its cost leaves the flight out: "1
+240 kr full pass · already started, no flight priced".
 
 Which pass a card prices is the pipeline's choice (the per-person full pass; at a festival of several dance styles its
 Kizomba full pass when it sells one; else a package with a hotel for one); its price on the day is the browser's, from

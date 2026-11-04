@@ -1233,7 +1233,7 @@ a.artist:focus-visible {
   background: var(--surface);
   padding: 2px;
 }
-.seg button.on {
+.seg button.is-on {
   background: var(--accent-soft);
   color: var(--accent);
   font-weight: 600;
@@ -1713,7 +1713,7 @@ body:has(.pmap) .to-top {
     max-width var(--dur-long) ease,
     opacity var(--dur-long) ease;
 }
-.article-n.on {
+.article-n.is-on {
   max-width: 0.7em;
   opacity: 1;
 }
@@ -1729,7 +1729,7 @@ body:has(.pmap) .to-top {
   opacity: 0;
   transition: opacity var(--dur-long) ease;
 }
-.dance > span.on {
+.dance > span.is-on {
   opacity: 1;
 }
 .visually-hidden {
@@ -2534,8 +2534,12 @@ html:has(dialog.search[open]) {
   grid-column: 1;
   margin: 0;
 }
-/* a trip under way: a small tag before its days */
-.trip-now {
+/* a filter that would keep nothing: off, greyed, with why */
+.check.check-off {
+  color: var(--muted);
+}
+/* under way: a small tag before a trip's days on a community's page, and before a festival's place on its card */
+.now-tag {
   display: inline-block;
   padding: 0 0.4rem;
   border-radius: 999px;
@@ -3357,7 +3361,7 @@ svg.defs {
   border-radius: 50%;
   background: var(--none);
 }
-.review-dot.on {
+.review-dot.is-on {
   background: var(--good);
 }
 .review-queue {

@@ -16,7 +16,8 @@ import { type Key, text } from './wording.ts';
 // A festival as every card has it: its row with the fare for its weekend (fares.ts), the best-known names on its
 // line-up, its genres (event_stats: its description's and its kizomba-world tags), what its card says of its price
 // today (passes.ts) and the trip: the card's pass plus the flight in the visitor's currency, null when either is
-// unknown or the pass has no price today.
+// unknown or the pass has no price today; once the festival is on, its weekend's Friday-to-Monday return has begun, so
+// the trip is the pass alone (what the price filter and the order by price read too).
 export type Festival = Omit<EventRow, 'features'> & {
   depart: string | null;
   features: Set<Key<'feature'>>;
@@ -83,7 +84,7 @@ export function withDetails(rows: readonly EventRow[]): Festival[] {
       styles: new Set(e.genres),
       fare,
       price,
-      trip: tripOf('now' in price ? price.now.tier : null, fare, { convert, rounded }),
+      trip: tripOf('now' in price ? price.now.tier : null, fare, { convert, rounded }, e.phase === KEY.phase.ON),
     };
   });
 }

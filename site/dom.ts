@@ -106,7 +106,7 @@ export const segments = <V extends string>(
   choose: (v: V) => void,
 ): HTMLButtonElement[] =>
   options.map(([v, words]) =>
-    button({ class: v === on && 'on', 'aria-pressed': String(v === on), onclick: () => choose(v) }, words),
+    button({ class: v === on && 'is-on', 'aria-pressed': String(v === on), onclick: () => choose(v) }, words),
   );
 
 // A list shown a page at a time: its first page now, and the more button (in the list, last, or anywhere else) adding
