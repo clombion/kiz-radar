@@ -1,30 +1,18 @@
 // A trip's roster: its days across the top, from the first of the community to arrive to the last to leave, the
-// festival's own days a soft band behind, and a line for each party travelling together (a couple as one): its name,
-// a highlighter's swipe from the hour they arrive to the hour they leave with its times at its ends (and its airports,
-// on a computer), and where it stays, beside it on a computer and under its name on a phone. Everyone who has not said
-// how they travel shares the last line, over a dotted band across the festival's days. It is drawn for the eye: a
-// line no one sees says it all in words to a screen reader.
+// festival's own days marked on them, and a line for each group that travels alike (roster.ts): its name, a
+// highlighter's swipe from the hour they arrive to the hour they leave with its times at its ends (and its airports, on
+// a computer), and where it stays, beside it on a computer and under its name on a phone. Those who have not said how
+// they travel share the last line, a thin rule across the festival's days. A line called collectively ("Everyone
+// else") names its people on hover, and from its button by tap or keyboard. It is drawn for the eye: a screen reader
+// hears its names, and a line no one sees says the rest in words.
 import { daysInto, daysOf, WEEKDAYS, weekday } from './calendar.ts';
-import { h, type Kid } from './dom.ts';
+import { button, h, type Kid } from './dom.ts';
 import { swipe } from './ink.ts';
+import type { Line, Unit } from './roster.ts';
+import { joined } from './wording.ts';
 
-// a party's swipe, across its lane: level, whatever its length, so a computer's long bar slopes no more than a phone's
+// a line's swipe, across its lane: level, whatever its length, so a computer's long bar slopes no more than a phone's
 const INK = { height: [0.55, 0.7], drop: [0, 0.04], tilt: 0 } as const; // thin, and level however long
-
-// how someone travels: arrive and leave as local times, YYYY-MM-DDTHH:MM, and the airports when they fly
-interface Flight {
-  arrive: string;
-  arrive_at: string | null;
-  leave: string;
-  leave_from: string | null;
-}
-// a party: who travels together, on one flight in and one out and to one stay (a couple as one), and how they travel;
-// what they do there is said on the trip's row, not again here
-export interface Party {
-  name: string;
-  stay: string | null;
-  flight: Flight;
-}
 
 // "17:05 OSL": a time of a flight, and its airport when known
 const timeAt = (time: string, airport: string | null): string =>
@@ -36,66 +24,93 @@ export const dayTimeAt = (time: string, airport: string | null): string =>
 const end = (time: string, airport: string | null): HTMLElement =>
   h('span', {}, time.slice(11), airport === null ? null : h('span', { class: 'gantt-ap' }, ` ${airport}`));
 
-export function gantt(t: {
+// A collective line's name: a button saying it ("Everyone else"), which shows the names of its people while the
+// pointer is over it, and from a tap or a key until the next (or Escape).
+function collective(id: string, said: string, names: readonly Kid[]): HTMLElement {
+  const list = h('span', { class: 'gantt-who-names', id }, names);
+  const toggle = button(
+    {
+      class: ['link', 'gantt-who'],
+      'aria-expanded': 'false',
+      'aria-controls': id,
+      onclick: () => toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true')),
+    },
+    said,
+  );
+  toggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') toggle.setAttribute('aria-expanded', 'false');
+  });
+  return h('span', { class: 'gantt-group' }, toggle, list);
+}
+
+export function gantt<P>(t: {
   from: string;
   to: string;
   festival: { start_date: string; end_date: string };
   place: string;
-  parties: readonly Party[];
-  unsaid: readonly Kid[]; // the names of everyone going who has not said how they travel
+  lines: readonly Line<P>[]; // as roster() makes them: by arrival, those who have not said last
+  named: (u: Unit<P>) => Kid; // a unit's name, as the page shows it
   describedBy: string; // the id of the line that says it in words
-  seed: string; // the festival's, which with a party's name makes its bar's swipe
+  seed: string; // the festival's, which with a line's names makes its bar's swipe
 }): HTMLElement {
   const days = daysOf(t.from, t.to);
   const share = (n: number) => `${(100 * n) / days.length}%`;
-  const start = days.indexOf(t.festival.start_date),
+  const start = Math.max(0, days.indexOf(t.festival.start_date)),
     last = days.indexOf(t.festival.end_date);
-  const band = { left: share(Math.max(0, start)), width: share(last - Math.max(0, start) + 1) };
-  const stays = t.parties.some((p) => p.stay !== null);
-  // a lane: the festival's band, and the party's swipe from when they arrive to when they leave
-  const lane = (p: Party): HTMLElement => {
-    const f = p.flight;
-    const at = { from: daysInto(t.from, f.arrive), to: daysInto(t.from, f.leave) };
+  const stays = t.lines.some((l) => l.travel !== null && l.travel.stay !== null);
+  // a lane: the line's swipe from when they arrive to when they leave or, not said, a thin rule across the festival
+  const lane = (l: Line<P>, key: string): HTMLElement => {
+    const f = l.travel;
+    const at = f && { from: daysInto(t.from, f.arrive), to: daysInto(t.from, f.leave) };
     return h(
       'div',
-      { class: 'gantt-lane' },
-      h('div', { class: 'gantt-band', style: band }),
-      h(
-        'div',
-        { class: 'gantt-bar', style: { left: share(at.from), width: share(at.to - at.from) } },
-        // the highlighter's ink, under the times: its own swipe for the party and the festival
-        h('span', {
-          class: 'gantt-ink',
-          style: swipe(`${p.name} ${t.seed}`, INK, { before: false, after: false }),
-          'aria-hidden': 'true',
-        }),
-        end(f.arrive, f.arrive_at),
-        end(f.leave, f.leave_from),
-      ),
+      { class: 'gantt-lane', 'aria-hidden': 'true' },
+      f === null || at === null
+        ? h('div', { class: 'gantt-none', style: { left: share(start), width: share(last - start + 1) } })
+        : h(
+            'div',
+            { class: 'gantt-bar', style: { left: share(at.from), width: share(at.to - at.from) } },
+            // the highlighter's ink, under the times: its own swipe for the line and the festival
+            h('span', {
+              class: 'gantt-ink',
+              style: swipe(`${key} ${t.seed}`, INK, { before: false, after: false }),
+              'aria-hidden': 'true',
+            }),
+            end(f.arrive, f.arrive_at),
+            end(f.leave, f.leave_from),
+          ),
     );
   };
-  const line = (p: Party): Kid[] => [
-    h(
-      'div',
-      { class: 'gantt-name' },
-      p.name,
-      p.stay === null ? null : [' ', h('span', { class: 'gantt-stay-under' }, p.stay)],
-    ),
-    lane(p),
-    stays ? h('div', { class: 'gantt-stay' }, p.stay ?? '') : null,
-  ];
+  const line = (l: Line<P>, i: number): Kid[] => {
+    const stay = l.travel?.stay ?? null;
+    const names = joined(l.units.map(t.named));
+    return [
+      h(
+        'div',
+        { class: ['gantt-name', l.travel === null && 'gantt-unsaid'] },
+        l.collective === null ? names : collective(`${t.describedBy}-names-${i}`, l.collective, names),
+        stay === null ? null : [' ', h('span', { class: 'gantt-stay-under' }, stay)],
+      ),
+      lane(l, l.units.map((u) => u.name).join(', ')),
+      stays ? h('div', { class: 'gantt-stay', 'aria-hidden': 'true' }, stay ?? '') : null,
+    ];
+  };
   return h(
     'div',
     {
       class: ['gantt', stays && 'gantt-stays'],
-      role: 'img',
+      role: 'group',
       'aria-label': `Who is in ${t.place} when`,
       'aria-describedby': t.describedBy,
     },
     h('div', {}),
     h(
       'div',
-      { class: 'gantt-axis', style: { 'grid-template-columns': `repeat(${days.length}, minmax(0, 1fr))` } },
+      {
+        class: 'gantt-axis',
+        'aria-hidden': 'true',
+        style: { 'grid-template-columns': `repeat(${days.length}, minmax(0, 1fr))` },
+      },
       days.map((d) =>
         h(
           'span',
@@ -105,19 +120,7 @@ export function gantt(t: {
         ),
       ),
     ),
-    stays ? h('div', { class: 'gantt-stay' }, 'Staying') : null,
-    t.parties.map(line),
-    // everyone who has not said, on one muted line over a dotted band across the festival's days
-    t.unsaid.length > 0 || t.parties.length === 0
-      ? [
-          h('div', { class: ['gantt-name', 'gantt-unsaid'] }, t.unsaid),
-          h(
-            'div',
-            { class: 'gantt-lane' },
-            h('div', { class: ['gantt-band', t.unsaid.length > 0 && 'gantt-dotted'], style: band }),
-          ),
-          stays ? h('div', { class: 'gantt-stay' }) : null,
-        ]
-      : null,
+    stays ? h('div', { class: 'gantt-stay', 'aria-hidden': 'true' }, 'Staying') : null,
+    t.lines.map(line),
   );
 }

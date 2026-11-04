@@ -17,11 +17,12 @@ import { one, q, sql } from './db.ts';
 import { button, h, type Kid, nodes } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, withDetails } from './festivals.ts';
-import { dayTimeAt, gantt, type Party } from './gantt.ts';
+import { dayTimeAt, gantt } from './gantt.ts';
 import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
-import { doingTag, type Goer, goersInline, namesOf } from './plans.ts';
+import { couplesAmong, doingTag, type Goer, goersInline, namesOf } from './plans.ts';
+import { type Goes, roster } from './roster.ts';
 import { artistHref, eventOnMapHref } from './routes.ts';
 import { type Booked, booked, EVENT, num, opt, type RowOf, str } from './rows.ts';
 import { dayMonth, dayParts, dayRange, monthYear, place, weekDay } from './ui.ts';
@@ -282,24 +283,33 @@ function agenda(trips: readonly Visit[], today: string, manager: Member): HTMLEl
 function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTMLElement {
   const id = `trip-${e.id}`;
   const flights = aways.flatMap((a) => (a.trip ? [a.trip] : []));
-  const ps = parties(aways);
-  // everyone going who has not said how they travel, once: the members who have not (a couple as one), and the people
-  // the manager added, who never do, each saying on hover who added them
+  // its roster: who travels alike, a couple as one when both partners do, and the people the manager added, who never
+  // say how they travel, each name of theirs saying on hover who added them
+  const couples = couplesAmong(aways.flatMap((a) => (a.goer ? [a.goer] : [])));
+  const lines = roster(
+    aways.map(
+      (a): Goes<Present> => ({
+        person: a,
+        name: a.goer?.name ?? a.added?.name ?? '',
+        couple: a.goer ? (couples.get(a.goer.person_id) ?? null) : null,
+        travel: a.trip,
+      }),
+    ),
+  );
   const title = `Added by ${manager.name}`;
-  const silent = namesOf(aways.flatMap((a) => (a.goer && a.trip === null ? [a.goer] : [])));
-  const added = aways.flatMap((a) => (a.added ? [a.added.name] : []));
-  // the roster in words, for a screen reader: each party in and out and where it stays, and who has not said
+  // the roster in words, for a screen reader: each line in and out and where it stays, and who has not said, a line
+  // called collectively by its name and its people's
   const said = h(
     'p',
     { class: ['gantt-said', 'visually-hidden'], id: `${id}-said` },
-    [
-      ...ps.map(
-        (p) =>
-          `${p.name} in ${dayTimeAt(p.flight.arrive, p.flight.arrive_at)}, out ${dayTimeAt(p.flight.leave, p.flight.leave_from)}${p.stay === null ? '' : `, staying at ${p.stay}`}`,
-      ),
-      silent.length + added.length > 0 ? `not said yet: ${and([...silent, ...added])}` : null,
-    ]
-      .filter((x) => x !== null)
+    lines
+      .map((l) => {
+        const names = and(l.units.map((u) => u.name));
+        const called = l.collective === null ? names : `${l.collective} (${names})`;
+        const f = l.travel;
+        if (f === null) return `not said yet: ${called}`;
+        return `${called} in ${dayTimeAt(f.arrive, f.arrive_at)}, out ${dayTimeAt(f.leave, f.leave_from)}${f.stay === null ? '' : `, staying at ${f.stay}`}`;
+      })
       .join('; '),
   );
   // the festival's line-up and prices, its card opened, in the trip's: shown from the festival's name
@@ -311,8 +321,8 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
       ...spanOf(e, flights),
       festival: e,
       place: e.city ?? e.title,
-      parties: ps,
-      unsaid: joined([...silent, ...added.map((n) => h('span', { title }, n))]),
+      lines,
+      named: (u) => (u.people.some((a) => a.added) ? h('span', { title }, u.name) : u.name),
       describedBy: said.id,
       seed: String(e.id),
     }),
@@ -369,22 +379,6 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
     ),
     body,
   );
-}
-
-// The parties of a trip: the members who share a flight in and out and a stay (a couple as one), first to arrive
-// first.
-function parties(aways: readonly Present[]): Party[] {
-  const flying = new Map<string, { goers: Goer[]; flight: Trip }>();
-  for (const a of aways)
-    if (a.goer && a.trip) {
-      const key = [a.trip.arrive, a.trip.arrive_at, a.trip.leave, a.trip.leave_from, a.trip.stay].join(' ');
-      const f = flying.get(key) ?? { goers: [], flight: a.trip };
-      f.goers.push(a.goer);
-      flying.set(key, f);
-    }
-  return [...flying.values()]
-    .toSorted((a, b) => a.flight.arrive.localeCompare(b.flight.arrive))
-    .map(({ goers, flight }) => ({ name: and(namesOf(goers)), stay: flight.stay, flight }));
 }
 
 // Who of the community goes to a festival: its members, as their couple when both go and teaching when in the

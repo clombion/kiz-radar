@@ -2576,12 +2576,12 @@ html:has(dialog.search[open]) {
   position: relative;
   height: 1.15rem;
 }
-.gantt-band {
+/* the line of those who have not said: a thin rule across the festival's days, where a bar would be */
+.gantt-none {
   position: absolute;
-  top: 0;
-  height: 100%;
-  border-radius: 3px;
-  background: var(--accent-soft);
+  top: calc(50% - 0.5px);
+  height: 0;
+  border-top: 1px solid var(--none);
 }
 .gantt-bar {
   position: absolute;
@@ -2599,11 +2599,12 @@ html:has(dialog.search[open]) {
 .gantt-bar > span:not(.gantt-ink) {
   position: relative;
 }
-/* a party's time there, a highlighter's swipe as the months' (ink.ts), deeper: two passes, fading at its ends */
+/* a line's time there, a highlighter's swipe as the months' (ink.ts), light: two passes, the second faint, fading at
+   its ends, under times that stay as dark as text */
 .gantt-ink {
   position: absolute;
   inset: 0 0 auto;
-  background: var(--highlight);
+  background: color-mix(in srgb, var(--highlight) 60%, transparent);
   mask-image: linear-gradient(to right, transparent, black 0.35rem, black calc(100% - 0.35rem), transparent);
 }
 .gantt-ink::after {
@@ -2612,12 +2613,35 @@ html:has(dialog.search[open]) {
   inset: 12% 4% 18% 2%;
   border-radius: inherit;
   background: var(--highlight);
-  opacity: 0.6;
+  opacity: 0.3;
 }
-/* the band of those who have not said: dotted, across the festival's days */
-.gantt-band.gantt-dotted {
-  border: 1.5px dotted var(--none);
-  background: none;
+/* a line called collectively ("Everyone else"): its names under it while the pointer is over it, or once opened */
+.gantt-group {
+  position: relative;
+}
+.gantt-who {
+  color: inherit;
+}
+.gantt-who-names {
+  position: absolute;
+  top: calc(100% + 0.2rem);
+  left: 0;
+  z-index: var(--z-popover);
+  display: none;
+  width: max-content;
+  max-width: 14rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: 0 4px 12px rgb(var(--shadow-ink) / 0.18);
+  color: var(--text);
+  font-size: 0.74rem;
+  line-height: 1.3;
+}
+.gantt-group:hover .gantt-who-names,
+.gantt-who[aria-expanded="true"] + .gantt-who-names {
+  display: block;
 }
 .gantt-said {
   color: var(--muted);

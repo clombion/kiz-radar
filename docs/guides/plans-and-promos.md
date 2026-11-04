@@ -71,14 +71,20 @@ goes: its members as on any card (as their couple when both go, teaching when in
 Whether someone added teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the
 manager never says it, and someone teaching links to their artist page. The next trip is open; the others open from
 their button, on a card under the row. An opened trip is a roster of who travels when: its days across the top, from the
-first of the community to arrive (or the festival's start, when that is sooner) to the last to leave (or its end), and a
-line for each party that shares a flight in and out and a stay (a couple as one): its name (what it does there is the
-row's to say), a light highlighter's swipe from the hour they arrive to the hour they leave with the times at its ends
-(and the airports, on a computer), over the festival's days as a soft band, and where it stays, beside it on a computer
-and under its name on a phone. Everyone who has not said how they travel, the people the manager added among them, is
-named once on a muted last line over a dotted band across the festival's days. A screen reader hears it all in words,
-which the page does not show: each party in and out and where it stays, and who has not said. While a card is open its
-row says only how many go and who teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The
+first of the community to arrive (or the festival's start, when that is sooner) to the last to leave (or its end), the
+festival's days marked on them, and a line for each group that travels alike (`site/roster.ts`). A couple is one unit
+when both partners arrive, leave and stay alike, or both have said nothing; otherwise each partner is a unit of their
+own, as is everyone else. Units that arrive, leave and stay alike are one line, and having said nothing is a line of its
+own (the people the manager added are always on it). With three units or fewer every line names its units; with more,
+the line of the most people, if they are more than three, is "Everyone" when it is the only line and "Everyone else"
+beside others (of two lines alike in size, the first to arrive; those who have not said, last). A collective name is a
+button that shows its names while the pointer is over it and from a tap or a key, until the next or Escape. Lines go by
+arrival, those who have not said last. Each line has its name (what its people do there is the row's to say), a light
+highlighter's swipe from the hour they arrive to the hour they leave with the times at its ends (and the airports, on a
+computer), and where it stays, beside it on a computer and under its name on a phone; those who have not said are a thin
+rule across the festival's days instead. A screen reader hears the names, and the rest in words the page does not show:
+each line in and out and where it stays, and who has not said, a collective line by its people too. While a card is open
+its row says only how many go and who teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The
 festival's name opens its card on the festival's line-up and prices, its own card opened in place, and folds them away
 again; the next trip's card opens on who travels, its line-up folded.
 
