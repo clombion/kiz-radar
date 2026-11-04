@@ -8,13 +8,25 @@ import { site } from './db.ts';
 import { button, choices, dropdown, h, type Kid, moreButton, nodes, onResize, own, paged, toggle } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, festivals, leftOut } from './festivals.ts';
-import { CHECKED, type Choices, DEFAULTS, isOn, isWith, matches, type Sort, WITH, withPhrase } from './finder.ts';
+import {
+  CHECKED,
+  type Choices,
+  choicesAddress,
+  DEFAULTS,
+  isOn,
+  isWith,
+  matches,
+  readChoices,
+  type Sort,
+  VALUES,
+  withPhrase,
+} from './finder.ts';
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
 import { Drawing } from './icons.ts';
 import { currency, money, step } from './money.ts';
 import { friendsIn } from './plans.ts';
 import { done } from './report.ts';
-import { changed, festivalsHref, readState, showInAddressBar } from './routes.ts';
+import { festivalsHref, showInAddressBar } from './routes.ts';
 import { KEY } from './states.ts';
 import { calm, flag, home, loading, scrolling } from './ui.ts';
 import { plural, text } from './wording.ts';
@@ -43,40 +55,40 @@ const DANCES = [KEY.genre.KIZOMBA, KEY.genre.URBANKIZ, KEY.genre.TARRAXO].map((g
 const VOWEL_FIRST = /^[aeiou]/iu;
 const takesAn = (word: string | null) => VOWEL_FIRST.test(word ?? '');
 // in words, and in digits for screens where only the shorter form keeps the blank on the "festival in" line
-const WHEN: readonly (readonly [number, string])[] = [
-  [1, 'the next month'],
-  [2, 'the next two months'],
-  [3, 'the next three months'],
-  [6, 'the next six months'],
-  [12, 'the coming year'],
-];
+const WHEN_WORDS: Readonly<Record<(typeof VALUES.months)[number], string>> = {
+  1: 'the next month',
+  2: 'the next two months',
+  3: 'the next three months',
+  6: 'the next six months',
+  12: 'the coming year',
+};
+const WHEN = VALUES.months.map((v) => [v, WHEN_WORDS[v]] as const);
 const WHEN_DIGITS: Readonly<Record<string, string>> = {
   2: 'the next 2 months',
   3: 'the next 3 months',
   6: 'the next 6 months',
 };
 // the sentence says it in words, the bar in short; the steps are round amounts in the visitor's currency (money.ts)
-const PRICE: readonly (readonly [Choices['reach'], string])[] = [
-  ['', 'any price'],
-  ['fair', 'a reasonable price'],
-  ['cheap', 'a cheap price'],
-];
+const PRICE_WORDS: Readonly<Record<Choices['reach'], string>> = {
+  '': 'any price',
+  fair: 'a reasonable price',
+  cheap: 'a cheap price',
+};
+const PRICE = VALUES.reach.map((v) => [v, PRICE_WORDS[v]] as const);
 const limit = (reach: Choices['reach']): number | null => (reach ? step('trip', reach) : null);
 const under = (reach: Step) => money(step('trip', reach), currency);
 const SHORT = {
   months: WHEN.map(([v]) => [v, plural(v, 'month')] as const),
   reach: PRICE.map(([v]) => [v, v ? `Under ${under(v)}` : 'Any price'] as const),
 };
-const FLAGS = [0, 1];
-const LINEUP: readonly (readonly [number, string])[] = [
-  [0, 'Any size'],
-  [10, '10+ artists'],
-  [20, '20+ artists'],
-];
-const ORDER: readonly (readonly [Sort, string])[] = [
-  ['date', 'Soonest first'],
-  ['fare', 'Cheapest first'],
-];
+const LINEUP_WORDS: Readonly<Record<(typeof VALUES.lineup)[number], string>> = {
+  0: 'Any size',
+  10: '10+ artists',
+  20: '20+ artists',
+};
+const LINEUP = VALUES.lineup.map((v) => [v, LINEUP_WORDS[v]] as const);
+const ORDER_WORDS: Readonly<Record<Sort, string>> = { date: 'Soonest first', fare: 'Cheapest first' };
+const ORDER = VALUES.sort.map((v) => [v, ORDER_WORDS[v]] as const);
 
 export function sentenceView(
   root: HTMLElement,
@@ -85,19 +97,10 @@ export function sentenceView(
 ): void {
   let all: readonly Festival[] | null = null; // the festivals, once the database is in
   const countries = site().destinations;
-  const allowed: { [K in keyof Choices]?: readonly Choices[K][] } = {
-    months: WHEN.map(([v]) => v),
-    reach: PRICE.map(([v]) => v),
-    country: ['', ...countries.map((c) => c.code)],
-    with: ['', ...WITH.keys()],
-    friends: FLAGS,
-    onnow: FLAGS,
-    lineup: LINEUP.map(([v]) => v),
-    sort: ORDER.map(([v]) => v),
-    unchecked: FLAGS,
-  };
-  for (const [k] of CHECKED) allowed[k] = FLAGS;
-  const { state: s, dropped }: { state: Choices; dropped: string[] } = readState(qs, DEFAULTS, allowed);
+  const { state: s, dropped } = readChoices(
+    qs,
+    countries.map((c) => c.code),
+  );
   // a link that sets these choices and shows what they give; then
   const choose = (to: Partial<Choices>, words: string, then?: () => void) =>
     button(
@@ -370,7 +373,7 @@ export function sentenceView(
   // the blanks and the filters as they are chosen
   function paintChoices(): void {
     if (!s.reach) s.unchecked = 0; // unknown prices are in at any price, so no choice to keep
-    showInAddressBar(festivalsHref(changed(s, DEFAULTS)));
+    showInAddressBar(festivalsHref(choicesAddress(s)));
     for (const k of ['months', 'country', 'reach'] as const) {
       sentenceBlanks[k].value = String(s[k]);
       barBlanks[k].value = String(s[k]);

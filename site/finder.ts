@@ -6,6 +6,7 @@ import type { Kid } from './dom.ts';
 import { flightEur } from './fares.ts';
 import type { Festival } from './festivals.ts';
 import { MORE_TRAITS, TRAITS } from './icons.ts';
+import { changed, readState } from './routes.ts';
 import { KEY } from './states.ts';
 import { type Key, text, where } from './wording.ts';
 
@@ -70,6 +71,38 @@ export const DEFAULTS: Readonly<Choices> = {
   unchecked: 0,
   sort: 'date',
 };
+// the values each choice the page offers can take; a flag is 0 or 1, a country one the site lists
+export const VALUES = {
+  months: [1, 2, 3, 6, 12],
+  reach: ['', 'fair', 'cheap'],
+  lineup: [0, 10, 20],
+  sort: ['date', 'fare'],
+} as const satisfies { [K in keyof Choices]?: readonly Choices[K][] };
+const FLAGS = [0, 1];
+export function allowedChoices(countries: readonly string[]): { [K in keyof Choices]?: readonly Choices[K][] } {
+  return {
+    ...VALUES,
+    country: ['', ...countries],
+    with: ['', ...WITH.keys()],
+    friends: FLAGS,
+    onnow: FLAGS,
+    unchecked: FLAGS,
+    ...Object.fromEntries(CHECKED.map(([k]) => [k, FLAGS])),
+  };
+}
+// Any price is '' on the page but "any" in the address, which leaves an empty value out: an empty reach would read as
+// the default, a cheap price. An older link's "reach=" still reads as any price.
+const ANY = 'any';
+export const choicesAddress = (s: Readonly<Choices>): Record<string, string | number> => {
+  const c = changed(s, DEFAULTS);
+  return c['reach'] === '' ? { ...c, reach: ANY } : c;
+};
+export function readChoices(qs: string, countries: readonly string[]): { state: Choices; dropped: string[] } {
+  const p = new URLSearchParams(qs);
+  if (p.get('reach') === ANY) p.set('reach', '');
+  return readState(p.toString(), DEFAULTS, allowedChoices(countries));
+}
+
 // the festivals the choices keep, seen from a day, in the order chosen; max is the trip's limit in the visitor's
 // currency (reach's step), null for any price
 export function matches(all: readonly Festival[], s: Readonly<Choices>, day: string, max: number | null): Festival[] {

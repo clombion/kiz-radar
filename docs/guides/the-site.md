@@ -12,7 +12,8 @@ Bergen to anywhere for a cheap price." Each underlined part is a choice; the mat
 30 at a time. Once the sentence scrolls away, a bar under the header keeps the time and price choices in view, with the
 rest under Filters. The choices live in the address, so a view can be bookmarked or shared; an address asking for a
 choice the page doesn't have (an old link's `reach=150`, say) says so at the top, and the page shows its defaults for
-it.
+it. Any price is `reach=any` (an empty value would be left out of the address and read as the default, a cheap price; an
+older link's `reach=` still reads as any price).
 
 The price is the trip's: the full pass at today's price plus the Friday-to-Monday return flight. A festival on now
 (between its first and its last day, both included, on the visitor's day: phase `on`) is still listed, but its weekend's

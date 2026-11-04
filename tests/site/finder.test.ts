@@ -2,16 +2,20 @@
 import { expect, test } from 'vitest';
 import type { Festival } from '../../site/festivals.ts';
 import {
+  allowedChoices,
   type Choices,
+  choicesAddress,
   DEFAULTS,
   hasWith,
   isDance,
   isOn,
   isWith,
   matches,
+  readChoices,
   WITH,
   withPhrase,
 } from '../../site/finder.ts';
+import { festivalsHref } from '../../site/routes.ts';
 import { KEY } from '../../site/states.ts';
 import { pass as passOf } from './samples.ts';
 
@@ -133,4 +137,25 @@ test('a with names a dance or a highlight, and reads as one', () => {
   expect(withPhrase(KEY.feature.POOL_PARTY)).toEqual(['With ', WITH.get(KEY.feature.POOL_PARTY)]);
   expect(hasWith(festival(1, { styles: new Set([KEY.genre.SALSA]) }), KEY.genre.SALSA)).toBe(true);
   expect(hasWith(festival(1), KEY.feature.POOL_PARTY)).toBe(false);
+});
+
+test('every choice of every blank and filter comes back from the address it writes, any price among them', () => {
+  const countries = ['NO', 'PT'];
+  const allowed = allowedChoices(countries);
+  const back = (s: Choices) => {
+    const qs = new URL(`https://x/${festivalsHref(choicesAddress(s))}`).hash.split('?')[1] ?? '';
+    return readChoices(qs, countries);
+  };
+  expect(new Set(Object.keys(allowed))).toEqual(new Set(Object.keys(DEFAULTS))); // every choice has its values
+  for (const [key, values] of Object.entries(allowed)) {
+    expect(values.length, key).toBeGreaterThan(1);
+    for (const value of values) {
+      const s = { ...DEFAULTS, [key]: value };
+      expect(back(s), `${key}=${value}`).toEqual({ state: s, dropped: [] });
+    }
+  }
+  // any price is written as "any", and an older link's empty reach still reads as any price
+  expect(choicesAddress({ ...DEFAULTS, reach: '' })).toEqual({ reach: 'any' });
+  expect(readChoices('reach=', countries).state.reach).toBe('');
+  expect(readChoices('reach=150', countries).dropped).toEqual(['reach=150']);
 });
