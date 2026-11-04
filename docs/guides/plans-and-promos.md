@@ -47,7 +47,7 @@ nobody can create, join or claim one yet, and its rows are written by hand.
 The page shows the community's name ("Norwegians in festivals"), when most members travel at once ("Most members are
 travelling 20–22 Nov: 5 people, to Oslo.") and, on a line of its own, where they go next ("Next: Glasgow, this Friday"),
 then a Share this page button, which opens the device's share sheet or else copies the link, beside a badge of who the
-page is meant for: a lock, people and their number, which says "Visible to its 2 members only" on hover and to a screen
+page is meant for: a lock, people and their number, which says "Visible to its 3 members only" on hover and to a screen
 reader. Who manages it is said with the members, at the foot of the page.
 
 Under the head, the calendar: four months at a time, a period from today's month (November to February, then March to
@@ -78,7 +78,7 @@ there ("Nothing planned in Mar–Jun" when it has none), a heading a month ("Nov
 and on the first when it is not this year's), and a row a trip, soonest first. The sentence and "Next" are of every
 trip, whatever period shows. A row has its days ("Fri 20 – Sun 22 Nov"), the festival and where it is (which leads to it
 on the map), and who of the community goes: its members as on any card (as their couple when both go, teaching when in
-the line-up), then the people added: "Christina teaching · Siân teaching and Caroline going". Hovering an added name
+the line-up), then the people added: "Christina teaching and Siân teaching · Caroline going". Hovering an added name
 says who added them ("Added by Cédric"). Whether someone added teaches comes from the festival's line-up and their
 `artist_keys`, as it does for a member; the manager never says it, and someone teaching links to their artist page. The
 next trip is open; the others open from their button, on a card under the row. An opened trip is a roster of who travels

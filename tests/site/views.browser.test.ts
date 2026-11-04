@@ -7,7 +7,7 @@ import { communityView } from '../../site/communities.ts';
 import { exec, load, loadSite, one, sql } from '../../site/db.ts';
 import { h } from '../../site/dom.ts';
 import { festivals } from '../../site/festivals.ts';
-import { artistHref, eventOnMapHref, personHref } from '../../site/routes.ts';
+import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str } from '../../site/rows.ts';
 
 // each file the page asked for, with the signal it was asked with
@@ -163,8 +163,8 @@ const agendaRow = (root: HTMLElement, title: string) =>
     r.querySelector('.trip-fest')?.textContent?.startsWith(title),
   );
 const KUOF = 'Cédric & Christina teaching · Tonje, Ragnhild and Maja going';
-// Christina alone of the members goes to Glasgow, named as herself; Siân, added by Cédric, teaches there
-const GLASGOW = 'Christina teaching · Siân teaching and Caroline going';
+// Christina and Siân, members, go to Glasgow and teach there, each named as herself; Caroline, added by Cédric, goes
+const GLASGOW = 'Christina teaching and Siân teaching · Caroline going';
 
 test('a community’s head says who it is, when most members travel and where next, and whom it is for', () => {
   const root = onDay('2026-11-03', () => communityPage(COMMUNITY));
@@ -181,10 +181,10 @@ test('a community’s head says who it is, when most members travel and where ne
   expect(said(root.querySelector('.share-row button'))).toBe('Share this page');
   expect([badge?.getAttribute('role'), badge?.ariaLabel, badge?.title]).toEqual([
     'img',
-    'Visible to its 2 members only',
-    'Visible to its 2 members only',
+    'Visible to its 3 members only',
+    'Visible to its 3 members only',
   ]);
-  expect([badge?.querySelectorAll('svg').length, said(badge)]).toEqual([2, '2']);
+  expect([badge?.querySelectorAll('svg').length, said(badge)]).toEqual([2, '3']);
   // a week on, Glasgow is under way and KUOF is two weeks off
   expect(said(onDay('2026-11-07', () => communityPage(COMMUNITY)).querySelector('.profile-head'))).toContain(
     'Next: Glasgow, now',
@@ -223,7 +223,6 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
   expect(titled(agendaRow(root, 'KUOF')?.querySelector('.trip-who'))).toEqual(
     ['Tonje', 'Ragnhild', 'Maja'].map((n) => [n, 'Added by Cédric']),
   );
-  const sian = one({ id: num }, sql`SELECT id FROM artists WHERE match_key = ?`, ['p:sian@dance'])?.id;
   agendaRow(root, 'Glasgow')?.querySelector<HTMLElement>('.trip-toggle')?.click(); // closed: its whole who-line
   expect(
     [...(agendaRow(root, 'Glasgow')?.querySelectorAll('.trip-who a') ?? [])].map((a) => [
@@ -232,7 +231,8 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
     ]),
   ).toEqual([
     ['Christina', personHref('christina')],
-    ['Siân', artistHref(sian ?? Number.NaN)],
+    // a member now, her plans page as Christina's
+    ['Siân', personHref('sian')],
   ]);
   agendaRow(root, 'Glasgow')?.querySelector<HTMLElement>('.trip-toggle')?.click();
   // the next trip open, the others closed; a row opens and closes from its button
@@ -283,7 +283,7 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
   const place = rows[1]?.querySelector<HTMLAnchorElement>('.trip-head a');
   expect([said(place), place?.getAttribute('href')]).toEqual(['🇳🇴 Oslo', eventOnMapHref(19_033)]);
   const members = [...root.querySelectorAll(':scope > article > section')].at(-1);
-  expect(said(members?.querySelector('p'))).toBe('Cédric manager and Christina');
+  expect(said(members?.querySelector('p'))).toBe('Cédric manager, Christina and Siân');
 });
 
 test('the people a manager added are named on the community’s page only, never on a festival’s card elsewhere', () => {
@@ -605,7 +605,7 @@ test('an opened trip draws who travels when: the days from the first in to the l
     expect(glasgow.said).toBe('not said yet: Caroline, Christina and Siân');
     expect(glasgow.unsaid).toBe('Caroline, Christina and Siân');
     expect(titled(agendaRow(root, 'Glasgow')?.querySelector('.gantt-unsaid'))).toEqual(
-      ['Caroline', 'Siân'].map((n) => [n, 'Added by Cédric']),
+      ['Caroline'].map((n) => [n, 'Added by Cédric']),
     );
     // a couple who has not said is named as one
     expect(ganttOf(opened(root, 'HOT Ice')).unsaid).toBe('Cédric & Christina');

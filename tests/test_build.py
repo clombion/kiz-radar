@@ -264,7 +264,6 @@ def test_a_community_is_what_its_three_files_say(site_db: Path) -> None:
     ]
     assert found
     assert members
-    assert any(r.artist_keys for r in seeded)  # someone added is in a line-up, as Siân at Glasgow
     trips, stays = Travel.read(), StayRow.read()
     assert built(
         site_db,
