@@ -95,8 +95,8 @@ depends = ["install:site"]
 run = "pnpm run knip"
 
 ["test:site"]
-description = "The site's tests, in Node and in Chromium (vitest.config.ts), on the database built from the export"
-depends = ["install:site", "build:data"]
+description = "The site's tests, in Node and in Chromium (vitest.config.ts), on the database built from the export and the site built (served under /kiz-radar/ for the tests of the whole site)"
+depends = ["install:site", "build:site", "build:data"]
 run = "pnpm run test"
 
 [dup]

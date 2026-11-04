@@ -2,26 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- a community's page for a shared link (pipeline/generate.py): what chat apps and social sites read of it, and at
-     once on to its page on the site -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
-<meta name="robots" content="noindex">
-<meta name="kiz-community" content="frost-lantern-river-maple">
-<meta http-equiv="refresh" content="0; url=../../#community/frost-lantern-river-maple">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- every link and file from the site's root: this folder here, ../../ on a community's page (c/<key>/) -->
+<base href="../../">
 <title>Norwegians in festivals · Kiz Radar</title>
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Kiz Radar">
+<meta name="robots" content="noindex">
+<meta name="description" content="Norwegians in festivals · festival plans shared on Kiz Radar">
+<link rel="canonical" href="https://clombion.github.io/kiz-radar/c/frost-lantern-river-maple/">
 <meta property="og:title" content="Norwegians in festivals">
 <meta property="og:description" content="Norwegians in festivals · festival plans shared on Kiz Radar">
 <meta property="og:url" content="https://clombion.github.io/kiz-radar/c/frost-lantern-river-maple/">
 <meta property="og:image" content="https://clombion.github.io/kiz-radar/c/frost-lantern-river-maple/share.png">
+<meta property="og:image:alt" content="Norwegians in festivals, on Kiz Radar’s card">
+<!-- what the page may load: its own files only (the libraries are served from vendor/, built from the pinned
+     packages); wasm-unsafe-eval lets sql.js compile its WebAssembly -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="theme-color" content="#7a2850">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<!-- the card chat apps and social sites show for a shared link -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kiz Radar">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Norwegians in festivals, on Kiz Radar’s card">
 <meta name="twitter:card" content="summary_large_image">
-<script src="../redirect.js"></script>
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/caveat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script defer src="vendor/sql-wasm.js"></script>
+<script defer src="vendor/leaflet/leaflet.js"></script>
+<script defer src="vendor/topojson-client.min.js"></script>
+<script type="module" src="js/main.js"></script>
 </head>
 <body>
-<p><a href="../../#community/frost-lantern-river-maple">Norwegians in festivals on Kiz Radar</a></p>
+<!-- the gooey filter the tab ovals share (tabs.ts): blurred, then their alpha sharpened, shapes that touch flow into one -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><filter id="goo" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/><feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8"/></filter></svg>
+<header class="top">
+  <a class="brand" href="#finder"><img src="mark.svg" alt="" width="26" height="26"><span class="brand-name">Kiz Radar</span></a>
+  <nav class="tabs" aria-label="Main"></nav>
+  <button type="button" class="search-btn" id="search-btn" aria-haspopup="dialog" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span class="search-word">Search</span><kbd>/</kbd></button>
+</header>
+<nav id="subnav" class="subnav" aria-label="Explore" hidden></nav>
+<main id="main" tabindex="-1"><p class="status loading" role="status"><img src="loading.svg" alt="" width="56" height="56"><span>Loading…</span></p></main>
+<footer class="site-footer">
+  <div class="f-about">
+    <p class="f-brand">Kiz Radar</p>
+    <p>Kizomba and Urban Kiz festivals across Europe and beyond, with what the flight from <span data-home-city>Bergen</span> costs.</p>
+  </div>
+  <nav class="f-col" aria-labelledby="footer-nav-name" id="footer-nav"><h2 id="footer-nav-name">The site’s pages</h2></nav>
+  <div class="f-col f-data">
+    <h2>Where the data comes from</h2>
+    <p>Festival listings from <a href="https://kizomba-world.com/">kizomba-world.com</a>, used under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>; the festival data here is shared under the same licence. <span id="freshness"></span></p>
+    <p>Flight prices are Friday-to-Monday returns from <span data-home-city>Bergen</span> found on Google Flights with <a href="https://github.com/punitarani/fli">fli</a>, searched again every week when the festival is close and every six weeks when it is far. They change often, so check before booking.</p>
+    <p>Pass prices are read from each festival’s ticket page, or, where it has none that can be read, by Claude from its description; each is checked, and converted with the European Central Bank’s daily rates.</p>
+    <p id="currency-switch"></p>
+  </div>
+  <div class="f-col">
+    <h2>For the curious</h2>
+    <a href="#sql">Query the data with SQL</a><a href="https://github.com/clombion/kiz-radar">Source code on GitHub</a>
+  </div>
+</footer>
 </body>
 </html>

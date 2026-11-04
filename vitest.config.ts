@@ -1,7 +1,48 @@
 // The site's tests: in Node for what runs on data alone (prices, wording, the sources and the shipped database), in
 // Chromium for what the page does (tests/site/*.browser.test.ts).
+import { readFile, stat } from 'node:fs/promises';
+import type { IncomingMessage, ServerResponse } from 'node:http';
+import { extname, join, normalize } from 'node:path';
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
+
+// The built site (public/), served under /kiz-radar/ as GitHub Pages serves it, for the tests that load it whole in a
+// frame: a folder's address serves its index.html, as Pages does.
+const TYPES: Readonly<Record<string, string>> = {
+  '.html': 'text/html; charset=utf-8',
+  '.js': 'text/javascript',
+  '.css': 'text/css',
+  '.json': 'application/json',
+  '.webmanifest': 'application/manifest+json',
+  '.wasm': 'application/wasm',
+  '.svg': 'image/svg+xml',
+  '.png': 'image/png',
+  '.woff2': 'font/woff2',
+};
+type Handler = (req: IncomingMessage, res: ServerResponse, next: () => void) => void;
+const pages = () => ({
+  name: 'pages',
+  configureServer(server: { middlewares: { use: (path: string, handler: Handler) => void } }) {
+    server.middlewares.use('/kiz-radar', (req, res, next) => {
+      const path = normalize(decodeURIComponent((req.url ?? '/').split('?')[0] ?? '/'));
+      if (path.includes('..')) {
+        next();
+        return;
+      }
+      const file = join('public', path.endsWith('/') ? `${path}index.html` : path);
+      stat(file)
+        .then(() => readFile(file))
+        .then((body) => {
+          res.setHeader('Content-Type', TYPES[extname(file)] ?? 'application/octet-stream');
+          res.end(body);
+        })
+        .catch(() => {
+          res.statusCode = 404;
+          res.end();
+        });
+    });
+  },
+});
 
 export default defineConfig({
   test: {
@@ -28,6 +69,7 @@ export default defineConfig({
         },
       },
       {
+        plugins: [pages()],
         test: {
           name: 'browser',
           include: ['tests/site/**/*.browser.test.ts'],

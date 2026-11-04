@@ -28,8 +28,7 @@ communities the spec ("Kiz Radar community: user stories") describes, to get the
 nobody can create, join or claim one yet, and its rows are written by hand.
 
 - `pipeline/communities.csv`: one row per community, with its `key` (four words, as `frost-lantern-river-maple`; its
-  page is `#community/<key>`), its `name`, its `manager` (a `people.csv` key, who must be one of its members) and a
-  `note`.
+  page is `c/<key>/`), its `name`, its `manager` (a `people.csv` key, who must be one of its members) and a `note`.
 - `pipeline/community_members.csv`: one row per member, with the `community` and the `person` (a `people.csv` key).
   Members are named on the page and link to their plans page.
 - `pipeline/seeded.csv`: the people the manager added who have not joined, one row per person and festival, with the
@@ -140,9 +139,9 @@ The site database has the added people's first names (`community_seeded`, one ro
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page
 reads its community in the shape the server will answer with, so only where it comes from changes then.
 
-Its Share button gives the community's page for a shared link, `…/c/<key>/`, which shows its own card in chat apps and
-goes on at once to its page (The site: the share card and the icons). Of the community that card says its name alone, so
-members joining and plans changing leave it as it is; when a community is renamed, draw it again:
+Its Share button gives the community's one address, `…/c/<key>/`, its page, which shows its own card in chat apps (The
+site: the share card and the icons); an older `#community/<key>` link moves to it. Of the community that card says its
+name alone, so members joining and plans changing leave it as it is; when a community is renamed, draw it again:
 `mise run render:design`, then `mise run generate`.
 
 Nothing lists communities: a community's page is reached by its link only. Until the server can check who is a member,

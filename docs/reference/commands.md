@@ -27,7 +27,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `types:site` | tsc, strict, on the site and its tests |
 | `lint:site` | Biome's rules and format on the site, its tests and its CSS, with the lint/ plugins |
 | `knip` | No module, export or package the site doesn't use |
-| `test:site` | The site's tests, in Node and in Chromium (vitest.config.ts), on the database built from the export |
+| `test:site` | The site's tests, in Node and in Chromium (vitest.config.ts), on the database built from the export and the site built (served under /kiz-radar/ for the tests of the whole site) |
 | `dup` | No block written twice, in the code, tests, stylesheet or Actions, at the length .jscpd.json sets; the generated files aside |
 | `lock:py` | uv.lock is what pyproject.toml resolves to (the site's lock is held by install:site's --frozen-lockfile) |
 | `lint:py` | Ruff's rules on the Python code |

@@ -9,9 +9,9 @@ names the classes public/css/ defines, the only ones the site's h() takes, so a 
 then this command. lint/states.grit refuses a state's key written in quotes on the site, from the same keys.
 public/index.html and public/site.webmanifest name the home city (pipeline/airports.csv's home)
 where crawlers and installs read it, without the scripts. docs/reference/ holds the commands, the files and the
-states (pipeline/reference.py). public/c/<key>/index.html is a community's page for a shared link
-(pipeline/communities.csv); its image, public/c/<key>/share.png, is drawn by mise run render:design, with what it was
-drawn from beside it (share.json), which stale_cards compares with the data.
+states (pipeline/reference.py). public/c/<key>/index.html is a community's page, the site's page with the
+community's head tags (pipeline/communities.csv); its image, public/c/<key>/share.png, is drawn by mise run
+render:design, with what it was drawn from beside it (share.json), which stale_cards compares with the data.
 """
 
 import argparse
@@ -114,48 +114,43 @@ def manifest() -> str:
 SITE = 'https://clombion.github.io/kiz-radar/'  # where the site is published, as public/index.html's canonical link
 COMMUNITY_PAGES = ROOT / 'public' / 'c'  # a community's page for a shared link and its image, by its key, under it
 SHARE_CARD = ROOT / 'design' / 'share-card.html'  # the site's share card, of which a community's is a variant
-# what a community's page for a shared link may load: its redirect's script, and nothing else
 # a community's description where its link is shared, made of its name alone, so that no change to its data changes it
 COMMUNITY_SAID = '{name} · festival plans shared on Kiz Radar'
-COMMUNITY_CSP = "default-src 'none'; script-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'"
+# the tags of index.html's head a community's page has its own of: its base, title, description, canonical link, card
+# for a shared link and whether search engines list it; the rest of the page is index.html's, line for line
+HEAD_TAG = re.compile(
+    r'^(?:<base [^>]*>|<title>[^<]*</title>|<link rel="canonical" [^>]*>'
+    r'|<meta (?:name="(?:description|robots)"|property="og:(?:title|description|url|image|image:alt)") [^>]*>)\n',
+    re.MULTILINE,
+)
 
 
 def community_page(c: Community) -> str:
-    """A community's page for a shared link (public/c/<key>/index.html), since a static host serves a page at its
-    path, never its hash, and chat apps read it without its scripts: its name as the title, a description that its
-    data changing never changes, its image (public/c/<key>/share.png), and at once on to its page on the site (a
-    refresh, and public/c/redirect.js where scripts run); no search engine lists it."""
+    """A community's page (public/c/<key>/index.html): the site's page (index.html, as index_page makes it), its links
+    and files from the site's root (<base href="../../">), with the community's own name as its title, a description
+    that its data changing never changes, and its card where its link is shared (public/c/<key>/share.png); no search
+    engine lists it. The site shows the community at this address (routes.ts routeOf), so it is its one link."""
     key, name = c.key, html.escape(c.name)
     said = COMMUNITY_SAID.format(name=name)
-    there = f'../../#community/{key}'
-    return f"""<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<!-- a community's page for a shared link (pipeline/generate.py): what chat apps and social sites read of it, and at
-     once on to its page on the site -->
-<meta http-equiv="Content-Security-Policy" content="{COMMUNITY_CSP}">
-<meta name="robots" content="noindex">
-<meta name="kiz-community" content="{key}">
-<meta http-equiv="refresh" content="0; url={there}">
-<title>{name} · Kiz Radar</title>
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Kiz Radar">
-<meta property="og:title" content="{name}">
-<meta property="og:description" content="{said}">
-<meta property="og:url" content="{SITE}c/{key}/">
-<meta property="og:image" content="{SITE}c/{key}/share.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{name}, on Kiz Radar’s card">
-<meta name="twitter:card" content="summary_large_image">
-<script src="../redirect.js"></script>
-</head>
-<body>
-<p><a href="{there}">{name} on Kiz Radar</a></p>
-</body>
-</html>
-"""
+    own = '\n'.join(
+        [
+            '<base href="../../">',
+            f'<title>{name} · Kiz Radar</title>',
+            '<meta name="robots" content="noindex">',
+            f'<meta name="description" content="{said}">',
+            f'<link rel="canonical" href="{SITE}c/{key}/">',
+            f'<meta property="og:title" content="{name}">',
+            f'<meta property="og:description" content="{said}">',
+            f'<meta property="og:url" content="{SITE}c/{key}/">',
+            f'<meta property="og:image" content="{SITE}c/{key}/share.png">',
+            f'<meta property="og:image:alt" content="{name}, on Kiz Radar’s card">',
+        ]
+    )
+    index = index_page()
+    first = HEAD_TAG.search(index)
+    if first is None:
+        sys.exit(f'{INDEX.relative_to(ROOT)} has none of the head tags a community page has its own of')
+    return index[: first.start()] + own + '\n' + HEAD_TAG.sub('', index[first.start() :])
 
 
 class Drawn(BaseModel, frozen=True):

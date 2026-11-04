@@ -12,13 +12,19 @@ import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
 import { personView } from './people.ts';
 import { done, guarded, reportUncaught } from './report.ts';
-import { EXPLORE, parseRoute, type Route, type Show, sectionAt, TABS, type Tab } from './routes.ts';
+import { EXPLORE, type Route, routeOf, type Show, sectionAt, showInAddressBar, TABS, type Tab } from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';
 import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
 import { pill, slide } from './tabs.ts';
 import { dayYear, loading, monthYear, scrolling } from './ui.ts';
+
+// Every link and file from the site's root, whatever address the page moves to: index.html's <base> (../../ on a
+// community's page, c/<key>/), made a full address once, as the page loads, so that moving the address bar on (a
+// community's own address, from an older #community/<key>) moves no link.
+const base = document.querySelector('base') ?? document.head.appendChild(document.createElement('base'));
+base.href = new URL(base.getAttribute('href') ?? './', location.href).href;
 
 // the page's own parts, from index.html: one missing is a broken page
 const part = (selector: string): HTMLElement => {
@@ -82,7 +88,8 @@ const tabRows = () => [tabs, subnav];
 
 // Show the view the address names; scrollUp scrolls up to it (a new page, not the first one)
 function route({ scrollUp = false } = {}): void {
-  const { name, sub, qs } = parseRoute(location.hash);
+  const { name, sub, qs, moved } = routeOf(location.href, document.baseURI);
+  if (moved !== null) showInAddressBar(moved); // an older link's #community/<key>: the community's own address
   const from = sectionAt(at),
     to = sectionAt(name);
   at = name;

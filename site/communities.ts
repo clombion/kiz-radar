@@ -206,6 +206,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
     plan.replaceChildren(...nodes(agenda(current, today, c.manager, to)));
     showInAddressBar(communityHref(c.key, { from: to === steps[0] ? null : to }));
   };
+  document.title = `${c.name} · Kiz Radar`; // as its own page's title says it
   page(
     root,
     [

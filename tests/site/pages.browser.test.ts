@@ -1,0 +1,79 @@
+// The built site as GitHub Pages serves it, under /kiz-radar/ (vitest.config.ts serves public/ there), whole in a
+// frame: a community's one address, c/<key>/, is its page, an older #community/<key> link moves to it, and the tabs
+// from it go to the site's root. The community is the one pipeline/communities.csv has, by its key and name alone.
+import { expect, test, vi } from 'vitest';
+import { festivalsHref, TABS } from '../../site/routes.ts';
+
+const ROOT = '/kiz-radar/';
+const KEY = 'frost-lantern-river-maple';
+const NAME = 'Norwegians in festivals';
+
+// a frame of the site at an address, once its community page or view has drawn
+async function framed(address: string, drawn: string): Promise<HTMLIFrameElement> {
+  for (const old of document.querySelectorAll('iframe')) old.remove();
+  const frame = document.createElement('iframe');
+  frame.style.width = '1000px';
+  frame.style.height = '800px';
+  frame.src = address;
+  document.body.append(frame);
+  await vi.waitFor(
+    () => {
+      if (!frame.contentDocument?.querySelector(drawn)) throw new Error(`${address} has drawn no ${drawn} yet`);
+    },
+    { timeout: 30_000, interval: 100 },
+  );
+  return frame;
+}
+const where = (frame: HTMLIFrameElement) => {
+  const at = frame.contentWindow?.location;
+  return `${at?.pathname ?? ''}${at?.search ?? ''}${at?.hash ?? ''}`;
+};
+const heading = (frame: HTMLIFrameElement) => frame.contentDocument?.querySelector('.profile-head h1')?.textContent;
+
+test('a community’s address is its page: the site, its own title, and the address kept', async () => {
+  const frame = await framed(`${ROOT}c/${KEY}/`, '.profile-head h1');
+  expect([heading(frame), where(frame), frame.contentDocument?.title]).toEqual([
+    NAME,
+    `${ROOT}c/${KEY}/`,
+    `${NAME} · Kiz Radar`,
+  ]);
+  // the community's head tags, and no step elsewhere
+  const meta = (name: string) =>
+    frame.contentDocument?.querySelector(`meta[property="${name}"], meta[name="${name}"]`)?.getAttribute('content');
+  expect([meta('og:title'), meta('robots')]).toEqual([NAME, 'noindex']);
+  expect(frame.contentDocument?.querySelector('meta[http-equiv="refresh"]')).toBeNull();
+});
+
+test('its Share button gives its address', async () => {
+  const frame = await framed(`${ROOT}c/${KEY}/`, '.share-row button');
+  const shared = vi.fn(() => Promise.resolve());
+  Object.defineProperty(frame.contentWindow?.navigator, 'share', { value: shared, configurable: true });
+  frame.contentDocument?.querySelector<HTMLButtonElement>('.share-row button')?.click();
+  expect(shared).toHaveBeenCalledWith({ title: NAME, url: `${location.origin}${ROOT}c/${KEY}/` });
+});
+
+test('an older #community/<key> link moves to the community’s address and shows its page', async () => {
+  const frame = await framed(`${ROOT}#community/${KEY}`, '.profile-head h1');
+  expect([heading(frame), where(frame)]).toEqual([NAME, `${ROOT}c/${KEY}/`]);
+  // its links still the root's, the address moved or not
+  expect(frame.contentDocument?.querySelector<HTMLAnchorElement>('a.brand')?.href).toBe(
+    `${location.origin}${ROOT}${festivalsHref()}`,
+  );
+});
+
+test('the tabs and the brand from a community’s page go to the site’s root', async () => {
+  const frame = await framed(`${ROOT}c/${KEY}/`, '.profile-head h1');
+  const links = [...(frame.contentDocument?.querySelectorAll<HTMLAnchorElement>('nav.tabs a, a.brand') ?? [])];
+  expect(links.map((a) => a.href)).toEqual([
+    `${location.origin}${ROOT}${festivalsHref()}`, // the brand
+    ...TABS.map(([, , href]) => `${location.origin}${ROOT}${href}`),
+  ]);
+  frame.contentDocument?.querySelector<HTMLAnchorElement>('nav.tabs a[data-nav="friends"]')?.click();
+  await vi.waitFor(
+    () => {
+      if (!frame.contentDocument?.querySelector('.friends-near')) throw new Error('not on the Friends tab yet');
+    },
+    { timeout: 30_000, interval: 100 },
+  );
+  expect(where(frame)).toBe(`${ROOT}${TABS.find(([nav]) => nav === 'friends')?.[2]}`);
+});

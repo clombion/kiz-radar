@@ -1210,7 +1210,7 @@ test('the calendar shows today’s four months between its steps, the agenda the
 });
 
 test('the steps go through the periods in place to the last trip’s, the agenda with them, the address keeping it', () => {
-  const was = location.hash;
+  const was = location.href;
   try {
     // Maja to Riga in September: March to June with nothing, then July to October
     withAdded([['Maja', RIGA]], () => {
@@ -1220,7 +1220,7 @@ test('the steps go through the periods in place to the last trip’s, the agenda
       for (const _ of [1, 2]) {
         step(root, 'Next four months');
         seen.push(periodOf(root));
-        addresses.push(location.hash.split('?')[1] ?? '');
+        addresses.push(`${location.pathname.split('/').slice(-3).join('/')}${location.search}`);
       }
       expect(seen.map((t) => t.said)).toEqual(['Nov 2026 – Feb 2027', 'Mar – Jun 2027', 'Jul – Oct 2027']);
       expect(seen[1]?.months).toEqual(['March 2027', 'April 2027', 'May 2027', 'June 2027']);
@@ -1234,15 +1234,16 @@ test('the steps go through the periods in place to the last trip’s, the agenda
         [false, false],
         [false, true],
       ]);
-      expect(addresses).toEqual(['from=2027-03', 'from=2027-07']);
+      // the community's own address, c/<key>/, the period in its query
+      expect(addresses).toEqual([`c/${COMMUNITY}/?from=2027-03`, `c/${COMMUNITY}/?from=2027-07`]);
       // the sentence and "Next" are of every trip, whatever period shows
       for (const t of seen) expect(t.head).toEqual(HEAD);
       for (const _ of [1, 2]) step(root, 'Previous four months');
       expect(periodOf(root).said).toBe('Nov 2026 – Feb 2027');
-      expect(location.hash).not.toContain('from=');
+      expect(location.search).not.toContain('from=');
     });
   } finally {
-    history.replaceState(null, '', was || location.pathname);
+    history.replaceState(null, '', was);
   }
 });
 

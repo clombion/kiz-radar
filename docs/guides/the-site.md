@@ -69,8 +69,8 @@ screen a swipe goes to the next or previous of those five; on the map a swipe co
   home) says "Not available yet" for now. A person's page (`#friends/<key>`) is as before. The visitor's own communities
   will come at the top once there are accounts.
 
-A community's page (`#community/<key>`) has no tab and is listed nowhere: its link alone reaches it, and it shows under
-Friends ([Communities](plans-and-promos.md#communities)).
+A community's page (`c/<key>/` from the site's root) has no tab and is listed nowhere: its link alone reaches it, and it
+shows under Friends ([Communities](plans-and-promos.md#communities)).
 
 The search (the header's button, `/` or Ctrl/⌘+K) finds festivals, artists, people, cities, countries, styles and
 highlights as you type, grouped by kind, accents and case aside. What has nothing coming up (a past festival, someone
@@ -90,20 +90,26 @@ A shared link shows `public/share-card.png`, drawn from `design/share-card.html`
 the icons come from `public/mark.svg`. To redraw them, run `mise run render:design` (it builds the site database first,
 and draws with the repository's Playwright); it also makes `public/loading.svg`.
 
-A community's shared link has a page of its own, `public/c/<key>/index.html` (published at `…/kiz-radar/c/<key>/`),
-since a static host serves the page at its path, never its hash, and chat apps read a page without its scripts. Its
-title and `og:title` are the community's name, its description that name in one template ("Norwegians in festivals ·
-festival plans shared on Kiz Radar", `COMMUNITY_SAID` in `pipeline/generate.py`), its image `public/c/<key>/share.png`,
-a large one; no search engine lists it, and it sends a visitor at once to `#community/<key>` (a refresh, and
-`public/c/redirect.js`, which the page's Content Security Policy lets run, as nothing else). The community page's Share
-button gives this link. The image is a variant of the site's share card (its mark, fonts and colours; the site's card
-itself is as it was): an eyebrow ("Community", by the people icon), the community's name over a highlighter swipe, a
-subtitle the same for every community ("Who's going where, and when they fly in"), and, in place of the map, an example
-month as the site draws one (days before today grey, today ringed by hand, a dot under a day only travelled on), its two
-trips' swipes the trails of a plane over a long weekend and of a car; it is an example, from no data: nothing of a
-community but its name is on its page or its image, so members joining and plans changing leave both as they are.
-`mise run generate` makes the page from `pipeline/communities.csv`; `mise run render:design` draws the image and writes
-beside it what it was drawn from, `share.json` (the name, and the digest of `design/share-card.html`). Both are
-committed, as the site's share card is. The tests compare each `share.json` with the communities and the site's card
-(`stale_cards`), so a community renamed, or the card's design changed, without drawing again fails them. The fonts,
-Inter and Caveat, are served from `public/fonts` under the SIL Open Font License.
+A community has one address, `…/kiz-radar/c/<key>/`, its page: `public/c/<key>/index.html`, which `mise run generate`
+makes from `public/index.html` (so the two never drift apart), line for line but for the head tags it has its own of
+(`HEAD_TAG` in `pipeline/generate.py`), since a static host serves a page at its path, never its hash, and chat apps
+read a page without its scripts. Its `<base href="../../">` (index.html's is `./`) makes every link and file of it the
+site root's, under `/kiz-radar/` on GitHub Pages as at the root of the local server, and the page's Content Security
+Policy lets a `<base>` of the page's own site (`base-uri 'self'`); `site/main.ts` makes the base a full address as the
+page loads. The site shows the community at this address (`routeOf` in `site/routes.ts`), its period in the query
+(`?from=2027-03`), and keeps it in the address bar; the tabs and every other link go to the root's views. An older link,
+`#community/<key>`, shows the page and moves the address to `c/<key>/`. Its title and `og:title` are the community's
+name, its description that name in one template ("Norwegians in festivals · festival plans shared on Kiz Radar",
+`COMMUNITY_SAID`), its image `public/c/<key>/share.png`, a large one, its canonical address its own; no search engine
+lists it. The community page's Share button gives this address. The image is a variant of the site's share card (its
+mark, fonts and colours; the site's card itself is as it was): an eyebrow ("Community", by the people icon), the
+community's name over a highlighter swipe, a subtitle the same for every community ("Who's going where, and when they
+fly in"), and, in place of the map, an example month as the site draws one (days before today grey, today ringed by
+hand, a dot under a day only travelled on), its two trips' swipes the trails of a plane over a long weekend and of a
+car; it is an example, from no data: nothing of a community but its name is on its page or its image, so members joining
+and plans changing leave both as they are. `mise run generate` makes the page from `pipeline/communities.csv`;
+`mise run render:design` draws the image and writes beside it what it was drawn from, `share.json` (the name, and the
+digest of `design/share-card.html`). Both are committed, as the site's share card is. The tests compare each
+`share.json` with the communities and the site's card (`stale_cards`), so a community renamed, or the card's design
+changed, without drawing again fails them. The fonts, Inter and Caveat, are served from `public/fonts` under the SIL
+Open Font License.

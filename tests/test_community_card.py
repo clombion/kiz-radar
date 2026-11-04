@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 from pipeline import ROOT, generate
-from pipeline.records import Community
+from pipeline.records import Airport, Community
 
 KEY = 'frost-lantern-river-maple'
 NAME = 'Norwegians in festivals'
@@ -16,9 +16,10 @@ NAME = 'Norwegians in festivals'
 
 @pytest.fixture
 def communities(data_folder: Path) -> list[Community]:
-    """The committed communities, in the test's data folder."""
+    """The committed communities, and the airports, in the test's data folder."""
     (data_folder / 'pipeline').mkdir(exist_ok=True)
-    _ = shutil.copy(ROOT / Community.FILE, data_folder / Community.FILE)
+    for f in (Community.FILE, Airport.FILE):  # the site's page names the home airport's city
+        _ = shutil.copy(ROOT / f, data_folder / f)
     return Community.read()
 
 
@@ -55,26 +56,31 @@ def test_a_card_is_stale_when_its_name_or_the_sites_card_changes_and_only_then(
     assert generate.stale_cards(folder) == ['gone']
 
 
-def test_a_communitys_page_names_it_shows_its_card_and_sends_on_to_it(communities: list[Community]) -> None:
-    """Its title and og:title its name, its description the one template of its name, its image its card, a large
-    one; no search engine lists it; and it goes on at once to its page on the site."""
+def test_a_communitys_page_is_the_sites_with_its_own_head_tags(communities: list[Community]) -> None:
+    """Its page is index.html, line for line, but for the head tags it has its own of: its links and files from the
+    site's root, its title and og:title its name, its description the one template of its name, its image its card, a
+    large one, its canonical address its own; no search engine lists it. Nothing sends a visitor anywhere else."""
     page = generate.community_page(communities[0])
     meta = dict(re.findall(r'<meta (?:property|name)="([^"]+)" content="([^"]*)"', page))
+    assert '<base href="../../">' in page
     assert f'<title>{NAME} · Kiz Radar</title>' in page
     assert meta['og:title'] == NAME
-    assert meta['og:description'] == f'{NAME} · festival plans shared on Kiz Radar'
+    assert meta['og:description'] == meta['description'] == f'{NAME} · festival plans shared on Kiz Radar'
     assert meta['og:image'] == f'{generate.SITE}c/{KEY}/share.png'
     assert meta['og:url'] == f'{generate.SITE}c/{KEY}/'
+    assert f'<link rel="canonical" href="{generate.SITE}c/{KEY}/">' in page
     assert meta['twitter:card'] == 'summary_large_image'
     assert meta['robots'] == 'noindex'
-    assert meta['kiz-community'] == KEY
-    assert f'content="0; url=../../#community/{KEY}"' in page
-    assert '<script src="../redirect.js"></script>' in page
+    assert 'http-equiv="refresh"' not in page
+    index = generate.index_page()
+    assert generate.HEAD_TAG.sub('', page) == generate.HEAD_TAG.sub('', index)
+    assert '<base href="./">' in index
     assert (generate.COMMUNITY_PAGES / KEY / 'index.html').read_text(encoding='utf-8') == page
 
 
-def test_a_communitys_description_is_its_name_escaped_in_the_one_template() -> None:
+def test_a_communitys_description_is_its_name_escaped_in_the_one_template(communities: list[Community]) -> None:
     """Any name reads well in it, and a name's markup stays text."""
+    assert communities
     odd = Community(key='a-b-c-d', name='Kiz & "friends"', manager='cedric', note='')
     meta = dict(re.findall(r'<meta (?:property|name)="([^"]+)" content="([^"]*)"', generate.community_page(odd)))
     assert meta['og:description'] == 'Kiz &amp; &quot;friends&quot; · festival plans shared on Kiz Radar'

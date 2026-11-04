@@ -3,6 +3,7 @@
 // removes that entry. go() opens a link once the entry is gone, so the link isn't undone by it.
 import { button, h, type Kid } from './dom.ts';
 import { done } from './report.ts';
+import { go } from './routes.ts';
 
 export interface Modal {
   open: (from?: Element | null) => boolean;
@@ -47,7 +48,7 @@ export function modal(dlg: HTMLDialogElement): Modal {
     shut,
     go: (href) =>
       shut().then(() => {
-        location.hash = href;
+        go(href);
       }),
   };
 }

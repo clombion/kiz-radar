@@ -20,6 +20,7 @@ const SCRIPTS = [
   '/node_modules/topojson-client/dist/topojson-client.min.js',
 ];
 const main = () => document.querySelector<HTMLElement>('#main');
+let START = ''; // the page's own address, without a hash
 
 const script = (src: string): Promise<unknown> =>
   new Promise((loaded, failed) => {
@@ -41,6 +42,7 @@ beforeAll(async () => {
   });
   document.body.replaceChildren(...document.importNode(INDEX.body, true).childNodes);
   location.hash = '';
+  START = location.href;
   await import('../../site/main.ts');
   await vi.waitUntil(() => document.querySelector('#freshness')?.textContent?.startsWith('It covers'), {
     timeout: 30_000,
@@ -63,8 +65,9 @@ const unnamed = (): string[] =>
   });
 
 // every view the page links to: its tabs and Explore's, and the links index.html has (the SQL page); and the
-// community's page, which only its link reaches
-const COMMUNITY = communityHref('frost-lantern-river-maple');
+// community's page, which only its link reaches: an older link to it, #community/<key>, which moves the address to its
+// own, c/<key>/ (each view starts from the page's own address again)
+const COMMUNITY = '#community/frost-lantern-river-maple';
 const VIEWS = [
   ...new Set([
     ...[...TABS, ...EXPLORE].map(([, , href]) => href),
@@ -79,6 +82,7 @@ test('the page names every control it has before a view shows', () => {
 });
 
 test.for(VIEWS)('%s takes the focus as a new page and names every control', async (href) => {
+  history.replaceState(null, '', START);
   if (location.hash === href) location.hash = ''; // so it is a new page
   if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
   expect(document.activeElement).toBe(document.body);
@@ -87,6 +91,9 @@ test.for(VIEWS)('%s takes the focus as a new page and names every control', asyn
   await expect.poll(() => document.activeElement).toBe(main());
   expect(main()?.childElementCount).toBeGreaterThan(0);
   expect(unnamed()).toEqual([]);
+  // an older link to a community's page moves to its own address
+  const own = new URL(communityHref('frost-lantern-river-maple'), document.baseURI).href;
+  expect(href !== COMMUNITY || location.href === own).toBe(true);
 });
 
 test('every view the page shows is tested', () => {
@@ -116,6 +123,7 @@ test('a view that throws while it builds says so in its place, and the page arou
   // one bad row: an artist of a kind no state has, which reading the artists refuses
   const db = await load(loadSite());
   db.exec("PRAGMA ignore_check_constraints = ON; UPDATE artists SET kind = 'planted'");
+  history.replaceState(null, '', START);
   location.hash = artistsHref({ q: 'a' });
   await expect.poll(() => main()?.textContent).toContain('This page could not be shown');
   expect(main()?.textContent).toContain('"planted" is no artist_kind state');

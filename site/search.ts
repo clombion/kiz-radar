@@ -34,8 +34,8 @@ import {
   festivalsHref,
   mapHref,
   type Params,
-  parseRoute,
   personHref,
+  routeOf,
 } from './routes.ts';
 import { flag as flagCol, num, opt, str } from './rows.ts';
 import { KEY } from './states.ts';
@@ -50,7 +50,7 @@ const SUGGEST_COUNTRIES = 4;
 
 // Where the festival list is now, so a country or style picked here keeps the time and price already chosen.
 function finderParams(): Record<string, string> {
-  const { name, sub, qs } = parseRoute(location.hash);
+  const { name, sub, qs } = routeOf(location.href, document.baseURI);
   return name === 'finder' && sub.length === 0 ? Object.fromEntries(new URLSearchParams(qs)) : {};
 }
 

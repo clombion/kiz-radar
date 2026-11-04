@@ -8,11 +8,14 @@ import {
   artistHref,
   artistsHref,
   communityHref,
+  communityShareHref,
   countriesHref,
   festivalsHref,
+  go,
   mapHref,
   parseRoute,
   personHref,
+  routeOf,
   SECTIONS,
   sectionAt,
   showInAddressBar,
@@ -102,11 +105,6 @@ test('an address leaves out a choice with no value, and a section is found by it
   });
   expect(parseRoute(mapHref())).toEqual({ name: 'map', sub: [], qs: '' });
   expect(parseRoute(personHref('cedric'))).toEqual({ name: 'friends', sub: ['cedric'], qs: '' });
-  expect(parseRoute(communityHref('frost-lantern-river-maple'))).toEqual({
-    name: 'community',
-    sub: ['frost-lantern-river-maple'],
-    qs: '',
-  });
   expect(parseRoute(countriesHref({ sort: 'name' }))).toEqual({ name: 'countries', sub: [], qs: 'sort=name' });
   expect(SECTIONS[sectionAt('artists')]?.[1]).toBe(artistsHref());
   expect(sectionAt('sql')).toBe(-1);
@@ -116,6 +114,43 @@ test('an address leaves out a choice with no value, and a section is found by it
   vi.stubGlobal('history', { replaceState });
   showInAddressBar(artistHref(3));
   expect(replaceState).toHaveBeenCalledWith(null, '', artistHref(3));
+  vi.unstubAllGlobals();
+});
+
+test('a community’s page is its own address from the site’s root, which an older #community link moves to', () => {
+  const root = 'https://clombion.github.io/kiz-radar/';
+  const key = 'frost-lantern-river-maple';
+  expect(communityHref(key)).toBe(`c/${key}/`);
+  expect(communityHref(key, { from: '2027-03' })).toBe(`c/${key}/?from=2027-03`);
+  const at = (address: string, base = root) => routeOf(new URL(address, root).href, base);
+  expect(at(`c/${key}/`)).toEqual({ name: 'community', sub: [key], qs: '', moved: null });
+  expect(at(`c/${key}/index.html?from=2027-03`)).toEqual({
+    name: 'community',
+    sub: [key],
+    qs: 'from=2027-03',
+    moved: null,
+  });
+  // the root's base names its page too, index.html
+  expect(at(`c/${key}/`, `${root}index.html`).name).toBe('community');
+  // an older link: the community's page, and its own address for the address bar
+  expect(at(`#community/${key}?from=2027-03`)).toEqual({
+    name: 'community',
+    sub: [key],
+    qs: 'from=2027-03',
+    moved: `c/${key}/?from=2027-03`,
+  });
+  // every other view by its hash, whatever the path; a path outside the root's names no community
+  expect(at(mapHref())).toEqual({ name: 'map', sub: [], qs: '', moved: null });
+  expect(at('#community')).toEqual({ name: 'community', sub: [], qs: '', moved: null });
+  expect(routeOf(`https://x/elsewhere/c/${key}/${mapHref()}`, root).name).toBe('map');
+  expect(at('c/a/b/').name).toBe('finder');
+  // the full address the Share button gives, and a link gone to from the root
+  vi.stubGlobal('document', { baseURI: root });
+  const assign = vi.fn();
+  vi.stubGlobal('location', { assign });
+  expect(communityShareHref(key)).toBe(`${root}c/${key}/`);
+  go(mapHref());
+  expect(assign).toHaveBeenCalledWith(`${root}${mapHref()}`);
   vi.unstubAllGlobals();
 });
 

@@ -1,11 +1,12 @@
 // Every link and URL the site builds goes through here, so a route has one spelling.
 // a view's state for its address: empty, null, undefined and false leave a key out
 export type Params = Readonly<Record<string, string | number | boolean | null | undefined>>;
-const hash = (path: string, params: Params = {}): string => {
+const query = (params: Params = {}): string => {
   const p = new URLSearchParams();
   for (const [k, v] of Object.entries(params)) if (v !== '' && v != null && v !== false) p.set(k, String(v));
-  return `#${path}${p.size > 0 ? `?${p}` : ''}`;
+  return p.size > 0 ? `?${p}` : '';
 };
+const hash = (path: string, params: Params = {}): string => `#${path}${query(params)}`;
 export const festivalsHref = (params?: Params) => hash('finder', params);
 export const mapHref = (params?: Params) => hash('map', params);
 export const eventOnMapHref = (id: number, params?: Params) => hash(`map/event/${id}`, params);
@@ -33,12 +34,12 @@ export const artistsHref = (params?: Params) => hash('artists', params);
 export const artistHref = (id: number) => hash(`artists/${id}`);
 const friendsHref = () => hash('friends');
 export const personHref = (key: string) => hash(`friends/${key}`);
-// a community's page, which only its link reaches: nothing lists communities
-export const communityHref = (key: string, params?: Params) => hash(`community/${key}`, params);
-// a community's page for a shared link (public/c/<key>/, pipeline/generate.py), which a chat app reads for its card and
-// which goes on at once to communityHref: the link its Share button gives, beside the page the site is at
-export const communityShareHref = (key: string) =>
-  new URL(`c/${encodeURIComponent(key)}/`, location.href.split('#')[0]).href;
+// A community's page, which only its link reaches (nothing lists communities): a page of its own, c/<key>/ from the
+// site's root (public/c/<key>/index.html, the site's page with the community's card for a shared link, made by
+// pipeline/generate.py), its state in its query. Every page has its root as its base (<base>), so this one relative
+// link is the same from any page; communityShareHref is it in full, the link its Share button gives.
+export const communityHref = (key: string, params?: Params) => `c/${encodeURIComponent(key)}/${query(params)}`;
+export const communityShareHref = (key: string) => new URL(communityHref(key), document.baseURI).href;
 export const countriesHref = (params?: Params) => hash('countries', params);
 
 // the views a tab or a swipe goes to, by name, and the tabs of the header
@@ -81,6 +82,27 @@ export function parseRoute(address: string): { name: string; sub: string[]; qs: 
   const [name = '', ...sub] = path.split('/');
   return { name, sub, qs };
 }
+// What a page's address names, from the site's root (its base): a community's page by its path, c/<key>/, and every
+// other view by its hash. An older link's #community/<key> names the community's page too, and moved is the address it
+// has now, for the address bar.
+const FILE_NAME = /[^/]*$/u;
+const COMMUNITY_PATH = /^c\/(?<key>[^/]+)\/(?:index\.html)?$/u;
+export function routeOf(href: string, root: string): { name: string; sub: string[]; qs: string; moved: string | null } {
+  const url = new URL(href),
+    base = new URL(root).pathname.replace(FILE_NAME, '');
+  const key = url.pathname.startsWith(base)
+    ? COMMUNITY_PATH.exec(url.pathname.slice(base.length))?.groups?.['key']
+    : undefined;
+  if (key !== undefined)
+    return { name: 'community', sub: [decodeURIComponent(key)], qs: url.search.slice(1), moved: null };
+  const { name, sub, qs } = parseRoute(url.hash);
+  const [old] = sub;
+  if (name === 'community' && old !== undefined && old !== '')
+    return { name, sub: [old], qs, moved: communityHref(old, Object.fromEntries(new URLSearchParams(qs))) };
+  return { name, sub, qs, moved: null };
+}
+// Go to a link the site built: from its root, so a hash link from a community's page goes to the root's view.
+export const go = (href: string): void => location.assign(new URL(href, document.baseURI).href);
 
 // Show a view's state in the address bar without adding a history entry.
 export const showInAddressBar = (href: string): void => history.replaceState(null, '', href);
