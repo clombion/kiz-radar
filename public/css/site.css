@@ -2503,7 +2503,6 @@ html:has(dialog.search[open]) {
 /* the roster: a line a party, its name, its days and, on a computer, where it stays beside them (on a phone, under
    its name, and its airports left out) */
 .gantt {
-  position: relative; /* what a popover of names is placed in */
   display: grid;
   grid-template-columns: 6.4rem minmax(0, 1fr);
   max-width: 48rem;
@@ -2636,23 +2635,17 @@ html:has(dialog.search[open]) {
   background: var(--highlight);
   opacity: 0.3;
 }
-/* a line called collectively ("Everyone else"): in the text's colour, underlined as the other names; its names in a
-   popover while the pointer is over it, or once opened, placed inside the card (gantt.ts) */
-.gantt-group {
-  white-space: nowrap;
-}
+/* a line called collectively ("Everyone else"): in the text's colour, underlined as the other names; its names, while
+   the pointer is over it or once opened, in a box on a row of their own under its line, which the card grows to hold */
 .gantt-who {
   color: var(--text);
+  white-space: nowrap;
 }
 .gantt-who-names {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: var(--z-popover);
   display: none;
-  width: max-content;
-  max-width: min(16rem, 100%);
-  white-space: normal;
+  grid-column: 1 / -1;
+  justify-self: start;
+  max-width: 100%;
   padding: 0.3rem 0.5rem;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -2662,8 +2655,7 @@ html:has(dialog.search[open]) {
   font-size: 0.74rem;
   line-height: 1.3;
 }
-.gantt-group:hover .gantt-who-names,
-.gantt-who[aria-expanded="true"] + .gantt-who-names {
+.gantt-who-names.gantt-open {
   display: block;
 }
 .gantt-said {

@@ -67,7 +67,7 @@ elsewhere or on the day again closes it, and the focus stays on the day.
 Then the agenda: a heading a month ("November · 3 trips", with the year in January), and a row a trip, soonest first:
 its days ("Fri 20 – Sun 22 Nov"), the festival and where it is (which leads to it on the map), and who of the community
 goes: its members as on any card (as their couple when both go, teaching when in the line-up), then the people added:
-"Christina teaching · Sian teaching and Carolina going". Hovering an added name says who added them ("Added by Cédric").
+"Christina teaching · Sian teaching and Caroline going". Hovering an added name says who added them ("Added by Cédric").
 Whether someone added teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the
 manager never says it, and someone teaching links to their artist page. The next trip is open; the others open from
 their button, on a card under the row. An opened trip is a roster of who travels when: its days across the top, from the
@@ -79,8 +79,8 @@ own (the people the manager added are always on it). With three units or fewer e
 the line of the most people, if they are more than three, is "Everyone" when it is the only line and "Everyone else"
 beside others (of two lines alike in size, the first to arrive; those who have not said, last). A collective name, in
 the text's colour and dotted under as the other names, is a button that shows its names while the pointer is over it and
-from a tap or a key, until the next or Escape, in a popover kept inside the card (under the name, or above it when the
-card has no room below). Lines go by arrival, those who have not said last. Each line has its name (what its people do
+from a tap or a key, until the next or Escape, in a box on a row of its own under the line, which the card grows to
+hold, covering nothing. Lines go by arrival, those who have not said last. Each line has its name (what its people do
 there is the row's to say), a light highlighter's swipe from the hour they arrive to the hour they leave with the times
 at its ends (and the airports, on a computer), and where it stays: beside it on a computer; on a phone, inside the bar
 between its times (cut short with an ellipsis, its full name on hover), or under its name when the bar is too short to

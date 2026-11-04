@@ -155,7 +155,7 @@ const agendaRow = (root: HTMLElement, title: string) =>
   );
 const KUOF = 'Cédric & Christina teaching · Tonje, Ragnhild and Maja going';
 // Christina alone of the members goes to Glasgow, named as herself; Sian, added by Cédric, teaches there
-const GLASGOW = 'Christina teaching · Sian teaching and Carolina going';
+const GLASGOW = 'Christina teaching · Sian teaching and Caroline going';
 
 test('a community’s head says who it is, when most members travel and where next, and whom it is for', () => {
   const root = onDay('2026-11-03', () => communityPage(COMMUNITY));
@@ -601,10 +601,10 @@ test('an opened trip draws who travels when: the days from the first in to the l
     expect(glasgow.bars).toEqual([]);
     expect(glasgow.none.map((n) => n.at)).toEqual([[0, 100]]);
     expect(glasgow.parties).toEqual([]);
-    expect(glasgow.said).toBe('not said yet: Christina, Sian and Carolina');
-    expect(glasgow.unsaid).toBe('Christina, Sian and Carolina');
+    expect(glasgow.said).toBe('not said yet: Christina, Sian and Caroline');
+    expect(glasgow.unsaid).toBe('Christina, Sian and Caroline');
     expect(titled(agendaRow(root, 'Glasgow')?.querySelector('.gantt-unsaid'))).toEqual(
-      ['Sian', 'Carolina'].map((n) => [n, 'Added by Cédric']),
+      ['Sian', 'Caroline'].map((n) => [n, 'Added by Cédric']),
     );
     // a couple who has not said is named as one
     expect(ganttOf(opened(root, 'HOT Ice')).unsaid).toBe('Cédric & Christina');
@@ -913,6 +913,15 @@ async function collectiveOf(root: HTMLElement) {
     box.right <= card.right &&
     box.top >= card.top &&
     box.bottom <= card.bottom;
+  // and over nothing else of the roster: the other cells it meets, by their text
+  const meets = (r: DOMRect) =>
+    box !== undefined &&
+    r.width > 0 &&
+    Math.min(r.right, box.right) - Math.max(r.left, box.left) > 0.5 &&
+    Math.min(r.bottom, box.bottom) - Math.max(r.top, box.top) > 0.5;
+  const covers = [...(row?.querySelectorAll('.gantt > *') ?? [])]
+    .filter((c) => c !== list && meets(c.getBoundingClientRect()))
+    .map((c) => said(c));
   who?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
   states.push(state());
   if (who) await userEvent.hover(who);
@@ -924,6 +933,7 @@ async function collectiveOf(root: HTMLElement) {
     unsaid: lines.map((n) => n.matches('.gantt-unsaid')),
     rule: ganttOf(row).none,
     inCard,
+    covers,
     // its label: the colour of the text around it, underlined dotted as the other names
     label: who
       ? [getComputedStyle(who).color === getComputedStyle(root).color, getComputedStyle(who).textDecorationStyle]
@@ -958,10 +968,11 @@ test('a roster of more than three, its biggest line of more than three people "E
       expect(rule?.rgb).toEqual(seen.accent);
       // its label as dark as the text, dotted under as the other names
       expect(seen.label).toEqual([true, 'dotted']);
-      // its names: hidden; shown by a tap, inside the card, hidden again by Escape; shown while the pointer is over
+      // its names: hidden; shown by a tap, under the line in the card and over nothing, hidden again by Escape; shown while the pointer is over
       // it; and in the words
       expect(seen.names).toBe('Tonje, Ragnhild, Maja, Ola and Kari');
       expect(seen.inCard).toBe(true);
+      expect(seen.covers).toEqual([]);
       expect(seen.states).toEqual([
         ['false', false],
         ['true', true],
