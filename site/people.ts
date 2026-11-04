@@ -10,7 +10,7 @@ import { artistHref, personHref } from './routes.ts';
 import { EVENT, num, str } from './rows.ts';
 import { joined } from './wording.ts';
 
-// Anyone with the link sees it; keeping plans to chosen friends needs the accounts that come later.
+// Public: anyone sees it; keeping plans to chosen friends needs the accounts that come later.
 export function personView(root: HTMLElement, [key]: readonly string[]): void {
   if (!key) {
     everyone(root);

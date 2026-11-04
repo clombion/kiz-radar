@@ -1,6 +1,7 @@
 // A community's page (pipeline/communities.csv, community_members.csv, seeded.csv, travel.csv, stays.csv): who is in it, when most
-// of it is away, the months it is away in, and an agenda of its trips, each opening on who travels when. Only its link
-// reaches it: nothing lists communities. Its members and the people its manager added, who have not joined, are named;
+// of it is away, the months it is away in, and an agenda of its trips, each opening on who travels when. It is public,
+// as everything the site shows is: no tab links to it, but its data is in the site's database, which anyone can read
+// (the SQL page). Its members and the people its manager added, who have not joined, are named;
 // an added one's name says on hover who added them. Members say how they travel; the people added never do.
 import {
   type Away,
@@ -230,8 +231,8 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
           {
             class: 'privacy',
             role: 'img',
-            'aria-label': `Anyone with the link can see this page · ${members}`,
-            title: `Anyone with the link can see this page · ${members}`,
+            'aria-label': `Public · anyone can see this page · ${members}`,
+            title: `Public · anyone can see this page · ${members}`,
           },
           Drawing.LOCK.into(h('span', { 'aria-hidden': 'true' })),
           Drawing.PEOPLE.into(h('span', { 'aria-hidden': 'true' })),

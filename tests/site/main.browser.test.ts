@@ -65,7 +65,7 @@ const unnamed = (): string[] =>
   });
 
 // every view the page links to: its tabs and Explore's, and the links index.html has (the SQL page); and the
-// community's page, which only its link reaches: an older link to it, #community/<key>, which moves the address to its
+// community's page, which no tab links to: an older link to it, #community/<key>, which moves the address to its
 // own, c/<key>/ (each view starts from the page's own address again)
 const COMMUNITY = '#community/frost-lantern-river-maple';
 const VIEWS = [

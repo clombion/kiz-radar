@@ -34,7 +34,7 @@ export const artistsHref = (params?: Params) => hash('artists', params);
 export const artistHref = (id: number) => hash(`artists/${id}`);
 const friendsHref = () => hash('friends');
 export const personHref = (key: string) => hash(`friends/${key}`);
-// A community's page, which only its link reaches (nothing lists communities): a page of its own, c/<key>/ from the
+// A community's page, which no tab links to (it is public all the same): a page of its own, c/<key>/ from the
 // site's root (public/c/<key>/index.html, the site's page with the community's card for a shared link, made by
 // pipeline/generate.py), its state in its query. Every page has its root as its base (<base>), so this one relative
 // link is the same from any page; communityShareHref is it in full, the link its Share button gives.

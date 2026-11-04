@@ -46,19 +46,19 @@ nobody can create, join or claim one yet, and its rows are written by hand.
   arrive and the day before they leave, when travel.csv says them; the build stops on a row that breaks this, of anyone
   but a member, or to a festival they don't plan.
 
-Travel and stays are kept only for a few days after a trip. A trip ends on the last day any member leaves (or the
-morning after their last night), or the festival's last day when that is later; from `KEPT_DAYS` (3) days after that,
-the build no longer publishes the trip's rows of `travel.csv` and `stays.csv`, and prints a warning for each one
-("warning: travel.csv: christina to event 18964: the trip ended more than 3 days ago, so this row is no longer
-published; delete it"). It goes on building: delete the rows it names, and commit.
+The site shows travel and stays until a few days after a trip; the repository's history keeps them. A trip ends on the
+last day any member leaves (or the morning after their last night), or the festival's last day when that is later; from
+the fourth day after that (more than `KEPT_DAYS`, 3, days after), the build no longer publishes the trip's rows of
+`travel.csv` and `stays.csv`, and prints a warning for each one ("warning: travel.csv: christina to event 18964: the
+trip ended more than 3 days ago, so this row is no longer published; delete it"). It goes on building: delete the rows
+it names, and commit.
 
 The page shows the community's name ("Norwegians in festivals"), when most members travel at once ("Most members are
 travelling 20–22 Nov: 5 people, to Oslo.") and, on a line of its own, where they go next ("Next: Glasgow, this Friday"),
 or, while a trip is on, where they are and until when, and the trip after it ("Now: Glasgow, until Mon · Next: Oslo, on
 20 Nov"), then a Share this page button, which opens the device's share sheet or else copies the link, beside a badge of
-who sees it: a lock, people and the number of members, which says what is true until members sign in, "Anyone with the
-link can see this page · 3 members", on hover and to a screen reader. Who manages it is said with the members, at the
-foot of the page.
+who sees it: a lock, people and the number of members, which says what is true, "Public · anyone can see this page · 3
+members", on hover and to a screen reader. Who manages it is said with the members, at the foot of the page.
 
 Under the head, the calendar: four months at a time, a period from today's month (November to February, then March to
 June, then July to October: three make a year), named between two buttons, on its line, to the periods before and after
@@ -144,8 +144,10 @@ site: the share card and the icons); an older `#community/<key>` link moves to i
 name alone, so members joining and plans changing leave it as it is; when a community is renamed, draw it again:
 `mise run render:design`, then `mise run generate`.
 
-Nothing lists communities: a community's page is reached by its link only. Until the server can check who is a member,
-the link is the only thing that keeps it to them, as it is for a person's plans page.
+A community is public, as everything the site shows is: no tab links to its page, but its key, its members, the people
+its manager added and their plans and travel are in the site's database, which anyone can read (the SQL page), and in
+this repository and its history. Everyone listed has agreed to this. Until the server can check who is a member, add
+only what its people agree to make public.
 
 ## Promo codes
 

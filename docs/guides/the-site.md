@@ -69,8 +69,9 @@ screen a swipe goes to the next or previous of those five; on the map a swipe co
   home) says "Not available yet" for now. A person's page (`#friends/<key>`) is as before. The visitor's own communities
   will come at the top once there are accounts.
 
-A community's page (`c/<key>/` from the site's root) has no tab and is listed nowhere: its link alone reaches it, and it
-shows under Friends ([Communities](plans-and-promos.md#communities)).
+A community's page (`c/<key>/` from the site's root) has no tab: its link reaches it. It is public all the same, like
+everything the site shows: its members, their plans and travel are in the site's database, which anyone can read (the
+SQL page), and in the repository ([Communities](plans-and-promos.md#communities)).
 
 The search (the header's button, `/` or Ctrl/⌘+K) finds festivals, artists, people, cities, countries, styles and
 highlights as you type, grouped by kind, accents and case aside. What has nothing coming up (a past festival, someone

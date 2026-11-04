@@ -1204,7 +1204,7 @@ DOCS = {
     'person_artists': 'The artist records a person is, so their bookings and their plans meet.',
     'plans': 'Who said they are going to which festival (pipeline/plans.csv).',
     'communities': 'Communities (pipeline/communities.csv, ours): a key, which is its page’s address, a name and its '
-    'manager, who is one of its members. Nothing lists them: a community is reached by its link.',
+    'manager, who is one of its members. No tab of the site links to one, but they are public, as this table is.',
     'community_members': 'Who is a member of which community (pipeline/community_members.csv).',
     'community_seeded': 'The people a community’s manager added, who have not joined (pipeline/seeded.csv): one row '
     'per person and festival, by their first name; the community’s page names them as added by its manager.',
