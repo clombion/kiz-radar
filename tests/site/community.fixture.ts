@@ -19,13 +19,12 @@ const PEOPLE = [
   ['christina', 'Christina'],
   ['sian', 'Siân'],
 ] as const;
-// each member's plans, and who lives in the site's home city (Siân has not said)
+// each member's plans; all three live in the site's home city
 const PLANS: Record<string, readonly number[]> = {
   cedric: [KUOF, HOT_ICE, PRAGUE_GOLD, CLOUDKIZ],
   christina: [KUOF, HOT_ICE, GLASGOW, PRAGUE_GOLD, CLOUDKIZ],
   sian: [GLASGOW, KWANZA],
 };
-const AT_HOME = ['cedric', 'christina'];
 // the people the manager added: name and festival
 const ADDED = [
   ['Tonje', KUOF],
@@ -52,7 +51,7 @@ export function plantCommunity(db: Database): void {
   const home = db.exec('SELECT city FROM airports WHERE home = 1')[0]?.values[0]?.[0] ?? null;
   for (const [key, name] of PEOPLE) {
     db.run('INSERT OR IGNORE INTO people (key, name, featured) VALUES (?, ?, 1)', [key, name]);
-    db.run('UPDATE people SET home = ? WHERE key = ?', [AT_HOME.includes(key) ? home : null, key]);
+    db.run('UPDATE people SET home = ? WHERE key = ?', [home, key]);
     db.run('DELETE FROM plans WHERE person_id = (SELECT id FROM people WHERE key = ?)', [key]);
     for (const event of PLANS[key] ?? [])
       db.run(`INSERT INTO plans SELECT id, ?, 'going' FROM people WHERE key = ?`, [event, key]);

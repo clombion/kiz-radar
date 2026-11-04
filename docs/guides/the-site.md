@@ -53,14 +53,12 @@ screen a swipe goes to the next or previous of those five; on the map a swipe co
 
 - **Countries:** each scene's festivals coming up, the cheapest flight there, and how international its line-ups are.
 
-- **Friends:** for a visitor, who has no account yet, three sections. "Near Bergen" (the home airport's city) lists the
-  festivals to come that the people living within `NEAR_KM` (150 km, `site/people.ts`) of it are going to, each naming
-  them, and who they are. "Use my location — it's used on this page only and never stored or sent" asks the browser once
-  where the visitor is: the section becomes "Near you", measured from there in the browser against each person's home
-  (`homes`, from `pipeline/geocode.csv`), and the position is dropped (never in the address nor in the browser's
-  storage, never sent); refused, the section stays on Bergen and says so. Someone with no home in `people.csv` is near
-  nowhere. "Rest of the world" (the people far away or with no home) and "Your communities" (once visitors can sign in,
-  with a filter by community) say "Not available yet" for now. A person's page (`#friends/<key>`) is as before.
+- **Friends:** for a visitor, who has no account yet, two sections. "Near Bergen" (the home airport's city, the one
+  region for now) lists the festivals to come that the people living within `NEAR_KM` (150 km, `site/people.ts`) of it
+  are going to, each naming them, and who they are, measured against each person's home (`homes`, from
+  `pipeline/geocode.csv`); someone with no home in `people.csv` is near nowhere. "Rest of the world" (the people far
+  away or with no home) says "Not available yet" for now. A person's page (`#friends/<key>`) is as before. The visitor's
+  own communities will come at the top once there are accounts.
 
 A community's page (`#community/<key>`) has no tab and is listed nowhere: its link alone reaches it, and it shows under
 Friends ([Communities](plans-and-promos.md#communities)).

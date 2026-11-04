@@ -1578,8 +1578,7 @@ test('by place, the names a count opens say each one’s own nights when they ar
   expect(said(grid.querySelector('.gantt-who-nights'))).toBe('· Fri–Sun');
 });
 
-// ----- the Friends tab for a visitor: the people near the site's home city (Cédric and Christina live there; Siân has
-// not said where she lives), or near the visitor once they share where they are -----
+// ----- the Friends tab for a visitor: the people near the site's home city, where Cédric, Christina and Siân live -----
 // the site's home city, from the data, and where it is
 const homeOf = () =>
   one(
@@ -1595,27 +1594,8 @@ const nearOf = (root: HTMLElement) => ({
   heading: said(root.querySelector('.friends-near h2')),
   rows: [...root.querySelectorAll('.friends-near .plan-list li')].map((li) => said(li)),
   sharing: said(root.querySelector('.friends-near p:last-child')),
-  note: said(root.querySelector('.friends-note')),
-  button: root.querySelector('.friends-locate') !== null,
 });
-// the browser's answer to where the visitor is, once: a place, or a refusal
-function whereabouts(answer: { latitude: number; longitude: number } | null) {
-  return vi.spyOn(navigator.geolocation, 'getCurrentPosition').mockImplementation((ok, refused) => {
-    if (answer === null)
-      refused?.({ code: 1, message: 'denied', PERMISSION_DENIED: 1, POSITION_UNAVAILABLE: 2, TIMEOUT: 3 });
-    else {
-      const coords = { ...answer, accuracy: 10, altitude: null, altitudeAccuracy: null, heading: null, speed: null };
-      ok({ coords: { ...coords, toJSON: () => coords }, timestamp: 0, toJSON: () => ({ coords }) });
-    }
-  });
-}
-// a place this far north of the home city, in degrees of latitude (about 111 km each)
-const northOfHome = (degrees: number) => {
-  const home = homeOf();
-  return { latitude: (home?.lat ?? 0) + degrees, longitude: home?.lon ?? 0 };
-};
-
-test('the Friends tab lists the people near the home city first, then the rest of the world and the communities', () => {
+test('the Friends tab lists the people near the home city, then the rest of the world, to come', () => {
   const root = onDay('2026-11-04', friendsTab);
   const near = nearOf(root);
   const home = homeOf()?.city ?? '';
@@ -1625,58 +1605,36 @@ test('the Friends tab lists the people near the home city first, then the rest o
     `Dancers living within ${NEAR_KM} km who share their plans.`,
   );
   expect(NEAR_KM).toBe(150);
-  // Glasgow names Christina alone: Siân, who goes too, has not said where she lives
-  expect(near.rows.find((r) => r?.includes('Glasgow'))).toMatch(/Christina(?! & )/u);
-  expect(near.rows.join(' ')).not.toContain('Siân');
-  expect(near.sharing).toMatch(/^Sharing their plans: Christina \(\d+\) and Cédric \(\d+\)$/u);
-  expect(said(root.querySelector('.friends-locate'))).toBe(
-    'Use my location — it’s used on this page only and never stored or sent',
-  );
+  // Glasgow names Christina and Siân, who both live there; the place is the home city's, with nothing to change it
+  expect(near.rows.find((r) => r?.includes('Glasgow'))).toMatch(/Christina.*Siân/u);
+  expect(near.sharing).toMatch(/^Sharing their plans: Christina \(\d+\), Cédric \(\d+\) and Siân \(\d+\)$/u);
+  expect(root.querySelector('button')).toBeNull();
   expect([...root.querySelectorAll('section > h2')].map((h2) => said(h2))).toEqual([
     `Near ${home}`,
     'Rest of the world',
-    'Your communities',
   ]);
   expect(said(root.querySelector('.friends-rest p'))).toBe('Not available yet');
-  expect(said(root.querySelector('.friends-communities p'))).toBe(
-    'Not available yet — communities will show here once you can sign in',
-  );
 });
 
-test('with the visitor’s location, the Friends tab lists the people within 150 km of them, and keeps it nowhere', () => {
-  const before = { href: location.href, local: localStorage.length, session: sessionStorage.length };
-  // about 130 km north of the home city: Cédric and Christina are near
-  const spy = whereabouts(northOfHome(1.17));
-  const root = onDay('2026-11-04', friendsTab);
-  root.querySelector<HTMLButtonElement>('.friends-locate')?.click();
-  expect(spy).toHaveBeenCalledTimes(1);
-  const near = nearOf(root);
-  expect([near.heading, near.button, near.note]).toEqual(['Near you', false, '']);
-  expect(near.sharing).toMatch(/^Sharing their plans: Christina \(\d+\) and Cédric/u);
-  // about 180 km: no one
-  spy.mockRestore();
-  const far = whereabouts(northOfHome(1.62));
-  const away = onDay('2026-11-04', friendsTab);
-  away.querySelector<HTMLButtonElement>('.friends-locate')?.click();
-  expect(said(away.querySelector('.friends-near'))).toContain('No one near here has shared plans yet.');
-  far.mockRestore();
-  // where the visitor is went nowhere: not into the address, nor into the browser's storage
-  expect({ href: location.href, local: localStorage.length, session: sessionStorage.length }).toEqual(before);
-  const kept = [localStorage, sessionStorage].flatMap((st) =>
-    Array.from({ length: st.length }, (_, i) => st.getItem(st.key(i) ?? '') ?? ''),
-  );
-  const at = [1.17, 1.62].map((d) => String(northOfHome(d).latitude).slice(0, 5));
-  for (const lat of at) expect(kept.join(' ')).not.toContain(lat);
-});
-
-test('when the visitor does not share their location, the Friends tab stays on the home city and says so', () => {
-  const spy = whereabouts(null);
-  const root = onDay('2026-11-04', friendsTab);
-  root.querySelector<HTMLButtonElement>('.friends-locate')?.click();
-  spy.mockRestore();
-  const near = nearOf(root);
-  const home = homeOf()?.city ?? '';
-  expect([near.heading, near.note]).toEqual([`Near ${home}`, `Your location wasn’t shared, so this stays on ${home}.`]);
-  expect(root.querySelector('.friends-note')?.getAttribute('role')).toBe('status');
-  expect(near.sharing).toMatch(/^Sharing their plans: Christina \(\d+\) and Cédric/u);
+test('the Friends tab lists only the people living within 150 km of the home city', () => {
+  // Siân moved this far north of the home city, in degrees of latitude (about 111 km each), while then runs
+  const movedNorth = (degrees: number, then: () => string | undefined) => {
+    db?.run("INSERT INTO homes SELECT 'Elsewhere', lat + ?, lon FROM homes WHERE city = ?", [
+      degrees,
+      homeOf()?.city ?? '',
+    ]);
+    db?.run("UPDATE people SET home = 'Elsewhere' WHERE key = 'sian'");
+    try {
+      return then();
+    } finally {
+      db?.run("UPDATE people SET home = ? WHERE key = 'sian'", [homeOf()?.city ?? '']);
+      db?.run("DELETE FROM homes WHERE city = 'Elsewhere'");
+    }
+  };
+  const sharing = () => nearOf(onDay('2026-11-04', friendsTab)).sharing;
+  expect(movedNorth(1.17, sharing)).toContain('Siân'); // about 130 km
+  expect(movedNorth(1.62, sharing)).not.toContain('Siân'); // about 180 km
+  // and the festivals name only the people near: Glasgow, Christina without Siân
+  const glasgow = () => nearOf(onDay('2026-11-04', friendsTab)).rows.find((r) => r?.includes('Glasgow'));
+  expect(movedNorth(1.62, glasgow)).not.toContain('Siân');
 });
