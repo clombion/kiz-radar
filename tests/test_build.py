@@ -278,7 +278,6 @@ def test_a_community_is_what_its_three_files_say(site_db: Path) -> None:
         'select p.key as person, t.event_id, t.arrive, t.arrive_at, t.leave, t.leave_from from travel t'
         ' join people p on p.id = t.person_id',
     ) == set(trips)
-    assert Travel.read()  # Cédric and Christina's to Prague
     assert built(
         site_db,
         StayRow,

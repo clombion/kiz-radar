@@ -12,6 +12,8 @@ import { NEAR_KM, personView } from '../../site/people.ts';
 import { byPlace } from '../../site/roster.ts';
 import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str } from '../../site/rows.ts';
+import { KEY } from '../../site/states.ts';
+import { FIXTURE_COMMUNITY, FIXTURE_FESTIVALS, plantCommunity } from './community.fixture.ts';
 
 // each file the page asked for, with the signal it was asked with
 const asked = new Map<string, AbortSignal | null | undefined>();
@@ -33,6 +35,31 @@ beforeAll(async () => {
   });
   const site = loadSite();
   db = await load(site);
+  // the community its tests read is the fixture's, never the real rows, which age and are deleted
+  plantCommunity(db);
+});
+
+test('the community the tests read is the fixture alone, whatever the real rows say or the day it was built', () => {
+  const rows = (query: string) => db?.exec(query)[0]?.values.map((r) => r.join(' ')) ?? [];
+  expect(rows('SELECT p.key, t.event_id, t.arrive, t.leave FROM travel t JOIN people p ON p.id = t.person_id')).toEqual(
+    [
+      'cedric 18666 2027-01-13T14:30 2027-01-18T15:10',
+      'christina 18666 2027-01-13T14:30 2027-01-18T15:10',
+      'christina 18964 2026-11-06 2026-11-09T19:10',
+      'sian 18964 2026-11-05 ',
+    ],
+  );
+  expect(rows('SELECT count(*) FROM stays')).toEqual(['0']);
+  expect(rows('SELECT name FROM community_seeded ORDER BY id')).toEqual(['Tonje', 'Ragnhild', 'Maja', 'Caroline']);
+  expect(rows('SELECT key FROM communities')).toEqual([FIXTURE_COMMUNITY]);
+  expect(rows("SELECT count(*) FROM plans p JOIN people pe ON pe.id = p.person_id WHERE pe.key = 'christina'")).toEqual(
+    ['5'],
+  );
+  expect(
+    rows(
+      `SELECT count(*) FROM events WHERE listing = '${KEY.listing.LISTED}' AND NOT cancelled AND id IN (${FIXTURE_FESTIVALS.join(', ')})`,
+    ),
+  ).toEqual([String(FIXTURE_FESTIVALS.length)]);
 });
 
 test('sql.js’s WebAssembly is asked for as every file is, with a deadline', () => {
