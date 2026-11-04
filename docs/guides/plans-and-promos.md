@@ -124,9 +124,9 @@ community's page alone shows them: a festival's card elsewhere, the Friends tab 
 reads its community in the shape the server will answer with, so only where it comes from changes then.
 
 Its Share button gives the community's page for a shared link, `…/c/<key>/`, which shows its own card in chat apps and
-goes on at once to its page (The site: the share card and the icons). That card is its name alone, so members joining
-and plans changing leave it as it is; when a community is renamed, draw it again: `mise run render:design`, then
-`mise run generate`.
+goes on at once to its page (The site: the share card and the icons). Of the community that card says its name alone, so
+members joining and plans changing leave it as it is; when a community is renamed, draw it again:
+`mise run render:design`, then `mise run generate`.
 
 Nothing lists communities: a community's page is reached by its link only. Until the server can check who is a member,
 the link is the only thing that keeps it to them, as it is for a person's plans page.

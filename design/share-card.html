@@ -8,6 +8,16 @@ svg{position:absolute;inset:0}
 .brand img{width:52px;height:52px}
 h1{position:absolute;left:80px;top:188px;width:520px;margin:0;font-size:60px;line-height:1.12;font-weight:500;letter-spacing:-.025em}
 .sub{position:absolute;left:80px;top:404px;width:470px;margin:0;font-size:27px;line-height:1.35;color:#6d5f55}
+/* a community's card: its title and subtitle in a column under an eyebrow, the name over a highlighter swipe, and a
+   fragment of a month's grid, days without dates, swiped as a trip is on the site */
+.community{position:absolute;left:80px;top:168px;width:540px;display:flex;flex-direction:column;gap:18px}
+.community h1,.community .sub{position:static;width:auto}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:650;text-transform:uppercase;letter-spacing:.06em;color:#7a2850}
+.eyebrow svg{position:static;width:28px;height:28px}
+.swiped{background:linear-gradient(transparent 58%,rgb(214 96 145/.24) 58%,rgb(214 96 145/.24) 90%,transparent 90%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 4px;margin:0 -4px}
+.grid{position:absolute;left:80px;bottom:44px;display:grid;grid-template-columns:repeat(7,40px);grid-auto-rows:30px;column-gap:8px;row-gap:6px}
+.grid i{align-self:center;justify-self:center;width:6px;height:6px;border-radius:50%;background:#d5c7b2}
+.grid b{grid-row:var(--r);grid-column:var(--c);align-self:center;height:18px;border-radius:9px;background:rgb(214 96 145/.24);mask-image:linear-gradient(to right,transparent,#000 8px,#000 calc(100% - 8px),transparent)}
 </style></head><body>
 <svg viewBox="0 0 1200 630" id="m"></svg>
 <div class="panel"></div>
@@ -21,11 +31,28 @@ h1{position:absolute;left:80px;top:188px;width:520px;margin:0;font-size:60px;lin
 const { places: PLACES, home: [HOME, HOME_LAT, HOME_LON], community: COMMUNITY } = window.DRAWN;
 document.getElementById('home').textContent = HOME;
 if (COMMUNITY) {
-  const h1 = document.querySelector('h1');
-  h1.textContent = COMMUNITY;
-  document.querySelector('.sub').remove();
-  // a long name made smaller until it fits above where the subtitle was
-  for (let size = 60; h1.offsetHeight > 330 && size > 30; size -= 4) h1.style.fontSize = `${size - 4}px`;
+  // an eyebrow (Lucide's users, as site/icons.ts draws it, and "Community"), the name over a swipe, and a subtitle the
+  // same for every community; nothing of its members or trips, so that only its name changes it
+  const h1 = document.querySelector('h1'), sub = document.querySelector('.sub'), column = document.createElement('div');
+  column.className = 'community';
+  column.innerHTML = `<div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+    stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Community</div>`;
+  const name = document.createElement('span');
+  name.className = 'swiped';
+  name.textContent = COMMUNITY;
+  h1.replaceChildren(name);
+  sub.textContent = 'Who’s going where, and when they fly in';
+  column.append(h1, sub);
+  document.body.append(column);
+  // a long name made smaller until it fits above the grid
+  for (let size = 60; h1.offsetHeight > 200 && size > 30; size -= 4) h1.style.fontSize = `${size - 4}px`;
+  // three weeks of a month, its days dots, two trips swiped across them
+  const grid = document.createElement('div');
+  grid.className = 'grid';
+  grid.innerHTML = Array.from({ length: 21 }, (_, i) => `<i style="grid-area:${1 + Math.floor(i / 7)}/${1 + (i % 7)}"></i>`).join('') + '<b style="--r:1;--c:4/8"></b><b style="--r:2;--c:1/4"></b><b style="--r:2;--c:5/7;opacity:.6"></b><b style="--r:3;--c:2/6"></b>';
+  document.body.append(grid);
 }
 // Mercator, fitted so Europe sits right of the text
 const lon0 = -47, lon1 = 35, lat1 = 63.2, W = 1200;
