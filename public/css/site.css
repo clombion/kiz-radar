@@ -2565,15 +2565,15 @@ html:has(dialog.search[open]) {
     grid-template-columns: 8rem minmax(0, 1fr);
   }
   .gantt.gantt-stays {
-    grid-template-columns: 8rem minmax(0, 1fr) 8rem;
+    grid-template-columns: 8rem minmax(0, 1fr) 10rem;
   }
+  /* where a line stays, counted in full: it wraps rather than cut "Scandic Holberg 13 · Airbnb 3 · 4 not said" */
   .gantt-stay {
     display: block;
-    overflow: hidden;
     color: var(--muted);
     font-size: 0.74rem;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
   }
   .gantt-ap {
     display: inline;

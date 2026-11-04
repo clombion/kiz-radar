@@ -1178,7 +1178,7 @@ const KUOF_NIGHTS = ['2026-11-19', '2026-11-22'] as const;
 test('a couple flying alike and staying apart is one line, its stays counted, its names by stay on demand', async () => {
   const apart: readonly Slept[] = [
     ['cedric', 19_033, ...KUOF_NIGHTS, 'Scandic Holberg'],
-    ['christina', 19_033, ...KUOF_NIGHTS, 'Airbnb'],
+    ['christina', 19_033, ...KUOF_NIGHTS, 'Comfort Xpress Oslo Sentrum'],
   ];
   const flown: readonly Planted[] = TO_KUOF.map(([k, e, a, l]) => [k, e, a, l, null] as const);
   await kuofAt(
@@ -1187,14 +1187,17 @@ test('a couple flying alike and staying apart is one line, its stays counted, it
       const seen = linesOf(root);
       // one travel, one line: the partners each a unit, named, a button for their stays
       expect(seen.names).toEqual(['Cédric and Christina', 'Everyone else']);
-      expect(seen.staying).toEqual(['Airbnb 1 · Scandic Holberg 1', '']);
+      expect(seen.staying).toEqual(['Comfort Xpress Oslo Sentrum 1 · Scandic Holberg 1', '']);
+      // counted in full, wrapped rather than cut
+      const cell = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-name ~ .gantt-stay');
+      expect(cell?.scrollWidth).toBeLessThanOrEqual(cell?.clientWidth ?? 0);
       expect(seen.words).toContain(
-        'Cédric and Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying: Airbnb: Christina, Scandic Holberg: Cédric',
+        'Cédric and Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying: Comfort Xpress Oslo Sentrum: Christina, Scandic Holberg: Cédric',
       );
       const who = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-name button');
       who?.click();
       expect(said(document.getElementById(who?.getAttribute('aria-controls') ?? ''))).toBe(
-        'Airbnb Christina · Scandic Holberg Cédric',
+        'Comfort Xpress Oslo Sentrum Christina · Scandic Holberg Cédric',
       );
     },
     flown,
@@ -1205,7 +1208,10 @@ test('a couple flying alike and staying apart is one line, its stays counted, it
     390,
     (root) => {
       const inBar = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-bar-stay');
-      expect([said(inBar), inBar?.title]).toEqual(['Airbnb +1', 'Airbnb 1 · Scandic Holberg 1']);
+      expect([said(inBar), inBar?.title]).toEqual([
+        'Comfort Xpress Oslo Sentrum +1',
+        'Comfort Xpress Oslo Sentrum 1 · Scandic Holberg 1',
+      ]);
     },
     flown,
     apart,
