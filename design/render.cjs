@@ -1,7 +1,7 @@
 // Renders public/share-card.png from share-card.html, with the cities of the festivals coming up and the home city
-// (its airport's place) taken from the site database; each community's, public/c/<key>/share.png, the same card with
-// "Community" and its name, and what it was drawn from beside it (share.json: its name and the card's digest, which the tests
-// compare with pipeline/communities.csv and design/share-card.html, pipeline/generate.py's stale_cards);
+// (its airport's place) taken from the site database; each community's, public/c/<key>/share.png, a variant of it with
+// its name and an example month, and what it was drawn from beside it (share.json: its name and the card's digest,
+// which the tests compare with pipeline/communities.csv and design/share-card.html, pipeline/generate.py's stale_cards);
 // and the icons from public/mark.svg: the favicon public/icon.svg (the mark, in light colours on dark tabs),
 // the animated public/loading.svg, and the PNGs.
 //   mise run render:design      (the repository's Playwright and its Chromium, the site database built, uv's Python)
@@ -40,7 +40,7 @@ fs.writeFileSync(path.join(site, 'loading.svg'), mark.replace('</style>', `
   await page.evaluate(() => Promise.all([document.fonts.ready, window.ready]));
   await page.screenshot({ path: path.join(site, 'share-card.png') });
 
-  // each community's card: the site's with "Community" and its name, and what it was drawn from beside it
+  // each community's card: a variant of the site's with its name, and what it was drawn from beside it
   for (const card of cards) {
     const folder = path.join(site, 'c', card.key);
     fs.mkdirSync(folder, { recursive: true });

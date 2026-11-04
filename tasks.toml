@@ -75,7 +75,7 @@ depends = ["build:site", "build:data"]
 run = "uv run -q python -m http.server -d public 8000"
 
 ["render:design"]
-description = "The share card (public/share-card.png), each community's (public/c/<key>/share.png, the same card with its name as a community, and share.json, what it is drawn from) and the icons drawn again from design/ and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page"
+description = "The share card (public/share-card.png), each community's (public/c/<key>/share.png, a variant of that card with its name, and share.json, what it is drawn from) and the icons drawn again from design/ and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page"
 depends = ["install:site", "build:data"]
 run = "node design/render.cjs"
 

@@ -78,13 +78,14 @@ title and `og:title` are the community's name, its description that name in one 
 festival plans shared on Kiz Radar", `COMMUNITY_SAID` in `pipeline/generate.py`), its image `public/c/<key>/share.png`,
 a large one; no search engine lists it, and it sends a visitor at once to `#community/<key>` (a refresh, and
 `public/c/redirect.js`, which the page's Content Security Policy lets run, as nothing else). The community page's Share
-button gives this link. The image is the site's share card (its mark, fonts, colours and map, the land with no festival
-on it) with, in place of its title and subtitle, an eyebrow ("Community", by the people icon), the community's name over
-a highlighter swipe, a subtitle the same for every community ("Who's going where, and when they fly in"), and a fragment
-of a month's grid, days without dates, swiped as trips are: nothing of a community but its name is on its page or its
-image, so members joining and plans changing leave both as they are. `mise run generate` makes the page from
-`pipeline/communities.csv`; `mise run render:design` draws the image and writes beside it what it was drawn from,
-`share.json` (the name, and the digest of `design/share-card.html`). Both are committed, as the site's share card is.
-The tests compare each `share.json` with the communities and the site's card (`stale_cards`), so a community renamed, or
-the card's design changed, without drawing again fails them. The fonts, Inter and Caveat, are served from `public/fonts`
-under the SIL Open Font License.
+button gives this link. The image is a variant of the site's share card (its mark, fonts and colours; the site's card
+itself is as it was): an eyebrow ("Community", by the people icon), the community's name over a highlighter swipe, a
+subtitle the same for every community ("Who's going where, and when they fly in"), and, in place of the map, an example
+month as the site draws one (days before today grey, today ringed by hand, a dot under a day only travelled on), its two
+trips' swipes the trails of a plane over a long weekend and of a car; it is an example, from no data: nothing of a
+community but its name is on its page or its image, so members joining and plans changing leave both as they are.
+`mise run generate` makes the page from `pipeline/communities.csv`; `mise run render:design` draws the image and writes
+beside it what it was drawn from, `share.json` (the name, and the digest of `design/share-card.html`). Both are
+committed, as the site's share card is. The tests compare each `share.json` with the communities and the site's card
+(`stale_cards`), so a community renamed, or the card's design changed, without drawing again fails them. The fonts,
+Inter and Caveat, are served from `public/fonts` under the SIL Open Font License.
