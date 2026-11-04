@@ -28,6 +28,14 @@ const where = (frame: HTMLIFrameElement) => {
   const at = frame.contentWindow?.location;
   return `${at?.pathname ?? ''}${at?.search ?? ''}${at?.hash ?? ''}`;
 };
+// once the frame shows the Friends tab
+const onFriends = (frame: HTMLIFrameElement) =>
+  vi.waitFor(
+    () => {
+      if (!frame.contentDocument?.querySelector('.friends-near')) throw new Error('not on the Friends tab yet');
+    },
+    { timeout: 30_000, interval: 100 },
+  );
 const heading = (frame: HTMLIFrameElement) => frame.contentDocument?.querySelector('.profile-head h1')?.textContent;
 
 test('a community’s address is its page: the site, its own title, and the address kept', async () => {
@@ -69,11 +77,24 @@ test('the tabs and the brand from a community’s page go to the site’s root',
     ...TABS.map(([, , href]) => `${location.origin}${ROOT}${href}`),
   ]);
   frame.contentDocument?.querySelector<HTMLAnchorElement>('nav.tabs a[data-nav="friends"]')?.click();
-  await vi.waitFor(
-    () => {
-      if (!frame.contentDocument?.querySelector('.friends-near')) throw new Error('not on the Friends tab yet');
-    },
-    { timeout: 30_000, interval: 100 },
-  );
+  await onFriends(frame);
   expect(where(frame)).toBe(`${ROOT}${TABS.find(([nav]) => nav === 'friends')?.[2]}`);
+});
+
+test('the currency asked for stays through a choice, a tab and a community’s page', async () => {
+  // the festivals in, so nothing of the first view is still to draw
+  const frame = await framed(`${ROOT}?cur=eur${festivalsHref()}`, '.festival-cards, .sentence-results .empty');
+  const months = frame.contentDocument?.querySelector<HTMLSelectElement>('.sentence-hero select');
+  if (months) {
+    months.selectedIndex = 0;
+    months.dispatchEvent(new Event('change'));
+  }
+  expect(where(frame)).toMatch(new RegExp(`^${ROOT}\\?cur=eur#finder\\?months=1`, 'u'));
+  frame.contentDocument?.querySelector<HTMLAnchorElement>('nav.tabs a[data-nav="friends"]')?.click();
+  await onFriends(frame);
+  await vi.waitFor(() => expect(where(frame)).toBe(`${ROOT}?cur=eur${TABS.find(([nav]) => nav === 'friends')?.[2]}`));
+  const community = await framed(`${ROOT}c/${KEY}/?cur=eur`, '.profile-head h1');
+  expect(community.contentDocument?.querySelector<HTMLAnchorElement>('a.brand')?.href).toBe(
+    `${location.origin}${ROOT}?cur=eur${festivalsHref()}`,
+  );
 });

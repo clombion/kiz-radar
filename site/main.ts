@@ -12,7 +12,17 @@ import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
 import { personView } from './people.ts';
 import { done, guarded, reportUncaught } from './report.ts';
-import { EXPLORE, type Route, routeOf, type Show, sectionAt, showInAddressBar, TABS, type Tab } from './routes.ts';
+import {
+  EXPLORE,
+  type Route,
+  routeOf,
+  type Show,
+  sectionAt,
+  showInAddressBar,
+  siteRoot,
+  TABS,
+  type Tab,
+} from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';
 import { swipeBetweenSections } from './swipe.ts';
@@ -21,10 +31,10 @@ import { pill, slide } from './tabs.ts';
 import { dayYear, loading, monthYear, scrolling } from './ui.ts';
 
 // Every link and file from the site's root, whatever address the page moves to: index.html's <base> (../../ on a
-// community's page, c/<key>/), made a full address once, as the page loads, so that moving the address bar on (a
-// community's own address, from an older #community/<key>) moves no link.
+// community's page, c/<key>/), made a full address once, as the page loads, with the site-wide choices of the address
+// (the currency), so that moving the address bar on moves no link and every link keeps them (routes.ts siteRoot).
 const base = document.querySelector('base') ?? document.head.appendChild(document.createElement('base'));
-base.href = new URL(base.getAttribute('href') ?? './', location.href).href;
+base.href = siteRoot(base.getAttribute('href') ?? './', location.href);
 
 // the page's own parts, from index.html: one missing is a broken page
 const part = (selector: string): HTMLElement => {

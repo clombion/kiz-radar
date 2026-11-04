@@ -19,6 +19,8 @@ import {
   SECTIONS,
   sectionAt,
   showInAddressBar,
+  siteRoot,
+  sitewide,
 } from '../../site/routes.ts';
 import { booked, EVENT, flag, num, opt, read, state, str } from '../../site/rows.ts';
 import { KEY } from '../../site/states.ts';
@@ -151,6 +153,23 @@ test('a community’s page is its own address from the site’s root, which an o
   expect(communityShareHref(key)).toBe(`${root}c/${key}/`);
   go(mapHref());
   expect(assign).toHaveBeenCalledWith(`${root}${mapHref()}`);
+  vi.unstubAllGlobals();
+});
+
+test('the site-wide choices (the currency) go with every address the site builds', () => {
+  const root = 'https://clombion.github.io/kiz-radar/';
+  expect(`${sitewide('?cur=eur&months=3')}`).toBe('cur=eur');
+  expect(`${sitewide('')}`).toBe('');
+  // the base: the root's folder, the page's own file when it is that folder's, the currency of the address
+  expect(siteRoot('./', `${root}?cur=eur#finder`)).toBe(`${root}?cur=eur`);
+  expect(siteRoot('./', `${root}index.html?cur=usd&x=1`)).toBe(`${root}index.html?cur=usd`);
+  expect(siteRoot('../../', `${root}c/k/?from=2027-03&cur=eur`)).toBe(`${root}?cur=eur`);
+  expect(siteRoot('../../', `${root}c/k/`)).toBe(root);
+  // a hash link resolves with the base's currency; a community's path link adds it to its own query
+  expect(new URL(mapHref(), `${root}?cur=eur`).href).toBe(`${root}?cur=eur${mapHref()}`);
+  vi.stubGlobal('document', { baseURI: `${root}?cur=eur` });
+  expect(communityHref('k', { from: '2027-03' })).toBe('c/k/?cur=eur&from=2027-03');
+  expect(communityShareHref('k')).toBe(`${root}c/k/?cur=eur`);
   vi.unstubAllGlobals();
 });
 

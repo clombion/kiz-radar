@@ -1,11 +1,38 @@
 // Every link and URL the site builds goes through here, so a route has one spelling.
+const FILE_NAME = /[^/]*$/u;
 // a view's state for its address: empty, null, undefined and false leave a key out
 export type Params = Readonly<Record<string, string | number | boolean | null | undefined>>;
-const query = (params: Params = {}): string => {
-  const p = new URLSearchParams();
+// The choices every address keeps, whatever the page: the currency (?cur=, money.ts), in the query before any hash.
+// The page's base holds them (siteRoot), so a hash link keeps them as it resolves; a path link (a community's page)
+// adds them to its own query.
+const SITEWIDE = ['cur'] as const;
+export function sitewide(search: string): URLSearchParams {
+  const asked = new URLSearchParams(search),
+    kept = new URLSearchParams();
+  for (const k of SITEWIDE) {
+    const v = asked.get(k);
+    if (v !== null) kept.set(k, v);
+  }
+  return kept;
+}
+const query = (params: Params = {}, keep = new URLSearchParams()): string => {
+  const p = new URLSearchParams(keep);
   for (const [k, v] of Object.entries(params)) if (v !== '' && v != null && v !== false) p.set(k, String(v));
   return p.size > 0 ? `?${p}` : '';
 };
+// the site's root for a page, its base: the folder its base names (../../ on a community's page), the page's own file
+// when it is that folder's (index.html), with the site-wide choices of its address
+export function siteRoot(base: string, address: string): string {
+  const at = new URL(address),
+    root = new URL(base, at);
+  if (root.pathname === at.pathname.replace(FILE_NAME, '')) root.pathname = at.pathname;
+  root.search = `${sitewide(at.search)}`;
+  root.hash = '';
+  return root.href;
+}
+// the site-wide choices of the page's base, which a path link adds to its own
+const baseChoices = (): URLSearchParams =>
+  typeof document === 'undefined' ? new URLSearchParams() : sitewide(new URL(document.baseURI).search);
 const hash = (path: string, params: Params = {}): string => `#${path}${query(params)}`;
 export const festivalsHref = (params?: Params) => hash('finder', params);
 export const mapHref = (params?: Params) => hash('map', params);
@@ -38,7 +65,8 @@ export const personHref = (key: string) => hash(`friends/${key}`);
 // site's root (public/c/<key>/index.html, the site's page with the community's card for a shared link, made by
 // pipeline/generate.py), its state in its query. Every page has its root as its base (<base>), so this one relative
 // link is the same from any page; communityShareHref is it in full, the link its Share button gives.
-export const communityHref = (key: string, params?: Params) => `c/${encodeURIComponent(key)}/${query(params)}`;
+export const communityHref = (key: string, params?: Params) =>
+  `c/${encodeURIComponent(key)}/${query(params, baseChoices())}`;
 export const communityShareHref = (key: string) => new URL(communityHref(key), document.baseURI).href;
 export const countriesHref = (params?: Params) => hash('countries', params);
 
@@ -85,7 +113,6 @@ export function parseRoute(address: string): { name: string; sub: string[]; qs: 
 // What a page's address names, from the site's root (its base): a community's page by its path, c/<key>/, and every
 // other view by its hash. An older link's #community/<key> names the community's page too, and moved is the address it
 // has now, for the address bar.
-const FILE_NAME = /[^/]*$/u;
 const COMMUNITY_PATH = /^c\/(?<key>[^/]+)\/(?:index\.html)?$/u;
 export function routeOf(href: string, root: string): { name: string; sub: string[]; qs: string; moved: string | null } {
   const url = new URL(href),
