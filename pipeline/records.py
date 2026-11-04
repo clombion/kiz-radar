@@ -1105,19 +1105,22 @@ class Seeded(CsvRow):
 
 
 def real_time(value: str) -> str:
-    """A YYYY-MM-DDTHH:MM that names a moment of the calendar (ValueError when it is none, as 2026-02-30T25:00)."""
+    """A YYYY-MM-DDTHH:MM, or a YYYY-MM-DD alone, that names a moment or a day of the calendar (ValueError when it is
+    none, as 2026-02-30T25:00)."""
     _ = dt.datetime.fromisoformat(value)
     return value
 
 
-# a time where it happens, to the minute, as YYYY-MM-DDTHH:MM: a flight's, in the zone of its airport
-LocalTime = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$'), AfterValidator(real_time)]
+# a time where it happens, to the minute, as YYYY-MM-DDTHH:MM: a flight's, in the zone of its airport; or its day
+# alone, YYYY-MM-DD, when the day is known and not the time
+LocalTime = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2})?$'), AfterValidator(real_time)]
 
 
 class Travel(CsvRow):
     """How a member travels to a festival they plan, as far as they said: when they arrive (and at which airport, when
-    they fly) and when they leave (and from where), either end left empty when not known. An airport goes with its
-    time, and something is said: a row of four blanks says nothing, which no row does. Only a member, who has a name of
+    they fly) and when they leave (and from where), either end left empty when not known, or its day alone when its
+    time is not. An airport goes with its time, and something is said: a row of four blanks says nothing, which no row
+    does. Only a member, who has a name of
     their own, registers how they travel; the people a manager adds never do. Where they stay is stays.csv."""
 
     FILE = 'pipeline/travel.csv'

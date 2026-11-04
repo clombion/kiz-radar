@@ -405,8 +405,9 @@ test('a day only travelled has a dot, and a festival’s own days none', () => {
     const dots = [...root.querySelectorAll('.days-month .days-dot')].map(
       (d) => d.closest<HTMLElement>('[data-date]')?.dataset['date'],
     );
-    // Cédric and Christina in to Oslo the day before KUOF and out the day after; Prague's Wednesday
-    expect(dots).toEqual(['2026-11-19', '2026-11-23', '2027-01-13']);
+    // Siân in to Glasgow the day before it; Cédric and Christina in to Oslo the day before KUOF and out the day after;
+    // Prague's Wednesday
+    expect(dots).toEqual(['2026-11-05', '2026-11-19', '2026-11-23', '2027-01-13']);
     expect(cellOn(root, '2026-11-19')?.ariaLabel).toBe('Thu 19 Nov: 2 people travelling to Oslo');
   });
 });
@@ -436,12 +437,13 @@ test('a month is one stop for the keyboard, its arrows passing over the days no 
     const stops = (month: HTMLElement | undefined) =>
       [...(month?.querySelectorAll<HTMLElement>('[data-day]') ?? [])].filter((c) => c.tabIndex === 0);
     const [november] = monthsOf(root);
-    // November's first day someone travels on: Glasgow's Friday
-    expect(stops(november).map((c) => c.dataset['day'])).toEqual(['2026-11-06']);
+    // November's first day someone travels on: the Thursday Siân flies in to Glasgow
+    expect(stops(november).map((c) => c.dataset['day'])).toEqual(['2026-11-05']);
     stops(november)[0]?.focus();
     expect(popover(root)?.hidden).toBe(false);
     press('ArrowRight');
-    expect(focusedDay()).toBe('2026-11-07');
+    expect(focusedDay()).toBe('2026-11-06');
+    press('ArrowRight');
     press('ArrowRight');
     press('ArrowRight');
     press('ArrowRight'); // from Monday 9, over the empty days, to KUOF's Friday
@@ -513,11 +515,6 @@ test('two festivals on at once both have their row and stroke, a day counts ever
 });
 
 // ----- the Gantt of an opened trip -----
-// a colour's red, green and blue, 0 to 255, however the browser writes it: rgb(…) or color(srgb …) of a mix
-const rgbOf = (colour: string): number[] => {
-  const [r = 0, g = 0, b = 0] = (colour.match(/[\d.]+/gu) ?? []).map(Number);
-  return (colour.startsWith('color(') ? [r * 255, g * 255, b * 255] : [r, g, b]).map(Math.round);
-};
 const ganttOf = (row: HTMLElement | undefined) => {
   const g = row?.querySelector<HTMLElement>('.gantt');
   return {
@@ -528,24 +525,15 @@ const ganttOf = (row: HTMLElement | undefined) => {
     parties: [...(g?.querySelectorAll('.gantt-name:not(.gantt-unsaid)') ?? [])].map((n) => said(n)),
     bars: [...(g?.querySelectorAll<HTMLElement>('.gantt-bar') ?? [])].map((b) => ({
       // its times, at its ends
-      said: [...b.querySelectorAll(':scope > span:not(.gantt-ink, .gantt-bar-stay)')].map((t) => said(t)).join(''),
+      said: [...b.querySelectorAll(':scope > span:not(.gantt-ink)')].map((t) => said(t)).join(''),
       left: Number.parseFloat(b.style.left),
       width: Number.parseFloat(b.style.width),
+      // which of its ends fade, a time not said
+      fades: ['gantt-fade-in', 'gantt-fade-out'].map((c) => b.matches(`.${c}`)),
       ink: ['height', 'translate', 'rotate', 'border-radius', 'opacity']
         .map((p) => b.querySelector<HTMLElement>('.gantt-ink')?.style.getPropertyValue(p) ?? '')
         .join(' '),
     })),
-    // the rule of those who have not said: where it runs, and how it is drawn, a line no box
-    none: [...(g?.querySelectorAll<HTMLElement>('.gantt-none') ?? [])].map((b) => {
-      const css = getComputedStyle(b);
-      return {
-        at: [Number.parseFloat(b.style.left), Number.parseFloat(b.style.width)],
-        // how it is drawn: a straight line, its thickness, nothing under it, and its colour's channels
-        drawn: [css.borderTopStyle, css.borderBottomStyle],
-        thick: Number.parseFloat(css.borderTopWidth),
-        rgb: rgbOf(css.borderTopColor),
-      };
-    }),
     said: said(row?.querySelector('.gantt-said')),
     unsaid: said(row?.querySelector('.gantt-unsaid')),
   };
@@ -575,17 +563,17 @@ test('an opened trip draws who travels when: the days from the first in to the l
     const card = agendaRow(root, 'KUOF')?.querySelector('.trip-body');
     expect(card?.querySelectorAll('.plan-tag')).toHaveLength(0);
     expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-who'))).toBe('5 going · Cédric & Christina teaching');
-    const [couple, ...others] = kuof.bars;
+    const [couple, silent, ...others] = kuof.bars;
     expect(others).toEqual([]);
-    expect(couple?.said).toBe('17:05 OSL09:40 OSL');
+    expect([couple?.said, couple?.fades]).toEqual(['17:05 OSL09:40 OSL', [false, false]]);
     expect(couple?.left).toBeCloseTo((100 * (17 + 5 / 60)) / 24 / 5, 3); // 17:05 on the first of five days
     expect((couple?.left ?? 0) + (couple?.width ?? 0)).toBeCloseTo((100 * (4 + (9 + 40 / 60) / 24)) / 5, 3);
-    // no band behind the bar: the axis marks the festival's days. Those who have not said are a thin rule across them,
-    // the second to the fourth of five days
+    // no band behind the stroke: the axis marks the festival's days. Those who have said nothing are there too: a
+    // stroke over the festival's days, the second to the fourth of five, both its ends fading, nothing written
     expect(agendaRow(root, 'KUOF')?.querySelector('.gantt-lane')?.childElementCount).toBe(1);
-    expect(kuof.none.map((n) => n.at)).toEqual([[20, 60]]);
+    expect([silent?.left, silent?.width, silent?.fades, silent?.said]).toEqual([20, 60, [true, true], '']);
     expect(kuof.said).toBe(
-      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Maja, Ragnhild and Tonje',
+      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said: Maja, Ragnhild and Tonje',
     );
     // the three who have not said, more than half of the five but only three: named
     expect(kuof.unsaid).toBe('Maja, Ragnhild and Tonje');
@@ -593,20 +581,26 @@ test('an opened trip draws who travels when: the days from the first in to the l
       ['Maja', 'Ragnhild', 'Tonje'].map((n) => [n, 'Added by Cédric']),
     );
     // no sentences about who has not said or where who stays: the lines say it
-    expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-body'))).not.toMatch(/Not said yet|Staying /u);
+    expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-body'))).not.toMatch(/Not said|Staying/u);
     // Prague from travel.csv: in on the Wednesday before it
     expect(ganttOf(opened(root, 'Prague')).axis.map((a) => a.day)).toEqual(['W13', 'T14', 'F15', 'S16', 'S17', 'M18']);
-    // Glasgow, where no one said how they travel: its own days and its band, no bar, everyone named once under it
+    // Glasgow from travel.csv: Siân in on the Thursday before it, its day alone; Christina on its Friday, its day alone,
+    // and out on Monday at 19:10 from Aberdeen; Caroline, who said nothing, on its days
     const glasgow = ganttOf(agendaRow(root, 'Glasgow'));
-    expect(glasgow.axis.map((a) => a.day)).toEqual(['F6', 'S7', 'S8', 'M9']);
-    expect(glasgow.bars).toEqual([]);
-    expect(glasgow.none.map((n) => n.at)).toEqual([[0, 100]]);
-    expect(glasgow.parties).toEqual([]);
-    expect(glasgow.said).toBe('not said yet: Caroline, Christina and Siân');
-    expect(glasgow.unsaid).toBe('Caroline, Christina and Siân');
-    expect(titled(agendaRow(root, 'Glasgow')?.querySelector('.gantt-unsaid'))).toEqual(
-      ['Caroline'].map((n) => [n, 'Added by Cédric']),
+    expect(glasgow.axis.map((a) => a.day)).toEqual(['T5', 'F6', 'S7', 'S8', 'M9']);
+    expect(glasgow.parties).toEqual(['Siân', 'Christina']);
+    expect(glasgow.bars.map((b) => [b.left, Math.round((b.left + b.width) * 100) / 100, b.fades, b.said])).toEqual([
+      [0, 100, [true, true], ''],
+      [20, 95.97, [true, false], '19:10 ABZ'],
+      [20, 100, [true, true], ''],
+    ]);
+    expect(glasgow.said).toBe(
+      'Siân arrives Thu 5 Nov, time not said, departure not said; Christina arrives Fri 6 Nov, time not said, out Mon 19:10 ABZ; not said: Caroline',
     );
+    expect(glasgow.unsaid).toBe('Caroline');
+    expect(titled(agendaRow(root, 'Glasgow')?.querySelector('.gantt-unsaid'))).toEqual([
+      ['Caroline', 'Added by Cédric'],
+    ]);
     // a couple who has not said is named as one
     expect(ganttOf(opened(root, 'HOT Ice')).unsaid).toBe('Cédric & Christina');
   });
@@ -793,7 +787,8 @@ test('a trip’s bars are highlighter swipes, each party its own, the same howev
         ),
       ).bars;
     const once = bars();
-    expect(once.map((b) => b.said)).toEqual(['17:05 OSL09:40 OSL', '08:00 OSL20:00 OSL']);
+    // the two flights, and those who said nothing on the festival's days
+    expect(once.map((b) => b.said)).toEqual(['17:05 OSL09:40 OSL', '08:00 OSL20:00 OSL', '']);
     for (const b of once) expect(b.ink).toMatch(/^[\d.]+rem 0px( [\d.]+rem)? -?[\d.]+deg /u);
     expect(once[0]?.ink).not.toBe(once[1]?.ink); // a party's own swipe
     expect(bars()).toEqual(once); // drawn again, the same
@@ -843,7 +838,7 @@ test('a trip’s bars lie level, on a computer as on a phone: one end no more th
     for (const width of [1200, 390])
       await atWidth(width, () => {
         const bars = slopes();
-        expect(bars).toHaveLength(2);
+        expect(bars).toHaveLength(3); // the two flights, and those who said nothing
         for (const b of bars) {
           expect(b.wide).toBeGreaterThan(width === 1200 ? 150 : 50);
           expect(b.rise).toBeLessThanOrEqual(2);
@@ -891,14 +886,14 @@ test('a trip’s bars are thin, and the chart in words is for a screen reader al
     const row = opened(root, 'KUOF');
     const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
     const ink = [...(row?.querySelectorAll<HTMLElement>('.gantt-ink') ?? [])];
-    expect(ink).toHaveLength(1);
+    expect(ink).toHaveLength(2);
     for (const i of ink) expect(i.offsetHeight).toBeLessThanOrEqual(0.7 * rem + 0.5);
     // its times still on it
     expect(ganttOf(row).bars[0]?.said).toBe('17:05 OSL09:40 OSL');
     // the line in words: not shown, but what describes the chart
     const words = row?.querySelector<HTMLElement>('.gantt-said');
     expect(words?.textContent).toBe(
-      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said yet: Maja, Ragnhild and Tonje',
+      'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said: Maja, Ragnhild and Tonje',
     );
     expect(words?.getBoundingClientRect().width).toBeLessThanOrEqual(1);
     expect(row?.querySelector('.gantt')?.getAttribute('aria-describedby')).toBe(words?.id);
@@ -915,6 +910,10 @@ async function collectiveOf(root: HTMLElement) {
   const who = row?.querySelector<HTMLButtonElement>('.gantt-who');
   const list = row?.querySelector(`#${who?.getAttribute('aria-controls')}`);
   const state = () => [who?.getAttribute('aria-expanded'), list?.checkVisibility() ?? null];
+  // its label, before the pointer is over it: the colour of the text around it, underlined dotted as the other names
+  const label = who
+    ? [getComputedStyle(who).color === getComputedStyle(root).color, getComputedStyle(who).textDecorationStyle]
+    : [];
   const states = [state()];
   who?.click();
   states.push(state());
@@ -947,15 +946,10 @@ async function collectiveOf(root: HTMLElement) {
   return {
     lines: lines.map((n) => said(n.querySelector('.gantt-who') ?? n)),
     unsaid: lines.map((n) => n.matches('.gantt-unsaid')),
-    rule: ganttOf(row).none,
+    silent: ganttOf(row).bars.at(-1),
     inCard,
     covers,
-    // its label: the colour of the text around it, underlined dotted as the other names
-    label: who
-      ? [getComputedStyle(who).color === getComputedStyle(root).color, getComputedStyle(who).textDecorationStyle]
-      : [],
-    accent: rgbOf(getComputedStyle(row?.querySelector('.gantt-fest') ?? root).color), // the festival's days, in it
-    ink: row?.querySelector<HTMLElement>('.gantt-ink')?.offsetHeight ?? 0,
+    label,
     names: said(list),
     states,
     words: said(row?.querySelector('.gantt-said')),
@@ -972,16 +966,11 @@ test('a roster of more than three, its biggest line of more than three people "E
       );
       document.body.append(root);
       const seen = await collectiveOf(root).finally(() => root.remove());
-      // the couple's line named, by arrival; the five who have not said "Everyone else", last, on a rule
+      // the couple's line named, by arrival; the five who have not said "Everyone else", last, a stroke over the
+      // festival's days, both its ends fading
       expect(seen.lines).toEqual(['Cédric & Christina Scandic Holberg', 'Everyone else']);
       expect(seen.unsaid).toEqual([false, true]);
-      // the rule: a straight line of the accent, 2 to 3px, thinner than a bar's ink
-      const [rule] = seen.rule;
-      expect(rule?.drawn).toEqual(['solid', 'none']);
-      expect(rule?.thick).toBeGreaterThanOrEqual(2);
-      expect(rule?.thick).toBeLessThanOrEqual(3);
-      expect(rule?.thick).toBeLessThan(seen.ink);
-      expect(rule?.rgb).toEqual(seen.accent);
+      expect([seen.silent?.fades, seen.silent?.said]).toEqual([[true, true], '']);
       // its label as dark as the text, dotted under as the other names
       expect(seen.label).toEqual([true, 'dotted']);
       // its names: hidden; shown by a tap, under the line in the card and over nothing, hidden again by Escape; shown while the pointer is over
@@ -996,7 +985,7 @@ test('a roster of more than three, its biggest line of more than three people "E
         ['false', true],
         ['false', false],
       ]);
-      expect(seen.words).toContain('not said yet: Everyone else (Kari, Maja, Ola, Ragnhild and Tonje)');
+      expect(seen.words).toContain('not said: Everyone else (Kari, Maja, Ola, Ragnhild and Tonje)');
     });
 });
 
@@ -1004,29 +993,23 @@ test('a roster of more than three, its biggest line of more than three people "E
 const rosterAt = (root: HTMLElement) => {
   const row = opened(root, 'KUOF');
   const shown = (el: Element | null | undefined) =>
-    el instanceof HTMLElement && el.checkVisibility({ visibilityProperty: true }) && el.offsetWidth > 0
-      ? said(el)
-      : null;
-  const inBar = row?.querySelector<HTMLElement>('.gantt-bar-stay');
+    el instanceof HTMLElement && el.checkVisibility() && el.offsetWidth > 0 ? said(el) : null;
   return {
-    beside: shown(row?.querySelector('.gantt-name ~ .gantt-stay:not(:empty)')),
-    under: shown(row?.querySelector('.gantt-stay-under')),
-    inBar: shown(inBar) === null ? null : [said(inBar), inBar?.title],
+    beside: shown(row?.querySelector('.gantt-name ~ .gantt-stay')),
+    under: shown(row?.querySelector('.gantt-under')),
     airports: [...(row?.querySelectorAll('.gantt-ap') ?? [])].map((a) => shown(a)),
-    header: shown(row?.querySelector('.gantt > .gantt-stay')),
+    // no heading over the column: what it holds says itself
+    head: said(row?.querySelector('.gantt > div:nth-child(3)')),
   };
 };
 
-test('where a line stays is beside its days on a computer, in its bar on a phone (under its name when too short)', async () => {
+test('where a line stays is beside its stroke on a computer, under its name on a phone, airports only on a computer', async () => {
   const stay = 'Scandic Holberg';
-  // a day there: Saturday morning to Sunday morning
-  const short = TO_KUOF.map(([key, event]) => [key, event, '2026-11-21T10:00', '2026-11-22T09:00', stay] as const);
-  for (const [width, trips, seen] of [
-    [1200, TO_KUOF, { beside: stay, under: null, inBar: null, airports: ['OSL', 'OSL'], header: 'Staying' }],
-    [390, TO_KUOF, { beside: null, under: null, inBar: [stay, stay], airports: [null, null], header: null }],
-    [390, short, { beside: null, under: stay, inBar: null, airports: [null, null], header: null }],
+  for (const [width, seen] of [
+    [1200, { beside: stay, under: null, airports: ['OSL', 'OSL'], head: '' }],
+    [390, { beside: null, under: stay, airports: [null, null], head: '' }],
   ] as const)
-    await kuofAt(width, (root) => expect(rosterAt(root)).toEqual(seen), trips);
+    await kuofAt(width, (root) => expect(rosterAt(root)).toEqual(seen));
 });
 
 // an element's colour's alpha, and its opacity
@@ -1036,12 +1019,15 @@ const alpha = (el: Element | null | undefined, pseudo?: string): [number, number
   return [channels.length > 3 ? Number(channels[3]) : 1, Number(st?.opacity ?? 1)];
 };
 
-test('the highlighter is light: its ink at most a quarter, the roster’s lighter, the second passes fainter still', async () => {
+test('the roster’s strokes are the calendar’s ink, its second pass the same, and light', async () => {
   await kuofAt(1200, (root) => {
     const ink = opened(root, 'KUOF')?.querySelector('.gantt-ink');
     const stroke = root.querySelector('.days-week .days-stroke');
-    expect(alpha(ink)[0]).toBeLessThanOrEqual(0.15);
-    expect(alpha(ink, '::after')[1]).toBeLessThanOrEqual(0.3);
+    // one ink everywhere: the card's as the calendar's
+    expect(ink ? getComputedStyle(ink).backgroundColor : '').toBe(
+      stroke ? getComputedStyle(stroke).backgroundColor : '-',
+    );
+    expect(alpha(ink, '::after')[1]).toBe(alpha(stroke, '::after')[1]);
     // the times on it as dark as any text
     const time = opened(root, 'KUOF')?.querySelector('.gantt-bar > span:not(.gantt-ink)');
     expect(time ? getComputedStyle(time).color : '').toBe(getComputedStyle(root).color);
@@ -1206,32 +1192,33 @@ test('the steps sit on the line of the period’s name, and its months in two ro
     );
 });
 
-// ----- a roster of travels, each with its stays counted, and the same people by hotel -----
-// KUOF's roster, read: its lines' names, their bars (what they say and their titles), the thin lines of what was not
-// said (where they run, in days from the first), what each line's stay column says (and its title), and the words
+// ----- a roster of travels, each with its places, and the same people by place -----
+// KUOF's roster, read: its lines' names, their strokes (what they say, which ends fade, where they run in days from
+// the first, and their titles), what each line's column says and whether it opens names, and the words
 const linesOf = (root: HTMLElement) => {
   const card = opened(root, 'KUOF');
   const g = card?.querySelector<HTMLElement>('.gantt:not([hidden])');
   const days = g?.querySelectorAll('.gantt-axis span').length ?? 1;
   const dayOf = (x: number) => Math.round(((x * days) / 100) * 100) / 100;
   return {
-    names: [...(g?.querySelectorAll('.gantt-name') ?? [])].map((n) => said(n.querySelector('button') ?? n)),
-    bars: [...(g?.querySelectorAll<HTMLElement>('.gantt-bar') ?? [])].map((b) => ({
-      said: [...b.querySelectorAll(':scope > span:not(.gantt-ink, .gantt-shared)')].map((x) => said(x)),
-      title: b.title,
+    names: [...(g?.querySelectorAll('.gantt-name') ?? [])].map((n) => said(n)),
+    strokes: [...(g?.querySelectorAll<HTMLElement>('.gantt-bar') ?? [])].map((b) => ({
+      said: [...b.querySelectorAll(':scope > span:not(.gantt-ink)')].map((x) => said(x)),
+      fades: ['gantt-fade-in', 'gantt-fade-out'].map((c) => b.matches(`.${c}`)),
       at: [
         dayOf(Number.parseFloat(b.style.left)),
         dayOf(Number.parseFloat(b.style.left) + Number.parseFloat(b.style.width)),
       ],
+      title: b.title,
     })),
-    thin: [...(g?.querySelectorAll<HTMLElement>('.gantt-bar ~ .gantt-none, .gantt-none:has(+ .gantt-bar)') ?? [])].map(
-      (x) => [
-        dayOf(Number.parseFloat(x.style.left)),
-        dayOf(Number.parseFloat(x.style.left) + Number.parseFloat(x.style.width)),
-      ],
-    ),
-    staying: [...(g?.querySelectorAll<HTMLElement>('.gantt-name ~ .gantt-stay') ?? [])].map((x) => [said(x), x.title]),
-    unsaid: g?.querySelectorAll('.gantt-unsaid').length,
+    column: [...(g?.querySelectorAll<HTMLElement>('.gantt-name ~ .gantt-stay') ?? [])].map((x) => [
+      said(x),
+      x.querySelector('button') !== null,
+    ]),
+    under: [...(g?.querySelectorAll<HTMLElement>('.gantt-under') ?? [])].map((x) => [
+      said(x),
+      x.querySelector('button') !== null,
+    ]),
     words: said(card?.querySelector('.gantt-said:not([hidden])')),
     text: said(card?.querySelector('.trip-body')),
   };
@@ -1243,24 +1230,19 @@ const APART: readonly Slept[] = [
   ['christina', 19_033, ...KUOF_NIGHTS, 'Comfort Xpress Oslo Sentrum'],
 ];
 
-test('a couple flying alike and staying apart is one line, its stays a count, never a name cut short', async () => {
+test('two places are written beside the stroke, and counted under the name on a phone, the count opening names', async () => {
   await kuofAt(
     1200,
     (root) => {
       const seen = linesOf(root);
-      // one travel, one line: the partners each a unit, named, a button for their stays
-      expect(seen.names).toEqual(['Cédric and Christina', 'Maja, Ragnhild and Tonje']);
-      // two places: a count, the whole in its title and the words
-      expect(seen.staying[0]).toEqual(['2 hotels', 'Comfort Xpress Oslo Sentrum 1 · Scandic Holberg 1']);
+      // one travel, one line, its people each a unit, named
+      expect(seen.names[0]).toBe('Cédric and Christina 2 places'); // the phone's, hidden here
+      // written in full, a detail, no names behind it: no dotted underline
+      expect(seen.column[0]).toEqual(['Comfort Xpress Oslo Sentrum 1 · Scandic Holberg 1', false]);
       expect(seen.words).toContain(
         'Cédric and Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying: Comfort Xpress Oslo Sentrum: Christina, Scandic Holberg: Cédric',
       );
-      const who = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-name button');
-      who?.click();
-      expect(said(document.getElementById(who?.getAttribute('aria-controls') ?? ''))).toBe(
-        'Comfort Xpress Oslo Sentrum Christina · Scandic Holberg Cédric',
-      );
-      // no name shortened, nor "+1", anywhere on the card
+      // nothing cut short, nor a "+1"
       expect(seen.text).not.toMatch(/…|\+\d/u);
     },
     flown,
@@ -1269,60 +1251,68 @@ test('a couple flying alike and staying apart is one line, its stays a count, ne
   await kuofAt(
     390,
     (root) => {
-      const inBar = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-bar-stay');
-      expect([said(inBar), inBar?.title]).toEqual(['2 hotels', 'Comfort Xpress Oslo Sentrum 1 · Scandic Holberg 1']);
+      expect(linesOf(root).under[0]).toEqual(['2 places', true]);
+      const count = opened(root, 'KUOF')?.querySelector<HTMLElement>('.gantt-under button');
+      count?.click();
+      expect(said(document.getElementById(count?.getAttribute('aria-controls') ?? ''))).toBe(
+        'Comfort Xpress Oslo Sentrum Christina · Scandic Holberg Cédric',
+      );
+      expect(count ? getComputedStyle(count).textDecorationStyle : '').toBe('dotted');
     },
     flown,
     APART,
   );
 });
 
-test('someone moving from one place to another: "2 places", the way in its title and the words', async () => {
-  const moving: readonly Slept[] = [
+test('one person’s way is written with its arrow; three places are counted, wherever, dotted', async () => {
+  const alone: readonly Planted[] = [['cedric', 19_033, '2026-11-19T17:05', '2026-11-23T09:40', null]];
+  const two: readonly Slept[] = [
     ['cedric', 19_033, '2026-11-19', '2026-11-19', 'Airbnb'],
     ['cedric', 19_033, '2026-11-20', '2026-11-22', 'Scandic Holberg'],
   ];
-  const alone: readonly Planted[] = [['cedric', 19_033, '2026-11-19T17:05', '2026-11-23T09:40', null]];
   await kuofAt(
     1200,
     (root) => {
       const seen = linesOf(root);
-      expect(seen.bars[0]?.said).toEqual(['17:05 OSL', '2 places', '09:40 OSL']);
-      expect(seen.staying[0]).toEqual(['2 places', 'Airbnb → Scandic Holberg']);
+      expect(seen.column[0]).toEqual(['Airbnb → Scandic Holberg', false]);
       expect(seen.words).toContain('Cédric in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Airbnb → Scandic Holberg');
-      expect(opened(root, 'KUOF')?.querySelectorAll('.gantt-cut, .gantt-seg')).toHaveLength(0);
     },
     alone,
-    moving,
+    two,
   );
+  const three: readonly Slept[] = [
+    ['cedric', 19_033, '2026-11-19', '2026-11-19', 'Airbnb'],
+    ['cedric', 19_033, '2026-11-20', '2026-11-20', 'Thon'],
+    ['cedric', 19_033, '2026-11-21', '2026-11-22', 'Scandic Holberg'],
+  ];
+  await kuofAt(1200, (root) => expect(linesOf(root).column[0]).toEqual(['3 places', true]), alone, three);
 });
 
-test('what was not said is the thin line: an end not said to the festival’s edge, nights alone between it', async () => {
+test('a stroke is "there": hard ends at times said, fading where not, over the festival’s days at least', async () => {
   // Cédric said only his flight in; Christina only where she stays, Saturday night
   const halves: readonly Planted[] = [['cedric', 19_033, '2026-11-19T17:05', null, null]];
   await kuofAt(
     1200,
     (root) => {
       const seen = linesOf(root);
-      // the axis from Thursday 19 to Sunday 22, the festival from the 20th to the end of the 22nd: days 1 to 4
+      // the axis from Thursday 19 to Sunday 22, the festival its days 1 to 4
       expect(seen.names).toEqual(['Cédric', 'Christina Comfort Xpress', 'Maja, Ragnhild and Tonje']);
-      expect(seen.bars.map((b) => [b.said, b.title, b.at])).toEqual([
-        // in at 17:05 on Thursday, known there to its end: the thin line on from Friday to the festival's end
-        [['17:05 OSL', ''], 'Departure not said', [0.71, 1]],
-        // her one night, Saturday into Sunday morning: the thin line over the festival's days before and after it
-        [['', 'Comfort Xpress', ''], 'Arrival not said; Departure not said', [2, 3]],
+      expect(seen.strokes.map((s) => [s.said, s.fades, s.at, s.title])).toEqual([
+        // in at 17:05 on Thursday, a hard start; to the festival's close, fading
+        [['17:05 OSL', ''], [false, true], [0.71, 4], 'departure not said'],
+        // only where she stays: the festival's days, both ends fading; her night is in her place
+        [['', ''], [true, true], [1, 4], 'arrival not said; departure not said'],
+        // those who said nothing: the festival's days, both ends fading
+        [['', ''], [true, true], [1, 4], 'arrival not said; departure not said'],
       ]);
-      expect(seen.thin).toEqual([
-        [1, 4],
-        [1, 2],
-        [3, 4],
-      ]);
-      // no question marks, nor fading, anywhere
+      // no thin line, no question mark, no second ink
+      expect(opened(root, 'KUOF')?.querySelectorAll('.gantt-none, .gantt-shared')).toHaveLength(0);
       expect(seen.text).not.toContain('?');
-      const ink = opened(root, 'KUOF')?.querySelector('.gantt-ink');
-      expect(ink ? getComputedStyle(ink).maskImage : '').toMatch(/0\.35rem|5\.6px/u);
-      // saying where one stays is saying something: Christina is not among those who have not
-      expect(seen.unsaid).toBe(1);
+      // a fading end fades over a longer way than a hard one
+      const masks = [...(opened(root, 'KUOF')?.querySelectorAll('.gantt-ink') ?? [])].map(
+        (i) => getComputedStyle(i).maskImage,
+      );
+      expect(masks[0]).not.toBe(masks[1]);
       expect(seen.words).toContain('Cédric in Thu 17:05 OSL, departure not said');
       expect(seen.words).toContain('Christina, staying at Comfort Xpress');
     },
@@ -1331,37 +1321,25 @@ test('what was not said is the thin line: an end not said to the festival’s ed
   );
 });
 
-// where a card's lines say where they stay on a phone: for each, in its bar or under its name
-const placement = (root: HTMLElement) =>
-  [...(opened(root, 'KUOF')?.querySelectorAll<HTMLElement>('.gantt-name') ?? [])].flatMap((n) => {
-    const under = n.querySelector<HTMLElement>('.gantt-stay-under');
-    return under === null ? [] : [under.checkVisibility() ? 'under' : 'in bar'];
+test('the axis is the calendar’s: festival days in the accent, a dot under a day only travelled, dates not bold', async () => {
+  await kuofAt(1200, (root) => {
+    const axis = [...(opened(root, 'KUOF')?.querySelectorAll<HTMLElement>('.gantt-axis span') ?? [])];
+    const look = (s: HTMLElement) => [
+      s.matches('.gantt-fest') ? 'festival' : 'travel',
+      getComputedStyle(s, '::after').content !== 'none',
+      Number(getComputedStyle(s.querySelector('b') ?? s).fontWeight) <= 500,
+    ];
+    expect(axis.map(look)).toEqual([
+      ['travel', true, true],
+      ['festival', false, false],
+      ['festival', false, false],
+      ['festival', false, false],
+      ['travel', true, true],
+    ]);
   });
-
-test('on a phone the card says where its lines stay all in their bars, or all under their names', async () => {
-  // both bars long enough: each in its bar
-  const stays: readonly Slept[] = [
-    ['cedric', 19_033, ...KUOF_NIGHTS, 'Scandic'],
-    ['christina', 19_033, '2026-11-20', '2026-11-22', 'Thon'],
-  ];
-  const long: readonly Planted[] = [
-    ['cedric', 19_033, '2026-11-19T17:05', '2026-11-23T09:40', null],
-    ['christina', 19_033, '2026-11-20T09:00', '2026-11-23T09:40', null],
-  ];
-  await kuofAt(390, (root) => expect(placement(root)).toEqual(['in bar', 'in bar']), long, stays);
-  // Christina's one night too short for her hotel's name: both under their names
-  const short: readonly Planted[] = [
-    ['cedric', 19_033, '2026-11-19T17:05', '2026-11-23T09:40', null],
-    ['christina', 19_033, '2026-11-21T09:00', '2026-11-22T09:00', null],
-  ];
-  const night: readonly Slept[] = [
-    ['cedric', 19_033, ...KUOF_NIGHTS, 'Scandic'],
-    ['christina', 19_033, '2026-11-21', '2026-11-21', 'Thon'],
-  ];
-  await kuofAt(390, (root) => expect(placement(root)).toEqual(['under', 'under']), short, night);
 });
 
-test('a card whose people stay at two places or more can be seen by hotel, its choice kept for the visit', async () => {
+test('a card whose people stay at two places or more can be seen by place, from icon buttons, kept for the visit', async () => {
   // one place for everyone: no choice
   await kuofAt(1200, (root) => expect(opened(root, 'KUOF')?.querySelector('.gantt-views')).toBeNull(), TO_KUOF);
   await kuofAt(
@@ -1369,33 +1347,45 @@ test('a card whose people stay at two places or more can be seen by hotel, its c
     (root) => {
       const card = opened(root, 'KUOF');
       const choice = [...(card?.querySelectorAll<HTMLButtonElement>('.gantt-views button') ?? [])];
-      const pressed = () => choice.map((b) => [said(b), b.getAttribute('aria-pressed')]);
+      const pressed = () => choice.map((b) => [b.ariaLabel, b.title, b.getAttribute('aria-pressed')]);
       expect(pressed()).toEqual([
-        ['By travel', 'true'],
-        ['By hotel', 'false'],
+        ['By travel', 'By travel', 'true'],
+        ['By place', 'By place', 'false'],
       ]);
+      expect(choice.map((b) => b.querySelector('svg') !== null && said(b) === '')).toEqual([true, true]);
       choice[1]?.click();
-      expect(pressed()).toEqual([
-        ['By travel', 'false'],
-        ['By hotel', 'true'],
-      ]);
-      // a line a place, the most people first, those who said none last, each its people under its name
+      expect(pressed().map((p) => p[2])).toEqual(['false', 'true']);
+      // a line a place, the most people first, those who said none last, its people under its name; one stroke over
+      // the nights anyone stays there, its ends the weekdays of the first evening and the morning after the last
       const seen = linesOf(root);
       expect(seen.names).toEqual([
         'Comfort Xpress Oslo Sentrum Christina',
         'Scandic Holberg Cédric',
-        'No place said Maja, Ragnhild and Tonje',
+        'Not said Maja, Ragnhild and Tonje',
       ]);
-      expect(seen.bars.map((b) => b.at)).toEqual([
-        [0, 4],
-        [0, 4],
+      expect(seen.strokes.map((s) => [s.said, s.fades, s.at])).toEqual([
+        [
+          ['Thu', 'Mon'],
+          [false, false],
+          [0, 4],
+        ],
+        [
+          ['Thu', 'Mon'],
+          [false, false],
+          [0, 4],
+        ],
+        [
+          ['', ''],
+          [true, true],
+          [1, 4],
+        ],
       ]);
       expect(seen.words).toBe(
-        'Comfort Xpress Oslo Sentrum, the nights of Thu 19 to Sun 22: Christina; Scandic Holberg, the nights of Thu 19 to Sun 22: Cédric; no place said: Maja, Ragnhild and Tonje',
+        'Comfort Xpress Oslo Sentrum, the nights of Thu 19 to Sun 22: Christina; Scandic Holberg, the nights of Thu 19 to Sun 22: Cédric; place not said: Maja, Ragnhild and Tonje',
       );
-      // drawn again, as when the calendar steps: still by hotel
+      // drawn again, as when the calendar steps: still by place
       const again = withStays(APART, () => withTrips(flown, () => onDay('2026-11-01', () => communityPage(COMMUNITY))));
-      expect(opened(again, 'KUOF')?.querySelector('.gantt-views [aria-pressed="true"]')?.textContent).toBe('By hotel');
+      expect(opened(again, 'KUOF')?.querySelector('.gantt-views [aria-pressed="true"]')?.ariaLabel).toBe('By place');
       opened(again, 'KUOF')?.querySelector<HTMLElement>('.gantt-views button')?.click();
     },
     flown,

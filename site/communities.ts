@@ -20,7 +20,7 @@ import { one, q, sql } from './db.ts';
 import { button, h, type Kid, nodes } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, withDetails } from './festivals.ts';
-import { dayTimeAt, gantt, ganttByPlace } from './gantt.ts';
+import { dayTimeAt, gantt, ganttByPlace, timed, unsaidEnd } from './gantt.ts';
 import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
@@ -336,32 +336,38 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
   const frame = { ...spanOf(e, aways), festival: e, place: e.city ?? e.title, seed: String(e.id) };
   const named = (u: Unit<Present>) => (u.people.some((a) => a.added) ? h('span', { title }, u.name) : u.name);
   const byTravel = gantt({ ...frame, lines, named, describedBy: said.id });
-  // by hotel too, when its people stay at two places or more: the same people, a line a place, and a control between
+  // by place too, when its people stay at two places or more: the same people, a line a place, and a control between
   const places = byPlace(goes);
-  const hotels = places.filter((p) => p.place !== null).length;
+  const placesSaid = places.filter((p) => p.place !== null).length;
   const placeSaid = h(
     'p',
     { class: ['gantt-said', 'visually-hidden'], id: `${id}-places-said` },
     places.map(placeInWords).join('; '),
   );
-  const byHotel = hotels < 2 ? null : ganttByPlace({ ...frame, places, named, describedBy: placeSaid.id });
-  const view = (as: 'travel' | 'hotel') => {
+  const byPlaces = placesSaid < 2 ? null : ganttByPlace({ ...frame, places, named, describedBy: placeSaid.id });
+  const view = (as: 'travel' | 'place') => {
     seen.set(e.id, as);
     byTravel.hidden = as !== 'travel';
     said.hidden = as !== 'travel';
-    if (byHotel) byHotel.hidden = as !== 'hotel';
-    placeSaid.hidden = as !== 'hotel';
+    if (byPlaces) byPlaces.hidden = as !== 'place';
+    placeSaid.hidden = as !== 'place';
     for (const b of choice) b.setAttribute('aria-pressed', String(b.dataset['view'] === as));
   };
   const choice =
-    byHotel === null
+    byPlaces === null
       ? []
-      : (['travel', 'hotel'] as const).map((as) =>
-          button(
-            { 'aria-pressed': 'false', dataset: { view: as }, onclick: () => view(as) },
-            as === 'travel' ? 'By travel' : 'By hotel',
-          ),
-        );
+      : (['travel', 'place'] as const).map((as) => {
+          const label = as === 'travel' ? 'By travel' : 'By place';
+          return (as === 'travel' ? Drawing.PLANE : Drawing.BED).into(
+            button({
+              'aria-pressed': 'false',
+              'aria-label': label,
+              title: label,
+              dataset: { view: as },
+              onclick: () => view(as),
+            }),
+          );
+        });
   const switches =
     choice.length === 0 ? null : h('div', { class: 'gantt-views', role: 'group', 'aria-label': 'The roster' }, choice);
   // the festival's line-up and prices, its card opened, in the trip's: shown from the festival's name
@@ -371,12 +377,12 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
     { class: 'trip-body', id, hidden: !open },
     switches,
     byTravel,
-    byHotel,
+    byPlaces,
     said,
     placeSaid,
     lineup,
   );
-  view(byHotel === null ? 'travel' : (seen.get(e.id) ?? 'travel'));
+  view(byPlaces === null ? 'travel' : (seen.get(e.id) ?? 'travel'));
   // the card open or not, and its line-up shown or not; a closed card shows no line-up
   const show = (opened: boolean, lineupShown: boolean) => {
     if (lineupShown && lineup.childElementCount === 0)
@@ -430,17 +436,18 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
 }
 
 // A line of a roster in words: who (by its name, and its units when it is called otherwise), in and out (each "not
-// said" when not), and where they stay, each place with who stays there when there are several; or "not said yet".
+// said" when not, a day without its time "arrives Fri 6 Nov, time not said"), and where they stay, each place with
+// who stays there when there are several; or "not said".
 function inWords(l: Line<Present>): string {
   const names = and(l.units.map((u) => u.name));
   const who = l.called === null ? names : `${l.called} (${names})`;
   const f = l.travel;
-  if (f === null && l.nights === null) return `not said yet: ${who}`;
+  if (f === null && l.nights === null) return `not said: ${who}`;
   const flights =
     f === null
       ? ''
-      : ` ${f.arrive === null ? 'arrival not said' : `in ${dayTimeAt(f.arrive, f.arrive_at)}`}, ${
-          f.leave === null ? 'departure not said' : `out ${dayTimeAt(f.leave, f.leave_from)}`
+      : ` ${unsaidEnd(f.arrive, 'arrive') ?? `in ${dayTimeAt(f.arrive ?? '', f.arrive_at)}`}, ${
+          unsaidEnd(f.leave, 'leave') ?? `out ${dayTimeAt(f.leave ?? '', f.leave_from)}`
         }`;
   const [only] = l.buckets;
   const stays =
@@ -455,13 +462,13 @@ function inWords(l: Line<Present>): string {
 // A place of a roster by where they stay in words: the place, its nights, and who stays there; or who said none.
 function placeInWords(p: Place<Present>): string {
   const names = and(p.units.map((u) => u.name));
-  if (p.place === null || p.nights === null) return `no place said: ${names}`;
+  if (p.place === null || p.nights === null) return `place not said: ${names}`;
   const night = (d: string) => `${WEEKDAYS[weekday(d)]?.slice(0, 3)} ${Number(d.slice(8))}`;
   return `${p.place}, the nights of ${night(p.nights.first)} to ${night(p.nights.last)}: ${names}`;
 }
 
-// how each card's roster is seen, by travel or by hotel, for the visit: by festival
-const seen = new Map<number, 'travel' | 'hotel'>();
+// how each card's roster is seen, by travel or by place, for the visit: by festival
+const seen = new Map<number, 'travel' | 'place'>();
 
 // Who of the community goes to a festival: its members, as their couple when both go and teaching when in the
 // line-up, then the people its manager added, each name saying on hover who added them: each one teaching linked to
@@ -537,7 +544,10 @@ function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): 
     const by = new Map<string, Goer[]>();
     for (const a of once)
       if (a.travel?.[when]?.startsWith(day) && a.goer) {
-        const at = `${a.travel[when]?.slice(11)}${a.travel[where] === null ? '' : ` ${a.travel[where]}`}`;
+        const time = a.travel[when] ?? '';
+        const at = timed(time)
+          ? `${time.slice(11)}${a.travel[where] === null ? '' : ` ${a.travel[where]}`}`
+          : '(time not said)';
         by.set(at, [...(by.get(at) ?? []), a.goer]);
       }
     return [...by].map(([at, goers]) => `${namesOf(goers).join(' & ')} ${at}`);

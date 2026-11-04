@@ -259,3 +259,15 @@ export function byPlace<P>(goers: readonly Goes<P>[]): Place<P>[] {
       (a.place ?? '').localeCompare(b.place ?? '', 'en'),
   );
 }
+
+// A unit's own nights at a place, when they are not all of the place's nights; else null.
+export function ownNights<P>(p: Place<P>, u: Unit<P>): { first: string; last: string } | null {
+  const mine = p.stays.filter((s) => u.people.includes(s.person));
+  const first = mine.map((s) => s.first).toSorted(byText)[0],
+    last = mine
+      .map((s) => s.last)
+      .toSorted(byText)
+      .at(-1);
+  if (p.nights === null || first === undefined || last === undefined) return null;
+  return first === p.nights.first && last === p.nights.last ? null : { first, last };
+}

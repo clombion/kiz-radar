@@ -2544,28 +2544,11 @@ html:has(dialog.search[open]) {
 .gantt-ap {
   display: none;
 }
-/* on a phone where the lines stay is said inside every bar, between its times, when every bar holds its text whole;
-   else under every line's name (gantt.ts measures it): one placement for the card, never a name cut short */
-.gantt-stay-under {
-  display: none;
+/* where a line stays, or who stays at a place: a detail, under its name (on a phone, in the travel view) */
+.gantt-under {
+  display: block;
   color: var(--muted);
   font-size: 0.7rem;
-}
-.gantt.gantt-tight .gantt-stay-under {
-  display: block;
-}
-.gantt-bar-stay {
-  flex: 1 1 0;
-  min-width: 0;
-  overflow: hidden;
-  padding: 0 0.3rem;
-  color: var(--muted);
-  font-weight: 500;
-  text-align: center;
-  white-space: nowrap;
-}
-.gantt.gantt-tight .gantt-bar-stay {
-  visibility: hidden;
 }
 @media (min-width: 700px) {
   .gantt {
@@ -2574,7 +2557,7 @@ html:has(dialog.search[open]) {
   .gantt.gantt-stays {
     grid-template-columns: 8rem minmax(0, 1fr) 10rem;
   }
-  /* where a line stays, counted in full: it wraps rather than cut "Scandic Holberg 13 · Airbnb 3 · 4 not said" */
+  /* where a line stays, written in full or counted: it wraps rather than cut */
   .gantt-stay {
     display: block;
     color: var(--muted);
@@ -2585,8 +2568,7 @@ html:has(dialog.search[open]) {
   .gantt-ap {
     display: inline;
   }
-  .gantt.gantt-tight .gantt-stay-under,
-  .gantt-bar-stay {
+  .gantt-stays .gantt-under {
     display: none;
   }
 }
@@ -2594,6 +2576,8 @@ html:has(dialog.search[open]) {
   display: grid;
 }
 .gantt-axis span {
+  position: relative;
+  padding-bottom: 0.3rem;
   border-left: 1px solid var(--border);
   color: var(--muted);
   font-size: 0.66rem;
@@ -2603,15 +2587,27 @@ html:has(dialog.search[open]) {
 .gantt-axis span:first-child {
   border-left: 0;
 }
+/* the axis as the calendar: dates of regular weight, the festival's in the accent, a dot under a day only travelled on */
 .gantt-axis b {
   display: block;
   color: var(--text);
   font-size: 0.78rem;
-  font-weight: 650;
+  font-weight: 500;
 }
 .gantt-axis .gantt-fest,
 .gantt-axis .gantt-fest b {
   color: var(--accent);
+  font-weight: 650;
+}
+.gantt-axis .gantt-travel::after {
+  content: "";
+  position: absolute;
+  bottom: 0.02rem;
+  left: calc(50% - 0.14rem);
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 50%;
+  background: var(--accent);
 }
 .gantt-name {
   min-width: 0;
@@ -2623,14 +2619,6 @@ html:has(dialog.search[open]) {
 .gantt-lane {
   position: relative;
   height: 1.15rem;
-}
-/* the line of those who have not said: a thin rule of the accent across the festival's days, where a bar would be,
-   lighter and thinner than one */
-.gantt-none {
-  position: absolute;
-  top: calc(50% - 1px);
-  height: 0;
-  border-top: 2px solid color-mix(in srgb, var(--accent) 40%, transparent);
 }
 .gantt-bar {
   position: absolute;
@@ -2645,16 +2633,18 @@ html:has(dialog.search[open]) {
   line-height: 0.7rem;
   white-space: nowrap;
 }
-.gantt-bar > span:not(.gantt-ink, .gantt-shared) {
+.gantt-bar > span:not(.gantt-ink) {
   position: relative;
 }
-/* a line's time there, a highlighter's swipe as the months' (ink.ts), light: two passes, the second faint, fading at
-   its ends, under times that stay as dark as text */
+/* "there": the calendar's ink and its second pass (ink.ts swipes it), under times as dark as text; an end whose time
+   is not said fades over a longer way */
 .gantt-ink {
+  --in: 0.35rem;
+  --out: 0.35rem;
   position: absolute;
   inset: 0 0 auto;
-  background: color-mix(in srgb, var(--highlight) 60%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 0.35rem, black calc(100% - 0.35rem), transparent);
+  background: var(--highlight);
+  mask-image: linear-gradient(to right, transparent, black var(--in), black calc(100% - var(--out)), transparent);
 }
 .gantt-ink::after {
   content: "";
@@ -2662,45 +2652,35 @@ html:has(dialog.search[open]) {
   inset: 12% 4% 18% 2%;
   border-radius: inherit;
   background: var(--highlight);
-  opacity: 0.3;
+  opacity: 0.4;
 }
-/* by hotel: the place a line's name, its people under it; the bar deeper over the nights everyone there stays */
-.gantt-place-name {
-  display: block;
-  font-weight: 600;
+.gantt-fade-in .gantt-ink {
+  --in: 1.5rem;
 }
-.gantt-place-who {
-  display: block;
-  color: var(--muted);
-  font-size: 0.72rem;
+.gantt-fade-out .gantt-ink {
+  --out: 1.5rem;
 }
-.gantt-shared {
-  position: absolute;
-  inset: 0 auto auto;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--highlight);
-  opacity: 0.6;
-}
-/* the two views of a card's roster, as two buttons of one control: by travel, by hotel */
+/* the two views of a card's roster, as two icon buttons of one control: by travel (a plane), by place (a bed) */
 .gantt-views {
   display: inline-flex;
   margin: 0 0 0.5rem;
   border: 1px solid var(--border);
   border-radius: 999px;
   overflow: hidden;
-  font-size: 0.78rem;
 }
 .gantt-views button {
-  padding: 0.2rem 0.75rem;
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 1.7rem;
+  padding: 0;
   border: 0;
   background: none;
   color: var(--muted);
 }
 .gantt-views button[aria-pressed="true"] {
   background: var(--accent-soft);
-  color: var(--text);
-  font-weight: 600;
+  color: var(--accent);
 }
 /* a line called collectively ("Everyone else"): in the text's colour, underlined as the other names; its names, while
    the pointer is over it or once opened, in a box on a row of their own under its line, which the card grows to hold */

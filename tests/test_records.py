@@ -145,6 +145,7 @@ SEEDED = {
         (records.Travel, TRAVEL, 'arrive_at', 'osl'),
         (records.Travel, TRAVEL, 'arrive', '2026-11-19 21:05'),
         (records.Travel, TRAVEL, 'arrive', '2026-02-30T21:05'),
+        (records.Travel, TRAVEL, 'arrive', '2026-02-30'),
         (records.Travel, TRAVEL, 'arrive', '2026-11-24T08:00'),  # after it leaves
         (records.Travel, TRAVEL, 'arrive', ''),  # an airport without its time
         (records.StayRow, STAY, 'first_night', '2026-11-23'),  # after the last
@@ -188,5 +189,8 @@ def test_a_travel_says_one_end_at_least() -> None:
     """Either end of a travel may be unknown, not both: a row of blanks says nothing."""
     known = records.Travel.model_validate(records.Travel.cells(TRAVEL | {'leave': ''}))
     assert (known.arrive, known.leave) == ('2026-11-19T21:05', None)
+    # its day alone, when the time is not known
+    day = records.Travel.model_validate(records.Travel.cells(TRAVEL | {'arrive': '2026-11-19', 'arrive_at': ''}))
+    assert day.arrive == '2026-11-19'
     with pytest.raises(ValueError, match='neither when they arrive nor when they leave'):
         records.Travel.model_validate(records.Travel.cells(TRAVEL | {'arrive': '', 'arrive_at': '', 'leave': ''}))

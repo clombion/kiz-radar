@@ -2,7 +2,16 @@
 // travel and stays are alike; what each line is called. The cases of twenty people, then the laws any roster keeps,
 // over rosters drawn at random (from a fixed seed).
 import { describe, expect, it } from 'vitest';
-import { byPlace, type Flights, type Goes, type Line, type Place, roster, type Stay } from '../../site/roster.ts';
+import {
+  byPlace,
+  type Flights,
+  type Goes,
+  type Line,
+  ownNights,
+  type Place,
+  roster,
+  type Stay,
+} from '../../site/roster.ts';
 
 // how someone flies, in and out, each end said or not, from and to one airport
 const F = (arrive: string | null, leave: string | null, at = 'OSL'): Flights => ({
@@ -464,6 +473,17 @@ describe('by where they stay', () => {
       'Scandic Holberg [4] 4 people 19–22 all 19–22',
       'no place [16] 16 people',
     ]);
+  });
+
+  it('each one’s own nights at a place, when not all of its nights: Tonje at the Airbnb all its nights, Nora not', () => {
+    const [scandic, airbnb] = byPlace(CASES['6']);
+    const at = (p: Place<string> | undefined, name: string) => {
+      const u = p?.units.find((x) => x.name === name);
+      return p && u ? ownNights(p, u) : undefined;
+    };
+    expect(at(scandic, 'Tonje')).toEqual({ first: '2026-11-20', last: '2026-11-22' });
+    expect(at(scandic, 'Anne')).toBeNull();
+    expect(at(airbnb, 'Tonje')).toBeNull();
   });
 
   it('every night of everyone is on the line of its place, once; everyone with none on the last', () => {
