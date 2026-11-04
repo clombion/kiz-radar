@@ -44,12 +44,19 @@ nobody can create, join or claim one yet, and its rows are written by hand.
   arrive and the day before they leave, when travel.csv says them; the build stops on a row that breaks this, of anyone
   but a member, or to a festival they don't plan.
 
+Travel and stays are kept only for a few days after a trip. A trip ends on the last day any member leaves (or the
+morning after their last night), or the festival's last day when that is later; from `KEPT_DAYS` (3) days after that,
+the build no longer publishes the trip's rows of `travel.csv` and `stays.csv`, and prints a warning for each one
+("warning: travel.csv: christina to event 18964: the trip ended more than 3 days ago, so this row is no longer
+published; delete it"). It goes on building: delete the rows it names, and commit.
+
 The page shows the community's name ("Norwegians in festivals"), when most members travel at once ("Most members are
 travelling 20–22 Nov: 5 people, to Oslo.") and, on a line of its own, where they go next ("Next: Glasgow, this Friday"),
-then a Share this page button, which opens the device's share sheet or else copies the link, beside a badge of who sees
-it: a lock, people and the number of members, which says what is true until members sign in, "Anyone with the link can
-see this page · 3 members", on hover and to a screen reader. Who manages it is said with the members, at the foot of the
-page.
+or, while a trip is on, where they are and until when, and the trip after it ("Now: Glasgow, until Mon · Next: Oslo, on
+20 Nov"), then a Share this page button, which opens the device's share sheet or else copies the link, beside a badge of
+who sees it: a lock, people and the number of members, which says what is true until members sign in, "Anyone with the
+link can see this page · 3 members", on hover and to a screen reader. Who manages it is said with the members, at the
+foot of the page.
 
 Under the head, the calendar: four months at a time, a period from today's month (November to February, then March to
 June, then July to October: three make a year), named between two buttons, on its line, to the periods before and after
@@ -119,6 +126,12 @@ its people too; by place, each place, its nights and who stays there. While a ca
 and who teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The festival's name opens its
 card on the festival's line-up and prices, its own card opened in place, and folds them away again; the next trip's card
 opens on who travels, its line-up folded.
+
+A trip is on from its first day (the first member to arrive, or the festival's start when sooner) to its last (the last
+to leave, or the festival's end when later): its row has a small "Now" tag before its days and is the one open, and the
+head says "Now". From the day after its last, it has ended: it leaves the agenda, the sentence and the counts at the
+rows' ends, and its strokes stay in the calendar, grey as the days gone by; the calendar still starts at today's month.
+With every trip ended, the page says "No trips coming up."
 
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page

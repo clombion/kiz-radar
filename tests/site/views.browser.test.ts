@@ -188,12 +188,92 @@ test('a community’s head says who it is, when most members travel and where ne
   ]);
   expect([badge?.querySelectorAll('svg').length, said(badge)]).toEqual([2, '3']);
   // a week on, Glasgow is under way and KUOF is two weeks off
-  expect(said(onDay('2026-11-07', () => communityPage(COMMUNITY)).querySelector('.profile-head'))).toContain(
-    'Next: Glasgow, now',
+  expect(said(onDay('2026-11-07', () => communityPage(COMMUNITY)).querySelector('.community-next'))).toBe(
+    'Now: Glasgow, until Mon · Next: Oslo, on 20 Nov',
   );
-  expect(said(onDay('2026-11-10', () => communityPage(COMMUNITY)).querySelector('.profile-head'))).toContain(
+  expect(said(onDay('2026-11-10', () => communityPage(COMMUNITY)).querySelector('.community-next'))).toBe(
     'Next: Oslo, on 20 Nov',
   );
+});
+
+// ----- a trip while it happens and after: Glasgow, Friday 6 to Monday 9 November, Siân there from the Thursday and
+// Christina leaving on the Monday at 19:10 -----
+const glasgowOn = (day: string) => {
+  const root = onDay(day, () => communityPage(COMMUNITY));
+  const row = agendaRow(root, 'Glasgow');
+  return {
+    next: said(root.querySelector('.community-next')),
+    now: row?.querySelector('.trip-now')?.textContent ?? '',
+    open: row?.querySelector<HTMLElement>('.trip-body')?.hidden === false,
+    first: said(root.querySelector('.trip .trip-fest')),
+    opened: [...root.querySelectorAll<HTMLElement>('.trip-body')].filter((b) => !b.hidden).length,
+    stroke: [...root.querySelectorAll<HTMLElement>('.days-stroke')]
+      .filter((st) => st.title.startsWith('Glasgow'))
+      .map((st) => st.matches('.days-stroke-past')),
+    count: countOn(root, '2026-11-06'),
+  };
+};
+
+test('before Glasgow, it is next, its row open', () => {
+  expect(glasgowOn('2026-11-04')).toEqual({
+    next: 'Next: Glasgow, this Friday',
+    now: '',
+    open: true,
+    first: 'Glasgow Kizomba Festival 5.0',
+    opened: 1,
+    stroke: [false, false],
+    count: '3',
+  });
+});
+
+test('while Glasgow is on, from its first arrival to its last departure, its row says Now and is open', () => {
+  // Siân arrives on the Thursday: the trip is on from then
+  expect(glasgowOn('2026-11-05').now).toBe('Now');
+  const friday = onDay('2026-11-06', () => communityPage(COMMUNITY));
+  expect(glasgowOn('2026-11-06')).toEqual({
+    next: 'Now: Glasgow, until Mon · Next: Oslo, on 20 Nov',
+    now: 'Now',
+    open: true,
+    first: 'Glasgow Kizomba Festival 5.0',
+    opened: 1,
+    stroke: [false, false],
+    count: '3',
+  });
+  // the "Now" tag before its days, and today's ring on its stroke
+  expect(said(agendaRow(friday, 'Glasgow')?.querySelector('.trip-head p'))).toMatch(/^Now Fri 6 – Mon 9 Nov /u);
+  expect(cellOn(friday, '2026-11-06')?.ariaCurrent).toBe('date');
+  expect(cellOn(friday, '2026-11-06')?.querySelector('.days-ring')).not.toBeNull();
+  expect(strokesOn(friday, '2026-11-06').map((st) => st.title)).toEqual(['Glasgow Kizomba Festival 5.0']);
+  // its last day, Christina leaving that evening
+  expect(glasgowOn('2026-11-09')).toMatchObject({
+    next: 'Now: Glasgow, until today · Next: Oslo, on 20 Nov',
+    now: 'Now',
+  });
+});
+
+test('after Glasgow, it leaves the agenda, its stroke stays grey, and it is no longer counted', () => {
+  for (const day of ['2026-11-10', '2026-11-13'])
+    expect(glasgowOn(day)).toEqual({
+      next: 'Next: Oslo, on 20 Nov',
+      now: '',
+      open: false,
+      first: 'KUOF – Kizomba & Urban Kiz Oslo Festival',
+      opened: 1,
+      stroke: [true, true],
+      count: '',
+    });
+  // the period still starts at today's month
+  const after = onDay('2026-11-10', () => communityPage(COMMUNITY));
+  expect(said(after.querySelector('.days-said'))).toMatch(/^Nov/u);
+});
+
+test('the sentence of when most members travel leaves out a trip that has ended', () => {
+  // Glasgow with five more people added: the most at once, until it ends
+  const added = ['Ola', 'Kari', 'Per', 'Nils', 'Eva'].map((n) => [n, 18_964] as const);
+  const when = (day: string) =>
+    withAdded(added, () => said(onDay(day, () => communityPage(COMMUNITY)).querySelector('.community-when')));
+  expect(when('2026-11-04')).toBe('Most members are travelling 6–9 Nov: 8 people, to Glasgow.');
+  expect(when('2026-11-10')).toBe('Most members are travelling 20–22 Nov: 5 people, to Oslo.');
 });
 
 test('the agenda has a heading a month and a row a trip, soonest first, naming who of the community goes', () => {
@@ -653,7 +733,8 @@ test('with nothing to come, the community’s page has no sentence of when it tr
   const root = onDay('2028-01-01', () => communityPage(COMMUNITY));
   expect(said(root)).not.toContain('Most members');
   expect(root.querySelector('.days-month')).toBeNull();
-  expect(said(root)).toContain('No one in this community has said they’re going anywhere yet.');
+  // its trips all over: none to come
+  expect(said(root)).toContain('No trips coming up.');
 });
 
 // where a day's popover is, against the month the day is in

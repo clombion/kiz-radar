@@ -264,14 +264,20 @@ def test_a_community_is_what_its_three_files_say(site_db: Path) -> None:
     ]
     assert found
     assert members
+    # those of a trip that ended more than KEPT_DAYS days ago are left out
     trips, stays = Travel.read(), StayRow.read()
+    with sqlite_db.opened(site_db, 'ro') as db:
+        day = dt.date.fromisoformat(db.value(str, 'select day from today'))
+        ends = {e.id: e.end_date for e in db.rows(build_site_db.Ends, 'select id, end_date from events')}
+    gone = build_site_db.gone_by(build_site_db.trip_ends(trips, stays, ends), day)
+    trips, stays = [t for t in trips if t.event_id not in gone], [r for r in stays if r.event_id not in gone]
     assert built(
         site_db,
         Travel,
         'select p.key as person, t.event_id, t.arrive, t.arrive_at, t.leave, t.leave_from from travel t'
         ' join people p on p.id = t.person_id',
     ) == set(trips)
-    assert trips  # Cédric and Christina's to Prague
+    assert Travel.read()  # Cédric and Christina's to Prague
     assert built(
         site_db,
         StayRow,
@@ -303,6 +309,33 @@ class Rows(BaseModel, frozen=True):
     seeded: tuple[Seeded, ...] = ()
     trips: tuple[Travel, ...] = ()
     stays: tuple[StayRow, ...] = ()
+
+
+def community_tables(memory: Memory) -> Db:
+    """The tables a community's rows go to, with cedric, his plan for the one festival and one artist in, and the
+    files' rows written there."""
+    db = memory()
+    with db.transaction() as x:
+        for table in (
+            'people',
+            'communities',
+            'community_members',
+            'community_seeded',
+            'seeded_artists',
+            'travel',
+            'stays',
+        ):
+            x.script(build_site_db.TABLES[table])
+        # what is checked of a festival or an artist: its id, and a festival's last day
+        x.script(
+            'create table events (id integer primary key, end_date text); create table artists (id integer primary key)'
+        )
+        x.execute("insert into events (id, end_date) values (1, '2026-11-22')")
+        x.execute('insert into artists (id) values (1)')
+        x.execute('insert into people (id, key, name, featured) values (1, ?, ?, 1)', ('cedric', 'Cédric'))
+    with db.transaction() as x:
+        build_site_db.communities(x, {'cedric': 1}, {'p:tonje@dance': 1})
+    return db
 
 
 @pytest.mark.parametrize(
@@ -346,35 +379,16 @@ class Rows(BaseModel, frozen=True):
         ),
     ],
 )
-def test_a_community_naming_what_the_data_has_not_stops_the_build(memory: Memory, rows: Rows, said: str) -> None:
+def test_a_community_naming_what_the_data_has_not_stops_the_build(
+    memory: Memory, monkeypatch: pytest.MonkeyPatch, rows: Rows, said: str
+) -> None:
     """A community of no one, a member or manager who is no one in people.csv (or a manager who is not a member),
     someone added to a festival the export has not, or as an artist it has not, a travel or a stay of anyone but a
     member or to a festival they don't plan, a second travel, and nights before they arrive, from the day they leave or
     at two places at once, stop the build, saying which."""
 
     def built_from_them() -> Db:
-        """The tables a community's rows go to, with cedric, his plan for the one festival and one artist in, and the
-        files' rows written there."""
-        db = memory()
-        with db.transaction() as x:
-            for table in (
-                'people',
-                'communities',
-                'community_members',
-                'community_seeded',
-                'seeded_artists',
-                'travel',
-                'stays',
-            ):
-                x.script(build_site_db.TABLES[table])
-            # what is checked of a festival or an artist: its id
-            x.script('create table events (id integer primary key); create table artists (id integer primary key)')
-            x.execute('insert into events (id) values (1)')
-            x.execute('insert into artists (id) values (1)')
-            x.execute('insert into people (id, key, name, featured) values (1, ?, ?, 1)', ('cedric', 'Cédric'))
-        with db.transaction() as x:
-            build_site_db.communities(x, {'cedric': 1}, {'p:tonje@dance': 1})
-        return db
+        return community_tables(memory)
 
     PlanRow.write([PlanRow(person='cedric', event_id=1, status=enums.Plan.GOING, event='KUOF')])
     Community.write([MANAGER])
@@ -382,6 +396,7 @@ def test_a_community_naming_what_the_data_has_not_stops_the_build(memory: Memory
     Seeded.write([ADDED])
     Travel.write([TRIP])
     StayRow.write([STAY])
+    monkeypatch.setattr(build_site_db, 'today', lambda: dt.date(2026, 11, 1))
     made = built_from_them()
     assert made.value(int, 'select artist_id from seeded_artists') == 1
     assert made.value(str, 'select place from stays') == 'Scandic'
@@ -435,3 +450,68 @@ def test_a_fare_is_what_fares_csv_says_back_the_monday_after(site_db: Path) -> N
         for f in fares
     }
     assert fares
+
+
+# Glasgow: the festival Friday 6 to Monday 9 November, Christina leaving on the Monday at 19:10, Siân arriving on the
+# Thursday and saying nothing of when she leaves
+GLASGOW = 18964
+GLASGOW_TRIPS = [
+    Travel(
+        person='christina',
+        event_id=GLASGOW,
+        arrive='2026-11-06',
+        arrive_at=None,
+        leave='2026-11-09T19:10',
+        leave_from='ABZ',
+    ),
+    Travel(person='sian', event_id=GLASGOW, arrive='2026-11-05', arrive_at=None, leave=None, leave_from=None),
+]
+
+
+@pytest.mark.parametrize(
+    ('day', 'kept'),
+    [
+        ('2026-11-04', True),  # before
+        ('2026-11-06', True),  # during
+        ('2026-11-09', True),  # its last day, Christina leaving in the evening
+        ('2026-11-10', True),  # the day after it ends
+        ('2026-11-12', True),  # three days after
+        ('2026-11-13', False),  # four: gone
+    ],
+)
+def test_a_trip_is_published_until_three_days_after_it_ends(day: str, kept: bool) -> None:
+    """A trip ends on the last day anyone leaves, or the festival's end when that is later; its travel and stays are
+    published until KEPT_DAYS days after."""
+    ends = build_site_db.trip_ends(GLASGOW_TRIPS, [], {GLASGOW: dt.date(2026, 11, 9)})
+    assert ends == {GLASGOW: dt.date(2026, 11, 9)}
+    assert (GLASGOW not in build_site_db.gone_by(ends, dt.date.fromisoformat(day))) is kept
+    # a stay's last night ends the trip the morning after, the festival's end when no one says more, and a later leave
+    stay = STAY.model_copy(
+        update={'event_id': GLASGOW, 'first_night': dt.date(2026, 11, 8), 'last_night': dt.date(2026, 11, 10)}
+    )
+    assert build_site_db.trip_ends([], [stay], {GLASGOW: dt.date(2026, 11, 9)}) == {GLASGOW: dt.date(2026, 11, 11)}
+    assert build_site_db.trip_ends([], [], {GLASGOW: dt.date(2026, 11, 9)}) == {GLASGOW: dt.date(2026, 11, 9)}
+    later = GLASGOW_TRIPS[0].model_copy(update={'leave': '2026-11-10T07:00'})
+    assert build_site_db.trip_ends([later], [], {GLASGOW: dt.date(2026, 11, 9)}) == {GLASGOW: dt.date(2026, 11, 10)}
+
+
+def test_the_build_leaves_out_a_trip_ended_more_than_three_days_ago_and_warns_of_its_rows(
+    memory: Memory, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """The trip to KUOF ends on the Monday cedric leaves: on the Thursday after, its rows are still published; on the
+    Friday they are not, and the build says which rows to delete, and goes on."""
+    PlanRow.write([PlanRow(person='cedric', event_id=1, status=enums.Plan.GOING, event='KUOF')])
+    Community.write([MANAGER])
+    Membership.write([MEMBER])
+    Seeded.write([])
+    Travel.write([TRIP])
+    StayRow.write([STAY])
+    monkeypatch.setattr(build_site_db, 'today', lambda: dt.date(2026, 11, 26))
+    made = community_tables(memory)
+    assert [made.value(int, 'select count(*) from travel'), made.value(int, 'select count(*) from stays')] == [1, 1]
+    assert capsys.readouterr().err == ''
+    monkeypatch.setattr(build_site_db, 'today', lambda: dt.date(2026, 11, 27))
+    made = community_tables(memory)
+    assert [made.value(int, 'select count(*) from travel'), made.value(int, 'select count(*) from stays')] == [0, 0]
+    said = 'cedric to event 1: the trip ended more than 3 days ago, so this row is no longer published; delete it'
+    assert capsys.readouterr().err.splitlines() == [f'warning: travel.csv: {said}', f'warning: stays.csv: {said}']

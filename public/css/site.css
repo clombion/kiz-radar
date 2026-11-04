@@ -335,6 +335,7 @@ th[aria-sort="descending"] button.sort::after {
   --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1.5 1.5 6 6l4.5-4.5' fill='none' stroke='%237a2850' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); /* its stroke is --accent, which a data URL can't read */
   --face-2: #c75a86; /* every second face in a row of who's going */
   --highlight: rgb(214 96 145 / 0.24); /* a highlighter's ink: a festival's days, a trip's time there; light */
+  --highlight-past: rgb(179 167 150 / 0.3); /* the same ink on a trip over, grey as the days gone by */
   --shadow-ink: 42 31 34; /* the colour of shadows and scrims, as rgb() channels */
   /* sizes that must agree wherever they are used */
   --gutter: 16px;
@@ -2330,6 +2331,11 @@ html:has(dialog.search[open]) {
 .days-stroke.days-stroke-from.days-stroke-on {
   mask-image: none;
 }
+/* a trip over: its swipe grey, as the days gone by are */
+.days-stroke.days-stroke-past,
+.days-stroke.days-stroke-past::after {
+  background: var(--highlight-past);
+}
 .days-count {
   grid-row: 1;
   grid-column: 8;
@@ -2483,6 +2489,17 @@ html:has(dialog.search[open]) {
 .trip-head p {
   grid-column: 1;
   margin: 0;
+}
+/* a trip under way: a small tag before its days */
+.trip-now {
+  display: inline-block;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 0.75rem;
+  font-weight: 650;
+  vertical-align: 0.1em;
 }
 .trip-when {
   font-weight: 650;

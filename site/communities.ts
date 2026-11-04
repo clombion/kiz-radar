@@ -16,6 +16,7 @@ import {
   WEEKDAYS,
   weekday,
 } from './calendar.ts';
+import { addDays } from './days.ts';
 import { one, q, sql } from './db.ts';
 import { button, h, type Kid, nodes } from './dom.ts';
 import { eventCard } from './eventcard.ts';
@@ -35,6 +36,7 @@ import {
   showInAddressBar,
 } from './routes.ts';
 import { type Booked, booked, EVENT, num, opt, str } from './rows.ts';
+import { KEY } from './states.ts';
 import { dayMonth, dayParts, dayRange, monthShort, monthYear, place, weekDay } from './ui.ts';
 import { joined, plural } from './wording.ts';
 
@@ -143,11 +145,15 @@ interface Present extends Away {
   travel: Flights | null;
   stays: Stay[];
 }
-// a festival the community goes to: who of it goes, and who is away for it from when to when
+// a festival the community goes to: who of it goes, who is away for it from when to when, the days of the whole trip
+// (spanOf), and where it stands on the day: on, or ended, or else ahead
 interface Visit {
   e: Festival;
   who: ReturnType<typeof whoGoes>;
   aways: Present[];
+  span: { from: string; to: string };
+  on: boolean; // from its first day to its last
+  ended: boolean; // from the day after its last
 }
 
 export function communityView(root: HTMLElement, [key]: readonly string[], qs: string, signal: AbortSignal): void {
@@ -156,21 +162,21 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
     root.replaceChildren(h('p', {}, 'No community at this link.'));
     return;
   }
+  const today = one({ day: str }, sql`SELECT day FROM today`)?.day ?? '';
+  // its festivals to come and those ended: a trip goes on after its festival ends while someone is still there
   const events = withDetails(
     q(
       EVENT,
-      sql`SELECT * FROM event_rows WHERE upcoming AND id IN (SELECT value FROM json_each(?)) ORDER BY start_date`,
-      [JSON.stringify([...c.festivals.keys()])],
+      sql`SELECT * FROM event_rows WHERE phase IN (?, ?) AND id IN (SELECT value FROM json_each(?)) ORDER BY start_date`,
+      [KEY.phase.AHEAD, KEY.phase.ENDED, JSON.stringify([...c.festivals.keys()])],
     ),
   ).flatMap((e) => {
     const f = c.festivals.get(e.id);
     return f === undefined ? [] : [{ e, f, who: whoGoes(e, f, c.manager) }];
   });
   // who of it is away for each festival, and on each day: one count for the sentence and the months alike
-  const trips: Visit[] = events.map(({ e, f, who }) => ({
-    e,
-    who,
-    aways: [
+  const trips: Visit[] = events.map(({ e, f, who }) =>
+    visit(today, e, who, [
       ...who.goers.map((g): Present => {
         const travel = f.travel.get(g.key) ?? null,
           stays = f.stays.get(g.key) ?? [];
@@ -182,22 +188,22 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
       ...f.added.map(
         (a): Present => ({ who: `added ${a.name}`, ...awayDays(e), e, goer: null, added: a, travel: null, stays: [] }),
       ),
-    ],
-  }));
+    ]),
+  );
+  // the trips not ended: the agenda's, the sentence's and the counts'; an ended one stays in the calendar, greyed
+  const current = trips.filter((t) => !t.ended);
   const days = presence(trips.flatMap((t) => t.aways));
-  const most = busiest(days);
-  const today = one({ day: str }, sql`SELECT day FROM today`)?.day ?? '';
+  const most = busiest(presence(current.flatMap((t) => t.aways)));
   const members = plural(c.members.length, 'member');
-  const [next] = events;
   // the period the calendar shows, from the address (?from=2027-02) when it is one it steps through, else today's;
   // the agenda under it its trips, those with a day in it, so that every day the calendar shows has its trips there.
-  // The sentence and "Next" are of every trip.
+  // The sentence and "Now" or "Next" are of every trip not ended.
   const steps = periods(today, [...days.keys()].toSorted((a, b) => a.localeCompare(b)).at(-1));
   const asked = readState(qs, { from: '' }).state.from;
   const from = steps.includes(asked) ? asked : (steps[0] ?? today.slice(0, 7));
-  const plan = h('section', { class: 'agenda' }, agenda(trips, today, c.manager, from));
+  const plan = h('section', { class: 'agenda' }, agenda(current, today, c.manager, from));
   const moved = (to: string) => {
-    plan.replaceChildren(...nodes(agenda(trips, today, c.manager, to)));
+    plan.replaceChildren(...nodes(agenda(current, today, c.manager, to)));
     showInAddressBar(communityHref(c.key, { from: to === steps[0] ? null : to }));
   };
   page(
@@ -213,13 +219,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
             h('b', {}, unbroken(dayRange(most.from, most.to))),
             `: ${unbroken(plural(most.people, 'person', 'people'))}, to ${placesOf(most.aways)}.`,
           ),
-      next === undefined
-        ? null
-        : h(
-            'p',
-            { class: ['community-next', 'muted'] },
-            `Next: ${next.e.city ?? next.e.title}, ${whenFrom(today, next.e)}`,
-          ),
+      nowAndNext(current, today),
       h(
         'div',
         { class: 'share-row' },
@@ -238,7 +238,8 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
         ),
       ),
     ],
-    days.size > 0
+    // the months, while a trip is to come or one ended shows in them
+    current.length > 0 || trips.some((t) => t.aways.some((a) => inPeriod(from, a)))
       ? months({
           today,
           days,
@@ -246,7 +247,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
             `${weekDay(d)}: ${plural(on.people, 'person', 'people')} ${
               on.aways.every((a) => atFestival(a, d)) ? 'at the festival in' : 'travelling to'
             } ${placesOf(on.aways)}`,
-          festivals: trips.map(({ e, who }) => ({ ...e, people: who.people })),
+          festivals: trips.map(({ e, who, ended }) => ({ ...e, people: who.people, ended })),
           // the days someone travels on outside their festival's days: the day before it they arrive, the day after
           travel: new Set([...days].flatMap(([d, on]) => (on.aways.some((a) => !atFestival(a, d)) ? [d] : []))),
           pop: popover((d) => dayDetail(d, days.get(d), c.manager), signal),
@@ -255,9 +256,13 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
           moved,
         })
       : null,
-    trips.length > 0
+    current.length > 0
       ? plan
-      : h('p', { class: 'muted' }, 'No one in this community has said they’re going anywhere yet.'),
+      : h(
+          'p',
+          { class: 'muted' },
+          trips.length > 0 ? 'No trips coming up.' : 'No one in this community has said they’re going anywhere yet.',
+        ),
     h(
       'section',
       {},
@@ -276,9 +281,35 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
   );
 }
 
-// when the next festival is, said from today: "now" when it has begun, "this Friday", or "on 20 Nov"
+// a trip: its days, from the first of the community to arrive to the last to leave, or the festival's when sooner or
+// later, and where it stands on the day: on from its first day to its last, ended from the day after
+function visit(today: string, e: Festival, who: Visit['who'], aways: Present[]): Visit {
+  const span = spanOf(e, aways);
+  return { e, who, aways, span, on: span.from <= today && today <= span.to, ended: span.to < today };
+}
+
+// when the next festival is, said from today: "tomorrow", "this Friday", or "on 20 Nov"
 const whenFrom = (today: string, e: Festival): string =>
-  e.start_date <= today ? 'now' : (relativeDay(today, e.start_date) ?? `on ${dayMonth(e.start_date)}`);
+  relativeDay(today, e.start_date) ?? `on ${dayMonth(e.start_date)}`;
+
+// until when a trip on goes on: "today", its weekday within the week ("Mon"), or else its day ("1 Dec")
+function until(today: string, day: string): string {
+  if (day === today) return 'today';
+  return day <= addDays(today, 6) ? (WEEKDAYS[weekday(day)]?.slice(0, 3) ?? '') : dayMonth(day);
+}
+
+// The head's line of where the community is: "Now: Glasgow, until Mon", and the next trip after it, "· Next: Oslo, on
+// 20 Nov"; with no trip on, "Next: Glasgow, this Friday"; nothing with neither.
+function nowAndNext(current: readonly Visit[], today: string): HTMLElement | null {
+  const on = current.find((t) => t.on),
+    next = current.find((t) => !t.on);
+  const where = (t: Visit) => t.e.city ?? t.e.title;
+  const said = [
+    on === undefined ? null : `Now: ${where(on)}, until ${until(today, on.span.to)}`,
+    next === undefined ? null : `Next: ${where(next)}, ${whenFrom(today, next.e)}`,
+  ].filter((x) => x !== null);
+  return said.length === 0 ? null : h('p', { class: ['community-next', 'muted'] }, said.join(' · '));
+}
 
 // "Fri 20 – Sun 22 Nov", "Thu 26 Nov – Tue 1 Dec": a festival's days, each with its weekday
 function daysSaid(e: Festival): string {
@@ -291,7 +322,8 @@ function daysSaid(e: Festival): string {
 }
 
 // The agenda of a period: its trips, those with a day in it, a heading a month ("November · 3 trips", with its year
-// in January and when it is not this year's) and a row a trip, the next open; none, "Nothing planned in Mar–Jun".
+// in January and when it is not this year's) and a row a trip, the first open (the one on, or else the next); none,
+// "Nothing planned in Mar–Jun".
 function agenda(trips: readonly Visit[], today: string, manager: Member, from: string): Kid[] {
   const byMonth = new Map<string, Visit[]>();
   for (const t of trips.filter((v) => v.aways.some((a) => inPeriod(from, a)))) {
@@ -321,7 +353,7 @@ function agenda(trips: readonly Visit[], today: string, manager: Member, from: s
 
 // A trip's row: its days, the festival (to it on the map) and where, who of the community goes; opened, a small Gantt
 // of who travels when, the same in words, where members stay, and the festival's line-up and prices.
-function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTMLElement {
+function tripRow({ e, who, aways, on }: Visit, manager: Member, open: boolean): HTMLElement {
   const id = `trip-${e.id}`;
   // its roster: who travels alike, a couple as one when both partners do, and the people the manager added, who never
   // say how they travel, each name of theirs saying on hover who added them
@@ -428,6 +460,7 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
       h(
         'p',
         {},
+        on ? [h('span', { class: 'trip-now' }, 'Now'), ' '] : null,
         h('span', { class: 'trip-when' }, daysSaid(e)),
         ' ',
         name,

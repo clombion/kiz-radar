@@ -135,6 +135,7 @@ interface Marked {
   start_date: string;
   end_date: string;
   people: number;
+  ended: boolean; // a trip over: its stroke grey as the days gone by, and no longer counted
 }
 // what the months say of the days: who travels on each, a day's words, the festivals, the days only travelled
 export interface Days<A extends Away> {
@@ -164,7 +165,7 @@ function strokes(week: readonly (string | null)[], festivals: readonly Marked[])
       const before = f.start_date < (week[from] ?? ''),
         after = f.end_date > (week[to] ?? '');
       return h('span', {
-        class: ['days-stroke', before && 'days-stroke-from', after && 'days-stroke-on'],
+        class: ['days-stroke', before && 'days-stroke-from', after && 'days-stroke-on', f.ended && 'days-stroke-past'],
         style: {
           'grid-column': `${from + 1} / ${to + 2}`,
           ...swipe(`${f.id} ${first}`, n % 2 === 1 ? UNDER : OVER, { before, after }),
@@ -205,7 +206,7 @@ function month<A extends Away>(s: Days<A>, m: string): HTMLElement {
   const count = (week: readonly (string | null)[]): HTMLElement => {
     const days = week.flatMap((d) => (d === null ? [] : [d]));
     const [first = '', last = first] = [days[0], days.at(-1)];
-    const begin = s.festivals.filter((f) => f.start_date >= first && f.start_date <= last);
+    const begin = s.festivals.filter((f) => !f.ended && f.start_date >= first && f.start_date <= last);
     const n = begin.reduce((sum, f) => sum + f.people, 0);
     const said = begin.map((f) => `${f.title}: ${plural(f.people, 'person', 'people')}`).join('; ');
     return h(

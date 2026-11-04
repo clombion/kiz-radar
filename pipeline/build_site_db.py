@@ -43,6 +43,7 @@ from pipeline.records import (
     Travel,
     day_of,
     now,
+    today,
 )
 
 SITE_DATA = 'public/data'  # the site's data files, published with it
@@ -50,6 +51,7 @@ OUT = f'{SITE_DATA}/kiz.sqlite'
 SITE_JSON = f'{SITE_DATA}/site.json'  # what the page shows before the database loads
 REVIEW_JSON = f'{SITE_DATA}/review.json'  # what the review dashboard lists (pipeline/review.py)
 POPULAR = 10  # bookings that make an artist "popular"
+KEPT_DAYS = 3  # how many days after a trip ends its travel and stays are still published, then left out to be deleted
 KIZ = tuple(g for g, s in states.STYLE_OF.items() if s == Style.KIZOMBA)
 BOOKED_ROLES = tuple(map(Role, states.counted(states.BOOKING)))  # the roles an artist's bookings count
 LINEUP_ROLES = tuple(map(Role, states.counted(states.LINEUP)))  # the roles a line-up counts
@@ -973,10 +975,37 @@ def nights_kept(stays: Sequence[StayRow], by: Mapping[tuple[str, int], Travel]) 
         nights.setdefault(r.person, []).append(r)
 
 
+class Ends(BaseModel):
+    id: int
+    end_date: dt.date
+
+
+def trip_ends(
+    trips: Sequence[Travel], stays: Sequence[StayRow], festival_ends: Mapping[int, dt.date]
+) -> dict[int, dt.date]:
+    """When the community's trip to each festival ends: the last day any member leaves, or the morning after their
+    last night, or the festival's end when that is later (the days the site's trip spans)."""
+    ends = dict(festival_ends)
+    for t in trips:
+        if t.leave is not None:
+            ends[t.event_id] = max(ends[t.event_id], dt.date.fromisoformat(t.leave[:10]))
+    for r in stays:
+        ends[r.event_id] = max(ends[r.event_id], r.last_night + dt.timedelta(days=1))
+    return ends
+
+
+def gone_by(ends: Mapping[int, dt.date], day: dt.date) -> set[int]:
+    """The festivals whose trip ended more than KEPT_DAYS days before the day: their travel and stays are no longer
+    published, and their rows are to be deleted (the build says which)."""
+    return {e for e, end in ends.items() if (day - end).days > KEPT_DAYS}
+
+
 def travel(x: Transaction, person_id: Mapping[str, int], members: set[str]) -> None:
     """How members travel and where they stay (pipeline/travel.csv, stays.csv): each row a member's, to a festival they
     plan; one travel each; a member's nights never overlapping, and between the day they arrive and the day before they
-    leave when they said them. The people a manager adds are no members, so they never have either."""
+    leave when they said them. The people a manager adds are no members, so they never have either. A trip that ended
+    more than KEPT_DAYS days ago is not published: the build warns of each of its rows, to be deleted from the files,
+    and goes on."""
     planned = {(r.person, r.event_id) for r in PlanRow.read()}
     trips, stays = Travel.read(), StayRow.read()
 
@@ -995,6 +1024,18 @@ def travel(x: Transaction, person_id: Mapping[str, int], members: set[str]) -> N
     for r in stays:
         theirs('stays.csv', r)
     nights_kept(stays, by)
+    festival_ends = {r.id: r.end_date for r in x.rows(Ends, 'select id, end_date from events')}
+    gone = gone_by(trip_ends(trips, stays, festival_ends), today())
+    for file, rows in (('travel.csv', trips), ('stays.csv', stays)):
+        for r in rows:
+            if r.event_id in gone:
+                print(
+                    f'warning: {file}: {r.person} to event {r.event_id}: the trip ended more than {KEPT_DAYS} days'
+                    ' ago, so this row is no longer published; delete it',
+                    file=sys.stderr,
+                )
+    trips = [r for r in trips if r.event_id not in gone]
+    stays = [r for r in stays if r.event_id not in gone]
     x.insert(
         'travel',
         (
