@@ -1,4 +1,4 @@
-key,name,artist_keys,featured,note
-cedric,Cédric,p:cedric@cedric+christina,1,Bergen; teaches with Christina as Cédric & Christina
-christina,Christina,p:christina@cedric+christina,1,Bergen; teaches with Cédric as Cédric & Christina
-sian,Siân,p:sian@dance,1,Glasgow; teaches at Glasgow Kizomba Festival 5.0
+key,name,artist_keys,featured,home,note
+cedric,Cédric,p:cedric@cedric+christina,1,Bergen,Bergen; teaches with Christina as Cédric & Christina
+christina,Christina,p:christina@cedric+christina,1,Bergen,Bergen; teaches with Cédric as Cédric & Christina
+sian,Siân,p:sian@dance,1,,Glasgow; teaches at Glasgow Kizomba Festival 5.0

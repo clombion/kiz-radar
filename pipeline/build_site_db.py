@@ -334,11 +334,18 @@ create table event_stats (
     genres text not null,
     features text not null
 ) strict;
+-- the cities people live in and the site's home city (its home airport's), where geocode.csv puts them
+create table homes (
+    city text primary key,
+    lat real not null,
+    lon real not null
+) strict;
 create table people (
     id integer primary key,
     key text not null unique,
     name text not null,
-    featured integer not null check (featured in (0, 1))
+    featured integer not null check (featured in (0, 1)),
+    home text references homes(city) deferrable initially deferred
 ) strict;
 create table person_artists (
     person_id integer not null references people(id) deferrable initially deferred,
@@ -880,6 +887,26 @@ def event_stats(x: Transaction, booked: Booked) -> None:
     x.insert('event_stats', rows)
 
 
+def homes(x: Transaction, people: Sequence[Person]) -> None:
+    """The cities people live in, and the site's home city (its home airport's), each where geocode.csv puts it, by
+    its name alone: a city it has not found, or found in two places, stops the build."""
+    found: dict[str, set[tuple[float, float]]] = {}
+    for p in airports.places().values():
+        if p.found:
+            found.setdefault(p.city, set()).add((p.found.lat, p.found.lon))
+    (site_home,) = [a.city for a in airports.known() if a.home]
+    cities = {site_home: 'the home airport'} | {r.home: r.name for r in people if r.home is not None}
+    rows: list[Mapping[str, object]] = []
+    for city, whose in sorted(cities.items()):
+        spots = found.get(city, set())
+        if len(spots) != 1:
+            said = 'not in geocode.csv' if not spots else 'in geocode.csv in more than one place'
+            sys.exit(f'people.csv: the home {city} ({whose}) is {said}')
+        ((lat, lon),) = spots
+        rows.append({'city': city, 'lat': lat, 'lon': lon})
+    x.insert('homes', rows)
+
+
 def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
     """Who's going (pipeline/people.csv, pipeline/plans.csv). People are ours, not the source's: a name, the artist
     records they are (if any), and whether the site names them on festival cards (featured) or only counts them. A
@@ -890,7 +917,14 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
     for r in people:
         if unknown := [k for k in r.artist_keys if k not in key_id]:
             sys.exit(f'people.csv: unknown artist key {unknown[0]} ({r.name})')
-    x.insert('people', ({'id': person_id[r.key], 'key': r.key, 'name': r.name, 'featured': r.featured} for r in people))
+    homes(x, people)
+    x.insert(
+        'people',
+        (
+            {'id': person_id[r.key], 'key': r.key, 'name': r.name, 'featured': r.featured, 'home': r.home}
+            for r in people
+        ),
+    )
     x.insert(
         'person_artists',
         ({'person_id': person_id[r.key], 'artist_id': key_id[k]} for r in people for k in r.artist_keys),
@@ -1161,7 +1195,9 @@ DOCS = {
     'event_promos': 'Promo codes for a festival, from pipeline/promo_codes.csv (ours, not kizomba-world’s): the code, '
     'and what it gives when known.',
     'people': 'People who share their festival plans (pipeline/people.csv, ours): featured ones are named on festival '
-    'cards, the others counted.',
+    'cards, the others counted; home, the city they live in when they said (homes).',
+    'homes': 'The cities people live in and the site’s home city (its home airport’s), where pipeline/geocode.csv '
+    'puts them: the Friends tab lists the people near a place by them.',
     'person_artists': 'The artist records a person is, so their bookings and their plans meet.',
     'plans': 'Who said they are going to which festival (pipeline/plans.csv).',
     'communities': 'Communities (pipeline/communities.csv, ours): a key, which is its page’s address, a name and its '

@@ -7,6 +7,7 @@ and the airport it flies to, the fares) are read against those files, row for ro
 import datetime as dt
 import json
 import math
+import re
 from collections.abc import Mapping
 from pathlib import Path
 
@@ -317,6 +318,7 @@ def community_tables(memory: Memory) -> Db:
     db = memory()
     with db.transaction() as x:
         for table in (
+            'homes',
             'people',
             'communities',
             'community_members',
@@ -515,3 +517,73 @@ def test_the_build_leaves_out_a_trip_ended_more_than_three_days_ago_and_warns_of
     assert [made.value(int, 'select count(*) from travel'), made.value(int, 'select count(*) from stays')] == [0, 0]
     said = 'cedric to event 1: the trip ended more than 3 days ago, so this row is no longer published; delete it'
     assert capsys.readouterr().err.splitlines() == [f'warning: travel.csv: {said}', f'warning: stays.csv: {said}']
+
+
+class Lives(BaseModel, frozen=True):
+    key: str
+    home: str | None
+    lat: float | None
+    lon: float | None
+
+
+def test_a_persons_home_is_where_geocode_csv_puts_their_city(site_db: Path) -> None:
+    """people.csv's home, the city someone lives in, is where geocode.csv puts it (homes), as the site's home city is;
+    someone who has not said has none."""
+    committed(Person.FILE, Place.FILE, Airport.FILE)
+    at = {p.city: p.found for p in Place.read() if p.found}
+    with sqlite_db.opened(site_db, 'ro') as db:
+        lives = db.rows(Lives, 'select p.key, p.home, h.lat, h.lon from people p left join homes h on h.city = p.home')
+        cities = set(db.column(str, 'select city from homes'))
+    assert {r.key: r.home for r in lives} == {r.key: r.home for r in Person.read()}
+    for r in lives:
+        spot = None if r.home is None else at[r.home]
+        assert (r.lat, r.lon) == ((None, None) if spot is None else (spot.lat, spot.lon))
+    assert {a.city for a in Airport.read() if a.home} <= cities
+    assert {r.home for r in lives if r.home} | {a.city for a in Airport.read() if a.home} == cities
+
+
+HOME_AIRPORT = Airport(code='BGO', name='Bergen', city='Bergen', country_code='NO', lat=60.3, lon=5.2, home=True)
+BERGEN = Place(city='Bergen', country='Norway', found=Spot(lat=60.39, lon=5.33, name='Bergen, Norway'))
+
+
+@pytest.mark.parametrize(
+    ('places', 'home', 'said'),
+    [
+        ((BERGEN,), 'Atlantis', 'people.csv: the home Atlantis (Cédric) is not in geocode.csv'),
+        # a city geocode.csv has, but did not find
+        (
+            (BERGEN, Place(city='Atlantis', country=None, found=None)),
+            'Atlantis',
+            'people.csv: the home Atlantis (Cédric) is not in geocode.csv',
+        ),
+        # one name, two places: which is meant is not known
+        (
+            (BERGEN, Place(city='Bergen', country='Netherlands', found=Spot(lat=52.6, lon=4.7, name='Bergen, NL'))),
+            'Bergen',
+            'people.csv: the home Bergen (Cédric) is in geocode.csv in more than one place',
+        ),
+    ],
+)
+def test_a_home_geocode_csv_cannot_place_stops_the_build(
+    memory: Memory, places: tuple[Place, ...], home: str, said: str
+) -> None:
+    Place.write(list(places))
+    Airport.write([HOME_AIRPORT])
+    cedric = Person(key='cedric', name='Cédric', artist_keys=(), featured=True, home=home, note='')
+    db = memory()
+    with db.transaction() as x:
+        x.script(build_site_db.TABLES['homes'])
+        with pytest.raises(SystemExit, match=re.escape(said)):
+            build_site_db.homes(x, [cedric])
+
+
+def test_a_home_left_empty_is_none_and_the_sites_home_city_is_always_placed(memory: Memory) -> None:
+    Place.write([BERGEN])
+    Airport.write([HOME_AIRPORT])
+    sian = Person(key='sian', name='Siân', artist_keys=(), featured=True, home=None, note='')
+    db = memory()
+    with db.transaction() as x:
+        x.script(build_site_db.TABLES['homes'])
+        build_site_db.homes(x, [sian])
+    assert db.value(str, 'select city from homes') == 'Bergen'
+    assert db.value(float, 'select lat from homes') == 60.39

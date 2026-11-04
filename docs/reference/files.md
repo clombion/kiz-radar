@@ -24,7 +24,7 @@ one.
 | `pipeline/spend.csv` | `Spent` | A request to Claude and what it cost; thinking counts as output. |
 | `pipeline/rates.csv` | `Rate` | Units of a currency per euro, on a day. |
 | `pipeline/promo_codes.csv` | `Promo` | A promo code for a festival, ours, not kizomba-world's. |
-| `pipeline/people.csv` | `Person` | Someone who shares their festival plans: the artist records they are (';'-separated match keys), and whether cards name them (featured) or only count them. |
+| `pipeline/people.csv` | `Person` | Someone who shares their festival plans: the artist records they are (';'-separated match keys), whether cards name them (featured) or only count them, and the city they live in, when they said, which the Friends tab finds people near a visitor by. |
 | `pipeline/extract/groups.csv` | `Group` | A named group: an act several people perform as, its members and the spellings that mean it, each a match_key. |
 | `pipeline/artist_merge_suggestions.csv` | `Suggestion` | A pair of artists that may be one, for a reviewer to decide. |
 

@@ -8,6 +8,7 @@ import { exec, load, loadSite, one, sql } from '../../site/db.ts';
 import { h } from '../../site/dom.ts';
 import { festivals } from '../../site/festivals.ts';
 import { ganttByPlace } from '../../site/gantt.ts';
+import { NEAR_KM, personView } from '../../site/people.ts';
 import { byPlace } from '../../site/roster.ts';
 import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str } from '../../site/rows.ts';
@@ -1548,4 +1549,107 @@ test('by place, the names a count opens say each one’s own nights when they ar
   expect(said(count)).toBe('5 people');
   expect(cardOf(grid.querySelector('.gantt-who-names'))).toEqual(['Ann', 'Bo', 'Cy', 'Di', 'Nora · Fri–Sun']);
   expect(said(grid.querySelector('.gantt-who-nights'))).toBe('· Fri–Sun');
+});
+
+// ----- the Friends tab for a visitor: the people near the site's home city (Cédric and Christina live there; Siân has
+// not said where she lives), or near the visitor once they share where they are -----
+// the site's home city, from the data, and where it is
+const homeOf = () =>
+  one(
+    { city: str, lat: num, lon: num },
+    sql`SELECT h.city, h.lat, h.lon FROM homes h JOIN airports a ON a.city = h.city WHERE a.home = 1`,
+  );
+const friendsTab = () => {
+  const root = document.createElement('main');
+  personView(root, []);
+  return root;
+};
+const nearOf = (root: HTMLElement) => ({
+  heading: said(root.querySelector('.friends-near h2')),
+  rows: [...root.querySelectorAll('.friends-near .plan-list li')].map((li) => said(li)),
+  sharing: said(root.querySelector('.friends-near p:last-child')),
+  note: said(root.querySelector('.friends-note')),
+  button: root.querySelector('.friends-locate') !== null,
+});
+// the browser's answer to where the visitor is, once: a place, or a refusal
+function whereabouts(answer: { latitude: number; longitude: number } | null) {
+  return vi.spyOn(navigator.geolocation, 'getCurrentPosition').mockImplementation((ok, refused) => {
+    if (answer === null)
+      refused?.({ code: 1, message: 'denied', PERMISSION_DENIED: 1, POSITION_UNAVAILABLE: 2, TIMEOUT: 3 });
+    else {
+      const coords = { ...answer, accuracy: 10, altitude: null, altitudeAccuracy: null, heading: null, speed: null };
+      ok({ coords: { ...coords, toJSON: () => coords }, timestamp: 0, toJSON: () => ({ coords }) });
+    }
+  });
+}
+// a place this far north of the home city, in degrees of latitude (about 111 km each)
+const northOfHome = (degrees: number) => {
+  const home = homeOf();
+  return { latitude: (home?.lat ?? 0) + degrees, longitude: home?.lon ?? 0 };
+};
+
+test('the Friends tab lists the people near the home city first, then the rest of the world and the communities', () => {
+  const root = onDay('2026-11-04', friendsTab);
+  const near = nearOf(root);
+  const home = homeOf()?.city ?? '';
+  expect(home).not.toBe('');
+  expect(near.heading).toBe(`Near ${home}`);
+  expect(said(root.querySelector('.friends-near p'))).toBe(
+    `Dancers living within ${NEAR_KM} km who share their plans.`,
+  );
+  expect(NEAR_KM).toBe(150);
+  // Glasgow names Christina alone: Siân, who goes too, has not said where she lives
+  expect(near.rows.find((r) => r?.includes('Glasgow'))).toMatch(/Christina(?! & )/u);
+  expect(near.rows.join(' ')).not.toContain('Siân');
+  expect(near.sharing).toMatch(/^Sharing their plans: Christina \(\d+\) and Cédric \(\d+\)$/u);
+  expect(said(root.querySelector('.friends-locate'))).toBe(
+    'Use my location — it’s used on this page only and never stored or sent',
+  );
+  expect([...root.querySelectorAll('section > h2')].map((h2) => said(h2))).toEqual([
+    `Near ${home}`,
+    'Rest of the world',
+    'Your communities',
+  ]);
+  expect(said(root.querySelector('.friends-rest p'))).toBe('Not available yet');
+  expect(said(root.querySelector('.friends-communities p'))).toBe(
+    'Not available yet — communities will show here once you can sign in',
+  );
+});
+
+test('with the visitor’s location, the Friends tab lists the people within 150 km of them, and keeps it nowhere', () => {
+  const before = { href: location.href, local: localStorage.length, session: sessionStorage.length };
+  // about 130 km north of the home city: Cédric and Christina are near
+  const spy = whereabouts(northOfHome(1.17));
+  const root = onDay('2026-11-04', friendsTab);
+  root.querySelector<HTMLButtonElement>('.friends-locate')?.click();
+  expect(spy).toHaveBeenCalledTimes(1);
+  const near = nearOf(root);
+  expect([near.heading, near.button, near.note]).toEqual(['Near you', false, '']);
+  expect(near.sharing).toMatch(/^Sharing their plans: Christina \(\d+\) and Cédric/u);
+  // about 180 km: no one
+  spy.mockRestore();
+  const far = whereabouts(northOfHome(1.62));
+  const away = onDay('2026-11-04', friendsTab);
+  away.querySelector<HTMLButtonElement>('.friends-locate')?.click();
+  expect(said(away.querySelector('.friends-near'))).toContain('No one near here has shared plans yet.');
+  far.mockRestore();
+  // where the visitor is went nowhere: not into the address, nor into the browser's storage
+  expect({ href: location.href, local: localStorage.length, session: sessionStorage.length }).toEqual(before);
+  const kept = [localStorage, sessionStorage].flatMap((st) =>
+    Array.from({ length: st.length }, (_, i) => st.getItem(st.key(i) ?? '') ?? ''),
+  );
+  const at = [1.17, 1.62].map((d) => String(northOfHome(d).latitude).slice(0, 5));
+  for (const lat of at) expect(kept.join(' ')).not.toContain(lat);
+});
+
+test('when the visitor does not share their location, the Friends tab stays on the home city and says so', () => {
+  const spy = whereabouts(null);
+  const root = onDay('2026-11-04', friendsTab);
+  root.querySelector<HTMLButtonElement>('.friends-locate')?.click();
+  spy.mockRestore();
+  const near = nearOf(root);
+  const home = homeOf()?.city ?? '';
+  expect([near.heading, near.note]).toEqual([`Near ${home}`, `Your location wasn’t shared, so this stays on ${home}.`]);
+  expect(root.querySelector('.friends-note')?.getAttribute('role')).toBe('status');
+  expect(near.sharing).toMatch(/^Sharing their plans: Christina \(\d+\) and Cédric/u);
 });

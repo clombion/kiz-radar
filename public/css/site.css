@@ -2192,6 +2192,26 @@ html:has(dialog.search[open]) {
   margin: 0 0 0.8rem;
   flex-wrap: wrap;
 }
+/* the Friends tab: the people near a place, the rest of the world and the visitor's communities, a section each; the
+   button that looks where the visitor is says why on its face, so it wraps; its note, when it could not, under it */
+.friends-near,
+.friends-rest,
+.friends-communities {
+  margin-top: 1.25rem;
+}
+.more-btn.friends-locate {
+  margin: 0.25rem 0 0;
+  white-space: normal;
+  text-align: left;
+}
+.friends-note {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.friends-note:empty {
+  display: none;
+}
 .plan-list {
   list-style: none;
   padding: 0;

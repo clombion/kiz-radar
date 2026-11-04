@@ -1275,8 +1275,9 @@ class Promo(CsvRow):
 
 
 class Person(CsvRow):
-    """Someone who shares their festival plans: the artist records they are (';'-separated match keys), and whether
-    cards name them (featured) or only count them."""
+    """Someone who shares their festival plans: the artist records they are (';'-separated match keys), whether cards
+    name them (featured) or only count them, and the city they live in, when they said, which the Friends tab finds
+    people near a visitor by."""
 
     FILE = 'pipeline/people.csv'
 
@@ -1284,6 +1285,7 @@ class Person(CsvRow):
     name: str
     artist_keys: Keys
     featured: Flag
+    home: Blank[Text]  # the city they live in, as geocode.csv names it; none when they have not said
     note: str
 
 

@@ -6,15 +6,17 @@ The build stops when one names a person, a community, an artist key or a festiva
 ## Who's going
 
 - `pipeline/people.csv`: one row per person, with a short `key` (their page is `#friends/<key>`), their `name`, the
-  `artist_keys` they are in the line-ups (`match_key` values, separated by `;`), and `featured`. Featured people are
-  named on festival cards; the others are counted.
+  `artist_keys` they are in the line-ups (`match_key` values, separated by `;`), `featured`, and their `home`: the city
+  they live in, as `pipeline/geocode.csv` names it (one of its rows, found there, by that name alone), or empty when
+  they have not said. Featured people are named on festival cards; the others are counted. The build stops on a home
+  geocode.csv has not found, or has in two places; someone with no home is never "near" anywhere on the Friends tab.
 - `pipeline/plans.csv`: one row per person and festival, with `status` `going`.
 
 A card then says "Cédric & Christina are going · 3 more people too". A name opens a quick view of where they're going;
 partners who both go are named as their couple; someone in the festival's line-up shows as teaching (or playing) there
 rather than going. Each person has a plans page with a Share button, and an artist's page lists the festivals they go to
-without teaching there. The Friends tab lists every festival someone goes to, soonest first, and the festival list can
-keep only those featured people go to.
+without teaching there. The Friends tab lists the festivals the people living near a place go to (The site: the Friends
+tab), and the festival list can keep only those featured people go to.
 
 Plans are public: anyone can see them, so add people only with their agreement.
 
