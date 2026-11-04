@@ -154,8 +154,8 @@ const agendaRow = (root: HTMLElement, title: string) =>
     r.querySelector('.trip-fest')?.textContent?.startsWith(title),
   );
 const KUOF = 'Cédric & Christina teaching · Tonje, Ragnhild and Maja going';
-// Christina alone of the members goes to Glasgow, named as herself; Sian, added by Cédric, teaches there
-const GLASGOW = 'Christina teaching · Sian teaching and Caroline going';
+// Christina alone of the members goes to Glasgow, named as herself; Siân, added by Cédric, teaches there
+const GLASGOW = 'Christina teaching · Siân teaching and Caroline going';
 
 test('a community’s head says who it is, when most members travel and where next, and whom it is for', () => {
   const root = onDay('2026-11-03', () => communityPage(COMMUNITY));
@@ -190,7 +190,7 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
   expect([...root.querySelectorAll('.agenda h2')].map((h2) => said(h2))).toEqual([
     'November · 3 trips',
     'January 2027 · 1 trip',
-    'February · 1 trip',
+    'February · 2 trips',
   ]);
   const rows = [...root.querySelectorAll<HTMLElement>('.trip')];
   expect(rows.map((r) => said(r.querySelector('.trip-when')))).toEqual([
@@ -198,11 +198,12 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
     'Fri 20 – Sun 22 Nov',
     'Thu 26 Nov – Tue 1 Dec',
     'Thu 14 – Mon 18 Jan',
+    'Thu 11 – Mon 15 Feb',
     'Fri 26 – Sun 28 Feb',
   ]);
   expect(said(agendaRow(root, 'KUOF')?.querySelector('.trip-who'))).toBe(KUOF);
   // Glasgow's card is open: its row says how many go and who teaches; the card names everyone
-  expect(said(agendaRow(root, 'Glasgow')?.querySelector('.trip-who'))).toBe('3 going · Christina and Sian teaching');
+  expect(said(agendaRow(root, 'Glasgow')?.querySelector('.trip-who'))).toBe('3 going · Christina and Siân teaching');
   agendaRow(root, 'Glasgow')?.querySelector<HTMLElement>('.trip-toggle')?.click(); // closed, the whole line again
   expect(said(agendaRow(root, 'Glasgow')?.querySelector('.trip-who'))).toBe(GLASGOW);
   agendaRow(root, 'Glasgow')?.querySelector<HTMLElement>('.trip-toggle')?.click();
@@ -222,13 +223,27 @@ test('the agenda has a heading a month and a row a trip, soonest first, naming w
     ]),
   ).toEqual([
     ['Christina', personHref('christina')],
-    ['Sian', artistHref(sian ?? Number.NaN)],
+    ['Siân', artistHref(sian ?? Number.NaN)],
   ]);
   agendaRow(root, 'Glasgow')?.querySelector<HTMLElement>('.trip-toggle')?.click();
   // the next trip open, the others closed; a row opens and closes from its button
   const toggles = rows.map((r) => r.querySelector<HTMLElement>('.trip-toggle'));
-  expect(toggles.map((t) => t?.getAttribute('aria-expanded'))).toEqual(['true', 'false', 'false', 'false', 'false']);
-  expect(rows.map((r) => r.querySelector<HTMLElement>('.trip-body')?.hidden)).toEqual([false, true, true, true, true]);
+  expect(toggles.map((t) => t?.getAttribute('aria-expanded'))).toEqual([
+    'true',
+    'false',
+    'false',
+    'false',
+    'false',
+    'false',
+  ]);
+  expect(rows.map((r) => r.querySelector<HTMLElement>('.trip-body')?.hidden)).toEqual([
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+  ]);
   toggles[1]?.click();
   expect(rows[1]?.querySelector<HTMLElement>('.trip-body')?.hidden).toBe(false);
   expect(toggles[1]?.getAttribute('aria-expanded')).toBe('true');
@@ -601,10 +616,10 @@ test('an opened trip draws who travels when: the days from the first in to the l
     expect(glasgow.bars).toEqual([]);
     expect(glasgow.none.map((n) => n.at)).toEqual([[0, 100]]);
     expect(glasgow.parties).toEqual([]);
-    expect(glasgow.said).toBe('not said yet: Christina, Sian and Caroline');
-    expect(glasgow.unsaid).toBe('Christina, Sian and Caroline');
+    expect(glasgow.said).toBe('not said yet: Christina, Siân and Caroline');
+    expect(glasgow.unsaid).toBe('Christina, Siân and Caroline');
     expect(titled(agendaRow(root, 'Glasgow')?.querySelector('.gantt-unsaid'))).toEqual(
-      ['Sian', 'Caroline'].map((n) => [n, 'Added by Cédric']),
+      ['Siân', 'Caroline'].map((n) => [n, 'Added by Cédric']),
     );
     // a couple who has not said is named as one
     expect(ganttOf(opened(root, 'HOT Ice')).unsaid).toBe('Cédric & Christina');
@@ -1040,7 +1055,7 @@ const LATER = [
   ['Maja', 18_750], // March
   ['Ragnhild', 19_091], // April
   ['Tonje', ALBANIA], // May
-  ['Sian', 18_725], // June
+  ['Siân', 18_725], // June
   ['Caroline', 18_766], // July
   ['Maja', 16_246], // September
 ] as const;
@@ -1063,7 +1078,7 @@ const pressAll = (root: HTMLElement) => {
 test('four months or fewer are all shown, with every trip, and no button', () => {
   const seen = foldOf(onDay('2026-11-04', () => communityPage(COMMUNITY)));
   expect(seen.months).toEqual(['November 2026', 'December 2026', 'January 2027', 'February 2027']);
-  expect([seen.trips, seen.buttons]).toEqual([5, []]);
+  expect([seen.trips, seen.buttons]).toEqual([6, []]);
 });
 
 test('a fifth month is behind a button, and its trip behind another, each showing it in place and hiding it again', () => {
@@ -1071,8 +1086,8 @@ test('a fifth month is behind a button, and its trip behind another, each showin
     const root = onDay('2026-11-04', () => communityPage(COMMUNITY));
     const closed = foldOf(root);
     expect(closed.months).toEqual(['November 2026', 'December 2026', 'January 2027', 'February 2027']);
-    expect(closed.headings.at(-1)).toBe('February · 1 trip');
-    expect(closed.trips).toBe(5);
+    expect(closed.headings.at(-1)).toBe('February · 2 trips');
+    expect(closed.trips).toBe(6);
     expect(closed.buttons).toEqual([
       ['Show March (1 month)', 'false'],
       ['Show 1 more trip', 'false'],
@@ -1080,7 +1095,7 @@ test('a fifth month is behind a button, and its trip behind another, each showin
     pressAll(root);
     const open = foldOf(root);
     expect(open.months.at(-1)).toBe('March 2027');
-    expect([open.headings.at(-1), open.trips]).toEqual(['March · 1 trip', 6]);
+    expect([open.headings.at(-1), open.trips]).toEqual(['March · 1 trip', 7]);
     expect(open.buttons).toEqual([
       ['Show fewer months', 'true'],
       ['Show fewer trips', 'true'],
@@ -1100,7 +1115,7 @@ test('a year of trips shows four months and their trips; the rest, a month witho
       ['Show March to September (6 months)', 'false'],
       ['Show 6 more trips', 'false'],
     ]);
-    expect(closed.headings).toEqual(['November · 3 trips', 'January 2027 · 1 trip', 'February · 1 trip']);
+    expect(closed.headings).toEqual(['November · 3 trips', 'January 2027 · 1 trip', 'February · 2 trips']);
     // the sentence and the next trip are of every trip, shown or not
     expect(said(root.querySelector('.community-when'))).toBe(
       'Most members are travelling 20–22 Nov: 5 people, to Oslo.',
@@ -1110,7 +1125,7 @@ test('a year of trips shows four months and their trips; the rest, a month witho
     const open = foldOf(root);
     expect(open.months).toHaveLength(10);
     expect(open.gaps).toEqual(['Nothing planned in August']);
-    expect(open.trips).toBe(11);
+    expect(open.trips).toBe(12);
   });
 });
 
@@ -1121,14 +1136,17 @@ test('a trip with a day in the months shown is shown, though its festival is in 
   expect(alone.months.at(-1)).toBe('January 2027');
   expect(alone.buttons).toEqual([
     ['Show February (1 month)', 'false'],
-    ['Show 1 more trip', 'false'],
+    ['Show 2 more trips', 'false'],
   ]);
   // Cédric flying in on the last day of January: the trip has a day the months show, so it shows with them
   const early: readonly Planted[] = [['cedric', 18_760, '2027-01-31T20:00', '2027-03-01T10:00', null]];
   const flown = withTrips(early, fromOctober);
   expect(flown.months.at(-1)).toBe('January 2027');
-  expect(flown.headings.at(-1)).toBe('February · 1 trip');
-  expect(flown.buttons).toEqual([['Show February to March (2 months)', 'false']]);
+  expect(flown.headings.at(-1)).toBe('February · 2 trips');
+  expect(flown.buttons).toEqual([
+    ['Show February to March (2 months)', 'false'],
+    ['Show 1 more trip', 'false'],
+  ]);
 });
 
 test('on a phone a day’s panel opens under its row of months, never after a month folded away', async () => {

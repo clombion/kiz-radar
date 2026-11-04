@@ -72,7 +72,7 @@ first it shows the trips with a day in the months the calendar shows at first, s
 trips there, and a button the rest ("Show 6 more trips", then "Show fewer trips"), a month's heading hidden with its
 trips when all of them are; the sentence and "Next" are of every trip, shown or not. A row has its days ("Fri 20 – Sun
 22 Nov"), the festival and where it is (which leads to it on the map), and who of the community goes: its members as on
-any card (as their couple when both go, teaching when in the line-up), then the people added: "Christina teaching · Sian
+any card (as their couple when both go, teaching when in the line-up), then the people added: "Christina teaching · Siân
 teaching and Caroline going". Hovering an added name says who added them ("Added by Cédric"). Whether someone added
 teaches comes from the festival's line-up and their `artist_keys`, as it does for a member; the manager never says it,
 and someone teaching links to their artist page. The next trip is open; the others open from their button, on a card
