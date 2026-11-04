@@ -5,9 +5,10 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import { extname, join, normalize } from 'node:path';
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
+import { FIXTURE_DATA } from './tests/site/community.fixture.ts';
 
 // The built site (public/), served under /kiz-radar/ as GitHub Pages serves it, for the tests that load it whole in a
-// frame: a folder's address serves its index.html, as Pages does.
+// frame: a folder's address serves its index.html, as Pages does, and data/ is the fixture's database.
 const TYPES: Readonly<Record<string, string>> = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript',
@@ -19,6 +20,9 @@ const TYPES: Readonly<Record<string, string>> = {
   '.png': 'image/png',
   '.woff2': 'font/woff2',
 };
+const COMMUNITY_PAGE = /^\/c\/[^/]+\/(?:index\.html)?$/u;
+const BASE = '<base href="./">',
+  COMMUNITY_BASE = '<base href="../../">';
 type Handler = (req: IncomingMessage, res: ServerResponse, next: () => void) => void;
 const pages = () => ({
   name: 'pages',
@@ -29,9 +33,15 @@ const pages = () => ({
         next();
         return;
       }
-      const file = join('public', path.endsWith('/') ? `${path}index.html` : path);
-      stat(file)
-        .then(() => readFile(file))
+      // its data the fixture's (data.setup.ts), never the build's rows; a community's page the site's page from c/<key>/,
+      // as pipeline/generate.py makes it but for its head tags, whatever communities the data has
+      const file = path.startsWith('/data/')
+        ? join(FIXTURE_DATA, path.slice('/data/'.length))
+        : join('public', path.endsWith('/') ? `${path}index.html` : path);
+      const read = COMMUNITY_PAGE.test(path)
+        ? readFile('public/index.html', 'utf8').then((index) => index.replace(BASE, COMMUNITY_BASE))
+        : stat(file).then(() => readFile(file));
+      read
         .then((body) => {
           res.setHeader('Content-Type', TYPES[extname(file)] ?? 'application/octet-stream');
           res.end(body);

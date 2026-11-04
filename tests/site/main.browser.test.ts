@@ -6,6 +6,7 @@ import { commands, page } from 'vitest/browser';
 import { load, loadSite } from '../../site/db.ts';
 import { done } from '../../site/report.ts';
 import { artistsHref, communityHref, EXPLORE, TABS } from '../../site/routes.ts';
+import { FIXTURE_COMMUNITY, FIXTURE_DATA } from './community.fixture.ts';
 
 const INDEX = new DOMParser().parseFromString(await commands.readFile('public/index.html'), 'text/html');
 // the files the page asks for, by name: the packages the build copies to vendor/, or else the build's data
@@ -37,7 +38,7 @@ beforeAll(async () => {
   vi.stubGlobal('fetch', async (url: URL | string, init?: RequestInit) => {
     if (!(url instanceof URL)) return fetched(url, init);
     const file = url.pathname.split('/').at(-1) ?? '';
-    const data = await commands.readFile(VENDOR[file] ?? `public/data/${file}`, 'base64');
+    const data = await commands.readFile(VENDOR[file] ?? `${FIXTURE_DATA}/${file}`, 'base64');
     return new Response(Uint8Array.from(atob(data), (c) => c.charCodeAt(0)));
   });
   document.body.replaceChildren(...document.importNode(INDEX.body, true).childNodes);
@@ -67,7 +68,7 @@ const unnamed = (): string[] =>
 // every view the page links to: its tabs and Explore's, and the links index.html has (the SQL page); and the
 // community's page, which no tab links to: an older link to it, #community/<key>, which moves the address to its
 // own, c/<key>/ (each view starts from the page's own address again)
-const COMMUNITY = '#community/frost-lantern-river-maple';
+const COMMUNITY = `#community/${FIXTURE_COMMUNITY}`;
 const VIEWS = [
   ...new Set([
     ...[...TABS, ...EXPLORE].map(([, , href]) => href),
@@ -92,7 +93,7 @@ test.for(VIEWS)('%s takes the focus as a new page and names every control', asyn
   expect(main()?.childElementCount).toBeGreaterThan(0);
   expect(unnamed()).toEqual([]);
   // an older link to a community's page moves to its own address
-  const own = new URL(communityHref('frost-lantern-river-maple'), document.baseURI).href;
+  const own = new URL(communityHref(FIXTURE_COMMUNITY), document.baseURI).href;
   expect(href !== COMMUNITY || location.href === own).toBe(true);
 });
 

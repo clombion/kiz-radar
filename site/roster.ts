@@ -28,18 +28,20 @@ export interface Stay {
   last: string;
   place: string;
 }
-// someone going: who they are, the couple they are in when both partners go, how they travel (null: not said) and
-// where they stay, in the order of their nights
+// someone going: who they are, by a key no one else going has (two people may share a name), the couple they are in
+// when both partners go, how they travel (null: not said) and where they stay, in the order of their nights
 export interface Goes<P> {
   person: P;
+  key: string;
   name: string;
   couple: { key: string; name: string } | null;
   travel: Flights | null;
   stays: readonly Stay[];
 }
-// a unit: one person, or a couple whose partners travel and stay alike, by its name
+// a unit: one person, or a couple whose partners travel and stay alike, by its name, and its people's keys
 export interface Unit<P> {
   name: string;
+  key: string;
   people: P[];
 }
 // the people of a line who stay alike: their stays (none: not said), by name ("Airbnb → Scandic Holberg"), and who
@@ -67,9 +69,16 @@ const travelKey = (t: Flights | null): string =>
 const staysKey = (stays: readonly Stay[]): string => stays.map((s) => `${s.first}..${s.last}:${s.place}`).join(';');
 // whether someone has said nothing at all
 const silent = (g: Goes<unknown>): boolean => g.travel === null && g.stays.length === 0;
-const byName = (a: { name: string }, b: { name: string }): number => a.name.localeCompare(b.name, 'en');
 // times and keys by their characters, so that an end not said ("~") sorts after every time
 const byText = (a: string, b: string): number => Number(a > b) - Number(a < b);
+// by name, and of two of one name by key: the same people make the same order, whatever order they come in
+const byName = (a: { name: string; key: string }, b: { name: string; key: string }): number =>
+  a.name.localeCompare(b.name, 'en') || byText(a.key, b.key);
+const unitOf = <P>(name: string, of: readonly Goes<P>[]): Unit<P> => ({
+  name,
+  key: of.map((o) => o.key).join('+'),
+  people: of.map((o) => o.person),
+});
 
 interface Placed<P> {
   unit: Unit<P>;
@@ -89,7 +98,7 @@ function units<P>(goers: readonly Goes<P>[]): Placed<P>[] {
     const alike = c !== null && partners.length > 1 && partners.every((o) => sign(o) === sign(g));
     for (const one of alike ? [partners] : [[g]]) {
       out.push({
-        unit: { name: alike && c !== null ? c.name : g.name, people: one.map((o) => o.person) },
+        unit: unitOf(alike && c !== null ? c.name : g.name, one),
         travel: g.travel,
         stays: g.stays,
         silent: silent(g),
@@ -163,7 +172,7 @@ export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
       Number(a.none) - Number(b.none) ||
       byText(a.line.travel?.arrive ?? unknown, b.line.travel?.arrive ?? unknown) ||
       byText(a.line.travel?.leave ?? unknown, b.line.travel?.leave ?? unknown) ||
-      byName(a.line.units[0] ?? { name: '' }, b.line.units[0] ?? { name: '' }) ||
+      byName(a.line.units[0] ?? { name: '', key: '' }, b.line.units[0] ?? { name: '', key: '' }) ||
       byText(travelKey(a.line.travel), travelKey(b.line.travel)),
   );
   const out = lines.map((l) => l.line);
@@ -186,7 +195,7 @@ export interface Place<P> {
   people: number;
   nights: { first: string; last: string } | null;
   shared: { first: string; last: string } | null;
-  stays: { person: P; first: string; last: string }[];
+  stays: { person: P; key: string; first: string; last: string }[];
   called: string | null;
 }
 
@@ -205,7 +214,7 @@ export function byPlace<P>(goers: readonly Goes<P>[]): Place<P>[] {
     if (g.stays.length === 0) of(null).who.set(g, '');
     for (const s of g.stays) {
       const p = of(s.place);
-      p.stays.push({ person: g.person, first: s.first, last: s.last });
+      p.stays.push({ person: g.person, key: g.key, first: s.first, last: s.last });
       p.who.set(g, `${p.who.get(g) ?? ''};${s.first}..${s.last}`);
     }
   }
@@ -219,7 +228,7 @@ export function byPlace<P>(goers: readonly Goes<P>[]): Place<P>[] {
       const partners = c === null ? [] : here.filter((o) => o.couple?.key === c.key);
       const alike = c !== null && partners.length > 1 && partners.every((o) => who.get(o) === who.get(g));
       const one = alike ? partners.toSorted(byName) : [g];
-      named.push({ name: alike && c !== null ? c.name : g.name, people: one.map((o) => o.person) });
+      named.push(unitOf(alike && c !== null ? c.name : g.name, one));
       for (const o of one) done.add(o);
     }
     const firsts = stays.map((s) => s.first).toSorted(byText),
@@ -248,7 +257,7 @@ export function byPlace<P>(goers: readonly Goes<P>[]): Place<P>[] {
       people: here.length,
       nights: place === null ? null : { first: firsts[0] ?? '', last: lasts.at(-1) ?? '' },
       shared: place === null || from > to ? null : { first: from, last: to },
-      stays,
+      stays: stays.toSorted((a, b) => byText(a.first, b.first) || byText(a.key, b.key)),
       called: here.length > MANY ? `${here.length} people` : null,
     };
   });

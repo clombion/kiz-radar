@@ -51,7 +51,7 @@ type Said = Pick<Goes<string>, 'travel' | 'stays'>;
 const NOTHING: Said = { travel: null, stays: [] };
 // the twenty, each saying what f says of the i-th
 const twenty = (f: (i: number, name: string) => Said): Goes<string>[] =>
-  PEOPLE.map((p, i) => ({ person: p.name, name: p.name, couple: p.couple, ...f(i, p.name) }));
+  PEOPLE.map((p, i) => ({ person: p.name, key: p.name, name: p.name, couple: p.couple, ...f(i, p.name) }));
 // flights in and out, and a stay of every night (none: not said)
 const T = (a: string | null, l: string | null, place: string | null, at = 'OSL'): Said => ({
   travel: F(a, l, at),
@@ -116,7 +116,7 @@ const shown = (lines: readonly Line<string>[]) =>
   });
 
 describe('a few more', () => {
-  const one = (name: string, said: Said): Goes<string> => ({ person: name, name, couple: null, ...said });
+  const one = (name: string, said: Said): Goes<string> => ({ person: name, key: name, name, couple: null, ...said });
   it('of two named lines alike in their times, the first by first name, whatever their size', () => {
     const lines = roster([
       one('Ann', T(THU, MON, S, 'TRF')),
@@ -133,6 +133,7 @@ describe('a few more', () => {
       ...['Cédric', 'Christina'].map(
         (name): Goes<string> => ({
           person: name,
+          key: name,
           name,
           couple: { key: 'cc', name: 'Cédric & Christina' },
           ...T(THU, MON, S),
@@ -308,8 +309,9 @@ function random(seed: number): () => number {
     return ((t ^ (t >>> 14)) >>> 0) / 4_294_967_296;
   };
 }
-const ARRIVALS = [null, THU, FRI];
-const DEPARTURES = [null, SUN, MON];
+// times, and days whose time is not said
+const ARRIVALS = [null, THU, FRI, '2026-11-19'];
+const DEPARTURES = [null, SUN, MON, '2026-11-23'];
 const STAYS: readonly Stay[][] = [
   [],
   all(S),
@@ -320,7 +322,7 @@ const STAYS: readonly Stay[][] = [
   ],
 ];
 // a roster of one to twenty-four people, some in couples (an odd one with the even one before it), each saying a
-// little, much or nothing
+// little, much or nothing; names repeat (five names for them all), keys never do
 function drawn(seed: number): Goes<string>[] {
   const r = random(seed);
   const pick = <X>(xs: readonly X[]): X | undefined => xs[Math.floor(r() * xs.length)];
@@ -340,16 +342,15 @@ function drawn(seed: number): Goes<string>[] {
           };
     return {
       person: `p${i}`,
-      name: `p${i}`,
-      couple: mate === null ? null : { key: `c${mate}`, name: `p${mate} & p${mate + 1}` },
+      key: `p${i}`,
+      name: `n${i % 5}`,
+      couple: mate === null ? null : { key: `c${mate}`, name: `n${mate % 5} & n${(mate + 1) % 5}` },
       travel,
       stays: said < 0.1 ? [] : (pick(STAYS) ?? []),
     };
   });
 }
 const sorted = (xs: readonly string[]) => xs.toSorted((a, b) => a.localeCompare(b));
-// a roster in full: its lines, each called, its units and their people, its travel and its stays
-const full = (lines: readonly Line<string>[]) => JSON.stringify(lines);
 // each person's line, by its index
 const lineOf = (lines: readonly Line<string>[]) =>
   new Map(lines.flatMap((l, i) => l.units.flatMap((u) => u.people.map((p) => [p, i] as const))));
@@ -380,8 +381,9 @@ describe('the laws of any roster', () => {
         .map((g) => [r(), g] as const)
         .toSorted(([a], [b]) => a - b)
         .map(([, g]) => g);
-      expect(full(roster(shuffled))).toBe(full(roster(goers)));
-      expect(full(roster(goers))).toBe(full(roster(goers)));
+      expect(roster(shuffled)).toEqual(roster(goers));
+      expect(roster(goers)).toEqual(roster(goers));
+      expect(byPlace(shuffled)).toEqual(byPlace(goers));
     }
   });
 
@@ -490,9 +492,21 @@ describe('by where they stay', () => {
     for (const seed of SEEDS) {
       const goers = drawn(seed);
       const places = byPlace(goers);
-      const said = goers.flatMap((g) => g.stays.flatMap((s) => nightsOf(g.person, s.first, s.last)));
-      const drawnNights = places.flatMap((p) => p.stays.flatMap((s) => nightsOf(s.person, s.first, s.last)));
+      // each night on its own place's line
+      const said = goers.flatMap((g) => g.stays.flatMap((s) => nightsOf(`${s.place}|${g.person}`, s.first, s.last)));
+      const drawnNights = places.flatMap((p) =>
+        p.stays.flatMap((s) => nightsOf(`${p.place}|${s.person}`, s.first, s.last)),
+      );
       expect(sorted(drawnNights)).toEqual(sorted(said));
+      // a place's nights are from its first night to its last, and those all share are each one's
+      for (const p of places.filter((x) => x.place !== null)) {
+        expect(p.nights).toEqual({
+          first: sorted(p.stays.map((s) => s.first))[0],
+          last: sorted(p.stays.map((s) => s.last)).at(-1),
+        });
+        const { shared } = p;
+        expect(p.stays.every((s) => shared === null || (s.first <= shared.first && s.last >= shared.last))).toBe(true);
+      }
       // each line's people are those with nights there, its count theirs
       for (const p of places) expect(p.people).toBe(p.units.reduce((n, u) => n + u.people.length, 0));
       for (const p of places.filter((x) => x.place !== null))

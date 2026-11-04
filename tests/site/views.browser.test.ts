@@ -13,7 +13,7 @@ import { byPlace } from '../../site/roster.ts';
 import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str } from '../../site/rows.ts';
 import { KEY } from '../../site/states.ts';
-import { FIXTURE_COMMUNITY, FIXTURE_FESTIVALS, plantCommunity } from './community.fixture.ts';
+import { FIXTURE_COMMUNITY, FIXTURE_FESTIVALS, FIXTURE_NAME } from './community.fixture.ts';
 import { loadShipped } from './shipped.ts';
 
 // each file the page asked for, with the signal it was asked with
@@ -21,9 +21,8 @@ const asked = new Map<string, AbortSignal | null | undefined>();
 let db: Database | undefined; // the database the views read
 
 beforeAll(async () => {
+  // the community and festivals its tests read are the fixture's (data.setup.ts), never the real rows, which age
   db = await loadShipped(asked);
-  // the community its tests read is the fixture's, never the real rows, which age and are deleted
-  plantCommunity(db);
 });
 
 test('the community the tests read is the fixture alone, whatever the real rows say or the day it was built', () => {
@@ -80,7 +79,7 @@ test('the artist list finds a name whatever its accents and case, and what is ty
 
 // The community pipeline/communities.csv has, on a day before its festivals (the data's dates, whatever the day the
 // test runs): its members and the people its manager added named under each festival.
-const COMMUNITY = 'frost-lantern-river-maple';
+const COMMUNITY = FIXTURE_COMMUNITY;
 function onDay<T>(day: string, then: () => T): T {
   const was = one({ day: str }, sql`SELECT day FROM today`)?.day;
   db?.run('UPDATE today SET day = ?', [day]);
@@ -185,7 +184,7 @@ const GLASGOW = 'Christina teaching and Siân teaching · Caroline going';
 
 test('a community’s head says who it is, when most members travel and where next, and whom it is for', () => {
   const root = onDay('2026-11-03', () => communityPage(COMMUNITY));
-  expect(said(root.querySelector('h1'))).toBe('Norwegians in festivals');
+  expect(said(root.querySelector('h1'))).toBe(FIXTURE_NAME);
   // the badge says how many members; who manages it is said with the members, at the foot
   expect(said(root.querySelector('.profile-head'))).not.toMatch(/members ·|managed by/u);
   const head = [...root.querySelectorAll('.profile-head p')].map((p) => said(p));
@@ -1544,6 +1543,7 @@ test('by place, the names a count opens say each one’s own nights when they ar
   const stay = (first: string) => [{ first, last: '2026-11-22', place: 'Scandic Holberg' }];
   const goes = ['Ann', 'Bo', 'Cy', 'Di', 'Nora'].map((name) => ({
     person: name,
+    key: name,
     name,
     couple: null,
     travel: null,

@@ -1,12 +1,14 @@
 // The built site as GitHub Pages serves it, under /kiz-radar/ (vitest.config.ts serves public/ there), whole in a
 // frame: a community's one address, c/<key>/, is its page, an older #community/<key> link moves to it, and the tabs
-// from it go to the site's root. The community is the one pipeline/communities.csv has, by its key and name alone.
+// from it go to the site's root. The data is the fixture's (community.fixture.ts), and a community's page the site's
+// page from its address: what pipeline/generate.py adds, its head tags, tests/test_community_card.py tests.
 import { expect, test, vi } from 'vitest';
 import { festivalsHref, TABS } from '../../site/routes.ts';
+import { FIXTURE_COMMUNITY, FIXTURE_NAME } from './community.fixture.ts';
 
 const ROOT = '/kiz-radar/';
-const KEY = 'frost-lantern-river-maple';
-const NAME = 'Norwegians in festivals';
+const KEY = FIXTURE_COMMUNITY;
+const NAME = FIXTURE_NAME;
 
 // a frame of the site at an address, once its community page or view has drawn
 async function framed(address: string, drawn: string): Promise<HTMLIFrameElement> {
@@ -45,10 +47,7 @@ test('a community’s address is its page: the site, its own title, and the addr
     `${ROOT}c/${KEY}/`,
     `${NAME} · Kiz Radar`,
   ]);
-  // the community's head tags, and no step elsewhere
-  const meta = (name: string) =>
-    frame.contentDocument?.querySelector(`meta[property="${name}"], meta[name="${name}"]`)?.getAttribute('content');
-  expect([meta('og:title'), meta('robots')]).toEqual([NAME, 'noindex']);
+  // no step elsewhere
   expect(frame.contentDocument?.querySelector('meta[http-equiv="refresh"]')).toBeNull();
 });
 

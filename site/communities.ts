@@ -363,6 +363,7 @@ function tripRow({ e, who, aways, on }: Visit, manager: Member, open: boolean): 
   const goes = aways.map(
     (a): Goes<Present> => ({
       person: a,
+      key: a.who,
       name: a.goer?.name ?? a.added?.name ?? '',
       couple: a.goer ? (couples.get(a.goer.person_id) ?? null) : null,
       travel: a.travel,

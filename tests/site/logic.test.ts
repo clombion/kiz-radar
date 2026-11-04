@@ -1,6 +1,6 @@
 // The site's pure logic, on values alone: days, text folding, plurals and lists, and the words for what an artist is
 // booked as.
-import { expect, test, vi } from 'vitest';
+import { afterEach, expect, test, vi } from 'vitest';
 import { addDays, today } from '../../site/days.ts';
 import { fold, words } from '../../site/fold.ts';
 import { roleLabel } from '../../site/roles.ts';
@@ -25,6 +25,12 @@ import {
 import { booked, EVENT, flag, num, opt, read, state, str } from '../../site/rows.ts';
 import { KEY } from '../../site/states.ts';
 import { counted, hasForm, iconOf, isKey, joined, linkOf, plural, say, text } from '../../site/wording.ts';
+
+// a global a test stubs, undone after it, whatever it ends with
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.useRealTimers();
+});
 
 test('a day moves by whole days across a month, a year and a clock change', () => {
   expect(addDays('2026-01-31', 1)).toBe('2026-02-01');
@@ -116,7 +122,6 @@ test('an address leaves out a choice with no value, and a section is found by it
   vi.stubGlobal('history', { replaceState });
   showInAddressBar(artistHref(3));
   expect(replaceState).toHaveBeenCalledWith(null, '', artistHref(3));
-  vi.unstubAllGlobals();
 });
 
 test('a community’s page is its own address from the site’s root, which an older #community link moves to', () => {
@@ -153,7 +158,6 @@ test('a community’s page is its own address from the site’s root, which an o
   expect(communityShareHref(key)).toBe(`${root}c/${key}/`);
   go(mapHref());
   expect(assign).toHaveBeenCalledWith(`${root}${mapHref()}`);
-  vi.unstubAllGlobals();
 });
 
 test('the site-wide choices (the currency) go with every address the site builds', () => {
@@ -170,14 +174,12 @@ test('the site-wide choices (the currency) go with every address the site builds
   vi.stubGlobal('document', { baseURI: `${root}?cur=eur` });
   expect(communityHref('k', { from: '2027-03' })).toBe('c/k/?cur=eur&from=2027-03');
   expect(communityShareHref('k')).toBe(`${root}c/k/?cur=eur`);
-  vi.unstubAllGlobals();
 });
 
 test('the visitor’s day is their own, not UTC’s', () => {
   vi.useFakeTimers();
   vi.setSystemTime(new Date(2026, 10, 6, 0, 30)); // half past midnight, local time
   expect(today()).toBe('2026-11-06');
-  vi.useRealTimers();
 });
 
 test('a state’s words come with their values, in the form asked, or none for a state that shows none', () => {
