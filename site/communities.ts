@@ -287,7 +287,8 @@ function tripRow({ e, who, aways }: Visit, manager: Member, open: boolean): HTML
     ps.length > 0
       ? h(
           'p',
-          { class: 'gantt-said', id: `${id}-said` },
+          // the chart in words, for a screen reader: the chart says it to the eye
+          { class: ['gantt-said', 'visually-hidden'], id: `${id}-said` },
           ps.map((p, i) => [
             i > 0 ? ' · ' : null,
             h('b', {}, p.name),

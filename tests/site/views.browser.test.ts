@@ -827,3 +827,34 @@ test('a trip’s bars lie level, on a computer as on a phone: one end no more th
     uproot(parties);
   }
 });
+
+test('a trip’s bars are thin, and the chart in words is for a screen reader alone', async () => {
+  plant(TO_KUOF);
+  try {
+    await atWidth(1200, () => {
+      const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+      document.body.append(root);
+      try {
+        const row = opened(root, 'KUOF');
+        const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
+        const ink = [...(row?.querySelectorAll<HTMLElement>('.gantt-ink') ?? [])];
+        expect(ink).toHaveLength(1);
+        for (const i of ink) expect(i.offsetHeight).toBeLessThanOrEqual(0.7 * rem + 0.5);
+        // its times still on it
+        expect(said(row?.querySelector('.gantt-bar'))).toBe('17:05 OSL09:40 OSL');
+        // the line in words: not shown, but what describes the chart
+        const words = row?.querySelector<HTMLElement>('.gantt-said');
+        expect(words?.textContent).toBe('Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL');
+        expect(words?.getBoundingClientRect().width).toBeLessThanOrEqual(1);
+        expect(row?.querySelector('.gantt')?.getAttribute('aria-describedby')).toBe(words?.id);
+        // what is still shown
+        expect(row?.querySelector<HTMLElement>('.gantt-unsaid')?.getBoundingClientRect().width).toBeGreaterThan(50);
+        expect(row?.querySelector<HTMLElement>('.trip-label')?.getBoundingClientRect().width).toBeGreaterThan(10);
+      } finally {
+        root.remove();
+      }
+    });
+  } finally {
+    uproot(TO_KUOF);
+  }
+});
