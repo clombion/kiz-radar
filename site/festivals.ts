@@ -1,8 +1,10 @@
 // The festivals the site works with, in the shape every card expects, and the small helpers the festival
 // views share.
+
+import { today } from './days.ts';
 import { q, sql } from './db.ts';
 import { h } from './dom.ts';
-import { type Fare, fareKey, fareOf, tripOf } from './fares.ts';
+import { type Fare, fareKey, fareOf, flightBegun, tripOf } from './fares.ts';
 import { DANCES } from './finder.ts';
 import { convert, rounded } from './money.ts';
 import { priceToday } from './passes.ts';
@@ -16,8 +18,8 @@ import { type Key, text } from './wording.ts';
 // A festival as every card has it: its row with the fare for its weekend (fares.ts), the best-known names on its
 // line-up, its genres (event_stats: its description's and its kizomba-world tags), what its card says of its price
 // today (passes.ts) and the trip: the card's pass plus the flight in the visitor's currency, null when either is
-// unknown or the pass has no price today; once the festival is on, its weekend's Friday-to-Monday return has begun, so
-// the trip is the pass alone (what the price filter and the order by price read too).
+// unknown or the pass has no price today; once its weekend's Friday-to-Monday return has left (begun, fares.ts
+// flightBegun), the trip is the pass alone (what the price filter and the order by price read too).
 export type Festival = Omit<EventRow, 'features'> & {
   depart: string | null;
   features: Set<Key<'feature'>>;
@@ -28,6 +30,7 @@ export type Festival = Omit<EventRow, 'features'> & {
   fare: Fare | null;
   price: PriceLine;
   trip: number | null;
+  begun: boolean; // its weekend's flight has left today: no flight is priced
 };
 
 let cache:
@@ -73,7 +76,8 @@ export function withDetails(rows: readonly EventRow[]): Festival[] {
   const { heads, fares, promos } = details();
   return rows.map((e) => {
     const fare = fareOf(e, home().code, fares),
-      price = priceToday(e);
+      price = priceToday(e),
+      begun = flightBegun(e.weekend_friday, today());
     return {
       ...e,
       depart: e.weekend_friday,
@@ -84,7 +88,8 @@ export function withDetails(rows: readonly EventRow[]): Festival[] {
       styles: new Set(e.genres),
       fare,
       price,
-      trip: tripOf('now' in price ? price.now.tier : null, fare, { convert, rounded }, e.phase === KEY.phase.ON),
+      trip: tripOf('now' in price ? price.now.tier : null, fare, { convert, rounded }, begun),
+      begun,
     };
   });
 }

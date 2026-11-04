@@ -16,7 +16,8 @@ import { loadShipped } from './shipped.ts';
 const TODAY = '2026-11-06';
 let db: Database | undefined;
 let on = 0, // the festival on today
-  ahead = 0; // the one to come
+  ahead = 0, // the one to come
+  saturday = 0; // one to come on Saturday, whose weekend's flight left today, its Friday
 let elsewhere = ''; // the country of the one to come, which the one on is not in
 
 beforeAll(async () => {
@@ -24,24 +25,25 @@ beforeAll(async () => {
   vi.useFakeTimers({ toFake: ['Date'] });
   vi.setSystemTime(new Date(`${TODAY}T12:00:00`));
   db.run('UPDATE today SET day = ?', [TODAY]);
-  const [first, second] =
-    db.exec('SELECT id FROM events ORDER BY id LIMIT 2')[0]?.values.map((r) => Number(r[0])) ?? [];
-  [on, ahead] = [first ?? 0, second ?? 0];
+  const [first, second, third] =
+    db.exec('SELECT id FROM events ORDER BY id LIMIT 3')[0]?.values.map((r) => Number(r[0])) ?? [];
+  [on, ahead, saturday] = [first ?? 0, second ?? 0, third ?? 0];
   const [here = '', there = ''] = site().destinations.map((c) => c.code);
   elsewhere = there;
   db.run(
     `UPDATE events SET start_date = '2031-01-03', end_date = '2031-01-05', weekend_friday = '2031-01-03'
-     WHERE id NOT IN (?, ?)`,
-    [on, ahead],
+     WHERE id NOT IN (?, ?, ?)`,
+    [on, ahead, saturday],
   );
-  const plant = (id: number, start: string, end: string, country: string) =>
+  const plant = (id: number, [start = '', end = '', friday = start]: readonly string[], country: string) =>
     db?.run(
       `UPDATE events SET start_date = ?, end_date = ?, weekend_friday = ?, listing = ?, cancelled = 0,
        country_code = ? WHERE id = ?`,
-      [start, end, start, KEY.listing.LISTED, country, id],
+      [start, end, friday, KEY.listing.LISTED, country, id],
     );
-  plant(on, '2026-11-06', '2026-11-09', here);
-  plant(ahead, '2026-11-20', '2026-11-22', there);
+  plant(on, ['2026-11-06', '2026-11-09'], here);
+  plant(ahead, ['2026-11-20', '2026-11-22'], there);
+  plant(saturday, ['2026-11-07', '2026-11-08', '2026-11-06'], there);
 });
 
 test('a festival is on from its first day to its last, both included, and still to attend while it is', () => {
@@ -90,6 +92,18 @@ test('a festival on now has an On now tag before its place on its card, and one 
   expect(eventCard(festival(ahead)).querySelector('.now-tag')).toBeNull();
 });
 
+test('a festival’s flight has left from its weekend’s Friday, whether it is on or not', () => {
+  expect([on, saturday, ahead].map((id) => [festival(id).phase, festival(id).begun])).toEqual([
+    [KEY.phase.ON, true],
+    [KEY.phase.AHEAD, true], // Saturday's festival, its Friday flight today
+    [KEY.phase.AHEAD, false],
+  ]);
+  // a festival on whose weekend's flight is still to leave (one that starts on a Thursday) keeps its flight
+  const thursday = priced({ ...festival(on), begun: false });
+  expect(said(thursday.querySelector('.cost-parts'))).toMatch(/full pass \+ .*flight/u);
+  expect(said(priced({ ...festival(ahead), begun: true }).querySelector('.cost-parts'))).toMatch(/no flight priced$/u);
+});
+
 test('the cost of a festival on now leaves the flight out: its weekend’s return has begun', () => {
   const started = priced(festival(on));
   expect(said(started.querySelector('.cost-parts'))).toMatch(/full pass · already started, no flight priced$/u);
@@ -121,7 +135,7 @@ const tags = (root: HTMLElement) => [...root.querySelectorAll('.sentence-hero .w
 
 test('the filters keep only the festivals on today, shown as an On now tag and kept in the address', async () => {
   const root = await finder('reach=');
-  expect(cards(root)).toEqual([festival(on).title, festival(ahead).title]);
+  expect(cards(root)).toEqual([festival(on).title, festival(saturday).title, festival(ahead).title]);
   const box = onNow(root)?.querySelector('input');
   expect([box?.checked, box?.disabled]).toEqual([false, false]);
   box?.click();
@@ -137,10 +151,10 @@ test('the filters keep only the festivals on today, shown as an On now tag and k
   ]);
   // the tag's × takes it off
   again.querySelector<HTMLButtonElement>('.sentence-hero .with-tag .tag .remove')?.click();
-  expect([cards(again).length, tags(again), location.hash.includes('onnow')]).toEqual([2, [], false]);
+  expect([cards(again).length, tags(again), location.hash.includes('onnow')]).toEqual([3, [], false]);
   // an address asking for what the filter is not leaves it off
   const odd = await finder('reach=&onnow=2');
-  expect([onNow(odd)?.querySelector('input')?.checked, cards(odd).length]).toEqual([false, 2]);
+  expect([onNow(odd)?.querySelector('input')?.checked, cards(odd).length]).toEqual([false, 3]);
 });
 
 test('with no festival on today among those the other choices keep, the filter is off and says why', async () => {
@@ -148,5 +162,5 @@ test('with no festival on today among those the other choices keep, the filter i
   const label = onNow(root);
   expect(label?.querySelector('input')?.disabled).toBe(true);
   expect(said(label)).toBe('On now only (none on today)');
-  expect(cards(root)).toEqual([festival(ahead).title]);
+  expect(cards(root)).toEqual([festival(saturday).title, festival(ahead).title]);
 });

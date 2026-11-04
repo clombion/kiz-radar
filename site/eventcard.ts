@@ -59,7 +59,7 @@ const cheap = (e: Flown) => within(e.fare.price, 'flight', 'cheap');
 // the festival is from it. The price links to Google Flights for that weekend.
 function flight(e: Festival): HTMLElement {
   if (e.phase === KEY.phase.GONE) return h('p', { class: ['flight', 'muted'] }, text('listing', e.listing));
-  if (e.phase === KEY.phase.ON) return h('p', { class: ['flight', 'muted'] }, `✈ ${STARTED}`);
+  if (e.begun) return h('p', { class: ['flight', 'muted'] }, `✈ ${STARTED}`);
   if (e.phase !== KEY.phase.AHEAD) return h('p', { class: ['flight', 'muted'] }, text('phase', e.phase));
   if (!e.airport) return h('p', { class: ['flight', 'muted'] }, `✈ too far from ${home().city} for our flight prices`);
   if (e.fare?.home === true) return h('p', { class: ['flight', 'easy'] }, `In ${home().city}, no flight needed`);
@@ -73,7 +73,7 @@ function flight(e: Festival): HTMLElement {
   );
 }
 
-// what a card says of the flight to a festival on now: its weekend's Friday-to-Monday return has begun
+// what a card says of the flight once its weekend's Friday-to-Monday return has left (Festival begun)
 const STARTED = 'already started, no flight priced';
 
 // The foot's prices. With a pass price and a flight, the total first:
@@ -130,8 +130,8 @@ function prices(e: Festival): HTMLElement[] {
       'p',
       { class: 'cost-parts' },
       pass,
-      e.phase === KEY.phase.ON ? ` · ${STARTED}` : ' + ',
-      e.phase === KEY.phase.ON
+      e.begun ? ` · ${STARTED}` : ' + ',
+      e.begun
         ? null
         : e.fare?.home === true || !flown(e)
           ? `no flight, in ${home().city}`

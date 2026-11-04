@@ -1,7 +1,7 @@
 // Prices in a currency (site/currency.ts) and a festival's fare and trip (site/fares.ts), on values alone.
 import { expect, test } from 'vitest';
 import { isCurrency, pricesIn, written } from '../../site/currency.ts';
-import { cheapestFlights, type Fare, fareKey, fareOf, flightEur, tripOf } from '../../site/fares.ts';
+import { cheapestFlights, type Fare, fareKey, fareOf, flightBegun, flightEur, tripOf } from '../../site/fares.ts';
 
 // the euro's rates: a krone is a tenth of a euro, a dollar a little less than one
 const RATES: ReadonlyMap<string, number> = new Map([
@@ -85,6 +85,11 @@ test('a flight from home costs nothing, and one not found is not known', () => {
   expect(flightEur({ home: true })).toBe(0);
   expect(flightEur(AWAY)).toBe(120);
   expect(flightEur(null)).toBeNull();
+});
+
+test('a weekend’s flight has left from its Friday, the day included', () => {
+  expect([flightBegun('2026-11-06', '2026-11-05'), flightBegun('2026-11-06', '2026-11-06')]).toEqual([false, true]);
+  expect(flightBegun(null, '2026-11-06')).toBe(false); // no weekend: no flight to leave
 });
 
 test('a trip is the pass and the flight in the visitor’s currency, rounded as a card shows it, when both are known', () => {

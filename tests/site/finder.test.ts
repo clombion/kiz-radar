@@ -57,6 +57,7 @@ const festival = (id: number, over: Partial<Festival> = {}): Festival => ({
   fare: { home: false, price: 120, back: '2026-11-09' },
   price: UNKNOWN,
   trip: 2000,
+  begun: false,
   ...over,
 });
 const ids = (fs: readonly Festival[]) => fs.map((f) => f.id);
@@ -125,6 +126,9 @@ test('the soonest first, or the cheapest trip, then the cheapest flight, then th
   ];
   expect(ids(matches(all, CHOICES, DAY, null))).toEqual([4, 2, 1, 3, 5, 6]);
   expect(ids(matches(all, { ...CHOICES, sort: 'fare' }, DAY, null))).toEqual([3, 4, 2, 5, 1, 6]);
+  // at one trip, a festival whose flight has left reads none, as its trip does
+  const tied = [festival(7, { depart: '2026-11-06' }), festival(8, { depart: '2026-11-13', begun: true })];
+  expect(ids(matches(tied, { ...CHOICES, sort: 'fare' }, DAY, null))).toEqual([8, 7]);
 });
 
 test('a with names a dance or a highlight, and reads as one', () => {

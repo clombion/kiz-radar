@@ -16,8 +16,10 @@ it. Any price is `reach=any` (an empty value would be left out of the address an
 older link's `reach=` still reads as any price).
 
 The price is the trip's: the full pass at today's price plus the Friday-to-Monday return flight. A festival on now
-(between its first and its last day, both included, on the visitor's day: phase `on`) is still listed, but its weekend's
-return has begun, so its trip is the full pass alone, for the price filter and "Cheapest first" as on its card.
+(between its first and its last day, both included, on the visitor's day: phase `on`) is still listed. From its
+weekend's Friday, when the return priced leaves (`flightBegun` in `site/fares.ts`; a festival that starts on a Thursday
+can still be flown to that day), its trip is the full pass alone, for the price filter and "Cheapest first" as on its
+card.
 
 | Price chosen | Shown | Sold-out passes | Unknown pass or flight price |
 | -- | -- | -- | -- |
@@ -34,8 +36,8 @@ A card shows the dates, the city, the styles, up to three highlights (taxi dance
 from the line-up, and the cost: "Cost ~2 810 kr, without accommodation", then "1 500 kr full pass + ~1 310 kr flight to
 Oslo, then 37 km" (the airport priced, and the distance on). Opening a card shows the full line-up, the other
 highlights, the venue and the organisers. A festival in Bergen needs no flight; its card says so. A festival on now has
-a small "On now" tag before its place, as a community's trip under way has "Now", and its cost leaves the flight out: "1
-240 kr full pass · already started, no flight priced".
+a small "On now" tag before its place, as a community's trip under way has "Now"; once its weekend's flight has left,
+its cost leaves the flight out: "1 240 kr full pass · already started, no flight priced".
 
 Which pass a card prices is the pipeline's choice (the per-person full pass; at a festival of several dance styles its
 Kizomba full pass when it sells one; else a package with a hotel for one); its price on the day is the browser's, from

@@ -38,6 +38,8 @@ export const CHECKED = [
 ] as const;
 export type Checked = (typeof CHECKED)[number][0];
 
+// the flight a festival's order by price reads after its trip: none once it has left, as its trip has none
+const flightOf = (e: Pick<Festival, 'fare' | 'begun'>): number => (e.begun ? 0 : (flightEur(e.fare) ?? 1e9));
 // a festival on today: between its first and its last day, on the day the site is seen from
 export const isOn = (e: Pick<Festival, 'phase'>): boolean => e.phase === KEY.phase.ON;
 
@@ -128,10 +130,7 @@ export function matches(all: readonly Festival[], s: Readonly<Choices>, day: str
     )
     .sort(
       s.sort === 'fare'
-        ? (a, b) =>
-            (a.trip ?? 1e9) - (b.trip ?? 1e9) ||
-            (flightEur(a.fare) ?? 1e9) - (flightEur(b.fare) ?? 1e9) ||
-            a.depart.localeCompare(b.depart)
+        ? (a, b) => (a.trip ?? 1e9) - (b.trip ?? 1e9) || flightOf(a) - flightOf(b) || a.depart.localeCompare(b.depart)
         : (a, b) => a.depart.localeCompare(b.depart),
     );
 }

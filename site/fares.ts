@@ -25,6 +25,11 @@ export function fareOf(
 
 // the pass and the flight together, in the visitor's currency and rounded as the card shows it (so that a price limit
 // keeps what the card says is within it), when both have a price
+// Whether a festival's weekend flight has left on a day: the Friday-to-Monday return priced is the one of its weekend
+// (weekend_friday, the fare's depart), so a festival that starts on a Thursday can still be flown to on that day. A trip
+// whose flight has left is the pass alone; the card says so.
+export const flightBegun = (depart: string | null, day: string): boolean => depart !== null && depart <= day;
+
 export function tripOf(
   pass: { readonly amount: number; readonly currency: string } | null,
   fare: Fare | null,
