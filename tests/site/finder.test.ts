@@ -96,13 +96,16 @@ test('a festival is kept by its country, a dance or highlight, friends going, a 
     festival(3, { features: new Set([KEY.feature.POOL_PARTY, KEY.feature.TAXI_DANCERS]), lineup: 30 }),
     festival(4, { goers: [{ ...featured, featured: false }] }),
     festival(5, { goers: [featured], features: new Set([KEY.feature.ALL_IN_ONE]) }),
+    // a featured person who only may go, and one who may but teaches there, which is going
+    festival(6, { goers: [{ ...featured, plan: KEY.plan.MAYBE }] }),
+    festival(7, { goers: [{ ...featured, plan: KEY.plan.MAYBE, booked_as: KEY.role.TEACHER }] }),
   ];
   const kept = (s: Partial<Choices>) => ids(matches(all, { ...CHOICES, ...s }, DAY, null));
   expect(kept({ country: 'ES' })).toEqual([2]);
   expect(kept({ with: KEY.genre.SALSA })).toEqual([2]);
   expect(kept({ with: KEY.feature.POOL_PARTY })).toEqual([3]);
   expect(kept({ with: 'nothing' })).toEqual([]); // no such dance or highlight
-  expect(kept({ friends: 1 })).toEqual([5]);
+  expect(kept({ friends: 1 })).toEqual([5, 7]);
   expect(kept({ taxi: 1 })).toEqual([3]);
   expect(kept({ allin: 1 })).toEqual([5]);
   expect(kept({ lineup: 20 })).toEqual([3]);

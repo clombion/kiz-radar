@@ -18,6 +18,7 @@ import {
   type RowOf,
   state,
   str,
+  unsure,
 } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayRange, flag, place } from './ui.ts';
@@ -44,10 +45,6 @@ export interface Goer {
 }
 // what is said of someone going: their plan (going, or maybe), and what they are booked there as, if they are
 type Plans = Pick<Goer, 'plan' | 'booked_as'>;
-// Whether someone may go, not yet going: they said maybe, and the line-up has them not, since someone booked there is
-// teaching (or playing) whatever their plan says. They are named with a "maybe" tag, and a community's days, counts
-// and sentence leave them out.
-export const unsure = (p: Plans): boolean => p.plan === KEY.plan.MAYBE && p.booked_as === null;
 // a couple whose partners are all people here
 interface Couple {
   artist: number;

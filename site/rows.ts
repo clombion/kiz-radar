@@ -2,6 +2,7 @@
 // reads every row by its shape and fails on a column it doesn't have or a value of another type, so a row's type is
 // its shape's and nothing past this module meets an unread value.
 import type { SqlValue } from 'sql.js';
+import { KEY } from './states.ts';
 import { counted, isKey, type Key, type Point } from './wording.ts';
 
 export type Column<T> = (value: SqlValue | undefined, name: string) => T;
@@ -28,6 +29,11 @@ export const state =
 // the roles an artist is booked in: their bookings count them, and a plan says what they do there (pipeline/states.py)
 export const BOOKED = counted('role', 'lineup', 'booking');
 export type Booked = (typeof BOOKED)[number];
+// Whether someone may go, not yet going: they said maybe, and the line-up has them not, since someone booked there is
+// teaching (or playing) whatever their plan says. They are named with a "maybe" tag, and a community's days, counts
+// and sentence, the hero's friends going and the festival list's filter of them leave them out.
+export const unsure = (p: { plan: Key<'plan'>; booked_as: Booked | null }): boolean =>
+  p.plan === KEY.plan.MAYBE && p.booked_as === null;
 const bookedKeys: readonly string[] = BOOKED;
 const isBooked = (v: unknown): v is Booked => typeof v === 'string' && bookedKeys.includes(v);
 // a column holding a role an artist is booked in

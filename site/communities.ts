@@ -27,7 +27,7 @@ import { dayTimeAt, gantt, ganttByPlace, timeAt, unsaidEnd } from './gantt.ts';
 import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
-import { couplesAmong, doingTag, type Goer, goersInline, namesOf, unsure } from './plans.ts';
+import { couplesAmong, doingTag, type Goer, goersInline, namesOf } from './plans.ts';
 import {
   byPlace,
   type End,
@@ -47,7 +47,7 @@ import {
   readState,
   showInAddressBar,
 } from './routes.ts';
-import { type Booked, booked, EVENT, num, opt, state, str } from './rows.ts';
+import { type Booked, booked, EVENT, num, opt, state, str, unsure } from './rows.ts';
 import { KEY } from './states.ts';
 import { dayMonth, dayParts, dayRange, monthShort, monthYear, place, weekDay } from './ui.ts';
 import { joined, joinedText, type Key, plural, text } from './wording.ts';

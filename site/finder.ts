@@ -7,6 +7,7 @@ import { flightEur } from './fares.ts';
 import type { Festival } from './festivals.ts';
 import { MORE_TRAITS, TRAITS } from './icons.ts';
 import { changed, readState } from './routes.ts';
+import { unsure } from './rows.ts';
 import { KEY } from './states.ts';
 import { type Key, text, where } from './wording.ts';
 
@@ -45,7 +46,7 @@ export const isOn = (e: Pick<Festival, 'phase'>): boolean => e.phase === KEY.pha
 
 // reach is the step the trip (the full pass and a Fri→Mon return flight) is within, cheap or fair, or '' for any
 // price; unchecked keeps the festivals whose trip is not known within it. with is a dance or highlight picked in the
-// search; friends keeps the festivals that featured people said they're going to; onnow those on today.
+// search; friends keeps the festivals that featured people said they're going to (not those they only may); onnow those on today.
 export type Sort = 'date' | 'fare';
 export type Choices = {
   months: number;
@@ -123,7 +124,7 @@ export function matches(all: readonly Festival[], s: Readonly<Choices>, day: str
               : e.trip <= max)) &&
         (!s.country || e.country_code === s.country) &&
         (!s.with || (isWith(s.with) && hasWith(e, s.with))) &&
-        (!s.friends || e.goers.some((g) => g.featured)) &&
+        (!s.friends || e.goers.some((g) => g.featured && !unsure(g))) &&
         (!s.onnow || isOn(e)) &&
         CHECKED.every(([k, , has]) => !s[k] || has(e)) &&
         e.lineup >= s.lineup,

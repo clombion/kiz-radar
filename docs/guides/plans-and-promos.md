@@ -24,11 +24,11 @@ A card then says "Cédric & Christina are going · 3 more people too". A name op
 partners who both go are named as their couple; someone in the festival's line-up shows as teaching (or playing) there
 rather than going, whatever their plan says. Someone who may go is named with a "maybe" tag, the card's sentence saying
 so apart ("Cédric is going · Christina may go · 3 more people too"), its list counting them apart ("Who's going 4 · 1
-maybe"); a couple is named as one only when both partners go, or both may. The hero's friends going leave them out; the
-festival list's filter of festivals featured people go to keeps them. Each person has a plans page with a Share button,
-and an artist's page lists the festivals they go to without teaching there. The Friends tab lists the festivals the
-people living near a place go to (The site: the Friends tab), and the festival list can keep only those featured people
-go to.
+maybe"); a couple is named as one only when both partners go, or both may. The festival list's "… are going to one of
+these" and its filter count them out: only plans going, and someone in the line-up, who teaches there. Each person has a
+plans page with a Share button, and an artist's page lists the festivals they go to without teaching there. The Friends
+tab lists the festivals the people living near a place go to (The site: the Friends tab), and the festival list can keep
+only those featured people go to.
 
 Plans are public: anyone can see them, so add people only with their agreement.
 
