@@ -10,7 +10,7 @@
 import { type Away, type Day, monthsIn, periodSaid, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
 import { dismissable, WIDE } from './dismiss.ts';
-import { button, h, type Kid, nodes, toggle } from './dom.ts';
+import { button, h, type Kid, nodes, toggle, uniqueId } from './dom.ts';
 import { Drawing } from './icons.ts';
 import { swipe } from './ink.ts';
 import { monthShort, monthYear, weekDay } from './ui.ts';
@@ -22,7 +22,7 @@ export interface Popover {
   close: () => void;
 }
 export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Popover {
-  const pop = h('div', { class: 'day-pop', role: 'tooltip', id: 'day-pop', hidden: true });
+  const pop = h('div', { class: 'day-pop', role: 'tooltip', id: uniqueId('day-pop'), hidden: true });
   const containers: HTMLElement[] = [];
   let described: HTMLElement | undefined, // the day it is open on, and the months it is in
     at: HTMLElement | undefined;

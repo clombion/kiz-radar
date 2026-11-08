@@ -1367,6 +1367,11 @@ class Promo(CsvRow):
     note: str
 
 
+# A person's key: lower-case words of letters and digits joined by hyphens, as cedric or ana-maria. It is the end of
+# their page's address (#friends/<key>), so it never holds what an address reads otherwise (/, #, ?, %, a space).
+PersonKey = Annotated[str, Field(pattern=r'^[a-z0-9]+(-[a-z0-9]+)*$')]
+
+
 class Person(CsvRow):
     """Someone who shares their festival plans: the artist records they are (';'-separated match keys), whether cards
     name them (featured) or only count them, and the city they live in, when they said, which the Friends tab finds
@@ -1374,7 +1379,7 @@ class Person(CsvRow):
 
     FILE = 'pipeline/people.csv'
 
-    key: str
+    key: PersonKey
     name: str
     artist_keys: Keys
     featured: Flag

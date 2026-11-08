@@ -77,6 +77,9 @@ def test_a_communitys_page_is_the_sites_with_its_own_head_tags(communities: list
     assert meta['twitter:card'] == 'summary_large_image'
     assert meta['robots'] == 'noindex'
     assert 'http-equiv="refresh"' not in page
+    # the page's policy holds its base, which comes after it, and no site a link leads to learns which page it was
+    assert page.index('http-equiv="Content-Security-Policy"') < page.index('<base ')
+    assert meta['referrer'] == 'strict-origin'
     index = generate.index_page()
     assert generate.HEAD_TAG.sub('', page) == generate.HEAD_TAG.sub('', index)
     assert '<base href="./">' in index

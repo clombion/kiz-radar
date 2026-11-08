@@ -3,7 +3,7 @@
 
 import { one, q, sql } from './db.ts';
 import { dismissable } from './dismiss.ts';
-import { button, h, type Kid } from './dom.ts';
+import { button, h, type Kid, uniqueId } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { withDetails } from './festivals.ts';
 import { Drawing } from './icons.ts';
@@ -174,7 +174,7 @@ function nearHere(at: Spot | null, name: string): Kid[] {
 // A list's heading with an (i) button after it, and the small card the button shows of what the list is, under the
 // heading: on hover, on focus and on a tap (which keeps it until the next, or Escape)
 function about(heading: string, said: string): [HTMLElement, HTMLElement] {
-  const card = h('p', { class: 'info-card', id: 'friends-about', hidden: true }, said);
+  const card = h('p', { class: 'info-card', id: uniqueId('friends-about'), hidden: true }, said);
   let kept = false;
   const show = (open: boolean) => {
     card.hidden = !open;

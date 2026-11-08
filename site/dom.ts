@@ -32,6 +32,11 @@ export function h<K extends keyof HTMLElementTagNameMap>(
   return el;
 }
 // whether el has one of the stylesheet's classes; the one way the code sets a class after building an element
+// An id no other element of the page has, from a stem ("day-pop-3"): a view drawn twice, or two of one kind on a page,
+// never shares one, which a label or a description reaching for it by id would find the wrong one of.
+let ids = 0;
+export const uniqueId = (stem: string): string => `${stem}-${++ids}`;
+
 export const toggle = (el: Element, cls: ClassName, on: boolean): void => {
   el.classList.toggle(cls, on);
 };

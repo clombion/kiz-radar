@@ -204,9 +204,9 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
   const steps = periods(today, [...days.keys()].toSorted((a, b) => a.localeCompare(b)).at(-1));
   const asked = readState(qs, { from: '' }).state.from;
   const from = steps.includes(asked) ? asked : (steps[0] ?? today.slice(0, 7));
-  const plan = h('section', { class: 'agenda' }, agenda(current, today, c.manager, from));
+  const plan = h('section', { class: 'agenda' }, agenda(current, today, c, from));
   const moved = (to: string) => {
-    plan.replaceChildren(...nodes(agenda(current, today, c.manager, to)));
+    plan.replaceChildren(...nodes(agenda(current, today, c, to)));
     showInAddressBar(communityHref(c.key, { from: to === steps[0] ? null : to }));
   };
   document.title = `${c.name} · Kiz Radar`; // as its own page's title says it
@@ -338,7 +338,7 @@ function daysSaid(e: Festival): string {
 // The agenda of a period: its trips, those with a day in it, a heading a month ("November · 3 trips", with its year
 // in January and when it is not this year's) and a row a trip, the first open (the one on, or else the next); none,
 // "Nothing planned in Mar–Jun".
-function agenda(trips: readonly Visit[], today: string, manager: Member, from: string): Kid[] {
+function agenda(trips: readonly Visit[], today: string, c: Community, from: string): Kid[] {
   const byMonth = new Map<string, Visit[]>();
   for (const t of trips.filter((v) => v.aways.some((a) => inPeriod(from, a)))) {
     const m = t.e.start_date.slice(0, 7);
@@ -359,7 +359,7 @@ function agenda(trips: readonly Visit[], today: string, manager: Member, from: s
       h(
         'ol',
         { class: 'agenda-list' },
-        here.map((t) => tripRow(t, manager, t === trips[0])),
+        here.map((t) => tripRow(t, c, t === trips[0])),
       ),
     ];
   });
@@ -367,7 +367,7 @@ function agenda(trips: readonly Visit[], today: string, manager: Member, from: s
 
 // A trip's chart: who travels when (a Gantt, by travel and by place when they stay apart), and the same in words.
 // It is drawn the first time its row opens, not with the agenda: a long agenda's rows mostly stay closed.
-function chartOf({ e, aways }: Visit, manager: Member, id: string): Kid[] {
+function chartOf({ e, aways }: Visit, c: Community, id: string): Kid[] {
   // its roster: who travels alike, a couple as one when both partners do, and the people the manager added, who never
   // say how they travel, each name of theirs saying on hover who added them
   const couples = couplesAmong(aways.flatMap((a) => (a.goer ? [a.goer] : [])));
@@ -382,7 +382,7 @@ function chartOf({ e, aways }: Visit, manager: Member, id: string): Kid[] {
     }),
   );
   const lines = roster(goes);
-  const title = `Added by ${manager.name}`;
+  const title = `Added by ${c.manager.name}`;
   // the roster in words, for a screen reader: each line in and out and where it stays, and who has not said, a line
   // called collectively by its name and its people's
   const said = h('p', { class: ['gantt-said', 'visually-hidden'], id: `${id}-said` }, lines.map(inWords).join('; '));
@@ -399,7 +399,7 @@ function chartOf({ e, aways }: Visit, manager: Member, id: string): Kid[] {
   );
   const byPlaces = placesSaid < 2 ? null : ganttByPlace({ ...frame, places, named, describedBy: placeSaid.id });
   const view = (as: 'travel' | 'place') => {
-    seen.set(e.id, as);
+    seen.set(`${c.key} ${e.id}`, as);
     byTravel.hidden = as !== 'travel';
     said.hidden = as !== 'travel';
     if (byPlaces) byPlaces.hidden = as !== 'place';
@@ -423,23 +423,23 @@ function chartOf({ e, aways }: Visit, manager: Member, id: string): Kid[] {
         });
   const switches =
     choice.length === 0 ? null : h('div', { class: 'gantt-views', role: 'group', 'aria-label': 'The roster' }, choice);
-  view(byPlaces === null ? 'travel' : (seen.get(e.id) ?? 'travel'));
+  view(byPlaces === null ? 'travel' : (seen.get(`${c.key} ${e.id}`) ?? 'travel'));
   return [switches, byTravel, byPlaces, said, placeSaid];
 }
 
 // A trip's row: its days, the festival (to it on the map) and where, who of the community goes; opened, a small Gantt
 // of who travels when, the same in words, where members stay, and the festival's line-up and prices.
-function tripRow(trip: Visit, manager: Member, open: boolean): HTMLElement {
+function tripRow(trip: Visit, c: Community, open: boolean): HTMLElement {
   const { e, who, on, off } = trip;
   const id = `trip-${e.id}`;
   // the festival's line-up and prices, its card opened, in the trip's: shown from the festival's name
   const lineup = h('div', { class: 'trip-lineup', id: `${id}-lineup`, hidden: true });
-  const body = h('div', { class: 'trip-body', id, hidden: !open }, open ? chartOf(trip, manager, id) : null, lineup);
+  const body = h('div', { class: 'trip-body', id, hidden: !open }, open ? chartOf(trip, c, id) : null, lineup);
   let drawn = open;
   // the card open or not, and its line-up shown or not; a closed card shows no line-up
   const show = (opened: boolean, lineupShown: boolean) => {
     if (opened && !drawn) {
-      body.prepend(...nodes(chartOf(trip, manager, id)));
+      body.prepend(...nodes(chartOf(trip, c, id)));
       drawn = true;
     }
     if (lineupShown && lineup.childElementCount === 0)
@@ -528,8 +528,9 @@ function placeInWords(p: Place<Present>): string {
   return `${p.place}, the nights of ${night(p.nights.first)} to ${night(p.nights.last)}: ${names}`;
 }
 
-// how each card's roster is seen, by travel or by place, for the visit: by festival
-const seen = new Map<number, 'travel' | 'place'>();
+// how each card's roster is seen, by travel or by place, for the visit: by community and festival, as two communities'
+// cards of one festival are two rosters
+const seen = new Map<string, 'travel' | 'place'>();
 
 // Who of the community goes to a festival: its members, as their couple when both go and teaching when in the
 // line-up, then the people its manager added, each name saying on hover who added them: each one teaching linked to

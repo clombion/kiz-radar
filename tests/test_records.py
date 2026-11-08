@@ -107,6 +107,7 @@ SUGGESTION = {
     'score': '1.15',
     'reason': 'same name, different keys',
 }
+PERSON = {'key': 'ana-maria', 'name': 'Ana-Maria', 'artist_keys': '', 'featured': '1', 'home': '', 'note': ''}
 COMMUNITY = {'key': 'frost-lantern-river-maple', 'name': 'Norwegians in festivals', 'manager': 'cedric', 'note': ''}
 TRAVEL = {
     'person': 'cedric',
@@ -143,6 +144,10 @@ SEEDED = {
         (records.Suggestion, SUGGESTION, 'keep_key', 'ana'),
         (records.Suggestion, SUGGESTION, 'merge_key', 'p:ana dj'),
         (records.Community, COMMUNITY, 'key', 'frost-lantern'),
+        *(
+            (records.Person, PERSON, 'key', key)
+            for key in ('ana/maria', 'ana#maria', 'ana maria', 'Ana', 'ana%20', 'ana-')
+        ),
         (records.Travel, TRAVEL, 'arrive_at', 'osl'),
         (records.Travel, TRAVEL, 'arrive', '2026-11-19 21:05'),
         (records.Travel, TRAVEL, 'arrive', '2026-02-30T21:05'),
@@ -182,9 +187,10 @@ SEEDED = {
 def test_a_csv_row_refuses_a_value_outside_its_column(
     record: type[CsvRow], row: dict[str, str], column: str, value: str
 ) -> None:
-    """An airport is its IATA code, a country one countries.NAMES has, an artist the key a mention gives, a community
-    four words, a travel's times real ones to the minute, arriving before it leaves, an airport's code with its time,
-    and a stay's nights real days, the first before the last. A name a manager writes for someone who has not joined,
+    """An airport is its IATA code, a country one countries.NAMES has, an artist the key a mention gives, a person's
+    key a slug (the end of their page's address), a community four words, a travel's times real ones to the minute,
+    arriving before it leaves, an airport's code with its time, and a stay's nights real days, the first before the
+    last. A name a manager writes for someone who has not joined,
     and where a member stays, is a name, never a link, an @handle or an email address, which would reach someone and
     only they may give (the communities' rule 2). A hand edit that is none is refused where the audit reads the file,
     not later by the step that uses it."""

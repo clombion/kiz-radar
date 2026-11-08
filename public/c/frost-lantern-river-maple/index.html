@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- what the page may load: its own files only (the libraries are served from vendor/, built from the pinned
+     packages); wasm-unsafe-eval lets sql.js compile its WebAssembly. Before the base, so that base-uri holds it -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<!-- a site a link leads to (a ticket page, Google Flights) learns it came from this site, never from which page -->
+<meta name="referrer" content="strict-origin">
 <!-- every link and file from the site's root: this folder here, ../../ on a community's page (c/<key>/) -->
 <base href="../../">
 <title>Norwegians in festivals · Kiz Radar</title>
@@ -14,9 +19,6 @@
 <meta property="og:url" content="https://clombion.github.io/kiz-radar/c/frost-lantern-river-maple/">
 <meta property="og:image" content="https://clombion.github.io/kiz-radar/c/frost-lantern-river-maple/share.png">
 <meta property="og:image:alt" content="Norwegians in festivals, on Kiz Radar’s card">
-<!-- what the page may load: its own files only (the libraries are served from vendor/, built from the pinned
-     packages); wasm-unsafe-eval lets sql.js compile its WebAssembly -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
 <meta name="theme-color" content="#7a2850">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">

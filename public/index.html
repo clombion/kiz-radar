@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- what the page may load: its own files only (the libraries are served from vendor/, built from the pinned
+     packages); wasm-unsafe-eval lets sql.js compile its WebAssembly. Before the base, so that base-uri holds it -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<!-- a site a link leads to (a ticket page, Google Flights) learns it came from this site, never from which page -->
+<meta name="referrer" content="strict-origin">
 <!-- every link and file from the site's root: this folder here, ../../ on a community's page (c/<key>/) -->
 <base href="./">
-<!-- what the page may load: its own files only (the libraries are served from vendor/, built from the pinned
-     packages); wasm-unsafe-eval lets sql.js compile its WebAssembly -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
 <title>Kiz Radar</title>
 <meta name="description" data-home-city content="Kizomba, Urban Kiz and Tarraxo festivals worth flying to from Bergen, with the flight price for each, and who teaches and DJs where.">
 <link rel="canonical" href="https://clombion.github.io/kiz-radar/">

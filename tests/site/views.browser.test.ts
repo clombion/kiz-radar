@@ -621,6 +621,21 @@ test('a day no one travels on does nothing: no popover, no tab stop, no pointer'
   });
 });
 
+test('each page’s day popover has an id of its own, which the day it is open on is described by', () => {
+  const opened = () => {
+    let ids: (string | null | undefined)[] = [];
+    inPage('2026-11-01', (root) => {
+      const day = cellOn(root, '2026-11-05');
+      day?.focus();
+      ids = [popover(root)?.id, day?.getAttribute('aria-describedby')];
+    });
+    return ids;
+  };
+  const [[firstPop, firstDay], [secondPop]] = [opened(), opened()];
+  expect([firstPop?.startsWith('day-pop-'), firstPop === firstDay]).toEqual([true, true]);
+  expect(secondPop).not.toBe(firstPop);
+});
+
 test('a month is one stop for the keyboard, its arrows passing over the days no one travels on', () => {
   inPage('2026-11-01', (root) => {
     const stops = (month: HTMLElement | undefined) =>
@@ -1623,6 +1638,19 @@ test('a card whose people stay at two places or more can be seen by place, from 
       // drawn again, as when the calendar steps: still by place
       const again = withStays(APART, () => withTrips(flown, () => onDay('2026-11-01', () => communityPage(COMMUNITY))));
       expect(opened(again, 'KUOF')?.querySelector('.gantt-views [aria-pressed="true"]')?.ariaLabel).toBe('By place');
+      // another community's card of the festival is a roster of its own: by travel, until chosen there
+      const elsewhere = 'quiet-amber-fjord-lark';
+      db?.run("INSERT INTO communities SELECT 2, ?, 'Elsewhere', id FROM people WHERE key = 'cedric'", [elsewhere]);
+      db?.run("INSERT INTO community_members SELECT 2, id FROM people WHERE key IN ('cedric', 'christina')");
+      try {
+        const other = withStays(APART, () =>
+          withTrips(flown, () => onDay('2026-11-01', () => communityPage(elsewhere))),
+        );
+        expect(opened(other, 'KUOF')?.querySelector('.gantt-views [aria-pressed="true"]')?.ariaLabel).toBe('By travel');
+      } finally {
+        db?.run('DELETE FROM community_members WHERE community_id = 2');
+        db?.run('DELETE FROM communities WHERE id = 2');
+      }
       opened(again, 'KUOF')?.querySelector<HTMLElement>('.gantt-views button')?.click();
     },
     flown,
@@ -1727,11 +1755,10 @@ test('the Friends tab’s (i) shows what its list is on hover, on focus and on a
     const info = root.querySelector<HTMLButtonElement>('.friends-near h2 .info-btn');
     const card = root.querySelector<HTMLElement>('.info-card');
     const seen = () => [info?.getAttribute('aria-expanded'), card?.hidden];
-    expect([info?.ariaLabel, info?.getAttribute('aria-controls'), card?.id]).toEqual([
-      'About this list',
-      'friends-about',
-      'friends-about',
-    ]);
+    expect([info?.ariaLabel, info?.getAttribute('aria-controls')]).toEqual(['About this list', card?.id]);
+    // its own id, never another tab's drawn before it
+    const other = onDay('2026-11-04', friendsTab).querySelector('.info-card')?.id;
+    expect([card?.id.startsWith('friends-about-'), other === card?.id]).toEqual([true, false]);
     expect(info?.querySelector('svg')).not.toBeNull();
     expect(said(card)).toBe(`Within ${NEAR_KM} km of ${homeOf()?.city}.`);
     expect(seen()).toEqual(['false', true]);
