@@ -90,8 +90,8 @@ go next ("Next: Glasgow, this Friday"), or, while a trip is on, where they are a
 ("Now: Glasgow, until Mon · Next: Oslo, on 20 Nov"), then a Share this page button, which opens the device's share sheet
 or else copies the link ("Link copied", or "Copy the address bar to share" when the browser has no clipboard or refuses
 it, its label back after a moment), beside a badge of who sees it: a lock, people and the number of members, which says
-what is true, "Public · anyone can see this page · 3 members", on hover and to a screen reader. Who manages it is said
-with the members, at the foot of the page.
+the usual sharing words, "Anyone with the link can see this page · 3 members", on hover and to a screen reader. Who
+manages it is said with the members, at the foot of the page.
 
 Under the head, the calendar: four months at a time, a period from today's month (November to February, then March to
 June, then July to October: three make a year), named between two buttons, on its line, to the periods before and after

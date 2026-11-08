@@ -243,8 +243,8 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
           {
             class: 'privacy',
             role: 'img',
-            'aria-label': `Public · anyone can see this page · ${members}`,
-            title: `Public · anyone can see this page · ${members}`,
+            'aria-label': `Anyone with the link can see this page · ${members}`,
+            title: `Anyone with the link can see this page · ${members}`,
           },
           Drawing.LOCK.into(h('span', { 'aria-hidden': 'true' })),
           Drawing.PEOPLE.into(h('span', { 'aria-hidden': 'true' })),
