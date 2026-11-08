@@ -20,7 +20,7 @@ Python packages come from `uv.lock` through uv, and the site's from `pnpm-lock.y
 
 ```bash
 mise run check        # everything
-mise run check:fast   # lint, format, types, the site's tests, the generated files
+mise run check:fast   # lint, format, types, the site built with its database and tested, the generated files
 mise tasks            # each check on its own (see docs/reference/commands.md)
 mise run format       # write the formats format:py, format:md and lint:site hold
 ```

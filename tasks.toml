@@ -138,7 +138,7 @@ description = "Every state in the data is one of pipeline/states.py"
 run = "uv run -q --group tickets -m pipeline.audit"
 
 [generate]
-description = "Write the files built from the code: the enums and words of pipeline/states.py, the stylesheet's classes, docs/reference/, the home city in the page and the manifest"
+description = "Write the files built from the code: the enums and words of pipeline/states.py and their lint rule, the stylesheet's classes, the site database's tables the scripts are built for (site/schema.ts), docs/reference/, the home city in the page and the manifest, and each community's page (public/c/<key>/index.html), removing the folder of a community there is no more"
 run = "uv run -m pipeline.generate"
 
 ["generate:check"]

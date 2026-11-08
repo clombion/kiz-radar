@@ -67,89 +67,6 @@ prints a warning for each, by what it says, then how many ("warning: travel.csv:
 leaving 2026-11-09T19:10, for Glasgow Kizomba Festival 5.0 (event 18964): the trip ended on 2026-11-09, more than 3 days
 ago, so the row is no longer published; delete it"). It goes on building: delete the rows it names, and commit.
 
-The page shows the community's name ("Norwegians in festivals"), when most of its people (members and those its manager
-added) travel at once ("Most people are travelling 20–22 Nov: 5 people, to Oslo.") and, on a line of its own, where they
-go next ("Next: Glasgow, this Friday"), or, while a trip is on, where they are and until when, and the trip after it
-("Now: Glasgow, until Mon · Next: Oslo, on 20 Nov"), then a Share this page button, which opens the device's share sheet
-or else copies the link, beside a badge of who sees it: a lock, people and the number of members, which says what is
-true, "Public · anyone can see this page · 3 members", on hover and to a screen reader. Who manages it is said with the
-members, at the foot of the page.
-
-Under the head, the calendar: four months at a time, a period from today's month (November to February, then March to
-June, then July to October: three make a year), named between two buttons, on its line, to the periods before and after
-it ("Nov 2026 – Feb 2027"; "Previous four months" and "Next four months" to a screen reader), which draw it in place,
-from today's period to the one of the last day anyone travels, each off at its end. The address keeps the period shown
-(`?from=2027-03`), so a reload or a shared link shows it again; one the calendar does not step to shows today's. A month
-is a small grid, two rows of two months on a phone and one row of four on a computer, light, without boxes: a row is a
-week from Monday, its days placed in their columns. A festival is one highlighter stroke across the lower half of its
-days' numbers, the same colour whatever the number, a swipe of its own (a little tilted, low or thick, its ink fading at
-a round end, the same each time it is drawn), round at its first and last day and cut where it goes on in the week
-before or after; two at once are two strokes, one under the other. A day someone travels on outside their festival's
-days (they arrive the day before, or leave the day after) has a dot under it; today is ringed by hand and the days
-before it greyed. At a row's end is how many go to the festivals that begin that week, said once, on the week each
-begins: two festivals that begin in one week show their sum, and each its own on hover and to a screen reader. A member
-with a trip travels from the day they arrive to the day they leave, anyone else (a member without one, someone added) on
-the festival's own days, whatever weekdays those are; someone at two festivals at once counts once. The sentence reads
-the same counts: the first day as many travel as on any, and the days after it with as many. Only a day someone travels
-on does anything: each month is one stop for the keyboard, whose arrows move among those days (left, right) or a week or
-more (up, down), and the day in focus, under the pointer or tapped opens a popover of its festivals, who flies in and
-out that day (by time and airport, a couple as one when both share the flight: "Flying in: Cédric & Christina 14:30
-PRG"), who else is there, and where members stay. It never covers the day's month: on a computer it sits beside the
-month, on a phone it is a panel under the day's row of months, moving what follows down. Escape, a tap elsewhere or on
-the day again closes it, and the focus stays on the day.
-
-Then the agenda of the period shown: its trips, those with a day in it, so every day the calendar shows has its trips
-there ("Nothing planned in Mar–Jun" when it has none), a heading a month ("November · 3 trips", with the year in January
-and on the first when it is not this year's), and a row a trip, soonest first. The sentence and "Next" are of every
-trip, whatever period shows. A row has its days ("Fri 20 – Sun 22 Nov"), the festival and where it is (which leads to it
-on the map), and who of the community goes: its members as on any card (as their couple when both go, teaching when in
-the line-up), then the people added: "Christina teaching and Siân teaching · Caroline going". Hovering an added name
-says who added them ("Added by Cédric"). Whether someone added teaches comes from the festival's line-up and their
-`artist_keys`, as it does for a member; the manager never says it, and someone teaching links to their artist page. The
-next trip is open; the others open from their button, on a card under the row. An opened trip is a roster of who travels
-when: its days across the top, from the first of the community to arrive (or the festival's start, when that is sooner)
-to the last to leave (or its end), the festival's days marked on them, and a line for each travel (`site/roster.ts`).
-Someone's signature is how they arrive (when, and at which airport), how they leave, and where they stay, night by
-night. A line is everyone who arrives and leaves alike: a bar is a travel, and where they stay never splits it. A couple
-is one unit when its partners' signatures are alike, else each partner is a unit; anyone else is one. A mark means one
-thing. A stroke of the calendar's ink is "there": everyone going has one over the festival's days at least. Its end is
-hard, with its time (and its airport, on a computer), where the time was said, and fades, with nothing written, where it
-was not: said nothing at all, or only where they stay, the festival's days with both ends fading; only a flight in, a
-hard start and the end fading at the festival's close (or the morning after their last night); only a day, without its
-time (the day Christina flies in), the stroke from that day, its start fading, the axis reaching it. A screen reader
-hears "arrival not said", "departure not said" or "arrives Fri 6 Nov, time not said". The axis is the calendar's: the
-festival's days in the accent, a dot under a day only travelled on, dates not bold. A dotted underline is names behind a
-text: a line called by what it is, or places counted, opens them, by place when they stay apart, while the pointer is
-over it and from a tap or a key, until the next or Escape, in a small card (each place a small heading, those who said
-none last, each name with its own nights, muted, when not all of its place's: "Nora · Fri–Sun"; two columns when many):
-on a phone a row of its own under the line; on a computer floating by its text, below its line or above it, never over
-it, inside the trip's card, or in the flow when the trip's card has no room for it; a solid underline is a link leaving
-the card. Muted text is a detail or an absence. A line of three people or fewer always names its units, and with three
-units or fewer every line does. Otherwise a line of more than three people is "Everyone" when it is the only line,
-"Everyone else" when it is more than half of everyone, and else called by its number ("5 people"). The named lines come
-first, by arrival, then departure, then first name; then those called by number, by arrival; then "Everyone else"; and
-those who have not said at the very bottom. Where a line stays is written when it is one or two places ("Airbnb →
-Scandic Holberg" for one person's way; "Scandic Holberg 8 · Comfort Xpress 2 · 1 not said"), beside the stroke on a
-computer, with no heading over it; under the name on a phone, which writes one and counts two; and counted when more ("3
-places"), the count opening the names by place; the whole is in its title and to a screen reader. When the people of a
-trip stay at two places or more, two icon buttons at the top of its card, a plane ("By travel") and a bed ("By place"),
-show the same people by where they stay: a line a place, the most people first and "Not said" last, the place the line's
-name and its people under it (three or fewer named, more called by number, which opens them with each one's own nights
-when not all of the place's, as in the card above), and one stroke over the nights anyone stays there, from the evening
-of the first to the morning after the last, its ends their weekdays; someone who moves is on each place's line for their
-nights there. The card keeps the view chosen for the visit. A screen reader hears the names, and the rest in words the
-page does not show: each line in and out and where its people stay, and who has not said, a line called by what it is by
-its people too; by place, each place, its nights and who stays there. While a card is open its row says only how many go
-and who teaches ("5 going · Cédric & Christina teaching"), as the card names everyone. The festival's name opens its
-card on the festival's line-up and prices, its own card opened in place, and folds them away again; the next trip's card
-opens on who travels, its line-up folded.
-
-A trip is on from its first day (the first member to arrive, or the festival's start when sooner) to its last (the last
-to leave, or the festival's end when later): its row has a small "Now" tag before its days and is the one open, and the
-head says "Now". From the day after its last, it has ended: it leaves the agenda, the sentence and the counts at the
-rows' ends, and its strokes stay in the calendar, grey as the days gone by; the calendar still starts at today's month.
-With every trip ended, the page says "No trips coming up."
-
 The site database has the added people's first names (`community_seeded`, one row per person and festival), and the
 community's page alone shows them: a festival's card elsewhere, the Friends tab and the search know only plans. The page
 reads its community in the shape the server will answer with, so only where it comes from changes then.
@@ -163,6 +80,29 @@ A community is public, as everything the site shows is: no tab links to its page
 its manager added and their plans and travel are in the site's database, which anyone can read (the SQL page), and in
 this repository and its history. Everyone listed has agreed to this. Until the server can check who is a member, add
 only what its people agree to make public.
+
+### Adding a community
+
+1. Ask each member whether their plans, and the travel and stays they give, may be public: the page and the site's
+   database show them to anyone (above). Add only those who agree.
+2. Give each member a row of `pipeline/people.csv` (their `key` a slug, as `ana-maria`) and their festivals rows of
+   `pipeline/plans.csv`, as for anyone who shares their plans.
+3. Add the community to `pipeline/communities.csv`: a `key` of four words no other community has (its address), its
+   `name`, and its `manager`, one of its members.
+4. Add a row of `pipeline/community_members.csv` for each member, the manager included; then, when they have them, the
+   people the manager adds (`pipeline/seeded.csv`) and the members' travel and stays (`pipeline/travel.csv`,
+   `pipeline/stays.csv`).
+5. Run `mise run render:design`, which draws the community's card (`public/c/<key>/share.png`, and `share.json` beside
+   it), then `mise run generate`, which writes its page (`public/c/<key>/index.html`).
+6. Commit the files and the `public/c/<key>/` folder (the commit's checks build the site and the database on them, and
+   refuse a bad row by its file). Its address is `https://clombion.github.io/kiz-radar/c/<key>/`: send it to the
+   members; nothing on the site links to it.
+
+To rename a community, change its `name` and run steps 5 and 6 again. To remove one, delete its rows from
+`communities.csv`, `community_members.csv` and `seeded.csv` and run `mise run generate`, which removes its folder of
+`public/c/`; a new key is a new address, so changing a key is removing the community and adding another.
+
+What the page shows, and how, is in [The site: a community's page](the-site.md#a-communitys-page).
 
 ## Promo codes
 
