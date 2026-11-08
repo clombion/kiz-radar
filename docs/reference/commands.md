@@ -20,7 +20,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `airports` | Add to pipeline/airports.csv every airport with scheduled service within 250 km of a festival to come, from OurAirports' airports.csv (ourairports.com/data), downloaded: mise run airports -- <its path> |
 | `geocode` | Place the export's cities on the map with OpenStreetMap Nominatim |
 | `rates` | The euro's exchange rates from the European Central Bank |
-| `fares` | Search and keep the festival weekends' return fares |
+| `fares` | Search the festival weekends' return fares and keep every search in pipeline/fare_offers/ (refresh), see what is due (plan) or kept (show), and report how well home's fare predicts other cities' (accuracy) |
 | `install:site` | The site's tools, as pnpm-lock.yaml pins them |
 | `build:site` | The site's TypeScript (site/) compiled into public/js/, and the libraries it loads copied into public/vendor/ from the pinned packages |
 | `serve` | The site and its data built, and served at http://localhost:8000 |

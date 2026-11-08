@@ -61,7 +61,7 @@ description = "The euro's exchange rates from the European Central Bank"
 run = "uv run -q -m pipeline.rates"
 
 [fares]
-description = "Search and keep the festival weekends' return fares"
+description = "Search the festival weekends' return fares and keep every search in pipeline/fare_offers/ (refresh), see what is due (plan) or kept (show), and report how well home's fare predicts other cities' (accuracy)"
 run = "uv run -q --group fares -m pipeline.fares"
 
 ["install:site"]
