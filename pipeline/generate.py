@@ -115,8 +115,9 @@ def manifest() -> str:
 SITE = 'https://clombion.github.io/kiz-radar/'  # where the site is published, as public/index.html's canonical link
 COMMUNITY_PAGES = ROOT / 'public' / 'c'  # a community's page for a shared link and its image, by its key, under it
 SHARE_CARD = ROOT / 'design' / 'share-card.html'  # the site's share card, of which a community's is a variant
-# what a community's card is drawn from beside its name: the card, the script that draws it, the mark on it
-DRAWN_FROM = (SHARE_CARD, ROOT / 'design' / 'render.cjs', ROOT / 'public' / 'mark.svg')
+# what a community's card is drawn from beside its name: the card, the script that draws it, the mark on it and the
+# drawings it shares with the site
+DRAWN_FROM = (SHARE_CARD, ROOT / 'design' / 'render.cjs', ROOT / 'public' / 'mark.svg', ROOT / 'site' / 'icons.ts')
 # a community's description where its link is shared, made of its name alone, so that no change to its data changes it
 COMMUNITY_SAID = '{name} · festival plans shared on Kiz Radar'
 # the tags of index.html's head a community's page has its own of: its base, title, description, canonical link, card

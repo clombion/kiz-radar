@@ -24,7 +24,7 @@ import {
 } from '../../site/routes.ts';
 import { booked, EVENT, flag, num, opt, read, state, str } from '../../site/rows.ts';
 import { KEY } from '../../site/states.ts';
-import { counted, hasForm, iconOf, isKey, joined, linkOf, plural, say, text } from '../../site/wording.ts';
+import { counted, hasForm, iconOf, isKey, joined, joinedText, linkOf, plural, say, text } from '../../site/wording.ts';
 
 // a global a test stubs, undone after it, whatever it ends with
 afterEach(() => {
@@ -62,6 +62,8 @@ test('a list reads "A, B and C"', () => {
   expect(joined(['A']).join('')).toBe('A');
   expect(joined(['A', 'B']).join('')).toBe('A and B');
   expect(joined(['A', 'B', 'C']).join('')).toBe('A, B and C');
+  // the same as text, for a screen reader's words and a title
+  for (const xs of [[], ['A'], ['A', 'B'], ['A', 'B', 'C', 'D']]) expect(joinedText(xs)).toBe(joined(xs).join(''));
 });
 
 const unbooked = { teacher: 0, dj: 0, performer: 0, mc: 0 } as const;

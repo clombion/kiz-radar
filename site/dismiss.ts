@@ -3,6 +3,10 @@
 // it belongs to, and on a tap outside that, and it is placed again when the window's size changes. Each card says when
 // it opens and closes (opened, closed); the rule of when it goes away is this one.
 
+// A screen wide enough for a card to float beside what opened it (a day's popover, a roster's names), as the
+// stylesheet's @media (min-width: 700px) blocks lay the community's page out; narrower, a card goes in the page's flow.
+export const WIDE = '(min-width: 700px)';
+
 interface Shown {
   close: () => void;
 }

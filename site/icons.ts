@@ -23,7 +23,7 @@ export class Drawing {
   static readonly CHEVRON = new Drawing(
     '<svg viewBox="0 0 48 12" width="48" height="12"><path d="M3 10 L24 3 L45 10"/></svg>',
   );
-  // a community page's privacy: a lock, and people (Lucide's lock and users)
+  // a community page's privacy: a lock, and people (Lucide's lock and users), people also the share card's eyebrow
   static readonly LOCK = Drawing.#line(
     '<rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" />',
   );
@@ -44,7 +44,8 @@ export class Drawing {
   static readonly PLANE = Drawing.#line(
     '<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />',
   );
-  // today in a month: a ring drawn by hand around its number, a little uneven, its ends crossing
+  // today in a month, the site's and the share card's: a ring drawn by hand around its number, a little uneven, its
+  // ends crossing
   static readonly RING = new Drawing(
     '<svg viewBox="0 0 40 32" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M27 4.5C19 2.2 7.5 4 4.2 12.5 1.6 19.6 8.3 28.2 19.8 28.4 31 28.6 37.6 22.4 36.3 14.3 35.2 7.6 27.9 3.6 18.4 4.6" /></svg>',
   );
@@ -60,9 +61,7 @@ export class Drawing {
       '<path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" /> <path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" /> <path d="m2 15 6 6" /> <path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z" />',
     ),
     'bed-double': Drawing.BED,
-    users: Drawing.#line(
-      '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" />',
-    ),
+    users: Drawing.PEOPLE,
     utensils: Drawing.#line(
       '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /> <path d="M7 2v20" /> <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />',
     ),
@@ -114,6 +113,10 @@ export class Drawing {
       '<path d="M13 4h3a2 2 0 0 1 2 2v14" /> <path d="M2 20h3" /> <path d="M13 20h9" /> <path d="M10 12v.01" /> <path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z" />',
     ),
   };
+  // its SVG, for the share card design/render.cjs draws (no page of the site puts it anywhere but through into)
+  get svg(): string {
+    return this.#markup;
+  }
   // the element given, with the drawing in it
   into<E extends Element>(el: E): E {
     el.innerHTML = this.#markup;

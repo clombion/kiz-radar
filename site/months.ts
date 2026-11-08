@@ -9,14 +9,12 @@
 
 import { type Away, type Day, monthsIn, periodSaid, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
-import { dismissable } from './dismiss.ts';
+import { dismissable, WIDE } from './dismiss.ts';
 import { button, h, type Kid, nodes, toggle } from './dom.ts';
 import { Drawing } from './icons.ts';
 import { swipe } from './ink.ts';
 import { monthShort, monthYear, weekDay } from './ui.ts';
 import { plural } from './wording.ts';
-
-const WIDE = '(min-width: 700px)'; // a screen with room for the popover beside a month
 
 // The popover of a day, one for the page: the grids attached to it open it on their days; close closes it.
 export interface Popover {

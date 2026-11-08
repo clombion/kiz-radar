@@ -16,8 +16,7 @@ import {
   presence,
   relativeDay,
   spanOf,
-  WEEKDAYS,
-  weekday,
+  weekday3,
 } from './calendar.ts';
 import { addDays } from './days.ts';
 import { one, q, sql } from './db.ts';
@@ -41,7 +40,7 @@ import {
 import { type Booked, booked, EVENT, num, opt, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { dayMonth, dayParts, dayRange, monthShort, monthYear, place, weekDay } from './ui.ts';
-import { joined, plural, text } from './wording.ts';
+import { joined, joinedText, plural, text } from './wording.ts';
 
 // A community as its page reads it, which is what a server will give one of its members. For now it is read from
 // the site database.
@@ -311,7 +310,7 @@ const whenFrom = (today: string, e: Festival): string =>
 // until when a trip on goes on: "today", its weekday within the week ("Mon"), or else its day ("1 Dec")
 function until(today: string, day: string): string {
   if (day === today) return 'today';
-  return day <= addDays(today, 6) ? (WEEKDAYS[weekday(day)]?.slice(0, 3) ?? '') : dayMonth(day);
+  return day <= addDays(today, 6) ? weekday3(day) : dayMonth(day);
 }
 
 // The head's line of where the community is: "Now: Glasgow, until Mon", and the next trip after it, "· Next: Oslo, on
@@ -330,11 +329,10 @@ function nowAndNext(current: readonly Visit[], today: string): HTMLElement | nul
 // "Fri 20 – Sun 22 Nov", "Thu 26 Nov – Tue 1 Dec": a festival's days, each with its weekday
 function daysSaid(e: Festival): string {
   const { d1, m1, d2, m2 } = dayParts(e.start_date, e.end_date);
-  const wd = (d: string) => WEEKDAYS[weekday(d)]?.slice(0, 3);
-  if (e.start_date === e.end_date) return `${wd(e.start_date)} ${d1} ${m1}`;
+  if (e.start_date === e.end_date) return `${weekday3(e.start_date)} ${d1} ${m1}`;
   return m1 === m2
-    ? `${wd(e.start_date)} ${d1} – ${wd(e.end_date)} ${d2} ${m1}`
-    : `${wd(e.start_date)} ${d1} ${m1} – ${wd(e.end_date)} ${d2} ${m2}`;
+    ? `${weekday3(e.start_date)} ${d1} – ${weekday3(e.end_date)} ${d2} ${m1}`
+    : `${weekday3(e.start_date)} ${d1} ${m1} – ${weekday3(e.end_date)} ${d2} ${m2}`;
 }
 
 // The agenda of a period: its trips, those with a day in it, a heading a month ("November · 3 trips", with its year
@@ -504,7 +502,7 @@ const ends = (at: Moment | null, airport: string | null, which: 'arrive' | 'leav
 // said" when not, a day without its time "arrives Fri 6 Nov, time not said"), and where they stay, each place with
 // who stays there when there are several; or "not said".
 function inWords(l: Line<Present>): string {
-  const names = and(l.units.map((u) => u.name));
+  const names = joinedText(l.units.map((u) => u.name));
   const who = l.called === null ? names : `${l.called} (${names})`;
   const f = l.travel;
   if (f === null && l.nights === null) return `not said: ${who}`;
@@ -518,15 +516,15 @@ function inWords(l: Line<Present>): string {
       ? only.place === null
         ? ''
         : `, staying at ${only.place}`
-      : `, staying: ${l.buckets.map((b) => `${b.place ?? 'not said'}: ${and(b.units.map((u) => u.name))}`).join(', ')}`;
+      : `, staying: ${l.buckets.map((b) => `${b.place ?? 'not said'}: ${joinedText(b.units.map((u) => u.name))}`).join(', ')}`;
   return `${who}${flights}${stays}`;
 }
 
 // A place of a roster by where they stay in words: the place, its nights, and who stays there; or who said none.
 function placeInWords(p: Place<Present>): string {
-  const names = and(p.units.map((u) => u.name));
+  const names = joinedText(p.units.map((u) => u.name));
   if (p.place === null || p.nights === null) return `place not said: ${names}`;
-  const night = (d: string) => `${WEEKDAYS[weekday(d)]?.slice(0, 3)} ${Number(d.slice(8))}`;
+  const night = (d: string) => `${weekday3(d)} ${Number(d.slice(8))}`;
   return `${p.place}, the nights of ${night(p.nights.first)} to ${night(p.nights.last)}: ${names}`;
 }
 
@@ -573,7 +571,7 @@ function whoGoes(
     teaching.length > 0
       ? [
           ' · ',
-          and([
+          joinedText([
             ...namesOf(goers.filter((g) => g.booked_as !== null)),
             ...f.added.flatMap((a) => (a.artist === null ? [] : [a.name])),
           ]),
@@ -599,10 +597,8 @@ const unbroken = (words: string): string => words.replaceAll(' ', '\u00a0');
 // whether a day is one of the festival someone travels to
 const atFestival = (a: Present, day: string): boolean => day >= a.e.start_date && day <= a.e.end_date;
 // where the festivals of these people are: "Oslo", "Oslo and Riga"; a festival with no city by its name
-const placesOf = (aways: readonly Present[]): string => and([...new Set(aways.map((a) => a.e.city ?? a.e.title))]);
-// "A", "A and B", "A, B and C", as text
-const and = (xs: readonly string[]): string =>
-  xs.length > 1 ? `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}` : xs.join('');
+const placesOf = (aways: readonly Present[]): string =>
+  joinedText([...new Set(aways.map((a) => a.e.city ?? a.e.title))]);
 
 // What a day's popover says: the day, its festivals, who flies in and out that day (by time and airport, a couple as
 // one when both share the flight), who else is there, and where members stay that night. The people added are named,

@@ -8,6 +8,8 @@ const DAY_MS = 86_400_000;
 const noon = (day: string): number => Date.parse(`${day}T12:00Z`);
 // Monday 0 to Sunday 6
 export const weekday = (iso: string): number => (new Date(noon(iso)).getUTCDay() + 6) % 7;
+// its weekday's name in three letters, "Mon"
+export const weekday3 = (iso: string): string => WEEKDAYS[weekday(iso)]?.slice(0, 3) ?? '';
 
 // the days from start to end, both in
 export function daysOf(start: string, end: string): string[] {

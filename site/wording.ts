@@ -109,6 +109,8 @@ export const text = <P extends Point, K extends Key<P>, F extends Form<P, K> | u
 // "1 festival", "3 festivals", "1,204 artists": a count and its noun (an English plural with -s unless said)
 export const plural = (n: number, noun: string, nouns = `${noun}s`): string =>
   `${n.toLocaleString('en-GB')} ${n === 1 ? noun : nouns}`;
-// "A, B and C"
-export const joined = (xs: readonly Kid[]): Kid[] =>
-  xs.flatMap((x, i) => [i ? (i === xs.length - 1 ? ' and ' : ', ') : '', x]);
+// "A, B and C": what goes before each of n things, the first nothing
+const between = (i: number, n: number): '' | ' and ' | ', ' => (i === 0 ? '' : i === n - 1 ? ' and ' : ', ');
+export const joined = (xs: readonly Kid[]): Kid[] => xs.flatMap((x, i) => [between(i, xs.length), x]);
+// the same, as text
+export const joinedText = (xs: readonly string[]): string => xs.map((x, i) => between(i, xs.length) + x).join('');

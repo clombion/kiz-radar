@@ -23,7 +23,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `install:site` | The site's tools, as pnpm-lock.yaml pins them |
 | `build:site` | The site's TypeScript (site/) compiled into public/js/, and the libraries it loads copied into public/vendor/ from the pinned packages |
 | `serve` | The site and its data built, and served at http://localhost:8000 |
-| `render:design` | The share card (public/share-card.png), each community's (public/c/<key>/share.png, a variant of that card with its name, and share.json, what it is drawn from) and the icons drawn again from design/ and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page |
+| `render:design` | The share card (public/share-card.png), each community's (public/c/<key>/share.png, a variant of that card with its name, and share.json, what it is drawn from) and the icons drawn again from design/, site/icons.ts and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page |
 | `types:site` | tsc, strict, on the site and its tests |
 | `lint:site` | Biome's rules and format on the site, its tests and its CSS, with the lint/ plugins |
 | `knip` | No module, export or package the site doesn't use |

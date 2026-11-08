@@ -18,9 +18,9 @@
 //
 // It is drawn for the eye: a screen reader hears its names, and a line no one sees says the rest in words.
 
-import { awayDays, daysInto, daysOf, type Moment, moment, WEEKDAYS, weekday } from './calendar.ts';
+import { awayDays, daysInto, daysOf, type Moment, moment, WEEKDAYS, weekday, weekday3 } from './calendar.ts';
 import { addDays } from './days.ts';
-import { dismissable } from './dismiss.ts';
+import { dismissable, WIDE } from './dismiss.ts';
 import { button, h, type Kid, toggle } from './dom.ts';
 import { swipe } from './ink.ts';
 import { type Bucket, type Line, ownNights, type Place, type Unit } from './roster.ts';
@@ -30,13 +30,12 @@ import { joined, plural } from './wording.ts';
 // a line's swipe, across its lane: level, whatever its length, so a computer's long bar slopes no more than a phone's
 const INK = { height: [0.55, 0.7], drop: [0, 0.04], tilt: 0 } as const; // thin, and level however long
 
-const day3 = (iso: string) => WEEKDAYS[weekday(iso)]?.slice(0, 3) ?? '';
 // "17:05 OSL": the time of a flight, and its airport when known (an airport goes with a time: records.Travel)
 export const timeAt = (time: string, airport: string | null): string =>
   `${time}${airport === null ? '' : ` ${airport}`}`;
 // "Thu 17:05 OSL"
 export const dayTimeAt = (at: Moment, airport: string | null): string =>
-  `${day3(at.day)} ${timeAt(at.time ?? '', airport)}`;
+  `${weekday3(at.day)} ${timeAt(at.time ?? '', airport)}`;
 // a stroke's end: its time, and its airport, which a phone leaves out; nothing when its time is not said
 const end = (time: string | null, airport: string | null): HTMLElement =>
   h('span', {}, time, time !== null && airport !== null ? h('span', { class: 'gantt-ap' }, ` ${airport}`) : null);
@@ -52,7 +51,6 @@ interface Group {
   heading: string | null;
   names: { name: Kid; nights: string | null }[];
 }
-const WIDE = '(min-width: 700px)'; // a screen with room for the card to float by its text
 
 // Where the card of names goes on a computer: under its text's line, from the text's left, inside the trip's card;
 // above the line when the card has no room below it; never over the line itself; and in the roster's flow, as on a
@@ -237,7 +235,7 @@ export function unsaidEnd(at: Moment | null, which: 'arrive' | 'leave'): string 
   return `${which === 'arrive' ? 'arrives' : 'leaves'} ${dated(at.day)}, time not said`;
 }
 // "Fri 6 Nov"
-const dated = (day: string) => `${day3(day)} ${dayMonth(day)}`;
+const dated = (day: string) => `${weekday3(day)} ${dayMonth(day)}`;
 
 export function gantt<P>(
   t: Frame & {
@@ -313,7 +311,7 @@ export function ganttByPlace<P>(t: Frame & { places: readonly Place<P>[]; named:
     // a unit with its own nights there, when they are not all of the place's: "Nora · Fri–Sun"
     const own = (u: Unit<P>) => {
       const mine = ownNights(p, u);
-      return { name: t.named(u), nights: mine === null ? null : `${day3(mine.first)}–${day3(mine.last)}` };
+      return { name: t.named(u), nights: mine === null ? null : `${weekday3(mine.first)}–${weekday3(mine.last)}` };
     };
     const list =
       p.called === null ? null : behind(`${t.describedBy}-names-${i}`, [{ heading: null, names: p.units.map(own) }]);
@@ -341,7 +339,7 @@ export function ganttByPlace<P>(t: Frame & { places: readonly Place<P>[]; named:
               key: `${p.place} ${i}`,
               fades: { in: false, out: false },
               title: null,
-              ends: [h('span', {}, day3(nights.first)), h('span', {}, day3(morning(nights.last)))],
+              ends: [h('span', {}, weekday3(nights.first)), h('span', {}, weekday3(morning(nights.last)))],
             }),
       ),
       list?.list,

@@ -1,5 +1,8 @@
 // The stylesheets against the page and its modules: what Biome's CSS rules don't see.
+import { readFileSync } from 'node:fs';
 import { expect, test } from 'vitest';
+import { WIDE } from '../../site/dismiss.ts';
+import { Drawing } from '../../site/icons.ts';
 import { code, css, pages } from './sources.ts';
 
 const URLS = /url\([^)]*\)/gu;
@@ -135,4 +138,26 @@ test('durations, curves, layers and colours are the tokens', () => {
         literal.push(`${file}: ${prop}: ${value}`);
     }
   expect(literal).toEqual([]);
+});
+
+// The cards that float beside what opened them on a wide screen (a roster's names, a day's popover) are placed by
+// script at ui.ts's WIDE, and laid out by the stylesheet at its own @media: one width, or a card floats unstyled.
+test('the community page’s cards float at the one width the stylesheet lays them out by', () => {
+  const floating = [...css.values()]
+    .flatMap(rules)
+    .filter((r) => r.media.includes('min-width') && r.selectors.some((s) => /^\.(?:gantt|day-pop)/u.test(s)));
+  expect(floating.length).toBeGreaterThan(0);
+  expect(new Set(floating.map((r) => r.media))).toEqual(new Set([`@media ${WIDE}`]));
+});
+
+// The share card draws the drawings it has in common with the site from site/icons.ts (design/render.cjs gives them
+// to it), never from a copy of their paths that would drift; and the site draws each once.
+test('the share card and the site draw their common icons from one source', () => {
+  const card = readFileSync(new URL('../../design/share-card.html', import.meta.url), 'utf8');
+  const paths = [Drawing.PEOPLE, Drawing.PLANE, Drawing.RING].flatMap((d) =>
+    [...d.svg.matchAll(/ d="(?<d>[^"]+)"/gu)].map((m) => m.groups?.['d'] ?? ''),
+  );
+  expect(paths.length).toBeGreaterThan(3);
+  expect(paths.filter((d) => card.includes(d))).toEqual([]);
+  expect(Drawing.LUCIDE['users']).toBe(Drawing.PEOPLE);
 });

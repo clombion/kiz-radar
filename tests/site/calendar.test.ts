@@ -18,6 +18,7 @@ import {
   relativeDay,
   spanOf,
   weekday,
+  weekday3,
   weeksOf,
 } from '../../site/calendar.ts';
 import { list, nullable, type Reader, record, text } from '../../site/json.ts';
@@ -70,6 +71,7 @@ test('a festival counts on each of its days, whatever weekdays: Wednesday to Tue
     { who: 'b', ...awayDays(festival('2026-11-02', '2026-11-08')) }, // Monday to Sunday
   ]);
   expect(weekday('2026-11-04')).toBe(2);
+  expect(['2026-11-02', '2026-11-08'].map(weekday3)).toEqual(['Mon', 'Sun']);
   expect([...days].toSorted(([a], [b]) => a.localeCompare(b)).map(([d, on]) => [d, on.people])).toEqual([
     ['2026-11-02', 1],
     ['2026-11-03', 1],
