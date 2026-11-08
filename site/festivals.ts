@@ -4,7 +4,7 @@
 import { today } from './days.ts';
 import { freshDay, q, sql } from './db.ts';
 import { h } from './dom.ts';
-import { type Fare, fareKey, fareOf, flightBegun, tripOf } from './fares.ts';
+import { type Fare, fareOf, flightBegun, type Option, tripOf } from './fares.ts';
 import { DANCES } from './finder.ts';
 import { convert, rounded } from './money.ts';
 import { priceToday } from './passes.ts';
@@ -15,7 +15,8 @@ import { KEY } from './states.ts';
 import { home } from './ui.ts';
 import { type Key, text } from './wording.ts';
 
-// A festival as every card has it: its row with the fare for its weekend (fares.ts), the best-known names on its
+// A festival as every card has it: its row with the airports it can fly to (options) and the best fare of theirs for
+// its weekend (fares.ts best), the best-known names on its
 // line-up, its genres (event_stats: its description's and its kizomba-world tags), what its card says of its price
 // today (passes.ts) and the trip: the card's pass plus the flight in the visitor's currency, null when either is
 // unknown or the pass has no price today; once its weekend's Friday-to-Monday return has left (begun, fares.ts
@@ -27,6 +28,7 @@ export type Festival = Omit<EventRow, 'features'> & {
   goers: Goer[];
   headliners: { id: number; name: string }[];
   styles: Set<Key<'genre'>>;
+  options: Option[]; // every airport it can fly to, the nearest first, each with its fare for the weekend
   fare: Fare | null;
   price: PriceLine;
   trip: number | null;
@@ -36,7 +38,7 @@ export type Festival = Omit<EventRow, 'features'> & {
 let cache:
   | {
       heads: Map<number, { id: number; name: string }[]>;
-      fares: Map<string, { price: number; back: string }>; // by fareKey
+      options: Map<number, Option[]>; // by festival
       promos: Map<number, { code: string; offer: string | null }>;
     }
   | undefined;
@@ -56,26 +58,51 @@ function details() {
       [KEY.role.TEACHER, KEY.role.DJ],
     ))
       heads.set(r.event_id, [...(heads.get(r.event_id) ?? []), { id: r.id, name: r.display_name }]);
-    const fares = new Map(
-      q(
-        { airport: str, depart: str, back: str, price: num },
-        sql`SELECT airport, depart, return AS back, price FROM fares`,
-      ).map((f) => [fareKey(f.airport, f.depart), { price: f.price, back: f.back }]),
-    );
+    // each festival's airports, the nearest first, with the fare and the last search of its weekend; home is none
+    const options = new Map<number, Option[]>();
+    for (const r of q(
+      {
+        event_id: num,
+        airport: str,
+        name: str,
+        city: str,
+        km: num,
+        price: opt(num),
+        back: opt(str),
+        stops: opt(num),
+        fetched: opt(str),
+        checked: opt(str),
+        direct: opt(num),
+      },
+      sql`SELECT ea.event_id, ea.airport, a.name, a.city, ea.km, f.price, f.return AS back, f.stops,
+        f.fetched_at AS fetched, j.last_run AS checked, j.direct
+      FROM event_airports ea JOIN events e ON e.id = ea.event_id JOIN airports a ON a.code = ea.airport
+        LEFT JOIN fares f ON f.airport = ea.airport AND f.depart = e.weekend_friday
+        LEFT JOIN fare_jobs j ON j.airport = ea.airport AND j.depart = e.weekend_friday
+      WHERE a.home = 0 ORDER BY ea.event_id, ea.km, ea.airport`,
+    )) {
+      const { event_id, price, back, stops, fetched, direct, ...at } = r;
+      const fare = price === null || back === null || fetched === null ? null : { price, back, stops, fetched };
+      options.set(event_id, [
+        ...(options.get(event_id) ?? []),
+        { ...at, fare, direct: direct === null ? null : direct === 1 },
+      ]);
+    }
     const promos = new Map(
       q({ event_id: num, code: str, offer: opt(str) }, sql`SELECT event_id, code, offer FROM event_promos`).map((p) => [
         p.event_id,
         { code: p.code, offer: p.offer },
       ]),
     );
-    cache = { heads, fares, promos };
+    cache = { heads, options, promos };
   }
   return cache;
 }
 export function withDetails(rows: readonly EventRow[]): Festival[] {
-  const { heads, fares, promos } = details();
+  const { heads, options, promos } = details();
   return rows.map((e) => {
-    const fare = fareOf(e, home().code, fares),
+    const flies = options.get(e.id) ?? [];
+    const fare = fareOf(e, home().code, flies),
       price = priceToday(e),
       begun = flightBegun(e.weekend_friday, today());
     return {
@@ -86,6 +113,7 @@ export function withDetails(rows: readonly EventRow[]): Festival[] {
       goers: goersOf(e.id),
       headliners: heads.get(e.id) ?? [],
       styles: new Set(e.genres),
+      options: flies,
       fare,
       price,
       trip: tripOf('now' in price ? price.now.tier : null, fare, { convert, rounded }, begun),

@@ -1,7 +1,20 @@
 // Prices in a currency (site/currency.ts) and a festival's fare and trip (site/fares.ts), on values alone.
 import { expect, test } from 'vitest';
 import { isCurrency, pricesIn, written } from '../../site/currency.ts';
-import { cheapestFlights, type Fare, fareKey, fareOf, flightBegun, flightEur, tripOf } from '../../site/fares.ts';
+import {
+  best,
+  cheapestFlights,
+  checkedAgo,
+  FAR_KM,
+  type Fare,
+  fareOf,
+  flightBegun,
+  flightEur,
+  type Option,
+  stopsSaid,
+  tripOf,
+  WORTH_EUR,
+} from '../../site/fares.ts';
 
 // the euro's rates: a krone is a tenth of a euro, a dollar a little less than one
 const RATES: ReadonlyMap<string, number> = new Map([
@@ -64,23 +77,67 @@ test('a flight is within a step in the visitor’s currency, and one with no rat
   expect(pricesIn('USD', () => undefined).within(1, 'flight', 'cheap')).toBe(false);
 });
 
-const FARES = new Map([[fareKey('LIS', '2026-11-06'), { price: 120, back: '2026-11-09' }]]);
 const HOME = 'XHM'; // the airport marked home, whichever it is
+// an airport a festival can fly to, this far from it, with a fare at this price (none: null), checked on 1 Nov
+const option = (airport: string, km: number, price: number | null, stops: number | null = 0): Option => ({
+  airport,
+  name: `${airport} Airport`,
+  city: airport,
+  km,
+  fare: price === null ? null : { price, back: '2026-11-09', stops, fetched: '2026-11-01T06:00:00+00:00' },
+  checked: '2026-11-01T06:00:00+00:00',
+  direct: null,
+});
+const chosen = (options: readonly Option[]) => best(options)?.airport ?? null;
 
-test('a festival at home takes no flight, and one elsewhere the fare found for its weekend, or none', () => {
-  expect(fareOf({ airport: HOME, weekend_friday: '2026-11-06' }, HOME, FARES)).toEqual({ home: true });
-  expect(fareOf({ airport: HOME, weekend_friday: null }, HOME, FARES)).toEqual({ home: true });
-  expect(fareOf({ airport: 'LIS', weekend_friday: '2026-11-06' }, HOME, FARES)).toEqual({
+test('a festival at home takes no flight, and one elsewhere the best fare of its airports, or none', () => {
+  expect(fareOf({ airport: HOME }, HOME, [option('LIS', 8, 120)])).toEqual({ home: true });
+  expect(fareOf({ airport: 'LIS' }, HOME, [option('LIS', 8, 120, 1)])).toEqual({
     home: false,
+    airport: 'LIS',
+    airport_city: 'LIS',
+    km: 8,
     price: 120,
     back: '2026-11-09',
+    stops: 1,
+    fetched: '2026-11-01T06:00:00+00:00',
   });
-  expect(fareOf({ airport: 'LIS', weekend_friday: '2026-11-13' }, HOME, FARES)).toBeNull();
-  expect(fareOf({ airport: 'LIS', weekend_friday: null }, HOME, FARES)).toBeNull();
-  expect(fareOf({ airport: null, weekend_friday: '2026-11-06' }, HOME, FARES)).toBeNull();
+  expect(fareOf({ airport: 'LIS' }, HOME, [option('LIS', 8, null)])).toBeNull();
+  expect(fareOf({ airport: null }, HOME, [])).toBeNull();
 });
 
-const AWAY: Fare = { home: false, price: 120, back: '2026-11-09' };
+test('the best airport is the cheapest within reach; one far away only when it saves more than the way costs', () => {
+  expect([FAR_KM, WORTH_EUR]).toEqual([100, 40]);
+  // Glasgow: GLA 12 km, EDI 55 km, ABZ 199 km
+  expect(chosen([option('GLA', 12, 200), option('EDI', 55, 150), option('ABZ', 199, 120)])).toBe('EDI');
+  expect(chosen([option('GLA', 12, 200), option('ABZ', 199, 160)])).toBe('GLA'); // saves 40: not more than 40
+  expect(chosen([option('GLA', 12, 200), option('ABZ', 199, 159)])).toBe('ABZ'); // saves 41
+  expect(chosen([option('GLA', 12, null), option('ABZ', 199, 300)])).toBe('ABZ'); // nothing near priced
+  expect(chosen([option('GLA', 12, 150), option('PIK', 42, 150)])).toBe('GLA'); // one price: the nearer
+  expect(chosen([option('GLA', 100, 150), option('ABZ', 101, 111)])).toBe('GLA'); // 100 km is near, 101 far: saves 39
+  expect(chosen([option('GLA', 12, null)])).toBeNull();
+});
+
+test('an airport’s stops and when it was checked are said in words', () => {
+  expect([0, 1, 2, null].map(stopsSaid)).toEqual(['direct', '1 stop', '2 stops', 'stops not known']);
+  const day = '2026-11-08';
+  expect(
+    ['2026-11-08T23:00:00+00:00', '2026-11-07T01:00:00+00:00', '2026-10-27T06:00:00+00:00'].map((s) =>
+      checkedAgo(s, day),
+    ),
+  ).toEqual(['today', 'yesterday', '12 days ago']);
+});
+
+const AWAY: Fare = {
+  home: false,
+  airport: 'LIS',
+  airport_city: 'Lisbon',
+  km: 8,
+  price: 120,
+  back: '2026-11-09',
+  stops: 0,
+  fetched: '2026-11-01',
+};
 test('a flight from home costs nothing, and one not found is not known', () => {
   expect(flightEur({ home: true })).toBe(0);
   expect(flightEur(AWAY)).toBe(120);
@@ -108,28 +165,21 @@ test('once a festival is on, its trip is the pass alone: its weekend’s return 
 });
 
 test('a country’s cheapest flight is of its festivals flown to, the city first by name at one price', () => {
-  const at = (country_code: string | null, airport_city: string | null, fare: Fare | null) => ({
-    country_code,
-    airport_city,
-    fare,
-  });
-  const flight = (price: number): Fare => ({ home: false, price, back: '2026-11-09' });
+  const at = (country_code: string | null, fare: Fare | null) => ({ country_code, fare });
+  const flight = (airport_city: string, price: number): Fare => ({ ...AWAY, airport_city, price });
   const cheapest = cheapestFlights([
-    at('NO', 'Homeville', { home: true }), // at home: no flight, so no fare of its country
-    at('NO', 'Oslo', flight(90)),
-    at('PT', 'Porto', flight(150)),
-    at('PT', 'Lisbon', flight(120)),
-    at('PT', 'Faro', flight(120)),
-    at('PT', 'Braga', flight(200)),
-    at('ES', 'Madrid', null),
-    at(null, 'Nowhere', flight(10)),
-    at('FR', null, flight(80)),
-    at('FR', 'Paris', flight(80)),
+    at('NO', { home: true }), // at home: no flight, so no fare of its country
+    at('NO', flight('Oslo', 90)),
+    at('PT', flight('Porto', 150)),
+    at('PT', flight('Lisbon', 120)),
+    at('PT', flight('Faro', 120)),
+    at('PT', flight('Braga', 200)),
+    at('ES', null),
+    at(null, flight('Nowhere', 10)),
   ]);
   expect(Object.fromEntries(cheapest)).toEqual({
     NO: { airport_city: 'Oslo', price: 90 },
     PT: { airport_city: 'Faro', price: 120 },
-    FR: { airport_city: null, price: 80 },
   });
-  expect(cheapestFlights([at('NO', 'Homeville', { home: true })]).size).toBe(0);
+  expect(cheapestFlights([at('NO', { home: true })]).size).toBe(0);
 });

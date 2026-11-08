@@ -10,7 +10,7 @@ import { type Festival, festivals } from '../../site/festivals.ts';
 import { num, str } from '../../site/rows.ts';
 import { sentenceView } from '../../site/sentence.ts';
 import { KEY } from '../../site/states.ts';
-import { pass, tier } from './samples.ts';
+import { flownTo, pass, tier } from './samples.ts';
 import { loadShipped } from './shipped.ts';
 
 const TODAY = '2026-11-06';
@@ -82,7 +82,7 @@ const priced = (e: Festival): HTMLElement => {
     airport: 'LIS',
     airport_city: 'Lisbon',
     depart: e.start_date,
-    fare: { home: false, price: 120, back: '2026-11-09' },
+    fare: flownTo(120, '2026-11-09'),
     trip: 2000,
   });
 };

@@ -17,7 +17,7 @@ import {
 } from '../../site/finder.ts';
 import { festivalsHref } from '../../site/routes.ts';
 import { KEY } from '../../site/states.ts';
-import { pass as passOf } from './samples.ts';
+import { flownTo, pass as passOf } from './samples.ts';
 
 const DAY = '2026-11-02';
 const CHOICES = DEFAULTS;
@@ -54,7 +54,8 @@ const festival = (id: number, over: Partial<Festival> = {}): Festival => ({
   goers: [],
   headliners: [],
   styles: new Set([KEY.genre.KIZOMBA]),
-  fare: { home: false, price: 120, back: '2026-11-09' },
+  options: [],
+  fare: flownTo(120, '2026-11-09'),
   price: UNKNOWN,
   trip: 2000,
   begun: false,
@@ -124,7 +125,11 @@ test('the soonest first, or the cheapest trip, then the cheapest flight, then th
     festival(2, { depart: '2026-11-13', trip: 2500 }),
     festival(3, { depart: '2026-11-27', trip: 2000, fare: { home: true } }),
     festival(4, { depart: '2026-11-06', trip: 2000 }),
-    festival(5, { depart: '2026-12-04', trip: null, fare: { home: false, price: 90, back: '2026-12-07' } }),
+    festival(5, {
+      depart: '2026-12-04',
+      trip: null,
+      fare: flownTo(90, '2026-12-07'),
+    }),
     festival(6, { depart: '2026-12-11', trip: null, fare: null }),
   ];
   expect(ids(matches(all, CHOICES, DAY, null))).toEqual([4, 2, 1, 3, 5, 6]);

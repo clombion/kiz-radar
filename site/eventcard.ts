@@ -1,11 +1,13 @@
 // The festival card used across the site: date, place, title, styles, highlights, a few names and the flight,
 // opening in place to the full line-up and practical details. Rows come from festivals.ts (withDetails).
 
+import { today } from './days.ts';
 import { cardDetails, traitItems } from './details.ts';
 import type { Classes, Kid } from './dom.ts';
 import { button, h, own, toggle } from './dom.ts';
 import type { Fare } from './fares.ts';
 import { type Festival, styleLine } from './festivals.ts';
+import { flightsButton } from './flights.ts';
 import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
 import { approximately, money, within } from './money.ts';
@@ -36,40 +38,45 @@ function dateBox(start: string, end: string): HTMLElement {
   );
 }
 
-// a festival with a fare, so with an airport and a weekend
-type Flown = Festival & { airport: string; depart: string; fare: Extract<Fare, { home: false }> };
-const flown = (e: Festival): e is Flown => e.airport !== null && e.depart !== null && e.fare !== null && !e.fare.home;
+// a festival with a fare, so with a weekend: the fare its best airport's (fares.ts best)
+type Flown = Festival & { depart: string; fare: Extract<Fare, { home: false }> };
+const flown = (e: Festival): e is Flown => e.depart !== null && e.fare !== null && !e.fare.home;
 const flightLink = (e: Flown, words: string) =>
   h(
     'a',
     {
-      href: flightsUrl(e.airport, e.depart, e.fare.back),
+      href: flightsUrl(e.fare.airport, e.depart, e.fare.back),
       target: '_blank',
       rel: 'noopener',
       title: `Friday to Monday return from ${home().city}; check it on Google Flights`,
     },
     words,
   );
-const after = (e: Festival): string[] => [
-  ` to ${e.airport_city}`,
-  e.airport_km !== null && e.airport_km > 30 ? `, then ${e.airport_km} km` : '',
-];
+// where the flight lands, and how far on the festival is: " to Aberdeen, then 199 km"
+const after = (e: Flown): string[] => [` to ${e.fare.airport_city}`, e.fare.km > 30 ? `, then ${e.fare.km} km` : ''];
+// every airport the festival can fly to, behind a button, while its flight is still to take
+const options = (e: Festival): Kid =>
+  e.options.length > 0 && !e.begun && e.phase === KEY.phase.AHEAD && e.fare?.home !== true
+    ? [' · ', flightsButton(e, today)]
+    : null;
 const cheap = (e: Flown) => within(e.fare.price, 'flight', 'cheap');
-// "✈ ~5 150 kr to Brussels, then 104 km": a Fri→Mon return from home to the nearest airport with prices, and how far
-// the festival is from it. The price links to Google Flights for that weekend.
+// "✈ ~5 150 kr to Brussels, then 104 km · Flights · 3": a Fri→Mon return from home to the best of the festival's
+// airports (fares.ts best), and how far the festival is from it; the price links to Google Flights for that weekend,
+// and Flights lists every airport it can fly to.
 function flight(e: Festival): HTMLElement {
   if (e.phase === KEY.phase.GONE) return h('p', { class: ['flight', 'muted'] }, text('listing', e.listing));
   if (e.begun) return h('p', { class: ['flight', 'muted'] }, `✈ ${STARTED}`);
   if (e.phase !== KEY.phase.AHEAD) return h('p', { class: ['flight', 'muted'] }, text('phase', e.phase));
   if (!e.airport) return h('p', { class: ['flight', 'muted'] }, `✈ too far from ${home().city} for our flight prices`);
   if (e.fare?.home === true) return h('p', { class: ['flight', 'easy'] }, `In ${home().city}, no flight needed`);
-  if (!flown(e)) return h('p', { class: ['flight', 'muted'] }, '✈ flight not checked yet');
+  if (!flown(e)) return h('p', { class: ['flight', 'muted'] }, '✈ flight not checked yet', options(e));
   return h(
     'p',
     { class: ['flight', cheap(e) && 'easy'] },
     '✈ ',
     flightLink(e, money(e.fare.price, 'EUR', { approx: true })),
     ...after(e),
+    options(e),
   );
 }
 
@@ -143,6 +150,7 @@ function prices(e: Festival): HTMLElement[] {
               ),
               ...after(e),
             ],
+      options(e),
     ),
   ];
 }

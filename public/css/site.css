@@ -2973,6 +2973,32 @@ html:has(dialog.peek[open]) {
   padding: 0.55rem 0;
   border-bottom: 1px solid var(--border);
 }
+/* a festival's flights: an airport a row, the card's marked by its edge */
+.peek-flights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.peek-flights li {
+  padding: 0.6rem 0 0.6rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  border-left: 3px solid transparent;
+}
+.peek-flights li.chosen {
+  border-left-color: var(--accent);
+}
+.peek-flights p {
+  margin: 0.1rem 0;
+}
+.flight-where {
+  overflow-wrap: anywhere;
+}
+.flight-fare {
+  font-size: 0.95rem;
+}
+.flights-btn {
+  white-space: nowrap;
+}
 .peek-foot {
   padding: 0.8rem 1.2rem 1rem;
   border-top: 1px solid var(--border);

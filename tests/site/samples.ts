@@ -1,4 +1,5 @@
 // Passes and tiers made for the tests, each with the fields a test does not set at a plain value.
+import type { Fare } from '../../site/fares.ts';
 import type { Pass, Tier } from '../../site/passes.ts';
 import { KEY } from '../../site/states.ts';
 
@@ -26,4 +27,16 @@ export const pass = (tiers: Tier[], k: Partial<Pass> = {}): Pass => ({
   includes_hotel: false,
   tiers,
   ...k,
+});
+
+// a festival's flight to Lisbon, 10 km on, at this price in euros, back on this day
+export const flownTo = (price: number, back: string): Fare => ({
+  home: false,
+  airport: 'LIS',
+  airport_city: 'Lisbon',
+  km: 10,
+  stops: null,
+  fetched: '2026-11-01',
+  price,
+  back,
 });
