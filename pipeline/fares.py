@@ -1,14 +1,22 @@
 """Fare store and refresh scheduler.
 
-pipeline/fares.csv       one row per (airport, Friday out): the price in EUR of the return NIGHTS later, and when it was
-                         fetched
-pipeline/fare_jobs.csv   one row per festival weekend (airport, Friday): when it was last searched
+pipeline/fares.csv       one row per (airport, Friday out): the price in EUR of the cheapest return NIGHTS later, its
+                         stops (out and back together), and when it was fetched
+pipeline/fare_jobs.csv   one row per festival weekend (airport, Friday): when it was last searched, and for an extra
+                         airport whether it has a direct flight that weekend
 
-Only festival weekends are searched: the Friday-to-Monday return from home to the airport of each upcoming festival,
-once per airport and weekend however many festivals share it. A weekend is due again after an interval that grows
-with how far away it is (WEEKS_APART), and it is searched on its own weekday, fixed by the airport and the date, so
-each day's run checks about a seventh of the weekends. A weekend that has never been searched, or is overdue by
-twice its interval, doesn't wait for its weekday. Weekends further ahead than Google sells (SELLS_DAYS) wait.
+Only festival weekends are searched: the Friday-to-Monday return from home to the airports of each upcoming festival
+(pipeline/airports.py: every airport within MAX_AIRPORT_KM of its city), once per airport and weekend however many
+festivals share it. A weekend is due again after an interval that grows with how far away it is (WEEKS_APART), and it
+is searched on its own weekday, fixed by the airport and the date, so each day's run checks about a seventh of the
+weekends. A weekend that has never been searched, or is overdue by twice its interval, doesn't wait for its weekday.
+Weekends further ahead than Google sells (SELLS_DAYS) wait.
+
+A festival's nearest airport is searched for any flight, at that interval. Its other airports (extras) are a way
+round the nearest, worth it only by a direct flight: they are searched for direct flights alone, EXTRA_SLOWER times
+less often, and after every weekend of the nearest airports that is due, within the run's budget. An extra that has no
+direct flight that weekend is marked so (fare_jobs.direct 0) and not searched again for it; an airport that is the
+nearest of any festival that weekend is searched as the nearest.
 
 Past weekends, and weekends no upcoming festival uses any more, leave both files. A weekend Google returns no price
 for is recorded as such, its old fare dropped, and tried again at its next interval. A search that gives no answer
@@ -39,7 +47,7 @@ from pydantic import BaseModel, ConfigDict, ValidationError
 from pipeline import airports, calls, export
 from pipeline.calls import Declined
 from pipeline.enums import CallCause, Listing
-from pipeline.records import Date, Fare, Job, Record, day_of, now
+from pipeline.records import Fare, Job, Record, day_of, now
 
 FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'  # punitarani/fli, the only place the version is pinned
 FLI = os.environ.get('FLI_CMD', f'uvx -q --from git+https://github.com/punitarani/fli@{FLI_SHA} fli')
@@ -47,6 +55,7 @@ NIGHTS = 3  # a weekend's flight is out on the Friday and back on the Monday, th
 SELLS_DAYS = 330  # Google sells about 11 months ahead
 # (days until the Friday, days between searches): weekly when it is close, every six weeks when it is far
 WEEKS_APART = [(35, 7), (91, 14), (182, 28), (SELLS_DAYS, 42)]
+EXTRA_SLOWER = 2  # an extra airport's weekend is searched this many times less often than a nearest airport's
 PAUSE = 10  # seconds between searches; Google refuses after about 20 searches 5 seconds apart
 RETRY_AFTER = 60  # seconds to wait before trying a refused search once more
 TIMEOUT = 300  # seconds a search may take
@@ -68,11 +77,13 @@ class Fli(BaseModel):
     model_config = ConfigDict(extra='ignore', frozen=True)
 
 
-class FliDate(Fli):
+class FliTrip(Fli):
+    """A return trip of fli's flights search: its price for both ways (Google puts it on the way out), and their stops
+    together."""
+
     price: float | None = None
-    departure_date: Date | None = None
-    return_date: Date | None = None
     currency: str = 'EUR'  # the one asked for, in which a Fare's price is
+    stops: int | None = None
 
 
 class FliError(Fli):
@@ -81,7 +92,7 @@ class FliError(Fli):
 
 class FliAnswer(Fli):
     success: bool = False
-    dates: tuple[FliDate, ...] = ()
+    flights: tuple[FliTrip, ...] = ()
     error: FliError | None = None
 
 
@@ -92,6 +103,7 @@ class Weekend:
 
     airport: str
     friday: dt.date
+    nearest: bool  # the nearest airport of a festival that weekend; else an extra, searched for direct flights alone
     days_away: int
     every: int | None  # None: further ahead than Google sells
     age: float | None  # in days; None when it was never searched
@@ -112,9 +124,9 @@ class Listed(Record):
 
 
 @functools.cache
-def weekends(today: dt.date) -> set[tuple[str, dt.date]]:
-    """(airport, Friday) of every festival still listed and not cancelled, a trip to which leaves after today, to an
-    airport other than home (pipeline/airports.py)."""
+def weekends(today: dt.date) -> dict[tuple[str, dt.date], bool]:
+    """(airport, Friday) of every festival still listed and not cancelled, a trip to which leaves after today, to each
+    of its airports other than home (pipeline/airports.py), and whether it is the nearest of any festival then."""
     with export.opened('ro') as db:
         listed = db.rows(
             Listed,
@@ -123,16 +135,21 @@ def weekends(today: dt.date) -> set[tuple[str, dt.date]]:
             (Listing.LISTED,),
         )
     geo, to, home = airports.places(), airports.known(), airports.home()
-    out: set[tuple[str, dt.date]] = set()
+    out: dict[tuple[str, dt.date], bool] = {}
     for e in listed:
         friday = airports.weekend_friday(day_of(e.start_date))
-        if (p := airports.placed(e.city, e.country, geo, to)) and p.airport and p.airport != home and friday > today:
-            out.add((p.airport, friday))
+        p = airports.placed(e.city, e.country, geo, to)
+        if p is None or friday <= today or p.airport == home:
+            continue  # a festival flown to from home needs no flight
+        for i, c in enumerate(p.candidates):
+            if c.airport != home:
+                out[(c.airport, friday)] = out.get((c.airport, friday), False) or i == 0
     return out
 
 
-def interval(days_away: int) -> int | None:
-    return next((every for until, every in WEEKS_APART if days_away <= until), None)
+def interval(days_away: int, *, nearest: bool = True) -> int | None:
+    every = next((every for until, every in WEEKS_APART if days_away <= until), None)
+    return every if every is None or nearest else every * EXTRA_SLOWER
 
 
 def weekday_of(airport: str, friday: dt.date) -> int:
@@ -141,28 +158,33 @@ def weekday_of(airport: str, friday: dt.date) -> int:
 
 
 def queue(t: dt.datetime | None = None) -> list[Weekend]:
-    """Every festival weekend with its interval and whether it is due today, the most overdue first."""
+    """Every festival weekend with its interval and whether it is due today: the nearest airports' due first, the most
+    overdue first, then the extras'. An extra found to have no direct flight that weekend is in it no more."""
     t = t or now()
     today = t.date()
     jobs = {(j.airport, j.depart): j for j in Job.read()}
     q: list[Weekend] = []
-    for airport, friday in weekends(today):
-        days_away = (friday - today).days
-        every = interval(days_away)
+    for (airport, friday), nearest in weekends(today).items():
         job = jobs.get((airport, friday))
+        if not nearest and job is not None and job.direct is False:
+            continue
+        days_away = (friday - today).days
+        every = interval(days_away, nearest=nearest)
         last = job.last_run if job else None
         age = (t - last).total_seconds() / DAY if last is not None else None
         on_day = weekday_of(airport, friday) == today.weekday()
         due = every is not None and (age is None or (age >= every and on_day) or age >= 2 * every)
-        q.append(Weekend(airport, friday, days_away, every, age, due))
-    return sorted(q, key=lambda w: (not w.due, -w.overdue, w.friday, w.airport))
+        q.append(Weekend(airport, friday, nearest, days_away, every, age, due))
+    return sorted(q, key=lambda w: (not w.due, not w.nearest, -w.overdue, w.friday, w.airport))
 
 
-def search(airport: str, friday: dt.date) -> Fare | Missed | Declined:
-    """One Friday-to-Monday return: its fare, Google's answer that it has none, or why there is no answer (refused,
-    the one transient cause the run stops on)."""
-    day = friday.isoformat()
-    args = ['dates', airports.home(), airport, '--from', day, '--to', day, '-d', str(NIGHTS), '--round', '--friday']
+def search(airport: str, friday: dt.date, *, direct: bool = False) -> Fare | Missed | Declined:
+    """One Friday-to-Monday return, the cheapest (direct flights alone when asked): its fare and stops, Google's answer
+    that it has none, or why there is no answer (refused, the one transient cause the run stops on). fli searches the
+    cheapest way out, then its ways back (--top-n 1)."""
+    back = (friday + dt.timedelta(days=NIGHTS)).isoformat()
+    args = ['flights', airports.home(), airport, friday.isoformat(), '--return', back, '--sort', 'CHEAPEST']
+    args += ['--top-n', '1', *(['--stops', 'NON_STOP'] if direct else [])]
     cmd = [*shlex.split(FLI), *args, '--currency', 'EUR', '--format', 'json']
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=TIMEOUT, check=False)  # noqa: S603 (fli, pinned in FLI, with arguments of ours)
@@ -179,16 +201,15 @@ def search(airport: str, friday: dt.date) -> Fare | Missed | Declined:
 
 
 def fare_in(d: FliAnswer, airport: str, friday: dt.date) -> Fare | Missed | Declined:
-    """The fare fli's answer gives for the weekend: none, when Google has no price; refused, when it is not the
-    return asked for (NIGHTS later, in EUR)."""
-    x = next((x for x in d.dates if x.price and x.departure_date == friday), None)
-    if not d.success or not x or x.price is None or x.return_date is None:
+    """The cheapest return fli's answer gives for the weekend, with its stops: none, when Google has no price (or no
+    flight of those asked for); refused, when it is not in the EUR asked."""
+    priced = [x for x in d.flights if x.price]
+    if not d.success or not priced:
         return Missed((d.error.message if d.error else '')[:NOTE_LENGTH])
+    x = min(priced, key=lambda x: x.price or 0)
     if x.currency != 'EUR':
         return Declined(CallCause.STRUCTURAL, f'fli gave a price in {x.currency}, not the EUR it was asked')
-    if x.return_date != friday + dt.timedelta(days=NIGHTS):
-        return Declined(CallCause.STRUCTURAL, f'fli gave a return on {x.return_date}, not {NIGHTS} nights later')
-    return Fare(airport=airport, depart=friday, price=round(x.price), fetched_at=now())
+    return Fare(airport=airport, depart=friday, price=round(x.price or 0), fetched_at=now(), stops=x.stops)
 
 
 def refresh(budget: int, max_seconds: int) -> None:
@@ -203,11 +224,12 @@ def refresh(budget: int, max_seconds: int) -> None:
     for item in queue():
         if not item.due or done >= budget or time.time() - start > max_seconds:
             break
-        found = search(item.airport, item.friday)
+        direct = not item.nearest
+        found = search(item.airport, item.friday, direct=direct)
         if isinstance(found, Declined) and found.why == REFUSED:
             time.sleep(RETRY_AFTER)
-            found = search(item.airport, item.friday)
-        where = f'{item.airport} {item.friday}'
+            found = search(item.airport, item.friday, direct=direct)
+        where = f'{item.airport} {item.friday}{"" if item.nearest else " direct"}'
         match found:
             case Declined():
                 print(f'{where} ({item.days_away} days away): no answer: {found.why}', flush=True)
@@ -217,12 +239,17 @@ def refresh(budget: int, max_seconds: int) -> None:
                 continue
             case Fare():
                 fares[(found.airport, found.depart)] = found
-                said = f'{found.price} EUR'
+                said = f'{found.price} EUR, {found.stops} stops'
             case Missed(note):
                 _ = fares.pop((item.airport, item.friday), None)
-                said = f'no price {note}'
+                said = f'no price {note}' if item.nearest else 'no direct flight: not searched again for this weekend'
         print(f'{where} ({item.days_away} days away): {said}', flush=True)
-        jobs[(item.airport, item.friday)] = Job(airport=item.airport, depart=item.friday, last_run=now())
+        jobs[(item.airport, item.friday)] = Job(
+            airport=item.airport,
+            depart=item.friday,
+            last_run=now(),
+            direct=None if item.nearest else isinstance(found, Fare),
+        )
         save(fares, jobs)
         done += 1
         time.sleep(PAUSE)
@@ -244,7 +271,8 @@ def plan() -> None:
     print(f'{len(due)} of {len(q)} festival weekends due today')
     for x in due:
         seen = f'searched {x.age:.0f} days ago' if x.age is not None else 'never searched'
-        print(f'{x.airport} {x.friday}: {x.days_away} days away, every {x.every} days, {seen}')
+        kind = '' if x.nearest else ', direct flights'
+        print(f'{x.airport} {x.friday}: {x.days_away} days away, every {x.every} days{kind}, {seen}')
 
 
 class Args(argparse.Namespace):

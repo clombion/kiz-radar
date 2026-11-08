@@ -58,9 +58,19 @@ failed, and run what the commit job runs (`mise run load`, `mise run resolve`) b
 
 ## Fares
 
-Only festival weekends are searched: the Friday-to-Monday return from home to each upcoming festival's airport, one
-search per airport and weekend. Home is the airport marked `home` in `pipeline/airports.csv`; a festival's airport is
-the nearest within 250 km.
+Only festival weekends are searched: the Friday-to-Monday return from home to each upcoming festival's airports, one
+search per airport and weekend, the cheapest return with its stops (`fli flights`, the cheapest way out and its ways
+back). Home is the airport marked `home` in `pipeline/airports.csv`; a festival's airports are every one within 250 km
+of its city. Its nearest is searched for any flight, on the intervals below. The others are worth it only by a direct
+flight: they are searched for direct flights alone, half as often (`EXTRA_SLOWER`), and only after every nearest
+airport's weekend due that day, within the run's 20 searches. One with no direct flight that weekend is marked so
+(`fare_jobs.csv` `direct` 0) and not searched again for it, unless it becomes a festival's nearest. `fares.csv` keeps
+each fare's `stops`, empty for those found before stops were asked.
+
+To add the airports festivals to come can fly to, download OurAirports' `airports.csv` (ourairports.com/data, public
+domain) and run `mise run airports -- <its path>`: it adds every large or medium airport with scheduled service and an
+IATA code within 250 km of a festival to come that `airports.csv` has not, from OurAirports' own name, city, country and
+place, and names each; then `mise run build:data`.
 
 | Festival weekend | Searched every |
 | -- | -- |

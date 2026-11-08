@@ -17,6 +17,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `load` | Load the saved answers and ticket reads into the export |
 | `resolve` | Resolve the export's artist mentions into artists, with stable ids |
 | `suggest-merges` | List likely duplicate artists for review (pipeline/artist_merge_suggestions.csv) |
+| `airports` | Add to pipeline/airports.csv every airport with scheduled service within 250 km of a festival to come, from OurAirports' airports.csv (ourairports.com/data), downloaded: mise run airports -- <its path> |
 | `geocode` | Place the export's cities on the map with OpenStreetMap Nominatim |
 | `rates` | The euro's exchange rates from the European Central Bank |
 | `fares` | Search and keep the festival weekends' return fares |

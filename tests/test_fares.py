@@ -4,6 +4,7 @@ import datetime as dt
 import subprocess
 from collections.abc import Callable, Sequence
 from pathlib import Path
+from typing import Protocol
 
 import pytest
 
@@ -40,8 +41,8 @@ def test_weekdays_spread_over_the_week() -> None:
     assert max(days.count(d) for d in range(7)) < 25
 
 
-def one_weekend(today: dt.date) -> set[tuple[str, dt.date]]:
-    return {('GLA', FRIDAY)}
+def one_weekend(today: dt.date) -> dict[tuple[str, dt.date], bool]:
+    return {('GLA', FRIDAY): True}
 
 
 def run_queue(
@@ -80,55 +81,44 @@ def ran(cmd: list[str], capture_output: bool, text: bool, timeout: float, check:
     assert (capture_output, text, timeout, check) == (True, True, fares.TIMEOUT, False), cmd
 
 
-def fli(stdout: str, stderr: str = '') -> Run:
-    """subprocess.run, as fli answers a search for GLA on FRIDAY: these words on its outputs; asked anything else,
-    the test fails."""
+def fli(stdout: str, stderr: str = '', *, direct: bool = False) -> Run:
+    """subprocess.run, as fli answers a search for the cheapest return from home to GLA on FRIDAY, back NIGHTS later
+    (direct flights alone when direct): these words on its outputs; asked anything else, the test fails."""
 
     def run(
         cmd: list[str], *, capture_output: bool, text: bool, timeout: float, check: bool
     ) -> subprocess.CompletedProcess[str]:
         ran(cmd, capture_output, text, timeout, check)
-        day = FRIDAY.isoformat()
-        assert cmd[cmd.index('dates') + 2 :][:9] == [
-            'GLA',
-            '--from',
-            day,
-            '--to',
-            day,
-            '-d',
-            str(fares.NIGHTS),
-            '--round',
-            '--friday',
-        ]
+        back = (FRIDAY + dt.timedelta(days=fares.NIGHTS)).isoformat()
+        asked = ['GLA', FRIDAY.isoformat(), '--return', back, '--sort', 'CHEAPEST', '--top-n', '1']
+        assert cmd[cmd.index('flights') + 2 :][:-4] == asked + (['--stops', 'NON_STOP'] if direct else [])
         assert cmd[-4:] == ['--currency', 'EUR', '--format', 'json']
         return subprocess.CompletedProcess(cmd, 0, stdout, stderr)
 
     return run
 
 
-PRICED = '{"success": true, "dates": [{"price": 123.4, "departure_date": "2026-11-06", "return_date": "2026-11-09"}]}'
+# fli's flights answer, as its serializer writes a return trip: the price on it, the stops out and back together
+TRIP = '{"price": 123.4, "currency": "EUR", "duration": 300, "stops": 1, "outbound": {}, "return": {}}'
+DIRECT = '{"price": 150, "currency": "EUR", "duration": 240, "stops": 0, "outbound": {}, "return": {}}'
+PRICED = f'{{"success": true, "flights": [{DIRECT}, {TRIP}]}}'
 
 
 @pytest.mark.parametrize(
     ('stdout', 'stderr', 'expected'),
     [
-        (f'searching…\n{PRICED}', '', ('priced', 123)),
+        (f'searching…\n{PRICED}', '', ('priced', (123, 1))),
         ('{"success": false, "error": {"message": "no flights"}}', '', ('no price', 'no flights')),
+        ('{"success": true, "flights": []}', '', ('no price', '')),
         ('', 'Traceback…\nHTTP 429 Too Many Requests', (CallCause.TRANSIENT, fares.REFUSED)),
         ('not json', 'it broke\nfor good', (CallCause.TRANSIENT, 'fli wrote no answer: for good')),
-        ('{"success": true, "dates": [{"price": 99, "departure_date": "2026-11-13"}]}', '', ('no price', '')),
         (
-            PRICED.replace('"return_date"', '"currency": "SEK", "return_date"'),
+            PRICED.replace('"EUR"', '"SEK"'),
             '',
             (CallCause.STRUCTURAL, 'fli gave a price in SEK, not the EUR it was asked'),
         ),
-        (
-            PRICED.replace('2026-11-09', '2026-11-08'),
-            '',
-            (CallCause.STRUCTURAL, f'fli gave a return on 2026-11-08, not {fares.NIGHTS} nights later'),
-        ),
     ],
-    ids=['priced', 'no flights', 'refused', 'no answer', 'another friday only', 'another currency', 'another return'],
+    ids=['priced, the cheaper', 'no flights', 'none found', 'refused', 'no answer', 'another currency'],
 )
 def test_a_search_reads_fli_s_answer(
     stdout: str, stderr: str, expected: tuple[str, object], monkeypatch: pytest.MonkeyPatch
@@ -137,7 +127,7 @@ def test_a_search_reads_fli_s_answer(
     found = fares.search('GLA', FRIDAY)
     match found:
         case fares.Fare():
-            got: tuple[str, object] = ('priced', found.price)
+            got: tuple[str, object] = ('priced', (found.price, found.stops))
         case fares.Missed():
             got = ('no price', found.note)
         case Declined():
@@ -172,18 +162,22 @@ def weekends(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     return tmp_path
 
 
-def two_weekends(_: dt.date) -> set[tuple[str, dt.date]]:
-    return {('GLA', SOON), ('LIS', SOON)}
+def two_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
+    return {('GLA', SOON): True, ('LIS', SOON): True}
 
 
 type Searched = fares.Fare | fares.Missed | Declined
 
 
-def searched(found: dict[str, Searched]) -> Callable[[str, dt.date], Searched]:
+class Search(Protocol):
+    def __call__(self, airport: str, friday: dt.date, *, direct: bool) -> Searched: ...
+
+
+def searched(found: dict[str, Searched]) -> Search:
     """fares.search, as it answers for each airport the weekend two_weekends gives; asked another, the test fails."""
 
-    def search(airport: str, friday: dt.date) -> Searched:
-        assert friday == SOON
+    def search(airport: str, friday: dt.date, *, direct: bool) -> Searched:
+        assert (friday, direct) == (SOON, False)
         return found[airport]
 
     return search
@@ -216,7 +210,7 @@ def test_a_refused_search_is_tried_once_more_then_the_rest_waits(
 ) -> None:
     tries: list[str] = []
 
-    def refused(airport: str, friday: dt.date) -> Declined:
+    def refused(airport: str, friday: dt.date, *, direct: bool) -> Declined:
         assert friday == SOON
         tries.append(airport)
         return Declined(CallCause.TRANSIENT, fares.REFUSED)
@@ -235,7 +229,7 @@ class KilledError(Exception):
 def test_a_run_stopped_half_way_keeps_the_fares_it_found(weekends: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     found: list[str] = []
 
-    def search(airport: str, friday: dt.date) -> fares.Fare:
+    def search(airport: str, friday: dt.date, *, direct: bool) -> fares.Fare:
         if found:
             raise KilledError
         found.append(airport)
@@ -270,3 +264,56 @@ def test_the_plan_lists_the_weekends_due(weekends: Path, capsys: pytest.CaptureF
     out = capsys.readouterr().out
     assert out.startswith('2 of 2 festival weekends due today\n')
     assert f'GLA {SOON}: 10 days away, every 7 days, never searched' in out
+
+
+# ----- a festival's other airports -----
+def three_airports(_: dt.date) -> dict[tuple[str, dt.date], bool]:
+    """Glasgow's weekend: GLA its nearest, PIK and ABZ beside it; and Lisbon's, LIS its nearest."""
+    return {('GLA', SOON): True, ('PIK', SOON): False, ('ABZ', SOON): False, ('LIS', SOON): True}
+
+
+def aberdeen_nearest(_: dt.date) -> dict[tuple[str, dt.date], bool]:
+    """ABZ the nearest airport of a festival that weekend."""
+    return {('ABZ', SOON): True}
+
+
+def test_the_other_airports_are_searched_less_often_and_after_every_nearest_due(
+    weekends: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    assert [fares.interval(d, nearest=False) for d in (4, 36, 120, 200, 331)] == [14, 28, 56, 84, None]
+    monkeypatch.setattr(fares, 'weekends', three_airports)
+    asked: list[tuple[str, bool]] = []
+
+    def search(airport: str, friday: dt.date, *, direct: bool) -> Searched:
+        asked.append((airport, direct))
+        return fares.Fare(airport=airport, depart=friday, price=90, fetched_at=AT, stops=0)
+
+    monkeypatch.setattr(fares, 'search', search)
+    fares.refresh(budget=3, max_seconds=60)
+    # the two nearest first, then one extra, for direct flights alone, within the budget of three
+    assert asked == [('GLA', False), ('LIS', False), ('ABZ', True)]
+    assert {j.airport: j.direct for j in fares.Job.read()} == {'GLA': None, 'LIS': None, 'ABZ': True}
+
+
+def test_an_other_airport_with_no_direct_flight_is_not_searched_again_for_that_weekend(
+    weekends: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(fares, 'weekends', three_airports)
+
+    def search(airport: str, friday: dt.date, *, direct: bool) -> Searched:
+        return fares.Missed('' if direct else 'no flights')
+
+    monkeypatch.setattr(fares, 'search', search)
+    fares.refresh(budget=9, max_seconds=60)
+    assert {j.airport: j.direct for j in fares.Job.read()} == {'GLA': None, 'LIS': None, 'ABZ': False, 'PIK': False}
+    later = now() + dt.timedelta(days=60)  # every weekend due again by then
+    assert {w.airport for w in fares.queue(later)} == {'GLA', 'LIS'}
+    # an airport that becomes a festival's nearest is searched again, for any flight
+    monkeypatch.setattr(fares, 'weekends', aberdeen_nearest)
+    assert [(w.airport, w.nearest) for w in fares.queue(later)] == [('ABZ', True)]
+
+
+def test_an_other_airport_is_searched_for_direct_flights_alone(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(subprocess, 'run', fli(PRICED, direct=True))
+    found = fares.search('GLA', FRIDAY, direct=True)
+    assert isinstance(found, fares.Fare)

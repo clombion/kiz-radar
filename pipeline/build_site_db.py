@@ -34,6 +34,7 @@ from pipeline.extract import resolve_artists
 from pipeline.records import (
     Community,
     Fare,
+    Job,
     Membership,
     Person,
     PlanRow,
@@ -237,6 +238,23 @@ create table fares (
     return text not null,
     price real not null,
     fetched_at text not null,
+    stops integer check (stops >= 0),   -- out and back together; null when not known
+    primary key (airport, depart)
+) strict, without rowid;
+-- every airport a festival can fly to, within max_airport_km of its city, and how far: its nearest is events.airport
+create table event_airports (
+    event_id integer not null references events(id) deferrable initially deferred,
+    airport text not null references airports(code) deferrable initially deferred,
+    km integer not null check (km >= 0),
+    primary key (event_id, airport)
+) strict, without rowid;
+-- when each festival weekend was last searched (pipeline/fare_jobs.csv), and for an airport beside a festival's
+-- nearest whether it has a direct flight then (0: none, so it is not searched again for that weekend)
+create table fare_jobs (
+    airport text not null,
+    depart text not null,
+    last_run text not null,
+    direct integer check (direct in (0, 1)),
     primary key (airport, depart)
 ) strict, without rowid;
 create table artist_origin (
@@ -682,8 +700,10 @@ def places(x: Transaction) -> None:
            from src.events e join src.event_display d on d.event_id = e.id""",
     )
     rows: list[Mapping[str, object]] = []
+    near: list[Mapping[str, object]] = []
     for e in listed:
         p = airports.placed(e.city, e.country, geo, to)
+        near += [{'event_id': e.id, 'airport': c.airport, 'km': c.km} for c in (p.candidates if p else ())]
         start = day_of(e.start_date)
         rows.append(
             e.model_dump()
@@ -699,6 +719,7 @@ def places(x: Transaction) -> None:
             }
         )
     x.insert('events', rows)
+    x.insert('event_airports', near)
 
 
 def fares(x: Transaction) -> None:
@@ -708,9 +729,14 @@ def fares(x: Transaction) -> None:
     x.insert(
         'fares',
         (
-            r.model_dump(mode='json') | {'return': (r.depart + back).isoformat(), 'price': float(r.price)}
+            r.model_dump(mode='json')
+            | {'return': (r.depart + back).isoformat(), 'price': float(r.price), 'stops': r.stops}
             for r in Fare.read()
         ),
+    )
+    x.insert(
+        'fare_jobs',
+        (r.model_dump(mode='json') | {'direct': None if r.direct is None else int(r.direct)} for r in Job.read()),
     )
 
 
@@ -1324,10 +1350,17 @@ DOCS = {
     'since the source flags it only for events still listed as upcoming), listing (gone: no longer listed, kept for '
     'the plans and links to it). Added: country_code, lat/lon (OpenStreetMap geocode of the city), airport (nearest '
     'in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
-    'airports': 'Airports a festival can fly to, with the city they serve; a festival flies to the nearest within '
-    'max_airport_km. home = 1 is where flights leave from.',
+    'airports': 'Airports a festival can fly to, with the city they serve; a festival can fly to any within '
+    'max_airport_km (event_airports), the nearest first. home = 1 is where flights leave from.',
     'fares': 'Round-trip economy fares from the home airport (airports.home = 1), one adult, Friday out (depart) and '
-    'Monday back (return), in euros, from Google Flights via fli.',
+    'Monday back (return), in euros, the cheapest Google Flights had (via fli), with its stops out and back together '
+    '(null when not known); to an airport beside a festival\u2019s nearest, direct flights alone (stops 0).',
+    'event_airports': 'Every airport within max_airport_km of each festival\u2019s city (its candidates), with km '
+    'from the city; events.airport is the nearest. The site shows each with its fare (a festival\u2019s Flights) and '
+    'flies to the best (site/fares.ts).',
+    'fare_jobs': 'When each festival weekend (airport, depart) was last searched (pipeline/fare_jobs.csv), and, for an '
+    'airport beside a festival\u2019s nearest, whether it has a direct flight then (direct 0: none, not searched '
+    'again).',
     'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest '
     'fare that month to the same airport.',
     'artist_stats': 'Per artist with bookings of their own: bookings (as '

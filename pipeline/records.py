@@ -1309,6 +1309,9 @@ class Place(CsvRow):
         return out | dict(zip(('lat', 'lon', 'osm_name'), coords, strict=True))
 
 
+Stops = Annotated[int, Field(ge=0)]  # the stops a flight makes, 0 when it is direct
+
+
 class Fare(CsvRow):
     """A weekend's return flight from home: out on the Friday, back fares.NIGHTS later; its price in whole euros, the
     currency fares asks fli for."""
@@ -1319,17 +1322,20 @@ class Fare(CsvRow):
     depart: Date
     price: Count
     fetched_at: Stamp
+    stops: Blank[Stops] = None  # out and back together; none when not known (a fare found before stops were asked)
 
 
 class Job(CsvRow):
     """When a festival weekend was last searched; how it went is in pipeline/fares.csv, which has its fare when the
-    search found one."""
+    search found one. direct is said of a search for direct flights alone (an airport a festival could fly to beside
+    its nearest): 0 when it found none, so it is not searched again for that weekend; empty for the nearest's."""
 
     FILE = 'pipeline/fare_jobs.csv'
 
     airport: Iata
     depart: Date
     last_run: Stamp
+    direct: Blank[Flag] = None
 
 
 class Spent(CsvRow):

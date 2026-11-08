@@ -47,6 +47,7 @@ its answers on as a patch; a later failure leaves the paid work in the run's art
 | line-ups, highlights, rooms, genres, pass prices | Claude's answers to each description | ours |
 | prices on ticket pages | the pages' rows, applied by a first read | ours |
 | fares | Google Flights, through fli | ours |
+| airports | `pipeline/airports.csv`; those added are OurAirports' (`mise run airports`) | public domain |
 | exchange rates | the European Central Bank | — |
 | cities' places | OpenStreetMap Nominatim, cached in `pipeline/geocode.csv` | ODbL |
 | artist merges, homes, bookings, site overrides | claims ([Claims](claims.md)) | ours |
