@@ -2,8 +2,10 @@
 // travel and stays are alike; what each line is called. The cases of twenty people, then the laws any roster keeps,
 // over rosters drawn at random (from a fixed seed).
 import { describe, expect, it } from 'vitest';
+import { moment, stamp } from '../../site/calendar.ts';
 import {
   byPlace,
+  type End,
   type Flights,
   type Goes,
   type Line,
@@ -13,12 +15,13 @@ import {
   type Stay,
 } from '../../site/roster.ts';
 
+// an end of a travel, said as the database writes it, at an airport
+const end = (when: string | null, airport: string | null): End | null =>
+  when === null ? null : { at: moment(when), airport };
 // how someone flies, in and out, each end said or not, from and to one airport
 const F = (arrive: string | null, leave: string | null, at = 'OSL'): Flights => ({
-  arrive,
-  arrive_at: arrive === null ? null : at,
-  leave,
-  leave_from: leave === null ? null : at,
+  arrive: end(arrive, at),
+  leave: end(leave, at),
 });
 // a stay of every night of KUOF's days, Thursday to Sunday
 const all = (place: string): Stay[] => [{ first: '2026-11-19', last: '2026-11-22', place }];
@@ -109,7 +112,9 @@ const shown = (lines: readonly Line<string>[]) =>
         ? l.nights === null
           ? 'not said'
           : 'stays only'
-        : `${l.travel.arrive?.slice(8) ?? '?'} ${l.travel.arrive_at ?? ''} → ${l.travel.leave?.slice(8) ?? '?'}`;
+        : `${l.travel.arrive ? stamp(l.travel.arrive.at).slice(8) : '?'} ${l.travel.arrive?.airport ?? ''} → ${
+            l.travel.leave ? stamp(l.travel.leave.at).slice(8) : '?'
+          }`;
     return `${l.called ?? l.units.map((u) => u.name).join(', ')} [${l.people}] ${t} | ${l.buckets
       .map((b) => `${b.place ?? 'not said'} ${b.people}`)
       .join(' · ')}`;
@@ -335,10 +340,8 @@ function drawn(seed: number): Goes<string>[] {
       said < 0.15
         ? null
         : {
-            arrive: pick(ARRIVALS) ?? null,
-            arrive_at: pick(['OSL', 'TRF']) ?? null,
-            leave: pick(DEPARTURES) ?? null,
-            leave_from: 'OSL',
+            arrive: end(pick(ARRIVALS) ?? null, pick(['OSL', 'TRF']) ?? null),
+            leave: end(pick(DEPARTURES) ?? null, 'OSL'),
           };
     return {
       person: `p${i}`,
@@ -410,7 +413,11 @@ describe('the laws of any roster', () => {
           : l.called === 'Everyone else'
             ? 2
             : 1;
-    const at = (l: Line<string>) => [l.travel?.arrive ?? '~', l.travel?.leave ?? '~', l.units[0]?.name ?? ''];
+    const at = (l: Line<string>) => [
+      l.travel?.arrive ? stamp(l.travel.arrive.at) : '~',
+      l.travel?.leave ? stamp(l.travel.leave.at) : '~',
+      l.units[0]?.name ?? '',
+    ];
     for (const seed of SEEDS) {
       const lines = roster(drawn(seed));
       const ranks = lines.map(rank);
@@ -442,13 +449,13 @@ describe('the laws of any roster', () => {
 });
 
 // ----- the same people by where they stay -----
-// a place line as a sentence: the place, its people (or what they are called), its nights and those all share
+// a place line as a sentence: the place, its people (or what they are called) and its nights
 const placed = (places: readonly Place<string>[]) =>
   places.map(
     (p) =>
       `${p.place ?? 'no place'} [${p.people}] ${p.called ?? p.units.map((u) => u.name).join(', ')}${
         p.nights === null ? '' : ` ${p.nights.first.slice(8)}–${p.nights.last.slice(8)}`
-      }${p.shared === null ? '' : ` all ${p.shared.first.slice(8)}–${p.shared.last.slice(8)}`}`,
+      }`,
   );
 // each person's nights, as person|night
 const nightsOf = (person: string, first: string, last: string) => {
@@ -460,21 +467,15 @@ const nightsOf = (person: string, first: string, last: string) => {
 
 describe('by where they stay', () => {
   it('a line a place, the most people first; someone moving on each, for their nights; no place said last', () => {
-    expect(placed(byPlace(CASES['6']))).toEqual([
-      'Scandic Holberg [20] 20 people 19–22 all 20–22',
-      'Airbnb [1] Tonje 19–19 all 19–19',
-    ]);
+    expect(placed(byPlace(CASES['6']))).toEqual(['Scandic Holberg [20] 20 people 19–22', 'Airbnb [1] Tonje 19–19']);
     expect(placed(byPlace(CASES['7']))).toEqual([
-      'Scandic Holberg [8] 8 people 19–22 all 19–22',
-      'Comfort Xpress [6] 6 people 19–22 all 19–22',
-      'Radisson Blu [4] 4 people 19–22 all 19–22',
-      'Airbnb [2] Hanna, Lise 19–22 all 19–22',
+      'Scandic Holberg [8] 8 people 19–22',
+      'Comfort Xpress [6] 6 people 19–22',
+      'Radisson Blu [4] 4 people 19–22',
+      'Airbnb [2] Hanna, Lise 19–22',
     ]);
     // a couple at one place on the same nights is one unit; three or fewer named, more by number
-    expect(placed(byPlace(CASES['15']))).toEqual([
-      'Scandic Holberg [4] 4 people 19–22 all 19–22',
-      'no place [16] 16 people',
-    ]);
+    expect(placed(byPlace(CASES['15']))).toEqual(['Scandic Holberg [4] 4 people 19–22', 'no place [16] 16 people']);
   });
 
   it('each one’s own nights at a place, when not all of its nights: Tonje at the Airbnb all its nights, Nora not', () => {
@@ -498,14 +499,12 @@ describe('by where they stay', () => {
         p.stays.flatMap((s) => nightsOf(`${p.place}|${s.person}`, s.first, s.last)),
       );
       expect(sorted(drawnNights)).toEqual(sorted(said));
-      // a place's nights are from its first night to its last, and those all share are each one's
+      // a place's nights are from its first night to its last
       for (const p of places.filter((x) => x.place !== null)) {
         expect(p.nights).toEqual({
           first: sorted(p.stays.map((s) => s.first))[0],
           last: sorted(p.stays.map((s) => s.last)).at(-1),
         });
-        const { shared } = p;
-        expect(p.stays.every((s) => shared === null || (s.first <= shared.first && s.last >= shared.last))).toBe(true);
       }
       // each line's people are those with nights there, its count theirs
       for (const p of places) expect(p.people).toBe(p.units.reduce((n, u) => n + u.people.length, 0));
@@ -517,5 +516,20 @@ describe('by where they stay', () => {
       );
       expect(places.findIndex((p) => p.place === null)).toBe(none === undefined ? -1 : places.length - 1);
     }
+  });
+});
+
+// An airport goes with its end's time, and a place's nights with its place: neither type holds one without the other,
+// as a travel and a place were once read with each part apart.
+describe('the types', () => {
+  it('hold no airport without its time, and no nights without their place', () => {
+    const asWritten = { arrive: '2026-11-19', arrive_at: 'OSL', leave: null, leave_from: null };
+    // @ts-expect-error an end is read once into when it is and its airport, never left as the database's text
+    const flown: Flights = asWritten;
+    const placeless = { place: null, nights: { first: '2026-11-19', last: '2026-11-22' }, shared: null };
+    const said = { ...placeless, units: [], people: 0, stays: [], called: null };
+    // @ts-expect-error those who said no place have no nights
+    const nowhere: Place<string> = said;
+    expect([flown, nowhere]).toHaveLength(2);
   });
 });

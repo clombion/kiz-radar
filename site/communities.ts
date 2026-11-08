@@ -28,7 +28,17 @@ import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
 import { couplesAmong, doingTag, type Goer, goersInline, namesOf } from './plans.ts';
-import { byPlace, type Flights, type Goes, type Line, type Place, roster, type Stay, type Unit } from './roster.ts';
+import {
+  byPlace,
+  type End,
+  type Flights,
+  type Goes,
+  type Line,
+  type Place,
+  roster,
+  type Stay,
+  type Unit,
+} from './roster.ts';
 import {
   artistHref,
   communityHref,
@@ -114,13 +124,16 @@ function communityOf(key: string): Community | null {
       booked_as: r.booked_as,
       artist: r.booked_as === null ? null : r.artist_id,
     });
-  for (const { event_id, key: who, ...flights } of q(
+  // each end read once, here, into when it is (moment) and its airport
+  const end = (when: string | null, airport: string | null): End | null =>
+    when === null ? null : { at: moment(when), airport };
+  for (const t of q(
     { event_id: num, ...TRAVEL },
     sql`SELECT t.event_id, p.key, t.arrive, t.arrive_at, t.leave, t.leave_from FROM travel t
     JOIN community_members m ON m.person_id = t.person_id JOIN people p ON p.id = t.person_id WHERE m.community_id = ?`,
     [c.id],
   ))
-    at(event_id).travel.set(who, flights);
+    at(t.event_id).travel.set(t.key, { arrive: end(t.arrive, t.arrive_at), leave: end(t.leave, t.leave_from) });
   for (const { event_id, key: who, ...stay } of q(
     { event_id: num, ...STAY },
     sql`SELECT s.event_id, p.key, s.first_night AS first, s.last_night AS last, s.place FROM stays s
@@ -141,14 +154,11 @@ function communityOf(key: string): Community | null {
 }
 
 // someone of the community away for a festival: a member, with how they travel and where they stay when they said,
-// or someone the manager added
-interface Present extends Away {
-  e: Festival;
-  goer: Goer | null;
-  added: Added | null;
-  travel: Flights | null;
-  stays: Stay[];
-}
+// or someone the manager added, who never says either
+type Present = Away & { e: Festival } & (
+    | { goer: Goer; added: null; travel: Flights | null; stays: Stay[] }
+    | { goer: null; added: Added; travel: null; stays: readonly [] }
+  );
 // a festival the community goes to: who of it goes, who is away for it from when to when, the days of the whole trip
 // (spanOf), and where it stands on the day: on, or ended, or else ahead
 interface Visit {
@@ -185,7 +195,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
           stays = f.stays.get(g.key) ?? [];
         const [first, last] = [stays[0], stays.at(-1)];
         const nights = first && last ? { first: first.first, last: last.last } : null;
-        const away = awayDays(e, { arrive: travel?.arrive ?? null, leave: travel?.leave ?? null, nights });
+        const away = awayDays(e, { arrive: travel?.arrive?.at ?? null, leave: travel?.leave?.at ?? null, nights });
         return { who: `member ${g.key}`, ...away, e, goer: g, added: null, travel, stays };
       }),
       ...f.added.map(
@@ -375,7 +385,7 @@ function chartOf({ e, aways }: Visit, c: Community, id: string): Kid[] {
     (a): Goes<Present> => ({
       person: a,
       key: a.who,
-      name: a.goer?.name ?? a.added?.name ?? '',
+      name: a.goer === null ? a.added.name : a.goer.name,
       couple: a.goer ? (couples.get(a.goer.person_id) ?? null) : null,
       travel: a.travel,
       stays: a.stays,
@@ -509,7 +519,7 @@ function inWords(l: Line<Present>): string {
   const flights =
     f === null
       ? ''
-      : ` ${ends(moment(f.arrive), f.arrive_at, 'arrive', 'in')}, ${ends(moment(f.leave), f.leave_from, 'leave', 'out')}`;
+      : ` ${ends(f.arrive?.at ?? null, f.arrive?.airport ?? null, 'arrive', 'in')}, ${ends(f.leave?.at ?? null, f.leave?.airport ?? null, 'leave', 'out')}`;
   const [only] = l.buckets;
   const stays =
     l.buckets.length === 1 && only
@@ -523,7 +533,7 @@ function inWords(l: Line<Present>): string {
 // A place of a roster by where they stay in words: the place, its nights, and who stays there; or who said none.
 function placeInWords(p: Place<Present>): string {
   const names = joinedText(p.units.map((u) => u.name));
-  if (p.place === null || p.nights === null) return `place not said: ${names}`;
+  if (p.place === null) return `place not said: ${names}`;
   const night = (d: string) => `${weekday3(d)} ${Number(d.slice(8))}`;
   return `${p.place}, the nights of ${night(p.nights.first)} to ${night(p.nights.last)}: ${names}`;
 }
@@ -608,19 +618,20 @@ function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): 
   if (on === undefined) return [h('p', { class: 'day-when' }, weekDay(day))]; // a day no one travels on opens nothing
   // each person once a festival: someone leaving one festival and arriving at another that day is at both
   const once = [...new Map(on.aways.map((a) => [`${a.who} ${a.e.id}`, a])).values()];
-  const flying = (when: 'arrive' | 'leave', where: 'arrive_at' | 'leave_from'): Kid[] => {
+  const flying = (when: 'arrive' | 'leave'): Kid[] => {
     const by = new Map<string, Goer[]>();
-    for (const a of once)
-      if (a.travel?.[when]?.startsWith(day) && a.goer) {
-        const time = moment(a.travel[when])?.time ?? null;
-        const at = time === null ? '(time not said)' : timeAt(time, a.travel[where]);
+    for (const a of once) {
+      const end = a.travel?.[when];
+      if (end?.at.day === day && a.goer) {
+        const at = end.at.time === null ? '(time not said)' : timeAt(end.at.time, end.airport);
         by.set(at, [...(by.get(at) ?? []), a.goer]);
       }
+    }
     return [...by].map(([at, goers]) => `${namesOf(goers).join(' & ')} ${at}`);
   };
-  const flyingIn = flying('arrive', 'arrive_at'),
-    flyingOut = flying('leave', 'leave_from');
-  const moving = (a: Present) => Boolean(a.travel?.arrive?.startsWith(day) || a.travel?.leave?.startsWith(day));
+  const flyingIn = flying('arrive'),
+    flyingOut = flying('leave');
+  const moving = (a: Present) => a.travel?.arrive?.at.day === day || a.travel?.leave?.at.day === day;
   const there = once.filter((a) => !moving(a));
   const title = `Added by ${manager.name}`;
   const stays = new Map<string, Goer[]>();

@@ -81,19 +81,23 @@ export function relativeDay(today: string, day: string): string | null {
 }
 
 // A moment of a travel (arrive, leave), as the site database holds it: its day, and its time ("HH:MM") when said. The
-// database writes YYYY-MM-DD or YYYY-MM-DDTHH:MM (records.Moment); this is the one place that reads which.
+// database writes YYYY-MM-DD or YYYY-MM-DDTHH:MM (records.Moment); moment is the one place that reads which, as a
+// travel is read from it (communities.ts), and stamp writes it back, for an order (a moment sorts as its text).
 export interface Moment {
   day: string;
   time: string | null;
 }
-export const moment = (text: string | null): Moment | null =>
-  text === null ? null : { day: text.slice(0, 10), time: text.length > 10 ? text.slice(11, 16) : null };
+export const moment = (text: string): Moment => ({
+  day: text.slice(0, 10),
+  time: text.length > 10 ? text.slice(11, 16) : null,
+});
+export const stamp = (m: Moment): string => (m.time === null ? m.day : `${m.day}T${m.time}`);
 
 // what someone said of how they go to a festival: when they arrive and leave, each when said, and the nights they
 // stay, from the first to the last (by their evenings' dates), when said
 export interface Said {
-  arrive: string | null;
-  leave: string | null;
+  arrive: Moment | null;
+  leave: Moment | null;
   nights: { first: string; last: string } | null;
 }
 // The days someone is away for a festival, the one rule the calendar and a trip's chart both read: from the day they
@@ -106,12 +110,8 @@ export const awayDays = (
   const first = said?.nights?.first,
     after = said?.nights ? addDays(said.nights.last, 1) : undefined;
   return {
-    from:
-      moment(said?.arrive ?? null)?.day ??
-      (first !== undefined && first < festival.start_date ? first : festival.start_date),
-    to:
-      moment(said?.leave ?? null)?.day ??
-      (after !== undefined && after > festival.end_date ? after : festival.end_date),
+    from: said?.arrive?.day ?? (first !== undefined && first < festival.start_date ? first : festival.start_date),
+    to: said?.leave?.day ?? (after !== undefined && after > festival.end_date ? after : festival.end_date),
   };
 };
 

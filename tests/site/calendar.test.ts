@@ -17,6 +17,7 @@ import {
   presence,
   relativeDay,
   spanOf,
+  stamp,
   weekday,
   weekday3,
   weeksOf,
@@ -24,6 +25,8 @@ import {
 import { list, nullable, type Reader, record, text } from '../../site/json.ts';
 
 const festival = (start_date: string, end_date: string) => ({ start_date, end_date });
+// a travel's end as the database writes it, read as the community's page reads it
+const endOf = (said: string | null) => (said === null ? null : moment(said));
 
 test('someone is away from the day they arrive to the day they leave, each end else their nights, else the festival’s', () => {
   const kuof = festival('2026-11-20', '2026-11-22');
@@ -32,8 +35,8 @@ test('someone is away from the day they arrive to the day they leave, each end e
     leave: string | null,
     nights: { first: string; last: string } | null = null,
   ) => ({
-    arrive,
-    leave,
+    arrive: endOf(arrive),
+    leave: endOf(leave),
     nights,
   });
   expect(awayDays(kuof, said('2026-11-19T21:05', '2026-11-23T09:30'))).toEqual({
@@ -58,11 +61,12 @@ test('someone is away from the day they arrive to the day they leave, each end e
 });
 
 test('a travel’s moment is its day, and its time when said', () => {
-  expect([moment('2026-11-19T21:05'), moment('2026-11-19'), moment(null)]).toEqual([
+  expect([moment('2026-11-19T21:05'), moment('2026-11-19')]).toEqual([
     { day: '2026-11-19', time: '21:05' },
     { day: '2026-11-19', time: null },
-    null,
   ]);
+  // and written back as it was, so that moments sort as their text
+  expect(['2026-11-19T21:05', '2026-11-19'].map((m) => stamp(moment(m)))).toEqual(['2026-11-19T21:05', '2026-11-19']);
 });
 
 test('a festival counts on each of its days, whatever weekdays: Wednesday to Tuesday, or a whole week', () => {
@@ -151,12 +155,13 @@ test('a month is its weeks from Monday, with the days of other months left empty
 });
 
 test('a time is so far into a trip’s days, its hour a share of its day, across a month', () => {
-  const at = (said: string) => moment(said) ?? { day: '', time: null };
-  expect(daysInto('2026-11-19', at('2026-11-19T00:00'))).toBe(0);
-  expect(daysInto('2026-11-19', at('2026-11-19T18:00'))).toBe(0.75);
-  expect(daysInto('2026-11-29', at('2026-12-01T12:00'))).toBe(2.5);
+  expect(daysInto('2026-11-19', moment('2026-11-19T00:00'))).toBe(0);
+  expect(daysInto('2026-11-19', moment('2026-11-19T18:00'))).toBe(0.75);
+  expect(daysInto('2026-11-29', moment('2026-12-01T12:00'))).toBe(2.5);
   // a day without its time: its start, or its end when it ends something (a departure)
-  expect([daysInto('2026-11-19', at('2026-11-20')), daysInto('2026-11-19', at('2026-11-20'), 'end')]).toEqual([1, 2]);
+  expect([daysInto('2026-11-19', moment('2026-11-20')), daysInto('2026-11-19', moment('2026-11-20'), 'end')]).toEqual([
+    1, 2,
+  ]);
 });
 
 test('a day is said from today: today, tomorrow, this weekday later in its week, and none further off', () => {
@@ -205,7 +210,10 @@ const END_CASES = record({
 })(JSON.parse(readFileSync(new URL('../trip-ends.json', import.meta.url), 'utf8')), 'trip-ends.json').cases;
 
 test.for(END_CASES)('a trip ends where the build says it does: $said', (c) => {
-  const away = c.people.map((p) => ({ key: p.key, ...awayDays(c.festival, p) }));
+  const away = c.people.map((p) => ({
+    key: p.key,
+    ...awayDays(c.festival, { arrive: endOf(p.arrive), leave: endOf(p.leave), nights: p.nights }),
+  }));
   // each member's, never before the festival's last day; the community's the last of them
   const later = (x: string, y: string) => [x, y].toSorted((a, b) => a.localeCompare(b))[1];
   for (const a of away) expect(later(a.to, c.festival.end_date)).toBe(c.ends[a.key]);

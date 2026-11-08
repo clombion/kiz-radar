@@ -18,7 +18,7 @@
 //
 // It is drawn for the eye: a screen reader hears its names, and a line no one sees says the rest in words.
 
-import { awayDays, daysInto, daysOf, type Moment, moment, WEEKDAYS, weekday, weekday3 } from './calendar.ts';
+import { awayDays, daysInto, daysOf, type Moment, WEEKDAYS, weekday, weekday3 } from './calendar.ts';
 import { addDays } from './days.ts';
 import { dismissable, WIDE } from './dismiss.ts';
 import { button, h, type Kid, toggle } from './dom.ts';
@@ -249,8 +249,8 @@ export function gantt<P>(
   // (else the festival's close, or the morning after their last night when later); hard at a time said, else fading
   const lane = (l: Line<P>, key: string): HTMLElement => {
     const f = l.travel;
-    const arrive = moment(f?.arrive ?? null),
-      leave = moment(f?.leave ?? null);
+    const arrive = f?.arrive?.at ?? null,
+      leave = f?.leave?.at ?? null;
     // an end not said where the calendar has it (awayDays): the festival's, or the line's nights when beyond it
     const away = awayDays(t.festival, { arrive: null, leave: null, nights: l.nights });
     const from = arrive === null ? d.at(away.from) : d.ends(arrive, 'start');
@@ -263,7 +263,10 @@ export function gantt<P>(
         key,
         fades: { in: arrive?.time == null, out: leave?.time == null },
         title: unsaid.length > 0 ? unsaid.join('; ') : null,
-        ends: [end(arrive?.time ?? null, f?.arrive_at ?? null), end(leave?.time ?? null, f?.leave_from ?? null)],
+        ends: [
+          end(arrive?.time ?? null, f?.arrive?.airport ?? null),
+          end(leave?.time ?? null, f?.leave?.airport ?? null),
+        ],
       }),
     );
   };

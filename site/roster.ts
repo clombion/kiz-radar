@@ -14,13 +14,18 @@
 // arrival; then "Everyone else"; and those who have not said at the very bottom, whatever they are called.
 //
 // The same people by where they stay (byPlace): a line a place, the most people first, those who said none last.
+import { type Moment, stamp } from './calendar.ts';
 
-// how someone travels, each end when they said it: arrive and leave as local times (YYYY-MM-DDTHH:MM), the airports
+// an end of a travel, when said: when (its day, and its time when said) and its airport, which goes with a time
+// (records.Travel)
+export interface End {
+  at: Moment;
+  airport: string | null;
+}
+// how someone travels, each end when they said it
 export interface Flights {
-  arrive: string | null;
-  arrive_at: string | null;
-  leave: string | null;
-  leave_from: string | null;
+  arrive: End | null;
+  leave: End | null;
 }
 // a stay: where, from a night to a night, each by its evening's date (YYYY-MM-DD)
 export interface Stay {
@@ -64,8 +69,9 @@ export interface Line<P> {
 
 const MANY = 3; // a roster of more units than this calls lines by number; a line of more people than this is called so
 
+const endKey = (e: End | null): string => (e === null ? '' : `${stamp(e.at)} ${e.airport ?? ''}`);
 const travelKey = (t: Flights | null): string =>
-  t === null ? '' : ['in', t.arrive, t.arrive_at, 'out', t.leave, t.leave_from].join('|');
+  t === null ? '' : ['in', endKey(t.arrive), 'out', endKey(t.leave)].join('|');
 const staysKey = (stays: readonly Stay[]): string => stays.map((s) => `${s.first}..${s.last}:${s.place}`).join(';');
 // whether someone has said nothing at all
 const silent = (g: Goes<unknown>): boolean => g.travel === null && g.stays.length === 0;
@@ -166,12 +172,13 @@ export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
       );
     return { line, none };
   });
-  const unknown = '~'; // an end not said sorts after every time
+  // an end by when it is, one not said after every time
+  const when = (e: End | null | undefined): string => (e == null ? '~' : stamp(e.at));
   lines.sort(
     (a, b) =>
       Number(a.none) - Number(b.none) ||
-      byText(a.line.travel?.arrive ?? unknown, b.line.travel?.arrive ?? unknown) ||
-      byText(a.line.travel?.leave ?? unknown, b.line.travel?.leave ?? unknown) ||
+      byText(when(a.line.travel?.arrive), when(b.line.travel?.arrive)) ||
+      byText(when(a.line.travel?.leave), when(b.line.travel?.leave)) ||
       byName(a.line.units[0] ?? { name: '', key: '' }, b.line.units[0] ?? { name: '', key: '' }) ||
       byText(travelKey(a.line.travel), travelKey(b.line.travel)),
   );
@@ -186,18 +193,15 @@ export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
     .map(({ l }) => l);
 }
 // ----- by where they stay -----
-// a place of a roster seen by where its people stay: the place (null: those who said none), who stays there and on
-// which nights, the nights anyone stays there and those everyone there does (null when they share none), and how many
-// people, its names called by number when more than three
-export interface Place<P> {
-  place: string | null;
+// a place of a roster seen by where its people stay: the place and the nights anyone stays there, or (place null)
+// those who said none, who have no nights; who stays there and on which nights, and how many people, its names called
+// by number when more than three
+export type Place<P> = {
   units: Unit<P>[];
   people: number;
-  nights: { first: string; last: string } | null;
-  shared: { first: string; last: string } | null;
   stays: { person: P; key: string; first: string; last: string }[];
   called: string | null;
-}
+} & ({ place: string; nights: { first: string; last: string } } | { place: null; nights: null });
 
 // The places of a roster: a line a place, the most people first and those who said none last; someone who changes
 // place is on each place's line for their nights there. A couple is one unit at a place when both partners stay there
@@ -233,33 +237,15 @@ export function byPlace<P>(goers: readonly Goes<P>[]): Place<P>[] {
     }
     const firsts = stays.map((s) => s.first).toSorted(byText),
       lasts = stays.map((s) => s.last).toSorted(byText);
-    // the nights all of them stay: from the latest of each one's first night to the earliest of each one's last
-    const spans = here.map((g) => {
-      const mine = stays.filter((s) => s.person === g.person);
-      return {
-        first: mine.map((s) => s.first).toSorted(byText)[0] ?? '',
-        last:
-          mine
-            .map((s) => s.last)
-            .toSorted(byText)
-            .at(-1) ?? '',
-      };
-    });
-    const from =
-        spans
-          .map((s) => s.first)
-          .toSorted(byText)
-          .at(-1) ?? '',
-      to = spans.map((s) => s.last).toSorted(byText)[0] ?? '';
-    return {
-      place,
+    const common = {
       units: named.toSorted(byName),
       people: here.length,
-      nights: place === null ? null : { first: firsts[0] ?? '', last: lasts.at(-1) ?? '' },
-      shared: place === null || from > to ? null : { first: from, last: to },
       stays: stays.toSorted((a, b) => byText(a.first, b.first) || byText(a.key, b.key)),
       called: here.length > MANY ? `${here.length} people` : null,
     };
+    return place === null
+      ? { ...common, place, nights: null }
+      : { ...common, place, nights: { first: firsts[0] ?? '', last: lasts.at(-1) ?? '' } };
   });
   return places.sort(
     (a, b) =>
