@@ -71,6 +71,7 @@ SITE_ALLOWED = Counter(
         ('site/routes.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
         ('site/rows.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
         ('site/wording.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
+        ('tests/site/roster.test.ts', '@ts-expect-error'): 2,  # the shapes the types no longer hold
         ('tests/site/states.test.ts', '@ts-expect-error'): 2,
     }
 )

@@ -524,11 +524,11 @@ describe('by where they stay', () => {
 describe('the types', () => {
   it('hold no airport without its time, and no nights without their place', () => {
     const asWritten = { arrive: '2026-11-19', arrive_at: 'OSL', leave: null, leave_from: null };
-    // @ts-expect-error an end is read once into when it is and its airport, never left as the database's text
+    // @ts-expect-error: an end is read once into when it is and its airport, never left as the database's text
     const flown: Flights = asWritten;
     const placeless = { place: null, nights: { first: '2026-11-19', last: '2026-11-22' }, shared: null };
     const said = { ...placeless, units: [], people: 0, stays: [], called: null };
-    // @ts-expect-error those who said no place have no nights
+    // @ts-expect-error: those who said no place have no nights
     const nowhere: Place<string> = said;
     expect([flown, nowhere]).toHaveLength(2);
   });
