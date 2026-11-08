@@ -32,6 +32,7 @@ from pipeline.extract import resolve_artists
 from pipeline.records import (
     Community,
     Membership,
+    Offer,
     Person,
     PlanRow,
     Promo,
@@ -246,7 +247,17 @@ create table event_airports (
     km integer not null check (km >= 0),
     primary key (event_id, airport)
 ) strict, without rowid;
--- each festival weekend's latest search from home (pipeline/fares.py current): when, and for an airport beside a
+-- each festival weekend's reseller's cheapest self-transfer, when cheaper than its fare or it has none (fare_weekends
+-- current): separate tickets, a missed connection the traveller's to pay for
+create table fare_transfers (
+    airport text not null,
+    depart text not null,
+    price real not null,
+    fetched_at text not null,
+    airlines text not null,   -- the airlines flying it, by the reseller's names: "Norwegian Air Shuttle and easyJet"
+    primary key (airport, depart)
+) strict, without rowid;
+-- each festival weekend's latest search from home (fare_weekends current): when, and for an airport beside a
 -- festival's nearest, searched for direct flights alone, whether it found one (0: none; null for a nearest's)
 create table fare_searches (
     airport text not null,
@@ -751,14 +762,31 @@ def fares(x: Transaction) -> None:
                 'fetched_at': c.fare.search.at.isoformat(),
                 'stops_out': c.fare.offer.stops_out,
                 'stops_back': c.fare.offer.stops_back,
-                'resold': ' and '.join(dict.fromkeys(c.fare.offer.airlines))
-                if c.fare.search.vendor == FareVendor.KIWI
-                else None,
+                'resold': airlines(c.fare.offer) if c.fare.search.vendor == FareVendor.KIWI else None,
             }
             for c in found
             if c.fare is not None
         ),
     )
+    x.insert(
+        'fare_transfers',
+        (
+            {
+                'airport': c.searched.airport,
+                'depart': c.searched.depart.isoformat(),
+                'price': c.transfer.offer.price,
+                'fetched_at': c.transfer.search.at.isoformat(),
+                'airlines': airlines(c.transfer.offer),
+            }
+            for c in found
+            if c.transfer is not None
+        ),
+    )
+
+
+def airlines(offer: Offer) -> str:
+    """The airlines flying an offer, each once, as the site names them: "KLM and Widerøe"."""
+    return ' and '.join(dict.fromkeys(offer.airlines))
 
 
 @dataclass(frozen=True)
@@ -1379,6 +1407,8 @@ DOCS = {
     'event_airports': 'Every airport within max_airport_km of each festival\u2019s city (its candidates), with km '
     'from the city; events.airport is the nearest. The site shows each with its fare (a festival\u2019s Flights) and '
     'flies to the best (site/fares.ts).',
+    'fare_transfers': 'Each festival weekend\u2019s cheapest self-transfer at a reseller (separate tickets), when '
+    'cheaper than its fare (fares) or it has none, which its Flights add; airlines: those flying it.',
     'fare_searches': 'Each festival weekend\u2019s (airport, depart) latest search from home that did not fail: when '
     '(searched_at), and, for an airport beside a festival\u2019s nearest, searched for direct flights alone, whether '
     'it has one then (direct 0: none, not searched again; null for a nearest airport\u2019s).',

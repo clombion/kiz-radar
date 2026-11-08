@@ -2996,6 +2996,10 @@ html:has(dialog.peek[open]) {
 .flight-fare {
   font-size: 0.95rem;
 }
+/* a cheaper trip on separate tickets, under the airport's fare */
+.flight-transfer {
+  font-size: 0.9rem;
+}
 .flights-btn {
   white-space: nowrap;
 }

@@ -113,8 +113,8 @@ def parsed(row: Mapping[str, object]) -> Search:
 
 
 def read() -> list[Search]:
-    """Every search kept, in the order they were made."""
-    return sorted((parsed(r) for r in rows(kept())), key=lambda s: (s.at, s.id))
+    """Every search kept, in the order they were made: by time, those of one second as their files hold them."""
+    return sorted((parsed(r) for r in rows(kept())), key=lambda s: s.at)
 
 
 def refused() -> list[str]:

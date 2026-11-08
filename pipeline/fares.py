@@ -22,9 +22,11 @@ festival have none. An airport that is the nearest of any festival that weekend 
 
 Google is read on its outbound page, one request a search (pipeline/fli_page.py): its price is the return's, its stops
 those out. Google sometimes refuses a search (HTTP 429), so a refused search is tried once more after a minute; refused
-again, it stops the run. A search fli fails on is kept as failed, and the run fails at its end naming it. When Google
-lists flights with no price (Widerøe's, which it leaves to the airline), Kiwi.com's flight search is asked the same
-(kiwi): its price is a reseller's, kept with the airlines flying it and the tickets it is booked on (ticket).
+again, it stops the run. A search fli fails on is kept as failed, and the run fails at its end naming it. Each weekend
+Google answered is asked of Kiwi.com's flight search the same (kiwi), its trips kept with the airlines flying them and
+the tickets they are booked on (ticket): its cheapest self-transfer, when cheaper, is added to the weekend's Flights,
+and its cheapest on one ticket is the card's where Google lists flights with no price (Widerøe's, which it leaves to the
+airline). Its price is a reseller's, and the site says so; its failure fails no run.
 
     mise run fares -- refresh --budget 20      # what the GitHub Action runs
     mise run fares -- plan                     # show what is due, without searching
@@ -55,6 +57,7 @@ WEEKS_APART = [(35, 7), (91, 14), (182, 28), (SELLS_DAYS, 42)]
 EXTRA_SLOWER = 2  # an extra airport's weekend is searched this many times less often than a nearest airport's
 PAUSE = 10  # seconds between searches; Google refused after 22 requests 10 seconds apart (2026-11-08)
 RETRY_AFTER = 60  # seconds to wait before trying a refused search once more
+KIWI_PAUSE = 3  # seconds between a weekend's search of Google and the reseller's
 NOTE_LENGTH = 200  # a search's note is cut to this many characters
 DAY = 86400  # seconds
 # airlines have their flights on sale this far ahead: a weekend further on may lack one that will fly
@@ -303,7 +306,9 @@ class Searched:
 
 def searched(item: Weekend) -> Searched:
     """A weekend's search from home, tried once more after a minute when Google refuses it, kept as failed when it
-    gives no answer; when Google lists flights with no price, the reseller's search too."""
+    gives no answer; and when Google answered, the reseller's search of it too, KIWI_PAUSE later: its self-transfers
+    for the weekend's Flights, and its fare on one ticket where Google listed flights with no price. The reseller's
+    failure is kept, and fails nothing."""
     asked = Asked(airports.home(), item.airport, item.friday, item.mode)
     found = google(asked)
     if isinstance(found, Declined) and found.why == fli_page.REFUSED:
@@ -311,9 +316,8 @@ def searched(item: Weekend) -> Searched:
         found = google(asked)
     if isinstance(found, Declined):
         return Searched((search(asked, FareVendor.GOOGLE, found.why),), found)
-    if found.outcome == FareOutcome.LISTED:
-        return Searched((found, kiwi(asked)))
-    return Searched((found,))
+    time.sleep(KIWI_PAUSE)
+    return Searched((found, kiwi(asked)))
 
 
 def said(found: Searched, item: Weekend) -> str:

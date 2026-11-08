@@ -81,11 +81,13 @@ class Priced:
 
 @dataclass(frozen=True)
 class Current:
-    """A festival weekend as the site shows it: its latest search from home (searched), and the card's fare, the
-    cheapest offer on one ticket of that search, or of the reseller's asked with it when Google listed no price."""
+    """A festival weekend as the site shows it: its latest search from home (searched); the card's fare, the cheapest
+    offer on one ticket of that search, or of the reseller's asked with it when Google listed no price; and the
+    reseller's cheapest self-transfer, when it is cheaper than that fare or there is none, which its Flights add."""
 
     searched: Search
     fare: Priced | None
+    transfer: Priced | None
 
 
 def cheapest(s: Search | None, ticket: FareTicket) -> Priced | None:
@@ -103,6 +105,10 @@ def current(history: Sequence[Search], live: Collection[tuple[str, dt.date]]) ->
             continue
         k = resold.get(key)
         k = k if k is not None and k.at >= s.at else None
-        fare = cheapest(s if s.outcome == FareOutcome.OFFERS else k, FareTicket.ONE_TICKET)
-        out[key] = Current(s, fare)
+        # the reseller's on the card only where Google listed flights with no price
+        priced = {FareOutcome.OFFERS: s, FareOutcome.LISTED: k}.get(s.outcome)
+        fare = cheapest(priced, FareTicket.ONE_TICKET)
+        transfer = cheapest(k, FareTicket.SELF_TRANSFER)
+        cheaper = transfer is not None and (fare is None or transfer.offer.price < fare.offer.price)
+        out[key] = Current(s, fare, transfer if cheaper else None)
     return out

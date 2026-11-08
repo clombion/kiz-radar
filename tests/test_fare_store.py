@@ -56,7 +56,7 @@ def test_a_run_s_searches_are_read_back_as_they_were() -> None:
         search('GLA', FareOutcome.FAILED, note='Google refused the search (HTTP 429)'),
     ]
     fare_store.write(fare_store.run_file(AT), kept)
-    assert fare_store.read() == sorted(kept, key=lambda s: s.id)
+    assert fare_store.read() == kept
     assert [p.name for p in fare_store.kept()] == ['2026-11-08T054100Z.parquet']
     assert fare_store.refused() == []
 

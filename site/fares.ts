@@ -26,14 +26,22 @@ export interface Stops {
 // what a reseller's price is said to be (pipeline/states.py): "reseller’s price, likely cheaper from Widerøe"
 export const resoldSaid = (airlines: string): string =>
   text('fare_vendor', KEY.fare_vendor.KIWI, { airlines }, 'airlines');
-// an airport a festival can fly to: where, how far from the festival's city, the fare found for its weekend, and when
-// it was last searched, with, for one beside the nearest, whether it has a direct flight then (false: none)
+// a reseller's trip on separate tickets for a weekend, cheaper than its fare (or with none): its price in euros, and the
+// airlines flying it
+export interface Transfer {
+  readonly price: number;
+  readonly airlines: string;
+}
+// an airport a festival can fly to: where, how far from the festival's city, the fare found for its weekend and a
+// cheaper self-transfer, and when it was last searched, with, for one beside the nearest, whether it has a direct flight
+// then (false: none)
 export interface Option {
   readonly airport: string;
   readonly name: string;
   readonly city: string;
   readonly km: number;
   readonly fare: Found | null;
+  readonly transfer: Transfer | null;
   readonly checked: string | null;
   readonly direct: boolean | null;
 }

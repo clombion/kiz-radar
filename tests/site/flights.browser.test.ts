@@ -1,7 +1,8 @@
 // A festival's flights, in Chromium on the database the build ships: the Glasgow festival of the fixture made able to
 // fly to three airports, with illustrative fares planted for its weekend (never real ones, nor a real day): Glasgow's
-// own, 11 km away, at 210 with a stop; Edinburgh, 55 km, searched and with no direct flight; Aberdeen, 199 km, at 160
-// direct. Aberdeen saves 50, more than WORTH_EUR, so the card flies there; its Flights list every airport.
+// own, 11 km away, at 210 with a stop out (and at 150 on separate tickets from a reseller); Edinburgh, 55 km, searched
+// and with no direct flight; Aberdeen, 199 km, at 160 direct. Aberdeen saves 50, more than WORTH_EUR, so the card flies
+// there (a self-transfer is never the card's); its Flights list every airport.
 import type { Database } from 'sql.js';
 import { beforeAll, expect, test } from 'vitest';
 import { userEvent } from 'vitest/browser';
@@ -42,6 +43,15 @@ beforeAll(async () => {
   db.run(search, ['GLA', FRIDAY, searched, null]);
   db.run(search, ['EDI', FRIDAY, searched, 0]);
   db.run(search, ['ABZ', FRIDAY, searched, 1]);
+  // Glasgow's own, cheaper on separate tickets from a reseller
+  db.run('DELETE FROM fare_transfers WHERE depart = ?', [FRIDAY]);
+  db.run('INSERT INTO fare_transfers (airport, depart, price, fetched_at, airlines) VALUES (?, ?, ?, ?, ?)', [
+    'GLA',
+    FRIDAY,
+    150,
+    searched,
+    'Norwegian Air Shuttle and easyJet',
+  ]);
 });
 
 // the Glasgow festival as a card has it, still to come and its flight not left, whatever the day the test runs
@@ -95,6 +105,14 @@ test('Flights lists every airport with its distance, fare, stops and last check,
     expect(second(rows[1] ?? card)).toMatch(/^55 km from Glasgow · checked /u);
     expect(second(rows[2] ?? card)).toMatch(/^199 km from Glasgow · direct out · checked /u);
     expect(said(rows[1]?.querySelector('.flight-fare'))).toBe('no direct flight that weekend');
+    // Glasgow's cheaper self-transfer under its fare, said to be on separate tickets at a reseller's price
+    expect(rows.map((r) => said(r.querySelector('.flight-transfer')) ?? null)).toEqual([
+      expect.stringMatching(
+        /^~1 \d{3} kr · self-transfer, separate tickets · reseller’s price, likely cheaper from Norwegian Air Shuttle and easyJet$/u,
+      ),
+      null,
+      null,
+    ]);
     // a link to Google Flights for each airport with a fare, for its own weekend
     const links = rows.map((r) => r.querySelector<HTMLAnchorElement>('.flight-fare a')?.href ?? null);
     expect(links.map((l) => l !== null)).toEqual([true, false, true]);

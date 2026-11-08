@@ -3,11 +3,13 @@
 // checked, and a link to Google Flights; the one its card shows marked. A quick view (modal.ts peek): a dialog, the
 // focus kept in it and given back to the button that opened it, closed by ×, Escape, a tap outside or the back button.
 import { button, h, type Kid, own } from './dom.ts';
-import { best, checkedAgo, FAR_KM, type Option, resoldSaid, stopsSaid, WORTH_EUR } from './fares.ts';
+import { best, checkedAgo, FAR_KM, type Option, resoldSaid, stopsSaid, type Transfer, WORTH_EUR } from './fares.ts';
 import type { Festival } from './festivals.ts';
 import { type Peek, peek } from './modal.ts';
 import { money } from './money.ts';
+import { KEY } from './states.ts';
 import { away, dayMonth, flightsUrl, home } from './ui.ts';
+import { text } from './wording.ts';
 
 let view: Peek | undefined;
 const flightsDialog = (): Peek => {
@@ -26,13 +28,24 @@ function fareSaid(o: Option): Kid {
   return h('span', { class: 'muted' }, noFare(o.direct));
 }
 
+// a cheaper trip on separate tickets: "~3 400 kr · self-transfer, separate tickets · reseller’s price, likely cheaper
+// from Norwegian Air Shuttle and easyJet"
+const transferSaid = (t: Transfer): HTMLElement =>
+  h(
+    'p',
+    { class: ['flight-transfer', 'muted'] },
+    money(t.price, 'EUR', { approx: true }),
+    ` · ${text('fare_ticket', KEY.fare_ticket.SELF_TRANSFER)} · ${resoldSaid(t.airlines)}`,
+  );
+
 // why an option checked has no fare, by whether it has a direct flight: Google lists Widerøe's with no price
 function noFare(direct: boolean | null) {
   if (direct === true) return 'direct, no price on Google';
   return direct === false ? 'no direct flight that weekend' : 'no price found';
 }
 
-// one airport of the festival's: its name, the card's when it is, how far, the fare and its stops, when checked, a link
+// one airport of the festival's: its name, the card's when it is, how far, the fare and its stops, when checked, a link,
+// and a cheaper self-transfer
 function optionRow(e: Festival, o: Option, chosen: boolean, today: string): HTMLElement {
   const back = o.fare?.back ?? null;
   return h(
@@ -68,6 +81,7 @@ function optionRow(e: Festival, o: Option, chosen: boolean, today: string): HTML
             ),
           ],
     ),
+    o.transfer === null ? null : transferSaid(o.transfer),
   );
 }
 

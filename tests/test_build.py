@@ -188,6 +188,13 @@ class Flight(BaseModel, frozen=True):
     resold: str | None
 
 
+class Transfer(BaseModel, frozen=True):
+    airport: str
+    depart: dt.date
+    price: float
+    airlines: str
+
+
 class Searched(BaseModel, frozen=True):
     airport: str
     depart: dt.date
@@ -513,6 +520,17 @@ def test_a_fare_is_the_one_the_fare_history_gives_its_weekend_back_the_monday_af
         for c in found
     }
     assert any(c.fare is None for c in found)  # a weekend searched with no price has a search and no fare
+    transfers = 'select airport, depart, price, airlines from fare_transfers'
+    assert built(site_db, Transfer, transfers) == {
+        Transfer(
+            airport=c.searched.airport,
+            depart=c.searched.depart,
+            price=c.transfer.offer.price,
+            airlines=' and '.join(dict.fromkeys(c.transfer.offer.airlines)),
+        )
+        for c in found
+        if c.transfer is not None
+    }
 
 
 # Glasgow: the festival Friday 6 to Monday 9 November, Christina leaving on the Monday at 19:10, Siân arriving on the

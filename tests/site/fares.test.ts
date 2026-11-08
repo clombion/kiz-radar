@@ -88,6 +88,7 @@ const option = (airport: string, km: number, price: number | null, out: number |
     price === null
       ? null
       : { price, back: '2026-11-09', stops: { out, back: null }, resold: null, fetched: '2026-11-01T06:00:00+00:00' },
+  transfer: null,
   checked: '2026-11-01T06:00:00+00:00',
   direct: null,
 });

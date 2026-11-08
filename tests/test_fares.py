@@ -113,10 +113,19 @@ SOON = today() + dt.timedelta(days=10)  # due, weekly, never searched
 
 
 @pytest.fixture
-def weekends(monkeypatch: pytest.MonkeyPatch) -> None:
-    """Two festival weekends due, and no wait between searches."""
+def weekends(monkeypatch: pytest.MonkeyPatch) -> list[str]:
+    """Two festival weekends due, no wait between searches, and a reseller with no trip, which keeps the airports it
+    was asked for."""
     monkeypatch.setattr(fare_weekends, 'weekends', two_weekends)
     monkeypatch.setattr('time.sleep', no_wait)
+    resold: list[str] = []
+
+    def post(address: web.Https, body: bytes, headers: Mapping[str, str]) -> bytes:
+        resold.append(str(Sent.model_validate_json(body).params.arguments['flyTo']))
+        return resold_answer().encode()
+
+    monkeypatch.setattr(web, 'post', post)
+    return resold
 
 
 def two_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
@@ -145,12 +154,14 @@ def kept_now() -> list[Search]:
     return fare_store.read()
 
 
-@pytest.mark.usefixtures('weekends')
-def test_a_refresh_keeps_every_search_with_its_offers_in_the_run_s_file(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_a_refresh_keeps_every_search_with_its_offers_in_the_run_s_file(
+    weekends: list[str], monkeypatch: pytest.MonkeyPatch
+) -> None:
     monkeypatch.setattr(fares, 'google', answering({'GLA': (offer(80), offer(95, stops=0)), 'LIS': ()}))
     monkeypatch.setattr('sys.argv', ['fares', 'refresh'])
     fares.main()
-    found = {s.airport: s for s in kept_now()}
+    assert weekends == ['GLA', 'LIS']  # the reseller asked of each weekend Google answered
+    found = {s.airport: s for s in kept_now() if s.vendor == FareVendor.GOOGLE}
     assert [p.name for p in fare_store.kept()] == [fare_store.run_file(found['GLA'].at).name]
     assert [o.price for o in found['GLA'].offers] == [80, 95]
     assert found['LIS'].outcome == FareOutcome.NONE
@@ -158,17 +169,28 @@ def test_a_refresh_keeps_every_search_with_its_offers_in_the_run_s_file(monkeypa
     assert {k: c.fare and c.fare.offer.price for k, c in live.items()} == {('GLA', SOON): 80, ('LIS', SOON): None}
 
 
-@pytest.mark.usefixtures('weekends')
 def test_a_search_with_no_answer_is_kept_as_failed_and_the_run_fails_naming_it(
-    monkeypatch: pytest.MonkeyPatch,
+    weekends: list[str], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     broke = Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
     monkeypatch.setattr(fares, 'google', answering({'GLA': (offer(80),), 'LIS': broke}))
     with pytest.raises(SystemExit, match=r'1 searches gave no answer \(transient 1\): LIS'):
         fares.refresh(budget=5, max_seconds=60)
-    found = {s.airport: s for s in kept_now()}
+    found = {s.airport: s for s in kept_now() if s.vendor == FareVendor.GOOGLE}
     assert (found['LIS'].outcome, found['LIS'].note) == (FareOutcome.FAILED, broke.why)
+    assert weekends == ['GLA']  # the reseller is not asked of a search Google gave no answer to
     assert [w.airport for w in fares.queue() if w.due] == ['LIS']  # tried again on the next run
+
+
+@pytest.mark.usefixtures('weekends')
+def test_the_reseller_is_asked_a_few_seconds_after_google_and_the_next_search_waits_longer(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    waits: list[float] = []
+    monkeypatch.setattr('time.sleep', waits.append)
+    monkeypatch.setattr(fares, 'google', answering({'GLA': (offer(80),), 'LIS': (offer(90),)}))
+    fares.refresh(budget=5, max_seconds=60)
+    assert waits == [fares.KIWI_PAUSE, fares.PAUSE] * 2
 
 
 @pytest.mark.usefixtures('weekends')
@@ -203,7 +225,10 @@ def test_a_run_stopped_half_way_keeps_the_searches_it_made(monkeypatch: pytest.M
     monkeypatch.setattr(fares, 'google', google)
     with pytest.raises(KilledError):
         fares.refresh(budget=5, max_seconds=60)
-    assert [(s.airport, s.offers[0].price) for s in kept_now()] == [(asked[0], 80)]
+    assert [(s.airport, s.vendor, s.offers[0].price if s.offers else None) for s in kept_now()] == [
+        (asked[0], FareVendor.GOOGLE, 80),
+        (asked[0], FareVendor.KIWI, None),
+    ]
 
 
 @pytest.mark.usefixtures('weekends')
@@ -306,7 +331,11 @@ def test_the_other_airports_are_searched_less_often_and_after_every_nearest_due(
     fares.refresh(budget=3, max_seconds=60)
     # the two nearest first, then one extra, for direct flights alone, within the budget of three
     assert asked == [('GLA', FareMode.ANY), ('LIS', FareMode.ANY), ('ABZ', FareMode.DIRECT)]
-    assert {s.airport: fare_weekends.direct_found(s) for s in kept_now()} == {'GLA': None, 'LIS': None, 'ABZ': True}
+    assert {s.airport: fare_weekends.direct_found(s) for s in kept_now() if s.vendor == FareVendor.GOOGLE} == {
+        'GLA': None,
+        'LIS': None,
+        'ABZ': True,
+    }
 
 
 def two_aberdeen_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
@@ -437,7 +466,9 @@ def test_a_reseller_s_answer_with_no_trip_or_none_to_read(answer: str, expected:
 
 
 @pytest.mark.usefixtures('weekends')
-def test_a_reseller_is_asked_for_the_weekend_google_lists_with_no_price(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_a_reseller_is_asked_each_weekend_the_same_and_priced_where_google_lists_no_price(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     sent: list[dict[str, object]] = []
 
     def post(address: web.Https, body: bytes, headers: Mapping[str, str]) -> bytes:
@@ -449,9 +480,10 @@ def test_a_reseller_is_asked_for_the_weekend_google_lists_with_no_price(monkeypa
     monkeypatch.setattr(fares, 'google', answering({'GLA': (), 'LIS': (), 'PIK': (), 'ABZ': 'listed'}))
     monkeypatch.setattr(web, 'post', post)
     fares.refresh(budget=9, max_seconds=60)
-    # the reseller only for ABZ, the one Google listed, for direct flights alone, Friday to Monday
+    # the reseller asked of each weekend searched, the same: ABZ for direct flights alone, Friday to Monday
     monday = SOON + dt.timedelta(days=fare_weekends.NIGHTS)
-    assert sent == [
+    assert [a['flyTo'] for a in sent] == ['GLA', 'LIS', 'ABZ', 'PIK']
+    assert sent[2:3] == [
         {
             'flyFrom': HOME,
             'flyTo': 'ABZ',
@@ -481,8 +513,10 @@ def test_a_reseller_that_fails_is_kept_as_failed_and_the_run_goes_on(monkeypatch
     monkeypatch.setattr(fares, 'google', answering({'GLA': 'listed', 'LIS': (offer(120),)}))
     monkeypatch.setattr(web, 'post', down)
     fares.refresh(budget=9, max_seconds=60)  # no exit: the reseller's failure fails no run
-    kiwi = [s for s in kept_now() if s.vendor == FareVendor.KIWI]
-    assert [(s.airport, s.outcome, s.note) for s in kiwi] == [('GLA', FareOutcome.FAILED, 'mcp.kiwi.com: HTTP 503')]
+    kiwi = sorted((s for s in kept_now() if s.vendor == FareVendor.KIWI), key=lambda s: s.airport)
+    assert [(s.airport, s.outcome, s.note) for s in kiwi] == [
+        (a, FareOutcome.FAILED, 'mcp.kiwi.com: HTTP 503') for a in ('GLA', 'LIS')
+    ]
     assert fare_weekends.current(kept_now(), two_weekends(today()))[('GLA', SOON)].fare is None
 
 
@@ -500,6 +534,21 @@ def test_the_card_s_fare_is_the_cheapest_on_one_ticket_of_the_weekend_s_latest_s
     ]
     live = fare_weekends.current(history, {('LIS', FRIDAY), ('GLA', FRIDAY), ('OSL', FRIDAY)})
     assert {k[0]: c.fare and c.fare.offer.price for k, c in live.items()} == {'LIS': 150, 'GLA': None}
+
+
+def test_the_flights_add_a_reseller_s_self_transfer_only_when_it_is_cheaper_than_the_fare() -> None:
+    def with_resold(google: tuple[Offer, ...], resold: tuple[Offer, ...]) -> float | None:
+        history = [
+            kept('LIS', FRIDAY, AT, offers=google or None, outcome=FareOutcome.OFFERS if google else FareOutcome.NONE),
+            kept('LIS', FRIDAY, AT, offers=resold, vendor=FareVendor.KIWI),
+        ]
+        t = fare_weekends.current(history, {('LIS', FRIDAY)})[('LIS', FRIDAY)].transfer
+        return t and t.offer.price
+
+    split = (offer(300, FareTicket.SELF_TRANSFER), offer(180, FareTicket.SELF_TRANSFER), offer(150))
+    assert with_resold((offer(200),), split) == 180  # the cheapest self-transfer, a one-ticket one cheaper aside
+    assert with_resold((offer(170),), split) is None  # dearer than the fare
+    assert with_resold((), split) == 180  # no fare: any
 
 
 def test_a_reseller_s_fare_is_taken_only_with_the_google_search_it_was_asked_with() -> None:

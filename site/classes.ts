@@ -100,6 +100,7 @@ export type ClassName =
   | 'flag'
   | 'flight'
   | 'flight-fare'
+  | 'flight-transfer'
   | 'flight-where'
   | 'flights-btn'
   | 'flip'
