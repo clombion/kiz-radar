@@ -52,8 +52,7 @@ from pipeline.calls import Declined
 from pipeline.enums import CallCause, Listing
 from pipeline.records import Fare, Job, Record, day_of, now
 
-FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'  # punitarani/fli, the only place the version is pinned
-FLI = os.environ.get('FLI_CMD', f'uvx -q --from git+https://github.com/punitarani/fli@{FLI_SHA} fli')
+FLI = os.environ.get('FLI_CMD', 'fli')  # fli's command, of pyproject.toml's fares group, where its version is pinned
 NIGHTS = 3  # a weekend's flight is out on the Friday and back on the Monday, the one place this is said
 SELLS_DAYS = 330  # Google sells about 11 months ahead
 # (days until the Friday, days between searches): weekly when it is close, every six weeks when it is far

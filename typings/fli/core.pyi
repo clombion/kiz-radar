@@ -1,0 +1,6 @@
+from fli.models import Airport, FlightSegment, TripType
+
+def resolve_airport(code: str) -> Airport: ...
+def build_flight_segments(
+    origin: Airport, destination: Airport, departure_date: str, return_date: str | None = None
+) -> tuple[list[FlightSegment], TripType]: ...

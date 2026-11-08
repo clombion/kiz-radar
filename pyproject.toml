@@ -7,9 +7,11 @@ dependencies = ["pydantic==2.14.1"]   # every step reads and writes its records 
 # Each job installs only its group: uv run --group <group> -m pipeline.<module>. A group that needs another's
 # packages includes that group, so every version is written once.
 [dependency-groups]
-scrape = ["curl_cffi==0.13.0"]
+scrape = ["curl_cffi==0.17.0"]
 ask = ["anthropic==2.3.0", "httpx2==2.16.0"]   # httpx2: its transport errors, which the SDK lets through mid-stream
 browser = ["patchright==1.55.2"]
+# Google Flights through fli (punitarani/fli), pinned to a commit: the one statement of its version
+fares = ["flights @ git+https://github.com/punitarani/fli@881aee5ff4321e81ea2157cb44be94ce6a21dc1b"]
 tickets = [{include-group = "ask"}, {include-group = "scrape"}, {include-group = "browser"}]
 dev = [
     "pytest==9.2.0",
@@ -25,6 +27,7 @@ dev = [
     "prek==0.5.7",              # the git hooks (prek.toml)
     "zizmor==1.31.1",           # the workflows' security (lint:actions)
     {include-group = "tickets"},
+    {include-group = "fares"},
 ]
 
 [tool.uv]
@@ -97,6 +100,10 @@ ignore = [
 "pipeline/tickets.py" = ["PLC0415"]
 "pipeline/tickets_reading.py" = ["PLC0415"]
 "tests/test_tickets.py" = ["PLC0415"]
+# Google's outbound page alone is read through fli's private SearchFlights._fetch_flights (its docstring), which the
+# contract test wraps
+"pipeline/fli_page.py" = ["SLF001"]
+"tests/test_fli_page.py" = ["SLF001"]
 # written from pipeline/states.py: FULL_PASS is a ticket, no password; a line is as long as its state's key
 "pipeline/enums.py" = ["S105", "E501"]
 # the one clock the pipeline reads

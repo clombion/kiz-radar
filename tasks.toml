@@ -62,7 +62,7 @@ run = "uv run -q -m pipeline.rates"
 
 [fares]
 description = "Search and keep the festival weekends' return fares"
-run = "uv run -q -m pipeline.fares"
+run = "uv run -q --group fares -m pipeline.fares"
 
 ["install:site"]
 description = "The site's tools, as pnpm-lock.yaml pins them"
