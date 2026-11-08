@@ -1,15 +1,16 @@
 """The fare history: every fare search and the offers it saw (records.Search), each run's in a Parquet file of its own
-under pipeline/fare_offers/, named by when the run began. A run writes its file whole after each search (a run stopped
-half way keeps what it found, and its file holds each search with its offers or not at all); once the run is over, its
-file is never written again, so the history only grows, and two runs never touch one file.
+under pipeline/fare_offers/, named by when the run began. A run writes its file (run_file, new) whole after each search
+(a run stopped half way keeps what it found, and its file holds each search with its offers or not at all); once the run
+is over, its file is never written again, so the history only grows, and two runs never touch one file.
 
-The files' columns are the record's fields (SCHEMA, from records.Search), compressed with zstd, and they are read as
-one dataset with that schema: a column an older file lacks reads as empty, and its field takes its default. The audit
-reads each file through the record (refused).
+The files' columns are the record's fields (SCHEMA, from records.Search), compressed with zstd, and they are read as one
+dataset with that schema: a column an older file lacks reads as empty, and its field takes its default. The audit reads
+each file through the record (refused).
 """
 
 import datetime as dt
 import io
+import itertools
 import types
 import typing
 from collections.abc import Iterable, Mapping
@@ -81,8 +82,11 @@ def cells(value: object) -> object:
 
 
 def run_file(at: dt.datetime) -> Path:
-    """The file of the run that began at this time."""
-    return data(FOLDER) / f'{at:%Y-%m-%dT%H%M%SZ}.parquet'
+    """The file of a run that begins at this time: named by it, and no other run's (a run begun the same second takes
+    the next number), so no run writes over another's."""
+    stamp = f'{at:%Y-%m-%dT%H%M%SZ}'
+    names = itertools.chain([f'{stamp}.parquet'], (f'{stamp}-{n}.parquet' for n in itertools.count(2)))
+    return next(p for p in (data(FOLDER) / name for name in names) if not p.exists())
 
 
 def write(path: Path, searches: Iterable[Search]) -> None:

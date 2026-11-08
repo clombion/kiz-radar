@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       budget:
-        description: Searches in this run
+        description: Searches of Google in this run, a quarter of them pairs (pipeline/fares.py PAIR_SHARE)
         default: '20'
 
 permissions:
@@ -19,7 +19,9 @@ permissions:
 env:
   UV_LOCKED: 1   # uv.lock as committed, or the step fails
   PYTHONUNBUFFERED: 1   # each line a step prints is in the log as it goes, not all at its end
-  BUDGET: ${{ inputs.budget || '20' }}
+  # a run's searches: the input when started by hand, else the repository variable FARE_BUDGET, which the admin raises
+  # to 30 and then 40 after a week each with no 429 (docs/guides/refreshing-events.md), else 20
+  BUDGET: ${{ inputs.budget || vars.FARE_BUDGET || '20' }}
 
 concurrency:
   group: data-commit

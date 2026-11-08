@@ -69,7 +69,7 @@ latest first). The site's fares are derived from it in the build: each festival 
 did not fail, and its cheapest offer on one ticket. Home is the airport marked `home` in `pipeline/airports.csv`; a
 festival's airports are every one within 250 km of its city. Its nearest is searched for any flight, on the intervals
 below. The others are worth it only by a direct flight: they are searched for direct flights alone, half as often
-(`EXTRA_SLOWER`), and only after every nearest airport's weekend due that day, within the run's 20 searches. One with no
+(`EXTRA_SLOWER`), and only after every nearest airport's weekend due that day, within the run's searches. One with no
 direct flight that weekend is marked so (its search found none) and not searched again for it, unless it becomes a
 festival's nearest; and when that weekend is within 91 days (`SCHEDULED_DAYS`, as far ahead as airlines surely have
 their flights on sale), the airport is not searched as an extra for any weekend for 182 days (`NO_DIRECT_DAYS`), unless
@@ -99,6 +99,16 @@ place, and names each; then `mise run build:data`.
 | 3 to 6 months | 4 weeks |
 | 6 to 11 months | 6 weeks |
 | further ahead | not yet: Google doesn't sell that far ahead |
+
+Each run searches Google 20 times (`FARE_BUDGET`, below), and keeps a quarter of them (`PAIR_SHARE`) for pairs: weekends
+it searched from home are searched from another city too, Oslo the most and Stavanger or Trondheim on a few
+(`PAIR_ORIGINS`), the same day and for the same flights, Google alone. They are for measuring how well Bergen's price
+predicts those cities', and the site shows none of them: its fares are home's.
+
+Google refused after 22 requests 10 seconds apart on 8 November 2026, so the budget starts at 20 searches a run (one
+request each, and a second for a refused one). The admin raises it with the repository variable `FARE_BUDGET` (Settings
+→ Secrets and variables → Actions → Variables): to 30 after a week of runs with no 429, then to 40 after another. A run
+started by hand takes its own (`budget`).
 
 Each weekend has its own weekday, so each day's run checks about a seventh of them; one never searched, or overdue by
 twice its interval, doesn't wait for its day. A weekend with no price on Google loses its fare; a search Google refuses

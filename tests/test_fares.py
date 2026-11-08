@@ -114,10 +114,11 @@ SOON = today() + dt.timedelta(days=10)  # due, weekly, never searched
 
 @pytest.fixture
 def weekends(monkeypatch: pytest.MonkeyPatch) -> list[str]:
-    """Two festival weekends due, no wait between searches, and a reseller with no trip, which keeps the airports it
-    was asked for."""
+    """Two festival weekends due, no wait between searches, no pairs (test_pairs sets them), and a reseller with no
+    trip, which keeps the airports it was asked for."""
     monkeypatch.setattr(fare_weekends, 'weekends', two_weekends)
     monkeypatch.setattr('time.sleep', no_wait)
+    monkeypatch.setattr(fares, 'PAIR_SHARE', 0)
     resold: list[str] = []
 
     def post(address: web.Https, body: bytes, headers: Mapping[str, str]) -> bytes:
@@ -136,11 +137,10 @@ type Google = Callable[[fares.Asked], Search | Declined]
 
 
 def answering(found: Mapping[str, tuple[Offer, ...] | Declined | str]) -> Google:
-    """fares.google, as it answers for each airport: its offers (none: no price; 'listed': flights with none), or why
-    there is no page; asked from anywhere but home, the test fails."""
+    """fares.google, as it answers for each airport, from wherever: its offers (none: no price; 'listed': flights
+    with none), or why there is no page."""
 
     def google(asked: fares.Asked) -> Search | Declined:
-        assert asked.origin == HOME
         f = found[asked.airport]
         if isinstance(f, Declined):
             return f
@@ -162,7 +162,7 @@ def test_a_refresh_keeps_every_search_with_its_offers_in_the_run_s_file(
     fares.main()
     assert weekends == ['GLA', 'LIS']  # the reseller asked of each weekend Google answered
     found = {s.airport: s for s in kept_now() if s.vendor == FareVendor.GOOGLE}
-    assert [p.name for p in fare_store.kept()] == [fare_store.run_file(found['GLA'].at).name]
+    assert len(fare_store.kept()) == 1  # the run's file
     assert [o.price for o in found['GLA'].offers] == [80, 95]
     assert found['LIS'].outcome == FareOutcome.NONE
     live = fare_weekends.current(kept_now(), two_weekends(today()))
@@ -174,7 +174,7 @@ def test_a_search_with_no_answer_is_kept_as_failed_and_the_run_fails_naming_it(
 ) -> None:
     broke = Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
     monkeypatch.setattr(fares, 'google', answering({'GLA': (offer(80),), 'LIS': broke}))
-    with pytest.raises(SystemExit, match=r'1 searches gave no answer \(transient 1\): LIS'):
+    with pytest.raises(SystemExit, match=r'1 searches gave no answer \(transient 1\): BGO→LIS'):
         fares.refresh(budget=5, max_seconds=60)
     found = {s.airport: s for s in kept_now() if s.vendor == FareVendor.GOOGLE}
     assert (found['LIS'].outcome, found['LIS'].note) == (FareOutcome.FAILED, broke.why)
@@ -302,6 +302,107 @@ def test_a_page_google_would_not_give_is_no_answer(monkeypatch: pytest.MonkeyPat
     refused = Declined(CallCause.TRANSIENT, fli_page.REFUSED)
     monkeypatch.setattr(fli_page, 'page', page(refused))
     assert fares.google(fares.Asked(HOME, 'GLA', FRIDAY, FareMode.ANY)) == refused
+
+
+# ----- pairs: a weekend searched from home searched from another city too
+def only(these: fare_weekends.Weekends) -> Callable[[dt.date], fare_weekends.Weekends]:
+    """fare_weekends.weekends, giving these festival weekends whatever the day."""
+
+    def weekends(_: dt.date) -> fare_weekends.Weekends:
+        return these
+
+    return weekends
+
+
+def five_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
+    """Five festival weekends due, each to its nearest airport."""
+    return {(a, SOON): True for a in ('AMS', 'BCN', 'GLA', 'LIS', 'PRG')}
+
+
+def test_pairs_take_a_quarter_of_the_budget_after_the_searches_from_home_in_their_mode(
+    weekends: list[str], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(fares, 'PAIR_SHARE', 0.25)
+    monkeypatch.setattr(fare_weekends, 'weekends', five_weekends)
+    asked: list[fares.Asked] = []
+    broke = Declined(CallCause.TRANSIENT, 'fli: no page')
+
+    def google(a: fares.Asked) -> Search | Declined:
+        asked.append(a)
+        if a.airport == 'AMS' and a.origin == HOME:
+            return broke  # a weekend Google gave no answer to from home is paired with nothing
+        return fares.search(a, FareVendor.GOOGLE, (offer(100),))
+
+    monkeypatch.setattr(fares, 'google', google)
+    with pytest.raises(SystemExit, match='AMS'):
+        fares.refresh(budget=8, max_seconds=60)  # six answered from home, two pairs
+    home = [a for a in asked if a.origin == HOME]
+    assert [a.airport for a in home] == ['AMS', 'BCN', 'GLA', 'LIS', 'PRG']  # all there were
+    day = now().date()
+    assert asked[len(home) :] == [
+        fares.Asked(fares.pair_origin(a, day), a.airport, a.friday, a.mode) for a in home[1:3]
+    ]
+    assert weekends == ['BCN', 'GLA', 'LIS', 'PRG']  # the reseller asked of home's alone
+    kept = [s for s in kept_now() if s.origin != HOME]
+    assert [(s.airport, s.outcome) for s in kept] == [('BCN', FareOutcome.OFFERS), ('GLA', FareOutcome.OFFERS)]
+    # with fewer searches than weekends due, the pairs' share is kept for them: three answered from home, one pair
+    asked.clear()
+    monkeypatch.setattr(
+        fare_weekends,
+        'weekends',
+        only({(a, SOON + dt.timedelta(days=7)): True for a in ('MAD', 'NCE', 'OPO', 'MUC')}),
+    )
+    monkeypatch.setattr(fares, 'google', answering(dict.fromkeys(('MAD', 'NCE', 'OPO', 'MUC'), (offer(100),))))
+    fares.refresh(budget=4, max_seconds=60)
+    later = [s for s in kept_now() if s.vendor == FareVendor.GOOGLE and s.depart > SOON]
+    assert [(s.origin == HOME, s.airport) for s in later] == [
+        (True, 'MAD'),
+        (True, 'MUC'),
+        (True, 'NCE'),
+        (False, 'MAD'),
+    ]
+    assert fare_weekends.current(kept_now(), five_weekends(day))[('BCN', SOON)].searched.origin == HOME
+
+
+def test_a_pair_of_an_extra_airport_is_searched_for_direct_flights_too(
+    weekends: list[str], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(fares, 'PAIR_SHARE', 0.25)
+    monkeypatch.setattr(fare_weekends, 'weekends', only({('ABZ', SOON): False}))
+    monkeypatch.setattr(fares, 'google', answering({'ABZ': 'listed'}))
+    fares.refresh(budget=4, max_seconds=60)
+    assert [(s.origin != HOME, s.vendor, s.mode) for s in kept_now()] == [
+        (False, FareVendor.GOOGLE, FareMode.DIRECT),
+        (False, FareVendor.KIWI, FareMode.DIRECT),
+        (True, FareVendor.GOOGLE, FareMode.DIRECT),
+    ]
+
+
+def test_pairs_are_mostly_from_oslo_and_a_few_from_stavanger_and_trondheim() -> None:
+    day = dt.date(2026, 11, 9)
+    origins = [
+        fares.pair_origin(fares.Asked(HOME, a, SOON + dt.timedelta(weeks=w), FareMode.ANY), day)
+        for a in ('GLA', 'LIS', 'BCN', 'PRG', 'AMS')
+        for w in range(20)
+    ]
+    assert {o: origins.count(o) > 0 for o in ('OSL', 'SVG', 'TRD')} == {'OSL': True, 'SVG': True, 'TRD': True}
+    assert origins.count('OSL') > origins.count('SVG') + origins.count('TRD')
+
+
+def test_a_weekend_to_the_city_a_pair_would_leave_from_is_not_paired(
+    weekends: list[str], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    day = now().date()
+    friday = next(
+        f
+        for f in (SOON + dt.timedelta(weeks=w) for w in range(50))
+        if fares.pair_origin(fares.Asked(HOME, 'OSL', f, FareMode.ANY), day) == 'OSL'
+    )
+    monkeypatch.setattr(fares, 'PAIR_SHARE', 0.25)
+    monkeypatch.setattr(fare_weekends, 'weekends', only({('OSL', friday): True}))
+    monkeypatch.setattr(fares, 'google', answering({'OSL': (offer(60),)}))
+    fares.refresh(budget=4, max_seconds=60)
+    assert [s.origin for s in kept_now() if s.vendor == FareVendor.GOOGLE] == [HOME]
 
 
 # ----- a festival's other airports

@@ -61,6 +61,15 @@ def test_a_run_s_searches_are_read_back_as_they_were() -> None:
     assert fare_store.refused() == []
 
 
+def test_a_run_begun_in_the_same_second_as_another_writes_a_file_of_its_own() -> None:
+    first = fare_store.run_file(AT)
+    fare_store.write(first, [search('LIS')])
+    second = fare_store.run_file(AT)
+    fare_store.write(second, [search('OSL')])
+    assert (first.name, second.name) == ('2026-11-08T054100Z.parquet', '2026-11-08T054100Z-2.parquet')
+    assert {s.airport for s in fare_store.read()} == {'LIS', 'OSL'}
+
+
 def test_the_runs_are_read_as_one_history_in_the_order_searched() -> None:
     later = AT + dt.timedelta(days=1)
     fare_store.write(fare_store.run_file(later), [search('OSL', at=later)])

@@ -40,7 +40,8 @@ import sys
 import time
 import zlib
 from collections.abc import Iterable, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from pathlib import Path
 from typing import NamedTuple, Self
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, model_validator
@@ -58,6 +59,11 @@ EXTRA_SLOWER = 2  # an extra airport's weekend is searched this many times less 
 PAUSE = 10  # seconds between searches; Google refused after 22 requests 10 seconds apart (2026-11-08)
 RETRY_AFTER = 60  # seconds to wait before trying a refused search once more
 KIWI_PAUSE = 3  # seconds between a weekend's search of Google and the reseller's
+# A share of each run's budget goes to searching weekends searched from home that day from another city as well, in
+# the same mode, so that a report (mise run fares -- accuracy) can tell how well home's price predicts theirs: Oslo
+# the most, Stavanger and Trondheim on a few, by weight.
+PAIR_SHARE = 0.25
+PAIR_ORIGINS = (('OSL', 4), ('SVG', 1), ('TRD', 1))
 NOTE_LENGTH = 200  # a search's note is cut to this many characters
 DAY = 86400  # seconds
 # airlines have their flights on sale this far ahead: a weekend further on may lack one that will fly
@@ -304,66 +310,119 @@ class Searched:
     declined: Declined | None = None
 
 
-def searched(item: Weekend) -> Searched:
-    """A weekend's search from home, tried once more after a minute when Google refuses it, kept as failed when it
-    gives no answer; and when Google answered, the reseller's search of it too, KIWI_PAUSE later: its self-transfers
-    for the weekend's Flights, and its fare on one ticket where Google listed flights with no price. The reseller's
-    failure is kept, and fails nothing."""
-    asked = Asked(airports.home(), item.airport, item.friday, item.mode)
+def searched(asked: Asked, *, resold: bool) -> Searched:
+    """A weekend's search, tried once more after a minute when Google refuses it, kept as failed when it gives no
+    answer; and when Google answered and resold is asked (a search from home), the reseller's search of it too,
+    KIWI_PAUSE later: its self-transfers for the weekend's Flights, and its fare on one ticket where Google listed
+    flights with no price. The reseller's failure is kept, and fails nothing."""
     found = google(asked)
     if isinstance(found, Declined) and found.why == fli_page.REFUSED:
         time.sleep(RETRY_AFTER)
         found = google(asked)
     if isinstance(found, Declined):
         return Searched((search(asked, FareVendor.GOOGLE, found.why),), found)
+    if not resold:
+        return Searched((found,))
     time.sleep(KIWI_PAUSE)
     return Searched((found, kiwi(asked)))
 
 
-def said(found: Searched, item: Weekend) -> str:
+def said(found: Searched) -> str:
     """What a weekend's searches found, in a line of the run's log."""
     g, *rest = found.searches
+    direct = g.mode == FareMode.DIRECT
     match g.outcome:
         case FareOutcome.FAILED:
             words = f'no answer: {g.note}'
         case FareOutcome.OFFERS:
             words = f'{min(o.price for o in g.offers):.0f} EUR, {len(g.offers)} offers'
         case FareOutcome.LISTED:
-            words = 'direct, no price' if not item.nearest else 'flights with no price'
+            words = 'direct, no price' if direct else 'flights with no price'
         case FareOutcome.NONE:
-            words = 'no direct flight' if not item.nearest else 'no price'
+            words = 'no direct flight' if direct else 'no price'
     for k in rest:
         priced = f'{min(o.price for o in k.offers):.0f} EUR' if k.offers else str(k.outcome)
         words += f'; the reseller: {priced}' + (f' ({k.note})' if k.note else '')
     return words
 
 
-def refresh(budget: int, max_seconds: int) -> None:
-    """Search the weekends due today, most overdue first, writing the run's file after each; exits 1 naming the
-    searches that gave no answer, a refusal or a stop first."""
-    start, history = time.time(), fare_store.read()
-    path, kept = fare_store.run_file(now()), list[Search]()
-    done, declined = 0, list[tuple[str, Declined]]()
-    for item in queue(history=history):
-        if not item.due or done >= budget or time.time() - start > max_seconds:
-            break
-        if not item.nearest and item.airport in no_direct(latest([*history, *kept]).values(), now()):
-            continue  # found with no direct flight earlier in this run
-        found = searched(item)
-        kept += found.searches
-        fare_store.write(path, kept)
-        where = f'{item.airport} {item.friday}{"" if item.nearest else " direct"}'
-        print(f'{where} ({item.days_away} days away): {said(found, item)}', flush=True)
+def pair_origin(asked: Asked, day: dt.date) -> str:
+    """The city a weekend searched from home is searched from as well that day: Oslo most days, Stavanger or Trondheim
+    on a few, fixed by the weekend and the day (PAIR_ORIGINS)."""
+    weights = [origin for origin, n in PAIR_ORIGINS for _ in range(n)]
+    return weights[zlib.crc32(f'{asked.airport} {asked.friday} {day}'.encode()) % len(weights)]
+
+
+@dataclass
+class Run:
+    """A refresh under way: its file, when it stops starting searches (until, by time.time()), the searches it made,
+    and those Google gave no answer to."""
+
+    path: Path
+    until: float
+    kept: list[Search] = field(default_factory=list[Search])
+    declined: list[tuple[str, Declined]] = field(default_factory=list[tuple[str, Declined]])
+
+    def search(self, asked: Asked, *, resold: bool, days_away: int) -> Searched:
+        """One weekend's searches, kept in the run's file at once, and said."""
+        found = searched(asked, resold=resold)
+        self.kept += found.searches
+        fare_store.write(self.path, self.kept)
+        where = f'{asked.origin}→{asked.airport} {asked.friday}{" direct" if asked.mode == FareMode.DIRECT else ""}'
+        print(f'{where} ({days_away} days away): {said(found)}', flush=True)
         if found.declined is not None:
-            declined.append((where, found.declined))
-            if found.declined.stops or found.declined.why == fli_page.REFUSED:
-                break
-            continue
-        done += 1
+            self.declined.append((where, found.declined))
+        return found
+
+    @property
+    def over(self) -> bool:
+        """Whether the run starts no more searches: its time is up, Google refused the last one twice, or it can never
+        succeed as made."""
+        last = self.declined[-1][1] if self.declined else None
+        return time.time() > self.until or (last is not None and (last.stops or last.why == fli_page.REFUSED))
+
+
+def from_home(run: Run, history: Sequence[Search], budget: int) -> list[Weekend]:
+    """Search the weekends due today, most overdue first, within the budget: those Google answered."""
+    answered: list[Weekend] = []
+    for item in queue(history=history):
+        if not item.due or len(answered) >= budget or run.over:
+            break
+        if not item.nearest and item.airport in no_direct(latest([*history, *run.kept]).values(), now()):
+            continue  # found with no direct flight earlier in this run
+        asked = Asked(airports.home(), item.airport, item.friday, item.mode)
+        if run.search(asked, resold=True, days_away=item.days_away).declined is None:
+            answered.append(item)
         time.sleep(PAUSE)
-    live = fare_weekends.weekends(now().date())
-    print(f'{done} searches; {len(current([*history, *kept], live))} of {len(live)} festival weekends searched')
-    if why := calls.failed('searches', declined):
+    return answered
+
+
+def paired(run: Run, answered: Sequence[Weekend], pairs: int, day: dt.date) -> None:
+    """Search as many weekends as pairs of those searched from home this run, in their order, each from its other city
+    (pair_origin) in the same mode: Google alone."""
+    for item in answered[:pairs]:
+        if run.over:
+            break
+        origin = pair_origin(Asked(airports.home(), item.airport, item.friday, item.mode), day)
+        if origin == item.airport:
+            continue  # a festival flown to from that city needs no flight
+        _ = run.search(Asked(origin, item.airport, item.friday, item.mode), resold=False, days_away=item.days_away)
+        time.sleep(PAUSE)
+
+
+def refresh(budget: int, max_seconds: int) -> None:
+    """Search the weekends due today, then pair a share of those searched (PAIR_SHARE of the budget, kept for them)
+    with a search from another city, writing the run's file after each; exits 1 naming the searches that gave no
+    answer, a refusal or a stop first."""
+    history, today = fare_store.read(), now().date()
+    run, pairs = Run(fare_store.run_file(now()), time.time() + max_seconds), round(budget * PAIR_SHARE)
+    answered = from_home(run, history, budget - pairs)
+    paired(run, answered, pairs, today)
+    live = fare_weekends.weekends(today)
+    pairs_made = sum(s.origin != airports.home() for s in run.kept)
+    searched_now = len(current([*history, *run.kept], live))
+    print(f'{len(answered)} searches and {pairs_made} pairs; {searched_now} of {len(live)} festival weekends searched')
+    if why := calls.failed('searches', run.declined):
         sys.exit(why)
 
 
