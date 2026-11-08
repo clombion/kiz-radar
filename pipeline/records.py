@@ -1328,7 +1328,8 @@ class Fare(CsvRow):
 class Job(CsvRow):
     """When a festival weekend was last searched; how it went is in pipeline/fares.csv, which has its fare when the
     search found one. direct is said of a search for direct flights alone (an airport a festival could fly to beside
-    its nearest): 0 when it found none, so it is not searched again for that weekend; empty for the nearest's."""
+    its nearest): 0 when it found none, so the airport is not searched as an extra again for a while
+    (pipeline/fares.py NO_DIRECT_DAYS); empty for the nearest's."""
 
     FILE = 'pipeline/fare_jobs.csv'
 

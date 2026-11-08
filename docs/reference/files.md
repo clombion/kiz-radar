@@ -20,7 +20,7 @@ one.
 | `pipeline/airports.csv` | `Airport` | An airport a festival can fly to; home (1) is where flights leave from. |
 | `pipeline/geocode.csv` | `Place` | A place the source DB names, and where it is when Nominatim found it (its columns lat, lon and osm_name, all empty when it found none). A place is a city, in a country when the source DB names one. |
 | `pipeline/fares.csv` | `Fare` | A weekend's return flight from home: out on the Friday, back fares.NIGHTS later; its price in whole euros, the currency fares asks fli for. |
-| `pipeline/fare_jobs.csv` | `Job` | When a festival weekend was last searched; how it went is in pipeline/fares.csv, which has its fare when the search found one. direct is said of a search for direct flights alone (an airport a festival could fly to beside its nearest): 0 when it found none, so it is not searched again for that weekend; empty for the nearest's. |
+| `pipeline/fare_jobs.csv` | `Job` | When a festival weekend was last searched; how it went is in pipeline/fares.csv, which has its fare when the search found one. direct is said of a search for direct flights alone (an airport a festival could fly to beside its nearest): 0 when it found none, so the airport is not searched as an extra again for a while (pipeline/fares.py NO_DIRECT_DAYS); empty for the nearest's. |
 | `pipeline/spend.csv` | `Spent` | A request to Claude and what it cost; thinking counts as output. |
 | `pipeline/rates.csv` | `Rate` | Units of a currency per euro, on a day. |
 | `pipeline/promo_codes.csv` | `Promo` | A promo code for a festival, ours, not kizomba-world's. |

@@ -122,3 +122,18 @@ test('an airport not searched yet says so, and with none priced the card flies n
     card.remove();
   }
 });
+
+test('an airport with a direct flight Google gives no price for says so, and is not taken for one with none', () => {
+  const e = glasgow();
+  const unpriced = { ...e, options: e.options.map((o) => (o.airport === 'ABZ' ? { ...o, fare: null } : o)) };
+  const card = eventCard(unpriced);
+  document.body.append(card);
+  try {
+    card.querySelector<HTMLButtonElement>('.flights-btn')?.click();
+    const fares = [...document.querySelectorAll('dialog.peek .peek-flights li .flight-fare')].map(said);
+    expect(fares.slice(1)).toEqual(['no direct flight that weekend', 'direct, no price on Google']);
+  } finally {
+    document.querySelector<HTMLDialogElement>('dialog.peek')?.close();
+    card.remove();
+  }
+});

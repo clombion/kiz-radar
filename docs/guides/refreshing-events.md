@@ -64,8 +64,12 @@ back). Home is the airport marked `home` in `pipeline/airports.csv`; a festival'
 of its city. Its nearest is searched for any flight, on the intervals below. The others are worth it only by a direct
 flight: they are searched for direct flights alone, half as often (`EXTRA_SLOWER`), and only after every nearest
 airport's weekend due that day, within the run's 20 searches. One with no direct flight that weekend is marked so
-(`fare_jobs.csv` `direct` 0) and not searched again for it, unless it becomes a festival's nearest. `fares.csv` keeps
-each fare's `stops`, empty for those found before stops were asked.
+(`fare_jobs.csv` `direct` 0) and not searched again for it, unless it becomes a festival's nearest; and when that
+weekend is within 91 days (`SCHEDULED_DAYS`, as far ahead as airlines surely have their flights on sale), the airport is
+not searched as an extra for any weekend for 182 days (`NO_DIRECT_DAYS`), unless another of its weekends has one. A
+route from home runs most weeks of a season or not at all, and most of the airports within reach of a festival have none
+from Bergen. Google lists some direct flights with no price (Widerøe's): those count as a direct flight, with no fare.
+`fares.csv` keeps each fare's `stops`, empty for those found before stops were asked.
 
 To add the airports festivals to come can fly to, download OurAirports' `airports.csv` (ourairports.com/data, public
 domain) and run `mise run airports -- <its path>`: it adds every large or medium airport with scheduled service and an

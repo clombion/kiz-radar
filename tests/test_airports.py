@@ -36,12 +36,12 @@ def test_a_festival_flies_to_every_airport_near_enough_its_city_the_nearest_firs
 
 
 def test_the_airports_added_are_those_with_scheduled_service_near_a_festival() -> None:
-    def row(code: str, kind: str, service: str, lat: float, lon: float) -> dict[str, str]:
+    def row(code: str, kind: str, service: str, lat: float, lon: float, *, country: str = 'GB') -> dict[str, str]:
         return {
             'iata_code': code,
             'name': f'{code} Airport',
             'municipality': code.title(),
-            'iso_country': 'GB',
+            'iso_country': country,
             'type': kind,
             'scheduled_service': service,
             'latitude_deg': str(lat),
@@ -55,9 +55,11 @@ def test_the_airports_added_are_those_with_scheduled_service_near_a_festival() -
             row('PIK', 'medium_airport', 'no', 55.5094, -4.5867),  # no scheduled service
             row('', 'small_airport', 'yes', 55.9, -4.3),  # no IATA code
             row('MAN', 'large_airport', 'yes', 53.3537, -2.275),  # too far from Glasgow
+            row('ANU', 'large_airport', 'yes', 17.137, -61.793, country='AG'),  # far, country unknown
+            row('JER', 'medium_airport', 'yes', 56.0, -4.0, country='JE'),  # near (made up), country unknown
         ]
     )
-    assert [a.code for a in offered] == ['ABZ', 'EDI', 'MAN']
+    assert [a.code for a in offered] == ['ABZ', 'EDI', 'MAN', 'ANU', 'JER']
     assert (offered[0].lat, offered[0].lon, offered[0].city) == (57.202, -2.198, 'Abz')
     # EDI is in airports.csv already, and a city not geocoded has no airports
     added = airports.wanted([('Glasgow', 'United Kingdom'), ('Atlantis', None)], GEO, [EDI], offered)

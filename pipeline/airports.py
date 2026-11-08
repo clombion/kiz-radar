@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import NamedTuple
 
 from pipeline import export
+from pipeline.countries import NAMES
 from pipeline.enums import Listing
 from pipeline.records import Airport, Place, Record, today
 
@@ -103,17 +104,28 @@ class Listed(Record):
     country: str | None
 
 
-def served(rows: Iterable[Mapping[str, str]]) -> list[Airport]:
-    """The airports of OurAirports' airports.csv rows that have scheduled service and an IATA code, as records."""
+class Offered(NamedTuple):
+    """An airport as OurAirports lists it, not yet checked: only those near a festival become Airport records, so an
+    airport far away with a country the site does not know never stops the step."""
+
+    code: str
+    name: str
+    city: str
+    country_code: str
+    lat: float
+    lon: float
+
+
+def served(rows: Iterable[Mapping[str, str]]) -> list[Offered]:
+    """The airports of OurAirports' airports.csv rows that have scheduled service and an IATA code."""
     return [
-        Airport(
+        Offered(
             code=r['iata_code'],
             name=r['name'],
             city=r['municipality'] or r['name'],
             country_code=r['iso_country'],
             lat=round(float(r['latitude_deg']), 3),
             lon=round(float(r['longitude_deg']), 3),
-            home=False,
         )
         for r in rows
         if r['type'] in SERVED and r['scheduled_service'] == 'yes' and IATA.fullmatch(r['iata_code'])
@@ -124,9 +136,10 @@ def wanted(
     cities: Iterable[tuple[str | None, str | None]],
     geo: Mapping[tuple[str, str | None], Place],
     have: Sequence[Airport],
-    offered: Sequence[Airport],
+    offered: Sequence[Offered],
 ) -> list[Airport]:
-    """The airports of offered within MAX_AIRPORT_KM of a festival's city that airports.csv has not yet, by code."""
+    """The airports of offered within MAX_AIRPORT_KM of a festival's city that airports.csv has not yet, by code; one in
+    a country the site does not name (Jersey, Gibraltar …) is left out, as no festival's own country is that."""
     have_codes = {a.code for a in have}
     out: dict[str, Airport] = {}
     for city, country in cities:
@@ -134,8 +147,14 @@ def wanted(
         if not (g and g.found):
             continue
         for a in offered:
-            if a.code not in have_codes and km(g.found.lat, g.found.lon, a.lat, a.lon) <= MAX_AIRPORT_KM:
-                out[a.code] = a
+            if (
+                a.code not in have_codes
+                and a.country_code in NAMES
+                and km(g.found.lat, g.found.lon, a.lat, a.lon) <= MAX_AIRPORT_KM
+            ):
+                out[a.code] = Airport(
+                    code=a.code, name=a.name, city=a.city, country_code=a.country_code, lat=a.lat, lon=a.lon, home=False
+                )
     return sorted(out.values(), key=lambda a: a.code)
 
 

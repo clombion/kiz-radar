@@ -19,7 +19,13 @@ const flightsDialog = (): Peek => {
 function fareSaid(o: Option): Kid {
   if (o.fare !== null) return h('strong', {}, money(o.fare.price, 'EUR', { approx: true }));
   if (o.checked === null) return h('span', { class: 'muted' }, 'not checked yet');
-  return h('span', { class: 'muted' }, o.direct === false ? 'no direct flight that weekend' : 'no price found');
+  return h('span', { class: 'muted' }, noFare(o.direct));
+}
+
+// why an option checked has no fare, by whether it has a direct flight: Google lists Widerøe's with no price
+function noFare(direct: boolean | null) {
+  if (direct === true) return 'direct, no price on Google';
+  return direct === false ? 'no direct flight that weekend' : 'no price found';
 }
 
 // one airport of the festival's: its name, the card's when it is, how far, the fare and its stops, when checked, a link

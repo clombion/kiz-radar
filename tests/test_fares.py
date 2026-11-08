@@ -295,25 +295,82 @@ def test_the_other_airports_are_searched_less_often_and_after_every_nearest_due(
     assert {j.airport: j.direct for j in fares.Job.read()} == {'GLA': None, 'LIS': None, 'ABZ': True}
 
 
-def test_an_other_airport_with_no_direct_flight_is_not_searched_again_for_that_weekend(
+def two_aberdeen_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
+    """Glasgow's weekend and the next: GLA their nearest, ABZ beside it."""
+    nxt = SOON + dt.timedelta(days=7)
+    return {('GLA', SOON): True, ('ABZ', SOON): False, ('GLA', nxt): True, ('ABZ', nxt): False}
+
+
+def test_an_other_airport_with_no_direct_flight_is_not_searched_again_for_any_weekend_for_a_season(
     weekends: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setattr(fares, 'weekends', three_airports)
+    monkeypatch.setattr(fares, 'weekends', two_aberdeen_weekends)
+    asked: list[tuple[str, dt.date, bool]] = []
 
     def search(airport: str, friday: dt.date, *, direct: bool) -> Searched:
+        asked.append((airport, friday, direct))
         return fares.Missed('' if direct else 'no flights')
 
     monkeypatch.setattr(fares, 'search', search)
     fares.refresh(budget=9, max_seconds=60)
-    assert {j.airport: j.direct for j in fares.Job.read()} == {'GLA': None, 'LIS': None, 'ABZ': False, 'PIK': False}
+    # ABZ's first weekend has no direct flight, so its second is not searched, in this run or the next ones
+    assert [(a, d) for a, _, d in asked] == [('GLA', False), ('GLA', False), ('ABZ', True)]
     later = now() + dt.timedelta(days=60)  # every weekend due again by then
-    assert {w.airport for w in fares.queue(later)} == {'GLA', 'LIS'}
+    assert {w.airport for w in fares.queue(later)} == {'GLA'}
+    # a season on, the airport is tried again
+    assert 'ABZ' in {w.airport for w in fares.queue(now() + dt.timedelta(days=fares.NO_DIRECT_DAYS + 1))}
     # an airport that becomes a festival's nearest is searched again, for any flight
     monkeypatch.setattr(fares, 'weekends', aberdeen_nearest)
     assert [(w.airport, w.nearest) for w in fares.queue(later)] == [('ABZ', True)]
 
 
-def test_an_other_airport_is_searched_for_direct_flights_alone(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(subprocess, 'run', fli(PRICED, direct=True))
-    found = fares.search('GLA', FRIDAY, direct=True)
-    assert isinstance(found, fares.Fare)
+def test_an_airport_with_a_direct_flight_one_weekend_is_searched_on_its_other_weekends(
+    weekends: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    nxt, third = SOON + dt.timedelta(days=7), SOON + dt.timedelta(days=14)
+    fares.Job.write(
+        [
+            fares.Job(airport='ABZ', depart=SOON, last_run=now(), direct=False),
+            fares.Job(airport='ABZ', depart=nxt, last_run=now(), direct=True),
+        ]
+    )
+
+    def three_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
+        return {('ABZ', SOON): False, ('ABZ', nxt): False, ('ABZ', third): False}
+
+    monkeypatch.setattr(fares, 'weekends', three_weekends)
+    later = now() + dt.timedelta(days=60)
+    # all but the weekend found with none, the one never searched among them
+    assert sorted(w.friday for w in fares.queue(later)) == [nxt, third]
+
+
+def test_a_direct_flight_google_gives_no_price_for_is_still_a_direct_flight(
+    weekends: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # Widerøe's Bergen–Aberdeen, as Google lists it: the flights, with no price
+    unpriced = '{"success": true, "flights": [{"price": null, "stops": 0, "outbound": {}, "return": {}}]}'
+    monkeypatch.setattr(subprocess, 'run', fli(unpriced, direct=True))
+    assert fares.search('GLA', FRIDAY, direct=True) == fares.Missed('', listed=True)
+    monkeypatch.setattr(fares, 'weekends', two_aberdeen_weekends)
+
+    def unpriced_if_direct(_airport: str, _friday: dt.date, *, direct: bool) -> Searched:
+        return fares.Missed('', listed=direct)
+
+    monkeypatch.setattr(fares, 'search', unpriced_if_direct)
+    fares.refresh(budget=9, max_seconds=60)
+    assert {(j.airport, j.direct) for j in fares.Job.read()} == {('GLA', None), ('ABZ', True)}
+    assert 'ABZ' not in fares.no_direct(fares.Job.read(), now())
+
+
+def test_a_weekend_further_ahead_than_flights_are_on_sale_rules_out_that_weekend_alone(
+    weekends: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    far = SOON + dt.timedelta(days=fares.SCHEDULED_DAYS)
+    fares.Job.write([fares.Job(airport='ABZ', depart=far, last_run=now(), direct=False)])
+
+    def near_and_far(_: dt.date) -> dict[tuple[str, dt.date], bool]:
+        return {('ABZ', SOON): False, ('ABZ', far): False}
+
+    monkeypatch.setattr(fares, 'weekends', near_and_far)
+    assert fares.no_direct(fares.Job.read(), now()) == set()
+    assert [w.friday for w in fares.queue(now() + dt.timedelta(days=60))] == [SOON]
