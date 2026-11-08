@@ -203,6 +203,12 @@ POINTS = (
     P('fare_vendor', 'FareVendor', 'each fare search, by whom it asks', 'fares'),
     P('fare_outcome', 'FareOutcome', 'each fare search, by what it found', 'fares'),
     P('fare_ticket', 'FareTicket', 'each offer of a fare search, by the tickets it is booked on', 'fares'),
+    P(
+        'fare_family',
+        'FareFamily',
+        "each pair of searches (home's and another city's of one weekend), by the flight home's fare takes",
+        'fare_accuracy',
+    ),
 )
 
 ROWS = (
@@ -994,6 +1000,13 @@ ROWS = (
         'its flights of one direction in more than one fare component)',
         VIEW,
         'self-transfer, separate tickets',
+    ),
+    S('fare_family', 'direct', "home's cheapest fare on one ticket flies direct out", KEPT),
+    S(
+        'fare_family',
+        'connecting',
+        "home's cheapest fare on one ticket stops on the way out, or its stops are not known",
+        KEPT,
     ),
 )
 

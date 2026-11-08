@@ -11,8 +11,7 @@ from pydantic import BaseModel
 from pipeline import fare_store, fare_weekends, fares, fli_page, web
 from pipeline.calls import Declined
 from pipeline.enums import CallCause, FareMode, FareOutcome, FareTicket, FareVendor
-from pipeline.records import Airport, Offer, Search, digest, now, today
-from tests.exports import committed
+from pipeline.records import Offer, Search, digest, now, today
 from tests.fakes import no_wait
 
 FRIDAY = dt.date(2026, 11, 6)  # a festival weekend's
@@ -20,10 +19,7 @@ PAGES = Path(__file__).parent / 'pages'
 HOME = 'BGO'  # the committed airports' home
 
 
-@pytest.fixture(autouse=True)
-def airports() -> None:
-    """The committed airports, home among them, where every search leaves from."""
-    committed(Airport.FILE)
+pytestmark = pytest.mark.usefixtures('home_airports')
 
 
 def test_closer_weekends_are_searched_more_often() -> None:

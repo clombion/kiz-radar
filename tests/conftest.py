@@ -11,7 +11,7 @@ import pytest
 
 import pipeline
 from pipeline import build_site_db, claims, db
-from pipeline.records import Spent, StatusRow
+from pipeline.records import Airport, Spent, StatusRow
 from tests import exports
 from tests.fakes import SITE_CLAIMS, Memory
 from tests.repository import files, wrote
@@ -39,6 +39,12 @@ def data_folder(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
 def site_claims(data_folder: Path) -> None:
     """The tests' own claims in the test's data folder, so that a test depends on no claim of the committed ones."""
     claims.write(SITE_CLAIMS)
+
+
+@pytest.fixture
+def home_airports(data_folder: Path) -> None:
+    """The committed airports, home (BGO) among them, where every fare search from home leaves from."""
+    exports.committed(Airport.FILE)
 
 
 @pytest.fixture(scope='session')

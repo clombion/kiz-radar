@@ -1,7 +1,8 @@
 name: Refresh fares
 
 # Once a day, search the festival weekends due today (see pipeline/fares.py) and commit the run's searches, a file of the
-# fare history (pipeline/fare_offers/). If Google refuses a search, the run keeps what it found, then is marked failed;
+# fare history (pipeline/fare_offers/), with the report of how well home's fare predicts other cities'
+# (pipeline/fare_accuracy.md). If Google refuses a search, the run keeps what it found, then is marked failed;
 # the next run carries on. Publish runs once the searches are pushed.
 on:
   schedule:
@@ -38,12 +39,14 @@ jobs:
         id: search
         continue-on-error: true
         run: mise run fares -- refresh --budget "$BUDGET" --max-seconds 1200
+      - name: How well home's fare predicts the other cities'
+        run: mise run fares -- accuracy
       - name: The time, for the commit
         id: now
         run: echo "at=$(date -u +%Y-%m-%dT%H:%MZ)" >> "$GITHUB_OUTPUT"
       - uses: ./.github/actions/push
         with:
-          paths: pipeline/fare_offers
+          paths: pipeline/fare_offers pipeline/fare_accuracy.md
           bot: fares-bot
           message: Refresh fares (${{ steps.now.outputs.at }})
           then: pages.yml

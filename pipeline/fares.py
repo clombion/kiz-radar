@@ -31,6 +31,7 @@ airline). Its price is a reseller's, and the site says so; its failure fails no 
     mise run fares -- refresh --budget 20      # what the GitHub Action runs
     mise run fares -- plan                     # show what is due, without searching
     mise run fares -- show --airport LIS       # the searches kept, the latest first
+    mise run fares -- accuracy                 # write pipeline/fare_accuracy.md, from the pairs (fare_accuracy)
 """
 
 import argparse
@@ -46,7 +47,7 @@ from typing import NamedTuple, Self
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, model_validator
 
-from pipeline import airports, calls, fare_store, fare_weekends, fli_page, web
+from pipeline import airports, calls, fare_accuracy, fare_store, fare_weekends, fli_page, web
 from pipeline.calls import Declined
 from pipeline.enums import FareMode, FareOutcome, FareTicket, FareVendor
 from pipeline.fare_weekends import NIGHTS, current, direct_found, latest
@@ -468,6 +469,7 @@ def main() -> None:
     _ = r.add_argument('--budget', type=int, default=20, help='most searches of Google in this run')
     _ = r.add_argument('--max-seconds', type=int, default=1200, help='stop starting searches after this long')
     _ = sub.add_parser('plan', help='list the weekends due today, without searching')
+    _ = sub.add_parser('accuracy', help=f"write {fare_accuracy.REPORT}: how well home's fare predicts other cities'")
     s = sub.add_parser('show', help='list the searches kept, the latest first')
     _ = s.add_argument('--airport', help='the searches to this airport alone')
     _ = s.add_argument('--origin', help='the searches from this airport alone')
@@ -477,6 +479,9 @@ def main() -> None:
         refresh(a.budget, a.max_seconds)
     elif a.cmd == 'show':
         show(a.airport, a.origin, a.limit)
+    elif a.cmd == 'accuracy':
+        fare_accuracy.write(fare_store.read())
+        print(f'wrote {fare_accuracy.REPORT}')
     else:
         plan()
 

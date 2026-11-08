@@ -51,6 +51,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | **fare_vendor**, each fare search, by whom it asks | `google`, `kiwi` | fares |
 | **fare_outcome**, each fare search, by what it found | `offers`, `none`, `listed`, `failed` | fares |
 | **fare_ticket**, each offer of a fare search, by the tickets it is booked on | `one_ticket`, `self_transfer` | fares |
+| **fare_family**, each pair of searches (home's and another city's of one weekend), by the flight home's fare takes | `direct`, `connecting` | fare_accuracy |
 
 ## States
 
@@ -262,3 +263,5 @@ Every data point and every state it can be in; why the world is closed is in [St
 | fare_outcome · `failed` | kept | — | — | no answer: the vendor refused the search, or failed (its words in the note); never read as no price |
 | fare_ticket · `one_ticket` | kept | — | — | every flight out on one ticket, and every flight back on one |
 | fare_ticket · `self_transfer` | view | self-transfer, separate tickets | — | a way out or back on more than one ticket, so a missed connection is the traveller’s to pay for (Kiwi: its flights of one direction in more than one fare component) |
+| fare_family · `direct` | kept | — | — | home's cheapest fare on one ticket flies direct out |
+| fare_family · `connecting` | kept | — | — | home's cheapest fare on one ticket stops on the way out, or its stops are not known |

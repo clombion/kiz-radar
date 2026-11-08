@@ -49,6 +49,7 @@ type Point = Literal[
     'fare_vendor',
     'fare_outcome',
     'fare_ticket',
+    'fare_family',
 ]
 
 
@@ -514,6 +515,14 @@ class FareTicket(StrEnum):
 
     ONE_TICKET = 'one_ticket'
     SELF_TRANSFER = 'self_transfer'
+
+
+@unique
+class FareFamily(StrEnum):
+    """the fare_family states"""
+
+    DIRECT = 'direct'
+    CONNECTING = 'connecting'
 
 
 @unique
