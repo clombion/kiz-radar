@@ -12,7 +12,7 @@ import pytest
 from pydantic import BaseModel
 
 import pipeline
-from pipeline import ROOT, export, prompt, tickets_store
+from pipeline import ROOT, export, fare_store, prompt, tickets_store
 from pipeline import db as sqlite_db
 from pipeline.db import Transaction
 from pipeline.records import ANSWERS, CsvRow
@@ -33,6 +33,7 @@ EVERYTHING = (
     tickets_store.LOG,
     tickets_store.SITES,
     prompt.ASKED,
+    fare_store.FOLDER,
 )
 
 

@@ -7,7 +7,8 @@ kizomba-world ──scrape──▶ export (source/*.sqlite) ◀──load──
                                 │                    ◀──load── first reads + logs (pipeline/tickets/)
                                 │                    ◀──resolve── claims (claims/) + merge review answers
                                 ▼
-                    build (pipeline/build_site_db.py) ◀── fares, rates, airports, plans, promo codes (pipeline/*.csv)
+                    build (pipeline/build_site_db.py) ◀── rates, airports, plans, promo codes (pipeline/*.csv)
+                                │                    ◀── fares: the fare history (pipeline/fare_offers/)
                                 ▼
                     public/data/kiz.sqlite + site.json ──▶ the browser (sql.js)
 ```
@@ -46,7 +47,7 @@ its answers on as a patch; a later failure leaves the paid work in the run's art
 | festivals, line-ups, descriptions | kizomba-world's Events Calendar API and event pages, scraped like Chrome (curl_cffi) | CC BY-SA 4.0; the festival data here is shared under it |
 | line-ups, highlights, rooms, genres, pass prices | Claude's answers to each description | ours |
 | prices on ticket pages | the pages' rows, applied by a first read | ours |
-| fares | Google Flights, through fli | ours |
+| fares | Google Flights' outbound page, through fli; Kiwi.com where Google has no price | ours |
 | airports | `pipeline/airports.csv`; those added are OurAirports' (`mise run airports`) | public domain |
 | exchange rates | the European Central Bank | — |
 | cities' places | OpenStreetMap Nominatim, cached in `pipeline/geocode.csv` | ODbL |

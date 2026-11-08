@@ -14,7 +14,10 @@ scrape = ["curl_cffi==0.17.0"]
 ask = ["anthropic==2.3.0", "httpx2==2.16.0"]   # httpx2: its transport errors, which the SDK lets through mid-stream
 browser = ["patchright==1.55.2"]
 # Google Flights through fli (punitarani/fli), pinned to a commit: the one statement of its version
-fares = ["flights @ git+https://github.com/punitarani/fli@881aee5ff4321e81ea2157cb44be94ce6a21dc1b"]
+fares = [
+    "flights @ git+https://github.com/punitarani/fli@881aee5ff4321e81ea2157cb44be94ce6a21dc1b",
+    "tenacity==9.2.1",   # fli's retries, which pipeline/fli_page.py sets to one try
+]
 tickets = [{include-group = "ask"}, {include-group = "scrape"}, {include-group = "browser"}]
 dev = [
     "pytest==9.2.0",

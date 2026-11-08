@@ -22,6 +22,9 @@ from fli.search.client import Client
 from fli.search.exceptions import SearchClientError, SearchHTTPError
 from tenacity import stop_after_attempt
 
+from pipeline.calls import Declined
+from pipeline.enums import CallCause
+
 REFUSED = 'Google refused the search (HTTP 429)'
 TOO_MANY = 429
 
@@ -42,17 +45,6 @@ class Row:
     airlines: tuple[str, ...]
 
 
-@dataclass(frozen=True)
-class Failed:
-    """No page read: Google refused the search (refused), or fli failed, in its words."""
-
-    why: str
-
-    @property
-    def refused(self) -> bool:
-        return self.why == REFUSED
-
-
 def filters(origin: str, airport: str, friday: dt.date, back: dt.date, *, direct: bool) -> FlightSearchFilters:
     """The search: one adult, out on the Friday and back on the day given, the cheapest first, direct flights alone
     when asked."""
@@ -68,9 +60,9 @@ def filters(origin: str, airport: str, friday: dt.date, back: dt.date, *, direct
     )
 
 
-def page(origin: str, airport: str, friday: dt.date, back: dt.date, *, direct: bool) -> tuple[Row, ...] | Failed:
+def page(origin: str, airport: str, friday: dt.date, back: dt.date, *, direct: bool) -> tuple[Row, ...] | Declined:
     """The page's ways out, cheapest first (none when Google has no flight), each priced in EUR; or why there is no
-    page."""
+    page (pipeline/calls.py): refused, or fli failing, is transient; a price in another currency is structural."""
     search = SearchFlights()
     search.client = OneTry()
     try:
@@ -83,10 +75,11 @@ def page(origin: str, airport: str, friday: dt.date, back: dt.date, *, direct: b
             capture_session=False,
         )
     except SearchHTTPError as e:
-        return Failed(REFUSED if e.status_code == TOO_MANY else f'fli: {e}')
+        return Declined(CallCause.TRANSIENT, REFUSED if e.status_code == TOO_MANY else f'fli: {e}')
     except SearchClientError as e:
-        return Failed(f'fli: {e}')
+        return Declined(CallCause.TRANSIENT, f'fli: {e}')
     rows = found or []
     if wrong := {r.currency for r in rows if r.price is not None} - {'EUR'}:
-        return Failed(f'fli gave a price in {", ".join(sorted(map(str, wrong)))}, not the EUR it was asked')
+        named = ', '.join(sorted(map(str, wrong)))
+        return Declined(CallCause.STRUCTURAL, f'fli gave a price in {named}, not the EUR it was asked')
     return tuple(Row(r.price, r.stops, tuple(leg.airline.value for leg in r.legs)) for r in rows)

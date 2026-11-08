@@ -598,10 +598,12 @@ dev = [
     { name = "pytest-timeout" },
     { name = "pytest-xdist" },
     { name = "ruff" },
+    { name = "tenacity" },
     { name = "zizmor" },
 ]
 fares = [
     { name = "flights" },
+    { name = "tenacity" },
 ]
 scrape = [
     { name = "curl-cffi" },
@@ -642,9 +644,13 @@ dev = [
     { name = "pytest-timeout", specifier = "==2.4.0" },
     { name = "pytest-xdist", specifier = "==3.8.0" },
     { name = "ruff", specifier = "==0.17.3" },
+    { name = "tenacity", specifier = "==9.2.1" },
     { name = "zizmor", specifier = "==1.31.1" },
 ]
-fares = [{ name = "flights", git = "https://github.com/punitarani/fli?rev=881aee5ff4321e81ea2157cb44be94ce6a21dc1b" }]
+fares = [
+    { name = "flights", git = "https://github.com/punitarani/fli?rev=881aee5ff4321e81ea2157cb44be94ce6a21dc1b" },
+    { name = "tenacity", specifier = "==9.2.1" },
+]
 scrape = [{ name = "curl-cffi", specifier = "==0.17.0" }]
 tickets = [
     { name = "anthropic", specifier = "==2.3.0" },

@@ -1,10 +1,9 @@
 """Build public/data/kiz.sqlite, the database the site loads, from the kizomba-world source DB. It is built, never
 committed: Publish builds it with the site (mise run build:data), and a step that reads it reads one built() for it.
 
-Keeps facts (titles, dates, places, genres, features, line-ups) and links back to kizomba-world;
-drops descriptions, images and extraction quotes. Adds places, airports, per-event and per-artist
-statistics, a fares table filled from pipeline/fares.csv, and the states every coded column can hold (states, from
-pipeline/states.py).
+Keeps facts (titles, dates, places, genres, features, line-ups) and links back to kizomba-world; drops descriptions,
+images and extraction quotes. Adds places, airports, per-event and per-artist statistics, the fares derived from the
+fare history (pipeline/fare_offers/), and the states every coded column can hold (states, from pipeline/states.py).
 
     mise run build:data
 """
@@ -24,17 +23,14 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from pipeline import airports, data, enums, export, files, review, states
+from pipeline import airports, data, enums, export, fare_store, fare_weekends, files, review, states
 from pipeline import db as sqlite_db
-from pipeline import fares as fare_search
 from pipeline.countries import NAMES, codes
 from pipeline.db import Reader, Transaction
-from pipeline.enums import Feature, Genre, HomeBasis, PassKind, People, Role, Style
+from pipeline.enums import FareVendor, Feature, Genre, HomeBasis, PassKind, People, Role, Style
 from pipeline.extract import resolve_artists
 from pipeline.records import (
     Community,
-    Fare,
-    Job,
     Membership,
     Person,
     PlanRow,
@@ -238,8 +234,9 @@ create table fares (
     return text not null,
     price real not null,
     fetched_at text not null,
-    stops integer check (stops >= 0),   -- out and back together; null when not known
-    resold text,                        -- a reseller's price: the airlines flying it; null for Google's
+    stops_out integer check (stops_out >= 0),     -- null when not known (a fare kept before its stops were)
+    stops_back integer check (stops_back >= 0),   -- a reseller's alone: Google's page says the way out's
+    resold text,                                  -- a reseller's price: the airlines flying it; null for Google's
     primary key (airport, depart)
 ) strict, without rowid;
 -- every airport a festival can fly to, within max_airport_km of its city, and how far: its nearest is events.airport
@@ -249,12 +246,12 @@ create table event_airports (
     km integer not null check (km >= 0),
     primary key (event_id, airport)
 ) strict, without rowid;
--- when each festival weekend was last searched (pipeline/fare_jobs.csv), and for an airport beside a festival's
--- nearest whether it has a direct flight then (0: none, so it is not searched again for that weekend)
-create table fare_jobs (
+-- each festival weekend's latest search from home (pipeline/fares.py current): when, and for an airport beside a
+-- festival's nearest, searched for direct flights alone, whether it found one (0: none; null for a nearest's)
+create table fare_searches (
     airport text not null,
     depart text not null,
-    last_run text not null,
+    searched_at text not null,
     direct integer check (direct in (0, 1)),
     primary key (airport, depart)
 ) strict, without rowid;
@@ -724,20 +721,43 @@ def places(x: Transaction) -> None:
 
 
 def fares(x: Transaction) -> None:
-    """pipeline/fares.csv, each fare with the day it flies back (fares.NIGHTS after the Friday), which event_fares
-    joins to the events. Refresh fares starts Publish once it has pushed, so the site has the latest."""
-    back = dt.timedelta(days=fare_search.NIGHTS)
+    """The festival weekends' fares as the site shows them, derived from the fare history (fare_weekends.current):
+    for each weekend still to come of the export's festivals, its latest search from home, and its fare with the day
+    it flies back (fare_weekends.NIGHTS after the Friday), which event_fares joins to the events. Refresh fares starts
+    Publish once it has pushed, so the site has the latest."""
+    back = dt.timedelta(days=fare_weekends.NIGHTS)
+    listed = x.rows(fare_weekends.Listed, fare_weekends.LISTED.format(events='src.events'), (enums.Listing.LISTED,))
+    found = fare_weekends.current(fare_store.read(), fare_weekends.weekends_of(listed, today())).values()
     x.insert(
-        'fares',
+        'fare_searches',
         (
-            r.model_dump(mode='json')
-            | {'return': (r.depart + back).isoformat(), 'price': float(r.price), 'stops': r.stops}
-            for r in Fare.read()
+            {
+                'airport': c.searched.airport,
+                'depart': c.searched.depart.isoformat(),
+                'searched_at': c.searched.at.isoformat(),
+                'direct': None if (d := fare_weekends.direct_found(c.searched)) is None else int(d),
+            }
+            for c in found
         ),
     )
     x.insert(
-        'fare_jobs',
-        (r.model_dump(mode='json') | {'direct': None if r.direct is None else int(r.direct)} for r in Job.read()),
+        'fares',
+        (
+            {
+                'airport': c.searched.airport,
+                'depart': c.searched.depart.isoformat(),
+                'return': (c.searched.depart + back).isoformat(),
+                'price': c.fare.offer.price,
+                'fetched_at': c.fare.search.at.isoformat(),
+                'stops_out': c.fare.offer.stops_out,
+                'stops_back': c.fare.offer.stops_back,
+                'resold': ' and '.join(dict.fromkeys(c.fare.offer.airlines))
+                if c.fare.search.vendor == FareVendor.KIWI
+                else None,
+            }
+            for c in found
+            if c.fare is not None
+        ),
     )
 
 
@@ -1353,15 +1373,15 @@ DOCS = {
     'in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
     'airports': 'Airports a festival can fly to, with the city they serve; a festival can fly to any within '
     'max_airport_km (event_airports), the nearest first. home = 1 is where flights leave from.',
-    'fares': 'Round-trip economy fares from the home airport (airports.home = 1), one adult, Friday out (depart) and '
-    'Monday back (return), in euros, the cheapest Google Flights had (via fli), with its stops out and back together '
-    '(null when not known); to an airport beside a festival\u2019s nearest, direct flights alone (stops 0).',
+    'fares': 'Round-trip economy fares from home (airports.home = 1), one adult, Friday out (depart), Monday back '
+    '(return), in euros: the cheapest on one ticket of the latest search (fare_searches), Google\u2019s (stops_out '
+    'alone), or a reseller\u2019s where Google had no price (resold: its airlines).',
     'event_airports': 'Every airport within max_airport_km of each festival\u2019s city (its candidates), with km '
     'from the city; events.airport is the nearest. The site shows each with its fare (a festival\u2019s Flights) and '
     'flies to the best (site/fares.ts).',
-    'fare_jobs': 'When each festival weekend (airport, depart) was last searched (pipeline/fare_jobs.csv), and, for an '
-    'airport beside a festival\u2019s nearest, whether it has a direct flight then (direct 0: none, not searched '
-    'again).',
+    'fare_searches': 'Each festival weekend\u2019s (airport, depart) latest search from home that did not fail: when '
+    '(searched_at), and, for an airport beside a festival\u2019s nearest, searched for direct flights alone, whether '
+    'it has one then (direct 0: none, not searched again; null for a nearest airport\u2019s).',
     'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest '
     'fare that month to the same airport.',
     'artist_stats': 'Per artist with bookings of their own: bookings (as '

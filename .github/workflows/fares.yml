@@ -1,8 +1,8 @@
 name: Refresh fares
 
-# Once a day, search the festival weekends due today (see pipeline/fares.py) and commit the updated fares. If Google
-# refuses a search, the run saves what it found, then is marked failed; the next run carries on. Publish runs once the
-# fares are pushed.
+# Once a day, search the festival weekends due today (see pipeline/fares.py) and commit the run's searches, a file of the
+# fare history (pipeline/fare_offers/). If Google refuses a search, the run keeps what it found, then is marked failed;
+# the next run carries on. Publish runs once the searches are pushed.
 on:
   schedule:
     - cron: '41 5 * * *'
@@ -41,7 +41,7 @@ jobs:
         run: echo "at=$(date -u +%Y-%m-%dT%H:%MZ)" >> "$GITHUB_OUTPUT"
       - uses: ./.github/actions/push
         with:
-          paths: pipeline/fares.csv pipeline/fare_jobs.csv pipeline/fare_offers
+          paths: pipeline/fare_offers
           bot: fares-bot
           message: Refresh fares (${{ steps.now.outputs.at }})
           then: pages.yml

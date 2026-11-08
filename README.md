@@ -48,4 +48,4 @@ commands, files and states for reference. Setting up and the checks: [CONTRIBUTI
 
 Kizomba-world publishes its listings under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The festival
 data here adapts them and is shared under the same licence: the export in `source/`, the database and summary the site
-serves, and the artist merge files in `pipeline/`. The fares are our own searches.
+serves, and the artist merge files in `pipeline/`. The fares are our own searches, kept in `pipeline/fare_offers/`.

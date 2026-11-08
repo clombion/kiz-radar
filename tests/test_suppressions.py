@@ -40,7 +40,6 @@ ALLOWED = Counter(
         ('pipeline/export.py', 'S608'): 2,
         ('pipeline/extract/load_extract.py', 'S608'): 1,
         ('pipeline/extract/merge_review.py', 'S608'): 1,
-        ('pipeline/fares.py', 'S603'): 1,
         ('pipeline/read_page.py', 'S606'): 1,
         ('pipeline/read_page.py', 'S607'): 1,
         ('pipeline/scrape.py', 'S608'): 1,

@@ -1,7 +1,7 @@
 // A festival's flights, over the page: every airport it can fly to (its options), each with how far it is from the
-// festival, the Friday-to-Monday return found from home for its weekend and its stops, when it was last checked, and a
-// link to Google Flights; the one its card shows marked. A quick view (modal.ts peek): a dialog, the focus kept in it
-// and given back to the button that opened it, closed by ×, Escape, a tap outside or the back button.
+// festival, the Friday-to-Monday return found from home for its weekend and its stops each way known, when it was last
+// checked, and a link to Google Flights; the one its card shows marked. A quick view (modal.ts peek): a dialog, the
+// focus kept in it and given back to the button that opened it, closed by ×, Escape, a tap outside or the back button.
 import { button, h, type Kid, own } from './dom.ts';
 import { best, checkedAgo, FAR_KM, type Option, resoldSaid, stopsSaid, WORTH_EUR } from './fares.ts';
 import type { Festival } from './festivals.ts';

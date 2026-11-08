@@ -1,23 +1,31 @@
 // How a festival is reached from home, and what the flight and the trip cost: the one rule of a festival's fare, read
 // by its card, the festival list, the map and the Countries view. Pure: home, the fares and the prices are arguments.
 import type { Prices } from './currency.ts';
+import { KEY } from './states.ts';
+import { text } from './wording.ts';
 
 // A festival flies to any airport within max_airport_km of its city (its options, event_airports), each with the
 // Friday-to-Monday return found for its weekend from home, if one was. The card's flight is the best of them (best).
 
-// the return flight found for a weekend: its price in euros, the day it flies back (fares.return), its stops out and
-// back together (null when not known) and when it was found; resold names the airlines flying it when the price is a
-// reseller's (Google listed the flights with none), likely cheaper bought from them
+// the return flight found for a weekend: its price in euros (the return's), the day it flies back (fares.return), its
+// stops each way and when it was found; resold names the airlines flying it when the price is a reseller's (Google
+// listed the flights with none), likely cheaper bought from them
 export interface Found {
   readonly price: number;
   readonly back: string;
-  readonly stops: number | null;
+  readonly stops: Stops;
   readonly fetched: string;
   readonly resold: string | null;
 }
+// a return's stops each way: out null when not known; back a reseller's alone, Google's page saying the way out's
+export interface Stops {
+  readonly out: number | null;
+  readonly back: number | null;
+}
 
-// what a reseller's price is said to be: "reseller's price, likely cheaper from Widerøe"
-export const resoldSaid = (airlines: string): string => `reseller's price, likely cheaper from ${airlines}`;
+// what a reseller's price is said to be (pipeline/states.py): "reseller’s price, likely cheaper from Widerøe"
+export const resoldSaid = (airlines: string): string =>
+  text('fare_vendor', KEY.fare_vendor.KIWI, { airlines }, 'airlines');
 // an airport a festival can fly to: where, how far from the festival's city, the fare found for its weekend, and when
 // it was last searched, with, for one beside the nearest, whether it has a direct flight then (false: none)
 export interface Option {
@@ -101,9 +109,10 @@ export function cheapestFlights(
   return out;
 }
 
-// how many stops a return makes, out and back together: "direct", "1 stop", "3 stops", or "stops not known"
-export const stopsSaid = (stops: number | null): string =>
-  stops === null ? 'stops not known' : stops === 0 ? 'direct' : `${stops} ${stops === 1 ? 'stop' : 'stops'}`;
+// how many stops a return makes, each way it is known: "direct out", "1 stop out, direct back", or "stops not known"
+const stopping = (n: number): string => (n === 0 ? 'direct' : `${n} ${n === 1 ? 'stop' : 'stops'}`);
+export const stopsSaid = ({ out, back }: Stops): string =>
+  out === null ? 'stops not known' : `${stopping(out)} out${back === null ? '' : `, ${stopping(back)} back`}`;
 // when a search ran, said from today: "today", "yesterday", "12 days ago"
 export function checkedAgo(stamp: string, today: string): string {
   const days = Math.round((Date.parse(`${today}T12:00Z`) - Date.parse(`${stamp.slice(0, 10)}T12:00Z`)) / 86_400_000);

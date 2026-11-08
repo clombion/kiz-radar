@@ -1355,36 +1355,6 @@ class Search(Record):
         return self
 
 
-class Fare(CsvRow):
-    """A weekend's return flight from home: out on the Friday, back fares.NIGHTS later; its price in whole euros, the
-    currency fares asks fli for."""
-
-    FILE = 'pipeline/fares.csv'
-
-    airport: Iata
-    depart: Date
-    price: Count
-    fetched_at: Stamp
-    stops: Blank[Stops] = None  # out and back together; none when not known (a fare found before stops were asked)
-    # when Google listed the flights with no price and a reseller's is taken instead (pipeline/fares.py resold): the
-    # airlines flying them, from which they are likely cheaper; none for Google's own fare
-    resold: Blank[str] = None
-
-
-class Job(CsvRow):
-    """When a festival weekend was last searched; how it went is in pipeline/fares.csv, which has its fare when the
-    search found one. direct is said of a search for direct flights alone (an airport a festival could fly to beside
-    its nearest): 0 when it found none, so the airport is not searched as an extra again for a while
-    (pipeline/fares.py NO_DIRECT_DAYS); empty for the nearest's."""
-
-    FILE = 'pipeline/fare_jobs.csv'
-
-    airport: Iata
-    depart: Date
-    last_run: Stamp
-    direct: Blank[Flag] = None
-
-
 class Spent(CsvRow):
     """A request to Claude and what it cost; thinking counts as output."""
 

@@ -14,13 +14,12 @@ from pathlib import Path
 import pytest
 from pydantic import BaseModel
 
-from pipeline import airports, build_site_db, enums
+from pipeline import airports, build_site_db, enums, fare_store, fare_weekends
 from pipeline import db as sqlite_db
 from pipeline.db import Db
 from pipeline.records import (
     Airport,
     Community,
-    Fare,
     Membership,
     Person,
     Place,
@@ -29,8 +28,9 @@ from pipeline.records import (
     Spot,
     StayRow,
     Travel,
+    today,
 )
-from tests.exports import committed
+from tests.exports import EXPORT, committed
 from tests.fakes import Memory
 
 # an artist's own bookings in some roles: once per festival and role, a member's booking with their couple left to
@@ -183,6 +183,16 @@ class Flight(BaseModel, frozen=True):
     back: dt.date
     price: float
     fetched_at: dt.datetime
+    stops_out: int | None
+    stops_back: int | None
+    resold: str | None
+
+
+class Searched(BaseModel, frozen=True):
+    airport: str
+    depart: dt.date
+    searched_at: dt.datetime
+    direct: bool | None
 
 
 def built[R: BaseModel](site_db: Path, record: type[R], sql: str) -> set[R]:
@@ -471,15 +481,38 @@ def test_a_festival_is_where_geocode_csv_puts_its_city_and_flies_to_the_nearest_
     assert {(w.lat is None, w.airport is None) for w in expected} == {(True, True), (False, True), (False, False)}
 
 
-def test_a_fare_is_what_fares_csv_says_back_the_monday_after(site_db: Path) -> None:
-    committed(Fare.FILE)
-    fares = Fare.read()
+def test_a_fare_is_the_one_the_fare_history_gives_its_weekend_back_the_monday_after(site_db: Path) -> None:
+    committed(fare_store.FOLDER, Place.FILE, Airport.FILE)  # the history, and where the festivals fly to
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        listed = db.rows(fare_weekends.Listed, fare_weekends.LISTED.format(events='events'), (enums.Listing.LISTED,))
+    found = fare_weekends.current(fare_store.read(), fare_weekends.weekends_of(listed, today())).values()
     monday = dt.timedelta(days=3)  # out on the Friday, back on the Monday
-    assert built(site_db, Flight, 'select airport, depart, return as back, price, fetched_at from fares') == {
-        Flight(airport=f.airport, depart=f.depart, back=f.depart + monday, price=f.price, fetched_at=f.fetched_at)
-        for f in fares
+    flights = 'select airport, depart, return as back, price, fetched_at, stops_out, stops_back, resold from fares'
+    assert built(site_db, Flight, flights) == {
+        Flight(
+            airport=c.searched.airport,
+            depart=c.searched.depart,
+            back=c.searched.depart + monday,
+            price=c.fare.offer.price,
+            fetched_at=c.fare.search.at,
+            stops_out=c.fare.offer.stops_out,
+            stops_back=c.fare.offer.stops_back,
+            resold=None,  # every fare kept is Google's
+        )
+        for c in found
+        if c.fare is not None
     }
-    assert fares
+    searches = 'select airport, depart, searched_at, direct from fare_searches'
+    assert built(site_db, Searched, searches) == {
+        Searched(
+            airport=c.searched.airport,
+            depart=c.searched.depart,
+            searched_at=c.searched.at,
+            direct=fare_weekends.direct_found(c.searched),
+        )
+        for c in found
+    }
+    assert any(c.fare is None for c in found)  # a weekend searched with no price has a search and no fare
 
 
 # Glasgow: the festival Friday 6 to Monday 9 November, Christina leaving on the Monday at 19:10, Siân arriving on the

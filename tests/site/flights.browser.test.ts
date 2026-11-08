@@ -32,13 +32,16 @@ beforeAll(async () => {
   ] as const)
     db.run('INSERT INTO event_airports VALUES (?, ?, ?)', [GLASGOW, code, km]);
   db.run('DELETE FROM fares WHERE depart = ?', [FRIDAY]);
-  db.run('DELETE FROM fare_jobs WHERE depart = ?', [FRIDAY]);
+  db.run('DELETE FROM fare_searches WHERE depart = ?', [FRIDAY]);
   const searched = '2026-10-30T06:00:00+00:00';
-  db.run("INSERT INTO fares VALUES ('GLA', ?, '2026-11-09', 210, ?, 1, NULL)", [FRIDAY, searched]);
-  db.run("INSERT INTO fares VALUES ('ABZ', ?, '2026-11-09', 160, ?, 0, NULL)", [FRIDAY, searched]);
-  db.run("INSERT INTO fare_jobs VALUES ('GLA', ?, ?, NULL)", [FRIDAY, searched]);
-  db.run("INSERT INTO fare_jobs VALUES ('EDI', ?, ?, 0)", [FRIDAY, searched]);
-  db.run("INSERT INTO fare_jobs VALUES ('ABZ', ?, ?, 1)", [FRIDAY, searched]);
+  const fare = `INSERT INTO fares (airport, depart, return, price, fetched_at, stops_out, stops_back, resold)
+    VALUES (?, ?, '2026-11-09', ?, ?, ?, NULL, NULL)`;
+  db.run(fare, ['GLA', FRIDAY, 210, searched, 1]);
+  db.run(fare, ['ABZ', FRIDAY, 160, searched, 0]);
+  const search = 'INSERT INTO fare_searches (airport, depart, searched_at, direct) VALUES (?, ?, ?, ?)';
+  db.run(search, ['GLA', FRIDAY, searched, null]);
+  db.run(search, ['EDI', FRIDAY, searched, 0]);
+  db.run(search, ['ABZ', FRIDAY, searched, 1]);
 });
 
 // the Glasgow festival as a card has it, still to come and its flight not left, whatever the day the test runs
@@ -51,7 +54,7 @@ const said = (el: Element | null | undefined) => el?.textContent?.replace(/\s+/g
 
 test('a festival can fly to every airport near it, the nearest first, and flies to the best of their fares', () => {
   const e = glasgow();
-  expect(e.options.map((o) => [o.airport, o.km, o.fare?.price ?? null, o.fare?.stops ?? null, o.direct])).toEqual([
+  expect(e.options.map((o) => [o.airport, o.km, o.fare?.price ?? null, o.fare?.stops.out ?? null, o.direct])).toEqual([
     ['GLA', 11, 210, 1, null],
     ['EDI', 55, null, null, false],
     ['ABZ', 199, 160, 0, true],
@@ -86,9 +89,11 @@ test('Flights lists every airport with its distance, fare, stops and last check,
     ]);
     expect(rows.map((r) => r.matches('.chosen'))).toEqual([false, false, true]);
     const second = (r: Element) => said(r.querySelectorAll('p')[1]);
-    expect(second(rows[0] ?? card)).toMatch(/^11 km from Glasgow · 1 stop · checked (today|yesterday|\d+ days ago)$/u);
+    expect(second(rows[0] ?? card)).toMatch(
+      /^11 km from Glasgow · 1 stop out · checked (today|yesterday|\d+ days ago)$/u,
+    );
     expect(second(rows[1] ?? card)).toMatch(/^55 km from Glasgow · checked /u);
-    expect(second(rows[2] ?? card)).toMatch(/^199 km from Glasgow · direct · checked /u);
+    expect(second(rows[2] ?? card)).toMatch(/^199 km from Glasgow · direct out · checked /u);
     expect(said(rows[1]?.querySelector('.flight-fare'))).toBe('no direct flight that weekend');
     // a link to Google Flights for each airport with a fare, for its own weekend
     const links = rows.map((r) => r.querySelector<HTMLAnchorElement>('.flight-fare a')?.href ?? null);
@@ -147,6 +152,6 @@ test('a reseller’s price says so, and that it is likely cheaper from the airli
   const fares = await fareLines((o) =>
     o.airport === 'ABZ' && o.fare !== null ? { ...o, fare: { ...o.fare, resold: 'Widerøe' } } : o,
   );
-  expect(fares[2]).toMatch(/^~1 \d{3} kr · reseller's price, likely cheaper from Widerøe · Google Flights ↗$/u);
+  expect(fares[2]).toMatch(/^~1 \d{3} kr · reseller’s price, likely cheaper from Widerøe · Google Flights ↗$/u);
   expect(fares[0]).not.toContain('reseller');
 });

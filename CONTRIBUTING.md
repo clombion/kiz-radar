@@ -59,7 +59,7 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
 
 | Folder | What |
 | -- | -- |
-| `pipeline/` | the steps (one Python package), their records, the shared CSV files |
+| `pipeline/` | the steps (one Python package), their records, the shared CSV files, the fare history (`fare_offers/`) |
 | `pipeline/extract/` | the passes Claude answers, the load, the artists' resolution, the merge review |
 | `pipeline/tickets/` | ticket-site recipes, read logs, first reads, `status.csv` |
 | `source/` | the kizomba-world export |

@@ -11,6 +11,8 @@ from fli.search.client import Client
 from fli.search.exceptions import SearchHTTPError
 
 from pipeline import fli_page
+from pipeline.calls import Declined
+from pipeline.enums import CallCause
 from tests.fakes import no_wait
 
 PAGES = Path(__file__).parent / 'pages'
@@ -91,9 +93,7 @@ def test_a_refused_search_and_a_failed_one_are_no_page(status: int, why: str, mo
 
     monkeypatch.setattr(fli_page.OneTry, 'get', get)
     failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14), direct=False)
-    assert failed == fli_page.Failed(why)
-    assert isinstance(failed, fli_page.Failed)
-    assert failed.refused is (status == 429)
+    assert failed == Declined(CallCause.TRANSIENT, why)
     assert sent == [LISBON]
 
 
@@ -101,8 +101,8 @@ def test_a_page_fli_cannot_read_is_a_failed_search(monkeypatch: pytest.MonkeyPat
     monkeypatch.setattr('fli.search._tfs._sleep', no_wait)
     served(monkeypatch, LISBON, '<html>a consent page</html>')
     failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14), direct=False)
-    assert isinstance(failed, fli_page.Failed)
-    assert failed.why.startswith('fli: Search page carried no ds:1 payload')
+    assert isinstance(failed, Declined)
+    assert (failed.cause, failed.why[:40]) == (CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
 
 
 def test_a_price_in_another_currency_is_a_failed_search(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -128,7 +128,7 @@ def test_a_price_in_another_currency_is_a_failed_search(monkeypatch: pytest.Monk
 
     monkeypatch.setattr(SearchFlights, '_fetch_flights', in_sek)
     failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14), direct=False)
-    assert failed == fli_page.Failed('fli gave a price in SEK, not the EUR it was asked')
+    assert failed == Declined(CallCause.STRUCTURAL, 'fli gave a price in SEK, not the EUR it was asked')
 
 
 def test_a_request_google_refuses_is_sent_once(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -141,5 +141,5 @@ def test_a_request_google_refuses_is_sent_once(monkeypatch: pytest.MonkeyPatch) 
 
     monkeypatch.setattr('curl_cffi.requests.Session.get', refused)
     failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14), direct=False)
-    assert isinstance(failed, fli_page.Failed)
+    assert failed == Declined(CallCause.TRANSIENT, fli_page.REFUSED)
     assert sent == [LISBON]

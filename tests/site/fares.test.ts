@@ -79,13 +79,15 @@ test('a flight is within a step in the visitor’s currency, and one with no rat
 
 const HOME = 'XHM'; // the airport marked home, whichever it is
 // an airport a festival can fly to, this far from it, with a fare at this price (none: null), checked on 1 Nov
-const option = (airport: string, km: number, price: number | null, stops: number | null = 0): Option => ({
+const option = (airport: string, km: number, price: number | null, out: number | null = 0): Option => ({
   airport,
   name: `${airport} Airport`,
   city: airport,
   km,
   fare:
-    price === null ? null : { price, back: '2026-11-09', stops, resold: null, fetched: '2026-11-01T06:00:00+00:00' },
+    price === null
+      ? null
+      : { price, back: '2026-11-09', stops: { out, back: null }, resold: null, fetched: '2026-11-01T06:00:00+00:00' },
   checked: '2026-11-01T06:00:00+00:00',
   direct: null,
 });
@@ -100,7 +102,7 @@ test('a festival at home takes no flight, and one elsewhere the best fare of its
     km: 8,
     price: 120,
     back: '2026-11-09',
-    stops: 1,
+    stops: { out: 1, back: null },
     resold: null,
     fetched: '2026-11-01T06:00:00+00:00',
   });
@@ -120,8 +122,15 @@ test('the best airport is the cheapest within reach; one far away only when it s
   expect(chosen([option('GLA', 12, null)])).toBeNull();
 });
 
-test('an airport’s stops and when it was checked are said in words', () => {
-  expect([0, 1, 2, null].map(stopsSaid)).toEqual(['direct', '1 stop', '2 stops', 'stops not known']);
+test('an airport’s stops each way known and when it was checked are said in words', () => {
+  // Google's page says the way out's stops alone; a reseller's trip, each way's
+  expect([0, 1, 2, null].map((out) => stopsSaid({ out, back: null }))).toEqual([
+    'direct out',
+    '1 stop out',
+    '2 stops out',
+    'stops not known',
+  ]);
+  expect(stopsSaid({ out: 1, back: 0 })).toBe('1 stop out, direct back');
   const day = '2026-11-08';
   expect(
     ['2026-11-08T23:00:00+00:00', '2026-11-07T01:00:00+00:00', '2026-10-27T06:00:00+00:00'].map((s) =>
@@ -137,7 +146,7 @@ const AWAY: Fare = {
   km: 8,
   price: 120,
   back: '2026-11-09',
-  stops: 0,
+  stops: { out: 0, back: null },
   resold: null,
   fetched: '2026-11-01',
 };

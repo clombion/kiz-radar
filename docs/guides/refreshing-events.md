@@ -10,7 +10,7 @@ when to start one by hand, and how to run the same steps locally. Why an answer 
 | -- | -- | -- |
 | **Refresh events** | the 3rd of each month, or by hand | scrapes kizomba-world, reads the ticket pages, asks Claude what is due, loads the answers, resolves the artists, asks the merge review, commits; then starts **Refresh places and rates** |
 | **Refresh places and rates** | after Refresh events, or by hand | checks every state in the data (`mise run audit`), geocodes new cities, refreshes the exchange rates and the merge suggestions, commits; then starts **Publish site** |
-| **Refresh fares** | every day | searches the festival weekends due, commits the fares; then starts **Publish site** |
+| **Refresh fares** | every day | searches the festival weekends due, commits the searches (`pipeline/fare_offers/`); then starts **Publish site** |
 | **Publish site** | every push to `main`, and after the above | audits the data, builds the site and its database, publishes |
 | **Actions up to date** | monthly | fails naming each action pin with a release at least two weeks old it isn't on |
 | **Tests** | every push | `mise run check` |
@@ -59,20 +59,29 @@ failed, and run what the commit job runs (`mise run load`, `mise run resolve`) b
 ## Fares
 
 Only festival weekends are searched: the Friday-to-Monday return from home to each upcoming festival's airports, one
-search per airport and weekend, the cheapest return with its stops (`fli flights`, the cheapest way out and its ways
-back). Home is the airport marked `home` in `pipeline/airports.csv`; a festival's airports are every one within 250 km
-of its city. Its nearest is searched for any flight, on the intervals below. The others are worth it only by a direct
-flight: they are searched for direct flights alone, half as often (`EXTRA_SLOWER`), and only after every nearest
-airport's weekend due that day, within the run's 20 searches. One with no direct flight that weekend is marked so
-(`fare_jobs.csv` `direct` 0) and not searched again for it, unless it becomes a festival's nearest; and when that
-weekend is within 91 days (`SCHEDULED_DAYS`, as far ahead as airlines surely have their flights on sale), the airport is
-not searched as an extra for any weekend for 182 days (`NO_DIRECT_DAYS`), unless another of its weekends has one. A
-route from home runs most weeks of a season or not at all, and most of the airports within reach of a festival have none
-from Bergen. Google lists some direct flights with no price: Widerøe's, to anyone searching from outside Norway, as
-GitHub's runners are. For those alone the weekend is asked of a reseller, Kiwi.com's flight search (open to all, no
-key), and its price kept with the airlines flying it (`fares.csv` `resold`); the site says it is a reseller's price,
-likely cheaper from them. With none there either, the weekend counts as a direct flight with no fare. `fares.csv` keeps
-each fare's `stops`, empty for those found before stops were asked.
+search per airport and weekend. A search reads Google's outbound page, one request (`pipeline/fli_page.py`, through
+fli's private call that reads that page alone, at the commit `pyproject.toml`'s `fares` group pins): each way out is
+priced as the cheapest return that leaves by it, the price Google's booking page asks (equal on each of the 7 weekends
+checked on 8 November 2026 whose booking page gave one), with its stops on the way out; the ways back are not read, so
+the site says the stops "out". Every search is kept, with every offer it saw, in the fare history: a Parquet file per
+run in `pipeline/fare_offers/`, never written again once the run is over (`mise run fares -- show` lists them, the
+latest first). The site's fares are derived from it in the build: each festival weekend's latest search from home that
+did not fail, and its cheapest offer on one ticket. Home is the airport marked `home` in `pipeline/airports.csv`; a
+festival's airports are every one within 250 km of its city. Its nearest is searched for any flight, on the intervals
+below. The others are worth it only by a direct flight: they are searched for direct flights alone, half as often
+(`EXTRA_SLOWER`), and only after every nearest airport's weekend due that day, within the run's 20 searches. One with no
+direct flight that weekend is marked so (its search found none) and not searched again for it, unless it becomes a
+festival's nearest; and when that weekend is within 91 days (`SCHEDULED_DAYS`, as far ahead as airlines surely have
+their flights on sale), the airport is not searched as an extra for any weekend for 182 days (`NO_DIRECT_DAYS`), unless
+another of its weekends has one. A route from home runs most weeks of a season or not at all, and most of the airports
+within reach of a festival have none from Bergen. Google lists some direct flights with no price: Widerøe's, to anyone
+searching from outside Norway, as GitHub's runners are. For those alone the weekend is asked of a reseller, Kiwi.com's
+flight search (open to all, no key), each of its trips kept with its stops each way, the airlines flying it and the
+tickets it is booked on; the card takes its cheapest on one ticket, and the site says it is a reseller's price, likely
+cheaper from the airlines. With none there either, the weekend counts as a direct flight with no fare. The fares kept
+before the history was (every version of `fares.csv`, `fare_jobs.csv` and the older `docs/data/fares.csv` on main) are
+in it too, each search tagged with the file and commit it comes from (`backfill`); their stops are known only when there
+were none.
 
 To add the airports festivals to come can fly to, download OurAirports' `airports.csv` (ourairports.com/data, public
 domain) and run `mise run airports -- <its path>`: it adds every large or medium airport with scheduled service and an
@@ -89,7 +98,9 @@ place, and names each; then `mise run build:data`.
 
 Each weekend has its own weekday, so each day's run checks about a seventh of them; one never searched, or overdue by
 twice its interval, doesn't wait for its day. A weekend with no price on Google loses its fare; a search Google refuses
-is tried once more after a minute, and refused again stops the run, which keeps what it found.
+is tried once more after a minute, and refused again stops the run, which keeps what it found. A search that failed
+(refused, or fli failing) is kept as failed, never as no price, and is no search of its weekend: it is tried on the next
+run, and the run fails naming it.
 
 ## Running the steps locally
 
@@ -105,6 +116,7 @@ mise run rates
 mise run suggest-merges
 mise run fares -- plan               # what is due today
 mise run fares -- refresh --budget 4
+mise run fares -- show --airport LIS # the searches kept, the latest first
 mise run build:data                  # public/data/: kiz.sqlite, site.json, review.json; never committed
 mise run serve                       # the site at http://localhost:8000
 ```
