@@ -41,7 +41,7 @@ import {
 import { type Booked, booked, EVENT, num, opt, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { dayMonth, dayParts, dayRange, monthShort, monthYear, place, weekDay } from './ui.ts';
-import { joined, plural } from './wording.ts';
+import { joined, plural, text } from './wording.ts';
 
 // A community as its page reads it, which is what a server will give one of its members. For now it is read from
 // the site database.
@@ -159,6 +159,7 @@ interface Visit {
   span: { from: string; to: string };
   on: boolean; // from its first day to its last
   ended: boolean; // from the day after its last
+  off: string | null; // what its card says when the festival is cancelled or no longer listed, members still going
 }
 
 export function communityView(root: HTMLElement, [key]: readonly string[], qs: string, signal: AbortSignal): void {
@@ -170,11 +171,9 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
   const today = one({ day: str }, sql`SELECT day FROM today`)?.day ?? '';
   // its festivals to come and those ended: a trip goes on after its festival ends while someone is still there
   const events = withDetails(
-    q(
-      EVENT,
-      sql`SELECT * FROM event_rows WHERE phase IN (?, ?, ?) AND id IN (SELECT value FROM json_each(?)) ORDER BY start_date`,
-      [KEY.phase.AHEAD, KEY.phase.ON, KEY.phase.ENDED, JSON.stringify([...c.festivals.keys()])],
-    ),
+    q(EVENT, sql`SELECT * FROM event_rows WHERE id IN (SELECT value FROM json_each(?)) ORDER BY start_date`, [
+      JSON.stringify([...c.festivals.keys()]),
+    ]),
   ).flatMap((e) => {
     const f = c.festivals.get(e.id);
     return f === undefined ? [] : [{ e, f, who: whoGoes(e, f, c.manager) }];
@@ -198,7 +197,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
   // the trips not ended: the agenda's, the sentence's and the counts'; an ended one stays in the calendar, greyed
   const current = trips.filter((t) => !t.ended);
   const days = presence(trips.flatMap((t) => t.aways));
-  const most = busiest(presence(current.flatMap((t) => t.aways)));
+  const most = busiest(presence(current.filter((t) => t.off === null).flatMap((t) => t.aways)));
   const members = plural(c.members.length, 'member');
   // the period the calendar shows, from the address (?from=2027-02) when it is one it steps through, else today's;
   // the agenda under it its trips, those with a day in it, so that every day the calendar shows has its trips there.
@@ -253,7 +252,11 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
             `${weekDay(d)}: ${plural(on.people, 'person', 'people')} ${
               on.aways.every((a) => atFestival(a, d)) ? 'at the festival in' : 'travelling to'
             } ${placesOf(on.aways)}`,
-          festivals: trips.map(({ e, who, ended }) => ({ ...e, people: who.people, ended })),
+          festivals: trips.map(({ e, who, ended, off }) => ({
+            ...e,
+            people: who.people,
+            ended: ended || off !== null,
+          })),
           // the days someone travels on outside their festival's days: the day before it they arrive, the day after
           travel: new Set([...days].flatMap(([d, on]) => (on.aways.some((a) => !atFestival(a, d)) ? [d] : []))),
           pop: popover((d) => dayDetail(d, days.get(d), c.manager), signal),
@@ -291,7 +294,14 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
 // later, and where it stands on the day: on from its first day to its last, ended from the day after
 function visit(today: string, e: Festival, who: Visit['who'], aways: Present[]): Visit {
   const span = spanOf(e, aways);
-  return { e, who, aways, span, on: span.from <= today && today <= span.to, ended: span.to < today };
+  // a festival cancelled or no longer listed stays on the page, said so, while its members still hold their plans
+  const off =
+    e.phase === KEY.phase.CANCELLED
+      ? text('phase', e.phase)
+      : e.phase === KEY.phase.GONE
+        ? text('listing', e.listing)
+        : null;
+  return { e, who, aways, span, on: span.from <= today && today <= span.to, ended: span.to < today, off };
 }
 
 // when the next festival is, said from today: "tomorrow", "this Friday", or "on 20 Nov"
@@ -357,10 +367,9 @@ function agenda(trips: readonly Visit[], today: string, manager: Member, from: s
   });
 }
 
-// A trip's row: its days, the festival (to it on the map) and where, who of the community goes; opened, a small Gantt
-// of who travels when, the same in words, where members stay, and the festival's line-up and prices.
-function tripRow({ e, who, aways, on }: Visit, manager: Member, open: boolean): HTMLElement {
-  const id = `trip-${e.id}`;
+// A trip's chart: who travels when (a Gantt, by travel and by place when they stay apart), and the same in words.
+// It is drawn the first time its row opens, not with the agenda: a long agenda's rows mostly stay closed.
+function chartOf({ e, aways }: Visit, manager: Member, id: string): Kid[] {
   // its roster: who travels alike, a couple as one when both partners do, and the people the manager added, who never
   // say how they travel, each name of theirs saying on hover who added them
   const couples = couplesAmong(aways.flatMap((a) => (a.goer ? [a.goer] : [])));
@@ -416,21 +425,25 @@ function tripRow({ e, who, aways, on }: Visit, manager: Member, open: boolean): 
         });
   const switches =
     choice.length === 0 ? null : h('div', { class: 'gantt-views', role: 'group', 'aria-label': 'The roster' }, choice);
+  view(byPlaces === null ? 'travel' : (seen.get(e.id) ?? 'travel'));
+  return [switches, byTravel, byPlaces, said, placeSaid];
+}
+
+// A trip's row: its days, the festival (to it on the map) and where, who of the community goes; opened, a small Gantt
+// of who travels when, the same in words, where members stay, and the festival's line-up and prices.
+function tripRow(trip: Visit, manager: Member, open: boolean): HTMLElement {
+  const { e, who, on, off } = trip;
+  const id = `trip-${e.id}`;
   // the festival's line-up and prices, its card opened, in the trip's: shown from the festival's name
   const lineup = h('div', { class: 'trip-lineup', id: `${id}-lineup`, hidden: true });
-  const body = h(
-    'div',
-    { class: 'trip-body', id, hidden: !open },
-    switches,
-    byTravel,
-    byPlaces,
-    said,
-    placeSaid,
-    lineup,
-  );
-  view(byPlaces === null ? 'travel' : (seen.get(e.id) ?? 'travel'));
+  const body = h('div', { class: 'trip-body', id, hidden: !open }, open ? chartOf(trip, manager, id) : null, lineup);
+  let drawn = open;
   // the card open or not, and its line-up shown or not; a closed card shows no line-up
   const show = (opened: boolean, lineupShown: boolean) => {
+    if (opened && !drawn) {
+      body.prepend(...nodes(chartOf(trip, manager, id)));
+      drawn = true;
+    }
     if (lineupShown && lineup.childElementCount === 0)
       lineup.append(eventCard({ ...e, goers: who.goers }, { open: true }));
     body.hidden = !opened;
@@ -467,13 +480,14 @@ function tripRow({ e, who, aways, on }: Visit, manager: Member, open: boolean): 
       h(
         'p',
         {},
-        on ? [h('span', { class: 'now-tag' }, 'Now'), ' '] : null,
+        on && off === null ? [h('span', { class: 'now-tag' }, 'Now'), ' '] : null,
         h('span', { class: 'trip-when' }, daysSaid(e)),
         ' ',
         name,
         h('span', { class: 'muted' }, ' · '),
         // where it is, which leads to it on the map
         h('a', { href: eventOnMapHref(e.id) }, place(e)),
+        off === null ? null : [' ', h('span', { class: 'trip-off' }, off)],
       ),
       whoLine,
       toggle,

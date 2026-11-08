@@ -2,11 +2,13 @@
 // database, and exposes the query helpers: each reads its rows by a shape (rows.ts). The two data files come from one
 // build: both are asked again of the server each visit, and a database of another build than the summary's (a
 // publish between the two requests) is refused.
+
 import type { BindParams, Database, QueryExecResult } from 'sql.js';
 import { today } from './days.ts';
 import { list, pair, record, text } from './json.ts';
 import { get } from './net.ts';
 import { type RowOf, read, type Shape } from './rows.ts';
+import { SCHEMA } from './schema.ts';
 
 const SQLJS = new URL('../vendor/', import.meta.url); // sql-wasm.wasm, beside the script index.html loads
 const DATA = new URL('../data/', import.meta.url);
@@ -40,6 +42,23 @@ export function needs(name: string, file: string): void {
   if (!Reflect.has(globalThis, name)) throw new Error(`${file} did not load`);
 }
 
+// the database is of the tables these scripts read, or they are cached from before it changed (or after): reload
+export function sameSchema(found: unknown): void {
+  if (found !== SCHEMA) throw new Error('the site has been updated since this page was saved: reload the page');
+}
+
+// The visitor's day, the one the site reads where a festival stands by (the database's today): set as the database
+// loads, and again once the visitor's own day has moved on (a page left open past midnight), as each view shows.
+let day = '';
+export function freshDay(): string {
+  const now = today();
+  if (db !== undefined && now !== day) {
+    db.run('UPDATE today SET day = ?', [now]);
+    day = now;
+  }
+  return now;
+}
+
 // the database, once it and the summary are in (siteLoaded)
 export async function load(siteLoaded: Promise<void>): Promise<Database> {
   needs('initSqlJs', 'vendor/sql-wasm.js');
@@ -61,7 +80,10 @@ export async function load(siteLoaded: Promise<void>): Promise<Database> {
   await siteLoaded;
   const [built] = opening.exec("SELECT value FROM meta WHERE key = 'built_at'")[0]?.values[0] ?? [];
   if (built !== site().built_at) throw new Error('the site was updated while the page loaded: reload the page');
+  const [schema] = opening.exec("SELECT value FROM meta WHERE key = 'schema'")[0]?.values[0] ?? [];
+  sameSchema(schema);
   db = opening;
+  day = today();
   openCopy = open;
   return db;
 }

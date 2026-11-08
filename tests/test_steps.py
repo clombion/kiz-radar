@@ -12,7 +12,7 @@ from pathlib import Path
 import pytest
 from pydantic import BaseModel
 
-from pipeline import build_site_db, claims, data, merge_suggestions, scrape
+from pipeline import ROOT, build_site_db, claims, data, merge_suggestions, scrape
 from pipeline import db as sqlite_db
 from pipeline.claims import HomeClaim, MergeClaim
 from pipeline.db import Reader
@@ -52,7 +52,11 @@ def test_the_site_database_builds_alike_twice_with_every_table_documented(
         names = set(db.column(str, "select name from sqlite_master where type in ('table', 'view')"))
         documented = set(db.column(str, 'select name from table_docs'))
         built_at = db.column(str, "select value from meta where key = 'built_at'")
+        built_for = db.column(str, "select value from meta where key = 'schema'")
     assert names == documented
+    # the tables' digest, which the site's scripts are built for (site/schema.ts): another, and they say to reload
+    assert built_for == [build_site_db.schema()]
+    assert f"SCHEMA = '{build_site_db.schema()}'" in (ROOT / 'site' / 'schema.ts').read_text()
     page = jsons.read(data(build_site_db.SITE_JSON))
     assert [jsons.at(page, 'built_at')] == built_at
     assert without_when(page) == without_when(jsons.read(site_db.with_name(Path(build_site_db.SITE_JSON).name)))

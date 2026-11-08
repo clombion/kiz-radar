@@ -113,6 +113,14 @@ export function parseRoute(address: string): { name: string; sub: string[]; qs: 
 // What a page's address names, from the site's root (its base): a community's page by its path, c/<key>/, and every
 // other view by its hash. An older link's #community/<key> names the community's page too, and moved is the address it
 // has now, for the address bar.
+// a part of an address decoded, or as it is when it decodes to nothing (a lone %): the view then finds nothing by it
+const decoded = (part: string): string => {
+  try {
+    return decodeURIComponent(part);
+  } catch {
+    return part;
+  }
+};
 const COMMUNITY_PATH = /^c\/(?<key>[^/]+)\/(?:index\.html)?$/u;
 export function routeOf(href: string, root: string): { name: string; sub: string[]; qs: string; moved: string | null } {
   const url = new URL(href),
@@ -120,8 +128,7 @@ export function routeOf(href: string, root: string): { name: string; sub: string
   const key = url.pathname.startsWith(base)
     ? COMMUNITY_PATH.exec(url.pathname.slice(base.length))?.groups?.['key']
     : undefined;
-  if (key !== undefined)
-    return { name: 'community', sub: [decodeURIComponent(key)], qs: url.search.slice(1), moved: null };
+  if (key !== undefined) return { name: 'community', sub: [decoded(key)], qs: url.search.slice(1), moved: null };
   const { name, sub, qs } = parseRoute(url.hash);
   const [old] = sub;
   if (name === 'community' && old !== undefined && old !== '')

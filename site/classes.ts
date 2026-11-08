@@ -299,6 +299,7 @@ export type ClassName =
   | 'trip-fest'
   | 'trip-head'
   | 'trip-lineup'
+  | 'trip-off'
   | 'trip-toggle'
   | 'trip-when'
   | 'trip-who'

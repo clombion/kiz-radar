@@ -26,7 +26,7 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from pipeline import ROOT, airports, files, reference, states
+from pipeline import ROOT, airports, build_site_db, files, reference, states
 from pipeline.records import Community
 
 CSS = ROOT / 'public' / 'css'
@@ -189,11 +189,21 @@ def built() -> dict[Path, Callable[[], str]]:
     return {**FILES, **pages}
 
 
+def schema_module() -> str:
+    """site/schema.ts: the site database's tables these scripts are built for (build_site_db.schema)."""
+    return (
+        '// The site database these scripts are built for: a digest of its tables and views\n'
+        '// (pipeline/build_site_db.py schema), written by mise run generate. A database of another: reload.\n'
+        f"export const SCHEMA = '{build_site_db.schema()}';\n"
+    )
+
+
 FILES: dict[Path, Callable[[], str]] = {
     ROOT / 'pipeline' / 'enums.py': states.enums_module,
     ROOT / 'site' / 'states.ts': states.ts_module,
     ROOT / 'site' / 'classes.ts': classes_module,
     ROOT / 'lint' / 'states.grit': states_rule,
+    ROOT / 'site' / 'schema.ts': schema_module,
     INDEX: index_page,
     MANIFEST: manifest,
     **reference.PAGES,

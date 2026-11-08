@@ -151,6 +151,8 @@ test('a community’s page is its own address from the site’s root, which an o
   expect(at('#community')).toEqual({ name: 'community', sub: [], qs: '', moved: null });
   expect(routeOf(`https://x/elsewhere/c/${key}/${mapHref()}`, root).name).toBe('map');
   expect(at('c/a/b/').name).toBe('finder');
+  // a key that decodes to nothing (a lone %) is a community of none, never an error that stops the page
+  expect(at('c/%/')).toEqual({ name: 'community', sub: ['%'], qs: '', moved: null });
   // the full address the Share button gives, and a link gone to from the root
   vi.stubGlobal('document', { baseURI: root });
   const assign = vi.fn();

@@ -4,11 +4,11 @@ import { beforeAll, expect, test, vi } from 'vitest';
 import { commands, page, userEvent } from 'vitest/browser';
 import { artistsView } from '../../site/artists.ts';
 import { communityView } from '../../site/communities.ts';
-import { exec, one, sql } from '../../site/db.ts';
+import { exec, freshDay, one, sql } from '../../site/db.ts';
 import { h } from '../../site/dom.ts';
 import { festivals } from '../../site/festivals.ts';
 import { ganttByPlace } from '../../site/gantt.ts';
-import { NEAR_KM, personView } from '../../site/people.ts';
+import { NEAR_KM, personView, SAID_MS } from '../../site/people.ts';
 import { byPlace } from '../../site/roster.ts';
 import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str } from '../../site/rows.ts';
@@ -396,6 +396,55 @@ test('the people a manager added are named on the community’s page only, never
   expect(kuof?.goers.map((g) => g.key).sort()).toEqual(['cedric', 'christina']);
 });
 
+test('a trip’s chart is drawn the first time its row opens, not with the agenda', () => {
+  const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+  const rows = [...root.querySelectorAll<HTMLElement>('.trip')];
+  expect(rows.map((r) => r.querySelector('.gantt') !== null)).toEqual([true, false, false, false, false, false]);
+  rows[1]?.querySelector<HTMLElement>('.trip-toggle')?.click();
+  expect(rows[1]?.querySelectorAll('.gantt')).toHaveLength(1);
+  expect(rows[1]?.querySelector('.trip-body > .gantt + .gantt-said')).not.toBeNull(); // before its line-up, as drawn
+  rows[1]?.querySelector<HTMLElement>('.trip-toggle')?.click();
+  rows[1]?.querySelector<HTMLElement>('.trip-toggle')?.click();
+  expect(rows[1]?.querySelectorAll('.gantt')).toHaveLength(1); // once
+});
+
+test('a festival cancelled or no longer listed stays on the community’s page, said so, never on now', () => {
+  const kuof = (change: string) => db?.run(`UPDATE events SET ${change} WHERE title LIKE 'KUOF%'`);
+  const row = (root: HTMLElement) => agendaRow(root, 'KUOF');
+  try {
+    const listed = onDay('2026-11-21', () => communityPage(COMMUNITY));
+    expect([said(row(listed)?.querySelector('.now-tag')), row(listed)?.querySelector('.trip-off')]).toEqual([
+      'Now',
+      null,
+    ]);
+    kuof('cancelled = 1');
+    const cancelled = onDay('2026-11-21', () => communityPage(COMMUNITY));
+    expect(said(row(cancelled)?.querySelector('.trip-off'))).toBe('This festival was cancelled.');
+    expect(row(cancelled)?.querySelector('.now-tag')).toBeNull();
+    kuof(`cancelled = 0, listing = '${KEY.listing.GONE}'`);
+    const gone = onDay('2026-11-21', () => communityPage(COMMUNITY));
+    expect(said(row(gone)?.querySelector('.trip-off'))).toBe('This festival is no longer listed.');
+  } finally {
+    kuof(`cancelled = 0, listing = '${KEY.listing.LISTED}'`);
+  }
+});
+
+test('a page left open past midnight reads where each festival stands by the new day', () => {
+  const kuof = () => festivals().find((e) => e.title.startsWith('KUOF'));
+  vi.useFakeTimers({ toFake: ['Date'] });
+  try {
+    vi.setSystemTime(new Date(2026, 10, 21, 23, 59));
+    expect([freshDay(), kuof()?.phase]).toEqual(['2026-11-21', KEY.phase.ON]);
+    vi.setSystemTime(new Date(2026, 10, 23, 0, 1)); // the festival ended on the 22nd
+    expect(freshDay()).toBe('2026-11-23');
+    expect(one({ day: str }, sql`SELECT day FROM today`)?.day).toBe('2026-11-23');
+    expect(kuof()).toBeUndefined();
+  } finally {
+    vi.useRealTimers();
+    freshDay();
+  }
+});
+
 test('a link to no community says so', () => {
   expect(said(communityPage('no-such-community-here'))).toBe('No community at this link.');
 });
@@ -413,6 +462,40 @@ test('the community’s page shares its page for a shared link, copied when the 
   } finally {
     vi.unstubAllGlobals();
   }
+});
+
+test('the Share button says what to do when there is no clipboard or it is refused, then shows its label again', async () => {
+  const shared = async (browser: object) => {
+    const share = [...onDay('2026-11-01', () => communityPage(COMMUNITY)).querySelectorAll('button')].find(
+      (b) => b.textContent === 'Share this page',
+    );
+    vi.stubGlobal('navigator', browser);
+    vi.useFakeTimers({ toFake: ['setTimeout'] });
+    try {
+      share?.click();
+      await vi.advanceTimersByTimeAsync(0);
+      const first = share?.textContent;
+      await vi.advanceTimersByTimeAsync(SAID_MS);
+      return [first, share?.textContent];
+    } finally {
+      vi.useRealTimers();
+      vi.unstubAllGlobals();
+    }
+  };
+  const copy = 'Copy the address bar to share';
+  expect(await shared({ clipboard: { writeText: () => Promise.resolve() } })).toEqual([
+    'Link copied',
+    'Share this page',
+  ]);
+  expect(await shared({})).toEqual([copy, 'Share this page']);
+  expect(
+    await shared({ clipboard: { writeText: () => Promise.reject(new DOMException('no', 'NotAllowedError')) } }),
+  ).toEqual([copy, 'Share this page']);
+  // the visitor closing the share sheet is not refused: nothing said
+  expect(await shared({ share: () => Promise.reject(new DOMException('closed', 'AbortError')) })).toEqual([
+    'Share this page',
+    'Share this page',
+  ]);
 });
 
 // ----- the months -----

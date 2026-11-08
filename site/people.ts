@@ -55,19 +55,28 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
 
 // A button that shares a link under a title, this page's (as it is when pressed) unless another is given: the
 // device's share sheet, or else the link copied.
+// It says what it did for a moment (SAID_MS), then its label again: "Link copied", or, when the browser has no clipboard
+// or refuses it, to copy the address bar instead.
+export const SAID_MS = 2500;
 export function shareButton(label: string, title: string, link?: string): HTMLButtonElement {
+  const say = (words: string) => {
+    share.textContent = words;
+    setTimeout(() => {
+      share.textContent = label;
+    }, SAID_MS);
+  };
+  const copy = (url: string): Promise<void> =>
+    'clipboard' in navigator && typeof navigator.clipboard.writeText === 'function'
+      ? navigator.clipboard.writeText(url).then(() => say('Link copied'))
+      : Promise.reject(new Error('no clipboard'));
   const share = button(
     {
       class: 'more-btn',
       onclick: () => {
         const url = link ?? location.href;
-        (typeof navigator.share === 'function'
-          ? navigator.share({ title, url })
-          : navigator.clipboard.writeText(url).then(() => {
-              share.textContent = 'Link copied';
-            })
-        ).catch(() => {
-          /* the visitor closed the share sheet, or the browser refused the clipboard */
+        (typeof navigator.share === 'function' ? navigator.share({ title, url }) : copy(url)).catch((e: unknown) => {
+          // the visitor closing the share sheet is no failure; anything else is said, with what to do instead
+          if (!(e instanceof DOMException && e.name === 'AbortError')) say('Copy the address bar to share');
         });
       },
     },

@@ -12,6 +12,7 @@ pipeline/states.py).
 import argparse
 import collections
 import datetime as dt
+import hashlib
 import json
 import sys
 import tempfile
@@ -1234,6 +1235,13 @@ def travel(x: Transaction, person_id: Mapping[str, int], members: set[str]) -> N
     )
 
 
+def schema() -> str:
+    """The site database's tables and views, by a digest of their DDL: the site's scripts are built for one
+    (site/schema.ts, which pipeline/generate.py writes), so a script cached from before a change says to reload rather
+    than read tables that are no more."""
+    return hashlib.sha256(''.join(TABLES.values()).encode()).hexdigest()[:16]
+
+
 def events_range(x: Reader) -> tuple[str, str]:
     (found,) = x.rows(Span, 'select min(start_date) as first, max(start_date) as last from events')
     return found.first, found.last
@@ -1267,6 +1275,7 @@ def meta(x: Transaction, built_at: str) -> None:
                 ('popular_threshold', str(POPULAR)),
                 ('max_airport_km', str(airports.MAX_AIRPORT_KM)),
                 ('built_at', built_at),
+                ('schema', schema()),
                 ('events_source', 'https://kizomba-world.com/'),
                 (
                     'events_licence',

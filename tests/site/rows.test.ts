@@ -3,8 +3,9 @@
 import { readFileSync } from 'node:fs';
 import initSqlJs, { type SqlValue } from 'sql.js';
 import { expect, test } from 'vitest';
-import { summaryOf } from '../../site/db.ts';
+import { sameSchema, summaryOf } from '../../site/db.ts';
 import { ARTIST_STATS, EVENT, PASS, read, type Shape, TIER } from '../../site/rows.ts';
+import { SCHEMA } from '../../site/schema.ts';
 
 const SQL = await initSqlJs();
 const db = new SQL.Database(readFileSync(new URL('../../public/data/kiz.sqlite', import.meta.url)));
@@ -55,4 +56,16 @@ test('the summary the build writes beside the database is the one the page reads
   expect(() => readSummary({ ...summary, home: { code: summary.home.code } })).toThrow(
     'data/site.json.home.city: nothing is no field',
   );
+});
+
+test('a database of other tables than the scripts are built for says to reload, as a cached script would misread it', () => {
+  const [found] = db.exec("SELECT value FROM meta WHERE key = 'schema'")[0]?.values[0] ?? [];
+  expect(found).toBe(SCHEMA);
+  expect(() => {
+    sameSchema(found);
+  }).not.toThrow();
+  for (const other of ['0000000000000000', undefined])
+    expect(() => {
+      sameSchema(other);
+    }).toThrow('the site has been updated since this page was saved: reload the page');
 });

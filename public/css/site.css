@@ -2555,6 +2555,12 @@ html:has(dialog.search[open]) {
   font-weight: 650;
   vertical-align: 0.1em;
 }
+/* a festival cancelled or no longer listed, its members still going: said after its place */
+.trip-off {
+  color: var(--bad);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
 .trip-when {
   font-weight: 650;
   color: var(--accent);

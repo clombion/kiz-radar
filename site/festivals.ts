@@ -2,7 +2,7 @@
 // views share.
 
 import { today } from './days.ts';
-import { q, sql } from './db.ts';
+import { freshDay, q, sql } from './db.ts';
 import { h } from './dom.ts';
 import { type Fare, fareKey, fareOf, flightBegun, tripOf } from './fares.ts';
 import { DANCES } from './finder.ts';
@@ -94,11 +94,14 @@ export function withDetails(rows: readonly EventRow[]): Festival[] {
   });
 }
 
-// Everything still to come, built once for the festival list and search alike (the database doesn't change).
-let upcoming: readonly Festival[] | undefined;
+// Everything still to come, built once a day for the festival list and search alike (the database doesn't change).
+// They are built again on a new day (past midnight, the page left open), as where each festival stands is the day's.
+let upcoming: { day: string; festivals: readonly Festival[] } | undefined;
 export function festivals(): readonly Festival[] {
-  upcoming ??= withDetails(q(EVENT, sql`SELECT * FROM event_rows WHERE upcoming`));
-  return upcoming;
+  const day = freshDay();
+  if (upcoming?.day !== day)
+    upcoming = { day, festivals: withDetails(q(EVENT, sql`SELECT * FROM event_rows WHERE upcoming`)) };
+  return upcoming.festivals;
 }
 
 // the genres a card names, at most four

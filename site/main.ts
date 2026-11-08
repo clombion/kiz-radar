@@ -5,7 +5,7 @@
 import { artistsView } from './artists.ts';
 import { communityView } from './communities.ts';
 import { countriesView } from './countries.ts';
-import { load, loadSite, site } from './db.ts';
+import { freshDay, load, loadSite, site } from './db.ts';
 import { button, h, onResize, toggle } from './dom.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
@@ -99,6 +99,7 @@ const tabRows = () => [tabs, subnav];
 // Show the view the address names; scrollUp scrolls up to it (a new page, not the first one)
 function route({ scrollUp = false } = {}): void {
   const { name, sub, qs, moved } = routeOf(location.href, document.baseURI);
+  freshDay(); // the visitor's day, which may have moved on since the page loaded
   if (moved !== null) showInAddressBar(moved); // an older link's #community/<key>: the community's own address
   const from = sectionAt(at),
     to = sectionAt(name);
