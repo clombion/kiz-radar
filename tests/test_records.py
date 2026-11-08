@@ -124,6 +124,7 @@ STAY = {
     'last_night': '2026-11-22',
     'place': 'Scandic Holberg',
 }
+PLAN = {'person': 'cedric', 'event_id': '19033', 'status': 'going', 'event': 'KUOF 2026'}
 SEEDED = {
     'community': 'frost-lantern-river-maple',
     'name': 'Tonje',
@@ -197,6 +198,15 @@ def test_a_csv_row_refuses_a_value_outside_its_column(
     record.model_validate(record.cells(row))
     with pytest.raises(ValueError, match=column):
         record.model_validate(record.cells(row | {column: value}))
+
+
+def test_a_plan_is_going_or_maybe_for_a_member_and_for_someone_added() -> None:
+    """A manager says of someone added that they go or may go, as anyone says of their own plan; nothing else."""
+    for record, row in ((records.Seeded, SEEDED), (records.PlanRow, PLAN)):
+        for plan in ('going', 'maybe'):
+            assert record.model_validate(record.cells(row | {'status': plan})).status == plan
+        with pytest.raises(ValueError, match='status'):
+            record.model_validate(record.cells(row | {'status': 'perhaps'}))
 
 
 @pytest.mark.parametrize(

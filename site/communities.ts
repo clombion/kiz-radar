@@ -27,7 +27,7 @@ import { dayTimeAt, gantt, ganttByPlace, timeAt, unsaidEnd } from './gantt.ts';
 import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
 import { page, personLink, shareButton } from './people.ts';
-import { couplesAmong, doingTag, type Goer, goersInline, namesOf } from './plans.ts';
+import { couplesAmong, doingTag, type Goer, goersInline, namesOf, unsure } from './plans.ts';
 import {
   byPlace,
   type End,
@@ -47,10 +47,10 @@ import {
   readState,
   showInAddressBar,
 } from './routes.ts';
-import { type Booked, booked, EVENT, num, opt, str } from './rows.ts';
+import { type Booked, booked, EVENT, num, opt, state, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { dayMonth, dayParts, dayRange, monthShort, monthYear, place, weekDay } from './ui.ts';
-import { joined, joinedText, plural, text } from './wording.ts';
+import { joined, joinedText, type Key, plural, text } from './wording.ts';
 
 // A community as its page reads it, which is what a server will give one of its members. For now it is read from
 // the site database.
@@ -63,6 +63,7 @@ interface Member {
 interface Added {
   id: number; // its row of community_seeded: two people added may share a first name
   name: string;
+  plan: Key<'plan'>; // going, or maybe, as the manager said
   booked_as: Booked | null;
   artist: number | null;
 }
@@ -99,7 +100,7 @@ function communityOf(key: string): Community | null {
     WHERE m.community_id = ?`,
     [c.id],
   ).toSorted((a, b) => a.name.localeCompare(b.name)); // by name as it is said, Cédric before Christina
-  // each plan and each added person is going: going is a plan's one state, as every page of plans reads it
+  // each plan and each added person, going or maybe: a member's plan is read with the festival's goers (plans.ts)
   const festivals = new Map<number, Going>();
   const at = (id: number): Going => {
     const f = festivals.get(id) ?? { members: [], added: [], travel: new Map(), stays: new Map() };
@@ -114,13 +115,15 @@ function communityOf(key: string): Community | null {
   ))
     at(r.event_id).members.push(r.key);
   for (const r of q(
-    { id: num, event_id: num, name: str, booked_as: opt(booked), artist_id: opt(num) },
-    sql`SELECT id, event_id, name, booked_as, artist_id FROM seeded_rows WHERE community_id = ? ORDER BY id`,
+    { id: num, event_id: num, name: str, plan: state('plan'), booked_as: opt(booked), artist_id: opt(num) },
+    sql`SELECT id, event_id, name, status AS plan, booked_as, artist_id FROM seeded_rows WHERE community_id = ?
+    ORDER BY id`,
     [c.id],
   ))
     at(r.event_id).added.push({
       id: r.id,
       name: r.name,
+      plan: r.plan,
       booked_as: r.booked_as,
       artist: r.booked_as === null ? null : r.artist_id,
     });
@@ -205,13 +208,17 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
   );
   // the trips not ended: the agenda's, the sentence's and the counts'; an ended one stays in the calendar, greyed
   const current = trips.filter((t) => !t.ended);
-  const days = presence(trips.flatMap((t) => t.aways));
-  const most = busiest(presence(current.filter((t) => t.off === null).flatMap((t) => t.aways)));
+  // the days counted are those of the people going (or teaching), not of those who only may go, whom a day's popover
+  // names all the same
+  const sure = (t: Visit) => t.aways.filter((a) => !mayGo(a));
+  const days = presence(trips.flatMap(sure)),
+    everyone = presence(trips.flatMap((t) => t.aways));
+  const most = busiest(presence(current.filter((t) => t.off === null).flatMap(sure)));
   const members = plural(c.members.length, 'member');
   // the period the calendar shows, from the address (?from=2027-02) when it is one it steps through, else today's;
   // the agenda under it its trips, those with a day in it, so that every day the calendar shows has its trips there.
   // The sentence and "Now" or "Next" are of every trip not ended.
-  const steps = periods(today, [...days.keys()].toSorted((a, b) => a.localeCompare(b)).at(-1));
+  const steps = periods(today, [...everyone.keys()].toSorted((a, b) => a.localeCompare(b)).at(-1));
   const asked = readState(qs, { from: '' }).state.from;
   const from = steps.includes(asked) ? asked : (steps[0] ?? today.slice(0, 7));
   const plan = h('section', { class: 'agenda' }, agenda(current, today, c, from));
@@ -268,7 +275,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
           })),
           // the days someone travels on outside their festival's days: the day before it they arrive, the day after
           travel: new Set([...days].flatMap(([d, on]) => (on.aways.some((a) => !atFestival(a, d)) ? [d] : []))),
-          pop: popover((d) => dayDetail(d, days.get(d), c.manager), signal),
+          pop: popover((d) => dayDetail(d, everyone.get(d), c.manager), signal),
           from,
           steps,
           moved,
@@ -397,7 +404,10 @@ function chartOf({ e, aways }: Visit, c: Community, id: string): Kid[] {
   // called collectively by its name and its people's
   const said = h('p', { class: ['gantt-said', 'visually-hidden'], id: `${id}-said` }, lines.map(inWords).join('; '));
   const frame = { ...spanOf(e, aways), festival: e, place: e.city ?? e.title, seed: String(e.id) };
-  const named = (u: Unit<Present>) => (u.people.some((a) => a.added) ? addedBy(u.name, title) : u.name);
+  const named = (u: Unit<Present>): Kid => [
+    u.people.some((a) => a.added) ? addedBy(u.name, title) : u.name,
+    u.people.every(mayGo) ? [' ', doingTag(u.people.map(plansOf))] : null,
+  ];
   const byTravel = gantt({ ...frame, lines, named, describedBy: said.id });
   // by place too, when its people stay at two places or more: the same people, a line a place, and a control between
   const places = byPlace(goes);
@@ -512,7 +522,7 @@ const ends = (at: Moment | null, airport: string | null, which: 'arrive' | 'leav
 // said" when not, a day without its time "arrives Fri 6 Nov, time not said"), and where they stay, each place with
 // who stays there when there are several; or "not said".
 function inWords(l: Line<Present>): string {
-  const names = joinedText(l.units.map((u) => u.name));
+  const names = joinedText(l.units.map(unitSaid));
   const who = l.called === null ? names : `${l.called} (${names})`;
   const f = l.travel;
   if (f === null && l.nights === null) return `not said: ${who}`;
@@ -526,17 +536,25 @@ function inWords(l: Line<Present>): string {
       ? only.place === null
         ? ''
         : `, staying at ${only.place}`
-      : `, staying: ${l.buckets.map((b) => `${b.place ?? 'not said'}: ${joinedText(b.units.map((u) => u.name))}`).join(', ')}`;
+      : `, staying: ${l.buckets.map((b) => `${b.place ?? 'not said'}: ${joinedText(b.units.map(unitSaid))}`).join(', ')}`;
   return `${who}${flights}${stays}`;
 }
 
 // A place of a roster by where they stay in words: the place, its nights, and who stays there; or who said none.
 function placeInWords(p: Place<Present>): string {
-  const names = joinedText(p.units.map((u) => u.name));
+  const names = joinedText(p.units.map(unitSaid));
   if (p.place === null) return `place not said: ${names}`;
   const night = (d: string) => `${weekday3(d)} ${Number(d.slice(8))}`;
   return `${p.place}, the nights of ${night(p.nights.first)} to ${night(p.nights.last)}: ${names}`;
 }
+
+// a unit's name in words, "Tonje (maybe)" when all of it only may go
+const unitSaid = (u: Unit<Present>): string =>
+  u.people.every(mayGo) ? `${u.name} (${text('plan', KEY.plan.MAYBE)})` : u.name;
+// what is said of someone present: their plan, and what the line-up has them as
+const plansOf = (a: Present): Pick<Goer, 'plan' | 'booked_as'> => a.goer ?? a.added;
+// whether they only may go (plans.ts unsure)
+const mayGo = (a: Present): boolean => unsure(plansOf(a));
 
 // how each card's roster is seen, by travel or by place, for the visit: by community and festival, as two communities'
 // cards of one festival are two rosters
@@ -553,7 +571,8 @@ function whoGoes(
 ): { goers: Festival['goers']; people: number; said: () => Kid[]; counted: () => Kid[] } {
   const members = new Set(f.members),
     goers = e.goers.filter((g) => members.has(g.key));
-  const going = f.added.filter((a) => a.artist === null);
+  // those added not teaching, together, those going and then those who may, each with their tag
+  const plain = [f.added.filter((a) => a.artist === null && !unsure(a)), f.added.filter((a) => unsure(a))];
   const title = `Added by ${manager.name}`;
   const said = (): Kid[] => {
     const added = [
@@ -570,15 +589,20 @@ function whoGoes(
               ),
             ],
       ),
-      going.length > 0 ? h('span', {}, joined(going.map((a) => addedBy(a.name, title))), ' ', doingTag(going)) : null,
+      ...plain.map((them) =>
+        them.length > 0 ? h('span', {}, joined(them.map((a) => addedBy(a.name, title))), ' ', doingTag(them)) : null,
+      ),
     ].filter((x) => x !== null);
     return [goersInline(goers), goers.length > 0 && added.length > 0 ? ' · ' : null, joined(added)];
   };
-  const people = goers.length + f.added.length;
-  // "5 going · Cédric & Christina teaching": how many go, and who of them teaches, by name
+  // how many go, teaching included, and how many only may: the days and the calendar count those going alone
+  const may = goers.filter(unsure).length + f.added.filter(unsure).length,
+    people = goers.length + f.added.length - may;
+  // "5 going · 1 maybe · Cédric & Christina teaching": how many go, how many may, and who of them teaches, by name
   const teaching = [...goers.filter((g) => g.booked_as !== null), ...f.added.filter((a) => a.artist !== null)];
   const counted = (): Kid[] => [
-    `${people} going`,
+    `${people} ${text('plan', KEY.plan.GOING)}`,
+    may > 0 ? ` · ${may} ${text('plan', KEY.plan.MAYBE)}` : null,
     teaching.length > 0
       ? [
           ' · ',
@@ -618,6 +642,11 @@ function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): 
   if (on === undefined) return [h('p', { class: 'day-when' }, weekDay(day))]; // a day no one travels on opens nothing
   // each person once a festival: someone leaving one festival and arriving at another that day is at both
   const once = [...new Map(on.aways.map((a) => [`${a.who} ${a.e.id}`, a])).values()];
+  // names, each "maybe" tagged when they only may go: a couple named as one when both go, or both may
+  const tagged = (goers: readonly Goer[]): Kid[] =>
+    [goers.filter((g) => !unsure(g)), goers.filter(unsure)].flatMap((them, i) =>
+      namesOf(them).map((n) => (i === 0 ? n : h('span', {}, n, ' ', doingTag(them)))),
+    );
   const flying = (when: 'arrive' | 'leave'): Kid[] => {
     const by = new Map<string, Goer[]>();
     for (const a of once) {
@@ -627,7 +656,14 @@ function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): 
         by.set(at, [...(by.get(at) ?? []), a.goer]);
       }
     }
-    return [...by].map(([at, goers]) => `${namesOf(goers).join(' & ')} ${at}`);
+    return [...by].map(([at, goers]) =>
+      h(
+        'span',
+        {},
+        tagged(goers).flatMap((n, i) => (i === 0 ? [n] : [' & ', n])),
+        ` ${at}`,
+      ),
+    );
   };
   const flyingIn = flying('arrive'),
     flyingOut = flying('leave');
@@ -647,9 +683,11 @@ function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): 
     line('Flying in', flyingIn),
     line('Flying out', flyingOut),
     line('There', [
-      ...namesOf(there.flatMap((a) => (a.goer ? [a.goer] : []))),
-      ...there.flatMap((a) => (a.added ? [addedBy(a.added.name, title)] : [])),
+      ...tagged(there.flatMap((a) => (a.goer ? [a.goer] : []))),
+      ...there.flatMap((a) =>
+        a.added ? [[addedBy(a.added.name, title), unsure(a.added) ? [' ', doingTag([a.added])] : null]] : [],
+      ),
     ]),
-    [...stays].map(([stay, goers]) => h('p', {}, `Staying: ${stay}: `, joined(namesOf(goers)))),
+    [...stays].map(([stay, goers]) => h('p', {}, `Staying: ${stay}: `, joined(tagged(goers)))),
   ];
 }

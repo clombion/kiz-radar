@@ -21,15 +21,17 @@ import {
 } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayRange, flag, place } from './ui.ts';
+import type { Key } from './wording.ts';
 import { joined, plural, text } from './wording.ts';
 
-// someone who said they're going to a festival, and what they're booked there as, if they are
+// someone who said they're going to a festival, or that they may, and what they're booked there as, if they are
 const GOER = {
   person_id: num,
   key: str,
   name: str,
   featured: flagCol,
   event_id: num,
+  plan: state('plan'),
   booked_as: opt(booked),
 } as const;
 export interface Goer {
@@ -37,8 +39,15 @@ export interface Goer {
   key: string;
   name: string;
   featured: boolean;
+  plan: Key<'plan'>;
   booked_as: Booked | null;
 }
+// what is said of someone going: their plan (going, or maybe), and what they are booked there as, if they are
+type Plans = Pick<Goer, 'plan' | 'booked_as'>;
+// Whether someone may go, not yet going: they said maybe, and the line-up has them not, since someone booked there is
+// teaching (or playing) whatever their plan says. They are named with a "maybe" tag, and a community's days, counts
+// and sentence leave them out.
+export const unsure = (p: Plans): boolean => p.plan === KEY.plan.MAYBE && p.booked_as === null;
 // a couple whose partners are all people here
 interface Couple {
   artist: number;
@@ -59,7 +68,8 @@ function load(): { byEvent: Map<number, Goer[]>; couples: Couple[] } {
   const byEvent = new Map<number, Goer[]>();
   for (const r of q(
     GOER,
-    sql`SELECT person_id, key, name, featured, event_id, booked_as FROM plan_rows ORDER BY featured DESC, name`,
+    sql`SELECT person_id, key, name, featured, event_id, status AS plan, booked_as FROM plan_rows
+    ORDER BY featured DESC, name`,
   ))
     byEvent.set(r.event_id, [...(byEvent.get(r.event_id) ?? []), r]);
   const couples = q(
@@ -90,11 +100,11 @@ interface Going {
 export function friendsIn(
   rows: readonly { goers: Goer[] }[],
 ): { n: number; many: boolean; faces: HTMLElement; names: HTMLElement } | null {
-  const at = rows.filter((e) => e.goers.some((g) => g.featured));
+  // the friends going: someone who only may go is said so on the festival's card, not here
+  const sure = (g: Goer) => g.featured && !unsure(g);
+  const at = rows.filter((e) => e.goers.some(sure));
   if (at.length === 0) return null;
-  const people = [
-    ...new Map(at.flatMap((e) => e.goers.filter((g) => g.featured)).map((g) => [g.person_id, g])).values(),
-  ];
+  const people = [...new Map(at.flatMap((e) => e.goers.filter(sure)).map((g) => [g.person_id, g])).values()];
   return {
     n: at.length,
     many: people.length > 1,
@@ -119,13 +129,13 @@ export const couplesAmong = (goers: readonly Goer[]): Map<number, { key: string;
       n.people.length > 1 ? n.people.map((g) => [g.person_id, { key: String(n.artist), name: n.name }] as const) : [],
     ),
   );
-// goers as the names to show: a couple when both partners go, otherwise each person
+// goers as the names to show: a couple when both partners go (or both may), otherwise each person
 function named(goers: readonly Goer[]): Named[] {
   const left = new Map(goers.map((g) => [g.person_id, g])),
     out: Named[] = [];
   for (const c of load().couples) {
     const partners = c.people.flatMap((p) => left.get(p) ?? []);
-    if (partners.length < c.people.length) continue;
+    if (partners.length < c.people.length || new Set(partners.map(unsure)).size > 1) continue;
     out.push({ name: c.name, href: artistHref(c.artist), artist: c.artist, people: partners });
     for (const p of c.people) left.delete(p);
   }
@@ -133,10 +143,13 @@ function named(goers: readonly Goer[]): Named[] {
   return out;
 }
 
-// "teaching": what they do there, when every one of them is booked, as the first is; else they are going
-const doing = (people: readonly Pick<Goer, 'booked_as'>[]): string => {
+// "teaching": what they do there, when every one of them is booked, as the first is; else "maybe" when every one may
+// go, or else "going"
+const doing = (people: readonly Plans[]): { words: string; as: 'booked' | Key<'plan'> } => {
   const role = people[0]?.booked_as;
-  return role && people.every((p) => p.booked_as) ? text('role', role, {}, 'doing') : 'going';
+  if (role && people.every((p) => p.booked_as)) return { words: text('role', role, {}, 'doing'), as: 'booked' };
+  const plan = people.length > 0 && people.every(unsure) ? KEY.plan.MAYBE : KEY.plan.GOING;
+  return { words: text('plan', plan), as: plan };
 };
 const faces = (people: readonly { name: string }[]) =>
   h(
@@ -152,21 +165,31 @@ const count = (n: number) => plural(n, 'person', 'people');
 const goerName = (words: string, open: (from: Element | null) => void) =>
   button({ class: 'goer-name', onclick: own(open) }, words);
 const nameButton = (g: Named) => goerName(g.name, (b) => peekGroup(g, b));
-const tagOf = (d: string) => h('span', { class: ['plan-tag', d !== 'going' && 'booked'] }, d);
-// what these people do there, as a tag: teaching when all of them are in the line-up, else going
-export const doingTag = (people: readonly Pick<Goer, 'booked_as'>[]): HTMLElement => tagOf(doing(people));
+const tagOf = ({ words, as }: ReturnType<typeof doing>) =>
+  h('span', { class: ['plan-tag', as === 'booked' && 'booked', as === KEY.plan.MAYBE && 'unsure'] }, words);
+// what these people do there, as a tag: teaching when all of them are in the line-up, else maybe or going
+export const doingTag = (people: readonly Plans[]): HTMLElement => tagOf(doing(people));
 // someone going, in a list of who's going: their faces, their name opening their plans, and how they're going
 const goerRow = (g: Named, open: (from: Element | null) => void) =>
   h('li', {}, faces(g.people), goerName(g.name, open), ' ', tagOf(doing(g.people)));
 
-// "Cédric & Christina are going · 3 more people too", or "3 people said they're going"; null when nobody has said
+// "Cédric & Christina are going · Tonje may go · 3 more people too", or "3 people said they're going"; null when
+// nobody has said. The others are counted whether they go or may: their list says which.
 export function goingLine(e: Going): HTMLElement | null {
   if (e.goers.length === 0) return null;
   const featured = e.goers.filter((g) => g.featured),
     others = e.goers.length - featured.length;
-  const groups = named(featured),
-    many = featured.length > 1;
+  const sure = featured.filter((g) => !unsure(g)),
+    may = featured.filter(unsure);
   const more = (words: string) => goerName(words, (b) => peekEvent(e, b));
+  const said = [
+    sure.length > 0
+      ? [h('b', {}, joined(named(sure).map(nameButton))), ` ${sure.length > 1 ? 'are' : 'is'} ${doing(sure).words}`]
+      : null,
+    may.length > 0
+      ? [h('b', {}, joined(named(may).map(nameButton))), ` ${text('plan', KEY.plan.MAYBE, {}, 'line')}`]
+      : null,
+  ].filter((x) => x !== null);
   return h(
     'p',
     { class: 'going-line' },
@@ -174,12 +197,9 @@ export function goingLine(e: Going): HTMLElement | null {
     h(
       'span',
       {},
-
-      groups.length > 0
-        ? [h('b', {}, joined(groups.map(nameButton))), ` ${many ? 'are' : 'is'} ${doing(featured)}`]
-        : null,
+      said.flatMap((s, i) => (i === 0 ? [s] : [' · ', s])),
       others
-        ? groups.length > 0
+        ? said.length > 0
           ? [' · ', more(plural(others, 'more person', 'more people')), ' too']
           : [more(count(others)), ' said they’re going']
         : null,
@@ -193,7 +213,7 @@ export function whoIsGoing(e: Going): HTMLElement | null {
   return h(
     'section',
     { class: ['roster', 'who'] },
-    h('h4', {}, 'Who’s going', h('span', { class: 'n' }, e.goers.length)),
+    h('h4', {}, 'Who’s going', h('span', { class: 'n' }, counted(e.goers))),
     h(
       'ul',
       {},
@@ -201,6 +221,11 @@ export function whoIsGoing(e: Going): HTMLElement | null {
     ),
   );
 }
+// how many go, and how many may: "5", "4 · 1 maybe"
+const counted = (people: readonly Plans[]): string => {
+  const may = people.filter(unsure).length;
+  return may === 0 ? String(people.length) : `${people.length - may} · ${may} ${text('plan', KEY.plan.MAYBE)}`;
+};
 const everyone = (e: Going): Named[] => [
   ...named(e.goers.filter((g) => g.featured)),
   ...named(e.goers.filter((g) => !g.featured)),
@@ -231,6 +256,7 @@ const link = (href: string, ...kids: Kid[]) => leaving(peekDialog().m, href, ...
 const PLAN = {
   person_id: num,
   name: str,
+  plan: state('plan'),
   booked_as: opt(booked),
   id: num,
   title: str,
@@ -241,7 +267,7 @@ function plansOf(g: Named): Map<number, { e: Plan; people: Plan[] }> {
   const byEvent = new Map<number, { e: Plan; people: Plan[] }>();
   for (const r of q(
     PLAN,
-    sql`SELECT pr.person_id, pr.name, pr.booked_as, e.id, e.title, e.city, e.country_code, e.start_date, e.end_date
+    sql`SELECT pr.person_id, pr.name, pr.status AS plan, pr.booked_as, e.id, e.title, e.city, e.country_code, e.start_date, e.end_date
     FROM plan_rows pr JOIN event_rows e ON e.id = pr.event_id
     WHERE pr.person_id IN (SELECT value FROM json_each(?)) AND e.upcoming ORDER BY e.start_date`,
     [JSON.stringify(g.people.map((p) => p.person_id))],

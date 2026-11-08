@@ -900,7 +900,15 @@ ROWS = (
         forms={'search': '· no longer listed'},
     ),
     S('event_source', 'kizomba-world', 'kizomba-world.com, whose ids its source_id are', KEPT),
-    S('plan', 'going', 'they said they are going', VIEW),
+    S('plan', 'going', 'they said they are going', VIEW, 'going'),
+    S(
+        'plan',
+        'maybe',
+        'they said they may go, not yet that they are going: shown so, and left out of the days a community counts',
+        VIEW,
+        'maybe',
+        forms={'line': 'may go'},
+    ),
     S(
         'next_change',
         'door',
@@ -1119,6 +1127,7 @@ SITE_POINTS: tuple[PointName, ...] = (
     'home_basis',
     'listing',
     'phase',
+    'plan',
 )  # the site's
 
 

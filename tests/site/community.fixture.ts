@@ -30,12 +30,15 @@ const PLANS: Record<string, readonly number[]> = {
   christina: [KUOF, HOT_ICE, GLASGOW, PRAGUE_GOLD, CLOUDKIZ],
   sian: [GLASGOW, KWANZA],
 };
-// the people the manager added: name and festival
+// the plans someone only may go by, every other one going: Siân to Prague Kwanza
+const MAYBE: ReadonlySet<string> = new Set([`sian ${KWANZA}`]);
+// the people the manager added: name, festival and plan; Tonje may go to Prague GOLD too
 const ADDED = [
-  ['Tonje', KUOF],
-  ['Ragnhild', KUOF],
-  ['Maja', KUOF],
-  ['Caroline', GLASGOW],
+  ['Tonje', KUOF, KEY.plan.GOING],
+  ['Ragnhild', KUOF, KEY.plan.GOING],
+  ['Maja', KUOF, KEY.plan.GOING],
+  ['Caroline', GLASGOW, KEY.plan.GOING],
+  ['Tonje', PRAGUE_GOLD, KEY.plan.MAYBE],
 ] as const;
 // how members travel: person, festival, arrive, arrive_at, leave, leave_from
 const TRAVEL = [
@@ -75,15 +78,19 @@ export function plantCommunity(db: Database): void {
     db.run('UPDATE people SET home = ? WHERE key = ?', [home, key]);
     db.run('DELETE FROM plans WHERE person_id = (SELECT id FROM people WHERE key = ?)', [key]);
     for (const event of PLANS[key] ?? [])
-      db.run(`INSERT INTO plans SELECT id, ?, 'going' FROM people WHERE key = ?`, [event, key]);
+      db.run('INSERT INTO plans SELECT id, ?, ? FROM people WHERE key = ?', [
+        event,
+        MAYBE.has(`${key} ${event}`) ? KEY.plan.MAYBE : KEY.plan.GOING,
+        key,
+      ]);
   }
   db.run("INSERT INTO communities SELECT 1, ?, ?, id FROM people WHERE key = 'cedric'", [
     FIXTURE_COMMUNITY,
     FIXTURE_NAME,
   ]);
   for (const [key] of PEOPLE) db.run('INSERT INTO community_members SELECT 1, id FROM people WHERE key = ?', [key]);
-  for (const [i, [name, event]] of ADDED.entries())
-    db.run("INSERT INTO community_seeded VALUES (?, 1, ?, ?, 'going')", [i + 1, name, event]);
+  for (const [i, [name, event, plan]] of ADDED.entries())
+    db.run('INSERT INTO community_seeded VALUES (?, 1, ?, ?, ?)', [i + 1, name, event, plan]);
   for (const [key, ...trip] of TRAVEL)
     db.run('INSERT INTO travel SELECT id, ?, ?, ?, ?, ? FROM people WHERE key = ?', [...trip, key]);
   for (const [id, title, start, end, city, country, friday] of FESTIVALS)

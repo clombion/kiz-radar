@@ -303,6 +303,7 @@ export type ClassName =
   | 'trip-toggle'
   | 'trip-when'
   | 'trip-who'
+  | 'unsure'
   | 'up'
   | 'visually-hidden'
   | 'what'

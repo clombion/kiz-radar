@@ -2172,6 +2172,12 @@ html:has(dialog.search[open]) {
   background: var(--accent-soft);
   color: var(--accent);
 }
+/* someone who may go, not yet going: the tag in outline, not filled */
+.plan-tag.unsure {
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--muted);
+  color: var(--muted);
+}
 .sentence-hero .live .friends {
   display: flex;
   align-items: center;

@@ -430,6 +430,7 @@ class Plan(StrEnum):
     """the plan states"""
 
     GOING = 'going'
+    MAYBE = 'maybe'
 
 
 @unique

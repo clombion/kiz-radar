@@ -952,6 +952,26 @@ export const STATES = {
    "link": null,
    "counts": null
   }
+ },
+ "plan": {
+  "going": {
+   "disposition": "view",
+   "wording": "going",
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
+  "maybe": {
+   "disposition": "view",
+   "wording": "maybe",
+   "forms": {
+    "line": "may go"
+   },
+   "icon": null,
+   "link": null,
+   "counts": null
+  }
  }
 } as const satisfies Readonly<
   Record<string, Readonly<Record<string, StateRow>>>
@@ -1102,6 +1122,10 @@ export const KEY = {
   "ENDED": "ended",
   "CANCELLED": "cancelled",
   "GONE": "gone"
+ },
+ "plan": {
+  "GOING": "going",
+  "MAYBE": "maybe"
  }
 } as const;
 

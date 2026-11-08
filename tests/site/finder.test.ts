@@ -89,7 +89,7 @@ test('with a price limit a trip is kept within it, a sold-out one never, and an 
 });
 
 test('a festival is kept by its country, a dance or highlight, friends going, a checkbox and its line-up', () => {
-  const featured = { person_id: 1, key: 'p', name: 'P', featured: true, booked_as: null };
+  const featured = { person_id: 1, key: 'p', name: 'P', featured: true, plan: KEY.plan.GOING, booked_as: null };
   const all = [
     festival(1),
     festival(2, { country_code: 'ES', styles: new Set([KEY.genre.KIZOMBA, KEY.genre.SALSA]) }),

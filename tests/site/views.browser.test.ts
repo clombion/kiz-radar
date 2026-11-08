@@ -6,9 +6,11 @@ import { artistsView } from '../../site/artists.ts';
 import { communityView } from '../../site/communities.ts';
 import { exec, freshDay, one, sql } from '../../site/db.ts';
 import { h } from '../../site/dom.ts';
+import { eventCard } from '../../site/eventcard.ts';
 import { festivals } from '../../site/festivals.ts';
 import { ganttByPlace } from '../../site/gantt.ts';
 import { NEAR_KM, personView, SAID_MS } from '../../site/people.ts';
+import { doingTag, friendsIn, unsure } from '../../site/plans.ts';
 import { byPlace } from '../../site/roster.ts';
 import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str } from '../../site/rows.ts';
@@ -36,7 +38,13 @@ test('the community the tests read is the fixture alone, whatever the real rows 
     ],
   );
   expect(rows('SELECT count(*) FROM stays')).toEqual(['0']);
-  expect(rows('SELECT name FROM community_seeded ORDER BY id')).toEqual(['Tonje', 'Ragnhild', 'Maja', 'Caroline']);
+  expect(rows('SELECT name, event_id, status FROM community_seeded ORDER BY id')).toEqual([
+    'Tonje 19033 going',
+    'Ragnhild 19033 going',
+    'Maja 19033 going',
+    'Caroline 18964 going',
+    'Tonje 18666 maybe',
+  ]);
   expect(rows('SELECT key FROM communities')).toEqual([FIXTURE_COMMUNITY]);
   expect(rows("SELECT count(*) FROM plans p JOIN people pe ON pe.id = p.person_id WHERE pe.key = 'christina'")).toEqual(
     ['5'],
@@ -1877,4 +1885,85 @@ test('a day someone leaves one festival and flies to another says both', () => {
       expect(box).toContain('Flying in: Christina 22:30 OSL');
     });
   });
+});
+
+// ----- someone who may go -----
+// the fixture's: Tonje, added, may go to Prague GOLD (where Cédric and Christina go), and Siân may go to Prague Kwanza
+const PRAGUE = 'Prague GOLD';
+const tags = (el: Element | null | undefined) =>
+  [...(el?.querySelectorAll('.plan-tag') ?? [])].map((t) => [said(t), t.matches('.unsure')]);
+
+test('on the community page someone who may go is named with a maybe tag and counted apart', () => {
+  const root = onDay('2026-11-01', () => communityPage(COMMUNITY));
+  const row = agendaRow(root, PRAGUE);
+  expect(said(row?.querySelector('.trip-who'))).toBe('Cédric & Christina going · Tonje maybe');
+  expect(tags(row?.querySelector('.trip-who'))).toEqual([
+    ['going', false],
+    ['maybe', true],
+  ]);
+  opened(root, PRAGUE);
+  expect(said(row?.querySelector('.trip-who'))).toBe('2 going · 1 maybe');
+  // the roster: Tonje on her line, tagged, and in words
+  expect(tags(row?.querySelector('.gantt'))).toEqual([['maybe', true]]);
+  expect(said(row?.querySelector('.gantt-said'))).toContain('Tonje (maybe)');
+  // of those added to KUOF, Maja only may go: named apart from those going
+  db?.run(`UPDATE community_seeded SET status = '${KEY.plan.MAYBE}' WHERE name = 'Maja' AND event_id = 19033`);
+  try {
+    const kuof = agendaRow(
+      onDay('2026-11-01', () => communityPage(COMMUNITY)),
+      'KUOF',
+    );
+    expect(said(kuof?.querySelector('.trip-who'))).toBe(
+      'Cédric & Christina teaching · Tonje and Ragnhild going and Maja maybe',
+    );
+  } finally {
+    db?.run(`UPDATE community_seeded SET status = '${KEY.plan.GOING}' WHERE name = 'Maja'`);
+  }
+  // Siân, a member, may go to Prague Kwanza
+  expect(said(agendaRow(root, 'Prague Kwanza')?.querySelector('.trip-who'))).toBe('Siân maybe');
+});
+
+test('the calendar and the sentence count those going, not those who may go, whom a day’s popover names', () => {
+  inPage('2026-11-01', (root) => {
+    // Prague GOLD's days: Cédric and Christina, not Tonje
+    expect(awayOn(cellOn(root, '2027-01-15'))).toBe(2);
+    expect(countOn(root, '2027-01-15')).toBe('2');
+    cellOn(root, '2027-01-15')?.focus();
+    expect(said(popover(root))).toBe(
+      'Fri 15 JanPrague GOLD KIZ Tarraxo Festival · PragueThere: Cédric & Christina and Tonje maybe',
+    );
+    expect(tags(popover(root))).toEqual([['maybe', true]]);
+    // Prague Kwanza, where only Siân may go: no day counted
+    expect(awayOn(cellOn(root, '2027-02-12'))).toBe(0);
+  });
+  // everyone added to KUOF only maybe: KUOF counts Cédric and Christina alone, fewer than Glasgow's three
+  const sentence = () => said(onDay('2026-11-01', () => communityPage(COMMUNITY)).querySelector('.community-when'));
+  expect(sentence()).toContain('5 people, to Oslo');
+  db?.run(`UPDATE community_seeded SET status = '${KEY.plan.MAYBE}' WHERE event_id = 19033`);
+  try {
+    expect(sentence()).toBe('Most people are travelling 6–9 Nov: 3 people, to Glasgow.');
+  } finally {
+    db?.run(`UPDATE community_seeded SET status = '${KEY.plan.GOING}' WHERE event_id = 19033`);
+  }
+});
+
+test('a festival’s card and the Friends tab say who may go apart from who is going', () => {
+  const kwanza = onDay('2026-11-01', () => festivals().find((e) => e.title.startsWith('Prague Kwanza')));
+  expect(kwanza?.goers.map((g) => [g.key, g.plan])).toEqual([['sian', KEY.plan.MAYBE]]);
+  const card = kwanza === undefined ? undefined : eventCard(kwanza, { open: true });
+  expect(said(card?.querySelector('.going-line > span:last-child'))).toBe('Siân may go');
+  expect(said(card?.querySelector('.who h4'))).toBe('Who’s going0 · 1 maybe');
+  expect(tags(card?.querySelector('.who'))).toEqual([['maybe', true]]);
+  // the hero's friends going: none, as Siân only may go
+  expect(kwanza === undefined ? undefined : friendsIn([kwanza])).toBeNull();
+  const near = nearOf(onDay('2026-11-04', friendsTab));
+  expect(near.rows.find((r) => r?.includes('Kwanza'))).toBe(
+    '11–15 FebPrague Kwanza Festival – 9.edition · 🇨🇿 PragueSiân maybe',
+  );
+});
+
+test('someone in the line-up teaches there whatever their plan says, and is counted as going', () => {
+  const booked = { plan: KEY.plan.MAYBE, booked_as: KEY.role.TEACHER };
+  expect([said(doingTag([booked])), unsure(booked)]).toEqual(['teaching', false]);
+  expect([said(doingTag([{ ...booked, booked_as: null }])), said(doingTag([]))]).toEqual(['maybe', 'going']);
 });

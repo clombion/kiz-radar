@@ -41,7 +41,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | **listing**, each festival, by whether the site it comes from still lists it | `listed`, `gone` | scrape |
 | **phase**, each festival, by where it stands on the visitor's day: to come, on now, over, cancelled or no longer listed | `ahead`, `on`, `ended`, `cancelled`, `gone` | build_site_db event_rows |
 | **event_source**, the site a festival's listing comes from (source_ids) | `kizomba-world` | scrape |
-| **plan**, each plan someone shares (pipeline/plans.csv), and each a community’s manager adds for someone (seeded.csv) | `going` | pipeline/plans.csv; pipeline/seeded.csv |
+| **plan**, each plan someone shares (pipeline/plans.csv), and each a community’s manager adds for someone (seeded.csv) | `going`, `maybe` | pipeline/plans.csv; pipeline/seeded.csv |
 | **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.ts nextChange |
 | **hotel**, each pass, by whether its price includes a hotel | `included`, `none` | the prices pass; the first read |
 | **claim_source**, the channel a claim comes by, the earlier the higher its priority | `admin`, `organiser`, `model` | claims |
@@ -231,7 +231,8 @@ Every data point and every state it can be in; why the world is closed is in [St
 | phase · `cancelled` | card | This festival was cancelled. | — | listed, and cancelled |
 | phase · `gone` | kept | — | — | no longer listed: the card says so as its listing does (listing gone) |
 | event_source · `kizomba-world` | kept | — | — | kizomba-world.com, whose ids its source_id are |
-| plan · `going` | view | — | — | they said they are going |
+| plan · `going` | view | going | — | they said they are going |
+| plan · `maybe` | view | maybe | — | they said they may go, not yet that they are going: shown so, and left out of the days a community counts |
 | next_change · `door` | card | price is higher at the door | — | the next tier is the price at the door |
 | next_change · `dated` | card | price goes up {day} | — | the next tier starts on a known day |
 | next_change · `later` | card | price goes up later | — | the next tier starts on a day not known |
