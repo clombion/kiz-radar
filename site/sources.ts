@@ -84,13 +84,6 @@ export function sourcesView(root: HTMLElement): void {
         link('https://ourairports.com/data/', 'OurAirports'),
         ', in the public domain.',
       ]),
-      part('Travel times from the airports', [
-        'Coming soon: the time it takes from each airport to the festival’s city, by public transport, will come from ',
-        link('https://transitous.org/', 'Transitous'),
-        ', an open journey planner built on public transport data from many operators (',
-        link('https://transitous.org/sources/', 'its sources'),
-        ').',
-      ]),
       part(
         'Code',
         [
