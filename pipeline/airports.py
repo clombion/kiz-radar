@@ -4,6 +4,7 @@ the site's events and for the weekends fares searches."""
 
 import datetime as dt
 import math
+import sys
 from collections.abc import Mapping, Sequence
 from typing import NamedTuple
 
@@ -19,8 +20,11 @@ def known() -> list[Airport]:
 
 
 def home() -> str:
-    (code,) = [a.code for a in known() if a.home]
-    return code
+    """The airport flights leave from: the one airports.csv marks home."""
+    marked = [a.code for a in known() if a.home]
+    if len(marked) != 1:
+        sys.exit(f'airports.csv: {len(marked)} airports marked home: one is where flights leave from')
+    return marked[0]
 
 
 def km(a: float, b: float, c: float, d: float) -> float:

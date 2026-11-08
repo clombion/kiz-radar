@@ -112,7 +112,9 @@ hand, a dot under a day only travelled on), its two trips' swipes the trails of 
 car; it is an example, from no data: nothing of a community but its name is on its page or its image, so members joining
 and plans changing leave both as they are. `mise run generate` makes the page from `pipeline/communities.csv`;
 `mise run render:design` draws the image and writes beside it what it was drawn from, `share.json` (the name, and the
-digest of `design/share-card.html`). Both are committed, as the site's share card is. The tests compare each
-`share.json` with the communities and the site's card (`stale_cards`), so a community renamed, or the card's design
-changed, without drawing again fails them. The fonts, Inter and Caveat, are served from `public/fonts` under the SIL
-Open Font License.
+digest of what draws it: `design/share-card.html`, `design/render.cjs` and `public/mark.svg`, `DRAWN_FROM`). Both are
+committed, as the site's share card is. The tests compare each `share.json` with the communities and those files
+(`stale_cards`), so a community renamed, or the card's design changed, without drawing again fails them. A folder of
+`public/c/` that is no community's (one removed, or renamed to another key) fails `mise run generate --check`, and
+`mise run generate` removes it. The fonts, Inter and Caveat, are served from `public/fonts` under the SIL Open Font
+License.

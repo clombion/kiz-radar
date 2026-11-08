@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 from pipeline import ROOT, generate
-from pipeline.records import Airport, Community
+from pipeline.records import Airport, Community, Membership
 
 KEY = 'frost-lantern-river-maple'
 NAME = 'Norwegians in festivals'
@@ -44,11 +44,16 @@ def test_a_card_is_stale_when_its_name_or_the_sites_card_changes_and_only_then(
     Community.write([renamed])
     assert generate.stale_cards(folder) == [KEY]
     Community.write(communities)
-    card = tmp_path / 'share-card.html'
-    _ = card.write_text(generate.SHARE_CARD.read_text(encoding='utf-8') + '\n', encoding='utf-8')
-    monkeypatch.setattr(generate, 'SHARE_CARD', card)
-    assert generate.stale_cards(folder) == [KEY]
-    monkeypatch.undo()
+    # anything it is drawn from changed: the card, the script that draws it, the mark on it
+    for i, f in enumerate(generate.DRAWN_FROM):
+        changed = tmp_path / f.name
+        _ = changed.write_bytes(f.read_bytes() + b'\n')
+        with monkeypatch.context() as m:
+            m.setattr(generate, 'DRAWN_FROM', (*generate.DRAWN_FROM[:i], changed, *generate.DRAWN_FROM[i + 1 :]))
+            assert generate.stale_cards(folder) == [KEY], f.name
+    # its members and their plans are not what it is drawn from
+    Membership.write([])
+    assert generate.stale_cards(folder) == []
     drawn = (folder / KEY / 'share.json').read_text(encoding='utf-8')
     assert set(generate.Drawn.model_validate_json(drawn).model_dump()) == {'key', 'name', 'design'}
     (folder / 'gone').mkdir()
@@ -85,3 +90,24 @@ def test_a_communitys_description_is_its_name_escaped_in_the_one_template(commun
     meta = dict(re.findall(r'<meta (?:property|name)="([^"]+)" content="([^"]*)"', generate.community_page(odd)))
     assert meta['og:description'] == 'Kiz &amp; &quot;friends&quot; · festival plans shared on Kiz Radar'
     assert meta['og:title'] == 'Kiz &amp; &quot;friends&quot;'
+
+
+def test_a_page_of_no_community_is_stale_and_generate_removes_it(
+    communities: list[Community], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A community removed, or renamed to another key, leaves its page and image in public/c/: generate --check names
+    it, and generate removes it."""
+    folder = tmp_path / 'c'
+    _ = shutil.copytree(generate.COMMUNITY_PAGES, folder)
+    (folder / 'gone-away-for-good').mkdir()
+    assert communities
+    monkeypatch.setattr(generate, 'COMMUNITY_PAGES', folder)
+    monkeypatch.setattr(generate, 'ROOT', tmp_path)
+    assert generate.orphans() == [folder / 'gone-away-for-good']
+    monkeypatch.setattr(generate, 'built', dict)
+    monkeypatch.setattr('sys.argv', ['generate', '--check'])
+    with pytest.raises(SystemExit, match='gone-away-for-good is the page of no community'):
+        generate.main()
+    monkeypatch.setattr('sys.argv', ['generate'])
+    generate.main()
+    assert not (folder / 'gone-away-for-good').exists()

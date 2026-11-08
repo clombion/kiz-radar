@@ -368,6 +368,9 @@ def community_tables(memory: Memory) -> Db:
             Rows(seeded=(ADDED.model_copy(update={'artist_keys': ('p:nobody',)}),)),
             r'seeded.csv: unknown artist key p:nobody \(Tonje\)',
         ),
+        # one row a key
+        (Rows(found=(MANAGER, MANAGER)), 'communities.csv: a second row of key frost-lantern-river-maple'),
+        (Rows(members=(MEMBER, MEMBER)), 'community_members.csv: a second row of community and person'),
         # one person a row, never a member's name
         (Rows(seeded=(ADDED, ADDED)), 'seeded.csv: Tonje twice for event 1'),
         (
@@ -651,19 +654,21 @@ BERGEN = Place(city='Bergen', country='Norway', found=Spot(lat=60.39, lon=5.33, 
 @pytest.mark.parametrize(
     ('places', 'home', 'said'),
     [
-        ((BERGEN,), 'Atlantis', 'people.csv: the home Atlantis (Cédric) is not in geocode.csv'),
+        ((BERGEN,), 'Atlantis', "people.csv: Cédric's home, Atlantis, is not in geocode.csv"),
         # a city geocode.csv has, but did not find
         (
             (BERGEN, Place(city='Atlantis', country=None, found=None)),
             'Atlantis',
-            'people.csv: the home Atlantis (Cédric) is not in geocode.csv',
+            "people.csv: Cédric's home, Atlantis, is not in geocode.csv",
         ),
         # one name, two places: which is meant is not known
         (
             (BERGEN, Place(city='Bergen', country='Netherlands', found=Spot(lat=52.6, lon=4.7, name='Bergen, NL'))),
             'Bergen',
-            'people.csv: the home Bergen (Cédric) is in geocode.csv in more than one place',
+            "people.csv: Cédric's home, Bergen, is in geocode.csv in more than one place: write its country too",
         ),
+        # a city and a country geocode.csv has not together
+        ((BERGEN,), 'Bergen, Sweden', "people.csv: Cédric's home, Bergen, Sweden, is not in geocode.csv"),
     ],
 )
 def test_a_home_geocode_csv_cannot_place_stops_the_build(
@@ -679,6 +684,37 @@ def test_a_home_geocode_csv_cannot_place_stops_the_build(
             build_site_db.homes(x, [cedric])
 
 
+def test_a_home_with_its_country_is_where_geocode_csv_puts_it_there(memory: Memory) -> None:
+    """One name in two places: its country says which."""
+    Place.write([BERGEN, Place(city='Bergen', country='Netherlands', found=Spot(lat=52.6, lon=4.7, name='Bergen, NL'))])
+    Airport.write([HOME_AIRPORT.model_copy(update={'city': 'Oslo'})])
+    places = [*Place.read(), Place(city='Oslo', country='Norway', found=Spot(lat=59.9, lon=10.7, name='Oslo'))]
+    Place.write(places)
+    cedric = Person(key='cedric', name='Cédric', artist_keys=(), featured=True, home='Bergen, Netherlands', note='')
+    db = memory()
+    with db.transaction() as x:
+        x.script(build_site_db.TABLES['homes'])
+        build_site_db.homes(x, [cedric])
+    assert db.value(float, "select lat from homes where city = 'Bergen, Netherlands'") == 52.6
+
+
+@pytest.mark.parametrize(
+    ('airports', 'said'),
+    [
+        ([], 'airports.csv: 0 airports marked home'),
+        ([HOME_AIRPORT, HOME_AIRPORT.model_copy(update={'code': 'OSL'})], 'airports.csv: 2 airports marked home'),
+    ],
+)
+def test_one_home_airport_or_the_build_stops(memory: Memory, airports: list[Airport], said: str) -> None:
+    Place.write([BERGEN])
+    Airport.write(airports)
+    db = memory()
+    with db.transaction() as x:
+        x.script(build_site_db.TABLES['homes'])
+        with pytest.raises(SystemExit, match=said):
+            build_site_db.homes(x, [])
+
+
 def test_a_home_left_empty_is_none_and_the_sites_home_city_is_always_placed(memory: Memory) -> None:
     Place.write([BERGEN])
     Airport.write([HOME_AIRPORT])
@@ -689,3 +725,36 @@ def test_a_home_left_empty_is_none_and_the_sites_home_city_is_always_placed(memo
         build_site_db.homes(x, [sian])
     assert db.value(str, 'select city from homes') == 'Bergen'
     assert db.value(float, 'select lat from homes') == 60.39
+
+
+def test_a_second_person_of_one_key_stops_the_build(memory: Memory) -> None:
+    Person.write([Person(key='cedric', name='Cédric', artist_keys=(), featured=True, home=None, note='')] * 2)
+    PlanRow.write([])
+    db = memory()
+    with db.transaction() as x, pytest.raises(SystemExit, match=re.escape('people.csv: a second row of key cedric')):
+        _ = build_site_db.plans(x, {})
+
+
+def test_a_person_added_links_to_the_artist_record_booked(memory: Memory) -> None:
+    """Someone added who is in a line-up as half of a couple is linked to the couple's record, which is booked, and
+    not to their own (seeded_rows artist_id)."""
+    db = memory()
+    with db.transaction() as x:
+        for table in ('community_seeded', 'seeded_artists'):
+            x.script(build_site_db.TABLES[table])
+        x.script(
+            'create table event_artists (event_id integer, artist_id integer, role text, as_couple integer);'
+            ' create table couple_members (couple_id integer, member_id integer);'
+            ' create table events (id integer primary key); create table artists (id integer primary key);'
+            ' create table communities (id integer primary key)'
+        )
+        x.execute('insert into events values (5)')
+        x.execute('insert into artists values (10)')
+        x.execute('insert into artists values (20)')
+        x.execute('insert into communities values (1)')
+        x.execute("insert into community_seeded values (1, 1, 'Tonje', 5, 'going')")
+        x.execute('insert into seeded_artists values (1, 10)')  # Tonje's own record
+        x.execute('insert into couple_members values (20, 10)')  # the couple she is in
+        x.execute("insert into event_artists values (5, 20, 'teacher', null)")  # the couple teaches
+        x.script(build_site_db.TABLES['seeded_rows'])
+    assert db.value(int, 'select artist_id from seeded_rows') == 20

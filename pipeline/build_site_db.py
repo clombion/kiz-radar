@@ -471,27 +471,30 @@ create view event_rows as
 create view plan_rows as
     select p.person_id, pe.key, pe.name, pe.featured, p.event_id, p.status, {plan_booked_as} as booked_as
     from plans p join people pe on pe.id = p.person_id;
--- each person a manager added, with booked_as as a plan has it, and the artist record a booking of theirs links to
+-- each person a manager added, with booked_as as a plan has it, and the artist record that booking is (theirs, or
+-- their couple's), which their name links to
 create view seeded_rows as
     select s.id, s.community_id, s.name, s.event_id, s.status, {seeded_booked_as} as booked_as,
-      (select min(artist_id) from seeded_artists where seeded_id = s.id) as artist_id
+      {seeded_booked_artist} as artist_id
     from community_seeded s;
 """
 
 
 # the role someone going to a festival is in its line-up as, from the artist records they are (artists, of whom whose
 # holds), alone or in a couple: teacher first, then the others by name; null when they are in none
-BOOKED_AS = """(select ea.role from {artists} pa join event_artists ea on ea.event_id = {event} and ea.as_couple is null
+BOOKED_AS = """(select {column} from {artists} pa
+       join event_artists ea on ea.event_id = {event} and ea.as_couple is null
          and (ea.artist_id = pa.artist_id
               or ea.artist_id in (select couple_id from couple_members where member_id = pa.artist_id))
        where {whose} and ea.role in ({roles})
        order by ea.role = '{teacher}' desc, ea.role limit 1)"""
 
 
-def booked_as(artists: str, whose: str, event: str) -> str:
-    """BOOKED_AS for one table of artist records."""
+def booked_as(artists: str, whose: str, event: str, column: str = 'ea.role') -> str:
+    """BOOKED_AS for one table of artist records: the role of the booking (or, with column, its artist record)."""
     return BOOKED_AS.format_map(
         {
+            'column': column,
             'artists': artists,
             'whose': whose,
             'event': event,
@@ -508,6 +511,7 @@ TABLES = sqlite_db.declared(
         | {
             'plan_booked_as': booked_as('person_artists', 'pa.person_id = p.person_id', 'p.event_id'),
             'seeded_booked_as': booked_as('seeded_artists', 'pa.seeded_id = s.id', 's.event_id'),
+            'seeded_booked_artist': booked_as('seeded_artists', 'pa.seeded_id = s.id', 's.event_id', 'ea.artist_id'),
             'booked_roles': ',\n    '.join(f'{r} integer not null' for r in BOOKED_ROLES),
             'priced': enums.Price.PRICED,
             'teacher': Role.TEACHER,
@@ -899,23 +903,44 @@ def event_stats(x: Transaction, booked: Booked) -> None:
 
 
 def homes(x: Transaction, people: Sequence[Person]) -> None:
-    """The cities people live in, and the site's home city (its home airport's), each where geocode.csv puts it, by
-    its name alone: a city it has not found, or found in two places, stops the build."""
-    found: dict[str, set[tuple[float, float]]] = {}
+    """The cities people live in, and the site's home city (its home airport's), each where geocode.csv puts it: by
+    its city and country (a home written "Amsterdam, Netherlands"), or by its city alone when geocode.csv has it in one
+    place only. A city it has not found, or found in two places with no country to choose, stops the build, naming the
+    file that says it."""
+    found: dict[str, dict[str | None, tuple[float, float]]] = {}
     for p in airports.places().values():
         if p.found:
-            found.setdefault(p.city, set()).add((p.found.lat, p.found.lon))
-    (site_home,) = [a.city for a in airports.known() if a.home]
-    cities = {site_home: 'the home airport'} | {r.home: r.name for r in people if r.home is not None}
+            found.setdefault(p.city, {})[p.country] = (p.found.lat, p.found.lon)
+    home = [a for a in airports.known() if a.home]
+    if len(home) != 1:
+        sys.exit(f'airports.csv: {len(home)} airports marked home: one is where flights leave from')
+    named = {home[0].city: "airports.csv: the home airport's city"} | {
+        r.home: f"people.csv: {r.name}'s home" for r in people if r.home is not None
+    }
     rows: list[Mapping[str, object]] = []
-    for city, whose in sorted(cities.items()):
-        spots = found.get(city, set())
-        if len(spots) != 1:
-            said = 'not in geocode.csv' if not spots else 'in geocode.csv in more than one place'
-            sys.exit(f'people.csv: the home {city} ({whose}) is {said}')
-        ((lat, lon),) = spots
-        rows.append({'city': city, 'lat': lat, 'lon': lon})
+    for written, whose in sorted(named.items()):
+        city, _, country = written.rpartition(', ') if ', ' in written else (written, '', None)
+        spots = found.get(city, {})
+        at = {country: spots[country]} if country in spots else spots if country is None else {}
+        if len(set(at.values())) != 1:
+            said = (
+                'in geocode.csv in more than one place: write its country too ("City, Country")'
+                if at
+                else 'not in geocode.csv'
+            )
+            sys.exit(f'{whose}, {written}, is {said}')
+        ((lat, lon),) = set(at.values())
+        rows.append({'city': written, 'lat': lat, 'lon': lon})
     x.insert('homes', rows)
+
+
+def once(file: str, what: str, keys: Sequence[object]) -> None:
+    """Each row of a file by its key once: a second is refused by name, as the database would refuse it unnamed."""
+    seen: set[object] = set()
+    for k in keys:
+        if k in seen:
+            sys.exit(f'{file}: a second row of {what} {k}')
+        seen.add(k)
 
 
 def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
@@ -924,6 +949,7 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
     plan says a person is going to a festival; booked_as says when they are in its line-up too, as themselves or in a
     couple, so the site can say "teaching" instead."""
     people = Person.read()
+    once('people.csv', 'key', [r.key for r in people])
     person_id = {r.key: i for i, r in enumerate(people, 1)}
     for r in people:
         if unknown := [k for k in r.artist_keys if k not in key_id]:
@@ -940,6 +966,7 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
         ({'person_id': person_id[r.key], 'artist_id': key_id[k]} for r in people for k in r.artist_keys),
     )
     plans_ = PlanRow.read()
+    once('plans.csv', 'person and event', [(r.person, r.event_id) for r in plans_])
     known = set(x.column(int, 'select id from events'))
     for r in plans_:
         if r.person not in person_id:
@@ -960,8 +987,10 @@ def communities(x: Transaction, person_id: Mapping[str, int]) -> tuple[dict[str,
     community's id by its key, and the members, which the people added (added) and how members travel (travel)
     read."""
     found = Community.read()
+    once('communities.csv', 'key', [r.key for r in found])
     community_id = {r.key: i for i, r in enumerate(found, 1)}
     members = Membership.read()
+    once('community_members.csv', 'community and person', [(r.community, r.person) for r in members])
     for r in members:
         if r.community not in community_id:
             sys.exit(f'community_members.csv: no community {r.community} in communities.csv')

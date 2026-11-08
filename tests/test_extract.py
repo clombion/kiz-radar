@@ -1250,6 +1250,7 @@ def test_generate_writes_what_differs_and_check_names_it(
     built = tmp_path / 'built.md'
     monkeypatch.setattr(generate, 'ROOT', tmp_path)
     monkeypatch.setattr(generate, 'FILES', {built: lambda: 'from the table\n'})
+    monkeypatch.setattr(generate, 'COMMUNITY_PAGES', tmp_path / 'c')  # no community's page
     Community.write([])  # no community, so no community's page
     monkeypatch.setattr('sys.argv', ['generate', '--check'])
     with pytest.raises(SystemExit, match=r'built\.md differs from what it is built from'):

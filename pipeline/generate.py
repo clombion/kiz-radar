@@ -19,6 +19,7 @@ import hashlib
 import html
 import json
 import re
+import shutil
 import sys
 from collections.abc import Callable
 from pathlib import Path
@@ -114,6 +115,8 @@ def manifest() -> str:
 SITE = 'https://clombion.github.io/kiz-radar/'  # where the site is published, as public/index.html's canonical link
 COMMUNITY_PAGES = ROOT / 'public' / 'c'  # a community's page for a shared link and its image, by its key, under it
 SHARE_CARD = ROOT / 'design' / 'share-card.html'  # the site's share card, of which a community's is a variant
+# what a community's card is drawn from beside its name: the card, the script that draws it, the mark on it
+DRAWN_FROM = (SHARE_CARD, ROOT / 'design' / 'render.cjs', ROOT / 'public' / 'mark.svg')
 # a community's description where its link is shared, made of its name alone, so that no change to its data changes it
 COMMUNITY_SAID = '{name} · festival plans shared on Kiz Radar'
 # the tags of index.html's head a community's page has its own of: its base, title, description, canonical link, card
@@ -164,7 +167,10 @@ class Drawn(BaseModel, frozen=True):
 
 def drawn_now(c: Community) -> Drawn:
     """What a community's share image is drawn from now."""
-    return Drawn(key=c.key, name=c.name, design=hashlib.sha256(SHARE_CARD.read_bytes()).hexdigest())
+    digest = hashlib.sha256()
+    for f in DRAWN_FROM:
+        digest.update(f.read_bytes())
+    return Drawn(key=c.key, name=c.name, design=digest.hexdigest())
 
 
 def stale_cards(folder: Path = COMMUNITY_PAGES) -> list[str]:
@@ -206,17 +212,30 @@ def main() -> None:
     stale = [
         path for path, build in files_built.items() if not path.exists() or path.read_text(encoding='utf-8') != build()
     ]
+    gone = orphans()
     if check:
-        if stale:
+        if stale or gone:
             sys.exit(
                 '\n'.join(
-                    f'{p.relative_to(ROOT)} differs from what it is built from: run mise run generate' for p in stale
+                    [f'{p.relative_to(ROOT)} differs from what it is built from: run mise run generate' for p in stale]
+                    + [f'{p.relative_to(ROOT)} is the page of no community: run mise run generate' for p in gone]
                 )
             )
         return
     for path in stale:
         files.write(path, files_built[path]())
         print(f'wrote {path.relative_to(ROOT)}')
+    for path in gone:
+        shutil.rmtree(path)
+        print(f'removed {path.relative_to(ROOT)}')
+
+
+def orphans() -> list[Path]:
+    """The folders of public/c/ that are the page of no community (one removed, or renamed to another key), with its
+    image: published still until generate removes them."""
+    keys = {c.key for c in Community.read()}
+    folder = COMMUNITY_PAGES
+    return sorted(p for p in folder.iterdir() if p.is_dir() and p.name not in keys) if folder.is_dir() else []
 
 
 if __name__ == '__main__':
