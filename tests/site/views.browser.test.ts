@@ -1709,7 +1709,7 @@ test('the Friends tab lists the people near the home city, then the rest of the 
   const home = homeOf()?.city ?? '';
   expect(home).not.toBe('');
   expect(near.heading).toBe(`Near ${home}`);
-  expect(said(root.querySelector('.lede'))).toBe('Dancers who share their festival plans, by where they live.');
+  expect(said(root.querySelector('.lede'))).toBe('All the dancers in the community with public plans.');
   // no line under the heading: what the list is is behind its (i)
   expect(root.querySelector('.friends-near h2 + p')?.matches('.info-card')).toBe(true);
   expect(root.querySelector('.friends-near p.muted')).toBeNull();

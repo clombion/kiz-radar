@@ -132,7 +132,7 @@ function everyone(root: HTMLElement): void {
   const home = homeCity();
   page(
     root,
-    ['Who’s going where', h('p', { class: 'lede' }, 'Dancers who share their festival plans, by where they live.')],
+    ['Who’s going where', h('p', { class: 'lede' }, 'All the dancers in the community with public plans.')],
     h('section', { class: 'friends-near' }, nearHere(home ?? null, home?.city ?? 'home')),
     h(
       'section',
