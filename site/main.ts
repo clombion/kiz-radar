@@ -5,7 +5,7 @@
 import { artistsView } from './artists.ts';
 import { communityView } from './communities.ts';
 import { countriesView } from './countries.ts';
-import { freshDay, load, loadSite, site } from './db.ts';
+import { freshDay, load, loadSite } from './db.ts';
 import { button, h, onResize, toggle } from './dom.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
@@ -25,10 +25,11 @@ import {
 } from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';
+import { sourcesView } from './sources.ts';
 import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
 import { pill, slide } from './tabs.ts';
-import { dayYear, loading, monthYear, scrolling } from './ui.ts';
+import { loading, scrolling } from './ui.ts';
 
 // Every link and file from the site's root, whatever address the page moves to: index.html's <base> (../../ on a
 // community's page, c/<key>/), made a full address once, as the page loads, with the site-wide choices of the address
@@ -76,6 +77,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
   artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView },
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, _, qs) => countriesView(root, qs) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) },
+  sources: { title: 'Sources', nav: null, waitsForData: false, show: (root) => sourcesView(root) },
   friends: { title: 'Friends', nav: 'friends', waitsForData: true, show: (root, sub) => personView(root, sub) },
   community: {
     title: 'Community',
@@ -176,7 +178,7 @@ const toTop = button(
 document.body.append(toTop);
 addEventListener('scroll', () => toggle(toTop, 'shown', scrollY > 2 * innerHeight), { passive: true });
 
-// the page once site.json is in: what the data covers, search, and the view the address names, then
+// the page once site.json is in: the currency switch, search, and the view the address names, then
 // each address it moves to; a summary that fails to load is said in the page's place
 async function start(): Promise<void> {
   try {
@@ -185,12 +187,6 @@ async function start(): Promise<void> {
     failed(main, e);
     return;
   }
-  const {
-    events_range: [from, to],
-    built_at,
-  } = site();
-  part('#freshness').textContent =
-    `It covers ${monthYear(from)} to ${monthYear(to)} and was last updated on ${dayYear(built_at)}.`;
   part('#currency-switch').replaceWith(currencySwitch());
   initSearch(part('#search-btn'), data);
   addEventListener('hashchange', () => route({ scrollUp: true }));

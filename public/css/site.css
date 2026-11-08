@@ -287,6 +287,16 @@ th[aria-sort="descending"] button.sort::after {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.85rem;
 }
+/* the sources page: prose, a short section a source, at a reading width */
+.sources {
+  max-width: 42rem;
+}
+.sources section {
+  margin-top: 1.4rem;
+}
+.sources section p {
+  margin: 0 0 0.6rem;
+}
 .sql-out td {
   max-width: 28rem;
   overflow: hidden;

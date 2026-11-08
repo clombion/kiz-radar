@@ -9,6 +9,8 @@ import {
   festivalsHref,
   parseRoute,
   readState,
+  sourcesHref,
+  sqlHref,
 } from '../../site/routes.ts';
 
 // the parts after map/city/ of an address, as the router reads it
@@ -24,6 +26,7 @@ test('an address is read as its view, the parts after it and its query', () => {
     qs: 'when=all&color=popular',
   });
   expect(parseRoute(festivalsHref({ reach: 'fair' }))).toEqual({ name: 'finder', sub: [], qs: 'reach=fair' });
+  expect([sqlHref(), sourcesHref()].map((href) => parseRoute(href).name)).toEqual(['sql', 'sources']);
 });
 
 test('a city read back from its address is the city it was written from', () => {

@@ -14,6 +14,7 @@ import { doingTag, friendsIn } from '../../site/plans.ts';
 import { byPlace } from '../../site/roster.ts';
 import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str, unsure } from '../../site/rows.ts';
+import { sourcesView } from '../../site/sources.ts';
 import { KEY } from '../../site/states.ts';
 import { FIXTURE_COMMUNITY, FIXTURE_FESTIVALS, FIXTURE_NAME } from './community.fixture.ts';
 import { loadShipped } from './shipped.ts';
@@ -1966,4 +1967,19 @@ test('someone in the line-up teaches there whatever their plan says, and is coun
   const booked = { plan: KEY.plan.MAYBE, booked_as: KEY.role.TEACHER };
   expect([said(doingTag([booked])), unsure(booked)]).toEqual(['teaching', false]);
   expect([said(doingTag([{ ...booked, booked_as: null }])), said(doingTag([]))]).toEqual(['maybe', 'going']);
+});
+
+// The admin's rule: the sources page promotes no one. It names no company a price is resold by (the fares' reseller,
+// nor any a ticket page sells through) and no model by its maker, in its words or its links.
+test('the sources page names no reseller and no model’s maker', () => {
+  const resellers = (
+    exec('SELECT DISTINCT reseller FROM ticket_pages WHERE reseller IS NOT NULL')[0]?.values ?? []
+  ).map(([name]) => String(name));
+  const root = h('div', {});
+  sourcesView(root);
+  const shown = `${root.textContent} ${[...root.querySelectorAll('a')].map((a) => a.href).join(' ')}`.toLowerCase();
+  expect(shown).toContain('a reseller’s');
+  expect(['kiwi', 'claude', 'anthropic', ...resellers].filter((name) => shown.includes(name.toLowerCase()))).toEqual(
+    [],
+  );
 });

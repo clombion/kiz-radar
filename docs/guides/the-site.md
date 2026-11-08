@@ -93,6 +93,22 @@ with no plans ahead, a place with no festival ahead) shows only once "Include wh
 note counts what it hides. The footer links to an SQL page, which runs queries on its own copy of the database: what a
 query changes there changes nothing elsewhere, until the page is reloaded.
 
+## The footer and the sources page
+
+The footer has the site's name and what it is, the site's pages (Festivals, Friends, Map, Artists, Countries), a line
+"Where the data comes from: sources and acknowledgements" with the currency switch under it ("Prices in: kr · € · $"),
+and, for the curious, the SQL page and the source code on GitHub.
+
+The sources page (`#sources`, `site/sources.ts`) has no tab: the footer's line reaches it. It credits each source in a
+short section: the festival listings (kizomba-world.com, under CC BY-SA 4.0, the festival data here shared under the
+same licence, and what the data covers and when it was built, from `site.json`); the flight prices (Google Flights
+through fli, how often a weekend is searched as `WEEKS_APART` in `pipeline/fares.py` has it, and where a reseller's
+price stands in for Google's); the pass prices; the exchange rates (the European Central Bank); the borders (Natural
+Earth, through world-atlas) and the places (Nominatim, © OpenStreetMap contributors, ODbL); the airports (OurAirports);
+the travel times from the airports, from Transitous, marked as coming soon; and the code and the libraries and fonts the
+page uses. By the admin's rule the page promotes no one: it names no reseller (of fares or of tickets) and no AI model
+or its maker, which a test of `tests/site/views.browser.test.ts` holds. A new source of data is credited there.
+
 ## A community's page
 
 The page shows the community's name ("Norwegians in festivals"), when most of its people (members and those its manager

@@ -283,6 +283,7 @@ export type ClassName =
   | 'small'
   | 'sort'
   | 'sort-label'
+  | 'sources'
   | 'sql-out'
   | 'sqlview'
   | 'status'

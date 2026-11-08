@@ -5,7 +5,7 @@ import { beforeAll, expect, test, vi } from 'vitest';
 import { commands, page } from 'vitest/browser';
 import { load, loadSite } from '../../site/db.ts';
 import { done } from '../../site/report.ts';
-import { artistsHref, communityHref, EXPLORE, TABS } from '../../site/routes.ts';
+import { artistsHref, communityHref, EXPLORE, sourcesHref, TABS } from '../../site/routes.ts';
 import { FIXTURE_COMMUNITY, FIXTURE_DATA } from './community.fixture.ts';
 
 const INDEX = new DOMParser().parseFromString(await commands.readFile('public/index.html'), 'text/html');
@@ -45,9 +45,8 @@ beforeAll(async () => {
   location.hash = '';
   START = location.href;
   await import('../../site/main.ts');
-  await vi.waitUntil(() => document.querySelector('#freshness')?.textContent?.startsWith('It covers'), {
-    timeout: 30_000,
-  });
+  // the page has started once the footer's currency switch is drawn (main.ts start)
+  await vi.waitUntil(() => document.querySelector('.site-footer .currency-switch'), { timeout: 30_000 });
 });
 
 // the roles of what a keyboard or a screen reader acts on
@@ -98,8 +97,32 @@ test.for(VIEWS)('%s takes the focus as a new page and names every control', asyn
 });
 
 test('every view the page shows is tested', () => {
-  // Explore's tab is its map; the SQL page and a community's have no tab
-  expect(VIEWS.filter((v) => v !== COMMUNITY).length).toBe(TABS.length + EXPLORE.length);
+  // Explore's tab is its map, one view fewer; the SQL and sources pages, two more, and a community's have no tab
+  expect(VIEWS.filter((v) => v !== COMMUNITY).length).toBe(TABS.length + EXPLORE.length + 1);
+});
+
+test('the footer links to the sources page, which says what the festival data covers and when it was built', async () => {
+  history.replaceState(null, '', START);
+  const footer = document.querySelector('.site-footer');
+  const to = footer?.querySelector<HTMLAnchorElement>(`a[href="${sourcesHref()}"]`);
+  expect(to?.textContent).toBe('sources and acknowledgements');
+  // where a click goes, from the page's base; followed by its hash, as a click from the site's root would (the test's
+  // page has a query its base leaves out, so a click there would leave the test)
+  expect(to?.href).toBe(new URL(sourcesHref(), document.baseURI).href);
+  location.hash = new URL(to?.href ?? '').hash;
+  await expect.poll(() => main()?.querySelector('h2')?.textContent).toBe('Sources and acknowledgements');
+  expect(document.title).toBe('Sources · Kiz Radar');
+  expect(main()?.querySelector('#freshness')?.textContent).toMatch(
+    /^It covers \w+ \d{4} to \w+ \d{4} and was last updated on \d+ \w+ \d{4}\.$/u,
+  );
+  // the footer's long column is gone: the sources are said on their page, not twice
+  expect(footer?.textContent).not.toContain('Google Flights');
+});
+
+test('the footer switches the currency: kroner shown, euros and dollars a button each', () => {
+  const sw = document.querySelector('.site-footer .currency-switch');
+  expect(sw?.querySelector('[aria-current]')?.textContent).toBe('kr');
+  expect([...(sw?.querySelectorAll('button') ?? [])].map((b) => b.getAttribute('aria-label'))).toEqual(['EUR', 'USD']);
 });
 
 test('the search dialog names every control', async () => {

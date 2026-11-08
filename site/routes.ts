@@ -69,6 +69,9 @@ export const communityHref = (key: string, params?: Params) =>
   `c/${encodeURIComponent(key)}/${query(params, baseChoices())}`;
 export const communityShareHref = (key: string) => new URL(communityHref(key), document.baseURI).href;
 export const countriesHref = (params?: Params) => hash('countries', params);
+// the pages the footer links to, which no tab does
+export const sqlHref = () => hash('sql');
+export const sourcesHref = () => hash('sources');
 
 // the views a tab or a swipe goes to, by name, and the tabs of the header
 export type Section = 'finder' | 'friends' | 'map' | 'artists' | 'countries';
@@ -81,8 +84,9 @@ export type Show = (
   qs: string,
   opts: { signal: AbortSignal; data: Promise<unknown> },
 ) => void;
-// every view an address names: the sections, the SQL page the footer links to (index.html), and a community's page
-export type Route = Section | 'sql' | 'community';
+// every view an address names: the sections, the SQL and sources pages the footer links to (index.html), and a
+// community's page
+export type Route = Section | 'sql' | 'sources' | 'community';
 // the header's tabs (a view's nav names its tab), and the second row Explore opens; a swipe on a touch screen steps
 // through the sections in this order: Festivals, Friends, then Explore's
 export const EXPLORE: readonly (readonly [Section, string, string])[] = [
