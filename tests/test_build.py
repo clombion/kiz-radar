@@ -338,12 +338,15 @@ def community_tables(memory: Memory) -> Db:
             'stays',
         ):
             x.script(build_site_db.TABLES[table])
-        # what is checked of a festival or an artist: its id, and a festival's last day
+        # what is checked of a festival or an artist: its id, and a festival's last day and names
         x.script(
-            'create table events (id integer primary key, title text, start_date text, end_date text);'
-            ' create table artists (id integer primary key)'
+            'create table events (id integer primary key, title text, listed_title text, start_date text,'
+            ' end_date text); create table artists (id integer primary key)'
         )
-        x.execute("insert into events (id, title, start_date, end_date) values (1, 'KUOF', '2026-11-20', '2026-11-22')")
+        x.execute(
+            'insert into events (id, title, listed_title, start_date, end_date)'
+            " values (1, 'KUOF', 'KUOF 2026', '2026-11-20', '2026-11-22')"
+        )
         x.execute('insert into artists (id) values (1)')
         x.execute('insert into people (id, key, name, featured) values (1, ?, ?, 1)', ('cedric', 'Cédric'))
     with db.transaction() as x:
@@ -560,6 +563,30 @@ def test_one_members_long_stay_keeps_no_one_elses_trip(memory: Memory, monkeypat
     ends = build_site_db.trip_ends([TRIP.model_copy(update={'person': 'ana'})], [stay], {1: dt.date(2026, 11, 22)})
     assert ends == {('ana', 1): dt.date(2026, 11, 23), ('cedric', 1): dt.date(2026, 11, 29)}
     assert build_site_db.gone_by(ends, dt.date(2026, 11, 27)) == {('ana', 1)}
+
+
+def test_a_row_naming_its_festival_otherwise_than_it_is_listed_is_said_and_kept(
+    memory: Memory, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """A row's event column names its festival by its title or as it is listed; named otherwise, the build says
+    what to write in its place, once a festival however many rows name it so, then how many, and goes on."""
+    PlanRow.write([PlanRow(person='cedric', event_id=1, status=enums.Plan.GOING, event='KUOF')])
+    Community.write([MANAGER])
+    Membership.write([MEMBER])
+    Travel.write([])
+    StayRow.write([])
+    tonje = Seeded(community=KEY, name='Tonje', artist_keys=(), event_id=1, status=enums.Plan.GOING, event='KUOF')
+    for named in ('KUOF', 'KUOF 2026'):
+        Seeded.write([tonje.model_copy(update={'event': named})])
+        _ = community_tables(memory)
+        assert capsys.readouterr().err == ''
+    Seeded.write([tonje.model_copy(update={'event': 'KUOF Oslo', 'name': name}) for name in ('Tonje', 'Maja')])
+    made = community_tables(memory)
+    assert made.value(int, 'select count(*) from community_seeded') == 2
+    assert capsys.readouterr().err.splitlines() == [
+        "warning: seeded.csv: event 1 is named 'KUOF Oslo', which is listed as 'KUOF 2026'; write that",
+        'warning: seeded.csv names 1 of its festivals otherwise than they are listed',
+    ]
 
 
 def test_the_build_leaves_out_a_trip_ended_more_than_three_days_ago_and_warns_of_its_rows(

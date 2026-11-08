@@ -850,6 +850,7 @@ def features(x: Transaction) -> collections.defaultdict[int, set[str]]:
         if r.event_id not in known:
             sys.exit(f'promo_codes.csv: no event {r.event_id} ({r.event})')
         feats[r.event_id].add(Feature.PROMO_CODE)
+    named_as_listed(x, 'promo_codes.csv', [(r.event_id, r.event) for r in promos])
     x.insert(
         'event_promos',
         (
@@ -935,6 +936,31 @@ def homes(x: Transaction, people: Sequence[Person]) -> None:
     x.insert('homes', rows)
 
 
+class Titled(BaseModel):
+    id: int
+    title: str
+    listed_title: str | None
+
+
+def named_as_listed(x: Transaction, file: str, rows: Sequence[tuple[int, str]]) -> None:
+    """The festival a row names by hand beside its event id (its event column, which says which festival the id was
+    once it is no more), as the site database has it: by its title or as it is listed. A row whose words are neither
+    is said, with what to write, then how many there are; never refused, as a festival renamed where it is listed would
+    otherwise stop the build until each row naming it was put right."""
+    titles = {e.id: e for e in x.rows(Titled, 'select id, title, listed_title from events')}
+    off = [
+        (i, said, e.listed_title or e.title)
+        for i, said in dict.fromkeys(rows)
+        if (e := titles.get(i)) is not None and said not in {e.title, e.listed_title}
+    ]
+    for i, said, listed in off:
+        print(
+            f'warning: {file}: event {i} is named {said!r}, which is listed as {listed!r}; write that', file=sys.stderr
+        )
+    if off:
+        print(f'warning: {file} names {len(off)} of its festivals otherwise than they are listed', file=sys.stderr)
+
+
 def once(file: str, what: str, keys: Sequence[object]) -> None:
     """Each row of a file by its key once: a second is refused by name, as the database would refuse it unnamed."""
     seen: set[object] = set()
@@ -974,6 +1000,7 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
             sys.exit(f'plans.csv: no person {r.person} in people.csv')
         if r.event_id not in known:
             sys.exit(f'plans.csv: no event {r.event_id} ({r.event})')
+    named_as_listed(x, 'plans.csv', [(r.event_id, r.event) for r in plans_])
     x.insert('plans', ({'person_id': person_id[r.person], 'event_id': r.event_id, 'status': r.status} for r in plans_))
     return person_id
 
@@ -1027,6 +1054,7 @@ def added(
             sys.exit(f'seeded.csv: no event {r.event_id} ({r.event})')
         if unknown := [k for k in r.artist_keys if k not in key_id]:
             sys.exit(f'seeded.csv: unknown artist key {unknown[0]} ({r.name})')
+    named_as_listed(x, 'seeded.csv', [(r.event_id, r.event) for r in seeded])
     # one person a row: the same name twice to one festival of one community is one person written twice, and a name a
     # member has would read as that member
     name_of = {r.key: r.name for r in x.rows(KeyName, 'select key, name from people')}

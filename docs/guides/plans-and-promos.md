@@ -12,7 +12,12 @@ The build stops when one names a person, a community, an artist key or a festiva
   festival cards; the others are counted. The build stops on a home geocode.csv has not found, or has in two places with
   no country to choose, naming the file; someone with no home is never "near" anywhere on the Friends tab, which lists
   the people near Bergen.
-- `pipeline/plans.csv`: one row per person and festival, with `status` `going`.
+- `pipeline/plans.csv`: one row per person and festival, with `status` `going` and the festival's name in `event`.
+
+The `event` column of `plans.csv`, `seeded.csv` and `promo_codes.csv` is for people reading the file, and says which
+festival a row meant once its id is no more ("no event 19033 (KUOF 2026 – …)"). Write it as the SQL page's
+`events.listed_title` has it (or its `title`): the build warns of each festival a file names otherwise, with the name to
+write, then how many, and goes on, so a festival renamed where it is listed never stops it.
 
 A card then says "Cédric & Christina are going · 3 more people too". A name opens a quick view of where they're going;
 partners who both go are named as their couple; someone in the festival's line-up shows as teaching (or playing) there
