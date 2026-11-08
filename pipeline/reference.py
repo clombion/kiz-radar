@@ -9,7 +9,7 @@ from collections.abc import Iterable
 
 from pydantic import BaseModel, ConfigDict, TypeAdapter
 
-from pipeline import ROOT, claims, records, states, tickets_store
+from pipeline import ROOT, claims, fare_store, records, states, tickets_store
 from pipeline import prompt as prompts
 
 DOCS = ROOT / 'docs' / 'reference'
@@ -75,6 +75,11 @@ FOLDERS: list[tuple[str, str, tuple[type, ...]]] = [
         (records.Read, records.Failed),
     ),
     (f'{tickets_store.SITES}/<site>.json', "a ticket site's recipe", (records.PageRecipe, records.ApiRecipe)),
+    (
+        f'{fare_store.FOLDER}/<run>.parquet',
+        'the fare searches of one run, each with the offers it saw; never written again once the run is over',
+        (records.Search, records.Offer),
+    ),
     (f'{prompts.ASKED}/<hash>.md', 'the text of every prompt an answer or a read followed', ()),
     (
         f'{claims.CLAIMS}/<digest>.json',

@@ -39,5 +39,6 @@ one.
 | `pipeline/tickets/partial/<id>.json` | `ModelReads` | the models' reads already paid for, until they settle |
 | `pipeline/tickets/log/<id>.jsonl` | `Read`, `Failed` | each read of a festival's ticket page, or its failure, appended to |
 | `pipeline/tickets/sites/<site>.json` | `PageRecipe`, `ApiRecipe` | a ticket site's recipe |
+| `pipeline/fare_offers/<run>.parquet` | `Search`, `Offer` | the fare searches of one run, each with the offers it saw; never written again once the run is over |
 | `pipeline/prompts/asked/<hash>.md` | — | the text of every prompt an answer or a read followed |
 | `claims/<digest>.json` | `MergeClaim`, `HomeClaim`, `BookingClaim`, `SiteClaim` | an admin's claim (the claims submodule) |

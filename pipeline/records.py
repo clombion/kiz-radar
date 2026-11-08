@@ -41,6 +41,10 @@ from pydantic.fields import FieldInfo
 from pipeline import countries, currencies, data, files, names, tables
 from pipeline.enums import (
     ExtractedFeature,
+    FareMode,
+    FareOutcome,
+    FareTicket,
+    FareVendor,
     Genre,
     MergeDecision,
     MergeReason,
@@ -1310,6 +1314,45 @@ class Place(CsvRow):
 
 
 Stops = Annotated[int, Field(ge=0)]  # the stops a flight makes, 0 when it is direct
+
+
+class Offer(Record):
+    """An option a fare search saw: the Friday-to-Monday return's price in euros, the tickets it is booked on, its
+    stops each way (out alone from Google's outbound page, whose price is the return's; none when not known) and the
+    airlines flying it, out then back, by the vendor's names for them."""
+
+    price: Positive
+    ticket: FareTicket
+    stops_out: Stops | None
+    stops_back: Stops | None
+    airlines: tuple[str, ...]
+
+
+class Search(Record):
+    """A fare search, the unit of the fare history (pipeline/fare_offers/, pipeline/fare_store.py): who was asked
+    (vendor), when, from where (origin) to which airport for which Friday, for which flights (mode), what it found
+    (outcome) and the offers it saw, a price each. note: the vendor's words, or why it failed; backfill: the file and
+    commit a search kept before this history was, read back from."""
+
+    id: Hash
+    at: Stamp
+    origin: Iata
+    airport: Iata
+    depart: Date
+    mode: FareMode
+    vendor: FareVendor
+    outcome: FareOutcome
+    note: str | None = None
+    backfill: str | None = None
+    offers: tuple[Offer, ...] = ()
+
+    @model_validator(mode='after')
+    def offers_as_found(self) -> Self:
+        if (self.outcome == FareOutcome.OFFERS) != bool(self.offers):
+            raise ValueError(f'a search whose outcome is {self.outcome} has {len(self.offers)} offers')
+        if self.outcome == FareOutcome.FAILED and not self.note:
+            raise ValueError('a failed search says why in its note')
+        return self
 
 
 class Fare(CsvRow):

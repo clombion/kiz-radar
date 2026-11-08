@@ -47,6 +47,10 @@ Every data point and every state it can be in; why the world is closed is in [St
 | **claim_source**, the channel a claim comes by, the earlier the higher its priority | `admin`, `organiser`, `model` | claims |
 | **claim**, each claim, by whether it decides its subject | `applied`, `overridden`, `orphaned` | resolve_artists |
 | **model**, each Claude model the pipeline asks, which spend.PRICES prices | `claude-fable-5-1`, `claude-opus-5-5`, `claude-sonnet-5-5`, `claude-haiku-5-5` | ask; tickets; merge review |
+| **fare_mode**, each fare search, by the flights it asks for | `any`, `direct` | fares |
+| **fare_vendor**, each fare search, by whom it asks | `google`, `kiwi` | fares |
+| **fare_outcome**, each fare search, by what it found | `offers`, `none`, `listed`, `failed` | fares |
+| **fare_ticket**, each offer of a fare search, by the tickets it is booked on | `one_ticket`, `self_transfer` | fares |
 
 ## States
 
@@ -248,3 +252,13 @@ Every data point and every state it can be in; why the world is closed is in [St
 | model · `claude-opus-5-5` | kept | — | — | a model of the first read |
 | model · `claude-sonnet-5-5` | kept | — | — | a model of the first read |
 | model · `claude-haiku-5-5` | kept | — | — | the extraction passes and the merge review |
+| fare_mode · `any` | kept | — | — | any flight, the cheapest first: a festival weekend to its nearest airport |
+| fare_mode · `direct` | kept | — | — | direct flights alone: a festival weekend to an airport beside its nearest |
+| fare_vendor · `google` | kept | — | — | Google Flights' outbound page, through fli (pipeline/fli_page.py) |
+| fare_vendor · `kiwi` | view | reseller’s price | — | Kiwi.com's flight search, a reseller selling at its own prices |
+| fare_outcome · `offers` | kept | — | — | one offer or more with a price |
+| fare_outcome · `none` | kept | — | — | no flight of those asked for |
+| fare_outcome · `listed` | kept | — | — | flights listed, none with a price (Widerøe's, which Google leaves to the airline) |
+| fare_outcome · `failed` | kept | — | — | no answer: the vendor refused the search, or failed (its words in the note); never read as no price |
+| fare_ticket · `one_ticket` | kept | — | — | every flight out on one ticket, and every flight back on one |
+| fare_ticket · `self_transfer` | view | self-transfer, separate tickets | — | a way out or back on more than one ticket, so a missed connection is the traveller’s to pay for (Kiwi: its flights of one direction in more than one fare component) |

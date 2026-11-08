@@ -45,6 +45,10 @@ type Point = Literal[
     'claim_source',
     'claim',
     'model',
+    'fare_mode',
+    'fare_vendor',
+    'fare_outcome',
+    'fare_ticket',
 ]
 
 
@@ -476,6 +480,40 @@ class Model(StrEnum):
     CLAUDE_OPUS_5_5 = 'claude-opus-5-5'
     CLAUDE_SONNET_5_5 = 'claude-sonnet-5-5'
     CLAUDE_HAIKU_5_5 = 'claude-haiku-5-5'
+
+
+@unique
+class FareMode(StrEnum):
+    """the fare_mode states"""
+
+    ANY = 'any'
+    DIRECT = 'direct'
+
+
+@unique
+class FareVendor(StrEnum):
+    """the fare_vendor states"""
+
+    GOOGLE = 'google'
+    KIWI = 'kiwi'
+
+
+@unique
+class FareOutcome(StrEnum):
+    """the fare_outcome states"""
+
+    OFFERS = 'offers'
+    NONE = 'none'
+    LISTED = 'listed'
+    FAILED = 'failed'
+
+
+@unique
+class FareTicket(StrEnum):
+    """the fare_ticket states"""
+
+    ONE_TICKET = 'one_ticket'
+    SELF_TRANSFER = 'self_transfer'
 
 
 @unique

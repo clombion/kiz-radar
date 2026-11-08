@@ -199,6 +199,10 @@ POINTS = (
     P('claim_source', 'ClaimSource', 'the channel a claim comes by, the earlier the higher its priority', 'claims'),
     P('claim', 'ClaimState', 'each claim, by whether it decides its subject', 'resolve_artists'),
     P('model', 'Model', 'each Claude model the pipeline asks, which spend.PRICES prices', 'ask; tickets; merge review'),
+    P('fare_mode', 'FareMode', 'each fare search, by the flights it asks for', 'fares'),
+    P('fare_vendor', 'FareVendor', 'each fare search, by whom it asks', 'fares'),
+    P('fare_outcome', 'FareOutcome', 'each fare search, by what it found', 'fares'),
+    P('fare_ticket', 'FareTicket', 'each offer of a fare search, by the tickets it is booked on', 'fares'),
 )
 
 ROWS = (
@@ -956,6 +960,41 @@ ROWS = (
     S('model', 'claude-opus-5-5', 'a model of the first read', KEPT),
     S('model', 'claude-sonnet-5-5', 'a model of the first read', KEPT),
     S('model', 'claude-haiku-5-5', 'the extraction passes and the merge review', KEPT),
+    # ---- fare searches (pipeline/fares.py, kept in pipeline/fare_offers/)
+    S('fare_mode', 'any', 'any flight, the cheapest first: a festival weekend to its nearest airport', KEPT),
+    S('fare_mode', 'direct', 'direct flights alone: a festival weekend to an airport beside its nearest', KEPT),
+    S('fare_vendor', 'google', "Google Flights' outbound page, through fli (pipeline/fli_page.py)", KEPT),
+    S(
+        'fare_vendor',
+        'kiwi',
+        "Kiwi.com's flight search, a reseller selling at its own prices",
+        VIEW,
+        'reseller’s price',
+        forms={'airlines': 'reseller’s price, likely cheaper from {airlines}'},
+    ),
+    S('fare_outcome', 'offers', 'one offer or more with a price', KEPT),
+    S('fare_outcome', 'none', 'no flight of those asked for', KEPT),
+    S(
+        'fare_outcome',
+        'listed',
+        "flights listed, none with a price (Widerøe's, which Google leaves to the airline)",
+        KEPT,
+    ),
+    S(
+        'fare_outcome',
+        'failed',
+        'no answer: the vendor refused the search, or failed (its words in the note); never read as no price',
+        KEPT,
+    ),
+    S('fare_ticket', 'one_ticket', 'every flight out on one ticket, and every flight back on one', KEPT),
+    S(
+        'fare_ticket',
+        'self_transfer',
+        'a way out or back on more than one ticket, so a missed connection is the traveller’s to pay for (Kiwi: '
+        'its flights of one direction in more than one fare component)',
+        VIEW,
+        'self-transfer, separate tickets',
+    ),
 )
 
 
@@ -1128,6 +1167,8 @@ SITE_POINTS: tuple[PointName, ...] = (
     'listing',
     'phase',
     'plan',
+    'fare_vendor',
+    'fare_ticket',
 )  # the site's
 
 

@@ -2,7 +2,10 @@
 name = "kiz-radar"
 version = "0"
 requires-python = ">=3.13"
-dependencies = ["pydantic==2.14.1"]   # every step reads and writes its records through pydantic models
+dependencies = [
+    "pydantic==2.14.1",   # every step reads and writes its records through pydantic models
+    "pyarrow==20.0.0",    # the fare history, a Parquet file per run (pipeline/fare_store.py), which the build reads
+]
 
 # Each job installs only its group: uv run --group <group> -m pipeline.<module>. A group that needs another's
 # packages includes that group, so every version is written once.

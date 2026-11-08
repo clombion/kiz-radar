@@ -4,12 +4,12 @@ data that its record refuses, such as a hand edit of a CSV naming no state, or a
 
     mise run audit
 
-Refused: every row of the CSV files the steps share (tickets/pages.csv, tickets/status.csv, the
-hand-kept decisions and plans), each read as its record (pipeline/records.py); every claim of the claims repository,
-read as its record and named by its digest; and the data the load takes: every answer and first read to its current
-prompt (one to another prompt waits to be asked again, and is not loaded), read as its record. Stale: a site claim for
-a site a recipe now reads, or one no festival the source database lists has its known ticket page on. Each finding goes
-to stderr; then "N refused, M stale", exiting 1 when either is not 0.
+Refused: every row of the CSV files the steps share (tickets/pages.csv, tickets/status.csv, the hand-kept decisions and
+plans), each read as its record (pipeline/records.py); every fare search of the fare history (pipeline/fare_store.py);
+every claim of the claims repository, read as its record and named by its digest; and the data the load takes: every
+answer and first read to its current prompt (one to another prompt waits to be asked again, and is not loaded), read as
+its record. Stale: a site claim for a site a recipe now reads, or one no festival the source database lists has its
+known ticket page on. Each finding goes to stderr; then "N refused, M stale", exiting 1 when either is not 0.
 """
 
 import argparse
@@ -20,7 +20,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from pipeline import claims, data, tables, tickets_state, tickets_store
+from pipeline import claims, data, fare_store, tables, tickets_state, tickets_store
 from pipeline import prompt as prompts
 from pipeline.claims import SiteClaim
 from pipeline.extract import answers
@@ -58,6 +58,7 @@ def refused(event_ids: set[int]) -> list[str]:
     """Each value its record refuses, with where it is; event_ids are the festivals the source DB has, whose answers
     count."""
     out = [line for record in CsvRow.records() for line in rows_refused(record)]
+    out += fare_store.refused()
     out += [line for path in claims.claim_files() if isinstance(why := claims.parsed(path), list) for line in why]
     for pass_ in prompts.PASSES:
         answered = answers.answered(pass_.name, event_ids).values()

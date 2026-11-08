@@ -972,6 +972,44 @@ export const STATES = {
    "link": null,
    "counts": null
   }
+ },
+ "fare_vendor": {
+  "google": {
+   "disposition": "kept",
+   "wording": null,
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
+  "kiwi": {
+   "disposition": "view",
+   "wording": "reseller’s price",
+   "forms": {
+    "airlines": "reseller’s price, likely cheaper from {airlines}"
+   },
+   "icon": null,
+   "link": null,
+   "counts": null
+  }
+ },
+ "fare_ticket": {
+  "one_ticket": {
+   "disposition": "kept",
+   "wording": null,
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
+  "self_transfer": {
+   "disposition": "view",
+   "wording": "self-transfer, separate tickets",
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  }
  }
 } as const satisfies Readonly<
   Record<string, Readonly<Record<string, StateRow>>>
@@ -1126,6 +1164,14 @@ export const KEY = {
  "plan": {
   "GOING": "going",
   "MAYBE": "maybe"
+ },
+ "fare_vendor": {
+  "GOOGLE": "google",
+  "KIWI": "kiwi"
+ },
+ "fare_ticket": {
+  "ONE_TICKET": "one_ticket",
+  "SELF_TRANSFER": "self_transfer"
  }
 } as const;
 
