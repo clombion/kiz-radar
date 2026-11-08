@@ -3,7 +3,7 @@
 // link to Google Flights; the one its card shows marked. A quick view (modal.ts peek): a dialog, the focus kept in it
 // and given back to the button that opened it, closed by ×, Escape, a tap outside or the back button.
 import { button, h, type Kid, own } from './dom.ts';
-import { best, checkedAgo, FAR_KM, type Option, stopsSaid, WORTH_EUR } from './fares.ts';
+import { best, checkedAgo, FAR_KM, type Option, resoldSaid, stopsSaid, WORTH_EUR } from './fares.ts';
 import type { Festival } from './festivals.ts';
 import { type Peek, peek } from './modal.ts';
 import { money } from './money.ts';
@@ -17,7 +17,11 @@ const flightsDialog = (): Peek => {
 
 // what an option says of its fare: its price, or why it has none
 function fareSaid(o: Option): Kid {
-  if (o.fare !== null) return h('strong', {}, money(o.fare.price, 'EUR', { approx: true }));
+  if (o.fare !== null)
+    return [
+      h('strong', {}, money(o.fare.price, 'EUR', { approx: true })),
+      o.fare.resold === null ? null : h('span', { class: 'muted' }, ` · ${resoldSaid(o.fare.resold)}`),
+    ];
   if (o.checked === null) return h('span', { class: 'muted' }, 'not checked yet');
   return h('span', { class: 'muted' }, noFare(o.direct));
 }

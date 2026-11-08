@@ -6,13 +6,18 @@ import type { Prices } from './currency.ts';
 // Friday-to-Monday return found for its weekend from home, if one was. The card's flight is the best of them (best).
 
 // the return flight found for a weekend: its price in euros, the day it flies back (fares.return), its stops out and
-// back together (null when not known) and when it was found
+// back together (null when not known) and when it was found; resold names the airlines flying it when the price is a
+// reseller's (Google listed the flights with none), likely cheaper bought from them
 export interface Found {
   readonly price: number;
   readonly back: string;
   readonly stops: number | null;
   readonly fetched: string;
+  readonly resold: string | null;
 }
+
+// what a reseller's price is said to be: "reseller's price, likely cheaper from Widerøe"
+export const resoldSaid = (airlines: string): string => `reseller's price, likely cheaper from ${airlines}`;
 // an airport a festival can fly to: where, how far from the festival's city, the fare found for its weekend, and when
 // it was last searched, with, for one beside the nearest, whether it has a direct flight then (false: none)
 export interface Option {

@@ -29,10 +29,20 @@ class Https(NamedTuple):
 def get(
     address: Https, query: Mapping[str, str] | None = None, headers: Mapping[str, str] | None = None
 ) -> bytes | Declined:
-    """The body at an HTTPS address, or why there is none (pipeline/calls.py): an HTTP status of 429 or 5xx, a
-    connection lost or timed out, or an answer cut short is transient; any other HTTP error status is structural."""
-    url = address.url(query)
-    request = urllib.request.Request(url, headers=dict(headers or {}))  # noqa: S310 (https, by web.Https)
+    """The body at an HTTPS address, or why there is none (opened)."""
+    return opened(address.url(query), None, headers or {})
+
+
+def post(address: Https, body: bytes, headers: Mapping[str, str]) -> bytes | Declined:
+    """The answer of an HTTPS address to a body sent it, or why there is none (opened)."""
+    return opened(address.url(), body, headers)
+
+
+def opened(url: str, body: bytes | None, headers: Mapping[str, str]) -> bytes | Declined:
+    """The body a URL of web.Https answers with (to a POST of body when given), or why there is none
+    (pipeline/calls.py): an HTTP status of 429 or 5xx, a connection lost or timed out, or an answer cut short is
+    transient; any other HTTP error status is structural."""
+    request = urllib.request.Request(url, data=body, headers=dict(headers))  # noqa: S310 (https, by web.Https)
     try:
         response = cast('object', urllib.request.urlopen(request, timeout=TIMEOUT))  # noqa: S310 (https, by web.Https)
         if not isinstance(response, HTTPResponse):

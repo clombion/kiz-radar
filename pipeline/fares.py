@@ -34,6 +34,7 @@ way keeps what it found. The weekends are the festivals' in the export, by the f
 import argparse
 import datetime as dt
 import functools
+import json
 import os
 import shlex
 import subprocess
@@ -44,9 +45,9 @@ from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 from typing import NamedTuple
 
-from pydantic import BaseModel, ConfigDict, ValidationError
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
-from pipeline import airports, calls, export
+from pipeline import airports, calls, export, web
 from pipeline.calls import Declined
 from pipeline.enums import CallCause, Listing
 from pipeline.records import Fare, Job, Record, day_of, now
@@ -101,6 +102,47 @@ class FliAnswer(Fli):
     success: bool = False
     flights: tuple[FliTrip, ...] = ()
     error: FliError | None = None
+
+
+# A reseller, for the flights Google lists with no price (Widerøe's, to anyone searching from outside Norway):
+# Kiwi.com's flight search, open to all with no key, asked only then. Its price is above the airline's own, and the
+# site says so.
+RESELLER = web.Https('mcp.kiwi.com', '/')
+RESELLER_HEADERS = {'Content-Type': 'application/json', 'Accept': 'application/json, text/event-stream'}
+
+
+class ResoldFlight(Fli):
+    airline: str = Field(alias='carrierName')
+
+
+class ResoldLeg(Fli):
+    stops: int
+    segments: tuple[ResoldFlight, ...]
+
+
+class ResoldTrip(Fli):
+    price: float
+    outbound: ResoldLeg
+    inbound: ResoldLeg
+
+
+class Resold(Fli):
+    """The reseller's answer, as far as it is read: its trips, each with its price, its legs' stops and airlines."""
+
+    itineraries: tuple[ResoldTrip, ...] = ()
+
+
+class RpcText(Fli):
+    text: str = ''
+
+
+class RpcResult(Fli):
+    content: tuple[RpcText, ...] = ()
+    failed: bool = Field(default=False, alias='isError')
+
+
+class Rpc(Fli):
+    result: RpcResult | None = None
 
 
 @dataclass(frozen=True)
@@ -232,6 +274,65 @@ def fare_in(d: FliAnswer, airport: str, friday: dt.date) -> Fare | Missed | Decl
     return Fare(airport=airport, depart=friday, price=round(x.price or 0), fetched_at=now(), stops=x.stops)
 
 
+def resold(airport: str, friday: dt.date, *, direct: bool) -> Fare | Missed | Declined:
+    """The reseller's cheapest Friday-to-Monday return (direct flights alone when asked), named by the airlines flying
+    it; none when it has none; or why there is no answer."""
+    args = {
+        'flyFrom': airports.home(),
+        'flyTo': airport,
+        'departureDate': friday.strftime('%d/%m/%Y'),
+        'returnDate': (friday + dt.timedelta(days=NIGHTS)).strftime('%d/%m/%Y'),
+        'currency': 'EUR',
+        'sort': 'price',
+        **({'max_sector_stopovers': 0} if direct else {}),
+    }
+    call = {'jsonrpc': '2.0', 'id': 1, 'method': 'tools/call', 'params': {'name': 'search-flight', 'arguments': args}}
+    body = web.post(RESELLER, json.dumps(call).encode(), RESELLER_HEADERS)
+    if isinstance(body, Declined):
+        return body
+    return resold_in(body.decode(errors='replace'), airport, friday)
+
+
+def resold_in(answer: str, airport: str, friday: dt.date) -> Fare | Missed | Declined:
+    """The cheapest trip of the reseller's answer (server-sent events, the JSON on a data: line) as a Fare."""
+    data = next(
+        (line.removeprefix('data:').strip() for line in answer.splitlines() if line.startswith('data:')), answer
+    )
+    try:
+        result = Rpc.model_validate_json(data).result
+        if result is None or result.failed or not result.content:
+            return Declined(CallCause.STRUCTURAL, f'the reseller gave no result: {answer[:NOTE_LENGTH]}')
+        trips = Resold.model_validate_json(result.content[0].text).itineraries
+    except ValidationError as e:
+        return Declined(CallCause.STRUCTURAL, f'the reseller wrote what cannot be read: {calls.why(e)[:NOTE_LENGTH]}')
+    if not trips:
+        return Missed('none at the reseller either')
+    x = min(trips, key=lambda t: t.price)
+    names = dict.fromkeys(s.airline for leg in (x.outbound, x.inbound) for s in leg.segments)
+    return Fare(
+        airport=airport,
+        depart=friday,
+        price=round(x.price),
+        fetched_at=now(),
+        stops=x.outbound.stops + x.inbound.stops,
+        resold=' and '.join(names),
+    )
+
+
+def searched(item: Weekend) -> Fare | Missed | Declined:
+    """A weekend's search, tried once more after a minute when Google refuses it; when Google lists flights with no
+    price, the reseller's fare if it has one."""
+    direct = not item.nearest
+    found = search(item.airport, item.friday, direct=direct)
+    if isinstance(found, Declined) and found.why == REFUSED:
+        time.sleep(RETRY_AFTER)
+        found = search(item.airport, item.friday, direct=direct)
+    if isinstance(found, Missed) and found.listed:
+        again = resold(item.airport, item.friday, direct=direct)
+        return again if isinstance(again, Fare) else found
+    return found
+
+
 def refresh(budget: int, max_seconds: int) -> None:
     """Search the weekends due today, most overdue first, saving both files after each; exits 1 naming the searches
     that gave no answer, a refusal or a stop first."""
@@ -246,11 +347,7 @@ def refresh(budget: int, max_seconds: int) -> None:
             break
         if not item.nearest and item.airport in no_direct(jobs.values(), now()):
             continue  # found with no direct flight earlier in this run
-        direct = not item.nearest
-        found = search(item.airport, item.friday, direct=direct)
-        if isinstance(found, Declined) and found.why == REFUSED:
-            time.sleep(RETRY_AFTER)
-            found = search(item.airport, item.friday, direct=direct)
+        found = searched(item)
         where = f'{item.airport} {item.friday}{"" if item.nearest else " direct"}'
         match found:
             case Declined():
@@ -261,7 +358,9 @@ def refresh(budget: int, max_seconds: int) -> None:
                 continue
             case Fare():
                 fares[(found.airport, found.depart)] = found
-                said = f'{found.price} EUR, {found.stops} stops'
+                said = f'{found.price} EUR, {found.stops} stops' + (
+                    f', from a reseller ({found.resold})' if found.resold else ''
+                )
             case Missed(note, listed):
                 _ = fares.pop((item.airport, item.friday), None)
                 said = f'no price {note}' if item.nearest or listed else 'no direct flight'

@@ -7,6 +7,7 @@ import { beforeAll, expect, test } from 'vitest';
 import { userEvent } from 'vitest/browser';
 import { q, sql } from '../../site/db.ts';
 import { eventCard } from '../../site/eventcard.ts';
+import type { Option } from '../../site/fares.ts';
 import { type Festival, withDetails } from '../../site/festivals.ts';
 import { EVENT } from '../../site/rows.ts';
 import { KEY } from '../../site/states.ts';
@@ -33,8 +34,8 @@ beforeAll(async () => {
   db.run('DELETE FROM fares WHERE depart = ?', [FRIDAY]);
   db.run('DELETE FROM fare_jobs WHERE depart = ?', [FRIDAY]);
   const searched = '2026-10-30T06:00:00+00:00';
-  db.run("INSERT INTO fares VALUES ('GLA', ?, '2026-11-09', 210, ?, 1)", [FRIDAY, searched]);
-  db.run("INSERT INTO fares VALUES ('ABZ', ?, '2026-11-09', 160, ?, 0)", [FRIDAY, searched]);
+  db.run("INSERT INTO fares VALUES ('GLA', ?, '2026-11-09', 210, ?, 1, NULL)", [FRIDAY, searched]);
+  db.run("INSERT INTO fares VALUES ('ABZ', ?, '2026-11-09', 160, ?, 0, NULL)", [FRIDAY, searched]);
   db.run("INSERT INTO fare_jobs VALUES ('GLA', ?, ?, NULL)", [FRIDAY, searched]);
   db.run("INSERT INTO fare_jobs VALUES ('EDI', ?, ?, 0)", [FRIDAY, searched]);
   db.run("INSERT INTO fare_jobs VALUES ('ABZ', ?, ?, 1)", [FRIDAY, searched]);
@@ -123,17 +124,29 @@ test('an airport not searched yet says so, and with none priced the card flies n
   }
 });
 
-test('an airport with a direct flight Google gives no price for says so, and is not taken for one with none', () => {
+// what each airport of a festival's Flights says of its fare, its options' fares changed by how
+const fareLines = async (how: (o: Option) => Option): Promise<(string | undefined)[]> => {
   const e = glasgow();
-  const unpriced = { ...e, options: e.options.map((o) => (o.airport === 'ABZ' ? { ...o, fare: null } : o)) };
-  const card = eventCard(unpriced);
+  const card = eventCard({ ...e, options: e.options.map(how) });
   document.body.append(card);
   try {
     card.querySelector<HTMLButtonElement>('.flights-btn')?.click();
-    const fares = [...document.querySelectorAll('dialog.peek .peek-flights li .flight-fare')].map(said);
-    expect(fares.slice(1)).toEqual(['no direct flight that weekend', 'direct, no price on Google']);
+    return [...document.querySelectorAll('dialog.peek .peek-flights li .flight-fare')].map(said);
   } finally {
-    document.querySelector<HTMLDialogElement>('dialog.peek')?.close();
+    await userEvent.keyboard('{Escape}');
     card.remove();
   }
+};
+
+test('an airport with a direct flight Google gives no price for says so, and is not taken for one with none', async () => {
+  const fares = await fareLines((o) => (o.airport === 'ABZ' ? { ...o, fare: null } : o));
+  expect(fares.slice(1)).toEqual(['no direct flight that weekend', 'direct, no price on Google']);
+});
+
+test('a reseller’s price says so, and that it is likely cheaper from the airlines flying it', async () => {
+  const fares = await fareLines((o) =>
+    o.airport === 'ABZ' && o.fare !== null ? { ...o, fare: { ...o.fare, resold: 'Widerøe' } } : o,
+  );
+  expect(fares[2]).toMatch(/^~1 \d{3} kr · reseller's price, likely cheaper from Widerøe · Google Flights ↗$/u);
+  expect(fares[0]).not.toContain('reseller');
 });

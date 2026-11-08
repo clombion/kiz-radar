@@ -1,14 +1,16 @@
 """When a festival weekend's fare is searched again."""
 
 import datetime as dt
+import json
 import subprocess
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Protocol
 
 import pytest
+from pydantic import BaseModel
 
-from pipeline import fares
+from pipeline import fares, web
 from pipeline.calls import Declined
 from pipeline.enums import CallCause
 from pipeline.records import Airport, now, today
@@ -356,10 +358,15 @@ def test_a_direct_flight_google_gives_no_price_for_is_still_a_direct_flight(
     def unpriced_if_direct(_airport: str, _friday: dt.date, *, direct: bool) -> Searched:
         return fares.Missed('', listed=direct)
 
+    def none_resold(_airport: str, _friday: dt.date, *, direct: bool) -> Searched:
+        return Declined(CallCause.TRANSIENT, f'the reseller is down (direct: {direct})')
+
     monkeypatch.setattr(fares, 'search', unpriced_if_direct)
+    monkeypatch.setattr(fares, 'resold', none_resold)
     fares.refresh(budget=9, max_seconds=60)
     assert {(j.airport, j.direct) for j in fares.Job.read()} == {('GLA', None), ('ABZ', True)}
     assert 'ABZ' not in fares.no_direct(fares.Job.read(), now())
+    assert fares.Fare.read() == []  # and the run goes on, with no fare
 
 
 def test_a_weekend_further_ahead_than_flights_are_on_sale_rules_out_that_weekend_alone(
@@ -374,3 +381,89 @@ def test_a_weekend_further_ahead_than_flights_are_on_sale_rules_out_that_weekend
     monkeypatch.setattr(fares, 'weekends', near_and_far)
     assert fares.no_direct(fares.Job.read(), now()) == set()
     assert [w.friday for w in fares.queue(now() + dt.timedelta(days=60))] == [SOON]
+
+
+class Params(BaseModel):
+    arguments: dict[str, object]
+
+
+class Sent(BaseModel):
+    """The reseller's call as sent: its tool's arguments under params."""
+
+    params: Params
+
+
+def resold_answer(*trips: tuple[float, int, tuple[str, ...]]) -> str:
+    """The reseller's answer, as it sends it (server-sent events): each trip its price, stops out (none back) and the
+    airlines of its flights, out then back."""
+
+    def leg(stops: int, names: Sequence[str]) -> dict[str, object]:
+        return {'stops': stops, 'segments': [{'carrierName': n, 'carrier': 'XX'} for n in names]}
+
+    found = {
+        'itineraries': [
+            {'price': price, 'outbound': leg(stops, names[:-1]), 'inbound': leg(0, names[-1:])}
+            for price, stops, names in trips
+        ]
+    }
+    rpc = {'jsonrpc': '2.0', 'id': 1, 'result': {'content': [{'type': 'text', 'text': json.dumps(found)}]}}
+    return f'event: message\ndata: {json.dumps(rpc)}\n\n'
+
+
+@pytest.mark.parametrize(
+    ('answer', 'expected'),
+    [
+        (
+            resold_answer((438.4, 0, ('Widerøe', 'Widerøe')), (359, 1, ('KLM', 'KLM', 'Widerøe'))),
+            ('fare', (359, 1, 'KLM and Widerøe')),
+        ),
+        (resold_answer(), ('none', 'none at the reseller either')),
+        ('data: {"jsonrpc": "2.0", "id": 1, "result": {"isError": true, "content": []}}', ('no answer', 'no result')),
+        ('data: {"jsonrpc": "2.0", "id": 1, "result": {"content": [{"text": "{}x"}]}}', ('no answer', 'cannot')),
+    ],
+    ids=['the cheapest, named by its airlines', 'no trip', 'an error', 'unreadable'],
+)
+def test_a_reseller_s_answer_is_read_as_its_cheapest_trip(answer: str, expected: tuple[str, object]) -> None:
+    match fares.resold_in(answer, 'ABZ', FRIDAY):
+        case fares.Fare() as f:
+            got: tuple[str, object] = ('fare', (f.price, f.stops, f.resold))
+            assert (f.airport, f.depart) == ('ABZ', FRIDAY)
+        case fares.Missed() as m:
+            got = ('none', m.note)
+        case Declined() as d:
+            got = ('no answer', 'no result' if 'no result' in d.why else 'cannot' if 'cannot' in d.why else d.why)
+    assert got == expected
+
+
+def test_a_reseller_is_asked_for_the_weekend_google_lists_with_no_price(
+    weekends: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    sent: list[dict[str, object]] = []
+
+    def post(address: web.Https, body: bytes, headers: Mapping[str, str]) -> bytes:
+        assert (address, headers) == (fares.RESELLER, fares.RESELLER_HEADERS)
+        sent.append(Sent.model_validate_json(body).params.arguments)
+        return resold_answer((438, 0, ('Widerøe', 'Widerøe'))).encode()
+
+    def search(airport: str, _friday: dt.date, *, direct: bool) -> Searched:
+        return fares.Missed('', listed=airport == 'ABZ' and direct)  # Google lists ABZ's flights, priced or not
+
+    monkeypatch.setattr(fares, 'weekends', three_airports)
+    monkeypatch.setattr(fares, 'search', search)
+    monkeypatch.setattr(web, 'post', post)
+    fares.refresh(budget=9, max_seconds=60)
+    # the reseller only for ABZ, the one Google listed, for direct flights alone, Friday to Monday
+    monday = SOON + dt.timedelta(days=fares.NIGHTS)
+    assert sent == [
+        {
+            'flyFrom': fares.airports.home(),
+            'flyTo': 'ABZ',
+            'departureDate': SOON.strftime('%d/%m/%Y'),
+            'returnDate': monday.strftime('%d/%m/%Y'),
+            'currency': 'EUR',
+            'sort': 'price',
+            'max_sector_stopovers': 0,
+        }
+    ]
+    assert [(f.airport, f.price, f.stops, f.resold) for f in fares.Fare.read()] == [('ABZ', 438, 0, 'Widerøe')]
+    assert {j.airport: j.direct for j in fares.Job.read()}['ABZ'] is True

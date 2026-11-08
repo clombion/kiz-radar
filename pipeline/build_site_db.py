@@ -239,6 +239,7 @@ create table fares (
     price real not null,
     fetched_at text not null,
     stops integer check (stops >= 0),   -- out and back together; null when not known
+    resold text,                        -- a reseller's price: the airlines flying it; null for Google's
     primary key (airport, depart)
 ) strict, without rowid;
 -- every airport a festival can fly to, within max_airport_km of its city, and how far: its nearest is events.airport

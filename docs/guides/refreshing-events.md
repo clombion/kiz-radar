@@ -68,8 +68,11 @@ airport's weekend due that day, within the run's 20 searches. One with no direct
 weekend is within 91 days (`SCHEDULED_DAYS`, as far ahead as airlines surely have their flights on sale), the airport is
 not searched as an extra for any weekend for 182 days (`NO_DIRECT_DAYS`), unless another of its weekends has one. A
 route from home runs most weeks of a season or not at all, and most of the airports within reach of a festival have none
-from Bergen. Google lists some direct flights with no price (Widerøe's): those count as a direct flight, with no fare.
-`fares.csv` keeps each fare's `stops`, empty for those found before stops were asked.
+from Bergen. Google lists some direct flights with no price: Widerøe's, to anyone searching from outside Norway, as
+GitHub's runners are. For those alone the weekend is asked of a reseller, Kiwi.com's flight search (open to all, no
+key), and its price kept with the airlines flying it (`fares.csv` `resold`); the site says it is a reseller's price,
+likely cheaper from them. With none there either, the weekend counts as a direct flight with no fare. `fares.csv` keeps
+each fare's `stops`, empty for those found before stops were asked.
 
 To add the airports festivals to come can fly to, download OurAirports' `airports.csv` (ourairports.com/data, public
 domain) and run `mise run airports -- <its path>`: it adds every large or medium airport with scheduled service and an

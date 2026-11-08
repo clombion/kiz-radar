@@ -36,6 +36,7 @@ export const flownTo = (price: number, back: string): Fare => ({
   airport_city: 'Lisbon',
   km: 10,
   stops: null,
+  resold: null,
   fetched: '2026-11-01',
   price,
   back,

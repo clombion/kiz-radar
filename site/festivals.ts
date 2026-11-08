@@ -70,19 +70,20 @@ function details() {
         price: opt(num),
         back: opt(str),
         stops: opt(num),
+        resold: opt(str),
         fetched: opt(str),
         checked: opt(str),
         direct: opt(num),
       },
-      sql`SELECT ea.event_id, ea.airport, a.name, a.city, ea.km, f.price, f.return AS back, f.stops,
+      sql`SELECT ea.event_id, ea.airport, a.name, a.city, ea.km, f.price, f.return AS back, f.stops, f.resold,
         f.fetched_at AS fetched, j.last_run AS checked, j.direct
       FROM event_airports ea JOIN events e ON e.id = ea.event_id JOIN airports a ON a.code = ea.airport
         LEFT JOIN fares f ON f.airport = ea.airport AND f.depart = e.weekend_friday
         LEFT JOIN fare_jobs j ON j.airport = ea.airport AND j.depart = e.weekend_friday
       WHERE a.home = 0 ORDER BY ea.event_id, ea.km, ea.airport`,
     )) {
-      const { event_id, price, back, stops, fetched, direct, ...at } = r;
-      const fare = price === null || back === null || fetched === null ? null : { price, back, stops, fetched };
+      const { event_id, price, back, stops, resold, fetched, direct, ...at } = r;
+      const fare = price === null || back === null || fetched === null ? null : { price, back, stops, resold, fetched };
       options.set(event_id, [
         ...(options.get(event_id) ?? []),
         { ...at, fare, direct: direct === null ? null : direct === 1 },

@@ -1323,6 +1323,9 @@ class Fare(CsvRow):
     price: Count
     fetched_at: Stamp
     stops: Blank[Stops] = None  # out and back together; none when not known (a fare found before stops were asked)
+    # when Google listed the flights with no price and a reseller's is taken instead (pipeline/fares.py resold): the
+    # airlines flying them, from which they are likely cheaper; none for Google's own fare
+    resold: Blank[str] = None
 
 
 class Job(CsvRow):

@@ -84,7 +84,8 @@ const option = (airport: string, km: number, price: number | null, stops: number
   name: `${airport} Airport`,
   city: airport,
   km,
-  fare: price === null ? null : { price, back: '2026-11-09', stops, fetched: '2026-11-01T06:00:00+00:00' },
+  fare:
+    price === null ? null : { price, back: '2026-11-09', stops, resold: null, fetched: '2026-11-01T06:00:00+00:00' },
   checked: '2026-11-01T06:00:00+00:00',
   direct: null,
 });
@@ -100,6 +101,7 @@ test('a festival at home takes no flight, and one elsewhere the best fare of its
     price: 120,
     back: '2026-11-09',
     stops: 1,
+    resold: null,
     fetched: '2026-11-01T06:00:00+00:00',
   });
   expect(fareOf({ airport: 'LIS' }, HOME, [option('LIS', 8, null)])).toBeNull();
@@ -136,6 +138,7 @@ const AWAY: Fare = {
   price: 120,
   back: '2026-11-09',
   stops: 0,
+  resold: null,
   fetched: '2026-11-01',
 };
 test('a flight from home costs nothing, and one not found is not known', () => {

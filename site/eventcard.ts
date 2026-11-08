@@ -5,7 +5,7 @@ import { today } from './days.ts';
 import { cardDetails, traitItems } from './details.ts';
 import type { Classes, Kid } from './dom.ts';
 import { button, h, own, toggle } from './dom.ts';
-import type { Fare } from './fares.ts';
+import { type Fare, resoldSaid } from './fares.ts';
 import { type Festival, styleLine } from './festivals.ts';
 import { flightsButton } from './flights.ts';
 import { artistHint } from './hints.ts';
@@ -48,7 +48,7 @@ const flightLink = (e: Flown, words: string) =>
       href: flightsUrl(e.fare.airport, e.depart, e.fare.back),
       target: '_blank',
       rel: 'noopener',
-      title: `Friday to Monday return from ${home().city}; check it on Google Flights`,
+      title: `Friday to Monday return from ${home().city}${e.fare.resold === null ? '' : ` (${resoldSaid(e.fare.resold)})`}; check it on Google Flights`,
     },
     words,
   );
