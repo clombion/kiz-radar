@@ -12,7 +12,8 @@ The build stops when one names a person, a community, an artist key or a festiva
   festival cards; the others are counted. The build stops on a home geocode.csv has not found, or has in two places with
   no country to choose, naming the file; someone with no home is never "near" anywhere on the Friends tab, which lists
   the people near Bergen.
-- `pipeline/plans.csv`: one row per person and festival, with `status` `going` and the festival's name in `event`.
+- `pipeline/plans.csv`: one row per person and festival, with `status` `going`, or `maybe` when they may go but have not
+  said they are going, and the festival's name in `event`.
 
 The `event` column of `plans.csv`, `seeded.csv` and `promo_codes.csv` is for people reading the file, and says which
 festival a row meant once its id is no more ("no event 19033 (KUOF 2026 – …)"). Write it as the SQL page's
@@ -21,9 +22,13 @@ write, then how many, and goes on, so a festival renamed where it is listed neve
 
 A card then says "Cédric & Christina are going · 3 more people too". A name opens a quick view of where they're going;
 partners who both go are named as their couple; someone in the festival's line-up shows as teaching (or playing) there
-rather than going. Each person has a plans page with a Share button, and an artist's page lists the festivals they go to
-without teaching there. The Friends tab lists the festivals the people living near a place go to (The site: the Friends
-tab), and the festival list can keep only those featured people go to.
+rather than going, whatever their plan says. Someone who may go is named with a "maybe" tag, the card's sentence saying
+so apart ("Cédric is going · Christina may go · 3 more people too"), its list counting them apart ("Who's going 4 · 1
+maybe"); a couple is named as one only when both partners go, or both may. The hero's friends going leave them out; the
+festival list's filter of festivals featured people go to keeps them. Each person has a plans page with a Share button,
+and an artist's page lists the festivals they go to without teaching there. The Friends tab lists the festivals the
+people living near a place go to (The site: the Friends tab), and the festival list can keep only those featured people
+go to.
 
 Plans are public: anyone can see them, so add people only with their agreement.
 
@@ -39,12 +44,12 @@ nobody can create, join or claim one yet, and its rows are written by hand.
   Members are named on the page and link to their plans page.
 - `pipeline/seeded.csv`: the people the manager added who have not joined, one row per person and festival, with the
   `community`, their first `name`, their `artist_keys` (as in `people.csv`: the `match_key` values of the artist records
-  they are, separated by `;`, or empty), the `event_id`, the `status` (a plan's, `going`) and the festival's name for
-  people reading the file. A name is only a name, of a name's shape (`plain_name` in `pipeline/records.py`): words of
-  letters, accents included, joined by hyphens or apostrophes, a dot only after an initial ("Mary J. Blige", "J.Lo"),
-  and four digits at most (a place's, "Hotel 31"); anything else, such as a link, an @handle, an email address, a phone
-  number, a domain in any case ("TONJE.NO") or "insta", "at" or "dot" as a word, is refused, since it could reach
-  someone. A stay's place is held to the same.
+  they are, separated by `;`, or empty), the `event_id`, the `status` (a plan's: `going`, or `maybe`, as the manager
+  says; the spec's A3 and D5) and the festival's name for people reading the file. A name is only a name, of a name's
+  shape (`plain_name` in `pipeline/records.py`): words of letters, accents included, joined by hyphens or apostrophes, a
+  dot only after an initial ("Mary J. Blige", "J.Lo"), and four digits at most (a place's, "Hotel 31"); anything else,
+  such as a link, an @handle, an email address, a phone number, a domain in any case ("TONJE.NO") or "insta", "at" or
+  "dot" as a word, is refused, since it could reach someone. A stay's place is held to the same.
 - `pipeline/travel.csv`: how members travel, one row per member and festival they plan, as far as they said: the
   `person`, the `event_id`, when they `arrive` and `leave` (local times, `YYYY-MM-DDTHH:MM`, or the day alone,
   `YYYY-MM-DD`, when the time is not known; arriving first, by the day when either has no time), each empty when not
