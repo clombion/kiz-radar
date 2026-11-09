@@ -176,7 +176,7 @@ function row(r: Country, artists: ReadonlySet<string>): HTMLElement {
       'p',
       { class: 'c-links' },
       r.upcoming
-        ? [h('a', { href: festivalsHref({ country: r.country_code, months: 12 }) }, 'Festivals'), ' · ']
+        ? [h('a', { href: festivalsHref({ country: r.country_code, when: 'year' }) }, 'Festivals'), ' · ']
         : null,
       h('a', { href: mapHref({ country: r.country_code, when: r.upcoming ? 'upcoming' : 'all' }) }, 'Map'),
       // the artist list narrowed to it, where the list has it (artists.artistCountries)

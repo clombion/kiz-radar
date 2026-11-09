@@ -1,7 +1,7 @@
 // The site's pure logic, on values alone: days, text folding, plurals and lists, and the words for what an artist is
 // booked as.
 import { afterEach, expect, test, vi } from 'vitest';
-import { addDays, today } from '../../site/days.ts';
+import { addDays, today, weekendOf, weekOf } from '../../site/days.ts';
 import { fold, words } from '../../site/fold.ts';
 import { roleLabel } from '../../site/roles.ts';
 import {
@@ -108,10 +108,10 @@ test('the state table answers what it has, and refuses what it hasn’t', () => 
 });
 
 test('an address leaves out a choice with no value, and a section is found by its name', () => {
-  expect(parseRoute(festivalsHref({ reach: '', friends: false, with: null, months: 12, x: undefined }))).toEqual({
+  expect(parseRoute(festivalsHref({ reach: '', friends: false, with: null, when: 'year', x: undefined }))).toEqual({
     name: 'finder',
     sub: [],
-    qs: 'months=12',
+    qs: 'when=year',
   });
   expect(parseRoute(mapHref())).toEqual({ name: 'map', sub: [], qs: '' });
   expect(parseRoute(personHref('cedric'))).toEqual({ name: 'friends', sub: ['cedric'], qs: '' });
@@ -190,4 +190,12 @@ test('a state’s words come with their values, in the form asked, or none for a
   expect(say('people', KEY.people.GROUP, { n: 4 })?.join('')).toMatch(/4/u);
   expect(text('role', KEY.role.TEACHER, {}, 'pair')).toBe('Teaching couple');
   expect(say('ticket', KEY.ticket.IN_TIER)).toBeNull();
+});
+
+test("a day's week runs Monday to Sunday, and its weekend is the coming one, or the one under way", () => {
+  expect(weekOf('2026-11-09')).toEqual({ from: '2026-11-09', to: '2026-11-15' }); // a Monday
+  expect(weekOf('2026-11-15')).toEqual({ from: '2026-11-09', to: '2026-11-15' }); // its Sunday
+  expect(weekendOf('2026-11-12')).toEqual({ from: '2026-11-13', to: '2026-11-15' }); // a Thursday
+  expect(weekendOf('2026-11-13')).toEqual({ from: '2026-11-13', to: '2026-11-15' });
+  expect(weekendOf('2026-11-15')).toEqual({ from: '2026-11-13', to: '2026-11-15' });
 });

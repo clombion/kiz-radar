@@ -88,7 +88,7 @@ test('the currency asked for stays through a choice, a tab and a community’s p
     months.selectedIndex = 0;
     months.dispatchEvent(new Event('change'));
   }
-  expect(where(frame)).toMatch(new RegExp(`^${ROOT}\\?cur=eur#finder\\?months=1`, 'u'));
+  expect(where(frame)).toMatch(new RegExp(`^${ROOT}\\?cur=eur#finder\\?when=weekend`, 'u'));
   frame.contentDocument?.querySelector<HTMLAnchorElement>('nav.tabs a[data-nav="friends"]')?.click();
   await onFriends(frame);
   await vi.waitFor(() => expect(where(frame)).toBe(`${ROOT}?cur=eur${TABS.find(([nav]) => nav === 'friends')?.[2]}`));

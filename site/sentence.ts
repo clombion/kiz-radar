@@ -19,6 +19,7 @@ import {
   readChoices,
   type Sort,
   VALUES,
+  type When,
   withPhrase,
 } from './finder.ts';
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
@@ -33,7 +34,7 @@ import { plural, text } from './wording.ts';
 
 // every choice at its widest: the defaults with no limit of time or price (the order stays as chosen)
 const { sort: _order, ...UNSORTED } = DEFAULTS;
-const WIDEST = { months: 12, reach: '' } as const;
+const WIDEST = { when: 'year', reach: '' } as const;
 const LOOSEST: Readonly<Omit<Choices, 'sort'>> = { ...UNSORTED, ...WIDEST };
 type NumberChoice = { [K in keyof Choices]: Choices[K] extends number ? K : never }[keyof Choices];
 
@@ -54,31 +55,24 @@ function note(cls: ClassName, ...words_: string[]): HTMLElement {
 const DANCES = [KEY.genre.KIZOMBA, KEY.genre.URBANKIZ, KEY.genre.TARRAXO].map((g) => text('genre', g));
 const VOWEL_FIRST = /^[aeiou]/iu;
 const takesAn = (word: string | null) => VOWEL_FIRST.test(word ?? '');
-// in words, and in digits for screens where only the shorter form keeps the blank on the "festival in" line
-const WHEN_WORDS: Readonly<Record<(typeof VALUES.months)[number], string>> = {
-  1: 'the next month',
-  2: 'the next two months',
-  3: 'the next three months',
-  6: 'the next six months',
-  12: 'the coming year',
+const WHEN_WORDS: Readonly<Record<When, string>> = {
+  weekend: 'the weekend',
+  months: 'the next 3 months',
+  year: 'the next year',
 };
-const WHEN = VALUES.months.map((v) => [v, WHEN_WORDS[v]] as const);
-const WHEN_DIGITS: Readonly<Record<string, string>> = {
-  2: 'the next 2 months',
-  3: 'the next 3 months',
-  6: 'the next 6 months',
-};
+const WHEN = VALUES.when.map((v) => [v, WHEN_WORDS[v]] as const);
 // the sentence says it in words, the bar in short; the steps are round amounts in the visitor's currency (money.ts)
 const PRICE_WORDS: Readonly<Record<Choices['reach'], string>> = {
   '': 'any price',
   fair: 'a reasonable price',
   cheap: 'a cheap price',
 };
+const WHEN_SHORT: Readonly<Record<When, string>> = { weekend: 'This weekend', months: '3 months', year: '1 year' };
 const PRICE = VALUES.reach.map((v) => [v, PRICE_WORDS[v]] as const);
 const limit = (reach: Choices['reach']): number | null => (reach ? step('trip', reach) : null);
 const under = (reach: Step) => money(step('trip', reach), currency);
 const SHORT = {
-  months: WHEN.map(([v]) => [v, plural(v, 'month')] as const),
+  when: VALUES.when.map((v) => [v, WHEN_SHORT[v]] as const),
   reach: PRICE.map(([v]) => [v, v ? `Under ${under(v)}` : 'Any price'] as const),
 };
 const LINEUP_WORDS: Readonly<Record<(typeof VALUES.lineup)[number], string>> = {
@@ -143,7 +137,7 @@ export function sentenceView(
     ...countries.map((c): [string, string] => [c.code, `${flag(c.code)} ${c.name}`]),
   ];
   const sentenceBlanks = {
-    months: blank('months', WHEN, { named: 'When' }),
+    when: blank('when', WHEN, { named: 'When' }),
     country: blank('country', DEST, { named: 'Where to' }),
     reach: blank('reach', PRICE, { named: 'For what price' }),
   };
@@ -192,32 +186,13 @@ export function sentenceView(
         ]
       : []),
   ];
-  const festivalIn = h('span', {}, ' festival in ');
-  // words where they fit after "festival in", digits where only they do (narrow phones); otherwise words
-  const fitMonths = () => {
-    const el = sentenceBlanks.months,
-      sameLine = () => Math.abs(el.offsetTop - festivalIn.offsetTop) < el.offsetHeight / 2;
-    const label = (digits: boolean) => {
-      for (const o of el.options)
-        o.textContent = (digits && WHEN_DIGITS[o.value]) || (WHEN.find(([v]) => String(v) === o.value)?.[1] ?? o.value);
-      sizeToFit(el);
-    };
-    label(false);
-    if (!sameLine()) {
-      label(true);
-      if (!sameLine()) label(false);
-    }
-  };
   // the hint under "anywhere" hangs to the right of it, or to the left where the menu ends near the edge
   const whereNote = note('note-bottom', 'click', ' to change where');
   const placeNote = () => {
     toggle(whereNote, 'flip', false);
     if (whereNote.getBoundingClientRect().right > hero.getBoundingClientRect().right) toggle(whereNote, 'flip', true);
   };
-  const layout = () => {
-    fitMonths();
-    placeNote();
-  };
+  const layout = placeNote;
   const dance = h(
     'span',
     { class: 'dance' },
@@ -235,8 +210,8 @@ export function sentenceView(
       h('span', { 'aria-hidden': 'true' }, n, ' ', dance),
       h('span', { class: 'visually-hidden' }, ' ', text('genre', KEY.genre.KIZOMBA)),
       h('br', { class: 'phone-break' }),
-      festivalIn,
-      sentenceBlanks.months,
+      ' festival in ',
+      sentenceBlanks.when,
       `, flying from ${home().city} to `,
       h('span', { class: 'anchor' }, sentenceBlanks.country, whereNote),
       ' for ',
@@ -249,15 +224,15 @@ export function sentenceView(
     h(
       'p',
       { class: 'nevermind' },
-      choose(LOOSEST, 'Never mind, show me every festival in the coming year', () =>
-        results.scrollIntoView({ behavior: scrolling() }),
-      ),
+      choose(LOOSEST, 'Show all festivals', toList),
+      ' | ',
+      choose({ ...LOOSEST, when: 'weekend' }, 'this weekend only', toList),
     ),
   );
 
   // sticky bar: the same three choices in short form, the count, and "More filters"
   const barBlanks = {
-    months: blank('months', SHORT.months, { cls: 'mini', named: 'When' }),
+    when: blank('when', SHORT.when, { cls: 'mini', named: 'When' }),
     country: blank('country', DEST_SHORT, { cls: 'mini', named: 'Where to' }),
     reach: blank('reach', SHORT.reach, { cls: 'mini', named: 'For what price' }),
   };
@@ -308,7 +283,7 @@ export function sentenceView(
     h(
       'div',
       { class: 'bar-inner' },
-      barBlanks.months,
+      barBlanks.when,
       h('span', { class: 'wide-only' }, barBlanks.country),
       barBlanks.reach,
       barCount,
@@ -317,6 +292,13 @@ export function sentenceView(
     panel,
   );
   dropdown(moreBtn, panel, [bar], signal);
+  // to the cards, with the bar shown at once rather than once the sentence has scrolled away, so the choices just
+  // made can be changed there
+  function toList(): void {
+    toggle(bar, 'shown', true);
+    if (tabNote) toggle(tabNote, 'away', true); // as the bar does when the sentence scrolls away
+    results.scrollIntoView({ behavior: scrolling() });
+  }
 
   const results = h('section', { class: 'sentence-results' });
   // once someone has changed a blank they've got it: fade the hints, and don't show them again
@@ -374,7 +356,7 @@ export function sentenceView(
   function paintChoices(): void {
     if (!s.reach) s.unchecked = 0; // unknown prices are in at any price, so no choice to keep
     showInAddressBar(festivalsHref(choicesAddress(s)));
-    for (const k of ['months', 'country', 'reach'] as const) {
+    for (const k of ['when', 'country', 'reach'] as const) {
       sentenceBlanks[k].value = String(s[k]);
       barBlanks[k].value = String(s[k]);
       sizeToFit(sentenceBlanks[k]);
@@ -405,7 +387,7 @@ export function sentenceView(
         href: '#',
         onclick: (ev: Event) => {
           ev.preventDefault();
-          results.scrollIntoView({ behavior: scrolling() });
+          toList();
         },
       },
       'Show them ↓',
@@ -416,14 +398,7 @@ export function sentenceView(
       return widened
         ? h('span', {}, 'None in that time or for that price. ', widen(widened))
         : 'Nothing like that yet. Try a longer time, anywhere, or any price.';
-    return h(
-      'span',
-      {},
-      `${plural(rows.length, 'festival')} like that`,
-      s.reach ? h('span', {}, ` (full pass and Friday-to-Monday return flight under ${under(s.reach)}). `) : '. ',
-      showThem(),
-      friendsLine(rows),
-    );
+    return h('span', {}, `${plural(rows.length, 'festival')} like that. `, showThem(), friendsLine(rows));
   }
   // the festivals' cards, or what to change when none fits
   function resultList(rows: readonly Festival[], widened: number): HTMLElement {
@@ -458,7 +433,7 @@ export function sentenceView(
     const day = today(),
       rows = matches(all, s, day, limit(s.reach));
     const widened =
-      rows.length > 0 || (s.months === 12 && !s.reach) ? 0 : matches(all, { ...s, ...WIDEST }, day, null).length;
+      rows.length > 0 || (s.when === 'year' && !s.reach) ? 0 : matches(all, { ...s, ...WIDEST }, day, null).length;
     live.replaceChildren(...nodes([liveLine(rows, widened)]));
     barCount.textContent = plural(rows.length, 'festival');
     results.replaceChildren(resultList(rows, widened));

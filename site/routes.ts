@@ -62,12 +62,13 @@ export const communityHref = (key: string, params?: Params) =>
   `c/${encodeURIComponent(key)}/${query(params, baseChoices())}`;
 export const communityShareHref = (key: string) => new URL(communityHref(key), document.baseURI).href;
 export const countriesHref = (params?: Params) => hash('countries', params);
+const weekHref = () => hash('week');
 // the pages the footer links to, which no tab does
 export const sqlHref = () => hash('sql');
 export const sourcesHref = () => hash('sources');
 
 // the views a tab or a swipe goes to, by name, and the tabs of the header
-export type Section = 'finder' | 'friends' | 'map' | 'artists' | 'countries';
+export type Section = 'finder' | 'friends' | 'week' | 'map' | 'artists' | 'countries';
 export type Tab = 'finder' | 'friends' | 'explore';
 // A view, drawn into root from the address: the parts after the view's name, the query string, a signal that aborts
 // once another view shows, and the database loading.
@@ -83,6 +84,7 @@ export type Route = Section | 'sql' | 'sources' | 'community';
 // the header's tabs (a view's nav names its tab), and the second row Explore opens; a swipe on a touch screen steps
 // through the sections in this order: Festivals, Friends, then Explore's
 export const EXPLORE: readonly (readonly [Section, string, string])[] = [
+  ['week', 'This week', weekHref()],
   ['map', 'Map', mapHref()],
   ['artists', 'Artists', artistsHref()],
   ['countries', 'Countries', countriesHref()],
@@ -90,7 +92,7 @@ export const EXPLORE: readonly (readonly [Section, string, string])[] = [
 export const TABS: readonly (readonly [Tab, string, string])[] = [
   ['finder', 'Festivals', festivalsHref()],
   ['friends', 'Friends', friendsHref()],
-  ['explore', 'Explore', mapHref()],
+  ['explore', 'Explore', weekHref()],
 ];
 export const SECTIONS: readonly (readonly [Section, string])[] = [
   ['finder', festivalsHref()],

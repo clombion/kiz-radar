@@ -1,7 +1,7 @@
 // What the festival list can be narrowed by, and the festivals its choices keep: the dances and highlights a search
 // or a checkbox picks, and the choices of the Festivals page. Pure: the day and the price limit are arguments.
 import type { Step } from './currency.ts';
-import { addDays } from './days.ts';
+import { addDays, meets, weekendOf } from './days.ts';
 import type { Kid } from './dom.ts';
 import { flightEur } from './fares.ts';
 import type { Festival } from './festivals.ts';
@@ -48,8 +48,10 @@ export const isOn = (e: Pick<Festival, 'phase'>): boolean => e.phase === KEY.pha
 // price; unchecked keeps the festivals whose trip is not known within it. with is a dance or highlight picked in the
 // search; friends keeps the festivals that featured people said they're going to (not those they only may); onnow those on today.
 export type Sort = 'date' | 'fare';
+// how far ahead: the coming weekend (the one under way from Friday to Sunday), three months, or a year
+export type When = 'weekend' | 'months' | 'year';
 export type Choices = {
-  months: number;
+  when: When;
   reach: '' | Step;
   country: string;
   with: string;
@@ -62,7 +64,7 @@ export type Choices = {
 
 // what the list starts from, and what its address leaves out
 export const DEFAULTS: Readonly<Choices> = {
-  months: 6,
+  when: 'months',
   reach: 'cheap',
   country: '',
   with: '',
@@ -76,7 +78,7 @@ export const DEFAULTS: Readonly<Choices> = {
 };
 // the values each choice the page offers can take; a flag is 0 or 1, a country one the site lists
 export const VALUES = {
-  months: [1, 2, 3, 6, 12],
+  when: ['weekend', 'months', 'year'],
   reach: ['', 'fair', 'cheap'],
   lineup: [0, 10, 20],
   sort: ['date', 'fare'],
@@ -106,18 +108,27 @@ export function readChoices(qs: string, countries: readonly string[]): { state: 
   return readState(p.toString(), DEFAULTS, allowedChoices(countries));
 }
 
+// the days a time ahead runs to from a day, as the departure of a festival's flight must be within (months, year), or
+// the days a festival must be on, one of them at least (weekend)
+const DAYS_AHEAD = { months: 91, year: 365 } as const;
+function within(e: Pick<Festival, 'depart' | 'start_date' | 'end_date'>, when: When, day: string): boolean {
+  if (when === 'weekend') return meets(e, weekendOf(day));
+  return e.depart !== null && e.depart <= addDays(day, DAYS_AHEAD[when]);
+}
+
 // the festivals the choices keep, seen from a day, in the order chosen; max is the trip's limit in the visitor's
 // currency (reach's step), null for any price
 export function matches(all: readonly Festival[], s: Readonly<Choices>, day: string, max: number | null): Festival[] {
-  const end = addDays(day, Math.round(s.months * 30.4));
   return all
     .filter(
       (e): e is Festival & { depart: string } =>
         e.depart !== null &&
-        e.depart <= end &&
-        // with a price limit: the trip within it; sold out never; an unknown trip only when asked for
+        within(e, s.when, day) &&
+        // with a price limit: the trip within it, the flight in it still to take (a festival whose flight has left
+        // has a trip of the pass alone, which says nothing of its price); sold out never; an unknown trip only when
+        // asked for
         (max === null ||
-          (e.price.point === 'card_price' && e.price.key === KEY.card_price.SOLD_OUT
+          (e.begun || (e.price.point === 'card_price' && e.price.key === KEY.card_price.SOLD_OUT)
             ? false
             : e.trip == null
               ? Boolean(s.unchecked)

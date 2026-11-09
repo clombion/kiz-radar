@@ -7,19 +7,22 @@ Content-Security-Policy (`public/index.html`) allows only its own files.
 
 ## The festival list
 
-The landing page is a sentence you complete: "I want to go to a Kizomba festival in the next six months, flying from
-Bergen to anywhere for a cheap price." Each underlined part is a choice; the matching festivals appear below as cards,
-30 at a time. Once the sentence scrolls away, a bar under the header keeps the time and price choices in view, with the
-rest under Filters. The choices live in the address, so a view can be bookmarked or shared; an address asking for a
-choice the page doesn't have (an old link's `reach=150`, say) says so at the top, and the page shows its defaults for
-it. Any price is `reach=any` (an empty value would be left out of the address and read as the default, a cheap price; an
-older link's `reach=` still reads as any price).
+The landing page is a sentence you complete: "I want to go to a Kizomba festival in the next 3 months, flying from
+Bergen to anywhere for a cheap price." Each underlined part is a choice; the time is the weekend (the coming one, or the
+one under way from Friday to Sunday: a festival on any of its days), the next 3 months or the next year (a festival
+whose weekend's Friday is within it). The matching festivals appear below as cards, 30 at a time. Under the sentence,
+**Show all festivals** (the next year, at any price) and **this weekend only** (at any price) take you to the cards,
+with the bar shown at once. Once the sentence scrolls away, a bar under the header keeps the time and price choices in
+view, with the rest under Filters. The choices live in the address, so a view can be bookmarked or shared; an address
+asking for a choice the page doesn't have (an old link's `reach=150`, say) says so at the top, and the page shows its
+defaults for it. Any price is `reach=any` (an empty value would be left out of the address and read as the default, a
+cheap price; an older link's `reach=` still reads as any price).
 
 The price is the trip's: the full pass at today's price plus the Friday-to-Monday return flight. A festival on now
 (between its first and its last day, both included, on the visitor's day: phase `on`) is still listed. From its
 weekend's Friday, when the return priced leaves (`flightBegun` in `site/fares.ts`; a festival that starts on a Thursday
-can still be flown to that day), its trip is the full pass alone, for the price filter and "Cheapest first" as on its
-card.
+can still be flown to that day), its trip is the full pass alone, as on its card and for "Cheapest first"; a price limit
+leaves it out, as a trip without its flight says nothing of what going costs. At any price, and on This week, it is in.
 
 | Price chosen | Shown | Sold-out passes | Unknown pass or flight price |
 | -- | -- | -- | -- |
@@ -62,8 +65,12 @@ currencies are converted with the European Central Bank's rates and marked "~".
 
 ## Exploring
 
-The header's tabs are Festivals, Friends and Explore, whose second row holds the Map, Artists and Countries. On a touch
-screen a swipe goes to the next or previous of those five; on the map a swipe counts from near the screen's sides only.
+The header's tabs are Festivals, Friends and Explore, whose second row holds This week, the Map, Artists and Countries.
+On a touch screen a swipe goes to the next or previous of those six; on the map a swipe counts from near the screen's
+sides only.
+
+- **This week:** the festivals on any day of the current calendar week, Monday to Sunday, those under way among them;
+  Explore opens on it.
 
 - **Map:** one bubble per city (`pipeline/cities.csv`, however the listings spell it), coloured by the cheapest flight
   (or by well-known artists), beside the festivals in view; a city's address is its key (`#map/city/munich-de`). A

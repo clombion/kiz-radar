@@ -472,24 +472,6 @@ button {
   overflow-y: auto;
   box-shadow: none;
 }
-.month {
-  margin: 2.2rem 0 0;
-}
-.month > h2 {
-  font-size: 1.5rem;
-  margin: 0 0 1rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 2px solid var(--text);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-.month > h2 small {
-  font-family: system-ui, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--muted);
-}
 .flight {
   font-size: 0.88rem;
   color: var(--muted);
@@ -3024,9 +3006,6 @@ html:has(dialog.peek[open]) {
   display: none;
 }
 @media (max-width: 640px) {
-  .month > h2 {
-    font-size: 1.3rem;
-  }
   .datebox .dd {
     font-size: 1.3rem;
   }

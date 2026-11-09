@@ -14,9 +14,7 @@ import { code } from './sources.ts';
 // words that mean something else where they are written; each must still be found, so none outlives its use. A key
 // is the Grit rule's (lint/states.grit, below): it is refused where a state is compared or passed, whatever its name
 // means elsewhere, so it needs no list.
-const HOMONYMS = new Set([
-  'sentence.ts: full pass', // the price limit's own sum: pass and flight
-]);
+const HOMONYMS = new Set<string>([]);
 
 // every words of the table, and each form of them, as the fragments a page could compose: whole words in quotes, and
 // the runs between {names} long enough to be words of their own

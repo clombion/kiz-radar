@@ -166,7 +166,6 @@ export type ClassName =
   | 'mini-search'
   | 'mm'
   | 'mono'
-  | 'month'
   | 'more-btn'
   | 'more-names'
   | 'more-panel'

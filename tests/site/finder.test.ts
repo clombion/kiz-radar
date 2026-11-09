@@ -23,15 +23,27 @@ const DAY = '2026-11-02';
 const CHOICES = DEFAULTS;
 const ids = (fs: readonly Festival[]) => fs.map((f) => f.id);
 
-test('a festival is kept while its weekend is within the months chosen', () => {
+test('a festival is kept while its weekend is within the time chosen: three months, or a year', () => {
   const all = [
     festival(1),
-    festival(2, { depart: '2027-04-30' }),
+    festival(2, { depart: '2027-01-29' }),
     festival(3, { depart: '2027-06-04' }),
     festival(4, { depart: null }),
   ];
   expect(ids(matches(all, CHOICES, DAY, null))).toEqual([1, 2]);
-  expect(ids(matches(all, { ...CHOICES, months: 12 }, DAY, null))).toEqual([1, 2, 3]);
+  expect(ids(matches(all, { ...CHOICES, when: 'year' }, DAY, null))).toEqual([1, 2, 3]);
+});
+
+test('the weekend keeps the festivals on any day of the coming one, or of the one under way', () => {
+  const all = [
+    festival(1), // Friday 6 to Sunday 8 November
+    festival(2, { start_date: '2026-11-04', end_date: '2026-11-06' }), // ends on its Friday
+    festival(3, { start_date: '2026-11-13', end_date: '2026-11-15', depart: '2026-11-13' }), // the weekend after
+  ];
+  const weekend = { ...CHOICES, when: 'weekend' } as const;
+  expect(ids(matches(all, weekend, DAY, null))).toEqual([1, 2]); // a Monday: the coming weekend
+  expect(ids(matches(all, weekend, '2026-11-08', null))).toEqual([1, 2]); // its Sunday: the one under way
+  expect(ids(matches(all, weekend, '2026-11-09', null))).toEqual([3]);
 });
 
 test('with a price limit a trip is kept within it, a sold-out one never, and an unknown one when asked for', () => {
@@ -47,6 +59,12 @@ test('with a price limit a trip is kept within it, a sold-out one never, and an 
   expect(ids(matches(all, CHOICES, DAY, 3000))).toEqual([1]);
   expect(ids(matches(all, { ...CHOICES, unchecked: 1 }, DAY, 3000))).toEqual([1, 3]);
   expect(ids(matches(all, { ...CHOICES, reach: '' }, DAY, null))).toEqual([1, 2, 3, 4]);
+});
+
+test('with a price limit a festival whose flight has left is out: its trip is the pass alone', () => {
+  const all = [festival(1, { trip: 900, begun: true, phase: KEY.phase.ON }), festival(2, { trip: 2999 })];
+  expect(ids(matches(all, CHOICES, DAY, 3000))).toEqual([2]);
+  expect(ids(matches(all, CHOICES, DAY, null))).toEqual([1, 2]); // at any price it is in
 });
 
 test('a festival is kept by its country, a dance or highlight, friends going, a checkbox and its line-up', () => {

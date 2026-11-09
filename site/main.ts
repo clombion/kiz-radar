@@ -30,6 +30,7 @@ import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
 import { pill, slide } from './tabs.ts';
 import { loading, scrolling } from './ui.ts';
+import { weekView } from './week.ts';
 
 // Every link and file from the site's root, whatever address the page moves to: index.html's <base> (../../ on a
 // community's page, c/<key>/), made a full address once, as the page loads, with the site-wide choices of the address
@@ -73,6 +74,7 @@ const FINDER: View = {
 // each route's view: a route without one does not compile
 const VIEWS: Readonly<Record<Route, View>> = {
   finder: FINDER,
+  week: { title: 'This week', nav: 'explore', waitsForData: true, show: (root) => weekView(root) },
   map: { title: 'Map', nav: 'explore', waitsForData: true, show: mapView },
   artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView },
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, _, qs) => countriesView(root, qs) },
