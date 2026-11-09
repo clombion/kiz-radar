@@ -94,3 +94,15 @@ brussels-be,DTM,201,2,regional_rail;highspeed_rail;tram,2026-11-09
 brussels-be,CDG,110,1,highspeed_rail;tram,2026-11-09
 brussels-be,SEN,206,3,regional_rail;subway;highspeed_rail;tram,2026-11-09
 brussels-be,ORY,137,4,subway;regional_rail;regional_rail;highspeed_rail;tram,2026-11-09
+bucharest-ro,BBU,31,2,bus;bus;subway,2026-11-09
+bucharest-ro,OTP,51,2,regional_rail;subway;subway,2026-11-09
+bucharest-ro,GHV,205,4,bus;bus;long_distance;subway;subway,2026-11-09
+bucharest-ro,CRA,233,4,bus;bus;coach;subway;subway,2026-11-09
+bucharest-ro,CND,,,,2026-11-09
+bucharest-ro,VAR,420,4,bus;bus;coach;subway;bus,2026-11-09
+chiang-mai-th,CNX,,,,2026-11-09
+chiang-mai-th,LPT,,,,2026-11-09
+chiang-mai-th,HGN,,,,2026-11-09
+chiang-mai-th,CEI,,,,2026-11-09
+chiang-mai-th,NNT,,,,2026-11-09
+chiang-mai-th,THS,,,,2026-11-09
