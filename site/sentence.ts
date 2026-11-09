@@ -171,13 +171,6 @@ export function sentenceView(
           }),
         ]
       : []),
-    ...(s.friends
-      ? [
-          tag(['With ', 'friends going'], () => {
-            s.friends = 0;
-          }),
-        ]
-      : []),
     ...(s.onnow
       ? [
           tag(['', text('phase', KEY.phase.ON)], () => {
@@ -270,7 +263,6 @@ export function sentenceView(
     h(
       'div',
       { class: 'checks' },
-      check('friends', 'Only festivals friends go to'),
       check('onnow', 'On now only', anyOn() ? null : 'none on today'),
       ...CHECKED.map(([k, feature]) => check(k, text('feature', feature))),
       s.reach ? check('unchecked', 'Include festivals with unknown prices') : null, // at any price they are in
@@ -330,9 +322,9 @@ export function sentenceView(
 
   const everyOne = (count: number) => (count === 1 ? 'this one' : 'all of these');
   const someOf = (count: number) => (count === 1 ? 'one of these' : `${count} of these`);
-  // "Cédric & Christina are going to 3 of these. Show only those", when featured people go to some of them
+  // "Cédric & Christina are going to 3 of these", when featured people go to some of them
   function friendsLine(rows: readonly Festival[]): HTMLElement | null {
-    const f = s.friends ? null : friendsIn(rows);
+    const f = friendsIn(rows);
     if (f === null) return null;
     const all_ = f.n === rows.length;
     const which = all_ ? everyOne(rows.length) : someOf(f.n);
@@ -340,15 +332,7 @@ export function sentenceView(
       'span',
       { class: 'friends' },
       f.faces,
-      h(
-        'span',
-        {},
-        f.names,
-        ` ${f.many ? 'are' : 'is'} going to `,
-        which,
-        '. ',
-        all_ ? null : choose({ friends: 1 }, 'Show only those'),
-      ),
+      h('span', {}, f.names, ` ${f.many ? 'are' : 'is'} going to `, which, '. '),
     );
   }
 
@@ -363,7 +347,7 @@ export function sentenceView(
     }
     layout();
     panel.replaceChildren(...nodes(moreFields()));
-    const extra = (['with', 'friends', 'onnow', 'lineup', 'unchecked', ...CHECKED.map(([k]) => k)] as const).filter(
+    const extra = (['with', 'onnow', 'lineup', 'unchecked', ...CHECKED.map(([k]) => k)] as const).filter(
       (k) => s[k] !== DEFAULTS[k],
     ).length;
     const onPhone = extra + (s.country ? 1 : 0); // on a phone the destination is one of the panel's filters

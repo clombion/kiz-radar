@@ -31,7 +31,7 @@ export const BOOKED = counted('role', 'lineup', 'booking');
 export type Booked = (typeof BOOKED)[number];
 // Whether someone may go, not yet going: they said maybe, and the line-up has them not, since someone booked there is
 // teaching (or playing) whatever their plan says. They are named with a "maybe" tag, and a community's days, counts
-// and sentence, the hero's friends going and the festival list's filter of them leave them out.
+// and sentence, and the hero's friends going, leave them out.
 export const unsure = (p: { plan: Key<'plan'>; booked_as: Booked | null }): boolean =>
   p.plan === KEY.plan.MAYBE && p.booked_as === null;
 const bookedKeys: readonly string[] = BOOKED;
