@@ -1710,7 +1710,10 @@ const friendsTab = (qs = '') => {
 };
 // the list as read: its summary, and each festival's name with its lines of who goes, "Teaching: Christina and Siân"
 const listOf = (root: HTMLElement) => ({
-  summary: said(root.querySelector('.list-summary')),
+  panel: [...root.querySelectorAll('.now-next p')].map(
+    (l) => `${said(l.querySelector('.who-label'))}: ${said(l.lastElementChild)}`,
+  ),
+  count: said(root.querySelector('.bar-count')),
   months: [...root.querySelectorAll('.month-head')].map((m) => said(m)),
   rows: [...root.querySelectorAll('.who-rows > li')].map((li) => ({
     name: said(li.querySelector('.who-name')),
@@ -1718,7 +1721,6 @@ const listOf = (root: HTMLElement) => ({
       (l) => `${said(l.querySelector('.who-label'))}: ${said(l.lastElementChild)}`,
     ),
   })),
-  sharing: said(root.querySelector('.sharing')),
   bar: root.querySelector('.sticky-bar') !== null,
 });
 // the festivals the list shows for an address's choices, by name
@@ -1730,13 +1732,14 @@ test('the Friends tab lists the festivals of the people near the home city by mo
   const home = homeOf()?.city ?? '';
   expect(home).not.toBe('');
   expect(NEAR_KM).toBe(200);
-  expect(list.summary).toBe(`6 festivals · 3 people within 200 km of ${home}`);
+  // the panel: who shares plans, named while they are few, and who goes next
+  expect(list.panel[0]).toMatch(/^Who: Christina \(\d+\), Cédric \(\d+\) and Siân \(\d+\)$/u);
+  expect(list.panel.at(-1)).toMatch(/^Next: /u);
   expect(list.months[0]).toBe('November 2026 · 3 festivals');
   expect(glasgowOf(root)?.lines).toEqual(['teaching: Christina and Siân']);
   expect(list.rows.map((r) => r.lines[0]?.split(':')[0])).toContain('going');
-  // a short list: no bar to narrow it, and who shares plans said in a line
+  // a short list: no bar to narrow it
   expect(list.bar).toBe(false);
-  expect(list.sharing).toMatch(/^Sharing their plans: Christina \(\d+\), Cédric \(\d+\) and Siân \(\d+\)$/u);
   expect(friendsTabs().map(([k, words]) => [k, words])).toEqual([
     ['near', `Near ${home}`],
     ['everywhere', 'Everywhere'],
@@ -1751,10 +1754,11 @@ test('a festival on now says so in the Friends tab, as on its card, and in its N
   const on = onDay(glasgow?.start_date ?? '', friendsTab);
   expect(said(on.querySelector('.who-rows > li:has(.now-tag) .who-name'))).toContain('Glasgow');
   expect([...on.querySelectorAll('.now-next p')].map((l) => said(l.querySelector('.who-label')))).toEqual([
+    'Who',
     'Now',
     'Next',
   ]);
-  expect(said(on.querySelector('.now-next p:first-child span:last-child'))).toMatch(/^Glasgow.*\(2\)$/u);
+  expect(said(on.querySelector('.now-next p:nth-child(2) span:last-child'))).toMatch(/^Glasgow.*\(2\)$/u);
   expect(onDay('2026-11-04', friendsTab).querySelector('.now-tag')).toBeNull();
 });
 
@@ -1789,7 +1793,7 @@ test('the Friends tab keeps the festivals all the friends ticked go to, or any o
   expect(said(none.querySelector('.who-list'))).toBe(
     'Cédric and Siân have no festival in common. Show those any of them goes to',
   );
-  expect(none.querySelector('.list-summary')?.textContent).toBe('');
+  expect(said(none.querySelector('.bar-count'))).toBe('0 of 6 festivals in common');
   none.querySelector<HTMLButtonElement>('.who-list .link')?.click();
   expect(listOf(none).rows.length).toBe(listed('').length); // between them, every one
   expect(listed('with=cedric,sian&any=1').length).toBe(listed('').length);
@@ -1821,15 +1825,15 @@ test('the Friends tab lists only the people living within 200 km of the home cit
     }
   };
   const near = () => listOf(onDay('2026-11-04', friendsTab));
-  expect(movedNorth(1.62, near).sharing).toContain('Siân'); // about 180 km
-  expect(movedNorth(2.07, near).sharing).not.toContain('Siân'); // about 230 km
+  expect(movedNorth(1.62, near).panel[0]).toContain('Siân'); // about 180 km
+  expect(movedNorth(2.07, near).panel[0]).not.toContain('Siân'); // about 230 km
   // and the festivals name only the people near: Glasgow, Christina without Siân; everywhere, both
   expect(movedNorth(2.07, () => glasgowOf(onDay('2026-11-04', friendsTab)))?.lines).toEqual(['teaching: Christina']);
   expect(movedNorth(2.07, () => glasgowOf(onDay('2026-11-04', () => friendsTab('in=everywhere'))))?.lines).toEqual([
     'teaching: Christina and Siân',
   ]);
-  expect(movedNorth(2.07, () => listOf(onDay('2026-11-04', () => friendsTab('in=everywhere')))).summary).toBe(
-    '6 festivals · 3 people',
+  expect(movedNorth(2.07, () => listOf(onDay('2026-11-04', () => friendsTab('in=everywhere')))).panel[0]).toContain(
+    'Siân',
   );
 });
 

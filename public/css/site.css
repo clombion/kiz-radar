@@ -3700,9 +3700,6 @@ svg.defs {
 .who-list {
   margin-bottom: 2rem;
 }
-.sharing {
-  margin-top: 1.4rem;
-}
 .picker {
   left: var(--gutter);
   right: auto;

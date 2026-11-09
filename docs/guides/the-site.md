@@ -88,16 +88,18 @@ sides only.
   **Everywhere** (everyone sharing plans); `#friends?in=everywhere`. The visitor's own communities will join that row
   once there are accounts.
 
-  - Under the title, a panel of two labelled lines, as the rows have: Now (the festivals on now, the two with the most
-    people named and the rest counted) and Next (the next to start).
+  - Under the title, a panel of labelled lines, as the rows have: Who (the people sharing plans, named with how many
+    festivals each while there are eight at most, else how many and within what distance), Now (the festivals on now,
+    the two with the most people named and the rest counted), Next (the next to start) and, with eight people or more,
+    Most (the festival most of them go to, when no line above names it).
   - The festivals to come, by month ("November 2026 · 3 festivals"), each with its name, place and days, then a line per
     thing its people do there, labelled (teaching or playing first, then going, then maybe). A line names up to four
     people or couples (`NAMED_UP_TO`, `site/plans.ts`); past that, the first three and "and N more", which opens the
     list of everyone going.
-  - A short list (up to six festivals and eight people) is all there is, with a line of who shares plans. A longer one
-    gets a bar: **Friends** (a list to tick, the ticked first, with a search; the festivals all of them go to, or any of
-    them; two with nothing in common are told so, with a link to those any of them goes to), the time ahead (this
-    weekend, 3 months or a year) and a festival's name or city. The choices are in the address
+  - A short list (up to six festivals and eight people) is all there is. A longer one gets a bar: **Friends** (a list to
+    tick, the ticked first, with a search; the festivals all of them go to, or any of them; two with nothing in common
+    are told so, with a link to those any of them goes to), the time ahead (this weekend, 3 months or a year) and a
+    festival's name or city, with how many festivals it keeps (on a computer). The choices are in the address
     (`with=cedric,sian&any=1&when=months&q=prague`), and any of them shows the bar however short the list.
   - A person's page (`#friends/<key>`) is as before.
 

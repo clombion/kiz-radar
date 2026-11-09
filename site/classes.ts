@@ -272,7 +272,6 @@ export type ClassName =
   | 'sentence-page'
   | 'sentence-results'
   | 'share-row'
-  | 'sharing'
   | 'sheet-action'
   | 'sheet-body'
   | 'sheet-handle'

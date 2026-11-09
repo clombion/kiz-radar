@@ -79,6 +79,8 @@ function peopleOf(at: Place): Set<string> {
 }
 
 type Festival = RowOf<typeof EVENT> & { goers: Goer[] };
+// someone sharing plans, and how many of their festivals are to come
+type Shares = ReturnType<typeof withPlans>[number];
 // the festivals to come some of these people go to, soonest first, each with those of them going
 function festivalsOf(people: ReadonlySet<string>): Festival[] {
   return q(
@@ -112,13 +114,13 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
   });
   const people = peopleOf(s.in);
   const all = festivalsOf(people);
-  const sharing = withPlans().filter((p) => people.has(p.key));
+  const sharing: Shares[] = withPlans().filter((p) => people.has(p.key));
   const ticked = new Set(s.with.split(',').filter((k) => people.has(k)));
   const long = all.length > FEW_FESTIVALS || sharing.length > FEW_PEOPLE;
   const filtering = ticked.size > 0 || s.q !== '' || s.when !== DEFAULTS.when;
   const where = s.in === 'near' ? `near ${site().home.city}` : 'anywhere';
 
-  const summary = h('p', { class: 'list-summary' });
+  const count = h('span', { class: 'bar-count' });
   const list = h('div', { class: 'who-list' });
   const friendsBtn = moreButton('friends-picker');
   const picker = h('div', { class: ['more-panel', 'picker'], id: 'friends-picker', hidden: true });
@@ -150,6 +152,7 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
         { class: 'mini', 'aria-label': 'When' },
       ),
       search,
+      count,
     ),
     picker,
   );
@@ -258,9 +261,10 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
     paintPicker();
     const day = today();
     const shown = kept(all, s, ticked, day);
-    summary.replaceChildren(
-      ...nodes(shown.length > 0 ? summaryOf({ shown, all, sharing: sharing.length }, ticked, s) : []),
-    );
+    count.textContent =
+      shown.length === all.length
+        ? plural(all.length, 'festival')
+        : `${shown.length} of ${plural(all.length, 'festival')}${ticked.size > 1 && !s.any ? ' in common' : ''}`;
     list.replaceChildren(...(shown.length > 0 ? byMonth(shown, ticked) : [none()]));
   }
 
@@ -268,76 +272,56 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
     h(
       'article',
       { class: 'artist-profile' },
-      h('header', { class: 'profile-head' }, h('h1', {}, 'Who’s going where'), nowAndNext(all, today())),
+      h('header', { class: 'profile-head' }, h('h1', {}, 'Who’s going where'), overview(all, sharing, s.in)),
       long || filtering ? bar : null,
-      summary,
       list,
-      !long && sharing.length > 0
-        ? h(
-            'p',
-            { class: 'sharing' },
-            'Sharing their plans: ',
-            joined(
-              sharing.map((p) => [
-                h('a', { href: personHref(p.key), class: 'artist' }, p.name),
-                h('span', { class: 'muted' }, ` (${p.upcoming})`),
-              ]),
-            ),
-          )
-        : null,
     ),
   );
   leftOut(root, dropped);
   render();
 }
 
-// Who is away and who goes next, as labelled lines in a panel: "Now  Kizomba Queen (14), Glasgow Kizomba Festival 5.0
-// (4) and 9 more" (the festivals on now, the most people first, two named) and "Next  KUOF (3), from 20 Nov"; each
-// festival opening on the map
+// The panel under the title, as labelled lines like the rows': who shares plans (named, with how many festivals each,
+// when they are few; else how many), who is away now (the two festivals with the most people named, the rest counted),
+// who goes next, and, with many people, the festival most of them go to when no line above names it; each festival
+// opening on the map
 const NOW_NAMED = 2;
-function nowAndNext(all: readonly Festival[], d: string): HTMLElement | null {
+function overview(all: readonly Festival[], sharing: readonly Shares[], at: Place): HTMLElement | null {
+  const d = today();
   const now = all.filter((e) => e.phase === KEY.phase.ON).sort((a, b) => b.goers.length - a.goers.length);
   const next = all.find((e) => e.start_date > d);
+  const top = sharing.length >= MANY_PEOPLE ? [...all].sort((a, b) => b.goers.length - a.goers.length)[0] : undefined;
+  // most of them go to it, unless a line above names it already
+  const most = top === undefined || top === next || now.slice(0, NOW_NAMED).includes(top) ? undefined : top;
   const named = (e: Festival) => [
     h('a', { href: eventOnMapHref(e.id), class: 'who-name' }, e.title),
     h('span', { class: 'muted' }, ` (${e.goers.length})`),
   ];
   const line = (label: string, ...what: Kid[]) =>
     h('p', {}, h('span', { class: 'who-label' }, label), h('span', {}, ...nodes(what)));
+  const within = at === 'near' ? ` within ${NEAR_KM} km of ${site().home.city}` : '';
   const rest = now.length - NOW_NAMED;
   const lines = [
+    sharing.length === 0
+      ? null
+      : sharing.length > FEW_PEOPLE
+        ? line('Who', `${plural(sharing.length, 'person', 'people')}${within}`)
+        : line(
+            'Who',
+            joined(
+              sharing.map((p) => [
+                h('a', { href: personHref(p.key), class: 'artist' }, p.name),
+                h('span', { class: 'muted' }, ` (${p.upcoming})`),
+              ]),
+            ),
+          ),
     now.length > 0
       ? line('Now', joined([...now.slice(0, NOW_NAMED).map(named), ...(rest > 0 ? [`${rest} more`] : [])]))
       : null,
     next === undefined ? null : line('Next', named(next), `, from ${dayMonth(next.start_date)}`),
+    most === undefined ? null : line('Most', named(most)),
   ].filter((x) => x !== null);
   return lines.length === 0 ? null : h('div', { class: ['who-lines', 'now-next'] }, lines);
-}
-
-// how many festivals are listed, of how many, and where most go when many people share plans
-function summaryOf(
-  { shown, all, sharing }: { shown: readonly Festival[]; all: readonly Festival[]; sharing: number },
-  ticked: ReadonlySet<string>,
-  s: Choices,
-): Kid[] {
-  const n =
-    shown.length === all.length
-      ? plural(all.length, 'festival')
-      : `${shown.length} of ${plural(all.length, 'festival')}`;
-  const common = ticked.size > 1 && !s.any ? ' they all go to' : '';
-  const people = new Set(all.flatMap((e) => e.goers.map((g) => g.key)));
-  const most =
-    people.size >= MANY_PEOPLE && shown.length === all.length
-      ? [...all].sort((a, b) => b.goers.length - a.goers.length)[0]
-      : undefined;
-  const who =
-    s.in === 'near'
-      ? ` · ${plural(sharing, 'person', 'people')} within ${NEAR_KM} km of ${site().home.city}`
-      : ` · ${plural(sharing, 'person', 'people')}`;
-  return [
-    `${n}${common}${ticked.size > 0 ? '' : who}`,
-    most === undefined ? '' : [' · most are going to ', h('b', {}, most.title), ` (${most.goers.length})`],
-  ];
 }
 
 // the festivals under their months: "November 2026 · 3 festivals", then each festival's row
