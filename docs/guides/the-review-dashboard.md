@@ -10,6 +10,7 @@ written by `pipeline/review.py` with the site's database). Anyone can read it; o
 | Merges | pairs the merge review left `unsure` that no admin claim decides | a merge claim, from its form |
 | Join two artists | every artist booked, to find two the matching never paired: a rename, a DJ name unlike the dancer's | a merge claim, from its form |
 | Festivals | festivals whose prices wait for an agent (`page`, `recipe`, `recipe_fix`, `session`, `agent`), or whose first read is `disputed` | an agent in a session ([Prices from ticket pages](ticket-pages.md)) |
+| Cities | the cities of festivals to come that no `city` claim of yours decides the airports of, each with the research session's proposal | a session proposes, your claim confirms or overrides ([The airports a city flies to](city-airports.md)) |
 | Orphaned claims | claims naming a key no mention produces any more (`orphaned`) | a new claim on the key the artist has now ([Reviewing artists](reviewing-artists.md)) |
 | Timeline | the pipeline's steps, latest first, and the latest ticket-page reads | — |
 

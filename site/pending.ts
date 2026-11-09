@@ -42,6 +42,16 @@ const REVIEW = record({
       to_do: text,
     }),
   ),
+  cities: list(
+    record({
+      key: text,
+      name: text,
+      country_code: text,
+      festivals: int,
+      events: list(text),
+      proposal: nullable(record({ tier: text, gateways: list(text), note: text })),
+    }),
+  ),
   orphaned: list(record({ id: text, claim: text })),
   steps: list(record({ step: text, description: text, performed_at: text, performed_by: text })),
   reads: list(record({ at: text, event_id: int, event: text, status: text })),

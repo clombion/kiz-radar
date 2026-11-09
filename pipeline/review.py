@@ -1,26 +1,29 @@
 """The review dashboard's read model (public/data/review.json, built with the site's database): what the pipeline did
 lately, and every data point waiting for an agent or the admin (pipeline/states.py, an owner of either), each with what
-settles it. The dashboard (site/review.ts) writes the admin's claims for the homes and merges it lists; the festivals
-and the orphaned claims it lists are settled in a session (docs/guides/).
+settles it. The dashboard (site/review.ts) writes the admin's claims for the homes and merges it lists; the festivals,
+the cities and the orphaned claims it lists are settled in a session (docs/guides/).
 
     homes      the artists booked whose home country is unknown or contested (home_basis), by bookings
     merges     the pairs the merge review left unsure, which no admin claim decides
     festivals  the festivals whose prices wait for an agent (waits_for), or whose first read is disputed
+    cities     the cities of festivals to come that no decision of the admin's says the airports of
+               (claims.CityClaim), each with the research session's proposal
     orphaned   the claims that name a key no mention produces any more
     steps      the pipeline's steps, latest first; reads, the latest ticket-page reads
 """
 
+from collections import defaultdict
 from collections.abc import Iterable, Sequence
 from pathlib import Path
 
 from pydantic import BaseModel, TypeAdapter
 
-from pipeline import countries, export, states, tickets_state
+from pipeline import claims, countries, export, states, tickets_state
 from pipeline.countries import codes
 from pipeline.db import Reader
-from pipeline.enums import ClaimSource, ClaimState, FirstRead, HomeBasis, MergeDecision, Status, Waiting
+from pipeline.enums import CityTier, ClaimSource, ClaimState, FirstRead, HomeBasis, MergeDecision, Status, Waiting
 from pipeline.extract import merge_review
-from pipeline.records import Date, Record, ReviewMention, Stamp, StatusRow, today
+from pipeline.records import CityKey, CountryCode, Date, Record, ReviewMention, Stamp, StatusRow, today
 
 REPOSITORY = 'clombion/kiz-radar-claims'  # where the admin's claims are written (pipeline/claims.py, CLAIMS)
 SUBJECT = TypeAdapter(tuple[str, ...])  # what a claim decides, as the export's claims table holds it (claims.subject)
@@ -92,6 +95,26 @@ class Festival(Record):
     to_do: str  # what settles it (the owner of the state that lists it, pipeline/states.py)
 
 
+class Proposal(Record):
+    """The research session's decision for a city (claims.CityClaim), which a claim of the admin's overrides."""
+
+    tier: CityTier
+    gateways: tuple[str, ...]  # none for a city not served
+    note: str
+
+
+class Undecided(Record):
+    """A city festivals to come are in, which no decision of the admin's says the airports of: with the research
+    session's proposal, when it has made one."""
+
+    key: CityKey
+    name: str
+    country_code: CountryCode
+    festivals: int  # its festivals to come
+    events: tuple[str, ...]  # the first of them, as many as EVENTS
+    proposal: Proposal | None
+
+
 class Orphaned(Record):
     id: str
     claim: str  # as its file holds it
@@ -119,6 +142,7 @@ class Review(Record):
     merges: tuple[Merge, ...]
     artists: tuple[Booked, ...]  # every artist booked, most booked first, for joining any two
     festivals: tuple[Festival, ...]
+    cities: tuple[Undecided, ...]
     orphaned: tuple[Orphaned, ...]
     steps: tuple[Step, ...]
     reads: tuple[PageRead, ...]
@@ -313,6 +337,43 @@ def festivals(rows: Sequence[StatusRow]) -> list[Festival]:
     ]
 
 
+class CityRow(BaseModel):
+    key: str
+    name: str
+    country_code: str
+    event: str
+
+
+def proposal(c: claims.CityClaim) -> Proposal:
+    return Proposal(tier=c.decision.tier, gateways=c.decision.gateways, note=c.note)
+
+
+def undecided(x: Reader, decided: claims.Decisions) -> list[Undecided]:
+    """The cities of festivals to come no decision of the admin's is of, those with the most festivals first, then by
+    name, each with its proposal."""
+    rows = x.rows(
+        CityRow,
+        """select c.key, c.name, c.country_code, e.title as event from event_rows e join cities c on c.key = e.city_key
+        where e.upcoming order by e.start_date, e.title, e.id""",
+    )
+    by: defaultdict[str, list[CityRow]] = defaultdict(list)
+    for r in rows:
+        if r.key not in decided.admin:
+            by[r.key].append(r)
+    found = [
+        Undecided(
+            key=k,
+            name=rs[0].name,
+            country_code=rs[0].country_code,
+            festivals=len(rs),
+            events=tuple(r.event for r in rs[:EVENTS]),
+            proposal=None if (p := decided.proposed.get(k)) is None else proposal(p),
+        )
+        for k, rs in by.items()
+    ]
+    return sorted(found, key=lambda u: (-u.festivals, u.name, u.key))
+
+
 def reads(fs: Sequence[tickets_state.Festival]) -> list[PageRead]:
     """The latest ticket-page reads, of every festival's log."""
     every = [PageRead(at=e.at, event_id=f.id, event=f.title, status=e.status) for f in fs for e in f.log]
@@ -335,6 +396,7 @@ def review(x: Reader, built_at: str, src: Path) -> Review:
         merges=tuple(merges(x, admin_pairs(claimed))),
         artists=tuple(booked(x)),
         festivals=tuple(festivals(status)),
+        cities=tuple(undecided(x, claims.decisions())),
         orphaned=tuple(Orphaned(id=r.id, claim=r.claim) for r in claimed if r.state == ClaimState.ORPHANED),
         steps=tuple(
             x.rows(

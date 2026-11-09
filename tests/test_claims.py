@@ -2,13 +2,15 @@
 
 import datetime as dt
 import itertools
+import re
 
 import pytest
 from pydantic import ValidationError
 
 from pipeline import claims, data
-from pipeline.claims import CLAIMS, Decided, HomeClaim, Made, MergeClaim, SiteClaim
-from pipeline.enums import ClaimSource, MergeDecision, Waiting
+from pipeline.claims import CLAIMS, Big, CityClaim, Decided, HomeClaim, Made, MergeClaim, NotServed, SiteClaim, Small
+from pipeline.enums import CityTier, ClaimSource, MergeDecision, Waiting
+from pipeline.records import digest
 from tests.fakes import AT, SITE_CLAIMS
 
 
@@ -81,3 +83,58 @@ def test_a_claim_is_typed_and_changes_something() -> None:
         _ = home('XX')
     with pytest.raises(ValidationError, match='to itself'):
         _ = SiteClaim(field='site', host='h', instead_of=Waiting.RECIPE, then=Waiting.RECIPE, made_at=AT, note='n')
+
+
+def city(decision: Big | Small | NotServed, at: dt.datetime = AT) -> CityClaim:
+    return CityClaim(field='city', key='lisbon-pt', decision=decision, made_at=at, note='n')
+
+
+@pytest.mark.parametrize(
+    'decision',
+    [
+        {'tier': 'small', 'gateways': ['LIS', 'OPO', 'FAO', 'SVQ']},  # more than a smaller city flies to
+        {'tier': 'small', 'gateways': []},
+        {'tier': 'big', 'gateways': []},
+        {'tier': 'big', 'gateways': ['LIS', 'LIS']},  # an airport twice
+        {'tier': 'not_served', 'gateways': ['LIS']},  # no airport is one too far to fly to
+        {'tier': 'small', 'gateways': ['Lisbon']},  # no IATA code
+    ],
+)
+def test_a_city_decision_names_the_airports_its_tier_allows(decision: dict[str, object]) -> None:
+    with pytest.raises(ValidationError):
+        _ = claims.CLAIM.validate_python(
+            {'field': 'city', 'key': 'lisbon-pt', 'decision': decision, 'made_at': AT, 'note': 'n'}
+        )
+
+
+def test_a_decision_of_each_tier_is_its_airports_or_none() -> None:
+    made = [
+        city(Big(tier=CityTier.BIG, gateways=('CDG', 'ORY', 'BVA'))),
+        city(Small(tier=CityTier.SMALL, gateways=('GLA', 'EDI', 'PIK'))),
+        city(NotServed(tier=CityTier.NOT_SERVED)),
+    ]
+    assert [claims.CLAIM.validate_json(claims.text(c)) for c in made] == made  # each read back as written
+
+
+def test_a_proposal_is_the_model_s_and_the_admin_s_claim_on_its_city_overrides_it() -> None:
+    """The research session proposes a decision (PROPOSALS), of the model channel; the admin's claim on the city is
+    apart from it, whenever either was made, and the queue lists the city until the admin decides it."""
+    proposed = city(Small(tier=CityTier.SMALL, gateways=('LIS', 'OPO')), AT + dt.timedelta(days=1))
+    claims.propose([proposed])
+    assert [m for m in claims.model() if m.claim == proposed] == [Made(proposed, ClaimSource.MODEL)]
+    assert claims.decisions() == claims.Decisions(admin={}, proposed={'lisbon-pt': proposed})
+    admin = city(NotServed(tier=CityTier.NOT_SERVED))
+    claims.write([admin])
+    assert claims.decisions() == claims.Decisions(admin={'lisbon-pt': admin}, proposed={'lisbon-pt': proposed})
+    assert claims.resolved(claims.every())[('city', 'lisbon-pt')] == Made(admin, ClaimSource.ADMIN)
+
+
+def test_the_proposals_hold_a_city_s_decision_and_nothing_else() -> None:
+    """A merge claim in the proposals folder, named by its digest, is refused, and stops the run naming it."""
+    one = merge(MergeDecision.MERGE)
+    path = data(claims.PROPOSALS) / f'{digest(claims.text(one))}.json'
+    path.parent.mkdir(parents=True)
+    _ = path.write_text(claims.text(one), encoding='utf-8')
+    assert isinstance(claims.parsed(path, claims.PROPOSALS), list)
+    with pytest.raises(SystemExit, match=re.escape(f'{claims.PROPOSALS}/{path.name}')):
+        _ = claims.model()

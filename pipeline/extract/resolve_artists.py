@@ -606,7 +606,7 @@ def named(c: claims.AnyClaim) -> tuple[str, ...]:
             return (c.key,)
         case claims.BookingClaim():
             return (c.from_key, c.to_key)
-        case claims.SiteClaim() | claims.PlaceClaim():  # of a site, a city: no artist's key
+        case claims.SiteClaim() | claims.PlaceClaim() | claims.CityClaim():  # of a site, a city: no artist's key
             return ()
 
 
@@ -629,7 +629,7 @@ def claimed(keys: Keys, made: Sequence[claims.Made]) -> Claimed:
                 homes.append(claims.Made(c, m.source))
             case claims.BookingClaim() as c:
                 bookings.append(claims.Made(c, m.source))
-            case claims.SiteClaim() | claims.PlaceClaim():
+            case claims.SiteClaim() | claims.PlaceClaim() | claims.CityClaim():
                 pass
     return Claimed(merges, homes, bookings, state)
 

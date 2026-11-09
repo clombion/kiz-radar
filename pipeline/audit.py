@@ -20,12 +20,14 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from pipeline import claims, data, fare_store, tables, tickets_state, tickets_store
+from pipeline import cities, claims, data, fare_store, tables, tickets_state, tickets_store
 from pipeline import prompt as prompts
-from pipeline.claims import SiteClaim
+from pipeline.claims import CityClaim, SiteClaim
 from pipeline.extract import answers
 from pipeline.records import (
+    Airport,
     Answered,
+    City,
     CsvRow,
     FirstRead,
     Stamped,
@@ -59,7 +61,10 @@ def refused(event_ids: set[int]) -> list[str]:
     count."""
     out = [line for record in CsvRow.records() for line in rows_refused(record)]
     out += fare_store.refused()
-    out += [line for path in claims.claim_files() if isinstance(why := claims.parsed(path), list) for line in why]
+    for folder in (claims.CLAIMS, claims.PROPOSALS):
+        parsed = [(path, claims.parsed(path, folder)) for path in claims.claim_files(folder)]
+        out += [line for _, why in parsed if isinstance(why, list) for line in why]
+        out += unknown([(f'{folder}/{path.name}', c) for path, c in parsed if isinstance(c, CityClaim)])
     for pass_ in prompts.PASSES:
         answered = answers.answered(pass_.name, event_ids).values()
         for path in sorted({path for path, meta in answered if prompts.is_current(pass_.name, meta.prompt)}):
@@ -73,6 +78,17 @@ def refused(event_ids: set[int]) -> list[str]:
                 _ = FirstRead.parse(path.read_bytes())
             except ValidationError as e:
                 out += errors(e, shown(path))
+    return out
+
+
+def unknown(named: Sequence[tuple[str, CityClaim]]) -> list[str]:
+    """Each city claim naming a city cities.csv has not, or an airport airports.csv has not."""
+    have, flown = {c.key for c in cities.known()}, {a.code for a in Airport.read()}
+    out: list[str] = []
+    for where, c in named:
+        if c.key not in have:
+            out.append(f'{where}: no city {c.key} in {City.FILE}')
+        out += [f'{where}: no airport {g} in {Airport.FILE}' for g in c.decision.gateways if g not in flown]
     return out
 
 

@@ -1,0 +1,52 @@
+# The airports a city flies to
+
+Each festival city needs a decision: which airports dancers actually fly to for it, or that none is near enough. The
+review dashboard's **Cities** tab lists the cities of festivals to come that no decision of the admin's covers, each
+with the research session's proposal when it has made one. A session works the list; the admin confirms or overrides.
+
+## The decision
+
+A decision is a `city` claim (`pipeline/claims.py`, `CityClaim`) on a city's key (`pipeline/cities.csv`):
+
+| Tier | Airports | When |
+| -- | -- | -- |
+| `big` | its main airports, every one dancers use (Paris: CDG, ORY, BVA) | a city with several airports dancers fly to |
+| `small` | its practical gateways, at most `states.MOST_GATEWAYS` (Glasgow: GLA, EDI, PIK) | any other served city |
+| `not_served` | none | no airport is near enough to be worth a flight from home |
+
+Airports are listed the quickest into the city first: the first is the one searched for any flight, the others for
+direct flights. Each airport must be in `pipeline/airports.csv` and the key in `pipeline/cities.csv`, or
+`mise run audit` names the claim. The note says why: the time into the city, how dancers get there.
+
+## Proposing (a session)
+
+1. Open the Cities tab of the review dashboard, or read `cities` in `public/data/review.json` after
+   `mise run build:data`.
+2. For each city without a proposal, find the airports dancers use and the ground time from each into the city.
+3. Write the proposals:
+
+```python
+from pipeline import claims
+from pipeline.claims import CityClaim, Small
+from pipeline.enums import CityTier
+from pipeline.records import now
+
+claims.propose([
+    CityClaim(
+        field='city',
+        key='glasgow-gb',
+        decision=Small(tier=CityTier.SMALL, gateways=('GLA', 'EDI', 'PIK')),
+        made_at=now(),
+        note='GLA 25 min by bus; EDI 1 h 10 by bus; PIK 50 min by train',
+    )
+])
+```
+
+The proposals are files in `pipeline/proposals/`, named by their digest, committed to `main`. They are of the model
+channel ([Claims](../concepts/claims.md)), and the folder holds city decisions only: the run stops on any other claim
+there.
+
+## Confirming or overriding (the admin)
+
+A `city` claim of the admin's on the same key decides it whatever the proposal says, and takes the city off the Cities
+tab: write it with `claims.write` and commit it in the claims repository, as any admin claim.

@@ -6,11 +6,13 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from pipeline import build_site_db, export, review, tickets_state
+from pipeline import build_site_db, claims, export, review, tickets_state
 from pipeline import db as sqlite_db
-from pipeline.enums import HomeBasis
+from pipeline.claims import CityClaim, NotServed, Small
+from pipeline.enums import CityTier, HomeBasis
 from pipeline.records import today
 from tests import exports
+from tests.fakes import AT
 
 
 class KeyOf(BaseModel):
@@ -61,3 +63,24 @@ def test_the_festivals_are_those_an_agent_or_the_admin_settles(site_db: Path) ->
     }
     assert acted
     assert {f.event_id for f in built(site_db).festivals} == acted
+
+
+def test_the_cities_listed_are_those_of_festivals_to_come_with_no_decision(site_db: Path) -> None:
+    """Every city with a festival to come and no decision, the most festivals first; one decided is not listed."""
+    listed = built(site_db).cities
+    with sqlite_db.opened(site_db, 'ro') as db:
+        coming = set(db.column(str, 'select distinct city_key from event_rows where upcoming and city_key is not null'))
+        assert {c.key for c in listed} == coming  # the tests' claims decide no city
+        assert [c.festivals for c in listed] == sorted((c.festivals for c in listed), reverse=True)
+        assert all(0 < len(c.events) <= review.EVENTS for c in listed)
+        assert all(c.proposal is None for c in listed)  # nor propose any
+        first, second = listed[0], listed[1]
+        claims.write([decided(first.key, NotServed(tier=CityTier.NOT_SERVED))])
+        claims.propose([decided(second.key, Small(tier=CityTier.SMALL, gateways=('LIS',)))])
+        now = {c.key: c for c in review.undecided(db, claims.decisions())}
+    assert first.key not in now  # the admin decided it
+    assert now[second.key].proposal == review.Proposal(tier=CityTier.SMALL, gateways=('LIS',), note='measured')
+
+
+def decided(key: str, decision: Small | NotServed) -> CityClaim:
+    return CityClaim(field='city', key=key, decision=decision, made_at=AT, note='measured')

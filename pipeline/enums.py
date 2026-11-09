@@ -50,6 +50,7 @@ type Point = Literal[
     'fare_outcome',
     'fare_ticket',
     'fare_family',
+    'city_tier',
 ]
 
 
@@ -523,6 +524,15 @@ class FareFamily(StrEnum):
 
     DIRECT = 'direct'
     CONNECTING = 'connecting'
+
+
+@unique
+class CityTier(StrEnum):
+    """the city_tier states"""
+
+    BIG = 'big'
+    SMALL = 'small'
+    NOT_SERVED = 'not_served'
 
 
 @unique

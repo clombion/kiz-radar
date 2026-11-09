@@ -197,3 +197,25 @@ test('two artists found by name are joined by a merge claim of their keys', asyn
     ),
   );
 });
+
+test('the cities with no decision of the admin are listed with their festivals and proposal, and nothing to choose', () => {
+  const root = shown('#cities/1');
+  const nav = document.querySelector('#queues');
+  expect([...(nav?.querySelectorAll('a') ?? [])].find((a) => a.href.endsWith('#cities/1'))?.textContent).toBe(
+    'Cities 2',
+  );
+  const [porto, faro] = [...root.querySelectorAll<HTMLElement>('.country-row')];
+  expect(porto?.querySelector('h3')?.textContent).toBe('🇵🇹 Porto');
+  expect(porto?.querySelector('p')?.textContent).toBe('porto-pt · Portugal · 2 festivals to come');
+  expect([...(porto?.querySelectorAll('li') ?? [])].map((li) => li.textContent)).toEqual(['Porto Kizomba', 'Kiz Gaia']);
+  expect(porto?.querySelector('p:last-child')?.textContent).toBe(
+    'Proposed: small (OPO, VGO). OPO 25 min by metro; VGO 1 h 40 by bus',
+  );
+  expect(faro?.querySelector('p:last-child')?.textContent).toBe('No proposal yet.');
+  expect(root.querySelectorAll('button')).toHaveLength(0);
+});
+
+test('a list with nothing in it says so', () => {
+  const root = shown('#festivals/1'); // the review's festivals are none
+  expect(root.textContent).toContain('Nothing waits here.');
+});

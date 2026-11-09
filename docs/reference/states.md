@@ -52,6 +52,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | **fare_outcome**, each fare search, by what it found | `offers`, `none`, `listed`, `failed` | fares |
 | **fare_ticket**, each offer of a fare search, by the tickets it is booked on | `one_ticket`, `self_transfer` | fares |
 | **fare_family**, each pair of searches (home's and another city's of one weekend), by the flight home's fare takes | `direct`, `connecting` | fare_accuracy |
+| **city_tier**, each festival city, by the airports its decision says it flies to (a city claim) | `big`, `small`, `not_served` | claims |
 
 ## States
 
@@ -245,7 +246,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | hotel · `none` | view | — | — | the price includes no accommodation |
 | claim_source · `admin` | kept | — | — | a file of the claims repository (clombion/kiz-radar-claims), written by its owner |
 | claim_source · `organiser` | kept | — | — | a festival's organiser, through the organisers' channel |
-| claim_source · `model` | kept | — | — | the pipeline's own answers (the merge review) |
+| claim_source · `model` | kept | — | — | the pipeline's own answers: the merge review's, and the research session's proposals (pipeline/proposals/) |
 | claim · `applied` | kept | — | — | the highest claim on its subject: it decides it |
 | claim · `overridden` | kept | — | — | another claim on its subject comes first: a higher source, or a later one |
 | claim · `orphaned` | waits | — | admin: point it at the key the artist has now | it names a key no mention produces any more (a re-extraction respelled it): ignored until re-pointed |
@@ -265,3 +266,6 @@ Every data point and every state it can be in; why the world is closed is in [St
 | fare_ticket · `self_transfer` | view | self-transfer, separate tickets | — | a way out or back on more than one ticket, so a missed connection is the traveller’s to pay for (Kiwi: its flights of one direction in more than one fare component) |
 | fare_family · `direct` | kept | — | — | home's cheapest fare on one ticket flies direct out |
 | fare_family · `connecting` | kept | — | — | home's cheapest fare on one ticket stops on the way out, or its stops are not known |
+| city_tier · `big` | kept | — | — | a big city: its main airports, every one dancers fly to |
+| city_tier · `small` | kept | — | — | a smaller city: its practical gateways, 3 at most, the quickest into the city first |
+| city_tier · `not_served` | kept | — | — | no airport near enough to be worth a flight from home |

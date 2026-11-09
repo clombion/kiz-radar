@@ -102,6 +102,7 @@ class State:
 
 
 P, S = Point, State
+MOST_GATEWAYS = 3  # the airports a smaller city flies to, at most (claims.Small)
 CARD, VIEW, NOTE, FILTER, KEPT, WAITS = Disposition
 PAGE, PASSES = Link
 LINEUP, BOOKING, PRESENT = Counts
@@ -208,6 +209,12 @@ POINTS = (
         'FareFamily',
         "each pair of searches (home's and another city's of one weekend), by the flight home's fare takes",
         'fare_accuracy',
+    ),
+    P(
+        'city_tier',
+        'CityTier',
+        'each festival city, by the airports its decision says it flies to (a city claim)',
+        'claims',
     ),
 )
 
@@ -952,7 +959,12 @@ ROWS = (
         KEPT,
     ),
     S('claim_source', 'organiser', "a festival's organiser, through the organisers' channel", KEPT),
-    S('claim_source', 'model', "the pipeline's own answers (the merge review)", KEPT),
+    S(
+        'claim_source',
+        'model',
+        "the pipeline's own answers: the merge review's, and the research session's proposals (pipeline/proposals/)",
+        KEPT,
+    ),
     S('claim', 'applied', 'the highest claim on its subject: it decides it', KEPT),
     S('claim', 'overridden', 'another claim on its subject comes first: a higher source, or a later one', KEPT),
     S(
@@ -1001,6 +1013,15 @@ ROWS = (
         VIEW,
         'self-transfer, separate tickets',
     ),
+    # ---- a festival city's decision (claims.CityClaim): the airports dancers fly to
+    S('city_tier', 'big', 'a big city: its main airports, every one dancers fly to', KEPT),
+    S(
+        'city_tier',
+        'small',
+        f'a smaller city: its practical gateways, {MOST_GATEWAYS} at most, the quickest into the city first',
+        KEPT,
+    ),
+    S('city_tier', 'not_served', 'no airport near enough to be worth a flight from home', KEPT),
     S('fare_family', 'direct', "home's cheapest fare on one ticket flies direct out", KEPT),
     S(
         'fare_family',

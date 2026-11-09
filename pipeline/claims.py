@@ -1,5 +1,6 @@
 """Claims decide the facts no step can derive: that two artists are one, where an artist is from, which artist a
-festival's line-up means, what a ticket site waits for, and which country a city the source names is in.
+festival's line-up means, what a ticket site waits for, which country a city the source names is in, and which
+airports dancers fly to for a city.
 
 A claim is a record of what it says, about one subject, when it was made, with a note. Its source is the channel that
 delivers it, never read from the claim itself, and its source gives its priority (states.py, claim_source: admin above
@@ -10,23 +11,24 @@ whatever their order (resolved).
 The admin channel is the repository clombion/kiz-radar-claims, which kiz-radar holds as a git submodule (CLAIMS): one
 JSON file per claim, named by its digest, so that writing a claim again changes nothing and two claims never share a
 file. The model channel is the merge review's answers to its current prompt (pipeline/extract/merge_review.py), each
-made when it was answered.
+made when it was answered, and the research session's proposals (PROPOSALS, files as the admin's are: propose).
 """
 
 import datetime as dt
-from collections.abc import Iterable, Sequence
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Annotated, Literal, Self
+from typing import Annotated, Literal, NamedTuple, Self
 
-from pydantic import Discriminator, TypeAdapter, ValidationError, model_validator
+from pydantic import AfterValidator, Discriminator, Field, TypeAdapter, ValidationError, model_validator
 
 from pipeline import data, files, states
-from pipeline.enums import ClaimSource, MergeDecision, Waiting
+from pipeline.enums import CityTier, ClaimSource, MergeDecision, Waiting
 from pipeline.extract import merge_review
-from pipeline.records import CountryCode, Key, Record, Spelling, Stamp, Text, digest, errors
+from pipeline.records import CityKey, CountryCode, Iata, Key, Record, Spelling, Stamp, Text, digest, errors
 
 CLAIMS = 'claims'  # the submodule of clombion/kiz-radar-claims: every admin claim, <its digest>.json
+PROPOSALS = 'pipeline/proposals'  # the research session's claims, of the model channel: <its digest>.json
 
 
 Decided = Literal[MergeDecision.MERGE, MergeDecision.SEPARATE]  # what a merge claim decides; unsure decides nothing
@@ -99,9 +101,58 @@ class PlaceClaim(Record):
     note: Text
 
 
-type AnyClaim = MergeClaim | HomeClaim | BookingClaim | SiteClaim | PlaceClaim
+def distinct(codes: tuple[str, ...]) -> tuple[str, ...]:
+    if len(set(codes)) < len(codes):
+        raise ValueError(f'an airport named twice: {", ".join(codes)}')
+    return codes
+
+
+Gateways = Annotated[tuple[Iata, ...], AfterValidator(distinct)]  # airports, the quickest into the city first
+
+
+class Big(Record):
+    """A big city: its main airports, every one dancers fly to."""
+
+    tier: Literal[CityTier.BIG]
+    gateways: Annotated[Gateways, Field(min_length=1)]
+
+
+class Small(Record):
+    """A smaller city: its practical gateways, up to states.MOST_GATEWAYS."""
+
+    tier: Literal[CityTier.SMALL]
+    gateways: Annotated[Gateways, Field(min_length=1, max_length=states.MOST_GATEWAYS)]
+
+
+class NotServed(Record):
+    """A city no airport is near enough to be worth a flight from home."""
+
+    tier: Literal[CityTier.NOT_SERVED]
+
+    @property
+    def gateways(self) -> tuple[str, ...]:
+        """None, as no airport is flown to."""
+        return ()
+
+
+class CityClaim(Record):
+    """Which airports dancers fly to for a city, by its key (records.City), each ordered by the time from it into the
+    city, the first to be searched for any flight and the others for direct ones; or that none is. The review dashboard
+    lists the cities no admin decision is of, with the research session's proposal."""
+
+    field: Literal['city']
+    key: CityKey
+    decision: Annotated[Big | Small | NotServed, Discriminator('tier')]
+    made_at: Stamp
+    note: Text  # why: the times measured, what dancers say
+
+
+type AnyClaim = MergeClaim | HomeClaim | BookingClaim | SiteClaim | PlaceClaim | CityClaim
 type Claim = Annotated[AnyClaim, Discriminator('field')]
 CLAIM: TypeAdapter[AnyClaim] = TypeAdapter(Claim)
+PROPOSAL: TypeAdapter[CityClaim] = TypeAdapter(CityClaim)  # the one kind the research session proposes
+# what each folder of claim files may hold: the admin's any claim, the research session's a city's decision
+READ: Mapping[str, Callable[[bytes], AnyClaim]] = {CLAIMS: CLAIM.validate_json, PROPOSALS: PROPOSAL.validate_json}
 PRIORITY = {s: i for i, s in enumerate(reversed(states.keys('claim_source')))}  # the higher, the earlier it comes
 
 
@@ -118,6 +169,8 @@ def subject(c: AnyClaim) -> tuple[str, ...]:
             return ('site', c.host)
         case PlaceClaim():
             return ('place', c.city, c.country or '')
+        case CityClaim():
+            return ('city', c.key)
 
 
 @dataclass(frozen=True)
@@ -140,19 +193,36 @@ def text(c: AnyClaim) -> str:
     return c.dumped()
 
 
-def parsed(path: Path) -> AnyClaim | list[str]:
-    """A claim file's claim, or why it is none: its record refuses it, or it is not named by its digest."""
+def parsed(path: Path, folder: str = CLAIMS) -> AnyClaim | list[str]:
+    """A claim file's claim, or why it is none: its folder holds no claim of its kind (READ), or it is not named by
+    its digest."""
     try:
-        c = CLAIM.validate_json(path.read_bytes())
+        c = READ[folder](path.read_bytes())
     except ValidationError as e:
-        return errors(e, f'{CLAIMS}/{path.name}')
+        return errors(e, f'{folder}/{path.name}')
     if path.stem != (named := digest(text(c))):
-        return [f'{CLAIMS}/{path.name}: a claim is named by its digest, {named}.json']
+        return [f'{folder}/{path.name}: a claim is named by its digest, {named}.json']
     return c
 
 
-def claim_files() -> list[Path]:
-    return sorted(data(CLAIMS).glob('*.json'))
+def claim_files(folder: str = CLAIMS) -> list[Path]:
+    return sorted(data(folder).glob('*.json'))
+
+
+def filed(folder: str, source: ClaimSource) -> list[Made]:
+    """Every claim of a folder of claim files, each named by its digest, of the channel the folder is; a file its
+    record refuses, or misnamed, stops the run naming it."""
+    out: list[Made] = []
+    refused: list[str] = []
+    for path in claim_files(folder):
+        match parsed(path, folder):
+            case list() as why:
+                refused += why
+            case c:
+                out.append(Made(c, source))
+    if refused:
+        raise SystemExit('\n'.join(refused))
+    return out
 
 
 def admin() -> list[Made]:
@@ -163,22 +233,13 @@ def admin() -> list[Made]:
         raise SystemExit(
             f'{CLAIMS}/ is empty or missing: its submodule is not checked out (git submodule update --init)'
         )
-    out: list[Made] = []
-    refused: list[str] = []
-    for path in claim_files():
-        match parsed(path):
-            case list() as why:
-                refused += why
-            case c:
-                out.append(Made(c, ClaimSource.ADMIN))
-    if refused:
-        raise SystemExit('\n'.join(refused))
-    return out
+    return filed(CLAIMS, ClaimSource.ADMIN)
 
 
 def model() -> list[Made]:
-    """The merge review's current answers (merge_review.current); one it could not settle (unsure) decides nothing."""
-    return [
+    """The merge review's current answers (merge_review.current), of which one it could not settle (unsure) decides
+    nothing, and the research session's proposals (PROPOSALS)."""
+    answered: list[Made] = [
         Made(
             MergeClaim(
                 field='merge',
@@ -192,6 +253,7 @@ def model() -> list[Made]:
         for r in merge_review.current()
         if r.answer.decision != MergeDecision.UNSURE
     ]
+    return [*proposals(), *answered]
 
 
 def every() -> list[Made]:
@@ -209,12 +271,23 @@ def resolved(made: Iterable[Made]) -> dict[tuple[str, ...], Made]:
     return out
 
 
+def filed_as(folder: str, claim: AnyClaim) -> None:
+    """A claim as its file in a folder of claim files, named by its digest: one already there is left as it is."""
+    path = data(folder) / f'{digest(text(claim))}.json'
+    if not path.exists():
+        files.write(path, text(claim))
+
+
 def write(claims: Sequence[AnyClaim]) -> None:
-    """Write admin claims into the claims repository, each as its file: one already there is left as it is."""
+    """Write admin claims into the claims repository."""
     for c in claims:
-        path = data(CLAIMS) / f'{digest(text(c))}.json'
-        if not path.exists():
-            files.write(path, text(c))
+        filed_as(CLAIMS, c)
+
+
+def propose(claims: Sequence[CityClaim]) -> None:
+    """Write the research session's proposals (PROPOSALS), which the admin's claims override."""
+    for c in claims:
+        filed_as(PROPOSALS, c)
 
 
 def sites() -> dict[str, SiteClaim]:
@@ -231,3 +304,23 @@ def places() -> dict[Spelling, PlaceClaim]:
         for m in resolved(admin()).values()
         if isinstance(m.claim, PlaceClaim)
     }
+
+
+def proposals() -> list[Made]:
+    """The research session's proposals (PROPOSALS), of the model channel: each a city's decision."""
+    return filed(PROPOSALS, ClaimSource.MODEL)
+
+
+class Decisions(NamedTuple):
+    """The cities' decisions, by key: the admin's, and the research session's proposals, which the admin's
+    override."""
+
+    admin: dict[str, CityClaim]
+    proposed: dict[str, CityClaim]
+
+
+def decisions() -> Decisions:
+    def of(made: Iterable[Made]) -> dict[str, CityClaim]:
+        return {m.claim.key: m.claim for m in resolved(made).values() if isinstance(m.claim, CityClaim)}
+
+    return Decisions(admin=of(admin()), proposed=of(proposals()))

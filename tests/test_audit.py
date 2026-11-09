@@ -10,12 +10,13 @@ from pathlib import Path
 import pytest
 
 from pipeline import audit, data, prompt, tickets_state, tickets_store
+from pipeline.claims import CityClaim, NotServed, Small
 from pipeline.db import Reader
-from pipeline.enums import FirstRead
-from pipeline.records import ANSWERS, CsvRow, PageRecipe, Spent
+from pipeline.enums import CityTier, FirstRead
+from pipeline.records import ANSWERS, Airport, City, CsvRow, PageRecipe, Spent
 from pipeline.tables import ShapeError
 from tests.exports import committed, shaped
-from tests.fakes import SITE_CLAIMS, Memory
+from tests.fakes import AT, SITE_CLAIMS, Memory
 
 
 def copied() -> Path:
@@ -174,3 +175,24 @@ def test_the_audit_exits_1_naming_what_it_found_on_stderr(
     assert e.value.code == 1
     assert out.out.startswith(f'1 refused, {len(SITE_CLAIMS)} stale')
     assert 'pages.csv line 2' in out.err
+
+
+def test_a_city_claim_naming_a_city_or_an_airport_the_files_have_not_is_refused() -> None:
+    City.write([City(key='lisbon-pt', name='Lisbon', country_code='PT', lat=38.7, lon=-9.1)])
+    Airport.write(
+        [Airport(code='LIS', name='Lisbon', city='Lisbon', country_code='PT', lat=38.8, lon=-9.1, home=False)]
+    )
+
+    def decided(key: str, *gateways: str) -> CityClaim:
+        made = Small(tier=CityTier.SMALL, gateways=gateways)
+        return CityClaim(field='city', key=key, decision=made, made_at=AT, note='n')
+
+    assert audit.unknown([('a', decided('lisbon-pt', 'LIS'))]) == []
+    not_served = CityClaim(
+        field='city', key='faro-pt', decision=NotServed(tier=CityTier.NOT_SERVED), made_at=AT, note='n'
+    )
+    assert audit.unknown([('c', not_served)]) == ['c: no city faro-pt in pipeline/cities.csv']
+    assert audit.unknown([('b', decided('porto-pt', 'LIS', 'OPO'))]) == [
+        'b: no city porto-pt in pipeline/cities.csv',
+        'b: no airport OPO in pipeline/airports.csv',
+    ]

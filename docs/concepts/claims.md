@@ -9,11 +9,13 @@ A claim decides a fact no step can derive. `pipeline/claims.py` holds their reco
 | `booking` | which artist one festival's line-up means | a festival, and two keys |
 | `site` | what the festivals on a ticket site wait for instead of their default (a site no recipe can read) | a host |
 | `place` | that a city as the listings spell it, under the country it is listed under, is in another country, where it is looked for (Porto, listed under France, is in Portugal) | a city and a country, as listed |
+| `city` | which airports dancers fly to for a city: a big city's main airports, a smaller city's gateways (at most `states.MOST_GATEWAYS`), the quickest into the city first; or none (`not_served`) | a city's key (`pipeline/cities.csv`) |
 
 ## Who decides
 
 Each claim has a time and a note, and comes by one of three channels, which give it its priority: the admin's, then an
-organiser's (to come), then the pipeline's own (the merge review's current answers, each made when it was answered).
+organiser's (to come), then the pipeline's own: the merge review's current answers, each made when it was answered, and
+the research session's proposals, files in `pipeline/proposals/` written as the admin's are (`claims.propose`).
 
 | Two claims on one subject | The one that decides |
 | -- | -- |

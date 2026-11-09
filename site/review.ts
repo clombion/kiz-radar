@@ -158,13 +158,22 @@ function tokenDialog(repository: string): HTMLDialogElement {
 // ----- queues: the items, where the page is in each, and what is settled
 
 // the contested homes' queue is that state's, named by its key in the address
-type Tab = 'merges' | 'join' | typeof KEY.home_basis.CONTESTED | 'unknown' | 'festivals' | 'orphaned' | 'timeline';
+type Tab =
+  | 'merges'
+  | 'join'
+  | typeof KEY.home_basis.CONTESTED
+  | 'unknown'
+  | 'festivals'
+  | 'cities'
+  | 'orphaned'
+  | 'timeline';
 const TABS: readonly (readonly [Tab, string])[] = [
   ['merges', 'Merges'],
   ['join', 'Join two artists'],
   [KEY.home_basis.CONTESTED, 'Contested homes'],
   ['unknown', 'Unknown homes'],
   ['festivals', 'Festivals'],
+  ['cities', 'Cities'],
   ['orphaned', 'Orphaned claims'],
   ['timeline', 'Timeline'],
 ];
@@ -223,6 +232,7 @@ const count = (r: Review, tab: Tab): number | null =>
     contested: homes(r, true).length,
     unknown: homes(r, false).length,
     festivals: r.festivals.length,
+    cities: r.cities.length,
     orphaned: r.orphaned.length,
     timeline: r.steps.length,
   })[tab];
@@ -713,6 +723,35 @@ function listView(r: Review, tab: Tab): Kid {
         ),
       ),
     );
+  if (tab === 'cities')
+    return h(
+      'div',
+      { class: 'review-grid' },
+      r.cities.map((c) =>
+        h(
+          'article',
+          { class: 'country-row' },
+          h('h3', {}, `${flag(c.country_code)} ${c.name}`),
+          h(
+            'p',
+            { class: ['small', 'muted'] },
+            `${c.key} · ${countryOf(r, c.country_code)} · ${plural(c.festivals, 'festival')} to come`,
+          ),
+          h(
+            'ul',
+            {},
+            c.events.map((e) => h('li', {}, e)),
+          ),
+          h(
+            'p',
+            {},
+            c.proposal === null
+              ? 'No proposal yet.'
+              : `Proposed: ${c.proposal.tier}${c.proposal.gateways.length > 0 ? ` (${c.proposal.gateways.join(', ')})` : ''}. ${c.proposal.note}`,
+          ),
+        ),
+      ),
+    );
   if (tab === 'orphaned')
     return r.orphaned.map((o) =>
       h('article', { class: 'country-row' }, h('h3', {}, `${o.id}.json`), h('pre', { class: 'review-claim' }, o.claim)),
@@ -757,6 +796,8 @@ const ABOUT: Readonly<Record<Tab, string>> = {
   contested: 'Artists whose line-ups state two or more countries equally often: which one is home.',
   unknown: 'Artists booked whose home no line-up states, most booked first.',
   festivals: 'Festivals whose prices wait for an agent: settled in a session (docs/guides/ticket-pages.md).',
+  cities:
+    'Cities of festivals to come with no decision of yours on the airports dancers fly to, each with the research session’s proposal: a claim of yours confirms or overrides it (docs/guides/city-airports.md).',
   orphaned: 'Claims naming a key no mention produces any more: a new claim names the key the artist has now.',
   timeline: 'What the pipeline did lately.',
 };
@@ -801,7 +842,11 @@ function render(): void {
             : ` ${q.ids.length - settledHere} open${settledHere > 0 ? `, ${settledHere} settled since the build` : ''}.`,
           ` Built ${when(r.built_at)} UTC.`,
         ),
-        q === null ? listView(r, at.tab) : q.ids.length === 0 ? h('p', {}, 'Nothing waits here.') : queueView(q),
+        (q === null ? count(r, at.tab) === 0 : q.ids.length === 0)
+          ? h('p', {}, 'Nothing waits here.')
+          : q === null
+            ? listView(r, at.tab)
+            : queueView(q),
       ]),
     );
   });

@@ -63,6 +63,17 @@ export const REVIEW: Review = {
     { key: 'c:ana+bo', name: 'Ana & Bo', kind: 'couple', bookings: 3, latest: [] },
   ],
   festivals: [],
+  cities: [
+    {
+      key: 'porto-pt',
+      name: 'Porto',
+      country_code: 'PT',
+      festivals: 2,
+      events: ['Porto Kizomba', 'Kiz Gaia'],
+      proposal: { tier: 'small', gateways: ['OPO', 'VGO'], note: 'OPO 25 min by metro; VGO 1 h 40 by bus' },
+    },
+    { key: 'faro-pt', name: 'Faro', country_code: 'PT', festivals: 1, events: ['Faro Kiz'], proposal: null },
+  ],
   orphaned: [],
   steps: [],
   reads: [],

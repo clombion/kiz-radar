@@ -84,7 +84,19 @@ FOLDERS: list[tuple[str, str, tuple[type, ...]]] = [
     (
         f'{claims.CLAIMS}/<digest>.json',
         "an admin's claim (the claims submodule)",
-        (claims.MergeClaim, claims.HomeClaim, claims.BookingClaim, claims.SiteClaim, claims.PlaceClaim),
+        (
+            claims.MergeClaim,
+            claims.HomeClaim,
+            claims.BookingClaim,
+            claims.SiteClaim,
+            claims.PlaceClaim,
+            claims.CityClaim,
+        ),
+    ),
+    (
+        f'{claims.PROPOSALS}/<digest>.json',
+        "the research session's claim, of the model channel, which an admin's claim overrides",
+        (claims.CityClaim,),
     ),
 ]
 

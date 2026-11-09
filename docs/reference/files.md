@@ -40,4 +40,5 @@ one.
 | `pipeline/tickets/sites/<site>.json` | `PageRecipe`, `ApiRecipe` | a ticket site's recipe |
 | `pipeline/fare_offers/<run>.parquet` | `Search`, `Offer` | the fare searches of one run, each with the offers it saw; never written again once the run is over |
 | `pipeline/prompts/asked/<hash>.md` | — | the text of every prompt an answer or a read followed |
-| `claims/<digest>.json` | `MergeClaim`, `HomeClaim`, `BookingClaim`, `SiteClaim`, `PlaceClaim` | an admin's claim (the claims submodule) |
+| `claims/<digest>.json` | `MergeClaim`, `HomeClaim`, `BookingClaim`, `SiteClaim`, `PlaceClaim`, `CityClaim` | an admin's claim (the claims submodule) |
+| `pipeline/proposals/<digest>.json` | `CityClaim` | the research session's claim, of the model channel, which an admin's claim overrides |
