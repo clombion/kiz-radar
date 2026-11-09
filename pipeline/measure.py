@@ -44,7 +44,7 @@ STATION_DEGREES = 0.02  # how far from an airport's point its station may be, in
 ARRIVALS = tuple(dt.time(18, m) for m in range(0, 60, 10))  # the Friday evening times a screen arrives by
 LEAVING = dt.time(15)  # the Friday afternoon time a route search leaves at
 BACKOFF = 30  # seconds waited after a transient failure, before trying once more
-MOST_REQUESTS = 300  # a run's requests, by default
+MOST_REQUESTS = 600  # a run's requests, by default: one run a day
 LEAD_DAYS = 7  # the Friday measured is the first at least this many days ahead, within the timetables Transitous has
 
 

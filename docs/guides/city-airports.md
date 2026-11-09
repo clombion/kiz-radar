@@ -30,9 +30,9 @@ km of it. It keeps three files, each row as it is answered:
 | `pipeline/screened.csv` | city and airport | the quickest trip a many-to-one search found, arriving on a Friday evening; empty when it found none. The search counts the wait for the first vehicle, so it only screens |
 | `pipeline/routed.csv` | city and airport | for the six nearest and those screened within 4 hours: the quickest trip leaving on a Friday afternoon, in minutes, with its changes and its vehicles (`ground_mode`, [States](../reference/states.md)) |
 
-An airport a city is reached from within 4 hours is added to `pipeline/airports.csv`. A run asks Transitous 300 times at
-most (`--most N` for another number), one request a second, as agreed with the Transitous team: the first pass takes a
-few days, and each run goes on from where the last stopped. A city measured is not asked about again.
+An airport a city is reached from within 4 hours is added to `pipeline/airports.csv`. A run asks Transitous 600 times at
+most (`--most N` for fewer), one request a second, one run a day: the first pass takes four days, and each run goes on
+from where the last stopped. A city measured is not asked about again.
 
 Transitous has no fares, and misses some private shuttles (Beauvais's coach to Paris): research those from the
 operator's site.
