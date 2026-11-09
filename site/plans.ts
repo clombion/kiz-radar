@@ -1,12 +1,12 @@
 // Who said they're going to a festival (pipeline/people.csv and plans.csv). Cards name featured people and count
 // the rest; partners who are both going are named as their couple. Someone in a festival's line-up, alone or in a
 // couple, is teaching (or playing) there rather than just going.
-import { one, q, sql } from './db.ts';
+import { one, q, site, sql } from './db.ts';
 import type { Kid } from './dom.ts';
 import { button, h, nodes, own } from './dom.ts';
 import { leaving, type Peek, peek } from './modal.ts';
 import { roleLabel } from './roles.ts';
-import { artistHref, eventOnMapHref, personHref } from './routes.ts';
+import { artistHref, eventOnMapHref, friendsHref, personHref } from './routes.ts';
 import {
   BOOKINGS,
   type Booked,
@@ -378,7 +378,13 @@ function peekGroup(g: Named, from: EventTarget | null, back?: HTMLElement) {
           )
         : h('p', { class: 'muted' }, 'No festival plans coming up.'),
     ].filter(Boolean),
-    foot: link(g.href, 'See their page →'),
+    foot: [
+      link(g.href, 'See their page →'),
+      link(
+        togetherHref(g.people.map((p) => p.key)),
+        h('span', { class: 'muted' }, 'Festivals in common with others →'),
+      ),
+    ],
   });
 }
 
@@ -399,6 +405,44 @@ function peekEvent(e: Going, from?: EventTarget | null) {
     ],
   });
 }
+
+// how far from the site's home city someone lives and is near it, in km
+export const NEAR_KM = 200;
+interface Spot {
+  lat: number;
+  lon: number;
+}
+// the kilometres between two places, on a round Earth
+function kmBetween(a: Spot, b: Spot): number {
+  const rad = (d: number) => (d * Math.PI) / 180;
+  const h2 =
+    Math.sin(rad(b.lat - a.lat) / 2) ** 2 +
+    Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(rad(b.lon - a.lon) / 2) ** 2;
+  return 2 * 6371 * Math.asin(Math.sqrt(h2));
+}
+// the site's home city, where the people near are looked for
+const homeCity = () =>
+  one({ lat: num, lon: num }, sql`SELECT lat, lon FROM cities WHERE key = ?`, [site().home.city_key]);
+// the keys of the people sharing plans who live within NEAR_KM of the home city; those who have not said where they
+// live never
+export function livingNear(): Set<string> {
+  const home = homeCity();
+  if (home === undefined) return new Set();
+  return new Set(
+    q({ key: str, lat: num, lon: num }, sql`SELECT p.key, c.lat, c.lon FROM people p JOIN cities c ON c.key = p.home`)
+      .filter((p) => kmBetween(home, p) <= NEAR_KM)
+      .map((p) => p.key),
+  );
+}
+// The Friends tab's list with these people ticked, the festivals they all go to: near the home city when they all live
+// there, else everywhere, so that none of them is left out of it
+export const togetherHref = (keys: readonly string[]): string => {
+  const near = livingNear();
+  return friendsHref({
+    ...(keys.every((k) => near.has(k)) ? {} : { in: 'everywhere' }),
+    with: keys.join(','),
+  });
+};
 
 // A person, and the artist records they are, directly or as half of a couple: those with bookings of their own,
 // since a partner's record alone only repeats the couple's.

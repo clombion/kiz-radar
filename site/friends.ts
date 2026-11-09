@@ -4,24 +4,20 @@
 // friends (the festivals all of them go to, or any of them), by time, and by a festival's name or city. The choices
 // live in the address.
 import { addDays, meets, today, weekendOf } from './days.ts';
-import { one, q, site, sql } from './db.ts';
-import { button, choices, dropdown, h, type Kid, moreButton, nodes, segments } from './dom.ts';
+import { q, site, sql } from './db.ts';
+import { button, choices, dropdown, h, moreButton, nodes, segments } from './dom.ts';
 import { leftOut } from './festivals.ts';
 import { fold } from './fold.ts';
-import { type Goer, goersOf, whoLines, withPlans } from './plans.ts';
+import { type Goer, goersOf, livingNear, NEAR_KM, whoLines, withPlans } from './plans.ts';
 import { changed, eventOnMapHref, friendsHref, personHref, readState, showInAddressBar } from './routes.ts';
-import { EVENT, num, type RowOf, str } from './rows.ts';
+import { EVENT, type RowOf } from './rows.ts';
 import { KEY } from './states.ts';
 import { dayMonth, dayRange, monthYear, nowTag, place } from './ui.ts';
 import { joined, joinedText, plural } from './wording.ts';
 
-// how far from a place someone lives and is near it, in km
-export const NEAR_KM = 200;
 // a list longer than these gets the bar that narrows it
 const FEW_FESTIVALS = 6;
 const FEW_PEOPLE = 8;
-// with this many people or more, the line over the list says where most of them go
-const MANY_PEOPLE = 8;
 
 export type Place = 'near' | 'everywhere';
 type When = 'weekend' | 'months' | 'year';
@@ -50,33 +46,9 @@ export const friendsTabs = (): readonly (readonly [Place, string, string])[] => 
   ['everywhere', 'Everywhere', friendsHref({ in: 'everywhere' })],
 ];
 
-interface Spot {
-  lat: number;
-  lon: number;
-}
-// the kilometres between two places, on a round Earth
-function kmBetween(a: Spot, b: Spot): number {
-  const rad = (d: number) => (d * Math.PI) / 180;
-  const h2 =
-    Math.sin(rad(b.lat - a.lat) / 2) ** 2 +
-    Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(rad(b.lon - a.lon) / 2) ** 2;
-  return 2 * 6371 * Math.asin(Math.sqrt(h2));
-}
-// the site's home city, where the people near are looked for
-const homeCity = () =>
-  one({ lat: num, lon: num }, sql`SELECT lat, lon FROM cities WHERE key = ?`, [site().home.city_key]);
-// the keys of the people sharing plans of a place: those living within NEAR_KM of the home city (those who have not
-// said where they live never), or everyone
-function peopleOf(at: Place): Set<string> {
-  if (at === 'everywhere') return new Set(withPlans().map((p) => p.key));
-  const home = homeCity();
-  if (home === undefined) return new Set();
-  return new Set(
-    q({ key: str, lat: num, lon: num }, sql`SELECT p.key, c.lat, c.lon FROM people p JOIN cities c ON c.key = p.home`)
-      .filter((p) => kmBetween(home, p) <= NEAR_KM)
-      .map((p) => p.key),
-  );
-}
+// the keys of the people sharing plans of a place: those living near the home city (plans.livingNear), or everyone
+const peopleOf = (at: Place): Set<string> =>
+  at === 'everywhere' ? new Set(withPlans().map((p) => p.key)) : livingNear();
 
 type Festival = RowOf<typeof EVENT> & { goers: Goer[] };
 // someone sharing plans, and how many of their festivals are to come
@@ -272,7 +244,7 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
     h(
       'article',
       { class: 'artist-profile' },
-      h('header', { class: 'profile-head' }, h('h1', {}, 'Who’s going where'), overview(all, sharing, s.in)),
+      h('header', { class: 'profile-head' }, h('h1', {}, 'Who’s going where'), ...head(all, sharing, s.in)),
       long || filtering ? bar : null,
       list,
     ),
@@ -281,47 +253,46 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
   render();
 }
 
-// The panel under the title, as labelled lines like the rows': who shares plans (named, with how many festivals each,
-// when they are few; else how many), who is away now (the two festivals with the most people named, the rest counted),
-// who goes next, and, with many people, the festival most of them go to when no line above names it; each festival
-// opening on the map
+// Under the title, as a page's head says it: who shares plans, named while they are few, else how many and where
+// ("29 people within 200 km of Bergen share their plans."); then, muted, who is away now and who goes next, by the
+// festivals' cities, each opening the festival on the map ("Now: Glasgow (2) · Next: Oslo, 20 Nov"); with more than
+// NOW_NAMED festivals on, how many, and where most are
 const NOW_NAMED = 2;
-function overview(all: readonly Festival[], sharing: readonly Shares[], at: Place): HTMLElement | null {
-  const d = today();
+function head(all: readonly Festival[], sharing: readonly Shares[], at: Place): HTMLElement[] {
   const now = all.filter((e) => e.phase === KEY.phase.ON).sort((a, b) => b.goers.length - a.goers.length);
-  const next = all.find((e) => e.start_date > d);
-  const top = sharing.length >= MANY_PEOPLE ? [...all].sort((a, b) => b.goers.length - a.goers.length)[0] : undefined;
-  // most of them go to it, unless a line above names it already
-  const most = top === undefined || top === next || now.slice(0, NOW_NAMED).includes(top) ? undefined : top;
-  const named = (e: Festival) => [
-    h('a', { href: eventOnMapHref(e.id), class: 'who-name' }, e.title),
-    h('span', { class: 'muted' }, ` (${e.goers.length})`),
-  ];
-  const line = (label: string, ...what: Kid[]) =>
-    h('p', {}, h('span', { class: 'who-label' }, label), h('span', {}, ...nodes(what)));
+  const next = all.find((e) => e.phase === KEY.phase.AHEAD); // the list comes soonest first
+  const city = (e: Festival) =>
+    h('a', { href: eventOnMapHref(e.id), class: 'artist', title: e.title }, e.city ?? e.title);
+  const counted = (e: Festival) => [city(e), ` (${e.goers.length})`];
   const within = at === 'near' ? ` within ${NEAR_KM} km of ${site().home.city}` : '';
-  const rest = now.length - NOW_NAMED;
-  const lines = [
-    sharing.length === 0
+  const who =
+    sharing.length > FEW_PEOPLE
+      ? [h('b', {}, plural(sharing.length, 'person', 'people')), `${within} share their plans.`]
+      : [
+          joined(sharing.map((p) => h('a', { href: personHref(p.key), class: 'artist' }, p.name))),
+          sharing.length === 1 ? ' shares their plans.' : ' share their plans.',
+        ];
+  const top = now[0];
+  const away =
+    top === undefined
       ? null
-      : sharing.length > FEW_PEOPLE
-        ? line('Who', `${plural(sharing.length, 'person', 'people')}${within}`)
-        : line(
-            'Who',
-            joined(
-              sharing.map((p) => [
-                h('a', { href: personHref(p.key), class: 'artist' }, p.name),
-                h('span', { class: 'muted' }, ` (${p.upcoming})`),
-              ]),
-            ),
+      : now.length <= NOW_NAMED
+        ? ['Now: ', joined(now.map(counted))]
+        : ['Now: ', h('b', {}, plural(now.length, 'festival')), ', most in ', counted(top)];
+  const coming = next === undefined ? null : ['Next: ', city(next), `, ${dayMonth(next.start_date)}`];
+  const when = [away, coming].filter((x) => x !== null);
+  return [
+    ...(sharing.length > 0 ? [h('p', { class: 'lede' }, who)] : []),
+    ...(when.length > 0
+      ? [
+          h(
+            'p',
+            { class: ['community-next', 'muted'] },
+            when.flatMap((x, i) => (i === 0 ? [x] : [' · ', x])),
           ),
-    now.length > 0
-      ? line('Now', joined([...now.slice(0, NOW_NAMED).map(named), ...(rest > 0 ? [`${rest} more`] : [])]))
-      : null,
-    next === undefined ? null : line('Next', named(next), `, from ${dayMonth(next.start_date)}`),
-    most === undefined ? null : line('Most', named(most)),
-  ].filter((x) => x !== null);
-  return lines.length === 0 ? null : h('div', { class: ['who-lines', 'now-next'] }, lines);
+        ]
+      : []),
+  ];
 }
 
 // the festivals under their months: "November 2026 · 3 festivals", then each festival's row

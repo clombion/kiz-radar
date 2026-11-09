@@ -4,7 +4,7 @@ import { q, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { withDetails } from './festivals.ts';
-import { person } from './plans.ts';
+import { person, togetherHref } from './plans.ts';
 import { artistHref, personHref } from './routes.ts';
 import { EVENT } from './rows.ts';
 import { joined } from './wording.ts';
@@ -37,7 +37,12 @@ export function personView(root: HTMLElement, key: string): void {
             joined(p.artists.map((a) => h('a', { href: artistHref(a.id), class: 'artist' }, a.display_name))),
           )
         : null,
-      shareButton('Share these plans', `${p.name}’s festival plans`),
+      h(
+        'p',
+        { class: 'share-row' },
+        shareButton('Share these plans', `${p.name}’s festival plans`),
+        h('a', { href: togetherHref([p.key]) }, 'Compare with friends →'),
+      ),
     ],
     comingUp(
       events.map((e) => eventCard(e)),

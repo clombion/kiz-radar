@@ -88,10 +88,10 @@ sides only.
   **Everywhere** (everyone sharing plans); `#friends?in=everywhere`. The visitor's own communities will join that row
   once there are accounts.
 
-  - Under the title, a panel of labelled lines, as the rows have: Who (the people sharing plans, named with how many
-    festivals each while there are eight at most, else how many and within what distance), Now (the festivals on now,
-    the two with the most people named and the rest counted), Next (the next to start) and, with eight people or more,
-    Most (the festival most of them go to, when no line above names it).
+  - Under the title, as a page's head: who shares plans, named while there are eight at most ("Christina, Cédric and
+    Siân share their plans."), else how many and where ("29 people within 200 km of Bergen share their plans."); then,
+    muted, who is away now and who goes next, by the festivals' cities, each opening the festival on the map ("Now:
+    Glasgow (2) · Next: Oslo, 20 Nov"; with more than two festivals on, "Now: 11 festivals, most in Málaga (14)").
   - The festivals to come, by month ("November 2026 · 3 festivals"), each with its name, place and days, then a line per
     thing its people do there, labelled (teaching or playing first, then going, then maybe). A line names up to four
     people or couples (`NAMED_UP_TO`, `site/plans.ts`); past that, the first three and "and N more", which opens the
@@ -101,7 +101,10 @@ sides only.
     are told so, with a link to those any of them goes to), the time ahead (this weekend, 3 months or a year) and a
     festival's name or city, with how many festivals it keeps (on a computer). The choices are in the address
     (`with=cedric,sian&any=1&when=months&q=prague`), and any of them shows the bar however short the list.
-  - A person's page (`#friends/<key>`) is as before.
+  - A name opens the pop-up of their plans, as on a festival's card; under "See their page →" it has "Festivals in
+    common with others →", the list with them ticked (a couple, both partners), near the home city when they live there,
+    else Everywhere (`plans.togetherHref`). A person's page (`#friends/<key>`) has the same link, "Compare with friends
+    →".
 
 A community's page (`c/<key>/` from the site's root) has no tab: its link reaches it. It is public all the same, like
 everything the site shows: its members, their plans and travel are in the site's database, which anyone can read (the

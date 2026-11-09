@@ -178,7 +178,6 @@ export type ClassName =
   | 'note-bottom'
   | 'note-inline'
   | 'note-tab'
-  | 'now-next'
   | 'now-tag'
   | 'nowrap'
   | 'num'
