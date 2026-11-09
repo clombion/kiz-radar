@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import initSqlJs, { type SqlValue } from 'sql.js';
 import { expect, test } from 'vitest';
-import { sameSchema, summaryOf } from '../../site/db.ts';
+import { SiteUpdating, sameSchema, summaryOf } from '../../site/db.ts';
 import { ARTIST_STATS, EVENT, PASS, read, type Shape, TIER } from '../../site/rows.ts';
 import { SCHEMA } from '../../site/schema.ts';
 
@@ -58,7 +58,7 @@ test('the summary the build writes beside the database is the one the page reads
   );
 });
 
-test('a database of other tables than the scripts are built for says to reload, as a cached script would misread it', () => {
+test('a database of other tables than the scripts are built for is the site mid-update, as a cached script would misread it', () => {
   const [found] = db.exec("SELECT value FROM meta WHERE key = 'schema'")[0]?.values[0] ?? [];
   expect(found).toBe(SCHEMA);
   expect(() => {
@@ -67,5 +67,5 @@ test('a database of other tables than the scripts are built for says to reload, 
   for (const other of ['0000000000000000', undefined])
     expect(() => {
       sameSchema(other);
-    }).toThrow('the site has been updated since this page was saved: reload the page');
+    }).toThrow(SiteUpdating);
 });

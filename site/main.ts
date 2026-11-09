@@ -5,7 +5,7 @@
 import { artistsView } from './artists.ts';
 import { communityView } from './communities.ts';
 import { countriesView } from './countries.ts';
-import { freshDay, load, loadSite } from './db.ts';
+import { freshDay, load, loadSite, SiteUpdating } from './db.ts';
 import { button, h, onResize, toggle } from './dom.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
@@ -30,6 +30,7 @@ import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
 import { pill, slide } from './tabs.ts';
 import { loading, scrolling } from './ui.ts';
+import { updated, updatingPage } from './updating.ts';
 import { weekView } from './week.ts';
 
 // Every link and file from the site's root, whatever address the page moves to: index.html's <base> (../../ on a
@@ -89,10 +90,17 @@ const VIEWS: Readonly<Record<Route, View>> = {
   },
 };
 const isRoute = (name: string): name is Route => Object.hasOwn(VIEWS, name);
+// a load that failed: the whole page says the site is mid-update when it is (updating.ts), else the view says why
 const failed = (root: HTMLElement, e: unknown) =>
-  root.replaceChildren(
-    h('p', { class: ['status', 'error'] }, `Could not load the data: ${e instanceof Error ? e.message : String(e)}`),
-  );
+  e instanceof SiteUpdating
+    ? updatingPage(main)
+    : root.replaceChildren(
+        h(
+          'p',
+          { class: ['status', 'error'] },
+          `Could not load the data: ${e instanceof Error ? e.message : String(e)}`,
+        ),
+      );
 
 // the header's tabs and the footer's links, from routes.ts
 tabs.append(...TABS.map(([nav, label, href]) => h('a', { href, 'data-nav': nav }, label)));
@@ -191,6 +199,10 @@ async function start(): Promise<void> {
   }
   part('#currency-switch').replaceWith(currencySwitch());
   initSearch(part('#search-btn'), data);
+  // mid-update, whatever view shows, even one that does not wait for the database (the festivals' sentence)
+  data.then(updated).catch((e: unknown) => {
+    if (e instanceof SiteUpdating) updatingPage(main);
+  });
   addEventListener('hashchange', () => route({ scrollUp: true }));
   route();
 }

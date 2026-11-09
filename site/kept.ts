@@ -1,19 +1,20 @@
 // What the review dashboard keeps in this browser: the admin's token, for the tab only unless its maker asks to keep
 // it on this device; the day it expires, as they entered it (GitHub never tells a page); and the items settled since
 // the build the page shows, so a reload keeps the progress until the next build lists what is left. Storage may be
-// refused (a private window): then each lasts as long as the page.
+// refused (a private window): then each lasts as long as the page. read and write are each such value's, the site's
+// others too (updating.ts).
 const TOKEN = 'kiz-radar-claims-token';
 const EXPIRES = 'kiz-radar-claims-token-expires';
 const SETTLED = 'kiz-radar-review-settled';
 
-const read = (s: () => Storage, key: string): string | null => {
+export const read = (s: () => Storage, key: string): string | null => {
   try {
     return s().getItem(key);
   } catch {
     return null;
   }
 };
-const write = (s: () => Storage, key: string, value: string | null): void => {
+export const write = (s: () => Storage, key: string, value: string | null): void => {
   try {
     if (value === null) s().removeItem(key);
     else s().setItem(key, value);
@@ -21,7 +22,7 @@ const write = (s: () => Storage, key: string, value: string | null): void => {
     // refused: kept for the page only
   }
 };
-const tab = () => sessionStorage;
+export const tab = () => sessionStorage;
 const device = () => localStorage;
 
 let held: string | null = null; // the token when storage refuses it

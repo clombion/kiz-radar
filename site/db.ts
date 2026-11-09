@@ -42,9 +42,13 @@ export function needs(name: string, file: string): void {
   if (!Reflect.has(globalThis, name)) throw new Error(`${file} did not load`);
 }
 
-// the database is of the tables these scripts read, or they are cached from before it changed (or after): reload
+// The site is mid-update for this browser: its files came from two builds (site.json and the database, or the scripts
+// and the database). GitHub Pages' cache holds each file up to ten minutes, so they can disagree for that long after a
+// publish, whatever a reload asks for; updating.ts says so and loads the page again.
+export class SiteUpdating extends Error {}
+// the database is of the tables these scripts read, or they are cached from before it changed (or after)
 export function sameSchema(found: unknown): void {
-  if (found !== SCHEMA) throw new Error('the site has been updated since this page was saved: reload the page');
+  if (found !== SCHEMA) throw new SiteUpdating('the scripts and the database are of two builds');
 }
 
 // The visitor's day, the one the site reads where a festival stands by (the database's today): set as the database
@@ -79,7 +83,7 @@ export async function load(siteLoaded: Promise<void>): Promise<Database> {
   const opening = open();
   await siteLoaded;
   const [built] = opening.exec("SELECT value FROM meta WHERE key = 'built_at'")[0]?.values[0] ?? [];
-  if (built !== site().built_at) throw new Error('the site was updated while the page loaded: reload the page');
+  if (built !== site().built_at) throw new SiteUpdating('site.json and the database are of two builds');
   const [schema] = opening.exec("SELECT value FROM meta WHERE key = 'schema'")[0]?.values[0] ?? [];
   sameSchema(schema);
   db = opening;
