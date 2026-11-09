@@ -7,6 +7,8 @@ import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
 import { FIXTURE_DATA } from './tests/site/community.fixture.ts';
 
+const { CHROMIUM } = process.env; // a Chromium to run the browser tests in, when not Playwright's own
+
 // The built site (public/), served under /kiz-radar/ as GitHub Pages serves it, for the tests that load it whole in a
 // frame: a folder's address serves its index.html, as Pages does, and data/ is the fixture's database.
 const TYPES: Readonly<Record<string, string>> = {
@@ -87,7 +89,11 @@ export default defineConfig({
             enabled: true,
             // motion as most visitors have it, whatever the machine's setting: the tabs' tests watch the oval move
             // (a test of their own stubs reduced motion)
-            provider: playwright({ contextOptions: { reducedMotion: 'no-preference' } }),
+            // a machine whose Chromium is not Playwright's own (a container with one installed) names it in CHROMIUM
+            provider: playwright({
+              contextOptions: { reducedMotion: 'no-preference' },
+              launchOptions: CHROMIUM === undefined ? {} : { executablePath: CHROMIUM },
+            }),
             headless: true,
             instances: [{ browser: 'chromium' }],
           },

@@ -35,7 +35,8 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
 - **Site:** tsc strict, every Biome rule but those `biome.jsonc` turns off, each with its reason, and the plugins in
   `lint/` (links in `routes.ts`, requests in `net.ts`, classes through `dom.ts`, markup only from `icons.ts`, promises
   reported, a state as `KEY`). A class is one the stylesheet defines (`site/classes.ts`, generated). vitest runs in Node
-  and in Chromium, and fails below the coverage of the pure modules `vitest.config.ts` sets.
+  and in Chromium (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and
+  fails below the coverage of the pure modules `vitest.config.ts` sets.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list.
 - **Duplicates:** jscpd fails on a block written twice, at the length `.jscpd.json` sets.
