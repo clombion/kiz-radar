@@ -7,6 +7,7 @@ import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, statSyn
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import initSqlJs from 'sql.js';
+import { summaryOf } from '../../site/db.ts';
 import { FIXTURE_DATA, plantCommunity } from './community.fixture.ts';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
@@ -46,7 +47,7 @@ export async function setup(): Promise<void> {
   built();
   const SQL = await initSqlJs();
   const db = new SQL.Database(readFileSync(join(ROOT, DATA, 'kiz.sqlite')));
-  plantCommunity(db);
+  plantCommunity(db, summaryOf(JSON.parse(readFileSync(join(ROOT, DATA, 'site.json'), 'utf8'))).home.city_key);
   mkdirSync(join(ROOT, FIXTURE_DATA), { recursive: true });
   writeFileSync(join(ROOT, FIXTURE_DATA, 'kiz.sqlite'), db.export());
   db.close();

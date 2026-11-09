@@ -54,8 +54,8 @@ def site_db(tmp_path_factory: pytest.TempPathFactory) -> Path:
     folder = tmp_path_factory.mktemp('site')
     with pytest.MonkeyPatch.context() as m:
         m.setattr(pipeline, 'DATA', folder)
-        exports.committed(*exports.EVERYTHING)
         claims.write(SITE_CLAIMS)
+        exports.everything()
         StatusRow.write([])  # the build says what festivals wait for from their files, not from status.csv
         out = folder / 'site.sqlite'
         made = build_site_db.build(exports.EXPORT, out)

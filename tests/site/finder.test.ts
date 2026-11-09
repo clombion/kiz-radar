@@ -17,50 +17,10 @@ import {
 } from '../../site/finder.ts';
 import { festivalsHref } from '../../site/routes.ts';
 import { KEY } from '../../site/states.ts';
-import { flownTo, pass as passOf } from './samples.ts';
+import { festival, flownTo, pass as passOf } from './samples.ts';
 
 const DAY = '2026-11-02';
 const CHOICES = DEFAULTS;
-const UNKNOWN = { point: 'price', key: KEY.price.NOT_YET } as const;
-// a festival coming up, its weekend in a week, with a known trip of 2 000 in the visitor's currency
-const festival = (id: number, over: Partial<Festival> = {}): Festival => ({
-  id,
-  title: `Festival ${id}`,
-  url: 'https://kizomba-world.com/',
-  city: 'Lisbon',
-  country_code: 'PT',
-  start_date: '2026-11-06',
-  end_date: '2026-11-08',
-  lat: 38.7,
-  lon: -9.1,
-  airport: 'LIS',
-  airport_km: 7,
-  airport_city: 'Lisbon',
-  weekend_friday: '2026-11-06',
-  cancelled: null,
-  listing: KEY.listing.LISTED,
-  venue: null,
-  lineup: 12,
-  popular_artists: 2,
-  genres: [KEY.genre.KIZOMBA],
-  phase: KEY.phase.AHEAD,
-  upcoming: true,
-  price_state: KEY.price.PRICED,
-  ticket_page: null,
-  card_pass: 1,
-  depart: '2026-11-06',
-  features: new Set(),
-  promo: null,
-  goers: [],
-  headliners: [],
-  styles: new Set([KEY.genre.KIZOMBA]),
-  options: [],
-  fare: flownTo(120, '2026-11-09'),
-  price: UNKNOWN,
-  trip: 2000,
-  begun: false,
-  ...over,
-});
 const ids = (fs: readonly Festival[]) => fs.map((f) => f.id);
 
 test('a festival is kept while its weekend is within the months chosen', () => {

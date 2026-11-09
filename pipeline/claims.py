@@ -1,5 +1,5 @@
 """Claims decide the facts no step can derive: that two artists are one, where an artist is from, which artist a
-festival's line-up means, and what a ticket site waits for.
+festival's line-up means, what a ticket site waits for, and which country a city the source names is in.
 
 A claim is a record of what it says, about one subject, when it was made, with a note. Its source is the channel that
 delivers it, never read from the claim itself, and its source gives its priority (states.py, claim_source: admin above
@@ -24,7 +24,7 @@ from pydantic import Discriminator, TypeAdapter, ValidationError, model_validato
 from pipeline import data, files, states
 from pipeline.enums import ClaimSource, MergeDecision, Waiting
 from pipeline.extract import merge_review
-from pipeline.records import CountryCode, Key, Record, Stamp, Text, digest, errors
+from pipeline.records import CountryCode, Key, Record, Spelling, Stamp, Text, digest, errors
 
 CLAIMS = 'claims'  # the submodule of clombion/kiz-radar-claims: every admin claim, <its digest>.json
 
@@ -87,9 +87,21 @@ class SiteClaim(Record):
         return self
 
 
-type AnyClaim = MergeClaim | HomeClaim | BookingClaim | SiteClaim
+class PlaceClaim(Record):
+    """That a city as the source DB spells it, with the country it is listed under (none when it names none), is in
+    another country, where it is looked for instead (pipeline/cities.py): Porto, listed under France, is in Portugal."""
+
+    field: Literal['place']
+    city: Text
+    country: Text | None
+    is_in: CountryCode
+    made_at: Stamp
+    note: Text
+
+
+type AnyClaim = MergeClaim | HomeClaim | BookingClaim | SiteClaim | PlaceClaim
 type Claim = Annotated[AnyClaim, Discriminator('field')]
-CLAIM: TypeAdapter[MergeClaim | HomeClaim | BookingClaim | SiteClaim] = TypeAdapter(Claim)
+CLAIM: TypeAdapter[AnyClaim] = TypeAdapter(Claim)
 PRIORITY = {s: i for i, s in enumerate(reversed(states.keys('claim_source')))}  # the higher, the earlier it comes
 
 
@@ -104,6 +116,8 @@ def subject(c: AnyClaim) -> tuple[str, ...]:
             return ('booking', str(c.event_id), c.from_key)
         case SiteClaim():
             return ('site', c.host)
+        case PlaceClaim():
+            return ('place', c.city, c.country or '')
 
 
 @dataclass(frozen=True)
@@ -207,3 +221,13 @@ def sites() -> dict[str, SiteClaim]:
     """The ticket sites whose festivals wait for something else than they would by default, by host: the admin's, as
     no other channel makes a site claim."""
     return {m.claim.host: m.claim for m in resolved(admin()).values() if isinstance(m.claim, SiteClaim)}
+
+
+def places() -> dict[Spelling, PlaceClaim]:
+    """The cities the source DB names that are in another country than they are listed under, by city and country as
+    listed: the admin's, as no other channel makes a place claim."""
+    return {
+        Spelling(m.claim.city, m.claim.country): m.claim
+        for m in resolved(admin()).values()
+        if isinstance(m.claim, PlaceClaim)
+    }

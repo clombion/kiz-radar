@@ -16,7 +16,7 @@ const DATA = new URL('../data/', import.meta.url);
 // site.json, written by the same build as kiz.sqlite: home airport, destinations, dates covered, build time
 const PLACE = record({ code: text, name: text });
 const SUMMARY = record({
-  home: record({ code: text, city: text }),
+  home: record({ code: text, city: text, city_key: text }), // the home airport, and the city it is in (cities)
   destinations: list(PLACE),
   events_range: pair(text),
   built_at: text,

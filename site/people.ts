@@ -1,7 +1,7 @@
 // Who's going where: the festivals people near a place said they're going to, by date, and each person's plans page
 // with a link to share it.
 
-import { one, q, sql } from './db.ts';
+import { one, q, site, sql } from './db.ts';
 import { dismissable } from './dismiss.ts';
 import { button, h, type Kid, uniqueId } from './dom.ts';
 import { eventCard } from './eventcard.ts';
@@ -114,14 +114,13 @@ function kmBetween(a: Spot, b: Spot): number {
 }
 // the site's home city (its home airport's), where the people near are looked for
 const homeCity = () =>
-  one(
-    { city: str, lat: num, lon: num },
-    sql`SELECT h.city, h.lat, h.lon FROM homes h JOIN airports a ON a.city = h.city WHERE a.home = 1`,
-  );
+  one({ city: str, lat: num, lon: num }, sql`SELECT name AS city, lat, lon FROM cities WHERE key = ?`, [
+    site().home.city_key,
+  ]);
 // the people sharing plans who live within NEAR_KM of a place, by key; those who have not said where they live never
 const livingNear = (at: Spot): Set<string> =>
   new Set(
-    q({ key: str, lat: num, lon: num }, sql`SELECT p.key, h.lat, h.lon FROM people p JOIN homes h ON h.city = p.home`)
+    q({ key: str, lat: num, lon: num }, sql`SELECT p.key, c.lat, c.lon FROM people p JOIN cities c ON c.key = p.home`)
       .filter((p) => kmBetween(at, p) <= NEAR_KM)
       .map((p) => p.key),
   );

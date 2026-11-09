@@ -18,7 +18,7 @@ import unicodedata as ud
 from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Annotated, ClassVar, Literal, NewType, Self, cast, get_args, get_origin
+from typing import Annotated, ClassVar, Literal, NamedTuple, NewType, Self, cast, get_args, get_origin
 
 from pydantic import (
     AfterValidator,
@@ -91,6 +91,7 @@ Copied = Annotated[str, Field(min_length=1), VERBATIM]  # a span copied as it is
 Quote = Annotated[str, Field(min_length=1, max_length=300), VERBATIM]  # a span copied as it is written, a line at most
 Currency = Annotated[str, Field(pattern=r'^[A-Z]{3}$')]  # an ISO 4217 code
 Iata = Annotated[str, Field(pattern=r'^[A-Z]{3}$')]  # an airport's IATA code
+CityKey = Annotated[str, Field(pattern=r'^[a-z0-9]+(-[a-z0-9]+)*-[a-z]{2}$')]  # a city's key: its name's, its country's
 
 
 def country_code(code: str) -> str:
@@ -1277,6 +1278,14 @@ class Airport(CsvRow):
     home: Flag
 
 
+class Spelling(NamedTuple):
+    """A city as the source DB spells it, with the country it is listed under (none when it names none): what a place
+    claim is about, and what geocode.csv asks Nominatim for (pipeline/cities.py)."""
+
+    city: str
+    country: str | None
+
+
 class Spot(Record):
     """Where Nominatim puts a place, and its name for it."""
 
@@ -1288,8 +1297,9 @@ class Spot(Record):
 
 
 class Place(CsvRow):
-    """A place the source DB names, and where it is when Nominatim found it (its columns lat, lon and osm_name, all
-    empty when it found none). A place is a city, in a country when the source DB names one."""
+    """A place asked of Nominatim, and where it is when Nominatim found it (its columns lat, lon and osm_name, all
+    empty when it found none): a city as the source DB spells it, in its country when it names one, or the place a
+    place claim says that spelling is (pipeline/cities.py)."""
 
     FILE = 'pipeline/geocode.csv'
 
@@ -1311,6 +1321,20 @@ class Place(CsvRow):
         coords = ('', '', '') if spot is None else (number_text(spot.lat), number_text(spot.lon), spot.name)
         out: dict[str, object] = {'city': self.city, 'country': self.country or ''}
         return out | dict(zip(('lat', 'lon', 'osm_name'), coords, strict=True))
+
+
+class City(CsvRow):
+    """A city festivals are in, however the source DB spells it (pipeline/cities.py): its key, which never changes once
+    written, as claims name it; its name; the country it is in, which may not be the one a festival is listed under;
+    and where it is, the one place a city's point is kept."""
+
+    FILE = 'pipeline/cities.csv'
+
+    key: CityKey
+    name: Text
+    country_code: CountryCode
+    lat: float
+    lon: float
 
 
 Stops = Annotated[int, Field(ge=0)]  # the stops a flight makes, 0 when it is direct

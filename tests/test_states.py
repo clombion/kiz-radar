@@ -256,7 +256,8 @@ LITERALS = {
     frozenset({'ro', 'rw'}),  # the export's, which no step creates, export.opened
     frozenset({'pages', 'models'}),  # the parts of the tickets run, which the Action makes apart, tickets.Part
     frozenset(p.name for p in states.POINTS),  # the points' names, enums.Point
-    *(frozenset({f}) for f in ('merge', 'home', 'booking', 'site')),  # each claim's field, its discriminator (claims)
+    # each claim's field, its discriminator (claims)
+    *(frozenset({f}) for f in ('merge', 'home', 'booking', 'site', 'place')),
 }
 
 

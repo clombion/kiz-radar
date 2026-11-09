@@ -65,7 +65,8 @@ class Event:
     start: dt.date
     end: dt.date
     short: bool
-    city: str | None  # lower case, to compare; None when the event names none
+    city: str | None  # the city it is in (cities.csv), by key; None when it is in none known
+    city_name: str | None  # as shown; None when the event names none
     place: str  # as shown: city, country
 
 
@@ -121,7 +122,8 @@ class Evidence:
                         -CLASH_PENALTY,
                         f'{ex.start}: booked in {ex.place} and in {ey.place}',
                     )
-        cities = ({self.ev[e].city for e in ea} & {self.ev[e].city for e in eb}) - {None}
+        same = ({self.ev[e].city for e in ea} & {self.ev[e].city for e in eb}) - {None}
+        cities = {self.ev[e].city_name for e in ea | eb if self.ev[e].city in same}
         orgs_a = set[int]().union(*(self.organisers[e] for e in ea))
         orgs = orgs_a & set[int]().union(*(self.organisers[e] for e in eb)) if ea and eb else set[int]()
         if cities or orgs:
@@ -155,6 +157,7 @@ class Dates(BaseModel):
     end_date: dt.date
     city: str | None
     country: str | None
+    city_key: str | None
 
 
 class Organised(BaseModel):
@@ -189,11 +192,14 @@ class Undecided(BaseModel):
 def calendar(found: Evidence, c: Reader, site: Reader) -> None:
     """Every event an artist is at in a role the calendar counts (states.py, role counts), directly or through a
     couple, with its dates, city and organisers."""
-    for e in site.rows(Dates, 'select id, start_date, end_date, city, country from events'):
+    for e in site.rows(
+        Dates,
+        'select e.id, e.start_date, e.end_date, coalesce(c.name, e.city) as city, e.country, e.city_key'
+        ' from events e left join cities c on c.key = e.city_key',
+    ):
         place = ', '.join(p for p in (e.city, e.country) if p is not None) or 'a place not given'
         short = (e.end_date - e.start_date).days <= SHORT_EVENT_DAYS
-        city = None if e.city is None else e.city.strip().lower()
-        found.ev[e.id] = Event(e.start_date, e.end_date, short, city, place)
+        found.ev[e.id] = Event(e.start_date, e.end_date, short, e.city_key, e.city, place)
     for o in c.rows(Organised, 'select event_id, artist_id from event_artists where role = ?', (Role.ORGANISER,)):
         found.organisers[o.event_id].add(o.artist_id)
     present = (json.dumps(states.counted(states.PRESENT)),)

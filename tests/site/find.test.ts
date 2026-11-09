@@ -21,7 +21,9 @@ const item = (
 const country = (code: string, name: string, n: number) =>
   item({ kind: 'country', country: { code, name }, n }, name, { past: n === 0, rank: n, also: [code] });
 const city = (name: string, upcoming: number) =>
-  item({ kind: 'city', city: { city: name, cc: 'FI', upcoming, all: 3 } }, name, { past: upcoming === 0 });
+  item({ kind: 'city', city: { key: `${name.toLowerCase()}-fi`, city: name, cc: 'FI', upcoming, all: 3 } }, name, {
+    past: upcoming === 0,
+  });
 const festival = (id: number, title: string, upcoming: boolean, rank: number) =>
   item(
     {

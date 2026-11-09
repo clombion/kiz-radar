@@ -2,10 +2,9 @@
 added from OurAirports for them."""
 
 from pipeline import airports
-from pipeline.records import Airport, Place, Spot
+from pipeline.records import Airport, City
 
-GLASGOW = Place(city='Glasgow', country='United Kingdom', found=Spot(lat=55.861, lon=-4.25, name='Glasgow'))
-GEO = {(GLASGOW.city, GLASGOW.country): GLASGOW}
+GLASGOW = City(key='glasgow-gb', name='Glasgow', country_code='GB', lat=55.861, lon=-4.25)
 
 
 def airport(code: str, lat: float, lon: float) -> Airport:
@@ -23,16 +22,16 @@ ABZ, EDI, GLA, PIK, MAN = (
 
 
 def test_a_festival_flies_to_every_airport_near_enough_its_city_the_nearest_first() -> None:
-    p = airports.placed('Glasgow', 'United Kingdom', GEO, [MAN, ABZ, EDI, PIK, GLA])
+    p = airports.placed(GLASGOW, [MAN, ABZ, EDI, PIK, GLA])
     assert p is not None
     assert [c.airport for c in p.candidates] == ['GLA', 'PIK', 'EDI', 'ABZ']
     assert [c.km for c in p.candidates] == sorted(c.km for c in p.candidates)
     assert all(c.km <= airports.MAX_AIRPORT_KM for c in p.candidates)
     assert (p.airport, p.km) == (p.candidates[0].airport, p.candidates[0].km)  # the nearest, as before
-    far = airports.placed('Glasgow', 'United Kingdom', GEO, [MAN])
+    far = airports.placed(GLASGOW, [MAN])
     assert far is not None
     assert (far.airport, far.km, far.candidates) == (None, None, ())
-    assert airports.placed('Nowhere', None, GEO, [GLA]) is None
+    assert airports.placed(None, [GLA]) is None  # a festival in no city known
 
 
 def test_the_airports_added_are_those_with_scheduled_service_near_a_festival() -> None:
@@ -61,6 +60,6 @@ def test_the_airports_added_are_those_with_scheduled_service_near_a_festival() -
     )
     assert [a.code for a in offered] == ['ABZ', 'EDI', 'MAN', 'ANU', 'JER']
     assert (offered[0].lat, offered[0].lon, offered[0].city) == (57.202, -2.198, 'Abz')
-    # EDI is in airports.csv already, and a city not geocoded has no airports
-    added = airports.wanted([('Glasgow', 'United Kingdom'), ('Atlantis', None)], GEO, [EDI], offered)
+    # EDI is in airports.csv already
+    added = airports.wanted([GLASGOW], [EDI], offered)
     assert [a.code for a in added] == ['ABZ']

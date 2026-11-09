@@ -15,15 +15,16 @@ import pytest
 from curl_cffi.requests.exceptions import RequestException
 from pydantic import BaseModel
 
-from pipeline import data, export, geocode, rates, scrape, web
+from pipeline import claims, data, export, geocode, rates, scrape, web
 from pipeline import db as sqlite_db
 from pipeline.calls import Declined
+from pipeline.claims import PlaceClaim
 from pipeline.db import Reader
 from pipeline.enums import CallCause, Listing
 from pipeline.records import JSON, Place, Rate, Spot, today
 from tests import jsons
 from tests.exports import content, festival, run, shaped, trimmed
-from tests.fakes import no_wait
+from tests.fakes import AT, no_wait
 from tests.samples import API, PAGE
 
 ECB_DAY = dt.date(2026, 10, 27)
@@ -127,6 +128,35 @@ def test_new_places_are_asked_for_once_and_kept_with_the_known(tmp_path: Path, m
     asked = len(nominatim.asked)
     run(geocode.main, monkeypatch)
     assert len(nominatim.asked) == asked  # a place not found is known too
+
+
+def test_a_city_a_claim_places_is_asked_where_it_is_and_a_place_asked_no_more_is_dropped(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Porto, listed under France, is in Portugal (a place claim): Nominatim is asked for Porto in Portugal, and the
+    Corsican village found before, which no city asks for now, leaves geocode.csv."""
+    corsica = Place(city='Porto', country='France', found=Spot(lat=42.3, lon=8.7, name='Porto, Corsica, France'))
+    Place.write([corsica])
+    claims.write([PlaceClaim(field='place', city='Porto', country='France', is_in='PT', made_at=AT, note='n')])
+    monkeypatch.setattr('time.sleep', no_wait)
+    nominatim = Nominatim({'Porto, Portugal': {'lat': '41.15', 'lon': '-8.61', 'display_name': 'Porto, Portugal'}})
+    monkeypatch.setattr(web, 'get', nominatim.get)
+    _ = source_with([('Porto', 'France')])
+    run(geocode.main, monkeypatch)
+    assert Place.read() == [
+        Place(city='Porto', country='Portugal', found=Spot(lat=41.15, lon=-8.61, name='Porto, Portugal'))
+    ]
+
+
+def test_an_export_naming_no_city_drops_no_place(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """An export with no city in it (the wrong file, an empty one) would drop every place found: geocode refuses it."""
+    known = Place(city='Oslo', country='Norway', found=Spot(lat=59.9, lon=10.7, name='Oslo, Norway'))
+    Place.write([known])
+    monkeypatch.setattr(web, 'get', Nominatim({}).get)
+    _ = source_with([(None, None)])
+    with pytest.raises(SystemExit, match='no festival names a city'):
+        run(geocode.main, monkeypatch)
+    assert Place.read() == [known]
 
 
 class KilledError(Exception):

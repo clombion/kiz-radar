@@ -66,13 +66,13 @@ const FESTIVALS = [
 export const FIXTURE_FESTIVALS = FESTIVALS.map(([id]) => id);
 
 // The fixture written into db: every community, member, added person, travel and stay replaced by its own; its people
-// there (added when the data has them no more), their plans its own, and its festivals listed and not cancelled.
-export function plantCommunity(db: Database): void {
+// there (added when the data has them no more), living in home (the site's home city, by its key), their plans its
+// own, and its festivals listed and not cancelled, each in the city of its name in its country.
+export function plantCommunity(db: Database, home: string): void {
   db.run('PRAGMA defer_foreign_keys = ON');
   db.run('BEGIN');
   for (const table of ['travel', 'stays', 'seeded_artists', 'community_seeded', 'community_members', 'communities'])
     db.run(`DELETE FROM ${table}`);
-  const home = db.exec('SELECT city FROM airports WHERE home = 1')[0]?.values[0]?.[0] ?? null;
   for (const [key, name] of PEOPLE) {
     db.run('INSERT OR IGNORE INTO people (key, name, featured) VALUES (?, ?, 1)', [key, name]);
     db.run('UPDATE people SET home = ? WHERE key = ?', [home, key]);
@@ -96,8 +96,14 @@ export function plantCommunity(db: Database): void {
   for (const [id, title, start, end, city, country, friday] of FESTIVALS)
     db.run(
       `UPDATE events SET title = ?, listed_title = ?, start_date = ?, end_date = ?, city = ?, country_code = ?,
-       weekend_friday = ?, cancelled = 0, listing = ? WHERE id = ?`,
-      [title, title, start, end, city, country, friday, KEY.listing.LISTED, id],
+       city_key = (SELECT key FROM cities WHERE name = ? AND country_code = ?), weekend_friday = ?, cancelled = 0,
+       listing = ? WHERE id = ?`,
+      [title, title, start, end, city, country, city, country, friday, KEY.listing.LISTED, id],
     );
+  const unplaced = db.exec('SELECT id FROM events WHERE id IN (SELECT value FROM json_each(?)) AND city_key IS NULL', [
+    JSON.stringify(FESTIVALS.map(([id]) => id)),
+  ])[0]?.values;
+  if (unplaced !== undefined)
+    throw new Error(`the fixture's festivals ${unplaced.join(', ')} are in no city of cities`);
   db.run('COMMIT');
 }

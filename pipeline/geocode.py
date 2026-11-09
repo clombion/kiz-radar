@@ -1,8 +1,9 @@
-"""Geocode every (city, country) in the source DB with OpenStreetMap Nominatim, 1 request/s, keeping already-known
-places in pipeline/geocode.csv so reruns only ask for new cities. The file is saved after every place found, so a run
-stopped half way keeps them; a place Nominatim gave no answer for (pipeline/calls.py) is left for the next run, which
-this one fails naming. A transient failure is waited out once before the next place; a structural one (a refused
-request) stops the run.
+"""Geocode every city the source DB names with OpenStreetMap Nominatim, 1 request/s: each where it is listed, or where
+a place claim says it is (cities.asked). pipeline/geocode.csv keeps the places asked, so reruns only ask for new ones,
+and drops those no spelling asks for any more. The file is saved after every place found, so a run stopped half way
+keeps them; a place Nominatim gave no answer for (pipeline/calls.py) is left for the next run, which this one fails
+naming. A transient failure is waited out once before the next place; a structural one (a refused request) stops the
+run.
 
     mise run geocode
 """
@@ -10,10 +11,11 @@ request) stops the run.
 import argparse
 import sys
 import time
+from collections.abc import Mapping
 
 from pydantic import BaseModel, ConfigDict, TypeAdapter, ValidationError
 
-from pipeline import calls, export, web
+from pipeline import calls, cities, claims, export, web
 from pipeline.calls import Declined
 from pipeline.enums import CallCause
 from pipeline.records import Place, Spot
@@ -61,20 +63,26 @@ def located(city: str, country: str | None) -> Place | Declined:
     return Place(city=city, country=country, found=spot)
 
 
-class Located(BaseModel):
-    city: str
-    country: str | None
+def kept(known: Mapping[tuple[str, str | None], Place]) -> None:
+    """geocode.csv, holding these places, by country then city."""
+    Place.write(sorted(known.values(), key=lambda p: (p.country or '', p.city)))
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description="Geocode the source DB's cities with OpenStreetMap Nominatim.")
     _ = ap.parse_args()
     with export.opened('ro') as db:
-        # a country alone is no place on the map; one the export leaves empty is none
-        places = db.rows(Located, "select distinct city, nullif(country, '') as country from events where city != ''")
-    known = {(p.city, p.country): p for p in Place.read()}
+        named = cities.spellings(db)
+    if not named:  # an export with no city would drop every place found, which Nominatim would be asked for again
+        sys.exit(f'{export.path()}: no festival names a city, so no place is asked for: is it the export?')
+    claimed = claims.places()
+    wanted = dict.fromkeys(cities.asked(s, claimed) for s in named)
+    had = Place.read()
+    known = {(p.city, p.country): p for p in had if (p.city, p.country) in wanted}
+    if dropped := len(had) - len(known):
+        print(dropped, 'places no city asks for any more dropped')
     declined: list[tuple[str, Declined]] = []
-    for city, country in ((p.city, p.country) for p in places):
+    for city, country in wanted:
         if (city, country) in known:
             continue
         match located(city, country):
@@ -86,8 +94,9 @@ def main() -> None:
                 time.sleep(BACKOFF)
             case place:
                 known[(city, country)] = place
-                Place.write(sorted(known.values(), key=lambda p: (p.country or '', p.city)))
+                kept(known)
                 time.sleep(PAUSE)
+    kept(known)  # the places no city asks for any more dropped
     print(len(known), 'places;', sum(1 for p in known.values() if p.found is None), 'not found')
     if why := calls.failed('places', declined):
         sys.exit(why)

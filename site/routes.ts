@@ -37,22 +37,15 @@ const hash = (path: string, params: Params = {}): string => `#${path}${query(par
 export const festivalsHref = (params?: Params) => hash('finder', params);
 export const mapHref = (params?: Params) => hash('map', params);
 export const eventOnMapHref = (id: number, params?: Params) => hash(`map/event/${id}`, params);
-// a city on the map: its name and its country, null when the export has none. An address holds it as
-// map/city/<country, or NO_COUNTRY>/<name>, each part encoded, so cityOf reads back the city cityOnMapHref wrote,
-// whatever its name holds ('/' included)
-export interface CityKey {
-  readonly city: string;
-  readonly cc: string | null;
-}
-const NO_COUNTRY = '-'; // no country code is a dash
-export const cityOnMapHref = (k: CityKey, params?: Params) =>
-  hash(`map/city/${encodeURIComponent(k.cc ?? NO_COUNTRY)}/${encodeURIComponent(k.city)}`, params);
-// the city of an address's parts after map/city/, or null when they are no city's
-export function cityOf(parts: readonly string[]): CityKey | null {
-  const [cc, city, ...rest] = parts;
-  if (cc === undefined || city === undefined || rest.length > 0) return null;
+// a city on the map, by its key (pipeline/cities.csv: munich-de), which no two cities share: map/city/<key>, encoded,
+// so cityOf reads back the key cityOnMapHref wrote
+export const cityOnMapHref = (key: string, params?: Params) => hash(`map/city/${encodeURIComponent(key)}`, params);
+// the city key of an address's parts after map/city/, or null when they are no city's
+export function cityOf(parts: readonly string[]): string | null {
+  const [key, ...rest] = parts;
+  if (key === undefined || key === '' || rest.length > 0) return null;
   try {
-    return { cc: cc === NO_COUNTRY ? null : decodeURIComponent(cc), city: decodeURIComponent(city) };
+    return decodeURIComponent(key);
   } catch {
     return null; // a part that is no encoding of anything (a lone %)
   }

@@ -8,6 +8,7 @@ A claim decides a fact no step can derive. `pipeline/claims.py` holds their reco
 | `home` | where an artist is from | a key |
 | `booking` | which artist one festival's line-up means | a festival, and two keys |
 | `site` | what the festivals on a ticket site wait for instead of their default (a site no recipe can read) | a host |
+| `place` | that a city as the listings spell it, under the country it is listed under, is in another country, where it is looked for (Porto, listed under France, is in Portugal) | a city and a country, as listed |
 
 ## Who decides
 

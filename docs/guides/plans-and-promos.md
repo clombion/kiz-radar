@@ -7,11 +7,10 @@ The build stops when one names a person, a community, an artist key or a festiva
 
 - `pipeline/people.csv`: one row per person, with a short `key` (their page is `#friends/<key>`), their `name`, the
   `artist_keys` they are in the line-ups (`match_key` values, separated by `;`), `featured`, and their `home`: the city
-  they live in, as `pipeline/geocode.csv` names it (one of its rows, found there: its city alone, or "City, Country"
-  when geocode.csv has the city in two countries), or empty when they have not said. Featured people are named on
-  festival cards; the others are counted. The build stops on a home geocode.csv has not found, or has in two places with
-  no country to choose, naming the file; someone with no home is never "near" anywhere on the Friends tab, which lists
-  the people near Bergen.
+  they live in, as the listings name it (its city alone, or "City, Country" when two cities share the name), which the
+  build finds in `pipeline/cities.csv`, or empty when they have not said. Featured people are named on festival cards;
+  the others are counted. The build stops on a home in no city, or in two with no country to choose, naming whose it is;
+  someone with no home is never "near" anywhere on the Friends tab, which lists the people near Bergen.
 - `pipeline/plans.csv`: one row per person and festival, with `status` `going`, or `maybe` when they may go but have not
   said they are going, and the festival's name in `event`.
 

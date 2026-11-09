@@ -65,8 +65,9 @@ currencies are converted with the European Central Bank's rates and marked "~".
 The header's tabs are Festivals, Friends and Explore, whose second row holds the Map, Artists and Countries. On a touch
 screen a swipe goes to the next or previous of those five; on the map a swipe counts from near the screen's sides only.
 
-- **Map:** one bubble per city, coloured by the cheapest flight (or by well-known artists), beside the festivals in
-  view. A link from Countries narrows it to a country, which Filters shows and can clear.
+- **Map:** one bubble per city (`pipeline/cities.csv`, however the listings spell it), coloured by the cheapest flight
+  (or by well-known artists), beside the festivals in view; a city's address is its key (`#map/city/munich-de`). A
+  festival is in its city's country. A link from Countries narrows it to a country, which Filters shows and can clear.
 
 - **Artists:** each teacher and DJ, how often and where they are booked, and their page leading with what is coming up.
   "Next festival soonest" orders everyone, those with nothing coming last.
@@ -76,11 +77,11 @@ screen a swipe goes to the next or previous of those five; on the map a swipe co
 - **Friends:** "Who's going where" ("All the dancers in the community with public plans."), for a visitor, who has no
   account yet: two sections. "Near Bergen" (the home airport's city, the one region for now) lists the festivals to come
   that the people living within `NEAR_KM` (200 km, `site/people.ts`) of it are going to, each naming them, and who they
-  are, measured against each person's home (`homes`, from `pipeline/geocode.csv`); someone with no home in `people.csv`
-  is near nowhere. An (i) after the heading ("About this list") shows, on hover, on focus or on a tap, a small card:
-  "Within 200 km of Bergen." (Escape or a second tap hides it). "Rest of the world" (the people far away or with no
-  home) says "Not available yet" for now. A person's page (`#friends/<key>`) is as before. The visitor's own communities
-  will come at the top once there are accounts.
+  are, measured against each person's home (the city `people.home` names, from `pipeline/cities.csv`); someone with no
+  home in `people.csv` is near nowhere. An (i) after the heading ("About this list") shows, on hover, on focus or on a
+  tap, a small card: "Within 200 km of Bergen." (Escape or a second tap hides it). "Rest of the world" (the people far
+  away or with no home) says "Not available yet" for now. A person's page (`#friends/<key>`) is as before. The visitor's
+  own communities will come at the top once there are accounts.
 
 A community's page (`c/<key>/` from the site's root) has no tab: its link reaches it. It is public all the same, like
 everything the site shows: its members, their plans and travel are in the site's database, which anyone can read (the

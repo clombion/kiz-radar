@@ -74,6 +74,7 @@ export const EVENT = {
   title: str,
   url: str,
   ...PLACE_AND_DAYS,
+  city_key: opt(str), // the city it is in, however its listing spells it (cities), with that city's point
   lat: opt(num),
   lon: opt(num),
   airport: opt(str),

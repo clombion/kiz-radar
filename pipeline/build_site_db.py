@@ -23,13 +23,14 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from pipeline import airports, data, enums, export, fare_store, fare_weekends, files, review, states
+from pipeline import airports, cities, data, enums, export, fare_store, fare_weekends, files, review, states
 from pipeline import db as sqlite_db
 from pipeline.countries import NAMES, codes
 from pipeline.db import Reader, Transaction
 from pipeline.enums import FareVendor, Feature, Genre, HomeBasis, PassKind, People, Role, Style
 from pipeline.extract import resolve_artists
 from pipeline.records import (
+    City,
     Community,
     Membership,
     Offer,
@@ -38,6 +39,7 @@ from pipeline.records import (
     Promo,
     Rate,
     Seeded,
+    Spelling,
     StayRow,
     Travel,
     day_of,
@@ -98,9 +100,9 @@ create table events (
     website text,
     published_at text,
     modified_at text,
+    -- the country it is in: its city's, else the one it is listed under (country holds the listing's words)
     country_code text references countries(code) deferrable initially deferred,
-    lat real check (lat is null or city is not null),  -- a place on the map is a city's
-    lon real check ((lon is null) = (lat is null)),
+    city_key text references cities(key) deferrable initially deferred check (city_key is null or city is not null),
     airport text references airports(code) deferrable initially deferred,
     airport_km integer check ((airport_km is null) = (airport is null)),
     weekend_friday text not null check (length(weekend_friday) = 10 and date(weekend_friday) = weekend_friday),
@@ -215,6 +217,14 @@ create table event_room_list (
     kind text not null check (kind in ({room_kind})),
     genres text not null,
     primary key (event_id, room_no)
+) strict, without rowid;
+-- the cities festivals are in and people live in, however the source spells them (pipeline/cities.csv)
+create table cities (
+    key text primary key check (key glob '[a-z0-9]*-[a-z][a-z]' and key = lower(key)),  -- a records.CityKey
+    name text not null check (name != ''),
+    country_code text not null references countries(code) deferrable initially deferred,  -- the country it is in
+    lat real not null check (lat between -90 and 90),
+    lon real not null check (lon between -180 and 180)
 ) strict, without rowid;
 create table airports (
     code text primary key,
@@ -362,18 +372,12 @@ create table event_stats (
     genres text not null,
     features text not null
 ) strict;
--- the cities people live in and the site's home city (its home airport's), where geocode.csv puts them
-create table homes (
-    city text primary key,
-    lat real not null,
-    lon real not null
-) strict;
 create table people (
     id integer primary key,
     key text not null unique,
     name text not null,
     featured integer not null check (featured in (0, 1)),
-    home text references homes(city) deferrable initially deferred
+    home text references cities(key) deferrable initially deferred  -- the city they live in, when they said
 ) strict;
 create table person_artists (
     person_id integer not null references people(id) deferrable initially deferred,
@@ -485,16 +489,16 @@ create view country_stats as
 -- on now
 create view event_rows as
     select r.*, r.phase in ('{ahead}', '{on}') as upcoming from (
-      select e.id, e.title, e.url, e.start_date, e.end_date, e.city, e.country_code, e.lat, e.lon, e.airport,
-        e.airport_km, a.city as airport_city, e.weekend_friday, e.cancelled, e.listing, e.venue, s.lineup,
-        s.popular_artists,
+      select e.id, e.title, e.url, e.start_date, e.end_date, coalesce(c.name, e.city) as city, e.country_code,
+        e.city_key, c.lat, c.lon, e.airport, e.airport_km, a.city as airport_city,
+        e.weekend_friday, e.cancelled, e.listing, e.venue, s.lineup, s.popular_artists,
         s.kiz_only, s.genres, s.features,
         case when e.listing != '{listed}' then '{phase_gone}' when e.cancelled = 1 then '{cancelled}'
              when e.start_date > (select day from today) then '{ahead}'
              when e.end_date >= (select day from today) then '{on}' else '{ended}' end as phase,
         p.price as price_state, p.page as ticket_page, p.card_pass
       from events e join event_stats s on s.event_id = e.id left join airports a on a.code = e.airport
-        left join price_status p on p.event_id = e.id
+        left join price_status p on p.event_id = e.id left join cities c on c.key = e.city_key
     ) r;
 create view plan_rows as
     select p.person_id, pe.key, pe.name, pe.featured, p.event_id, p.status, {plan_booked_as} as booked_as
@@ -695,12 +699,14 @@ def settled(went: Mapping[int, int], old: int) -> int:
     return old
 
 
-def places(x: Transaction) -> None:
-    """The events, each with its title and venue as shown, its days, its country, its place and nearest airport, and the
-    weekend a trip to it leaves on; the airports and countries they name."""
+def places(x: Transaction, index: cities.Cities) -> None:
+    """The events, each with its title and venue as shown, its days, its city and the country it is in (its city's,
+    else as listed), its nearest airport, and the weekend a trip to it leaves on; the airports, cities and countries
+    they name. A city Nominatim found that no city is near yet is said, and its festivals left off the map."""
     x.insert('airports', (a.model_dump() | {'home': int(a.home)} for a in airports.known()))
     x.insert('countries', ({'code': c, 'name': n} for c, n in sorted(NAMES.items())))
-    geo, to = airports.places(), airports.known()
+    x.insert('cities', (c.model_dump() for c in index.have))
+    to = airports.known()
     listed = x.rows(
         Listed,
         """select e.id, d.title, e.title as listed_title, e.url, e.slug, e.start_date, e.end_date, e.timezone,
@@ -711,7 +717,8 @@ def places(x: Transaction) -> None:
     rows: list[Mapping[str, object]] = []
     near: list[Mapping[str, object]] = []
     for e in listed:
-        p = airports.placed(e.city, e.country, geo, to)
+        city = index.of(e.city, e.country)
+        p = airports.placed(city, to)
         near += [{'event_id': e.id, 'airport': c.airport, 'km': c.km} for c in (p.candidates if p else ())]
         start = day_of(e.start_date)
         rows.append(
@@ -719,9 +726,8 @@ def places(x: Transaction) -> None:
             | {
                 'start_date': start,
                 'end_date': day_of(e.end_date),
-                'country_code': (codes(e.country) or [None])[0],
-                'lat': None if p is None else p.lat,
-                'lon': None if p is None else p.lon,
+                'country_code': (codes(e.country) or [None])[0] if city is None else city.country_code,
+                'city_key': None if city is None else city.key,
                 'airport': None if p is None else p.airport,
                 'airport_km': None if p is None else p.km,
                 'weekend_friday': airports.weekend_friday(start),
@@ -729,6 +735,10 @@ def places(x: Transaction) -> None:
         )
     x.insert('events', rows)
     x.insert('event_airports', near)
+    for s in index.orphans(Spelling(e.city, e.country) for e in listed if e.city is not None):
+        print(
+            f'{s.city}, {s.country or "no country"}: in no city of {City.FILE} yet (mise run cities)', file=sys.stderr
+        )
 
 
 def fares(x: Transaction) -> None:
@@ -979,36 +989,21 @@ def event_stats(x: Transaction, booked: Booked) -> None:
     x.insert('event_stats', rows)
 
 
-def homes(x: Transaction, people: Sequence[Person]) -> None:
-    """The cities people live in, and the site's home city (its home airport's), each where geocode.csv puts it: by
-    its city and country (a home written "Amsterdam, Netherlands"), or by its city alone when geocode.csv has it in one
-    place only. A city it has not found, or found in two places with no country to choose, stops the build, naming the
-    file that says it."""
-    found: dict[str, dict[str | None, tuple[float, float]]] = {}
-    for p in airports.places().values():
-        if p.found:
-            found.setdefault(p.city, {})[p.country] = (p.found.lat, p.found.lon)
-    home = [a for a in airports.known() if a.home]
-    if len(home) != 1:
-        sys.exit(f'airports.csv: {len(home)} airports marked home: one is where flights leave from')
-    named = {home[0].city: "airports.csv: the home airport's city"} | {
-        r.home: f"people.csv: {r.name}'s home" for r in people if r.home is not None
-    }
-    rows: list[Mapping[str, object]] = []
-    for written, whose in sorted(named.items()):
-        city, _, country = written.rpartition(', ') if ', ' in written else (written, '', None)
-        spots = found.get(city, {})
-        at = {country: spots[country]} if country in spots else spots if country is None else {}
-        if len(set(at.values())) != 1:
-            said = (
-                'in geocode.csv in more than one place: write its country too ("City, Country")'
-                if at
-                else 'not in geocode.csv'
-            )
-            sys.exit(f'{whose}, {written}, is {said}')
-        ((lat, lon),) = set(at.values())
-        rows.append({'city': written, 'lat': lat, 'lon': lon})
-    x.insert('homes', rows)
+def one_city(index: cities.Cities, written: str, whose: str) -> City:
+    """The one city of cities.csv a home names (Cities.named): "City", or "City, Country" when two share the name. A
+    home in no city, or in two, stops the build, naming whose it is and what to write."""
+    match index.named(written):
+        case (city,):
+            return city
+        case ():
+            sys.exit(f'{whose}, {written}, is in no city of {City.FILE}: a city of the listings, by its name')
+        case found:
+            sys.exit(f'{whose}, {written}, may be {" or ".join(c.key for c in found)}: write its country too')
+
+
+def homes(people: Sequence[Person], index: cities.Cities) -> dict[str, str]:
+    """The city each person lives in, by key, when they said (one_city)."""
+    return {r.key: one_city(index, r.home, f"people.csv: {r.name}'s home").key for r in people if r.home is not None}
 
 
 class Titled(BaseModel):
@@ -1045,11 +1040,11 @@ def once(file: str, what: str, keys: Sequence[object]) -> None:
         seen.add(k)
 
 
-def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
+def plans(x: Transaction, key_id: Mapping[str, int], home: Mapping[str, str]) -> dict[str, int]:
     """Who's going (pipeline/people.csv, pipeline/plans.csv). People are ours, not the source's: a name, the artist
     records they are (if any), and whether the site names them on festival cards (featured) or only counts them. A
     plan says a person is going to a festival; booked_as says when they are in its line-up too, as themselves or in a
-    couple, so the site can say "teaching" instead."""
+    couple, so the site can say "teaching" instead. Each person's home is the city of home, by their key (homes)."""
     people = Person.read()
     once('people.csv', 'key', [r.key for r in people])
     person_id = {r.key: i for i, r in enumerate(people, 1)}
@@ -1059,7 +1054,7 @@ def plans(x: Transaction, key_id: Mapping[str, int]) -> dict[str, int]:
     x.insert(
         'people',
         (
-            {'id': person_id[r.key], 'key': r.key, 'name': r.name, 'featured': r.featured, 'home': r.home}
+            {'id': person_id[r.key], 'key': r.key, 'name': r.name, 'featured': r.featured, 'home': home.get(r.key)}
             for r in people
         ),
     )
@@ -1397,7 +1392,7 @@ DOCS = {
     'events': 'One row per kizomba-world event: title (tidied: dates, years and shouting capitals removed; '
     'listed_title is as listed), dates (days), venue and city, link (url), cancelled (1 or 0; null when not known, '
     'since the source flags it only for events still listed as upcoming), listing (gone: no longer listed, kept for '
-    'the plans and links to it). Added: country_code, lat/lon (OpenStreetMap geocode of the city), airport (nearest '
+    'the plans and links to it). Added: country_code (the city\u2019s), city_key (its city), airport (nearest '
     'in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
     'airports': 'Airports a festival can fly to, with the city they serve; a festival can fly to any within '
     'max_airport_km (event_airports), the nearest first. home = 1 is where flights leave from.',
@@ -1451,9 +1446,9 @@ DOCS = {
     'event_promos': 'Promo codes for a festival, from pipeline/promo_codes.csv (ours, not kizomba-world’s): the code, '
     'and what it gives when known.',
     'people': 'People who share their festival plans (pipeline/people.csv, ours): featured ones are named on festival '
-    'cards, the others counted; home, the city they live in when they said (homes).',
-    'homes': 'The cities people live in and the site’s home city (its home airport’s), where pipeline/geocode.csv '
-    'puts them: the Friends tab lists the people near a place by them.',
+    'cards, the others counted; home, the city they live in when they said (cities): the Friends tab lists the '
+    'people near a place by it.',
+    'cities': 'Each city festivals are in or people live in, however spelt (pipeline/cities.csv), and its point.',
     'person_artists': 'The artist records a person is, so their bookings and their plans meet.',
     'plans': 'Who said they are going to which festival (pipeline/plans.csv).',
     'communities': 'Communities (pipeline/communities.csv, ours): a key, which is its page’s address, a name and its '
@@ -1482,9 +1477,11 @@ DOCS = {
 }
 
 
-def site_json(x: Reader, built_at: str) -> dict[str, object]:
-    """What the page shows before the database has loaded: the home airport and the destinations for the sentence."""
+def site_json(x: Reader, built_at: str, index: cities.Cities) -> dict[str, object]:
+    """What the page shows before the database has loaded: the home airport and its city, and the destinations for the
+    sentence."""
     home_city = x.value(str, 'select city from airports where code = ?', (airports.home(),))
+    city = one_city(index, home_city, "airports.csv: the home airport's city")
     destinations = x.rows(
         Country,
         """select distinct e.country_code as code, c.name from events e
@@ -1492,7 +1489,7 @@ def site_json(x: Reader, built_at: str) -> dict[str, object]:
         (enums.Listing.LISTED,),
     )
     return {
-        'home': {'code': airports.home(), 'city': home_city},
+        'home': {'code': airports.home(), 'city': city.name, 'city_key': city.key},
         'destinations': [
             {'code': d.code, 'name': d.name}
             for d in sorted(
@@ -1552,18 +1549,18 @@ def build(src: Path, out: Path) -> Built:
             for table in COPIED:
                 copied(x, table)
             copied(x, 'artist_names', 'renamed = 1 or as_roles is not null')  # the names an artist's page says
-            places(x)
+            index = cities.index()  # one snapshot of the cities for every part of the build
+            places(x, index)
             key_id = booked(x)
             fares(x)
             event_stats(x, artist_stats(x))
-            person_id = plans(x, key_id)
-            homes(x, Person.read())
+            person_id = plans(x, key_id, homes(Person.read(), index))
             community_id, members = communities(x, person_id)
             added(x, community_id, members, key_id)
             travel(x, person_id, {r.person for r in members})
             built_at = now().isoformat()
             meta(x, built_at)
-            made = Built(site_json(x, built_at), review.review(x, built_at, src))
+            made = Built(site_json(x, built_at, index), review.review(x, built_at, src))
             table_docs(x)
         db.detach('src')
         db.vacuum()

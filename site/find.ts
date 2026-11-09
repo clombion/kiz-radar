@@ -62,8 +62,9 @@ export type Item = Base &
     | { kind: 'tag'; key: TagKey; params: Params; n: number; icon: Drawing | null; style: boolean }
   );
 export interface City {
+  key: string; // pipeline/cities.csv's
   city: string;
-  cc: string | null;
+  cc: string;
   upcoming: number;
   all: number;
 }

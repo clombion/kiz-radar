@@ -51,7 +51,17 @@ its answers on as a patch; a later failure leaves the paid work in the run's art
 | airports | `pipeline/airports.csv`; those added are OurAirports' (`mise run airports`) | public domain |
 | exchange rates | the European Central Bank | — |
 | cities' places | OpenStreetMap Nominatim, cached in `pipeline/geocode.csv` | ODbL |
-| artist merges, homes, bookings, site overrides | claims ([Claims](claims.md)) | ours |
+| cities | `pipeline/cities.csv`: one for each real city, however the listings spell it (`mise run cities`) | ours |
+| artist merges, homes, bookings, site overrides, cities listed under the wrong country | claims ([Claims](claims.md)) | ours |
+
+A city is ours, not the listings': `pipeline/cities.csv` holds one row for each real city (its key, its name, the
+country it is in and its point), the one place a city's point is kept. A spelling the listings use (Munich, München) is
+in the first city of `cities.csv` within 1 km of where Nominatim found it, so one city has one bubble on the map and one
+search entry, and a spelling stays in its city as cities are added; a city listed under the wrong country (Porto under
+France) is looked for where a place claim says it is. A city's key never changes once written, as claims name it. A
+festival is in its city's country (`events.country_code`); `events.country` keeps the words it is listed under.
+`mise run cities` runs after `mise run geocode` in **Refresh places and rates**: a spelling not asked yet waits for the
+next geocode, and one found where no country the site knows is named stops the step until a place claim says which.
 
 A festival the site no longer lists is kept, marked gone since that day, so plans and links to it still hold. Each
 festival has an id of ours, given once, beside kizomba-world's. The build tidies the text: artist names get one casing,

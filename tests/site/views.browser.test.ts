@@ -4,7 +4,7 @@ import { beforeAll, expect, test, vi } from 'vitest';
 import { commands, page, userEvent } from 'vitest/browser';
 import { artistsView } from '../../site/artists.ts';
 import { communityView } from '../../site/communities.ts';
-import { exec, freshDay, one, sql } from '../../site/db.ts';
+import { exec, freshDay, one, site, sql } from '../../site/db.ts';
 import { h } from '../../site/dom.ts';
 import { eventCard } from '../../site/eventcard.ts';
 import { festivals } from '../../site/festivals.ts';
@@ -14,6 +14,7 @@ import { doingTag, friendsIn } from '../../site/plans.ts';
 import { byPlace } from '../../site/roster.ts';
 import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str, unsure } from '../../site/rows.ts';
+import { cityEntries } from '../../site/search.ts';
 import { sourcesView } from '../../site/sources.ts';
 import { KEY } from '../../site/states.ts';
 import { FIXTURE_COMMUNITY, FIXTURE_FESTIVALS, FIXTURE_NAME } from './community.fixture.ts';
@@ -1698,10 +1699,9 @@ test('by place, the names a count opens say each one’s own nights when they ar
 // ----- the Friends tab for a visitor: the people near the site's home city, where Cédric, Christina and Siân live -----
 // the site's home city, from the data, and where it is
 const homeOf = () =>
-  one(
-    { city: str, lat: num, lon: num },
-    sql`SELECT h.city, h.lat, h.lon FROM homes h JOIN airports a ON a.city = h.city WHERE a.home = 1`,
-  );
+  one({ key: str, city: str, lat: num, lon: num }, sql`SELECT key, name AS city, lat, lon FROM cities WHERE key = ?`, [
+    site().home.city_key,
+  ]);
 const friendsTab = () => {
   const root = document.createElement('main');
   personView(root, []);
@@ -1737,16 +1737,16 @@ test('the Friends tab lists the people near the home city, then the rest of the 
 test('the Friends tab lists only the people living within 200 km of the home city', () => {
   // Siân moved this far north of the home city, in degrees of latitude (about 111 km each), while then runs
   const movedNorth = (degrees: number, then: () => string | undefined) => {
-    db?.run("INSERT INTO homes SELECT 'Elsewhere', lat + ?, lon FROM homes WHERE city = ?", [
-      degrees,
-      homeOf()?.city ?? '',
-    ]);
-    db?.run("UPDATE people SET home = 'Elsewhere' WHERE key = 'sian'");
+    db?.run(
+      "INSERT INTO cities (key, name, country_code, lat, lon) SELECT 'elsewhere-no', 'Elsewhere', country_code, lat + ?, lon FROM cities WHERE key = ?",
+      [degrees, homeOf()?.key ?? ''],
+    );
+    db?.run("UPDATE people SET home = 'elsewhere-no' WHERE key = 'sian'");
     try {
       return then();
     } finally {
-      db?.run("UPDATE people SET home = ? WHERE key = 'sian'", [homeOf()?.city ?? '']);
-      db?.run("DELETE FROM homes WHERE city = 'Elsewhere'");
+      db?.run("UPDATE people SET home = ? WHERE key = 'sian'", [homeOf()?.key ?? '']);
+      db?.run("DELETE FROM cities WHERE key = 'elsewhere-no'");
     }
   };
   const sharing = () => nearOf(onDay('2026-11-04', friendsTab)).sharing;
@@ -1982,4 +1982,17 @@ test('the sources page names no reseller and no model’s maker', () => {
   expect(['kiwi', 'claude', 'anthropic', ...resellers].filter((name) => shown.includes(name.toLowerCase()))).toEqual(
     [],
   );
+});
+
+// ----- search: a city is one entry, by its key, however its festivals' listings spell it -----
+test('search lists a city once, with every festival its listings spell two ways', () => {
+  const entries = cityEntries();
+  expect(new Set(entries.map((c) => c.key)).size).toBe(entries.length);
+  const munich = entries.filter((c) => c.city === 'Munich');
+  const spelt = one(
+    { n: num, names: num },
+    sql`SELECT count(*) AS n, count(DISTINCT x.city) AS names FROM events x WHERE x.city_key = 'munich-de'`,
+  );
+  expect(spelt?.names).toBe(2); // Munich and München
+  expect(munich.map((c) => [c.key, c.cc, c.all])).toEqual([['munich-de', 'DE', spelt?.n]]);
 });

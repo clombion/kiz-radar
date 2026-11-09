@@ -1,7 +1,6 @@
 import { expect, test } from 'vitest';
 import {
   artistHref,
-  type CityKey,
   changed,
   cityOf,
   cityOnMapHref,
@@ -29,23 +28,16 @@ test('an address is read as its view, the parts after it and its query', () => {
   expect([sqlHref(), sourcesHref()].map((href) => parseRoute(href).name)).toEqual(['sql', 'sources']);
 });
 
-test('a city read back from its address is the city it was written from', () => {
-  const cities: CityKey[] = [
-    { city: 'Lisbon', cc: 'PT' },
-    { city: 'Sarajevo', cc: null }, // no country in the export
-    { city: 'Saint-Denis / La Réunion', cc: 'RE' }, // a '/' in its name
-    { city: '50% off? #1 & more', cc: 'FR' },
-    { city: 'São Tomé', cc: 'ST' },
-    { city: '-', cc: null },
-  ];
-  for (const k of cities) expect(cityOf(parts(cityOnMapHref(k, { when: 'all' })))).toEqual(k);
+test('a city read back from its address is the key it was written from', () => {
+  for (const key of ['lisbon-pt', 'springfield-2-us', 'a/b-fr', '50% off-fr'])
+    expect(cityOf(parts(cityOnMapHref(key, { when: 'all' })))).toBe(key);
 });
 
 test('parts that are no city are none', () => {
   expect(cityOf([])).toBeNull();
-  expect(cityOf(['PT'])).toBeNull();
-  expect(cityOf(['PT', 'Lisbon', 'more'])).toBeNull();
-  expect(cityOf(['PT', '%'])).toBeNull();
+  expect(cityOf([''])).toBeNull();
+  expect(cityOf(['PT', 'Lisbon'])).toBeNull(); // an address of before, by country and name
+  expect(cityOf(['%'])).toBeNull();
 });
 
 // a view's choices, as the Countries view has them

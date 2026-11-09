@@ -39,11 +39,11 @@ const css = (name: string): string => {
 const PAGE = 40;
 
 // a festival with a place on the map, and a city's bubble
-type Placed = Festival & { city: string; lat: number; lon: number };
+export type Placed = Festival & { city: string; city_key: string; country_code: string; lat: number; lon: number };
 interface City {
   key: string;
   city: string;
-  cc: string | null;
+  cc: string;
   lat: number;
   lon: number;
   events: Placed[];
@@ -52,12 +52,11 @@ interface City {
   minFare: number | null;
   home: boolean; // a festival there is in the home city
 }
-const cityKey = (e: Placed) => `${e.city}|${e.country_code}`;
 // the festivals in view, by city, with what each city's bubble shows
-function citiesOf(events: readonly Placed[]): City[] {
+export function citiesOf(events: readonly Placed[]): City[] {
   const groups = new Map<string, Omit<City, 'n' | 'popular' | 'minFare' | 'home'>>();
   for (const e of events) {
-    const k = cityKey(e);
+    const k = e.city_key;
     const g = groups.get(k) ?? { key: k, city: e.city, cc: e.country_code, lat: e.lat, lon: e.lon, events: [] };
     g.events.push(e);
     groups.set(k, g);
@@ -129,14 +128,15 @@ type When = (typeof WHEN)[number][0];
 
 // what the URL can say about the map
 const DEFAULTS: { when: When; color: Color; country: string } = { when: 'upcoming', color: 'fare', country: '' };
-const placed = (e: Festival): e is Placed => e.city !== null && e.lat !== null && e.lon !== null;
+const placed = (e: Festival): e is Placed =>
+  e.city !== null && e.city_key !== null && e.country_code !== null && e.lat !== null && e.lon !== null;
 
-// the festivals of the city the address picks: the opened festival's (map/event/<id>), or the one map/city/<country>/
-// <city> names (routes.cityOf)
+// the festivals of the city the address picks: the opened festival's (map/event/<id>), or the one map/city/<key>
+// names (routes.cityOf)
 function pickedIn(sub: readonly string[], events: readonly Placed[], opened: Placed | undefined): Placed[] {
   if (opened !== undefined) return [opened];
-  const named = sub[0] === 'city' ? cityOf(sub.slice(1)) : null;
-  return named ? events.filter((e) => e.country_code === named.cc && e.city === named.city) : [];
+  const key = sub[0] === 'city' ? cityOf(sub.slice(1)) : null;
+  return key === null ? [] : events.filter((e) => e.city_key === key);
 }
 
 export const mapView: Show = (root, sub, qs, { signal }) => {
@@ -162,7 +162,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   const picked = () => state.event !== null || state.city !== null;
   const there = pickedIn(sub, events, state.event === null ? undefined : byId.get(state.event));
   if (there[0]) {
-    state.city = cityKey(there[0]);
+    state.city = there[0].city_key;
     if (state.when === 'upcoming' && !there.some((e) => e.upcoming)) state.when = 'all'; // its past ones too
   }
 
@@ -366,7 +366,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     showInAddressBar(
       state.event === null
         ? city
-          ? cityOnMapHref(city, params)
+          ? cityOnMapHref(city.key, params)
           : mapHref(params)
         : eventOnMapHref(state.event, params),
     );
@@ -387,7 +387,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     const wrap = h('div', { class: 'panel-cards' }, more);
     paged({ list: wrap, more }, list, PAGE, (e) => {
       const c = eventCard(e, { onMap: true });
-      c.addEventListener('mouseenter', () => highlight(cityKey(e)));
+      c.addEventListener('mouseenter', () => highlight(e.city_key));
       c.addEventListener('mouseleave', () => highlight());
       return c;
     });

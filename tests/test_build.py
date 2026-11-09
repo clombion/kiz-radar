@@ -14,23 +14,25 @@ from pathlib import Path
 import pytest
 from pydantic import BaseModel
 
-from pipeline import airports, build_site_db, enums, fare_store, fare_weekends
+from pipeline import airports, build_site_db, cities, claims, countries, enums, fare_store, fare_weekends
 from pipeline import db as sqlite_db
 from pipeline.db import Db
 from pipeline.records import (
     Airport,
+    City,
     Community,
     Membership,
     Person,
     Place,
     PlanRow,
     Seeded,
+    Spelling,
     Spot,
     StayRow,
     Travel,
     today,
 )
-from tests.exports import EXPORT, committed
+from tests.exports import EXPORT, committed, placed
 from tests.fakes import Memory
 
 # an artist's own bookings in some roles: once per festival and role, a member's booking with their couple left to
@@ -345,7 +347,7 @@ def community_tables(memory: Memory) -> Db:
     db = memory()
     with db.transaction() as x:
         for table in (
-            'homes',
+            'cities',
             'people',
             'communities',
             'community_members',
@@ -463,33 +465,72 @@ def haversine_km(a: tuple[float, float], b: tuple[float, float]) -> float:
     return 2 * 6371 * math.asin(math.sqrt(h))
 
 
-def where(e: In, found: Mapping[tuple[str, str | None], Spot], to: list[Airport]) -> Where:
-    """Where geocode.csv found the festival's city in its country, and the nearest airport within MAX_AIRPORT_KM."""
-    spot = None if e.city is None else found.get((e.city, e.country))
-    if spot is None:
+def where(e: In, found: Mapping[tuple[str, str | None], Spot], have: list[City], to: list[Airport]) -> Where:
+    """The first city of cities.csv within a kilometre of where geocode.csv found the festival's city (in the country a
+    place claim says, if one does), and the nearest airport within MAX_AIRPORT_KM."""
+    claim = claims.places().get(Spelling(e.city, e.country)) if e.city else None
+    spot = None if e.city is None else found.get((e.city, countries.NAMES[claim.is_in] if claim else e.country))
+    city = (
+        None
+        if spot is None
+        else next((c for c in have if haversine_km((c.lat, c.lon), (spot.lat, spot.lon)) <= 1), None)
+    )
+    if city is None:
         return Where(id=e.id, lat=None, lon=None, airport=None, airport_km=None)
-    km, code = min((haversine_km((spot.lat, spot.lon), (a.lat, a.lon)), a.code) for a in to)
+    km, code = min((haversine_km((city.lat, city.lon), (a.lat, a.lon)), a.code) for a in to)
     near = km <= airports.MAX_AIRPORT_KM
     return Where(
-        id=e.id, lat=spot.lat, lon=spot.lon, airport=code if near else None, airport_km=round(km) if near else None
+        id=e.id, lat=city.lat, lon=city.lon, airport=code if near else None, airport_km=round(km) if near else None
     )
 
 
-def test_a_festival_is_where_geocode_csv_puts_its_city_and_flies_to_the_nearest_airport(site_db: Path) -> None:
-    """A festival is on the map where geocode.csv found its city in its country, and flies to the nearest airport of
+def test_a_festival_is_in_the_city_cities_csv_puts_it_and_flies_to_the_nearest_airport(site_db: Path) -> None:
+    """A festival is on the map where its city is, as cities.csv has it, and flies to the nearest airport of
     airports.csv within MAX_AIRPORT_KM; a city not found, or with no airport near enough, has none."""
-    committed(Place.FILE, Airport.FILE)
+    placed()
     found = {(p.city, p.country): p.found for p in Place.read() if p.found}
-    to = Airport.read()
+    have, to = City.read(), Airport.read()
     assert built(site_db, Airport, 'select code, name, city, country_code, lat, lon, home from airports') == set(to)
-    expected = {where(e, found, to) for e in built(site_db, In, 'select id, city, country from events')}
-    assert built(site_db, Where, 'select id, lat, lon, airport, airport_km from events') == expected
+    assert built(site_db, City, 'select key, name, country_code, lat, lon from cities') == set(have)
+    expected = {where(e, found, have, to) for e in built(site_db, In, 'select id, city, country from events')}
+    placed_at = (
+        'select e.id, c.lat, c.lon, e.airport, e.airport_km from events e left join cities c on c.key = e.city_key'
+    )
+    assert built(site_db, Where, placed_at) == expected
     # festivals of every kind: not on the map, on it with no airport near enough, flying to one
     assert {(w.lat is None, w.airport is None) for w in expected} == {(True, True), (False, True), (False, False)}
 
 
+class Spelt(BaseModel, frozen=True):
+    city: str | None
+    country: str | None
+    city_key: str | None
+    country_code: str | None
+
+
+def test_a_city_however_spelt_is_one_city_and_a_festival_is_in_its_country(site_db: Path) -> None:
+    """Munich and München are one city; Porto, listed under France, is Porto in Portugal, and so is its festival,
+    whose listing's words are kept; a festival in no city is in the country it is listed under."""
+    spelt = built(site_db, Spelt, 'select city, country, city_key, country_code from events')
+    assert {(s.city, s.city_key) for s in spelt if s.city in {'Munich', 'München'}} == {
+        ('Munich', 'munich-de'),
+        ('München', 'munich-de'),
+    }
+    assert {(s.country, s.city_key, s.country_code) for s in spelt if s.city == 'Porto'} == {
+        ('France', 'porto-pt', 'PT')
+    }
+    assert {(s.country, s.country_code) for s in spelt if s.city == 'Artes-sur-Tech'} == {('France', 'FR')}
+    with sqlite_db.opened(site_db, 'ro') as db:
+        apart = db.value(
+            int,
+            'select count(*) from events e join cities c on c.key = e.city_key where c.country_code != e.country_code',
+        )
+    assert apart == 0
+
+
 def test_a_fare_is_the_one_the_fare_history_gives_its_weekend_back_the_monday_after(site_db: Path) -> None:
-    committed(fare_store.FOLDER, Place.FILE, Airport.FILE)  # the history, and where the festivals fly to
+    committed(fare_store.FOLDER)  # the history
+    placed()  # where the festivals fly to
     with sqlite_db.opened(EXPORT, 'ro') as db:
         listed = db.rows(fare_weekends.Listed, fare_weekends.LISTED.format(events='events'), (enums.Listing.LISTED,))
     found = fare_weekends.current(fare_store.read(), fare_weekends.weekends_of(listed, today())).values()
@@ -705,104 +746,75 @@ def test_nights_and_days_are_those_of_a_trip_to_the_festival(
 class Lives(BaseModel, frozen=True):
     key: str
     home: str | None
-    lat: float | None
-    lon: float | None
 
 
-def test_a_persons_home_is_where_geocode_csv_puts_their_city(site_db: Path) -> None:
-    """people.csv's home, the city someone lives in, is where geocode.csv puts it (homes), as the site's home city is;
-    someone who has not said has none."""
-    committed(Person.FILE, Place.FILE, Airport.FILE)
-    at = {p.city: p.found for p in Place.read() if p.found}
+class Home(BaseModel, frozen=True):
+    code: str
+    city: str
+    city_key: str
+
+
+class HomeSaid(BaseModel, frozen=True):
+    home: Home  # the home airport the page shows before its database loads, and its city
+
+
+def test_a_persons_home_is_the_city_cities_csv_puts_their_city_in(site_db: Path) -> None:
+    """people.csv's homes ("Bergen"), and the home airport's city, are Bergen in Norway (the Friends tab finds the
+    people near a place by it); someone who has not said has none."""
+    committed(Person.FILE)
     with sqlite_db.opened(site_db, 'ro') as db:
-        lives = db.rows(Lives, 'select p.key, p.home, h.lat, h.lon from people p left join homes h on h.city = p.home')
-        cities = set(db.column(str, 'select city from homes'))
-    assert {r.key: r.home for r in lives} == {r.key: r.home for r in Person.read()}
-    for r in lives:
-        spot = None if r.home is None else at[r.home]
-        assert (r.lat, r.lon) == ((None, None) if spot is None else (spot.lat, spot.lon))
-    assert {a.city for a in Airport.read() if a.home} <= cities
-    assert {r.home for r in lives if r.home} | {a.city for a in Airport.read() if a.home} == cities
+        lives = db.rows(Lives, 'select key, home from people')
+    said = {r.key: r.home for r in Person.read()}
+    assert {r.key: r.home for r in lives} == {k: h and 'bergen-no' for k, h in said.items()}
+    assert any(r.home for r in lives)
+    home = HomeSaid.model_validate_json((site_db.parent / Path(build_site_db.SITE_JSON).name).read_text()).home
+    assert home == Home(code='BGO', city='Bergen', city_key='bergen-no')
 
 
 HOME_AIRPORT = Airport(code='BGO', name='Bergen', city='Bergen', country_code='NO', lat=60.3, lon=5.2, home=True)
-BERGEN = Place(city='Bergen', country='Norway', found=Spot(lat=60.39, lon=5.33, name='Bergen, Norway'))
+BERGEN_NO = City(key='bergen-no', name='Bergen', country_code='NO', lat=60.39, lon=5.33)
+BERGEN_NL = City(key='bergen-nl', name='Bergen', country_code='NL', lat=52.6, lon=4.7)
 
 
 @pytest.mark.parametrize(
     ('places', 'home', 'said'),
     [
-        ((BERGEN,), 'Atlantis', "people.csv: Cédric's home, Atlantis, is not in geocode.csv"),
+        ((), 'Atlantis', "people.csv: Cédric's home, Atlantis, is in no city of pipeline/cities.csv"),
         # a city geocode.csv has, but did not find
-        (
-            (BERGEN, Place(city='Atlantis', country=None, found=None)),
-            'Atlantis',
-            "people.csv: Cédric's home, Atlantis, is not in geocode.csv",
-        ),
-        # one name, two places: which is meant is not known
-        (
-            (BERGEN, Place(city='Bergen', country='Netherlands', found=Spot(lat=52.6, lon=4.7, name='Bergen, NL'))),
-            'Bergen',
-            "people.csv: Cédric's home, Bergen, is in geocode.csv in more than one place: write its country too",
-        ),
-        # a city and a country geocode.csv has not together
-        ((BERGEN,), 'Bergen, Sweden', "people.csv: Cédric's home, Bergen, Sweden, is not in geocode.csv"),
+        ((Place(city='Atlantis', country=None, found=None),), 'Atlantis', 'Atlantis, is in no city'),
+        # one name, two cities: which is meant is not known
+        ((), 'Bergen', "people.csv: Cédric's home, Bergen, may be bergen-no or bergen-nl: write its country too"),
+        # a city and a country no city has together
+        ((), 'Bergen, Sweden', "people.csv: Cédric's home, Bergen, Sweden, is in no city"),
     ],
 )
-def test_a_home_geocode_csv_cannot_place_stops_the_build(
-    memory: Memory, places: tuple[Place, ...], home: str, said: str
-) -> None:
-    Place.write(list(places))
-    Airport.write([HOME_AIRPORT])
+def test_a_home_in_no_one_city_stops_the_build(places: tuple[Place, ...], home: str, said: str) -> None:
+    index = cities.Cities([BERGEN_NO, BERGEN_NL], {Spelling(p.city, p.country): p for p in places}, {})
     cedric = Person(key='cedric', name='Cédric', artist_keys=(), featured=True, home=home, note='')
-    db = memory()
-    with db.transaction() as x:
-        x.script(build_site_db.TABLES['homes'])
-        with pytest.raises(SystemExit, match=re.escape(said)):
-            build_site_db.homes(x, [cedric])
+    with pytest.raises(SystemExit, match=re.escape(said)):
+        _ = build_site_db.homes([cedric], index)
 
 
-def test_a_home_with_its_country_is_where_geocode_csv_puts_it_there(memory: Memory) -> None:
-    """One name in two places: its country says which."""
-    Place.write([BERGEN, Place(city='Bergen', country='Netherlands', found=Spot(lat=52.6, lon=4.7, name='Bergen, NL'))])
-    Airport.write([HOME_AIRPORT.model_copy(update={'city': 'Oslo'})])
-    places = [*Place.read(), Place(city='Oslo', country='Norway', found=Spot(lat=59.9, lon=10.7, name='Oslo'))]
-    Place.write(places)
-    cedric = Person(key='cedric', name='Cédric', artist_keys=(), featured=True, home='Bergen, Netherlands', note='')
-    db = memory()
-    with db.transaction() as x:
-        x.script(build_site_db.TABLES['homes'])
-        build_site_db.homes(x, [cedric])
-    assert db.value(float, "select lat from homes where city = 'Bergen, Netherlands'") == 52.6
+@pytest.mark.parametrize(('home', 'city'), [('Bergen, Netherlands', 'bergen-nl'), ('Bergen, Norway', 'bergen-no')])
+def test_a_home_with_its_country_is_the_city_of_that_name_there(home: str, city: str) -> None:
+    """One name in two countries: its country, as written, says which; one with no home has none."""
+    index = cities.Cities([BERGEN_NO, BERGEN_NL], {}, {})
+    cedric = Person(key='cedric', name='Cédric', artist_keys=(), featured=True, home=home, note='')
+    sian = Person(key='sian', name='Siân', artist_keys=(), featured=True, home=None, note='')
+    assert build_site_db.homes([cedric, sian], index) == {'cedric': city}
 
 
 @pytest.mark.parametrize(
-    ('airports', 'said'),
+    ('airports_csv', 'said'),
     [
         ([], 'airports.csv: 0 airports marked home'),
         ([HOME_AIRPORT, HOME_AIRPORT.model_copy(update={'code': 'OSL'})], 'airports.csv: 2 airports marked home'),
     ],
 )
-def test_one_home_airport_or_the_build_stops(memory: Memory, airports: list[Airport], said: str) -> None:
-    Place.write([BERGEN])
-    Airport.write(airports)
-    db = memory()
-    with db.transaction() as x:
-        x.script(build_site_db.TABLES['homes'])
-        with pytest.raises(SystemExit, match=said):
-            build_site_db.homes(x, [])
-
-
-def test_a_home_left_empty_is_none_and_the_sites_home_city_is_always_placed(memory: Memory) -> None:
-    Place.write([BERGEN])
-    Airport.write([HOME_AIRPORT])
-    sian = Person(key='sian', name='Siân', artist_keys=(), featured=True, home=None, note='')
-    db = memory()
-    with db.transaction() as x:
-        x.script(build_site_db.TABLES['homes'])
-        build_site_db.homes(x, [sian])
-    assert db.value(str, 'select city from homes') == 'Bergen'
-    assert db.value(float, 'select lat from homes') == 60.39
+def test_one_home_airport_or_the_build_stops(airports_csv: list[Airport], said: str) -> None:
+    Airport.write(airports_csv)
+    with pytest.raises(SystemExit, match=said):
+        _ = airports.home()
 
 
 def test_a_second_person_of_one_key_stops_the_build(memory: Memory) -> None:
@@ -810,7 +822,7 @@ def test_a_second_person_of_one_key_stops_the_build(memory: Memory) -> None:
     PlanRow.write([])
     db = memory()
     with db.transaction() as x, pytest.raises(SystemExit, match=re.escape('people.csv: a second row of key cedric')):
-        _ = build_site_db.plans(x, {})
+        _ = build_site_db.plans(x, {}, {})
 
 
 def test_a_person_added_links_to_the_artist_record_booked(memory: Memory) -> None:

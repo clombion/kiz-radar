@@ -18,7 +18,8 @@ one.
 | `pipeline/travel.csv` | `Travel` | How a member travels to a festival they plan, as far as they said: when they arrive (and at which airport, when they fly) and when they leave (and from where), either end left empty when not known, or its day alone when its time is not. An airport goes with its time, and something is said: a row of four blanks says nothing, which no row does. Only a member, who has a name of their own, registers how they travel; the people a manager adds never do. Where they stay is stays.csv. |
 | `pipeline/stays.csv` | `StayRow` | Where a member stays at a festival they plan, from a night to a night, each night by its evening's date: a plain name (no link, handle or email) such as a hotel or "with friends". A member may stay at several places, one after another; a member's nights never overlap, and fall between the day they arrive and the day before they leave when they said them. |
 | `pipeline/airports.csv` | `Airport` | An airport a festival can fly to; home (1) is where flights leave from. |
-| `pipeline/geocode.csv` | `Place` | A place the source DB names, and where it is when Nominatim found it (its columns lat, lon and osm_name, all empty when it found none). A place is a city, in a country when the source DB names one. |
+| `pipeline/geocode.csv` | `Place` | A place asked of Nominatim, and where it is when Nominatim found it (its columns lat, lon and osm_name, all empty when it found none): a city as the source DB spells it, in its country when it names one, or the place a place claim says that spelling is (pipeline/cities.py). |
+| `pipeline/cities.csv` | `City` | A city festivals are in, however the source DB spells it (pipeline/cities.py): its key, which never changes once written, as claims name it; its name; the country it is in, which may not be the one a festival is listed under; and where it is, the one place a city's point is kept. |
 | `pipeline/spend.csv` | `Spent` | A request to Claude and what it cost; thinking counts as output. |
 | `pipeline/rates.csv` | `Rate` | Units of a currency per euro, on a day. |
 | `pipeline/promo_codes.csv` | `Promo` | A promo code for a festival, ours, not kizomba-world's. |
@@ -39,4 +40,4 @@ one.
 | `pipeline/tickets/sites/<site>.json` | `PageRecipe`, `ApiRecipe` | a ticket site's recipe |
 | `pipeline/fare_offers/<run>.parquet` | `Search`, `Offer` | the fare searches of one run, each with the offers it saw; never written again once the run is over |
 | `pipeline/prompts/asked/<hash>.md` | — | the text of every prompt an answer or a read followed |
-| `claims/<digest>.json` | `MergeClaim`, `HomeClaim`, `BookingClaim`, `SiteClaim` | an admin's claim (the claims submodule) |
+| `claims/<digest>.json` | `MergeClaim`, `HomeClaim`, `BookingClaim`, `SiteClaim`, `PlaceClaim` | an admin's claim (the claims submodule) |

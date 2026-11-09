@@ -1,25 +1,24 @@
 """The airports a festival can fly to (records.Airport), and the flight a trip to it takes: from home (the airport
-marked home), to an airport within MAX_AIRPORT_KM of its city (its candidates, the nearest first: the one it flies to
-until a fare elsewhere is worth the way from there, which the site decides), on the Friday of its weekend. The one rule
-for the site's events and for the weekends fares searches."""
+marked home), to an airport within MAX_AIRPORT_KM of its city (pipeline/cities.py; its candidates, the nearest first:
+the one it flies to until a fare elsewhere is worth the way from there, which the site decides), on the Friday of its
+weekend. The one rule for the site's events and for the weekends fares searches."""
 
 import argparse
 import csv
 import datetime as dt
-import math
 import re
 import sys
 from collections.abc import Iterable, Mapping, Sequence
 from pathlib import Path
 from typing import NamedTuple
 
-from pipeline import export
+from pipeline import cities, export
+from pipeline.cities import km
 from pipeline.countries import NAMES
 from pipeline.enums import Listing
-from pipeline.records import Airport, Place, Record, today
+from pipeline.records import Airport, City, Record, today
 
 MAX_AIRPORT_KM = 250
-EARTH_KM = 6371  # the Earth's radius
 FRIDAY, LATEST_START = 4, 3  # a Friday's weekday; a trip leaves on the Friday after a start this many days before
 
 
@@ -33,20 +32,6 @@ def home() -> str:
     if len(marked) != 1:
         sys.exit(f'airports.csv: {len(marked)} airports marked home: one is where flights leave from')
     return marked[0]
-
-
-def km(a: float, b: float, c: float, d: float) -> float:
-    a, b, c, d = map(math.radians, (a, b, c, d))
-    return (
-        EARTH_KM
-        * 2
-        * math.asin(math.sqrt(math.sin((c - a) / 2) ** 2 + math.cos(a) * math.cos(c) * math.sin((d - b) / 2) ** 2))
-    )
-
-
-def places() -> dict[tuple[str, str | None], Place]:
-    """Every geocoded (city, country) (pipeline/geocode.csv)."""
-    return {(p.city, p.country): p for p in Place.read()}
 
 
 class Candidate(NamedTuple):
@@ -67,23 +52,20 @@ class Placed(NamedTuple):
     candidates: tuple[Candidate, ...]
 
 
-def placed(
-    city: str | None, country: str | None, geo: Mapping[tuple[str, str | None], Place], to: Sequence[Airport]
-) -> Placed | None:
-    """The festival's place when its city is geocoded, with every airport of to within MAX_AIRPORT_KM of it, the
-    nearest first (by code when two are as far): it flies to the nearest until the site finds a fare elsewhere worth
-    the way (site/fares.ts best)."""
-    g = None if city is None else geo.get((city, country))
-    if not (g and g.found):
+def placed(city: City | None, to: Sequence[Airport]) -> Placed | None:
+    """The festival's place when its city is known, with every airport of to within MAX_AIRPORT_KM of it, the nearest
+    first (by code when two are as far): it flies to the nearest until the site finds a fare elsewhere worth the way
+    (site/fares.ts best)."""
+    if city is None:
         return None
     near = tuple(
         Candidate(code, round(dist))
-        for dist, code in sorted((km(g.found.lat, g.found.lon, a.lat, a.lon), a.code) for a in to)
+        for dist, code in sorted((km(city.lat, city.lon, a.lat, a.lon), a.code) for a in to)
         if dist <= MAX_AIRPORT_KM
     )
     first = near[0] if near else None
     return Placed(
-        g.found.lat, g.found.lon, None if first is None else first.airport, None if first is None else first.km, near
+        city.lat, city.lon, None if first is None else first.airport, None if first is None else first.km, near
     )
 
 
@@ -134,25 +116,17 @@ def served(rows: Iterable[Mapping[str, str]]) -> list[Offered]:
     ]
 
 
-def wanted(
-    cities: Iterable[tuple[str | None, str | None]],
-    geo: Mapping[tuple[str, str | None], Place],
-    have: Sequence[Airport],
-    offered: Sequence[Offered],
-) -> list[Airport]:
+def wanted(near: Iterable[City], have: Sequence[Airport], offered: Sequence[Offered]) -> list[Airport]:
     """The airports of offered within MAX_AIRPORT_KM of a festival's city that airports.csv has not yet, by code; one in
     a country the site does not name (Jersey, Gibraltar …) is left out, as no festival's own country is that."""
     have_codes = {a.code for a in have}
     out: dict[str, Airport] = {}
-    for city, country in cities:
-        g = None if city is None else geo.get((city, country))
-        if not (g and g.found):
-            continue
+    for c in near:
         for a in offered:
             if (
                 a.code not in have_codes
                 and a.country_code in NAMES
-                and km(g.found.lat, g.found.lon, a.lat, a.lon) <= MAX_AIRPORT_KM
+                and km(c.lat, c.lon, a.lat, a.lon) <= MAX_AIRPORT_KM
             ):
                 out[a.code] = Airport(
                     code=a.code, name=a.name, city=a.city, country_code=a.country_code, lat=a.lat, lon=a.lon, home=False
@@ -164,7 +138,7 @@ def add(source: Path) -> None:
     """Add to airports.csv every airport with scheduled service (OurAirports' airports.csv, at source) within
     MAX_AIRPORT_KM of a festival to come, naming each; the airports there stay as they are."""
     with export.opened('ro') as db:
-        cities = db.rows(
+        listed = db.rows(
             Listed,
             "select distinct nullif(city, '') as city, nullif(country, '') as country from events"
             ' where cancelled is not 1 and listing = ? and start_date >= ?',
@@ -172,8 +146,9 @@ def add(source: Path) -> None:
         )
     with source.open(encoding='utf-8', newline='') as f:
         offered = served(csv.DictReader(f))
-    have = known()
-    new = wanted(((c.city, c.country) for c in cities), places(), have, offered)
+    have, index = known(), cities.index()
+    near = {c.key: c for s in listed if (c := index.of(s.city, s.country))}
+    new = wanted(near.values(), have, offered)
     for a in new:
         print(f'added {a.code} {a.name} ({a.city}, {a.country_code})')
     Airport.write([*have, *new])

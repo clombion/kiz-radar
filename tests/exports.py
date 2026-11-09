@@ -12,10 +12,10 @@ import pytest
 from pydantic import BaseModel
 
 import pipeline
-from pipeline import ROOT, export, fare_store, prompt, tickets_store
+from pipeline import ROOT, claims, export, fare_store, prompt, tickets_store
 from pipeline import db as sqlite_db
 from pipeline.db import Transaction
-from pipeline.records import ANSWERS, CsvRow
+from pipeline.records import ANSWERS, Airport, City, CsvRow, Place
 
 EXPORT = export.path_in(ROOT / export.SOURCE)  # the repository's, whatever the data folder
 # when a step ran, which a second run changes and nothing else should: read without it (a column, or the rows a
@@ -43,6 +43,25 @@ def committed(*paths: str) -> None:
         src, dst = ROOT / path, pipeline.data(path)
         dst.parent.mkdir(parents=True, exist_ok=True)
         _ = shutil.copytree(src, dst, dirs_exist_ok=True) if src.is_dir() else shutil.copyfile(src, dst)
+
+
+def place_claims() -> None:
+    """The admin's place claims (the claims submodule's), which the committed cities were made with, in the test's
+    claims folder beside its own."""
+    found = (claims.CLAIM.validate_json(f.read_bytes()) for f in sorted((ROOT / claims.CLAIMS).glob('*.json')))
+    claims.write([c for c in found if isinstance(c, claims.PlaceClaim)])
+
+
+def everything() -> None:
+    """Everything the steps read beside the export, as committed, with the place claims it was made with."""
+    committed(*EVERYTHING)
+    place_claims()
+
+
+def placed() -> None:
+    """Where the committed festivals are: the cities, the places Nominatim found, the airports, and the place claims."""
+    committed(*(r.FILE for r in (City, Place, Airport)))
+    place_claims()
 
 
 @functools.cache

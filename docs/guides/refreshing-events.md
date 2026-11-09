@@ -9,7 +9,7 @@ when to start one by hand, and how to run the same steps locally. Why an answer 
 | Action | When | What it does |
 | -- | -- | -- |
 | **Refresh events** | the 3rd of each month, or by hand | scrapes kizomba-world, reads the ticket pages, asks Claude what is due, loads the answers, resolves the artists, asks the merge review, commits; then starts **Refresh places and rates** |
-| **Refresh places and rates** | after Refresh events, or by hand | checks every state in the data (`mise run audit`), geocodes new cities, refreshes the exchange rates and the merge suggestions, commits; then starts **Publish site** |
+| **Refresh places and rates** | after Refresh events, or by hand | checks every state in the data (`mise run audit`), geocodes new cities and adds them to `pipeline/cities.csv`, refreshes the exchange rates and the merge suggestions, commits; then starts **Publish site** |
 | **Refresh fares** | every day | searches the festival weekends due, commits the searches (`pipeline/fare_offers/`); then starts **Publish site** |
 | **Publish site** | every push to `main`, and after the above | audits the data, builds the site and its database, publishes |
 | **Actions up to date** | monthly | fails naming each action pin with a release at least two weeks old it isn't on |
@@ -127,6 +127,7 @@ run, and the run fails naming it.
 mise run scrape -- --dry-run         # what would change, without writing
 mise run scrape
 mise run geocode                     # new cities only
+mise run cities                      # a city for each one no city has yet
 mise run ask -- --dry-run            # which festivals need asking
 mise run ask                         # needs ANTHROPIC_API_KEY
 mise run load

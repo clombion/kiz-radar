@@ -51,7 +51,7 @@ def test_no_pair_an_admin_decides_is_asked_again(site_db: Path) -> None:
 
 def test_the_festivals_are_those_an_agent_or_the_admin_settles(site_db: Path) -> None:
     """As the ticket files say today (tickets_state), as the build's data folder has them, not as a status.csv says."""
-    exports.committed(*exports.EVERYTHING)
+    exports.everything()
     with export.opened('ro', exports.EXPORT) as db:
         rows = tickets_state.status_rows(tickets_state.festivals(db, today(), every=True))
     acted = {

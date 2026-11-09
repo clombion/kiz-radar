@@ -37,7 +37,7 @@ import {
   personHref,
   routeOf,
 } from './routes.ts';
-import { flag as flagCol, num, opt, str } from './rows.ts';
+import { flag as flagCol, num, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { away, dayMonth, flag, otherYear, place } from './ui.ts';
 import { plural, text } from './wording.ts';
@@ -117,6 +117,22 @@ function artistEntries(): Indexed[] {
   ]);
 }
 
+// the cities festivals are in, each once by its key however its festivals' listings spell it (cities), with how many
+// festivals there are coming up and in all
+export function cityEntries(): City[] {
+  const cities = new Map<string, City>();
+  for (const e of q(
+    { city: str, city_key: str, country_code: str, upcoming: flagCol },
+    sql`SELECT city, city_key, country_code, upcoming FROM event_rows WHERE city_key IS NOT NULL`,
+  )) {
+    const c = cities.get(e.city_key) ?? { key: e.city_key, city: e.city, cc: e.country_code, upcoming: 0, all: 0 };
+    c.all++;
+    c.upcoming += e.upcoming ? 1 : 0;
+    cities.set(e.city_key, c);
+  }
+  return [...cities.values()];
+}
+
 // countries, by how many festivals are coming up in them, then cities on the map
 function placeEntries(pool: readonly Festival[]): Indexed[] {
   const inCountry = new Map<string, number>();
@@ -126,20 +142,9 @@ function placeEntries(pool: readonly Festival[]): Indexed[] {
     const n = inCountry.get(c.code) ?? 0;
     return [{ kind: 'country', name: c.name, country: c, n, past: !n, rank: n }, [c.code]];
   });
-  const cities = new Map<string, City>();
-  for (const e of q(
-    { city: str, country_code: opt(str), upcoming: flagCol },
-    sql`SELECT city, country_code, upcoming FROM event_rows WHERE lat IS NOT NULL`,
-  )) {
-    const k = `${e.city}|${e.country_code}`;
-    const c = cities.get(k) ?? { city: e.city, cc: e.country_code, upcoming: 0, all: 0 };
-    c.all++;
-    c.upcoming += e.upcoming ? 1 : 0;
-    cities.set(k, c);
-  }
   return [
     ...countries,
-    ...[...cities.values()].map(
+    ...cityEntries().map(
       (c): Indexed => [{ kind: 'city', name: c.city, city: c, past: !c.upcoming, rank: c.upcoming * 100 + c.all }, []],
     ),
   ];
@@ -352,7 +357,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
         done(go(artistHref(item.a.id)), 'search');
         return;
       case 'city':
-        done(go(cityOnMapHref(item.city)), 'search');
+        done(go(cityOnMapHref(item.city.key)), 'search');
         return;
       case 'country':
         done(go(festivalsHref({ ...finderParams(), country: item.country.code })), 'search');

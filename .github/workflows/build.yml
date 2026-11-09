@@ -1,10 +1,11 @@
 name: Refresh places and rates
 
 # When a new kizomba-world export or anything in pipeline/ is pushed, check every state in the data is one of
-# pipeline/states.py (pipeline/audit.py), geocode any new cities, refresh the exchange rates and the merge
-# suggestions, from the export in source/ (pipeline/db.py export), and commit what changed; a geocode or rates that
-# failed still commits what the others found, then marks the run failed. Publish then builds the site's database from
-# them, which this run starts (a push made with the Actions token starts no workflow).
+# pipeline/states.py (pipeline/audit.py), geocode any new cities and add them to pipeline/cities.csv, refresh the
+# exchange rates and the merge suggestions, from the export in source/ (pipeline/db.py export), and commit what
+# changed; a geocode, cities or rates that failed still commits what the others found, then marks the run failed.
+# Publish then builds the site's database from them, which this run starts (a push made with the Actions token starts
+# no workflow).
 on:
   push:
     branches: [main]
@@ -38,6 +39,11 @@ jobs:
         id: geocode
         continue-on-error: true   # it saves each place found; one it got no answer for waits for the next run
         run: mise run geocode
+      - name: Add the cities found
+        id: cities
+        if: ${{ !cancelled() }}   # each place geocode found has its city, however the run went
+        continue-on-error: true   # a city with no country known waits for a place claim; the others are kept
+        run: mise run cities
       - name: Refresh the exchange rates
         id: rates
         continue-on-error: true   # when the bank can't be reached, the last rates stay
@@ -49,7 +55,7 @@ jobs:
         run: echo "name=$(basename "$(mise run -q export)")" >> "$GITHUB_OUTPUT"
       - uses: ./.github/actions/push
         with:
-          paths: pipeline/geocode.csv pipeline/artist_merge_suggestions.csv pipeline/rates.csv
+          paths: pipeline/geocode.csv pipeline/cities.csv pipeline/artist_merge_suggestions.csv pipeline/rates.csv
           bot: build-bot
           message: Refresh places, rates and merge suggestions from ${{ steps.export.outputs.name }}
       - name: Publish   # what it pushed, or what Refresh events, which started it, did
@@ -57,6 +63,6 @@ jobs:
         run: gh workflow run pages.yml --ref "$GITHUB_REF_NAME"
         env:
           GH_TOKEN: ${{ github.token }}
-      - name: Fail if geocoding or the rates failed
-        if: steps.geocode.outcome == 'failure' || steps.rates.outcome == 'failure'
+      - name: Fail if geocoding, the cities or the rates failed
+        if: steps.geocode.outcome == 'failure' || steps.cities.outcome == 'failure' || steps.rates.outcome == 'failure'
         run: exit 1

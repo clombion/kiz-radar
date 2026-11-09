@@ -9,7 +9,7 @@ import functools
 from collections.abc import Collection, Iterable, Mapping, Sequence
 from dataclasses import dataclass
 
-from pipeline import airports, export
+from pipeline import airports, cities, export
 from pipeline.enums import FareMode, FareOutcome, FareTicket, FareVendor, Listing
 from pipeline.records import Offer, Record, Search, day_of
 
@@ -43,11 +43,11 @@ def weekends(today: dt.date) -> Weekends:
 def weekends_of(listed: Iterable[Listed], today: dt.date) -> Weekends:
     """(airport, Friday) of every festival still listed and not cancelled, a trip to which leaves after today, to each
     of its airports other than home (pipeline/airports.py), and whether it is the nearest of any festival then."""
-    geo, to, home = airports.places(), airports.known(), airports.home()
+    index, to, home = cities.index(), airports.known(), airports.home()
     out: dict[tuple[str, dt.date], bool] = {}
     for e in listed:
         friday = airports.weekend_friday(day_of(e.start_date))
-        p = airports.placed(e.city, e.country, geo, to)
+        p = airports.placed(index.of(e.city, e.country), to)
         if p is None or friday <= today or p.airport == home:
             continue  # a festival flown to from home needs no flight
         for i, c in enumerate(p.candidates):

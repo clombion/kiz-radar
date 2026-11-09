@@ -21,7 +21,7 @@ from pipeline.extract import load_extract, resolve_artists, run_log
 from pipeline.names import kind_of
 from pipeline.records import Group, Json
 from tests import jsons
-from tests.exports import EVERYTHING, EXPORT, Made, committed, content, copied, run, trimmed
+from tests.exports import EXPORT, Made, content, copied, everything, run, trimmed
 from tests.fakes import AT, Memory
 from tests.repository import tracked
 
@@ -32,7 +32,7 @@ pytestmark = pytest.mark.timeout(120)
 @pytest.fixture(autouse=True)
 def committed_data() -> None:
     """Everything the steps read beside the export, as committed."""
-    committed(*EVERYTHING)
+    everything()
 
 
 def without_when(page: Json) -> dict[str, Json]:
