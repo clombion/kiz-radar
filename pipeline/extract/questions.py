@@ -79,7 +79,9 @@ class Now:
         the current rooms-genres answers give."""
         if pass_.asked is AskedPrices:
             rooms = self.current(prompts.ROOMS_GENRES)
-            inputs = {i: self.inputs(pass_, i, (a := rooms.get(i)) and a.entry) for i in self.festivals}
+            inputs = {
+                i: self.inputs(pass_, i, None if (a := rooms.get(i)) is None else a.entry) for i in self.festivals
+            }
         else:
             inputs = {i: self.inputs(pass_, i) for i in self.festivals}
         return answers.current(pass_, inputs)

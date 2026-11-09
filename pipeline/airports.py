@@ -82,7 +82,9 @@ def placed(
         if dist <= MAX_AIRPORT_KM
     )
     first = near[0] if near else None
-    return Placed(g.found.lat, g.found.lon, first and first.airport, first and first.km, near)
+    return Placed(
+        g.found.lat, g.found.lon, None if first is None else first.airport, None if first is None else first.km, near
+    )
 
 
 def weekend_friday(start: dt.date) -> dt.date:

@@ -568,10 +568,10 @@ def load_rooms_genres(con: Transaction, got: Mapping[int, Answer[RoomsGenres]]) 
         (
             {
                 'event_id': a.entry.event_id,
-                'party_rooms': (pr := a.entry.party_rooms) and pr.count,
-                'party_rooms_quote': pr and pr.quote,
-                'class_rooms': (cr := a.entry.class_rooms) and cr.count,
-                'class_rooms_quote': cr and cr.quote,
+                'party_rooms': None if (pr := a.entry.party_rooms) is None else pr.count,
+                'party_rooms_quote': None if pr is None else pr.quote,
+                'class_rooms': None if (cr := a.entry.class_rooms) is None else cr.count,
+                'class_rooms_quote': None if cr is None else cr.quote,
                 'prompt': a.provenance.prompt,
                 'model': a.provenance.model,
             }
@@ -613,7 +613,7 @@ def load_genres(con: Transaction, now: questions.Now, rooms: Mapping[int, Answer
         }
         for e in described
         for a in [rooms.get(e.id)]
-        for g in genres.found(e.title, e.description_text or '', a and a.entry, now.tags.get(e.id, ()))
+        for g in genres.found(e.title, e.description_text or '', None if a is None else a.entry, now.tags.get(e.id, ()))
     ]
     con.insert('event_genres', rows)
 

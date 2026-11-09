@@ -720,10 +720,10 @@ def places(x: Transaction) -> None:
                 'start_date': start,
                 'end_date': day_of(e.end_date),
                 'country_code': (codes(e.country) or [None])[0],
-                'lat': p and p.lat,
-                'lon': p and p.lon,
-                'airport': p and p.airport,
-                'airport_km': p and p.km,
+                'lat': None if p is None else p.lat,
+                'lon': None if p is None else p.lon,
+                'airport': None if p is None else p.airport,
+                'airport_km': None if p is None else p.km,
                 'weekend_friday': airports.weekend_friday(start),
             }
         )

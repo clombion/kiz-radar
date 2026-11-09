@@ -8,6 +8,7 @@ import collections
 import re
 import tomllib
 from pathlib import Path
+from typing import TypeIs
 
 import pytest
 
@@ -237,4 +238,49 @@ def test_the_home_airport_is_named_only_in_airports_csv() -> None:
         for p in sorted((ROOT / 'pipeline').rglob('*.py'))
         if "'BGO'" in (text := p.read_text(encoding='utf-8')) or '"BGO"' in text
     ]
+    assert found == []
+
+
+def value_of_a_truthy_record(node: ast.AST) -> TypeIs[ast.BoolOp]:
+    """`x and x.attr` (or `(x := …) and x.attr`) used as a value: it is x itself when x is falsy, not none."""
+    if not (isinstance(node, ast.BoolOp) and isinstance(node.op, ast.And) and len(node.values) == 2):
+        return False
+    first, then = node.values
+    name = first.target if isinstance(first, ast.NamedExpr) else first
+    return (
+        isinstance(name, ast.Name)
+        and isinstance(then, ast.Attribute)
+        and isinstance(then.value, ast.Name)
+        and then.value.id == name.id
+    )
+
+
+def conditions_in(tree: ast.AST) -> set[int]:
+    """The ids of the expressions read only for their truth: conditions, and bool()'s argument."""
+    out: set[int] = set()
+    for n in ast.walk(tree):
+        match n:
+            case ast.If(test=t) | ast.While(test=t) | ast.IfExp(test=t) | ast.Assert(test=t):
+                out.add(id(t))
+            case ast.comprehension(ifs=ifs):
+                out |= {id(t) for t in ifs}
+            case ast.Call(func=ast.Name(id='bool'), args=[t]) | ast.UnaryOp(op=ast.Not(), operand=t):
+                out.add(id(t))
+            case _:
+                pass
+    return out
+
+
+def test_none_is_said_as_none_not_by_the_truth_of_a_record() -> None:
+    """A value that is none when a record is none is written `None if x is None else x.attr`: `x and x.attr` is x when
+    x is falsy (an empty one, 0), and its type hides it."""
+    found: list[str] = []
+    for path in sorted((ROOT / 'pipeline').rglob('*.py')):
+        tree = ast.parse(path.read_text(encoding='utf-8'))
+        conditions = conditions_in(tree)
+        found += [
+            f'{path.relative_to(ROOT)}:{n.lineno}'
+            for n in ast.walk(tree)
+            if value_of_a_truthy_record(n) and id(n) not in conditions
+        ]
     assert found == []
