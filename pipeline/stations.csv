@@ -1,1 +1,129 @@
 airport,stop_id,name,lat,lon
+EGC,fr-arrets-horaires-et-parcours-theoriques-des-reseaux-naq-dor-nva-m-1_MOBIITI:Quay:86951,LR BERGERAC-Aérop Roumanière TAD (2),44.82201,0.51411
+TLS,eu-flixbus_7f44b7dd-da4d-4e7e-a3a2-ef0356ee358f,Toulouse (Blagnac Airport),43.63044,1.3745
+BVE,,,,
+PUF,fr-arrets-horaires-et-parcours-theoriques-des-reseaux-nva-mobilite-agreges-1_MOBIITI:Quay:95685,UZEIN Aéroport Pau Pyrénées,43.38211,-0.41324
+LDE,fr-gtfs-3_JUIAER1,Aéroport - Pyrène,43.18644,0.00725
+BOD,fr-arrets-horaires-et-parcours-theoriques-des-reseaux-nva-mobilite-agreges-1_MOBIITI:Quay:103677,Thales,44.84893,-0.70005
+RDZ,,,,
+DCM,fr-offre-de-transport-du-reseau-libellus-gtfs_zenbus:StopPoint:SP:839690005:LOC,CAUSSE,43.56038,2.27197
+AUR,fr-transcab-horaires-du-reseau-urbain-daurillac_FR:15014:ZE:53857:AURILLAC,Village d'entreprises,44.90067,2.43122
+CCF,fr-reseau-rtca_20001,CC SALVAZA,43.20875,2.30927
+LIG,fr-arrets-horaires-et-parcours-theoriques-des-reseaux-nva-mobilite-agreges-1_MOBIITI:Quay:86303,Suffren,45.84492,1.19553
+BIQ,eu-flixbus_9b6ac8ed-3ecb-11ea-8017-02437075395e,Biarritz (Airport),43.47181,-1.53303
+EAS,fr-horaires-sncf_FR::LMU:674b26d0-cb0a-11e8-8bfa-f784c1c7c611:,Hendaye,43.35313,-1.78172
+LEU,es-ALSA-autobuses_0000850200000001,Adrall,42.32627,1.40003
+BZR,fr-reseau-lio-occitanie_1002386,PORTIRAGNES - VITARELLE,43.31378,3.34649
+PNA,es-Autobús-Comarca-de-Pamplona_215,Cordovilla Ctra Zaragoza (Rot. Pol. Cordovilla),42.78993,-1.639
+PGF,fr-gtfs-sankeo-regulieres_0:PErous1,Roussillonnaise,42.7203,2.88632
+LRH,fr-arrets-horaires-et-parcours-theoriques-des-reseaux-nva-mobilite-agreges-1_MOBIITI:Quay:113824,Quatre Fages,46.16459,-1.18224
+PIS,fr-arrets-horaires-et-parcours-theoriques-des-reseaux-nva-mobilite-agreges-1_MOBIITI:Quay:97587,Avenue de Nantes,46.59727,0.32668
+CFE,fr-réseau-urbain-T2C_AEROR,Aulnat Aéroport,45.79165,3.16167
+ILD,,,,
+MPL,fr-offre-transport-en-commun-du-reseau-transpor-gtfs_1-1,Etang De L'Or,43.55799,3.96351
+ALC,es-ALSA-autobuses_0000301400000001,Alicante Aeropuerto,38.2884,-0.55248
+RMU,,,,
+VLC,es-Metro-de-Valencia_181,Roses,39.49265,-0.46724
+IBZ,es-ALSA-autobuses_0001410200000001,Aeroport,38.87708,1.36894
+CDT,es-Generalitat-Valenciana-(Intercity-bus)_5105010209,"C. el Calvari, front 97",40.23208,0.07244
+LEI,es-ALSA-autobuses_0000932000000001,Costacabana,36.83948,-2.38079
+CFK,,,,
+ALA,,,,
+IKU,,,,
+IKG,,,,
+BSZ,,,,
+TDK,,,,
+GRX,es-ALSA-autobuses_0000572600000001,Chauchina (E),37.19082,-3.77639
+AGP,es-Empresa-Malagueña-de-Transportes-(EMT)_3536,Aeropuerto - Llegadas,36.67716,-4.49076
+ODB,,,,
+AHU,,,,
+MLN,,,,
+TTU,,,,
+SVQ,eu-flixbus_4da73c00-ab54-4d42-ad56-282af784e949,Seville (Airport),37.4236,-5.90113
+NDR,,,,
+XRY,es-Cercanías-Renfe_51205,Aeropuerto de Jerez,36.75159,-6.06594
+TNG,,,,
+OUD,,,,
+TLM,,,,
+AMS,fr-eurostar-gtfs-plan-de-transport-et-temps-reel_schiphol_airport_1,Schiphol Airport,52.30879,4.76149
+RTM,nl-OpenOV_3990939,"Rotterdam, De Lugt",51.94,4.42384
+EIN,eu-flixbus_dcc2d57b-9603-11e6-9066-549f350fcb0c,Eindhoven Airport,51.45685,5.39262
+NRN,nl-OpenOV_3893310,"Weeze, Airport Terminal 1",51.59896,6.14995
+ANR,be-sncb_8821147,Mortsel,51.18296,4.44843
+GRQ,nl-OpenOV_4213346,"Eelde, Airport",53.13039,6.59017
+BRU,nl-OpenOV_2992788,Brussels Airport-Zaventem,50.89697,4.48417
+MST,nl-OpenOV_4209064,"Beek, Bedrijvenpark",50.92566,5.7766
+DUS,de-DELFI_de:05111:18488:98:6,D-Flughafen Bf,51.29136,6.7866
+OST,be-delijn_gs:delijn:501710,Raversijde Middenlaan,51.20727,2.85896
+FMO,de-DELFI_de:05566:13205:3:3,"Greven, FMO",52.13049,7.69407
+LGG,be-sncb_8841319,Bierset-Awans,50.65861,5.46055
+DTM,de-DELFI_de:05978:11179:93:2,"Holzwickede, Bahnhof",51.50481,7.62034
+CRL,be-tec_gs:tec:Cgocnor1,GOSSELIES City Nord,50.46953,4.44069
+CGN,al-ShowMeBus_station-338,Cologne Bonn Airport Bus Terminal,50.86778,7.13896
+LIL,fr-ilevia-localisation-des-arrets-bus-metro-et-tram-gtfs_OCC001,Ctre Commercial,50.58182,3.08302
+NWI,gb-great-britain_2900H1534,Berkley Close,52.66242,1.26707
+PAD,de-DELFI_de:05774:7474:0:2,"Bür-Ahden, Stelte",51.59398,8.61738
+BRE,de-VBN_000000691217,Bremen Gastfeldstraße,53.06608,8.79328
+FCN,de-VBN_000009906271,Nordholz(b Bremerhaven) Aeronauticum,53.77769,8.63916
+DPS,,,,
+LOP,,,,
+MLG,,,,
+SUB,,,,
+BCN,es-Autobús-metropolitano-Barcelona_001383,Parc Nou,41.31629,2.09103
+GRO,eu-flixbus_dcc3b197-9603-11e6-9066-549f350fcb0c,Girona Airport (GRO),41.89668,2.76608
+REU,es-Autobús-interurbano-de-Cataluña_PF43123115,T-11 (accés a Centre Emergències 112),41.13366,1.18523
+PMI,es-Autobús-urbano-de-Palma-de-Mallorca_1353,1353-Àrea d'intercanvi Aquarium,39.5322,2.72768
+MAH,es-Autobús-de-la-isla-de-Menorca_3349,Aeroport,39.86523,4.2264
+ZAZ,,,,
+BRN,ch-opentransportdataswiss27_ch:1:sloid:7092:0:574688,Belp Steinbach,46.89513,7.49319
+BSL,fr-horaires-sncf_FR::LMU:89c460a0-cb0a-11e8-8bfa-f784c1c7c611:,Saint-Louis la Chaussée,47.60951,7.53128
+ZRH,ch-opentransportdataswiss27_ch:1:sloid:73205::1,"Zürich Flughafen, Bahnhof",47.45008,8.56416
+GVA,ch-opentransportdataswiss27_ch:1:sloid:1026:1:1,Genève-Aéroport,46.23272,6.11204
+LUG,ch-opentransportdataswiss27_ch:1:sloid:5390::48701,Serocca,46.00862,8.90471
+NCY,fr-reseau-interurbain-cars-region-haute-savoie-74_FR:74112:ZE:58788:HAUTExSAVOIE,Tuilerie,45.93462,6.08382
+DLE,fr-reseau-de-transport-du-grand-dole_TAVSOLV1,Tavaux Solvay,47.0559,5.4139
+ACH,ch-opentransportdataswiss27_ch:1:sloid:81489:0:02,"Altenrhein, Flugplatz",47.48863,9.55119
+FDH,de-DELFI_de:08435:4151:3:1,Friedrichsh. Bodensee-Airport,47.67246,9.52431
+MXP,it-Lombardia-Trenord_S01139,Malpensa Aeroporto T1,45.62729,8.71134
+SXB,fr-horaires-sncf_FR::LMU:67bfe1a0-cb0a-11e8-8bfa-f784c1c7c611:,Entzheim Aéroport,48.54699,7.62794
+CMF,fr-agregat-oura_FR:73051:ZE:14468:AIXxLESxBAINS,Université Le Bourget,45.641,5.87109
+TRN,it-trenitalia_00088,Torino Aeroporto di Caselle,45.19195,7.64164
+FKB,de-KVV_de:08216:34790:1:2,Airpark Eisstadion,48.78191,8.09776
+LIN,it-Lombardia-ATM_16266,san donato m3,45.42894,9.25737
+BGY,eu-flixbus_dcc45a6f-9603-11e6-9066-549f350fcb0c,Bergamo (Orio al Serio Airport - BGY),45.66581,9.69745
+LYS,it-trenitalia_870076290,LYON-SAINT EXUPERY TGV,45.72083,5.07556
+STR,de-DELFI_de:08116:1905:1:2,Filderstadt,48.67646,9.21758
+FMM,de-DELFI_de:09778:3240:0:1,Memmingen Airport,47.98955,10.23222
+GNB,fr-reseau-cars-region-isere-38_FR:38058:ZE:80667:ISERE,Eglise,45.346,5.30906
+ETZ,fr-agregat-des-reseaux-urbains-et-interurbains-en-region-grand-est_TIM:1034412,VIGNY - Ecole,48.96901,6.24862
+SCN,de-DELFI_de:10041:13405::1340507,"Industriestr., Ensheim Saarbrücken",49.21193,7.11269
+CUF,it-Piemonte-GrandaBus_210045,LEVALDIGI - Via Michelini 20,44.55628,7.62185
+VBS,,,,
+MHG,de-DELFI_de:08222:2641_G,"Mannheim, Arena/Maimarkt (DB)",49.46024,8.51629
+INN,at-Fahrplandaten-Verkehrsverbund-Tirol-Flex-2026_at:47:2223:0:2,Kranebitten Bahnhof,47.26938,11.32742
+KSF,de-DELFI_de:06633:201432::A,Calden-Flughafen Kassel Terminal,51.41612,9.38605
+HAJ,de-VBN_000094111001,Langenhagen Flughafen,52.45929,9.6993
+HAM,de-DELFI_de:02000:99651,Hamburg Airport (Flughafen),53.63235,10.00665
+ERF,de-DELFI_de:16051:151258::15125800,"Erfurt, Flughafen/Airport",50.97495,10.9608
+FRA,de-DELFI_de:06412:62999:2:2,Frankfurt (Main) Flughafen Tor 31 intern,50.02375,8.55853
+LBC,de-VBN_000004300264,Lübeck Flughafen(Bus),53.80678,10.70251
+HHN,eu-flixbus_dcbce2f8-9603-11e6-9066-549f350fcb0c,Frankfurt-Hahn Airport (Terminal A),49.94551,7.26969
+LEJ,de-DELFI_de:14730:19928::01,Leipzig/Halle Flughafen,51.42292,12.22353
+BIO,es-Euskotren_ES:Euskotren:Quay:2595_Plataforma_Q2:,Sondika,43.29835,-2.92809
+NTE,eu-blablacar-bus_ARN,Nantes - Airport - Arrivals Zone 1,47.15789,-1.60068
+VIT,es-Autobuses-La-Unión-(ALU)_380,FORONDA - AEROPUERTO VITORIA GASTEIZ AIREPORTUA,42.88338,-2.73191
+RJL,,,,
+LUX,lu-administration-des-transports-publics_000200508016,"Senningerberg, Héienhaff",49.6416,6.21723
+BVA,fr-arrets-horaires-et-parcours-theoriques-du-reseau-routier-regional-de-transport-scolaire-et-interurbain-60-oise-1--81820_60:05727,BEAUVAIS - Parc Marcel Dassault,49.45018,2.09754
+XCR,,,,
+CDG,fr-horaires-sncf_FR::LMO:aae2c560-cb0a-11e8-8bfa-f784c1c7c611:,Aéroport Charles de Gaulle 2 TGV,49.00362,2.57081
+SEN,gb-great-britain_9100STHEAIR,Southend Airport,51.56995,0.70535
+ORY,fr-reseau-urbain-et-interurbain-dile-de-france-mobilites_IDFM:29357,Thiais - Orly (Pont de Rungis),48.74704,2.36913
+BBU,ro-Bucuresti-Ilfov_PV1_6245,Complex Baneasa,44.50773,26.08439
+OTP,ro-railway_70055,Balotești Hm.,44.5906,26.09874
+GHV,ro-Brasov_node/3707795549,Case,45.68617,25.53632
+CRA,ro-Craiova_220,Aeroport,44.31228,23.87832
+CND,,,,
+VAR,bg-varna_1329,ЧЕРНИ ВРЪХ  / ЗА ПОЧИВКА / CHERNI VRAH,43.24307,27.84179
+SBZ,ro-Tursib_4201,Harting 2,45.79939,24.08666
+BOJ,,,,
