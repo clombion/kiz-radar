@@ -52,6 +52,10 @@ run = "uv run -q -m pipeline.merge_suggestions"
 description = "Add to pipeline/airports.csv every airport with scheduled service within 250 km of a festival to come, from OurAirports' airports.csv (ourairports.com/data), downloaded: mise run airports -- <its path>"
 run = "uv run -q -m pipeline.airports"
 
+[measure]
+description = "Measure the trips by public transport into each festival city from the airports near it, with Transitous, for the research on its gateways (pipeline/measure.py), from OurAirports' airports.csv, downloaded: mise run measure -- <its path>, and --most N to ask Transitous at most N times"
+run = "uv run -q -m pipeline.measure"
+
 [geocode]
 description = "Place the export's cities on the map with OpenStreetMap Nominatim"
 run = "uv run -q -m pipeline.geocode"

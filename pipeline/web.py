@@ -9,10 +9,14 @@ from collections.abc import Mapping
 from http.client import HTTPResponse
 from typing import NamedTuple, cast
 
+from pydantic import TypeAdapter, ValidationError
+
 from pipeline.calls import Declined, why
 from pipeline.enums import CallCause
 
 TIMEOUT = 30  # seconds
+# who asks: the open services this project calls (Nominatim, Transitous) ask for the app's name, version and contact
+AGENT = {'User-Agent': 'kiz-radar/0.1 (https://github.com/clombion/kiz-radar)'}
 TOO_MANY, SERVER_ERROR = 429, 500
 
 
@@ -54,3 +58,17 @@ def opened(url: str, body: bytes | None, headers: Mapping[str, str]) -> bytes | 
         return Declined(CallCause.TRANSIENT if transient else CallCause.STRUCTURAL, f'{url}: HTTP {e.code} {e.reason}')
     except (OSError, http.client.HTTPException) as e:  # unreachable, timed out, reset, or cut short
         return Declined(CallCause.TRANSIENT, f'{url}: {why(e)}')
+
+
+def answer[T](address: Https, query: Mapping[str, str], shape: TypeAdapter[T]) -> T | Declined:
+    """What an HTTPS address answers a query with, read as JSON of a shape, asked as AGENT; or why there is none: an
+    answer of another shape is structural."""
+    match get(address, query, AGENT):
+        case Declined() as d:
+            return d
+        case body:
+            pass
+    try:
+        return shape.validate_json(body)
+    except ValidationError as e:
+        return Declined(CallCause.STRUCTURAL, f'{address.url()}: an answer of another shape: {e.errors()[0]["msg"]}')

@@ -18,11 +18,31 @@ Airports are listed the quickest into the city first: the first is the one searc
 direct flights. Each airport must be in `pipeline/airports.csv` and the key in `pipeline/cities.csv`, or
 `mise run audit` names the claim. The note says why: the time into the city, how dancers get there.
 
+## The evidence
+
+`mise run measure -- <OurAirports' airports.csv>` measures, with Transitous (transitous.org, the open journey planner),
+how long a trip by public transport takes into each festival city from every airport with scheduled service within 300
+km of it. It keeps three files, each row as it is answered:
+
+| File | One row per | Says |
+| -- | -- | -- |
+| `pipeline/stations.csv` | airport | the stop its trips start from: the most used one near it that is not a flight's; empty when it has none |
+| `pipeline/screened.csv` | city and airport | the quickest trip a many-to-one search found, arriving on a Friday evening; empty when it found none. The search counts the wait for the first vehicle, so it only screens |
+| `pipeline/routed.csv` | city and airport | for the six nearest and those screened within 4 hours: the quickest trip leaving on a Friday afternoon, in minutes, with its changes and its vehicles (`ground_mode`, [States](../reference/states.md)) |
+
+An airport a city is reached from within 4 hours is added to `pipeline/airports.csv`. A run asks Transitous 300 times at
+most (`--most N` for another number), one request a second, as agreed with the Transitous team: the first pass takes a
+few days, and each run goes on from where the last stopped. A city measured is not asked about again.
+
+Transitous has no fares, and misses some private shuttles (Beauvais's coach to Paris): research those from the
+operator's site.
+
 ## Proposing (a session)
 
 1. Open the Cities tab of the review dashboard, or read `cities` in `public/data/review.json` after
    `mise run build:data`.
-2. For each city without a proposal, find the airports dancers use and the ground time from each into the city.
+2. For each city without a proposal, read its rows in `routed.csv` (and `screened.csv` for the airports not routed), and
+   find the airports dancers use.
 3. Write the proposals:
 
 ```python

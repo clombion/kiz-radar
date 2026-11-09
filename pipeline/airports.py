@@ -99,6 +99,18 @@ class Offered(NamedTuple):
     lat: float
     lon: float
 
+    def airport(self) -> Airport:
+        """The airport, as airports.csv lists one a festival can fly to."""
+        return Airport(
+            code=self.code,
+            name=self.name,
+            city=self.city,
+            country_code=self.country_code,
+            lat=self.lat,
+            lon=self.lon,
+            home=False,
+        )
+
 
 def served(rows: Iterable[Mapping[str, str]]) -> list[Offered]:
     """The airports of OurAirports' airports.csv rows that have scheduled service and an IATA code."""
@@ -128,15 +140,12 @@ def wanted(near: Iterable[City], have: Sequence[Airport], offered: Sequence[Offe
                 and a.country_code in NAMES
                 and km(c.lat, c.lon, a.lat, a.lon) <= MAX_AIRPORT_KM
             ):
-                out[a.code] = Airport(
-                    code=a.code, name=a.name, city=a.city, country_code=a.country_code, lat=a.lat, lon=a.lon, home=False
-                )
+                out[a.code] = a.airport()
     return sorted(out.values(), key=lambda a: a.code)
 
 
-def add(source: Path) -> None:
-    """Add to airports.csv every airport with scheduled service (OurAirports' airports.csv, at source) within
-    MAX_AIRPORT_KM of a festival to come, naming each; the airports there stay as they are."""
+def festival_cities() -> list[City]:
+    """The cities of the festivals to come, listed and not cancelled, by key."""
     with export.opened('ro') as db:
         listed = db.rows(
             Listed,
@@ -144,11 +153,22 @@ def add(source: Path) -> None:
             ' where cancelled is not 1 and listing = ? and start_date >= ?',
             (Listing.LISTED, today().isoformat()),
         )
-    with source.open(encoding='utf-8', newline='') as f:
-        offered = served(csv.DictReader(f))
-    have, index = known(), cities.index()
+    index = cities.index()
     near = {c.key: c for s in listed if (c := index.of(s.city, s.country))}
-    new = wanted(near.values(), have, offered)
+    return sorted(near.values(), key=lambda c: c.key)
+
+
+def offers(source: Path) -> list[Offered]:
+    """The airports with scheduled service of OurAirports' airports.csv, at source."""
+    with source.open(encoding='utf-8', newline='') as f:
+        return served(csv.DictReader(f))
+
+
+def add(source: Path) -> None:
+    """Add to airports.csv every airport with scheduled service (OurAirports' airports.csv, at source) within
+    MAX_AIRPORT_KM of a festival to come, naming each; the airports there stay as they are."""
+    have = known()
+    new = wanted(festival_cities(), have, offers(source))
     for a in new:
         print(f'added {a.code} {a.name} ({a.city}, {a.country_code})')
     Airport.write([*have, *new])

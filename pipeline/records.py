@@ -46,6 +46,7 @@ from pipeline.enums import (
     FareTicket,
     FareVendor,
     Genre,
+    GroundMode,
     MergeDecision,
     MergeReason,
     Model,
@@ -1336,6 +1337,121 @@ class City(CsvRow):
     lat: float
     lon: float
 
+
+class Stop(Record):
+    """A stop of public transport, as Transitous names it: its id, its name and where it is."""
+
+    model_config = ConfigDict(strict=False)  # a stations.csv row's text
+
+    id: Text
+    name: Text
+    lat: float
+    lon: float
+
+
+class Station(CsvRow):
+    """The stop an airport's trips into a city start from (pipeline/measure.py), when Transitous knows one near it (its
+    columns stop_id, name, lat and lon, all empty when it knows none: those trips start at the airport's point)."""
+
+    FILE = 'pipeline/stations.csv'
+
+    airport: Iata
+    found: Stop | None
+
+    @classmethod
+    def columns(cls) -> list[str]:
+        return ['airport', 'stop_id', 'name', 'lat', 'lon']
+
+    @classmethod
+    def cells(cls, row: dict[str, str]) -> dict[str, object]:
+        stop = None if row['stop_id'] == '' else {k: row[c] for k, c in STOP_COLUMNS.items()}
+        return {'airport': row['airport'], 'found': stop}
+
+    def text(self) -> dict[str, object]:
+        stop = self.found
+        cells = (
+            dict.fromkeys(STOP_COLUMNS.values(), '')
+            if stop is None
+            else {'stop_id': stop.id, 'name': stop.name, 'lat': number_text(stop.lat), 'lon': number_text(stop.lon)}
+        )
+        out: dict[str, object] = {'airport': self.airport}
+        return out | cells
+
+
+STOP_COLUMNS = {'id': 'stop_id', 'name': 'name', 'lat': 'lat', 'lon': 'lon'}  # a Stop's fields, by column
+Minutes = Annotated[int, Field(ge=0)]  # how long a trip takes, in whole minutes
+
+
+class Screened(CsvRow):
+    """How long the quickest trip by public transport from an airport into a festival city takes on a Friday evening,
+    as Transitous's many-to-one search found it on a day (pipeline/measure.py): none when it found no trip. The search
+    counts a wait for the first vehicle as travel, so it screens; a Routed row says how long the trip takes."""
+
+    FILE = 'pipeline/screened.csv'
+
+    city: CityKey
+    airport: Iata
+    minutes: Blank[Minutes]
+    on: Date
+
+
+def split_modes(value: object) -> object:
+    return tuple(m for m in value.split(';') if m) if isinstance(value, str) else value
+
+
+def modes_text(value: tuple[GroundMode, ...]) -> str:
+    return ';'.join(value)
+
+
+type Modes = Annotated[
+    tuple[GroundMode, ...],
+    Field(min_length=1),
+    BeforeValidator(split_modes),
+    PlainSerializer(modes_text, return_type=str),
+]  # bus;tram
+
+
+class Way(Record):
+    """The quickest trip by public transport from an airport into a city that Transitous's route search found: how
+    long it takes from the airport's station to the city's point, the changes it makes, and the vehicles it takes, in
+    order."""
+
+    model_config = ConfigDict(strict=False)  # a routed.csv row's text
+
+    minutes: Minutes
+    changes: Annotated[int, Field(ge=0)]
+    modes: Modes
+
+
+class Routed(CsvRow):
+    """The quickest trip by public transport from an airport into a festival city leaving on a Friday afternoon, as
+    Transitous's route search found it on a day (pipeline/measure.py) (its columns minutes, changes and modes, all
+    empty when it found none)."""
+
+    FILE = 'pipeline/routed.csv'
+
+    city: CityKey
+    airport: Iata
+    found: Way | None
+    on: Date
+
+    @classmethod
+    def columns(cls) -> list[str]:
+        return ['city', 'airport', 'minutes', 'changes', 'modes', 'on']
+
+    @classmethod
+    def cells(cls, row: dict[str, str]) -> dict[str, object]:
+        way = None if row['minutes'] == '' else {k: row[k] for k in WAY_COLUMNS}
+        return {'city': row['city'], 'airport': row['airport'], 'found': way, 'on': row['on']}
+
+    def text(self) -> dict[str, object]:
+        way = self.found
+        cells: dict[str, object] = dict.fromkeys(WAY_COLUMNS, '') if way is None else way.model_dump(mode='json')
+        out: dict[str, object] = {'city': self.city, 'airport': self.airport}
+        return out | cells | {'on': self.on.isoformat()}
+
+
+WAY_COLUMNS = ('minutes', 'changes', 'modes')
 
 Stops = Annotated[int, Field(ge=0)]  # the stops a flight makes, 0 when it is direct
 

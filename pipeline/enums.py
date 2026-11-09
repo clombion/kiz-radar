@@ -51,6 +51,7 @@ type Point = Literal[
     'fare_ticket',
     'fare_family',
     'city_tier',
+    'ground_mode',
 ]
 
 
@@ -533,6 +534,25 @@ class CityTier(StrEnum):
     BIG = 'big'
     SMALL = 'small'
     NOT_SERVED = 'not_served'
+
+
+@unique
+class GroundMode(StrEnum):
+    """the ground_mode states"""
+
+    TRAM = 'tram'
+    SUBWAY = 'subway'
+    FERRY = 'ferry'
+    BUS = 'bus'
+    COACH = 'coach'
+    HIGHSPEED_RAIL = 'highspeed_rail'
+    LONG_DISTANCE = 'long_distance'
+    NIGHT_RAIL = 'night_rail'
+    REGIONAL_RAIL = 'regional_rail'
+    SUBURBAN = 'suburban'
+    FUNICULAR = 'funicular'
+    AERIAL_LIFT = 'aerial_lift'
+    OTHER = 'other'
 
 
 @unique

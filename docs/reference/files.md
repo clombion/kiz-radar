@@ -20,6 +20,9 @@ one.
 | `pipeline/airports.csv` | `Airport` | An airport a festival can fly to; home (1) is where flights leave from. |
 | `pipeline/geocode.csv` | `Place` | A place asked of Nominatim, and where it is when Nominatim found it (its columns lat, lon and osm_name, all empty when it found none): a city as the source DB spells it, in its country when it names one, or the place a place claim says that spelling is (pipeline/cities.py). |
 | `pipeline/cities.csv` | `City` | A city festivals are in, however the source DB spells it (pipeline/cities.py): its key, which never changes once written, as claims name it; its name; the country it is in, which may not be the one a festival is listed under; and where it is, the one place a city's point is kept. |
+| `pipeline/stations.csv` | `Station` | The stop an airport's trips into a city start from (pipeline/measure.py), when Transitous knows one near it (its columns stop_id, name, lat and lon, all empty when it knows none: those trips start at the airport's point). |
+| `pipeline/screened.csv` | `Screened` | How long the quickest trip by public transport from an airport into a festival city takes on a Friday evening, as Transitous's many-to-one search found it on a day (pipeline/measure.py): none when it found no trip. The search counts a wait for the first vehicle as travel, so it screens; a Routed row says how long the trip takes. |
+| `pipeline/routed.csv` | `Routed` | The quickest trip by public transport from an airport into a festival city leaving on a Friday afternoon, as Transitous's route search found it on a day (pipeline/measure.py) (its columns minutes, changes and modes, all empty when it found none). |
 | `pipeline/spend.csv` | `Spent` | A request to Claude and what it cost; thinking counts as output. |
 | `pipeline/rates.csv` | `Rate` | Units of a currency per euro, on a day. |
 | `pipeline/promo_codes.csv` | `Promo` | A promo code for a festival, ours, not kizomba-world's. |

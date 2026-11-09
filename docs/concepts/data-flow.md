@@ -52,6 +52,7 @@ its answers on as a patch; a later failure leaves the paid work in the run's art
 | exchange rates | the European Central Bank | — |
 | cities' places | OpenStreetMap Nominatim, cached in `pipeline/geocode.csv` | ODbL |
 | cities | `pipeline/cities.csv`: one for each real city, however the listings spell it (`mise run cities`) | ours |
+| trips from airports into cities | Transitous's journey planner, kept in `pipeline/stations.csv`, `screened.csv` and `routed.csv` (`mise run measure`, [The airports a city flies to](../guides/city-airports.md)); the build does not read them | the timetables' own (transitous.org/sources) |
 | artist merges, homes, bookings, site overrides, cities listed under the wrong country | claims ([Claims](claims.md)) | ours |
 
 A city is ours, not the listings': `pipeline/cities.csv` holds one row for each real city (its key, its name, the

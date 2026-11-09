@@ -18,6 +18,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `resolve` | Resolve the export's artist mentions into artists, with stable ids |
 | `suggest-merges` | List likely duplicate artists for review (pipeline/artist_merge_suggestions.csv) |
 | `airports` | Add to pipeline/airports.csv every airport with scheduled service within 250 km of a festival to come, from OurAirports' airports.csv (ourairports.com/data), downloaded: mise run airports -- <its path> |
+| `measure` | Measure the trips by public transport into each festival city from the airports near it, with Transitous, for the research on its gateways (pipeline/measure.py), from OurAirports' airports.csv, downloaded: mise run measure -- <its path>, and --most N to ask Transitous at most N times |
 | `geocode` | Place the export's cities on the map with OpenStreetMap Nominatim |
 | `cities` | Add to pipeline/cities.csv a city for each city the export names that no city has yet (pipeline/cities.py): after geocode |
 | `rates` | The euro's exchange rates from the European Central Bank |

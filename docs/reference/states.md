@@ -53,6 +53,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | **fare_ticket**, each offer of a fare search, by the tickets it is booked on | `one_ticket`, `self_transfer` | fares |
 | **fare_family**, each pair of searches (home's and another city's of one weekend), by the flight home's fare takes | `direct`, `connecting` | fare_accuracy |
 | **city_tier**, each festival city, by the airports its decision says it flies to (a city claim) | `big`, `small`, `not_served` | claims |
+| **ground_mode**, each vehicle a trip by public transport from an airport into a festival city takes, as Transitous names it | `tram`, `subway`, `ferry`, `bus`, `coach`, `highspeed_rail`, `long_distance`, `night_rail`, `regional_rail`, `suburban`, `funicular`, `aerial_lift`, `other` | measure |
 
 ## States
 
@@ -269,3 +270,16 @@ Every data point and every state it can be in; why the world is closed is in [St
 | city_tier · `big` | kept | — | — | a big city: its main airports, every one dancers fly to |
 | city_tier · `small` | kept | — | — | a smaller city: its practical gateways, 3 at most, the quickest into the city first |
 | city_tier · `not_served` | kept | — | — | no airport near enough to be worth a flight from home |
+| ground_mode · `tram` | kept | — | — | a tram |
+| ground_mode · `subway` | kept | — | — | an underground or metro train |
+| ground_mode · `ferry` | kept | — | — | a ferry |
+| ground_mode · `bus` | kept | — | — | a local bus |
+| ground_mode · `coach` | kept | — | — | a long-distance bus or an airport coach |
+| ground_mode · `highspeed_rail` | kept | — | — | a high-speed train (a TGV, an ICE) |
+| ground_mode · `long_distance` | kept | — | — | an intercity train |
+| ground_mode · `night_rail` | kept | — | — | a night train |
+| ground_mode · `regional_rail` | kept | — | — | a regional train |
+| ground_mode · `suburban` | kept | — | — | a suburban train (an S-Bahn, the RER) |
+| ground_mode · `funicular` | kept | — | — | a funicular |
+| ground_mode · `aerial_lift` | kept | — | — | a cable car or gondola |
+| ground_mode · `other` | kept | — | — | a vehicle of another kind |

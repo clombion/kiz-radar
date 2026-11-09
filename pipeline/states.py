@@ -216,6 +216,12 @@ POINTS = (
         'each festival city, by the airports its decision says it flies to (a city claim)',
         'claims',
     ),
+    P(
+        'ground_mode',
+        'GroundMode',
+        'each vehicle a trip by public transport from an airport into a festival city takes, as Transitous names it',
+        'measure',
+    ),
 )
 
 ROWS = (
@@ -1022,6 +1028,20 @@ ROWS = (
         KEPT,
     ),
     S('city_tier', 'not_served', 'no airport near enough to be worth a flight from home', KEPT),
+    # ---- a ground trip's vehicles (measure.Way), Transitous's transit modes in lower case
+    S('ground_mode', 'tram', 'a tram', KEPT),
+    S('ground_mode', 'subway', 'an underground or metro train', KEPT),
+    S('ground_mode', 'ferry', 'a ferry', KEPT),
+    S('ground_mode', 'bus', 'a local bus', KEPT),
+    S('ground_mode', 'coach', 'a long-distance bus or an airport coach', KEPT),
+    S('ground_mode', 'highspeed_rail', 'a high-speed train (a TGV, an ICE)', KEPT),
+    S('ground_mode', 'long_distance', 'an intercity train', KEPT),
+    S('ground_mode', 'night_rail', 'a night train', KEPT),
+    S('ground_mode', 'regional_rail', 'a regional train', KEPT),
+    S('ground_mode', 'suburban', 'a suburban train (an S-Bahn, the RER)', KEPT),
+    S('ground_mode', 'funicular', 'a funicular', KEPT),
+    S('ground_mode', 'aerial_lift', 'a cable car or gondola', KEPT),
+    S('ground_mode', 'other', 'a vehicle of another kind', KEPT),
     S('fare_family', 'direct', "home's cheapest fare on one ticket flies direct out", KEPT),
     S(
         'fare_family',

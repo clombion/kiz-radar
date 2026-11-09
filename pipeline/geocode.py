@@ -13,15 +13,13 @@ import sys
 import time
 from collections.abc import Mapping
 
-from pydantic import BaseModel, ConfigDict, TypeAdapter, ValidationError
+from pydantic import BaseModel, ConfigDict, TypeAdapter
 
 from pipeline import calls, cities, claims, export, web
 from pipeline.calls import Declined
-from pipeline.enums import CallCause
 from pipeline.records import Place, Spot
 
 SEARCH = web.Https('nominatim.openstreetmap.org', '/search')
-HEADERS = {'User-Agent': 'kiz-radar/0.1 (https://github.com/clombion/kiz-radar)'}
 PAUSE, BACKOFF = 1.1, 5  # seconds between requests (Nominatim allows one a second), and after a failure
 
 
@@ -39,15 +37,7 @@ FOUND: TypeAdapter[list[Found]] = TypeAdapter(list[Found])
 
 
 def search(query: dict[str, str]) -> list[Found] | Declined:
-    match web.get(SEARCH, query, HEADERS):
-        case Declined() as d:
-            return d
-        case body:
-            pass
-    try:
-        return FOUND.validate_json(body)
-    except ValidationError as e:
-        return Declined(CallCause.STRUCTURAL, f'{SEARCH.url()}: an answer of another shape: {e.errors()[0]["msg"]}')
+    return web.answer(SEARCH, query, FOUND)
 
 
 def located(city: str, country: str | None) -> Place | Declined:
