@@ -204,6 +204,47 @@ export function goingLine(e: Going): HTMLElement | null {
   );
 }
 
+// Who goes to a festival as lines, one per thing they do there: teaching (or playing) first, then going, then maybe,
+// each labelled by it. A line names up to NAMED_UP_TO people or couples, the ticked first; past that, the first ones
+// and "and 5 more", which opens the list of everyone going, the ticked always named.
+export const NAMED_UP_TO = 4;
+const NAMED_PAST = 3; // named on a line past NAMED_UP_TO
+export function whoLines(e: Going, ticked: ReadonlySet<string> = new Set()): HTMLElement {
+  const isTicked = (g: Named) => g.people.some((p) => ticked.has(p.key));
+  const lines = new Map<string, { as: ReturnType<typeof doing>['as']; groups: Named[] }>();
+  for (const g of named(e.goers)) {
+    const d = doing(g.people);
+    const line = lines.get(d.words) ?? { as: d.as, groups: [] };
+    line.groups.push(g);
+    lines.set(d.words, line);
+  }
+  const rank = (as: string) => (as === 'booked' ? 0 : as === KEY.plan.GOING ? 1 : 2);
+  return h(
+    'div',
+    { class: 'who-lines' },
+    [...lines.entries()]
+      .sort(([, a], [, b]) => rank(a.as) - rank(b.as))
+      .map(([words, { groups }]) => {
+        const ordered = [...groups.filter(isTicked), ...groups.filter((g) => !isTicked(g))];
+        const shown =
+          ordered.length <= NAMED_UP_TO
+            ? ordered
+            : ordered.slice(0, Math.max(NAMED_PAST, ordered.filter(isTicked).length));
+        const more = ordered.length - shown.length;
+        return h(
+          'p',
+          {},
+          h('span', { class: 'who-label' }, words),
+          h(
+            'span',
+            {},
+            joined([...shown.map(nameButton), ...(more > 0 ? [goerName(`${more} more`, (b) => peekEvent(e, b))] : [])]),
+          ),
+        );
+      }),
+  );
+}
+
 // the list in an opened card: featured people first, each with what they're doing there
 export function whoIsGoing(e: Going): HTMLElement | null {
   if (e.goers.length === 0) return null;
@@ -310,9 +351,6 @@ const planRow = (e: Listed, name: Kid, who: Kid, also = '') =>
     h('span', { class: 'what' }, nowTag(e), name, h('span', { class: 'muted' }, ' · ', place(e), also)),
     who,
   );
-// a festival in a list of everyone's plans (the Friends tab, a community's page): it on the map, and who goes
-export const goingRow = (e: Listed, who: Kid): HTMLElement =>
-  planRow(e, h('a', { href: eventOnMapHref(e.id) }, e.title), h('span', { class: 'who' }, who));
 // one festival they're going to, with which of them when only some are
 const planItem = (g: Named, e: Plan, people: readonly Plan[]) =>
   planRow(

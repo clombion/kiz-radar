@@ -82,14 +82,24 @@ sides only.
 
 - **Countries:** each scene's festivals coming up, the cheapest flight there, and how international its line-ups are.
 
-- **Friends:** "Who's going where" ("All the dancers in the community with public plans."), for a visitor, who has no
-  account yet: two sections. "Near Bergen" (the home airport's city, the one region for now) lists the festivals to come
-  that the people living within `NEAR_KM` (200 km, `site/people.ts`) of it are going to, each naming them, and who they
-  are, measured against each person's home (the city `people.home` names, from `pipeline/cities.csv`); someone with no
-  home in `people.csv` is near nowhere. An (i) after the heading ("About this list") shows, on hover, on focus or on a
-  tap, a small card: "Within 200 km of Bergen." (Escape or a second tap hides it). "Rest of the world" (the people far
-  away or with no home) says "Not available yet" for now. A person's page (`#friends/<key>`) is as before. The visitor's
-  own communities will come at the top once there are accounts.
+- **Friends:** "Who's going where" (`site/friends.ts`), for a visitor, who has no account yet. Its second row under the
+  header, as Explore's, holds its places: **Near Bergen** (the people living within `NEAR_KM`, 200 km, of the home
+  airport's city, measured against the city `people.home` names; someone with no home is near nowhere) and
+  **Everywhere** (everyone sharing plans); `#friends?in=everywhere`. The visitor's own communities will join that row
+  once there are accounts.
+
+  - Under the title, a line says who is away now and who goes next: the festivals on now, the two with the most people
+    named and the rest counted, and the next to start.
+  - The festivals to come, by month ("November 2026 · 3 festivals"), each with its name, place and days, then a line per
+    thing its people do there, labelled (teaching or playing first, then going, then maybe). A line names up to four
+    people or couples (`NAMED_UP_TO`, `site/plans.ts`); past that, the first three and "and N more", which opens the
+    list of everyone going.
+  - A short list (up to six festivals and eight people) is all there is, with a line of who shares plans. A longer one
+    gets a bar: **Friends** (a list to tick, the ticked first, with a search; the festivals all of them go to, or any of
+    them; two with nothing in common are told so, with a link to those any of them goes to), the time ahead (this
+    weekend, 3 months or a year) and a festival's name or city. The choices are in the address
+    (`with=cedric,sian&any=1&when=months&q=prague`), and any of them shows the bar however short the list.
+  - A person's page (`#friends/<key>`) is as before.
 
 A community's page (`c/<key>/` from the site's root) has no tab: its link reaches it. It is public all the same, like
 everything the site shows: its members, their plans and travel are in the site's database, which anyone can read (the

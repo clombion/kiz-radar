@@ -8,9 +8,10 @@ import { exec, freshDay, one, site, sql } from '../../site/db.ts';
 import { h } from '../../site/dom.ts';
 import { eventCard } from '../../site/eventcard.ts';
 import { festivals } from '../../site/festivals.ts';
+import { friendsTabs, friendsView, NEAR_KM } from '../../site/friends.ts';
 import { ganttByPlace } from '../../site/gantt.ts';
-import { NEAR_KM, personView, SAID_MS } from '../../site/people.ts';
-import { doingTag, friendsIn } from '../../site/plans.ts';
+import { personView, SAID_MS } from '../../site/people.ts';
+import { doingTag, friendsIn, NAMED_UP_TO, whoLines } from '../../site/plans.ts';
 import { byPlace } from '../../site/roster.ts';
 import { eventOnMapHref, personHref } from '../../site/routes.ts';
 import { num, str, unsure } from '../../site/rows.ts';
@@ -1702,51 +1703,107 @@ const homeOf = () =>
   one({ key: str, city: str, lat: num, lon: num }, sql`SELECT key, name AS city, lat, lon FROM cities WHERE key = ?`, [
     site().home.city_key,
   ]);
-const friendsTab = () => {
+const friendsTab = (qs = '') => {
   const root = document.createElement('main');
-  personView(root, []);
+  friendsView(root, qs, new AbortController().signal);
   return root;
 };
-const nearOf = (root: HTMLElement) => ({
-  heading: said(root.querySelector('.friends-near h2')),
-  rows: [...root.querySelectorAll('.friends-near .plan-list li')].map((li) => said(li)),
-  sharing: said(root.querySelector('.friends-near p:last-child')),
+// the list as read: its summary, and each festival's name with its lines of who goes, "Teaching: Christina and Siân"
+const listOf = (root: HTMLElement) => ({
+  summary: said(root.querySelector('.list-summary')),
+  months: [...root.querySelectorAll('.month-head')].map((m) => said(m)),
+  rows: [...root.querySelectorAll('.who-rows > li')].map((li) => ({
+    name: said(li.querySelector('.who-name')),
+    lines: [...li.querySelectorAll('.who-lines p')].map(
+      (l) => `${said(l.querySelector('.who-label'))}: ${said(l.lastElementChild)}`,
+    ),
+  })),
+  sharing: said(root.querySelector('.sharing')),
+  bar: root.querySelector('.sticky-bar') !== null,
 });
-test('the Friends tab lists the people near the home city, then the rest of the world, to come', () => {
+// the festivals the list shows for an address's choices, by name
+const listed = (qs: string) => listOf(onDay('2026-11-04', () => friendsTab(qs))).rows.map((r) => r.name);
+const glasgowOf = (root: HTMLElement) => listOf(root).rows.find((r) => r.name?.includes('Glasgow'));
+test('the Friends tab lists the festivals of the people near the home city by month, a line for what they do', () => {
   const root = onDay('2026-11-04', friendsTab);
-  const near = nearOf(root);
+  const list = listOf(root);
   const home = homeOf()?.city ?? '';
   expect(home).not.toBe('');
-  expect(near.heading).toBe(`Near ${home}`);
-  expect(said(root.querySelector('.lede'))).toBe('All the dancers in the community with public plans.');
-  // no line under the heading: what the list is is behind its (i)
-  expect(root.querySelector('.friends-near h2 + p')?.matches('.info-card')).toBe(true);
-  expect(root.querySelector('.friends-near p.muted')).toBeNull();
   expect(NEAR_KM).toBe(200);
-  // Glasgow names Christina and Siân, who both live there; the place is the home city's, with nothing to change it
-  expect(near.rows.find((r) => r?.includes('Glasgow'))).toMatch(/Christina.*Siân/u);
-  expect(near.sharing).toMatch(/^Sharing their plans: Christina \(\d+\), Cédric \(\d+\) and Siân \(\d+\)$/u);
-  expect([...root.querySelectorAll('button')].map((b) => b.ariaLabel)).toEqual(['About this list']);
-  expect([...root.querySelectorAll('section > h2')].map((h2) => said(h2))).toEqual([
-    `Near ${home}`,
-    'Rest of the world',
+  expect(list.summary).toBe(`6 festivals · 3 people within 200 km of ${home}`);
+  expect(list.months[0]).toBe('November 2026 · 3 festivals');
+  expect(glasgowOf(root)?.lines).toEqual(['teaching: Christina and Siân']);
+  expect(list.rows.map((r) => r.lines[0]?.split(':')[0])).toContain('going');
+  // a short list: no bar to narrow it, and who shares plans said in a line
+  expect(list.bar).toBe(false);
+  expect(list.sharing).toMatch(/^Sharing their plans: Christina \(\d+\), Cédric \(\d+\) and Siân \(\d+\)$/u);
+  expect(friendsTabs().map(([k, words]) => [k, words])).toEqual([
+    ['near', `Near ${home}`],
+    ['everywhere', 'Everywhere'],
   ]);
-  expect(said(root.querySelector('.friends-rest p'))).toBe('Not available yet');
 });
 
-test('a festival on now says so in the Friends tab, as on its card', () => {
+test('a festival on now says so in the Friends tab, as on its card, and in its Now line', () => {
   const glasgow = one(
     { start_date: str },
     sql`SELECT start_date FROM event_rows WHERE city = 'Glasgow' AND id IN (SELECT event_id FROM plans) ORDER BY start_date`,
   );
-  const row = (day: string) => nearOf(onDay(day, friendsTab)).rows.find((r) => r?.includes('Glasgow'));
-  expect(row('2026-11-04')).not.toContain('On now');
-  expect(row(glasgow?.start_date ?? '')).toContain('On now');
+  const on = onDay(glasgow?.start_date ?? '', friendsTab);
+  expect(said(on.querySelector('.who-rows > li:has(.now-tag) .who-name'))).toContain('Glasgow');
+  expect(said(on.querySelector('.now-next'))).toMatch(/^Now: Glasgow[^·]*\(2\) · Next: /u);
+  expect(onDay('2026-11-04', friendsTab).querySelector('.now-tag')).toBeNull();
 });
 
-test('the Friends tab lists only the people living within 200 km of the home city', () => {
+test('a line names up to four people or couples, then three and how many more, the ticked always named', () => {
+  const goer = (n: number, booked = false) => ({
+    person_id: 1000 + n,
+    key: `p${n}`,
+    name: `P${n}`,
+    featured: false,
+    plan: KEY.plan.GOING,
+    booked_as: booked ? KEY.role.TEACHER : null,
+  });
+  const lines = (goers: ReturnType<typeof goer>[], ticked: string[] = []) =>
+    [
+      ...whoLines(
+        { goers, title: 'F', start_date: '2027-01-01', end_date: '2027-01-02', country_code: null, city: null },
+        new Set(ticked),
+      ).querySelectorAll('p'),
+    ].map((p) => said(p));
+  const four = [1, 2, 3, 4].map((n) => goer(n));
+  expect(lines(four)).toEqual(['goingP1, P2, P3 and P4']);
+  expect(lines([...four, goer(5)])).toEqual(['goingP1, P2, P3 and 2 more']);
+  expect(lines([...four, goer(5)], ['p5'])).toEqual(['goingP5, P1, P2 and 2 more']);
+  expect(lines([goer(9, true), ...four])).toEqual(['teachingP9', 'goingP1, P2, P3 and P4']);
+  expect(NAMED_UP_TO).toBe(4);
+});
+
+test('the Friends tab keeps the festivals all the friends ticked go to, or any of them, and says when none is', () => {
+  const glasgow = listed('').filter((n) => n?.includes('Glasgow'));
+  expect(listed('with=christina,sian')).toEqual(glasgow); // both teach in Glasgow
+  const none = onDay('2026-11-04', () => friendsTab('with=cedric,sian'));
+  expect(said(none.querySelector('.who-list'))).toBe(
+    'Cédric and Siân have no festival in common. Show those any of them goes to',
+  );
+  expect(none.querySelector('.list-summary')?.textContent).toBe('');
+  none.querySelector<HTMLButtonElement>('.who-list .link')?.click();
+  expect(listOf(none).rows.length).toBe(listed('').length); // between them, every one
+  expect(listed('with=cedric,sian&any=1').length).toBe(listed('').length);
+  // a filter in the address shows the bar, however short the list
+  expect(listOf(onDay('2026-11-04', () => friendsTab('with=sian'))).bar).toBe(true);
+});
+
+test('the Friends tab narrows the festivals by a festival’s name or city, and by the time ahead', () => {
+  expect(listed('q=prague').every((n) => n?.includes('Prague'))).toBe(true);
+  expect(listed('q=prague').length).toBe(2);
+  expect(listed('q=PRÁGUE')).toEqual(listed('q=prague'));
+  expect(listed('when=weekend').every((n) => n?.includes('Glasgow'))).toBe(true); // 6–8 Nov, the coming weekend
+  expect(listed('when=months').length).toBeLessThan(listed('').length);
+});
+
+test('the Friends tab lists only the people living within 200 km of the home city, and Everywhere everyone', () => {
   // Siân moved this far north of the home city, in degrees of latitude (about 111 km each), while then runs
-  const movedNorth = (degrees: number, then: () => string | undefined) => {
+  const movedNorth = <T>(degrees: number, then: () => T): T => {
     db?.run(
       "INSERT INTO cities (key, name, country_code, lat, lon) SELECT 'elsewhere-no', 'Elsewhere', country_code, lat + ?, lon FROM cities WHERE key = ?",
       [degrees, homeOf()?.key ?? ''],
@@ -1759,47 +1816,17 @@ test('the Friends tab lists only the people living within 200 km of the home cit
       db?.run("DELETE FROM cities WHERE key = 'elsewhere-no'");
     }
   };
-  const sharing = () => nearOf(onDay('2026-11-04', friendsTab)).sharing;
-  expect(movedNorth(1.62, sharing)).toContain('Siân'); // about 180 km
-  expect(movedNorth(2.07, sharing)).not.toContain('Siân'); // about 230 km
-  // and the festivals name only the people near: Glasgow, Christina without Siân
-  const glasgow = () => nearOf(onDay('2026-11-04', friendsTab)).rows.find((r) => r?.includes('Glasgow'));
-  expect(movedNorth(2.07, glasgow)).not.toContain('Siân');
-});
-
-test('the Friends tab’s (i) shows what its list is on hover, on focus and on a tap, and Escape hides it', () => {
-  const root = onDay('2026-11-04', friendsTab);
-  document.body.append(root);
-  try {
-    const info = root.querySelector<HTMLButtonElement>('.friends-near h2 .info-btn');
-    const card = root.querySelector<HTMLElement>('.info-card');
-    const seen = () => [info?.getAttribute('aria-expanded'), card?.hidden];
-    expect([info?.ariaLabel, info?.getAttribute('aria-controls')]).toEqual(['About this list', card?.id]);
-    // its own id, never another tab's drawn before it
-    const other = onDay('2026-11-04', friendsTab).querySelector('.info-card')?.id;
-    expect([card?.id.startsWith('friends-about-'), other === card?.id]).toEqual([true, false]);
-    expect(info?.querySelector('svg')).not.toBeNull();
-    expect(said(card)).toBe(`Within ${NEAR_KM} km of ${homeOf()?.city}.`);
-    expect(seen()).toEqual(['false', true]);
-    info?.dispatchEvent(new MouseEvent('mouseenter'));
-    expect(seen()).toEqual(['true', false]);
-    info?.dispatchEvent(new MouseEvent('mouseleave'));
-    expect(seen()).toEqual(['false', true]);
-    info?.focus();
-    expect(seen()).toEqual(['true', false]);
-    info?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-    expect(seen()).toEqual(['false', true]);
-    // a tap keeps it, the pointer leaving or not, until the next tap
-    info?.click();
-    info?.dispatchEvent(new MouseEvent('mouseleave'));
-    expect(seen()).toEqual(['true', false]);
-    info?.click();
-    expect(seen()).toEqual(['false', true]);
-    info?.blur();
-    expect(seen()).toEqual(['false', true]);
-  } finally {
-    root.remove();
-  }
+  const near = () => listOf(onDay('2026-11-04', friendsTab));
+  expect(movedNorth(1.62, near).sharing).toContain('Siân'); // about 180 km
+  expect(movedNorth(2.07, near).sharing).not.toContain('Siân'); // about 230 km
+  // and the festivals name only the people near: Glasgow, Christina without Siân; everywhere, both
+  expect(movedNorth(2.07, () => glasgowOf(onDay('2026-11-04', friendsTab)))?.lines).toEqual(['teaching: Christina']);
+  expect(movedNorth(2.07, () => glasgowOf(onDay('2026-11-04', () => friendsTab('in=everywhere'))))?.lines).toEqual([
+    'teaching: Christina and Siân',
+  ]);
+  expect(movedNorth(2.07, () => listOf(onDay('2026-11-04', () => friendsTab('in=everywhere')))).summary).toBe(
+    '6 festivals · 3 people',
+  );
 });
 
 test('who added someone is said to a screen reader too, not on hover alone', () => {
@@ -1967,10 +1994,18 @@ test('a festival’s card and the Friends tab say who may go apart from who is g
   expect(tags(card?.querySelector('.who'))).toEqual([['maybe', true]]);
   // the hero's friends going: none, as Siân only may go
   expect(kwanza === undefined ? undefined : friendsIn([kwanza])).toBeNull();
-  const near = nearOf(onDay('2026-11-04', friendsTab));
-  expect(near.rows.find((r) => r?.includes('Kwanza'))).toBe(
-    '11–15 FebPrague Kwanza Festival – 9.edition · 🇨🇿 PragueSiân maybe',
-  );
+  const kwanzaRow = listOf(onDay('2026-11-04', friendsTab)).rows.find((r) => r.name?.includes('Kwanza'));
+  expect(kwanzaRow?.lines).toEqual(['maybe: Siân']);
+});
+
+test('a person’s page lists the festivals they said they’re going to', () => {
+  const root = document.createElement('main');
+  onDay('2026-11-04', () => personView(root, 'sian'));
+  expect(said(root.querySelector('h1'))).toBe('Siân’s festival plans');
+  expect(root.querySelectorAll('.festival-card').length).toBeGreaterThan(0);
+  const nobody = document.createElement('main');
+  personView(nobody, 'nobody');
+  expect(said(nobody)).toBe('No one by that name has shared plans.');
 });
 
 test('someone in the line-up teaches there whatever their plan says, and is counted as going', () => {

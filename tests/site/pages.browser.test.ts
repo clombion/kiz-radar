@@ -34,7 +34,7 @@ const where = (frame: HTMLIFrameElement) => {
 const onFriends = (frame: HTMLIFrameElement) =>
   vi.waitFor(
     () => {
-      if (!frame.contentDocument?.querySelector('.friends-near')) throw new Error('not on the Friends tab yet');
+      if (!frame.contentDocument?.querySelector('.who-list')) throw new Error('not on the Friends tab yet');
     },
     { timeout: 30_000, interval: 100 },
   );

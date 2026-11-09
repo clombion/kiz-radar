@@ -52,7 +52,7 @@ export function cityOf(parts: readonly string[]): string | null {
 }
 export const artistsHref = (params?: Params) => hash('artists', params);
 export const artistHref = (id: number) => hash(`artists/${id}`);
-const friendsHref = () => hash('friends');
+export const friendsHref = (params?: Params) => hash('friends', params);
 export const personHref = (key: string) => hash(`friends/${key}`);
 // A community's page, which no tab links to (it is public all the same): a page of its own, c/<key>/ from the
 // site's root (public/c/<key>/index.html, the site's page with the community's card for a shared link, made by

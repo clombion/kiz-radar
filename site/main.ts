@@ -7,6 +7,7 @@ import { communityView } from './communities.ts';
 import { countriesView } from './countries.ts';
 import { freshDay, load, loadSite, SiteUpdating } from './db.ts';
 import { button, h, onResize, toggle } from './dom.ts';
+import { friendsTabs, friendsView, placeOf } from './friends.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
@@ -81,7 +82,12 @@ const VIEWS: Readonly<Record<Route, View>> = {
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, _, qs) => countriesView(root, qs) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) },
   sources: { title: 'Sources', nav: null, waitsForData: false, show: (root) => sourcesView(root) },
-  friends: { title: 'Friends', nav: 'friends', waitsForData: true, show: (root, sub) => personView(root, sub) },
+  friends: {
+    title: 'Friends',
+    nav: 'friends',
+    waitsForData: true,
+    show: (root, [key], qs, { signal }) => (key === undefined ? friendsView(root, qs, signal) : personView(root, key)),
+  },
   community: {
     title: 'Community',
     nav: 'friends',
@@ -126,6 +132,20 @@ function route({ scrollUp = false } = {}): void {
   });
 }
 
+// the second row under the header: Explore's pages, or the places of the Friends tab's list (not a person's page)
+function drawSubnav(view: View, name: string, sub: readonly string[], qs: string): void {
+  const row: readonly (readonly [string, string, string])[] =
+    view.nav === 'explore' ? EXPLORE : name === 'friends' && sub[0] === undefined ? friendsTabs() : [];
+  const on = view.nav === 'explore' ? name : placeOf(qs);
+  subnav.hidden = row.length === 0;
+  subnav.setAttribute('aria-label', view.nav === 'explore' ? 'Explore' : 'Whose plans');
+  subnav.replaceChildren(
+    ...row.map(([k, t, href]) =>
+      h('a', { href, class: k === on && 'active', 'aria-current': k === on ? 'page' : null }, t),
+    ),
+  );
+}
+
 function show(name: string, sub: readonly string[], qs: string): void {
   const view = isRoute(name) ? VIEWS[name] : FINDER; // an address naming no view shows the festivals
   if (view.nav === 'explore') exploreHint.mark();
@@ -138,12 +158,7 @@ function show(name: string, sub: readonly string[], qs: string): void {
     if (on) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
   }
-  subnav.hidden = view.nav !== 'explore';
-  subnav.replaceChildren(
-    ...EXPLORE.map(([k, t, href]) =>
-      h('a', { href, class: k === name && 'active', 'aria-current': k === name ? 'page' : null }, t),
-    ),
-  );
+  drawSubnav(view, name, sub, qs);
   for (const row of tabRows()) pill(row);
   const root = h('div', {});
   main.replaceChildren(root);

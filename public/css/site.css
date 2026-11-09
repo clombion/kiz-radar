@@ -2190,73 +2190,6 @@ html:has(dialog.search[open]) {
   margin: 0 0 0.8rem;
   flex-wrap: wrap;
 }
-/* the Friends tab: the people near the site's home city, and the rest of the world, a section each */
-.friends-rest {
-  margin-top: 1.25rem;
-}
-/* an (i) by a heading, and the small card of what the list is under it, as a roster's names are shown */
-.friends-near {
-  position: relative;
-  margin-top: 1.25rem;
-}
-.info-btn {
-  display: inline-grid;
-  place-items: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 0;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--muted);
-  vertical-align: -0.35rem;
-  cursor: pointer;
-}
-.info-btn:hover,
-.info-btn[aria-expanded="true"] {
-  color: var(--accent);
-}
-.info-card {
-  position: absolute;
-  z-index: var(--z-popover);
-  margin: -0.35rem 0 0;
-  width: max-content;
-  max-width: min(22rem, calc(100vw - 2 * var(--gutter)));
-  padding: 0.55rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface);
-  box-shadow: 0 8px 24px rgb(var(--shadow-ink) / 0.18);
-  color: var(--text);
-  font-size: 0.78rem;
-  line-height: 1.35;
-}
-.info-card[hidden] {
-  display: none;
-}
-.plan-list {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0 2rem;
-}
-.plan-list li {
-  display: grid;
-  grid-template-columns: 9.5rem minmax(0, 1fr);
-  gap: 0.15rem 1rem;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid var(--border);
-}
-.plan-list .when {
-  font-weight: 650;
-  color: var(--accent);
-  grid-row: span 2;
-}
-.plan-list .what a {
-  font-weight: 600;
-}
-.plan-list .goer {
-  white-space: nowrap;
-}
 
 /* a community's months: a small grid each, light and without boxes, the days placed in their columns; a festival a
    highlighter stroke behind its days, a dot under a day only travelled, today ringed by hand; two months a row on a
@@ -3109,13 +3042,6 @@ html:has(dialog.peek[open]) {
     border-radius: 0;
   }
 
-  .plan-list li {
-    grid-template-columns: 1fr;
-  }
-  .plan-list .when {
-    grid-row: auto;
-  }
-
   /* a phone shows one card at a time: give its parts room, and the cards more space between them */
   .festival-card {
     gap: 0.7rem;
@@ -3713,4 +3639,167 @@ svg.defs {
   .days-stroke.days-stroke-past::after {
     background: GrayText;
   }
+}
+
+/* ---- the Friends tab's list (friends.ts): festivals by month, each its name and days, then a line per thing its
+   people do there, labelled; the bar's friend picker */
+.month-head {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 1.6rem 0 0.2rem;
+}
+.who-rows {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.who-rows > li {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.who-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+.who-name {
+  font-weight: 600;
+  color: var(--text);
+}
+.who-when {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.who-lines {
+  margin-top: 0.45rem;
+  border-left: 3px solid var(--accent-soft);
+  padding-left: 0.75rem;
+}
+.who-lines p {
+  display: grid;
+  grid-template-columns: 5.2rem minmax(0, 1fr);
+  gap: 0.6rem;
+  margin: 0.15rem 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.who-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 0.15rem;
+}
+.who-list {
+  margin-bottom: 2rem;
+}
+.sharing {
+  margin-top: 1.4rem;
+}
+.picker {
+  left: var(--gutter);
+  right: auto;
+  gap: 0.6rem;
+}
+.picker .mini-search {
+  max-width: none;
+  flex: none;
+}
+.pick-list {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.pick-head {
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0.6rem 0 0.1rem;
+}
+.pick-scroll {
+  max-height: 15rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  mask-image: linear-gradient(var(--text) 85%, transparent); /* only its opacity counts */
+}
+.pick-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  cursor: pointer;
+}
+.pick-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* every checkbox of the site, in its colours rather than the browser's */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  flex: none;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--border));
+  border-radius: 5px;
+  background: var(--surface);
+  display: inline-grid;
+  place-content: center;
+  vertical-align: -0.2em;
+  cursor: pointer;
+}
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.32rem;
+  height: 0.62rem;
+  border: solid var(--accent-ink);
+  border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg) scale(0);
+}
+input[type="checkbox"]:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+input[type="checkbox"]:checked::before {
+  transform: translateY(-1px) rotate(45deg) scale(1);
+}
+input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+input[type="checkbox"]:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+@media (max-width: 640px) {
+  .who-top {
+    flex-direction: column-reverse;
+    gap: 0.1rem;
+  }
+}
+.now-next {
+  color: var(--muted);
+  margin: 0.4rem 0 0;
+}
+.now-next b {
+  color: var(--text);
+}
+/* a name in a line of who goes, with its tag: never split between two lines */
+.goer {
+  white-space: nowrap;
 }
