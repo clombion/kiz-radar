@@ -3792,12 +3792,14 @@ input[type="checkbox"]:disabled {
     gap: 0.1rem;
   }
 }
+/* who is away now and who goes next, under the title: the rows' labelled lines, in a panel of their own */
 .now-next {
-  color: var(--muted);
-  margin: 0.4rem 0 0;
-}
-.now-next b {
-  color: var(--text);
+  margin: 0.8rem 0 0;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
 }
 /* a name in a line of who goes, with its tag: never split between two lines */
 .goer {

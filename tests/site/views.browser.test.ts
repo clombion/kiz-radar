@@ -1750,7 +1750,11 @@ test('a festival on now says so in the Friends tab, as on its card, and in its N
   );
   const on = onDay(glasgow?.start_date ?? '', friendsTab);
   expect(said(on.querySelector('.who-rows > li:has(.now-tag) .who-name'))).toContain('Glasgow');
-  expect(said(on.querySelector('.now-next'))).toMatch(/^Now: Glasgow[^·]*\(2\) · Next: /u);
+  expect([...on.querySelectorAll('.now-next p')].map((l) => said(l.querySelector('.who-label')))).toEqual([
+    'Now',
+    'Next',
+  ]);
+  expect(said(on.querySelector('.now-next p:first-child span:last-child'))).toMatch(/^Glasgow.*\(2\)$/u);
   expect(onDay('2026-11-04', friendsTab).querySelector('.now-tag')).toBeNull();
 });
 

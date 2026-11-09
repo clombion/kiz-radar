@@ -291,26 +291,27 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
   render();
 }
 
-// "Now: Kizomba Queen (14), Glasgow Kizomba Festival 5.0 (4) and 9 more · Next: KUOF, from 20 Nov (3)": the festivals
-// on now, the most people first, two named; and the next to start
+// Who is away and who goes next, as labelled lines in a panel: "Now  Kizomba Queen (14), Glasgow Kizomba Festival 5.0
+// (4) and 9 more" (the festivals on now, the most people first, two named) and "Next  KUOF (3), from 20 Nov"; each
+// festival opening on the map
 const NOW_NAMED = 2;
 function nowAndNext(all: readonly Festival[], d: string): HTMLElement | null {
   const now = all.filter((e) => e.phase === KEY.phase.ON).sort((a, b) => b.goers.length - a.goers.length);
   const next = all.find((e) => e.start_date > d);
-  const named = (e: Festival) => [e.title, h('span', { class: 'muted' }, ` (${e.goers.length})`)];
+  const named = (e: Festival) => [
+    h('a', { href: eventOnMapHref(e.id), class: 'who-name' }, e.title),
+    h('span', { class: 'muted' }, ` (${e.goers.length})`),
+  ];
+  const line = (label: string, ...what: Kid[]) =>
+    h('p', {}, h('span', { class: 'who-label' }, label), h('span', {}, ...nodes(what)));
   const rest = now.length - NOW_NAMED;
-  const parts: Kid[] = [
+  const lines = [
     now.length > 0
-      ? [h('b', {}, 'Now: '), joined([...now.slice(0, NOW_NAMED).map(named), ...(rest > 0 ? [`${rest} more`] : [])])]
+      ? line('Now', joined([...now.slice(0, NOW_NAMED).map(named), ...(rest > 0 ? [`${rest} more`] : [])]))
       : null,
-    next === undefined ? null : [h('b', {}, 'Next: '), named(next), `, from ${dayMonth(next.start_date)}`],
+    next === undefined ? null : line('Next', named(next), `, from ${dayMonth(next.start_date)}`),
   ].filter((x) => x !== null);
-  if (parts.length === 0) return null;
-  return h(
-    'p',
-    { class: 'now-next' },
-    parts.flatMap((x, i) => (i === 0 ? [x] : [' · ', x])),
-  );
+  return lines.length === 0 ? null : h('div', { class: ['who-lines', 'now-next'] }, lines);
 }
 
 // how many festivals are listed, of how many, and where most go when many people share plans

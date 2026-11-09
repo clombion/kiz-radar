@@ -88,8 +88,8 @@ sides only.
   **Everywhere** (everyone sharing plans); `#friends?in=everywhere`. The visitor's own communities will join that row
   once there are accounts.
 
-  - Under the title, a line says who is away now and who goes next: the festivals on now, the two with the most people
-    named and the rest counted, and the next to start.
+  - Under the title, a panel of two labelled lines, as the rows have: Now (the festivals on now, the two with the most
+    people named and the rest counted) and Next (the next to start).
   - The festivals to come, by month ("November 2026 · 3 festivals"), each with its name, place and days, then a line per
     thing its people do there, labelled (teaching or playing first, then going, then maybe). A line names up to four
     people or couples (`NAMED_UP_TO`, `site/plans.ts`); past that, the first three and "and N more", which opens the
