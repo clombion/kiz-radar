@@ -4,6 +4,8 @@ import { q, site, sql } from './db.ts';
 import { h, type Kid } from './dom.ts';
 import { currency } from './money.ts';
 import { str } from './rows.ts';
+import { KEY } from './states.ts';
+import { type Key, text } from './wording.ts';
 
 // whether the visitor asked for less motion, and how a scroll goes for them: at once when they did
 export const calm = (): boolean => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -21,6 +23,9 @@ export const place = (e: { country_code: string | null; city: string | null }): 
   ' ',
   e.city ?? 'Place not given',
 ];
+// "On now" before a festival's name while it is on (phase on), as its card, the Friends lists and the plans say it
+export const nowTag = (e: { phase: Key<'phase'> }): Kid =>
+  e.phase === KEY.phase.ON ? [h('span', { class: 'now-tag' }, text('phase', e.phase)), ' '] : null;
 
 let names: Map<string, string> | undefined;
 export function countryName(cc: string | null | undefined): string {

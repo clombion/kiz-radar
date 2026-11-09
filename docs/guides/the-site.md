@@ -213,8 +213,10 @@ longer listed."): never "Now", and out of the days most people travel; in the ca
 ## When something fails
 
 A page that cannot be built says so in its place; anything else that goes wrong says so at the top of the page, with
-what it was doing. A request gives up after a minute. A database of another build than the summary the page loaded (a
-publish between the two) is refused with "reload the page".
+what it was doing. A request gives up after a minute. Files of two builds (the database and the summary, or the scripts
+and the database: GitHub Pages' cache keeps each file up to ten minutes after a publish) put a page in place of the
+whole view, saying the site is being updated; it loads the page again every minute, and after a quarter of an hour stops
+and says it could not load.
 
 ## The share card and the icons
 

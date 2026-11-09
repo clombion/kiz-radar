@@ -21,7 +21,7 @@ import {
   unsure,
 } from './rows.ts';
 import { KEY } from './states.ts';
-import { countryName, dayRange, flag, place } from './ui.ts';
+import { countryName, dayRange, flag, nowTag, place } from './ui.ts';
 import type { Key } from './wording.ts';
 import { joined, plural, text } from './wording.ts';
 
@@ -257,6 +257,7 @@ const PLAN = {
   booked_as: opt(booked),
   id: num,
   title: str,
+  phase: state('phase'),
   ...PLACE_AND_DAYS,
 } as const;
 type Plan = RowOf<typeof PLAN>;
@@ -264,7 +265,7 @@ function plansOf(g: Named): Map<number, { e: Plan; people: Plan[] }> {
   const byEvent = new Map<number, { e: Plan; people: Plan[] }>();
   for (const r of q(
     PLAN,
-    sql`SELECT pr.person_id, pr.name, pr.status AS plan, pr.booked_as, e.id, e.title, e.city, e.country_code, e.start_date, e.end_date
+    sql`SELECT pr.person_id, pr.name, pr.status AS plan, pr.booked_as, e.id, e.title, e.phase, e.city, e.country_code, e.start_date, e.end_date
     FROM plan_rows pr JOIN event_rows e ON e.id = pr.event_id
     WHERE pr.person_id IN (SELECT value FROM json_each(?)) AND e.upcoming ORDER BY e.start_date`,
     [JSON.stringify(g.people.map((p) => p.person_id))],
@@ -298,15 +299,15 @@ function aboutLine(g: Named): Kid {
   ];
 }
 
-// a festival in a list of who's going: its days, its name (a link to it), its place and what else is said of it, and
-// who
-type Listed = { id: number; title: string } & RowOf<typeof PLACE_AND_DAYS>;
+// a festival in a list of who's going: its days, its name (a link to it), On now when it is, its place and what else
+// is said of it, and who
+type Listed = { id: number; title: string; phase: Key<'phase'> } & RowOf<typeof PLACE_AND_DAYS>;
 const planRow = (e: Listed, name: Kid, who: Kid, also = '') =>
   h(
     'li',
     {},
     h('span', { class: 'when' }, dayRange(e.start_date, e.end_date)),
-    h('span', { class: 'what' }, name, h('span', { class: 'muted' }, ' · ', place(e), also)),
+    h('span', { class: 'what' }, nowTag(e), name, h('span', { class: 'muted' }, ' · ', place(e), also)),
     who,
   );
 // a festival in a list of everyone's plans (the Friends tab, a community's page): it on the map, and who goes

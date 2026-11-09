@@ -1734,6 +1734,16 @@ test('the Friends tab lists the people near the home city, then the rest of the 
   expect(said(root.querySelector('.friends-rest p'))).toBe('Not available yet');
 });
 
+test('a festival on now says so in the Friends tab, as on its card', () => {
+  const glasgow = one(
+    { start_date: str },
+    sql`SELECT start_date FROM event_rows WHERE city = 'Glasgow' AND id IN (SELECT event_id FROM plans) ORDER BY start_date`,
+  );
+  const row = (day: string) => nearOf(onDay(day, friendsTab)).rows.find((r) => r?.includes('Glasgow'));
+  expect(row('2026-11-04')).not.toContain('On now');
+  expect(row(glasgow?.start_date ?? '')).toContain('On now');
+});
+
 test('the Friends tab lists only the people living within 200 km of the home city', () => {
   // Siân moved this far north of the home city, in degrees of latitude (about 111 km each), while then runs
   const movedNorth = (degrees: number, then: () => string | undefined) => {
