@@ -143,3 +143,182 @@ CLJ,eu-flixbus_c139f20d-df8f-4c59-8e47-bbd36945e496,Cluj-Napoca (Aeroport Park&R
 BAY,,,,
 SUJ,,,,
 OMR,ro-Oradea_393,Universitate,47.04443,21.92125
+DEB,hu-volan-helykozi_hkir:hkir_217143_1,"Debrecen, Bulgár utca",47.50891,21.62996
+ARW,ro-Compania-de-Transport-Public-Arad_91,Piata Bujac,46.19293,21.28202
+TSR,ro-Timișoara_414,Swoboda,45.79566,21.31999
+SCV,ro-Transport-Public-Local-Suceava_TPL128377,Aeroport,47.68567,26.34984
+KSC,,,,
+CMH,us-ny-Trailways-uiuc_2080,Columbus (Airport),39.99822,-82.88921
+LCK,,,,
+DAY,,,,
+PKB,,,,
+LUK,us-oh-Southwest-Ohio-Regional-Transit-Authority_BEECHUi,BEECHMONT AVE & CHURCH PL,39.12063,-84.41789
+CAK,us-oh-Stark-Area-Regional-Transit-Authority_6653,AC AIRPORT AT LAUBY RD,40.91492,-81.43095
+CVG,,,,
+HTS,,,,
+CLE,us-oh-RTA_28900,Airport Station,41.41086,-81.83704
+TOL,,,,
+CRW,,,,
+FWA,,,,
+PIT,us-pa-PRT_23116,PITTSBURGH INTERNATIONAL AIRPORT,40.49662,-80.2491
+CKB,,,,
+DTW,us-mi-smart_1,Metro Airport Evans Terminal,42.22626,-83.34621
+LEX,,,,
+YQG,ca-on-Transit-Windsor_2232,Cabana at Walker,42.26306,-82.97004
+MGW,us-wv-mlta_1667972,West Run Complex,39.65641,-79.92292
+IND,us-in-IndyGo_50848,Washington St & Hamblen Dr,39.73658,-86.3027
+BKW,,,,
+MUC,de-DELFI_de:09177:3240:1:1,München Flughafen(S),48.35296,11.78623
+BZO,eu-flixbus_82c2031d-4239-44c3-86b2-2755b1491990,Bolzano South (Stazione FS),46.47378,11.32636
+NUE,de-DELFI_de:09564:1295:13:4,Nürnberg Schleswiger Str.,49.48008,11.0616
+VRN,,,,
+SZG,at-PTA-Salzburg-Flex-2026_at:45:50015:0:3,Salzburg Hans-Schmid-Platz,47.80493,13.01877
+DXB,,,,
+SHJ,,,,
+DWC,,,,
+RKT,,,,
+FJR,,,,
+AUH,,,,
+AAN,,,,
+TIA,al-ShowMeBus_station-240,Tirana Airport – International Bus Stop,41.42086,19.71127
+OHD,,,,
+TGD,me-zpcg_7,Aerodrom,42.36531,19.23453
+TIV,rs-Litas_1944,Tivat,42.42177,18.71286
+BDS,it-Puglia-Brindisi_80,Brindisi - via Nicola Brandi - Liceo Scientifico,40.64456,17.92701
+DBV,hr-dubrovnik-libertas_535,Močići,42.56282,18.25241
+CFU,,,,
+SKP,mk-jsp_2779,ПЕТРОВЕЦ ИНТЕР ХЕМ-КОН КАТЛАНОВО,41.94229,21.60681
+IOA,,,,
+BRI,it-trenitalia_11118,BARI PALESE MACCHIE,41.15155,16.76741
+KZI,,,,
+OMO,ba-Mostar_983,Carski vinogradi,43.30176,17.84025
+PVK,,,,
+KVO,,,,
+SJJ,ba-Centrotrans_2451,NEDŽARIĆI T,43.84456,18.34065
+INI,rs-Nis_8072,Naselje Ratko Jović ( ka centru),43.34407,21.86814
+GDN,eu-flixbus_fa45d5c7-bcef-4c99-87ea-d8a89e53cc9f,"Gdansk, Gdansk Airport",54.38304,18.46746
+KGD,,,,
+SZY,pl-Polish-Trains_259152_RAIL_1_1,Szymany Lotnisko,53.48906,20.94753
+BZG,pl-Bydgoszcz_09056,Szubińska - Żwirki i Wigury,53.11615,17.96645
+WMI,eu-flixbus_bbc81f9a-abe7-4fae-aa84-b9d28c5669a3,"Nowy Dwor Mazowiecki, Warsaw-Modlin Airport",52.44587,20.65069
+PLQ,lt-klaipeda_6087,Palangos oro uostas,55.97151,21.09785
+WAW,eu-flixbus_dcc3e708-9603-11e6-9066-549f350fcb0c,"Warsaw, Chopin Airport",52.16916,20.97354
+POZ,pl-Poznań_658,Port Lotniczy Ławica,52.41351,16.82607
+LCJ,pl-Polish-Trains_264954_RAIL_1_1,Łódź Retkinia,51.74036,19.40657
+FLR,it-trenitalia_06419,FIRENZE CASTELLO,43.81943,11.21838
+PSA,eu-flixbus_46f2dccd-9034-4240-84eb-657aa66fa733,Pisa (Pisamover via San Giusto/Aurelia),43.70136,10.38934
+FRL,,,,
+BLQ,it-Emilia-Romagna-TPER-Bologna_6033,SCALA,44.51656,11.27784
+RMI,it-trenitalia_07100,RIMINI MIRAMARE,44.03024,12.61811
+PEG,,,,
+EBA,it-Toscana-AT_145621,Marina di Campo,42.74604,10.23211
+PMF,it-Emilia-Romagna-TEP-Parma_202011,via Emilia O. Villa Maria,44.80949,10.28921
+AOI,it-trenitalia_07200,CASTELFERRETTI - FALCONARA AEROPORTO,43.60699,13.35753
+BIA,fr-gtfs-transport-via-strada-les-cars-corse-du-sud_STP-PORETTAAERO,Poretta Aeroport,42.54832,9.47893
+GOA,it-trenitalia_04537,GENOVA SESTRI PONENTE,44.42237,8.84772
+VCE,eu-flixbus_dcc45c53-9603-11e6-9066-549f350fcb0c,Venice (Marco Polo Airport),45.50418,12.33619
+TSF,it-Veneto-Mobilita-di-Marca_006060,AEROPORTO CANOVA,45.6554,12.2046
+FCO,it-trenitalia_08412,FIUMICINO AEROPORTO,41.79357,12.25173
+CLY,,,,
+CIA,it-trenitalia_08650,CIAMPINO,41.8043,12.59956
+PUY,hr-pulapromet_27,VALTURSKO POLJE 1 (IZ MUNTIĆA),44.90343,13.93166
+PSR,,,,
+AJA,fr-information-sur-les-transports-en-commun_5300,AÉROPORT,41.92065,8.79367
+TRS,it-trenitalia_03213,Trieste Aeroporto,45.81742,13.48621
+AVN,fr-reseau-orizo-grand-avignon_81864,Bonpas,43.8893,4.91554
+NCE,fr-lignes-des-reseaux-transport-zou-provence-alpes-cote-d-azur-express-3-3_MCN:87756254,Nice-Saint-Augustin,43.67073,7.2162
+TLN,fr-reseau-de-transport-urbain-de-la-metropole-toulon-provence-mediterranee_HYGUYS,Guynemer (Hyères),43.10707,6.12725
+GOT,eu-flixbus_94298588-12d8-48da-a60b-65fc92561175,Gothenburg Landvetter Airport,57.66727,12.29515
+THN,se-Trafiklab_740042995,Mellanvägen,58.31018,12.33166
+HAD,se-Trafiklab_740038105,Halmstad Mickedala,56.67701,12.83128
+JKG,se-Trafiklab_740039933,Flygledarevägen,57.74734,14.07781
+AAL,dk-rejseplanen_000851000801,Flyvestationen (Thistedvej / Vadum),57.10994,9.85521
+AGH,se-Trafiklab_740001613,Barkåkra station,56.28782,12.82782
+AAR,dk-rejseplanen_000721300201,Aarhus Lufthavn (Syddjurs Kom),56.30809,10.62694
+VXO,se-Trafiklab_740034997,Växjö Gullregnsvägen,56.91007,14.73923
+TRF,no-Entur_NSR:Quay:30922,Sandefjord lufthavn Torp,59.17905,10.25229
+KSD,se-Trafiklab_740026036,"Karlstad Airport, Karlstad",59.44324,13.34767
+LPI,se-Trafiklab_740054235,Jakobsdal,58.38878,15.67775
+KRP,dk-rejseplanen_000769002301,Midtjyllands Karup Airport (Viborg Kom),56.31001,9.12014
+KRS,no-Entur_NSR:Quay:41729,Kristiansand lufthavn Kjevik,58.20224,8.07378
+RKE,dk-rejseplanen_000000005576,Finervej (Køgevej),55.57872,12.11118
+CPH,se-Trafiklab_860000858,Copenhagen Airport,55.6295,12.64519
+ORB,se-Trafiklab_740049979,Sanna gruva,59.24258,15.04001
+RNB,se-Trafiklab_740032204,Ronneby Fanjunkarevägen,56.25052,15.28311
+MMX,se-Trafiklab_740000953,Malmö Airport Sturup flygplats,55.54095,13.364
+ODE,dk-rejseplanen_000480622400,Lufthavnsvej (Nordfyn Kommune),55.47348,10.33064
+NRK,se-Trafiklab_740053976,Norrköping Aktergatan,58.6013,16.24712
+BLL,dk-rejseplanen_000551922507,Billund Lufthavn / Billund Airport,55.74658,9.14824
+TYF,se-Trafiklab_740057170,"Vinkelvägen, Torsby",60.15012,13.01099
+OSL,no-Entur_NSR:Quay:9787,Oslo lufthavn,60.19362,11.09548
+KLR,se-Trafiklab_740022587,Svaneberg,56.67098,16.30673
+LPA,,,,
+TFN,es-Transportes-interurbanos-de-Tenerife-(TITSA)_1290,SAN BENITO,28.4899,-16.3266
+TFS,es-Transportes-interurbanos-de-Tenerife-(TITSA)_7571,AEROPUERTO TENERIFE SUR (T),28.0486,-16.5767
+FUE,es-ALSA-autobuses_0001369500000001,Aeropuerto,28.45219,-13.86992
+SPC,,,,
+ACE,,,,
+VDE,,,,
+FNI,fr-offre-de-transport-du-reseau-tango-de-nimes-metropole-gtfs-gtfs-rt_GARCMA,CHAMPS DE MARS,43.76706,4.42616
+MRS,eu-flixbus_abfd3060-7ec0-45fb-bbec-7d3a8936ba54,Marseille Airport (Bus Station),43.44318,5.22045
+RLG,de-DELFI_de:13072:3053:1:1,"Weitendorf, Schwaaner Straße",53.89884,12.27751
+SGD,dk-rejseplanen_000537001001,Sønderborg Lufthavn,54.96172,9.78633
+GWT,de-DELFI_de:01054:90950::1,Tinnum Siedlung,54.89895,8.34177
+EBJ,dk-rejseplanen_000561130401,Esbjerg Lufthavn,55.52134,8.54807
+BER,de-DELFI_de:12061:900260009::10_G,Flughafen BER,52.3645,13.5139
+HDF,de-DELFI_de:13075:4060:1:1,Zirchow,53.8918,14.1428
+BHX,gb-great-britain_43000105512,Birmingham Airport Bus Terminal,52.45313,-1.73158
+EMA,gb-great-britain_260014500,Thistle Hotel,52.82579,-1.32594
+LTN,gb-great-britain_02900055,Airport Bus Station,51.87918,-0.37488
+MAN,gb-great-britain_9100MNCRIAP3,Manchester Airport,53.36542,-2.2712
+STN,gb-great-britain_1500STANS7,Diamond Hanger West,51.87574,0.23768
+LPL,gb-great-britain_2800S48089D,Liverpool John Lennon Airport (Stop 5),53.33767,-2.85516
+HUY,gb-great-britain_227000010271,Airport Terminal,53.58357,-0.34996
+LHR,gb-great-britain_490008016N3,HEATHROW CENTRAL BUS STN,51.47089,-0.45383
+LBA,gb-great-britain_450019759,Bayton Lane Junction,53.86379,-1.67229
+LCY,gb-great-britain_9400ZZDLWLA1,Woolwich Arsenal,51.49021,0.06921
+BRS,gb-great-britain_0190NSC31602,Public Transport Interchange (Bay 2),51.38747,-2.7101
+LGW,gb-great-britain_9400ZZGWNTH0,Gatwick North Terminal Shuttle Station,51.16104,-0.17644
+SOU,gb-great-britain_9100SOTPKWY,Southampton Airport Parkway,50.9507,-1.36295
+CWL,gb-great-britain_9100RHOOSE,Rhoose Cardiff International Airport,51.38715,-3.34945
+BOH,gb-great-britain_1200DOA91107,Loewy House,50.78051,-1.85301
+MME,gb-great-britain_07605861,Middleton St George Hospital,54.51513,-1.43542
+EXT,gb-great-britain_9100CBRK,Cranbrook,50.75002,-3.42098
+NCL,gb-great-britain_9400ZZTWCTP2,Callerton Parkway,55.02787,-1.70366
+SGN,,,,
+VCA,,,,
+VKG,,,,
+DLI,,,,
+VCS,,,,
+CAH,,,,
+BMV,,,,
+FAO,pt-Algarve-Vamus_far_93099,Aeroporto Faro,37.02139,-7.96885
+PRM,pt-Algarve-Vamus_ptm_42222,Penina (Hotel & Golf),37.16209,-8.57834
+BJZ,,,,
+LIS,pt-Carris_7699,Aeroporto,38.76921,-9.12809
+CAT,pt-Cascais-Próxima_5063,Matarraque,38.70786,-9.35428
+LEN,es-ALSA-autobuses_0006280700000001,Zamora. 4,42.58309,-5.64368
+OVD,es-Autobús-Principado-de-Asturias_3073,[ANZU|Aeropuerto]  Aeropuerto - Llegadas [CTA 03073],43.5586,-6.03112
+VLL,es-ALSA-autobuses_0000397900000001,Aeropuerto Villanubla (Va),41.70607,-4.84451
+BGC,,,,
+SDR,es-ALSA-autobuses_0000259400000002,Aeropuerto Santander-S.Ballest,43.42333,-3.82539
+SLM,,,,
+VRL,,,,
+SCQ,es-Autobuses-Xunta-de-Galicia_SP16145,Aeroporto da Lavacolla,42.89166,-8.42172
+LCG,es-Autobuses-Xunta-de-Galicia_SP25680,O Burgo (edificio usos múltiples),43.31795,-8.37013
+VGO,es-Autobuses-Xunta-de-Galicia_SP34650,Cova,42.2498,-8.62659
+VSE,,,,
+MAD,es-Consorcio-Regional-de-Transportes-de-Madrid-CRTM-I_par_8_07333,AV.LOGROÑO-PZA.PAJARONES,40.47526,-3.5823
+OPO,eu-flixbus_e9e4caca-0ae6-434f-9079-610de5e00a1d,Porto (Airport),41.23593,-8.66993
+LJU,si-nap_1167050,Brnik/airport Ljubljana,46.23196,14.45452
+KLU,,,,
+RJK,,,,
+MBX,si-nap_1166856,Dobrovce Mejna,46.4832,15.69897
+ZAG,hr-zet_1978_21,Ivana Pavla II,45.72768,16.05599
+GRZ,at-Railway-Current-Reference-Data-2026_at:46:1746:0:1,Flughafen Graz-Feldkirchen Bahnhof,46.99714,15.44862
+SOB,hu-volan-helykozi_hkir:hkir_562636_1,"Zalavár, Fő tér",46.66861,17.15494
+ZAD,hr-zadar_957,Zračna luka Zadar,44.097,15.353
+LNZ,at-Railway-Current-Reference-Data-2026_at:44:41501:0:1,Hörsching Bahnhst,48.24606,14.18717
+BNX,,,,
+VIE,eu-flixbus_dcbdb76f-9603-11e6-9066-549f350fcb0c,Vienna International Airport,48.11997,16.56324
+PEV,hu-volan-helykozi_hkir:hkir_437920_1,Pogányi elágazás [4],46.00257,18.23464
