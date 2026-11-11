@@ -322,3 +322,116 @@ LNZ,at-Railway-Current-Reference-Data-2026_at:44:41501:0:1,Hörsching Bahnhst,48
 BNX,,,,
 VIE,eu-flixbus_dcbdb76f-9603-11e6-9066-549f350fcb0c,Vienna International Airport,48.11997,16.56324
 PEV,hu-volan-helykozi_hkir:hkir_437920_1,Pogányi elágazás [4],46.00257,18.23464
+DOL,fr-nomad-car-region-normandie_FR:14578:ZE:1153227:ATOUMOD040,Aéroport,49.36067,0.15801
+CFR,fr-caen-la-mer-reseau-twisto-gtfs-siri_lepo02,Les Pommiers,49.15826,-0.4421
+NBJ,,,,
+GXG,,,,
+MBJ,,,,
+OCJ,,,,
+KTP,,,,
+KIN,,,,
+MZO,,,,
+BYM,,,,
+SCU,,,,
+VTU,,,,
+YHU,ca-qc-Exo-reseaudetransportmetropolitain_STH3D,Gare Longueuil-Saint-Hubert,45.50812,-73.43382
+YUL,ca-Viarail_332,Dorval,45.44892,-73.74128
+YMX,ca-qc-Exo-citlaurentides_83870,Pratt & Whitney,45.67577,-74.05862
+PBG,,,,
+MSS,,,,
+BTV,us-vt-gmt_4255601,Market Street at Hinesburg Road,44.46339,-73.17207
+SLK,,,,
+YND,ca-qc-STO_3871,POB CHEVAL-BLANC,45.50505,-75.58218
+YRO,ca-on-OCTranspo_1173,MONTRÉAL / ST-LAURENT,45.44121,-75.64628
+YOW,ca-on-OCTranspo_10714,UPLANDS,45.33278,-75.65552
+OGS,,,,
+YQB,ca-qc-RTC_1-7306,Aérogare,46.79259,-71.38279
+RUT,us-vt-thebus_840265,Route 7B and Route 103,43.54129,-72.95431
+LEB,us-nh-advance-transit_2388466,"Miracle Mile Plaza, Opp.",43.63617,-72.28917
+ART,,,,
+JCL,cz-JDF-merged_jdf:stop:18056:est:2,Homole,48.93918,14.42923
+KLV,cz-JDF-merged_jdf:stop:1707:est:2,"Karlovy Vary,Pod Hůrkami",50.21912,12.90203
+PRG,cz-PID_U2116Z301,Hostivice,50.08408,14.25838
+RNS,fr-versions-des-horaires-theoriques-des-lignes-de-bus-et-de-metro-du-reseau-star-au-format-gtfs--83282_7-2237,Aire Libre,48.06739,-1.72167
+TUF,eu-flixbus_bb6bb160-b0fc-4a77-a08c-191e65256406,Tours (Vaucanson),47.42353,0.7113
+BES,fr-base-de-donnees-multimodale-transports-publics-en-bretagne-korrigo-gtfs_BIBUS:HERBOT_3,St Herbot,48.43506,-4.40074
+LGA,us-ny-MTA-BusCompany_550724,82 ST/ASTORIA BLVD,40.76528,-73.88731
+EWR,us-nj-NJ-Transit-Rail_37953,NEWARK AIRPORT RAILROAD STATION,40.70441,-74.19072
+TEB,us-nj-NJ-Transit-Rail_160,WOOD-RIDGE,40.84398,-74.07872
+JFK,us-ny-MTA-BusCompany_550067,NORTH BOUNDARY RD/OLD ROCKAWAY BLVD,40.65725,-73.77196
+HPN,,,,
+ISP,us-ny-LIRR_179,Ronkonkoma,40.80809,-73.10594
+TTN,us-pa-SEPTA-Rail_90327,West Trenton,40.25778,-74.81528
+SWF,us-Megabus_2578039,Rt 17K & Governor Dr - Stewart Industrial Park,41.51838,-74.10749
+HVN,,,,
+ABE,us-flixbus_419bac14-8fb3-4b21-8617-a429057b8994,Lehigh Valley International Airport,40.6525,-75.4319
+PHL,us-pa-SEPTA-Rail_90404,Airport Terminal A,39.87611,-75.24528
+ACY,us-nj-NJ-Transit-Bus_23608,US-30 at APPLE WAY,39.47317,-74.56757
+AVP,us-pa-lackawanna_2118,MAIN CHERRY I,41.33763,-75.742
+BDL,,,,
+ILG,us-de-DART-First-State_2170,TRADERS LA @ BJS,39.66793,-75.59941
+WST,,,,
+LNS,us-pa-redrosetransit_1303,Rt. 501 & Oregon Rd.,40.10686,-76.30537
+DOV,us-de-DART-First-State_3791,DOVER AIR BASE VISITOR CTR,39.12275,-75.478
+ALB,us-vt-vt-translines_771184,Albany International Airport,42.74446,-73.80919
+BGM,,,,
+MDT,us-or-POINT_805,Harrisburg (Airport - MDT),40.19697,-76.75572
+PVD,us-ma-MBTA_NEC-1768-03,TF Green Airport,41.7266,-71.44245
+NPT,,,,
+ORH,,,,
+IPT,us-pa-river-valley_1557,Broad St & Montour St,41.249,-76.92167
+EWB,us-ma-MBTA_NBM-0523-S,Church Street,41.67433,-70.93913
+OCE,,,,
+ITH,us-ny-TCAT_3740,Warren @ Dart,42.48348,-76.46741
+BWI,us-md-MTA-raillink_7696,BWI Business District,39.19148,-76.67371
+ELM,,,,
+SBY,,,,
+BED,us-ma-MBTA_7889,Loomis St @ Great Rd,42.48896,-71.27153
+OKC,,,,
+SWO,,,,
+LAW,,,,
+TUL,,,,
+SPS,,,,
+ICT,,,,
+FSM,,,,
+DFW,us-flixbus_0c22b800-0085-4509-9c37-4e9e1087e073,Dallas/Fort Worth International Airport,32.90811,-97.04047
+FTW,,,,
+DAL,us-tx-dallas-area-rapidtransit_15554,WEBB CHAPEL EXT @ HARGROVE - N - NS,32.86176,-96.86522
+SCR,,,,
+MXX,se-Trafiklab_740048632,Heden Vinäs,60.96643,14.53049
+BLE,se-Trafiklab_740047479,Befälsgatan,60.43293,15.50588
+RRS,no-Entur_NSR:Quay:107824,Håneset Camping,62.56726,11.35073
+PED,pl-Polish-Trains_128071_FALLBACK,Pardubice hlavní nádraží,50.03169,15.75662
+DRS,de-DELFI_de:14612:617:1:Gleis2,Dresden Flughafen,51.12478,13.76631
+BRQ,cz-CZPTT_czptt:stop:CZ:33365:platform:2,Brno-Slatina,49.1693,16.68224
+WRO,eu-flixbus_56c1ed09-20d8-4580-b225-29ed0b1849ed,"Wroclaw, Wroclaw Airport",51.10938,16.88244
+IEG,,,,
+OSR,cz-CZPTT_czptt:stop:CZ:34603:platform:BUS,"Mošnov,Ostrava Airport",49.69334,18.11864
+BTS,eu-flixbus_dcbcbe7f-9603-11e6-9066-549f350fcb0c,Bratislava (Airport),48.17065,17.19999
+RKV,is-straeto_90000835,Gamla Hringbraut,64.13837,-21.93313
+KEF,is-straeto_20000112,KEF Brottfarir / Departures,63.99717,-22.62471
+IFJ,,,,
+AEY,is-straeto_60000168,Naustabraut / Krókeyrarnöf,65.66406,-18.08994
+RIX,lt-kautra_19704,"Riga Airport, bus stop on parking P1",56.9218,23.98052
+EPU,ee-kaugliinid_21984,Härma,58.40327,24.49272
+URE,ee-saaremaa_29379,Nooruse,58.24801,22.49791
+TAY,ee-tartumaa_20447,Lennujaam,58.31076,26.6912
+KUN,lt-kautra_200,Karmėlava II,54.97467,24.07537
+KDL,ee-hiiumaa_28850,Paluküla,58.97601,22.81715
+VNO,lt-visimarsrutai_53_2632,Žirnių st.,54.65346,25.30266
+PKV,,,,
+TLL,ee-tallinn_2300,Mõigu,59.40626,24.81607
+SID,,,,
+BVC,,,,
+SNE,,,,
+MMO,,,,
+RAI,,,,
+VXE,,,,
+TZL,,,,
+BWK,,,,
+SPU,hr-split_971FC51C-0387-41CD-B51C-A71D2681B3C8,RESNIK 1,43.54285,16.3117
+OSI,,,,
+BEG,rs-Beograd_21045,Aerodrom Nikola Tesla /polasci/,44.81995,20.29105
+KVA,,,,
+SKG,gr-Thessaloniki-OSETH_36105,ΝΕΡΑΙΔΑ,40.5131,22.98839
+AXD,,,,
