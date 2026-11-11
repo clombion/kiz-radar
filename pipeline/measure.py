@@ -14,9 +14,10 @@ of it (OurAirports' airports.csv, as the airports step reads it) is:
    takes and the vehicles it takes.
 
 An airport routed within MOST_MINUTES that airports.csv has not yet is added to it. A run asks Transitous at most
---most times, one request a second, so the first pass takes days, as agreed with the Transitous team; each answer is
-kept as it comes, so a run stopped keeps what it found and the next goes on from there, and a city measured is not
-asked about again. A transient failure is waited out once; a second, or a structural one, stops the run naming it.
+--most times, one request every transitous.PAUSE seconds, so a run takes about an hour and the first pass days, as
+agreed with the Transitous team; each answer is kept as it comes, so a run stopped keeps what it found and the next goes
+on from there, and a city measured is not asked about again. A transient failure is waited out once; a second, or a
+structural one, stops the run naming it.
 
     mise run measure -- <OurAirports' airports.csv> --most N
 """
@@ -53,8 +54,8 @@ class SpentError(Exception):
 
 
 class Asker:
-    """Transitous's searches as a run asks them: at most `most` requests, one a second, a transient failure waited out
-    once; a second failure, or a structural one, stops the run."""
+    """Transitous's searches as a run asks them: at most `most` requests, transitous.PAUSE apart, a transient failure
+    waited out once; a second failure, or a structural one, stops the run."""
 
     def __init__(self, most: int) -> None:
         self.left = most

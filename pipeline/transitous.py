@@ -1,6 +1,7 @@
 """Transitous (transitous.org), the open journey planner for public transport that pipeline/measure.py asks how long a
 trip from an airport into a festival city takes. Its terms: open-source, non-commercial use, the app named in each
-request (web.AGENT), and one request a second at most, which the caller keeps (PAUSE). It names no fares.
+request (web.AGENT), and no more than one request a second, which its team has asked us to stay well under: the caller
+keeps a pause of PAUSE between requests. It names no fares.
 
 Three of its searches: the stops near a point (stops); the many-to-one search (screen), one request for every airport
 of a city, which counts a wait for the first vehicle as travel; and the route search (route), one request for one
@@ -23,7 +24,7 @@ API = 'api.transitous.org'
 STOPS = web.Https(API, '/api/v6/map/stops')
 SCREEN = web.Https(API, '/api/experimental/one-to-many-intermodal')
 ROUTE = web.Https(API, '/api/v6/plan')
-PAUSE = 1.1  # seconds between requests: Transitous asks for one a second at most
+PAUSE = 6.0  # seconds between requests: one a second is too much for Transitous, its team told us
 # the vehicles a trip may take: every kind of public transport but a flight (RAIL: every kind of train)
 TRANSIT = 'TRAM,SUBWAY,FERRY,BUS,COACH,RAIL,FUNICULAR,AERIAL_LIFT,OTHER'
 ON_FOOT = 'WALK'  # a leg between stops, or to the first and from the last: no vehicle
