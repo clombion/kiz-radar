@@ -52,6 +52,21 @@ class Placed(NamedTuple):
     candidates: tuple[Candidate, ...]
 
 
+def flown(
+    city: City, to: Sequence[Airport], gateways: Sequence[str] | None, near: Sequence[Candidate]
+) -> list[Candidate]:
+    """The airports the site lists for a festival in city: its decision's gateways (pipeline/claims.py CityClaim) when
+    it has one, each with how far it is, the nearest first; else every airport near enough (near). Until the site
+    switches to the decisions (docs/guides/city-airports.md), the fare search still reads near (fare_weekends)."""
+    if gateways is None:
+        return list(near)
+    by_code = {a.code: a for a in to}
+    return sorted(
+        (Candidate(g, round(km(city.lat, city.lon, by_code[g].lat, by_code[g].lon))) for g in gateways if g in by_code),
+        key=lambda c: (c.km, c.airport),
+    )
+
+
 def placed(city: City | None, to: Sequence[Airport]) -> Placed | None:
     """The festival's place when its city is known, with every airport of to within MAX_AIRPORT_KM of it, the nearest
     first (by code when two are as far): it flies to the nearest until the site finds a fare elsewhere worth the way

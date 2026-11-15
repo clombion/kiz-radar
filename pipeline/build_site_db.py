@@ -23,7 +23,7 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from pipeline import airports, cities, data, enums, export, fare_store, fare_weekends, files, review, states
+from pipeline import airports, cities, claims, data, enums, export, fare_store, fare_weekends, files, review, states
 from pipeline import db as sqlite_db
 from pipeline.countries import NAMES, codes
 from pipeline.db import Reader, Transaction
@@ -250,7 +250,8 @@ create table fares (
     resold text,                                  -- a reseller's price: the airlines flying it; null for Google's
     primary key (airport, depart)
 ) strict, without rowid;
--- every airport a festival can fly to, within max_airport_km of its city, and how far: its nearest is events.airport
+-- the airports a festival's flights are shown to, and how far: its city's decided gateways (pipeline/claims.py), else
+-- every airport within max_airport_km of its city; events.airport is the nearest within max_airport_km
 create table event_airports (
     event_id integer not null references events(id) deferrable initially deferred,
     airport text not null references airports(code) deferrable initially deferred,
@@ -716,10 +717,14 @@ def places(x: Transaction, index: cities.Cities) -> None:
     )
     rows: list[Mapping[str, object]] = []
     near: list[Mapping[str, object]] = []
+    decided = claims.decisions()
+    gateways = {k: c.decision.gateways for k, c in (decided.proposed | decided.admin).items()}
     for e in listed:
         city = index.of(e.city, e.country)
         p = airports.placed(city, to)
-        near += [{'event_id': e.id, 'airport': c.airport, 'km': c.km} for c in (p.candidates if p else ())]
+        if city is not None and p is not None:
+            flies = airports.flown(city, to, gateways.get(city.key), p.candidates)
+            near += [{'event_id': e.id, 'airport': c.airport, 'km': c.km} for c in flies]
         start = day_of(e.start_date)
         rows.append(
             e.model_dump()
@@ -1399,9 +1404,9 @@ DOCS = {
     'fares': 'Round-trip economy fares from home (airports.home = 1), one adult, Friday out (depart), Monday back '
     '(return), in euros: the cheapest on one ticket of the latest search (fare_searches), Google\u2019s (stops_out '
     'alone), or a reseller\u2019s where Google had no price (resold: its airlines).',
-    'event_airports': 'Every airport within max_airport_km of each festival\u2019s city (its candidates), with km '
-    'from the city; events.airport is the nearest. The site shows each with its fare (a festival\u2019s Flights) and '
-    'flies to the best (site/fares.ts).',
+    'event_airports': 'Each festival\u2019s airports: its city\u2019s decided ones, else all within max_airport_km, '
+    'with km from the city; events.airport is the nearest. The site shows each with its fare (a festival\u2019s '
+    'Flights) and flies to the best (site/fares.ts).',
     'fare_transfers': 'Each festival weekend\u2019s cheapest self-transfer at a reseller (separate tickets), when '
     'cheaper than its fare (fares) or it has none, which its Flights add; airlines: those flying it.',
     'fare_searches': 'Each festival weekend\u2019s (airport, depart) latest search from home that did not fail: when '

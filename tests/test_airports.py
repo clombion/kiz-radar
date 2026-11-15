@@ -34,6 +34,17 @@ def test_a_festival_flies_to_every_airport_near_enough_its_city_the_nearest_firs
     assert airports.placed(None, [GLA]) is None  # a festival in no city known
 
 
+def test_a_decided_city_lists_its_gateways_alone_the_nearest_first_and_any_other_city_every_airport_near() -> None:
+    """The site lists a city's decided airports, even one farther than MAX_AIRPORT_KM, and no other near one."""
+    p = airports.placed(GLASGOW, [MAN, ABZ, EDI, PIK, GLA])
+    assert p is not None
+    decided = airports.flown(GLASGOW, [MAN, ABZ, EDI, PIK, GLA], ('MAN', 'GLA'), p.candidates)
+    assert [c.airport for c in decided] == ['GLA', 'MAN']
+    assert decided[-1].km > airports.MAX_AIRPORT_KM
+    assert airports.flown(GLASGOW, [GLA], None, p.candidates) == list(p.candidates)  # no decision: every one near
+    assert airports.flown(GLASGOW, [GLA], (), p.candidates) == []  # not served: none
+
+
 def test_the_airports_added_are_those_with_scheduled_service_near_a_festival() -> None:
     def row(code: str, kind: str, service: str, lat: float, lon: float, *, country: str = 'GB') -> dict[str, str]:
         return {

@@ -4,8 +4,9 @@ import type { Prices } from './currency.ts';
 import { KEY } from './states.ts';
 import { text } from './wording.ts';
 
-// A festival flies to any airport within max_airport_km of its city (its options, event_airports), each with the
-// Friday-to-Monday return found for its weekend from home, if one was. The card's flight is the best of them (best).
+// A festival flies to its city's decided airports, else any within max_airport_km of it (its options, event_airports),
+// each with the Friday-to-Monday return found for its weekend from home, if one was. The card's flight is the best of
+// them (best).
 
 // the return flight found for a weekend: its price in euros (the return's), the day it flies back (fares.return), its
 // stops each way and when it was found; resold names the airlines flying it when the price is a reseller's (Google

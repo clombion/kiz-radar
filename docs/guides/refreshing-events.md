@@ -67,25 +67,26 @@ the site says the stops "out". Every search is kept, with every offer it saw, in
 run in `pipeline/fare_offers/`, never written again once the run is over (`mise run fares -- show` lists them, the
 latest first). The site's fares are derived from it in the build: each festival weekend's latest search from home that
 did not fail, and its cheapest offer on one ticket. Home is the airport marked `home` in `pipeline/airports.csv`; a
-festival's airports are every one within 250 km of its city. Its nearest is searched for any flight, on the intervals
-below. The others are worth it only by a direct flight: they are searched for direct flights alone, half as often
-(`EXTRA_SLOWER`), and only after every nearest airport's weekend due that day, within the run's searches. One with no
-direct flight that weekend is marked so (its search found none) and not searched again for it, unless it becomes a
-festival's nearest; and when that weekend is within 91 days (`SCHEDULED_DAYS`, as far ahead as airlines surely have
-their flights on sale), the airport is not searched as an extra for any weekend for 182 days (`NO_DIRECT_DAYS`), unless
-another of its weekends has one. A route from home runs most weeks of a season or not at all, and most of the airports
-within reach of a festival have none from Bergen. Each weekend Google answered is asked of a reseller too, three seconds
-later and the same (direct flights alone for an extra): Kiwi.com's flight search, open to all, no key. Each of its trips
-is kept with its stops each way, the airlines flying it and the tickets it is booked on: a way out or back whose flights
-are in more than one of Kiwi's fare components (the part of each flight's id before its last `_`) is a self-transfer, on
-separate tickets. The weekend's Flights add its cheapest self-transfer when it is cheaper than the fare, or there is
-none ("self-transfer, separate tickets · reseller's price"); it is never the card's. Google lists some direct flights
-with no price: Widerøe's, to anyone searching from outside Norway, as GitHub's runners are. For those the card takes the
-reseller's cheapest on one ticket, and says it is a reseller's price, likely cheaper from the airlines. With none there
-either, the weekend counts as a direct flight with no fare. A reseller that fails is kept as failed, and fails no run.
-The fares kept before the history was (every version of `fares.csv`, `fare_jobs.csv` and the older `docs/data/fares.csv`
-on main) are in it too, each search tagged with the file and commit it comes from (`backfill`); their stops are known
-only when there were none.
+festival's airports searched are every one within 250 km of its city (the site lists only its city's decided ones,
+[The airports a city flies to](city-airports.md), until the search reads them too). Its nearest is searched for any
+flight, on the intervals below. The others are worth it only by a direct flight: they are searched for direct flights
+alone, half as often (`EXTRA_SLOWER`), and only after every nearest airport's weekend due that day, within the run's
+searches. One with no direct flight that weekend is marked so (its search found none) and not searched again for it,
+unless it becomes a festival's nearest; and when that weekend is within 91 days (`SCHEDULED_DAYS`, as far ahead as
+airlines surely have their flights on sale), the airport is not searched as an extra for any weekend for 182 days
+(`NO_DIRECT_DAYS`), unless another of its weekends has one. A route from home runs most weeks of a season or not at all,
+and most of the airports within reach of a festival have none from Bergen. Each weekend Google answered is asked of a
+reseller too, three seconds later and the same (direct flights alone for an extra): Kiwi.com's flight search, open to
+all, no key. Each of its trips is kept with its stops each way, the airlines flying it and the tickets it is booked on:
+a way out or back whose flights are in more than one of Kiwi's fare components (the part of each flight's id before its
+last `_`) is a self-transfer, on separate tickets. The weekend's Flights add its cheapest self-transfer when it is
+cheaper than the fare, or there is none ("self-transfer, separate tickets · reseller's price"); it is never the card's.
+Google lists some direct flights with no price: Widerøe's, to anyone searching from outside Norway, as GitHub's runners
+are. For those the card takes the reseller's cheapest on one ticket, and says it is a reseller's price, likely cheaper
+from the airlines. With none there either, the weekend counts as a direct flight with no fare. A reseller that fails is
+kept as failed, and fails no run. The fares kept before the history was (every version of `fares.csv`, `fare_jobs.csv`
+and the older `docs/data/fares.csv` on main) are in it too, each search tagged with the file and commit it comes from
+(`backfill`); their stops are known only when there were none.
 
 To add the airports festivals to come can fly to, download OurAirports' `airports.csv` (ourairports.com/data, public
 domain) and run `mise run airports -- <its path>`: it adds every large or medium airport with scheduled service and an
