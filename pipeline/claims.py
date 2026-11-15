@@ -319,6 +319,12 @@ class Decisions(NamedTuple):
     proposed: dict[str, CityClaim]
 
 
+def gateways() -> dict[str, tuple[str, ...]]:
+    """Each decided city's airports, by its key: the admin's decision, else the research session's proposal."""
+    d = decisions()
+    return {k: c.decision.gateways for k, c in (d.proposed | d.admin).items()}
+
+
 def decisions() -> Decisions:
     def of(made: Iterable[Made]) -> dict[str, CityClaim]:
         return {m.claim.key: m.claim for m in resolved(made).values() if isinstance(m.claim, CityClaim)}

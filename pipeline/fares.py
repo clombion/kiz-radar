@@ -13,7 +13,8 @@ searched on its own weekday, fixed by the airport and the date, so each day's ru
 weekends. A weekend that has never been searched, or is overdue by twice its interval, doesn't wait for its weekday.
 Weekends further ahead than Google sells (SELLS_DAYS) wait.
 
-A festival's nearest airport is searched for any flight, at that interval. Its other airports (extras) are a way round
+A festival's first airport (its nearest, called so below: its city's first decided one, else the nearest within
+MAX_AIRPORT_KM, fare_weekends) is searched for any flight, at that interval. Its other airports (extras) are a way round
 the nearest, worth it only by a direct flight: they are searched for direct flights alone, EXTRA_SLOWER times less
 often, and after every weekend of the nearest airports that is due, within the run's budget. An extra that has no direct
 flight that weekend is not searched as an extra again for any weekend for NO_DIRECT_DAYS, unless one of its weekends has

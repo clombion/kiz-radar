@@ -16,6 +16,7 @@ from pydantic import BaseModel
 
 from pipeline import airports, build_site_db, cities, claims, countries, enums, fare_store, fare_weekends
 from pipeline import db as sqlite_db
+from pipeline.claims import CityClaim, Small
 from pipeline.db import Db
 from pipeline.records import (
     Airport,
@@ -30,6 +31,7 @@ from pipeline.records import (
     Spot,
     StayRow,
     Travel,
+    now,
     today,
 )
 from tests.exports import EXPORT, committed, placed
@@ -848,3 +850,30 @@ def test_a_person_added_links_to_the_artist_record_booked(memory: Memory) -> Non
         x.execute("insert into event_artists values (5, 20, 'teacher', null)")  # the couple teaches
         x.script(build_site_db.TABLES['seeded_rows'])
     assert db.value(int, 'select artist_id from seeded_rows') == 20
+
+
+def test_a_decided_city_is_searched_at_its_gateways_alone_the_first_for_any_flight() -> None:
+    """The fare search reads a city's decision (claims.gateways): the first airport searched for any flight, the
+    others for direct flights, and no other airport near the city; an undecided city, every airport near it."""
+    placed()
+    claims.propose(
+        [
+            CityClaim(
+                field='city',
+                key='oslo-no',
+                decision=Small(tier=enums.CityTier.SMALL, gateways=('TRF', 'OSL')),
+                made_at=now(),
+                note='a test decision',
+            )
+        ]
+    )
+    friday = airports.weekend_friday(today() + dt.timedelta(days=30))
+    oslo = fare_weekends.Listed(city='Oslo', country='Norway', start_date=friday.isoformat())
+    assert {a: first for (a, _), first in fare_weekends.weekends_of([oslo], today()).items()} == {
+        'TRF': True,
+        'OSL': False,
+    }
+    glasgow = fare_weekends.Listed(city='Glasgow', country='United Kingdom', start_date=friday.isoformat())
+    near = fare_weekends.weekends_of([glasgow], today())
+    assert len(near) > 1  # undecided: every airport within MAX_AIRPORT_KM
+    assert sum(near.values()) == 1  # its nearest alone for any flight

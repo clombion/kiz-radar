@@ -717,8 +717,7 @@ def places(x: Transaction, index: cities.Cities) -> None:
     )
     rows: list[Mapping[str, object]] = []
     near: list[Mapping[str, object]] = []
-    decided = claims.decisions()
-    gateways = {k: c.decision.gateways for k, c in (decided.proposed | decided.admin).items()}
+    gateways = claims.gateways()
     for e in listed:
         city = index.of(e.city, e.country)
         p = airports.placed(city, to)

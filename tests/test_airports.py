@@ -34,13 +34,13 @@ def test_a_festival_flies_to_every_airport_near_enough_its_city_the_nearest_firs
     assert airports.placed(None, [GLA]) is None  # a festival in no city known
 
 
-def test_a_decided_city_lists_its_gateways_alone_the_nearest_first_and_any_other_city_every_airport_near() -> None:
-    """The site lists a city's decided airports, even one farther than MAX_AIRPORT_KM, and no other near one."""
+def test_a_decided_city_flies_to_its_gateways_alone_in_order_and_any_other_city_to_every_airport_near() -> None:
+    """A city's decided airports, even one farther than MAX_AIRPORT_KM, and no other near one."""
     p = airports.placed(GLASGOW, [MAN, ABZ, EDI, PIK, GLA])
     assert p is not None
     decided = airports.flown(GLASGOW, [MAN, ABZ, EDI, PIK, GLA], ('MAN', 'GLA'), p.candidates)
-    assert [c.airport for c in decided] == ['GLA', 'MAN']
-    assert decided[-1].km > airports.MAX_AIRPORT_KM
+    assert [c.airport for c in decided] == ['MAN', 'GLA']  # in the decision's order: the first searched for any flight
+    assert decided[0].km > airports.MAX_AIRPORT_KM
     assert airports.flown(GLASGOW, [GLA], None, p.candidates) == list(p.candidates)  # no decision: every one near
     assert airports.flown(GLASGOW, [GLA], (), p.candidates) == []  # not served: none
 
