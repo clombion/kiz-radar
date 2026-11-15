@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "amsterdam-nl",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "AMS",
+   "RTM",
+   "EIN"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "AMS 24 min by train and metro (1 change); RTM 1 h 13 by bus, train and metro (2 changes); EIN 1 h 51 by coach, train and tram (2 changes)"
+}

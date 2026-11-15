@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "oslo-no",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "OSL",
+   "TRF"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "OSL 32 min by high-speed train; TRF 2 h 03 by bus and coach (2 changes)"
+}

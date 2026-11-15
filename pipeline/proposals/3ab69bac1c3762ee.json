@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "poitiers-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "ORY",
+   "BOD"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "ORY 2 h 05 by metro, high-speed train and bus (4 changes); BOD 2 h 09 by bus, train and high-speed train (4 changes). PIS has a few Ryanair routes only."
+}

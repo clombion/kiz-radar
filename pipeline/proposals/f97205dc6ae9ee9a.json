@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "leon-es",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "OVD",
+   "MAD"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "OVD 2 h 38 by bus and train (3 changes); MAD 2 h 58 by bus, train and high-speed train (4 changes). LEN and VLL fly to one or two cities."
+}

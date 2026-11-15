@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "vienna-at",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "VIE",
+   "BTS"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "VIE 27 min by coach and metro (1 change); BTS 1 h 40 by bus, train and metro (2 changes)"
+}

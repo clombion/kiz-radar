@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "pamplona-es",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "PNA",
+   "EAS",
+   "BIO"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "PNA 18 min by bus; EAS 2 h 06 by train and bus (3 changes); BIO 2 h 35 by train, metro and bus (3 changes)"
+}

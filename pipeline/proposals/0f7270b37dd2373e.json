@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "vigo-es",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "VGO",
+   "OPO"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "VGO 20 min by Vitrasa bus (4A), researched (the planner came back with 47 h); OPO 3 h 04 by coach and bus (2 changes). SCQ is over 4 h."
+}

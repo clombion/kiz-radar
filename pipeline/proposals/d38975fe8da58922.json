@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "lyon-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "LYS",
+   "GVA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "LYS 44 min by tram and metro (1 change); GVA 2 h 25 by train and metro (3 changes)"
+}

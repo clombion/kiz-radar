@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "enschede-nl",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "FMO",
+   "AMS",
+   "DTM"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "FMO 1 h 53 by bus and train (2 changes); AMS 2 h 13 by train (1 change); DTM 2 h 26 by train (2 changes)"
+}

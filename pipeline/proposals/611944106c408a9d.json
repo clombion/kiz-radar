@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "nancy-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "LUX",
+   "CDG"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "LUX 2 h 10 by bus and train (2 changes); CDG 2 h 32 by train, high-speed train and bus (2 changes). SXB and ETZ have few flights; CDG has a direct TGV."
+}

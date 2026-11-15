@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "milan-it",
+ "decision": {
+  "tier": "big",
+  "gateways": [
+   "MXP",
+   "LIN",
+   "BGY"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "MXP 48 min by train and metro (1 change); LIN 16 min by metro; BGY 1 h by coach and metro (1 change). MXP first, as the main airport."
+}

@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "columbus-us",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "CMH"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "CMH 25 min by the COTA AirConnector bus, researched (the planner found only coaches). LUK, the planner's quickest, is Cincinnati's general aviation field."
+}

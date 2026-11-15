@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "orleans-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "ORY",
+   "CDG"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "ORY 1 h 46 by metro, train and tram (3 changes); CDG 2 h 09 by train (2 changes). TUF has a few Ryanair routes only."
+}

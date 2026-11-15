@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "washington-us",
+ "decision": {
+  "tier": "big",
+  "gateways": [
+   "IAD",
+   "DCA",
+   "BWI"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "IAD 1 h by metro; DCA 25 min by metro and bus (2 changes); BWI 1 h 07 by bus, high-speed train and metro (2 changes). IAD first, as the main airport."
+}

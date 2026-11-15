@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "barcelona-es",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "BCN",
+   "GRO",
+   "REU"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "BCN 39 min by metro and train (3 changes); GRO 1 h 32 by bus, high-speed train and metro (2 changes); REU 2 h 09 by bus, high-speed train and metro (3 changes)"
+}

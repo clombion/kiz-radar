@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "lisbon-pt",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "LIS"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "LIS 28 min by bus and metro (1 change). CAT is military."
+}

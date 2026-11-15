@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "tallinn-ee",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "TLL",
+   "HEL"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "TLL 22 min by bus and tram (1 change); HEL 3 h 12 by suburban train, tram and coach (2 changes)"
+}

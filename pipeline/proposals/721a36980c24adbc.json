@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "toulouse-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "TLS"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "TLS 24 min by bus"
+}

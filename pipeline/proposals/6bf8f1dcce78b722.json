@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "tours-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "ORY",
+   "CDG"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "ORY 1 h 49 by metro, high-speed train and train (4 changes); CDG 2 h 07 by high-speed train and train (1 change). TUF has a few Ryanair routes only."
+}

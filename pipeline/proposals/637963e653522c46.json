@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "xuan-huong-da-lat-vn",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "DLI"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "DLI 40 min by the airport shuttle bus, researched. The planner found no trip."
+}

@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "dusseldorf-de",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "DUS",
+   "CGN",
+   "DTM"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "DUS 13 min by train and metro (1 change); CGN about 50 min by train, researched (the planner started at a coach stop); DTM 1 h 13 by train and metro (1 change)"
+}

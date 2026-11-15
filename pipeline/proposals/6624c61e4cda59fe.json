@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "reykjavik-is",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "KEF"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "KEF 1 h 29 by bus (1 change). RKV is domestic."
+}

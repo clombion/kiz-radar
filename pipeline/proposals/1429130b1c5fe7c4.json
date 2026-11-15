@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "warsaw-pl",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "WAW",
+   "WMI"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "WAW 33 min by coach and train (1 change); WMI 57 min by coach and metro (1 change)"
+}

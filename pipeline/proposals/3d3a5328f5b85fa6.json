@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "riga-lv",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "RIX"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "RIX 33 min by bus"
+}

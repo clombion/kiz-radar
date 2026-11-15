@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "hamburg-de",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "HAM",
+   "BRE"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "HAM 33 min by suburban train and metro (1 change); BRE 1 h 25 by tram and high-speed train (1 change). LBC has few flights."
+}

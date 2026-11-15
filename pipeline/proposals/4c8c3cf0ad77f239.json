@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "victoria-ca",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "YYJ"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "YYJ 34 min by bus"
+}

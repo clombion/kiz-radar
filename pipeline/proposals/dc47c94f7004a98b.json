@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "ho-chi-minh-city-vn",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "SGN"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "SGN 30 min by bus 109, researched. The planner found no trip."
+}

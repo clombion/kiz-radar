@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "vilnius-lt",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "VNO",
+   "KUN"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "VNO 23 min by bus (1 change); KUN 1 h 55 by coach, train and bus (2 changes)"
+}

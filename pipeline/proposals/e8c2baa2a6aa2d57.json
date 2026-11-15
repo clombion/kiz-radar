@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "durres-al",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "TIA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "TIA 45 min by the airport bus, researched (the planner found only coaches via Tirana)"
+}

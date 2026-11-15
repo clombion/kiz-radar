@@ -1,0 +1,17 @@
+{
+ "field": "city",
+ "key": "london-gb",
+ "decision": {
+  "tier": "big",
+  "gateways": [
+   "LHR",
+   "LCY",
+   "LTN",
+   "LGW",
+   "STN",
+   "SEN"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "LHR 44 min by metro, train and suburban train (3 changes); LCY 36 min by suburban train and metro (1 change); LTN 53 min by shuttle, train and metro (2 changes); LGW 54 min by shuttle, train and metro (3 changes); STN 1 h 09 by bus, train and metro (3 changes); SEN 1 h 12 by train and metro (3 changes). LHR first, as the main airport."
+}

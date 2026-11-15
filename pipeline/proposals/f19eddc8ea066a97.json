@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "bucharest-ro",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "OTP"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "OTP 51 min by train and metro (2 changes). BBU has no scheduled flights."
+}

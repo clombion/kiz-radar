@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "tangier-ma",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "TNG"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "TNG 25 min by taxi, researched. The planner found no trip."
+}

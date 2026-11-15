@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "torun-pl",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "BZG",
+   "GDN",
+   "WMI"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "BZG 1 h 23 by bus, tram and coach (2 changes); GDN 3 h 09 by train and coach (1 change); WMI 3 h 17 by coach"
+}

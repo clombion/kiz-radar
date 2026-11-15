@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "elblag-pl",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "GDN",
+   "WMI"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "GDN 1 h 38 by coach; WMI 3 h 23 by coach"
+}

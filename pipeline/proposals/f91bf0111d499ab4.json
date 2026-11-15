@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "bern-ch",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "ZRH",
+   "BSL",
+   "GVA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "ZRH 1 h 27 by train and bus (1 change); BSL 1 h 29 by train and bus (2 changes); GVA 2 h 13 by train and bus (1 change). BRN, 28 min, has almost no scheduled flights."
+}

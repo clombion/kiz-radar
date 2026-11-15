@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "bordeaux-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "BOD"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "BOD 36 min by bus. EGC flies to the UK only; TLS is over 3 h."
+}
