@@ -3,8 +3,8 @@
 // near the site's home city, or everywhere. A short list is all there is; a long one gets a bar to narrow it: by
 // friends (the festivals all of them go to, or any of them), by time, and by a festival's name or city. The choices
 // live in the address.
-import { addDays, meets, today, weekendOf } from './days.ts';
-import { q, site, sql } from './db.ts';
+import { addDays, meets, weekendOf } from './days.ts';
+import { dbDay, q, site, sql } from './db.ts';
 import { button, choices, dropdown, h, moreButton, nodes, segments } from './dom.ts';
 import { leftOut } from './festivals.ts';
 import { fold } from './fold.ts';
@@ -207,7 +207,7 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
   // festivals any of them goes to; or other choices that keep nothing
   function none(): HTMLElement {
     if (all.length === 0) return h('p', { class: 'muted' }, `No one ${where} has shared plans yet.`);
-    if (ticked.size > 1 && !s.any && kept(all, { ...s, any: 1 }, ticked, today()).length > 0)
+    if (ticked.size > 1 && !s.any && kept(all, { ...s, any: 1 }, ticked, dbDay()).length > 0)
       return h(
         'p',
         { class: 'muted' },
@@ -231,7 +231,7 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
     showInAddressBar(friendsHref(changed(s, DEFAULTS)));
     friendsBtn.replaceChildren(`Friends${ticked.size > 0 ? ` (${ticked.size})` : ''} ▾`);
     paintPicker();
-    const day = today();
+    const day = dbDay();
     const shown = kept(all, s, ticked, day);
     count.textContent =
       shown.length === all.length

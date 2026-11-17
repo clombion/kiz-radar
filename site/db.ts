@@ -7,7 +7,7 @@ import type { BindParams, Database, QueryExecResult } from 'sql.js';
 import { today } from './days.ts';
 import { list, pair, record, text } from './json.ts';
 import { get } from './net.ts';
-import { type RowOf, read, type Shape } from './rows.ts';
+import { type RowOf, read, type Shape, str } from './rows.ts';
 import { SCHEMA } from './schema.ts';
 
 const SQLJS = new URL('../vendor/', import.meta.url); // sql-wasm.wasm, beside the script index.html loads
@@ -135,4 +135,11 @@ export function exec(typed: string): QueryExecResult[] {
   if (!openCopy) throw new Error('the database is not loaded yet');
   copy ??= openCopy();
   return copy.exec(typed);
+}
+
+// the day the database reads where a festival stands by (its today, event_rows): the visitor's, set as it loads, or
+// the one a test sets; a view that also counts days itself reads this one, so both say the same day
+export function dbDay(): string {
+  const set: string | undefined = one({ day: str }, sql`SELECT day FROM today`)?.day;
+  return set ?? today();
 }
