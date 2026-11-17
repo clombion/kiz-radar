@@ -547,7 +547,7 @@ def test_a_fare_is_the_one_the_fare_history_gives_its_weekend_back_the_monday_af
             fetched_at=c.fare.search.at,
             stops_out=c.fare.offer.stops_out,
             stops_back=c.fare.offer.stops_back,
-            resold=None,  # every fare kept is Google's
+            resold=build_site_db.airlines(c.fare.offer) if c.fare.search.vendor == enums.FareVendor.KIWI else None,
         )
         for c in found
         if c.fare is not None
