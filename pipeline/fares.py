@@ -46,7 +46,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import NamedTuple, Self
 
-from pydantic import BaseModel, ConfigDict, Field, ValidationError, model_validator
+from pydantic import BaseModel, ConfigDict, Field, JsonValue, ValidationError, model_validator
 
 from pipeline import airports, calls, fare_accuracy, fare_store, fare_weekends, fli_page, web
 from pipeline.calls import Declined
@@ -60,6 +60,9 @@ WEEKS_APART = [(35, 7), (91, 14), (182, 28), (SELLS_DAYS, 42)]
 EXTRA_SLOWER = 2  # an extra airport's weekend is searched this many times less often than a nearest airport's
 PAUSE = 10  # seconds between searches; Google refused after 22 requests 10 seconds apart (2026-11-08)
 RETRY_AFTER = 60  # seconds to wait before trying a refused search once more
+# Google gives no answer to this many searches in a row: the run stops, as Google is likely blocking it (2026-11-16:
+# 53 empty pages in a row, the run going on through its whole queue, as a search with no answer counts in no budget)
+MOST_UNANSWERED = 3
 KIWI_PAUSE = 3  # seconds between a weekend's search of Google and the reseller's
 # A share of each run's budget goes to searching weekends searched from home that day from another city as well, in
 # the same mode, so that a report (mise run fares -- accuracy) can tell how well home's price predicts theirs: Oslo
@@ -106,15 +109,32 @@ class ResoldTrip(Answer):
 
     @model_validator(mode='after')
     def a_part_per_flight(self) -> Self:
-        if len(self.id.split('|')) != len(self.outbound.segments) + len(self.inbound.segments):
+        """A part per flight, out then back; parts after the last flight's (a trip of SAS's back from Geneva has three
+        for two flights) must be of its fare component, or which flight a part is of cannot be told."""
+        parts = [p.rsplit('_', 1)[0] for p in self.id.split('|')]
+        flights = len(self.outbound.segments) + len(self.inbound.segments)
+        if len(parts) < flights or set(parts[flights:]) - {parts[flights - 1]}:
             raise ValueError(f'the trip {self.id} has not one part per flight')
         return self
 
 
 class Resold(Answer):
-    """The reseller's answer: its trips."""
+    """The reseller's answer: its trips, each read on its own (readable), as one it writes otherwise must not lose
+    the others."""
 
-    itineraries: tuple[ResoldTrip, ...] = ()
+    itineraries: tuple[JsonValue, ...] = ()
+
+
+def readable(trips: Iterable[JsonValue]) -> tuple[ResoldTrip, ...]:
+    """The trips that can be read: one whose id has a part more for a flight elsewhere than after the last cannot say
+    how it is booked (ticket), and is left out."""
+    out: list[ResoldTrip] = []
+    for t in trips:
+        try:
+            out.append(ResoldTrip.model_validate(t))
+        except ValidationError:
+            continue
+    return tuple(out)
 
 
 class RpcText(Answer):
@@ -278,9 +298,12 @@ def kiwi_offers(answer: str) -> tuple[Offer, ...] | str:
         result = Rpc.model_validate_json(data).result
         if result is None or result.failed or not result.content:
             return f'the reseller gave no result: {answer[:NOTE_LENGTH]}'
-        trips = Resold.model_validate_json(result.content[0].text).itineraries
+        written = Resold.model_validate_json(result.content[0].text).itineraries
     except ValidationError as e:
         return f'the reseller wrote what cannot be read: {calls.why(e)}'
+    trips = readable(written)
+    if written and not trips:
+        return f'the reseller wrote no trip that can be read, of {len(written)}'
     return tuple(
         Offer(
             price=t.price,
@@ -358,12 +381,13 @@ def pair_origin(asked: Asked, day: dt.date) -> str:
 @dataclass
 class Run:
     """A refresh under way: its file, when it stops starting searches (until, by time.time()), the searches it made,
-    and those Google gave no answer to."""
+    those Google gave no answer to, and how many it gave none to in a row, the last ones."""
 
     path: Path
     until: float
     kept: list[Search] = field(default_factory=list[Search])
     declined: list[tuple[str, Declined]] = field(default_factory=list[tuple[str, Declined]])
+    unanswered: int = 0
 
     def search(self, asked: Asked, *, resold: bool, days_away: int) -> Searched:
         """One weekend's searches, kept in the run's file at once, and said."""
@@ -374,14 +398,16 @@ class Run:
         print(f'{where} ({days_away} days away): {said(found)}', flush=True)
         if found.declined is not None:
             self.declined.append((where, found.declined))
+        self.unanswered = 0 if found.declined is None else self.unanswered + 1
         return found
 
     @property
     def over(self) -> bool:
-        """Whether the run starts no more searches: its time is up, Google refused the last one twice, or it can never
-        succeed as made."""
+        """Whether the run starts no more searches: its time is up, Google refused the last one twice or gave no answer
+        to MOST_UNANSWERED in a row, or it can never succeed as made."""
         last = self.declined[-1][1] if self.declined else None
-        return time.time() > self.until or (last is not None and (last.stops or last.why == fli_page.REFUSED))
+        refused = last is not None and (last.stops or last.why == fli_page.REFUSED)
+        return time.time() > self.until or refused or self.unanswered >= MOST_UNANSWERED
 
 
 def from_home(run: Run, history: Sequence[Search], budget: int) -> list[Weekend]:

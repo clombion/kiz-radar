@@ -84,9 +84,10 @@ cheaper than the fare, or there is none ("self-transfer, separate tickets · res
 Google lists some direct flights with no price: Widerøe's, to anyone searching from outside Norway, as GitHub's runners
 are. For those the card takes the reseller's cheapest on one ticket, and says it is a reseller's price, likely cheaper
 from the airlines. With none there either, the weekend counts as a direct flight with no fare. A reseller that fails is
-kept as failed, and fails no run. The fares kept before the history was (every version of `fares.csv`, `fare_jobs.csv`
-and the older `docs/data/fares.csv` on main) are in it too, each search tagged with the file and commit it comes from
-(`backfill`); their stops are known only when there were none.
+kept as failed, and fails no run; a trip of its answer that cannot be read (an id whose parts cannot be matched to its
+flights) is left out, and the answer's other trips kept. The fares kept before the history was (every version of
+`fares.csv`, `fare_jobs.csv` and the older `docs/data/fares.csv` on main) are in it too, each search tagged with the
+file and commit it comes from (`backfill`); their stops are known only when there were none.
 
 To add the airports festivals to come can fly to, download OurAirports' `airports.csv` (ourairports.com/data, public
 domain) and run `mise run airports -- <its path>`: it adds every large or medium airport with scheduled service and an
@@ -118,9 +119,10 @@ started by hand takes its own (`budget`).
 
 Each weekend has its own weekday, so each day's run checks about a seventh of them; one never searched, or overdue by
 twice its interval, doesn't wait for its day. A weekend with no price on Google loses its fare; a search Google refuses
-is tried once more after a minute, and refused again stops the run, which keeps what it found. A search that failed
-(refused, or fli failing) is kept as failed, never as no price, and is no search of its weekend: it is tried on the next
-run, and the run fails naming it.
+is tried once more after a minute, and refused again stops the run, which keeps what it found; so do three searches in a
+row Google gives no answer to (`MOST_UNANSWERED`: its empty page, as on 16 November 2026, when a run asked 53 more). A
+search that failed (refused, or fli failing) is kept as failed, never as no price, and is no search of its weekend: it
+is tried on the next run, and the run fails naming it.
 
 ## Running the steps locally
 

@@ -204,6 +204,28 @@ def test_a_refused_search_is_tried_once_more_then_the_rest_waits(monkeypatch: py
     assert [s.outcome for s in kept_now()] == [FareOutcome.FAILED]
 
 
+@pytest.mark.usefixtures('weekends')
+def test_a_run_stops_after_google_gives_no_answer_to_a_few_searches_in_a_row(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Google's empty page (blocked, 2026-11-16) counts in no budget: the run stops after MOST_UNANSWERED in a row
+    rather than asking for its whole queue."""
+    due = ['GLA', 'LIS', 'OSL', 'CDG', 'MAD', 'ROM']
+
+    def weekends(_: dt.date) -> fare_weekends.Weekends:
+        return {(a, SOON): True for a in due}
+
+    monkeypatch.setattr(fare_weekends, 'weekends', weekends)
+    tries: list[str] = []
+
+    def blank(asked: fares.Asked) -> Declined:
+        tries.append(asked.airport)
+        return Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
+
+    monkeypatch.setattr(fares, 'google', blank)
+    with pytest.raises(SystemExit, match='no ds:1 payload'):
+        fares.refresh(budget=5, max_seconds=60)
+    assert len(tries) == fares.MOST_UNANSWERED < len(due)
+
+
 class KilledError(Exception):
     """A run stopped where it stood (the runner's timeout, a crash)."""
 
@@ -552,7 +574,7 @@ def test_a_reseller_s_trips_are_its_offers_each_by_the_tickets_it_is_booked_on()
         ('data: {"jsonrpc": "2.0", "id": 1, "result": {"content": [{"text": "{}x"}]}}', 'cannot be read'),
         (
             resold_answer((359, 1, ('KLM', 'KLM', 'Widerøe'))).replace('aa_0|aa_1|aa_2', 'aa_0|aa_1'),
-            'cannot be read',
+            'no trip that can be read',
         ),
     ],
     ids=['no trip', 'an error', 'unreadable', 'a trip whose id is not its flights'],
@@ -560,6 +582,17 @@ def test_a_reseller_s_trips_are_its_offers_each_by_the_tickets_it_is_booked_on()
 def test_a_reseller_s_answer_with_no_trip_or_none_to_read(answer: str, expected: tuple[()] | str) -> None:
     found = fares.kiwi_offers(answer)
     assert found == expected if isinstance(expected, tuple) else expected in str(found)
+
+
+def test_a_reseller_s_trip_that_cannot_be_read_is_left_out_and_the_others_kept() -> None:
+    """Kiwi.com writes some trips with an id of more parts than flights, one mid-way: which flight a part is of cannot
+    be told, so that trip is left out, not the answer; parts after the last flight's, of its ticket, are read."""
+    answer = resold_answer((120, 1, ('KLM', 'KLM', 'SAS')), (140, 0, ('SAS', 'SAS')), (90, 0, ('Wizz', 'easyJet')))
+    answer = answer.replace(r'\"aa_0|aa_1|aa_2\"', r'\"aa_0|aa_1|bb_0|aa_2\"', 1)  # a part mid-way: left out
+    answer = answer.replace(r'\"aa_0|aa_1\"', r'\"aa_0|aa_1|aa_2\"', 1)  # a part after the last flight's: read
+    found = fares.kiwi_offers(answer)
+    assert isinstance(found, tuple)
+    assert [(o.price, o.airlines) for o in found] == [(140.0, ('SAS', 'SAS')), (90.0, ('Wizz', 'easyJet'))]
 
 
 @pytest.mark.usefixtures('weekends')
