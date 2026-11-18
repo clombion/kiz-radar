@@ -13,11 +13,11 @@ brief's stop-and-ask list.
 | # | Task | Subtasks | Done when |
 | -- | -- | -- | -- |
 | 1.1 | Baseline and the app-test harness | (a) record test counts per Vitest project, Biome's output (94 checked, 38 infos), a one-off v8 report over `site/**`; (b) move `main.browser.test.ts`'s start-up (index body, vendor scripts, stubbed `fetch`, `import main.ts`) into a shared helper beside `shipped.ts`; (c) let a test plant rows and pin the day before the app starts; (d) open a route and wait for it to draw; (e) the same for `review.html` / `review.ts`; (f) port `main.browser.test.ts` onto it | the helper exists, `main.browser.test.ts` uses it, suite green, baseline recorded in the phase report draft |
-| 1.2 | Move pure exports out of mixed view modules (**Q1**) | one move per commit, no behaviour change: `festivals()`/`withDetails`, `friendsIn`/`togetherHref`/`NEAR_KM`/`NAMED_UP_TO`, `citiesOf`, `cityEntries`, `Drawing`, `WIDE`, `PAD`, `SAID_MS`, `done` | every value a test needs from `site/` lives in a pure module, or the test asserts the visible outcome instead |
+| 1.2 | Move pure exports out of mixed view modules (Q1: yes) | one move per commit, no behaviour change: `festivals()`/`withDetails`, `friendsIn`/`togetherHref`/`NEAR_KM`/`NAMED_UP_TO`, `citiesOf`, `cityEntries`, `Drawing`, `WIDE`, `PAD`, `SAID_MS`, `done` | every value a test needs from `site/` lives in a pure module, or the test asserts the visible outcome instead |
 | 1.3 | `views.browser.test.ts` through the app, one view at a time | split by view: event card, festivals, artists, communities, friends, gantt, people, plans' lines, search, sources; each assertion becomes what the route shows | the file no longer imports a view; each old test is in the ledger |
 | 1.4 | `onnow`, `flights`, `map`, `updating` browser tests through the app | plant crafted rows before start, pin the day | same |
 | 1.5 | `review.browser.test.ts` through `review.html` | start the review page with its fixture, drive it | same |
-| 1.6 | `page.browser.test.ts`: the helpers' tests | user-visible ones (tab oval, slide, dialog history, paged list, dismissable card) through the app; tests `:16`, `:41`, `:168` of `h()` itself: replacement proposed (**Q5**, **Stop**: deleting a test) | same, and the owner has answered for the three |
+| 1.6 | `page.browser.test.ts`: the helpers' tests | user-visible ones (tab oval, slide, dialog history, paged list, dismissable card) through the app; tests `:16`, `:41`, `:168` of `h()` itself: replacement proposed (Q5: replaced now, originals deleted with `h()` in 4.10) | same, and the owner has answered for the three |
 | 1.7 | Node tests `states.test.ts`, `styles.test.ts` | import only pure modules (after 1.2) | same |
 | 1.8 | The rule: tests import no view module | Grit rule in `lint/`, listed in `biome.jsonc`; the allowed list (pure and browser-API modules) kept in one place and named by the message; `import type` allowed; dynamic `import()` of the two entries allowed; a test running `biome lint` on a must-fail and a must-pass file | the rule passes on the repo and its two-file test passes |
 | 1.9 | Phase 1 report | the ledger (old test → new test, or "cannot be tested through the page" and why); coverage before/after; counts; decisions; brief errors | report written |
@@ -61,9 +61,17 @@ brief's stop-and-ask list.
 
 ## Open questions (from the review)
 
-- **Q1.** May Phase 1 move pure exports out of mixed view modules, as move-only commits? (Recommended: yes.)
+- **Q1.** May Phase 1 move pure exports out of mixed view modules, as move-only commits? **Answered 18 November: yes,
+  move-only commits.**
 - **Q2.** The 38 info-level Biome findings: enforce in oxlint, or leave off and record? (Recommended: off, recorded.)
 - **Q3.** Pin Solid 2.0.0 or 2.0.1? (Recommended: 2.0.1, re-checked when Phase 4 starts.)
 - **Q4.** Accept pnpm's standing warning that `eslint-plugin-solid`'s ESLint peer is missing? (Recommended: yes.)
 - **Q5.** Replace the three tests of `h()` itself with app-level tests in Phase 1, and delete them with `h()` in Phase
-  4? (Recommended: yes.)
+  4? **Answered 18 November: yes.**
+
+## Decisions taken while planning
+
+- **Phase 1 harness (task 1.1, D1):** the app starts in the test's own page, one start per test file, as
+  `main.browser.test.ts` does (answered 18 November). A frame per test was rejected: `site/db.ts:13-14` fetches data
+  from its module's address, so a frame cannot be given its own data that way, and Playwright's page-wide routing and
+  clock would reach the test runner. The built-site frame (`pages.browser.test.ts`) takes the Phase 3 smoke set.
