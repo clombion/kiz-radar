@@ -1,9 +1,10 @@
 # Refactor plan: Solid 2.0 and the Oxc toolchain
 
 The brief, reviewed against the repository on 18 November 2026, is [refactor-brief.md](refactor-brief.md). It holds the
-decisions, the repo facts each task relies on (`file:line`), and the open questions. This plan only orders the work.
-Each task is one commit series; every commit passes `mise run check` (the push hook enforces it). A phase starts only
-when the previous one's "done when" holds and its report is written.
+decisions, the repo facts each task relies on (`file:line`), and the open questions. This plan orders the work; each
+task gets its own implementation plan before its first commit. Each task is one commit series; every commit passes
+`mise run check` (the push hook enforces it). A phase starts only when the previous one's "done when" holds and its
+report is written ("Phase reports", at the end).
 
 Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "Open questions"). **Stop** = on the
 brief's stop-and-ask list.
@@ -12,12 +13,12 @@ brief's stop-and-ask list.
 
 | # | Task | Subtasks | Done when |
 | -- | -- | -- | -- |
-| 1.1 | Baseline and the app-test harness | (a) record test counts per Vitest project, Biome's output (94 checked, 38 infos), a one-off v8 report over `site/**`; (b) move `main.browser.test.ts`'s start-up (index body, vendor scripts, stubbed `fetch`, `import main.ts`) into a shared helper beside `shipped.ts`; (c) let a test plant rows and pin the day before the app starts; (d) open a route and wait for it to draw; (e) the same for `review.html` / `review.ts`; (f) port `main.browser.test.ts` onto it | the helper exists, `main.browser.test.ts` uses it, suite green, baseline recorded in the phase report draft |
-| 1.2 | Move pure exports out of mixed view modules (Q1: yes) | one move per commit, no behaviour change: `festivals()`/`withDetails`, `friendsIn`/`togetherHref`/`NEAR_KM`/`NAMED_UP_TO`, `citiesOf`, `cityEntries`, `Drawing`, `WIDE`, `PAD`, `SAID_MS`, `done` | every value a test needs from `site/` lives in a pure module, or the test asserts the visible outcome instead |
+| 1.1 | Baseline and the app-test harness | (a) record test counts per Vitest project, Biome's output (94 checked, 38 infos), a one-off v8 report over `site/**`; (b) move `main.browser.test.ts`'s start-up (index body, vendor scripts, stubbed `fetch`, `import main.ts`) into a shared helper beside `shipped.ts`; (c) let a test plant rows and pin the day before the app starts (one app start per test file); (d) open a route and wait for it to draw; (e) start `review.html` the same way; (f) port `main.browser.test.ts` onto it, its "view that throws" test moved to a file of its own | the helper exists, `main.browser.test.ts` uses it with no view import but `done` (moved in 1.2), suite green, baseline in the Phase 1 report |
+| 1.2 | Move pure exports out of mixed view modules (Q1: yes) | one move per commit, no behaviour change: `festivals()`/`withDetails`, `friendsIn`/`togetherHref`/`NEAR_KM`/`NAMED_UP_TO`, `citiesOf`, `cityEntries`, `Drawing`/`TRAITS`/`MORE_TRAITS`/`NOTE`, `WIDE`, `PAD`, `SAID_MS`, `done`; `Drawing.into` writes markup, so how `icons.ts` splits is settled in 1.2's own plan | every value a test needs from `site/` lives in a pure module, or the test asserts the visible outcome instead |
 | 1.3 | `views.browser.test.ts` through the app, one view at a time | split by view: event card, festivals, artists, communities, friends, gantt, people, plans' lines, search, sources; each assertion becomes what the route shows | the file no longer imports a view; each old test is in the ledger |
-| 1.4 | `onnow`, `flights`, `map`, `updating` browser tests through the app | plant crafted rows before start, pin the day | same |
-| 1.5 | `review.browser.test.ts` through `review.html` | start the review page with its fixture, drive it | same |
-| 1.6 | `page.browser.test.ts`: the helpers' tests | user-visible ones (tab oval, slide, dialog history, paged list, dismissable card) through the app; tests `:16`, `:41`, `:168` of `h()` itself: replacement proposed (Q5: replaced now, originals deleted with `h()` in 4.10) | same, and the owner has answered for the three |
+| 1.4 | `onnow`, `flights`, `map`, `updating` browser tests through the app | plant crafted rows before start, pin the day; each data set or day in a file of its own | same |
+| 1.5 | `review.browser.test.ts` through `review.html` | start the review page with its fixture, drive it; "kept across a reload" as a second file started with the storage the first left | same |
+| 1.6 | `page.browser.test.ts`: the helpers' tests | user-visible ones (tab oval, slide, dialog history, paged list, dismissable card) through the app; tests `:16`, `:41`, `:168` of `h()` itself: replaced by page-level tests of the same guarantees (Q5); the originals stay until `h()` goes in 4.10 | same |
 | 1.7 | Node tests `states.test.ts`, `styles.test.ts` | import only pure modules (after 1.2) | same |
 | 1.8 | The rule: tests import no view module | Grit rule in `lint/`, listed in `biome.jsonc`; the allowed list (pure and browser-API modules) kept in one place and named by the message; `import type` allowed; dynamic `import()` of the two entries allowed; a test running `biome lint` on a must-fail and a must-pass file | the rule passes on the repo and its two-file test passes |
 | 1.9 | Phase 1 report | the ledger (old test → new test, or "cannot be tested through the page" and why); coverage before/after; counts; decisions; brief errors | report written |
@@ -26,7 +27,7 @@ brief's stop-and-ask list.
 
 | # | Task | Subtasks | Done when |
 | -- | -- | -- | -- |
-| 2.1 | Spike: the toolchain loads together | pin `oxlint`, `oxlint-tsgolint`, `oxfmt`, `eslint-plugin-solid` (Q4: the ESLint peer warning); one file, type-aware on, one JS plugin rule, `eslint-plugin-solid` loaded; frozen-lockfile install holds the linux and darwin binaries | all three load on the pinned versions, or a stop with evidence |
+| 2.1 | Spike: the toolchain loads together | pin `oxlint`, `oxlint-tsgolint`, `oxfmt`, `eslint-plugin-solid` (Q4: the ESLint peer warning); one file, type-aware on, one JS plugin rule, `eslint-plugin-solid` loaded; frozen-lockfile install holds the linux and darwin binaries | type-aware linting, a JS plugin and `eslint-plugin-solid` run together on the pinned versions, or a stop with evidence |
 | 2.2 | oxfmt replaces Biome's formatter | scope to Biome's 93 formatted files (`site/states.ts` and other generated files ignored, generators fixed if they disagree); one formatting-only commit; `mise run format`, `CONTRIBUTING.md` | `oxfmt --check` clean; Biome's formatter off |
 | 2.3 | The rule mapping | `biome rage --linter` → table of each rule, its oxlint equivalent, settings ported (`no-use-before-define` functions off, `eqeqeq` null, `max-params` 4, accessibility no `public`, `consistent-test-it`, per-folder exceptions); the 38 info-level rules (**Q2**); unmapped rules beyond the 11 accepted losses listed once (**Stop**) | mapping doc in `docs/concepts/`, owner has approved the losses |
 | 2.4 | `.oxlintrc.json` with the mapped rules, on unchanged code | bare mapping, then the type-aware findings one by one: fix real issues; false positives as line suppressions plus `docs/lint-false-positives.md`; `tests/test_suppressions.py` learns `oxlint-disable-next-line`; lint `vitest.config.ts` too | oxlint, type-aware, zero findings and warnings; Biome's TS rules still on in parallel |
@@ -41,7 +42,7 @@ brief's stop-and-ask list.
 | -- | -- | -- | -- |
 | 3.1 | Spike: Vite on this code | pin `vite` at Vitest's version; inputs `main`, `review`, `icons` with fixed names, flat `public/js/`, `base: './'`, no HTML, no preload polyfill; check what it does with the four `new URL(…, import.meta.url)` sites and with `icons.js`'s exports | evidence for each, in the phase report draft |
 | 3.2 | Switch the build | `vite.config.ts`; `build` = `vite build` then `vendor`; `tsconfig.json` `noEmit`, `allowImportingTsExtensions`; knip, oxlint and `tests/site/tsconfig.json` know the new file | `mise run build:site` builds; `generate:check` clean; `render:design` draws the same cards |
-| 3.3 | Tests against the build | `pages.browser.test.ts` passes; a smoke set of routes and `review.html` in a frame of the built site under the CSP | green |
+| 3.3 | Tests against the build | `pages.browser.test.ts` passes; a smoke set of routes and `review.html` in a frame of the built site under the CSP, added to `pages.browser.test.ts` | green |
 | 3.4 | Served files and docs | list `public/` before and after; load index, review, a community page, an old `#community/<key>` link; `build:site` description, `docs/guides/the-site.md`, `CONTRIBUTING.md` | Phase 3 report written (and the `pages.yml` comment mentioned, not edited) |
 
 ## Phase 4: Solid 2.0, view by view
@@ -75,3 +76,12 @@ brief's stop-and-ask list.
   `main.browser.test.ts` does (answered 18 November). A frame per test was rejected: `site/db.ts:13-14` fetches data
   from its module's address, so a frame cannot be given its own data that way, and Playwright's page-wide routing and
   clock would reach the test runner. The built-site frame (`pages.browser.test.ts`) takes the Phase 3 smoke set.
+
+## Phase reports
+
+Each phase's report is written here as the phase ends: what changed and the commits, the counts before and after, the
+decisions the brief did not settle, and what in the brief turned out wrong.
+
+### Phase 1
+
+Not started. Task 1.1 records the baseline here.

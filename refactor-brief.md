@@ -3,6 +3,10 @@
 > **Reviewed against the repository on 18 November 2026** (`main` at `ca33b56f`). The owner's decisions are unchanged.
 > Everything the review added is marked **[Review]**: a "Repo facts" block per phase, inline notes, and a final "Review
 > findings" section. Evidence is given as `file:line`. Nothing was installed and nothing in the repository was edited.
+>
+> **Answered since (18 November):** Q1 yes (move-only commits), Q5 yes; Phase 1 tests start the app in the test's own
+> page, one start per file. Where this brief still says "until the owner answers", [refactor-plan.md](refactor-plan.md)
+> holds the answer.
 
 You are working on kiz-radar. This brief sets out decisions already made, the order of work, and how each phase is
 judged done. The decisions were researched and tested on 18 November 2026; the evidence is summarised under each one so
