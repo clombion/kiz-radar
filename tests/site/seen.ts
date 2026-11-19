@@ -6,6 +6,18 @@ import { eventOnMapHref } from '../../site/routes.ts';
 import { FIXTURE_COMMUNITY } from './community.fixture.ts';
 import { LOGIN } from './reviewed.ts';
 
+// The drawings the page shows that assistive technology reads: each beside the words that say what it means, so none
+// is (icons.ts's Drawing hides every one), the site's on the map included; Leaflet's own drawings, by their class
+// (leaflet-…), left out.
+export const unhidden = (): string[] =>
+  [...document.querySelectorAll('svg')]
+    .filter(
+      (svg) => !/(?:^|\s)leaflet-/u.test(svg.getAttribute('class') ?? '') && svg.getAttribute('aria-hidden') !== 'true',
+    )
+    .map(
+      (svg) => `${location.hash} <svg ${svg.getAttribute('viewBox') ?? ''}> in .${svg.parentElement?.className ?? ''}`,
+    );
+
 // An older link to a community's page, #community/<key> with its query: the page moves it to c/<key>/, the community's
 // own address (routes.ts's routeOf). routes.ts builds no such link (communityHref is the path, which open() refuses), so
 // the tests spell it here alone.

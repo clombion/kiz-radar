@@ -21,6 +21,7 @@ import {
   popover,
   said,
   shownDialog,
+  unhidden,
 } from './seen.ts';
 
 // a title of the build's that holds markup, and quotes and an ampersand, which would each be HTML if put in as such:
@@ -117,15 +118,6 @@ test('what holds nothing is left out: no class or aria-current on a tab not show
   }
 });
 
-// the drawings shown that assistive technology reads: each beside the words that say what it means, so none is
-// (icons.ts's Drawing hides every one); Leaflet's own markup left out
-const unhidden = (): string[] =>
-  [...document.querySelectorAll('svg')]
-    .filter((svg) => svg.closest('.leaflet-container') === null && svg.getAttribute('aria-hidden') !== 'true')
-    .map(
-      (svg) => `${location.hash} <svg ${svg.getAttribute('viewBox') ?? ''}> in .${svg.parentElement?.className ?? ''}`,
-    );
-
 test.for([
   ...new Set([...TABS, ...EXPLORE].map(([, , href]) => href)),
   sourcesHref(),
@@ -136,6 +128,33 @@ test.for([
   await app.open(href === '(the planted artist)' ? artistHref(artist) : href);
   expect(main()?.childElementCount).toBeGreaterThan(0);
   expect(strays()).toEqual([]);
+  expect(unhidden()).toEqual([]);
+});
+
+test('every drawing is hidden once a trip’s card is open', async () => {
+  const row = await kuofOf(app.open);
+  expect(row?.querySelector<HTMLElement>('.trip-body')?.hidden).toBe(false);
+  expect(main()?.querySelectorAll('svg').length).toBeGreaterThan(0);
+  expect(unhidden()).toEqual([]);
+});
+
+test('every drawing is hidden once a festival’s passes are open', async () => {
+  await app.open(festivalsHref());
+  const passes = main()?.querySelector<HTMLElement>('.festival-card .pass-btn');
+  if (passes == null) throw new Error('no card on the Festivals page lists its passes');
+  passes.click();
+  // shut once the test ends (seen.ts)
+  expect(shownDialog('.peek-close').querySelector('#passes-title')).not.toBeNull();
+  expect(unhidden()).toEqual([]);
+});
+
+test('every drawing is hidden on a phone’s map with its sheet slid up; Leaflet’s, by its class, left out', async () => {
+  await atWidth(390);
+  await app.open(mapHref());
+  main()?.querySelector<HTMLElement>('.sheet-handle')?.click();
+  expect(main()?.querySelector('.sheet-handle')?.getAttribute('aria-expanded')).toBe('true');
+  // the festivals' circles, drawn by Leaflet in an SVG of its own (leaflet-zoom-animated)
+  expect(main()?.querySelector('.leaflet-overlay-pane svg path')).not.toBeNull();
   expect(unhidden()).toEqual([]);
 });
 
