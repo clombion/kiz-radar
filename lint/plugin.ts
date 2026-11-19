@@ -19,6 +19,7 @@ import { session } from './session.ts';
 import { states } from './states.ts';
 import { statics } from './statics.ts';
 import { storage } from './storage.ts';
+import { styles } from './styles.ts';
 import { tests } from './tests.ts';
 
 // oxlint's rule, as its RuleTester takes one: the package exports no other name for it
@@ -45,6 +46,7 @@ const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } 
     states,
     statics,
     storage,
+    styles,
     tests,
   },
 };
