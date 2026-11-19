@@ -21,6 +21,15 @@ export const quotedOneOf = (names: readonly string[], before = '', after = ''): 
 export const named = (node: Node, name: string, computed = false): boolean =>
   computed ? node.type === 'Literal' && node.value === name : node.type === 'Identifier' && node.name === name;
 
+// the name a key or a member's property spells out: a name, else, where `computed`, a string or a template without
+// values, as in ['name'] or [`name`]; undefined for any other
+export function keyName(key: Node, computed: boolean): string | undefined {
+  if (!computed) return key.type === 'Identifier' ? key.name : undefined;
+  if (key.type === 'Literal') return typeof key.value === 'string' ? key.value : undefined;
+  if (key.type !== 'TemplateLiteral' || key.expressions.length > 0) return undefined;
+  return key.quasis[0]?.value.cooked ?? undefined;
+}
+
 // the name an import's specifier takes from its module: a name, or a string ({ 'a b' as c })
 export const importedName = (spec: {
   readonly imported:
@@ -58,7 +67,7 @@ export const callsName = (call: Call, name: string): boolean =>
   call.start === call.callee.start;
 
 // x.name: the name written, the member not optional (Grit's `$x.name`)
-export const namesProperty = (member: Member, names: ReadonlySet<string>): boolean =>
+const namesProperty = (member: Member, names: ReadonlySet<string>): boolean =>
   !member.computed && !member.optional && member.property.type === 'Identifier' && names.has(member.property.name);
 
 // x.name(…), name one of `names`: the name written, neither the call nor the member optional (Grit's `$x.name($...)`)
@@ -69,7 +78,7 @@ export const callsMethod = (call: Call, names: ReadonlySet<string>): boolean =>
 // assignment (Grit's `$x.name` is an expression, and these are assignment targets)
 const WRITTEN_LEFT = new Set(['AssignmentExpression', 'AssignmentPattern', 'ForInStatement', 'ForOfStatement']);
 const WRITTEN = new Set(['UpdateExpression', 'ArrayPattern', 'RestElement']);
-export const written = (member: Member): boolean => {
+const written = (member: Member): boolean => {
   const { parent } = member;
   if (WRITTEN.has(parent.type)) return true;
   if (WRITTEN_LEFT.has(parent.type)) return 'left' in parent && parent.left === member;
