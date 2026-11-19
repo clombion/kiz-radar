@@ -164,7 +164,7 @@ async function planted(plant: (db: Database) => void): Promise<Uint8Array<ArrayB
 
 // a Storage of the page's own, which no other test file sees: what the site calls, and what a test reads back; when
 // full, it reads and removes, and refuses a value set with Chromium's words
-function kept(seed: Readonly<Record<string, string>> = {}, full = false): Storage {
+export function kept(seed: Readonly<Record<string, string>> = {}, full = false): Storage {
   const items = new Map(Object.entries(seed));
   return {
     get length() {
