@@ -3,9 +3,9 @@ import { readdirSync, readFileSync } from 'node:fs';
 
 const ROOT = new URL('../../', import.meta.url);
 const read = (path: string) => readFileSync(new URL(path, ROOT), 'utf8');
-const filesIn = (dir: string, ext: string) =>
+const filesIn = (dir: string, ...ext: readonly string[]) =>
   readdirSync(new URL(dir, ROOT))
-    .filter((f) => f.endsWith(ext))
+    .filter((f) => ext.some((e) => f.endsWith(e)))
     .sort();
 
 const COMMENT_BLOCK = /\/\*[\s\S]*?\*\//gu;
@@ -18,7 +18,9 @@ export const pages = [read('public/index.html'), read('public/review.html')];
 export const css: ReadonlyMap<string, string> = new Map(
   filesIn('public/css/', '.css').map((f) => [f, read(`public/css/${f}`).replace(COMMENT_BLOCK, '')]),
 );
-const modules: ReadonlyMap<string, string> = new Map(filesIn('site/', '.ts').map((f) => [f, read(`site/${f}`)]));
+const modules: ReadonlyMap<string, string> = new Map(
+  filesIn('site/', '.ts', '.tsx').map((f) => [f, read(`site/${f}`)]),
+);
 // each module but the generated ones (the state table, the stylesheets' class names), without its comments, where
 // words may be quoted
 const GENERATED = new Set(['states.ts', 'classes.ts']);

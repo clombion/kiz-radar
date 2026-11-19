@@ -1,12 +1,18 @@
 // The site's tests: in Node for what runs on data alone (prices, wording, the sources and the shipped database), in
 // Chromium for what the page does (tests/site/*.browser.test.ts). Vitest reads this file and not vite.config.ts, the
 // build's, so the tests' modules are Vite's dev transform of site/, never the bundle; the tests that load the whole
-// site load the bundle mise run build:site wrote into public/js/.
+// site load the bundle mise run build:site wrote into public/js/. Solid's plugin compiles the browser tests' JSX with
+// Solid's development build, which carries its diagnostics: the plugin adds the development condition under Vitest and
+// vite dev, never in vite build, where Vite's own condition picks the production build as long as NODE_ENV is unset
+// (vite build then sets it to production).
+import { execFile } from 'node:child_process';
 import { readFile, stat } from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { extname, join, normalize } from 'node:path';
 import process from 'node:process';
+import solid from '@solidjs/vite-plugin';
 import { playwright } from '@vitest/browser-playwright';
+import type { BrowserCommand } from 'vitest/node';
 import { configDefaults, defineConfig } from 'vitest/config';
 import { DATA_FILE, FIXTURE_DATA, ROOT_FILE } from './tests/site/community.fixture.ts';
 
@@ -114,11 +120,37 @@ const pages = () => ({
   },
 });
 
+// The Solid component of tests/site/hello.tsx built as the site is (vite.config.ts: its plugins and options), written
+// nowhere: the code of the one module, Solid within it, for solid.browser.test.ts to run. Its exports are kept, which
+// the site's entries have none of and Vite drops. The build runs in a Node of its own without NODE_ENV, as
+// pnpm run build runs it: Vitest's NODE_ENV=test would make Vite pick Solid's development build.
+const HELLO = 'tests/site/hello.tsx';
+const BUILD = `
+const { build } = await import('vite');
+const out = await build({
+  configFile: 'vite.config.ts',
+  logLevel: 'warn',
+  build: { write: false, rolldownOptions: { input: '${HELLO}', preserveEntrySignatures: 'strict' } },
+});
+const [only, ...more] = 'output' in out ? out.output : [];
+if (only?.type !== 'chunk' || more.length > 0) throw new Error('${HELLO} built as other than one module');
+process.stdout.write(only.code);
+`;
+const built: BrowserCommand<[], string> = async () =>
+  await new Promise((resolve, reject) => {
+    const node = [process.execPath, '--input-type=module', '--eval', BUILD];
+    execFile('env', ['-u', 'NODE_ENV', ...node], { maxBuffer: 16 * 1024 * 1024 }, (error, stdout, stderr) => {
+      if (error !== null) reject(new Error(`${HELLO}'s build failed: ${stderr}`, { cause: error }));
+      else if (stderr === '') resolve(stdout);
+      else reject(new Error(`${HELLO}'s build said: ${stderr}`));
+    });
+  });
+
 // The tests of the page, in Chromium, with motion as the visitor asked for it, whatever the machine's setting: the
 // browser project as most visitors have it (the tabs' tests watch the oval move), and its calm twin for the visitor who
 // asked for less motion, which runs the files named *.calm.browser.test.ts alone, the browser project every other one.
 // A machine whose Chromium is not Playwright's own (a container with one installed) names it in CHROMIUM.
-const browserTests = (kind = '') => `tests/site/**/*${kind}.browser.test.ts`;
+const browserTests = (kind = '') => `tests/site/**/*${kind}.browser.test.{ts,tsx}`;
 const BROWSER = browserTests(),
   CALM = browserTests('.calm');
 // each browser project: its name, the visitor's motion setting, and its files
@@ -149,7 +181,7 @@ export default defineConfig({
       {
         test: {
           name: 'node',
-          include: ['tests/site/**/*.test.ts'],
+          include: ['tests/site/**/*.test.{ts,tsx}'],
           exclude: [...configDefaults.exclude, BROWSER],
           environment: 'node',
           // a zone where local midnight is mid-morning the day before in UTC, so a day read in UTC is caught
@@ -157,7 +189,7 @@ export default defineConfig({
         },
       },
       ...BROWSER_PROJECTS.map(({ name, reducedMotion, include, exclude }) => ({
-        plugins: [pages()],
+        plugins: [pages(), solid()],
         test: {
           name,
           include: [include],
@@ -169,6 +201,7 @@ export default defineConfig({
               launchOptions: CHROMIUM === undefined ? {} : { executablePath: CHROMIUM },
             }),
             headless: true,
+            commands: { built },
             instances: [{ browser: 'chromium' as const }],
           },
         },

@@ -2,13 +2,14 @@
   "$schema": "https://unpkg.com/knip@6/schema.json",
   // site/main.ts and site/review.ts, the site's, are entries by knip's Vite plugin (vite.config.ts's input), and
   // lint/plugin.ts, the house rules, by its oxlint plugin (.oxlintrc.json's jsPlugins)
-  "entry": ["tests/site/**/*.test.ts"],
+  "entry": ["tests/site/**/*.test.{ts,tsx}"],
   // lint/fixtures/ holds the files the house rules' test lints, which nothing imports; one stands as a test file
   // (tests' page.browser.test.ts), which the vitest plugin takes for an entry, and its imports resolve to nothing
-  "project": ["site/**/*.ts", "tests/site/**/*.ts", "lint/**/*.ts", "!lint/fixtures/**"],
+  "project": ["site/**/*.{ts,tsx}", "tests/site/**/*.{ts,tsx}", "lint/**/*.ts", "!lint/fixtures/**"],
   "ignore": ["lint/fixtures/**"],
-  // the world's outlines, which no module imports: package.json's vendor script copies them into public/vendor/
-  "ignoreDependencies": ["world-atlas"],
+  // the world's outlines, which no module imports: package.json's vendor script copies them into public/vendor/; and
+  // Solid's JSX compiler, which @solidjs/vite-plugin runs and depends on, named here to pin its version
+  "ignoreDependencies": ["world-atlas", "@solidjs/compiler"],
   // the pipeline's runner, which mise.toml installs: the tests' setup builds the data with it
   "ignoreBinaries": ["uv"]
 }

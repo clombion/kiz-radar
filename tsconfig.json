@@ -1,6 +1,7 @@
 {
   // The site's TypeScript (site/), checked: tsc writes nothing, Vite bundles it into public/js/ (vite.config.ts). The
-  // imports name the .ts files, which Vite resolves.
+  // imports name the .ts files, which Vite resolves. JSX (.tsx) is left as written for Solid's compiler, which the Vite
+  // plugin runs (@solidjs/vite-plugin), and typed by @solidjs/web's JSX types.
   "compilerOptions": {
     "target": "es2023",
     "lib": ["es2023", "dom", "dom.iterable"],
@@ -9,6 +10,8 @@
     "noEmit": true,
     "allowImportingTsExtensions": true,
     "types": [],
+    "jsx": "preserve",
+    "jsxImportSource": "@solidjs/web",
     "allowUmdGlobalAccess": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
