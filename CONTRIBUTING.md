@@ -36,7 +36,9 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   `lint/` (links in `routes.ts`, requests in `net.ts`, classes through `dom.ts`, markup only from `icons.ts`, promises
   reported, a state as `KEY`). A class is one the stylesheet defines (`site/classes.ts`, generated). vitest runs in Node
   and in Chromium (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and
-  fails below the coverage of the pure modules `vitest.config.ts` sets.
+  fails below the coverage of the pure modules `vitest.config.ts` sets. A test of the page starts it through
+  `tests/site/app.ts`, whose header says how (once per file; the day, data, storage and other hosts' answers stated
+  before the start); the test server answers the tests' pages with the fixture's data only, never `public/data/`.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list.
 - **Duplicates:** jscpd fails on a block written twice, at the length `.jscpd.json` sets.

@@ -11,6 +11,11 @@ export const FIXTURE_COMMUNITY = 'frost-lantern-river-maple';
 export const FIXTURE_NAME = 'Norwegians in festivals';
 // where the database with the fixture is written for the tests of the whole site, beside public/data's other files
 export const FIXTURE_DATA = '.vitest/fixture-data';
+// the addresses the test server answers with the fixture's files (vitest.config.ts), as the tests' own pages ask them
+// (app.ts): data/<file>, the fixture's alone; and a file at the root, where Vite's transform sends db.ts's '../data/'
+// in a test
+export const DATA_FILE = /^\/data\/(?<file>.+)$/u;
+export const ROOT_FILE = /^\/(?<file>[^/]+)$/u;
 // the festivals it goes to: KUOF (Oslo, 20–22 Nov 2026), HOT Ice (Riga, 26 Nov – 1 Dec), Glasgow (6–9 Nov), Prague
 // GOLD (14–18 Jan 2027), Prague Kwanza (11–15 Feb) and Cloudkiz (Enschede, 26–28 Feb)
 const KUOF = 19_033,
