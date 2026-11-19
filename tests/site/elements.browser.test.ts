@@ -117,16 +117,26 @@ test('what holds nothing is left out: no class or aria-current on a tab not show
   }
 });
 
+// the drawings shown that assistive technology reads: each beside the words that say what it means, so none is
+// (icons.ts's Drawing hides every one); Leaflet's own markup left out
+const unhidden = (): string[] =>
+  [...document.querySelectorAll('svg')]
+    .filter((svg) => svg.closest('.leaflet-container') === null && svg.getAttribute('aria-hidden') !== 'true')
+    .map(
+      (svg) => `${location.hash} <svg ${svg.getAttribute('viewBox') ?? ''}> in .${svg.parentElement?.className ?? ''}`,
+    );
+
 test.for([
   ...new Set([...TABS, ...EXPLORE].map(([, , href]) => href)),
   sourcesHref(),
   COMM(FIXTURE_COMMUNITY),
   '(the planted artist)',
   // oxlint-disable-next-line jest/no-done-callback -- test.for's callback takes the case, not a done callback
-])('%s writes no null, undefined, NaN, object or stray true and false', async (href) => {
+])('%s writes no null, undefined, NaN, object or stray true and false, and hides every drawing', async (href) => {
   await app.open(href === '(the planted artist)' ? artistHref(artist) : href);
   expect(main()?.childElementCount).toBeGreaterThan(0);
   expect(strays()).toEqual([]);
+  expect(unhidden()).toEqual([]);
 });
 
 test('a drawing is put in as the SVG icons.ts writes: the map’s sheet handle, a dance’s note in the search', async () => {
@@ -143,6 +153,7 @@ test('a drawing is put in as the SVG icons.ts writes: the map’s sheet handle, 
   const lead = semba.querySelector('.lead');
   expect([lead?.children.length, lead?.firstElementChild?.tagName]).toEqual([1, 'svg']);
   expect(lead?.querySelector('svg path')).not.toBeNull();
+  expect(unhidden()).toEqual([]);
 });
 
 test('the search has a history entry of its own: the back button closes it, and so does Escape, removing it', async () => {

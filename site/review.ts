@@ -9,6 +9,7 @@
 import { type Claim, homeClaim, mergeClaim } from './claims.ts';
 import { button, choices, h, type Kid, nodes, paged, toggle } from './dom.ts';
 import { check, write } from './github.ts';
+import { Drawing } from './icons.ts';
 import { expires, forgetToken, keepExpires, keepToken, markSettled, remembered, settled, token } from './kept.ts';
 import { get } from './net.ts';
 import {
@@ -520,28 +521,6 @@ const noCountry = (): never => {
 
 // ----- the page
 
-const SVG = 'http://www.w3.org/2000/svg';
-function svgOf(tag: string, attrs: Readonly<Record<string, string>>): Element {
-  const el = document.createElementNS(SVG, tag);
-  for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
-  return el;
-}
-// an arrow drawn, not a glyph, so it centres in its button
-function chevron(d: string): Element {
-  const svg = svgOf('svg', { viewBox: '0 0 24 24', width: '18', height: '18', 'aria-hidden': 'true' });
-  svg.append(
-    svgOf('path', {
-      d,
-      fill: 'none',
-      stroke: 'currentColor',
-      'stroke-width': '2',
-      'stroke-linecap': 'round',
-      'stroke-linejoin': 'round',
-    }),
-  );
-  return svg;
-}
-
 const fold = (s: string): string => s.normalize('NFD').replace(MARKS, '').toLowerCase();
 
 function rail(q: Queue, i: number): HTMLElement {
@@ -601,9 +580,9 @@ function queueView(q: Queue): Kid {
       h(
         'div',
         { class: 'review-foot' },
-        button({ class: 'quiet', onclick: move(i - 1), 'aria-label': 'Previous item' }, chevron('m15 18-6-6 6-6')),
+        Drawing.PREVIOUS_ITEM.into(button({ class: 'quiet', onclick: move(i - 1), 'aria-label': 'Previous item' })),
         h('span', { class: ['review-place', 'small', 'muted'] }, `${i + 1} of ${q.ids.length}`),
-        button({ class: 'quiet', onclick: move(i + 1), 'aria-label': 'Next item' }, chevron('m9 18 6-6-6-6')),
+        Drawing.NEXT_ITEM.into(button({ class: 'quiet', onclick: move(i + 1), 'aria-label': 'Next item' })),
         button({ class: 'quiet', onclick: () => go(at.tab, nextOpen(q.ids, i, settledIds)) }, 'Next open'),
         h('span', { class: ['small', 'muted', 'review-keys'] }, '← → move · 1, 2 choose · Enter writes · n next open'),
       ),

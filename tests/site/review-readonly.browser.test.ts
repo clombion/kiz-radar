@@ -1,6 +1,7 @@
 // The review page with no token: read-only, it shows no choice to make and asks GitHub nothing; the arrow keys move
 // between items, the address following; the rail's search stays with its tab; the cities are listed with nothing to
-// choose; and an empty list says so.
+// choose; an empty list says so; and its drawings, the steps between items, are hidden from assistive technology, the
+// buttons named by their words.
 import { expect, test } from 'vitest';
 import { startReview } from './app.ts';
 import { CLAIMS_TOKEN, REVIEW_ROUTE } from './reload.ts';
@@ -18,6 +19,17 @@ test('without a token the page is read-only: no choice, no note, no write button
   expect(said(theItem())).toContain('add a token');
   // since it started: GitHub is asked only to check a token, and the page has none
   expect(app.asked.filter(({ url }) => url.origin === 'https://api.github.com')).toEqual([]);
+});
+
+test('the steps between items are drawn hidden from assistive technology, each button named by its words', async () => {
+  await app.open('#contested/1');
+  const drawn = [...document.querySelectorAll('svg')];
+  expect(
+    drawn.map((svg) => [svg.closest('button')?.getAttribute('aria-label'), svg.getAttribute('aria-hidden')]),
+  ).toEqual([
+    ['Previous item', 'true'],
+    ['Next item', 'true'],
+  ]);
 });
 
 test('the arrow keys move between items, and the address follows', async () => {

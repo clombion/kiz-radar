@@ -60,9 +60,10 @@ test('open() refuses a route the address does not hold as given', async () => {
 });
 
 test('open() refuses a page that fails to draw the item', async () => {
-  // the item's arrows are drawn as SVG: without it, the queue's view throws as it builds
-  const svg = vi.spyOn(document, 'createElementNS').mockImplementation(() => {
-    throw new Error('no SVG in this test');
+  // the item's arrows are drawn by icons.ts, their markup put in their buttons: without it, the queue's view throws as
+  // it builds
+  const svg = vi.spyOn(Element.prototype, 'innerHTML', 'set').mockImplementation(() => {
+    throw new Error('no markup in this test');
   });
   onTestFinished(() => svg.mockRestore());
   await expect(app.open('#merges/1')).rejects.toThrow('the page says it failed');

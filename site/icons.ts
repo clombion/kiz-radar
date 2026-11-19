@@ -4,26 +4,35 @@ import { iconOf, type Key, type KeysWhere, text, where } from './wording.ts';
 
 // A drawing the page shows. Only this class makes one, from the SVG written in this module, so no text from the data
 // or the address ever becomes markup; and only it puts markup in an element (house/markup, lint/markup.ts, holds
-// innerHTML here).
+// innerHTML here). Each is hidden from assistive technology, as its constructor draws it: a drawing is shown beside the
+// words that say what it means, or in a button named by them, so a screen reader reading it would say nothing more.
 export class Drawing {
   readonly #markup: string;
-  private constructor(markup: string) {
-    this.#markup = markup;
+  // an <svg> of the attributes and the inside given, hidden from assistive technology
+  private constructor(attributes: string, inner: string) {
+    this.#markup = `<svg ${attributes} aria-hidden="true">${inner}</svg>`;
   }
   // a line icon, 16 px, in the colour of the text around it
   static #line(inner: string): Drawing {
     return new Drawing(
-      `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`,
+      'viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"',
+      inner,
+    );
+  }
+  // a line icon of the review page, 18 px and bolder
+  static #step(inner: string): Drawing {
+    return new Drawing(
+      'viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"',
+      inner,
     );
   }
   // the hand-drawn arrow of the hints next to the Festivals page's blanks, pointing up
   static readonly ARROW_UP = new Drawing(
-    '<svg viewBox="0 0 64 52" width="54" height="44"><path d="M56 44 C36 45 18 34 13 9"/><path d="M13 9 L6 19 M13 9 L21 16"/></svg>',
+    'viewBox="0 0 64 52" width="54" height="44"',
+    '<path d="M56 44 C36 45 18 34 13 9"/><path d="M13 9 L6 19 M13 9 L21 16"/>',
   );
   // the map's sheet handle: a wide chevron
-  static readonly CHEVRON = new Drawing(
-    '<svg viewBox="0 0 48 12" width="48" height="12"><path d="M3 10 L24 3 L45 10"/></svg>',
-  );
+  static readonly CHEVRON = new Drawing('viewBox="0 0 48 12" width="48" height="12"', '<path d="M3 10 L24 3 L45 10"/>');
   // a community page's privacy: a lock, and people (Lucide's lock and users), people also the share card's eyebrow
   static readonly LOCK = Drawing.#line(
     '<rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" />',
@@ -38,6 +47,10 @@ export class Drawing {
   );
   static readonly PREVIOUS = Drawing.#line('<path d="m15 18-6-6 6-6" />');
   static readonly NEXT = Drawing.#line('<path d="m9 18 6-6-6-6" />');
+  // the review page's steps between items: the same chevrons drawn, not glyphs, so they centre in their buttons, a
+  // little larger and bolder
+  static readonly PREVIOUS_ITEM = Drawing.#step('<path d="m15 18-6-6 6-6" />');
+  static readonly NEXT_ITEM = Drawing.#step('<path d="m9 18 6-6-6-6" />');
   // a trip's roster by travel and by place (Lucide's plane and bed-double, the bed also a feature's icon)
   static readonly BED = Drawing.#line(
     '<path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8" /> <path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4" /> <path d="M12 4v6" /> <path d="M2 18h20" />',
@@ -48,7 +61,8 @@ export class Drawing {
   // today in a month, the site's and the share card's: a ring drawn by hand around its number, a little uneven, its
   // ends crossing
   static readonly RING = new Drawing(
-    '<svg viewBox="0 0 40 32" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M27 4.5C19 2.2 7.5 4 4.2 12.5 1.6 19.6 8.3 28.2 19.8 28.4 31 28.6 37.6 22.4 36.3 14.3 35.2 7.6 27.9 3.6 18.4 4.6" /></svg>',
+    'viewBox="0 0 40 32" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"',
+    '<path d="M27 4.5C19 2.2 7.5 4 4.2 12.5 1.6 19.6 8.3 28.2 19.8 28.4 31 28.6 37.6 22.4 36.3 14.3 35.2 7.6 27.9 3.6 18.4 4.6" />',
   );
   // the Lucide icons, by name
   static readonly LUCIDE: Readonly<Record<string, Drawing>> = {
