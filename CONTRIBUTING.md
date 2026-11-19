@@ -32,20 +32,22 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   error. What comes from outside (an answer, a page, a CSV) is parsed into a record of `pipeline/records.py` where it
   enters. pytest runs strict, on every core, in a new order, with no network and a time limit per test, and fails below
   the branch coverage `pyproject.toml` sets.
-- **Site:** tsc strict, every Biome rule but those `biome.jsonc` turns off, each with its reason, and the plugins in
-  `lint/` (links in `routes.ts`, requests in `net.ts`, classes through `dom.ts`, markup only from `icons.ts`, promises
-  reported, a state as `KEY`, a test's values only from the modules `lint/tests.grit` lists). A class is one the
-  stylesheet defines (`site/classes.ts`, generated). vitest runs in Node and in Chromium
-  (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and fails below the
-  coverage of the pure modules `vitest.config.ts` sets. The browser tests run in two projects: `browser`, with motion as
-  most visitors have it, and `browser-calm`, for a visitor who asked for less motion, which runs the files named
-  `*.calm.browser.test.ts` and no others (a calm file runs with reduced motion only). A test of the page starts it
-  through `tests/site/app.ts`, whose header says how (once per file; the day, data, storage, or its refusal, and other
-  hosts' answers stated before the start); the test server answers the tests' pages with the fixture's data only, never
-  `public/data/`. oxfmt lays out the files Biome checks (`.oxfmtrc.jsonc`) but `site/states.ts`, which its generator
-  lays out.
+- **Site:** tsc strict; oxlint, type-aware, with each Biome rule it has an equivalent of (`.oxlintrc.json`,
+  [Lint rules](docs/concepts/lint-rules.md)), a warning failing; every Biome rule but those `biome.jsonc` turns off,
+  each with its reason, and the plugins in `lint/` (links in `routes.ts`, requests in `net.ts`, classes through
+  `dom.ts`, markup only from `icons.ts`, promises reported, a state as `KEY`, a test's values only from the modules
+  `lint/tests.grit` lists). A class is one the stylesheet defines (`site/classes.ts`, generated). vitest runs in Node
+  and in Chromium (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and
+  fails below the coverage of the pure modules `vitest.config.ts` sets. The browser tests run in two projects:
+  `browser`, with motion as most visitors have it, and `browser-calm`, for a visitor who asked for less motion, which
+  runs the files named `*.calm.browser.test.ts` and no others (a calm file runs with reduced motion only). A test of the
+  page starts it through `tests/site/app.ts`, whose header says how (once per file; the day, data, storage, or its
+  refusal, and other hosts' answers stated before the start); the test server answers the tests' pages with the
+  fixture's data only, never `public/data/`. oxfmt lays out the files Biome checks (`.oxfmtrc.jsonc`) but
+  `site/states.ts`, which its generator lays out.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
-  each, so a new one is a change to that list.
+  each, so a new one is a change to that list, and an oxlint one is also explained in
+  [oxlint's suppressed findings](docs/lint-false-positives.md).
 - **Duplicates:** jscpd fails on a block written twice, at the length `.jscpd.json` sets.
 - **Generated files:** `mise run generate` writes `pipeline/enums.py`, `site/states.ts`, `site/classes.ts`,
   `lint/states.grit`, `docs/reference/`, and the home city (`pipeline/airports.csv`'s home) where `public/index.html`

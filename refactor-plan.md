@@ -69,7 +69,12 @@ Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "
   ported tests): enforce in oxlint, or leave off and record? (Recommended: rule by rule, each enforced or off, none left
   reporting without failing; refactor-task-2.1.md lists them.) Task 2.3: the info level is a property of 96 enabled
   rules, not 9; the 87 with no finding cost nothing as errors; each of the nine with its options and counts is in
-  [docs/concepts/lint-rules.md](docs/concepts/lint-rules.md).
+  [docs/concepts/lint-rules.md](docs/concepts/lint-rules.md). **Answered 19 November: B**, rule by rule, each enforced
+  or off: `noBitwiseOperators` off (deliberate hashes and random numbers); `noAwaitInLoops` an error in `site/`, off in
+  `tests/`; `noExcessiveCognitiveComplexity` off; `useDestructuring`, `useDomQuerySelector`, `useShorthandAssign`,
+  `useNamedCaptureGroup`, `useConsistentBuiltinInstantiation`, `noExcessiveClassesPerFile` errors, their test findings
+  fixed and their site findings left, the rule off for those files until Phase 4; the other 87 errors. Applied in oxlint
+  by task 2.4 ([refactor-task-2.4.md](refactor-task-2.4.md)); Biome's settings unchanged until 2.7.
 - **Q3.** Pin Solid 2.0.0 or 2.0.1? (Recommended: 2.0.1, re-checked when Phase 4 starts.)
 - **Q4.** Accept pnpm's standing warning that `eslint-plugin-solid`'s ESLint peer is missing? **Moot, 19 November:**
   0.20.0 marks the peer optional, and pnpm prints no warning; its rules load in oxlint with ESLint absent

@@ -6,8 +6,15 @@ rules that have no equivalent and what the owner has yet to decide. `.oxlintrc.j
 by rule, with no category turned on, so a rule not listed as mapped is not enabled.
 
 Measured on 19 November 2026, Biome 2.6.3 and oxlint 1.94.0 (the version task 2.4 pins). Pending the owner: the 22
-unmapped rules, the 8 accepted losses, the info-level rules (Q2), the rules for frameworks the site does not use and the
-type-aware rules new in oxlint.
+unmapped rules, the 8 accepted losses, the rules for frameworks the site does not use and the type-aware rules new in
+oxlint. Q2, the info-level rules, is answered (below).
+
+**In oxlint since task 2.4** (`.oxlintrc.json`, `mise run lint:oxlint`): every mapped rule, with the settings and
+exceptions below, as an error: those of Biome's `error` and `warn` rules, the info-level ones as Q2 decides, and the JSX
+rules mapped from Biome's `error` and `warn` (the JSX ones Biome reports as `info` stay off). Off: every rule pending
+the owner, the type-aware rules new in oxlint, and the rules Biome turns off. Biome still runs all of its rules beside
+it until task 2.7. The findings the rules' oxlint versions made on the code were fixed, or suppressed on their line with
+the reason in [oxlint's suppressed findings](../lint-false-positives.md).
 
 ## Counts
 
@@ -47,7 +54,7 @@ Biome's options and defaults where oxlint's differ. Without them the bare mappin
 
 | oxlint rule | Setting | Why |
 | -- | -- | -- |
-| `eslint/no-use-before-define` | `{"functions": false}` | `noInvalidUseBeforeDeclaration` ignores function declarations |
+| `eslint/no-use-before-define` | `{"functions": false, "classes": false, "variables": false}` | `noInvalidUseBeforeDeclaration` ignores function declarations, and a use inside a function of a name declared after it (its examples); `functions: false` alone left 66 findings, each a closure reading a later `const` |
 | `eslint/eqeqeq` | `["always", {"null": "ignore"}]` | `noDoubleEquals` allows `== null`; `noEqualsToNull` is off: "== null is null or undefined, both absent" |
 | `eslint/max-params` | `{"max": 4}`, error | `useMaxParams`'s default; its `warn` fails under `--error-on-warnings` |
 | `typescript/explicit-member-accessibility` | `{"accessibility": "no-public"}` | `useConsistentMemberAccessibility`'s default |
@@ -58,7 +65,8 @@ Biome's options and defaults where oxlint's differ. Without them the bare mappin
 | `typescript/ban-ts-comment` | `{"ts-ignore": true, "ts-nocheck": false, "ts-check": false, "ts-expect-error": false}` | `noTsIgnore` refuses `@ts-ignore` alone |
 | `unicorn/filename-case` | `{"cases": {"camelCase": true, "kebabCase": true, "snakeCase": true}}` | `useFilenamingConvention`'s default cases |
 | `import/extensions` | `["always", {"ignorePackages": true}]` | `useImportExtensions`: the imports name the `.ts` file |
-| `eslint/no-unused-vars` | `{"args": "all", "argsIgnorePattern": "^_"}` | `noUnusedFunctionParameters` reports any unused parameter; check against a bare run |
+| `eslint/no-unused-vars` | `{"args": "all", "argsIgnorePattern": "^_", "varsIgnorePattern": "^_", "caughtErrorsIgnorePattern": "^_", "destructuredArrayIgnorePattern": "^_"}` | `noUnusedFunctionParameters` reports any unused parameter; `noUnusedVariables` passes a name starting with `_` (the bare run found six: `for (const _ of …)`, `{ sort: _order, ...rest }`) |
+| `unicorn/no-useless-undefined` | `{"checkArguments": false, "checkArrowFunctionBody": false}` | `noUselessUndefined` reports an initialiser, a default, a `return` or `yield` of `undefined`, not an argument (`isCurrency(undefined)`) or an arrow's body (`() => undefined`) |
 | `oxc/no-barrel-file` | `{"threshold": 0}` | `noBarrelFile` refuses any barrel; oxlint's counts modules |
 
 Plugins the mapping needs in `.oxlintrc.json`: `typescript`, `unicorn`, `import`, `oxc`, `vitest`, `jest` (two test
@@ -75,7 +83,10 @@ From `biome.jsonc`'s `overrides`, each with its reason; oxlint takes them as `ov
 | `tests/**`, `vitest.config.ts` | `import/no-nodejs-modules` | off | "the tests and their config run in Node" |
 | `tests/**`, `vitest.config.ts` | `vitest/consistent-test-it` | above | "a test is test() wherever it is" |
 | `tests/**`, `vitest.config.ts` | `useTopLevelRegex` | (none) | "an assertion's pattern, matched once"; moot, the rule is an accepted loss |
-| `vitest.config.ts` (and `vite.config.ts`, Phase 3) | `import/no-default-export` | off, **pending owner** | new: Biome never linted the file (not in `files.includes`); Vitest reads its default export, which the rule refuses |
+| `tests/**`, `vitest.config.ts` | `eslint/no-await-in-loop` | off | Q2: a test drives the page step by step |
+| `site/friends.ts`, `site/roster.ts`, `site/sources.ts`, `site/tables.ts` | `eslint/prefer-destructuring` | off | Q2: the findings in the site's code stay until Phase 4 rewrites these files (`tables.ts` is oxlint's alone) |
+| `site/db.ts` | `eslint/max-classes-per-file` | off | Q2: the same, `SiteUpdating` and `Sql` |
+| `vitest.config.ts` (and `vite.config.ts`, Phase 3) | `import/no-default-export` | off, **pending owner** | new: Biome never linted the file (not in `files.includes`); Vitest reads its default export, which the rule refuses; off in `.oxlintrc.json` since 2.4, its comment naming the pending decision |
 
 `lint/tests.grit` runs on `tests/**` alone; it and the twelve other Grit rules are ported in task 2.6, not here.
 
@@ -131,11 +142,25 @@ and ask before"). Each with what holds the check without it, and the recommendat
 
 `"preset": "all"` keeps each rule's default severity, and 96 of the rules above are `info`: they report and never fail
 `biome check --error-on-warnings`. oxlint has no info level, so each is an error or off. Nine have findings, 43 in all
-(Biome checks 134 files); the other 87 have none, and are mapped as errors at no cost today. Until the owner answers,
-the nine are `off` in `.oxlintrc.json`.
+(Biome checks 134 files); the other 87 have none.
 
-**Pending owner (Q2).** Recommendation (refactor-plan.md, Q2): rule by rule, each enforced or off, none left reporting
-without failing.
+**Answered by the owner, 19 November (Q2: B):** rule by rule, each enforced or off, none left reporting without failing.
+In oxlint (Biome keeps its settings until task 2.7):
+
+- `noBitwiseOperators` (`eslint/no-bitwise`): off everywhere; every use is a deliberate hash or random number
+  (`site/ink.ts`, `tests/site/roster.test.ts`).
+- `noAwaitInLoops` (`eslint/no-await-in-loop`): an error in `site/` (no finding), off in `tests/**`, which drive the
+  page step by step.
+- `noExcessiveCognitiveComplexity` (`eslint/complexity`, another measure): off; fixing it means reworking six of the
+  site's functions, and Phase 2 changes no code.
+- `useDestructuring`, `useDomQuerySelector`, `useShorthandAssign`, `useNamedCaptureGroup`,
+  `useConsistentBuiltinInstantiation` and `noExcessiveClassesPerFile`: errors; the findings in the tests were fixed (one
+  suppressed: `Date()` in `app.browser.test.ts` is one of the forms of the clock the test reads); those in the site's
+  code stay, the rule off for those files until Phase 4 (Per-folder exceptions).
+- The other 87: errors, with the settings above. Their oxlint versions found what Biome's do not (16, all in task 2.4's
+  fixes or suppressions): `no-useless-undefined` 9 (arguments and arrow bodies, which Biome does not check: a setting),
+  `jest/no-done-callback` 4 (`test.for`, suppressed), `prefer-response-static-json` 2, `prefer-template` 1,
+  `numeric-separators-style` 1, `no-process-env` 1 (`vitest.config.ts`, new to linting).
 
 | Biome rule | Findings: site / tests | Where | oxlint | oxlint's findings: all (site) | Options |
 | -- | -- | -- | -- | -- | -- |
@@ -186,12 +211,13 @@ No finding today (19): `no-array-delete`, `no-duplicate-type-constituents`, `no-
 `non-nullable-type-assertion-style`, `prefer-return-this-type`, `related-getter-setter-pairs`, `return-await`,
 `unbound-method`, `use-unknown-in-catch-callback-variable`.
 
-**Stricter than Biome's.** Mapped rules whose oxlint versions find what Biome's pass (task 2.4 fixes each or suppresses
-it with its reason): `strict-boolean-expressions` 47, `no-unnecessary-condition` 23, `no-base-to-string` 10,
-`no-unnecessary-type-conversion` 4, `no-unsafe-type-assertion` 4, `no-unsafe-return` 3, `no-misused-promises` 1,
-`prefer-nullish-coalescing` 1, 93 in all. The four of `no-unsafe-type-assertion` are the lines Biome's suppressions
-cover. These are not new rules: `strict-boolean-expressions`, `no-unnecessary-condition` and `no-base-to-string` are
-Biome's nursery `useStrictBooleanExpressions`, `noUnnecessaryConditions` and `noBaseToString`.
+**Stricter than Biome's.** Mapped rules whose oxlint versions find what Biome's pass (task 2.4 fixed each or suppressed
+it with its reason; at 2.4's first run with the settings above, 92 of them, `no-unsafe-return` 2 not 3):
+`strict-boolean-expressions` 47, `no-unnecessary-condition` 23, `no-base-to-string` 10, `no-unnecessary-type-conversion`
+4, `no-unsafe-type-assertion` 4, `no-unsafe-return` 3, `no-misused-promises` 1, `prefer-nullish-coalescing` 1, 93 in
+all. The four of `no-unsafe-type-assertion` are the lines Biome's suppressions cover. These are not new rules:
+`strict-boolean-expressions`, `no-unnecessary-condition` and `no-base-to-string` are Biome's nursery
+`useStrictBooleanExpressions`, `noUnnecessaryConditions` and `noBaseToString`.
 
 ## Off in Biome, staying off
 

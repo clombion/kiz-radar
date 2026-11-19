@@ -101,6 +101,11 @@ description = "Biome's rules on the site, its tests and its CSS, with the lint/ 
 depends = ["install:site"]
 run = "pnpm run lint"
 
+["lint:oxlint"]
+description = "oxlint's rules on the site, its tests and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md)"
+depends = ["install:site"]
+run = "pnpm run lint:oxlint"
+
 [knip]
 description = "No module, export or package the site doesn't use"
 depends = ["install:site"]
@@ -188,6 +193,7 @@ depends = [
   "format:site",
   "types:py",
   "lint:site",
+  "lint:oxlint",
   "types:site",
   "knip",
   "dup",

@@ -29,6 +29,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `render:design` | The share card (public/share-card.png), each community's (public/c/<key>/share.png, a variant of that card with its name, and share.json, what it is drawn from) and the icons drawn again from design/, site/icons.ts and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page |
 | `types:site` | tsc, strict, on the site and its tests |
 | `lint:site` | Biome's rules on the site, its tests and its CSS, with the lint/ plugins |
+| `lint:oxlint` | oxlint's rules on the site, its tests and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md) |
 | `knip` | No module, export or package the site doesn't use |
 | `test:site` | The site's tests, in Node and in Chromium (vitest.config.ts), on the database built from the export and the site built (served under /kiz-radar/ for the tests of the whole site) |
 | `dup` | No block written twice, in the code, tests, stylesheet or Actions, at the length .jscpd.json sets; the generated files aside |
