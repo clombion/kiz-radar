@@ -162,18 +162,20 @@ can no longer be tested this way.
 **Which `site/` modules are views.** Decided by reading each module, not by its name: a module is a view module if it
 builds or changes DOM (calls `h()`, `button()`, `replaceChildren`, `document.*`, or takes an element to draw into).
 
-- **Pure logic, no DOM (23):** `calendar`, `claims`, `classes` (generated), `currency`, `days`, `db`, `fares`, `find`,
-  `finder`, `fold`, `github`, `ink`, `json`, `names`, `net`, `pending`, `pricing`, `roles`, `roster`, `rows`, `schema`
-  (generated), `states` (generated), `wording`. (`find`, `finder` and `wording` import only *types* from
-  `dom.ts`/`icons.ts`, plus `finder`'s `TRAITS` data from `icons.ts`.) Seventeen of these are the coverage list in
-  `vitest.config.ts:72`.
+- **Pure logic, no DOM (24):** `calendar`, `claims`, `classes` (generated), `currency`, `days`, `db`, `fares`, `find`,
+  `finder`, `fold`, `github`, `ink`, `json`, `media` (since 1.2: the media queries the script shares with the
+  stylesheet), `names`, `net`, `pending`, `pricing`, `roles`, `roster`, `rows`, `schema` (generated), `states`
+  (generated), `wording`. (`find`, `finder` and `wording` import only *types* from `dom.ts`/`icons.ts`, plus `finder`'s
+  `TRAITS` data from `icons.ts`.) Seventeen of these are the coverage list in `vitest.config.ts:72`.
 - **Browser APIs but no rendering (3):** `routes` (`location`, `history`, `document.baseURI`;
   `site/routes.ts:35,63,138,141`), `hints` (localStorage), `kept` (local and session storage). Treat as pure for the
   rule; `routes` is in the coverage list.
-- **View modules (31):** `artists`, `communities`, `countries`, `details`, `dismiss`, `dom`, `eventcard`, `festivals`,
-  `flights`, `friends`, `gantt`, `icons`, `main`, `map`, `modal`, `money`, `months`, `passes`, `people`, `plans`,
-  `report`, `review`, `search`, `sentence`, `sources`, `swipe`, `tables`, `tabs`, `ui`, `updating`, `week`.
-  (`globals.d.ts` is declarations only.)
+- **A data module with one sink (1, since 1.2):** `icons`. It draws nothing on import; its one write, `Drawing.into`,
+  runs when a view calls it and takes only the class's own SVG (refactor-task-1.2.md). Treat as pure for the rule.
+- **View modules (30):** `artists`, `communities`, `countries`, `details`, `dismiss`, `dom`, `eventcard`, `festivals`,
+  `flights`, `friends`, `gantt`, `main`, `map`, `modal`, `money`, `months`, `passes`, `people`, `plans`, `report`,
+  `review`, `search`, `sentence`, `sources`, `swipe`, `tables`, `tabs`, `ui`, `updating`, `week`. (`globals.d.ts` is
+  declarations only.)
 - **Correction to the brief: `plans` is not a pure module.** `site/plans.ts:6` imports `button, h, nodes, own` and
   exports renderers (`doingTag` `:168`, `goingLine` `:175`, `whoLines` `:212`, `whoIsGoing` `:249`) beside data
   functions (`friendsIn` `:97`, `togetherHref` `:439`, `person` `:466`).
@@ -181,8 +183,8 @@ builds or changes DOM (calls `h()`, `button()`, `replaceChildren`, `document.*`,
   (`festivals()` `:140`, `withDetails` `:113` are data; `leftOut` `:155` draws), `ui` (date wording `:42-60` and
   `flightsUrl` `:74` are pure; `away`, `place`, `nowTag`, `loading` draw), `money` (`money`, `convert` are pure;
   `currencySwitch` `:21` draws), `passes`, `map` (`citiesOf` is pure), `search` (`cityEntries` is pure), `people`
-  (`SAID_MS`), `tabs` (`PAD`), `dismiss` (`WIDE`), `icons` (`Drawing` is data plus one method, `into`, that writes
-  `innerHTML`), `report` (`done` `:22` is pure; `guarded` `:27` draws).
+  (`SAID_MS`), `tabs` (`PAD`), `dismiss` (`WIDE`, moved to `media` in 1.2), `report` (`done` `:22` calls `report()`,
+  which draws; `guarded` `:27` draws). Task 1.2 settled each: refactor-task-1.2.md.
 
 **Which test files import view modules today** (value imports; `tests/site/`):
 
