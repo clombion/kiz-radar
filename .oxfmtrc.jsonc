@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "singleQuote": true,
+  "printWidth": 120,
+  "tabWidth": 2,
+  "useTabs": false,
+  // a formatter lays a file out; the order of package.json's keys is pnpm's, as Biome left it
+  "sortPackageJson": false,
+  // the files Biome checks (biome.jsonc's files.includes): every file but a folder is ignored, then those let back in
+  "ignorePatterns": [
+    "*",
+    "!*/",
+    "!/site/**",
+    "!/tests/**/*.ts",
+    "!/public/css/**",
+    "!/*.json",
+    "!/*.jsonc",
+    "/pnpm-lock.yaml",
+    // the files lint/tests.grit's test lints with its own config
+    "/tests/site/lint/",
+    // laid out by its generator (pipeline/states.py), and checked against it by generate:check
+    "/site/states.ts"
+  ],
+  "overrides": [
+    { "files": ["*.css"], "options": { "singleQuote": false } },
+    { "files": ["*.json", "*.jsonc"], "options": { "trailingComma": "none" } }
+  ]
+}

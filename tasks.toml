@@ -97,7 +97,7 @@ depends = ["install:site"]
 run = "pnpm run types"
 
 ["lint:site"]
-description = "Biome's rules and format on the site, its tests and its CSS, with the lint/ plugins"
+description = "Biome's rules on the site, its tests and its CSS, with the lint/ plugins"
 depends = ["install:site"]
 run = "pnpm run lint"
 
@@ -128,17 +128,22 @@ run = "uv run --group dev ruff check"
 description = "The Python code as ruff formats it"
 run = "uv run --group dev ruff format --check"
 
+["format:site"]
+description = "The site, its tests, its CSS and the JSON configs as oxfmt writes them (.oxfmtrc.jsonc names which), the generated site/states.ts left as it is"
+depends = ["install:site"]
+run = "pnpm run format"
+
 ["format:md"]
 description = "The Markdown as mdformat writes it (.mdformat.toml), the prompts left as they are"
 run = "git ls-files -z '*.md' | xargs -0 uv run --group dev mdformat --check"
 
 [format]
-description = "Write the formats the checks hold: ruff's on the Python, mdformat's on the Markdown (the prompts left as they are), Biome's on the site"
+description = "Write the formats the checks hold: ruff's on the Python, mdformat's on the Markdown (the prompts left as they are), oxfmt's on the site"
 depends = ["install:site"]
 run = """
 uv run -q --group dev ruff format &&
   git ls-files -z '*.md' | xargs -0 uv run -q --group dev mdformat &&
-  pnpm exec biome check --write --linter-enabled=false
+  pnpm exec oxfmt
 """
 
 ["types:py"]
