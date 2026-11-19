@@ -8,8 +8,9 @@
   "project": ["site/**/*.{ts,tsx}", "tests/site/**/*.{ts,tsx}", "lint/**/*.ts", "!lint/fixtures/**"],
   "ignore": ["lint/fixtures/**"],
   // the world's outlines, which no module imports: package.json's vendor script copies them into public/vendor/; and
-  // Solid's JSX compiler, which @solidjs/vite-plugin runs and depends on, named here to pin its version
-  "ignoreDependencies": ["world-atlas", "@solidjs/compiler"],
+  // Solid's JSX compiler, which @solidjs/vite-plugin runs and depends on, named here to pin its version; and kiz-jsx,
+  // tsconfig.json's jsxImportSource, no package but the site's own JSX types (its paths: site/jsx-runtime.d.ts)
+  "ignoreDependencies": ["world-atlas", "@solidjs/compiler", "kiz-jsx"],
   // the pipeline's runner, which mise.toml installs: the tests' setup builds the data with it
   "ignoreBinaries": ["uv"]
 }

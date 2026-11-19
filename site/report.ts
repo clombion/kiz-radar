@@ -23,13 +23,19 @@ export const done = (p: Promise<unknown>, where: string): void => {
   p.catch((e: unknown) => report(e, where));
 };
 
+// What a view that threw while it built says in its place, said in the console too, naming the view: guarded's, and a
+// Solid view's error boundary's (mount.tsx).
+export function cannotShow(where: string, e: unknown): HTMLElement {
+  console.error(`Kiz Radar: ${where}:`, e);
+  return h('p', { class: ['status', 'error'] }, `This page could not be shown: ${message(e)}`);
+}
+
 // a view built in root, or, if building it throws, what went wrong in its place
 export function guarded(root: HTMLElement, where: string, build: () => void): void {
   try {
     build();
   } catch (e) {
-    console.error(`Kiz Radar: ${where}:`, e);
-    root.replaceChildren(h('p', { class: ['status', 'error'] }, `This page could not be shown: ${message(e)}`));
+    root.replaceChildren(cannotShow(where, e));
   }
 }
 

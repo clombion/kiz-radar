@@ -74,12 +74,13 @@ export const HASH_ROUTES = ['finder', 'friends', 'week', 'map', 'artists', 'coun
 export type Section = Exclude<(typeof HASH_ROUTES)[number], 'sql' | 'sources'>;
 export type Tab = 'finder' | 'friends' | 'explore';
 // A view, drawn into root from the address: the parts after the view's name, the query string, a signal that aborts
-// once another view shows, and the database loading.
+// once another view shows, the database loading, and the view's name in the address, which the console says a failure
+// by (report.ts).
 export type Show = (
   root: HTMLElement,
   sub: readonly string[],
   qs: string,
-  opts: { readonly signal: AbortSignal; readonly data: Promise<unknown> },
+  opts: { readonly signal: AbortSignal; readonly data: Promise<unknown>; readonly name: string },
 ) => void;
 // every view an address names: a hash route (the sections, the SQL and sources pages the footer links to), and a
 // community's page, a path (its hash, #community/<key>, is only an older link the site still reads)
