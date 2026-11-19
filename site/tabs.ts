@@ -153,6 +153,8 @@ function absorb(row: Oval, was: Box, to: Box): void {
   grow.addEventListener('cancel', rest);
 }
 
+// the slides begun, the last one's number its own: a slide that ends after another began leaves that one's mark
+let slides = 0;
 // Change the page as a slide to the next (1) or previous (-1) section, or at once
 export function slide(direction: number, change: () => void): void {
   const main = document.querySelector('#main');
@@ -163,8 +165,10 @@ export function slide(direction: number, change: () => void): void {
   const root = document.documentElement;
   root.dataset['vt'] = direction > 0 ? 'ahead' : 'back';
   main.style.viewTransitionName = 'section';
+  const mine = ++slides;
   done(
     document.startViewTransition(change).finished.finally(() => {
+      if (mine !== slides) return;
       main.style.viewTransitionName = '';
       root.removeAttribute('data-vt');
     }),
