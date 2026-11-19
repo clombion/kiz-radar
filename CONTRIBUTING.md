@@ -32,8 +32,9 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   error. What comes from outside (an answer, a page, a CSV) is parsed into a record of `pipeline/records.py` where it
   enters. pytest runs strict, on every core, in a new order, with no network and a time limit per test, and fails below
   the branch coverage `pyproject.toml` sets.
-- **Site:** tsc strict; oxlint, type-aware, with each Biome rule it has an equivalent of (`.oxlintrc.json`,
-  [Lint rules](docs/concepts/lint-rules.md)), a warning failing; every Biome rule but those `biome.jsonc` turns off,
+- **Site:** tsc strict; oxlint, type-aware, with each Biome rule it has an equivalent of and the type-aware rules new in
+  oxlint (`.oxlintrc.json`, [Lint rules](docs/concepts/lint-rules.md)), a warning failing: a record's type is read-only
+  where it is defined, and a function returning a promise is async; every Biome rule but those `biome.jsonc` turns off,
   each with its reason, and the house rules in `lint/` (links in `routes.ts`, requests in `net.ts`, classes through
   `dom.ts`, markup only from `icons.ts`, promises reported, a state as `KEY`, a test's values only from the modules
   `lint/tests.ts` lists). A class is one the stylesheet defines (`site/classes.ts`, generated). vitest runs in Node and

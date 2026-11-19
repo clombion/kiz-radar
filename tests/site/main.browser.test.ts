@@ -111,7 +111,7 @@ test('a promise left to run on its own, or one nothing catches, is said on the p
   expect(refused).toHaveBeenCalledWith(FIXTURE_PROMO);
   await expect.poll(alertLine).toContain('copying the code: a refused clipboard');
   const loose = Promise.reject(new Error('a loose promise'));
-  // oxlint-disable-next-line typescript/no-misused-promises -- the rejected promise is left uncaught on purpose: only the window's listener may see it
+  // oxlint-disable-next-line typescript/no-misused-promises, typescript/promise-function-async, typescript/strict-void-return -- the rejected promise is left uncaught on purpose: only the window's listener may see it
   setTimeout(() => loose, 0); // kept, but never caught: only the window's listener sees it fail
   await expect.poll(alertLine).toContain('the page: a loose promise');
 });

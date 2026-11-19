@@ -12,9 +12,9 @@ oxlint. Q2, the info-level rules, is answered (below).
 **In oxlint since task 2.4** (`.oxlintrc.json`, `mise run lint:oxlint`): every mapped rule, with the settings and
 exceptions below, as an error: those of Biome's `error` and `warn` rules, the info-level ones as Q2 decides, and the JSX
 rules mapped from Biome's `error` and `warn` (the JSX ones Biome reports as `info` stay off). Off: every rule pending
-the owner, the type-aware rules new in oxlint, and the rules Biome turns off. Biome still runs all of its rules beside
-it until task 2.7. The findings the rules' oxlint versions made on the code were fixed, or suppressed on their line with
-the reason in [oxlint's suppressed findings](../lint-false-positives.md).
+the owner and the rules Biome turns off. **On since task 2.6c:** the 33 type-aware rules new in oxlint (below). Biome
+still runs all of its rules beside it until task 2.7. The findings the rules' oxlint versions made on the code were
+fixed, or suppressed on their line with the reason in [oxlint's suppressed findings](../lint-false-positives.md).
 
 ## Counts
 
@@ -225,6 +225,14 @@ parameter takes its type from a declaration the rule checks) and `allow` for the
 cannot make read-only, the site's own record types made read-only at their definitions. The earlier recommendation was
 Recommended: on for the ones with no finding (they cost nothing), off for `prefer-readonly-parameter-types`, and the
 others rule by rule with the findings of task 2.4.
+
+**State: on since task 2.6c**, each as an error, with zero findings
+([refactor-task-2.6c.md](../../refactor-task-2.6c.md)). Beyond the settings above, `prefer-readonly-parameter-types`'s
+`allow` also names Leaflet's `LayerGroup`, GeoJSON's `Feature` and the syntax-tree types of oxlint's plugin API the
+house rules take (none of them the site's own), and `return-await` is `error-handling-correctness-only`: a function made
+async that hands a promise on awaits it, as Biome's `useAwait` and `require-await` want an await in it, which the
+default `in-try-catch` refuses. One line keeps a suppression (`tests/site/main.browser.test.ts`,
+[oxlint's suppressed findings](../lint-false-positives.md)).
 
 | oxlint rule | Findings: all (site / tests) |  |
 | -- | -- | -- |

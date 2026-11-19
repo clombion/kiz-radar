@@ -2,7 +2,7 @@
 module changes this list. What ruff's noqa comments suppress is what ruff itself reports once it ignores them, so a
 suppression of any form counts (a file's `# ruff: noqa` included); each noqa names its rules and its reason, in
 parentheses, and a pyright comment is only ever `pyright: ignore[rules]`. On the site, a biome-ignore names its rule and
-reason, an oxlint-disable-next-line its rule and, after --, its reason (oxlint-disable-line on a line a biome-ignore
+reason, an oxlint-disable-next-line its rules and, after --, its reason (oxlint-disable-line on a line a biome-ignore
 already holds, which must come right before it), a @ts-expect-error its reason. Rules ignored for a whole file are in
 pyproject.toml, biome.jsonc and .oxlintrc.json, each with its reason."""
 
@@ -62,7 +62,7 @@ ALLOWED = Counter(
 # the site's: Biome's and oxlint's on one line, each with its rule and reason, and TypeScript's only as an expected
 # error with its reason
 BIOME = re.compile(r'biome-ignore (?P<rules>lint/\w+/\w+): \S.*')
-OXLINT = re.compile(r'oxlint-disable-(?:next-)?line (?P<rules>[\w-]+/[\w-]+) -- \S.*')
+OXLINT = re.compile(r'oxlint-disable-(?:next-)?line (?P<rules>[\w-]+/[\w-]+(?:, [\w-]+/[\w-]+)*) -- \S.*')
 TS_EXPECT = re.compile(r'@ts-expect-error: \S.*')
 SITE_SUPPRESSION = re.compile(r'(?:biome-ignore|oxlint-(?:disable|enable)|@ts-|eslint-disable)[^*]*')
 SITE_ALLOWED = Counter(
@@ -85,6 +85,8 @@ SITE_ALLOWED = Counter(
         ('tests/site/elements.browser.test.ts', 'jest/no-done-callback'): 1,
         ('tests/site/main.browser.test.ts', 'jest/no-done-callback'): 1,
         ('tests/site/main.browser.test.ts', 'typescript/no-misused-promises'): 1,
+        ('tests/site/main.browser.test.ts', 'typescript/promise-function-async'): 1,
+        ('tests/site/main.browser.test.ts', 'typescript/strict-void-return'): 1,
         ('tests/site/server.browser.test.ts', 'jest/no-done-callback'): 1,
         ('vitest.config.ts', 'house/env'): 1,
         ('tests/site/roster.test.ts', '@ts-expect-error'): 2,  # the shapes the types no longer hold
@@ -104,7 +106,7 @@ def site_suppressions(path: Path) -> list[str]:
                 continue
             found = BIOME.fullmatch(text) or OXLINT.fullmatch(text)
             assert found, f'{path.relative_to(ROOT)}:{n}: {text!r} names no rule (or no reason)'
-            out.append(found['rules'])
+            out += found['rules'].split(', ')
     return out
 
 
