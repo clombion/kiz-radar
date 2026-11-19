@@ -518,6 +518,8 @@
     // Biome's noSuspiciousSemicolonInJsx (owner, 19 November)
     "house/semicolons": "error",
     "house/session": "error",
+    // Biome's noDuplicatedSpreadProps (owner, 19 November)
+    "house/spreads": "error",
     "house/statics": "error",
     "house/storage": "error",
     // no style prop in JSX: a class, or a ref and style.setProperty; the page's Content-Security-Policy refuses inline style
