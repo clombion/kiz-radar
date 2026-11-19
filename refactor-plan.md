@@ -208,8 +208,9 @@ the helper's `storage: 'refused'` makes reaching either storage throw a Security
   behaviour, left as it is. The tests close dialogs through the page and read their own frame's entries.
 - Playwright's Chromium is not installed in the cloud container: `CHROMIUM=/opt/pw-browsers/chromium` must be set before
   a browser test (`CONTRIBUTING.md`, "Checks").
-- Under refused storage the review page holds its token for the page, but not the items it settled: `settled()` reads
-  storage alone, so the count of items settled stays at none (seen while writing `review-refused`; not changed).
+- Under refused storage the review page held its token for the page but not the items it settled (seen while writing
+  `review-refused`): fixed in `site/kept.ts`, whose `read` and `write` now keep every refused value for the page, as its
+  header says; `review-refused` checks the item settled.
 
 **Next:** Phase 2, the Oxc toolchain. Q2 (the info-level findings) is open for the owner; Q4 is moot (task 2.1).
 
