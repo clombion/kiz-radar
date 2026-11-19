@@ -10,7 +10,9 @@ const AGAIN_S = 60;
 const GIVE_UP_MS = 15 * 60_000;
 
 // the site loaded whole: the next update starts its own count
-export const updated = (): void => write(tab, SINCE, null);
+export const updated = (): void => {
+  write(tab, SINCE, null);
+};
 
 export function updatingPage(root: HTMLElement): void {
   const now = Date.now();

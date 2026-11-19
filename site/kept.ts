@@ -1,43 +1,51 @@
 // What the review dashboard keeps in this browser: the admin's token, for the tab only unless its maker asks to keep
 // it on this device; the day it expires, as they entered it (GitHub never tells a page); and the items settled since
-// the build the page shows, so a reload keeps the progress until the next build lists what is left. Storage may be
-// refused (a private window): then each lasts as long as the page. read and write are each such value's, the site's
-// others too (updating.ts).
+// the build the page shows, so a reload keeps the progress until the next build lists what is left. Storage may refuse
+// a value (a private window, a full quota): then the value lasts as long as the page, until a write of its key is
+// kept. read and write are each such value's, the site's others too (updating.ts).
 const TOKEN = 'kiz-radar-claims-token';
 const EXPIRES = 'kiz-radar-claims-token-expires';
 const SETTLED = 'kiz-radar-review-settled';
 
-// what a refused storage would hold, for the page: each storage's own entries
-const page = new Map<() => Storage, Map<string, string>>();
-const held = (s: () => Storage): Map<string, string> => {
-  const entries = page.get(s) ?? new Map<string, string>();
+// what a storage refused to keep, for the page: each storage's own entries (null: removed), each until the storage
+// keeps a write of its key again, read before what the storage holds
+const page = new Map<() => Storage, Map<string, string | null>>();
+const held = (s: () => Storage): Map<string, string | null> => {
+  const entries = page.get(s) ?? new Map<string, string | null>();
   page.set(s, entries);
   return entries;
 };
 export const read = (s: () => Storage, key: string): string | null => {
+  const entries = held(s);
+  if (entries.has(key)) return entries.get(key) ?? null;
   try {
     return s().getItem(key);
   } catch {
-    return held(s).get(key) ?? null;
+    return null;
   }
 };
-export const write = (s: () => Storage, key: string, value: string | null): void => {
+// true when the storage kept the write (a value, or its removal), false when it refused it: then held for the page
+export const write = (s: () => Storage, key: string, value: string | null): boolean => {
   try {
     if (value === null) s().removeItem(key);
     else s().setItem(key, value);
   } catch {
-    if (value === null) held(s).delete(key);
-    else held(s).set(key, value);
+    held(s).set(key, value);
+    return false;
   }
+  held(s).delete(key);
+  return true;
 };
 export const tab = () => sessionStorage;
 const device = () => localStorage;
 
 export const token = (): string | null => read(tab, TOKEN) ?? read(device, TOKEN);
 export const remembered = (): boolean => read(device, TOKEN) !== null;
+// on the device when asked and it keeps it; else for the tab, the device keeping none (so remembered() is false)
 export function keepToken(t: string, onDevice: boolean): void {
-  write(tab, TOKEN, onDevice ? null : t);
-  write(device, TOKEN, onDevice ? t : null);
+  const kept = onDevice && write(device, TOKEN, t);
+  write(tab, TOKEN, kept ? null : t);
+  if (!kept) write(device, TOKEN, null);
 }
 export function forgetToken(): void {
   write(tab, TOKEN, null);

@@ -10,9 +10,10 @@
 // - its data: `plant` changes the fixture's database before the page reads it (the build's artist_stats and
 //   event_stats are not computed again from planted rows); `review` is the review page's data;
 // - its storage, which a reload keeps: the page's localStorage and sessionStorage are this file's own and hold
-//   `storage` alone (test files run at once, and the origin's own storage is theirs to share); or `'refused'`, the
-//   browser's refusal (a private window, the site's data blocked), where reaching either throws a SecurityError, as
-//   Chromium and Firefox do;
+//   `storage` alone (test files run at once, and the origin's own storage is theirs to share), `full: true` beside
+//   them for a storage over its quota, which reads what it holds and whose setItem throws a QuotaExceededError; or
+//   `'refused'`, the browser's refusal (a private window, the site's data blocked), where reaching either throws a
+//   SecurityError, as Chromium and Firefox do;
 // - what another host answers, on the review page (`elsewhere`, or answer() inside one test), for the hosts its
 //   Content-Security-Policy lets it ask; nothing else leaves the page.
 // Each page then opens a route as its address bar would take it (open()): the page's own address put back, then the
@@ -42,9 +43,13 @@ interface Asked {
   readonly url: URL;
   readonly init: RequestInit;
 }
-// what the page's storage holds before it starts, or the browser's refusal of any
+// what the page's storage holds before it starts, and whether it is over its quota; or the browser's refusal of any
 type Storing =
-  | { readonly local?: Readonly<Record<string, string>>; readonly session?: Readonly<Record<string, string>> }
+  | {
+      readonly local?: Readonly<Record<string, string>>;
+      readonly session?: Readonly<Record<string, string>>;
+      readonly full?: true;
+    }
   | 'refused';
 interface Visit<Route extends string = string> {
   readonly now: Now;
@@ -157,8 +162,9 @@ async function planted(plant: (db: Database) => void): Promise<Uint8Array<ArrayB
   }
 }
 
-// a Storage of the page's own, which no other test file sees: what the site calls, and what a test reads back
-function kept(seed: Readonly<Record<string, string>> = {}): Storage {
+// a Storage of the page's own, which no other test file sees: what the site calls, and what a test reads back; when
+// full, it reads and removes, and refuses a value set with Chromium's words
+function kept(seed: Readonly<Record<string, string>> = {}, full = false): Storage {
   const items = new Map(Object.entries(seed));
   return {
     get length() {
@@ -170,8 +176,15 @@ function kept(seed: Readonly<Record<string, string>> = {}): Storage {
     removeItem: (key) => {
       items.delete(key);
     },
-    setItem: (key, value) => {
-      items.set(key, value);
+    // a value set is kept as its text, as a real Storage keeps it
+    setItem: (key: string, value: unknown) => {
+      if (full) {
+        throw new DOMException(
+          `Failed to execute 'setItem' on 'Storage': Setting the value of '${key}' exceeded the quota.`,
+          'QuotaExceededError',
+        );
+      }
+      items.set(key, String(value));
     },
   };
 }
@@ -245,8 +258,8 @@ async function start(
     refusedStorage('localStorage');
     refusedStorage('sessionStorage');
   } else {
-    owned('localStorage', kept(storage?.local));
-    owned('sessionStorage', kept(storage?.session));
+    owned('localStorage', kept(storage?.local, storage?.full));
+    owned('sessionStorage', kept(storage?.session, storage?.full));
   }
 
   // the visitor's clock: now is the pinned instant, which does not tick; any other date is the real Date's

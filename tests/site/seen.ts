@@ -72,6 +72,12 @@ export function tokenDialog(): HTMLDialogElement {
   });
   return dlg;
 }
+// The token dialog's box to keep the token on this device (tokenDialog()).
+export function onDeviceBox(dlg: HTMLDialogElement): HTMLInputElement {
+  const box = dlg.querySelector('input[type="checkbox"]');
+  if (!(box instanceof HTMLInputElement)) throw new Error(`the dialog has no box to keep the token: ${said(dlg)}`);
+  return box;
+}
 // A token pasted in the review page's token dialog (tokenDialog()) and checked, which GitHub names its owner
 // for: resolved once the dialog says the choices are unlocked.
 export async function pasteToken(dlg: HTMLDialogElement, token: string): Promise<void> {

@@ -126,6 +126,8 @@ function tokenDialog(repository: string): HTMLDialogElement {
         await checkToken(t);
         if (canWrite()) {
           keepToken(t, keep.checked);
+          // ticked only if the device kept it
+          keep.checked = remembered();
           field.value = '';
           said.textContent = `${accessWords()}: the choices are on each item.`;
         } else said.textContent = access.state === 'refused' ? access.why : '';

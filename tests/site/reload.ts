@@ -30,12 +30,15 @@ export const REVIEW_ROUTE = '#contested/2';
 // than its summary, which it refuses. again() draws the updating page again under vi's timers, an interval or a
 // timeout, which stay until the test ends. It opens a view that waits for the data, which draws the updating page in
 // its place. The start's own countdown ticks on in a real interval. again() says how many timers the page set as it
-// drew.
+// drew. at() opens that view on another instant, under the page's own clock.
 export async function startMidUpdate(
   visit: Omit<Parameters<typeof startSite>[0], 'plant'>,
-): Promise<{ again: () => Promise<number> }> {
+): Promise<{ again: () => Promise<number>; at: (on: Date) => Promise<void> }> {
   const { open } = await startSite({ ...visit, plant: anotherBuild });
   return {
+    at: async (on) => {
+      await open(artistsHref(), on);
+    },
     again: async () => {
       vi.useFakeTimers({ toFake: ['setInterval', 'clearInterval', 'setTimeout', 'clearTimeout'] });
       onTestFinished(() => {
