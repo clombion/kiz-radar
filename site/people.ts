@@ -63,10 +63,12 @@ export function shareButton(label: string, title: string, link?: string): HTMLBu
       share.textContent = label;
     }, SAID_MS);
   };
-  const copy = (url: string): Promise<void> =>
-    'clipboard' in navigator && typeof navigator.clipboard.writeText === 'function'
-      ? navigator.clipboard.writeText(url).then(() => say('Link copied'))
-      : Promise.reject(new Error('no clipboard'));
+  const copy = async (url: string): Promise<void> => {
+    if (!('clipboard' in navigator && typeof navigator.clipboard.writeText === 'function'))
+      throw new Error('no clipboard');
+    await navigator.clipboard.writeText(url);
+    say('Link copied');
+  };
   const share = button(
     {
       class: 'more-btn',

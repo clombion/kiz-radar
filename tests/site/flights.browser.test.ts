@@ -54,7 +54,7 @@ const app = await startSite({
 });
 
 // a festival's card, opened on the map
-const cardOf = (id: number) => mapCardOf(app, id);
+const cardOf = async (id: number) => await mapCardOf(app, id);
 // a card's Flights button; a card without one is an error
 function flightsButton(card: Element): HTMLButtonElement {
   const button = card.querySelector<HTMLButtonElement>('.flights-btn');

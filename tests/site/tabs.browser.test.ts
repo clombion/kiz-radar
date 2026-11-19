@@ -23,7 +23,7 @@ async function rested(row = header()): Promise<void> {
     late = setTimeout(() => refuse(new Error(`the row's oval still moved after ${MS} ms`)), MS);
   });
   try {
-    await Promise.race([Promise.all(slime(row).map((a) => a.finished.catch(() => a))), timeout]);
+    await Promise.race([Promise.all(slime(row).map(async (a) => await a.finished.catch(() => a))), timeout]);
   } finally {
     clearTimeout(late);
   }
@@ -51,8 +51,8 @@ async function markedOpening(href: string): Promise<string | undefined> {
   return marks[0];
 }
 // Until the slide is over: no mark left, and <main> no longer named for it.
-const slid = () =>
-  vi.waitUntil(() => root.dataset['vt'] === undefined && main()?.style.viewTransitionName === '', {
+const slid = async () =>
+  await vi.waitUntil(() => root.dataset['vt'] === undefined && main()?.style.viewTransitionName === '', {
     timeout: MS,
   });
 // The animations of the slide under way (its view transition's, on their pseudo-elements), none once it ends.
@@ -70,9 +70,9 @@ test('moving to another tab, the slime reaches out an arm and a drop, which are 
   expect(matchMedia(MEDIA.REDUCED_MOTION).matches).toBe(false);
   await app.open(sourcesHref());
   // from no tab, it has nowhere to move from
-  expect(await mostOvals(header(), () => app.open(WEEK))).toBe(1);
+  expect(await mostOvals(header(), async () => await app.open(WEEK))).toBe(1);
   // the old oval, the arm, the drop and the new oval
-  expect(await mostOvals(header(), () => app.open(festivalsHref()))).toBe(4);
+  expect(await mostOvals(header(), async () => await app.open(festivalsHref()))).toBe(4);
   expect(await restsOffBy('Festivals')).toBeLessThanOrEqual(1);
 });
 
@@ -109,7 +109,7 @@ test('a slide marks its direction while the page changes, and changes it at once
   expect(await markedOpening(festivalsHref())).toBe('back');
   await slid();
   // the sources page is no section: drawn by the time the address change is handled (the page's handler runs first)
-  expect(await shownOnChange(() => app.open(sourcesHref()))).toEqual(['Sources · Kiz Radar', undefined]);
+  expect(await shownOnChange(async () => await app.open(sourcesHref()))).toEqual(['Sources · Kiz Radar', undefined]);
 });
 
 test('a slide held mid-way keeps its mark, and the slide begun over it marks its own direction until its own end', async () => {
@@ -147,6 +147,6 @@ test('a row given other tabs puts its oval under its current one, still', async 
   await app.open(MAP);
   await rested(subnav());
   // the Explore row becomes the Friends tab's places: its oval starts there, not from where Map was
-  expect(await mostOvals(subnav(), () => app.open(friendsHref()))).toBe(1);
+  expect(await mostOvals(subnav(), async () => await app.open(friendsHref()))).toBe(1);
   expect(offBy(ovalsOf(subnav())[0], subnav()?.querySelector('a[aria-current="page"]'))).toBeLessThanOrEqual(1);
 });

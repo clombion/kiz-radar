@@ -79,8 +79,8 @@ const main = () => document.querySelector('main');
 type On = Parameters<typeof app.open>[1];
 // a community's page, the fixture's unless another key is given, on a day other than the start's when given, with its
 // address's query
-const community = (on?: On, params?: Readonly<Record<string, string>>, key = FIXTURE_COMMUNITY) =>
-  app.open(COMM(key, params), on);
+const community = async (on?: On, params?: Readonly<Record<string, string>>, key = FIXTURE_COMMUNITY) =>
+  await app.open(COMM(key, params), on);
 // the elements of the page a selector picks
 const all = <E extends Element = HTMLElement>(selector: string): E[] => [
   ...(main()?.querySelectorAll<E>(selector) ?? []),
@@ -336,9 +336,9 @@ test('the community’s page shares its page for a shared link, copied when the 
   onTestFinished(over('share', undefined));
   const copied: string[] = [];
   onTestFinished(
-    copying((text) => {
+    copying(async (text) => {
       copied.push(text);
-      return Promise.resolve();
+      await Promise.resolve();
     }),
   );
   share?.click();
@@ -373,21 +373,19 @@ test('the Share button says what to do when there is no clipboard or it is refus
   };
   const noShare = () => over('share', undefined);
   const copy = 'Copy the address bar to share';
-  expect(await shared(noShare, () => copying(() => Promise.resolve()))).toEqual([
+  expect(await shared(noShare, () => copying(async () => await Promise.resolve()))).toEqual([
     'Link copied',
     'Link copied',
     'Share this page',
   ]);
   expect(await shared(noShare, () => over('clipboard', {}))).toEqual([copy, copy, 'Share this page']);
-  expect(await shared(noShare, () => copying(() => Promise.reject(new DOMException('no', 'NotAllowedError'))))).toEqual(
-    [copy, copy, 'Share this page'],
-  );
+  expect(
+    await shared(noShare, () => copying(async () => await Promise.reject(new DOMException('no', 'NotAllowedError')))),
+  ).toEqual([copy, copy, 'Share this page']);
   // the visitor closing the share sheet is not refused: nothing said
-  expect(await shared(() => over('share', () => Promise.reject(new DOMException('closed', 'AbortError'))))).toEqual([
-    'Share this page',
-    'Share this page',
-    'Share this page',
-  ]);
+  expect(
+    await shared(() => over('share', async () => await Promise.reject(new DOMException('closed', 'AbortError')))),
+  ).toEqual(['Share this page', 'Share this page', 'Share this page']);
 });
 
 test('the months are today’s period, four of them, a festival one stroke across its days, its count once', async () => {
@@ -707,7 +705,7 @@ test('a festival of the next period, with no trip day in this one, is not among 
 // a step of the calendar, by its label, pressed
 const step = (label: string) => main()?.querySelector<HTMLButtonElement>(`.days-step[aria-label="${label}"]`)?.click();
 // the community with Maja to Riga in September, as on 4 November: March to June with nothing, then July to October
-const toRiga = () => community('2026-11-04', undefined, MAJA_RIGA);
+const toRiga = async () => await community('2026-11-04', undefined, MAJA_RIGA);
 
 test('the steps go through the periods in place to the last trip’s, the agenda with them, the address keeping it', async () => {
   await toRiga();

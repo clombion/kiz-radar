@@ -18,7 +18,7 @@ async function ask(url: URL, init: RequestInit, { signal, answers = [] }: Asked)
   return r;
 }
 
-export const get = (
+export const get = async (
   url: URL,
   {
     signal,
@@ -28,13 +28,13 @@ export const get = (
   }: Asked & { readonly revalidate?: true; readonly headers?: Readonly<Record<string, string>> } = {},
 ): Promise<Response> =>
   // no-cache: asked again of the server, which says if it changed
-  ask(
+  await ask(
     url,
     { cache: revalidate === true ? 'no-cache' : 'default', headers: headers ?? {} },
     { signal, answers: answers ?? [] },
   );
 
-export const send = (
+export const send = async (
   url: URL,
   {
     method,
@@ -42,4 +42,4 @@ export const send = (
     body,
     answers,
   }: { readonly method: 'PUT'; readonly headers: Readonly<Record<string, string>>; readonly body: string } & Asked,
-): Promise<Response> => ask(url, { method, headers, body, cache: 'no-store' }, { answers: answers ?? [] });
+): Promise<Response> => await ask(url, { method, headers, body, cache: 'no-store' }, { answers: answers ?? [] });

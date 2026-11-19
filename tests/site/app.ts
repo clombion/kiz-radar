@@ -53,8 +53,8 @@ interface Visit<Route extends string = string> {
 }
 // the two pages: each one's HTML, the module that starts it, and the data file a test may give it
 const PAGES = {
-  site: { html: 'public/index.html', entry: () => import('../../site/main.ts'), data: 'kiz.sqlite' },
-  review: { html: 'public/review.html', entry: () => import('../../site/review.ts'), data: 'review.json' },
+  site: { html: 'public/index.html', entry: async () => await import('../../site/main.ts'), data: 'kiz.sqlite' },
+  review: { html: 'public/review.html', entry: async () => await import('../../site/review.ts'), data: 'review.json' },
 } as const;
 type Page = (typeof PAGES)[keyof typeof PAGES];
 const START_MS = 30_000; // a start takes under a second; it runs before any test, so no test timeout cuts it
@@ -127,12 +127,12 @@ function unalarmed(what: string, before: readonly Element[]): void {
 
 // a stylesheet or library of the page, added to this one by its own address, the libraries run in the page's order
 // (they are deferred there); a missing one is the build's
-function added(part: Element): Promise<void> {
+async function added(part: Element): Promise<void> {
   const el = document.createElement(part.tagName.toLowerCase());
   for (const a of part.attributes) if (a.name !== 'defer') el.setAttribute(a.name, a.value);
   if (el instanceof HTMLScriptElement) el.async = false;
   const name = part.getAttribute('src') ?? part.getAttribute('href') ?? '';
-  return new Promise((ok, failed) => {
+  await new Promise<void>((ok, failed) => {
     el.addEventListener('load', () => ok());
     el.addEventListener('error', () => failed(new Error(`${name} did not load: mise run build:site makes it`)));
     document.head.append(el);
@@ -205,8 +205,11 @@ function reachable(page: Page, html: Document): (url: URL) => boolean {
   return (url) => origins.includes(url.origin);
 }
 // an answer the helper gives, given up as a real request is when its signal aborts (net.ts's deadline, a view left)
-function within(signal: AbortSignal | null | undefined, make: () => Response | Promise<Response>): Promise<Response> {
-  return new Promise((ok, refused) => {
+async function within(
+  signal: AbortSignal | null | undefined,
+  make: () => Response | Promise<Response>,
+): Promise<Response> {
+  return await new Promise((ok, refused) => {
     if (signal?.aborted === true) {
       refused(signal.reason);
       return;
@@ -266,29 +269,24 @@ async function start(
   // the page's own files a test holds, by the end of their path, each until it is let go
   const holds = new Map<string, Promise<void>>();
   const asked: Asked[] = [];
-  owned('fetch', (input: URL | string | Request, init: RequestInit = {}): Promise<Response> => {
-    if (input instanceof Request) return Promise.reject(new TypeError('the site asks by URL (net.ts), not by Request'));
+  owned('fetch', async (input: URL | string | Request, init: RequestInit = {}): Promise<Response> => {
+    if (input instanceof Request) throw new TypeError('the site asks by URL (net.ts), not by Request');
     const url = new URL(input, location.href);
     asked.push({ url, init });
     if (url.origin !== location.origin) {
-      if (!allowed(url)) {
-        return Promise.reject(
-          new TypeError(`${url.href}: the page's Content-Security-Policy (connect-src) refuses it`),
-        );
-      }
+      if (!allowed(url))
+        throw new TypeError(`${url.href}: the page's Content-Security-Policy (connect-src) refuses it`);
       const given = answer;
-      if (given === undefined) {
-        return Promise.reject(new TypeError(`${url.href}: no other host answers in a test (elsewhere)`));
-      }
-      return within(init.signal, () => given(url, init));
+      if (given === undefined) throw new TypeError(`${url.href}: no other host answers in a test (elsewhere)`);
+      return await within(init.signal, async () => await given(url, init));
     }
     const file = (DATA_FILE.exec(url.pathname) ?? ROOT_FILE.exec(url.pathname))?.groups?.['file'];
-    return served !== undefined && file === page.data
+    return await (served !== undefined && file === page.data
       ? within(init.signal, () => new Response(served))
       : within(init.signal, async () => {
-          await Promise.all([...holds].filter(([path]) => url.pathname.endsWith(path)).map(([, held]) => held));
-          return own(url, init);
-        });
+          await Promise.all([...holds].flatMap(([path, held]) => (url.pathname.endsWith(path) ? [held] : [])));
+          return await own(url, init);
+        }));
   });
 
   document.body.replaceChildren(...document.importNode(html.body, true).childNodes);
@@ -365,14 +363,14 @@ export async function startSite({ plant, ...visit }: Visit & { readonly plant?: 
   hold: (path: string) => () => void;
   open: (href: string, on?: Now) => Promise<void>;
 }> {
-  const { asked, address, hold, on } = await start(PAGES.site, visit, () =>
-    plant === undefined ? undefined : planted(plant),
+  const { asked, address, hold, on } = await start(PAGES.site, visit, async () =>
+    plant === undefined ? undefined : await planted(plant),
   );
   return {
     asked,
     hold,
-    open: (href, day) =>
-      address(href, () => {
+    open: async (href, day) =>
+      await address(href, () => {
         on(day, href);
         // a new page takes the focus (main.ts); until it has, the page shown is the one before (the focus itself,
         // not its event, which a frame without the window's focus never gets: test files share one window)

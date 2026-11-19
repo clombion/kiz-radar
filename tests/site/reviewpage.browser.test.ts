@@ -79,7 +79,7 @@ test("and the start's answer is back in the next", async () => {
 });
 
 test('an answer is given up, as a request is, once its signal aborts', async () => {
-  app.answer(() => new Promise<Response>(() => undefined)); // a host that never answers
+  app.answer(async () => await new Promise<Response>(() => undefined)); // a host that never answers
   const leave = new AbortController();
   const asking = get(new URL('https://api.github.com/user'), { signal: leave.signal });
   leave.abort();

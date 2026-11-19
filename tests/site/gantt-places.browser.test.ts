@@ -43,7 +43,7 @@ function plant(db: Database): void {
 }
 const app = await startSite({ now: '2026-11-01', plant });
 
-const kuof = (key?: string) => kuofOf(app.open, key);
+const kuof = async (key?: string) => await kuofOf(app.open, key);
 // the buttons choosing a KUOF card's view, by travel and by place
 const choice = (row: HTMLElement | undefined) => [
   ...(row?.querySelectorAll<HTMLButtonElement>('.gantt-views button') ?? []),

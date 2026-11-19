@@ -58,11 +58,16 @@ async function answer(res: ServerResponse, name: string, read: () => Promise<Buf
   served(res, name, body);
 }
 // a file from the first folder that has it, in order
-const first = (dirs: readonly string[], name: string): Promise<Buffer> =>
-  dirs.reduce<Promise<Buffer>>(
-    (before, dir) => before.catch((e: unknown) => (absent(e) ? readFile(join(dir, name)) : Promise.reject(e))),
-    Promise.reject(Object.assign(new Error(name), { code: 'ENOENT' })),
-  );
+async function first(dirs: readonly string[], name: string): Promise<Buffer> {
+  for (const dir of dirs) {
+    try {
+      return await readFile(join(dir, name));
+    } catch (e) {
+      if (!absent(e)) throw e;
+    }
+  }
+  throw Object.assign(new Error(name), { code: 'ENOENT' });
+}
 // the address asked for, without its query; null for one no file has (a malformed escape)
 function asked(req: IncomingMessage): string | null {
   try {
@@ -79,11 +84,11 @@ const pages = () => ({
       const data = DATA_FILE.exec(path)?.groups?.['file'];
       const root = ROOT_FILE.exec(path)?.groups?.['file'];
       if (data !== undefined) {
-        answer(res, data, () => readFile(join(FIXTURE_DATA, data)), () => missing(res)).catch((e: unknown) =>
+        answer(res, data, async () => await readFile(join(FIXTURE_DATA, data)), () => missing(res)).catch((e: unknown) =>
           failed(res, e),
         );
       } else if (root === undefined) next();
-      else answer(res, root, () => first([FIXTURE_DATA, 'public/vendor'], root), next).catch((e: unknown) => failed(res, e));
+      else answer(res, root, async () => await first([FIXTURE_DATA, 'public/vendor'], root), next).catch((e: unknown) => failed(res, e));
     });
     server.middlewares.use('/kiz-radar', (req, res, next) => {
       const path = asked(req);
@@ -98,7 +103,7 @@ const pages = () => ({
         data === undefined ? join('public', path.endsWith('/') ? `${path}index.html` : path) : join(FIXTURE_DATA, data);
       const read = COMMUNITY_PAGE.test(path)
         ? readFile('public/index.html', 'utf8').then((index) => index.replace(BASE, COMMUNITY_BASE))
-        : stat(file).then(() => readFile(file));
+        : stat(file).then(async () => await readFile(file));
       read.then((body) => served(res, file, body)).catch(() => missing(res));
     });
   },

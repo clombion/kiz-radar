@@ -32,7 +32,7 @@ const app = await startSite({
 });
 
 // a festival's card opened on the map, on the day given or else the start's
-const cardOf = (id: number, day?: `${number}-${number}-${number}`) => mapCardOf(app, id, day);
+const cardOf = async (id: number, day?: `${number}-${number}-${number}`) => await mapCardOf(app, id, day);
 const main = () => document.querySelector('main');
 // what a card says of its pass and flight, and its tag
 const costOf = (card: Element) => said(card.querySelector('.cost-parts'));

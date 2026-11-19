@@ -34,7 +34,7 @@ function plant(db: Database): void {
 }
 const app = await startSite({ now: '2026-11-01', plant });
 const main = () => document.querySelector('main');
-const kuof = () => kuofOf(app.open);
+const kuof = async () => await kuofOf(app.open);
 
 test('a day only travelled has a dot, and a festival’s own days none', async () => {
   await app.open(COMM(FIXTURE_COMMUNITY));

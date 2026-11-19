@@ -31,8 +31,8 @@ const where = (frame: HTMLIFrameElement) => {
   return `${at?.pathname ?? ''}${at?.search ?? ''}${at?.hash ?? ''}`;
 };
 // once the frame shows the Friends tab
-const onFriends = (frame: HTMLIFrameElement) =>
-  vi.waitFor(
+const onFriends = async (frame: HTMLIFrameElement) =>
+  await vi.waitFor(
     () => {
       if (!frame.contentDocument?.querySelector('.who-list')) throw new Error('not on the Friends tab yet');
     },
@@ -53,7 +53,9 @@ test('a community’s address is its page: the site, its own title, and the addr
 
 test('its Share button gives its address', async () => {
   const frame = await framed(`${ROOT}c/${KEY}/`, '.share-row button');
-  const shared = vi.fn(() => Promise.resolve());
+  const shared = vi.fn(async () => {
+    await Promise.resolve();
+  });
   Object.defineProperty(frame.contentWindow?.navigator, 'share', { value: shared, configurable: true });
   frame.contentDocument?.querySelector<HTMLButtonElement>('.share-row button')?.click();
   expect(shared).toHaveBeenCalledWith({ title: NAME, url: `${location.origin}${ROOT}c/${KEY}/` });

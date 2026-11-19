@@ -49,10 +49,10 @@ export function entryAt(): number {
   if (at === undefined) throw new Error("no current entry in this frame's history");
   return at;
 }
-export function back(): Promise<unknown> {
+export async function back(): Promise<unknown> {
   const gone = new Promise((done) => addEventListener('popstate', done, { once: true }));
   ownHistory().back();
-  return gone;
+  return await gone;
 }
 
 // The review page (review.html): what its token button says, the dialog it opens (closed by its Close once the test
@@ -110,7 +110,9 @@ export const keyed = (key: string): boolean => globalThis.dispatchEvent(new Keyb
 
 // The page this wide, 900px high, until the test ends; then the browser project's own size, 414 by 896.
 export async function atWidth(width: number): Promise<void> {
-  onTestFinished(() => page.viewport(414, 896));
+  onTestFinished(async () => {
+    await page.viewport(414, 896);
+  });
   await page.viewport(width, 900);
 }
 

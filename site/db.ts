@@ -67,12 +67,10 @@ export function freshDay(): string {
 export async function load(siteLoaded: Promise<void>): Promise<Database> {
   needs('initSqlJs', 'vendor/sql-wasm.js');
   // its WebAssembly asked through get(), with its deadline, rather than by sql.js, which would wait on it for ever
-  const [SQL, dbBuf] = await Promise.all([
-    get(new URL('sql-wasm.wasm', SQLJS))
-      .then((r) => r.arrayBuffer())
-      .then((wasmBinary) => initSqlJs({ wasmBinary })),
-    get(new URL('kiz.sqlite', DATA), { revalidate: true }).then((r) => r.arrayBuffer()),
-  ]);
+  const engine = async () =>
+    initSqlJs({ wasmBinary: await (await get(new URL('sql-wasm.wasm', SQLJS))).arrayBuffer() });
+  const data = async () => (await get(new URL('kiz.sqlite', DATA), { revalidate: true })).arrayBuffer();
+  const [SQL, dbBuf] = await Promise.all([engine(), data()]);
   const bytes = new Uint8Array(dbBuf);
   // the festivals as seen from the visitor's own day (event_rows)
   const open = (): Database => {

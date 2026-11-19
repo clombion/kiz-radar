@@ -49,11 +49,11 @@ test('with no current tab there is no oval, and the next tab has one at once', a
 
 test('the oval moves at once, with no arm or drop', async () => {
   await app.open(festivalsHref());
-  expect(await mostOvals(header(), () => app.open(friendsHref()))).toBe(1);
+  expect(await mostOvals(header(), async () => await app.open(friendsHref()))).toBe(1);
   expect(offBy(shownOvals(header())[0], tabOf(header(), 'Friends'))).toBeLessThanOrEqual(1);
 });
 
 test('the page changes at once, with no slide', async () => {
   await app.open(festivalsHref());
-  expect(await shownOnChange(() => app.open(friendsHref()))).toEqual(['Friends · Kiz Radar', undefined]);
+  expect(await shownOnChange(async () => await app.open(friendsHref()))).toEqual(['Friends · Kiz Radar', undefined]);
 });

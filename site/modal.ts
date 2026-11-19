@@ -14,11 +14,11 @@ export function modal(dlg: HTMLDialogElement): Modal {
   let pushed = false,
     returnTo: Element | null = null;
   document.body.append(dlg);
-  function shut(): Promise<unknown> {
+  async function shut(): Promise<void> {
     if (dlg.open) dlg.close();
-    if (!pushed) return Promise.resolve();
+    if (!pushed) return;
     pushed = false;
-    return new Promise((gone) => {
+    await new Promise((gone) => {
       addEventListener('popstate', gone, { once: true });
       history.back();
     });
@@ -46,10 +46,10 @@ export function modal(dlg: HTMLDialogElement): Modal {
       return true;
     },
     shut,
-    go: (href) =>
-      shut().then(() => {
-        go(href);
-      }),
+    go: async (href) => {
+      await shut();
+      go(href);
+    },
   };
 }
 
