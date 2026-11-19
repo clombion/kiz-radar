@@ -185,6 +185,7 @@ depends = [
   "lint:py",
   "format:py",
   "format:md",
+  "format:site",
   "types:py",
   "lint:site",
   "types:site",
