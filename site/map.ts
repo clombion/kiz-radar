@@ -508,7 +508,8 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     }),
   );
   const esc = (ev: KeyboardEvent) => {
-    if (ev.key !== 'Escape' || !picked()) return;
+    // an Escape that closes a dialog over the map (Flights) is the dialog's alone: the key goes down while it is open
+    if (ev.key !== 'Escape' || !picked() || document.querySelector('dialog[open]') !== null) return;
     if (state.event === null) state.city = null;
     else state.event = null;
     save();
