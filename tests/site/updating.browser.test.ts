@@ -1,34 +1,20 @@
-// The page in place of a view while the site is mid-update (site/updating.ts): it says how long that takes and counts
-// down to a reload, and past a quarter of an hour it stops trying.
-import { afterEach, expect, test, vi } from 'vitest';
-import { updated, updatingPage } from '../../site/updating.ts';
+// The page a visitor gets while the site is mid-update for them (updating.ts): it says how long an update takes and
+// counts down to loading again, and keeps when it first found the site so, which a reload keeps (updating-late and
+// updating-over read it).
+import { expect, test, vi } from 'vitest';
+import { startMidUpdate, UPDATING_SINCE, updatingSays } from './reload.ts';
 
-const SINCE = 'kiz-radar-updating-since';
+const page = await startMidUpdate({ now: UPDATING_SINCE.at });
 
-afterEach(() => {
-  vi.useRealTimers();
-  updated();
-});
-
-test('mid-update the page says how long it takes and counts down to loading again', () => {
-  vi.useFakeTimers();
-  const root = document.createElement('div');
-  updatingPage(root);
-  expect(root.querySelector('h1')?.textContent).toBe('Kiz Radar is being updated');
-  expect(root.textContent).toContain('up to ten minutes');
-  expect(root.textContent).toContain('in 60 seconds');
+test('mid-update the page says how long it takes and counts down to loading again', async () => {
+  expect(updatingSays().heading).toBe('Kiz Radar is being updated');
+  expect(await page.again()).toBe(1); // its countdown
+  const { heading, words } = updatingSays();
+  expect(heading).toBe('Kiz Radar is being updated');
+  expect(words).toContain('up to ten minutes');
+  expect(words).toContain('This page loads again by itself in 60 seconds.');
   vi.advanceTimersByTime(59_000);
-  expect(root.textContent).toContain('in 1 second.');
-  expect(sessionStorage.getItem(SINCE)).not.toBeNull(); // when it started, which a reload keeps
-});
-
-test('past a quarter of an hour it no longer blames the update, nor loads again by itself', () => {
-  vi.useFakeTimers();
-  sessionStorage.setItem(SINCE, String(Date.now() - 16 * 60_000));
-  const root = document.createElement('div');
-  updatingPage(root);
-  expect(root.querySelector('h1')?.textContent).toBe('Kiz Radar could not load');
-  expect(vi.getTimerCount()).toBe(0);
-  updated();
-  expect(sessionStorage.getItem(SINCE)).toBeNull();
+  expect(updatingSays().words).toContain('This page loads again by itself in 1 second.');
+  // when it first found the site mid-update, which a reload keeps: the instant the page started on
+  expect(sessionStorage.getItem(UPDATING_SINCE.key)).toBe(UPDATING_SINCE.value);
 });

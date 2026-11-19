@@ -1,12 +1,12 @@
 // Who a festival's card names, on the map and on the Festivals page, and where a festival stands for a page left open
 // past midnight, on the fixture's community: Siân, in Glasgow's line-up, only may go there.
 import { expect, test } from 'vitest';
-import { eventOnMapHref, festivalsHref, friendsHref } from '../../site/routes.ts';
+import { festivalsHref, friendsHref } from '../../site/routes.ts';
 import { KEY } from '../../site/states.ts';
 import { startSite } from './app.ts';
-import { GLASGOW, KUOF, KWANZA } from './community.fixture.ts';
+import { GLASGOW, KUOF, KWANZA, titleOf } from './community.fixture.ts';
 import { aloneInItsCountry, planned } from './planted.ts';
-import { listOf, rowOf, said, tags } from './seen.ts';
+import { cardTitles, listOf, mapCardOf, rowOf, said, tags } from './seen.ts';
 
 const main = () => document.querySelector('main');
 const app = await startSite({
@@ -21,10 +21,7 @@ const app = await startSite({
 });
 
 // a festival's card, opened on the map (its map read no further): who's going, under its count
-async function whoAt(id: number): Promise<Element | null | undefined> {
-  await app.open(eventOnMapHref(id));
-  return main()?.querySelector('.festival-card .who');
-}
+const whoAt = async (id: number): Promise<Element | null> => (await mapCardOf(app, id)).querySelector('.who');
 // the names on a card's list of who's going, each with its tag
 const goers = (who: Element | null | undefined) =>
   [...(who?.querySelectorAll('li') ?? [])].map((li) => [
@@ -56,9 +53,7 @@ test('a festival’s card and the Friends tab say who may go apart from who is g
   expect(tags(who)).toEqual(['maybe']);
   // the Festivals page holding Prague Kwanza alone, its weekend's in its country: no friends going, as Siân only may
   await app.open(festivalsHref({ country: 'CZ', when: 'weekend', reach: 'any' }), '2027-02-12');
-  expect([...(main()?.querySelectorAll('.festival-card h3') ?? [])].map((h) => said(h))).toEqual([
-    'Prague Kwanza Festival – 9.edition',
-  ]);
+  expect(cardTitles()).toEqual([titleOf(KWANZA)]);
   expect(main()?.querySelector('.friends')).toBeNull();
   expect(said(main())).not.toMatch(/ going to /u);
   // against it, the page holding Glasgow alone, where Christina and Siân teach: the line says who is going

@@ -2,6 +2,7 @@
 // that start the page (app.ts).
 import { onTestFinished } from 'vitest';
 import { page, userEvent } from 'vitest/browser';
+import { eventOnMapHref } from '../../site/routes.ts';
 import { FIXTURE_COMMUNITY } from './community.fixture.ts';
 
 // An older link to a community's page, #community/<key> with its query: the page moves it to c/<key>/, the community's
@@ -89,9 +90,36 @@ export const rowOf = (name: string): ReturnType<typeof listOf>['rows'][number] |
 export const goer = (name: string): HTMLButtonElement | undefined =>
   [...document.querySelectorAll<HTMLButtonElement>('main .who-lines .goer-name')].find((b) => said(b) === name);
 
-// A community's page: its agenda of trips, and the months of its calendar.
+// The page's <main>, where every view draws.
 const main = () => document.querySelector('main');
 
+// The titles of the festivals' cards the page shows, in its order.
+export const cardTitles = (): (string | undefined)[] =>
+  [...(main()?.querySelectorAll('.festival-card h3') ?? [])].map((h) => said(h));
+// A festival's card on the page, by its title; a page without it is an error.
+export function cardTitled(title: string): Element {
+  const card = [...(main()?.querySelectorAll('.festival-card') ?? [])].find(
+    (c) => said(c.querySelector('h3')) === title,
+  );
+  if (card === undefined)
+    throw new Error(`no card of ${title} on the page, whose cards are ${cardTitles().join(', ')}`);
+  return card;
+}
+// A festival's card, opened on the map by app's open (app.ts's), on the day given or else the start's; a map without
+// it is an error.
+type Day = `${number}-${number}-${number}`;
+export async function mapCardOf(
+  app: { open: (href: string, on?: Day) => Promise<void> },
+  id: number,
+  day?: Day,
+): Promise<Element> {
+  await app.open(eventOnMapHref(id), day);
+  const card = main()?.querySelector('.festival-card');
+  if (card == null) throw new Error(`festival ${id}: no card on the map, whose <main> says ${said(main())}`);
+  return card;
+}
+
+// A community's page: its agenda of trips, and the months of its calendar.
 // A trip's row of the agenda, by the start of its festival's title.
 export const agendaRow = (title: string): HTMLElement | undefined =>
   [...(main()?.querySelectorAll<HTMLElement>('.trip') ?? [])].find((r) =>
@@ -247,7 +275,7 @@ export function linesOf(): {
 }
 
 // A card of names, as it reads: each place's heading as "# place", each name (with its own nights).
-export const cardOf = (list: Element | null | undefined): string[] =>
+export const ganttCardOf = (list: Element | null | undefined): string[] =>
   [...(list?.querySelectorAll('.gantt-who-place, .gantt-who-list li') ?? [])].map((x) =>
     x.matches('.gantt-who-place') ? `# ${said(x)}` : (said(x) ?? ''),
   );
@@ -320,7 +348,7 @@ export async function collectiveOf(): Promise<{
     floats,
     columns: names ? getComputedStyle(names).columnCount : '',
     label,
-    names: cardOf(list),
+    names: ganttCardOf(list),
     states,
     words: heard(row?.querySelector('.gantt-said')),
   };

@@ -10,7 +10,7 @@ import { KEY } from '../../site/states.ts';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, KUOF } from './community.fixture.ts';
 import { community, FLOWN, planned, sharer, stays, trips } from './planted.ts';
-import { atWidth, cardOf, kuofOf, linesOf, said } from './seen.ts';
+import { atWidth, ganttCardOf, kuofOf, linesOf, said } from './seen.ts';
 
 // the fixture's community copied; and one whose members are Ann, Bo, Cy and Di at the Scandic from Thursday, Nora from
 // Friday, and Ed at the Thon, its added people the fixture's
@@ -82,7 +82,7 @@ test('two places are written beside the stroke, and counted under the name on a 
   const count = row?.querySelector<HTMLElement>('.gantt-under button');
   count?.click();
   // a small card of names by place: each place a heading, then its names
-  expect(cardOf(document.getElementById(count?.getAttribute('aria-controls') ?? ''))).toEqual([
+  expect(ganttCardOf(document.getElementById(count?.getAttribute('aria-controls') ?? ''))).toEqual([
     '# Comfort Xpress Oslo Sentrum',
     'Christina',
     '# Scandic Holberg',
@@ -142,7 +142,7 @@ test('by place, the names a count opens say each one’s own nights when they ar
   );
   count?.click();
   const names = document.getElementById(count?.getAttribute('aria-controls') ?? '');
-  expect(cardOf(names)).toEqual(['Ann', 'Bo', 'Cy', 'Di', 'Nora · Fri–Sun']);
+  expect(ganttCardOf(names)).toEqual(['Ann', 'Bo', 'Cy', 'Di', 'Nora · Fri–Sun']);
   expect(said(names?.querySelector('.gantt-who-nights'))).toBe('· Fri–Sun');
 });
 

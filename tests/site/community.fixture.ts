@@ -81,6 +81,12 @@ const FESTIVALS: readonly Festival[] = [
   [RIGA, 'ILKSF Meets HIK Latvia 6th Edition', '2027-09-03', '2027-09-06', 'Riga', 'LV', '2027-09-03'],
 ];
 export const FIXTURE_FESTIVALS = FESTIVALS.map(([id]) => id);
+// A festival's title as the fixture pins it, by its id; a festival the fixture does not name is an error.
+export function titleOf(id: number): string {
+  const title = FESTIVALS.find(([festival]) => festival === id)?.[1];
+  if (title === undefined) throw new Error(`festival ${id}: none of the fixture's`);
+  return title;
+}
 
 // A festival of the build as a test reads it, whatever the data says: its title, days, city and country, listed and
 // not cancelled. Its city is the one of that name in its country; a festival the data lacks, or a city cities has no

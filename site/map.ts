@@ -39,7 +39,7 @@ const css = (name: string): string => {
 const PAGE = 40;
 
 // a festival with a place on the map, and a city's bubble
-export type Placed = Festival & { city: string; city_key: string; country_code: string; lat: number; lon: number };
+type Placed = Festival & { city: string; city_key: string; country_code: string; lat: number; lon: number };
 interface City {
   key: string;
   city: string;
@@ -53,7 +53,7 @@ interface City {
   home: boolean; // a festival there is in the home city
 }
 // the festivals in view, by city, with what each city's bubble shows
-export function citiesOf(events: readonly Placed[]): City[] {
+function citiesOf(events: readonly Placed[]): City[] {
   const groups = new Map<string, Omit<City, 'n' | 'popular' | 'minFare' | 'home'>>();
   for (const e of events) {
     const k = e.city_key;

@@ -13,9 +13,11 @@
 //   Content-Security-Policy lets it ask; nothing else leaves the page.
 // The page's fetch, storage and clock are the helper's for the whole file, and cannot be replaced: fetch records what
 // the page asked since it started (`asked`), serves the planted data, and passes the page's own files to the test
-// server. vi's fake timers may lie over the clock, installed after the page starts, and give it back; while they do,
-// the day is theirs (vi.setSystemTime). The page's Content-Security-Policy is read, not applied: in the test's page
-// it would also bind Vitest's own scripts. A start, or an open(), whose page says it failed is refused with its words.
+// server; a file a test holds (hold(), inside one test) is asked of it once the test lets it go. vi's fake timers may
+// lie over the clock, installed after the page starts, and give it back; while they do, the day is theirs
+// (vi.setSystemTime). The page's Content-Security-Policy is read, not applied: in the test's page it would also bind
+// Vitest's own scripts. A start, or an open(), whose page says it failed is refused with its words, and so is one
+// during which a new line says that something went wrong (report.ts's), so that no error passes unseen.
 import type { Database } from 'sql.js';
 import { onTestFinished, vi } from 'vitest';
 import { commands } from 'vitest/browser';
@@ -80,6 +82,16 @@ async function drawn(what: string, timeout: number, [ready, waited] = [() => tru
     throw new Error(`${what}: still waiting for ${waited} after ${timeout} ms; <main> says: ${said()}`, { cause: e });
   }
   if (FAILED.test(main().textContent ?? '')) throw new Error(`${what}: the page says it failed: ${said()}`);
+}
+
+// the lines report.ts puts at the top of the page when something goes wrong
+const alerts = (): Element[] => [...document.querySelectorAll('[role="alert"]')];
+// refused when a line that something went wrong is new since `before` (the lines there before a start or an open())
+function unalarmed(what: string, before: readonly Element[]): void {
+  const raised = alerts().filter((a) => !before.includes(a));
+  if (raised.length > 0) {
+    throw new Error(`${what}: the page says ${raised.map((a) => (a.textContent ?? '').trim()).join(' / ')}`);
+  }
 }
 
 // a stylesheet or library of the page, added to this one by its own address, the libraries run in the page's order
@@ -201,6 +213,8 @@ async function start(
   const served = await data();
 
   let answer = elsewhere;
+  // the page's own files a test holds, by the end of their path, each until it is let go
+  const holds = new Map<string, Promise<void>>();
   const asked: Asked[] = [];
   owned('fetch', (input: URL | string | Request, init: RequestInit = {}): Promise<Response> => {
     if (input instanceof Request) return Promise.reject(new TypeError('the site asks by URL (net.ts), not by Request'));
@@ -221,7 +235,10 @@ async function start(
     const file = (DATA_FILE.exec(url.pathname) ?? ROOT_FILE.exec(url.pathname))?.groups?.['file'];
     return served !== undefined && file === page.data
       ? within(init.signal, () => new Response(served))
-      : own(url, init);
+      : within(init.signal, async () => {
+          await Promise.all([...holds].filter(([path]) => url.pathname.endsWith(path)).map(([, held]) => held));
+          return own(url, init);
+        });
   });
 
   document.body.replaceChildren(...document.importNode(html.body, true).childNodes);
@@ -230,9 +247,26 @@ async function start(
   history.replaceState(null, '', home);
   await page.entry();
   await drawn('starting the page', START_MS);
+  unalarmed('starting the page', []);
   return {
     asked,
     home,
+    // a file of the page's own held until the test lets it go, or ends (onTestFinished: inside a test only)
+    hold: (path: string): (() => void) => {
+      const held: { go?: () => void } = {};
+      holds.set(
+        path,
+        new Promise<void>((done) => {
+          held.go = done;
+        }),
+      );
+      const go = () => {
+        holds.delete(path);
+        held.go?.();
+      };
+      onTestFinished(go);
+      return go;
+    },
     // another host's answer for the test that gives it (onTestFinished: inside a test only)
     answer: (a: Answer) => {
       onTestFinished(() => {
@@ -261,13 +295,18 @@ async function start(
 
 // The site's page, started on the fixture's data as plant leaves it. open(href, on) opens a route by its link from
 // routes.ts as a new page, on the day `on` or else the start's, once the page has the focus and has its data.
+// hold(path) holds the page's own file of that path until the function it returns is called, or the test ends.
 export async function startSite({ plant, ...visit }: Visit & { plant?: (db: Database) => void }): Promise<{
   asked: readonly Asked[];
+  hold: (path: string) => () => void;
   open: (href: string, on?: Now) => Promise<void>;
 }> {
-  const { asked, home, on } = await start(PAGES.site, visit, () => (plant === undefined ? undefined : planted(plant)));
+  const { asked, hold, home, on } = await start(PAGES.site, visit, () =>
+    plant === undefined ? undefined : planted(plant),
+  );
   return {
     asked,
+    hold,
     open: async (href, day) => {
       if (!href.startsWith('#')) {
         throw new Error(
@@ -275,6 +314,7 @@ export async function startSite({ plant, ...visit }: Visit & { plant?: (db: Data
         );
       }
       on(day, href);
+      const before = alerts();
       // a new page takes the focus (main.ts); until it has, the page shown is the one before (the focus itself,
       // not its event, which a frame without the window's focus never gets: test files share one window)
       if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
@@ -283,6 +323,7 @@ export async function startSite({ plant, ...visit }: Visit & { plant?: (db: Data
       history.replaceState(null, '', home);
       location.replace(new URL(href, location.href).href);
       await drawn(href, OPEN_MS, [() => document.activeElement === main(), 'the focus a new page takes']);
+      unalarmed(href, before);
     },
   };
 }

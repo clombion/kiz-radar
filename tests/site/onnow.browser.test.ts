@@ -1,166 +1,140 @@
-// A festival on now, in Chromium on the database the build ships: its phase from its first to its last day, its card's
-// tag and cost without the flight, and the Festivals page's On now filter. Two festivals of the data are made the
-// fixture's, on days of their own, and every other is moved years away, so no test reads a real date: one on from
-// Friday 6 to Monday 9 November 2026, which is today, the other from 20 to 22 November.
-import type { Database } from 'sql.js';
-import { beforeAll, expect, test, vi } from 'vitest';
-import { one, site, sql } from '../../site/db.ts';
-import { eventCard } from '../../site/eventcard.ts';
-import { type Festival, festivals } from '../../site/festivals.ts';
-import { num, str } from '../../site/rows.ts';
-import { sentenceView } from '../../site/sentence.ts';
-import { KEY } from '../../site/states.ts';
-import { flownTo, pass, tier } from './samples.ts';
-import { loadShipped } from './shipped.ts';
+// A festival on now, on Friday 6 November 2026: its days, its card's tag and its cost without the flight, and the
+// Festivals page's On now filter. The fixture's festivals: Glasgow, on from Friday 6 to Monday 9 November; KUOF, to
+// come on 20–22 November; Paris's row pinned in Oslo on Saturday 7 and Sunday 8 November, its weekend's Friday the
+// 6th, so its flight left today; Prague Kwanza, from Thursday 11 February 2027, its Friday the 12th; and Cloudkiz,
+// unpriced, on 26–28 February. Every other festival is moved to 2031. Each of the first four has one full pass of
+// 1 240 kr on sale and a fare for its weekend.
+import { expect, test } from 'vitest';
+import { festivalsHref } from '../../site/routes.ts';
+import { startSite } from './app.ts';
+import { CLOUDKIZ, GLASGOW, KUOF, KWANZA, PARIS, pinFestival, titleOf } from './community.fixture.ts';
+import { flies, movedAway, priced, type Searched, unpriced, weekend } from './planted.ts';
+import { cardTitled, cardTitles, mapCardOf, said } from './seen.ts';
 
-const TODAY = '2026-11-06';
-let db: Database | undefined;
-let on = 0, // the festival on today
-  ahead = 0, // the one to come
-  saturday = 0; // one to come on Saturday, whose weekend's flight left today, its Friday
-let elsewhere = ''; // the country of the one to come, which the one on is not in
-
-beforeAll(async () => {
-  db = await loadShipped(new Map());
-  vi.useFakeTimers({ toFake: ['Date'] });
-  vi.setSystemTime(new Date(`${TODAY}T12:00:00`));
-  db.run('UPDATE today SET day = ?', [TODAY]);
-  const [first, second, third] =
-    db.exec('SELECT id FROM events ORDER BY id LIMIT 3')[0]?.values.map((r) => Number(r[0])) ?? [];
-  [on, ahead, saturday] = [first ?? 0, second ?? 0, third ?? 0];
-  const [here = '', there = ''] = site().destinations.map((c) => c.code);
-  elsewhere = there;
-  db.run(
-    `UPDATE events SET start_date = '2031-01-03', end_date = '2031-01-05', weekend_friday = '2031-01-03'
-     WHERE id NOT IN (?, ?, ?)`,
-    [on, ahead, saturday],
-  );
-  const plant = (id: number, [start = '', end = '', friday = start]: readonly string[], country: string) =>
-    db?.run(
-      `UPDATE events SET start_date = ?, end_date = ?, weekend_friday = ?, listing = ?, cancelled = 0,
-       country_code = ? WHERE id = ?`,
-      [start, end, friday, KEY.listing.LISTED, country, id],
-    );
-  plant(on, ['2026-11-06', '2026-11-09'], here);
-  plant(ahead, ['2026-11-20', '2026-11-22'], there);
-  plant(saturday, ['2026-11-07', '2026-11-08', '2026-11-06'], there);
+const AT = '2026-10-30T06:00:00+00:00';
+const fare = (code: string): Searched => ({ airport: code, at: AT, direct: true, fare: { price: 120, stops: 0 } });
+const SATURDAY = PARIS;
+const app = await startSite({
+  now: '2026-11-06',
+  plant: (db) => {
+    movedAway(db, [GLASGOW, KUOF, SATURDAY, KWANZA, CLOUDKIZ]);
+    pinFestival(db, [SATURDAY, titleOf(SATURDAY), '2026-11-07', '2026-11-08', 'Oslo', 'NO', '2026-11-06']);
+    for (const id of [GLASGOW, SATURDAY, KUOF, KWANZA]) priced(db, id, 1240, 'NOK');
+    unpriced(db, CLOUDKIZ);
+    flies(db, GLASGOW, [['GLA', 11]]);
+    flies(db, SATURDAY, [['OSL', 37]]);
+    flies(db, KUOF, [['OSL', 37]]);
+    flies(db, KWANZA, [['PRG', 12]]);
+    weekend(db, '2026-11-06', ['GLA', 'OSL'], [fare('GLA'), fare('OSL')]);
+    weekend(db, '2026-11-20', ['OSL'], [fare('OSL')]);
+    weekend(db, '2027-02-12', ['PRG'], [fare('PRG')]);
+  },
 });
 
-test('a festival is on from its first day to its last, both included, and still to attend while it is', () => {
-  const phaseOn = (day: string) => {
-    db?.run('UPDATE today SET day = ?', [day]);
-    try {
-      const r = one({ phase: str, upcoming: num }, sql`SELECT phase, upcoming FROM event_rows WHERE id = ?`, [on]);
-      return [r?.phase, r?.upcoming];
-    } finally {
-      db?.run('UPDATE today SET day = ?', [TODAY]);
-    }
+// a festival's card opened on the map, on the day given or else the start's
+const cardOf = (id: number, day?: `${number}-${number}-${number}`) => mapCardOf(app, id, day);
+const main = () => document.querySelector('main');
+// what a card says of its pass and flight, and its tag
+const costOf = (card: Element) => said(card.querySelector('.cost-parts'));
+const tagOf = (card: Element) => said(card.querySelector('.now-tag'));
+
+test('a festival is on from its first day to its last, both included, and still to attend while it is', async () => {
+  // Glasgow on the Festivals page of its country, on a day: its tag, untagged, or not listed
+  const glasgowOn = async (day: `${number}-${number}-${number}`) => {
+    await app.open(festivalsHref({ reach: 'any', country: 'GB' }), day);
+    return cardTitles().includes(titleOf(GLASGOW)) ? (tagOf(cardTitled(titleOf(GLASGOW))) ?? 'untagged') : 'not listed';
   };
-  expect(phaseOn('2026-11-05')).toEqual([KEY.phase.AHEAD, 1]); // the day before
-  expect(phaseOn('2026-11-06')).toEqual([KEY.phase.ON, 1]); // its first day
-  expect(phaseOn('2026-11-09')).toEqual([KEY.phase.ON, 1]); // its last
-  expect(phaseOn('2026-11-10')).toEqual([KEY.phase.ENDED, 0]); // the day after
+  expect(await glasgowOn('2026-11-05')).toBe('untagged'); // the day before
+  expect(await glasgowOn('2026-11-06')).toBe('On now'); // its first day
+  expect(await glasgowOn('2026-11-09')).toBe('On now'); // its last
+  expect(await glasgowOn('2026-11-10')).toBe('not listed'); // the day after
+  // ended, not only unlisted: opened on the map, it widens the map's When from Upcoming to All dates, as a festival
+  // with no day still to come does, where on its last day it leaves it
+  const whenOnMap = async (day: `${number}-${number}-${number}`) => {
+    await cardOf(GLASGOW, day);
+    return said(main()?.querySelector('select[aria-label="When"] option:checked'));
+  };
+  expect(await whenOnMap('2026-11-09')).toBe('Upcoming');
+  expect(await whenOnMap('2026-11-10')).toBe('All dates');
 });
 
-const said = (el: Element | null | undefined) => el?.textContent?.replace(/\s+/gu, ' ').trim();
-const festival = (id: number): Festival => {
-  const e = festivals().find((f) => f.id === id);
-  if (!e) throw new Error(`no festival ${id}`);
-  return e;
-};
-// a card of a festival, with its price and trip set as a priced one's are: a full pass of 1 240, and a flight known
-const priced = (e: Festival): HTMLElement => {
-  const t = { ...tier(1240, { currency: 'NOK' }), lo: null, hi: null };
-  return eventCard({
-    ...e,
-    price: {
-      point: 'card_price',
-      key: KEY.card_price.FULL_PASS,
-      pass: pass([t]),
-      now: { state: KEY.tier_today.NOW, tier: t, next: undefined },
-    },
-    airport: 'LIS',
-    airport_city: 'Lisbon',
-    depart: e.start_date,
-    fare: flownTo(120, '2026-11-09'),
-    trip: 2000,
-  });
-};
-
-test('a festival on now has an On now tag before its place on its card, and one to come none', () => {
-  expect(said(eventCard(festival(on)).querySelector('.where .now-tag'))).toBe('On now');
-  expect(eventCard(festival(ahead)).querySelector('.now-tag')).toBeNull();
+test('a festival on now has an On now tag before its place on its card, and one to come none', async () => {
+  const glasgow = await cardOf(GLASGOW);
+  expect(said(glasgow.querySelector('.where .now-tag'))).toBe('On now');
+  expect(said(glasgow.querySelector('.where'))).toMatch(/^On now /u);
+  expect(tagOf(await cardOf(KUOF))).toBeUndefined();
 });
 
-test('a festival’s flight has left from its weekend’s Friday, whether it is on or not', () => {
-  expect([on, saturday, ahead].map((id) => [festival(id).phase, festival(id).begun])).toEqual([
-    [KEY.phase.ON, true],
-    [KEY.phase.AHEAD, true], // Saturday's festival, its Friday flight today
-    [KEY.phase.AHEAD, false],
+test('a festival’s flight has left from its weekend’s Friday, whether it is on or not', async () => {
+  const glasgow = await cardOf(GLASGOW);
+  expect([tagOf(glasgow), costOf(glasgow)]).toEqual([
+    'On now',
+    '1 240 kr full pass · already started, no flight priced',
   ]);
-  // a festival on whose weekend's flight is still to leave (one that starts on a Thursday) keeps its flight
-  const thursday = priced({ ...festival(on), begun: false });
-  expect(said(thursday.querySelector('.cost-parts'))).toMatch(/full pass \+ .*flight/u);
-  expect(said(priced({ ...festival(ahead), begun: true }).querySelector('.cost-parts'))).toMatch(/no flight priced$/u);
-});
-
-test('the cost of a festival on now leaves the flight out: its weekend’s return has begun', () => {
-  const started = priced(festival(on));
-  expect(said(started.querySelector('.cost-parts'))).toMatch(/full pass · already started, no flight priced$/u);
-  expect(said(started.querySelector('.cost-parts'))).not.toContain('+');
-  // and with no price, the flight line says the same
-  const unpriced = eventCard({ ...festival(on), price: { point: 'price', key: KEY.price.NOT_YET } });
-  expect(said(unpriced.querySelector('.flight'))).toBe('✈ already started, no flight priced');
-  // one to come adds its flight
-  expect(said(priced(festival(ahead)).querySelector('.cost-parts'))).toMatch(/full pass \+ .*flight/u);
-});
-
-// the Festivals page with an address's choices, its data in
-async function finder(qs: string): Promise<HTMLElement> {
-  const root = document.createElement('main');
-  for (const shown of document.querySelectorAll('main')) shown.remove(); // one Festivals page at a time
-  document.body.append(root);
-  sentenceView(root, qs, { signal: new AbortController().signal, data: Promise.resolve() });
-  await vi.waitFor(() => {
-    if (root.querySelector('.festival-cards, .empty') === null) throw new Error('the festivals are not in yet');
-  });
-  return root;
-}
-const onNow = (root: HTMLElement) =>
-  [...root.querySelectorAll<HTMLLabelElement>('#more-panel label.check')].find((l) =>
-    l.textContent?.startsWith(' On now only'),
+  // Saturday's festival, not on yet, its Friday flight today
+  const saturday = await cardOf(SATURDAY);
+  expect([tagOf(saturday), costOf(saturday)]).toEqual([
+    undefined,
+    '1 240 kr full pass · already started, no flight priced',
+  ]);
+  expect(costOf(await cardOf(KUOF))).toMatch(
+    /^1 240 kr full pass \+ ~1 \d{3} kr flight to Oslo, then 37 km · Flights · 1$/u,
   );
-const cards = (root: HTMLElement) => [...root.querySelectorAll('.festival-card .title-btn')].map((b) => b.textContent);
-const tags = (root: HTMLElement) => [...root.querySelectorAll('.sentence-hero .with-tag .tag')].map((t) => said(t));
+  // a festival on whose weekend's flight is still to leave (one that starts on a Thursday) keeps its flight, until
+  // its Friday has gone
+  const thursday = await cardOf(KWANZA, '2027-02-11');
+  expect([tagOf(thursday), costOf(thursday)]).toEqual([
+    'On now',
+    expect.stringMatching(/^1 240 kr full pass \+ ~1 \d{3} kr flight to Prague$/u),
+  ]);
+  expect(costOf(await cardOf(KWANZA, '2027-02-13'))).toBe('1 240 kr full pass · already started, no flight priced');
+});
+
+test('the cost of a festival on now leaves the flight out: its weekend’s return has begun', async () => {
+  const started = costOf(await cardOf(GLASGOW));
+  expect(started).toMatch(/full pass · already started, no flight priced$/u);
+  expect(started).not.toContain('+');
+  // and with no price, the flight line says the same
+  const unpricedOn = await cardOf(CLOUDKIZ, '2027-02-27');
+  expect([tagOf(unpricedOn), said(unpricedOn.querySelector('.flight'))]).toEqual([
+    'On now',
+    '✈ already started, no flight priced',
+  ]);
+  // one to come adds its flight
+  expect(costOf(await cardOf(KUOF))).toMatch(/full pass \+ .*flight/u);
+});
+
+// the Festivals page's On now box, its label, and the tags under the sentence
+const onNow = () =>
+  [...(main()?.querySelectorAll<HTMLLabelElement>('label.check') ?? [])].find((l) =>
+    said(l)?.startsWith('On now only'),
+  );
+const box = () => onNow()?.querySelector('input');
+const sentenceTags = () => [...(main()?.querySelectorAll('.sentence-hero .with-tag .tag') ?? [])].map((t) => said(t));
+// by their weekend, the two of 6 November as listed: Saturday's, Glasgow, KUOF
+const ALL = [titleOf(SATURDAY), titleOf(GLASGOW), titleOf(KUOF)];
 
 test('the filters keep only the festivals on today, shown as an On now tag and kept in the address', async () => {
-  const root = await finder('reach=');
-  expect(cards(root)).toEqual([festival(on).title, festival(saturday).title, festival(ahead).title]);
-  const box = onNow(root)?.querySelector('input');
-  expect([box?.checked, box?.disabled]).toEqual([false, false]);
-  box?.click();
-  expect(cards(root)).toEqual([festival(on).title]);
-  expect(tags(root)).toEqual(['On now ×']);
+  await app.open(festivalsHref({ reach: 'any' }));
+  expect(cardTitles()).toEqual(ALL);
+  expect([box()?.checked, box()?.disabled]).toEqual([false, false]);
+  box()?.click(); // in a panel the page shows only once opened: a click of the DOM's
+  expect([cardTitles(), sentenceTags()]).toEqual([[titleOf(GLASGOW)], ['On now ×']]);
   expect(location.hash).toContain('onnow=1');
-  // from the address again (any price, which the address leaves out as it does today, said again)
-  const again = await finder(`reach=&${location.hash.split('?')[1] ?? ''}`);
-  expect([onNow(again)?.querySelector('input')?.checked, cards(again), tags(again)]).toEqual([
-    true,
-    [festival(on).title],
-    ['On now ×'],
-  ]);
+  // from the address again
+  await app.open(location.hash);
+  expect([box()?.checked, cardTitles(), sentenceTags()]).toEqual([true, [titleOf(GLASGOW)], ['On now ×']]);
   // the tag's × takes it off
-  again.querySelector<HTMLButtonElement>('.sentence-hero .with-tag .tag .remove')?.click();
-  expect([cards(again).length, tags(again), location.hash.includes('onnow')]).toEqual([3, [], false]);
+  main()?.querySelector<HTMLButtonElement>('.sentence-hero .with-tag button[aria-label="Remove “On now”"]')?.click();
+  expect([cardTitles(), sentenceTags(), location.hash.includes('onnow')]).toEqual([ALL, [], false]);
   // an address asking for what the filter is not leaves it off
-  const odd = await finder('reach=&onnow=2');
-  expect([onNow(odd)?.querySelector('input')?.checked, cards(odd).length]).toEqual([false, 3]);
+  await app.open(festivalsHref({ reach: 'any', onnow: 2 }));
+  expect([box()?.checked, cardTitles()]).toEqual([false, ALL]);
 });
 
 test('with no festival on today among those the other choices keep, the filter is off and says why', async () => {
-  const root = await finder(`reach=&country=${elsewhere}`);
-  const label = onNow(root);
-  expect(label?.querySelector('input')?.disabled).toBe(true);
-  expect(said(label)).toBe('On now only (none on today)');
-  expect(cards(root)).toEqual([festival(saturday).title, festival(ahead).title]);
+  await app.open(festivalsHref({ reach: 'any', country: 'NO' }));
+  expect(box()?.disabled).toBe(true);
+  expect(said(onNow())).toBe('On now only (none on today)');
+  expect(cardTitles()).toEqual([titleOf(SATURDAY), titleOf(KUOF)]);
 });

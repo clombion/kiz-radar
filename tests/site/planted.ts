@@ -193,3 +193,182 @@ export function stays(db: Database, rows: readonly Stay[]): void {
     wrote(db, 1, `${key}'s stay at ${place} for festival ${event}`);
   }
 }
+
+// A place, by its name and its country's code, and where it is.
+interface Place {
+  readonly name: string;
+  readonly country: string;
+  readonly at: readonly [lat: number, lon: number];
+}
+
+// A city of the test's own, by its key, in a country countries has.
+export function city(db: Database, key: string, { name, country, at: [lat, lon] }: Place): void {
+  db.run(
+    'INSERT INTO cities (key, name, country_code, lat, lon) SELECT ?, ?, code, ?, ? FROM countries WHERE code = ?',
+    [key, name, lat, lon, country],
+  );
+  wrote(db, 1, `the city ${key} in ${country}`);
+}
+
+// A festival put in a city, by its key, as its listing spells it: its country the city's.
+export function inCity(db: Database, event: number, key: string, spelling: string): void {
+  db.run(
+    `UPDATE events SET city = ?, city_key = c.key, country_code = c.country_code FROM cities c
+     WHERE c.key = ? AND events.id = ?`,
+    [spelling, key, event],
+  );
+  wrote(db, 1, `festival ${event} in the city ${key}`);
+}
+
+// Every festival but those kept moved to a weekend of 2031, out of every list a test reads.
+export function movedAway(db: Database, kept: readonly number[]): void {
+  const ids = JSON.stringify(kept);
+  const there = counted(db, 'SELECT count(*) FROM events WHERE id IN (SELECT value FROM json_each(?))', [ids]);
+  if (there !== kept.length) throw new Error(`festivals ${kept.join(', ')}: ${there} of them in the data`);
+  const others = counted(db, 'SELECT count(*) FROM events', []) - kept.length;
+  db.run(
+    `UPDATE events SET start_date = '2031-01-03', end_date = '2031-01-05', weekend_friday = '2031-01-03'
+     WHERE id NOT IN (SELECT value FROM json_each(?))`,
+    [ids],
+  );
+  wrote(db, others, `every festival but ${kept.join(', ')} moved to 2031`);
+}
+
+// A festival's price: one full pass, for one person, at the amount given in a currency, on sale with no window (its
+// only tier), the pass its card prices.
+export function priced(db: Database, event: number, amount: number, currency: string): void {
+  db.run('DELETE FROM pass_tiers WHERE event_id = ?', [event]);
+  db.run('DELETE FROM event_passes WHERE event_id = ?', [event]);
+  db.run(
+    `INSERT INTO event_passes (event_id, pass_no, kind, people, includes_hotel, source)
+     SELECT id, 1, 'full', 'one', 0, 'description' FROM events WHERE id = ?`,
+    [event],
+  );
+  wrote(db, 1, `festival ${event}'s full pass`);
+  db.run(
+    `INSERT INTO pass_tiers (event_id, pass_no, tier_no, amount, currency, door, sold_out, current)
+     VALUES (?, 1, 1, ?, ?, 0, 0, 1)`,
+    [event, amount, currency],
+  );
+  wrote(db, 1, `festival ${event}'s full pass at ${amount} ${currency}`);
+  db.run(
+    `INSERT INTO price_status (event_id, price, card_pass) VALUES (?, ?, 1)
+     ON CONFLICT (event_id) DO UPDATE SET price = excluded.price, card_pass = 1`,
+    [event, KEY.price.PRICED],
+  );
+  wrote(db, 1, `festival ${event} priced`);
+}
+
+// A festival with no price yet: its card says why, and adds no flight to a pass.
+export function unpriced(db: Database, event: number): void {
+  db.run(
+    `INSERT INTO price_status (event_id, price, card_pass) SELECT id, ?, NULL FROM events WHERE id = ?
+     ON CONFLICT (event_id) DO UPDATE SET price = excluded.price, card_pass = NULL`,
+    [KEY.price.NOT_YET, event],
+  );
+  wrote(db, 1, `festival ${event} not priced yet`);
+}
+
+// An airport the data lacks, by its code, its name and its city's (the place, in a country countries has), not the
+// home one.
+export function newAirport(
+  db: Database,
+  code: string,
+  airportName: string,
+  { name, country, at: [lat, lon] }: Place,
+): void {
+  db.run(
+    `INSERT INTO airports (code, name, city, country_code, lat, lon, home)
+     SELECT ?, ?, ?, code, ?, ?, 0 FROM countries WHERE code = ?`,
+    [code, airportName, name, lat, lon, country],
+  );
+  wrote(db, 1, `the airport ${code} in ${country}`);
+}
+
+// The airports a festival flies to, in place of its own, each by its code and how far from it, in km; the nearest the
+// one it is said to be near.
+export function flies(db: Database, event: number, airports: readonly (readonly [code: string, km: number])[]): void {
+  const [nearest] = airports.toSorted(([, a], [, b]) => a - b);
+  if (nearest === undefined) throw new Error(`festival ${event}: flies to no airport`);
+  db.run('UPDATE events SET airport = ?, airport_km = ? WHERE id = ?', [...nearest, event]);
+  wrote(db, 1, `festival ${event} near ${nearest[0]}`);
+  db.run('DELETE FROM event_airports WHERE event_id = ?', [event]);
+  for (const [code, km] of airports) {
+    db.run('INSERT INTO event_airports (event_id, airport, km) SELECT ?, code, ? FROM airports WHERE code = ?', [
+      event,
+      km,
+      code,
+    ]);
+    wrote(db, 1, `festival ${event} flying to ${code}`);
+  }
+}
+
+// What a search of an airport found for a weekend: when it ran, whether it found a direct flight (null: not said),
+// the return fare it found (its price in euros, its stops out, and the airlines a reseller's price is theirs), and a
+// cheaper trip on separate tickets.
+export interface Searched {
+  readonly airport: string;
+  readonly at: string;
+  readonly direct: boolean | null;
+  readonly fare?: { readonly price: number; readonly stops: number; readonly resold?: string };
+  readonly transfer?: { readonly price: number; readonly airlines: string };
+}
+
+// A weekend's flights, by its Friday, at the airports named: every fare, search and self-transfer there replaced by
+// the searches given (none: never searched), each returning on the Monday. The Friday is a festival's weekend Friday,
+// else no page shows the flights.
+export function weekend(
+  db: Database,
+  depart: string,
+  airports: readonly string[],
+  searched: readonly Searched[],
+): void {
+  if (
+    counted(db, "SELECT strftime('%w', ?) = '5' AND EXISTS (SELECT 1 FROM events WHERE weekend_friday = ?)", [
+      depart,
+      depart,
+    ]) !== 1
+  ) {
+    throw new Error(`the weekend of ${depart}: no festival's weekend Friday`);
+  }
+  const codes = JSON.stringify(airports);
+  const known = counted(db, 'SELECT count(*) FROM airports WHERE code IN (SELECT value FROM json_each(?))', [codes]);
+  if (known !== airports.length) throw new Error(`the airports ${airports.join(', ')}: ${known} of them in the data`);
+  for (const table of ['fares', 'fare_searches', 'fare_transfers'])
+    db.run(`DELETE FROM ${table} WHERE depart = ? AND airport IN (SELECT value FROM json_each(?))`, [depart, codes]);
+  for (const { airport: code, at, direct, fare, transfer } of searched) {
+    const what = `the search of ${code} for the weekend of ${depart}`;
+    if (!airports.includes(code)) throw new Error(`${what}: ${code} is none of the airports named`);
+    db.run('INSERT INTO fare_searches (airport, depart, searched_at, direct) VALUES (?, ?, ?, ?)', [
+      code,
+      depart,
+      at,
+      direct === null ? null : Number(direct),
+    ]);
+    wrote(db, 1, what);
+    if (fare !== undefined) {
+      db.run(
+        `INSERT INTO fares (airport, depart, return, price, fetched_at, stops_out, stops_back, resold)
+         VALUES (?, ?, date(?, '+3 days'), ?, ?, ?, NULL, ?)`,
+        [code, depart, depart, fare.price, at, fare.stops, fare.resold ?? null],
+      );
+      wrote(db, 1, `${what}: its fare`);
+    }
+    if (transfer !== undefined) {
+      db.run('INSERT INTO fare_transfers (airport, depart, price, fetched_at, airlines) VALUES (?, ?, ?, ?, ?)', [
+        code,
+        depart,
+        transfer.price,
+        at,
+        transfer.airlines,
+      ]);
+      wrote(db, 1, `${what}: its self-transfer`);
+    }
+  }
+}
+
+// The database of another build than the summary's (site.json): the page refuses it, as mid-update.
+export function anotherBuild(db: Database): void {
+  db.run("UPDATE meta SET value = value || ' (another build)' WHERE key = 'built_at'");
+  wrote(db, 1, 'the database built again');
+}
