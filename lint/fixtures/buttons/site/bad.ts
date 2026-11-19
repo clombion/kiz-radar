@@ -4,3 +4,7 @@ import { h } from '../../../../site/dom.ts';
 
 export const bare = h('button'); // refused
 export const typed = h('button', { type: 'button' }, 'Close'); // refused
+export const optional = h?.('button'); // refused
+export const generic = h<HTMLButtonElement>('button'); // refused
+export const quoted = h(`button`); // refused
+export const asserted = h('button' as const); // refused

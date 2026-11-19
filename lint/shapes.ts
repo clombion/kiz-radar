@@ -21,14 +21,32 @@ export const quotedOneOf = (names: readonly string[], before = '', after = ''): 
 export const named = (node: Node, name: string, computed = false): boolean =>
   computed ? node.type === 'Literal' && node.value === name : node.type === 'Identifier' && node.name === name;
 
-// the name a key or a member's property spells out: a name, else, where `computed`, a string or a template without
-// values, as in ['name'] or [`name`]; undefined for any other
-export function keyName(key: Node, computed: boolean): string | undefined {
-  if (!computed) return key.type === 'Identifier' ? key.name : undefined;
-  if (key.type === 'Literal') return typeof key.value === 'string' ? key.value : undefined;
-  if (key.type !== 'TemplateLiteral' || key.expressions.length > 0) return undefined;
-  return key.quasis[0]?.value.cooked ?? undefined;
+// TypeScript's wrappers of an expression, which leave its value as it is: x as T, x satisfies T, <T>x, x!
+function unwrapped(node: Node): Node {
+  let inner = node;
+  while (
+    inner.type === 'TSAsExpression' ||
+    inner.type === 'TSSatisfiesExpression' ||
+    inner.type === 'TSTypeAssertion' ||
+    inner.type === 'TSNonNullExpression'
+  )
+    inner = inner.expression;
+  return inner;
 }
+
+// the string an expression is, whatever TypeScript wraps it in: a string, or a template without values; undefined for
+// any other
+export function stringOf(node: Node): string | undefined {
+  const inner = unwrapped(node);
+  if (inner.type === 'Literal') return typeof inner.value === 'string' ? inner.value : undefined;
+  if (inner.type !== 'TemplateLiteral' || inner.expressions.length > 0) return undefined;
+  return inner.quasis[0]?.value.cooked ?? undefined;
+}
+
+// the name a key or a member's property spells out: a name, else, where `computed`, a string, as in ['name'] or
+// [`name`]; undefined for any other
+export const keyName = (key: Node, computed: boolean): string | undefined =>
+  computed ? stringOf(key) : key.type === 'Identifier' ? key.name : undefined;
 
 // the name an import's specifier takes from its module: a name, or a string ({ 'a b' as c })
 export const importedName = (spec: {
