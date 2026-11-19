@@ -17,6 +17,7 @@ in a session.
 | decide which airports a festival city flies to | [The airports a city flies to](guides/city-airports.md) |
 | add who's going, a community, or a promo code | [Plans and promo codes](guides/plans-and-promos.md) |
 | add a state a data point can be in | [Adding a state](guides/adding-a-state.md) |
+| build pages or memberships people create | [Pages people make](concepts/user-pages.md) |
 | understand how the data flows | [Data flow](concepts/data-flow.md) |
 | understand why an answer is asked again | [Prompts and answers](concepts/prompts.md) |
 | understand who decides a fact no step derives | [Claims](concepts/claims.md) |
