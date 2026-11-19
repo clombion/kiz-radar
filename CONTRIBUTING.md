@@ -53,10 +53,11 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   day, data, storage, or its refusal, and other hosts' answers stated before the start); the test server answers the
   tests' pages with the fixture's data only, never `public/data/`. `tests/site/pages.browser.test.ts` loads the built
   site instead, Vite's bundle (`vite.config.ts`), in a frame under each page's Content-Security-Policy: every route, the
-  older `#community/<key>` link and `review.html`, each drawn with no error, failed request or refusal. oxfmt
-  (`format:site`) lays out the site, its tests, the stylesheet, the JSON configs and the house rules with their fixtures
-  (`.oxfmtrc.jsonc`), sorting the import statements of all but the fixtures, but `site/states.ts` and
-  `site/drawings.ts`, which their generators lay out.
+  older `#community/<key>` link and `review.html`, each drawn with no error, failed request or refusal.
+  `tests/site/bundle.test.ts` reads the bundle's markup, the templates Solid's compiler writes, drawn or not, for what
+  that policy refuses. oxfmt (`format:site`) lays out the site, its tests, the stylesheet, the JSON configs and the
+  house rules with their fixtures (`.oxfmtrc.jsonc`), sorting the import statements of all but the fixtures, but
+  `site/states.ts` and `site/drawings.ts`, which their generators lay out.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list, and an oxlint one is also explained in
   [oxlint's suppressed findings](docs/lint-false-positives.md).
