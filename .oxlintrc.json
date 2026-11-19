@@ -356,6 +356,7 @@
     "vitest/no-standalone-expect": "error",
     "vitest/prefer-hooks-in-order": "error",
     "vitest/prefer-hooks-on-top": "error",
+    "house/fetch": "error",
     "house/session": "error",
     "house/storage": "error"
   },
@@ -394,6 +395,11 @@
       // reads the page's storage
       "files": ["site/hints.ts", "site/kept.ts", "tests/**"],
       "rules": { "house/storage": "off" }
+    },
+    {
+      // house/fetch: every request is net.ts's get()
+      "files": ["site/net.ts"],
+      "rules": { "house/fetch": "off" }
     },
     {
       // oxlint loads a JS plugin from its module's default export, as ESLint does
