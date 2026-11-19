@@ -545,6 +545,11 @@
       "rules": { "house/thens": "error", "house/flags": "error", "house/mirrors": "error", "house/legacy": "error" }
     },
     {
+      // house/focuses: no autofocus in any spelling (jsx-a11y/no-autofocus reads React's autoFocus alone)
+      "files": ["**/*.tsx"],
+      "rules": { "house/focuses": "error" }
+    },
+    {
       // the tests and their config run in Node, a test is test() wherever it is, and a test drives the page step by step
       "files": ["tests/**", "vitest.config.ts"],
       "rules": {
