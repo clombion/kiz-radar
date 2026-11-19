@@ -7,9 +7,9 @@ allows; the node tests' other imports of a view (`festivals`, `passes` in `finde
 
 ## Summary
 
-A Grit rule in `lint/`, listed in `biome.jsonc`, refuses in `tests/**` a value import of any `site/` module that is not
-on its list, with the message naming where the list is. A node test runs Biome on a file that must fail and one that
-must pass. With 1.3 to 1.6 done, the repository passes the rule.
+A Grit rule in `lint/`, run by an override of `biome.jsonc` on `tests/**`, refuses there a value import of any `site/`
+module that is not on its list, with the message naming where the list is. A node test runs Biome on a file that must
+fail and one that must pass. With 1.3 to 1.6 done, the repository passes the rule.
 
 ## Design model
 
@@ -24,24 +24,27 @@ must pass. With 1.3 to 1.6 done, the repository passes the rule.
 - **The rule is held by a test**, as `states.test.ts` holds `states.grit`. A node test runs `biome lint` on two small
   fixture files kept out of Biome's own run of the tree: one importing a view module (must report the rule's message),
   one importing an allowed module, a type from a view and an allowed module by `import()` (must report nothing). A third
-  test checks that `biome.jsonc` lists the rule, since the fixtures' config loads it by itself.
+  test checks that `biome.jsonc` runs the rule in its override on `tests/**`, since the fixtures' config loads it by
+  itself. Three more fixtures, under `tests/site/lint/as/tests/site/`, stand where the two exceptions are: `app.ts` and
+  `page.browser.test.ts` make the imports the rule lets those two make (must report nothing), and `other.ts` beside them
+  makes the same imports (must report each).
 
 ## Decisions
 
 | # | Question | Decision | Why |
 | -- | -- | -- | -- |
 | 1 | Where the list lives | In the rule (`lint/tests.grit`), as one alternation of module names; the message names the file | One place; the message says where to look and why a new module is refused. |
-| 2 | Which files | Every `.ts` under `tests/` (the site's tests and their helpers) | The helpers (`seen.ts`, `planted.ts`, `app.ts`) are test code too. |
+| 2 | Which files | Every `.ts` under `tests/` (the site's tests and their helpers), by an override of `biome.jsonc` (`"includes": ["tests/**"]`, `"plugins": ["./lint/tests.grit"]`), not by the rule matching the path | The helpers (`seen.ts`, `planted.ts`, `app.ts`) are test code too; `$filename` is absolute, so a rule matching `/tests/` would also run on a checkout under a folder named `tests`. |
 | 3 | Type imports | `import type` and `export type` allowed; a type named inside a value import (`import { type X }`) refused | Under `verbatimModuleSyntax` the second stays as `import {} from …`, which still loads the view. |
 | 4 | Dynamic imports | `import()` of `site/main.ts` and `site/review.ts` allowed in `tests/site/app.ts` alone; any other dynamic import of a `site/` module refused | How the page starts, in one place. |
 | 5 | `page.browser.test.ts` | Its imports of `dom`, `tabs`, `modal`, `dismiss` allowed by name, in the rule, with the task that removes each | The tests it keeps go with their helpers. |
-| 6 | The rule's test | A node test (`tests/site/lint.test.ts`) running `biome lint` with a config of its own (`tests/site/lint/rule.jsonc`: this plugin alone) on `tests/site/lint/refused.ts`, each refused line marked, and `allowed.ts`; the fixtures excluded from Biome's run of the tree, from tsc's and from knip's | Biome refuses a file its own config ignores when passed by path, so the test brings its own config. |
+| 6 | The rule's test | A node test (`tests/site/lint.test.ts`) running `biome lint` with a config of its own (`tests/site/lint/rule.jsonc`: this plugin alone) (in an override, as the tree runs it) on `tests/site/lint/refused.ts` and `as/tests/site/other.ts`, each refused line marked, and on `allowed.ts`, `as/tests/site/app.ts` and `as/tests/site/page.browser.test.ts`, which report nothing; the fixtures excluded from Biome's run of the tree, from tsc's, knip's and Vitest's | Biome refuses a file its own config ignores when passed by path, so the test brings its own config. |
 | 7 | Other spellings of a path | `site//dom.ts` and `site/./dom.ts` are checked and refused (the list names each module by its plain path); an `import()` whose module is not one literal is refused in `tests/` | Both load the view while escaping a check on the plain path (found by the change audit). |
-| 8 | What the test does not hold | The two exceptions (`app.ts`, `page.browser.test.ts`) are held from the refused side only; a rule loosened there would pass the test. The rule tells a test by its absolute path containing `/tests/`, so a checkout under a folder named `tests` would lint the site too | The exceptions match a file's path, which a fixture cannot take; the second only adds diagnostics, which `mise run check` would show at once. |
+| 8 | What the test does not hold | The two exceptions (`app.ts`, `page.browser.test.ts`) are held from both sides: the fixtures under `as/tests/site/` take their paths' ends, and `other.ts` beside them is refused the same imports. The exceptions still match the end of the absolute path, so any file whose path ends in `tests/site/app.ts` (or `page.browser.test.ts`) gets the exception | An override's glob cannot name one file's exception inside the rule; the residual only lets through what those two files may do, and the tree has one file at each path. |
 
 ## Impact
 
-- **New:** `lint/tests.grit`; `tests/site/lint.test.ts`; the two fixtures.
+- **New:** `lint/tests.grit`; `tests/site/lint.test.ts`; the fixtures (two, then three more under `as/tests/site/`).
 - **Changed:** `biome.jsonc` (the plugin; the fixtures' folder excluded from the tree's run); `tsconfig`/`knip.jsonc` if
   the fixtures need excluding; `refactor-plan.md` (1.7 recorded).
 - **`site/`:** unchanged.

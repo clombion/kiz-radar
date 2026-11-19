@@ -5,6 +5,9 @@ language js
 // nothing (routes, hints, kept), the data module with one sink (icons) and media. A module not listed is refused, a new
 // one too, until someone decides it draws nothing. A type comes from any module with import type, which is erased; a
 // type named inside a value import is not, since the import still loads its module.
+// biome.jsonc runs this rule on tests/** by an override, so it does not match the path itself: a checkout under a folder
+// named tests would put the site under it. Its two exceptions match the end of a file's path (tests/site/lint.test.ts
+// holds them from both sides).
 pattern allowed_module() {
   r"^['\"`](?:.*/)?site/(?:calendar|claims|classes|currency|days|db|fares|find|finder|fold|github|hints|icons|ink|json|kept|media|names|net|pending|pricing|roles|roster|routes|rows|schema|states|wording)\.ts['\"`]$"
 }
@@ -31,7 +34,6 @@ or {
       }
     }
   } where {
-    $filename <: r".*/tests/.*",
     // `site//dom.ts` and `site/./dom.ts` load dom.ts too, so they are checked, and refused since the list names
     // each module by its plain path
     $source <: r"^['\"`](?:.*/)?site/(?:\.?/)*[^/'\"`]+['\"`]$",
@@ -40,7 +42,6 @@ or {
   },
   // an import() whose module is built at run time escapes the check above
   JsImportCallExpression() as $use where {
-    $filename <: r".*/tests/.*",
     $use <: not r"import\(\s*(?:'[^']*'|\"[^\"]*\"|`[^`$]*`)\s*\)",
     register_diagnostic(span=$use, message="A test's import() names its module in one literal, so lint/tests.grit can check it.")
   }

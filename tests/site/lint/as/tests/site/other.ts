@@ -1,0 +1,10 @@
+// What lint/tests.grit refuses beside the two files it makes exceptions for (tests/site/lint.test.ts), each on a line
+// marked so: the imports those two may make, made by any other file.
+import { dismissable } from '../../site/dismiss.ts'; // refused
+import { h } from '../../site/dom.ts'; // refused
+import { modal } from '../../site/modal.ts'; // refused
+import { pill } from '../../site/tabs.ts'; // refused
+
+export const used = [dismissable, h, modal, pill];
+export const site = (): Promise<unknown> => import('../../site/main.ts'); // refused
+export const review = (): Promise<unknown> => import('../../site/review.ts'); // refused

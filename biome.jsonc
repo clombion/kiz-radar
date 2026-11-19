@@ -28,8 +28,7 @@
     "./lint/fetch.grit",
     "./lint/classes.grit",
     "./lint/markup.grit",
-    "./lint/states.grit",
-    "./lint/tests.grit"
+    "./lint/states.grit"
   ],
   "linter": {
     "rules": {
@@ -92,6 +91,11 @@
     }
   },
   "overrides": [
+    {
+      // a test reaches a view through the page: lint/tests.grit, on the tests alone
+      "includes": ["tests/**"],
+      "plugins": ["./lint/tests.grit"]
+    },
     {
       // the one place the site writes to the console: what went wrong, with where (report.ts)
       "includes": ["site/report.ts"],
