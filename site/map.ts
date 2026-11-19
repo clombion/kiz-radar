@@ -144,7 +144,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     placed,
   );
   const byId = new Map(events.map((e) => [e.id, e]));
-  const countriesOf = [...new Set(events.flatMap((e) => e.country_code ?? []))].sort((a, b) =>
+  const countriesOf = [...new Set(events.map((e) => e.country_code))].sort((a, b) =>
     countryName(a).localeCompare(countryName(b)),
   );
   const { state: url, dropped } = readState(qs, DEFAULTS, {
@@ -321,7 +321,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     const t = state.text.toLowerCase();
     return events.filter(
       (e) =>
-        (state.when === 'all' || (state.when === 'upcoming') === Boolean(e.upcoming)) &&
+        (state.when === 'all' || (state.when === 'upcoming') === e.upcoming) &&
         (!state.country || e.country_code === state.country) &&
         (!t || e.title.toLowerCase().includes(t) || e.city.toLowerCase().includes(t)),
     );

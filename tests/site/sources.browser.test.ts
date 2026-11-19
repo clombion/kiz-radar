@@ -33,7 +33,7 @@ function ran(query: string): string[][] {
   area.value = query;
   run.click();
   return [...(main()?.querySelectorAll('.sql-out tbody tr') ?? [])].map((tr) =>
-    [...tr.querySelectorAll('td')].map((td) => td.textContent ?? ''),
+    [...tr.querySelectorAll('td')].map((td) => td.textContent),
   );
 }
 

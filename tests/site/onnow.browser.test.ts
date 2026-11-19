@@ -106,8 +106,8 @@ test('the cost of a festival on now leaves the flight out: its weekend’s retur
 
 // the Festivals page's On now box, its label, and the tags under the sentence
 const onNow = () =>
-  [...(main()?.querySelectorAll<HTMLLabelElement>('label.check') ?? [])].find((l) =>
-    said(l)?.startsWith('On now only'),
+  [...(main()?.querySelectorAll<HTMLLabelElement>('label.check') ?? [])].find(
+    (l) => said(l)?.startsWith('On now only') === true,
   );
 const box = () => onNow()?.querySelector('input');
 const sentenceTags = () => [...(main()?.querySelectorAll('.sentence-hero .with-tag .tag') ?? [])].map((t) => said(t));

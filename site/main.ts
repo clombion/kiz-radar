@@ -149,7 +149,7 @@ function drawSubnav(view: View, name: string, sub: readonly string[], qs: string
 function show(name: string, sub: readonly string[], qs: string): void {
   const view = isRoute(name) ? VIEWS[name] : FINDER; // an address naming no view shows the festivals
   if (view.nav === 'explore') exploreHint.mark();
-  if (name === 'artists' && sub[0]) artistHint.mark();
+  if (name === 'artists' && sub[0] !== undefined && sub[0] !== '') artistHint.mark();
   leave?.abort();
   leave = new AbortController();
   for (const a of document.querySelectorAll<HTMLElement>('[data-nav]')) {

@@ -597,7 +597,8 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
   }
   trigger.addEventListener('click', open);
   addEventListener('keydown', (ev) => {
-    const typing = ev.target instanceof Element && ev.target.closest('input, textarea, select, [contenteditable]');
+    const typing =
+      ev.target instanceof Element && ev.target.closest('input, textarea, select, [contenteditable]') !== null;
     if (
       (ev.key === '/' && !typing && !ev.ctrlKey && !ev.metaKey) ||
       ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === 'k')

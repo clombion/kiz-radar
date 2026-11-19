@@ -24,7 +24,7 @@ const railLead = (name: string): string | undefined => {
     const lead = said(b.querySelector('[aria-hidden="true"]')) ?? '';
     return { lead, name: said(b)?.slice(lead.length) };
   });
-  return rows.find((r) => r.name?.startsWith(name))?.lead;
+  return rows.find((r) => r.name?.startsWith(name) === true)?.lead;
 };
 
 test('the item in the address is the one a reload shows', () => {

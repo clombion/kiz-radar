@@ -2,7 +2,6 @@
 // or a checkbox picks, and the choices of the Festivals page. Pure: the day and the price limit are arguments.
 import type { Step } from './currency.ts';
 import { addDays, meets, weekendOf } from './days.ts';
-import type { Kid } from './dom.ts';
 import { flightEur } from './fares.ts';
 import type { Festival } from './festivals.ts';
 import { MORE_TRAITS, TRAITS } from './icons.ts';
@@ -27,7 +26,10 @@ export const WITH = new Map<With, string>([
 const WITH_KEYS: ReadonlySet<string> = new Set(WITH.keys());
 export const isWith = (k: string): k is With => WITH_KEYS.has(k);
 // how a with filter reads: "Also with Salsa" for a dance (the festivals are Kizomba ones anyway), "With Pool party"
-export const withPhrase = (key: With): Kid[] => [isDance(key) ? 'Also with ' : 'With ', WITH.get(key)];
+export const withPhrase = (key: With): [string, string | undefined] => [
+  isDance(key) ? 'Also with ' : 'With ',
+  WITH.get(key),
+];
 export const hasWith = (e: Pick<Festival, 'styles' | 'features'>, key: With): boolean =>
   isDance(key) ? e.styles.has(key) : e.features.has(key);
 // the highlights the festival list has a checkbox for, as [its address parameter, the feature, whether a festival has

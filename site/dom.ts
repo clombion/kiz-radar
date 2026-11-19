@@ -47,11 +47,11 @@ export const nodes = (kids: readonly Kid[]): Node[] =>
   kids.flatMap((kid): Node[] =>
     kid == null || kid === false
       ? []
-      : Array.isArray(kid)
-        ? nodes(kid)
-        : kid instanceof Node
-          ? [kid]
-          : [document.createTextNode(String(kid))],
+      : kid instanceof Node
+        ? [kid]
+        : typeof kid === 'string' || typeof kid === 'number'
+          ? [document.createTextNode(String(kid))]
+          : nodes(kid),
   );
 
 // A click handler for a control inside a card, which opens on a click: the click is the control's alone. act gets the
@@ -70,13 +70,13 @@ export const moreButton = (panelId: string, ...words: Kid[]): HTMLButtonElement 
 // they are on) hides it again, until signal aborts.
 export function dropdown(opener: HTMLElement, panel: HTMLElement, inside: readonly Node[], signal: AbortSignal): void {
   opener.addEventListener('click', () => {
-    panel.hidden = !panel.hidden;
+    panel.hidden = panel.hidden === false;
     opener.setAttribute('aria-expanded', String(!panel.hidden));
   });
   document.addEventListener(
     'click',
     ({ target }) => {
-      if (panel.hidden || (target instanceof Node && inside.some((n) => n.contains(target)))) return;
+      if (panel.hidden !== false || (target instanceof Node && inside.some((n) => n.contains(target)))) return;
       panel.hidden = true;
       opener.setAttribute('aria-expanded', 'false');
     },

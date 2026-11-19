@@ -26,6 +26,6 @@ test('on a phone the months go two a row and a fortnight’s Gantt fits, with no
   const column =
     (main?.clientWidth ?? 0) - Number.parseFloat(pad?.paddingLeft ?? '0') - Number.parseFloat(pad?.paddingRight ?? '0');
   expect(column).toBeGreaterThan(300);
-  expect(hot?.querySelector('.gantt')?.getBoundingClientRect().width).toBeLessThanOrEqual(column);
+  expect(hot.querySelector('.gantt')?.getBoundingClientRect().width).toBeLessThanOrEqual(column);
   expect(cellOn('2026-11-20')?.getBoundingClientRect().width).toBeGreaterThanOrEqual(16);
 });

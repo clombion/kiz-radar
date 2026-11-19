@@ -21,12 +21,12 @@ export function said(el: Element | null | undefined): string | undefined {
   if (!(shown instanceof Element)) return;
   if (shown.matches('.visually-hidden')) return '';
   for (const hidden of shown.querySelectorAll('.visually-hidden')) hidden.remove();
-  return shown.textContent?.replace(/\s+/gu, ' ').trim();
+  return shown.textContent.replace(/\s+/gu, ' ').trim();
 }
 
 // What a screen reader hears of an element, its hidden words in.
 export const heard = (el: Element | null | undefined): string | undefined =>
-  el?.textContent?.replace(/\s+/gu, ' ').trim();
+  el?.textContent.replace(/\s+/gu, ' ').trim();
 
 // The names in an element that say on hover who added them, each with what it says.
 export const titled = (el: Element | null | undefined): [name: string | undefined, title: string | null][] =>
@@ -100,7 +100,7 @@ export function theItem(): HTMLElement {
 export const choicesOf = (el: Element): (string | undefined)[] =>
   [...el.querySelectorAll('button[aria-pressed]')].map((b) => said(b));
 export function buttonOf(el: Element, words: string): HTMLButtonElement {
-  const b = [...el.querySelectorAll('button')].find((x) => said(x)?.includes(words));
+  const b = [...el.querySelectorAll('button')].find((x) => said(x)?.includes(words) === true);
   if (b === undefined) throw new Error(`no button "${words}" in ${said(el)}`);
   return b;
 }
@@ -158,7 +158,7 @@ export function listOf(root: ParentNode | null = document.querySelector('main'))
 }
 // A festival's row of the Friends tab's list (listOf's), by the start of its name.
 export const rowOf = (name: string): ReturnType<typeof listOf>['rows'][number] | undefined =>
-  listOf().rows.find((r) => r.name?.startsWith(name));
+  listOf().rows.find((r) => r.name?.startsWith(name) === true);
 // A name on the Friends tab's lines, as the button that opens their plans.
 export const goer = (name: string): HTMLButtonElement | undefined =>
   [...document.querySelectorAll<HTMLButtonElement>('main .who-lines .goer-name')].find((b) => said(b) === name);
@@ -195,8 +195,8 @@ export async function mapCardOf(
 // A community's page: its agenda of trips, and the months of its calendar.
 // A trip's row of the agenda, by the start of its festival's title.
 export const agendaRow = (title: string): HTMLElement | undefined =>
-  [...(main()?.querySelectorAll<HTMLElement>('.trip') ?? [])].find((r) =>
-    r.querySelector('.trip-fest')?.textContent?.startsWith(title),
+  [...(main()?.querySelectorAll<HTMLElement>('.trip') ?? [])].find(
+    (r) => r.querySelector('.trip-fest')?.textContent.startsWith(title) === true,
   );
 // A trip's row with its card open, opened from its button when it was closed; a row without its button is an error.
 export function opened(title: string): HTMLElement {
@@ -324,7 +324,7 @@ export function linesOf(): {
   text: string | undefined;
 } {
   const card = opened('KUOF');
-  const g = card?.querySelector<HTMLElement>('.gantt:not([hidden])');
+  const g = card.querySelector<HTMLElement>('.gantt:not([hidden])');
   const days = g?.querySelectorAll('.gantt-axis span').length ?? 1;
   const dayOf = (x: number) => Math.round(((x * days) / 100) * 100) / 100;
   const opens = (selector: string): [string | undefined, boolean][] =>
@@ -342,8 +342,8 @@ export function linesOf(): {
     })),
     column: opens('.gantt-name ~ .gantt-stay'),
     under: opens('.gantt-under'),
-    words: heard(card?.querySelector('.gantt-said:not([hidden])')),
-    text: said(card?.querySelector('.trip-body')),
+    words: heard(card.querySelector('.gantt-said:not([hidden])')),
+    text: said(card.querySelector('.trip-body')),
   };
 }
 

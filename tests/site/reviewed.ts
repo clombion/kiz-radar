@@ -107,7 +107,7 @@ const CONTENTS = new RegExp(`^/repos/${REVIEW.repository}/contents/[^/]+\\.json$
 export const github =
   ({ token, write = 201 }: { token: string; write?: Write }): Elsewhere =>
   (url, init) => {
-    const answer = (status: number, body: object) => new Response(JSON.stringify(body), { status });
+    const answer = (status: number, body: object) => Response.json(body, { status });
     if (new Headers(init.headers).get('Authorization') !== `Bearer ${token}`) {
       return answer(401, { message: 'Bad credentials' });
     }
@@ -151,7 +151,8 @@ export function writes(
     .slice(from)
     .filter(({ init }) => init.method === 'PUT')
     .map(({ url, init }) => {
-      const body: unknown = JSON.parse(String(init.body));
+      if (typeof init.body !== 'string') throw new Error(`the PUT to ${url.href} sent no text`);
+      const body: unknown = JSON.parse(init.body);
       const content = typeof body === 'object' && body !== null && 'content' in body ? String(body.content) : '';
       return {
         url: url.href,

@@ -104,7 +104,7 @@ function units<P>(goers: readonly Goes<P>[]): Placed<P>[] {
     const alike = c !== null && partners.length > 1 && partners.every((o) => sign(o) === sign(g));
     for (const one of alike ? [partners] : [[g]]) {
       out.push({
-        unit: unitOf(alike && c !== null ? c.name : g.name, one),
+        unit: unitOf(alike ? c.name : g.name, one),
         travel: g.travel,
         stays: g.stays,
         silent: silent(g),
@@ -185,8 +185,10 @@ export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
   const out = lines.map((l) => l.line);
   call(out, goers.length, all.length);
   // named lines, then those called by number, then "Everyone else", in their order; those who have not said last
-  const rank = (l: Line<P>, i: number) =>
-    lines[i]?.none ? 3 : l.called === null || l.called === 'Everyone' ? 0 : l.called === 'Everyone else' ? 2 : 1;
+  const rank = (l: Line<P>, i: number) => {
+    if (lines[i]?.none === true) return 3;
+    return l.called === null || l.called === 'Everyone' ? 0 : l.called === 'Everyone else' ? 2 : 1;
+  };
   return out
     .map((l, i) => ({ l, r: rank(l, i), i }))
     .sort((a, b) => a.r - b.r || a.i - b.i)
@@ -232,7 +234,7 @@ export function byPlace<P>(goers: readonly Goes<P>[]): Place<P>[] {
       const partners = c === null ? [] : here.filter((o) => o.couple?.key === c.key);
       const alike = c !== null && partners.length > 1 && partners.every((o) => who.get(o) === who.get(g));
       const one = alike ? partners.toSorted(byName) : [g];
-      named.push(unitOf(alike && c !== null ? c.name : g.name, one));
+      named.push(unitOf(alike ? c.name : g.name, one));
       for (const o of one) done.add(o);
     }
     const firsts = stays.map((s) => s.first).toSorted(byText),

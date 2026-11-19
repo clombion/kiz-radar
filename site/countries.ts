@@ -114,7 +114,7 @@ export function countriesView(root: HTMLElement, qs: string): void {
       open: (a, b) => (b.imported_pct ?? -1) - (a.imported_pct ?? -1) || up(b) - up(a),
     };
     const by = orders[st.sort];
-    const shown = rows.filter((r) => st.all || r.upcoming).sort(by);
+    const shown = rows.filter((r) => st.all !== 0 || (r.upcoming ?? 0) > 0).sort(by);
     summary.textContent = `${shown.length} countries${st.all || last === null ? ' in the listings' : ` with festivals until ${monthYear(last)}`}`;
     list.replaceChildren(...shown.map((r) => row(r, withArtists)));
   }
@@ -132,7 +132,9 @@ function flightLine(r: Country): HTMLElement {
       : h(
           'span',
           { class: 'muted' },
-          r.upcoming && !r.reachable ? `✈ too far from ${home().city} for our flight prices` : '✈ no flight prices yet',
+          (r.upcoming ?? 0) > 0 && (r.reachable ?? 0) === 0
+            ? `✈ too far from ${home().city} for our flight prices`
+            : '✈ no flight prices yet',
         ),
   );
 }
@@ -148,8 +150,7 @@ function sceneLine(r: Country): HTMLElement | null {
   const title =
     r.imported_pct === null
       ? null
-      : `${r.imported_pct}% of teacher and DJ bookings go to artists from other countries` +
-        (r.unknown_country ? ` (${r.unknown_country} of unknown country)` : '');
+      : `${r.imported_pct}% of teacher and DJ bookings go to artists from other countries${r.unknown_country ? ` (${r.unknown_country} of unknown country)` : ''}`;
   return h('p', { class: 'c-fact', title }, line);
 }
 function row(r: Country, artists: ReadonlySet<string>): HTMLElement {
@@ -175,10 +176,10 @@ function row(r: Country, artists: ReadonlySet<string>): HTMLElement {
     h(
       'p',
       { class: 'c-links' },
-      r.upcoming
+      (r.upcoming ?? 0) > 0
         ? [h('a', { href: festivalsHref({ country: r.country_code, when: 'year' }) }, 'Festivals'), ' · ']
         : null,
-      h('a', { href: mapHref({ country: r.country_code, when: r.upcoming ? 'upcoming' : 'all' }) }, 'Map'),
+      h('a', { href: mapHref({ country: r.country_code, when: (r.upcoming ?? 0) > 0 ? 'upcoming' : 'all' }) }, 'Map'),
       // the artist list narrowed to it, where the list has it (artists.artistCountries)
       artists.has(r.country_code)
         ? [' · ', h('a', { href: artistsHref({ country: r.country_code }) }, 'Artists')]

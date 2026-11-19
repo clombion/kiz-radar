@@ -7,7 +7,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect, test } from 'vitest';
 import { Drawing, MORE_TRAITS, TRAITS } from '../../site/icons.ts';
-import { KEY, STATES } from '../../site/states.ts';
+import { KEY, STATES, type StateRow } from '../../site/states.ts';
 import { say, where } from '../../site/wording.ts';
 import { code } from './sources.ts';
 
@@ -19,7 +19,8 @@ const HOMONYMS = new Set<string>([]);
 // every words of the table, and each form of them, as the fragments a page could compose: whole words in quotes, and
 // the runs between {names} long enough to be words of their own
 const VALUE = /\{\w+\}/u;
-const forms = Object.values(STATES)
+const TABLE: Readonly<Record<string, Readonly<Record<string, StateRow>>>> = STATES;
+const forms = Object.values(TABLE)
   .flatMap((p) => Object.values(p).flatMap((s): (string | null)[] => [s.wording, ...Object.values(s.forms)]))
   .filter((w): w is string => Boolean(w));
 const quotedWords = forms.filter((w) => !w.includes('{') && w.length > 3);

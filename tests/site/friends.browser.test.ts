@@ -52,7 +52,7 @@ test('a festival on now says so in the Friends tab, as on its card, and in its N
 
 test('the Friends tab keeps the festivals all the friends ticked go to, or any of them, and says when none is', async () => {
   const all = await listed();
-  const glasgow = all.filter((n) => n?.includes('Glasgow'));
+  const glasgow = all.filter((n) => n?.includes('Glasgow') === true);
   expect(await listed({ with: 'christina,sian' })).toEqual(glasgow); // both teach in Glasgow
   await app.open(friendsHref({ with: 'cedric,sian' }));
   expect(said(main()?.querySelector('.who-list'))).toBe(
@@ -85,11 +85,11 @@ test('a name in the Friends tab opens their plans, with their page and their fes
 test('the Friends tab narrows the festivals by a festival’s name or city, and by the time ahead', async () => {
   const prague = await listed({ q: 'prague' });
   expect(prague).toHaveLength(2);
-  expect(prague.every((n) => n?.includes('Prague'))).toBe(true);
+  expect(prague.every((n) => n?.includes('Prague') === true)).toBe(true);
   expect(await listed({ q: 'PRÁGUE' })).toEqual(prague);
   const weekend = await listed({ when: 'weekend' }); // 6–8 Nov, the coming weekend
   expect(weekend.length).toBeGreaterThan(0);
-  expect(weekend.every((n) => n?.includes('Glasgow'))).toBe(true);
+  expect(weekend.every((n) => n?.includes('Glasgow') === true)).toBe(true);
   expect((await listed({ when: 'months' })).length).toBeLessThan((await listed()).length);
 });
 

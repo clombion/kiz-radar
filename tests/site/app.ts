@@ -86,8 +86,7 @@ const said = () => (document.querySelector('main')?.textContent ?? '(no <main>)'
 // load", which is a page a visitor gets mid-update and a test may start on)
 const LOADING = /^\s*Loading/u;
 const FAILED = /This page could not be shown|Could not load the /u;
-const loading = (): boolean =>
-  [...main().querySelectorAll('[role="status"]')].some((s) => LOADING.test(s.textContent ?? ''));
+const loading = (): boolean => [...main().querySelectorAll('[role="status"]')].some((s) => LOADING.test(s.textContent));
 // what a page is drawn by, besides no line saying it is loading, and its name
 type Ready = readonly [ready: () => boolean, waited: string];
 // until the page is drawn: ready (what is waited for named), and no line says it is loading; refused if it failed
@@ -97,7 +96,7 @@ async function drawn(what: string, timeout: number, [ready, waited]: Ready = [()
   } catch (e) {
     throw new Error(`${what}: still waiting for ${waited} after ${timeout} ms; <main> says: ${said()}`, { cause: e });
   }
-  if (FAILED.test(main().textContent ?? '')) throw new Error(`${what}: the page says it failed: ${said()}`);
+  if (FAILED.test(main().textContent)) throw new Error(`${what}: the page says it failed: ${said()}`);
 }
 
 // a route is a #link: a page of its own is a page load, which a test cannot do (the site's routes are routes.ts's
@@ -120,7 +119,7 @@ const alerts = (): Element[] => [...document.querySelectorAll('[role="alert"]')]
 function unalarmed(what: string, before: readonly Element[]): void {
   const raised = alerts().filter((a) => !before.includes(a));
   if (raised.length > 0) {
-    throw new Error(`${what}: the page says ${raised.map((a) => (a.textContent ?? '').trim()).join(' / ')}`);
+    throw new Error(`${what}: the page says ${raised.map((a) => a.textContent.trim()).join(' / ')}`);
   }
 }
 
@@ -170,7 +169,7 @@ function kept(seed: Readonly<Record<string, string>> = {}): Storage {
       items.delete(key);
     },
     setItem: (key, value) => {
-      items.set(key, String(value));
+      items.set(key, value);
     },
   };
 }
@@ -246,8 +245,10 @@ async function start(
   let at = from;
   const clock = new Proxy(RealDate, {
     apply: () => new RealDate(at).toString(),
-    construct: (real, given: unknown[], made: NewableFunction) =>
-      Reflect.construct(real, given.length === 0 ? [at] : given, made),
+    construct: (real, given: unknown[], made: NewableFunction): object => {
+      const date: object = Reflect.construct(real, given.length === 0 ? [at] : given, made);
+      return date;
+    },
     get: (real, key): unknown => (key === 'now' ? () => at : Reflect.get(real, key)),
   });
   globalThis.Date = clock;

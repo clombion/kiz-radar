@@ -76,7 +76,7 @@ const linesUnder = (dialog: HTMLDialogElement) =>
 const onTheCard = (dialog: HTMLDialogElement) =>
   [...dialog.querySelectorAll('.peek-flights li .flight-where')]
     .map((w) => said(w))
-    .filter((w) => w?.endsWith(' on the card'));
+    .filter((w) => w?.endsWith(' on the card') === true);
 // Escape pressed where the focus is, awaited until the dialog's history entry is gone with it
 async function escaped(): Promise<void> {
   const gone = new Promise((done) => addEventListener('popstate', done, { once: true }));

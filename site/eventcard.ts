@@ -67,7 +67,8 @@ function flight(e: Festival): HTMLElement {
   if (e.phase === KEY.phase.GONE) return h('p', { class: ['flight', 'muted'] }, text('listing', e.listing));
   if (e.begun) return h('p', { class: ['flight', 'muted'] }, `✈ ${STARTED}`);
   if (e.phase !== KEY.phase.AHEAD) return h('p', { class: ['flight', 'muted'] }, text('phase', e.phase));
-  if (!e.airport) return h('p', { class: ['flight', 'muted'] }, `✈ too far from ${home().city} for our flight prices`);
+  if (e.airport === null || e.airport === '')
+    return h('p', { class: ['flight', 'muted'] }, `✈ too far from ${home().city} for our flight prices`);
   if (e.fare?.home === true) return h('p', { class: ['flight', 'easy'] }, `In ${home().city}, no flight needed`);
   if (!flown(e)) return h('p', { class: ['flight', 'muted'] }, '✈ flight not checked yet', options(e));
   return h(
@@ -94,7 +95,7 @@ const STARTED = 'already started, no flight priced';
 const passBtn = (e: Festival, ...words: Kid[]) =>
   button({ class: ['link', 'pass-btn'], onclick: own((b) => openPasses(e, b)) }, ...words);
 function linked(e: Festival, words: string | null, link: string | null): Kid {
-  if (link === LINK.PAGE && e.ticket_page)
+  if (link === LINK.PAGE && e.ticket_page !== null && e.ticket_page !== '')
     return h('a', { href: e.ticket_page, target: '_blank', rel: 'noopener', onclick: own() }, words, away());
   if (link === LINK.PASSES) return passBtn(e, words);
   return words;

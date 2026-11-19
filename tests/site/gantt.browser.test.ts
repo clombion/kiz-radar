@@ -86,8 +86,8 @@ test('an opened trip draws who travels when: the days from the first in to the l
   // bar on a computer); the people added, who never travel, on one last line. What they do there is the row's to say:
   // the card has no role tag
   expect(chart.parties).toEqual(['Cédric & Christina Scandic Holberg']);
-  expect(kuofRow?.querySelector('.trip-body')?.querySelectorAll('.plan-tag')).toHaveLength(0);
-  expect(said(kuofRow?.querySelector('.trip-who'))).toBe('5 going · Cédric & Christina teaching');
+  expect(kuofRow.querySelector('.trip-body')?.querySelectorAll('.plan-tag')).toHaveLength(0);
+  expect(said(kuofRow.querySelector('.trip-who'))).toBe('5 going · Cédric & Christina teaching');
   const [couple, silent, ...others] = chart.bars;
   expect(others).toEqual([]);
   expect([couple?.said, couple?.fades]).toEqual(['17:05 OSL09:40 OSL', [false, false]]);
@@ -95,18 +95,18 @@ test('an opened trip draws who travels when: the days from the first in to the l
   expect((couple?.left ?? 0) + (couple?.width ?? 0)).toBeCloseTo((100 * (4 + (9 + 40 / 60) / 24)) / 5, 3);
   // no band behind the stroke: the axis marks the festival's days. Those who have said nothing are there too: a
   // stroke over the festival's days, the second to the fourth of five, both its ends fading, nothing written
-  expect(kuofRow?.querySelector('.gantt-lane')?.childElementCount).toBe(1);
+  expect(kuofRow.querySelector('.gantt-lane')?.childElementCount).toBe(1);
   expect([silent?.left, silent?.width, silent?.fades, silent?.said]).toEqual([20, 60, [true, true], '']);
   expect(chart.said).toBe(
     'Cédric & Christina in Thu 17:05 OSL, out Mon 09:40 OSL, staying at Scandic Holberg; not said: Maja, Ragnhild and Tonje',
   );
   // the three who have not said, more than half of the five but only three: named
   expect(chart.unsaid).toBe('Maja, Ragnhild and Tonje');
-  expect(titled(kuofRow?.querySelector('.gantt-unsaid'))).toEqual(
+  expect(titled(kuofRow.querySelector('.gantt-unsaid'))).toEqual(
     ['Maja', 'Ragnhild', 'Tonje'].map((n) => [n, 'Added by Cédric']),
   );
   // no sentences about who has not said or where who stays: the lines say it
-  expect(said(kuofRow?.querySelector('.trip-body'))).not.toMatch(/Not said|Staying/u);
+  expect(said(kuofRow.querySelector('.trip-body'))).not.toMatch(/Not said|Staying/u);
   // Prague from travel.csv: in on the Wednesday before it
   expect(ganttOf(opened('Prague')).axis.map((a) => a.day)).toEqual(['W13', 'T14', 'F15', 'S16', 'S17', 'M18']);
   // Glasgow from travel.csv: Siân in on the Thursday before it, its day alone; Christina on its Friday, its day alone,

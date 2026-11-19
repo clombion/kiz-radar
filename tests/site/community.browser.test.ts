@@ -137,7 +137,7 @@ async function glasgowOn(day: On) {
     now: row?.querySelector('.now-tag')?.textContent ?? '',
     open: row?.querySelector<HTMLElement>('.trip-body')?.hidden === false,
     first: said(main()?.querySelector('.trip .trip-fest')),
-    opened: all('.trip-body').filter((b) => !b.hidden).length,
+    opened: all('.trip-body').filter((b) => b.hidden === false).length,
     stroke: all('.days-stroke')
       .filter((st) => st.title.startsWith('Glasgow'))
       .map((st) => st.matches('.days-stroke-past')),
@@ -548,7 +548,9 @@ test('two people added of one first name are two people, each on the calendar an
   // KUOF's three added and Cédric and Christina, and two Annas
   expect(awayOn(cellOn('2026-11-21'))).toBe(7);
   cellOn('2026-11-21')?.focus();
-  const there = [...(popover()?.querySelectorAll('p') ?? [])].map((p) => said(p)).find((t) => t?.startsWith('There'));
+  const there = [...(popover()?.querySelectorAll('p') ?? [])]
+    .map((p) => said(p))
+    .find((t) => t?.startsWith('There') === true);
   expect(there?.match(/Anna/gu)).toHaveLength(2);
 });
 

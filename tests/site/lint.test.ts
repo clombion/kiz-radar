@@ -52,7 +52,7 @@ test('biome.jsonc runs the rule on the tests, by its override', () => {
     (_, string: string | undefined) => string ?? '',
   );
   const config: Config = JSON.parse(text);
-  const scoped = (config.overrides ?? []).filter((o) => o.plugins?.includes('./lint/tests.grit'));
+  const scoped = (config.overrides ?? []).filter((o) => o.plugins?.includes('./lint/tests.grit') === true);
   expect(scoped.map((o) => o.includes)).toEqual([['tests/**']]);
   expect(config.plugins).not.toContain('./lint/tests.grit');
 });

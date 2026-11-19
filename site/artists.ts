@@ -129,10 +129,11 @@ function chosenArtists(st: Readonly<Choices>, next: ReadonlyMap<number, { start_
   );
   if (st.q) {
     const typed = fold(st.q);
-    rows = rows.filter((a) =>
-      namesOf()
-        .get(a.artist_id)
-        ?.some((n) => n.includes(typed)),
+    rows = rows.filter(
+      (a) =>
+        namesOf()
+          .get(a.artist_id)
+          ?.some((n) => n.includes(typed)) === true,
     );
   }
   // an order orders and keeps everyone: those with no festival coming after the rest, most booked first
@@ -143,7 +144,7 @@ function chosenArtists(st: Readonly<Choices>, next: ReadonlyMap<number, { start_
 }
 
 export const artistsView: Show = (root, sub, qs, { signal }) => {
-  if (sub[0]) {
+  if (sub[0] !== undefined && sub[0] !== '') {
     artistPage(root, Number(sub[0]));
     return;
   }
@@ -273,7 +274,9 @@ function row(
       h(
         'span',
         { class: 'meta' },
-        a.home_country ? [flag(a.home_country), ' ', countryName(a.home_country), ' · '] : null,
+        a.home_country !== null && a.home_country !== ''
+          ? [flag(a.home_country), ' ', countryName(a.home_country), ' · ']
+          : null,
         roleLabel(a),
         ' · ',
         festivals(a.bookings),
@@ -305,7 +308,7 @@ function lede(stats: Artist | null): Kid {
     from,
     ' · ',
     festivals(stats.bookings),
-    stats.abroad_bookings ? `, ${stats.abroad_bookings} abroad` : '',
+    (stats.abroad_bookings ?? 0) > 0 ? `, ${stats.abroad_bookings} abroad` : '',
   ];
 }
 
@@ -319,7 +322,12 @@ function head(a: Pick<Artist, 'display_name' | 'kind'>, stats: Artist | null, me
           'Partners: ',
           joined(
             members.map((m) =>
-              linked(m, m.bookings ? h('span', { class: 'muted' }, ` (${festivals(m.bookings)} on their own)`) : null),
+              linked(
+                m,
+                m.bookings !== null && m.bookings !== 0
+                  ? h('span', { class: 'muted' }, ` (${festivals(m.bookings)} on their own)`)
+                  : null,
+              ),
             ),
           ),
         )
@@ -438,7 +446,7 @@ function pastList(id: number, past: readonly Festival[]): HTMLElement | null {
   );
   const role = (r: string | undefined) => {
     const words = r === undefined || r === KEY.role.TEACHER ? null : roleWords(r);
-    return words ? ` · ${words}` : '';
+    return words !== null && words !== '' ? ` · ${words}` : '';
   };
   return h(
     'details',

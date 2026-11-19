@@ -50,7 +50,7 @@ const thenNote = (t: Window): string | null => text('next_change', nextChange(t)
 const ownName = (p: Pass, own: boolean) => own || p.kind === KEY.pass_kind.DAY || p.kind === KEY.pass_kind.OTHER;
 const passName = (p: Pass, own = false): string =>
   [
-    ownName(p, own) ? p.label || text('pass_kind', p.kind) : text('pass_kind', p.kind),
+    ownName(p, own) && p.label !== null && p.label !== '' ? p.label : text('pass_kind', p.kind),
     p.style && !ownName(p, own) ? text('style', p.style) : null,
     p.days !== null && p.days > 1 ? `${p.days} days` : null,
     text('people', p.people, { n: p.group_size }),
@@ -90,10 +90,14 @@ export function openPasses(e: { id: number; title: string; url: string } & Price
         'pass_source',
         KEY.pass_source.TICKET_PAGE,
         { reseller: page.reseller, day: dayMonth(page.read_on) },
-        page.reseller ? 'reseller' : undefined,
+        page.reseller !== null && page.reseller !== '' ? 'reseller' : undefined,
       )
     : text('pass_source', KEY.pass_source.DESCRIPTION);
-  v.note.textContent = [from_, page?.unread ? `${text('ticket', KEY.ticket.UNREAD)}.` : null, 'Check before buying.']
+  v.note.textContent = [
+    from_,
+    (page?.unread ?? 0) > 0 ? `${text('ticket', KEY.ticket.UNREAD)}.` : null,
+    'Check before buying.',
+  ]
     .filter(Boolean)
     .join(' ');
   v.link.href = page ? page.page : e.url;
@@ -124,7 +128,7 @@ export function openPasses(e: { id: number; title: string; url: string } & Price
                     'span',
                     { class: 'pass-now' },
                     say('tier_today', now.state, { price: h('strong', {}, money(now.tier.amount, now.tier.currency)) }),
-                    now.tier.fee
+                    now.tier.fee !== null && now.tier.fee !== 0
                       ? h(
                           'span',
                           { class: 'muted' },

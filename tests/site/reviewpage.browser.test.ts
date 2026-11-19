@@ -13,8 +13,7 @@ import { entries, said, theItem } from './seen.ts';
 
 // GitHub naming its owner whatever the token, rather than reviewed.ts's github(), which refuses a request without the
 // one it knows: the tests of the answers' own rules ask /user with none
-const github = (url: URL) =>
-  new Response(JSON.stringify({ login: LOGIN }), { status: url.pathname === '/user' ? 200 : 404 });
+const github = (url: URL) => Response.json({ login: LOGIN }, { status: url.pathname === '/user' ? 200 : 404 });
 const app = await startReview({
   now: AT,
   route: '#contested/2',

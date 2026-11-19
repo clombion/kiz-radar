@@ -36,13 +36,13 @@ export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Po
     within: () => [...containers, pop],
     close,
     place: () => {
-      if (!pop.hidden && described !== undefined && at !== undefined) placed(described, at);
+      if (pop.hidden === false && described !== undefined && at !== undefined) placed(described, at);
     },
     signal,
   });
   // open on a day: its detail drawn once, however often the pointer moves over the day it is already open on
   const open = (cell: HTMLElement, container: HTMLElement) => {
-    if (!pop.hidden && described === cell) return;
+    if (pop.hidden === false && described === cell) return;
     pop.replaceChildren(...nodes(detail(cell.dataset['day'] ?? '')));
     pop.hidden = false;
     described?.removeAttribute('aria-describedby');
@@ -93,7 +93,7 @@ export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Po
       let again: HTMLElement | null = null;
       container.addEventListener('pointerdown', (e) => {
         const cell = cellOf(e.target);
-        again = cell !== null && !pop.hidden && described === cell ? cell : null;
+        again = cell !== null && pop.hidden === false && described === cell ? cell : null;
       });
       container.addEventListener('click', (e) => {
         const cell = cellOf(e.target);

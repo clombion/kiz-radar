@@ -59,7 +59,9 @@ const slid = () =>
 const sliding = () =>
   document
     .getAnimations()
-    .filter((a) => a.effect instanceof KeyframeEffect && a.effect.pseudoElement?.startsWith('::view-transition'));
+    .filter(
+      (a) => a.effect instanceof KeyframeEffect && a.effect.pseudoElement?.startsWith('::view-transition') === true,
+    );
 const frames = async (n: number) => {
   for (const _ of Array.from({ length: n })) await new Promise(requestAnimationFrame);
 };

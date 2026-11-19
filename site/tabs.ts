@@ -55,7 +55,7 @@ export function pill(nav: HTMLElement, { still = false } = {}): void {
   // a move still running gives way to this one: its shapes go, and the oval starts from where it was going
   for (const shape of row.moving.splice(0)) shape.remove();
   for (const a of oval.getAnimations()) a.cancel();
-  if (!tab || nav.hidden) {
+  if (!tab || nav.hidden !== false) {
     oval.hidden = true;
     row.at = null;
     return;

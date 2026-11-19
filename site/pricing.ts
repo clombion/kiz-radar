@@ -36,8 +36,8 @@ function windows(pass: Pass, e: Dates): Window[] {
       next = sold[i + 1];
     return {
       ...t,
-      lo: t.valid_from ?? (prev?.valid_until ? addDays(prev.valid_until, 1) : null),
-      hi: t.valid_until ?? (next?.valid_from ? addDays(next.valid_from, -1) : null),
+      lo: t.valid_from ?? (prev?.valid_until != null && prev.valid_until !== '' ? addDays(prev.valid_until, 1) : null),
+      hi: t.valid_until ?? (next?.valid_from != null && next.valid_from !== '' ? addDays(next.valid_from, -1) : null),
     };
   });
 }
@@ -72,7 +72,7 @@ export function tierNow(pass: Pass, e: Dates, day: string): TierNow {
 
 // When a pass's next price starts: at the door, on a known day (its lo), or on a day not known.
 export const nextChange = (t: Pick<Window, 'door' | 'lo'>) =>
-  t.door ? KEY.next_change.DOOR : t.lo ? KEY.next_change.DATED : KEY.next_change.LATER;
+  t.door ? KEY.next_change.DOOR : t.lo !== null && t.lo !== '' ? KEY.next_change.DATED : KEY.next_change.LATER;
 
 // a festival as its card's price needs it
 export interface Priced extends Dates {

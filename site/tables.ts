@@ -161,7 +161,9 @@ export function sqlView(root: HTMLElement): void {
                 t.name,
               ),
               t.type === 'view' ? h('small', { class: 'muted' }, ' view') : null,
-              t.description ? h('p', { class: ['small', 'muted'] }, t.description) : null,
+              t.description !== null && t.description !== ''
+                ? h('p', { class: ['small', 'muted'] }, t.description)
+                : null,
             ),
           ),
         ),

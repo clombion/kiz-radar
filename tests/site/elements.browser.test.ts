@@ -134,7 +134,9 @@ test('a drawing is put in as the SVG icons.ts writes: the map’s sheet handle, 
   // the search left open on the map, shut once the test ends (seen.ts)
   const { input } = searchOpened();
   const semba = (await searched(input, 'Semba')).find(
-    (r) => said(r.querySelector('.name')) === 'Also with Semba' && said(r.querySelector('.sub'))?.startsWith('Dance'),
+    (r) =>
+      said(r.querySelector('.name')) === 'Also with Semba' &&
+      said(r.querySelector('.sub'))?.startsWith('Dance') === true,
   );
   if (semba === undefined) throw new Error('the search lists no Semba dance on 2026-11-01');
   const lead = semba.querySelector('.lead');
@@ -208,7 +210,7 @@ test('the festivals are shown 30 at a time, each page added to what is there; ot
 // the Festivals page's Line-up select (More filters)
 const lineUp = () =>
   [...(main()?.querySelectorAll('label.field') ?? [])]
-    .find((l) => l.textContent?.startsWith('Line-up'))
+    .find((l) => l.textContent.startsWith('Line-up'))
     ?.querySelector('select');
 
 test('a select gives back the option picked as its value: the line-up chosen stays in the address and shown', async () => {
@@ -259,8 +261,8 @@ test('a style sets each property, a custom one as the stylesheet reads it', asyn
   expect(bars.length).toBeGreaterThan(0);
   for (const bar of bars) expect([bar.style.left, bar.style.width].every((v) => v.endsWith('%'))).toBe(true);
   await app.open(artistHref(artist));
-  const booked = [...(main()?.querySelectorAll('section') ?? [])].find((s) =>
-    said(s.querySelector('h2'))?.startsWith('Where they’re booked'),
+  const booked = [...(main()?.querySelectorAll('section') ?? [])].find(
+    (s) => said(s.querySelector('h2'))?.startsWith('Where they’re booked') === true,
   );
   const shares = [...(booked?.querySelectorAll<HTMLElement>('.bars .bar') ?? [])];
   expect(shares.map((b) => b.style.getPropertyValue('--w'))).toEqual(['100.0%', '25.0%']);

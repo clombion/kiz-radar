@@ -144,7 +144,7 @@ export function sentenceView(
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
   const withTag = h('p', { class: 'with-tag' });
   // the choices that only show as tags, under the sentence and in the Filters panel alike
-  const tag = ([lead, what]: readonly Kid[], remove: () => void) =>
+  const tag = ([lead, what]: readonly [Kid, string | undefined], remove: () => void) =>
     h(
       'span',
       { class: 'tag' },
@@ -308,7 +308,7 @@ export function sentenceView(
   if (tabNote) tab?.append(tabNote);
   const io = new IntersectionObserver(
     ([en]) => {
-      const away = !en?.isIntersecting;
+      const away = en?.isIntersecting !== true;
       toggle(bar, 'shown', away);
       if (tabNote) toggle(tabNote, 'away', away); // don't float over the cards
     },
@@ -341,8 +341,8 @@ export function sentenceView(
     if (!s.reach) s.unchecked = 0; // unknown prices are in at any price, so no choice to keep
     showInAddressBar(festivalsHref(choicesAddress(s)));
     for (const k of ['when', 'country', 'reach'] as const) {
-      sentenceBlanks[k].value = String(s[k]);
-      barBlanks[k].value = String(s[k]);
+      sentenceBlanks[k].value = s[k];
+      barBlanks[k].value = s[k];
       sizeToFit(sentenceBlanks[k]);
     }
     layout();

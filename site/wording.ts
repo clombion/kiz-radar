@@ -14,7 +14,7 @@ export type Form<P extends Point, K extends Key<P>> = Table[P][K] extends { form
 const TABLE: Readonly<Record<Point, Readonly<Record<string, StateRow>>>> = STATES;
 
 const row = <P extends Point>(point: P, key: Key<P>): StateRow => {
-  const r = TABLE[point][key];
+  const r: StateRow | undefined = TABLE[point][key];
   if (!r) throw new Error(`${point} ${JSON.stringify(key)} is no state in pipeline/states.py`);
   return r;
 };
@@ -63,12 +63,12 @@ const VALUES = /(?<value>\{\w+\})/u;
 const VALUE = /^\{(?<name>\w+)\}$/u;
 // the words, or the named form of them, as parts to append (the values may be elements); null when the state shows
 // none
-export function say<P extends Point, K extends Key<P>>(
+export function say<P extends Point, K extends Key<P>, V extends Kid = Kid>(
   point: P,
   key: K,
-  values: Readonly<Record<string, Kid>> = {},
+  values: Readonly<Record<string, V>> = {},
   form?: Form<P, K>,
-): Kid[] | null {
+): (string | V | null)[] | null {
   const r = row(point, key);
   const forms: Readonly<Record<string, string>> = r.forms;
   if (form !== undefined && !Object.hasOwn(forms, form))
@@ -100,7 +100,7 @@ type Said<P extends Point, K extends Key<P>, F> =
 export const text = <P extends Point, K extends Key<P>, F extends Form<P, K> | undefined = undefined>(
   point: P,
   key: K,
-  values?: Readonly<Record<string, Kid>>,
+  values?: Readonly<Record<string, string | number | null>>,
   form?: F,
 ): Said<P, K, F> =>
   // biome-ignore lint/nursery/noUnsafeTypeAssertion: say gives the words exactly when the generated table has them, which Said reads
@@ -111,6 +111,7 @@ export const plural = (n: number, noun: string, nouns = `${noun}s`): string =>
   `${n.toLocaleString('en-GB')} ${n === 1 ? noun : nouns}`;
 // "A, B and C": what goes before each of n things, the first nothing
 const between = (i: number, n: number): '' | ' and ' | ', ' => (i === 0 ? '' : i === n - 1 ? ' and ' : ', ');
-export const joined = (xs: readonly Kid[]): Kid[] => xs.flatMap((x, i) => [between(i, xs.length), x]);
+export const joined = <T extends Kid>(xs: readonly T[]): (T | string)[] =>
+  xs.flatMap((x, i) => [between(i, xs.length), x]);
 // the same, as text
 export const joinedText = (xs: readonly string[]): string => xs.map((x, i) => between(i, xs.length) + x).join('');

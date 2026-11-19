@@ -40,7 +40,7 @@ async function cities(input: HTMLInputElement, typed: string): Promise<string[][
   const rows = () =>
     [...document.querySelectorAll('dialog[open] [role="option"]')]
       .map((o) => [o.querySelector('.name')?.textContent ?? '', o.querySelector('.sub')?.textContent ?? ''])
-      .filter(([, sub]) => sub?.startsWith('City'));
+      .filter(([, sub]) => sub?.startsWith('City') === true);
   // the search's index is built once the page's data is in, after the dialog opens
   await vi.waitUntil(() => rows().length > 0, { timeout: 5000 });
   return rows();
