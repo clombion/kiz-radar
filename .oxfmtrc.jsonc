@@ -23,7 +23,9 @@
     // laid out by their generators (pipeline/states.py, pipeline/drawings.py), and checked against them by
     // generate:check
     "/site/states.ts",
-    "/site/drawings.ts"
+    "/site/drawings.ts",
+    // the house rule on semicolons in JSX text: the formatter would lay out again the text the rule reads
+    "/lint/fixtures/semicolons/**"
   ],
   "overrides": [
     {
