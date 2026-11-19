@@ -870,7 +870,7 @@ function onKey(ev: KeyboardEvent): void {
   ev.preventDefault();
 }
 
-export function reviewView(into: HTMLElement, r: Review): void {
+function reviewView(into: HTMLElement, r: Review): void {
   root = into;
   review = r;
   settledIds = settled(r.built_at);

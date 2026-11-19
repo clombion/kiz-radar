@@ -5,19 +5,26 @@
 // - once per file: the page starts on import, and each test file is a page of its own;
 // - its day, always (`now`, YYYY-MM-DD, pinned at local noon in the browser's own zone, or an instant). open(href, on)
 //   opens a page on another day, as a page left open past midnight does, until the test ends or the next open();
+// - its route (`route`, a #link), where a visitor who reloads the page at that address arrives; else the page's own
+//   address, without one (the review's routes are typed as #links; the site's, routes.ts's strings, are checked);
 // - its data: `plant` changes the fixture's database before the page reads it (the build's artist_stats and
 //   event_stats are not computed again from planted rows); `review` is the review page's data;
 // - its storage, which a reload keeps: the page's localStorage and sessionStorage are this file's own and hold
 //   `storage` alone (test files run at once, and the origin's own storage is theirs to share);
 // - what another host answers, on the review page (`elsewhere`, or answer() inside one test), for the hosts its
 //   Content-Security-Policy lets it ask; nothing else leaves the page.
+// Each page then opens a route as its address bar would take it (open()): the page's own address put back, then the
+// route in place of the entry shown, so that no other test file's history.back() lands on it (the files' frames share
+// one history), until the page has drawn it: the site's once its new page has the focus, the review's, whose router
+// moves no focus, once its own handler has drawn the address that changed.
 // The page's fetch, storage and clock are the helper's for the whole file, and cannot be replaced: fetch records what
 // the page asked since it started (`asked`), serves the planted data, and passes the page's own files to the test
 // server; a file a test holds (hold(), inside one test) is asked of it once the test lets it go. vi's fake timers may
 // lie over the clock, installed after the page starts, and give it back; while they do, the day is theirs
 // (vi.setSystemTime). The page's Content-Security-Policy is read, not applied: in the test's page it would also bind
 // Vitest's own scripts. A start, or an open(), whose page says it failed is refused with its words, and so is one
-// during which a new line says that something went wrong (report.ts's), so that no error passes unseen.
+// during which a new line says that something went wrong (report.ts's), so that no error passes unseen; so is a site's
+// route that is no #link, and any route the address does not keep as it is given.
 import type { Database } from 'sql.js';
 import { onTestFinished, vi } from 'vitest';
 import { commands } from 'vitest/browser';
@@ -27,12 +34,15 @@ import { DATA_FILE, ROOT_FILE } from './community.fixture.ts';
 type Day = `${number}-${number}-${number}`;
 type Now = Day | Date;
 type Answer = (url: URL, init: RequestInit) => Response | Promise<Response>;
+// a route of the review page, its address's #link
+type Hash = `#${string}`;
 interface Asked {
   readonly url: URL;
   readonly init: RequestInit;
 }
-interface Visit {
+interface Visit<Route extends string = string> {
   now: Now;
+  route?: Route;
   storage?: { local?: Readonly<Record<string, string>>; session?: Readonly<Record<string, string>> };
 }
 // the two pages: each one's HTML, the module that starts it, and the data file a test may give it
@@ -74,14 +84,30 @@ const LOADING = /^\s*Loading/u;
 const FAILED = /This page could not be shown|Could not load the /u;
 const loading = (): boolean =>
   [...main().querySelectorAll('[role="status"]')].some((s) => LOADING.test(s.textContent ?? ''));
+// what a page is drawn by, besides no line saying it is loading, and its name
+type Ready = readonly [ready: () => boolean, waited: string];
 // until the page is drawn: ready (what is waited for named), and no line says it is loading; refused if it failed
-async function drawn(what: string, timeout: number, [ready, waited] = [() => true, 'its data']): Promise<void> {
+async function drawn(what: string, timeout: number, [ready, waited]: Ready = [() => true, 'its data']): Promise<void> {
   try {
     await vi.waitUntil(() => ready() && !loading(), { timeout, interval: 16 });
   } catch (e) {
     throw new Error(`${what}: still waiting for ${waited} after ${timeout} ms; <main> says: ${said()}`, { cause: e });
   }
   if (FAILED.test(main().textContent ?? '')) throw new Error(`${what}: the page says it failed: ${said()}`);
+}
+
+// a route is a #link: a page of its own is a page load, which a test cannot do (the site's routes are routes.ts's
+// strings, which no type holds to a #link)
+function routed(route: string): void {
+  if (!route.startsWith('#')) {
+    throw new Error(
+      `${route}: the page takes a route's #link; a page of its own is a page load, which a test cannot do`,
+    );
+  }
+}
+// refused when the address does not hold the route as given (one it encodes is another to the page)
+function addressed(route: string): void {
+  if (location.hash !== route) throw new Error(`${route}: the address holds ${location.hash} instead`);
 }
 
 // the lines report.ts puts at the top of the page when something goes wrong
@@ -179,11 +205,12 @@ let started = false;
 // among them), other hosts answered by `elsewhere`
 async function start(
   page: Page,
-  { now, storage }: Visit,
+  { now, route, storage }: Visit,
   data: () => Promise<BodyInit | undefined> | BodyInit | undefined,
   elsewhere?: Answer,
 ) {
   const from = pinned(now);
+  if (route !== undefined) routed(route);
   if (started) throw new Error('the page starts once per test file: it starts on import, and a file is one page');
   started = true;
   if (globalThis.Date !== RealDate) {
@@ -242,15 +269,28 @@ async function start(
   });
 
   document.body.replaceChildren(...document.importNode(html.body, true).childNodes);
-  // the page's own address, without a route: where the visitor arrives (the page may then write its route in)
+  // the page's own address, and the route the visitor arrives at, else none (the page may then write its route in)
   const home = location.pathname + location.search;
-  history.replaceState(null, '', home);
+  history.replaceState(null, '', home + (route ?? ''));
+  if (route !== undefined) addressed(route);
   await page.entry();
   await drawn('starting the page', START_MS);
   unalarmed('starting the page', []);
   return {
     asked,
-    home,
+    // the page at a route: armed (what draws it, set before the address moves) once the route is one, then the page's
+    // own address put back and the route in place of the entry shown, resolved against the address, not the page's
+    // base; until the page has drawn it, refused if it failed or a new line says something went wrong
+    address: async (to: string, arm: () => Ready): Promise<void> => {
+      routed(to);
+      const before = alerts();
+      const ready = arm();
+      history.replaceState(null, '', home);
+      location.replace(new URL(to, location.href).href);
+      addressed(to);
+      await drawn(to, OPEN_MS, ready);
+      unalarmed(to, before);
+    },
     // a file of the page's own held until the test lets it go, or ends (onTestFinished: inside a test only)
     hold: (path: string): (() => void) => {
       const held: { go?: () => void } = {};
@@ -293,55 +333,70 @@ async function start(
   };
 }
 
-// The site's page, started on the fixture's data as plant leaves it. open(href, on) opens a route by its link from
-// routes.ts as a new page, on the day `on` or else the start's, once the page has the focus and has its data.
+// The site's page, started on the fixture's data as plant leaves it, at its route if given. open(href, on) opens a
+// route by its link from routes.ts as a new page, on the day `on` or else the start's, once the page has the focus and
+// has its data.
 // hold(path) holds the page's own file of that path until the function it returns is called, or the test ends.
 export async function startSite({ plant, ...visit }: Visit & { plant?: (db: Database) => void }): Promise<{
   asked: readonly Asked[];
   hold: (path: string) => () => void;
   open: (href: string, on?: Now) => Promise<void>;
 }> {
-  const { asked, hold, home, on } = await start(PAGES.site, visit, () =>
+  const { asked, address, hold, on } = await start(PAGES.site, visit, () =>
     plant === undefined ? undefined : planted(plant),
   );
   return {
     asked,
     hold,
-    open: async (href, day) => {
-      if (!href.startsWith('#')) {
-        throw new Error(
-          `${href}: open() takes a route's #link; a page of its own is a page load, which a test cannot do`,
-        );
-      }
-      on(day, href);
-      const before = alerts();
-      // a new page takes the focus (main.ts); until it has, the page shown is the one before (the focus itself,
-      // not its event, which a frame without the window's focus never gets: test files share one window)
-      if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
-      // in place of the entry shown, so that no other test file's history.back() lands here (the frames share one
-      // history); resolved against the address, not the page's base
-      history.replaceState(null, '', home);
-      location.replace(new URL(href, location.href).href);
-      await drawn(href, OPEN_MS, [() => document.activeElement === main(), 'the focus a new page takes']);
-      unalarmed(href, before);
-    },
+    open: (href, day) =>
+      address(href, () => {
+        on(day, href);
+        // a new page takes the focus (main.ts); until it has, the page shown is the one before (the focus itself,
+        // not its event, which a frame without the window's focus never gets: test files share one window)
+        if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+        return [() => document.activeElement === main(), 'the focus a new page takes'];
+      }),
   };
 }
 
-// The review page, started on review (else the fixture's review.json), other hosts answered by `elsewhere`.
+// The review page, started on review (else the fixture's review.json) at its route if given, other hosts answered by
+// `elsewhere`. open(hash) opens an item or a queue by its address, once the page's own handler has drawn it (the
+// page's, added as it starts, runs before the one added here); a refused open() leaves nothing waiting for it.
 export async function startReview({
   review,
   elsewhere,
   ...visit
-}: Visit & { review?: Review; elsewhere?: Answer }): Promise<{
+}: Visit<Hash> & { review?: Review; elsewhere?: Answer }): Promise<{
   asked: readonly Asked[];
   answer: (a: Answer) => void;
+  open: (hash: Hash) => Promise<void>;
 }> {
-  const { asked, answer } = await start(
+  const { asked, address, answer } = await start(
     PAGES.review,
     visit,
     () => (review === undefined ? undefined : JSON.stringify(review)),
     elsewhere,
   );
-  return { asked, answer };
+  return {
+    asked,
+    answer,
+    open: async (hash) => {
+      const armed = new AbortController();
+      try {
+        await address(hash, () => {
+          let changed = false;
+          addEventListener(
+            'hashchange',
+            () => {
+              changed = true;
+            },
+            { once: true, signal: armed.signal },
+          );
+          return [() => changed, 'the address change its page draws on'];
+        });
+      } finally {
+        armed.abort();
+      }
+    },
+  };
 }

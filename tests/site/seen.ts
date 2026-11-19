@@ -35,6 +35,50 @@ export const titled = (el: Element | null | undefined): [name: string | undefine
 export const tags = (el: Element | null | undefined): (string | undefined)[] =>
   [...(el?.querySelectorAll('.plan-tag') ?? [])].map((t) => said(t));
 
+// The entries of this frame's own history (the Navigation API's), which no other test file adds to.
+export function entries(): number {
+  const nav: unknown = Reflect.get(globalThis, 'navigation');
+  const list: unknown =
+    typeof nav === 'object' && nav !== null && 'entries' in nav && typeof nav.entries === 'function'
+      ? Reflect.apply(nav.entries, nav, [])
+      : null;
+  if (!Array.isArray(list)) throw new Error('no Navigation API');
+  return list.length;
+}
+
+// The review page (review.html): what its token button says, the dialog it opens, where it draws its queues, the item
+// a queue shows, the choices it offers, by their words, and a button inside an element by its words; a page without
+// the item, the dialog or the button is an error.
+export const accessSays = (): string | undefined => said(document.querySelector('#access'));
+export function tokenDialog(): HTMLDialogElement {
+  const access = document.querySelector('#access');
+  if (!(access instanceof HTMLButtonElement)) throw new Error('the page has no #access');
+  access.click();
+  const dlg = document.querySelector('dialog[open]');
+  if (!(dlg instanceof HTMLDialogElement)) throw new Error('the token button opened no dialog');
+  return dlg;
+}
+export function reviewed(): HTMLElement {
+  const el = document.querySelector<HTMLElement>('#review');
+  if (el === null) throw new Error('the page has no #review');
+  return el;
+}
+export function theItem(): HTMLElement {
+  const item = document.querySelector<HTMLElement>('article[aria-label="The item"]');
+  if (item === null) throw new Error(`no item on the page, whose <main> says ${said(main())}`);
+  return item;
+}
+export const choicesOf = (el: Element): (string | undefined)[] =>
+  [...el.querySelectorAll('button[aria-pressed]')].map((b) => said(b));
+export function buttonOf(el: Element, words: string): HTMLButtonElement {
+  const b = [...el.querySelectorAll('button')].find((x) => said(x)?.includes(words));
+  if (b === undefined) throw new Error(`no button "${words}" in ${said(el)}`);
+  return b;
+}
+// A key pressed on the window, where the review page listens: a real key would go to whichever frame has the focus,
+// another file's maybe (test files share one window).
+export const keyed = (key: string): boolean => globalThis.dispatchEvent(new KeyboardEvent('keydown', { key }));
+
 // The page this wide, 900px high, until the test ends; then the browser project's own size, 414 by 896.
 export async function atWidth(width: number): Promise<void> {
   onTestFinished(() => page.viewport(414, 896));

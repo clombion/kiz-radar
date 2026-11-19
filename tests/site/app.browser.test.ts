@@ -1,6 +1,6 @@
 // The helper that starts the site's page in a test (app.ts): each thing a test states before the page starts reaches
-// the page, and nothing a test does later takes the page's data or day from it. Each test fails if the helper leaves
-// out what it names.
+// the page, its route among them, and nothing a test does later takes the page's data or day from it. Each test fails
+// if the helper leaves out what it names.
 import { expect, onTestFinished, test, vi } from 'vitest';
 import { page } from 'vitest/browser';
 import { dbDay } from '../../site/db.ts';
@@ -8,16 +8,20 @@ import { get } from '../../site/net.ts';
 import { artistsHref, communityHref, EXPLORE, mapHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, PRAGUE_GOLD } from './community.fixture.ts';
+import { entries } from './seen.ts';
 
 // a festival of the fixture's that week (Prague GOLD, 14–18 January), renamed
 const PLANTED = 'A festival planted before the page starts';
+const week = EXPLORE.find(([k]) => k === 'week')?.[2] ?? '';
 const app = await startSite({
   now: '2027-01-12',
+  route: week,
   storage: { local: { seeded: 'local' }, session: { seeded: 'session' } },
   plant: (db) => db.run('UPDATE events SET title = ?, listed_title = ? WHERE id = ?', [PLANTED, PLANTED, PRAGUE_GOLD]),
 });
-const week = EXPLORE.find(([k]) => k === 'week')?.[2] ?? '';
 const shown = () => document.querySelector('main')?.textContent ?? '';
+// where the page arrived, and the database's day then, before any test opens another route or day
+const arrived = { hash: location.hash, shown: shown(), day: dbDay() };
 const JANUARY = 'Monday 11 Jan and Sunday 17 Jan'; // the start's week
 // what This week shows, opened on the start's day
 async function startsWeek(): Promise<string> {
@@ -26,10 +30,14 @@ async function startsWeek(): Promise<string> {
 }
 
 test('the page starts on the day given and the rows planted', async () => {
-  // the day the page started on, before any page opens: the clock was the helper's when the database loaded
-  expect(dbDay()).toBe('2027-01-12');
+  // the day the page started on, read before any test opened a page: the clock was the helper's when the database loaded
+  expect(arrived.day).toBe('2027-01-12');
   expect(await startsWeek()).toContain(JANUARY);
   expect(shown()).toContain(PLANTED);
+});
+
+test('the page starts at the route given, as a visitor who reloads the page at its address arrives', () => {
+  expect(arrived).toEqual({ hash: week, shown: expect.stringContaining(JANUARY), day: '2027-01-12' });
 });
 
 // the origin's own storage, as another test file's page sees it: a same-origin frame's
@@ -103,17 +111,6 @@ test("while vi's timers lie over the clock, the day is theirs, and open() refuse
   await expect(app.open(week, '2026-11-21')).rejects.toThrow("vi's fake timers are on");
 });
 
-// the entries of this frame's own history (the Navigation API's), which no other test file adds to
-function entries(): number {
-  const nav: unknown = Reflect.get(globalThis, 'navigation');
-  const list: unknown =
-    typeof nav === 'object' && nav !== null && 'entries' in nav && typeof nav.entries === 'function'
-      ? Reflect.apply(nav.entries, nav, [])
-      : null;
-  if (!Array.isArray(list)) throw new Error('no Navigation API');
-  return list.length;
-}
-
 test('the page shown opens again as a new page, in place of its history entry', async () => {
   await app.open(week);
   const [first, before] = [document.querySelector('main')?.firstElementChild, entries()];
@@ -138,8 +135,9 @@ test("every request is noted with its signal, and no host the page's policy refu
   await expect(get(new URL('https://api.github.com/user'))).rejects.toThrow('Content-Security-Policy');
 });
 
-test('the page starts once, on a day that is one, and opens only a route', async () => {
+test('the page starts once, on a day that is one, at a route if any, and opens only a route', async () => {
   await expect(startSite({ now: '2026-02-30' })).rejects.toThrow('no such day');
+  await expect(startSite({ now: '2027-01-12', route: 'index.html' })).rejects.toThrow("takes a route's #link");
   await expect(startSite({ now: '2027-01-12' })).rejects.toThrow('once per test file');
   await expect(app.open(communityHref(FIXTURE_COMMUNITY))).rejects.toThrow("takes a route's #link");
 });
