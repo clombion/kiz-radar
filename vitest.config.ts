@@ -14,7 +14,7 @@ import solid from '@solidjs/vite-plugin';
 import { playwright } from '@vitest/browser-playwright';
 import type { BrowserCommand } from 'vitest/node';
 import { configDefaults, defineConfig } from 'vitest/config';
-import { DATA_FILE, FIXTURE_DATA, ROOT_FILE } from './tests/site/community.fixture.ts';
+import { DATA_FILE, FIXTURE_DATA } from './tests/site/community.fixture.ts';
 
 // oxlint-disable-next-line house/env -- the machine may name its own Chromium, the one setting read from the environment
 const { CHROMIUM } = process.env; // a Chromium to run the browser tests in, when not Playwright's own
@@ -22,11 +22,7 @@ const { CHROMIUM } = process.env; // a Chromium to run the browser tests in, whe
 // The built site (public/), served under /kiz-radar/ as GitHub Pages serves it, for the tests that load it whole in a
 // frame: a folder's address serves its index.html, as Pages does, and data/ is the fixture's database. The tests' own
 // pages (app.ts) get the fixture too: data/ at the root is the fixture's alone, at any depth, never the build's rows,
-// which Vite would serve from public/; and a file asked at the root is the fixture's, else the build's vendor/, else
-// public/'s (the pages' mark.svg and loading.svg). No page asks for a fixture's or vendor/ file at the root since
-// site/'s new URL(…, import.meta.url) sites carry /* @vite-ignore */ (before, Vite's transform rewrote db.ts's
-// '../data/' and '../vendor/' to the root in a test): only server.browser.test.ts's '/kiz.sqlite' does, and whether
-// the branch goes is the owner's to decide.
+// which Vite would serve from public/; any other address is Vite's (the pages' mark.svg and loading.svg from public/).
 const TYPES: Readonly<Record<string, string>> = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript',
@@ -54,30 +50,19 @@ const failed = (res: ServerResponse, e: unknown): void => {
   res.statusCode = 500;
   res.end(String(e));
 };
-// no such file: a 404 (or the next handler's), where any other error is the server's own
+// no such file: a 404, where any other error is the server's own
 const absent = (e: unknown): boolean => e instanceof Error && 'code' in e && (e.code === 'ENOENT' || e.code === 'EISDIR');
-// the file's body, served; else said absent, or failed
-async function answer(res: ServerResponse, name: string, read: () => Promise<Buffer | string>, gone: () => void) {
+// the file's body, served; else said missing, or failed
+async function answer(res: ServerResponse, name: string, read: () => Promise<Buffer | string>) {
   let body: Buffer | string;
   try {
     body = await read();
   } catch (e) {
-    if (absent(e)) gone();
+    if (absent(e)) missing(res);
     else failed(res, e);
     return;
   }
   served(res, name, body);
-}
-// a file from the first folder that has it, in order
-async function first(dirs: readonly string[], name: string): Promise<Buffer> {
-  for (const dir of dirs) {
-    try {
-      return await readFile(join(dir, name));
-    } catch (e) {
-      if (!absent(e)) throw e;
-    }
-  }
-  throw Object.assign(new Error(name), { code: 'ENOENT' });
 }
 // the address asked for, without its query; null for one no file has (a malformed escape)
 function asked(req: IncomingMessage): string | null {
@@ -93,13 +78,10 @@ const pages = () => ({
     server.middlewares.use('/', (req, res, next) => {
       const path = asked(req) ?? '';
       const data = DATA_FILE.exec(path)?.groups?.['file'];
-      const root = ROOT_FILE.exec(path)?.groups?.['file'];
-      if (data !== undefined) {
-        answer(res, data, async () => await readFile(join(FIXTURE_DATA, data)), () => missing(res)).catch((e: unknown) =>
-          failed(res, e),
-        );
-      } else if (root === undefined) next();
-      else answer(res, root, async () => await first([FIXTURE_DATA, 'public/vendor'], root), next).catch((e: unknown) => failed(res, e));
+      if (data === undefined) next();
+      else {
+        answer(res, data, async () => await readFile(join(FIXTURE_DATA, data))).catch((e: unknown) => failed(res, e));
+      }
     });
     server.middlewares.use('/kiz-radar', (req, res, next) => {
       const path = asked(req);

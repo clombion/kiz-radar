@@ -45,7 +45,7 @@ Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "
 | # | Task | Subtasks | Done when |
 | -- | -- | -- | -- |
 | 3.1 | Spike: Vite on this code | pin `vite` at Vitest's version; inputs `main`, `review`, `icons` with fixed names, flat `public/js/`, `base: './'`, no HTML, no preload polyfill; check what it does with the four `new URL(…, import.meta.url)` sites and with `icons.js`'s exports; done ([refactor-task-3.1.md](refactor-task-3.1.md): `vite` 8.3.5, no `icons` input, nothing reads it since 2.6d) | evidence for each, in the phase report draft |
-| 3.2 | Switch the build | `vite.config.ts`; `build` = `vite build` then `vendor`; `tsconfig.json` `noEmit`, `allowImportingTsExtensions`; knip, oxlint and `tests/site/tsconfig.json` know the new file; done but the root-file branch's removal, the owner's ([refactor-task-3.2.md](refactor-task-3.2.md): `vite` 8.3.8, `main.js`, `review.js`, `shared-<hash>.js`, no warning) | `mise run build:site` builds; `generate:check` clean (`render:design` checks nothing the build touches since 2.6d) |
+| 3.2 | Switch the build | `vite.config.ts`; `build` = `vite build` then `vendor`; `tsconfig.json` `noEmit`, `allowImportingTsExtensions`; knip, oxlint and `tests/site/tsconfig.json` know the new file; done, the root-file branch removed later on the owner's yes ([refactor-task-3.2.md](refactor-task-3.2.md): `vite` 8.3.8, `main.js`, `review.js`, `shared-<hash>.js`, no warning) | `mise run build:site` builds; `generate:check` clean (`render:design` checks nothing the build touches since 2.6d) |
 | 3.3 | Tests against the build | `pages.browser.test.ts` passes; a smoke set of routes and `review.html` in a frame of the built site under the CSP, added to `pages.browser.test.ts`; done ([refactor-task-3.3.md](refactor-task-3.3.md): eleven pages, each drawn with no alert, failed request, CSP violation or console error) | green |
 | 3.4 | Served files and docs | list `public/` before and after; load index, review, a community page, an old `#community/<key>` link; `build:site` description, `docs/guides/the-site.md`, `CONTRIBUTING.md`; done ([refactor-task-3.4.md](refactor-task-3.4.md): 57 module scripts gone, `shared-<hash>.js` come, the rest the same; the loads are 3.3's smoke set) | Phase 3 report written (and the `pages.yml` comment mentioned, not edited) |
 
@@ -484,9 +484,9 @@ was caught; the build drew every page clean as `tsc`'s had.
 
 **Open issues:**
 
-- The test server's root-file branch ([3.2](refactor-task-3.2.md), decision 7): removing it, `first()`, `ROOT_FILE`, its
-  reader in `tests/site/app.ts` and the `'/kiz.sqlite'` case of `server.browser.test.ts` (a test, so on the stop list)
-  awaits the owner. It serves only that case now; the pages' `mark.svg` and `loading.svg` pass through it to `public/`.
+- The test server's root-file branch ([3.2](refactor-task-3.2.md), decision 7): it served only the `'/kiz.sqlite'` case
+  of `server.browser.test.ts` (a test, so on the stop list). Closed: on the owner's yes, it, `first()`, `ROOT_FILE`, its
+  reader in `tests/site/app.ts` and that case are removed.
 - `.github/workflows/pages.yml` (stop list): `:3` "Compiles the site's TypeScript (site/) into public/js/" and `:38`'s
   step name "Compile the site, and build its data from the export" were stale; the step runs `mise run build:site`,
   which bundles with Vite, so the deploy is unchanged. Closed: the owner had both reworded, the steps as they were.
