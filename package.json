@@ -7,7 +7,7 @@
     "build": "rm -rf public/js public/vendor && tsc -p . && pnpm run vendor",
     "types": "tsc --noEmit -p . && tsc -p tests/site",
     "lint": "biome check --error-on-warnings",
-    "lint:oxlint": "oxlint --type-aware --deny-warnings site tests vitest.config.ts",
+    "lint:oxlint": "oxlint --type-aware --deny-warnings site tests lint vitest.config.ts",
     "format": "oxfmt --check",
     "knip": "knip",
     "test": "vitest run",

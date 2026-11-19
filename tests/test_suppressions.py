@@ -118,9 +118,16 @@ def biome_files() -> list[str]:
 
 
 def oxlint_files() -> list[str]:
-    """The committed files oxlint checks: what lint:oxlint names (site/, tests/, vitest.config.ts), but the folder
-    .oxlintrc.json's ignorePatterns leaves out."""
-    return tracked(':(glob)site/**/*.ts', ':(glob)tests/**/*.ts', 'vitest.config.ts', ':(exclude)tests/site/lint')
+    """The committed files oxlint checks: what lint:oxlint names (site/, tests/, lint/, vitest.config.ts), but the
+    folders .oxlintrc.json's ignorePatterns leaves out."""
+    return tracked(
+        ':(glob)site/**/*.ts',
+        ':(glob)tests/**/*.ts',
+        ':(glob)lint/**/*.ts',
+        'vitest.config.ts',
+        ':(exclude)tests/site/lint',
+        ':(exclude)lint/fixtures',
+    )
 
 
 def site_files() -> list[str]:
@@ -136,9 +143,10 @@ def test_the_site_suppressions_are_read_in_every_file_biome_or_oxlint_checks() -
         'public/css/site.css',
         'biome.jsonc',
         'vitest.config.ts',
+        'lint/plugin.ts',
     } <= set(files)
     assert 'pnpm-lock.yaml' not in files
-    assert not any(f.startswith('tests/site/lint/') for f in files)
+    assert not any(f.startswith(('tests/site/lint/', 'lint/fixtures/')) for f in files)
 
 
 def test_every_site_suppression_is_allowed() -> None:

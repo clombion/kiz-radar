@@ -48,6 +48,14 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list, and an oxlint one is also explained in
   [oxlint's suppressed findings](docs/lint-false-positives.md).
+- **House rules:** a rule of `lint/plugin.ts` is a module beside it, `lint/<rule>.ts` (ESLint's rule API, the file's
+  path tested for its exemptions as `/site/<file>.ts` and `/tests/`), listed in the plugin's `rules` and turned on in
+  `.oxlintrc.json` as `house/<rule>: error`. It ships with fixtures in `lint/fixtures/<rule>/`, at paths its scope
+  reads: a file it refuses, each refused line ending `// refused` (`// refused: <rule>` for another house rule's
+  finding), one written the intended way that it lets through, and, where it has exemptions, the forbidden form in an
+  exempt file (`site/kept.ts`, `tests/…`). `tests/site/rules.test.ts` lints the fixtures with every house rule on and
+  fails on a finding on an unmarked line, a marked line not found, a rule without fixtures or a folder without a rule.
+  The fixtures are kept out of oxlint's run of the tree, tsc, knip, jscpd and Vitest; oxfmt lays them out.
 - **Duplicates:** jscpd fails on a block written twice, at the length `.jscpd.json` sets.
 - **Generated files:** `mise run generate` writes `pipeline/enums.py`, `site/states.ts`, `site/classes.ts`,
   `lint/states.grit`, `docs/reference/`, and the home city (`pipeline/airports.csv`'s home) where `public/index.html`
@@ -77,6 +85,6 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
 | `site/` | the site's TypeScript |
 | `public/` | the published site: page, stylesheet, fonts, icons; `js/`, `vendor/` and `data/` built |
 | `tests/` | the pipeline's tests; `tests/site/` the site's |
-| `lint/` | Biome's plugins |
+| `lint/` | the house rules: oxlint's plugin (`plugin.ts`, a module per rule) with its fixtures, and Biome's Grit plugins not yet ported |
 | `design/` | the share card and the icons' sources |
 | `docs/` | this documentation |

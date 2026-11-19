@@ -111,8 +111,9 @@ test('Biome’s rule refuses a state’s key in quotes where one is compared or 
   }
 });
 
-test('every rule in lint/ is one Biome runs', () => {
+// a Grit rule of lint/ (oxlint's plugin beside them is held by rules.test.ts)
+test('every Grit rule in lint/ is one Biome runs', () => {
   const config = readFileSync(`${ROOT}biome.jsonc`, 'utf8');
-  const unread = readdirSync(`${ROOT}lint`).filter((f) => !config.includes(`"./lint/${f}"`));
+  const unread = readdirSync(`${ROOT}lint`).filter((f) => f.endsWith('.grit') && !config.includes(`"./lint/${f}"`));
   expect(unread).toEqual([]);
 });

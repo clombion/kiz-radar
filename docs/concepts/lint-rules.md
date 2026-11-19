@@ -86,9 +86,12 @@ From `biome.jsonc`'s `overrides`, each with its reason; oxlint takes them as `ov
 | `tests/**`, `vitest.config.ts` | `eslint/no-await-in-loop` | off | Q2: a test drives the page step by step |
 | `site/friends.ts`, `site/roster.ts`, `site/sources.ts`, `site/tables.ts` | `eslint/prefer-destructuring` | off | Q2: the findings in the site's code stay until Phase 4 rewrites these files (`tables.ts` is oxlint's alone) |
 | `site/db.ts` | `eslint/max-classes-per-file` | off | Q2: the same, `SiteUpdating` and `Sql` |
+| `lint/plugin.ts` | `import/no-default-export` | off | new (task 2.5): oxlint loads a JS plugin from its module's default export, as ESLint does |
 | `vitest.config.ts` (and `vite.config.ts`, Phase 3) | `import/no-default-export` | off, **pending owner** | new: Biome never linted the file (not in `files.includes`); Vitest reads its default export, which the rule refuses; off in `.oxlintrc.json` since 2.4, its comment naming the pending decision |
 
-`lint/tests.grit` runs on `tests/**` alone; it and the twelve other Grit rules are ported in task 2.6, not here.
+`lint/tests.grit` runs on `tests/**` alone. The house rules move from Grit to oxlint's plugin (`lint/plugin.ts`, run as
+`house/<rule>`, each with its fixtures: [Contributing](../../CONTRIBUTING.md), "House rules"): `session` since task 2.5,
+the twelve others in task 2.6.
 
 ## Accepted losses
 

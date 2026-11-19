@@ -26,8 +26,11 @@
   },
   // type-aware: oxlint-tsgolint, found in node_modules, so oxlint runs from the repository's root
   "options": { "typeAware": true, "denyWarnings": true, "reportUnusedDisableDirectives": "error" },
-  // the files lint/tests.grit's test lints with its own config: one breaks the rule on purpose
-  "ignorePatterns": ["tests/site/lint/"],
+  // the house rules (lint/plugin.ts), each with its fixtures, and each on below as an error
+  "jsPlugins": ["./lint/plugin.ts"],
+  // the files the house rules' tests lint with a config of their own: lint/tests.grit's (tests/site/lint.test.ts) and
+  // the plugin's (tests/site/rules.test.ts); some break a rule on purpose
+  "ignorePatterns": ["tests/site/lint/", "lint/fixtures/"],
   "rules": {
     "eslint/array-callback-return": "error",
     "eslint/arrow-body-style": "error",
@@ -352,7 +355,8 @@
     "vitest/no-identical-title": "error",
     "vitest/no-standalone-expect": "error",
     "vitest/prefer-hooks-in-order": "error",
-    "vitest/prefer-hooks-on-top": "error"
+    "vitest/prefer-hooks-on-top": "error",
+    "house/session": "error"
   },
   "overrides": [
     {
@@ -378,6 +382,11 @@
       // Q2, the same: SiteUpdating and Sql, until Phase 4
       "files": ["site/db.ts"],
       "rules": { "eslint/max-classes-per-file": "off" }
+    },
+    {
+      // oxlint loads a JS plugin from its module's default export, as ESLint does
+      "files": ["lint/plugin.ts"],
+      "rules": { "import/no-default-export": "off" }
     },
     {
       // pending the owner (docs/concepts/lint-rules.md, "Per-folder exceptions"): Vitest reads the config's default export
