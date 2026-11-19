@@ -96,6 +96,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 
 | Rule | On | Off |
 | -- | -- | -- |
+| `buttons` | `site/*.ts` | `site/dom.ts` |
 | `clicks` | everywhere oxlint lints | `site/dom.ts`, `site/swipe.ts` |
 | `fetch` | everywhere oxlint lints | `site/net.ts` |
 | `promises` | everywhere oxlint lints | (none) |
@@ -274,7 +275,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | Biome rule | Level | oxlint | Fit | Status, note |
 | -- | -- | -- | -- | -- |
 | `noPositiveTabindex` | error | `jsx_a11y/tabindex-no-positive` | source | mapped |
-| `useButtonType` | error | `react/button-has-type` | source | mapped: `createElement` only; a button made by `h()` is held by `lint/buttons.grit` |
+| `useButtonType` | error | `react/button-has-type` | source | mapped: `createElement` only; a button made by `h()` is held by `house/buttons` (`lint/buttons.ts`) |
 
 ### complexity
 

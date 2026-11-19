@@ -19,7 +19,6 @@
     "./lint/routes.grit",
     "./lint/formats.grit",
     "./lint/home.grit",
-    "./lint/buttons.grit",
     "./lint/classes.grit",
     "./lint/markup.grit",
     "./lint/states.grit"

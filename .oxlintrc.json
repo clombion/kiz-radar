@@ -409,6 +409,16 @@
       "rules": { "house/clicks": "off" }
     },
     {
+      // house/buttons: a button in the site's modules is dom.ts's button(), which gives it type=button
+      "files": ["site/*.ts"],
+      "rules": { "house/buttons": "error" }
+    },
+    {
+      // house/buttons: dom.ts's button() is where a button is made
+      "files": ["site/dom.ts"],
+      "rules": { "house/buttons": "off" }
+    },
+    {
       // oxlint loads a JS plugin from its module's default export, as ESLint does
       "files": ["lint/plugin.ts"],
       "rules": { "import/no-default-export": "off" }
