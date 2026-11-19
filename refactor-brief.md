@@ -69,9 +69,9 @@ and it must be in place **before** accounts are built, so that nothing is writte
 4. **Solid's lint rules**: `eslint-plugin-solid` (0.20.0 or later), `v2-strict` rule set, loaded into oxlint through
    `jsPlugins`. Do not add ESLint itself: `typescript-eslint` does not accept TypeScript 7.
    - **[Review]** Confirmed: 0.20.0 is `latest` and exports `./configs/v2-strict`. It declares `eslint ^9 || ^10` as a
-     (non-optional) peer, so pnpm will print an unmet-peer warning on every install. pnpm 10 does not fail on that.
-     Leave the warning alone unless the owner says otherwise (Q4); do not silence it with `peerDependencyRules`, which
-     is close to the forbidden forcing.
+     peer. \[19 November: the peer is optional (`peerDependenciesMeta`), and pnpm prints no warning; Q4 is moot.\] pnpm
+     10 does not fail on that. Leave the warning alone unless the owner says otherwise (Q4); do not silence it with
+     `peerDependencyRules`, which is close to the forbidden forcing.
 5. **House rules become oxlint JS plugin rules** (ESLint rule API). oxlint has no `no-restricted-syntax`, so each rule
    is a small visitor function. oxlint's JS plugins are labelled alpha; that risk is handled by fixtures (see "Rules
    about rules").

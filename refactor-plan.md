@@ -28,9 +28,9 @@ Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "
 
 | # | Task | Subtasks | Done when |
 | -- | -- | -- | -- |
-| 2.1 | Spike: the toolchain loads together | pin `oxlint`, `oxlint-tsgolint`, `oxfmt`, `eslint-plugin-solid` (Q4: the ESLint peer warning); one file, type-aware on, one JS plugin rule, `eslint-plugin-solid` loaded; frozen-lockfile install holds the linux and darwin binaries | type-aware linting, a JS plugin and `eslint-plugin-solid` run together on the pinned versions, or a stop with evidence |
+| 2.1 | Spike: the toolchain loads together | in a scratch copy, on the current versions: one file, type-aware on, one JS plugin rule, `eslint-plugin-solid` loaded; a frozen-lockfile install holds the linux and darwin binaries; each tool is pinned in the commit of the task that first uses it (`oxfmt` 2.2, `oxlint` and `oxlint-tsgolint` 2.4, `eslint-plugin-solid` 4.2), so knip needs no exception for an unused package ([refactor-task-2.1.md](refactor-task-2.1.md)) | type-aware linting, a JS plugin and `eslint-plugin-solid` run together on the versions recorded, or a stop with evidence |
 | 2.2 | oxfmt replaces Biome's formatter | scope to Biome's 93 formatted files (`site/states.ts` and other generated files ignored, generators fixed if they disagree); one formatting-only commit; `mise run format`, `CONTRIBUTING.md` | `oxfmt --check` clean; Biome's formatter off |
-| 2.3 | The rule mapping | `biome rage --linter` → table of each rule, its oxlint equivalent, settings ported (`no-use-before-define` functions off, `eqeqeq` null, `max-params` 4, accessibility no `public`, `consistent-test-it`, per-folder exceptions); the 38 info-level rules (**Q2**); unmapped rules beyond the 11 accepted losses listed once (**Stop**) | mapping doc in `docs/concepts/`, owner has approved the losses |
+| 2.3 | The rule mapping | `biome rage --linter` → table of each rule, its oxlint equivalent, settings ported (`no-use-before-define` functions off, `eqeqeq` null, `max-params` 4, accessibility no `public`, `consistent-test-it`, per-folder exceptions); the 43 info-level findings of 9 rules (**Q2**); unmapped rules beyond the 11 accepted losses listed once (**Stop**) | mapping doc in `docs/concepts/`, owner has approved the losses |
 | 2.4 | `.oxlintrc.json` with the mapped rules, on unchanged code | bare mapping, then the type-aware findings one by one: fix real issues; false positives as line suppressions plus `docs/lint-false-positives.md`; `tests/test_suppressions.py` learns `oxlint-disable-next-line`; lint `vitest.config.ts` too | oxlint, type-aware, zero findings and warnings; Biome's TS rules still on in parallel |
 | 2.5 | Fixture test harness | `tests/site/rules.test.ts` runs oxlint JSON on `lint/fixtures/`, compares expected findings, fails on a rule without fixtures; fixtures out of the main run, `tsc`, knip, jscpd | the harness runs under `test:site` |
 | 2.6 | Port the 13 house rules, one per commit | each: JS plugin rule, message and exemptions kept, bad/good/exempt fixtures, Biome's copy removed in the same commit; `states` from the generator (`pipeline/generate.py` writes the key list; docs that name `lint/states.grit`) | `lint/*.grit` gone; each rule's fixtures pass |
@@ -65,9 +65,13 @@ Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "
 
 - **Q1.** May Phase 1 move pure exports out of mixed view modules, as move-only commits? **Answered 18 November: yes,
   move-only commits.**
-- **Q2.** The 38 info-level Biome findings: enforce in oxlint, or leave off and record? (Recommended: off, recorded.)
+- **Q2.** The info-level Biome findings, 43 of 9 rules on 19 November (38 at the baseline; the five more are in the
+  ported tests): enforce in oxlint, or leave off and record? (Recommended: rule by rule, each enforced or off, none left
+  reporting without failing; refactor-task-2.1.md lists them.)
 - **Q3.** Pin Solid 2.0.0 or 2.0.1? (Recommended: 2.0.1, re-checked when Phase 4 starts.)
-- **Q4.** Accept pnpm's standing warning that `eslint-plugin-solid`'s ESLint peer is missing? (Recommended: yes.)
+- **Q4.** Accept pnpm's standing warning that `eslint-plugin-solid`'s ESLint peer is missing? **Moot, 19 November:**
+  0.20.0 marks the peer optional, and pnpm prints no warning; its rules load in oxlint with ESLint absent
+  (refactor-task-2.1.md).
 - **Q5.** Replace the three tests of `h()` itself with app-level tests in Phase 1, and delete them with `h()` in Phase
   4? **Answered 18 November: yes.**
 
