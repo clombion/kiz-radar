@@ -5,8 +5,9 @@
 // Picking a result goes where that kind of thing lives: a festival opens on the map, an artist on their page, a city
 // on the map, and a country, style or highlight narrows the festival list, keeping its other choices.
 
+import type { Kid } from './bits.ts';
 import { q, site, sql } from './db.ts';
-import { button, h, type Kid } from './dom.ts';
+import { button, h } from './dom.ts';
 import { type Festival, festivals } from './festivals.ts';
 import {
   answer,

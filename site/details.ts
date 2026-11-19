@@ -1,7 +1,7 @@
+import type { Kid } from './bits.ts';
 // What an opened card adds, most useful first: who's teaching and playing, what else the weekend has,
 // then the practical bits (venue, organisers) that matter once you've decided to go.
 import { q, sql } from './db.ts';
-import type { Kid } from './dom.ts';
 import { button, h, own } from './dom.ts';
 import type { Festival } from './festivals.ts';
 import { type Drawing, icon as featureIcon, MORE_TRAITS, type Trait, TRAITS } from './icons.ts';

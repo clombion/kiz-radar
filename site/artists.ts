@@ -1,8 +1,9 @@
+import { debounced, type Kid } from './bits.ts';
 // Artists: a scannable list (who, from where, how often booked, where next) and a page per artist that
 // leads with their upcoming festivals.
 import { today } from './days.ts';
 import { one, q, Sql, sql } from './db.ts';
-import { button, choices, debounced, dropdown, h, type Kid, moreButton, paged, segments } from './dom.ts';
+import { button, choices, dropdown, h, moreButton, paged, segments } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, leftOut, withDetails } from './festivals.ts';
 import { fold } from './fold.ts';

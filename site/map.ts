@@ -2,8 +2,9 @@
 // On a phone the list is a sheet over the map that peeks at the bottom and slides up.
 import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
+import { debounced } from './bits.ts';
 import { needs, q, sql } from './db.ts';
-import { button, choices, debounced, dropdown, h, moreButton, paged, toggle } from './dom.ts';
+import { button, choices, dropdown, h, moreButton, paged, toggle } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, leftOut, withDetails } from './festivals.ts';
 import { Drawing } from './icons.ts';

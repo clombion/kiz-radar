@@ -7,10 +7,11 @@
 // day's month: on a computer it sits beside it, on a phone it is a panel under its row of months, which moves what
 // follows down.
 
+import { type Kid, uniqueId } from './bits.ts';
 import { type Away, type Day, monthsIn, periodSaid, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
 import { dismissable } from './dismiss.ts';
-import { button, h, type Kid, nodes, toggle, uniqueId } from './dom.ts';
+import { button, h, nodes, toggle } from './dom.ts';
 import { Drawing } from './icons.ts';
 import { swipe } from './ink.ts';
 import { MEDIA } from './media.ts';

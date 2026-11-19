@@ -1,7 +1,8 @@
 // A person's plans page, with a link to share it (the Friends tab's list is friends.ts).
 
+import type { Kid } from './bits.ts';
 import { q, sql } from './db.ts';
-import { button, h, type Kid } from './dom.ts';
+import { button, h } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { withDetails } from './festivals.ts';
 import { person, togetherHref } from './plans.ts';
