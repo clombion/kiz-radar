@@ -107,6 +107,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `routes` | everywhere oxlint lints | `site/routes.ts` |
 | `session` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `states` | `site/*.ts` | (none) |
+| `statics` | everywhere oxlint lints | (none) |
 | `storage` | everywhere oxlint lints | `site/hints.ts`, `site/kept.ts`, `tests/**` |
 | `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, and four helpers (`dismiss`, `dom`, `modal`, `tabs`) imported by `tests/site/page.browser.test.ts`: the rule's options in each file's override |
 
@@ -312,7 +313,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noImplicitCoercions` | info | `eslint/no-implicit-coercion` | source | mapped |
 | `noRedundantDefaultExport` | warn | (none) |  | accepted loss (owner, 19 November) |
 | `noStaticOnlyClass` | warn | `typescript/no-extraneous-class`<br>`unicorn/no-static-only-class` | source | mapped |
-| `noThisInStatic` | warn | (none) |  | house rule, task 2.6b |
+| `noThisInStatic` | warn | (none) |  | house rule `house/statics` |
 | `noUnnecessaryTemplateExpression` | info | `typescript/no-unnecessary-template-expression` | inspired | mapped: type-aware |
 | `noUselessCatch` | info | `eslint/no-useless-catch` | source | mapped |
 | `noUselessCatchBinding` | info | `unicorn/prefer-optional-catch-binding` | docs | mapped |

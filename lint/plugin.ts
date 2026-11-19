@@ -12,6 +12,7 @@ import { promises } from './promises.ts';
 import { routes } from './routes.ts';
 import { session } from './session.ts';
 import { states } from './states.ts';
+import { statics } from './statics.ts';
 import { storage } from './storage.ts';
 import { tests } from './tests.ts';
 
@@ -20,6 +21,21 @@ export type Rule = Parameters<RuleTester['run']>[1];
 
 const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } = {
   meta: { name: 'house' },
-  rules: { buttons, classes, clicks, fetch, formats, home, markup, promises, routes, session, states, storage, tests },
+  rules: {
+    buttons,
+    classes,
+    clicks,
+    fetch,
+    formats,
+    home,
+    markup,
+    promises,
+    routes,
+    session,
+    states,
+    statics,
+    storage,
+    tests,
+  },
 };
 export default plugin;

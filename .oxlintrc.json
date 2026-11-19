@@ -364,6 +364,7 @@
     "house/promises": "error",
     "house/routes": "error",
     "house/session": "error",
+    "house/statics": "error",
     "house/storage": "error"
   },
   "overrides": [
