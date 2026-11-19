@@ -80,6 +80,8 @@ SITE_ALLOWED = Counter(
         ('site/wording.ts', 'typescript/no-unsafe-type-assertion'): 1,
         ('tests/site/app.browser.test.ts', 'unicorn/new-for-builtins'): 1,
         ('tests/site/calendar.test.ts', 'jest/no-done-callback'): 1,
+        ('tests/site/diagnosed.tsx', 'solid/no-write-in-pure-computation'): 1,
+        ('tests/site/diagnosed.tsx', 'solid/reactivity'): 1,
         ('tests/site/elements.browser.test.ts', 'jest/no-done-callback'): 1,
         ('tests/site/main.browser.test.ts', 'jest/no-done-callback'): 1,
         ('tests/site/pages.browser.test.ts', 'jest/no-done-callback'): 1,
