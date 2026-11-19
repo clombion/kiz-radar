@@ -22,7 +22,7 @@ export const named = (node: Node, name: string, computed = false): boolean =>
   computed ? node.type === 'Literal' && node.value === name : node.type === 'Identifier' && node.name === name;
 
 // TypeScript's wrappers of an expression, which leave its value as it is: x as T, x satisfies T, <T>x, x!
-function unwrapped(node: Node): Node {
+export function unwrapped(node: Node): Node {
   let inner = node;
   while (
     inner.type === 'TSAsExpression' ||
