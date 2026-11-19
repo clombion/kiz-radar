@@ -53,7 +53,7 @@ Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "
 
 | # | Task | Subtasks | Done when |
 | -- | -- | -- | -- |
-| 4.1 | Install and wire Solid | pin `solid-js`, `@solidjs/web`, `@solidjs/compiler` (**Q3**: 2.0.0 or 2.0.1), `@solidjs/vite-plugin`; check `node_modules/solid-js/skills/` exists and read it; `jsx: preserve`, `jsxImportSource`; plugin in `vite.config.ts` and the Vitest browser project; development condition in tests only | a trivial `.tsx` component renders in a test and in the build |
+| 4.1 | Install and wire Solid | pin `solid-js`, `@solidjs/web`, `@solidjs/compiler`, `@solidjs/vite-plugin` (Q3, settled by Q6: 2.0.3, 2.0.3, 2.0.2, 3.0.1); check `node_modules/solid-js/skills/` exists and read it; `jsx: preserve`, `jsxImportSource`; plugin in `vite.config.ts` and the Vitest browser project; development condition in tests only ([refactor-task-4.1.md](refactor-task-4.1.md)) | a trivial `.tsx` component renders in a test and in the build |
 | 4.2 | Lint for Solid | `eslint-plugin-solid` `v2-strict` via `jsPlugins`; the four migration rules with fixtures (incl. `createSignal<T>`, `let loading = true`, `loading` imported from `ui.ts`, `pending.ts`); house rules widened to `.tsx` (`states`, `buttons`, `markup` refusing the `innerHTML` prop, a rule refusing a string `style`); new house rules (owner, 19 November): `noSuspiciousSemicolonInJsx`, `noDuplicatedSpreadProps`, and `<svg>` in JSX refused outside `icons.ts` | fixtures pass |
 | 4.3 | Console failures | browser `setupFiles` fails a test on any undeclared console warning or error; a way to declare the expected ones (`report.ts`); confirm Solid's dev diagnostics fire for wrong-scope writes and top-level reads | an unexpected warning fails a test |
 | 4.4 | Coexistence seam | move `dom.ts`'s non-rendering helpers (`debounced`, `onResize`, `uniqueId`, types) to a module of their own; a Solid view behind the `View` signature, disposed on the signal; `routes.ts` wrapped as one signal; CSP check of the compiler's style output | one `.tsx` view mounted inside the `h()` page |
@@ -78,7 +78,9 @@ Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "
   `useNamedCaptureGroup`, `useConsistentBuiltinInstantiation`, `noExcessiveClassesPerFile` errors, their test findings
   fixed and their site findings left, the rule off for those files until Phase 4; the other 87 errors. Applied in oxlint
   by task 2.4 ([refactor-task-2.4.md](refactor-task-2.4.md)); Biome's settings unchanged until 2.7.
-- **Q3.** Pin Solid 2.0.0 or 2.0.1? (Recommended: 2.0.1, re-checked when Phase 4 starts.)
+- **Q3.** Pin Solid 2.0.0 or 2.0.1? (Recommended: 2.0.1, re-checked when Phase 4 starts.) **Settled 19 November by Q6:**
+  each at its current release when task 4.1 pins it: `solid-js` 2.0.3, `@solidjs/web` 2.0.3, `@solidjs/compiler` 2.0.2,
+  `@solidjs/vite-plugin` 3.0.1 ([refactor-task-4.1.md](refactor-task-4.1.md)).
 - **Q6.** Should a pinned tool wait two weeks after its release, as an Action does? **Answered 19 November:** not during
   the refactor (each tool is pinned at its current release); after it, an upgrade waits two weeks.
 - **Q4.** Accept pnpm's standing warning that `eslint-plugin-solid`'s ESLint peer is missing? **Moot, 19 November:**
