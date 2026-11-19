@@ -38,7 +38,7 @@ Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "
 | 2.6c | The type-aware rules new in oxlint | all 33 on (owner, 19 November; [lint rules](docs/concepts/lint-rules.md), "New in oxlint"): the site's record types made read-only at their definitions for `prefer-readonly-parameter-types` (`allow` for DOM, Node and sql.js types), `promise-function-async` (a synchronous throw becomes a rejection), the other findings fixed; done ([refactor-task-2.6c.md](refactor-task-2.6c.md)) | oxlint passes with the 33 on |
 | 2.6d | The card's drawings as data, and drawings hidden by construction | the drawings a community card draws kept as data the generator writes into the site, so its digest is theirs, not `icons.ts`'s; `Drawing` hides every drawing from assistive technology, `review.ts`'s own SVG made by it (the arrow and the map's chevron were hidden only by their callers); done ([refactor-task-2.6d.md](refactor-task-2.6d.md)) | a comment in `icons.ts` leaves the cards current; no SVG without `aria-hidden` |
 | 2.7 | Biome to CSS and JSON only | JS linter off, formatter off, `files.includes` without `site/**` and `tests/**/*.ts`, plugins and TS overrides gone; `tests/test_suppressions.py`'s file-set test rewritten; done ([refactor-task-2.7.md](refactor-task-2.7.md)) | Biome touches no `.ts` |
-| 2.8 | Tasks, docs, the out-of-scope constraint | `lint:site` split (oxlint / Biome CSS+JSON / oxfmt check) in `check:fast`; `mise run generate` for `commands.md`; `CONTRIBUTING.md`, `docs/guides/the-site.md`, `docs/README.md`; record "user pages never generated from committed data" | `mise run check` green; Phase 2 report written |
+| 2.8 | Tasks, docs, the out-of-scope constraint | `lint:site` split (oxlint / Biome CSS+JSON / oxfmt check) in `check:fast`; `mise run generate` for `commands.md`; `CONTRIBUTING.md`, `docs/guides/the-site.md`, `docs/README.md`; record "user pages never generated from committed data"; done ([refactor-task-2.8.md](refactor-task-2.8.md)) | `mise run check` green; Phase 2 report written |
 
 ## Phase 3: Vite build, still on `h()`
 
@@ -255,10 +255,103 @@ the helper's `storage: 'refused'` makes reaching either storage throw a Security
 
 ### Phase 2
 
-In progress: tasks 2.1 to 2.6d are done, and the audit of 2.2 to 2.6d is fixed
-([refactor-audit-2.md](refactor-audit-2.md)); 2.7 and 2.8 remain, and this report is written once 2.8 is done.
+Done on 19 November 2026, at `0767e73f`. oxlint, type-aware, lints the site, its tests, the house rules and
+`vitest.config.ts` with every Biome rule it has an equivalent of, the 33 type-aware rules new in oxlint, and 19 house
+rules in `lint/plugin.ts`, each with fixtures (the 13 Grit rules, the five unmapped rules the owner kept, `env`); oxfmt
+lays the files out; Biome reads only the stylesheet and the JSON configs. The site's code is unchanged in behaviour but
+for the bugs below. Phase 2's "done when" holds: `check:fast` runs `lint:oxlint`, `lint:biome` and `format:site`, each
+clean. Task 2.8's holds with this report; its plan is [refactor-task-2.8.md](refactor-task-2.8.md).
 
-**Brief errors** (task 2.3, [refactor-task-2.3.md](refactor-task-2.3.md), Evidence):
+**What changed**, task by task (`git log a1f2f60c..0767e73f`):
+
+- **1.9's follow-ups**, after the Phase 1 report: `7a734e05` Scope the view-import rule to the tests by Biome's
+  override; `6ff936ba` Let a test start the page with storage refused; `3c559044` Keep the items settled for the page
+  when storage is refused.
+- **2.1** ([plan](refactor-task-2.1.md)): the four tools load together; each pinned with its first use. `aced0672`
+  Record task 2.1: the Oxc toolchain loads together.
+- **2.2** ([plan](refactor-task-2.2.md)): oxfmt lays out Biome's 132 files; `format:site`. `6d1b9142` Format with oxfmt
+  in place of Biome's formatter; `d4144c69` Reformat the four files oxfmt lays out otherwise; `7abe7362` Check the
+  format with oxfmt before each commit.
+- **2.3** ([plan](refactor-task-2.3.md)): [the mapping](docs/concepts/lint-rules.md). `80ce8a46` Map each Biome rule to
+  oxlint, the losses pending the owner; `a20194c0` Record the owner's answer on the 22 unmapped Biome rules; `5c9be886`
+  Record the owner's answers on the remaining lint decisions.
+- **2.4** ([plan](refactor-task-2.4.md)): `.oxlintrc.json`, `lint:oxlint` beside Biome. `c7b97744` Narrow the types
+  oxlint's type-aware rules find loose; `f101a65e` Write the tests as the info-level style rules ask; `ed45036c` Mark
+  the lines oxlint would refuse wrongly, each with its reason; `a24e5b87` Lint the site and its tests with oxlint,
+  beside Biome.
+- **2.5** ([plan](refactor-task-2.5.md)): the fixture harness, `session` ported. `cf68450c` Test the house rules on
+  fixtures, and port session to oxlint.
+- **2.6** ([plan](refactor-task-2.6.md)): the twelve other Grit rules. `f4ab2bb7` Scope the house rules by
+  .oxlintrc.json's overrides, the fixtures too; one "Port the … rule to oxlint" each: `6f4cf37b` storage, `8998eec8`
+  fetch, `64115563` clicks, `fa3cb23b` promises, `4e63f6d7` buttons, `bbd9dd31` classes, `98bbe869` markup, `9854281e`
+  home, `36c14f62` formats, `e703cb53` routes, `cc2f1ddc` states, `74b759a2` tests; `35351eba` Record task 2.6.
+- **2.6b** ([plan](refactor-task-2.6b.md)): the five rules the owner kept. `32a72052` noThisInStatic, `335aa59a`
+  noProcessGlobal, `3751c9fd` useNodeAssertStrict, `b7944323` useJsonImportAttributes, `41c96821` noPrivateImports
+  ("Hold Biome's … as a house rule"); `8376cccb` Record task 2.6b; `098ab17c` Refuse process.env read through an
+  imported process (`house/env`).
+- **2.6c** ([plan](refactor-task-2.6c.md)): `82e13d2c` Make the site's record types read-only where they are defined;
+  `3716c204` Make every function that returns a promise async; `113c5236` Fix what the other new type-aware rules find
+  in the site and its tests; `7eb8a2e6` Turn on the 33 type-aware rules new in oxlint.
+- **2.6d** ([plan](refactor-task-2.6d.md)): `3734f908` Hide every drawing from assistive technology by construction;
+  `7edd1b8d` Draw the card's digest from the drawings it draws, kept as data; `138aa48a` Record task 2.6d.
+- **The audit of 2.2 to 2.6d** ([fixes](refactor-audit-2.md)): `dc9b2e4a` Plan the fixes of Phase 2's audit; `59a23ded`,
+  `3731d709`, `84ec0247`, `f974f9ce`, `f22ac878`, `3c148c2e` (site and pipeline); `abebda71`, `3f1c3bf5` (the harness
+  and the rules' helpers); `c47a2a79`, `71bc13d2`, `d35ead8c`, `7f294143`, `fea13d1c`, `ac55f53d`, `718e936b` (each rule
+  refusing the thing, not Grit's spelling of it); `ff40484f`, `0b4f1cc4` (tests); `bb034bba`, `09ed694c`, `f2bf5cbb`
+  (config and docs).
+- **2.7** ([plan](refactor-task-2.7.md)): `f1c53a2a` Hold the order of import statements by oxfmt and their merging by
+  oxlint; `2fa8761a` Lint only the stylesheet and the JSON configs with Biome; `a7894060` Write the colour threshold's
+  digits as oxlint groups them.
+- **2.8** ([plan](refactor-task-2.8.md)): `1e29d907` Lint the stylesheet and the JSON configs as lint:biome; `0767e73f`
+  Record that pages people make are never generated from committed data, in
+  [docs/concepts/user-pages.md](docs/concepts/user-pages.md); and this report.
+- Not the refactor's: `d8a7e819` Refresh places, rates and merge suggestions; `60b30628`, a merge of `origin/main`.
+
+**Counts.** Tests, by Phase 1's command, at `a1f2f60c` (re-measured) and at `0767e73f`: 349 in 57 files, then 414 in 60,
+all passing.
+
+- Node: 147 in 16, then 201 in 16: `rules` 60 is new (the house rules' fixtures, 2.5 to the audit); `lint` 3 went with
+  the Grit rule it tested (2.6); `states` 6 to 4 (its Biome tests became fixtures, 2.5 and 2.6); `styles` 9 to 8 (the
+  drawings' identity check, 2.6d).
+- Browser: 197 in 40, then 208 in 43: `review-full` 2 (the audit's quota case), `review-refused` 2 and
+  `updating-refused` 2 (1.9's follow-ups) are new; `elements` 18 to 21, `review-readonly` 5 to 6, `reviewpage` 10 to 11
+  (hidden drawings, 2.6d and the audit). `browser-calm`: 5 in 1, unchanged.
+- Biome: "Checked 131 files … Found 43 infos", then "Checked 8 files" and nothing found (`biome lint`, as `lint:biome`
+  runs it, and `biome check` alike).
+- oxlint: none, then 354 rules on 155 files, no finding and no warning; `lint/plugin.ts` holds 19 house rules.
+- Suppressions: the site's 10 (5 Biome on TypeScript, 1 Biome on the stylesheet, 4 `@ts-expect-error`), then 20 (1 Biome
+  on the stylesheet, 15 oxlint on 13 lines, each in [the suppressed findings](docs/lint-false-positives.md), 4
+  `@ts-expect-error`); the pipeline's 27, unchanged.
+
+**Coverage of `site/**`**, by Phase 1's command:
+
+|  | `a1f2f60c` | `0767e73f` | Change |
+| -- | -- | -- | -- |
+| Lines | 90.78 % | 91.63 % | +0.85 |
+| Statements | 89.72 % | 90.55 % | +0.83 |
+| Functions | 88.83 % | 89.71 % | +0.88 |
+| Branches | 80.71 % | 81.69 % | +0.98 |
+
+The commit's figures are below the Phase 1 report's last (lines 90.84 %), which counted `review-refused` and
+`updating-refused` before they were committed. The rise is theirs and the audit's: storage refused or full, and more of
+the page opened for the hidden-drawing check.
+
+**Decisions the brief did not settle**, each in its plan:
+
+- The owner's, 19 November: Q2, rule by rule; of the 22 unmapped rules, five kept as house rules and 17 lost; the
+  frameworks' rules lost but Solid's; the 33 type-aware rules new in oxlint on; `import/no-default-export` off for
+  `vitest.config.ts`; Q6, no wait for a tool's release during the refactor; 2.6d's two parts
+  ([lint rules](docs/concepts/lint-rules.md), 2.6b, 2.6c, 2.6d).
+- Mine: each tool pinned with its first use (2.1); `.oxfmtrc.jsonc` naming the files, not the command line, and
+  `sortPackageJson` off (2.2); what counts as an equivalent, by Biome's own metadata (2.3); Biome's settings ported
+  where oxlint's defaults differ (2.4); the fixtures under `lint/fixtures/<rule>/` with the test's own config (2.5); a
+  rule's scope in `.oxlintrc.json`'s overrides, never its file's path (2.6); `return-await` and the `allow` list (2.6c);
+  the drawings as a Python module (2.6d); each house rule widened past Grit's spelling, and `house/privates`' tokenizer
+  kept, a parser being a dependency the brief does not name (audit); the names in an import's braces in
+  `eslint/sort-imports`' order, for the owner to override, and `noExcessiveLinesPerFile` off (2.7); `lint:biome` running
+  `biome lint` (2.8).
+
+**Brief errors** (task 2.3, [refactor-task-2.3.md](refactor-task-2.3.md), Evidence, unless named):
 
 - "about 241 of the 279 TypeScript rules": Biome enables 484 rules, 431 for TypeScript, 291 of them for today's code (no
   JSX, no framework). Biome's own source metadata maps 241 of the 291 (202 the same rule, 39 "inspired by"); the rules'
@@ -280,6 +373,31 @@ In progress: tasks 2.1 to 2.6d are done, and the audit of 2.2 to 2.6d is fixed
   2.1's 83 were four of them. They are Biome rules (its nursery `useStrictBooleanExpressions` and others), not rules new
   in oxlint.
 - The exceptions miss one: `vitest.config.ts`, once linted, fails `import/no-default-export` (Vitest reads its default
-  export), so it needs that rule off as well (pending the owner). `useConsistentTestIt`'s port also carries Biome's
+  export), so it needs that rule off as well (the owner agreed). `useConsistentTestIt`'s port also carries Biome's
   `withinDescribe` default, `it`, which `roster.test.ts` uses.
-- Biome checks 134 files now (`biome check`), not 130 (Phase 1 report) or 131 (task 2.1).
+- Biome checks 134 files at 2.3, not 130 (Phase 1 report) or 131 (task 2.1, and `a1f2f60c`).
+- `eslint-plugin-solid`'s ESLint peer is optional: pnpm prints no warning, and Q4 needed no answer (2.1).
+- `organizeImports`, an assist `biome check` enforced, was named by no mapping; oxfmt's `sortImports`,
+  `import/no-duplicates` and `eslint/sort-imports` hold it (2.7). `noExcessiveLinesPerFile` reads the stylesheet too, so
+  it stays off there (2.7).
+- The 2.6 and 2.6d records cited nine commits by their hashes before a rebase; they now cite those on `main`.
+
+**Site bugs found**, each fixed with a test that fails without it:
+
+- `59a23ded` Keep a token whose write is refused while storage still reads (a regression of 1.9's follow-up `3c559044`,
+  which kept a refused value only when reading threw; `remembered()` also read true after a refused write).
+- `3731d709` Keep the hints' memory through kept.ts (a hint marked while storage refused showed again).
+- `3734f908` Hide every drawing from assistive technology by construction (two arrows and a chevron were hidden only by
+  their callers' elements).
+- `3c148c2e` Draw no unused info icon.
+
+**Open issues:**
+
+- The pre-push check failed once more intermittently, in 2.7's rebase, and passed on retry; the cause is still unknown.
+- The community card's digest was written by hand in 2.6d, not by a render; `stale_cards()` holds it now (a test that it
+  finds none), and the next render on a machine with the pinned Chromium writes the same digest.
+- `render.cjs` needs the pinned Chromium, which the cloud container lacks; browser tests there need
+  `CHROMIUM=/opt/pw-browsers/chromium`.
+- `noExcessiveLinesPerFile` is off for `site.css` (3,781 lines), with the stylesheet ordered by component.
+
+**Next:** Phase 3, the Vite build. Q3 (Solid 2.0.0 or 2.0.1) is open for the owner.

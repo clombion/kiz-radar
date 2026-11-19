@@ -15,12 +15,12 @@ Task 2.6 of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026
 | `fa3cb23b` | Port the promises rule to oxlint |
 | `4e63f6d7` | Port the buttons rule to oxlint |
 | `bbd9dd31` | Port the classes rule to oxlint |
-| `e7b4e9d3` | Port the markup rule to oxlint |
-| `980d632b` | Port the home rule to oxlint |
-| `47031ff1` | Port the formats rule to oxlint |
-| `755fa361` | Port the routes rule to oxlint |
-| `8f14a630` | Port the states rule to oxlint |
-| `734db71b` | Port the tests rule to oxlint |
+| `98bbe869` | Port the markup rule to oxlint |
+| `9854281e` | Port the home rule to oxlint |
+| `36c14f62` | Port the formats rule to oxlint |
+| `e703cb53` | Port the routes rule to oxlint |
+| `cc2f1ddc` | Port the states rule to oxlint |
+| `74b759a2` | Port the tests rule to oxlint |
 
 ## Scoping
 
