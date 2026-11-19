@@ -18,7 +18,7 @@ export const formats: Rule = {
       ...texts((node, text) => {
         if (FLIGHTS.test(text)) context.report({ node, messageId: 'formats' });
       }),
-      // Intl.DateTimeFormat as Grit's snippet matched it: the names written, not optional, Intl not in parentheses
+      // Intl.DateTimeFormat as a value: the names written, the member not optional, Intl not in parentheses
       MemberExpression(node) {
         const { object, property } = node;
         const plain = !node.computed && !node.optional && node.start === object.start;
@@ -30,7 +30,7 @@ export const formats: Rule = {
           context.report({ node, messageId: 'formats' });
       },
       CallExpression(node) {
-        // with no type arguments, which Grit's `$_.toLocaleDateString($...)` did not match
+        // a date's toLocaleDateString() or toLocaleTimeString(), called with no type arguments
         if (node.typeArguments == null && callsMethod(node, METHODS)) context.report({ node, messageId: 'formats' });
       },
     };

@@ -28,15 +28,15 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `serve` | The site and its data built, and served at http://localhost:8000 |
 | `render:design` | The share card (public/share-card.png), each community's (public/c/<key>/share.png, a variant of that card with its name, and share.json, what it is drawn from) and the icons drawn again from design/, the drawings of pipeline/drawings.py and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page |
 | `types:site` | tsc, strict, on the site and its tests |
-| `lint:site` | Biome's rules on the site, its tests and its CSS, with the lint/ plugins |
-| `lint:oxlint` | oxlint's rules on the site, its tests and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md) |
+| `lint:site` | Biome's rules on the site, its tests, its CSS and the JSON configs (biome.jsonc's files.includes) |
+| `lint:oxlint` | oxlint's rules on the site, its tests, the house rules' plugin (lint/) and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md, and the house rules) |
 | `knip` | No module, export or package the site doesn't use |
 | `test:site` | The site's tests, in Node and in Chromium (vitest.config.ts), on the database built from the export and the site built (served under /kiz-radar/ for the tests of the whole site) |
 | `dup` | No block written twice, in the code, tests, stylesheet or Actions, at the length .jscpd.json sets; the generated files aside |
 | `lock:py` | uv.lock is what pyproject.toml resolves to (the site's lock is held by install:site's --frozen-lockfile) |
 | `lint:py` | Ruff's rules on the Python code |
 | `format:py` | The Python code as ruff formats it |
-| `format:site` | The site, its tests, its CSS and the JSON configs as oxfmt writes them (.oxfmtrc.jsonc names which), the generated site/states.ts left as it is |
+| `format:site` | The site, its tests, its CSS, the JSON configs and the house rules as oxfmt writes them (.oxfmtrc.jsonc names which), the generated site/states.ts and site/drawings.ts left as they are |
 | `format:md` | The Markdown as mdformat writes it (.mdformat.toml), the prompts left as they are |
 | `format` | Write the formats the checks hold: ruff's on the Python, mdformat's on the Markdown (the prompts left as they are), oxfmt's on the site |
 | `types:py` | basedpyright, strict, on the pipeline and its tests |

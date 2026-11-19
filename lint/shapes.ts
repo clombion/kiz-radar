@@ -76,7 +76,7 @@ export const callRule = (id: string, message: string, refused: (call: Call) => b
   },
 });
 
-// name(…): the name itself, not optional, with no type arguments and no parentheses around it (Grit's `name($...)`)
+// name(…): the name itself called, not optionally, with no type arguments and no parentheses around it
 export const callsName = (call: Call, name: string): boolean =>
   call.callee.type === 'Identifier' &&
   call.callee.name === name &&
@@ -84,16 +84,16 @@ export const callsName = (call: Call, name: string): boolean =>
   call.typeArguments == null &&
   call.start === call.callee.start;
 
-// x.name: the name written, the member not optional (Grit's `$x.name`)
+// x.name: the name written, the member not optional
 const namesProperty = (member: Member, names: ReadonlySet<string>): boolean =>
   !member.computed && !member.optional && member.property.type === 'Identifier' && names.has(member.property.name);
 
-// x.name(…), name one of `names`: the name written, neither the call nor the member optional (Grit's `$x.name($...)`)
+// x.name(…), name one of `names`: the name written, neither the call nor the member optional
 export const callsMethod = (call: Call, names: ReadonlySet<string>): boolean =>
   call.callee.type === 'MemberExpression' && namesProperty(call.callee, names) && !call.optional;
 
 // where a member is written to rather than read: assigned, updated, a loop's variable, or a target of a destructuring
-// assignment (Grit's `$x.name` is an expression, and these are assignment targets)
+// assignment
 const WRITTEN_LEFT = new Set(['AssignmentExpression', 'AssignmentPattern', 'ForInStatement', 'ForOfStatement']);
 const WRITTEN = new Set(['UpdateExpression', 'ArrayPattern', 'RestElement']);
 const written = (member: Member): boolean => {

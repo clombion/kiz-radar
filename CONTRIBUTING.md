@@ -44,8 +44,8 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   runs the files named `*.calm.browser.test.ts` and no others (a calm file runs with reduced motion only). A test of the
   page starts it through `tests/site/app.ts`, whose header says how (once per file; the day, data, storage, or its
   refusal, and other hosts' answers stated before the start); the test server answers the tests' pages with the
-  fixture's data only, never `public/data/`. oxfmt lays out the files Biome checks (`.oxfmtrc.jsonc`) but
-  `site/states.ts`, which its generator lays out.
+  fixture's data only, never `public/data/`. oxfmt lays out the files Biome checks and the house rules with their
+  fixtures (`.oxfmtrc.jsonc`) but `site/states.ts` and `site/drawings.ts`, which their generators lay out.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list, and an oxlint one is also explained in
   [oxlint's suppressed findings](docs/lint-false-positives.md).

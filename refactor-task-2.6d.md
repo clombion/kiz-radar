@@ -1,7 +1,7 @@
 # Task 2.6d: the card's drawings as data, and drawings hidden by construction
 
-Task 2.6d of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026, not pushed. Two parts, approved by
-the owner on 19 November, each its own commit.
+Task 2.6d of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026. Two parts, approved by the owner on
+19 November, each its own commit.
 
 ## Summary
 

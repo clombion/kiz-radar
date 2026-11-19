@@ -1,8 +1,8 @@
 # Task 2.6b: the unmapped rules the owner keeps
 
-Task 2.6b of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026, not pushed. The five Biome rules with
-no oxlint equivalent that the owner keeps (19 November; [lint rules](docs/concepts/lint-rules.md), "Unmapped") are rules
-of oxlint's plugin, each with its fixtures in `lint/fixtures/<rule>/`.
+Task 2.6b of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026. The five Biome rules with no oxlint
+equivalent that the owner keeps (19 November; [lint rules](docs/concepts/lint-rules.md), "Unmapped") are rules of
+oxlint's plugin, each with its fixtures in `lint/fixtures/<rule>/`.
 
 ## Commits
 

@@ -1,8 +1,8 @@
 # Task 2.6: the house rules ported to oxlint
 
-Task 2.6 of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026, not pushed. The twelve Grit rules left
-after task 2.5's `session` are rules of oxlint's plugin (`lint/plugin.ts`, run as `house/<rule>`), each with its
-fixtures in `lint/fixtures/<rule>/`; `lint/*.grit` is gone and `biome.jsonc` has no `plugins`.
+Task 2.6 of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026. The twelve Grit rules left after task
+2.5's `session` are rules of oxlint's plugin (`lint/plugin.ts`, run as `house/<rule>`), each with its fixtures in
+`lint/fixtures/<rule>/`; `lint/*.grit` is gone and `biome.jsonc` has no `plugins`.
 
 ## Commits
 

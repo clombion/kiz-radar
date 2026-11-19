@@ -109,16 +109,15 @@ export const tests: Rule = {
       ExportAllDeclaration(node) {
         if (node.exportKind !== 'type') checked(node, node.source);
       },
-      // a string or a template anywhere in an import(), as Grit's `contains` found one: the import() is refused, once
+      // a string or a template anywhere in an import() that names a refused module: the import() is refused, once
       Literal(node) {
         sourced(node);
       },
       TemplateLiteral(node) {
-        // a tagged template's text is no module's name: Grit read the whole tagged template
+        // a tagged template's text is no module's name
         if (node.parent.type !== 'TaggedTemplateExpression') sourced(node);
       },
-      // refused for its module, else, as Grit's or {} took the first that matched, for a module built at run time,
-      // which escapes the check above
+      // refused for its module, else, once, for a module built at run time, which escapes the check above
       'ImportExpression:exit'(node) {
         if (loading.has(node)) context.report({ node, messageId: 'tests' });
         else if (!ONE_LITERAL.test(sourceCode.getText(node))) context.report({ node, messageId: 'literal' });

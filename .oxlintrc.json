@@ -576,7 +576,7 @@
       "rules": { "house/markup": "error" }
     },
     {
-      // house/markup: icons.ts puts the SVG written there in an element (Drawing.into)
+      // house/markup: icons.ts puts a drawing's SVG, from drawings.ts, in an element (Drawing.into)
       "files": ["site/icons.ts"],
       "rules": { "house/markup": "off" }
     },
