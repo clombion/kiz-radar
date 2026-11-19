@@ -106,3 +106,23 @@ const written = (member: Member): boolean => {
 // x.name read, not written to
 export const readsProperty = (member: Member, names: ReadonlySet<string>): boolean =>
   namesProperty(member, names) && !written(member);
+
+// JSX: an element's opening tag, and an attribute of it
+export type Opening = Parameters<NonNullable<Visitor['JSXOpeningElement']>>[0];
+export type Attribute = Parameters<NonNullable<Visitor['JSXAttribute']>>[0];
+
+// an element's tag, as written: a name (div, Badge); undefined for a member (Ui.Badge) or a namespace (svg:path)
+const tagOf = (opening: Opening): string | undefined =>
+  opening.name.type === 'JSXIdentifier' ? opening.name.name : undefined;
+
+// a component, not an element of the page: its tag a capital's, or a member of an object (Ui.Badge)
+export const isComponent = (opening: Opening): boolean =>
+  opening.name.type === 'JSXMemberExpression' || /^[A-Z]/u.test(tagOf(opening) ?? '');
+
+// what an attribute is given: a string, or the expression in its braces; undefined for none, or empty braces
+export function valueOf(attribute: Attribute): Node | undefined {
+  const { value } = attribute;
+  if (value === null) return undefined;
+  if (value.type !== 'JSXExpressionContainer') return value;
+  return value.expression.type === 'JSXEmptyExpression' ? undefined : value.expression;
+}

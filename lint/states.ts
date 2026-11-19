@@ -2,10 +2,11 @@
 // of the states the site shows (lint/state-keys.ts, generated) written in quotes, or a template without values, where
 // one is compared (===, !==, ==, !=, a switch's case) or passed (a call's or a new's argument) is refused, whatever else
 // the code calls by the same name, however the call is written (optional, with type arguments) and whatever wraps the
-// key (parentheses, as, satisfies, a type assertion). plural() takes words, not states. .oxlintrc.json turns the rule
-// on for site/*.ts.
+// key (parentheses, as, satisfies, a type assertion). plural() takes words, not states. In JSX a component's prop is
+// its call's argument: a key given to one (<Badge state="cancelled" />, or in braces) is refused; an element's
+// attribute, h()'s attribute object, is not. .oxlintrc.json turns the rule on for site/*.ts and site/*.tsx.
 import type { Rule } from './plugin.ts';
-import { type Node, stringOf } from './shapes.ts';
+import { isComponent, type Node, stringOf, valueOf } from './shapes.ts';
 import { STATE_KEYS } from './state-keys.ts';
 
 const KEYS: ReadonlySet<string | undefined> = new Set(STATE_KEYS);
@@ -37,6 +38,11 @@ export const states: Rule = {
       },
       SwitchCase(node) {
         if (node.test !== null && isKey(node.test)) refuse(node.test);
+      },
+      JSXAttribute(node) {
+        const value = valueOf(node);
+        if (node.parent.type === 'JSXOpeningElement' && isComponent(node.parent) && value !== undefined && isKey(value))
+          refuse(value);
       },
     };
   },

@@ -114,7 +114,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `promises` | everywhere oxlint lints | (none) |
 | `routes` | everywhere oxlint lints | `site/routes.ts` |
 | `session` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
-| `states` | `site/*.ts` | (none) |
+| `states` | `site/*.ts`, `site/*.tsx` | (none) |
 | `statics` | everywhere oxlint lints | (none) |
 | `storage` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, and four helpers (`dismiss`, `dom`, `modal`, `tabs`) imported by `tests/site/page.browser.test.ts`: the rule's options in each file's override |
