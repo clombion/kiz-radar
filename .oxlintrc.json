@@ -356,6 +356,7 @@
     "vitest/no-standalone-expect": "error",
     "vitest/prefer-hooks-in-order": "error",
     "vitest/prefer-hooks-on-top": "error",
+    "house/clicks": "error",
     "house/fetch": "error",
     "house/session": "error",
     "house/storage": "error"
@@ -400,6 +401,11 @@
       // house/fetch: every request is net.ts's get()
       "files": ["site/net.ts"],
       "rules": { "house/fetch": "off" }
+    },
+    {
+      // house/clicks: dom.ts's own() keeps a control's click from its card, swipe.ts a swipe from the map
+      "files": ["site/dom.ts", "site/swipe.ts"],
+      "rules": { "house/clicks": "off" }
     },
     {
       // oxlint loads a JS plugin from its module's default export, as ESLint does

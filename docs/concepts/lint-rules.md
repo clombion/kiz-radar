@@ -96,6 +96,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 
 | Rule | On | Off |
 | -- | -- | -- |
+| `clicks` | everywhere oxlint lints | `site/dom.ts`, `site/swipe.ts` |
 | `fetch` | everywhere oxlint lints | `site/net.ts` |
 | `session` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `storage` | everywhere oxlint lints | `site/hints.ts`, `site/kept.ts`, `tests/**` |

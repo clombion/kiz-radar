@@ -1,5 +1,5 @@
-// The shapes of code several house rules refuse, as Grit's snippets matched them: a call of a name, and a rule that
-// refuses the calls it picks. Which files may write them is .oxlintrc.json's.
+// The shapes of code several house rules refuse, as Grit's snippets matched them: a call of a name, a method called by
+// its name, and a rule that refuses the calls it picks. Which files may write them is .oxlintrc.json's.
 import type { Rule } from './plugin.ts';
 
 type Visitor = ReturnType<NonNullable<Rule['create']>>;
@@ -24,3 +24,12 @@ export const callsName = (call: Call, name: string): boolean =>
   !call.optional &&
   call.typeArguments == null &&
   call.start === call.callee.start;
+
+// x.name(…): the name written, neither the call nor the member optional (Grit's `$x.name($...)`)
+export const callsMethod = (call: Call, name: string): boolean =>
+  call.callee.type === 'MemberExpression' &&
+  !call.callee.computed &&
+  !call.callee.optional &&
+  !call.optional &&
+  call.callee.property.type === 'Identifier' &&
+  call.callee.property.name === name;
