@@ -359,6 +359,7 @@
     "house/classes": "error",
     "house/clicks": "error",
     "house/fetch": "error",
+    "house/home": "error",
     "house/promises": "error",
     "house/session": "error",
     "house/storage": "error"
