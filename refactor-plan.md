@@ -487,9 +487,9 @@ was caught; the build drew every page clean as `tsc`'s had.
 - The test server's root-file branch ([3.2](refactor-task-3.2.md), decision 7): removing it, `first()`, `ROOT_FILE`, its
   reader in `tests/site/app.ts` and the `'/kiz.sqlite'` case of `server.browser.test.ts` (a test, so on the stop list)
   awaits the owner. It serves only that case now; the pages' `mark.svg` and `loading.svg` pass through it to `public/`.
-- `.github/workflows/pages.yml` (stop list, not edited): `:3` "Compiles the site's TypeScript (site/) into public/js/"
-  and `:38`'s step name "Compile the site, and build its data from the export" are stale; the step runs
-  `mise run build:site`, which bundles with Vite, so the deploy is unchanged. For the owner.
+- `.github/workflows/pages.yml` (stop list): `:3` "Compiles the site's TypeScript (site/) into public/js/" and `:38`'s
+  step name "Compile the site, and build its data from the export" were stale; the step runs `mise run build:site`,
+  which bundles with Vite, so the deploy is unchanged. Closed: the owner had both reworded, the steps as they were.
 - The intermittent check failure: a hover in `gantt-apart` timed out once in 3.1 and passed alone; the cause is still
   unknown.
 - The browser tests in the cloud container need `CHROMIUM=/opt/pw-browsers/chromium`, the commit hook included.
