@@ -3,11 +3,13 @@
 // and off everywhere and in each override, an override's files found in each rule's folder (site/kept.ts there is
 // lint/fixtures/<rule>/site/kept.ts here). A line a rule must refuse ends with a marker: `// refused` for the rule whose
 // folder holds the file, `// refused: <rule>, …` for any other; every finding must be on a line marked for its rule,
-// and every marked line found. A rule with no fixtures, or a folder with no rule, fails.
+// and every marked line found. A rule with no fixtures, or a folder with no rule, fails, as does a folder without a
+// good.ts that the rule is on for, with no options, and that holds no marked line: what the rule lets through, written
+// in a file no override exempts.
 import { spawnSync } from 'node:child_process';
 import { cpSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, matchesGlob } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { afterAll, expect, test } from 'vitest';
 import plugin from '../../lint/plugin.ts';
@@ -96,6 +98,15 @@ function findings(): string[] {
 }
 const found = findings();
 
+// a rule's setting for a file, from the root: the config's, then each override naming the file, the last deciding
+function settingFor(rule: string, file: string): unknown {
+  const name = `house/${rule}`;
+  let setting = real.rules[name];
+  for (const o of real.overrides)
+    if (o.files.some((glob) => matchesGlob(file, glob)) && o.rules !== null && name in o.rules) setting = o.rules[name];
+  return setting;
+}
+
 test('every rule of the plugin has fixtures, and every fixture folder a rule', () => {
   expect(sorted([...new Set(fixtures.map(ruleOf))])).toEqual(RULES);
 });
@@ -105,6 +116,14 @@ test.each(RULES)('%s: a fixture it refuses, and one it lets through', (rule) => 
   const marked = new Set(expected.map((e) => e.split(':')[0]));
   expect(expected.filter((e) => e.startsWith(`${FIXTURES}/${rule}/`) && e.endsWith(` ${rule}`))).not.toEqual([]);
   expect(own.filter((f) => !marked.has(f))).not.toEqual([]);
+});
+
+test.each(RULES)('%s: its good.ts is linted by it, with no exemption, and lets everything through', (rule) => {
+  const good = `${FIXTURES}/${rule}/`;
+  const file = fixtures.find((f) => f.startsWith(good) && f.endsWith('/good.ts'));
+  expect(file).toBeDefined();
+  const marked = expected.filter((e) => e.startsWith(`${file ?? ''}:`));
+  expect([settingFor(rule, file?.slice(good.length) ?? ''), marked]).toEqual(['deny', []]);
 });
 
 test.each(RULES)('%s: its fixtures are refused on their marked lines, and only there', (rule) => {
