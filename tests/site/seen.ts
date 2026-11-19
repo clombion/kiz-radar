@@ -35,15 +35,23 @@ export const titled = (el: Element | null | undefined): [name: string | undefine
 export const tags = (el: Element | null | undefined): (string | undefined)[] =>
   [...(el?.querySelectorAll('.plan-tag') ?? [])].map((t) => said(t));
 
-// The entries of this frame's own history (the Navigation API's), which no other test file adds to.
-export function entries(): number {
-  const nav: unknown = Reflect.get(globalThis, 'navigation');
-  const list: unknown =
-    typeof nav === 'object' && nav !== null && 'entries' in nav && typeof nav.entries === 'function'
-      ? Reflect.apply(nav.entries, nav, [])
-      : null;
-  if (!Array.isArray(list)) throw new Error('no Navigation API');
-  return list.length;
+// This frame's own history (the Navigation API's), which no other test file's frame adds to or moves (the frames share
+// the joint history, history.length and history.back()): how many entries it has, where it stands, and a step back,
+// awaited until the page hears it (popstate).
+function ownHistory(): Navigation {
+  if (!('navigation' in globalThis)) throw new Error('no Navigation API');
+  return navigation;
+}
+export const entries = (): number => ownHistory().entries().length;
+export function entryAt(): number {
+  const at = ownHistory().currentEntry?.index;
+  if (at === undefined) throw new Error("no current entry in this frame's history");
+  return at;
+}
+export function back(): Promise<unknown> {
+  const gone = new Promise((done) => addEventListener('popstate', done, { once: true }));
+  ownHistory().back();
+  return gone;
 }
 
 // The review page (review.html): what its token button says, the dialog it opens, where it draws its queues, the item
@@ -396,4 +404,68 @@ export async function collectiveOf(): Promise<{
     states,
     words: heard(row?.querySelector('.gantt-said')),
   };
+}
+
+// The rows of tabs: the header's (nav.tabs), and the one under it (#subnav: Explore's pages, or the Friends tab's
+// places); a row's tab by its words.
+export const header = (): HTMLElement | null => document.querySelector<HTMLElement>('nav.tabs');
+export const subnav = (): HTMLElement | null => document.querySelector<HTMLElement>('#subnav');
+export const tabOf = (row: Element | null, words: string): HTMLAnchorElement | undefined =>
+  [...(row?.querySelectorAll('a') ?? [])].find((a) => a.textContent === words);
+// A row's layer of ovals (tabs.ts's goo, its first child); a row without one is an error.
+export function layerOf(row: Element | null): HTMLElement {
+  const layer = row?.querySelector<HTMLElement>(':scope > .goo');
+  if (layer == null) throw new Error('the row of tabs has no layer of ovals');
+  return layer;
+}
+// A row's ovals as the page draws them (tabs.ts), the one at rest and the shapes of a move under way, hidden or not.
+export const ovalsOf = (row: Element | null): HTMLElement[] => [
+  ...(row?.querySelectorAll<HTMLElement>(':scope > .goo > .pill') ?? []),
+];
+// The ovals of a row a visitor sees.
+export const shownOvals = (row: Element | null): HTMLElement[] => ovalsOf(row).filter((o) => o.checkVisibility());
+// How far apart two boxes are, in px: the most their left, top, width or height differ.
+export function offBy(a: Element | null | undefined, b: Element | null | undefined): number {
+  if (a == null || b == null) return Number.POSITIVE_INFINITY;
+  const [x, y] = [a.getBoundingClientRect(), b.getBoundingClientRect()];
+  return Math.max(...(['left', 'top', 'width', 'height'] as const).map((k) => Math.abs(x[k] - y[k])));
+}
+// The most ovals a row held while act ran (an open()): counted as the page adds them, whenever that is, so a move that
+// ends before act does is still seen.
+export async function mostOvals(row: Element | null, act: () => Promise<void>): Promise<number> {
+  const layer = layerOf(row);
+  let most = ovalsOf(row).length;
+  const count = () => {
+    most = Math.max(most, ovalsOf(row).length);
+  };
+  const seen = new MutationObserver(count);
+  seen.observe(layer, { childList: true });
+  try {
+    await act();
+  } finally {
+    seen.takeRecords();
+    count();
+    seen.disconnect();
+  }
+  return most;
+}
+
+// What the page shows once its own handler of an address change has run (added as the page started, so before this
+// one), while act (an open()) moves the address: its title, and the direction a slide marks on it (data-vt).
+export async function shownOnChange(act: () => Promise<void>): Promise<[title: string, slide: string | undefined]> {
+  let shown: [string, string | undefined] = ['(the address never changed)', undefined];
+  const over = new AbortController();
+  addEventListener(
+    'hashchange',
+    () => {
+      shown = [document.title, document.documentElement.dataset['vt']];
+    },
+    { once: true, signal: over.signal },
+  );
+  try {
+    await act();
+  } finally {
+    over.abort();
+  }
+  return shown;
 }

@@ -372,3 +372,30 @@ export function anotherBuild(db: Database): void {
   db.run("UPDATE meta SET value = value || ' (another build)' WHERE key = 'built_at'");
   wrote(db, 1, 'the database built again');
 }
+
+// A festival's title, and the title its listing gives, both as given.
+export function retitled(db: Database, event: number, title: string): void {
+  db.run('UPDATE events SET title = ?, listed_title = ? WHERE id = ?', [title, title, event]);
+  wrote(db, 1, `festival ${event}'s title`);
+}
+
+// The lowest artist the build counted bookings of in a country, by their id.
+export function bookedArtist(db: Database): number {
+  const id = counted(db, 'SELECT min(artist_id) FROM artist_countries', []);
+  if (id === 0) throw new Error('the build counted no artist’s bookings in a country');
+  return id;
+}
+
+// An artist's bookings, by their id: every country they were booked in replaced by those given, each by its code and
+// how many times, none of them their home.
+export function bookings(db: Database, artist: number, rows: readonly (readonly [country: string, n: number])[]): void {
+  db.run('DELETE FROM artist_countries WHERE artist_id = ?', [artist]);
+  for (const [country, n] of rows) {
+    db.run('INSERT INTO artist_countries (artist_id, country_code, bookings, is_home) VALUES (?, ?, ?, 0)', [
+      artist,
+      country,
+      n,
+    ]);
+    wrote(db, 1, `artist ${artist}'s ${n} bookings in ${country}`);
+  }
+}

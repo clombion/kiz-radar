@@ -4,7 +4,7 @@ import { readFile, stat } from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { extname, join, normalize } from 'node:path';
 import { playwright } from '@vitest/browser-playwright';
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 import { DATA_FILE, FIXTURE_DATA, ROOT_FILE } from './tests/site/community.fixture.ts';
 
 const { CHROMIUM } = process.env; // a Chromium to run the browser tests in, when not Playwright's own
@@ -102,6 +102,24 @@ const pages = () => ({
   },
 });
 
+// The tests of the page, in Chromium, with motion as the visitor asked for it, whatever the machine's setting: the
+// browser project as most visitors have it (the tabs' tests watch the oval move), and its calm twin for the visitor who
+// asked for less motion, which runs the files named *.calm.browser.test.ts alone, the browser project every other one.
+// A machine whose Chromium is not Playwright's own (a container with one installed) names it in CHROMIUM.
+const browserTests = (kind = '') => `tests/site/**/*${kind}.browser.test.ts`;
+const BROWSER = browserTests(),
+  CALM = browserTests('.calm');
+// each browser project: its name, the visitor's motion setting, and its files
+const BROWSER_PROJECTS: readonly {
+  name: string;
+  reducedMotion: 'no-preference' | 'reduce';
+  include: string;
+  exclude: readonly string[];
+}[] = [
+  { name: 'browser', reducedMotion: 'no-preference', include: BROWSER, exclude: [CALM] },
+  { name: 'browser-calm', reducedMotion: 'reduce', include: CALM, exclude: [] },
+];
+
 export default defineConfig({
   test: {
     // public/data/, which the tests read, built when the checkout has none
@@ -120,31 +138,29 @@ export default defineConfig({
         test: {
           name: 'node',
           include: ['tests/site/**/*.test.ts'],
-          exclude: ['tests/site/**/*.browser.test.ts'],
+          exclude: [...configDefaults.exclude, BROWSER],
           environment: 'node',
           // a zone where local midnight is mid-morning the day before in UTC, so a day read in UTC is caught
           env: { TZ: 'Pacific/Kiritimati' },
         },
       },
-      {
+      ...BROWSER_PROJECTS.map(({ name, reducedMotion, include, exclude }) => ({
         plugins: [pages()],
         test: {
-          name: 'browser',
-          include: ['tests/site/**/*.browser.test.ts'],
+          name,
+          include: [include],
+          exclude: [...configDefaults.exclude, ...exclude],
           browser: {
             enabled: true,
-            // motion as most visitors have it, whatever the machine's setting: the tabs' tests watch the oval move
-            // (a test of their own stubs reduced motion)
-            // a machine whose Chromium is not Playwright's own (a container with one installed) names it in CHROMIUM
             provider: playwright({
-              contextOptions: { reducedMotion: 'no-preference' },
+              contextOptions: { reducedMotion },
               launchOptions: CHROMIUM === undefined ? {} : { executablePath: CHROMIUM },
             }),
             headless: true,
-            instances: [{ browser: 'chromium' }],
+            instances: [{ browser: 'chromium' as const }],
           },
         },
-      },
+      })),
     ],
   },
 });
