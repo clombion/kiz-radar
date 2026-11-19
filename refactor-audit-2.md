@@ -3,7 +3,7 @@
 The change audit of Phase 2 so far (`a1f2f60c..HEAD`, 45 commits: oxfmt, oxlint beside Biome, the house rules on oxlint,
 the five kept rules, the 33 type-aware rules, drawings as data), by seven auditors (design, TypeScript, tests,
 behaviour, developer experience, the lint plugin's code, accessibility), 19 November 2026. Each valid finding, its fix,
-and the commit it goes in. None is deferred; none needed the owner. Status: planned, reviewed.
+and the commit it goes in. None is deferred; none needed the owner. Status: done (departures below).
 
 ## Design model
 
@@ -98,3 +98,27 @@ A second agent checked each row against the code. What changed:
 
 Commits, in order: (1) S1–S3, T6, T7; (2) S4; (3) S5; (4) S6; (5) S7–S8; (6) S9–S10, C4's test; (7) T1; (8) L7; (9)–(15)
 L1–L6 by rule, each with its fixtures and any code it finds; (16) T2; (17) T4–T5; (18) C1; (19) C3; (20) C2.
+
+## Departures
+
+- **Not pushed:** the commits stay on `main` unpushed, as the brief for (7)–(20) asks; the wrap-up (`ai-impl-done`) is
+  not run with them.
+- **(10):** `house/process` became a rule of `globals.ts` with `fetch`, so `globalThis['process']` and a `process`
+  destructured from `globalThis` are refused from that commit, not (13)'s; `.oxlintrc.json` exempts `tests/site/app.ts`,
+  the one read the wider `fetch` found in the tree.
+- **(9)–(14):** a form in parentheses is not fixtured: oxfmt takes the parentheses away (`states` drops its parentheses
+  check), and a quoted key without brackets (`{ 'localStorage': s }`) is written by oxfmt as a name, which the rule
+  already refuses. `markup` also refuses a destructured key (`const { innerHTML } = el`).
+- **(13):** `session` and `storage` are one commit: both are `nameRule`, widened once.
+- **(15):** a file that resolves but cannot be read, and one outside the root, are not fixtured: the container reads any
+  file, and the harness runs from a copy of the fixtures.
+- **(8):** `.oxlintrc.json`'s `prefer-readonly-parameter-types` allows oxlint's `Scope`, the parameter `variableOf`
+  takes.
+- **(7):** a rule is on for its `good.ts` by the config's overrides read with Node's `path.matchesGlob`.
+- **(17):** the card is a trip's card on a community's page; the map's festivals are Leaflet's circles in an SVG of its
+  own, skipped by class; on the review page, two queues' items. The view-failure test reads the console's
+  `Kiz Radar: the review:` (the page's one guarded view) and checks the queues' tabs were drawn around it.
+- **(19):** `session`'s and `storage`'s comments and messages now say what each storage keeps (the tab's: the token and
+  `updating.ts`'s clock; the device's: the review dashboard's and `hints.ts`'s). The plan's rows had no "not pushed";
+  the task records 2.6–2.6d did, and lose it.
+- **(20):** the test reads `--print-config`'s `**/vitest.config.ts` as the `vitest.config.ts` the config writes.
