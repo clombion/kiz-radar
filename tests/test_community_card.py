@@ -132,3 +132,15 @@ def test_the_card_draws_the_drawings_it_shares_with_the_site_from_their_one_sour
     paths = [m[1] for markup in drawings.card().values() for m in re.finditer(r' d="([^"]+)"', markup)]
     assert len(paths) > len(drawings.CARD)
     assert [p for p in paths if p in card] == []
+
+
+def test_the_site_draws_each_drawing_once() -> None:
+    """No markup is written twice in pipeline/drawings.py, and site/icons.ts makes each drawing once: its people (a
+    community page's, the share card's eyebrow) are Lucide's users, one drawing for both."""
+    every = [markup for kind in drawings.drawn().values() for markup in kind.values()]
+    assert len(every) == len(set(every))
+    assert drawings.CARD['people'] == ('lucide', 'users')
+    icons = (ROOT / 'site/icons.ts').read_text(encoding='utf-8')
+    made = dict(re.findall(r"static readonly (\w+) = new Drawing\((\w+(?:\.[\w]+|\['[^']+'\]))\);", icons))
+    assert made['PEOPLE'] == 'LINES.users'
+    assert len(made.values()) == len(set(made.values()))

@@ -23,8 +23,6 @@ export class Drawing {
   // a community page's privacy: a lock, and people, people also the share card's eyebrow
   static readonly LOCK = new Drawing(LINES.lock);
   static readonly PEOPLE = new Drawing(LINES.users);
-  // what a list is, behind a button
-  static readonly INFO = new Drawing(LINES.info);
   // a community's calendar's steps to the four months before and after
   static readonly PREVIOUS = new Drawing(LINES['chevron-left']);
   static readonly NEXT = new Drawing(LINES['chevron-right']);
