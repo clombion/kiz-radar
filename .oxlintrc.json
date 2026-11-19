@@ -356,6 +356,7 @@
     "vitest/no-standalone-expect": "error",
     "vitest/prefer-hooks-in-order": "error",
     "vitest/prefer-hooks-on-top": "error",
+    "house/asserts": "error",
     "house/classes": "error",
     "house/clicks": "error",
     "house/fetch": "error",

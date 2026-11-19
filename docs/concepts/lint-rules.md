@@ -96,6 +96,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 
 | Rule | On | Off |
 | -- | -- | -- |
+| `asserts` | everywhere oxlint lints | (none) |
 | `buttons` | `site/*.ts` | `site/dom.ts` |
 | `classes` | everywhere oxlint lints | `site/dom.ts` |
 | `clicks` | everywhere oxlint lints | `site/dom.ts`, `site/swipe.ts` |
@@ -501,7 +502,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `useImportType` | warn | `typescript/consistent-type-imports` | inspired | mapped |
 | `useLiteralEnumMembers` | warn | `typescript/prefer-literal-enum-member` | source | mapped |
 | `useNamedCaptureGroup` | info | `eslint/prefer-named-capture-group` | source | mapped: Q2 |
-| `useNodeAssertStrict` | warn | (none) |  | house rule, task 2.6b |
+| `useNodeAssertStrict` | warn | (none) |  | house rule `house/asserts` |
 | `useNodejsImportProtocol` | info | `unicorn/prefer-node-protocol` | source | mapped |
 | `useNumberNamespace` | info | `unicorn/prefer-number-properties` | source | mapped |
 | `useNumericSeparators` | info | `unicorn/numeric-separators-style` | source | mapped |
