@@ -14,7 +14,6 @@ other finding in the code.
 | `tests/site/main.browser.test.ts` | `jest/no-done-callback` | the same |
 | `tests/site/server.browser.test.ts` | `jest/no-done-callback` | the same |
 | `site/globals.d.ts` | `import/no-namespace` | a type-only namespace import (`import type * as TopoJSON`), the one way to type the global the page loads from vendor/; erased, so nothing to tree-shake. Biome's `noNamespaceImport` allows it. |
-| `tests/site/community.browser.test.ts` | `unicorn/numeric-separators-style` | `0.039_28` is grouped as Biome's `useNumericSeparators` wants (threes from the point, the last shorter); oxlint's rule wants another grouping of a fraction, and written `0.03928` Biome reports it. |
 
 ## The code means it
 
