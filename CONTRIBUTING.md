@@ -34,8 +34,9 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   the branch coverage `pyproject.toml` sets.
 - **Site:** tsc strict; oxlint, type-aware, with each Biome rule it has an equivalent of and the type-aware rules new in
   oxlint (`.oxlintrc.json`, [Lint rules](docs/concepts/lint-rules.md)), a warning failing: a record's type is read-only
-  where it is defined, and a function returning a promise is async; every Biome rule but those `biome.jsonc` turns off,
-  each with its reason, and the house rules in `lint/` (links in `routes.ts`, requests in `net.ts`, classes through
+  where it is defined, a function returning a promise is async, and the names in an import's braces are in one order;
+  every Biome rule on the stylesheet and the JSON configs (`biome.jsonc`'s `files.includes`) but those it turns off,
+  each with its reason; and the house rules in `lint/` (links in `routes.ts`, requests in `net.ts`, classes through
   `dom.ts`, markup only from `icons.ts`, promises reported, a state as `KEY`, a test's values only from the modules
   `lint/tests.ts` lists). A class is one the stylesheet defines (`site/classes.ts`, generated). vitest runs in Node and
   in Chromium (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and
@@ -44,8 +45,9 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   runs the files named `*.calm.browser.test.ts` and no others (a calm file runs with reduced motion only). A test of the
   page starts it through `tests/site/app.ts`, whose header says how (once per file; the day, data, storage, or its
   refusal, and other hosts' answers stated before the start); the test server answers the tests' pages with the
-  fixture's data only, never `public/data/`. oxfmt lays out the files Biome checks and the house rules with their
-  fixtures (`.oxfmtrc.jsonc`) but `site/states.ts` and `site/drawings.ts`, which their generators lay out.
+  fixture's data only, never `public/data/`. oxfmt lays out the site, its tests, the stylesheet, the JSON configs and
+  the house rules with their fixtures (`.oxfmtrc.jsonc`), sorting the import statements of all but the fixtures, but
+  `site/states.ts` and `site/drawings.ts`, which their generators lay out.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list, and an oxlint one is also explained in
   [oxlint's suppressed findings](docs/lint-false-positives.md).

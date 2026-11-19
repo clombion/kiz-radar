@@ -4,7 +4,7 @@
 import type { ClassName } from './classes.ts';
 import type { Step } from './currency.ts';
 import { today } from './days.ts';
-import { SiteUpdating, site } from './db.ts';
+import { site, SiteUpdating } from './db.ts';
 import { button, choices, dropdown, h, type Kid, moreButton, nodes, onResize, own, paged, toggle } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, festivals, leftOut } from './festivals.ts';

@@ -5,7 +5,7 @@
 
 import type { Kid } from './dom.ts';
 import type { LucideName } from './drawings.ts';
-import { type Counts, type Disposition, STATES, type StateRow } from './states.ts';
+import { type Counts, type Disposition, type StateRow, STATES } from './states.ts';
 
 type Table = typeof STATES;
 export type Point = keyof Table;
@@ -109,8 +109,8 @@ export const text = <P extends Point, K extends Key<P>, F extends Form<P, K> | u
   values?: Readonly<Record<string, string | number | null>>,
   form?: F,
 ): Said<P, K, F> =>
-  // biome-ignore lint/nursery/noUnsafeTypeAssertion: say gives the words exactly when the generated table has them, which Said reads
-  (say(point, key, values, form)?.join('') ?? null) as Said<P, K, F>; // oxlint-disable-line typescript/no-unsafe-type-assertion -- as biome-ignore says above
+  // oxlint-disable-next-line typescript/no-unsafe-type-assertion -- say gives the words exactly when the generated table has them, which Said reads
+  (say(point, key, values, form)?.join('') ?? null) as Said<P, K, F>;
 
 // "1 festival", "3 festivals", "1,204 artists": a count and its noun (an English plural with -s unless said)
 export const plural = (n: number, noun: string, nouns = `${noun}s`): string =>

@@ -2,7 +2,7 @@
 // control, and what goes wrong is said on the page (a view that throws: broken.browser.test.ts).
 import { expect, onTestFinished, test, vi } from 'vitest';
 import { commands, page } from 'vitest/browser';
-import { communityHref, EXPLORE, eventOnMapHref, sourcesHref, TABS } from '../../site/routes.ts';
+import { communityHref, eventOnMapHref, EXPLORE, sourcesHref, TABS } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, FIXTURE_PROMO, PRAGUE_GOLD } from './community.fixture.ts';
 import { COMM, shownDialog } from './seen.ts';

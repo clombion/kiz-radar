@@ -6,7 +6,7 @@
 import { expect, onTestFinished, test, vi } from 'vitest';
 import { claimText, digest, mergeClaim } from '../../site/claims.ts';
 import { startReview } from './app.ts';
-import { AS_WRITER, AT, claimed, github, KEPT, REVIEW, WRITER, WRITING, writes } from './reviewed.ts';
+import { AS_WRITER, AT, claimed, github, KEPT, REVIEW, WRITER, writes, WRITING } from './reviewed.ts';
 import { accessSays, buttonOf, choicesOf, keyed, reviewed, said, theItem, tokenDialog } from './seen.ts';
 
 const app = await startReview(AS_WRITER);

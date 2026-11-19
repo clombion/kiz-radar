@@ -5,7 +5,7 @@ import { expect, test } from 'vitest';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, KUOF } from './community.fixture.ts';
 import { trips } from './planted.ts';
-import { COMM, cellOn, popover, said } from './seen.ts';
+import { cellOn, COMM, popover, said } from './seen.ts';
 
 const app = await startSite({
   now: '2026-11-01',

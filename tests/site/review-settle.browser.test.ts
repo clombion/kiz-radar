@@ -5,7 +5,7 @@ import { expect, test } from 'vitest';
 import { claimText, homeClaim } from '../../site/claims.ts';
 import { startReview } from './app.ts';
 import { REVIEW_ROUTE, REVIEW_SETTLED } from './reload.ts';
-import { AS_WRITER, AT, claimed, WRITING, writes } from './reviewed.ts';
+import { AS_WRITER, AT, claimed, writes, WRITING } from './reviewed.ts';
 import { accessSays, buttonOf, said, theItem } from './seen.ts';
 
 const app = await startReview(AS_WRITER);

@@ -6,7 +6,7 @@
   "useTabs": false,
   // a formatter lays a file out; the order of package.json's keys is pnpm's, as Biome left it
   "sortPackageJson": false,
-  // the files Biome checks (biome.jsonc's files.includes) and the house rules' plugin with its fixtures (lint/): every
+  // the site, its tests, the stylesheet, the JSON configs and the house rules' plugin with its fixtures (lint/): every
   // file but a folder is ignored, then those let back in
   "ignorePatterns": [
     "*",

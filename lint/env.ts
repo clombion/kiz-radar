@@ -4,7 +4,7 @@
 // env imported by name. The global's is node/no-process-env's; a type's typeof process.env reads nothing. On wherever
 // node/no-process-env is (.oxlintrc.json).
 import type { Rule } from './plugin.ts';
-import { importedName, type Node, named, type Variable, variableOf } from './shapes.ts';
+import { importedName, named, type Node, type Variable, variableOf } from './shapes.ts';
 
 type Definition = Variable['defs'][number];
 

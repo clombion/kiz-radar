@@ -17,12 +17,12 @@ import {
   EXPLORE,
   type Route,
   routeOf,
-  type Show,
   sectionAt,
+  type Show,
   showInAddressBar,
   siteRoot,
-  TABS,
   type Tab,
+  TABS,
 } from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';

@@ -1,7 +1,7 @@
 # Lint rules: Biome to oxlint
 
-Biome lints the site's TypeScript today; Phase 2 of the move to the Oxc toolchain hands that to oxlint (the refactor
-plan's task 2.3). This page maps every rule Biome runs on the TypeScript to oxlint's, with the settings to carry, the
+Biome linted the site's TypeScript until Phase 2 of the move to the Oxc toolchain handed that to oxlint (the refactor
+plan's task 2.3). This page maps every rule Biome ran on the TypeScript to oxlint's, with the settings to carry, the
 rules that have no equivalent and what the owner decided of them. `.oxlintrc.json` (task 2.4) is built from it, rule by
 rule, with no category turned on, so a rule not listed as mapped is not enabled.
 
@@ -13,9 +13,10 @@ rules new in oxlint are on; Q2, the info-level rules, is answered.
 **In oxlint since task 2.4** (`.oxlintrc.json`, `mise run lint:oxlint`): every mapped rule, with the settings and
 exceptions below, as an error: those of Biome's `error` and `warn` rules, the info-level ones as Q2 decides, and the JSX
 rules mapped from Biome's `error` and `warn` (the JSX ones Biome reports as `info` stay off). Off: every accepted loss
-and the rules Biome turns off. **On since task 2.6c:** the 33 type-aware rules new in oxlint (below). Biome still runs
-all of its rules beside it until task 2.7. The findings the rules' oxlint versions made on the code were fixed, or
-suppressed on their line with the reason in [oxlint's suppressed findings](../lint-false-positives.md).
+and the rules Biome turned off. **On since task 2.6c:** the 33 type-aware rules new in oxlint (below). Biome ran all of
+its rules beside it until task 2.7; since then it reads only the stylesheet and the JSON configs. The findings the
+rules' oxlint versions made on the code were fixed, or suppressed on their line with the reason in
+[oxlint's suppressed findings](../lint-false-positives.md).
 
 ## Counts
 
@@ -147,7 +148,7 @@ and ask before"). Each with what holds the check without it, and the recommendat
 
 **Answered by the owner, 19 November:** `noThisInStatic`, `noPrivateImports`, `useJsonImportAttributes` and
 `useNodeAssertStrict`, which nothing else holds, and `noProcessGlobal` for the tests become house rules of the oxlint
-plugin, each with its fixtures, before Biome stops linting TypeScript (task 2.7); the six style rules and the ten held
+plugin, each with its fixtures, before Biome stopped linting TypeScript (task 2.7); the six style rules and the ten held
 by tsc, the parser, knip or a mapped rule are accepted losses.
 
 | Biome rule | Level | What holds it |
@@ -179,10 +180,10 @@ by tsc, the parser, knip or a mapped rule are accepted losses.
 
 `"preset": "all"` keeps each rule's default severity, and 96 of the rules above are `info`: they report and never fail
 `biome check --error-on-warnings`. oxlint has no info level, so each is an error or off. Nine have findings, 43 in all
-(Biome checks 134 files); the other 87 have none.
+(Biome checked 134 files on 19 November); the other 87 have none.
 
 **Answered by the owner, 19 November (Q2: B):** rule by rule, each enforced or off, none left reporting without failing.
-In oxlint (Biome keeps its settings until task 2.7):
+In oxlint (Biome kept its settings until task 2.7, when it stopped reading the TypeScript):
 
 - `noBitwiseOperators` (`eslint/no-bitwise`): off everywhere; every use is a deliberate hash or random number
   (`site/ink.ts`, `tests/site/roster.test.ts`).
@@ -264,13 +265,15 @@ No finding today (19): `no-array-delete`, `no-duplicate-type-constituents`, `no-
 it with its reason; at 2.4's first run with the settings above, 92 of them, `no-unsafe-return` 2 not 3):
 `strict-boolean-expressions` 47, `no-unnecessary-condition` 23, `no-base-to-string` 10, `no-unnecessary-type-conversion`
 4, `no-unsafe-type-assertion` 4, `no-unsafe-return` 3, `no-misused-promises` 1, `prefer-nullish-coalescing` 1, 93 in
-all. The four of `no-unsafe-type-assertion` are the lines Biome's suppressions cover. These are not new rules:
+all. The four of `no-unsafe-type-assertion` are the lines Biome's suppressions covered. These are not new rules:
 `strict-boolean-expressions`, `no-unnecessary-condition` and `no-base-to-string` are Biome's nursery
 `useStrictBooleanExpressions`, `noUnnecessaryConditions` and `noBaseToString`.
 
 ## Off in Biome, staying off
 
-`biome.jsonc` turns these off, each with its reason; the reason carries over, and none is enabled in oxlint.
+`biome.jsonc` turned these off, each with its reason, while it read the TypeScript; the reason carries over, and none is
+enabled in oxlint. Since task 2.7 it keeps the three for CSS off, and `noExcessiveLinesPerFile`, which also reads the
+stylesheet.
 
 | Biome rule | oxlint equivalent | Reason |
 | -- | -- | -- |
@@ -307,8 +310,10 @@ each has its own holder once Biome stops reading the TypeScript:
   file of `site/`, `tests/` or `lint/` (72 with its defaults). The house rules' fixtures are left out (`excludeFiles`):
   seven would move, and their refused lines are marked where they stand.
 - **Two imports of one module merged:** `import/no-duplicates`, no finding.
-- **The names inside an import's braces:** no oxfmt option sorts them. Biome holds them until task 2.7, which hands them
-  to `eslint/sort-imports`.
+- **The names inside an import's braces:** no oxfmt option sorts them. `eslint/sort-imports`, with
+  `ignoreDeclarationSort` (the statements are oxfmt's) and `ignoreCase`, holds one order since task 2.7, which reordered
+  the 25 imports where it differs from Biome's (`TRAITS, type Trait` became `type Trait, TRAITS`). Biome's order could
+  not stay beside it while Biome read the TypeScript, and no rule copies it; which order matters to no reader.
 
 ## The mapping
 
@@ -743,6 +748,6 @@ The 92: `noPlaywrightUselessAwait`, `noBeforeInteractiveScriptOutsideDocument`, 
 
 ## Other languages
 
-53 enabled rules lint CSS, JSON, GraphQL, HTML or YAML; Biome keeps CSS and JSON (task 2.7). One of them is among
-`biome.jsonc`'s twenty nursery rules: `noDuplicateMapKeys` checks YAML maps, not JavaScript, and Biome is given no YAML,
-so it has never reported.
+53 enabled rules lint CSS, JSON, GraphQL, HTML or YAML; Biome keeps CSS and JSON, and since task 2.7 reads nothing else.
+One of them was among the twenty nursery rules `biome.jsonc` turned on until then: `noDuplicateMapKeys` checks YAML
+maps, not JavaScript, and Biome is given no YAML, so it has never reported.

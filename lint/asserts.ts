@@ -3,7 +3,7 @@
 // import or a type's, an export from it, an import(), a require() or an import = require(). The bare 'assert' is
 // unicorn/prefer-node-protocol's to refuse.
 import type { Rule } from './plugin.ts';
-import { type Node, callsName } from './shapes.ts';
+import { callsName, type Node } from './shapes.ts';
 
 export const asserts: Rule = {
   meta: {
