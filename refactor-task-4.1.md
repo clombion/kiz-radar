@@ -1,6 +1,8 @@
 # Task 4.1: Solid installed and wired
 
-Task 4.1 of [refactor-plan.md](refactor-plan.md). Status: planned, 19 November 2026.
+Task 4.1 of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026. The four packages pinned with no
+warning and no optional peer; `hello.tsx` drawn from the tests (`isDev` true) and from the site's build (`isDev` false);
+`public/js/` unchanged byte for byte.
 
 ## Summary
 
@@ -82,3 +84,24 @@ its repair). Nothing in them contradicts the brief's plan for Phase 4. What bear
 `tests/site/solid.browser.test.ts` draws `hello.tsx` from the tests (development build) and from the site's build
 (production build) in the `browser` project; `pnpm run build` writes the same `public/js/`; the lockfile holds no
 optional peer of the plugin and one Vite; `mise run check` passes.
+
+## Result
+
+- **Install:** `pnpm add -D -E solid-js@2.0.3 @solidjs/web@2.0.3 @solidjs/compiler@2.0.2 @solidjs/vite-plugin@3.0.1`
+  printed no warning; `pnpm install --frozen-lockfile` none either. 23 packages came: the four, `@solidjs/signals`,
+  `seroval`, `seroval-plugins`, `csstype` (Solid's), `vitefu`, `magic-string`, `merge-anything`, `is-what`,
+  `@ampproject/remapping`, `@jridgewell/gen-mapping` (the plugin's), and the compiler's bindings with the WASI one's
+  runtime (`@emnapi/*`, `@napi-rs/wasm-runtime`), each a dependency of a named package, none a peer to add.
+- **Bindings in the lockfile:** `@solidjs/compiler-linux-x64-gnu`, `-linux-arm64-gnu`, `-darwin-arm64`, `-darwin-x64`,
+  `-win32-x64-msvc`, `-wasm32-wasi`, all 2.0.2.
+- **Optional peers:** the lockfile names `@babel/core`, `@solidjs/babel-plugin`, `@solidjs/start-devtools` and
+  `@testing-library/jest-dom` only in the plugin's `peerDependencies` block; no package of theirs is resolved. (The
+  `@babel/parser`, `@babel/types` and their helpers were there before, from the coverage tooling.)
+- **One Vite:** `vite@8.3.8` the one package, `pnpm why vite` "Found 1 version of vite"; the plugin's link and
+  `vitefu`'s are to it.
+- **Types:** `tsc -p tests/site` passes on `hello.tsx`; with the root config's `skipLibCheck: false`, a config including
+  only `hello.tsx` passes too, so Solid's own types check under the site's settings.
+- **Fail-checks:** without the plugin in `vite.config.ts`, the build test fails on the JSX (`PARSE_ERROR`); with the
+  child given `NODE_ENV=test` (in place of `-u NODE_ENV`), it finds `isDev` true; without the plugin in the browser
+  projects, the test file fails to load.
+- **Suite:** 430 tests in 61 files (428 and 2), all passing, the coverage thresholds met.

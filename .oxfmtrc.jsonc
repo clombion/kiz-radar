@@ -13,6 +13,7 @@
     "!*/",
     "!/site/**",
     "!/tests/**/*.ts",
+    "!/tests/**/*.tsx",
     "!/lint/**/*.ts",
     "!/public/css/**",
     "!/*.json",
@@ -27,7 +28,7 @@
     {
       // import statements in one order, sorted across a blank line and kept together, as Biome's organizeImports held
       // them; not the house rules' fixtures, whose refused lines are marked where they stand
-      "files": ["*.ts"],
+      "files": ["*.ts", "*.tsx"],
       "excludeFiles": ["lint/fixtures/**"],
       "options": { "sortImports": { "newlinesBetween": false } }
     },

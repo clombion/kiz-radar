@@ -127,7 +127,9 @@ def test_no_query_takes_its_day_from_the_clock() -> None:
         for n in ast.walk(ast.parse(p.read_text(encoding='utf-8')))
         if isinstance(n, ast.Constant) and isinstance(n.value, str) and clock.search(n.value)
     ]
-    found += [f'{f}' for f in tracked('site/*.ts') if clock.search((ROOT / f).read_text(encoding='utf-8'))]
+    found += [
+        f'{f}' for f in tracked('site/*.ts', 'site/*.tsx') if clock.search((ROOT / f).read_text(encoding='utf-8'))
+    ]
     assert found == []
 
 

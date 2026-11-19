@@ -4,11 +4,15 @@
 // names, relative to its <base>, so the site works under /kiz-radar/, under c/<key>/ and at a server's root alike. Every
 // file is flat in js/, since the code finds ../data/ and ../vendor/ from its own module's URL. The shared chunk's name
 // carries its content's hash: a main.js cached from before a deploy then asks for the chunk it was built with, where a
-// fixed name could hand it a newer one whose exports Rolldown named otherwise.
+// fixed name could hand it a newer one whose exports Rolldown named otherwise. Solid's plugin compiles the JSX (.tsx)
+// with its native compiler; the build takes Solid's production build, by Vite's own condition with NODE_ENV unset, never
+// its development one, which only the tests take (vitest.config.ts).
+import solid from '@solidjs/vite-plugin';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
   base: './',
+  plugins: [solid()],
   publicDir: false, // public/ is the published site, not files for Vite to copy
   build: {
     outDir: 'public/js', // emptied by the build script, which clears public/vendor/ with it
