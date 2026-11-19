@@ -541,12 +541,22 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     map.invalidateSize();
     lockZoom();
   }, 0);
-  // On leaving, the map stops listening at once and is removed once a zoom animation, which Leaflet can't cancel
-  // (it ends 250 ms after it starts), has finished with it.
+  // On leaving, the map stops listening at once and is removed once Leaflet is done with it. A zoom, which Leaflet
+  // can't cancel, starts on the frame after it is asked and ends 250 ms after it starts, reading the map's panes,
+  // which remove() takes away; the frame can come late, after a slow page drawn in the map's place. So the map waits
+  // for that frame (a zoom asked before it starts in it, ahead of this), then for the end of a zoom under way, which
+  // Leaflet marks on the map's pane as its own dragging reads it.
   signal.addEventListener('abort', () => {
     clearTimeout(settle);
     map.off();
-    setTimeout(() => map.remove(), 300);
+    requestAnimationFrame(() => {
+      const pane = map.getPane('mapPane');
+      if (pane !== undefined && L.DomUtil.hasClass(pane, 'leaflet-zoom-anim')) {
+        map.once('zoomend', () => {
+          map.remove();
+        });
+      } else map.remove();
+    });
   });
 };
 
