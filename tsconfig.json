@@ -1,14 +1,13 @@
 {
-  // The site's TypeScript (site/), compiled module by module into public/js/ for the browser: no bundler. The imports name
-  // the .ts files, and tsc rewrites them to the .js files the browser loads.
+  // The site's TypeScript (site/), checked: tsc writes nothing, Vite bundles it into public/js/ (vite.config.ts). The
+  // imports name the .ts files, which Vite resolves.
   "compilerOptions": {
     "target": "es2023",
     "lib": ["es2023", "dom", "dom.iterable"],
     "module": "es2022",
     "moduleResolution": "bundler",
-    "rewriteRelativeImportExtensions": true,
-    "rootDir": "site",
-    "outDir": "public/js",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "types": [],
     "allowUmdGlobalAccess": true,
     "strict": true,

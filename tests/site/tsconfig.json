@@ -1,15 +1,13 @@
 {
-  // The site's tests, the vitest config and the house rules' plugin (lint/), checked with the site's own rules; they are
-  // run by vitest and oxlint, never emitted.
+  // The site's tests, the Vite and Vitest configs and the house rules' plugin (lint/), checked with the site's own rules;
+  // they are run by Vitest, Vite and oxlint.
   // Their libraries' declarations aren't checked: playwright's are written for an older TypeScript.
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "../..",
-    "noEmit": true,
     "types": ["node"],
     "skipLibCheck": true
   },
-  "include": [".", "../../site", "../../vitest.config.ts", "../../lint"],
+  "include": [".", "../../site", "../../vite.config.ts", "../../vitest.config.ts", "../../lint"],
   // the files the house rules' test (rules.test.ts) lints, never run, some breaking a rule on purpose
   "exclude": ["../../lint/fixtures"]
 }

@@ -90,7 +90,7 @@ From `biome.jsonc`'s `overrides`, each with its reason; oxlint takes them as `ov
 | `site/db.ts` | `eslint/max-classes-per-file` | off | Q2: the same, `SiteUpdating` and `Sql` |
 | `lint/plugin.ts` | `import/no-default-export` | off | new (task 2.5): oxlint loads a JS plugin from its module's default export, as ESLint does |
 | `lint/privates.ts` | `import/no-nodejs-modules` | off | new (task 2.6b): `house/privates` reads the module an import names from disk, oxlint showing a rule one file |
-| `vitest.config.ts` (and `vite.config.ts`, Phase 3) | `import/no-default-export` | off (owner, 19 November: Vitest reads only a default export) | new: Biome never linted the file (not in `files.includes`); Vitest reads its default export, which the rule refuses; off in `.oxlintrc.json` since 2.4, its comment naming the owner's decision |
+| `vitest.config.ts`, `vite.config.ts` | `import/no-default-export` | off (owner, 19 November: Vitest reads only a default export) | new: Biome never linted the file (not in `files.includes`); Vitest reads its default export, which the rule refuses; off in `.oxlintrc.json` since 2.4, its comment naming the owner's decision; `vite.config.ts`, which Vite reads the same way, since 3.2 |
 
 The house rules (`lint/plugin.ts`, run as `house/<rule>`, each with its fixtures: [Contributing](../../CONTRIBUTING.md),
 "House rules") are scoped by `.oxlintrc.json`'s overrides too, by the files' paths from the root, never by a rule
@@ -423,7 +423,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noUnusedVariables` | warn | `eslint/no-unused-vars` | source | mapped |
 | `noVoidElementsWithChildren` | error | `react/void-dom-elements-no-children` | source | mapped |
 | `noVoidTypeReturn` | error | (none) |  | accepted loss |
-| `useImportExtensions` | warn | `import/extensions` | inspired | mapped: the imports name `.ts` files (`rewriteRelativeImportExtensions`): `["always", {"ignorePackages": true}]` |
+| `useImportExtensions` | warn | `import/extensions` | inspired | mapped: the imports name `.ts` files (`allowImportingTsExtensions`; Vite resolves them): `["always", {"ignorePackages": true}]` |
 | `useIsNan` | error | `eslint/use-isnan` | source | mapped |
 | `useJsonImportAttributes` | info | (none) |  | house rule `house/json` |
 | `useParseIntRadix` | info | `eslint/radix` | source | mapped |

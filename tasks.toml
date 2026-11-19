@@ -77,7 +77,7 @@ description = "The site's tools, as pnpm-lock.yaml pins them"
 run = "pnpm install --frozen-lockfile"
 
 ["build:site"]
-description = "The site's TypeScript (site/) compiled into public/js/, and the libraries it loads copied into public/vendor/ from the pinned packages"
+description = "The site's TypeScript (site/) type-checked, then bundled by Vite into public/js/ (main.js, review.js and the chunk both share, vite.config.ts), and the libraries it loads copied into public/vendor/ from the pinned packages"
 depends = ["install:site"]
 run = "pnpm run build"
 

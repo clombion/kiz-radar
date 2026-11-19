@@ -159,7 +159,8 @@ def test_biome_checks_the_stylesheet_and_the_json_configs_alone() -> None:
 
 def test_oxlint_checks_the_site_its_tests_and_the_house_rules() -> None:
     files = oxlint_files()
-    assert {'site/main.ts', 'tests/site/states.test.ts', 'vitest.config.ts', 'lint/plugin.ts'} <= set(files)
+    configs = {'vite.config.ts', 'vitest.config.ts'}
+    assert {'site/main.ts', 'tests/site/states.test.ts', 'lint/plugin.ts', *configs} <= set(files)
     assert not any(f.startswith('lint/fixtures/') for f in files)
 
 
