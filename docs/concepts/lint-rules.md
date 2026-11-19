@@ -110,6 +110,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `home` | everywhere oxlint lints | (none) |
 | `json` | everywhere oxlint lints | (none) |
 | `markup` | `site/**` | `site/icons.ts`, `site/icons.tsx` |
+| `mirrors` | `*.tsx` | (none) |
 | `privates` | everywhere oxlint lints | (none) |
 | `process` | `tests/**`, `vitest.config.ts` | (none) |
 | `promises` | everywhere oxlint lints | (none) |

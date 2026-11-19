@@ -12,6 +12,7 @@ import { formats } from './formats.ts';
 import { home } from './home.ts';
 import { json } from './json.ts';
 import { markup } from './markup.ts';
+import { mirrors } from './mirrors.ts';
 import { privates } from './privates.ts';
 import { process } from './process.ts';
 import { promises } from './promises.ts';
@@ -41,6 +42,7 @@ const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } 
     home,
     json,
     markup,
+    mirrors,
     privates,
     process,
     promises,

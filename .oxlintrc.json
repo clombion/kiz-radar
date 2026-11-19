@@ -534,9 +534,9 @@
     },
     {
       // the migration rules (the brief's Phase 4), on Solid's files alone, so h() views and Solid views coexist: no .then
-      // in a component, no loading or error state of its own
+      // in a component, no loading or error state of its own, no effect mirroring a value
       "files": ["**/*.tsx"],
-      "rules": { "house/thens": "error", "house/flags": "error" }
+      "rules": { "house/thens": "error", "house/flags": "error", "house/mirrors": "error" }
     },
     {
       // the tests and their config run in Node, a test is test() wherever it is, and a test drives the page step by step
