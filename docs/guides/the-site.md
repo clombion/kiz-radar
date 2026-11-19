@@ -87,7 +87,8 @@ sides only.
   header, as Explore's, holds its places: **Near Bergen** (the people living within `NEAR_KM`, 200 km, of the home
   airport's city, measured against the city `people.home` names; someone with no home is near nowhere) and
   **Everywhere** (everyone sharing plans); `#friends?in=everywhere`. The visitor's own communities will join that row
-  once there are accounts.
+  once there are accounts. Their pages will not be generated from committed data
+  ([Pages people make](../concepts/user-pages.md)).
 
   - Under the title, as a page's head: who shares plans, named while there are eight at most ("Christina, Cédric and
     Siân share their plans."), else how many and where ("29 people within 200 km of Bergen share their plans."); then,
@@ -265,5 +266,7 @@ beside it what it was drawn from, `share.json` (the name, and the digest of what
 that a comment in `site/icons.ts` leaves the cards as they are). Both are committed, as the site's share card is. The
 tests compare each `share.json` with the communities and those files (`stale_cards`), so a community renamed, or the
 card's design changed, without drawing again fails them. A folder of `public/c/` that is no community's (one removed, or
-renamed to another key) fails `mise run generate --check`, and `mise run generate` removes it. The fonts, Inter and
-Caveat, are served from `public/fonts` under the SIL Open Font License.
+renamed to another key) fails `mise run generate --check`, and `mise run generate` removes it. A page generated from
+committed rows is the prototype's stopgap: a page people make is never one
+([Pages people make](../concepts/user-pages.md)). The fonts, Inter and Caveat, are served from `public/fonts` under the
+SIL Open Font License.

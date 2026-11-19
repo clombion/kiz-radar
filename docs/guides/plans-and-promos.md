@@ -35,7 +35,8 @@ Plans are public: anyone can see them, so add people only with their agreement.
 
 A community is a group of dancers whose page says who of them goes where. This one is a fixed prototype of the
 communities the spec ("Kiz Radar community: user stories") describes, to get the page right before a server exists:
-nobody can create, join or claim one yet, and its rows are written by hand.
+nobody can create, join or claim one yet, and its rows are written by hand. When they can, those pages and memberships
+come from no committed file ([Pages people make](../concepts/user-pages.md)).
 
 - `pipeline/communities.csv`: one row per community, with its `key` (four words, as `frost-lantern-river-maple`; its
   page is `c/<key>/`), its `name`, its `manager` (a `people.csv` key, who must be one of its members) and a `note`.
