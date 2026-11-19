@@ -39,17 +39,17 @@ export const callsMethod = (call: Call, name: string): boolean =>
 // assignment (Grit's `$x.name` is an expression, and these are assignment targets)
 const WRITTEN_LEFT = new Set(['AssignmentExpression', 'AssignmentPattern', 'ForInStatement', 'ForOfStatement']);
 const WRITTEN = new Set(['UpdateExpression', 'ArrayPattern', 'RestElement']);
-const written = (member: Member): boolean => {
+export const written = (member: Member): boolean => {
   const { parent } = member;
   if (WRITTEN.has(parent.type)) return true;
   if (WRITTEN_LEFT.has(parent.type)) return 'left' in parent && parent.left === member;
   return parent.type === 'Property' && parent.parent.type === 'ObjectPattern' && parent.value === member;
 };
 
-// x.name read: the name written, the member not optional, and not written to (Grit's `$x.name`)
+// x.name: the name written, the member not optional (Grit's `$x.name`)
+export const namesProperty = (member: Member, names: ReadonlySet<string>): boolean =>
+  !member.computed && !member.optional && member.property.type === 'Identifier' && names.has(member.property.name);
+
+// x.name read, not written to
 export const readsProperty = (member: Member, names: ReadonlySet<string>): boolean =>
-  !member.computed &&
-  !member.optional &&
-  member.property.type === 'Identifier' &&
-  names.has(member.property.name) &&
-  !written(member);
+  namesProperty(member, names) && !written(member);

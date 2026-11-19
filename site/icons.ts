@@ -3,7 +3,8 @@
 import { iconOf, type Key, type KeysWhere, text, where } from './wording.ts';
 
 // A drawing the page shows. Only this class makes one, from the SVG written in this module, so no text from the data
-// or the address ever becomes markup; and only it puts markup in an element (lint/markup.grit holds innerHTML here).
+// or the address ever becomes markup; and only it puts markup in an element (house/markup, lint/markup.ts, holds
+// innerHTML here).
 export class Drawing {
   readonly #markup: string;
   private constructor(markup: string) {

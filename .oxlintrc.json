@@ -425,6 +425,16 @@
       "rules": { "house/classes": "off" }
     },
     {
+      // house/markup: an element of the site gets markup from icons.ts alone, and is built with dom.ts's h()
+      "files": ["site/**"],
+      "rules": { "house/markup": "error" }
+    },
+    {
+      // house/markup: icons.ts puts the SVG written there in an element (Drawing.into)
+      "files": ["site/icons.ts"],
+      "rules": { "house/markup": "off" }
+    },
+    {
       // oxlint loads a JS plugin from its module's default export, as ESLint does
       "files": ["lint/plugin.ts"],
       "rules": { "import/no-default-export": "off" }
