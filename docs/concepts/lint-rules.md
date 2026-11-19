@@ -109,6 +109,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `formats` | everywhere oxlint lints | `site/ui.ts` |
 | `home` | everywhere oxlint lints | (none) |
 | `json` | everywhere oxlint lints | (none) |
+| `legacy` | `*.tsx` | (none) |
 | `markup` | `site/**` | `site/icons.ts`, `site/icons.tsx` |
 | `mirrors` | `*.tsx` | (none) |
 | `privates` | everywhere oxlint lints | (none) |

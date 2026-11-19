@@ -11,6 +11,7 @@ import { flags } from './flags.ts';
 import { formats } from './formats.ts';
 import { home } from './home.ts';
 import { json } from './json.ts';
+import { legacy } from './legacy.ts';
 import { markup } from './markup.ts';
 import { mirrors } from './mirrors.ts';
 import { privates } from './privates.ts';
@@ -41,6 +42,7 @@ const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } 
     formats,
     home,
     json,
+    legacy,
     markup,
     mirrors,
     privates,
