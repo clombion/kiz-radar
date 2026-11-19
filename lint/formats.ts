@@ -2,13 +2,11 @@
 // named (as a value or a type), a date's toLocaleDateString() or toLocaleTimeString() called, and a string or a
 // template's text holding google.com/travel are refused. ui.ts is exempt by .oxlintrc.json's override.
 import type { Rule } from './plugin.ts';
-import { callsMethod } from './shapes.ts';
+import { callsMethod, named } from './shapes.ts';
 import { texts } from './texts.ts';
 
-const METHODS = ['toLocaleDateString', 'toLocaleTimeString'];
+const METHODS: ReadonlySet<string> = new Set(['toLocaleDateString', 'toLocaleTimeString']);
 const FLIGHTS = /google\.com\/travel/u;
-const named = (node: { readonly type: string }, name: string): boolean =>
-  node.type === 'Identifier' && 'name' in node && node.name === name;
 
 export const formats: Rule = {
   meta: {
@@ -33,8 +31,7 @@ export const formats: Rule = {
       },
       CallExpression(node) {
         // with no type arguments, which Grit's `$_.toLocaleDateString($...)` did not match
-        if (node.typeArguments == null && METHODS.some((name) => callsMethod(node, name)))
-          context.report({ node, messageId: 'formats' });
+        if (node.typeArguments == null && callsMethod(node, METHODS)) context.report({ node, messageId: 'formats' });
       },
     };
   },

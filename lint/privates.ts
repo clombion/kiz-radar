@@ -10,6 +10,7 @@
 import { readFileSync, statSync } from 'node:fs';
 import { basename, dirname, extname, isAbsolute, join, relative, resolve } from 'node:path';
 import type { Rule } from './plugin.ts';
+import { importedName } from './shapes.ts';
 
 type Visibility = 'public' | 'package' | 'private';
 
@@ -440,8 +441,7 @@ export const privates: Rule = {
         if (file === null) return;
         for (const specifier of node.specifiers) {
           if (specifier.type === 'ImportNamespaceSpecifier') continue;
-          const { imported } = specifier.type === 'ImportSpecifier' ? specifier : { imported: null };
-          const name = imported === null ? 'default' : imported.type === 'Identifier' ? imported.name : imported.value;
+          const name = specifier.type === 'ImportSpecifier' ? importedName(specifier) : 'default';
           const level = visibility(file, name);
           if (level !== undefined && !allowed(level, importer, file))
             context.report({ node: specifier, messageId: level === 'private' ? 'private' : 'package' });

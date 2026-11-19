@@ -3,8 +3,10 @@
 // override.
 import { callRule, callsMethod } from './shapes.ts';
 
+const STOP: ReadonlySet<string> = new Set(['stopPropagation']);
+
 export const clicks = callRule(
   'clicks',
   'A control inside a card keeps its click with dom.ts own(); swipe.ts alone keeps a swipe from the map.',
-  (call) => callsMethod(call, 'stopPropagation') && call.arguments.length === 0,
+  (call) => callsMethod(call, STOP) && call.arguments.length === 0,
 );

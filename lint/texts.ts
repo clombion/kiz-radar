@@ -3,8 +3,7 @@
 // template literal between its values, as written. A rule takes the visitors `texts` makes and reports where it picks,
 // or is a `textRule`, refusing the texts a pattern matches.
 import type { Rule } from './plugin.ts';
-
-type Visitor = ReturnType<NonNullable<Rule['create']>>;
+import type { Visitor } from './shapes.ts';
 type Literal = Parameters<NonNullable<Visitor['Literal']>>[0];
 type Chunk = Parameters<NonNullable<Visitor['TemplateElement']>>[0];
 export type Text = Literal | Chunk;

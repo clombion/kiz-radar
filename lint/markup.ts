@@ -6,14 +6,14 @@ import type { Rule } from './plugin.ts';
 import { type Call, callsMethod, type Member, namesProperty, readsProperty, written } from './shapes.ts';
 
 const PROPERTIES: ReadonlySet<string> = new Set(['innerHTML', 'outerHTML']);
-const METHODS = [
+const METHODS: ReadonlySet<string> = new Set([
   'insertAdjacentHTML',
   'setHTMLUnsafe',
   'createContextualFragment',
   'parseFromString',
   'write',
   'writeln',
-];
+]);
 // el['innerHTML'], el[`outerHTML`]: the key's source, in its quotes
 const QUOTED = /^['"`](?:inner|outer)HTML['"`]$/u;
 
@@ -28,7 +28,7 @@ export const markup: Rule = {
     const quoted = (member: Member): boolean =>
       member.computed && !member.optional && QUOTED.test(context.sourceCode.getText(member.property));
     const named = (member: Member): boolean => quoted(member) || namesProperty(member, PROPERTIES);
-    const parses = (call: Call): boolean => METHODS.some((name) => callsMethod(call, name));
+    const parses = (call: Call): boolean => callsMethod(call, METHODS);
     return {
       // el.innerHTML = …: the left side not in parentheses, as Grit's `$el.innerHTML = $v` matched it
       AssignmentExpression(node) {

@@ -378,6 +378,7 @@
               "NumericLiteral",
               "Reference",
               "RegExpLiteral",
+              "Scope",
               "StringLiteral",
               "TemplateElement"
             ]

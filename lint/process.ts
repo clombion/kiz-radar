@@ -3,9 +3,8 @@
 // typeof process is not, nor a binding of that name). .oxlintrc.json turns the rule on for the tests and their config;
 // the site has no process (tsconfig.json's types).
 import type { Rule } from './plugin.ts';
-import type { Node } from './shapes.ts';
+import { type Node, type Scope, variableOf } from './shapes.ts';
 
-type Scope = ReturnType<Parameters<NonNullable<Rule['create']>>[0]['sourceCode']['getScope']>;
 type Reference = Scope['through'][number];
 
 export const process: Rule = {
@@ -18,14 +17,8 @@ export const process: Rule = {
   create(context) {
     const { sourceCode } = context;
     // a name of the global scope: no declaration in the file, so either a global the config declares or none at all
-    const global = (name: string, node: Node): boolean => {
-      for (let scope: Scope | null = sourceCode.getScope(node); scope !== null;) {
-        const variable = scope.set.get(name);
-        if (variable !== undefined) return variable.defs.length === 0;
-        scope = scope.upper;
-      }
-      return true;
-    };
+    const global = (name: string, node: Node): boolean =>
+      (variableOf(sourceCode.getScope(node), name)?.defs.length ?? 0) === 0;
     // a value read: a reference to a value (the scope manager's flag, which its types omit), outside a type's
     // typeof, which the scope manager counts as a value's but reads nothing at run time
     const read = (ref: Reference): boolean => {
