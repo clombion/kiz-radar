@@ -1,9 +1,10 @@
 // What a test reads of the drawn page, and the links it opens that routes.ts does not build, shared by the test files
 // that start the page (app.ts).
-import { onTestFinished } from 'vitest';
+import { onTestFinished, vi } from 'vitest';
 import { page, userEvent } from 'vitest/browser';
 import { eventOnMapHref } from '../../site/routes.ts';
 import { FIXTURE_COMMUNITY } from './community.fixture.ts';
+import { LOGIN } from './reviewed.ts';
 
 // An older link to a community's page, #community/<key> with its query: the page moves it to c/<key>/, the community's
 // own address (routes.ts's routeOf). routes.ts builds no such link (communityHref is the path, which open() refuses), so
@@ -69,6 +70,23 @@ export function tokenDialog(): HTMLDialogElement {
   });
   return dlg;
 }
+// A token pasted in the review page's token dialog (tokenDialog()) and checked, which GitHub names its owner
+// for: resolved once the dialog says the choices are unlocked.
+export async function pasteToken(dlg: HTMLDialogElement, token: string): Promise<void> {
+  const field = dlg.querySelector('input[aria-label="Token"]');
+  if (!(field instanceof HTMLInputElement)) throw new Error(`the dialog has no token field: ${said(dlg)}`);
+  field.value = token;
+  field.dispatchEvent(new Event('input'));
+  buttonOf(dlg, 'Check and keep').click();
+  const unlocked = `Writing as ${LOGIN}: the choices are on each item.`;
+  const status = () => said(dlg.querySelector('[role="status"]'));
+  try {
+    await vi.waitUntil(() => status() === unlocked, { timeout: 5000, interval: 16 });
+  } catch (e) {
+    throw new Error(`the token dialog says "${status() ?? ''}", not "${unlocked}"`, { cause: e });
+  }
+}
+
 export function reviewed(): HTMLElement {
   const el = document.querySelector<HTMLElement>('#review');
   if (el === null) throw new Error('the page has no #review');

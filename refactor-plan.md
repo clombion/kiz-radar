@@ -166,9 +166,12 @@ page's Forget button that calls it was tested by no file. That gap is closed: `r
 token kept for the tab and on the device, with the day it expires, presses Forget in the token dialog, and reads the
 dialog's words, the read-only token button, no choices, and none of the three entries left in the page's storage.
 `kept.ts` is now at 96.77 % of lines; the "After" column is the run with that test (without it: lines 90.60 %,
-statements 89.57 %, functions 88.76 %, branches 80.75 %). `read`'s catch for storage the browser refuses is still not
-reached: no test refuses storage, and the helper's storage cannot refuse. It is a gap to close, not a lost check (no
-test refused storage on purpose before either).
+statements 89.57 %, functions 88.76 %, branches 80.75 %). The catches for storage the browser refuses are reached since:
+the helper's `storage: 'refused'` makes reaching either storage throw a SecurityError, and
+`review-refused.browser.test.ts` (a token pasted, held for the page, writes a claim) and
+`updating-refused.browser.test.ts` (the page mid-update still counts down) take it. `kept.ts` is at 100 % of lines,
+`updating.ts` at 90.9 %; the totals, re-measured after task 1.9 with them: lines 90.84 %, statements 89.77 %, functions
+88.83 %, branches 80.71 %.
 
 **Decisions the brief did not settle**, each in its task plan:
 
@@ -205,10 +208,10 @@ test refused storage on purpose before either).
   behaviour, left as it is. The tests close dialogs through the page and read their own frame's entries.
 - Playwright's Chromium is not installed in the cloud container: `CHROMIUM=/opt/pw-browsers/chromium` must be set before
   a browser test (`CONTRIBUTING.md`, "Checks").
-- `kept.ts`'s catch for refused storage is untested (above); its Forget button is tested by `review-forget`.
+- Under refused storage the review page holds its token for the page, but not the items it settled: `settled()` reads
+  storage alone, so the count of items settled stays at none (seen while writing `review-refused`; not changed).
 
-**Next:** Phase 2, the Oxc toolchain. Q2 (the info-level findings) and Q4 (the ESLint peer warning) are still open for
-the owner.
+**Next:** Phase 2, the Oxc toolchain. Q2 (the info-level findings) is open for the owner; Q4 is moot (task 2.1).
 
 **Baseline** (task 1.1, at `c667c877`, after `mise run build:site` and `mise run build:data`, by the two commands of
 [refactor-task-1.1.md](refactor-task-1.1.md), "Tests"):

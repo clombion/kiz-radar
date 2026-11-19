@@ -10,7 +10,9 @@
 // - its data: `plant` changes the fixture's database before the page reads it (the build's artist_stats and
 //   event_stats are not computed again from planted rows); `review` is the review page's data;
 // - its storage, which a reload keeps: the page's localStorage and sessionStorage are this file's own and hold
-//   `storage` alone (test files run at once, and the origin's own storage is theirs to share);
+//   `storage` alone (test files run at once, and the origin's own storage is theirs to share); or `'refused'`, the
+//   browser's refusal (a private window, the site's data blocked), where reaching either throws a SecurityError, as
+//   Chromium and Firefox do;
 // - what another host answers, on the review page (`elsewhere`, or answer() inside one test), for the hosts its
 //   Content-Security-Policy lets it ask; nothing else leaves the page.
 // Each page then opens a route as its address bar would take it (open()): the page's own address put back, then the
@@ -40,10 +42,12 @@ interface Asked {
   readonly url: URL;
   readonly init: RequestInit;
 }
+// what the page's storage holds before it starts, or the browser's refusal of any
+type Storing = { local?: Readonly<Record<string, string>>; session?: Readonly<Record<string, string>> } | 'refused';
 interface Visit<Route extends string = string> {
   now: Now;
   route?: Route;
-  storage?: { local?: Readonly<Record<string, string>>; session?: Readonly<Record<string, string>> };
+  storage?: Storing;
 }
 // the two pages: each one's HTML, the module that starts it, and the data file a test may give it
 const PAGES = {
@@ -172,6 +176,17 @@ function kept(seed: Readonly<Record<string, string>> = {}): Storage {
 }
 const owned = (name: string, value: unknown) =>
   Object.defineProperty(globalThis, name, { value, writable: false, configurable: false });
+// a Storage the browser refuses: reaching it throws, with Chromium's words
+const refusedStorage = (name: 'localStorage' | 'sessionStorage') =>
+  Object.defineProperty(globalThis, name, {
+    get: () => {
+      throw new DOMException(
+        `Failed to read the '${name}' property from 'Window': Access is denied for this document.`,
+        'SecurityError',
+      );
+    },
+    configurable: false,
+  });
 
 // the other hosts the page may ask: the full origins its Content-Security-Policy's connect-src lists
 function reachable(page: Page, html: Document): (url: URL) => boolean {
@@ -219,8 +234,13 @@ async function start(
     );
   }
 
-  owned('localStorage', kept(storage?.local));
-  owned('sessionStorage', kept(storage?.session));
+  if (storage === 'refused') {
+    refusedStorage('localStorage');
+    refusedStorage('sessionStorage');
+  } else {
+    owned('localStorage', kept(storage?.local));
+    owned('sessionStorage', kept(storage?.session));
+  }
 
   // the visitor's clock: now is the pinned instant, which does not tick; any other date is the real Date's
   let at = from;

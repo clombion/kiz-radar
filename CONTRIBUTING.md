@@ -40,8 +40,9 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   coverage of the pure modules `vitest.config.ts` sets. The browser tests run in two projects: `browser`, with motion as
   most visitors have it, and `browser-calm`, for a visitor who asked for less motion, which runs the files named
   `*.calm.browser.test.ts` and no others (a calm file runs with reduced motion only). A test of the page starts it
-  through `tests/site/app.ts`, whose header says how (once per file; the day, data, storage and other hosts' answers
-  stated before the start); the test server answers the tests' pages with the fixture's data only, never `public/data/`.
+  through `tests/site/app.ts`, whose header says how (once per file; the day, data, storage, or its refusal, and other
+  hosts' answers stated before the start); the test server answers the tests' pages with the fixture's data only, never
+  `public/data/`.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list.
 - **Duplicates:** jscpd fails on a block written twice, at the length `.jscpd.json` sets.
