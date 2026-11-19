@@ -4,7 +4,7 @@ import { q, sql } from './db.ts';
 import type { Kid } from './dom.ts';
 import { button, h, own } from './dom.ts';
 import type { Festival } from './festivals.ts';
-import { type Drawing, icon as featureIcon, MORE_TRAITS, TRAITS, type Trait } from './icons.ts';
+import { type Drawing, icon as featureIcon, MORE_TRAITS, type Trait, TRAITS } from './icons.ts';
 import { openPasses } from './passes.ts';
 import { whoIsGoing } from './plans.ts';
 import { done } from './report.ts';

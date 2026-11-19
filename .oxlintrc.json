@@ -38,7 +38,7 @@
     "eslint/constructor-super": "error",
     "eslint/default-case-last": "error",
     "eslint/default-param-last": "error",
-    // == null is null or undefined, both absent (biome.jsonc's noEqualsToNull off)
+    // == null is null or undefined, both absent (Biome's noEqualsToNull was off, docs/concepts/lint-rules.md)
     "eslint/eqeqeq": ["error", "always", { "null": "ignore" }],
     "eslint/for-direction": "error",
     "eslint/getter-return": "error",
@@ -178,6 +178,8 @@
     "eslint/require-await": "error",
     "eslint/require-unicode-regexp": "error",
     "eslint/require-yield": "error",
+    // organizeImports's names inside an import's braces, in one order; oxfmt orders the statements (sortImports)
+    "eslint/sort-imports": ["error", { "ignoreDeclarationSort": true, "ignoreCase": true }],
     "eslint/symbol-description": "error",
     "eslint/use-isnan": "error",
     "eslint/valid-typeof": "error",

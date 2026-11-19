@@ -1,7 +1,7 @@
 // On a touch screen, a swipe left or right goes to the next or the previous section (routes.ts SECTIONS). Not from
 // a field, anything that scrolls sideways or the screen's very edge (the phone's own back gesture), nor in a dialog;
 // on a map, only from near the screen's sides, where the map leaves the touch to the swipe.
-import { go, routeOf, SECTIONS, sectionAt } from './routes.ts';
+import { go, routeOf, sectionAt, SECTIONS } from './routes.ts';
 
 const SCROLLS = /auto|scroll/u;
 const SWIPE = { distance: 60, steepest: 0.5, ms: 600, edge: 16, side: 56 }; // px; |dy|/|dx|; ms; px; px

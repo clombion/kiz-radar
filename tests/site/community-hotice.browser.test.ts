@@ -5,7 +5,7 @@ import { expect, test } from 'vitest';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, HOT_ICE } from './community.fixture.ts';
 import { trips } from './planted.ts';
-import { atWidth, axisOf, COMM, cellOn, monthsOf, opened } from './seen.ts';
+import { atWidth, axisOf, cellOn, COMM, monthsOf, opened } from './seen.ts';
 
 const app = await startSite({
   now: '2026-11-01',

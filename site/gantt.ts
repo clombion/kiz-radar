@@ -18,7 +18,7 @@
 //
 // It is drawn for the eye: a screen reader hears its names, and a line no one sees says the rest in words.
 
-import { awayDays, daysInto, daysOf, type Moment, WEEKDAYS, weekday, weekday3 } from './calendar.ts';
+import { awayDays, daysInto, daysOf, type Moment, weekday, weekday3, WEEKDAYS } from './calendar.ts';
 import { addDays } from './days.ts';
 import { dismissable } from './dismiss.ts';
 import { button, h, type Kid, toggle } from './dom.ts';

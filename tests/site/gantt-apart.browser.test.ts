@@ -7,7 +7,7 @@ import { expect, test } from 'vitest';
 import { startSite } from './app.ts';
 import { KUOF } from './community.fixture.ts';
 import { APART, community, trips } from './planted.ts';
-import { atWidth, COMM, collectiveOf } from './seen.ts';
+import { atWidth, collectiveOf, COMM } from './seen.ts';
 
 const OLA_AND_KARI = 'ola-and-kari-kuof';
 // the community with Ola and Kari added, and their flights apart (APART)

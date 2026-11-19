@@ -2,7 +2,7 @@
 // for something it doesn't have fails.
 import { expect, test } from 'vitest';
 import { Drawing, MORE_TRAITS, TRAITS } from '../../site/icons.ts';
-import { KEY, STATES, type StateRow } from '../../site/states.ts';
+import { KEY, type StateRow, STATES } from '../../site/states.ts';
 import { say, where } from '../../site/wording.ts';
 import { code } from './sources.ts';
 

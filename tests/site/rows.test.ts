@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import initSqlJs, { type SqlValue } from 'sql.js';
 import { expect, test } from 'vitest';
-import { SiteUpdating, sameSchema, summaryOf } from '../../site/db.ts';
+import { sameSchema, SiteUpdating, summaryOf } from '../../site/db.ts';
 import { ARTIST_STATS, EVENT, PASS, read, type Shape, TIER } from '../../site/rows.ts';
 import { SCHEMA } from '../../site/schema.ts';
 

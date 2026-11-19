@@ -12,9 +12,9 @@ import { bookedArtist, bookings, community, flies, retitled, TO_KUOF, trips } fr
 import {
   atWidth,
   back,
-  COMM,
   cardTitled,
   cellOn,
+  COMM,
   entryAt,
   kuofOf,
   monthsOf,

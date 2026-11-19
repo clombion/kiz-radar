@@ -33,6 +33,6 @@ export const record =
       if (!Object.hasOwn(v, name)) return wrong(`${at}.${name}`, undefined, 'field it has');
       out[name] = read(Reflect.get(v, name), `${at}.${name}`);
     }
-    // biome-ignore lint/nursery/noUnsafeTypeAssertion: every field of the shape was read into out, by its own reader
-    return out as Read<S>; // oxlint-disable-line typescript/no-unsafe-type-assertion -- as biome-ignore says above
+    // oxlint-disable-next-line typescript/no-unsafe-type-assertion -- every field of the shape was read into out, by its own reader
+    return out as Read<S>;
   };

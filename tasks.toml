@@ -97,7 +97,7 @@ depends = ["install:site"]
 run = "pnpm run types"
 
 ["lint:site"]
-description = "Biome's rules on the site, its tests, its CSS and the JSON configs (biome.jsonc's files.includes)"
+description = "Biome's rules on the stylesheet and the JSON configs (biome.jsonc's files.includes)"
 depends = ["install:site"]
 run = "pnpm run lint"
 

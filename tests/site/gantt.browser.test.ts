@@ -10,9 +10,9 @@ import { community, TO_KUOF, trips } from './planted.ts';
 import {
   agendaRow,
   atWidth,
-  COMM,
   cellOn,
   collectiveOf,
+  COMM,
   ganttOf,
   kuofOf,
   opened,

@@ -7,7 +7,7 @@ import type { BindParams, Database, QueryExecResult } from 'sql.js';
 import { today } from './days.ts';
 import { list, pair, record, text } from './json.ts';
 import { get } from './net.ts';
-import { type RowOf, read, type Shape, str } from './rows.ts';
+import { read, type RowOf, type Shape, str } from './rows.ts';
 import { SCHEMA } from './schema.ts';
 
 const SQLJS = new URL('../vendor/', import.meta.url); // sql-wasm.wasm, beside the script index.html loads

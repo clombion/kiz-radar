@@ -8,9 +8,9 @@ import { leaving, type Peek, peek } from './modal.ts';
 import { roleLabel } from './roles.ts';
 import { artistHref, eventOnMapHref, friendsHref, personHref } from './routes.ts';
 import {
-  BOOKINGS,
   type Booked,
   booked,
+  BOOKINGS,
   flag as flagCol,
   num,
   opt,
