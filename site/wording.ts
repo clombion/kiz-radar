@@ -4,6 +4,7 @@
 // database is parsed into its point's type where the row is read (rows.ts state).
 
 import type { Kid } from './dom.ts';
+import type { LucideName } from './drawings.ts';
 import { type Counts, type Disposition, STATES, type StateRow } from './states.ts';
 
 type Table = typeof STATES;
@@ -28,7 +29,7 @@ export const hasForm = <P extends Point, F extends string>(point: P, key: Key<P>
   Object.hasOwn(row(point, key).forms, form);
 
 // the icon a state is drawn with, by its Lucide name (icons.ts draws it)
-export const iconOf = <P extends Point>(point: P, key: Key<P>): string => {
+export const iconOf = <P extends Point>(point: P, key: Key<P>): LucideName => {
   const name = row(point, key).icon;
   if (name === null) throw new Error(`${point} ${key}: no icon in pipeline/states.py`);
   return name;

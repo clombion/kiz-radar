@@ -1,7 +1,7 @@
 // The drawings the page shows: Lucide's line icons, by their Lucide names, and the site's own few, written as data in
 // pipeline/drawings.py, from which site/drawings.ts is generated. Which feature shows which, and in what words, is
 // pipeline/states.py's.
-import { LUCIDE as LINES, OWN } from './drawings.ts';
+import { LUCIDE as LINES, type LucideName, OWN } from './drawings.ts';
 import { iconOf, type Key, type KeysWhere, text, where } from './wording.ts';
 
 // a drawing's markup, as drawings.ts writes it: an <svg> hidden from assistive technology
@@ -36,26 +36,20 @@ export class Drawing {
   static readonly PLANE = new Drawing(LINES.plane);
   // today in a month, the site's and the share card's
   static readonly RING = new Drawing(OWN.ring);
-  // the Lucide icons, by name
-  static readonly LUCIDE: Readonly<Record<string, Drawing>> = Object.fromEntries(
-    Object.entries(LINES).map(([name, markup]) => [name, new Drawing(markup)]),
-  );
+  // a Lucide icon, by its name: one drawings.ts has, so a name it lacks fails to compile
+  static lucide(name: LucideName): Drawing {
+    return new Drawing(LINES[name]);
+  }
   // the element given, with the drawing in it
   into<E extends Element>(el: E): E {
     el.innerHTML = this.#markup;
     return el;
   }
 }
-// a Lucide icon by its name
-function lucide(name: string, of: string): Drawing {
-  const drawn = Drawing.LUCIDE[name];
-  if (drawn === undefined) throw new Error(`${of}: no icon ${name} in icons.ts`);
-  return drawn;
-}
 // the icon a feature is drawn with (pipeline/states.py names it)
-export const icon = (feature: Key<'feature'>): Drawing => lucide(iconOf('feature', feature), `feature ${feature}`);
+export const icon = (feature: Key<'feature'>): Drawing => Drawing.lucide(iconOf('feature', feature));
 // a dance's icon in the search, which no feature has: a note
-export const NOTE = lucide('music', 'a dance');
+export const NOTE = Drawing.lucide('music');
 
 // Features that tell festivals apart as [key, words, icon], in the order they matter to someone deciding whether to
 // go: those a card shows, and the rest, shown once a card is open.

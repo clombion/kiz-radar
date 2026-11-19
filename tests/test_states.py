@@ -10,7 +10,7 @@ from collections.abc import Callable, Sequence
 import pytest
 from pydantic import ValidationError
 
-from pipeline import ROOT, enums, generate, prompt, states
+from pipeline import ROOT, drawings, enums, generate, prompt, states
 from pipeline.enums import PassKind, People, Price, Sales, Style
 from pipeline.extract import prices
 from pipeline.records import LOG_ENTRY, PricedPass, PricedTier, Sale
@@ -103,6 +103,14 @@ def test_a_prompt_lists_the_states_in_key_order_and_genres_under_their_style() -
     genres = states.definitions('genre')
     assert genres.index('`semba`') < genres.index('`zouk`')
     assert 'Kizomba' in genres
+
+
+def test_every_icon_a_state_names_is_a_lucide_drawing() -> None:
+    """site/states.ts types a state's icon as a name of site/drawings.ts's LUCIDE, so tsc refuses one it lacks; this
+    says which, from the two sources, before anything is generated."""
+    named = {s.icon for s in states.ROWS if s.icon is not None}
+    assert named
+    assert named - drawings.LUCIDE.keys() == set()
 
 
 def test_the_files_written_from_the_table_say_what_it_does() -> None:

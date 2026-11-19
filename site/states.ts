@@ -1,6 +1,8 @@
 // Written from pipeline/states.py (states.ts_module), which owns every state and its words: edit them there,
 // then run: mise run generate.
 
+import type { LucideName } from './drawings.ts';
+
 export type Disposition = "card" | "view" | "note" | "filter" | "kept" | "waits";
 export type Counts = "lineup" | "booking" | "present";
 // what the site has of a state: how it is shown, its words and their named forms, its icon, what it links to
@@ -8,7 +10,7 @@ export interface StateRow {
   readonly disposition: Disposition;
   readonly wording: string | null;
   readonly forms: Readonly<Record<string, string>>;
-  readonly icon: string | null;
+  readonly icon: LucideName | null;
   readonly link: string | null;
   readonly counts: Counts | null;
 }

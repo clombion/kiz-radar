@@ -111,7 +111,9 @@ def ts_module() -> str:
         '// Written from pipeline/drawings.py (drawings.ts_module), which owns every drawing the site shows: edit them\n'
         '// there, then run: mise run generate.\n\n'
         "// Lucide's icons, by name\n"
-        f'export const LUCIDE = {json.dumps(every["lucide"], indent=1)} as const;\n\n'
+        f'export const LUCIDE = {json.dumps(every["lucide"], indent=1)} as const;\n'
+        "// a Lucide icon's name, which pipeline/states.py's icons are\n"
+        'export type LucideName = keyof typeof LUCIDE;\n\n'
         "// the site's own drawings, by name\n"
         f'export const OWN = {json.dumps(every["own"], indent=1)} as const;\n'
     )

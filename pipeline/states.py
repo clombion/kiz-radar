@@ -1246,6 +1246,7 @@ def ts_module() -> str:
     return (
         '// Written from pipeline/states.py (states.ts_module), which owns every state and its words: edit them '
         'there,\n// then run: mise run generate.\n\n'
+        "import type { LucideName } from './drawings.ts';\n\n"
         f'export type Disposition = {" | ".join(json.dumps(str(d)) for d in Disposition)};\n'
         f'export type Counts = {" | ".join(json.dumps(str(c)) for c in Counts)};\n'
         '// what the site has of a state: how it is shown, its words and their named forms, its icon, what it links '
@@ -1254,7 +1255,7 @@ def ts_module() -> str:
         '  readonly disposition: Disposition;\n'
         '  readonly wording: string | null;\n'
         '  readonly forms: Readonly<Record<string, string>>;\n'
-        '  readonly icon: string | null;\n'
+        '  readonly icon: LucideName | null;\n'
         '  readonly link: string | null;\n'
         '  readonly counts: Counts | null;\n'
         '}\n\n'
