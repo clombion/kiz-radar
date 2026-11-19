@@ -207,7 +207,7 @@ export function goingLine(e: Going): HTMLElement | null {
 // Who goes to a festival as lines, one per thing they do there: teaching (or playing) first, then going, then maybe,
 // each labelled by it. A line names up to NAMED_UP_TO people or couples, the ticked first; past that, the first ones
 // and "and 5 more", which opens the list of everyone going, the ticked always named.
-export const NAMED_UP_TO = 4;
+const NAMED_UP_TO = 4;
 const NAMED_PAST = 3; // named on a line past NAMED_UP_TO
 export function whoLines(e: Going, ticked: ReadonlySet<string> = new Set()): HTMLElement {
   const isTicked = (g: Named) => g.people.some((p) => ticked.has(p.key));

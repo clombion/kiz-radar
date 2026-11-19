@@ -1,6 +1,6 @@
 // The sources page: where each kind of data comes from, under what licence, and who to thank, a short section each.
 // It names no company a price is resold by, and no model by its maker: the admin's rule, so the page promotes no one
-// (tests/site/views.browser.test.ts holds it).
+// (tests/site/sources.browser.test.ts holds it).
 import { site } from './db.ts';
 import { h, type Kid } from './dom.ts';
 import { sqlHref } from './routes.ts';

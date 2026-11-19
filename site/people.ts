@@ -55,7 +55,7 @@ export function personView(root: HTMLElement, key: string): void {
 // device's share sheet, or else the link copied.
 // It says what it did for a moment (SAID_MS), then its label again: "Link copied", or, when the browser has no clipboard
 // or refuses it, to copy the address bar instead.
-export const SAID_MS = 2500;
+const SAID_MS = 2500;
 export function shareButton(label: string, title: string, link?: string): HTMLButtonElement {
   const say = (words: string) => {
     share.textContent = words;

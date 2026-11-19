@@ -131,7 +131,7 @@ through fli, how often a weekend is searched as `WEEKS_APART` in `pipeline/fares
 price stands in for Google's); the pass prices; the exchange rates (the European Central Bank); the borders (Natural
 Earth, through world-atlas) and the places (Nominatim, © OpenStreetMap contributors, ODbL); the airports (OurAirports);
 and the code and the libraries and fonts the page uses. By the admin's rule the page promotes no one: it names no
-reseller (of fares or of tickets) and no AI model or its maker, which a test of `tests/site/views.browser.test.ts`
+reseller (of fares or of tickets) and no AI model or its maker, which a test of `tests/site/sources.browser.test.ts`
 holds. A new source of data is credited there.
 
 ## A community's page

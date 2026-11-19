@@ -7,19 +7,14 @@ import { dbDay } from '../../site/db.ts';
 import { get } from '../../site/net.ts';
 import { artistsHref, communityHref, EXPLORE, mapHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
-import { FIXTURE_COMMUNITY } from './community.fixture.ts';
+import { FIXTURE_COMMUNITY, PRAGUE_GOLD } from './community.fixture.ts';
 
 // a festival of the fixture's that week (Prague GOLD, 14–18 January), renamed
 const PLANTED = 'A festival planted before the page starts';
 const app = await startSite({
   now: '2027-01-12',
   storage: { local: { seeded: 'local' }, session: { seeded: 'session' } },
-  plant: (db) =>
-    db.run('UPDATE events SET title = ?, listed_title = ? WHERE title = ?', [
-      PLANTED,
-      PLANTED,
-      'Prague GOLD KIZ Tarraxo Festival',
-    ]),
+  plant: (db) => db.run('UPDATE events SET title = ?, listed_title = ? WHERE id = ?', [PLANTED, PLANTED, PRAGUE_GOLD]),
 });
 const week = EXPLORE.find(([k]) => k === 'week')?.[2] ?? '';
 const shown = () => document.querySelector('main')?.textContent ?? '';

@@ -119,7 +119,7 @@ function artistEntries(): Indexed[] {
 
 // the cities festivals are in, each once by its key however its festivals' listings spell it (cities), with how many
 // festivals there are coming up and in all
-export function cityEntries(): City[] {
+function cityEntries(): City[] {
   const cities = new Map<string, City>();
   for (const e of q(
     { city: str, city_key: str, country_code: str, upcoming: flagCol },

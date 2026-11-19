@@ -247,7 +247,9 @@ test('a card over the page is the only one open, and goes on Escape, on the focu
     // the focus leaving for elsewhere on the page, not within the card
     a.open();
     a.opener.focus();
-    a.card.querySelector('button')?.focus();
+    const inside = a.card.querySelector('button');
+    expect(inside).not.toBeNull();
+    inside?.focus();
     expect(a.state.open).toBe(true);
     elsewhere.focus();
     expect(a.state.open).toBe(false);

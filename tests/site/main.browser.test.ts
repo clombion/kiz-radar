@@ -5,6 +5,7 @@ import { commands, page } from 'vitest/browser';
 import { communityHref, EXPLORE, eventOnMapHref, sourcesHref, TABS } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, FIXTURE_PROMO, PRAGUE_GOLD } from './community.fixture.ts';
+import { COMM, shownDialog } from './seen.ts';
 
 const INDEX = new DOMParser().parseFromString(await commands.readFile('public/index.html'), 'text/html');
 const main = () => document.querySelector<HTMLElement>('#main');
@@ -35,7 +36,7 @@ const unnamed = (): string[] =>
 // every view the page links to: its tabs and Explore's, and the links index.html has (the SQL page); and the
 // community's page, which no tab links to: an older link to it, #community/<key>, which moves the address to its
 // own, c/<key>/ (each view starts from the page's own address again)
-const COMMUNITY = `#community/${FIXTURE_COMMUNITY}`;
+const COMMUNITY = COMM(FIXTURE_COMMUNITY);
 const VIEWS = [
   ...new Set([
     ...[...TABS, ...EXPLORE].map(([, , href]) => href),
@@ -90,8 +91,9 @@ test('the footer switches the currency: kroner shown, euros and dollars a button
 test('the search dialog opens from its button, every control named', async () => {
   document.querySelector<HTMLElement>('#search-btn')?.click();
   await expect.poll(() => document.querySelector('dialog[open]')).not.toBeNull();
+  // shut through its Cancel button once the test ends (seen.ts)
+  shownDialog('.search-cancel');
   expect(unnamed()).toEqual([]);
-  document.querySelector<HTMLDialogElement>('dialog[open]')?.close();
 });
 
 // the alert line report.ts puts at the top of the page
