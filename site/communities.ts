@@ -201,9 +201,15 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
         const away = awayDays(e, { arrive: travel?.arrive?.at ?? null, leave: travel?.leave?.at ?? null, nights });
         return { who: `member ${g.key}`, ...away, e, goer: g, added: null, travel, stays };
       }),
-      ...f.added.map(
-        (a): Present => ({ who: `added ${a.id}`, ...awayDays(e), e, goer: null, added: a, travel: null, stays: [] }),
-      ),
+      ...f.added.map((a): Present => ({
+        who: `added ${a.id}`,
+        ...awayDays(e),
+        e,
+        goer: null,
+        added: a,
+        travel: null,
+        stays: [],
+      })),
     ]),
   );
   // the trips not ended: the agenda's, the sentence's and the counts'; an ended one stays in the calendar, greyed
@@ -388,16 +394,14 @@ function chartOf({ e, aways }: Visit, c: Community, id: string): Kid[] {
   // its roster: who travels alike, a couple as one when both partners do, and the people the manager added, who never
   // say how they travel, each name of theirs saying on hover who added them
   const couples = couplesAmong(aways.flatMap((a) => (a.goer ? [a.goer] : [])));
-  const goes = aways.map(
-    (a): Goes<Present> => ({
-      person: a,
-      key: a.who,
-      name: a.goer === null ? a.added.name : a.goer.name,
-      couple: a.goer ? (couples.get(a.goer.person_id) ?? null) : null,
-      travel: a.travel,
-      stays: a.stays,
-    }),
-  );
+  const goes = aways.map((a): Goes<Present> => ({
+    person: a,
+    key: a.who,
+    name: a.goer === null ? a.added.name : a.goer.name,
+    couple: a.goer ? (couples.get(a.goer.person_id) ?? null) : null,
+    travel: a.travel,
+    stays: a.stays,
+  }));
   const lines = roster(goes);
   const title = `Added by ${c.manager.name}`;
   // the roster in words, for a screen reader: each line in and out and where it stays, and who has not said, a line

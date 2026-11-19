@@ -144,9 +144,10 @@ function placeEntries(pool: readonly Festival[]): Indexed[] {
   });
   return [
     ...countries,
-    ...cityEntries().map(
-      (c): Indexed => [{ kind: 'city', name: c.city, city: c, past: !c.upcoming, rank: c.upcoming * 100 + c.all }, []],
-    ),
+    ...cityEntries().map((c): Indexed => [
+      { kind: 'city', name: c.city, city: c, past: !c.upcoming, rank: c.upcoming * 100 + c.all },
+      [],
+    ]),
   ];
 }
 

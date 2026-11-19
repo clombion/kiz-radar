@@ -135,15 +135,13 @@ describe('a few more', () => {
   it('a line of three people is named, though it is more than half of everyone of four units', () => {
     // KUOF: Cédric & Christina on their flight, and the three added, who have said nothing: 3 of 5
     const kuof = [
-      ...['Cédric', 'Christina'].map(
-        (name): Goes<string> => ({
-          person: name,
-          key: name,
-          name,
-          couple: { key: 'cc', name: 'Cédric & Christina' },
-          ...T(THU, MON, S),
-        }),
-      ),
+      ...['Cédric', 'Christina'].map((name): Goes<string> => ({
+        person: name,
+        key: name,
+        name,
+        couple: { key: 'cc', name: 'Cédric & Christina' },
+        ...T(THU, MON, S),
+      })),
       ...['Tonje', 'Ragnhild', 'Maja'].map((n) => one(n, NOTHING)),
     ];
     expect(shown(roster(kuof))).toEqual([
