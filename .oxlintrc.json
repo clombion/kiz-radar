@@ -479,7 +479,7 @@
       "rules": { "import/no-default-export": "off" }
     },
     {
-      // pending the owner (docs/concepts/lint-rules.md, "Per-folder exceptions"): Vitest reads the config's default export
+      // Vitest reads the config from its default export (owner, 19 November; docs/concepts/lint-rules.md)
       "files": ["vitest.config.ts"],
       "rules": { "import/no-default-export": "off" }
     }

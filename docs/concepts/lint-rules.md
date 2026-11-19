@@ -25,13 +25,13 @@ the reason in [oxlint's suppressed findings](../lint-false-positives.md).
 | for today's code (no JSX, no framework) | 291 |
 | mapped | 261: 202 by Biome's source metadata, 39 "inspired by", 20 by the rules' docs |
 | accepted losses | 8 of the brief's 11 (three have an equivalent) |
-| unmapped, pending owner | 22 |
-| for JSX (Phase 4's `.tsx`) | 48: 46 mapped, 2 pending owner |
-| for frameworks the site does not use | 92: 30 with an equivalent, none to port; pending owner as one group |
+| unmapped, decided by the owner (19 November) | 22: 5 become house rules (task 2.6b), 17 accepted losses |
+| for JSX (Phase 4's `.tsx`) | 48: 46 mapped; `noSuspiciousSemicolonInJsx` a house rule in 4.2; `noSvgWithoutTitle` held by construction |
+| for frameworks the site does not use | 92: 88 accepted losses; Solid's four in 4.2 (three from `eslint-plugin-solid`, `noDuplicatedSpreadProps` a house rule) |
 | for CSS, JSON, GraphQL, HTML or YAML | 53, staying with Biome |
 | Off in Biome (`biome.jsonc`), staying off | 22: 19 for TypeScript, 3 for CSS; and 3 off in one folder |
 | Info-level rules among today's (report, never fail) | 96, 9 of them with findings (Q2) |
-| Type-aware oxlint rules with no Biome equivalent | 33, 14 with findings; pending owner |
+| Type-aware oxlint rules with no Biome equivalent | 33, all on (task 2.6c) |
 
 How each figure was taken:
 
@@ -87,7 +87,7 @@ From `biome.jsonc`'s `overrides`, each with its reason; oxlint takes them as `ov
 | `site/friends.ts`, `site/roster.ts`, `site/sources.ts`, `site/tables.ts` | `eslint/prefer-destructuring` | off | Q2: the findings in the site's code stay until Phase 4 rewrites these files (`tables.ts` is oxlint's alone) |
 | `site/db.ts` | `eslint/max-classes-per-file` | off | Q2: the same, `SiteUpdating` and `Sql` |
 | `lint/plugin.ts` | `import/no-default-export` | off | new (task 2.5): oxlint loads a JS plugin from its module's default export, as ESLint does |
-| `vitest.config.ts` (and `vite.config.ts`, Phase 3) | `import/no-default-export` | off, **pending owner** | new: Biome never linted the file (not in `files.includes`); Vitest reads its default export, which the rule refuses; off in `.oxlintrc.json` since 2.4, its comment naming the pending decision |
+| `vitest.config.ts` (and `vite.config.ts`, Phase 3) | `import/no-default-export` | off (owner, 19 November: Vitest reads only a default export) | new: Biome never linted the file (not in `files.includes`); Vitest reads its default export, which the rule refuses; off in `.oxlintrc.json` since 2.4, its comment naming the pending decision |
 
 The house rules (`lint/plugin.ts`, run as `house/<rule>`, each with its fixtures: [Contributing](../../CONTRIBUTING.md),
 "House rules") are scoped by `.oxlintrc.json`'s overrides too, by the files' paths from the root, never by a rule
@@ -131,7 +131,7 @@ Three on the brief's list have an equivalent and are mapped instead: `noFlatMapI
 `noParametersOnlyUsedInRecursion` (`oxc/only-used-in-recursion`) and `noMisrefactoredShorthandAssign`
 (`oxc/misrefactored-assign-op`), the last two from the same Clippy rules as Biome's.
 
-## Unmapped, pending owner
+## Unmapped, decided by the owner
 
 Rules with no oxlint equivalent that are not on the brief's list: dropping one needs the owner's approval (brief, "Stop
 and ask before"). Each with what holds the check without it, and the recommendation.
@@ -211,9 +211,13 @@ findings over ESLint's default of 20; Biome's limit is 15).
 
 oxlint has 61 type-aware rules; 25 are mapped above. Of the rest, `dot-notation` stays off (`useLiteralKeys` is off),
 and `only-throw-error` and `require-await` are the type-aware forms of mapped rules. The 33 below are new. Adding one
-drops nothing, but it changes the gate: **pending owner**, whether each is on in task 2.4. Recommended: on for the ones
-with no finding (they cost nothing), off for `prefer-readonly-parameter-types`, and the others rule by rule with the
-findings of task 2.4.
+drops nothing, but it changes the gate. **Decided by the owner, 19 November:** all 33 on, in task 2.6c, their findings
+fixed: `no-confusing-void-expression` with `ignoreArrowShorthand` (an arrow's short body is how a handler is written
+here: no finding); `prefer-readonly-parameter-types` with `treatMethodsAsReadonly`, `ignoreInferredTypes` (an inferred
+parameter takes its type from a declaration the rule checks) and `allow` for the DOM, Node and sql.js types the site
+cannot make read-only, the site's own record types made read-only at their definitions. The earlier recommendation was
+Recommended: on for the ones with no finding (they cost nothing), off for `prefer-readonly-parameter-types`, and the
+others rule by rule with the findings of task 2.4.
 
 | oxlint rule | Findings: all (site / tests) |  |
 | -- | -- | -- |
@@ -298,7 +302,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noBannedTypes` | warn | `typescript/ban-types` | source | mapped |
 | `noCommaOperator` | warn | `eslint/no-sequences` | source | mapped |
 | `noDivRegex` | info | `eslint/no-div-regex` | source | mapped |
-| `noEmptyTypeParameters` | warn | (none) |  | pending owner: see above |
+| `noEmptyTypeParameters` | warn | (none) |  | accepted loss (owner, 19 November) |
 | `noExcessiveCognitiveComplexity` | info | `eslint/complexity` | inspired | mapped: another measure: cyclomatic, not cognitive (Q2) |
 | `noExcessiveNestedCallbacks` | info | `eslint/max-nested-callbacks` | source | mapped: `{"max": 5}`, Biome's default (ESLint's is 10) |
 | `noExcessiveNestedTestSuites` | info | `vitest/max-nested-describe` | source | mapped |
@@ -306,14 +310,14 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noFlatMapIdentity` | info | `unicorn/prefer-array-flat` | docs | mapped: broader: also `reduce`/`concat` flattening; on the brief's loss list, but mappable |
 | `noForEach` | warn | `unicorn/no-array-for-each` | source | mapped |
 | `noImplicitCoercions` | info | `eslint/no-implicit-coercion` | source | mapped |
-| `noRedundantDefaultExport` | warn | (none) |  | pending owner: see above |
+| `noRedundantDefaultExport` | warn | (none) |  | accepted loss (owner, 19 November) |
 | `noStaticOnlyClass` | warn | `typescript/no-extraneous-class`<br>`unicorn/no-static-only-class` | source | mapped |
-| `noThisInStatic` | warn | (none) |  | pending owner: see above |
+| `noThisInStatic` | warn | (none) |  | house rule, task 2.6b |
 | `noUnnecessaryTemplateExpression` | info | `typescript/no-unnecessary-template-expression` | inspired | mapped: type-aware |
 | `noUselessCatch` | info | `eslint/no-useless-catch` | source | mapped |
 | `noUselessCatchBinding` | info | `unicorn/prefer-optional-catch-binding` | docs | mapped |
 | `noUselessConstructor` | info | `eslint/no-useless-constructor` | source | mapped |
-| `noUselessContinue` | info | (none) |  | pending owner: see above |
+| `noUselessContinue` | info | (none) |  | accepted loss (owner, 19 November) |
 | `noUselessEmptyExport` | info | `typescript/no-useless-empty-export` | source | mapped |
 | `noUselessEscapeInRegex` | info | `eslint/no-useless-escape` | source | mapped |
 | `noUselessLabel` | info | `eslint/no-extra-label` | source | mapped |
@@ -321,7 +325,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noUselessRename` | info | `eslint/no-useless-rename` | source | mapped |
 | `noUselessReturn` | info | `eslint/no-useless-return` | inspired | mapped |
 | `noUselessStringConcat` | info | `eslint/no-useless-concat` | source | mapped |
-| `noUselessStringRaw` | info | (none) |  | pending owner: see above |
+| `noUselessStringRaw` | info | (none) |  | accepted loss (owner, 19 November) |
 | `noUselessSwitchCase` | info | `unicorn/no-useless-switch-case` | source | mapped |
 | `noUselessTernary` | info | `eslint/no-unneeded-ternary` | source | mapped |
 | `noUselessThisAlias` | info | `typescript/no-this-alias` | inspired | mapped |
@@ -341,9 +345,9 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `useOptionalChain` | warn | `typescript/prefer-optional-chain` | source | mapped: type-aware |
 | `useRegexLiterals` | warn | `eslint/prefer-regex-literals` | source | mapped |
 | `useRegexpTest` | info | `unicorn/prefer-regexp-test` | source | mapped |
-| `useSimpleNumberKeys` | warn | (none) |  | pending owner: see above |
-| `useSimplifiedLogicExpression` | info | (none) |  | pending owner: see above |
-| `useWhile` | warn | (none) |  | pending owner: see above |
+| `useSimpleNumberKeys` | warn | (none) |  | accepted loss (owner, 19 November) |
+| `useSimplifiedLogicExpression` | info | (none) |  | accepted loss (owner, 19 November) |
+| `useWhile` | warn | (none) |  | accepted loss (owner, 19 November) |
 
 ### correctness
 
@@ -364,13 +368,13 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noNodejsModules` | warn | `import/no-nodejs-modules` | source | mapped: off in `tests/**` and `vitest.config.ts` |
 | `noNonoctalDecimalEscape` | error | `eslint/no-nonoctal-decimal-escape` | source | mapped |
 | `noPrecisionLoss` | error | `eslint/no-loss-of-precision` | source | mapped |
-| `noPrivateImports` | warn | (none) |  | pending owner: see above |
-| `noProcessGlobal` | info | (none) |  | pending owner: see above |
+| `noPrivateImports` | warn | (none) |  | house rule, task 2.6b |
+| `noProcessGlobal` | info | (none) |  | house rule, task 2.6b |
 | `noSelfAssign` | error | `eslint/no-self-assign` | source | mapped |
 | `noSetterReturn` | error | `eslint/no-setter-return` | source | mapped |
 | `noStringCaseMismatch` | error | (none) |  | accepted loss |
 | `noSwitchDeclarations` | error | `eslint/no-case-declarations` | source | mapped |
-| `noUndeclaredDependencies` | error | (none) |  | pending owner: see above |
+| `noUndeclaredDependencies` | error | (none) |  | accepted loss (owner, 19 November) |
 | `noUnreachable` | error | `eslint/no-unreachable` | source | mapped |
 | `noUnreachableSuper` | error | `eslint/no-this-before-super` | source | mapped |
 | `noUnsafeFinally` | error | `eslint/no-unsafe-finally` | source | mapped |
@@ -385,9 +389,9 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noVoidTypeReturn` | error | (none) |  | accepted loss |
 | `useImportExtensions` | warn | `import/extensions` | inspired | mapped: the imports name `.ts` files (`rewriteRelativeImportExtensions`): `["always", {"ignorePackages": true}]` |
 | `useIsNan` | error | `eslint/use-isnan` | source | mapped |
-| `useJsonImportAttributes` | info | (none) |  | pending owner: see above |
+| `useJsonImportAttributes` | info | (none) |  | house rule, task 2.6b |
 | `useParseIntRadix` | info | `eslint/radix` | source | mapped |
-| `useSingleJsDocAsterisk` | info | (none) |  | pending owner: see above |
+| `useSingleJsDocAsterisk` | info | (none) |  | accepted loss (owner, 19 November) |
 | `useValidForDirection` | error | `eslint/for-direction` | source | mapped |
 | `useValidTypeof` | error | `eslint/valid-typeof` | source | mapped |
 | `useYield` | error | `eslint/require-yield` | source | mapped |
@@ -424,9 +428,9 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noAwaitInLoops` | info | `eslint/no-await-in-loop` | source | mapped: Q2 |
 | `noBarrelFile` | warn | `oxc/no-barrel-file` | docs | mapped: oxlint counts modules: set `threshold: 0` to refuse any barrel, as Biome does |
 | `noDelete` | warn | `eslint/no-delete-var` | source | mapped |
-| `noDynamicNamespaceImportAccess` | warn | (none) |  | pending owner: see above |
+| `noDynamicNamespaceImportAccess` | warn | (none) |  | accepted loss (owner, 19 November) |
 | `noNamespaceImport` | warn | `import/no-namespace` | docs | mapped: both from eslint-plugin-barrel-files' `avoid-namespace-import` |
-| `noReExportAll` | warn | (none) |  | pending owner: see above |
+| `noReExportAll` | warn | (none) |  | accepted loss (owner, 19 November) |
 | `useDomNodeTextContent` | warn | `unicorn/prefer-dom-node-text-content` | source | mapped |
 | `useTopLevelRegex` | warn | (none) |  | accepted loss |
 
@@ -444,11 +448,11 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noCommonJs` | warn | `import/no-commonjs`<br>`typescript/no-require-imports`<br>`typescript/no-var-requires` | source | mapped |
 | `noDefaultExport` | warn | `import/no-default-export` | source | mapped |
 | `noDoneCallback` | info | `jest/no-done-callback` | source | mapped |
-| `noEnum` | warn | (none) |  | pending owner: see above |
+| `noEnum` | warn | (none) |  | accepted loss (owner, 19 November) |
 | `noExcessiveClassesPerFile` | info | `eslint/max-classes-per-file` | source | mapped: Q2; `{"max": 1}`, both defaults |
 | `noExportedImports` | info | `unicorn/prefer-export-from` | docs | mapped |
 | `noInferrableTypes` | info | `typescript/no-inferrable-types` | source | mapped |
-| `noInlineStyles` | info | (none) |  | pending owner: see above |
+| `noInlineStyles` | info | (none) |  | accepted loss (owner, 19 November) |
 | `noMultiAssign` | info | `eslint/no-multi-assign` | inspired | mapped |
 | `noMultilineString` | info | `eslint/no-multi-str` | source | mapped |
 | `noNamespace` | warn | `typescript/no-namespace` | source | mapped |
@@ -495,7 +499,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `useImportType` | warn | `typescript/consistent-type-imports` | inspired | mapped |
 | `useLiteralEnumMembers` | warn | `typescript/prefer-literal-enum-member` | source | mapped |
 | `useNamedCaptureGroup` | info | `eslint/prefer-named-capture-group` | source | mapped: Q2 |
-| `useNodeAssertStrict` | warn | (none) |  | pending owner: see above |
+| `useNodeAssertStrict` | warn | (none) |  | house rule, task 2.6b |
 | `useNodejsImportProtocol` | info | `unicorn/prefer-node-protocol` | source | mapped |
 | `useNumberNamespace` | info | `unicorn/prefer-number-properties` | source | mapped |
 | `useNumericSeparators` | info | `unicorn/numeric-separators-style` | source | mapped |
@@ -545,7 +549,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noDuplicateElseIf` | error | `eslint/no-dupe-else-if` | source | mapped |
 | `noDuplicateEnumValues` | warn | `typescript/no-duplicate-enum-values` | source | mapped |
 | `noDuplicateObjectKeys` | error | `eslint/no-dupe-keys` | source | mapped |
-| `noDuplicateParameters` | error | (none) |  | pending owner: see above |
+| `noDuplicateParameters` | error | (none) |  | accepted loss (owner, 19 November) |
 | `noDuplicateTestHooks` | error | `vitest/no-duplicate-hooks` | inspired | mapped |
 | `noEmptyBlockStatements` | warn | `eslint/no-empty`<br>`eslint/no-empty-function`<br>`eslint/no-empty-static-block` | source | mapped |
 | `noEmptyInterface` | error | `typescript/no-empty-interface` | inspired | mapped |
@@ -574,12 +578,12 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noMisrefactoredShorthandAssign` | error | `oxc/misrefactored-assign-op` | docs | mapped: both from Clippy's `misrefactored_assign_op`; on the brief's loss list, but mappable |
 | `noNestedPromises` | warn | `promise/no-nesting` | source | mapped |
 | `noNonNullAssertedOptionalChain` | error | `typescript/no-non-null-asserted-optional-chain` | source | mapped |
-| `noOctalEscape` | warn | (none) |  | pending owner: see above |
+| `noOctalEscape` | warn | (none) |  | accepted loss (owner, 19 November) |
 | `noParametersOnlyUsedInRecursion` | warn | `oxc/only-used-in-recursion` | docs | mapped: both from Clippy's `only_used_in_recursion`; on the brief's loss list, but mappable |
 | `noProto` | warn | `eslint/no-proto` | source | mapped |
 | `noPrototypeBuiltins` | warn | `eslint/no-prototype-builtins`<br>`eslint/prefer-object-has-own` | source | mapped |
 | `noRedeclare` | error | `eslint/no-redeclare` | source | mapped |
-| `noRedundantUseStrict` | warn | (none) |  | pending owner: see above |
+| `noRedundantUseStrict` | warn | (none) |  | accepted loss (owner, 19 November) |
 | `noReturnAssign` | error | `eslint/no-return-assign` | source | mapped |
 | `noSelfCompare` | error | `eslint/no-self-compare` | source | mapped |
 | `noShadow` | warn | `eslint/no-shadow` | source | mapped |
@@ -611,12 +615,16 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `useNamespaceKeyword` | error | `typescript/prefer-namespace-keyword` | source | mapped |
 | `useNumberToFixedDigitsArgument` | warn | `unicorn/require-number-to-fixed-digits-argument` | source | mapped |
 | `useStaticResponseMethods` | info | `unicorn/prefer-response-static-json` | docs | mapped: narrower: `Response.json()` only, not `Response.redirect()` |
-| `useStrictMode` | warn | (none) |  | pending owner: see above |
+| `useStrictMode` | warn | (none) |  | accepted loss (owner, 19 November) |
 
 ## Rules for JSX
 
 They report on JSX, which no file has until Phase 4's `.tsx`. Mapped now so the first `.tsx` file is held from the
-start; the two unmapped ones are pending owner with the rest.
+start; the two unmapped ones are decided below.
+
+**Decided by the owner, 19 November:** `noSuspiciousSemicolonInJsx` becomes a house rule in task 4.2, when the first
+`.tsx` exists. `noSvgWithoutTitle` is held by construction instead: `Drawing` (`site/icons.ts`), the one maker of an
+SVG, hides each from assistive technology, and a house rule of 4.2 refuses `<svg>` in JSX outside it.
 
 | Biome rule | oxlint | Fit |
 | -- | -- | -- |
@@ -635,7 +643,7 @@ start; the two unmapped ones are pending owner with the rest.
 | `a11y/noRedundantAlt` | `jsx_a11y/img-redundant-alt` | source |
 | `a11y/noRedundantRoles` | `jsx_a11y/no-redundant-roles` | source |
 | `a11y/noStaticElementInteractions` | `jsx_a11y/no-static-element-interactions` | source |
-| `a11y/noSvgWithoutTitle` | (none): pending owner |  |
+| `a11y/noSvgWithoutTitle` | (none): held by construction (`Drawing`, task 2.6d; 4.2's rule on `<svg>`) |  |
 | `a11y/useAltText` | `jsx_a11y/alt-text` | source |
 | `a11y/useAnchorContent` | `jsx_a11y/anchor-has-content` | source |
 | `a11y/useAriaActivedescendantWithTabindex` | `jsx_a11y/aria-activedescendant-has-tabindex` | source |
@@ -666,16 +674,18 @@ start; the two unmapped ones are pending owner with the rest.
 | `style/useSelfClosingElements` | `react/self-closing-comp` | source |
 | `suspicious/noCommentText` | `react/jsx-no-comment-textnodes` | source |
 | `suspicious/noDuplicateJsxProps` | `react/jsx-no-duplicate-props` | source |
-| `suspicious/noSuspiciousSemicolonInJsx` | (none): pending owner |  |
+| `suspicious/noSuspiciousSemicolonInJsx` | (none): a house rule in 4.2 |  |
 | `suspicious/useGoogleFontDisplay` | `nextjs/google-font-display` | source |
 
 ## Rules for frameworks the site does not use
 
 92 rules that `"preset": "all"` enables but that report only on React, Next, Vue, Qwik, React Native, Drizzle, Turborepo
 or Playwright code (the tests drive the page through Vitest's browser API, not Playwright's), and four of Solid's
-domain. None reports today and none is ported. **Pending owner, as one group.** Solid's four are task 4.2's: three have
-an `eslint-plugin-solid` 0.20.0 rule (`solid/no-destructure`, `solid/prefer-for`, `solid/no-react-specific-props`),
-which oxlint loads as a JS plugin, not in `--rules`; `noDuplicatedSpreadProps` has none.
+domain. None reports today and none is ported. **Decided by the owner, 19 November:** the 88 of other frameworks are
+accepted losses (no code of theirs exists; adding a framework is a decision of its own). Solid's four are task 4.2's:
+three have an `eslint-plugin-solid` 0.20.0 rule (`solid/no-destructure`, `solid/prefer-for`,
+`solid/no-react-specific-props`), which oxlint loads as a JS plugin, not in `--rules`; `noDuplicatedSpreadProps` has
+none and becomes a house rule in 4.2.
 
 The 92: `noPlaywrightUselessAwait`, `noBeforeInteractiveScriptOutsideDocument`, `noChildrenProp`,
 `noComponentHookFactories`, `noJsxNamespace`, `noNestedComponentDefinitions`, `noNextAsyncClientComponent`,
