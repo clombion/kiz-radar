@@ -1,6 +1,8 @@
 # Task 4.2: lint for Solid
 
-Task 4.2 of [refactor-plan.md](refactor-plan.md). Status: planned, 19 November 2026.
+Task 4.2 of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026. `eslint-plugin-solid` 0.20.0 with
+`v2-strict` rule by rule (32 rules on, its warnings errors, its five off); nine house rules added and three widened,
+each with fixtures; oxlint runs 394 rules on 166 files with no finding; no stop.
 
 ## Summary
 
@@ -43,15 +45,15 @@ rule ships with fixtures, in `.tsx` where it reads JSX. No file of `site/` is `.
 | 5 | Which files | Solid's rules everywhere oxlint lints (one block in `rules`), the override of decision 4 for `**/*.tsx` | The rules about JSX find nothing in `.ts`; the reactive ones (`no-single-arg-create-effect`, `no-write-in-pure-computation`, `no-module-scope-reactive-primitive`…) apply to a `.ts` module of signals as well. |
 | 6 | Overlapping rules | Kept both where `v2-strict` and Biome's mapping overlap (`solid/jsx-no-duplicate-props` and `react/jsx-no-duplicate-props`, `solid/jsx-no-script-url` and `react/jsx-no-script-url`, `solid/no-innerhtml` and `house/markup`, `solid/style-prop` and `house/styles`) | Dropping either is a stop ("dropping a Biome rule"), and each pair differs: `no-innerhtml` lets a static string through (`allowStatic`), `style-prop` reads only a literal or a template. Two findings on one line is the cost. |
 | 7 | `jsx-a11y` and Solid's `for` | `settings["jsx-a11y"].attributes`: `{"for": ["for"]}` | Solid writes a label's `for` (`htmlFor` is `solid/no-react-specific-props`' to refuse); without the mapping `jsx-a11y/label-has-associated-control` refuses `<label for="q">` (probe). |
-| 8 | The JSX rules of 2.3 | Already on everywhere: the 38 of Biome's `error`/`warn` JSX rules (2.4, decision 6); the 8 `info` ones stay off. The probe shows them reporting on `.tsx` | "Mapped now so the first `.tsx` is held" (lint-rules.md). One gap: `jsx-a11y/no-autofocus` reads `autoFocus` only, and Solid's attribute is `autofocus` (lowercase, `@solidjs/web`'s `jsx.d.ts:910`); the `attributes` setting does not reach it (probe). For the owner (Open issues). |
+| 8 | The JSX rules of 2.3 | Already on everywhere: the 38 of Biome's `error`/`warn` JSX rules (2.4, decision 6); the 8 `info` ones stay off. The probe shows them reporting on `.tsx` | "Mapped now so the first `.tsx` is held" (lint-rules.md). One gap: `jsx-a11y/no-autofocus` reads `autoFocus` only, and Solid's attribute is `autofocus` (lowercase, `@solidjs/web`'s `jsx.d.ts:910`); the `attributes` setting does not reach it (probe). Closed by `house/focuses` (Differences). |
 | 9 | Fixtures for Solid's rules | None; the `v2-strict` test of the design model | The harness's rule list is `lint/plugin.ts`'s; the plan's "with fixtures" names the four migration rules, which are house rules here. |
 | 10 | The harness and `.tsx` | A rule's `good` file may be `good.ts` or `good.tsx`; oxfmt lets `lint/**/*.tsx` in | A rule on `**/*.tsx` alone has no `.ts` file it is on for. The fixtures stay out of tsc, knip, jscpd and the tree's oxlint run by folder (`lint/fixtures/`), whatever their extension; oxfmt's include said `lint/**/*.ts`, so `.tsx` fixtures would be unformatted while CONTRIBUTING says oxfmt lays them out. |
-| 11 | Names | `thens`, `flags`, `mirrors`, `legacy` (the migration rules); `styles`; `semicolons`, `spreads`, `svgs` | One plural noun each, as the house rules are named. |
+| 11 | Names | `thens`, `flags`, `mirrors`, `legacy` (the migration rules); `styles`, `focuses`; `semicolons`, `spreads`, `svgs` | One plural noun each, as the house rules are named. |
 | 12 | `thens` | A call of `.then` (by name, optional, or `['then']`), on `**/*.tsx` | The brief: "No `.then` in components"; the network module is `.ts`. `.catch` and `await` (an event handler's send) are not named, so not refused. |
 | 13 | `flags` | A name bound by a variable declarator (an identifier, in an array or object pattern, a default, a rest) that is `loading`, `pending`, `busy`, `fetching`, `error` or `failed`, any case, with or without `is`, on `**/*.tsx` | The brief's list, matched at the declarator: `const [loading, setLoading] = createSignal<boolean>(false)` and `let loading = true` are both a declarator binding `loading`; an import (`loading` from `ui.ts`, anything from `pending.ts`), a property read and a parameter are not. A store's key (`createStore({ loading })`) is not a variable: not refused. |
 | 14 | `mirrors` | `createEffect` or `createRenderEffect` whose apply half (second argument) is a setter (`setX`, by name), or a function whose body is only calls of setters, each passed what the apply half was given (its first parameter, used in an argument) | The brief: "an effect whose apply half only calls a `setX(…)` with what it read". A setter given a constant (`setPage(0)` when a filter changes) reacts, it does not mirror: let through. |
 | 15 | `legacy` | On `**/*.tsx`: a call of `replaceChildren`, `createElement` or `createElementNS` (on any object), and an import, re-export or `import()` of `dom.ts` (`…/dom.ts`, `…/dom`), types included | The brief's three, absolute as its review asks (`dom.ts`'s non-rendering helpers move out before the first view, so the rule needs no exception). |
-| 16 | `styles` | A `style` attribute whose value is not an object literal (`style={{ … }}`, TypeScript's wrappers let through) is refused, everywhere oxlint lints | `@solidjs/compiler` 2.0.2 writes a literal string into the template's HTML (`<div style=color:red>`), which `style-src 'self'` refuses; any other value goes through `style()`, which sets a string as `cssText`, outside `dom.ts`'s rule of one property at a time; an object literal is set with `setStyleProperty` (compiler output, Evidence). `solid/style-prop` reads only a literal or a template, and Solid's type takes a string (`style?: CSSProperties \| string`). |
+| 16 | `styles` | The `style` prop in JSX is refused, whatever it is given, and so is a `style:` prop, everywhere oxlint lints: a style is a class, or set through a ref with `style.setProperty` for a value known only at run time | `@solidjs/compiler` 2.0.2 writes a string, and an object's constant values (`style={{ color: 'red' }}`, a mixed object's constant part, `style:color="red"`), into the template's HTML as a `style` attribute, which `style-src 'self'` refuses (Chromium, Differences); which values it sets at run time rests on its internals. The first version let an object literal through: wrong (the audit). |
 | 17 | `states` in JSX | Widened to `site/*.tsx`; and a state key given to a component as a prop (`<Badge state="cancelled" />`, or in braces) is refused, as an argument is | A component's prop is the call's argument of JSX. An element's attribute is not (it is `h()`'s attribute object, which the rule never read). |
 | 18 | `buttons` in JSX | Widened to `site/*.tsx`; a `<button>` whose `type` is not the string `button` (absent, `submit`, `reset`, an expression) is refused | The brief's "Solid form" of the rule: a button never submits a form. `react/button-has-type` refuses only an absent or unknown type. |
 | 19 | `markup` in JSX | A JSX attribute `innerHTML` or `outerHTML`, bare or in a namespace (`prop:innerHTML`, which the compiler sets as the property); the exemption gains `site/icons.tsx` | The compiler sets `innerHTML` as the property (Evidence), the door `Drawing.into` keeps; `outerHTML` as `markup`'s other name. |
@@ -98,21 +100,23 @@ rule ships with fixtures, in `.tsx` where it reads JSX. No file of `site/` is `.
 
 ## Commits
 
-01. This plan.
-02. Pin `eslint-plugin-solid` and turn on `v2-strict` (decisions 1 to 8), with the test of decision 9 and
-    lint-rules.md's Solid section.
-03. `states` in `.tsx`, with the harness's `good.tsx` and oxfmt's `.tsx` fixtures (decision 10).
-04. `buttons` in `.tsx`.
-05. `markup` and the `innerHTML` prop.
-06. `styles`.
-07. `thens`.
-08. `flags`.
-09. `mirrors`.
-10. `legacy`.
-11. `semicolons`.
-12. `spreads`.
-13. `svgs`.
-14. The docs' counts, CONTRIBUTING, the plan's row and this plan's status.
+| Commit | What |
+| -- | -- |
+| `e353c5d4` | this plan |
+| `36e86938` | `eslint-plugin-solid` pinned, `v2-strict` on, the test holding it to the preset, lint-rules.md's Solid section |
+| `43a7d021` | `states` in `.tsx` and a component's prop; the harness's `good.tsx`; oxfmt's `.tsx` fixtures |
+| `66508411` | `buttons` in `.tsx` |
+| `15f903a5` | `markup` and the `innerHTML` prop |
+| `493691b8` | `styles`: the `style` prop refused |
+| `38eeeed5` | `thens` |
+| `342cbc40` | `flags` |
+| `8059e1aa` | `mirrors` |
+| `8c9585ae` | `legacy` |
+| `4e857bc3` | `semicolons`, and the harness's JSX marker |
+| `f866d940` | `spreads` |
+| `b62e56db` | `svgs` |
+| `9182cbf0` | `focuses` (the audit) |
+| the last | the docs' counts, CONTRIBUTING, the plan's row and this status |
 
 Each rule's commit adds its row to lint-rules.md's table of house rules, which `rules.test.ts` holds to the config.
 
@@ -137,10 +141,49 @@ Each claim above re-read against the code and `node_modules` before the first co
 - `site/` has no `.tsx` and `tests/site/hello.tsx` is the tree's one (`find`); knip passes with the package and no
   importer.
 
-## Open issues
+## Differences from the plan
 
-- `jsx-a11y/no-autofocus` misses Solid's `autofocus` (decision 8): for the owner, a house rule or a fixture-proved
-  setting before a view with an input is ported.
+- **`mirrors` reports at the first setter** (or the setter passed), not at the effect: oxfmt puts each argument of a
+  two-function call on its own line and moves a comment after `createEffect(`, so the marked line had to be one a setter
+  starts.
+- **The harness's JSX marker.** In JSX's text `// refused` is text, and the `semicolons` fixtures need a marker on the
+  line of the semicolon: `tests/site/rules.test.ts` also reads `{/* refused */}` anywhere on a line. oxfmt is kept off
+  `lint/fixtures/semicolons/`, whose JSX text it would lay out again (it moved `;` onto the next element's line).
+- **`prefer-readonly-parameter-types`' `allow`** gains oxlint's `JSXAttribute` and `JSXOpeningElement`, as it holds its
+  other syntax-tree types, for the shared JSX helpers in `lint/shapes.ts` (`tagOf`, `isComponent`, `attributeName`,
+  `attributeOf`, `valueOf`, and `unwrapped`, now exported).
+- **The `buttons` fixture declares its `h()`** rather than importing `dom.ts`, which `legacy` refuses in a `.tsx` file.
+- **`semicolons` and `spreads` report each repeat**, where Biome reports once per element; each fixture marks every one.
+
+## The audit's corrections
+
+An audit of the unpushed commits found these; each fix is folded into the commit of its rule, with fixtures that fail on
+the rule as it was and pass now.
+
+- **`styles` (high).** The compiler writes a style object's constant values into the template (`<p style=color:red>`;
+  `style:color="red"` the same). Probe: a component built with the site's plugin, on a page under `style-src 'self'`, in
+  Chromium: the console says "Refused to apply inline style … style-src 'self'" and a `securitypolicyviolation`
+  (`style-src-attr`) fires; Chromium still paints the cloned element red, so the refusal shows in the console, which
+  task 4.3's check makes a failure, not on the page. The rule now refuses the `style` prop and `style:` props
+  altogether; its fixtures add the constant, mixed and dynamic objects and `style:color`, and `good.tsx` has no style.
+- **`focuses` (new).** `jsx-a11y/no-autofocus` misses Solid's `autofocus` and its `attributes` setting does not reach it
+  (measured): a house rule on `**/*.tsx` refuses `autofocus` in any spelling (`autoFocus`, `prop:autofocus`,
+  `attr:autofocus`, an object spread's key). The jsx-a11y click rules' blind spot for `on:click` and `oncapture:click`
+  needs no rule: the compiler refuses both namespaces ("removed in Solid 2.0", as it does `attr:`).
+- **`mirrors`.** Now caught: `{ return setB(v) }`, `void setB(v)`, `setB?.(v)`, a cast apply half, `Solid.createEffect`
+  and `import { createEffect as effect }`; `setB(await f(v))` too, since the brief makes async data a memo. A method
+  (`o.setB(v)`, `el.setAttribute(…)`) is not: a signal's setter is a name, and a method is the DOM work an effect is
+  for.
+- **`flags`.** Now caught: a function declared by a flag's name, a class field (`#private` too), a setter destructured
+  alone (`const [, setLoading]`; the name list gains `set` before it). A loop's variable (`for (const failed of …)`) is
+  let through.
+- **`thens`:** `p.then.call`, `.bind` and `const { then } = p`. **`legacy`:** `./dom.js`; the path must be relative, so
+  `@testing-library/dom` is let through; `createElement` destructured or handed on with `.call`/`.bind`. **`spreads`:**
+  read through `as`, `!` and an optional chain, a key in quotes the same as a name. **`buttons`:** `type` given twice,
+  or a spread after `type="button"`. **`markup`:** `{...{ innerHTML }}`. **`svgs`:** `<Dynamic component="svg">` and
+  `dynamic(() => 'svg')`.
+- **The `v2-strict` test** compares the set of the plugin's rules on with the preset's, so a rule outside it (an extra
+  `solid/action-yield-after-await`) fails it.
 
 ## Done when
 

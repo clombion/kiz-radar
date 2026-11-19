@@ -7,16 +7,17 @@ rule, with no category turned on, so a rule not listed as mapped is not enabled.
 
 Measured on 19 November 2026, Biome 2.6.3 and oxlint 1.94.0 (the version task 2.4 pins). The 8 accepted losses are the
 brief's; the owner decided the rest on 19 November (below): of the 22 unmapped rules, 5 became house rules and 17
-accepted losses; the rules for frameworks the site does not use are losses but Solid's, task 4.2's; the 33 type-aware
-rules new in oxlint are on; Q2, the info-level rules, is answered.
+accepted losses; the rules for frameworks the site does not use are losses but Solid's, on since task 4.2; the 33
+type-aware rules new in oxlint are on; Q2, the info-level rules, is answered.
 
 **In oxlint since task 2.4** (`.oxlintrc.json`, `mise run lint:oxlint`): every mapped rule, with the settings and
 exceptions below, as an error: those of Biome's `error` and `warn` rules, the info-level ones as Q2 decides, and the JSX
 rules mapped from Biome's `error` and `warn` (the JSX ones Biome reports as `info` stay off). Off: every accepted loss
-and the rules Biome turned off. **On since task 2.6c:** the 33 type-aware rules new in oxlint (below). Biome ran all of
-its rules beside it until task 2.7; since then it reads only the stylesheet and the JSON configs. The findings the
-rules' oxlint versions made on the code were fixed, or suppressed on their line with the reason in
-[oxlint's suppressed findings](../lint-false-positives.md).
+and the rules Biome turned off. **On since task 2.6c:** the 33 type-aware rules new in oxlint (below). **On since task
+4.2:** `eslint-plugin-solid`'s `v2-strict` rules and nine house rules for JSX ([Solid's rules](#solids-rules), the house
+rules' table). Biome ran all of its rules beside it until task 2.7; since then it reads only the stylesheet and the JSON
+configs. The findings the rules' oxlint versions made on the code were fixed, or suppressed on their line with the
+reason in [oxlint's suppressed findings](../lint-false-positives.md).
 
 ## Counts
 
@@ -28,8 +29,8 @@ rules' oxlint versions made on the code were fixed, or suppressed on their line 
 | mapped | 261: 202 by Biome's source metadata, 39 "inspired by", 20 by the rules' docs |
 | accepted losses | 8 of the brief's 11 (three have an equivalent) |
 | unmapped, decided by the owner (19 November) | 22: 5 become house rules (task 2.6b), 17 accepted losses |
-| for JSX (Phase 4's `.tsx`) | 48: 46 mapped; `noSuspiciousSemicolonInJsx` a house rule in 4.2; `noSvgWithoutTitle` held by construction |
-| for frameworks the site does not use | 92: 88 accepted losses; Solid's four in 4.2 (three from `eslint-plugin-solid`, `noDuplicatedSpreadProps` a house rule) |
+| for JSX (Phase 4's `.tsx`) | 48: 46 mapped (38 on, 8 info-level off); `noSuspiciousSemicolonInJsx` the house rule `semicolons`; `noSvgWithoutTitle` held by construction and `svgs` (task 4.2) |
+| for frameworks the site does not use | 92: 88 accepted losses; Solid's four on since 4.2 (three from `eslint-plugin-solid`, `noDuplicatedSpreadProps` the house rule `spreads`) |
 | for CSS, JSON, GraphQL, HTML or YAML | 53, staying with Biome |
 | Off in Biome (`biome.jsonc`), staying off | 22: 19 for TypeScript, 3 for CSS; and 3 off in one folder |
 | Info-level rules among today's (report, never fail) | 96, 9 of them with findings (Q2) |
@@ -128,9 +129,12 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, and four helpers (`dismiss`, `dom`, `modal`, `tabs`) imported by `tests/site/page.browser.test.ts`: the rule's options in each file's override |
 | `thens` | `*.tsx` | (none) |
 
-The 19 house rules: the 13 that were Grit's, moved to oxlint's plugin (`session` in task 2.5, the twelve others in task
+The 28 house rules: the 13 that were Grit's, moved to oxlint's plugin (`session` in task 2.5, the twelve others in task
 2.6), the 5 unmapped rules the owner kept (task 2.6b) and `env`, `node/no-process-env`'s reach for a `process` imported
-from `node:process` (task 2.6b); Biome runs no plugin.
+from `node:process` (task 2.6b); Biome runs no plugin. Task 4.2 added nine for Solid's `.tsx`: the brief's four
+migration rules (`thens`, `flags`, `mirrors`, `legacy`, on `.tsx` alone), `styles`, `focuses`, and the owner's three of
+19 November (`semicolons`, `spreads`, `svgs`); and it taught `states`, `buttons` and `markup` the JSX form of what they
+refuse.
 
 ## Accepted losses
 
@@ -178,7 +182,7 @@ by tsc, the parser, knip or a mapped rule are accepted losses.
 | `performance/noDynamicNamespaceImportAccess` | warn | No namespace import, and `import/no-namespace` (mapped) refuses one. Accept. |
 | `performance/noReExportAll` | warn | No module re-exports (`export *`); `oxc/no-barrel-file` with `threshold: 0` refuses a barrel. Accept. |
 | `style/noEnum` | warn | tsc's `erasableSyntaxOnly` refuses an enum. Accept. |
-| `style/noInlineStyles` | info | The CSP refuses inline styles at run time; Phase 4 adds a rule refusing a string `style` (row 4.2). Accept, held by 4.2. |
+| `style/noInlineStyles` | info | The CSP refuses inline styles at run time; `house/styles` refuses the `style` prop in JSX (task 4.2). Accept, held by `styles`. |
 | `style/useNodeAssertStrict` | warn | No file imports `node:assert`; tests assert with Vitest's `expect`. Kept: house rule `house/asserts` (task 2.6b). |
 | `suspicious/noDuplicateParameters` | error | A syntax error in a module (every file here is one): oxc's parser and tsc refuse it. Accept. |
 | `suspicious/noOctalEscape` | warn | A syntax error in strict mode, which every module is: the parser refuses it. Accept. |
@@ -664,13 +668,15 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 
 ## Rules for JSX
 
-They report on JSX, which no file has until Phase 4's `.tsx`. Mapped now so the first `.tsx` file is held from the
-start; the two unmapped ones are decided below.
+They report on JSX, which no file of the site has until Phase 4's `.tsx`. Mapped so the first `.tsx` file is held from
+the start; the two unmapped ones are decided below. Since task 4.2 they are seen reporting on `.tsx`, but
+`jsx_a11y/no-autofocus`, which reads React's `autoFocus` and not Solid's `autofocus`: `house/focuses` refuses either
+([Solid's rules](#solids-rules)).
 
-**Decided by the owner, 19 November:** `noSuspiciousSemicolonInJsx` becomes a house rule in task 4.2, when the first
-`.tsx` exists. `noSvgWithoutTitle` is held by construction instead: `Drawing` (`site/icons.ts`), the one maker of an
-SVG, takes only the drawings `pipeline/drawings.py` writes (`site/drawings.ts`), each hidden from assistive technology,
-and a house rule of 4.2 refuses `<svg>` in JSX outside it.
+**Decided by the owner, 19 November:** `noSuspiciousSemicolonInJsx` is a house rule, `semicolons` (task 4.2).
+`noSvgWithoutTitle` is held by construction instead: `Drawing` (`site/icons.ts`), the one maker of an SVG, takes only
+the drawings `pipeline/drawings.py` writes (`site/drawings.ts`), each hidden from assistive technology, and `house/svgs`
+(task 4.2) refuses `<svg>` in JSX outside it.
 
 | Biome rule | oxlint | Fit |
 | -- | -- | -- |
@@ -689,7 +695,7 @@ and a house rule of 4.2 refuses `<svg>` in JSX outside it.
 | `a11y/noRedundantAlt` | `jsx_a11y/img-redundant-alt` | source |
 | `a11y/noRedundantRoles` | `jsx_a11y/no-redundant-roles` | source |
 | `a11y/noStaticElementInteractions` | `jsx_a11y/no-static-element-interactions` | source |
-| `a11y/noSvgWithoutTitle` | (none): held by construction (`Drawing`, task 2.6d; 4.2's rule on `<svg>`) |  |
+| `a11y/noSvgWithoutTitle` | (none): held by construction (`Drawing`, task 2.6d; `house/svgs`, task 4.2) |  |
 | `a11y/useAltText` | `jsx_a11y/alt-text` | source |
 | `a11y/useAnchorContent` | `jsx_a11y/anchor-has-content` | source |
 | `a11y/useAriaActivedescendantWithTabindex` | `jsx_a11y/aria-activedescendant-has-tabindex` | source |
@@ -720,7 +726,7 @@ and a house rule of 4.2 refuses `<svg>` in JSX outside it.
 | `style/useSelfClosingElements` | `react/self-closing-comp` | source |
 | `suspicious/noCommentText` | `react/jsx-no-comment-textnodes` | source |
 | `suspicious/noDuplicateJsxProps` | `react/jsx-no-duplicate-props` | source |
-| `suspicious/noSuspiciousSemicolonInJsx` | (none): a house rule in 4.2 |  |
+| `suspicious/noSuspiciousSemicolonInJsx` | `house/semicolons` (task 4.2) |  |
 | `suspicious/useGoogleFontDisplay` | `nextjs/google-font-display` | source |
 
 ## Rules for frameworks the site does not use
@@ -731,7 +737,7 @@ domain. None reports today and none is ported. **Decided by the owner, 19 Novemb
 accepted losses (no code of theirs exists; adding a framework is a decision of its own). Solid's four are task 4.2's:
 three have an `eslint-plugin-solid` 0.20.0 rule (`solid/no-destructure`, `solid/prefer-for`,
 `solid/no-react-specific-props`), which oxlint loads as a JS plugin, not in `--rules`, and which are on since 4.2
-(below); `noDuplicatedSpreadProps` has none and becomes a house rule in 4.2.
+(below); `noDuplicatedSpreadProps` has none and is the house rule `spreads` (task 4.2).
 
 The 92: `noPlaywrightUselessAwait`, `noBeforeInteractiveScriptOutsideDocument`, `noChildrenProp`,
 `noComponentHookFactories`, `noJsxNamespace`, `noNestedComponentDefinitions`, `noNextAsyncClientComponent`,
@@ -766,7 +772,11 @@ of its rules read. In a `.tsx` file ESLint's `no-unassigned-vars` gives way to S
 counts `ref={el}` as an assignment. `tests/site/rules.test.ts` holds the config to the plugin's own preset. Where a
 Solid rule and one mapped from Biome refuse the same thing (`jsx-no-duplicate-props`, `jsx-no-script-url`), both are on.
 `jsx-a11y` reads Solid's `for` as a label's control (`settings["jsx-a11y"].attributes`); its `no-autofocus` reads
-`autoFocus` alone, not Solid's `autofocus`, a gap left to the owner ([task 4.2](../../refactor-task-4.2.md)).
+`autoFocus` alone, not Solid's `autofocus`, which its `attributes` setting does not reach: `house/focuses` refuses
+autofocus in any spelling in a `.tsx` file ([task 4.2](../../refactor-task-4.2.md)). The click rules
+(`click-events-have-key-events`, `no-static-element-interactions`) read `onClick` and its kin; Solid 2's compiler
+refuses the `on:` and `oncapture:` namespaces ("removed in Solid 2.0"), so no handler escapes them that way and no rule
+is added for it.
 
 ## Other languages
 
