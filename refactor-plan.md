@@ -47,7 +47,7 @@ Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "
 | 3.1 | Spike: Vite on this code | pin `vite` at Vitest's version; inputs `main`, `review`, `icons` with fixed names, flat `public/js/`, `base: './'`, no HTML, no preload polyfill; check what it does with the four `new URL(…, import.meta.url)` sites and with `icons.js`'s exports; done ([refactor-task-3.1.md](refactor-task-3.1.md): `vite` 8.3.5, no `icons` input, nothing reads it since 2.6d) | evidence for each, in the phase report draft |
 | 3.2 | Switch the build | `vite.config.ts`; `build` = `vite build` then `vendor`; `tsconfig.json` `noEmit`, `allowImportingTsExtensions`; knip, oxlint and `tests/site/tsconfig.json` know the new file; done but the root-file branch's removal, the owner's ([refactor-task-3.2.md](refactor-task-3.2.md): `vite` 8.3.8, `main.js`, `review.js`, `shared-<hash>.js`, no warning) | `mise run build:site` builds; `generate:check` clean (`render:design` checks nothing the build touches since 2.6d) |
 | 3.3 | Tests against the build | `pages.browser.test.ts` passes; a smoke set of routes and `review.html` in a frame of the built site under the CSP, added to `pages.browser.test.ts`; done ([refactor-task-3.3.md](refactor-task-3.3.md): eleven pages, each drawn with no alert, failed request, CSP violation or console error) | green |
-| 3.4 | Served files and docs | list `public/` before and after; load index, review, a community page, an old `#community/<key>` link; `build:site` description, `docs/guides/the-site.md`, `CONTRIBUTING.md` | Phase 3 report written (and the `pages.yml` comment mentioned, not edited) |
+| 3.4 | Served files and docs | list `public/` before and after; load index, review, a community page, an old `#community/<key>` link; `build:site` description, `docs/guides/the-site.md`, `CONTRIBUTING.md`; done ([refactor-task-3.4.md](refactor-task-3.4.md): 57 module scripts gone, `shared-<hash>.js` come, the rest the same; the loads are 3.3's smoke set) | Phase 3 report written (and the `pages.yml` comment mentioned, not edited) |
 
 ## Phase 4: Solid 2.0, view by view
 
@@ -401,3 +401,95 @@ the page opened for the hidden-drawing check.
 - `noExcessiveLinesPerFile` is off for `site.css` (3,781 lines), with the stylesheet ordered by component.
 
 **Next:** Phase 3, the Vite build. Q3 (Solid 2.0.0 or 2.0.1) is open for the owner.
+
+### Phase 3
+
+Done on 19 November 2026, at `957f5a45`. Vite 8.3.8 bundles `site/` into `public/js/` as `main.js`, `review.js` and one
+`shared-<hash>.js`; `tsc` type-checks first and emits nothing; the committed HTML, `vendor`, `mise run generate` and the
+deploy workflow are as they were. Every page and file served before is served, but the per-module scripts the bundle
+replaces. The brief's "done when", as its review restated it: `pages.browser.test.ts` loads the build (every route, the
+older `#community/<key>` link and `review.html`, each in a frame under its page's CSP) and passes with the rest of the
+suite; `site/` changed only by four `/* @vite-ignore */` comments (below). Task 3.4's plan is
+[refactor-task-3.4.md](refactor-task-3.4.md).
+
+**What changed**, task by task (`git log c63a5684..`):
+
+- **3.1** ([plan](refactor-task-3.1.md)): a spike in a scratch copy; the repository unchanged but the record. `4400854d`
+  Record task 3.1: Vite on this code.
+- **3.2** ([plan](refactor-task-3.2.md)): `0bd287cd` Build the site with Vite (`vite.config.ts`, `vite` pinned, `build`
+  and `types`, `tsconfig.json` `noEmit`, knip, oxlint and the docs); `fc52a630` Ask for the site's data and libraries in
+  the tests as the built site does (the four comments).
+- **3.3** ([plan](refactor-task-3.3.md)): `85f10d40` Test the built site's pages in a frame under their
+  Content-Security-Policy (eleven pages and the probe's own tests).
+- **3.4** ([plan](refactor-task-3.4.md)): `957f5a45` Say in CONTRIBUTING.md that Vite bundles the site and a frame tests
+  the build; and this report.
+- Not the refactor's: `f5520674` Refresh fares; `3a65002d`, a merge of `origin/main`.
+
+**Counts**, at `4400854d` (the last `tsc` build, built again in a worktree) and now:
+
+- Served files under `public/`, `data/` aside (its built files are `build:data`'s, the same at both): 88 files and
+  2,715,912 bytes, then 32 and 2,502,483. `js/`: 59 files, 400,583 bytes (gzip -9 each 138,695, all together 119,472),
+  then 3, 187,154 (`main.js` 124,466, `review.js` 19,324, `shared-ggZAhEyJ.js` 43,364; gzip -9 each 65,111, together
+  63,956). Went: 57 module files; came: the shared chunk; `main.js` and `review.js` kept by name. The other 29 (the
+  committed pages, community pages and cards, stylesheet, fonts, icons, manifest, and `vendor/`) the same at the same
+  sizes. `index.html` loads 54 scripts of `js/`, then 2; `review.html` 22, then 2 ([3.1](refactor-task-3.1.md)).
+- Tests, by Phase 1's command: 414 in 60 files, then 428 in 60, all passing: `pages.browser.test.ts` 5 to 19
+  ([3.3](refactor-task-3.3.md)).
+- Build (`pnpm run build`, warm): 1.26 s, then 1.4 to 1.6 s (`tsc` checking, then `vite build`, then `vendor`).
+- oxlint: 354 rules on 155 files, then on 156 (`vite.config.ts`); no finding and no warning. Suppressions: one more
+  oxlint (`jest/no-done-callback` on `test.for`, 3.3).
+
+**Decisions the brief did not settle**, each in its plan:
+
+- `vite` 8.3.8, the current release by Q6, within Vitest 5.0.5's `^6.4.0 || ^7 || ^8`; one Vite in the lockfile (3.2,
+  decision 1).
+- `build.rolldownOptions`, not `rollupOptions`: Vite 8 bundles with Rolldown ([3.1](refactor-task-3.1.md), decision 3).
+- No `icons` input: nothing reads `public/js/icons.js` since 2.6d, so `render:design` checks nothing the build touches
+  ([3.1](refactor-task-3.1.md), decision 2).
+- The shared chunk's name carries its hash: Rolldown shortens the names a chunk exports, so a `main.js` cached from
+  before a deploy must meet the chunk it was built with, not a newer one of the same name ([3.2](refactor-task-3.2.md),
+  decision 3, reversing 3.1's decision 5).
+- `tsc -p .` kept in `build`, so a commit that fails to type-check is never deployed; Vite does not type-check (3.2,
+  decision 4; for the owner to override).
+- `/* @vite-ignore */` on the four `new URL(…, import.meta.url)` sites (`site/db.ts` two, `site/map.ts`,
+  `site/review.ts`): no warning, and the tests resolve `../data/` and `../vendor/` as the build does
+  ([3.2](refactor-task-3.2.md), decision 6). A change to `site/` beyond imports and the entry point, which the brief's
+  "done when" did not foresee.
+- `modulePreload: false`: no helper for a dynamic `import()`, which the site has none of (`vite.config.ts`); the brief's
+  "no preload polyfill" alone is a no-op without an HTML input ([3.1](refactor-task-3.1.md), decision 3).
+- knip's `entry` loses `site/main.ts` and `site/review.ts`: its Vite plugin reads them from `vite.config.ts` (3.2,
+  decision 9); `import/no-default-export` off for `vite.config.ts` as for `vitest.config.ts`
+  ([3.2](refactor-task-3.2.md), decision 8).
+- The smoke set: one page per route, typed over `routes.ts` so a new route needs a case, the older link and
+  `review.html` by hand, each read once the page is quiet ([3.3](refactor-task-3.3.md), decisions 1 to 4).
+
+**Brief errors**, each with its evidence in the plan named:
+
+- "`design/render.cjs:37` imports `public/js/icons.js`" and "a three-entry build that must keep `icons.js`'s exports":
+  since 2.6d `render.cjs` reads `pipeline/drawings.py`; nothing imports `icons.js` ([3.1](refactor-task-3.1.md)).
+- Rollup's options: Vite 8's are `build.rolldownOptions`, `rollupOptions` a deprecated alias
+  ([3.1](refactor-task-3.1.md)).
+- "No preload polyfill" asks for nothing: with no HTML input Vite writes none, the output byte-identical with or without
+  the option ([3.1](refactor-task-3.1.md), decision 3).
+- "One `.js` per module, 57 files": 59 at `4400854d` (3.1, and 3.4's list).
+- "`vite` … pinned at the version Vitest already resolves (8.3.5)": the owner's Q6 answer made it the current release,
+  8.3.8, which pnpm meets Vitest's peers with ([3.2](refactor-task-3.2.md)).
+- "Nothing in `site/` rewritten beyond imports and the entry point": the four comments above were needed for a build
+  with no warning and tests that resolve the addresses as the build does.
+
+**Site bugs found:** none. 3.3's fail-checks broke the bundle, the policy, the fonts and the probe one by one, and each
+was caught; the build drew every page clean as `tsc`'s had.
+
+**Open issues:**
+
+- The test server's root-file branch ([3.2](refactor-task-3.2.md), decision 7): removing it, `first()`, `ROOT_FILE`, its
+  reader in `tests/site/app.ts` and the `'/kiz.sqlite'` case of `server.browser.test.ts` (a test, so on the stop list)
+  awaits the owner. It serves only that case now; the pages' `mark.svg` and `loading.svg` pass through it to `public/`.
+- `.github/workflows/pages.yml` (stop list, not edited): `:3` "Compiles the site's TypeScript (site/) into public/js/"
+  and `:38`'s step name "Compile the site, and build its data from the export" are stale; the step runs
+  `mise run build:site`, which bundles with Vite, so the deploy is unchanged. For the owner.
+- The intermittent check failure: a hover in `gantt-apart` timed out once in 3.1 and passed alone; the cause is still
+  unknown.
+- The browser tests in the cloud container need `CHROMIUM=/opt/pw-browsers/chromium`, the commit hook included.
+
+**Next:** Phase 4, Solid 2.0 view by view. Q3 (Solid 2.0.0 or 2.0.1) is open for the owner.
