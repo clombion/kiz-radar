@@ -16,7 +16,9 @@ export const scrolling = (): ScrollBehavior => (calm() ? 'auto' : 'smooth');
 export const away = () => h('span', { 'aria-hidden': 'true' }, ' ↗');
 
 export const flag = (cc: string | null | undefined): string =>
-  cc?.length === 2 ? String.fromCodePoint(...[...cc.toUpperCase()].map((c) => 0x1_f1_e6 + c.charCodeAt(0) - 65)) : '';
+  cc?.length === 2
+    ? String.fromCodePoint(...Array.from(cc.toUpperCase(), (c) => 0x1_f1_e6 + c.charCodeAt(0) - 65))
+    : '';
 
 // where a festival is: its country's flag and its city
 export const place = (e: { readonly country_code: string | null; readonly city: string | null }): Kid[] => [

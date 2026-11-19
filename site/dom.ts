@@ -9,13 +9,17 @@ export type Kid = Node | string | number | false | null | undefined | readonly K
 // one, which the page's CSP allows where it refuses a style attribute), the rest as written (true: present)
 type Value = string | number | boolean | null | undefined;
 // an element's classes: one of the stylesheet's, or a list of them, where false, null or undefined stand for none
-export type Classes = ClassName | readonly (ClassName | false | null | undefined)[];
+type ClassList = readonly (ClassName | false | null | undefined)[];
+export type Classes = ClassName | ClassList;
+// a value of any attribute: a class's name is a string among the values
 export type Attrs = Readonly<{ class?: Classes | false | null | undefined }> &
-  Readonly<Record<string, Value | EventListener | Readonly<Record<string, string>> | Classes>>;
+  Readonly<Record<string, Value | EventListener | Readonly<Record<string, string>> | ClassList>>;
 
+// a list of classes (Array.isArray leaves a read-only list in what it does not narrow)
+const isList = (v: Attrs[string]): v is ClassList => Array.isArray(v);
 const set = (el: HTMLElement, k: string, v: Attrs[string]): void => {
   if (v == null || v === false) return;
-  if (Array.isArray(v)) el.className = v.filter(Boolean).join(' ');
+  if (isList(v)) el.className = v.filter(Boolean).join(' ');
   else if (typeof v === 'function') el.addEventListener(k.replace(ON, ''), v);
   else if (typeof v !== 'object') el.setAttribute(k, v === true ? '' : String(v));
   else if (k === 'style') for (const [p, x] of Object.entries(v)) el.style.setProperty(p, x);

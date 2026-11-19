@@ -11,6 +11,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { afterAll, expect, test } from 'vitest';
 import plugin from '../../lint/plugin.ts';
+import { int, list, nullable, type Reader, record, text } from '../../site/json.ts';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const FIXTURES = 'lint/fixtures';
@@ -20,18 +21,28 @@ const OXLINT = `${ROOT}node_modules/.bin/oxlint`;
 const MARKER = /\/\/ refused(?:: (?<rules>[\w-]+(?:, [\w-]+)*))?$/u;
 const HOUSE = /^house\((?<rule>[\w-]+)\)$/u;
 
-interface Report {
-  diagnostics?: { code: string; filename: string; labels: { span: { line: number } }[] }[];
-}
 type Rules = Readonly<Record<string, unknown>>;
-interface Config {
-  rules: Rules;
-  overrides: readonly { files: readonly string[]; rules: Rules | null }[];
-  ignorePatterns: readonly string[];
-}
+// a config's rules, each setting as it is
+const settings: Reader<Rules> = (v, at) => {
+  if (typeof v !== 'object' || v === null || Array.isArray(v)) throw new TypeError(`${at}: no object of rules`);
+  return Object.fromEntries(
+    Object.keys(v).map((name): [string, unknown] => {
+      const setting: unknown = Reflect.get(v, name);
+      return [name, setting];
+    }),
+  );
+};
+const CONFIG = record({
+  rules: settings,
+  overrides: list(record({ files: list(text), rules: nullable(settings) })),
+  ignorePatterns: list(text),
+});
+// oxlint's findings, each by its rule's code, its file and the line of its first label
+const DIAGNOSTICS = list(record({ code: text, filename: text, labels: list(record({ span: record({ line: int }) })) }));
 
 // .oxlintrc.json as oxlint reads it, and its house rules alone
-const real: Config = JSON.parse(spawnSync(OXLINT, ['--print-config'], { cwd: ROOT, encoding: 'utf8' }).stdout);
+const printed: unknown = JSON.parse(spawnSync(OXLINT, ['--print-config'], { cwd: ROOT, encoding: 'utf8' }).stdout);
+const real = CONFIG(printed, 'oxlint --print-config');
 const house = (rules: Rules | null): Rules =>
   Object.fromEntries(Object.entries(rules ?? {}).filter(([name]) => name.startsWith('house/')));
 
@@ -75,10 +86,11 @@ function findings(): string[] {
     }),
   );
   const run = spawnSync(OXLINT, ['-c', config, '-f', 'json', '.'], { cwd: dir, encoding: 'utf8' });
-  const report: Report = JSON.parse(run.stdout.startsWith('{') ? run.stdout : '{}');
+  const report: unknown = JSON.parse(run.stdout.startsWith('{') ? run.stdout : '{}');
   // no report is oxlint failing to lint, which must not read as fixtures with nothing refused
-  if (report.diagnostics === undefined) throw new Error(run.stderr + run.stdout);
-  return report.diagnostics.map(
+  if (typeof report !== 'object' || report === null || !('diagnostics' in report))
+    throw new Error(run.stderr + run.stdout);
+  return DIAGNOSTICS(report.diagnostics, 'diagnostics').map(
     (d) => `${FIXTURES}/${d.filename}:${d.labels[0]?.span.line ?? 0} ${HOUSE.exec(d.code)?.groups?.['rule'] ?? d.code}`,
   );
 }

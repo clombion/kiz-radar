@@ -17,7 +17,9 @@ const app = await startSite({
   now: '2027-01-12',
   route: week,
   storage: { local: { seeded: 'local' }, session: { seeded: 'session' } },
-  plant: (db) => db.run('UPDATE events SET title = ?, listed_title = ? WHERE id = ?', [PLANTED, PLANTED, PRAGUE_GOLD]),
+  plant: (db) => {
+    db.run('UPDATE events SET title = ?, listed_title = ? WHERE id = ?', [PLANTED, PLANTED, PRAGUE_GOLD]);
+  },
 });
 const shown = () => document.querySelector('main')?.textContent ?? '';
 // where the page arrived, and the database's day then, before any test opens another route or day
@@ -37,7 +39,8 @@ test('the page starts on the day given and the rows planted', async () => {
 });
 
 test('the page starts at the route given, as a visitor who reloads the page at its address arrives', () => {
-  expect(arrived).toEqual({ hash: week, shown: expect.stringContaining(JANUARY), day: '2027-01-12' });
+  expect({ hash: arrived.hash, day: arrived.day }).toEqual({ hash: week, day: '2027-01-12' });
+  expect(arrived.shown).toContain(JANUARY);
 });
 
 // the origin's own storage, as another test file's page sees it: a same-origin frame's

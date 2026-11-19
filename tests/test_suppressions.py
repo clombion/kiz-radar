@@ -79,7 +79,6 @@ SITE_ALLOWED = Counter(
         ('site/routes.ts', 'typescript/no-unsafe-type-assertion'): 1,
         ('site/rows.ts', 'typescript/no-unsafe-type-assertion'): 1,
         ('site/wording.ts', 'typescript/no-unsafe-type-assertion'): 1,
-        ('site/wording.ts', 'typescript/no-unnecessary-condition'): 2,
         ('tests/site/app.browser.test.ts', 'unicorn/new-for-builtins'): 1,
         ('tests/site/calendar.test.ts', 'jest/no-done-callback'): 1,
         ('tests/site/community.browser.test.ts', 'unicorn/numeric-separators-style'): 1,

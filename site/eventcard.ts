@@ -201,11 +201,7 @@ function smoothly(card: HTMLElement, change: () => void, opening: boolean): void
 
 export function eventCard(
   e: Festival,
-  {
-    hint = null,
-    open = false,
-    onMap = false,
-  }: { readonly hint?: Kid; readonly open?: boolean; readonly onMap?: boolean } = {},
+  { hint = null, open, onMap = false }: { readonly hint?: Kid; readonly open?: boolean; readonly onMap?: boolean } = {},
 ): HTMLElement {
   const more = h('div', { class: 'festival-more', hidden: true });
   const toggles: HTMLElement[] = [];

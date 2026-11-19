@@ -444,7 +444,12 @@ export function sentenceView(
   // The sentence fades in once its fonts are in (or after a second at most), so it is laid out once, in its own
   // fonts, instead of jumping when they swap in.
   done(
-    Promise.race([document.fonts.ready, new Promise((fontsOrNot) => setTimeout(fontsOrNot, 1000))]).then(() => {
+    Promise.race([
+      document.fonts.ready,
+      new Promise((fontsOrNot) => {
+        setTimeout(fontsOrNot, 1000);
+      }),
+    ]).then(() => {
       if (signal.aborted) return;
       refit();
       requestAnimationFrame(() => toggle(hero, 'arriving', false));

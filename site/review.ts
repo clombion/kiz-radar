@@ -60,14 +60,14 @@ function accessWords(): string {
       return 'Checking the token…';
     case 'refused':
       return 'Read-only · token refused';
-    case 'ok': {
-      const day = expires();
-      if (day === null) return `Writing as ${access.login}`;
-      const left = daysLeft(day, new Date());
-      if (left < 0) return `Token expired on ${day}`;
-      return `Writing as ${access.login} · ${plural(left, 'day')} left${left <= SOON ? ': make a new one soon' : ''}`;
-    }
+    case 'ok':
+      break;
   }
+  const day = expires();
+  if (day === null) return `Writing as ${access.login}`;
+  const left = daysLeft(day, new Date());
+  if (left < 0) return `Token expired on ${day}`;
+  return `Writing as ${access.login} · ${plural(left, 'day')} left${left <= SOON ? ': make a new one soon' : ''}`;
 }
 
 async function checkToken(t: string): Promise<void> {
@@ -284,7 +284,9 @@ function settle(id: string, claim: Claim, pressed: HTMLButtonElement, said: HTML
     settledIds = settled(r.built_at);
     pressed.textContent = '✓ Written';
     toggle(pressed, 'just-picked', true);
-    await new Promise((ok) => setTimeout(ok, BEAT));
+    await new Promise((ok) => {
+      setTimeout(ok, BEAT);
+    });
     const q = queue(r, at.tab);
     if (mine === generation && q) go(at.tab, nextOpen(q.ids, at.i, settledIds));
   });

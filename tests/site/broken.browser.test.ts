@@ -6,7 +6,9 @@ import { startSite } from './app.ts';
 
 const app = await startSite({
   now: '2026-11-01',
-  plant: (db) => db.exec("PRAGMA ignore_check_constraints = ON; UPDATE artists SET kind = 'planted'"),
+  plant: (db) => {
+    db.exec("PRAGMA ignore_check_constraints = ON; UPDATE artists SET kind = 'planted'");
+  },
 });
 
 test('a view that throws while it builds says so in its place, and the page around it stays', async () => {

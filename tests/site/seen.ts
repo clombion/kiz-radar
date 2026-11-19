@@ -16,12 +16,14 @@ export function COMM(key: string, params: Readonly<Record<string, string>> = {})
 
 // What an element shows, as text: what only a screen reader hears inside it (visually-hidden) left out, and nothing
 // when the element itself is for a screen reader alone (heard reads that).
-export function said(el: Element | null | undefined): string | undefined {
-  const shown = el?.cloneNode(true);
-  if (!(shown instanceof Element)) return;
+const shownText = (shown: Element): string => {
   if (shown.matches('.visually-hidden')) return '';
   for (const hidden of shown.querySelectorAll('.visually-hidden')) hidden.remove();
   return shown.textContent.replace(/\s+/gu, ' ').trim();
+};
+export function said(el: Element | null | undefined): string | undefined {
+  const shown = el?.cloneNode(true);
+  return shown instanceof Element ? shownText(shown) : undefined;
 }
 
 // What a screen reader hears of an element, its hidden words in.
@@ -264,7 +266,10 @@ export const axisOf = (row: HTMLElement | undefined): (string | undefined)[] =>
 // measured.
 export async function laidOut(title: string): Promise<HTMLElement | undefined> {
   const row = opened(title);
-  for (const _ of [1, 2, 3]) await new Promise(requestAnimationFrame);
+  for (const _ of [1, 2, 3])
+    await new Promise((frame) => {
+      requestAnimationFrame(frame);
+    });
   return row;
 }
 

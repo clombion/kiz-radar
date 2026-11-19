@@ -74,10 +74,11 @@ export function say<P extends Point, K extends Key<P>, V extends Kid = Kid>(
 ): (string | V | null)[] | null {
   const r = row(point, key);
   const forms: Readonly<Record<string, string>> = r.forms;
-  if (form !== undefined && !Object.hasOwn(forms, form))
-    throw new Error(`${point} ${key}: no form ${form} in pipeline/states.py`);
-  // oxlint-disable-next-line typescript/no-unnecessary-condition -- form is optional: the generic Form<P, K> is read as a literal
-  const words = form === undefined ? r.wording : forms[form];
+  // the form's name as the text it is: the generic Form<P, K> is a literal only once P and K are known
+  const named: string | undefined = form;
+  if (named !== undefined && !Object.hasOwn(forms, named))
+    throw new Error(`${point} ${key}: no form ${named} in pipeline/states.py`);
+  const words = named === undefined ? r.wording : forms[named];
   if (words == null) return null;
   return words
     .split(VALUES)
@@ -86,8 +87,7 @@ export function say<P extends Point, K extends Key<P>, V extends Kid = Kid>(
       const name = VALUE.exec(part)?.groups?.['name'];
       if (name === undefined) return part;
       if (!Object.hasOwn(values, name))
-        // oxlint-disable-next-line typescript/no-unnecessary-condition -- form is optional: the generic Form<P, K> is read as a literal
-        throw new Error(`${point} ${key}${form === undefined ? '' : ` (${form})`}: no value for {${name}}`);
+        throw new Error(`${point} ${key}${named === undefined ? '' : ` (${named})`}: no value for {${name}}`);
       return values[name] ?? null;
     });
 }

@@ -39,7 +39,9 @@ async function restsOffBy(words: string): Promise<number> {
 // slide: the first page drawn is href's.
 async function markedOpening(href: string): Promise<string | undefined> {
   const marks: (string | undefined)[] = [];
-  const seen = new MutationObserver(() => marks.push(root.dataset['vt']));
+  const seen = new MutationObserver(() => {
+    marks.push(root.dataset['vt']);
+  });
   const at = main();
   if (at === null) throw new Error('the page has no #main');
   seen.observe(at, { childList: true });
@@ -63,7 +65,10 @@ const sliding = () =>
       (a) => a.effect instanceof KeyframeEffect && a.effect.pseudoElement?.startsWith('::view-transition') === true,
     );
 const frames = async (n: number) => {
-  for (const _ of Array.from({ length: n })) await new Promise(requestAnimationFrame);
+  for (const _ of Array.from({ length: n }))
+    await new Promise((frame) => {
+      requestAnimationFrame(frame);
+    });
 };
 
 test('moving to another tab, the slime reaches out an arm and a drop, which are gone once it rests', async () => {

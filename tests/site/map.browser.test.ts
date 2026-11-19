@@ -38,7 +38,9 @@ test('the map left before its world outline arrives says nothing went wrong', as
   const [world, ...again] = askedWorld();
   expect([world?.init.signal?.aborted, again]).toEqual([true, []]);
   // and nothing said of it, once the giving up has run its course
-  await new Promise((settled) => setTimeout(settled, 100));
+  await new Promise((settled) => {
+    setTimeout(settled, 100);
+  });
   expect(document.querySelector('[role="alert"]')).toBeNull();
 });
 

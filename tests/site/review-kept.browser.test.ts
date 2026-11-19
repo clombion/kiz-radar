@@ -28,7 +28,8 @@ const railLead = (name: string): string | undefined => {
 };
 
 test('the item in the address is the one a reload shows', () => {
-  expect(arrived).toEqual({ name: 'Bo', shown: expect.stringContaining('2 of 2') });
+  expect(arrived.name).toBe('Bo');
+  expect(arrived.shown).toContain('2 of 2');
 });
 
 test('the token kept for the tab is checked with GitHub as the page starts, and offers the choices', async () => {

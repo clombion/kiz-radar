@@ -204,6 +204,9 @@ function reachable(page: Page, html: Document): (url: URL) => boolean {
   }
   return (url) => origins.includes(url.origin);
 }
+// why a signal gave up, as a real request rejects with it: its AbortError or TimeoutError
+const reasonOf = (signal: AbortSignal): Error =>
+  signal.reason instanceof Error ? signal.reason : new Error(String(signal.reason));
 // an answer the helper gives, given up as a real request is when its signal aborts (net.ts's deadline, a view left)
 async function within(
   signal: AbortSignal | null | undefined,
@@ -211,10 +214,10 @@ async function within(
 ): Promise<Response> {
   return await new Promise((ok, refused) => {
     if (signal?.aborted === true) {
-      refused(signal.reason);
+      refused(reasonOf(signal));
       return;
     }
-    signal?.addEventListener('abort', () => refused(signal.reason), { once: true });
+    signal?.addEventListener('abort', () => refused(reasonOf(signal)), { once: true });
     Promise.resolve().then(make).then(ok).catch(refused);
   });
 }
@@ -251,7 +254,8 @@ async function start(
   const clock = new Proxy(RealDate, {
     apply: () => new RealDate(at).toString(),
     construct: (real, given: readonly unknown[], made: NewableFunction): object => {
-      const date: object = Reflect.construct(real, given.length === 0 ? [at] : given, made);
+      const date: unknown = Reflect.construct(real, given.length === 0 ? [at] : given, made);
+      if (!(date instanceof RealDate)) throw new TypeError('the clock made no Date');
       return date;
     },
     get: (real, key): unknown => (key === 'now' ? () => at : Reflect.get(real, key)),

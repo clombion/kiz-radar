@@ -269,8 +269,9 @@ function parts(item: Item): Parts {
         ['City · ', comingUp(item.city.upcoming, 'past festivals only')],
       ];
     case 'tag':
-      return tagParts(item);
+      break;
   }
+  return tagParts(item);
 }
 
 export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
