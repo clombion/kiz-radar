@@ -68,12 +68,12 @@ SITE_SUPPRESSION = re.compile(r'(?:biome-ignore|oxlint-(?:disable|enable)|@ts-|e
 SITE_ALLOWED = Counter(
     {
         ('public/css/site.css', 'lint/complexity/noImportantStyles'): 1,
-        ('site/artists.ts', 'lint/plugin/states'): 1,
         ('site/json.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
         ('site/routes.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
         ('site/rows.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
         ('site/wording.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
         # oxlint's, each in docs/lint-false-positives.md
+        ('site/artists.ts', 'house/states'): 1,
         ('site/globals.d.ts', 'import/no-namespace'): 1,
         ('site/json.ts', 'typescript/no-unsafe-type-assertion'): 1,
         ('site/routes.ts', 'typescript/no-unsafe-type-assertion'): 1,

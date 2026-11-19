@@ -106,6 +106,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `promises` | everywhere oxlint lints | (none) |
 | `routes` | everywhere oxlint lints | `site/routes.ts` |
 | `session` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
+| `states` | `site/*.ts` | (none) |
 | `storage` | everywhere oxlint lints | `site/hints.ts`, `site/kept.ts`, `tests/**` |
 
 The house rules move from Grit to oxlint's plugin, `session` since task 2.5, the twelve others in task 2.6; until then

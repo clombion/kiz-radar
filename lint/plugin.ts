@@ -11,6 +11,7 @@ import { markup } from './markup.ts';
 import { promises } from './promises.ts';
 import { routes } from './routes.ts';
 import { session } from './session.ts';
+import { states } from './states.ts';
 import { storage } from './storage.ts';
 
 // oxlint's rule, as its RuleTester takes one: the package exports no other name for it
@@ -18,6 +19,6 @@ export type Rule = Parameters<RuleTester['run']>[1];
 
 const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } = {
   meta: { name: 'house' },
-  rules: { buttons, classes, clicks, fetch, formats, home, markup, promises, routes, session, storage },
+  rules: { buttons, classes, clicks, fetch, formats, home, markup, promises, routes, session, states, storage },
 };
 export default plugin;

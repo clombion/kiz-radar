@@ -438,6 +438,11 @@
       "rules": { "house/classes": "off" }
     },
     {
+      // house/states: a state in the site's modules is KEY.<point>.<NAME> (site/states.ts), held to the table
+      "files": ["site/*.ts"],
+      "rules": { "house/states": "error" }
+    },
+    {
       // house/markup: an element of the site gets markup from icons.ts alone, and is built with dom.ts's h()
       "files": ["site/**"],
       "rules": { "house/markup": "error" }
