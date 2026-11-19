@@ -32,7 +32,7 @@ import type { Database } from 'sql.js';
 import { onTestFinished, vi } from 'vitest';
 import { commands } from 'vitest/browser';
 import type { Review } from '../../site/pending.ts';
-import { DATA_FILE, ROOT_FILE } from './community.fixture.ts';
+import { DATA_FILE } from './community.fixture.ts';
 
 type Day = `${number}-${number}-${number}`;
 type Now = Day | Date;
@@ -297,7 +297,7 @@ async function start(
       if (given === undefined) throw new TypeError(`${url.href}: no other host answers in a test (elsewhere)`);
       return await within(init.signal, async () => await given(url, init));
     }
-    const file = (DATA_FILE.exec(url.pathname) ?? ROOT_FILE.exec(url.pathname))?.groups?.['file'];
+    const file = DATA_FILE.exec(url.pathname)?.groups?.['file'];
     return await (served !== undefined && file === page.data
       ? within(init.signal, () => new Response(served))
       : within(init.signal, async () => {
