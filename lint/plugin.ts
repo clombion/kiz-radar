@@ -8,6 +8,7 @@ import { fetch } from './fetch.ts';
 import { formats } from './formats.ts';
 import { home } from './home.ts';
 import { markup } from './markup.ts';
+import { process } from './process.ts';
 import { promises } from './promises.ts';
 import { routes } from './routes.ts';
 import { session } from './session.ts';
@@ -29,6 +30,7 @@ const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } 
     formats,
     home,
     markup,
+    process,
     promises,
     routes,
     session,

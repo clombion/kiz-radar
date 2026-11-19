@@ -3,11 +3,13 @@
 import { readFile, stat } from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { extname, join, normalize } from 'node:path';
+import process from 'node:process';
 import { playwright } from '@vitest/browser-playwright';
 import { configDefaults, defineConfig } from 'vitest/config';
 import { DATA_FILE, FIXTURE_DATA, ROOT_FILE } from './tests/site/community.fixture.ts';
 
-// oxlint-disable-next-line node/no-process-env -- the machine may name its own Chromium, the one setting read from the environment
+// the machine may name its own Chromium, the one setting read from the environment (node/no-process-env, which refused
+// it, reads the global process alone)
 const { CHROMIUM } = process.env; // a Chromium to run the browser tests in, when not Playwright's own
 
 // The built site (public/), served under /kiz-radar/ as GitHub Pages serves it, for the tests that load it whole in a

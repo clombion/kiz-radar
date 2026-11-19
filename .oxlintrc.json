@@ -444,6 +444,12 @@
       "rules": { "house/states": "error" }
     },
     {
+      // house/process: the tests and their config, which run in Node, import process from node:process; the site has
+      // none (tsconfig.json's types)
+      "files": ["tests/**", "vitest.config.ts"],
+      "rules": { "house/process": "error" }
+    },
+    {
       // house/tests: a test imports no view's values, and drives a view through the page (tests/site/app.ts)
       "files": ["tests/**"],
       "rules": { "house/tests": "error" }

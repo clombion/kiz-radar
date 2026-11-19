@@ -103,6 +103,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `formats` | everywhere oxlint lints | `site/ui.ts` |
 | `home` | everywhere oxlint lints | (none) |
 | `markup` | `site/**` | `site/icons.ts` |
+| `process` | `tests/**`, `vitest.config.ts` | (none) |
 | `promises` | everywhere oxlint lints | (none) |
 | `routes` | everywhere oxlint lints | `site/routes.ts` |
 | `session` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
@@ -370,7 +371,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noNonoctalDecimalEscape` | error | `eslint/no-nonoctal-decimal-escape` | source | mapped |
 | `noPrecisionLoss` | error | `eslint/no-loss-of-precision` | source | mapped |
 | `noPrivateImports` | warn | (none) |  | house rule, task 2.6b |
-| `noProcessGlobal` | info | (none) |  | house rule, task 2.6b |
+| `noProcessGlobal` | info | (none) |  | house rule `house/process` |
 | `noSelfAssign` | error | `eslint/no-self-assign` | source | mapped |
 | `noSetterReturn` | error | `eslint/no-setter-return` | source | mapped |
 | `noStringCaseMismatch` | error | (none) |  | accepted loss |
@@ -461,7 +462,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noNonNullAssertion` | warn | `typescript/no-non-null-assertion` | source | mapped |
 | `noParameterAssign` | warn | `eslint/no-param-reassign` | source | mapped |
 | `noParameterProperties` | warn | `typescript/parameter-properties` | inspired | mapped |
-| `noProcessEnv` | info | `node/no-process-env` | source | mapped |
+| `noProcessEnv` | info | `node/no-process-env` | source | mapped: reads the global `process` alone, so not `process.env` once `process` is imported from `node:process`, as `house/process` has the tests do (Biome's reads both) |
 | `noRestrictedGlobals` | warn | `eslint/no-restricted-globals` | source | mapped: restricts nothing without options, in both |
 | `noRestrictedImports` | warn | `eslint/no-restricted-imports` | source | mapped: restricts nothing without options, in both |
 | `noRestrictedTypes` | warn | `typescript/no-restricted-types` | source | mapped: restricts nothing without options, in both |

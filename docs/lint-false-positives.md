@@ -24,5 +24,4 @@ other finding in the code.
 | `tests/site/app.browser.test.ts` | `unicorn/new-for-builtins` | `Date()` called without `new` is one of the forms of the clock the test reads (the stub's `apply`); `String(new Date())` would test another. |
 | `tests/site/main.browser.test.ts` | `typescript/no-misused-promises` | the test leaves a rejected promise uncaught on purpose: only the window's listener may see it. |
 | `site/artists.ts` | `house/states` | `next` is an order the address names (`sort=next`), not `tier_today`'s state of that name. |
-| `vitest.config.ts` | `node/no-process-env` | the machine may name its own Chromium (`CHROMIUM`), the one setting read from the environment. |
 | `site/json.ts`, `site/rows.ts`, `site/routes.ts`, `site/wording.ts` | `typescript/no-unsafe-type-assertion` | the four assertions Biome's `noUnsafeTypeAssertion` is suppressed on too, each with its reason in the `biome-ignore` above it. Written `oxlint-disable-line`, on the line itself, as Biome's comment must come right before the line; they become `oxlint-disable-next-line` when Biome stops linting the TypeScript (task 2.7). |

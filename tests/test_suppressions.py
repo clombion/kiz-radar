@@ -87,7 +87,6 @@ SITE_ALLOWED = Counter(
         ('tests/site/main.browser.test.ts', 'jest/no-done-callback'): 1,
         ('tests/site/main.browser.test.ts', 'typescript/no-misused-promises'): 1,
         ('tests/site/server.browser.test.ts', 'jest/no-done-callback'): 1,
-        ('vitest.config.ts', 'node/no-process-env'): 1,
         ('tests/site/roster.test.ts', '@ts-expect-error'): 2,  # the shapes the types no longer hold
         ('tests/site/states.test.ts', '@ts-expect-error'): 2,
     }
