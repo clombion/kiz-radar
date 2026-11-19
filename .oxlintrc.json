@@ -504,8 +504,8 @@
       "rules": { "house/storage": "off" }
     },
     {
-      // house/fetch: every request is net.ts's get()
-      "files": ["site/net.ts"],
+      // house/fetch: every request is net.ts's get(), and tests/site/app.ts owns the page's fetch for the tests
+      "files": ["site/net.ts", "tests/site/app.ts"],
       "rules": { "house/fetch": "off" }
     },
     {
