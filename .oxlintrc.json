@@ -523,7 +523,9 @@
     "house/statics": "error",
     "house/storage": "error",
     // no style prop in JSX: a class, or a ref and style.setProperty; the page's Content-Security-Policy refuses inline style
-    "house/styles": "error"
+    "house/styles": "error",
+    // an SVG is icons.ts's Drawing's (Biome's noSvgWithoutTitle held by construction, owner, 19 November)
+    "house/svgs": "error"
   },
   "overrides": [
     {
@@ -648,6 +650,11 @@
       // house/markup: icons.ts puts a drawing's SVG, from drawings.ts, in an element (Drawing.into), and its .tsx to come
       "files": ["site/icons.ts", "site/icons.tsx"],
       "rules": { "house/markup": "off" }
+    },
+    {
+      // house/svgs: icons.ts, as it becomes .tsx, is where a drawing's SVG is put in
+      "files": ["site/icons.tsx"],
+      "rules": { "house/svgs": "off" }
     },
     {
       // house/privates reads the module an import names from disk, beside the importing file: oxlint shows a rule one

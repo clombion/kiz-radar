@@ -25,6 +25,7 @@ import { states } from './states.ts';
 import { statics } from './statics.ts';
 import { storage } from './storage.ts';
 import { styles } from './styles.ts';
+import { svgs } from './svgs.ts';
 import { tests } from './tests.ts';
 import { thens } from './thens.ts';
 
@@ -58,6 +59,7 @@ const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } 
     statics,
     storage,
     styles,
+    svgs,
     tests,
     thens,
   },

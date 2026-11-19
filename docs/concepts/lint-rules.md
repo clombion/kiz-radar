@@ -123,6 +123,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `statics` | everywhere oxlint lints | (none) |
 | `storage` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `styles` | everywhere oxlint lints | (none) |
+| `svgs` | everywhere oxlint lints | `site/icons.tsx` |
 | `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, and four helpers (`dismiss`, `dom`, `modal`, `tabs`) imported by `tests/site/page.browser.test.ts`: the rule's options in each file's override |
 | `thens` | `*.tsx` | (none) |
 
