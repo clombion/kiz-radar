@@ -119,16 +119,31 @@ def biome_files() -> list[str]:
     return tracked(*(f':(exclude){g[1:]}' if g.startswith('!') else f':(glob){g}' for g in includes))
 
 
+# the files oxlint lints in a folder it is given, by their extensions
+OXLINTED = ('.js', '.mjs', '.cjs', '.jsx', '.ts', '.mts', '.cts', '.tsx')
+
+
+class Package(BaseModel):
+    """package.json's scripts, the one place the paths oxlint lints are named."""
+
+    scripts: dict[str, str]
+
+
 def oxlint_files() -> list[str]:
-    """The committed files oxlint checks: what lint:oxlint names (site/, tests/, lint/, vitest.config.ts), but the
-    folders .oxlintrc.json's ignorePatterns leaves out."""
-    return tracked(
-        ':(glob)site/**/*.ts',
-        ':(glob)tests/**/*.ts',
-        ':(glob)lint/**/*.ts',
-        'vitest.config.ts',
-        ':(exclude)lint/fixtures',
+    """The committed files oxlint checks: those package.json's lint:oxlint names, a folder's by their extensions, but
+    the folders .oxlintrc.json's ignorePatterns leaves out."""
+    script = Package.model_validate_json((ROOT / 'package.json').read_text(encoding='utf-8')).scripts['lint:oxlint']
+    command, *paths = script.split()
+    assert command == 'oxlint', f'lint:oxlint runs oxlint and names its paths alone: {script!r}'
+    assert paths, 'lint:oxlint names the paths oxlint lints'
+    assert not any(p.startswith('-') for p in paths), (
+        f'lint:oxlint passes no option; .oxlintrc.json sets them: {script!r}'
     )
+    found = re.search(r'"ignorePatterns": (\[[^\]]*\])', (ROOT / '.oxlintrc.json').read_text(encoding='utf-8'))
+    assert found, '.oxlintrc.json names the folders it leaves out in ignorePatterns'
+    ignored = TypeAdapter(list[str]).validate_json(found[1])
+    files = tracked(*paths, *(f':(exclude){g}' for g in ignored))
+    return [f for f in files if f in paths or f.endswith(OXLINTED)]
 
 
 def site_files() -> list[str]:
