@@ -1,7 +1,8 @@
 // A dialog over the page (the search, the quick view of who's going). It has a history entry of its own, so a
 // phone's back button closes it instead of leaving the page; closing it any other way (×, Escape, a tap outside)
 // removes that entry. go() opens a link once the entry is gone, so the link isn't undone by it.
-import { button, h, type Kid } from './dom.ts';
+import type { Kid } from './bits.ts';
+import { button, h } from './dom.ts';
 import { done } from './report.ts';
 import { go } from './routes.ts';
 

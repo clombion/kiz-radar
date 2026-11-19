@@ -1,3 +1,4 @@
+import type { Kid } from './bits.ts';
 // The review dashboard (review.html): the pipeline's decisions that wait for the admin, one queue per tab of the
 // header's sub-navigation, and what it did lately, from review.json (pipeline/review.py, built with the site's
 // database). A queue shows one item at a time, with what the machine found (a pair compared side by side, the
@@ -7,7 +8,7 @@
 // shows no choice to make. The festivals and the orphaned claims are settled in a session (docs/guides/), so they are
 // listed. The tab and the item are in the address; the items settled since the build are kept in the browser.
 import { type Claim, homeClaim, mergeClaim } from './claims.ts';
-import { button, choices, h, type Kid, nodes, paged, toggle } from './dom.ts';
+import { button, choices, h, nodes, paged, toggle } from './dom.ts';
 import { check, write } from './github.ts';
 import { Drawing } from './icons.ts';
 import { expires, forgetToken, keepExpires, keepToken, markSettled, remembered, settled, token } from './kept.ts';

@@ -1,7 +1,8 @@
+import type { Kid } from './bits.ts';
 // Formatting helpers shared by the views: dates, countries, flight links, the home city.
 import { today } from './days.ts';
 import { q, site, sql } from './db.ts';
-import { h, type Kid } from './dom.ts';
+import { h } from './dom.ts';
 import { MEDIA } from './media.ts';
 import { currency } from './money.ts';
 import { str } from './rows.ts';

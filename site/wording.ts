@@ -3,7 +3,7 @@
 // A point, a state or a form is typed by the table, so one it doesn't have fails to compile; a key read from the
 // database is parsed into its point's type where the row is read (rows.ts state).
 
-import type { Kid } from './dom.ts';
+import type { Kid } from './bits.ts';
 import type { LucideName } from './drawings.ts';
 import { type Counts, type Disposition, type StateRow, STATES } from './states.ts';
 

@@ -1,16 +1,12 @@
 // Elements built from their tag, attributes and contents. All text goes in as text nodes, never as HTML.
+import type { Classes, ClassList, Kid } from './bits.ts';
 import type { ClassName } from './classes.ts';
 
 const ON = /^on/u;
 
-// what an element holds: nodes and text, nested as lists; null, undefined and false hold nothing
-export type Kid = Node | string | number | false | null | undefined | readonly Kid[];
 // an element's attributes: on… a listener, class its classes, dataset its data-…, style its properties (set one by
 // one, which the page's CSP allows where it refuses a style attribute), the rest as written (true: present)
 type Value = string | number | boolean | null | undefined;
-// an element's classes: one of the stylesheet's, or a list of them, where false, null or undefined stand for none
-type ClassList = readonly (ClassName | false | null | undefined)[];
-export type Classes = ClassName | ClassList;
 // a value of any attribute: a class's name is a string among the values
 export type Attrs = Readonly<{ class?: Classes | false | null | undefined }> &
   Readonly<Record<string, Value | EventListener | Readonly<Record<string, string>> | ClassList>>;
@@ -36,11 +32,6 @@ export function h<K extends keyof HTMLElementTagNameMap>(
   return el;
 }
 // whether el has one of the stylesheet's classes; the one way the code sets a class after building an element
-// An id no other element of the page has, from a stem ("day-pop-3"): a view drawn twice, or two of one kind on a page,
-// never shares one, which a label or a description reaching for it by id would find the wrong one of.
-let ids = 0;
-export const uniqueId = (stem: string): string => `${stem}-${++ids}`;
-
 export const toggle = (el: Element, cls: ClassName, on: boolean): void => {
   el.classList.toggle(cls, on);
 };
@@ -138,26 +129,4 @@ export function paged<T>(
   list.replaceChildren(...(more.parentElement === list ? [more] : []));
   more.onclick = next; // the one listener, so a list shown again never adds to the one before
   next();
-}
-
-// f, called once calls to it have paused for ms (typing in a search box, say)
-export function debounced<A extends unknown[]>(f: (...args: A) => void, ms = 150): (...args: A) => void {
-  let waiting: ReturnType<typeof setTimeout> | undefined;
-  return (...args) => {
-    clearTimeout(waiting);
-    waiting = setTimeout(() => f(...args), ms);
-  };
-}
-
-// f on every resize, at most once a frame, until signal (a view's) fires
-export function onResize(f: () => void, signal?: AbortSignal): void {
-  let frame = 0;
-  addEventListener(
-    'resize',
-    () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(f);
-    },
-    signal === undefined ? { passive: true } : { passive: true, signal },
-  );
 }

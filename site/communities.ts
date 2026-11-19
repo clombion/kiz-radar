@@ -1,3 +1,4 @@
+import type { Kid } from './bits.ts';
 // A community's page (pipeline/communities.csv, community_members.csv, seeded.csv, travel.csv, stays.csv): who is in it, when most
 // of it is away, the months it is away in, and an agenda of its trips, each opening on who travels when. It is public,
 // as everything the site shows is: no tab links to it, but its data is in the site's database, which anyone can read
@@ -20,7 +21,7 @@ import {
 } from './calendar.ts';
 import { addDays } from './days.ts';
 import { one, q, sql } from './db.ts';
-import { button, h, type Kid, nodes } from './dom.ts';
+import { button, h, nodes } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { type Festival, withDetails } from './festivals.ts';
 import { dayTimeAt, gantt, ganttByPlace, timeAt, unsaidEnd } from './gantt.ts';

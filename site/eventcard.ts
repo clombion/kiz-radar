@@ -1,9 +1,9 @@
 // The festival card used across the site: date, place, title, styles, highlights, a few names and the flight,
 // opening in place to the full line-up and practical details. Rows come from festivals.ts (withDetails).
 
+import type { Classes, Kid } from './bits.ts';
 import { today } from './days.ts';
 import { cardDetails, traitItems } from './details.ts';
-import type { Classes, Kid } from './dom.ts';
 import { button, h, own, toggle } from './dom.ts';
 import { type Fare, resoldSaid } from './fares.ts';
 import { type Festival, styleLine } from './festivals.ts';

@@ -3,10 +3,11 @@
 // it: listeners it adds to document or window pass it, so nothing outlives the view.
 
 import { artistsView } from './artists.ts';
+import { onResize } from './bits.ts';
 import { communityView } from './communities.ts';
 import { countriesView } from './countries.ts';
 import { freshDay, load, loadSite, SiteUpdating } from './db.ts';
-import { button, h, onResize, toggle } from './dom.ts';
+import { button, h, toggle } from './dom.ts';
 import { friendsTabs, friendsView, placeOf } from './friends.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';

@@ -18,10 +18,11 @@
 //
 // It is drawn for the eye: a screen reader hears its names, and a line no one sees says the rest in words.
 
+import type { Kid } from './bits.ts';
 import { awayDays, daysInto, daysOf, type Moment, weekday, weekday3, WEEKDAYS } from './calendar.ts';
 import { addDays } from './days.ts';
 import { dismissable } from './dismiss.ts';
-import { button, h, type Kid, toggle } from './dom.ts';
+import { button, h, toggle } from './dom.ts';
 import { swipe } from './ink.ts';
 import { MEDIA } from './media.ts';
 import { type Bucket, type Line, ownNights, type Place, type Unit } from './roster.ts';
