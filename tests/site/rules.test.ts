@@ -138,3 +138,41 @@ test('.oxlintrc.json turns each rule of the plugin on, and no other of house/, a
   expect(sorted([...new Set(sets.map(([name]) => name))])).toEqual(RULES.map((rule) => `house/${rule}`));
   expect(real.ignorePatterns).toContain(`${FIXTURES}/`);
 });
+
+// The docs' table of where each rule is on and the files it spares (docs/concepts/lint-rules.md), each row as the
+// config sets it: on everywhere, or the globs of the overrides turning it on; off in the globs of those turning it off,
+// and an exemption by options (tests') named in its cell. A row's cells, by its rule.
+const ROW = /^\| `(?<rule>[\w-]+)` \| (?<on>[^|]+) \| (?<off>[^|]+) \|$/u;
+const table = new Map(
+  readFileSync(join(ROOT, 'docs/concepts/lint-rules.md'), 'utf8')
+    .split('\n')
+    .flatMap((line) => {
+      const row = ROW.exec(line)?.groups;
+      return row?.['rule'] !== undefined && RULES.includes(row['rule']) ? [[row['rule'], row] as const] : [];
+    }),
+);
+const levelOf = (setting: unknown): unknown => (Array.isArray(setting) ? setting[0] : setting);
+// the globs as .oxlintrc.json writes them: --print-config reads a name without a folder as **/<name>, wherever it is
+const globs = (files: readonly string[]): string =>
+  files.map((f) => `\`${/^\*\*\/[^/]+$/u.test(f) ? f.slice(3) : f}\``).join(', ');
+
+test("the docs' table says where each house rule is on and the files it spares, as .oxlintrc.json sets them", () => {
+  const setting = (rules: Rules | null, rule: string): unknown => rules?.[`house/${rule}`];
+  const config = RULES.map((rule) => {
+    const on = real.overrides.filter((o) => setting(o.rules, rule) === 'deny').flatMap((o) => o.files);
+    const off = real.overrides.filter((o) => levelOf(setting(o.rules, rule)) === 'allow').flatMap((o) => o.files);
+    // an exemption by options, its files named in the cell among its words
+    const options = real.overrides.filter((o) => Array.isArray(setting(o.rules, rule))).flatMap((o) => o.files);
+    const cell = table.get(rule)?.['off'] ?? '';
+    const spared =
+      options.length === 0
+        ? off.length > 0
+          ? globs(off)
+          : '(none)'
+        : [...off, ...options].every((f) => cell.includes(globs([f])))
+          ? cell
+          : `a cell naming ${globs([...off, ...options])}`;
+    return [rule, levelOf(real.rules[`house/${rule}`]) === 'deny' ? 'everywhere oxlint lints' : globs(on), spared];
+  });
+  expect(RULES.map((rule) => [rule, table.get(rule)?.['on'], table.get(rule)?.['off']])).toEqual(config);
+});
