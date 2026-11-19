@@ -721,8 +721,8 @@ or Playwright code (the tests drive the page through Vitest's browser API, not P
 domain. None reports today and none is ported. **Decided by the owner, 19 November:** the 88 of other frameworks are
 accepted losses (no code of theirs exists; adding a framework is a decision of its own). Solid's four are task 4.2's:
 three have an `eslint-plugin-solid` 0.20.0 rule (`solid/no-destructure`, `solid/prefer-for`,
-`solid/no-react-specific-props`), which oxlint loads as a JS plugin, not in `--rules`; `noDuplicatedSpreadProps` has
-none and becomes a house rule in 4.2.
+`solid/no-react-specific-props`), which oxlint loads as a JS plugin, not in `--rules`, and which are on since 4.2
+(below); `noDuplicatedSpreadProps` has none and becomes a house rule in 4.2.
 
 The 92: `noPlaywrightUselessAwait`, `noBeforeInteractiveScriptOutsideDocument`, `noChildrenProp`,
 `noComponentHookFactories`, `noJsxNamespace`, `noNestedComponentDefinitions`, `noNextAsyncClientComponent`,
@@ -746,6 +746,18 @@ The 92: `noPlaywrightUselessAwait`, `noBeforeInteractiveScriptOutsideDocument`, 
 `noPlaywrightNetworkidle`, `noPlaywrightPagePause`, `noPlaywrightWaitForNavigation`, `noPlaywrightWaitForTimeout`,
 `noReactForwardRef`, `noReactNativeDeepImports`, `noReactSpecificProps`, `noReactStringRefs`, `noUndeclaredEnvVars`,
 `noUnknownAttribute`, `noVueArrowFuncInWatch`, `useScopedStyles`.
+
+## Solid's rules
+
+On since task 4.2: `eslint-plugin-solid` 0.20.0, loaded through `.oxlintrc.json`'s `jsPlugins` (ESLint is not installed:
+its peer is optional). oxlint loads a plugin's rules, not its configs, so its `v2-strict` config is written out rule by
+rule, everywhere oxlint lints: its 26 errors and its 6 warnings as errors (as every rule here is; `denyWarnings` would
+fail a warning anyway), its 5 off as off, and its setting of Solid's version (`settings.solid.version: 2`), which nine
+of its rules read. In a `.tsx` file ESLint's `no-unassigned-vars` gives way to Solid's, as `v2-strict` has it: Solid's
+counts `ref={el}` as an assignment. `tests/site/rules.test.ts` holds the config to the plugin's own preset. Where a
+Solid rule and one mapped from Biome refuse the same thing (`jsx-no-duplicate-props`, `jsx-no-script-url`), both are on.
+`jsx-a11y` reads Solid's `for` as a label's control (`settings["jsx-a11y"].attributes`); its `no-autofocus` reads
+`autoFocus` alone, not Solid's `autofocus`, a gap left to the owner ([task 4.2](../../refactor-task-4.2.md)).
 
 ## Other languages
 

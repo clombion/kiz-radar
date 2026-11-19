@@ -5,12 +5,14 @@
 // folder holds the file, `// refused: <rule>, …` for any other; every finding must be on a line marked for its rule,
 // and every marked line found. A rule with no fixtures, or a folder with no rule, fails, as does a folder without a
 // good.ts that the rule is on for, with no options, and that holds no marked line: what the rule lets through, written
-// in a file no override exempts.
+// in a file no override exempts. And eslint-plugin-solid's rules, which are its own to test, as its v2-strict config
+// sets them.
 import { spawnSync } from 'node:child_process';
 import { cpSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, matchesGlob } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import v2Strict from 'eslint-plugin-solid/configs/v2-strict';
 import { afterAll, expect, test } from 'vitest';
 import plugin from '../../lint/plugin.ts';
 import { int, list, nullable, type Reader, record, text } from '../../site/json.ts';
@@ -99,13 +101,13 @@ function findings(): string[] {
 const found = findings();
 
 // a rule's setting for a file, from the root: the config's, then each override naming the file, the last deciding
-function settingFor(rule: string, file: string): unknown {
-  const name = `house/${rule}`;
+function settingOf(name: string, file: string): unknown {
   let setting = real.rules[name];
   for (const o of real.overrides)
     if (o.files.some((glob) => matchesGlob(file, glob)) && o.rules !== null && name in o.rules) setting = o.rules[name];
   return setting;
 }
+const settingFor = (rule: string, file: string): unknown => settingOf(`house/${rule}`, file);
 
 test('every rule of the plugin has fixtures, and every fixture folder a rule', () => {
   expect(sorted([...new Set(fixtures.map(ruleOf))])).toEqual(RULES);
@@ -175,4 +177,24 @@ test("the docs' table says where each house rule is on and the files it spares, 
     return [rule, levelOf(real.rules[`house/${rule}`]) === 'deny' ? 'everywhere oxlint lints' : globs(on), spared];
   });
   expect(RULES.map((rule) => [rule, table.get(rule)?.['on'], table.get(rule)?.['off']])).toEqual(config);
+});
+
+// eslint-plugin-solid's v2-strict, written out in .oxlintrc.json (oxlint loads a plugin's rules, not its configs): in a
+// .tsx file each rule it turns on, at warn or error, an error, each it turns off off (ESLint's no-unassigned-vars, for
+// Solid's), and its setting of Solid's version; in a .ts file the same, but ESLint's no-unassigned-vars for Solid's;
+// and no other rule of the plugin's on
+test("eslint-plugin-solid's rules and settings are its v2-strict config's", () => {
+  const preset = Object.entries(v2Strict.rules).map(([name, level]) => [name, level === 0 ? 'allow' : 'deny']);
+  const levels = (file: string) => preset.map(([name = '']) => [name, levelOf(settingOf(name, file)) ?? 'allow']);
+  expect(levels('site/view.tsx')).toEqual(preset);
+  const swapped = new Map([
+    ['no-unassigned-vars', 'deny'],
+    ['solid/no-unassigned-vars', 'allow'],
+  ]);
+  expect(levels('site/view.ts')).toEqual(preset.map(([name = '', level]) => [name, swapped.get(name) ?? level]));
+  expect(printed).toMatchObject({ settings: { solid: v2Strict.settings.solid } });
+  // and no rule of the plugin's on that the preset leaves off or out, anywhere
+  const sets = [real.rules, ...real.overrides.map((o) => o.rules)].flatMap((rules) => Object.entries(rules ?? {}));
+  const on = sets.filter(([name, level]) => name.startsWith('solid/') && levelOf(level) !== 'allow').map(([n]) => n);
+  expect(sorted([...new Set(on)])).toEqual(sorted(preset.filter(([, l]) => l === 'deny').map(([n = '']) => n)));
 });
