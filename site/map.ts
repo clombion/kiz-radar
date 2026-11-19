@@ -301,7 +301,13 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   map.createPane('land').style.zIndex = '350';
   const land = L.layerGroup().addTo(map);
   const bubbles = L.layerGroup().addTo(map);
-  done(drawWorld(land, signal), 'drawing the map');
+  // the outline given up because the view was left is no failure: there is no map left to draw it on
+  done(
+    drawWorld(land, signal).catch((e: unknown) => {
+      if (!signal.aborted) throw e;
+    }),
+    'drawing the map',
+  );
   // the legend sits on the map, where the colours are
   const legendEl = h('div', { class: 'map-legend' });
   const Legend = L.Control.extend({ onAdd: () => legendEl });
