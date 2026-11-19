@@ -198,7 +198,8 @@ In oxlint (Biome kept its settings until task 2.7, when it stopped reading the T
 - The other 87: errors, with the settings above. Their oxlint versions found what Biome's do not (16, all in task 2.4's
   fixes or suppressions): `no-useless-undefined` 9 (arguments and arrow bodies, which Biome does not check: a setting),
   `jest/no-done-callback` 4 (`test.for`, suppressed), `prefer-response-static-json` 2, `prefer-template` 1,
-  `numeric-separators-style` 1, `no-process-env` 1 (`vitest.config.ts`, new to linting).
+  `numeric-separators-style` 1 (suppressed while Biome wanted the other grouping, then written as oxlint wants in task
+  2.7), `no-process-env` 1 (`vitest.config.ts`, new to linting).
 
 | Biome rule | Findings: site / tests | Where | oxlint | oxlint's findings: all (site) | Options |
 | -- | -- | -- | -- | -- | -- |

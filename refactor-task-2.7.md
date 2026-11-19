@@ -1,6 +1,14 @@
 # Task 2.7: Biome to CSS and JSON only
 
-Task 2.7 of [refactor-plan.md](refactor-plan.md). Status: planned.
+Task 2.7 of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026, in three commits as the Reconcile
+orders them. `biome check --verbose` lists the eight files, no `.ts`, and Biome reports nothing; the seven fixtures are
+unchanged by oxfmt. Departures:
+
+- `noExcessiveLinesPerFile` stays off in `biome.jsonc` beside the three CSS rules: it also reads `site.css` (3,781
+  lines) and, turned on, reports it.
+- `lint-rules.md` also says the past where its lines 3, 267, 273 and 201 (the numeric separator) said Biome read the
+  TypeScript, beyond the four lines the Reconcile names.
+- `test_suppressions.py` adds a test that each tool's comment fails in the other tool's files.
 
 ## Summary
 
