@@ -93,7 +93,10 @@ does not declare the warning. Nothing in `site/` changes.
   cities of one name in one country are two bubbles" failed on
   `Uncaught TypeError: Cannot read properties of undefined (reading '_leaflet_pos')`, which `report.ts` also said on the
   page: Leaflet touching a map `site/map.ts` has removed (it removes it 300 ms after leaving, past a zoom animation's
-  250 ms). Six reruns of the file and the next `check:commit` passed. A site race, not fixed here: reported.
+  250 ms). Six reruns of the file and the next `check:commit` passed. A site race, not fixed here: reported. Fixed since
+  by "Remove the map only after Leaflet's zoom ends, so leaving it mid-zoom throws nothing": a zoom starts on the frame
+  after it is asked, which a slow page drawn in the map's place can delay past the 300 ms; the map now waits for that
+  frame, then for the zoom's end (`map.browser.test.ts`, "a map left as it starts to zoom …").
 
 ## Impact
 

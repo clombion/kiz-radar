@@ -87,3 +87,34 @@ test('two cities of one name in one country are two bubbles', async () => {
   search.dispatchEvent(new Event('input', { bubbles: true }));
   await expect.poll(() => document.querySelectorAll('main .leaflet-overlay-pane path').length).toBe(2);
 });
+
+// A zoom Leaflet starts on the frame after it is asked, and ends 250 ms later reading the map's panes. A zoom asked in
+// a frame starts in the next; the map left before that frame for a page slow to draw (100 ms of work, as a busy
+// machine gives) has the zoom start after it was left, and must be done with it before the map is taken away.
+test('a map left as it starts to zoom, for a page slow to draw, says nothing went wrong', async () => {
+  await app.open(cityOnMapHref('springfield-de'));
+  // the city's own zoom, which the map opens with, over: a zoom asked during one is not a zoom of its own
+  await expect.poll(() => document.querySelector('main .leaflet-zoom-anim')).toBeNull();
+  const zoomIn = document.querySelector<HTMLElement>('main .leaflet-control-zoom-in');
+  if (zoomIn == null) throw new Error('the map has no zoom button');
+  addEventListener(
+    'hashchange',
+    () => {
+      const until = performance.now() + 100;
+      while (performance.now() < until);
+    },
+    { once: true },
+  );
+  await new Promise<void>((asked) => {
+    requestAnimationFrame(() => {
+      zoomIn.click();
+      asked();
+    });
+  });
+  await app.open(cityOnMapHref('springfield-2-de'));
+  // past the zoom's end, and the map's removal
+  await new Promise((settled) => {
+    setTimeout(settled, 500);
+  });
+  expect(document.querySelector('[role="alert"]')).toBeNull();
+});
