@@ -24,6 +24,7 @@ Each was probed under Biome 2.6.3 on a scratch file of forms before it was writt
   `vitest.config.ts` now imports `process`, so `node/no-process-env`, which reads the global alone, no longer sees its
   `process.env` and its suppression went (with its rows in [the suppressed findings](docs/lint-false-positives.md) and
   `tests/test_suppressions.py`); Biome's `noProcessEnv` reads an imported `process` too, which oxlint has no rule for.
+  Since then `house/env` refuses it wherever `node/no-process-env` is on, and the suppression is back as its own.
 - **`asserts`:** the same reach (`node:assert` as any module source, `require()` included); the bare `assert` is
   `unicorn/prefer-node-protocol`'s, as Biome leaves it to `useNodejsImportProtocol`.
 - **`json`:** wider than Biome, which reads an import with a default binding alone, takes any value of `type` and misses

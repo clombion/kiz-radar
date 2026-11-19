@@ -2,7 +2,7 @@
 // is no read of the global.
 import process from 'node:process';
 
-export const home = process.env['HOME'];
+export const here = process.cwd();
 export type Process = typeof globalThis.process;
 export const shadowed = (process: { cwd: () => string }): string => process.cwd();
 export const keys = { process: 1 }.process;

@@ -359,6 +359,8 @@
     "house/asserts": "error",
     "house/classes": "error",
     "house/clicks": "error",
+    // node/no-process-env's reach for a process imported from node:process, which it does not see
+    "house/env": "error",
     "house/fetch": "error",
     "house/formats": "error",
     "house/home": "error",

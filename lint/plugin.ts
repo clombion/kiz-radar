@@ -5,6 +5,7 @@ import { asserts } from './asserts.ts';
 import { buttons } from './buttons.ts';
 import { classes } from './classes.ts';
 import { clicks } from './clicks.ts';
+import { env } from './env.ts';
 import { fetch } from './fetch.ts';
 import { formats } from './formats.ts';
 import { home } from './home.ts';
@@ -30,6 +31,7 @@ const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } 
     buttons,
     classes,
     clicks,
+    env,
     fetch,
     formats,
     home,

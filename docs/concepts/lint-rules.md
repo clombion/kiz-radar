@@ -101,6 +101,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `buttons` | `site/*.ts` | `site/dom.ts` |
 | `classes` | everywhere oxlint lints | `site/dom.ts` |
 | `clicks` | everywhere oxlint lints | `site/dom.ts`, `site/swipe.ts` |
+| `env` | everywhere oxlint lints | (none) |
 | `fetch` | everywhere oxlint lints | `site/net.ts` |
 | `formats` | everywhere oxlint lints | `site/ui.ts` |
 | `home` | everywhere oxlint lints | (none) |
@@ -466,7 +467,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noNonNullAssertion` | warn | `typescript/no-non-null-assertion` | source | mapped |
 | `noParameterAssign` | warn | `eslint/no-param-reassign` | source | mapped |
 | `noParameterProperties` | warn | `typescript/parameter-properties` | inspired | mapped |
-| `noProcessEnv` | info | `node/no-process-env` | source | mapped: reads the global `process` alone, so not `process.env` once `process` is imported from `node:process`, as `house/process` has the tests do (Biome's reads both) |
+| `noProcessEnv` | info | `node/no-process-env` | source | mapped: `node/no-process-env` reads the global `process` alone; `house/env` refuses `process.env` through a `process` imported from `node:process` (as `house/process` has the tests do), so the two read both, as Biome's does |
 | `noRestrictedGlobals` | warn | `eslint/no-restricted-globals` | source | mapped: restricts nothing without options, in both |
 | `noRestrictedImports` | warn | `eslint/no-restricted-imports` | source | mapped: restricts nothing without options, in both |
 | `noRestrictedTypes` | warn | `typescript/no-restricted-types` | source | mapped: restricts nothing without options, in both |
