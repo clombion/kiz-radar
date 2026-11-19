@@ -4,3 +4,5 @@ export const node = process; // refused
 export const later = (): string => process.cwd(); // refused
 export const own = globalThis.process; // refused
 export const absent = typeof process === 'undefined'; // refused
+export const keyed = globalThis['process']; // refused
+export const { process: taken } = globalThis; // refused

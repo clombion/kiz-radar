@@ -102,7 +102,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `classes` | everywhere oxlint lints | `site/dom.ts` |
 | `clicks` | everywhere oxlint lints | `site/dom.ts`, `site/swipe.ts` |
 | `env` | everywhere oxlint lints | (none) |
-| `fetch` | everywhere oxlint lints | `site/net.ts` |
+| `fetch` | everywhere oxlint lints | `site/net.ts`, `tests/site/app.ts` |
 | `formats` | everywhere oxlint lints | `site/ui.ts` |
 | `home` | everywhere oxlint lints | (none) |
 | `json` | everywhere oxlint lints | (none) |
