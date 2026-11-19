@@ -515,6 +515,8 @@
     "house/privates": "error",
     "house/promises": "error",
     "house/routes": "error",
+    // Biome's noSuspiciousSemicolonInJsx (owner, 19 November)
+    "house/semicolons": "error",
     "house/session": "error",
     "house/statics": "error",
     "house/storage": "error",

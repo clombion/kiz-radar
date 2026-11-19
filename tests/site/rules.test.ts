@@ -2,8 +2,8 @@
 // tree's run: oxlint, on a copy of the fixtures, with the house rules as .oxlintrc.json sets them and nothing else, on
 // and off everywhere and in each override, an override's files found in each rule's folder (site/kept.ts there is
 // lint/fixtures/<rule>/site/kept.ts here). A line a rule must refuse ends with a marker: `// refused` for the rule whose
-// folder holds the file, `// refused: <rule>, …` for any other; every finding must be on a line marked for its rule,
-// and every marked line found. A rule with no fixtures, or a folder with no rule, fails, as does a folder without a
+// folder holds the file, `// refused: <rule>, …` for any other (in JSX's text, {/* refused */} anywhere on the line);
+// every finding must be on a line marked for its rule, and every marked line found. A rule with no fixtures, or a folder with no rule, fails, as does a folder without a
 // good.ts (or good.tsx) that the rule is on for, with no options, and that holds no marked line: what the rule lets
 // through, written in a file no override exempts. And eslint-plugin-solid's rules, which are its own to test, as its
 // v2-strict config sets them.
@@ -23,6 +23,8 @@ const sorted = (lines: readonly string[]): string[] => lines.toSorted((a, b) => 
 const RULES = sorted(Object.keys(plugin.rules));
 const OXLINT = `${ROOT}node_modules/.bin/oxlint`;
 const MARKER = /\/\/ refused(?:: (?<rules>[\w-]+(?:, [\w-]+)*))?$/u;
+// in JSX's text a // comment would be text: there the marker is a JSX comment, {/* refused */}, anywhere on the line
+const JSX_MARKER = /\{\/\* refused(?:: (?<rules>[\w-]+(?:, [\w-]+)*))? \*\/\}/u;
 const HOUSE = /^house\((?<rule>[\w-]+)\)$/u;
 
 type Rules = Readonly<Record<string, unknown>>;
@@ -65,7 +67,7 @@ const expected = fixtures.flatMap((file) =>
   readFileSync(join(ROOT, file), 'utf8')
     .split('\n')
     .flatMap((l, i) => {
-      const marker = MARKER.exec(l);
+      const marker = MARKER.exec(l) ?? JSX_MARKER.exec(l);
       if (marker === null) return [];
       return (marker.groups?.['rules']?.split(', ') ?? [ruleOf(file)]).map((rule) => `${file}:${i + 1} ${rule}`);
     }),

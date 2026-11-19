@@ -18,6 +18,7 @@ import { privates } from './privates.ts';
 import { process } from './process.ts';
 import { promises } from './promises.ts';
 import { routes } from './routes.ts';
+import { semicolons } from './semicolons.ts';
 import { session } from './session.ts';
 import { states } from './states.ts';
 import { statics } from './statics.ts';
@@ -49,6 +50,7 @@ const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } 
     process,
     promises,
     routes,
+    semicolons,
     session,
     states,
     statics,
