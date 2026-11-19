@@ -52,6 +52,8 @@ export function settled(built: string): Set<string> {
   const [at, ...ids] = v === null ? [] : v.split('\n');
   return new Set(at === built ? ids : []);
 }
+// an id settled already, written again ("already written"), is kept once
 export function markSettled(built: string, id: string): void {
-  write(device, SETTLED, [built, ...settled(built), id].join('\n'));
+  const ids = settled(built);
+  if (!ids.has(id)) write(device, SETTLED, [built, ...ids, id].join('\n'));
 }
