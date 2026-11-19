@@ -1,4 +1,4 @@
-// What house/storage refuses outside hints.ts, kept.ts and the tests: localStorage by any name the code gives it, read,
+// What house/storage refuses outside kept.ts and the tests: localStorage by any name the code gives it, read,
 // as a window's property, destructured, as an object's key or a parameter, or in a type.
 export const seen = localStorage.getItem('seen'); // refused
 export const box = window.localStorage; // refused

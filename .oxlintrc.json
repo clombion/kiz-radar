@@ -498,9 +498,8 @@
       "rules": { "house/session": "off" }
     },
     {
-      // house/storage: what a visitor has seen is hints.ts's, the review dashboard's kept.ts's, and a test plants and
-      // reads the page's storage
-      "files": ["site/hints.ts", "site/kept.ts", "tests/**"],
+      // house/storage: the device's storage is kept.ts's, and a test plants and reads the page's storage
+      "files": ["site/kept.ts", "tests/**"],
       "rules": { "house/storage": "off" }
     },
     {

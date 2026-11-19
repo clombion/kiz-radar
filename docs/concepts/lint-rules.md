@@ -114,7 +114,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `session` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `states` | `site/*.ts` | (none) |
 | `statics` | everywhere oxlint lints | (none) |
-| `storage` | everywhere oxlint lints | `site/hints.ts`, `site/kept.ts`, `tests/**` |
+| `storage` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, and four helpers (`dismiss`, `dom`, `modal`, `tabs`) imported by `tests/site/page.browser.test.ts`: the rule's options in each file's override |
 
 The house rules moved from Grit to oxlint's plugin, `session` in task 2.5, the twelve others in task 2.6; Biome runs no

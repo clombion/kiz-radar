@@ -1,19 +1,12 @@
-// Hints shown until someone has done what they suggest. Remembered in this browser only.
+// Hints shown until someone has done what they suggest, remembered in this browser's storage (kept.ts), or for the
+// page when the browser refuses it.
+import { device, read, write } from './kept.ts';
+
 function remembered(key: string): { seen: () => boolean; mark: () => void } {
   return {
-    seen: () => {
-      try {
-        return localStorage.getItem(key) === '1';
-      } catch {
-        return false;
-      }
-    },
+    seen: () => read(device, key) === '1',
     mark: () => {
-      try {
-        localStorage.setItem(key, '1');
-      } catch {
-        /* storage is off in this browser: the hint shows again */
-      }
+      write(device, key, '1');
     },
   };
 }
