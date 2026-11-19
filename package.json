@@ -4,9 +4,9 @@
   "type": "module",
   "packageManager": "pnpm@10.30.0",
   "scripts": {
-    "build": "rm -rf public/js public/vendor && tsc -p . && pnpm run vendor",
-    "types": "tsc --noEmit -p . && tsc -p tests/site",
-    "lint:oxlint": "oxlint site tests lint vitest.config.ts",
+    "build": "rm -rf public/js public/vendor && tsc -p . && vite build && pnpm run vendor",
+    "types": "tsc -p . && tsc -p tests/site",
+    "lint:oxlint": "oxlint site tests lint vite.config.ts vitest.config.ts",
     "lint:biome": "biome lint --error-on-warnings",
     "format": "oxfmt --check",
     "knip": "knip",
@@ -34,6 +34,7 @@
     "sql.js": "1.10.3",
     "topojson-client": "3.1.0",
     "typescript": "7.0.2",
+    "vite": "8.3.8",
     "vitest": "5.0.5",
     "world-atlas": "2.0.2"
   }

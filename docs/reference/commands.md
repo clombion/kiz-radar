@@ -24,7 +24,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `rates` | The euro's exchange rates from the European Central Bank |
 | `fares` | Search the festival weekends' return fares and keep every search in pipeline/fare_offers/ (refresh), see what is due (plan) or kept (show), and report how well home's fare predicts other cities' (accuracy) |
 | `install:site` | The site's tools, as pnpm-lock.yaml pins them |
-| `build:site` | The site's TypeScript (site/) compiled into public/js/, and the libraries it loads copied into public/vendor/ from the pinned packages |
+| `build:site` | The site's TypeScript (site/) type-checked, then bundled by Vite into public/js/ (main.js, review.js and the chunk both share, vite.config.ts), and the libraries it loads copied into public/vendor/ from the pinned packages |
 | `serve` | The site and its data built, and served at http://localhost:8000 |
 | `render:design` | The share card (public/share-card.png), each community's (public/c/<key>/share.png, a variant of that card with its name, and share.json, what it is drawn from) and the icons drawn again from design/, the drawings of pipeline/drawings.py and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page |
 | `types:site` | tsc, strict, on the site and its tests |

@@ -1,9 +1,9 @@
 # The site
 
 What a visitor sees, and what decides it. The site is `public/`, published to GitHub Pages by **Publish site** whenever
-`main` changes; its code is `site/` (TypeScript), compiled into `public/js/`, and the libraries it loads are copied into
-`public/vendor/` from the packages `package.json` pins. Neither is committed. The page loads nothing from elsewhere: its
-Content-Security-Policy (`public/index.html`) allows only its own files.
+`main` changes; its code is `site/` (TypeScript), bundled by Vite into `public/js/` (`vite.config.ts`), and the
+libraries it loads are copied into `public/vendor/` from the packages `package.json` pins. Neither is committed. The
+page loads nothing from elsewhere: its Content-Security-Policy (`public/index.html`) allows only its own files.
 
 ## The festival list
 

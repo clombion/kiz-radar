@@ -1,5 +1,7 @@
 // The site's tests: in Node for what runs on data alone (prices, wording, the sources and the shipped database), in
-// Chromium for what the page does (tests/site/*.browser.test.ts).
+// Chromium for what the page does (tests/site/*.browser.test.ts). Vitest reads this file and not vite.config.ts, the
+// build's, so the tests' modules are Vite's dev transform of site/, never the bundle; the tests that load the whole
+// site load the bundle mise run build:site wrote into public/js/.
 import { readFile, stat } from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { extname, join, normalize } from 'node:path';

@@ -185,7 +185,7 @@
     "eslint/valid-typeof": "error",
     "eslint/vars-on-top": "error",
     "eslint/yoda": "error",
-    // the imports name the .ts file (rewriteRelativeImportExtensions)
+    // the imports name the .ts file (allowImportingTsExtensions; Vite resolves them)
     "import/extensions": ["error", "always", { "ignorePackages": true }],
     "import/first": "error",
     "import/no-commonjs": "error",
@@ -596,8 +596,8 @@
       "rules": { "import/no-default-export": "off" }
     },
     {
-      // Vitest reads the config from its default export (owner, 19 November; docs/concepts/lint-rules.md)
-      "files": ["vitest.config.ts"],
+      // Vite and Vitest read their configs from the default export (owner, 19 November; docs/concepts/lint-rules.md)
+      "files": ["vite.config.ts", "vitest.config.ts"],
       "rules": { "import/no-default-export": "off" }
     }
   ]

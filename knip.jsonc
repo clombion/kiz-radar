@@ -1,7 +1,8 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
-  // lint/plugin.ts, the house rules, is an entry by knip's oxlint plugin (.oxlintrc.json's jsPlugins)
-  "entry": ["site/main.ts", "site/review.ts", "tests/site/**/*.test.ts"],
+  // site/main.ts and site/review.ts, the site's, are entries by knip's Vite plugin (vite.config.ts's input), and
+  // lint/plugin.ts, the house rules, by its oxlint plugin (.oxlintrc.json's jsPlugins)
+  "entry": ["tests/site/**/*.test.ts"],
   // lint/fixtures/ holds the files the house rules' test lints, which nothing imports; one stands as a test file
   // (tests' page.browser.test.ts), which the vitest plugin takes for an entry, and its imports resolve to nothing
   "project": ["site/**/*.ts", "tests/site/**/*.ts", "lint/**/*.ts", "!lint/fixtures/**"],
