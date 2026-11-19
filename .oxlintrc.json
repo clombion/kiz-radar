@@ -633,8 +633,8 @@
       "rules": { "house/markup": "error" }
     },
     {
-      // house/markup: icons.ts puts a drawing's SVG, from drawings.ts, in an element (Drawing.into)
-      "files": ["site/icons.ts"],
+      // house/markup: icons.ts puts a drawing's SVG, from drawings.ts, in an element (Drawing.into), and its .tsx to come
+      "files": ["site/icons.ts", "site/icons.tsx"],
       "rules": { "house/markup": "off" }
     },
     {

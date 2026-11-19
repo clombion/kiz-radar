@@ -127,6 +127,10 @@ export function valueOf(attribute: Attribute): Node | undefined {
   return value.expression.type === 'JSXEmptyExpression' ? undefined : value.expression;
 }
 
+// an attribute's name, its namespace left out (prop:innerHTML is innerHTML)
+export const attributeName = (attribute: Attribute): string =>
+  attribute.name.type === 'JSXIdentifier' ? attribute.name.name : attribute.name.name.name;
+
 // the attribute an element is given by `name`, written as such: neither a namespace's nor in a spread
 export const attributeOf = (opening: Opening, name: string): Attribute | undefined =>
   opening.attributes.find(
