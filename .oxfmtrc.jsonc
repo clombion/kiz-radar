@@ -24,6 +24,13 @@
     "/site/drawings.ts"
   ],
   "overrides": [
+    {
+      // import statements in one order, sorted across a blank line and kept together, as Biome's organizeImports held
+      // them; not the house rules' fixtures, whose refused lines are marked where they stand
+      "files": ["*.ts"],
+      "excludeFiles": ["lint/fixtures/**"],
+      "options": { "sortImports": { "newlinesBetween": false } }
+    },
     { "files": ["*.css"], "options": { "singleQuote": false } },
     { "files": ["*.json", "*.jsonc"], "options": { "trailingComma": "none" } }
   ]
