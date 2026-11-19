@@ -55,7 +55,7 @@ const pressed = (row: HTMLElement | undefined) =>
 async function byPlace(key: string): Promise<HTMLElement | undefined> {
   const row = await kuof(key);
   onTestFinished(async () => {
-    const byTravel = choice(await kuof(key))[0];
+    const [byTravel] = choice(await kuof(key));
     if (byTravel === undefined) throw new Error(`${key}'s KUOF card has no By travel button to put back`);
     byTravel.click();
   });
@@ -82,7 +82,7 @@ test('two places are written beside the stroke, and counted under the name on a 
   const count = row?.querySelector<HTMLElement>('.gantt-under button');
   count?.click();
   // a small card of names by place: each place a heading, then its names
-  expect(ganttCardOf(document.getElementById(count?.getAttribute('aria-controls') ?? ''))).toEqual([
+  expect(ganttCardOf(document.querySelector(`#${CSS.escape(count?.getAttribute('aria-controls') ?? '')}`))).toEqual([
     '# Comfort Xpress Oslo Sentrum',
     'Christina',
     '# Scandic Holberg',
@@ -141,7 +141,7 @@ test('by place, the names a count opens say each one’s own nights when they ar
     (b) => said(b) === '5 people',
   );
   count?.click();
-  const names = document.getElementById(count?.getAttribute('aria-controls') ?? '');
+  const names = document.querySelector(`#${CSS.escape(count?.getAttribute('aria-controls') ?? '')}`);
   expect(ganttCardOf(names)).toEqual(['Ann', 'Bo', 'Cy', 'Di', 'Nora · Fri–Sun']);
   expect(said(names?.querySelector('.gantt-who-nights'))).toBe('· Fri–Sun');
 });
@@ -149,7 +149,7 @@ test('by place, the names a count opens say each one’s own nights when they ar
 test('the view switch shows its focus ring inside its rounded border', async () => {
   // the view switch's focus ring, on the real By place button, inside its rounded border, which clips what is outside
   // it (the days gone by are read on the fixture's community alone)
-  const view = choice(await kuof())[1];
+  const [, view] = choice(await kuof());
   view?.focus({ focusVisible: true });
   expect(document.activeElement).toBe(view);
   const style = view === undefined ? undefined : getComputedStyle(view);

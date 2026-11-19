@@ -25,7 +25,7 @@ test('a trip’s bars are highlighter swipes, each party its own, the same howev
   const once = await bars();
   // the two flights, and those who said nothing on the festival's days
   expect(once.map((b) => b.said)).toEqual(['17:05 OSL09:40 OSL', '08:00 OSL20:00 OSL', '']);
-  for (const b of once) expect(b.ink).toMatch(/^[\d.]+rem 0px( [\d.]+rem)? -?[\d.]+deg /u);
+  for (const b of once) expect(b.ink).toMatch(/^[\d.]+rem 0px(?: [\d.]+rem)? -?[\d.]+deg /u);
   expect(once[0]?.ink).not.toBe(once[1]?.ink); // a party's own swipe
   expect(await bars()).toEqual(once); // drawn again, the same
 });
