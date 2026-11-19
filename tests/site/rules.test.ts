@@ -1,10 +1,11 @@
 // The house rules (lint/plugin.ts) on their fixtures (lint/fixtures/<rule>/), which .oxlintrc.json keeps out of the
-// tree's run: oxlint, from the root, with a config of this test's own that loads the plugin and turns each of its rules
-// on, every rule on every fixture. A line a rule must refuse ends with a marker: `// refused` for the rule whose folder
-// holds the file, `// refused: <rule>, …` for any other; every finding must be on a line marked for its rule, and every
-// marked line found. A rule with no fixtures, or a folder with no rule, fails.
+// tree's run: oxlint, on a copy of the fixtures, with the house rules as .oxlintrc.json sets them and nothing else, on
+// and off everywhere and in each override, an override's files found in each rule's folder (site/kept.ts there is
+// lint/fixtures/<rule>/site/kept.ts here). A line a rule must refuse ends with a marker: `// refused` for the rule whose
+// folder holds the file, `// refused: <rule>, …` for any other; every finding must be on a line marked for its rule,
+// and every marked line found. A rule with no fixtures, or a folder with no rule, fails.
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,12 +16,24 @@ const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const FIXTURES = 'lint/fixtures';
 const sorted = (lines: readonly string[]): string[] => lines.toSorted((a, b) => a.localeCompare(b));
 const RULES = sorted(Object.keys(plugin.rules));
+const OXLINT = `${ROOT}node_modules/.bin/oxlint`;
 const MARKER = /\/\/ refused(?:: (?<rules>[\w-]+(?:, [\w-]+)*))?$/u;
 const HOUSE = /^house\((?<rule>[\w-]+)\)$/u;
 
 interface Report {
   diagnostics?: { code: string; filename: string; labels: { span: { line: number } }[] }[];
 }
+type Rules = Readonly<Record<string, unknown>>;
+interface Config {
+  rules: Rules;
+  overrides: readonly { files: readonly string[]; rules: Rules | null }[];
+  ignorePatterns: readonly string[];
+}
+
+// .oxlintrc.json as oxlint reads it, and its house rules alone
+const real: Config = JSON.parse(spawnSync(OXLINT, ['--print-config'], { cwd: ROOT, encoding: 'utf8' }).stdout);
+const house = (rules: Rules | null): Rules =>
+  Object.fromEntries(Object.entries(rules ?? {}).filter(([name]) => name.startsWith('house/')));
 
 const dir = mkdtempSync(join(tmpdir(), 'house-rules-'));
 afterAll(() => rmSync(dir, { recursive: true, force: true }));
@@ -43,9 +56,11 @@ const expected = fixtures.flatMap((file) =>
     }),
 );
 
-// what oxlint finds on the fixtures, every rule of the plugin on and nothing else, as file:line rule (a finding of no
-// house rule, such as a file that does not parse, keeps oxlint's code)
+// what oxlint finds on the fixtures, the house rules on as .oxlintrc.json has them and nothing else, as file:line rule
+// (a finding of no house rule, such as a file that does not parse, keeps oxlint's code). An override's globs are read
+// from its config's folder, which holds the copy, a folder per rule: each glob is found under any of them.
 function findings(): string[] {
+  cpSync(join(ROOT, FIXTURES), dir, { recursive: true });
   const config = join(dir, 'oxlintrc.json');
   writeFileSync(
     config,
@@ -53,18 +68,18 @@ function findings(): string[] {
       plugins: [],
       categories: { correctness: 'off' },
       jsPlugins: [join(ROOT, 'lint/plugin.ts')],
-      rules: Object.fromEntries(RULES.map((rule) => [`house/${rule}`, 'error'])),
+      rules: house(real.rules),
+      overrides: real.overrides
+        .map((o) => ({ files: o.files.map((glob) => `*/${glob}`), rules: house(o.rules) }))
+        .filter((o) => Object.keys(o.rules).length > 0),
     }),
   );
-  const run = spawnSync(`${ROOT}node_modules/.bin/oxlint`, ['-c', config, '-f', 'json', FIXTURES], {
-    cwd: ROOT,
-    encoding: 'utf8',
-  });
+  const run = spawnSync(OXLINT, ['-c', config, '-f', 'json', '.'], { cwd: dir, encoding: 'utf8' });
   const report: Report = JSON.parse(run.stdout.startsWith('{') ? run.stdout : '{}');
   // no report is oxlint failing to lint, which must not read as fixtures with nothing refused
   if (report.diagnostics === undefined) throw new Error(run.stderr + run.stdout);
   return report.diagnostics.map(
-    (d) => `${d.filename}:${d.labels[0]?.span.line ?? 0} ${HOUSE.exec(d.code)?.groups?.['rule'] ?? d.code}`,
+    (d) => `${FIXTURES}/${d.filename}:${d.labels[0]?.span.line ?? 0} ${HOUSE.exec(d.code)?.groups?.['rule'] ?? d.code}`,
   );
 }
 const found = findings();
@@ -85,10 +100,10 @@ test.each(RULES)('%s: its fixtures are refused on their marked lines, and only t
   expect(mine(found)).toEqual(mine(expected));
 });
 
-test('.oxlintrc.json loads the plugin, turns each of its rules on as an error, and keeps the fixtures out', () => {
-  const run = spawnSync(`${ROOT}node_modules/.bin/oxlint`, ['--print-config'], { cwd: ROOT, encoding: 'utf8' });
-  const config: { rules: Record<string, unknown>; ignorePatterns: string[] } = JSON.parse(run.stdout);
-  const house = Object.entries(config.rules).filter(([name]) => name.startsWith('house/'));
-  expect(Object.fromEntries(house)).toEqual(Object.fromEntries(RULES.map((rule) => [`house/${rule}`, 'deny'])));
-  expect(config.ignorePatterns).toContain(`${FIXTURES}/`);
+test('.oxlintrc.json turns each rule of the plugin on, and no other of house/, and keeps the fixtures out', () => {
+  const sets = [real.rules, ...real.overrides.map((o) => o.rules)].flatMap((rules) => Object.entries(house(rules)));
+  const on = sets.filter(([, level]) => (Array.isArray(level) ? level[0] : level) === 'deny').map(([name]) => name);
+  expect(sorted([...new Set(on)])).toEqual(RULES.map((rule) => `house/${rule}`));
+  expect(sorted([...new Set(sets.map(([name]) => name))])).toEqual(RULES.map((rule) => `house/${rule}`));
+  expect(real.ignorePatterns).toContain(`${FIXTURES}/`);
 });

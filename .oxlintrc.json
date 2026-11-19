@@ -384,6 +384,11 @@
       "rules": { "eslint/max-classes-per-file": "off" }
     },
     {
+      // house/session: the admin's token is kept.ts's, and a test plants and reads the page's storage
+      "files": ["site/kept.ts", "tests/**"],
+      "rules": { "house/session": "off" }
+    },
+    {
       // oxlint loads a JS plugin from its module's default export, as ESLint does
       "files": ["lint/plugin.ts"],
       "rules": { "import/no-default-export": "off" }

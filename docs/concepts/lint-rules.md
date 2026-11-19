@@ -89,9 +89,17 @@ From `biome.jsonc`'s `overrides`, each with its reason; oxlint takes them as `ov
 | `lint/plugin.ts` | `import/no-default-export` | off | new (task 2.5): oxlint loads a JS plugin from its module's default export, as ESLint does |
 | `vitest.config.ts` (and `vite.config.ts`, Phase 3) | `import/no-default-export` | off, **pending owner** | new: Biome never linted the file (not in `files.includes`); Vitest reads its default export, which the rule refuses; off in `.oxlintrc.json` since 2.4, its comment naming the pending decision |
 
-`lint/tests.grit` runs on `tests/**` alone. The house rules move from Grit to oxlint's plugin (`lint/plugin.ts`, run as
-`house/<rule>`, each with its fixtures: [Contributing](../../CONTRIBUTING.md), "House rules"): `session` since task 2.5,
-the twelve others in task 2.6.
+The house rules (`lint/plugin.ts`, run as `house/<rule>`, each with its fixtures: [Contributing](../../CONTRIBUTING.md),
+"House rules") are scoped by `.oxlintrc.json`'s overrides too, by the files' paths from the root, never by a rule
+reading the path: a path tested in the rule matches the folders above the checkout as well (task 1.8: a checkout under a
+folder named `tests` made the view-import rule lint the site). Each rule, where it is on and the files it spares:
+
+| Rule | On | Off |
+| -- | -- | -- |
+| `session` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
+
+The house rules move from Grit to oxlint's plugin, `session` since task 2.5, the twelve others in task 2.6; until then
+Biome runs those still in `lint/*.grit`, and `lint/tests.grit` on `tests/**` alone.
 
 ## Accepted losses
 
