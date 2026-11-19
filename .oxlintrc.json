@@ -26,8 +26,15 @@
   },
   // type-aware: oxlint-tsgolint, found in node_modules, so oxlint runs from the repository's root
   "options": { "typeAware": true, "denyWarnings": true, "reportUnusedDisableDirectives": "error" },
-  // the house rules (lint/plugin.ts), each with its fixtures, and each on below as an error
-  "jsPlugins": ["./lint/plugin.ts"],
+  // Solid's rules (eslint-plugin-solid), on below as its v2-strict config sets them; and the house rules
+  // (lint/plugin.ts), each with its fixtures, and each on below as an error
+  "jsPlugins": ["eslint-plugin-solid", "./lint/plugin.ts"],
+  "settings": {
+    // eslint-plugin-solid's rules read Solid's major version: 2, as its v2-strict config sets it
+    "solid": { "version": 2 },
+    // a label names its control with for, as Solid writes it (React's htmlFor is solid/no-react-specific-props's)
+    "jsx-a11y": { "attributes": { "for": ["for"] } }
+  },
   // the files the house rules' test (tests/site/rules.test.ts) lints with a config of its own; some break a rule on
   // purpose
   "ignorePatterns": ["lint/fixtures/"],
@@ -249,6 +256,44 @@
     "react/jsx-no-script-url": "error",
     "react/jsx-no-target-blank": "error",
     "react/void-dom-elements-no-children": "error",
+    // eslint-plugin-solid's v2-strict config, rule by rule (oxlint loads a plugin's rules, not its configs), its warnings
+    // errors; tests/site/rules.test.ts holds them to it
+    "solid/components-return-once": "error",
+    "solid/event-handlers": "error",
+    "solid/imports": "error",
+    "solid/jsx-no-duplicate-props": "error",
+    "solid/jsx-no-script-url": "error",
+    "solid/jsx-no-undef": "error",
+    "solid/jsx-uses-vars": "error",
+    "solid/no-accessor-as-prop": "error",
+    "solid/no-array-handlers": "off",
+    "solid/no-boolean-enumerated-attribute": "error",
+    "solid/no-browser-globals-in-server-function": "error",
+    "solid/no-destructure": "error",
+    "solid/no-innerhtml": "error",
+    "solid/no-invalid-server-capture": "error",
+    "solid/no-module-scope-reactive-primitive": "error",
+    "solid/no-proxy-apis": "off",
+    "solid/no-react-deps": "off",
+    "solid/no-react-specific-props": "error",
+    "solid/no-restated-default-options": "error",
+    "solid/no-single-arg-create-effect": "error",
+    "solid/no-store-mutation-outside-setter": "error",
+    "solid/no-unknown-namespaces": "error",
+    "solid/no-unused-signal": "error",
+    "solid/no-write-in-pure-computation": "error",
+    "solid/prefer-classlist": "off",
+    "solid/prefer-for": "error",
+    "solid/prefer-onSettled-for-side-effects": "error",
+    "solid/prefer-show": "off",
+    "solid/prefer-structured-class": "error",
+    "solid/reactivity": "error",
+    "solid/removed-api": "error",
+    "solid/require-async-server-function": "error",
+    "solid/self-closing-comp": "error",
+    "solid/style-prop": "error",
+    "solid/valid-use-server": "error",
+    "solid/validate-jsx-nesting": "error",
     "typescript/adjacent-overload-signatures": "error",
     "typescript/array-type": "error",
     "typescript/await-thenable": "error",
@@ -477,6 +522,11 @@
       // the one place the site writes to the console: what went wrong, with where
       "files": ["site/report.ts"],
       "rules": { "eslint/no-console": "off" }
+    },
+    {
+      // Solid's own no-unassigned-vars, v2-strict's in place of ESLint's: a ref={el} assigns el
+      "files": ["**/*.tsx"],
+      "rules": { "eslint/no-unassigned-vars": "off", "solid/no-unassigned-vars": "error" }
     },
     {
       // the tests and their config run in Node, a test is test() wherever it is, and a test drives the page step by step
