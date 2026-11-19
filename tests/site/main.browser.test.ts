@@ -5,6 +5,7 @@ import { commands, page } from 'vitest/browser';
 import { communityHref, eventOnMapHref, EXPLORE, sourcesHref, TABS } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, FIXTURE_PROMO, PRAGUE_GOLD } from './community.fixture.ts';
+import { expectConsole } from './console.ts';
 import { COMM, shownDialog } from './seen.ts';
 
 const INDEX = new DOMParser().parseFromString(await commands.readFile('public/index.html'), 'text/html');
@@ -101,6 +102,11 @@ test('the search dialog opens from its button, every control named', async () =>
 const alertLine = () => document.querySelector('[role="alert"]')?.textContent ?? '';
 
 test('a promise left to run on its own, or one nothing catches, is said on the page', async () => {
+  // report.ts says each in the console, with where; and Vitest's own catcher, which leaves a rejection to the page's
+  // listener when it has one, prints the event
+  expectConsole('error', /^Kiz Radar: copying the code: Error: a refused clipboard$/u);
+  expectConsole('error', /^Kiz Radar: the page: Error: a loose promise$/u);
+  expectConsole('error', /^\[object PromiseRejectionEvent\]$/u);
   // the copy of a festival's promo code is left to run (report.ts done); the clipboard refuses it
   const refused = vi.spyOn(navigator.clipboard, 'writeText').mockRejectedValue(new Error('a refused clipboard'));
   onTestFinished(() => refused.mockRestore());
