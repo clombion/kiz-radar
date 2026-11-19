@@ -1,9 +1,10 @@
 // The shapes of code several house rules refuse, as Grit's snippets matched them: a call of a name, a method called by
-// its name, and a rule that refuses the calls it picks. Which files may write them is .oxlintrc.json's.
+// its name, a property read by its name, and a rule that refuses the calls it picks. Which files may write them is .oxlintrc.json's.
 import type { Rule } from './plugin.ts';
 
 type Visitor = ReturnType<NonNullable<Rule['create']>>;
 export type Call = Parameters<NonNullable<Visitor['CallExpression']>>[0];
+export type Member = Parameters<NonNullable<Visitor['MemberExpression']>>[0];
 
 // a rule refusing each call `refused` picks, the whole call
 export const callRule = (id: string, message: string, refused: (call: Call) => boolean): Rule => ({
@@ -33,3 +34,22 @@ export const callsMethod = (call: Call, name: string): boolean =>
   !call.optional &&
   call.callee.property.type === 'Identifier' &&
   call.callee.property.name === name;
+
+// where a member is written to rather than read: assigned, updated, a loop's variable, or a target of a destructuring
+// assignment (Grit's `$x.name` is an expression, and these are assignment targets)
+const WRITTEN_LEFT = new Set(['AssignmentExpression', 'AssignmentPattern', 'ForInStatement', 'ForOfStatement']);
+const WRITTEN = new Set(['UpdateExpression', 'ArrayPattern', 'RestElement']);
+const written = (member: Member): boolean => {
+  const { parent } = member;
+  if (WRITTEN.has(parent.type)) return true;
+  if (WRITTEN_LEFT.has(parent.type)) return 'left' in parent && parent.left === member;
+  return parent.type === 'Property' && parent.parent.type === 'ObjectPattern' && parent.value === member;
+};
+
+// x.name read: the name written, the member not optional, and not written to (Grit's `$x.name`)
+export const readsProperty = (member: Member, names: ReadonlySet<string>): boolean =>
+  !member.computed &&
+  !member.optional &&
+  member.property.type === 'Identifier' &&
+  names.has(member.property.name) &&
+  !written(member);

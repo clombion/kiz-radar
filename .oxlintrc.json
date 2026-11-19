@@ -356,6 +356,7 @@
     "vitest/no-standalone-expect": "error",
     "vitest/prefer-hooks-in-order": "error",
     "vitest/prefer-hooks-on-top": "error",
+    "house/classes": "error",
     "house/clicks": "error",
     "house/fetch": "error",
     "house/promises": "error",
@@ -417,6 +418,11 @@
       // house/buttons: dom.ts's button() is where a button is made
       "files": ["site/dom.ts"],
       "rules": { "house/buttons": "off" }
+    },
+    {
+      // house/classes: dom.ts sets the classes, held to the stylesheet's
+      "files": ["site/dom.ts"],
+      "rules": { "house/classes": "off" }
     },
     {
       // oxlint loads a JS plugin from its module's default export, as ESLint does
