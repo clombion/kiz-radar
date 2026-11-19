@@ -26,7 +26,7 @@ went, or why it cannot be tested through the page. The node tests (142 in 14 fil
 | `main.browser.test.ts` | the footer links to the sources page, which says what the festival data covers and when it was built |  |
 | `main.browser.test.ts` | the footer switches the currency: kroner shown, euros and dollars a button each |  |
 | `main.browser.test.ts` | the search dialog names every control |  |
-| `main.browser.test.ts` | a promise left to run on its own, or one nothing catches, is said on the page |  |
+| `main.browser.test.ts` | a promise left to run on its own, or one nothing catches, is said on the page | same file and name; `done` reached through the page, a promo code's copy refused (1.2) |
 | `main.browser.test.ts` | a view that throws while it builds says so in its place, and the page around it stays | `broken.browser.test.ts`, same name (1.1): its bad row planted before start |
 | `map.browser.test.ts` | festivals of one city are one bubble, whatever their listings call it, and two cities two |  |
 | `map.browser.test.ts` | two cities of one name in one country are two bubbles |  |

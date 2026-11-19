@@ -1,11 +1,10 @@
 // The whole page, in Chromium, started as a visitor gets it (app.ts): a new page takes the focus and names every
 // control, and what goes wrong is said on the page (a view that throws: broken.browser.test.ts).
-import { expect, test } from 'vitest';
+import { expect, onTestFinished, test, vi } from 'vitest';
 import { commands, page } from 'vitest/browser';
-import { done } from '../../site/report.ts';
-import { communityHref, EXPLORE, sourcesHref, TABS } from '../../site/routes.ts';
+import { communityHref, EXPLORE, eventOnMapHref, sourcesHref, TABS } from '../../site/routes.ts';
 import { startSite } from './app.ts';
-import { FIXTURE_COMMUNITY } from './community.fixture.ts';
+import { FIXTURE_COMMUNITY, FIXTURE_PROMO, PRAGUE_GOLD } from './community.fixture.ts';
 
 const INDEX = new DOMParser().parseFromString(await commands.readFile('public/index.html'), 'text/html');
 const main = () => document.querySelector<HTMLElement>('#main');
@@ -99,8 +98,15 @@ test('the search dialog opens from its button, every control named', async () =>
 const alertLine = () => document.querySelector('[role="alert"]')?.textContent ?? '';
 
 test('a promise left to run on its own, or one nothing catches, is said on the page', async () => {
-  done(Promise.reject(new Error('a planted failure')), 'a test');
-  await expect.poll(alertLine).toContain('a test: a planted failure');
+  // the copy of a festival's promo code is left to run (report.ts done); the clipboard refuses it
+  const refused = vi.spyOn(navigator.clipboard, 'writeText').mockRejectedValue(new Error('a refused clipboard'));
+  onTestFinished(() => refused.mockRestore());
+  await app.open(eventOnMapHref(PRAGUE_GOLD));
+  const copy = [...document.querySelectorAll<HTMLButtonElement>('main button')].find((b) => b.textContent === 'Copy');
+  if (copy === undefined) throw new Error(`no Copy button on the card: <main> says ${main()?.textContent ?? ''}`);
+  copy.click();
+  expect(refused).toHaveBeenCalledWith(FIXTURE_PROMO);
+  await expect.poll(alertLine).toContain('copying the code: a refused clipboard');
   const loose = Promise.reject(new Error('a loose promise'));
   setTimeout(() => loose, 0); // kept, but never caught: only the window's listener sees it fail
   await expect.poll(alertLine).toContain('the page: a loose promise');

@@ -1,6 +1,7 @@
 // The community the site's tests read, written into their database over what the build made from pipeline/*.csv: its
 // key and name, its people, their plans, the people its manager added, how members travel, and the festivals any of it
-// names, each by its title, days, city and country, as the data stood when Glasgow was the next trip. The real rows are
+// names, each by its title, days, city and country, as the data stood when Glasgow was the next trip; and the one promo
+// code a festival has. The real rows are
 // taken out first, so a test never reads them: deleting them from the CSVs, the build leaving out a trip that ended, or
 // a festival moving its days or name, changes no test. Each test pins its own day (onDay). data.setup.ts writes the
 // database with it into FIXTURE_DATA, which the tests of the whole site load.
@@ -16,12 +17,14 @@ export const FIXTURE_DATA = '.vitest/fixture-data';
 // in a test
 export const DATA_FILE = /^\/data\/(?<file>.+)$/u;
 export const ROOT_FILE = /^\/(?<file>[^/]+)$/u;
+// Prague GOLD, and the one promo code the data has, its own (every other one is taken out)
+export const PRAGUE_GOLD = 18_666;
+export const FIXTURE_PROMO = 'FIXTURE10';
 // the festivals it goes to: KUOF (Oslo, 20–22 Nov 2026), HOT Ice (Riga, 26 Nov – 1 Dec), Glasgow (6–9 Nov), Prague
 // GOLD (14–18 Jan 2027), Prague Kwanza (11–15 Feb) and Cloudkiz (Enschede, 26–28 Feb)
 const KUOF = 19_033,
   HOT_ICE = 17_493,
   GLASGOW = 18_964,
-  PRAGUE_GOLD = 18_666,
   KWANZA = 18_660,
   CLOUDKIZ = 18_760;
 const PEOPLE = [
@@ -76,8 +79,17 @@ export const FIXTURE_FESTIVALS = FESTIVALS.map(([id]) => id);
 export function plantCommunity(db: Database, home: string): void {
   db.run('PRAGMA defer_foreign_keys = ON');
   db.run('BEGIN');
-  for (const table of ['travel', 'stays', 'seeded_artists', 'community_seeded', 'community_members', 'communities'])
+  for (const table of [
+    'travel',
+    'stays',
+    'seeded_artists',
+    'community_seeded',
+    'community_members',
+    'communities',
+    'event_promos',
+  ])
     db.run(`DELETE FROM ${table}`);
+  db.run('INSERT INTO event_promos (event_id, code, offer) VALUES (?, ?, NULL)', [PRAGUE_GOLD, FIXTURE_PROMO]);
   for (const [key, name] of PEOPLE) {
     db.run('INSERT OR IGNORE INTO people (key, name, featured) VALUES (?, ?, 1)', [key, name]);
     db.run('UPDATE people SET home = ? WHERE key = ?', [home, key]);
