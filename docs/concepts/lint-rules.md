@@ -303,8 +303,8 @@ stylesheet.
 
 ## organizeImports
 
-`biome check` also enforces an assist, `organizeImports`, which no rule of the mapping names. It holds three things, and
-each has its own holder once Biome stops reading the TypeScript:
+`biome check` also enforced an assist, `organizeImports`, which no rule of the mapping names. It held three things, and
+each has its own holder since Biome stopped reading the TypeScript (task 2.7):
 
 - **The order of import statements:** oxfmt's `sortImports`, on every `.ts` it lays out (`.oxfmtrc.jsonc`'s override),
   with `newlinesBetween: false`: like Biome, it sorts across a blank line and adds none between groups, so it changed no

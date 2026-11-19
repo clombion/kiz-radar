@@ -6,8 +6,8 @@
   "scripts": {
     "build": "rm -rf public/js public/vendor && tsc -p . && pnpm run vendor",
     "types": "tsc --noEmit -p . && tsc -p tests/site",
-    "lint": "biome check --error-on-warnings",
     "lint:oxlint": "oxlint site tests lint vitest.config.ts",
+    "lint:biome": "biome lint --error-on-warnings",
     "format": "oxfmt --check",
     "knip": "knip",
     "test": "vitest run",

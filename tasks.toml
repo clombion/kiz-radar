@@ -96,10 +96,10 @@ description = "tsc, strict, on the site and its tests"
 depends = ["install:site"]
 run = "pnpm run types"
 
-["lint:site"]
+["lint:biome"]
 description = "Biome's rules on the stylesheet and the JSON configs (biome.jsonc's files.includes)"
 depends = ["install:site"]
-run = "pnpm run lint"
+run = "pnpm run lint:biome"
 
 ["lint:oxlint"]
 description = "oxlint's rules on the site, its tests, the house rules' plugin (lint/) and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md, and the house rules)"
@@ -192,8 +192,8 @@ depends = [
   "format:md",
   "format:site",
   "types:py",
-  "lint:site",
   "lint:oxlint",
+  "lint:biome",
   "types:site",
   "knip",
   "dup",
