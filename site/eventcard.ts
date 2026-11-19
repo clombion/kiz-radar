@@ -16,7 +16,7 @@ import { goingLine } from './plans.ts';
 import { done } from './report.ts';
 import { artistHref } from './routes.ts';
 import { KEY, LINK } from './states.ts';
-import { away, calm, dayParts, flightsUrl, home, nowTag, otherYear, place } from './ui.ts';
+import { away, calm, dayParts, flightsUrl, home, nowTag, otherYear, place, transition } from './ui.ts';
 import { joined, type Key, linkOf, type Point, say, text } from './wording.ts';
 
 // "23–25 Oct", or "30 Oct – 1 Nov" across a month end: the date is shown once, in the box
@@ -182,13 +182,13 @@ function smoothly(card: HTMLElement, change: () => void, opening: boolean): void
   }
   const root = document.documentElement;
   root.dataset['vt'] = still ? 'calm' : opening ? 'open' : 'close';
-  const t = document.startViewTransition(() => {
+  const shown = transition(() => {
     change();
     const r = card.getBoundingClientRect();
     if (r.top < 0 || r.top > innerHeight - 80) card.scrollIntoView({ block: 'nearest' }); // keep the card in view
-  });
+  }, 'opening a card');
   done(
-    t.finished.finally(() => {
+    shown.finally(() => {
       for (const c of onScreen) {
         c.style.viewTransitionName = '';
         c.style.removeProperty('view-transition-class');

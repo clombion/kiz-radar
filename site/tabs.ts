@@ -7,7 +7,7 @@
 // reduced motion, the oval moves at once and the page only changes.
 import { h } from './dom.ts';
 import { done } from './report.ts';
-import { calm } from './ui.ts';
+import { calm, transition } from './ui.ts';
 
 // a box in a row of tabs, in px
 type Box = { readonly left: number; readonly top: number; readonly width: number; readonly height: number };
@@ -175,7 +175,7 @@ export function slide(direction: number, change: () => void): void {
   main.style.viewTransitionName = 'section';
   const mine = ++slides;
   done(
-    document.startViewTransition(change).finished.finally(() => {
+    transition(change, 'changing section').finally(() => {
       if (mine !== slides) return;
       main.style.viewTransitionName = '';
       root.removeAttribute('data-vt');

@@ -5,6 +5,7 @@ import { q, site, sql } from './db.ts';
 import { h } from './dom.ts';
 import { MEDIA } from './media.ts';
 import { currency } from './money.ts';
+import { done } from './report.ts';
 import { str } from './rows.ts';
 import { KEY } from './states.ts';
 import { type Key, text } from './wording.ts';
@@ -12,6 +13,21 @@ import { type Key, text } from './wording.ts';
 // whether the visitor asked for less motion, and how a scroll goes for them: at once when they did
 export const calm = (): boolean => matchMedia(MEDIA.REDUCED_MOTION).matches;
 export const scrolling = (): ScrollBehavior => (calm() ? 'auto' : 'smooth');
+
+// The page changed as a view transition, which settles once change has run (its finished). One skipped because another
+// began rejects its ready with an AbortError, which current browsers report as unhandled: that is the expected end of a
+// slide cut short, not a fault; any other is reported, where it happened.
+const skipped = (e: unknown): boolean => e instanceof DOMException && e.name === 'AbortError';
+export async function transition(change: () => void, where: string): Promise<void> {
+  const t = document.startViewTransition(change);
+  done(
+    t.ready.catch((e: unknown) => {
+      if (!skipped(e)) throw e;
+    }),
+    where,
+  );
+  await t.finished;
+}
 
 // the arrow after words that lead off the site, shown and not read out (the link's own words say where it goes)
 export const away = () => h('span', { 'aria-hidden': 'true' }, ' ↗');
