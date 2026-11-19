@@ -20,7 +20,6 @@
     "./lint/formats.grit",
     "./lint/home.grit",
     "./lint/buttons.grit",
-    "./lint/promises.grit",
     "./lint/classes.grit",
     "./lint/markup.grit",
     "./lint/states.grit"

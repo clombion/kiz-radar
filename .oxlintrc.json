@@ -358,6 +358,7 @@
     "vitest/prefer-hooks-on-top": "error",
     "house/clicks": "error",
     "house/fetch": "error",
+    "house/promises": "error",
     "house/session": "error",
     "house/storage": "error"
   },

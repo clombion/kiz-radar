@@ -3,6 +3,7 @@
 import type { RuleTester } from 'oxlint/plugins-dev';
 import { clicks } from './clicks.ts';
 import { fetch } from './fetch.ts';
+import { promises } from './promises.ts';
 import { session } from './session.ts';
 import { storage } from './storage.ts';
 
@@ -11,6 +12,6 @@ export type Rule = Parameters<RuleTester['run']>[1];
 
 const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } = {
   meta: { name: 'house' },
-  rules: { clicks, fetch, session, storage },
+  rules: { clicks, fetch, promises, session, storage },
 };
 export default plugin;
