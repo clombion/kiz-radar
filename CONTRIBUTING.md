@@ -69,7 +69,8 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   the forbidden form in an exempt file (`site/kept.ts`, `tests/…`). `tests/site/rules.test.ts` lints the fixtures with
   the house rules as `.oxlintrc.json` sets them, each override's globs found in each rule's folder, and fails on a
   finding on an unmarked line, a marked line not found, a rule without fixtures or a folder without a rule. The fixtures
-  are kept out of oxlint's run of the tree, tsc, knip, jscpd and Vitest; oxfmt lays them out.
+  are kept out of oxlint's run of the tree, tsc, knip, jscpd and Vitest; oxfmt lays them out, but `semicolons`', whose
+  JSX text it would change.
 - **Duplicates:** jscpd fails on a block written twice, at the length `.jscpd.json` sets.
 - **Generated files:** `mise run generate` writes `pipeline/enums.py`, `site/states.ts`, `site/classes.ts`,
   `site/drawings.ts` (from `pipeline/drawings.py`), `lint/state-keys.ts`, `docs/reference/`, and the home city
