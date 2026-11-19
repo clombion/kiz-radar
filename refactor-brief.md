@@ -5,8 +5,11 @@
 > findings" section. Evidence is given as `file:line`. Nothing was installed and nothing in the repository was edited.
 >
 > **Answered since (18 November):** Q1 yes (move-only commits), Q5 yes; Phase 1 tests start the app in the test's own
-> page, one start per file. Where this brief still says "until the owner answers", [refactor-plan.md](refactor-plan.md)
-> holds the answer.
+> page, one start per file. **Answered 19 November:** "kept across a reload" becomes two test files joined by one
+> constant. Where this brief disagrees with [refactor-plan.md](refactor-plan.md) or a task plan (the first is
+> [refactor-task-1.1.md](refactor-task-1.1.md)), the newer document holds: in particular the Phase 1 notes on the
+> harness, and the notes that wait on Q1 and Q5 ("do not move code", "list … and ask"). The brief errors found so far
+> are listed in refactor-plan.md's Phase 1 report.
 
 You are working on kiz-radar. This brief sets out decisions already made, the order of work, and how each phase is
 judged done. The decisions were researched and tested on 18 November 2026; the evidence is summarised under each one so

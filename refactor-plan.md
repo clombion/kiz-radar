@@ -1,23 +1,24 @@
 # Refactor plan: Solid 2.0 and the Oxc toolchain
 
 The brief, reviewed against the repository on 18 November 2026, is [refactor-brief.md](refactor-brief.md). It holds the
-decisions, the repo facts each task relies on (`file:line`), and the open questions. This plan orders the work; each
-task gets its own implementation plan before its first commit. Each task is one commit series; every commit passes
-`mise run check` (the push hook enforces it). A phase starts only when the previous one's "done when" holds and its
-report is written ("Phase reports", at the end).
+decisions, the repo facts each task relies on (`file:line`), and the open questions; where it disagrees with this plan
+or a task plan, the newer document holds. This plan orders the work; each task gets its own implementation plan before
+its first commit; task 1.1's is [refactor-task-1.1.md](refactor-task-1.1.md). Each task is one commit series; every
+commit passes `mise run check` (the push hook enforces it). A phase starts only when the previous one's "done when"
+holds and its report is written ("Phase reports", at the end).
 
-Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "Open questions"). **Stop** = on the
-brief's stop-and-ask list.
+Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "Open questions for the owner"). **Stop**
+= on the brief's stop-and-ask list.
 
 ## Phase 1: tests that survive a rewrite
 
 | # | Task | Subtasks | Done when |
 | -- | -- | -- | -- |
-| 1.1 | Baseline and the app-test harness | (a) record test counts per Vitest project, Biome's output (94 checked, 38 infos), a one-off v8 report over `site/**`; (b) move `main.browser.test.ts`'s start-up (index body, vendor scripts, stubbed `fetch`, `import main.ts`) into a shared helper beside `shipped.ts`; (c) let a test plant rows and pin the day before the app starts (one app start per test file); (d) open a route and wait for it to draw; (e) start `review.html` the same way; (f) port `main.browser.test.ts` onto it, its "view that throws" test moved to a file of its own | the helper exists, `main.browser.test.ts` uses it with no view import but `done` (moved in 1.2), suite green, baseline in the Phase 1 report |
+| 1.1 | Baseline and the app-test helper | (a) record the tests per project and file, their full names, coverage over `site/**` and Biome's output; (b) the test server answers `/data/` from the fixture only; (c) `tests/site/app.ts`: `startSite` and `startReview` start the page on planted data (a function over the database, before start), a stated day, seeded storage and given answers for other hosts, owning `fetch` and `Date` for the file (one start per file); `open(href, on?)` opens a route as a new page, on another day if given; (d) its own tests, one per option, each failing if the option is ignored; (e) port `main.browser.test.ts`, its "view that throws" test moved to `broken.browser.test.ts` | no test page can read the real build's data; the helper and its tests pass; `main.browser.test.ts` uses it with no view import but `done` (moved in 1.2); the other browser files pass unchanged; baseline in the Phase 1 report |
 | 1.2 | Move pure exports out of mixed view modules (Q1: yes) | one move per commit, no behaviour change: `festivals()`/`withDetails`, `friendsIn`/`togetherHref`/`NEAR_KM`/`NAMED_UP_TO`, `citiesOf`, `cityEntries`, `Drawing`/`TRAITS`/`MORE_TRAITS`/`NOTE`, `WIDE`, `PAD`, `SAID_MS`, `done`; `Drawing.into` writes markup, so how `icons.ts` splits is settled in 1.2's own plan | every value a test needs from `site/` lives in a pure module, or the test asserts the visible outcome instead |
-| 1.3 | `views.browser.test.ts` through the app, one view at a time | split by view: event card, festivals, artists, communities, friends, gantt, people, plans' lines, search, sources; each assertion becomes what the route shows | the file no longer imports a view; each old test is in the ledger |
-| 1.4 | `onnow`, `flights`, `map`, `updating` browser tests through the app | plant crafted rows before start, pin the day; each data set or day in a file of its own | same |
-| 1.5 | `review.browser.test.ts` through `review.html` | start the review page with its fixture, drive it; "kept across a reload" as a second file started with the storage the first left | same |
+| 1.3 | `views.browser.test.ts` through the app, one view at a time | split by view: event card, festivals, artists, communities, friends, gantt, people, plans' lines, search, sources; each assertion becomes what the route shows; every change to the live database (25 calls of `withTrips`, `withAdded` and `withStays`, and the direct writes) becomes rows planted before start, side by side where they can stand together and in files of their own where they contradict | the file no longer imports a view; each old test is in the ledger |
+| 1.4 | `onnow`, `flights`, `map`, `updating` browser tests through the app | plant crafted rows before start; give the day per page (`open(href, on)`); a file of its own only for data that contradicts another file's; `updating.ts`'s stored time across a reload as the same two-file pair as 1.5; `shipped.ts` goes with its last user | same |
+| 1.5 | `review.browser.test.ts` through `review.html` | start the review page with its fixture, drive it; "kept across a reload" as two files joined by one shared constant: the first drives the page and asserts the storage entry equals it, the second starts with the entry seeded from it and asserts what the page shows (owner, 19 November) | same |
 | 1.6 | `page.browser.test.ts`: the helpers' tests | user-visible ones (tab oval, slide, dialog history, paged list, dismissable card) through the app; tests `:16`, `:41`, `:168` of `h()` itself: replaced by page-level tests of the same guarantees (Q5); the originals stay until `h()` goes in 4.10 | same |
 | 1.7 | Node tests `states.test.ts`, `styles.test.ts` | import only pure modules (after 1.2) | same |
 | 1.8 | The rule: tests import no view module | Grit rule in `lint/`, listed in `biome.jsonc`; the allowed list (pure and browser-API modules) kept in one place and named by the message; `import type` allowed; dynamic `import()` of the two entries allowed; a test running `biome lint` on a must-fail and a must-pass file | the rule passes on the repo and its two-file test passes |
@@ -58,9 +59,9 @@ brief's stop-and-ask list.
 | 4.7 | Stateful views | `sentence`, `communities`, `friends`, `artists`, `map` (Leaflet stays an imperative island), `countries`, `people` | same |
 | 4.8 | Read-only views | `week`, `sources`, `tables`, `updating` | same |
 | 4.9 | The review dashboard | `review.ts` as its own series | same |
-| 4.10 | Finishing | delete `h()` and `replaceChildren` from `dom.ts` (and the `h()` tests, per Q5); retire `markup`, `classes`, `buttons`, `clicks` only with a fixture proving the replacement; rewrite kept rules' messages; `CLAUDE.md` conventions and the Solid skills; `CONTRIBUTING.md`, docs, `tests/test_suppressions.py` | Phase 4 "done when" holds; report written |
+| 4.10 | Finishing | delete `h()` and `replaceChildren` from `dom.ts` (and the `h()` tests, per Q5); retire `markup`, `classes`, `buttons`, `clicks` only with a fixture proving the replacement; rewrite kept rules' messages; `CLAUDE.md` conventions and the Solid skills; `CONTRIBUTING.md`, docs, `tests/test_suppressions.py`; remove `refactor-brief.md`, `refactor-plan.md` and the task plans | Phase 4 "done when" holds; report written |
 
-## Open questions (from the review)
+## Open questions (from the brief's review)
 
 - **Q1.** May Phase 1 move pure exports out of mixed view modules, as move-only commits? **Answered 18 November: yes,
   move-only commits.**
@@ -72,10 +73,14 @@ brief's stop-and-ask list.
 
 ## Decisions taken while planning
 
-- **Phase 1 harness (task 1.1, D1):** the app starts in the test's own page, one start per test file, as
-  `main.browser.test.ts` does (answered 18 November). A frame per test was rejected: `site/db.ts:13-14` fetches data
-  from its module's address, so a frame cannot be given its own data that way, and Playwright's page-wide routing and
-  clock would reach the test runner. The built-site frame (`pages.browser.test.ts`) takes the Phase 3 smoke set.
+- **Phase 1 harness (task 1.1, decision 1 of its plan):** the app starts in the test's own page, one start per test
+  file, as `main.browser.test.ts` does (answered 18 November). A frame per test was rejected: in a test, Vite rewrites
+  `site/db.ts:13`'s data address to the server's root, so a frame cannot be given its own data that way, and
+  Playwright's page-wide routing and clock would reach the test runner. The built-site frame (`pages.browser.test.ts`)
+  takes the Phase 3 smoke set.
+- **The reload (tasks 1.4 and 1.5):** a page cannot reload inside a test, so "kept across a reload" is two files joined
+  by one constant (answered 19 November). It is stronger than today's single test, whose re-read is satisfied by the
+  token `kept.ts` holds in memory; the same pair serves `updating.ts`'s stored time, so `site/` needs no new export.
 
 ## Phase reports
 
@@ -85,3 +90,12 @@ decisions the brief did not settle, and what in the brief turned out wrong.
 ### Phase 1
 
 Not started. Task 1.1 records the baseline here.
+
+Brief errors found so far:
+
+- `refactor-brief.md` cites `main.browser.test.ts:11-50` and `:19-23` for the start-up; after task 1.1 it is in
+  `tests/site/app.ts`.
+- The counts: 283 tests, 141 of them in 10 browser files, not "about 230" and "133 in 9".
+- The one-off coverage command exits 1 on the global thresholds, after writing its summary.
+- For task 3.1: in a test, Vite rewrites `new URL('../data/', import.meta.url)` to the server's root, and Vitest serves
+  `public/` there, the real build's `data/` included.
