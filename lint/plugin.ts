@@ -20,6 +20,7 @@ import { promises } from './promises.ts';
 import { routes } from './routes.ts';
 import { semicolons } from './semicolons.ts';
 import { session } from './session.ts';
+import { spreads } from './spreads.ts';
 import { states } from './states.ts';
 import { statics } from './statics.ts';
 import { storage } from './storage.ts';
@@ -52,6 +53,7 @@ const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } 
     routes,
     semicolons,
     session,
+    spreads,
     states,
     statics,
     storage,

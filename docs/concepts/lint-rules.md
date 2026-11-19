@@ -118,6 +118,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `routes` | everywhere oxlint lints | `site/routes.ts` |
 | `semicolons` | everywhere oxlint lints | (none) |
 | `session` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
+| `spreads` | everywhere oxlint lints | (none) |
 | `states` | `site/*.ts`, `site/*.tsx` | (none) |
 | `statics` | everywhere oxlint lints | (none) |
 | `storage` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
