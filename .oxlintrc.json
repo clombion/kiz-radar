@@ -580,8 +580,9 @@
       "rules": { "house/clicks": "off" }
     },
     {
-      // house/buttons: a button in the site's modules is dom.ts's button(), which gives it type=button
-      "files": ["site/*.ts"],
+      // house/buttons: a button in the site's modules is of type button: dom.ts's button(), which gives it the type, in an
+      // h() module, <button type="button"> in JSX
+      "files": ["site/*.ts", "site/*.tsx"],
       "rules": { "house/buttons": "error" }
     },
     {

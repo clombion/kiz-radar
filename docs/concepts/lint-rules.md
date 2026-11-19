@@ -100,7 +100,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | Rule | On | Off |
 | -- | -- | -- |
 | `asserts` | everywhere oxlint lints | (none) |
-| `buttons` | `site/*.ts` | `site/dom.ts` |
+| `buttons` | `site/*.ts`, `site/*.tsx` | `site/dom.ts` |
 | `classes` | everywhere oxlint lints | `site/dom.ts` |
 | `clicks` | everywhere oxlint lints | `site/dom.ts`, `site/swipe.ts` |
 | `env` | everywhere oxlint lints | (none) |

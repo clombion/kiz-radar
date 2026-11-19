@@ -112,7 +112,7 @@ export type Opening = Parameters<NonNullable<Visitor['JSXOpeningElement']>>[0];
 export type Attribute = Parameters<NonNullable<Visitor['JSXAttribute']>>[0];
 
 // an element's tag, as written: a name (div, Badge); undefined for a member (Ui.Badge) or a namespace (svg:path)
-const tagOf = (opening: Opening): string | undefined =>
+export const tagOf = (opening: Opening): string | undefined =>
   opening.name.type === 'JSXIdentifier' ? opening.name.name : undefined;
 
 // a component, not an element of the page: its tag a capital's, or a member of an object (Ui.Badge)
@@ -126,3 +126,9 @@ export function valueOf(attribute: Attribute): Node | undefined {
   if (value.type !== 'JSXExpressionContainer') return value;
   return value.expression.type === 'JSXEmptyExpression' ? undefined : value.expression;
 }
+
+// the attribute an element is given by `name`, written as such: neither a namespace's nor in a spread
+export const attributeOf = (opening: Opening, name: string): Attribute | undefined =>
+  opening.attributes.find(
+    (a): a is Attribute => a.type === 'JSXAttribute' && a.name.type === 'JSXIdentifier' && a.name.name === name,
+  );
