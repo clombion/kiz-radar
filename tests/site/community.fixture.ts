@@ -13,8 +13,8 @@ export const FIXTURE_NAME = 'Norwegians in festivals';
 // where the database with the fixture is written for the tests of the whole site, beside public/data's other files
 export const FIXTURE_DATA = '.vitest/fixture-data';
 // the addresses the test server answers with the fixture's files (vitest.config.ts), as the tests' own pages ask them
-// (app.ts): data/<file>, the fixture's alone; and a file at the root, where Vite's transform sends db.ts's '../data/'
-// in a test
+// (app.ts): data/<file>, the fixture's alone; and a file at the root, where Vite's transform sent db.ts's '../data/'
+// in a test before site/'s /* @vite-ignore */ (no site page asks for one now; server.browser.test.ts does)
 export const DATA_FILE = /^\/data\/(?<file>.+)$/u;
 export const ROOT_FILE = /^\/(?<file>[^/]+)$/u;
 // Prague GOLD, and the one promo code the data has, its own (every other one is taken out)

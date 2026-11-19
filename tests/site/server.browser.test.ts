@@ -1,6 +1,6 @@
 // The test server's data for the tests' own pages (vitest.config.ts): the fixture's (data.setup.ts), never the rows
-// of the build in public/data/, at both addresses a page may ask: data/, and the server's root, where Vite's transform
-// sends db.ts's '../data/' in a test.
+// of the build in public/data/, at data/, and at the server's root, where Vite's transform sent db.ts's '../data/' in a
+// test before site/'s /* @vite-ignore */: no site page asks there now (refactor-task-3.2.md, decision 7).
 import { expect, test } from 'vitest';
 import { commands } from 'vitest/browser';
 import { get } from '../../site/net.ts';

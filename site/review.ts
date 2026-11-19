@@ -34,7 +34,7 @@ import { KEY } from './states.ts';
 import { flag } from './ui.ts';
 import { plural } from './wording.ts';
 
-const DATA = new URL('../data/', import.meta.url);
+const DATA = new URL(/* @vite-ignore */ '../data/', import.meta.url);
 const MINT = 'https://github.com/settings/personal-access-tokens/new';
 const BEAT = 450; // ms the written state shows before the next item
 const DIGIT = /^[1-9]$/u; // a choice's key

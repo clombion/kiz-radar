@@ -10,8 +10,8 @@ import { get } from './net.ts';
 import { read, type RowOf, type Shape, str } from './rows.ts';
 import { SCHEMA } from './schema.ts';
 
-const SQLJS = new URL('../vendor/', import.meta.url); // sql-wasm.wasm, beside the script index.html loads
-const DATA = new URL('../data/', import.meta.url);
+const SQLJS = new URL(/* @vite-ignore */ '../vendor/', import.meta.url); // sql-wasm.wasm, beside the script index.html loads
+const DATA = new URL(/* @vite-ignore */ '../data/', import.meta.url);
 
 // site.json, written by the same build as kiz.sqlite: home airport, destinations, dates covered, build time
 const PLACE = record({ code: text, name: text });
