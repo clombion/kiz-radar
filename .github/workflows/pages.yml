@@ -1,10 +1,10 @@
 name: Publish site
 
-# Compiles the site's TypeScript (site/) into public/js/, builds its database from the export into public/data/, and
-# publishes public/ to GitHub Pages, whenever main changes: on a push, and when a workflow that commits to main with the
-# Actions token, whose pushes start no workflow of their own, starts it once it has pushed (Refresh places and rates,
-# which Refresh events starts too, and Refresh fares). It publishes only data that every state in it is one of
-# pipeline/states.py (pipeline/audit.py).
+# Bundles the site's TypeScript (site/) with Vite into public/js/, builds its database from the export into
+# public/data/, and publishes public/ to GitHub Pages, whenever main changes: on a push, and when a workflow that
+# commits to main with the Actions token, whose pushes start no workflow of their own, starts it once it has pushed
+# (Refresh places and rates, which Refresh events starts too, and Refresh fares). It publishes only data that every
+# state in it is one of pipeline/states.py (pipeline/audit.py).
 on:
   push:
     branches: [main]
@@ -36,7 +36,7 @@ jobs:
       - uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac  # v2.4.4
       - name: Every state in the data is in pipeline/states.py
         run: mise run audit
-      - name: Compile the site, and build its data from the export
+      - name: Bundle the site with Vite, and build its data from the export
         run: |
           mise run build:site
           mise run build:data
