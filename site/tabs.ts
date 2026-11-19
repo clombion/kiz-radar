@@ -16,7 +16,12 @@ type Oval = { goo: HTMLElement; oval: HTMLElement; at: Box | null; moving: HTMLE
 const rows = new WeakMap<HTMLElement, Oval>();
 function ovalOf(nav: HTMLElement): Oval {
   const known = rows.get(nav);
-  if (known) return known;
+  if (known) {
+    // A row drawn again (the Explore row's links replaced) has lost its layer: it is put back, its last box kept, so
+    // the next move starts from where the oval was.
+    if (known.goo.parentNode !== nav) nav.insertBefore(known.goo, nav.firstChild);
+    return known;
+  }
   const goo = nav.insertBefore(h('span', { class: 'goo', 'aria-hidden': 'true' }), nav.firstChild);
   const made = { goo, oval: goo.appendChild(h('span', { class: 'pill' })), at: null, moving: [] };
   rows.set(nav, made);
