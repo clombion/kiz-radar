@@ -4,9 +4,9 @@
 // lint/fixtures/<rule>/site/kept.ts here). A line a rule must refuse ends with a marker: `// refused` for the rule whose
 // folder holds the file, `// refused: <rule>, …` for any other; every finding must be on a line marked for its rule,
 // and every marked line found. A rule with no fixtures, or a folder with no rule, fails, as does a folder without a
-// good.ts that the rule is on for, with no options, and that holds no marked line: what the rule lets through, written
-// in a file no override exempts. And eslint-plugin-solid's rules, which are its own to test, as its v2-strict config
-// sets them.
+// good.ts (or good.tsx) that the rule is on for, with no options, and that holds no marked line: what the rule lets
+// through, written in a file no override exempts. And eslint-plugin-solid's rules, which are its own to test, as its
+// v2-strict config sets them.
 import { spawnSync } from 'node:child_process';
 import { cpSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -120,13 +120,16 @@ test.each(RULES)('%s: a fixture it refuses, and one it lets through', (rule) => 
   expect(own.filter((f) => !marked.has(f))).not.toEqual([]);
 });
 
-test.each(RULES)('%s: its good.ts is linted by it, with no exemption, and lets everything through', (rule) => {
-  const good = `${FIXTURES}/${rule}/`;
-  const file = fixtures.find((f) => f.startsWith(good) && f.endsWith('/good.ts'));
-  expect(file).toBeDefined();
-  const marked = expected.filter((e) => e.startsWith(`${file ?? ''}:`));
-  expect([settingFor(rule, file?.slice(good.length) ?? ''), marked]).toEqual(['deny', []]);
-});
+test.each(RULES)(
+  '%s: its good.ts or good.tsx is linted by it, with no exemption, and lets everything through',
+  (rule) => {
+    const good = `${FIXTURES}/${rule}/`;
+    const file = fixtures.find((f) => f.startsWith(good) && /\/good\.tsx?$/u.test(f));
+    expect(file).toBeDefined();
+    const marked = expected.filter((e) => e.startsWith(`${file ?? ''}:`));
+    expect([settingFor(rule, file?.slice(good.length) ?? ''), marked]).toEqual(['deny', []]);
+  },
+);
 
 test.each(RULES)('%s: its fixtures are refused on their marked lines, and only there', (rule) => {
   const mine = (lines: readonly string[]) => sorted(lines.filter((l) => l.startsWith(`${FIXTURES}/${rule}/`)));

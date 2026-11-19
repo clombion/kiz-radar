@@ -421,6 +421,8 @@
               "BooleanLiteral",
               "CallExpression",
               "Definition",
+              "JSXAttribute",
+              "JSXOpeningElement",
               "MemberExpression",
               "Node$1",
               "NullLiteral",
@@ -594,7 +596,7 @@
     },
     {
       // house/states: a state in the site's modules is KEY.<point>.<NAME> (site/states.ts), held to the table
-      "files": ["site/*.ts"],
+      "files": ["site/*.ts", "site/*.tsx"],
       "rules": { "house/states": "error" }
     },
     {

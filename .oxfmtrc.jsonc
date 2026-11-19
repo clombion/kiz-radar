@@ -15,6 +15,7 @@
     "!/tests/**/*.ts",
     "!/tests/**/*.tsx",
     "!/lint/**/*.ts",
+    "!/lint/**/*.tsx",
     "!/public/css/**",
     "!/*.json",
     "!/*.jsonc",
