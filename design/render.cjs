@@ -2,7 +2,8 @@
 // (its airport's place) taken from the site database; each community's, public/c/<key>/share.png, a variant of it with
 // its name and an example month, and what it was drawn from beside it (share.json: its name and the card's digest,
 // which the tests compare with pipeline/communities.csv and design/share-card.html, pipeline/generate.py's stale_cards);
-// the drawings it shares with the site from the built site/icons.ts; and the icons from public/mark.svg: the favicon public/icon.svg (the mark, in light colours on dark tabs),
+// the drawings it shares with the site from pipeline/drawings.py (card()); and the icons from public/mark.svg: the
+// favicon public/icon.svg (the mark, in light colours on dark tabs),
 // the animated public/loading.svg, and the PNGs.
 //   mise run render:design      (the repository's Playwright and its Chromium, the site database built, uv's Python)
 const { chromium } = require('playwright');
@@ -16,10 +17,13 @@ print(json.dumps({'places': db.execute('''select round(avg(lat), 3), round(avg(l
   where upcoming and lat is not null group by city, country_code''').fetchall(),
   'home': db.execute('select city, lat, lon from airports where home = 1').fetchone()}))`, path.join(site, 'data', 'kiz.sqlite')]).toString();
 
-const cards = JSON.parse(execFileSync('uv', ['run', '-q', 'python', '-c', `import json
+// each community's card, with what it is drawn from, and the drawings it shares with the site, as the site draws them
+// (pipeline/drawings.py, the one source, whose markup the card's digest covers)
+const { cards, icons } = JSON.parse(execFileSync('uv', ['run', '-q', 'python', '-c', `import json
+from pipeline import drawings
 from pipeline.generate import drawn_now
 from pipeline.records import Community
-print(json.dumps([drawn_now(c).model_dump() for c in Community.read()]))`]).toString());
+print(json.dumps({'cards': [drawn_now(c).model_dump() for c in Community.read()], 'icons': drawings.card()}))`]).toString());
 
 const mark = fs.readFileSync(path.join(site, 'mark.svg'), 'utf8');
 fs.writeFileSync(path.join(site, 'icon.svg'), mark.replace('</style>',
@@ -33,9 +37,6 @@ fs.writeFileSync(path.join(site, 'loading.svg'), mark.replace('</style>', `
 @media (prefers-reduced-motion:reduce){.sweep,.lead,.follow{animation:none}}</style>`));
 
 (async () => {
-  // the drawings a community's card shares with the site, as the built site draws them (site/icons.ts, the one source)
-  const { Drawing } = await import(path.join(site, 'js', 'icons.js'));
-  const icons = { people: Drawing.PEOPLE.svg, plane: Drawing.PLANE.svg, ring: Drawing.RING.svg };
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
   await page.addInitScript(`window.DRAWN = ${drawn}`);

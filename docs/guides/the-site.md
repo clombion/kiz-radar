@@ -237,7 +237,7 @@ and says it could not load.
 ## The share card and the icons
 
 A shared link shows `public/share-card.png`, drawn from `design/share-card.html` with a map of the festivals coming up;
-the icons come from `public/mark.svg`. To redraw them, run `mise run render:design` (it builds the site and its database
+the icons come from `public/mark.svg`. To redraw them, run `mise run render:design` (it builds the site's database
 first, and draws with the repository's Playwright); it also makes `public/loading.svg`.
 
 A community has one address, `…/kiz-radar/c/<key>/`, its page: `public/c/<key>/index.html`, which `mise run generate`
@@ -256,13 +256,14 @@ mark, fonts and colours; the site's card itself is as it was): an eyebrow ("Comm
 community's name over a highlighter swipe, a subtitle the same for every community ("Who's going where, and when they
 fly in"), and, in place of the map, an example month as the site draws one (days before today grey, today ringed by
 hand, a dot under a day only travelled on), its two trips' swipes the trails of a plane over a long weekend and of a car
-(the people icon, the plane and today's ring are the site's own, `site/icons.ts`, which `design/render.cjs` takes from
-the built site and gives the card; only the car is the card's); it is an example, from no data: nothing of a community
-but its name is on its page or its image, so members joining and plans changing leave both as they are.
+(the people icon, the plane and today's ring are the site's own, written as data in `pipeline/drawings.py`, whose
+`card()` `design/render.cjs` gives the card; only the car is the card's); it is an example, from no data: nothing of a
+community but its name is on its page or its image, so members joining and plans changing leave both as they are.
 `mise run generate` makes the page from `pipeline/communities.csv`; `mise run render:design` draws the image and writes
 beside it what it was drawn from, `share.json` (the name, and the digest of what draws it: `design/share-card.html`,
-`design/render.cjs`, `public/mark.svg` and `site/icons.ts`, `DRAWN_FROM`). Both are committed, as the site's share card
-is. The tests compare each `share.json` with the communities and those files (`stale_cards`), so a community renamed, or
-the card's design changed, without drawing again fails them. A folder of `public/c/` that is no community's (one
-removed, or renamed to another key) fails `mise run generate --check`, and `mise run generate` removes it. The fonts,
-Inter and Caveat, are served from `public/fonts` under the SIL Open Font License.
+`design/render.cjs` and `public/mark.svg`, `DRAWN_FROM`, and the markup of the drawings it draws, `drawings.card()`, so
+that a comment in `site/icons.ts` leaves the cards as they are). Both are committed, as the site's share card is. The
+tests compare each `share.json` with the communities and those files (`stale_cards`), so a community renamed, or the
+card's design changed, without drawing again fails them. A folder of `public/c/` that is no community's (one removed, or
+renamed to another key) fails `mise run generate --check`, and `mise run generate` removes it. The fonts, Inter and
+Caveat, are served from `public/fonts` under the SIL Open Font License.

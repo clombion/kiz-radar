@@ -631,7 +631,8 @@ start; the two unmapped ones are decided below.
 
 **Decided by the owner, 19 November:** `noSuspiciousSemicolonInJsx` becomes a house rule in task 4.2, when the first
 `.tsx` exists. `noSvgWithoutTitle` is held by construction instead: `Drawing` (`site/icons.ts`), the one maker of an
-SVG, hides each from assistive technology, and a house rule of 4.2 refuses `<svg>` in JSX outside it.
+SVG, takes only the drawings `pipeline/drawings.py` writes (`site/drawings.ts`), each hidden from assistive technology,
+and a house rule of 4.2 refuses `<svg>` in JSX outside it.
 
 | Biome rule | oxlint | Fit |
 | -- | -- | -- |

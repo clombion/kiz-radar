@@ -1,7 +1,5 @@
 // The stylesheets against the page and its modules: what Biome's CSS rules don't see.
-import { readFileSync } from 'node:fs';
 import { expect, test } from 'vitest';
-import { Drawing } from '../../site/icons.ts';
 import { MEDIA } from '../../site/media.ts';
 import { code, css, pages } from './sources.ts';
 
@@ -155,16 +153,4 @@ test('the community page’s cards float at the one width the stylesheet lays th
 test('every media query the script reads is one the stylesheet lays the page out by', () => {
   const queries = new Set([...css.values()].flatMap(rules).map((r) => r.media));
   expect(Object.values(MEDIA).filter((q) => !queries.has(`@media ${q}`))).toEqual([]);
-});
-
-// The share card draws the drawings it has in common with the site from site/icons.ts (design/render.cjs gives them
-// to it), never from a copy of their paths that would drift; and the site draws each once.
-test('the share card and the site draw their common icons from one source', () => {
-  const card = readFileSync(new URL('../../design/share-card.html', import.meta.url), 'utf8');
-  const paths = [Drawing.PEOPLE, Drawing.PLANE, Drawing.RING].flatMap((d) =>
-    [...d.svg.matchAll(/ d="(?<d>[^"]+)"/gu)].map((m) => m.groups?.['d'] ?? ''),
-  );
-  expect(paths.length).toBeGreaterThan(3);
-  expect(paths.filter((d) => card.includes(d))).toEqual([]);
-  expect(Drawing.LUCIDE['users']).toBe(Drawing.PEOPLE);
 });

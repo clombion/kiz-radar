@@ -13,6 +13,7 @@ where crawlers and installs read it, without the scripts. docs/reference/ holds 
 states (pipeline/reference.py). public/c/<key>/index.html is a community's page, the site's page with the
 community's head tags (pipeline/communities.csv); its image, public/c/<key>/share.png, is drawn by mise run
 render:design, with what it was drawn from beside it (share.json), which stale_cards compares with the data.
+site/drawings.ts holds every drawing the site shows, written from pipeline/drawings.py.
 """
 
 import argparse
@@ -27,7 +28,7 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from pipeline import ROOT, airports, build_site_db, files, reference, states
+from pipeline import ROOT, airports, build_site_db, drawings, files, reference, states
 from pipeline.records import Community
 
 CSS = ROOT / 'public' / 'css'
@@ -96,9 +97,9 @@ def manifest() -> str:
 SITE = 'https://clombion.github.io/kiz-radar/'  # where the site is published, as public/index.html's canonical link
 COMMUNITY_PAGES = ROOT / 'public' / 'c'  # a community's page for a shared link and its image, by its key, under it
 SHARE_CARD = ROOT / 'design' / 'share-card.html'  # the site's share card, of which a community's is a variant
-# what a community's card is drawn from beside its name: the card, the script that draws it, the mark on it and the
-# drawings it shares with the site
-DRAWN_FROM = (SHARE_CARD, ROOT / 'design' / 'render.cjs', ROOT / 'public' / 'mark.svg', ROOT / 'site' / 'icons.ts')
+# what a community's card is drawn from beside its name and the drawings it shares with the site (drawings.card()):
+# the card, the script that draws it and the mark on it
+DRAWN_FROM = (SHARE_CARD, ROOT / 'design' / 'render.cjs', ROOT / 'public' / 'mark.svg')
 # a community's description where its link is shared, made of its name alone, so that no change to its data changes it
 COMMUNITY_SAID = '{name} · festival plans shared on Kiz Radar'
 # the tags of index.html's head a community's page has its own of: its base, title, description, canonical link, card
@@ -140,7 +141,7 @@ def community_page(c: Community) -> str:
 
 class Drawn(BaseModel, frozen=True):
     """What a community's share image was drawn from (public/c/<key>/share.json, by mise run render:design): its
-    name, and the site's share card it is a variant of, by its file's digest."""
+    name, and the site's share card it is a variant of, by the digest of its files and of the drawings it draws."""
 
     key: str
     name: str
@@ -148,10 +149,12 @@ class Drawn(BaseModel, frozen=True):
 
 
 def drawn_now(c: Community) -> Drawn:
-    """What a community's share image is drawn from now."""
+    """What a community's share image is drawn from now: the card's files, and the markup of the drawings it draws,
+    not the module that names them (site/icons.ts), so that a comment there leaves every card as it is."""
     digest = hashlib.sha256()
     for f in DRAWN_FROM:
         digest.update(f.read_bytes())
+    digest.update(json.dumps(drawings.card(), sort_keys=True).encode())
     return Drawn(key=c.key, name=c.name, design=digest.hexdigest())
 
 
@@ -184,6 +187,7 @@ FILES: dict[Path, Callable[[], str]] = {
     ROOT / 'pipeline' / 'enums.py': states.enums_module,
     ROOT / 'site' / 'states.ts': states.ts_module,
     ROOT / 'site' / 'classes.ts': classes_module,
+    ROOT / 'site' / 'drawings.ts': drawings.ts_module,
     ROOT / 'lint' / 'state-keys.ts': state_keys_module,
     ROOT / 'site' / 'schema.ts': schema_module,
     INDEX: index_page,

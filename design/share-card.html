@@ -36,11 +36,12 @@ h1{position:absolute;left:80px;top:188px;width:520px;margin:0;font-size:60px;lin
 <script>
 // [lat, lon, festivals] per city, and the home city where flights leave from, its airport's place: set by
 // design/render.cjs; or a community's name alone, for its card (public/c/<key>/share.png), with an example month in
-// place of the map, so that nothing but its name changes it, and the drawings it shares with the site (site/icons.ts)
+// place of the map, so that nothing but its name changes it, and the drawings it shares with the site
+// (pipeline/drawings.py's card())
 const { places: PLACES, home: [HOME, HOME_LAT, HOME_LON], community: COMMUNITY, icons: ICONS } = window.DRAWN;
 document.getElementById('home').textContent = HOME;
 if (COMMUNITY) {
-  // an eyebrow (Lucide's users, site/icons.ts's PEOPLE, and "Community"), the name over a swipe, and a subtitle the
+  // an eyebrow (Lucide's users, the site's people, and "Community"), the name over a swipe, and a subtitle the
   // same for every community; nothing of its members or trips, so that only its name changes it
   const h1 = document.querySelector('h1'), sub = document.querySelector('.sub'), column = document.createElement('div');
   column.className = 'community';
@@ -58,7 +59,7 @@ if (COMMUNITY) {
   document.body.style.background = '#efe8dc';
   // an example month, as the site draws one: four weeks, the days before today grey, today ringed by hand, a long
   // weekend's festival days in the accent, a dot under a day only travelled on; and two trips' swipes, the trails of
-  // a plane flying in over the festival (Lucide's plane, site/icons.ts's PLANE, turned to fly right) and of a car,
+  // a plane flying in over the festival (Lucide's plane, the site's, turned to fly right) and of a car,
   // which only this card draws; today's ring is the site's
   const PLANE = ICONS.plane.replace('<svg ', '<svg style="rotate:45deg" '), RING = ICONS.ring;
   const CAR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"

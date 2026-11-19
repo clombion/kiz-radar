@@ -18,8 +18,10 @@
     "!/*.json",
     "!/*.jsonc",
     "/pnpm-lock.yaml",
-    // laid out by its generator (pipeline/states.py), and checked against it by generate:check
-    "/site/states.ts"
+    // laid out by their generators (pipeline/states.py, pipeline/drawings.py), and checked against them by
+    // generate:check
+    "/site/states.ts",
+    "/site/drawings.ts"
   ],
   "overrides": [
     { "files": ["*.css"], "options": { "singleQuote": false } },

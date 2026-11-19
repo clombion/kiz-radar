@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import ROOT, generate
+from pipeline import ROOT, drawings, generate
 from pipeline.records import Airport, Community, Membership
 
 KEY = 'frost-lantern-river-maple'
@@ -35,8 +35,9 @@ def test_every_community_has_its_card_drawn_from_its_name_and_the_sites_card(com
 def test_a_card_is_stale_when_its_name_or_the_sites_card_changes_and_only_then(
     communities: list[Community], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """A new name, or another site card: the card is stale; a card of a community that is gone, too; and its members
-    and trips are not what it was drawn from, so no change to them makes it stale."""
+    """A new name, or another site card (its files, or a drawing it draws): the card is stale; a card of a community
+    that is gone, too; and the site's other drawings, its members and trips are not what it was drawn from, so no change
+    to them makes it stale."""
     folder = tmp_path / 'c'
     _ = shutil.copytree(generate.COMMUNITY_PAGES, folder, ignore=shutil.ignore_patterns('*.png', '*.js', '*.html'))
     assert generate.stale_cards(folder) == []
@@ -51,6 +52,14 @@ def test_a_card_is_stale_when_its_name_or_the_sites_card_changes_and_only_then(
         with monkeypatch.context() as m:
             m.setattr(generate, 'DRAWN_FROM', (*generate.DRAWN_FROM[:i], changed, *generate.DRAWN_FROM[i + 1 :]))
             assert generate.stale_cards(folder) == [KEY], f.name
+    # a drawing it draws changed (pipeline/drawings.py), and none it does not
+    with monkeypatch.context() as m:
+        m.setitem(drawings.OWN, 'ring', (drawings.OWN['ring'][0], '<circle cx="20" cy="16" r="12" />'))
+        assert generate.stale_cards(folder) == [KEY]
+    with monkeypatch.context() as m:
+        m.setitem(drawings.LUCIDE, 'sun', '<circle cx="12" cy="12" r="5" />')
+        m.setitem(drawings.OWN, 'chevron', (drawings.OWN['chevron'][0], '<path d="M3 3 L45 10"/>'))
+        assert generate.stale_cards(folder) == []
     # its members and their plans are not what it is drawn from
     Membership.write([])
     assert generate.stale_cards(folder) == []
@@ -114,3 +123,12 @@ def test_a_page_of_no_community_is_stale_and_generate_removes_it(
     monkeypatch.setattr('sys.argv', ['generate'])
     generate.main()
     assert not (folder / 'gone-away-for-good').exists()
+
+
+def test_the_card_draws_the_drawings_it_shares_with_the_site_from_their_one_source() -> None:
+    """design/render.cjs gives the card the site's drawings (drawings.card()), so the card holds no copy of their paths
+    that would drift from the site's, and none its digest would miss."""
+    card = generate.SHARE_CARD.read_text(encoding='utf-8')
+    paths = [m[1] for markup in drawings.card().values() for m in re.finditer(r' d="([^"]+)"', markup)]
+    assert len(paths) > len(drawings.CARD)
+    assert [p for p in paths if p in card] == []

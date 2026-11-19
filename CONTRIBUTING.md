@@ -62,8 +62,9 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   jscpd and Vitest; oxfmt lays them out.
 - **Duplicates:** jscpd fails on a block written twice, at the length `.jscpd.json` sets.
 - **Generated files:** `mise run generate` writes `pipeline/enums.py`, `site/states.ts`, `site/classes.ts`,
-  `lint/state-keys.ts`, `docs/reference/`, and the home city (`pipeline/airports.csv`'s home) where `public/index.html`
-  and `public/site.webmanifest` name it; `generate:check` fails when one differs from what it is built from.
+  `site/drawings.ts` (from `pipeline/drawings.py`), `lint/state-keys.ts`, `docs/reference/`, and the home city
+  (`pipeline/airports.csv`'s home) where `public/index.html` and `public/site.webmanifest` name it; `generate:check`
+  fails when one differs from what it is built from.
 
 ## Making changes
 

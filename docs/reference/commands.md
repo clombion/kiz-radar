@@ -26,7 +26,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `install:site` | The site's tools, as pnpm-lock.yaml pins them |
 | `build:site` | The site's TypeScript (site/) compiled into public/js/, and the libraries it loads copied into public/vendor/ from the pinned packages |
 | `serve` | The site and its data built, and served at http://localhost:8000 |
-| `render:design` | The share card (public/share-card.png), each community's (public/c/<key>/share.png, a variant of that card with its name, and share.json, what it is drawn from) and the icons drawn again from design/, site/icons.ts and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page |
+| `render:design` | The share card (public/share-card.png), each community's (public/c/<key>/share.png, a variant of that card with its name, and share.json, what it is drawn from) and the icons drawn again from design/, the drawings of pipeline/drawings.py and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page |
 | `types:site` | tsc, strict, on the site and its tests |
 | `lint:site` | Biome's rules on the site, its tests and its CSS, with the lint/ plugins |
 | `lint:oxlint` | oxlint's rules on the site, its tests and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md) |
@@ -41,7 +41,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `format` | Write the formats the checks hold: ruff's on the Python, mdformat's on the Markdown (the prompts left as they are), oxfmt's on the site |
 | `types:py` | basedpyright, strict, on the pipeline and its tests |
 | `audit` | Every state in the data is one of pipeline/states.py |
-| `generate` | Write the files built from the code: the enums and words of pipeline/states.py and their lint rule, the stylesheet's classes, the site database's tables the scripts are built for (site/schema.ts), docs/reference/, the home city in the page and the manifest, and each community's page (public/c/<key>/index.html), removing the folder of a community there is no more |
+| `generate` | Write the files built from the code: the enums and words of pipeline/states.py and their lint rule, the stylesheet's classes, the drawings of pipeline/drawings.py (site/drawings.ts), the site database's tables the scripts are built for (site/schema.ts), docs/reference/, the home city in the page and the manifest, and each community's page (public/c/<key>/index.html), removing the folder of a community there is no more |
 | `generate:check` | The files built from the code still say what it does |
 | `hooks` | Install the git hooks (prek.toml): the quick checks before a commit, every check before a push; and check the claims submodule out |
 | `lint:actions` | The workflows and their actions: actionlint, and zizmor's security rules (.github/zizmor.yml) |

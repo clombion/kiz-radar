@@ -112,6 +112,8 @@ ignore = [
 "tests/test_fli_page.py" = ["SLF001"]
 # written from pipeline/states.py: FULL_PASS is a ticket, no password; a line is as long as its state's key
 "pipeline/enums.py" = ["S105", "E501"]
+# a drawing's markup is one string, as long as its paths
+"pipeline/drawings.py" = ["E501"]
 # the one clock the pipeline reads
 "pipeline/records.py" = ["TID251"]
 
