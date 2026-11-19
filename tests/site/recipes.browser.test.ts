@@ -13,7 +13,7 @@ afterEach(() => {
 const find = (f: Partial<Find>): Find => ({ css: null, attr: null, match: null, ...f });
 const NAME = find({ css: 'b' }); // a ticket's name, in bold
 // the rows of the page's .t elements, by these fields
-const ticketRows = (fields: Record<string, Find | null>) => rows(['.t', fields]);
+const ticketRows = (fields: Readonly<Record<string, Find | null>>) => rows(['.t', fields]);
 
 test('a row is each match that holds no other, and a field reads the first of its css inside it', () => {
   page(`<div class="t"><div class="t"><b>Full pass</b><i>€90</i></div></div>

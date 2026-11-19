@@ -42,8 +42,8 @@ const COUNTRY = {
   reachable: opt(num),
 } as const;
 type Country = { [K in keyof typeof COUNTRY]: ReturnType<(typeof COUNTRY)[K]> } & {
-  name: string;
-  fare: { airport_city: string | null; price: number } | null;
+  readonly name: string;
+  readonly fare: { readonly airport_city: string | null; readonly price: number } | null;
 };
 
 export function countriesView(root: HTMLElement, qs: string): void {

@@ -13,8 +13,8 @@ export const asserts: Rule = {
     },
   },
   create(context) {
-    const check = (source: Node | null): void => {
-      if (source?.type === 'Literal' && source.value === 'node:assert')
+    const check = (source: Node): void => {
+      if (source.type === 'Literal' && source.value === 'node:assert')
         context.report({ node: source, messageId: 'asserts' });
     };
     return {
@@ -22,7 +22,7 @@ export const asserts: Rule = {
         check(node.source);
       },
       ExportNamedDeclaration(node) {
-        check(node.source);
+        if (node.source !== null) check(node.source);
       },
       ExportAllDeclaration(node) {
         check(node.source);
@@ -34,7 +34,8 @@ export const asserts: Rule = {
         check(node.expression);
       },
       CallExpression(node) {
-        if (callsName(node, 'require') && node.arguments.length === 1) check(node.arguments[0] ?? null);
+        const [only] = node.arguments;
+        if (callsName(node, 'require') && node.arguments.length === 1 && only !== undefined) check(only);
       },
     };
   },

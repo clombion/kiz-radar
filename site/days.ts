@@ -22,7 +22,7 @@ export function weekendOf(iso: string): { from: string; to: string } {
 // whether a festival's days meet days from one to another
 export const meets = (
   e: { readonly start_date: string; readonly end_date: string },
-  days: { from: string; to: string },
+  days: { readonly from: string; readonly to: string },
 ) => e.start_date <= days.to && e.end_date >= days.from;
 
 // the visitor's own date, not the UTC one: past midnight where they are, it is the next day

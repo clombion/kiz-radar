@@ -36,27 +36,27 @@ const GOER = {
   booked_as: opt(booked),
 } as const;
 export interface Goer {
-  person_id: number;
-  key: string;
-  name: string;
-  featured: boolean;
-  plan: Key<'plan'>;
-  booked_as: Booked | null;
+  readonly person_id: number;
+  readonly key: string;
+  readonly name: string;
+  readonly featured: boolean;
+  readonly plan: Key<'plan'>;
+  readonly booked_as: Booked | null;
 }
 // what is said of someone going: their plan (going, or maybe), and what they are booked there as, if they are
 type Plans = Pick<Goer, 'plan' | 'booked_as'>;
 // a couple whose partners are all people here
 interface Couple {
-  artist: number;
-  name: string;
-  people: number[];
+  readonly artist: number;
+  readonly name: string;
+  readonly people: readonly number[];
 }
 // who to name: a couple when both partners go, otherwise a person
 interface Named {
-  name: string;
-  href: string;
-  artist?: number;
-  people: Goer[];
+  readonly name: string;
+  readonly href: string;
+  readonly artist?: number;
+  readonly people: readonly Goer[];
 }
 
 let loaded: { byEvent: Map<number, Goer[]>; couples: Couple[] } | undefined;
@@ -85,17 +85,17 @@ function load(): { byEvent: Map<number, Goer[]>; couples: Couple[] } {
 export const goersOf = (eventId: number): Goer[] => load().byEvent.get(eventId) ?? [];
 // a festival as these views need it
 interface Going {
-  goers: Goer[];
-  title: string;
-  start_date: string;
-  end_date: string;
-  country_code: string | null;
-  city: string | null;
+  readonly goers: readonly Goer[];
+  readonly title: string;
+  readonly start_date: string;
+  readonly end_date: string;
+  readonly country_code: string | null;
+  readonly city: string | null;
 }
 
 // the featured people going to any of these festivals: "Cédric & Christina" and to how many; null when none is
 export function friendsIn(
-  rows: readonly { goers: Goer[] }[],
+  rows: readonly { readonly goers: readonly Goer[] }[],
 ): { n: number; many: boolean; faces: HTMLElement; names: HTMLElement } | null {
   // the friends going: someone who only may go is said so on the festival's card, not here
   const sure = (g: Goer) => g.featured && !unsure(g);
@@ -110,7 +110,7 @@ export function friendsIn(
   };
 }
 // who's going to one festival, inline: each person or couple linked, with what they're doing there
-export const goersInline = (goers: Goer[]): Kid[] =>
+export const goersInline = (goers: readonly Goer[]): Kid[] =>
   joined(
     named(goers).map((g) =>
       h('span', { class: 'goer' }, h('a', { href: g.href, class: 'artist' }, g.name), ' ', doingTag(g.people)),
@@ -142,13 +142,13 @@ function named(goers: readonly Goer[]): Named[] {
 
 // "teaching": what they do there, when every one of them is booked, as the first is; else "maybe" when every one may
 // go, or else "going"
-const doing = (people: readonly Plans[]): { words: string; as: 'booked' | Key<'plan'> } => {
+const doing = (people: readonly Plans[]): { readonly words: string; readonly as: 'booked' | Key<'plan'> } => {
   const role = people[0]?.booked_as;
   if (role && people.every((p) => p.booked_as)) return { words: text('role', role, {}, 'doing'), as: 'booked' };
   const plan = people.length > 0 && people.every(unsure) ? KEY.plan.MAYBE : KEY.plan.GOING;
   return { words: text('plan', plan), as: plan };
 };
-const faces = (people: readonly { name: string }[]) =>
+const faces = (people: readonly { readonly name: string }[]) =>
   h(
     'span',
     { class: 'faces', 'aria-hidden': 'true' },
@@ -277,7 +277,19 @@ const peekDialog = (): Peek => {
 };
 function show(
   from: EventTarget | null,
-  { faces: f, title, sub, body, foot }: { faces?: HTMLElement; title: string; sub: Kid; body: Kid[]; foot?: Kid },
+  {
+    faces: f,
+    title,
+    sub,
+    body,
+    foot,
+  }: {
+    readonly faces?: HTMLElement;
+    readonly title: string;
+    readonly sub: Kid;
+    readonly body: readonly Kid[];
+    readonly foot?: Kid;
+  },
 ) {
   const v = peekDialog();
   v.lead.replaceChildren(f ?? '');
@@ -288,7 +300,7 @@ function show(
   v.body.scrollTop = 0;
   if (from instanceof Element) v.m.open(from);
 }
-const link = (href: string, ...kids: Kid[]) => leaving(peekDialog().m, href, ...kids);
+const link = (href: string, ...kids: readonly Kid[]) => leaving(peekDialog().m, href, ...kids);
 
 // a person's plans to come, by festival
 const PLAN = {
@@ -342,7 +354,9 @@ function aboutLine(g: Named): Kid {
 
 // a festival in a list of who's going: its days, its name (a link to it), On now when it is, its place and what else
 // is said of it, and who
-type Listed = { id: number; title: string; phase: Key<'phase'> } & RowOf<typeof PLACE_AND_DAYS>;
+type Listed = { readonly id: number; readonly title: string; readonly phase: Key<'phase'> } & RowOf<
+  typeof PLACE_AND_DAYS
+>;
 const planRow = (e: Listed, name: Kid, who: Kid, also = '') =>
   h(
     'li',
@@ -409,8 +423,8 @@ function peekEvent(e: Going, from?: EventTarget | null) {
 // how far from the site's home city someone lives and is near it, in km
 export const NEAR_KM = 200;
 interface Spot {
-  lat: number;
-  lon: number;
+  readonly lat: number;
+  readonly lon: number;
 }
 // the kilometres between two places, on a round Earth
 function kmBetween(a: Spot, b: Spot): number {
@@ -447,14 +461,14 @@ export const togetherHref = (keys: readonly string[]): string => {
 // A person, and the artist records they are, directly or as half of a couple: those with bookings of their own,
 // since a partner's record alone only repeats the couple's.
 export interface Person {
-  id: number;
-  key: string;
-  name: string;
-  featured: boolean;
-  artists: { id: number; display_name: string }[];
+  readonly id: number;
+  readonly key: string;
+  readonly name: string;
+  readonly featured: boolean;
+  readonly artists: readonly { readonly id: number; readonly display_name: string }[];
 }
 // everyone with plans, featured first, then by name, and how many of their festivals are still to come
-export const withPlans = (): { key: string; name: string; upcoming: number }[] =>
+export const withPlans = (): readonly { readonly key: string; readonly name: string; readonly upcoming: number }[] =>
   q(
     { key: str, name: str, upcoming: num },
     sql`SELECT pe.key, pe.name, sum(e.upcoming) AS upcoming FROM people pe JOIN plans p ON p.person_id = pe.id

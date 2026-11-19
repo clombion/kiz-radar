@@ -13,17 +13,17 @@ import type { Key } from './wording.ts';
 
 // what of a festival its prices depend on
 export interface Dates {
-  start_date: string;
-  end_date: string;
+  readonly start_date: string;
+  readonly end_date: string;
 }
 // a tier with its first and last day (null: open)
-export type Window = Tier & { lo: string | null; hi: string | null };
+export type Window = Tier & { readonly lo: string | null; readonly hi: string | null };
 export type TierNow =
-  | { state: typeof KEY.tier_today.SOLD_OUT | typeof KEY.tier_today.ENDED }
+  | { readonly state: typeof KEY.tier_today.SOLD_OUT | typeof KEY.tier_today.ENDED }
   | {
-      state: typeof KEY.tier_today.NOW | typeof KEY.tier_today.FROM | typeof KEY.tier_today.NEXT;
-      tier: Window;
-      next: Window | undefined;
+      readonly state: typeof KEY.tier_today.NOW | typeof KEY.tier_today.FROM | typeof KEY.tier_today.NEXT;
+      readonly tier: Window;
+      readonly next: Window | undefined;
     };
 
 // each tier's first and last day (null: open), from its own dates or its neighbours'
@@ -76,20 +76,20 @@ export const nextChange = (t: Pick<Window, 'door' | 'lo'>) =>
 
 // a festival as its card's price needs it
 export interface Priced extends Dates {
-  upcoming: boolean;
-  card_pass: number | null;
-  price_state: Key<'price'>;
+  readonly upcoming: boolean;
+  readonly card_pass: number | null;
+  readonly price_state: Key<'price'>;
 }
 // What the card of a priced festival says on a day: the pass its card prices (card_pass, chosen by the pipeline) at
 // its tier then, as a full pass or a package; or that it is sold out; or that its prices have ended, as they all have
 // once the festival is no longer still to attend: over, cancelled or no longer listed (its card says which beside it).
 type CardPrice =
-  | { key: typeof KEY.card_price.ENDED; pass?: Pass }
-  | { key: typeof KEY.card_price.SOLD_OUT; pass: Pass }
+  | { readonly key: typeof KEY.card_price.ENDED; readonly pass?: Pass }
+  | { readonly key: typeof KEY.card_price.SOLD_OUT; readonly pass: Pass }
   | {
-      key: typeof KEY.card_price.FULL_PASS | typeof KEY.card_price.PACKAGE;
-      pass: Pass;
-      now: Extract<TierNow, { tier: Window }>;
+      readonly key: typeof KEY.card_price.FULL_PASS | typeof KEY.card_price.PACKAGE;
+      readonly pass: Pass;
+      readonly now: Extract<TierNow, { readonly tier: Window }>;
     };
 function cardPrice(e: Priced, passes: readonly Pass[], day: string): CardPrice {
   if (!e.upcoming) return { key: KEY.card_price.ENDED };
@@ -103,7 +103,9 @@ function cardPrice(e: Priced, passes: readonly Pass[], day: string): CardPrice {
 
 // What a festival's card says of its price on a day, as the state whose words it shows: why it has none (price, from
 // its price_state), or its card's price (card_price).
-export type PriceLine = { point: 'price'; key: Key<'price'> } | ({ point: 'card_price' } & CardPrice);
+export type PriceLine =
+  | { readonly point: 'price'; readonly key: Key<'price'> }
+  | ({ readonly point: 'card_price' } & CardPrice);
 export function priceLine(e: Priced, passes: readonly Pass[], day: string): PriceLine {
   if (e.price_state !== KEY.price.PRICED) return { point: 'price', key: e.price_state };
   return { point: 'card_price', ...cardPrice(e, passes, day) };

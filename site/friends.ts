@@ -24,11 +24,11 @@ type When = 'weekend' | 'months' | 'year';
 // the choices of the list, as the address has them: its place, the friends ticked (keys, by commas), whether any of
 // them going keeps a festival rather than all, the time ahead, and the words a festival's name or city has
 interface Choices {
-  in: Place;
-  with: string;
-  any: number;
-  when: When;
-  q: string;
+  readonly in: Place;
+  readonly with: string;
+  readonly any: number;
+  readonly when: When;
+  readonly q: string;
 }
 const DEFAULTS: Readonly<Choices> = { in: 'near', with: '', any: 0, when: 'year', q: '' };
 const WHEN: readonly (readonly [When, string])[] = [
@@ -50,7 +50,7 @@ export const friendsTabs = (): readonly (readonly [Place, string, string])[] => 
 const peopleOf = (at: Place): Set<string> =>
   at === 'everywhere' ? new Set(withPlans().map((p) => p.key)) : livingNear();
 
-type Festival = RowOf<typeof EVENT> & { goers: Goer[] };
+type Festival = RowOf<typeof EVENT> & { readonly goers: readonly Goer[] };
 // someone sharing plans, and how many of their festivals are to come
 type Shares = ReturnType<typeof withPlans>[number];
 // the festivals to come some of these people go to, soonest first, each with those of them going
@@ -143,7 +143,7 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
   const pickFoot = h('p', { class: 'pick-foot' });
   picker.append(find, mode, pickList, pickFoot);
   const upcoming = (key: string) => all.filter((e) => e.goers.some((g) => g.key === key)).length;
-  function tickRow(p: { key: string; name: string }): HTMLElement {
+  function tickRow(p: { readonly key: string; readonly name: string }): HTMLElement {
     const box = h('input', {
       type: 'checkbox',
       checked: ticked.has(p.key),

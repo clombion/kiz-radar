@@ -39,7 +39,7 @@ const LOOSEST: Readonly<Omit<Choices, 'sort'>> = { ...UNSORTED, ...WIDEST };
 type NumberChoice = { [K in keyof Choices]: Choices[K] extends number ? K : never }[keyof Choices];
 
 // Hand-drawn hints next to the blanks, an arrow pointing up at what they say
-function note(cls: ClassName, ...words_: string[]): HTMLElement {
+function note(cls: ClassName, ...words_: readonly string[]): HTMLElement {
   const art = Drawing.ARROW_UP.into(h('span', { class: 'arrow' }));
   const words = h(
     'span',
@@ -87,7 +87,7 @@ const ORDER = VALUES.sort.map((v) => [v, ORDER_WORDS[v]] as const);
 export function sentenceView(
   root: HTMLElement,
   qs: string,
-  { signal, data }: { signal: AbortSignal; data: Promise<unknown> },
+  { signal, data }: { readonly signal: AbortSignal; readonly data: Promise<unknown> },
 ): void {
   let all: readonly Festival[] | null = null; // the festivals, once the database is in
   const countries = site().destinations;
@@ -113,7 +113,7 @@ export function sentenceView(
   const blank = <K extends keyof Choices>(
     key: K,
     opts: readonly (readonly [Choices[K], string])[],
-    { cls = 'blank', named }: { cls?: ClassName; named?: string } = {},
+    { cls = 'blank', named }: { readonly cls?: ClassName; readonly named?: string } = {},
   ) =>
     choices(
       opts,

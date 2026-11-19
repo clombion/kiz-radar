@@ -4,18 +4,18 @@
 // it. tests/site/claims.test.ts holds every committed claim to this.
 export type Decision = 'merge' | 'separate';
 export interface HomeClaim {
-  field: 'home';
-  key: string;
-  country: string;
-  made_at: string;
-  note: string;
+  readonly field: 'home';
+  readonly key: string;
+  readonly country: string;
+  readonly made_at: string;
+  readonly note: string;
 }
 export interface MergeClaim {
-  field: 'merge';
-  keys: [string, string];
-  decision: Decision;
-  made_at: string;
-  note: string;
+  readonly field: 'merge';
+  readonly keys: readonly [string, string];
+  readonly decision: Decision;
+  readonly made_at: string;
+  readonly note: string;
 }
 export type Claim = HomeClaim | MergeClaim;
 
@@ -43,10 +43,10 @@ export const mergeClaim = ({
   note,
   at,
 }: {
-  keys: readonly [string, string];
-  decision: Decision;
-  note: string;
-  at: Date;
+  readonly keys: readonly [string, string];
+  readonly decision: Decision;
+  readonly note: string;
+  readonly at: Date;
 }): MergeClaim => ({
   field: 'merge',
   keys: a <= b ? [a, b] : [b, a],

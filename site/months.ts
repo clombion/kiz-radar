@@ -19,8 +19,8 @@ import { plural } from './wording.ts';
 
 // The popover of a day, one for the page: the grids attached to it open it on their days; close closes it.
 export interface Popover {
-  attach: (container: HTMLElement) => void;
-  close: () => void;
+  readonly attach: (container: HTMLElement) => void;
+  readonly close: () => void;
 }
 export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Popover {
   const pop = h('div', { class: 'day-pop', role: 'tooltip', id: uniqueId('day-pop'), hidden: true });
@@ -137,21 +137,21 @@ function rove(container: HTMLElement, cells: readonly HTMLElement[]) {
 
 // a festival the community goes to, as the months draw it: its days, and how many of the community go
 interface Marked {
-  id: number;
-  title: string;
-  start_date: string;
-  end_date: string;
-  people: number;
-  ended: boolean; // a trip over: its stroke grey as the days gone by, and no longer counted
+  readonly id: number;
+  readonly title: string;
+  readonly start_date: string;
+  readonly end_date: string;
+  readonly people: number;
+  readonly ended: boolean; // a trip over: its stroke grey as the days gone by, and no longer counted
 }
 // what the months say of the days: who travels on each, a day's words, the festivals, the days only travelled
 export interface Days<A extends Away> {
-  today: string;
-  days: ReadonlyMap<string, Day<A>>;
-  label: (day: string, on: Day<A>) => string; // what a screen reader says of a day someone travels on
-  festivals: readonly Marked[];
-  travel: ReadonlySet<string>; // the days someone travels on outside their festival's: before it, or after
-  pop: Popover;
+  readonly today: string;
+  readonly days: ReadonlyMap<string, Day<A>>;
+  readonly label: (day: string, on: Day<A>) => string; // what a screen reader says of a day someone travels on
+  readonly festivals: readonly Marked[];
+  readonly travel: ReadonlySet<string>; // the days someone travels on outside their festival's: before it, or after
+  readonly pop: Popover;
 }
 
 // a festival's swipe over the lower half of its days' numbers; a second festival's lower and thinner, under it
@@ -252,7 +252,7 @@ function month<A extends Away>(s: Days<A>, m: string): HTMLElement {
 // after it in steps (each off at its end), and the key. A button draws the period it goes to in place, and tells
 // moved of it.
 export function months<A extends Away>(
-  s: Days<A> & { from: string; steps: readonly string[]; moved: (from: string) => void },
+  s: Days<A> & { readonly from: string; readonly steps: readonly string[]; readonly moved: (from: string) => void },
 ): HTMLElement {
   const grids = h('div', { class: 'days-months' });
   const said = h('h2', { class: 'days-said', 'aria-live': 'polite' });

@@ -105,7 +105,7 @@ const CONTENTS = new RegExp(`^/repos/${REVIEW.repository}/contents/[^/]+\\.json$
 // other request with it is not found (404), so a request no test scripted shows; any request with another token is
 // refused (401).
 export const github =
-  ({ token, write = 201 }: { token: string; write?: Write }): Elsewhere =>
+  ({ token, write = 201 }: { readonly token: string; readonly write?: Write }): Elsewhere =>
   (url, init) => {
     const answer = (status: number, body: object) => Response.json(body, { status });
     if (new Headers(init.headers).get('Authorization') !== `Bearer ${token}`) {

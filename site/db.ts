@@ -117,7 +117,7 @@ export class Sql {
 export const sql = (parts: TemplateStringsArray, ...between: readonly Sql[]): Sql => Sql.of(parts, ...between);
 
 // the query's rows, each read by the shape (rows.ts)
-export function q<S extends Shape>(shape: S, query: Sql, params: BindParams = []): RowOf<S>[] {
+export function q<S extends Shape>(shape: S, query: Sql, params: BindParams = []): readonly RowOf<S>[] {
   const st = opened().prepare(query.text);
   st.bind(params);
   const rows: RowOf<S>[] = [];

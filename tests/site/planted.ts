@@ -15,8 +15,8 @@ function wrote(db: Database, rows: number, what: string): void {
 }
 
 // The number a query counts.
-const counted = (db: Database, query: string, params: (string | number)[]): number =>
-  Number(db.exec(query, params)[0]?.values[0]?.[0] ?? 0);
+const counted = (db: Database, query: string, params: readonly (string | number)[]): number =>
+  Number(db.exec(query, [...params])[0]?.values[0]?.[0] ?? 0);
 
 // The site's home city, its key and name, read where the fixture's people live (plantCommunity puts them all there).
 export function homeOf(db: Database): { key: string; name: string } {
@@ -65,9 +65,9 @@ export function community(
     maybe = [],
     members,
   }: {
-    added?: readonly (readonly [string, number])[];
-    maybe?: readonly (readonly [string, number])[];
-    members?: readonly string[];
+    readonly added?: readonly (readonly [string, number])[];
+    readonly maybe?: readonly (readonly [string, number])[];
+    readonly members?: readonly string[];
   },
 ): void {
   db.run(

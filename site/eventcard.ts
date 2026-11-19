@@ -39,7 +39,7 @@ function dateBox(start: string, end: string): HTMLElement {
 }
 
 // a festival with a fare, so with a weekend: the fare its best airport's (fares.ts best)
-type Flown = Festival & { depart: string; fare: Extract<Fare, { home: false }> };
+type Flown = Festival & { readonly depart: string; readonly fare: Extract<Fare, { readonly home: false }> };
 const flown = (e: Festival): e is Flown => e.depart !== null && e.fare !== null && !e.fare.home;
 const flightLink = (e: Flown, words: string) =>
   h(
@@ -92,7 +92,7 @@ const STARTED = 'already started, no flight priced';
 // Without a price, why (price_status, in the words of pipeline/states.py): a link to the ticket page or to the
 // passes when its state renders as one.
 // a card's price is a button to the passes view, which opens over the page
-const passBtn = (e: Festival, ...words: Kid[]) =>
+const passBtn = (e: Festival, ...words: readonly Kid[]) =>
   button({ class: ['link', 'pass-btn'], onclick: own((b) => openPasses(e, b)) }, ...words);
 function linked(e: Festival, words: string | null, link: string | null): Kid {
   if (link === LINK.PAGE && e.ticket_page !== null && e.ticket_page !== '')
@@ -201,7 +201,11 @@ function smoothly(card: HTMLElement, change: () => void, opening: boolean): void
 
 export function eventCard(
   e: Festival,
-  { hint = null, open = false, onMap = false }: { hint?: Kid; open?: boolean; onMap?: boolean } = {},
+  {
+    hint = null,
+    open = false,
+    onMap = false,
+  }: { readonly hint?: Kid; readonly open?: boolean; readonly onMap?: boolean } = {},
 ): HTMLElement {
   const more = h('div', { class: 'festival-more', hidden: true });
   const toggles: HTMLElement[] = [];
@@ -220,7 +224,7 @@ export function eventCard(
     for (const t of toggles) t.setAttribute('aria-expanded', String(shown));
     label.textContent = shown ? 'Less' : 'Line-up & details';
   };
-  const toggleBtn = (cls: Classes, ...kids: Kid[]) => {
+  const toggleBtn = (cls: Classes, ...kids: readonly Kid[]) => {
     const b = button(
       {
         class: cls,

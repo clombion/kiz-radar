@@ -9,7 +9,11 @@ type Made = Item extends infer I ? (I extends Item ? Omit<I, keyof Base> : never
 const item = (
   what: Made,
   name: string,
-  { past = false, rank = 0, also = [] }: { past?: boolean; rank?: number; also?: readonly string[] } = {},
+  {
+    past = false,
+    rank = 0,
+    also = [],
+  }: { readonly past?: boolean; readonly rank?: number; readonly also?: readonly string[] } = {},
 ): Item => ({
   ...what,
   name,

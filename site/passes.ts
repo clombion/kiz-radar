@@ -14,12 +14,13 @@ import { away, dayMonth, dayRange } from './ui.ts';
 import { say, text } from './wording.ts';
 
 export type Tier = TierRow;
-export type Pass = RowOf<typeof PASS> & { tiers: Tier[] };
+export type Pass = RowOf<typeof PASS> & { readonly tiers: readonly Tier[] };
 
-let byEvent: Map<number, Pass[]> | undefined;
-function load(): Map<number, Pass[]> {
+let byEvent: ReadonlyMap<number, readonly Pass[]> | undefined;
+function load(): ReadonlyMap<number, readonly Pass[]> {
   if (byEvent) return byEvent;
-  const passes = new Map<number, Pass[]>();
+  // each festival's passes as their tiers are added, built in place (Pass is read-only)
+  const passes = new Map<number, (RowOf<typeof PASS> & { tiers: Tier[] })[]>();
   for (const p of q(PASS, sql`SELECT * FROM event_passes ORDER BY event_id, pass_no`)) {
     const list = passes.get(p.event_id) ?? [];
     list.push({ ...p, tiers: [] });
@@ -33,10 +34,10 @@ function load(): Map<number, Pass[]> {
   byEvent = passes;
   return passes;
 }
-const passesOf = (eventId: number): Pass[] => load().get(eventId) ?? [];
+const passesOf = (eventId: number): readonly Pass[] => load().get(eventId) ?? [];
 
 // what the card says of a festival's price today (pricing.ts priceLine)
-export const priceToday = (e: Priced & { id: number }): PriceLine => priceLine(e, passesOf(e.id), today());
+export const priceToday = (e: Priced & { readonly id: number }): PriceLine => priceLine(e, passesOf(e.id), today());
 
 // a tier's price change, in the card's words ("price goes up 15 Dec") or the passes view's form of them, with its price
 // ("then 120 € from 15 Dec")
@@ -74,7 +75,10 @@ function passesDialog(): PassesView {
 
 // Opens over the page; each pass whose tiers have not all ended, with today's price or why there is none, and the next
 // change when one is listed.
-export function openPasses(e: { id: number; title: string; url: string } & Priced, from?: Element | null): void {
+export function openPasses(
+  e: { readonly id: number; readonly title: string; readonly url: string } & Priced,
+  from?: Element | null,
+): void {
   const v = passesDialog();
   v.title.textContent = `Passes for ${e.title}`;
   v.sub.textContent = dayRange(e.start_date, e.end_date);

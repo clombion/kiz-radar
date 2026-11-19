@@ -46,27 +46,38 @@ export const FOUND_ARTIST = {
 } as const;
 type FoundArtist = RowOf<typeof FOUND_ARTIST>;
 export interface Base {
-  name: string;
-  words: string[];
-  nameWords: string[];
-  past: boolean; // nothing coming up: a festival over, someone with no plans ahead, a place with no festival ahead
-  rank: number; // higher first, among items of its kind only (before)
+  readonly name: string;
+  readonly words: readonly string[];
+  readonly nameWords: readonly string[];
+  readonly past: boolean; // nothing coming up: a festival over, someone with no plans ahead, a place with no festival ahead
+  readonly rank: number; // higher first, among items of its kind only (before)
 }
 export type Item = Base &
   (
-    | { kind: 'festival'; e: FoundEvent }
-    | { kind: 'friend'; p: Person; upcoming: number }
-    | { kind: 'artist'; a: FoundArtist; shares: boolean }
-    | { kind: 'country'; country: { code: string; name: string }; n: number }
-    | { kind: 'city'; city: City }
-    | { kind: 'tag'; key: TagKey; params: Params; n: number; icon: Drawing | null; style: boolean }
+    | { readonly kind: 'festival'; readonly e: FoundEvent }
+    | { readonly kind: 'friend'; readonly p: Person; readonly upcoming: number }
+    | { readonly kind: 'artist'; readonly a: FoundArtist; readonly shares: boolean }
+    | {
+        readonly kind: 'country';
+        readonly country: { readonly code: string; readonly name: string };
+        readonly n: number;
+      }
+    | { readonly kind: 'city'; readonly city: City }
+    | {
+        readonly kind: 'tag';
+        readonly key: TagKey;
+        readonly params: Params;
+        readonly n: number;
+        readonly icon: Drawing | null;
+        readonly style: boolean;
+      }
   );
 export interface City {
-  key: string; // pipeline/cities.csv's
-  city: string;
-  cc: string;
-  upcoming: number;
-  all: number;
+  readonly key: string; // pipeline/cities.csv's
+  readonly city: string;
+  readonly cc: string;
+  readonly upcoming: number;
+  readonly all: number;
 }
 type Kind = Item['kind'];
 export type Found<K extends Kind> = Extract<Item, { kind: K }>;
@@ -121,10 +132,16 @@ export function nearest(items: readonly Item[], query: string): Item | null {
 // many with nothing coming up are left out (withPast includes them); that only those match; or that nothing does,
 // with the name a typo or two away, if any.
 export type Answer =
-  | { kind: 'suggest' }
-  | { kind: 'found'; tokens: string[]; groups: (readonly [Group, string, Item[]])[]; count: number; hidden: number }
-  | { kind: 'past'; hidden: number }
-  | { kind: 'nothing'; near: Item | null };
+  | { readonly kind: 'suggest' }
+  | {
+      readonly kind: 'found';
+      readonly tokens: readonly string[];
+      readonly groups: readonly (readonly [Group, string, readonly Item[]])[];
+      readonly count: number;
+      readonly hidden: number;
+    }
+  | { readonly kind: 'past'; readonly hidden: number }
+  | { readonly kind: 'nothing'; readonly near: Item | null };
 export function answer(items: readonly Item[], query: string, withPast: boolean): Answer {
   const tokens = words(query),
     folded = tokens.join(' ');

@@ -4,8 +4,8 @@
 const DEADLINE = 60_000; // ms: the database is 3 MB, which a slow phone line takes some seconds over
 
 interface Asked {
-  signal?: AbortSignal | undefined;
-  answers?: readonly number[]; // statuses that are no success but an answer the caller reads
+  readonly signal?: AbortSignal | undefined;
+  readonly answers?: readonly number[]; // statuses that are no success but an answer the caller reads
 }
 
 async function ask(url: URL, init: RequestInit, { signal, answers = [] }: Asked): Promise<Response> {
@@ -20,7 +20,12 @@ async function ask(url: URL, init: RequestInit, { signal, answers = [] }: Asked)
 
 export const get = (
   url: URL,
-  { signal, revalidate, headers, answers }: Asked & { revalidate?: true; headers?: Record<string, string> } = {},
+  {
+    signal,
+    revalidate,
+    headers,
+    answers,
+  }: Asked & { readonly revalidate?: true; readonly headers?: Readonly<Record<string, string>> } = {},
 ): Promise<Response> =>
   // no-cache: asked again of the server, which says if it changed
   ask(
@@ -31,5 +36,10 @@ export const get = (
 
 export const send = (
   url: URL,
-  { method, headers, body, answers }: { method: 'PUT'; headers: Record<string, string>; body: string } & Asked,
+  {
+    method,
+    headers,
+    body,
+    answers,
+  }: { readonly method: 'PUT'; readonly headers: Readonly<Record<string, string>>; readonly body: string } & Asked,
 ): Promise<Response> => ask(url, { method, headers, body, cache: 'no-store' }, { answers: answers ?? [] });

@@ -76,7 +76,7 @@ export type Show = (
   root: HTMLElement,
   sub: readonly string[],
   qs: string,
-  opts: { signal: AbortSignal; data: Promise<unknown> },
+  opts: { readonly signal: AbortSignal; readonly data: Promise<unknown> },
 ) => void;
 // every view an address names: the sections, the SQL and sources pages the footer links to (index.html), and a
 // community's page

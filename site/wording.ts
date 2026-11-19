@@ -40,7 +40,10 @@ export const linkOf = <P extends Point>(point: P, key: Key<P>): string | null =>
 export type KeysWhere<P extends Point, D extends Disposition> = {
   [K in Key<P>]: Table[P][K] extends { disposition: D } ? K : never;
 }[Key<P>];
-export const where = <P extends Point, D extends Disposition>(point: P, ...dispositions: D[]): KeysWhere<P, D>[] => {
+export const where = <P extends Point, D extends Disposition>(
+  point: P,
+  ...dispositions: readonly D[]
+): KeysWhere<P, D>[] => {
   const shown: readonly Disposition[] = dispositions;
   return Object.keys(TABLE[point]).filter(
     (k): k is KeysWhere<P, D> => isKey(point, k) && shown.includes(row(point, k).disposition),
@@ -51,7 +54,7 @@ export const where = <P extends Point, D extends Disposition>(point: P, ...dispo
 export type KeysCounted<P extends Point, C extends Counts> = {
   [K in Key<P>]: Table[P][K] extends { counts: C } ? K : never;
 }[Key<P>];
-export const counted = <P extends Point, C extends Counts>(point: P, ...levels: C[]): KeysCounted<P, C>[] => {
+export const counted = <P extends Point, C extends Counts>(point: P, ...levels: readonly C[]): KeysCounted<P, C>[] => {
   const at: readonly (Counts | null)[] = levels;
   return Object.keys(TABLE[point]).filter(
     (k): k is KeysCounted<P, C> => isKey(point, k) && at.includes(row(point, k).counts),

@@ -7,7 +7,7 @@ import { sqlHref } from './routes.ts';
 import { dayYear, home, monthYear } from './ui.ts';
 
 const link = (href: string, text: string) => h('a', { href }, text);
-const part = (title: string, ...paragraphs: Kid[][]) =>
+const part = (title: string, ...paragraphs: readonly (readonly Kid[])[]) =>
   h(
     'section',
     {},

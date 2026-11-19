@@ -4,16 +4,14 @@
 import type { Rule } from './plugin.ts';
 import type { Node } from './shapes.ts';
 
-interface Request {
-  source: Node | null;
-  attributes: readonly { key: Node; value: Node }[];
-}
+// an import's or an export's attributes
+type Attributes = readonly { readonly key: Node; readonly value: Node }[];
 
 // the attribute's key, a name or a string
 const keyOf = (key: Node): unknown => (key.type === 'Identifier' ? key.name : key.type === 'Literal' && key.value);
 
-const refused = ({ source, attributes }: Request): boolean =>
-  source?.type === 'Literal' &&
+const refused = (source: Node, attributes: Attributes): boolean =>
+  source.type === 'Literal' &&
   typeof source.value === 'string' &&
   source.value.endsWith('.json') &&
   !attributes.some((a) => keyOf(a.key) === 'type' && a.value.type === 'Literal' && a.value.value === 'json');
@@ -26,18 +24,18 @@ export const json: Rule = {
     },
   },
   create(context) {
-    const check = (node: Node & Request, kind: string | undefined): void => {
-      if (kind !== 'type' && refused(node)) context.report({ node, messageId: 'json' });
+    const check = (node: Node, source: Node, attributes: Attributes, kind: string | undefined): void => {
+      if (kind !== 'type' && refused(source, attributes)) context.report({ node, messageId: 'json' });
     };
     return {
       ImportDeclaration(node) {
-        check(node, node.importKind);
+        check(node, node.source, node.attributes, node.importKind);
       },
       ExportNamedDeclaration(node) {
-        check(node, node.exportKind);
+        if (node.source !== null) check(node, node.source, node.attributes, node.exportKind);
       },
       ExportAllDeclaration(node) {
-        check(node, node.exportKind);
+        check(node, node.source, node.attributes, node.exportKind);
       },
     };
   },

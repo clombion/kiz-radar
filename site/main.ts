@@ -61,11 +61,11 @@ let leave: AbortController | undefined;
 let at: string | null = null; // the view shown, by name
 
 interface View {
-  title: string | null;
-  nav: Tab | null;
+  readonly title: string | null;
+  readonly nav: Tab | null;
   // the view queries the database as it builds, so it shows once the database is in
-  waitsForData: boolean;
-  show: Show;
+  readonly waitsForData: boolean;
+  readonly show: Show;
 }
 const FINDER: View = {
   title: null,

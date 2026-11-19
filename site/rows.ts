@@ -7,7 +7,7 @@ import { counted, isKey, type Key, type Point } from './wording.ts';
 
 export type Column<T> = (value: SqlValue | undefined, name: string) => T;
 export type Shape = Readonly<Record<string, Column<unknown>>>;
-export type RowOf<S extends Shape> = { -readonly [K in keyof S]: ReturnType<S[K]> };
+export type RowOf<S extends Shape> = { readonly [K in keyof S]: ReturnType<S[K]> };
 
 const wrong = (name: string, value: unknown, what: string): never => {
   throw new TypeError(`column ${name}: ${JSON.stringify(value)} is no ${what}`);
@@ -32,7 +32,7 @@ export type Booked = (typeof BOOKED)[number];
 // Whether someone may go, not yet going: they said maybe, and the line-up has them not, since someone booked there is
 // teaching (or playing) whatever their plan says. They are named with a "maybe" tag, and a community's days, counts
 // and sentence, and the hero's friends going, leave them out.
-export const unsure = (p: { plan: Key<'plan'>; booked_as: Booked | null }): boolean =>
+export const unsure = (p: { readonly plan: Key<'plan'>; readonly booked_as: Booked | null }): boolean =>
   p.plan === KEY.plan.MAYBE && p.booked_as === null;
 const bookedKeys: readonly string[] = BOOKED;
 const isBooked = (v: unknown): v is Booked => typeof v === 'string' && bookedKeys.includes(v);
@@ -40,7 +40,7 @@ const isBooked = (v: unknown): v is Booked => typeof v === 'string' && bookedKey
 export const booked: Column<Booked> = (v, name) => (isBooked(v) ? v : wrong(name, v, 'role an artist is booked in'));
 // a comma-separated list of a point's states, empty when null
 export const states =
-  <P extends Point>(point: P): Column<Key<P>[]> =>
+  <P extends Point>(point: P): Column<readonly Key<P>[]> =>
   (v, name) =>
     v === null
       ? []

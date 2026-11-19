@@ -182,7 +182,7 @@ export function cardTitled(title: string): Element {
 // it is an error.
 type Day = `${number}-${number}-${number}`;
 export async function mapCardOf(
-  app: { open: (href: string, on?: Day) => Promise<void> },
+  app: { readonly open: (href: string, on?: Day) => Promise<void> },
   id: number,
   day?: Day,
 ): Promise<Element> {

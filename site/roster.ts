@@ -19,52 +19,52 @@ import { type Moment, stamp } from './calendar.ts';
 // an end of a travel, when said: when (its day, and its time when said) and its airport, which goes with a time
 // (records.Travel)
 export interface End {
-  at: Moment;
-  airport: string | null;
+  readonly at: Moment;
+  readonly airport: string | null;
 }
 // how someone travels, each end when they said it
 export interface Flights {
-  arrive: End | null;
-  leave: End | null;
+  readonly arrive: End | null;
+  readonly leave: End | null;
 }
 // a stay: where, from a night to a night, each by its evening's date (YYYY-MM-DD)
 export interface Stay {
-  first: string;
-  last: string;
-  place: string;
+  readonly first: string;
+  readonly last: string;
+  readonly place: string;
 }
 // someone going: who they are, by a key no one else going has (two people may share a name), the couple they are in
 // when both partners go, how they travel (null: not said) and where they stay, in the order of their nights
 export interface Goes<P> {
-  person: P;
-  key: string;
-  name: string;
-  couple: { key: string; name: string } | null;
-  travel: Flights | null;
-  stays: readonly Stay[];
+  readonly person: P;
+  readonly key: string;
+  readonly name: string;
+  readonly couple: { readonly key: string; readonly name: string } | null;
+  readonly travel: Flights | null;
+  readonly stays: readonly Stay[];
 }
 // a unit: one person, or a couple whose partners travel and stay alike, by its name, and its people's keys
 export interface Unit<P> {
-  name: string;
-  key: string;
-  people: P[];
+  readonly name: string;
+  readonly key: string;
+  readonly people: readonly P[];
 }
 // the people of a line who stay alike: their stays (none: not said), by name ("Airbnb → Scandic Holberg"), and who
 export interface Bucket<P> {
-  stays: readonly Stay[];
-  place: string | null;
-  people: number;
-  units: Unit<P>[];
+  readonly stays: readonly Stay[];
+  readonly place: string | null;
+  readonly people: number;
+  readonly units: readonly Unit<P>[];
 }
 // a line of the roster: its units, how many people, how they travel (null: those who have not said), their stays
 // counted, the nights any of them stays (null: none), and what it is called when not by its units' names
 export interface Line<P> {
-  units: Unit<P>[];
-  people: number;
-  travel: Flights | null;
-  buckets: Bucket<P>[];
-  nights: { first: string; last: string } | null;
-  called: string | null;
+  readonly units: readonly Unit<P>[];
+  readonly people: number;
+  readonly travel: Flights | null;
+  readonly buckets: readonly Bucket<P>[];
+  readonly nights: { readonly first: string; readonly last: string } | null;
+  readonly called: string | null;
 }
 
 const MANY = 3; // a roster of more units than this calls lines by number; a line of more people than this is called so
@@ -78,8 +78,10 @@ const silent = (g: Goes<unknown>): boolean => g.travel === null && g.stays.lengt
 // times and keys by their characters, so that an end not said ("~") sorts after every time
 const byText = (a: string, b: string): number => Number(a > b) - Number(a < b);
 // by name, and of two of one name by key: the same people make the same order, whatever order they come in
-const byName = (a: { name: string; key: string }, b: { name: string; key: string }): number =>
-  a.name.localeCompare(b.name, 'en') || byText(a.key, b.key);
+const byName = (
+  a: { readonly name: string; readonly key: string },
+  b: { readonly name: string; readonly key: string },
+): number => a.name.localeCompare(b.name, 'en') || byText(a.key, b.key);
 const unitOf = <P>(name: string, of: readonly Goes<P>[]): Unit<P> => ({
   name,
   key: of.map((o) => o.key).join('+'),
@@ -87,10 +89,10 @@ const unitOf = <P>(name: string, of: readonly Goes<P>[]): Unit<P> => ({
 });
 
 interface Placed<P> {
-  unit: Unit<P>;
-  travel: Flights | null;
-  stays: readonly Stay[];
-  silent: boolean;
+  readonly unit: Unit<P>;
+  readonly travel: Flights | null;
+  readonly stays: readonly Stay[];
+  readonly silent: boolean;
 }
 // the units: each couple as one when its partners' signatures are alike, else each partner, and everyone else alone
 function units<P>(goers: readonly Goes<P>[]): Placed<P>[] {
@@ -115,18 +117,33 @@ function units<P>(goers: readonly Goes<P>[]): Placed<P>[] {
   return out;
 }
 
-// what a line is called, of all the lines and everyone going
-function call<P>(lines: readonly Line<P>[], total: number, unitCount: number): void {
-  if (unitCount <= MANY) return;
+// the lines, each called what it is, of all the lines and everyone going
+function call<P>(lines: readonly Line<P>[], total: number, unitCount: number): Line<P>[] {
+  if (unitCount <= MANY) return [...lines];
   // more than half of everyone is a line no other is as big as: of two alike in size, neither is more than half
-  for (const l of lines.filter((x) => x.people > MANY))
-    l.called = lines.length === 1 ? 'Everyone' : 2 * l.people > total ? 'Everyone else' : `${l.people} people`;
+  return lines.map((l) =>
+    l.people > MANY
+      ? {
+          ...l,
+          called: lines.length === 1 ? 'Everyone' : 2 * l.people > total ? 'Everyone else' : `${l.people} people`,
+        }
+      : l,
+  );
 }
 
 // The lines of a roster, each with its stays counted and what it is called, in their order.
 export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
   const all = units(goers);
-  type Building = Line<P> & { silent: boolean; byStay: Map<string, Bucket<P>> };
+  // a line and its buckets as the units are added, built in place (Line and Bucket are read-only)
+  type Filling = { stays: readonly Stay[]; place: string | null; people: number; units: Unit<P>[] };
+  type Building = {
+    units: Unit<P>[];
+    people: number;
+    travel: Flights | null;
+    nights: { first: string; last: string } | null;
+    silent: boolean;
+    byStay: Map<string, Filling>;
+  };
   const byTravel = new Map<string, Building>();
   for (const { unit, travel, stays, silent: none } of all) {
     const key = none ? '' : `#${travelKey(travel)}`;
@@ -134,9 +151,7 @@ export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
       units: [],
       people: 0,
       travel: none ? null : travel,
-      buckets: [],
       nights: null,
-      called: null,
       silent: none,
       byStay: new Map(),
     };
@@ -160,8 +175,7 @@ export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
     byTravel.set(key, line);
   }
   const lines = [...byTravel.values()].map(({ silent: none, byStay, ...line }) => {
-    line.units.sort(byName);
-    line.buckets = [...byStay.values()]
+    const buckets = [...byStay.values()]
       .map((b) => ({ ...b, units: b.units.toSorted(byName) }))
       .sort(
         (a, b) =>
@@ -170,7 +184,7 @@ export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
           (a.place ?? '').localeCompare(b.place ?? '', 'en') ||
           byText(staysKey(a.stays), staysKey(b.stays)),
       );
-    return { line, none };
+    return { line: { ...line, units: line.units.toSorted(byName), buckets, called: null }, none };
   });
   // an end by when it is, one not said after every time
   const when = (e: End | null | undefined): string => (e == null ? '~' : stamp(e.at));
@@ -182,8 +196,11 @@ export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
       byName(a.line.units[0] ?? { name: '', key: '' }, b.line.units[0] ?? { name: '', key: '' }) ||
       byText(travelKey(a.line.travel), travelKey(b.line.travel)),
   );
-  const out = lines.map((l) => l.line);
-  call(out, goers.length, all.length);
+  const out = call(
+    lines.map((l) => l.line),
+    goers.length,
+    all.length,
+  );
   // named lines, then those called by number, then "Everyone else", in their order; those who have not said last
   const rank = (l: Line<P>, i: number) => {
     if (lines[i]?.none === true) return 3;
@@ -199,17 +216,25 @@ export function roster<P>(goers: readonly Goes<P>[]): Line<P>[] {
 // those who said none, who have no nights; who stays there and on which nights, and how many people, its names called
 // by number when more than three
 export type Place<P> = {
-  units: Unit<P>[];
-  people: number;
-  stays: { person: P; key: string; first: string; last: string }[];
-  called: string | null;
-} & ({ place: string; nights: { first: string; last: string } } | { place: null; nights: null });
+  readonly units: readonly Unit<P>[];
+  readonly people: number;
+  readonly stays: readonly {
+    readonly person: P;
+    readonly key: string;
+    readonly first: string;
+    readonly last: string;
+  }[];
+  readonly called: string | null;
+} & (
+  | { readonly place: string; readonly nights: { readonly first: string; readonly last: string } }
+  | { readonly place: null; readonly nights: null }
+);
 
 // The places of a roster: a line a place, the most people first and those who said none last; someone who changes
 // place is on each place's line for their nights there. A couple is one unit at a place when both partners stay there
 // on the same nights.
 export function byPlace<P>(goers: readonly Goes<P>[]): Place<P>[] {
-  type Here = { stays: Place<P>['stays']; who: Map<Goes<P>, string> };
+  type Here = { stays: { person: P; key: string; first: string; last: string }[]; who: Map<Goes<P>, string> };
   const at = new Map<string | null, Here>();
   const of = (place: string | null): Here => {
     const p: Here = at.get(place) ?? { stays: [], who: new Map() };

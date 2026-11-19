@@ -49,8 +49,8 @@ const counted = (buckets: readonly Bucket<unknown>[]): string =>
 // names behind a text, in groups: each a place (null: one list, with no heading) and its names, each with its own
 // nights when they are not all of its place's
 interface Group {
-  heading: string | null;
-  names: { name: Kid; nights: string | null }[];
+  readonly heading: string | null;
+  readonly names: readonly { readonly name: Kid; readonly nights: string | null }[];
 }
 
 // Where the card of names goes on a computer: under its text's line, from the text's left, inside the trip's card;
@@ -153,12 +153,12 @@ function behind(
 // The frame of a roster, in either view: its days across the top as the calendar has them, an empty head over the
 // column beside them when there is one, and its lines.
 interface Frame {
-  from: string;
-  to: string;
-  festival: { start_date: string; end_date: string };
-  place: string;
-  describedBy: string; // the id of the line that says it in words
-  seed: string; // the festival's, which with a line's names makes its stroke's swipe
+  readonly from: string;
+  readonly to: string;
+  readonly festival: { readonly start_date: string; readonly end_date: string };
+  readonly place: string;
+  readonly describedBy: string; // the id of the line that says it in words
+  readonly seed: string; // the festival's, which with a line's names makes its stroke's swipe
 }
 function frame(t: Frame, column: boolean, lines: readonly Kid[]): HTMLElement {
   const days = daysOf(t.from, t.to);
@@ -199,14 +199,14 @@ function drawing(t: Frame) {
   const share = (n: number) => `${(100 * n) / days}%`;
   const opens = at(t.festival.start_date),
     closes = at(t.festival.end_date, 'end');
-  const lane = (...drawn: Kid[]) => h('div', { class: 'gantt-lane', 'aria-hidden': 'true' }, drawn);
+  const lane = (...drawn: readonly Kid[]) => h('div', { class: 'gantt-lane', 'aria-hidden': 'true' }, drawn);
   const stroke = (s: {
-    from: number;
-    to: number;
-    key: string;
-    fades: { in: boolean; out: boolean };
-    title: string | null;
-    ends: [Kid, Kid];
+    readonly from: number;
+    readonly to: number;
+    readonly key: string;
+    readonly fades: { readonly in: boolean; readonly out: boolean };
+    readonly title: string | null;
+    readonly ends: readonly [Kid, Kid];
   }) =>
     h(
       'div',
@@ -240,8 +240,8 @@ const dated = (day: string) => `${weekday3(day)} ${dayMonth(day)}`;
 
 export function gantt<P>(
   t: Frame & {
-    lines: readonly Line<P>[]; // as roster() makes them: named, by number, everyone else, those who have not said
-    named: (u: Unit<P>) => Kid; // a unit's name, as the page shows it
+    readonly lines: readonly Line<P>[]; // as roster() makes them: named, by number, everyone else, those who have not said
+    readonly named: (u: Unit<P>) => Kid; // a unit's name, as the page shows it
   },
 ): HTMLElement {
   const d = drawing(t);
@@ -308,7 +308,9 @@ export function gantt<P>(
 // more called by number, named from it with each one's own nights when not all of the place's), one stroke over the
 // nights anyone stays there, its ends the weekdays of the evening of the first and the morning after the last; those
 // who said no place last, over the festival's days with both ends fading.
-export function ganttByPlace<P>(t: Frame & { places: readonly Place<P>[]; named: (u: Unit<P>) => Kid }): HTMLElement {
+export function ganttByPlace<P>(
+  t: Frame & { readonly places: readonly Place<P>[]; readonly named: (u: Unit<P>) => Kid },
+): HTMLElement {
   const d = drawing(t);
   const line = (p: Place<P>, i: number): Kid[] => {
     const { nights } = p;

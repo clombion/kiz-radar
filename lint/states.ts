@@ -26,8 +26,8 @@ export const states: Rule = {
       if (parent?.type !== 'CallExpression' || parent.arguments.length !== 1) return true;
       return sourceCode.getTokenBefore(before)?.value === '(' && sourceCode.getTokenAfter(after)?.value === ')';
     };
-    const isKey = (node: Node | null | undefined): node is Node =>
-      (node?.type === 'Literal' || node?.type === 'TemplateLiteral') &&
+    const isKey = (node: Node): boolean =>
+      (node.type === 'Literal' || node.type === 'TemplateLiteral') &&
       KEY.test(sourceCode.getText(node)) &&
       !parenthesized(node);
     const refuse = (node: Node): void => context.report({ node, messageId: 'states' });
@@ -44,7 +44,7 @@ export const states: Rule = {
         else if (isKey(node.right)) refuse(node.right);
       },
       SwitchCase(node) {
-        if (isKey(node.test)) refuse(node.test);
+        if (node.test !== null && isKey(node.test)) refuse(node.test);
       },
     };
   },

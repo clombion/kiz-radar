@@ -16,10 +16,10 @@ type Visibility = 'public' | 'package' | 'private';
 // --- reading a module ---------------------------------------------------------------------------------------------
 
 interface Token {
-  kind: 'word' | 'string' | 'punct' | 'doc' | 'opaque';
-  text: string;
+  readonly kind: 'word' | 'string' | 'punct' | 'doc' | 'opaque';
+  readonly text: string;
   // the brackets around it: a bracket stands at the depth of what holds it
-  depth: number;
+  readonly depth: number;
 }
 
 const WORD = /[\w$\u{80}-\u{FFFF}#]/u;

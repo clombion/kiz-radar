@@ -2,7 +2,7 @@
 // value is not what the shape says, so nothing past the reader meets an unread value.
 export type Reader<T> = (v: unknown, at: string) => T;
 type Shape = Readonly<Record<string, Reader<unknown>>>;
-export type Read<S extends Shape> = { -readonly [K in keyof S]: ReturnType<S[K]> };
+export type Read<S extends Shape> = { readonly [K in keyof S]: ReturnType<S[K]> };
 
 const wrong = (at: string, v: unknown, what: string): never => {
   throw new TypeError(`${at}: ${v === undefined ? 'nothing' : JSON.stringify(v).slice(0, 60)} is no ${what}`);
@@ -16,12 +16,12 @@ export const nullable =
   (v, at) =>
     v === null ? null : read(v, at);
 export const list =
-  <T>(read: Reader<T>): Reader<T[]> =>
+  <T>(read: Reader<T>): Reader<readonly T[]> =>
   (v, at) =>
     Array.isArray(v) ? v.map((x: unknown, i) => read(x, `${at}[${i}]`)) : wrong(at, v, 'list');
 // two values of one reader, such as a range's first and last
 export const pair =
-  <T>(read: Reader<T>): Reader<[T, T]> =>
+  <T>(read: Reader<T>): Reader<readonly [T, T]> =>
   (v, at) =>
     Array.isArray(v) && v.length === 2 ? [read(v[0], `${at}[0]`), read(v[1], `${at}[1]`)] : wrong(at, v, 'pair');
 export const record =

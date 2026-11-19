@@ -26,9 +26,9 @@ test('every CSS class is given to an element by the page or a module', () => {
 // other. Biome's noDuplicateSelectors sees a selector twice in one block; this also sees it in two blocks of the same
 // media query, and inside a selector list.
 interface Rule {
-  media: string;
-  selectors: string[];
-  body: string;
+  readonly media: string;
+  readonly selectors: readonly string[];
+  readonly body: string;
 }
 const BLOCK = /(?<head>[^{}]*)\{|\}/gu;
 const SPACES = /\s+/gu;

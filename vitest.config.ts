@@ -73,7 +73,7 @@ function asked(req: IncomingMessage): string | null {
 }
 const pages = () => ({
   name: 'pages',
-  configureServer(server: { middlewares: { use: (path: string, handler: Handler) => void } }) {
+  configureServer(server: { readonly middlewares: { readonly use: (path: string, handler: Handler) => void } }) {
     server.middlewares.use('/', (req, res, next) => {
       const path = asked(req) ?? '';
       const data = DATA_FILE.exec(path)?.groups?.['file'];

@@ -4,7 +4,7 @@
 // it opens and closes (opened, closed); the rule of when it goes away is this one.
 
 interface Shown {
-  close: () => void;
+  readonly close: () => void;
 }
 let current: Shown | null = null; // the card open, of the whole page
 
@@ -14,10 +14,10 @@ export function dismissable({
   place,
   signal,
 }: {
-  within: () => readonly Element[]; // what the card belongs to: its openers, the card itself
-  close: () => void; // hides it (and then calls closed)
-  place?: () => void; // places it again, when the window's size changes
-  signal?: AbortSignal;
+  readonly within: () => readonly Element[]; // what the card belongs to: its openers, the card itself
+  readonly close: () => void; // hides it (and then calls closed)
+  readonly place?: () => void; // places it again, when the window's size changes
+  readonly signal?: AbortSignal;
 }): { opened: () => void; closed: () => void } {
   const me: Shown = { close };
   const opts: AddEventListenerOptions = signal === undefined ? {} : { signal };

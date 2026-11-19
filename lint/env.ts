@@ -11,8 +11,9 @@ type Definition = NonNullable<ReturnType<Scope['set']['get']>>['defs'][number];
 
 const MODULES: ReadonlySet<unknown> = new Set(['node:process', 'process']);
 // the name a specifier imports
-const importedName = (spec: { imported: { type: string; name?: string; value?: unknown } }): unknown =>
-  spec.imported.type === 'Identifier' ? spec.imported.name : spec.imported.value;
+const importedName = (spec: {
+  readonly imported: { readonly type: string; readonly name?: string; readonly value?: unknown };
+}): unknown => (spec.imported.type === 'Identifier' ? spec.imported.name : spec.imported.value);
 // a key or member written env, or ['env']
 const named = (key: Node, computed: boolean): boolean =>
   computed ? key.type === 'Literal' && key.value === 'env' : key.type === 'Identifier' && key.name === 'env';

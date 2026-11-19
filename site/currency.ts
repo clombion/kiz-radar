@@ -34,18 +34,18 @@ export function written(n: number, c: string): string {
 // what the views need of prices, in one currency
 export interface Prices {
   // an amount in the currency, or null when there is no rate for it
-  convert: (amount: number, from?: string) => number | null;
+  readonly convert: (amount: number, from?: string) => number | null;
   // step('flight', 'cheap'), step('trip', 'fair'): in the currency
-  step: (what: 'flight' | 'trip', name: Step) => number;
+  readonly step: (what: 'flight' | 'trip', name: Step) => number;
   // whether a euro amount is within a step: a cheap flight (green), a fair one; never one with no rate to convert it by
-  within: (eur: number, what: 'flight' | 'trip', name: Step) => boolean;
+  readonly within: (eur: number, what: 'flight' | 'trip', name: Step) => boolean;
   // an amount converted, as an approximation shows it: whole, and in kroner to the ten
-  rounded: (n: number) => number;
+  readonly rounded: (n: number) => number;
   // an amount already in the currency and rounded, as an approximation: "~4 130 kr"
-  approximately: (n: number) => string;
+  readonly approximately: (n: number) => string;
   // "~1 850 kr" for €160; "€160" when euros are chosen; "160 CHF" when there is no rate to convert with. An approx
   // amount (a flight price, which changes by the hour) reads "~" in every currency.
-  money: (amount: number, from?: string, opts?: { approx?: boolean }) => string;
+  readonly money: (amount: number, from?: string, opts?: { readonly approx?: boolean }) => string;
 }
 // prices in a currency, converted by the rate of each currency to the euro (undefined where there is none)
 export function pricesIn(currency: Currency, rate: (c: string) => number | undefined): Prices {

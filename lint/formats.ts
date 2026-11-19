@@ -7,7 +7,7 @@ import { texts } from './texts.ts';
 
 const METHODS = ['toLocaleDateString', 'toLocaleTimeString'];
 const FLIGHTS = /google\.com\/travel/u;
-const named = (node: { type: string }, name: string): boolean =>
+const named = (node: { readonly type: string }, name: string): boolean =>
   node.type === 'Identifier' && 'name' in node && node.name === name;
 
 export const formats: Rule = {

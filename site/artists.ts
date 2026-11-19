@@ -108,7 +108,7 @@ export const artistCountries = (): string[] =>
 
 // the artists the choices keep, in the order chosen; next has each one's next festival
 type Choices = typeof DEFAULTS;
-function chosenArtists(st: Readonly<Choices>, next: ReadonlyMap<number, { start_date: string }>): Artist[] {
+function chosenArtists(st: Readonly<Choices>, next: ReadonlyMap<number, { start_date: string }>): readonly Artist[] {
   const cond = [sql`1=1`],
     args: string[] = [];
   if (st.role) cond.push(sql`${COUNTS[st.role]} > 0`);
@@ -262,7 +262,7 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
 
 function row(
   a: Artist,
-  nx: { city: string | null; country_code: string | null; start_date: string } | undefined,
+  nx: { readonly city: string | null; readonly country_code: string | null; readonly start_date: string } | undefined,
 ): HTMLElement {
   return h(
     'li',
@@ -313,7 +313,12 @@ function lede(stats: Artist | null): Kid {
 }
 
 // the couple's partners, or the couples a person is part of
-function head(a: Pick<Artist, 'display_name' | 'kind'>, stats: Artist | null, members: Linked[], couples: Linked[]) {
+function head(
+  a: Pick<Artist, 'display_name' | 'kind'>,
+  stats: Artist | null,
+  members: readonly Linked[],
+  couples: readonly Linked[],
+) {
   const partners =
     members.length > 0
       ? h(

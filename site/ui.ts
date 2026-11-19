@@ -19,13 +19,13 @@ export const flag = (cc: string | null | undefined): string =>
   cc?.length === 2 ? String.fromCodePoint(...[...cc.toUpperCase()].map((c) => 0x1_f1_e6 + c.charCodeAt(0) - 65)) : '';
 
 // where a festival is: its country's flag and its city
-export const place = (e: { country_code: string | null; city: string | null }): Kid[] => [
+export const place = (e: { readonly country_code: string | null; readonly city: string | null }): Kid[] => [
   flag(e.country_code),
   ' ',
   e.city ?? 'Place not given',
 ];
 // "On now" before a festival's name while it is on (phase on), as its card, the Friends lists and the plans say it
-export const nowTag = (e: { phase: Key<'phase'> }): Kid =>
+export const nowTag = (e: { readonly phase: Key<'phase'> }): Kid =>
   e.phase === KEY.phase.ON ? [h('span', { class: 'now-tag' }, text('phase', e.phase)), ' '] : null;
 
 let names: Map<string, string> | undefined;

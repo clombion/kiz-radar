@@ -16,7 +16,7 @@ export const tier = (amount: number, k: Partial<Tier> = {}): Tier => ({
   sold_out: false,
   ...k,
 });
-export const pass = (tiers: Tier[], k: Partial<Pass> = {}): Pass => ({
+export const pass = (tiers: readonly Tier[], k: Partial<Pass> = {}): Pass => ({
   event_id: 1,
   pass_no: 1,
   kind: KEY.pass_kind.FULL,

@@ -43,11 +43,13 @@ interface Asked {
   readonly init: RequestInit;
 }
 // what the page's storage holds before it starts, or the browser's refusal of any
-type Storing = { local?: Readonly<Record<string, string>>; session?: Readonly<Record<string, string>> } | 'refused';
+type Storing =
+  | { readonly local?: Readonly<Record<string, string>>; readonly session?: Readonly<Record<string, string>> }
+  | 'refused';
 interface Visit<Route extends string = string> {
-  now: Now;
-  route?: Route;
-  storage?: Storing;
+  readonly now: Now;
+  readonly route?: Route;
+  readonly storage?: Storing;
 }
 // the two pages: each one's HTML, the module that starts it, and the data file a test may give it
 const PAGES = {
@@ -245,7 +247,7 @@ async function start(
   let at = from;
   const clock = new Proxy(RealDate, {
     apply: () => new RealDate(at).toString(),
-    construct: (real, given: unknown[], made: NewableFunction): object => {
+    construct: (real, given: readonly unknown[], made: NewableFunction): object => {
       const date: object = Reflect.construct(real, given.length === 0 ? [at] : given, made);
       return date;
     },
@@ -358,7 +360,7 @@ async function start(
 // route by its link from routes.ts as a new page, on the day `on` or else the start's, once the page has the focus and
 // has its data.
 // hold(path) holds the page's own file of that path until the function it returns is called, or the test ends.
-export async function startSite({ plant, ...visit }: Visit & { plant?: (db: Database) => void }): Promise<{
+export async function startSite({ plant, ...visit }: Visit & { readonly plant?: (db: Database) => void }): Promise<{
   asked: readonly Asked[];
   hold: (path: string) => () => void;
   open: (href: string, on?: Now) => Promise<void>;
@@ -387,7 +389,7 @@ export async function startReview({
   review,
   elsewhere,
   ...visit
-}: Visit<Hash> & { review?: Review; elsewhere?: Answer }): Promise<{
+}: Visit<Hash> & { readonly review?: Review; readonly elsewhere?: Answer }): Promise<{
   asked: readonly Asked[];
   answer: (a: Answer) => void;
   open: (hash: Hash) => Promise<void>;

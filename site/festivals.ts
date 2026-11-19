@@ -22,17 +22,17 @@ import { type Key, text } from './wording.ts';
 // unknown or the pass has no price today; once its weekend's Friday-to-Monday return has left (begun, fares.ts
 // flightBegun), the trip is the pass alone (what the price filter and the order by price read too).
 export type Festival = Omit<EventRow, 'features'> & {
-  depart: string | null;
-  features: Set<Key<'feature'>>;
-  promo: { code: string; offer: string | null } | null;
-  goers: Goer[];
-  headliners: { id: number; name: string }[];
-  styles: Set<Key<'genre'>>;
-  options: Option[]; // every airport it can fly to, the nearest first, each with its fare for the weekend
-  fare: Fare | null;
-  price: PriceLine;
-  trip: number | null;
-  begun: boolean; // its weekend's flight has left today: no flight is priced
+  readonly depart: string | null;
+  readonly features: ReadonlySet<Key<'feature'>>;
+  readonly promo: { readonly code: string; readonly offer: string | null } | null;
+  readonly goers: readonly Goer[];
+  readonly headliners: readonly { readonly id: number; readonly name: string }[];
+  readonly styles: ReadonlySet<Key<'genre'>>;
+  readonly options: readonly Option[]; // every airport it can fly to, the nearest first, each with its fare for the weekend
+  readonly fare: Fare | null;
+  readonly price: PriceLine;
+  readonly trip: number | null;
+  readonly begun: boolean; // its weekend's flight has left today: no flight is priced
 };
 
 let cache:

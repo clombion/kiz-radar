@@ -33,7 +33,7 @@ test('someone is away from the day they arrive to the day they leave, each end e
   const said = (
     arrive: string | null,
     leave: string | null,
-    nights: { first: string; last: string } | null = null,
+    nights: { readonly first: string; readonly last: string } | null = null,
   ) => ({
     arrive: endOf(arrive),
     leave: endOf(leave),

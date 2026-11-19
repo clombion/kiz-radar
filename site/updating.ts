@@ -17,7 +17,7 @@ export function updatingPage(root: HTMLElement): void {
   const since = Number(read(tab, SINCE) ?? now);
   write(tab, SINCE, String(since));
   const again = button({ onclick: () => location.reload() }, 'Try again now');
-  const intro = (...lines: (string | HTMLElement)[]) =>
+  const intro = (...lines: readonly (string | HTMLElement)[]) =>
     root.replaceChildren(h('section', {}, h('header', { class: 'page-intro' }, ...lines)));
   if (now - since > GIVE_UP_MS) {
     intro(

@@ -181,11 +181,11 @@ const TABS: readonly (readonly [Tab, string])[] = [
 const isTab = (v: string): v is Tab => TABS.some(([t]) => t === v);
 
 interface Queue {
-  ids: string[];
-  card: (i: number) => Kid;
-  lead: (i: number) => string; // the rail row's flag, or ? when no line-up states a country
-  name: (i: number) => string;
-  sub: (i: number) => string;
+  readonly ids: readonly string[];
+  readonly card: (i: number) => Kid;
+  readonly lead: (i: number) => string; // the rail row's flag, or ? when no line-up states a country
+  readonly name: (i: number) => string;
+  readonly sub: (i: number) => string;
 }
 let review: Review | null = null;
 let settledIds: Set<string> = new Set();
@@ -310,9 +310,9 @@ function decision(
     extra,
     claim,
   }: {
-    options: readonly (readonly [string, Kid, () => string])[];
-    extra?: (choose: Choose) => Kid; // a control that chooses as a choice does (a country picker)
-    claim: (pick: string, note: string) => Claim;
+    readonly options: readonly (readonly [string, Kid, () => string])[];
+    readonly extra?: (choose: Choose) => Kid; // a control that chooses as a choice does (a country picker)
+    readonly claim: (pick: string, note: string) => Claim;
   },
 ): Kid {
   if (settledIds.has(id))

@@ -10,9 +10,9 @@ import { done } from './report.ts';
 import { calm } from './ui.ts';
 
 // a box in a row of tabs, in px
-type Box = { left: number; top: number; width: number; height: number };
+type Box = { readonly left: number; readonly top: number; readonly width: number; readonly height: number };
 // a row of tabs' oval: its goo layer, the oval, its box (null while hidden), the addresses of the row's tabs when the
-// box was set, and the shapes of a move under way
+// box was set, and the shapes of a move under way: the row's state, which each move changes
 type Oval = { goo: HTMLElement; oval: HTMLElement; at: Box | null; links: string; moving: HTMLElement[] };
 const rows = new WeakMap<HTMLElement, Oval>();
 function ovalOf(nav: HTMLElement): Oval {
@@ -66,17 +66,19 @@ export function pill(nav: HTMLElement, { still = false } = {}): void {
   oval.hidden = false;
   Object.assign(oval.style, px(inGoo(to)));
   if (still || !was || calm() || (was.left === to.left && was.top === to.top)) return;
-  absorb(row, inGoo(was), inGoo(to));
+  row.moving = absorb(row, inGoo(was), inGoo(to));
 }
 
 const inGoo = (b: Box): Box => ({ ...b, left: b.left + PAD, top: b.top + PAD });
 
-// The slime's move from one tab's box to another's, in the goo layer's coordinates (see above)
-function absorb(row: Oval, was: Box, to: Box): void {
-  const { goo, oval } = row;
-  // this move's shapes, which the next move removes if it starts before they are done
+// The slime's move from one tab's box to another's, in the goo layer's coordinates (see above); its shapes, which the
+// next move removes if it starts before they are done
+function absorb(
+  { goo, oval }: { readonly goo: HTMLElement; readonly oval: HTMLElement },
+  was: Box,
+  to: Box,
+): HTMLElement[] {
   const moving: HTMLElement[] = [];
-  row.moving = moving;
   const time = (easing = SOFT) => ({ duration: SLIME.ms, easing });
   const dir = to.left > was.left ? 1 : -1;
   const from = was.left + was.width / 2,
@@ -156,6 +158,7 @@ function absorb(row: Oval, was: Box, to: Box): void {
   };
   grow.addEventListener('finish', rest);
   grow.addEventListener('cancel', rest);
+  return moving;
 }
 
 // the slides begun, the last one's number its own: a slide that ends after another began leaves that one's mark

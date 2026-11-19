@@ -86,8 +86,8 @@ export const tests: Rule = {
       const spared = source.type === 'Literal' && typeof source.value === 'string' && spares.includes(source.value);
       return SITE.test(text) && !LISTED.test(text) && !spared;
     };
-    const checked = (node: Node & { source: Node | null }): void => {
-      if (node.source !== null && refused(node.source, imports)) context.report({ node, messageId: 'tests' });
+    const checked = (node: Node, source: Node): void => {
+      if (refused(source, imports)) context.report({ node, messageId: 'tests' });
     };
     // the import()s that load a refused module
     const loading = new Set<Node>();
@@ -101,13 +101,13 @@ export const tests: Rule = {
     return {
       // a value import: a type import (`import type`) is erased, a type named inside a value import is not
       ImportDeclaration(node) {
-        if (node.importKind !== 'type') checked(node);
+        if (node.importKind !== 'type') checked(node, node.source);
       },
       ExportNamedDeclaration(node) {
-        if (node.exportKind !== 'type') checked(node);
+        if (node.exportKind !== 'type' && node.source !== null) checked(node, node.source);
       },
       ExportAllDeclaration(node) {
-        if (node.exportKind !== 'type') checked(node);
+        if (node.exportKind !== 'type') checked(node, node.source);
       },
       // a string or a template anywhere in an import(), as Grit's `contains` found one: the import() is refused, once
       Literal(node) {

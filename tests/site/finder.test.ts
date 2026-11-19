@@ -126,7 +126,7 @@ test('a with names a dance or a highlight, and reads as one', () => {
 test('every choice of every blank and filter comes back from the address it writes, any price among them', () => {
   const countries = ['NO', 'PT'];
   const allowed = allowedChoices(countries);
-  const back = (s: Choices) => {
+  const back = (s: Readonly<Choices>) => {
     const qs = new URL(`https://x/${festivalsHref(choicesAddress(s))}`).hash.split('?')[1] ?? '';
     return readChoices(qs, countries);
   };

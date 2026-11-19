@@ -12,7 +12,7 @@ const headers = (auth: string) => ({
   'X-GitHub-Api-Version': '2022-11-28',
 });
 
-export type Checked = { status: 'ok'; login: string } | { status: 'refused' };
+export type Checked = { readonly status: 'ok'; readonly login: string } | { readonly status: 'refused' };
 export async function check(auth: string): Promise<Checked> {
   const r = await get(new URL('/user', API), { headers: headers(auth), answers: [401, 403] });
   if (!r.ok) return { status: 'refused' };
@@ -21,7 +21,7 @@ export async function check(auth: string): Promise<Checked> {
   return { status: 'ok', login };
 }
 
-export type Written = { id: string; status: 'written' | 'there' | 'refused' | 'forbidden' };
+export type Written = { readonly id: string; readonly status: 'written' | 'there' | 'refused' | 'forbidden' };
 
 // the claim's text as base64 of its UTF-8, as the contents API takes a file
 const base64 = (s: string): string =>

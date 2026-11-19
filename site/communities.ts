@@ -55,34 +55,34 @@ import { joined, joinedText, type Key, plural, text } from './wording.ts';
 // A community as its page reads it, which is what a server will give one of its members. For now it is read from
 // the site database.
 interface Member {
-  key: string;
-  name: string;
+  readonly key: string;
+  readonly name: string;
 }
 // someone the manager added: their name, and what they are booked as at the festival (from the line-up, never from
 // the manager) with the artist record that booking links to
 interface Added {
-  id: number; // its row of community_seeded: two people added may share a first name
-  name: string;
-  plan: Key<'plan'>; // going, or maybe, as the manager said
-  booked_as: Booked | null;
-  artist: number | null;
+  readonly id: number; // its row of community_seeded: two people added may share a first name
+  readonly name: string;
+  readonly plan: Key<'plan'>; // going, or maybe, as the manager said
+  readonly booked_as: Booked | null;
+  readonly artist: number | null;
 }
 // how a member travels to a festival, each end when they said it: arrive and leave as local times, YYYY-MM-DDTHH:MM
 const TRAVEL = { key: str, arrive: opt(str), arrive_at: opt(str), leave: opt(str), leave_from: opt(str) } as const;
 // where a member stays, from a night to a night
 const STAY = { key: str, first: str, last: str, place: str } as const;
 interface Going {
-  members: string[]; // the keys of its members going
-  added: Added[]; // the people its manager added who are going, in the order they were added
-  travel: Map<string, Flights>; // how its members going travel there, by key, those who said
-  stays: Map<string, Stay[]>; // where they stay, by key, night after night
+  readonly members: readonly string[]; // the keys of its members going
+  readonly added: readonly Added[]; // the people its manager added who are going, in the order they were added
+  readonly travel: ReadonlyMap<string, Flights>; // how its members going travel there, by key, those who said
+  readonly stays: ReadonlyMap<string, readonly Stay[]>; // where they stay, by key, night after night
 }
 interface Community {
-  key: string;
-  name: string;
-  manager: Member;
-  members: Member[];
-  festivals: ReadonlyMap<number, Going>; // by festival, every one any of them goes to, past ones too
+  readonly key: string;
+  readonly name: string;
+  readonly manager: Member;
+  readonly members: readonly Member[];
+  readonly festivals: ReadonlyMap<number, Going>; // by festival, every one any of them goes to, past ones too
 }
 
 // the community at this key, or null when there is none
@@ -101,8 +101,15 @@ function communityOf(key: string): Community | null {
     [c.id],
   ).toSorted((a, b) => a.name.localeCompare(b.name)); // by name as it is said, Cédric before Christina
   // each plan and each added person, going or maybe: a member's plan is read with the festival's goers (plans.ts)
-  const festivals = new Map<number, Going>();
-  const at = (id: number): Going => {
+  // each festival as its plans are read, built in place (Going is read-only)
+  type Filling = {
+    members: string[];
+    added: Added[];
+    travel: Map<string, Flights>;
+    stays: Map<string, readonly Stay[]>;
+  };
+  const festivals = new Map<number, Filling>();
+  const at = (id: number): Filling => {
     const f = festivals.get(id) ?? { members: [], added: [], travel: new Map(), stays: new Map() };
     festivals.set(id, f);
     return f;
@@ -158,20 +165,20 @@ function communityOf(key: string): Community | null {
 
 // someone of the community away for a festival: a member, with how they travel and where they stay when they said,
 // or someone the manager added, who never says either
-type Present = Away & { e: Festival } & (
-    | { goer: Goer; added: null; travel: Flights | null; stays: Stay[] }
-    | { goer: null; added: Added; travel: null; stays: readonly [] }
+type Present = Away & { readonly e: Festival } & (
+    | { readonly goer: Goer; readonly added: null; readonly travel: Flights | null; readonly stays: readonly Stay[] }
+    | { readonly goer: null; readonly added: Added; readonly travel: null; readonly stays: readonly [] }
   );
 // a festival the community goes to: who of it goes, who is away for it from when to when, the days of the whole trip
 // (spanOf), and where it stands on the day: on, or ended, or else ahead
 interface Visit {
-  e: Festival;
-  who: ReturnType<typeof whoGoes>;
-  aways: Present[];
-  span: { from: string; to: string };
-  on: boolean; // from its first day to its last
-  ended: boolean; // from the day after its last
-  off: string | null; // what its card says when the festival is cancelled or no longer listed, members still going
+  readonly e: Festival;
+  readonly who: ReturnType<typeof whoGoes>;
+  readonly aways: readonly Present[];
+  readonly span: { readonly from: string; readonly to: string };
+  readonly on: boolean; // from its first day to its last
+  readonly ended: boolean; // from the day after its last
+  readonly off: string | null; // what its card says when the festival is cancelled or no longer listed, members still going
 }
 
 export function communityView(root: HTMLElement, [key]: readonly string[], qs: string, signal: AbortSignal): void {
@@ -314,7 +321,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
 
 // a trip: its days, from the first of the community to arrive to the last to leave, or the festival's when sooner or
 // later, and where it stands on the day: on from its first day to its last, ended from the day after
-function visit(today: string, e: Festival, who: Visit['who'], aways: Present[]): Visit {
+function visit(today: string, e: Festival, who: Visit['who'], aways: readonly Present[]): Visit {
   const span = spanOf(e, aways);
   // a festival cancelled or no longer listed stays on the page, said so, while its members still hold their plans
   const off =
@@ -572,7 +579,12 @@ function whoGoes(
   e: Festival,
   f: Going,
   manager: Member,
-): { goers: Festival['goers']; people: number; said: () => Kid[]; counted: () => Kid[] } {
+): {
+  readonly goers: Festival['goers'];
+  readonly people: number;
+  readonly said: () => Kid[];
+  readonly counted: () => Kid[];
+} {
   const members = new Set(f.members),
     goers = e.goers.filter((g) => members.has(g.key));
   // those added not teaching, together, those going and then those who may, each with their tag

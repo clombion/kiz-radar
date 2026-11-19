@@ -6,13 +6,17 @@
 // a tilt lifts one end above the other the more the longer the swipe, so a long one (a trip's bar on a computer) has
 // none, and its unevenness is in its thickness and corners
 export interface Reach {
-  height: readonly [number, number];
-  drop: readonly [number, number];
-  tilt: number;
+  readonly height: readonly [number, number];
+  readonly drop: readonly [number, number];
+  readonly tilt: number;
 }
 
 // a swipe's style: its height, offset, tilt, corners and ink, from its seed
-export function swipe(seed: string, reach: Reach, cut: { before: boolean; after: boolean }): Record<string, string> {
+export function swipe(
+  seed: string,
+  reach: Reach,
+  cut: { readonly before: boolean; readonly after: boolean },
+): Record<string, string> {
   let h32 = 2_166_136_261;
   for (const ch of seed) h32 = Math.imul(h32 ^ ch.charCodeAt(0), 16_777_619);
   const next = () => {

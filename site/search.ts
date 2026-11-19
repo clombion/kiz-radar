@@ -120,7 +120,8 @@ function artistEntries(): Indexed[] {
 // the cities festivals are in, each once by its key however its festivals' listings spell it (cities), with how many
 // festivals there are coming up and in all
 function cityEntries(): City[] {
-  const cities = new Map<string, City>();
+  // each city as its festivals are counted, built in place (City is read-only)
+  const cities = new Map<string, Omit<City, 'upcoming' | 'all'> & { upcoming: number; all: number }>();
   for (const e of q(
     { city: str, city_key: str, country_code: str, upcoming: flagCol },
     sql`SELECT city, city_key, country_code, upcoming FROM event_rows WHERE city_key IS NOT NULL`,
@@ -155,11 +156,11 @@ function placeEntries(pool: readonly Festival[]): Indexed[] {
 // no festival coming up has is left out.
 const UNDERSCORES = /_/gu;
 interface Tag {
-  key: TagKey;
-  name: string;
-  params: Params;
-  test: (e: Festival) => boolean;
-  icon: Drawing | null;
+  readonly key: TagKey;
+  readonly name: string;
+  readonly params: Params;
+  readonly test: (e: Festival) => boolean;
+  readonly icon: Drawing | null;
 }
 function tagEntries(pool: readonly Festival[]): Indexed[] {
   const tags: Tag[] = [

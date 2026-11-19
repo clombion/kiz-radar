@@ -39,22 +39,29 @@ const css = (name: string): string => {
 const PAGE = 40;
 
 // a festival with a place on the map, and a city's bubble
-type Placed = Festival & { city: string; city_key: string; country_code: string; lat: number; lon: number };
+type Placed = Festival & {
+  readonly city: string;
+  readonly city_key: string;
+  readonly country_code: string;
+  readonly lat: number;
+  readonly lon: number;
+};
 interface City {
-  key: string;
-  city: string;
-  cc: string;
-  lat: number;
-  lon: number;
-  events: Placed[];
-  n: number;
-  popular: number;
-  minFare: number | null;
-  home: boolean; // a festival there is in the home city
+  readonly key: string;
+  readonly city: string;
+  readonly cc: string;
+  readonly lat: number;
+  readonly lon: number;
+  readonly events: readonly Placed[];
+  readonly n: number;
+  readonly popular: number;
+  readonly minFare: number | null;
+  readonly home: boolean; // a festival there is in the home city
 }
 // the festivals in view, by city, with what each city's bubble shows
 function citiesOf(events: readonly Placed[]): City[] {
-  const groups = new Map<string, Omit<City, 'n' | 'popular' | 'minFare' | 'home'>>();
+  // each city as its festivals are added, built in place (City is read-only)
+  const groups = new Map<string, Omit<City, 'events' | 'n' | 'popular' | 'minFare' | 'home'> & { events: Placed[] }>();
   for (const e of events) {
     const k = e.city_key;
     const g = groups.get(k) ?? { key: k, city: e.city, cc: e.country_code, lat: e.lat, lon: e.lon, events: [] };
@@ -73,7 +80,7 @@ function citiesOf(events: readonly Placed[]): City[] {
   });
 }
 type Band = readonly [string, (c: City) => boolean, string];
-type Scheme = { title: () => string; bands: readonly Band[] };
+type Scheme = { readonly title: () => string; readonly bands: readonly Band[] };
 // a city's bubble: its size the festivals there, its colour the scheme's band for it
 const bubble = (c: City, scheme: Scheme) =>
   L.circleMarker([c.lat, c.lon], {
@@ -577,11 +584,11 @@ async function drawWorld(layer: L.LayerGroup, signal: AbortSignal): Promise<void
 
 // The outline data jumps a ring from +180° to -180° where a country crosses the antimeridian (Russia, Fiji), which
 // a flat map draws as a stripe across the world. Keeping each ring's longitudes continuous draws it in one piece.
-type Country = Feature<Polygon | MultiPolygon, { name: string }>;
-const isLand = (f: Feature<GeoJSON.Geometry | null, { name: string }>): f is Country =>
+type Country = Feature<Polygon | MultiPolygon, { readonly name: string }>;
+const isLand = (f: Feature<GeoJSON.Geometry | null, { readonly name: string }>): f is Country =>
   f.geometry?.type === 'Polygon' || f.geometry?.type === 'MultiPolygon';
-function unwrap(feature: Country): Country {
-  const ring = (r: Position[]): Position[] => {
+function unwrap(feature: Feature<Polygon | MultiPolygon, { readonly name: string }>): Country {
+  const ring = (r: readonly (readonly number[])[]): Position[] => {
     let shift = 0;
     return r.map(([lon = 0, lat = 0], i) => {
       const prev = r[i - 1]?.[0];

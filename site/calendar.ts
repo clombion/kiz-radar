@@ -45,7 +45,7 @@ export function periods(today: string, last: string | undefined): string[] {
   return out;
 }
 // whether someone away from a day to a day is away on any day of a period
-export const inPeriod = (first: string, away: { from: string; to: string }): boolean =>
+export const inPeriod = (first: string, away: { readonly from: string; readonly to: string }): boolean =>
   away.from < `${plusMonths(first, PERIOD)}-01` && away.to >= `${first}-01`;
 // a period by its months' names (name gives "Nov"): "Nov 2026 – Feb 2027" across two years, else "Mar – Jun 2027";
 // short, "Mar–Jun"
@@ -84,8 +84,8 @@ export function relativeDay(today: string, day: string): string | null {
 // database writes YYYY-MM-DD or YYYY-MM-DDTHH:MM (records.Moment); moment is the one place that reads which, as a
 // travel is read from it (communities.ts), and stamp writes it back, for an order (a moment sorts as its text).
 export interface Moment {
-  day: string;
-  time: string | null;
+  readonly day: string;
+  readonly time: string | null;
 }
 export const moment = (text: string): Moment => ({
   day: text.slice(0, 10),
@@ -96,15 +96,15 @@ export const stamp = (m: Moment): string => (m.time === null ? m.day : `${m.day}
 // what someone said of how they go to a festival: when they arrive and leave, each when said, and the nights they
 // stay, from the first to the last (by their evenings' dates), when said
 export interface Said {
-  arrive: Moment | null;
-  leave: Moment | null;
-  nights: { first: string; last: string } | null;
+  readonly arrive: Moment | null;
+  readonly leave: Moment | null;
+  readonly nights: { readonly first: string; readonly last: string } | null;
 }
 // The days someone is away for a festival, the one rule the calendar and a trip's chart both read: from the day they
 // arrive, or else the festival's first day or their first night, whichever is sooner; to the day they leave, or else
 // the festival's last day or the morning after their last night, whichever is later.
 export const awayDays = (
-  festival: { start_date: string; end_date: string },
+  festival: { readonly start_date: string; readonly end_date: string },
   said?: Said,
 ): { from: string; to: string } => {
   const first = said?.nights?.first,
@@ -117,18 +117,19 @@ export const awayDays = (
 
 // someone away from a day to a day; who is the one person they are, however many festivals they go to
 export interface Away {
-  who: string;
-  from: string;
-  to: string;
+  readonly who: string;
+  readonly from: string;
+  readonly to: string;
 }
 // a day: everyone away on it, and how many people they are
 export interface Day<A extends Away> {
-  aways: A[];
-  people: number;
+  readonly aways: readonly A[];
+  readonly people: number;
 }
 // each day someone is away, with who is: the one count the strip's shades and the sentence both read
 export function presence<A extends Away>(aways: readonly A[]): Map<string, Day<A>> {
-  const days = new Map<string, Day<A>>();
+  // each day as the aways are added, built in place (Day is read-only)
+  const days = new Map<string, { aways: A[]; people: number }>();
   for (const a of aways)
     for (const d of daysOf(a.from, a.to)) {
       const day = days.get(d) ?? { aways: [], people: 0 };
@@ -157,8 +158,8 @@ export function busiest<A extends Away>(
 // the days a festival's row covers: from the first of the community to arrive, or its start when that is sooner, to
 // the last to leave, or its end when that is later
 export function spanOf(
-  festival: { start_date: string; end_date: string },
-  aways: readonly { from: string; to: string }[],
+  festival: { readonly start_date: string; readonly end_date: string },
+  aways: readonly { readonly from: string; readonly to: string }[],
 ): { from: string; to: string } {
   const sooner = (x: string, y: string) => (byText(x, y) <= 0 ? x : y),
     later = (x: string, y: string) => (byText(x, y) >= 0 ? x : y);

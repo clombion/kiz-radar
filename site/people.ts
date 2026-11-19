@@ -92,11 +92,11 @@ const comingUp = (cards: readonly HTMLElement[], none: string): HTMLElement =>
     cards.length > 0 ? h('div', { class: 'festival-cards' }, cards) : h('p', { class: 'muted' }, none),
   );
 // someone's name, linking to their plans page
-export const personLink = (p: { key: string; name: string }): HTMLElement =>
+export const personLink = (p: { readonly key: string; readonly name: string }): HTMLElement =>
   h('a', { href: personHref(p.key), class: 'artist' }, p.name);
 
 // a page of plans (a person's, everyone's, a community's): its title and what goes under it in the head, then the rest
-export function page(root: HTMLElement, [title, ...head]: readonly [Kid, ...Kid[]], ...rest: Kid[]): void {
+export function page(root: HTMLElement, [title, ...head]: readonly [Kid, ...Kid[]], ...rest: readonly Kid[]): void {
   root.replaceChildren(
     h(
       'article',

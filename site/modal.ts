@@ -6,9 +6,9 @@ import { done } from './report.ts';
 import { go } from './routes.ts';
 
 export interface Modal {
-  open: (from?: Element | null) => boolean;
-  shut: () => Promise<unknown>;
-  go: (href: string) => Promise<void>;
+  readonly open: (from?: Element | null) => boolean;
+  readonly shut: () => Promise<unknown>;
+  readonly go: (href: string) => Promise<void>;
 }
 export function modal(dlg: HTMLDialogElement): Modal {
   let pushed = false,
@@ -54,7 +54,7 @@ export function modal(dlg: HTMLDialogElement): Modal {
 }
 
 // A link out of a dialog: it goes once the dialog's history entry is gone, so the entry doesn't undo it (Modal.go).
-export const leaving = (m: Modal, href: string, ...kids: Kid[]): HTMLAnchorElement =>
+export const leaving = (m: Modal, href: string, ...kids: readonly Kid[]): HTMLAnchorElement =>
   h(
     'a',
     {
@@ -70,12 +70,12 @@ export const leaving = (m: Modal, href: string, ...kids: Kid[]): HTMLAnchorEleme
 // A quick view over the page (who's going, a festival's passes): a head of a lead (faces, when there are some), a
 // title and the line under it, and ×; a body; a foot. Each view fills the parts.
 export interface Peek {
-  m: Modal;
-  lead: HTMLElement;
-  title: HTMLElement;
-  sub: HTMLElement;
-  body: HTMLElement;
-  foot: HTMLElement;
+  readonly m: Modal;
+  readonly lead: HTMLElement;
+  readonly title: HTMLElement;
+  readonly sub: HTMLElement;
+  readonly body: HTMLElement;
+  readonly foot: HTMLElement;
 }
 export function peek(id: string): Peek {
   const title = h('h2', { id }),
