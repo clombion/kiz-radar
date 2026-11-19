@@ -9,10 +9,11 @@
 
 import { type Away, type Day, monthsIn, periodSaid, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
-import { dismissable, WIDE } from './dismiss.ts';
+import { dismissable } from './dismiss.ts';
 import { button, h, type Kid, nodes, toggle, uniqueId } from './dom.ts';
 import { Drawing } from './icons.ts';
 import { swipe } from './ink.ts';
+import { MEDIA } from './media.ts';
 import { monthShort, monthYear, weekDay } from './ui.ts';
 import { plural } from './wording.ts';
 
@@ -53,7 +54,7 @@ export function popover(detail: (day: string) => Kid[], signal: AbortSignal): Po
   };
   const placed = (cell: HTMLElement, container: HTMLElement) => {
     const grid = cell.closest<HTMLElement>('.days-month') ?? cell;
-    const wide = matchMedia(WIDE).matches;
+    const wide = matchMedia(MEDIA.WIDE).matches;
     toggle(pop, 'day-panel', !wide);
     if (!wide) {
       // a panel after the last month of the day's row, the full width of the page

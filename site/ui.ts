@@ -2,13 +2,14 @@
 import { today } from './days.ts';
 import { q, site, sql } from './db.ts';
 import { h, type Kid } from './dom.ts';
+import { MEDIA } from './media.ts';
 import { currency } from './money.ts';
 import { str } from './rows.ts';
 import { KEY } from './states.ts';
 import { type Key, text } from './wording.ts';
 
 // whether the visitor asked for less motion, and how a scroll goes for them: at once when they did
-export const calm = (): boolean => matchMedia('(prefers-reduced-motion: reduce)').matches;
+export const calm = (): boolean => matchMedia(MEDIA.REDUCED_MOTION).matches;
 export const scrolling = (): ScrollBehavior => (calm() ? 'auto' : 'smooth');
 
 // the arrow after words that lead off the site, shown and not read out (the link's own words say where it goes)

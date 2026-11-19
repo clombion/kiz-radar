@@ -20,9 +20,10 @@
 
 import { awayDays, daysInto, daysOf, type Moment, WEEKDAYS, weekday, weekday3 } from './calendar.ts';
 import { addDays } from './days.ts';
-import { dismissable, WIDE } from './dismiss.ts';
+import { dismissable } from './dismiss.ts';
 import { button, h, type Kid, toggle } from './dom.ts';
 import { swipe } from './ink.ts';
+import { MEDIA } from './media.ts';
 import { type Bucket, type Line, ownNights, type Place, type Unit } from './roster.ts';
 import { dayMonth } from './ui.ts';
 import { joined, plural } from './wording.ts';
@@ -108,7 +109,7 @@ function behind(
     const by = over ?? open();
     toggle(list, 'gantt-open', by !== null);
     toggle(list, 'gantt-who-flow', false);
-    if (by !== null && matchMedia(WIDE).matches) place(list, by);
+    if (by !== null && matchMedia(MEDIA.WIDE).matches) place(list, by);
     if (by === null) one.closed();
     else one.opened();
   };
