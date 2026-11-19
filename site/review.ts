@@ -243,9 +243,12 @@ function go(tab: Tab, i: number): void {
   at = { tab, i };
   render();
 }
+// the item the address names; another tab's rail starts unfiltered, as go() leaves it
 function fromAddress(): void {
-  const [tab = 'merges', n = '1'] = location.hash.slice(1).split('/');
-  at = { tab: isTab(tab) ? tab : 'merges', i: Math.max(0, Number.parseInt(n, 10) - 1 || 0) };
+  const [name = 'merges', n = '1'] = location.hash.slice(1).split('/');
+  const tab = isTab(name) ? name : 'merges';
+  if (tab !== at.tab) filter = '';
+  at = { tab, i: Math.max(0, Number.parseInt(n, 10) - 1 || 0) };
 }
 
 // ----- writing: one claim at a time, confirmed on its button, then the next open item
