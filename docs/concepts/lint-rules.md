@@ -136,6 +136,11 @@ Three on the brief's list have an equivalent and are mapped instead: `noFlatMapI
 Rules with no oxlint equivalent that are not on the brief's list: dropping one needs the owner's approval (brief, "Stop
 and ask before"). Each with what holds the check without it, and the recommendation.
 
+**Answered by the owner, 19 November:** `noThisInStatic`, `noPrivateImports`, `useJsonImportAttributes` and
+`useNodeAssertStrict`, which nothing else holds, and `noProcessGlobal` for the tests become house rules of the oxlint
+plugin, each with its fixtures, before Biome stops linting TypeScript (task 2.7); the six style rules and the ten held
+by tsc, the parser, knip or a mapped rule are accepted losses.
+
 | Biome rule | Level | What holds it |
 | -- | -- | -- |
 | `complexity/noEmptyTypeParameters` | warn | tsc refuses `<>` with no parameter. Accept. |
