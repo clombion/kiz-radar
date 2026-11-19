@@ -67,8 +67,11 @@ const weekHref = () => hash('week');
 export const sqlHref = () => hash('sql');
 export const sourcesHref = () => hash('sources');
 
+// The hash routes the site writes, each the name of a view its links lead to (#finder, #map/city/…); house/routes
+// refuses a link starting with one spelled anywhere but here.
+export const HASH_ROUTES = ['finder', 'friends', 'week', 'map', 'artists', 'countries', 'sql', 'sources'] as const;
 // the views a tab or a swipe goes to, by name, and the tabs of the header
-export type Section = 'finder' | 'friends' | 'week' | 'map' | 'artists' | 'countries';
+export type Section = Exclude<(typeof HASH_ROUTES)[number], 'sql' | 'sources'>;
 export type Tab = 'finder' | 'friends' | 'explore';
 // A view, drawn into root from the address: the parts after the view's name, the query string, a signal that aborts
 // once another view shows, and the database loading.
@@ -78,9 +81,9 @@ export type Show = (
   qs: string,
   opts: { readonly signal: AbortSignal; readonly data: Promise<unknown> },
 ) => void;
-// every view an address names: the sections, the SQL and sources pages the footer links to (index.html), and a
-// community's page
-export type Route = Section | 'sql' | 'sources' | 'community';
+// every view an address names: a hash route (the sections, the SQL and sources pages the footer links to), and a
+// community's page, a path (its hash, #community/<key>, is only an older link the site still reads)
+export type Route = (typeof HASH_ROUTES)[number] | 'community';
 // the header's tabs (a view's nav names its tab), and the second row Explore opens; a swipe on a touch screen steps
 // through the sections in this order: Festivals, Friends, then Explore's
 export const EXPLORE: readonly (readonly [Section, string, string])[] = [
