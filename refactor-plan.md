@@ -91,6 +91,9 @@ decisions the brief did not settle, and what in the brief turned out wrong.
 
 In progress.
 
+**Task 1.7** needed no change of its own: after 1.2 the node tests import only modules the 1.8 rule allows, and their
+other imports of a view are `import type` (refactor-task-1.8.md).
+
 **Baseline** (task 1.1, at `c667c877`, after `mise run build:site` and `mise run build:data`, by the two commands of
 [refactor-task-1.1.md](refactor-task-1.1.md), "Tests"):
 
