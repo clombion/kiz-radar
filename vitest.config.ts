@@ -16,8 +16,11 @@ const { CHROMIUM } = process.env; // a Chromium to run the browser tests in, whe
 // The built site (public/), served under /kiz-radar/ as GitHub Pages serves it, for the tests that load it whole in a
 // frame: a folder's address serves its index.html, as Pages does, and data/ is the fixture's database. The tests' own
 // pages (app.ts) get the fixture too: data/ at the root is the fixture's alone, at any depth, never the build's rows,
-// which Vite would serve from public/; and a file asked at the root is the fixture's, else the build's vendor/, since
-// in a test Vite's transform rewrites db.ts's '../data/' and '../vendor/' to the root itself.
+// which Vite would serve from public/; and a file asked at the root is the fixture's, else the build's vendor/, else
+// public/'s (the pages' mark.svg and loading.svg). No page asks for a fixture's or vendor/ file at the root since
+// site/'s new URL(…, import.meta.url) sites carry /* @vite-ignore */ (before, Vite's transform rewrote db.ts's
+// '../data/' and '../vendor/' to the root in a test): only server.browser.test.ts's '/kiz.sqlite' does, and whether
+// the branch goes is the owner's to decide.
 const TYPES: Readonly<Record<string, string>> = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript',

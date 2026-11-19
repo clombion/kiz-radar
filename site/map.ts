@@ -24,7 +24,7 @@ import { EVENT } from './rows.ts';
 import { countryName, flag, home } from './ui.ts';
 import { plural } from './wording.ts';
 
-const WORLD = new URL('../vendor/countries-50m.json', import.meta.url); // world-atlas, copied by the build
+const WORLD = new URL(/* @vite-ignore */ '../vendor/countries-50m.json', import.meta.url); // world-atlas, copied by the build
 type Land = FeatureCollection<Polygon | MultiPolygon, { name: string }>;
 let worldGeo: Land | undefined; // cached across visits to the tab
 // a colour of the stylesheet's (its custom property), read once: the page has one theme
