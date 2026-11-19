@@ -64,7 +64,8 @@ ALLOWED = Counter(
 BIOME = re.compile(r'biome-ignore (?P<rules>lint/\w+/\w+): \S.*')
 OXLINT = re.compile(r'oxlint-disable-(?:next-)?line (?P<rules>[\w-]+/[\w-]+(?:, [\w-]+/[\w-]+)*) -- \S.*')
 TS_EXPECT = re.compile(r'@ts-expect-error: \S.*')
-SITE_SUPPRESSION = re.compile(r'(?:biome-ignore|oxlint-(?:disable|enable)|@ts-|eslint-disable)[^*]*')
+# each up to the comment's end: a block comment's close, or the next comment's opener, which starts another
+SITE_SUPPRESSION = re.compile(r'(?:biome-ignore|oxlint-(?:disable|enable)|@ts-|eslint-disable)(?:[^*/]|/(?![/*]))*')
 SITE_ALLOWED = Counter(
     {
         ('public/css/site.css', 'lint/complexity/noImportantStyles'): 1,
@@ -147,6 +148,12 @@ def test_the_site_suppressions_are_read_in_every_file_biome_or_oxlint_checks() -
     } <= set(files)
     assert 'pnpm-lock.yaml' not in files
     assert not any(f.startswith('lint/fixtures/') for f in files)
+
+
+def test_two_suppressions_on_one_line_are_read_apart(tmp_path: Path) -> None:
+    two = tmp_path / 'two.ts'
+    two.write_text('go(); // biome-ignore lint/style/noX: a reason // oxlint-disable-line eslint/no-y -- another\n')
+    assert site_suppressions(two) == ['lint/style/noX', 'eslint/no-y']
 
 
 def test_every_site_suppression_is_allowed() -> None:
