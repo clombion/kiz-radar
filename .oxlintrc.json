@@ -517,7 +517,9 @@
     "house/routes": "error",
     "house/session": "error",
     "house/statics": "error",
-    "house/storage": "error"
+    "house/storage": "error",
+    // no style prop in JSX: a class, or a ref and style.setProperty; the page's Content-Security-Policy refuses inline style
+    "house/styles": "error"
   },
   "overrides": [
     {
