@@ -48,9 +48,12 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   who asked for less motion, which runs the files named `*.calm.browser.test.ts` and no others (a calm file runs with
   reduced motion only). A test of the page starts it through `tests/site/app.ts`, whose header says how (once per file;
   the day, data, storage, or its refusal, and other hosts' answers stated before the start); the test server answers the
-  tests' pages with the fixture's data only, never `public/data/`. oxfmt (`format:site`) lays out the site, its tests,
-  the stylesheet, the JSON configs and the house rules with their fixtures (`.oxfmtrc.jsonc`), sorting the import
-  statements of all but the fixtures, but `site/states.ts` and `site/drawings.ts`, which their generators lay out.
+  tests' pages with the fixture's data only, never `public/data/`. `tests/site/pages.browser.test.ts` loads the built
+  site instead, Vite's bundle (`vite.config.ts`), in a frame under each page's Content-Security-Policy: every route, the
+  older `#community/<key>` link and `review.html`, each drawn with no error, failed request or refusal. oxfmt
+  (`format:site`) lays out the site, its tests, the stylesheet, the JSON configs and the house rules with their fixtures
+  (`.oxfmtrc.jsonc`), sorting the import statements of all but the fixtures, but `site/states.ts` and
+  `site/drawings.ts`, which their generators lay out.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list, and an oxlint one is also explained in
   [oxlint's suppressed findings](docs/lint-false-positives.md).
@@ -93,7 +96,7 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
 | `pipeline/tickets/` | ticket-site recipes, read logs, first reads, `status.csv` |
 | `source/` | the kizomba-world export |
 | `claims/` | the admin's claims (a submodule) |
-| `site/` | the site's TypeScript |
+| `site/` | the site's TypeScript, bundled by Vite into `public/js/` (`vite.config.ts`) |
 | `public/` | the published site: page, stylesheet, fonts, icons; `js/`, `vendor/` and `data/` built |
 | `tests/` | the pipeline's tests; `tests/site/` the site's |
 | `lint/` | the house rules: oxlint's plugin (`plugin.ts`, a module per rule) with its fixtures |
