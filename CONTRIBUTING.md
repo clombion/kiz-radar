@@ -46,8 +46,10 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   machine's own named in `CHROMIUM`), and fails below the coverage of the pure modules `vitest.config.ts` sets. The
   browser tests run in two projects: `browser`, with motion as most visitors have it, and `browser-calm`, for a visitor
   who asked for less motion, which runs the files named `*.calm.browser.test.ts` and no others (a calm file runs with
-  reduced motion only). A test of the page starts it through `tests/site/app.ts`, whose header says how (once per file;
-  the day, data, storage, or its refusal, and other hosts' answers stated before the start); the test server answers the
+  reduced motion only). In both, a console warning, error or failing assert the test did not declare beforehand fails it
+  (`tests/site/console.ts`'s `expectConsole`), so that Solid's development diagnostics and `site/report.ts`'s errors are
+  never passed over. A test of the page starts it through `tests/site/app.ts`, whose header says how (once per file; the
+  day, data, storage, or its refusal, and other hosts' answers stated before the start); the test server answers the
   tests' pages with the fixture's data only, never `public/data/`. `tests/site/pages.browser.test.ts` loads the built
   site instead, Vite's bundle (`vite.config.ts`), in a frame under each page's Content-Security-Policy: every route, the
   older `#community/<key>` link and `review.html`, each drawn with no error, failed request or refusal. oxfmt

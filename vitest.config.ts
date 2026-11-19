@@ -194,6 +194,11 @@ export default defineConfig({
           name,
           include: [include],
           exclude: [...configDefaults.exclude, ...exclude],
+          // a warning or an error said to the console that the test did not declare fails it (console.ts)
+          setupFiles: ['tests/site/console.setup.ts'],
+          // each test file in a frame of its own, as Vitest's default: the guard (console.ts) holds one file's
+          // window, and halted.browser.test.ts's halt of Solid lasts the window it happens in
+          isolate: true,
           browser: {
             enabled: true,
             provider: playwright({

@@ -8,6 +8,7 @@ import { expect, onTestFinished, test, vi } from 'vitest';
 import { page } from 'vitest/browser';
 import { get } from '../../site/net.ts';
 import { startReview } from './app.ts';
+import { expectConsole } from './console.ts';
 import { AT, KEPT, LOGIN, REVIEW, WRITING } from './reviewed.ts';
 import { entries, said, theItem, unhidden } from './seen.ts';
 
@@ -76,19 +77,14 @@ test('open() refuses a page that fails to draw the item', async () => {
   const svg = vi.spyOn(Element.prototype, 'innerHTML', 'set').mockImplementation(() => {
     throw new Error('no markup in this test');
   });
-  const told = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-  onTestFinished(() => {
-    svg.mockRestore();
-    told.mockRestore();
-  });
+  onTestFinished(() => svg.mockRestore());
+  // the review's view, each of the two times open() draws it, and not the page around it (console.ts fails any other
+  // line)
+  expectConsole('error', /^Kiz Radar: the review: Error: no markup in this test$/u, 2);
   await expect(app.open('#merges/1')).rejects.toThrow(
     'the page says it failed: This page could not be shown: no markup',
   );
-  // the review's view, each time it was drawn, and not the page around it: its queues' tabs are drawn
-  expect(told.mock.calls.length).toBeGreaterThan(0);
-  expect(new Set(told.mock.calls.map((call) => call.map(String).join(' ')))).toEqual(
-    new Set(['Kiz Radar: the review: Error: no markup in this test']),
-  );
+  // its queues' tabs are drawn
   expect(document.querySelectorAll('#queues a').length).toBeGreaterThan(0);
 });
 
