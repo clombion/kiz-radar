@@ -1,6 +1,7 @@
 # Task 4.4: the coexistence seam
 
-Task 4.4 of [refactor-plan.md](refactor-plan.md). Status: in progress, 19 November 2026.
+Task 4.4 of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026. This week mounted through the seam,
+drawn, disposed and broken through the page; the built markup held to the policy; no test changed; no stop.
 
 ## Summary
 
@@ -16,26 +17,28 @@ same site.
 
 ## Design model
 
-- **A Solid view behind `View`.** `main.ts`'s `View` record and `routes.ts`'s `Show` are unchanged:
-  `show(root, sub, qs, { signal, data })`. `mounted(where, View)` returns such a `show`: it renders `<View sub qs />`
-  into `root` with `@solidjs/web`'s `render`, and hands `render`'s dispose function to `signal`'s `abort` (or calls it
-  at once if the signal has already fired). The dispose function disposes the view's owner and empties `root`; `main.ts`
-  replaces `root` in `#main` in the same task, so nothing shows the empty root. Props are values (`sub`, `qs`); `data`
-  is not passed, since a view that reads the database waits for it (`waitsForData`) before `show` runs, and `sql.js`
-  answers synchronously (the brief: plain `createMemo`).
-- **Who owns a view.** Every view is rendered under one owner the seam makes for the page and never disposes. Measured
-  (a scratch test, not kept): `render` called inside an effect's callback throws `PRIMITIVE_IN_EFFECT_CALLBACK`, which
-  halts Solid, whether the current owner is the effect's or `null`; under an existing owner it renders, and disposing it
-  later cleans it up. `main.ts` calls a view's `show` inside the router's effect whenever the view waits for nothing and
-  no slide defers the change (`tabs.ts` `slide`), so the page's owner is what makes that call safe. This week waits for
-  the database, so its `show` runs in a `.then`, outside any effect; 4.8's `sources`, which waits for nothing, is the
-  first port to take the other path.
+- **A Solid view behind `View`.** `main.ts`'s `View` record and `routes.ts`'s `Show` keep their shape:
+  `show(root, sub, qs, { signal, data, name })`, where `name`, the view's name in the address, is new, so that a view's
+  name is written once, as its route. `mounted(View)` returns such a `show`: it renders `<View sub qs />` into `root`
+  with `@solidjs/web`'s `render`, and hands `render`'s dispose function to `signal`'s `abort` (or calls it at once if
+  the signal has already fired). The dispose function disposes the view's owner and empties `root`; `main.ts` replaces
+  `root` in `#main` in the same task, so nothing shows the empty root. Props are values (`sub`, `qs`); `data` is not
+  passed, since a view that reads the database waits for it (`waitsForData`) before `show` runs, and `sql.js` answers
+  synchronously (the brief: plain `createMemo`).
+- **Who owns a view.** Every view is rendered under one owner the page makes and never disposes (`site/owner.ts`, a
+  module of its own so that a test can count what it holds). Measured (a scratch test, not kept): `render` called inside
+  an effect's callback throws `PRIMITIVE_IN_EFFECT_CALLBACK`, which halts Solid: the callback has no owner of its own,
+  and `runWithOwner(null, …)` gives none either; under an existing owner it renders, and disposing it later cleans it
+  up. `main.ts` calls a view's `show` inside the router's effect whenever the view waits for nothing and no slide defers
+  the change (`tabs.ts` `slide`), so the page's owner is what makes that call safe. This week waits for the database, so
+  its `show` runs in a `.then`, outside any effect; 4.8's `sources`, which waits for nothing, is the first port to take
+  the other path.
 - **An error stays the view's.** A throw that escapes every Solid boundary halts the whole reactive system
   (`REACTIVITY_HALTED`, in production too), so with the router on a signal, one broken view would stop the page
   following its address. Measured: without a boundary, a Solid view that throws as it builds is said by `guarded`, and
-  the next `open()` waits forever. So the seam wraps each view in `<Errored>`, whose fallback is `report.ts`'s
-  `cannotShow(where, e)`: the same console line (`Kiz Radar: <view>: …`) and the same paragraph ("This page could not be
-  shown: …") `guarded` gives an `h()` view, now from one function both call.
+  the next `open()` runs out its 10 s waiting for a page the halted router never shows. So the seam wraps each view in
+  `<Errored>`, whose fallback is `report.ts`'s `cannotShow(name, e)`: the same console line (`Kiz Radar: <view>: …`) and
+  the same paragraph ("This page could not be shown: …") `guarded` gives an `h()` view, now from one function both call.
 - **The address, one signal.** `createAddress()` (`site/address.ts`) is a signal of
   `routeOf(location.href, document.baseURI)`, set again on each `hashchange`, with `equals: false` so that every move is
   a new value, as each `hashchange` showed a view again before. `routes.ts` is untouched and stays the one source of the
@@ -48,15 +51,19 @@ same site.
 - **The CSP check.** The page refuses inline style and inline script (`style-src 'self'`, `script-src 'self'`). Task 4.2
   found that the compiler writes a constant style object into the template (`<p style=color:red>`), so `house/styles`
   refuses the `style` prop. With `@solidjs/compiler` 2.0.2's `transform` on a probe, what else lands in a template: a
-  handler given as a string (`<img onerror="…">`, `<p onclick="…">`), a `javascript:` URL, and a `<style>` or `<script>`
-  child; an `onClick={…}` is delegated, a spread `{...{ style }}` and `prop:style` are set at run time. Lint refuses the
-  `javascript:` URL (three rules) and only an `onclick` on a non-interactive element, by accident
-  (`jsx-a11y/click-events-have-key-events`); `onerror="…"` passes every rule. So `tests/site/bundle.test.ts` reads every
-  start tag the built scripts carry (`public/js/*.js`, which `test:site` builds first) and refuses a `style` attribute,
-  an `on…` attribute, a `javascript:` URL, and a `<style>` or `<script>` element; it also checks that the markup it
-  reads includes This week's template, so it cannot pass on nothing. `pages.browser.test.ts`'s frames, under each page's
-  policy, already hear what is refused on each route as drawn (This week among them); this test reads the templates of
-  branches no fixture draws.
+  handler given as a string (`<img onerror="…">`, `<p onclick="…">`), a `javascript:` URL (a tab inside it too, which
+  the compiler writes as it is and a browser strips), a frame's own document (`srcdoc`), and a `<style>` or `<script>`
+  child; an `onClick={…}` is delegated, a spread `{...{ style }}` and `prop:style` are set at run time. tsc refuses the
+  string handlers (Solid's JSX types have no lowercase `on…` attribute, TS2322, and type a camelCase one as a function,
+  which `solid/event-handlers` also holds); lint refuses the `javascript:` URL (`eslint`'s, `react`'s and `solid`'s
+  rules). A spread of a record holding `onclick` is set at run time (`setAttribute`, `@solidjs/web`'s `assignProp`),
+  where the policy refuses the inline handler all the same. So `tests/site/bundle.test.ts` reads every start tag the
+  built scripts carry (`public/js/*.js`, which `test:site` builds first) and refuses a `style` attribute, an `on…`
+  attribute, a `srcdoc`, a `javascript:` URL once the tabs and line breaks a browser strips are stripped, and a
+  `<style>` or `<script>` element: the last line, under what tsc and lint already hold; it also checks that the markup
+  it reads includes This week's template, so it cannot pass on nothing. `pages.browser.test.ts`'s frames, under each
+  page's policy, already hear what is refused on each route as drawn (This week among them); this test reads the
+  templates of branches no fixture draws.
 
 ## Decisions
 
@@ -64,33 +71,35 @@ same site.
 | -- | -- | -- | -- |
 | 1 | The first view | This week (`site/week.ts` becomes `site/week.tsx`), moved from 4.8's list | The smallest real view that proves the seam whole: it waits for the database (the `waitsForData` path), holds `h()` pieces inside JSX (`eventCard`, 4.6's), and reads the festivals, which a planted row can break, so the error boundary is tested through the page. `sources` (4.8 too) waits for nothing, reads `site.json` alone, which a test cannot plant, and holds no `h()` piece. A fixture component would not be "a view mounted" and would need the seam module on `lint/tests.ts`'s list. Porting `week` here takes it off 4.8's list rather than doing it twice. |
 | 2 | Where the helpers go | `site/bits.ts`: `Kid`, `Classes` (and `ClassList`, which `dom.ts`'s `Attrs` uses), `uniqueId`, `debounced`, `onResize`; a move-only commit, every importer changed, nothing else | The brief's list, less what renders: `h`, `button`, `nodes`, `toggle`, `own`, `moreButton`, `dropdown`, `choices`, `segments`, `paged` and `Attrs` stay. `toggle` sets a class, which `house/classes` keeps to `dom.ts`. `uniqueId` stays as it is for `h()` views; a Solid view uses `createUniqueId` (4.1). |
-| 3 | The seam's module | `site/mount.tsx`, `mounted(where, View): Show`, `ViewProps` `{ sub, qs }` | `.tsx` since it writes JSX (the boundary); `where` is the name the console line gives, as `guarded`'s is. |
-| 4 | The error boundary's words | `report.ts`'s `cannotShow(where, e)`, returning the paragraph `guarded` drew; `guarded` calls it | One place for the words, the class and the console line. The fallback reads the error in JSX (`<>{cannotShow(where, e())}</>`), where a flow callback's accessor is read (Solid's primer). |
-| 5 | The page's owner | `createRoot(getOwner)` at `mount.tsx`'s top | The design model. `createOwner` exists at run time but `solid-js` 2.0.3's types do not export it; a root's owner is the same thing, typed. |
+| 3 | The seam's module | `site/mount.tsx`, `mounted(View): Show`, `ViewProps` `{ sub, qs }`; `Show`'s options gain `name` | `.tsx` since it writes JSX (the boundary). The console line names the view as `guarded`'s does, by the route's name, which `main.ts` now hands every view: a second spelling of it in `mounted('week', …)` could drift from the route's (the audit). |
+| 4 | The error boundary's words | `report.ts`'s `cannotShow(name, e)`, returning the paragraph `guarded` drew; `guarded` calls it | One place for the words, the class and the console line. The fallback reads the error in JSX (`<>{cannotShow(name, e())}</>`), where a flow callback's accessor is read (Solid's primer). |
+| 5 | The page's owner | `createRoot(getOwner)` in `site/owner.ts`, listed in `lint/tests.ts` (it draws nothing) | The design model. `createOwner` exists at run time but `solid-js` 2.0.3's types do not export it; a root's owner is the same thing, typed. A module of its own so `mount.browser.test.ts` counts its children with Solid's `DEV.getChildren`. |
 | 6 | The router's effect | `createEffect(createAddress(), apply)` in a `createRoot` made in `start()`; errors to `reportError`; the first `route` a microtask after the root is made | Solid's effects run on the next flush (measured: the first apply after the root's body returns, before the next task). The first view shows a microtask later than before, which no visitor can see; a failure in `route()` itself is now reported as "the page", where the first one was "starting the page". |
-| 7 | `routes.ts` | Unchanged | The brief: wrap it, never replace it. `Address` is `address.ts`'s, the read-only shape of `routeOf`'s result. |
-| 8 | Tests | `tests/site/mount.browser.test.ts` (This week drawn in the page's root with its `h()` cards; the root emptied when left, drawn anew on return); `tests/site/mount-broken.browser.test.ts` (a planted feature no state has: This week says it failed, the console line declared twice, the page moves on to another view and back); `tests/site/bundle.test.ts` | Through the page, as `house/tests` asks; the existing tests of This week (`app`, `pages`, `sources`, `onnow`, `elements`) pass unchanged. |
-| 9 | Classes in JSX | Not held to `ClassName` yet | Out of this row. `class="…"` in JSX is typed `string`; `house/classes` reads only `classList` and `className`. This week's four classes are the ones it had and `styles.test.ts` still finds each used elsewhere. A rule or a typed helper is needed before the shell (4.5) writes many. |
+| 7 | `routes.ts` | Its routes and functions unchanged; `Show`'s options gain `name` (decision 3) | The brief: wrap it, never replace it. `Address` is `address.ts`'s, the read-only shape of `routeOf`'s result. |
+| 8 | Tests | `tests/site/mount.browser.test.ts` (This week drawn in the page's root with its `h()` cards; the root emptied when left, drawn anew on return; the page's owner holding one more root while it shows, as many as before once left); `tests/site/mount-broken.browser.test.ts` (a planted feature no state has: This week says it failed, the console line declared twice, the page moves on to another view and back); `tests/site/address.browser.test.ts` (the effect's first run leaves the focus where it is, a later run scrolls up and focuses `<main>`); `tests/site/bundle.test.ts` | Through the page, as `house/tests` asks; the existing tests that open This week (`app`, `pages`, `sources`) pass unchanged. |
+| 9 | Classes in JSX | Held by construction: tsc types an element's `class` as `ClassName`, a list of them (false, null, undefined for none) or an object whose keys are, by the site's own JSX types (`site/jsx-runtime.d.ts`: `@solidjs/web`'s `IntrinsicElements` with `class` narrowed), named by `tsconfig.json`'s `jsxImportSource` (`kiz-jsx`, mapped by its `paths`) | As `h()` is held (the audit; the first draft left it open). Measured: tsc refuses `class="nope"` (TS2322) and suggests `"empty"` for `"emptyy"` (TS2820), refuses an unknown key of an object; the four classes of This week pass; the build's bundle is byte for byte the same (`md5sum`), since Solid's compiler and Vite read no JSX types; Vitest's compile, oxlint with `eslint-plugin-solid` and the house rules' fixtures pass. A string of two classes is refused: a list says them. knip takes `kiz-jsx` for a package, so `knip.jsonc` names it with its reason; a `#jsx` import of `package.json` was tried first and knip both reported it and refused it in `ignoreDependencies`. |
 
 ## Impact
 
-- **New:** `site/bits.ts`, `site/address.ts`, `site/mount.tsx`, `site/week.tsx` (from `site/week.ts`);
-  `tests/site/mount.browser.test.ts`, `tests/site/mount-broken.browser.test.ts`, `tests/site/bundle.test.ts`.
+- **New:** `site/bits.ts`, `site/address.ts`, `site/owner.ts`, `site/mount.tsx`, `site/jsx-runtime.d.ts`,
+  `site/week.tsx` (from `site/week.ts`); `tests/site/address.browser.test.ts`, `tests/site/mount.browser.test.ts`,
+  `tests/site/mount-broken.browser.test.ts`, `tests/site/bundle.test.ts`.
 - **Changed:** `site/dom.ts` (the helpers gone), the 18 modules that imported them; `site/main.ts` (the router on the
-  address, This week mounted); `site/report.ts` (`cannotShow`); `CONTRIBUTING.md` ("Site:" bullet: the bundle test);
-  `refactor-plan.md` (rows 4.4 and 4.8).
-- **Unchanged:** `site/routes.ts`, `site/db.ts` (sql.js), every test that was there, the page's policy.
+  address, This week mounted, the view's name passed); `site/routes.ts` (`Show`'s `name`); `site/report.ts`
+  (`cannotShow`); `tsconfig.json` (`jsxImportSource`, `paths`); `knip.jsonc`; `lint/tests.ts` (`owner` listed);
+  `CONTRIBUTING.md` ("Site:" bullet: JSX classes, the bundle test); `refactor-plan.md` (rows 4.4 and 4.8).
+- **Unchanged:** `routes.ts`'s routes, `site/db.ts` (sql.js), every test that was there, the page's policy.
 
 ## Commits
 
 | Commit | What |
 | -- | -- |
-| 1 | this plan |
-| 2 | `dom.ts`'s helpers that draw nothing moved to `bits.ts` (move only) |
-| 3 | the address as one signal, the router following it |
-| 4 | the seam (`mount.tsx`, `cannotShow`) and This week as its first view, with its tests |
-| 5 | the built scripts' markup held to the page's policy (`bundle.test.ts`), CONTRIBUTING |
-| 6 | the plan's rows and this status |
+| `70c8a572` | this plan |
+| `c72e2418` | `dom.ts`'s helpers that draw nothing moved to `bits.ts` (move only) |
+| `c339e256` | the address as one signal, the router following it |
+| `7e0fe621` | the seam (`mount.tsx`, `cannotShow`) and This week as its first view, with its tests |
+| `4bcbdbf0` | the built scripts' markup held to the page's policy (`bundle.test.ts`), CONTRIBUTING |
+| the last | the plan's rows and this status |
 
 ## Review of this plan
 
@@ -104,16 +113,46 @@ Each claim re-read against the code and `node_modules` before the first commit:
 - `@solidjs/signals` 2.0.3's `haltReactivity` (`dist/dev-shared.js:2529`; `prod/boundaries.js:477` in production) and
   `PRIMITIVE_IN_EFFECT_CALLBACK` (`:5666`); the diagnostics skill's repair for it ("attach them to an existing owner
   with `runWithOwner`").
+- A view's root leaves the page's owner when disposed: a scratch test counted 5 children of the owner after five
+  renders, 0 after their disposal.
 - `Errored`'s fallback is `(err: ErrorAccessor, reset) => …` (`solid-js/types/client/flow.d.ts:205`).
 - The compiler's output, by running `@solidjs/compiler`'s `transform` on a probe (design model), and the built
   `public/js/main.js` (`<header class=page-intro>` and three more templates; no markup in `review.js`; 152 tags of icons
   in the shared chunk, none refused).
 - **Corrected:** the first draft rendered each view under no owner (`runWithOwner(null, …)`), meant to keep it out of
   the router's effect; a scratch test showed Solid refuses that inside an effect's callback too.
+- **Corrected:** the first draft's comment in `mount.tsx` said a view rendered in the router's effect would be the
+  effect's child; the callback has no owner (the diagnostics skill, `PRIMITIVE_IN_EFFECT_CALLBACK`), which is why Solid
+  refuses the root there.
+- **Corrected:** the first draft named `onnow` and `elements` among the tests of This week; they open other views.
 - **Corrected:** the first draft took `sources` for the first view; it cannot be broken through the page (decision 1).
+- **The audit's corrections** (each folded into its commit, each with its fail-check above): the bundle test's header
+  and this plan said a string handler passes every rule, where tsc refuses it; a tab in a `javascript:` URL slipped, and
+  `srcdoc` was not refused; JSX classes were not held to `ClassName`; This week's name was written twice; the owner's
+  children and the router's first run were untested.
 - **Corrected:** the broken-week test first planted `events.phase`, a column of the view `event_rows`, not of a table,
   then `events.listing`, which `event_rows` reads but the festivals filter out without parsing; `event_stats.features`
   is parsed as states (`rows.ts` `EVENT`).
+
+## Fail-checks
+
+Each made by undoing one piece and running its test, then putting it back:
+
+- **The error boundary** taken out of `mount.tsx`: `mount-broken.browser.test.ts` fails on the undeclared
+  `[REACTIVITY_HALTED]` error, and its `open()` of the sources page waits 10 s for a page that never comes: the router's
+  effect halted with Solid.
+- **The dispose** not handed to the signal: `mount.browser.test.ts` finds This week's `<section>` still in the root it
+  left.
+- **A style and a `javascript:` URL** put in `week.tsx`'s empty-week paragraph (the lint left aside, the site built):
+  `bundle.test.ts` names `main.js: a style attribute: <p class=empty style=color:red>` and the URL.
+- **`href="java&#x09;script:…"` and `<iframe srcdoc>`** put there the same way: the compiler writes a literal tab, which
+  the first version let through (`/^\s*javascript:/` does not match `java\tscript:`); now `bundle.test.ts` names both.
+- **`class="emptyy"`** in `week.tsx`: tsc fails,
+  `Type '"emptyy"' is not assignable to type 'ClassValue | undefined'. Did you mean '"empty"'?`.
+- **The page's owner** not used (`runWithOwner(null, …)`): the owner test finds 0 more roots where it expects 1; **the
+  dispose** not handed to the signal: it finds 3 where it expects 2.
+- **`scrollUp` true on every run of the router's effect**: `address.browser.test.ts` finds the focus on `<main>` as the
+  page starts.
 
 ## Done when
 
