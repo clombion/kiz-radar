@@ -1,17 +1,8 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-  // tests/site/lint/ holds the files lint/tests.grit's test lints with its own config: one breaks the rule on purpose
   "files": {
-    "includes": [
-      "site/**",
-      "tests/**/*.ts",
-      "public/css/**",
-      "*.json",
-      "*.jsonc",
-      "!pnpm-lock.yaml",
-      "!tests/site/lint"
-    ]
+    "includes": ["site/**", "tests/**/*.ts", "public/css/**", "*.json", "*.jsonc", "!pnpm-lock.yaml"]
   },
   // oxfmt lays these files out (.oxfmtrc.jsonc, format:site)
   "formatter": { "enabled": false },
@@ -76,11 +67,6 @@
     }
   },
   "overrides": [
-    {
-      // a test reaches a view through the page: lint/tests.grit, on the tests alone
-      "includes": ["tests/**"],
-      "plugins": ["./lint/tests.grit"]
-    },
     {
       // the one place the site writes to the console: what went wrong, with where (report.ts)
       "includes": ["site/report.ts"],

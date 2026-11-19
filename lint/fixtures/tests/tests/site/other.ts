@@ -1,5 +1,5 @@
-// What lint/tests.grit refuses beside the two files it makes exceptions for (tests/site/lint.test.ts), each on a line
-// marked so: the imports those two may make, made by any other file.
+// What house/tests refuses beside the two files it makes exceptions for: the imports those two may make, made by any
+// other file, named as they name them.
 import { dismissable } from '../../site/dismiss.ts'; // refused
 import { h } from '../../site/dom.ts'; // refused
 import { modal } from '../../site/modal.ts'; // refused

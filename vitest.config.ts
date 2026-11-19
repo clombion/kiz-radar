@@ -110,8 +110,6 @@ const pages = () => ({
 const browserTests = (kind = '') => `tests/site/**/*${kind}.browser.test.ts`;
 const BROWSER = browserTests(),
   CALM = browserTests('.calm');
-// the files lint/tests.grit's test lints (tests/site/lint.test.ts), never run: one stands as page.browser.test.ts
-const LINTED = 'tests/site/lint/**';
 // each browser project: its name, the visitor's motion setting, and its files
 const BROWSER_PROJECTS: readonly {
   name: string;
@@ -141,7 +139,7 @@ export default defineConfig({
         test: {
           name: 'node',
           include: ['tests/site/**/*.test.ts'],
-          exclude: [...configDefaults.exclude, BROWSER, LINTED],
+          exclude: [...configDefaults.exclude, BROWSER],
           environment: 'node',
           // a zone where local midnight is mid-morning the day before in UTC, so a day read in UTC is caught
           env: { TZ: 'Pacific/Kiritimati' },
@@ -152,7 +150,7 @@ export default defineConfig({
         test: {
           name,
           include: [include],
-          exclude: [...configDefaults.exclude, LINTED, ...exclude],
+          exclude: [...configDefaults.exclude, ...exclude],
           browser: {
             enabled: true,
             provider: playwright({

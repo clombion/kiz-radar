@@ -10,7 +10,6 @@
     "skipLibCheck": true
   },
   "include": [".", "../../site", "../../vitest.config.ts", "../../lint"],
-  // the files the house rules' tests lint, never run, some breaking a rule on purpose: lint/tests.grit's (lint.test.ts)
-  // and the plugin's (rules.test.ts)
-  "exclude": ["lint", "../../lint/fixtures"]
+  // the files the house rules' test (rules.test.ts) lints, never run, some breaking a rule on purpose
+  "exclude": ["../../lint/fixtures"]
 }

@@ -5,6 +5,11 @@ import type { Rule } from './plugin.ts';
 type Visitor = ReturnType<NonNullable<Rule['create']>>;
 export type Call = Parameters<NonNullable<Visitor['CallExpression']>>[0];
 export type Member = Parameters<NonNullable<Visitor['MemberExpression']>>[0];
+export type Node = Parameters<NonNullable<Visitor['Literal']>>[0]['parent'];
+
+// a string or a template's source, in its quotes, naming one of `names`, between `before` and `after` (patterns)
+export const quotedOneOf = (names: readonly string[], before = '', after = ''): RegExp =>
+  new RegExp(`^['"\`]${before}(?:${names.join('|')})${after}['"\`]$`, 'u');
 
 // a rule refusing each call `refused` picks, the whole call
 export const callRule = (id: string, message: string, refused: (call: Call) => boolean): Rule => ({

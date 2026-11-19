@@ -125,7 +125,6 @@ def oxlint_files() -> list[str]:
         ':(glob)tests/**/*.ts',
         ':(glob)lint/**/*.ts',
         'vitest.config.ts',
-        ':(exclude)tests/site/lint',
         ':(exclude)lint/fixtures',
     )
 
@@ -146,7 +145,7 @@ def test_the_site_suppressions_are_read_in_every_file_biome_or_oxlint_checks() -
         'lint/plugin.ts',
     } <= set(files)
     assert 'pnpm-lock.yaml' not in files
-    assert not any(f.startswith(('tests/site/lint/', 'lint/fixtures/')) for f in files)
+    assert not any(f.startswith('lint/fixtures/') for f in files)
 
 
 def test_every_site_suppression_is_allowed() -> None:

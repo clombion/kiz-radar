@@ -28,9 +28,9 @@
   "options": { "typeAware": true, "denyWarnings": true, "reportUnusedDisableDirectives": "error" },
   // the house rules (lint/plugin.ts), each with its fixtures, and each on below as an error
   "jsPlugins": ["./lint/plugin.ts"],
-  // the files the house rules' tests lint with a config of their own: lint/tests.grit's (tests/site/lint.test.ts) and
-  // the plugin's (tests/site/rules.test.ts); some break a rule on purpose
-  "ignorePatterns": ["tests/site/lint/", "lint/fixtures/"],
+  // the files the house rules' test (tests/site/rules.test.ts) lints with a config of its own; some break a rule on
+  // purpose
+  "ignorePatterns": ["lint/fixtures/"],
   "rules": {
     "eslint/array-callback-return": "error",
     "eslint/arrow-body-style": "error",
@@ -441,6 +441,27 @@
       // house/states: a state in the site's modules is KEY.<point>.<NAME> (site/states.ts), held to the table
       "files": ["site/*.ts"],
       "rules": { "house/states": "error" }
+    },
+    {
+      // house/tests: a test imports no view's values, and drives a view through the page (tests/site/app.ts)
+      "files": ["tests/**"],
+      "rules": { "house/tests": "error" }
+    },
+    {
+      // house/tests: app.ts starts the page from its entry, the one place a test does
+      "files": ["tests/site/app.ts"],
+      "rules": { "house/tests": ["error", { "loads": ["../../site/main.ts", "../../site/review.ts"] }] }
+    },
+    {
+      // house/tests: page.browser.test.ts keeps its tests of these helpers until they go with them: tabs' pill and modal
+      // in task 4.5, dismiss in 4.6, dom's in 4.10
+      "files": ["tests/site/page.browser.test.ts"],
+      "rules": {
+        "house/tests": [
+          "error",
+          { "imports": ["../../site/dismiss.ts", "../../site/dom.ts", "../../site/modal.ts", "../../site/tabs.ts"] }
+        ]
+      }
     },
     {
       // house/markup: an element of the site gets markup from icons.ts alone, and is built with dom.ts's h()

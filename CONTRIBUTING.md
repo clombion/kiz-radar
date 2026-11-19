@@ -34,10 +34,10 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   the branch coverage `pyproject.toml` sets.
 - **Site:** tsc strict; oxlint, type-aware, with each Biome rule it has an equivalent of (`.oxlintrc.json`,
   [Lint rules](docs/concepts/lint-rules.md)), a warning failing; every Biome rule but those `biome.jsonc` turns off,
-  each with its reason, and the plugins in `lint/` (links in `routes.ts`, requests in `net.ts`, classes through
+  each with its reason, and the house rules in `lint/` (links in `routes.ts`, requests in `net.ts`, classes through
   `dom.ts`, markup only from `icons.ts`, promises reported, a state as `KEY`, a test's values only from the modules
-  `lint/tests.grit` lists). A class is one the stylesheet defines (`site/classes.ts`, generated). vitest runs in Node
-  and in Chromium (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and
+  `lint/tests.ts` lists). A class is one the stylesheet defines (`site/classes.ts`, generated). vitest runs in Node and
+  in Chromium (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and
   fails below the coverage of the pure modules `vitest.config.ts` sets. The browser tests run in two projects:
   `browser`, with motion as most visitors have it, and `browser-calm`, for a visitor who asked for less motion, which
   runs the files named `*.calm.browser.test.ts` and no others (a calm file runs with reduced motion only). A test of the
@@ -51,7 +51,8 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
 - **House rules:** a rule of `lint/plugin.ts` is a module beside it, `lint/<rule>.ts` (ESLint's rule API, never reading
   the file's path), listed in the plugin's `rules` and turned on in `.oxlintrc.json` as `house/<rule>: error`; the files
   it is on for, and its exemptions, are `.oxlintrc.json`'s overrides, by globs from the root (`site/*.ts`, `tests/**`),
-  so no folder above the checkout changes what a rule sees. It ships with fixtures in `lint/fixtures/<rule>/`, at the
+  so no folder above the checkout changes what a rule sees; an exemption of some of a file's code is the rule's options
+  in that file's override (`tests`' in `tests/site/app.ts`). It ships with fixtures in `lint/fixtures/<rule>/`, at the
   paths from the root the overrides read: a file it refuses, each refused line ending `// refused` (`// refused: <rule>`
   for another house rule's finding), one written the intended way that it lets through, and, where it has exemptions,
   the forbidden form in an exempt file (`site/kept.ts`, `tests/…`). `tests/site/rules.test.ts` lints the fixtures with
@@ -87,6 +88,6 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
 | `site/` | the site's TypeScript |
 | `public/` | the published site: page, stylesheet, fonts, icons; `js/`, `vendor/` and `data/` built |
 | `tests/` | the pipeline's tests; `tests/site/` the site's |
-| `lint/` | the house rules: oxlint's plugin (`plugin.ts`, a module per rule) with its fixtures, and Biome's Grit plugins not yet ported |
+| `lint/` | the house rules: oxlint's plugin (`plugin.ts`, a module per rule) with its fixtures |
 | `design/` | the share card and the icons' sources |
 | `docs/` | this documentation |

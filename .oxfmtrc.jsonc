@@ -18,8 +18,6 @@
     "!/*.json",
     "!/*.jsonc",
     "/pnpm-lock.yaml",
-    // the files lint/tests.grit's test lints with its own config
-    "/tests/site/lint/",
     // laid out by its generator (pipeline/states.py), and checked against it by generate:check
     "/site/states.ts"
   ],

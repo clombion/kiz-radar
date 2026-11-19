@@ -1,7 +1,5 @@
 // The closed world of states (docs/concepts/states.md): the site holds no words or keys of its own, and asking the table
 // for something it doesn't have fails.
-import { readdirSync, readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 import { expect, test } from 'vitest';
 import { Drawing, MORE_TRAITS, TRAITS } from '../../site/icons.ts';
 import { KEY, STATES, type StateRow } from '../../site/states.ts';
@@ -60,13 +58,4 @@ test('every feature a card or a view shows has an icon icons.ts draws', () => {
     ...where('feature', 'view'),
   ]);
   expect([...TRAITS, ...MORE_TRAITS].every(([, , drawn]) => drawn instanceof Drawing)).toBe(true);
-});
-
-const ROOT = fileURLToPath(new URL('../../', import.meta.url));
-
-// a Grit rule of lint/ (oxlint's plugin beside them is held by rules.test.ts)
-test('every Grit rule in lint/ is one Biome runs', () => {
-  const config = readFileSync(`${ROOT}biome.jsonc`, 'utf8');
-  const unread = readdirSync(`${ROOT}lint`).filter((f) => f.endsWith('.grit') && !config.includes(`"./lint/${f}"`));
-  expect(unread).toEqual([]);
 });

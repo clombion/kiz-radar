@@ -3,14 +3,11 @@
 // !=, a switch's case) or passed (a call's argument) is refused, whatever else the code calls by the same name.
 // plural() takes words, not states. .oxlintrc.json turns the rule on for site/*.ts.
 import type { Rule } from './plugin.ts';
-import { callsName } from './shapes.ts';
+import { callsName, type Node, quotedOneOf } from './shapes.ts';
 import { STATE_KEYS } from './state-keys.ts';
 
-type Visitor = ReturnType<NonNullable<Rule['create']>>;
-type Node = Parameters<NonNullable<Visitor['Literal']>>[0]['parent'];
-
 // a string or a template without values, its source in its quotes, as Grit's state_key() read it
-const KEY = new RegExp(`^['"\`](?:${STATE_KEYS.join('|')})['"\`]$`, 'u');
+const KEY = quotedOneOf(STATE_KEYS);
 const COMPARING = new Set(['===', '!==', '==', '!=']);
 
 export const states: Rule = {

@@ -5,6 +5,10 @@ Task 1.8 of [refactor-plan.md](refactor-plan.md). Status: done. Task 1.7 needed 
 allows; the node tests' other imports of a view (`festivals`, `passes` in `finder.test.ts`, `pricing.test.ts`,
 `samples.ts`) are `import type`, which the rule allows.
 
+Ported in task 2.6: the rule is oxlint's `house/tests` now (`lint/tests.ts`, with the list), its fixtures in
+`lint/fixtures/tests/`, its two exceptions given by `.oxlintrc.json`'s overrides on `tests/site/app.ts` and
+`tests/site/page.browser.test.ts`; `lint/tests.grit`, `tests/site/lint.test.ts` and `tests/site/lint/` are gone.
+
 ## Summary
 
 A Grit rule in `lint/`, run by an override of `biome.jsonc` on `tests/**`, refuses there a value import of any `site/`
