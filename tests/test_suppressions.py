@@ -82,6 +82,7 @@ SITE_ALLOWED = Counter(
         ('tests/site/calendar.test.ts', 'jest/no-done-callback'): 1,
         ('tests/site/elements.browser.test.ts', 'jest/no-done-callback'): 1,
         ('tests/site/main.browser.test.ts', 'jest/no-done-callback'): 1,
+        ('tests/site/pages.browser.test.ts', 'jest/no-done-callback'): 1,
         ('tests/site/main.browser.test.ts', 'typescript/no-misused-promises'): 1,
         ('tests/site/main.browser.test.ts', 'typescript/promise-function-async'): 1,
         ('tests/site/main.browser.test.ts', 'typescript/strict-void-return'): 1,

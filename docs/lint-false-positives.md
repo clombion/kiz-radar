@@ -12,6 +12,7 @@ other finding in the code.
 | `tests/site/calendar.test.ts` | `jest/no-done-callback` | `test.for`'s callback takes the case, not a done callback: the rule knows `test.each` only. Reproduction: `test.for([1])('%s', (n) => {})`. |
 | `tests/site/elements.browser.test.ts` | `jest/no-done-callback` | the same |
 | `tests/site/main.browser.test.ts` | `jest/no-done-callback` | the same |
+| `tests/site/pages.browser.test.ts` | `jest/no-done-callback` | the same |
 | `tests/site/server.browser.test.ts` | `jest/no-done-callback` | the same |
 | `site/globals.d.ts` | `import/no-namespace` | a type-only namespace import (`import type * as TopoJSON`), the one way to type the global the page loads from vendor/; erased, so nothing to tree-shake. Biome's `noNamespaceImport` allows it. |
 
