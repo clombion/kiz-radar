@@ -7,9 +7,8 @@ Task 2.6d of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 202
 
 | Commit | What |
 | -- | -- |
-| `0937373c` | Every drawing hidden from assistive technology by `Drawing`'s constructor; `review.ts`'s chevrons made by it |
-| `7491bd72` | The drawings as data (`pipeline/drawings.py` → `site/drawings.ts`); the card's digest covers the drawings it draws |
-| `ccd41cad` | The views' hidden-drawing check joined to their strays check, under its one allowed suppression |
+| `3734f908` | Every drawing hidden from assistive technology by `Drawing`'s constructor; `review.ts`'s chevrons made by it; the views' hidden-drawing check joined to their strays check, under its one allowed suppression |
+| `7edd1b8d` | The drawings as data (`pipeline/drawings.py` → `site/drawings.ts`); the card's digest covers the drawings it draws |
 
 **Part A.** `Drawing`'s constructor wrote the markup it was given. `#line` added `aria-hidden="true"`, but `ARROW_UP`
 and `CHEVRON` did not. Now the constructor writes the `<svg>` and adds the attribute to every drawing. Before the fix,
@@ -61,5 +60,5 @@ covers in any case.
 ## Checks
 
 The full `mise run check` first failed on `tests/test_suppressions.py`: a second `jest/no-done-callback` suppression,
-which `ccd41cad` removed. Its other errors came from this file being written during the run. The run after that is
+which `3734f908` removed. Its other errors came from this file being written during the run. The run after that is
 reported in the task's hand-off.

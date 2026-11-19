@@ -1,8 +1,9 @@
 # Task 2.8: tasks, docs and the Phase 2 report
 
-Task 2.8 of [refactor-plan.md](refactor-plan.md). Status: planned, 19 November 2026. Re-checked against the code before
-the first commit: two claims were corrected (the suppressions before were 10, in 8 entries, not "8 entries" summing to
-10; one doc named Grit and one said Biome's check enforces an assist), the rest hold.
+Task 2.8 of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026; the Phase 2 report is in
+refactor-plan.md. Re-checked against the code before the first commit: two claims were corrected (the suppressions
+before were 10, in 8 entries, not "8 entries" summing to 10; one doc named Grit and one said Biome's check enforces an
+assist), the rest hold.
 
 ## Summary
 
