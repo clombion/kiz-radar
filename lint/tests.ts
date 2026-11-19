@@ -1,9 +1,10 @@
 // A test reaches the site through the page, never through a view's code, so a view can be rewritten under its tests. A
 // test imports values from the modules listed here alone: the pure ones, the ones that use a browser API but draw
-// nothing (routes, hints, kept), the data module with one sink (icons) and media. A module not listed is refused, a new
-// one too, until someone decides it draws nothing. A type comes from any module with import type, which is erased; a
-// type named inside a value import is not, since the import still loads its module. An import() names its module in
-// one literal, so the rule can check it.
+// nothing (routes, hints, kept), the data module with one sink (icons), media, and the page's Solid owner (owner),
+// which holds what the views render and draws nothing itself. A module not listed is refused, a new one too, until
+// someone decides it draws nothing. A type comes from any module with import type, which is erased; a type named
+// inside a value import is not, since the import still loads its module. An import() names its module in one literal,
+// so the rule can check it.
 // .oxlintrc.json turns the rule on for tests/**, and gives its two exceptions to the two files that make them, as the
 // rule's options: tests/site/app.ts loads the entries (`loads`), the one place a test starts the page;
 // tests/site/page.browser.test.ts imports four helpers (`imports`) and keeps its tests of them until they go with them:
@@ -31,6 +32,7 @@ const ALLOWED = [
   'media',
   'names',
   'net',
+  'owner',
   'pending',
   'pricing',
   'roles',

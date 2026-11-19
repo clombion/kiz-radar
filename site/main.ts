@@ -15,6 +15,7 @@ import { friendsTabs, friendsView, placeOf } from './friends.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
+import { mounted } from './mount.tsx';
 import { personView } from './people.ts';
 import { done, guarded, reportUncaught } from './report.ts';
 import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, type Tab, TABS } from './routes.ts';
@@ -26,7 +27,7 @@ import { sqlView } from './tables.ts';
 import { pill, slide } from './tabs.ts';
 import { loading, scrolling } from './ui.ts';
 import { updated, updatingPage } from './updating.ts';
-import { weekView } from './week.ts';
+import { Week } from './week.tsx';
 
 // Every link and file from the site's root, whatever address the page moves to: index.html's <base> (../../ on a
 // community's page, c/<key>/), made a full address once, as the page loads, with the site-wide choices of the address
@@ -70,7 +71,7 @@ const FINDER: View = {
 // each route's view: a route without one does not compile
 const VIEWS: Readonly<Record<Route, View>> = {
   finder: FINDER,
-  week: { title: 'This week', nav: 'explore', waitsForData: true, show: (root) => weekView(root) },
+  week: { title: 'This week', nav: 'explore', waitsForData: true, show: mounted(Week) },
   map: { title: 'Map', nav: 'explore', waitsForData: true, show: mapView },
   artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView },
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, _, qs) => countriesView(root, qs) },
@@ -156,7 +157,7 @@ function show(name: string, sub: readonly string[], qs: string): void {
   const root = h('div', {});
   main.replaceChildren(root);
   const { signal } = leave;
-  const build = () => guarded(root, name, () => view.show(root, sub, qs, { signal, data }));
+  const build = () => guarded(root, name, () => view.show(root, sub, qs, { signal, data, name }));
   if (view.waitsForData) {
     root.append(loading('Loading the festival database…'));
     data
