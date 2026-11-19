@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "grenoble-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "LYS",
+   "GVA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "LYS 1 h 23 by high-speed train and bus (1 change); GVA 3 h 10 by bus and coach (3 changes). GNB has winter charters only."
+}

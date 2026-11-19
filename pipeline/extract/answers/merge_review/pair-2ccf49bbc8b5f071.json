@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paolomei",
+ "key_b": "p:paolomieli",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2ccf49bbc8b5f071",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both names are Italian with events in Italy, but the surnames differ (Mei vs Mieli), side B has no partners and side A's only partner link (kiaraibica) does not appear on B's mention, so the evidence does not settle whether this is one artist or two."
+ }
+}

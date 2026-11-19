@@ -1,0 +1,28 @@
+# The git hooks prek installs (mise run hooks): before a commit, the quick checks; before a push, every check, as
+# Tests runs them. Each runs on the whole repository, as mise does, not on the files the commit changes.
+default_install_hook_types = ["pre-commit", "pre-push"]
+
+[[repos]]
+repo = "local"
+
+[[repos.hooks]]
+id = "check-fast"
+name = "mise run check:commit"
+# on what is staged, checked out on its own (tasks.toml check:commit): neither what is unstaged nor a file not added
+# stands in for it
+entry = "mise run check:commit"
+language = "system"
+stages = ["pre-commit"]
+pass_filenames = false
+always_run = true
+
+[[repos.hooks]]
+id = "check"
+name = "mise run check:push"
+# on the commit pushed, checked out on its own (tasks.toml check:push): neither what is staged nor the branch checked
+# out stands in for it
+entry = "mise run check:push"
+language = "system"
+stages = ["pre-push"]
+pass_filenames = false
+always_run = true

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marga@marga+nando",
+ "key_b": "p:margarita@margarita+nando",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8a7a56b0a00e6337",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the partner Nando, and Marga is a short form of Margarita, which the rules treat as the same person within a couple; the differing events (Croatia vs Romania) and the absence of any shared event listing two people do not show two artists."
+ }
+}

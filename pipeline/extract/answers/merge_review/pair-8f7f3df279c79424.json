@@ -1,0 +1,13 @@
+{
+ "key_a": "p:davide@davide+laura",
+ "key_b": "p:davidenola",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8f7f3df279c79424",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is 'Davide' with partner Laura and events only in Italy, while side B is 'Davide Nola' with partner Cilene and countries AO, CV and IT; the only links are a common first name and the shared IT country, and there is no shared partner or event to settle it."
+ }
+}

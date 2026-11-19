@@ -1,0 +1,13 @@
+{
+ "key_a": "p:shams@dj",
+ "key_b": "p:shams@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f3db0d45804b7a64",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key, so the question is whether one DJ Shams is stated with both USA and Senegal (flag 🇸🇳) across events; the records show the same stage name and style on the USA event, but the Senegal flag on event 17122 and the USA country on event 15038 never meet in one mention, and the evidence does not settle whether this is one artist or several people sharing a name."
+ }
+}

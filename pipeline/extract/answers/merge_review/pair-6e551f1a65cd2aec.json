@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dim@dim+ophelie",
+ "key_b": "p:dimdim",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6e551f1a65cd2aec",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list the same partner Ophelie and share Germany, but the couple labels differ (dim+ophelie vs dimdim+ophelie), 'Dim' is a short common name, and 'DIM DIM' reads like a duo or group name, so the evidence does not settle whether these are one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:karl@dance",
+ "key_b": "p:karlconklass",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b3047572b184c25a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the first name 'Karl' and side B is 'Karl Conklass'; the only shared evidence is the French country tag, with no shared partner, style, or event, and 'Karl' is a common first name, so the evidence does not settle whether they are one artist."
+ }
+}

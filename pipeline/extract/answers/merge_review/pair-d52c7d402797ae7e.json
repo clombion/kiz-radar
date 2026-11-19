@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tomasia@alvaro+tomasia",
+ "key_b": "p:tomasina@alvaro+tomasina",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d52c7d402797ae7e",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different stated countries and events (Portugal versus Switzerland) with no shared country, and their partners are listed as different keys (alvaro+tomasia versus alvaro+tomasina), so the only link is a near-identical spelling of the names, which is not enough to join them."
+ }
+}

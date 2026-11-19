@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "ulm-de",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "FMM",
+   "STR",
+   "MUC"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "FMM 1 h 12 by bus and train (1 change); STR 1 h 32 by bus and train (2 changes); MUC 2 h 10 by suburban train and high-speed train (1 change)"
+}

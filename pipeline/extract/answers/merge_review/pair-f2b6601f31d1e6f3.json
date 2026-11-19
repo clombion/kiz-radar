@@ -1,0 +1,13 @@
+{
+ "key_a": "p:maria@jesus+maria",
+ "key_b": "p:marian@luismi+marian",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f2b6601f31d1e6f3",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both are Spanish, but their partners differ (jesus for María, luismi for Marian) and their events are in different places (Belgium versus Vietnam), so nothing links them beyond a one-letter-apart spelling, which is weak evidence on its own."
+ }
+}

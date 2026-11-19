@@ -1,0 +1,13 @@
+{
+ "key_a": "p:justinho@a2man+justinho",
+ "key_b": "p:justinho@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ec419a24b8a85ae8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records share the bare stage name 'Justinho' and both list France, but side A has no mentions of its own, only a Canada event and a partner (a2man) that side B lacks, so the evidence does not establish whether they are one artist."
+ }
+}

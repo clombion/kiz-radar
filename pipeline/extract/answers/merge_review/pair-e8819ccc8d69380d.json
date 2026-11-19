@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+natalia",
+ "key_b": "p:andrea@andrea+silvia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e8819ccc8d69380d",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are the bare first name Andrea, which is weak evidence on its own; their partners differ (Natalia versus Silvia), and the couple keys are built from different partners, so the evidence points to two different people sharing a common name."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabrizio@fabrizio+giulia",
+ "key_b": "p:fabriziochiarenza",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c414cb4197eb9984",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is just the first name 'Fabrizio' with no listed mentions, a partner (Giulia) and events in Austria, while side B is 'Fabrizio Chiarenza' with eight Italian teaching events and no partners; the only shared evidence is the common first name and the IT country code, which does not settle whether they are one person."
+ }
+}

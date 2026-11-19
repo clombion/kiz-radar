@@ -1,0 +1,13 @@
+{
+ "key_a": "p:clarita@abdoulaye+clarita",
+ "key_b": "p:clarita@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "decd91ecc4978332",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records use the same distinctive stage name (Clarita, with a DJ prefix on side B), both list Switzerland as a country, and side B's event 18728 in France writes the bare name 'Clarita', matching side A's France events; side A's mention list is empty, so this rests on the evidence summary."
+ }
+}

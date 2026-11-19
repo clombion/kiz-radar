@@ -1,0 +1,33 @@
+{
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ddf20cfb49a3736e",
+ "answer": {
+  "batch": "event-17443",
+  "events": [
+   {
+    "event_id": 17443,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Get limbered up with an exclusive workshop before the main event kicks off.",
+      "rationale": "The description announces a dance workshop (Warm-Up Workshop) as part of the weekend schedule."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Guinguette Afternoon",
+      "rationale": "A listed 4 PM to 7 PM afternoon party named Guinguette Afternoon is a daytime social."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "POOL PARTY!",
+      "rationale": "The Sunday schedule has an explicitly named pool party."
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manu@manu+olivia",
+ "key_b": "p:manukizmamie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0005b896c4663c3b",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared evidence is the country (FR) and the first word 'Manu'; the partners (olivia vs daisy) and events (France/Spain vs Germany) differ, and the mention lists are empty, so the evidence does not settle whether this is one artist."
+ }
+}

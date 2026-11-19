@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@cristina+fadik",
+ "key_b": "p:cristinavarga",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "27fdb915c19d34a0",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the partner 'fadik', and 'Cristina' is the first name of 'Cristina Varga', but the countries are mixed (GB and Hungary for A, UK for B), so the shared partner is the main link and the match is plausible rather than certain."
+ }
+}

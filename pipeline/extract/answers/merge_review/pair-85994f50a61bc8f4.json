@@ -1,0 +1,13 @@
+{
+ "key_a": "p:domenico@alessandra+domenico",
+ "key_b": "p:domenicocubao",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "85994f50a61bc8f4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed in Italy and the partner for each is Alessandra, which hints at a shared couple, but side A has no mentions of its own and the partner key for side B is Alessandra+Domenico Cubao, so the evidence does not establish whether 'Domenico' and 'Domenico Cubao' are the same person; a first name alone is weak evidence."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mel@hicham+mel",
+ "key_b": "p:mell@hicham+mell",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d9a3c7e464e7e8f1",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner (hicham) and the names are a short and long form of one stage name (MEL / Mell), and the evidence shows no second person, though the events are in Italy and France."
+ }
+}

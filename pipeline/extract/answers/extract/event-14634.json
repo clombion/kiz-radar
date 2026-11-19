@@ -1,0 +1,23 @@
+{
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5fd8365d89d0d0bd",
+ "answer": {
+  "batch": "event-14634",
+  "events": [
+   {
+    "event_id": 14634,
+    "artists": [],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "Full Pass & Hotel",
+      "rationale": "The text offers a Full Pass together with a hotel, which indicates that accommodation is part of the pass."
+     }
+    ]
+   }
+  ]
+ }
+}

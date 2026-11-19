@@ -1,0 +1,13 @@
+{
+ "key_a": "p:amina@amina+ledoukingsman",
+ "key_b": "p:amina@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "25635b6d77400c8b",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both 'Amina' records list Sweden as a country and event location, but 'Amina' is a common first name, side B has no partners to compare with side A's 'ledoukingsman', and side A also lists France, so the evidence does not settle whether they are one person."
+ }
+}

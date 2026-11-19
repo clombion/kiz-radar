@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@alex+ornella",
+ "key_b": "p:alex@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2a1d84e4f165addc",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared signals are the common first name 'Alex' and the Spanish country, while side A's partner ornella never appears on side B and side A has no listed mentions to compare, so the evidence does not settle whether they are one artist."
+ }
+}

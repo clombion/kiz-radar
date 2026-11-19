@@ -1,0 +1,13 @@
+{
+ "key_a": "p:franky@franky+kerstin",
+ "key_b": "p:frankykizzfly@frankykizzfly+kerstin",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "02124a4776571a87",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The short form 'FRANKY' and 'FrankyKizzFly' share the same partner, Kerstin, and nothing in the evidence shows two people, though side A has no stated country and no mentions are listed."
+ }
+}

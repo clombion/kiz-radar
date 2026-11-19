@@ -1,0 +1,407 @@
+"""The steps that fetch from outside, against fakes of what they fetch: the European Central Bank's rates, Nominatim's
+places and kizomba-world's listings. No test reaches the network (pytest-socket)."""
+
+import datetime as dt
+import http.client
+import json
+import urllib.error
+import urllib.request
+from collections.abc import Mapping, Sequence
+from dataclasses import dataclass, field
+from email.message import Message
+from pathlib import Path
+
+import pytest
+from curl_cffi.requests.exceptions import RequestException
+from pydantic import BaseModel
+
+from pipeline import claims, data, export, geocode, rates, scrape, web
+from pipeline import db as sqlite_db
+from pipeline.calls import Declined
+from pipeline.claims import PlaceClaim
+from pipeline.db import Reader
+from pipeline.enums import CallCause, Listing
+from pipeline.records import JSON, Place, Rate, Spot, today
+from tests import jsons
+from tests.exports import content, festival, run, shaped, trimmed
+from tests.fakes import AT, no_wait
+from tests.samples import API, PAGE
+
+ECB_DAY = dt.date(2026, 10, 27)
+ECB_FILE = """<gesmes:Envelope><Cube><Cube time='2026-10-27'>
+<Cube currency='USD' rate='1.0812'/><Cube currency='NOK' rate='11.705'/></Cube></Cube></gesmes:Envelope>"""
+
+
+def test_an_address_is_https_with_its_query() -> None:
+    assert web.Https('example.org', '/a').url({'q': 'x y', 'n': '1'}) == 'https://example.org/a?q=x+y&n=1'
+    assert web.Https('example.org', '/a').url() == 'https://example.org/a'
+
+
+def test_the_rates_are_the_banks_and_the_fixed_ones(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+
+    def get(address: web.Https, *_: object) -> bytes:
+        assert address == rates.ECB
+        return ECB_FILE.encode()
+
+    monkeypatch.setattr(web, 'get', get)
+    run(rates.main, monkeypatch)
+    assert Rate.read() == [
+        Rate(currency='BGN', per_eur=1.95583, date=ECB_DAY),
+        Rate(currency='EUR', per_eur=1.0, date=ECB_DAY),
+        Rate(currency='NOK', per_eur=11.705, date=ECB_DAY),
+        Rate(currency='USD', per_eur=1.0812, date=ECB_DAY),
+    ]
+
+
+@pytest.mark.parametrize(
+    'answer', [Declined(CallCause.TRANSIENT, 'unreachable'), b'<html>moved</html>'], ids=['unreachable', 'no day']
+)
+def test_the_rates_stay_as_they_were_when_the_bank_gives_none(
+    answer: Declined | bytes, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    out = Rate.path()
+    _ = out.write_text('currency,per_eur,date\nNOK,11,2026-10-01\n')
+
+    def get(*_: object) -> bytes | Declined:
+        return answer
+
+    monkeypatch.setattr(web, 'get', get)
+    with pytest.raises(SystemExit, match='left as it was'):
+        run(rates.main, monkeypatch)
+    assert out.read_text() == 'currency,per_eur,date\nNOK,11,2026-10-01\n'
+
+
+@dataclass
+class Nominatim:
+    """Nominatim as the fake answers it: the places it knows by their query's words, and what it was asked."""
+
+    places: Mapping[str, Mapping[str, object]]
+    asked: list[Mapping[str, str]] = field(default_factory=list[Mapping[str, str]])
+    down: bool = False
+
+    def get(self, address: web.Https, query: Mapping[str, str], headers: Mapping[str, str]) -> bytes | Declined:
+        assert address == geocode.SEARCH
+        assert 'User-Agent' in headers
+        self.asked.append(query)
+        if self.down:
+            return Declined(CallCause.TRANSIENT, 'timed out')
+        key = query.get('q') or ', '.join(v for k, v in query.items() if k in {'city', 'country'})
+        return json.dumps([self.places[key]] if key in self.places else []).encode()
+
+
+def source_with(places: list[tuple[str | None, str | None]]) -> Path:
+    """An export in the test's data folder holding festivals in these places."""
+    path = data(export.SOURCE) / 'source.sqlite'
+    path.parent.mkdir(parents=True)
+    with sqlite_db.opened(path, 'rwc') as con, shaped(con).transaction() as tx:
+        for i, (city, country) in enumerate(places):
+            festival(tx, i, city=city, country=country)
+    return path
+
+
+def test_new_places_are_asked_for_once_and_kept_with_the_known(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    known = Place(city='Oslo', country='Norway', found=Spot(lat=59.9, lon=10.7, name='Oslo, Norway'))
+    Place.write([known])
+    monkeypatch.setattr('time.sleep', no_wait)
+    lisbon = {'lat': '38.7', 'lon': '-9.1', 'display_name': 'Lisboa, Portugal'}
+    nominatim = Nominatim({'Lisbon, Portugal': lisbon, 'Bairro Alto, Portugal': lisbon})
+    monkeypatch.setattr(web, 'get', nominatim.get)
+    _ = source_with(
+        [
+            ('Oslo', 'Norway'),
+            ('Lisbon', 'Portugal'),
+            ('Bairro Alto', 'Portugal'),
+            ('Atlantis', 'Nowhere'),
+            (None, None),
+        ],
+    )
+    run(geocode.main, monkeypatch)
+    found = {(p.city, p.country): p.found for p in Place.read()}
+    assert found == {
+        ('Oslo', 'Norway'): known.found,
+        ('Lisbon', 'Portugal'): Spot(lat=38.7, lon=-9.1, name='Lisboa, Portugal'),
+        # by city and country first, then as free text
+        ('Bairro Alto', 'Portugal'): Spot(lat=38.7, lon=-9.1, name='Lisboa, Portugal'),
+        ('Atlantis', 'Nowhere'): None,
+    }
+    assert not [q for q in nominatim.asked if q.get('city') == 'Oslo']  # known already
+    asked = len(nominatim.asked)
+    run(geocode.main, monkeypatch)
+    assert len(nominatim.asked) == asked  # a place not found is known too
+
+
+def test_a_city_a_claim_places_is_asked_where_it_is_and_a_place_asked_no_more_is_dropped(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Porto, listed under France, is in Portugal (a place claim): Nominatim is asked for Porto in Portugal, and the
+    Corsican village found before, which no city asks for now, leaves geocode.csv."""
+    corsica = Place(city='Porto', country='France', found=Spot(lat=42.3, lon=8.7, name='Porto, Corsica, France'))
+    Place.write([corsica])
+    claims.write([PlaceClaim(field='place', city='Porto', country='France', is_in='PT', made_at=AT, note='n')])
+    monkeypatch.setattr('time.sleep', no_wait)
+    nominatim = Nominatim({'Porto, Portugal': {'lat': '41.15', 'lon': '-8.61', 'display_name': 'Porto, Portugal'}})
+    monkeypatch.setattr(web, 'get', nominatim.get)
+    _ = source_with([('Porto', 'France')])
+    run(geocode.main, monkeypatch)
+    assert Place.read() == [
+        Place(city='Porto', country='Portugal', found=Spot(lat=41.15, lon=-8.61, name='Porto, Portugal'))
+    ]
+
+
+def test_an_export_naming_no_city_drops_no_place(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """An export with no city in it (the wrong file, an empty one) would drop every place found: geocode refuses it."""
+    known = Place(city='Oslo', country='Norway', found=Spot(lat=59.9, lon=10.7, name='Oslo, Norway'))
+    Place.write([known])
+    monkeypatch.setattr(web, 'get', Nominatim({}).get)
+    _ = source_with([(None, None)])
+    with pytest.raises(SystemExit, match='no festival names a city'):
+        run(geocode.main, monkeypatch)
+    assert Place.read() == [known]
+
+
+class KilledError(Exception):
+    """A run stopped where it stood (the runner's timeout, a crash)."""
+
+
+def test_a_run_stopped_half_way_keeps_the_places_it_found(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    Place.write([])
+    monkeypatch.setattr('time.sleep', no_wait)
+    found: list[Place] = []
+
+    def located(city: str, country: str | None) -> Place:
+        if found:
+            raise KilledError
+        found.append(Place(city=city, country=country, found=None))
+        return found[0]
+
+    monkeypatch.setattr(geocode, 'located', located)
+    source_with([('Lisbon', 'Portugal'), ('Porto', 'Portugal')])
+    with pytest.raises(KilledError):
+        run(geocode.main, monkeypatch)
+    assert Place.read() == found
+
+
+def test_a_place_nominatim_fails_on_is_left_for_the_next_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    Place.write([])
+    monkeypatch.setattr('time.sleep', no_wait)
+    monkeypatch.setattr(web, 'get', Nominatim({}, down=True).get)
+    source_with([('Lisbon', 'Portugal')])
+    with pytest.raises(SystemExit, match=r'1 places gave no answer \(transient 1\): Lisbon, Portugal: timed out'):
+        run(geocode.main, monkeypatch)
+    assert Place.read() == []
+
+
+@pytest.mark.parametrize(
+    ('error', 'cause'),
+    [
+        (urllib.error.HTTPError('https://x', 503, 'busy', Message(), None), CallCause.TRANSIENT),
+        (urllib.error.HTTPError('https://x', 429, 'slow down', Message(), None), CallCause.TRANSIENT),
+        (urllib.error.HTTPError('https://x', 403, 'forbidden', Message(), None), CallCause.STRUCTURAL),
+        (urllib.error.URLError('no such host'), CallCause.TRANSIENT),
+        (TimeoutError('timed out'), CallCause.TRANSIENT),
+        (http.client.IncompleteRead(b'par'), CallCause.TRANSIENT),  # no OSError, which urllib may raise too
+    ],
+)
+def test_a_fetch_that_fails_says_why(error: Exception, cause: CallCause, monkeypatch: pytest.MonkeyPatch) -> None:
+    def urlopen(*_: object, **__: object) -> object:
+        raise error
+
+    monkeypatch.setattr(urllib.request, 'urlopen', urlopen)
+    got = web.get(web.Https('example.org', '/a'))
+    assert isinstance(got, Declined)
+    assert got.cause == cause
+
+
+@dataclass(frozen=True)
+class Served:
+    content: bytes
+
+    @property
+    def text(self) -> str:
+        return self.content.decode()
+
+
+POSTER = 'https://kizomba-world.com/poster.jpg'
+NEW = API | {'image': {'url': POSTER}}  # a festival the export doesn't have yet
+
+
+@dataclass
+class Site:
+    """kizomba-world as the fake serves it: its event list and the page of each event it lists; what it was asked.
+    Asked any other address, the test fails."""
+
+    listed: Sequence[Mapping[str, object]]
+    asked: list[str] = field(default_factory=list[str])
+    down: bool = False  # its event pages give no answer
+
+    def get(self, url: str) -> Served | Declined:
+        self.asked.append(url)
+        if url.startswith(f'{scrape.SITE}/wp-json/tribe/events/v1/events?'):
+            return Served(json.dumps({'events': self.listed, 'next_rest_url': None}).encode())
+        assert url in {e['url'] for e in self.listed}, f'{url} is no page the site lists'
+        if self.down:
+            return Declined(CallCause.TRANSIENT, f'{url}: HTTP 503')
+        return Served(PAGE.encode())
+
+
+def site(monkeypatch: pytest.MonkeyPatch, listed: Sequence[Mapping[str, object]]) -> Site:
+    served = Site(listed)
+    monkeypatch.setattr(scrape, 'Fetcher', lambda: served)
+    return served
+
+
+def event_tables(db: Reader) -> list[str]:
+    """The tables whose rows belong to one event, cleared when the site drops it."""
+    return db.column(
+        str,
+        "select m.name from sqlite_master m, pragma_table_info(m.name) c where m.type = 'table' and m.name != 'events'"
+        " and c.name = 'event_id' order by m.name",
+    )
+
+
+def ids(src: Path) -> set[int]:
+    with sqlite_db.opened(src, 'ro') as db:
+        return set(db.column(int, 'select id from events'))
+
+
+class Kept(BaseModel):
+    listing: Listing
+    unlisted_on: str | None
+
+
+def ours(db: Reader, source_id: int) -> int:
+    """Our id of the festival the site gives this id."""
+    return db.value(
+        int, "select event_id from source_ids where source = 'kizomba-world' and source_id = ?", (source_id,)
+    )
+
+
+class Described(BaseModel):
+    name: str
+    description: str
+
+
+def rows_of(db: Reader, event_id: int) -> dict[str, int]:
+    return {
+        t: db.value(int, f'select count(*) from {sqlite_db.name(t)} where event_id = ?', (event_id,))  # noqa: S608 (the database's own names, quoted)
+        for t in event_tables(db)
+    }
+
+
+def test_a_refresh_adds_the_new_festivals_and_keeps_the_gone_with_their_rows(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    src = trimmed(1)
+    [gone] = ids(src)
+    with sqlite_db.opened(src, 'rw') as db, db.transaction() as tx:
+        before = rows_of(tx, gone)
+        tx.execute('delete from table_docs')  # which the refresh describes again, its own tables
+    served = site(monkeypatch, [NEW])
+    run(scrape.main, monkeypatch)
+    assert POSTER not in served.asked  # where its poster is, which nothing downloads
+    with sqlite_db.opened(src, 'ro') as db:
+        new = ours(db, 17001)
+        assert new > gone  # an id never given
+        assert ids(src) == {gone, new}
+        assert db.rows(Kept, 'select listing, unlisted_on from events where id = ?', (gone,)) == [
+            Kept(listing=Listing.GONE, unlisted_on=today().isoformat())
+        ]
+        assert rows_of(db, gone) == before  # its plans and links still hold
+        assert db.column(str, 'select image_url from events where id = ?', (new,)) == [POSTER]
+        links = set(db.column(str, 'select url from event_links where event_id = ?', (new,)))
+        assert links == {'https://www.facebook.com/events/1', 'https://www.instagram.com/x'}
+        tags = set(db.column(str, 'select tag from event_tags where event_id = ?', (new,)))
+        assert tags == {'All in One', 'Zouk'}
+        logged = db.value(str, "select details from pipeline_steps where step = '1_scrape'")
+        described = db.rows(
+            Described, "select name, description from table_docs where written_by = 'pipeline/scrape.py'"
+        )
+    assert {d.name: d.description for d in described} == scrape.TABLE_DOCS
+    details = JSON.validate_json(logged)
+    assert [jsons.at(details, k) for k in ('new', 'unlisted')] == [1, 1]
+
+
+def with_new(monkeypatch: pytest.MonkeyPatch, then: str) -> tuple[Path, int]:
+    """An export refreshed once, from a site listing a festival it hadn't, and then changed by a statement on that
+    festival (its id the statement's one parameter); our id of it."""
+    src = trimmed(1)
+    site(monkeypatch, [NEW])
+    run(scrape.main, monkeypatch)
+    with sqlite_db.opened(src, 'rw') as db, db.transaction() as tx:
+        new = ours(tx, 17001)
+        tx.execute(then, (new,))
+    return src, new
+
+
+@dataclass(frozen=True)
+class Status:
+    status_code: int
+
+
+@pytest.mark.parametrize(
+    ('answers', 'tries', 'outcome'),
+    [
+        ([503, 200], 2, 200),  # busy, then served
+        ([429, 403, 200], 3, 200),
+        ([404], 1, CallCause.STRUCTURAL),  # gone: asking again changes nothing
+        (['reset', 'reset', 'reset'], 3, CallCause.TRANSIENT),
+        ([503, 503, 503], 3, CallCause.TRANSIENT),
+    ],
+)
+def test_a_request_the_site_is_busy_for_is_tried_again(
+    answers: list[int | str], tries: int, outcome: int | CallCause, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    left = list(answers)
+    page = 'https://kizomba-world.com/event/x/'
+
+    def get(url: str, *, impersonate: str, timeout: float) -> Status:
+        assert (url, impersonate) == (page, 'chrome')
+        answer = left.pop(0)
+        if isinstance(answer, str):
+            raise RequestException(answer)
+        return Status(answer)
+
+    monkeypatch.setattr(scrape.requests, 'get', get)
+    monkeypatch.setattr('time.sleep', no_wait)
+    got = scrape.Fetcher().get(page)
+    assert len(answers) - len(left) == tries
+    assert (got.cause if isinstance(got, Declined) else got.status_code) == outcome
+
+
+def test_a_festival_whose_page_gave_no_answer_waits_for_the_next_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    src = trimmed(1)
+    served = site(monkeypatch, [NEW])
+    served.down = True
+    with pytest.raises(SystemExit, match='1 event pages gave no answer'):
+        run(scrape.main, monkeypatch)
+    with sqlite_db.opened(src, 'ro') as db:
+        assert not db.exists("select 1 from source_ids where source = 'kizomba-world' and source_id = 17001")
+
+
+def test_a_festival_listed_again_is_listed_under_its_id(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    src, new = with_new(monkeypatch, "update events set listing = 'gone', unlisted_on = '2026-01-01' where id = ?")
+    run(scrape.main, monkeypatch)
+    with sqlite_db.opened(src, 'ro') as db:
+        assert ours(db, 17001) == new
+        assert db.rows(Kept, 'select listing, unlisted_on from events where id = ?', (new,)) == [
+            Kept(listing=Listing.LISTED, unlisted_on=None)
+        ]
+
+
+def test_a_dry_run_reads_the_site_and_writes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    src = trimmed(1)
+    before = content(src)
+    site(monkeypatch, [NEW])
+    run(scrape.main, monkeypatch, '--dry-run')
+    assert content(src) == before
+
+
+def test_a_list_far_shorter_than_before_stops_before_deleting(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    src = trimmed(3)
+    before = content(src)
+    site(monkeypatch, [NEW])
+    with pytest.raises(SystemExit, match='far fewer events'):
+        run(scrape.main, monkeypatch)
+    assert content(src) == before

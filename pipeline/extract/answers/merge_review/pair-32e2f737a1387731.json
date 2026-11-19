@@ -1,0 +1,13 @@
+{
+ "key_a": "p:stef@sonia+stef",
+ "key_b": "p:steff@sonia+steff",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "32e2f737a1387731",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner, Sonia, and 'Stef' and 'STEFF' are spelling and length variants of one name; the events in Germany and Switzerland and the stated FR country do not show two people, since side A states no country."
+ }
+}

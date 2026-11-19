@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johannorsinet",
+ "key_b": "p:johanorsinnet",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "30de4b1dfbb07380",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are French with events only in France, and 'Johann Orsinet' / 'Johan Orsinnet' is a close spelling variant of a distinctive surname, so the evidence points to one artist even though one side is listed as DJ and the other as teacher."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:arthur@dj",
+ "key_b": "p:arthursantos",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "46d54c52b3910f33",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both names appear at the same Bulgaria event (17095) with Brazilian flags, one as DJ and one as teacher, which points to two people rather than one listed twice, and the only other overlap is a shared first name."
+ }
+}

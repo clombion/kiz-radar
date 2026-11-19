@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fernando@fernando+micaela",
+ "key_b": "p:fernando@fernando+michela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dc08026a16a81035",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Fernando with an Italian country, but their partners differ (Micaela vs Michela, one letter apart), their events are in different places (Portugal vs Italy), and Fernando is a common first name, so the evidence does not settle whether this is one artist or two."
+ }
+}

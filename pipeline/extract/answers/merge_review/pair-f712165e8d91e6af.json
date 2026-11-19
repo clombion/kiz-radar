@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kiki@fuego+kiki",
+ "key_b": "p:kiki@heneco+kiki",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f712165e8d91e6af",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list the same countries (DE, FR) and the name is a common short form, but they have different partners (fuego and heneco) and different event countries (France and Hungary versus Austria), and no mentions are given to settle it."
+ }
+}

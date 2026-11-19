@@ -1,0 +1,13 @@
+{
+ "key_a": "p:emanuel@emanuel+teresa",
+ "key_b": "p:emanuel@emanuel+teresafreitas",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9a602e60a2ad49b2",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Emanuel and both key partner strings reference a Teresa, but side A's partner is 'teresa' with countries AO and PT across Czech Republic, Denmark, France and Italy while side B's partner is 'teresafreitas' with only AO and events in Germany and Spain, so the shared partner is not clearly the same person and the country and event sets do not overlap enough to settle it."
+ }
+}

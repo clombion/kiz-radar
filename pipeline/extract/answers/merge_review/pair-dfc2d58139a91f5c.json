@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tiia@dance",
+ "key_b": "p:tiia@jennina+tiia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dfc2d58139a91f5c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the bare first name Tiia with events in Finland, but side A has no partner, side B's partner is Jennina, and B lists no mentions, so the evidence does not settle whether they are one person."
+ }
+}

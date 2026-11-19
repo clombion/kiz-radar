@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ankit@dance",
+ "key_b": "p:ankit@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8f29f397a3660add",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides state German nationality and the 'DJ ANKIT' prefix is a common stage-name form, but 'Ankit' is a common first name, the events are in different countries (Sweden vs Belgium), and there is no shared partner or other distinctive link, so the evidence does not settle whether these are one artist."
+ }
+}

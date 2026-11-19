@@ -1,0 +1,1584 @@
+"""Every record the pipeline keeps or asks for as JSON, one pydantic model each: the extraction passes' answers and the
+merge reviews (pipeline/extract/answers/), a ticket page's log (pipeline/tickets/log/), first reads and disputes
+(pipeline/tickets/reads/, disputed/) and site recipes (pipeline/tickets/sites/). The schema a model answers to is
+generated from its record (pipeline/prompt.py), so the record is the one statement of its shape.
+
+Each record is strict (a value of another type, or a field the record has not, is refused) and frozen, and is read from
+its JSON text (parse), where an enum's value is its state's key. A rule a field's type can't say is the record's
+validator: an answer's tier quotes its dates exactly when it has some, a row's second price comes with its words,
+amount and currency, a recipe reads rows from the page or from the site's API.
+"""
+
+import csv
+import datetime as dt
+import hashlib
+import io
+import re
+import unicodedata as ud
+from collections.abc import Iterable
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Annotated, ClassVar, Literal, NamedTuple, NewType, Self, cast, get_args, get_origin
+
+from pydantic import (
+    AfterValidator,
+    BaseModel,
+    BeforeValidator,
+    ConfigDict,
+    Discriminator,
+    Field,
+    PlainSerializer,
+    SerializerFunctionWrapHandler,
+    Tag,
+    TypeAdapter,
+    ValidationError,
+    WithJsonSchema,
+    WrapSerializer,
+    model_validator,
+)
+from pydantic.fields import FieldInfo
+
+from pipeline import countries, currencies, data, files, names, tables
+from pipeline.enums import (
+    ExtractedFeature,
+    FareMode,
+    FareOutcome,
+    FareTicket,
+    FareVendor,
+    Genre,
+    GroundMode,
+    MergeDecision,
+    MergeReason,
+    Model,
+    PassKind,
+    Plan,
+    Role,
+    RoomKind,
+    Sales,
+    SkipReason,
+    Status,
+    Style,
+    SuggestionCalendar,
+    SuggestionCountries,
+    Waiting,
+)
+from pipeline.enums import FirstRead as FirstReadState
+
+type Json = dict[str, Json] | list[Json] | str | int | float | bool | None
+JSON: TypeAdapter[Json] = TypeAdapter(Json)  # any JSON text, as its value
+
+type PassName = Literal['extract', 'rooms_genres', 'prices']  # the extraction passes (pipeline/prompt.py)
+type Name = PassName | Literal['first_read', 'merge_review']  # every prompt, by name
+
+DIGITS = 16  # a hash (a prompt's, the links a search was of) is the first DIGITS hex digits of a SHA-256
+SHORT = 8  # a recipe's version names its file by this many
+
+
+def digest(data: str | bytes, digits: int = DIGITS) -> str:
+    """The first digits hex digits of the data's SHA-256 (text as UTF-8): a Hash, or a Version's part."""
+    return hashlib.sha256(data.encode() if isinstance(data, str) else data).hexdigest()[:digits]
+
+
+Text = Annotated[str, Field(min_length=1)]
+
+
+class Verbatim:
+    """The mark of a text an answer copies from the festival's own words: copied() finds every one, which the
+    checker looks for in them (check_output.found_in)."""
+
+
+VERBATIM = Verbatim()
+Copied = Annotated[str, Field(min_length=1), VERBATIM]  # a span copied as it is written
+Quote = Annotated[str, Field(min_length=1, max_length=300), VERBATIM]  # a span copied as it is written, a line at most
+Currency = Annotated[str, Field(pattern=r'^[A-Z]{3}$')]  # an ISO 4217 code
+Iata = Annotated[str, Field(pattern=r'^[A-Z]{3}$')]  # an airport's IATA code
+CityKey = Annotated[str, Field(pattern=r'^[a-z0-9]+(-[a-z0-9]+)*-[a-z]{2}$')]  # a city's key: its name's, its country's
+
+
+def country_code(code: str) -> str:
+    if code not in countries.NAMES:
+        raise ValueError(f'{code!r} is no country of countries.NAMES')
+    return code
+
+
+CountryCode = Annotated[str, AfterValidator(country_code)]  # an ISO 3166 alpha-2 code countries.NAMES has
+Key = Annotated[str, AfterValidator(names.checked)]  # an artist's key as a mention gives it (names.ArtistKey)
+RealDay = NewType('RealDay', str)  # a day of the calendar, YYYY-MM-DD or MM-DD; only real_day makes one
+
+
+def real_day(value: str) -> RealDay:
+    """A YYYY-MM-DD or MM-DD that names a day of the calendar (an MM-DD some year has, 02-29 among them)."""
+    *year, month, day = map(int, value.split('-'))
+    _ = dt.date(year[0] if year else 2024, month, day)  # a leap year has every MM-DD; ValueError when no year does
+    return RealDay(value)
+
+
+def yearless(value: RealDay) -> bool:
+    """Whether the day is written without its year (MM-DD)."""
+    return value.count('-') == 1
+
+
+# YYYY-MM-DD, or MM-DD when no year is given
+Day = Annotated[RealDay, Field(pattern=r'^(\d{4}-)?\d{2}-\d{2}$'), AfterValidator(real_day)]
+DATE = r'^\d{4}-\d{2}-\d{2}$'
+LOCAL = r'^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}:\d{2})?$'
+STAMP = r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+00:00$'
+
+
+def date_of(value: object) -> object:
+    """A date's text read as its day (2026-10-27, nothing else); a day stays one."""
+    if isinstance(value, str):
+        if not re.fullmatch(DATE, value):
+            raise ValueError(f'{value!r} is no date (YYYY-MM-DD)')
+        return dt.date.fromisoformat(value)
+    return value
+
+
+def day_of(value: str) -> dt.date:
+    """The day of a time as kizomba-world gives it, in the festival's own time (2026-01-02 18:00:00), or of a date."""
+    if not re.fullmatch(LOCAL, value):
+        raise ValueError(f'{value!r} is no local time (YYYY-MM-DD HH:MM:SS) and no date')
+    return dt.date.fromisoformat(value[:10])
+
+
+def local_day(value: object) -> object:
+    return day_of(value) if isinstance(value, str) else value
+
+
+def stamp_time(value: object) -> object:
+    """A stamp's text read as its time (2026-10-27T17:38:51+00:00, nothing else); a time stays one."""
+    if isinstance(value, str):
+        if not re.fullmatch(STAMP, value):
+            raise ValueError(f'{value!r} is no stamp (YYYY-MM-DDTHH:MM:SS+00:00)')
+        return dt.datetime.fromisoformat(value)
+    return value
+
+
+def utc_second(value: dt.datetime) -> dt.datetime:
+    if value.utcoffset() != dt.timedelta(0) or value.microsecond:
+        raise ValueError(f'{value} is no UTC time to the second')
+    return value
+
+
+def now() -> dt.datetime:
+    """The time, as every stamp the pipeline writes holds it: UTC, to the second."""
+    return dt.datetime.now(dt.UTC).replace(microsecond=0)
+
+
+def today() -> dt.date:
+    """Today, in UTC, where the Actions run."""
+    return now().date()
+
+
+# a day of the calendar, written as 2026-10-27
+Date = Annotated[
+    dt.date,
+    BeforeValidator(date_of),
+    PlainSerializer(dt.date.isoformat, return_type=str),
+    WithJsonSchema({'type': 'string', 'pattern': DATE}),
+]
+# the day of a time in the festival's own time, read from kizomba-world's 2026-01-02 18:00:00
+On = Annotated[dt.date, BeforeValidator(local_day)]
+# a UTC time to the second, written as 2026-10-27T17:38:51+00:00
+Stamp = Annotated[
+    dt.datetime,
+    BeforeValidator(stamp_time),
+    AfterValidator(utc_second),
+    PlainSerializer(dt.datetime.isoformat, return_type=str),
+    WithJsonSchema({'type': 'string', 'pattern': STAMP}),
+]
+Url = Annotated[str, Field(pattern=r'^https?://')]
+Hash = Annotated[str, Field(pattern=rf'^[0-9a-f]{{{DIGITS}}}$')]
+Count = Annotated[int, Field(ge=1)]
+Positive = Annotated[float, Field(gt=0)]
+
+
+def errors(error: ValidationError, where: str) -> list[str]:
+    """One line for each of a record's errors: where it is, where in it, and what is wrong."""
+    return [f'{where}: {"/".join(map(str, e["loc"])) or "(root)"}: {e["msg"]}' for e in error.errors()]
+
+
+class Record(BaseModel):
+    model_config = ConfigDict(
+        strict=True, extra='forbid', frozen=True, validate_by_name=True, validate_by_alias=True, serialize_by_alias=True
+    )
+
+    @classmethod
+    def parse(cls, text: str | bytes) -> Self:
+        return cls.model_validate_json(text)
+
+    def dumped(self) -> str:
+        """The record as its file holds it: JSON, indented by one, non-ASCII as it is."""
+        return self.model_dump_json(indent=1) + '\n'
+
+
+def marked(annotation: object) -> bool:
+    """Whether a field's type is a Verbatim text, alone, optional or in a tuple."""
+    args: tuple[object, ...] = get_args(annotation)
+    if get_origin(annotation) is Annotated:
+        return any(isinstance(m, Verbatim) for m in args[1:]) or marked(args[0])
+    return any(marked(a) for a in args if a is not Ellipsis)
+
+
+def verbatim(info: FieldInfo) -> bool:
+    """Whether a field is a Verbatim text: its own mark is in its metadata, one inside an optional or a tuple in its
+    annotation."""
+    meta: list[object] = info.metadata
+    return any(isinstance(m, Verbatim) for m in meta) or marked(info.annotation)
+
+
+def copied(record: BaseModel, where: str = '') -> list[tuple[str, str]]:
+    """(where, text) for every Verbatim text of the record and the records it holds, by field path."""
+    out: list[tuple[str, str]] = []
+    for name, info in type(record).model_fields.items():
+        here, value = f'{where}.{name}' if where else name, cast('object', getattr(record, name))
+        many = isinstance(value, tuple)
+        values: tuple[object, ...] = cast('tuple[object, ...]', value) if many else (value,)
+        if verbatim(info):
+            out += [(here, v) for v in values if isinstance(v, str)]
+        for i, v in enumerate(values):
+            if isinstance(v, BaseModel):
+                out += copied(v, f'{here}[{i}]' if many else here)
+    return out
+
+
+# ---- the extraction passes' answers (pipeline/extract/prompts/)
+
+
+class Entry(Record):
+    """A festival's entry in a question or an answer."""
+
+    event_id: int
+
+
+class Batch[E: Entry](Record):
+    """A question or an answer about the festivals of one batch: one entry per festival."""
+
+    batch: str
+    events: tuple[E, ...]
+
+
+class Provenance(Record):
+    """Who answered a question, to which prompt, when, and of what."""
+
+    prompt: Hash
+    model: Model
+    answered_at: Stamp
+    answered_by: Text
+    inputs: Hash | None = Field(
+        description='The digest of the message asked (prompt.Prompt.message), the festival as the pass asked about '
+        'it: the answer is of the festival as it is while the message would be the same. None for an answer given '
+        'before answers kept the message they answered.'
+    )
+
+
+class Answered[E: Entry](Provenance):
+    """An answer file (answers/<pass>/*.json): the pass's answer, and where it comes from, written together."""
+
+    answer: Batch[E]
+
+
+class Artist(Record):
+    name_as_written: Copied
+    role: Role
+    style: Copied | None
+    country: Copied | None
+    source_line: Copied
+
+
+class FeatureFound(Record):
+    feature: ExtractedFeature
+    quote: Quote
+    rationale: Annotated[str, Field(min_length=5)]
+
+
+class Extracted(Entry):
+    artists: tuple[Artist, ...]
+    features: tuple[FeatureFound, ...]
+
+
+class Rooms(Record):
+    count: Annotated[int, Field(ge=1, le=30)]
+    quote: Quote
+
+
+class Room(Record):
+    name_as_written: Copied | None
+    kind: RoomKind
+    genres: tuple[Genre, ...]
+    quote: Quote
+
+
+class GenreFound(Record):
+    genre: Genre
+    genre_as_written: Copied
+    quote: Quote
+
+
+class RoomsGenres(Entry):
+    party_rooms: Rooms | None
+    class_rooms: Rooms | None
+    rooms: tuple[Room, ...]
+    genres: tuple[GenreFound, ...]
+
+
+class PassTerms(Record):
+    """What a pass is, whichever way its prices are read."""
+
+    kind: PassKind
+    style: Style | None = Field(
+        description='The one dance style the pass is limited to, at a festival of several; null when it covers all '
+        'of them.'
+    )
+    label_quote: Quote | None
+    group_size: Count | None
+    days: Count | None
+    includes_hotel: bool
+
+
+class Alt(Record):
+    """The same price in a second currency, when the line gives one."""
+
+    amount: Positive
+    currency: Currency
+
+
+class Sale(Record):
+    """How a tier's price is sold before the festival: the days it applies, how many tickets it holds, and whether
+    the description calls it the price now."""
+
+    from_: Day | None = Field(validation_alias='from', serialization_alias='from')
+    until: Day | None
+    quantity: Count | None
+    current: bool
+
+
+class PricedTier(Record):
+    amount: Positive
+    currency: Currency
+    fee: Positive | None
+    alt: Alt | None
+    sale: Sale | None = Field(description='How the price is sold before the festival; null for the price at the door.')
+    sold_out: bool
+    quote: Quote
+
+
+class PricedPass(PassTerms):
+    tiers: Annotated[tuple[PricedTier, ...], Field(min_length=1)]
+
+
+class Priced(Entry):
+    passes: tuple[PricedPass, ...]
+    rule_quotes: tuple[Quote, ...]
+
+
+class Asked(Entry):
+    """A festival as a pass is asked about it."""
+
+    title: str
+    description: str
+
+
+class AskedPrices(Asked):
+    """A festival as the prices pass is asked about it."""
+
+    start_date: Date
+    end_date: Date
+    country: str | None
+    styles: tuple[Style, ...]
+
+
+class ReviewMention(Record):
+    """A mention of one side of a pair, as the merge review is asked about it."""
+
+    event_id: int
+    event_country: str | None
+    role: Role
+    name_as_written: str
+    style: str | None
+    country: str | None
+    source_line: str
+
+
+class Pair(Record):
+    """Two artist keys in key order, so that a pair is written one way; a key with itself for a single name that may
+    be several people."""
+
+    key_a: str
+    key_b: str
+
+    @model_validator(mode='after')
+    def keys_in_order(self) -> Self:
+        if self.key_a > self.key_b:
+            raise ValueError('a pair is written in key order, key_a first, so that it is written one way')
+        return self
+
+
+class MergeQuestion(Pair):
+    """A pair of artist keys that may be one artist, and what weighs on it (artist_merge_reviews)."""
+
+    name_a: str
+    name_b: str
+    reason: MergeReason | None = Field(
+        description='Why the matching rules flagged the pair; null for a pair that is '
+        'no candidate now, reviewed again because a review decided it.'
+    )
+    evidence: str
+    a: tuple[ReviewMention, ...]
+    b: tuple[ReviewMention, ...]
+
+
+class MergeAnswer(Record):
+    """Whether a pair of artist keys is one artist."""
+
+    decision: MergeDecision
+    rationale: Annotated[str, Field(min_length=10)]
+
+
+class Reviewed(Provenance, Pair):
+    """A merge review's answer file (answers/merge_review/pair-<digest>.json): the pair, the answer, and where it comes
+    from; a model claim on the pair while it answers the current prompt (claims.model)."""
+
+    answer: MergeAnswer
+
+
+# ---- a ticket page's log (pipeline/tickets.py)
+
+Version = Annotated[str, Field(pattern=rf'^[a-z0-9-]+@[0-9a-f]{{{SHORT}}}$')]  # a recipe's site and its file's digest
+
+
+class Row(Record):
+    """A ticket as its page shows it."""
+
+    key: Text
+    name: Text
+    price: Text
+    amount: Annotated[float, Field(ge=0)] = Field(
+        description='What a buyer pays: the price shown, plus the fee the site shows apart. 0 for a free ticket.'
+    )
+    currency: Currency
+    fee: Positive | None
+    alt_price: Text | None
+    alt_amount: Positive | None
+    alt_currency: Currency | None
+    sold_out: bool
+
+    @model_validator(mode='after')
+    def one_second_price(self) -> Self:
+        if len({v is None for v in (self.alt_price, self.alt_amount, self.alt_currency)}) > 1:
+            raise ValueError('a second price has its words, amount and currency, or none of them')
+        return self
+
+
+class Read(Record):
+    at: Stamp
+    page: Url
+    recipe: Version
+    url: Url  # the address read: the page's, or its widget's or API's
+    http: int | None
+    status: Literal[Status.READ, Status.EMPTY]
+    rows: tuple[Row, ...]
+
+    @model_validator(mode='after')
+    def rows_as_said(self) -> Self:
+        if (self.status == Status.EMPTY) != (not self.rows):
+            raise ValueError('a read lists its rows, every one of them; an empty one, none')
+        return self
+
+
+class Failed(Record):
+    at: Stamp
+    page: Url
+    recipe: Version
+    url: Url | None = None  # None when no address was reached
+    http: int | None = None
+    status: Literal[Status.REFUSED, Status.UNREACHABLE, Status.LAYOUT_BROKEN]
+    why: Text
+
+
+type LogEntry = Annotated[Read | Failed, Discriminator('status')]
+LOG_ENTRY: TypeAdapter[Read | Failed] = TypeAdapter(LogEntry)
+
+
+# ---- first reads
+
+
+class ReadTier(Record):
+    keys: Annotated[
+        tuple[Text, ...],
+        Field(min_length=1, description="The page's tickets at this price, the one whose line is quoted first."),
+    ]
+    from_: Day | None = Field(validation_alias='from', serialization_alias='from')
+    until: Day | None
+    quantity: Count | None
+    date_quote: Quote | None = Field(
+        description='The words that say from, until or quantity, copied from the description or from one of the '
+        "tier's tickets."
+    )
+
+    @model_validator(mode='after')
+    def quoted(self) -> Self:
+        if ((self.from_, self.until, self.quantity) == (None, None, None)) != (self.date_quote is None):
+            raise ValueError('date_quote: the words that say from, until or quantity, exactly when the tier has one')
+        return self
+
+
+class ReadPass(PassTerms):
+    tiers: Annotated[tuple[ReadTier, ...], Field(min_length=1)]
+
+
+class Skip(Record):
+    key: Text
+    reason: SkipReason
+
+
+class FirstReadAnswer(Record):
+    """Which pass each ticket of the page is."""
+
+    passes: Annotated[
+        tuple[ReadPass, ...],
+        Field(
+            min_length=1,
+            description="At least one: a page that sells none of the festival's passes (only hotel rooms, say) is "
+            'not its ticket page.',
+        ),
+    ]
+    skipped: tuple[Skip, ...] = Field(
+        description='The tickets on the page that are no pass, each with why (pipeline/states.py, skip_reason).'
+    )
+    rule_quotes: tuple[Quote, ...]
+
+
+class ReadFestival(Record):
+    """A festival as a first read is asked about it."""
+
+    event_id: int
+    title: Text
+    start_date: Date = Field(description="The festival's first day, which a date without a year is placed before.")
+    end_date: Date
+    country: str | None
+    styles: tuple[Style, ...] = Field(
+        description="The festival's dance styles when the read was made (prices.styles), which a pass's style is "
+        'one of.'
+    )
+    description: str = Field(description="The festival's description this read was made with.")
+
+
+class ReadHeader(ReadFestival):
+    """The festival a first read is of, as it was when the read was made."""
+
+    read_by: Text = Field(description='agent, or the models that agreed.')
+    prompt: Hash = Field(
+        description='The hash of the request the read answered (pipeline/prompts/asked/<hash>.md); a read to '
+        'another prompt is made again (tickets.py run).'
+    )
+    rows_at: Stamp = Field(
+        description="The 'at' of the logged read (tickets/log/<event_id>.jsonl) whose tickets this read maps; every "
+        'one of them is in a tier or skipped.'
+    )
+
+
+class FirstRead(FirstReadAnswer, ReadHeader):
+    """A festival's first read of its ticket page: which pass each ticket is (tickets/reads/<event_id>.json)."""
+
+
+class QuestionTicket(Record):
+    """A ticket of the page, as a first read is asked about it."""
+
+    key: Text
+    name: Text
+    price: Text
+    sold_out: bool
+
+
+class ReadQuestion(ReadFestival):
+    """A festival and its page's tickets, as a first read is asked about them."""
+
+    tickets: tuple[QuestionTicket, ...]
+
+
+class Dated(BaseModel):
+    """A first read or a dispute, whatever prompt it follows and whatever shape it has then: the logged read whose
+    tickets it maps."""
+
+    model_config = ConfigDict(strict=True, extra='ignore', frozen=True)
+
+    rows_at: Stamp
+
+
+class Stamped(Dated):
+    """A first read, whatever prompt it follows: the logged read it maps, and the prompt it names."""
+
+    prompt: Hash
+
+
+AGREE = 2  # the first reads it takes to agree, or to disagree
+
+
+class ModelReads(Record):
+    """The models' first reads of one festival's logged rows, to one prompt, by model: the ones that answered (a
+    model whose read failed has none). The ones paid for are kept (tickets/partial/<event_id>.json) until two agree or
+    they make a dispute."""
+
+    rows_at: Stamp
+    prompt: Hash
+    reads: dict[Model, FirstRead]
+
+    @model_validator(mode='after')
+    def of_one_read(self) -> Self:
+        if off := [m for m, r in self.reads.items() if (r.rows_at, r.prompt) != (self.rows_at, self.prompt)]:
+            raise ValueError(f'reads of other rows or to another prompt: {off}')
+        return self
+
+
+class Dispute(ModelReads):
+    """The first reads of two models or more, no two of which agreed (tickets/disputed/<event_id>.json): a dispute is
+    of reads made, never of reads that failed."""
+
+    @model_validator(mode='after')
+    def of_two(self) -> Self:
+        if len(self.reads) < AGREE:
+            raise ValueError('a dispute is of two reads at least')
+        return self
+
+
+# ---- site recipes
+
+INLINE_FLAGS = re.compile(r'\(\?[aimsux]+[):]')
+
+
+def no_inline_flags(pattern: str | None) -> str | None:
+    if pattern and INLINE_FLAGS.search(pattern):
+        raise ValueError(f'{pattern!r}: no inline flags such as (?i), which JavaScript lacks; write [Ss]old [Oo]ut')
+    return pattern
+
+
+class Find(Record):
+    """Where a row's value is: the first element matching css inside the row, or inside its enclosing element up (the
+    row or that element itself when css is null), its attribute attr (its text when attr is null), and in that the
+    first group of match (all of it when match is null). css and match may name the row's other fields as {field}
+    and the row element's attributes as {@attr}."""
+
+    css: Text | None
+    attr: Text | None
+    match: Text | None = Field(description='A JavaScript regular expression, run in the page.')
+    page: bool = Field(
+        default=False,
+        description='Read every match on the page (joined by line) instead of the first inside the row; for values a '
+        'page keeps apart from its rows, such as its script data.',
+    )
+    up: Text | None = Field(
+        default=None,
+        description="Read inside the row's nearest enclosing element matching this selector instead of the row: for "
+        "values a row's group holds, such as the ticket type a price option belongs to.",
+    )
+    all: bool = Field(
+        default=False,
+        description="Every match of css inside the row (or up), in page order, joined by ' · ', instead of the "
+        'first: a name a page splits in two, such as a ticket type and its price option. No match then.',
+    )
+
+    @model_validator(mode='after')
+    def sound(self) -> Self:
+        no_inline_flags(self.match)
+        if self.page and self.up:
+            raise ValueError('page and up: a value is read on the page or inside an enclosing element, not both')
+        if self.all and (self.match is not None or self.css is None):
+            raise ValueError('all: every match of a css selector, with no match pattern')
+        return self
+
+
+class FromJson(Record):
+    json_: Text = Field(
+        validation_alias='json',
+        serialization_alias='json',
+        description='A dotted path into the ticket; * is any key, the first (an attribute each product names).',
+    )
+    match: Text | None = None
+
+
+class FromPage(Record):
+    page: Text = Field(
+        description="A pattern on the festival's page (its first group, its HTML entities read); {path} names the "
+        "ticket's value at a dotted path, matched as it is written (a name starting with a letter, so {3} stays a "
+        'count).'
+    )
+    match: Text | None = None
+
+
+class FromText(Record):
+    text: Text = Field(
+        description='A template naming dotted paths in braces ("{price.price} € + {distributionFee} € fee").'
+    )
+    match: Text | None = None
+
+
+type ApiFind = FromJson | FromPage | FromText  # with match, the first group of a pattern on the value
+
+
+class Fields[F: Record | ApiFind](Record):
+    key: F = Field(description="The ticket's id on the site, the same on every read.")
+    name: F
+    price: F = Field(description='The price as the page shows it.')
+    amount: F = Field(description='The price as a number (1,800.00, 1.800,00 and 1800 all read as 1800).')
+    currency: F = Field(
+        description='A currency code, or a symbol pipeline/currencies.py reads: one that names one currency (€), or '
+        "one that names several ($, kr) as the recipe's symbols settle it."
+    )
+    fee: F | None = Field(
+        description='A booking fee the site adds to the price ("+ €1.00 fee"), when it shows one apart; the amount '
+        'logged is the price plus this fee. Null when the price shown is what a buyer pays.'
+    )
+    alt_price: F | None = Field(
+        description='The words that give the second price, as the page shows them; with alt_amount and '
+        'alt_currency, or null with them.'
+    )
+    alt_amount: F | None = Field(description='The same price in a second currency, when the site shows one.')
+    alt_currency: F | None
+    sold_out: F | None = Field(
+        description='Sold out when this field finds anything; null for a site that hides sold-out tickets, where a '
+        'page with no ticket rows lists nothing (empty) rather than breaking its recipe.'
+    )
+
+    def named(self) -> tuple[tuple[str, F | None], ...]:
+        """Each field by its name, in order."""
+        return (
+            ('key', self.key),
+            ('name', self.name),
+            ('price', self.price),
+            ('amount', self.amount),
+            ('currency', self.currency),
+            ('fee', self.fee),
+            ('alt_price', self.alt_price),
+            ('alt_amount', self.alt_amount),
+            ('alt_currency', self.alt_currency),
+            ('sold_out', self.sold_out),
+        )
+
+
+class Widget(Record):
+    """When the tickets show on another address than the festival's link: where the pattern is looked for (the
+    link's address, or its page's HTML), and the address to read, built from the match ({0}, its groups {1}…, the
+    page's {host})."""
+
+    in_: Literal['address', 'html'] = Field(validation_alias='in', serialization_alias='in')
+    pattern: Text
+    address: Annotated[str, Field(pattern=r'^(https://|\{)')]
+
+
+class Api(Record):
+    """When the site's page carries no ticket ids but its API does: a pattern finding the event's id in the
+    festival's page, the API's address with {id}, and the dotted path to the list of tickets in its JSON."""
+
+    id: Text
+    url: Annotated[str, Field(pattern=r'^https://.*\{id\}')]
+    items: Text
+
+
+class Symbol(Record):
+    """What a currency symbol that names several currencies (pipeline/currencies.py: $, kr, ¥) means on a site's
+    pages: on every host of its recipe, or on these."""
+
+    shown: Text
+    means: Currency
+    hosts: tuple[str, ...] | None = None
+
+    @model_validator(mode='after')
+    def one_it_names(self) -> Self:
+        if len(codes := currencies.meanings(self.shown)) <= 1:
+            raise ValueError(
+                f'{self.shown!r} names {", ".join(codes) or "no currency"}: only a symbol of several needs settling'
+            )
+        if self.means not in codes:
+            raise ValueError(f'{self.shown!r} names {", ".join(codes)}, not {self.means}')
+        return self
+
+
+class Site(Record):
+    site: Annotated[str, Field(pattern=r'^[a-z0-9-]+$')]
+    hosts: Annotated[
+        tuple[str, ...], Field(min_length=1, description='Hosts of the pages festivals link to that this recipe reads.')
+    ]
+    reseller: Text | None = Field(
+        description="The reseller's name when the site sells other organisers' festivals at its own prices (Kizzbee), "
+        'shown with the prices; null when it sells for the organiser.'
+    )
+    widget: Widget | None
+    visible: bool = Field(description='true when the site refuses headless browsers.')
+    wait: Annotated[int, Field(ge=1, le=60, description='Seconds to let the page settle after loading.')]
+    open: Text | None = Field(
+        description='A CSS selector whose every match is clicked before reading, to open sections shown collapsed.'
+    )
+    symbols: tuple[Symbol, ...] = Field(
+        default=(),
+        description='What each currency symbol of several currencies the site shows ($ say) means there; a row '
+        'showing one the recipe does not settle for its host is refused.',
+    )
+
+    @model_validator(mode='after')
+    def settled_once(self) -> Self:
+        said = [(s.shown, h) for s in self.symbols for h in s.hosts or self.hosts]
+        if wrong := sorted({h for _, h in said} - set(self.hosts)):
+            raise ValueError(f'symbols: {", ".join(wrong)} is no host of the recipe')
+        if twice := sorted({k for k in said if said.count(k) > 1}):
+            raise ValueError(f'symbols: {", ".join(f"{s} on {h}" for s, h in twice)} settled twice')
+        return self
+
+    def settled(self, host: str) -> dict[str, str]:
+        """{symbol: currency} for the symbols of several currencies the recipe settles on this host."""
+        return {s.shown: s.means for s in self.symbols if host in (s.hosts or self.hosts)}
+
+
+class PageRecipe(Site):
+    """A site whose page holds its tickets: row matches each one."""
+
+    row: Text
+    api: None
+    fields: Fields[Find]
+
+    @model_validator(mode='after')
+    def sold_out_by_its_value(self) -> Self:
+        if (f := self.fields.sold_out) and f.attr and f.match is None:
+            raise ValueError(
+                f'fields.sold_out reads the attribute {f.attr} with no match: an attribute a row always has would '
+                'make every ticket sold out'
+            )
+        return self
+
+
+class Embedded(Record):
+    """When the site's page carries its tickets as JSON (an attribute's, a script's): a pattern whose first group is
+    that JSON as the page writes it (its HTML entities read), and the dotted path to the list in it, empty when the
+    JSON is the list."""
+
+    json_: Text = Field(validation_alias='json', serialization_alias='json')
+    items: str
+
+
+class ApiRecipe(Site):
+    """A site whose tickets come as JSON: from its API, or embedded in its page; each ticket is a record of its own,
+    which no field's pattern can read past."""
+
+    row: None
+    api: Api | Embedded
+    fields: Fields[ApiFind]
+
+    @model_validator(mode='after')
+    def sold_out_by_its_whole_value(self) -> Self:
+        f = self.fields.sold_out
+        if f and not (f.match and f.match.startswith('^') and f.match.endswith('$')):
+            raise ValueError(
+                'fields.sold_out: a match anchored at both ends (^false$), on the whole of its value: any value '
+                '("true", "10") is text, which an unanchored pattern or none reads as sold out'
+            )
+        return self
+
+
+def recipe_kind(value: object) -> str:
+    """Which recipe a recipe's JSON, or a recipe, is: one with an API reads its tickets there."""
+    match value:
+        case ApiRecipe() | {'api': dict()}:
+            return 'api'
+        case _:
+            return 'page'
+
+
+type Recipe = Annotated[
+    Annotated[PageRecipe, Tag('page')] | Annotated[ApiRecipe, Tag('api')], Discriminator(recipe_kind)
+]
+RECIPE: TypeAdapter[PageRecipe | ApiRecipe] = TypeAdapter(Recipe)
+
+
+# ---- rows of the CSV files the steps share
+
+
+def blank(value: object) -> object:
+    return None if value == '' else value
+
+
+def unblank(value: object, handler: SerializerFunctionWrapHandler) -> object:
+    return '' if value is None else handler(value)
+
+
+def number_text(value: float) -> str:
+    """A number as the shortest text that reads back as it: 80, 80.5, 12999.99."""
+    return str(int(value)) if value.is_integer() else repr(value)
+
+
+def flag_text(value: object) -> str:
+    return '1' if value else '0'
+
+
+type Blank[T] = Annotated[T | None, BeforeValidator(blank), WrapSerializer(unblank)]  # empty when there is none
+type Number = Annotated[float, PlainSerializer(number_text, return_type=str)]  # 80, 80.5
+type Flag = Annotated[bool, PlainSerializer(flag_text, return_type=str)]  # 1 or 0
+type Amount = Annotated[float, Field(gt=0), PlainSerializer(number_text, return_type=str)]  # a price, more than 0
+
+
+def split_keys(value: object) -> object:
+    return tuple(k for k in value.split(';') if k) if isinstance(value, str) else value
+
+
+def keys_text(value: tuple[str, ...]) -> str:
+    return ';'.join(value)
+
+
+type Keys = Annotated[
+    tuple[Key, ...],
+    BeforeValidator(split_keys),
+    PlainSerializer(keys_text, return_type=str),
+]  # a;b
+
+
+ANSWERS = 'pipeline/extract/answers'  # each pass's answers, a folder per pass
+
+
+class CsvRow(BaseModel):
+    """A row of a CSV file, its columns the record's fields. A row is text, so its values are read from their text
+    (lax: '3' is an int, '1' a true flag) and written back as text; an empty column of a field that may be none is
+    None. Each record's rows are one file, FILE, its path from the data folder."""
+
+    model_config = ConfigDict(extra='forbid', frozen=True, validate_by_name=True, serialize_by_alias=True)
+    FILE: ClassVar[str]
+
+    @classmethod
+    def __pydantic_init_subclass__(cls, **kwargs: object) -> None:
+        super().__pydantic_init_subclass__(**kwargs)
+        if not isinstance(vars(cls).get('FILE'), str):
+            raise TypeError(f'{cls.__name__} names no FILE: each record is the rows of one file')
+
+    @classmethod
+    def records(cls) -> list[type['CsvRow']]:
+        """Every record of a file, which the audit reads its file through."""
+        return cls.__subclasses__()
+
+    @classmethod
+    def path(cls) -> Path:
+        return data(cls.FILE)
+
+    @classmethod
+    def columns(cls) -> list[str]:
+        return [f.serialization_alias or name for name, f in cls.model_fields.items()]
+
+    @classmethod
+    def read(cls) -> list[Self]:
+        return [cls.model_validate(cls.cells(row)) for row in tables.rows(cls.path())]
+
+    @classmethod
+    def cells(cls, row: dict[str, str]) -> dict[str, object]:
+        """A row's values by field; a record whose fields are not its columns says how they map."""
+        return dict(row)
+
+    def text(self) -> dict[str, object]:
+        out: dict[str, object] = self.model_dump(mode='json')
+        return out
+
+    @classmethod
+    def write(cls, rows: Iterable[Self]) -> None:
+        """The file holding these rows, written whole (pipeline/files.py)."""
+        out = io.StringIO(newline='')
+        w = csv.DictWriter(out, cls.columns(), lineterminator='\n')
+        w.writeheader()
+        w.writerows(r.text() for r in rows)
+        files.write(cls.path(), out.getvalue())
+
+    def append(self) -> None:
+        """Add the row at the end of the file, which gets its header when it is new (or empty); tables.ShapeError when
+        the file's header is not the record's columns, as a row under it would be read by other columns."""
+        path = self.path()
+        path.parent.mkdir(parents=True, exist_ok=True)
+        found = tables.header(path) if path.exists() else []
+        if found and found != self.columns():
+            raise tables.ShapeError(f'{self.FILE}: its header is {",".join(found)}, not {",".join(self.columns())}')
+        new = not found
+        with path.open('a', encoding='utf-8', newline='') as f:
+            w = csv.DictWriter(f, self.columns(), lineterminator='\n')
+            if new:
+                w.writeheader()
+            w.writerow(self.text())
+
+
+class TicketPage(Record):
+    """A festival whose prices are read on its ticket page: which page, when and how (pipeline/tickets_store.py,
+    written), as the export's ticket_pages has it."""
+
+    event_id: int
+    page: Url
+    reseller: str | None
+    read_on: Date
+    read_by: Text
+    prompt: Hash
+    recipe: Version
+    unread: Annotated[int, Field(ge=0)]  # its tickets the first read doesn't know
+
+
+class FoundRow(CsvRow):
+    """How an agent found a festival with no known ticket page sells: a page exactly when it sells in a shop (a
+    festival whose sales haven't opened may name its coming page), the links searched exactly when a search found
+    nothing."""
+
+    FILE = 'pipeline/tickets/pages.csv'
+
+    event_id: int
+    event: str
+    state: Sales
+    page: Blank[Url]
+    links: Blank[Hash]  # what a search that found nothing was of (tickets_state.links_hash)
+    found_by: Text
+    note: Text
+
+    @model_validator(mode='after')
+    def as_it_sells(self) -> Self:
+        if (self.state == Sales.SHOP) != (self.page is not None) and self.state != Sales.NOT_YET:
+            raise ValueError(f'state {self.state}: a shop has its page, and only a shop (or a sale to come) has one')
+        if (self.state == Sales.NONE_FOUND) != (self.links is not None):
+            raise ValueError(f'state {self.state}: the links searched, exactly when a search found nothing')
+        return self
+
+
+class StatusRow(CsvRow):
+    """What a festival waits for."""
+
+    FILE = 'pipeline/tickets/status.csv'
+
+    event_id: int
+    event: str
+    start: Date
+    waits_for: Waiting
+    first_read: FirstReadState
+    sales: Blank[Sales]
+    page: Blank[Url]
+
+
+class PlanRow(CsvRow):
+    """Who said they are going to which festival."""
+
+    FILE = 'pipeline/plans.csv'
+
+    person: str
+    event_id: int
+    status: Plan
+    event: str
+
+
+# A name and nothing else, which a manager writes for someone else, or for where a member stays: a link, a handle, an
+# email address or a phone number is a way to reach someone, which only they may give (the communities' rule 2). So a
+# name is of the shape a name has, not free text with ways to reach someone taken out: words of letters (accents
+# included), each joined by a hyphen or an apostrophe, a dot only after an initial ("Mary J. Blige", "J.Lo"), and
+# digits, four at most, for a place's (Hotel 31). Every word is read whatever its case.
+NAME_MARKS = frozenset(" -'’.")
+MOST_DIGITS = 4  # a place's number (Hotel 31, Room 1408); a phone number has more
+# words that name a way to reach someone, or spell an address out ("tonje at gmail dot com")
+REACHING_WORDS = frozenset(
+    [
+        'at',
+        'dot',
+        'insta',
+        'instagram',
+        'facebook',
+        'fb',
+        'tiktok',
+        'snap',
+        'snapchat',
+        'whatsapp',
+        'telegram',
+        'twitter',
+        'phone',
+        'tel',
+        'mobile',
+        'email',
+    ]
+)
+# what follows a dot in an address: a domain's last part, whatever its case ("tonje.NO", "x.com")
+DOMAIN_ENDS = frozenset(
+    [
+        'com',
+        'net',
+        'org',
+        'no',
+        'io',
+        'me',
+        'co',
+        'uk',
+        'de',
+        'fr',
+        'es',
+        'pt',
+        'se',
+        'dk',
+        'fi',
+        'nl',
+        'be',
+        'it',
+        'info',
+        'app',
+        'link',
+        'page',
+        'site',
+    ]
+)
+INITIAL = re.compile(r'(?:^|(?<=[\s.]))(\w)\.(\w*)')
+
+
+def plain_name(name: str) -> str:
+    def refused(why: str) -> ValueError:
+        return ValueError(f'{name!r} is no plain name: {why}, which may reach someone (rule 2)')
+
+    if odd := sorted(
+        {c for c in name if not (c.isalpha() or c.isdigit() or c in NAME_MARKS or ud.category(c) == 'Mn')}
+    ):
+        raise refused(f'it holds {"".join(odd)!r}: a name holds letters, spaces, hyphens, apostrophes and initials')
+    if sum(c.isdigit() for c in name) > MOST_DIGITS:
+        raise refused(f'it holds more than {MOST_DIGITS} digits')
+    if said := REACHING_WORDS & {w.casefold() for w in re.split(r"[\s.\-'’]+", name)}:
+        raise refused(f'it says {", ".join(sorted(said))!r}')
+    dots = name.count('.')
+    initials = [m.group(2) for m in INITIAL.finditer(name)]  # what follows each initial's dot
+    if dots != len(initials):
+        raise refused('a dot that follows no initial')
+    if ends := [after for after in initials if after.casefold() in DOMAIN_ENDS]:
+        raise refused(f'a dot before {ends[0]!r}, as in an address')
+    return name
+
+
+PlainName = Annotated[str, Field(min_length=1), AfterValidator(plain_name)]
+CommunityKey = Annotated[str, Field(pattern=r'^[a-z]+(-[a-z]+){3}$')]  # four words, as frost-lantern-river-maple
+
+
+class Community(CsvRow):
+    """A community: its key (four words, its page's address), its name, and its manager (a people.csv key), who adds
+    people to it."""
+
+    FILE = 'pipeline/communities.csv'
+
+    key: CommunityKey
+    name: Text
+    manager: str
+    note: str
+
+
+class Membership(CsvRow):
+    """A person (a people.csv key) who is a member of a community, under their own name."""
+
+    FILE = 'pipeline/community_members.csv'
+
+    community: str
+    person: str
+
+
+class Seeded(CsvRow):
+    """Someone a community's manager added, who has not joined: a plain name (no link, handle or email), the artist
+    records they are (';'-separated match keys, so a booking says they teach there; the manager never says so) and a
+    festival they are going to. The community's page names them, as added by its manager."""
+
+    FILE = 'pipeline/seeded.csv'
+
+    community: str
+    name: PlainName
+    artist_keys: Keys
+    event_id: int
+    status: Plan
+    event: str
+
+
+@dataclass(frozen=True, order=False)
+class Moment:
+    """When a travel arrives or leaves, where it happens (a flight's, in the zone of its airport): its day, and its time
+    to the minute when said. Read once from its text (YYYY-MM-DD, or YYYY-MM-DDTHH:MM), and written back as it."""
+
+    day: dt.date
+    time: dt.time | None
+
+    @classmethod
+    def read(cls, value: object) -> 'Moment':
+        if isinstance(value, Moment):
+            return value
+        text = str(value)
+        if not MOMENT.fullmatch(text):
+            raise ValueError(f'{text!r} is no day (YYYY-MM-DD) nor a day and time (YYYY-MM-DDTHH:MM)')
+        at = dt.datetime.fromisoformat(text)  # ValueError when it names none, as 2026-02-30T25:00
+        return cls(at.date(), at.time() if 'T' in text else None)
+
+    def __str__(self) -> str:
+        return self.day.isoformat() if self.time is None else f'{self.day.isoformat()}T{self.time:%H:%M}'
+
+    def before(self, other: 'Moment') -> bool:
+        """Whether this is before the other: by their days when either has no time, else by their times."""
+        if self.time is None or other.time is None:
+            return self.day < other.day
+        return (self.day, self.time) < (other.day, other.time)
+
+
+MOMENT = re.compile(r'\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2})?')
+# a Moment in a CSV cell: its text
+LocalTime = Annotated[Moment, BeforeValidator(Moment.read), PlainSerializer(str, return_type=str)]
+
+
+class Travel(CsvRow):
+    """How a member travels to a festival they plan, as far as they said: when they arrive (and at which airport, when
+    they fly) and when they leave (and from where), either end left empty when not known, or its day alone when its
+    time is not. An airport goes with its time, and something is said: a row of four blanks says nothing, which no row
+    does. Only a member, who has a name of
+    their own, registers how they travel; the people a manager adds never do. Where they stay is stays.csv."""
+
+    FILE = 'pipeline/travel.csv'
+
+    person: str
+    event_id: int
+    arrive: Blank[LocalTime]
+    arrive_at: Blank[Iata]
+    leave: Blank[LocalTime]
+    leave_from: Blank[Iata]
+
+    @model_validator(mode='after')
+    def said(self) -> Self:
+        if self.arrive is None and self.leave is None:
+            raise ValueError('neither when they arrive nor when they leave: a row says one of them at least')
+        # an airport goes with a time: a flight's day alone says no flight to name an airport of
+        if self.arrive_at is not None and (self.arrive is None or self.arrive.time is None):
+            raise ValueError(f'arrive_at {self.arrive_at} without the time they arrive')
+        if self.leave_from is not None and (self.leave is None or self.leave.time is None):
+            raise ValueError(f'leave_from {self.leave_from} without the time they leave')
+        if self.arrive is not None and self.leave is not None and self.leave.before(self.arrive):
+            raise ValueError(f'arrive {self.arrive} is after leave {self.leave}')
+        return self
+
+
+class StayRow(CsvRow):
+    """Where a member stays at a festival they plan, from a night to a night, each night by its evening's date: a
+    plain name (no link, handle or email) such as a hotel or "with friends". A member may stay at several places, one
+    after another; a member's nights never overlap, and fall between the day they arrive and the day before they leave
+    when they said them."""
+
+    FILE = 'pipeline/stays.csv'
+
+    person: str
+    event_id: int
+    first_night: Date
+    last_night: Date
+    place: PlainName
+
+    @model_validator(mode='after')
+    def nights_in_order(self) -> Self:
+        if self.first_night > self.last_night:
+            raise ValueError(f'first_night {self.first_night} is after last_night {self.last_night}')
+        return self
+
+
+class Airport(CsvRow):
+    """An airport a festival can fly to; home (1) is where flights leave from."""
+
+    FILE = 'pipeline/airports.csv'
+
+    code: Iata
+    name: str
+    city: str
+    country_code: CountryCode
+    lat: float
+    lon: float
+    home: Flag
+
+
+class Spelling(NamedTuple):
+    """A city as the source DB spells it, with the country it is listed under (none when it names none): what a place
+    claim is about, and what geocode.csv asks Nominatim for (pipeline/cities.py)."""
+
+    city: str
+    country: str | None
+
+
+class Spot(Record):
+    """Where Nominatim puts a place, and its name for it."""
+
+    model_config = ConfigDict(strict=False)  # a geocode.csv row's text, or Nominatim's
+
+    lat: float
+    lon: float
+    name: str
+
+
+class Place(CsvRow):
+    """A place asked of Nominatim, and where it is when Nominatim found it (its columns lat, lon and osm_name, all
+    empty when it found none): a city as the source DB spells it, in its country when it names one, or the place a
+    place claim says that spelling is (pipeline/cities.py)."""
+
+    FILE = 'pipeline/geocode.csv'
+
+    city: Text
+    country: Blank[str]
+    found: Spot | None
+
+    @classmethod
+    def columns(cls) -> list[str]:
+        return ['city', 'country', 'lat', 'lon', 'osm_name']
+
+    @classmethod
+    def cells(cls, row: dict[str, str]) -> dict[str, object]:
+        spot = None if row['lat'] == '' else {'lat': row['lat'], 'lon': row['lon'], 'name': row['osm_name']}
+        return {'city': row['city'], 'country': row['country'], 'found': spot}
+
+    def text(self) -> dict[str, object]:
+        spot = self.found
+        coords = ('', '', '') if spot is None else (number_text(spot.lat), number_text(spot.lon), spot.name)
+        out: dict[str, object] = {'city': self.city, 'country': self.country or ''}
+        return out | dict(zip(('lat', 'lon', 'osm_name'), coords, strict=True))
+
+
+class City(CsvRow):
+    """A city festivals are in, however the source DB spells it (pipeline/cities.py): its key, which never changes once
+    written, as claims name it; its name; the country it is in, which may not be the one a festival is listed under;
+    and where it is, the one place a city's point is kept."""
+
+    FILE = 'pipeline/cities.csv'
+
+    key: CityKey
+    name: Text
+    country_code: CountryCode
+    lat: float
+    lon: float
+
+
+class Stop(Record):
+    """A stop of public transport, as Transitous names it: its id, its name and where it is."""
+
+    model_config = ConfigDict(strict=False)  # a stations.csv row's text
+
+    id: Text
+    name: Text
+    lat: float
+    lon: float
+
+
+class Station(CsvRow):
+    """The stop an airport's trips into a city start from (pipeline/measure.py), when Transitous knows one near it (its
+    columns stop_id, name, lat and lon, all empty when it knows none: those trips start at the airport's point)."""
+
+    FILE = 'pipeline/stations.csv'
+
+    airport: Iata
+    found: Stop | None
+
+    @classmethod
+    def columns(cls) -> list[str]:
+        return ['airport', 'stop_id', 'name', 'lat', 'lon']
+
+    @classmethod
+    def cells(cls, row: dict[str, str]) -> dict[str, object]:
+        stop = None if row['stop_id'] == '' else {k: row[c] for k, c in STOP_COLUMNS.items()}
+        return {'airport': row['airport'], 'found': stop}
+
+    def text(self) -> dict[str, object]:
+        stop = self.found
+        cells = (
+            dict.fromkeys(STOP_COLUMNS.values(), '')
+            if stop is None
+            else {'stop_id': stop.id, 'name': stop.name, 'lat': number_text(stop.lat), 'lon': number_text(stop.lon)}
+        )
+        out: dict[str, object] = {'airport': self.airport}
+        return out | cells
+
+
+STOP_COLUMNS = {'id': 'stop_id', 'name': 'name', 'lat': 'lat', 'lon': 'lon'}  # a Stop's fields, by column
+Minutes = Annotated[int, Field(ge=0)]  # how long a trip takes, in whole minutes
+
+
+class Screened(CsvRow):
+    """How long the quickest trip by public transport from an airport into a festival city takes on a Friday evening,
+    as Transitous's many-to-one search found it on a day (pipeline/measure.py): none when it found no trip. The search
+    counts a wait for the first vehicle as travel, so it screens; a Routed row says how long the trip takes."""
+
+    FILE = 'pipeline/screened.csv'
+
+    city: CityKey
+    airport: Iata
+    minutes: Blank[Minutes]
+    on: Date
+
+
+def split_modes(value: object) -> object:
+    return tuple(m for m in value.split(';') if m) if isinstance(value, str) else value
+
+
+def modes_text(value: tuple[GroundMode, ...]) -> str:
+    return ';'.join(value)
+
+
+type Modes = Annotated[
+    tuple[GroundMode, ...],
+    Field(min_length=1),
+    BeforeValidator(split_modes),
+    PlainSerializer(modes_text, return_type=str),
+]  # bus;tram
+
+
+class Way(Record):
+    """The quickest trip by public transport from an airport into a city that Transitous's route search found: how
+    long it takes from the airport's station to the city's point, the changes it makes, and the vehicles it takes, in
+    order."""
+
+    model_config = ConfigDict(strict=False)  # a routed.csv row's text
+
+    minutes: Minutes
+    changes: Annotated[int, Field(ge=0)]
+    modes: Modes
+
+
+class Routed(CsvRow):
+    """The quickest trip by public transport from an airport into a festival city leaving on a Friday afternoon, as
+    Transitous's route search found it on a day (pipeline/measure.py) (its columns minutes, changes and modes, all
+    empty when it found none)."""
+
+    FILE = 'pipeline/routed.csv'
+
+    city: CityKey
+    airport: Iata
+    found: Way | None
+    on: Date
+
+    @classmethod
+    def columns(cls) -> list[str]:
+        return ['city', 'airport', 'minutes', 'changes', 'modes', 'on']
+
+    @classmethod
+    def cells(cls, row: dict[str, str]) -> dict[str, object]:
+        way = None if row['minutes'] == '' else {k: row[k] for k in WAY_COLUMNS}
+        return {'city': row['city'], 'airport': row['airport'], 'found': way, 'on': row['on']}
+
+    def text(self) -> dict[str, object]:
+        way = self.found
+        cells: dict[str, object] = dict.fromkeys(WAY_COLUMNS, '') if way is None else way.model_dump(mode='json')
+        out: dict[str, object] = {'city': self.city, 'airport': self.airport}
+        return out | cells | {'on': self.on.isoformat()}
+
+
+WAY_COLUMNS = ('minutes', 'changes', 'modes')
+
+Stops = Annotated[int, Field(ge=0)]  # the stops a flight makes, 0 when it is direct
+
+
+class Offer(Record):
+    """An option a fare search saw: the Friday-to-Monday return's price in euros, the tickets it is booked on, its
+    stops each way (out alone from Google's outbound page, whose price is the return's; none when not known) and the
+    airlines flying it, out then back, by the vendor's names for them."""
+
+    price: Positive
+    ticket: FareTicket
+    stops_out: Stops | None
+    stops_back: Stops | None
+    airlines: tuple[str, ...]
+
+
+class Search(Record):
+    """A fare search, the unit of the fare history (pipeline/fare_offers/, pipeline/fare_store.py): who was asked
+    (vendor), when, from where (origin) to which airport for which Friday, for which flights (mode), what it found
+    (outcome) and the offers it saw, a price each. note: the vendor's words, or why it failed; backfill: the file and
+    commit a search kept before this history was, read back from."""
+
+    id: Hash
+    at: Stamp
+    origin: Iata
+    airport: Iata
+    depart: Date
+    mode: FareMode
+    vendor: FareVendor
+    outcome: FareOutcome
+    note: str | None = None
+    backfill: str | None = None
+    offers: tuple[Offer, ...] = ()
+
+    @model_validator(mode='after')
+    def offers_as_found(self) -> Self:
+        if (self.outcome == FareOutcome.OFFERS) != bool(self.offers):
+            raise ValueError(f'a search whose outcome is {self.outcome} has {len(self.offers)} offers')
+        if self.outcome == FareOutcome.FAILED and not self.note:
+            raise ValueError('a failed search says why in its note')
+        return self
+
+
+class Spent(CsvRow):
+    """A request to Claude and what it cost; thinking counts as output."""
+
+    FILE = 'pipeline/spend.csv'
+
+    at: Stamp
+    step: Name
+    model: Model
+    input_tokens: int
+    output_tokens: int
+    usd: Number
+
+
+class Rate(CsvRow):
+    """Units of a currency per euro, on a day."""
+
+    FILE = 'pipeline/rates.csv'
+
+    currency: Currency
+    per_eur: Annotated[float, Field(gt=0)]
+    date: Date
+
+
+class Promo(CsvRow):
+    """A promo code for a festival, ours, not kizomba-world's."""
+
+    FILE = 'pipeline/promo_codes.csv'
+
+    event_id: int
+    code: str
+    offer: Blank[str]  # what it gives, when known
+    event: str
+    note: str
+
+
+# A person's key: lower-case words of letters and digits joined by hyphens, as cedric or ana-maria. It is the end of
+# their page's address (#friends/<key>), so it never holds what an address reads otherwise (/, #, ?, %, a space).
+PersonKey = Annotated[str, Field(pattern=r'^[a-z0-9]+(-[a-z0-9]+)*$')]
+
+
+class Person(CsvRow):
+    """Someone who shares their festival plans: the artist records they are (';'-separated match keys), whether cards
+    name them (featured) or only count them, and the city they live in, when they said, which the Friends tab finds
+    people near a visitor by."""
+
+    FILE = 'pipeline/people.csv'
+
+    key: PersonKey
+    name: str
+    artist_keys: Keys
+    featured: Flag
+    home: Blank[Text]  # the city they live in, as geocode.csv names it; none when they have not said
+    note: str
+
+
+class Group(CsvRow):
+    """A named group: an act several people perform as, its members and the spellings that mean it, each a
+    match_key."""
+
+    FILE = 'pipeline/extract/groups.csv'
+
+    group_key: Annotated[str, AfterValidator(names.group)]  # a group's: a line-up naming it is the group's
+    display_name: str
+    members: Keys
+    aliases: Keys
+    note: str
+
+
+class Suggestion(CsvRow):
+    """A pair of artists that may be one, for a reviewer to decide."""
+
+    FILE = 'pipeline/artist_merge_suggestions.csv'
+
+    keep_key: Key  # a key a mention produces, which a merge claim names (pipeline/claims.py)
+    merge_key: Key
+    keep_name: str
+    merge_name: str
+    keep_bookings: int
+    merge_bookings: int
+    keep_countries: str
+    merge_countries: str
+    countries: SuggestionCountries
+    calendar: SuggestionCalendar
+    calendar_note: str
+    similarity: float
+    score: float
+    reason: MergeReason

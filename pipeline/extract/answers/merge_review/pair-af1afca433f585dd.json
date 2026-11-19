@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paolo@angelica+paolo",
+ "key_b": "p:paolopetrax",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "af1afca433f585dd",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list Italy as their country, but side A is a bare common first name ('Paolo') with a partner (angelica) that side B does not share, and side A has no mentions listed, so the evidence does not establish whether 'Paolo' is 'Paolo Petrax'."
+ }
+}

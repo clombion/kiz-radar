@@ -1,0 +1,13 @@
+{
+ "key_a": "p:gaby@dance",
+ "key_b": "p:gaby@dwe+gaby",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "76dc2d6e7a121973",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as NL and share the name Gaby (differing only in case), but Gaby is a common first name, side A has no partners while side B is linked to dwe, side B's mention list is empty, and the only shared event country is France, so the evidence does not settle whether this is one artist."
+ }
+}

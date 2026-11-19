@@ -1,0 +1,13 @@
+{
+ "key_a": "p:said@oksana+said",
+ "key_b": "p:saidmrbattlekiz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9d7a506190ea4757",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list France, and side B's full stage name 'Said Mr Battle Kiz' starts with side A's 'SAID', but side A is a couple with Oksana (with Ukraine and events in Australia, Hungary and Poland) and side B has no partner or shared event, so the evidence does not settle whether they are one artist."
+ }
+}

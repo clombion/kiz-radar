@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michelle@brandon+michelle",
+ "key_b": "p:michellemorales",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2a6f8e32f5758a8d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the bare first name MICHELLE, linked to a partner (brandon+michelle) and Polish events, while side B is the full name Michelle Morales with a Romanian event and no partners; the shared US country and common first name do not settle whether they are one person."
+ }
+}

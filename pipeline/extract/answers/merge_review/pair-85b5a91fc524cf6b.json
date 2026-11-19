@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+natalia",
+ "key_b": "p:andreas@andreas+silvia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "85b5a91fc524cf6b",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (Natalia versus Silvia), and their events are in different countries (Italy versus Germany), so the only link is a near-identical first name, which is weak evidence."
+ }
+}

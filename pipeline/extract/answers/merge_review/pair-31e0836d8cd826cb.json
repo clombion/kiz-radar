@@ -1,0 +1,13 @@
+{
+ "key_a": "p:stefano@elisa+stefano",
+ "key_b": "p:stefano@maura+stefano",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "31e0836d8cd826cb",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (Elisa on side A, Maura on side B) and the mentions list is empty, so the only shared evidence is a common first name and country, which is too weak to join two people's histories."
+ }
+}

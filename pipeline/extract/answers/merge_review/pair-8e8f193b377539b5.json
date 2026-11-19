@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johanorsinet",
+ "key_b": "p:johanorsinnet",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8e8f193b377539b5",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are teachers at French events, and 'Johan Orsinet' and 'JOHAN ORSINNET' differ only by one doubled letter in a distinctive surname, which reads as a spelling variant of one name. The styles differ (Kizomba vs Salsa–Bachata), but teachers commonly teach several styles, so that does not separate them."
+ }
+}

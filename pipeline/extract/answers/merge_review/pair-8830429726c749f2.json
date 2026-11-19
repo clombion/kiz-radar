@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fred@fred+morgane",
+ "key_b": "p:frednelson",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8830429726c749f2",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the partner Morgane and both have events in France, and the prompt treats a first name paired with a full name that shares the same partner or country as the same artist, though 'Fred' is a common name and the partner keys differ."
+ }
+}

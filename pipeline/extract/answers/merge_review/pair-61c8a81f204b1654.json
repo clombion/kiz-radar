@@ -1,0 +1,13 @@
+{
+ "key_a": "p:adelaide@dance",
+ "key_b": "p:adelaidecarvalho",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "61c8a81f204b1654",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both 'ADELAIDE' and 'ADELAIDE CARVALHO' are listed as separate teacher lines at the same event (17016) with different styles, which shows two people rather than one artist."
+ }
+}

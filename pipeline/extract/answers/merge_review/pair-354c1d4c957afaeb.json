@@ -1,0 +1,13 @@
+{
+ "key_a": "p:davide@cilene+davide",
+ "key_b": "p:davide@davide+laura",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "354c1d4c957afaeb",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Davide and share Italy, but their partners differ (cilene versus laura) and side A also has Cape Verde and Switzerland events, so the evidence does not show whether one dancer changed partners or two Davides exist."
+ }
+}

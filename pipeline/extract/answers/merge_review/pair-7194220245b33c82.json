@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jack@dj",
+ "key_b": "p:jack@jack+sara",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7194220245b33c82",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Spain and share event countries (Austria, France, Italy), and the DJ prefix matches the bare name, but 'Jack' is a common name, side B's mention list is empty so no event or line can be checked, and B's only partner is a 'jack+sara' couple, so the evidence does not settle whether these are one artist."
+ }
+}

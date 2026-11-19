@@ -1,0 +1,13 @@
+{
+ "key_a": "p:carla@carla+malick",
+ "key_b": "p:carla@carla+mario",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ec10e475d3481e80",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides share only the bare first name Carla; their partners differ (malick versus mario), so no shared partner links them, and side B has an Angola country stated that side A lacks, leaving the evidence showing two different people."
+ }
+}

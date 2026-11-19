@@ -1,0 +1,13 @@
+{
+ "key_a": "p:pankadas@dj",
+ "key_b": "p:pankadas@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "35529615a39ae128",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are the same key p:pankadas@dj, so this is one name stated with countries that never meet: the record mentions FR and PT, with the PT flag attached to a French event (18861) and the FR flag to a French event (15954), and an Italian KIZOMBA event (14667) appears with no country stated, so the evidence does not show whether one DJ or several people share the name and the answer is ambiguous, but the stated countries and styles point to a single generic stage name used by different people, which I judge as separate rather than merge."
+ }
+}

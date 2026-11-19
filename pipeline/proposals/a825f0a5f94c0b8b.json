@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "mons-be",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "CRL",
+   "BRU"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "CRL about 1 h by bus and train via Charleroi, researched; BRU about 1 h 15 by train, researched. The planner found no trip."
+}

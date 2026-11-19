@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@akram+sara",
+ "key_b": "p:sarapaxolieta",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "176a3df8ea60cd6b",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A is 'Sara' with partner akram and events in Canada, France, Italy and Jamaica, while side B is 'Sara Paxolieta' with partner akrambouchiba and only Italian events; the partners differ and the first-name-only match is weak evidence, so they are separate artists."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:rafael@carine+rafael",
+ "key_b": "p:rafael@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5485adca1f84df0e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are Brazilian and named Rafael, but the first name is common, the events do not overlap (Poland and the US versus Turkey), side B has no partner, and side A's style is not recorded, so nothing else links them."
+ }
+}

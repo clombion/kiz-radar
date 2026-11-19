@@ -1,0 +1,13 @@
+{
+ "key_a": "p:corazon@dj",
+ "key_b": "p:corazoncoracao",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0b5df3dacea2e5f7",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A's 'DJ CORAZON' is the same stage name as side B's 'DJ Corazón Coração' with the second word dropped and the accent removed, both are DJs at French events, and both sides list France (FR) among their countries, though A's flags are overseas-territory codes and no style or partner overlaps."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+ben",
+ "key_b": "p:ana@ana+guizamora",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "be0ea7046c34e705",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share only the common first name Ana and the country PT, while their partners differ (ben versus guizamora) and their event histories barely overlap, so the evidence does not establish whether they are one artist."
+ }
+}

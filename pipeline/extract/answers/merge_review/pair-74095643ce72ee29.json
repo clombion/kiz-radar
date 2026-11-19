@@ -1,0 +1,13 @@
+{
+ "key_a": "p:luismi@angeles+luismi",
+ "key_b": "p:luismi@luismi+mariangela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "74095643ce72ee29",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are Spanish with the same name, but side A's only partner is Angeles in Spain while side B's partner is Mariangela in Belgium and Italy, so the couple evidence points in different directions and neither a shared partner nor a shared event settles whether this is one artist."
+ }
+}

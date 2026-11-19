@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marion@chandryl+marion",
+ "key_b": "p:marion@gordon+marion",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3f8ab38233f3faa5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named only 'Marion' with the same country (FR), but their partners differ (Chandryl vs Gordon) and no mentions are listed, so a common first name with different partners does not settle whether they are one artist."
+ }
+}

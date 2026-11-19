@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ducu@dj",
+ "key_b": "p:ducu@ducu+jojo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "479af47bdd29d175",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Romanian with events in Hungary and Romania, and the DJ prefix matches the bare name, but side B has no mentions to inspect and its key marks it as a couple act with jojo, so whether the solo DJ and the duo are one person is not settled."
+ }
+}

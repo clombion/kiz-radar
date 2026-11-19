@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johann@johann+laeticia",
+ "key_b": "p:johannorsinet",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c94f5e17756ed0fe",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as French, but side A is only the bare first name 'Johann' tied to a couple with Laeticia and to Guadeloupe events with no mentions listed, while side B is the full name 'DJ Johann Orsinet' with no partners, so the shared first name and country do not settle whether they are one person."
+ }
+}

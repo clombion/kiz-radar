@@ -1,0 +1,129 @@
+[project]
+name = "kiz-radar"
+version = "0"
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic==2.14.1",   # every step reads and writes its records through pydantic models
+    "pyarrow==20.0.0",    # the fare history, a Parquet file per run (pipeline/fare_store.py), which the build reads
+]
+
+# Each job installs only its group: uv run --group <group> -m pipeline.<module>. A group that needs another's
+# packages includes that group, so every version is written once.
+[dependency-groups]
+scrape = ["curl_cffi==0.17.0"]
+ask = ["anthropic==2.3.0", "httpx2==2.16.0"]   # httpx2: its transport errors, which the SDK lets through mid-stream
+browser = ["patchright==1.55.2"]
+# Google Flights through fli (punitarani/fli), pinned to a commit: the one statement of its version
+fares = [
+    "flights @ git+https://github.com/punitarani/fli@881aee5ff4321e81ea2157cb44be94ce6a21dc1b",
+    "tenacity==9.2.1",   # fli's retries, which pipeline/fli_page.py sets to one try
+]
+tickets = [{include-group = "ask"}, {include-group = "scrape"}, {include-group = "browser"}]
+dev = [
+    "pytest==9.2.0",
+    "pytest-randomly==5.0.0",   # each run in a new order, so no test leans on another having run
+    "pytest-xdist==3.8.0",      # across every core
+    "pytest-timeout==2.4.0",
+    "pytest-socket==0.8.1",     # no test reaches the network
+    "pytest-cov==7.1.0",
+    "ruff==0.17.3",
+    "basedpyright==1.40.2",
+    "mdformat==1.0.0",
+    "mdformat-gfm==1.0.0",
+    "prek==0.5.7",              # the git hooks (prek.toml)
+    "zizmor==1.31.1",           # the workflows' security (lint:actions)
+    {include-group = "tickets"},
+    {include-group = "fares"},
+]
+
+[tool.uv]
+package = false
+default-groups = []
+
+[tool.pytest.ini_options]
+minversion = "9.2"
+pythonpath = ["."]
+testpaths = ["tests"]
+# strict: an unknown option or marker is an error, parametrize ids are unique, and an xfail that passes fails
+strict = true
+# a warning is an error, so a deprecation or a resource left open is fixed where it appears
+filterwarnings = ["error"]
+# every core, in a new order each run (pytest-randomly prints the seed to repeat one), and no socket but a Unix one
+addopts = ["-n", "auto", "-ra", "--disable-socket", "--allow-unix-socket"]
+timeout = 30  # s; the slowest test, a command's own run, takes about 10
+
+[tool.coverage.run]
+branch = true
+source = ["pipeline"]
+
+[tool.coverage.report]
+# the branches the tests reach, measured at 91.5% (read_page's browser and the ticket commands' network the least)
+fail_under = 91
+show_missing = true
+skip_covered = true
+
+[tool.basedpyright]
+typeCheckingMode = "strict"
+reportAny = "error"
+enableTypeIgnoreComments = false  # a suppression names its rule: pyright: ignore[rule]
+reportIgnoreCommentWithoutRule = "error"
+reportUnnecessaryTypeIgnoreComment = "error"
+include = ["pipeline", "tests"]
+pythonVersion = "3.13"
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+include = ["pipeline/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.format]
+quote-style = "single"
+# laid out by its generator (pipeline/states.py), and checked against it by generate:check
+exclude = ["pipeline/enums.py"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "D",        # docstrings here say what a thing is and why, in prose, not pydocstyle's sections and mood
+    "CPY001",   # no copyright header
+    "COM812",   # conflicts with the formatter
+    "T201",     # the steps are command-line programs: what they print is their output
+    "EM101", "EM102", "TRY003",  # an exception's message is written where it is raised
+    "RUF001", "RUF002", "RUF003",  # typographic quotes and dashes are the site's words
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+    "S101",     # pytest's assert
+    "PLR2004",  # a test's expected values are its own
+    "INP001",   # tests/ is pytest's rootdir, not a package
+    "ARG001",   # a fake keeps the signature of the function it stands in for, used or not
+    "FBT001",   # a parametrized test takes its cases' flags as arguments
+    "PLR0913",  # a test's factory takes each field a case may vary
+]
+# their imports inside functions keep each step to its own dependency group (pyproject.toml)
+"pipeline/read_page.py" = ["PLC0415"]
+"pipeline/tickets.py" = ["PLC0415"]
+"pipeline/tickets_reading.py" = ["PLC0415"]
+"tests/test_tickets.py" = ["PLC0415"]
+# Google's outbound page alone is read through fli's private SearchFlights._fetch_flights (its docstring), which the
+# contract test wraps
+"pipeline/fli_page.py" = ["SLF001"]
+"tests/test_fli_page.py" = ["SLF001"]
+# written from pipeline/states.py: FULL_PASS is a ticket, no password; a line is as long as its state's key
+"pipeline/enums.py" = ["S105", "E501"]
+# a drawing's markup is one string, as long as its paths
+"pipeline/drawings.py" = ["E501"]
+# the one clock the pipeline reads
+"pipeline/records.py" = ["TID251"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"datetime.datetime.now".msg = "the pipeline's time is pipeline.records.now(), UTC to the second, and its day today()"
+"datetime.datetime.utcnow".msg = "the pipeline's time is pipeline.records.now(), UTC to the second, and its day today()"
+"datetime.date.today".msg = "the pipeline's day is pipeline.records.today(), in UTC"
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"

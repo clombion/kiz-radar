@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabrizio@dj",
+ "key_b": "p:fabriziokizpower",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b14e057b87777b36",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are stated as Italian, but the only shared element is the common first name Fabrizio, with no shared partner, event, or style link, so the evidence does not show whether the DJ and the teacher are the same person."
+ }
+}

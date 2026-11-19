@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michaeldaimon",
+ "key_b": "p:michaeldiamond",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3bce0b7d40e08ded",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The names are similar but not identical (Daimon vs Diamond, a letter transposition that could be a typo or a different name), and the only shared evidence is the Dutch country code; the events are in Poland and Sweden with no shared partner, so the evidence does not settle whether this is one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@aylin+david",
+ "key_b": "p:david@david+ines",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4955748b420ad332",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are just 'David' with the same country (ES), but they have different partners (aylin vs ines) and different events (Australia vs Poland/Spain), and a common first name is weak evidence, so the record does not settle whether this is one dancer who changed partners or two people."
+ }
+}

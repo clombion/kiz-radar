@@ -1,0 +1,13 @@
+{
+ "key_a": "p:markanthony@dj",
+ "key_b": "p:markanthony@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ff6a577c7e2bfc49",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The pair is one key compared with itself, and the two mentions with stated countries Canada and Hungary never meet at one event, so the evidence cannot tell whether this is one DJ touring widely or two people sharing the stage name 'DJ Mark-Anthony'."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "gran-canaria-es",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "LPA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "LPA 30 min by Global bus 60 to Las Palmas, researched. The planner found no trip."
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anita@anita+marco",
+ "key_b": "p:anita@anita+marcos",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7ec305ecc590131f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the common first name Anita and the country PT, but their partners are different keys (marco vs marcos), so the partner link that would confirm one couple is not established, and the mention lists are empty."
+ }
+}

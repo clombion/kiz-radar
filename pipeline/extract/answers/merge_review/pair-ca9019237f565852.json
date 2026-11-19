@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@dance",
+ "key_b": "p:cristinacricri",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ca9019237f565852",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides carry the same generic first name Cristina with identical stated countries (CH and IT), but there is no shared partner, no distinctive stage name, and side B's only event has no recorded country, so the evidence does not settle whether 'Cristina Cri Cri' is the same person as 'Cristina'."
+ }
+}

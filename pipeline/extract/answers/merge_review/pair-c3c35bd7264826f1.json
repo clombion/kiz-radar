@@ -1,0 +1,13 @@
+{
+ "key_a": "p:richardvooght",
+ "key_b": "p:richardvoogt",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c3c35bd7264826f1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both names are in the UK and the spellings differ by one letter in a distinctive surname, but side A has only one mention, side B's mention list is empty, and nothing else such as a shared partner or style links them, so the evidence does not settle whether this is one artist or two."
+ }
+}

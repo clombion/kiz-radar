@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@david+ines",
+ "key_b": "p:david@david+lidia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "cdce8366ec2a3ccf",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are Spanish with a shared first name, but each is paired with a different partner (Ines versus Lidia), and the keys themselves are built from the partner names, so the evidence points to two distinct couples with the common name David rather than one artist."
+ }
+}

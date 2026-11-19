@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nicole@dance",
+ "key_b": "p:nicole@nicole+wookie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "94eeb87779f2001b",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the common first name Nicole, the Bulgarian country and a France event, but side A has no partner and side B's partner is a different person, and the mention list for B is empty, so the evidence does not settle whether they are one dancer."
+ }
+}

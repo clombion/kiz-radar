@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michela@fernando+michela",
+ "key_b": "p:michela@fernandobumbum+michela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ce1d26c1de1d94e0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Michela with the same countries (AO, IT), and their partners look like the same Fernando (fernando vs fernandobumbum), but the partner keys differ and neither side has any event mentions, so the evidence does not settle whether this is one artist."
+ }
+}

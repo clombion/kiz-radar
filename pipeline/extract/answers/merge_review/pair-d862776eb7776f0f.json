@@ -1,0 +1,13 @@
+{
+ "key_a": "p:chris@chris+clara",
+ "key_b": "p:chris@chris+eva",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d862776eb7776f0f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are named only 'Chris' in Germany, but each is tied to a different partner (Clara versus Eva), and a common first name with no other shared evidence is weak support for one person, so they are two artists."
+ }
+}

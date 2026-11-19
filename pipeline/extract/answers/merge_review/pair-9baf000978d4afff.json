@@ -1,0 +1,13 @@
+{
+ "key_a": "p:heneco@dance",
+ "key_b": "p:heneco@heneco+marta",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9baf000978d4afff",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are written 'Heneco' with country FR and both have events in Switzerland, but side B's mention list is empty, so I cannot check whether the events coincide or whether the partner-linked Heneco+Marta records are the same person as the solo record."
+ }
+}

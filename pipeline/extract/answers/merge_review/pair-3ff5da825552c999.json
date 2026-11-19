@@ -1,0 +1,13 @@
+{
+ "key_a": "p:relampago@dance",
+ "key_b": "p:relampago@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3ff5da825552c999",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both keys share the distinctive stage name Relampago with the same countries (Angola and Switzerland), and the same events (14466 and 18697, both in Switzerland) list both spellings, one as teacher and one as DJ, which fits one artist listed under two roles."
+ }
+}

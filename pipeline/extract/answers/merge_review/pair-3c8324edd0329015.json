@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kordjee@dj",
+ "key_b": "p:kordjee@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3c8324edd0329015",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one key stated with two countries, Saint Martin (MF) and Réunion (RE), and the two mentions sit at different events, so the evidence cannot tell whether one DJ performs in both places or several people share the stage name KORDJEE; the same name with a DJ prefix and a French-overseas-territory pattern fits one artist, but the flags alone do not settle it, so I decline to merge or separate."
+ }
+}

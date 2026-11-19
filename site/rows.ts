@@ -1,0 +1,140 @@
+// The database's rows as the site reads them. A shape names each column a query returns and how to read it; q()
+// reads every row by its shape and fails on a column it doesn't have or a value of another type, so a row's type is
+// its shape's and nothing past this module meets an unread value.
+import type { SqlValue } from 'sql.js';
+import { KEY } from './states.ts';
+import { counted, isKey, type Key, type Point } from './wording.ts';
+
+export type Column<T> = (value: SqlValue | undefined, name: string) => T;
+export type Shape = Readonly<Record<string, Column<unknown>>>;
+export type RowOf<S extends Shape> = { readonly [K in keyof S]: ReturnType<S[K]> };
+
+const wrong = (name: string, value: unknown, what: string): never => {
+  throw new TypeError(`column ${name}: ${JSON.stringify(value)} is no ${what}`);
+};
+export const str: Column<string> = (v, name) => (typeof v === 'string' ? v : wrong(name, v, 'text'));
+export const num: Column<number> = (v, name) => (typeof v === 'number' ? v : wrong(name, v, 'number'));
+// a 0/1 column (SQLite has no booleans)
+export const flag: Column<boolean> = (v, name) => (v === 0 || v === 1 ? v === 1 : wrong(name, v, 'flag'));
+// a column that may be null
+export const opt =
+  <T>(col: Column<T>): Column<T | null> =>
+  (v, name) =>
+    v === null ? null : col(v, name);
+// a column holding one of a point's states (pipeline/states.py)
+export const state =
+  <P extends Point>(point: P): Column<Key<P>> =>
+  (v, name) =>
+    typeof v === 'string' && isKey(point, v) ? v : wrong(name, v, `${point} state`);
+// the roles an artist is booked in: their bookings count them, and a plan says what they do there (pipeline/states.py)
+export const BOOKED = counted('role', 'lineup', 'booking');
+export type Booked = (typeof BOOKED)[number];
+// Whether someone may go, not yet going: they said maybe, and the line-up has them not, since someone booked there is
+// teaching (or playing) whatever their plan says. They are named with a "maybe" tag, and a community's days, counts
+// and sentence, and the hero's friends going, leave them out.
+export const unsure = (p: { readonly plan: Key<'plan'>; readonly booked_as: Booked | null }): boolean =>
+  p.plan === KEY.plan.MAYBE && p.booked_as === null;
+const bookedKeys: readonly string[] = BOOKED;
+const isBooked = (v: unknown): v is Booked => typeof v === 'string' && bookedKeys.includes(v);
+// a column holding a role an artist is booked in
+export const booked: Column<Booked> = (v, name) => (isBooked(v) ? v : wrong(name, v, 'role an artist is booked in'));
+// a comma-separated list of a point's states, empty when null
+export const states =
+  <P extends Point>(point: P): Column<readonly Key<P>[]> =>
+  (v, name) =>
+    v === null
+      ? []
+      : str(v, name)
+          .split(',')
+          .filter(Boolean)
+          .map((k) => state(point)(k, name));
+
+export const read = <S extends Shape>(shape: S, row: Readonly<Record<string, SqlValue>>): RowOf<S> => {
+  const out: Record<string, unknown> = {};
+  for (const [name, col] of Object.entries(shape)) {
+    if (!Object.hasOwn(row, name)) throw new TypeError(`no column ${name} in the row`);
+    out[name] = col(row[name], name);
+  }
+  // biome-ignore lint/nursery/noUnsafeTypeAssertion: every column of the shape was read into out, by its own reader
+  return out as RowOf<S>; // oxlint-disable-line typescript/no-unsafe-type-assertion -- as biome-ignore says above
+};
+
+// ----- shapes of the tables and views more than one query reads -----
+
+// where and when a festival is, as each query that shows it reads them from event_rows
+export const PLACE_AND_DAYS = {
+  city: opt(str),
+  country_code: opt(str),
+  start_date: str,
+  end_date: str,
+} as const satisfies Shape;
+// a festival as event_rows has it (pipeline/build_site_db.py)
+export const EVENT = {
+  id: num,
+  title: str,
+  url: str,
+  ...PLACE_AND_DAYS,
+  city_key: opt(str), // the city it is in, however its listing spells it (cities), with that city's point
+  lat: opt(num),
+  lon: opt(num),
+  airport: opt(str),
+  airport_km: opt(num),
+  airport_city: opt(str),
+  weekend_friday: opt(str),
+  cancelled: opt(flag),
+  listing: state('listing'),
+  venue: opt(str),
+  lineup: num,
+  popular_artists: num,
+  genres: states('genre'),
+  features: states('feature'),
+  phase: state('phase'),
+  upcoming: flag,
+  price_state: state('price'),
+  ticket_page: opt(str),
+  card_pass: opt(num),
+} as const satisfies Shape;
+export type EventRow = RowOf<typeof EVENT>;
+
+export const PASS = {
+  event_id: num,
+  pass_no: num,
+  kind: state('pass_kind'),
+  style: opt(state('style')),
+  label: opt(str),
+  group_size: opt(num),
+  people: state('people'),
+  days: opt(num),
+  includes_hotel: flag,
+} as const satisfies Shape;
+
+export const TIER = {
+  event_id: num,
+  pass_no: num,
+  amount: num,
+  currency: str,
+  fee: opt(num),
+  valid_from: opt(str),
+  valid_until: opt(str),
+  door: flag,
+  sold_out: flag,
+} as const satisfies Shape;
+export type TierRow = RowOf<typeof TIER>;
+
+// an artist's festivals in each role they are booked in: artist_stats' column for each (the compiler holds the keys to
+// the booked roles)
+export const BOOKINGS = { teacher: num, dj: num, performer: num, mc: num } as const satisfies Readonly<
+  Record<Booked, Column<number>>
+>;
+
+export const ARTIST_STATS = {
+  artist_id: num,
+  bookings: num,
+  ...BOOKINGS,
+  home_country: opt(str),
+  home_basis: opt(state('home_basis')),
+  booked_most_in: opt(str),
+  countries: num,
+  abroad_bookings: opt(num),
+  popular: flag,
+} as const satisfies Shape;

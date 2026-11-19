@@ -1,0 +1,13 @@
+{
+ "key_a": "p:rita@dance",
+ "key_b": "p:rita@eddy+rita",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "85a3a0bb151420c4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The two keys differ only in capitalization of the same single first name, 'RITA' and 'Rita', and both are listed as Hungarian with an Austrian event in common. But 'Rita' is a common name, side A has no partner, and side B's partnership with eddy and its Hungary and Serbia events do not settle whether A is the same person."
+ }
+}

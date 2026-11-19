@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paolou",
+ "key_b": "p:paoulou",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "776893ef3ceac78b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "'PAO LOU' and 'Paou Lou' are a distinctive stage name with a spelling variant, both link to France, and their partners 'mikiz' and 'mikkiz' with the paolou/paoulou spelling are near-identical couple keys, which together suggest one artist; the side B mentions are not listed, so this rests on the evidence summary."
+ }
+}

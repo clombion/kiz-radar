@@ -1,0 +1,13 @@
+{
+ "key_a": "p:linda@dance",
+ "key_b": "p:linda@jacopo+linda",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5a51ef1d18513751",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Italian and 'Linda' is a common first name, but side A has no partner and its events are in Italy while side B's are in the United Kingdom with partner Jacopo, and side B has no listed mentions, so the evidence does not settle whether they are one artist."
+ }
+}

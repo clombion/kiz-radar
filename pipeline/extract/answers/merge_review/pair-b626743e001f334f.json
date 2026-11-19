@@ -1,0 +1,13 @@
+{
+ "key_a": "p:eddy@dance",
+ "key_b": "p:eddy@eddy+rita",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b626743e001f334f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are written as Eddy with Hungarian country and an Austria event in common, but 'Eddy' is a common first name, side A has no partner, and side B's mentions are not shown, so I cannot rule out that both appear at the same Austrian event as different people."
+ }
+}

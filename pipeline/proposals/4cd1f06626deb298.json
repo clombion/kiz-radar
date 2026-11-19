@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "gothenburg-se",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "GOT",
+   "CPH"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "GOT 36 min by coach and bus (1 change); CPH 2 h 58 by train and high-speed train (1 change). THN has few flights."
+}

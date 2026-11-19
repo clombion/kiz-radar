@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anamaria",
+ "key_b": "p:anamaria@anamaria+stephane",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "aa9376090282dc14",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The two names are the same up to a hyphen, and both records list the same partner, stephane@anamaria+stephane, which is strong evidence for one person; the different event countries (Denmark and Romania) do not contradict this for a travelling teacher, though the empty mention lists leave some doubt."
+ }
+}

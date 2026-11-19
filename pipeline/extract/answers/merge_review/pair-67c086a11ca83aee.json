@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anso@dance",
+ "key_b": "p:ansocubango",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "67c086a11ca83aee",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The distinctive stage name \"An’So\" appears on both sides as the full name and the first word alone, with the same French country, the same teacher role, and no conflicting evidence, though no shared partner or style confirms it."
+ }
+}

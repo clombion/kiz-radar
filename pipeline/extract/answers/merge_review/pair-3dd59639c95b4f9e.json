@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mrtecas",
+ "key_b": "p:mrtecas@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3dd59639c95b4f9e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are the same distinctive stage name, \"Mr Tecas\" / \"MR.Tecas\", and both have France as a stated country, with side A teaching in France and side B listing a France-based teacher. The evidence is consistent with one artist, though side B has no partners to confirm it."
+ }
+}

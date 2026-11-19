@@ -1,0 +1,53 @@
+# Commands
+
+<!-- written by pipeline/reference.py from tasks.toml: mise run generate -->
+
+Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run tickets -- todo`); `--help` lists them.
+
+| Task | What |
+| -- | -- |
+| `test:py` | The pipeline's tests, on every core in a new order, and the branches they reach (pyproject.toml) |
+| `build:data` | public/data/kiz.sqlite and site.json, which the site loads, and review.json, which the review dashboard does, built from the export (never committed) |
+| `export` | The path of the kizomba-world export the steps work on |
+| `scrape` | Refresh the export's events from kizomba-world.com |
+| `ask` | Ask Claude the extraction passes for the festivals that need them |
+| `check-answer` | Check an answer to an extraction pass against its question, as ask does |
+| `tickets` | Ticket pages and first reads, one festival at a time (CLAUDE.md) |
+| `read-page` | Read one web page a plain request can't, for a one-off check |
+| `load` | Load the saved answers and ticket reads into the export |
+| `resolve` | Resolve the export's artist mentions into artists, with stable ids |
+| `suggest-merges` | List likely duplicate artists for review (pipeline/artist_merge_suggestions.csv) |
+| `airports` | Add to pipeline/airports.csv every airport with scheduled service within 250 km of a festival to come, from OurAirports' airports.csv (ourairports.com/data), downloaded: mise run airports -- <its path> |
+| `measure` | Measure the trips by public transport into each festival city from the airports near it, with Transitous, for the research on its gateways (pipeline/measure.py), from OurAirports' airports.csv, downloaded: mise run measure -- <its path>, and --most N to ask Transitous at most N times |
+| `geocode` | Place the export's cities on the map with OpenStreetMap Nominatim |
+| `cities` | Add to pipeline/cities.csv a city for each city the export names that no city has yet (pipeline/cities.py): after geocode |
+| `rates` | The euro's exchange rates from the European Central Bank |
+| `fares` | Search the festival weekends' return fares and keep every search in pipeline/fare_offers/ (refresh), see what is due (plan) or kept (show), and report how well home's fare predicts other cities' (accuracy) |
+| `install:site` | The site's tools, as pnpm-lock.yaml pins them |
+| `build:site` | The site's TypeScript (site/) compiled into public/js/, and the libraries it loads copied into public/vendor/ from the pinned packages |
+| `serve` | The site and its data built, and served at http://localhost:8000 |
+| `render:design` | The share card (public/share-card.png), each community's (public/c/<key>/share.png, a variant of that card with its name, and share.json, what it is drawn from) and the icons drawn again from design/, the drawings of pipeline/drawings.py and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page |
+| `types:site` | tsc, strict, on the site and its tests |
+| `lint:site` | Biome's rules on the site, its tests and its CSS, with the lint/ plugins |
+| `lint:oxlint` | oxlint's rules on the site, its tests and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md) |
+| `knip` | No module, export or package the site doesn't use |
+| `test:site` | The site's tests, in Node and in Chromium (vitest.config.ts), on the database built from the export and the site built (served under /kiz-radar/ for the tests of the whole site) |
+| `dup` | No block written twice, in the code, tests, stylesheet or Actions, at the length .jscpd.json sets; the generated files aside |
+| `lock:py` | uv.lock is what pyproject.toml resolves to (the site's lock is held by install:site's --frozen-lockfile) |
+| `lint:py` | Ruff's rules on the Python code |
+| `format:py` | The Python code as ruff formats it |
+| `format:site` | The site, its tests, its CSS and the JSON configs as oxfmt writes them (.oxfmtrc.jsonc names which), the generated site/states.ts left as it is |
+| `format:md` | The Markdown as mdformat writes it (.mdformat.toml), the prompts left as they are |
+| `format` | Write the formats the checks hold: ruff's on the Python, mdformat's on the Markdown (the prompts left as they are), oxfmt's on the site |
+| `types:py` | basedpyright, strict, on the pipeline and its tests |
+| `audit` | Every state in the data is one of pipeline/states.py |
+| `generate` | Write the files built from the code: the enums and words of pipeline/states.py and their lint rule, the stylesheet's classes, the drawings of pipeline/drawings.py (site/drawings.ts), the site database's tables the scripts are built for (site/schema.ts), docs/reference/, the home city in the page and the manifest, and each community's page (public/c/<key>/index.html), removing the folder of a community there is no more |
+| `generate:check` | The files built from the code still say what it does |
+| `hooks` | Install the git hooks (prek.toml): the quick checks before a commit, every check before a push; and check the claims submodule out |
+| `lint:actions` | The workflows and their actions: actionlint, and zizmor's security rules (.github/zizmor.yml) |
+| `update:actions` | Move each pinned action to its latest release two weeks old (pinact), then check the workflows |
+| `hooks:check` | prek.toml is a configuration prek reads |
+| `check:fast` | The quick checks, before each commit |
+| `check:commit` | The quick checks, before a commit (prek.toml), on what is staged, in a worktree of its own |
+| `check:push` | Every check, before a push (prek.toml), on the commit pushed, in a worktree of its own |
+| `check` | Every check |

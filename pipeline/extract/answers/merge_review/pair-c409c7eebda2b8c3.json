@@ -1,0 +1,13 @@
+{
+ "key_a": "p:linda@jacopo+linda",
+ "key_b": "p:lindaghiggisemba",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c409c7eebda2b8c3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the common first name 'Linda' with partner Jacopo and events in the UK, while side B is 'Linda Ghiggi Semba' with events in France and no partner; both list Italy, but with no shared partner, style or event, the evidence does not settle whether they are one artist."
+ }
+}

@@ -1,0 +1,242 @@
+"""A record writes what it read: a CSV file is the text its record writes, and its numbers read back as the same
+values."""
+
+import datetime as dt
+import typing
+
+import pytest
+from pydantic import BaseModel
+
+from pipeline import ROOT, records
+from pipeline.enums import Role
+from pipeline.records import CsvRow, number_text
+from tests.exports import committed
+from tests.repository import tracked
+
+
+@pytest.mark.parametrize('value', [80.0, 80.5, 8.25, 12999.99, 129999.5, 1234567.0, 0.1 + 0.2])
+def test_a_number_reads_back_as_itself(value: float) -> None:
+    assert float(number_text(value)) == value
+
+
+def test_every_csv_file_has_its_record() -> None:
+    assert sorted(tracked('*.csv')) == sorted(r.FILE for r in CsvRow.records())
+
+
+@pytest.mark.parametrize('record', CsvRow.records(), ids=[r.FILE for r in CsvRow.records()])
+def test_a_csv_file_is_what_its_record_writes(record: type[CsvRow]) -> None:
+    committed(record.FILE)
+    rows = record.read()
+    record.write(rows)
+    assert record.path().read_bytes() == (ROOT / record.FILE).read_bytes()
+
+
+def marked_fields(record: type[BaseModel], where: str = '') -> set[str]:
+    """The paths of a record type's Verbatim texts, through the records it holds."""
+    out: set[str] = set()
+    for name, info in record.model_fields.items():
+        here = f'{where}.{name}' if where else name
+        if records.verbatim(info):
+            out.add(here)
+        args: tuple[object, ...] = (info.annotation, *typing.get_args(info.annotation))
+        for a in (x for arg in args for x in (arg, *typing.get_args(arg))):
+            if isinstance(a, type) and issubclass(a, BaseModel):
+                out |= marked_fields(a, here)
+    return out
+
+
+def test_every_text_an_answer_copies_is_marked_verbatim() -> None:
+    """The checker looks for a marked text in the festival's words (check_output.found_in); a copied text left
+    unmarked would go unchecked, as genre_as_written and an artist's country and style once did."""
+    assert marked_fields(records.Extracted) == {
+        'artists.name_as_written',
+        'artists.style',
+        'artists.country',
+        'artists.source_line',
+        'features.quote',
+    }
+    assert marked_fields(records.RoomsGenres) == {
+        'party_rooms.quote',
+        'class_rooms.quote',
+        'rooms.name_as_written',
+        'rooms.quote',
+        'genres.genre_as_written',
+        'genres.quote',
+    }
+    assert marked_fields(records.Priced) == {'passes.label_quote', 'passes.tiers.quote', 'rule_quotes'}
+    # a first read's are checked each against its own text, its tickets' or the description's (read_problems)
+    assert marked_fields(records.FirstReadAnswer) == {'passes.label_quote', 'passes.tiers.date_quote', 'rule_quotes'}
+
+
+def test_copied_finds_each_marked_text_by_its_path() -> None:
+    artist = records.Artist(
+        name_as_written='DJ Ana', role=Role.DJ, style=None, country='(PT)', source_line='DJ Ana (PT)'
+    )
+    found = records.copied(records.Extracted(event_id=1, artists=(artist,), features=()))
+    assert found == [
+        ('artists[0].name_as_written', 'DJ Ana'),
+        ('artists[0].country', '(PT)'),
+        ('artists[0].source_line', 'DJ Ana (PT)'),
+    ]
+
+
+AIRPORT = {
+    'code': 'OSL',
+    'name': 'Oslo',
+    'city': 'Oslo',
+    'country_code': 'NO',
+    'lat': '60.2',
+    'lon': '11.1',
+    'home': '0',
+}
+SUGGESTION = {
+    'keep_key': 'p:ana@dj',
+    'merge_key': 'p:ana@dance',
+    'keep_name': 'DJ Ana',
+    'merge_name': 'Ana',
+    'keep_bookings': '2',
+    'merge_bookings': '1',
+    'keep_countries': 'PT',
+    'merge_countries': 'PT',
+    'countries': 'same',
+    'calendar': 'shared circuit',
+    'calendar_note': '',
+    'similarity': '1.0',
+    'score': '1.15',
+    'reason': 'same name, different keys',
+}
+PERSON = {'key': 'ana-maria', 'name': 'Ana-Maria', 'artist_keys': '', 'featured': '1', 'home': '', 'note': ''}
+COMMUNITY = {'key': 'frost-lantern-river-maple', 'name': 'Norwegians in festivals', 'manager': 'cedric', 'note': ''}
+TRAVEL = {
+    'person': 'cedric',
+    'event_id': '19033',
+    'arrive': '2026-11-19T21:05',
+    'arrive_at': 'OSL',
+    'leave': '2026-11-23T09:30',
+    'leave_from': '',
+}
+STAY = {
+    'person': 'cedric',
+    'event_id': '19033',
+    'first_night': '2026-11-19',
+    'last_night': '2026-11-22',
+    'place': 'Scandic Holberg',
+}
+PLAN = {'person': 'cedric', 'event_id': '19033', 'status': 'going', 'event': 'KUOF 2026'}
+SEEDED = {
+    'community': 'frost-lantern-river-maple',
+    'name': 'Tonje',
+    'artist_keys': '',
+    'event_id': '19033',
+    'status': 'going',
+    'event': 'KUOF 2026 – Kizomba & Urban Kiz Oslo Festival',
+}
+
+
+@pytest.mark.parametrize(
+    ('record', 'row', 'column', 'value'),
+    [
+        (records.Airport, AIRPORT, 'code', 'osl'),
+        (records.Airport, AIRPORT, 'country_code', 'XX'),
+        (records.Suggestion, SUGGESTION, 'keep_key', 'ana'),
+        (records.Suggestion, SUGGESTION, 'merge_key', 'p:ana dj'),
+        (records.Community, COMMUNITY, 'key', 'frost-lantern'),
+        *(
+            (records.Person, PERSON, 'key', key)
+            for key in ('ana/maria', 'ana#maria', 'ana maria', 'Ana', 'ana%20', 'ana-')
+        ),
+        (records.Travel, TRAVEL, 'arrive_at', 'osl'),
+        (records.Travel, TRAVEL, 'arrive', '2026-11-19 21:05'),
+        (records.Travel, TRAVEL, 'arrive', '2026-02-30T21:05'),
+        (records.Travel, TRAVEL, 'arrive', '2026-02-30'),
+        (records.Travel, TRAVEL, 'arrive', '2026-11-24T08:00'),  # after it leaves
+        (records.Travel, TRAVEL, 'arrive', ''),  # an airport without its time
+        (records.StayRow, STAY, 'first_night', '2026-11-23'),  # after the last
+        (records.StayRow, STAY, 'last_night', '2026-11-31'),
+        (records.StayRow, STAY, 'place', 'https://scandic.no/holberg'),
+        (records.StayRow, STAY, 'place', '@scandic'),
+        (records.StayRow, STAY, 'place', 'ana@example.com'),
+        *(
+            (records.Seeded, SEEDED, 'name', reach)
+            for reach in (
+                'https://instagram.com/tonje',
+                'http://tonje.no',
+                'www.tonje.no',
+                'tonje.no',
+                'TONJE.NO',
+                'x.com',
+                'X.Com',
+                'Hotel.COM',
+                '@tonje',
+                'tonje@example.com',
+                '+47 123 45 678',
+                '47123456',
+                'insta: tonje',
+                'insta tonje',
+                'Tonje on Instagram',
+                'tonje[at]x',
+                'tonje at gmail dot com',
+                'Tonje (tonje_k)',
+            )
+        ),
+    ],
+)
+def test_a_csv_row_refuses_a_value_outside_its_column(
+    record: type[CsvRow], row: dict[str, str], column: str, value: str
+) -> None:
+    """An airport is its IATA code, a country one countries.NAMES has, an artist the key a mention gives, a person's
+    key a slug (the end of their page's address), a community four words, a travel's times real ones to the minute,
+    arriving before it leaves, an airport's code with its time, and a stay's nights real days, the first before the
+    last. A name a manager writes for someone who has not joined,
+    and where a member stays, is a name, never a link, an @handle or an email address, which would reach someone and
+    only they may give (the communities' rule 2). A hand edit that is none is refused where the audit reads the file,
+    not later by the step that uses it."""
+    record.model_validate(record.cells(row))
+    with pytest.raises(ValueError, match=column):
+        record.model_validate(record.cells(row | {column: value}))
+
+
+def test_a_plan_is_going_or_maybe_for_a_member_and_for_someone_added() -> None:
+    """A manager says of someone added that they go or may go, as anyone says of their own plan; nothing else."""
+    for record, row in ((records.Seeded, SEEDED), (records.PlanRow, PLAN)):
+        for plan in ('going', 'maybe'):
+            assert record.model_validate(record.cells(row | {'status': plan})).status == plan
+        with pytest.raises(ValueError, match='status'):
+            record.model_validate(record.cells(row | {'status': 'perhaps'}))
+
+
+@pytest.mark.parametrize(
+    'name',
+    ['Tonje', 'Ana-Maria', 'Mary J. Blige', 'Mary J.Blige', 'J.Lo', 'Ole Kristian', 'Siân', "O'Neill", 'Zoë'],
+)
+def test_a_name_a_manager_adds_may_be_any_plain_name(name: str) -> None:
+    assert records.Seeded.model_validate(records.Seeded.cells(SEEDED | {'name': name})).name == name
+
+
+@pytest.mark.parametrize(
+    'place', ['Scandic Holberg', 'Comfort Xpress Oslo Sentrum', 'with friends', 'Hotel 31', 'Airbnb']
+)
+def test_a_place_a_member_stays_at_may_be_any_plain_name(place: str) -> None:
+    assert records.StayRow.model_validate(records.StayRow.cells(STAY | {'place': place})).place == place
+
+
+def test_a_travel_says_one_end_at_least() -> None:
+    """Either end of a travel may be unknown, not both: a row of blanks says nothing."""
+    known = records.Travel.model_validate(records.Travel.cells(TRAVEL | {'leave': ''}))
+    assert (str(known.arrive), known.leave) == ('2026-11-19T21:05', None)
+    # its day alone, when the time is not known
+    day = records.Travel.model_validate(records.Travel.cells(TRAVEL | {'arrive': '2026-11-19', 'arrive_at': ''}))
+    assert day.arrive == records.Moment(dt.date(2026, 11, 19), None)
+    # an airport goes with a time; and a day alone is before or after another by its day, whatever their times
+    with pytest.raises(ValueError, match='arrive_at OSL without the time they arrive'):
+        records.Travel.model_validate(records.Travel.cells(TRAVEL | {'arrive': '2026-11-19'}))
+    same = records.Travel.model_validate(
+        records.Travel.cells(TRAVEL | {'arrive': '2026-11-23T10:00', 'leave': '2026-11-23', 'leave_from': ''})
+    )
+    assert (str(same.arrive), str(same.leave)) == ('2026-11-23T10:00', '2026-11-23')
+    with pytest.raises(ValueError, match='is after leave'):
+        records.Travel.model_validate(
+            records.Travel.cells(TRAVEL | {'arrive': '2026-11-24', 'arrive_at': '', 'leave': '2026-11-23T10:00'})
+        )
+    with pytest.raises(ValueError, match='neither when they arrive nor when they leave'):
+        records.Travel.model_validate(records.Travel.cells(TRAVEL | {'arrive': '', 'arrive_at': '', 'leave': ''}))

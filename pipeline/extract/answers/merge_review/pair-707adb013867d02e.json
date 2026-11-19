@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@alfredo+andrea",
+ "key_b": "p:andrea@andrea+pablo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "707adb013867d02e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the bare name 'Andrea' with the same stated country (ES) and no mention rows to compare, and their partners differ (alfredo versus pablo), so the evidence does not show whether these are one artist or two."
+ }
+}

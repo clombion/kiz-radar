@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@dance",
+ "key_b": "p:saramartins",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "84e58e8a42d1285a",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both 'Sara' and 'Sara Martins' are listed as separate lines at the same Swedish event (15260), which points to two people; the only shared evidence is the first name and country, which is weak on its own."
+ }
+}

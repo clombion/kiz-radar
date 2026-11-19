@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "luanda-ao",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "NBJ"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "NBJ about 1 h by shuttle bus or taxi; the new airport took over international flights from LAD, researched. The planner found no trip."
+}

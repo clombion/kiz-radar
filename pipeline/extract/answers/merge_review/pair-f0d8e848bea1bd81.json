@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dwe@dj",
+ "key_b": "p:dwe@dwe+gaby",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f0d8e848bea1bd81",
+ "answer": {
+  "decision": "merge",
+  "rationale": "'DJ Dwe' and 'DWE' are the same stage name with a DJ prefix on one side, both list the Netherlands as their country, and both have events in France, which matches the DJ-prefix pattern for a merge."
+ }
+}

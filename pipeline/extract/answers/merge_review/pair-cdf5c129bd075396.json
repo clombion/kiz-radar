@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nam@bingo+nam",
+ "key_b": "p:nam@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "cdf5c129bd075396",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the country Vietnam, and the DJ prefix matches the usual pattern, but 'Nam' is a very common Vietnamese given name, so that is weak evidence. Side A's only link is a partner (bingo+nam) that does not appear on side B, and side A has no mentions of its own, so the evidence does not settle whether these are one artist."
+ }
+}

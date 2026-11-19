@@ -1,0 +1,13 @@
+{
+ "key_a": "p:albir@albir+natalia",
+ "key_b": "p:albirrojas",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e00b57227d2724e9",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A's key is the couple 'albir+natalia' and its partner link is natalia, while Side B's Australia event (16638) bills Albir Rojas with partner Natalia; both sides share the Spain and Italy/Australia event countries and Side B's Spain country matches Side A's ES, so the records describe the same artist."
+ }
+}

@@ -1,0 +1,269 @@
+# The site
+
+What a visitor sees, and what decides it. The site is `public/`, published to GitHub Pages by **Publish site** whenever
+`main` changes; its code is `site/` (TypeScript), compiled into `public/js/`, and the libraries it loads are copied into
+`public/vendor/` from the packages `package.json` pins. Neither is committed. The page loads nothing from elsewhere: its
+Content-Security-Policy (`public/index.html`) allows only its own files.
+
+## The festival list
+
+The landing page is a sentence you complete: "I want to go to a Kizomba festival in the next 3 months, flying from
+Bergen to anywhere for a cheap price." Each underlined part is a choice; the time is the weekend (the coming one, or the
+one under way from Friday to Sunday: a festival on any of its days), the next 3 months or the next year (a festival
+whose weekend's Friday is within it). The matching festivals appear below as cards, 30 at a time. Under the sentence,
+**Show all festivals** (the next year, at any price) and **this weekend only** (at any price) take you to the cards,
+with the bar shown at once. Once the sentence scrolls away, a bar under the header keeps the time and price choices in
+view, with the rest under Filters. The choices live in the address, so a view can be bookmarked or shared; an address
+asking for a choice the page doesn't have (an old link's `reach=150`, say) says so at the top, and the page shows its
+defaults for it. Any price is `reach=any` (an empty value would be left out of the address and read as the default, a
+cheap price; an older link's `reach=` still reads as any price).
+
+The price is the trip's: the full pass at today's price plus the Friday-to-Monday return flight. A festival on now
+(between its first and its last day, both included, on the visitor's day: phase `on`) is still listed. From its
+weekend's Friday, when the return priced leaves (`flightBegun` in `site/fares.ts`; a festival that starts on a Thursday
+can still be flown to that day), its trip is the full pass alone, as on its card and for "Cheapest first"; a price limit
+leaves it out, as a trip without its flight says nothing of what going costs. At any price, and on This week, it is in.
+
+| Price chosen | Shown | Sold-out passes | Unknown pass or flight price |
+| -- | -- | -- | -- |
+| a cheap price | trips under 3 000 kr (€300, $350) | left out | left out, unless "Include festivals with unknown prices" is ticked |
+| a reasonable price | trips under 5 000 kr (€500, $550) | left out | the same |
+| any price | every festival | shown, marked | shown (the checkbox isn't offered: they are in already) |
+
+"Cheapest first" orders by the trip, then the flight. When the time and price leave nothing, the list offers to widen
+just those. Filters has "On now only", which keeps the festivals on today (a tag under the sentence, "On now", takes it
+off again; `onnow=1` in the address); when none of the festivals the other choices keep is on today, it is off and
+greyed, saying "(none on today)".
+
+A card shows the dates, the city, the styles, up to three highlights (taxi dancers, a hotel in the pass), a few names
+from the line-up, and the cost: "Cost ~2 810 kr, without accommodation", then "1 500 kr full pass + ~1 310 kr flight to
+Oslo, then 37 km" (the airport priced, and the distance on). A festival flies to its city's airports as decided
+([The airports a city flies to](city-airports.md)), else to every airport within 250 km of its city; the card's flight
+is the best of their fares (`best` in `site/fares.ts`, which the trip, the price filter and the order by price read
+too): the cheapest of the airports within 100 km (`FAR_KM`), the nearer at one price, unless one farther away is cheaper
+by more than €40 (`WORTH_EUR`, in euros as the fares are, about the train or bus on and the time); with no fare within
+100 km, the cheapest of the others. "Flights · 3" after the flight opens them all over the page (a dialog: Escape, × or
+a tap outside closes it, and the focus goes back to the button): each airport, how far it is from the festival, its fare
+(or "not checked yet", "no direct flight that weekend", "direct, no price on Google", "no price found"; a reseller's
+price says so, and that it is likely cheaper from the airlines flying it), its stops each way known ("direct out", "1
+stop out": Google's price is the return's, its stops the way out's; a reseller's "1 stop out, direct back"; "stops not
+known"), when it was last checked, a reseller's cheaper trip on separate tickets under it ("self-transfer, separate
+tickets · reseller's price, likely cheaper from Norwegian Air Shuttle and easyJet"), never the card's, and a link to
+Google Flights; the card's marked "on the card". Opening a card shows the full line-up, the other highlights, the venue
+and the organisers. A festival in Bergen needs no flight; its card says so. A festival on now has a small "On now" tag
+before its place (and before its name in the Friends lists and a person's plans), as a community's trip under way has
+"Now"; once its weekend's flight has left, its cost leaves the flight out: "1 240 kr full pass · already started, no
+flight priced".
+
+Which pass a card prices is the pipeline's choice (the per-person full pass; at a festival of several dance styles its
+Kizomba full pass when it sells one; else a package with a hotel for one); its price on the day is the browser's, from
+the tiers' dates. A card without a price says why: the festival sells no pass the card prices, its prices are on a
+ticket page not read yet, its sales haven't opened, it sells by message or form, its sales are closed, or no price is
+published. Tapping the pass opens every pass at today's price and its next change; a price is what a buyer pays, booking
+fee included.
+
+Prices show in kroner, or in euros or dollars (`?cur=eur`, `?cur=usd`, switched in the footer); amounts in other
+currencies are converted with the European Central Bank's rates and marked "~".
+
+## Exploring
+
+The header's tabs are Festivals, Friends and Explore, whose second row holds This week, the Map, Artists and Countries.
+On a touch screen a swipe goes to the next or previous of those six; on the map a swipe counts from near the screen's
+sides only.
+
+- **This week:** the festivals on any day of the current calendar week, Monday to Sunday, those under way among them;
+  Explore opens on it.
+
+- **Map:** one bubble per city (`pipeline/cities.csv`, however the listings spell it), coloured by the cheapest flight
+  (or by well-known artists), beside the festivals in view; a city's address is its key (`#map/city/munich-de`). A
+  festival is in its city's country. A link from Countries narrows it to a country, which Filters shows and can clear.
+
+- **Artists:** each teacher and DJ, how often and where they are booked, and their page leading with what is coming up.
+  "Next festival soonest" orders everyone, those with nothing coming last.
+
+- **Countries:** each scene's festivals coming up, the cheapest flight there, and how international its line-ups are.
+
+- **Friends:** "Who's going where" (`site/friends.ts`), for a visitor, who has no account yet. Its second row under the
+  header, as Explore's, holds its places: **Near Bergen** (the people living within `NEAR_KM`, 200 km, of the home
+  airport's city, measured against the city `people.home` names; someone with no home is near nowhere) and
+  **Everywhere** (everyone sharing plans); `#friends?in=everywhere`. The visitor's own communities will join that row
+  once there are accounts.
+
+  - Under the title, as a page's head: who shares plans, named while there are eight at most ("Christina, Cédric and
+    Siân share their plans."), else how many and where ("29 people within 200 km of Bergen share their plans."); then,
+    muted, who is away now and who goes next, by the festivals' cities, each opening the festival on the map ("Now:
+    Glasgow (2) · Next: Oslo, 20 Nov"; with more than two festivals on, "Now: 11 festivals, most in Málaga (14)").
+  - The festivals to come, by month ("November 2026 · 3 festivals"), each with its name, place and days, then a line per
+    thing its people do there, labelled (teaching or playing first, then going, then maybe). A line names up to four
+    people or couples (`NAMED_UP_TO`, `site/plans.ts`); past that, the first three and "and N more", which opens the
+    list of everyone going.
+  - A short list (up to six festivals and eight people) is all there is. A longer one gets a bar: **Friends** (a list to
+    tick, the ticked first, with a search; the festivals all of them go to, or any of them; two with nothing in common
+    are told so, with a link to those any of them goes to), the time ahead (this weekend, 3 months or a year) and a
+    festival's name or city, with how many festivals it keeps (on a computer). The choices are in the address
+    (`with=cedric,sian&any=1&when=months&q=prague`), and any of them shows the bar however short the list.
+  - A name opens the pop-up of their plans, as on a festival's card; under "See their page →" it has "Festivals in
+    common with others →", the list with them ticked (a couple, both partners), near the home city when they live there,
+    else Everywhere (`plans.togetherHref`). A person's page (`#friends/<key>`) has the same link, "Compare with friends
+    →".
+
+A community's page (`c/<key>/` from the site's root) has no tab: its link reaches it. It is public all the same, like
+everything the site shows: its members, their plans and travel are in the site's database, which anyone can read (the
+SQL page), and in the repository ([Communities](plans-and-promos.md#communities)). What it shows is below
+([A community's page](#a-communitys-page)).
+
+The search (the header's button, `/` or Ctrl/⌘+K) finds festivals, artists, people, cities, countries, styles and
+highlights as you type, grouped by kind, accents and case aside. What has nothing coming up (a past festival, someone
+with no plans ahead, a place with no festival ahead) shows only once "Include what has nothing coming up" is ticked; a
+note counts what it hides. The footer links to an SQL page, which runs queries on its own copy of the database: what a
+query changes there changes nothing elsewhere, until the page is reloaded.
+
+## The footer and the sources page
+
+The footer has the site's name and what it is, the site's pages (Festivals, Friends, Map, Artists, Countries), a line
+"Where the data comes from: sources and acknowledgements" with the currency switch under it ("Prices in: kr · € · $"),
+and, for the curious, the SQL page and the source code on GitHub.
+
+The sources page (`#sources`, `site/sources.ts`) has no tab: the footer's line reaches it. It credits each source in a
+short section: the festival listings (kizomba-world.com, under CC BY-SA 4.0, the festival data here shared under the
+same licence, and what the data covers and when it was built, from `site.json`); the flight prices (Google Flights
+through fli, how often a weekend is searched as `WEEKS_APART` in `pipeline/fares.py` has it, and where a reseller's
+price stands in for Google's); the pass prices; the exchange rates (the European Central Bank); the borders (Natural
+Earth, through world-atlas) and the places (Nominatim, © OpenStreetMap contributors, ODbL); the airports (OurAirports);
+and the code and the libraries and fonts the page uses. By the admin's rule the page promotes no one: it names no
+reseller (of fares or of tickets) and no AI model or its maker, which a test of `tests/site/sources.browser.test.ts`
+holds. A new source of data is credited there.
+
+## A community's page
+
+The page shows the community's name ("Norwegians in festivals"), when most of its people (members and those its manager
+added) travel at once ("Most people are travelling 20–22 Nov: 5 people, to Oslo.") and, on a line of its own, where they
+go next ("Next: Glasgow, this Friday"), or, while a trip is on, where they are and until when, and the trip after it
+("Now: Glasgow, until Mon · Next: Oslo, on 20 Nov"), then a Share this page button, which opens the device's share sheet
+or else copies the link ("Link copied", or "Copy the address bar to share" when the browser has no clipboard or refuses
+it, its label back after a moment), beside a badge of who sees it: a lock, people and the number of members, which says
+the usual sharing words, "Anyone with the link can see this page · 3 members", on hover and to a screen reader. Who
+manages it is said with the members, at the foot of the page.
+
+Under the head, the calendar: four months at a time, a period from today's month (November to February, then March to
+June, then July to October: three make a year), named between two buttons, on its line, to the periods before and after
+it ("Nov 2026 – Feb 2027"; "Previous four months" and "Next four months" to a screen reader), which draw it in place,
+from today's period to the one of the last day anyone travels, each off at its end. The address keeps the period shown
+(`?from=2027-03`), so a reload or a shared link shows it again; one the calendar does not step to shows today's. A month
+is a small grid, two rows of two months on a phone and one row of four on a computer, light, without boxes: a row is a
+week from Monday, its days placed in their columns. A festival is one highlighter stroke across the lower half of its
+days' numbers, the same colour whatever the number, a swipe of its own (a little tilted, low or thick, its ink fading at
+a round end, the same each time it is drawn), round at its first and last day and cut where it goes on in the week
+before or after; two at once are two strokes, one under the other. A day someone travels on outside their festival's
+days (they arrive the day before, or leave the day after) has a dot under it; today is ringed by hand and the days
+before it greyed. At a row's end is how many go to the festivals that begin that week, said once, on the week each
+begins: two festivals that begin in one week show their sum, and each its own on hover and to a screen reader. A member
+with a trip travels from the day they arrive to the day they leave, anyone else (a member without one, someone added) on
+the festival's own days, whatever weekdays those are; someone at two festivals at once counts once. Someone who may go
+(a plan `maybe`, and not in the line-up) counts nowhere, neither in the months nor in the sentence: the days and counts
+are of those going and teaching; a day's popover names them all the same, "maybe" tagged. The sentence reads the same
+counts: the first day as many travel as on any, and the days after it with as many. Only a day someone travels on does
+anything: each month is one stop for the keyboard, whose arrows move among those days (left, right) or a week or more
+(up, down), and the day in focus, under the pointer or tapped opens a popover of its festivals, who flies in and out
+that day (by time and airport, a couple as one when both share the flight: "Flying in: Cédric & Christina 14:30 PRG"),
+who else is there, and where members stay. It never covers the day's month: on a computer it sits beside the month, on a
+phone it is a panel under the day's row of months, moving what follows down. Escape, a tap elsewhere or on the day again
+closes it, and the focus stays on the day.
+
+Then the agenda of the period shown: its trips, those with a day in it, so every day the calendar shows has its trips
+there ("Nothing planned in Mar–Jun" when it has none), a heading a month ("November · 3 trips", with the year in January
+and on the first when it is not this year's), and a row a trip, soonest first. The sentence and "Next" are of every
+trip, whatever period shows. A row has its days ("Fri 20 – Sun 22 Nov"), the festival and where it is (which leads to it
+on the map), and who of the community goes: its members as on any card (as their couple when both go, teaching when in
+the line-up), then the people added: "Christina teaching and Siân teaching · Caroline going"; someone who may go has a
+"maybe" tag there, on their roster line and in its names card, and "(maybe)" in its words ("Cédric & Christina going ·
+Tonje maybe"), and is still on the line of how they travel. Hovering an added name says who added them ("Added by
+Cédric"). Whether someone added teaches comes from the festival's line-up and their `artist_keys`, as it does for a
+member; the manager never says it, and someone teaching links to their artist page. The next trip is open; the others
+open from their button, on a card under the row. An opened trip is a roster of who travels when: its days across the
+top, from the first of the community to arrive (or the festival's start, when that is sooner) to the last to leave (or
+its end), the festival's days marked on them, and a line for each travel (`site/roster.ts`). Someone's signature is how
+they arrive (when, and at which airport), how they leave, and where they stay, night by night. A line is everyone who
+arrives and leaves alike: a bar is a travel, and where they stay never splits it. A couple is one unit when its
+partners' signatures are alike, else each partner is a unit; anyone else is one. A mark means one thing. A stroke of the
+calendar's ink is "there": everyone going has one over the festival's days at least. Its end is hard, with its time (and
+its airport, on a computer), where the time was said, and fades, with nothing written, where it was not: said nothing at
+all, or only where they stay, the festival's days with both ends fading; only a flight in, a hard start and the end
+fading at the festival's close (or the morning after their last night); only a day, without its time (the day Christina
+flies in), the stroke from that day, its start fading, the axis reaching it. A screen reader hears "arrival not said",
+"departure not said" or "arrives Fri 6 Nov, time not said". The axis is the calendar's: the festival's days in the
+accent, a dot under a day only travelled on, dates not bold. A dotted underline is names behind a text: a line called by
+what it is, or places counted, opens them, by place when they stay apart, while the pointer is over it and from a tap or
+a key, until the next or Escape, in a small card (each place a small heading, those who said none last, each name with
+its own nights, muted, when not all of its place's: "Nora · Fri–Sun"; two columns when many): on a phone a row of its
+own under the line; on a computer floating by its text, below its line or above it, never over it, inside the trip's
+card, or in the flow when the trip's card has no room for it; a solid underline is a link leaving the card. Muted text
+is a detail or an absence. A line of three people or fewer always names its units, and with three units or fewer every
+line does. Otherwise a line of more than three people is "Everyone" when it is the only line, "Everyone else" when it is
+more than half of everyone, and else called by its number ("5 people"). The named lines come first, by arrival, then
+departure, then first name; then those called by number, by arrival; then "Everyone else"; and those who have not said
+at the very bottom. Where a line stays is written when it is one or two places ("Airbnb → Scandic Holberg" for one
+person's way; "Scandic Holberg 8 · Comfort Xpress 2 · 1 not said"), beside the stroke on a computer, with no heading
+over it; under the name on a phone, which writes one and counts two; and counted when more ("3 places"), the count
+opening the names by place; the whole is in its title and to a screen reader. When the people of a trip stay at two
+places or more, two icon buttons at the top of its card, a plane ("By travel") and a bed ("By place"), show the same
+people by where they stay: a line a place, the most people first and "Not said" last, the place the line's name and its
+people under it (three or fewer named, more called by number, which opens them with each one's own nights when not all
+of the place's, as in the card above), and one stroke over the nights anyone stays there, from the evening of the first
+to the morning after the last, its ends their weekdays; someone who moves is on each place's line for their nights
+there. The card keeps the view chosen for the visit. A screen reader hears the names, and the rest in words the page
+does not show: each line in and out and where its people stay, and who has not said, a line called by what it is by its
+people too; by place, each place, its nights and who stays there. While a card is open its row says only how many go and
+who teaches ("5 going · Cédric & Christina teaching", with "· 1 maybe" after the going when someone may go), as the card
+names everyone. The festival's name opens its card on the festival's line-up and prices, its own card opened in place,
+and folds them away again; the next trip's card opens on who travels, its line-up folded.
+
+A trip is on from its first day (the first member to arrive, or the festival's start when sooner) to its last (the last
+to leave, or the festival's end when later): its row has a small "Now" tag before its days and is the one open, and the
+head says "Now". From the day after its last, it has ended: it leaves the agenda, the sentence and the counts at the
+rows' ends, and its strokes stay in the calendar, grey as the days gone by; the calendar still starts at today's month.
+With every trip ended, the page says "No trips coming up." A festival cancelled, or no longer listed, stays on the page
+while members still plan it, its card's words after its place ("This festival was cancelled.", "This festival is no
+longer listed."): never "Now", and out of the days most people travel; in the calendar it is greyed as an ended one.
+
+## When something fails
+
+A page that cannot be built says so in its place; anything else that goes wrong says so at the top of the page, with
+what it was doing. A request gives up after a minute. Files of two builds (the database and the summary, or the scripts
+and the database: GitHub Pages' cache keeps each file up to ten minutes after a publish) put a page in place of the
+whole view, saying the site is being updated; it loads the page again every minute, and after a quarter of an hour stops
+and says it could not load.
+
+## The share card and the icons
+
+A shared link shows `public/share-card.png`, drawn from `design/share-card.html` with a map of the festivals coming up;
+the icons come from `public/mark.svg`. To redraw them, run `mise run render:design` (it builds the site's database
+first, and draws with the repository's Playwright); it also makes `public/loading.svg`.
+
+A community has one address, `…/kiz-radar/c/<key>/`, its page: `public/c/<key>/index.html`, which `mise run generate`
+makes from `public/index.html` (so the two never drift apart), line for line but for the head tags it has its own of
+(`HEAD_TAG` in `pipeline/generate.py`), since a static host serves a page at its path, never its hash, and chat apps
+read a page without its scripts. Its `<base href="../../">` (index.html's is `./`) makes every link and file of it the
+site root's, under `/kiz-radar/` on GitHub Pages as at the root of the local server, and the page's Content Security
+Policy lets a `<base>` of the page's own site (`base-uri 'self'`); `site/main.ts` makes the base a full address as the
+page loads. The site shows the community at this address (`routeOf` in `site/routes.ts`), its period in the query
+(`?from=2027-03`), and keeps it in the address bar; the tabs and every other link go to the root's views. An older link,
+`#community/<key>`, shows the page and moves the address to `c/<key>/`. Its title and `og:title` are the community's
+name, its description that name in one template ("Norwegians in festivals · festival plans shared on Kiz Radar",
+`COMMUNITY_SAID`), its image `public/c/<key>/share.png`, a large one, its canonical address its own; no search engine
+lists it. The community page's Share button gives this address. The image is a variant of the site's share card (its
+mark, fonts and colours; the site's card itself is as it was): an eyebrow ("Community", by the people icon), the
+community's name over a highlighter swipe, a subtitle the same for every community ("Who's going where, and when they
+fly in"), and, in place of the map, an example month as the site draws one (days before today grey, today ringed by
+hand, a dot under a day only travelled on), its two trips' swipes the trails of a plane over a long weekend and of a car
+(the people icon, the plane and today's ring are the site's own, written as data in `pipeline/drawings.py`, whose
+`card()` `design/render.cjs` gives the card; only the car is the card's); it is an example, from no data: nothing of a
+community but its name is on its page or its image, so members joining and plans changing leave both as they are.
+`mise run generate` makes the page from `pipeline/communities.csv`; `mise run render:design` draws the image and writes
+beside it what it was drawn from, `share.json` (the name, and the digest of what draws it: `design/share-card.html`,
+`design/render.cjs` and `public/mark.svg`, `DRAWN_FROM`, and the markup of the drawings it draws, `drawings.card()`, so
+that a comment in `site/icons.ts` leaves the cards as they are). Both are committed, as the site's share card is. The
+tests compare each `share.json` with the communities and those files (`stale_cards`), so a community renamed, or the
+card's design changed, without drawing again fails them. A folder of `public/c/` that is no community's (one removed, or
+renamed to another key) fails `mise run generate --check`, and `mise run generate` removes it. The fonts, Inter and
+Caveat, are served from `public/fonts` under the SIL Open Font License.

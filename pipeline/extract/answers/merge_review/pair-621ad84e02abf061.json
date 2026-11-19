@@ -1,0 +1,13 @@
+{
+ "key_a": "p:theo@julien+theo",
+ "key_b": "p:theodora@julien+theodora",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "621ad84e02abf061",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are partnered with the same person, Julien, at events in Belgium, and Theo is a short form of Théodora, so the couple records look like one dancer written two ways."
+ }
+}

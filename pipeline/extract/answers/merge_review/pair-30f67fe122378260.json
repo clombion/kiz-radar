@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ale@aldo+ale",
+ "key_b": "p:alechen",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "30f67fe122378260",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the partner Aldo, and 'Ale' is the short form of 'Ale Chen' with no conflicting country (Ale's events are in the Netherlands, Ale Chen is stated as NL with a Belgian event), so one artist is the likelier reading."
+ }
+}

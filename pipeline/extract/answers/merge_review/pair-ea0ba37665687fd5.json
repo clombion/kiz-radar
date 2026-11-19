@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@alex+nick",
+ "key_b": "p:alex@alex+nick",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ea0ba37665687fd5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key 'Alex' with a shared partner key, stated in CA and NL, but there are no mentions to show the events, roles or styles, so the evidence cannot tell whether this is one artist or several people sharing the common first name Alex."
+ }
+}

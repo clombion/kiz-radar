@@ -1,0 +1,13 @@
+{
+ "key_a": "p:yami@kali+yami",
+ "key_b": "p:yami@kali+yami",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4113b0185bd63de5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The key is one name paired with itself, stated with Bulgaria and France, but no mentions or partner evidence are given to show whether one person or two people share the name Yami, so the evidence does not settle it."
+ }
+}

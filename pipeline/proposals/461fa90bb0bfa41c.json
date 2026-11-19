@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "karlsruhe-de",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "FKB",
+   "STR",
+   "FRA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "FKB 1 h 01 by bus and train (2 changes); STR 1 h 25 by suburban train, coach and train (2 changes); FRA 1 h 56 by bus, high-speed train and train (3 changes). MHG has almost no scheduled flights."
+}

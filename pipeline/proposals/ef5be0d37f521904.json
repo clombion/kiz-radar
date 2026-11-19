@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "cluj-napoca-ro",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "CLJ"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "CLJ 37 min by bus"
+}

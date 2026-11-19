@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ioanna@chrysoula+ioanna",
+ "key_b": "p:ioannajoowaa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "af6e65f84054bd41",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A 'Ioanna' is a bare first name tied to a partner pair (chrysoula+ioanna) and stated countries GB and GR, while side B 'Ioanna Joowaa' is a full name with only GR and no partners, so the common first name and the one-sided evidence do not settle whether they are the same person."
+ }
+}

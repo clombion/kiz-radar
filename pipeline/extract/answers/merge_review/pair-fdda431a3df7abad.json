@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johann@johann+laeticia",
+ "key_b": "p:johann@johann+lucie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fdda431a3df7abad",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'Johann' in France, but they have different partners (Laeticia and Lucie) and different events (Guadeloupe and France), and a common first name with no shared partner or distinctive detail does not settle whether it is one dancer or two."
+ }
+}

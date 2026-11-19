@@ -1,0 +1,55 @@
+{
+  "site": "weeztix",
+  "hosts": [
+    "weeztix.shop",
+    "shop.weeztix.com"
+  ],
+  "reseller": null,
+  "widget": null,
+  "visible": false,
+  "wait": 10,
+  "open": null,
+  "row": ".group-item--ticket",
+  "api": null,
+  "fields": {
+    "key": {
+      "css": null,
+      "attr": "class",
+      "match": "ot-elem-ticket-([0-9a-f-]+)"
+    },
+    "name": {
+      "css": ".group-item__info .ot-text-body-strong",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": ".group-item__info .ot-text-tiny",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": ".group-item__info .ot-text-tiny",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": ".group-item--ticket .group-item__info .ot-text-tiny",
+      "attr": null,
+      "match": "([€£$]|[A-Z]{3})(?=\\s*\\d)",
+      "page": true
+    },
+    "fee": {
+      "css": ".group-item__info .ot-text-tiny",
+      "attr": null,
+      "match": "\\+\\s*(?:[€£$]|[A-Z]{3})?\\s*([\\d.,]+)\\s*[Ff]ee"
+    },
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {
+      "css": null,
+      "attr": "class",
+      "match": "\\bsold_out\\b"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cilene@cilene+davide",
+ "key_b": "p:cilene@cilene+davidenola",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c10fbbd151cd4be7",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the name Cilene and countries CV and IT, but their partners differ (davide@cilene+davide versus davidenola) and side B has no event mentions, so the evidence does not establish whether the two partner records are the same person."
+ }
+}

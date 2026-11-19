@@ -1,0 +1,13 @@
+{
+ "key_a": "p:eden@dj",
+ "key_b": "p:eden@eden+ioury",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8e8e32f798901776",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as French with events in France, but side B's mentions are not shown, side A has no partner to compare against ioury, and 'Eden' is a fairly common word, so the shared name and country do not settle whether this is one artist."
+ }
+}

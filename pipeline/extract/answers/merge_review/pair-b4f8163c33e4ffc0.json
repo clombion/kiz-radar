@@ -1,0 +1,13 @@
+{
+ "key_a": "p:theo@dance",
+ "key_b": "p:theo@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b4f8163c33e4ffc0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The pair is one key compared with itself, and the single first name Theo is common, so the stated countries (Norway, Ghana/UK) are consistent across events but do not prove one person rather than several Theos sharing the name, with no partner or distinctive stage name to link them."
+ }
+}

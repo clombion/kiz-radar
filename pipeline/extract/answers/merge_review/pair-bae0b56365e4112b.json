@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michael@federica+michael",
+ "key_b": "p:michel@federica+michel",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bae0b56365e4112b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the same partner (Federica), the same country (Italy) and the same couple-style listing; Michael and Michel are a language/spelling variant of one name within that couple, so this is most likely one person."
+ }
+}

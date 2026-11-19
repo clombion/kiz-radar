@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tiwosh",
+ "key_b": "p:tiwosh@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "509f705e9960f696",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the distinctive stage name Ti Wosh (written with or without the space) and the French country flag, with side B's Tiwosh also listing FR; the only difference is spacing and a DJ prefix, and no partner or event evidence contradicts a single artist."
+ }
+}

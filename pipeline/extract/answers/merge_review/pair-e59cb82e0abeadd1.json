@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jesus@jesus+lucy",
+ "key_b": "p:jesus@jesus+maria",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e59cb82e0abeadd1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are Spanish and share the name Jesus/Jesús, differing only by accent, but they have different partners (Lucy and Maria) and events in different countries (France and Belgium), and there are no mention lines to confirm either way, so the evidence does not settle whether it is one dancer partnering two people or two dancers."
+ }
+}

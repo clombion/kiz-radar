@@ -1,0 +1,13 @@
+{
+ "key_a": "p:yuna@jules+yuna",
+ "key_b": "p:yunatarraxopop",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1049c1981fa95359",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the partner Jules, and the short name 'Yuna' matches the first word of 'Yuna Tarraxopop', with France as a common country and event location, with no event showing both sides at once."
+ }
+}

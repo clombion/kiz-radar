@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ludmila@ivan+ludmila",
+ "key_b": "p:lyudmila@ivan+lyudmila",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bf636fa25246094b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records list the same partner (Ivan) and the same event country (Spain), and Ludmila/Lyudmila is a transliteration variant of one name, so this is most likely one artist."
+ }
+}

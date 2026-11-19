@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sonia@martina+sonia",
+ "key_b": "p:sonia@sonia+stefkizz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "54c487c78e7fe56d",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two records share only a common first name (Sónia/Sonia, accents aside) and the German country; Sónia's couple is with martina and Sonia's with stefkizz, a different partner, and their event locations (Austria versus France, Germany, Switzerland) do not overlap, so nothing links them."
+ }
+}

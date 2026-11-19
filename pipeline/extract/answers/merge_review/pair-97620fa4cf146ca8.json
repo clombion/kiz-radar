@@ -1,0 +1,13 @@
+{
+ "key_a": "p:pablo@andrea+pablo",
+ "key_b": "p:pablo@pablo+raquel",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "97620fa4cf146ca8",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two Pablo records have different partners (andrea on side A, raquel on side B) and different event countries (Belgium versus Albania, France, Poland), with only the common first name 'Pablo' and the shared Spanish country in common, which is weak evidence."
+ }
+}

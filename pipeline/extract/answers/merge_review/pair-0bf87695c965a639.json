@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sergi@elsa+sergi",
+ "key_b": "p:sergio@elena+sergio",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0bf87695c965a639",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Sergi and Sergio have different partners (elsa versus elena), and Sergi's stated countries include Portugal while Sergio's events span Poland and Turkey, so the only link is a similar first name, which is weak evidence."
+ }
+}

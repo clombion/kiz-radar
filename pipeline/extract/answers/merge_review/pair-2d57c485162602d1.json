@@ -1,0 +1,13 @@
+{
+ "key_a": "p:giuseppe@giuseppe+klaudyna",
+ "key_b": "p:giuseppeandrea",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2d57c485162602d1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is the bare first name GIUSEPPE with a partner (klaudyna@giuseppe+klaudyna), events in Bulgaria and Poland, and no mention rows to inspect, while side B is GIUSEPPE ANDREA with only Italian events and no partners; the only shared link is the common first name and the Italian country, which is too weak to merge."
+ }
+}

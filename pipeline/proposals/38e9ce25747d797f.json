@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "alicante-es",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "ALC",
+   "VLC"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "ALC 26 min by bus (1 change); VLC 2 h 42 by metro and bus (3 changes)"
+}

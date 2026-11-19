@@ -1,0 +1,39 @@
+{
+  "about": "When a member's trip, and a community's, ends: the build's retention (build_site_db.trip_ends) and the site's trip span (calendar.ts awayDays and spanOf) read these, so the two never disagree.",
+  "cases": [
+    {
+      "said": "Glasgow: Christina leaving on its last day at 19:10, Siân saying only when she arrives",
+      "festival": { "start_date": "2026-11-06", "end_date": "2026-11-09" },
+      "people": [
+        { "key": "christina", "arrive": "2026-11-06", "leave": "2026-11-09T19:10", "nights": null },
+        { "key": "sian", "arrive": "2026-11-05", "leave": null, "nights": null }
+      ],
+      "ends": { "christina": "2026-11-09", "sian": "2026-11-09" },
+      "trip_end": "2026-11-09"
+    },
+    {
+      "said": "a departure the morning after the festival",
+      "festival": { "start_date": "2026-11-06", "end_date": "2026-11-09" },
+      "people": [{ "key": "a", "arrive": null, "leave": "2026-11-10T07:00", "nights": null }],
+      "ends": { "a": "2026-11-10" },
+      "trip_end": "2026-11-10"
+    },
+    {
+      "said": "where one stays alone: the morning after the last night",
+      "festival": { "start_date": "2026-11-06", "end_date": "2026-11-09" },
+      "people": [{ "key": "a", "arrive": null, "leave": null, "nights": { "first": "2026-11-08", "last": "2026-11-10" } }],
+      "ends": { "a": "2026-11-11" },
+      "trip_end": "2026-11-11"
+    },
+    {
+      "said": "one leaving before the festival ends, another staying on: the festival's end at least",
+      "festival": { "start_date": "2026-11-06", "end_date": "2026-11-09" },
+      "people": [
+        { "key": "a", "arrive": "2026-11-06T10:00", "leave": "2026-11-08", "nights": null },
+        { "key": "b", "arrive": null, "leave": null, "nights": { "first": "2026-11-06", "last": "2026-11-07" } }
+      ],
+      "ends": { "a": "2026-11-09", "b": "2026-11-09" },
+      "trip_end": "2026-11-09"
+    }
+  ]
+}

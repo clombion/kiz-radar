@@ -1,0 +1,13 @@
+{
+ "key_a": "p:christina@cedric+christina",
+ "key_b": "p:christina@christina+daviddasilva",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fe7ce50db23fdb9d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named only 'Christina' with no shared partner (cedric versus daviddasilva), and they overlap on France, but side A also has Norway events, so the evidence does not establish one artist or two."
+ }
+}

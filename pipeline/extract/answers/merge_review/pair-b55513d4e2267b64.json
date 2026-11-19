@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lucie@cecilien+lucie",
+ "key_b": "p:lucie@lucie+titony",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b55513d4e2267b64",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same common first name in France with overlapping Spain events, but their partners differ (cecilien versus titony) and there is no distinctive stage name or shared partner to settle whether they are one dancer."
+ }
+}

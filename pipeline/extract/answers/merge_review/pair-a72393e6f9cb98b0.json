@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabrizio@dj",
+ "key_b": "p:fabrizio@fabrizio+giulia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a72393e6f9cb98b0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed as Italian and the name is the same apart from the 'Dj' prefix, but 'Fabrizio' is a common first name, side B has no mentions to check against, and the only partner (giulia) is attached to B alone, so the evidence does not settle whether this is one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:valr@sara+valr",
+ "key_b": "p:valr@sarah+valr",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "42164ab927fdec76",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are French with the same distinctive name (Val'R / ValR, differing only by apostrophe) and their partners are spelling variants (Sara / Sarah), but the partner records are still separate keys and the event countries do not overlap, so the evidence does not clearly establish one artist."
+ }
+}

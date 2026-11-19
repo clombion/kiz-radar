@@ -1,0 +1,13 @@
+{
+ "key_a": "p:said@dance",
+ "key_b": "p:said@oksana+said",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dbe246f44a3d7e41",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are written as 'Said' and both list France, but the common first name is weak evidence, side B's own mentions are empty, and side B is a couple key with partner Oksana while side A has no partner, so the evidence does not settle whether this is one person."
+ }
+}

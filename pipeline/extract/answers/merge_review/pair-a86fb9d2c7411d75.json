@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fernando@dj",
+ "key_b": "p:fernandobumbum",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a86fb9d2c7411d75",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records share the country AO, but 'DJ Fernando' is a common first name with no partner or event link to 'Fernando Bumbum', whose only partner is Michela, so the evidence does not establish one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:moni@keco+moni",
+ "key_b": "p:monica@keco+monica",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0314d2518769ee7a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner (keco), and Moni is a short form of Monica within that couple, with overlapping Spain events and no conflicting country evidence."
+ }
+}

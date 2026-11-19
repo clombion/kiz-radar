@@ -1,0 +1,13 @@
+{
+ "key_a": "p:june@june+virgile",
+ "key_b": "p:juneline@juneline+virgile",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5f7341cb4d3f1066",
+ "answer": {
+  "decision": "merge",
+  "rationale": "June and Juneline share the same partner (virgile), one is a short form of the other, and both have events in the Netherlands, matching the rule that a short and long form with the same partner is normally one person."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fanio@fanio+sara",
+ "key_b": "p:fanioaraujo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7b7008d4534229e3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is 'Fanio' with Angola and Portugal as countries and a partner Sara, while side B is 'FANIO ARAUJO' with Angola, and the shared country and first name are suggestive. However, side A has no mentions to check, its events are in France rather than the Portugal and Switzerland events of side B, and no partner or style is shared, so the evidence does not settle it."
+ }
+}

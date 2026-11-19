@@ -1,0 +1,13 @@
+{
+ "key_a": "p:donperry",
+ "key_b": "p:donperryafrostyle",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ef76ea422956472b",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The shared-partner link is weak because the partner strings differ (donperry vs donperryafrostyle), the events are in different countries (Netherlands vs Czech Republic), and there are no stated countries or mentions to settle whether a traveling teacher is one person or two."
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "634608c196d756ca",
+ "answer": {
+  "batch": "event-15697",
+  "events": [
+   {
+    "event_id": 15697,
+    "party_rooms": {
+     "count": 4,
+     "quote": "4 Dancefloors / 4 Rooms"
+    },
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "Sensual & Modern Bachata"
+     },
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "Cuban & Puerto Rican Salsa"
+     },
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "bachata",
+       "other",
+       "zouk"
+      ],
+      "quote": "Dominican Bachata, Merengue, Zouk"
+     },
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Merengue",
+      "quote": "Dominican Bachata, Merengue, Zouk"
+     }
+    ]
+   }
+  ]
+ }
+}

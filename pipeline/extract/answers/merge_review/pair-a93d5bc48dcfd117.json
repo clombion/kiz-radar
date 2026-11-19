@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alessio@alessio+angelica",
+ "key_b": "p:alessio@alessio+natalia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a93d5bc48dcfd117",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are the same common first name with the same country (IT), but they have different partners (Angelica versus Natalia), different event countries (Netherlands versus Germany), and no mentions to link them, so the evidence shows two separate couples rather than one artist."
+ }
+}

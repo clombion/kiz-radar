@@ -1,0 +1,13 @@
+{
+ "key_a": "p:daniel@daniel+desiree",
+ "key_b": "p:daniel@daniel+irati",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ff6b349d42421c63",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are written only as the common first name 'Daniel' with the same country (ES), but each is tied to a different partner (Desiree versus Irati) and their events differ (Spain and Turkey versus France), so the shared first name is weak evidence and the distinct partners point to two separate people."
+ }
+}

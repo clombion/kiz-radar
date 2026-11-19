@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "bali-id",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "DPS"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "DPS Bali's one airport, 30 min to 1 h 30 by taxi depending on the venue, researched. The planner found no trip."
+}

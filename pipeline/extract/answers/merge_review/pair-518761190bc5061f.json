@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lucy@axel+lucy",
+ "key_b": "p:lucy@lucy+nicocandela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "518761190bc5061f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are 'Lucy' with French country and an overlapping event in France, but 'Lucy' is a common first name, their partners differ (axel versus nicocandela), and there is no shared partner, event or style to link them, so the evidence does not settle whether they are one dancer."
+ }
+}

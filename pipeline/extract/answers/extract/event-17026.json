@@ -1,0 +1,93 @@
+{
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "410e1748be733c81",
+ "answer": {
+  "batch": "event-17026",
+  "events": [
+   {
+    "event_id": 17026,
+    "artists": [
+     {
+      "name_as_written": "Teresa & Emanuel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ Teresa & Emanuel"
+     },
+     {
+      "name_as_written": "Ana Maria & Stephane",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ Ana Maria & Stephane"
+     },
+     {
+      "name_as_written": "Inês Miranda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ Inês Miranda"
+     },
+     {
+      "name_as_written": "Álvaro Gustavo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ Álvaro Gustavo"
+     },
+     {
+      "name_as_written": "Daniela Horta",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ Daniela Horta"
+     },
+     {
+      "name_as_written": "DJ Supaman",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ Supaman"
+     },
+     {
+      "name_as_written": "DJ Swari",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ Swari"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Whether you’re a beginner or a seasoned dancer",
+      "rationale": "The text states the event is suitable for beginners as well as experienced dancers."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Inspiring workshops with talented teachers",
+      "rationale": "The description lists dance workshops as part of the festival."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Special hotel deals for our participants",
+      "rationale": "The festival negotiates hotel deals and recommends partner hotels without including accommodation in the pass."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "A cozy Sunday social to close the weekend",
+      "rationale": "A daytime Sunday social is part of the schedule (10:00 – 19:00)."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Friday: Red and/or white ❤️",
+      "rationale": "The description gives a dress code for each day of the event."
+     }
+    ]
+   }
+  ]
+ }
+}

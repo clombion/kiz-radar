@@ -1,0 +1,13 @@
+{
+ "key_a": "p:katalin@dance",
+ "key_b": "p:katalin@katalin+matthias",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0f0caca31c5a5957",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Katalin and share the country Austria, but side A is a single mention as a guest dancer with no partner, while side B is the couple Katalin+Matthias, and the first name alone is weak evidence, so the record does not settle whether they are one person."
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "event_id": 18896,
+ "title": "SUNNY KIZOMBA FESTIVAL 2027",
+ "start_date": "2027-05-14",
+ "end_date": "2027-05-18",
+ "country": "Spain",
+ "styles": [
+  "kizomba"
+ ],
+ "description": "☀️ Sunny Kizomba Festival\n🌴Gran Canaria – Spain\nALL IN ONE RESORT 🏨 ☀️ 🏝️\n13 – 17 MAY 2027 ⛱️\n🔥PRE PARTY\n🗓️Thursday 13th May\n📍Main Hotel – Sala Gabos\n💰 Price 10€\n🔥FESTIVAL\n🗓️ 14th – 17th May\n📍Hotel Orquidea\n👇🏼\n•C4 Pedro concert\n•8 Workshops\n•3 Socials\n• 3Parties\n🔥AFTER PARTY\n🗓️Monday 17th\n✨Kizomba na rua\nFree enter\n🎤 C4 PEDRO\n🔥 Live concert with his band\n📣🏨 Hotel promo: SUNNYC4\nFULL PASS & HOTELS LINK ⛱️☀️\nhttps://linktr.ee/Sunny_Kizomba\n🏨 Hotel book now, pay in Mai",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:21:21+00:00",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "7191293",
+      "7191286"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "7320449",
+      "7320450"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "7191299"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  {
+   "key": "7247166",
+   "reason": "class"
+  }
+ ],
+ "rule_quotes": []
+}

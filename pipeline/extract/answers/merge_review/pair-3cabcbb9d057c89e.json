@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fernando@dance",
+ "key_b": "p:fernandomonteiro",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3cabcbb9d057c89e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share Germany and Portugal, and side B's stated countries include Portugal, but 'Fernando' is a common first name with no partner, style, or distinctive stage name to tie it to 'Fernando Monteiro', and side A's UK event has no country stated, so the evidence does not settle whether they are one person."
+ }
+}

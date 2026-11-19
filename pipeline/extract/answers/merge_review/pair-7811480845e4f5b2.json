@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tiwosh@dance",
+ "key_b": "p:tiwoshshow",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7811480845e4f5b2",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both mentions are at the same Slovenian event (19450), both carry Haiti as a stated country, and 'Tiwosh Show' is the distinctive stage name 'Tiwosh' with a show suffix, so this looks like one artist listed once as teacher and once as performer."
+ }
+}

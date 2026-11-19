@@ -1,0 +1,13 @@
+{
+ "key_a": "p:franet@dance",
+ "key_b": "p:franet@franet+jade",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "569f4992915a2ea1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The names match except for a trailing period and both sides share the AO flag, but side A has no partners while side B is linked to jade@franet+jade, their stated countries differ (CH and FR), their events do not overlap, and side B's mention list is empty, so the evidence does not settle whether this is one artist."
+ }
+}

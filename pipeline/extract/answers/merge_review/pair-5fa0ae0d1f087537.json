@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manu@dance",
+ "key_b": "p:manu@manu+olivia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5fa0ae0d1f087537",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as French with the same name ignoring case, but 'Manu' is a common short name, side A has no partner while side B is linked to Olivia, and side B's mention list is empty, so the evidence cannot settle whether these are one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:said@dance",
+ "key_b": "p:saidmrbattlekiz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "58b9de0899497546",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed with French country and the bare name 'Said' is a common stage name, but side B's only event is in Canada with no partner or overlapping event, and side A's mentions are spread across many countries, so the evidence does not settle whether 'Said Mr Battle Kiz' is the same person as the generic 'Said'."
+ }
+}

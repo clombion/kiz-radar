@@ -1,0 +1,13 @@
+{
+ "key_a": "p:eddy@dj",
+ "key_b": "p:eddy@eddy+rita",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1792fdfbb358594d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list Hungary and the same three event countries, but side B's mention list is empty so its event roles cannot be checked, and the generic name 'Eddy' tied to the couple key 'eddy+rita' could be a dancer partner rather than the DJ 'DJ EDDY'."
+ }
+}

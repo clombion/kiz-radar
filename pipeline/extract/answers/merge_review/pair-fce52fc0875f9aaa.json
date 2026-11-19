@@ -1,0 +1,13 @@
+{
+ "key_a": "p:asia@dance",
+ "key_b": "p:asiavoronova",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fce52fc0875f9aaa",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are listed as Ukrainian (UA) with overlapping styles (Kizomba, Urbankiz, Tarraxo), and the short form 'Asia' matches the first name of 'Asia Voronova' with no conflicting country or partner evidence, though no shared event or partner confirms it."
+ }
+}

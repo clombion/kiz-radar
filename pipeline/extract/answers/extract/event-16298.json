@@ -1,0 +1,28 @@
+{
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "cfc0e1b718b201c2",
+ "answer": {
+  "batch": "event-16298",
+  "events": [
+   {
+    "event_id": 16298,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "4★ All-in-1 hotel: Crowne Plaza Düsseldorf Neuss",
+      "rationale": "The event venue is the Crowne Plaza hotel, described as an all-in-one hotel, so the event and accommodation share one venue."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Book hotel: https://tinyurl.com/stepstephotel",
+      "rationale": "A link to book the hotel is given, pointing to a recommended hotel that is not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
+}

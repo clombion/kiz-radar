@@ -1,0 +1,13 @@
+{
+ "key_a": "p:isa@isa+madykeita",
+ "key_b": "p:isabelle@isabelle+madykeita",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2caa760cbe6848cc",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner (madykeita) and the short form ISA is a shortened version of Isabelle, which the guidelines treat as the same person; the differing event countries (Germany vs Switzerland) are not contradictory for a traveling teacher and no mention rows contradict the link."
+ }
+}

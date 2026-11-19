@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jahja",
+ "key_b": "p:jahja@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d061307f10249a11",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side B's \"Jah'ja\" is a spelling variant of the distinctive name \"Jah J'a\" (also written \"Jah Ja\" on side A), and both share Switzerland as the stated country and the urban kiz/tarraxo style, with no contrary evidence."
+ }
+}

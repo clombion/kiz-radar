@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marian@luismi+marian",
+ "key_b": "p:mariangela@luismi+mariangela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "40f2689ba95c9f5b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner (luismi), the same stated country (ES), and the short form Marian is a shortened version of Mariangela; their events do not overlap, so nothing shows two separate couples."
+ }
+}

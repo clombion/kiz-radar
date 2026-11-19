@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "florence-it",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "FLR",
+   "PSA",
+   "BLQ"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "FLR 27 min by train and bus (1 change); PSA 1 h 10 by PisaMover and train, researched (the planner started at a coach stop); BLQ 1 h 28 by bus and high-speed train (2 changes)"
+}

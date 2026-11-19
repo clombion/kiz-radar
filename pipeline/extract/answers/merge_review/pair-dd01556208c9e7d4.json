@@ -1,0 +1,13 @@
+{
+ "key_a": "p:max@max+silvia",
+ "key_b": "p:maxdousey",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dd01556208c9e7d4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The short name 'Max' and the full name 'MAX DOUSEY' share the same partner, Silvia, and both have events in Italy, where the Dousey side is stated as IT; this is a short-form-with-same-partner case, though side A has no mentions of its own, so the evidence is thin."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@david+laura",
+ "key_b": "p:davide@davide+laura",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fcb04e9105b107a1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the partner Laura and the couple name pattern, which points to a language variant (David/Davide), but side A's events are in the United Kingdom while side B is stated as Italy, and the mention lists are empty, so the country conflict leaves the evidence unsettled."
+ }
+}

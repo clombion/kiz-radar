@@ -1,0 +1,13 @@
+{
+ "key_a": "p:eva@chris+eva",
+ "key_b": "p:eva@eva+murmel",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b925ca06cf4f6ab5",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are named only 'Eva' with the same country (DE), but their partners differ: side A dances with 'chris' in the chris+eva couple while side B dances with 'murmel' in the eva+murmel couple, and a common first name with no other shared evidence is weak; the two couple keys point to different partnerships, so these look like two different people sharing a first name."
+ }
+}

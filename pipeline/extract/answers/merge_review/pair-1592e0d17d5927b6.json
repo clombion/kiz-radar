@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+guizamora",
+ "key_b": "p:ana@ana+pedro",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1592e0d17d5927b6",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (guizamora versus pedro), and their stated countries and event countries differ (CU/PT with France versus CH/PT with Switzerland), with only the common first name 'Ana' and a shared PT country in common, which is weak evidence."
+ }
+}

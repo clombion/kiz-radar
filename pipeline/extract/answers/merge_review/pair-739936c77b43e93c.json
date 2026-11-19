@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@cristina+johnny",
+ "key_b": "p:cristinazebri",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "739936c77b43e93c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the partner johnny and the country Switzerland (CH), and the short form CRISTINA is the first word of Cristina Zebri, so the same person with the same partner is the likely reading."
+ }
+}

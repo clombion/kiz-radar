@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "rimini-it",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "AOI",
+   "BLQ"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "AOI 1 h 36 by train (1 change); BLQ 1 h 52 by bus and high-speed train (1 change). RMI has few, mostly seasonal flights."
+}

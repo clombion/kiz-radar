@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sandra@sandra+selim",
+ "key_b": "p:sandrag",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "93941b3868baa51b",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The two sides share only the first name SANDRA, with no common partner, country or event; side A's events are in Albania and Luxembourg and side B's in Spain with a stated ES country, and side A has no mentions listed, so the evidence does not settle whether they are one artist."
+ }
+}

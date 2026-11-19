@@ -1,0 +1,13 @@
+{
+ "key_a": "p:justinhno@dance",
+ "key_b": "p:justinho@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "44d18608982606f6",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A ('JUSTINHNO', Senegalese, Urbankiz) is a one-letter spelling variant of side B ('Justinho'/'JUSTINHO'), a distinctive stage name; side B also states Senegalese (🇸🇳) on one event and Urbankiz on another, so the country and style both match."
+ }
+}

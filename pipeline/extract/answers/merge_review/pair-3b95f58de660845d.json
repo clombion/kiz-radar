@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jorge@angela+jorge",
+ "key_b": "p:jorge@jorge+monica",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3b95f58de660845d",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different stated countries (ES vs CZ), different events (Bulgaria vs Austria and Germany), and different partners (Angela vs Monica), with only the common first name Jorge in common."
+ }
+}

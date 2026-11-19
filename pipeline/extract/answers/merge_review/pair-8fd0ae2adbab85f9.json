@@ -1,0 +1,13 @@
+{
+ "key_a": "p:pingusso@dj",
+ "key_b": "p:pingusso@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8fd0ae2adbab85f9",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one key compared with itself, so the question is whether a single DJ Pingusso is one artist or several people sharing the name; the stated countries (Luxembourg, Angola, Cape Verde, France) never meet in a single consistent identity, and no partner or event evidence settles whether these mentions belong to one person, so I cannot decide it safely."
+ }
+}

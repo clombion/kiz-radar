@@ -1,0 +1,13 @@
+{
+ "key_a": "p:agnes@agnes+fajul",
+ "key_b": "p:agnes@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8c392e5f39dc28ee",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the single first name Agnes with Swedish stated country overlap, but side A has partner fajul while side B has none, side A lists no mentions, and the event countries diverge (Austria, Czech Republic and France versus Germany and Sweden), so a common first name with this partial overlap does not settle it."
+ }
+}

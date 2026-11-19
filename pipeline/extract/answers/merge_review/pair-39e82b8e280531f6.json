@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mxtrela@dance",
+ "key_b": "p:mxtreladiogo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "39e82b8e280531f6",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The distinctive stage name M-Xtrela appears on both sides with the same Angolan country (AO), and side B is the same name with the surname Diogo added, with no evidence of a second person."
+ }
+}

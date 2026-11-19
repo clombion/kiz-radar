@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "zurich-ch",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "ZRH",
+   "BSL"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "ZRH 28 min by suburban train and tram (1 change); BSL 1 h 28 by train and tram (2 changes)"
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:angelgirao",
+ "key_b": "p:angelguirao",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "42016db7ca97bd6c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are teachers at Spanish events with the same full name, Angel Girao and Angel Guirao, differing only by a missing 'u' in a distinctive surname, and a Spanish teacher listed for both Bachata and Salsa is plausible; no partner or other evidence separates them."
+ }
+}

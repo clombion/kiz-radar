@@ -1,0 +1,13 @@
+{
+ "key_a": "p:isabelle@felicien+isabelle",
+ "key_b": "p:isabellemichalonakacolibri",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5885611d06632198",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the first name 'ISABELLE' with no mentions listed, and side B is a full name with a stage alias. The shared country (FR) and a shared UK event are not enough to settle it, and there is no shared partner or style to confirm the link, so a merge would be a guess."
+ }
+}

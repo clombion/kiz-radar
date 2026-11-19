@@ -1,0 +1,55 @@
+name: Refresh fares
+
+# Once a day, search the festival weekends due today (see pipeline/fares.py) and commit the run's searches, a file of the
+# fare history (pipeline/fare_offers/), with the report of how well home's fare predicts other cities'
+# (pipeline/fare_accuracy.md). If Google refuses a search, the run keeps what it found, then is marked failed;
+# the next run carries on. Publish runs once the searches are pushed.
+on:
+  schedule:
+    - cron: '41 5 * * *'
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: Searches of Google in this run, a quarter of them pairs (pipeline/fares.py PAIR_SHARE)
+        default: '20'
+
+permissions:
+  contents: write
+  actions: write   # to start Publish
+
+env:
+  UV_LOCKED: 1   # uv.lock as committed, or the step fails
+  PYTHONUNBUFFERED: 1   # each line a step prints is in the log as it goes, not all at its end
+  # a run's searches: the input when started by hand, else the repository variable FARE_BUDGET, which the admin raises
+  # to 30 and then 40 after a week each with no 429 (docs/guides/refreshing-events.md), else 20
+  BUDGET: ${{ inputs.budget || vars.FARE_BUDGET || '20' }}
+
+concurrency:
+  group: data-commit
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0  # zizmor: ignore[artipacked] this job pushes, and uploads no artifact
+      - uses: ./.github/actions/steps
+      - name: Search the festival weekends due today
+        id: search
+        continue-on-error: true
+        run: mise run fares -- refresh --budget "$BUDGET" --max-seconds 1200
+      - name: How well home's fare predicts the other cities'
+        run: mise run fares -- accuracy
+      - name: The time, for the commit
+        id: now
+        run: echo "at=$(date -u +%Y-%m-%dT%H:%MZ)" >> "$GITHUB_OUTPUT"
+      - uses: ./.github/actions/push
+        with:
+          paths: pipeline/fare_offers pipeline/fare_accuracy.md
+          bot: fares-bot
+          message: Refresh fares (${{ steps.now.outputs.at }})
+          then: pages.yml
+      - name: Fail if a search gave no answer (refused, timed out, unread)
+        if: steps.search.outcome == 'failure'
+        run: exit 1

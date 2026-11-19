@@ -1,0 +1,164 @@
+{
+ "event_id": 16927,
+ "title": "Chiangmai Afro-Latin Festival 2026 (5th edition)",
+ "start_date": "2026-11-27",
+ "end_date": "2026-11-29",
+ "country": "Thailand",
+ "styles": [
+  "bachata",
+  "kizomba",
+  "salsa"
+ ],
+ "description": "Get ready for the 5th Edition of Chiangmai Afro-Latin Festival 2026 ⁉️\nHappening in the breathtaking city of Chiang Mai, Northern Thailand 🇹🇭🎶\n🗓 Dates: 27-30 November 2026\nWhat’s in store❓\n• 2 Epic Party Rooms every night:\n✅ Kizomba Room\n✅ Bachata Room\n• 30+ Workshops with International Artists, Top rising stars & Local talents\n• World-class DJs, instructors & performers\n• Energetic shows and fun animations\n• Professional media team to capture your best moments\n• Pool Party to wrap it all up in style 💦\n• Outdoor SBK Day Social ☀️\nDance 💫 Connect 💫 Celebrate\nJoin passionate dancers from around the globe and feel the Afro-Latin heat in the heart of Thailand 🇹🇭\n🎫 Early Bird 3,000 THB only‼️\n⬇️ Get your Pass now\n🔗 https://linktr.ee/chiangmaiafrolatinfestival\nOr Contact Jaoying\n📲 Whatsapp +66979184609\nSee you on the dance floor\nChiangmai awaits 😘❤️",
+ "read_by": "agent",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-11-03T13:33:28+00:00",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "aac1c507-66c1-476a-91ce-f95c7ca23c3c",
+      "21b727c3-2e00-4241-b487-19a06ef2e4c7"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "party",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "ae9e20da-98c5-46a8-aefa-b6f230f46c03",
+      "34d34414-a70b-4d16-9f8c-0d1153524999"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "d5214221-f366-4b9f-9617-9c1588d41e7b"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "61fd6dcd-a322-44eb-9e87-375778b4d11d"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "51af5000-fd61-4707-bf7f-88f8f4a1f965"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "b30465c7-ee3a-462f-bb47-274783bc7421"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "2db7f1ba-cd2e-4a89-b788-1f010929842d"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  {
+   "key": "32e15bb6-42c3-4ece-9841-240c094e35fb",
+   "reason": "class"
+  },
+  {
+   "key": "6c76834f-14e6-461d-8748-b3983870030e",
+   "reason": "class"
+  }
+ ],
+ "rule_quotes": []
+}

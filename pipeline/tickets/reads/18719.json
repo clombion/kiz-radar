@@ -1,0 +1,77 @@
+{
+ "event_id": 18719,
+ "title": "Royalkizz 6th Edition",
+ "start_date": "2027-03-05",
+ "end_date": "2027-03-07",
+ "country": "Germany",
+ "styles": [
+  "kizomba"
+ ],
+ "description": "…more infos are coming soon….\nearly birds tickets",
+ "read_by": "agent",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-27T18:36:23+00:00",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "14078",
+      "14077"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "14076"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "14211",
+      "14210"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

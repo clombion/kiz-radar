@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "marseille-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "MRS",
+   "NCE"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "MRS 35 min by bus, metro and tram (2 changes); NCE 2 h 43 by train, metro and tram (2 changes). TLN has few flights."
+}

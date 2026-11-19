@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johannorsinet",
+ "key_b": "p:johanorsinet",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "de2584b762953839",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the distinctive surname Orsinet, the same France country, and the same Kizomba style at the same event 15307, so the 'Johann'/'Johan' difference looks like a spelling variant or typo of one person, though the shared event leaves a small chance of two people."
+ }
+}

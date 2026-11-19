@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "brussels-be",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "BRU",
+   "CRL"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "BRU 24 min by train and tram (1 change); CRL 1 h 29 by bus and train (1 change). ANR and LGG have almost no passenger flights."
+}

@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "bielefeld-de",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "DTM",
+   "HAJ",
+   "DUS"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "DTM 1 h 10 by train, high-speed train and tram (2 changes); HAJ 1 h 25 by suburban train, high-speed train and tram (2 changes); DUS 1 h 49 by high-speed train and tram (1 change). PAD has few flights."
+}

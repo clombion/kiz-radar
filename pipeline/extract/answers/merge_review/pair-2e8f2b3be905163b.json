@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+guizamora",
+ "key_b": "p:anasaavedra",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2e8f2b3be905163b",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only overlap is the first name Ana, a common name, plus a shared Portuguese country and a French event on both sides; side A is also stated as Cuban and works with a partner (guizamora) that side B never shows, so the evidence does not settle whether they are one artist."
+ }
+}

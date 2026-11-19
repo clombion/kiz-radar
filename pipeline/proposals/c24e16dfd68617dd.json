@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "munich-de",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "MUC",
+   "FMM"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "MUC 37 min by suburban train; FMM 1 h 29 by coach and suburban train (1 change)"
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:curtis@clemence+curtis",
+ "key_b": "p:curtis@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "386a96a307334509",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'CURTIS' from France with events in Austria, but side A's only link is a Clemence couple key with no visible mentions, while side B is a solo performer at one Austrian event, so the evidence does not show whether they are one person."
+ }
+}

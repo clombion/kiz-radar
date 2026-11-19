@@ -1,0 +1,17 @@
+# The tools every task and Action runs with (the tasks are in tasks.toml). Python and its packages are uv's (uv.lock);
+# the site's TypeScript tools are pnpm's (package.json, pnpm-lock.yaml).
+
+[tools]
+node = "22.22.0"
+pnpm = "10.30.0"
+uv = "0.11.32"
+actionlint = "1.7.12"
+pinact = "5.0.2"
+
+# the tasks, in a file of their own: the Actions cache the tools by this file, so a task edited leaves the cache
+[task_config]
+includes = ["tasks.toml"]
+
+# the git hooks of prek.toml, installed with the tools; not in the Actions (CI), whose commits are made by the bots
+[hooks]
+postinstall = '[ -n "${CI:-}" ] || mise run hooks'

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:daniel@daniel+desiree",
+ "key_b": "p:danielsanchez",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "37215e35d7968331",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the common first name 'Daniel' with partner desiree@daniel+desiree and no mention lines, while side B is 'DANIEL SANCHEZ' with no partners; they share only the country ES, which is weak evidence for a common name, so the evidence does not settle whether they are one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:felicien@felicien+isabel",
+ "key_b": "p:felicienrossa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1159806a3c254bcc",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list France as their country, which fits a first name plus full name, but side A has no mentions to compare styles with, side B has no partners to match against side A's partner Isabel, and the events fall in different countries (United Kingdom versus Philippines), so the evidence does not settle it."
+ }
+}

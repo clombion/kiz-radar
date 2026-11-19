@@ -1,0 +1,76 @@
+{
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b861a59c8cb7e6ec",
+ "answer": {
+  "batch": "event-16678",
+  "events": [
+   {
+    "event_id": 16678,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 dance studios:"
+    },
+    "class_rooms": {
+     "count": 8,
+     "quote": "8 dance floors"
+    },
+    "rooms": [
+     {
+      "name_as_written": "SBK studio",
+      "kind": "party",
+      "genres": [],
+      "quote": "1 SBK studio"
+     },
+     {
+      "name_as_written": "Kizomba studio",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "1 Kizomba studio"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa • Bachata • Kizomba • Reggaeton • Afro • Oriental • Heels"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Salsa • Bachata • Kizomba • Reggaeton • Afro • Oriental • Heels"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Salsa • Bachata • Kizomba • Reggaeton • Afro • Oriental • Heels"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "Reggaeton",
+      "quote": "Farah (Reggaeton)"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Will MP (Afro)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Oriental",
+      "quote": "Marine (Oriental dance)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Heels",
+      "quote": "Lili (Heels)"
+     }
+    ]
+   }
+  ]
+ }
+}

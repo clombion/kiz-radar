@@ -1,0 +1,13 @@
+{
+ "key_a": "p:rico@manon+rico",
+ "key_b": "p:ricosuave",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4a79095670d37de1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the partner 'manon', but they sit in different couple records (manon+rico and manon+ricosuave), and side B has no stated countries or mentions, with events only in Slovakia against side A's France and United Kingdom. 'RICO' and 'Rico Suave' share only their first word, so the evidence does not settle whether this is one artist."
+ }
+}

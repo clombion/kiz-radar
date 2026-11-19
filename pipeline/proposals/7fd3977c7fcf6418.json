@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "montpellier-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "MPL",
+   "BZR",
+   "FNI"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "MPL 37 min by tram; BZR 1 h 05 by bus, train and tram (2 changes); FNI 1 h 30 by bus and train (2 changes)"
+}

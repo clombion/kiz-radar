@@ -1,0 +1,13 @@
+{
+ "key_a": "p:monteyro@dj",
+ "key_b": "p:monteyro@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "346ae3b3d241efaa",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The single key 'Dj Monteyro' is stated as PT at one event (UK) and Cape Verde at another (Switzerland), with no partner, style, or shared event to tie the two stated countries to one person, so the evidence cannot show whether this is one DJ or two people sharing a name."
+ }
+}

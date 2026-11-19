@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "huelva-es",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "SVQ",
+   "FAO"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "SVQ 1 h 54 by coach; FAO 1 h 54 by coach"
+}

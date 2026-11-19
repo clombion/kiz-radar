@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "sofia-bg",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "SOF"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "SOF 26 min by metro"
+}

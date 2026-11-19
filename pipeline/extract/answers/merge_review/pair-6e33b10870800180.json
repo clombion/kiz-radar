@@ -1,0 +1,13 @@
+{
+ "key_a": "p:amelie@amelie+king",
+ "key_b": "p:amelie@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6e33b10870800180",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides state the same name and country (IT), but side B has no partners and its only event is in Italy while side A's events are in France, and side A's mentions list is empty, so the evidence does not settle whether this is one artist; 'Amélie' is also a common first name."
+ }
+}

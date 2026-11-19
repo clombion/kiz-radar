@@ -1,0 +1,47 @@
+# Files
+
+<!-- written by pipeline/reference.py from the records of pipeline/records.py: mise run generate -->
+
+Each file the steps share is read as its record (`pipeline/records.py`), where it enters; `mise run audit` reads every
+one.
+
+## CSV files
+
+| File | Record | A row is |
+| -- | -- | -- |
+| `pipeline/tickets/pages.csv` | `FoundRow` | How an agent found a festival with no known ticket page sells: a page exactly when it sells in a shop (a festival whose sales haven't opened may name its coming page), the links searched exactly when a search found nothing. |
+| `pipeline/tickets/status.csv` | `StatusRow` | What a festival waits for. |
+| `pipeline/plans.csv` | `PlanRow` | Who said they are going to which festival. |
+| `pipeline/communities.csv` | `Community` | A community: its key (four words, its page's address), its name, and its manager (a people.csv key), who adds people to it. |
+| `pipeline/community_members.csv` | `Membership` | A person (a people.csv key) who is a member of a community, under their own name. |
+| `pipeline/seeded.csv` | `Seeded` | Someone a community's manager added, who has not joined: a plain name (no link, handle or email), the artist records they are (';'-separated match keys, so a booking says they teach there; the manager never says so) and a festival they are going to. The community's page names them, as added by its manager. |
+| `pipeline/travel.csv` | `Travel` | How a member travels to a festival they plan, as far as they said: when they arrive (and at which airport, when they fly) and when they leave (and from where), either end left empty when not known, or its day alone when its time is not. An airport goes with its time, and something is said: a row of four blanks says nothing, which no row does. Only a member, who has a name of their own, registers how they travel; the people a manager adds never do. Where they stay is stays.csv. |
+| `pipeline/stays.csv` | `StayRow` | Where a member stays at a festival they plan, from a night to a night, each night by its evening's date: a plain name (no link, handle or email) such as a hotel or "with friends". A member may stay at several places, one after another; a member's nights never overlap, and fall between the day they arrive and the day before they leave when they said them. |
+| `pipeline/airports.csv` | `Airport` | An airport a festival can fly to; home (1) is where flights leave from. |
+| `pipeline/geocode.csv` | `Place` | A place asked of Nominatim, and where it is when Nominatim found it (its columns lat, lon and osm_name, all empty when it found none): a city as the source DB spells it, in its country when it names one, or the place a place claim says that spelling is (pipeline/cities.py). |
+| `pipeline/cities.csv` | `City` | A city festivals are in, however the source DB spells it (pipeline/cities.py): its key, which never changes once written, as claims name it; its name; the country it is in, which may not be the one a festival is listed under; and where it is, the one place a city's point is kept. |
+| `pipeline/stations.csv` | `Station` | The stop an airport's trips into a city start from (pipeline/measure.py), when Transitous knows one near it (its columns stop_id, name, lat and lon, all empty when it knows none: those trips start at the airport's point). |
+| `pipeline/screened.csv` | `Screened` | How long the quickest trip by public transport from an airport into a festival city takes on a Friday evening, as Transitous's many-to-one search found it on a day (pipeline/measure.py): none when it found no trip. The search counts a wait for the first vehicle as travel, so it screens; a Routed row says how long the trip takes. |
+| `pipeline/routed.csv` | `Routed` | The quickest trip by public transport from an airport into a festival city leaving on a Friday afternoon, as Transitous's route search found it on a day (pipeline/measure.py) (its columns minutes, changes and modes, all empty when it found none). |
+| `pipeline/spend.csv` | `Spent` | A request to Claude and what it cost; thinking counts as output. |
+| `pipeline/rates.csv` | `Rate` | Units of a currency per euro, on a day. |
+| `pipeline/promo_codes.csv` | `Promo` | A promo code for a festival, ours, not kizomba-world's. |
+| `pipeline/people.csv` | `Person` | Someone who shares their festival plans: the artist records they are (';'-separated match keys), whether cards name them (featured) or only count them, and the city they live in, when they said, which the Friends tab finds people near a visitor by. |
+| `pipeline/extract/groups.csv` | `Group` | A named group: an act several people perform as, its members and the spellings that mean it, each a match_key. |
+| `pipeline/artist_merge_suggestions.csv` | `Suggestion` | A pair of artists that may be one, for a reviewer to decide. |
+
+## Folders
+
+| Files | Record | Each is |
+| -- | -- | -- |
+| `pipeline/extract/answers/<pass>/` | `Answered` | an answer of an extraction pass, with where it comes from |
+| `pipeline/tickets/reads/<id>.json` | `FirstRead` | a festival's first read |
+| `pipeline/tickets/drafts/<id>.json` | `FirstRead` | a first read an agent is making, beside the prompt it follows |
+| `pipeline/tickets/disputed/<id>.json` | `Dispute` | the models' reads, no two of which agreed |
+| `pipeline/tickets/partial/<id>.json` | `ModelReads` | the models' reads already paid for, until they settle |
+| `pipeline/tickets/log/<id>.jsonl` | `Read`, `Failed` | each read of a festival's ticket page, or its failure, appended to |
+| `pipeline/tickets/sites/<site>.json` | `PageRecipe`, `ApiRecipe` | a ticket site's recipe |
+| `pipeline/fare_offers/<run>.parquet` | `Search`, `Offer` | the fare searches of one run, each with the offers it saw; never written again once the run is over |
+| `pipeline/prompts/asked/<hash>.md` | — | the text of every prompt an answer or a read followed |
+| `claims/<digest>.json` | `MergeClaim`, `HomeClaim`, `BookingClaim`, `SiteClaim`, `PlaceClaim`, `CityClaim` | an admin's claim (the claims submodule) |
+| `pipeline/proposals/<digest>.json` | `CityClaim` | the research session's claim, of the model channel, which an admin's claim overrides |

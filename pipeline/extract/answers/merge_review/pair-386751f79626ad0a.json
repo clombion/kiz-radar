@@ -1,0 +1,13 @@
+{
+ "key_a": "p:curtis@curtis+kelly",
+ "key_b": "p:curtislpk",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "386751f79626ad0a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the partner Kelly and both have events in France, and B's 'Curtis Lpk' is the full form of A's 'Curtis'; no event lists both sides, so nothing shows two people."
+ }
+}

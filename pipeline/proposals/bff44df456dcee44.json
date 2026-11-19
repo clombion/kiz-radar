@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "dubai-ae",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "DXB",
+   "SHJ"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "DXB 25 min by metro (Red Line), researched; SHJ about 45 min by taxi, researched. The planner found no trip."
+}

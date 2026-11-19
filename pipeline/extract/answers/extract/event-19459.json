@@ -1,0 +1,48 @@
+{
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5dfbd5a5f59b49a8",
+ "answer": {
+  "batch": "event-19459",
+  "events": [
+   {
+    "event_id": 19459,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "engaging workshops",
+      "rationale": "The description says the festival offers engaging workshops."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Afternoon Social (15:00-21:00)",
+      "rationale": "A daytime afternoon social session is listed in the program."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
+      "rationale": "The parties and dancing take place in the hotel where dancers are invited to stay."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "multiple Kizomba party rooms",
+      "rationale": "The venue has several separate dance rooms."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "MASTERCLASS",
+      "rationale": "A masterclass section is listed, though the teacher is to be confirmed."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "hotel room at special discounted festival rates",
+      "rationale": "Discounted festival hotel rates are negotiated, while the hotel room is booked separately from the ticket."
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "malaga-es",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "AGP"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "AGP 12 min by Cercanías train (C1), researched. The planner found no trip."
+}

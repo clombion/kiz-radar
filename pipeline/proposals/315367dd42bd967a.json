@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "genova-it",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "GOA",
+   "LIN",
+   "PSA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "GOA 25 min by train and bus (1 change); LIN 1 h 47 by metro and train (2 changes); PSA about 2 h by PisaMover and train, researched (the planner started at a coach stop)"
+}

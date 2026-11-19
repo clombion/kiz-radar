@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@doctorkizomba+laura",
+ "key_b": "p:lauradelvecchio",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7e44853351cb3046",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared element is the common first name Laura; side A has Italy among its countries but no surname, no mentions in the supplied list, and no shared partner or event with side B's Laura Del Vecchio, so the evidence does not settle it."
+ }
+}

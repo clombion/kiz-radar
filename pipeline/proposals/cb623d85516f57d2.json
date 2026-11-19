@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "agen-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "TLS",
+   "BOD"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "TLS 1 h 54 by coach, high-speed train and bus (2 changes); BOD 2 h 22 by bus, tram and train (3 changes). EGC flies to the UK only."
+}

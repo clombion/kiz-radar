@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elodie@elodie+fransoa",
+ "key_b": "p:elodiecatena",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1f7baad3f448a013",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are listed in France with the same partner, fransoa, and Élodie is the first name of Élodie Catena, so the shared partner and country make this one artist."
+ }
+}

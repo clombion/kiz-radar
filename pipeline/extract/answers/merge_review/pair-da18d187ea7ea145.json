@@ -1,0 +1,13 @@
+{
+ "key_a": "p:stephanie@benjamine+stephanie",
+ "key_b": "p:stephanie@greg+stephanie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "da18d187ea7ea145",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as French and share the common first name Stephanie, but their partners differ (benjamine vs greg) and their events are in Spain and France, so the evidence neither confirms one person nor shows two."
+ }
+}

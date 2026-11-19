@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nii@astrid+nii",
+ "key_b": "p:nii@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5f3ea95b4382d349",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The names differ only in case and both sides list Ghana, but side A's evidence is a Norwegian couple with partner astrid, while side B's single US teacher mention has no partners, and the short name 'Nii' is weak evidence on its own, so the evidence does not settle it."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "almaty-kz",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "ALA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "ALA 40 min by bus (route 92), researched. The planner found no trip."
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:katalin@katalin+mathias",
+ "key_b": "p:katalin@katalin+matthias",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0da9cbdbee0e5c29",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are Katalin in Austria (AT) with the same events country, and their partners are Mathias and Matthias, a spelling variant of one name, so this is most likely one couple's record split by a spelling difference."
+ }
+}

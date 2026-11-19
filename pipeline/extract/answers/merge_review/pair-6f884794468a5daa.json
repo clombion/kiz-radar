@@ -1,0 +1,13 @@
+{
+ "key_a": "p:estefaniolima",
+ "key_b": "p:stefaniolima",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6f884794468a5daa",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The names differ by one inserted letter ('Estefanio' vs 'Stefanio'), and side A has only one mention with no stated country, style, or partner, while side B's many mentions show Cape Verdean and Dutch ties. The one shared event country (Spain) is weak, and 'Estefânio' is a real Portuguese name, so the evidence does not settle whether this is a typo or a different person."
+ }
+}

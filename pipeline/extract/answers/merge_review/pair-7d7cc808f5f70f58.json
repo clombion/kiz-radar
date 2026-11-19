@@ -1,0 +1,13 @@
+{
+ "key_a": "p:steevebakoula",
+ "key_b": "p:stevebakoula",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7d7cc808f5f70f58",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are teachers at French events with the same surname Bakoula and the first names differ only by a spelling variant (Steeve/Steve), and the distinctive surname with matching country supports one artist, though no partner or stated country confirms it."
+ }
+}

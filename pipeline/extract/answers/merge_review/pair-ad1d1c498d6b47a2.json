@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+ben",
+ "key_b": "p:ana@ana+pedro",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ad1d1c498d6b47a2",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are just the common first name 'Ana' with different partners (ben@ana+ben vs pedro@ana+pedro), so there is no shared partner; their overlap in Portugal and Switzerland is real but too weak to settle whether this is one dancer or two."
+ }
+}

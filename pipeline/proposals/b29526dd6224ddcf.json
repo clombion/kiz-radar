@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "rennes-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "RNS",
+   "NTE"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "RNS 32 min by bus and metro (1 change); NTE 2 h 19 by bus, train and metro (3 changes)"
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:yace@camille+yace",
+ "key_b": "p:yacegalanta",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0bff377b4268f25c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A 'YACE' is a short form of 'YACE GALANTA' and both sides share the partner Camille (camille+yace and camille+yacegalanta), with A's stated France event also appearing on B's side, which the guidance treats as normally the same person, though side A has no listed mentions to check directly."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:portu@dj",
+ "key_b": "p:portu@mada+portu",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6503bfcafcac2c33",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is 'DJ Portu' (ES, one Switzerland event, no partners), and side B is 'Portu' (ES/PT/RO, several countries, a partner 'mada@mada+portu'). The shared name with a DJ prefix and the shared ES country fit a merge, but B's spread across three countries and its partner-linked key suggest several people share the name, and B's mention list is empty, so the evidence does not settle it."
+ }
+}

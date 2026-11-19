@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jorge@angela+jorge",
+ "key_b": "p:jorgeaz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "eb90c746c4e57b7a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the shared first name Jorge and the shared Spanish country code; side A's name is a common first name with a partner (angela) and Bulgarian events, while side B is a DJ named JORGE AZ with Spanish and Portuguese countries and no partners, so the evidence does not settle whether they are one artist."
+ }
+}

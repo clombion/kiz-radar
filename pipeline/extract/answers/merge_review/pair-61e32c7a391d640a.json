@@ -1,0 +1,13 @@
+{
+ "key_a": "p:djstefaniolima",
+ "key_b": "p:stefaniolima",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "61e32c7a391d640a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A is 'Dj Dj Stefanio Lima', the same stage name as side B's 'Stefanio Lima' with only a DJ prefix, and both sides share the Kizomba style and France events; side B's many mentions consistently carry Cape Verdean or Dutch country flags, so the single 'DJ' prefix difference is a spelling variant of one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mamadou@amina+mamadou",
+ "key_b": "p:mamadou@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "644ad315e354198f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed as Swedish with the same name, but 'Mamadou' is a common first name, side A has no listed event mentions to compare, and the only partner link (Amina) appears on side A alone, so the evidence does not settle whether this is one person."
+ }
+}

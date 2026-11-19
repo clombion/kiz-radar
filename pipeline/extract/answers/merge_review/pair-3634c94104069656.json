@@ -1,0 +1,13 @@
+{
+ "key_a": "p:theo@dance",
+ "key_b": "p:theoawadzi",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3634c94104069656",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both names appear at the same Sweden event (15260) with identical flag lists (🇳🇴/🇬🇧) and matching bullet-line formatting, and 'DJ Theo Awadzi' is the full form of 'Theo' with the same countries (GB, NO), so this looks like one artist listed as teacher and as DJ."
+ }
+}

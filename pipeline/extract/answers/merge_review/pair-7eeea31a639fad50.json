@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ines@dance",
+ "key_b": "p:ines@ines+pedro",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7eeea31a639fad50",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The names are identical apart from an accent (INÈS / Inês) and both sides state Portugal as their country, which fits a spelling variant of one artist. Side A's single mention has no partner and side B's partner (pedro@ines+pedro) cannot be checked against it, so the evidence is consistent but not strong, and the mention list for side B is empty."
+ }
+}

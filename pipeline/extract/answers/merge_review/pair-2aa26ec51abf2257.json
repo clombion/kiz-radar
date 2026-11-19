@@ -1,0 +1,13 @@
+{
+ "key_a": "p:angelica@alessio+angelica",
+ "key_b": "p:angelica@angelica+paolo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2aa26ec51abf2257",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (Alessio versus Paolo) and their events are in different countries (Netherlands versus Italy), with no shared partner, event or mention linking them, so the common first name alone does not make them one artist."
+ }
+}

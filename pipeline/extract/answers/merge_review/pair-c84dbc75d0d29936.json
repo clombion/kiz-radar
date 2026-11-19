@@ -1,0 +1,13 @@
+{
+ "key_a": "p:pdjay@enora+pdjay",
+ "key_b": "p:pidjay@enora+pidjay",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c84dbc75d0d29936",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are French, share the same partner (enora), and have near-identical distinctive stage names (PDJAY / Pidjay), with no shared event showing two separate people."
+ }
+}

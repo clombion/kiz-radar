@@ -1,0 +1,13 @@
+{
+ "key_a": "p:eva@chris+eva",
+ "key_b": "p:eva@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "247fa257ba8f2197",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'Eva' with country DE and a shared Germany event, but 'Eva' is a common first name, side A's mention list is empty despite its stated events, and side B has no partner to link them, so the evidence does not settle whether this is one person."
+ }
+}

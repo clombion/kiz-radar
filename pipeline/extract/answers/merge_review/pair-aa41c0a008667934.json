@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paulo@lenna+paulo",
+ "key_b": "p:paulo@mafalda+paulo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "aa41c0a008667934",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are 'PAULO' from Portugal with no shared event, and their partners (lenna and mafalda) differ, so a common first name with a shared country does not settle whether this is one dancer with two partners or two people, and the mention lists are empty."
+ }
+}

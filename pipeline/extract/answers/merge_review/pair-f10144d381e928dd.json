@@ -1,0 +1,13 @@
+{
+ "key_a": "p:justin@dance",
+ "key_b": "p:justinwelcome",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f10144d381e928dd",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list France as their country and both teach urban styles, but 'Justin' is a common first name with no shared partner, and the only match is a generic first name against a fuller one, so the evidence does not settle whether they are one person."
+ }
+}

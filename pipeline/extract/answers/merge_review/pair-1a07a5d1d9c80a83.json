@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mams@dj",
+ "key_b": "p:mams@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1a07a5d1d9c80a83",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one key paired with itself, so the question is whether 'Dj Mams' is one artist or several people sharing the name; the mentions carry stated countries CH and FR that never coincide with the event countries in a consistent way (CH at a French event, FR at a Spanish event), and no partner or style links them, so the evidence does not settle it."
+ }
+}

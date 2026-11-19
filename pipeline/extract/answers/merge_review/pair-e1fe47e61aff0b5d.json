@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+silvia",
+ "key_b": "p:andreamurgia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e1fe47e61aff0b5d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the common first name 'Andrea' plus a shared Italian country; side A is a bare first name with a different partner (Silvia), no listed mentions to compare styles or events against, and no shared event, so the evidence does not settle whether it is Andrea Murgia."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+guilherme",
+ "key_b": "p:ana@ana+guizamora",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b21b1337c50066ec",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named ANA with the same countries (CU, PT) and the same event country (France), but their partners differ (guilherme versus guizamora), and the mention lists are empty, so the evidence cannot show whether these are one artist or two people sharing a short name."
+ }
+}

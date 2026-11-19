@@ -1,0 +1,13 @@
+{
+ "key_a": "p:rita@dance",
+ "key_b": "p:ritaszabo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e1de2ad60ff975de",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the first name 'RITA' with a Hungarian flag at one Austrian event and no style or partner; side B is 'RITA SZABO' with HU and FR countries and partner chrisdawhite. The shared Hungarian country is suggestive, but a common first name with no style or partner match does not settle it, and no evidence shows different countries or different people."
+ }
+}

@@ -1,0 +1,202 @@
+{
+ "event_id": 19048,
+ "title": "Cultural social dance fest 2026",
+ "start_date": "2026-11-06",
+ "end_date": "2026-11-08",
+ "country": "Denmark",
+ "styles": [
+  "bachata",
+  "kizomba",
+  "other",
+  "salsa"
+ ],
+ "description": "Cultural Social Dance Fest 2026 – Copenhagen\n📍 KUBE, Frederiksberg\n📅 6–8 November 2026\n1st edition of Cultural Social Dance Fest — a celebration of warmer cultures as the colder, darker days settle in up north.\nThis weekend is about coming together.\nAbout sharing music, movement, and moments that don’t need words.\nWe’re creating a space where different dance communities meet — not to perform, but:\nTo connect.\nTo learn from each other.\nTo feel what happens when cultures blend on the dance floor.\n✨ What you can expect:\n– +12 hours of Workshops in 2 rooms. Bachata, Salsa/Casino, Konpa, Kizomba, Merengue and more.\n– +13 hours of Social dancing on 2 floors.\n– Teachers from Denmark and across Europe/Caribbean. 7 teachers have already confirmed\n– Cultural context behind the dances\n– Social dancing 2 evenings on 2 floors (one dancefloor and one lounge area for dancing)\n– A welcoming space for both new and experienced dancers\n💛 We open with a free Friday dance night for everyone\nThis event will continue with a closed party afterwards for ticket holders.\nThis is for you if you enjoy:\n– dancing and getting lost in the music\n– meeting people through movement\n– Connecting without words\n– learning from other cultures\n– being part of something that feels human, simple and real\nConfirmed Teachers:\nRamses y Sandra – Avanza dance (Casino / Son Cubano)\nJuan Pablo Paredes (Bachata / Merengue)\nMariana (Konpa)\nDaniela (Kizomba)\nFrank E (Son Dominicano / Bolero)\nMette (Organizer)\nConfirmed DJ:\nDJ la Desi\nWe will have 3 price tiers\n❌Blind pass – 690 dkk (29th May-12th June) ❌\n❌ Early supporter – 850 dkk (13th June -31st August)❌\nNormal price – 990 dkk (1st September)\nWe’ve already seen what happens when people gather like this —\nand now we’re building something bigger. Are you with us?\nAccomodation\nWalking distance:\nBudget:\nbedandshower~0.7 km from venue\nRoyaltybed Copenhagen~1.1 km from venue\nMid-range:\nScandic Falkoner~1.8 km from venue\nUpscale/boutique\nHouse of Josty~1.9 km from venue\nClose to the Metro line:\nBudget:\nCabinn Scandinavia near Forum station\nCabinn Express near Forum station\nGenerator Copenhagen near Kongens Nytorv\nMid-range:\nScandic Nørreport near Nørreport station\nIbsens Hotel near Nørreport station\nBoutique/design:\nNH Collection Copenhagen near Christianshavn station\nAC Hotel Bella Sky Copenhagen near Bella Center station\n*Copenhagen is full of good hotels and Hostels – these are suggestions based on accessibility to the venue. We do not have any deals with them nor do we gain anything from having them on this list.\n(We keep the rights to make changes to the program as needed)\n(The event is supported by Frederiksbergfonden)",
+ "read_by": "agent",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-11-01T23:04:03+00:00",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "e1b16e8e579376c5"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "f3d60a8a35c734ee",
+      "3b5ffb069eb3da70",
+      "a884abcd8da3153c"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "workshop",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": 2,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "978cb4f465275d19"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "workshop",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 2,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "bb09bfaf793a29ea",
+      "45f7c139973539f6",
+      "51b829bc70bdfc7d"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "party",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 2,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "3d22c1b50770898c",
+      "e7145539d03fcbbc",
+      "3ebcc88cdeb0d66d"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "c31198efdec0f31f"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "b67e6de7f721d75c",
+      "720ab426005bda79",
+      "bb614c5d22a76527"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "fc182a6d5b37b625",
+      "28082db0f72a4965",
+      "0739922262f8086c"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "255695b929a657f9"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

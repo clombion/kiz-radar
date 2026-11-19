@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@akram+sara",
+ "key_b": "p:sarah@akram+sarah",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "96e6f237e7a48be2",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides list the same partner (Akram) and the same country CH, and Sara/Sarah is a spelling variant of the same first name within one couple, so this is most likely one person."
+ }
+}

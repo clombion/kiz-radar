@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+silvia",
+ "key_b": "p:andreas@andreas+silvia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8a0144a9b90afa50",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Andrea and Andreas share the same partner (Silvia), the same stated country (IT), and differ only by a name-ending variant, and no event shows both couples at once, so this is normally one person."
+ }
+}

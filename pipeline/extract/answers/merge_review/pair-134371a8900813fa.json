@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mauro@celia+mauro",
+ "key_b": "p:maurodone",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "134371a8900813fa",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides have the same countries (AO, CH, PT), the same Swiss events, and the same partner, Celia, and 'Mauro D-One' is 'Mauro' with a stage-name suffix, so the shared partner and matching evidence point to one artist."
+ }
+}

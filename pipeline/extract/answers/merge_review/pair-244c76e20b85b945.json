@@ -1,0 +1,13 @@
+{
+ "key_a": "p:curtis@curtis+kelly",
+ "key_b": "p:curtis@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "244c76e20b85b945",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed as French with the same spelling (Curtis/CURTIS), but the only link is a common first name, and the evidence shows no shared partner or event. Side A is a couple (curtis+kelly) while side B is solo, so the evidence does not settle whether they are one dancer."
+ }
+}

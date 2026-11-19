@@ -1,0 +1,68 @@
+{
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "13511cda3f2f6d9e",
+ "answer": {
+  "batch": "event-16246",
+  "events": [
+   {
+    "event_id": 16246,
+    "artists": [
+     {
+      "name_as_written": "ILKSF",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "It’s a world wide concept designed to spread the ILKSF vision and energy in different countries. ILKSF invests in new talents and helps developing new events with the its vision"
+     },
+     {
+      "name_as_written": "𝐇𝐎𝐓 𝐈𝐂𝐄 𝐊𝐈𝐙",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Together with our partners 𝐇𝐎𝐓 𝐈𝐂𝐄 𝐊𝐈𝐙 from Riga, we are super excited to organize this event for the fifth time in Latvia. After the last and successful edition, we can assure you that we will take you to the next level. This festival will be “All-in One Hotel”."
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All-in One Hotel",
+      "rationale": "The description states the festival will be an all-in-one hotel event, so the parties are held in the hotel where dancers stay."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Thursday preparty",
+      "rationale": "A Thursday preparty is listed before the main event days."
+     },
+     {
+      "feature": "workshops",
+      "quote": "3 days of workshops",
+      "rationale": "The event lists three days of workshops as part of the programme."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 days of social",
+      "rationale": "The event lists three days of socials, which are daytime social sessions."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclasses",
+      "rationale": "Masterclasses are listed among the event expectations."
+     },
+     {
+      "feature": "competition",
+      "quote": "Dance competition",
+      "rationale": "A dance competition is listed among the event expectations."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "taxi/guest dancers",
+      "rationale": "The event lists taxi dancers or guest dancers as present."
+     }
+    ]
+   }
+  ]
+ }
+}

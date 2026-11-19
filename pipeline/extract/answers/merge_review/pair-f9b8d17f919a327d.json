@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johann@estelle+johann",
+ "key_b": "p:johann@johann+laeticia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f9b8d17f919a327d",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are just 'Johann' from France with events in Guadeloupe, but their partners differ (Estelle on one side, Laeticia on the other) and neither side's partner is the other side's key, so the shared first name and country are weak evidence and the couples point to two different people."
+ }
+}

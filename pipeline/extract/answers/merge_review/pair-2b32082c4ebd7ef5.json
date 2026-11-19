@@ -1,0 +1,13 @@
+{
+ "key_a": "p:claudia@claudia+oscar",
+ "key_b": "p:claudiamoise",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2b32082c4ebd7ef5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are Italian, but side A is only the common first name 'Claudia' with a partner (Oscar) that side B never shows, and side A has no listed mentions to compare, so a common first name plus a shared country does not settle whether this is one artist."
+ }
+}

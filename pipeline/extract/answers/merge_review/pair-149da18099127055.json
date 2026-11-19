@@ -1,0 +1,13 @@
+{
+ "key_a": "p:selim@anastasia+selim",
+ "key_b": "p:selim@kiki+selim",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "149da18099127055",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The names differ only by an accent and both sides list France, but their partners differ (anastasia vs kiki) and their events and countries mostly do not overlap (Germany, Hungary, Kazakhstan, Poland vs Switzerland), so the evidence does not settle whether this is one dancer with two partners or two people."
+ }
+}

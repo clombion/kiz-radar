@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jeydicksonlima",
+ "key_b": "p:jeydiksonlima",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2ae75a2a510137c7",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The names are spelling variants of the distinctive name Jeydickson/Jeydikson, both sides list the United Kingdom (GB) and UK events in the same country, and both are kizomba/urban kiz teachers, with the DJ mention on side B matching the same stage name."
+ }
+}

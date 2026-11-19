@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marta@dance",
+ "key_b": "p:martha@azael+martha",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7ca55e7475bf5a38",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Marta and Martha are a close spelling variant and both list Poland, but the names are common, side A has no partners to link to side B's partner azael, and side B's events are in Turkey while side A's are in Belgium, so the evidence does not settle whether they are one person."
+ }
+}

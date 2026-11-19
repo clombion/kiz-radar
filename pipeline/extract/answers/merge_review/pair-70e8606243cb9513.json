@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kin@dj",
+ "key_b": "p:kindancersschool",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "70e8606243cb9513",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both names appear at the same event (15939) as distinct listings: a DJ 'Kin' from Cameroon and a French performer group 'Kin Dancers School', which is a school name with no DJ role or shared partner or style linking it to the DJ KIN mentions."
+ }
+}

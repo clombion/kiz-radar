@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@dj",
+ "key_b": "p:alexalberola",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ac5bf8ff10aadade",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "'DJ Alex' is a generic first name with a DJ prefix, with no partner shared and only the Spanish country overlapping (side A also has Hungary and other events), while 'Alex Alberola' is a full name with a Spanish flag at a Philippines teaching event, so the evidence neither confirms nor rules out that they are the same person."
+ }
+}

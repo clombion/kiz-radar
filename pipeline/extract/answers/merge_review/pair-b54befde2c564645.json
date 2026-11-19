@@ -1,0 +1,13 @@
+{
+ "key_a": "p:celine@celine+dhoirif",
+ "key_b": "p:celine@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b54befde2c564645",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named only 'CELINE' (a common first name), and the sole overlap is France: side A is French with a partner 'dhoirif@celine+dhoirif' that side B never shows, while side B's events are in Belgium and Italy with no partners, and side A has no listed mentions to compare styles or events against."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:klaudia@jailson+klaudia",
+ "key_b": "p:klaudia@klaudia+mateusz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "645d4210362351f5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are just the common first name 'Klaudia' with different partners (jailson vs mateusz) and only a partial country overlap (PL), with events in different places (Poland vs Bulgaria), so the evidence does not settle whether they are one dancer or two."
+ }
+}

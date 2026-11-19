@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mikiz@mikiz+pao",
+ "key_b": "p:mikiz@mikiz+paolou",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5f9c5bedaa87a12a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named MIK'IZ with country FR and no mentions are listed, but side A partners with pao@mikiz+pao while side B partners only with paolou, and side A's events span Czech Republic and Germany while side B's are only in France, so the partner difference and the thin evidence do not settle whether this is one artist or a duo split across keys."
+ }
+}

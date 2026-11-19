@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johann@johann+lucie",
+ "key_b": "p:johannorsinet",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "691c6130b2a62491",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the common first name 'Johann' with a partner (Lucie) and no mentions of its own, while side B is the full name 'DJ Johann Orsinet'; the shared country (France) is weak evidence on its own and the partner link cannot be checked against side B, so the evidence does not settle it."
+ }
+}

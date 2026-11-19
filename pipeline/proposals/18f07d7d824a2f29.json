@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "troyes-fr",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "ORY",
+   "CDG"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "ORY 2 h 20 by metro, train and bus (3 changes); CDG 2 h 26 by train and bus (2 changes)"
+}

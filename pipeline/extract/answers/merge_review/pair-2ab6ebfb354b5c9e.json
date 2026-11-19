@@ -1,0 +1,13 @@
+{
+ "key_a": "p:luis@andrea+luis",
+ "key_b": "p:luis@karen+luis",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2ab6ebfb354b5c9e",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are the bare first name Luis with the same country (ES), but they have different partners (Andrea versus Karen) and events in different countries (Turkey versus France, Germany, Hungary, Italy), so the evidence points to two separate people sharing a common first name."
+ }
+}

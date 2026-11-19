@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marvinramos",
+ "key_b": "p:marvinramosacosta",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ea73d18653be3929",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are Colombian salsa teachers with the same stated country and style, and 'Marvin Ramos' is the first part of the full name 'Marvin Ramos Acosta', matching the rule for a first-and-full name with the same country and style, though no partner links them and 'Marvin' is a common first name."
+ }
+}

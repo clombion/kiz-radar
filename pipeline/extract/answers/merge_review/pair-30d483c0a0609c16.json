@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fernando@dj",
+ "key_b": "p:fernando@fernando+michela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "30d483c0a0609c16",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared signal is the name (\"DJ Fernando\" vs \"Fernando\") and the Angola country code; \"Fernando\" is a common first name, side A has no partners, side B has no listed mentions to compare, and the events are in different countries (UK vs Italy), so the evidence does not settle whether they are one artist."
+ }
+}

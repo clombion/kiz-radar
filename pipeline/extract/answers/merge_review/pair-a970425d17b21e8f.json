@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johnny@cristinazebri+johnny",
+ "key_b": "p:johnnyagostino",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a970425d17b21e8f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The records share only the common first name Johnny and overlapping stated countries (AO, CH) with no style, shared partner, or mention rows on side A to confirm the link, so the evidence does not settle whether they are the same person."
+ }
+}

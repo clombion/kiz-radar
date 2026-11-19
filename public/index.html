@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- what the page may load: its own files only (the libraries are served from vendor/, built from the pinned
+     packages); wasm-unsafe-eval lets sql.js compile its WebAssembly. Before the base, so that base-uri holds it -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<!-- a site a link leads to (a ticket page, Google Flights) learns it came from this site, never from which page -->
+<meta name="referrer" content="strict-origin">
+<!-- every link and file from the site's root: this folder here, ../../ on a community's page (c/<key>/) -->
+<base href="./">
+<title>Kiz Radar</title>
+<meta name="description" data-home-city content="Kizomba, Urban Kiz and Tarraxo festivals worth flying to from Bergen, with the flight price for each, and who teaches and DJs where.">
+<link rel="canonical" href="https://clombion.github.io/kiz-radar/">
+<meta name="theme-color" content="#7a2850">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<!-- the card chat apps and social sites show for a shared link -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kiz Radar">
+<meta property="og:title" content="Kiz Radar: Kizomba festivals worth flying to">
+<meta property="og:description" data-home-city content="Kizomba, Urban Kiz and Tarraxo festivals worth flying to from Bergen, with the flight price for each, and who teaches and DJs where.">
+<meta property="og:url" content="https://clombion.github.io/kiz-radar/">
+<meta property="og:image" content="https://clombion.github.io/kiz-radar/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" data-home-city content="Kiz Radar: “Find your next Kizomba festival”, beside a map of Europe with the festivals coming up and lines from Bergen to each">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/caveat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script defer src="vendor/sql-wasm.js"></script>
+<script defer src="vendor/leaflet/leaflet.js"></script>
+<script defer src="vendor/topojson-client.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<!-- the gooey filter the tab ovals share (tabs.ts): blurred, then their alpha sharpened, shapes that touch flow into one -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><filter id="goo" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/><feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8"/></filter></svg>
+<header class="top">
+  <a class="brand" href="#finder"><img src="mark.svg" alt="" width="26" height="26"><span class="brand-name">Kiz Radar</span></a>
+  <nav class="tabs" aria-label="Main"></nav>
+  <button type="button" class="search-btn" id="search-btn" aria-haspopup="dialog" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span class="search-word">Search</span><kbd>/</kbd></button>
+</header>
+<nav id="subnav" class="subnav" aria-label="Explore" hidden></nav>
+<main id="main" tabindex="-1"><p class="status loading" role="status"><img src="loading.svg" alt="" width="56" height="56"><span>Loading…</span></p></main>
+<footer class="site-footer">
+  <div class="f-about">
+    <p class="f-brand">Kiz Radar</p>
+    <p>Kizomba and Urban Kiz festivals across Europe and beyond, with what the flight from <span data-home-city>Bergen</span> costs.</p>
+  </div>
+  <nav class="f-col" aria-labelledby="footer-nav-name" id="footer-nav"><h2 id="footer-nav-name">The site’s pages</h2></nav>
+  <div class="f-col f-data">
+    <h2>The data</h2>
+    <p>Where the data comes from: <a href="#sources">sources and acknowledgements</a>.</p>
+    <p id="currency-switch"></p>
+  </div>
+  <div class="f-col">
+    <h2>For the curious</h2>
+    <a href="#sql">Query the data with SQL</a><a href="https://github.com/clombion/kiz-radar">Source code on GitHub</a>
+  </div>
+</footer>
+</body>
+</html>

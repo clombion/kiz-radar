@@ -1,0 +1,13 @@
+{
+ "key_a": "p:chicho@chicho+lisa",
+ "key_b": "p:chico@chico+lisa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "af84656026724294",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Chicho and Chico are a one-letter spelling variant sharing the same partner (lisa), which the rules treat as normally one person; the different event countries (Germany vs Serbia) are not evidence of two people at the same event, though no mentions are available to confirm it."
+ }
+}

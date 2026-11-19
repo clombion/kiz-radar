@@ -1,0 +1,38 @@
+{
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6bd961f2c52ae55b",
+ "answer": {
+  "batch": "event-15672",
+  "events": [
+   {
+    "event_id": 15672,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Amazing dance workshops",
+      "rationale": "The description lists amazing dance workshops as part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "Rising Star Competition “Canada Selection”",
+      "rationale": "A Rising Star Competition is listed as part of the event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Cool, Sexy & Crazy Dresscodes",
+      "rationale": "The description states that dress codes are part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 Full Days of Dancing; Parties & Socials",
+      "rationale": "The programme includes socials alongside the dancing days."
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:pascal@dj",
+ "key_b": "p:pascalgomis",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7405dd170e3d5c6a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is a DJ named 'DJ PASCAL' with French country and French events, while side B is a kizomba/urbankiz teacher 'Pascal Gomis' with FR/SN countries and a UK event; the shared first name 'Pascal' is common and there is no shared partner, style, or event country to link them, so the evidence does not settle whether they are the same person."
+ }
+}

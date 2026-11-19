@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ange@ange+flo",
+ "key_b": "p:angel@angel+flo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "374ee0fb19dfbb23",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides list the same partner 'flo' and the same country (France) and event country, and Ange/Angel is a short and long form of one name, which the rules treat as the same person when the partner matches."
+ }
+}

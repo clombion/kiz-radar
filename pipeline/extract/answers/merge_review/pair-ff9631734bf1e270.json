@@ -1,0 +1,13 @@
+{
+ "key_a": "p:stef@sarah+stef",
+ "key_b": "p:stefkizz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ff9631734bf1e270",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A ('Stef') is tied to partner sarah and events in France, Netherlands and Sweden, while side B ('Stef Kizz') is tied to partner sonia and events in France, Germany and Switzerland; the only link is the shared first word 'Stef' and a shared country (France), with no shared partner or event, and 'Stef' is a common first name, so the evidence shows two artists."
+ }
+}

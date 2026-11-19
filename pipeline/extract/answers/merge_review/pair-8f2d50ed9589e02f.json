@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sandra@esteban+sandra",
+ "key_b": "p:sandrag",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8f2d50ed9589e02f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared evidence is the common first name Sandra and the same country (Spain); side A is a couple (esteban+sandra) with events in four countries, while side B is a single Spanish mention with no partner, so the evidence does not settle whether SANDRA G is the same person."
+ }
+}

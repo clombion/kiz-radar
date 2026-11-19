@@ -1,0 +1,13 @@
+{
+ "key_a": "p:deecbeatz",
+ "key_b": "p:deeceebeatz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ce044e82398c9a1f",
+ "answer": {
+  "decision": "merge",
+  "rationale": "'Dee C Beatz' and 'Dee Cee Beatz' are the same distinctive stage name written with the letter 'C' spelled out as 'Cee', both listed with French nationality (FR), and the side B records also state Norway, which matches the Norway events; no partner or other evidence conflicts, so this is a spelling variant of one artist."
+ }
+}

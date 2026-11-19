@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jojo@jenny+jojo",
+ "key_b": "p:jojolpk",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fc36e7dd47026aad",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The shared partner Jenny is a link, but the couple keys differ (jenny+jojo vs jenny+jojolpk), side A's events span four countries while B's is only Spain with no stated country, and the distinctive LPK suffix is absent from A, so the evidence does not settle whether this is one artist."
+ }
+}

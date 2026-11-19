@@ -1,0 +1,13 @@
+{
+ "key_a": "p:joey@dj",
+ "key_b": "p:joeyc",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3f1dfb482aed4e55",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are DJs with Sweden as a shared country and no partners to link them, and 'DJ Joey' is a short, common first name that could be the same DJ without the 'C' initial or a different Joey, so the evidence does not settle it."
+ }
+}

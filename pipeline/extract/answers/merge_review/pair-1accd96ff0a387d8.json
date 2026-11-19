@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cedric@cedric+christina",
+ "key_b": "p:cedric@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1accd96ff0a387d8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the common first name Cédric with no shared partner, and side A's mentions list no events, so the evidence does not link them; side B's own mentions (Belgium, Croatia, French flag) show one French teacher but side A's events in Norway and its partner Christina do not connect to it, so there is not enough to merge or separate."
+ }
+}

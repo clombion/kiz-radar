@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marten@anna+marten",
+ "key_b": "p:martenangner",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2fe6d15f058d7b3e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed from Sweden and both appear at Norway events, but side A is only a first name ('Mårten') with no mentions or style to compare against side B's 'Mårten Angner' (Urban Kiz), and side A's shared partner Anna does not appear on side B, so the evidence does not settle whether they are one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:luismi@arantxa+luismi",
+ "key_b": "p:luismi@luismi+mariangela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fce6a09a5f20cddc",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are Spanish and share the name Luismi, and both list events in Belgium, but their partners differ (arantxa versus mariangela) and nothing else links them, so the evidence cannot show whether this is one dancer with two partners or two people with the same name."
+ }
+}

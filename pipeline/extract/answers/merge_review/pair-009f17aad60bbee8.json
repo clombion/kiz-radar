@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lolahontas@enah+lolahontas",
+ "key_b": "p:lolahontas@lolahontas+simon",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "009f17aad60bbee8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the name Lolahontas and the country ES, but they have different partners (enah versus simon), non-overlapping events (Austria and Romania versus France), and no other shared evidence, so the record does not show whether this is one act with changing members or two separate artists."
+ }
+}

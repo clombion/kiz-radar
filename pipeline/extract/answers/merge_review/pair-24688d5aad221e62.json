@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nuno@catia+nuno",
+ "key_b": "p:nuno@nuno+sarai",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "24688d5aad221e62",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Nuno with the same countries (ES, PT), but their partners differ (catia on A, sarai on B) and no event, partner or style links them, so the evidence does not settle whether this is one person or two."
+ }
+}

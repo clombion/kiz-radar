@@ -1,0 +1,13 @@
+{
+ "key_a": "p:rafael@carine+rafael",
+ "key_b": "p:rafael@giovana+rafael",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "49134f9c2dc7bbdd",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Brazilian with the identical name Rafael, but each is tied to a different partner (Carine, Giovana) and to different events (Poland/United States vs Croatia), so the common first name and shared country do not settle whether this is one dancer with several partners or two people."
+ }
+}

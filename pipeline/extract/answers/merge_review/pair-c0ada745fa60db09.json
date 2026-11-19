@@ -1,0 +1,13 @@
+{
+ "key_a": "p:telma@adilson+telma",
+ "key_b": "p:telma@adilsonmaiza+telma",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c0ada745fa60db09",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Telma and stated as Angolan, and side A's partner 'adilson' may match side B's partner 'adilsonmaiza', but the event lists (Canada, France, Luxembourg, Spain versus Poland) and the absence of mention lines do not confirm the same person, so a merge would risk joining two people's histories."
+ }
+}

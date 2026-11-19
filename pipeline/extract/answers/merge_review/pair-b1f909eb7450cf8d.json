@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jkee@dadou+jkee",
+ "key_b": "p:jkee@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b1f909eb7450cf8d",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A's \"J-Kee\" and side B's \"DJ J-Kee\" share a distinctive stage name with a DJ prefix, and both sides are French with events in France, matching the prompt's DJ-prefix example; side A has no listed mentions, so this rests on the stated evidence."
+ }
+}

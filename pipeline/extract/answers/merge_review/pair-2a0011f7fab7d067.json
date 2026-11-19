@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alyssa@alyssa+sacha",
+ "key_b": "p:jalyssa@chamalo+jalyssa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2a0011f7fab7d067",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two records share no partner (Alyssa pairs with sacha, JALYSSA with chamalo), and JALYSSA's events span Albania, Czech Republic, Italy and the Netherlands while Alyssa's are only in France, so the shared first name and similar spelling are not enough to join them."
+ }
+}

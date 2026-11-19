@@ -1,0 +1,13 @@
+{
+ "key_a": "p:latinmaster",
+ "key_b": "p:latinpromaster",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "22e61fe6ba6343a1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both names are DJs at Netherlands events with no stated country, partner, or style overlap beyond a shared 'Latin Master' core; 'Latin Pro Master' versus 'Latin Master' could be a spelling variant or two different DJs, and the evidence does not settle it."
+ }
+}

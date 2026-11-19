@@ -1,0 +1,13 @@
+{
+ "key_a": "p:felicien@felicien+isabel",
+ "key_b": "p:felicien@felicien+isabelle",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "68c470a457cd4d2a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are Felicien from France with partners that are short and long forms of the same name (Isabel / Isabelle), which the guidance treats as the same couple, and their event countries overlap at the United Kingdom."
+ }
+}

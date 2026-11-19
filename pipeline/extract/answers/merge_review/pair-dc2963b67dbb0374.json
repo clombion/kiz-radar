@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sonia@richard+sonia",
+ "key_b": "p:sonia@sonia+stefkizz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dc2963b67dbb0374",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are named only 'Sonia' with no shared partner (A's partner is Richard, B's is Stefkizz), and their country sets overlap only partly (France) while B also has Germany and Switzerland events that A lacks, so the evidence points to two different people sharing a common first name."
+ }
+}

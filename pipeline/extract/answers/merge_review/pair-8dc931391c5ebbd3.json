@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paolomei",
+ "key_b": "p:paolomeli",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8dc931391c5ebbd3",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are in Italy but share no partner: Paolo Mei's partner is kiaraibica and Paolo Meli's is luciatramonte, and the names differ by one letter with no other link, so they are treated as different people."
+ }
+}

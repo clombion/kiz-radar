@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dotizinha@dj",
+ "key_b": "p:dotizinhavamula",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7d892fd830024966",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same DJ prefix plus stage name 'Dotizinha' with Polish country stated for both, and 'Vamula' is a surname-like extension on one side only, so the distinctive stage name and matching country make it one artist."
+ }
+}

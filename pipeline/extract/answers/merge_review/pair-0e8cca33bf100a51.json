@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fajul@fajul+tabea",
+ "key_b": "p:fajulkizztalk",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0e8cca33bf100a51",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A 'Fajul' is partnered with tabea@fajul+tabea and appears only in Switzerland, while side B 'Fajul KizzTalk' (Gambian, events in Germany and Czech Republic) is partnered with tabea@fajulkizztalk+tabea, a different partner record, so the shared first word and the separate partners indicate two different artists."
+ }
+}

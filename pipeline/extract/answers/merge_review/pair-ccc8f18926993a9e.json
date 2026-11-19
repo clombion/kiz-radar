@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mathias@katalin+mathias",
+ "key_b": "p:matthias@katalin+matthias",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ccc8f18926993a9e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Mathias and Matthias are spelling variants with the same partner (Katalin), the same stated country (AT) and events in Austria, so the evidence points to one artist."
+ }
+}

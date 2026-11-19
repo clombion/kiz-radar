@@ -1,0 +1,40 @@
+{
+  "name": "kiz-radar-site",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.30.0",
+  "scripts": {
+    "build": "rm -rf public/js public/vendor && tsc -p . && pnpm run vendor",
+    "types": "tsc --noEmit -p . && tsc -p tests/site",
+    "lint": "biome check --error-on-warnings",
+    "lint:oxlint": "oxlint --type-aware --deny-warnings site tests lint vitest.config.ts",
+    "format": "oxfmt --check",
+    "knip": "knip",
+    "test": "vitest run",
+    "dup": "jscpd",
+    "vendor": "mkdir -p public/vendor/leaflet && cp node_modules/sql.js/dist/sql-wasm.js node_modules/sql.js/dist/sql-wasm.wasm public/vendor/ && cp node_modules/topojson-client/dist/topojson-client.min.js node_modules/world-atlas/countries-50m.json public/vendor/ && cp -r node_modules/leaflet/dist/leaflet.js node_modules/leaflet/dist/leaflet.css node_modules/leaflet/dist/images public/vendor/leaflet/"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.3",
+    "@types/geojson": "7946.0.16",
+    "@types/leaflet": "1.9.22",
+    "@types/node": "22.19.1",
+    "@types/sql.js": "1.4.11",
+    "@types/topojson-client": "3.1.5",
+    "@types/topojson-specification": "1.0.5",
+    "@vitest/browser-playwright": "5.0.5",
+    "@vitest/coverage-v8": "5.0.5",
+    "jscpd": "4.0.5",
+    "knip": "6.43.0",
+    "leaflet": "1.9.4",
+    "oxfmt": "0.79.0",
+    "oxlint": "1.94.0",
+    "oxlint-tsgolint": "7.0.2007",
+    "playwright": "1.64.1",
+    "sql.js": "1.10.3",
+    "topojson-client": "3.1.0",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5",
+    "world-atlas": "2.0.2"
+  }
+}

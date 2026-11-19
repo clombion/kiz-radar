@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mickaela@dance",
+ "key_b": "p:mickaela@jahja+mickaela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "08c8073e11010e87",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'Mickaela' with Swedish events, but side B's mention list is empty, so its events cannot be checked, and side A shows no partner to link to side B's partner 'jahja'; a bare first name with a shared country does not settle it."
+ }
+}

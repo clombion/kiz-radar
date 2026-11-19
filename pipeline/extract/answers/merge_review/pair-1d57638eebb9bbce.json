@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@dj",
+ "key_b": "p:alex@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1d57638eebb9bbce",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The pair is one key compared with itself, and its stated countries (Spain, Hungary) never meet a single consistent person: the generic name 'DJ Alex' appears across Netherlands, Bulgaria, Hungary and France events with different styles, and the Spain and Hungary labels attach to different events, so these look like several people sharing a common stage name rather than one artist."
+ }
+}

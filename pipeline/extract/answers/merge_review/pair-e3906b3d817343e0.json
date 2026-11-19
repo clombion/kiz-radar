@@ -1,0 +1,13 @@
+{
+ "key_a": "p:charles@dance",
+ "key_b": "p:charlessemba",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e3906b3d817343e0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is just the bare first name 'Charles' with one French flag at a Croatian event, and side B is 'Charles Semba' with Angola and France at a UK event; they share France and no partner or event, and a common first name alone is weak evidence, so the evidence does not settle whether they are one person."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:daniel@daniel+irati",
+ "key_b": "p:danielsanchez",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ffa7e069f00117da",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared evidence is the first name Daniel and the country Spain, both weak on their own; side A has no surname, no shared partner, and no shared event, so the evidence does not settle whether the two records are one artist."
+ }
+}

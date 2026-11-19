@@ -1,0 +1,13 @@
+{
+ "key_a": "p:miguel@miguel+monica",
+ "key_b": "p:miguelbrandao",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4509e316b8920b1b",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are Portuguese, but they have different partners (monica for side A, maria for side B), no shared event country beyond PT, and side B's events are in Estonia while side A's are in Portugal and Spain; the only link is the first name Miguel, which is weak evidence on its own."
+ }
+}

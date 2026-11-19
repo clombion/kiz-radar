@@ -1,0 +1,13 @@
+{
+ "key_a": "p:adilson@adilson+telma",
+ "key_b": "p:adilsonmaiza",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "caf41f0ff1b0dd6a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides list the same country (Angola) and the same partner, Telma, and side B's full name 'Adilson Maíza' extends side A's 'Adilson'; no event lists both sides, so the shared partner and country are the deciding evidence."
+ }
+}

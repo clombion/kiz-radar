@@ -1,0 +1,13 @@
+{
+ "key_a": "p:enah@enah+pocahontas",
+ "key_b": "p:enahlebon",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "cf7e7a2988a26b1c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A 'Enah' has no mentions of its own here, only stated country FR and a partner 'pocahontas@enah+pocahontas' that is a couple key, while side B 'ENAH LEBON' is a full distinctive name with country FR, Kizomba style, and partner 'pocahontas'; the shared partner suggests a link, but side A's evidence is too thin (a bare first name with no mentions) to confirm they are the same artist, so this is not settled."
+ }
+}

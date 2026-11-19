@@ -1,0 +1,13 @@
+{
+ "key_a": "p:qds@dj",
+ "key_b": "p:qds@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f3dfd6f93dc78bc0",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Every mention is a DJ named QDS or DJ QDS, all on French events apart from one Belgian event that also carries the French flag, and the stated countries (FR and YT, Mayotte, a French overseas department) are compatible, with a consistent Urban/Kizomba style where stated, so one artist is the most plausible reading."
+ }
+}

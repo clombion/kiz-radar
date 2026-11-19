@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "ljubljana-si",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "LJU",
+   "TRS",
+   "ZAG"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "LJU 41 min by bus (1 change); TRS 2 h 31 by train, coach and bus (3 changes); ZAG 3 h 22 by bus, tram and coach (3 changes)"
+}

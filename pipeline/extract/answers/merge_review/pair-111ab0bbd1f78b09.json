@@ -1,0 +1,13 @@
+{
+ "key_a": "p:konstantinos@anna+konstantinos",
+ "key_b": "p:konstantinos@konstantinos+zoe",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "111ab0bbd1f78b09",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same common first name in Greece, but each is tied to a different partner (anna and zoe), and no shared event, partner or stated style links them, so the evidence does not settle whether this is one dancer or two."
+ }
+}

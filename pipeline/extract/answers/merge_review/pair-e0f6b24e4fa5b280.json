@@ -1,0 +1,13 @@
+{
+ "key_a": "p:corazon@dj",
+ "key_b": "p:corazon@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e0f6b24e4fa5b280",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same self-pair of one key, and the single name CORAZON appears with two stated countries (🇨🇵 and 🇲🇫, both French overseas/territory flags) at two events in France, so the evidence cannot tell whether one DJ or two people share the name; nothing else such as a partner or style links or separates them."
+ }
+}

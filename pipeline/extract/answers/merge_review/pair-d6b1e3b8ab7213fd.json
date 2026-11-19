@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ludivine@dance",
+ "key_b": "p:ludivineludidanse",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d6b1e3b8ab7213fd",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are French teachers named Ludivine, but side A's name is only the bare first name with no partner, and its styles (Heels, Elgo, Elgo Dance) do not overlap with side B's (Lady Styling, Heels, Bachata, Salsa); the one link, a mention of 'Ludidanse' on A's Elgo Dance line, is a possible stage-name suffix but is not enough to settle whether the two records are one artist."
+ }
+}

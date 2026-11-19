@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jojo@jenny+jojo",
+ "key_b": "p:jojokizomba",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4abdbf3dfdd423cf",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are French and the first name Jojo matches, but 'Jojo' is a common name, side A's events (Albania, Austria, Canada, Croatia) and partner jenny do not overlap side B's single Spanish event, and side B's 'Kizomba' is a dance style that side A never states, so the evidence does not settle it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mamadou@dance",
+ "key_b": "p:mamadou@mamadou+mickaela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8c31603a519aea6e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the bare name Mamadou with the same country (Sweden), but Mamadou is a common first name, side A has no partner, and side B has no listed mentions to compare styles or events against, so the evidence does not settle whether the solo teacher and the Mamadou+Mickaela couple are one person."
+ }
+}

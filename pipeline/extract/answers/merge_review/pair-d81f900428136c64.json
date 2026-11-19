@@ -1,0 +1,13 @@
+{
+ "key_a": "p:axel@axel+nora",
+ "key_b": "p:axel@axel+victoria",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d81f900428136c64",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides share only the first name Axel and the country EE, but their partners differ (nora versus victoria) and their events are in different places (Korea versus Finland), so the evidence points to two artists, each with a different couple."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:pati@caarl+pati",
+ "key_b": "p:patii@caarl+patii",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3c2b161f078452f6",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are listed with the same partner (caarl) and the names differ only by a spelling variant (PATI / Patii), while side A states no country and its Switzerland event does not conflict with side B's Italian, Polish, French and Romanian events, so the shared partner makes one artist the likely reading."
+ }
+}

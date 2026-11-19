@@ -1,0 +1,13 @@
+{
+ "key_a": "p:daniela@allan+daniela",
+ "key_b": "p:danielaelena",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1a1c4f1cbb7c5696",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the common first name Daniela plus a shared country (Romania); side A has a partner and events in Saint Martin while side B has only a Mexico event with no partners, so the evidence does not settle whether these are one person."
+ }
+}

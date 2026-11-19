@@ -1,0 +1,13 @@
+{
+ "key_a": "p:yuna@jules+yuna",
+ "key_b": "p:yuna@jules+yuna",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "87deb0e8ca7f16e1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key with the same name, and the only evidence is a bare name stated with two countries (CM and FR) without any mentions, partners or events to show whether it is one person or several people sharing the name Yuna, so the evidence does not settle it."
+ }
+}

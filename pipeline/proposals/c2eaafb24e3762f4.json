@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "chiang-mai-th",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "CNX"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "CNX 15 min by taxi or songthaew, researched. The planner found no trip."
+}

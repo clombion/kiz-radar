@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mojo@dj",
+ "key_b": "p:mojo@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "66f6bc9fbc7bcda5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The same key on both sides gives one name stated with two countries that never meet: Martinique (🇲🇶) at event 17122 and USA (Seattle) at event 18985, with no shared partner or other evidence linking them, so it could be one traveling DJ or several people named DJ Mojo."
+ }
+}

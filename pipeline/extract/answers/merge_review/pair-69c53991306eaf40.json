@@ -1,0 +1,13 @@
+{
+ "key_a": "p:gaz@dance",
+ "key_b": "p:gaz@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "69c53991306eaf40",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The DJ prefix is the only difference between 'Gaz' and 'DJ Gaz', both sides are stated as Canadian with events only in Canada, and the teacher and DJ roles at Canadian events fit one artist, so the same stage name with the same country supports a merge."
+ }
+}

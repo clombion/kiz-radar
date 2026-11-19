@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@jack+sara",
+ "key_b": "p:sarah@jack+sarah",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dc048c35be91f33d",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Sara and SARAH are spelling variants (Sara/Sarah) who share the same partner, Jack, and both have events in France, which matches the guidance that a spelling variant with the same partner is normally one person; side B has no stated country, so it is not contradicted."
+ }
+}

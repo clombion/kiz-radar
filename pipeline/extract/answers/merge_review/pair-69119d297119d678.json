@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mireia@mireia+nervif",
+ "key_b": "p:mireia@mireia+nervif",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "69119d297119d678",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one key paired with itself: a common first name stated with countries ES and VE, but the mention lists are empty, so there is no event, role, style, or partner evidence to show whether one artist moved between countries or several people share the name."
+ }
+}

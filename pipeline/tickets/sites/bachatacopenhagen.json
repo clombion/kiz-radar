@@ -1,0 +1,23 @@
+{
+  "site": "bachatacopenhagen",
+  "hosts": ["bachatacopenhagen.dk", "www.bachatacopenhagen.dk"],
+  "reseller": null,
+  "widget": null,
+  "visible": false,
+  "wait": 8,
+  "open": null,
+  "row": ".bdc-event-meta__ticket-row[data-type-key]",
+  "api": null,
+  "fields": {
+    "key": {"css": null, "attr": "data-type-key", "match": null},
+    "name": {"css": ".bdc-event-meta__ticket-type-label", "attr": null, "match": null},
+    "price": {"css": ".bdc-event-meta__ticket-type-price", "attr": null, "match": null},
+    "amount": {"css": null, "attr": "data-type-price", "match": null},
+    "currency": {"css": ".bdc-event-meta__ticket-type-price", "attr": null, "match": "([A-Z]{3})"},
+    "fee": null,
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {"css": null, "attr": "data-available", "match": "^0$"}
+  }
+}

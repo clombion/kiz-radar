@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fernando@fernando+micaela",
+ "key_b": "p:fernandobumbum",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ea880b25cf1dfdd4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the first name Fernando, a shared country (IT), and partners whose names are near-spellings (Micaela/Michela), but the partners are not identical, side B has no events, and the surname Bumbum appears only on side B, so the evidence does not settle whether this is one artist."
+ }
+}

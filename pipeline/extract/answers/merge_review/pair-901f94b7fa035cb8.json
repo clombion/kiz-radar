@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manon@didier+manon",
+ "key_b": "p:manon@jeff+manon",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "901f94b7fa035cb8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'Manon' with the same country (GP) and nearby events, but the partners differ (didier vs jeff) and the name is a common first name with no distinctive surname, so the evidence does not show whether this is one dancer with two partners or two people."
+ }
+}

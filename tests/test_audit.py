@@ -1,0 +1,198 @@
+"""pipeline.audit: a value its record refuses is named with its file and place; an override that departs from nothing
+is stale; the report is the same each time."""
+
+import contextlib
+import dataclasses
+import datetime as dt
+import json
+from pathlib import Path
+
+import pytest
+
+from pipeline import audit, data, prompt, tickets_state, tickets_store
+from pipeline.claims import CityClaim, NotServed, Small
+from pipeline.db import Reader
+from pipeline.enums import CityTier, FirstRead
+from pipeline.records import ANSWERS, Airport, City, CsvRow, PageRecipe, Spent
+from pipeline.tables import ShapeError
+from tests.exports import committed, shaped
+from tests.fakes import AT, SITE_CLAIMS, Memory
+
+
+def copied() -> Path:
+    """The data folder, with every committed CSV file."""
+    committed(*(r.FILE for r in CsvRow.records()))
+    return data('')
+
+
+def edited(path: Path, line: int, column: int, value: str) -> None:
+    """The CSV file with one value replaced."""
+    lines = path.read_text(encoding='utf-8').splitlines()
+    cells = lines[line - 1].split(',')
+    cells[column] = value
+    lines[line - 1] = ','.join(cells)
+    _ = path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+
+
+def test_a_hand_edited_state_is_named_with_its_file_and_place(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    root = copied()
+    edited(root / 'pipeline/tickets/pages.csv', 2, 2, 'soon')
+    found = audit.refused(set())
+    assert len(found) == 1
+    assert found[0].startswith('pipeline/tickets/pages.csv line 2: state: Input should be')
+    assert audit.refused(set()) == found  # the same report each time
+
+
+def test_a_row_of_more_cells_than_its_header_is_refused_and_the_audit_goes_on(tmp_path: Path) -> None:
+    root = copied()
+    path = root / 'pipeline/tickets/pages.csv'
+    _ = path.write_text(path.read_text(encoding='utf-8') + '1,F,shop,https://x.example/,,agent,a note,one too many\n')
+    edited(root / 'pipeline/tickets/status.csv', 2, 3, 'soon')
+    found = audit.refused(set())
+    assert [f.split(':')[0] for f in found] == ['pipeline/tickets/pages.csv', 'pipeline/tickets/status.csv line 2']
+    assert 'cells, where its header has 7 columns' in found[0]
+
+
+def test_a_row_is_added_only_under_its_records_header(tmp_path: Path) -> None:
+
+    Spent.path().parent.mkdir(parents=True, exist_ok=True)
+    _ = Spent.path().write_text('')  # an empty file gets its header
+    spent = Spent.model_validate(
+        {'at': '2026-10-01T05:00:00+00:00', 'step': 'prices', 'model': 'claude-haiku-5-5', 'input_tokens': '1',
+         'output_tokens': '1', 'usd': '0.01'}
+    )  # fmt: skip
+    spent.append()
+    assert Spent.read() == [spent]
+    _ = Spent.path().write_text('when,cost\n')
+    with pytest.raises(ShapeError, match='its header is when,cost'):
+        spent.append()
+    assert Spent.path().read_text() == 'when,cost\n'
+
+
+def festival(page: str | None, **change: object) -> tickets_state.Festival:
+    base = tickets_state.Festival(
+        id=1,
+        title='F',
+        start_date=dt.date(2027, 1, 1),
+        end_date=dt.date(2027, 1, 2),
+        country=None,
+        description='',
+        over=False,
+        styles=(),
+        links=(),
+        found=None,
+        first_read=None,
+        log=(),
+        tiers=(),
+        described=None,
+        page=tickets_state.KnownPage(page, None) if page else None,
+        disputed=False,
+        need=FirstRead.NONE,
+    )
+    return dataclasses.replace(base, **change)
+
+
+def test_an_override_is_stale_once_a_recipe_reads_its_site_or_no_festival_has_its_page_there() -> None:
+    o = SITE_CLAIMS[0]
+    others = [festival(f'https://{p.host}/e') for p in SITE_CLAIMS[1:]]
+    committed(tickets_store.SITES)
+    known = tickets_store.sites()
+    assert audit.stale([*others, festival(f'https://{o.host}/e', over=True)], known) == []  # past festivals count
+    assert [s for s, _ in audit.stale(others, known)] == [o]  # no festival uses the site
+    weezevent = known['weezevent']
+    assert isinstance(weezevent.recipe, PageRecipe)
+    recipe = weezevent.recipe.model_copy(update={'hosts': (o.host,), 'site': 'x'})
+    stale = audit.stale(
+        [*others, festival(f'https://{o.host}/e')], known | {'x': tickets_store.Site(recipe, 'x@0123abcd')}
+    )
+    assert [s for s, _ in stale] == [o]
+    assert 'festivals 1' in stale[0][1]
+
+
+def test_an_override_replaces_only_the_state_it_names() -> None:
+    o = SITE_CLAIMS[0]
+    assert tickets_state.waiting(festival(f'https://{o.host}/e')) == o.then
+    assert tickets_state.waiting(festival(f'https://{o.host}/e', need=FirstRead.DISPUTED)) != o.then
+
+
+def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes() -> None:
+    copied()
+    now, old = prompt.current('extract').hash, '0' * 16
+    folder = data(ANSWERS) / 'extract'
+    folder.mkdir(parents=True)
+    feature = {'feature': 'promo_code', 'quote': 'q', 'rationale': 'a code'}  # a feature the build makes
+    for i in (1, 2):
+        events = [{'event_id': i, 'artists': [], 'features': [feature]}]
+        filed = {
+            'prompt': now if i == 1 else old,
+            'model': 'claude-haiku-5-5',
+            'answered_at': '2026-10-02T09:00:00+00:00',
+            'answered_by': 'x',
+            'inputs': None,
+            'answer': {'batch': 'b', 'events': events},
+        }
+        _ = (folder / f'event-{i}.json').write_text(json.dumps(filed))
+    found = [f for f in audit.refused({1, 2}) if 'event-' in f]
+    assert len(found) == 1
+    assert 'event-1.json: answer/events/0/features/0/feature: Input should be' in found[0]
+
+
+def test_an_empty_value_is_allowed_only_where_its_column_allows_it(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    root = copied()
+    edited(root / 'pipeline/promo_codes.csv', 2, 2, '')  # a code with no offer stated
+    assert audit.refused(set()) == []
+    edited(root / 'pipeline/tickets/status.csv', 2, 3, '')
+    found = audit.refused(set())
+    assert len(found) == 1
+    assert found[0].startswith('pipeline/tickets/status.csv line 2: waits_for:')
+
+
+def test_the_audit_exits_1_naming_what_it_found_on_stderr(
+    memory: Memory, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    db = shaped(memory())
+
+    def festivals(
+        db: Reader, today: dt.date, only: int | None = None, *, every: bool = False
+    ) -> list[tickets_state.Festival]:
+        assert (only, every) == (None, True)  # the audit reads every festival
+        return []
+
+    monkeypatch.setattr(audit.tickets_state, 'src_db', lambda: contextlib.nullcontext(db))
+
+    def refused(event_ids: set[int]) -> list[str]:
+        assert event_ids == set()  # no festival of the empty export has an answer to check
+        return ['pages.csv line 2: state: no state']
+
+    monkeypatch.setattr(audit, 'refused', refused)
+    monkeypatch.setattr(audit.tickets_state, 'festivals', festivals)
+    monkeypatch.setattr('sys.argv', ['audit'])
+    with pytest.raises(SystemExit) as e:
+        audit.main()
+    out = capsys.readouterr()
+    assert e.value.code == 1
+    assert out.out.startswith(f'1 refused, {len(SITE_CLAIMS)} stale')
+    assert 'pages.csv line 2' in out.err
+
+
+def test_a_city_claim_naming_a_city_or_an_airport_the_files_have_not_is_refused() -> None:
+    City.write([City(key='lisbon-pt', name='Lisbon', country_code='PT', lat=38.7, lon=-9.1)])
+    Airport.write(
+        [Airport(code='LIS', name='Lisbon', city='Lisbon', country_code='PT', lat=38.8, lon=-9.1, home=False)]
+    )
+
+    def decided(key: str, *gateways: str) -> CityClaim:
+        made = Small(tier=CityTier.SMALL, gateways=gateways)
+        return CityClaim(field='city', key=key, decision=made, made_at=AT, note='n')
+
+    assert audit.unknown([('a', decided('lisbon-pt', 'LIS'))]) == []
+    not_served = CityClaim(
+        field='city', key='faro-pt', decision=NotServed(tier=CityTier.NOT_SERVED), made_at=AT, note='n'
+    )
+    assert audit.unknown([('c', not_served)]) == ['c: no city faro-pt in pipeline/cities.csv']
+    assert audit.unknown([('b', decided('porto-pt', 'LIS', 'OPO'))]) == [
+        'b: no city porto-pt in pipeline/cities.csv',
+        'b: no airport OPO in pipeline/airports.csv',
+    ]

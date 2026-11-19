@@ -1,0 +1,13 @@
+{
+ "key_a": "p:raul@daniela+raul",
+ "key_b": "p:raultorres",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ecb038d83b74fa7c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list Colombia, but side A is only the first name 'Raul' tied to a couple key with partner Daniela, with no visible mentions to compare, and 'Raul' is a common first name, so the evidence does not settle whether it is DJ Raul Torres."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:morgane@bastien+morgane",
+ "key_b": "p:morgane@frednelson+morgane",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b119a67a18a70b49",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Morgane and listed as French, but they have different partners (bastien vs. frednelson), and there is no shared partner, event or distinctive name to link them, so the evidence does not settle whether this is one dancer with two partners or two people."
+ }
+}

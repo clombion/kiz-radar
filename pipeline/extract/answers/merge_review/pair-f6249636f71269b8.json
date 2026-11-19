@@ -1,0 +1,13 @@
+{
+ "key_a": "p:carla@carla+mario",
+ "key_b": "p:carla@carla+tony",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f6249636f71269b8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named CARLA and share the country AO and the event country France, but their partners differ (mario versus tony) and side B has further countries (CV, ES) and events (Albania, Czech Republic, Germany) that side A lacks, so the evidence does not settle whether this is one artist or two people with the same name."
+ }
+}

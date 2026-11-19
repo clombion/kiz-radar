@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ines@dance",
+ "key_b": "p:inesmiranda",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "62c5d38279571d61",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A is a single 'INÈS' mention with country PT at a Spanish event, and side B is a Portuguese teacher 'Inês Miranda' with many mentions across Europe, Australia and Jamaica; the accent-stripped spelling variants (INÈS, IÑES, Ines) and the shared PT country make it very likely one artist, with the first-name-only spelling being the only gap, so I judge merge."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johnny@cristina+johnny",
+ "key_b": "p:johnnyagostino",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d9b9b9eb74fdb269",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides have Switzerland as a country and event location, but 'JOHNNY' is a common first name with no mentions listed on side A, and the only partner (Cristina) appears on side A alone, so the evidence does not settle whether the couple's Johnny is Johnny Agostino."
+ }
+}

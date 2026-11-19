@@ -1,0 +1,13 @@
+{
+ "key_a": "p:susan@dance",
+ "key_b": "p:susan@susan+tomasdansar",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "50bd4f7b95235fb3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the single first name 'Susan' with Swedish country and events, but that is weak evidence; side B's couple listing with 'tomasdansar' has no counterpart on side A, and side B has no mention rows to check, so the evidence does not settle whether they are one person."
+ }
+}

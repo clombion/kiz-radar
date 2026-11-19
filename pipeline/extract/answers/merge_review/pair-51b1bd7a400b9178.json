@@ -1,0 +1,13 @@
+{
+ "key_a": "p:akram@akram+sara",
+ "key_b": "p:akram@akram+sarah",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "51b1bd7a400b9178",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are named Akram with the same country (CH) and a partner whose name is only a spelling variant (Sara / Sarah), and no event lists both couples, so this looks like one couple's history split by spelling; the differing events are not enough to show two people."
+ }
+}

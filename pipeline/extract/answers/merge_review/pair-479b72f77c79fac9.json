@@ -1,0 +1,13 @@
+{
+ "key_a": "p:heneco@dance",
+ "key_b": "p:heneco@heneco+kiki",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "479b72f77c79fac9",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The names are identical apart from capitalisation, both sides state France (FR), and both have events in Austria; the HENECO side's partner Kiki is a couple key, which fits one dancer appearing solo and in a duo, though side B has no listed mentions to confirm it."
+ }
+}

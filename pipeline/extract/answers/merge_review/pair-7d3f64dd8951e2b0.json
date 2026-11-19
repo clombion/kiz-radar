@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manon@dj",
+ "key_b": "p:manon@jeff+manon",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7d3f64dd8951e2b0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list Guadeloupe and Saint Martin, and the DJ prefix fits, but 'Manon' is a common first name, side A has no partner while side B is tied to jeff, and side B's mentions are empty, so the evidence does not settle whether they are one artist."
+ }
+}

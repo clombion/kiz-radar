@@ -1,0 +1,13 @@
+{
+ "key_a": "p:yannick@dance",
+ "key_b": "p:yannickelmambo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e0cbdf5c93d4c507",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is a single bare 'YANNICK' mention at a French event with no style or partner, while side B is a distinctive stage name 'Yannick El Mambo' across four French events; the shared first name and France are weak evidence, and A's flag 🇨🇵 is not the French flag, so the link cannot be settled."
+ }
+}

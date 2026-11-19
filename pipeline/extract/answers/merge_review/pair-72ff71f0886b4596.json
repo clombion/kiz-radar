@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paparazy@dj",
+ "key_b": "p:paparazy@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "72ff71f0886b4596",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "One key stands for both sides, with two stated countries (🇪🇦 at event 14800 and 🇦🇴 at event 18861) and no partner, style, or shared event that links them, so the evidence cannot show whether this is one DJ with two nationalities or several DJs sharing the name PAPARAZY."
+ }
+}

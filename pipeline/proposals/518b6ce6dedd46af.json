@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "new-york-us",
+ "decision": {
+  "tier": "big",
+  "gateways": [
+   "JFK",
+   "EWR",
+   "LGA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "JFK 1 h 12 by bus, train and metro (2 changes); EWR 44 min by train and metro (2 changes); LGA 48 min by bus and metro (2 changes). JFK first, as the main airport; TEB is for private jets."
+}

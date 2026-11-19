@@ -1,0 +1,13 @@
+{
+ "key_a": "p:guiu@dance",
+ "key_b": "p:guiuvilanova",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b3214fe34b95cf57",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Spanish teachers and the first name matches, but side A is only ever written as 'Guiu' with no surname, and the styles (URBANKIZ vs Urban/Tarraxo) are related rather than identical, with no shared partner to settle it."
+ }
+}

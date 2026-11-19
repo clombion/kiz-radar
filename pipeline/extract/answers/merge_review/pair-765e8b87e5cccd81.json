@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nuno@catia+nuno",
+ "key_b": "p:nunopesqueira",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "765e8b87e5cccd81",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the bare first name NUNO, in a couple with Catia and with events in France, Portugal and Spain, while side B is Nuno Pesqueira with a Portugal-stated country, one Germany event and no partner. The only overlap is the common first name plus Portugal, and side A has no listed mentions to compare style or event against, so the evidence does not settle it."
+ }
+}

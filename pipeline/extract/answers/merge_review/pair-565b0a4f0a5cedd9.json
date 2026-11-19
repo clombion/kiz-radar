@@ -1,0 +1,13 @@
+{
+ "key_a": "p:said@dance",
+ "key_b": "p:saiddstreet",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "565b0a4f0a5cedd9",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are French (🇫🇷/France) and share Urban Kiz/Tarraxo style and Spanish events, and side B's full name SAID DSTREET is the prefix-extended form of the bare name 'Said' on side A; the 'Said' records are a bare first-name form, so the link rests on country, style and overlapping event country rather than a shared partner, which keeps this as a plausible but not airtight match."
+ }
+}

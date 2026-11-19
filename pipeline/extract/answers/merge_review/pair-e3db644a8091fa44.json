@@ -1,0 +1,13 @@
+{
+ "key_a": "p:teresa@emanuel+teresa",
+ "key_b": "p:teresafreitas",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e3db644a8091fa44",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the partner Emanuel and the couple name (Emanuel+Teresa vs Emanuel+Teresa Freitas) points to one person, but side A has no mentions to check, the two sides' event countries barely overlap (A includes PT, B does not), and the bare first name 'Teresa' is weak evidence, so the pair cannot be settled either way."
+ }
+}

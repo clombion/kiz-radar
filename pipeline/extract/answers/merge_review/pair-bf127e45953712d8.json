@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manuel@benedicte+manuel",
+ "key_b": "p:manuelmartins",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bf127e45953712d8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A's only mentions are summarized as 'MANUEL' (countries FR and PT, events in France, partnered with Benedicte), while side B is 'MANUEL MARTINS' (PT, one French teacher event), so they share a first name, a Portuguese country and France, but 'Manuel' is a common name, side A has no listed mentions to compare styles or events, and side B has no partner to link them."
+ }
+}

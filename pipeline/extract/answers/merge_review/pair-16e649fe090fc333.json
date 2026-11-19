@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@fanio+sara",
+ "key_b": "p:sara@juninho+sara",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "16e649fe090fc333",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are only the common first name 'Sara', with no mentions listed and different partners (fanio versus juninho), so the shared name is weak evidence and nothing links them as one artist."
+ }
+}

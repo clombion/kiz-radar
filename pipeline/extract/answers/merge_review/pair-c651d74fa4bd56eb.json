@@ -1,0 +1,13 @@
+{
+ "key_a": "p:moorea@dance",
+ "key_b": "p:moorea@ironmams+moorea",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c651d74fa4bd56eb",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are written only as 'Moorea' and share France, but side A is stated as France-French Guyana while side B is stated as Switzerland-France, side B's mentions are missing from the record, and side B's partner 'ironmams' has no counterpart on side A, so the evidence does not settle whether these are one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:willy@jessica+willy",
+ "key_b": "p:willy@jessy+willy",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0d427f2e746d118a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The partners are probably the same person (Jessy as a short form of Jessica), which points toward merge, but 'Willy' is a common first name, the events are in different countries (France and Croatia) with only Italy in common, and there are no mentions to check, so the evidence does not settle it."
+ }
+}

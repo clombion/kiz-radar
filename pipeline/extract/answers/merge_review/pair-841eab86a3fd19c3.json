@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+ben",
+ "key_b": "p:anasaavedra",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "841eab86a3fd19c3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is a bare first name 'Ana' with partner ben@ana+ben, while side B is 'ANA SAAVEDRA'; both are listed as Portuguese and both have events in France, but the common first name and the absence of any shared partner or distinctive style link them too weakly to merge or separate."
+ }
+}

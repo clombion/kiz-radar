@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+stephane",
+ "key_b": "p:anamaria",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "40787b2b3840c027",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A ('Ana') is linked to countries BE and RO and events in Germany, Romania and Spain, with partner stephane@ana+stephane, while side B ('Ana Maria') has events only in Denmark and partner stephane@anamaria+stephane; the shared first name and the common partner first name Stephane are weak, and the different partner keys and event countries point to two artists."
+ }
+}

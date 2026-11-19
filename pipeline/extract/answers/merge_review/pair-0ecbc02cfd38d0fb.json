@@ -1,0 +1,13 @@
+{
+ "key_a": "p:traybeatz@dj",
+ "key_b": "p:traybeatz@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0ecbc02cfd38d0fb",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key, so the question is whether one artist or several people share the distinctive name TRAYBEATZ; the stated countries (CW and NL) recur across events, which suggests one DJ, but the mentions span Slovenia, Poland, Estonia, Germany and Kazakhstan with no partner or style evidence, so the evidence does not settle whether this is one artist or several."
+ }
+}

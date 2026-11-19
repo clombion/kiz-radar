@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lilian@ivana+lilian",
+ "key_b": "p:liliana@gwany+liliana",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9fa3b4046d69d05f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Lilian and Liliana have different partners (Ivana versus Gwany) and no shared partner, event or country beyond France; the names are genuinely different spellings, so the one-letter-apart rule applies and nothing links them."
+ }
+}

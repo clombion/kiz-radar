@@ -1,0 +1,13 @@
+{
+ "key_a": "p:beppe@beppe+sabina",
+ "key_b": "p:beppecandela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7bab0f7a600c7e1b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are listed at Italian events and share the same partner Sabina, so 'Beppe' and 'Beppe Candela' are most likely the same artist written in short and long form."
+ }
+}

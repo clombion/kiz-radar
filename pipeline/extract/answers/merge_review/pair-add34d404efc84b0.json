@@ -1,0 +1,13 @@
+{
+ "key_a": "p:bonga@aline+bonga",
+ "key_b": "p:bonga@aline+bonga",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "add34d404efc84b0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The record is one key paired with itself, the name BONGA is stated in four countries (CM, FR, PT, SN), and there are no mentions, partners or styles to show whether it is one artist or several people sharing the name, so the evidence does not settle it."
+ }
+}

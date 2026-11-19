@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dimdim",
+ "key_b": "p:dimdim@dimdim+ophelie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d72a38983c105b4e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are the same name (DIM DIM / Dimdim) with no stated countries and the same partner (ophelie in the dimdim+ophelie couple), and their events overlap in France, so they are most likely one artist."
+ }
+}

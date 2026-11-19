@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabrizio@fabrizio+nicoletta",
+ "key_b": "p:fabriziocampanella",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6d96cd3b7df7f4c4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the partner Nicoletta and are tied to Italy, and the first name FABRIZIO matches the start of Fabrizio Campanella, so the shared partner is strong evidence of one person (though side A has no listed mentions to confirm it)."
+ }
+}

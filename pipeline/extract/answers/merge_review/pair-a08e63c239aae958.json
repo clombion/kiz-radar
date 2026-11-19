@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marciokazakuta",
+ "key_b": "p:marciokazukuta",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a08e63c239aae958",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides carry the same distinctive stage name Márcio Kazakuta/Kazukuta as a DJ, with a near-identical spelling variant (Kazakuta vs Kazukuta) and overlapping event appearances in Portugal, and side B's own record includes the spelling 'DJ Márcio Kazukuta' at a Portugal event, which links the variant spellings to one DJ."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:patrick@cindy+patrick",
+ "key_b": "p:patricksaintvil",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fd8ae45daf08ee33",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is a bare first name 'Patrick' tied to a couple partner cindy+patrick in France and Portugal, while side B is a distinctive full stage name 'Dj Patrick Saint vil' with only French country stated and Germany events; the shared first name and overlapping French country are weak, and side A has no mentions to check, so the evidence does not settle it."
+ }
+}

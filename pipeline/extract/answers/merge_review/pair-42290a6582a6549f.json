@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marisa@jorge+marisa",
+ "key_b": "p:marisapita",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "42290a6582a6549f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides appear at Spanish events and share a partner named Jorge, but the partner keys differ (jorge+marisa vs jorge+marisapita) and there are no country or style details, so the evidence does not settle whether 'Marisa' and 'MARISA PITA' are one artist."
+ }
+}

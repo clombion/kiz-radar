@@ -1,0 +1,13 @@
+{
+ "key_a": "p:enah@enah+lolahontas",
+ "key_b": "p:enahlebon",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8c2721939ed8a993",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Key A is just the bare first name 'Enah' with no mentions of its own, sharing only the France country with the distinctive full name 'Enah Lebon'. Its partner (lolahontas@enah+lolahontas) does not match key B's partner (pocahontas), so the evidence does not settle whether they are the same artist."
+ }
+}

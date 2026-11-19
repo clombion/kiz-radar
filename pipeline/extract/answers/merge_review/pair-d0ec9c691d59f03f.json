@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elena@elena+sergio",
+ "key_b": "p:selena@selena+sergio",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d0ec9c691d59f03f",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Elena and Selena are a spelling variant sharing the same partner, Sergio, and no event lists both couples, so the rule for a same-partner spelling variant applies; Selena has no stated country to contradict Elena's ES."
+ }
+}

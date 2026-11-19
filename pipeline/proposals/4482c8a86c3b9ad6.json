@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "freiburg-de",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "BSL",
+   "FKB",
+   "ZRH"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "BSL 1 h 24 by train and high-speed train (1 change); FKB 1 h 31 by bus and high-speed train (1 change); ZRH 2 h 25 by train and high-speed train (2 changes)"
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elina@crownperk+elina",
+ "key_b": "p:elina@danielschauenburg+elina",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2ced8774fe114839",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The two sides share only the common first name Elina, have different partners (crownperk vs danielschauenburg), and no shared events; side A's Czech Republic event overlaps with side B's stated CZ, but that is too weak to merge or separate them."
+ }
+}

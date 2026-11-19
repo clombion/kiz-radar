@@ -1,0 +1,13 @@
+{
+ "key_a": "p:agnes@agnes+fajul",
+ "key_b": "p:agnes@agnes+vassil",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3d52494be2188bb4",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (fajul versus vassil) and no shared partner, event, or stated style; side A also lists Sweden and events in France and the Czech Republic that side B never meets, so the common name 'Agnes' alone is weak evidence and the records look like two different people."
+ }
+}

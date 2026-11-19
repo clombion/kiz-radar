@@ -1,0 +1,43 @@
+{
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:22:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "55bf4cce7193841f",
+ "answer": {
+  "batch": "event-14516",
+  "events": [
+   {
+    "event_id": 14516,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "50+ hours of workshops",
+      "rationale": "The description states that more than 50 hours of workshops are part of the festival."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows by the world’s top artists",
+      "rationale": "The event offers shows performed by top artists."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "2 Day Socials",
+      "rationale": "The event includes daytime social dancing sessions."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 dance floors",
+      "rationale": "Three separate dance floors are mentioned for Bachata, Salsa and Kizomba."
+     },
+     {
+      "feature": "competition",
+      "quote": "Jack & Jill Competition",
+      "rationale": "A Jack & Jill competition is part of the event."
+     }
+    ]
+   }
+  ]
+ }
+}

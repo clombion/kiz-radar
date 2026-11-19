@@ -1,0 +1,13 @@
+{
+ "key_a": "p:styleofmusc",
+ "key_b": "p:styleofmusic",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5e8770a8bb26dc45",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A 'DJ STYLE OF MUSC' is a truncated spelling of 'Style of Music' with the DJ prefix, and it appears at a Switzerland event where side B also performs as 'DJ Style of Music' with a French flag, so the distinctive stage name and shared Switzerland presence point to one artist."
+ }
+}

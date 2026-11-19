@@ -1,0 +1,13 @@
+{
+ "key_a": "p:val@jossy+val",
+ "key_b": "p:valdanza",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d4fcf3278e454930",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the country Norway and the Estonia event, but side A's partner is jossy@jossy+val while side B's partner is jossy@jossy+valdanza, so the shared partner name is only a near match and the mention lists are empty, leaving 'Val' versus 'Val Danza' undecided."
+ }
+}

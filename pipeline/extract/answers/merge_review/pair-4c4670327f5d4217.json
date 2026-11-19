@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fred@chiara+fred",
+ "key_b": "p:fred@fred+morgane",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4c4670327f5d4217",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are just 'Fred' with different partners (Chiara on one side, Morgane on the other), and the only overlap is the common first name and France; the partner evidence points to two different couples, so they are not the same artist."
+ }
+}

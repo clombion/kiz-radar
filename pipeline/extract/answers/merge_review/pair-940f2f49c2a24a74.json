@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+stephane",
+ "key_b": "p:anamariastoica",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "940f2f49c2a24a74",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The shared first name 'Ana' and overlapping countries (BE, RO) are weak evidence, side A has no mentions to check, and the partners differ (stephane@ana+stephane vs stephanelyke), so the evidence does not settle whether they are one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dasha@aleksy+dasha",
+ "key_b": "p:dasha@alks+dasha",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c446282ea44564ef",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the stage name DASHA with the same stated country (UA) and the same event country (France), and each lists a partner that appears to be the same person under a short and long form (aleksy / alks) within the couple DASHA+Aleksy."
+ }
+}

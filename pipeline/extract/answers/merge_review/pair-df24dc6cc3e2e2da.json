@@ -1,0 +1,13 @@
+{
+ "key_a": "p:chamalo@chamalo+jalyssa",
+ "key_b": "p:chamalo@chamalo+tzer",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "df24dc6cc3e2e2da",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (jalyssa versus tzer) and only partly overlapping countries (NL alone is shared, while FR is on side A only and CM and SE on side B only), so the shared name 'Chamalo' is not backed by a common partner or consistent country and the pair looks like two different dancers who share a name."
+ }
+}

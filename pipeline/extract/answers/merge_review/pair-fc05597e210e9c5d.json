@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kevin@dance",
+ "key_b": "p:kevin@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fc05597e210e9c5d",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are the same key with the same mentions, and the stated countries conflict (Guinea Bissau and Philippines), with the same bare first name used across unrelated events and styles, so the evidence shows several people sharing the name Kevin rather than one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manuel@laura+manuel",
+ "key_b": "p:manueladosesantos",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bb1cb059cf8b72e1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share Italy and a partner first name, Laura, but the partner is only a first name, the mention lists are empty so it cannot be checked whether both appear at the same event, and Manuel and Manuela are gendered forms that could be two different people."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:radu@judit+radu",
+ "key_b": "p:radumanole",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "169b5a7109eebcdb",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only 'Radu' with a partner, Judit, and no mentions are listed for it, while side B is 'Radu Manole' teaching salsa in Greece and Romania with no partner. Both sides state Romania, but 'Radu' is a common first name, so a shared country and first name do not settle whether they are the same person."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:christina@christina+dimitris",
+ "key_b": "p:christinachrysanthou",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6b6de8c9f9022ca2",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared traits are the first name Christina and Greece as a country and event location; side A also has Luxembourg and a partner (dimitris) that side B lacks, and side A has no listed mentions to compare, so a common first name with overlapping but not distinctive evidence does not settle whether these are one artist."
+ }
+}

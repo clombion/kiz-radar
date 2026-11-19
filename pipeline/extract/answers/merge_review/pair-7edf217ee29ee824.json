@@ -1,0 +1,13 @@
+{
+ "key_a": "p:luismi@angeles+luismi",
+ "key_b": "p:luismi@arantxa+luismi",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7edf217ee29ee824",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are Spanish (ES) and share the common first name Luismi, but they have different partners (angeles and arantxa), with events in Spain and Belgium, and no mention lines are available to settle whether one dancer or two people share the name."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mario@dj",
+ "key_b": "p:marion@chandryl+marion",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6696d600bb522381",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side B is a couple 'Marion' with partner chandryl and has no mentions of its own in the provided list, while side A is the DJ 'DJ Mario' with no partners; the only overlap is a similar spelling and the shared country France, which is too weak to join a stage name with a couple's name, and 'Marion' is a different name from 'Mario' (one letter apart), so the evidence shows two different artists rather than one."
+ }
+}

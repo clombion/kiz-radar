@@ -1,0 +1,13 @@
+{
+ "key_a": "p:morgane@bastien+morgane",
+ "key_b": "p:morgane@fred+morgane",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fe65e2840c827381",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are named Morgane, list France as their country and share French events, but their partners differ (bastien versus fred), and the mention lists are empty, so the evidence cannot tell one dancer with two partners from two different Morganes."
+ }
+}

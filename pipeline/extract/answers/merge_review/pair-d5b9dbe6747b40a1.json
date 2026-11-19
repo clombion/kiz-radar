@@ -1,0 +1,13 @@
+{
+ "key_a": "p:danifernandes",
+ "key_b": "p:danifernandez",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d5b9dbe6747b40a1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The surnames differ by one letter (Fernandes vs Fernandez), and the only shared evidence is the Netherlands country and DJ role; side B has a single Saint Martin event with no partner or style to link it to side A's D&L Beats events, and 'Dani' is a common first name, so the evidence does not settle whether this is one artist."
+ }
+}

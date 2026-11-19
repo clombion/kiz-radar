@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manon@didier+manon",
+ "key_b": "p:manon@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b89f423e7a7026b8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated in Guadeloupe (GP) and share the name Manon, with 'DJ Manon' possibly the same person as the Didier+Manon couple, but Manon is a common first name, side A has no listed mentions, and side B has no partner, so the evidence does not settle it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:emanuel@emanuel+teresa",
+ "key_b": "p:emanuelnpedro",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "00194d155ff19903",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A is a bare first name with a partner key 'emanuel+teresa' and events in Europe, while side B is the full name 'Emanuel N.Pedro' with partner 'teresafreitas' and events only in Estonia; the countries overlap only on AO, and the partners differ, so the evidence points to two different people sharing a first name."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:franck@dj",
+ "key_b": "p:franckm",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7374633d7659a9a2",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides state the same country (Germany, 🇩🇪) and the name 'Franck' appears inside 'DJ FRANCK M' with the DJ prefix and a middle initial, with no partner or event evidence pointing to two different people, so it is most likely one artist, though 'Franck' is a common first name."
+ }
+}

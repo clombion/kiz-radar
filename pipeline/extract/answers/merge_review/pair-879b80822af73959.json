@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ichigo@dj",
+ "key_b": "p:ichigo@ichigo+kristel",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "879b80822af73959",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the stage name Ichigo, the DJ prefix on side A, France and Romania/Austria event countries, but side B's mention list is empty and B is a couple key with partner Kristel, so the summary evidence does not show whether the solo DJ and the duo are the same person."
+ }
+}

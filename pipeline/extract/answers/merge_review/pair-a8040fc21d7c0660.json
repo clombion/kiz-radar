@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dwe@dwe+gaby",
+ "key_b": "p:dwetyson",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a8040fc21d7c0660",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list NL as their country and side B's stage name 'Dwe' matches side A's 'DWE', but side A's mentions are empty, side A works in a duo with gaby, and side B has no partner, so the evidence does not settle whether 'Dj Dwe Tyson' is the same artist."
+ }
+}

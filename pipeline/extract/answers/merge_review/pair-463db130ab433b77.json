@@ -1,0 +1,13 @@
+{
+ "key_a": "p:konstantinos@anna+konstantinos",
+ "key_b": "p:konstantinos@katerina+konstantinos",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "463db130ab433b77",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are Konstantinos in Greece, but each is tied to a different partner (Anna vs Katerina) and the events give no further link, and a common first name is weak evidence either way, so the pair does not settle to merge or separate."
+ }
+}

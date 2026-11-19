@@ -1,0 +1,13 @@
+{
+ "key_a": "p:poema@dj",
+ "key_b": "p:poemabeats",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bff2b79b4fd9063b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are DJs from Sweden (🇸🇪 on both) with the same distinctive stage name 'Poema' and a DJ prefix, and the 'Beats' suffix on side B is the only difference, so this is the same artist written with and without a suffix; no partner or country conflict contradicts it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:hugosmile",
+ "key_b": "p:hugosmile@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "eb0fe0f0da8c8382",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side B is the single mention '#HugoSmile' (DJ, France, URBANKIZ style), which is the same distinctive stage name as side A's 'DJ HUGO SMILE' / 'Hugo Smile' with the same French country and Urbankiz style, differing only by a hashtag or DJ prefix; no partner or event conflict separates them."
+ }
+}

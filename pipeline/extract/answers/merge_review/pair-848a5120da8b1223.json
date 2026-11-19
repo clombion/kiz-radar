@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@sara+stef",
+ "key_b": "p:sarah@sarah+stef",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "848a5120da8b1223",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner (Stef) and both have events in France, with Sarah's country stated as FR matching Sara's events, so the spelling variant Sara/Sarah with the same partner is most likely one artist."
+ }
+}

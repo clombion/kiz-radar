@@ -1,0 +1,13 @@
+{
+ "key_a": "p:bourgeois@bourgeois+maria",
+ "key_b": "p:bourgeois@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "11ead27168d965e6",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the distinctive name Bourgeois, the country CM and the France event, but side A is a couple with Maria and also lists RU, while side B is a solo mention with no partner, and side A has no mention records to check, so the evidence does not settle whether this is one artist."
+ }
+}

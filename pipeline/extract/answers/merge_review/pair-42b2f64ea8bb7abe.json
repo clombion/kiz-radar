@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mario@dj",
+ "key_b": "p:marion@gordon+marion",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "42b2f64ea8bb7abe",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "'DJ Mario' and 'Marion' share a country (FR) and event countries (France, Spain), but 'Marion' appears in a couple with partner gordon while 'DJ Mario' has no partners and side B has no mentions in the provided events, so the name difference (Mario vs Marion) with no shared event or partner link is not enough to settle it."
+ }
+}

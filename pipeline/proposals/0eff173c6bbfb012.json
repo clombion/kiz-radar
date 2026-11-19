@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "sevilla-es",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "SVQ",
+   "XRY",
+   "AGP"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "SVQ 44 min by bus and metro (1 change); XRY 1 h 12 by train and metro (1 change); AGP 3 h 02 by bus and high-speed train (2 changes)"
+}

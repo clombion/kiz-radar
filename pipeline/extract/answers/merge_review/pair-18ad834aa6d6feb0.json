@@ -1,0 +1,13 @@
+{
+ "key_a": "p:putox",
+ "key_b": "p:putox@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "18ad834aa6d6feb0",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side B, 'DJ PUTO-X' (one DJ event in Spain, French flag), is the same distinctive stage name as side A's 'DJ Puto X' with only a hyphen difference, and both are listed as French DJs, so the spelling variant and shared country support one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kevin@dj",
+ "key_b": "p:kevindjassy",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "be0b0b474af2f7eb",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides state Guinea-Bissau and appear only at Spanish events, and 'Dj Kevin' is the same name with a DJ prefix as the surname-bearing 'KEVIN DJASSY', so the shared country and event country make one artist the most likely reading, though 'Kevin' is a common first name and no partner links the records."
+ }
+}

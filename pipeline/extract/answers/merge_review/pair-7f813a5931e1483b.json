@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tpeak",
+ "key_b": "p:tpeak@dje+tpeak",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7f813a5931e1483b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The names are the same stage name with a DJ prefix on one side (DJ T Peak / T'PEAK), both records list France as a country, and both share the partner dje@dje+tpeak, so this is most likely one artist."
+ }
+}

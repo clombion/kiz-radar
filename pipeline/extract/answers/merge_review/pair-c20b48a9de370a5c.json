@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nuno@nuno+sarai",
+ "key_b": "p:nunosilva",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c20b48a9de370a5c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is a bare first name 'Nuno' tied only to the couple 'nuno+sarai' with no mentions shown, while side B is 'Nuno Silva' (PT) at a Germany event; they share only the country PT and a common first name, with no shared partner or event, so the evidence does not settle it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anika@anika+michael",
+ "key_b": "p:anika@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f3ec55528d411df3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the spelling ANIKA and the countries AT and SK, but side A has a partner and events in Kazakhstan, Korea and Slovenia, while side B has only one Austrian teacher mention with no partner, and side A's mentions are not provided, so the evidence does not settle whether they are one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:emanuel@emanuel+teresafreitas",
+ "key_b": "p:emanuelnpedro",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "de2833978cd5002e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides state the same country (AO) and share the partner 'teresafreitas', and 'Emanuel' is the first name of 'Emanuel N.Pedro', which the review guidance treats as the same person when partner and country match."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@alex+tiphaine",
+ "key_b": "p:alexsalserito",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "26687596f20ef0d5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A 'ALEX' has no full name, only a single first name with partner tiphaine@alex+tiphaine and no events shown on side A's mentions, while side B 'Alex Salserito' is a distinctive full stage name with DJ prefix variants, all in France and salsa-style; the shared first name alone and the differing partners (tiphaine on both sides but as different couple keys) do not settle whether bare 'ALEX' is the same person, so the evidence is insufficient to merge."
+ }
+}

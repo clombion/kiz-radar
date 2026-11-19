@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michela@fernando+michela",
+ "key_b": "p:michelavissani",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "96ca678bd40090c0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is a bare first name 'Michela' with no mentions listed, a partner (Fernando) that Side B lacks, and an Angolan country tag, while Side B is the full name 'Michela Vissani' with only Italy and no style, so a common first name plus a shared Italian country is not enough to settle it."
+ }
+}

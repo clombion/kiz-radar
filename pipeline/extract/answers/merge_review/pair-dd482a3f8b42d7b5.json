@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jules@jules+yuna",
+ "key_b": "p:jules@jules+yunatarraxopop",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dd482a3f8b42d7b5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the common first name 'Jules' with different partner keys (yuna vs yunatarraxopop), and their only shared country and event location is France, so the evidence does not establish whether they are one person."
+ }
+}

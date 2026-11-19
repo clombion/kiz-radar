@@ -1,0 +1,13 @@
+{
+ "key_a": "p:danifernadez",
+ "key_b": "p:danifernandes",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b1e334be2fa84e88",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A 'DJ DANI FERNADEZ' appears only once, in Spain with no stated country or partner, and differs from B's distinctive 'DJ Dani Fernandes' by one letter in the surname, a likely typo; B's many mentions are consistently labeled Netherlands and tie to the D&L Beats name, but A carries no partner or country evidence to confirm the link, so the evidence is thin and this could also be a different DJ with a similar name, making unsure the safer call."
+ }
+}

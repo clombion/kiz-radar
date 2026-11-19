@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kiki@dance",
+ "key_b": "p:kiki@fuego+kiki",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c40241c5f21eafaf",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the bare name 'Kiki' with no distinctive stage name, no shared partner beyond a link to 'fuego+kiki' that side A does not carry, and side B's events (France, Hungary) do not overlap with side A's (Sweden, Austria, Netherlands, Kazakhstan); the only shared signal is the German flag on some mentions, which is too weak to settle whether these are one person."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laure@dimitri+laure",
+ "key_b": "p:laurie@laurie+thierry",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d15c13c50d14a735",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (Dimitri versus Thierry), appear at different events (Guadeloupe versus Belgium), and the names differ by one letter (Laure/Laurie) with nothing else linking them, so the evidence shows two artists."
+ }
+}

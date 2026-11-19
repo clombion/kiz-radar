@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "cologne-de",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "CGN",
+   "DUS",
+   "FRA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "CGN 15 min by S-Bahn from the airport station, researched (the planner started at a coach stop); DUS 49 min by train; FRA 1 h 36 by bus, high-speed train and suburban train (2 changes)"
+}

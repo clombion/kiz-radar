@@ -1,0 +1,13 @@
+{
+ "key_a": "p:eva@dance",
+ "key_b": "p:eva@eva+murmel",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3333b5fe3b7faf3a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'Eva' from Germany, but 'Eva' is a common first name, side A has no partner to link it to side B's partner murmel, and side B has no listed mentions to compare, so the evidence does not settle it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:claudio@dance",
+ "key_b": "p:claudiodolk",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5c9f57dea04de49d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is a bare first name 'Claudio' with no partner, and its only stated country (Angola, AO) matches side B's, but its events (Romania, Sweden) do not overlap B's events (Italy, Czech Republic, France, Germany) and 'Claudio' is a common first name, so the evidence does not settle whether the bare-name records are the same person as the full-name artist."
+ }
+}

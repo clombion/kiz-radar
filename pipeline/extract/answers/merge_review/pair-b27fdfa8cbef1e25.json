@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabricio@dance",
+ "key_b": "p:fabriciodozangado",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b27fdfa8cbef1e25",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A's bare 'Fabricio' is a short form of the distinctive stage name 'Fabricio do Zangado' on side B, and they share the countries PT and Poland, with B's partner 'mame' linked to the same name; the Poland events are on different event IDs so there is no sign of two people at one event, though a generic first name alone would be weak evidence."
+ }
+}

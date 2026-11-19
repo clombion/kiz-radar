@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kristel@ichigo+kristel",
+ "key_b": "p:kristelju",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "374bd9dd2000ef28",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are French (FR) and share the partner Ichigo, and 'Kristel' is the short form of 'Kristel Ju' within that couple, which the shared-partner rule treats as the same person; side A has no listed mentions to check against, so the evidence rests on the summary."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:maria@jesus+maria",
+ "key_b": "p:maria@jose+maria",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e36b96c256b16e2e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are the common name María with the same stated country (ES), but their partners differ (Jesús versus José) and their events do not overlap, and the mention lists are empty, so the evidence does not settle whether these are one person with changing partners or two people."
+ }
+}

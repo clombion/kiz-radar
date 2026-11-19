@@ -1,0 +1,77 @@
+{
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e3ef9134e9cb5683",
+ "answer": {
+  "batch": "event-18814",
+  "events": [
+   {
+    "event_id": 18814,
+    "artists": [
+     {
+      "name_as_written": "Elo & Adil",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": null,
+      "source_line": "✪ Elo & Adil (2026 World Champions – Bachata)"
+     },
+     {
+      "name_as_written": "DJ ASH",
+      "role": "dj",
+      "style": "Kiz/Semba",
+      "country": null,
+      "source_line": "🎧 DJ ASH (Kiz/Semba)"
+     },
+     {
+      "name_as_written": "DJ MANGO",
+      "role": "dj",
+      "style": "Salsa/Bachata",
+      "country": null,
+      "source_line": "🎧 DJ MANGO (Salsa/Bachata)"
+     },
+     {
+      "name_as_written": "Photobox",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📷 Photobox"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "30 hours of workshops",
+      "rationale": "The description states that 30 hours of dance workshops are part of the event."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Guest Team/Taxi Dancers",
+      "rationale": "The listed Guest Team/Taxi Dancers are present for the workshops."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "3 simple dress codes",
+      "rationale": "The description explicitly states that dress codes are set for the event nights."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "PINK theme",
+      "rationale": "The parties carry a dress theme, the pink theme, across the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms/2 vibes",
+      "rationale": "The event has two dance rooms with different music."
+     },
+     {
+      "feature": "shows",
+      "quote": "1 Instructor show/demo",
+      "rationale": "An instructor show or demo is part of the programme."
+     }
+    ]
+   }
+  ]
+ }
+}

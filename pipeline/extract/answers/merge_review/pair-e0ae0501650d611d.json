@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+stephane",
+ "key_b": "p:anamaria@anamaria+stephane",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e0ae0501650d611d",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records list the same partner, Stephane, and the short form 'Ana' is a shortened version of 'Ana-Maria', with both having Romania events in common and no conflicting countries or both couples shown at the same event."
+ }
+}

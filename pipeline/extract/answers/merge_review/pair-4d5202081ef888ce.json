@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@jack+sara",
+ "key_b": "p:sara@marco+sara",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4d5202081ef888ce",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are just the common first name 'Sara' with different partners (jack versus marco), no shared partner, and only partially overlapping countries (ES) with different event locations, so the evidence points to two artists."
+ }
+}

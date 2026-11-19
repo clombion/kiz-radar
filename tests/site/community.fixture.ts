@@ -1,0 +1,151 @@
+// The community the site's tests read, written into their database over what the build made from pipeline/*.csv: its
+// key and name, its people, their plans, the people its manager added, how members travel, and the festivals any of it
+// names, each by its title, days, city and country, as the data stood when Glasgow was the next trip; and the one promo
+// code a festival has. The real rows are taken out first, so a test never reads them: deleting them from the CSVs, the
+// build leaving out a trip that ended, or a festival moving its days or name, changes no test. A test file gives its
+// page the day it starts on (startSite's now), and a page another day when it opens it (open's on). data.setup.ts
+// writes the database with it into FIXTURE_DATA, which the tests of the whole site load.
+import type { Database } from 'sql.js';
+import { KEY } from '../../site/states.ts';
+
+export const FIXTURE_COMMUNITY = 'frost-lantern-river-maple';
+export const FIXTURE_NAME = 'Norwegians in festivals';
+// where the database with the fixture is written for the tests of the whole site, beside public/data's other files
+export const FIXTURE_DATA = '.vitest/fixture-data';
+// the addresses the test server answers with the fixture's files (vitest.config.ts), as the tests' own pages ask them
+// (app.ts): data/<file>, the fixture's alone; and a file at the root, where Vite's transform sends db.ts's '../data/'
+// in a test
+export const DATA_FILE = /^\/data\/(?<file>.+)$/u;
+export const ROOT_FILE = /^\/(?<file>[^/]+)$/u;
+// Prague GOLD, and the one promo code the data has, its own (every other one is taken out)
+export const PRAGUE_GOLD = 18_666;
+export const FIXTURE_PROMO = 'FIXTURE10';
+// the festivals it goes to: KUOF (Oslo, 20–22 Nov 2026), HOT Ice (Riga, 26 Nov – 1 Dec), Glasgow (6–9 Nov), Prague
+// GOLD (14–18 Jan 2027), Prague Kwanza (11–15 Feb) and Cloudkiz (Enschede, 26–28 Feb)
+export const KUOF = 19_033,
+  GLASGOW = 18_964,
+  KWANZA = 18_660,
+  HOT_ICE = 17_493,
+  CLOUDKIZ = 18_760;
+const PEOPLE = [
+  ['cedric', 'Cédric'],
+  ['christina', 'Christina'],
+  ['sian', 'Siân'],
+] as const;
+// each member's plans; all three live in the site's home city
+const PLANS: Record<string, readonly number[]> = {
+  cedric: [KUOF, HOT_ICE, PRAGUE_GOLD, CLOUDKIZ],
+  christina: [KUOF, HOT_ICE, GLASGOW, PRAGUE_GOLD, CLOUDKIZ],
+  sian: [GLASGOW, KWANZA],
+};
+// the plans someone only may go by, every other one going: Siân to Prague Kwanza
+const MAYBE: ReadonlySet<string> = new Set([`sian ${KWANZA}`]);
+// the people the manager added: name, festival and plan; Tonje may go to Prague GOLD too
+const ADDED = [
+  ['Tonje', KUOF, KEY.plan.GOING],
+  ['Ragnhild', KUOF, KEY.plan.GOING],
+  ['Maja', KUOF, KEY.plan.GOING],
+  ['Caroline', GLASGOW, KEY.plan.GOING],
+  ['Tonje', PRAGUE_GOLD, KEY.plan.MAYBE],
+] as const;
+// how members travel: person, festival, arrive, arrive_at, leave, leave_from
+const TRAVEL = [
+  ['cedric', PRAGUE_GOLD, '2027-01-13T14:30', 'PRG', '2027-01-18T15:10', 'PRG'],
+  ['christina', PRAGUE_GOLD, '2027-01-13T14:30', 'PRG', '2027-01-18T15:10', 'PRG'],
+  ['christina', GLASGOW, '2026-11-06', null, '2026-11-09T19:10', 'ABZ'],
+  ['sian', GLASGOW, '2026-11-05', null, null, null],
+] as const;
+// the festivals the tests name, the community's and three others: Paris (on as KUOF is), Albania (in May) and Riga in
+// September; each id, title, first and last day, city, country and weekend Friday
+export const PARIS = 16_904,
+  ALBANIA = 18_734,
+  RIGA = 16_246;
+type Festival = readonly [
+  id: number,
+  title: string,
+  start: string,
+  end: string,
+  city: string,
+  country: string,
+  friday: string,
+];
+const FESTIVALS: readonly Festival[] = [
+  [KUOF, 'KUOF – Kizomba & Urban Kiz Oslo Festival', '2026-11-20', '2026-11-22', 'Oslo', 'NO', '2026-11-20'],
+  [HOT_ICE, 'HOT Ice KIZ Festival 11th edition', '2026-11-26', '2026-12-01', 'Riga', 'LV', '2026-11-27'],
+  [GLASGOW, 'Glasgow Kizomba Festival 5.0', '2026-11-06', '2026-11-09', 'Glasgow', 'GB', '2026-11-06'],
+  [PRAGUE_GOLD, 'Prague GOLD KIZ Tarraxo Festival', '2027-01-14', '2027-01-18', 'Prague', 'CZ', '2027-01-15'],
+  [KWANZA, 'Prague Kwanza Festival – 9.edition', '2027-02-11', '2027-02-15', 'Prague', 'CZ', '2027-02-12'],
+  [CLOUDKIZ, 'Cloudkiz Weekender', '2027-02-26', '2027-02-28', 'Enschede', 'NL', '2027-02-26'],
+  [PARIS, 'Paris Kizomba Congress', '2026-11-19', '2026-11-23', 'Paris', 'FR', '2026-11-20'],
+  [ALBANIA, 'Albania Afrolatin Festival', '2027-05-05', '2027-05-11', 'Durrës', 'AL', '2027-05-07'],
+  [RIGA, 'ILKSF Meets HIK Latvia 6th Edition', '2027-09-03', '2027-09-06', 'Riga', 'LV', '2027-09-03'],
+];
+export const FIXTURE_FESTIVALS = FESTIVALS.map(([id]) => id);
+// A festival's title as the fixture pins it, by its id; a festival the fixture does not name is an error.
+export function titleOf(id: number): string {
+  const title = FESTIVALS.find(([festival]) => festival === id)?.[1];
+  if (title === undefined) throw new Error(`festival ${id}: none of the fixture's`);
+  return title;
+}
+
+// A festival of the build as a test reads it, whatever the data says: its title, days, city and country, listed and
+// not cancelled. Its city is the one of that name in its country; a festival the data lacks, or a city cities has no
+// such one of, is an error.
+export function pinFestival(db: Database, [id, title, start, end, city, country, friday]: Festival): void {
+  db.run(
+    `UPDATE events SET title = ?, listed_title = ?, start_date = ?, end_date = ?, city = ?, country_code = ?,
+     city_key = (SELECT key FROM cities WHERE name = ? AND country_code = ?), weekend_friday = ?, cancelled = 0,
+     listing = ? WHERE id = ?`,
+    [title, title, start, end, city, country, city, country, friday, KEY.listing.LISTED, id],
+  );
+  const changed = db.getRowsModified();
+  if (changed !== 1) throw new Error(`festival ${id} (${title}): ${changed} rows of events, not 1`);
+  if (db.exec('SELECT 1 FROM events WHERE id = ? AND city_key IS NOT NULL', [id]).length === 0)
+    throw new Error(`festival ${id} (${title}): no city ${city} in ${country} in cities`);
+}
+
+// The fixture written into db: every community, member, added person, travel and stay replaced by its own; its people
+// there (added when the data has them no more), living in home (the site's home city, by its key), their plans its
+// own, and its festivals listed and not cancelled, each in the city of its name in its country.
+export function plantCommunity(db: Database, home: string): void {
+  db.run('PRAGMA defer_foreign_keys = ON');
+  db.run('BEGIN');
+  for (const table of [
+    'travel',
+    'stays',
+    'seeded_artists',
+    'community_seeded',
+    'community_members',
+    'communities',
+    'event_promos',
+  ])
+    db.run(`DELETE FROM ${table}`);
+  db.run('INSERT INTO event_promos (event_id, code, offer) VALUES (?, ?, NULL)', [PRAGUE_GOLD, FIXTURE_PROMO]);
+  for (const [key, name] of PEOPLE) {
+    db.run('INSERT OR IGNORE INTO people (key, name, featured) VALUES (?, ?, 1)', [key, name]);
+    db.run('UPDATE people SET home = ? WHERE key = ?', [home, key]);
+    db.run('DELETE FROM plans WHERE person_id = (SELECT id FROM people WHERE key = ?)', [key]);
+    for (const event of PLANS[key] ?? [])
+      db.run('INSERT INTO plans SELECT id, ?, ? FROM people WHERE key = ?', [
+        event,
+        MAYBE.has(`${key} ${event}`) ? KEY.plan.MAYBE : KEY.plan.GOING,
+        key,
+      ]);
+  }
+  db.run("INSERT INTO communities SELECT 1, ?, ?, id FROM people WHERE key = 'cedric'", [
+    FIXTURE_COMMUNITY,
+    FIXTURE_NAME,
+  ]);
+  for (const [key] of PEOPLE) db.run('INSERT INTO community_members SELECT 1, id FROM people WHERE key = ?', [key]);
+  for (const [i, [name, event, plan]] of ADDED.entries())
+    db.run('INSERT INTO community_seeded VALUES (?, 1, ?, ?, ?)', [i + 1, name, event, plan]);
+  for (const [key, ...trip] of TRAVEL)
+    db.run('INSERT INTO travel SELECT id, ?, ?, ?, ?, ? FROM people WHERE key = ?', [...trip, key]);
+  for (const festival of FESTIVALS) pinFestival(db, festival);
+  const unplaced = db.exec('SELECT id FROM events WHERE id IN (SELECT value FROM json_each(?)) AND city_key IS NULL', [
+    JSON.stringify(FIXTURE_FESTIVALS),
+  ])[0]?.values;
+  if (unplaced !== undefined)
+    throw new Error(`the fixture's festivals ${unplaced.join(', ')} are in no city of cities`);
+  db.run('COMMIT');
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:charlieelponceno",
+ "key_b": "p:charliponceno",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9679cc1a15aefd3c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same DJ prefix and surname 'Ponceño' with near-identical stage names (Charlie El / Charli), both appear only in Spain, and both carry the same BACHATA / SALSA style, so this looks like a spelling variant of one artist."
+ }
+}

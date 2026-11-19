@@ -1,0 +1,13 @@
+{
+ "key_a": "p:george@evgenia+george",
+ "key_b": "p:georgeplom",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e6314206bba7bb3c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Greek with events in Greece, but \"George\" is a common first name, side A's mention list is empty so no style can be compared, and side B has no partner to match A's partner evgenia, so the evidence does not settle it."
+ }
+}

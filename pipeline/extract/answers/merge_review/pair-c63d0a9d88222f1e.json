@@ -1,0 +1,13 @@
+{
+ "key_a": "p:morgane@fred+morgane",
+ "key_b": "p:morgane@frednelson+morgane",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c63d0a9d88222f1e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are Morgane, stated in France, and each is paired with a Fred, but side A's partner is 'fred' and side B's is 'frednelson'; the partner short and long form suggests one couple, yet the records do not confirm it, and the mention lists are empty, so I prefer unsure over a merge that would join two event histories."
+ }
+}

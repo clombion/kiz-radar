@@ -1,0 +1,13 @@
+{
+ "key_a": "p:felicien@felicien+isabelle",
+ "key_b": "p:felicienrossa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "aebdc00175099c98",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the shared first name Felicien and the same country (FR); side A has no surname, mentions, or style to compare, its events are in Austria, Italy and the UK while side B's are in the Philippines, and its partner Isabelle is not on side B, so the evidence does not settle whether they are one person."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manon@manon+rico",
+ "key_b": "p:manon@manon+simba",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3bf8daafefcbd86b",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (rico versus simba), and their stated countries only partly overlap (FR shared, but GW and SN differ), so the shared name and France presence do not establish one artist."
+ }
+}

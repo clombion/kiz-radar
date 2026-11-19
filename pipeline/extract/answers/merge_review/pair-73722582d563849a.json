@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laure@franck+laure",
+ "key_b": "p:laurederouen",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "73722582d563849a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are listed in France, share the same partner Franck, and 'Laure' is the short form of 'Laure de Rouen', with no evidence of two separate people at the same event."
+ }
+}

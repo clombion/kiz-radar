@@ -1,0 +1,13 @@
+{
+ "key_a": "p:stefmat",
+ "key_b": "p:stefmatt",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e617732f2af15dd6",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both names are Italian teacher listings at different events (16518 and 18282) and differ only by a final letter, but neither has a partner, style, or stated country to confirm one person, so the evidence does not settle it."
+ }
+}

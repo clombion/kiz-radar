@@ -1,0 +1,13 @@
+{
+ "key_a": "p:amine@dj",
+ "key_b": "p:amineurbankiz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b20d82c129af4b31",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The DJ-prefix and shared GB flag point toward one artist, but side A also has a France-only 'Amine' mention and the same Spain event (16324) lists 'DJ Amine' and 'Amine UrbanKiz' as separate roles, so the evidence does not settle whether these are one person or two."
+ }
+}

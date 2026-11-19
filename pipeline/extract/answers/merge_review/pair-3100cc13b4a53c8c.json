@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sarai@nuno+sarai",
+ "key_b": "p:sarainavalon",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3100cc13b4a53c8c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the first name Sarai, which is weak evidence; side A is a bare first name with Spain and Portugal and a partner (nuno) that side B lacks, side B is Spain-only with no partners, and the two sides share no event, so the evidence does not settle whether they are one person."
+ }
+}

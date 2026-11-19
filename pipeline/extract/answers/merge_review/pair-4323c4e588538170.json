@@ -1,0 +1,13 @@
+{
+ "key_a": "p:aleksandra@aleksandra+claudio",
+ "key_b": "p:aleksandra@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4323c4e588538170",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the very common first name Aleksandra and the Polish country code, but side A's evidence links it to a partner (Claudio) and to Italian, Croatian and Hungarian events while side B has no partner and only one Polish event, so nothing distinctive settles whether they are one person."
+ }
+}

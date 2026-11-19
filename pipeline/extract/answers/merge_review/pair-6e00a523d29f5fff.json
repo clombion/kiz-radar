@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ricornelas",
+ "key_b": "p:rornelas",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6e00a523d29f5fff",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both are teachers named Ornelas with a matching initial R and events in Iceland, but they appear at different events, and side B states no country, so the evidence does not establish whether they are one person."
+ }
+}

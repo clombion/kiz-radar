@@ -1,0 +1,13 @@
+{
+ "key_a": "p:luismi@angeles+luismi",
+ "key_b": "p:luismi@luismi+marian",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dfb4c6dd081b8d5d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are stated as Spanish (ES) and share the name Luismi, but their events are in different places (Spain vs Vietnam) and their partners differ (angeles vs marian), so the evidence does not show whether this is one dancer with different partners or two people with a common nickname."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:snakes@dj",
+ "key_b": "p:snakes@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e73e9e416958a181",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same record (one key compared with itself), and its mentions state two countries, France (FR) and Togo (TG), on different events with no partner evidence; the same stage name with stated countries that never meet cannot be settled as one artist or several people sharing the name from the evidence alone, so the pair is left for review rather than guessed."
+ }
+}

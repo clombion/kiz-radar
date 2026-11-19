@@ -1,0 +1,13 @@
+{
+ "key_a": "p:carlos@anna+carlos",
+ "key_b": "p:carloscamba",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "627d89704371098c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the same partner (Anna) and the same stated countries (AO, FI), which points toward one artist, but 'Carlos' is a common first name, the event countries do not overlap (Switzerland versus Estonia, France, Poland, Slovakia), and there are no mention lines to confirm the link, so the evidence does not settle it."
+ }
+}

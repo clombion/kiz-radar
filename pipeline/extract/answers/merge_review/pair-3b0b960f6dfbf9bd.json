@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jasmine@dance",
+ "key_b": "p:jasmine@jasmine+stevesteven",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3b0b960f6dfbf9bd",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are written 'JASMINE' with events in the Czech Republic, but side A is a solo teacher listed as (GER) at event 15265, side B is a couple with stevesteven, and side B has no mention rows to check whether it is the same event, so the evidence does not settle it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:telma@adilson+telma",
+ "key_b": "p:telma@maiza+telma",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "086469d1412c56a9",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are named only 'Telma' from Angola, but their partners differ (Adilson on one side, Maiza on the other) and their event countries do not overlap (Canada, France, Luxembourg, Spain versus Belgium, Czech Republic, Italy), so the evidence points to two different people sharing a common first name."
+ }
+}

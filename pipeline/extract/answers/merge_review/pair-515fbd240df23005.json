@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@alex+ornella",
+ "key_b": "p:alexalberola",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "515fbd240df23005",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list Spain as country, but side A ('Alex') has a shared partner Ornella and events in France while side B ('Alex Alberola') has no partners and an event in the Philippines; the surname-only evidence is thin and side A has no mentions in this pair, so the evidence does not settle whether they are one artist."
+ }
+}

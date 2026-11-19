@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kevin@dance",
+ "key_b": "p:kevinsato",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f129c68360cd3f8f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is a bare first name 'Kevin' whose mentions give conflicting countries (Guinea Bissau, Philippines, none), and only one of them (Philippines, kizomba) overlaps with side B's Philippines/bachata 'Kevin Sato', with no shared partner or event to link them, so the evidence does not settle whether they are one artist."
+ }
+}

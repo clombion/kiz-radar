@@ -1,0 +1,14 @@
+{
+ "field": "city",
+ "key": "paris-fr",
+ "decision": {
+  "tier": "big",
+  "gateways": [
+   "CDG",
+   "ORY",
+   "BVA"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "CDG 43 min by train; ORY 32 min by metro and train (1 change); BVA 1 h 15 by the airport's shuttle coach to Porte Maillot, researched (the planner misses it: 1 h 48 by bus and train). CDG first, as the main airport."
+}

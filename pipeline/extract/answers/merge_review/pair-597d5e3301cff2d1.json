@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michela@fernandobumbum+michela",
+ "key_b": "p:michelavissani",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "597d5e3301cff2d1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the first name 'Michela' with a partner (fernandobumbum) and no events, while side B is the full name 'Michela Vissani' with no partners and one Italian event; the shared country IT and the common first name don't settle whether they are the same person."
+ }
+}

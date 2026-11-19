@@ -1,0 +1,13 @@
+{
+ "key_a": "p:wookie@dance",
+ "key_b": "p:wookie@nicole+wookie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "14299ea39574230c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides use the same name 'Wookie' and share the Hungarian country (HU), but side A has only one Austrian event with no partner, while side B is a couple with Nicole across several countries, and side B's mentions are empty, so the evidence does not settle whether they are one artist."
+ }
+}

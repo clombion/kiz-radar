@@ -1,0 +1,12 @@
+{
+ "field": "city",
+ "key": "santa-maria-cv",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "SID"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "SID 20 min by taxi or aluguer, on the same island (Sal), researched. The planner found no trip."
+}

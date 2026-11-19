@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dino@dj",
+ "key_b": "p:dino@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5828b839955b610a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The pair is one key compared with itself, with the same single name 'DJ Dino' stated as German (DE) and Tunisian (TN) at events all held in Germany, and no partner or style evidence separates the two possibilities, so it could be one DJ or several people sharing a name."
+ }
+}

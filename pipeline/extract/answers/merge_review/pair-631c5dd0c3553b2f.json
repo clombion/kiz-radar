@@ -1,0 +1,13 @@
+{
+ "key_a": "p:adrian@adrian+marina",
+ "key_b": "p:adrian@adrian+ruxi",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "631c5dd0c3553b2f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are just the common first name Adrian, with no distinctive stage name; each is paired with a different partner (Marina vs Ruxi), and the events are in different places (Romania vs Bulgaria), so the evidence points to two people sharing a name, and the shared country alone is too weak to merge."
+ }
+}

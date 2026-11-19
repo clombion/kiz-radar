@@ -1,0 +1,13 @@
+{
+ "key_a": "p:hicham@dance",
+ "key_b": "p:hichamelloco",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9428258ae341749f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both records appear as separate people at the same events (15582 and 18808 in Nantes), with 'Hicham' as teacher and 'DJ Hicham El Loco' as DJ, and side A also carries a Moroccan-flagged mention, so the shared stage-name root is outweighed by the co-listing."
+ }
+}

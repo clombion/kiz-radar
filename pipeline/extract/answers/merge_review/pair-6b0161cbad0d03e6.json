@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sol@dance",
+ "key_b": "p:solhissirou",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6b0161cbad0d03e6",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A's 'Sol' is a bare first name with no partner, and the only overlap with 'Sol Hissirou' is one UK event plus shared FR and GB countries and the same bachata style, which is not enough to rule out two different people sharing the first name Sol, while the stated Senegalese country on the full name is an unmatched difference."
+ }
+}

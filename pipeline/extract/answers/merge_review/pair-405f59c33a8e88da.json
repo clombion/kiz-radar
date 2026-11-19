@@ -1,0 +1,13 @@
+{
+ "key_a": "p:karen@camille+karen",
+ "key_b": "p:karen@karen+luis",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "405f59c33a8e88da",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are just the common first name 'Karen' with no shared partner (side A partners with Camille, side B with Luis), different event countries (Romania versus France, Germany, Hungary, Italy), and the only shared fact is the Spanish country, so the common-name evidence is too weak to merge them."
+ }
+}

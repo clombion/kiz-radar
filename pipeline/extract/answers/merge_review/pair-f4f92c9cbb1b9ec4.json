@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mikiz@dance",
+ "key_b": "p:mikiz@mikiz+paolou",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f4f92c9cbb1b9ec4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same distinctive stage name, MIK’IZ, with the same stated country (FR) and teacher role in France, and side B's key shows it appearing in a couple with paolou, which does not conflict with side A's solo listings."
+ }
+}

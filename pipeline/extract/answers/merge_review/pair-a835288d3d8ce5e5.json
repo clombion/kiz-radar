@@ -1,0 +1,13 @@
+{
+ "key_a": "p:daniela@dance",
+ "key_b": "p:danielahorta",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a835288d3d8ce5e5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Danish and teach in Denmark, but 'Daniela' is a common first name with no partners or distinctive style linking it to 'Daniela Horta', and the surname is only given on one side, so the evidence does not settle whether they are the same person."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:arnaud@arnaud+roya",
+ "key_b": "p:arnauddjbn",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a4f13c2bbf9abdb3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A has no listed mentions and is only the common first name 'Arnaud' linked to a partner key (roya), while side B is the distinctive stage name 'Arnaud DJBN'; the shared countries (France, Germany) are too weak to settle whether they are the same person."
+ }
+}

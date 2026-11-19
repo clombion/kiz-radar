@@ -1,0 +1,13 @@
+{
+ "field": "city",
+ "key": "almunecar-es",
+ "decision": {
+  "tier": "small",
+  "gateways": [
+   "AGP",
+   "GRX"
+  ]
+ },
+ "made_at": "2026-11-15T21:39:28+00:00",
+ "note": "AGP about 1 h 45 by train to Málaga and Alsa coach, researched; GRX about 1 h 45 by bus via Granada, researched. The planner found no trip."
+}
