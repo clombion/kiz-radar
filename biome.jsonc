@@ -1,7 +1,18 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-  "files": { "includes": ["site/**", "tests/**/*.ts", "public/css/**", "*.json", "*.jsonc", "!pnpm-lock.yaml"] },
+  // tests/site/lint/ holds the files lint/tests.grit's test lints with its own config: one breaks the rule on purpose
+  "files": {
+    "includes": [
+      "site/**",
+      "tests/**/*.ts",
+      "public/css/**",
+      "*.json",
+      "*.jsonc",
+      "!pnpm-lock.yaml",
+      "!tests/site/lint"
+    ]
+  },
   // site/states.ts is laid out by its generator (pipeline/states.py), and checked against it by generate:check
   "formatter": { "indentStyle": "space", "indentWidth": 2, "lineWidth": 120, "includes": ["**", "!site/states.ts"] },
   "javascript": { "formatter": { "quoteStyle": "single" } },
@@ -17,7 +28,8 @@
     "./lint/fetch.grit",
     "./lint/classes.grit",
     "./lint/markup.grit",
-    "./lint/states.grit"
+    "./lint/states.grit",
+    "./lint/tests.grit"
   ],
   "linter": {
     "rules": {

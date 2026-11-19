@@ -8,5 +8,7 @@
     "types": ["node"],
     "skipLibCheck": true
   },
-  "include": [".", "../../site", "../../vitest.config.ts"]
+  "include": [".", "../../site", "../../vitest.config.ts"],
+  // the files lint/tests.grit's test lints, never run (lint.test.ts)
+  "exclude": ["lint"]
 }

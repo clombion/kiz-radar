@@ -93,8 +93,8 @@ def site_suppressions(path: Path) -> list[str]:
 
 def biome_files() -> list[str]:
     """The committed files Biome checks: those biome.jsonc's files.includes names, its globs read as git's."""
-    found = re.search(r'"files": \{ "includes": (\[[^\]]*\])', (ROOT / 'biome.jsonc').read_text(encoding='utf-8'))
-    assert found, 'biome.jsonc names its files on one line'
+    found = re.search(r'"files": \{\s*"includes": (\[[^\]]*\])', (ROOT / 'biome.jsonc').read_text(encoding='utf-8'))
+    assert found, 'biome.jsonc names its files in files.includes, first in files'
     includes = TypeAdapter(list[str]).validate_json(found[1])
     return tracked(*(f':(exclude){g[1:]}' if g.startswith('!') else f':(glob){g}' for g in includes))
 

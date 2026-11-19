@@ -1,0 +1,7 @@
+{
+  // lint/tests.grit alone, on the two files beside this one, which biome.jsonc keeps out of the tree's run
+  "$schema": "../../../node_modules/@biomejs/biome/configuration_schema.json",
+  "root": true,
+  "plugins": ["../../../lint/tests.grit"],
+  "linter": { "rules": { "preset": "none" } }
+}

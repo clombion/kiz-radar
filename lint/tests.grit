@@ -1,0 +1,47 @@
+language js
+
+// A test reaches the site through the page, never through a view's code, so a view can be rewritten under its tests. A
+// test imports values from the modules listed here alone: the pure ones, the ones that use a browser API but draw
+// nothing (routes, hints, kept), the data module with one sink (icons) and media. A module not listed is refused, a new
+// one too, until someone decides it draws nothing. A type comes from any module with import type, which is erased; a
+// type named inside a value import is not, since the import still loads its module.
+pattern allowed_module() {
+  r"^['\"`](?:.*/)?site/(?:calendar|claims|classes|currency|days|db|fares|find|finder|fold|github|hints|icons|ink|json|kept|media|names|net|pending|pricing|roles|roster|routes|rows|schema|states|wording)\.ts['\"`]$"
+}
+
+or {
+  or {
+    or { JsImport(), JsExport() } as $use where {
+      // `import type from` is a default import named type, not a type import
+      $use <: not r"(?:import|export)\s+type(?:\s*[{*]|\s+[\w$]+\s+from)[\s\S]*",
+      $use <: contains JsModuleSource() as $source,
+      // page.browser.test.ts keeps its tests of these helpers until they go with them: tabs' pill and modal in task 4.5,
+      // dismiss in 4.6, dom's in 4.10
+      or {
+        $filename <: not r".*/tests/site/page\.browser\.test\.ts",
+        $source <: not r"^['\"]\.\./\.\./site/(?:dismiss|dom|modal|tabs)\.ts['\"]$"
+      }
+    },
+    // app.ts starts the page from its entry, the one place a test does
+    JsImportCallExpression() as $use where {
+      $use <: contains or { JsStringLiteralExpression(), JsTemplateExpression() } as $source,
+      or {
+        $filename <: not r".*/tests/site/app\.ts",
+        $source <: not r"^['\"]\.\./\.\./site/(?:main|review)\.ts['\"]$"
+      }
+    }
+  } where {
+    $filename <: r".*/tests/.*",
+    // `site//dom.ts` and `site/./dom.ts` load dom.ts too, so they are checked, and refused since the list names
+    // each module by its plain path
+    $source <: r"^['\"`](?:.*/)?site/(?:\.?/)*[^/'\"`]+['\"`]$",
+    $source <: not allowed_module(),
+    register_diagnostic(span=$use, message="A test imports values only from the site modules lint/tests.grit lists, and a view's types with import type: drive a view through the page (tests/site/app.ts). A new site module is refused until it is listed there.")
+  },
+  // an import() whose module is built at run time escapes the check above
+  JsImportCallExpression() as $use where {
+    $filename <: r".*/tests/.*",
+    $use <: not r"import\(\s*(?:'[^']*'|\"[^\"]*\"|`[^`$]*`)\s*\)",
+    register_diagnostic(span=$use, message="A test's import() names its module in one literal, so lint/tests.grit can check it.")
+  }
+}
