@@ -20,7 +20,17 @@ import { secret as script } from './hidden/parts.js'; // refused
 import { inside } from './hidden/index.ts'; // refused
 import { inside as viaFolder } from './hidden'; // refused
 import { secret as forwarded } from './hidden/index.ts'; // refused
+import { afterDivision } from './hidden/forms.ts'; // refused
+import { twice } from './hidden/forms.ts'; // refused
+import { type as kind } from './hidden/forms.ts'; // refused
+import type { Secret as viaTypes } from './hidden/typed.ts'; // refused
+import { twiceSecret } from './hidden/twice.ts'; // refused
+import { dual } from './hidden/dual.js'; // refused
+import { shebang } from './hidden/loose.js'; // refused
+import { quiet } from './hidden/loose.js'; // refused
+import { loose } from './hidden/loose.js';
 
 export { again, alias, fallback, first, forwarded, helper, Hidden, inside, left, listed, named, noted, older };
 export { renamed, script, second, secret, shared, viaFolder };
-export type { Secret };
+export { afterDivision, dual, kind, loose, quiet, shebang, twice, twiceSecret };
+export type { Secret, viaTypes };

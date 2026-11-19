@@ -5,8 +5,10 @@
 // folder. Everywhere, every import declaration, a type's too; an export from, an import() and a module outside the
 // checkout's relative paths (a package) are not read, as Biome reads none of them.
 // oxlint shows a rule one file, so the module an import names is read from disk, relative to the importing file (the
-// one use of its path: the two are compared, never matched against a folder's name), and read lightly: its top-level
-// statements, each with the JSDoc comments before it, as Biome attaches them.
+// one use of its path: the two are compared, never matched against a folder's name), inside the folder the lint runs
+// from, and read lightly: its top-level statements, each with the JSDoc comments before it, as Biome attaches them. A
+// name declared twice keeps its strictest tag. An import of a module found but not read is refused, since what it
+// hides is not known.
 import { readFileSync, statSync } from 'node:fs';
 import { basename, dirname, extname, isAbsolute, join, relative, resolve } from 'node:path';
 import type { Rule } from './plugin.ts';
@@ -21,34 +23,16 @@ interface Token {
   readonly text: string;
   // the brackets around it: a bracket stands at the depth of what holds it
   readonly depth: number;
+  // whether a line ends between it and the token before
+  readonly line: boolean;
 }
 
 const WORD = /[\w$\u{80}-\u{FFFF}#]/u;
-// after these, a / starts a regular expression rather than dividing
+// the words after which a / starts a regular expression rather than dividing: a word ends an operand but these
 const BEFORE_REGEX = new Set([
-  '',
-  '(',
-  ',',
-  '=',
-  ':',
-  '[',
-  '!',
-  '&',
-  '|',
-  '?',
-  '{',
-  '}',
-  ';',
-  '+',
-  '-',
-  '*',
-  '%',
-  '<',
-  '>',
-  '~',
-  '^',
   'return',
   'typeof',
+  'instanceof',
   'case',
   'do',
   'else',
@@ -72,7 +56,7 @@ function stringEnd(text: string, at: number): number {
   return i + 1;
 }
 
-// the end of the regular expression starting at `at`
+// the end of the regular expression starting at `at`, or -1 if the line ends first, as no regular expression does
 function regexEnd(text: string, at: number): number {
   let i = at + 1;
   let inClass = false;
@@ -82,6 +66,7 @@ function regexEnd(text: string, at: number): number {
     else if (text[i] === ']') inClass = false;
     i += 1;
   }
+  if (i >= text.length || text[i] !== '/') return -1;
   i += 1;
   while (i < text.length && /[a-z]/u.test(text[i] ?? '')) i += 1;
   return i;
@@ -104,29 +89,48 @@ const until = (text: string, end: string, at: number): number => {
   return found === -1 ? text.length : found;
 };
 
-// the source's tokens from `from`, or, inside a template's ${}, up to its closing brace
+// whether the code before a token ends an operand, after which a / divides: a word but a keyword, a string, a
+// template or a regular expression, a closing ) or ]; ++, -- and ! leave it as it was (x++ / 2 and x! / 2 divide,
+// !/re/ does not)
+function operandAfter(token: Token, before: boolean): boolean {
+  if (token.kind === 'word') return !BEFORE_REGEX.has(token.text);
+  if (token.kind === 'string' || token.kind === 'opaque') return true;
+  if (token.kind === 'doc' || ['++', '--', '!'].includes(token.text)) return before;
+  return token.text === ')' || token.text === ']';
+}
+
+// the source's tokens from `from`, or, inside a template's ${}, up to its closing brace; a hashbang is skipped
 function tokens(text: string, from = 0, inside = false): { list: Token[]; end: number } {
   const list: Token[] = [];
   let depth = 0;
-  let last = '';
-  let i = from;
+  // whether the code so far ends an operand (operandAfter)
+  const state = { operand: false };
+  let i = from === 0 && text.startsWith('#!') ? until(text, '\n', 0) : from;
+  let line = false;
   const push = (kind: Token['kind'], end: number, value = text.slice(i, end)): void => {
-    list.push({ kind, text: value, depth });
-    if (kind !== 'doc') last = kind === 'opaque' ? 'x' : value;
+    const token = { kind, text: value, depth, line };
+    list.push(token);
+    state.operand = operandAfter(token, state.operand);
+    line = false;
     i = end;
   };
   while (i < text.length) {
     const c = text[i] ?? '';
     const next = text[i + 1];
-    if (/\s/u.test(c)) i += 1;
+    if (c === '\n') {
+      line = true;
+      i += 1;
+    } else if (/\s/u.test(c)) i += 1;
     else if (c === '/' && next === '/') i = until(text, '\n', i);
     else if (c === '/' && next === '*') {
       const end = until(text, '*/', i + 2) + 2;
+      if (text.slice(i, end).includes('\n')) line = true;
       if (text.startsWith('/**', i) && end - i > 4) push('doc', end);
       else i = end;
     } else if (c === "'" || c === '"') push('string', stringEnd(text, i), text.slice(i + 1, stringEnd(text, i) - 1));
     else if (c === '`') push('opaque', templateEnd(text, i));
-    else if (c === '/' && BEFORE_REGEX.has(last)) push('opaque', regexEnd(text, i));
+    else if (c === '/' && !state.operand && regexEnd(text, i) !== -1) push('opaque', regexEnd(text, i));
+    else if ((c === '+' || c === '-') && next === c) push('punct', i + 2);
     else if (WORD.test(c)) {
       let end = i + 1;
       while (end < text.length && WORD.test(text[end] ?? '')) end += 1;
@@ -176,19 +180,31 @@ interface Statement {
   tokens: Token[];
 }
 
-// the top-level statements, each with the JSDoc comments between it and the one before
+// whether a token can end a statement where a line ends after it, as automatic semicolon insertion has it: an operand
+// (a name, a string, a template, a closing bracket), not a keyword
+const ending = (token: Token | undefined): boolean =>
+  token !== undefined &&
+  (token.kind === 'word'
+    ? !STARTS.has(token.text) && !BEFORE_REGEX.has(token.text)
+    : token.kind === 'string' || token.kind === 'opaque' || token.text === ')' || token.text === ']');
+
+// the top-level statements, each with the JSDoc comments between it and the one before; a declaration's word on a new
+// line after an operand starts one, as a semicolon would
 function statements(text: string): Statement[] {
   const all: Statement[] = [];
   let current: Statement | null = null;
   let docs: string[] = [];
-  // a block closed the statement, unless what follows carries it on
+  // a block, or a line after an operand, closed the statement, unless what follows carries it on
   let closed = false;
   for (const token of tokens(text).list) {
     if (token.kind === 'doc') {
-      if (current === null || closed) docs.push(token.text);
+      if (current === null || closed || (token.line && ending(current.tokens.at(-1)))) docs.push(token.text);
     } else {
+      const broken = token.line && ending(current?.tokens.at(-1));
       const starts =
-        token.depth === 0 && token.kind === 'word' && (closed ? STARTS.has(token.text) : token.text === 'export');
+        token.depth === 0 &&
+        token.kind === 'word' &&
+        (closed || broken ? STARTS.has(token.text) : token.text === 'export');
       if (current === null || starts) {
         current = { docs, tokens: [] };
         all.push(current);
@@ -215,6 +231,12 @@ function tagOf(doc: string): Visibility | undefined {
 // a statement's visibility: the last comment before it that has a tag decides
 const visibilityOf = (docs: readonly string[]): Visibility =>
   docs.map(tagOf).findLast((tag) => tag !== undefined) ?? 'public';
+// a name declared more than once (an overloaded function, a namespace merged) takes its strictest visibility
+const LEVELS: readonly Visibility[] = ['public', 'package', 'private'];
+const keep = (names: Map<string, Visibility>, name: string, level: Visibility): void => {
+  const known = names.get(name);
+  names.set(name, known !== undefined && LEVELS.indexOf(known) > LEVELS.indexOf(level) ? known : level);
+};
 
 // the names a binding pattern binds: { a, b: c, d = 1, ...e } binds a, c, d, e
 function bound(pattern: readonly Token[]): string[] {
@@ -282,12 +304,14 @@ interface Module {
 
 // what export { a as b } and import { a as b } list: each entry's name in its module, and the name it takes here
 function specifiers(list: readonly Token[]): { name: string; as: string }[] {
-  const inner = list.slice(1, -1).filter((t) => t.text !== 'type' || t.kind !== 'word');
+  const inner = list.slice(1, -1);
   const entries: { name: string; as: string }[] = [];
   let entry: Token[] = [];
-  for (const token of [...inner, { kind: 'punct', text: ',', depth: 0 } satisfies Token]) {
+  for (const token of [...inner, { kind: 'punct', text: ',', depth: 0, line: false } satisfies Token]) {
     if (token.text === ',' && token.kind === 'punct') {
-      const [name, as, alias] = entry;
+      // type a, type a as b: the modifier; type alone, or type as b, is a binding named type
+      const modified = entry[0]?.text === 'type' && (entry.length === 2 || entry.length === 4);
+      const [name, as, alias] = modified ? entry.slice(1) : entry;
       if (name !== undefined)
         entries.push({ name: name.text, as: as?.text === 'as' ? (alias?.text ?? '') : name.text });
       entry = [];
@@ -323,19 +347,21 @@ function read(text: string): Module {
       if (from !== undefined && brace !== -1)
         for (const { name, as } of specifiers(bracketed(list, brace))) imported.set(as, { from, name });
     } else if (first?.text !== 'export' || first.kind !== 'word') {
-      for (const name of declared(list)) locals.set(name, level);
-    } else if (second?.text === '*') {
+      for (const name of declared(list)) keep(locals, name, level);
+    } else if (second?.text === '*' || (second?.text === 'type' && list[2]?.text === '*')) {
+      // export * from, export type * from: every name, unless as a namespace
       const from = sourceOf(list);
-      if (from !== undefined && list[2]?.text !== 'as') stars.push(from);
+      const star = list.findIndex((t) => t.text === '*');
+      if (from !== undefined && list[star + 1]?.text !== 'as') stars.push(from);
     } else if (second?.text === '{' || (second?.text === 'type' && list[2]?.text === '{')) {
       const from = sourceOf(list);
       const entries = specifiers(bracketed(list, second.text === '{' ? 1 : 2));
       if (from === undefined) listed.push(...entries);
       else for (const { name, as } of entries) forwarded.set(as, { from, name });
     } else if (second?.text === 'default') {
-      own.set('default', level);
+      keep(own, 'default', level);
     } else {
-      for (const name of declared(list.slice(1))) own.set(name, level);
+      for (const name of declared(list.slice(1))) keep(own, name, level);
     }
   }
   // a listed name takes its declaration's visibility, or follows its import
@@ -343,7 +369,7 @@ function read(text: string): Module {
     const local = locals.get(name);
     const from = imported.get(name);
     if (local === undefined && from !== undefined) forwarded.set(as, from);
-    else own.set(as, local ?? 'public');
+    else keep(own, as, local ?? 'public');
   }
   return { own, forwarded, stars };
 }
@@ -363,39 +389,64 @@ const isFile = (path: string): boolean => {
   }
 };
 
-// the file a relative import names, as TypeScript finds it; null for a package's, a resource's or none
-function resolved(importer: string, source: string): string | null {
-  if (!/^\.\.?(?:\/|$)/u.test(source)) return null;
+const RELATIVE = /^\.\.?(?:\/|$)/u;
+
+// the file a relative import names, as TypeScript finds it (for a script's name, the TypeScript file first), inside
+// the root, which a lint is run from; null for a package's, a resource's, one outside the root or none. Each found
+// once a run, again if the file goes.
+const found = new Map<string, string>();
+function resolved(importer: string, source: string, root: string): string | null {
+  if (!RELATIVE.test(source)) return null;
   const base = resolve(dirname(importer), source);
+  const key = `${root}\0${base}`;
+  const known = found.get(key);
+  if (known !== undefined && isFile(known)) return known;
+  if (!inside(base, root)) return null;
   const ext = extname(base);
   const script = SCRIPT[ext];
   const candidates = CODE.includes(ext)
-    ? [base, ...(script === undefined ? [] : [base.slice(0, -ext.length) + script])]
+    ? [...(script === undefined ? [] : [base.slice(0, -ext.length) + script]), base]
     : [...CODE.map((e) => base + e), ...CODE.flatMap((e) => [join(base, `index${e}`), join(base, `mod${e}`)])];
-  return candidates.find(isFile) ?? null;
+  const file = candidates.find((c) => inside(c, root) && isFile(c)) ?? null;
+  if (file !== null) found.set(key, file);
+  return file;
 }
 
-// each module read once a run, again when its file changes
+// each module read once a run, again when its file changes; null for a file that cannot be read
 const modules = new Map<string, { changed: number; module: Module }>();
-function moduleAt(file: string): Module {
-  const changed = statSync(file).mtimeMs;
-  const known = modules.get(file);
-  if (known?.changed === changed) return known.module;
-  const module = read(readFileSync(file, 'utf8'));
-  modules.set(file, { changed, module });
-  return module;
+function moduleAt(file: string): Module | null {
+  try {
+    const changed = statSync(file).mtimeMs;
+    const known = modules.get(file);
+    if (known?.changed === changed) return known.module;
+    const module = read(readFileSync(file, 'utf8'));
+    modules.set(file, { changed, module });
+    return module;
+  } catch {
+    return null;
+  }
 }
 
-// a name's visibility where it is declared, its exports from other modules followed; undefined if not found
-function visibility(file: string, name: string, seen = new Set<string>()): Visibility | undefined {
-  if (seen.has(file)) return undefined;
-  seen.add(file);
-  const { own, forwarded, stars } = moduleAt(file);
-  const follow = (from: string, as: string): Visibility | undefined => {
-    const next = resolved(file, from);
+// a name's visibility where it is declared, its exports from other modules followed; undefined if not found, and
+// 'unread' if a module it leads to was found but could not be read, so what it hides is not known. A module is looked
+// in once a lookup for each name, so one reached again under another name is read for that name.
+function visibility(
+  file: string,
+  name: string,
+  root: string,
+  seen = new Set<string>(),
+): Visibility | 'unread' | undefined {
+  const at = `${file}\0${name}`;
+  if (seen.has(at)) return undefined;
+  seen.add(at);
+  const module = moduleAt(file);
+  if (module === null) return 'unread';
+  const { own, forwarded, stars } = module;
+  const follow = (from: string, as: string): Visibility | 'unread' | undefined => {
+    const next = resolved(file, from, root);
     // a package's names are public, and a module not found has none to check
-    if (next === null) return /^\.\.?(?:\/|$)/u.test(from) ? undefined : 'public';
-    return visibility(next, as, seen);
+    if (next === null) return RELATIVE.test(from) ? undefined : 'public';
+    return visibility(next, as, root, seen);
   };
   const mine = own.get(name);
   if (mine !== undefined) return mine;
@@ -403,8 +454,8 @@ function visibility(file: string, name: string, seen = new Set<string>()): Visib
   if (ahead !== undefined) return follow(ahead.from, ahead.name);
   if (name === 'default') return undefined;
   for (const from of stars) {
-    const found = follow(from, name);
-    if (found !== undefined) return found;
+    const level = follow(from, name);
+    if (level !== undefined) return level;
   }
   return undefined;
 }
@@ -430,20 +481,23 @@ export const privates: Rule = {
       private:
         "Only its module imports an export marked @private: the file's own, or, from an index file, its folder's.",
       package: 'Only the modules of its folder, or of a folder below it, import an export marked @package.',
+      unread: 'The module this import names could not be read, so whether it hides this name is not known.',
     },
   },
   create(context) {
-    const importer = resolve(context.cwd, context.filename);
+    const root = context.cwd;
+    const importer = resolve(root, context.filename);
     return {
       ImportDeclaration(node) {
         const { value } = node.source;
-        const file = typeof value === 'string' ? resolved(importer, value) : null;
+        const file = typeof value === 'string' ? resolved(importer, value, root) : null;
         if (file === null) return;
         for (const specifier of node.specifiers) {
           if (specifier.type === 'ImportNamespaceSpecifier') continue;
           const name = specifier.type === 'ImportSpecifier' ? importedName(specifier) : 'default';
-          const level = visibility(file, name);
-          if (level !== undefined && !allowed(level, importer, file))
+          const level = visibility(file, name, root);
+          if (level === 'unread') context.report({ node: specifier, messageId: 'unread' });
+          else if (level !== undefined && !allowed(level, importer, file))
             context.report({ node: specifier, messageId: level === 'private' ? 'private' : 'package' });
         }
       },
