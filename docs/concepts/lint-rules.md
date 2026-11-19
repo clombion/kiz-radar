@@ -97,6 +97,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | Rule | On | Off |
 | -- | -- | -- |
 | `session` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
+| `storage` | everywhere oxlint lints | `site/hints.ts`, `site/kept.ts`, `tests/**` |
 
 The house rules move from Grit to oxlint's plugin, `session` since task 2.5, the twelve others in task 2.6; until then
 Biome runs those still in `lint/*.grit`, and `lint/tests.grit` on `tests/**` alone.

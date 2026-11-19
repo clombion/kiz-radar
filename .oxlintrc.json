@@ -356,7 +356,8 @@
     "vitest/no-standalone-expect": "error",
     "vitest/prefer-hooks-in-order": "error",
     "vitest/prefer-hooks-on-top": "error",
-    "house/session": "error"
+    "house/session": "error",
+    "house/storage": "error"
   },
   "overrides": [
     {
@@ -387,6 +388,12 @@
       // house/session: the admin's token is kept.ts's, and a test plants and reads the page's storage
       "files": ["site/kept.ts", "tests/**"],
       "rules": { "house/session": "off" }
+    },
+    {
+      // house/storage: what a visitor has seen is hints.ts's, the review dashboard's kept.ts's, and a test plants and
+      // reads the page's storage
+      "files": ["site/hints.ts", "site/kept.ts", "tests/**"],
+      "rules": { "house/storage": "off" }
     },
     {
       // oxlint loads a JS plugin from its module's default export, as ESLint does
