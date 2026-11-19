@@ -362,6 +362,7 @@
     "house/fetch": "error",
     "house/formats": "error",
     "house/home": "error",
+    "house/json": "error",
     "house/promises": "error",
     "house/routes": "error",
     "house/session": "error",

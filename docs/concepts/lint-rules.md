@@ -103,6 +103,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `fetch` | everywhere oxlint lints | `site/net.ts` |
 | `formats` | everywhere oxlint lints | `site/ui.ts` |
 | `home` | everywhere oxlint lints | (none) |
+| `json` | everywhere oxlint lints | (none) |
 | `markup` | `site/**` | `site/icons.ts` |
 | `process` | `tests/**`, `vitest.config.ts` | (none) |
 | `promises` | everywhere oxlint lints | (none) |
@@ -392,7 +393,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noVoidTypeReturn` | error | (none) |  | accepted loss |
 | `useImportExtensions` | warn | `import/extensions` | inspired | mapped: the imports name `.ts` files (`rewriteRelativeImportExtensions`): `["always", {"ignorePackages": true}]` |
 | `useIsNan` | error | `eslint/use-isnan` | source | mapped |
-| `useJsonImportAttributes` | info | (none) |  | house rule, task 2.6b |
+| `useJsonImportAttributes` | info | (none) |  | house rule `house/json` |
 | `useParseIntRadix` | info | `eslint/radix` | source | mapped |
 | `useSingleJsDocAsterisk` | info | (none) |  | accepted loss (owner, 19 November) |
 | `useValidForDirection` | error | `eslint/for-direction` | source | mapped |
