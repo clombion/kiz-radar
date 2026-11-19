@@ -362,6 +362,7 @@
     "house/formats": "error",
     "house/home": "error",
     "house/promises": "error",
+    "house/routes": "error",
     "house/session": "error",
     "house/storage": "error"
   },
@@ -410,6 +411,11 @@
       // house/formats: dates are worded, and flight searches linked, by ui.ts
       "files": ["site/ui.ts"],
       "rules": { "house/formats": "off" }
+    },
+    {
+      // house/routes: links are built by routes.ts, so a route has one spelling
+      "files": ["site/routes.ts"],
+      "rules": { "house/routes": "off" }
     },
     {
       // house/clicks: dom.ts's own() keeps a control's click from its card, swipe.ts a swipe from the map

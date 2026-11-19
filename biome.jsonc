@@ -15,7 +15,7 @@
   },
   // oxfmt lays these files out (.oxfmtrc.jsonc, format:site)
   "formatter": { "enabled": false },
-  "plugins": ["./lint/routes.grit", "./lint/states.grit"],
+  "plugins": ["./lint/states.grit"],
   "linter": {
     "rules": {
       // every rule, then the few that would fight how this code is written, each with its reason

@@ -1,6 +1,7 @@
 // The text a house rule reads in the code, as Grit's JsStringLiteralExpression and JsTemplateChunkElement are: a string
 // where an expression stands (not a key, a type, a module's name or a directive) in its quotes, and the chunks of a
-// template literal between its values, as written. A rule takes the visitors `texts` makes and reports where it picks.
+// template literal between its values, as written. A rule takes the visitors `texts` makes and reports where it picks,
+// or is a `textRule`, refusing the texts a pattern matches.
 import type { Rule } from './plugin.ts';
 
 type Visitor = ReturnType<NonNullable<Rule['create']>>;
@@ -48,5 +49,15 @@ export const texts = (each: (node: Text, text: string) => void): Visitor => ({
   },
   TemplateElement(node) {
     if (node.parent.type === 'TemplateLiteral') each(node, node.value.raw);
+  },
+});
+
+// a rule refusing each text that `refused` matches, where it stands
+export const textRule = (id: string, message: string, refused: RegExp): Rule => ({
+  meta: { type: 'problem', messages: { [id]: message } },
+  create(context) {
+    return texts((node, text) => {
+      if (refused.test(text)) context.report({ node, messageId: id });
+    });
   },
 });

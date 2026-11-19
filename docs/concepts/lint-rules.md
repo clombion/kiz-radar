@@ -104,6 +104,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `home` | everywhere oxlint lints | (none) |
 | `markup` | `site/**` | `site/icons.ts` |
 | `promises` | everywhere oxlint lints | (none) |
+| `routes` | everywhere oxlint lints | `site/routes.ts` |
 | `session` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `storage` | everywhere oxlint lints | `site/hints.ts`, `site/kept.ts`, `tests/**` |
 
