@@ -133,6 +133,24 @@ test('a slide held mid-way keeps its mark, and the slide begun over it marks its
   await slid();
 });
 
+test('a slide cut short by the next, before its own animations start, says nothing went wrong', async () => {
+  await app.open(festivalsHref());
+  await slid();
+  // two address changes in a row: the second slide begins before the first one's transition is ready, which skips it
+  // (its ready rejects with an AbortError, which current Chromium reports as unhandled); the console guard and the
+  // page's alerts say whether that was taken for a fault
+  const alerts = () => document.querySelectorAll('[role="alert"]').length;
+  const before = alerts();
+  location.hash = friendsHref();
+  await new Promise((later) => {
+    setTimeout(later, 0);
+  });
+  location.hash = festivalsHref();
+  await slid();
+  await frames(2);
+  expect(alerts()).toBe(before);
+});
+
 test('the oval stays under its tab, still, when the window changes size', async () => {
   await app.open(friendsHref());
   await rested();
