@@ -2,19 +2,20 @@
 
 Biome lints the site's TypeScript today; Phase 2 of the move to the Oxc toolchain hands that to oxlint (the refactor
 plan's task 2.3). This page maps every rule Biome runs on the TypeScript to oxlint's, with the settings to carry, the
-rules that have no equivalent and what the owner has yet to decide. `.oxlintrc.json` (task 2.4) is built from it, rule
-by rule, with no category turned on, so a rule not listed as mapped is not enabled.
+rules that have no equivalent and what the owner decided of them. `.oxlintrc.json` (task 2.4) is built from it, rule by
+rule, with no category turned on, so a rule not listed as mapped is not enabled.
 
-Measured on 19 November 2026, Biome 2.6.3 and oxlint 1.94.0 (the version task 2.4 pins). Pending the owner: the 22
-unmapped rules, the 8 accepted losses, the rules for frameworks the site does not use and the type-aware rules new in
-oxlint. Q2, the info-level rules, is answered (below).
+Measured on 19 November 2026, Biome 2.6.3 and oxlint 1.94.0 (the version task 2.4 pins). The 8 accepted losses are the
+brief's; the owner decided the rest on 19 November (below): of the 22 unmapped rules, 5 became house rules and 17
+accepted losses; the rules for frameworks the site does not use are losses but Solid's, task 4.2's; the 33 type-aware
+rules new in oxlint are on; Q2, the info-level rules, is answered.
 
 **In oxlint since task 2.4** (`.oxlintrc.json`, `mise run lint:oxlint`): every mapped rule, with the settings and
 exceptions below, as an error: those of Biome's `error` and `warn` rules, the info-level ones as Q2 decides, and the JSX
-rules mapped from Biome's `error` and `warn` (the JSX ones Biome reports as `info` stay off). Off: every rule pending
-the owner and the rules Biome turns off. **On since task 2.6c:** the 33 type-aware rules new in oxlint (below). Biome
-still runs all of its rules beside it until task 2.7. The findings the rules' oxlint versions made on the code were
-fixed, or suppressed on their line with the reason in [oxlint's suppressed findings](../lint-false-positives.md).
+rules mapped from Biome's `error` and `warn` (the JSX ones Biome reports as `info` stay off). Off: every accepted loss
+and the rules Biome turns off. **On since task 2.6c:** the 33 type-aware rules new in oxlint (below). Biome still runs
+all of its rules beside it until task 2.7. The findings the rules' oxlint versions made on the code were fixed, or
+suppressed on their line with the reason in [oxlint's suppressed findings](../lint-false-positives.md).
 
 ## Counts
 
@@ -117,13 +118,14 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `storage` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, and four helpers (`dismiss`, `dom`, `modal`, `tabs`) imported by `tests/site/page.browser.test.ts`: the rule's options in each file's override |
 
-The house rules moved from Grit to oxlint's plugin, `session` in task 2.5, the twelve others in task 2.6; Biome runs no
-plugin.
+The 19 house rules: the 13 that were Grit's, moved to oxlint's plugin (`session` in task 2.5, the twelve others in task
+2.6), the 5 unmapped rules the owner kept (task 2.6b) and `env`, `node/no-process-env`'s reach for a `process` imported
+from `node:process` (task 2.6b); Biome runs no plugin.
 
 ## Accepted losses
 
-The brief's eleven, checked against the mapping. Eight have no oxlint equivalent and are dropped knowingly, pending the
-owner's approval of the final list:
+The brief's eleven, checked against the mapping. Eight have no oxlint equivalent and are dropped knowingly, as the brief
+lists them:
 
 - `noStringCaseMismatch` (correctness, error)
 - `noVoidTypeReturn` (correctness, error)
@@ -152,22 +154,22 @@ by tsc, the parser, knip or a mapped rule are accepted losses.
 | -- | -- | -- |
 | `complexity/noEmptyTypeParameters` | warn | tsc refuses `<>` with no parameter. Accept. |
 | `complexity/noRedundantDefaultExport` | warn | No default export, and `import/no-default-export` (mapped) refuses one. Accept. |
-| `complexity/noThisInStatic` | warn | No static member uses `this` today (`Sql`, `Drawing`). Accept. |
+| `complexity/noThisInStatic` | warn | No static member uses `this` today (`Sql`, `Drawing`). Kept: house rule `house/statics` (task 2.6b). |
 | `complexity/noUselessContinue` | info | A style rule with no oxlint twin; `eslint/no-continue` refuses every `continue` (`noContinue` is off). Accept. |
 | `complexity/noUselessStringRaw` | info | A style rule with no oxlint twin. Accept. |
 | `complexity/useSimpleNumberKeys` | warn | A style rule with no oxlint twin. Accept. |
 | `complexity/useSimplifiedLogicExpression` | info | A style rule with no oxlint twin. Accept. |
 | `complexity/useWhile` | warn | A style rule (sonarjs `prefer-while`) with no oxlint twin. Accept. |
-| `correctness/noPrivateImports` | warn | Keys on `@private`/`@package` JSDoc tags, which no file writes. Accept. |
-| `correctness/noProcessGlobal` | info | The site has no `process` (tsconfig `types: []`); tests may use it. Accept. |
+| `correctness/noPrivateImports` | warn | Keys on `@private`/`@package` JSDoc tags, which no file writes. Kept: house rule `house/privates` (task 2.6b). |
+| `correctness/noProcessGlobal` | info | The site has no `process` (tsconfig `types: []`); tests may use it. Kept for the tests: house rule `house/process` (task 2.6b). |
 | `correctness/noUndeclaredDependencies` | error | knip reports an unlisted dependency (`mise run knip`). Accept. |
-| `correctness/useJsonImportAttributes` | info | No module imports JSON: the data is fetched. Accept. |
+| `correctness/useJsonImportAttributes` | info | No module imports JSON: the data is fetched. Kept: house rule `house/json` (task 2.6b). |
 | `correctness/useSingleJsDocAsterisk` | info | A comment-style rule. Accept. |
 | `performance/noDynamicNamespaceImportAccess` | warn | No namespace import, and `import/no-namespace` (mapped) refuses one. Accept. |
 | `performance/noReExportAll` | warn | No module re-exports (`export *`); `oxc/no-barrel-file` with `threshold: 0` refuses a barrel. Accept. |
 | `style/noEnum` | warn | tsc's `erasableSyntaxOnly` refuses an enum. Accept. |
 | `style/noInlineStyles` | info | The CSP refuses inline styles at run time; Phase 4 adds a rule refusing a string `style` (row 4.2). Accept, held by 4.2. |
-| `style/useNodeAssertStrict` | warn | No file imports `node:assert`; tests assert with Vitest's `expect`. Accept. |
+| `style/useNodeAssertStrict` | warn | No file imports `node:assert`; tests assert with Vitest's `expect`. Kept: house rule `house/asserts` (task 2.6b). |
 | `suspicious/noDuplicateParameters` | error | A syntax error in a module (every file here is one): oxc's parser and tsc refuse it. Accept. |
 | `suspicious/noOctalEscape` | warn | A syntax error in strict mode, which every module is: the parser refuses it. Accept. |
 | `suspicious/noRedundantUseStrict` | warn | Every file is a module, so strict already; no file says `"use strict"`. Accept. |

@@ -97,12 +97,12 @@ depends = ["install:site"]
 run = "pnpm run types"
 
 ["lint:site"]
-description = "Biome's rules on the site, its tests and its CSS, with the lint/ plugins"
+description = "Biome's rules on the site, its tests, its CSS and the JSON configs (biome.jsonc's files.includes)"
 depends = ["install:site"]
 run = "pnpm run lint"
 
 ["lint:oxlint"]
-description = "oxlint's rules on the site, its tests and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md)"
+description = "oxlint's rules on the site, its tests, the house rules' plugin (lint/) and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md, and the house rules)"
 depends = ["install:site"]
 run = "pnpm run lint:oxlint"
 
@@ -134,7 +134,7 @@ description = "The Python code as ruff formats it"
 run = "uv run --group dev ruff format --check"
 
 ["format:site"]
-description = "The site, its tests, its CSS and the JSON configs as oxfmt writes them (.oxfmtrc.jsonc names which), the generated site/states.ts left as it is"
+description = "The site, its tests, its CSS, the JSON configs and the house rules as oxfmt writes them (.oxfmtrc.jsonc names which), the generated site/states.ts and site/drawings.ts left as they are"
 depends = ["install:site"]
 run = "pnpm run format"
 

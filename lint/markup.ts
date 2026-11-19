@@ -1,5 +1,5 @@
-// Markup is put in an element by icons.ts alone (Drawing.into), from the SVG written there, so no text from the data or
-// the address ever becomes markup; everywhere else an element is built with dom.ts's h(), which puts text in as text.
+// Markup is put in an element by icons.ts alone (Drawing.into), from a drawing's SVG in the generated drawings.ts, so
+// no text from the data or the address ever becomes markup; everywhere else an element is built with dom.ts's h(), which puts text in as text.
 // Refused: any member access to innerHTML or outerHTML, read or written however (assigned, a compound assignment, an
 // optional chain, a destructuring's target, a loop's variable), by name or by a key in quotes; a destructured key of
 // that name; and a call of a method that parses or writes markup. .oxlintrc.json turns the rule on for site/** and off

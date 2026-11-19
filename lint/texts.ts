@@ -1,7 +1,6 @@
-// The text a house rule reads in the code, as Grit's JsStringLiteralExpression and JsTemplateChunkElement are: a string
-// where an expression stands (not a key, a type, a module's name or a directive) in its quotes, and the chunks of a
-// template literal between its values, as written. A rule takes the visitors `texts` makes and reports where it picks,
-// or is a `textRule`, refusing the texts a pattern matches.
+// The text a house rule reads in the code: a string where an expression stands (not a key, a type, a module's name or
+// a directive) in its quotes, and the chunks of a template literal between its values, as written. A rule takes the
+// visitors `texts` makes and reports where it picks, or is a `textRule`, refusing the texts a pattern matches.
 import type { Rule } from './plugin.ts';
 import type { Visitor } from './shapes.ts';
 type Literal = Parameters<NonNullable<Visitor['Literal']>>[0];

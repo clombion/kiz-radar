@@ -255,7 +255,8 @@ the helper's `storage: 'refused'` makes reaching either storage throw a Security
 
 ### Phase 2
 
-In progress.
+In progress: tasks 2.1 to 2.6d are done, and the audit of 2.2 to 2.6d is fixed
+([refactor-audit-2.md](refactor-audit-2.md)); 2.7 and 2.8 remain, and this report is written once 2.8 is done.
 
 **Brief errors** (task 2.3, [refactor-task-2.3.md](refactor-task-2.3.md), Evidence):
 

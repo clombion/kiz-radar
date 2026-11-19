@@ -1,8 +1,8 @@
 # Task 2.6c: the type-aware rules new in oxlint
 
-Task 2.6c of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026, not pushed. The 33 type-aware rules
-oxlint has and Biome does not are on as errors (owner, 19 November; [lint rules](docs/concepts/lint-rules.md), "New in
-oxlint"), with zero findings and one suppressed line.
+Task 2.6c of [refactor-plan.md](refactor-plan.md). Status: done, 19 November 2026. The 33 type-aware rules oxlint has
+and Biome does not are on as errors (owner, 19 November; [lint rules](docs/concepts/lint-rules.md), "New in oxlint"),
+with zero findings and one suppressed line.
 
 ## Summary
 
