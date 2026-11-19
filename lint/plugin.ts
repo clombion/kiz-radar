@@ -21,6 +21,7 @@ import { statics } from './statics.ts';
 import { storage } from './storage.ts';
 import { styles } from './styles.ts';
 import { tests } from './tests.ts';
+import { thens } from './thens.ts';
 
 // oxlint's rule, as its RuleTester takes one: the package exports no other name for it
 export type Rule = Parameters<RuleTester['run']>[1];
@@ -48,6 +49,7 @@ const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } 
     storage,
     styles,
     tests,
+    thens,
   },
 };
 export default plugin;

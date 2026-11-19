@@ -119,6 +119,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `storage` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `styles` | everywhere oxlint lints | (none) |
 | `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, and four helpers (`dismiss`, `dom`, `modal`, `tabs`) imported by `tests/site/page.browser.test.ts`: the rule's options in each file's override |
+| `thens` | `*.tsx` | (none) |
 
 The 19 house rules: the 13 that were Grit's, moved to oxlint's plugin (`session` in task 2.5, the twelve others in task
 2.6), the 5 unmapped rules the owner kept (task 2.6b) and `env`, `node/no-process-env`'s reach for a `process` imported
