@@ -159,7 +159,7 @@ export function readState<D extends Defaults>(
     else dropped.push(`${k}=${v}`);
   }
   // biome-ignore lint/nursery/noUnsafeTypeAssertion: s starts as the defaults and takes only values of their types
-  return { state: s as { -readonly [K in keyof D]: D[K] }, dropped };
+  return { state: s as { -readonly [K in keyof D]: D[K] }, dropped }; // oxlint-disable-line typescript/no-unsafe-type-assertion -- as biome-ignore says above
 }
 // The part of a state that differs from the defaults, for the URL.
 export const changed = (s: Defaults, defaults: Defaults): Record<string, string | number> =>

@@ -34,5 +34,5 @@ export const record =
       out[name] = read(Reflect.get(v, name), `${at}.${name}`);
     }
     // biome-ignore lint/nursery/noUnsafeTypeAssertion: every field of the shape was read into out, by its own reader
-    return out as Read<S>;
+    return out as Read<S>; // oxlint-disable-line typescript/no-unsafe-type-assertion -- as biome-ignore says above
   };

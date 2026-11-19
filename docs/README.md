@@ -22,6 +22,7 @@ in a session.
 | understand who decides a fact no step derives | [Claims](concepts/claims.md) |
 | understand the closed world of states | [States](concepts/states.md) |
 | see what each Biome lint rule becomes in oxlint, and what is dropped | [Lint rules](concepts/lint-rules.md) |
+| see why a line turns an oxlint rule off | [oxlint's suppressed findings](lint-false-positives.md) |
 | look up a command | [Commands](reference/commands.md) |
 | look up a file and its record | [Files](reference/files.md) |
 | look up a state | [States table](reference/states.md) |

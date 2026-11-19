@@ -11,6 +11,7 @@ const fixture = async (file: string) =>
   digest(Uint8Array.from(atob(await commands.readFile(`${FIXTURE_DATA}/${file}`, 'base64')), (c) => c.charCodeAt(0)));
 const served = async (at: string) => digest(await (await get(new URL(at, location.origin))).arrayBuffer());
 
+// oxlint-disable-next-line jest/no-done-callback -- test.for's callback takes the case, not a done callback
 test.for(['/data/kiz.sqlite', '/kiz.sqlite'])("%s is the fixture's", async (at) => {
   expect(await served(at)).toEqual(await fixture(at.split('/').at(-1) ?? ''));
 });

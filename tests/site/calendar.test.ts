@@ -209,6 +209,7 @@ const END_CASES = record({
   ),
 })(JSON.parse(readFileSync(new URL('../trip-ends.json', import.meta.url), 'utf8')), 'trip-ends.json').cases;
 
+// oxlint-disable-next-line jest/no-done-callback -- test.for's callback takes the case, not a done callback
 test.for(END_CASES)('a trip ends where the build says it does: $said', (c) => {
   const away = c.people.map((p) => ({
     key: p.key,

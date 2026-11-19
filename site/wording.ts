@@ -73,6 +73,7 @@ export function say<P extends Point, K extends Key<P>, V extends Kid = Kid>(
   const forms: Readonly<Record<string, string>> = r.forms;
   if (form !== undefined && !Object.hasOwn(forms, form))
     throw new Error(`${point} ${key}: no form ${form} in pipeline/states.py`);
+  // oxlint-disable-next-line typescript/no-unnecessary-condition -- form is optional: the generic Form<P, K> is read as a literal
   const words = form === undefined ? r.wording : forms[form];
   if (words == null) return null;
   return words
@@ -82,6 +83,7 @@ export function say<P extends Point, K extends Key<P>, V extends Kid = Kid>(
       const name = VALUE.exec(part)?.groups?.['name'];
       if (name === undefined) return part;
       if (!Object.hasOwn(values, name))
+        // oxlint-disable-next-line typescript/no-unnecessary-condition -- form is optional: the generic Form<P, K> is read as a literal
         throw new Error(`${point} ${key}${form === undefined ? '' : ` (${form})`}: no value for {${name}}`);
       return values[name] ?? null;
     });
@@ -104,7 +106,7 @@ export const text = <P extends Point, K extends Key<P>, F extends Form<P, K> | u
   form?: F,
 ): Said<P, K, F> =>
   // biome-ignore lint/nursery/noUnsafeTypeAssertion: say gives the words exactly when the generated table has them, which Said reads
-  (say(point, key, values, form)?.join('') ?? null) as Said<P, K, F>;
+  (say(point, key, values, form)?.join('') ?? null) as Said<P, K, F>; // oxlint-disable-line typescript/no-unsafe-type-assertion -- as biome-ignore says above
 
 // "1 festival", "3 festivals", "1,204 artists": a count and its noun (an English plural with -s unless said)
 export const plural = (n: number, noun: string, nouns = `${noun}s`): string =>

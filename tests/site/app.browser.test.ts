@@ -94,6 +94,7 @@ test('a page opened on another day moves it for its test alone', async () => {
 
 test("the next test is on the start's day, in every form the clock is read", () => {
   const start = new Date('2027-01-12T12:00:00').getTime();
+  // oxlint-disable-next-line unicorn/new-for-builtins -- Date() called as a function is one of the forms of the clock the test reads
   expect([Date.now(), new Date().toISOString(), Date(), new Date(0).getTime(), new Date() instanceof Date]).toEqual([
     start,
     new Date(start).toISOString(),

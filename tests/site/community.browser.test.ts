@@ -816,6 +816,7 @@ test('who added someone is said to a screen reader too, not on hover alone', asy
 const luminance = (rgb: string) => {
   const [r = 0, g = 0, b = 0] = (rgb.match(/\d+(?:\.\d+)?/gu) ?? []).map(Number).map((v) => {
     const c = v / 255;
+    // oxlint-disable-next-line unicorn/numeric-separators-style -- grouped as Biome's useNumericSeparators wants, threes from the point
     return c <= 0.039_28 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
   });
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;

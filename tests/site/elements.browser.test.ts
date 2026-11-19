@@ -122,6 +122,7 @@ test.for([
   sourcesHref(),
   COMM(FIXTURE_COMMUNITY),
   '(the planted artist)',
+  // oxlint-disable-next-line jest/no-done-callback -- test.for's callback takes the case, not a done callback
 ])('%s writes no null, undefined, NaN, object or stray true and false', async (href) => {
   await app.open(href === '(the planted artist)' ? artistHref(artist) : href);
   expect(main()?.childElementCount).toBeGreaterThan(0);

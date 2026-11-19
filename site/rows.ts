@@ -56,7 +56,7 @@ export const read = <S extends Shape>(shape: S, row: Readonly<Record<string, Sql
     out[name] = col(row[name], name);
   }
   // biome-ignore lint/nursery/noUnsafeTypeAssertion: every column of the shape was read into out, by its own reader
-  return out as RowOf<S>;
+  return out as RowOf<S>; // oxlint-disable-line typescript/no-unsafe-type-assertion -- as biome-ignore says above
 };
 
 // ----- shapes of the tables and views more than one query reads -----
