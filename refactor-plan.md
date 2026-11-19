@@ -59,7 +59,7 @@ Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "
 | 4.7 | Stateful views | `sentence`, `communities`, `friends`, `artists`, `map` (Leaflet stays an imperative island), `countries`, `people` | same |
 | 4.8 | Read-only views | `week`, `sources`, `tables`, `updating` | same |
 | 4.9 | The review dashboard | `review.ts` as its own series | same |
-| 4.10 | Finishing | delete `h()` and `replaceChildren` from `dom.ts` (and the `h()` tests, per Q5); retire `markup`, `classes`, `buttons`, `clicks` only with a fixture proving the replacement; rewrite kept rules' messages; `CLAUDE.md` conventions and the Solid skills; `CONTRIBUTING.md`, docs, `tests/test_suppressions.py`; remove `refactor-brief.md`, `refactor-plan.md` and the task plans | Phase 4 "done when" holds; report written |
+| 4.10 | Finishing | delete `h()` and `replaceChildren` from `dom.ts` (and the `h()` tests, per Q5); retire `markup`, `classes`, `buttons`, `clicks` only with a fixture proving the replacement; rewrite kept rules' messages; `CLAUDE.md` conventions and the Solid skills; `CONTRIBUTING.md`, docs, `tests/test_suppressions.py`; remove `refactor-brief.md`, `refactor-plan.md`, `refactor-ledger.md` and the task plans | Phase 4 "done when" holds; report written |
 
 ## Open questions (from the brief's review)
 
@@ -89,7 +89,21 @@ decisions the brief did not settle, and what in the brief turned out wrong.
 
 ### Phase 1
 
-Not started. Task 1.1 records the baseline here.
+In progress.
+
+**Baseline** (task 1.1, at `c667c877`, after `mise run build:site` and `mise run build:data`, by the two commands of
+[refactor-task-1.1.md](refactor-task-1.1.md), "Tests"):
+
+- 283 tests in 24 files, all passing.
+  - Node, 142 in 14 files: `calendar` 15, `claims` 10, `fares` 13, `find` 7, `finder` 9, `logic` 13, `names` 3,
+    `pending` 6, `pricing` 7, `roster` 32, `routes` 6, `rows` 7, `states` 6, `styles` 8.
+  - Browser, 141 in 10 files: `flights` 5, `main` 16, `map` 2, `onnow` 6, `page` 14, `pages` 5, `recipes` 5, `review`
+    11, `updating` 2, `views` 75.
+- Coverage of `site/**`: lines 85.79 %, statements 84.56 %, functions 82.69 %, branches 74.81 %. (The plan's probe, on
+  an earlier copy of the data, gave 86.12 %, 84.86 %, 83.07 % and 74.92 %; these are the figures at the commit.)
+- Biome: "Checked 94 files … Found 38 infos".
+- The browser tests by name, each `test.for` case on its own line, are the left column of the ledger,
+  [refactor-ledger.md](refactor-ledger.md).
 
 Brief errors found so far:
 
