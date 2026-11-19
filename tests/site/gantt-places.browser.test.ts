@@ -10,7 +10,7 @@ import { KEY } from '../../site/states.ts';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, KUOF } from './community.fixture.ts';
 import { community, FLOWN, planned, sharer, stays, trips } from './planted.ts';
-import { atWidth, ganttCardOf, kuofOf, linesOf, said } from './seen.ts';
+import { atWidth, ganttCardOf, kuofOf, linesOf, said, unhidden } from './seen.ts';
 
 // the fixture's community copied; and one whose members are Ann, Bo, Cy and Di at the Scandic from Thursday, Nora from
 // Friday, and Ed at the Thon, its added people the fixture's
@@ -102,6 +102,8 @@ test('a card whose people stay at two places or more can be seen by place, from 
   expect(choice(row).map((b) => b.querySelector('svg') !== null && said(b) === '')).toEqual([true, true]);
   const placed = await byPlace(FIXTURE_COMMUNITY);
   expect(choice(placed).map((b) => b.getAttribute('aria-pressed'))).toEqual(['false', 'true']);
+  // the buttons' drawings, and the roster's by place, hidden from assistive technology
+  expect(unhidden()).toEqual([]);
   // a line a place, the most people first, those who said none last, its people under its name; one stroke over
   // the nights anyone stays there, its ends the weekdays of the first evening and the morning after the last
   const seen = linesOf();

@@ -9,7 +9,7 @@ import { page } from 'vitest/browser';
 import { get } from '../../site/net.ts';
 import { startReview } from './app.ts';
 import { AT, KEPT, LOGIN, REVIEW, WRITING } from './reviewed.ts';
-import { entries, said, theItem } from './seen.ts';
+import { entries, said, theItem, unhidden } from './seen.ts';
 
 // GitHub naming its owner whatever the token, rather than reviewed.ts's github(), which refuses a request without the
 // one it knows: the tests of the answers' own rules ask /user with none
@@ -37,6 +37,17 @@ test('the page shows the token it found as checked, its expiry from the pinned d
   expect(app.asked.map(({ url }) => url.href)).toContain('https://api.github.com/user');
 });
 
+test('every drawing is hidden on the page as a writer sees it, on two queues’ items', async () => {
+  await expect.element(page.getByRole('button', { name: WRITING })).toBeVisible();
+  // the item's arrows, and its choices' drawings
+  const drawn = async (route: '#contested/1' | '#merges/1') => {
+    await app.open(route);
+    return [theItem().querySelectorAll('svg').length > 0, unhidden()];
+  };
+  expect(await drawn('#contested/1')).toEqual([true, []]);
+  expect(await drawn('#merges/1')).toEqual([true, []]);
+});
+
 test('an item opened by its address is drawn as open() resolves, in place of the entry shown', async () => {
   const before = entries();
   await app.open('#contested/1');
@@ -61,12 +72,24 @@ test('open() refuses a route the address does not hold as given', async () => {
 
 test('open() refuses a page that fails to draw the item', async () => {
   // the item's arrows are drawn by icons.ts, their markup put in their buttons: without it, the queue's view throws as
-  // it builds
+  // it builds, and says so in its place (report.ts's guarded) and in the console, naming the view
   const svg = vi.spyOn(Element.prototype, 'innerHTML', 'set').mockImplementation(() => {
     throw new Error('no markup in this test');
   });
-  onTestFinished(() => svg.mockRestore());
-  await expect(app.open('#merges/1')).rejects.toThrow('the page says it failed');
+  const told = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+  onTestFinished(() => {
+    svg.mockRestore();
+    told.mockRestore();
+  });
+  await expect(app.open('#merges/1')).rejects.toThrow(
+    'the page says it failed: This page could not be shown: no markup',
+  );
+  // the review's view, each time it was drawn, and not the page around it: its queues' tabs are drawn
+  expect(told.mock.calls.length).toBeGreaterThan(0);
+  expect(new Set(told.mock.calls.map((call) => call.map(String).join(' ')))).toEqual(
+    new Set(['Kiz Radar: the review: Error: no markup in this test']),
+  );
+  expect(document.querySelectorAll('#queues a').length).toBeGreaterThan(0);
 });
 
 test('an answer given in a test lasts that test', async () => {
