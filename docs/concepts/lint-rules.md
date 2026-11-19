@@ -297,6 +297,19 @@ all. The four of `no-unsafe-type-assertion` are the lines Biome's suppressions c
 | `correctness/useQwikValidLexicalScope` | (none) | no Qwik here |
 | `security/noSecrets` | (none) | the site holds no secret; its long strings are SVG and selectors |
 
+## organizeImports
+
+`biome check` also enforces an assist, `organizeImports`, which no rule of the mapping names. It holds three things, and
+each has its own holder once Biome stops reading the TypeScript:
+
+- **The order of import statements:** oxfmt's `sortImports`, on every `.ts` it lays out (`.oxfmtrc.jsonc`'s override),
+  with `newlinesBetween: false`: like Biome, it sorts across a blank line and adds none between groups, so it changed no
+  file of `site/`, `tests/` or `lint/` (72 with its defaults). The house rules' fixtures are left out (`excludeFiles`):
+  seven would move, and their refused lines are marked where they stand.
+- **Two imports of one module merged:** `import/no-duplicates`, no finding.
+- **The names inside an import's braces:** no oxfmt option sorts them. Biome holds them until task 2.7, which hands them
+  to `eslint/sort-imports`.
+
 ## The mapping
 
 Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail the check, `info` only reports (Q2).

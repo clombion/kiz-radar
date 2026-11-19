@@ -189,6 +189,8 @@
     "import/no-commonjs": "error",
     "import/no-cycle": "error",
     "import/no-default-export": "error",
+    // organizeImports merges two imports of one module (docs/concepts/lint-rules.md, organizeImports)
+    "import/no-duplicates": "error",
     "import/no-namespace": "error",
     "import/no-nodejs-modules": "error",
     "jest/no-done-callback": "error",
