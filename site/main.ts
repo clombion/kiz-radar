@@ -1,7 +1,10 @@
 // Router and page shell. The shell and the Festivals sentence show as soon as site.json is in; the database
 // loads alongside, and views that query it wait for it. Each view gets an AbortSignal that fires when you leave
-// it: listeners it adds to document or window pass it, so nothing outlives the view.
+// it: listeners it adds to document or window pass it, so nothing outlives the view. The view shown follows one signal,
+// the address (address.ts).
 
+import { createEffect, createRoot } from 'solid-js';
+import { type Address, createAddress } from './address.ts';
 import { artistsView } from './artists.ts';
 import { onResize } from './bits.ts';
 import { communityView } from './communities.ts';
@@ -14,17 +17,7 @@ import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
 import { personView } from './people.ts';
 import { done, guarded, reportUncaught } from './report.ts';
-import {
-  EXPLORE,
-  type Route,
-  routeOf,
-  sectionAt,
-  type Show,
-  showInAddressBar,
-  siteRoot,
-  type Tab,
-  TABS,
-} from './routes.ts';
+import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, type Tab, TABS } from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';
 import { sourcesView } from './sources.ts';
@@ -116,8 +109,7 @@ part('#footer-nav').append(...[...TABS.slice(0, -1), ...EXPLORE].map(([, label, 
 const tabRows = () => [tabs, subnav];
 
 // Show the view the address names; scrollUp scrolls up to it (a new page, not the first one)
-function route({ scrollUp = false } = {}): void {
-  const { name, sub, qs, moved } = routeOf(location.href, document.baseURI);
+function route({ name, sub, qs, moved }: Address, { scrollUp = false } = {}): void {
   freshDay(); // the visitor's day, which may have moved on since the page loaded
   if (moved !== null) showInAddressBar(moved); // an older link's #community/<key>: the community's own address
   const from = sectionAt(at),
@@ -219,7 +211,17 @@ async function start(): Promise<void> {
   data.then(updated).catch((e: unknown) => {
     if (e instanceof SiteUpdating) updatingPage(main);
   });
-  addEventListener('hashchange', () => route({ scrollUp: true }));
-  route();
+  // the view of the address the page starts at, then of each it moves to, for the page's life (a root never disposed).
+  // What escapes route() is the window's, as it was from a hashchange listener (report.ts reportUncaught), and never
+  // Solid's, whose uncaught error would halt every signal of the page, this one with it.
+  createRoot(() => {
+    createEffect(createAddress(), (address, before) => {
+      try {
+        route(address, { scrollUp: before !== undefined });
+      } catch (e) {
+        reportError(e);
+      }
+    });
+  });
 }
 done(start(), 'starting the page');
