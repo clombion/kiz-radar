@@ -11,19 +11,20 @@ import { calm } from './ui.ts';
 
 // a box in a row of tabs, in px
 type Box = { left: number; top: number; width: number; height: number };
-// a row of tabs' oval: its goo layer, the oval, its box (null while hidden), and the shapes of a move under way
-type Oval = { goo: HTMLElement; oval: HTMLElement; at: Box | null; moving: HTMLElement[] };
+// a row of tabs' oval: its goo layer, the oval, its box (null while hidden), the addresses of the row's tabs when the
+// box was set, and the shapes of a move under way
+type Oval = { goo: HTMLElement; oval: HTMLElement; at: Box | null; links: string; moving: HTMLElement[] };
 const rows = new WeakMap<HTMLElement, Oval>();
 function ovalOf(nav: HTMLElement): Oval {
   const known = rows.get(nav);
   if (known) {
     // A row drawn again (the Explore row's links replaced) has lost its layer: it is put back, its last box kept, so
-    // the next move starts from where the oval was.
+    // the next move starts from where the oval was, if the row has the same tabs (pill).
     if (known.goo.parentNode !== nav) nav.insertBefore(known.goo, nav.firstChild);
     return known;
   }
   const goo = nav.insertBefore(h('span', { class: 'goo', 'aria-hidden': 'true' }), nav.firstChild);
-  const made = { goo, oval: goo.appendChild(h('span', { class: 'pill' })), at: null, moving: [] };
+  const made = { goo, oval: goo.appendChild(h('span', { class: 'pill' })), at: null, links: '', moving: [] };
   rows.set(nav, made);
   return made;
 }
@@ -42,10 +43,14 @@ const SPRING =
   'linear(0, 0.077, 0.262, 0.496, 0.729, 0.927, 1.074, 1.164, 1.202, 1.199, 1.169, 1.123, 1.074, 1.03, 0.995, 0.972, 0.96, 0.958, 0.962, 0.971, 0.981, 0.99, 0.998, 1.004, 1.007, 1.009, 1.008, 1.007, 1.005, 1.003, 1)';
 const SOFT = 'cubic-bezier(.45, 0, .2, 1)';
 
-// Put the row's oval behind its current tab: moving there, unless still (on a resize) or there was none
+// Put the row's oval behind its current tab: moving there, unless still (on a resize), there was none, or the row's
+// tabs are others than before (the Explore row become the Friends tab's places), where the old box means nothing
 export function pill(nav: HTMLElement, { still = false } = {}): void {
   const tab = nav.querySelector<HTMLElement>('a.active');
   const row = ovalOf(nav);
+  const links = [...nav.querySelectorAll('a')].map((a) => a.getAttribute('href')).join(' ');
+  const same = row.links === links;
+  row.links = links;
   const { oval } = row;
   // a move still running gives way to this one: its shapes go, and the oval starts from where it was going
   for (const shape of row.moving.splice(0)) shape.remove();
@@ -55,7 +60,7 @@ export function pill(nav: HTMLElement, { still = false } = {}): void {
     row.at = null;
     return;
   }
-  const was = row.at,
+  const was = same ? row.at : null,
     to = box(tab);
   row.at = to;
   oval.hidden = false;
