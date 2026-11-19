@@ -363,6 +363,7 @@
     "house/formats": "error",
     "house/home": "error",
     "house/json": "error",
+    "house/privates": "error",
     "house/promises": "error",
     "house/routes": "error",
     "house/session": "error",
@@ -481,6 +482,12 @@
       // house/markup: icons.ts puts the SVG written there in an element (Drawing.into)
       "files": ["site/icons.ts"],
       "rules": { "house/markup": "off" }
+    },
+    {
+      // house/privates reads the module an import names from disk, beside the importing file: oxlint shows a rule one
+      // file
+      "files": ["lint/privates.ts"],
+      "rules": { "import/no-nodejs-modules": "off" }
     },
     {
       // oxlint loads a JS plugin from its module's default export, as ESLint does

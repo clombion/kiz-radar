@@ -10,6 +10,7 @@ import { formats } from './formats.ts';
 import { home } from './home.ts';
 import { json } from './json.ts';
 import { markup } from './markup.ts';
+import { privates } from './privates.ts';
 import { process } from './process.ts';
 import { promises } from './promises.ts';
 import { routes } from './routes.ts';
@@ -34,6 +35,7 @@ const plugin: { meta: { name: string }; rules: Readonly<Record<string, Rule>> } 
     home,
     json,
     markup,
+    privates,
     process,
     promises,
     routes,

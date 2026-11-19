@@ -87,6 +87,7 @@ From `biome.jsonc`'s `overrides`, each with its reason; oxlint takes them as `ov
 | `site/friends.ts`, `site/roster.ts`, `site/sources.ts`, `site/tables.ts` | `eslint/prefer-destructuring` | off | Q2: the findings in the site's code stay until Phase 4 rewrites these files (`tables.ts` is oxlint's alone) |
 | `site/db.ts` | `eslint/max-classes-per-file` | off | Q2: the same, `SiteUpdating` and `Sql` |
 | `lint/plugin.ts` | `import/no-default-export` | off | new (task 2.5): oxlint loads a JS plugin from its module's default export, as ESLint does |
+| `lint/privates.ts` | `import/no-nodejs-modules` | off | new (task 2.6b): `house/privates` reads the module an import names from disk, oxlint showing a rule one file |
 | `vitest.config.ts` (and `vite.config.ts`, Phase 3) | `import/no-default-export` | off (owner, 19 November: Vitest reads only a default export) | new: Biome never linted the file (not in `files.includes`); Vitest reads its default export, which the rule refuses; off in `.oxlintrc.json` since 2.4, its comment naming the pending decision |
 
 The house rules (`lint/plugin.ts`, run as `house/<rule>`, each with its fixtures: [Contributing](../../CONTRIBUTING.md),
@@ -105,6 +106,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `home` | everywhere oxlint lints | (none) |
 | `json` | everywhere oxlint lints | (none) |
 | `markup` | `site/**` | `site/icons.ts` |
+| `privates` | everywhere oxlint lints | (none) |
 | `process` | `tests/**`, `vitest.config.ts` | (none) |
 | `promises` | everywhere oxlint lints | (none) |
 | `routes` | everywhere oxlint lints | `site/routes.ts` |
@@ -372,7 +374,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | `noNodejsModules` | warn | `import/no-nodejs-modules` | source | mapped: off in `tests/**` and `vitest.config.ts` |
 | `noNonoctalDecimalEscape` | error | `eslint/no-nonoctal-decimal-escape` | source | mapped |
 | `noPrecisionLoss` | error | `eslint/no-loss-of-precision` | source | mapped |
-| `noPrivateImports` | warn | (none) |  | house rule, task 2.6b |
+| `noPrivateImports` | warn | (none) |  | house rule `house/privates` |
 | `noProcessGlobal` | info | (none) |  | house rule `house/process` |
 | `noSelfAssign` | error | `eslint/no-self-assign` | source | mapped |
 | `noSetterReturn` | error | `eslint/no-setter-return` | source | mapped |

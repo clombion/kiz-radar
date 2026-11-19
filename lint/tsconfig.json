@@ -1,0 +1,7 @@
+{
+  // The house rules' plugin, for the type-aware lint rules, which read a file's nearest tsconfig.json: the tests'
+  // settings (Node's types), which tsc checks lint/ with (tests/site/tsconfig.json includes it)
+  "extends": "../tests/site/tsconfig.json",
+  "include": ["."],
+  "exclude": ["fixtures"]
+}

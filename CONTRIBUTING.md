@@ -49,16 +49,17 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   each, so a new one is a change to that list, and an oxlint one is also explained in
   [oxlint's suppressed findings](docs/lint-false-positives.md).
 - **House rules:** a rule of `lint/plugin.ts` is a module beside it, `lint/<rule>.ts` (ESLint's rule API, never reading
-  the file's path), listed in the plugin's `rules` and turned on in `.oxlintrc.json` as `house/<rule>: error`; the files
-  it is on for, and its exemptions, are `.oxlintrc.json`'s overrides, by globs from the root (`site/*.ts`, `tests/**`),
-  so no folder above the checkout changes what a rule sees; an exemption of some of a file's code is the rule's options
-  in that file's override (`tests`' in `tests/site/app.ts`). It ships with fixtures in `lint/fixtures/<rule>/`, at the
-  paths from the root the overrides read: a file it refuses, each refused line ending `// refused` (`// refused: <rule>`
-  for another house rule's finding), one written the intended way that it lets through, and, where it has exemptions,
-  the forbidden form in an exempt file (`site/kept.ts`, `tests/…`). `tests/site/rules.test.ts` lints the fixtures with
-  the house rules as `.oxlintrc.json` sets them, each override's globs found in each rule's folder, and fails on a
-  finding on an unmarked line, a marked line not found, a rule without fixtures or a folder without a rule. The fixtures
-  are kept out of oxlint's run of the tree, tsc, knip, jscpd and Vitest; oxfmt lays them out.
+  the file's path but to find what its imports name, as `privates` does), listed in the plugin's `rules` and turned on
+  in `.oxlintrc.json` as `house/<rule>: error`; the files it is on for, and its exemptions, are `.oxlintrc.json`'s
+  overrides, by globs from the root (`site/*.ts`, `tests/**`), so no folder above the checkout changes what a rule sees;
+  an exemption of some of a file's code is the rule's options in that file's override (`tests`' in `tests/site/app.ts`).
+  It ships with fixtures in `lint/fixtures/<rule>/`, at the paths from the root the overrides read: a file it refuses,
+  each refused line ending `// refused` (`// refused: <rule>` for another house rule's finding), one written the
+  intended way that it lets through, and, where it has exemptions, the forbidden form in an exempt file (`site/kept.ts`,
+  `tests/…`). `tests/site/rules.test.ts` lints the fixtures with the house rules as `.oxlintrc.json` sets them, each
+  override's globs found in each rule's folder, and fails on a finding on an unmarked line, a marked line not found, a
+  rule without fixtures or a folder without a rule. The fixtures are kept out of oxlint's run of the tree, tsc, knip,
+  jscpd and Vitest; oxfmt lays them out.
 - **Duplicates:** jscpd fails on a block written twice, at the length `.jscpd.json` sets.
 - **Generated files:** `mise run generate` writes `pipeline/enums.py`, `site/states.ts`, `site/classes.ts`,
   `lint/state-keys.ts`, `docs/reference/`, and the home city (`pipeline/airports.csv`'s home) where `public/index.html`
