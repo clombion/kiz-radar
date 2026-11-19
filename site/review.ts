@@ -52,17 +52,15 @@ type Access =
 let access: Access = { state: 'missing' };
 const canWrite = (): boolean => access.state === 'ok';
 
+// what the token's button says of each state but a good token, which says whose and until when: one for each, or
+// this fails to compile
+const NOT_WRITING: Readonly<Record<Exclude<Access['state'], 'ok'>, string>> = {
+  missing: 'Read-only · add a token',
+  checking: 'Checking the token…',
+  refused: 'Read-only · token refused',
+};
 function accessWords(): string {
-  switch (access.state) {
-    case 'missing':
-      return 'Read-only · add a token';
-    case 'checking':
-      return 'Checking the token…';
-    case 'refused':
-      return 'Read-only · token refused';
-    case 'ok':
-      break;
-  }
+  if (access.state !== 'ok') return NOT_WRITING[access.state];
   const day = expires();
   if (day === null) return `Writing as ${access.login}`;
   const left = daysLeft(day, new Date());

@@ -127,7 +127,7 @@ export interface Day<A extends Away> {
   readonly people: number;
 }
 // each day someone is away, with who is: the one count the strip's shades and the sentence both read
-export function presence<A extends Away>(aways: readonly A[]): Map<string, Day<A>> {
+export function presence<A extends Away>(aways: readonly A[]): ReadonlyMap<string, Day<A>> {
   // each day as the aways are added, built in place (Day is read-only)
   const days = new Map<string, { aways: A[]; people: number }>();
   for (const a of aways)
