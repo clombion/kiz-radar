@@ -89,10 +89,122 @@ decisions the brief did not settle, and what in the brief turned out wrong.
 
 ### Phase 1
 
-In progress.
+Done on 19 November 2026, at `22cd0597`. Every browser test that can reach the site through the page now starts it
+through `tests/site/app.ts`, on the fixture and the rows it plants, and asserts what the page shows; a Grit rule refuses
+a test's import of a view. The ledger, [refactor-ledger.md](refactor-ledger.md), says where each of the 141 baseline
+browser tests went. Phase 1's "done when" holds: the suite passes on the unchanged `h()` code, and no test imports a
+view module but the ones row 1.8 allows by name until their helpers go. Task 1.9's "done when" holds with this report;
+its plan is [refactor-task-1.9.md](refactor-task-1.9.md).
 
-**Task 1.7** needed no change of its own: after 1.2 the node tests import only modules the 1.8 rule allows, and their
-other imports of a view are `import type` (refactor-task-1.8.md).
+**What changed**, task by task (`git log c667c877..22cd0597`):
+
+- **1.1** ([plan](refactor-task-1.1.md)): the test server answers `/data/` from the fixture only; `startSite` and
+  `startReview` start a page on planted data, a stated day, its own storage and given answers for other hosts, each
+  option with a test that fails without it; `main.browser.test.ts` ported, its throwing view in
+  `broken.browser.test.ts`. `c8ad336e` Record the Phase 1 baseline: tests per file, coverage, Biome, and the ledger's
+  left column; `69b81c7f` Start the page in a test as a visitor gets it: tests/site/app.ts, on the fixture alone;
+  `395c8e47` Port main.browser.test.ts onto the app-test helper; the throwing view in a file of its own.
+- **1.2** ([plan](refactor-task-1.2.md)): `WIDE` moves to `site/media.ts`; `main.browser.test.ts` reaches `done` through
+  the page. `1a5dfca5` Plan task 1.2: one move, and what the page shows for the rest; `9c5061c5` Keep the media queries
+  the script shares with the stylesheet in one module; `4d16d9d7` Reach report.ts's done through the page, on the
+  fixture's own promo code.
+- **1.3** ([plan](refactor-task-1.3.md)): `views.browser.test.ts` becomes eighteen files, one page each, and a node test
+  of the fixture. `7330c21a` Plan task 1.3: views.browser.test.ts through the app, by view and by planted data;
+  `f64f45cd` Test the views through the app: views.browser.test.ts in eighteen pages.
+- **1.4** ([plan](refactor-task-1.4.md)): `onnow`, `flights` and `map` keep their files; `updating` becomes three;
+  `shipped.ts` goes. `39db5496` Plan task 1.4: onnow, flights, map and updating through the app; `4b5de649`, `a1b10daf`
+  (fixes, below); `5bbaf777` Test now-on, flights, the map and the updating page through the app.
+- **1.5** ([plan](refactor-task-1.5.md)): `review.browser.test.ts` becomes five files through `review.html`. `56c0520d`
+  Plan task 1.5: the review dashboard's tests through review.html; `3a461070`, `9ab3dc05` (fixes); `cd3e0013` Test the
+  review dashboard through review.html.
+- **1.6** ([plan](refactor-task-1.6.md)): the user-visible tests of `page.browser.test.ts` move to `tabs`, `tabs.calm`
+  (a new `browser-calm` project, reduced motion) and `elements`; seven stay with their helpers. `c35d7bda` Plan task
+  1.6: the helpers' tests through the page; `20bd9981`, `10d80505`, `3187f819` (fixes); `ce5a3484` Test the tabs, the
+  dialogs, the cards and the drawings through the page.
+- **1.7** needed no change of its own: after 1.2 the node tests import only modules the 1.8 rule allows, and their other
+  imports of a view are `import type` (refactor-task-1.8.md).
+- **1.8** ([plan](refactor-task-1.8.md)): `lint/tests.grit` refuses a test's value import of a `site/` module not on its
+  list, held by `tests/site/lint.test.ts`. `6a291cb9` Plan task 1.8: the rule that a test imports no view; `22cd0597`
+  Refuse a test's import of a view's values.
+
+**Counts.** Before: 283 tests in 24 files. After: 349 in 57, all passing.
+
+- Node: 142 in 14 files, then 147 in 16: `fixture` 1 (from `views`, task 1.3) and `lint` 3 (1.8) are new; `styles` 8 to
+  9 (1.2); the rest unchanged.
+- Browser: 141 in 10 files, then 197 in 40 (`browser`) and 5 in 1 (`browser-calm`): `app` 13, `artists` 1, `broken` 1,
+  `community` 37, `community-hotice` 1, `community-late` 1, `community-off` 1, `elements` 18, `festivals` 4, `flights`
+  6, `friends` 6, `friends-far` 1, `gantt` 10, `gantt-apart` 1, `gantt-days` 1, `gantt-halves` 1, `gantt-parties` 3,
+  `gantt-places` 4, `gantt-way` 1, `main` 15, `map` 3, `onnow` 6, `page` 7, `pages` 5, `plans` 1, `recipes` 5, `review`
+  6, `review-forget` 1, `review-kept` 3, `review-readonly` 5, `review-settle` 1, `review-token` 1, `reviewpage` 10,
+  `search` 1, `server` 4, `sources` 3, `tabs` 6, `updating` 1, `updating-late` 1, `updating-over` 1; `tabs.calm` 5.
+- Gone: `views.browser.test.ts` (75 tests) and the helper `shipped.ts`. Split: `review` (11) into five files, `updating`
+  (2) into three. Shrunk: `page` 14 to 7, `main` 16 to 15. New helpers: `app.ts`, `planted.ts`, `seen.ts`, `reload.ts`.
+  `onnow`, `flights`, `map`, `pages` and `recipes` keep their files. The new tests are the helper's own (`app`,
+  `reviewpage`, `server`), one per bug fixed, `review-forget`, and the page-level twins of the `h()` tests (Q5).
+- Biome: "Checked 94 files … Found 38 infos", then "Checked 130 files … Found 43 infos". The infos in `site/` are the
+  same 18; the five more are in the ported tests (`noAwaitInLoops` 5 to 7, `useDestructuring` and `useDomQuerySelector`
+  2 more, `useConsistentBuiltinInstantiation` 1 new, `useNamedCaptureGroup` 1 fewer).
+
+**Coverage of `site/**`**, by the same command:
+
+|  | Before | After | Change |
+| -- | -- | -- | -- |
+| Lines | 85.79 % | 90.84 % | +5.05 |
+| Statements | 84.56 % | 89.77 % | +5.21 |
+| Functions | 82.69 % | 88.91 % | +6.22 |
+| Branches | 74.81 % | 80.75 % | +5.94 |
+
+The rise is the whole page running in every file: most in `artists.ts` (53.54 % to 81.93 % of lines), `map.ts`,
+`search.ts`, `review.ts` and `sentence.ts`, which the old tests called one function at a time. One file fell: `kept.ts`,
+93.33 % to 83.87 % of lines. `forgetToken` was reached only by the old review test's clean-up, not by an assertion; the
+page's Forget button that calls it was tested by no file. That gap is closed: `review-forget.browser.test.ts` (one test,
+"Forget leaves the page read-only and keeps neither the token nor the day it expires") starts a writer's page with the
+token kept for the tab and on the device, with the day it expires, presses Forget in the token dialog, and reads the
+dialog's words, the read-only token button, no choices, and none of the three entries left in the page's storage.
+`kept.ts` is now at 96.77 % of lines; the "After" column is the run with that test (without it: lines 90.60 %,
+statements 89.57 %, functions 88.76 %, branches 80.75 %). `read`'s catch for storage the browser refuses is still not
+reached: no test refuses storage, and the helper's storage cannot refuse. It is a gap to close, not a lost check (no
+test refused storage on purpose before either).
+
+**Decisions the brief did not settle**, each in its task plan:
+
+- The harness: the app in the test's own page, one start per file; the helper owns `fetch`, the clock and storage for
+  the file; a day is required at start; `open()` replaces the history entry, since test frames share one history (1.1,
+  and "Decisions taken while planning" above).
+- What a test reads from `site/`: one move (`WIDE`), `icons` a data module, every other export replaced by what the page
+  shows (1.2).
+- The file layout: a file per set of planted data that contradicts another's; a variant of a community's added people is
+  another community in the same file (1.3, 1.4, 1.5).
+- "Kept across a reload" as two files joined by one constant in `reload.ts`, for the updating page's time and the
+  review's settled items and token (1.4, 1.5).
+- Reduced motion as a second browser project, from the browser context, not a stubbed `matchMedia` (1.6).
+- `page.browser.test.ts` keeps seven tests, each to go with its helper in 4.5, 4.6 or 4.10 (1.6, row 1.8).
+- The rule as a list of allowed modules, with `import type` and the two entries' `import()` in `app.ts` allowed (1.8).
+
+**Site bugs the ports found**, each fixed in a commit of its own with a test that fails without it:
+
+- `4b5de649` Leave the map's festival picked when Escape closes a dialog over it.
+- `a1b10daf` Say nothing went wrong when the map is left before its outline arrives.
+- `3a461070` Keep a settled item once when a second write finds it already written (`markSettled` appended duplicate
+  ids).
+- `9ab3dc05` Clear the review rail's search when the address moves to another tab.
+- `20bd9981` Keep the Explore row's oval after the row is drawn again (the oval's layer re-attached).
+- `10d80505` Keep a slide's direction until its own end when another begins over it (each slide numbered, the latest
+  clears the mark).
+- `3187f819` Start a row's oval still when the row is given other tabs.
+
+**Open issues:**
+
+- The pre-push check failed once, intermittently, and passed on retry; the cause was not found. A hook has hung now and
+  then, so commits run under `timeout`.
+- The modal's `shut()` goes back with `history.back()` in the history the test frames share (`modal.ts`): a site
+  behaviour, left as it is. The tests close dialogs through the page and read their own frame's entries.
+- Playwright's Chromium is not installed in the cloud container: `CHROMIUM=/opt/pw-browsers/chromium` must be set before
+  a browser test (`CONTRIBUTING.md`, "Checks").
+- `kept.ts`'s catch for refused storage is untested (above); its Forget button is tested by `review-forget`.
+
+**Next:** Phase 2, the Oxc toolchain. Q2 (the info-level findings) and Q4 (the ESLint peer warning) are still open for
+the owner.
 
 **Baseline** (task 1.1, at `c667c877`, after `mise run build:site` and `mise run build:data`, by the two commands of
 [refactor-task-1.1.md](refactor-task-1.1.md), "Tests"):
@@ -108,7 +220,7 @@ other imports of a view are `import type` (refactor-task-1.8.md).
 - The browser tests by name, each `test.for` case on its own line, are the left column of the ledger,
   [refactor-ledger.md](refactor-ledger.md).
 
-Brief errors found so far:
+**Brief errors:**
 
 - `refactor-brief.md` cites `main.browser.test.ts:11-50` and `:19-23` for the start-up; after task 1.1 it is in
   `tests/site/app.ts`.
@@ -118,3 +230,5 @@ Brief errors found so far:
   only when a view calls it and takes only its own SVG (refactor-task-1.2.md).
 - For task 3.1: in a test, Vite rewrites `new URL('../data/', import.meta.url)` to the server's root, and Vitest serves
   `public/` there, the real build's `data/` included.
+- For Phase 2, figures Phase 1 changed: Biome now checks 130 files, not 94 (task 2.2's "93 formatted files" to be
+  counted again), and finds 43 infos, not 38 (Q2 and task 2.3).
