@@ -54,9 +54,9 @@ export function back(): Promise<unknown> {
   return gone;
 }
 
-// The review page (review.html): what its token button says, the dialog it opens, where it draws its queues, the item
-// a queue shows, the choices it offers, by their words, and a button inside an element by its words; a page without
-// the item, the dialog or the button is an error.
+// The review page (review.html): what its token button says, the dialog it opens (closed by its Close once the test
+// ends, if still open), where it draws its queues, the item a queue shows, the choices it offers, by their words, and a
+// button inside an element by its words; a page without the item, the dialog or the button is an error.
 export const accessSays = (): string | undefined => said(document.querySelector('#access'));
 export function tokenDialog(): HTMLDialogElement {
   const access = document.querySelector('#access');
@@ -64,6 +64,9 @@ export function tokenDialog(): HTMLDialogElement {
   access.click();
   const dlg = document.querySelector('dialog[open]');
   if (!(dlg instanceof HTMLDialogElement)) throw new Error('the token button opened no dialog');
+  onTestFinished(() => {
+    if (dlg.open) buttonOf(dlg, 'Close').click();
+  });
   return dlg;
 }
 export function reviewed(): HTMLElement {

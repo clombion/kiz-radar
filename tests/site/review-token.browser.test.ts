@@ -1,6 +1,6 @@
 // The review page that found a token GitHub refuses: read-only, saying why; a token pasted in its dialog, which GitHub
 // names its owner for, unlocks the choices, and is kept for the tab alone (review-kept reads it on a fresh page).
-import { expect, onTestFinished, test } from 'vitest';
+import { expect, test } from 'vitest';
 import { startReview } from './app.ts';
 import { CLAIMS_TOKEN } from './reload.ts';
 import { AT, github, LOGIN, REVIEW } from './reviewed.ts';
@@ -20,9 +20,6 @@ test('a token GitHub refuses leaves the page read-only; one pasted that it names
   expect(said(theItem())).toContain('GitHub refused this token: it is mistyped, expired or revoked.');
 
   const dlg = tokenDialog();
-  onTestFinished(() => {
-    if (dlg.open) buttonOf(dlg, 'Close').click();
-  });
   const field = dlg.querySelector('input[aria-label="Token"]');
   const onDevice = dlg.querySelector('input[type="checkbox"]');
   if (!(field instanceof HTMLInputElement && onDevice instanceof HTMLInputElement)) {
