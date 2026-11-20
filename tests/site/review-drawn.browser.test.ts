@@ -1,8 +1,7 @@
-// The review page drawn anew on each change, as the h() page was, holding the owners of its last draw alone however
-// often it is drawn (owned.ts): moving between items, typing in the rail's search, the token checked again from the
-// dialog, and an artist picked to join and let go, each draw's item, rail or side gone with the next draw; and what is
-// drawn once, never changed in place, holds no owner of its own (a row of the rail the list's alone, a city's card
-// none).
+// The review page drawn anew on each change, holding the owners of its last draw alone however often it is drawn
+// (owned.ts): moving between items, typing in the rail's search, the token checked again from the dialog, and an artist
+// picked to join and let go, each draw's item, rail or side gone with the next draw; and what is drawn once, never
+// changed in place, holds no owner of its own (a row of the rail the list's alone, a city's card none).
 import { expect, onTestFinished, test } from 'vitest';
 import { startReview } from './app.ts';
 import { drawnAlike, owners } from './owned.ts';

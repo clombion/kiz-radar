@@ -174,7 +174,7 @@ test('the rules see a selector repeated in a second block of one media query, an
   expect(selectorsOf('a:is(.b, .c), .d')).toEqual(['a:is(.b, .c)', '.d']);
 });
 
-// The design tokens: each defined is read, by a rule or by the code (h()'s style object, css() in the map), and each
+// The design tokens: each defined is read, by a rule or by the code (bits.ts styled, css() in the map), and each
 // read without a fallback is defined, by a rule or by the code.
 const DEFINED = /(?<name>--[\w-]+)\s*:/gu;
 const READ = /var\((?<name>--[\w-]+)(?<fallback>\s*,)?/gu;

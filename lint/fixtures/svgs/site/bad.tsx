@@ -1,4 +1,4 @@
-// What house/svgs refuses outside icons: an SVG drawn in JSX, empty or not, titled or not, or made by its tag's name.
+// What house/svgs refuses: an SVG drawn in JSX, empty or not, titled or not, or made by its tag's name.
 import { Dynamic, dynamic } from '@solidjs/web';
 
 declare const path: unknown;

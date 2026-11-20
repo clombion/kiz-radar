@@ -4,7 +4,7 @@
   // lint/plugin.ts, the house rules, by its oxlint plugin (.oxlintrc.json's jsPlugins)
   "entry": ["tests/site/**/*.test.{ts,tsx}"],
   // lint/fixtures/ holds the files the house rules' test lints, which nothing imports; one stands as a test file
-  // (tests' page.browser.test.ts), which the vitest plugin takes for an entry, and its imports resolve to nothing
+  // (tests' placed.browser.test.tsx), which the vitest plugin takes for an entry, and its imports resolve to nothing
   "project": ["site/**/*.{ts,tsx}", "tests/site/**/*.{ts,tsx}", "lint/**/*.ts", "!lint/fixtures/**"],
   "ignore": ["lint/fixtures/**"],
   // the world's outlines, which no module imports: package.json's vendor script copies them into public/vendor/; and

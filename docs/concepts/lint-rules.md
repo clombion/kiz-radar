@@ -101,8 +101,8 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | Rule | On | Off |
 | -- | -- | -- |
 | `asserts` | everywhere oxlint lints | (none) |
-| `buttons` | `site/*.ts`, `site/*.tsx` | `site/dom.ts` |
-| `classes` | everywhere oxlint lints | `site/dom.ts` |
+| `buttons` | `site/*.ts`, `site/*.tsx` | (none) |
+| `classes` | everywhere oxlint lints | (none) |
 | `clicks` | everywhere oxlint lints | `site/bits.ts`, `site/swipe.ts` |
 | `env` | everywhere oxlint lints | (none) |
 | `fetch` | everywhere oxlint lints | `site/net.ts`, `tests/site/app.ts` |
@@ -112,7 +112,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `home` | everywhere oxlint lints | (none) |
 | `json` | everywhere oxlint lints | (none) |
 | `legacy` | `*.tsx` | (none) |
-| `markup` | `site/**` | `site/icons.ts`, `site/icons.tsx` |
+| `markup` | `site/**` | `site/icons.ts` |
 | `mirrors` | `*.tsx` | (none) |
 | `privates` | everywhere oxlint lints | (none) |
 | `process` | `tests/**`, `vitest.config.ts` | (none) |
@@ -125,8 +125,8 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `statics` | everywhere oxlint lints | (none) |
 | `storage` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `styles` | everywhere oxlint lints | (none) |
-| `svgs` | everywhere oxlint lints | `site/icons.tsx` |
-| `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, `dom`'s helpers imported by `tests/site/page.browser.test.ts`, and the shell's seam (`placed`) imported by `tests/site/placed.browser.test.tsx`: the rule's options in each file's override |
+| `svgs` | everywhere oxlint lints | (none) |
+| `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, and the shell's seam (`placed`) imported by `tests/site/placed.browser.test.tsx`: the rule's options in each file's override |
 | `thens` | `*.tsx` | (none) |
 
 The 28 house rules: the 13 that were Grit's, moved to oxlint's plugin (`session` in task 2.5, the twelve others in task
@@ -341,7 +341,7 @@ Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail
 | Biome rule | Level | oxlint | Fit | Status, note |
 | -- | -- | -- | -- | -- |
 | `noPositiveTabindex` | error | `jsx_a11y/tabindex-no-positive` | source | mapped |
-| `useButtonType` | error | `react/button-has-type` | source | mapped: `createElement` only; a button made by `h()` is held by `house/buttons` (`lint/buttons.ts`) |
+| `useButtonType` | error | `react/button-has-type` | source | mapped: it lets a spread after the type through, which `house/buttons` refuses (`lint/buttons.ts`) |
 
 ### complexity
 

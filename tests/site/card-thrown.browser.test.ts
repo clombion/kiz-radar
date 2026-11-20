@@ -1,7 +1,7 @@
 // A festival's card whose reactive part throws as its view is drawn: the throw reaches the view's boundary, which says
 // it in its place, and Solid is not halted, so the page goes on following its address.
 // On the Festivals page, whose cards are drawn once the festivals are in, the throw is said in its live line as they
-// come in, the loading mark kept, as the h() page said it; on a later choice, once as the page's, the page going on.
+// come in, the loading mark kept; on a later choice, once as the page's, the page going on.
 // The page started (app.ts) on KUOF ending on a day no month has, which its card's date box reads as the card is
 // drawn, and opened on an artist booked there, whose page holds KUOF's card, and on the Festivals page.
 import { expect, test } from 'vitest';

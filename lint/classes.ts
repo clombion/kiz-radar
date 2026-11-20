@@ -1,5 +1,6 @@
-// Classes are set by dom.ts alone (h()'s class, toggle()), where ClassName holds them to the stylesheet's: an
-// element's classList or className read anywhere else is refused. dom.ts is exempt by .oxlintrc.json's override.
+// Classes are set by JSX's class alone, which tsc holds to the stylesheet's (ClassName, site/jsx-runtime.d.ts): an
+// element's classList or className read anywhere is refused, a test's too (a test reads what the page shows). No rule
+// of oxlint's or Solid's refuses them, so the rule stays.
 import type { Rule } from './plugin.ts';
 import { readsProperty } from './shapes.ts';
 
@@ -9,7 +10,8 @@ export const classes: Rule = {
   meta: {
     type: 'problem',
     messages: {
-      classes: "Set classes with dom.ts's h() or toggle(), which take only the stylesheet's (ClassName).",
+      classes:
+        "Set classes with JSX's class, which takes only the stylesheet's (ClassName): a signal for one that changes.",
     },
   },
   create(context) {

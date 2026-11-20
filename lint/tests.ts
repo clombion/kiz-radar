@@ -7,9 +7,8 @@
 // so the rule can check it.
 // .oxlintrc.json turns the rule on for tests/**, and gives its exceptions to the files that make them, as the rule's
 // options: tests/site/app.ts loads the entries (`loads`), the one place a test starts the page;
-// tests/site/page.browser.test.ts imports dom.ts's helpers (`imports`) and keeps its tests of them until they go with
-// them, in task 4.10; tests/site/placed.browser.test.tsx imports the shell's seam (`imports`), to draw a part that
-// throws, which no page has.
+// tests/site/placed.browser.test.tsx imports the shell's seam (`imports`), to draw a part that throws, which no page
+// has.
 import type { Rule } from './plugin.ts';
 import { type Node, quotedOneOf } from './shapes.ts';
 
@@ -45,8 +44,8 @@ const ALLOWED = [
   'wording',
 ];
 
-// a module of site/, its source in its quotes: `site//dom.ts` and `site/./dom.ts` load dom.ts too, so they are
-// checked, and refused, since the list names each module by its plain path
+// a module of site/, its source in its quotes: `site//ui.ts` and `site/./ui.ts` load ui.ts too, so they are checked,
+// and refused, since the list names each module by its plain path
 const SITE = /^['"`](?:.*\/)?site\/(?:\.?\/)*[^/'"`]+['"`]$/u;
 const LISTED = quotedOneOf(ALLOWED, '(?:.*/)?site/', String.raw`\.ts`);
 // an import() of one literal: a string, or a template without values

@@ -3,7 +3,7 @@
 // went wrong (report.ts) and draws nothing, so a throw in one part neither halts Solid for the rest of the page nor
 // takes the other parts with it; its clicks are delegated to <body> (body.ts). A part is drawn before a marker that
 // stays, an empty Text node, never one of the page's own elements, and the drawing is flushed: the part is there when
-// the call returns, as an h() element was.
+// the call returns.
 import { insert } from '@solidjs/web';
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { type Component, createRoot, Errored, flush, runWithOwner } from 'solid-js';

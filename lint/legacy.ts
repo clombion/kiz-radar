@@ -1,10 +1,9 @@
 // A Solid file renders with JSX alone: replaceChildren, createElement and createElementNS are refused wherever read (on
 // any object, called, optionally, by a key in quotes, handed on with .call or .bind, destructured; replaceChildren
-// called bare), and so is an import of dom.ts (h(), its helpers and its types), a re-export from it or an import() of
-// it: a relative path to dom, dom.ts or dom.js, not a package's (@testing-library/dom). dom.ts's helpers that draw
-// nothing move to modules of their own before a view is ported, so the rule needs no exception. Of the four migration
-// rules (the brief's Phase 4): .oxlintrc.json turns it on for .tsx files alone, so h() views, which stay .ts until they
-// are ported, keep dom.ts.
+// called bare), and so is an import of a dom module, the hand-built elements' helpers the views had before Solid, a
+// re-export from it or an import() of it: a relative path to dom, dom.ts or dom.js, not a package's
+// (@testing-library/dom). Helpers that draw nothing live in modules of their own (bits.ts), so the rule needs no
+// exception. One of the four migration rules of the move to Solid: .oxlintrc.json turns it on for .tsx files.
 import type { Rule } from './plugin.ts';
 import { keyName, type Node, stringOf } from './shapes.ts';
 
@@ -14,7 +13,10 @@ const DOM = /^\.\.?\/(?:[^/]+\/)*dom(?:\.[jt]s)?$/u;
 export const legacy: Rule = {
   meta: {
     type: 'problem',
-    messages: { legacy: "Render with JSX in a Solid file: not dom.ts's h(), replaceChildren or createElement." },
+    messages: {
+      legacy:
+        'Render with JSX in a Solid file: not replaceChildren, createElement or a dom module of hand-built elements.',
+    },
   },
   create(context) {
     const fromDom = (node: Node, source: Node): void => {

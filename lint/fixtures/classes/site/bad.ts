@@ -1,4 +1,4 @@
-// What house/classes refuses outside dom.ts: an element's classList or className read, to change it or to test it.
+// What house/classes refuses in the site: an element's classList or className read, to change it or to test it.
 declare const card: HTMLElement;
 card.classList.add('open'); // refused
 card.classList.toggle('open', true); // refused

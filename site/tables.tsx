@@ -49,7 +49,7 @@ const SHOWN = 1000;
 type Kept = Exclude<SqlValue, Uint8Array> | { readonly bytes: number };
 const kept = (x: SqlValue): Kept => (x instanceof Uint8Array ? { bytes: x.length } : x);
 // a result set as the page keeps it: its columns' names, how many rows it has, and the first SHOWN of them, the rest
-// let go as the run is made, as the h() page let them go once it had drawn them
+// let go as the run is made
 interface Got {
   readonly columns: readonly string[];
   readonly count: number;
@@ -72,7 +72,7 @@ function ran(query: string): Ran {
 }
 
 // What a run gave is drawn once, never updated (the next run draws its own): plain markup, each value worked out before
-// the JSX, so that no row, cell or class is a reactive expression of its own, as the h() page built plain nodes.
+// the JSX, so that no row, cell or class is a reactive expression of its own.
 // a value of a query's result as its cell shows it, a number marked so
 function cell(x: Kept): JSX.Element {
   if (typeof x === 'number') return <td class="num">{x}</td>;
@@ -107,8 +107,8 @@ function shown(now: Ran): JSX.Element {
 }
 
 // The page: the query typed (the first example's at first), run by its button or Ctrl/⌘+Enter, an example picked or a
-// table's button writing one and running it; what the last run gave below it, drawn anew on each run, at once, as the
-// h() page drew it in its listener, a throw as a run draws it said as the page's (Redrawn). The query is read from the
+// table's button writing one and running it; what the last run gave below it, drawn anew on each run, at once, in the
+// run's listener, a throw as a run draws it said as the page's (Redrawn). The query is read from the
 // field as it runs: a visitor's typing, and a script's value, reach it so.
 export function sqlPage(): JSX.Element {
   const tables = q(

@@ -1,7 +1,7 @@
 // The JSX types of the site's Solid views (tsconfig.json's jsxImportSource, through its paths): @solidjs/web's, but
 // for an element's class, which is one of the stylesheet's (ClassName, site/classes.ts, generated from public/css/), a
-// list of them, or an object whose keys are, as h()'s is held (dom.ts). Types only: Solid's compiler writes the JSX,
-// and imports nothing from here.
+// list of them, or an object whose keys are. Types only: Solid's compiler writes the JSX, and imports nothing from
+// here.
 import type { JSX as Solid } from '@solidjs/web/jsx-runtime';
 import type { ClassName } from './classes.ts';
 

@@ -1,11 +1,10 @@
-// A part a Solid view draws again as the visitor changes it (mount.tsx Redrawn, redrawing, createDerived) that throws: on a
-// later draw, the throw is said once, as the page's, as a throw in an h() view's listener was, and the view works on,
-// what other parts read of it as it was before, its part drawn again on the next change; as the view is first drawn,
-// the view says it cannot be shown. On 1 November 2026: the Friends tab, its list to three months, then
-// a year: Cloudkiz, from 26 February, comes in, its last day planted as a day no month has, which its row's days read
-// as it is drawn; Artists searched, the artists' aliases planted away, which only a search reads; the Map's bubbles,
-// Leaflet's circles refused as a filter draws them again; the SQL page's result, its count of rows refused as a run
-// draws it.
+// A part a Solid view draws again as the visitor changes it (mount.tsx Redrawn, redrawing, createDerived) that throws:
+// on a later draw, the throw is said once, as the page's, and the view works on, what other parts read of it as it was
+// before, its part drawn again on the next change; as the view is first drawn, the view says it cannot be shown. On 1
+// November 2026: the Friends tab, its list to three months, then a year: Cloudkiz, from 26 February, comes in, its last
+// day planted as a day no month has, which its row's days read as it is drawn; Artists searched, the artists' aliases
+// planted away, which only a search reads; the Map's bubbles, Leaflet's circles refused as a filter draws them again;
+// the SQL page's result, its count of rows refused as a run draws it.
 import { expect, test, vi } from 'vitest';
 import { artistsHref, friendsHref, mapHref, sqlHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';

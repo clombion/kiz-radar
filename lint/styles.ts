@@ -1,5 +1,5 @@
 // A style is a class of the stylesheet, or, for a value known only at run time, set through a ref with
-// style.setProperty, as dom.ts's h() does under the page's Content-Security-Policy (style-src 'self', no inline
+// style.setProperty (bits.ts styled), which the page's Content-Security-Policy allows (style-src 'self', no inline
 // style). In JSX the style prop is refused, whatever it is given, and so is a style: prop (style:color): Solid's
 // compiler (@solidjs/compiler 2.0.2) writes a string, and an object's constant values, into the template's HTML as a
 // style attribute, which the policy refuses (Chromium reports the violation), and which values it sets at run time

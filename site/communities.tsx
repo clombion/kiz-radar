@@ -233,7 +233,7 @@ export function community({ sub: [key], qs }: ViewProps): JSX.Element {
   const steps = periods(today, [...everyone.keys()].toSorted((a, b) => a.localeCompare(b)).at(-1));
   const asked = readState(qs, { from: '' }).state.from;
   const from = steps.includes(asked) ? asked : (steps[0] ?? today.slice(0, 7));
-  // the period the agenda shows, each step of the months drawing it anew, at once, as the h() page drew it
+  // the period the agenda shows, each step of the months drawing it anew, at once
   const [period, setPeriod] = createSignal(from);
   const moved = (to: string) => {
     flush(() => {
@@ -472,8 +472,8 @@ function chartOf({ e, aways }: Visit, c: Community, id: string): JSX.Element {
 // A trip's row: its days, the festival (to it on the map) and where, who of the community goes; opened, a small Gantt
 // of who travels when, the same in words, where members stay, and the festival's line-up and prices. Its chart is drawn
 // the first time it opens, not with the agenda (a long agenda's rows mostly stay closed), and its card the first time
-// its line-up shows, each kept (one that threw drawn again as the row opens again, or its line-up shows again, as the
-// h() row tried again); its line of who goes drawn anew on each press, as the h() row drew it.
+// its line-up shows, each kept (one that threw drawn again as the row opens again, or its line-up shows again); its
+// line of who goes drawn anew on each press.
 function tripRow(trip: Visit, c: Community, open: boolean): JSX.Element {
   const { e, who, on, off } = trip;
   const id = `trip-${e.id}`;

@@ -1,10 +1,9 @@
 // The review page of a writer, their token kept on this device: it says whose token it is and when it expires, its
-// dialog's fields marked in its markup with the day and the box as kept, and an item's controls as the h() page marked
-// them; a merge
-// is chosen by its keys and written, its own note kept, and said written already when GitHub has it; a token refused
-// on a write makes the page read-only, saying why; a pair is compared side by side; and two artists found by name are
-// joined by a merge claim; an item another tab settled, written again, is kept as settled once. Each claim is read as
-// the file the page put, where and with the header it sent.
+// dialog's fields marked in its markup with the day and the box as kept, and an item's controls marked in its markup
+// too; a merge is chosen by its keys and written, its own note kept, and said written already when GitHub has it; a
+// token refused on a write makes the page read-only, saying why; a pair is compared side by side; and two artists
+// found by name are joined by a merge claim; an item another tab settled, written again, is kept as settled once. Each
+// claim is read as the file the page put, where and with the header it sent.
 import { expect, onTestFinished, test, vi } from 'vitest';
 import { claimText, digest, mergeClaim } from '../../site/claims.ts';
 import { startReview } from './app.ts';
