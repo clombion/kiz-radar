@@ -11,7 +11,7 @@ import { createEffect, createRoot, createSignal } from 'solid-js';
 import { type Address, createAddress } from './address.ts';
 import { artists } from './artists.tsx';
 import { onResize } from './bits.ts';
-import { communityView } from './communities.ts';
+import { community } from './communities.tsx';
 import { countries } from './countries.tsx';
 import { freshDay, load, loadSite, SiteUpdating } from './db.ts';
 import { h } from './dom.ts';
@@ -91,7 +91,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
     title: 'Community',
     nav: 'friends',
     waitsForData: true,
-    show: (root, sub, qs, { signal }) => communityView(root, sub, qs, signal),
+    show: mounted(community),
   },
 };
 const isRoute = (name: string): name is Route => Object.hasOwn(VIEWS, name);

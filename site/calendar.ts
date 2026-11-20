@@ -82,7 +82,7 @@ export function relativeDay(today: string, day: string): string | null {
 
 // A moment of a travel (arrive, leave), as the site database holds it: its day, and its time ("HH:MM") when said. The
 // database writes YYYY-MM-DD or YYYY-MM-DDTHH:MM (records.Moment); moment is the one place that reads which, as a
-// travel is read from it (communities.ts), and stamp writes it back, for an order (a moment sorts as its text).
+// travel is read from it (communities.tsx), and stamp writes it back, for an order (a moment sorts as its text).
 export interface Moment {
   readonly day: string;
   readonly time: string | null;

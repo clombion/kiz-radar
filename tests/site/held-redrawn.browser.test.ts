@@ -1,16 +1,16 @@
 // What a view draws again while it shows goes with the draw before, so the page holds as much after each draw as after
-// one, however often the visitor draws it again. In an h() view, the Solid pieces it holds (mount.tsx held), each a
-// root of the page's owner: a community's page (a trip row's line of who goes, the agenda a step of the months draws, a
-// day's words). In a Solid view, every owner under the page's (each draw an owner of the view's root, and what it draws
-// owners of it): Countries' order, the friends' list (who goes, On now), Artists' filters, the Festivals page's line-up
-// (its cards), the Map's search (its bubbles too, Leaflet's) and a city picked and let go (its panel). On 1 November 2026, with a community beside the fixture's in which
-// Tonje only may go to KUOF (a tag the lines of who goes and the days hold) and Ola, added, goes to Paris and Albania
-// (two periods of the months, each with a trip).
+// one, however often the visitor draws it again: every owner under the page's (each draw an owner of the view's root,
+// and what it draws owners of it). Countries' order, the friends' list (who goes, On now), Artists' filters, the
+// Festivals page's line-up (its cards), the Map's search (its bubbles too, Leaflet's) and a city picked and let go (its
+// panel), and a community's page (a trip row's line of who goes, the agenda a step of the months draws, a day's
+// words). On 1 November 2026, with a community beside the fixture's in which Tonje only may go to KUOF (a tag the lines
+// of who goes and the days hold) and Ola, added, goes to Paris and Albania (two periods of the months, each with a
+// trip).
 import { expect, test } from 'vitest';
 import { artistsHref, countriesHref, festivalsHref, friendsHref, mapHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { ALBANIA, KUOF, PARIS } from './community.fixture.ts';
-import { owners, roots } from './owned.ts';
+import { owners } from './owned.ts';
 import { community } from './planted.ts';
 import { COMM } from './seen.ts';
 
@@ -21,21 +21,16 @@ const app = await startSite({
   plant: (db) => community(db, REDRAWN, { maybe: [['Tonje', KUOF]], added: ola }),
 });
 const main = () => document.querySelector('main');
-// What the page holds (count, the roots of the page's owner unless said) after each of three draws of the same part,
-// each draw done by `draw`: the same each time; and each a draw, the element of the part `drawn` finds before it gone
-// after it.
-async function drawnAlike(
-  drawn: () => Element | null | undefined,
-  draw: () => void | Promise<void>,
-  count = roots,
-): Promise<void> {
+// The owners under the page's after each of three draws of the same part, each draw done by `draw`: the same each time;
+// and each a draw, the element of the part `drawn` finds before it gone after it.
+async function drawnAlike(drawn: () => Element | null | undefined, draw: () => void | Promise<void>): Promise<void> {
   const counts: number[] = [];
   for (const _ of [1, 2, 3]) {
     const before = drawn();
     if (before == null) throw new Error('the page has no part to draw again');
     await draw();
     expect(before.isConnected).toBe(false);
-    counts.push(count());
+    counts.push(owners());
   }
   expect(counts).toEqual(counts.map(() => counts[0]));
 }
@@ -55,7 +50,6 @@ test('Countries’ order buttons drawn again on a choice hold the owners of thei
       order()[1]?.click();
       order()[0]?.click();
     },
-    owners,
   );
   expect(main()?.querySelectorAll('.country-row').length).toBeGreaterThan(0);
 });
@@ -69,7 +63,6 @@ test('Artists drawn again on a filter hold the owners of their last draw alone',
       role()[1]?.click();
       role()[0]?.click();
     },
-    owners,
   );
   expect(main()?.querySelectorAll('.artist-row').length).toBeGreaterThan(0);
 });
@@ -91,7 +84,6 @@ test('the Festivals page drawn again on a choice holds the owners of its last dr
         lineup().dispatchEvent(new Event('change'));
       }
     },
-    owners,
   );
   expect(main()?.querySelectorAll('.festival-card').length).toBeGreaterThan(0);
 });
@@ -112,7 +104,6 @@ test('the Map drawn again on a search holds the owners and the bubbles of its la
       await expect.poll(() => panel.isConnected).toBe(false);
       drawn.push(bubbles());
     },
-    owners,
   );
   expect(drawn).toEqual([drawn[0], drawn[0], drawn[0]]);
   expect(drawn[0]).toBeGreaterThan(0);
@@ -129,7 +120,6 @@ test('the Map’s panel drawn again as a city is picked and let go holds the own
       document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
       await expect.poll(() => main()?.querySelector('.sheet-body .back-link')).toBeNull();
     },
-    owners,
   );
 });
 
@@ -142,12 +132,11 @@ test('the friends’ list drawn again holds the owners of its last draw alone', 
       search.value = 'k';
       search.dispatchEvent(new Event('input'));
     },
-    owners,
   );
   expect(main()?.querySelectorAll('.who-list li').length).toBeGreaterThan(0);
 });
 
-test('a trip row’s line of who goes, drawn again as the row opens and closes, holds its last tags alone', async () => {
+test('a trip row’s line of who goes, drawn again as the row opens and closes, holds the owners of its last draw alone', async () => {
   await app.open(COMM(REDRAWN));
   // KUOF's row, closed: who goes, Tonje's maybe tagged
   const row = [...(main()?.querySelectorAll<HTMLElement>('.trip') ?? [])].find((t) => t.textContent.includes('KUOF'));
@@ -163,7 +152,7 @@ test('a trip row’s line of who goes, drawn again as the row opens and closes, 
   expect(row.querySelector('.trip-who .plan-tag.unsure')).not.toBeNull();
 });
 
-test('the agenda a step of the months draws again holds its last rosters and cards alone', async () => {
+test('the agenda a step of the months draws again holds the owners of its last draw alone', async () => {
   await app.open(COMM(REDRAWN));
   const steps = () => [...(main()?.querySelectorAll<HTMLElement>('.days-step') ?? [])];
   await drawnAlike(
@@ -176,7 +165,7 @@ test('the agenda a step of the months draws again holds its last rosters and car
   expect(main()?.querySelector('.agenda .gantt')).not.toBeNull();
 });
 
-test('a day’s words, drawn again for each day the pointer passes over, hold their last day’s tags alone', async () => {
+test('a day’s words, drawn again for each day the pointer passes over, hold the owners of their last day alone', async () => {
   await app.open(COMM(REDRAWN));
   const days = [...(main()?.querySelectorAll<HTMLElement>('[data-day]') ?? [])];
   expect(days.length).toBeGreaterThan(1);

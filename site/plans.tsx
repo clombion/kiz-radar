@@ -1,14 +1,13 @@
 // Who said they're going to a festival (pipeline/people.csv and plans.csv). Cards name featured people and count
 // the rest; partners who are both going are named as their couple. Someone in a festival's line-up, alone or in a
-// couple, is teaching (or playing) there rather than just going. Its renderers and quick views are drawn by Solid;
-// an h() view holds one through mount.tsx's held.
+// couple, is teaching (or playing) there rather than just going. Its renderers and quick views are drawn by Solid,
+// called by the views as they draw.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { For } from 'solid-js';
 import { own } from './bits.ts';
 import { one, q, site, sql } from './db.ts';
 import { leaving, type Peek, peek, type Shown } from './dialog.tsx';
 import { nowTag } from './marks.tsx';
-import { held } from './mount.tsx';
 import { roleLabel } from './roles.ts';
 import { artistHref, eventOnMapHref, friendsHref, personHref } from './routes.ts';
 import {
@@ -177,10 +176,7 @@ const tagOf = ({ words, as }: ReturnType<typeof doing>) => (
   <span class={['plan-tag', as === 'booked' && 'booked', as === KEY.plan.MAYBE && 'unsure']}>{words}</span>
 );
 // what these people do there, as a tag: teaching when all of them are in the line-up, else maybe or going
-const doingTag = (people: readonly Plans[]): JSX.Element => tagOf(doing(people));
-// what an h() view holds of these (mount.tsx held), until it is Solid's: a tag, and who's going inline
-export const heldTag = (signal: AbortSignal, people: readonly Plans[]): HTMLElement =>
-  held(signal, HTMLElement, 'a tag of what they do there', () => doingTag(people));
+export const doingTag = (people: readonly Plans[]): JSX.Element => tagOf(doing(people));
 // someone going, in a list of who's going: their faces, their name opening their plans, and how they're going
 const goerRow = (g: Named, open: (from: Element | null) => void) => (
   <li>

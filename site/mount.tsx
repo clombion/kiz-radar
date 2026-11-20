@@ -9,6 +9,7 @@ import { render } from '@solidjs/web';
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import {
   type Accessor,
+  createEffect,
   createMemo,
   createRoot,
   Errored,
@@ -29,17 +30,6 @@ import type { Show } from './routes.ts';
 function disposedWith(signal: AbortSignal, dispose: () => void): void {
   if (signal.aborted) dispose();
   else signal.addEventListener('abort', dispose, { once: true });
-}
-
-// The signals of the draws of a part an h() view draws again (a list, a panel, a line): each call's aborts when the next
-// call is made, or when the view's signal aborts, so that what a draw holds (held) is taken away with it.
-export function redraws(signal: AbortSignal): () => AbortSignal {
-  let drawing = new AbortController();
-  return () => {
-    drawing.abort();
-    drawing = new AbortController();
-    return AbortSignal.any([signal, drawing.signal]);
-  };
 }
 
 // What a Solid view is given: the parts of the address after its name, its query, and the database loading (which a
@@ -78,16 +68,36 @@ export const mounted =
 // What a view draws again as the visitor changes it (a list on a choice, a panel on a pan, a row on a toggle), whose
 // throw the h() view left to the window's listener: as the view is first drawn, a throw is the view's (its boundary
 // says it cannot be shown, as guarded did); later it is said as the page's (placed.tsx reported) and the part draws
-// nothing, until its next change draws it again (Solid's Errored heals). A throw the part says itself (says, true once
-// said) is not the page's: the Festivals page's, as its festivals come in.
+// nothing, until its next change draws it again (Solid's Errored heals). A part drawn once and kept (a trip row's
+// chart, its card) has no next change: it is drawn again the next time again turns true (the row opened again), as
+// the h() row tried again on each opening. A throw the part says itself (says, true once said) is not the page's: the
+// Festivals page's, as its festivals come in.
 const redrawnThrew = (e: unknown, says?: (e: unknown) => boolean): null => {
   if (firstDraw) throw e;
   return says?.(e) === true ? null : reported(e, 'the page');
 };
 export const Redrawn = (props: {
   readonly children: JSX.Element;
+  readonly again?: Accessor<boolean>;
   readonly says?: (e: unknown) => boolean;
-}): JSX.Element => <Errored fallback={(thrown) => redrawnThrew(thrown(), props.says)}>{props.children}</Errored>;
+}): JSX.Element => (
+  <Errored
+    fallback={(thrown, reset) => {
+      const { again, says } = props;
+      if (again !== undefined)
+        createEffect(
+          again,
+          (on) => {
+            if (on) reset();
+          },
+          { defer: true },
+        );
+      return redrawnThrew(thrown(), says);
+    }}
+  >
+    {props.children}
+  </Errored>
+);
 // The same for an effect that draws imperatively (the map's bubbles): its apply, whose throw would reach the view's
 // boundary and take the whole view, said as Redrawn says one.
 export const redrawing =
@@ -195,15 +205,3 @@ export const held = <E extends Element>(
   what: string,
   part: () => JSX.Element,
 ): E => drawn(signal, what, part, (made) => asElement(made, of, what));
-
-// A Solid piece an h() view holds as the nodes it is (who goes, in a line of other words): each text a text node. Its
-// nodes are what the piece drew at its top; anything but nodes and text is refused, naming what.
-export const heldNodes = (signal: AbortSignal, what: string, part: () => JSX.Element): Node[] =>
-  drawn(signal, what, part, (made) => nodesOf(made, what));
-const nodesOf = (made: unknown, what: string): Node[] => {
-  if (made === null || made === undefined || typeof made === 'boolean') return [];
-  if (made instanceof Node) return [made];
-  if (typeof made === 'string' || typeof made === 'number') return [new Text(String(made))];
-  if (Array.isArray(made)) return made.flatMap((m: unknown) => nodesOf(m, what));
-  throw new TypeError(`${what} was drawn as something an h() view cannot hold, neither nodes nor text`);
-};
