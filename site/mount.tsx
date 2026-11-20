@@ -42,10 +42,12 @@ export function redraws(signal: AbortSignal): () => AbortSignal {
   };
 }
 
-// what a Solid view is given: the parts of the address after its name, and its query
+// What a Solid view is given: the parts of the address after its name, its query, and the database loading (which a
+// view that shows before it is in reads, the Festivals page; any other view is shown once it is in, main.ts).
 export interface ViewProps {
   readonly sub: readonly string[];
   readonly qs: string;
+  readonly data: Promise<unknown>;
 }
 
 // whether a view is being drawn for the first time: mounted's render, during which Solid draws it whole (measured)
@@ -63,9 +65,9 @@ function drawnFirst<T>(draw: () => T): T {
 // which never changes over its life, called untracked inside its boundary, as Solid calls a component.
 export const mounted =
   (view: (at: ViewProps) => JSX.Element): Show =>
-  (root, sub, qs, { signal, name }) => {
+  (root, sub, qs, { signal, data, name }) => {
     const shown = () => (
-      <Errored fallback={(e) => <>{cannotShow(name, e())}</>}>{untrack(() => view({ sub, qs }))}</Errored>
+      <Errored fallback={(e) => <>{cannotShow(name, e())}</>}>{untrack(() => view({ sub, qs, data }))}</Errored>
     );
     disposedWith(
       signal,
@@ -76,14 +78,16 @@ export const mounted =
 // What a view draws again as the visitor changes it (a list on a choice, a panel on a pan, a row on a toggle), whose
 // throw the h() view left to the window's listener: as the view is first drawn, a throw is the view's (its boundary
 // says it cannot be shown, as guarded did); later it is said as the page's (placed.tsx reported) and the part draws
-// nothing, until its next change draws it again (Solid's Errored heals).
-const redrawnThrew = (e: unknown): null => {
+// nothing, until its next change draws it again (Solid's Errored heals). A throw the part says itself (says, true once
+// said) is not the page's: the Festivals page's, as its festivals come in.
+const redrawnThrew = (e: unknown, says?: (e: unknown) => boolean): null => {
   if (firstDraw) throw e;
-  return reported(e, 'the page');
+  return says?.(e) === true ? null : reported(e, 'the page');
 };
-export const Redrawn = (props: { readonly children: JSX.Element }): JSX.Element => (
-  <Errored fallback={(thrown) => redrawnThrew(thrown())}>{props.children}</Errored>
-);
+export const Redrawn = (props: {
+  readonly children: JSX.Element;
+  readonly says?: (e: unknown) => boolean;
+}): JSX.Element => <Errored fallback={(thrown) => redrawnThrew(thrown(), props.says)}>{props.children}</Errored>;
 
 // What a view derives from its choices (a list's rows), drawn by a Redrawn part and read by other parts too (a count,
 // a summary, a panel): a throw is held as its value, so that it is said once, by the Redrawn part (drawn, which throws
