@@ -2,10 +2,10 @@
 // alongside, and views that query it wait for it. The shell's parts are Solid's, each drawn once through placed.tsx
 // into index.html, which holds the rest: the header's tabs and the second row (tabs.tsx), the footer's links and its
 // currency switch, the skip link and Back to top (shell.tsx), and the search (search.tsx); the line that says something
-// went wrong is report.ts's, the page mid-update updating.tsx's. Each view gets an AbortSignal that fires when you
-// leave it: an h() view's listeners on the document or the window pass it, so nothing outlives the view; a Solid view
-// is disposed by it, its listeners going with its owner (mount.tsx disposal). The view shown follows one signal, the
-// address (address.ts), and sets the tabs' current one.
+// went wrong is report.ts's, the page mid-update updating.tsx's. Each view is a Solid view (mount.tsx), given an
+// AbortSignal that fires when you leave it and disposes it, its listeners on the document or the window going with its
+// owner (mount.tsx disposal), so nothing outlives the view. The view shown follows one signal, the address
+// (address.ts), and sets the tabs' current one.
 
 import { createEffect, createRoot, createSignal } from 'solid-js';
 import { type Address, createAddress } from './address.ts';
@@ -29,7 +29,7 @@ import { sentence } from './sentence.tsx';
 import { CurrencySwitch, FooterLinks, Skip, ToTop } from './shell.tsx';
 import { sources } from './sources.tsx';
 import { swipeBetweenSections } from './swipe.ts';
-import { sqlView } from './tables.ts';
+import { sqlPage } from './tables.tsx';
 import { type Link, Row, slide } from './tabs.tsx';
 import { updated, updatingPage } from './updating.tsx';
 import { Week } from './week.tsx';
@@ -78,7 +78,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
   map: { title: 'Map', nav: 'explore', waitsForData: true, show: mounted(map) },
   artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: mounted(artists) },
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: mounted(countries) },
-  sql: { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) },
+  sql: { title: 'SQL', nav: null, waitsForData: true, show: mounted(sqlPage) },
   sources: { title: 'Sources', nav: null, waitsForData: false, show: mounted(sources) },
   friends: {
     title: 'Friends',

@@ -1,4 +1,4 @@
-// The seam between the h() page and a Solid view (site/mount.tsx; the shell's parts are drawn through placed.tsx, and
+// The seam between main.ts and a view (site/mount.tsx; the shell's parts are drawn through placed.tsx, and
 // stay), through the page: This week, a Solid view, drawn into the root the page hands every view, with its cards
 // (eventcard.tsx's) inside it, and taken away when the visitor leaves; and the Festivals page's cards, owners under the
 // page's while it shows (a list drawn again is drawn-again.browser.test.ts's).

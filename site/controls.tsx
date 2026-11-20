@@ -49,12 +49,14 @@ export const check = (words: string, on: boolean, change: (on: boolean) => void)
   </label>
 );
 
-// A select of choices, the one on as it is drawn its selected option: the choice comes back as the option at the
-// picked place, so of its type and never a string to parse; named by label where no visible label names it. kept,
-// when given, is the choice it shows from then on, changed elsewhere too (the Festivals page's selects of one choice).
+// A select of choices, the one on as it is drawn its selected option (none when on is null: the first shown, as a
+// select shows one, and no option marked so, as the SQL page's examples were drawn): the choice comes back as the
+// option at the picked place, so of its type and never a string to parse; named by label where no visible label names
+// it. kept, when given, is the choice it shows from then on, changed elsewhere too (the Festivals page's selects of one
+// choice).
 export function choices<V extends string | number>(
   options: readonly (readonly [V, string])[],
-  on: V,
+  on: V | null,
   choose: (v: V) => void,
   {
     class: cls,
@@ -66,7 +68,7 @@ export function choices<V extends string | number>(
     <select
       class={cls}
       aria-label={label}
-      value={kept === undefined ? on : kept()}
+      value={kept === undefined ? (on ?? options[0]?.[0]) : kept()}
       onChange={(ev) => {
         const picked = options[ev.currentTarget.selectedIndex];
         if (picked) choose(picked[0]);

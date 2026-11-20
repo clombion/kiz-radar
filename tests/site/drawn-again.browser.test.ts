@@ -2,12 +2,12 @@
 // one, however often the visitor draws it again: every owner under the page's (each draw an owner of the view's root,
 // and what it draws owners of it). Countries' order, the friends' list (who goes, On now), Artists' filters, the
 // Festivals page's line-up (its cards), the Map's search (its bubbles too, Leaflet's) and a city picked and let go (its
-// panel), and a community's page (a trip row's line of who goes, the agenda a step of the months draws, a day's
-// words). On 1 November 2026, with a community beside the fixture's in which Tonje only may go to KUOF (a tag the lines
-// of who goes and the days hold) and Ola, added, goes to Paris and Albania (two periods of the months, each with a
-// trip).
+// panel), a community's page (a trip row's line of who goes, the agenda a step of the months draws, a day's words),
+// and the SQL page's result, drawn anew on each run (its tables). On 1 November 2026, with a community beside the
+// fixture's in which Tonje only may go to KUOF (a tag the lines of who goes and the days hold) and Ola, added, goes to
+// Paris and Albania (two periods of the months, each with a trip).
 import { expect, test } from 'vitest';
-import { artistsHref, countriesHref, festivalsHref, friendsHref, mapHref } from '../../site/routes.ts';
+import { artistsHref, countriesHref, festivalsHref, friendsHref, mapHref, sqlHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { ALBANIA, KUOF, PARIS } from './community.fixture.ts';
 import { owners } from './owned.ts';
@@ -175,4 +175,35 @@ test('a day’s words, drawn again for each day the pointer passes over, hold th
   passed();
   await drawnAlike(() => main()?.querySelector('.day-pop > *'), passed);
   expect(main()?.querySelector('.day-pop')?.textContent).not.toBe('');
+});
+
+test('the SQL page’s result, drawn again on each run, holds the owners of its last run alone', async () => {
+  await app.open(sqlHref());
+  const run = [...(main()?.querySelectorAll('button') ?? [])].find((b) => b.textContent === 'Run (Ctrl+Enter)');
+  await drawnAlike(
+    () => main()?.querySelector('.sql-out table'),
+    () => {
+      run?.click();
+    },
+  );
+  expect(main()?.querySelectorAll('.sql-out tbody tr').length).toBeGreaterThan(0);
+});
+
+// What a run draws is markup, made once: its result sets, rows and cells are no owners, as the h() page's were plain
+// nodes, so a result of 1000 rows of ten columns holds the owners of a result of one value.
+test('the SQL page’s rows and cells are no owners: a thousand rows hold the owners of one value', async () => {
+  await app.open(sqlHref());
+  const area = main()?.querySelector('textarea');
+  const run = [...(main()?.querySelectorAll('button') ?? [])].find((b) => b.textContent === 'Run (Ctrl+Enter)');
+  if (area == null || run === undefined) throw new Error('the SQL page has no query to run');
+  const held = (query: string) => {
+    area.value = query;
+    run.click();
+    return [main()?.querySelectorAll('.sql-out td').length, owners()];
+  };
+  const [, single] = held('SELECT 1');
+  const thousand = held(
+    'WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 1000) SELECT i, i, i, i, i, i, i, i, i, i FROM n',
+  );
+  expect(thousand).toEqual([10_000, single]);
 });
