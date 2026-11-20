@@ -225,7 +225,7 @@ function frame(t: Frame, column: boolean, lines: JSX.Element): JSX.Element {
   return (
     <div
       class={['gantt', column && 'gantt-stays']}
-      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a chart of who is where when, named for a screen reader, its markup kept as h() drew it during the port (revisit after 4.10)
+      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a chart of who is where when, a group named for a screen reader: a <fieldset> would be the same group by the same aria-label, but would bring the browser's border, padding, margin and min-content width for the stylesheet to take off again
       role="group"
       aria-label={`Who is in ${t.place} when`}
       aria-describedby={t.describedBy}

@@ -119,7 +119,7 @@ export const segments = <V extends string>(
   on: Accessor<V>,
   choose: (v: V) => void,
 ): JSX.Element => (
-  // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a segmented control's row, its markup kept as dom.ts's views drew it during the port (revisit after 4.10)
+  // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a row of segments, a group named for a screen reader: a <fieldset> would be the same group by the same aria-label, but would bring the browser's border, padding, margin and min-content width for the stylesheet to take off again
   <div class="seg" role="group" aria-label={label}>
     <Show when={{ now: on() }} keyed>
       {({ now }) =>
@@ -259,7 +259,7 @@ export function paged<T>(
 // what an address asked that the view has no such choice for, said at the top of the view
 export const leftOut = (dropped: readonly string[]): JSX.Element =>
   dropped.length === 0 ? null : (
-    // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a line that says what the address asked in vain, its markup kept as festivals.ts drew it during the port (revisit after 4.10)
+    // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a line that says what the address asked in vain, as it is drawn: an <output>, the rule's tag, is inline and a form's control, not a paragraph
     <p class={['muted', 'left-out']} role="status">
       {`The link asks for ${dropped.join(', ')}, which ${dropped.length === 1 ? 'is' : 'are'} not among the choices here.`}
     </p>

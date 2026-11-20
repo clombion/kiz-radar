@@ -15,7 +15,7 @@ export const nowTag = (e: { readonly phase: Key<'phase'> }): JSX.Element =>
 
 // the animated mark, while something loads (index.html holds the same, for before the scripts run)
 export const loadingMark = (words = ''): JSX.Element => (
-  // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a line of the page that says it loads, as index.html's does, its markup kept as ui.ts drew it during the port (revisit after 4.10)
+  // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a line of the page that says it loads, as index.html's does: an <output>, the rule's tag, is inline and a form's control, not a paragraph
   <p class={['status', 'loading']} role="status">
     <img src="loading.svg" alt="" width="56" height="56" />
     <span>{words || <span class="visually-hidden">Loading</span>}</span>
