@@ -16,13 +16,15 @@
 // anyone stays there, from the evening of the first to the morning after the last, its ends their weekdays; each
 // person's own nights in the names it opens ("Nora (Fri–Sun)"); those who said no place last.
 //
-// It is drawn for the eye: a screen reader hears its names, and a line no one sees says the rest in words.
+// It is drawn for the eye: a screen reader hears its names, and a line no one sees says the rest in words. Drawn by
+// Solid; an h() view holds one through mount.tsx's held.
 
-import type { Kid } from './bits.ts';
+import type { JSX } from 'kiz-jsx/jsx-runtime';
+import { createEffect, createSignal, flush, For, onCleanup } from 'solid-js';
+import { asElement, flat, type Kid, styled } from './bits.ts';
 import { awayDays, daysInto, daysOf, type Moment, weekday, weekday3, WEEKDAYS } from './calendar.ts';
 import { addDays } from './days.ts';
 import { dismissable } from './dismiss.ts';
-import { button, h, toggle } from './dom.ts';
 import { swipe } from './ink.ts';
 import { MEDIA } from './media.ts';
 import { type Bucket, type Line, ownNights, type Place, type Unit } from './roster.ts';
@@ -39,8 +41,12 @@ export const timeAt = (time: string, airport: string | null): string =>
 export const dayTimeAt = (at: Moment, airport: string | null): string =>
   `${weekday3(at.day)} ${timeAt(at.time ?? '', airport)}`;
 // a stroke's end: its time, and its airport, which a phone leaves out; nothing when its time is not said
-const end = (time: string | null, airport: string | null): HTMLElement =>
-  h('span', {}, time, time !== null && airport !== null ? h('span', { class: 'gantt-ap' }, ` ${airport}`) : null);
+const end = (time: string | null, airport: string | null): JSX.Element => (
+  <span>
+    {time}
+    {time !== null && airport !== null ? <span class="gantt-ap">{` ${airport}`}</span> : null}
+  </span>
+);
 // a line's places in full: "Scandic Holberg 8 · Comfort Xpress 2 · 1 not said", or its one place (or way) alone
 const counted = (buckets: readonly Bucket<unknown>[]): string =>
   buckets.length === 1
@@ -56,8 +62,8 @@ interface Group {
 
 // Where the card of names goes on a computer: under its text's line, from the text's left, inside the trip's card;
 // above the line when the card has no room below it; never over the line itself; and in the roster's flow, as on a
-// phone, when the card has room neither below nor above, so that the trip's card grows to hold it.
-function place(list: HTMLElement, from: HTMLElement): void {
+// phone, when the card has room neither below nor above, so that the trip's card grows to hold it (flows).
+function place(list: HTMLElement, from: HTMLElement, flows: () => void): void {
   const grid = from.closest<HTMLElement>('.gantt');
   const card = from.closest<HTMLElement>('.trip-body') ?? grid;
   const line = from.closest<HTMLElement>('.gantt-name, .gantt-stay') ?? from;
@@ -70,9 +76,10 @@ function place(list: HTMLElement, from: HTMLElement): void {
   const gap = 4;
   const below = l.bottom + gap,
     above = l.top - gap - b.height;
-  const fits = below + b.height <= c.bottom || above >= c.top;
-  toggle(list, 'gantt-who-flow', !fits);
-  if (!fits) return;
+  if (!(below + b.height <= c.bottom || above >= c.top)) {
+    flows();
+    return;
+  }
   const top = below + b.height <= c.bottom ? below : above;
   const left = Math.max(c.left, Math.min(t.left, c.right - b.width));
   list.style.top = `${top - g.top}px`;
@@ -83,67 +90,121 @@ function place(list: HTMLElement, from: HTMLElement): void {
 // and from a tap or a key until the next (or Escape). Grouped by place when they stay apart, each place a small
 // heading, those who said none last; each name with its own nights in muted text when they are not all of its
 // place's. On a phone it is in the roster's flow, on a row of its own under its line; on a computer it floats by its
-// text, inside the trip's card.
+// text, inside the trip's card. Which text the pointer is over, which one a tap opened, and whether it is in the flow
+// are signals; a change to them is flushed, so the card has changed when the event's handler returns, and the card is
+// placed, measured once it shows, in an effect.
 function behind(
   id: string,
   groups: readonly Group[],
-): { list: HTMLElement; opener: (said: Kid) => HTMLElement; used: () => boolean } {
+): { list: HTMLElement; opener: (said: string) => HTMLElement; used: () => boolean } {
   const many = groups.reduce((n, g) => n + g.names.length, 0) > 4;
-  const list = h(
-    'div',
-    { class: ['gantt-who-names', many && 'gantt-who-many'], id },
-    groups.map((g) => [
-      g.heading === null ? null : h('p', { class: 'gantt-who-place' }, g.heading),
-      h(
-        'ul',
-        { class: 'gantt-who-list' },
-        g.names.map((n) =>
-          h('li', {}, n.name, n.nights === null ? null : h('span', { class: 'gantt-who-nights' }, ` · ${n.nights}`)),
-        ),
-      ),
-    ]),
-  );
   const openers: HTMLElement[] = [];
-  let over: HTMLElement | null = null;
-  const open = () => openers.find((o) => o.getAttribute('aria-expanded') === 'true') ?? null;
-  const shown = () => {
-    const by = over ?? open();
-    toggle(list, 'gantt-open', by !== null);
-    toggle(list, 'gantt-who-flow', false);
-    if (by !== null && matchMedia(MEDIA.WIDE).matches) place(list, by);
-    if (by === null) one.closed();
+  const [over, setOver] = createSignal<number | null>(null),
+    [opened, setOpened] = createSignal<number | null>(null),
+    [flowing, setFlowing] = createSignal(false),
+    [placings, placeAgain] = createSignal(0); // bumped each time the card is to be placed again
+  const by = (): number | null => over() ?? opened();
+  const list = asElement(
+    <div
+      class={[
+        'gantt-who-names',
+        many && 'gantt-who-many',
+        by() !== null && 'gantt-open',
+        flowing() && 'gantt-who-flow',
+      ]}
+      id={id}
+    >
+      <For each={groups}>
+        {(g) => (
+          <>
+            {g.heading === null ? null : <p class="gantt-who-place">{g.heading}</p>}
+            <ul class="gantt-who-list">
+              <For each={g.names}>
+                {(n) => (
+                  <li>
+                    {flat([n.name])}
+                    {n.nights === null ? null : <span class="gantt-who-nights">{` · ${n.nights}`}</span>}
+                  </li>
+                )}
+              </For>
+            </ul>
+          </>
+        )}
+      </For>
+    </div>,
+    HTMLElement,
+    'a card of names',
+  );
+  // The card's state changed, drawn at once, and placed again (a click on the text the pointer is over changes no text
+  // the card is by); then it is the one card open, or, shown by no text, closed.
+  const changed = (change: () => void) => {
+    flush(() => {
+      change();
+      setFlowing(false);
+      placeAgain((n) => n + 1);
+    });
+    if (by() === null) one.closed();
     else one.opened();
   };
+  const leaving = new AbortController();
+  onCleanup(() => {
+    leaving.abort();
+  });
   const one = dismissable({
     within: () => [list, ...openers],
     close: () => {
-      over = null;
-      for (const x of openers) x.setAttribute('aria-expanded', 'false');
-      shown();
+      changed(() => {
+        setOver(null);
+        setOpened(null);
+      });
     },
-    place: shown,
+    place: () => {
+      changed(() => undefined);
+    },
+    signal: leaving.signal,
   });
-  const opener = (said: Kid): HTMLElement => {
-    const o = button(
-      {
-        class: ['goer-name', 'gantt-who'],
-        'aria-expanded': 'false',
-        'aria-controls': id,
-        onclick: () => {
-          const on = o.getAttribute('aria-expanded') !== 'true';
-          for (const x of openers) x.setAttribute('aria-expanded', String(on && x === o));
-          shown();
-        },
-        onmouseenter: () => {
-          over = o;
-          shown();
-        },
-        onmouseleave: () => {
-          over = null;
-          shown();
-        },
-      },
-      said,
+  // placed by its text once it shows, on a computer, and again on each change and once the window's size changes
+  createEffect(
+    () => {
+      placings();
+      return by();
+    },
+    (i) => {
+      const from = i === null ? undefined : openers[i];
+      if (from !== undefined && matchMedia(MEDIA.WIDE).matches)
+        place(list, from, () => {
+          setFlowing(true);
+        });
+    },
+  );
+  const opener = (said: string): HTMLElement => {
+    const i = openers.length;
+    const o = asElement(
+      <button
+        type="button"
+        class={['goer-name', 'gantt-who']}
+        aria-expanded={opened() === i ? 'true' : 'false'}
+        aria-controls={id}
+        onClick={() => {
+          changed(() => {
+            setOpened((was) => (was === i ? null : i));
+          });
+        }}
+        onMouseEnter={() => {
+          changed(() => {
+            setOver(i);
+          });
+        }}
+        onMouseLeave={() => {
+          changed(() => {
+            setOver(null);
+          });
+        }}
+      >
+        {said}
+      </button>,
+      HTMLElement,
+      'an opener of names',
     );
     openers.push(o);
     return o;
@@ -161,36 +222,35 @@ interface Frame {
   readonly describedBy: string; // the id of the line that says it in words
   readonly seed: string; // the festival's, which with a line's names makes its stroke's swipe
 }
-function frame(t: Frame, column: boolean, lines: readonly Kid[]): HTMLElement {
+function frame(t: Frame, column: boolean, lines: JSX.Element): JSX.Element {
   const days = daysOf(t.from, t.to);
   const fest = (d: string) => d >= t.festival.start_date && d <= t.festival.end_date;
-  return h(
-    'div',
-    {
-      class: ['gantt', column && 'gantt-stays'],
-      role: 'group',
-      'aria-label': `Who is in ${t.place} when`,
-      'aria-describedby': t.describedBy,
-    },
-    h('div', {}),
-    h(
-      'div',
-      {
-        class: 'gantt-axis',
-        'aria-hidden': 'true',
-        style: { 'grid-template-columns': `repeat(${days.length}, minmax(0, 1fr))` },
-      },
-      days.map((d) =>
-        h(
-          'span',
-          { class: fest(d) ? 'gantt-fest' : 'gantt-travel' },
-          WEEKDAYS[weekday(d)]?.[0],
-          h('b', {}, Number(d.slice(8))),
-        ),
-      ),
-    ),
-    column ? h('div', { class: 'gantt-stay', 'aria-hidden': 'true' }) : null,
-    lines,
+  return (
+    <div
+      class={['gantt', column && 'gantt-stays']}
+      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a chart of who is where when, named for a screen reader, its markup kept as h() drew it during the port (revisit after 4.10)
+      role="group"
+      aria-label={`Who is in ${t.place} when`}
+      aria-describedby={t.describedBy}
+    >
+      <div />
+      <div
+        class="gantt-axis"
+        aria-hidden="true"
+        ref={styled({ 'grid-template-columns': `repeat(${days.length}, minmax(0, 1fr))` })}
+      >
+        <For each={days}>
+          {(d) => (
+            <span class={fest(d) ? 'gantt-fest' : 'gantt-travel'}>
+              {WEEKDAYS[weekday(d)]?.[0]}
+              <b>{Number(d.slice(8))}</b>
+            </span>
+          )}
+        </For>
+      </div>
+      {column ? <div class="gantt-stay" aria-hidden="true" /> : null}
+      {lines}
+    </div>
   );
 }
 // the drawing of a frame: where a time is, in days from its first; the festival's opening and close; a lane; a stroke
@@ -200,30 +260,34 @@ function drawing(t: Frame) {
   const share = (n: number) => `${(100 * n) / days}%`;
   const opens = at(t.festival.start_date),
     closes = at(t.festival.end_date, 'end');
-  const lane = (...drawn: readonly Kid[]) => h('div', { class: 'gantt-lane', 'aria-hidden': 'true' }, drawn);
+  const lane = (drawn: JSX.Element) => (
+    <div class="gantt-lane" aria-hidden="true">
+      {drawn}
+    </div>
+  );
   const stroke = (s: {
     readonly from: number;
     readonly to: number;
     readonly key: string;
     readonly fades: { readonly in: boolean; readonly out: boolean };
     readonly title: string | null;
-    readonly ends: readonly [Kid, Kid];
-  }) =>
-    h(
-      'div',
-      {
-        class: ['gantt-bar', s.fades.in && 'gantt-fade-in', s.fades.out && 'gantt-fade-out'],
-        title: s.title,
-        style: { left: share(s.from), width: share(s.to - s.from) },
-      },
-      // the calendar's ink, under the times: its own swipe for the line and the festival
-      h('span', {
-        class: 'gantt-ink',
-        style: swipe(`${s.key} ${t.seed}`, INK, { before: false, after: false }),
-        'aria-hidden': 'true',
-      }),
-      s.ends,
-    );
+    readonly ends: readonly [JSX.Element, JSX.Element];
+  }) => (
+    <div
+      class={['gantt-bar', s.fades.in && 'gantt-fade-in', s.fades.out && 'gantt-fade-out']}
+      title={s.title ?? undefined}
+      ref={styled({ left: share(s.from), width: share(s.to - s.from) })}
+    >
+      {/* the calendar's ink, under the times: its own swipe for the line and the festival */}
+      <span
+        class="gantt-ink"
+        ref={styled(swipe(`${s.key} ${t.seed}`, INK, { before: false, after: false }))}
+        aria-hidden="true"
+      />
+      {s.ends[0]}
+      {s.ends[1]}
+    </div>
+  );
   // a travel's end: its time, or its day's start (arriving) or end (leaving) when its time is not said
   const ends = (m: Moment, edge: 'start' | 'end') => daysInto(t.from, m, edge);
   return { at, ends, opens, closes, lane, stroke };
@@ -244,12 +308,12 @@ export function gantt<P>(
     readonly lines: readonly Line<P>[]; // as roster() makes them: named, by number, everyone else, those who have not said
     readonly named: (u: Unit<P>) => Kid; // a unit's name, as the page shows it
   },
-): HTMLElement {
+): JSX.Element {
   const d = drawing(t);
   const column = t.lines.some((l) => l.buckets.some((b) => b.place !== null));
   // a line's stroke: from its arrival (else the festival's opening, or their first night when sooner) to its departure
   // (else the festival's close, or the morning after their last night when later); hard at a time said, else fading
-  const lane = (l: Line<P>, key: string): HTMLElement => {
+  const lane = (l: Line<P>, key: string): JSX.Element => {
     const f = l.travel;
     const arrive = f?.arrive?.at ?? null,
       leave = f?.leave?.at ?? null;
@@ -272,33 +336,34 @@ export function gantt<P>(
       }),
     );
   };
-  const line = (l: Line<P>, i: number): Kid[] => {
-    const names = joined(l.units.map(t.named));
+  // a line, its openers made before whether its card of names is drawn is asked
+  const line = (l: Line<P>, i: number): JSX.Element => {
     const said = l.buckets.filter((b) => b.place !== null);
-    // its people by where they stay, when they stay apart: "Scandic Holberg A, B · Not said C"
-    const byStay: Group[] = l.buckets.map((b) => ({
-      heading: b.place ?? 'Not said',
-      names: b.units.map((u) => ({ name: t.named(u), nights: null })),
-    }));
     const n = new Set(said.flatMap((b) => b.stays.map((s) => s.place))).size;
-    const plain: Group[] = [{ heading: null, names: l.units.map((u) => ({ name: t.named(u), nights: null })) }];
-    const list = behind(`${t.describedBy}-names-${i}`, l.buckets.length > 1 || n > 1 ? byStay : plain);
+    // its people by where they stay, when they stay apart ("Scandic Holberg A, B · Not said C"), else in one list:
+    // each name drawn for the one used
+    const groups: Group[] =
+      l.buckets.length > 1 || n > 1
+        ? l.buckets.map((b) => ({
+            heading: b.place ?? 'Not said',
+            names: b.units.map((u) => ({ name: t.named(u), nights: null })),
+          }))
+        : [{ heading: null, names: l.units.map((u) => ({ name: t.named(u), nights: null })) }];
+    const list = behind(`${t.describedBy}-names-${i}`, groups);
     const full = counted(l.buckets);
     // its places, written when at most `most` of them, else counted, the count opening its names by place
-    const places = (most: number): Kid =>
-      n === 0 ? null : n <= most ? h('span', { title: full }, full) : list.opener(plural(n, 'place'));
+    const places = (most: number): JSX.Element =>
+      n === 0 ? null : n <= most ? <span title={full}>{full}</span> : list.opener(plural(n, 'place'));
     const desk = column ? places(2) : null,
       phone = places(1);
-    const label = l.called === null ? names : list.opener(l.called);
+    const label = l.called === null ? flat(joined(l.units.map(t.named))) : list.opener(l.called);
     return [
-      h(
-        'div',
-        { class: ['gantt-name', l.travel === null && l.nights === null && 'gantt-unsaid'] },
-        label,
-        phone === null ? null : [' ', h('span', { class: 'gantt-under' }, phone)],
-      ),
+      <div class={['gantt-name', l.travel === null && l.nights === null && 'gantt-unsaid']}>
+        {label}
+        {phone === null ? null : [' ', <span class="gantt-under">{phone}</span>]}
+      </div>,
       lane(l, l.units.map((u) => u.name).join(', ')),
-      column ? h('div', { class: 'gantt-stay' }, desk) : null,
+      column ? <div class="gantt-stay">{desk}</div> : null,
       list.used() ? list.list : null,
     ];
   };
@@ -311,9 +376,9 @@ export function gantt<P>(
 // who said no place last, over the festival's days with both ends fading.
 export function ganttByPlace<P>(
   t: Frame & { readonly places: readonly Place<P>[]; readonly named: (u: Unit<P>) => Kid },
-): HTMLElement {
+): JSX.Element {
   const d = drawing(t);
-  const line = (p: Place<P>, i: number): Kid[] => {
+  const line = (p: Place<P>, i: number): JSX.Element => {
     const { nights } = p;
     // a unit with its own nights there, when they are not all of the place's: "Nora · Fri–Sun"
     const own = (u: Unit<P>) => {
@@ -322,14 +387,11 @@ export function ganttByPlace<P>(
     };
     const list =
       p.called === null ? null : behind(`${t.describedBy}-names-${i}`, [{ heading: null, names: p.units.map(own) }]);
+    const under = p.called === null || list === null ? flat(joined(p.units.map(t.named))) : list.opener(p.called);
     return [
-      h(
-        'div',
-        { class: ['gantt-name', p.place === null && 'gantt-unsaid'] },
-        p.place ?? 'Not said',
-        ' ',
-        h('span', { class: 'gantt-under' }, list === null ? joined(p.units.map(t.named)) : list.opener(p.called)),
-      ),
+      <div class={['gantt-name', p.place === null && 'gantt-unsaid']}>
+        {p.place ?? 'Not said'} <span class="gantt-under">{under}</span>
+      </div>,
       d.lane(
         nights === null
           ? d.stroke({
@@ -338,7 +400,7 @@ export function ganttByPlace<P>(
               key: `none ${i}`,
               fades: { in: true, out: true },
               title: 'place not said',
-              ends: [h('span', {}), h('span', {})],
+              ends: [<span />, <span />],
             })
           : d.stroke({
               from: d.at(nights.first),
@@ -346,7 +408,7 @@ export function ganttByPlace<P>(
               key: `${p.place} ${i}`,
               fades: { in: false, out: false },
               title: null,
-              ends: [h('span', {}, weekday3(nights.first)), h('span', {}, weekday3(morning(nights.last)))],
+              ends: [<span>{weekday3(nights.first)}</span>, <span>{weekday3(morning(nights.last))}</span>],
             }),
       ),
       list?.list,
