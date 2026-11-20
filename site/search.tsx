@@ -7,7 +7,6 @@
 
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { createEffect, createMemo, createSignal, flush, For } from 'solid-js';
-import { flat, type Kid } from './bits.ts';
 import { q, site, sql } from './db.ts';
 import { leaving, modal } from './dialog.tsx';
 import { type Festival, festivals } from './festivals.ts';
@@ -25,6 +24,7 @@ import {
 import { CHECKED, hasWith, isDance, WITH } from './finder.ts';
 import { fold, words } from './fold.ts';
 import { type Drawing, icon, NOTE } from './icons.ts';
+import { away } from './marks.tsx';
 import { atEnd, Reported } from './placed.tsx';
 import { person, withPlans } from './plans.tsx';
 import { done } from './report.ts';
@@ -42,7 +42,7 @@ import {
 } from './routes.ts';
 import { flag as flagCol, num, str } from './rows.ts';
 import { KEY } from './states.ts';
-import { away, dayMonth, flag, otherYear, place } from './ui.ts';
+import { dayMonth, flag, otherYear, place } from './ui.ts';
 import { plural, text } from './wording.ts';
 
 const SHOWN = 5; // results per group until "Show all"
@@ -211,7 +211,7 @@ function buildIndex(): Item[] {
 const WORDS_AND_GAPS = /[\p{L}\p{N}]+|[^\p{L}\p{N}]+/gu;
 
 // what a result's row shows: its lead (a date, an initial, a flag or an icon) and the line under its name
-type Parts = readonly [JSX.Element, Kid[]];
+type Parts = readonly [JSX.Element, JSX.Element];
 function festivalParts(e: FoundEvent): Parts {
   const yr = otherYear(e.start_date);
   const day = dayMonth(e.start_date).replace(' ', '\u00a0');
@@ -465,8 +465,7 @@ function searchDialog(trigger: HTMLElement, data: Promise<unknown>): JSX.Element
   // a result's row
   const rowOf = (row: Option & { readonly item: Item }, tokens: readonly string[]) => {
     const { item } = row;
-    const [lead, sub] = parts(item);
-    const under = flat(sub);
+    const [lead, under] = parts(item);
     return (
       // oxlint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus -- an option of the combobox's listbox: the focus stays in the text field, which moves the highlight with the arrow keys and picks it with Enter (aria-activedescendant)
       <div

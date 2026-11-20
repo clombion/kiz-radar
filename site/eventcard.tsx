@@ -12,6 +12,7 @@ import { type Festival, styleLine } from './festivals.ts';
 import { flightsButton } from './flights.tsx';
 import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
+import { away, nowTag } from './marks.tsx';
 import { approximately, money, within } from './money.ts';
 import { held } from './mount.tsx';
 import { passesButton, riseNote } from './passes.tsx';
@@ -20,7 +21,7 @@ import { goingLine } from './plans.tsx';
 import { done } from './report.ts';
 import { artistHref } from './routes.ts';
 import { KEY, LINK } from './states.ts';
-import { away, calm, dayParts, flightsUrl, home, nowTag, otherYear, place, transition } from './ui.ts';
+import { calm, dayParts, flightsUrl, home, otherYear, place, transition } from './ui.ts';
 import { joined, type Key, linkOf, type Point, say, text } from './wording.ts';
 
 // "23–25 Oct", or "30 Oct – 1 Nov" across a month end: the date is shown once, in the box
@@ -287,7 +288,10 @@ export function eventCard(e: Festival, { hint = null, open = false, onMap = fals
         {dateBox(e.start_date, e.end_date)}
         <div class="c-head">
           {/* a festival on now says so before its place, as a community's trip on now does */}
-          <p class="where">{flat([nowTag(e), place(e)])}</p>
+          <p class="where">
+            {nowTag(e)}
+            {place(e)}
+          </p>
           <h3>{toggleBtn('title-btn', e.title)}</h3>
         </div>
       </div>

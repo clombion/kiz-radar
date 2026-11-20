@@ -49,6 +49,20 @@ test("a Solid view's root leaves the page's owner when the view is left", async 
   expect(held()).toBe(before);
 });
 
+test('the cards of a list drawn again are taken away with the list they were in', async () => {
+  await app.open(sourcesHref());
+  const before = held();
+  await app.open(festivalsHref());
+  // the Festivals page's line-up chosen: its list drawn anew
+  const select = [...(main()?.querySelectorAll('label.field') ?? [])]
+    .find((l) => l.textContent.startsWith('Line-up'))
+    ?.querySelector('select');
+  if (select == null) throw new Error('no Line-up select on the Festivals page');
+  select.selectedIndex = select.options.length - 1;
+  select.dispatchEvent(new Event('change'));
+  expect(held()).toBe(before + (main()?.querySelectorAll('.festival-card').length ?? 0));
+});
+
 test("the cards an h() view holds are each a root of the page's owner until the view is left", async () => {
   await app.open(sourcesHref());
   const before = held();

@@ -6,13 +6,14 @@ import { createSignal, For, onCleanup } from 'solid-js';
 import { q, sql } from './db.ts';
 import type { Festival } from './festivals.ts';
 import { type Drawing, icon as featureIcon, MORE_TRAITS, type Trait, TRAITS } from './icons.ts';
+import { away } from './marks.tsx';
 import { passesButton } from './passes.tsx';
 import { whoIsGoing } from './plans.tsx';
 import { done } from './report.ts';
 import { artistHref, eventOnMapHref } from './routes.ts';
 import { flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
 import { KEY, LINK } from './states.ts';
-import { away, countryName, flag } from './ui.ts';
+import { countryName, flag } from './ui.ts';
 import { type Key, linkOf, text, where } from './wording.ts';
 
 // the line-up by role, in the order pipeline/states.py lists them; organisers have a line of their own

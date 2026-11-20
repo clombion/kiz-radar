@@ -25,13 +25,14 @@ import {
 } from './finder.ts';
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
 import { Drawing } from './icons.ts';
+import { loadingMark } from './marks.tsx';
 import { currency, money, step } from './money.ts';
-import { held } from './mount.tsx';
+import { held, redraws } from './mount.tsx';
 import { friendsIn } from './plans.tsx';
 import { done } from './report.ts';
 import { festivalsHref, showInAddressBar } from './routes.ts';
 import { KEY } from './states.ts';
-import { calm, flag, home, loading, scrolling } from './ui.ts';
+import { calm, flag, home, scrolling } from './ui.ts';
 import { plural, text } from './wording.ts';
 
 // every choice at its widest: the defaults with no limit of time or price (the order stays as chosen)
@@ -333,11 +334,11 @@ export function sentenceView(
     return h(
       'span',
       { class: 'friends' },
-      held(signal, HTMLElement, "the friends' faces", f.faces),
+      held(drawnFor, HTMLElement, "the friends' faces", f.faces),
       h(
         'span',
         {},
-        held(signal, HTMLElement, "the friends' names", f.names),
+        held(drawnFor, HTMLElement, "the friends' names", f.names),
         ` ${f.many ? 'are' : 'is'} going to `,
         which,
         '. ',
@@ -400,7 +401,7 @@ export function sentenceView(
       const cards = h('div', { class: 'festival-cards' }),
         more = button({ class: ['more-btn', 'show-more'] });
       paged({ list: cards, more }, rows, PAGE, (e, i) =>
-        heldCard(signal, e, {
+        heldCard(drawnFor, e, {
           hint: i === hinted ? note('note-artist', 'click', ' a name to see where else they teach') : null,
         }),
       );
@@ -415,12 +416,16 @@ export function sentenceView(
     );
   }
 
+  // what the line and the results hold of Solid's is taken away when they are drawn again, or the view is left
+  const redrawn = redraws(signal);
+  let drawnFor = signal;
   function render(): void {
+    drawnFor = redrawn();
     paintChoices();
     if (!all) {
       live.textContent = 'Looking for festivals like that…';
       barCount.textContent = '';
-      results.replaceChildren(loading());
+      results.replaceChildren(held(drawnFor, HTMLElement, 'the loading mark', () => loadingMark()));
       return;
     }
     const day = today(),
