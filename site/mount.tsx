@@ -13,6 +13,12 @@ import { page } from './owner.ts';
 import { cannotShow, report } from './report.ts';
 import type { Show } from './routes.ts';
 
+// dispose called once signal aborts, or at once if it has
+function disposedWith(signal: AbortSignal, dispose: () => void): void {
+  if (signal.aborted) dispose();
+  else signal.addEventListener('abort', dispose, { once: true });
+}
+
 // The signals of the draws of a part an h() view draws again (a list, a panel, a line): each call's aborts when the next
 // call is made, or when the view's signal aborts, so that what a draw holds (held) is taken away with it.
 export function redraws(signal: AbortSignal): () => AbortSignal {
@@ -44,8 +50,7 @@ export const mounted =
         root,
       ),
     );
-    if (signal.aborted) dispose();
-    else signal.addEventListener('abort', dispose, { once: true });
+    disposedWith(signal, dispose);
   };
 
 // A piece's top, refused when it is reactive (a function, or an array holding one): its boundary would draw it again
@@ -57,22 +62,17 @@ function unchanging(made: JSX.Element, what: string): JSX.Element {
   return made;
 }
 
-// A Solid piece an h() view holds as an element of its own (a festival's card in its list): part drawn in a root of its
-// own, checked as an element of the class of (bits.ts asElement, naming what), drawn whole when the call returns, its
-// top what the h() code holds, which nothing draws again (a piece whose top is reactive, a function, is refused, naming
+// What a Solid piece draws, in a root of its own, for an h() view to hold: drawn whole when the call returns, its top
+// what the h() code holds, which nothing draws again (a piece whose top is reactive, a function, is refused, naming
 // what). Its root is under the page's owner, as a view is, disposed when the view's signal aborts (or at once, if it
 // has); or, when the h() code drawing it runs inside Solid (called by a Solid part as it draws), under the owner it
 // runs in, disposed with it (as that owner runs again, or goes). A piece that throws as it is drawn, in its body or in
 // a reactive part (an expression of its JSX, run as an effect), throws to the h() code drawing it, as an h() element
 // did, its root disposed: the part is drawn in an error boundary whose fallback keeps what was thrown, so no throw
-// escapes to halt Solid for the page. A reactive part that throws later (on a click) is said under the words such a
-// throw had before ("the page", reportUncaught's), and draws nothing.
-export function held<E extends Element>(
-  signal: AbortSignal,
-  of: new () => E,
-  what: string,
-  part: () => JSX.Element,
-): E {
+// escapes to halt Solid for the page. So does what it drew, when read throws (read, the h() code's). A reactive part
+// that throws later (on a click) is said under the words such a throw had before ("the page", reportUncaught's), and
+// draws nothing.
+function drawn<T>(signal: AbortSignal, what: string, part: () => JSX.Element, read: (made: unknown) => T): T {
   let dispose = (): void => undefined; // the root's, once it is made
   let thrown: { readonly e: unknown } | undefined; // what the first draw threw
   let first = true;
@@ -93,14 +93,32 @@ export function held<E extends Element>(
     );
     first = false;
     if (thrown !== undefined) throw thrown.e;
-    const el = asElement(made, of, what);
-    if (owner === null) {
-      if (signal.aborted) dispose();
-      else signal.addEventListener('abort', dispose, { once: true });
-    }
-    return el;
+    const value = read(made);
+    if (owner === null) disposedWith(signal, dispose);
+    return value;
   } catch (e) {
     dispose();
     throw e;
   }
 }
+
+// A Solid piece an h() view holds as an element of its own (a festival's card in its list), checked as an element of
+// the class of (bits.ts asElement, naming what).
+export const held = <E extends Element>(
+  signal: AbortSignal,
+  of: new () => E,
+  what: string,
+  part: () => JSX.Element,
+): E => drawn(signal, what, part, (made) => asElement(made, of, what));
+
+// A Solid piece an h() view holds as the nodes it is (who goes, in a line of other words): each text a text node. Its
+// nodes are what the piece drew at its top; anything but nodes and text is refused, naming what.
+export const heldNodes = (signal: AbortSignal, what: string, part: () => JSX.Element): Node[] =>
+  drawn(signal, what, part, (made) => nodesOf(made, what));
+const nodesOf = (made: unknown, what: string): Node[] => {
+  if (made === null || made === undefined || typeof made === 'boolean') return [];
+  if (made instanceof Node) return [made];
+  if (typeof made === 'string' || typeof made === 'number') return [new Text(String(made))];
+  if (Array.isArray(made)) return made.flatMap((m: unknown) => nodesOf(m, what));
+  throw new TypeError(`${what} was drawn as something an h() view cannot hold, neither nodes nor text`);
+};

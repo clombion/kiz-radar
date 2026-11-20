@@ -1,5 +1,5 @@
 // Who's going where, the Friends tab without a person: the festivals to come that the people of a place said they're
-// going to, by month, each with who teaches, goes or may go there (plans.ts whoLines). Its places are the sub-tabs:
+// going to, by month, each with who teaches, goes or may go there (plans.tsx whoLines). Its places are the sub-tabs:
 // near the site's home city, or everywhere. A short list is all there is; a long one gets a bar to narrow it: by
 // friends (the festivals all of them go to, or any of them), by time, and by a festival's name or city. The choices
 // live in the address.
@@ -8,7 +8,8 @@ import { dbDay, q, site, sql } from './db.ts';
 import { button, choices, dropdown, h, moreButton, nodes, segments } from './dom.ts';
 import { leftOut } from './festivals.ts';
 import { fold } from './fold.ts';
-import { type Goer, goersOf, livingNear, NEAR_KM, whoLines, withPlans } from './plans.ts';
+import { held, redraws } from './mount.tsx';
+import { type Goer, goersOf, livingNear, NEAR_KM, whoLines, withPlans } from './plans.tsx';
 import { changed, eventOnMapHref, friendsHref, personHref, readState, showInAddressBar } from './routes.ts';
 import { EVENT, type RowOf } from './rows.ts';
 import { KEY } from './states.ts';
@@ -226,6 +227,8 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
     return h('p', { class: 'muted' }, 'No festival matches these choices.');
   }
 
+  // what the list holds of Solid's (who goes, On now) is taken away when it is drawn again, or the view is left
+  const redrawn = redraws(signal);
   function render(): void {
     s.with = [...ticked].join(',');
     showInAddressBar(friendsHref(changed(s, DEFAULTS)));
@@ -237,7 +240,8 @@ export function friendsView(root: HTMLElement, qs: string, signal: AbortSignal):
       shown.length === all.length
         ? plural(all.length, 'festival')
         : `${shown.length} of ${plural(all.length, 'festival')}${ticked.size > 1 && !s.any ? ' in common' : ''}`;
-    list.replaceChildren(...(shown.length > 0 ? byMonth(shown, ticked) : [none()]));
+    const drawn = redrawn();
+    list.replaceChildren(...(shown.length > 0 ? byMonth(shown, ticked, drawn) : [none()]));
   }
 
   root.replaceChildren(
@@ -296,7 +300,7 @@ function head(all: readonly Festival[], sharing: readonly Shares[], at: Place): 
 }
 
 // the festivals under their months: "November 2026 · 3 festivals", then each festival's row
-function byMonth(shown: readonly Festival[], ticked: ReadonlySet<string>): HTMLElement[] {
+function byMonth(shown: readonly Festival[], ticked: ReadonlySet<string>, signal: AbortSignal): HTMLElement[] {
   const months = new Map<string, Festival[]>();
   for (const e of shown) months.set(e.start_date.slice(0, 7), [...(months.get(e.start_date.slice(0, 7)) ?? []), e]);
   return [...months.values()].flatMap((es) => [
@@ -320,7 +324,7 @@ function byMonth(shown: readonly Festival[], ticked: ReadonlySet<string>): HTMLE
             ),
             h('span', { class: 'who-when' }, dayRange(e.start_date, e.end_date)),
           ),
-          whoLines(e, ticked),
+          held(signal, HTMLElement, `who goes to ${e.title}`, () => whoLines(e, ticked)),
         ),
       ),
     ),

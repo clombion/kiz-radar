@@ -8,7 +8,7 @@ import { heldCard } from './eventcard.tsx';
 import { type Festival, leftOut, withDetails } from './festivals.ts';
 import { fold } from './fold.ts';
 import { type Named, nameLines } from './names.ts';
-import { alsoGoingTo, peopleOf } from './plans.ts';
+import { alsoGoingTo, peopleOf } from './plans.tsx';
 import { alone, roleLabel } from './roles.ts';
 import {
   artistHref,

@@ -4,7 +4,6 @@
 // isn't undone by it.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { createSignal, flush } from 'solid-js';
-import { asElement, flat, type Kid } from './bits.ts';
 import { atEnd, Reported } from './placed.tsx';
 import { done } from './report.ts';
 import { go } from './routes.ts';
@@ -88,31 +87,25 @@ export function modal(): Modal & { readonly Dialog: (props: DialogProps) => JSX.
   };
 }
 
-// A link out of a dialog: it goes once the dialog's history entry is gone, so the entry doesn't undo it (Modal.go). An
-// element, for the h() modules that put it in what they build.
-export function leaving(m: Modal, href: string, ...kids: readonly Kid[]): HTMLAnchorElement {
-  const words = flat(kids); // given as it is made: an expression read in JSX would be an effect, here with no owner
-  return asElement(
-    <a
-      href={href}
-      onClick={(ev) => {
-        ev.preventDefault();
-        done(m.go(href), 'leaving a dialog');
-      }}
-    >
-      {words}
-    </a>,
-    HTMLAnchorElement,
-    'a link out of a dialog',
-  );
-}
+// A link out of a dialog: it goes once the dialog's history entry is gone, so the entry doesn't undo it (Modal.go).
+export const leaving = (m: Modal, href: string, words: JSX.Element): JSX.Element => (
+  <a
+    href={href}
+    onClick={(ev) => {
+      ev.preventDefault();
+      done(m.go(href), 'leaving a dialog');
+    }}
+  >
+    {words}
+  </a>
+);
 
 // A quick view over the page (who's going, a festival's passes, its flights): a head of a lead (faces, when there are
 // some), a title and the line under it, and ×; a body; a foot. Drawn at the end of <body> when first asked for, empty;
 // show() draws what its opener hands it, each part drawn inside the dialog from its function, in a boundary of its own
 // that reports a part that throws and draws nothing in its place, so the dialog, its × and its history entry stay. The
 // body's scroll goes back to its top. What is shown is flushed, so the dialog holds it when it opens.
-interface Shown {
+export interface Shown {
   readonly lead?: () => JSX.Element;
   readonly title: string;
   readonly sub: () => JSX.Element;

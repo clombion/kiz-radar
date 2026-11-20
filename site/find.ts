@@ -4,7 +4,7 @@
 import type { Checked, With } from './finder.ts';
 import { fold, words } from './fold.ts';
 import type { Drawing } from './icons.ts';
-import type { Person } from './plans.ts';
+import type { Person } from './plans.tsx';
 import type { Params } from './routes.ts';
 import { BOOKINGS, flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
 
