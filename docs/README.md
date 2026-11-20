@@ -23,7 +23,7 @@ in a session.
 | understand why an answer is asked again | [Prompts and answers](concepts/prompts.md) |
 | understand who decides a fact no step derives | [Claims](concepts/claims.md) |
 | understand the closed world of states | [States](concepts/states.md) |
-| see what each Biome lint rule becomes in oxlint or stylelint, and what is dropped | [Lint rules](concepts/lint-rules.md) |
+| see what each lint rule Biome ran became in oxlint, stylelint or a test, and what was dropped | [Lint rules](concepts/lint-rules.md) |
 | see why a line turns an oxlint or stylelint rule off | [Suppressed findings](lint-false-positives.md) |
 | look up a command | [Commands](reference/commands.md) |
 | look up a file and its record | [Files](reference/files.md) |
