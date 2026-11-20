@@ -87,7 +87,7 @@ From `biome.jsonc`'s `overrides`, each with its reason; oxlint takes them as `ov
 | `tests/**`, `vitest.config.ts` | `vitest/consistent-test-it` | above | "a test is test() wherever it is" |
 | `tests/**`, `vitest.config.ts` | `useTopLevelRegex` | (none) | "an assertion's pattern, matched once"; moot, the rule is an accepted loss |
 | `tests/**`, `vitest.config.ts` | `eslint/no-await-in-loop` | off | Q2: a test drives the page step by step |
-| `site/friends.ts`, `site/roster.ts`, `site/sources.ts`, `site/tables.ts` | `eslint/prefer-destructuring` | off | Q2: the findings in the site's code stay until Phase 4 rewrites these files (`tables.ts` is oxlint's alone) |
+| `site/roster.ts`, `site/sources.ts`, `site/tables.ts` | `eslint/prefer-destructuring` | off | Q2: the findings in the site's code stay until Phase 4 rewrites these files (`tables.ts` is oxlint's alone; `friends.ts`'s went as task 4.7 rewrote it) |
 | `site/db.ts` | `eslint/max-classes-per-file` | off | Q2: the same, `SiteUpdating` and `Sql` |
 | `lint/plugin.ts` | `import/no-default-export` | off | new (task 2.5): oxlint loads a JS plugin from its module's default export, as ESLint does |
 | `lint/privates.ts` | `import/no-nodejs-modules` | off | new (task 2.6b): `house/privates` reads the module an import names from disk, oxlint showing a rule one file |

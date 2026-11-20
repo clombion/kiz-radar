@@ -83,7 +83,7 @@ sides only.
 
 - **Countries:** each scene's festivals coming up, the cheapest flight there, and how international its line-ups are.
 
-- **Friends:** "Who's going where" (`site/friends.ts`), for a visitor, who has no account yet. Its second row under the
+- **Friends:** "Who's going where" (`site/friends.tsx`), for a visitor, who has no account yet. Its second row under the
   header, as Explore's, holds its places: **Near Bergen** (the people living within `NEAR_KM`, 200 km, of the home
   airport's city, measured against the city `people.home` names; someone with no home is near nowhere) and
   **Everywhere** (everyone sharing plans); `#friends?in=everywhere`. The visitor's own communities will join that row

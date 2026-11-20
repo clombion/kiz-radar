@@ -3647,7 +3647,7 @@ svg.defs {
   }
 }
 
-/* ---- the Friends tab's list (friends.ts): festivals by month, each its name and days, then a line per thing its
+/* ---- the Friends tab's list (friends.tsx): festivals by month, each its name and days, then a line per thing its
    people do there, labelled; the bar's friend picker */
 .month-head {
   font-size: 0.78rem;

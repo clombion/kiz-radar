@@ -93,6 +93,17 @@ test('the Friends tab narrows the festivals by a festival’s name or city, and 
   expect((await listed({ when: 'months' })).length).toBeLessThan((await listed()).length);
 });
 
+test('the Friends button stays as friends are ticked, saying how many', async () => {
+  await app.open(friendsHref({ with: 'sian' }));
+  const button = () => main()?.querySelector<HTMLButtonElement>('.bar-inner .more-btn');
+  const first = button();
+  expect(first?.textContent).toBe('Friends (1) ▾');
+  first?.click();
+  const unticked = [...(main()?.querySelectorAll<HTMLInputElement>('.pick-row input') ?? [])].find((b) => !b.checked);
+  unticked?.click();
+  expect([button() === first, first?.textContent, first?.ariaExpanded]).toEqual([true, 'Friends (2) ▾', 'true']);
+});
+
 test('a person’s page lists the festivals they said they’re going to', async () => {
   await app.open(personHref('sian'));
   expect(said(main()?.querySelector('h1'))).toBe('Siân’s festival plans');

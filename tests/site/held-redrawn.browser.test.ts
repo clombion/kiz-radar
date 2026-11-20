@@ -1,8 +1,8 @@
 // What a view draws again while it shows goes with the draw before, so the page holds as much after each draw as after
 // one, however often the visitor draws it again. In an h() view, the Solid pieces it holds (mount.tsx held), each a
-// root of the page's owner: the Map's panel (its cards), the friends' list (who goes, On now), and a community's page
-// (a trip row's line of who goes, the agenda a step of the months draws, a day's words). In a Solid view, every owner
-// under the page's (each draw an owner of the view's root, and what it draws owners of it): Countries' order. On 1
+// root of the page's owner: the Map's panel (its cards), and a community's page (a trip row's line of who goes, the
+// agenda a step of the months draws, a day's words). In a Solid view, every owner under the page's (each draw an owner
+// of the view's root, and what it draws owners of it): Countries' order, the friends' list (who goes, On now). On 1
 // November 2026, with a community beside the fixture's in which Tonje only may go to KUOF (a tag the lines of who goes
 // and the days hold) and Ola, added, goes to Paris and Albania (two periods of the months, each with a trip).
 import { DEV } from 'solid-js';
@@ -91,7 +91,7 @@ test('the Map’s panel drawn again holds the cards of its last draw alone', asy
   );
 });
 
-test('the friends’ list drawn again holds the pieces of its last draw alone', async () => {
+test('the friends’ list drawn again holds the owners of its last draw alone', async () => {
   await app.open(friendsHref({ q: 'k' }));
   const search = one('input.mini-search', HTMLInputElement);
   await drawnAlike(
@@ -100,6 +100,7 @@ test('the friends’ list drawn again holds the pieces of its last draw alone', 
       search.value = 'k';
       search.dispatchEvent(new Event('input'));
     },
+    owners,
   );
   expect(main()?.querySelectorAll('.who-list li').length).toBeGreaterThan(0);
 });

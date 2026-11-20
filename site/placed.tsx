@@ -13,8 +13,9 @@ import { report } from './report.ts';
 
 // What is drawn in a boundary that reports a throw, named where (as report.ts says it), and draws nothing in its place:
 // a part of the shell, or what a piece draws later (a card's details, a quick view's parts, the search's results, a
-// day's popover), so that the rest of the page, and Solid, go on.
-const reported = (e: unknown, where: string): null => {
+// day's popover), so that the rest of the page, and Solid, go on; a view's part drawn again, once past its first draw,
+// too (mount.tsx Redrawn).
+export const reported = (e: unknown, where: string): null => {
   report(e, where);
   return null;
 };
