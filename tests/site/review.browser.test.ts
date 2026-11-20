@@ -1,4 +1,5 @@
-// The review page of a writer, their token kept on this device: it says whose token it is and when it expires; a merge
+// The review page of a writer, their token kept on this device: it says whose token it is and when it expires, its
+// dialog's fields marked in its markup with the day and the box as kept; a merge
 // is chosen by its keys and written, its own note kept, and said written already when GitHub has it; a token refused
 // on a write makes the page read-only, saying why; a pair is compared side by side; and two artists found by name are
 // joined by a merge claim; an item another tab settled, written again, is kept as settled once. Each claim is read as
@@ -7,7 +8,7 @@ import { expect, onTestFinished, test, vi } from 'vitest';
 import { claimText, digest, mergeClaim } from '../../site/claims.ts';
 import { startReview } from './app.ts';
 import { AS_WRITER, AT, claimed, github, KEPT, REVIEW, WRITER, writes, WRITING } from './reviewed.ts';
-import { accessSays, buttonOf, choicesOf, keyed, reviewed, said, theItem, tokenDialog } from './seen.ts';
+import { accessSays, buttonOf, choicesOf, keyed, onDeviceBox, reviewed, said, theItem, tokenDialog } from './seen.ts';
 
 const app = await startReview(AS_WRITER);
 const noteOf = (el: Element): HTMLInputElement => {
@@ -18,6 +19,16 @@ const noteOf = (el: Element): HTMLInputElement => {
 
 test('the expiry its maker entered is shown, and warned of when near', async () => {
   await expect.poll(accessSays).toBe(WRITING);
+});
+
+test("the token dialog's fields are marked in its markup as kept: the day it expires, and the box ticked", () => {
+  const dlg = tokenDialog();
+  const day = dlg.querySelector('input[aria-label="Expires on"]');
+  // the attributes, which a page drawn with the properties alone would leave out
+  expect([day?.getAttribute('value'), onDeviceBox(dlg).hasAttribute('checked')]).toEqual([
+    WRITER.storage.local[KEPT.expires],
+    true,
+  ]);
 });
 
 test('a merge is chosen and written by its keys, its own note kept, and said written already when GitHub has it', async () => {

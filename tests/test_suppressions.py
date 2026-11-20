@@ -93,6 +93,8 @@ SITE_ALLOWED = Counter(
         ('site/sentence.tsx', 'jsx-a11y/anchor-is-valid'): 1,
         ('site/search.tsx', 'jsx-a11y/interactive-supports-focus'): 2,
         ('site/search.tsx', 'jsx-a11y/prefer-tag-over-role'): 4,
+        ('site/token.tsx', 'jsx-a11y/prefer-tag-over-role'): 1,
+        ('site/token.tsx', 'react/jsx-no-target-blank'): 1,
         ('site/rows.ts', 'typescript/no-unsafe-type-assertion'): 1,
         ('site/wording.ts', 'typescript/no-unsafe-type-assertion'): 1,
         ('tests/site/app.browser.test.ts', 'unicorn/new-for-builtins'): 1,
