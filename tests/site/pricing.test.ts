@@ -1,7 +1,7 @@
 // What a pass costs on a day: every state of the tier today, of its next change and of the card's price is reached,
 // and each has its words.
 import { expect, test } from 'vitest';
-import type { Pass } from '../../site/passes.ts';
+import type { Pass } from '../../site/passes.tsx';
 import { nextChange, type Priced, priceLine, type TierNow, tierNow } from '../../site/pricing.ts';
 import { KEY } from '../../site/states.ts';
 import { text } from '../../site/wording.ts';

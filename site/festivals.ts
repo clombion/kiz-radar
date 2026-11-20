@@ -7,7 +7,7 @@ import { h } from './dom.ts';
 import { type Fare, fareOf, flightBegun, type Option, tripOf } from './fares.ts';
 import { DANCES } from './finder.ts';
 import { convert, rounded } from './money.ts';
-import { priceToday } from './passes.ts';
+import { priceToday } from './passes.tsx';
 import { type Goer, goersOf } from './plans.ts';
 import type { PriceLine } from './pricing.ts';
 import { EVENT, type EventRow, num, opt, str } from './rows.ts';
@@ -18,7 +18,7 @@ import { type Key, text } from './wording.ts';
 // A festival as every card has it: its row with the airports it can fly to (options) and the best fare of theirs for
 // its weekend (fares.ts best), the best-known names on its
 // line-up, its genres (event_stats: its description's and its kizomba-world tags), what its card says of its price
-// today (passes.ts) and the trip: the card's pass plus the flight in the visitor's currency, null when either is
+// today (passes.tsx) and the trip: the card's pass plus the flight in the visitor's currency, null when either is
 // unknown or the pass has no price today; once its weekend's Friday-to-Monday return has left (begun, fares.ts
 // flightBegun), the trip is the pass alone (what the price filter and the order by price read too).
 export type Festival = Omit<EventRow, 'features'> & {

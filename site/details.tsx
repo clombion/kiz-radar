@@ -3,11 +3,10 @@
 // (eventcard.tsx), since it reads the line-up from the database as the card opens.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { createSignal, For, onCleanup } from 'solid-js';
-import { own } from './bits.ts';
 import { q, sql } from './db.ts';
 import type { Festival } from './festivals.ts';
 import { type Drawing, icon as featureIcon, MORE_TRAITS, type Trait, TRAITS } from './icons.ts';
-import { openPasses } from './passes.ts';
+import { passesButton } from './passes.tsx';
 import { whoIsGoing } from './plans.ts';
 import { done } from './report.ts';
 import { artistHref, eventOnMapHref } from './routes.ts';
@@ -25,12 +24,6 @@ const icon = (drawn: Drawing) => (
       drawn.into(el);
     }}
   />
-);
-// a button that opens a festival's passes over the page: a card's price, or a highlight with prices behind it
-export const passesButton = (e: Festival, cls: 'pass-btn' | 'trait-link', words: string | null) => (
-  <button type="button" class={['link', cls]} onClick={own((b) => openPasses(e, b))}>
-    {words}
-  </button>
 );
 // a highlight with prices behind it (couple & group deals) opens the passes over the page
 export const traitItems = (list: readonly Trait[], e?: Festival): JSX.Element[] =>
