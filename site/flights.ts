@@ -90,28 +90,27 @@ function optionRow(e: Festival, o: Option, chosen: boolean, today: string): HTML
 function openFlights(e: Festival, today: string, from?: Element | null): void {
   const v = flightsDialog();
   const chosen = best(e.options);
-  v.lead.replaceChildren();
-  v.title.textContent = `Flights to ${e.title}`;
-  v.sub.textContent =
-    e.depart === null
-      ? `Return from ${home().city}`
-      : `Return from ${home().city}, Friday ${dayMonth(e.depart)} to Monday`;
-  v.body.replaceChildren(
-    h(
-      'ul',
-      { class: 'peek-flights' },
-      e.options.map((o) => optionRow(e, o, o.airport === chosen?.airport, today)),
-    ),
+  const list = h(
+    'ul',
+    { class: 'peek-flights' },
+    e.options.map((o) => optionRow(e, o, o.airport === chosen?.airport, today)),
   );
-  v.foot.replaceChildren(
-    h(
-      'p',
-      { class: ['muted', 'small'] },
-      `The card shows the cheapest airport within ${FAR_KM} km of the festival, or one farther away when it is cheaper `,
-      `by more than ${money(WORTH_EUR, 'EUR', { approx: true })}. An airport beside the nearest is searched for `,
-      'direct flights alone. Check before buying.',
-    ),
+  const note = h(
+    'p',
+    { class: ['muted', 'small'] },
+    `The card shows the cheapest airport within ${FAR_KM} km of the festival, or one farther away when it is cheaper `,
+    `by more than ${money(WORTH_EUR, 'EUR', { approx: true })}. An airport beside the nearest is searched for `,
+    'direct flights alone. Check before buying.',
   );
+  v.show({
+    title: `Flights to ${e.title}`,
+    sub: () =>
+      e.depart === null
+        ? `Return from ${home().city}`
+        : `Return from ${home().city}, Friday ${dayMonth(e.depart)} to Monday`,
+    body: () => list,
+    foot: () => note,
+  });
   v.m.open(from);
 }
 

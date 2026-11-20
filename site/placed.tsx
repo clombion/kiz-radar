@@ -5,23 +5,31 @@
 // stays, an empty Text node, never one of the page's own elements, and the drawing is flushed: the part is there when
 // the call returns, as an h() element was.
 import { insert } from '@solidjs/web';
+import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { type Component, createRoot, Errored, flush, runWithOwner } from 'solid-js';
 import { startOfBody } from './body.ts';
 import { page } from './owner.ts';
 import { report } from './report.ts';
 
-// Part, named where (as report.ts says it), drawn in parent before marker; the function that disposes it
+// What is drawn in a boundary that reports a throw, named where (as report.ts says it), and draws nothing in its place:
+// a part of the shell, or what a piece draws later (a card's details, a quick view's parts, the search's results), so
+// that the rest of the page, and Solid, go on.
+const reported = (e: unknown, where: string): null => {
+  report(e, where);
+  return null;
+};
+export const Reported = (props: { readonly where: string; readonly children: JSX.Element }): JSX.Element => (
+  <Errored fallback={(e) => <>{reported(e(), props.where)}</>}>{props.children}</Errored>
+);
+
+// Part, named where, drawn in parent before marker, in its boundary; the function that disposes it
 function draw(where: string, Part: Component, parent: Node, marker: Node): () => void {
-  const reported = (e: unknown): null => {
-    report(e, where);
-    return null;
-  };
   const dispose = runWithOwner(page, () =>
     createRoot((disposer) => {
       const tree = (
-        <Errored fallback={(e) => <>{reported(e())}</>}>
+        <Reported where={where}>
           <Part />
-        </Errored>
+        </Reported>
       );
       insert(parent, () => tree, marker);
       return disposer;

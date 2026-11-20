@@ -60,18 +60,12 @@ const passName = (p: Pass, own = false): string =>
     .filter(Boolean)
     .join(' · ');
 
-// the passes' quick view, with a note on where the prices come from and a link there in its foot
-type PassesView = Peek & { note: HTMLElement; link: HTMLAnchorElement };
-let view: PassesView | undefined;
-function passesDialog(): PassesView {
-  if (view) return view;
-  const note = h('p', { class: ['muted', 'small'] }),
-    link = h('a', { target: '_blank', rel: 'noopener' });
-  const shown = peek('passes-title');
-  shown.foot.append(note, link);
-  view = { ...shown, note, link };
+// the passes' quick view, drawn when first opened
+let view: Peek | undefined;
+const passesDialog = (): Peek => {
+  view ??= peek('passes-title');
   return view;
-}
+};
 
 // Opens over the page; each pass whose tiers have not all ended, with today's price or why there is none, and the next
 // change when one is listed.
@@ -80,8 +74,6 @@ export function openPasses(
   from?: Element | null,
 ): void {
   const v = passesDialog();
-  v.title.textContent = `Passes for ${e.title}`;
-  v.sub.textContent = dayRange(e.start_date, e.end_date);
   // prices read from the ticket page say when, since the page may have moved on since, and whether it shows
   // tickets not read yet
   const page = one(
@@ -97,15 +89,17 @@ export function openPasses(
         page.reseller !== null && page.reseller !== '' ? 'reseller' : undefined,
       )
     : text('pass_source', KEY.pass_source.DESCRIPTION);
-  v.note.textContent = [
-    from_,
-    (page?.unread ?? 0) > 0 ? `${text('ticket', KEY.ticket.UNREAD)}.` : null,
-    'Check before buying.',
-  ]
-    .filter(Boolean)
-    .join(' ');
-  v.link.href = page ? page.page : e.url;
-  v.link.replaceChildren(
+  // the foot: a note on where the prices come from, and a link there
+  const note = h(
+    'p',
+    { class: ['muted', 'small'] },
+    [from_, (page?.unread ?? 0) > 0 ? `${text('ticket', KEY.ticket.UNREAD)}.` : null, 'Check before buying.']
+      .filter(Boolean)
+      .join(' '),
+  );
+  const link = h(
+    'a',
+    { target: '_blank', rel: 'noopener', href: page ? page.page : e.url },
     page?.reseller ?? text('pass_source', page ? KEY.pass_source.TICKET_PAGE : KEY.pass_source.DESCRIPTION, {}, 'link'),
     away(),
   );
@@ -113,7 +107,7 @@ export function openPasses(
   const rows = passesOf(e.id)
     .map((p): [Pass, TierNow] => [p, tierNow(p, e, day)])
     .filter(([, now]) => now.state !== KEY.tier_today.ENDED);
-  v.body.replaceChildren(
+  const list =
     rows.length > 0
       ? h(
           'ul',
@@ -146,8 +140,12 @@ export function openPasses(
             ),
           ),
         )
-      : h('p', { class: 'muted' }, text('tier_today', KEY.tier_today.ENDED, {}, 'all')),
-  );
-  v.body.scrollTop = 0;
+      : h('p', { class: 'muted' }, text('tier_today', KEY.tier_today.ENDED, {}, 'all'));
+  v.show({
+    title: `Passes for ${e.title}`,
+    sub: () => dayRange(e.start_date, e.end_date),
+    body: () => list,
+    foot: () => [note, link],
+  });
   v.m.open(from);
 }

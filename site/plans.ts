@@ -292,12 +292,8 @@ function show(
   },
 ) {
   const v = peekDialog();
-  v.lead.replaceChildren(f ?? '');
-  v.title.textContent = title;
-  v.sub.replaceChildren(...nodes([sub]));
-  v.body.replaceChildren(...nodes(body));
-  v.foot.replaceChildren(...nodes([foot]));
-  v.body.scrollTop = 0;
+  const [said, held, under] = [nodes([sub]), nodes(body), nodes([foot])];
+  v.show({ lead: () => f, title, sub: () => said, body: () => held, foot: () => under });
   if (from instanceof Element) v.m.open(from);
 }
 const link = (href: string, ...kids: readonly Kid[]) => leaving(peekDialog().m, href, ...kids);
