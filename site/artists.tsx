@@ -179,8 +179,7 @@ function artistList(qs: string): JSX.Element {
   const summary = ({ now, rows }: { readonly now: Readonly<Choices>; readonly rows: readonly Artist[] }) =>
     `${plural(rows.length, 'artist')}${now.country ? ` booked in ${countryName(now.country)}` : ''}`;
   const left = disposal();
-  let panel: HTMLDivElement | undefined;
-  const filters = dropdown((opener) => [opener, panel]);
+  const filters = dropdown();
   const extra = () => {
     const now = st();
     return [now.kind, now.country, now.sort !== 'bookings', now.popular].filter(Boolean).length;
@@ -205,16 +204,10 @@ function artistList(qs: string): JSX.Element {
             () => st().role,
             (role) => set({ role }),
           )}
-          <div class="filters-wrap">
-            {filters.button('artist-filters', <>{`More${extra() ? ` (${extra()})` : ''} ▾`}</>)}
-            <div
-              ref={(el) => {
-                panel = el;
-              }}
-              class="more-panel"
-              id="artist-filters"
-              hidden={!filters.open()}
-            >
+          {filters.wrapped(
+            'artist-filters',
+            <>{`More${extra() ? ` (${extra()})` : ''} ▾`}</>,
+            <>
               {sel('kind', KINDS, 'Show')}
               {sel(
                 'country',
@@ -225,8 +218,8 @@ function artistList(qs: string): JSX.Element {
               {check(` Only well-known artists (${wellKnown()}+ festivals)`, asked.popular !== 0, (on) =>
                 set({ popular: on ? 1 : 0 }),
               )}
-            </div>
-          </div>
+            </>,
+          )}
         </div>
         <p class="list-summary">{summary(last())}</p>
         <Redrawn>

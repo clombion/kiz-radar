@@ -4,7 +4,7 @@
 // (another view shows), which empties root, as leaving an h() view leaves it unused. A view that throws as it is first
 // drawn says so in its place (report.ts cannotShow), within its error boundary: an error that escaped every boundary
 // would halt each signal of the page, the router's among them (main.ts). What it draws again as the visitor changes it
-// is drawn in a boundary of its own (Redrawn, createDerived), which says a later throw as the page's.
+// is drawn in a boundary of its own (Redrawn, redrawing, createDerived), which says a later throw as the page's.
 import { render } from '@solidjs/web';
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import {
@@ -88,6 +88,17 @@ export const Redrawn = (props: {
   readonly children: JSX.Element;
   readonly says?: (e: unknown) => boolean;
 }): JSX.Element => <Errored fallback={(thrown) => redrawnThrew(thrown(), props.says)}>{props.children}</Errored>;
+// The same for an effect that draws imperatively (the map's bubbles): its apply, whose throw would reach the view's
+// boundary and take the whole view, said as Redrawn says one.
+export const redrawing =
+  <T,>(apply: (value: T) => void) =>
+  (value: T): void => {
+    try {
+      apply(value);
+    } catch (e) {
+      redrawnThrew(e);
+    }
+  };
 
 // What a view derives from its choices (a list's rows), drawn by a Redrawn part and read by other parts too (a count,
 // a summary, a panel): a throw is held as its value, so that it is said once, by the Redrawn part (drawn, which throws

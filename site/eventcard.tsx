@@ -222,14 +222,18 @@ function smoothly(card: HTMLElement, change: () => void, opening: boolean): void
   );
 }
 
-// what a card is drawn with besides its festival: a line under its names (a hint), open from the start, and whether it
-// is on the map's page, whose link to the map it leaves out
+// what a card is drawn with besides its festival: a line under its names (a hint), open from the start, whether it is
+// on the map's page, whose link to the map it leaves out, and what to tell as the pointer comes onto it and leaves it
 interface CardOptions {
   readonly hint?: JSX.Element;
   readonly open?: boolean;
   readonly onMap?: boolean;
+  readonly onHover?: (on: boolean) => void;
 }
-export function eventCard(e: Festival, { hint = null, open = false, onMap = false }: CardOptions = {}): JSX.Element {
+export function eventCard(
+  e: Festival,
+  { hint = null, open = false, onMap = false, onHover }: CardOptions = {},
+): JSX.Element {
   const [shown, setShown] = createSignal(open);
   // its details, read the first time it opens and kept, hidden, when it closes
   const read = createMemo((was) => was === true || shown());
@@ -283,6 +287,8 @@ export function eventCard(e: Festival, { hint = null, open = false, onMap = fals
         art = el;
       }}
       class={['festival-card', shown() && 'open']}
+      onMouseEnter={() => onHover?.(true)}
+      onMouseLeave={() => onHover?.(false)}
     >
       <div class="c-top">
         {dateBox(e.start_date, e.end_date)}

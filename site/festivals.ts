@@ -3,7 +3,6 @@
 
 import { today } from './days.ts';
 import { freshDay, q, sql } from './db.ts';
-import { h } from './dom.ts';
 import { type Fare, fareOf, flightBegun, type Option, tripOf } from './fares.ts';
 import { DANCES } from './finder.ts';
 import { convert, rounded } from './money.ts';
@@ -150,10 +149,3 @@ export const styleLine = (e: Pick<Festival, 'styles'>): string =>
     .slice(0, 4)
     .map((g) => text('genre', g))
     .join(' · ');
-
-// what an address asked that the view has no such choice for, said at the top of the view
-export function leftOut(root: HTMLElement, dropped: readonly string[]): void {
-  if (dropped.length === 0) return;
-  const said = `The link asks for ${dropped.join(', ')}, which ${dropped.length === 1 ? 'is' : 'are'} not among the choices here.`;
-  root.prepend(h('p', { class: ['muted', 'left-out'], role: 'status' }, said));
-}

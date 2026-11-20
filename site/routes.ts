@@ -145,7 +145,8 @@ export const go = (href: string): void => location.assign(new URL(href, document
 export const showInAddressBar = (href: string): void => history.replaceState(null, '', href);
 
 // A view's state in the URL. Each key keeps the type of its default; a value not in `allowed` keeps the default, and is
-// named among the dropped (key=value), for the view to say so (leftOut); a key the defaults don't have is no state.
+// named among the dropped (key=value), for the view to say so (controls.tsx leftOut); a key the defaults don't have is
+// no state.
 type Defaults = Readonly<Record<string, string | number>>;
 export function readState<D extends Defaults>(
   qs: string,

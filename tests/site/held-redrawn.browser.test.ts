@@ -1,9 +1,9 @@
 // What a view draws again while it shows goes with the draw before, so the page holds as much after each draw as after
 // one, however often the visitor draws it again. In an h() view, the Solid pieces it holds (mount.tsx held), each a
-// root of the page's owner: the Map's panel (its cards), and a community's page (a trip row's line of who goes, the
-// agenda a step of the months draws, a day's words). In a Solid view, every owner under the page's (each draw an owner
-// of the view's root, and what it draws owners of it): Countries' order, the friends' list (who goes, On now), Artists'
-// filters, the Festivals page's line-up (its cards). On 1 November 2026, with a community beside the fixture's in which
+// root of the page's owner: a community's page (a trip row's line of who goes, the agenda a step of the months draws, a
+// day's words). In a Solid view, every owner under the page's (each draw an owner of the view's root, and what it draws
+// owners of it): Countries' order, the friends' list (who goes, On now), Artists' filters, the Festivals page's line-up
+// (its cards), the Map's search (its bubbles too, Leaflet's) and a city picked and let go (its panel). On 1 November 2026, with a community beside the fixture's in which
 // Tonje only may go to KUOF (a tag the lines of who goes and the days hold) and Ola, added, goes to Paris and Albania
 // (two periods of the months, each with a trip).
 import { expect, test } from 'vitest';
@@ -96,9 +96,13 @@ test('the Festivals page drawn again on a choice holds the owners of its last dr
   expect(main()?.querySelectorAll('.festival-card').length).toBeGreaterThan(0);
 });
 
-test('the Map’s panel drawn again holds the cards of its last draw alone', async () => {
+// the bubbles Leaflet draws, each a path in the map's overlay pane
+const bubbles = () => main()?.querySelectorAll('.leaflet-overlay-pane path').length ?? 0;
+
+test('the Map drawn again on a search holds the owners and the bubbles of its last draw alone', async () => {
   await app.open(mapHref());
   const search = one('input[type="search"]', HTMLInputElement);
+  const drawn: number[] = [];
   await drawnAlike(
     () => main()?.querySelector('.panel-cards'),
     async () => {
@@ -106,7 +110,26 @@ test('the Map’s panel drawn again holds the cards of its last draw alone', asy
       search.value = '';
       search.dispatchEvent(new Event('input', { bubbles: true }));
       await expect.poll(() => panel.isConnected).toBe(false);
+      drawn.push(bubbles());
     },
+    owners,
+  );
+  expect(drawn).toEqual([drawn[0], drawn[0], drawn[0]]);
+  expect(drawn[0]).toBeGreaterThan(0);
+});
+
+test('the Map’s panel drawn again as a city is picked and let go holds the owners of its last draw alone', async () => {
+  await app.open(mapHref());
+  const city = () => main()?.querySelector('.leaflet-overlay-pane path');
+  await drawnAlike(
+    () => main()?.querySelector('.panel-cards'),
+    async () => {
+      city()?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await expect.poll(() => main()?.querySelector('.sheet-body .back-link')).not.toBeNull();
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      await expect.poll(() => main()?.querySelector('.sheet-body .back-link')).toBeNull();
+    },
+    owners,
   );
 });
 
