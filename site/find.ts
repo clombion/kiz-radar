@@ -1,4 +1,4 @@
-// What the search finds for what is typed (search.ts shows it): the kinds of thing it finds, how well each matches,
+// What the search finds for what is typed (search.tsx shows it): the kinds of thing it finds, how well each matches,
 // their order, and its answer: the groups found, or that only what has nothing coming up matches, or nothing and the
 // name a typo away. Pure: the items are arguments.
 import type { Checked, With } from './finder.ts';
