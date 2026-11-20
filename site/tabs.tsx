@@ -227,7 +227,7 @@ export function slide(direction: number, change: () => void): void {
   done(
     // the change runs in the transition's callback, outside any effect: flushed, Solid's parts of it are drawn there,
     // so the transition's new state holds them
-    transition(() => flush(change), 'changing section').finally(() => {
+    transition(() => flush(change)).finally(() => {
       if (mine !== slides) return;
       main.style.viewTransitionName = '';
       root.removeAttribute('data-vt');
