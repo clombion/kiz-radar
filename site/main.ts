@@ -3,7 +3,7 @@
 // it: listeners it adds to document or window pass it, so nothing outlives the view. The view shown follows one signal,
 // the address (address.ts).
 
-import { createEffect, createRoot } from 'solid-js';
+import { createEffect, createRoot, createSignal } from 'solid-js';
 import { type Address, createAddress } from './address.ts';
 import { artistsView } from './artists.ts';
 import { onResize } from './bits.ts';
@@ -17,6 +17,7 @@ import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
 import { mounted } from './mount.tsx';
 import { personView } from './people.ts';
+import { inPlaceOf } from './placed.tsx';
 import { done, guarded, reportUncaught } from './report.ts';
 import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, type Tab, TABS } from './routes.ts';
 import { initSearch } from './search.ts';
@@ -24,7 +25,7 @@ import { sentenceView } from './sentence.ts';
 import { sourcesView } from './sources.ts';
 import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
-import { pill, slide } from './tabs.ts';
+import { pill, Row, slide } from './tabs.tsx';
 import { loading, scrolling } from './ui.ts';
 import { updated, updatingPage } from './updating.ts';
 import { Week } from './week.tsx';
@@ -42,7 +43,6 @@ const part = (selector: string): HTMLElement => {
   return el;
 };
 const main = part('#main'),
-  tabs = part('nav.tabs'),
   subnav = part('#subnav'),
   header = part('header.top');
 // the header's height on this screen, which what sticks under it (the festival list's bar) reads as --header-h
@@ -103,11 +103,23 @@ const failed = (root: HTMLElement, e: unknown) =>
         ),
       );
 
-// the header's tabs and the footer's links, from routes.ts
-tabs.append(...TABS.map(([nav, label, href]) => h('a', { href, 'data-nav': nav }, label)));
+// The header's tabs, from routes.ts, the view's own current (none on a page of no tab's). Each view shown sets it, the
+// same tab again too, so the oval is put behind it each time, as a move cut short by the next one is. Shown for the
+// page's life, in a root never disposed.
+const [tabShown, showTab] = createRoot(() => createSignal<Tab | null>(null, { equals: false }));
+inPlaceOf(part('nav.tabs'), "the header's tabs", () =>
+  Row({
+    class: 'tabs',
+    label: 'Main',
+    links: TABS,
+    named: true,
+    get on() {
+      return tabShown();
+    },
+  }),
+);
+// the footer's links, from routes.ts
 part('#footer-nav').append(...[...TABS.slice(0, -1), ...EXPLORE].map(([, label, href]) => h('a', { href }, label)));
-
-const tabRows = () => [tabs, subnav];
 
 // Show the view the address names; scrollUp scrolls up to it (a new page, not the first one)
 function route({ name, sub, qs, moved }: Address, { scrollUp = false } = {}): void {
@@ -146,14 +158,9 @@ function show(name: string, sub: readonly string[], qs: string): void {
   if (name === 'artists' && sub[0] !== undefined && sub[0] !== '') artistHint.mark();
   leave?.abort();
   leave = new AbortController();
-  for (const a of document.querySelectorAll<HTMLElement>('[data-nav]')) {
-    const on = a.dataset['nav'] === view.nav;
-    toggle(a, 'active', on);
-    if (on) a.setAttribute('aria-current', 'page');
-    else a.removeAttribute('aria-current');
-  }
+  showTab(view.nav);
   drawSubnav(view, name, sub, qs);
-  for (const row of tabRows()) pill(row);
+  pill(subnav);
   const root = h('div', {});
   main.replaceChildren(root);
   const { signal } = leave;
@@ -174,12 +181,12 @@ function show(name: string, sub: readonly string[], qs: string): void {
 
 reportUncaught();
 onResize(() => {
-  for (const row of tabRows()) pill(row, { still: true });
+  pill(subnav, { still: true });
 });
 done(
   document.fonts.ready.then(() => {
     measureHeader(); // the web font may change its height
-    for (const row of tabRows()) pill(row, { still: true });
+    pill(subnav, { still: true });
   }),
   'laying out the tabs',
 );

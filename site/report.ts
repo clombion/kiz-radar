@@ -7,7 +7,7 @@ import { showProblem } from './problem.tsx';
 
 const message = (e: unknown): string => (e instanceof Error ? e.message : String(e));
 
-function report(e: unknown, where: string): void {
+export function report(e: unknown, where: string): void {
   console.error(`Kiz Radar: ${where}:`, e);
   showProblem(`Something went wrong (${where}: ${message(e)}). Reloading the page may help. `);
 }

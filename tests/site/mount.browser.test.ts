@@ -1,5 +1,6 @@
-// The seam between the h() page and Solid (site/mount.tsx), through the page: This week, a Solid view, drawn into the
-// root the page hands every view, with eventcard.ts's cards (h()'s) inside it, and taken away when the visitor leaves.
+// The seam between the h() page and a Solid view (site/mount.tsx; the shell's parts are drawn through placed.tsx, and
+// stay), through the page: This week, a Solid view, drawn into the root the page hands every view, with eventcard.ts's
+// cards (h()'s) inside it, and taken away when the visitor leaves.
 import { DEV } from 'solid-js';
 import { expect, test } from 'vitest';
 import { page } from '../../site/owner.ts';

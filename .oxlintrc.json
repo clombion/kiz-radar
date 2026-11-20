@@ -636,13 +636,18 @@
       "rules": { "house/tests": ["error", { "loads": ["../../site/main.ts", "../../site/review.ts"] }] }
     },
     {
+      // house/tests: placed.browser.test.tsx draws parts of its own through the shell's seam, one that throws
+      "files": ["tests/site/placed.browser.test.tsx"],
+      "rules": { "house/tests": ["error", { "imports": ["../../site/placed.tsx"] }] }
+    },
+    {
       // house/tests: page.browser.test.ts keeps its tests of these helpers until they go with them: tabs' pill and modal
       // in task 4.5, dismiss in 4.6, dom's in 4.10
       "files": ["tests/site/page.browser.test.ts"],
       "rules": {
         "house/tests": [
           "error",
-          { "imports": ["../../site/dismiss.ts", "../../site/dom.ts", "../../site/modal.ts", "../../site/tabs.ts"] }
+          { "imports": ["../../site/dismiss.ts", "../../site/dom.ts", "../../site/modal.ts", "../../site/tabs.tsx"] }
         ]
       }
     },

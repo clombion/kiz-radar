@@ -5,10 +5,11 @@
 // someone decides it draws nothing. A type comes from any module with import type, which is erased; a type named
 // inside a value import is not, since the import still loads its module. An import() names its module in one literal,
 // so the rule can check it.
-// .oxlintrc.json turns the rule on for tests/**, and gives its two exceptions to the two files that make them, as the
-// rule's options: tests/site/app.ts loads the entries (`loads`), the one place a test starts the page;
+// .oxlintrc.json turns the rule on for tests/**, and gives its exceptions to the files that make them, as the rule's
+// options: tests/site/app.ts loads the entries (`loads`), the one place a test starts the page;
 // tests/site/page.browser.test.ts imports four helpers (`imports`) and keeps its tests of them until they go with them:
-// tabs' pill and modal in task 4.5, dismiss in 4.6, dom's in 4.10.
+// tabs' pill and modal in task 4.5, dismiss in 4.6, dom's in 4.10; tests/site/placed.browser.test.tsx imports the
+// shell's seam (`imports`), to draw a part that throws, which no page has.
 import type { Rule } from './plugin.ts';
 import { type Node, quotedOneOf } from './shapes.ts';
 
