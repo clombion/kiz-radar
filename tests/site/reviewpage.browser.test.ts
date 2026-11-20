@@ -73,9 +73,12 @@ test('open() refuses a route the address does not hold as given', async () => {
 
 test('open() refuses a page that fails to draw the item', async () => {
   // the item's arrows are drawn by icons.ts, their markup put in their buttons: without it, the queue's view throws as
-  // it builds, and says so in its place (report.ts's guarded) and in the console, naming the view
-  const svg = vi.spyOn(Element.prototype, 'innerHTML', 'set').mockImplementation(() => {
-    throw new Error('no markup in this test');
+  // it builds, and says so in its place (mount.tsx's boundary) and in the console, naming the view. A <template>'s
+  // markup is Solid's own, its JSX parsed once, the boundary's line among it, so it is let through.
+  const real = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML');
+  const svg = vi.spyOn(Element.prototype, 'innerHTML', 'set').mockImplementation(function (this: Element, html) {
+    if (!(this instanceof HTMLTemplateElement)) throw new Error('no markup in this test');
+    real?.set?.call(this, html);
   });
   onTestFinished(() => svg.mockRestore());
   // the review's view, each of the two times open() draws it, and not the page around it (console.ts fails any other

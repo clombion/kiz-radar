@@ -14,15 +14,14 @@ import { onResize } from './bits.ts';
 import { community } from './communities.tsx';
 import { countries } from './countries.tsx';
 import { freshDay, load, loadSite, SiteUpdating } from './db.ts';
-import { h } from './dom.ts';
 import { friends, friendsTabs, placeOf } from './friends.tsx';
 import { artistHint, exploreHint } from './hints.ts';
 import { map } from './map.tsx';
-import { loadingMark } from './marks.tsx';
-import { mounted } from './mount.tsx';
+import { loadFailed, loadingMark } from './marks.tsx';
+import { mounted, viewRoot } from './mount.tsx';
 import { person } from './people.tsx';
 import { atEnd, atStart, inPlaceOf, inside, instead } from './placed.tsx';
-import { done, guarded, reportUncaught } from './report.ts';
+import { done, reportUncaught } from './report.ts';
 import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, type Tab, TABS } from './routes.ts';
 import { initSearch } from './search.tsx';
 import { sentence } from './sentence.tsx';
@@ -94,17 +93,15 @@ const VIEWS: Readonly<Record<Route, View>> = {
   },
 };
 const isRoute = (name: string): name is Route => Object.hasOwn(VIEWS, name);
-// a load that failed: the whole page says the site is mid-update when it is (updating.tsx), else the view says why
-const failed = (root: HTMLElement, e: unknown) =>
-  e instanceof SiteUpdating
-    ? updatingPage(main)
-    : root.replaceChildren(
-        h(
-          'p',
-          { class: ['status', 'error'] },
-          `Could not load the data: ${e instanceof Error ? e.message : String(e)}`,
-        ),
-      );
+// A load that failed: the whole page says the site is mid-update when it is (updating.tsx), else root says why
+// (marks.tsx), until the view is left (gone, its signal; the page's start has none, and goes no further).
+function failed(root: HTMLElement, e: unknown, gone?: AbortSignal): void {
+  if (e instanceof SiteUpdating) updatingPage(main);
+  else if (gone?.aborted !== true) {
+    const unshown = instead(root, 'the line of a load that failed', () => loadFailed(e));
+    gone?.addEventListener('abort', unshown, { once: true });
+  }
+}
 
 // The header's tabs, from routes.ts, the view's own current (none on a page of no tab's). Each view shown sets it, the
 // same tab again too, so the oval is put behind it each time, as a move cut short by the next one is. Shown for the
@@ -181,10 +178,12 @@ function show(name: string, sub: readonly string[], qs: string): void {
   leave = new AbortController();
   showTab(view.nav);
   showSubnav(subnavOf(view, name, sub, qs));
-  const root = h('div', {});
+  const root = viewRoot();
   main.replaceChildren(root);
   const { signal } = leave;
-  const build = () => guarded(root, name, () => view.show(root, sub, qs, { signal, data, name }));
+  const build = () => {
+    view.show(root, sub, qs, { signal, data, name });
+  };
   if (view.waitsForData) {
     // the loading mark, taken away once the data is in or failed, or the view is left
     const loaded = new AbortController();
@@ -200,7 +199,7 @@ function show(name: string, sub: readonly string[], qs: string): void {
       })
       .catch((e: unknown) => {
         loaded.abort();
-        failed(root, e);
+        failed(root, e, signal);
       });
   } else build();
   document.title = view.title === null ? 'Kiz Radar' : `${view.title} · Kiz Radar`;
