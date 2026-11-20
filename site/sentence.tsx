@@ -355,7 +355,7 @@ export function sentence({ qs, data }: ViewProps): JSX.Element {
     return (
       <span>
         {`${plural(rows.length, 'festival')} like that. `}
-        {/* oxlint-disable-next-line jsx-a11y/anchor-is-valid -- a link to the cards below, its markup kept as the h() page drew it during the port (revisit after 4.10) */}
+        {/* oxlint-disable-next-line jsx-a11y/anchor-is-valid -- a link to the cards below, its click scrolling to them with the page's own motion (toList): the address is the router's, so no fragment can be its href */}
         <a
           href="#"
           onClick={(ev) => {

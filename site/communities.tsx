@@ -257,7 +257,7 @@ export function community({ sub: [key], qs }: ViewProps): JSX.Element {
         {shareButton('Share this page', c.name, communityShareHref(c.key))}
         <span
           class="privacy"
-          // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a lock and the people counted, said as one image, its markup kept as the h() page drew it during the port (revisit after 4.10)
+          // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a lock and the people counted, said as one image: an <img> cannot hold the drawing and the count
           role="img"
           aria-label={`Anyone with the link can see this page · ${members}`}
           title={`Anyone with the link can see this page · ${members}`}
@@ -448,7 +448,7 @@ function chartOf({ e, aways }: Visit, c: Community, id: string): JSX.Element {
   };
   return [
     placesSaid < 2 ? null : (
-      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- the roster's two views, a segmented control named for a screen reader, its markup kept as the h() page drew it during the port (revisit after 4.10)
+      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- the roster's two views, a group named for a screen reader: a <fieldset> would be the same group by the same aria-label, but would bring the browser's border, padding, margin and min-content width for the stylesheet to take off again
       <div class="gantt-views" role="group" aria-label="The roster">
         {choice('travel')}
         {choice('place')}

@@ -151,7 +151,7 @@ export function tokenDialog({
         />
         {' Keep it on this device (otherwise for this tab only)'}
       </label>
-      {/* oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- the dialog's status line, its markup kept as the h() page drew it during the port (revisit after 4.10) */}
+      {/* oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- the dialog's status line: an <output>, the rule's tag, is inline and a form's control, not a paragraph */}
       <p class="review-status" role="status">
         {said()}
       </p>

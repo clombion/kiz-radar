@@ -86,7 +86,7 @@ function count<A extends Away>(s: Days<A>, week: readonly (string | null)[]): JS
   const said = begin.map((f) => `${f.title}: ${plural(f.people, 'person', 'people')}`).join('; ');
   return (
     <span
-      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a cell of the calendar's grid (WAI-ARIA's grid pattern), its markup kept as h() drew it during the port (revisit after 4.10)
+      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a cell of the calendar's grid (WAI-ARIA's grid pattern), laid out by the stylesheet's grid on spans, which a table's parts would leave for the table's own layout
       role="gridcell"
       class="days-count"
       ref={styled({ 'grid-column': '8' })}
@@ -126,7 +126,7 @@ function month<A extends Away>(s: Days<A>, m: string, shown: Shown): JSX.Element
           styled({ 'grid-column': String(col + 1) })(el);
           if (away !== undefined) shown.cells.set(d, el);
         }}
-        // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a day of the calendar's grid (WAI-ARIA's grid pattern), its markup kept as h() drew it during the port (revisit after 4.10)
+        // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a day of the calendar's grid (WAI-ARIA's grid pattern), laid out by the stylesheet's grid on spans, which a table's parts would leave for the table's own layout
         role="gridcell"
         class={['days-day', away !== undefined && 'days-on', d < s.today && 'days-past']}
         aria-current={d === s.today ? 'date' : undefined}
@@ -178,11 +178,11 @@ function month<A extends Away>(s: Days<A>, m: string, shown: Shown): JSX.Element
       <p class="days-caption" aria-hidden="true">
         {monthShort(`${m}-01`)} <small>{m.slice(0, 4)}</small>
       </p>
-      {/* oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- the grid's row of weekdays (WAI-ARIA's grid pattern), its markup kept as h() drew it during the port (revisit after 4.10) */}
+      {/* oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- the grid's row of weekdays (WAI-ARIA's grid pattern), laid out by the stylesheet's grid on spans, which a table's parts would leave for the table's own layout */}
       <div class={['days-week', 'days-head']} role="row">
         <For each={WEEKDAYS}>
           {(name) => (
-            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a weekday heading the grid's column (WAI-ARIA's grid pattern), its markup kept as h() drew it during the port (revisit after 4.10)
+            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a weekday heading the grid's column (WAI-ARIA's grid pattern), laid out by the stylesheet's grid on spans, which a table's parts would leave for the table's own layout
             <span role="columnheader" title={name} aria-label={name}>
               {name[0]}
             </span>
@@ -193,7 +193,7 @@ function month<A extends Away>(s: Days<A>, m: string, shown: Shown): JSX.Element
         {(week) => {
           const days = week.map(day);
           return (
-            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a week of the calendar's grid (WAI-ARIA's grid pattern), its markup kept as h() drew it during the port (revisit after 4.10)
+            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a week of the calendar's grid (WAI-ARIA's grid pattern), laid out by the stylesheet's grid on spans, which a table's parts would leave for the table's own layout
             <div class="days-week" role="row">
               {strokes(week, s.festivals)}
               {days}

@@ -318,7 +318,7 @@ function decision(
           {phase() === 'writing' ? 'Writing…' : phase() === 'written' ? '✓ Written' : 'Write the claim'}
         </button>
       </div>
-      {/* oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a decision's status line, its markup kept as the h() page drew it during the port (revisit after 4.10) */}
+      {/* oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a decision's status line: an <output>, the rule's tag, is inline and a form's control, not a paragraph */}
       <p class={['review-status', 'small']} role="status">
         {said()}
       </p>
@@ -498,7 +498,7 @@ function railRows(p: Page, q: Queue, i: number): JSX.Element {
         <button
           type="button"
           class={['search-row', 'review-row', { past: isSettled }]}
-          // oxlint-disable-next-line jsx-a11y/role-supports-aria-props -- the rail's row says it is the item shown, its markup kept as the h() page drew it during the port (revisit after 4.10)
+          // oxlint-disable-next-line jsx-a11y/role-supports-aria-props -- the rail's row says it is the item shown, which a button's role does not take: kept as it is until issue #22 marks it aria-current
           aria-selected={selected}
           onClick={() => {
             p.go(at.tab, n);
