@@ -126,7 +126,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `storage` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `styles` | everywhere oxlint lints | (none) |
 | `svgs` | everywhere oxlint lints | `site/icons.tsx` |
-| `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, two helpers (`dismiss`, `dom`) imported by `tests/site/page.browser.test.ts`, and the shell's seam (`placed`) imported by `tests/site/placed.browser.test.tsx`: the rule's options in each file's override |
+| `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, `dom`'s helpers imported by `tests/site/page.browser.test.ts`, and the shell's seam (`placed`) imported by `tests/site/placed.browser.test.tsx`: the rule's options in each file's override |
 | `thens` | `*.tsx` | (none) |
 
 The 28 house rules: the 13 that were Grit's, moved to oxlint's plugin (`session` in task 2.5, the twelve others in task

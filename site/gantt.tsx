@@ -20,13 +20,13 @@
 // Solid; an h() view holds one through mount.tsx's held.
 
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { createEffect, createSignal, flush, For, onCleanup } from 'solid-js';
+import { createEffect, createSignal, flush, For } from 'solid-js';
 import { asElement, flat, type Kid, styled } from './bits.ts';
 import { awayDays, daysInto, daysOf, type Moment, weekday, weekday3, WEEKDAYS } from './calendar.ts';
 import { addDays } from './days.ts';
-import { dismissable } from './dismiss.ts';
 import { swipe } from './ink.ts';
 import { MEDIA } from './media.ts';
+import { overPage } from './over.ts';
 import { type Bucket, type Line, ownNights, type Place, type Unit } from './roster.ts';
 import { dayMonth } from './ui.ts';
 import { joined, plural } from './wording.ts';
@@ -135,6 +135,19 @@ function behind(
     HTMLElement,
     'a card of names',
   );
+  // the one card open on the page while it shows (over.ts), which closes it as it opens another
+  const card = overPage({
+    within: () => [list, ...openers],
+    closed: () => {
+      setOver(null);
+      setOpened(null);
+      setFlowing(false);
+    },
+    place: () => {
+      setFlowing(false);
+      placeAgain((n) => n + 1);
+    },
+  });
   // The card's state changed, drawn at once, and placed again (a click on the text the pointer is over changes no text
   // the card is by); then it is the one card open, or, shown by no text, closed.
   const changed = (change: () => void) => {
@@ -143,26 +156,9 @@ function behind(
       setFlowing(false);
       placeAgain((n) => n + 1);
     });
-    if (by() === null) one.closed();
-    else one.opened();
+    if (by() === null) card.close();
+    else card.opened();
   };
-  const leaving = new AbortController();
-  onCleanup(() => {
-    leaving.abort();
-  });
-  const one = dismissable({
-    within: () => [list, ...openers],
-    close: () => {
-      changed(() => {
-        setOver(null);
-        setOpened(null);
-      });
-    },
-    place: () => {
-      changed(() => undefined);
-    },
-    signal: leaving.signal,
-  });
   // placed by its text once it shows, on a computer, and again on each change and once the window's size changes
   createEffect(
     () => {

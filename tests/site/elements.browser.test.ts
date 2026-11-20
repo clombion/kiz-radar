@@ -1,4 +1,4 @@
-// What the page's elements show where the site builds them (dom.ts, icons.ts, dialog.tsx, dismiss.ts, through the
+// What the page's elements show where the site builds them (dom.ts, icons.ts, dialog.tsx, over.ts, through the
 // views): a festival's title with markup in it shown as text, nothing the page leaves out written as null or false,
 // classes and styles as given, the drawings, the search dialog's history entry, the Festivals page's paged list and
 // select, and the cards over a community's page. On 1 November 2026, Glasgow retitled with markup and flying to GLA,
@@ -405,4 +405,30 @@ test('a card over the page is the only one open, and goes on Escape, the focus l
     };
   };
   await expect.poll(placed).toEqual({ shown: true, over: false, inWindow: true, beside: true, level: true });
+});
+
+test('a card over the page that is closed is not placed again when the window changes size, another one open', async () => {
+  await atWidth(760);
+  const row = await kuofOf(app.open, NAMES);
+  cellOn('2027-01-13')?.focus();
+  const pop = popover();
+  const january = () => monthsOf().find((m) => m.contains(cellOn('2027-01-13') ?? null));
+  const at = () => [pop?.style.left, pop?.style.top];
+  await expect.poll(() => pop?.hidden).toBe(false);
+  pressEscape(document.body);
+  // the roster's card of names opened in its place: the one card the resize places again
+  const who = [...(row?.querySelectorAll<HTMLButtonElement>('.gantt:not([hidden]) .gantt-who') ?? [])].find(
+    (b) => said(b) === 'Everyone else',
+  );
+  who?.click();
+  expect(who?.getAttribute('aria-expanded')).toBe('true');
+  const was = at();
+  const left = january()?.getBoundingClientRect().left;
+  await atWidth(1200);
+  await expect.poll(() => january()?.getBoundingClientRect().left).not.toBe(left);
+  await new Promise((frame) => {
+    requestAnimationFrame(frame);
+  });
+  expect([pop?.hidden, ...at(), who?.getAttribute('aria-expanded')]).toEqual([true, ...was, 'true']);
+  if (who) pressEscape(who);
 });
