@@ -42,27 +42,6 @@ export const button = (attrs: Attrs, ...kids: readonly Kid[]): HTMLButtonElement
 export const nodes = (kids: readonly Kid[]): Node[] =>
   flat(kids).map((kid) => (typeof kid === 'string' ? document.createTextNode(kid) : kid));
 
-// The button of a panel of more choices (aria-controls names the panel); dropdown() makes it open and close it.
-export const moreButton = (panelId: string, ...words: readonly Kid[]): HTMLButtonElement =>
-  button({ class: 'more-btn', 'aria-expanded': 'false', 'aria-controls': panelId }, ...words);
-// The panel's button shows or hides it; a click outside what counts as inside (the button and the panel, or the bar
-// they are on) hides it again, until signal aborts.
-export function dropdown(opener: HTMLElement, panel: HTMLElement, inside: readonly Node[], signal: AbortSignal): void {
-  opener.addEventListener('click', () => {
-    panel.hidden = panel.hidden === false;
-    opener.setAttribute('aria-expanded', String(!panel.hidden));
-  });
-  document.addEventListener(
-    'click',
-    ({ target }) => {
-      if (panel.hidden !== false || (target instanceof Node && inside.some((n) => n.contains(target)))) return;
-      panel.hidden = true;
-      opener.setAttribute('aria-expanded', 'false');
-    },
-    { signal },
-  );
-}
-
 // A select of choices, one of them on: the choice comes back as the option at the picked place, so of its type and
 // never a string to parse.
 export function choices<V extends string | number>(

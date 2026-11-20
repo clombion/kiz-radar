@@ -111,44 +111,63 @@ export const segments = <V extends string>(
 );
 
 // The more button of a panel of more choices (aria-controls names it), which opens and closes it; a click outside what
-// counts as inside (within: the button and the panel, or the bar they are on) closes it again. Its listener on the
-// document goes with the owner it is made under (a view). Its words are drawn as given, a reactive part of them drawn
-// again with the button kept; the panel is the caller's, hidden unless open.
-export function dropdown(within: (opener: Element | undefined) => readonly (Element | undefined)[]): {
+// counts as inside (within: the bar they are on; else the button and the panel) closes it again. Its listener on the
+// document goes with the owner it is made under (a view). The button's words are drawn as they are given, a reactive
+// part of JSX following what it reads, so the button stays; the panel is the caller's, hidden unless open, or the one
+// wrapped draws beside the button.
+export function dropdown(within?: () => readonly (Element | undefined)[]): {
   readonly open: Accessor<boolean>;
   readonly button: (panelId: string, words: JSX.Element) => JSX.Element;
+  readonly wrapped: (panelId: string, words: JSX.Element, fields: JSX.Element) => JSX.Element;
 } {
   const [open, setOpen] = createSignal(false);
-  let opener: HTMLButtonElement | undefined;
+  let opener: HTMLButtonElement | undefined, panel: HTMLDivElement | undefined;
+  const inside = () => within?.() ?? [opener, panel];
   document.addEventListener(
     'click',
     ({ target }) => {
-      if (!open() || (target instanceof Node && within(opener).some((n) => n?.contains(target) === true))) return;
+      if (!open() || (target instanceof Node && inside().some((n) => n?.contains(target) === true))) return;
       flush(() => {
         setOpen(false);
       });
     },
     { signal: disposal() },
   );
+  const button = (panelId: string, words: JSX.Element): JSX.Element => (
+    <button
+      ref={(el) => {
+        opener = el;
+      }}
+      type="button"
+      class="more-btn"
+      aria-expanded={open() ? 'true' : 'false'}
+      aria-controls={panelId}
+      onClick={() => {
+        flush(() => {
+          setOpen((was) => !was);
+        });
+      }}
+    >
+      {words}
+    </button>
+  );
   return {
     open,
-    button: (panelId, words) => (
-      <button
-        ref={(el) => {
-          opener = el;
-        }}
-        type="button"
-        class="more-btn"
-        aria-expanded={open() ? 'true' : 'false'}
-        aria-controls={panelId}
-        onClick={() => {
-          flush(() => {
-            setOpen((was) => !was);
-          });
-        }}
-      >
-        {words}
-      </button>
+    button,
+    wrapped: (panelId, words, fields) => (
+      <div class="filters-wrap">
+        {button(panelId, words)}
+        <div
+          ref={(el) => {
+            panel = el;
+          }}
+          class="more-panel"
+          id={panelId}
+          hidden={!open()}
+        >
+          {fields}
+        </div>
+      </div>
     ),
   };
 }

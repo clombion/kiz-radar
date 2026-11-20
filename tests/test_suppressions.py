@@ -79,6 +79,7 @@ SITE_ALLOWED = Counter(
         ('site/eventcard.tsx', 'jsx-a11y/no-static-element-interactions'): 1,
         ('site/gantt.tsx', 'jsx-a11y/prefer-tag-over-role'): 1,
         ('site/globals.d.ts', 'import/no-namespace'): 1,
+        ('site/map.tsx', 'jsx-a11y/prefer-tag-over-role'): 1,
         ('site/marks.tsx', 'jsx-a11y/prefer-tag-over-role'): 1,
         ('site/months.tsx', 'jsx-a11y/click-events-have-key-events'): 1,
         ('site/months.tsx', 'jsx-a11y/interactive-supports-focus'): 1,

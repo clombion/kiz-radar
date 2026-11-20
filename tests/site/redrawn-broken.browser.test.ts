@@ -1,11 +1,12 @@
-// A part a Solid view draws again as the visitor changes it (mount.tsx Redrawn, createDerived) that throws: on a later
-// draw, the throw is said once, as the page's, as a throw in an h() view's listener was, and the view works on, what
-// other parts read of it as it was before, its part drawn again on the next change; as the view is first drawn, the
-// view says it cannot be shown, as guarded did. On 1 November 2026: the Friends tab, its list to three months, then a
-// year: Cloudkiz, from 26 February, comes in, its last day planted as a day no month has, which its row's days read as
-// it is drawn; Artists searched, the artists' aliases planted away, which only a search reads.
-import { expect, test } from 'vitest';
-import { artistsHref, friendsHref } from '../../site/routes.ts';
+// A part a Solid view draws again as the visitor changes it (mount.tsx Redrawn, redrawing, createDerived) that throws: on a
+// later draw, the throw is said once, as the page's, as a throw in an h() view's listener was, and the view works on,
+// what other parts read of it as it was before, its part drawn again on the next change; as the view is first drawn,
+// the view says it cannot be shown, as guarded did. On 1 November 2026: the Friends tab, its list to three months, then
+// a year: Cloudkiz, from 26 February, comes in, its last day planted as a day no month has, which its row's days read
+// as it is drawn; Artists searched, the artists' aliases planted away, which only a search reads; the Map's bubbles,
+// Leaflet's circles refused as a filter draws them again.
+import { expect, test, vi } from 'vitest';
+import { artistsHref, friendsHref, mapHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { CLOUDKIZ } from './community.fixture.ts';
 import { expectConsole } from './console.ts';
@@ -72,4 +73,30 @@ test('a list whose rows throw as they are chosen says so once as the page, and i
   searched(''); // no search: the list again
   await expect.poll(rows).toBeGreaterThan(0);
   expect([summary(), alerts()]).toEqual([all, 1]);
+});
+
+test('the Map’s bubbles that throw as a filter draws them again say so once as the page, and the map goes on', async () => {
+  expectConsole('error', /^Kiz Radar: the page: RangeError: planted/u);
+  await app.open(mapHref());
+  const bubbles = () => main()?.querySelectorAll('.leaflet-overlay-pane path').length ?? 0;
+  const drawn = bubbles();
+  expect(drawn).toBeGreaterThan(0);
+  const filter = main()?.querySelector<HTMLSelectElement>('.map-bar select');
+  if (filter == null) throw new Error('the Map has no select');
+  const filtered = (i: number) => {
+    filter.selectedIndex = i;
+    filter.dispatchEvent(new Event('change'));
+  };
+  const refused = vi.spyOn(L, 'circleMarker').mockImplementation(() => {
+    throw new RangeError('planted');
+  });
+  try {
+    filtered(1);
+  } finally {
+    refused.mockRestore();
+  }
+  await expect.poll(alerts).toBe(1);
+  expect(main()?.textContent).not.toContain('This page could not be shown');
+  filtered(0);
+  await expect.poll(bubbles).toBe(drawn);
 });

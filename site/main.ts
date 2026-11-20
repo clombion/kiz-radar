@@ -17,7 +17,7 @@ import { freshDay, load, loadSite, SiteUpdating } from './db.ts';
 import { h } from './dom.ts';
 import { friends, friendsTabs, placeOf } from './friends.tsx';
 import { artistHint, exploreHint } from './hints.ts';
-import { mapView } from './map.ts';
+import { map } from './map.tsx';
 import { loadingMark } from './marks.tsx';
 import { held, mounted } from './mount.tsx';
 import { personView } from './people.ts';
@@ -75,7 +75,7 @@ const FINDER: View = {
 const VIEWS: Readonly<Record<Route, View>> = {
   finder: FINDER,
   week: { title: 'This week', nav: 'explore', waitsForData: true, show: mounted(Week) },
-  map: { title: 'Map', nav: 'explore', waitsForData: true, show: mapView },
+  map: { title: 'Map', nav: 'explore', waitsForData: true, show: mounted(map) },
   artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: mounted(artists) },
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: mounted(countries) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) },
