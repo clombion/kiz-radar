@@ -8,12 +8,14 @@ const CLASS = /\.(?<name>-?[A-Za-z_][\w-]*)/gu;
 const CLASS_ATTRIBUTE = /\sclass="(?<names>[^"]*)"/gu;
 
 // A class is used when a module names it, quoted, where ClassName (site/classes.ts, generated from these stylesheets)
-// types it, or a page's markup gives it to an element: not when a comment or another word happens to contain it.
+// types it, or JSX gives it as class="…" (double-quoted), or a page's markup gives it to an element: not when a
+// comment or another word happens to contain it. A class a module gives only as an unquoted key of a JSX class object
+// ({ shown: on }) is not counted, which fails safe: the test calls it unused.
 test('every CSS class is given to an element by the page or a module', () => {
   const named = new Set(
     [...code.values()].flatMap((src) => [...src.matchAll(/'(?<name>[\w-]+)'/gu)].map((m) => m.groups?.['name'] ?? '')),
   );
-  for (const m of pages.flatMap((p) => [...p.matchAll(CLASS_ATTRIBUTE)]))
+  for (const m of [...pages, ...code.values()].flatMap((p) => [...p.matchAll(CLASS_ATTRIBUTE)]))
     for (const n of (m.groups?.['names'] ?? '').split(' ')) named.add(n);
   const unused: string[] = [];
   for (const [file, text] of css)
