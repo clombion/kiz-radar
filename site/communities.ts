@@ -26,7 +26,7 @@ import { heldCard } from './eventcard.tsx';
 import { type Festival, withDetails } from './festivals.ts';
 import { dayTimeAt, gantt, ganttByPlace, timeAt, unsaidEnd } from './gantt.tsx';
 import { Drawing } from './icons.ts';
-import { months, popover } from './months.ts';
+import { months } from './months.tsx';
 import { held, heldNodes, redraws } from './mount.tsx';
 import { page, personLink, shareButton } from './people.ts';
 import { couplesAmong, type Goer, goersInline, heldTag, namesOf } from './plans.tsx';
@@ -243,8 +243,6 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
     plan.replaceChildren(...nodes(agenda(current, today, c, { from: to, signal: agendaDrawn() })));
     showInAddressBar(communityHref(c.key, { from: to === steps[0] ? null : to }));
   };
-  // a day's words, their tags taken away when the words are drawn for another day
-  const dayDrawn = redraws(signal);
   document.title = `${c.name} · Kiz Radar`; // as its own page's title says it
   page(
     root,
@@ -280,25 +278,27 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
     ],
     // the months, while a trip is to come or one ended shows in them
     current.length > 0 || trips.some((t) => t.aways.some((a) => inPeriod(from, a)))
-      ? months({
-          today,
-          days,
-          label: (d, on) =>
-            `${weekDay(d)}: ${plural(on.people, 'person', 'people')} ${
-              on.aways.every((a) => atFestival(a, d)) ? 'at the festival in' : 'travelling to'
-            } ${placesOf(on.aways)}`,
-          festivals: trips.map(({ e, who, ended, off }) => ({
-            ...e,
-            people: who.people,
-            ended: ended || off !== null,
-          })),
-          // the days someone travels on outside their festival's days: the day before it they arrive, the day after
-          travel: new Set([...days].flatMap(([d, on]) => (on.aways.some((a) => !atFestival(a, d)) ? [d] : []))),
-          pop: popover((d) => dayDetail(d, everyone.get(d), c.manager, dayDrawn()), signal),
-          from,
-          steps,
-          moved,
-        })
+      ? held(signal, HTMLElement, 'the months', () =>
+          months({
+            today,
+            days,
+            label: (d, on) =>
+              `${weekDay(d)}: ${plural(on.people, 'person', 'people')} ${
+                on.aways.every((a) => atFestival(a, d)) ? 'at the festival in' : 'travelling to'
+              } ${placesOf(on.aways)}`,
+            festivals: trips.map(({ e, who, ended, off }) => ({
+              ...e,
+              people: who.people,
+              ended: ended || off !== null,
+            })),
+            // the days someone travels on outside their festival's days: the day before it they arrive, the day after
+            travel: new Set([...days].flatMap(([d, on]) => (on.aways.some((a) => !atFestival(a, d)) ? [d] : []))),
+            detail: (d) => dayDetail(d, everyone.get(d), c.manager, signal),
+            from,
+            steps,
+            moved,
+          }),
+        )
       : null,
     current.length > 0
       ? plan

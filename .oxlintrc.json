@@ -645,12 +645,9 @@
       "rules": { "house/tests": ["error", { "imports": ["../../site/placed.tsx"] }] }
     },
     {
-      // house/tests: page.browser.test.ts keeps its tests of these helpers until they go with them: dismiss in task
-      // 4.6, dom's in 4.10
+      // house/tests: page.browser.test.ts keeps its tests of dom.ts's helpers until they go with them, in task 4.10
       "files": ["tests/site/page.browser.test.ts"],
-      "rules": {
-        "house/tests": ["error", { "imports": ["../../site/dismiss.ts", "../../site/dom.ts"] }]
-      }
+      "rules": { "house/tests": ["error", { "imports": ["../../site/dom.ts"] }] }
     },
     {
       // house/markup: an element of the site gets markup from icons.ts alone, and is built with dom.ts's h()
