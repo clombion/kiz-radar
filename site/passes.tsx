@@ -9,11 +9,12 @@ import { today } from './days.ts';
 import { one, q, sql } from './db.ts';
 import { type Peek, peek } from './dialog.tsx';
 import type { Festival } from './festivals.ts';
+import { away } from './marks.tsx';
 import { money } from './money.ts';
 import { nextChange, type Priced, type PriceLine, priceLine, type TierNow, tierNow, type Window } from './pricing.ts';
 import { num, opt, PASS, type RowOf, str, TIER, type TierRow } from './rows.ts';
 import { KEY } from './states.ts';
-import { away, dayMonth, dayRange } from './ui.ts';
+import { dayMonth, dayRange } from './ui.ts';
 import { say, text } from './wording.ts';
 
 export type Tier = TierRow;

@@ -8,12 +8,13 @@ import { dbDay, q, site, sql } from './db.ts';
 import { button, choices, dropdown, h, moreButton, nodes, segments } from './dom.ts';
 import { leftOut } from './festivals.ts';
 import { fold } from './fold.ts';
-import { held, redraws } from './mount.tsx';
+import { nowTag } from './marks.tsx';
+import { held, heldNodes, redraws } from './mount.tsx';
 import { type Goer, goersOf, livingNear, NEAR_KM, whoLines, withPlans } from './plans.tsx';
 import { changed, eventOnMapHref, friendsHref, personHref, readState, showInAddressBar } from './routes.ts';
 import { EVENT, type RowOf } from './rows.ts';
 import { KEY } from './states.ts';
-import { dayMonth, dayRange, monthYear, nowTag, place } from './ui.ts';
+import { dayMonth, dayRange, monthYear, place } from './ui.ts';
 import { joined, joinedText, plural } from './wording.ts';
 
 // a list longer than these gets the bar that narrows it
@@ -318,7 +319,7 @@ function byMonth(shown: readonly Festival[], ticked: ReadonlySet<string>, signal
             h(
               'span',
               {},
-              nowTag(e),
+              heldNodes(signal, 'the tag of a festival under way', () => nowTag(e)),
               h('a', { href: eventOnMapHref(e.id), class: 'who-name' }, e.title),
               h('span', { class: 'muted' }, ' · ', place(e)),
             ),

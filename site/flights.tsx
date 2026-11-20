@@ -8,9 +8,10 @@ import { own } from './bits.ts';
 import { type Peek, peek } from './dialog.tsx';
 import { best, checkedAgo, FAR_KM, type Option, resoldSaid, stopsSaid, type Transfer, WORTH_EUR } from './fares.ts';
 import type { Festival } from './festivals.ts';
+import { away } from './marks.tsx';
 import { money } from './money.ts';
 import { KEY } from './states.ts';
-import { away, dayMonth, flightsUrl, home } from './ui.ts';
+import { dayMonth, flightsUrl, home } from './ui.ts';
 import { text } from './wording.ts';
 
 let view: Peek | undefined;

@@ -88,9 +88,9 @@ const main = (): HTMLElement => {
   return el;
 };
 const said = () => (document.querySelector('main')?.textContent ?? '(no <main>)').trim().slice(0, 600);
-// what a visitor is told while a page waits for its data (index.html's first line, ui.ts's loading()), and when a
-// page failed (report.ts's guarded(), main.ts's and sentence.ts's lines; not updating.tsx's page, "Kiz Radar could not
-// load", which is a page a visitor gets mid-update and a test may start on)
+// what a visitor is told while a page waits for its data (index.html's first line, marks.tsx's loadingMark()), and
+// when a page failed (report.ts's guarded(), main.ts's and sentence.ts's lines; not updating.tsx's page, "Kiz Radar
+// could not load", which is a page a visitor gets mid-update and a test may start on)
 const LOADING = /^\s*Loading/u;
 const FAILED = /This page could not be shown|Could not load the /u;
 const loading = (): boolean => [...main().querySelectorAll('[role="status"]')].some((s) => LOADING.test(s.textContent));

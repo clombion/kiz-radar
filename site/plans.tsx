@@ -4,9 +4,10 @@
 // an h() view holds one through mount.tsx's held.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { For } from 'solid-js';
-import { flat, own } from './bits.ts';
+import { own } from './bits.ts';
 import { one, q, site, sql } from './db.ts';
 import { leaving, type Peek, peek, type Shown } from './dialog.tsx';
+import { nowTag } from './marks.tsx';
 import { held } from './mount.tsx';
 import { roleLabel } from './roles.ts';
 import { artistHref, eventOnMapHref, friendsHref, personHref } from './routes.ts';
@@ -24,7 +25,7 @@ import {
   unsure,
 } from './rows.ts';
 import { KEY } from './states.ts';
-import { countryName, dayRange, flag, nowTag, place } from './ui.ts';
+import { countryName, dayRange, flag, place } from './ui.ts';
 import type { Key } from './wording.ts';
 import { joined, plural, text } from './wording.ts';
 
@@ -361,11 +362,11 @@ const planRow = (e: Listed, name: JSX.Element, who: JSX.Element, also = '') => (
   <li>
     <span class="when">{dayRange(e.start_date, e.end_date)}</span>
     <span class="what">
-      {flat([nowTag(e)])}
+      {nowTag(e)}
       {name}
       <span class="muted">
         {' · '}
-        {flat(place(e))}
+        {place(e)}
         {also}
       </span>
     </span>
@@ -418,7 +419,7 @@ function peekEvent(e: Going, from: Element | null = null) {
   );
   show(from, {
     title: `Who’s going to ${e.title}`,
-    sub: () => [dayRange(e.start_date, e.end_date), ' · ', flat(place(e))],
+    sub: () => [dayRange(e.start_date, e.end_date), ' · ', place(e)],
     body: () => (
       <ul class="peek-people">
         <For each={everyone(e)}>{(g) => goerRow(g, () => peekGroup(g, null, backTo))}</For>

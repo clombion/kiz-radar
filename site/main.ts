@@ -17,7 +17,8 @@ import { h } from './dom.ts';
 import { friendsTabs, friendsView, placeOf } from './friends.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
-import { mounted } from './mount.tsx';
+import { loadingMark } from './marks.tsx';
+import { held, mounted } from './mount.tsx';
 import { personView } from './people.ts';
 import { atEnd, atStart, inPlaceOf, inside } from './placed.tsx';
 import { done, guarded, reportUncaught } from './report.ts';
@@ -29,7 +30,6 @@ import { sourcesView } from './sources.ts';
 import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
 import { type Link, Row, slide } from './tabs.tsx';
-import { loading } from './ui.ts';
 import { updated, updatingPage } from './updating.tsx';
 import { Week } from './week.tsx';
 
@@ -186,15 +186,25 @@ function show(name: string, sub: readonly string[], qs: string): void {
   const { signal } = leave;
   const build = () => guarded(root, name, () => view.show(root, sub, qs, { signal, data, name }));
   if (view.waitsForData) {
-    root.append(loading('Loading the festival database…'));
+    // the loading mark, taken away once the data is in or failed, or the view is left
+    const loaded = new AbortController();
+    root.append(
+      held(AbortSignal.any([signal, loaded.signal]), HTMLElement, 'the loading mark', () =>
+        loadingMark('Loading the festival database…'),
+      ),
+    );
     data
       .then(() => {
+        loaded.abort();
         if (!signal.aborted) {
           root.replaceChildren();
           build();
         }
       })
-      .catch((e: unknown) => failed(root, e));
+      .catch((e: unknown) => {
+        loaded.abort();
+        failed(root, e);
+      });
   } else build();
   document.title = view.title === null ? 'Kiz Radar' : `${view.title} · Kiz Radar`;
 }
