@@ -4,15 +4,15 @@
 // friends (the festivals all of them go to, or any of them), by time, and by a festival's name or city. The choices
 // live in the address.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { createEffect, createSignal, flush, For, Show } from 'solid-js';
-import { choices, dropdown, leftOut, searchField, segments } from './controls.tsx';
+import { createSignal, flush, For, Show } from 'solid-js';
+import { choices, chosen, dropdown, leftOut, searchField, segments } from './controls.tsx';
 import { addDays, meets, weekendOf } from './days.ts';
 import { dbDay, q, site, sql } from './db.ts';
 import { fold } from './fold.ts';
 import { nowTag } from './marks.tsx';
 import { createDerived, Redrawn, type ViewProps } from './mount.tsx';
 import { type Goer, goersOf, livingNear, NEAR_KM, whoLines, withPlans } from './plans.tsx';
-import { changed, eventOnMapHref, friendsHref, personHref, readState, showInAddressBar } from './routes.ts';
+import { changed, eventOnMapHref, friendsHref, personHref, readState } from './routes.ts';
 import { EVENT, type RowOf } from './rows.ts';
 import { KEY } from './states.ts';
 import { dayMonth, dayRange, monthYear, place } from './ui.ts';
@@ -96,13 +96,10 @@ export function friends({ qs }: ViewProps): JSX.Element {
   const sharing: Shares[] = withPlans().filter((p) => people.has(p.key));
   const { with: withKeys, ...rest } = asked;
   const first: Shown = { ...rest, ticked: new Set(withKeys.split(',').filter((k) => people.has(k))) };
-  // the choices, a new record on each one, as each drew the list again
-  const [s, setS] = createSignal(first);
-  const set = (to: Partial<Shown>) => {
-    flush(() => {
-      setS((was) => ({ ...was, ...to }));
-    });
-  };
+  // in the defaults' order, as the address had them
+  const [s, set] = chosen(first, ({ ticked, ...now }) =>
+    friendsHref(changed({ ...DEFAULTS, ...now, with: [...ticked].join(',') }, DEFAULTS)),
+  );
   const tick = (key: string, on: boolean) => {
     const ticked = new Set(s().ticked);
     if (on) ticked.add(key);
@@ -121,16 +118,6 @@ export function friends({ qs }: ViewProps): JSX.Element {
     rows.length === all.length
       ? plural(all.length, 'festival')
       : `${rows.length} of ${plural(all.length, 'festival')}${now.ticked.size > 1 && !now.any ? ' in common' : ''}`;
-  createEffect(
-    () => {
-      const { ticked, ...choices_ } = s();
-      // in the defaults' order, as the address had them
-      return friendsHref(changed({ ...DEFAULTS, ...choices_, with: [...ticked].join(',') }, DEFAULTS));
-    },
-    (href) => {
-      showInAddressBar(href);
-    },
-  );
   let bar: HTMLDivElement | undefined;
   const friendsPicker = dropdown(() => [bar]);
 

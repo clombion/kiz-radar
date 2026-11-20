@@ -2,13 +2,14 @@
 // one, however often the visitor draws it again. In an h() view, the Solid pieces it holds (mount.tsx held), each a
 // root of the page's owner: the Map's panel (its cards), and a community's page (a trip row's line of who goes, the
 // agenda a step of the months draws, a day's words). In a Solid view, every owner under the page's (each draw an owner
-// of the view's root, and what it draws owners of it): Countries' order, the friends' list (who goes, On now). On 1
+// of the view's root, and what it draws owners of it): Countries' order, the friends' list (who goes, On now), Artists'
+// filters. On 1
 // November 2026, with a community beside the fixture's in which Tonje only may go to KUOF (a tag the lines of who goes
 // and the days hold) and Ola, added, goes to Paris and Albania (two periods of the months, each with a trip).
 import { DEV } from 'solid-js';
 import { expect, test } from 'vitest';
 import { page } from '../../site/owner.ts';
-import { countriesHref, friendsHref, mapHref } from '../../site/routes.ts';
+import { artistsHref, countriesHref, friendsHref, mapHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { ALBANIA, KUOF, PARIS } from './community.fixture.ts';
 import { community } from './planted.ts';
@@ -75,6 +76,20 @@ test('Countries’ order buttons drawn again on a choice hold the owners of thei
     owners,
   );
   expect(main()?.querySelectorAll('.country-row').length).toBeGreaterThan(0);
+});
+
+test('Artists drawn again on a filter hold the owners of their last draw alone', async () => {
+  await app.open(artistsHref());
+  const role = () => [...(main()?.querySelectorAll<HTMLElement>('.seg button') ?? [])];
+  await drawnAlike(
+    () => main()?.querySelector('.artist-list'),
+    () => {
+      role()[1]?.click();
+      role()[0]?.click();
+    },
+    owners,
+  );
+  expect(main()?.querySelectorAll('.artist-row').length).toBeGreaterThan(0);
 });
 
 test('the Map’s panel drawn again holds the cards of its last draw alone', async () => {

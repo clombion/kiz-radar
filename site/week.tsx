@@ -1,8 +1,7 @@
 // This week: the festivals on any day of the current calendar week, Monday to Sunday, the soonest first, those already
 // under way among them; the first page of Explore. Its cards are eventcard.tsx's.
-import { For } from 'solid-js';
 import { meets, today, weekOf } from './days.ts';
-import { eventCard } from './eventcard.tsx';
+import { festivalCards } from './eventcard.tsx';
 import { festivals } from './festivals.ts';
 import { dayMonth } from './ui.ts';
 import { plural } from './wording.ts';
@@ -25,9 +24,7 @@ export function Week() {
       ) : (
         <>
           <p class="list-summary">{plural(on.length, 'festival')}</p>
-          <div class="festival-cards">
-            <For each={on}>{(e) => eventCard(e)}</For>
-          </div>
+          {festivalCards(on)}
         </>
       )}
     </section>

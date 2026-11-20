@@ -1,11 +1,52 @@
-// The controls the views share, drawn by Solid: a select of choices, a row of them pressed (segments), the more button
-// with its panel (dropdown), a search field, and the line saying what an address asked that the view has no choice for
-// (leftOut).
+// The controls the views share, drawn by Solid: a view's choices kept in its address (chosen), a select of them, a row
+// of them pressed (segments), a checkbox (check), the more button with its panel (dropdown), a search field, a list
+// shown a page at a time (paged), and the line saying what an address asked that the view has no choice for (leftOut).
 // dom.ts's for the h() views, which a .tsx imports nothing of (house/legacy).
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { type Accessor, createSignal, flush, For, Show } from 'solid-js';
+import { type Accessor, createEffect, createSignal, flush, For, Show } from 'solid-js';
 import type { ClassName } from './classes.ts';
 import { disposal } from './mount.tsx';
+import { showInAddressBar } from './routes.ts';
+
+// A view's choices, as its address gave them: one signal, a new record on each choice (as each choice drew the h() view
+// again), drawn at once (flushed) as the h() view was drawn in the choice's listener; and the address bar following
+// them (address, from the choices).
+export function chosen<C extends Readonly<Record<string, unknown>>>(
+  first: C,
+  address: (now: C) => string,
+): readonly [Accessor<C>, (to: Partial<C>) => void] {
+  // held in a record of its own, as a signal's value is never a function
+  const [held, setHeld] = createSignal<{ readonly now: C }>({ now: first });
+  const now = () => held().now;
+  createEffect(
+    () => address(now()),
+    (href) => {
+      showInAddressBar(href);
+    },
+  );
+  const set = (to: Partial<C>) => {
+    flush(() => {
+      setHeld(({ now: was }) => ({ now: { ...was, ...to } }));
+    });
+  };
+  return [now, set];
+}
+
+// One choice as a record of it, its value checked against its key's type, which a computed key's record ({ [key]: v })
+// is not: a generic or a union key widens it to a record of any string.
+export function only<C, K extends keyof C>(key: K, value: C[K]): Partial<C> {
+  const to: { -readonly [P in keyof C]?: C[P] } = {};
+  to[key] = value;
+  return to;
+}
+
+// A checkbox and its words (a space before them), on as it is drawn when on, telling change of each change.
+export const check = (words: string, on: boolean, change: (on: boolean) => void): JSX.Element => (
+  <label class="check">
+    <input type="checkbox" defaultChecked={on} onChange={(ev) => change(ev.currentTarget.checked)} />
+    {words}
+  </label>
+);
 
 // A select of choices, the one on as it is drawn its selected option: the choice comes back as the option at the
 // picked place, so of its type and never a string to parse; named by label where no visible label names it.
@@ -64,18 +105,19 @@ export const segments = <V extends string>(
 );
 
 // The more button of a panel of more choices (aria-controls names it), which opens and closes it; a click outside what
-// counts as inside (the button and the panel, or the bar they are on, within) closes it again. Its listener on the
+// counts as inside (within: the button and the panel, or the bar they are on) closes it again. Its listener on the
 // document goes with the owner it is made under (a view). Its words are drawn as given, a reactive part of them drawn
 // again with the button kept; the panel is the caller's, hidden unless open.
-export function dropdown(within: () => readonly (Element | undefined)[]): {
+export function dropdown(within: (opener: Element | undefined) => readonly (Element | undefined)[]): {
   readonly open: Accessor<boolean>;
   readonly button: (panelId: string, words: JSX.Element) => JSX.Element;
 } {
   const [open, setOpen] = createSignal(false);
+  let opener: HTMLButtonElement | undefined;
   document.addEventListener(
     'click',
     ({ target }) => {
-      if (!open() || (target instanceof Node && within().some((n) => n?.contains(target) === true))) return;
+      if (!open() || (target instanceof Node && within(opener).some((n) => n?.contains(target) === true))) return;
       flush(() => {
         setOpen(false);
       });
@@ -86,6 +128,9 @@ export function dropdown(within: () => readonly (Element | undefined)[]): {
     open,
     button: (panelId, words) => (
       <button
+        ref={(el) => {
+          opener = el;
+        }}
         type="button"
         class="more-btn"
         aria-expanded={open() ? 'true' : 'false'}
@@ -128,6 +173,34 @@ export const searchField = ({
     {...(first === undefined ? {} : { defaultValue: first })}
   />
 );
+
+// A list shown a page at a time: its rows (a row an item), the first page of them as it is drawn, and the more button
+// (put in the list, last, or anywhere else) adding the next page to what is there, so the rows already shown are kept
+// as they are. Other items are a list drawn anew.
+export function paged<T>(
+  items: readonly T[],
+  page: number,
+  row: (item: T) => JSX.Element,
+): { readonly rows: JSX.Element; readonly more: JSX.Element } {
+  const [shown, setShown] = createSignal(Math.min(page, items.length));
+  return {
+    rows: <For each={items.slice(0, shown())}>{(item) => row(item)}</For>,
+    more: (
+      <button
+        type="button"
+        class={['more-btn', 'show-more']}
+        hidden={shown() >= items.length}
+        onClick={() => {
+          flush(() => {
+            setShown((n) => Math.min(n + page, items.length));
+          });
+        }}
+      >
+        {`Show ${Math.min(page, items.length - shown())} more`}
+      </button>
+    ),
+  };
+}
 
 // what an address asked that the view has no such choice for, said at the top of the view
 export const leftOut = (dropped: readonly string[]): JSX.Element =>

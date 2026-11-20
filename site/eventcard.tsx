@@ -3,7 +3,7 @@
 // Solid: a function of the festival and the card's options, its open state a signal; an h() view holds one through
 // mount.tsx's held.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { createMemo, createSignal, flush, Show } from 'solid-js';
+import { createMemo, createSignal, flush, For, Show } from 'solid-js';
 import { type Classes, flat, type Kid, own } from './bits.ts';
 import { today } from './days.ts';
 import { cardDetails, traitItems } from './details.tsx';
@@ -229,7 +229,7 @@ interface CardOptions {
   readonly open?: boolean;
   readonly onMap?: boolean;
 }
-export function eventCard(e: Festival, { hint = null, open = false, onMap = false }: CardOptions = {}): JSX.Element {
+function eventCard(e: Festival, { hint = null, open = false, onMap = false }: CardOptions = {}): JSX.Element {
   const [shown, setShown] = createSignal(open);
   // its details, read the first time it opens and kept, hidden, when it closes
   const read = createMemo((was) => was === true || shown());
@@ -325,6 +325,13 @@ export function eventCard(e: Festival, { hint = null, open = false, onMap = fals
     </article>
   );
 }
+
+// the cards of festivals, in their order, as a view lists them
+export const festivalCards = (list: readonly Festival[]): JSX.Element => (
+  <div class="festival-cards">
+    <For each={list}>{(e) => eventCard(e)}</For>
+  </div>
+);
 
 // a card an h() view holds (mount.tsx held), until the view is Solid's
 export const heldCard = (signal: AbortSignal, e: Festival, drawn?: CardOptions): HTMLElement =>
