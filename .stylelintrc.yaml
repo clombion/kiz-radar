@@ -36,3 +36,83 @@ rules:
   no-irregular-whitespace: true # suspicious/noIrregularWhitespace
   declaration-block-no-shorthand-property-overrides: true # suspicious/noShorthandPropertyOverrides
   at-rule-no-unknown: true # suspicious/noUnknownAtRules
+
+  # stricter than Biome: each rule considered is in docs/concepts/lint-rules.md, on or off with its reason
+  # CSS a browser drops or misreads, which Biome's rules do not see
+  annotation-no-unknown: true
+  at-charset-rule-no-invalid: true
+  at-rule-descriptor-no-unknown: true
+  at-rule-descriptor-value-no-unknown: true
+  at-rule-no-deprecated: true
+  at-rule-prelude-no-invalid: true
+  block-no-redundant-nested-style-rules: true
+  color-no-invalid-hex: true
+  comment-no-empty: true
+  declaration-property-value-keyword-no-deprecated: true
+  declaration-property-value-no-unknown: true
+  function-calc-no-unspaced-operator: true
+  media-feature-name-value-no-unknown: true
+  media-query-no-invalid: true
+  nesting-selector-no-missing-scoping-root: true
+  no-invalid-double-slash-comments: true
+  no-invalid-position-declaration: true
+  no-unknown-animations: true
+  no-unknown-custom-media: true
+  property-no-deprecated: true
+  selector-no-deprecated: true
+  selector-no-invalid: true
+  selector-no-unmatchable: true
+  string-no-newline: true
+  syntax-string-no-invalid: true
+  value-no-invalid: true
+
+  # the stylesheet is flat: styles.test.ts and pipeline/generate.py's class reader read flat rules
+  max-nesting-depth: 0
+  # a selector's reach, at today's deepest (.sentence-hero .live .friends b) and most classes; Biome's
+  # noExcessiveSelectorClasses, given the option it lacked
+  selector-max-compound-selectors: 4
+  selector-max-class: 4
+
+  # one spelling of each value, as the stylesheet writes it
+  color-hex-length: short
+  # a named colour would pass styles.test.ts's token test, which reads hex and colour functions; mask-image's black is
+  # an opacity, not a colour
+  color-named: [never, { ignoreProperties: ["/^mask/"] }]
+  font-weight-notation: numeric
+  alpha-value-notation: number
+  color-function-notation: modern
+  color-function-alias-notation: without-alpha
+  hue-degree-notation: angle
+  lightness-notation: percentage
+  import-notation: string
+  # media.ts's queries are the stylesheet's own spelling (styles.test.ts)
+  media-feature-range-notation: prefix
+  selector-not-notation: complex
+  selector-pseudo-element-colon-notation: double
+  selector-attribute-quotes: always
+  display-notation: short
+  keyframe-selector-notation: percentage-unless-within-keyword-only-block
+  length-zero-no-unit: true
+  number-max-precision: 4
+  selector-type-case: lower
+  function-name-case: lower
+  comment-whitespace-inside: always
+  function-url-quotes: never
+  declaration-block-no-redundant-longhand-properties: true
+  shorthand-property-no-redundant-values: true
+
+  # site/classes.ts is generated from the classes, which JSX's class names: kebab case, as the tokens and animations
+  selector-class-pattern: ^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$
+  custom-property-pattern: ^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$
+  keyframes-name-pattern: ^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$
+
+  # the page's Content-Security-Policy refuses a remote url() as it runs; this refuses it as it is written
+  function-url-scheme-allowed-list: [data]
+  # a duration under 100 ms is a typo for seconds (the reduced-motion 0ms is the rule's own exception)
+  time-min-milliseconds: 100
+  # the supported browsers are the latest: a prefix is for one that reads no other form, suppressed with its reason
+  at-rule-no-vendor-prefix: true
+  media-feature-name-no-vendor-prefix: true
+  property-no-vendor-prefix: true
+  selector-no-vendor-prefix: true
+  value-no-vendor-prefix: true

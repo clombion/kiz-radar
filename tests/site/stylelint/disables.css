@@ -1,0 +1,8 @@
+.a {
+  /* stylelint-disable-next-line declaration-no-important */ /* refused: --report-descriptionless-disables */
+  display: none !important;
+  /* stylelint-disable-next-line color-named -- nothing to suppress */ /* refused: --report-needless-disables */
+  width: 1px;
+  /* stylelint-disable-next-line color-no-hex -- a rule the config has off */ /* refused: --report-invalid-scope-disables, --report-needless-disables */
+  color: #000;
+}

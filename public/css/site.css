@@ -31,6 +31,7 @@
   box-sizing: border-box;
 }
 html {
+  /* stylelint-disable-next-line property-no-vendor-prefix -- iOS Safari reads the prefixed form alone */
   -webkit-text-size-adjust: 100%;
 }
 a {
@@ -293,7 +294,7 @@ th[scope="row"] {
   --muted: #6d5f55;
   --border: #e3d6c3;
   --accent: #7a2850;
-  --accent-ink: #ffffff;
+  --accent-ink: #fff;
   --accent-soft: #f1e1e7;
   --good: #3f7d5c;
   --mid: #b0822b;
@@ -478,7 +479,6 @@ select.blank {
   padding: 0 0.1em;
   cursor: pointer;
   appearance: none;
-  -webkit-appearance: none;
   max-width: 100%;
 }
 select.blank:hover,
@@ -529,7 +529,6 @@ select:is(.mini, .plain) {
   font-size: 0.88rem;
   color: var(--text);
   appearance: none;
-  -webkit-appearance: none;
   cursor: pointer;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -1289,7 +1288,7 @@ a.artist:focus-visible {
   margin: 0.2rem 0;
 }
 .page-intro h1 {
-  margin: 0.4rem 0 0.4rem;
+  margin: 0.4rem 0;
   font-size: clamp(1.6rem, 4vw, 2.2rem);
   letter-spacing: -0.02em;
 }
@@ -1583,8 +1582,7 @@ body:has(.pmap) .to-top {
   .map-legend {
     font-size: 0.72rem;
     padding: 0.35rem 0.55rem;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: 0.1rem 0.6rem;
     max-width: calc(100vw - 80px);
   }
@@ -1847,7 +1845,7 @@ html:has(dialog.search[open]) {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -3690,7 +3688,6 @@ svg.defs {
 /* every checkbox of the site, in its colours rather than the browser's */
 input[type="checkbox"] {
   appearance: none;
-  -webkit-appearance: none;
   width: 1.15rem;
   height: 1.15rem;
   margin: 0;

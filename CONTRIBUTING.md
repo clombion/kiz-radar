@@ -41,19 +41,20 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   new in oxlint (`.oxlintrc.json`, [Lint rules](docs/concepts/lint-rules.md)), a warning failing: a record's type is
   read-only where it is defined, a function returning a promise is async, and the names in an import's braces are in one
   order; stylelint on the stylesheet (`lint:stylelint`, `.stylelintrc.yaml`), with each Biome CSS rule it has an
-  equivalent of ([Lint rules](docs/concepts/lint-rules.md)), a warning failing; every Biome rule on the JSON configs
-  (`lint:biome`, `biome.jsonc`'s `files.includes`); eslint-plugin-solid's `v2-strict` rules; and the house rules in
-  `lint/` (links in `routes.ts`, requests in `net.ts`, classes through JSX's `class`, markup from the site's own code
-  only through `icons.ts`, promises reported, a state as `KEY`, a test's values only from the modules `lint/tests.ts`
-  lists, and those holding CLAUDE.md's conventions; the files each is on for are in Lint rules' table). A class is one
-  the stylesheet defines (`site/classes.ts`, generated), in JSX too, where tsc types an element's `class` by it
-  (`site/jsx-runtime.d.ts`, `tsconfig.json`'s `jsxImportSource`). vitest runs in Node and in Chromium
-  (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and fails below the
-  coverage of the pure modules `vitest.config.ts` sets. The browser tests run in two projects: `browser`, with motion as
-  most visitors have it, and `browser-calm`, for a visitor who asked for less motion, which runs the files named
-  `*.calm.browser.test.ts` and no others (a calm file runs with reduced motion only). In both, a console warning, error
-  or failing assert the test did not declare beforehand fails it (`tests/site/console.ts`'s `expectConsole`), so that
-  Solid's development diagnostics and `site/report.ts`'s errors are never passed over. A test of the page starts it
+  equivalent of and the stricter rules chosen, each with its reason ([Lint rules](docs/concepts/lint-rules.md)), a
+  warning failing, its rules held to their fixtures (`tests/site/stylelint/`) by `tests/site/stylelint.test.ts`; every
+  Biome rule on the JSON configs (`lint:biome`, `biome.jsonc`'s `files.includes`); eslint-plugin-solid's `v2-strict`
+  rules; and the house rules in `lint/` (links in `routes.ts`, requests in `net.ts`, classes through JSX's `class`,
+  markup from the site's own code only through `icons.ts`, promises reported, a state as `KEY`, a test's values only
+  from the modules `lint/tests.ts` lists, and those holding CLAUDE.md's conventions; the files each is on for are in
+  Lint rules' table). A class is one the stylesheet defines (`site/classes.ts`, generated), in JSX too, where tsc types
+  an element's `class` by it (`site/jsx-runtime.d.ts`, `tsconfig.json`'s `jsxImportSource`). vitest runs in Node and in
+  Chromium (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and fails
+  below the coverage of the pure modules `vitest.config.ts` sets. The browser tests run in two projects: `browser`, with
+  motion as most visitors have it, and `browser-calm`, for a visitor who asked for less motion, which runs the files
+  named `*.calm.browser.test.ts` and no others (a calm file runs with reduced motion only). In both, a console warning,
+  error or failing assert the test did not declare beforehand fails it (`tests/site/console.ts`'s `expectConsole`), so
+  that Solid's development diagnostics and `site/report.ts`'s errors are never passed over. A test of the page starts it
   through `tests/site/app.ts`, whose header says how (once per file; the day, data, storage, or its refusal, and other
   hosts' answers stated before the start); the test server answers the tests' pages with the fixture's data only, never
   `public/data/`. `tests/site/pages.browser.test.ts` loads the built site instead, Vite's bundle (`vite.config.ts`), in
