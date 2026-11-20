@@ -25,7 +25,7 @@ import { atEnd, atStart, inPlaceOf, inside } from './placed.tsx';
 import { done, guarded, reportUncaught } from './report.ts';
 import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, type Tab, TABS } from './routes.ts';
 import { initSearch } from './search.tsx';
-import { sentenceView } from './sentence.ts';
+import { sentence } from './sentence.tsx';
 import { CurrencySwitch, FooterLinks, Skip, ToTop } from './shell.tsx';
 import { sourcesView } from './sources.ts';
 import { swipeBetweenSections } from './swipe.ts';
@@ -69,7 +69,7 @@ const FINDER: View = {
   title: null,
   nav: 'finder',
   waitsForData: false,
-  show: (root, _, qs, opts) => sentenceView(root, qs, opts),
+  show: mounted(sentence),
 };
 // each route's view: a route without one does not compile
 const VIEWS: Readonly<Record<Route, View>> = {

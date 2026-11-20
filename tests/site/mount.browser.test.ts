@@ -1,12 +1,11 @@
 // The seam between the h() page and a Solid view (site/mount.tsx; the shell's parts are drawn through placed.tsx, and
 // stay), through the page: This week, a Solid view, drawn into the root the page hands every view, with its cards
-// (eventcard.tsx's) inside it, and taken away when the visitor leaves; and the cards an h() view holds (held), each
-// drawn in a root of its own and taken away with the view.
-import { DEV } from 'solid-js';
+// (eventcard.tsx's) inside it, and taken away when the visitor leaves; and the Festivals page's cards, owners under the
+// page's while it shows (a list drawn again is held-redrawn.browser.test.ts's).
 import { expect, test } from 'vitest';
-import { page } from '../../site/owner.ts';
 import { EXPLORE, festivalsHref, sourcesHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
+import { owners, roots } from './owned.ts';
 
 const week = EXPLORE.find(([k]) => k === 'week')?.[2] ?? '';
 // the fixture's festival of the week of 21 November (KUOF, 20–22 November)
@@ -33,43 +32,22 @@ test('a Solid view left is disposed: the root it was drawn in is emptied, and it
   expect(again?.querySelector('section h1')?.textContent).toBe('This week');
 });
 
-// what the page's owner holds: one root while a Solid view shows, none once it is left (Solid's development build,
-// the tests', carries DEV)
-const held = () => {
-  if (DEV === undefined || page === null) throw new Error("no development build of Solid, or no page's owner");
-  return DEV.getChildren(page).length;
-};
-
 test("a Solid view's root leaves the page's owner when the view is left", async () => {
   await app.open(sourcesHref());
-  const before = held();
+  const before = roots();
   await app.open(week);
-  expect(held()).toBe(before + 1);
+  expect(roots()).toBe(before + 1);
   await app.open(sourcesHref());
-  expect(held()).toBe(before);
+  expect(roots()).toBe(before);
 });
 
-test('the cards of a list drawn again are taken away with the list they were in', async () => {
+test("the cards a Solid view draws are owners under the page's until the view is left", async () => {
   await app.open(sourcesHref());
-  const before = held();
-  await app.open(festivalsHref());
-  // the Festivals page's line-up chosen: its list drawn anew
-  const select = [...(main()?.querySelectorAll('label.field') ?? [])]
-    .find((l) => l.textContent.startsWith('Line-up'))
-    ?.querySelector('select');
-  if (select == null) throw new Error('no Line-up select on the Festivals page');
-  select.selectedIndex = select.options.length - 1;
-  select.dispatchEvent(new Event('change'));
-  expect(held()).toBe(before + (main()?.querySelectorAll('.festival-card').length ?? 0));
-});
-
-test("the cards an h() view holds are each a root of the page's owner until the view is left", async () => {
-  await app.open(sourcesHref());
-  const before = held();
+  const before = owners();
   await app.open(festivalsHref());
   const cards = main()?.querySelectorAll('.festival-card').length ?? 0;
   expect(cards).toBeGreaterThan(0);
-  expect(held()).toBe(before + cards);
+  expect(owners()).toBeGreaterThan(before + cards);
   await app.open(sourcesHref());
-  expect(held()).toBe(before);
+  expect(owners()).toBe(before);
 });

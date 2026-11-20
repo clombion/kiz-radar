@@ -88,6 +88,7 @@ SITE_ALLOWED = Counter(
         ('site/json.ts', 'typescript/no-unsafe-type-assertion'): 1,
         ('site/routes.ts', 'typescript/no-unsafe-type-assertion'): 1,
         ('site/search.tsx', 'jsx-a11y/click-events-have-key-events'): 2,
+        ('site/sentence.tsx', 'jsx-a11y/anchor-is-valid'): 1,
         ('site/search.tsx', 'jsx-a11y/interactive-supports-focus'): 2,
         ('site/search.tsx', 'jsx-a11y/prefer-tag-over-role'): 4,
         ('site/rows.ts', 'typescript/no-unsafe-type-assertion'): 1,

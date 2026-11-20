@@ -1,7 +1,7 @@
 // Who a festival's card names, on the map and on the Festivals page, and where a festival stands for a page left open
 // past midnight, on the fixture's community: Siân, in Glasgow's line-up, only may go there.
-import { expect, test } from 'vitest';
-import { festivalsHref, friendsHref } from '../../site/routes.ts';
+import { expect, test, vi } from 'vitest';
+import { festivalsHref, friendsHref, sourcesHref } from '../../site/routes.ts';
 import { KEY } from '../../site/states.ts';
 import { startSite } from './app.ts';
 import { GLASGOW, KUOF, KWANZA, titleOf } from './community.fixture.ts';
@@ -28,6 +28,44 @@ const goers = (who: Element | null | undefined) =>
     said(li.querySelector('.goer-name')),
     said(li.querySelector('.plan-tag')),
   ]);
+
+// first of the file, before any test opens a page of Explore, which marks its hint seen (main.ts)
+test('the hint under the Explore tab is the Festivals page’s, shown with it and gone when it is left', async () => {
+  const hint = () => document.querySelectorAll('a[data-nav="explore"] .note-tab').length;
+  await app.open(festivalsHref());
+  expect(hint()).toBe(1);
+  await app.open(friendsHref());
+  expect(hint()).toBe(0);
+  await app.open(festivalsHref());
+  expect(hint()).toBe(1);
+});
+
+test('the dance’s timer and the bar’s watch of the sentence are the Festivals page’s, gone when it is left', async () => {
+  const every = vi.spyOn(globalThis, 'setInterval');
+  const stopped = vi.spyOn(globalThis, 'clearInterval');
+  const watch = vi.spyOn(IntersectionObserver.prototype, 'observe');
+  const unwatched = vi.spyOn(IntersectionObserver.prototype, 'disconnect');
+  try {
+    // the dances' timers (each SHOWN_MS, 3 s) not cleared, and the observers of the sentence not disconnected
+    const dancing = () => {
+      const cleared = new Set(stopped.mock.calls.map(([id]) => Number(id)));
+      return every.mock.results.filter((r, i) => every.mock.calls[i]?.[1] === 3000 && !cleared.has(Number(r.value)))
+        .length;
+    };
+    const watching = () => {
+      const gone = new Set(unwatched.mock.contexts);
+      return watch.mock.calls.filter(([el], i) => el.matches('.sentence-hero') && !gone.has(watch.mock.contexts[i]))
+        .length;
+    };
+    await app.open(sourcesHref());
+    await app.open(festivalsHref());
+    expect([dancing(), watching()]).toEqual([1, 1]);
+    await app.open(sourcesHref());
+    expect([dancing(), watching()]).toEqual([0, 0]);
+  } finally {
+    vi.restoreAllMocks();
+  }
+});
 
 test('the people a manager added are named on the community’s page only, never on a festival’s card elsewhere', async () => {
   const who = await whoAt(KUOF);

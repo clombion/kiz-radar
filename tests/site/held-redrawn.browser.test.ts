@@ -3,15 +3,14 @@
 // root of the page's owner: the Map's panel (its cards), and a community's page (a trip row's line of who goes, the
 // agenda a step of the months draws, a day's words). In a Solid view, every owner under the page's (each draw an owner
 // of the view's root, and what it draws owners of it): Countries' order, the friends' list (who goes, On now), Artists'
-// filters. On 1
-// November 2026, with a community beside the fixture's in which Tonje only may go to KUOF (a tag the lines of who goes
-// and the days hold) and Ola, added, goes to Paris and Albania (two periods of the months, each with a trip).
-import { DEV } from 'solid-js';
+// filters, the Festivals page's line-up (its cards). On 1 November 2026, with a community beside the fixture's in which
+// Tonje only may go to KUOF (a tag the lines of who goes and the days hold) and Ola, added, goes to Paris and Albania
+// (two periods of the months, each with a trip).
 import { expect, test } from 'vitest';
-import { page } from '../../site/owner.ts';
-import { artistsHref, countriesHref, friendsHref, mapHref } from '../../site/routes.ts';
+import { artistsHref, countriesHref, festivalsHref, friendsHref, mapHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { ALBANIA, KUOF, PARIS } from './community.fixture.ts';
+import { owners, roots } from './owned.ts';
 import { community } from './planted.ts';
 import { COMM } from './seen.ts';
 
@@ -22,23 +21,6 @@ const app = await startSite({
   plant: (db) => community(db, REDRAWN, { maybe: [['Tonje', KUOF]], added: ola }),
 });
 const main = () => document.querySelector('main');
-// the roots the page's owner holds (Solid's development build, the tests', carries DEV)
-const roots = () => {
-  if (DEV === undefined || page === null) throw new Error("no development build of Solid, or no page's owner");
-  return DEV.getChildren(page).length;
-};
-// every owner under the page's, however deep
-const owners = () => {
-  if (DEV === undefined || page === null) throw new Error("no development build of Solid, or no page's owner");
-  const { getChildren } = DEV;
-  let n = 0;
-  for (const seen = [page]; seen.length > 0;) {
-    const children = getChildren(seen.pop() ?? page);
-    n += children.length;
-    seen.push(...children);
-  }
-  return n;
-};
 // What the page holds (count, the roots of the page's owner unless said) after each of three draws of the same part,
 // each draw done by `draw`: the same each time; and each a draw, the element of the part `drawn` finds before it gone
 // after it.
@@ -90,6 +72,28 @@ test('Artists drawn again on a filter hold the owners of their last draw alone',
     owners,
   );
   expect(main()?.querySelectorAll('.artist-row').length).toBeGreaterThan(0);
+});
+
+test('the Festivals page drawn again on a choice holds the owners of its last draw alone', async () => {
+  await app.open(festivalsHref());
+  const lineup = () => {
+    const select = [...(main()?.querySelectorAll('label.field') ?? [])]
+      .find((l) => l.textContent.startsWith('Line-up'))
+      ?.querySelector('select');
+    if (select == null) throw new Error('no Line-up select on the Festivals page');
+    return select;
+  };
+  await drawnAlike(
+    () => main()?.querySelector('.festival-cards'),
+    () => {
+      for (const i of [1, 0]) {
+        lineup().selectedIndex = i;
+        lineup().dispatchEvent(new Event('change'));
+      }
+    },
+    owners,
+  );
+  expect(main()?.querySelectorAll('.festival-card').length).toBeGreaterThan(0);
 });
 
 test('the Map’s panel drawn again holds the cards of its last draw alone', async () => {

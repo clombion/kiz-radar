@@ -1,10 +1,12 @@
 // A festival's card whose reactive part throws as its view is drawn: the throw reaches the view's boundary, which says
 // it in its place, as guarded said an h() view's (and held a card an h() view held, mount.tsx), and Solid is not
-// halted, so the page goes on following its address. The page started (app.ts) on KUOF ending on a day no month has,
+// halted, so the page goes on following its address. On the Festivals page, whose cards are drawn once the festivals
+// are in, the throw is said in its live line as they come in, the loading mark kept, as the h() page said it; on a
+// later choice, once as the page's, the page going on. The page started (app.ts) on KUOF ending on a day no month has,
 // which its card's date box reads as the card is drawn, and opened on an artist booked there, whose page holds KUOF's
-// card.
+// card, and on the Festivals page.
 import { expect, test } from 'vitest';
-import { artistHref, sourcesHref } from '../../site/routes.ts';
+import { artistHref, festivalsHref, sourcesHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { KUOF } from './community.fixture.ts';
 import { expectConsole } from './console.ts';
@@ -35,4 +37,35 @@ test('a card whose reactive part throws says so in its view, and the page goes o
   const shown = [await shownAt(artistHref(artist)), await shownAt(sourcesHref()), await shownAt(artistHref(artist))];
   expect(shown.map((words) => words?.includes('This page could not be shown'))).toEqual([true, false, true]);
   expect(shown[1]).toContain('Sources and acknowledgements');
+});
+
+test('a card that throws as the festivals come in is said in the live line, and on a later choice as the page', async () => {
+  expectConsole('error', /^Kiz Radar: the page: RangeError/u);
+  const main = () => document.querySelector('main');
+  const live = () => main()?.querySelector('.live')?.textContent;
+  const cards = () => main()?.querySelectorAll('.festival-card').length;
+  const alerts = () => document.querySelectorAll('[role="alert"]').length;
+  // KUOF, in Norway, left out: the cards drawn
+  await app.open(festivalsHref({ when: 'year', reach: 'any', country: 'GB' }));
+  expect(cards()).toBeGreaterThan(0);
+  // a later choice keeping KUOF: said once as the page's, the page going on, the cards drawn again on the next choice
+  const where = main()?.querySelector<HTMLSelectElement>('.sticky-bar select[aria-label="Where to"]');
+  if (where == null) throw new Error('the Festivals page has no choice of where in its bar');
+  const chosen = (country: string) => {
+    where.selectedIndex = [...where.options].findIndex((o) => o.value === country);
+    where.dispatchEvent(new Event('change'));
+  };
+  chosen('NO');
+  await expect.poll(cards).toBe(0);
+  expect([alerts(), live()]).toEqual([1, expect.stringMatching(/^\d+ festivals? like that\. Show them ↓/u)]);
+  chosen('GB');
+  await expect.poll(cards).toBeGreaterThan(0);
+  // opened keeping KUOF: said in the live line as the festivals come in, the loading mark kept (which the opening
+  // waits on in vain), no line of the page's
+  await app.open(sourcesHref());
+  await expect(app.open(festivalsHref({ when: 'year', reach: 'any', country: 'NO' }))).rejects.toThrow(
+    /still waiting for /u,
+  );
+  expect([live(), cards(), alerts()]).toEqual([expect.stringMatching(/^Could not load the festivals: /u), 0, 1]);
+  expect(main()?.querySelector('.sentence-results [role="status"]')).not.toBeNull();
 });

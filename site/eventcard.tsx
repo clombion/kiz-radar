@@ -4,7 +4,7 @@
 // mount.tsx's held.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { createMemo, createSignal, flush, For, Show } from 'solid-js';
-import { type Classes, flat, type Kid, own } from './bits.ts';
+import { type Classes, own } from './bits.ts';
 import { today } from './days.ts';
 import { cardDetails, traitItems } from './details.tsx';
 import { type Fare, resoldSaid } from './fares.ts';
@@ -225,11 +225,11 @@ function smoothly(card: HTMLElement, change: () => void, opening: boolean): void
 // what a card is drawn with besides its festival: a line under its names (a hint), open from the start, and whether it
 // is on the map's page, whose link to the map it leaves out
 interface CardOptions {
-  readonly hint?: Kid;
+  readonly hint?: JSX.Element;
   readonly open?: boolean;
   readonly onMap?: boolean;
 }
-function eventCard(e: Festival, { hint = null, open = false, onMap = false }: CardOptions = {}): JSX.Element {
+export function eventCard(e: Festival, { hint = null, open = false, onMap = false }: CardOptions = {}): JSX.Element {
   const [shown, setShown] = createSignal(open);
   // its details, read the first time it opens and kept, hidden, when it closes
   const read = createMemo((was) => was === true || shown());
@@ -298,7 +298,7 @@ function eventCard(e: Festival, { hint = null, open = false, onMap = false }: Ca
       {styleLine(e) ? <p class="styles">{styleLine(e)}</p> : null}
       {traitRow}
       {withLine}
-      {links.length > 0 ? flat([hint]) : null}
+      {links.length > 0 ? hint : null}
       {goingLine(e)}
       {/* oxlint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- a tap on the foot outside its links and buttons opens the card, a shortcut: its Line-up & details button does the same from the keyboard */}
       <div
