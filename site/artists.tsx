@@ -1,25 +1,19 @@
-import { debounced, type Kid } from './bits.ts';
 // Artists: a scannable list (who, from where, how often booked, where next) and a page per artist that
 // leads with their upcoming festivals.
+import type { JSX } from 'kiz-jsx/jsx-runtime';
+import { For, Show } from 'solid-js';
+import { debounced, styled } from './bits.ts';
+import { check, choices, chosen, dropdown, leftOut, only, paged, searchField, segments } from './controls.tsx';
 import { today } from './days.ts';
 import { one, q, Sql, sql } from './db.ts';
-import { button, choices, dropdown, h, moreButton, paged, segments } from './dom.ts';
-import { heldCard } from './eventcard.tsx';
-import { type Festival, leftOut, withDetails } from './festivals.ts';
+import { festivalCards } from './eventcard.tsx';
+import { type Festival, withDetails } from './festivals.ts';
 import { fold } from './fold.ts';
+import { createDerived, disposal, Redrawn, type ViewProps } from './mount.tsx';
 import { type Named, nameLines } from './names.ts';
 import { alsoGoingTo, peopleOf } from './plans.tsx';
 import { alone, roleLabel } from './roles.ts';
-import {
-  artistHref,
-  artistsHref,
-  changed,
-  eventOnMapHref,
-  personHref,
-  readState,
-  type Show,
-  showInAddressBar,
-} from './routes.ts';
+import { artistHref, artistsHref, changed, eventOnMapHref, personHref, readState } from './routes.ts';
 import { ARTIST_STATS, EVENT, flag as flagCol, num, opt, type RowOf, state, states, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayMonth, dayYear, flag, place } from './ui.ts';
@@ -144,19 +138,19 @@ function chosenArtists(st: Readonly<Choices>, next: ReadonlyMap<number, { start_
   return rows;
 }
 
-export const artistsView: Show = (root, sub, qs, { signal }) => {
-  if (sub[0] !== undefined && sub[0] !== '') {
-    artistPage(root, Number(sub[0]), signal);
-    return;
-  }
+export const artists = ({ sub: [id], qs }: ViewProps): JSX.Element =>
+  id !== undefined && id !== '' ? artistPage(Number(id)) : artistList(qs);
+
+function artistList(qs: string): JSX.Element {
   const countries = artistCountries();
-  const { state: st, dropped } = readState(qs, DEFAULTS, {
+  const { state: asked, dropped } = readState(qs, DEFAULTS, {
     role: ROLES.map(([v]) => v),
     kind: KINDS.map(([v]) => v),
     sort: ORDERS.map(([v]) => v),
     popular: [0, 1],
     country: ['', ...countries],
   });
+  const [st, set] = chosen<Readonly<Choices>>(asked, (now) => artistsHref(changed(now, DEFAULTS)));
   // each artist's next festival of their own (not only as part of a couple)
   const next = new Map(
     q(
@@ -169,134 +163,124 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
       ) WHERE n = 1`,
     ).map((r) => [r.artist_id, r]),
   );
-
-  const search = h('input', {
-    type: 'search',
-    class: 'mini-search',
-    placeholder: 'Search a name',
-    value: st.q,
-    'aria-label': 'Search artists',
-  });
-  const roleBtns = h('div', { class: 'seg', role: 'group', 'aria-label': 'Role' });
-  const paintRoles = () =>
-    roleBtns.replaceChildren(
-      ...segments(ROLES, st.role, (v) => {
-        st.role = v;
-        render();
-      }),
-    );
+  // the artists the choices keep, drawn anew with them; the summary what it last was, should it throw
+  const { drawn, last } = createDerived(() => ({ now: st(), rows: chosenArtists(st(), next) }));
   const sel = <K extends 'kind' | 'country' | 'sort'>(
     k: K,
-    opts: readonly (readonly [(typeof st)[K], string])[],
+    opts: readonly (readonly [Choices[K], string])[],
     label: string,
-  ) =>
-    h(
-      'label',
-      { class: 'field' },
-      h('span', {}, label),
-      choices(
-        opts,
-        st[k],
-        (v) => {
-          st[k] = v;
-          render();
-        },
-        { class: 'plain' },
-      ),
-    );
-  const pop = h('input', {
-    type: 'checkbox',
-    checked: Boolean(st.popular),
-    onchange: () => {
-      st.popular = pop.checked ? 1 : 0;
-      render();
-    },
-  });
-  const moreBtn = moreButton('artist-filters');
-  const panel = h(
-    'div',
-    { class: 'more-panel', id: 'artist-filters', hidden: true },
-    sel('kind', KINDS, 'Show'),
-    sel(
-      'country',
-      [['', 'Anywhere'], ...countries.map((c): [string, string] => [c, `${flag(c)} ${countryName(c)}`])],
-      'Booked in',
-    ),
-    sel('sort', ORDERS, 'Order'),
-    h('label', { class: 'check' }, pop, ` Only well-known artists (${wellKnown()}+ festivals)`),
+  ): JSX.Element => (
+    <label class="field">
+      <span>{label}</span>
+      {choices(opts, asked[k], (v) => set(only(k, v)), { class: 'plain' })}
+    </label>
   );
-  dropdown(moreBtn, panel, [moreBtn, panel], signal);
-  const summary = h('p', { class: 'list-summary' });
-  const list = h('ul', { class: 'artist-list' });
-  const showMore = button({ class: ['more-btn', 'show-more'] });
+  // how many artists the list keeps, and where they were booked when it says
+  const summary = ({ now, rows }: { readonly now: Readonly<Choices>; readonly rows: readonly Artist[] }) =>
+    `${plural(rows.length, 'artist')}${now.country ? ` booked in ${countryName(now.country)}` : ''}`;
+  const left = disposal();
+  let panel: HTMLDivElement | undefined;
+  const filters = dropdown((opener) => [opener, panel]);
+  const extra = () => {
+    const now = st();
+    return [now.kind, now.country, now.sort !== 'bookings', now.popular].filter(Boolean).length;
+  };
 
-  root.replaceChildren(
-    h(
-      'section',
-      { class: 'artists-page' },
-      h('div', { class: 'map-bar' }, search, roleBtns, h('div', { class: 'filters-wrap' }, moreBtn, panel)),
-      summary,
-      list,
-      showMore,
-    ),
+  return (
+    <>
+      {leftOut(dropped)}
+      <section class="artists-page">
+        <div class="map-bar">
+          {searchField({
+            label: 'Search artists',
+            hint: 'Search a name',
+            first: asked.q,
+            heard: debounced((words: string) => {
+              if (!left.aborted) set({ q: words.trim() });
+            }),
+          })}
+          {segments(
+            'Role',
+            ROLES,
+            () => st().role,
+            (role) => set({ role }),
+          )}
+          <div class="filters-wrap">
+            {filters.button('artist-filters', <>{`More${extra() ? ` (${extra()})` : ''} ▾`}</>)}
+            <div
+              ref={(el) => {
+                panel = el;
+              }}
+              class="more-panel"
+              id="artist-filters"
+              hidden={!filters.open()}
+            >
+              {sel('kind', KINDS, 'Show')}
+              {sel(
+                'country',
+                [['', 'Anywhere'], ...countries.map((c): [string, string] => [c, `${flag(c)} ${countryName(c)}`])],
+                'Booked in',
+              )}
+              {sel('sort', ORDERS, 'Order')}
+              {check(` Only well-known artists (${wellKnown()}+ festivals)`, asked.popular !== 0, (on) =>
+                set({ popular: on ? 1 : 0 }),
+              )}
+            </div>
+          </div>
+        </div>
+        <p class="list-summary">{summary(last())}</p>
+        <Redrawn>
+          <Show when={drawn()} keyed>
+            {({ rows }) => {
+              const list = paged(rows, PAGE, (a) => row(a, next.get(a.artist_id)));
+              return (
+                <>
+                  <ul class="artist-list">{list.rows}</ul>
+                  {list.more}
+                </>
+              );
+            }}
+          </Show>
+        </Redrawn>
+      </section>
+    </>
   );
-  leftOut(root, dropped);
-
-  function render() {
-    showInAddressBar(artistsHref(changed(st, DEFAULTS)));
-    paintRoles();
-    const extra = [st.kind, st.country, st.sort !== 'bookings', st.popular].filter(Boolean).length;
-    moreBtn.textContent = `More${extra ? ` (${extra})` : ''} ▾`;
-    const rows = chosenArtists(st, next);
-    summary.textContent = `${plural(rows.length, 'artist')}${st.country ? ` booked in ${countryName(st.country)}` : ''}`;
-    paged({ list, more: showMore }, rows, PAGE, (a) => row(a, next.get(a.artist_id)));
-  }
-  search.addEventListener(
-    'input',
-    debounced(() => {
-      st.q = search.value.trim();
-      render();
-    }),
-  );
-  render();
-};
+}
 
 function row(
   a: Artist,
   nx: { readonly city: string | null; readonly country_code: string | null; readonly start_date: string } | undefined,
-): HTMLElement {
-  return h(
-    'li',
-    {},
-    h(
-      'a',
-      { href: artistHref(a.artist_id), class: 'artist-row' },
-      h('span', { class: 'name' }, a.display_name),
-      h(
-        'span',
-        { class: 'meta' },
-        a.home_country !== null && a.home_country !== ''
-          ? [flag(a.home_country), ' ', countryName(a.home_country), ' · ']
-          : null,
-        roleLabel(a),
-        ' · ',
-        festivals(a.bookings),
-      ),
-      h('span', { class: 'next' }, nx ? ['Next: ', place(nx), ', ', dayMonth(nx.start_date)] : 'Nothing coming up yet'),
-    ),
+): JSX.Element {
+  return (
+    <li>
+      <a href={artistHref(a.artist_id)} class="artist-row">
+        <span class="name">{a.display_name}</span>
+        <span class="meta">
+          {a.home_country !== null && a.home_country !== ''
+            ? [flag(a.home_country), ' ', countryName(a.home_country), ' · ']
+            : null}
+          {roleLabel(a)}
+          {' · '}
+          {festivals(a.bookings)}
+        </span>
+        <span class="next">{nx ? ['Next: ', place(nx), ', ', dayMonth(nx.start_date)] : 'Nothing coming up yet'}</span>
+      </a>
+    </li>
   );
 }
 
 // one artist's page: who they are, where they're booked, and the festivals they teach at or go to
 const LINKED = { id: num, display_name: str, bookings: opt(num) } as const;
 type Linked = RowOf<typeof LINKED>;
-const linked = (p: Pick<Linked, 'id' | 'display_name'>, extra: Kid): Kid[] => [
-  h('a', { href: artistHref(p.id), class: 'artist' }, p.display_name),
+const linked = (p: Pick<Linked, 'id' | 'display_name'>, extra: JSX.Element): JSX.Element => [
+  <a href={artistHref(p.id)} class="artist">
+    {p.display_name}
+  </a>,
   extra,
 ];
 
 // their roles, where they're from or booked most, and how often
-function lede(stats: Artist | null): Kid {
+function lede(stats: Artist | null): JSX.Element {
   if (stats === null) return 'Only booked as part of a couple'; // artist_stats has the artists booked on their own
   const from =
     stats.home_country === null
@@ -319,64 +303,45 @@ function head(
   stats: Artist | null,
   members: readonly Linked[],
   couples: readonly Linked[],
-) {
-  const partners =
-    members.length > 0
-      ? h(
-          'p',
-          {},
-          'Partners: ',
-          joined(
+): JSX.Element {
+  return (
+    <header class="profile-head">
+      <h1>{a.display_name}</h1>
+      <p class="lede">{lede(stats)}</p>
+      {members.length > 0 ? (
+        <p>
+          {'Partners: '}
+          {joined(
             members.map((m) =>
               linked(
                 m,
-                m.bookings !== null && m.bookings !== 0
-                  ? h('span', { class: 'muted' }, ` (${festivals(m.bookings)} on their own)`)
-                  : null,
+                m.bookings !== null && m.bookings !== 0 ? (
+                  <span class="muted">{` (${festivals(m.bookings)} on their own)`}</span>
+                ) : null,
               ),
             ),
-          ),
-        )
-      : null;
-  const inCouples =
-    couples.length > 0
-      ? h(
-          'p',
-          {},
-          a.kind === KEY.artist_kind.COUPLE ? 'Also part of ' : 'Also books as ',
-          joined(couples.map((c) => linked(c, h('span', { class: 'muted' }, ` (${festivals(c.bookings ?? 0)})`)))),
-        )
-      : null;
-  return h(
-    'header',
-    { class: 'profile-head' },
-    h('h1', {}, a.display_name),
-    h('p', { class: 'lede' }, lede(stats)),
-    partners,
-    inCouples,
+          )}
+        </p>
+      ) : null}
+      {couples.length > 0 ? (
+        <p>
+          {a.kind === KEY.artist_kind.COUPLE ? 'Also part of ' : 'Also books as '}
+          {joined(couples.map((c) => linked(c, <span class="muted">{` (${festivals(c.bookings ?? 0)})`}</span>)))}
+        </p>
+      ) : null}
+    </header>
   );
 }
 
-const comingUp = (upcoming: readonly Festival[], signal: AbortSignal) =>
-  h(
-    'section',
-    {},
-    h('h2', {}, upcoming.length > 0 ? `Coming up (${upcoming.length})` : 'Coming up'),
-    upcoming.length > 0
-      ? h(
-          'div',
-          { class: 'festival-cards' },
-          upcoming.map((e) => heldCard(signal, e)),
-        )
-      : h('p', { class: 'muted' }, 'No upcoming festivals listed yet.'),
-  );
+const comingUp = (upcoming: readonly Festival[]): JSX.Element => (
+  <section>
+    <h2>{upcoming.length > 0 ? `Coming up (${upcoming.length})` : 'Coming up'}</h2>
+    {upcoming.length > 0 ? festivalCards(upcoming) : <p class="muted">No upcoming festivals listed yet.</p>}
+  </section>
+);
 
 // the festivals the people they are said they're going to without teaching there
-function alsoGoing(
-  people: ReturnType<typeof peopleOf>,
-  shown: readonly Festival[],
-  signal: AbortSignal,
-): HTMLElement | null {
+function alsoGoing(people: ReturnType<typeof peopleOf>, shown: readonly Festival[]): JSX.Element {
   const ids = alsoGoingTo(
     people.map((p) => p.id),
     shown.map((e) => e.id),
@@ -387,27 +352,21 @@ function alsoGoing(
       JSON.stringify(ids),
     ]),
   );
-  return h(
-    'section',
-    {},
-    h('h2', {}, `Also going to (${going.length})`),
-    h(
-      'p',
-      { class: 'muted' },
-      'Where ',
-      joined(people.map((p) => h('a', { href: personHref(p.key) }, p.name))),
-      ' said they’re going, besides where they teach.',
-    ),
-    h(
-      'div',
-      { class: 'festival-cards' },
-      going.map((e) => heldCard(signal, e)),
-    ),
+  return (
+    <section>
+      <h2>{`Also going to (${going.length})`}</h2>
+      <p class="muted">
+        {'Where '}
+        {joined(people.map((p) => <a href={personHref(p.key)}>{p.name}</a>))}
+        {' said they’re going, besides where they teach.'}
+      </p>
+      {festivalCards(going)}
+    </section>
   );
 }
 
 // the countries they're booked in, as bars
-function bookedIn(id: number, ownOnly: boolean): HTMLElement | null {
+function bookedIn(id: number, ownOnly: boolean): JSX.Element {
   const cs = q(
     { country_code: str, bookings: num, is_home: flagCol },
     sql`SELECT country_code, bookings, is_home FROM artist_countries WHERE artist_id = ? AND country_code IS NOT NULL
@@ -416,35 +375,29 @@ function bookedIn(id: number, ownOnly: boolean): HTMLElement | null {
   );
   if (cs.length === 0) return null;
   const max = Math.max(1, ...cs.map((c) => c.bookings));
-  return h(
-    'section',
-    {},
-    h('h2', {}, ownOnly ? 'Where they’re booked on their own' : 'Where they’re booked'),
-    h(
-      'ul',
-      { class: 'bars' },
-      cs.map((c) =>
-        h(
-          'li',
-          {},
-          h(
-            'span',
-            {},
-            flag(c.country_code),
-            ' ',
-            countryName(c.country_code),
-            c.is_home ? h('small', { class: 'muted' }, ' home') : null,
-          ),
-          h('span', { class: 'bar', style: { '--w': `${((100 * c.bookings) / max).toFixed(1)}%` } }),
-          h('span', { class: 'n' }, c.bookings),
-        ),
-      ),
-    ),
+  return (
+    <section>
+      <h2>{ownOnly ? 'Where they’re booked on their own' : 'Where they’re booked'}</h2>
+      <ul class="bars">
+        <For each={cs}>
+          {(c) => (
+            <li>
+              <span>
+                {flag(c.country_code)} {countryName(c.country_code)}
+                {c.is_home ? <small class="muted"> home</small> : null}
+              </span>
+              <span class="bar" ref={styled({ '--w': `${((100 * c.bookings) / max).toFixed(1)}%` })} />
+              <span class="n">{c.bookings}</span>
+            </li>
+          )}
+        </For>
+      </ul>
+    </section>
   );
 }
 
 // the festivals they were booked at, latest first, with their role there when they weren't teaching
-function pastList(id: number, past: readonly Festival[]): HTMLElement | null {
+function pastList(id: number, past: readonly Festival[]): JSX.Element {
   if (past.length === 0) return null;
   const roles = new Map(
     q(
@@ -458,23 +411,25 @@ function pastList(id: number, past: readonly Festival[]): HTMLElement | null {
     const words = r === undefined || r === KEY.role.TEACHER ? null : roleWords(r);
     return words !== null && words !== '' ? ` · ${words}` : '';
   };
-  return h(
-    'details',
-    { class: 'past' },
-    h('summary', {}, `Past festivals (${past.length})`),
-    h(
-      'ul',
-      {},
-      past.map((e) =>
-        h(
-          'li',
-          {},
-          h('span', { class: 'when' }, dayYear(e.start_date)),
-          h('a', { href: eventOnMapHref(e.id) }, e.title),
-          h('span', { class: 'muted' }, ' · ', place(e), role(roles.get(e.id))),
-        ),
-      ),
-    ),
+  return (
+    <details class="past">
+      <summary>{`Past festivals (${past.length})`}</summary>
+      <ul>
+        <For each={past}>
+          {(e) => (
+            <li>
+              <span class="when">{dayYear(e.start_date)}</span>
+              <a href={eventOnMapHref(e.id)}>{e.title}</a>
+              <span class="muted">
+                {' · '}
+                {place(e)}
+                {role(roles.get(e.id))}
+              </span>
+            </li>
+          )}
+        </For>
+      </ul>
+    </details>
   );
 }
 
@@ -502,7 +457,7 @@ const bookedAs = (id: number): Named[] =>
 
 // their names (a rename; the names each role knows them by), the other names they're written as, and how their home
 // is known
-function notes(a: Pick<Artist, 'display_name'>, id: number, stats: Artist | null): HTMLElement {
+function notes(a: Pick<Artist, 'display_name'>, id: number, stats: Artist | null): JSX.Element {
   const known = bookedAs(id);
   const said = new Set([a.display_name, ...known.map((n) => n.name)].map((n) => n.toLowerCase()));
   const aliases = q(
@@ -512,25 +467,26 @@ function notes(a: Pick<Artist, 'display_name'>, id: number, stats: Artist | null
   )
     .map((r) => r.alias)
     .filter((x) => !said.has(x.toLowerCase()));
-  return h(
-    'div',
-    { class: 'profile-notes' },
-    nameLines(known, today()).map((line) => h('p', {}, line)),
-    aliases.length > 0 ? h('p', {}, 'Also written as ', aliases.join(' · ')) : null,
-    h(
-      'p',
-      {},
-      stats?.home_basis == null ? 'No line-up says where they’re from.' : text('home_basis', stats.home_basis),
-    ),
+  return (
+    <div class="profile-notes">
+      <For each={nameLines(known, today())}>{(line) => <p>{line}</p>}</For>
+      {aliases.length > 0 ? (
+        <p>
+          {'Also written as '}
+          {aliases.join(' · ')}
+        </p>
+      ) : null}
+      <p>{stats?.home_basis == null ? 'No line-up says where they’re from.' : text('home_basis', stats.home_basis)}</p>
+    </div>
   );
 }
 
 const BARE = { artist_id: num, display_name: str, kind: state('artist_kind') } as const;
-function artistPage(root: HTMLElement, id: number, signal: AbortSignal): void {
+function artistPage(id: number): JSX.Element {
   const moved = one({ new_id: num }, sql`SELECT new_id FROM artist_redirects WHERE old_id = ?`, [id]);
   if (moved) {
     location.replace(artistHref(moved.new_id));
-    return;
+    return null;
   }
   // an artist booked only as half of a couple has no stats of their own
   const stats =
@@ -541,10 +497,7 @@ function artistPage(root: HTMLElement, id: number, signal: AbortSignal): void {
     ) ?? null;
   const a =
     stats ?? one(BARE, sql`SELECT a.id AS artist_id, a.display_name, a.kind FROM artists a WHERE a.id = ?`, [id]);
-  if (!a) {
-    root.replaceChildren(h('p', {}, 'Artist not found.'));
-    return;
-  }
+  if (!a) return <p>Artist not found.</p>;
   const events = withDetails(
     q(
       EVENT,
@@ -565,20 +518,17 @@ function artistPage(root: HTMLElement, id: number, signal: AbortSignal): void {
     LEFT JOIN artist_stats st ON st.artist_id = c.id WHERE cm.member_id = ? ORDER BY st.bookings DESC`,
     [id],
   );
-  root.replaceChildren(
-    h(
-      'article',
-      { class: 'artist-profile' },
-      h('a', { href: artistsHref(), class: 'back-link' }, '← All artists'),
-      head(a, stats, members, couples),
-      comingUp(
-        events.filter((e) => e.upcoming),
-        signal,
-      ),
-      alsoGoing(peopleOf(id), events, signal),
-      bookedIn(id, couples.length > 0 && a.kind !== KEY.artist_kind.COUPLE),
-      pastList(id, events.filter((e) => e.phase === KEY.phase.ENDED).reverse()),
-      notes(a, id, stats),
-    ),
+  return (
+    <article class="artist-profile">
+      <a href={artistsHref()} class="back-link">
+        ← All artists
+      </a>
+      {head(a, stats, members, couples)}
+      {comingUp(events.filter((e) => e.upcoming))}
+      {alsoGoing(peopleOf(id), events)}
+      {bookedIn(id, couples.length > 0 && a.kind !== KEY.artist_kind.COUPLE)}
+      {pastList(id, events.filter((e) => e.phase === KEY.phase.ENDED).reverse())}
+      {notes(a, id, stats)}
+    </article>
   );
 }

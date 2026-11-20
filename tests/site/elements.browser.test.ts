@@ -7,6 +7,7 @@ import { expect, test, vi } from 'vitest';
 import { userEvent } from 'vitest/browser';
 import {
   artistHref,
+  artistsHref,
   countriesHref,
   EXPLORE,
   festivalsHref,
@@ -143,6 +144,16 @@ test('a control the address turns on is marked so in the markup', async () => {
   expect([search?.value, search?.getAttribute('value')]).toEqual(['oslo', 'oslo']);
   const ticked = [...(main()?.querySelectorAll<HTMLInputElement>('.pick-row input') ?? [])].filter((b) => b.checked);
   expect(ticked.map((b) => b.hasAttribute('checked'))).toEqual([true]);
+  await app.open(artistsHref({ kind: 'person', popular: 1, q: 'an' }));
+  const kind = main()?.querySelector<HTMLSelectElement>('#artist-filters select');
+  expect([
+    kind?.value,
+    [...(kind?.options ?? [])].filter((o) => o.hasAttribute('selected')).map((o) => o.value),
+  ]).toEqual(['person', ['person']]);
+  const known = main()?.querySelector<HTMLInputElement>('#artist-filters input[type="checkbox"]');
+  expect([known?.checked, known?.hasAttribute('checked')]).toEqual([true, true]);
+  const name = main()?.querySelector<HTMLInputElement>('.map-bar input[type="search"]');
+  expect([name?.value, name?.getAttribute('value')]).toEqual(['an', 'an']);
 });
 
 test.for([

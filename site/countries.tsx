@@ -2,15 +2,15 @@
 // flights to those festivals cost, and what the scene is like.
 
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { createEffect, createMemo, createSignal, flush, For } from 'solid-js';
-import { artistCountries } from './artists.ts';
-import { leftOut, segments } from './controls.tsx';
+import { createMemo, For } from 'solid-js';
+import { artistCountries } from './artists.tsx';
+import { check, chosen, leftOut, segments } from './controls.tsx';
 import { one, q, sql } from './db.ts';
 import { cheapestFlights } from './fares.ts';
 import { festivals } from './festivals.ts';
 import { money, within } from './money.ts';
 import type { ViewProps } from './mount.tsx';
-import { artistsHref, changed, countriesHref, festivalsHref, mapHref, readState, showInAddressBar } from './routes.ts';
+import { artistsHref, changed, countriesHref, festivalsHref, mapHref, readState } from './routes.ts';
 import { num, opt, str } from './rows.ts';
 import { countryName, flag, home, monthYear } from './ui.ts';
 
@@ -51,13 +51,7 @@ type Country = { [K in keyof typeof COUNTRY]: ReturnType<(typeof COUNTRY)[K]> } 
 
 export function countries({ qs }: ViewProps): JSX.Element {
   const read = readState(qs, DEFAULTS, { sort: SORTS.map(([v]) => v), all: [0, 1] });
-  // the choices, a new record on each one, as each drew the list again
-  const [st, setSt] = createSignal<Readonly<typeof DEFAULTS>>(read.state);
-  const set = (to: Partial<typeof DEFAULTS>) => {
-    flush(() => {
-      setSt((was) => ({ ...was, ...to }));
-    });
-  };
+  const [st, set] = chosen<Readonly<typeof DEFAULTS>>(read.state, (now) => countriesHref(changed(now, DEFAULTS)));
   const withArtists = new Set(artistCountries());
   // the cheapest Fri→Mon return to any of the country's upcoming festivals, and the city it lands in
   const fares = cheapestFlights(festivals());
@@ -80,12 +74,6 @@ export function countries({ qs }: ViewProps): JSX.Element {
     const { all, sort } = st();
     return rows.filter((r) => all !== 0 || (r.upcoming ?? 0) > 0).sort(orders[sort]);
   });
-  createEffect(
-    () => countriesHref(changed(st(), DEFAULTS)),
-    (href) => {
-      showInAddressBar(href);
-    },
-  );
 
   return (
     <>
@@ -105,14 +93,7 @@ export function countries({ qs }: ViewProps): JSX.Element {
             () => st().sort,
             (sort) => set({ sort }),
           )}
-          <label class="check">
-            <input
-              type="checkbox"
-              defaultChecked={read.state.all !== 0}
-              onChange={(ev) => set({ all: ev.currentTarget.checked ? 1 : 0 })}
-            />
-            {' Include countries with nothing coming up'}
-          </label>
+          {check(' Include countries with nothing coming up', read.state.all !== 0, (on) => set({ all: on ? 1 : 0 }))}
         </div>
         <p class="list-summary">
           {`${shown().length} countries${st().all || last === null ? ' in the listings' : ` with festivals until ${monthYear(last)}`}`}

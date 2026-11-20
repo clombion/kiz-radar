@@ -83,16 +83,6 @@ export function choices<V extends string | number>(
   return el;
 }
 
-// A row of choices, one of them on (a segmented control): each is a button pressed while it is the choice.
-export const segments = <V extends string>(
-  options: readonly (readonly [V, string])[],
-  on: V,
-  choose: (v: V) => void,
-): HTMLButtonElement[] =>
-  options.map(([v, words]) =>
-    button({ class: v === on && 'is-on', 'aria-pressed': String(v === on), onclick: () => choose(v) }, words),
-  );
-
 // A list shown a page at a time: its first page now, and the more button (in the list, last, or anywhere else) adding
 // the next page to what is there, so the rows already shown are kept as they are. Showing other items starts over.
 export function paged<T>(

@@ -9,7 +9,7 @@
 
 import { createEffect, createRoot, createSignal } from 'solid-js';
 import { type Address, createAddress } from './address.ts';
-import { artistsView } from './artists.ts';
+import { artists } from './artists.tsx';
 import { onResize } from './bits.ts';
 import { communityView } from './communities.ts';
 import { countries } from './countries.tsx';
@@ -76,7 +76,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
   finder: FINDER,
   week: { title: 'This week', nav: 'explore', waitsForData: true, show: mounted(Week) },
   map: { title: 'Map', nav: 'explore', waitsForData: true, show: mapView },
-  artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView },
+  artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: mounted(artists) },
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: mounted(countries) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) },
   sources: { title: 'Sources', nav: null, waitsForData: false, show: (root) => sourcesView(root) },
