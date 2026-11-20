@@ -10,23 +10,24 @@ import { onResize } from './bits.ts';
 import { communityView } from './communities.ts';
 import { countriesView } from './countries.ts';
 import { freshDay, load, loadSite, SiteUpdating } from './db.ts';
-import { button, h, toggle } from './dom.ts';
+import { h } from './dom.ts';
 import { friendsTabs, friendsView, placeOf } from './friends.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
 import { mounted } from './mount.tsx';
 import { personView } from './people.ts';
-import { inPlaceOf } from './placed.tsx';
+import { atEnd, atStart, inPlaceOf, inside } from './placed.tsx';
 import { done, guarded, reportUncaught } from './report.ts';
 import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, type Tab, TABS } from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';
+import { FooterLinks, Skip, ToTop } from './shell.tsx';
 import { sourcesView } from './sources.ts';
 import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
 import { type Link, Row, slide } from './tabs.tsx';
-import { loading, scrolling } from './ui.ts';
+import { loading } from './ui.ts';
 import { updated, updatingPage } from './updating.ts';
 import { Week } from './week.tsx';
 
@@ -143,8 +144,7 @@ inPlaceOf(part('#subnav'), 'the second row of tabs', () =>
     },
   }),
 );
-// the footer's links, from routes.ts
-part('#footer-nav').append(...[...TABS.slice(0, -1), ...EXPLORE].map(([, label, href]) => h('a', { href }, label)));
+inside(part('#footer-nav'), "the footer's links", FooterLinks);
 
 // Show the view the address names; scrollUp scrolls up to it (a new page, not the first one)
 function route({ name, sub, qs, moved }: Address, { scrollUp = false } = {}): void {
@@ -202,16 +202,8 @@ done(document.fonts.ready.then(measureHeader), 'measuring the header');
 
 swipeBetweenSections();
 
-// the first thing a keyboard reaches: past the header and the tabs, to the page itself
-document.body.prepend(button({ class: 'skip', onclick: () => main.focus() }, 'Skip to the page'));
-
-// "Back to top" once you're two screens down a long list
-const toTop = button(
-  { class: 'to-top', onclick: () => window.scrollTo({ top: 0, behavior: scrolling() }) },
-  '↑ Back to top',
-);
-document.body.append(toTop);
-addEventListener('scroll', () => toggle(toTop, 'shown', scrollY > 2 * innerHeight), { passive: true });
+atStart('the skip link', () => Skip({ main }));
+atEnd('Back to top', ToTop);
 
 // the page once site.json is in: the currency switch, search, and the view the address names, then
 // each address it moves to; a summary that fails to load is said in the page's place
