@@ -17,11 +17,11 @@
 // person's own nights in the names it opens ("Nora (Fri–Sun)"); those who said no place last.
 //
 // It is drawn for the eye: a screen reader hears its names, and a line no one sees says the rest in words. Drawn by
-// Solid; an h() view holds one through mount.tsx's held.
+// Solid, called by the community's page as it draws a trip's chart.
 
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { createEffect, createSignal, flush, For } from 'solid-js';
-import { asElement, flat, type Kid, styled } from './bits.ts';
+import { type Accessor, createEffect, createSignal, flush, For } from 'solid-js';
+import { asElement, styled } from './bits.ts';
 import { awayDays, daysInto, daysOf, type Moment, weekday, weekday3, WEEKDAYS } from './calendar.ts';
 import { addDays } from './days.ts';
 import { swipe } from './ink.ts';
@@ -57,7 +57,7 @@ const counted = (buckets: readonly Bucket<unknown>[]): string =>
 // nights when they are not all of its place's
 interface Group {
   readonly heading: string | null;
-  readonly names: readonly { readonly name: Kid; readonly nights: string | null }[];
+  readonly names: readonly { readonly name: JSX.Element; readonly nights: string | null }[];
 }
 
 // Where the card of names goes on a computer: under its text's line, from the text's left, inside the trip's card;
@@ -122,7 +122,7 @@ function behind(
               <For each={g.names}>
                 {(n) => (
                   <li>
-                    {flat([n.name])}
+                    {n.name}
                     {n.nights === null ? null : <span class="gantt-who-nights">{` · ${n.nights}`}</span>}
                   </li>
                 )}
@@ -217,6 +217,7 @@ interface Frame {
   readonly place: string;
   readonly describedBy: string; // the id of the line that says it in words
   readonly seed: string; // the festival's, which with a line's names makes its stroke's swipe
+  readonly hidden?: Accessor<boolean>; // while the other view of the roster shows
 }
 function frame(t: Frame, column: boolean, lines: JSX.Element): JSX.Element {
   const days = daysOf(t.from, t.to);
@@ -228,6 +229,7 @@ function frame(t: Frame, column: boolean, lines: JSX.Element): JSX.Element {
       role="group"
       aria-label={`Who is in ${t.place} when`}
       aria-describedby={t.describedBy}
+      hidden={t.hidden?.()}
     >
       <div />
       <div
@@ -302,7 +304,7 @@ const dated = (day: string) => `${weekday3(day)} ${dayMonth(day)}`;
 export function gantt<P>(
   t: Frame & {
     readonly lines: readonly Line<P>[]; // as roster() makes them: named, by number, everyone else, those who have not said
-    readonly named: (u: Unit<P>) => Kid; // a unit's name, as the page shows it
+    readonly named: (u: Unit<P>) => JSX.Element; // a unit's name, as the page shows it
   },
 ): JSX.Element {
   const d = drawing(t);
@@ -352,7 +354,7 @@ export function gantt<P>(
       n === 0 ? null : n <= most ? <span title={full}>{full}</span> : list.opener(plural(n, 'place'));
     const desk = column ? places(2) : null,
       phone = places(1);
-    const label = l.called === null ? flat(joined(l.units.map(t.named))) : list.opener(l.called);
+    const label = l.called === null ? joined(l.units.map(t.named)) : list.opener(l.called);
     return [
       <div class={['gantt-name', l.travel === null && l.nights === null && 'gantt-unsaid']}>
         {label}
@@ -371,7 +373,7 @@ export function gantt<P>(
 // nights anyone stays there, its ends the weekdays of the evening of the first and the morning after the last; those
 // who said no place last, over the festival's days with both ends fading.
 export function ganttByPlace<P>(
-  t: Frame & { readonly places: readonly Place<P>[]; readonly named: (u: Unit<P>) => Kid },
+  t: Frame & { readonly places: readonly Place<P>[]; readonly named: (u: Unit<P>) => JSX.Element },
 ): JSX.Element {
   const d = drawing(t);
   const line = (p: Place<P>, i: number): JSX.Element => {
@@ -383,7 +385,7 @@ export function ganttByPlace<P>(
     };
     const list =
       p.called === null ? null : behind(`${t.describedBy}-names-${i}`, [{ heading: null, names: p.units.map(own) }]);
-    const under = p.called === null || list === null ? flat(joined(p.units.map(t.named))) : list.opener(p.called);
+    const under = p.called === null || list === null ? joined(p.units.map(t.named)) : list.opener(p.called);
     return [
       <div class={['gantt-name', p.place === null && 'gantt-unsaid']}>
         {p.place ?? 'Not said'} <span class="gantt-under">{under}</span>

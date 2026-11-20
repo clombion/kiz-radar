@@ -6,11 +6,11 @@
 // opens one popover saying who travels, which Escape, a tap elsewhere or on the day again closes. It never covers the
 // day's month: on a computer it sits beside it, on a phone it is a panel under its row of months, which moves what
 // follows down. Drawn by Solid: the period shown, the day the popover is open on and each month's stop are signals,
-// the popover's place measured in an effect; an h() view holds the calendar through mount.tsx's held.
+// the popover's place measured in an effect; the community's page draws it.
 
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { createEffect, createMemo, createSignal, flush, For, Show } from 'solid-js';
-import { flat, type Kid, styled, uniqueId } from './bits.ts';
+import { styled, uniqueId } from './bits.ts';
 import { type Away, type Day, monthsIn, periodSaid, WEEKDAYS, weeksOf } from './calendar.ts';
 import { addDays } from './days.ts';
 import { Drawing } from './icons.ts';
@@ -38,7 +38,7 @@ export interface Days<A extends Away> {
   readonly label: (day: string, on: Day<A>) => string; // what a screen reader says of a day someone travels on
   readonly festivals: readonly Marked[];
   readonly travel: ReadonlySet<string>; // the days someone travels on outside their festival's: before it, or after
-  readonly detail: (day: string) => Kid[];
+  readonly detail: (day: string) => JSX.Element;
 }
 
 // a festival's swipe over the lower half of its days' numbers; a second festival's lower and thinner, under it
@@ -319,7 +319,7 @@ export function months<A extends Away>(
   const said = createMemo((): { readonly words: JSX.Element } | { readonly thrown: unknown } => {
     const d = day();
     try {
-      return { words: d === null ? null : flat(s.detail(d)) };
+      return { words: d === null ? null : s.detail(d) };
     } catch (e) {
       return { thrown: e };
     }
