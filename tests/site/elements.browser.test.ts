@@ -229,7 +229,12 @@ test('a tap on the search’s backdrop closes it, taking its entry away; a tap i
   const tap = (el: Element) => el.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   tap(input);
   expect([dlg.open, entryAt()]).toEqual([true, at + 1]);
-  const gone = new Promise((done) => addEventListener('popstate', done, { once: true }));
+  // its step back, and its close event, which puts the focus back on its opener: a close event heard after the next
+  // test's page took the focus would take it away again
+  const gone = Promise.all([
+    new Promise((done) => addEventListener('popstate', done, { once: true })),
+    new Promise((done) => dlg.addEventListener('close', done, { once: true })),
+  ]);
   tap(dlg); // the backdrop is the dialog's own: a tap there is the dialog's
   await gone;
   expect([dlg.open, entryAt()]).toEqual([false, at]);
