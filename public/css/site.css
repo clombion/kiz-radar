@@ -100,7 +100,7 @@ textarea {
   text-decoration: none;
   color: var(--muted);
 }
-/* the oval behind the current tab, one per row; tabs.ts moves it */
+/* the oval behind the current tab, one per row; tabs.tsx moves it */
 .goo {
   position: absolute;
   inset: -12px;
@@ -3225,7 +3225,7 @@ html:has(dialog.peek[open]) {
   }
 }
 
-/* Going to the next or previous section (tabs.ts slide): the page moves aside a little and dims as the next one
+/* Going to the next or previous section (tabs.tsx slide): the page moves aside a little and dims as the next one
    slides in over it from that side, as on a phone; the header stays put. */
 html[data-vt="ahead"]::view-transition-old(root),
 html[data-vt="ahead"]::view-transition-new(root),

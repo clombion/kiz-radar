@@ -3,7 +3,7 @@
 import { dismissable } from '../../site/dismiss.ts'; // refused
 import { h } from '../../site/dom.ts'; // refused
 import { modal } from '../../site/modal.ts'; // refused
-import { pill } from '../../site/tabs.ts'; // refused
+import { pill } from '../../site/tabs.tsx'; // refused
 
 export const used = [dismissable, h, modal, pill];
 export const site = (): Promise<unknown> => import('../../site/main.ts'); // refused

@@ -12,7 +12,7 @@ const [WEEK = '', MAP = ''] = EXPLORE.map(([, , href]) => href);
 const main = () => document.querySelector<HTMLElement>('#main');
 const root = document.documentElement;
 const MS = 5000; // the longest a wait here takes: the oval's move is 760 ms, a slide shorter
-// The animations of a row's ovals (tabs.ts's goo layer: the oval, and a move's arm and drop), none of the row's other
+// The animations of a row's ovals (tabs.tsx's goo layer: the oval, and a move's arm and drop), none of the row's other
 // transitions.
 const slime = (row: Element | null) => ovalsOf(row).flatMap((oval) => oval.getAnimations());
 // A row, the header's unless named, once its oval rests: its ovals' animations over within 5 s (one cancelled by the

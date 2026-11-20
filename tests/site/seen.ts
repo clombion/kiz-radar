@@ -458,13 +458,13 @@ export const header = (): HTMLElement | null => document.querySelector<HTMLEleme
 export const subnav = (): HTMLElement | null => document.querySelector<HTMLElement>('#subnav');
 export const tabOf = (row: Element | null, words: string): HTMLAnchorElement | undefined =>
   [...(row?.querySelectorAll('a') ?? [])].find((a) => a.textContent === words);
-// A row's layer of ovals (tabs.ts's goo, its first child); a row without one is an error.
+// A row's layer of ovals (tabs.tsx's goo, its first child); a row without one is an error.
 export function layerOf(row: Element | null): HTMLElement {
   const layer = row?.querySelector<HTMLElement>(':scope > .goo');
   if (layer == null) throw new Error('the row of tabs has no layer of ovals');
   return layer;
 }
-// A row's ovals as the page draws them (tabs.ts), the one at rest and the shapes of a move under way, hidden or not.
+// A row's ovals as the page draws them (tabs.tsx), the one at rest and the shapes of a move under way, hidden or not.
 export const ovalsOf = (row: Element | null): HTMLElement[] => [
   ...(row?.querySelectorAll<HTMLElement>(':scope > .goo > .pill') ?? []),
 ];

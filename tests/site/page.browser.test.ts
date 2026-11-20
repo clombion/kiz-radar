@@ -7,7 +7,7 @@ import { afterEach, expect, test } from 'vitest';
 import { dismissable } from '../../site/dismiss.ts';
 import { button, h, paged, toggle } from '../../site/dom.ts';
 import { modal } from '../../site/modal.ts';
-import { pill } from '../../site/tabs.ts';
+import { pill } from '../../site/tabs.tsx';
 import { entries, ovalsOf } from './seen.ts';
 
 afterEach(() => {

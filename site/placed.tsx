@@ -1,0 +1,38 @@
+// The shell's seam, beside the views' (mount.tsx): a part of the page that Solid draws outside any view, once, for the
+// page's life. Each is drawn under the page's owner (owner.ts), as a view is, in an error boundary that reports what
+// went wrong (report.ts) and draws nothing, so a throw in one part neither halts Solid for the rest of the page nor
+// takes the other parts with it; its clicks are delegated to <body> (body.ts). A part is drawn before a marker that
+// stays, an empty Text node, never one of the page's own elements, and the drawing is flushed: the part is there when
+// the call returns, as an h() element was.
+import { insert } from '@solidjs/web';
+import { type Component, createRoot, Errored, flush, runWithOwner } from 'solid-js';
+import { page } from './owner.ts';
+import { report } from './report.ts';
+
+// Part, named where (as report.ts says it), drawn in parent before marker
+function draw(where: string, Part: Component, parent: Node, marker: Node): void {
+  const reported = (e: unknown): null => {
+    report(e, where);
+    return null;
+  };
+  runWithOwner(page, () => {
+    createRoot(() => {
+      const tree = (
+        <Errored fallback={(e) => <>{reported(e())}</>}>
+          <Part />
+        </Errored>
+      );
+      insert(parent, () => tree, marker);
+    });
+  });
+  flush();
+}
+
+// Part in el's place: el replaced by the marker, the part drawn before it
+export function inPlaceOf(el: Element, where: string, Part: Component): void {
+  const marker = new Text();
+  el.replaceWith(marker);
+  const parent = marker.parentNode;
+  if (parent === null) throw new Error(`${where}: the element to draw in place of is in no page`);
+  draw(where, Part, parent, marker);
+}
