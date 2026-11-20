@@ -1,8 +1,8 @@
 // The review dashboard's token (review.html): what the page can do with it, in the words its button says, and the
 // dialog that asks for one, checks it with GitHub and keeps it in this browser (kept.ts), or forgets it. The page
-// (review.ts) holds the token's state and draws itself anew on each change of it; the dialog is given the page's two
-// functions that change it. Drawn once, at the end of <body>, shown with showModal() and closed with close(), with no
-// history entry of its own.
+// (dashboard.tsx) holds the token's state and draws itself anew on each change of it; the dialog is given the page's
+// two functions that change it. Drawn once, at the end of <body>, shown with showModal() and closed with close(), with
+// no history entry of its own.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { createSignal, flush } from 'solid-js';
 import { expires, forgetToken, keepExpires, keepToken, remembered, token } from './kept.ts';

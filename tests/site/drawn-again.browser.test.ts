@@ -10,7 +10,7 @@ import { expect, test } from 'vitest';
 import { artistsHref, countriesHref, festivalsHref, friendsHref, mapHref, sqlHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { ALBANIA, KUOF, PARIS } from './community.fixture.ts';
-import { owners } from './owned.ts';
+import { drawnAlike, owners } from './owned.ts';
 import { community } from './planted.ts';
 import { COMM } from './seen.ts';
 
@@ -21,19 +21,6 @@ const app = await startSite({
   plant: (db) => community(db, REDRAWN, { maybe: [['Tonje', KUOF]], added: ola }),
 });
 const main = () => document.querySelector('main');
-// The owners under the page's after each of three draws of the same part, each draw done by `draw`: the same each time;
-// and each a draw, the element of the part `drawn` finds before it gone after it.
-async function drawnAlike(drawn: () => Element | null | undefined, draw: () => void | Promise<void>): Promise<void> {
-  const counts: number[] = [];
-  for (const _ of [1, 2, 3]) {
-    const before = drawn();
-    if (before == null) throw new Error('the page has no part to draw again');
-    await draw();
-    expect(before.isConnected).toBe(false);
-    counts.push(owners());
-  }
-  expect(counts).toEqual(counts.map(() => counts[0]));
-}
 // the page's element of the selector, of a class, which it must have
 function one<E extends HTMLElement>(selector: string, of: new () => E): E {
   const found = main()?.querySelector(selector);

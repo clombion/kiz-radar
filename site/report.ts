@@ -1,7 +1,7 @@
 // What goes wrong is said once: in the console, with where it happened, and in a line at the top of the page, which
-// can be closed (problem.tsx). A view that throws while it builds says so in its place (an h() view through guarded, a
-// Solid view through its error boundary, mount.tsx), so one bad row never leaves a blank page; a promise left to run on
-// its own ends in report (done); the window's listeners catch whatever else escapes.
+// can be closed (problem.tsx). A view that throws while it builds says so in its place (its error boundary, mount.tsx;
+// guarded, around it in main.ts, for what escapes the render), so one bad row never leaves a blank page; a promise left
+// to run on its own ends in report (done); the window's listeners catch whatever else escapes.
 import { h } from './dom.ts';
 import { showProblem } from './problem.tsx';
 
