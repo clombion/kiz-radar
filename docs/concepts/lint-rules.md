@@ -816,7 +816,7 @@ nothing on the stylesheet but the line it suppressed, and stylelint, with the ru
 | -- | -- | -- |
 | `a11y/useGenericFontNames` | `font-family-no-missing-generic-family-keyword` | 0 |
 | `complexity/noImportantStyles` | `declaration-no-important` | 1, the `[hidden]` rule, suppressed in both ([suppressed findings](../lint-false-positives.md)) |
-| `complexity/noExcessiveSelectorClasses` | `selector-max-class` | none: Biome's has no default for `maxClasses`, so it checked nothing, and stylelint's is not on |
+| `complexity/noExcessiveSelectorClasses` | `selector-max-class` | none: Biome's has no default for `maxClasses`, so it checked nothing; stylelint's is on at 4 among the stricter rules |
 | `correctness/noInvalidDirectionInLinearGradient` | `function-linear-gradient-no-nonstandard-direction` | 0 |
 | `correctness/noInvalidGridAreas` | `named-grid-areas-no-invalid` | 0 |
 | `correctness/noInvalidPositionAtImportRule` | `no-invalid-position-at-import-rule` | 0 |
@@ -855,3 +855,64 @@ Off in Biome, staying off:
 | `style/noDescendingSpecificity` | `no-descending-specificity` | site.css is ordered by component; specificity decides between weights (61 findings: stylelint's rule is the same check) |
 | `style/noExcessiveLinesPerFile` | (none) | the stylesheet is one file, ordered by component |
 | `suspicious/useBaseline` | a house stylelint rule on `web-features` | **pending**: a house rule built on `web-features` (Baseline's data) will refuse a CSS feature not supported in every declared browser for at least 12 months, the browsers declared once in `package.json`'s `browserslist` (owner, 20 November: no third-party browser plugin); until then nothing checks the stylesheet against the supported browsers |
+
+### Stricter than Biome
+
+Parity is the floor: each of stylelint's core rules and the candidate plugins was considered and is on or off with its
+reason, rather than taken from a shared config's defaults. Findings are those on the stylesheet before this change, the
+rule alone (stylelint 18.0.0; 17.16.0 finds the same). Where a rule is on with findings, the stylesheet was changed to
+what it asks, rendering the same, or the line is suppressed with its reason
+([suppressed findings](../lint-false-positives.md)). `tests/site/stylelint.test.ts` lints the fixtures in
+`tests/site/stylelint/` with the repository's config: each rule on refuses a line written for it (an empty sheet and a
+string over two lines, which no marked line holds, are CSS of the test's own), the suppressions' settings refuse a
+disable with no reason, one not needed and one of a rule not on, and a sheet written the intended way passes.
+
+| Rule (setting) | Findings | On or off | Reason |
+| -- | -- | -- | -- |
+| The validity rules with no Biome twin: `annotation-no-unknown`, `at-charset-rule-no-invalid`, `at-rule-descriptor-no-unknown`, `at-rule-descriptor-value-no-unknown`, `at-rule-no-deprecated`, `at-rule-prelude-no-invalid`, `block-no-redundant-nested-style-rules`, `color-no-invalid-hex`, `comment-no-empty`, `declaration-property-value-keyword-no-deprecated`, `declaration-property-value-no-unknown`, `function-calc-no-unspaced-operator`, `media-feature-name-value-no-unknown`, `media-query-no-invalid`, `nesting-selector-no-missing-scoping-root`, `no-invalid-double-slash-comments`, `no-invalid-position-declaration`, `no-unknown-animations`, `no-unknown-custom-media`, `property-no-deprecated`, `selector-no-deprecated`, `selector-no-invalid`, `selector-no-unmatchable`, `string-no-newline`, `syntax-string-no-invalid`, `value-no-invalid` | 0 each | on | each refuses CSS a browser drops or misreads that Biome's rules do not see: a value a property cannot take, an invalid prelude, an animation name no `@keyframes` defines |
+| `no-descending-specificity` | 61 | off | the stylesheet is ordered by component; specificity decides between weights (Biome's reason, the same check) |
+| `selector-max-specificity` (`0,4,0`; `0,5,2`) | 3; 1 | off | a ceiling fitted to today's worst selector holds nothing; with descending specificity off, specificity is how the stylesheet weighs rules |
+| `selector-max-compound-selectors` (3; **4**) | 2; 0 | on, 4 | today's deepest is 4 (`.sentence-hero .live .friends b`); it stops descendant chains growing |
+| `selector-max-class` (3; **4**) | 3; 0 | on, 4 | Biome's `noExcessiveSelectorClasses` given the option it lacked; today's most is 4 |
+| `selector-max-id` (0) | 1 | off | the one id is `#main:focus`, the skip link's target: a cap of 0 would suppress it for nothing gained |
+| `selector-no-qualifying-type` | 77 (0 ignoring class and attribute) | off | `button.link`, `dialog.search`, `input[type]` qualify on purpose: a class styles one kind of element |
+| `max-nesting-depth` (0) | 0 | on, 0 | the stylesheet is flat, and `styles.test.ts`'s rules and `pipeline/generate.py`'s class reader read flat rules |
+| `selector-max-type` (2), `-universal` (1), `-attribute` (2), `-pseudo-class` (3), `-combinators` (3) | 0 each | off | caps chosen only to fit today; the compound and class caps bound a selector already |
+| `unit-allowed-list` (`px rem em %`) | 68 (0 with the 15 units in use) | off | each unit in use is meant (`fr`, `dvh`, `svh`, `deg`, `ms`); a list of today's units refuses nothing wrong |
+| `declaration-property-unit-allowed-list` (`font-size` in `rem em %`, unitless `line-height`, no unit on transitions) | 6 | off | fluid type is `clamp(rem, vw, rem)` by design; Leaflet's attribution is `10px`; one `line-height` is in rem |
+| `color-named` (`never`, `mask*` properties exempt) | 6 (0 with the exemption) | on | the 6 are `black` in `mask-image` gradients, an opacity, not a colour; elsewhere a named colour would pass `styles.test.ts`, whose colours are hex and colour functions: this closes that gap |
+| `color-hex-length` (`short`) | 1 | on, fixed | `--accent-ink: #ffffff` is `#fff` |
+| `font-weight-notation` (`numeric`) | 0 | on | one spelling |
+| `selector-class-pattern` (kebab case: `^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$`) | 0 | on | `site/classes.ts` is generated from these names (`pipeline/generate.py` reads any `[\w-]`): the rule holds them to the form JSX's `class` is written in; Leaflet's are kebab case too |
+| `custom-property-pattern`, `keyframes-name-pattern` (kebab case) | 0; 0 | on | the tokens and the animations, in the same form |
+| `selector-id-pattern`, `container-name-pattern`, `layer-name-pattern`, `custom-media-pattern` | 0 | off | nothing to hold (no id but `#main`, no container name, no layer or custom media); to turn on with the first |
+| Notations: `alpha-value-notation` (number), `color-function-notation` (modern), `color-function-alias-notation` (without-alpha), `hue-degree-notation` (angle), `lightness-notation` (percentage), `import-notation` (string), `selector-not-notation` (complex), `selector-pseudo-element-colon-notation` (double), `selector-attribute-quotes` (always), `display-notation` (short), `keyframe-selector-notation`, `length-zero-no-unit`, `number-max-precision` (4), `selector-type-case` (lower), `function-name-case` (lower), `comment-whitespace-inside` (always) | 0 each | on | one spelling each, as written today |
+| `media-feature-range-notation` (`prefix`; `context`) | 0; 12 | on, prefix | `media.ts`'s queries must be the stylesheet's own spelling (`styles.test.ts`), and prefix is today's |
+| `function-url-quotes` (`never`; `always`) | 0; 4 | on, never | today's spelling |
+| `function-url-scheme-allowed-list` (`data`) | 0 | on | the page's Content-Security-Policy refuses a remote `url()` as the page runs; this refuses it as it is written |
+| `time-min-milliseconds` (100) | 0 | on | a duration under 100 ms is a typo for seconds; reduced motion's `0ms` is the rule's own exception |
+| `at-rule-no-vendor-prefix`, `media-feature-name-no-vendor-prefix`, `selector-no-vendor-prefix`, `value-no-vendor-prefix` | 0 each | on | the supported browsers are the latest |
+| `property-no-vendor-prefix` | 4 | on: 3 fixed, 1 suppressed | `-webkit-appearance` three times beside `appearance`, which the latest browsers take unprefixed: deleted; `-webkit-text-size-adjust` is iOS Safari's only form: kept, suppressed with its reason |
+| `declaration-block-no-redundant-longhand-properties` | 1 | on, fixed | `flex-direction: row; flex-wrap: wrap` is `flex-flow: row wrap` |
+| `shorthand-property-no-redundant-values` | 2 | on, fixed | `0.4rem 0 0.4rem` is `0.4rem 0`; `0.5rem 0.5rem` is `0.5rem` |
+| `no-unknown-custom-properties` | 3 | off | `--w` (`artists.tsx`'s `styled`) and `--header-h` (`main.ts`) are set by the code, which stylelint cannot see; `styles.test.ts` checks each token read is defined by a rule or the code |
+| `value-keyword-case` (`lower`) | 2 | off | case only, and it misreads `Roboto` inside `--font`; the other is `currentColor` |
+| `font-family-name-quotes` (`always-where-recommended`) | 5 | off | quotes only; it skips `--font`, which quotes the same names, so the sheet would spell one font two ways |
+| `color-no-hex` | 18 | off | the design tokens are hex colours (Biome's `noHexColors`, off) |
+| `declaration-property-value-disallowed-list`, as a copy of `styles.test.ts`'s token rule (hex and colour functions outside the tokens, `cubic-bezier`, literal durations and `z-index`) | 0; 8 of 8 planted lines refused | off | it would state `styles.test.ts`'s token rule twice, which the issue keeps unchanged: moving the rule to stylelint is a change of its own |
+| `property-layout-mappings`, `unit-layout-mappings`, `value-keyword-layout-mappings` (`flow-relative`: logical properties) | 320; 24; 7 | off | the site has no right-to-left or vertical text: 351 rewrites for no visitor. Core rules, so no plugin is needed if that changes |
+| Layout: `rule-empty-line-before` (564), `comment-empty-line-before` (46), `at-rule-empty-line-before` (18), `declaration-empty-line-before` (3), `custom-property-empty-line-before` (2) |  | off | layout is oxfmt's (`format:site`) |
+| The list rules (each `*-allowed-list` and `*-disallowed-list` but those above, `comment-word-disallowed-list`, `rule-selector-property-disallowed-list`, `declaration-property-max-values`, `rule-nesting-at-rule-required-list`, `at-rule-property-required-list`, `declaration-property-custom-property-allowed-list`, `value-type-custom-property-required-list`) |  | off | each needs a list the house has no rule for |
+| `reportDescriptionlessDisables`, `reportNeedlessDisables`, `reportInvalidScopeDisables` (the config's) | 0 | on | a suppression gives its reason, is needed and names a rule that is on; `tests/test_suppressions.py` counts each |
+
+The plugins considered, each a new dependency; none is added:
+
+| Plugin | Findings | Decision |
+| -- | -- | -- |
+| `stylelint-browser-compat` (MDN's browser-compat-data, reads `browserslist`) | 2: `-webkit-text-size-adjust` (desktop Safari, Firefox), `forced-color-adjust` (Safari) | rejected (owner, 20 November): a perpetual beta from one maintainer, whose MDN data is a year old and which needs a `packageExtensions` entry to load under pnpm; the browser check will be a house stylelint rule on `web-features` instead (Biome's `useBaseline`, above) |
+| `stylelint-no-unsupported-browser-features` (doiuse, caniuse) | 19 (partial-support notes), 1 ignoring partial support | rejected: blind to the CSS the site uses (`@starting-style`, view transitions, `@scope`, `text-wrap`, anchor positioning, `field-sizing`, …), even against older browsers |
+| `stylelint-plugin-use-baseline` | 31 (widely available), 7 (newly) | rejected: Baseline, not the declared browsers, and no stylelint 18 support |
+| `@double-great/stylelint-a11y` | 26 `media-prefers-reduced-motion`, 36 `no-display-none`, and others | rejected: its two main rules misread the design: reduced motion zeroes the duration tokens in `:root`, and colour schemes swap tokens, so each animated or coloured rule is reported; the rest is noise or meant (`#main:focus`'s outline, Leaflet's attribution) |
+| `stylelint-declaration-strict-value` | 5 (`ease` in transitions), 0 allowing keywords | rejected: it lets any function through (`rgb()`, `oklch()`, `cubic-bezier()`), which `styles.test.ts` catches; core `declaration-property-value-disallowed-list` would do it with no dependency (above) |
+| `stylelint-use-logical`, `stylelint-plugin-logical-css`, `stylelint-use-logical-spec` | 307 (`use-logical`) | not needed: logical properties are off, and the core layout-mapping rules would hold them |
+| `stylelint-high-performance-animation` | 14 (9 of them `display` in `allow-discrete` transitions, the `@starting-style` pattern) | not taken: its main finding misreads `display` transitions |

@@ -1,0 +1,86 @@
+@import url(reset.css); /* refused: import-notation */
+@import url(reset.css); /* refused: no-duplicate-at-import-rules, import-notation */
+.a { color: red; } /* refused: color-named */
+.b { color: #ffffff; } /* refused: color-hex-length */
+.c { font-weight: bold; } /* refused: font-weight-notation */
+.d { color: rgb(0 0 0 / 50%); } /* refused: alpha-value-notation */
+.e { color: rgb(0, 0, 0); } /* refused: color-function-notation */
+.f { color: rgba(0 0 0 / 0.5); } /* refused: color-function-alias-notation */
+.g { color: hsl(120 50% 50%); } /* refused: hue-degree-notation */
+.h { color: oklch(0.5 0.1 120deg); } /* refused: lightness-notation */
+.i:not(.j):not(.k) { width: 1px; } /* refused: selector-not-notation */
+.l:before { content: ""; } /* refused: selector-pseudo-element-colon-notation */
+[type=text] { width: 1px; } /* refused: selector-attribute-quotes */
+.m { display: block flow; } /* refused: display-notation */
+@keyframes fade { from { opacity: 0; } 50% { opacity: 1; } } /* refused: keyframe-selector-notation */
+.n { width: 1.23456px; } /* refused: number-max-precision */
+DIV { width: 1px; } /* refused: selector-type-case */
+.o { width: CALC(1px + 1px); } /* refused: function-name-case */
+.ca { font-family: Arial; } /* refused: font-family-no-missing-generic-family-keyword */
+.cb { background: linear-gradient(top, #fff, #000); } /* refused: function-linear-gradient-no-nonstandard-direction, declaration-property-value-no-unknown */
+.cc { grid-template-areas: "a a" "a b a"; } /* refused: named-grid-areas-no-invalid */
+@import "later.css"; /* refused: no-invalid-position-at-import-rule */
+.cd { --x: 1px; width: --x; } /* refused: custom-property-no-missing-var-function, declaration-property-value-no-unknown */
+.ce { width: nope(1px); } /* refused: function-no-unknown, declaration-property-value-no-unknown */
+@media (nope: 1) { .cf { width: 1px; } } /* refused: media-feature-name-no-unknown */
+.cg { colr: #000; } /* refused: property-no-unknown */
+.ch:nope { width: 1px; } /* refused: selector-pseudo-class-no-unknown */
+.ci::nope { width: 1px; } /* refused: selector-pseudo-element-no-unknown */
+nope { width: 1px; } /* refused: selector-type-no-unknown */
+.cj:nth-child(0) { width: 1px; } /* refused: selector-anb-no-unmatchable */
+@media tv { .ck { width: 1px; } } /* refused: media-type-no-deprecated */
+.cl { --a: 1px; --a: 2px; } /* refused: declaration-block-no-duplicate-custom-properties */
+.cm { font-family: serif, serif; } /* refused: font-family-no-duplicate-names */
+.cn { width: 1px; width: 2px; } /* refused: declaration-block-no-duplicate-properties */
+.co { width: 1px; } .co { height: 1px; } /* refused: no-duplicate-selectors */
+@keyframes cp { from { opacity: 0; } from { opacity: 1; } } /* refused: keyframe-block-no-duplicate-selectors */
+.cq {} /* refused: block-no-empty */
+@keyframes cr { to { opacity: 0 !important; } } /* refused: keyframe-declaration-no-important, declaration-no-important */
+.cs { width: 1px; } /* refused: no-irregular-whitespace, selector-class-pattern */
+.ct { padding-left: 1px; padding: 2px; } /* refused: declaration-block-no-shorthand-property-overrides */
+@nope { .cu { width: 1px; } } /* refused: at-rule-no-unknown */
+.cv { color: #000 !imprtant; } /* refused: annotation-no-unknown, value-no-invalid */
+@charset 'utf-8'; /* refused: at-charset-rule-no-invalid */
+@font-face { font-family: cw; nope: 1; } /* refused: at-rule-descriptor-no-unknown */
+@font-face { font-family: cx; font-display: nope; } /* refused: at-rule-descriptor-value-no-unknown */
+@viewport { width: 1px; } /* refused: at-rule-no-deprecated */
+@property cy { syntax: "*"; inherits: false; } /* refused: at-rule-prelude-no-invalid */
+.cz { & { width: 1px; } } /* refused: block-no-redundant-nested-style-rules, max-nesting-depth, no-duplicate-selectors */
+.da { color: #ffg; } /* refused: color-no-invalid-hex, declaration-property-value-no-unknown */
+/**/ /* refused: comment-no-empty, comment-whitespace-inside */
+.db { overflow: overlay; } /* refused: declaration-property-value-keyword-no-deprecated */
+.dc { width: calc(1px+2px); } /* refused: function-calc-no-unspaced-operator */
+@media (color: red) { .dd { width: 1px; } } /* refused: media-feature-name-value-no-unknown */
+@media (min-width: 1px) and; /* refused: media-query-no-invalid, at-rule-prelude-no-invalid */
+& .de { width: 1px; } /* refused: nesting-selector-no-missing-scoping-root */
+.df { //color: #000; } /* refused: no-invalid-double-slash-comments */
+width: 1px; /* refused: no-invalid-position-declaration */
+.dg { animation: nope 1s; } /* refused: no-unknown-animations */
+@media (--nope) { .dh { width: 1px; } } /* refused: no-unknown-custom-media */
+.di:matches(.dj) { width: 1px; } /* refused: selector-no-deprecated */
+.dk:nth-child(2n+) { width: 1px; } /* refused: selector-no-invalid */
+.dl:is(::before) { width: 1px; } /* refused: selector-no-unmatchable */
+@property --dm { syntax: "<nope>"; inherits: false; initial-value: 1px; } /* refused: syntax-string-no-invalid */
+.dn { width: 1px 2px; } /* refused: declaration-property-value-no-unknown */
+@-webkit-keyframes do { to { opacity: 0; } } /* refused: at-rule-no-vendor-prefix */
+@media (-webkit-min-device-pixel-ratio: 2) { .dp { width: 1px; } } /* refused: media-feature-name-no-vendor-prefix */
+.dq::-moz-selection { color: #000; } /* refused: selector-no-vendor-prefix */
+.dr { position: -webkit-sticky; } /* refused: value-no-vendor-prefix */
+.ds { grid-gap: 1px; } /* refused: property-no-deprecated */
+/*bare*/ /* refused: comment-whitespace-inside */
+.p { margin: 0px; } /* refused: length-zero-no-unit */
+.q { background: url("a.png"); } /* refused: function-url-quotes */
+.r { background: url(https://example.com/a.png); } /* refused: function-url-scheme-allowed-list */
+.s { transition: opacity 50ms; } /* refused: time-min-milliseconds */
+.Bad_name { width: 1px; } /* refused: selector-class-pattern */
+.t { --Bad: 1px; } /* refused: custom-property-pattern */
+@keyframes Spin { to { opacity: 0; } } /* refused: keyframes-name-pattern */
+.u { .v { width: 1px; } } /* refused: max-nesting-depth */
+.w .x .y .z b { width: 1px; } /* refused: selector-max-compound-selectors */
+.aa.ab.ac.ad.ae { width: 1px; } /* refused: selector-max-class */
+@media (width >= 40rem) { .af { width: 1px; } } /* refused: media-feature-range-notation */
+.ag { -webkit-appearance: none; } /* refused: property-no-vendor-prefix */
+.ah { margin: 1rem 0 1rem; } /* refused: shorthand-property-no-redundant-values */
+.ai { flex-direction: row; flex-wrap: wrap; } /* refused: declaration-block-no-redundant-longhand-properties */
+.aj { display: none !important; } /* refused: declaration-no-important */
+.ak { width: 10pixels; } /* refused: unit-no-unknown, declaration-property-value-no-unknown */

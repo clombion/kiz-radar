@@ -29,7 +29,7 @@ Each is `mise run <task>`. A step takes its own arguments after `--` (`mise run 
 | `render:design` | The share card (public/share-card.png), each community's (public/c/<key>/share.png, a variant of that card with its name, and share.json, what it is drawn from) and the icons drawn again from design/, the drawings of pipeline/drawings.py and public/mark.svg, with the cities of the festivals to come from the site database; then mise run generate makes each community's page |
 | `types:site` | tsc, strict, on the site and its tests |
 | `lint:biome` | Biome's rules on the JSON configs (biome.jsonc's files.includes) |
-| `lint:stylelint` | stylelint's rules on the stylesheet (public/css/), a warning failing as an error (.stylelintrc.yaml: Biome's CSS rules mapped, docs/concepts/lint-rules.md) |
+| `lint:stylelint` | stylelint's rules on the stylesheet (public/css/), a warning failing as an error (.stylelintrc.yaml: Biome's CSS rules mapped and the stricter rules, docs/concepts/lint-rules.md) |
 | `lint:oxlint` | oxlint's rules on the site, its tests, the house rules' plugin (lint/) and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md, and the house rules) |
 | `knip` | No module, export or package the site doesn't use |
 | `test:site` | The site's tests, in Node and in Chromium (vitest.config.ts), on the database built from the export and the site built (served under /kiz-radar/ for the tests of the whole site) |

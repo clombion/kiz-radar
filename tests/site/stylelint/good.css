@@ -1,0 +1,46 @@
+@import "reset.css";
+.a {
+  color: var(--text);
+  background: #fff url(data:image/png;base64,AAAA) no-repeat;
+  font-weight: 700;
+  margin: 0.4rem 0;
+  flex-flow: row wrap;
+  transition: opacity 0ms;
+  mask-image: linear-gradient(black, transparent);
+}
+.b {
+  color: rgb(0 0 0 / 0.5);
+  border-color: hsl(120deg 50% 50%);
+  outline-color: oklch(50% 0.1 120deg);
+  display: block;
+}
+.c:not(.d, .e)::before {
+  content: "";
+}
+input[type="text"] {
+  width: calc(1px + 1px);
+}
+.w .x .y .z {
+  margin: 0;
+}
+.aa.ab.ac.ad {
+  width: 1.2346px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (min-width: 40rem) {
+  .af {
+    --space-wide: 2rem;
+    animation: fade-in 200ms;
+  }
+}
+[hidden] {
+  /* stylelint-disable-next-line declaration-no-important -- the planted suppression, with its reason */
+  display: none !important;
+}
