@@ -564,7 +564,7 @@
     },
     {
       // Q2: Biome's info-level findings in the site's code stay until Phase 4 rewrites these files
-      "files": ["site/roster.ts", "site/sources.ts", "site/tables.ts"],
+      "files": ["site/roster.ts", "site/tables.ts"],
       "rules": { "eslint/prefer-destructuring": "off" }
     },
     {

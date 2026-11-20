@@ -125,7 +125,7 @@ The footer has the site's name and what it is, the site's pages (Festivals, Frie
 "Where the data comes from: sources and acknowledgements" with the currency switch under it ("Prices in: kr · € · $"),
 and, for the curious, the SQL page and the source code on GitHub.
 
-The sources page (`#sources`, `site/sources.ts`) has no tab: the footer's line reaches it. It credits each source in a
+The sources page (`#sources`, `site/sources.tsx`) has no tab: the footer's line reaches it. It credits each source in a
 short section: the festival listings (kizomba-world.com, under CC BY-SA 4.0, the festival data here shared under the
 same licence, and what the data covers and when it was built, from `site.json`); the flight prices (Google Flights
 through fli, how often a weekend is searched as `WEEKS_APART` in `pipeline/fares.py` has it, and where a reseller's
