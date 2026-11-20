@@ -186,7 +186,7 @@ function smoothly(card: HTMLElement, change: () => void, opening: boolean): void
     change();
     const r = card.getBoundingClientRect();
     if (r.top < 0 || r.top > innerHeight - 80) card.scrollIntoView({ block: 'nearest' }); // keep the card in view
-  }, 'opening a card');
+  });
   done(
     shown.finally(() => {
       for (const c of onScreen) {

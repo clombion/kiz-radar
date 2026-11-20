@@ -5,7 +5,6 @@ import { q, site, sql } from './db.ts';
 import { h } from './dom.ts';
 import { MEDIA } from './media.ts';
 import { currency } from './money.ts';
-import { done } from './report.ts';
 import { str } from './rows.ts';
 import { KEY } from './states.ts';
 import { type Key, text } from './wording.ts';
@@ -14,18 +13,14 @@ import { type Key, text } from './wording.ts';
 export const calm = (): boolean => matchMedia(MEDIA.REDUCED_MOTION).matches;
 export const scrolling = (): ScrollBehavior => (calm() ? 'auto' : 'smooth');
 
-// The page changed as a view transition, which settles once change has run (its finished). One skipped because another
-// began rejects its ready with an AbortError, which current browsers report as unhandled: that is the expected end of a
-// slide cut short, not a fault; any other is reported, where it happened.
-const skipped = (e: unknown): boolean => e instanceof DOMException && e.name === 'AbortError';
-export async function transition(change: () => void, where: string): Promise<void> {
+// The page changed as a view transition, which settles once change has run (its finished), and fails only if change
+// failed. A transition the browser skips before it animates (another one began: an AbortError; the window changed size:
+// an InvalidStateError) rejects its ready, which current browsers report as unhandled; the change is made all the same
+// and only the motion is lost, so no skip is a fault: ready is waited on by nothing and its end left unsaid.
+const unanimated = (): void => undefined;
+export async function transition(change: () => void): Promise<void> {
   const t = document.startViewTransition(change);
-  done(
-    t.ready.catch((e: unknown) => {
-      if (!skipped(e)) throw e;
-    }),
-    where,
-  );
+  t.ready.catch(unanimated);
   await t.finished;
 }
 
