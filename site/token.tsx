@@ -106,8 +106,7 @@ export function tokenDialog({
       <h2 id="token-title">A token to write claims</h2>
       <ol class="small">
         <li>
-          {/* oxlint-disable-next-line react/jsx-no-target-blank -- the link's rel kept as the h() page drew it during the port, noopener alone (revisit after 4.10) */}
-          <a href={MINT} target="_blank" rel="noopener">
+          <a href={MINT} target="_blank" rel="noopener noreferrer">
             Make a fine-grained token
           </a>
           {' on GitHub.'}

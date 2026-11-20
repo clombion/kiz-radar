@@ -462,8 +462,7 @@ function homeCard(p: Page, a: Home | undefined): JSX.Element {
       <h2>{name}</h2>
       <p class={['small', 'muted']}>
         {about}
-        {/* oxlint-disable-next-line react/jsx-no-target-blank -- the link's rel kept as the h() page drew it during the port, noopener alone (revisit after 4.10) */}
-        <a href={theirs} target="_blank" rel="noopener">
+        <a href={theirs} target="_blank" rel="noopener noreferrer">
           their page on Kiz Radar ↗
         </a>
       </p>
@@ -733,8 +732,7 @@ function festivals(r: Review): JSX.Element {
       at === null ? (
         event
       ) : (
-        // oxlint-disable-next-line react/jsx-no-target-blank -- the link's rel kept as the h() page drew it during the port, noopener alone (revisit after 4.10)
-        <a href={at} target="_blank" rel="noopener">
+        <a href={at} target="_blank" rel="noopener noreferrer">
           {event}
         </a>
       );

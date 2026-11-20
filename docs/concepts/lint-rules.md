@@ -679,6 +679,12 @@ the start; the two unmapped ones are decided below. Since task 4.2 they are seen
 the drawings `pipeline/drawings.py` writes (`site/drawings.ts`), each hidden from assistive technology, and `house/svgs`
 (task 4.2) refuses `<svg>` in JSX outside it.
 
+`react/jsx-no-target-blank` asks for `noreferrer` on a link to a new tab only where it reads the address: an external
+literal one or a bare name (`href={x}`), not a member, a call or a template (`href={e.url}`, measured with oxlint
+1.94.0). So it does not hold the review page's convention, each of its links to a new tab `noopener noreferrer`:
+`tests/site/review-links.browser.test.ts` holds it for the three links it draws. The site's links out (a festival's
+page, its tickets, Google Flights) are `noopener` alone, which the rule does not see.
+
 | Biome rule | oxlint | Fit |
 | -- | -- | -- |
 | `a11y/noAccessKey` | `jsx_a11y/no-access-key` | source |
