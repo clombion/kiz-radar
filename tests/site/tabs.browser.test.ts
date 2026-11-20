@@ -151,6 +151,35 @@ test('a slide cut short by the next, before its own animations start, says nothi
   expect(alerts()).toBe(before);
 });
 
+test('a slide the browser skips for any reason, as when the window changes size, says nothing went wrong', async () => {
+  await app.open(festivalsHref());
+  await slid();
+  // the browser skipped it before it animated: its ready rejected as Chromium rejects it when the window changes size
+  // as the slide begins (one run in three of a real resize there does it), its finished settled once the page changed
+  const start = document.startViewTransition.bind(document);
+  const skip = vi.spyOn(document, 'startViewTransition').mockImplementationOnce((change) => {
+    const t = start(change);
+    const ready = Promise.reject(
+      new DOMException('Transition was aborted because of invalid state. Viewport size changed', 'InvalidStateError'),
+    );
+    return {
+      finished: t.finished,
+      updateCallbackDone: t.updateCallbackDone,
+      ready,
+      skipTransition: () => t.skipTransition(),
+      types: t.types,
+    };
+  });
+  const alerts = () => document.querySelectorAll('[role="alert"]').length;
+  const before = alerts();
+  await app.open(friendsHref());
+  await slid();
+  await frames(2);
+  expect(skip).toHaveBeenCalledOnce();
+  expect(alerts()).toBe(before);
+  expect(tabOf(header(), 'Friends')?.getAttribute('aria-current')).toBe('page');
+});
+
 test('the oval stays under its tab, still, when the window changes size', async () => {
   await app.open(friendsHref());
   await rested();
