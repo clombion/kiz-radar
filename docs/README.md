@@ -9,6 +9,7 @@ in a session.
 | I want to | Read |
 | -- | -- |
 | know what the site shows and why | [The site](guides/the-site.md) |
+| write or review the site's code, its Solid views | the conventions in [CLAUDE.md](../CLAUDE.md), and the site's checks in [CONTRIBUTING.md](../CONTRIBUTING.md#checks) |
 | refresh the festivals, or ask the models again after a prompt changed | [Refreshing the events](guides/refreshing-events.md) |
 | get a festival's prices from its ticket page | [Prices from ticket pages](guides/ticket-pages.md) |
 | write or fix a recipe for a ticket site | [Writing a recipe](guides/writing-a-recipe.md) |
