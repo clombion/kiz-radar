@@ -133,6 +133,24 @@ def test_no_query_takes_its_day_from_the_clock() -> None:
     assert found == []
 
 
+def twins(paths: list[str]) -> list[str]:
+    """The modules written twice in one folder, as X.ts and as X.tsx, by their path without the extension."""
+    stems = collections.Counter(p.removesuffix('x').removesuffix('.ts') for p in paths if p.endswith(('.ts', '.tsx')))
+    return sorted(stem for stem, n in stems.items() if n > 1)
+
+
+def test_a_module_written_as_ts_and_as_tsx_is_seen() -> None:
+    assert twins(['site/a.ts', 'site/a.tsx', 'site/b.ts', 'site/c.tsx', 'lint/b.tsx', 'site/d.d.ts']) == ['site/a']
+
+
+def test_no_module_is_both_ts_and_tsx() -> None:
+    """A module is X.ts or X.tsx, never both: an import of ./X.ts beside an X.tsx is typed any by oxlint's type-aware
+    rules (tsgolint), so they would pass whatever it is given. The house rules' fixtures, which hold a rule's .ts and
+    .tsx forms side by side, are linted without types and checked by no tsc."""
+    folders = ('site', 'tests/site', 'lint')  # each folder's own files: a glob's * matches no /
+    assert twins(tracked(*(f':(glob){folder}/*.{ext}' for folder in folders for ext in ('ts', 'tsx')))) == []
+
+
 def test_a_file_is_written_only_whole() -> None:
     """Every file a step replaces goes through pipeline/files.py, whole or not at all; a log only appends a line."""
     writes = re.compile(r"\.write_(?:text|bytes)\(|\.open\(\s*'w|\bopen\([^)]*,\s*'w")
