@@ -27,7 +27,7 @@ import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, 
 import { initSearch } from './search.tsx';
 import { sentence } from './sentence.tsx';
 import { CurrencySwitch, FooterLinks, Skip, ToTop } from './shell.tsx';
-import { sourcesView } from './sources.ts';
+import { sources } from './sources.tsx';
 import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
 import { type Link, Row, slide } from './tabs.tsx';
@@ -79,7 +79,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
   artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: mounted(artists) },
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: mounted(countries) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) },
-  sources: { title: 'Sources', nav: null, waitsForData: false, show: (root) => sourcesView(root) },
+  sources: { title: 'Sources', nav: null, waitsForData: false, show: mounted(sources) },
   friends: {
     title: 'Friends',
     nav: 'friends',

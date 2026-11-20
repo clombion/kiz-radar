@@ -32,11 +32,14 @@ test('a Solid view left is disposed: the root it was drawn in is emptied, and it
   expect(again?.querySelector('section h1')?.textContent).toBe('This week');
 });
 
-test("a Solid view's root leaves the page's owner when the view is left", async () => {
+// Every view is a Solid view, each drawn in a root of its own under the page's owner (one made outside any owner Solid
+// refuses, which fails the other tests here): the page holds as many roots on any view, the root of the view left gone
+// with it, never one left behind.
+test("the page holds as many roots on any view: a Solid view's root goes when the view is left", async () => {
   await app.open(sourcesHref());
   const before = roots();
   await app.open(week);
-  expect(roots()).toBe(before + 1);
+  expect(roots()).toBe(before);
   await app.open(sourcesHref());
   expect(roots()).toBe(before);
 });
