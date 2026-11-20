@@ -19,9 +19,9 @@ import { friends, friendsTabs, placeOf } from './friends.tsx';
 import { artistHint, exploreHint } from './hints.ts';
 import { map } from './map.tsx';
 import { loadingMark } from './marks.tsx';
-import { held, mounted } from './mount.tsx';
+import { mounted } from './mount.tsx';
 import { person } from './people.tsx';
-import { atEnd, atStart, inPlaceOf, inside } from './placed.tsx';
+import { atEnd, atStart, inPlaceOf, inside, instead } from './placed.tsx';
 import { done, guarded, reportUncaught } from './report.ts';
 import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, type Tab, TABS } from './routes.ts';
 import { initSearch } from './search.tsx';
@@ -188,11 +188,8 @@ function show(name: string, sub: readonly string[], qs: string): void {
   if (view.waitsForData) {
     // the loading mark, taken away once the data is in or failed, or the view is left
     const loaded = new AbortController();
-    root.append(
-      held(AbortSignal.any([signal, loaded.signal]), HTMLElement, 'the loading mark', () =>
-        loadingMark('Loading the festival database…'),
-      ),
-    );
+    const unloaded = instead(root, 'the loading mark', () => loadingMark('Loading the festival database…'));
+    AbortSignal.any([signal, loaded.signal]).addEventListener('abort', unloaded, { once: true });
     data
       .then(() => {
         loaded.abort();

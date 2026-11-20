@@ -1,6 +1,6 @@
 // The small marks the views share, drawn by Solid: the arrow after words that lead off the site, On now before a
-// festival's name, and the animated mark while something loads. main.ts draws the loading mark through mount.tsx's
-// held.
+// festival's name, and the animated mark while something loads, which main.ts draws through placed.tsx as a view waits
+// for the database.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { KEY } from './states.ts';
 import { type Key, text } from './wording.ts';

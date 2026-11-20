@@ -1,8 +1,7 @@
-// <body> as Solid draws into it outside a view: the shell (placed.tsx, problem.tsx) and the pieces an h() view holds
-// (mount.tsx held): where it starts, and the root its delegated events are heard from. Solid delegates a JSX onClick
-// to the root it renders into (render registers it); a part of the shell, or a held piece, is drawn into no such root,
-// so <body> is one, registered as the page loads (each of the two seams imports this module), and every part's and
-// piece's clicks reach them.
+// <body> as Solid draws into it outside a view: the shell (placed.tsx, problem.tsx): where it starts, and the root its
+// delegated events are heard from. Solid delegates a JSX onClick to the root it renders into (render registers it); a
+// part of the shell is drawn into no such root, so <body> is one, registered as the page loads (both modules import
+// this one), and every part's clicks reach them.
 import { registerDelegatedRoot } from '@solidjs/web';
 
 registerDelegatedRoot(document.body);

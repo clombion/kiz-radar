@@ -1,6 +1,6 @@
 // What the page's owner holds (site/owner.ts), as Solid's development build, the tests', counts it (DEV): the roots it
-// holds (a view shown, a part of the shell, a piece an h() view holds), and every owner under it, however deep (each
-// root, and what a Solid view draws in it: its parts, their rows, their effects).
+// holds (a view shown, a part of the shell), and every owner under it, however deep (each root, and what a Solid view
+// draws in it: its parts, their rows, their effects).
 import { DEV } from 'solid-js';
 import { page } from '../../site/owner.ts';
 
