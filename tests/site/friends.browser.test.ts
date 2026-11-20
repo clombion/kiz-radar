@@ -1,7 +1,7 @@
 // The Friends tab, the quick view of someone's plans it opens, and a person's page, on the fixture's community (Cédric,
 // Christina and Siân, all living in the site's home city) as it stood on 4 November 2026, before Glasgow.
-import { expect, test } from 'vitest';
-import { friendsHref, type Params, personHref } from '../../site/routes.ts';
+import { expect, test, vi } from 'vitest';
+import { friendsHref, type Params, personHref, sourcesHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { homeOf } from './planted.ts';
 import { goer, listOf, rowOf, said, shownDialog } from './seen.ts';
@@ -110,4 +110,28 @@ test('a person’s page lists the festivals they said they’re going to', async
   expect(main()?.querySelectorAll('.festival-card').length).toBeGreaterThan(0);
   await app.open(personHref('nobody'));
   expect(said(main())).toBe('No one by that name has shared plans.');
+});
+
+test('a person’s Share button says the link is copied for a while, its timer gone with the page', async () => {
+  const later = vi.spyOn(globalThis, 'setTimeout');
+  const stopped = vi.spyOn(globalThis, 'clearTimeout');
+  expect('share' in navigator).toBe(false); // no share sheet in the tests' browser: the link copied
+  vi.spyOn(navigator.clipboard, 'writeText').mockResolvedValue();
+  try {
+    // the Share button's timers (each SAID_MS, 2.5 s) not cleared
+    const saying = () => {
+      const cleared = new Set(stopped.mock.calls.map(([id]) => Number(id)));
+      return later.mock.results.filter((r, i) => later.mock.calls[i]?.[1] === 2500 && !cleared.has(Number(r.value)))
+        .length;
+    };
+    await app.open(personHref('sian'));
+    const share = main()?.querySelector<HTMLElement>('.share-row button');
+    share?.click();
+    await expect.poll(() => said(share)).toBe('Link copied');
+    expect(saying()).toBe(1);
+    await app.open(sourcesHref());
+    expect(saying()).toBe(0);
+  } finally {
+    vi.restoreAllMocks();
+  }
 });

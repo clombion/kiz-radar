@@ -20,7 +20,7 @@ import { artistHint, exploreHint } from './hints.ts';
 import { map } from './map.tsx';
 import { loadingMark } from './marks.tsx';
 import { held, mounted } from './mount.tsx';
-import { personView } from './people.ts';
+import { person } from './people.tsx';
 import { atEnd, atStart, inPlaceOf, inside } from './placed.tsx';
 import { done, guarded, reportUncaught } from './report.ts';
 import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, type Tab, TABS } from './routes.ts';
@@ -84,8 +84,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
     title: 'Friends',
     nav: 'friends',
     waitsForData: true,
-    show: (root, sub, qs, opts) =>
-      sub[0] === undefined ? mounted(friends)(root, sub, qs, opts) : personView(root, sub[0], opts.signal),
+    show: mounted((address) => (address.sub[0] === undefined ? friends(address) : person(address))),
   },
   community: {
     title: 'Community',

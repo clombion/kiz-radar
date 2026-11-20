@@ -1,9 +1,10 @@
 // The controls the views share, drawn by Solid: a view's choices kept in its address (chosen), a select of them, a row
 // of them pressed (segments), a checkbox (check), the more button with its panel (dropdown), a search field, a list
-// shown a page at a time (paged), and the line saying what an address asked that the view has no choice for (leftOut).
+// shown a page at a time (paged), the line saying what an address asked that the view has no choice for (leftOut), and
+// what a control says for a while (awhile).
 // dom.ts's for the h() views, which a .tsx imports nothing of (house/legacy).
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { type Accessor, createEffect, createSignal, flush, For, Show } from 'solid-js';
+import { type Accessor, createEffect, createMemo, createSignal, flush, For, onCleanup, Show } from 'solid-js';
 import type { ClassName } from './classes.ts';
 import { disposal } from './mount.tsx';
 import { showInAddressBar } from './routes.ts';
@@ -235,3 +236,28 @@ export const leftOut = (dropped: readonly string[]): JSX.Element =>
       {`The link asks for ${dropped.join(', ')}, which ${dropped.length === 1 ? 'is' : 'are'} not among the choices here.`}
     </p>
   );
+
+// What a control says (a Copy's Copied, a Share's Link copied): still, or what it was last told to say, for ms after
+// each telling, each change drawn at once; its timers go with the owner it is made under.
+export function awhile<T>(still: T, ms: number): readonly [Accessor<T>, (said: T) => void] {
+  const [now, setNow] = createSignal<{ readonly said: T }>({ said: still });
+  const timers = new Set<ReturnType<typeof setTimeout>>();
+  onCleanup(() => {
+    for (const t of timers) clearTimeout(t);
+  });
+  const shown = (said: T) => {
+    flush(() => {
+      setNow({ said });
+    });
+  };
+  const tell = (said: T) => {
+    shown(said);
+    const back = setTimeout(() => {
+      timers.delete(back);
+      shown(still);
+    }, ms);
+    timers.add(back);
+  };
+  const said = createMemo(() => now().said);
+  return [said, tell];
+}
