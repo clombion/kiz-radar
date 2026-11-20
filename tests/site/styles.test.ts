@@ -5,23 +5,99 @@ import { code, css, pages } from './sources.ts';
 
 const URLS = /url\([^)]*\)/gu;
 const CLASS = /\.(?<name>-?[A-Za-z_][\w-]*)/gu;
-const CLASS_ATTRIBUTE = /\sclass="(?<names>[^"]*)"/gu;
+// a view transition's class (::view-transition-group(.card)), which script sets on an element's
+// view-transition-class, not its class
+const TRANSITION = /::view-transition-[\w-]+\((?<names>[^)]*)\)/gu;
+const TRANSITION_SET = /'view-transition-class',\s*'(?<name>[\w-]+)'/gu;
 
-// A class is used when a module names it, quoted, where ClassName (site/classes.ts, generated from these stylesheets)
-// types it, or JSX gives it as class="…" (double-quoted), or a page's markup gives it to an element: not when a
-// comment or another word happens to contain it. A class a module gives only as an unquoted key of a JSX class object
-// ({ shown: on }) is not counted, which fails safe: the test calls it unused.
+// Where code gives an element a class: JSX's class="…" or class={…}, an option or parameter named class or cls
+// (choices(…, { class: 'plain' }), cls = 'blank'), or an argument where a function's parameter is typed ClassName or
+// Classes (note('note-tab', …)), or a page's markup giving it to an element. A name quoted anywhere else (a type's
+// member, readonly class: 'tabs' | 'subnav', among them), or in a comment, is not counted, which fails safe: the test
+// calls the class unused.
+const GIVEN = /(?<!readonly\s+)\b(?:class|cls)\s*[:=](?![=>])\s*/gu;
+const PARAMETER = /^\s*\w+\s*:\s*(?:Classes|ClassName|Extract<ClassName)\b/u;
+const DEFINED_FN = /(?:function\s+|const\s+)(?<fn>\w+)\s*(?:=\s*(?:<[^>]*>\s*)?)?\(/gu;
+const CLASS_ATTRIBUTE = /\sclass="[^"]*"/gu;
+// the class names an expression quotes: its strings, a double-quoted one's words, and the keys of its objects
+const QUOTED = /'(?<name>[\w-]+)'|"(?<names>[^"]*)"|(?<=[{,]\s*)(?<key>[\w-]+)\s*:/gu;
+// the expression that starts at i: a bracketed one to its closing bracket, a string to its end, else to the comma,
+// semicolon or closing bracket that ends it
+function expressionAt(src: string, i: number): string {
+  const open = src[i] ?? '';
+  if (open === '"' || open === "'") return src.slice(i, src.indexOf(open, i + 1) + 1);
+  let depth = 0;
+  for (let j = i; j < src.length; j++) {
+    const ch = src[j] ?? '';
+    if ('([{'.includes(ch)) depth++;
+    else if (')]}'.includes(ch)) {
+      if (depth === 0) return src.slice(i, j);
+      depth--;
+      if (depth === 0 && '([{'.includes(open)) return src.slice(i, j + 1);
+    } else if ((ch === ',' || ch === ';') && depth === 0) return src.slice(i, j);
+  }
+  return src.slice(i);
+}
+// a bracketed list's items: split at its commas, not at those inside brackets
+function itemsOf(list: string): string[] {
+  const out = [''];
+  let depth = 0;
+  for (const ch of list.slice(1, -1)) {
+    depth += '([{'.includes(ch) ? 1 : ')]}'.includes(ch) ? -1 : 0;
+    if (ch === ',' && depth === 0) out.push('');
+    else out[out.length - 1] += ch;
+  }
+  return out;
+}
+const namesIn = (expr: string) =>
+  [...expr.matchAll(QUOTED)].flatMap(({ groups }) => [
+    ...(groups?.['names']?.split(' ') ?? []),
+    groups?.['name'] ?? groups?.['key'] ?? '',
+  ]);
+// the classes each module gives: in its class positions, and as the arguments to its own functions', or those it
+// imports', parameters typed a class
+function given(): Set<string> {
+  const named = new Set<string>();
+  const taking = new Map<string, { readonly file: string; readonly at: readonly number[] }>();
+  for (const [file, src] of code) {
+    for (const m of src.matchAll(GIVEN))
+      for (const n of namesIn(expressionAt(src, m.index + m[0].length))) named.add(n);
+    for (const m of src.matchAll(DEFINED_FN)) {
+      const at = itemsOf(expressionAt(src, m.index + m[0].length - 1)).flatMap((p, i) =>
+        PARAMETER.test(p) ? [i] : [],
+      );
+      if (at.length > 0) taking.set(m.groups?.['fn'] ?? '', { file, at });
+    }
+  }
+  for (const [fn, { file, at }] of taking)
+    for (const [f, src] of code) {
+      const imported = new RegExp(`import \\{[^}]*\\b${fn}\\b[^}]*\\} from '\\./${file}'`, 'u');
+      if (!(f === file || imported.test(src))) continue;
+      for (const m of src.matchAll(new RegExp(`(?<![\\w.])${fn}\\(`, 'gu'))) {
+        const args = itemsOf(expressionAt(src, m.index + m[0].length - 1));
+        for (const i of at) for (const n of namesIn(args[i] ?? '')) named.add(n);
+      }
+    }
+  for (const p of pages) for (const m of p.matchAll(CLASS_ATTRIBUTE)) for (const n of namesIn(m[0])) named.add(n);
+  named.delete('');
+  return named;
+}
+
 test('every CSS class is given to an element by the page or a module', () => {
-  const named = new Set(
-    [...code.values()].flatMap((src) => [...src.matchAll(/'(?<name>[\w-]+)'/gu)].map((m) => m.groups?.['name'] ?? '')),
-  );
-  for (const m of [...pages, ...code.values()].flatMap((p) => [...p.matchAll(CLASS_ATTRIBUTE)]))
-    for (const n of (m.groups?.['names'] ?? '').split(' ')) named.add(n);
+  const named = given(),
+    transitions = new Set(
+      [...code.values()].flatMap((src) => [...src.matchAll(TRANSITION_SET)].map((m) => m.groups?.['name'] ?? '')),
+    );
   const unused: string[] = [];
-  for (const [file, text] of css)
-    for (const cls of new Set([...text.replace(URLS, '').matchAll(CLASS)].map((m) => m.groups?.['name'] ?? '')))
+  for (const [file, text] of css) {
+    const sheet = text.replace(URLS, '');
+    for (const m of sheet.matchAll(TRANSITION))
+      for (const t of [...(m.groups?.['names'] ?? '').matchAll(CLASS)].map((c) => c.groups?.['name'] ?? ''))
+        if (!transitions.has(t)) unused.push(`${file}: the view transition's .${t}`);
+    for (const cls of new Set([...sheet.replace(TRANSITION, '').matchAll(CLASS)].map((m) => m.groups?.['name'] ?? '')))
       if (!(cls.startsWith('leaflet-') || named.has(cls))) unused.push(`${file}: .${cls}`);
-  expect(unused).toEqual([]);
+  }
+  expect([...new Set(unused)]).toEqual([]);
 });
 
 // Rules keyed by their media context and selector; a second rule for the same key means one silently overrides the

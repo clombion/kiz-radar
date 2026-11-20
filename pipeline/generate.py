@@ -35,11 +35,16 @@ CSS = ROOT / 'public' / 'css'
 COMMENT = re.compile(r'/\*.*?\*/', re.DOTALL)
 URL = re.compile(r'url\([^)]*\)')
 CLASS = re.compile(r'\.(-?[A-Za-z_][\w-]*)')
+TRANSITION = re.compile(r'::view-transition-[\w-]+\([^)]*\)')  # a view transition's class, set by script
 
 
 def classes_module() -> str:
-    """site/classes.ts: the class names the stylesheets define (Leaflet's own aside, which Leaflet sets)."""
-    text = ''.join(URL.sub('', COMMENT.sub('', f.read_text(encoding='utf-8'))) for f in sorted(CSS.glob('*.css')))
+    """site/classes.ts: the class names the stylesheets define (Leaflet's own aside, which Leaflet sets, and a view
+    transition's, which script sets as an element's view-transition-class)."""
+    text = ''.join(
+        TRANSITION.sub('', URL.sub('', COMMENT.sub('', f.read_text(encoding='utf-8'))))
+        for f in sorted(CSS.glob('*.css'))
+    )
     found: list[str] = CLASS.findall(text)
     names = sorted({m for m in found if not m.startswith('leaflet-')})
     union = ''.join(f"\n  | '{n}'" for n in names)

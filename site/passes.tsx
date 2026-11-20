@@ -5,6 +5,7 @@
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { For } from 'solid-js';
 import { own } from './bits.ts';
+import type { ClassName } from './classes.ts';
 import { today } from './days.ts';
 import { one, q, sql } from './db.ts';
 import { type Peek, peek } from './dialog.tsx';
@@ -154,7 +155,11 @@ function openPasses(
 }
 
 // a button that opens a festival's passes over the page: a card's price, or a highlight with prices behind it
-export const passesButton = (e: Festival, cls: 'pass-btn' | 'trait-link', words: string | null): JSX.Element => (
+export const passesButton = (
+  e: Festival,
+  cls: Extract<ClassName, 'pass-btn' | 'trait-link'>,
+  words: string | null,
+): JSX.Element => (
   <button type="button" class={['link', cls]} onClick={own((b) => openPasses(e, b))}>
     {words}
   </button>
