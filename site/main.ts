@@ -11,7 +11,7 @@ import { type Address, createAddress } from './address.ts';
 import { artistsView } from './artists.ts';
 import { onResize } from './bits.ts';
 import { communityView } from './communities.ts';
-import { countriesView } from './countries.ts';
+import { countries } from './countries.tsx';
 import { freshDay, load, loadSite, SiteUpdating } from './db.ts';
 import { h } from './dom.ts';
 import { friendsTabs, friendsView, placeOf } from './friends.ts';
@@ -76,7 +76,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
   week: { title: 'This week', nav: 'explore', waitsForData: true, show: mounted(Week) },
   map: { title: 'Map', nav: 'explore', waitsForData: true, show: mapView },
   artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView },
-  countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, _, qs) => countriesView(root, qs) },
+  countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: mounted(countries) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) },
   sources: { title: 'Sources', nav: null, waitsForData: false, show: (root) => sourcesView(root) },
   friends: {

@@ -73,6 +73,7 @@ SITE_ALLOWED = Counter(
         ('public/css/site.css', 'lint/complexity/noImportantStyles'): 1,
         # oxlint's, each in docs/lint-false-positives.md
         ('site/artists.ts', 'house/states'): 1,
+        ('site/controls.tsx', 'jsx-a11y/prefer-tag-over-role'): 2,
         ('site/dialog.tsx', 'jsx-a11y/click-events-have-key-events'): 1,
         ('site/eventcard.tsx', 'jsx-a11y/click-events-have-key-events'): 1,
         ('site/eventcard.tsx', 'jsx-a11y/no-static-element-interactions'): 1,

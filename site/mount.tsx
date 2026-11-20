@@ -1,12 +1,12 @@
 // The seam between the h() page and a Solid view (the shell's parts have their own, placed.tsx): a Solid view behind
 // routes.ts's Show, the signature main.ts gives every view, and a Solid piece an h() view holds as an element (held).
-// A view is rendered into the empty root main.ts hands it, with the address's parts and query as its props, and
-// disposed when the signal aborts (another view shows), which empties root, as leaving an h() view leaves it unused.
-// A view that throws, as it builds or later, says so in its place (report.ts cannotShow), within its error boundary:
-// an error that escaped every boundary would halt each signal of the page, the router's among them (main.ts).
+// A view is rendered into the empty root main.ts hands it, from its address, and disposed when the signal aborts
+// (another view shows), which empties root, as leaving an h() view leaves it unused. A view that throws as it is first
+// drawn says so in its place (report.ts cannotShow), within its error boundary: an error that escaped every boundary
+// would halt each signal of the page, the router's among them (main.ts).
 import { render } from '@solidjs/web';
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { type Component, createRoot, Errored, flatten, getOwner, runWithOwner, untrack } from 'solid-js';
+import { createRoot, Errored, flatten, getOwner, runWithOwner, untrack } from 'solid-js';
 import { asElement } from './bits.ts';
 import './body.ts'; // <body> a root of delegated events, which a held piece's clicks reach
 import { page } from './owner.ts';
@@ -36,17 +36,14 @@ export interface ViewProps {
   readonly qs: string;
 }
 
-// the view, as main.ts shows a view, rendered under the page's owner (owner.ts)
+// The view, as main.ts shows a view, rendered under the page's owner (owner.ts). It is a function of its address,
+// which never changes over its life, called untracked inside its boundary, as Solid calls a component.
 export const mounted =
-  (View: Component<ViewProps>): Show =>
+  (view: (at: ViewProps) => JSX.Element): Show =>
   (root, sub, qs, { signal, name }) => {
     const dispose = runWithOwner(page, () =>
       render(
-        () => (
-          <Errored fallback={(e) => <>{cannotShow(name, e())}</>}>
-            <View sub={sub} qs={qs} />
-          </Errored>
-        ),
+        () => <Errored fallback={(e) => <>{cannotShow(name, e())}</>}>{untrack(() => view({ sub, qs }))}</Errored>,
         root,
       ),
     );
