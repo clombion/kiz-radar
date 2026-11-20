@@ -11,12 +11,11 @@ import { type Claim, homeClaim, mergeClaim } from './claims.ts';
 import { button, choices, h, nodes, paged, toggle } from './dom.ts';
 import { check, write } from './github.ts';
 import { Drawing } from './icons.ts';
-import { expires, forgetToken, keepExpires, keepToken, markSettled, remembered, settled, token } from './kept.ts';
+import { markSettled, settled, token } from './kept.ts';
 import { get } from './net.ts';
 import {
   type Booked,
   COMPARED,
-  daysLeft,
   differs,
   type Home,
   homeId,
@@ -29,47 +28,26 @@ import {
   reviewOf,
   unjoinable,
 } from './pending.ts';
+import { atEnd } from './placed.tsx';
 import { done, guarded, reportUncaught } from './report.ts';
 import { artistHref } from './routes.ts';
 import { KEY } from './states.ts';
+import { type Access, accessWords, openToken, tokenDialog, tokenOpen } from './token.tsx';
 import { flag } from './ui.ts';
 import { plural } from './wording.ts';
 
 const DATA = new URL(/* @vite-ignore */ '../data/', import.meta.url);
-const MINT = 'https://github.com/settings/personal-access-tokens/new';
 const BEAT = 450; // ms the written state shows before the next item
 const DIGIT = /^[1-9]$/u; // a choice's key
 const MARKS = /\p{M}/gu; // the accents a search folds away
-const SOON = 14; // days before its expiry the token's state warns
 const RAIL = 60; // items the rail lists at a time
 
-// ----- the token: missing, being checked, good (whose), or refused; the page can write only with a good one
+// ----- the token (token.tsx): missing, being checked, good (whose), or refused; the page writes only with a good one
 
-type Access =
-  | { state: 'missing' }
-  | { state: 'checking' }
-  | { state: 'ok'; login: string }
-  | { state: 'refused'; why: string };
 let access: Access = { state: 'missing' };
 const canWrite = (): boolean => access.state === 'ok';
 
-// what the token's button says of each state but a good token, which says whose and until when: one for each, or
-// this fails to compile
-const NOT_WRITING: Readonly<Record<Exclude<Access['state'], 'ok'>, string>> = {
-  missing: 'Read-only · add a token',
-  checking: 'Checking the token…',
-  refused: 'Read-only · token refused',
-};
-function accessWords(): string {
-  if (access.state !== 'ok') return NOT_WRITING[access.state];
-  const day = expires();
-  if (day === null) return `Writing as ${access.login}`;
-  const left = daysLeft(day, new Date());
-  if (left < 0) return `Token expired on ${day}`;
-  return `Writing as ${access.login} · ${plural(left, 'day')} left${left <= SOON ? ': make a new one soon' : ''}`;
-}
-
-async function checkToken(t: string): Promise<void> {
+async function checkToken(t: string): Promise<Access> {
   access = { state: 'checking' };
   render();
   const c = await check(t);
@@ -78,83 +56,7 @@ async function checkToken(t: string): Promise<void> {
       ? { state: 'ok', login: c.login }
       : { state: 'refused', why: 'GitHub refused this token: it is mistyped, expired or revoked.' };
   render();
-}
-
-function tokenDialog(repository: string): HTMLDialogElement {
-  const field = h('input', {
-    type: 'password',
-    autocomplete: 'off',
-    'aria-label': 'Token',
-    placeholder: 'github_pat_…',
-  });
-  const day = h('input', { type: 'date', 'aria-label': 'Expires on', value: expires() ?? '' });
-  const keep = h('input', { type: 'checkbox', checked: remembered() });
-  const said = h('p', { class: 'review-status', role: 'status' });
-  const dlg = h(
-    'dialog',
-    { class: 'review-dialog', 'aria-labelledby': 'token-title' },
-    h('h2', { id: 'token-title' }, 'A token to write claims'),
-    h(
-      'ol',
-      { class: 'small' },
-      h(
-        'li',
-        {},
-        h('a', { href: MINT, target: '_blank', rel: 'noopener' }, 'Make a fine-grained token'),
-        ' on GitHub.',
-      ),
-      h('li', {}, 'Repository access: only ', h('code', {}, repository), '.'),
-      h('li', {}, 'Permissions: Contents, Read and write; nothing else.'),
-      h('li', {}, 'Any expiry: enter the day GitHub shows, so this page can remind you.'),
-    ),
-    h('label', { class: 'review-field' }, h('span', {}, 'Token'), field),
-    h('label', { class: 'review-field' }, h('span', {}, 'Expires on'), day),
-    h('label', { class: 'review-check' }, keep, ' Keep it on this device (otherwise for this tab only)'),
-    said,
-  );
-  const keepIt = () => {
-    const t = field.value.trim() || token();
-    if (t === null) {
-      said.textContent = 'Paste the token first.';
-      return;
-    }
-    said.textContent = 'Asking GitHub…';
-    keepExpires(day.value || null);
-    done(
-      (async () => {
-        await checkToken(t);
-        if (canWrite()) {
-          keepToken(t, keep.checked);
-          // ticked only if the device kept it
-          keep.checked = remembered();
-          field.value = '';
-          said.textContent = `${accessWords()}: the choices are on each item.`;
-        } else said.textContent = access.state === 'refused' ? access.why : '';
-      })(),
-      'checking the token',
-    );
-  };
-  dlg.append(
-    h(
-      'div',
-      { class: 'review-actions' },
-      button({ onclick: keepIt }, 'Check and keep'),
-      button(
-        {
-          class: 'quiet',
-          onclick: () => {
-            forgetToken();
-            access = { state: 'missing' };
-            said.textContent = 'Forgotten: the page is read-only.';
-            render();
-          },
-        },
-        'Forget',
-      ),
-      button({ class: 'quiet', onclick: () => dlg.close() }, 'Close'),
-    ),
-  );
-  return dlg;
+  return access;
 }
 
 // ----- queues: the items, where the page is in each, and what is settled
@@ -192,7 +94,6 @@ let review: Review | null = null;
 let settledIds: Set<string> = new Set();
 let at: { tab: Tab; i: number } = { tab: 'merges', i: 0 };
 let filter = ''; // the rail's search, folded
-let dialog: HTMLDialogElement | null = null;
 let generation = 0; // bumped on each item shown, so a write that lands later never moves on from another
 
 const homes = (r: Review, contested: boolean): Home[] =>
@@ -325,7 +226,7 @@ function decision(
       'p',
       { class: ['review-readonly', 'small', 'muted'] },
       access.state === 'refused' ? `${access.why} ` : 'Read-only: ',
-      button({ class: 'link', onclick: () => dialog?.showModal() }, 'add a token'),
+      button({ class: 'link', onclick: openToken }, 'add a token'),
       ' to decide here.',
     );
   let pick: string | null = null;
@@ -796,9 +697,9 @@ function render(): void {
   if (accessButton) {
     accessButton.replaceChildren(
       h('span', { class: ['review-dot', canWrite() && 'is-on'], 'aria-hidden': 'true' }),
-      accessWords(),
+      accessWords(access),
     );
-    accessButton.onclick = () => dialog?.showModal();
+    accessButton.onclick = openToken;
   }
   document
     .querySelector('#queues')
@@ -840,7 +741,7 @@ function render(): void {
 // the keys: on a queue, ← → move, a number picks a choice, n goes to the next open item (Enter writes, in the form)
 function onKey(ev: KeyboardEvent): void {
   const r = review;
-  if (r === null || dialog?.open === true || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+  if (r === null || tokenOpen() || ev.ctrlKey || ev.metaKey || ev.altKey) return;
   const q = queue(r, at.tab);
   const typing = ev.target instanceof HTMLInputElement || ev.target instanceof HTMLSelectElement;
   if (q === null || q.ids.length === 0 || typing) return;
@@ -856,9 +757,16 @@ function reviewView(into: HTMLElement, r: Review): void {
   root = into;
   review = r;
   settledIds = settled(r.built_at);
-  dialog?.remove();
-  dialog = tokenDialog(r.repository);
-  document.body.append(dialog);
+  atEnd('the token dialog', () =>
+    tokenDialog({
+      repository: r.repository,
+      check: checkToken,
+      forget: () => {
+        access = { state: 'missing' };
+        render();
+      },
+    }),
+  );
   fromAddress();
   render();
   const t = token();
