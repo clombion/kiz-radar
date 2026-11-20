@@ -10,23 +10,25 @@ import { startOfBody } from './body.ts';
 import { page } from './owner.ts';
 import { report } from './report.ts';
 
-// Part, named where (as report.ts says it), drawn in parent before marker
-function draw(where: string, Part: Component, parent: Node, marker: Node): void {
+// Part, named where (as report.ts says it), drawn in parent before marker; the function that disposes it
+function draw(where: string, Part: Component, parent: Node, marker: Node): () => void {
   const reported = (e: unknown): null => {
     report(e, where);
     return null;
   };
-  runWithOwner(page, () => {
-    createRoot(() => {
+  const dispose = runWithOwner(page, () =>
+    createRoot((disposer) => {
       const tree = (
         <Errored fallback={(e) => <>{reported(e())}</>}>
           <Part />
         </Errored>
       );
       insert(parent, () => tree, marker);
-    });
-  });
+      return disposer;
+    }),
+  );
   flush();
+  return dispose;
 }
 
 // Part in el's place: el replaced by the marker, the part drawn before it
@@ -52,4 +54,11 @@ export function atStart(where: string, Part: Component): void {
 // Part at the end of <body>, after what is there: before a marker appended to it
 export function atEnd(where: string, Part: Component): void {
   draw(where, Part, document.body, document.body.appendChild(new Text()));
+}
+
+// Part in place of what el holds, emptied first, as render empties an element it disposes (main.ts's <main>, whose
+// view the page mid-update replaces); the function that disposes it
+export function instead(el: Element, where: string, Part: Component): () => void {
+  el.textContent = '';
+  return draw(where, Part, el, el.appendChild(new Text()));
 }

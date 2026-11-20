@@ -44,7 +44,7 @@ export function needs(name: string, file: string): void {
 
 // The site is mid-update for this browser: its files came from two builds (site.json and the database, or the scripts
 // and the database). GitHub Pages' cache holds each file up to ten minutes, so they can disagree for that long after a
-// publish, whatever a reload asks for; updating.ts says so and loads the page again.
+// publish, whatever a reload asks for; updating.tsx says so and loads the page again.
 export class SiteUpdating extends Error {}
 // the database is of the tables these scripts read, or they are cached from before it changed (or after)
 export function sameSchema(found: unknown): void {
