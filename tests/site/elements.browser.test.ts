@@ -5,7 +5,7 @@
 // Cédric and Christina to KUOF with two more added in a community of its own, and one artist's bookings replaced.
 import { expect, test, vi } from 'vitest';
 import { userEvent } from 'vitest/browser';
-import { artistHref, EXPLORE, festivalsHref, mapHref, sourcesHref, TABS } from '../../site/routes.ts';
+import { artistHref, countriesHref, EXPLORE, festivalsHref, mapHref, sourcesHref, TABS } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, GLASGOW, KUOF } from './community.fixture.ts';
 import { bookedArtist, bookings, community, flies, retitled, TO_KUOF, trips } from './planted.ts';
@@ -117,6 +117,14 @@ test('what holds nothing is left out: no class or aria-current on a tab not show
     const marked = [...select.options].filter((o) => o.hasAttribute('selected'));
     expect(marked).toEqual([select.selectedOptions[0]]);
   }
+});
+
+// A control the address turns on is drawn on and marked so in the markup, as the h() views wrote it: a checkbox
+// checked, as a reset form or a script reading the markup sees the address's choice.
+test('a control the address turns on is marked so in the markup', async () => {
+  await app.open(countriesHref({ all: 1 }));
+  const box = main()?.querySelector<HTMLInputElement>('.countries-page input[type="checkbox"]');
+  expect([box?.checked, box?.hasAttribute('checked')]).toEqual([true, true]);
 });
 
 test.for([
