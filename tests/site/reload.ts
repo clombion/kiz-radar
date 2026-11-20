@@ -8,7 +8,7 @@ import { anotherBuild } from './planted.ts';
 import { KEPT, REVIEW } from './reviewed.ts';
 import { said } from './seen.ts';
 
-// When the tab first found the site mid-update (updating.ts): its sessionStorage entry, the instant the page that
+// When the tab first found the site mid-update (updating.tsx): its sessionStorage entry, the instant the page that
 // wrote it started on, and the value it wrote then, that instant in ms.
 const AT = new Date('2026-11-19T10:00:00Z');
 export const UPDATING_SINCE = {
@@ -29,8 +29,9 @@ export const REVIEW_ROUTE = '#contested/2';
 // The site's page started mid-update for its visitor, on the visit's day and storage: on a database of another build
 // than its summary, which it refuses. again() draws the updating page again under vi's timers, an interval or a
 // timeout, which stay until the test ends. It opens a view that waits for the data, which draws the updating page in
-// its place. The start's own countdown ticks on in a real interval. again() says how many timers the page set as it
-// drew. at() opens that view on another instant, under the page's own clock.
+// its place, the start's page and its countdown, a real interval, disposed. again() says how many timers the page set
+// as it drew. at() opens that view on another instant, under the page's own clock, and under vi's timers while they
+// stand.
 export async function startMidUpdate(
   visit: Omit<Parameters<typeof startSite>[0], 'plant'>,
 ): Promise<{ again: () => Promise<number>; at: (on: Date) => Promise<void> }> {

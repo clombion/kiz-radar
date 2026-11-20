@@ -2,7 +2,7 @@
 // it on this device; the day it expires, as they entered it (GitHub never tells a page); and the items settled since
 // the build the page shows, so a reload keeps the progress until the next build lists what is left. Storage may refuse
 // a value (a private window, a full quota): then the value lasts as long as the page, until a write of its key is
-// kept. read and write are each such value's, the site's others too (hints.ts, updating.ts).
+// kept. read and write are each such value's, the site's others too (hints.ts, updating.tsx).
 const TOKEN = 'kiz-radar-claims-token';
 const EXPIRES = 'kiz-radar-claims-token-expires';
 const SETTLED = 'kiz-radar-review-settled';

@@ -1,7 +1,10 @@
-// Router and page shell. The shell and the Festivals sentence show as soon as site.json is in; the database
-// loads alongside, and views that query it wait for it. Each view gets an AbortSignal that fires when you leave
-// it: listeners it adds to document or window pass it, so nothing outlives the view. The view shown follows one signal,
-// the address (address.ts).
+// Router and page shell. The shell and the Festivals sentence show as soon as site.json is in; the database loads
+// alongside, and views that query it wait for it. The shell's parts are Solid's, each drawn once through placed.tsx
+// into index.html, which holds the rest: the header's tabs and the second row (tabs.tsx), the footer's links and its
+// currency switch, the skip link and Back to top (shell.tsx), and the search (search.tsx); the line that says something
+// went wrong is report.ts's, the page mid-update updating.tsx's. Each view gets an AbortSignal that fires when you
+// leave it: listeners it adds to document or window pass it, so nothing outlives the view. The view shown follows one
+// signal, the address (address.ts), and sets the tabs' current one.
 
 import { createEffect, createRoot, createSignal } from 'solid-js';
 import { type Address, createAddress } from './address.ts';
@@ -27,7 +30,7 @@ import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
 import { type Link, Row, slide } from './tabs.tsx';
 import { loading } from './ui.ts';
-import { updated, updatingPage } from './updating.ts';
+import { updated, updatingPage } from './updating.tsx';
 import { Week } from './week.tsx';
 
 // Every link and file from the site's root, whatever address the page moves to: index.html's <base> (../../ on a
@@ -90,7 +93,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
   },
 };
 const isRoute = (name: string): name is Route => Object.hasOwn(VIEWS, name);
-// a load that failed: the whole page says the site is mid-update when it is (updating.ts), else the view says why
+// a load that failed: the whole page says the site is mid-update when it is (updating.tsx), else the view says why
 const failed = (root: HTMLElement, e: unknown) =>
   e instanceof SiteUpdating
     ? updatingPage(main)
