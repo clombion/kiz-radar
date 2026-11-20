@@ -5,7 +5,7 @@
 // createSignal<boolean>(false), const [, setLoading] = …), with a default or as a rest; a function declared by it; a
 // class's field, private (#loading) or not. Read at the declaration, not in the text: an import (ui.ts's loading,
 // anything of pending.ts), a parameter, a property, a store's key and a loop's variable (for (const failed of …)) hold
-// no state of the component's. Of the four migration rules (the brief's Phase 4): .oxlintrc.json turns it on for .tsx
+// no state of the component's. Of the four migration rules of the move to Solid: .oxlintrc.json turns it on for .tsx
 // files alone.
 import type { Rule } from './plugin.ts';
 import type { Node } from './shapes.ts';

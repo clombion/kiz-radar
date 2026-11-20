@@ -1,4 +1,4 @@
-// A Solid view that throws while it builds says so in its place, as an h() view does (broken.browser.test.ts), within
+// A Solid view that throws while it builds says so in its place, as Artists does (broken.browser.test.ts), within
 // its error boundary (site/mount.tsx): Solid is not halted, so the page goes on following its address. The page
 // started (app.ts) on two bad rows: a festival with a feature no state has, which reading the festivals refuses, and a
 // table's description that is no text, which the SQL page's list of tables refuses.
