@@ -7,7 +7,6 @@
     "build": "rm -rf public/js public/vendor && tsc -p . && vite build && pnpm run vendor",
     "types": "tsc -p . && tsc -p tests/site",
     "lint:oxlint": "oxlint site tests lint vite.config.ts vitest.config.ts",
-    "lint:biome": "biome lint --error-on-warnings",
     "lint:stylelint": "stylelint 'public/css/**/*.css' --max-warnings 0",
     "format": "oxfmt --check",
     "knip": "knip",
@@ -16,7 +15,6 @@
     "vendor": "mkdir -p public/vendor/leaflet && cp node_modules/sql.js/dist/sql-wasm.js node_modules/sql.js/dist/sql-wasm.wasm public/vendor/ && cp node_modules/topojson-client/dist/topojson-client.min.js node_modules/world-atlas/countries-50m.json public/vendor/ && cp -r node_modules/leaflet/dist/leaflet.js node_modules/leaflet/dist/leaflet.css node_modules/leaflet/dist/images public/vendor/leaflet/"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.3",
     "@solidjs/compiler": "2.0.2",
     "@solidjs/vite-plugin": "3.0.1",
     "@solidjs/web": "2.0.3",
