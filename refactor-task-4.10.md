@@ -1,6 +1,8 @@
 # Task 4.10: finishing
 
-Task 4.10 of [refactor-plan.md](refactor-plan.md), the last of the refactor. Status: planned, 20 November 2026.
+Task 4.10 of [refactor-plan.md](refactor-plan.md), the last of the refactor. Status: done, 20 November 2026. `dom.ts`
+and `page.browser.test.ts` gone; the four Grit-era rules kept, none replaceable; four suppressions replaced, fifteen
+kept with their reasons; the Phase 4 report written in the plan; no stop.
 
 ## Summary
 
@@ -54,17 +56,20 @@ change to the site and no change to its words.
     accessibility tree in Chromium, Firefox and Safari), and the stylesheet reads `.map`, never `div` or `section` but
     under `.sources`: **replaced**, with a test that the map is a region of that name.
   - the review page's three `rel="noopener"` links to a new tab (`token.tsx` one, `dashboard.tsx` two):
-    `rel="noopener noreferrer"`, which the rule asks for, changes nothing seen; it stops the Referer (the page's origin
-    to GitHub and a festival's page under the browsers' default policy, the full address to the site's own artist page),
-    which nothing reads: **replaced**, with a test that each link opens a new tab with no opener and no referrer.
+    `rel="noopener noreferrer"`, which the rule asks for on these three (it reads an address only when it is an external
+    literal or a bare name, so it lets `href={e.url}` through, and the test holds the convention), changes nothing seen;
+    it stops the Referer (the page's origin to GitHub and a festival's page under the browsers' default policy, the full
+    address to the site's own artist page), which nothing reads: **replaced**, with a test that each link opens a new
+    tab with no opener and no referrer.
   - kept: the `role="status"` paragraphs (`marks.tsx`, `controls.tsx`'s `leftOut`, `token.tsx`, `dashboard.tsx`), an
     `<output>` being inline and a form's control; the `role="group"` rows (`controls.tsx` segments, `communities.tsx`'s
-    roster views, `gantt.tsx`), a `<fieldset>` drawing a border and padding and naming itself by a `<legend>`; the
-    `role="img"` privacy mark (`communities.tsx`), an image of a drawing and a count, which an `<img>` cannot hold; the
-    calendar's grid (`months.tsx`, five), laid out by the stylesheet's grid over `<span>`s, which a table's parts would
-    leave for the table's own layout; `sentence.tsx`'s "Show them ↓" link to `#`, whose click scrolls to the cards with
-    the page's own motion, the address being the router's; `dashboard.tsx`'s `aria-selected` on the rail's buttons, kept
-    as it is for issue #22, which covers its fix.
+    roster views, `gantt.tsx`), a `<fieldset>`, the same group by the same `aria-label`, bringing the browser's border,
+    padding, margin and min-content width for the stylesheet to take off again; the `role="img"` privacy mark
+    (`communities.tsx`), an image of a drawing and a count, which an `<img>` cannot hold; the calendar's grid
+    (`months.tsx`, five), laid out by the stylesheet's grid over `<span>`s, which a table's parts would leave for the
+    table's own layout; `sentence.tsx`'s "Show them ↓" link to `#`, whose click scrolls to the cards with the page's own
+    motion, the address being the router's; `dashboard.tsx`'s `aria-selected` on the rail's buttons, kept as it is for
+    issue #22, which covers its fix.
 - **Comments and docs say what is, not what the port kept.** Comments naming `dom.ts`, `h()` or a view "as the `h()`
   page drew it" as present code are reworded where they would now point at nothing (`bits.ts`, `classes.ts` through
   `pipeline/generate.py`, `jsx-runtime.d.ts`, `report.ts`, `main.ts`, the tests' headers the 4.8 record left);
@@ -135,6 +140,58 @@ change to the site and no change to its words.
 09. `CLAUDE.md`, `CONTRIBUTING.md` and the docs;
 10. the row's status and the Phase 4 report;
 11. the refactor's documents removed, and what linked to them.
+
+## Result
+
+| Commit | What |
+| -- | -- |
+| `40a7739` | this plan |
+| `8fdd9cc` | `styles.test.ts` counting a class only where code gives it to an element; the rules it found styling no element dropped, the flight line's `.p` among them (below) |
+| `b25c116` | `cannotShow`, `viewRoot` (`mount.tsx`) and `loadFailed` (`marks.tsx`) as JSX, `guarded` gone, `report.ts`'s `logged`; `load-failed.browser.test.ts`; the review test's spy (below) |
+| `936c057` | `dom.ts`, `page.browser.test.ts`, the exemptions and their fixtures gone; `bits.ts`'s `flat` gone; the rules' messages, headers and fixtures name JSX; comments that named `dom.ts` as present code |
+| `ef3c056` | the map a `<section>`; its test |
+| `393c8ad` | the review links' `rel`; `review-links.browser.test.ts` |
+| `78941ac` | the fifteen kept suppressions' reasons |
+| `0311c1f` | `.oxlintrc.json`'s and the migration rules' comments |
+| `bc0efde` | `CLAUDE.md`, `CONTRIBUTING.md`, the site guide, the lint rules' page |
+| the record | the plan's row, the Phase 4 report, this status |
+| the last | the refactor's documents removed |
+
+**Tests.** Deleted: `page.browser.test.ts`'s four (approved). Added: `load-failed.browser.test.ts` (a database without
+its `meta` says "Could not load the data: no such table: meta" in the view, the tabs kept, Sources still shown, the line
+going with its view: the page's owners the same after); `map.browser.test.ts`'s "the map is one region a screen reader
+names, Leaflet drawn in it"; `review-links.browser.test.ts` (the token dialog's, a home's and a waiting festival's links
+to a new tab, each `noopener noreferrer`). Changed: `reviewpage.browser.test.ts`'s test of an item that cannot be drawn
+lets a `<template>`'s markup through its spy; fixtures of `buttons`, `classes`, `markup`, `legacy` and `tests` (the
+intended way JSX's; `tests`' refused imports the exception that remains, `placed.tsx`). Suite: 538 and 5 expected to
+fail in 80 files, then 537 and 5 in 81.
+
+**Fail-checks**, each undone, seen failing, put back:
+
+- `load-failed`: the line's words changed ("Could not load data"): the open resolves; the line left undisposed with its
+  view (no abort listener): 176 owners for 164; no plant: the open resolves. It passes on the `h()` line too.
+- the map's region: the name taken off the `<section>`: `[]` for `[true]`; on the old `<div role="region">` it passes.
+- the review links: on the old `dashboard.tsx` (`noopener` alone): the list differs.
+- `reviewpage`: the boundary's words changed: the open resolves.
+- the fixtures: a refused marker taken off `tests`' `other.ts` and `app.ts`; `h('button')` in `buttons`' `good.ts`;
+  `classList` read in `classes`' `good.tsx`; `innerHTML` set in `markup`'s `good.ts`: each fails `rules.test.ts`.
+
+**Departures from the plan:**
+
+- **`.p`:** with the `h('p', …)` calls gone, `styles.test.ts` found `.flight .p` and `.flight.easy .p` styling no
+  element, hidden until then by the quoted tag; the rules went in a commit of their own before the JSX one. The audit
+  found the test counting any quoted word, so other rules hid the same way: the test now counts a class only where code
+  gives it to an element, and the `.card`, `.fare`, `.lineup` and `button.sort` rules it then found went in the same
+  commit, each listed in its message (failing on a class planted in the stylesheet and quoted elsewhere).
+- **The review page's test of a broken item** spied on every element's `innerHTML`, which now also refused the template
+  Solid parses the boundary's line from (the fallback threw, uncaught): its spy lets a `<template>`'s markup through.
+- **The failed load's plant** is `meta`, read after `site.json` is in, not `today`, written as the database is opened:
+  the first full run failed the file once, the rejection coming before `main.ts` listened and so said as the page's too
+  (an open issue of the report).
+- **Comments:** what named `dom.ts` as present code went with it (the deletion's commit); the planned comment commit
+  became `.oxlintrc.json`'s and the migration rules' (`0311c1f`). The past-tense comparisons with "the `h()` page" were
+  kept, then reworded after the audit to say the behaviour itself (`936c057`).
+- **`buttons`' `h('button')` branch** and `legacy`'s refusal of a `dom` module stay, the rules kept whole.
 
 ## Done when
 

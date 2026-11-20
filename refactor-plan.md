@@ -62,7 +62,7 @@ Legend: **Q*n*** = blocked on the owner's answer to that open question (brief, "
 | 4.7 | Stateful views | `sentence`, `communities`, `friends`, `artists`, `map` (Leaflet stays an imperative island), `countries`, `people`; done ([refactor-task-4.7.md](refactor-task-4.7.md): each a function of its address mounted through `mount.tsx`'s `mounted`, its choices a signal (`controls.tsx` `chosen`), what its `render()` drew anew drawn anew from it, a part drawn again in `Redrawn`, what other parts read of it through `createDerived`; the controls `dom.ts` gave them in `site/controls.tsx`; Leaflet made in `onSettled` and removed after its zoom; `held`, `heldNodes`, `redraws`, `heldCard`, `heldTag` gone, `main.ts`'s loading mark through `placed.tsx`) | same |
 | 4.8 | Read-only views | `sources`, `tables` (`week` was 4.4's first view, `updating` part of 4.5's shell); done ([refactor-task-4.8.md](refactor-task-4.8.md): `sources.tsx` and `tables.tsx`, each a function of its address mounted through `mount.tsx`'s `mounted`; the SQL page's last result a signal (what it draws, at most 1000 rows a set) drawn by JSX as plain markup in a `Redrawn`, its examples `controls.tsx`'s `choices` with `on: null` (no option marked, as before); every way it runs a query tested; nothing of `dom.ts` dead, so `dom.ts` and `page.browser.test.ts` stay for 4.10) | same |
 | 4.9 | The review dashboard | `review.ts` as its own series; done ([refactor-task-4.9.md](refactor-task-4.9.md): the token dialog `token.tsx`, the page `dashboard.tsx`, `review.ts` its entry alone; the page drawn anew where the `h()` page drew itself anew, the view through `mount.tsx`'s `drawnIn` (`mounted`'s core) from the handler that changed the state (a render in an effect is refused), what was changed in place a signal; the writes to GitHub unchanged, their failures tested; `dom.ts`'s `choices` gone, `nodes` unexported; `h()`, `dom.ts` and `page.browser.test.ts` stay for 4.10; audited, the country picker kept on its country during a write, the defects the `h()` page had too listed to file) | same |
-| 4.10 | Finishing | delete `h()` and `replaceChildren` from `dom.ts`, with `button`, `paged`, `toggle` and `h()`'s `on…`, `style` and `dataset` branches, which have no production caller since 4.9, and `page.browser.test.ts` with its kept tests of them (Q5, task 1.6); retire `markup`, `classes`, `buttons`, `clicks` only with a fixture proving the replacement; rewrite kept rules' messages; `CLAUDE.md` conventions and the Solid skills; `CONTRIBUTING.md`, docs, `tests/test_suppressions.py` (and revisit the suppressions kept for identical markup: `jsx-a11y/prefer-tag-over-role`, 4.6's in `months.tsx`, `marks.tsx`, `gantt.tsx` and 4.9's in `token.tsx` and `dashboard.tsx`; 4.9's `react/jsx-no-target-blank`, `token.tsx` one and `dashboard.tsx` two; 4.9's `jsx-a11y/role-supports-aria-props`, `dashboard.tsx`'s rail `aria-selected`); remove `refactor-brief.md`, `refactor-plan.md`, `refactor-ledger.md` and the task plans | Phase 4 "done when" holds; report written |
+| 4.10 | Finishing | delete `h()` and `replaceChildren` from `dom.ts`, with `button`, `paged`, `toggle` and `h()`'s `on…`, `style` and `dataset` branches, which have no production caller since 4.9, and `page.browser.test.ts` with its kept tests of them (Q5, task 1.6); retire `markup`, `classes`, `buttons`, `clicks` only with a fixture proving the replacement; rewrite kept rules' messages; `CLAUDE.md` conventions and the Solid skills; `CONTRIBUTING.md`, docs, `tests/test_suppressions.py` (and revisit the suppressions kept for identical markup: `jsx-a11y/prefer-tag-over-role`, 4.6's in `months.tsx`, `marks.tsx`, `gantt.tsx` and 4.9's in `token.tsx` and `dashboard.tsx`; 4.9's `react/jsx-no-target-blank`, `token.tsx` one and `dashboard.tsx` two; 4.9's `jsx-a11y/role-supports-aria-props`, `dashboard.tsx`'s rail `aria-selected`); remove `refactor-brief.md`, `refactor-plan.md`, `refactor-ledger.md` and the task plans; done ([refactor-task-4.10.md](refactor-task-4.10.md): the last `h()` lines JSX (`mount.tsx`'s `cannotShow` and `viewRoot`, `marks.tsx`'s `loadFailed`), `guarded` gone, `dom.ts` and `page.browser.test.ts` deleted; the four rules kept, none replaceable, their messages naming JSX; the map's region a `<section>` and the review links `noopener noreferrer`, the 15 other suppressions kept with their reasons; `CLAUDE.md`'s conventions and the Solid skills) | Phase 4 "done when" holds; report written |
 
 ## Open questions (from the brief's review)
 
@@ -495,3 +495,186 @@ was caught; the build drew every page clean as `tsc`'s had.
 - The browser tests in the cloud container need `CHROMIUM=/opt/pw-browsers/chromium`, the commit hook included.
 
 **Next:** Phase 4, Solid 2.0 view by view. Q3 (Solid 2.0.0 or 2.0.1) is open for the owner.
+
+### Phase 4
+
+Done on 20 November 2026, at `bc0efde`. The site is Solid 2.0 (`solid-js` 2.0.3, `@solidjs/web` 2.0.3, compiled by
+`@solidjs/vite-plugin` 3.0.1 with `@solidjs/compiler` 2.0.2): every view, the shell and the review dashboard are `.tsx`
+modules returning JSX, mounted through `site/mount.tsx` and `site/placed.tsx`; `h()` and `site/dom.ts` are gone.
+`eslint-plugin-solid`'s `v2-strict` rules and nine house rules for JSX hold the `.tsx` modules, and a browser test fails
+on any console warning or error it did not declare, so Solid's development diagnostics fail the suite. The page's
+markup, words and behaviour are the `h()` page's, but for the bugs below, the map's tag and three links' `rel` (task
+4.10). Phase 4's "done when" holds, item by item at the end. Task 4.10's plan is
+[refactor-task-4.10.md](refactor-task-4.10.md).
+
+**What changed**, task by task (`git log 89ee4ab..bc0efde`):
+
+- **4.1** ([plan](refactor-task-4.1.md)): `f79d7f3` Plan; `8d9dbbd` Compile Solid's JSX in the site's build and in the
+  browser tests (the four packages at their current releases, Q3 and Q6; the development build in the tests alone).
+- **4.2** ([plan](refactor-task-4.2.md)): `e353c5d` Plan; `36e8693` Pin eslint-plugin-solid and turn on its v2-strict
+  rules; `43a7d02` `states`, `6650841` `buttons` and `15f903a` `markup` widened to `.tsx`; a "Refuse …" each for
+  `styles` (`493691b`), `thens` (`38eeeed`), `flags` (`342cbc4`), `mirrors` (`8059e1a`), `legacy` (`8c9585a`),
+  `semicolons` (`4e857bc`), `spreads` (`f866d94`), `svgs` (`b62e56d`) and `focuses` (`9182cbf`); `29f9b6e` Record.
+- **4.3** ([plan](refactor-task-4.3.md)): `139713f` Fail a browser test on a console warning or error it did not
+  declare; `1985064` Show Solid's development diagnostics failing a test, and record.
+- **4.4** ([plan](refactor-task-4.4.md)): `70c8a57` Plan; `c72e241` Move dom.ts's helpers that draw nothing to bits.ts;
+  `c339e25` Follow the address as one signal; `7e0fe62` Mount This week as the first Solid view; `4bcbdbf` Hold the
+  built scripts' markup to the page's Content-Security-Policy; `20bd333` Record.
+- **4.5** ([plan](refactor-task-4.5.md)): `17d8f6b` Plan; `d4b14c1` Refuse a module written both as X.ts and as X.tsx;
+  `47d9774` Count a class JSX gives as `class="…"`; "Draw … with JSX": the problem line `4930338`, the header's tabs
+  `58972e2`, the second row `c12f47c` (`pill` dropped), the footer, skip link and Back to top `4dba9d3`, the currency
+  switch `f85ad3f`, the dialog host `b698dda` (`modal.ts` dropped with its kept test), the search `739ae5a`, the page
+  mid-update `7c25ee7`; `49c6296` Record.
+- **4.6** ([plan](refactor-task-4.6.md)): `15a265d` Plan; "Draw … with JSX": a festival's card `ddef58b`, what it opens
+  to `66029b0`, the quick views `589a20c`, flights `dfd19a9`, passes `432dd7b`, the plans `d207297`, the marks
+  `71f4300`, a trip's roster `ca8eead`, the months `a23da9c` (the cards over the page a signal, `dismissable` and its
+  kept test gone); `003f7e4` Record.
+- **4.7** ([plan](refactor-task-4.7.md)): `7c1627b` Plan; "Draw … as a Solid view": Countries `7ab2bbb`, Friends
+  `5c4b288`, Artists `95192c7`, Festivals `9d87fde`, the Map `914d474`, a community `fe5aacf`, a person `fcb1f5e`;
+  `70d079b` the loading mark through placed.tsx, `held` gone; `db9f180` Record.
+- **4.8** ([plan](refactor-task-4.8.md)): `a59e2c0` Plan; `121b316` Sources; `750e042` SQL; `821f7b8` Record.
+- **4.9** ([plan](refactor-task-4.9.md)): `067e857` Plan; `3ba20db` the token dialog; `b27a77e` the review dashboard,
+  `review.ts` its entry alone; `88472cc` Record.
+- **4.10** ([plan](refactor-task-4.10.md)): `40a7739` Plan; `8fdd9cc` Count a class as used only where code gives it,
+  and drop the rules no element has; `b25c116` Say a view that cannot be shown and a failed load with JSX; `936c057`
+  Delete dom.ts and the tests of its helpers, the house rules name JSX; `ef3c056` Make the map a section named for a
+  screen reader; `393c8ad` Open the review page's links to a new tab with noopener noreferrer; `78941ac` Give each
+  suppression kept for identical markup the reason that holds; `0311c1f` Say in the lint config's comments that every
+  view is Solid's; `bc0efde` Write the site's Solid conventions into CLAUDE.md and the docs; the record with this
+  report; and the last commit, which removes the refactor's documents.
+- Found on the way, not a task's own: `8169604` Remove the map only after Leaflet's zoom ends; `ce29e60` and `38d56b8` a
+  page change cut short by the next, with its test; `0945da7` and `fbcd1a9` a transition the browser skips for a resize,
+  with its test; `e6b53ce` the Publish site workflow's words and `8187b05` the test server's root-file branch (both the
+  owner's yes, Phase 3's open issues); `4fdd631` the search's close event awaited in a test.
+
+**Counts**, at `89ee4ab` (the Phase 3 report) and at `bc0efde`:
+
+- Tests: 428 in 60 files, then 537 and 5 expected to fail in 81, all passing. Browser files went from 43 to 64, mostly a
+  file per page started on planted data of its own (a part that throws, a held answer, a page drawn again), each new
+  test failing without the code it tests. Gone: `page.browser.test.ts` (task 1.6's seven kept tests: `pill`'s, `modal`'s
+  and `dismissable`'s with them in 4.5 and 4.6, the last four with `dom.ts` in 4.10; Q5).
+- oxlint: 354 rules on 156 files, then 395 on 203; no finding and no warning. The 41 more are `eslint-plugin-solid`'s 32
+  of `v2-strict` and nine house rules (28 in all, each with its fixtures).
+- Suppressions of the site: 21 (1 Biome on the stylesheet, 16 oxlint, 4 `@ts-expect-error`), then 53 (1, 48, 4). The 32
+  more oxlint ones: 15 of the 19 kept for identical markup during the port (4.10 replaced four and gave the others their
+  reasons), and 17 others, each in [the suppressed findings](docs/lint-false-positives.md) (the search's combobox, the
+  calendar's and the dialog's events, the console guard's fixture, `house/states` on a sort order).
+- Coverage of `site/**`, by Phase 1's command, now: lines 96.32 %, statements 95.04 %, functions 95.03 %, branches 85.43
+  %. Phase 3 recorded none; Phase 2's last was 91.63 %, 90.55 %, 89.71 % and 81.69 %. The same command on `89ee4ab`, in
+  this container, gave no figure: the transition skips Phase 4 fixed (`ce29e60`, `0945da7`) failed seven tests and
+  stopped 37 files from reporting.
+- The bundle: 187,154 bytes (gzip -9 each 65,111) at Phase 3, then 275,779 (97,496): `main.js` 153,980, `review.js`
+  24,237, the shared chunk 97,562; Solid's runtime and the templates JSX writes.
+
+**Decisions the brief did not settle**, each in its task's plan: the four packages at their current releases (4.1, Q6);
+the views mounted under one owner the page makes (`owner.ts`), each in an error boundary (4.4); the address one signal
+(`address.ts`) that the router follows in an effect, `routes.ts` untouched (4.4); the site's own JSX types, typing
+`class` by `ClassName` (4.4); the shell's parts drawn once through `placed.tsx`, `<body>` their delegated root (4.5); a
+piece's state as signals, the quick views drawn from what their opener hands them (4.6); a view's choices one signal
+(`controls.tsx` `chosen`), what it draws again in `Redrawn`, what other parts read through `createDerived` (4.7);
+Leaflet made in `onSettled` (4.7); the review page drawn anew where the `h()` page was, from its handlers (4.9); in
+4.10, `cannotShow` in `mount.tsx` and `guarded`'s catch in `mounted`, the four Grit-era rules kept with their messages
+rewritten, two kinds of suppression replaced and the rest kept with their reasons.
+
+**What the brief got wrong about Solid 2.0**, as tasks 4.1 to 4.10 measured it:
+
+- **A style object is not safe under the policy.** The brief: `style={{ … }}` "is set property by property and is
+  allowed". `@solidjs/compiler` 2.0.2 writes a string, and an object's constant values, into the template's HTML as a
+  style attribute, which the page's Content-Security-Policy refuses (4.2): `house/styles` refuses the `style` prop
+  whatever it is given, and a value known only as it is drawn is set through a ref (`bits.ts` `styled`).
+- **A write in the wrong scope is an error that halts Solid, not a report.** A read in a component's body warns
+  (`STRICT_READ_UNTRACKED`); a write there throws `REACTIVE_WRITE_IN_OWNED_SCOPE` and halts the reactive system for the
+  rest of the window (`REACTIVITY_HALTED`), so its test is a file of its own (4.3). The reports need nothing beyond the
+  development build (`@solidjs/diagnostics` not installed, 4.1).
+- **`render(() => <View/>, root)` behind the old signature was not enough.** Called in an effect's callback, `render`
+  throws `PRIMITIVE_IN_EFFECT_CALLBACK` and halts Solid, so every view renders under an owner the page makes
+  (`owner.ts`, 4.4); a throw that escapes every boundary halts every signal of the page, in production too, so each view
+  and each part of the shell has its own `Errored` boundary (4.4, 4.5); a render's flush in an effect's callback warns
+  `FLUSH_IN_EFFECT_CALLBACK`, so the review page draws from its handlers (4.9).
+- **`Errored` keeps the branch that threw:** its cleanups never run, so a part that throws keeps what it added (the
+  search's history entry, [#11](https://github.com/clombion/kiz-radar/issues/11)); a boundary heals on its next change,
+  which `Redrawn` relies on (4.7).
+- **Async data under `<Loading>` was never needed:** `sql.js` answers synchronously and a view that queries is mounted
+  once the database is in (`waitsForData`), so no view reads a pending promise; `house/thens` and `house/flags` hold
+  with no `Loading` in the site.
+- **What the compiler makes reactive is not what it looks like:** `class={name}` is an effect (the compiler reads a
+  class through `readShallow`), an object or list literal of names is not (4.9); a `<select>`'s attributes are one
+  effect that sets its `value` again whenever any of them changes, so a `disabled` beside it put the review's country
+  picker back on its placeholder (4.9, fixed by an effect of its own); a text with a value in it is several text nodes
+  where `h()` wrote one (4.8).
+- **`solid/reactivity` refuses a signal read in a listener on the window** and in functions handed out of a component:
+  state such listeners read is a plain record beside its signal (4.9).
+- **Refs run before the element is in the page:** layout work and Leaflet go in `onSettled` (which replaces `onMount`),
+  run as the view is first drawn, its element in the page (4.1, 4.7).
+- **Solid parses each JSX template once by setting a `<template>`'s `innerHTML`** (4.10: a test that refused every
+  element's markup refused the error boundary's line too). The Trusted Types policy #8 proposes for `icons.ts` will need
+  one for Solid's templates as well.
+- **None of the Grit-era rules could be retired:** `solid/no-innerhtml` refuses 2 of the 29 lines `markup` refuses;
+  `react/button-has-type`, told to refuse `submit` and `reset`, lets a spread after the type through (7 of `buttons`' 10
+  JSX lines); nothing refuses `classList`, `className` or `stopPropagation()` (4.10, measured on each rule's fixtures).
+- **"When no `h()` or `replaceChildren` remains, delete them from `dom.ts`":** the last `h()` lines were the shell's
+  (`report.ts`'s line of a view that cannot be shown, `main.ts`'s failed load and view root), not a view's; `dom.ts`
+  went whole, empty once they were JSX.
+
+**Site bugs found**, each fixed with a test that fails without it: the map removed mid-zoom threw (`8169604`); a page
+change cut short by the next, and a transition the browser skips for a resize, said "Something went wrong" (`ce29e60`,
+`0945da7`); the review's country picker went back to its placeholder while a claim was written (made by the port, found
+by 4.9's audit and fixed in its commit); the flight line's `.p` rules, and those of `.card`, `.fare`, `.lineup` and
+`button.sort`, styled no element, hidden from `styles.test.ts`, which counted any quoted word as a class given
+(`8fdd9cc`: the test counts a class only where code gives it to an element, and fails on a planted one).
+
+**Open issues**, filed in clombion/kiz-radar:
+
+- [#8](https://github.com/clombion/kiz-radar/issues/8): the suite runs in Chromium alone, so the latest Firefox and
+  Safari, which the site supports, are checked by reading the code; and the modern features all three now share. The
+  port uses nothing the `h()` page did not, and 4.10's `<section>` and `noreferrer` are long supported by both.
+- [#9](https://github.com/clombion/kiz-radar/issues/9): a segment pressed or a box ticked loses the keyboard focus.
+- [#10](https://github.com/clombion/kiz-radar/issues/10): the search's results listbox holds notes and buttons.
+- [#11](https://github.com/clombion/kiz-radar/issues/11): a part whose boundary catches a throw is never cleaned up.
+- [#12](https://github.com/clombion/kiz-radar/issues/12): no test reaches the day popover's, a trip's retry's and two
+  filters' error handling.
+- [#13](https://github.com/clombion/kiz-radar/issues/13): `check:commit` can fail on `lock:py` while the fresh
+  worktree's `.venv` is made (seen again in 4.10).
+- [#14](https://github.com/clombion/kiz-radar/issues/14): a slide skipped by a resize, to check in
+  `elements.browser.test.ts`.
+- [#15](https://github.com/clombion/kiz-radar/issues/15): whether a card or trip that fails to draw should stay closed.
+- [#16](https://github.com/clombion/kiz-radar/issues/16): a Vite cache shared between two checkouts.
+- [#17](https://github.com/clombion/kiz-radar/issues/17) to [#21](https://github.com/clombion/kiz-radar/issues/21): the
+  review page's defects the `h()` page had too: the picker's placeholder enabling a write that throws; the keys stepping
+  from an address past the queue's end; a late answer from GitHub undoing Forget or a newer token; typing in the rail's
+  search dropping capitals, accents and spaces and losing the open decision; a failed token check left "Checking the
+  token…".
+- [#22](https://github.com/clombion/kiz-radar/issues/22): the rail's buttons carry `aria-selected`, which screen readers
+  ignore; its suppression is kept as it is for the issue.
+
+Not filed, for the owner:
+
+- A database that fails as it is opened, before `site.json` is in, rejects before `main.ts` listens: the page then says
+  "Something went wrong (the page: …)" besides the view's "Could not load the data" (seen once in 4.10's full run, so
+  `load-failed.browser.test.ts` plants a failure after `site.json` instead). Not changed, since it changes what the page
+  says.
+- Q2's two leftovers stay off by file: `roster.ts`'s one `prefer-destructuring` finding and `db.ts`'s two classes; the
+  move to Solid rewrote neither pure module.
+- `mounted`'s catch of a throw that escapes the view's boundary (what `guarded` caught) is reached by no test, as its
+  comment says: the one way found to reach it, a throw in the boundary's fallback itself (`message()` of a value with no
+  string form), finds Solid already halted.
+- `main.ts` still moves the view's root into `<main>` with `replaceChildren` and makes the page's `<base>` if it has
+  none: the shell's work, not a view's.
+- The browser tests in the cloud container still need `CHROMIUM=/opt/pw-browsers/chromium`; the intermittent failures of
+  Phases 2 and 3 were not seen again once the transition skips were fixed.
+
+**Phase 4's "done when"**, item by item:
+
+- *No `.ts` view code renders DOM by hand:* every view is `.tsx`. The `.ts` modules that touch the page draw no view:
+  the entries (`main.ts`: the `<base>`, the header's height, the view's root moved into `<main>`; `review.ts`),
+  `icons.ts` (`Drawing.into`, the one sink of markup), `body.ts` (a marker before the problem line), `bits.ts` (a ref
+  setting style properties). `house/legacy` refuses `replaceChildren` and `createElement` in every `.tsx`.
+- *All views are `.tsx`:* This week, the Festivals page, the Map, Artists, Countries, Friends and a person's page, a
+  community's page, Sources, SQL, the review dashboard and its token dialog, and the shell's parts.
+- *Solid's rules and the four migration rules report zero findings:* `lint:oxlint`, 395 rules on 203 files, none.
+- *The browser suite passes with console warnings failing tests:* `tests/site/console.setup.ts` in both browser
+  projects; `console.browser.test.ts` and `halted.browser.test.ts` show Solid's diagnostics failing a test.
+- *`CLAUDE.md` describes the new conventions and points to the bundled Solid skills:* `bc0efde`.
+
+**Next:** none; the refactor is done. Its brief, plan, ledger, audit and task plans go in the commit after this one, and
+stay in git history.
