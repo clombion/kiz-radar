@@ -1,14 +1,12 @@
 // The page's helpers called on elements a test builds, for what no page shows: each test goes with its helper (h() and
-// paged with task 4.10, pill and modal with 4.5, dismissable with 4.6, which ports the community page's cards). What a
-// visitor sees of each is read on the page: the oval and the slide in tabs.browser.test.ts and
-// tabs.calm.browser.test.ts, the rest in elements.browser.test.ts.
+// paged with task 4.10, modal with 4.5, dismissable with 4.6, which ports the community page's cards). What a visitor
+// sees of each is read on the page, in elements.browser.test.ts.
 
 import { afterEach, expect, test } from 'vitest';
 import { dismissable } from '../../site/dismiss.ts';
 import { button, h, paged, toggle } from '../../site/dom.ts';
 import { modal } from '../../site/modal.ts';
-import { pill } from '../../site/tabs.tsx';
-import { entries, ovalsOf } from './seen.ts';
+import { entries } from './seen.ts';
 
 afterEach(() => {
   document.body.replaceChildren();
@@ -41,27 +39,6 @@ test('h() sets attributes, classes, data and listeners, and leaves out what hold
 
 test('h() puts text in as text, never as HTML', () => {
   expect(h('p', {}, '<b>bold</b>').innerHTML).toBe('&lt;b&gt;bold&lt;/b&gt;');
-});
-
-// a row of three tabs, the given one current
-function tabs(current: number): HTMLElement {
-  const nav = h(
-    'nav',
-    { style: 'position: relative; display: flex; gap: 8px' },
-    ['One', 'Two', 'Three'].map((t, i) => h('a', { href: '#', class: i === current && 'active' }, t)),
-  );
-  document.body.append(nav);
-  return nav;
-}
-
-test('with no current tab, or the row hidden, there is no oval', () => {
-  const nav = tabs(-1);
-  pill(nav);
-  expect(ovalsOf(nav).map((p) => p.hidden)).toEqual([true]);
-  nav.querySelector('a')?.classList.add('active');
-  nav.hidden = true;
-  pill(nav);
-  expect(ovalsOf(nav).map((p) => p.hidden)).toEqual([true]);
 });
 
 test('a dialog has a history entry of its own: the back button closes it, and closing it removes the entry', async () => {

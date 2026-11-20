@@ -15,28 +15,6 @@ type Box = { readonly left: number; readonly top: number; readonly width: number
 // a shape of the oval's layer: a span JSX draws, an element as Solid makes it
 const shape = (): HTMLSpanElement => asElement(<span class="pill" />, HTMLSpanElement, 'a shape of the oval');
 
-// The sub-navigation's oval, until it is a Row: its layer put in its row as the first move asks for it, and put back
-// when the row's links are drawn again, its last box kept, so the next move starts from where the oval was.
-const rows = new WeakMap<HTMLElement, { readonly goo: HTMLElement; readonly place: Placer }>();
-function placerOf(nav: HTMLElement): Placer {
-  const known = rows.get(nav);
-  if (known) {
-    if (known.goo.parentNode !== nav) nav.insertBefore(known.goo, nav.firstChild);
-    return known.place;
-  }
-  const oval = shape();
-  const goo = asElement(
-    <span class="goo" aria-hidden="true">
-      {oval}
-    </span>,
-    HTMLSpanElement,
-    "the oval's layer",
-  );
-  nav.insertBefore(goo, nav.firstChild);
-  const place = placer(nav, goo, oval);
-  rows.set(nav, { goo, place });
-  return place;
-}
 const box = (a: HTMLElement): Box => ({
   left: a.offsetLeft,
   top: a.offsetTop,
@@ -84,25 +62,21 @@ function placer(nav: HTMLElement, goo: HTMLElement, oval: HTMLElement): Placer {
 }
 const current = (nav: HTMLElement) => nav.querySelector<HTMLElement>('a.active');
 
-// The sub-navigation's oval behind its current tab, until it is a Row: none while the row is hidden.
-export function pill(nav: HTMLElement, { still = false } = {}): void {
-  placerOf(nav)(nav.hidden === false ? current(nav) : null, still);
-}
-
 // a tab: its key, its words and its address (routes.ts's TABS)
-type Link = readonly [key: string, label: string, href: string];
-// A row of tabs: its links, the current one's key (none: null), and whether each link names its key (data-nav, the
-// header's, which the stylesheet and the Festivals page's hint read).
+export type Link = readonly [key: string, label: string, href: string];
+// A row of tabs: its class and id, what it is called, its links, the current one's key (none: null), and whether each
+// link names its key (data-nav, the header's, which the stylesheet and the Festivals page's hint read).
 interface RowProps {
-  readonly class: 'tabs';
+  readonly class: 'tabs' | 'subnav';
+  readonly id?: 'subnav';
   readonly label: string;
   readonly links: readonly Link[];
   readonly on: string | null;
   readonly named: boolean;
 }
-// The row's <nav>, its oval's layer, drawn once and never again, and its links. Once Solid has drawn the links of each
-// change, the oval is placed behind the current one; again, still, on each resize and once the web font is in, which
-// may move the tabs.
+// The row's <nav>, hidden while it has no tabs, its oval's layer, drawn once and never again, and its links. Once Solid
+// has drawn the links of each change, the oval is placed behind the current one; again, still, on each resize and once
+// the web font is in, which may move the tabs.
 export function Row(props: RowProps) {
   let nav!: HTMLElement, goo!: HTMLSpanElement, oval!: HTMLSpanElement;
   let place: Placer | undefined; // once the row is drawn
@@ -125,7 +99,7 @@ export function Row(props: RowProps) {
   };
   done(laidOut(), 'laying out the tabs');
   return (
-    <nav ref={nav} class={props.class} aria-label={props.label}>
+    <nav ref={nav} id={props.id} class={props.class} aria-label={props.label} hidden={props.links.length === 0}>
       <span ref={goo} class="goo" aria-hidden="true">
         <span ref={oval} class="pill" />
       </span>
