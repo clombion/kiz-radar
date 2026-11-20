@@ -13,6 +13,8 @@ other finding in the code.
 | `tests/site/elements.browser.test.ts` | `jest/no-done-callback` | the same |
 | `tests/site/main.browser.test.ts` | `jest/no-done-callback` | the same |
 | `tests/site/pages.browser.test.ts` | `jest/no-done-callback` | the same |
+| `site/dialog.tsx` | `jsx-a11y/click-events-have-key-events` | the `<dialog>`'s click, a tap on its backdrop (the click's target the dialog itself), which closes it: the keyboard closes it with Escape, the dialog's own `cancel` and `close`, so it needs no key of its own. |
+| `site/dialog.tsx` | `jsx-a11y/heading-has-content` | the quick view's title, drawn empty with the dialog and filled by each view that opens it (`plans`, `flights`, `passes`, `h()` modules until task 4.6) before it shows: the rule reads the JSX alone, where the heading has no content yet. |
 | `site/globals.d.ts` | `import/no-namespace` | a type-only namespace import (`import type * as TopoJSON`), the one way to type the global the page loads from vendor/; erased, so nothing to tree-shake. Biome's `noNamespaceImport` allows it. |
 
 ## The code means it

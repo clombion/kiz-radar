@@ -136,7 +136,7 @@ export async function atWidth(width: number): Promise<void> {
   await page.viewport(width, 900);
 }
 
-// The dialog the page has open (modal.ts), shut through its own button (close, a selector inside it, which it must
+// The dialog the page has open (dialog.tsx), shut through its own button (close, a selector inside it, which it must
 // have) once the test ends, and awaited until its history entry is gone with it, so that no other file's page goes back
 // to it: the test files' frames share one history.
 export function shownDialog(close: string): HTMLDialogElement {

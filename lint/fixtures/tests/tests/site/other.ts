@@ -2,8 +2,7 @@
 // other file, named as they name them.
 import { dismissable } from '../../site/dismiss.ts'; // refused
 import { h } from '../../site/dom.ts'; // refused
-import { modal } from '../../site/modal.ts'; // refused
 
-export const used = [dismissable, h, modal];
+export const used = [dismissable, h];
 export const site = (): Promise<unknown> => import('../../site/main.ts'); // refused
 export const review = (): Promise<unknown> => import('../../site/review.ts'); // refused

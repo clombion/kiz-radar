@@ -7,6 +7,7 @@
 
 import type { Kid } from './bits.ts';
 import { q, site, sql } from './db.ts';
+import { leaving, modal } from './dialog.tsx';
 import { button, h } from './dom.ts';
 import { type Festival, festivals } from './festivals.ts';
 import {
@@ -23,7 +24,7 @@ import {
 import { CHECKED, hasWith, isDance, WITH } from './finder.ts';
 import { fold, words } from './fold.ts';
 import { type Drawing, icon, NOTE } from './icons.ts';
-import { leaving, modal } from './modal.ts';
+import { atEnd } from './placed.tsx';
 import { person, withPlans } from './plans.ts';
 import { done } from './report.ts';
 import { roleLabel } from './roles.ts';
@@ -317,16 +318,32 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
     render();
     input.focus();
   };
-  const dlg = h(
-    'dialog',
-    { class: 'search', 'aria-label': 'Search' },
-    h('div', { class: 'search-top' }, glass, input, cancel),
-    h('label', { class: 'search-past' }, pastBox, ' Include what has nothing coming up'),
-    status,
-    list,
-  );
-  const searchModal = modal(dlg);
+  const searchModal = modal();
   const { open: show, shut, go } = searchModal;
+  // Escape clears the text first, then closes
+  const cancelled = (ev: Event) => {
+    if (input.value !== '') {
+      ev.preventDefault();
+      query = '';
+      input.value = query;
+      render();
+    }
+  };
+  atEnd('the search', () =>
+    searchModal.Dialog({
+      class: 'search',
+      label: 'Search',
+      onCancel: cancelled,
+      children: [
+        h('div', { class: 'search-top' }, glass, input, cancel),
+        h('label', { class: 'search-past' }, pastBox, ' Include what has nothing coming up'),
+        status,
+        list,
+      ],
+    }),
+  );
+  // whether the dialog shows, until the search is Solid's own
+  const shown = () => list.closest('dialog')?.open === true;
 
   const options = () => [...list.querySelectorAll<HTMLElement>('[role=option]')];
   function highlight(i: number): void {
@@ -575,16 +592,6 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
       options()[active]?.click();
     }
   });
-  // Escape clears the text first, then closes
-  dlg.addEventListener('cancel', (ev) => {
-    if (input.value !== '') {
-      ev.preventDefault();
-      query = '';
-      input.value = query;
-      render();
-    }
-  });
-
   function open() {
     if (!show(trigger)) return;
     input.select(); // the last query stays, ready to refine or type over
@@ -593,7 +600,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
       done(
         data.then(() => {
           items = buildIndex();
-          if (dlg.open) render();
+          if (shown()) render();
         }),
         'search',
       );

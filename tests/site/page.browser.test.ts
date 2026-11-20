@@ -1,12 +1,10 @@
 // The page's helpers called on elements a test builds, for what no page shows: each test goes with its helper (h() and
-// paged with task 4.10, modal with 4.5, dismissable with 4.6, which ports the community page's cards). What a visitor
-// sees of each is read on the page, in elements.browser.test.ts.
+// paged with task 4.10, dismissable with 4.6, which ports the community page's cards). What a visitor sees of each is
+// read on the page, in elements.browser.test.ts.
 
 import { afterEach, expect, test } from 'vitest';
 import { dismissable } from '../../site/dismiss.ts';
 import { button, h, paged, toggle } from '../../site/dom.ts';
-import { modal } from '../../site/modal.ts';
-import { entries } from './seen.ts';
 
 afterEach(() => {
   document.body.replaceChildren();
@@ -39,30 +37,6 @@ test('h() sets attributes, classes, data and listeners, and leaves out what hold
 
 test('h() puts text in as text, never as HTML', () => {
   expect(h('p', {}, '<b>bold</b>').innerHTML).toBe('&lt;b&gt;bold&lt;/b&gt;');
-});
-
-test('a dialog has a history entry of its own: the back button closes it, and closing it removes the entry', async () => {
-  const before = entries();
-  const opener = button({}, 'Open');
-  document.body.append(opener);
-  const dlg = h('dialog', {}, h('p', {}, 'Hello'));
-  const m = modal(dlg);
-  expect(m.open(opener)).toBe(true);
-  expect(m.open(opener)).toBe(false); // already open
-  expect(entries()).toBe(before + 1);
-  await new Promise((done) => {
-    addEventListener('popstate', done, { once: true });
-    history.back();
-  });
-  expect(dlg.open).toBe(false);
-
-  const state: unknown = history.state;
-  m.open(opener);
-  expect(history.state).toEqual({ modal: true });
-  dlg.close(); // as Escape does
-  await expect.poll(() => document.activeElement).toBe(opener);
-  expect(dlg.open).toBe(false);
-  await expect.poll((): unknown => history.state).toEqual(state); // back on the entry before the dialog's
 });
 
 test('a class list leaves out what is false, a style object sets each property, toggle sets one class', () => {
