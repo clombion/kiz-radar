@@ -25,7 +25,7 @@ import { sentenceView } from './sentence.ts';
 import { sourcesView } from './sources.ts';
 import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
-import { pill, Row, slide } from './tabs.tsx';
+import { type Link, Row, slide } from './tabs.tsx';
 import { loading, scrolling } from './ui.ts';
 import { updated, updatingPage } from './updating.ts';
 import { Week } from './week.tsx';
@@ -43,7 +43,6 @@ const part = (selector: string): HTMLElement => {
   return el;
 };
 const main = part('#main'),
-  subnav = part('#subnav'),
   header = part('header.top');
 // the header's height on this screen, which what sticks under it (the festival list's bar) reads as --header-h
 const measureHeader = () =>
@@ -118,6 +117,32 @@ inPlaceOf(part('nav.tabs'), "the header's tabs", () =>
     },
   }),
 );
+// The second row under the header: Explore's pages, or the places of the Friends tab's list (not a person's page), the
+// view's own current among them; hidden while it has none. Set by each view shown, as the header's tab is.
+interface Subnav {
+  readonly label: 'Explore' | 'Whose plans';
+  readonly links: readonly Link[];
+  readonly on: string | null;
+}
+const [subnavShown, showSubnav] = createRoot(() =>
+  createSignal<Subnav>({ label: 'Explore', links: [], on: null }, { equals: false }),
+);
+inPlaceOf(part('#subnav'), 'the second row of tabs', () =>
+  Row({
+    class: 'subnav',
+    id: 'subnav',
+    named: false,
+    get label() {
+      return subnavShown().label;
+    },
+    get links() {
+      return subnavShown().links;
+    },
+    get on() {
+      return subnavShown().on;
+    },
+  }),
+);
 // the footer's links, from routes.ts
 part('#footer-nav').append(...[...TABS.slice(0, -1), ...EXPLORE].map(([, label, href]) => h('a', { href }, label)));
 
@@ -138,19 +163,12 @@ function route({ name, sub, qs, moved }: Address, { scrollUp = false } = {}): vo
   });
 }
 
-// the second row under the header: Explore's pages, or the places of the Friends tab's list (not a person's page)
-function drawSubnav(view: View, name: string, sub: readonly string[], qs: string): void {
-  const row: readonly (readonly [string, string, string])[] =
-    view.nav === 'explore' ? EXPLORE : name === 'friends' && sub[0] === undefined ? friendsTabs() : [];
-  const on = view.nav === 'explore' ? name : placeOf(qs);
-  subnav.hidden = row.length === 0;
-  subnav.setAttribute('aria-label', view.nav === 'explore' ? 'Explore' : 'Whose plans');
-  subnav.replaceChildren(
-    ...row.map(([k, t, href]) =>
-      h('a', { href, class: k === on && 'active', 'aria-current': k === on ? 'page' : null }, t),
-    ),
-  );
-}
+// the second row's tabs for a view
+const subnavOf = (view: View, name: string, sub: readonly string[], qs: string): Subnav => ({
+  label: view.nav === 'explore' ? 'Explore' : 'Whose plans',
+  links: view.nav === 'explore' ? EXPLORE : name === 'friends' && sub[0] === undefined ? friendsTabs() : [],
+  on: view.nav === 'explore' ? name : placeOf(qs),
+});
 
 function show(name: string, sub: readonly string[], qs: string): void {
   const view = isRoute(name) ? VIEWS[name] : FINDER; // an address naming no view shows the festivals
@@ -159,8 +177,7 @@ function show(name: string, sub: readonly string[], qs: string): void {
   leave?.abort();
   leave = new AbortController();
   showTab(view.nav);
-  drawSubnav(view, name, sub, qs);
-  pill(subnav);
+  showSubnav(subnavOf(view, name, sub, qs));
   const root = h('div', {});
   main.replaceChildren(root);
   const { signal } = leave;
@@ -180,16 +197,8 @@ function show(name: string, sub: readonly string[], qs: string): void {
 }
 
 reportUncaught();
-onResize(() => {
-  pill(subnav, { still: true });
-});
-done(
-  document.fonts.ready.then(() => {
-    measureHeader(); // the web font may change its height
-    pill(subnav, { still: true });
-  }),
-  'laying out the tabs',
-);
+// the web font may change the header's height (each row of tabs places its oval again itself)
+done(document.fonts.ready.then(measureHeader), 'measuring the header');
 
 swipeBetweenSections();
 
