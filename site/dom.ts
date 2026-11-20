@@ -39,28 +39,8 @@ export const toggle = (el: Element, cls: ClassName, on: boolean): void => {
 export const button = (attrs: Attrs, ...kids: readonly Kid[]): HTMLButtonElement =>
   h('button', { type: 'button', ...attrs }, ...kids);
 // what kids hold as nodes, each text a text node
-export const nodes = (kids: readonly Kid[]): Node[] =>
+const nodes = (kids: readonly Kid[]): Node[] =>
   flat(kids).map((kid) => (typeof kid === 'string' ? document.createTextNode(kid) : kid));
-
-// A select of choices, one of them on: the choice comes back as the option at the picked place, so of its type and
-// never a string to parse.
-export function choices<V extends string | number>(
-  options: readonly (readonly [V, string])[],
-  on: V,
-  choose: (v: V) => void,
-  attrs: Attrs = {},
-): HTMLSelectElement {
-  const el = h(
-    'select',
-    attrs,
-    options.map(([v, words]) => h('option', { value: v, selected: v === on }, words)),
-  );
-  el.addEventListener('change', () => {
-    const picked = options[el.selectedIndex];
-    if (picked) choose(picked[0]);
-  });
-  return el;
-}
 
 // A list shown a page at a time: its first page now, and the more button (in the list, last, or anywhere else) adding
 // the next page to what is there, so the rows already shown are kept as they are. Showing other items starts over.

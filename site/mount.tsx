@@ -1,10 +1,11 @@
 // The seam between main.ts and a view (the shell's parts have their own, placed.tsx): a Solid view behind routes.ts's
-// Show, the signature main.ts gives every view. A view is rendered into the empty root main.ts hands it, from its
-// address, and disposed when the signal aborts (another view shows), which empties root; its clicks are delegated to
-// that root. A view that throws as it is first drawn says so in its place (report.ts cannotShow), within its error
-// boundary: an error that escaped every boundary would halt each signal of the page, the router's among them
-// (main.ts). What it draws again as the visitor changes it is drawn in a boundary of its own (Redrawn, redrawing,
-// createDerived), which says a later throw as the page's.
+// Show, the signature main.ts gives every view (mounted), and the review page's draw (dashboard.tsx), drawn anew from
+// its record on each change (drawnIn). A view is rendered into the empty root it is handed and disposed when its signal
+// aborts (another view shows, the review page drawn anew), which empties root; its clicks are delegated to that root. A
+// view that throws as it is first drawn says so in its place (report.ts cannotShow), within its error boundary: an
+// error that escaped every boundary would halt each signal of the page, the router's among them (main.ts). What it
+// draws again as the visitor changes it is drawn in a boundary of its own (Redrawn, redrawing, createDerived), which
+// says a later throw as the page's.
 import { render } from '@solidjs/web';
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { type Accessor, createEffect, createMemo, Errored, onCleanup, runWithOwner, untrack } from 'solid-js';
@@ -38,18 +39,21 @@ function drawnFirst<T>(draw: () => T): T {
   }
 }
 
-// The view, as main.ts shows a view, rendered under the page's owner (owner.ts). It is a function of its address,
-// which never changes over its life, called untracked inside its boundary, as Solid calls a component.
+// A draw rendered into root under the page's owner (owner.ts), called untracked inside its boundary, as Solid calls a
+// component, and disposed once signal aborts; name is what cannotShow says could not be shown.
+export function drawnIn(root: HTMLElement, name: string, signal: AbortSignal, draw: () => JSX.Element): void {
+  const shown = () => <Errored fallback={(e) => <>{cannotShow(name, e())}</>}>{untrack(draw)}</Errored>;
+  disposedWith(
+    signal,
+    drawnFirst(() => runWithOwner(page, () => render(shown, root))),
+  );
+}
+
+// The view, as main.ts shows a view: drawn from its address, which never changes over its life.
 export const mounted =
   (view: (at: ViewProps) => JSX.Element): Show =>
   (root, sub, qs, { signal, data, name }) => {
-    const shown = () => (
-      <Errored fallback={(e) => <>{cannotShow(name, e())}</>}>{untrack(() => view({ sub, qs, data }))}</Errored>
-    );
-    disposedWith(
-      signal,
-      drawnFirst(() => runWithOwner(page, () => render(shown, root))),
-    );
+    drawnIn(root, name, signal, () => view({ sub, qs, data }));
   };
 
 // What a view draws again as the visitor changes it (a list on a choice, a panel on a pan, a row on a toggle, a query's

@@ -1,5 +1,6 @@
 // The review page of a writer, their token kept on this device: it says whose token it is and when it expires, its
-// dialog's fields marked in its markup with the day and the box as kept; a merge
+// dialog's fields marked in its markup with the day and the box as kept, and an item's controls as the h() page marked
+// them; a merge
 // is chosen by its keys and written, its own note kept, and said written already when GitHub has it; a token refused
 // on a write makes the page read-only, saying why; a pair is compared side by side; and two artists found by name are
 // joined by a merge claim; an item another tab settled, written again, is kept as settled once. Each claim is read as
@@ -29,6 +30,29 @@ test("the token dialog's fields are marked in its markup as kept: the day it exp
     WRITER.storage.local[KEPT.expires],
     true,
   ]);
+});
+
+test("an item's controls are marked in its markup: the rail's search, the picker's first country, the write button off", async () => {
+  await app.open('#contested/1');
+  const find = () => document.querySelector('aside[aria-label="Every item"] input[aria-label="Find"]');
+  const search = (words: string) => {
+    const field = find();
+    if (!(field instanceof HTMLInputElement)) throw new Error('the rail has no search');
+    field.value = words;
+    field.dispatchEvent(new Event('input'));
+  };
+  // emptied however the test ends, as the page keeps the search while the tab stays
+  onTestFinished(() => {
+    search('');
+  });
+  search('Ana');
+  const picker = theItem().querySelector('select[aria-label="Country"]');
+  // the attributes, which a page drawn with the properties alone would leave out
+  expect([
+    find()?.getAttribute('value'),
+    [...(picker?.querySelectorAll('option') ?? [])].map((o) => o.hasAttribute('selected')),
+    buttonOf(theItem(), 'Write the claim').hasAttribute('disabled'),
+  ]).toEqual(['ana', [true, false, false], true]);
 });
 
 test('a merge is chosen and written by its keys, its own note kept, and said written already when GitHub has it', async () => {

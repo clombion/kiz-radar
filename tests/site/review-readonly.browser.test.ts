@@ -1,7 +1,7 @@
 // The review page with no token: read-only, it shows no choice to make and asks GitHub nothing; the arrow keys move
-// between items, the address following; the rail's search stays with its tab; the cities are listed with nothing to
-// choose; an empty list says so; and its drawings, the steps between items, are hidden from assistive technology, the
-// buttons named by their words.
+// between items, the address following; the rail's search keeps the focus as it is typed in, and stays with its tab;
+// the cities are listed with nothing to choose; an empty list says so; and its drawings, the steps between items, are
+// hidden from assistive technology, the buttons named by their words.
 import { expect, test } from 'vitest';
 import { startReview } from './app.ts';
 import { CLAIMS_TOKEN, REVIEW_ROUTE } from './reload.ts';
@@ -44,6 +44,23 @@ test('the arrow keys move between items, and the address follows', async () => {
 // the rows of the rail beside the item, as they read
 const railRows = (): (string | undefined)[] =>
   [...document.querySelectorAll('aside[aria-label="Every item"] li button')].map((b) => said(b));
+
+test("the rail's search, typed in, keeps the focus, the caret at the end of its words", async () => {
+  await app.open('#contested/1');
+  const find = () => document.querySelector('aside[aria-label="Every item"] input[aria-label="Find"]');
+  const field = find();
+  if (!(field instanceof HTMLInputElement)) throw new Error('the rail has no search');
+  field.focus();
+  field.value = 'an';
+  field.dispatchEvent(new Event('input'));
+  const now = find();
+  // the field the rail drew anew, as the h() page drew it
+  expect([
+    now === document.activeElement,
+    now instanceof HTMLInputElement ? [now.selectionStart, now.selectionEnd] : null,
+    railRows(),
+  ]).toEqual([true, [2, 2], [expect.stringContaining('Ana')]]);
+});
 
 test("the rail's search stays with its tab: another tab opened by its address lists all its items", async () => {
   await app.open('#contested/1');

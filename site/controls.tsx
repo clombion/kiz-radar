@@ -1,10 +1,20 @@
 // The controls the views share, drawn by Solid: a view's choices kept in its address (chosen), a select of them, a row
 // of them pressed (segments), a checkbox (check), the more button with its panel (dropdown), a search field, a list
 // shown a page at a time (paged), the line saying what an address asked that the view has no choice for (leftOut), and
-// what a control says for a while (awhile).
-// dom.ts's for the h() views, which a .tsx imports nothing of (house/legacy).
+// what a control says for a while (awhile): what dom.ts gave the h() views, which a .tsx imports nothing of
+// (house/legacy).
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { type Accessor, createEffect, createMemo, createSignal, flush, For, onCleanup, Show } from 'solid-js';
+import {
+  type Accessor,
+  createEffect,
+  createMemo,
+  createRenderEffect,
+  createSignal,
+  flush,
+  For,
+  onCleanup,
+  Show,
+} from 'solid-js';
 import type { ClassName } from './classes.ts';
 import { disposal } from './mount.tsx';
 import { showInAddressBar } from './routes.ts';
@@ -53,7 +63,9 @@ export const check = (words: string, on: boolean, change: (on: boolean) => void)
 // select shows one, and no option marked so, as the SQL page's examples were drawn): the choice comes back as the
 // option at the picked place, so of its type and never a string to parse; named by label where no visible label names
 // it. kept, when given, is the choice it shows from then on, changed elsewhere too (the Festivals page's selects of one
-// choice).
+// choice); off, when given, disables it while it is true (a review's country picker while its claim is written), in an
+// effect of its own: Solid's compiler puts an element's attributes in one effect, which sets a select's value again
+// each time it runs, so off beside the value would put the select back on its first choice each time off changed.
 export function choices<V extends string | number>(
   options: readonly (readonly [V, string])[],
   on: V | null,
@@ -62,10 +74,20 @@ export function choices<V extends string | number>(
     class: cls,
     label,
     kept,
-  }: { readonly class?: ClassName; readonly label?: string | undefined; readonly kept?: Accessor<V> } = {},
+    off,
+  }: {
+    readonly class?: ClassName;
+    readonly label?: string | undefined;
+    readonly kept?: Accessor<V>;
+    readonly off?: Accessor<boolean>;
+  } = {},
 ): JSX.Element {
-  return (
+  let select: HTMLSelectElement | undefined;
+  const drawn = (
     <select
+      ref={(el) => {
+        select = el;
+      }}
       class={cls}
       aria-label={label}
       value={kept === undefined ? (on ?? options[0]?.[0]) : kept()}
@@ -83,6 +105,11 @@ export function choices<V extends string | number>(
       </For>
     </select>
   );
+  if (off !== undefined)
+    createRenderEffect(off, (o) => {
+      select?.toggleAttribute('disabled', o);
+    });
+  return drawn;
 }
 
 // A row of choices named label, one of them on (a segmented control): each is a button pressed while it is the choice.
@@ -203,12 +230,13 @@ export const searchField = ({
 );
 
 // A list shown a page at a time: its rows (a row an item), the first page of them as it is drawn, and the more button
-// (put in the list, last, or anywhere else) adding the next page to what is there, so the rows already shown are kept
-// as they are. Other items are a list drawn anew.
+// (put in the list, last, or anywhere else; of the class given, else more-btn show-more) adding the next page to what
+// is there, so the rows already shown are kept as they are. Other items are a list drawn anew.
 export function paged<T>(
   items: readonly T[],
   page: number,
   row: (item: T) => JSX.Element,
+  { class: cls }: { readonly class?: ClassName } = {},
 ): { readonly rows: JSX.Element; readonly more: JSX.Element } {
   const [shown, setShown] = createSignal(Math.min(page, items.length));
   return {
@@ -216,7 +244,7 @@ export function paged<T>(
     more: (
       <button
         type="button"
-        class={['more-btn', 'show-more']}
+        class={cls ?? ['more-btn', 'show-more']}
         hidden={shown() >= items.length}
         onClick={() => {
           flush(() => {
