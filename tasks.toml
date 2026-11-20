@@ -96,10 +96,9 @@ description = "tsc, strict, on the site and its tests"
 depends = ["install:site"]
 run = "pnpm run types"
 
-["lint:biome"]
-description = "Biome's rules on the JSON configs (biome.jsonc's files.includes)"
-depends = ["install:site"]
-run = "pnpm run lint:biome"
+["lint:configs"]
+description = "The JSON configs at the root: no key written twice in an object, nor empty, nor a package in two groups of dependencies (tests/test_configs.py, which test:py runs too)"
+run = "uv run -q --group dev pytest -q -n 0 tests/test_configs.py"
 
 ["lint:stylelint"]
 description = "stylelint's rules on the stylesheet (public/css/), a warning failing as an error (.stylelintrc.yaml: Biome's CSS rules mapped and the stricter rules, docs/concepts/lint-rules.md)"
@@ -198,7 +197,7 @@ depends = [
   "format:site",
   "types:py",
   "lint:oxlint",
-  "lint:biome",
+  "lint:configs",
   "lint:stylelint",
   "types:site",
   "knip",

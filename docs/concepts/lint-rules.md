@@ -19,9 +19,10 @@ exceptions below, as an error: those of Biome's `error` and `warn` rules, the in
 rules mapped from Biome's `error` and `warn` (the JSX ones Biome reports as `info` stay off). Off: every accepted loss
 and the rules Biome turned off. **On since task 2.6c:** the 33 type-aware rules new in oxlint (below). **On since task
 4.2:** `eslint-plugin-solid`'s `v2-strict` rules and nine house rules for JSX ([Solid's rules](#solids-rules), the house
-rules' table). Biome ran all of its rules beside it until task 2.7; since then it reads only the stylesheet and the JSON
-configs. The findings the rules' oxlint versions made on the code were fixed, or suppressed on their line with the
-reason in [oxlint's suppressed findings](../lint-false-positives.md).
+rules' table). Biome ran all of its rules beside it until task 2.7; from then it read only the stylesheet and the JSON
+configs, until issue #23 removed it ([The stylesheet](#the-stylesheet-biome-to-stylelint),
+[The JSON configs](#the-json-configs-after-biome)). The findings the rules' oxlint versions made on the code were fixed,
+or suppressed on their line with the reason in [oxlint's suppressed findings](../lint-false-positives.md).
 
 ## Counts
 
@@ -35,7 +36,7 @@ reason in [oxlint's suppressed findings](../lint-false-positives.md).
 | unmapped, decided by the owner (19 November) | 22: 5 become house rules (task 2.6b), 17 accepted losses |
 | for JSX (Phase 4's `.tsx`) | 48: 46 mapped (38 on, 8 info-level off); `noSuspiciousSemicolonInJsx` the house rule `semicolons`; `noSvgWithoutTitle` held by construction and `svgs` (task 4.2) |
 | for frameworks the site does not use | 92: 88 accepted losses; Solid's four on since 4.2 (three from `eslint-plugin-solid`, `noDuplicatedSpreadProps` the house rule `spreads`) |
-| for CSS, JSON, GraphQL, HTML or YAML | 53: the CSS ones to stylelint ([The stylesheet](#the-stylesheet-biome-to-stylelint)), the JSON ones staying with Biome |
+| for CSS, JSON, GraphQL, HTML or YAML | 53: the CSS ones to stylelint ([The stylesheet](#the-stylesheet-biome-to-stylelint)), the JSON ones [held by a test or dropped](#the-json-configs-after-biome) |
 | Off in Biome (`biome.jsonc`), staying off | 22: 19 for TypeScript, 3 for CSS (now stylelint's, [below](#the-stylesheet-biome-to-stylelint)); and 3 off in one folder |
 | Info-level rules among today's (report, never fail) | 96, 9 of them with findings (Q2) |
 | Type-aware oxlint rules with no Biome equivalent | 33, all on (task 2.6c) |
@@ -65,7 +66,7 @@ Biome's options and defaults where oxlint's differ. Without them the bare mappin
 | `eslint/eqeqeq` | `["always", {"null": "ignore"}]` | `noDoubleEquals` allows `== null`; `noEqualsToNull` is off: "== null is null or undefined, both absent" |
 | `eslint/max-params` | `{"max": 4}`, error | `useMaxParams`'s default; its `warn` fails under `--error-on-warnings` |
 | `typescript/explicit-member-accessibility` | `{"accessibility": "no-public"}` | `useConsistentMemberAccessibility`'s default |
-| `vitest/consistent-test-it` | `{"fn": "test", "withinDescribe": "it"}`, in `tests/**` | `biome.jsonc` sets `function: "test"`; Biome's `withinDescribe` default is `it`, which `tests/site/roster.test.ts` uses inside `describe` |
+| `vitest/consistent-test-it` | `{"fn": "test", "withinDescribe": "it"}`, in `tests/**` | `biome.jsonc` set `function: "test"`; Biome's `withinDescribe` default was `it`, which `tests/site/roster.test.ts` uses inside `describe` |
 | `eslint/max-nested-callbacks` | `{"max": 5}` | `noExcessiveNestedCallbacks`'s default (ESLint's is 10) |
 | `eslint/no-labels` | `{"allowLoop": true}` | `noConfusingLabels` allows a loop's label |
 | `eslint/no-else-return` | `{"allowElseIf": false}` | `noUselessElse` reports an `else if` after a return |
@@ -82,7 +83,7 @@ JSX rules `jsx-a11y`.
 
 ## Per-folder exceptions
 
-From `biome.jsonc`'s `overrides`, each with its reason; oxlint takes them as `overrides` too.
+From `biome.jsonc`'s `overrides`, each with its reason; oxlint took them as `overrides` too.
 
 | Files | Rule | Setting | Reason |
 | -- | -- | -- | -- |
@@ -793,17 +794,19 @@ namespaces ("removed in Solid 2.0"), so no handler escapes them that way and no 
 
 ## Other languages
 
-53 enabled rules lint CSS, JSON, GraphQL, HTML or YAML. Since task 2.7 Biome reads the JSON configs alone, and the
-stylesheet until stylelint took it ([below](#the-stylesheet-biome-to-stylelint)). One of them was among the twenty
-nursery rules `biome.jsonc` turned on until then: `noDuplicateMapKeys` checks YAML maps, not JavaScript, and Biome is
-given no YAML, so it has never reported.
+53 enabled rules lint CSS, JSON, GraphQL, HTML or YAML. From task 2.7 Biome read the stylesheet and the JSON configs
+alone, until issue #23 removed it: stylelint took the stylesheet ([below](#the-stylesheet-biome-to-stylelint)), and the
+JSON rules worth keeping are a test ([below](#the-json-configs-after-biome)). One of the 53 was among the twenty nursery
+rules `biome.jsonc` turned on until task 2.7: `noDuplicateMapKeys` checks YAML maps, not JavaScript, and Biome was given
+no YAML, so it never reported.
 
 ## The stylesheet: Biome to stylelint
 
 stylelint lints the stylesheet (`public/css/`, `mise run lint:stylelint`, `.stylelintrc.yaml`), a warning failing the
-check, since issue #23; Biome read it from task 2.7 until then. Measured on 20 November 2026, Biome 2.6.3 and stylelint
-18.0.0. Each rule is turned on by name, with no shared config extended (`stylelint-config-standard` or `-recommended`),
-so a rule not named in `.stylelintrc.yaml` is off.
+check, since issue #23; Biome read it from task 2.7 until then, and was removed with the JSON configs' rules
+([below](#the-json-configs-after-biome)). Measured on 20 November 2026, Biome 2.6.3 and stylelint 18.0.0. Each rule is
+turned on by name, with no shared config extended (`stylelint-config-standard` or `-recommended`), so a rule not named
+in `.stylelintrc.yaml` is off.
 
 ### Biome's CSS rules
 
@@ -916,3 +919,22 @@ The plugins considered, each a new dependency; none is added:
 | `stylelint-declaration-strict-value` | 5 (`ease` in transitions), 0 allowing keywords | rejected: it lets any function through (`rgb()`, `oklch()`, `cubic-bezier()`), which `styles.test.ts` catches; core `declaration-property-value-disallowed-list` would do it with no dependency (above) |
 | `stylelint-use-logical`, `stylelint-plugin-logical-css`, `stylelint-use-logical-spec` | 307 (`use-logical`) | not needed: logical properties are off, and the core layout-mapping rules would hold them |
 | `stylelint-high-performance-animation` | 14 (9 of them `display` in `allow-discrete` transitions, the `@starting-style` pattern) | not taken: its main finding misreads `display` transitions |
+
+## The JSON configs after Biome
+
+Biome also read the seven JSON configs at the root (`.jscpd.json`, `.oxfmtrc.jsonc`, `.oxlintrc.json`, `biome.jsonc`,
+`knip.jsonc`, `package.json`, `tsconfig.json`) until issue #23 removed it. The rules that acted on them (checked by
+planting each violation in a copy), and what holds each since; `tests/test_configs.py` runs in `check:fast`, before each
+commit as Biome did, through `lint:configs`, and in `test:py`:
+
+| Biome rule | Level | Since Biome |
+| -- | -- | -- |
+| (its JSON parser: a config that does not parse) | error | held: oxfmt (`format:site`) refuses it, as each tool reading the file does (pnpm, tsc, oxlint, oxfmt, knip, jscpd) |
+| `suspicious/noDuplicateObjectKeys` | error | held by `tests/test_configs.py`: no key written twice in one object, comments skipped as the tools skip them (oxfmt lays a duplicate out without a word, and every reader takes the last value) |
+| `suspicious/noEmptyObjectKeys` | warn | held by the same test |
+| `suspicious/noDuplicateDependencies` | warn | held by the same test: a package written twice in one group is a key written twice, and one in both `dependencies` and `devDependencies` is refused |
+| `style/noTopLevelLiterals` | info, never failing | dropped: each config's reader wants an object (the test reads each as one) |
+| `suspicious/noEmptySource` | warn | held by the readers: an empty `.json` is a parse error to pnpm, tsc and oxlint |
+| `suspicious/noBiomeFirstException`, `suspicious/useBiomeIgnoreFolder` | error, warn | moot: they read `biome.jsonc`, which went |
+| `suspicious/noQuickfixBiome` | info | moot: it reads editor settings, none of them committed |
+| `suspicious/useRequiredScripts` | warn | dropped: a no-op without `requiredScripts` |
