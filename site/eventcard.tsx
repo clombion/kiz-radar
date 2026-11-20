@@ -9,7 +9,7 @@ import { today } from './days.ts';
 import { cardDetails, passesButton, traitItems } from './details.tsx';
 import { type Fare, resoldSaid } from './fares.ts';
 import { type Festival, styleLine } from './festivals.ts';
-import { flightsButton } from './flights.ts';
+import { flightsButton } from './flights.tsx';
 import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
 import { approximately, money, within } from './money.ts';
