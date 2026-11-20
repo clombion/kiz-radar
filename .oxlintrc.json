@@ -598,8 +598,8 @@
       "rules": { "house/routes": "off" }
     },
     {
-      // house/clicks: dom.ts's own() keeps a control's click from its card, swipe.ts a swipe from the map
-      "files": ["site/dom.ts", "site/swipe.ts"],
+      // house/clicks: bits.ts's own() keeps a control's click from its card, swipe.ts a swipe from the map
+      "files": ["site/bits.ts", "site/swipe.ts"],
       "rules": { "house/clicks": "off" }
     },
     {

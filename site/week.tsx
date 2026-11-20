@@ -1,8 +1,8 @@
 // This week: the festivals on any day of the current calendar week, Monday to Sunday, the soonest first, those already
-// under way among them; the first page of Explore. Its cards are eventcard.ts's, built by h() until they are Solid's.
+// under way among them; the first page of Explore. Its cards are eventcard.tsx's.
 import { For } from 'solid-js';
 import { meets, today, weekOf } from './days.ts';
-import { eventCard } from './eventcard.ts';
+import { eventCard } from './eventcard.tsx';
 import { festivals } from './festivals.ts';
 import { dayMonth } from './ui.ts';
 import { plural } from './wording.ts';

@@ -42,15 +42,6 @@ export const button = (attrs: Attrs, ...kids: readonly Kid[]): HTMLButtonElement
 export const nodes = (kids: readonly Kid[]): Node[] =>
   flat(kids).map((kid) => (typeof kid === 'string' ? document.createTextNode(kid) : kid));
 
-// A click handler for a control inside a card, which opens on a click: the click is the control's alone. act gets the
-// control, for a dialog to give the focus back to.
-export const own =
-  (act?: (control: Element | null) => void) =>
-  (ev: Event): void => {
-    ev.stopPropagation();
-    act?.(ev.currentTarget instanceof Element ? ev.currentTarget : null);
-  };
-
 // The button of a panel of more choices (aria-controls names the panel); dropdown() makes it open and close it.
 export const moreButton = (panelId: string, ...words: readonly Kid[]): HTMLButtonElement =>
   button({ class: 'more-btn', 'aria-expanded': 'false', 'aria-controls': panelId }, ...words);

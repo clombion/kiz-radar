@@ -5,10 +5,11 @@ import type { GeometryCollection, Topology } from 'topojson-specification';
 import { debounced } from './bits.ts';
 import { needs, q, sql } from './db.ts';
 import { button, choices, dropdown, h, moreButton, paged, toggle } from './dom.ts';
-import { eventCard } from './eventcard.ts';
+import { heldCard } from './eventcard.tsx';
 import { type Festival, leftOut, withDetails } from './festivals.ts';
 import { Drawing } from './icons.ts';
 import { currency, money, step, within } from './money.ts';
+import { redraws } from './mount.tsx';
 import { get } from './net.ts';
 import { done } from './report.ts';
 import {
@@ -396,11 +397,15 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   const back = (words: string, fn: () => void) => button({ class: 'back-link', onclick: fn }, '← ', words);
   const count = (n: number) => plural(n, 'festival');
 
+  // what the panel holds of Solid's (its cards) is taken away when it is drawn again, or the view is left
+  const redrawn = redraws(signal);
+  let drawnFor = signal;
   function cards(list: readonly Placed[]): HTMLElement {
     const more = button({ class: ['more-btn', 'show-more'] });
     const wrap = h('div', { class: 'panel-cards' }, more);
+    const draw = drawnFor; // the draw of the panel these cards are in, which "More" adds to
     paged({ list: wrap, more }, list, PAGE, (e) => {
-      const c = eventCard(e, { onMap: true });
+      const c = heldCard(draw, e, { onMap: true });
       c.addEventListener('mouseenter', () => highlight(e.city_key));
       c.addEventListener('mouseleave', () => highlight());
       return c;
@@ -422,7 +427,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
             renderPanel();
           })
         : toAll(),
-      eventCard(e, { open: true, onMap: true }),
+      heldCard(drawnFor, e, { open: true, onMap: true }),
     );
   }
   // back to every festival in view, from a city or a festival
@@ -478,6 +483,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     );
   }
   function renderPanel(): void {
+    drawnFor = redrawn();
     const e = state.event === null ? undefined : byId.get(state.event);
     if (e !== undefined) {
       eventPanel(e);

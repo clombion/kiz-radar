@@ -2,9 +2,9 @@
 // festival, the Friday-to-Monday return found from home for its weekend and its stops each way known, when it was last
 // checked, and a link to Google Flights; the one its card shows marked. A quick view (dialog.tsx peek): a dialog, the
 // focus kept in it and given back to the button that opened it, closed by ×, Escape, a tap outside or the back button.
-import type { Kid } from './bits.ts';
+import { type Kid, own } from './bits.ts';
 import { type Peek, peek } from './dialog.tsx';
-import { button, h, own } from './dom.ts';
+import { button, h } from './dom.ts';
 import { best, checkedAgo, FAR_KM, type Option, resoldSaid, stopsSaid, type Transfer, WORTH_EUR } from './fares.ts';
 import type { Festival } from './festivals.ts';
 import { money } from './money.ts';

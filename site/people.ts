@@ -3,7 +3,7 @@
 import type { Kid } from './bits.ts';
 import { q, sql } from './db.ts';
 import { button, h } from './dom.ts';
-import { eventCard } from './eventcard.ts';
+import { heldCard } from './eventcard.tsx';
 import { withDetails } from './festivals.ts';
 import { person, togetherHref } from './plans.ts';
 import { artistHref, personHref } from './routes.ts';
@@ -11,7 +11,7 @@ import { EVENT } from './rows.ts';
 import { joined } from './wording.ts';
 
 // Public: anyone sees it; keeping plans to chosen friends needs the accounts that come later.
-export function personView(root: HTMLElement, key: string): void {
+export function personView(root: HTMLElement, key: string, signal: AbortSignal): void {
   const p = person(key);
   if (!p) {
     root.replaceChildren(h('p', {}, 'No one by that name has shared plans.'));
@@ -46,7 +46,7 @@ export function personView(root: HTMLElement, key: string): void {
       ),
     ],
     comingUp(
-      events.map((e) => eventCard(e)),
+      events.map((e) => heldCard(signal, e)),
       'No festival plans shared yet.',
     ),
   );

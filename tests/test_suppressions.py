@@ -75,6 +75,8 @@ SITE_ALLOWED = Counter(
         ('site/artists.ts', 'house/states'): 1,
         ('site/dialog.tsx', 'jsx-a11y/click-events-have-key-events'): 1,
         ('site/dialog.tsx', 'jsx-a11y/heading-has-content'): 1,
+        ('site/eventcard.tsx', 'jsx-a11y/click-events-have-key-events'): 1,
+        ('site/eventcard.tsx', 'jsx-a11y/no-static-element-interactions'): 1,
         ('site/globals.d.ts', 'import/no-namespace'): 1,
         ('site/json.ts', 'typescript/no-unsafe-type-assertion'): 1,
         ('site/routes.ts', 'typescript/no-unsafe-type-assertion'): 1,

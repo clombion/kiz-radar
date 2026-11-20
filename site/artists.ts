@@ -4,7 +4,7 @@ import { debounced, type Kid } from './bits.ts';
 import { today } from './days.ts';
 import { one, q, Sql, sql } from './db.ts';
 import { button, choices, dropdown, h, moreButton, paged, segments } from './dom.ts';
-import { eventCard } from './eventcard.ts';
+import { heldCard } from './eventcard.tsx';
 import { type Festival, leftOut, withDetails } from './festivals.ts';
 import { fold } from './fold.ts';
 import { type Named, nameLines } from './names.ts';
@@ -146,7 +146,7 @@ function chosenArtists(st: Readonly<Choices>, next: ReadonlyMap<number, { start_
 
 export const artistsView: Show = (root, sub, qs, { signal }) => {
   if (sub[0] !== undefined && sub[0] !== '') {
-    artistPage(root, Number(sub[0]));
+    artistPage(root, Number(sub[0]), signal);
     return;
   }
   const countries = artistCountries();
@@ -357,7 +357,7 @@ function head(
   );
 }
 
-const comingUp = (upcoming: readonly Festival[]) =>
+const comingUp = (upcoming: readonly Festival[], signal: AbortSignal) =>
   h(
     'section',
     {},
@@ -366,13 +366,17 @@ const comingUp = (upcoming: readonly Festival[]) =>
       ? h(
           'div',
           { class: 'festival-cards' },
-          upcoming.map((e) => eventCard(e)),
+          upcoming.map((e) => heldCard(signal, e)),
         )
       : h('p', { class: 'muted' }, 'No upcoming festivals listed yet.'),
   );
 
 // the festivals the people they are said they're going to without teaching there
-function alsoGoing(people: ReturnType<typeof peopleOf>, shown: readonly Festival[]): HTMLElement | null {
+function alsoGoing(
+  people: ReturnType<typeof peopleOf>,
+  shown: readonly Festival[],
+  signal: AbortSignal,
+): HTMLElement | null {
   const ids = alsoGoingTo(
     people.map((p) => p.id),
     shown.map((e) => e.id),
@@ -397,7 +401,7 @@ function alsoGoing(people: ReturnType<typeof peopleOf>, shown: readonly Festival
     h(
       'div',
       { class: 'festival-cards' },
-      going.map((e) => eventCard(e)),
+      going.map((e) => heldCard(signal, e)),
     ),
   );
 }
@@ -522,7 +526,7 @@ function notes(a: Pick<Artist, 'display_name'>, id: number, stats: Artist | null
 }
 
 const BARE = { artist_id: num, display_name: str, kind: state('artist_kind') } as const;
-function artistPage(root: HTMLElement, id: number): void {
+function artistPage(root: HTMLElement, id: number, signal: AbortSignal): void {
   const moved = one({ new_id: num }, sql`SELECT new_id FROM artist_redirects WHERE old_id = ?`, [id]);
   if (moved) {
     location.replace(artistHref(moved.new_id));
@@ -567,8 +571,11 @@ function artistPage(root: HTMLElement, id: number): void {
       { class: 'artist-profile' },
       h('a', { href: artistsHref(), class: 'back-link' }, '← All artists'),
       head(a, stats, members, couples),
-      comingUp(events.filter((e) => e.upcoming)),
-      alsoGoing(peopleOf(id), events),
+      comingUp(
+        events.filter((e) => e.upcoming),
+        signal,
+      ),
+      alsoGoing(peopleOf(id), events, signal),
       bookedIn(id, couples.length > 0 && a.kind !== KEY.artist_kind.COUPLE),
       pastList(id, events.filter((e) => e.phase === KEY.phase.ENDED).reverse()),
       notes(a, id, stats),
