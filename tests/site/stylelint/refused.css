@@ -1,0 +1,34 @@
+@import url(reset.css); /* refused: import-notation */
+.a { color: red; } /* refused: color-named */
+.b { color: #ffffff; } /* refused: color-hex-length */
+.c { font-weight: bold; } /* refused: font-weight-notation */
+.d { color: rgb(0 0 0 / 50%); } /* refused: alpha-value-notation */
+.e { color: rgb(0, 0, 0); } /* refused: color-function-notation */
+.f { color: rgba(0 0 0 / 0.5); } /* refused: color-function-alias-notation */
+.g { color: hsl(120 50% 50%); } /* refused: hue-degree-notation */
+.h { color: oklch(0.5 0.1 120deg); } /* refused: lightness-notation */
+.i:not(.j):not(.k) { width: 1px; } /* refused: selector-not-notation */
+.l:before { content: ""; } /* refused: selector-pseudo-element-colon-notation */
+[type=text] { width: 1px; } /* refused: selector-attribute-quotes */
+.m { display: block flow; } /* refused: display-notation */
+@keyframes fade { from { opacity: 0; } 50% { opacity: 1; } } /* refused: keyframe-selector-notation */
+.n { width: 1.23456px; } /* refused: number-max-precision */
+DIV { width: 1px; } /* refused: selector-type-case */
+.o { width: CALC(1px + 1px); } /* refused: function-name-case */
+/*bare*/ /* refused: comment-whitespace-inside */
+.p { margin: 0px; } /* refused: length-zero-no-unit */
+.q { background: url("a.png"); } /* refused: function-url-quotes */
+.r { background: url(https://example.com/a.png); } /* refused: function-url-scheme-allowed-list */
+.s { transition: opacity 50ms; } /* refused: time-min-milliseconds */
+.Bad_name { width: 1px; } /* refused: selector-class-pattern */
+.t { --Bad: 1px; } /* refused: custom-property-pattern */
+@keyframes Spin { to { opacity: 0; } } /* refused: keyframes-name-pattern */
+.u { .v { width: 1px; } } /* refused: max-nesting-depth */
+.w .x .y .z b { width: 1px; } /* refused: selector-max-compound-selectors */
+.aa.ab.ac.ad.ae { width: 1px; } /* refused: selector-max-class */
+@media (width >= 40rem) { .af { width: 1px; } } /* refused: media-feature-range-notation */
+.ag { -webkit-appearance: none; } /* refused: property-no-vendor-prefix */
+.ah { margin: 1rem 0 1rem; } /* refused: shorthand-property-no-redundant-values */
+.ai { flex-direction: row; flex-wrap: wrap; } /* refused: declaration-block-no-redundant-longhand-properties */
+.aj { display: none !important; } /* refused: declaration-no-important */
+.ak { width: 10pixels; } /* refused: unit-no-unknown, declaration-property-value-no-unknown */

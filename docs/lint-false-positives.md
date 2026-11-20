@@ -13,6 +13,7 @@ the code.
 | File | Rule | Why |
 | -- | -- | -- |
 | `public/css/site.css` | `declaration-no-important` | `[hidden] { display: none !important }`: the `hidden` attribute hides an element whatever `display` its own rules give it (a flex row, a grid), which only `!important` wins over without knowing each rule. Biome's `noImportantStyles` was suppressed on the same line. |
+| `public/css/site.css` | `property-no-vendor-prefix` | `html { -webkit-text-size-adjust: 100% }`: iOS Safari reads the prefixed form alone, and without it enlarges the text of a page turned to landscape. |
 
 ## oxlint
 
