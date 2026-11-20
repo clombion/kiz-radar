@@ -3,6 +3,7 @@
 // festival's city by its row of cities, so the spellings are data a visitor's page meets rather than words it shows;
 // the two Springfields alone tell a city's key from its name.
 import { expect, test } from 'vitest';
+import { page } from 'vitest/browser';
 import { cityOnMapHref, festivalsHref, mapHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { CLOUDKIZ, GLASGOW, HOT_ICE, KUOF, KWANZA, titleOf } from './community.fixture.ts';
@@ -59,6 +60,12 @@ async function panelOf(key: string): Promise<{
     cards: [...document.querySelectorAll('main .panel-cards .festival-card h3')].map((h) => said(h)),
   };
 }
+
+test('the map is one region a screen reader names, Leaflet drawn in it', async () => {
+  await app.open(mapHref());
+  const regions = page.getByRole('region', { name: 'Map of festivals by city' }).elements();
+  expect(regions.map((r) => r.matches('.map.leaflet-container'))).toEqual([true]);
+});
 
 test('festivals of one city are one bubble, whatever their listings call it, and two cities two', async () => {
   expect(await panelOf('kizburg-de')).toEqual({
