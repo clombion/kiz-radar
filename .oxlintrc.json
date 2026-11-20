@@ -543,8 +543,8 @@
       "rules": { "eslint/no-unassigned-vars": "off", "solid/no-unassigned-vars": "error" }
     },
     {
-      // the migration rules (the brief's Phase 4), on Solid's files alone, so h() views and Solid views coexist: no .then
-      // in a component, no loading or error state of its own, no effect mirroring a value, no rendering by hand
+      // the migration rules of the move to Solid, on Solid's files, the views: no .then in a component, no loading or
+      // error state of its own, no effect mirroring a value, no rendering by hand
       "files": ["**/*.tsx"],
       "rules": { "house/thens": "error", "house/flags": "error", "house/mirrors": "error", "house/legacy": "error" }
     },
@@ -563,12 +563,12 @@
       }
     },
     {
-      // Q2: Biome's info-level findings in the site's code stay until Phase 4 rewrites this file
+      // Q2: Biome's info-level findings in the site's code, left where the move to Solid rewrote nothing (one here)
       "files": ["site/roster.ts"],
       "rules": { "eslint/prefer-destructuring": "off" }
     },
     {
-      // Q2, the same: SiteUpdating and Sql, until Phase 4
+      // Q2, the same: SiteUpdating and Sql
       "files": ["site/db.ts"],
       "rules": { "eslint/max-classes-per-file": "off" }
     },
@@ -603,8 +603,7 @@
       "rules": { "house/clicks": "off" }
     },
     {
-      // house/buttons: a button in the site's modules is of type button: dom.ts's button(), which gives it the type, in an
-      // h() module, <button type="button"> in JSX
+      // house/buttons: a button in the site's modules is of type button: <button type="button"> in JSX
       "files": ["site/*.ts", "site/*.tsx"],
       "rules": { "house/buttons": "error" }
     },
