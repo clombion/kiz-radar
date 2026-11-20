@@ -1,21 +1,15 @@
 // What goes wrong is said once: in the console, with where it happened, and in a line at the top of the page, which
-// can be closed. A view that throws while it builds says so in its place (guarded), so one bad row never leaves a blank
-// page; a promise left to run on its own ends in report (done); the window's listeners catch whatever else escapes.
-import { button, h } from './dom.ts';
+// can be closed (problem.tsx). A view that throws while it builds says so in its place (guarded), so one bad row never
+// leaves a blank page; a promise left to run on its own ends in report (done); the window's listeners catch whatever
+// else escapes.
+import { h } from './dom.ts';
+import { showProblem } from './problem.tsx';
 
 const message = (e: unknown): string => (e instanceof Error ? e.message : String(e));
 
-let line: HTMLElement | undefined;
 function report(e: unknown, where: string): void {
   console.error(`Kiz Radar: ${where}:`, e);
-  line?.remove();
-  line = h(
-    'p',
-    { class: ['status', 'error', 'problem'], role: 'alert' },
-    `Something went wrong (${where}: ${message(e)}). Reloading the page may help. `,
-    button({ class: 'link', onclick: () => line?.remove() }, 'Close'),
-  );
-  document.body.prepend(line);
+  showProblem(`Something went wrong (${where}: ${message(e)}). Reloading the page may help. `);
 }
 
 // a promise the code doesn't wait for, whose failure is reported

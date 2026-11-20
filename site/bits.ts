@@ -35,3 +35,10 @@ export function onResize(f: () => void, signal?: AbortSignal): void {
     signal === undefined ? { passive: true } : { passive: true, signal },
   );
 }
+
+// What JSX made (made, an element as Solid makes it) as an element of the class of, for code that holds it as one (the
+// problem line, the oval's shapes, a link out of a dialog); else a TypeError naming what ("the problem line").
+export function asElement<E extends Element>(made: unknown, of: new () => E, what: string): E {
+  if (made instanceof of) return made;
+  throw new TypeError(`${what} was drawn as no element`);
+}
