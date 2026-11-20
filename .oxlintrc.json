@@ -563,12 +563,13 @@
       }
     },
     {
-      // Q2: Biome's info-level findings in the site's code, left where the move to Solid rewrote nothing (one here)
+      // Biome's info-level findings in the site's code (Q2, docs/concepts/lint-rules.md), left where the move to Solid
+      // rewrote nothing (one here)
       "files": ["site/roster.ts"],
       "rules": { "eslint/prefer-destructuring": "off" }
     },
     {
-      // Q2, the same: SiteUpdating and Sql
+      // the same (Q2): SiteUpdating and Sql
       "files": ["site/db.ts"],
       "rules": { "eslint/max-classes-per-file": "off" }
     },

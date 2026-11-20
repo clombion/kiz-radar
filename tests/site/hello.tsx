@@ -1,6 +1,6 @@
 // A Solid component, the least that proves the toolchain: tsc types its JSX by @solidjs/web, the plugin compiles it in
 // the tests (solid.browser.test.ts, Solid's development build) and in the site's build (vite.config.ts, the production
-// one), and each renders it. Nothing in site/ imports it; the site's first Solid view is task 4.4's.
+// one), and each renders it. Nothing in site/ imports it.
 import { render } from '@solidjs/web';
 import { createSignal } from 'solid-js';
 
