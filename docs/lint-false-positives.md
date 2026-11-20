@@ -1,11 +1,22 @@
-# oxlint's suppressed findings
+# Suppressed findings
 
-Each line where an oxlint rule is turned off by a comment (`oxlint-disable-next-line <rule>, … -- <why>`), and why the
-code is right as it is. `tests/test_suppressions.py` lists the same lines by file and rule, so a new one changes both.
-The rules and their settings are in [lint rules](concepts/lint-rules.md); the 2.4 task of the move to oxlint fixed every
-other finding in the code.
+Each line where an oxlint or stylelint rule is turned off by a comment (`oxlint-disable-next-line <rule>, … -- <why>` in
+the TypeScript, `stylelint-disable-next-line <rule>, … -- <why>` in the stylesheet), and why the code is right as it is.
+`tests/test_suppressions.py` lists the same lines by file and rule, so a new one changes both. The rules and their
+settings are in [lint rules](concepts/lint-rules.md); the 2.4 task of the move to oxlint fixed every other finding in
+the code.
 
-## The rule misreads the code
+## stylelint
+
+### The stylesheet means it
+
+| File | Rule | Why |
+| -- | -- | -- |
+| `public/css/site.css` | `declaration-no-important` | `[hidden] { display: none !important }`: the `hidden` attribute hides an element whatever `display` its own rules give it (a flex row, a grid), which only `!important` wins over without knowing each rule. Biome's `noImportantStyles` was suppressed on the same line. |
+
+## oxlint
+
+### The rule misreads the code
 
 | File | Rule | Why |
 | -- | -- | -- |
@@ -21,7 +32,7 @@ other finding in the code.
 | `site/search.tsx` | `jsx-a11y/prefer-tag-over-role` | the listbox, its groups and its two kinds of option: a row is a lead and two lines of markup, which a native `<option>` cannot hold, nor a `<select>` or `<datalist>` the rows, and no element of HTML is a group of a listbox's options. Four elements, a comment each. |
 | `site/globals.d.ts` | `import/no-namespace` | a type-only namespace import (`import type * as TopoJSON`), the one way to type the global the page loads from vendor/; erased, so nothing to tree-shake. Biome's `noNamespaceImport` allows it. |
 
-## The code means it
+### The code means it
 
 | File | Rule | Why |
 | -- | -- | -- |

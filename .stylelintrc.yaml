@@ -1,0 +1,38 @@
+# stylelint's rules on the stylesheet (lint:stylelint, public/css/**), each turned on by name: no shared config is
+# extended, so a rule not listed here is off. docs/concepts/lint-rules.md says where each comes from and why.
+
+# a suppression is one line's (stylelint-disable-next-line), names its rules and gives its reason after --, and is
+# needed: tests/test_suppressions.py counts each, and docs/lint-false-positives.md says why
+reportDescriptionlessDisables: true
+reportNeedlessDisables: true
+reportInvalidScopeDisables: true
+
+rules:
+  # Biome's CSS rules that were on, each by its stylelint equivalent (Biome's own migration metadata)
+  font-family-no-missing-generic-family-keyword: true # a11y/useGenericFontNames
+  declaration-no-important: true # complexity/noImportantStyles
+  function-linear-gradient-no-nonstandard-direction: true # correctness/noInvalidDirectionInLinearGradient
+  named-grid-areas-no-invalid: true # correctness/noInvalidGridAreas
+  no-invalid-position-at-import-rule: true # correctness/noInvalidPositionAtImportRule
+  custom-property-no-missing-var-function: true # correctness/noMissingVarFunction
+  function-no-unknown: true # correctness/noUnknownFunction
+  media-feature-name-no-unknown: true # correctness/noUnknownMediaFeatureName
+  property-no-unknown: true # correctness/noUnknownProperty
+  selector-pseudo-class-no-unknown: true # correctness/noUnknownPseudoClass
+  selector-pseudo-element-no-unknown: true # correctness/noUnknownPseudoElement
+  selector-type-no-unknown: true # correctness/noUnknownTypeSelector
+  unit-no-unknown: true # correctness/noUnknownUnit
+  selector-anb-no-unmatchable: true # correctness/noUnmatchableAnbSelector
+  media-type-no-deprecated: true # suspicious/noDeprecatedMediaType
+  no-duplicate-at-import-rules: true # suspicious/noDuplicateAtImportRules
+  declaration-block-no-duplicate-custom-properties: true # suspicious/noDuplicateCustomProperties
+  font-family-no-duplicate-names: true # suspicious/noDuplicateFontNames
+  declaration-block-no-duplicate-properties: true # suspicious/noDuplicateProperties
+  no-duplicate-selectors: true # suspicious/noDuplicateSelectors
+  keyframe-block-no-duplicate-selectors: true # suspicious/noDuplicateSelectorsKeyframeBlock
+  block-no-empty: true # suspicious/noEmptyBlock
+  no-empty-source: true # suspicious/noEmptySource
+  keyframe-declaration-no-important: true # suspicious/noImportantInKeyframe
+  no-irregular-whitespace: true # suspicious/noIrregularWhitespace
+  declaration-block-no-shorthand-property-overrides: true # suspicious/noShorthandPropertyOverrides
+  at-rule-no-unknown: true # suspicious/noUnknownAtRules

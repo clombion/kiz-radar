@@ -274,7 +274,7 @@ th[scope="row"] {
   border-bottom: 1px solid var(--border);
 }
 [hidden] {
-  /* biome-ignore lint/complexity/noImportantStyles: the hidden attribute hides an element whatever display its rules give it */
+  /* stylelint-disable-next-line declaration-no-important -- the hidden attribute hides an element whatever display its rules give it */
   display: none !important;
 }
 .leaflet-container .leaflet-control-attribution {

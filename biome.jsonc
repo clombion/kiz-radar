@@ -1,24 +1,16 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-  // the stylesheet and the JSON configs: oxlint lints the TypeScript (.oxlintrc.json)
+  // the JSON configs: oxlint lints the TypeScript (.oxlintrc.json), stylelint the stylesheet (.stylelintrc.yaml)
   "files": {
-    "includes": ["public/css/**", "*.json", "*.jsonc", "!pnpm-lock.yaml"]
+    "includes": ["*.json", "*.jsonc", "!pnpm-lock.yaml"]
   },
   // oxfmt lays these files out (.oxfmtrc.jsonc, format:site)
   "formatter": { "enabled": false },
   "linter": {
     "rules": {
-      // every rule, then the few that would fight how the stylesheet is written, each with its reason
-      "preset": "all",
-      "style": {
-        "noHexColors": "off", // the design tokens are hex colours
-        "noExcessiveLinesPerFile": "off", // the stylesheet is one file, ordered by component
-        "noDescendingSpecificity": "off" // site.css is ordered by component; specificity decides between weights
-      },
-      "suspicious": {
-        "useBaseline": "off" // newer CSS is progressive enhancement: backdrop-filter, @starting-style
-      }
+      // every rule
+      "preset": "all"
     }
   }
 }

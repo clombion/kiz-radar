@@ -97,9 +97,14 @@ depends = ["install:site"]
 run = "pnpm run types"
 
 ["lint:biome"]
-description = "Biome's rules on the stylesheet and the JSON configs (biome.jsonc's files.includes)"
+description = "Biome's rules on the JSON configs (biome.jsonc's files.includes)"
 depends = ["install:site"]
 run = "pnpm run lint:biome"
+
+["lint:stylelint"]
+description = "stylelint's rules on the stylesheet (public/css/), a warning failing as an error (.stylelintrc.yaml: Biome's CSS rules mapped, docs/concepts/lint-rules.md)"
+depends = ["install:site"]
+run = "pnpm run lint:stylelint"
 
 ["lint:oxlint"]
 description = "oxlint's rules on the site, its tests, the house rules' plugin (lint/) and vitest.config.ts, type-aware, a warning failing as an error (.oxlintrc.json: Biome's rules mapped, docs/concepts/lint-rules.md, and the house rules)"
@@ -194,6 +199,7 @@ depends = [
   "types:py",
   "lint:oxlint",
   "lint:biome",
+  "lint:stylelint",
   "types:site",
   "knip",
   "dup",
