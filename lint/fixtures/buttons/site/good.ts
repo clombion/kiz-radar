@@ -1,5 +1,5 @@
-// The intended way: dom.ts's button(), which gives it type=button; h() for any other element.
-import { button, h } from '../../../../site/dom.ts';
-
-export const close = button({ class: 'close' }, 'Close');
-export const label = h('span', {}, 'Close');
+// Let through in a .ts module: a call naming the tag button that is no call of h(), and the word itself (a button is
+// drawn in JSX).
+declare const tagOf: (tag: string) => string;
+export const named = tagOf('button');
+export const tag = 'button';

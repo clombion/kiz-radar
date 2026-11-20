@@ -402,8 +402,8 @@ export function sentence({ qs, data }: ViewProps): JSX.Element {
   }
 
   // The festivals once the database is in, drawn with the blanks fitted again, or why they could not be read: the
-  // database, or the festivals drawn as they come in (their results' throw, unloaded), as the h() page said either in
-  // its live line, the loading mark kept; the page mid-update says so itself (main.ts).
+  // database, or the festivals drawn as they come in (their results' throw, unloaded), either said in the page's live
+  // line, the loading mark kept; the page mid-update says so itself (main.ts).
   const unread = (e: unknown) => {
     setRead({ unread: e instanceof Error ? e.message : String(e) });
   };

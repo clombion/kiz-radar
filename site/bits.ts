@@ -1,25 +1,12 @@
-// What dom.ts held that draws nothing: the types of an element's contents and classes, what contents hold, an id no
-// other element has, two ways to wait (a pause in typing, a frame after a resize), and a control's click kept its own
-// (own); and for JSX, an element's style set through a ref (styled) and an element JSX made checked (asElement). A Solid
-// view (.tsx), which imports nothing of dom.ts (house/legacy), takes them from here.
+// Helpers that draw nothing: the types of an element's contents and classes, an id no other element has, two ways to
+// wait (a pause in typing, a frame after a resize), and a control's click kept its own (own); and for JSX, an
+// element's style set through a ref (styled) and an element JSX made checked (asElement).
 import type { ClassName } from './classes.ts';
 
 // what an element holds: nodes and text, nested as lists; null, undefined and false hold nothing
 export type Kid = Node | string | number | false | null | undefined | readonly Kid[];
-// what kids hold, in order, one list: each node, and each text or number as a string (h()'s contents, dom.ts nodes, and
-// what an h() module hands a Solid part, dialog.tsx leaving)
-export const flat = (kids: readonly Kid[]): (Node | string)[] =>
-  kids.flatMap((kid): (Node | string)[] =>
-    kid == null || kid === false
-      ? []
-      : kid instanceof Node
-        ? [kid]
-        : typeof kid === 'string' || typeof kid === 'number'
-          ? [String(kid)]
-          : flat(kid),
-  );
 // an element's classes: one of the stylesheet's, or a list of them, where false, null or undefined stand for none
-export type ClassList = readonly (ClassName | false | null | undefined)[];
+type ClassList = readonly (ClassName | false | null | undefined)[];
 export type Classes = ClassName | ClassList;
 
 // An id no other element of the page has, from a stem ("day-pop-3"): a view drawn twice, or two of one kind on a page,
@@ -50,12 +37,12 @@ export function onResize(f: () => void, signal?: AbortSignal): void {
 }
 
 // A click handler for a control inside a card, which opens on a click: the click is the control's alone, kept from the
-// card and from a click outside heard on the document (dom.ts dropdown). act gets the control, for a dialog to give the
-// focus back to. An h() listener and a JSX handler alike. A JSX one is delegated to the root it is drawn into (<body>,
-// body.ts, or a Solid view's root): the stop ends Solid's walk of the delegated handlers there (the card's own, a
-// delegated onClick, never hears it) and keeps the click from the document, but not, as on the control, from a native
-// listener on an element between the control and that root, which hears it first; none of a card's ancestors has one,
-// and one added there must stop at its own target, or be a delegated handler too.
+// card and from a click outside heard on the document (controls.tsx dropdown). act gets the control, for a dialog to
+// give the focus back to. A JSX handler is delegated to the root it is drawn into (<body>, body.ts, or a view's root):
+// the stop ends Solid's walk of the delegated handlers there (the card's own, a delegated onClick, never hears it) and
+// keeps the click from the document, but not, as on the control, from a native listener on an element between the
+// control and that root, which hears it first; none of a card's ancestors has one, and one added there must stop at its
+// own target, or be a delegated handler too.
 export const own =
   (act?: (control: Element | null) => void) =>
   (ev: Event): void => {

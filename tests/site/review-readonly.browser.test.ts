@@ -54,7 +54,7 @@ test("the rail's search, typed in, keeps the focus, the caret at the end of its 
   field.value = 'an';
   field.dispatchEvent(new Event('input'));
   const now = find();
-  // the field the rail drew anew, as the h() page drew it
+  // the field the rail drew anew
   expect([
     now === document.activeElement,
     now instanceof HTMLInputElement ? [now.selectionStart, now.selectionEnd] : null,

@@ -176,8 +176,8 @@ test('the SQL page’s result, drawn again on each run, holds the owners of its 
   expect(main()?.querySelectorAll('.sql-out tbody tr').length).toBeGreaterThan(0);
 });
 
-// What a run draws is markup, made once: its result sets, rows and cells are no owners, as the h() page's were plain
-// nodes, so a result of 1000 rows of ten columns holds the owners of a result of one value.
+// What a run draws is markup, made once: its result sets, rows and cells are no owners, so a result of 1000 rows of ten
+// columns holds the owners of a result of one value.
 test('the SQL page’s rows and cells are no owners: a thousand rows hold the owners of one value', async () => {
   await app.open(sqlHref());
   const area = main()?.querySelector('textarea');

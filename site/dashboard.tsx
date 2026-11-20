@@ -7,11 +7,11 @@
 // shows no choice to make. The festivals and the orphaned claims are settled in a session (docs/guides/), so they are
 // listed. The tab and the item are in the address; the items settled since the build are kept in the browser.
 // The page's state is one record, the one last drawn (the address, the rail's search, the two artists picked to join,
-// and the token's state, token.tsx), a signal the token button and the queues' tabs follow. Each change is drawn at
-// once, the whole page anew, as each drew the h() page anew (a focused control, a choice pressed and a note half
-// written going with it): the view through mount.tsx's drawnIn, so a draw that throws says so in its place, and the
-// token button's words and the queues' tabs drawn again with it. What the h() page changed in place (a choice, the
-// note, a write under way, a side's matches, the rail's next page) is changed in place. A view is drawn by the handler
+// and the token's state, token.tsx), a signal the token button and the queues' tabs follow. Each change of it is drawn
+// at once, the whole page anew (a focused control, a choice pressed and a note half written going with it): the view
+// through mount.tsx's drawnIn, so a draw that throws says so in its place, and the token button's words and the
+// queues' tabs drawn again with it. A choice, the note, a write under way, a side's matches and the rail's next page
+// are changed in place, the page not drawn anew. A view is drawn by the handler
 // that changed the state, never by an effect: render flushes, which Solid refuses inside an effect.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { type Accessor, createRoot, createSignal, flush, Show } from 'solid-js';
@@ -885,8 +885,8 @@ export function reviewPage(into: HTMLElement, r: Review): void {
   // token button and the queues' tabs follow.
   let now: Drawn = { ...addressed(undefined), access: { state: 'missing' } };
   const [shown, setShown] = createRoot(() => createSignal<Drawn>(now));
-  // read as each draw is made, as the h() page read them: what is settled since the build (a write's settling is drawn
-  // with the next draw), and the rail's field drawn last
+  // read as each draw is made: what is settled since the build (a write's settling is drawn with the next draw), and
+  // the rail's field drawn last
   let settledIds = settled(r.built_at);
   let railField: HTMLInputElement | undefined;
   let leave: AbortController | undefined;

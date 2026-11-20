@@ -381,7 +381,7 @@ export function map({ sub, qs }: ViewProps): JSX.Element {
       .sort((a, z) => a.start_date.localeCompare(z.start_date));
   };
   // The panel beside the map, drawn anew each time the map draws it: the festival picked, the city picked, or every
-  // festival in view. A handler that draws it draws it at once (flush), as the h() map did; the bubbles' effect, within
+  // festival in view. A handler that draws it draws it at once (flush), before it returns; the bubbles' effect, within
   // Solid's flush, with them, a write Solid refuses in an effect's apply unless it is said to be meant (ownedWrite).
   const [panel, setPanel] = createSignal<Panel>({ kind: 'view', inView: [], total: 0 }, { ownedWrite: true });
   function renderPanel(): void {

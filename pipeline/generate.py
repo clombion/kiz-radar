@@ -5,7 +5,7 @@
 
 pipeline/enums.py holds the code's enums of the states and site/states.ts the site's words for them; each is
 written here and nowhere else, so a new state is one row of pipeline/states.py and then this command. site/classes.ts
-names the classes public/css/ defines, the only ones the site's h() takes, so a class is one rule of the stylesheet and
+names the classes public/css/ defines, the only ones the site's JSX takes, so a class is one rule of the stylesheet and
 then this command. lint/state-keys.ts lists the same keys, which house/states (lint/states.ts) refuses written in
 quotes on the site.
 public/index.html and public/site.webmanifest name the home city (pipeline/airports.csv's home)
@@ -50,7 +50,7 @@ def classes_module() -> str:
     union = ''.join(f"\n  | '{n}'" for n in names)
     return (
         '// The classes public/css/ defines, written by pipeline/generate.py (mise run generate): the only ones\n'
-        "// dom.ts's h() takes, so an element can't be given a class no rule styles.\n"
+        "// JSX's class takes (site/jsx-runtime.d.ts), so an element can't be given a class no rule styles.\n"
         f'export type ClassName ={union};\n'
     )
 

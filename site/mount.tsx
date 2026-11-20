@@ -78,11 +78,10 @@ export const mounted =
 
 // What a view draws again as the visitor changes it (a list on a choice, a panel on a pan, a row on a toggle, a query's
 // result on a run), whose throw would otherwise take the whole view: as the view is first drawn, a throw is the view's
-// (its boundary says it cannot be shown); later it is said as the page's (placed.tsx reported) and the
-// part draws nothing, until its next change draws it again (Solid's Errored heals). A part drawn once and kept (a trip
-// row's chart, its card) has no next change: it is drawn again the next time again turns true (the row opened again),
-// as the h() row tried again on each opening. A throw the part says itself (says, true once said) is not the page's:
-// the Festivals page's, as its festivals come in.
+// (its boundary says it cannot be shown); later it is said as the page's (placed.tsx reported) and the part draws
+// nothing, until its next change draws it again (Solid's Errored heals). A part drawn once and kept (a trip row's
+// chart, its card) has no next change: it is tried again each time again turns true (the row opened again). A throw
+// the part says itself (says, true once said) is not the page's: the Festivals page's, as its festivals come in.
 const redrawnThrew = (e: unknown, says?: (e: unknown) => boolean): null => {
   if (firstDraw) throw e;
   return says?.(e) === true ? null : reported(e, 'the page');
@@ -123,8 +122,8 @@ export const redrawing =
 
 // What a view derives from its choices (a list's rows), drawn by a Redrawn part and read by other parts too (a count,
 // a summary, a panel): a throw is held as its value, so that it is said once, by the Redrawn part (drawn, which throws
-// it again), while the others read what it was before (last), as the h() view kept its count and summary as they were
-// drawn; as the view is first drawn there is nothing before, and both throw, the view's.
+// it again), while the others read what it was before (last), a count and a summary staying as they were drawn; as the
+// view is first drawn there is nothing before, and both throw, the view's.
 type Held<T> = { readonly value: T } | { readonly thrown: unknown; readonly before: { readonly value: T } | undefined };
 export function createDerived<T>(compute: () => T): { readonly drawn: Accessor<T>; readonly last: Accessor<T> } {
   const held = createMemo((was: Held<T> | undefined): Held<T> => {

@@ -1,6 +1,6 @@
-// What house/buttons refuses in the site's modules but dom.ts: a button made by h(), with or without attributes and
-// children.
-import { h } from '../../../../site/dom.ts';
+// What house/buttons refuses in a .ts module of the site: a button made by h(), the hand-built way the views had before
+// Solid, with or without attributes and children.
+declare const h: (tag: string, ...rest: unknown[]) => HTMLElement;
 
 export const bare = h('button'); // refused
 export const typed = h('button', { type: 'button' }, 'Close'); // refused

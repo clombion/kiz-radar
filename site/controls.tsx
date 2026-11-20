@@ -1,8 +1,7 @@
 // The controls the views share, drawn by Solid: a view's choices kept in its address (chosen), a select of them, a row
 // of them pressed (segments), a checkbox (check), the more button with its panel (dropdown), a search field, a list
 // shown a page at a time (paged), the line saying what an address asked that the view has no choice for (leftOut), and
-// what a control says for a while (awhile): what dom.ts gave the h() views, which a .tsx imports nothing of
-// (house/legacy).
+// what a control says for a while (awhile).
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import {
   type Accessor,
@@ -19,9 +18,8 @@ import type { ClassName } from './classes.ts';
 import { disposal } from './mount.tsx';
 import { showInAddressBar } from './routes.ts';
 
-// A view's choices, as its address gave them: one signal, a new record on each choice (as each choice drew the h() view
-// again), drawn at once (flushed) as the h() view was drawn in the choice's listener; and the address bar following
-// them (address, from the choices).
+// A view's choices, as its address gave them: one signal, a new record on each choice, drawn at once (flushed) in the
+// choice's listener, before it returns; and the address bar following them (address, from the choices).
 export function chosen<C extends Readonly<Record<string, unknown>>>(
   first: C,
   address: (now: C) => string,
@@ -113,8 +111,8 @@ export function choices<V extends string | number>(
 }
 
 // A row of choices named label, one of them on (a segmented control): each is a button pressed while it is the choice.
-// Its buttons are drawn anew whenever on is read anew (each choice of the view's, as each render drew the h() row
-// again), so a button pressed goes, with the focus, as it did.
+// Its buttons are drawn anew whenever on is read anew (on each choice of the view's), so a button pressed is replaced,
+// and the focus goes with it.
 export const segments = <V extends string>(
   label: string,
   options: readonly (readonly [V, string])[],

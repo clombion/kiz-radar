@@ -1,5 +1,5 @@
-// What house/legacy refuses in a Solid file: drawing by hand, and dom.ts imported, re-exported or loaded, its types
-// too, by any spelling of its path.
+// What house/legacy refuses in a Solid file: drawing by hand, and a dom module imported, re-exported or loaded, its
+// types too, by any spelling of its path.
 import { h } from '../../../../site/dom.ts'; // refused
 import type { Kid } from '../../../../site/dom.ts'; // refused
 import { replaceChildren } from './dom'; // refused

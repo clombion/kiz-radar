@@ -122,7 +122,7 @@ export function friends({ qs }: ViewProps): JSX.Element {
   const friendsPicker = dropdown(() => [bar]);
 
   // the friends to tick: the ticked first, then everyone else of the place, a search narrowing them; drawn anew as the
-  // choices or the search change, as the h() picker was
+  // choices or the search change
   const upcoming = (key: string) => all.filter((e) => e.goers.some((g) => g.key === key)).length;
   const tickRow = (p: { readonly key: string; readonly name: string }, on: boolean): JSX.Element => (
     <label class="pick-row">

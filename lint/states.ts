@@ -4,7 +4,7 @@
 // the code calls by the same name, however the call is written (optional, with type arguments) and whatever wraps the
 // key (parentheses, as, satisfies, a type assertion). plural() takes words, not states. In JSX a component's prop is
 // its call's argument: a key given to one (<Badge state="cancelled" />, or in braces) is refused; an element's
-// attribute, h()'s attribute object, is not. .oxlintrc.json turns the rule on for site/*.ts and site/*.tsx.
+// attribute is not. .oxlintrc.json turns the rule on for site/*.ts and site/*.tsx.
 import type { Rule } from './plugin.ts';
 import { isComponent, type Node, stringOf, valueOf } from './shapes.ts';
 import { STATE_KEYS } from './state-keys.ts';

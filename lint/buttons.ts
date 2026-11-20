@@ -1,9 +1,11 @@
-// A button is of type button, so it never submits a form: made by dom.ts's button(), which gives it the type, in an h()
-// module; written <button type="button"> in JSX. h() called with the tag 'button' in the site's modules is refused,
-// however the call is written (optional, with type arguments, h in parentheses) and however the tag is (a template
-// without values, in parentheses, as const); and a JSX <button> whose type is not the string button (none, submit,
-// reset, an expression), is given twice, or may be given again by a spread after it ({...props}, {...{ type: 'submit'
-// }}). .oxlintrc.json turns the rule on for site/*.ts and site/*.tsx and off for dom.ts.
+// A button is of type button, so it never submits a form: written <button type="button"> in JSX. A JSX <button> whose
+// type is not the string button (none, submit, reset, an expression), is given twice, or may be given again by a spread
+// after it ({...props}, {...{ type: 'submit' }}) is refused; and so is a button built by a call of h() with the tag
+// 'button', the hand-built way the views had before Solid, however the call is written (optional, with type arguments)
+// and however the tag is (a template without values, as const); h or the tag in parentheses is refused as well, a form
+// with no fixture, since oxfmt, which lays the fixtures out, takes the parentheses off.
+// react/button-has-type, even told to refuse submit and reset, lets a spread after the type through (measured on these
+// fixtures), so the rule stays. .oxlintrc.json turns it on for site/*.ts and site/*.tsx.
 import type { Rule } from './plugin.ts';
 import { attributeOf, stringOf, tagOf, valueOf } from './shapes.ts';
 
@@ -12,7 +14,7 @@ export const buttons: Rule = {
     type: 'problem',
     messages: {
       buttons:
-        'A button is of type button, so it never submits a form: dom.ts button() in an h() module, <button type="button"> in JSX.',
+        'A button is of type button, so it never submits a form: <button type="button">, with no spread after the type.',
     },
   },
   create(context) {

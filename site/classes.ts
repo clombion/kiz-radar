@@ -1,5 +1,5 @@
 // The classes public/css/ defines, written by pipeline/generate.py (mise run generate): the only ones
-// dom.ts's h() takes, so an element can't be given a class no rule styles.
+// JSX's class takes (site/jsx-runtime.d.ts), so an element can't be given a class no rule styles.
 export type ClassName =
   | 'actions'
   | 'active'

@@ -1,4 +1,4 @@
-// What the page's elements show where the site builds them (dom.ts, icons.ts, dialog.tsx, over.ts, through the
+// What the page's elements show where the site builds them (JSX, icons.ts, dialog.tsx, over.ts, through the
 // views): a festival's title with markup in it shown as text, nothing the page leaves out written as null or false,
 // classes and styles as given, the drawings, the search dialog's history entry, the Festivals page's paged list and
 // select, and the cards over a community's page. On 1 November 2026, Glasgow retitled with markup and flying to GLA,
@@ -129,9 +129,8 @@ test('what holds nothing is left out: no class or aria-current on a tab not show
   }
 });
 
-// A control the address turns on is drawn on and marked so in the markup, as the h() views wrote it: a checkbox
-// checked, a select's option selected, a search's words its value, as a reset form or a script reading the markup sees
-// the address's choice.
+// A control the address turns on is drawn on and marked so in the markup: a checkbox checked, a select's option
+// selected, a search's words its value, as a reset form or a script reading the markup sees the address's choice.
 test('a control the address turns on is marked so in the markup', async () => {
   await app.open(countriesHref({ all: 1 }));
   const box = main()?.querySelector<HTMLInputElement>('.countries-page input[type="checkbox"]');

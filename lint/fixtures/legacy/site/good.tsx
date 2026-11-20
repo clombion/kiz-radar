@@ -1,4 +1,4 @@
-// The intended way: JSX, rendered by Solid into the root a view is handed; modules other than the site's dom.ts
+// The intended way: JSX, rendered by Solid into the root a view is handed; modules other than a dom module of the site
 // imported: a package's dom, and one whose name starts like it.
 import { render } from '@solidjs/web';
 import { screen } from '@testing-library/dom';

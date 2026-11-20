@@ -609,16 +609,6 @@
       "rules": { "house/buttons": "error" }
     },
     {
-      // house/buttons: dom.ts's button() is where a button is made
-      "files": ["site/dom.ts"],
-      "rules": { "house/buttons": "off" }
-    },
-    {
-      // house/classes: dom.ts sets the classes, held to the stylesheet's
-      "files": ["site/dom.ts"],
-      "rules": { "house/classes": "off" }
-    },
-    {
       // house/states: a state in the site's modules is KEY.<point>.<NAME> (site/states.ts), held to the table
       "files": ["site/*.ts", "site/*.tsx"],
       "rules": { "house/states": "error" }
@@ -645,24 +635,14 @@
       "rules": { "house/tests": ["error", { "imports": ["../../site/placed.tsx"] }] }
     },
     {
-      // house/tests: page.browser.test.ts keeps its tests of dom.ts's helpers until they go with them, in task 4.10
-      "files": ["tests/site/page.browser.test.ts"],
-      "rules": { "house/tests": ["error", { "imports": ["../../site/dom.ts"] }] }
-    },
-    {
-      // house/markup: an element of the site gets markup from icons.ts alone, and is built with dom.ts's h()
+      // house/markup: the site's code puts markup in an element through icons.ts alone, and writes an element in JSX
       "files": ["site/**"],
       "rules": { "house/markup": "error" }
     },
     {
-      // house/markup: icons.ts puts a drawing's SVG, from drawings.ts, in an element (Drawing.into), and its .tsx to come
-      "files": ["site/icons.ts", "site/icons.tsx"],
+      // house/markup: icons.ts puts a drawing's SVG, from drawings.ts, in an element (Drawing.into)
+      "files": ["site/icons.ts"],
       "rules": { "house/markup": "off" }
-    },
-    {
-      // house/svgs: icons.ts, as it becomes .tsx, is where a drawing's SVG is put in
-      "files": ["site/icons.tsx"],
-      "rules": { "house/svgs": "off" }
     },
     {
       // house/privates reads the module an import names from disk, beside the importing file: oxlint shows a rule one
