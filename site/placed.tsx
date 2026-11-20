@@ -66,7 +66,8 @@ export function atEnd(where: string, Part: Component): void {
 }
 
 // Part in place of what el holds, emptied first, as render empties an element it disposes (main.ts's <main>, whose
-// view the page mid-update replaces); the function that disposes it
+// view the page mid-update replaces, and the loading mark drawn into a view's root until the database is in); the
+// function that disposes it
 export function instead(el: Element, where: string, Part: Component): () => void {
   el.textContent = '';
   return draw(where, Part, el, el.appendChild(new Text()));
