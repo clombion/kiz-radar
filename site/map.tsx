@@ -200,7 +200,7 @@ export function map({ sub, qs }: ViewProps): JSX.Element {
     redrawn();
   };
   const filters = dropdown();
-  let mapEl: HTMLDivElement | undefined;
+  let mapEl: HTMLElement | undefined;
   const filtersOn = () => {
     const { color, country } = drawnFor();
     return Number(color !== DEFAULTS.color) + Number(country !== DEFAULTS.country);
@@ -615,13 +615,11 @@ export function map({ sub, qs }: ViewProps): JSX.Element {
           )}
         </div>
         <div class="map-split">
-          <div
+          <section
             ref={(el) => {
               mapEl = el;
             }}
             class="map"
-            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- Leaflet's map, a region named for a screen reader, its markup kept as the h() map drew it during the port (revisit after 4.10)
-            role="region"
             aria-label="Map of festivals by city"
           />
           <aside class={['map-panel', sheetUp() && 'up']}>
