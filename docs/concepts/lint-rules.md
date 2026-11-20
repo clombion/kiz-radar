@@ -3,7 +3,11 @@
 Biome linted the site's TypeScript until Phase 2 of the move to the Oxc toolchain handed that to oxlint (the refactor
 plan's task 2.3). This page maps every rule Biome ran on the TypeScript to oxlint's, with the settings to carry, the
 rules that have no equivalent and what the owner decided of them. `.oxlintrc.json` (task 2.4) is built from it, rule by
-rule, with no category turned on, so a rule not listed as mapped is not enabled.
+rule, with no category turned on, so a rule not listed as mapped is not enabled. The brief, the questions (Q2) and the
+tasks this page names were the move's own documents, removed when it ended; each is in the commit before:
+`git show bce372d:refactor-plan.md` is the plan, with each phase's report and its commits task by task,
+`git show bce372d:refactor-brief.md` the brief and its questions, and `git show bce372d:refactor-task-<n>.md` a task's
+record (`refactor-task-2.6c.md`).
 
 Measured on 19 November 2026, Biome 2.6.3 and oxlint 1.94.0 (the version task 2.4 pins). The 8 accepted losses are the
 brief's; the owner decided the rest on 19 November (below): of the 22 unmapped rules, 5 became house rules and 17
@@ -247,14 +251,13 @@ cannot make read-only, the site's own record types made read-only at their defin
 Recommended: on for the ones with no finding (they cost nothing), off for `prefer-readonly-parameter-types`, and the
 others rule by rule with the findings of task 2.4.
 
-**State: on since task 2.6c**, each as an error, with zero findings
-([refactor-task-2.6c.md](../../refactor-task-2.6c.md)). Beyond the settings above, `prefer-readonly-parameter-types`'s
-`allow` also names Leaflet's `LayerGroup`, GeoJSON's `Feature`, the syntax-tree types of oxlint's plugin API the house
-rules take, and JSX's list of elements (`ArrayElement`, `solid-js`'s and `@solidjs/web`'s), which a Solid component's
-`children` may be (task 4.5's dialog host; none of them the site's own), and `return-await` is
-`error-handling-correctness-only`: a function made async that hands a promise on awaits it, as Biome's `useAwait` and
-`require-await` want an await in it, which the default `in-try-catch` refuses. One line keeps a suppression
-(`tests/site/main.browser.test.ts`, [oxlint's suppressed findings](../lint-false-positives.md)).
+**State: on since task 2.6c**, each as an error, with zero findings (task 2.6c). Beyond the settings above,
+`prefer-readonly-parameter-types`'s `allow` also names Leaflet's `LayerGroup`, GeoJSON's `Feature`, the syntax-tree
+types of oxlint's plugin API the house rules take, and JSX's list of elements (`ArrayElement`, `solid-js`'s and
+`@solidjs/web`'s), which a Solid component's `children` may be (task 4.5's dialog host; none of them the site's own),
+and `return-await` is `error-handling-correctness-only`: a function made async that hands a promise on awaits it, as
+Biome's `useAwait` and `require-await` want an await in it, which the default `in-try-catch` refuses. One line keeps a
+suppression (`tests/site/main.browser.test.ts`, [oxlint's suppressed findings](../lint-false-positives.md)).
 
 | oxlint rule | Findings: all (site / tests) |  |
 | -- | -- | -- |
@@ -784,10 +787,9 @@ counts `ref={el}` as an assignment. `tests/site/rules.test.ts` holds the config 
 Solid rule and one mapped from Biome refuse the same thing (`jsx-no-duplicate-props`, `jsx-no-script-url`), both are on.
 `jsx-a11y` reads Solid's `for` as a label's control (`settings["jsx-a11y"].attributes`); its `no-autofocus` reads
 `autoFocus` alone, not Solid's `autofocus`, which its `attributes` setting does not reach: `house/focuses` refuses
-autofocus in any spelling in a `.tsx` file ([task 4.2](../../refactor-task-4.2.md)). The click rules
-(`click-events-have-key-events`, `no-static-element-interactions`) read `onClick` and its kin; Solid 2's compiler
-refuses the `on:` and `oncapture:` namespaces ("removed in Solid 2.0"), so no handler escapes them that way and no rule
-is added for it.
+autofocus in any spelling in a `.tsx` file (task 4.2). The click rules (`click-events-have-key-events`,
+`no-static-element-interactions`) read `onClick` and its kin; Solid 2's compiler refuses the `on:` and `oncapture:`
+namespaces ("removed in Solid 2.0"), so no handler escapes them that way and no rule is added for it.
 
 ## Other languages
 

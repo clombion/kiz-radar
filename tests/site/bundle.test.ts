@@ -3,7 +3,7 @@
 // a <script> element), and lets no frame's document carry its own (srcdoc, which no view needs). Solid's compiler
 // writes each JSX element's constant attributes and children into its template, markup the bundle carries as a string
 // and the page parses (`<p class=empty>`), so whatever a .tsx says that the policy refuses lands there: a constant
-// style object, which house/styles refuses (task 4.2); a handler given as a string (`onerror="…"`), which tsc refuses
+// style object, which house/styles refuses; a handler given as a string (`onerror="…"`), which tsc refuses
 // (Solid's JSX types have no lowercase on… attribute, and type a camelCase one as a function, as solid/event-handlers
 // holds it); a javascript: URL, which three lint rules refuse. A spread of attributes from a record sets them at run
 // time, never in a template, where the policy refuses an inline handler all the same. The frames of
