@@ -1737,7 +1737,7 @@ body:has(.pmap) .to-top {
 
 /* on a phone, the Map and Artists filter panels span the whole filter row instead of hanging off the button */
 
-/* Opening and closing a card (eventcard.ts). Durations and curves follow Material 3's motion tokens: opening uses
+/* Opening and closing a card (eventcard.tsx). Durations and curves follow Material 3's motion tokens: opening uses
    emphasized-decelerate over 350ms, since the card travels far and arrives; closing and the neighbours' moves use
    the standard curve over 250ms, about 75% of the opening. */
 ::view-transition-group(.card) {

@@ -67,7 +67,7 @@ const VALUES = /(?<value>\{\w+\})/u;
 const VALUE = /^\{(?<name>\w+)\}$/u;
 // the words, or the named form of them, as parts to append (the values may be elements); null when the state shows
 // none
-export function say<P extends Point, K extends Key<P>, V extends Kid = Kid>(
+export function say<P extends Point, K extends Key<P>, V = Kid>(
   point: P,
   key: K,
   values: Readonly<Record<string, V>> = {},
@@ -117,7 +117,6 @@ export const plural = (n: number, noun: string, nouns = `${noun}s`): string =>
   `${n.toLocaleString('en-GB')} ${n === 1 ? noun : nouns}`;
 // "A, B and C": what goes before each of n things, the first nothing
 const between = (i: number, n: number): '' | ' and ' | ', ' => (i === 0 ? '' : i === n - 1 ? ' and ' : ', ');
-export const joined = <T extends Kid>(xs: readonly T[]): (T | string)[] =>
-  xs.flatMap((x, i) => [between(i, xs.length), x]);
+export const joined = <T>(xs: readonly T[]): (T | string)[] => xs.flatMap((x, i) => [between(i, xs.length), x]);
 // the same, as text
 export const joinedText = (xs: readonly string[]): string => xs.map((x, i) => between(i, xs.length) + x).join('');

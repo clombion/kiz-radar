@@ -83,7 +83,8 @@ const VIEWS: Readonly<Record<Route, View>> = {
     title: 'Friends',
     nav: 'friends',
     waitsForData: true,
-    show: (root, [key], qs, { signal }) => (key === undefined ? friendsView(root, qs, signal) : personView(root, key)),
+    show: (root, [key], qs, { signal }) =>
+      key === undefined ? friendsView(root, qs, signal) : personView(root, key, signal),
   },
   community: {
     title: 'Community',

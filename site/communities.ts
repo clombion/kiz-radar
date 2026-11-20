@@ -22,11 +22,12 @@ import {
 import { addDays } from './days.ts';
 import { one, q, sql } from './db.ts';
 import { button, h, nodes } from './dom.ts';
-import { eventCard } from './eventcard.ts';
+import { heldCard } from './eventcard.tsx';
 import { type Festival, withDetails } from './festivals.ts';
 import { dayTimeAt, gantt, ganttByPlace, timeAt, unsaidEnd } from './gantt.ts';
 import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
+import { redraws } from './mount.tsx';
 import { page, personLink, shareButton } from './people.ts';
 import { couplesAmong, doingTag, type Goer, goersInline, namesOf } from './plans.ts';
 import {
@@ -235,9 +236,11 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
   const steps = periods(today, [...everyone.keys()].toSorted((a, b) => a.localeCompare(b)).at(-1));
   const asked = readState(qs, { from: '' }).state.from;
   const from = steps.includes(asked) ? asked : (steps[0] ?? today.slice(0, 7));
-  const plan = h('section', { class: 'agenda' }, agenda(current, today, c, from));
+  // what the agenda holds of Solid's is taken away when a step draws it again
+  const agendaDrawn = redraws(signal);
+  const plan = h('section', { class: 'agenda' }, agenda(current, today, c, { from, signal: agendaDrawn() }));
   const moved = (to: string) => {
-    plan.replaceChildren(...nodes(agenda(current, today, c, to)));
+    plan.replaceChildren(...nodes(agenda(current, today, c, { from: to, signal: agendaDrawn() })));
     showInAddressBar(communityHref(c.key, { from: to === steps[0] ? null : to }));
   };
   document.title = `${c.name} · Kiz Radar`; // as its own page's title says it
@@ -369,7 +372,12 @@ function daysSaid(e: Festival): string {
 // The agenda of a period: its trips, those with a day in it, a heading a month ("November · 3 trips", with its year
 // in January and when it is not this year's) and a row a trip, the first open (the one on, or else the next); none,
 // "Nothing planned in Mar–Jun".
-function agenda(trips: readonly Visit[], today: string, c: Community, from: string): Kid[] {
+function agenda(
+  trips: readonly Visit[],
+  today: string,
+  c: Community,
+  { from, signal }: { readonly from: string; readonly signal: AbortSignal },
+): Kid[] {
   const byMonth = new Map<string, Visit[]>();
   for (const t of trips.filter((v) => v.aways.some((a) => inPeriod(from, a)))) {
     const m = t.e.start_date.slice(0, 7);
@@ -390,7 +398,7 @@ function agenda(trips: readonly Visit[], today: string, c: Community, from: stri
       h(
         'ol',
         { class: 'agenda-list' },
-        here.map((t) => tripRow(t, c, t === trips[0])),
+        here.map((t) => tripRow(t, c, t === trips[0], signal)),
       ),
     ];
   });
@@ -461,7 +469,7 @@ function chartOf({ e, aways }: Visit, c: Community, id: string): Kid[] {
 
 // A trip's row: its days, the festival (to it on the map) and where, who of the community goes; opened, a small Gantt
 // of who travels when, the same in words, where members stay, and the festival's line-up and prices.
-function tripRow(trip: Visit, c: Community, open: boolean): HTMLElement {
+function tripRow(trip: Visit, c: Community, open: boolean, signal: AbortSignal): HTMLElement {
   const { e, who, on, off } = trip;
   const id = `trip-${e.id}`;
   // the festival's line-up and prices, its card opened, in the trip's: shown from the festival's name
@@ -475,7 +483,7 @@ function tripRow(trip: Visit, c: Community, open: boolean): HTMLElement {
       drawn = true;
     }
     if (lineupShown && lineup.childElementCount === 0)
-      lineup.append(eventCard({ ...e, goers: who.goers }, { open: true }));
+      lineup.append(heldCard(signal, { ...e, goers: who.goers }, { open: true }));
     body.hidden = !opened;
     lineup.hidden = !(opened && lineupShown);
     // the card lists everyone: the row says only how many go, and who teaches

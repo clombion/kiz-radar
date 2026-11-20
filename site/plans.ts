@@ -1,10 +1,10 @@
-import type { Kid } from './bits.ts';
+import { type Kid, own } from './bits.ts';
 // Who said they're going to a festival (pipeline/people.csv and plans.csv). Cards name featured people and count
 // the rest; partners who are both going are named as their couple. Someone in a festival's line-up, alone or in a
 // couple, is teaching (or playing) there rather than just going.
 import { one, q, site, sql } from './db.ts';
 import { leaving, type Peek, peek } from './dialog.tsx';
-import { button, h, nodes, own } from './dom.ts';
+import { button, h, nodes } from './dom.ts';
 import { roleLabel } from './roles.ts';
 import { artistHref, eventOnMapHref, friendsHref, personHref } from './routes.ts';
 import {

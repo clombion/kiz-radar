@@ -1,13 +1,13 @@
 // The Festivals page: a sentence with blanks, festival cards below, and a sticky bar with the same choices
 // (plus "More filters") once the sentence has scrolled away.
 
-import { type Kid, onResize } from './bits.ts';
+import { type Kid, onResize, own } from './bits.ts';
 import type { ClassName } from './classes.ts';
 import type { Step } from './currency.ts';
 import { today } from './days.ts';
 import { site, SiteUpdating } from './db.ts';
-import { button, choices, dropdown, h, moreButton, nodes, own, paged, toggle } from './dom.ts';
-import { eventCard } from './eventcard.ts';
+import { button, choices, dropdown, h, moreButton, nodes, paged, toggle } from './dom.ts';
+import { heldCard } from './eventcard.tsx';
 import { type Festival, festivals, leftOut } from './festivals.ts';
 import {
   CHECKED,
@@ -392,7 +392,7 @@ export function sentenceView(
       const cards = h('div', { class: 'festival-cards' }),
         more = button({ class: ['more-btn', 'show-more'] });
       paged({ list: cards, more }, rows, PAGE, (e, i) =>
-        eventCard(e, {
+        heldCard(signal, e, {
           hint: i === hinted ? note('note-artist', 'click', ' a name to see where else they teach') : null,
         }),
       );

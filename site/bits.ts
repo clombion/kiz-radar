@@ -1,6 +1,6 @@
 // What dom.ts held that draws nothing: the types of an element's contents and classes, what contents hold, an id no
-// other element has, and two ways to wait (a pause in typing, a frame after a resize). A Solid view (.tsx), which
-// imports nothing of dom.ts (house/legacy), takes them from here.
+// other element has, two ways to wait (a pause in typing, a frame after a resize), and a control's click kept its own
+// (own). A Solid view (.tsx), which imports nothing of dom.ts (house/legacy), takes them from here.
 import type { ClassName } from './classes.ts';
 
 // what an element holds: nodes and text, nested as lists; null, undefined and false hold nothing
@@ -47,6 +47,20 @@ export function onResize(f: () => void, signal?: AbortSignal): void {
     signal === undefined ? { passive: true } : { passive: true, signal },
   );
 }
+
+// A click handler for a control inside a card, which opens on a click: the click is the control's alone, kept from the
+// card and from a click outside heard on the document (dom.ts dropdown). act gets the control, for a dialog to give the
+// focus back to. An h() listener and a JSX handler alike. A JSX one is delegated to the root it is drawn into (<body>,
+// body.ts, or a Solid view's root): the stop ends Solid's walk of the delegated handlers there (the card's own, a
+// delegated onClick, never hears it) and keeps the click from the document, but not, as on the control, from a native
+// listener on an element between the control and that root, which hears it first; none of a card's ancestors has one,
+// and one added there must stop at its own target, or be a delegated handler too.
+export const own =
+  (act?: (control: Element | null) => void) =>
+  (ev: Event): void => {
+    ev.stopPropagation();
+    act?.(ev.currentTarget instanceof Element ? ev.currentTarget : null);
+  };
 
 // What JSX made (made, an element as Solid makes it) as an element of the class of, for code that holds it as one (the
 // problem line, the oval's shapes, a link out of a dialog); else a TypeError naming what ("the problem line").
