@@ -134,7 +134,11 @@ The 28 house rules: the 13 that were Grit's, moved to oxlint's plugin (`session`
 from `node:process` (task 2.6b); Biome runs no plugin. Task 4.2 added nine for Solid's `.tsx`: the brief's four
 migration rules (`thens`, `flags`, `mirrors`, `legacy`, on `.tsx` alone), `styles`, `focuses`, and the owner's three of
 19 November (`semicolons`, `spreads`, `svgs`); and it taught `states`, `buttons` and `markup` the JSX form of what they
-refuse.
+refuse. Task 4.10, the move's last, kept the four that were Grit's for the `h()` views (`markup`, `classes`, `buttons`,
+`clicks`), each checked on its own fixtures against what now refuses the same: `solid/no-innerhtml` refuses 2 of the 29
+lines `markup` refuses (a bare `innerHTML` prop given an expression or nothing); `react/button-has-type`, even told to
+refuse `submit` and `reset`, lets a spread after the type through; nothing refuses `classList`, `className` or
+`stopPropagation()`. Their messages name JSX, where they named `dom.ts`'s `h()`, `toggle()` and `button()`.
 
 ## Accepted losses
 

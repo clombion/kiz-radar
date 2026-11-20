@@ -1,9 +1,10 @@
 # The site
 
 What a visitor sees, and what decides it. The site is `public/`, published to GitHub Pages by **Publish site** whenever
-`main` changes; its code is `site/` (TypeScript), bundled by Vite into `public/js/` (`vite.config.ts`), and the
-libraries it loads are copied into `public/vendor/` from the packages `package.json` pins. Neither is committed. The
-page loads nothing from elsewhere: its Content-Security-Policy (`public/index.html`) allows only its own files.
+`main` changes; its code is `site/` (TypeScript, its views drawn by Solid 2.0 from `.tsx` modules: the conventions are
+in [CLAUDE.md](../../CLAUDE.md)), bundled by Vite into `public/js/` (`vite.config.ts`), and the libraries it loads are
+copied into `public/vendor/` from the packages `package.json` pins. Neither is committed. The page loads nothing from
+elsewhere: its Content-Security-Policy (`public/index.html`) allows only its own files.
 
 ## The festival list
 
@@ -229,11 +230,12 @@ longer listed."): never "Now", and out of the days most people travel; in the ca
 
 ## When something fails
 
-A page that cannot be built says so in its place; anything else that goes wrong says so at the top of the page, with
-what it was doing. A request gives up after a minute. Files of two builds (the database and the summary, or the scripts
-and the database: GitHub Pages' cache keeps each file up to ten minutes after a publish) put a page in place of the
-whole view, saying the site is being updated; it loads the page again every minute, and after a quarter of an hour stops
-and says it could not load.
+A page that cannot be built says so in its place ("This page could not be shown: …"), as does one whose data could not
+be loaded ("Could not load the data: …"); anything else that goes wrong says so at the top of the page, with what it was
+doing, and the page goes on. A request gives up after a minute. Files of two builds (the database and the summary, or
+the scripts and the database: GitHub Pages' cache keeps each file up to ten minutes after a publish) put a page in place
+of the whole view, saying the site is being updated; it loads the page again every minute, and after a quarter of an
+hour stops and says it could not load.
 
 ## The share card and the icons
 

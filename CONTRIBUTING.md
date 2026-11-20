@@ -35,29 +35,32 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   error. What comes from outside (an answer, a page, a CSV) is parsed into a record of `pipeline/records.py` where it
   enters. pytest runs strict, on every core, in a new order, with no network and a time limit per test, and fails below
   the branch coverage `pyproject.toml` sets.
-- **Site:** tsc strict; oxlint (`lint:oxlint`), type-aware, with each Biome rule it has an equivalent of and the
-  type-aware rules new in oxlint (`.oxlintrc.json`, [Lint rules](docs/concepts/lint-rules.md)), a warning failing: a
-  record's type is read-only where it is defined, a function returning a promise is async, and the names in an import's
-  braces are in one order; every Biome rule on the stylesheet and the JSON configs (`lint:biome`, `biome.jsonc`'s
-  `files.includes`) but those it turns off, each with its reason; and the house rules in `lint/` (links in `routes.ts`,
-  requests in `net.ts`, classes through JSX's `class`, markup only from `icons.ts`, promises reported, a state as `KEY`,
-  a test's values only from the modules `lint/tests.ts` lists). A class is one the stylesheet defines
-  (`site/classes.ts`, generated), in JSX too, where tsc types an element's `class` by it (`site/jsx-runtime.d.ts`,
-  `tsconfig.json`'s `jsxImportSource`). vitest runs in Node and in Chromium (`pnpm exec playwright install chromium`, or
-  a Chromium of the machine's own named in `CHROMIUM`), and fails below the coverage of the pure modules
-  `vitest.config.ts` sets. The browser tests run in two projects: `browser`, with motion as most visitors have it, and
-  `browser-calm`, for a visitor who asked for less motion, which runs the files named `*.calm.browser.test.ts` and no
-  others (a calm file runs with reduced motion only). In both, a console warning, error or failing assert the test did
-  not declare beforehand fails it (`tests/site/console.ts`'s `expectConsole`), so that Solid's development diagnostics
-  and `site/report.ts`'s errors are never passed over. A test of the page starts it through `tests/site/app.ts`, whose
-  header says how (once per file; the day, data, storage, or its refusal, and other hosts' answers stated before the
-  start); the test server answers the tests' pages with the fixture's data only, never `public/data/`.
-  `tests/site/pages.browser.test.ts` loads the built site instead, Vite's bundle (`vite.config.ts`), in a frame under
-  each page's Content-Security-Policy: every route, the older `#community/<key>` link and `review.html`, each drawn with
-  no error, failed request or refusal. `tests/site/bundle.test.ts` reads the bundle's markup, the templates Solid's
-  compiler writes, drawn or not, for what that policy refuses. oxfmt (`format:site`) lays out the site, its tests, the
-  stylesheet, the JSON configs and the house rules with their fixtures (`.oxfmtrc.jsonc`), sorting the import statements
-  of all but the fixtures, but `site/states.ts` and `site/drawings.ts`, which their generators lay out.
+- **Site:** Solid 2.0, its views in `.tsx` (the conventions and the skills to read first are in [CLAUDE.md](CLAUDE.md));
+  tsc strict; oxlint (`lint:oxlint`), type-aware, with each Biome rule it has an equivalent of and the type-aware rules
+  new in oxlint (`.oxlintrc.json`, [Lint rules](docs/concepts/lint-rules.md)), a warning failing: a record's type is
+  read-only where it is defined, a function returning a promise is async, and the names in an import's braces are in one
+  order; every Biome rule on the stylesheet and the JSON configs (`lint:biome`, `biome.jsonc`'s `files.includes`) but
+  those it turns off, each with its reason; eslint-plugin-solid's `v2-strict` rules; and the house rules in `lint/`
+  (links in `routes.ts`, requests in `net.ts`, classes through JSX's `class`, markup from the site's own code only
+  through `icons.ts`, promises reported, a state as `KEY`, a test's values only from the modules `lint/tests.ts` lists,
+  and those holding CLAUDE.md's conventions; the files each is on for are in Lint rules' table). A class is one the
+  stylesheet defines (`site/classes.ts`, generated), in JSX too, where tsc types an element's `class` by it
+  (`site/jsx-runtime.d.ts`, `tsconfig.json`'s `jsxImportSource`). vitest runs in Node and in Chromium
+  (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and fails below the
+  coverage of the pure modules `vitest.config.ts` sets. The browser tests run in two projects: `browser`, with motion as
+  most visitors have it, and `browser-calm`, for a visitor who asked for less motion, which runs the files named
+  `*.calm.browser.test.ts` and no others (a calm file runs with reduced motion only). In both, a console warning, error
+  or failing assert the test did not declare beforehand fails it (`tests/site/console.ts`'s `expectConsole`), so that
+  Solid's development diagnostics and `site/report.ts`'s errors are never passed over. A test of the page starts it
+  through `tests/site/app.ts`, whose header says how (once per file; the day, data, storage, or its refusal, and other
+  hosts' answers stated before the start); the test server answers the tests' pages with the fixture's data only, never
+  `public/data/`. `tests/site/pages.browser.test.ts` loads the built site instead, Vite's bundle (`vite.config.ts`), in
+  a frame under each page's Content-Security-Policy: every route, the older `#community/<key>` link and `review.html`,
+  each drawn with no error, failed request or refusal. `tests/site/bundle.test.ts` reads the bundle's markup, the
+  templates Solid's compiler writes, drawn or not, for what that policy refuses. oxfmt (`format:site`) lays out the
+  site, its tests, the stylesheet, the JSON configs and the house rules with their fixtures (`.oxfmtrc.jsonc`), sorting
+  the import statements of all but the fixtures, but `site/states.ts` and `site/drawings.ts`, which their generators lay
+  out.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
   each, so a new one is a change to that list, and an oxlint one is also explained in
   [oxlint's suppressed findings](docs/lint-false-positives.md).
@@ -102,7 +105,7 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
 | `pipeline/tickets/` | ticket-site recipes, read logs, first reads, `status.csv` |
 | `source/` | the kizomba-world export |
 | `claims/` | the admin's claims (a submodule) |
-| `site/` | the site's TypeScript, bundled by Vite into `public/js/` (`vite.config.ts`) |
+| `site/` | the site's TypeScript, its views Solid's (`.tsx`), bundled by Vite into `public/js/` (`vite.config.ts`) |
 | `public/` | the published site: page, stylesheet, fonts, icons; `js/`, `vendor/` and `data/` built |
 | `tests/` | the pipeline's tests; `tests/site/` the site's |
 | `lint/` | the house rules: oxlint's plugin (`plugin.ts`, a module per rule) with its fixtures |
