@@ -4,9 +4,9 @@
 // mount.tsx's held.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { createMemo, createSignal, Errored, flush, Show } from 'solid-js';
-import { asElement, type Classes, flat, type Kid, own } from './bits.ts';
+import { type Classes, flat, type Kid, own } from './bits.ts';
 import { today } from './days.ts';
-import { cardDetails, traitItems } from './details.ts';
+import { cardDetails, passesButton, traitItems } from './details.tsx';
 import { type Fare, resoldSaid } from './fares.ts';
 import { type Festival, styleLine } from './festivals.ts';
 import { flightsButton } from './flights.ts';
@@ -14,7 +14,7 @@ import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
 import { approximately, money, within } from './money.ts';
 import { held } from './mount.tsx';
-import { openPasses, riseNote } from './passes.ts';
+import { riseNote } from './passes.ts';
 import { goingLine } from './plans.ts';
 import { done, report } from './report.ts';
 import { artistHref } from './routes.ts';
@@ -104,11 +104,7 @@ const STARTED = 'already started, no flight priced';
 // Without a price, why (price_status, in the words of pipeline/states.py): a link to the ticket page or to the
 // passes when its state renders as one.
 // a card's price is a button to the passes view, which opens over the page
-const passBtn = (e: Festival, words: string | null) => (
-  <button type="button" class={['link', 'pass-btn']} onClick={own((b) => openPasses(e, b))}>
-    {words}
-  </button>
-);
+const passBtn = (e: Festival, words: string | null) => passesButton(e, 'pass-btn', words);
 function linked(e: Festival, words: string | null, link: string | null): JSX.Element {
   if (link === LINK.PAGE && e.ticket_page !== null && e.ticket_page !== '')
     return (
@@ -319,7 +315,7 @@ export function eventCard(e: Festival, { hint = null, open = false, onMap = fals
             {cardDetails(
               e,
               traits.slice(0, 3).map(([k]) => k),
-              asElement(toggleBtn(['link', 'less'], 'Less'), HTMLButtonElement, "a card's Less"),
+              toggleBtn(['link', 'less'], 'Less'),
               { onMap },
             )}
           </Errored>
