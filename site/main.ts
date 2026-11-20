@@ -19,7 +19,7 @@ import { personView } from './people.ts';
 import { atEnd, atStart, inPlaceOf, inside } from './placed.tsx';
 import { done, guarded, reportUncaught } from './report.ts';
 import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, type Tab, TABS } from './routes.ts';
-import { initSearch } from './search.ts';
+import { initSearch } from './search.tsx';
 import { sentenceView } from './sentence.ts';
 import { CurrencySwitch, FooterLinks, Skip, ToTop } from './shell.tsx';
 import { sourcesView } from './sources.ts';
