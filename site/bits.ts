@@ -1,10 +1,22 @@
-// What dom.ts held that draws nothing: the types of an element's contents and classes, an id no other element has, and
-// two ways to wait (a pause in typing, a frame after a resize). A Solid view (.tsx), which imports nothing of dom.ts
-// (house/legacy), takes them from here.
+// What dom.ts held that draws nothing: the types of an element's contents and classes, what contents hold, an id no
+// other element has, and two ways to wait (a pause in typing, a frame after a resize). A Solid view (.tsx), which
+// imports nothing of dom.ts (house/legacy), takes them from here.
 import type { ClassName } from './classes.ts';
 
 // what an element holds: nodes and text, nested as lists; null, undefined and false hold nothing
 export type Kid = Node | string | number | false | null | undefined | readonly Kid[];
+// what kids hold, in order, one list: each node, and each text or number as a string (h()'s contents, dom.ts nodes, and
+// what an h() module hands a Solid part, dialog.tsx leaving)
+export const flat = (kids: readonly Kid[]): (Node | string)[] =>
+  kids.flatMap((kid): (Node | string)[] =>
+    kid == null || kid === false
+      ? []
+      : kid instanceof Node
+        ? [kid]
+        : typeof kid === 'string' || typeof kid === 'number'
+          ? [String(kid)]
+          : flat(kid),
+  );
 // an element's classes: one of the stylesheet's, or a list of them, where false, null or undefined stand for none
 export type ClassList = readonly (ClassName | false | null | undefined)[];
 export type Classes = ClassName | ClassList;

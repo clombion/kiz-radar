@@ -412,6 +412,10 @@
           { "from": "package", "package": "sql.js", "name": ["BindParams"] },
           { "from": "package", "package": "@types/leaflet", "name": ["LayerGroup"] },
           { "from": "package", "package": "@types/geojson", "name": ["Feature"] },
+          // what a Solid component is given to draw, its children: JSX's element, Solid's and the DOM's, which may be a
+          // list of them
+          { "from": "package", "package": "@solidjs/web", "name": ["ArrayElement"] },
+          { "from": "package", "package": "solid-js", "name": ["ArrayElement"] },
           // the syntax tree a house rule reads: Node$1 is oxlint's name for its union of every node
           {
             "from": "package",
@@ -641,11 +645,11 @@
       "rules": { "house/tests": ["error", { "imports": ["../../site/placed.tsx"] }] }
     },
     {
-      // house/tests: page.browser.test.ts keeps its tests of these helpers until they go with them: modal in task 4.5,
-      // dismiss in 4.6, dom's in 4.10
+      // house/tests: page.browser.test.ts keeps its tests of these helpers until they go with them: dismiss in task
+      // 4.6, dom's in 4.10
       "files": ["tests/site/page.browser.test.ts"],
       "rules": {
-        "house/tests": ["error", { "imports": ["../../site/dismiss.ts", "../../site/dom.ts", "../../site/modal.ts"] }]
+        "house/tests": ["error", { "imports": ["../../site/dismiss.ts", "../../site/dom.ts"] }]
       }
     },
     {

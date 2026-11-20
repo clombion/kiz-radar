@@ -126,7 +126,7 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `storage` | everywhere oxlint lints | `site/kept.ts`, `tests/**` |
 | `styles` | everywhere oxlint lints | (none) |
 | `svgs` | everywhere oxlint lints | `site/icons.tsx` |
-| `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, three helpers (`dismiss`, `dom`, `modal`) imported by `tests/site/page.browser.test.ts`, and the shell's seam (`placed`) imported by `tests/site/placed.browser.test.tsx`: the rule's options in each file's override |
+| `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, two helpers (`dismiss`, `dom`) imported by `tests/site/page.browser.test.ts`, and the shell's seam (`placed`) imported by `tests/site/placed.browser.test.tsx`: the rule's options in each file's override |
 | `thens` | `*.tsx` | (none) |
 
 The 28 house rules: the 13 that were Grit's, moved to oxlint's plugin (`session` in task 2.5, the twelve others in task
@@ -245,11 +245,12 @@ others rule by rule with the findings of task 2.4.
 
 **State: on since task 2.6c**, each as an error, with zero findings
 ([refactor-task-2.6c.md](../../refactor-task-2.6c.md)). Beyond the settings above, `prefer-readonly-parameter-types`'s
-`allow` also names Leaflet's `LayerGroup`, GeoJSON's `Feature` and the syntax-tree types of oxlint's plugin API the
-house rules take (none of them the site's own), and `return-await` is `error-handling-correctness-only`: a function made
-async that hands a promise on awaits it, as Biome's `useAwait` and `require-await` want an await in it, which the
-default `in-try-catch` refuses. One line keeps a suppression (`tests/site/main.browser.test.ts`,
-[oxlint's suppressed findings](../lint-false-positives.md)).
+`allow` also names Leaflet's `LayerGroup`, GeoJSON's `Feature`, the syntax-tree types of oxlint's plugin API the house
+rules take, and JSX's list of elements (`ArrayElement`, `solid-js`'s and `@solidjs/web`'s), which a Solid component's
+`children` may be (task 4.5's dialog host; none of them the site's own), and `return-await` is
+`error-handling-correctness-only`: a function made async that hands a promise on awaits it, as Biome's `useAwait` and
+`require-await` want an await in it, which the default `in-try-catch` refuses. One line keeps a suppression
+(`tests/site/main.browser.test.ts`, [oxlint's suppressed findings](../lint-false-positives.md)).
 
 | oxlint rule | Findings: all (site / tests) |  |
 | -- | -- | -- |

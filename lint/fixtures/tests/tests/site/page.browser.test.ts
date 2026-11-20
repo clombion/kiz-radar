@@ -1,9 +1,9 @@
-// Exempt: page.browser.test.ts imports the three helpers it still tests (.oxlintrc.json's override gives the rule their
+// Exempt: page.browser.test.ts imports the two helpers it still tests (.oxlintrc.json's override gives the rule their
 // modules, as the file names them), and nothing else: not an entry, which app.ts loads, nor a helper whose test went
-// with it (tabs' pill).
+// with it (tabs' pill, the dialog host's modal).
 import { dismissable } from '../../site/dismiss.ts';
 import { h } from '../../site/dom.ts';
-import { modal } from '../../site/modal.ts';
+import { modal } from '../../site/dialog.tsx'; // refused
 import { Row } from '../../site/tabs.tsx'; // refused
 
 export const used = [dismissable, h, modal, Row];

@@ -7,9 +7,9 @@
 // so the rule can check it.
 // .oxlintrc.json turns the rule on for tests/**, and gives its exceptions to the files that make them, as the rule's
 // options: tests/site/app.ts loads the entries (`loads`), the one place a test starts the page;
-// tests/site/page.browser.test.ts imports three helpers (`imports`) and keeps its tests of them until they go with them:
-// modal in task 4.5, dismiss in 4.6, dom's in 4.10; tests/site/placed.browser.test.tsx imports the shell's seam
-// (`imports`), to draw a part that throws, which no page has.
+// tests/site/page.browser.test.ts imports two helpers (`imports`) and keeps its tests of them until they go with them:
+// dismiss in task 4.6, dom's in 4.10; tests/site/placed.browser.test.tsx imports the shell's seam (`imports`), to draw
+// a part that throws, which no page has.
 import type { Rule } from './plugin.ts';
 import { type Node, quotedOneOf } from './shapes.ts';
 

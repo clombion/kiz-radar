@@ -1,4 +1,4 @@
-// What the page's elements show where the site builds them (dom.ts, icons.ts, modal.ts, dismiss.ts, through the
+// What the page's elements show where the site builds them (dom.ts, icons.ts, dialog.tsx, dismiss.ts, through the
 // views): a festival's title with markup in it shown as text, nothing the page leaves out written as null or false,
 // classes and styles as given, the drawings, the search dialog's history entry, the Festivals page's paged list and
 // select, and the cards over a community's page. On 1 November 2026, Glasgow retitled with markup and flying to GLA,
@@ -16,6 +16,7 @@ import {
   cellOn,
   COMM,
   entryAt,
+  keyed,
   kuofOf,
   monthsOf,
   popover,
@@ -185,6 +186,10 @@ test('the search has a history entry of its own: the back button closes it, and 
   const { dlg } = searchOpened();
   expect([entryAt(), history.state]).toEqual([at + 1, { modal: true }]);
   expect(strays()).toEqual([]);
+  // asked to open again while it shows, with Ctrl+K or /, it stays open and pushes no second entry
+  dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+  keyed('/');
+  expect([dlg.open, entryAt()]).toEqual([true, at + 1]);
   // the back button: the dialog's close event is sent after the step back, and the page handles both
   const closed = new Promise((done) => dlg.addEventListener('close', done, { once: true }));
   await back();
@@ -201,7 +206,33 @@ test('the search has a history entry of its own: the back button closes it, and 
   const gone = new Promise((done) => addEventListener('popstate', done, { once: true }));
   dlg.requestClose();
   await gone;
-  expect([dlg.open, entryAt(), history.state]).toEqual([false, at, state]);
+  expect([dlg.open, entryAt(), history.state, document.activeElement]).toEqual([false, at, state, opener]);
+});
+
+test('the search closed and opened again before its close event is sent stays open, on one entry of its own', async () => {
+  const at = entryAt();
+  const { dlg } = searchOpened();
+  // closed as Escape closes it, whose close event is sent later, and opened again at once
+  dlg.close();
+  const sent = new Promise((done) => dlg.addEventListener('close', done, { once: true }));
+  document.querySelector<HTMLElement>('#search-btn')?.click();
+  await sent;
+  expect([dlg.open, entryAt(), history.state]).toEqual([true, at + 1, { modal: true }]);
+  // its entry is the one a step back takes away
+  await back();
+  expect([dlg.open, entryAt()]).toEqual([false, at]);
+});
+
+test('a tap on the search’s backdrop closes it, taking its entry away; a tap inside it does not', async () => {
+  const at = entryAt();
+  const { dlg, input } = searchOpened();
+  const tap = (el: Element) => el.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+  tap(input);
+  expect([dlg.open, entryAt()]).toEqual([true, at + 1]);
+  const gone = new Promise((done) => addEventListener('popstate', done, { once: true }));
+  tap(dlg); // the backdrop is the dialog's own: a tap there is the dialog's
+  await gone;
+  expect([dlg.open, entryAt()]).toEqual([false, at]);
 });
 
 // the Festivals page's count, from its words "N festivals like that"

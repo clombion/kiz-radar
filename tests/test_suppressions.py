@@ -73,6 +73,8 @@ SITE_ALLOWED = Counter(
         ('public/css/site.css', 'lint/complexity/noImportantStyles'): 1,
         # oxlint's, each in docs/lint-false-positives.md
         ('site/artists.ts', 'house/states'): 1,
+        ('site/dialog.tsx', 'jsx-a11y/click-events-have-key-events'): 1,
+        ('site/dialog.tsx', 'jsx-a11y/heading-has-content'): 1,
         ('site/globals.d.ts', 'import/no-namespace'): 1,
         ('site/json.ts', 'typescript/no-unsafe-type-assertion'): 1,
         ('site/routes.ts', 'typescript/no-unsafe-type-assertion'): 1,

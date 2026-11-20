@@ -1,5 +1,5 @@
 // Elements built from their tag, attributes and contents. All text goes in as text nodes, never as HTML.
-import type { Classes, ClassList, Kid } from './bits.ts';
+import { type Classes, type ClassList, flat, type Kid } from './bits.ts';
 import type { ClassName } from './classes.ts';
 
 const ON = /^on/u;
@@ -38,16 +38,9 @@ export const toggle = (el: Element, cls: ClassName, on: boolean): void => {
 // a button, of type button: it never submits a form, whatever it is put in
 export const button = (attrs: Attrs, ...kids: readonly Kid[]): HTMLButtonElement =>
   h('button', { type: 'button', ...attrs }, ...kids);
+// what kids hold as nodes, each text a text node
 export const nodes = (kids: readonly Kid[]): Node[] =>
-  kids.flatMap((kid): Node[] =>
-    kid == null || kid === false
-      ? []
-      : kid instanceof Node
-        ? [kid]
-        : typeof kid === 'string' || typeof kid === 'number'
-          ? [document.createTextNode(String(kid))]
-          : nodes(kid),
-  );
+  flat(kids).map((kid) => (typeof kid === 'string' ? document.createTextNode(kid) : kid));
 
 // A click handler for a control inside a card, which opens on a click: the click is the control's alone. act gets the
 // control, for a dialog to give the focus back to.
