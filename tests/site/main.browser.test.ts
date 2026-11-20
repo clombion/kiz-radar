@@ -132,6 +132,19 @@ test('the search dialog opens from its button, every control named', async () =>
 // the alert line report.ts puts at the top of the page
 const alertLine = () => document.querySelector('[role="alert"]')?.textContent ?? '';
 
+test('a promo code copied says so on its button for two seconds, then Copy again', async () => {
+  const copied = vi.spyOn(navigator.clipboard, 'writeText').mockResolvedValue();
+  onTestFinished(() => copied.mockRestore());
+  await app.open(eventOnMapHref(PRAGUE_GOLD));
+  const copy = [...document.querySelectorAll<HTMLButtonElement>('main button')].find((b) => b.textContent === 'Copy');
+  copy?.click();
+  expect(copied).toHaveBeenCalledWith(FIXTURE_PROMO);
+  await expect.poll(() => copy?.textContent).toBe('Copied');
+  const at = performance.now();
+  await expect.poll(() => copy?.textContent, { timeout: 4000 }).toBe('Copy');
+  expect(performance.now() - at).toBeGreaterThan(1500);
+});
+
 test('a promise left to run on its own, or one nothing catches, is said on the page', async () => {
   // report.ts says each in the console, with where; and Vitest's own catcher, which leaves a rejection to the page's
   // listener when it has one, prints the event
