@@ -4,9 +4,10 @@
 // the view says it cannot be shown, as guarded did. On 1 November 2026: the Friends tab, its list to three months, then
 // a year: Cloudkiz, from 26 February, comes in, its last day planted as a day no month has, which its row's days read
 // as it is drawn; Artists searched, the artists' aliases planted away, which only a search reads; the Map's bubbles,
-// Leaflet's circles refused as a filter draws them again.
+// Leaflet's circles refused as a filter draws them again; the SQL page's result, its count of rows refused as a run
+// draws it.
 import { expect, test, vi } from 'vitest';
-import { artistsHref, friendsHref, mapHref } from '../../site/routes.ts';
+import { artistsHref, friendsHref, mapHref, sqlHref } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { CLOUDKIZ } from './community.fixture.ts';
 import { expectConsole } from './console.ts';
@@ -99,4 +100,34 @@ test('the Map’s bubbles that throw as a filter draws them again say so once as
   expect(main()?.textContent).not.toContain('This page could not be shown');
   filtered(0);
   await expect.poll(bubbles).toBe(drawn);
+});
+
+test('the SQL page’s result that throws as a run draws it says so once as the page, and the page goes on', async () => {
+  expectConsole('error', /^Kiz Radar: the page: RangeError: a count refused/u);
+  await app.open(sqlHref());
+  const area = main()?.querySelector('textarea');
+  const run = [...(main()?.querySelectorAll('button') ?? [])].find((b) => b.textContent === 'Run (Ctrl+Enter)');
+  if (area == null || run === undefined) throw new Error('the SQL page has no query to run');
+  const cells = () => [...(main()?.querySelectorAll('.sql-out td') ?? [])].map((td) => td.textContent);
+  const ran = (query: string) => {
+    area.value = query;
+    run.click();
+  };
+  // the problem line (problem.tsx), one at most, the last said (the Map's above)
+  const problem = () => document.querySelector('[role="alert"]')?.textContent;
+  // the count of rows, which a run draws above them
+  const refused = vi.spyOn(Number.prototype, 'toLocaleString').mockImplementation(() => {
+    throw new RangeError('a count refused');
+  });
+  try {
+    ran('SELECT 1');
+  } finally {
+    refused.mockRestore();
+  }
+  await expect.poll(problem).toContain('(the page: a count refused)');
+  expect(cells()).toEqual([]);
+  expect(main()?.textContent).not.toContain('This page could not be shown');
+  expect(main()?.querySelector('textarea')).toBe(area);
+  ran('SELECT 2');
+  expect(cells()).toEqual(['2']);
 });

@@ -5,7 +5,8 @@
 import { h } from './dom.ts';
 import { showProblem } from './problem.tsx';
 
-const message = (e: unknown): string => (e instanceof Error ? e.message : String(e));
+// an error's words, or what was thrown as text
+export const message = (e: unknown): string => (e instanceof Error ? e.message : String(e));
 
 export function report(e: unknown, where: string): void {
   console.error(`Kiz Radar: ${where}:`, e);
