@@ -14,7 +14,6 @@ import { h } from './dom.ts';
 import { friendsTabs, friendsView, placeOf } from './friends.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
-import { currencySwitch } from './money.ts';
 import { mounted } from './mount.tsx';
 import { personView } from './people.ts';
 import { atEnd, atStart, inPlaceOf, inside } from './placed.tsx';
@@ -22,7 +21,7 @@ import { done, guarded, reportUncaught } from './report.ts';
 import { EXPLORE, type Route, sectionAt, type Show, showInAddressBar, siteRoot, type Tab, TABS } from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';
-import { FooterLinks, Skip, ToTop } from './shell.tsx';
+import { CurrencySwitch, FooterLinks, Skip, ToTop } from './shell.tsx';
 import { sourcesView } from './sources.ts';
 import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
@@ -214,7 +213,7 @@ async function start(): Promise<void> {
     failed(main, e);
     return;
   }
-  part('#currency-switch').replaceWith(currencySwitch());
+  inPlaceOf(part('#currency-switch'), 'the currency switch', CurrencySwitch);
   initSearch(part('#search-btn'), data);
   // mid-update, whatever view shows, even one that does not wait for the database (the festivals' sentence)
   data.then(updated).catch((e: unknown) => {

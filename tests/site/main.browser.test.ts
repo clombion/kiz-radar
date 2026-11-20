@@ -116,6 +116,7 @@ test('Back to top shows two screens down a long page, and takes the page back up
 
 test('the footer switches the currency: kroner shown, euros and dollars a button each', () => {
   const sw = document.querySelector('.site-footer .currency-switch');
+  expect([sw?.textContent, sw?.id]).toEqual(['Prices in: kr · € · $', '']);
   expect(sw?.querySelector('[aria-current]')?.textContent).toBe('kr');
   expect([...(sw?.querySelectorAll('button') ?? [])].map((b) => b.getAttribute('aria-label'))).toEqual(['EUR', 'USD']);
 });
