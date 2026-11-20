@@ -8,7 +8,7 @@ import { type Fare, fareOf, flightBegun, type Option, tripOf } from './fares.ts'
 import { DANCES } from './finder.ts';
 import { convert, rounded } from './money.ts';
 import { priceToday } from './passes.tsx';
-import { type Goer, goersOf } from './plans.ts';
+import { type Goer, goersOf } from './plans.tsx';
 import type { PriceLine } from './pricing.ts';
 import { EVENT, type EventRow, num, opt, str } from './rows.ts';
 import { KEY } from './states.ts';

@@ -26,7 +26,7 @@ import { CHECKED, hasWith, isDance, WITH } from './finder.ts';
 import { fold, words } from './fold.ts';
 import { type Drawing, icon, NOTE } from './icons.ts';
 import { atEnd, Reported } from './placed.tsx';
-import { person, withPlans } from './plans.ts';
+import { person, withPlans } from './plans.tsx';
 import { done } from './report.ts';
 import { roleLabel } from './roles.ts';
 import {

@@ -26,7 +26,8 @@ import {
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
 import { Drawing } from './icons.ts';
 import { currency, money, step } from './money.ts';
-import { friendsIn } from './plans.ts';
+import { held } from './mount.tsx';
+import { friendsIn } from './plans.tsx';
 import { done } from './report.ts';
 import { festivalsHref, showInAddressBar } from './routes.ts';
 import { KEY } from './states.ts';
@@ -332,8 +333,15 @@ export function sentenceView(
     return h(
       'span',
       { class: 'friends' },
-      f.faces,
-      h('span', {}, f.names, ` ${f.many ? 'are' : 'is'} going to `, which, '. '),
+      held(signal, HTMLElement, "the friends' faces", f.faces),
+      h(
+        'span',
+        {},
+        held(signal, HTMLElement, "the friends' names", f.names),
+        ` ${f.many ? 'are' : 'is'} going to `,
+        which,
+        '. ',
+      ),
     );
   }
 

@@ -16,7 +16,7 @@ import { approximately, money, within } from './money.ts';
 import { held } from './mount.tsx';
 import { passesButton, riseNote } from './passes.tsx';
 import { Reported } from './placed.tsx';
-import { goingLine } from './plans.ts';
+import { goingLine } from './plans.tsx';
 import { done } from './report.ts';
 import { artistHref } from './routes.ts';
 import { KEY, LINK } from './states.ts';

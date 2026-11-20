@@ -27,9 +27,9 @@ import { type Festival, withDetails } from './festivals.ts';
 import { dayTimeAt, gantt, ganttByPlace, timeAt, unsaidEnd } from './gantt.ts';
 import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
-import { redraws } from './mount.tsx';
+import { heldNodes, redraws } from './mount.tsx';
 import { page, personLink, shareButton } from './people.ts';
-import { couplesAmong, doingTag, type Goer, goersInline, namesOf } from './plans.ts';
+import { couplesAmong, type Goer, goersInline, heldTag, namesOf } from './plans.tsx';
 import {
   byPlace,
   type End,
@@ -102,7 +102,7 @@ function communityOf(key: string): Community | null {
     WHERE m.community_id = ?`,
     [c.id],
   ).toSorted((a, b) => a.name.localeCompare(b.name)); // by name as it is said, Cédric before Christina
-  // each plan and each added person, going or maybe: a member's plan is read with the festival's goers (plans.ts)
+  // each plan and each added person, going or maybe: a member's plan is read with the festival's goers (plans.tsx)
   // each festival as its plans are read, built in place (Going is read-only)
   type Filling = {
     members: string[];
@@ -243,6 +243,8 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
     plan.replaceChildren(...nodes(agenda(current, today, c, { from: to, signal: agendaDrawn() })));
     showInAddressBar(communityHref(c.key, { from: to === steps[0] ? null : to }));
   };
+  // a day's words, their tags taken away when the words are drawn for another day
+  const dayDrawn = redraws(signal);
   document.title = `${c.name} · Kiz Radar`; // as its own page's title says it
   page(
     root,
@@ -292,7 +294,7 @@ export function communityView(root: HTMLElement, [key]: readonly string[], qs: s
           })),
           // the days someone travels on outside their festival's days: the day before it they arrive, the day after
           travel: new Set([...days].flatMap(([d, on]) => (on.aways.some((a) => !atFestival(a, d)) ? [d] : []))),
-          pop: popover((d) => dayDetail(d, everyone.get(d), c.manager), signal),
+          pop: popover((d) => dayDetail(d, everyone.get(d), c.manager, dayDrawn()), signal),
           from,
           steps,
           moved,
@@ -406,7 +408,7 @@ function agenda(
 
 // A trip's chart: who travels when (a Gantt, by travel and by place when they stay apart), and the same in words.
 // It is drawn the first time its row opens, not with the agenda: a long agenda's rows mostly stay closed.
-function chartOf({ e, aways }: Visit, c: Community, id: string): Kid[] {
+function chartOf({ e, aways }: Visit, c: Community, id: string, signal: AbortSignal): Kid[] {
   // its roster: who travels alike, a couple as one when both partners do, and the people the manager added, who never
   // say how they travel, each name of theirs saying on hover who added them
   const couples = couplesAmong(aways.flatMap((a) => (a.goer ? [a.goer] : [])));
@@ -426,7 +428,7 @@ function chartOf({ e, aways }: Visit, c: Community, id: string): Kid[] {
   const frame = { ...spanOf(e, aways), festival: e, place: e.city ?? e.title, seed: String(e.id) };
   const named = (u: Unit<Present>): Kid => [
     u.people.some((a) => a.added) ? addedBy(u.name, title) : u.name,
-    u.people.every(mayGo) ? [' ', doingTag(u.people.map(plansOf))] : null,
+    u.people.every(mayGo) ? [' ', heldTag(signal, u.people.map(plansOf))] : null,
   ];
   const byTravel = gantt({ ...frame, lines, named, describedBy: said.id });
   // by place too, when its people stay at two places or more: the same people, a line a place, and a control between
@@ -474,12 +476,12 @@ function tripRow(trip: Visit, c: Community, open: boolean, signal: AbortSignal):
   const id = `trip-${e.id}`;
   // the festival's line-up and prices, its card opened, in the trip's: shown from the festival's name
   const lineup = h('div', { class: 'trip-lineup', id: `${id}-lineup`, hidden: true });
-  const body = h('div', { class: 'trip-body', id, hidden: !open }, open ? chartOf(trip, c, id) : null, lineup);
+  const body = h('div', { class: 'trip-body', id, hidden: !open }, open ? chartOf(trip, c, id, signal) : null, lineup);
   let drawn = open;
   // the card open or not, and its line-up shown or not; a closed card shows no line-up
   const show = (opened: boolean, lineupShown: boolean) => {
     if (opened && !drawn) {
-      body.prepend(...nodes(chartOf(trip, c, id)));
+      body.prepend(...nodes(chartOf(trip, c, id, signal)));
       drawn = true;
     }
     if (lineupShown && lineup.childElementCount === 0)
@@ -487,11 +489,14 @@ function tripRow(trip: Visit, c: Community, open: boolean, signal: AbortSignal):
     body.hidden = !opened;
     lineup.hidden = !(opened && lineupShown);
     // the card lists everyone: the row says only how many go, and who teaches
-    whoLine.replaceChildren(...nodes(opened ? who.counted() : who.said()));
+    whoLine.replaceChildren(...nodes(whoSaid(opened)));
     toggle.setAttribute('aria-expanded', String(opened));
     name.setAttribute('aria-expanded', String(opened && lineupShown));
   };
-  const whoLine = h('p', { class: 'trip-who' }, open ? who.counted() : who.said());
+  // who goes, its tags taken away when the line is drawn again
+  const whoDrawn = redraws(signal);
+  const whoSaid = (opened: boolean): Kid[] => (opened ? who.counted(whoDrawn()) : who.said(whoDrawn()));
+  const whoLine = h('p', { class: 'trip-who' }, whoSaid(open));
   const toggle = button({
     class: 'trip-toggle',
     'aria-expanded': String(open),
@@ -573,7 +578,7 @@ const unitSaid = (u: Unit<Present>): string =>
   u.people.every(mayGo) ? `${u.name} (${text('plan', KEY.plan.MAYBE)})` : u.name;
 // what is said of someone present: their plan, and what the line-up has them as
 const plansOf = (a: Present): Pick<Goer, 'plan' | 'booked_as'> => a.goer ?? a.added;
-// whether they only may go (plans.ts unsure)
+// whether they only may go (rows.ts unsure)
 const mayGo = (a: Present): boolean => unsure(plansOf(a));
 
 // how each card's roster is seen, by travel or by place, for the visit: by community and festival, as two communities'
@@ -582,8 +587,8 @@ const seen = new Map<string, 'travel' | 'place'>();
 
 // Who of the community goes to a festival: its members, as their couple when both go and teaching when in the
 // line-up, then the people its manager added, each name saying on hover who added them: each one teaching linked to
-// their artist page, the others named together; said makes the words anew for each place that shows them. people
-// counts them all, a couple as its two.
+// their artist page, the others named together; said (and counted) makes the words anew for each draw of the line
+// that shows them, their tags held to that draw's signal. people counts them all, a couple as its two.
 function whoGoes(
   e: Festival,
   f: Going,
@@ -591,15 +596,15 @@ function whoGoes(
 ): {
   readonly goers: Festival['goers'];
   readonly people: number;
-  readonly said: () => Kid[];
-  readonly counted: () => Kid[];
+  readonly said: (signal: AbortSignal) => Kid[];
+  readonly counted: (signal: AbortSignal) => Kid[];
 } {
   const members = new Set(f.members),
     goers = e.goers.filter((g) => members.has(g.key));
   // those added not teaching, together, those going and then those who may, each with their tag
   const plain = [f.added.filter((a) => a.artist === null && !unsure(a)), f.added.filter((a) => unsure(a))];
   const title = `Added by ${manager.name}`;
-  const said = (): Kid[] => {
+  const said = (signal: AbortSignal): Kid[] => {
     const added = [
       ...f.added.flatMap((a) =>
         a.artist === null
@@ -610,22 +615,28 @@ function whoGoes(
                 { class: 'goer' },
                 h('a', { href: artistHref(a.artist), class: 'artist', title }, a.name),
                 ' ',
-                doingTag([a]),
+                heldTag(signal, [a]),
               ),
             ],
       ),
       ...plain.map((them) =>
-        them.length > 0 ? h('span', {}, joined(them.map((a) => addedBy(a.name, title))), ' ', doingTag(them)) : null,
+        them.length > 0
+          ? h('span', {}, joined(them.map((a) => addedBy(a.name, title))), ' ', heldTag(signal, them))
+          : null,
       ),
     ].filter((x) => x !== null);
-    return [goersInline(goers), goers.length > 0 && added.length > 0 ? ' · ' : null, joined(added)];
+    return [
+      heldNodes(signal, 'who goes', () => goersInline(goers)),
+      goers.length > 0 && added.length > 0 ? ' · ' : null,
+      joined(added),
+    ];
   };
   // how many go, teaching included, and how many only may: the days and the calendar count those going alone
   const may = goers.filter(unsure).length + f.added.filter(unsure).length,
     people = goers.length + f.added.length - may;
   // "5 going · 1 maybe · Cédric & Christina teaching": how many go, how many may, and who of them teaches, by name
   const teaching = [...goers.filter((g) => g.booked_as !== null), ...f.added.filter((a) => a.artist !== null)];
-  const counted = (): Kid[] => [
+  const counted = (signal: AbortSignal): Kid[] => [
     `${people} ${text('plan', KEY.plan.GOING)}`,
     may > 0 ? ` · ${may} ${text('plan', KEY.plan.MAYBE)}` : null,
     teaching.length > 0
@@ -636,7 +647,7 @@ function whoGoes(
             ...f.added.flatMap((a) => (a.artist === null ? [] : [a.name])),
           ]),
           ' ',
-          doingTag(teaching),
+          heldTag(signal, teaching),
         ]
       : null,
   ];
@@ -663,14 +674,14 @@ const placesOf = (aways: readonly Present[]): string =>
 // What a day's popover says: the day, its festivals, who flies in and out that day (by time and airport, a couple as
 // one when both share the flight), who else is there, and where members stay that night. The people added are named,
 // each saying on hover who added them, and never travel.
-function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): Kid[] {
+function dayDetail(day: string, on: Day<Present> | undefined, manager: Member, signal: AbortSignal): Kid[] {
   if (on === undefined) return [h('p', { class: 'day-when' }, weekDay(day))]; // a day no one travels on opens nothing
   // each person once a festival: someone leaving one festival and arriving at another that day is at both
   const once = [...new Map(on.aways.map((a) => [`${a.who} ${a.e.id}`, a])).values()];
   // names, each "maybe" tagged when they only may go: a couple named as one when both go, or both may
   const tagged = (goers: readonly Goer[]): Kid[] =>
     [goers.filter((g) => !unsure(g)), goers.filter(unsure)].flatMap((them, i) =>
-      namesOf(them).map((n) => (i === 0 ? n : h('span', {}, n, ' ', doingTag(them)))),
+      namesOf(them).map((n) => (i === 0 ? n : h('span', {}, n, ' ', heldTag(signal, them)))),
     );
   const flying = (when: 'arrive' | 'leave'): Kid[] => {
     const by = new Map<string, Goer[]>();
@@ -710,7 +721,7 @@ function dayDetail(day: string, on: Day<Present> | undefined, manager: Member): 
     line('There', [
       ...tagged(there.flatMap((a) => (a.goer ? [a.goer] : []))),
       ...there.flatMap((a) =>
-        a.added ? [[addedBy(a.added.name, title), unsure(a.added) ? [' ', doingTag([a.added])] : null]] : [],
+        a.added ? [[addedBy(a.added.name, title), unsure(a.added) ? [' ', heldTag(signal, [a.added])] : null]] : [],
       ),
     ]),
     [...stays].map(([stay, goers]) => h('p', {}, `Staying: ${stay}: `, joined(tagged(goers)))),

@@ -96,7 +96,7 @@ sides only.
     Glasgow (2) · Next: Oslo, 20 Nov"; with more than two festivals on, "Now: 11 festivals, most in Málaga (14)").
   - The festivals to come, by month ("November 2026 · 3 festivals"), each with its name, place and days, then a line per
     thing its people do there, labelled (teaching or playing first, then going, then maybe). A line names up to four
-    people or couples (`NAMED_UP_TO`, `site/plans.ts`); past that, the first three and "and N more", which opens the
+    people or couples (`NAMED_UP_TO`, `site/plans.tsx`); past that, the first three and "and N more", which opens the
     list of everyone going.
   - A short list (up to six festivals and eight people) is all there is. A longer one gets a bar: **Friends** (a list to
     tick, the ticked first, with a search; the festivals all of them go to, or any of them; two with nothing in common

@@ -5,7 +5,7 @@ import { q, sql } from './db.ts';
 import { button, h } from './dom.ts';
 import { heldCard } from './eventcard.tsx';
 import { withDetails } from './festivals.ts';
-import { person, togetherHref } from './plans.ts';
+import { person, togetherHref } from './plans.tsx';
 import { artistHref, personHref } from './routes.ts';
 import { EVENT } from './rows.ts';
 import { joined } from './wording.ts';

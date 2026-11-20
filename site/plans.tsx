@@ -1,10 +1,13 @@
-import { type Kid, own } from './bits.ts';
 // Who said they're going to a festival (pipeline/people.csv and plans.csv). Cards name featured people and count
 // the rest; partners who are both going are named as their couple. Someone in a festival's line-up, alone or in a
-// couple, is teaching (or playing) there rather than just going.
+// couple, is teaching (or playing) there rather than just going. Its renderers and quick views are drawn by Solid;
+// an h() view holds one through mount.tsx's held.
+import type { JSX } from 'kiz-jsx/jsx-runtime';
+import { For } from 'solid-js';
+import { flat, own } from './bits.ts';
 import { one, q, site, sql } from './db.ts';
-import { leaving, type Peek, peek } from './dialog.tsx';
-import { button, h, nodes } from './dom.ts';
+import { leaving, type Peek, peek, type Shown } from './dialog.tsx';
+import { held } from './mount.tsx';
 import { roleLabel } from './roles.ts';
 import { artistHref, eventOnMapHref, friendsHref, personHref } from './routes.ts';
 import {
@@ -96,7 +99,7 @@ interface Going {
 // the featured people going to any of these festivals: "Cédric & Christina" and to how many; null when none is
 export function friendsIn(
   rows: readonly { readonly goers: readonly Goer[] }[],
-): { n: number; many: boolean; faces: HTMLElement; names: HTMLElement } | null {
+): { n: number; many: boolean; faces: () => JSX.Element; names: () => JSX.Element } | null {
   // the friends going: someone who only may go is said so on the festival's card, not here
   const sure = (g: Goer) => g.featured && !unsure(g);
   const at = rows.filter((e) => e.goers.some(sure));
@@ -105,16 +108,21 @@ export function friendsIn(
   return {
     n: at.length,
     many: people.length > 1,
-    faces: faces(people),
-    names: h('b', {}, joined(named(people).map(nameButton))),
+    faces: () => faces(people),
+    names: () => <b>{joined(named(people).map(nameButton))}</b>,
   };
 }
 // who's going to one festival, inline: each person or couple linked, with what they're doing there
-export const goersInline = (goers: readonly Goer[]): Kid[] =>
+export const goersInline = (goers: readonly Goer[]): JSX.Element =>
   joined(
-    named(goers).map((g) =>
-      h('span', { class: 'goer' }, h('a', { href: g.href, class: 'artist' }, g.name), ' ', doingTag(g.people)),
-    ),
+    named(goers).map((g) => (
+      <span class="goer">
+        <a href={g.href} class="artist">
+          {g.name}
+        </a>{' '}
+        {doingTag(g.people)}
+      </span>
+    )),
   );
 
 // the names to say of these goers, a couple's when both partners are among them
@@ -148,31 +156,41 @@ const doing = (people: readonly Plans[]): { readonly words: string; readonly as:
   const plan = people.length > 0 && people.every(unsure) ? KEY.plan.MAYBE : KEY.plan.GOING;
   return { words: text('plan', plan), as: plan };
 };
-const faces = (people: readonly { readonly name: string }[]) =>
-  h(
-    'span',
-    { class: 'faces', 'aria-hidden': 'true' },
-    people.map((p) => h('span', { class: 'face' }, p.name[0])),
-  );
+const faces = (people: readonly { readonly name: string }[]) => (
+  <span class="faces" aria-hidden="true">
+    <For each={people}>{(p) => <span class="face">{p.name[0]}</span>}</For>
+  </span>
+);
 const count = (n: number) => plural(n, 'person', 'people');
 
 // A name in a card or under the sentence opens the quick view of that person or couple; "3 more people" opens the
 // list of everyone going. Neither leaves the page.
 // a name that opens a quick view, from inside a card or another quick view
-const goerName = (words: string, open: (from: Element | null) => void) =>
-  button({ class: 'goer-name', onclick: own(open) }, words);
+const goerName = (words: string, open: (from: Element | null) => void) => (
+  <button type="button" class="goer-name" onClick={own(open)}>
+    {words}
+  </button>
+);
 const nameButton = (g: Named) => goerName(g.name, (b) => peekGroup(g, b));
-const tagOf = ({ words, as }: ReturnType<typeof doing>) =>
-  h('span', { class: ['plan-tag', as === 'booked' && 'booked', as === KEY.plan.MAYBE && 'unsure'] }, words);
+const tagOf = ({ words, as }: ReturnType<typeof doing>) => (
+  <span class={['plan-tag', as === 'booked' && 'booked', as === KEY.plan.MAYBE && 'unsure']}>{words}</span>
+);
 // what these people do there, as a tag: teaching when all of them are in the line-up, else maybe or going
-export const doingTag = (people: readonly Plans[]): HTMLElement => tagOf(doing(people));
+const doingTag = (people: readonly Plans[]): JSX.Element => tagOf(doing(people));
+// what an h() view holds of these (mount.tsx held), until it is Solid's: a tag, and who's going inline
+export const heldTag = (signal: AbortSignal, people: readonly Plans[]): HTMLElement =>
+  held(signal, HTMLElement, 'a tag of what they do there', () => doingTag(people));
 // someone going, in a list of who's going: their faces, their name opening their plans, and how they're going
-const goerRow = (g: Named, open: (from: Element | null) => void) =>
-  h('li', {}, faces(g.people), goerName(g.name, open), ' ', tagOf(doing(g.people)));
+const goerRow = (g: Named, open: (from: Element | null) => void) => (
+  <li>
+    {faces(g.people)}
+    {goerName(g.name, open)} {tagOf(doing(g.people))}
+  </li>
+);
 
 // "Cédric & Christina are going · Tonje may go · 3 more people too", or "3 people said they're going"; null when
 // nobody has said. The others are counted whether they go or may: their list says which.
-export function goingLine(e: Going): HTMLElement | null {
+export function goingLine(e: Going): JSX.Element {
   if (e.goers.length === 0) return null;
   const featured = e.goers.filter((g) => g.featured),
     others = e.goers.length - featured.length;
@@ -181,26 +199,24 @@ export function goingLine(e: Going): HTMLElement | null {
   const more = (words: string) => goerName(words, (b) => peekEvent(e, b));
   const said = [
     sure.length > 0
-      ? [h('b', {}, joined(named(sure).map(nameButton))), ` ${sure.length > 1 ? 'are' : 'is'} ${doing(sure).words}`]
+      ? [<b>{joined(named(sure).map(nameButton))}</b>, ` ${sure.length > 1 ? 'are' : 'is'} ${doing(sure).words}`]
       : null,
     may.length > 0
-      ? [h('b', {}, joined(named(may).map(nameButton))), ` ${text('plan', KEY.plan.MAYBE, {}, 'line')}`]
+      ? [<b>{joined(named(may).map(nameButton))}</b>, ` ${text('plan', KEY.plan.MAYBE, {}, 'line')}`]
       : null,
   ].filter((x) => x !== null);
-  return h(
-    'p',
-    { class: 'going-line' },
-    faces(featured),
-    h(
-      'span',
-      {},
-      said.flatMap((s, i) => (i === 0 ? [s] : [' · ', s])),
-      others
-        ? said.length > 0
-          ? [' · ', more(plural(others, 'more person', 'more people')), ' too']
-          : [more(count(others)), ' said they’re going']
-        : null,
-    ),
+  return (
+    <p class="going-line">
+      {faces(featured)}
+      <span>
+        {said.flatMap((x, i) => (i === 0 ? [x] : [' · ', x]))}
+        {others
+          ? said.length > 0
+            ? [' · ', more(plural(others, 'more person', 'more people')), ' too']
+            : [more(count(others)), ' said they’re going']
+          : null}
+      </span>
+    </p>
   );
 }
 
@@ -209,7 +225,7 @@ export function goingLine(e: Going): HTMLElement | null {
 // and "and 5 more", which opens the list of everyone going, the ticked always named.
 const NAMED_UP_TO = 4;
 const NAMED_PAST = 3; // named on a line past NAMED_UP_TO
-export function whoLines(e: Going, ticked: ReadonlySet<string> = new Set()): HTMLElement {
+export function whoLines(e: Going, ticked: ReadonlySet<string> = new Set()): JSX.Element {
   const isTicked = (g: Named) => g.people.some((p) => ticked.has(p.key));
   const lines = new Map<string, { as: ReturnType<typeof doing>['as']; groups: Named[] }>();
   for (const g of named(e.goers)) {
@@ -219,44 +235,46 @@ export function whoLines(e: Going, ticked: ReadonlySet<string> = new Set()): HTM
     lines.set(d.words, line);
   }
   const rank = (as: string) => (as === 'booked' ? 0 : as === KEY.plan.GOING ? 1 : 2);
-  return h(
-    'div',
-    { class: 'who-lines' },
-    [...lines.entries()]
-      .sort(([, a], [, b]) => rank(a.as) - rank(b.as))
-      .map(([words, { groups }]) => {
-        const ordered = [...groups.filter(isTicked), ...groups.filter((g) => !isTicked(g))];
-        const shown =
-          ordered.length <= NAMED_UP_TO
-            ? ordered
-            : ordered.slice(0, Math.max(NAMED_PAST, ordered.filter(isTicked).length));
-        const more = ordered.length - shown.length;
-        return h(
-          'p',
-          {},
-          h('span', { class: 'who-label' }, words),
-          h(
-            'span',
-            {},
-            joined([...shown.map(nameButton), ...(more > 0 ? [goerName(`${more} more`, (b) => peekEvent(e, b))] : [])]),
-          ),
-        );
-      }),
+  const sorted = [...lines.entries()].sort(([, a], [, b]) => rank(a.as) - rank(b.as));
+  return (
+    <div class="who-lines">
+      <For each={sorted}>
+        {([words, { groups }]) => {
+          const ordered = [...groups.filter(isTicked), ...groups.filter((g) => !isTicked(g))];
+          const shown =
+            ordered.length <= NAMED_UP_TO
+              ? ordered
+              : ordered.slice(0, Math.max(NAMED_PAST, ordered.filter(isTicked).length));
+          const more = ordered.length - shown.length;
+          return (
+            <p>
+              <span class="who-label">{words}</span>
+              <span>
+                {joined([
+                  ...shown.map(nameButton),
+                  ...(more > 0 ? [goerName(`${more} more`, (b) => peekEvent(e, b))] : []),
+                ])}
+              </span>
+            </p>
+          );
+        }}
+      </For>
+    </div>
   );
 }
 
 // the list in an opened card: featured people first, each with what they're doing there
-export function whoIsGoing(e: Going): HTMLElement | null {
+export function whoIsGoing(e: Going): JSX.Element {
   if (e.goers.length === 0) return null;
-  return h(
-    'section',
-    { class: ['roster', 'who'] },
-    h('h4', {}, 'Who’s going', h('span', { class: 'n' }, counted(e.goers))),
-    h(
-      'ul',
-      {},
-      everyone(e).map((g) => goerRow(g, (b) => peekGroup(g, b))),
-    ),
+  return (
+    <section class={['roster', 'who']}>
+      <h4>
+        Who’s going<span class="n">{counted(e.goers)}</span>
+      </h4>
+      <ul>
+        <For each={everyone(e)}>{(g) => goerRow(g, (b) => peekGroup(g, b))}</For>
+      </ul>
+    </section>
   );
 }
 // how many go, and how many may: "5", "4 · 1 maybe"
@@ -275,28 +293,14 @@ const peekDialog = (): Peek => {
   view ??= peek('peek-title');
   return view;
 };
-function show(
-  from: EventTarget | null,
-  {
-    faces: f,
-    title,
-    sub,
-    body,
-    foot,
-  }: {
-    readonly faces?: HTMLElement;
-    readonly title: string;
-    readonly sub: Kid;
-    readonly body: readonly Kid[];
-    readonly foot?: Kid;
-  },
-) {
+// what is shown drawn in the quick view, opened from where it was asked (an element), or kept open as it is (null: a
+// name in the list of everyone going, or the way back to it)
+function show(from: Element | null, what: Shown): void {
   const v = peekDialog();
-  const [said, held, under] = [nodes([sub]), nodes(body), nodes([foot])];
-  v.show({ lead: () => f, title, sub: () => said, body: () => held, foot: () => under });
-  if (from instanceof Element) v.m.open(from);
+  v.show(what);
+  if (from !== null) v.m.open(from);
 }
-const link = (href: string, ...kids: readonly Kid[]) => leaving(peekDialog().m, href, ...kids);
+const link = (href: string, words: JSX.Element) => leaving(peekDialog().m, href, words);
 
 // a person's plans to come, by festival
 const PLAN = {
@@ -327,7 +331,7 @@ function plansOf(g: Named): Map<number, { e: Plan; people: Plan[] }> {
 }
 
 // a line about them, from their artist record when they have one
-function aboutLine(g: Named): Kid {
+function aboutLine(g: Named): JSX.Element {
   const [first] = g.people;
   const artistId = g.artist ?? (first === undefined ? undefined : person(first.key)?.artists[0]?.id);
   const a =
@@ -353,14 +357,21 @@ function aboutLine(g: Named): Kid {
 type Listed = { readonly id: number; readonly title: string; readonly phase: Key<'phase'> } & RowOf<
   typeof PLACE_AND_DAYS
 >;
-const planRow = (e: Listed, name: Kid, who: Kid, also = '') =>
-  h(
-    'li',
-    {},
-    h('span', { class: 'when' }, dayRange(e.start_date, e.end_date)),
-    h('span', { class: 'what' }, nowTag(e), name, h('span', { class: 'muted' }, ' · ', place(e), also)),
-    who,
-  );
+const planRow = (e: Listed, name: JSX.Element, who: JSX.Element, also = '') => (
+  <li>
+    <span class="when">{dayRange(e.start_date, e.end_date)}</span>
+    <span class="what">
+      {flat([nowTag(e)])}
+      {name}
+      <span class="muted">
+        {' · '}
+        {flat(place(e))}
+        {also}
+      </span>
+    </span>
+    {who}
+  </li>
+);
 // one festival they're going to, with which of them when only some are
 const planItem = (g: Named, e: Plan, people: readonly Plan[]) =>
   planRow(
@@ -370,52 +381,51 @@ const planItem = (g: Named, e: Plan, people: readonly Plan[]) =>
     people.length < g.people.length ? ` · ${people.map((p) => p.name).join(', ')}` : '',
   );
 
-// Where a person or a couple is going: what they're doing there, and which of them when only one goes.
-function peekGroup(g: Named, from: EventTarget | null, back?: HTMLElement) {
-  const byEvent = plansOf(g);
+// Where a person or a couple is going: what they're doing there, and which of them when only one goes; back, the way
+// back to the list it was opened from. Its plans are read as the quick view draws them.
+function peekGroup(g: Named, from: Element | null, back?: () => JSX.Element) {
   show(from, {
-    faces: faces(g.people),
+    lead: () => faces(g.people),
     title: g.name,
-    sub: aboutLine(g),
-    body: [
-      back ?? null,
-      h('h3', {}, `Coming up · ${byEvent.size}`),
-      byEvent.size > 0
-        ? h(
-            'ul',
-            { class: 'peek-plans' },
-            [...byEvent.values()].map(({ e, people }) => planItem(g, e, people)),
-          )
-        : h('p', { class: 'muted' }, 'No festival plans coming up.'),
-    ].filter(Boolean),
-    foot: [
+    sub: () => aboutLine(g),
+    body: () => {
+      const byEvent = [...plansOf(g).values()];
+      return [
+        back?.() ?? null,
+        <h3>{`Coming up · ${byEvent.length}`}</h3>,
+        byEvent.length > 0 ? (
+          <ul class="peek-plans">
+            <For each={byEvent}>{({ e, people }) => planItem(g, e, people)}</For>
+          </ul>
+        ) : (
+          <p class="muted">No festival plans coming up.</p>
+        ),
+      ];
+    },
+    foot: () => [
       link(g.href, 'See their page →'),
-      link(
-        togetherHref(g.people.map((p) => p.key)),
-        h('span', { class: 'muted' }, 'Festivals in common with others →'),
-      ),
+      link(togetherHref(g.people.map((p) => p.key)), <span class="muted">Festivals in common with others →</span>),
     ],
   });
 }
 
 // Everyone going to one festival; a name opens their own quick view, with a way back to this list.
-function peekEvent(e: Going, from?: EventTarget | null) {
-  const groups = everyone(e);
-  const backTo = () =>
-    button({ class: ['link', 'back-link'], onclick: () => peekEvent(e) }, '← Everyone going to ', e.title);
-  show(from ?? null, {
+function peekEvent(e: Going, from: Element | null = null) {
+  const backTo = () => (
+    <button type="button" class={['link', 'back-link']} onClick={() => peekEvent(e)}>
+      ← Everyone going to {e.title}
+    </button>
+  );
+  show(from, {
     title: `Who’s going to ${e.title}`,
-    sub: [dayRange(e.start_date, e.end_date), ' · ', place(e)],
-    body: [
-      h(
-        'ul',
-        { class: 'peek-people' },
-        groups.map((g) => goerRow(g, () => peekGroup(g, null, backTo()))),
-      ),
-    ],
+    sub: () => [dayRange(e.start_date, e.end_date), ' · ', flat(place(e))],
+    body: () => (
+      <ul class="peek-people">
+        <For each={everyone(e)}>{(g) => goerRow(g, () => peekGroup(g, null, backTo))}</For>
+      </ul>
+    ),
   });
 }
-
 // how far from the site's home city someone lives and is near it, in km
 export const NEAR_KM = 200;
 interface Spot {
