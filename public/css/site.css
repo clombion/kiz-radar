@@ -139,29 +139,12 @@ footer {
   text-align: center;
   color: var(--muted);
 }
-.card h3 {
-  margin: 0.1em 0;
-  overflow-wrap: anywhere;
-}
 .when {
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--accent);
-}
-.fare {
-  text-align: right;
-  flex: none;
-  max-width: 19rem;
-}
-.fare .price {
-  font-size: 1.4rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-.fare.none .price {
-  font-size: 1rem;
 }
 .field {
   display: flex;
@@ -214,15 +197,6 @@ footer {
 .leaflet-control-attribution a {
   color: var(--accent);
 }
-.lineup ul {
-  margin: 0;
-  padding-left: 1.1rem;
-  columns: 2;
-  column-gap: 1.5rem;
-}
-.lineup li {
-  break-inside: avoid;
-}
 .bars {
   list-style: none;
   padding: 0;
@@ -264,20 +238,6 @@ thead th {
 }
 th[scope="row"] {
   font-weight: 500;
-}
-button.sort {
-  background: none;
-  color: var(--text);
-  padding: 0;
-  font-weight: 600;
-}
-th[aria-sort="ascending"] button.sort::after {
-  content: " ▲";
-  font-size: 0.7em;
-}
-th[aria-sort="descending"] button.sort::after {
-  content: " ▼";
-  font-size: 0.7em;
 }
 .sqlview {
   display: grid;
@@ -449,14 +409,6 @@ button {
   cursor: pointer;
   background: var(--accent);
 }
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 0.9rem 1rem;
-  min-width: 0;
-  box-shadow: none;
-}
 .table-wrap {
   overflow-x: auto;
   background: var(--surface);
@@ -477,13 +429,6 @@ button {
 .flight {
   font-size: 0.88rem;
   color: var(--muted);
-}
-.flight .p {
-  color: var(--text);
-  font-weight: 600;
-}
-.flight.easy .p {
-  color: var(--good);
 }
 .flight a {
   color: var(--muted);
@@ -964,14 +909,12 @@ a.artist:focus-visible {
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
-.festival-card a.artist,
-.festival-card .lineup a {
+.festival-card a.artist {
   color: var(--text);
   text-decoration: none;
   border-bottom: 1.5px dashed color-mix(in srgb, var(--accent) 55%, transparent);
 }
-.festival-card a.artist:hover,
-.festival-card .lineup a:hover {
+.festival-card a.artist:hover {
   color: var(--accent);
   border-bottom: 1.5px solid var(--accent);
 }
@@ -1527,12 +1470,6 @@ body:has(.pmap) .to-top {
   }
   .sqlview {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .fare {
-    text-align: left;
-  }
-  .lineup ul {
-    columns: 1;
   }
   .bars li {
     grid-template-columns: 8rem 1fr 2rem;
