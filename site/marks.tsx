@@ -1,7 +1,8 @@
 // The small marks the views share, drawn by Solid: the arrow after words that lead off the site, On now before a
 // festival's name, and the animated mark while something loads, which main.ts draws through placed.tsx as a view waits
-// for the database.
+// for the database, and the line in its place when the load failed.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
+import { message } from './report.ts';
 import { KEY } from './states.ts';
 import { type Key, text } from './wording.ts';
 
@@ -19,4 +20,9 @@ export const loadingMark = (words = ''): JSX.Element => (
     <img src="loading.svg" alt="" width="56" height="56" />
     <span>{words || <span class="visually-hidden">Loading</span>}</span>
   </p>
+);
+
+// what a view says in place of the loading mark when the data failed to load (or the page, when site.json did)
+export const loadFailed = (e: unknown): JSX.Element => (
+  <p class={['status', 'error']}>{`Could not load the data: ${message(e)}`}</p>
 );

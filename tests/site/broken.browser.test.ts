@@ -13,7 +13,7 @@ const app = await startSite({
 });
 
 test('a view that throws while it builds says so in its place, and the page around it stays', async () => {
-  // report.ts's guarded says it in the console too, naming the view
+  // mount.tsx's boundary says it in the console too, naming the view
   expectConsole('error', /^Kiz Radar: artists: TypeError: column kind: "planted" is no artist_kind state$/u);
   // the helper refuses a page that says it failed, with its words
   await expect(app.open(artistsHref({ q: 'a' }))).rejects.toThrow('This page could not be shown');

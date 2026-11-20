@@ -1,18 +1,29 @@
 // The seam between main.ts and a view (the shell's parts have their own, placed.tsx): a Solid view behind routes.ts's
 // Show, the signature main.ts gives every view (mounted), and the review page's draw (dashboard.tsx), drawn anew from
-// its record on each change (drawnIn). A view is rendered into the empty root it is handed and disposed when its signal
-// aborts (another view shows, the review page drawn anew), which empties root; its clicks are delegated to that root. A
-// view that throws as it is first drawn says so in its place (report.ts cannotShow), within its error boundary: an
+// its record on each change (drawnIn). A view is rendered into the empty root it is handed (viewRoot) and disposed when
+// its signal aborts (another view shows, the review page drawn anew), which empties root; its clicks are delegated to
+// that root. A view that throws as it is first drawn says so in its place (cannotShow), within its error boundary: an
 // error that escaped every boundary would halt each signal of the page, the router's among them (main.ts). What it
 // draws again as the visitor changes it is drawn in a boundary of its own (Redrawn, redrawing, createDerived), which
 // says a later throw as the page's.
 import { render } from '@solidjs/web';
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { type Accessor, createEffect, createMemo, Errored, onCleanup, runWithOwner, untrack } from 'solid-js';
+import { asElement } from './bits.ts';
 import { page } from './owner.ts';
-import { reported } from './placed.tsx';
-import { cannotShow } from './report.ts';
+import { instead, reported } from './placed.tsx';
+import { logged, message } from './report.ts';
 import type { Show } from './routes.ts';
+
+// What a view that threw while it built says in its place, said in the console too, naming the view (where): its error
+// boundary's, and mounted's for what escapes the render.
+function cannotShow(where: string, e: unknown): JSX.Element {
+  logged(e, where);
+  return <p class={['status', 'error']}>{`This page could not be shown: ${message(e)}`}</p>;
+}
+
+// the empty element a view is drawn into, which main.ts puts in <main>
+export const viewRoot = (): HTMLElement => asElement(<div />, HTMLDivElement, "a view's root");
 
 // dispose called once signal aborts, or at once if it has
 function disposedWith(signal: AbortSignal, dispose: () => void): void {
@@ -49,16 +60,25 @@ export function drawnIn(root: HTMLElement, name: string, signal: AbortSignal, dr
   );
 }
 
-// The view, as main.ts shows a view: drawn from its address, which never changes over its life.
+// The view, as main.ts shows a view: drawn from its address, which never changes over its life. A throw that escapes
+// its boundary (render's own) is said in its place all the same, root emptied first, until the view is left: a guard
+// no test reaches, the one way found to reach it, a throw in the boundary's fallback itself, finding Solid halted.
 export const mounted =
   (view: (at: ViewProps) => JSX.Element): Show =>
   (root, sub, qs, { signal, data, name }) => {
-    drawnIn(root, name, signal, () => view({ sub, qs, data }));
+    try {
+      drawnIn(root, name, signal, () => view({ sub, qs, data }));
+    } catch (e) {
+      disposedWith(
+        signal,
+        instead(root, name, () => cannotShow(name, e)),
+      );
+    }
   };
 
 // What a view draws again as the visitor changes it (a list on a choice, a panel on a pan, a row on a toggle, a query's
 // result on a run), whose throw would otherwise take the whole view: as the view is first drawn, a throw is the view's
-// (its boundary says it cannot be shown, as guarded did); later it is said as the page's (placed.tsx reported) and the
+// (its boundary says it cannot be shown); later it is said as the page's (placed.tsx reported) and the
 // part draws nothing, until its next change draws it again (Solid's Errored heals). A part drawn once and kept (a trip
 // row's chart, its card) has no next change: it is drawn again the next time again turns true (the row opened again),
 // as the h() row tried again on each opening. A throw the part says itself (says, true once said) is not the page's:
