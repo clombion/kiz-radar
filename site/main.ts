@@ -3,8 +3,9 @@
 // into index.html, which holds the rest: the header's tabs and the second row (tabs.tsx), the footer's links and its
 // currency switch, the skip link and Back to top (shell.tsx), and the search (search.tsx); the line that says something
 // went wrong is report.ts's, the page mid-update updating.tsx's. Each view gets an AbortSignal that fires when you
-// leave it: listeners it adds to document or window pass it, so nothing outlives the view. The view shown follows one
-// signal, the address (address.ts), and sets the tabs' current one.
+// leave it: an h() view's listeners on the document or the window pass it, so nothing outlives the view; a Solid view
+// is disposed by it, its listeners going with its owner (mount.tsx disposal). The view shown follows one signal, the
+// address (address.ts), and sets the tabs' current one.
 
 import { createEffect, createRoot, createSignal } from 'solid-js';
 import { type Address, createAddress } from './address.ts';
@@ -14,7 +15,7 @@ import { communityView } from './communities.ts';
 import { countries } from './countries.tsx';
 import { freshDay, load, loadSite, SiteUpdating } from './db.ts';
 import { h } from './dom.ts';
-import { friendsTabs, friendsView, placeOf } from './friends.ts';
+import { friends, friendsTabs, placeOf } from './friends.tsx';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
 import { loadingMark } from './marks.tsx';
@@ -83,8 +84,8 @@ const VIEWS: Readonly<Record<Route, View>> = {
     title: 'Friends',
     nav: 'friends',
     waitsForData: true,
-    show: (root, [key], qs, { signal }) =>
-      key === undefined ? friendsView(root, qs, signal) : personView(root, key, signal),
+    show: (root, sub, qs, opts) =>
+      sub[0] === undefined ? mounted(friends)(root, sub, qs, opts) : personView(root, sub[0], opts.signal),
   },
   community: {
     title: 'Community',

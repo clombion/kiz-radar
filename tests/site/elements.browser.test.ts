@@ -5,7 +5,16 @@
 // Cédric and Christina to KUOF with two more added in a community of its own, and one artist's bookings replaced.
 import { expect, test, vi } from 'vitest';
 import { userEvent } from 'vitest/browser';
-import { artistHref, countriesHref, EXPLORE, festivalsHref, mapHref, sourcesHref, TABS } from '../../site/routes.ts';
+import {
+  artistHref,
+  countriesHref,
+  EXPLORE,
+  festivalsHref,
+  friendsHref,
+  mapHref,
+  sourcesHref,
+  TABS,
+} from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, GLASGOW, KUOF } from './community.fixture.ts';
 import { bookedArtist, bookings, community, flies, retitled, TO_KUOF, trips } from './planted.ts';
@@ -120,11 +129,20 @@ test('what holds nothing is left out: no class or aria-current on a tab not show
 });
 
 // A control the address turns on is drawn on and marked so in the markup, as the h() views wrote it: a checkbox
-// checked, as a reset form or a script reading the markup sees the address's choice.
+// checked, a select's option selected, a search's words its value, as a reset form or a script reading the markup sees
+// the address's choice.
 test('a control the address turns on is marked so in the markup', async () => {
   await app.open(countriesHref({ all: 1 }));
   const box = main()?.querySelector<HTMLInputElement>('.countries-page input[type="checkbox"]');
   expect([box?.checked, box?.hasAttribute('checked')]).toEqual([true, true]);
+  await app.open(friendsHref({ when: 'months', q: 'oslo', with: 'cedric' }));
+  const when = main()?.querySelector<HTMLSelectElement>('.bar-inner select');
+  const marked = [...(when?.options ?? [])].filter((o) => o.hasAttribute('selected'));
+  expect([when?.value, marked.map((o) => o.value)]).toEqual(['months', ['months']]);
+  const search = main()?.querySelector<HTMLInputElement>('.bar-inner input[type="search"]');
+  expect([search?.value, search?.getAttribute('value')]).toEqual(['oslo', 'oslo']);
+  const ticked = [...(main()?.querySelectorAll<HTMLInputElement>('.pick-row input') ?? [])].filter((b) => b.checked);
+  expect(ticked.map((b) => b.hasAttribute('checked'))).toEqual([true]);
 });
 
 test.for([
