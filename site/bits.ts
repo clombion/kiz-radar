@@ -1,6 +1,7 @@
 // What dom.ts held that draws nothing: the types of an element's contents and classes, what contents hold, an id no
 // other element has, two ways to wait (a pause in typing, a frame after a resize), and a control's click kept its own
-// (own). A Solid view (.tsx), which imports nothing of dom.ts (house/legacy), takes them from here.
+// (own); and for JSX, an element's style set through a ref (styled) and an element JSX made checked (asElement). A Solid
+// view (.tsx), which imports nothing of dom.ts (house/legacy), takes them from here.
 import type { ClassName } from './classes.ts';
 
 // what an element holds: nodes and text, nested as lists; null, undefined and false hold nothing
@@ -60,6 +61,14 @@ export const own =
   (ev: Event): void => {
     ev.stopPropagation();
     act?.(ev.currentTarget instanceof Element ? ev.currentTarget : null);
+  };
+
+// A ref that sets each of an element's style properties, one by one, which the page's Content-Security-Policy allows
+// where it refuses a style attribute (house/styles): a stroke's place and ink, known only as it is drawn.
+export const styled =
+  (properties: Readonly<Record<string, string>>) =>
+  (el: HTMLElement): void => {
+    for (const [k, v] of Object.entries(properties)) el.style.setProperty(k, v);
   };
 
 // What JSX made (made, an element as Solid makes it) as an element of the class of, for code that holds it as one (the

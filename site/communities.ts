@@ -24,10 +24,10 @@ import { one, q, sql } from './db.ts';
 import { button, h, nodes } from './dom.ts';
 import { heldCard } from './eventcard.tsx';
 import { type Festival, withDetails } from './festivals.ts';
-import { dayTimeAt, gantt, ganttByPlace, timeAt, unsaidEnd } from './gantt.ts';
+import { dayTimeAt, gantt, ganttByPlace, timeAt, unsaidEnd } from './gantt.tsx';
 import { Drawing } from './icons.ts';
 import { months, popover } from './months.ts';
-import { heldNodes, redraws } from './mount.tsx';
+import { held, heldNodes, redraws } from './mount.tsx';
 import { page, personLink, shareButton } from './people.ts';
 import { couplesAmong, type Goer, goersInline, heldTag, namesOf } from './plans.tsx';
 import {
@@ -430,7 +430,9 @@ function chartOf({ e, aways }: Visit, c: Community, id: string, signal: AbortSig
     u.people.some((a) => a.added) ? addedBy(u.name, title) : u.name,
     u.people.every(mayGo) ? [' ', heldTag(signal, u.people.map(plansOf))] : null,
   ];
-  const byTravel = gantt({ ...frame, lines, named, describedBy: said.id });
+  const byTravel = held(signal, HTMLElement, 'a roster by travel', () =>
+    gantt({ ...frame, lines, named, describedBy: said.id }),
+  );
   // by place too, when its people stay at two places or more: the same people, a line a place, and a control between
   const places = byPlace(goes);
   const placesSaid = places.filter((p) => p.place !== null).length;
@@ -439,7 +441,12 @@ function chartOf({ e, aways }: Visit, c: Community, id: string, signal: AbortSig
     { class: ['gantt-said', 'visually-hidden'], id: `${id}-places-said` },
     places.map(placeInWords).join('; '),
   );
-  const byPlaces = placesSaid < 2 ? null : ganttByPlace({ ...frame, places, named, describedBy: placeSaid.id });
+  const byPlaces =
+    placesSaid < 2
+      ? null
+      : held(signal, HTMLElement, 'a roster by place', () =>
+          ganttByPlace({ ...frame, places, named, describedBy: placeSaid.id }),
+        );
   const view = (as: 'travel' | 'place') => {
     seen.set(`${c.key} ${e.id}`, as);
     byTravel.hidden = as !== 'travel';

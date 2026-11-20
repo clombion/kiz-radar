@@ -4,6 +4,7 @@
 // the fixture's, their trips the same), so that the fixture's stays as it is for every other test.
 import type { Database } from 'sql.js';
 import { expect, test } from 'vitest';
+import { userEvent } from 'vitest/browser';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, KUOF } from './community.fixture.ts';
 import { community, TO_KUOF, trips } from './planted.ts';
@@ -15,6 +16,7 @@ import {
   COMM,
   ganttOf,
   kuofOf,
+  laidOut,
   opened,
   popover,
   said,
@@ -154,6 +156,27 @@ test('on a computer a card of names with no room to float by its text in the tri
   await app.open(COMM(SEVEN_MORE));
   const seen = await collectiveOf();
   expect([seen.floats, seen.inCard, seen.coversItsLine]).toEqual(['static', true, false]);
+});
+
+test('a card of names in the flow stays there when its text is clicked while the pointer is over it', async () => {
+  await atWidth(1200);
+  await app.open(COMM(SEVEN_MORE));
+  const row = await laidOut('KUOF');
+  const who = row?.querySelector<HTMLElement>('.gantt-who');
+  const list = row?.querySelector<HTMLElement>(`#${who?.getAttribute('aria-controls')}`);
+  if (!who || !list) throw new Error('KUOF’s roster has no card of names');
+  const seen = () => [
+    who.getAttribute('aria-expanded'),
+    list.matches('.gantt-who-flow'),
+    getComputedStyle(list).position,
+  ];
+  await userEvent.hover(who);
+  expect(seen()).toEqual(['false', true, 'static']);
+  // a click changes what is open, not the text the card is by: placed again, in the flow still
+  who.click();
+  expect(seen()).toEqual(['true', true, 'static']);
+  who.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+  await userEvent.unhover(who);
 });
 
 test('a roster of more than three, its biggest line of more than three people "Everyone else", names them on demand', async () => {
