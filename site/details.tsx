@@ -2,7 +2,8 @@
 // practical bits (venue, organisers) that matter once you've decided to go. Drawn by Solid, in the card's boundary
 // (eventcard.tsx), since it reads the line-up from the database as the card opens.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { createSignal, For, onCleanup } from 'solid-js';
+import { For } from 'solid-js';
+import { awhile } from './controls.tsx';
 import { q, sql } from './db.ts';
 import type { Festival } from './festivals.ts';
 import { type Drawing, icon as featureIcon, MORE_TRAITS, type Trait, TRAITS } from './icons.ts';
@@ -76,22 +77,13 @@ const roster = (r: Key<'role'>, listed: readonly Person[]) => (
 );
 
 // the code first: it's ours to give, and it's what someone opening the card for it wants. Copy says Copied for a
-// while once it has copied it; its timers are the line's, cleared with it.
+// while once it has copied it (controls.tsx awhile).
 const SAID_MS = 2000;
 function promoLine({ code, offer }: NonNullable<Festival['promo']>): JSX.Element {
-  const [copied, setCopied] = createSignal(false);
-  const timers = new Set<ReturnType<typeof setTimeout>>();
-  onCleanup(() => {
-    for (const t of timers) clearTimeout(t);
-  });
+  const [copied, said] = awhile(false, SAID_MS);
   const copy = async () => {
     await navigator.clipboard.writeText(code);
-    setCopied(true);
-    const t = setTimeout(() => {
-      timers.delete(t);
-      setCopied(false);
-    }, SAID_MS);
-    timers.add(t);
+    said(true);
   };
   return (
     <p class="promo">

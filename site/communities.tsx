@@ -28,7 +28,7 @@ import { dayTimeAt, gantt, ganttByPlace, timeAt, unsaidEnd } from './gantt.tsx';
 import { Drawing } from './icons.ts';
 import { months } from './months.tsx';
 import { Redrawn, type ViewProps } from './mount.tsx';
-import { personLink, shareButton } from './people.ts';
+import { page, personLink, shareButton } from './people.tsx';
 import { couplesAmong, doingTag, type Goer, goersInline, namesOf } from './plans.tsx';
 import {
   byPlace,
@@ -242,87 +242,85 @@ export function community({ sub: [key], qs }: ViewProps): JSX.Element {
     showInAddressBar(communityHref(c.key, { from: to === steps[0] ? null : to }));
   };
   document.title = `${c.name} · Kiz Radar`; // as its own page's title says it
-  return (
-    <article class="artist-profile">
-      <header class="profile-head">
-        <h1>{c.name}</h1>
-        {most === undefined ? null : (
-          <p class="community-when">
-            {'Most people are travelling '}
-            <b>{unbroken(dayRange(most.from, most.to))}</b>
-            {`: ${unbroken(plural(most.people, 'person', 'people'))}, to ${placesOf(most.aways)}.`}
-          </p>
-        )}
-        {nowAndNext(current, today)}
-        <div class="share-row">
-          {shareButton('Share this page', c.name, communityShareHref(c.key))}
-          <span
-            class="privacy"
-            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a lock and the people counted, said as one image, its markup kept as the h() page drew it during the port (revisit after 4.10)
-            role="img"
-            aria-label={`Anyone with the link can see this page · ${members}`}
-            title={`Anyone with the link can see this page · ${members}`}
-          >
-            <span
-              ref={(el) => {
-                Drawing.LOCK.into(el);
-              }}
-              aria-hidden="true"
-            />
-            <span
-              ref={(el) => {
-                Drawing.PEOPLE.into(el);
-              }}
-              aria-hidden="true"
-            />
-            <span aria-hidden="true">{c.members.length}</span>
-          </span>
-        </div>
-      </header>
-      {/* the months, while a trip is to come or one ended shows in them */}
-      {current.length > 0 || trips.some((t) => t.aways.some((a) => inPeriod(from, a)))
-        ? months({
-            today,
-            days,
-            label: (d, on) =>
-              `${weekDay(d)}: ${plural(on.people, 'person', 'people')} ${
-                on.aways.every((a) => atFestival(a, d)) ? 'at the festival in' : 'travelling to'
-              } ${placesOf(on.aways)}`,
-            festivals: trips.map(({ e, who, ended, off }) => ({
-              ...e,
-              people: who.people,
-              ended: ended || off !== null,
-            })),
-            // the days someone travels on outside their festival's days: the day before it they arrive, the day after
-            travel: new Set([...days].flatMap(([d, on]) => (on.aways.some((a) => !atFestival(a, d)) ? [d] : []))),
-            detail: (d) => dayDetail(d, everyone.get(d), c.manager),
-            from,
-            steps,
-            moved,
-          })
-        : null}
-      {current.length > 0 ? (
-        <section class="agenda">
-          <Redrawn>
-            <Show when={period()} keyed>
-              {(shown) => agenda(current, today, c, shown)}
-            </Show>
-          </Redrawn>
-        </section>
-      ) : (
-        <p class="muted">
-          {trips.length > 0 ? 'No trips coming up.' : 'No one in this community has said they’re going anywhere yet.'}
+  return page(
+    c.name,
+    <>
+      {most === undefined ? null : (
+        <p class="community-when">
+          {'Most people are travelling '}
+          <b>{unbroken(dayRange(most.from, most.to))}</b>
+          {`: ${unbroken(plural(most.people, 'person', 'people'))}, to ${placesOf(most.aways)}.`}
         </p>
       )}
-      <section>
-        <h2>Members</h2>
-        <p>
-          {joined(
-            c.members.map((m) => [personLink(m), m.key === c.manager.key ? <span class="muted"> manager</span> : null]),
-          )}
-        </p>
+      {nowAndNext(current, today)}
+      <div class="share-row">
+        {shareButton('Share this page', c.name, communityShareHref(c.key))}
+        <span
+          class="privacy"
+          // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a lock and the people counted, said as one image, its markup kept as the h() page drew it during the port (revisit after 4.10)
+          role="img"
+          aria-label={`Anyone with the link can see this page · ${members}`}
+          title={`Anyone with the link can see this page · ${members}`}
+        >
+          <span
+            ref={(el) => {
+              Drawing.LOCK.into(el);
+            }}
+            aria-hidden="true"
+          />
+          <span
+            ref={(el) => {
+              Drawing.PEOPLE.into(el);
+            }}
+            aria-hidden="true"
+          />
+          <span aria-hidden="true">{c.members.length}</span>
+        </span>
+      </div>
+    </>,
+    // the months, while a trip is to come or one ended shows in them
+    current.length > 0 || trips.some((t) => t.aways.some((a) => inPeriod(from, a)))
+      ? months({
+          today,
+          days,
+          label: (d, on) =>
+            `${weekDay(d)}: ${plural(on.people, 'person', 'people')} ${
+              on.aways.every((a) => atFestival(a, d)) ? 'at the festival in' : 'travelling to'
+            } ${placesOf(on.aways)}`,
+          festivals: trips.map(({ e, who, ended, off }) => ({
+            ...e,
+            people: who.people,
+            ended: ended || off !== null,
+          })),
+          // the days someone travels on outside their festival's days: the day before it they arrive, the day after
+          travel: new Set([...days].flatMap(([d, on]) => (on.aways.some((a) => !atFestival(a, d)) ? [d] : []))),
+          detail: (d) => dayDetail(d, everyone.get(d), c.manager),
+          from,
+          steps,
+          moved,
+        })
+      : null,
+    current.length > 0 ? (
+      <section class="agenda">
+        <Redrawn>
+          <Show when={period()} keyed>
+            {(shown) => agenda(current, today, c, shown)}
+          </Show>
+        </Redrawn>
       </section>
-    </article>
+    ) : (
+      <p class="muted">
+        {trips.length > 0 ? 'No trips coming up.' : 'No one in this community has said they’re going anywhere yet.'}
+      </p>
+    ),
+    <section>
+      <h2>Members</h2>
+      <p>
+        {joined(
+          c.members.map((m) => [personLink(m), m.key === c.manager.key ? <span class="muted"> manager</span> : null]),
+        )}
+      </p>
+    </section>,
   );
 }
 

@@ -349,7 +349,7 @@ test('the community’s page shares its page for a shared link, copied when the 
 
 test('the Share button says what to do when there is no clipboard or it is refused, then shows its label again', async () => {
   // the button's words just after a click, still at 2.4 s, and back by 2.6 s: the page says what it did for 2.5 s
-  // (people.ts), on a page of its own, with the browser as the stubs make it
+  // (people.tsx), on a page of its own, with the browser as the stubs make it
   const shared = async (...stubs: readonly (() => () => void)[]) => {
     await community();
     const share = shareButton();

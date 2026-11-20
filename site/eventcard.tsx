@@ -1,7 +1,7 @@
 // The festival card used across the site: date, place, title, styles, highlights, a few names and the flight,
 // opening in place to the full line-up and practical details. Rows come from festivals.ts (withDetails). Drawn by
-// Solid: a function of the festival and the card's options, its open state a signal; an h() view holds one through
-// mount.tsx's held.
+// Solid: a function of the festival and the card's options, its open state a signal, called by the views as they draw
+// their lists.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { createMemo, createSignal, flush, For, Show } from 'solid-js';
 import { type Classes, own } from './bits.ts';
@@ -14,7 +14,6 @@ import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
 import { away, nowTag } from './marks.tsx';
 import { approximately, money, within } from './money.ts';
-import { held } from './mount.tsx';
 import { passesButton, riseNote } from './passes.tsx';
 import { Reported } from './placed.tsx';
 import { goingLine } from './plans.tsx';
@@ -338,7 +337,3 @@ export const festivalCards = (list: readonly Festival[]): JSX.Element => (
     <For each={list}>{(e) => eventCard(e)}</For>
   </div>
 );
-
-// a card an h() view holds (mount.tsx held), until the view is Solid's
-export const heldCard = (signal: AbortSignal, e: Festival, drawn?: CardOptions): HTMLElement =>
-  held(signal, HTMLElement, `the card of ${e.title}`, () => eventCard(e, drawn));
