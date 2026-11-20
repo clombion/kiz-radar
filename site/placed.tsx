@@ -6,6 +6,7 @@
 // the call returns, as an h() element was.
 import { insert } from '@solidjs/web';
 import { type Component, createRoot, Errored, flush, runWithOwner } from 'solid-js';
+import { startOfBody } from './body.ts';
 import { page } from './owner.ts';
 import { report } from './report.ts';
 
@@ -35,4 +36,20 @@ export function inPlaceOf(el: Element, where: string, Part: Component): void {
   const parent = marker.parentNode;
   if (parent === null) throw new Error(`${where}: the element to draw in place of is in no page`);
   draw(where, Part, parent, marker);
+}
+
+// Part inside el, after what it holds: before a marker appended to it
+export function inside(el: Element, where: string, Part: Component): void {
+  draw(where, Part, el, el.appendChild(new Text()));
+}
+
+// Part at the start of <body>, after its start (body.ts), where the problem line is put before it
+export function atStart(where: string, Part: Component): void {
+  const start = startOfBody();
+  draw(where, Part, document.body, document.body.insertBefore(new Text(), start.nextSibling));
+}
+
+// Part at the end of <body>, after what is there: before a marker appended to it
+export function atEnd(where: string, Part: Component): void {
+  draw(where, Part, document.body, document.body.appendChild(new Text()));
 }

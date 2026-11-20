@@ -1,7 +1,7 @@
 // The whole page, in Chromium, started as a visitor gets it (app.ts): a new page takes the focus and names every
 // control, and what goes wrong is said on the page (a view that throws: broken.browser.test.ts).
 import { expect, onTestFinished, test, vi } from 'vitest';
-import { commands, page } from 'vitest/browser';
+import { commands, page, userEvent } from 'vitest/browser';
 import { communityHref, eventOnMapHref, EXPLORE, sourcesHref, TABS } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { FIXTURE_COMMUNITY, FIXTURE_PROMO, PRAGUE_GOLD } from './community.fixture.ts';
@@ -82,6 +82,36 @@ test('the footer links to the sources page, which says what the festival data co
   );
   // the footer's long column is gone: the sources are said on their page, not twice
   expect(footer?.textContent).not.toContain('Google Flights');
+});
+
+test('the skip link comes first and takes the focus to the page; the footer links the pages but Friends', async () => {
+  const skip = document.querySelector('body > button');
+  expect([skip?.className, skip?.textContent]).toEqual(['skip', 'Skip to the page']);
+  expect(document.body.querySelector(':scope > :not(script)')).toBe(skip);
+  // shown once a keyboard reaches it, and pressed
+  if (!(skip instanceof HTMLElement)) throw new Error('no skip link');
+  skip.focus();
+  await userEvent.keyboard('{Enter}');
+  expect(document.activeElement).toBe(main());
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('#footer-nav > a')];
+  expect(links.map((a) => [a.textContent, a.getAttribute('href')])).toEqual(
+    [...TABS.slice(0, -1), ...EXPLORE].map(([, label, href]) => [label, href]),
+  );
+  expect(document.querySelector('#footer-nav > :first-child')?.textContent).toBe('The site’s pages');
+});
+
+test('Back to top shows two screens down a long page, and takes the page back up', async () => {
+  const toTop = document.querySelector<HTMLButtonElement>('body > button.to-top');
+  expect(toTop?.textContent).toBe('↑ Back to top');
+  // a page four screens long, whatever the view holds
+  const tall = document.body.appendChild(document.createElement('div'));
+  tall.style.setProperty('height', `${4 * innerHeight}px`);
+  onTestFinished(() => tall.remove());
+  window.scrollTo(0, 2 * innerHeight + 10);
+  await expect.poll(() => toTop?.classList.contains('shown')).toBe(true);
+  await userEvent.click(toTop ?? document.body);
+  await expect.poll(() => scrollY).toBe(0);
+  expect(toTop?.classList.contains('shown')).toBe(false);
 });
 
 test('the footer switches the currency: kroner shown, euros and dollars a button each', () => {
