@@ -1,9 +1,11 @@
-// A dialog over the page (the search, the quick view of who's going), drawn by Solid. It has a history entry of its
-// own, so a phone's back button closes it instead of leaving the page; closing it any other way (×, Escape, a tap
-// outside) removes that entry. go() opens a link once the entry is gone, so the link isn't undone by it.
+// A dialog over the page (the search, and the quick views: who's going, a festival's flights, its passes), drawn by
+// Solid. It has a history entry of its own, so a phone's back button closes it instead of leaving the page; closing it
+// any other way (×, Escape, a tap outside) removes that entry. go() opens a link once the entry is gone, so the link
+// isn't undone by it.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
+import { createSignal, flush } from 'solid-js';
 import { asElement, flat, type Kid } from './bits.ts';
-import { atEnd } from './placed.tsx';
+import { atEnd, Reported } from './placed.tsx';
 import { done } from './report.ts';
 import { go } from './routes.ts';
 
@@ -105,42 +107,56 @@ export function leaving(m: Modal, href: string, ...kids: readonly Kid[]): HTMLAn
   );
 }
 
-// A quick view over the page (who's going, a festival's passes): a head of a lead (faces, when there are some), a
-// title and the line under it, and ×; a body; a foot. Drawn at the end of <body> when first asked for; each view fills
-// the parts (h()'s, until they are Solid's).
+// A quick view over the page (who's going, a festival's passes, its flights): a head of a lead (faces, when there are
+// some), a title and the line under it, and ×; a body; a foot. Drawn at the end of <body> when first asked for, empty;
+// show() draws what its opener hands it, each part drawn inside the dialog from its function, in a boundary of its own
+// that reports a part that throws and draws nothing in its place, so the dialog, its × and its history entry stay. The
+// body's scroll goes back to its top. What is shown is flushed, so the dialog holds it when it opens.
+interface Shown {
+  readonly lead?: () => JSX.Element;
+  readonly title: string;
+  readonly sub: () => JSX.Element;
+  readonly body: () => JSX.Element;
+  readonly foot?: () => JSX.Element;
+}
 export interface Peek {
   readonly m: Modal;
-  readonly lead: HTMLElement;
-  readonly title: HTMLElement;
-  readonly sub: HTMLElement;
-  readonly body: HTMLElement;
-  readonly foot: HTMLElement;
+  readonly show: (what: Shown) => void;
 }
 export function peek(id: string): Peek {
   const m = modal();
-  let lead: HTMLSpanElement | undefined,
-    title: HTMLHeadingElement | undefined,
-    sub: HTMLParagraphElement | undefined,
-    body: HTMLDivElement | undefined,
-    foot: HTMLDivElement | undefined;
+  const [shown, setShown] = createSignal<Shown | null>(null);
+  let body: HTMLDivElement | undefined;
+  // a part of what is shown, in its boundary
+  const part = (which: 'lead' | 'sub' | 'body' | 'foot') => (
+    <Reported where="a quick view">{shown()?.[which]?.()}</Reported>
+  );
   atEnd('a quick view', () => (
     <m.Dialog class="peek" labelledBy={id}>
       <div class="peek-head">
-        <span ref={lead} class="peek-faces" />
+        <span class="peek-faces">{part('lead')}</span>
         <div>
-          {/* oxlint-disable-next-line jsx-a11y/heading-has-content -- the quick view's title, which each view that opens it fills (plans, flights, passes) */}
-          <h2 ref={title} id={id} />
-          <p ref={sub} class="sub" />
+          <h2 id={id}>{shown()?.title}</h2>
+          <p class="sub">{part('sub')}</p>
         </div>
         <button type="button" class="peek-close" aria-label="Close" onClick={() => done(m.shut(), 'closing a dialog')}>
           ×
         </button>
       </div>
-      <div ref={body} class="peek-body" />
-      <div ref={foot} class="peek-foot" />
+      <div ref={body} class="peek-body">
+        {part('body')}
+      </div>
+      <div class="peek-foot">{part('foot')}</div>
     </m.Dialog>
   ));
-  // its parts, once drawn: none when its boundary drew nothing (reported), which no view can fill
-  if (!lead || !title || !sub || !body || !foot) throw new Error(`the quick view ${id} was not drawn`);
-  return { m, lead, title, sub, body, foot };
+  // its body, once drawn: none when its boundary drew nothing (reported), which nothing can be shown in
+  if (!body) throw new Error(`the quick view ${id} was not drawn`);
+  const drawn = body;
+  return {
+    m,
+    show(what) {
+      flush(() => setShown(what));
+      drawn.scrollTop = 0;
+    },
+  };
 }

@@ -3,7 +3,7 @@
 // Solid: a function of the festival and the card's options, its open state a signal; an h() view holds one through
 // mount.tsx's held.
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { createMemo, createSignal, Errored, flush, Show } from 'solid-js';
+import { createMemo, createSignal, flush, Show } from 'solid-js';
 import { type Classes, flat, type Kid, own } from './bits.ts';
 import { today } from './days.ts';
 import { cardDetails, passesButton, traitItems } from './details.tsx';
@@ -15,8 +15,9 @@ import { TRAITS } from './icons.ts';
 import { approximately, money, within } from './money.ts';
 import { held } from './mount.tsx';
 import { riseNote } from './passes.ts';
+import { Reported } from './placed.tsx';
 import { goingLine } from './plans.ts';
-import { done, report } from './report.ts';
+import { done } from './report.ts';
 import { artistHref } from './routes.ts';
 import { KEY, LINK } from './states.ts';
 import { away, calm, dayParts, flightsUrl, home, nowTag, otherYear, place, transition } from './ui.ts';
@@ -272,10 +273,6 @@ export function eventCard(e: Festival, { hint = null, open = false, onMap = fals
         {traits.length > 3 ? <li>{toggleBtn('link', `+${traits.length - 3}`)}</li> : null}
       </ul>
     ) : null;
-  const reported = (err: unknown): null => {
-    report(err, 'opening a card');
-    return null;
-  };
 
   // The card opens from its title, and from its foot below the line (the prices and "Line-up & details"); the rest of
   // it holds names and links that do their own thing.
@@ -311,14 +308,14 @@ export function eventCard(e: Festival, { hint = null, open = false, onMap = fals
       </div>
       <div class="festival-more" hidden={!shown()}>
         <Show when={read()}>
-          <Errored fallback={(err) => <>{reported(err())}</>}>
+          <Reported where="opening a card">
             {cardDetails(
               e,
               traits.slice(0, 3).map(([k]) => k),
               toggleBtn(['link', 'less'], 'Less'),
               { onMap },
             )}
-          </Errored>
+          </Reported>
         </Show>
       </div>
     </article>

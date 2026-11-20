@@ -6,7 +6,7 @@
 // on the map, and a country, style or highlight narrows the festival list, keeping its other choices.
 
 import type { JSX } from 'kiz-jsx/jsx-runtime';
-import { createEffect, createMemo, createSignal, Errored, flush, For } from 'solid-js';
+import { createEffect, createMemo, createSignal, flush, For } from 'solid-js';
 import { flat, type Kid } from './bits.ts';
 import { q, site, sql } from './db.ts';
 import { leaving, modal } from './dialog.tsx';
@@ -25,9 +25,9 @@ import {
 import { CHECKED, hasWith, isDance, WITH } from './finder.ts';
 import { fold, words } from './fold.ts';
 import { type Drawing, icon, NOTE } from './icons.ts';
-import { atEnd } from './placed.tsx';
+import { atEnd, Reported } from './placed.tsx';
 import { person, withPlans } from './plans.ts';
-import { done, report } from './report.ts';
+import { done } from './report.ts';
 import { roleLabel } from './roles.ts';
 import {
   artistHref,
@@ -551,11 +551,6 @@ function searchDialog(trigger: HTMLElement, data: Promise<unknown>): JSX.Element
       </p>
     </div>
   );
-  // what a row that throws as it is drawn leaves in the list: nothing, what went wrong said once
-  const reported = (e: unknown): null => {
-    report(e, "the search's results");
-    return null;
-  };
   const listOf = (s: Shown): JSX.Element => {
     switch (s.kind) {
       case 'blank':
@@ -701,7 +696,7 @@ function searchDialog(trigger: HTMLElement, data: Promise<unknown>): JSX.Element
       <div class="search-list" id="search-list" role="listbox" aria-label="Results">
         {/* a row that throws as it is drawn is reported, and the list left empty: the dialog, its entry and the next
         render stay */}
-        <Errored fallback={(e) => <>{reported(e())}</>}>{listOf(shown())}</Errored>
+        <Reported where="the search's results">{listOf(shown())}</Reported>
       </div>
     </searchModal.Dialog>
   );
