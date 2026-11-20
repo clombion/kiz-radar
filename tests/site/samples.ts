@@ -1,7 +1,7 @@
 // Passes and tiers made for the tests, each with the fields a test does not set at a plain value.
 import type { Fare } from '../../site/fares.ts';
 import type { Festival } from '../../site/festivals.ts';
-import type { Pass, Tier } from '../../site/passes.ts';
+import type { Pass, Tier } from '../../site/passes.tsx';
 import { KEY } from '../../site/states.ts';
 
 export const tier = (amount: number, k: Partial<Tier> = {}): Tier => ({

@@ -6,16 +6,15 @@ import { expect, test } from 'vitest';
 import { EXPLORE } from '../../site/routes.ts';
 import { startSite } from './app.ts';
 import { expectConsole } from './console.ts';
+import { unreadable } from './planted.ts';
 import { said } from './seen.ts';
 
 // every festival's line-up, a role no state has (an artist of two roles in one line-up is left one row)
-const UNREAD = "PRAGMA ignore_check_constraints = ON; UPDATE OR REPLACE event_artists SET role = 'planted'";
+const UNREAD = "UPDATE OR REPLACE event_artists SET role = 'planted'";
 await startSite({
   now: '2026-11-01',
   route: EXPLORE.find(([k]) => k === 'week')?.[2] ?? '',
-  plant: (db) => {
-    db.exec(UNREAD);
-  },
+  plant: (db) => unreadable(db, UNREAD),
 });
 const cards = () => [...document.querySelectorAll<HTMLElement>('main .festival-card')];
 const lines = () => [...document.querySelectorAll('[role="alert"]')].map(said);

@@ -7,7 +7,7 @@
 // today and aren't sold out, the cheapest; when several undated tiers apply, the price is the lowest of them. When none
 // applies yet, the first one to come. The next change is the first later tier, not sold out, that costs more.
 import { addDays } from './days.ts';
-import type { Pass, Tier } from './passes.ts';
+import type { Pass, Tier } from './passes.tsx';
 import { KEY } from './states.ts';
 import type { Key } from './wording.ts';
 

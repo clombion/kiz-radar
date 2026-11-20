@@ -14,6 +14,13 @@ function wrote(db: Database, rows: number, what: string): void {
   if (changed !== rows) throw new Error(`${what}: ${changed} rows written, not ${rows}`);
 }
 
+// Values the site's reading refuses (a state no state has, words where a number goes), written with the database's
+// checks off by statements whose last one must write rows, else an error naming them.
+export function unreadable(db: Database, statements: string): void {
+  db.exec(`PRAGMA ignore_check_constraints = ON; ${statements}`);
+  if (db.getRowsModified() === 0) throw new Error(`${statements}: no row written`);
+}
+
 // The number a query counts.
 const counted = (db: Database, query: string, params: readonly (string | number)[]): number =>
   Number(db.exec(query, [...params])[0]?.values[0]?.[0] ?? 0);
