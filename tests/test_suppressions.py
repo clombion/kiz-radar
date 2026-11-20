@@ -2,18 +2,20 @@
 module changes this list. What ruff's noqa comments suppress is what ruff itself reports once it ignores them, so a
 suppression of any form counts (a file's `# ruff: noqa` included); each noqa names its rules and its reason, in
 parentheses, and a pyright comment is only ever `pyright: ignore[rules]`. On the site, each tool's comment is read in
-that tool's files alone: a biome-ignore, in the stylesheet and the JSON configs Biome checks, names its rule and reason;
-in the TypeScript oxlint lints, an oxlint-disable-next-line names its rules and, after --, its reason, and a
-@ts-expect-error its reason. Rules ignored for a whole file are in pyproject.toml, biome.jsonc and .oxlintrc.json, each
-with its reason."""
+that tool's files alone: a biome-ignore, in the JSON configs Biome checks, names its rule and reason; in the stylesheet
+stylelint lints, a stylelint-disable-next-line names its rules and, after --, its reason; in the TypeScript oxlint
+lints, an oxlint-disable-next-line names its rules and, after --, its reason, and a @ts-expect-error its reason. Rules
+ignored for a whole file are in pyproject.toml, biome.jsonc and .oxlintrc.json, each with its reason."""
 
 import io
 import re
+import shlex
 import subprocess
 import sys
 import tokenize
 from collections import Counter
 from pathlib import Path
+from typing import Literal
 
 import pytest
 from pydantic import BaseModel, TypeAdapter
@@ -61,16 +63,27 @@ ALLOWED = Counter(
 )
 
 
-# the site's: Biome's in its files, oxlint's on the line before the one it suppresses, each with its rule and reason,
-# and TypeScript's only as an expected error with its reason
+# the site's: Biome's in its files, stylelint's and oxlint's on the line before the one it suppresses, each with its
+# rules and reason, and TypeScript's only as an expected error with its reason
 BIOME = re.compile(r'biome-ignore (?P<rules>lint/\w+/\w+): \S.*')
+STYLELINT = re.compile(r'stylelint-disable-next-line (?P<rules>[\w/-]+(?:, [\w/-]+)*) -- \S.*')
 OXLINT = re.compile(r'oxlint-disable-next-line (?P<rules>[\w-]+/[\w-]+(?:, [\w-]+/[\w-]+)*) -- \S.*')
 TS_EXPECT = re.compile(r'@ts-expect-error: \S.*')
+type Tool = Literal['biome', 'stylelint', 'oxlint']
+# each tool's comments, in the files it checks
+COMMENTS: dict[Tool, tuple[re.Pattern[str], ...]] = {
+    'biome': (BIOME,),
+    'stylelint': (STYLELINT,),
+    'oxlint': (OXLINT, TS_EXPECT),
+}
 # each up to the comment's end: a block comment's close, or the next comment's opener, which starts another
-SITE_SUPPRESSION = re.compile(r'(?:biome-ignore|oxlint-(?:disable|enable)|@ts-|eslint-disable)(?:[^*/]|/(?![/*]))*')
+SITE_SUPPRESSION = re.compile(
+    r'(?:biome-ignore|stylelint-(?:disable|enable)|oxlint-(?:disable|enable)|@ts-|eslint-disable)(?:[^*/]|/(?![/*]))*'
+)
 SITE_ALLOWED = Counter(
     {
-        ('public/css/site.css', 'lint/complexity/noImportantStyles'): 1,
+        # stylelint's, each in docs/lint-false-positives.md
+        ('public/css/site.css', 'declaration-no-important'): 1,
         # oxlint's, each in docs/lint-false-positives.md
         ('site/artists.tsx', 'house/states'): 1,
         ('site/communities.tsx', 'jsx-a11y/prefer-tag-over-role'): 2,
@@ -115,25 +128,22 @@ SITE_ALLOWED = Counter(
 )
 
 
-def site_suppressions(path: Path, *, biome: bool) -> list[str]:
+def site_suppressions(path: Path, *, tool: Tool) -> list[str]:
     """The rules each suppressing comment of a site module, test, stylesheet or config names; one naming none fails, as
-    does one of the tool that does not check the file: a biome-ignore in Biome's files only, oxlint's and TypeScript's
-    in oxlint's."""
+    does one of a tool that does not check the file: a biome-ignore in Biome's files only, stylelint's in its, oxlint's
+    and TypeScript's in oxlint's."""
     out: list[str] = []
     for n, line in enumerate(path.read_text().splitlines(), 1):
         for part in SITE_SUPPRESSION.finditer(line):
             text = part[0].rstrip()
             where = f'{path.relative_to(ROOT) if path.is_relative_to(ROOT) else path.name}:{n}: {text!r}'
-            if TS_EXPECT.fullmatch(text) and not biome:
-                out.append('@ts-expect-error')
-                continue
-            own, other = (BIOME, (OXLINT, TS_EXPECT)) if biome else (OXLINT, (BIOME,))
-            assert not any(o.fullmatch(text) for o in other), (
+            others = (p for t, patterns in COMMENTS.items() if t != tool for p in patterns)
+            assert not any(o.fullmatch(text) for o in others), (
                 f'{where} is not a comment of the tool that checks the file'
             )
-            found = own.fullmatch(text)
+            found = next((m for p in COMMENTS[tool] if (m := p.fullmatch(text))), None)
             assert found, f'{where} names no rule (or no reason)'
-            out += found['rules'].split(', ')
+            out += found['rules'].split(', ') if 'rules' in found.groupdict() else ['@ts-expect-error']
     return out
 
 
@@ -172,11 +182,30 @@ def oxlint_files() -> list[str]:
     return [f for f in files if f in paths or f.endswith(OXLINTED)]
 
 
-def test_biome_checks_the_stylesheet_and_the_json_configs_alone() -> None:
+def stylelint_files() -> list[str]:
+    """The committed files stylelint checks: those package.json's lint:stylelint names by its globs, read as git's."""
+    script = Package.model_validate_json((ROOT / 'package.json').read_text(encoding='utf-8')).scripts['lint:stylelint']
+    command, *args = shlex.split(script)
+    assert command == 'stylelint', f'lint:stylelint runs stylelint: {script!r}'
+    globs = [a for a in args if not a.startswith('-') and a != '0']
+    assert globs, 'lint:stylelint names the files stylelint lints'
+    assert args == [*globs, '--max-warnings', '0'], (
+        f'lint:stylelint names its globs, then fails on a warning, and passes no other option: {script!r}'
+    )
+    return tracked(*(f':(glob){g}' for g in globs))
+
+
+def test_biome_checks_the_json_configs_alone() -> None:
     files = biome_files()
-    assert {'public/css/site.css', 'biome.jsonc', 'package.json'} <= set(files)
-    assert all(f.endswith(('.css', '.json', '.jsonc')) for f in files), files
+    assert {'biome.jsonc', 'package.json'} <= set(files)
+    assert all(f.endswith(('.json', '.jsonc')) for f in files), files
     assert 'pnpm-lock.yaml' not in files
+
+
+def test_stylelint_checks_the_stylesheet_alone() -> None:
+    files = stylelint_files()
+    assert 'public/css/site.css' in files
+    assert all(f.startswith('public/css/') and f.endswith('.css') for f in files), files
 
 
 def test_oxlint_checks_the_site_its_tests_and_the_house_rules() -> None:
@@ -189,40 +218,63 @@ def test_oxlint_checks_the_site_its_tests_and_the_house_rules() -> None:
 def test_two_suppressions_on_one_line_are_read_apart(tmp_path: Path) -> None:
     two = tmp_path / 'two.ts'
     two.write_text('// @ts-expect-error: a reason // oxlint-disable-next-line eslint/no-y -- another\n')
-    assert site_suppressions(two, biome=False) == ['@ts-expect-error', 'eslint/no-y']
+    assert site_suppressions(two, tool='oxlint') == ['@ts-expect-error', 'eslint/no-y']
 
 
 def test_a_suppression_of_the_tool_that_does_not_check_the_file_fails(tmp_path: Path) -> None:
     ts = tmp_path / 'own.ts'
     ts.write_text('// oxlint-disable-next-line eslint/no-y -- a reason\n')
-    assert site_suppressions(ts, biome=False) == ['eslint/no-y']
+    assert site_suppressions(ts, tool='oxlint') == ['eslint/no-y']
     css = tmp_path / 'own.css'
-    css.write_text('/* biome-ignore lint/style/noX: a reason */\n')
-    assert site_suppressions(css, biome=True) == ['lint/style/noX']
-    for name, comment, biome in (
-        ('stray.ts', '// biome-ignore lint/style/noX: a reason', False),
-        ('stray.css', '/* oxlint-disable-next-line eslint/no-y -- a reason */', True),
-        ('typed.css', '/* @ts-expect-error: a reason */', True),
-    ):
-        stray = tmp_path / name
+    css.write_text('/* stylelint-disable-next-line a-rule, plugin/b-rule -- a reason */\n')
+    assert site_suppressions(css, tool='stylelint') == ['a-rule', 'plugin/b-rule']
+    json = tmp_path / 'own.jsonc'
+    json.write_text('// biome-ignore lint/style/noX: a reason\n')
+    assert site_suppressions(json, tool='biome') == ['lint/style/noX']
+    # each tool's comment, in each other tool's files
+    strays: tuple[tuple[Tool, str], ...] = (
+        ('oxlint', '// biome-ignore lint/style/noX: a reason'),
+        ('oxlint', '/* stylelint-disable-next-line a-rule -- a reason */'),
+        ('stylelint', '/* oxlint-disable-next-line eslint/no-y -- a reason */'),
+        ('stylelint', '/* @ts-expect-error: a reason */'),
+        ('stylelint', '/* biome-ignore lint/style/noX: a reason */'),
+        ('biome', '// stylelint-disable-next-line a-rule -- a reason'),
+        ('biome', '// oxlint-disable-next-line eslint/no-y -- a reason'),
+        ('biome', '// @ts-expect-error: a reason'),
+    )
+    for tool, comment in strays:
+        stray = tmp_path / 'stray'
         stray.write_text(comment + '\n')
         with pytest.raises(AssertionError, match='not a comment of the tool'):
-            site_suppressions(stray, biome=biome)
+            site_suppressions(stray, tool=tool)
 
 
 def test_a_suppression_naming_no_rule_fails(tmp_path: Path) -> None:
     bare = tmp_path / 'bare.ts'
     bare.write_text('// oxlint-disable-next-line\n')
     with pytest.raises(AssertionError, match='names no rule'):
-        site_suppressions(bare, biome=False)
+        site_suppressions(bare, tool='oxlint')
+    # stylelint's: no reason, or another form than the next line's (a block's, the line's own)
+    for comment in (
+        '/* stylelint-disable-next-line a-rule */',
+        '/* stylelint-disable a-rule -- a reason */',
+        '/* stylelint-disable-line a-rule -- a reason */',
+        '/* stylelint-enable */',
+    ):
+        css = tmp_path / 'bare.css'
+        css.write_text(comment + '\n')
+        with pytest.raises(AssertionError, match='names no rule'):
+            site_suppressions(css, tool='stylelint')
 
 
 def test_every_site_suppression_is_allowed() -> None:
+    checked: tuple[tuple[Tool, list[str]], ...] = (
+        ('biome', biome_files()),
+        ('stylelint', stylelint_files()),
+        ('oxlint', oxlint_files()),
+    )
     found = Counter(
-        (f, rules)
-        for biome, files in ((True, biome_files()), (False, oxlint_files()))
-        for f in files
-        for rules in site_suppressions(ROOT / f, biome=biome)
+        (f, rules) for tool, files in checked for f in files for rules in site_suppressions(ROOT / f, tool=tool)
     )
     assert found == SITE_ALLOWED
 

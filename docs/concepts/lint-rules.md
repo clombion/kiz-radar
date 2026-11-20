@@ -1,4 +1,4 @@
-# Lint rules: Biome to oxlint
+# Lint rules: Biome to oxlint and stylelint
 
 Biome linted the site's TypeScript until Phase 2 of the move to the Oxc toolchain handed that to oxlint (the refactor
 plan's task 2.3). This page maps every rule Biome ran on the TypeScript to oxlint's, with the settings to carry, the
@@ -35,8 +35,8 @@ reason in [oxlint's suppressed findings](../lint-false-positives.md).
 | unmapped, decided by the owner (19 November) | 22: 5 become house rules (task 2.6b), 17 accepted losses |
 | for JSX (Phase 4's `.tsx`) | 48: 46 mapped (38 on, 8 info-level off); `noSuspiciousSemicolonInJsx` the house rule `semicolons`; `noSvgWithoutTitle` held by construction and `svgs` (task 4.2) |
 | for frameworks the site does not use | 92: 88 accepted losses; Solid's four on since 4.2 (three from `eslint-plugin-solid`, `noDuplicatedSpreadProps` the house rule `spreads`) |
-| for CSS, JSON, GraphQL, HTML or YAML | 53, staying with Biome |
-| Off in Biome (`biome.jsonc`), staying off | 22: 19 for TypeScript, 3 for CSS; and 3 off in one folder |
+| for CSS, JSON, GraphQL, HTML or YAML | 53: the CSS ones to stylelint ([The stylesheet](#the-stylesheet-biome-to-stylelint)), the JSON ones staying with Biome |
+| Off in Biome (`biome.jsonc`), staying off | 22: 19 for TypeScript, 3 for CSS (now stylelint's, [below](#the-stylesheet-biome-to-stylelint)); and 3 off in one folder |
 | Info-level rules among today's (report, never fail) | 96, 9 of them with findings (Q2) |
 | Type-aware oxlint rules with no Biome equivalent | 33, all on (task 2.6c) |
 
@@ -294,8 +294,8 @@ all. The four of `no-unsafe-type-assertion` are the lines Biome's suppressions c
 ## Off in Biome, staying off
 
 `biome.jsonc` turned these off, each with its reason, while it read the TypeScript; the reason carries over, and none is
-enabled in oxlint. Since task 2.7 it keeps the three for CSS off, and `noExcessiveLinesPerFile`, which also reads the
-stylesheet.
+enabled in oxlint. The three for CSS stayed off in Biome from task 2.7 until stylelint took the stylesheet (issue #23),
+and stay off there ([The stylesheet](#the-stylesheet-biome-to-stylelint)).
 
 | Biome rule | oxlint equivalent | Reason |
 | -- | -- | -- |
@@ -308,15 +308,15 @@ stylesheet.
 | `style/noIncrementDecrement` | `eslint/no-plusplus` | (no reason given in `biome.jsonc`) |
 | `style/noContinue` | `eslint/no-continue` | (no reason given in `biome.jsonc`) |
 | `style/useExportsLast` | `import/exports-last` | an export sits beside the code it belongs to |
-| `style/noHexColors` | (CSS: stays with Biome) | the design tokens are hex colours |
+| `style/noHexColors` | (CSS: stylelint's `color-no-hex`, off) | the design tokens are hex colours |
 | `style/noExcessiveLinesPerFile` | `eslint/max-lines` | a module is one concern however long; states.ts is generated |
-| `style/noDescendingSpecificity` | (CSS: stays with Biome) | site.css is ordered by component; specificity decides between weights |
+| `style/noDescendingSpecificity` | (CSS: stylelint's `no-descending-specificity`, off) | site.css is ordered by component; specificity decides between weights |
 | `style/useDefaultSwitchClause` | `eslint/default-case` | a switch over a union names every case (useExhaustiveSwitchCases) |
 | `style/useConsistentTypeDefinitions` | `typescript/consistent-type-definitions` | a shape that must fit a Record is a type: an interface has no index signature |
 | `complexity/useLiteralKeys` | `eslint/no-useless-computed-key`<br>`typescript/dot-notation` | tsconfig's noPropertyAccessFromIndexSignature wants dataset['nav'] |
 | `complexity/noExcessiveLinesPerFunction` | `eslint/max-lines-per-function` | a view is one closure over its state; complexity is bounded instead |
 | `suspicious/noEqualsToNull` | `eslint/no-eq-null` | == null is null or undefined, both absent |
-| `suspicious/useBaseline` | (CSS: stays with Biome) | newer CSS is progressive enhancement: backdrop-filter, @starting-style |
+| `suspicious/useBaseline` | (CSS: a house stylelint rule on `web-features`, pending) | newer CSS is progressive enhancement: backdrop-filter, @starting-style |
 | `correctness/noUndeclaredVariables` | `eslint/no-undef` | tsc rejects an undeclared name, and knows globals.d.ts's |
 | `correctness/noUnresolvedImports` | `import/named` | tsc resolves every import, against the types as well |
 | `correctness/useQwikValidLexicalScope` | (none) | no Qwik here |
@@ -793,6 +793,65 @@ namespaces ("removed in Solid 2.0"), so no handler escapes them that way and no 
 
 ## Other languages
 
-53 enabled rules lint CSS, JSON, GraphQL, HTML or YAML; Biome keeps CSS and JSON, and since task 2.7 reads nothing else.
-One of them was among the twenty nursery rules `biome.jsonc` turned on until then: `noDuplicateMapKeys` checks YAML
-maps, not JavaScript, and Biome is given no YAML, so it has never reported.
+53 enabled rules lint CSS, JSON, GraphQL, HTML or YAML. Since task 2.7 Biome reads the JSON configs alone, and the
+stylesheet until stylelint took it ([below](#the-stylesheet-biome-to-stylelint)). One of them was among the twenty
+nursery rules `biome.jsonc` turned on until then: `noDuplicateMapKeys` checks YAML maps, not JavaScript, and Biome is
+given no YAML, so it has never reported.
+
+## The stylesheet: Biome to stylelint
+
+stylelint lints the stylesheet (`public/css/`, `mise run lint:stylelint`, `.stylelintrc.yaml`), a warning failing the
+check, since issue #23; Biome read it from task 2.7 until then. Measured on 20 November 2026, Biome 2.6.3 and stylelint
+18.0.0. Each rule is turned on by name, with no shared config extended (`stylelint-config-standard` or `-recommended`),
+so a rule not named in `.stylelintrc.yaml` is off.
+
+### Biome's CSS rules
+
+Biome ran 29 rules on the stylesheet (`preset: all`, its CSS rules being those whose `biome explain` examples are CSS).
+Each is mapped by Biome's own metadata: `biome migrate stylelint --include-inspired --include-nursery`, run on a
+one-rule config for each of stylelint's core rules, yields the Biome rule a stylelint rule is the source of. Biome found
+nothing on the stylesheet but the line it suppressed, and stylelint, with the rules below, finds the same.
+
+| Biome rule | stylelint rule | Findings |
+| -- | -- | -- |
+| `a11y/useGenericFontNames` | `font-family-no-missing-generic-family-keyword` | 0 |
+| `complexity/noImportantStyles` | `declaration-no-important` | 1, the `[hidden]` rule, suppressed in both ([suppressed findings](../lint-false-positives.md)) |
+| `complexity/noExcessiveSelectorClasses` | `selector-max-class` | none: Biome's has no default for `maxClasses`, so it checked nothing, and stylelint's is not on |
+| `correctness/noInvalidDirectionInLinearGradient` | `function-linear-gradient-no-nonstandard-direction` | 0 |
+| `correctness/noInvalidGridAreas` | `named-grid-areas-no-invalid` | 0 |
+| `correctness/noInvalidPositionAtImportRule` | `no-invalid-position-at-import-rule` | 0 |
+| `correctness/noMissingVarFunction` | `custom-property-no-missing-var-function` | 0 |
+| `correctness/noUnknownFunction` | `function-no-unknown` | 0 |
+| `correctness/noUnknownMediaFeatureName` | `media-feature-name-no-unknown` | 0 |
+| `correctness/noUnknownProperty` | `property-no-unknown` | 0 |
+| `correctness/noUnknownPseudoClass` | `selector-pseudo-class-no-unknown` | 0 |
+| `correctness/noUnknownPseudoElement` | `selector-pseudo-element-no-unknown` | 0 |
+| `correctness/noUnknownTypeSelector` | `selector-type-no-unknown` | 0 |
+| `correctness/noUnknownUnit` | `unit-no-unknown` | 0 |
+| `correctness/noUnmatchableAnbSelector` | `selector-anb-no-unmatchable` | 0 |
+| `style/noValueAtRule` | dropped: CSS Modules' `@value`, which is no CSS at-rule, so `at-rule-no-unknown` refuses it already | 0 |
+| `suspicious/noDeprecatedMediaType` | `media-type-no-deprecated` | 0 |
+| `suspicious/noDuplicateAtImportRules` | `no-duplicate-at-import-rules` | 0 |
+| `suspicious/noDuplicateCustomProperties` | `declaration-block-no-duplicate-custom-properties` | 0 |
+| `suspicious/noDuplicateFontNames` | `font-family-no-duplicate-names` | 0 |
+| `suspicious/noDuplicateProperties` | `declaration-block-no-duplicate-properties` | 0 |
+| `suspicious/noDuplicateSelectors` | `no-duplicate-selectors` | 0 |
+| `suspicious/noDuplicateSelectorsKeyframeBlock` | `keyframe-block-no-duplicate-selectors` | 0 |
+| `suspicious/noEmptyBlock` | `block-no-empty` | 0 |
+| `suspicious/noEmptySource` | `no-empty-source` | 0 |
+| `suspicious/noImportantInKeyframe` | `keyframe-declaration-no-important` | 0 |
+| `suspicious/noIrregularWhitespace` | `no-irregular-whitespace` | 0 |
+| `suspicious/noShorthandPropertyOverrides` | `declaration-block-no-shorthand-property-overrides` | 0 |
+| `suspicious/noUnknownAtRules` | `at-rule-no-unknown` | 0 |
+| (Biome's CSS parser, which fails a file it cannot read) | stylelint's own: a `CssSyntaxError` fails the run; oxfmt (`format:site`) parses the file too | 0 |
+
+No rule is lost: the `*-no-unknown` rules of both read the same data (CSSTree's), and each finds nothing today.
+
+Off in Biome, staying off:
+
+| Biome rule | stylelint rule | Reason |
+| -- | -- | -- |
+| `style/noHexColors` | `color-no-hex` | the design tokens are hex colours (18 findings) |
+| `style/noDescendingSpecificity` | `no-descending-specificity` | site.css is ordered by component; specificity decides between weights (61 findings: stylelint's rule is the same check) |
+| `style/noExcessiveLinesPerFile` | (none) | the stylesheet is one file, ordered by component |
+| `suspicious/useBaseline` | a house stylelint rule on `web-features` | **pending**: a house rule built on `web-features` (Baseline's data) will refuse a CSS feature not supported in every declared browser for at least 12 months, the browsers declared once in `package.json`'s `browserslist` (owner, 20 November: no third-party browser plugin); until then nothing checks the stylesheet against the supported browsers |

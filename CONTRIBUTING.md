@@ -19,13 +19,14 @@ Python packages come from `uv.lock` through uv, and the site's from `pnpm-lock.y
 ## Checks
 
 ```bash
-mise run check        # everything
-mise run check:fast   # lint, format, types, the site built with its database and tested, the generated files
-mise run lint:oxlint  # the site's TypeScript, its tests and the house rules: oxlint, type-aware
-mise run lint:biome   # the stylesheet and the JSON configs: Biome's rules
-mise run format:site  # the site's layout: oxfmt --check
-mise tasks            # each check on its own (see docs/reference/commands.md)
-mise run format       # write the formats format:py, format:md and format:site hold
+mise run check           # everything
+mise run check:fast      # lint, format, types, the site built with its database and tested, the generated files
+mise run lint:oxlint     # the site's TypeScript, its tests and the house rules: oxlint, type-aware
+mise run lint:stylelint  # the stylesheet: stylelint's rules
+mise run lint:biome      # the JSON configs: Biome's rules
+mise run format:site     # the site's layout: oxfmt --check
+mise tasks               # each check on its own (see docs/reference/commands.md)
+mise run format          # write the formats format:py, format:md and format:site hold
 ```
 
 The hooks run `check:commit` (the quick checks, on what is staged) before a commit and `check:push` (every check, on the
@@ -39,12 +40,13 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   tsc strict; oxlint (`lint:oxlint`), type-aware, with each Biome rule it has an equivalent of and the type-aware rules
   new in oxlint (`.oxlintrc.json`, [Lint rules](docs/concepts/lint-rules.md)), a warning failing: a record's type is
   read-only where it is defined, a function returning a promise is async, and the names in an import's braces are in one
-  order; every Biome rule on the stylesheet and the JSON configs (`lint:biome`, `biome.jsonc`'s `files.includes`) but
-  those it turns off, each with its reason; eslint-plugin-solid's `v2-strict` rules; and the house rules in `lint/`
-  (links in `routes.ts`, requests in `net.ts`, classes through JSX's `class`, markup from the site's own code only
-  through `icons.ts`, promises reported, a state as `KEY`, a test's values only from the modules `lint/tests.ts` lists,
-  and those holding CLAUDE.md's conventions; the files each is on for are in Lint rules' table). A class is one the
-  stylesheet defines (`site/classes.ts`, generated), in JSX too, where tsc types an element's `class` by it
+  order; stylelint on the stylesheet (`lint:stylelint`, `.stylelintrc.yaml`), with each Biome CSS rule it has an
+  equivalent of ([Lint rules](docs/concepts/lint-rules.md)), a warning failing; every Biome rule on the JSON configs
+  (`lint:biome`, `biome.jsonc`'s `files.includes`); eslint-plugin-solid's `v2-strict` rules; and the house rules in
+  `lint/` (links in `routes.ts`, requests in `net.ts`, classes through JSX's `class`, markup from the site's own code
+  only through `icons.ts`, promises reported, a state as `KEY`, a test's values only from the modules `lint/tests.ts`
+  lists, and those holding CLAUDE.md's conventions; the files each is on for are in Lint rules' table). A class is one
+  the stylesheet defines (`site/classes.ts`, generated), in JSX too, where tsc types an element's `class` by it
   (`site/jsx-runtime.d.ts`, `tsconfig.json`'s `jsxImportSource`). vitest runs in Node and in Chromium
   (`pnpm exec playwright install chromium`, or a Chromium of the machine's own named in `CHROMIUM`), and fails below the
   coverage of the pure modules `vitest.config.ts` sets. The browser tests run in two projects: `browser`, with motion as
@@ -62,8 +64,8 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   the import statements of all but the fixtures, but `site/states.ts` and `site/drawings.ts`, which their generators lay
   out.
 - **Suppressions:** a check is suppressed only on its line, naming its rule and why; `tests/test_suppressions.py` lists
-  each, so a new one is a change to that list, and an oxlint one is also explained in
-  [oxlint's suppressed findings](docs/lint-false-positives.md).
+  each, so a new one is a change to that list, and an oxlint or stylelint one is also explained in
+  [Suppressed findings](docs/lint-false-positives.md).
 - **House rules:** a rule of `lint/plugin.ts` is a module beside it, `lint/<rule>.ts` (ESLint's rule API, never reading
   the file's path but to find what its imports name, as `privates` does), listed in the plugin's `rules` and turned on
   in `.oxlintrc.json` as `house/<rule>: error`; the files it is on for, and its exemptions, are `.oxlintrc.json`'s

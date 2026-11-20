@@ -1,4 +1,4 @@
-// The stylesheets against the page and its modules: what Biome's CSS rules don't see.
+// The stylesheets against the page and its modules: what stylelint's rules (.stylelintrc.yaml) don't see.
 import { expect, test } from 'vitest';
 import { MEDIA } from '../../site/media.ts';
 import { code, css, pages } from './sources.ts';
@@ -101,8 +101,8 @@ test('every CSS class is given to an element by the page or a module', () => {
 });
 
 // Rules keyed by their media context and selector; a second rule for the same key means one silently overrides the
-// other. Biome's noDuplicateSelectors sees a selector twice in one block; this also sees it in two blocks of the same
-// media query, and inside a selector list.
+// other. stylelint's no-duplicate-selectors sees a selector twice in one block; this also sees it in two blocks of the
+// same media query, and inside a selector list.
 interface Rule {
   readonly media: string;
   readonly selectors: readonly string[];
