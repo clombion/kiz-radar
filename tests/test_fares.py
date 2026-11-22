@@ -2,6 +2,7 @@
 
 import datetime as dt
 import json
+import re
 from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 
@@ -233,17 +234,65 @@ def test_a_refresh_keeps_every_search_with_its_offers_in_the_run_s_file(
     assert {k: c.fare and c.fare.offer.price for k, c in live.items()} == {('GLA', SOON): 80, ('LIS', SOON): None}
 
 
-def test_a_search_with_no_answer_is_kept_as_failed_and_the_run_fails_naming_it(
-    weekends: list[str], monkeypatch: pytest.MonkeyPatch
+def test_a_search_with_no_answer_is_kept_as_failed_and_named_and_fails_no_run(
+    weekends: list[str], monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
     broke = Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
     monkeypatch.setattr(fares, 'google', answering({'GLA': (offer(80),), 'LIS': broke}))
-    with pytest.raises(SystemExit, match=r'1 searches gave no answer \(transient 1\): BGO→LIS'):
-        fares.refresh(budget=5, max_seconds=60)
+    fares.refresh(budget=5, max_seconds=60)
+    assert capsys.readouterr().out.splitlines()[-1].startswith('1 searches gave no answer (transient 1): BGO→LIS')
     found = {s.airport: s for s in kept_now() if s.vendor == FareVendor.GOOGLE}
     assert (found['LIS'].outcome, found['LIS'].note) == (FareOutcome.FAILED, broke.why)
     assert weekends == ['GLA']  # the reseller is not asked of a search Google gave no answer to
     assert [w.airport for w in fares.queue() if w.due] == ['LIS']  # tried again on the next run
+
+
+@pytest.mark.usefixtures('weekends')
+def test_a_run_fails_when_none_of_its_searches_holds_an_answer(monkeypatch: pytest.MonkeyPatch) -> None:
+    broke = Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
+    monkeypatch.setattr(fares, 'google', answering({'GLA': broke, 'LIS': broke}))
+    with pytest.raises(SystemExit, match=r'2 searches gave no answer \(transient 2\)'):
+        fares.refresh(budget=5, max_seconds=60)  # two in a row, fewer than stop a run
+
+    def withheld(a: fares.Asked) -> Search:
+        return fares.search(a, FareVendor.GOOGLE, (), withheld=WITHHELD)
+
+    monkeypatch.setattr(fares, 'google', withheld)
+    with pytest.raises(SystemExit, match='none of the 2 searches holds an answer: 2 withheld'):
+        fares.refresh(budget=5, max_seconds=60)
+
+
+@pytest.mark.usefixtures('weekends')
+def test_an_empty_queue_fails_no_run(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(fare_weekends, 'weekends', only({}))
+    fares.refresh(budget=5, max_seconds=60)
+
+
+@pytest.mark.usefixtures('weekends')
+@pytest.mark.parametrize(
+    ('declined', 'tries'),
+    [
+        (Declined(CallCause.TRANSIENT, fli_page.REFUSED), 2),
+        (Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload'), fares.MOST_UNANSWERED),
+        (Declined(CallCause.STRUCTURAL, 'fli gave a price in SEK, not the EUR it was asked'), 1),
+    ],
+    ids=['refused twice', 'no answer in a row', 'can never succeed'],
+)
+def test_a_run_google_stopped_fails_though_a_search_answered(
+    declined: Declined, tries: int, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    due = ['AMS', 'GLA', 'LIS', 'OSL', 'PRG', 'ROM']  # searched in this order, all never searched
+    monkeypatch.setattr(fare_weekends, 'weekends', only({(a, SOON): True for a in due}))
+    asked: list[str] = []
+
+    def google(a: fares.Asked) -> Search | Declined:
+        asked.append(a.airport)
+        return fares.search(a, FareVendor.GOOGLE, (offer(80),)) if a.airport == 'AMS' else declined
+
+    monkeypatch.setattr(fares, 'google', google)
+    with pytest.raises(SystemExit, match=re.escape(declined.why)):
+        fares.refresh(budget=10, max_seconds=60)
+    assert len(asked) == 1 + tries < len(due)
 
 
 @pytest.mark.usefixtures('weekends')
@@ -482,8 +531,7 @@ def test_pairs_take_a_quarter_of_the_budget_after_the_searches_from_home_in_thei
         return fares.search(a, FareVendor.GOOGLE, (offer(100),))
 
     monkeypatch.setattr(fares, 'google', google)
-    with pytest.raises(SystemExit, match='AMS'):
-        fares.refresh(budget=8, max_seconds=60)  # six answered from home, two pairs
+    fares.refresh(budget=8, max_seconds=60)  # six answered from home, two pairs
     home = [a for a in asked if a.origin == HOME]
     assert [a.airport for a in home] == ['AMS', 'BCN', 'GLA', 'LIS', 'PRG']  # all there were
     day = now().date()

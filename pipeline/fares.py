@@ -23,15 +23,17 @@ festival have none. An airport that is the nearest of any festival that weekend 
 
 Google is read on its outbound page, one request a search (pipeline/fli_page.py): its price is the return's, its stops
 those out. Google sometimes refuses a search (HTTP 429), so a refused search is tried once more after a minute; refused
-again, it stops the run. A search fli fails on is kept as failed, and the run fails at its end naming it. A page with no
-flight that still prices nearby dates is kept as withheld: it holds no answer, so the weekend keeps the fare of its
-latest search that did, if any, and is searched again on the next run (unsettled), after the weekends due on their
-interval, even one never answered, and before the extras. Such a page is an answer of Google's, never a refusal: it
-counts in the run's budget, and not among the searches in a row Google gave no answer to (MOST_UNANSWERED). Each
-weekend Google gave a page for is asked of Kiwi.com's flight search the same (kiwi), its trips kept with the airlines
-flying them and the tickets they are booked on (ticket): its cheapest self-transfer, when cheaper, is added to the
-weekend's Flights, and its cheapest on one ticket is the card's where Google lists flights with no price (Widerøe's,
-which it leaves to the airline). Its price is a reseller's, and the site says so; its failure fails no run.
+again, it stops the run, as do MOST_UNANSWERED searches in a row Google gives no answer to. A search with no answer is
+kept as failed, no search of its weekend, and named at the run's end. The run fails only when it was stopped so, or
+when none of the searches it made holds an answer (each failed, or its page was withheld): a search with no answer now
+and then is a later run's to make. A page with no flight that still prices nearby dates is kept as withheld: it holds
+no answer, so the weekend keeps the fare of its latest search that did, if any, and is searched again on the next run
+(unsettled), after the weekends due on their interval, even one never answered, and before the extras. Such a page is
+an answer of Google's, never a refusal: it counts in the run's budget, and not among the searches in a row Google gave
+no answer to. Each weekend Google gave a page for is asked of Kiwi.com's flight search the same (kiwi), its trips kept
+with the airlines flying them and the tickets they are booked on (ticket): its cheapest self-transfer, when cheaper, is
+added to the weekend's Flights, and its cheapest on one ticket is the card's where Google lists flights with no price
+(Widerøe's, which it leaves to the airline). Its price is a reseller's, and the site says so; its failure fails no run.
 
     mise run fares -- refresh --budget 20      # what the GitHub Action runs
     mise run fares -- plan                     # show what is due, without searching
@@ -427,12 +429,24 @@ class Run:
         return found
 
     @property
-    def over(self) -> bool:
-        """Whether the run starts no more searches: its time is up, Google refused the last one twice or gave no answer
-        to MOST_UNANSWERED in a row, or it can never succeed as made."""
+    def stopped(self) -> bool:
+        """Whether Google or fli stopped the run: Google refused the last search twice or gave no answer to
+        MOST_UNANSWERED in a row, or a search can never succeed as made."""
         last = self.declined[-1][1] if self.declined else None
         refused = last is not None and (last.stops or last.why == fli_page.REFUSED)
-        return time.time() > self.until or refused or self.unanswered >= MOST_UNANSWERED
+        return refused or self.unanswered >= MOST_UNANSWERED
+
+    @property
+    def over(self) -> bool:
+        """Whether the run starts no more searches: its time is up, or it was stopped."""
+        return time.time() > self.until or self.stopped
+
+    @property
+    def failed(self) -> bool:
+        """Whether the run failed at its work: it was stopped, or it searched Google and none of its searches holds an
+        answer (fare_weekends.answered): each failed, or its page was withheld."""
+        google = [s for s in self.kept if s.vendor == FareVendor.GOOGLE]
+        return self.stopped or (bool(google) and not any(fare_weekends.answered(s) for s in google))
 
 
 def from_home(run: Run, history: Sequence[Search], budget: int) -> list[Weekend]:
@@ -470,8 +484,10 @@ def paired(run: Run, answered: Sequence[Weekend], pairs: int, day: dt.date) -> N
 
 def refresh(budget: int, max_seconds: int) -> None:
     """Search the weekends due today, then pair a share of those searched (PAIR_SHARE of the budget, kept for them)
-    with a search from another city, writing the run's file after each; exits 1 naming the searches that gave no
-    answer, a refusal or a stop first."""
+    with a search from another city, writing the run's file after each, and says how many it made and how many of
+    them were withheld. It names the searches Google gave no answer to, a refusal or a stop first, and exits 1 when the
+    run failed at its work (Run.failed), with those words or, when none failed, the count withheld: a search with no
+    answer now and then is tried again in a later run, and fails none."""
     history, today = fare_store.read(), now().date()
     run, pairs = Run(fare_store.run_file(now()), time.time() + max_seconds), round(budget * PAIR_SHARE)
     answered = from_home(run, history, budget - pairs)
@@ -485,8 +501,11 @@ def refresh(budget: int, max_seconds: int) -> None:
         f'{len(pages)} searches, {withheld} of them withheld, and {pairs_made} pairs; '
         f'{searched_now} of {len(live)} festival weekends searched'
     )
-    if why := calls.failed('searches', run.declined):
-        sys.exit(why)
+    why = calls.failed('searches', run.declined)
+    if run.failed:
+        sys.exit(why or f'none of the {len(pages)} searches holds an answer: {withheld} withheld')
+    if why:
+        print(why)
 
 
 def plan() -> None:

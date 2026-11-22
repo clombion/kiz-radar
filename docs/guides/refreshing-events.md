@@ -124,7 +124,10 @@ twice its interval, doesn't wait for its day. A weekend with no price on Google 
 is tried once more after a minute, and refused again stops the run, which keeps what it found; so do three searches in a
 row Google gives no answer to (`MOST_UNANSWERED`: its empty page, which, once Google gives it, it goes on giving for the
 rest of the run). A search that failed (refused, or fli failing) is kept as failed, never as no price, and is no search
-of its weekend, which is due as if it had not been made; the run fails naming it.
+of its weekend, which is due as if it had not been made; the run names it at its end. The run fails (the workflow marked
+failed after the searches are pushed) only when Google stopped it so, or none of its searches holds an answer (each
+failed, or its page was `withheld`): a search with no answer, or a withheld page, now and then fails no run. Its summary
+line says how many searches it made, and how many of them were withheld.
 
 A page with no flight that still prices nearby dates is kept as `withheld`, with what it priced in its note: a browser
 shown the same search gets its flights from the page's scripts, through a request fli cannot sign, and the page as read
