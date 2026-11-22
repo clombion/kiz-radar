@@ -1,5 +1,5 @@
-// Biome's noProcessEnv, for the process a file imports: node/no-process-env reads the global process alone, so once
-// house/process has the tests import it from node:process, their process.env went unseen. A read of env from an
+// Biome's noProcessEnv, for the process a file imports: node/no-process-env reads the global process alone, so the
+// tests' process.env, read from node:process as house/process has them import it, is this rule's. A read of env from an
 // import of node:process (or process) is refused: a default or namespace binding's .env, written or destructured, and
 // env imported by name. The global's is node/no-process-env's; a type's typeof process.env reads nothing. On wherever
 // node/no-process-env is (.oxlintrc.json).

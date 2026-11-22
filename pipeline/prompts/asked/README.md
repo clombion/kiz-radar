@@ -4,8 +4,8 @@ Each file is a prompt's text, named by its hash (pipeline/prompt.py): the system
 answer to, and the schema as sent. Answers (pipeline/extract/answers/log.csv, `prompt`) and first reads (`prompt`) name
 the hash they answered, and whatever saves one saves its prompt here first (`Prompt.archive`).
 
-Six were made before prompts were known by their hash, each from the files at the commit its answers were made at
-(405b9a7); they hold the system text and the schema as sent:
+Six were written from the files their answers were made with, rather than saved as they were asked; they hold the system
+text and the schema as sent:
 
 | Hash | Was | Made by |
 | -- | -- | -- |

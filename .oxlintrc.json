@@ -1,7 +1,8 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  // Biome's rules on the TypeScript, each by its oxlint equivalent (docs/concepts/lint-rules.md): no category, so a rule
-  // not listed here is off. Settings are Biome's where oxlint's defaults differ, each with its reason.
+  // each rule named, no category, so a rule not listed here is off (docs/concepts/lint-rules.md: each rule, the Biome
+  // rule it holds, and its reason). Settings keep the Biome rule's reach where oxlint's defaults differ, each with its
+  // reason.
   "plugins": [
     "import",
     "jest",
@@ -45,7 +46,7 @@
     "eslint/constructor-super": "error",
     "eslint/default-case-last": "error",
     "eslint/default-param-last": "error",
-    // == null is null or undefined, both absent (Biome's noEqualsToNull was off, docs/concepts/lint-rules.md)
+    // == null is null or undefined, both absent (eslint/no-eq-null is off, docs/concepts/lint-rules.md)
     "eslint/eqeqeq": ["error", "always", { "null": "ignore" }],
     "eslint/for-direction": "error",
     "eslint/getter-return": "error",
@@ -198,7 +199,7 @@
     "import/no-commonjs": "error",
     "import/no-cycle": "error",
     "import/no-default-export": "error",
-    // organizeImports merges two imports of one module (docs/concepts/lint-rules.md, organizeImports)
+    // two imports of one module merged, as Biome's organizeImports does (docs/concepts/lint-rules.md, Import order)
     "import/no-duplicates": "error",
     "import/no-namespace": "error",
     "import/no-nodejs-modules": "error",
@@ -521,16 +522,16 @@
     "house/privates": "error",
     "house/promises": "error",
     "house/routes": "error",
-    // Biome's noSuspiciousSemicolonInJsx (owner, 19 November)
+    // Biome's noSuspiciousSemicolonInJsx
     "house/semicolons": "error",
     "house/session": "error",
-    // Biome's noDuplicatedSpreadProps (owner, 19 November)
+    // Biome's noDuplicatedSpreadProps
     "house/spreads": "error",
     "house/statics": "error",
     "house/storage": "error",
     // no style prop in JSX: a class, or a ref and style.setProperty; the page's Content-Security-Policy refuses inline style
     "house/styles": "error",
-    // an SVG is icons.ts's Drawing's (Biome's noSvgWithoutTitle held by construction, owner, 19 November)
+    // an SVG is icons.ts's Drawing's (Biome's noSvgWithoutTitle held by construction)
     "house/svgs": "error"
   },
   "overrides": [
@@ -545,8 +546,8 @@
       "rules": { "eslint/no-unassigned-vars": "off", "solid/no-unassigned-vars": "error" }
     },
     {
-      // the migration rules of the move to Solid, on Solid's files, the views: no .then in a component, no loading or
-      // error state of its own, no effect mirroring a value, no rendering by hand
+      // the rules that hold the views to Solid's way, on Solid's files: no .then in a component, no loading or error
+      // state of its own, no effect mirroring a value, no rendering by hand
       "files": ["**/*.tsx"],
       "rules": { "house/thens": "error", "house/flags": "error", "house/mirrors": "error", "house/legacy": "error" }
     },
@@ -565,13 +566,12 @@
       }
     },
     {
-      // Biome's info-level findings in the site's code (Q2, docs/concepts/lint-rules.md), left where the move to Solid
-      // rewrote nothing (one here)
+      // the rule's one finding in the site's code, written as it is (docs/concepts/lint-rules.md)
       "files": ["site/roster.ts"],
       "rules": { "eslint/prefer-destructuring": "off" }
     },
     {
-      // the same (Q2): SiteUpdating and Sql
+      // the module's two classes, SiteUpdating and Sql
       "files": ["site/db.ts"],
       "rules": { "eslint/max-classes-per-file": "off" }
     },
@@ -663,7 +663,7 @@
       "rules": { "import/no-default-export": "off" }
     },
     {
-      // Vite and Vitest read their configs from the default export (owner, 19 November; docs/concepts/lint-rules.md)
+      // Vite and Vitest read their configs from the default export
       "files": ["vite.config.ts", "vitest.config.ts"],
       "rules": { "import/no-default-export": "off" }
     }

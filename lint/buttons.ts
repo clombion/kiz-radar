@@ -1,7 +1,7 @@
 // A button is of type button, so it never submits a form: written <button type="button"> in JSX. A JSX <button> whose
 // type is not the string button (none, submit, reset, an expression), is given twice, or may be given again by a spread
 // after it ({...props}, {...{ type: 'submit' }}) is refused; and so is a button built by a call of h() with the tag
-// 'button', the hand-built way the views had before Solid, however the call is written (optional, with type arguments)
+// 'button', a hand-built element, however the call is written (optional, with type arguments)
 // and however the tag is (a template without values, as const); h or the tag in parentheses is refused as well, a form
 // with no fixture, since oxfmt, which lays the fixtures out, takes the parentheses off.
 // react/button-has-type, even told to refuse submit and reset, lets a spread after the type through (measured on these

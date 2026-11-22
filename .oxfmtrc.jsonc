@@ -4,7 +4,7 @@
   "printWidth": 120,
   "tabWidth": 2,
   "useTabs": false,
-  // a formatter lays a file out; the order of package.json's keys is pnpm's, as Biome left it
+  // a formatter lays a file out; the order of package.json's keys is pnpm's
   "sortPackageJson": false,
   // the site, its tests, the stylesheet, the JSON configs and the house rules' plugin with its fixtures (lint/): every
   // file but a folder is ignored, then those let back in
@@ -29,7 +29,7 @@
   ],
   "overrides": [
     {
-      // import statements in one order, sorted across a blank line and kept together, as Biome's organizeImports held
+      // import statements in one order, sorted across a blank line and kept together, as Biome's organizeImports sorts
       // them; not the house rules' fixtures, whose refused lines are marked where they stand
       "files": ["*.ts", "*.tsx"],
       "excludeFiles": ["lint/fixtures/**"],

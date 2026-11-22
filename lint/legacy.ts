@@ -1,9 +1,9 @@
 // A Solid file renders with JSX alone: replaceChildren, createElement and createElementNS are refused wherever read (on
 // any object, called, optionally, by a key in quotes, handed on with .call or .bind, destructured; replaceChildren
-// called bare), and so is an import of a dom module, the hand-built elements' helpers the views had before Solid, a
-// re-export from it or an import() of it: a relative path to dom, dom.ts or dom.js, not a package's
-// (@testing-library/dom). Helpers that draw nothing live in modules of their own (bits.ts), so the rule needs no
-// exception. One of the four migration rules of the move to Solid: .oxlintrc.json turns it on for .tsx files.
+// called bare), and so is an import of a dom module (hand-built elements' helpers), a re-export from it or an import()
+// of it: a relative path to dom, dom.ts or dom.js, not a package's (@testing-library/dom). Helpers that draw nothing
+// live in modules of their own (bits.ts), so the rule needs no exception. One of the four rules that hold the views
+// to Solid's way: .oxlintrc.json turns it on for .tsx files.
 import type { Rule } from './plugin.ts';
 import { keyName, type Node, stringOf } from './shapes.ts';
 

@@ -4,8 +4,8 @@ suppression of any form counts (a file's `# ruff: noqa` included); each noqa nam
 parentheses, and a pyright comment is only ever `pyright: ignore[rules]`. On the site, each tool's comment is read in
 that tool's files alone: in the stylesheet stylelint lints, a stylelint-disable-next-line names its rules and, after --,
 its reason; in the TypeScript oxlint lints, an oxlint-disable-next-line names its rules and, after --, its reason, and a
-@ts-expect-error its reason; a biome-ignore, which no tool reads since Biome left, fails in the files stylelint or
-oxlint checks (the JSON configs, which no longer have a linter, are not read for one). Rules ignored for a whole file
+@ts-expect-error its reason; a biome-ignore, which no tool reads, fails in the files stylelint or oxlint checks (the
+JSON configs, which no linter reads, are not read for one). Rules ignored for a whole file
 are in pyproject.toml and .oxlintrc.json, each with its reason."""
 
 import io
@@ -75,8 +75,8 @@ COMMENTS: dict[Tool, tuple[re.Pattern[str], ...]] = {
     'stylelint': (STYLELINT,),
     'oxlint': (OXLINT, TS_EXPECT),
 }
-# each up to the comment's end: a block comment's close, or the next comment's opener, which starts another; Biome's
-# among them, which suppresses nothing now
+# each up to the comment's end: a block comment's close, or the next comment's opener, which starts another; a
+# biome-ignore among them, which suppresses nothing
 SITE_SUPPRESSION = re.compile(
     r'(?:biome-ignore|stylelint-(?:disable|enable)|oxlint-(?:disable|enable)|@ts-|eslint-disable)(?:[^*/]|/(?![/*]))*'
 )
@@ -244,7 +244,7 @@ def test_a_suppression_naming_no_rule_fails(tmp_path: Path) -> None:
         css.write_text(comment + '\n')
         with pytest.raises(AssertionError, match='names no rule'):
             site_suppressions(css, tool='stylelint')
-    # Biome's, which no tool reads any more
+    # a biome-ignore, which no tool reads
     lefts: tuple[tuple[str, Tool, str], ...] = (
         ('left.css', 'stylelint', '/* biome-ignore lint/style/noX: a reason */'),
         ('left.ts', 'oxlint', '// biome-ignore lint/style/noX: a reason'),

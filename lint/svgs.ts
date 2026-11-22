@@ -1,5 +1,5 @@
 // An SVG is a drawing of pipeline/drawings.py's, put in by icons.ts's Drawing, which hides each from assistive
-// technology: Biome's noSvgWithoutTitle held by construction (owner, 19 November). A JSX <svg> is refused, and so is
+// technology: Biome's noSvgWithoutTitle held by construction. A JSX <svg> is refused, and so is
 // one made by its tag's name: <Dynamic component="svg"> and dynamic(() => 'svg') (@solidjs/web), everywhere oxlint
 // lints; icons.ts writes no JSX.
 import type { Rule } from './plugin.ts';

@@ -5,7 +5,7 @@
 // refused, at its first setter. The calls are read through return, void, an optional call and TypeScript's wrappers.
 // A setter given anything else (setPage(0) when a filter changes) reacts rather than mirrors; an apply half that does
 // any other work, a method's included (el.setAttribute(…): a signal's setter is a name), is an effect's own. Of the
-// four migration rules of the move to Solid: .oxlintrc.json turns it on for .tsx files alone.
+// four rules that hold the views to Solid's way: .oxlintrc.json turns it on for .tsx files alone.
 import type { Rule } from './plugin.ts';
 import { importedName, keyName, type Node, unwrapped } from './shapes.ts';
 

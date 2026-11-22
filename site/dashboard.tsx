@@ -498,7 +498,7 @@ function railRows(p: Page, q: Queue, i: number): JSX.Element {
         <button
           type="button"
           class={['search-row', 'review-row', { past: isSettled }]}
-          // oxlint-disable-next-line jsx-a11y/role-supports-aria-props -- the rail's row says it is the item shown, which a button's role does not take: kept as it is until issue #22 marks it aria-current
+          // oxlint-disable-next-line jsx-a11y/role-supports-aria-props -- the rail's row says it is the item shown, which a button's role does not take, so screen readers do not say it; aria-current or a listbox rail would
           aria-selected={selected}
           onClick={() => {
             p.go(at.tab, n);

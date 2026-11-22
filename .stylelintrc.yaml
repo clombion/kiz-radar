@@ -12,7 +12,7 @@ plugins:
   - ./lint/stylelint/baseline.ts
 
 rules:
-  # Biome's CSS rules that were on, each by its stylelint equivalent (Biome's own migration metadata)
+  # Biome's CSS rules, each by its stylelint equivalent (Biome's own migration metadata)
   font-family-no-missing-generic-family-keyword: true # a11y/useGenericFontNames
   declaration-no-important: true # complexity/noImportantStyles
   function-linear-gradient-no-nonstandard-direction: true # correctness/noInvalidDirectionInLinearGradient

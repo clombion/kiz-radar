@@ -3,10 +3,9 @@ group): one request per search.
 
 The page lists the ways out, each priced as the cheapest return that leaves by it, with the stops it makes on the way
 out; the ways back are on another page, never read. That price is the one Google's booking page asks for the trip: equal
-on each of the 7 weekends from Bergen checked on 2026-11-08 whose booking page gave a price. fli's public search also
-reads a page of ways back for each way out it expands, so the page is read through its private
-SearchFlights._fetch_flights, at the commit pinned, and the contract test (tests/test_fli_page.py) reads recorded pages
-through it.
+on each of the 7 weekends from Bergen checked whose booking page gave a price. fli's public search also reads a page of
+ways back for each way out it expands, so the page is read through its private SearchFlights._fetch_flights, at the
+commit pinned, and the contract test (tests/test_fli_page.py) reads recorded pages through it.
 
 What can go wrong is kept apart, never read as no price: Google refusing the search (HTTP 429), and fli failing (an
 error, a page it can't read). A page with no flight is no price; one with flights and none priced is listed.
