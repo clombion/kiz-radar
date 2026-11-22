@@ -317,7 +317,7 @@ and stay off there ([The stylesheet](#the-stylesheet-biome-to-stylelint)).
 | `complexity/useLiteralKeys` | `eslint/no-useless-computed-key`<br>`typescript/dot-notation` | tsconfig's noPropertyAccessFromIndexSignature wants dataset['nav'] |
 | `complexity/noExcessiveLinesPerFunction` | `eslint/max-lines-per-function` | a view is one closure over its state; complexity is bounded instead |
 | `suspicious/noEqualsToNull` | `eslint/no-eq-null` | == null is null or undefined, both absent |
-| `suspicious/useBaseline` | (CSS: a house stylelint rule on `web-features`, pending) | newer CSS is progressive enhancement: backdrop-filter, @starting-style |
+| `suspicious/useBaseline` | (CSS: the house stylelint rule `house/baseline`, [on](#the-browser-check-housebaseline)) | newer CSS is progressive enhancement: backdrop-filter, @starting-style; the stylesheet is checked against the declared browsers instead |
 | `correctness/noUndeclaredVariables` | `eslint/no-undef` | tsc rejects an undeclared name, and knows globals.d.ts's |
 | `correctness/noUnresolvedImports` | `import/named` | tsc resolves every import, against the types as well |
 | `correctness/useQwikValidLexicalScope` | (none) | no Qwik here |
@@ -857,7 +857,7 @@ Off in Biome, staying off:
 | `style/noHexColors` | `color-no-hex` | the design tokens are hex colours (18 findings) |
 | `style/noDescendingSpecificity` | `no-descending-specificity` | site.css is ordered by component; specificity decides between weights (61 findings: stylelint's rule is the same check) |
 | `style/noExcessiveLinesPerFile` | (none) | the stylesheet is one file, ordered by component |
-| `suspicious/useBaseline` | a house stylelint rule on `web-features` | **pending**: a house rule built on `web-features` (Baseline's data) will refuse a CSS feature not supported in every declared browser for at least 12 months, the browsers declared once in `package.json`'s `browserslist` (owner, 20 November: no third-party browser plugin); until then nothing checks the stylesheet against the supported browsers |
+| `suspicious/useBaseline` | `house/baseline`, the house's | **on** (owner, 20 November: no third-party browser plugin): a CSS feature must have been in every browser `package.json`'s `browserslist` declares for at least 12 months, by `web-features` (Baseline's data); [The browser check](#the-browser-check-housebaseline) |
 
 ### Stricter than Biome
 
@@ -912,13 +912,112 @@ The plugins considered, each a new dependency; none is added:
 
 | Plugin | Findings | Decision |
 | -- | -- | -- |
-| `stylelint-browser-compat` (MDN's browser-compat-data, reads `browserslist`) | 2: `-webkit-text-size-adjust` (desktop Safari, Firefox), `forced-color-adjust` (Safari) | rejected (owner, 20 November): a perpetual beta from one maintainer, whose MDN data is a year old and which needs a `packageExtensions` entry to load under pnpm; the browser check will be a house stylelint rule on `web-features` instead (Biome's `useBaseline`, above) |
+| `stylelint-browser-compat` (MDN's browser-compat-data, reads `browserslist`) | 2: `-webkit-text-size-adjust` (desktop Safari, Firefox), `forced-color-adjust` (Safari) | rejected (owner, 20 November): a perpetual beta from one maintainer, whose MDN data is a year old and which needs a `packageExtensions` entry to load under pnpm; the browser check is the house rule on `web-features`, `house/baseline` (Biome's `useBaseline`, [below](#the-browser-check-housebaseline)) |
 | `stylelint-no-unsupported-browser-features` (doiuse, caniuse) | 19 (partial-support notes), 1 ignoring partial support | rejected: blind to the CSS the site uses (`@starting-style`, view transitions, `@scope`, `text-wrap`, anchor positioning, `field-sizing`, …), even against older browsers |
 | `stylelint-plugin-use-baseline` | 31 (widely available), 7 (newly) | rejected: Baseline, not the declared browsers, and no stylelint 18 support |
 | `@double-great/stylelint-a11y` | 26 `media-prefers-reduced-motion`, 36 `no-display-none`, and others | rejected: its two main rules misread the design: reduced motion zeroes the duration tokens in `:root`, and colour schemes swap tokens, so each animated or coloured rule is reported; the rest is noise or meant (`#main:focus`'s outline, Leaflet's attribution) |
 | `stylelint-declaration-strict-value` | 5 (`ease` in transitions), 0 allowing keywords | rejected: it lets any function through (`rgb()`, `oklch()`, `cubic-bezier()`), which `styles.test.ts` catches; core `declaration-property-value-disallowed-list` would do it with no dependency (above) |
 | `stylelint-use-logical`, `stylelint-plugin-logical-css`, `stylelint-use-logical-spec` | 307 (`use-logical`) | not needed: logical properties are off, and the core layout-mapping rules would hold them |
 | `stylelint-high-performance-animation` | 14 (9 of them `display` in `allow-discrete` transitions, the `@starting-style` pattern) | not taken: its main finding misreads `display` transitions |
+
+### The browser check: house/baseline
+
+`house/baseline` (`lint/stylelint/baseline.ts`, `.stylelintrc.yaml`'s `plugins`, set `months: 12` and an `allowed` list)
+refuses a CSS feature of the stylesheet that has not been in every declared browser for at least 12 months. It is the
+house's own stylelint plugin, no third-party one (owner, 20 November): TypeScript, which stylelint loads by `import()`
+and Node 22 runs by stripping its types (the house writes erasable syntax only, `tsconfig.json`'s `erasableSyntaxOnly`);
+tsc checks it with the house rules (`tests/site/tsconfig.json` includes `lint/`) and oxlint lints it, with one override
+of its own, Node's modules allowed (`.oxlintrc.json`), and PostCSS's nodes in `prefer-readonly-parameter-types`'
+`allow`. It exports `ruleName` and `rule`, which stylelint takes for the plugin of a module with no default export.
+
+- **Data:** `web-features` 3.45.0 (2 November 2026, the newest release at least two weeks old on 22 November, Q6), the
+  WebDX group's Baseline data, one dev dependency pinned exactly; each piece of CSS is looked up by its BCD key in
+  `status.by_compat_key`, the status of that key (a keyword can be newer than its property).
+- **Browsers:** `package.json`'s `browserslist`, the one place they are declared: `last 1 <browser> version` of Chrome,
+  Edge, Firefox, Safari, iOS Safari, Chrome Android and Firefox Android (`chrome`, `edge`, `firefox`, `safari`,
+  `ios_saf`, `and_chr`, `and_ff`), which is Baseline's core browser set. The rule reads the list (a query in any case,
+  as browserslist reads it) and fails on a query of another form, a browser outside that set, which `web-features` has
+  no support for, or a browser named twice. Nothing else reads the field: Vite's bundle is byte for byte the same with
+  it.
+- **The date:** the day a feature reached every declared browser is the latest of the releases its support names in each
+  (`status.support` and `browsers.<browser>.releases`); for the core set that is `web-features`' own
+  `baseline_low_date`, the same for each of the data's 16,001 keys. A feature passes when that day is at least `months`
+  (12) months before today, the clock's: the tests pin the clock (`tests/site/stylelint.test.ts`, 14 October 2026). A
+  feature missing from a declared browser, or which the data gives no Baseline (`baseline: false`, a discouraged feature
+  among them), is refused whatever its date.
+- **The message** names the CSS as written, the feature and its key, and either the day it reached every browser and the
+  latest day allowed
+  (`at-rule "@scope" (web-features' "@scope", css.at-rules.scope) reached every declared browser on 2026-03-24, after 2025-10-14, 12 months before today`),
+  the browsers it is missing from, or, for one in every declared browser that the data gives no Baseline, that it has
+  none (`discouraged` where it is). It stands at the start of its declaration, rule or at-rule, the line a suppression
+  on the line before covers however a value or a list of selectors is laid out.
+- **`allowed`:** BCD keys the rule lets through wherever they are used, each with its reason as a comment beside it in
+  `.stylelintrc.yaml` (owner, 22 November), for a lack no visitor meets: `css.properties.cursor.pointer` and
+  `css.properties.cursor.default`, since a touch screen draws no cursor, so iOS Safari's lack of cursor keywords is
+  harmless. The list cannot rot: a key the data does not have, one nothing would refuse (in every declared browser for
+  `months` months), and one that let nothing of the stylesheet through (its CSS gone) are each refused on their own, as
+  `reportNeedlessDisables` refuses a suppression with nothing to suppress. The last is sound because `lint:stylelint`
+  lints one stylesheet, `public/css/site.css`; a second would need its keys of its own. The options are validated:
+  `months` is required, and `allowed` is a list.
+
+What it reads, ported from `@eslint/css`'s `use-baseline` (2.0.1, read from its package, not a dependency):
+
+| CSS | Key |
+| -- | -- |
+| a property | `css.properties.<property>` |
+| a keyword of a property's value, its functions left out with their arguments | `css.properties.<property>.<keyword>`, else a longhand's for the shorthands `font`, `text-decoration`, `background`, `transition`, `animation`, `list-style`, `text-wrap` and `white-space` (`font`'s `ui-monospace` is `css.properties.font-family.ui-monospace`), else a global keyword's `css.types.global_keywords.<keyword>` |
+| `text-decoration` with a style or colour, with a thickness | `css.properties.text-decoration.includes_color-and-style`, `css.properties.text-decoration.includes_thickness` |
+| a function | the property's own, `css.properties.<property>.<function>_function` (`fit-content()`, `palette-mix()`), else `css.types.<type>.<function>` for the types that hold functions (colours, gradients, images, filters, easings, basic shapes, transforms; `linear()` is `css.types.easing-function.linear-function`), else `css.types.<function>` (`calc()`, `clamp()`, `var()`; `attr()`'s `type()` is `css.types.attr.type_function`); a custom one, `--name()`, `css.types.dashed-function` |
+| a unit | `css.types.length.<unit>`, the angles' and resolutions'; the viewport and container units by their group's key |
+| an at-rule, a descriptor of one that holds them (`@font-face`, `@property`, `@counter-style`, `@page`, `@font-palette-values`, `@font-feature-values`, `@view-transition`, `@position-try`) | `css.at-rules.<at-rule>`, `css.at-rules.<at-rule>.<descriptor>`; a declaration in `@media`, `@supports`, `@container`, `@layer`, `@scope` or `@starting-style` is a property's |
+| a media feature, the range syntax | `css.at-rules.media.<feature>`, `css.at-rules.media.range_syntax` |
+| a pseudo-class or pseudo-element, `&` | `css.selectors.<name>`, `css.selectors.nesting` |
+
+A key is matched in any case (the data's `currentColor`, `scaleX`). What an `@supports` tests for is not checked under
+it, per property as in `use-baseline`: the property, and the keywords, units and functions of the value tested for it
+(`@supports (width: 1rcap)` lets `width: 1rcap` through, and `@supports (text-wrap: balance)` does not let
+`text-wrap: pretty`); a `selector()`'s pseudo-classes and elements; an outer `@supports`'s too. A test under `not`
+guards nothing, `not selector()` among them, as `use-baseline` skips what follows a `not`; unlike `use-baseline`, which
+takes each test of a condition, an `or` guards only what each of its sides tests, since a browser that has one side only
+applies the block. A property refused has its keywords left alone, as in `use-baseline`. It differs in the threshold (a
+feature's day in the declared browsers, not Baseline's widely or newly available, nor a year), in reading each key's own
+status rather than its feature's, in adding descriptors and the range syntax, and in its exceptions: one list of keys,
+each with its reason and refused once it is needless, in place of `use-baseline`'s allow-lists by kind of syntax; any
+other exception is a suppression on its line.
+
+It does not see, and lets through: what the data has no key named for, such as a vendor-prefixed property or keyword
+(the `*-no-vendor-prefix` rules refuse them), a subfeature keyed by what it does rather than how it is written
+(`transition: display … allow-discrete`, `css.properties.transition-behavior.transitionable_display`; `rgb(from …)`'s
+relative syntax; `font-face`'s `src` formats), the shape of a shorthand's value but `text-decoration`'s (`overflow`'s
+two keywords, `background`'s layers, `border-radius`'s four values: each long in every browser today), a keyword of a
+shorthand the table does not list that the data keys under its longhand alone, a property named inside a value
+(`overlay` in a transition list, Chrome's alone), an identifier that is no keyword of its property (a font family, an
+animation's name), a custom property's name and value keywords (its functions and units are read), the conditions of
+`@container` and `@supports`, and a selector's combinators and attribute forms. Unknown syntax is let through rather
+than refused: the validity rules refuse what no browser knows, and this rule refuses only what the data dates.
+
+On the stylesheet, at 22 November 2026, it found 33 lines. Two were too recent: `text-decoration: underline dotted …`
+(`.goer-name`, `.trait-link`), the shorthand with a style or colour, which reached every declared browser on 12 December
+2025 (Safari 26.2); each is written as its longhands instead, `text-decoration-line`, `-style` and `-color`, each in
+every browser for years, which Chromium draws the same (every computed style of the elements they style, in light, dark
+and forced colours). The other 31 are each in a browser's fallback by design: `cursor: pointer` (20) and
+`cursor: default` (3), not in iOS Safari, let through by `allowed`; and eight suppressed on their line with the reason
+([suppressed findings](../lint-false-positives.md)): `overscroll-behavior: contain` (4), which Safari applies only to a
+panel that overflows, a partial support this data counts as none; `ui-monospace` (2, a `font-family` and a `font`),
+Safari's alone, first in a font stack; `text-wrap: pretty` (1), not in Firefox; `forced-color-adjust: none` (1), not in
+Safari, inside `@media (forced-colors: active)`. The newest features it passes are view transitions (14 October 2025),
+`backdrop-filter` (16 September 2024) and `@starting-style` (6 August 2024). Because `reportNeedlessDisables` refuses a
+suppression with nothing to suppress, an upgrade of `web-features` that puts one of these in every browser for 12 months
+fails the check until its suppression is deleted; a suppression of a feature only too recent would fail it on the day
+the feature turns 12 months, with no change to the repository. Its fixtures are `tests/site/stylelint/`'s: a refused
+line for a property, a keyword (a shorthand's among them), a value's shape, an at-rule, a selector, a function (a
+property's own, a custom one), a unit, a media feature, a descriptor, a property nested in `@media`, and what an
+`@supports` does not guard (an untested keyword of a tested property, a `not` test, `not selector()`, one side of an
+`or`), each too recent on the tests' day or missing from a browser; in `good.css` a feature of each kind it passes, one
+12 months to the day, what an `@supports` tests for (a keyword, a function, a unit, a selector, both sides of an `and`),
+a string's words, and the allowed cursor keywords; `stylelint.test.ts` also reads the messages, a key of each kind at 60
+months, a nested `@supports`, the month's end, an allowed key refused once not allowed and once unused, one nothing
+would refuse, one the data lacks, and options without `months` or with `allowed` not a list.
 
 ## The JSON configs after Biome
 

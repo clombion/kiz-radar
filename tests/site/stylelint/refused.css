@@ -84,3 +84,25 @@ width: 1px; /* refused: no-invalid-position-declaration */
 .ai { flex-direction: row; flex-wrap: wrap; } /* refused: declaration-block-no-redundant-longhand-properties */
 .aj { display: none !important; } /* refused: declaration-no-important */
 .ak { width: 10pixels; } /* refused: unit-no-unknown, declaration-property-value-no-unknown */
+.ba { field-sizing: content; } /* refused: house/baseline */
+.bb { text-wrap: pretty; } /* refused: house/baseline */
+@scope (.bc) { .bd { width: 1px; } } /* refused: house/baseline */
+.be:open { width: 1px; } /* refused: house/baseline */
+.bf { color: contrast-color(#fff); } /* refused: house/baseline */
+.bg { width: 1rcap; } /* refused: house/baseline */
+@media (prefers-reduced-transparency: reduce) { .bh { width: 1px; } } /* refused: house/baseline */
+@font-face { font-family: bi; src: url(data:font/woff2;base64,AAAA); font-variation-settings: normal; } /* refused: house/baseline */
+.bj { clip: rect(0 0 0 0); } /* refused: house/baseline, property-no-deprecated */
+@supports (text-wrap: balance) { .bk { text-wrap: pretty; } } /* refused: house/baseline */
+@supports not (text-wrap: pretty) { .bl { text-wrap: pretty; } } /* refused: house/baseline */
+@supports not selector(:open) { .bm:open { width: 1px; } } /* refused: house/baseline */
+@supports (text-wrap: pretty) or (display: grid) { .bn { text-wrap: pretty; } } /* refused: house/baseline */
+@supports selector(:open) or (display: grid) { .bo:open { width: 1px; } } /* refused: house/baseline */
+.bp { @media (min-width: 1px) { width: stretch; } } /* refused: house/baseline, max-nesting-depth */
+.bq { width: fit-content(10px); } /* refused: house/baseline */
+.br { text-decoration: underline dotted; } /* refused: house/baseline */
+.bs { text-decoration: underline 2px; } /* refused: house/baseline */
+.bt { font: 1rem ui-monospace; } /* refused: house/baseline */
+.bu { width: --half(2px); } /* refused: house/baseline, declaration-property-value-no-unknown */
+/* the allowed keys, each let through, so that none is unused */
+.bv { cursor: pointer; } .bw { cursor: default; }

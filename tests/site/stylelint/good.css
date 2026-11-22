@@ -44,3 +44,58 @@ input[type="text"] {
   /* stylelint-disable-next-line declaration-no-important -- the planted suppression, with its reason */
   display: none !important;
 }
+.ag {
+  backdrop-filter: blur(4px);
+  height: 100dvh;
+  display: grid;
+}
+@starting-style {
+  .ah {
+    opacity: 0;
+  }
+}
+.ak {
+  cursor: pointer;
+}
+/* view transitions reached every browser on 2025-10-14, 12 months to the day before the tests' clock */
+::view-transition-new(root) {
+  animation-duration: 200ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai {
+    transition: none;
+  }
+}
+@supports (text-wrap: pretty) {
+  .aj {
+    text-wrap: pretty;
+  }
+}
+/* what an @supports tests for: a function and a unit of the value tested, a selector, each side of an and */
+@supports (color: contrast-color(#fff)) {
+  .al {
+    color: contrast-color(#fff);
+  }
+}
+@supports (width: 1rcap) {
+  .am {
+    width: 1rcap;
+  }
+}
+@supports selector(:open) {
+  .an:open {
+    width: 1px;
+  }
+}
+@supports (text-wrap: pretty) and (display: grid) {
+  .ao {
+    text-wrap: pretty;
+  }
+}
+/* a string's words are no CSS; text-decoration's longhands, each long in every browser */
+.ap {
+  content: "1rcap";
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  cursor: default;
+}

@@ -7,6 +7,10 @@ reportDescriptionlessDisables: true
 reportNeedlessDisables: true
 reportInvalidScopeDisables: true
 
+# the house's own rules, each a module of lint/stylelint/
+plugins:
+  - ./lint/stylelint/baseline.ts
+
 rules:
   # Biome's CSS rules that were on, each by its stylelint equivalent (Biome's own migration metadata)
   font-family-no-missing-generic-family-keyword: true # a11y/useGenericFontNames
@@ -116,3 +120,15 @@ rules:
   property-no-vendor-prefix: true
   selector-no-vendor-prefix: true
   value-no-vendor-prefix: true
+
+  # the house's: a CSS feature must have been in every browser package.json's browserslist declares (Baseline's core
+  # browsers, each its latest) for this many months, by web-features (docs/concepts/lint-rules.md)
+  house/baseline:
+    - true
+    - months: 12
+      # each a BCD key let through wherever it is used, with its reason; one nothing would refuse, or that the stylesheet
+      # no longer uses, is itself refused
+      allowed:
+        # a touch screen draws no cursor, so iOS Safari's lack of cursor keywords is harmless
+        - css.properties.cursor.pointer
+        - css.properties.cursor.default

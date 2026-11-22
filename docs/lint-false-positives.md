@@ -10,10 +10,19 @@ the code.
 
 ### The stylesheet means it
 
+`house/baseline`'s 8 lines are each a feature one browser lacks, or has in part, written so that the page reads the same
+without it ([the browser check](concepts/lint-rules.md#the-browser-check-housebaseline)): a row for each reason below,
+which the line's comment says in short. The cursor keywords, which iOS Safari lacks, are the rule's `allowed` keys
+instead, with their reason in `.stylelintrc.yaml`.
+
 | File | Rule | Why |
 | -- | -- | -- |
 | `public/css/site.css` | `declaration-no-important` | `[hidden] { display: none !important }`: the `hidden` attribute hides an element whatever `display` its own rules give it (a flex row, a grid), which only `!important` wins over without knowing each rule. Biome's `noImportantStyles` was suppressed on the same line. |
 | `public/css/site.css` | `property-no-vendor-prefix` | `html { -webkit-text-size-adjust: 100% }`: iOS Safari reads the prefixed form alone, and without it enlarges the text of a page turned to landscape. |
+| `public/css/site.css` | `house/baseline` | `overscroll-behavior: contain` (4 lines, the sheets' and panels' scrolling bodies): Safari 16 and later apply it to a panel whose content overflows, but not to one too short to scroll, which MDN's compatibility data marks as partial support ("no effect on scroll containers that have no scrollable overflow", as in Chrome before 144 and Firefox before 150); `web-features` 3.45.0 counts partial support as none, so its key names Chrome 144 and Firefox 150 and no Safari. In Safari a panel too short to scroll chains a scroll at its end on to the page, as it did without the property. |
+| `public/css/site.css` | `house/baseline` | `ui-monospace, SFMono-Regular, Menlo, monospace` (2 lines: the SQL view's `font-family`, and a promo code's `font` shorthand): `ui-monospace` is Safari's system monospace, and each other browser reads on down the stack. |
+| `public/css/site.css` | `house/baseline` | `text-wrap: pretty` (`.review-why`): not in Firefox, which wraps as `text-wrap`'s default does; `pretty` only evens the lines where it is read. |
+| `public/css/site.css` | `house/baseline` | `forced-color-adjust: none`: not in Safari, but inside `@media (forced-colors: active)`, which Safari, having no forced colours, never matches. |
 
 ## oxlint
 

@@ -247,6 +247,7 @@ th[scope="row"] {
 }
 .sqlview textarea {
   width: 100%;
+  /* stylelint-disable-next-line house/baseline -- Safari's system monospace, first of a stack the other browsers read on from */
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.85rem;
 }
@@ -1077,6 +1078,7 @@ a.artist:focus-visible {
 }
 .sheet-body {
   overflow-y: auto;
+  /* stylelint-disable-next-line house/baseline -- Safari applies it wherever the panel overflows, a partial support web-features counts as none; a panel too short to scroll chains to the page, as without it */
   overscroll-behavior: contain;
   min-height: 0;
   padding-right: 0.3rem;
@@ -1827,6 +1829,7 @@ html:has(dialog.search[open]) {
 .search-list {
   overflow-y: auto;
   padding: 0.3rem 0.5rem 0.8rem;
+  /* stylelint-disable-next-line house/baseline -- Safari applies it wherever the panel overflows, a partial support web-features counts as none; a panel too short to scroll chains to the page, as without it */
   overscroll-behavior: contain;
 }
 .search-note {
@@ -2006,6 +2009,7 @@ html:has(dialog.search[open]) {
   font-weight: 600;
 }
 .card-details .promo code {
+  /* stylelint-disable-next-line house/baseline -- Safari's system monospace, first of a stack the other browsers read on from */
   font:
     700 0.95rem ui-monospace,
     SFMono-Regular,
@@ -2053,7 +2057,9 @@ html:has(dialog.search[open]) {
   font: inherit;
   color: inherit;
   cursor: pointer;
-  text-decoration: underline dotted color-mix(in srgb, var(--accent) 55%, transparent);
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
   text-underline-offset: 0.2em;
 }
 .goer-name:hover {
@@ -2792,6 +2798,7 @@ html:has(dialog.peek[open]) {
 }
 .peek-body {
   overflow-y: auto;
+  /* stylelint-disable-next-line house/baseline -- Safari applies it wherever the panel overflows, a partial support web-features counts as none; a panel too short to scroll chains to the page, as without it */
   overscroll-behavior: contain;
   padding: 0.4rem 1.2rem 1rem;
 }
@@ -3119,7 +3126,8 @@ html:has(dialog.peek[open]) {
 }
 .trait-link {
   color: inherit;
-  text-decoration: underline dotted;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
   text-underline-offset: 0.2em;
 }
 /* the site's name above the sentence, on a phone only, where the header shows the logo alone */
@@ -3351,6 +3359,7 @@ svg.defs {
   font-weight: 600;
 }
 .review-why {
+  /* stylelint-disable-next-line house/baseline -- Firefox wraps as text-wrap's default does; pretty only evens the lines where it is read */
   text-wrap: pretty;
 }
 .review-stated {
@@ -3573,6 +3582,7 @@ svg.defs {
   .days-stroke::after,
   .gantt-ink,
   .gantt-ink::after {
+    /* stylelint-disable-next-line house/baseline -- in forced-colors: active, which Safari, with no forced colours, never matches */
     forced-color-adjust: none;
     background: Highlight;
   }
@@ -3664,6 +3674,7 @@ svg.defs {
 .pick-scroll {
   max-height: 15rem;
   overflow-y: auto;
+  /* stylelint-disable-next-line house/baseline -- Safari applies it wherever the panel overflows, a partial support web-features counts as none; a panel too short to scroll chains to the page, as without it */
   overscroll-behavior: contain;
   mask-image: linear-gradient(var(--text) 85%, transparent); /* only its opacity counts */
 }
