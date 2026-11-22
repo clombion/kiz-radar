@@ -84,6 +84,7 @@ SITE_ALLOWED = Counter(
         # stylelint's, each in docs/lint-false-positives.md
         ('public/css/site.css', 'declaration-no-important'): 1,
         ('public/css/site.css', 'property-no-vendor-prefix'): 1,
+        ('public/css/site.css', 'house/baseline'): 7,
         # oxlint's, each in docs/lint-false-positives.md
         ('site/artists.tsx', 'house/states'): 1,
         ('site/communities.tsx', 'jsx-a11y/prefer-tag-over-role'): 2,

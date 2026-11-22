@@ -41,7 +41,9 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
   read-only where it is defined, a function returning a promise is async, and the names in an import's braces are in one
   order; stylelint on the stylesheet (`lint:stylelint`, `.stylelintrc.yaml`), with each Biome CSS rule it has an
   equivalent of and the stricter rules chosen, each with its reason ([Lint rules](docs/concepts/lint-rules.md)), a
-  warning failing, its rules held to their fixtures (`tests/site/stylelint/`) by `tests/site/stylelint.test.ts`; in the
+  warning failing, and the house's own stylelint rule, `house/baseline` (`lint/stylelint/`): a CSS feature has been in
+  every browser `package.json`'s `browserslist` declares (Baseline's core browsers, each its latest) for 12 months, by
+  `web-features`; its rules held to their fixtures (`tests/site/stylelint/`) by `tests/site/stylelint.test.ts`; in the
   JSON configs at the root, no key written twice or empty, nor a package in two groups (`tests/test_configs.py`);
   eslint-plugin-solid's `v2-strict` rules; and the house rules in `lint/` (links in `routes.ts`, requests in `net.ts`,
   classes through JSX's `class`, markup from the site's own code only through `icons.ts`, promises reported, a state as
@@ -110,6 +112,6 @@ commit pushed) before a push, each in a worktree of its own. The **Tests** Actio
 | `site/` | the site's TypeScript, its views Solid's (`.tsx`), bundled by Vite into `public/js/` (`vite.config.ts`) |
 | `public/` | the published site: page, stylesheet, fonts, icons; `js/`, `vendor/` and `data/` built |
 | `tests/` | the pipeline's tests; `tests/site/` the site's |
-| `lint/` | the house rules: oxlint's plugin (`plugin.ts`, a module per rule) with its fixtures |
+| `lint/` | the house rules: oxlint's plugin (`plugin.ts`, a module per rule) with its fixtures, and stylelint's (`stylelint/`) |
 | `design/` | the share card and the icons' sources |
 | `docs/` | this documentation |

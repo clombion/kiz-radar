@@ -416,6 +416,8 @@
           // list of them
           { "from": "package", "package": "@solidjs/web", "name": ["ArrayElement"] },
           { "from": "package", "package": "solid-js", "name": ["ArrayElement"] },
+          // the stylesheet's syntax tree a house stylelint rule reads, PostCSS's
+          { "from": "package", "package": "postcss", "name": ["AtRule_", "Comment_", "Declaration_", "Rule_"] },
           // the syntax tree a house rule reads: Node$1 is oxlint's name for its union of every node
           {
             "from": "package",
@@ -648,6 +650,11 @@
       // house/privates reads the module an import names from disk, beside the importing file: oxlint shows a rule one
       // file
       "files": ["lint/privates.ts"],
+      "rules": { "import/no-nodejs-modules": "off" }
+    },
+    {
+      // the house's stylelint rules run in Node: house/baseline reads package.json's browserslist
+      "files": ["lint/stylelint/*.ts"],
       "rules": { "import/no-nodejs-modules": "off" }
     },
     {

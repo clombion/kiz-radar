@@ -247,6 +247,7 @@ th[scope="row"] {
 }
 .sqlview textarea {
   width: 100%;
+  /* stylelint-disable-next-line house/baseline -- Safari's system monospace, first of a stack the other browsers read on from */
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.85rem;
 }
@@ -1077,6 +1078,7 @@ a.artist:focus-visible {
 }
 .sheet-body {
   overflow-y: auto;
+  /* stylelint-disable-next-line house/baseline -- where it is not read, the scroll at the panel's end goes on to the page, as without it */
   overscroll-behavior: contain;
   min-height: 0;
   padding-right: 0.3rem;
@@ -1827,6 +1829,7 @@ html:has(dialog.search[open]) {
 .search-list {
   overflow-y: auto;
   padding: 0.3rem 0.5rem 0.8rem;
+  /* stylelint-disable-next-line house/baseline -- where it is not read, the scroll at the panel's end goes on to the page, as without it */
   overscroll-behavior: contain;
 }
 .search-note {
@@ -2792,6 +2795,7 @@ html:has(dialog.peek[open]) {
 }
 .peek-body {
   overflow-y: auto;
+  /* stylelint-disable-next-line house/baseline -- where it is not read, the scroll at the panel's end goes on to the page, as without it */
   overscroll-behavior: contain;
   padding: 0.4rem 1.2rem 1rem;
 }
@@ -3351,6 +3355,7 @@ svg.defs {
   font-weight: 600;
 }
 .review-why {
+  /* stylelint-disable-next-line house/baseline -- Firefox wraps as text-wrap's default does; pretty only evens the lines where it is read */
   text-wrap: pretty;
 }
 .review-stated {
@@ -3573,6 +3578,7 @@ svg.defs {
   .days-stroke::after,
   .gantt-ink,
   .gantt-ink::after {
+    /* stylelint-disable-next-line house/baseline -- in forced-colors: active, which Safari, with no forced colours, never matches */
     forced-color-adjust: none;
     background: Highlight;
   }
@@ -3664,6 +3670,7 @@ svg.defs {
 .pick-scroll {
   max-height: 15rem;
   overflow-y: auto;
+  /* stylelint-disable-next-line house/baseline -- where it is not read, the scroll at the panel's end goes on to the page, as without it */
   overscroll-behavior: contain;
   mask-image: linear-gradient(var(--text) 85%, transparent); /* only its opacity counts */
 }

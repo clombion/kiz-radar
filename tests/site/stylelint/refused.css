@@ -32,3 +32,12 @@ DIV { width: 1px; } /* refused: selector-type-case */
 .ai { flex-direction: row; flex-wrap: wrap; } /* refused: declaration-block-no-redundant-longhand-properties */
 .aj { display: none !important; } /* refused: declaration-no-important */
 .ak { width: 10pixels; } /* refused: unit-no-unknown, declaration-property-value-no-unknown */
+.ba { field-sizing: content; } /* refused: house/baseline */
+.bb { text-wrap: pretty; } /* refused: house/baseline */
+@scope (.bc) { .bd { width: 1px; } } /* refused: house/baseline */
+.be:open { width: 1px; } /* refused: house/baseline */
+.bf { color: contrast-color(#fff); } /* refused: house/baseline */
+.bg { width: 1rcap; } /* refused: house/baseline */
+@media (prefers-reduced-transparency: reduce) { .bh { width: 1px; } } /* refused: house/baseline */
+@font-face { font-family: bi; src: url(data:font/woff2;base64,AAAA); font-variation-settings: normal; } /* refused: house/baseline */
+.bj { clip: rect(0 0 0 0); } /* refused: house/baseline, property-no-deprecated */
