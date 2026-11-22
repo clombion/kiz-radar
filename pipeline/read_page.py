@@ -2,8 +2,9 @@
 if asked. For pages a plain request can't read: pages built by JavaScript (a ticket widget), and pages behind a
 browser check such as Vercel's Security Checkpoint that a person can open in any browser.
 
-It opens Chromium through Patchright, a Playwright build that doesn't announce automation. Headless is enough for
-JavaScript pages; --visible opens it on a virtual display instead, since browser checks refuse headless browsers.
+It opens Chromium through Patchright, a Playwright build that doesn't announce automation: the full Chromium, headless
+in its new mode, not Patchright's headless shell, which is another build. Headless is enough for JavaScript pages;
+--visible opens it on a virtual display instead, since browser checks refuse headless browsers.
 On Linux without a display, --visible restarts itself under xvfb-run.
 
     mise run read-page -- URL                         # the page's text
@@ -13,7 +14,7 @@ On Linux without a display, --visible restarts itself under xvfb-run.
 One page per run, for a person's one-off question; never in a scheduled job or a loop of one's own. The one
 scheduled reader is pipeline/tickets.py, which reads ticket pages through rows() below, by a site recipe.
 Finding the Chromium: --browser, else the Playwright browsers in /opt/pw-browsers, else Patchright's own
-(`uv run --group browser patchright install chromium`).
+(`uv run --group browser patchright install --no-shell chromium`).
 """
 
 import argparse
@@ -75,8 +76,9 @@ class Browsers(contextlib.AbstractContextManager['Browsers']):
         if visible not in self.started:
             self.driver = self.driver or sync_playwright().start()
             try:
+                # channel: the full Chromium, headless or not (without it, a headless launch runs the shell)
                 self.started[visible] = self.driver.chromium.launch(
-                    executable_path=self.path or chromium(), headless=not visible
+                    executable_path=self.path or chromium(), channel='chromium', headless=not visible
                 )
             except Error as e:
                 raise NoBrowserError(why(e)) from e

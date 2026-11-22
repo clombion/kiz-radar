@@ -1801,3 +1801,45 @@ def test_the_festivals_to_come_are_the_listed_ones_not_over(memory: Memory, file
         exports.festival(tx, 2, start_date='2020-01-01', end_date='2020-01-02')  # over
         exports.festival(tx, 3, end_date='2099-01-02', listing='gone', unlisted_on='2026-01-01')
     assert [f.id for f in tickets_state.festivals(db, dt.date(2026, 10, 1))] == [1]
+
+
+def test_a_page_is_read_in_the_full_chromium_headless_or_not(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Patchright's full Chromium, which its install puts without the headless shell (the workflows' --no-shell): a
+    headless launch without the chromium channel runs the shell, another build. A path given is run as it is."""
+    import patchright.sync_api
+
+    launched: list[dict[str, object]] = []
+    ended: list[str] = []
+
+    class Launched:
+        def close(self) -> None:
+            ended.append('browser')
+
+    class Chromium:
+        def launch(self, **options: object) -> Launched:
+            launched.append(options)
+            return Launched()
+
+    class Driver:
+        chromium = Chromium()
+
+        def start(self) -> 'Driver':
+            ended.clear()
+            return self
+
+        def stop(self) -> None:
+            ended.append('driver')
+
+    monkeypatch.setattr(patchright.sync_api, 'sync_playwright', Driver)
+    monkeypatch.setattr('pipeline.read_page.chromium', lambda: None)
+    with Browsers() as browsers:
+        _ = browsers.get(visible=False)
+        _ = browsers.get(visible=True)
+    assert ended == ['browser', 'browser', 'driver']
+    with Browsers('/usr/bin/chrome') as browsers:
+        _ = browsers.get(visible=False)
+    assert launched == [
+        {'executable_path': None, 'channel': 'chromium', 'headless': True},
+        {'executable_path': None, 'channel': 'chromium', 'headless': False},
+        {'executable_path': '/usr/bin/chrome', 'channel': 'chromium', 'headless': True},
+    ]
