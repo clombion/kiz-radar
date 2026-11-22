@@ -997,7 +997,13 @@ ROWS = (
         forms={'airlines': 'reseller’s price, likely cheaper from {airlines}'},
     ),
     S('fare_outcome', 'offers', 'one offer or more with a price', KEPT),
-    S('fare_outcome', 'none', 'no flight of those asked for', KEPT),
+    S(
+        'fare_outcome',
+        'none',
+        'no flight of those asked for; one kept before the fare history was (backfill) is no answer, never read as no '
+        'price: the old pipeline wrote it also for a timeout, an answer it could not read or a sweep that failed',
+        KEPT,
+    ),
     S(
         'fare_outcome',
         'withheld',

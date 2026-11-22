@@ -260,7 +260,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | fare_vendor · `google` | kept | — | — | Google Flights' outbound page, through fli (pipeline/fli_page.py) |
 | fare_vendor · `kiwi` | view | reseller’s price | — | Kiwi.com's flight search, a reseller selling at its own prices |
 | fare_outcome · `offers` | kept | — | — | one offer or more with a price |
-| fare_outcome · `none` | kept | — | — | no flight of those asked for |
+| fare_outcome · `none` | kept | — | — | no flight of those asked for; one kept before the fare history was (backfill) is no answer, never read as no price: the old pipeline wrote it also for a timeout, an answer it could not read or a sweep that failed |
 | fare_outcome · `withheld` | kept | — | — | no flight on Google's page, which still prices nearby dates: the flights a browser is shown did not reach the page as read (the dates priced in the note); never read as no price |
 | fare_outcome · `listed` | kept | — | — | flights listed, none with a price (Widerøe's, which Google leaves to the airline) |
 | fare_outcome · `failed` | kept | — | — | no answer: the vendor refused the search, or failed (its words in the note); never read as no price |

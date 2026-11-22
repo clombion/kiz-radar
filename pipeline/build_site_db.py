@@ -1408,9 +1408,10 @@ DOCS = {
     'Flights) and flies to the best (site/fares.ts).',
     'fare_transfers': 'Each festival weekend\u2019s cheapest self-transfer at a reseller (separate tickets), when '
     'cheaper than its fare (fares) or it has none, which its Flights add; airlines: those flying it.',
-    'fare_searches': 'Each festival weekend\u2019s (airport, depart) latest search from home that did not fail: when '
-    '(searched_at), and, for an airport beside a festival\u2019s nearest, searched for direct flights alone, whether '
-    'it has one then (direct 0: none, not searched again; null for a nearest airport\u2019s).',
+    'fare_searches': 'Each festival weekend\u2019s (airport, depart) latest search from home that holds an answer '
+    '(fare_weekends.answered): when (searched_at), and, for an airport beside a festival\u2019s nearest, searched for '
+    'direct flights alone, whether it has one then (direct 0: none, not searched again; null for a nearest '
+    'airport\u2019s).',
     'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest '
     'fare that month to the same airport.',
     'artist_stats': 'Per artist with bookings of their own: bookings (as '

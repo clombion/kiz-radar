@@ -149,6 +149,22 @@ def test_a_withheld_weekend_never_answered_waits_for_those_due_on_their_interval
     assert [w.airport for w in fares.queue(at, history)] == ['LIS', 'GLA', 'BCN']
 
 
+def test_no_price_kept_before_this_history_is_no_answer_and_its_weekend_is_due(monkeypatch: pytest.MonkeyPatch) -> None:
+    day = dt.date(2026, 10, 27)
+    at = dt.datetime.combine(day - dt.timedelta(days=2), dt.time(6), dt.UTC)
+    copied = kept('GLA', FRIDAY, at, FareOutcome.NONE).model_copy(update={'backfill': 'pipeline/fare_jobs.csv@abc123'})
+    alone = first_in_queue(monkeypatch, [copied], day)
+    assert (alone.due, alone.again, alone.age) == (True, True, None)  # after those due on their interval
+    assert fare_weekends.current([copied], {('GLA', FRIDAY)}) == {}
+    older = kept('GLA', FRIDAY, at - dt.timedelta(days=3)).model_copy(update={'backfill': 'pipeline/fares.csv@abc123'})
+    fare = fare_weekends.current([older, copied], {('GLA', FRIDAY)})[('GLA', FRIDAY)].fare
+    assert fare is not None
+    assert fare.search == older  # the fare of the answer before it
+    assert first_in_queue(monkeypatch, [older, copied], day).again  # due at once, not on its weekday
+    live = kept('GLA', FRIDAY, at, FareOutcome.NONE)
+    assert fare_weekends.current([live], {('GLA', FRIDAY)})[('GLA', FRIDAY)].fare is None  # a no price of this run's
+
+
 def test_a_failed_search_is_no_search_of_its_weekend(monkeypatch: pytest.MonkeyPatch) -> None:
     day = dt.date(2026, 10, 27)
     failed = kept('GLA', FRIDAY, dt.datetime.combine(day, dt.time(5), dt.UTC), FareOutcome.FAILED)

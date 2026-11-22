@@ -87,7 +87,9 @@ weekend counts as a direct flight with no fare. A reseller that fails is kept as
 answer that cannot be read (an id whose parts cannot be matched to its flights) is left out, and the answer's other
 trips kept. The fares kept before the history was (every version of `fares.csv`, `fare_jobs.csv` and the older
 `docs/data/fares.csv` on main) are in it too, each search tagged with the file and commit it comes from (`backfill`);
-their stops are known only when there were none.
+their stops are known only when there were none. A "no price" among them is no answer, as there it also meant a timeout,
+an answer that could not be read or a sweep that failed: its weekend is due at once, with the fare of an answer before
+it, if any.
 
 To add the airports festivals to come can fly to, download OurAirports' `airports.csv` (ourairports.com/data, public
 domain) and run `mise run airports -- <its path>`: it adds every large or medium airport with scheduled service and an

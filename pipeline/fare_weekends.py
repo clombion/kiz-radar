@@ -65,9 +65,10 @@ def paged(s: Search) -> bool:
 
 
 def answered(s: Search) -> bool:
-    """Whether a search holds an answer its weekend's fare can be of: it did not fail, and its page did not withhold
-    its flights."""
-    return s.outcome not in NO_ANSWER
+    """Whether a search holds an answer its weekend's fare can be of: it did not fail, its page did not withhold its
+    flights, and it is no "no price" kept before this history was (backfill), which there also meant a timeout, an
+    answer that could not be read, or a sweep that failed."""
+    return s.outcome not in NO_ANSWER and not (s.backfill is not None and s.outcome == FareOutcome.NONE)
 
 
 def from_home(history: Iterable[Search], vendor: FareVendor = FareVendor.GOOGLE) -> list[Search]:
