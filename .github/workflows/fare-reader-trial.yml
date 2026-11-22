@@ -43,9 +43,6 @@ jobs:
           echo "OUT=$RUNNER_TEMP/reader-trial" >> "$GITHUB_ENV"
           uv run -q --group fares python "$TRIAL" selftest
           uv run -q --group fares python "$TRIAL" plan
-      - name: Install Chromium
-        if: contains(inputs.readers, 'chromium')
-        run: uv run -q --group browser patchright install --with-deps chromium
       - name: ours
         if: ${{ !cancelled() && contains(inputs.readers, 'ours') }}
         run: uv run -q --group fares python "$TRIAL" ours --out "$OUT"
@@ -54,7 +51,8 @@ jobs:
         run: uv run -q --no-project --python 3.13 --with "git+https://github.com/punitarani/fli@$FLI" python "$TRIAL" explore --out "$OUT"
       - name: chromium
         if: ${{ !cancelled() && contains(inputs.readers, 'chromium') }}
-        run: uv run -q --group fares --group browser python "$TRIAL" chromium --out "$OUT"
+        # the runner's own Chrome: Patchright's bundled Playwright installs no browser on the runner's Ubuntu
+        run: uv run -q --group fares --group browser python "$TRIAL" chromium --out "$OUT" --browser "$(command -v google-chrome)"
       - name: Summary
         if: ${{ !cancelled() }}
         run: |
