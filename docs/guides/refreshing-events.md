@@ -122,21 +122,20 @@ hand takes its own (`budget`).
 Each weekend has its own weekday, so each day's run checks about a seventh of them; one never searched, or overdue by
 twice its interval, doesn't wait for its day. A weekend with no price on Google loses its fare; a search Google refuses
 is tried once more after a minute, and refused again stops the run, which keeps what it found; so do three searches in a
-row Google gives no answer to (`MOST_UNANSWERED`: its empty page, which, once Google gives it, it goes on giving for the
-rest of the run). A search that failed (refused, or fli failing) is kept as failed, never as no price, and is no search
-of its weekend, which is due as if it had not been made; the run names it at its end. The run fails (the workflow marked
-failed after the searches are pushed) only when Google stopped it so, or none of its searches holds an answer (each
-failed, or its page was `withheld`): a search with no answer, or a withheld page, now and then fails no run. Its summary
-line says how many searches it made, and how many of them were withheld.
+row Google gives no answer to (`MOST_UNANSWERED`: a page fli finds no flights' data in, which, once Google gives it, it
+goes on giving for the rest of the run). A search that failed (refused, or fli failing) is kept as failed, never as no
+price, and is no search of its weekend, which is due as if it had not been made; the run names it at its end. The run
+fails (the workflow marked failed after the searches are pushed) only when Google stopped it so, or gave no page to any
+of its searches: a search with no answer now and then fails no run. Its summary line says how many pages Google gave,
+and how many of them listed no flight.
 
-A page with no flight that still prices nearby dates is kept as `withheld`, with what it priced in its note: a browser
-was shown flights for such a search, likely fetched by the page's scripts through a request fli cannot sign, and the
-page as read holds none. The airlines a page names are no sign of it: its filters name every airline flying the route
-with any stops, on a direct search's page too. It is no answer: the weekend keeps the fare of its latest search that
-answered, if any, and is searched again on the next run (`unsettled`), after the weekends due on their interval, even
-one never answered, and before the extras. Being a page Google gave, it counts in the run's searches, is not paired, and
-is not one of the searches in a row Google gives no answer to. A page that prices no nearby date is no flight, as for a
-route with none; for an extra, no direct flight.
+A page is kept as it lists: offers, flights with no price (`listed`), or none (`none`, an empty page), with how many
+nearby dates an empty page priced (`nearby`, Google's box of flexible dates). An empty page is no proof of no flight: a
+browser was shown flights for a search whose page, as read, listed none. Nothing else on it is a sign either way: the
+nearby dates are on the page of a route with no flight that weekend too, and its filters name every airline flying the
+route with any stops, on a direct search's page too; so `nearby` is a fact read, which decides nothing. Every page is an
+answer of Google's server: it counts in the run's searches, and is not one of the searches in a row Google gives no
+answer to.
 
 ## Running the steps locally
 

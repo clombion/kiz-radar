@@ -2,9 +2,9 @@ name: Refresh fares
 
 # Once a day, search the festival weekends due today (see pipeline/fares.py) and commit the run's searches, a file of the
 # fare history (pipeline/fare_offers/), with the report of how well home's fare predicts other cities'
-# (pipeline/fare_accuracy.md). If Google stops the run (a search refused twice, three in a row with no answer) or answers
-# none of its searches (each failed, or its page withheld the flights), the run keeps what it found, then is marked
-# failed; the next run carries on. Publish runs once the searches are pushed.
+# (pipeline/fare_accuracy.md). If Google stops the run (a search refused twice, three in a row with no answer) or gives
+# no page to any of its searches, the run keeps what it found, then is marked failed; the next run carries on. Publish
+# runs once the searches are pushed.
 on:
   schedule:
     - cron: '41 5 * * *'
@@ -51,6 +51,6 @@ jobs:
           bot: fares-bot
           message: Refresh fares (${{ steps.now.outputs.at }})
           then: pages.yml
-      - name: Fail if Google stopped the run, or answered none of its searches
+      - name: Fail if Google stopped the run, or gave no page to any of its searches
         if: steps.search.outcome == 'failure'
         run: exit 1

@@ -1000,15 +1000,8 @@ ROWS = (
     S(
         'fare_outcome',
         'none',
-        'no flight of those asked for; one kept before the fare history was (backfill) is no answer, never read as no '
-        'price: the old pipeline wrote it also for a timeout, an answer it could not read or a sweep that failed',
-        KEPT,
-    ),
-    S(
-        'fare_outcome',
-        'withheld',
-        "no flight on Google's page, which still prices nearby dates: the flights a browser is shown did not reach "
-        'the page as read (the dates priced in the note); never read as no price',
+        "the vendor listed no flight: Google's page no way out (the nearby dates it priced kept, deciding nothing), "
+        "Kiwi's answer no trip; Google's empty page is no proof of no flight (pipeline/fli_page.py)",
         KEPT,
     ),
     S(

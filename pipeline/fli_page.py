@@ -7,11 +7,13 @@ on each of the 7 weekends from Bergen checked whose booking page gave a price. f
 ways back for each way out it expands, so the page is read through its private SearchFlights._fetch_flights, at the
 commit pinned, and the contract test (tests/test_fli_page.py) reads recorded pages through it.
 
-What can go wrong is kept apart, never read as no price: Google refusing the search (HTTP 429), and fli failing (an
-error, a page it can't read). A page with no flight is no price, unless it prices nearby dates (Withheld): a browser
-was shown flights for such a search, likely fetched by the page's scripts through an RPC fli cannot sign, and the page
-as read holds none of them. The airlines a page names are no such sign: its filters name those flying the route with
-any stops, whatever the search asks. One with flights and none priced is listed.
+What can go wrong is kept apart from a page: Google refusing the search (HTTP 429), and fli failing (an error, a page
+it can't read). A page is what it lists, and says nothing more: its ways out, priced or listed with no price, or none
+(Empty). An empty page is no proof of no flight: a browser was shown flights for a search whose page, as read here,
+listed none. Nor is anything else on an empty page a sign either way: the nearby dates it prices (Google's box of
+flexible dates) are on the page of a route with no flight that weekend too, and its filters name the airlines flying
+the route with any stops, whatever the search asks. So an empty page keeps how many nearby dates it priced as a fact
+read, which decides nothing; whether a weekend has a flight is the fare history's to say (pipeline/fare_weekends.py).
 """
 
 import datetime as dt
@@ -64,26 +66,19 @@ class Row:
 
 
 @dataclass(frozen=True)
-class Withheld:
-    """A page with no flight that still prices nearby dates: the search's flights did not reach the page as read, so
-    it is no answer, never no price."""
+class Empty:
+    """A page with no way out, and how many nearby dates it prices: read, and deciding nothing (the module's
+    docstring)."""
 
-    dates: int
-
-    @property
-    def why(self) -> str:
-        return f'no flight on the page, which prices {self.dates} nearby dates'
+    nearby: int
 
 
-def withheld(text: str) -> Withheld | None:
-    """What a page with no flight row still says of the route, in its ds:1 payload as fli reads it: the nearby dates
-    it prices ([6][0][4][0], each a way out, a way back and [[_, the price], a token naming the dates it searched with
-    no result, noresults|agg]); None when it prices none, as for a route with no flight. The airlines its filters offer
-    ([7][1][1]) are no sign: they are those flying the route with any stops, on a direct search's page too.
+def empty(text: str) -> Empty:
+    """A page with no way out, as its ds:1 payload is read by fli: the nearby dates it prices ([6][0][4][0], each a
+    way out, a way back and [[_, the price], a token naming the dates it searched with no result, noresults|agg]).
     tests/test_fli_page.py reads pages Google sent."""
     payload: object = extract_payload(text)
-    dates = [d for d in items(at(payload, 6, 0, 4, 0)) if isinstance(at(d, 2, 0, 1), int | float)]
-    return Withheld(len(dates)) if dates else None
+    return Empty(sum(isinstance(at(d, 2, 0, 1), int | float) for d in items(at(payload, 6, 0, 4, 0))))
 
 
 def at(value: object, *path: int) -> object:
@@ -118,9 +113,9 @@ def filters(origin: str, airport: str, friday: dt.date, back: dt.date, *, direct
 
 def page(
     origin: str, airport: str, friday: dt.date, back: dt.date, *, direct: bool
-) -> tuple[Row, ...] | Withheld | Declined:
-    """The page's ways out, cheapest first (none when Google has no flight), each priced in EUR; a page with none
-    that prices nearby dates, withheld; or why there is no page (pipeline/calls.py): refused, or fli failing, is
+) -> tuple[Row, ...] | Empty | Declined:
+    """The page's ways out, cheapest first, each priced in EUR or listed with no price; a page with none, Empty; or
+    why there is no page (pipeline/calls.py): refused, or fli failing, is
     transient; a price in another currency is structural."""
     search = SearchFlights()
     search.client = kept = Kept()
@@ -138,7 +133,7 @@ def page(
     except SearchClientError as e:
         return Declined(CallCause.TRANSIENT, f'fli: {e}')
     if not found:
-        return withheld(kept.text) or ()
+        return empty(kept.text)
     rows = found
     if wrong := {r.currency for r in rows if r.price is not None} - {'EUR'}:
         named = ', '.join(sorted(map(str, wrong)))

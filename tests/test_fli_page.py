@@ -2,10 +2,12 @@
 on, held by pages Google sent (tests/pages/: the script of each page that holds its flights, the rest cut)."""
 
 import datetime as dt
+import importlib.util
 import json
 import re
 from pathlib import Path
-from typing import cast
+from types import ModuleType
+from typing import TYPE_CHECKING, cast
 
 import pytest
 from fli.models import FlightResult, FlightSearchFilters
@@ -13,10 +15,13 @@ from fli.search import SearchFlights
 from fli.search.client import Client
 from fli.search.exceptions import SearchHTTPError
 
-from pipeline import fli_page
+from pipeline import ROOT, fli_page
 from pipeline.calls import Declined
 from pipeline.enums import CallCause
 from tests.fakes import no_wait
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 PAGES = Path(__file__).parent / 'pages'
 # the searches the pages answer, as fli asks for them: Bergen to Lisbon for any flight, to Aberdeen for direct flights
@@ -26,7 +31,7 @@ LISBON = (
 )
 # Bergen to Lyon, 18 to 21 December 2026, for any flight: a page with no flight row that names the route's airlines and
 # prices nearby dates, sent alike twice and a third time with gl=NO, within 13 minutes, while a browser showed flights
-# for the search from €333
+# for the search from €333: an empty page is no proof of no flight
 LYON = (
     'https://www.google.com/travel/flights?tfs=CBwQAhoeEgoyMDI2LTEyLTE4agcIARIDQkdPcgcIARIDTFlTGh4SCjIwMjYtMTItMjFqBwgB'
     'EgNMWVNyBwgBEgNCR09AAUgBcAGYAQE&hl=en&gl=US&curr=EUR'
@@ -94,16 +99,16 @@ def test_flights_google_lists_with_no_price_are_ways_out_with_none(monkeypatch: 
     assert rows == (fli_page.Row(None, 0, ('Widerøe',)), fli_page.Row(None, 0, ('Widerøe',)))
 
 
-def lyon(monkeypatch: pytest.MonkeyPatch, page: str) -> tuple[fli_page.Row, ...] | fli_page.Withheld | Declined:
+def lyon(monkeypatch: pytest.MonkeyPatch, page: str) -> tuple[fli_page.Row, ...] | fli_page.Empty | Declined:
     served(monkeypatch, LYON, page)
     return fli_page.page('BGO', 'LYS', dt.date(2026, 12, 18), dt.date(2026, 12, 21), direct=False)
 
 
-WITHHELD = (PAGES / 'google-bgo-lys-withheld.html').read_text()
+EMPTY = (PAGES / 'google-bgo-lys-empty.html').read_text()
 
 
-def test_a_page_with_no_flight_that_prices_nearby_dates_is_withheld(monkeypatch: pytest.MonkeyPatch) -> None:
-    assert lyon(monkeypatch, WITHHELD) == fli_page.Withheld(dates=8)
+def test_a_page_with_no_flight_is_empty_with_the_nearby_dates_it_prices(monkeypatch: pytest.MonkeyPatch) -> None:
+    assert lyon(monkeypatch, EMPTY) == fli_page.Empty(nearby=8)
 
 
 def payload_of(page: str) -> list[object]:
@@ -118,9 +123,9 @@ def sent(payload: object) -> str:
     return f"<script>AF_initDataCallback({{key: 'ds:1', hash: '9', data:{json.dumps(payload)}, sideChannel: {{}}}});"
 
 
-def synthetic(*, airlines: bool, dates: bool) -> str:
-    """The withheld page with its airlines, its nearby dates or both taken out, made from the one Google sent."""
-    payload = payload_of(WITHHELD)
+def changed(*, airlines: bool, dates: bool) -> str:
+    """Lyon's empty page Google sent, its airlines, its nearby dates or both taken out: pages made here, not sent."""
+    payload = payload_of(EMPTY)
     if not airlines:
         cast('list[object]', fli_page.at(payload, 7, 1))[1] = []
     if not dates:
@@ -129,29 +134,56 @@ def synthetic(*, airlines: bool, dates: bool) -> str:
 
 
 @pytest.mark.parametrize(
-    ('airlines', 'dates', 'read'),
-    [
-        (False, False, ()),
-        (True, False, ()),
-        (False, True, fli_page.Withheld(dates=8)),
-    ],
-    ids=['neither: no flight', 'airlines alone: no flight', 'nearby dates alone'],
+    ('airlines', 'dates', 'nearby'),
+    [(False, False, 0), (True, False, 0), (False, True, 8)],
+    ids=['neither', 'airlines alone', 'nearby dates alone'],
 )
-def test_a_page_with_no_flight_that_prices_no_nearby_date_is_no_way_out_whatever_airlines_it_names(
-    airlines: bool, dates: bool, read: object, monkeypatch: pytest.MonkeyPatch
+def test_an_empty_page_is_empty_whatever_airlines_or_nearby_dates_it_names(
+    airlines: bool, dates: bool, nearby: int, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    assert lyon(monkeypatch, synthetic(airlines=airlines, dates=dates)) == read
+    assert lyon(monkeypatch, changed(airlines=airlines, dates=dates)) == fli_page.Empty(nearby)
 
 
-def test_a_direct_search_s_page_names_airlines_that_only_connect_so_with_no_row_it_is_no_way_out(
+TRIAL = ROOT / 'scripts' / 'fare_reader_trial.py'
+
+
+def trial() -> ModuleType:
+    """scripts/fare_reader_trial.py, which reads the nearby dates as fli_page does without importing it."""
+    spec = importlib.util.spec_from_file_location('fare_reader_trial', TRIAL)
+    assert spec is not None
+    assert spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+@pytest.mark.parametrize(
+    ('airlines', 'dates'),
+    [(True, True), (False, False), (True, False), (False, True)],
+    ids=['as sent', 'neither', 'airlines alone', 'nearby dates alone'],
+)
+def test_the_reader_trial_counts_an_empty_page_s_nearby_dates_as_the_pipeline_does(
+    airlines: bool, dates: bool, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    page = EMPTY if airlines and dates else changed(airlines=airlines, dates=dates)
+    found = lyon(monkeypatch, page)
+    assert isinstance(found, fli_page.Empty)
+    script = trial()
+    assert cast('Callable[[object], int]', script.nearby_dates)(payload_of(page)) == found.nearby
+    if airlines and dates:
+        assert found.nearby == cast('int', script.EMPTY_NEARBY)  # the count its selftest asks of the page
+
+
+def test_a_direct_search_s_page_names_airlines_that_only_connect_so_with_no_row_it_is_empty(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     payload = payload_of((PAGES / 'google-bgo-abz-direct.html').read_text())
     named = {cast('list[object]', a)[0] for a in fli_page.items(fli_page.at(payload, 7, 1, 1))}
     assert {'AF', 'AY', 'KL'} <= named  # Air France, Finnair and KLM fly no direct flight from Bergen to Aberdeen
-    payload[3] = None  # its two rows, Widerøe's, taken out: the page of a direct search with no direct flight
+    payload[3] = None  # its two rows, Widerøe's, taken out: a page made here of a direct search with no row
     served(monkeypatch, ABERDEEN, sent(payload))
-    assert fli_page.page('BGO', 'ABZ', dt.date(2026, 11, 20), dt.date(2026, 11, 23), direct=True) == ()
+    found = fli_page.page('BGO', 'ABZ', dt.date(2026, 11, 20), dt.date(2026, 11, 23), direct=True)
+    assert found == fli_page.Empty(nearby=0)
 
 
 @pytest.mark.parametrize(

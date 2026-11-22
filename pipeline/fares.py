@@ -24,16 +24,15 @@ festival have none. An airport that is the nearest of any festival that weekend 
 Google is read on its outbound page, one request a search (pipeline/fli_page.py): its price is the return's, its stops
 those out. Google sometimes refuses a search (HTTP 429), so a refused search is tried once more after a minute; refused
 again, it stops the run, as do MOST_UNANSWERED searches in a row Google gives no answer to. A search with no answer is
-kept as failed, no search of its weekend, and named at the run's end. The run fails only when it was stopped so, or
-when none of the searches it made holds an answer (each failed, or its page was withheld): a search with no answer now
-and then is a later run's to make. A page with no flight that still prices nearby dates is kept as withheld: it holds
-no answer, so the weekend keeps the fare of its latest search that did, if any, and is searched again on the next run
-(unsettled), after the weekends due on their interval, even one never answered, and before the extras. Such a page is
-an answer of Google's, never a refusal: it counts in the run's budget, and not among the searches in a row Google gave
-no answer to. Each weekend Google gave a page for is asked of Kiwi.com's flight search the same (kiwi), its trips kept
-with the airlines flying them and the tickets they are booked on (ticket): its cheapest self-transfer, when cheaper, is
-added to the weekend's Flights, and its cheapest on one ticket is the card's where Google lists flights with no price
-(Widerøe's, which it leaves to the airline). Its price is a reseller's, and the site says so; its failure fails no run.
+kept as failed, no search of its weekend, and named at the run's end. A page Google gave is kept as it lists: offers,
+flights with no price, or none, an empty page with how many nearby dates it priced, which decides nothing
+(pipeline/fli_page.py). Every page is an answer of Google's server: it counts in the run's budget, and not among the
+searches in a row Google gave no answer to. The run fails only when it was stopped so, or when Google gave no page to
+any search it made: a search with no answer now and then is a later run's to make. Each weekend Google gave a page for
+is asked of Kiwi.com's flight search the same (kiwi), its trips kept with the airlines flying them and the tickets they
+are booked on (ticket): its cheapest self-transfer, when cheaper, is added to the weekend's Flights, and its cheapest on
+one ticket is the card's where Google lists flights with no price (Widerøe's, which it leaves to the airline). Its
+price is a reseller's, and the site says so; its failure fails no run.
 
     mise run fares -- refresh --budget 20      # what the GitHub Action runs
     mise run fares -- plan                     # show what is due, without searching
@@ -245,10 +244,10 @@ class Asked(NamedTuple):
 
 
 def search(
-    asked: Asked, vendor: FareVendor, found: tuple[Offer, ...] | str, *, listed: bool = False, withheld: str = ''
+    asked: Asked, vendor: FareVendor, found: tuple[Offer, ...] | str, *, listed: bool = False, nearby: int | None = None
 ) -> Search:
-    """A search made now: its offers (none when there is no price, listed when flights were, with none, withheld
-    with what the page said when its flights did not reach it), or the words of its failure."""
+    """A search made now: its offers (none when the vendor listed no flight, then with the nearby dates Google's page
+    priced, or listed when flights were, with no price), or the words of its failure."""
     at = now()
     failed = isinstance(found, str)
     outcome = (
@@ -258,8 +257,6 @@ def search(
         if found
         else FareOutcome.LISTED
         if listed
-        else FareOutcome.WITHHELD
-        if withheld
         else FareOutcome.NONE
     )
     return Search(
@@ -271,21 +268,22 @@ def search(
         mode=asked.mode,
         vendor=vendor,
         outcome=outcome,
-        note=found[:NOTE_LENGTH] if failed else withheld[:NOTE_LENGTH] or None,
+        note=found[:NOTE_LENGTH] if failed else None,
         offers=() if failed else found,
+        nearby=nearby,
     )
 
 
 def google(asked: Asked) -> Search | Declined:
     """Google's outbound page for a Friday-to-Monday return (pipeline/fli_page.py): each way out priced, an offer on
-    one ticket with its stops out; flights with no price listed; a page whose flights did not reach it withheld; or
-    why there is no page."""
+    one ticket with its stops out; flights with no price listed; an empty page none, with the nearby dates it priced;
+    or why there is no page."""
     origin, airport, friday, mode = asked
     page = fli_page.page(origin, airport, friday, friday + dt.timedelta(days=NIGHTS), direct=mode == FareMode.DIRECT)
     if isinstance(page, Declined):
         return page
-    if isinstance(page, fli_page.Withheld):
-        return search(asked, FareVendor.GOOGLE, (), withheld=page.why)
+    if isinstance(page, fli_page.Empty):
+        return search(asked, FareVendor.GOOGLE, (), nearby=page.nearby)
     offers = tuple(
         Offer(price=r.price, ticket=FareTicket.ONE_TICKET, stops_out=r.stops, stops_back=None, airlines=r.airlines)
         for r in page
@@ -389,9 +387,9 @@ def said(found: Searched) -> str:
         case FareOutcome.LISTED:
             words = 'direct, no price' if direct else 'flights with no price'
         case FareOutcome.NONE:
-            words = 'no direct flight' if direct else 'no price'
-        case FareOutcome.WITHHELD:
-            words = f'withheld: {g.note}'
+            words = f'no {"direct " if direct else ""}flight listed' + (
+                f', {g.nearby} nearby dates priced' if g.nearby else ''
+            )
     for k in rest:
         priced = f'{min(o.price for o in k.offers):.0f} EUR' if k.offers else str(k.outcome)
         words += f'; the reseller: {priced}' + (f' ({k.note})' if k.note else '')
@@ -443,10 +441,10 @@ class Run:
 
     @property
     def failed(self) -> bool:
-        """Whether the run failed at its work: it was stopped, or it searched Google and none of its searches holds an
-        answer (fare_weekends.answered): each failed, or its page was withheld."""
+        """Whether the run failed at its work: it was stopped, or it searched Google and got no page for any search
+        (fare_weekends.paged): an empty page is an answer of Google's server as much as one that lists flights."""
         google = [s for s in self.kept if s.vendor == FareVendor.GOOGLE]
-        return self.stopped or (bool(google) and not any(fare_weekends.answered(s) for s in google))
+        return self.stopped or (bool(google) and not any(fare_weekends.paged(s) for s in google))
 
 
 def from_home(run: Run, history: Sequence[Search], budget: int) -> list[Weekend]:
@@ -484,26 +482,26 @@ def paired(run: Run, answered: Sequence[Weekend], pairs: int, day: dt.date) -> N
 
 def refresh(budget: int, max_seconds: int) -> None:
     """Search the weekends due today, then pair a share of those searched (PAIR_SHARE of the budget, kept for them)
-    with a search from another city, writing the run's file after each, and says how many it made and how many of
-    them were withheld. It names the searches Google gave no answer to, a refusal or a stop first, and exits 1 when the
-    run failed at its work (Run.failed), with those words or, when none failed, the count withheld: a search with no
-    answer now and then is tried again in a later run, and fails none."""
+    with a search from another city, writing the run's file after each, and says how many pages Google gave and how
+    many of them listed no flight. It names the searches Google gave no answer to, a refusal or a stop first, and exits
+    1 when the run failed at its work (Run.failed): a search with no answer now and then is tried again in a later
+    run, and fails none."""
     history, today = fare_store.read(), now().date()
     run, pairs = Run(fare_store.run_file(now()), time.time() + max_seconds), round(budget * PAIR_SHARE)
     answered = from_home(run, history, budget - pairs)
     paired(run, answered, pairs, today)
     live = fare_weekends.weekends(today)
     pages = [s for s in fare_weekends.from_home(run.kept) if fare_weekends.paged(s)]
-    withheld = sum(s.outcome == FareOutcome.WITHHELD for s in pages)
+    empty = sum(s.outcome == FareOutcome.NONE for s in pages)
     pairs_made = sum(s.origin != airports.home() for s in run.kept)
     searched_now = len(current([*history, *run.kept], live))
     print(
-        f'{len(pages)} searches, {withheld} of them withheld, and {pairs_made} pairs; '
+        f'{len(pages)} searches, {empty} of them listing no flight, and {pairs_made} pairs; '
         f'{searched_now} of {len(live)} festival weekends searched'
     )
     why = calls.failed('searches', run.declined)
     if run.failed:
-        sys.exit(why or f'none of the {len(pages)} searches holds an answer: {withheld} withheld')
+        sys.exit(why or 'Google gave no page to any search')
     if why:
         print(why)
 

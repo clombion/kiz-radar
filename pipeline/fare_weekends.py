@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 from pipeline import airports, cities, claims, export
 from pipeline.enums import FareMode, FareOutcome, FareTicket, FareVendor, Listing
-from pipeline.records import NO_ANSWER, Offer, Record, Search, day_of
+from pipeline.records import Offer, Record, Search, day_of
 
 NIGHTS = 3  # a weekend's flight is out on the Friday and back on the Monday, the one place this is said
 
@@ -65,10 +65,10 @@ def paged(s: Search) -> bool:
 
 
 def answered(s: Search) -> bool:
-    """Whether a search holds an answer its weekend's fare can be of: it did not fail, its page did not withhold its
-    flights, and it is no "no price" kept before this history was (backfill), which there also meant a timeout, an
-    answer that could not be read, or a sweep that failed."""
-    return s.outcome not in NO_ANSWER and not (s.backfill is not None and s.outcome == FareOutcome.NONE)
+    """Whether a search holds an answer its weekend's fare can be of: it did not fail (paged), and it is no "no price"
+    kept before this history was (backfill), which there also meant a timeout, an answer that could not be read, or a
+    sweep that failed."""
+    return paged(s) and not (s.backfill is not None and s.outcome == FareOutcome.NONE)
 
 
 def from_home(history: Iterable[Search], vendor: FareVendor = FareVendor.GOOGLE) -> list[Search]:

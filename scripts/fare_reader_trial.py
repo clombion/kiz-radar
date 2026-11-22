@@ -48,6 +48,7 @@ ORIGIN = 'BGO'
 NIGHTS = 3  # out on the Friday, back on the Monday, as the pipeline asks
 GAP = 20.0  # seconds, at least, before each request to Google
 TOO_MANY = 429
+EMPTY_NEARBY = 8  # the nearby dates Lyon's recorded empty page prices, as tests/test_fli_page.py reads them
 FLI_MAIN = '249a292e829672f5ee5d3477c2269a16acac9a20'  # fli's commit adding SearchExplore
 
 Kind = Literal['prices', 'empty', 'refused', 'consent', 'error', 'skipped']
@@ -172,7 +173,7 @@ def at(value: object, *path: int) -> object:
 
 def nearby_dates(payload: object) -> int:
     """How many nearby dates a page's ds:1 payload prices (its noresults|agg block), as pipeline/fli_page.py's
-    withheld() reads them: a page with no flight that prices some likely had its flights withheld."""
+    empty() reads them: Google's box of flexible dates, on the page of a route with no flight too."""
     dates = at(payload, 6, 0, 4, 0)
     return sum(1 for d in cast('list[object]', dates) if isinstance(at(d, 2, 0, 1), int | float)) if dates else 0
 
@@ -286,7 +287,8 @@ def ours(searches: Sequence[Search], pace: Pace) -> list[Outcome]:
         priced = [r for r in rows if r.price is not None]
         if not priced:
             dates = nearby_dates(extract_payload(kept.text)) if kept.text else 0
-            why = f'withheld: no flight, {dates} nearby dates priced' if dates else 'no flight on the page'
+            listed = f'{len(rows)} flights, none priced' if rows else 'no flight on the page'
+            why = f'{listed}, {dates} nearby dates priced' if dates else listed
             o = Outcome(search.id, 'ours', 'empty', rows=len(rows), detail=why, seconds=seconds, at=stamp)
         else:
             best = min(priced, key=lambda r: cast('float', r.price))
@@ -590,7 +592,7 @@ def plan(gap: float) -> str:
 
 
 def selftest(pages: Sequence[Path]) -> list[str]:
-    """The parsers on recorded pages: tests/pages/'s (fli's withheld page and a page with flights), and any probe
+    """The parsers on recorded pages: tests/pages/'s (Lyon's empty page and a page with flights), and any probe
     page given, which is read as a rendered page. Returns what failed."""
     failed: list[str] = []
     recorded = REPOSITORY / 'tests' / 'pages'
@@ -599,13 +601,13 @@ def selftest(pages: Sequence[Path]) -> list[str]:
     except ImportError:
         failed.append('fli is not installed: run under uv run --group fares')
     else:
-        withheld = nearby_dates(extract_payload((recorded / 'google-bgo-lys-withheld.html').read_text()))
+        empty = nearby_dates(extract_payload((recorded / 'google-bgo-lys-empty.html').read_text()))
         flights = nearby_dates(extract_payload((recorded / 'google-bgo-lis.html').read_text()))
-        print(f'withheld page: {withheld} nearby dates; page with flights: {flights}')
-        if not withheld or flights:
+        print(f'empty page: {empty} nearby dates; page with flights: {flights}')
+        if empty != EMPTY_NEARBY or flights:
             failed.append('nearby_dates')
-    if rendered_rows((recorded / 'google-bgo-lys-withheld.html').read_text()):
-        failed.append('rendered_rows found a row on the withheld page')
+    if rendered_rows((recorded / 'google-bgo-lys-empty.html').read_text()):
+        failed.append('rendered_rows found a row on the empty page')
     label = (
         '<div aria-label="From 1,355 euros round trip total. 1 stop flight with Lufthansa and Discover Airlines. '
         'Leaves ..."></div><div aria-label="From 99 euros round trip total. Nonstop flight with KLM. Leaves"></div>'

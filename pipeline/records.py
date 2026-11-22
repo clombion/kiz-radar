@@ -1468,14 +1468,13 @@ class Offer(Record):
     airlines: tuple[str, ...]
 
 
-NO_ANSWER = frozenset({FareOutcome.FAILED, FareOutcome.WITHHELD})  # a search with no answer, which says why in its note
-
-
 class Search(Record):
     """A fare search, the unit of the fare history (pipeline/fare_offers/, pipeline/fare_store.py): who was asked
     (vendor), when, from where (origin) to which airport for which Friday, for which flights (mode), what it found
-    (outcome) and the offers it saw, a price each. note: the vendor's words, or why it holds no answer; backfill: the
-    file and commit a search kept before this history was, read back from."""
+    (outcome) and the offers it saw, a price each. note: the vendor's words, or why it failed; backfill: the file and
+    commit a search kept before this history was, read back from; nearby: how many nearby dates an empty page of
+    Google's priced, as read (pipeline/fli_page.py Empty), none for any other search and for one kept before it was
+    read."""
 
     id: Hash
     at: Stamp
@@ -1488,13 +1487,16 @@ class Search(Record):
     note: str | None = None
     backfill: str | None = None
     offers: tuple[Offer, ...] = ()
+    nearby: Annotated[int, Field(ge=0)] | None = None
 
     @model_validator(mode='after')
     def offers_as_found(self) -> Self:
         if (self.outcome == FareOutcome.OFFERS) != bool(self.offers):
             raise ValueError(f'a search whose outcome is {self.outcome} has {len(self.offers)} offers')
-        if self.outcome in NO_ANSWER and not self.note:
+        if self.outcome == FareOutcome.FAILED and not self.note:
             raise ValueError(f'a search whose outcome is {self.outcome} says why in its note')
+        if self.nearby is not None and (self.vendor, self.outcome) != (FareVendor.GOOGLE, FareOutcome.NONE):
+            raise ValueError(f"a search of {self.vendor}'s whose outcome is {self.outcome} prices no nearby date")
         return self
 
 

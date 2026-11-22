@@ -49,7 +49,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | **model**, each Claude model the pipeline asks, which spend.PRICES prices | `claude-fable-5-1`, `claude-opus-5-5`, `claude-sonnet-5-5`, `claude-haiku-5-5` | ask; tickets; merge review |
 | **fare_mode**, each fare search, by the flights it asks for | `any`, `direct` | fares |
 | **fare_vendor**, each fare search, by whom it asks | `google`, `kiwi` | fares |
-| **fare_outcome**, each fare search, by what it found | `offers`, `none`, `withheld`, `listed`, `failed` | fares |
+| **fare_outcome**, each fare search, by what it found | `offers`, `none`, `listed`, `failed` | fares |
 | **fare_ticket**, each offer of a fare search, by the tickets it is booked on | `one_ticket`, `self_transfer` | fares |
 | **fare_family**, each pair of searches (home's and another city's of one weekend), by the flight home's fare takes | `direct`, `connecting` | fare_accuracy |
 | **city_tier**, each festival city, by the airports its decision says it flies to (a city claim) | `big`, `small`, `not_served` | claims |
@@ -260,8 +260,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | fare_vendor · `google` | kept | — | — | Google Flights' outbound page, through fli (pipeline/fli_page.py) |
 | fare_vendor · `kiwi` | view | reseller’s price | — | Kiwi.com's flight search, a reseller selling at its own prices |
 | fare_outcome · `offers` | kept | — | — | one offer or more with a price |
-| fare_outcome · `none` | kept | — | — | no flight of those asked for; one kept before the fare history was (backfill) is no answer, never read as no price: the old pipeline wrote it also for a timeout, an answer it could not read or a sweep that failed |
-| fare_outcome · `withheld` | kept | — | — | no flight on Google's page, which still prices nearby dates: the flights a browser is shown did not reach the page as read (the dates priced in the note); never read as no price |
+| fare_outcome · `none` | kept | — | — | the vendor listed no flight: Google's page no way out (the nearby dates it priced kept, deciding nothing), Kiwi's answer no trip; Google's empty page is no proof of no flight (pipeline/fli_page.py) |
 | fare_outcome · `listed` | kept | — | — | flights listed, none with a price (Widerøe's, which Google leaves to the airline) |
 | fare_outcome · `failed` | kept | — | — | no answer: the vendor refused the search, or failed (its words in the note); never read as no price |
 | fare_ticket · `one_ticket` | kept | — | — | every flight out on one ticket, and every flight back on one |

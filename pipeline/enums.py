@@ -507,7 +507,6 @@ class FareOutcome(StrEnum):
 
     OFFERS = 'offers'
     NONE = 'none'
-    WITHHELD = 'withheld'
     LISTED = 'listed'
     FAILED = 'failed'
 
