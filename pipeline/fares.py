@@ -292,9 +292,9 @@ def google(asked: Asked) -> Search | Declined:
     return search(asked, FareVendor.GOOGLE, offers, listed=bool(page))
 
 
-def kiwi(asked: Asked) -> Search:
-    """The reseller's Friday-to-Monday returns (direct flights alone in direct mode), each an offer; failed, with
-    why, when it gave no answer."""
+def kiwi(asked: Asked, google: Search) -> Search:
+    """The reseller's Friday-to-Monday returns (direct flights alone in direct mode), each an offer, asked with this
+    search of Google's; failed, with why, when it gave no answer."""
     origin, airport, friday, mode = asked
     args = {
         'flyFrom': origin,
@@ -308,7 +308,8 @@ def kiwi(asked: Asked) -> Search:
     call = {'jsonrpc': '2.0', 'id': 1, 'method': 'tools/call', 'params': {'name': 'search-flight', 'arguments': args}}
     body = web.post(RESELLER, json.dumps(call).encode(), RESELLER_HEADERS)
     found = body.why if isinstance(body, Declined) else kiwi_offers(body.decode(errors='replace'))
-    return search(asked, FareVendor.KIWI, found)
+    # validated as it is made, with the id it names (Search's shape)
+    return Search.model_validate(search(asked, FareVendor.KIWI, found).model_dump() | {'asked_with': google.id})
 
 
 def kiwi_offers(answer: str) -> tuple[Offer, ...] | str:
@@ -372,7 +373,7 @@ def searched(asked: Asked, *, resold: bool) -> Searched:
     if not resold:
         return Searched((found,))
     time.sleep(KIWI_PAUSE)
-    return Searched((found, kiwi(asked)))
+    return Searched((found, kiwi(asked, found)))
 
 
 def said(found: Searched) -> str:

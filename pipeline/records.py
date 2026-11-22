@@ -1474,7 +1474,8 @@ class Search(Record):
     (outcome) and the offers it saw, a price each. note: the vendor's words, or why it failed; backfill: the file and
     commit a search kept before this history was, read back from; nearby: how many nearby dates an empty page of
     Google's priced, as read (pipeline/fli_page.py Empty), none for any other search and for one kept before it was
-    read."""
+    read; asked_with: the id of the search of Google's a reseller's search was asked with, none for one kept before it
+    was (pipeline/fare_weekends.py resellers pairs those by time)."""
 
     id: Hash
     at: Stamp
@@ -1488,6 +1489,7 @@ class Search(Record):
     backfill: str | None = None
     offers: tuple[Offer, ...] = ()
     nearby: Annotated[int, Field(ge=0)] | None = None
+    asked_with: Hash | None = None
 
     @model_validator(mode='after')
     def offers_as_found(self) -> Self:
@@ -1497,6 +1499,8 @@ class Search(Record):
             raise ValueError(f'a search whose outcome is {self.outcome} says why in its note')
         if self.nearby is not None and (self.vendor, self.outcome) != (FareVendor.GOOGLE, FareOutcome.NONE):
             raise ValueError(f"a search of {self.vendor}'s whose outcome is {self.outcome} prices no nearby date")
+        if self.asked_with is not None and self.vendor != FareVendor.KIWI:
+            raise ValueError(f"a search of {self.vendor}'s is asked with no other search")
         return self
 
 

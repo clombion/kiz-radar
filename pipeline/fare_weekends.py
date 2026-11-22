@@ -71,22 +71,39 @@ def answered(s: Search) -> bool:
     return paged(s) and not (s.backfill is not None and s.outcome == FareOutcome.NONE)
 
 
-def from_home(history: Iterable[Search], vendor: FareVendor = FareVendor.GOOGLE) -> list[Search]:
-    """The vendor's searches from home, in the order they were made."""
+def from_home(history: Iterable[Search]) -> list[Search]:
+    """Google's searches from home, in the order they were made."""
     home = airports.home()
-    return [s for s in sorted(history, key=lambda s: s.at) if s.origin == home and s.vendor == vendor]
+    return [s for s in sorted(history, key=lambda s: s.at) if s.origin == home and s.vendor == FareVendor.GOOGLE]
 
 
-def latest(history: Iterable[Search], vendor: FareVendor = FareVendor.GOOGLE) -> dict[tuple[str, dt.date], Search]:
-    """Each weekend's latest search from home of the vendor's that holds an answer (answered): the one its fare is
-    of."""
-    return {(s.airport, s.depart): s for s in from_home(history, vendor) if answered(s)}
+def latest(history: Iterable[Search]) -> dict[tuple[str, dt.date], Search]:
+    """Each weekend's latest search of Google from home that holds an answer (answered): the one its fare is of."""
+    return {(s.airport, s.depart): s for s in from_home(history) if answered(s)}
 
 
 def direct_found(s: Search) -> bool | None:
     """For a search of direct flights alone that holds an answer (answered), whether it found one (priced or not); None
     for any flight's, and for one that holds no answer."""
     return None if s.mode == FareMode.ANY or not answered(s) else s.outcome != FareOutcome.NONE
+
+
+def resellers(history: Iterable[Search]) -> dict[str, Search]:
+    """The reseller's search each search of Google's was asked with, by that one's id: the reseller's search naming it
+    (Search.asked_with). One kept before a reseller's search named it is paired by time, the one place it is: it was
+    asked with the search of Google's made last before it from the same origin to the same airport, for the same
+    Friday and flights (asked a few seconds after it, fares.KIWI_PAUSE; each of the history's is, within a minute)."""
+    ordered = sorted(history, key=lambda s: s.at)
+    out: dict[str, Search] = {}
+    last: dict[tuple[str, str, dt.date, FareMode], Search] = {}
+    for s in ordered:
+        if s.vendor == FareVendor.GOOGLE:
+            last[(s.origin, s.airport, s.depart, s.mode)] = s
+        elif s.asked_with is not None:
+            out[s.asked_with] = s
+        elif (g := last.get((s.origin, s.airport, s.depart, s.mode))) is not None:
+            out[g.id] = s
+    return out
 
 
 @dataclass(frozen=True)
@@ -115,14 +132,13 @@ def cheapest(s: Search | None, ticket: FareTicket) -> Priced | None:
 
 def current(history: Sequence[Search], live: Collection[tuple[str, dt.date]]) -> dict[tuple[str, dt.date], Current]:
     """Each festival weekend still to come that has been searched from home, with its fare (Current); the reseller's
-    search is the one asked with Google's, none older."""
-    resold = latest(history, FareVendor.KIWI)
+    search is the one asked with Google's (resellers)."""
+    resold = resellers(history)
     out: dict[tuple[str, dt.date], Current] = {}
     for key, s in latest(history).items():
         if key not in live:
             continue
-        k = resold.get(key)
-        k = k if k is not None and k.at >= s.at else None
+        k = resold.get(s.id)
         # the reseller's on the card only where Google listed flights with no price
         priced = {FareOutcome.OFFERS: s, FareOutcome.LISTED: k}.get(s.outcome)
         fare = cheapest(priced, FareTicket.ONE_TICKET)

@@ -862,3 +862,31 @@ def test_a_reseller_s_fare_is_taken_only_with_the_google_search_it_was_asked_wit
     assert found.fare.offer.price == 438  # on one ticket
     newer = [*history, kept('ABZ', FRIDAY, later, FareOutcome.LISTED, mode=FareMode.DIRECT)]
     assert fare_weekends.current(newer, {('ABZ', FRIDAY)})[('ABZ', FRIDAY)].fare is None  # the reseller's is older
+
+
+def test_a_reseller_s_search_is_paired_with_the_search_it_names_else_by_time() -> None:
+    later = AT + dt.timedelta(minutes=1)
+    first, second = kept('ABZ', FRIDAY, AT, FareOutcome.LISTED), kept('ABZ', FRIDAY, later, FareOutcome.LISTED)
+    named = kept('ABZ', FRIDAY, later, vendor=FareVendor.KIWI).model_copy(update={'asked_with': first.id})
+    assert fare_weekends.resellers([first, second, named]) == {first.id: named}  # not the latest before it
+    # one kept before a reseller's search named its: Google's made last before it, from and to the same, alike
+    timed = kept('ABZ', FRIDAY, later + dt.timedelta(seconds=3), vendor=FareVendor.KIWI)
+    other = kept('ABZ', FRIDAY, later, FareOutcome.LISTED, mode=FareMode.DIRECT)
+    elsewhere = kept('ABZ', FRIDAY, later, FareOutcome.LISTED, origin='OSL')
+    assert fare_weekends.resellers([first, second, other, elsewhere, timed]) == {second.id: timed}
+    assert fare_weekends.resellers([timed, second.model_copy(update={'at': timed.at + dt.timedelta(seconds=1)})]) == {}
+
+
+def test_only_a_reseller_s_search_is_asked_with_another(monkeypatch: pytest.MonkeyPatch) -> None:
+    google = kept('ABZ', FRIDAY, AT)
+    with pytest.raises(ValueError, match='asked with no other search'):
+        _ = Search.model_validate({**google.model_dump(), 'asked_with': google.id})
+
+    def post(address: web.Https, body: bytes, headers: Mapping[str, str]) -> bytes:
+        return resold_answer().encode()
+
+    monkeypatch.setattr(web, 'post', post)
+    resold = fares.kiwi(fares.Asked(HOME, 'ABZ', FRIDAY, FareMode.ANY), google)
+    assert (resold.vendor, resold.asked_with) == (FareVendor.KIWI, google.id)
+    with pytest.raises(ValueError, match='asked_with'):  # checked as the search is made
+        _ = fares.kiwi(fares.Asked(HOME, 'ABZ', FRIDAY, FareMode.ANY), google.model_copy(update={'id': 'no hash'}))

@@ -76,20 +76,21 @@ weekend is within 91 days (`SCHEDULED_DAYS`, as far ahead as airlines surely hav
 not searched as an extra for any weekend for 182 days (`NO_DIRECT_DAYS`), unless another of its weekends has one. A
 route from home runs most weeks of a season or not at all, and most of the airports within reach of a festival have none
 from Bergen. Each weekend Google answered is asked of a reseller too, three seconds later and the same (direct flights
-alone for an extra): Kiwi.com's flight search, open to all, no key. Each of its trips is kept with its stops each way,
-the airlines flying it and the tickets it is booked on: a way out or back whose flights are in more than one of Kiwi's
-fare components (the part of each flight's id before its last `_`) is a self-transfer, on separate tickets. The
-weekend's Flights add its cheapest self-transfer when it is cheaper than the fare, or there is none ("self-transfer,
-separate tickets · reseller's price"); it is never the card's. Google lists some direct flights with no price:
-Widerøe's, to anyone searching from outside Norway, as GitHub's runners are. For those the card takes the reseller's
-cheapest on one ticket, and says it is a reseller's price, likely cheaper from the airlines. With none there either, the
-weekend counts as a direct flight with no fare. A reseller that fails is kept as failed, and fails no run; a trip of its
-answer that cannot be read (an id whose parts cannot be matched to its flights) is left out, and the answer's other
-trips kept. The fares kept before the history was (every version of `fares.csv`, `fare_jobs.csv` and the older
-`docs/data/fares.csv` on main) are in it too, each search tagged with the file and commit it comes from (`backfill`);
-their stops are known only when there were none. A "no price" among them is no answer, as there it also meant a timeout,
-an answer that could not be read or a sweep that failed: its weekend is due at once, with the fare of an answer before
-it, if any.
+alone for an extra): Kiwi.com's flight search, open to all, no key. Its search keeps the id of Google's it was asked
+with (`asked_with`); one kept before it did is paired by time, with Google's made last before it from and to the same
+airports for the same Friday and flights. Each of its trips is kept with its stops each way, the airlines flying it and
+the tickets it is booked on: a way out or back whose flights are in more than one of Kiwi's fare components (the part of
+each flight's id before its last `_`) is a self-transfer, on separate tickets. The weekend's Flights add its cheapest
+self-transfer when it is cheaper than the fare, or there is none ("self-transfer, separate tickets · reseller's price");
+it is never the card's. Google lists some direct flights with no price: Widerøe's, to anyone searching from outside
+Norway, as GitHub's runners are. For those the card takes the reseller's cheapest on one ticket, and says it is a
+reseller's price, likely cheaper from the airlines. With none there either, the weekend counts as a direct flight with
+no fare. A reseller that fails is kept as failed, and fails no run; a trip of its answer that cannot be read (an id
+whose parts cannot be matched to its flights) is left out, and the answer's other trips kept. The fares kept before the
+history was (every version of `fares.csv`, `fare_jobs.csv` and the older `docs/data/fares.csv` on main) are in it too,
+each search tagged with the file and commit it comes from (`backfill`); their stops are known only when there were none.
+A "no price" among them is no answer, as there it also meant a timeout, an answer that could not be read or a sweep that
+failed: its weekend is due at once, with the fare of an answer before it, if any.
 
 To add the airports festivals to come can fly to, download OurAirports' `airports.csv` (ourairports.com/data, public
 domain) and run `mise run airports -- <its path>`: it adds every large or medium airport with scheduled service and an
