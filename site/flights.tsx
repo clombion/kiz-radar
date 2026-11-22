@@ -6,7 +6,17 @@ import type { JSX } from 'kiz-jsx/jsx-runtime';
 import { For } from 'solid-js';
 import { own } from './bits.ts';
 import { type Peek, peek } from './dialog.tsx';
-import { best, checkedAgo, FAR_KM, type Option, resoldSaid, stopsSaid, type Transfer, WORTH_EUR } from './fares.ts';
+import {
+  best,
+  checkedAgo,
+  FAR_KM,
+  type Option,
+  resoldSaid,
+  stopsSaid,
+  type Transfer,
+  unpricedSaid,
+  WORTH_EUR,
+} from './fares.ts';
 import type { Festival } from './festivals.ts';
 import { away } from './marks.tsx';
 import { money } from './money.ts';
@@ -20,15 +30,14 @@ const flightsDialog = (): Peek => {
   return view;
 };
 
-// what an option says of its fare: its price, or why it has none
+// what an option says of its fare: its price, or, with none, what its searches say (unpricedSaid)
 function fareSaid(o: Option): JSX.Element {
   if (o.fare !== null)
     return [
       <strong>{money(o.fare.price, 'EUR', { approx: true })}</strong>,
       o.fare.resold === null ? null : <span class="muted">{` · ${resoldSaid(o.fare.resold)}`}</span>,
     ];
-  if (o.checked === null) return <span class="muted">not checked yet</span>;
-  return <span class="muted">{noFare(o.direct)}</span>;
+  return <span class="muted">{unpricedSaid(o)}</span>;
 }
 
 // a cheaper trip on separate tickets: "~3 400 kr · self-transfer, separate tickets · reseller’s price, likely cheaper
@@ -39,12 +48,6 @@ const transferSaid = (t: Transfer): JSX.Element => (
     {` · ${text('fare_ticket', KEY.fare_ticket.SELF_TRANSFER)} · ${resoldSaid(t.airlines)}`}
   </p>
 );
-
-// why an option checked has no fare, by whether it has a direct flight: Google lists Widerøe's with no price
-function noFare(direct: boolean | null) {
-  if (direct === true) return 'direct, no price on Google';
-  return direct === false ? 'no direct flight that weekend' : 'no price found';
-}
 
 // one airport of the festival's: its name, the card's when it is, how far, the fare and its stops, when checked, a link,
 // and a cheaper self-transfer
@@ -97,8 +100,7 @@ function openFlights(e: Festival, today: string, from?: Element | null): void {
     foot: () => (
       <p class={['muted', 'small']}>
         {`The card shows the cheapest airport within ${FAR_KM} km of the festival, or one farther away when it is cheaper `}
-        {`by more than ${money(WORTH_EUR, 'EUR', { approx: true })}. An airport beside the nearest is searched for `}
-        direct flights alone. Check before buying.
+        {`by more than ${money(WORTH_EUR, 'EUR', { approx: true })}. Check before buying.`}
       </p>
     ),
   });

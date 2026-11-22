@@ -23,14 +23,17 @@ from pipeline.records import (
     City,
     Community,
     Membership,
+    Offer,
     Person,
     Place,
     PlanRow,
+    Search,
     Seeded,
     Spelling,
     Spot,
     StayRow,
     Travel,
+    digest,
     now,
     today,
 )
@@ -202,13 +205,90 @@ class Transfer(BaseModel, frozen=True):
 class Searched(BaseModel, frozen=True):
     airport: str
     depart: dt.date
-    searched_at: dt.datetime
-    direct: bool | None
+    standing: enums.FareStanding
+    searched_at: dt.datetime | None
 
 
 def built[R: BaseModel](site_db: Path, record: type[R], sql: str) -> set[R]:
     with sqlite_db.opened(site_db, 'ro') as db:
         return set(db.rows(record, sql))
+
+
+@pytest.mark.usefixtures('home_airports')
+def test_every_weekend_to_come_is_written_with_its_standing_and_the_search_that_taught_it(
+    memory: Memory, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A planted history and day, apart from the committed ones: a weekend priced, one whose search failed, one with no
+    flight and one never searched each have their row, checked by the search that taught (none when none did)."""
+    day = dt.date(2026, 11, 2)
+    friday = dt.date(2026, 11, 20)
+    at = dt.datetime(2026, 11, 1, 6, tzinfo=dt.UTC)
+
+    def search(airport: str, outcome: enums.FareOutcome, vendor: enums.FareVendor, then: dt.datetime) -> Search:
+        offers = (
+            Offer(price=120, ticket=enums.FareTicket.ONE_TICKET, stops_out=0, stops_back=None, airlines=('SAS',)),
+        )
+        return Search(
+            id=digest(f'{airport} {vendor} {then}'),
+            at=then,
+            origin='BGO',
+            airport=airport,
+            depart=friday,
+            mode=enums.FareMode.ANY,
+            vendor=vendor,
+            outcome=outcome,
+            note='refused' if outcome == enums.FareOutcome.FAILED else None,
+            offers=offers if outcome == enums.FareOutcome.OFFERS else (),
+        )
+
+    google, kiwi = enums.FareVendor.GOOGLE, enums.FareVendor.KIWI
+    priced = search('LIS', enums.FareOutcome.OFFERS, google, at)
+    empty = search('LYS', enums.FareOutcome.NONE, google, at)
+    history = [
+        priced,
+        search('LIS', enums.FareOutcome.FAILED, google, at + dt.timedelta(days=1)),
+        search('GLA', enums.FareOutcome.FAILED, google, at),
+        empty,
+        search('LYS', enums.FareOutcome.NONE, kiwi, at + dt.timedelta(seconds=3)),
+    ]
+    live = dict.fromkeys([(a, friday) for a in ('LIS', 'GLA', 'LYS', 'PRG')], True)
+    monkeypatch.setattr(fare_store, 'read', lambda: history)
+
+    def weekends_of(_: object, on: dt.date) -> fare_weekends.Weekends:
+        return live if on == day else {}
+
+    monkeypatch.setattr(fare_weekends, 'weekends_of', weekends_of)
+    monkeypatch.setattr(build_site_db, 'today', lambda: day)
+    src = tmp_path / 'src.sqlite'
+    with sqlite_db.opened(src, 'rwc') as s, s.transaction() as x:
+        x.script('create table events (city text, country text, start_date text, cancelled integer, listing text)')
+    db = memory()
+    db.attach('src', src, 'ro')
+    with db.transaction() as x:
+        for table in ('fare_searches', 'fares', 'fare_transfers'):
+            x.script(build_site_db.TABLES[table])
+        build_site_db.fares(x)
+    written = db.rows(Searched, 'select airport, depart, standing, searched_at from fare_searches')
+    assert set(written) == {
+        Searched(airport='LIS', depart=friday, standing=enums.FareStanding.PRICED, searched_at=priced.at),
+        Searched(airport='GLA', depart=friday, standing=enums.FareStanding.UNANSWERED, searched_at=None),
+        Searched(airport='LYS', depart=friday, standing=enums.FareStanding.NO_FLIGHT, searched_at=empty.at),
+        Searched(airport='PRG', depart=friday, standing=enums.FareStanding.NOT_ASKED, searched_at=None),
+    }
+    assert db.rows(
+        Flight, 'select airport, depart, return as back, price, fetched_at, stops_out, stops_back, resold from fares'
+    ) == [
+        Flight(
+            airport='LIS',
+            depart=friday,
+            back=friday + dt.timedelta(days=3),
+            price=120,
+            fetched_at=priced.at,
+            stops_out=0,
+            stops_back=None,
+            resold=None,
+        )
+    ]
 
 
 def test_who_s_going_is_what_people_csv_and_plans_csv_say(site_db: Path) -> None:
@@ -540,9 +620,9 @@ def test_a_fare_is_the_one_the_fare_history_gives_its_weekend_back_the_monday_af
     flights = 'select airport, depart, return as back, price, fetched_at, stops_out, stops_back, resold from fares'
     assert built(site_db, Flight, flights) == {
         Flight(
-            airport=c.searched.airport,
-            depart=c.searched.depart,
-            back=c.searched.depart + monday,
+            airport=c.airport,
+            depart=c.friday,
+            back=c.friday + monday,
             price=c.fare.offer.price,
             fetched_at=c.fare.search.at,
             stops_out=c.fare.offer.stops_out,
@@ -552,22 +632,21 @@ def test_a_fare_is_the_one_the_fare_history_gives_its_weekend_back_the_monday_af
         for c in found
         if c.fare is not None
     }
-    searches = 'select airport, depart, searched_at, direct from fare_searches'
+    searches = 'select airport, depart, standing, searched_at from fare_searches'
     assert built(site_db, Searched, searches) == {
         Searched(
-            airport=c.searched.airport,
-            depart=c.searched.depart,
-            searched_at=c.searched.at,
-            direct=fare_weekends.direct_found(c.searched),
+            airport=c.airport,
+            depart=c.friday,
+            standing=c.standing.state,
+            searched_at=None if (s := c.standing.searched) is None else s.at,
         )
         for c in found
     }
-    assert any(c.fare is None for c in found)  # a weekend searched with no price has a search and no fare
     transfers = 'select airport, depart, price, airlines from fare_transfers'
     assert built(site_db, Transfer, transfers) == {
         Transfer(
-            airport=c.searched.airport,
-            depart=c.searched.depart,
+            airport=c.airport,
+            depart=c.friday,
             price=c.transfer.offer.price,
             airlines=' and '.join(dict.fromkeys(c.transfer.offer.airlines)),
         )

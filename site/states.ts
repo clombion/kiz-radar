@@ -1012,6 +1012,50 @@ export const STATES = {
    "link": null,
    "counts": null
   }
+ },
+ "fare_standing": {
+  "priced": {
+   "disposition": "card",
+   "wording": null,
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
+  "listed": {
+   "disposition": "note",
+   "wording": "no price found",
+   "forms": {
+    "card": "no flight price yet"
+   },
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
+  "no_flight": {
+   "disposition": "note",
+   "wording": "no flight that weekend",
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
+  "unanswered": {
+   "disposition": "note",
+   "wording": "no flight price yet",
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
+  "not_asked": {
+   "disposition": "note",
+   "wording": "no flight price yet",
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  }
  }
 } as const satisfies Readonly<
   Record<string, Readonly<Record<string, StateRow>>>
@@ -1174,6 +1218,13 @@ export const KEY = {
  "fare_ticket": {
   "ONE_TICKET": "one_ticket",
   "SELF_TRANSFER": "self_transfer"
+ },
+ "fare_standing": {
+  "PRICED": "priced",
+  "LISTED": "listed",
+  "NO_FLIGHT": "no_flight",
+  "UNANSWERED": "unanswered",
+  "NOT_ASKED": "not_asked"
  }
 } as const;
 

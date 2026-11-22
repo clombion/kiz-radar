@@ -1,13 +1,16 @@
 // The map's bubbles, one per city by its key: three festivals in Kizburg, whose listings spell it three ways, and two
 // cities of one name, Springfield, one festival in each; the cities the test's own, in Germany. The page names a
 // festival's city by its row of cities, so the spellings are data a visitor's page meets rather than words it shows;
-// the two Springfields alone tell a city's key from its name.
+// the two Springfields alone tell a city's key from its name. Three more cities have a festival each with no fare, for
+// a reason of its own: Yetby's airport not searched for its weekend, Nulby's with no flight that weekend, and Farby's
+// festival flying to no airport.
 import { expect, test } from 'vitest';
 import { page } from 'vitest/browser';
 import { cityOnMapHref, festivalsHref, mapHref } from '../../site/routes.ts';
+import { KEY } from '../../site/states.ts';
 import { startSite } from './app.ts';
-import { CLOUDKIZ, GLASGOW, HOT_ICE, KUOF, KWANZA, titleOf } from './community.fixture.ts';
-import { city, inCity } from './planted.ts';
+import { ALBANIA, CLOUDKIZ, GLASGOW, HOT_ICE, KUOF, KWANZA, PARIS, PRAGUE_GOLD, titleOf } from './community.fixture.ts';
+import { city, flies, fliesToNone, inCity, unpriced, weekend } from './planted.ts';
 import { said } from './seen.ts';
 
 const app = await startSite({
@@ -21,6 +24,25 @@ const app = await startSite({
     inCity(db, HOT_ICE, 'kizburg-de', 'KIZBURG');
     inCity(db, KWANZA, 'springfield-de', 'Springfield');
     inCity(db, CLOUDKIZ, 'springfield-2-de', 'Springfield');
+    for (const [id, key, name, lat] of [
+      [PARIS, 'yetby-de', 'Yetby', 53.5],
+      [PRAGUE_GOLD, 'nulby-de', 'Nulby', 51.5],
+      [ALBANIA, 'farby-de', 'Farby', 49.5],
+    ] as const) {
+      city(db, key, { name, country: 'DE', at: [lat, 10.5] });
+      inCity(db, id, key, name);
+      unpriced(db, id);
+    }
+    flies(db, PARIS, [['GLA', 11]]);
+    weekend(db, '2026-11-20', ['GLA'], [{ airport: 'GLA', at: null, standing: KEY.fare_standing.NOT_ASKED }]);
+    flies(db, PRAGUE_GOLD, [['GLA', 11]]);
+    weekend(
+      db,
+      '2027-01-15',
+      ['GLA'],
+      [{ airport: 'GLA', at: '2026-10-30T06:00:00+00:00', standing: KEY.fare_standing.NO_FLIGHT }],
+    );
+    fliesToNone(db, ALBANIA, 'GLA');
   },
 });
 
@@ -65,6 +87,56 @@ test('the map is one region a screen reader names, Leaflet drawn in it', async (
   await app.open(mapHref());
   const regions = page.getByRole('region', { name: 'Map of festivals by city' }).elements();
   expect(regions.map((r) => r.matches('.map.leaflet-container'))).toEqual([true]);
+});
+
+// a day the map is opened on
+type Day = NonNullable<Parameters<typeof app.open>[1]>;
+// the map searched by these words, its bubbles drawn for them
+async function searched(words: string): Promise<void> {
+  const search = document.querySelector<HTMLInputElement>('main input[type="search"]');
+  if (search == null) throw new Error('the map has no search');
+  search.value = words;
+  search.dispatchEvent(new Event('input', { bubbles: true }));
+  await expect.poll(() => document.querySelectorAll('main .leaflet-overlay-pane path').length).toBe(1);
+}
+// what the legend says of a city's bubble, the map searched by its name: the band of the bubble's colour
+async function legendOf(name: string, day: Day): Promise<(string | undefined)[]> {
+  await app.open(mapHref(), day);
+  await searched(name);
+  const bubble = document.querySelector('main .leaflet-overlay-pane path');
+  if (bubble === null) throw new Error(`no bubble for ${name}`);
+  const colour = getComputedStyle(bubble).fill;
+  return [...document.querySelectorAll('.map-legend span:not(.size)')]
+    .filter((s) => {
+      const swatch = s.querySelector('i');
+      return swatch !== null && getComputedStyle(swatch).backgroundColor === colour;
+    })
+    .map((s) => said(s));
+}
+// why a city's card has no fare, as its flight line says it, from its panel
+async function whyNoFare(key: string, day: Day): Promise<string | undefined> {
+  await app.open(cityOnMapHref(key), day);
+  return said(document.querySelector('main .panel-cards .festival-card .flight'))
+    ?.replace(/^✈ /u, '')
+    .replace(/ · Flights · \d+$/u, '');
+}
+
+test('the legend of fares names each bubble with none the way its card says why', async () => {
+  await app.open(mapHref());
+  // the home city, as the legend's title names it
+  const home = said(document.querySelector('.map-legend strong'))?.replace(/^Cheapest flight from /u, '');
+  const FAR = `too far from ${home ?? ''} for our flight prices`;
+  const bands = [...document.querySelectorAll('.map-legend span:not(.size)')].map((s) => said(s));
+  expect(bands.slice(-4)).toEqual(['no flight price yet', 'no flight that weekend', FAR, 'already started']);
+  for (const [key, name, day, why, band] of [
+    ['yetby-de', 'Yetby', '2026-11-01', 'no flight price yet', 'no flight price yet'],
+    ['nulby-de', 'Nulby', '2026-11-01', 'no flight that weekend', 'no flight that weekend'],
+    ['farby-de', 'Farby', '2026-11-01', FAR, FAR],
+    ['yetby-de', 'Yetby', '2026-11-21', 'already started, no flight priced', 'already started'], // its flight left
+  ] as const) {
+    expect(await whyNoFare(key, day)).toBe(why);
+    expect(await legendOf(name, day)).toEqual([band]);
+  }
 });
 
 test('festivals of one city are one bubble, whatever their listings call it, and two cities two', async () => {

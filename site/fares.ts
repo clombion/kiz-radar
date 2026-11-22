@@ -2,7 +2,7 @@
 // by its card, the festival list, the map and the Countries view. Pure: home, the fares and the prices are arguments.
 import type { Prices } from './currency.ts';
 import { KEY } from './states.ts';
-import { text } from './wording.ts';
+import { hasForm, type Key, text } from './wording.ts';
 
 // A festival flies to its city's decided airports, else any within max_airport_km of it (its options, event_airports),
 // each with the Friday-to-Monday return found for its weekend from home, if one was. The card's flight is the best of
@@ -10,7 +10,7 @@ import { text } from './wording.ts';
 
 // the return flight found for a weekend: its price in euros (the return's), the day it flies back (fares.return), its
 // stops each way and when it was found; resold names the airlines flying it when the price is a reseller's (Google
-// listed the flights with none), likely cheaper bought from them
+// priced none), likely cheaper bought from them
 export interface Found {
   readonly price: number;
   readonly back: string;
@@ -34,8 +34,8 @@ export interface Transfer {
   readonly airlines: string;
 }
 // an airport a festival can fly to: where, how far from the festival's city, the fare found for its weekend and a
-// cheaper self-transfer, and when it was last searched, with, for one beside the nearest, whether it has a direct flight
-// then (false: none)
+// cheaper self-transfer, what its searches say of its fare (fare_weekends standing), and when the search that says it
+// ran (null when none says one)
 export interface Option {
   readonly airport: string;
   readonly name: string;
@@ -43,8 +43,21 @@ export interface Option {
   readonly km: number;
   readonly fare: Found | null;
   readonly transfer: Transfer | null;
+  readonly standing: Key<'fare_standing'>;
   readonly checked: string | null;
-  readonly direct: boolean | null;
+}
+// what an airport with no fare says of it: its standing's words ("no flight that weekend")
+export const unpricedSaid = (o: Option): string | null => text('fare_standing', o.standing);
+// the standings of a weekend with no fare
+type Unpriced = Exclude<Key<'fare_standing'>, typeof KEY.fare_standing.PRICED>;
+const isUnpriced = (k: Key<'fare_standing'>): k is Unpriced => k !== KEY.fare_standing.PRICED;
+// what a card with no fare says of its flight, by the airports it can fly to (one at least: a card with none says it
+// is too far for our flight prices, eventcard.tsx): no flight when every one stands at no flight that weekend, else
+// that no price is known yet, in the words of the first that does not (its card form, if any)
+export function cardUnpricedSaid(options: readonly [Option, ...Option[]]): string {
+  const hope = options.map((o) => o.standing).find((k) => isUnpriced(k) && k !== KEY.fare_standing.NO_FLIGHT);
+  if (hope === undefined || !isUnpriced(hope)) return text('fare_standing', KEY.fare_standing.NO_FLIGHT);
+  return hasForm('fare_standing', hope, 'card') ? text('fare_standing', hope, {}, 'card') : text('fare_standing', hope);
 }
 // in the home city, with no flight; or by the flight chosen of its options: the airport, its city and how far it is
 // from the festival, and the fare

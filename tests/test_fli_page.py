@@ -10,7 +10,7 @@ from types import ModuleType
 from typing import TYPE_CHECKING, cast
 
 import pytest
-from fli.models import FlightResult, FlightSearchFilters
+from fli.models import FlightResult, FlightSearchFilters, MaxStops
 from fli.search import SearchFlights
 from fli.search.client import Client
 from fli.search.exceptions import SearchHTTPError
@@ -78,7 +78,7 @@ def served(monkeypatch: pytest.MonkeyPatch, url: str, page: str, asked: list[str
 def test_the_page_is_its_ways_out_cheapest_first_each_with_the_return_s_price(monkeypatch: pytest.MonkeyPatch) -> None:
     asked: list[str] = []
     served(monkeypatch, LISBON, (PAGES / 'google-bgo-lis.html').read_text(), asked)
-    rows = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14), direct=False)
+    rows = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14))
     assert isinstance(rows, tuple)
     assert asked == [LISBON]  # one request
     # €221 is what Google's booking page asked for this trip that day
@@ -93,15 +93,22 @@ def test_the_page_is_its_ways_out_cheapest_first_each_with_the_return_s_price(mo
     assert [r.price for r in rows[len(prices) :]] == [None]  # listed with no price, after the priced
 
 
+def aberdeen(monkeypatch: pytest.MonkeyPatch, page: str) -> tuple[fli_page.Row, ...] | fli_page.Empty | Declined:
+    """The page sent for the search for direct flights alone it answers, asked through fli's own filters (the pipeline
+    asks for any flight alone), as fli_page reads it."""
+    served(monkeypatch, ABERDEEN, page)
+    direct = fli_page.filters('BGO', 'ABZ', dt.date(2026, 11, 20), dt.date(2026, 11, 23))
+    return fli_page.read(direct.model_copy(update={'stops': MaxStops.NON_STOP}))
+
+
 def test_flights_google_lists_with_no_price_are_ways_out_with_none(monkeypatch: pytest.MonkeyPatch) -> None:
-    served(monkeypatch, ABERDEEN, (PAGES / 'google-bgo-abz-direct.html').read_text())
-    rows = fli_page.page('BGO', 'ABZ', dt.date(2026, 11, 20), dt.date(2026, 11, 23), direct=True)
+    rows = aberdeen(monkeypatch, (PAGES / 'google-bgo-abz-direct.html').read_text())
     assert rows == (fli_page.Row(None, 0, ('Widerøe',)), fli_page.Row(None, 0, ('Widerøe',)))
 
 
 def lyon(monkeypatch: pytest.MonkeyPatch, page: str) -> tuple[fli_page.Row, ...] | fli_page.Empty | Declined:
     served(monkeypatch, LYON, page)
-    return fli_page.page('BGO', 'LYS', dt.date(2026, 12, 18), dt.date(2026, 12, 21), direct=False)
+    return fli_page.page('BGO', 'LYS', dt.date(2026, 12, 18), dt.date(2026, 12, 21))
 
 
 EMPTY = (PAGES / 'google-bgo-lys-empty.html').read_text()
@@ -181,9 +188,7 @@ def test_a_direct_search_s_page_names_airlines_that_only_connect_so_with_no_row_
     named = {cast('list[object]', a)[0] for a in fli_page.items(fli_page.at(payload, 7, 1, 1))}
     assert {'AF', 'AY', 'KL'} <= named  # Air France, Finnair and KLM fly no direct flight from Bergen to Aberdeen
     payload[3] = None  # its two rows, Widerøe's, taken out: a page made here of a direct search with no row
-    served(monkeypatch, ABERDEEN, sent(payload))
-    found = fli_page.page('BGO', 'ABZ', dt.date(2026, 11, 20), dt.date(2026, 11, 23), direct=True)
-    assert found == fli_page.Empty(nearby=0)
+    assert aberdeen(monkeypatch, sent(payload)) == fli_page.Empty(nearby=0)
 
 
 @pytest.mark.parametrize(
@@ -197,7 +202,7 @@ def test_a_refused_search_and_a_failed_one_are_no_page(status: int, why: str, mo
         raise SearchHTTPError('no', status_code=status)
 
     monkeypatch.setattr(fli_page.OneTry, 'get', get)
-    failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14), direct=False)
+    failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14))
     assert failed == Declined(CallCause.TRANSIENT, why)
     assert sent == [LISBON]
 
@@ -205,7 +210,7 @@ def test_a_refused_search_and_a_failed_one_are_no_page(status: int, why: str, mo
 def test_a_page_fli_cannot_read_is_a_failed_search(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr('fli.search._tfs._sleep', no_wait)
     served(monkeypatch, LISBON, '<html>a consent page</html>')
-    failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14), direct=False)
+    failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14))
     assert isinstance(failed, Declined)
     assert (failed.cause, failed.why[:40]) == (CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
 
@@ -232,7 +237,7 @@ def test_a_price_in_another_currency_is_a_failed_search(monkeypatch: pytest.Monk
         return rows
 
     monkeypatch.setattr(SearchFlights, '_fetch_flights', in_sek)
-    failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14), direct=False)
+    failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14))
     assert failed == Declined(CallCause.STRUCTURAL, 'fli gave a price in SEK, not the EUR it was asked')
 
 
@@ -245,6 +250,6 @@ def test_a_request_google_refuses_is_sent_once(monkeypatch: pytest.MonkeyPatch) 
         raise SearchHTTPError('refused', status_code=429)
 
     monkeypatch.setattr('curl_cffi.requests.Session.get', refused)
-    failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14), direct=False)
+    failed = fli_page.page('BGO', 'LIS', dt.date(2026, 12, 11), dt.date(2026, 12, 14))
     assert failed == Declined(CallCause.TRANSIENT, fli_page.REFUSED)
     assert sent == [LISBON]

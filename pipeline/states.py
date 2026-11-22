@@ -205,6 +205,12 @@ POINTS = (
     P('fare_outcome', 'FareOutcome', 'each fare search, by what it found', 'fares'),
     P('fare_ticket', 'FareTicket', 'each offer of a fare search, by the tickets it is booked on', 'fares'),
     P(
+        'fare_standing',
+        'FareStanding',
+        'each festival weekend (an airport and its Friday), by what its searches from home say of its fare',
+        'fare_weekends standing',
+    ),
+    P(
         'fare_family',
         'FareFamily',
         "each pair of searches (home's and another city's of one weekend), by the flight home's fare takes",
@@ -985,8 +991,14 @@ ROWS = (
     S('model', 'claude-sonnet-5-5', 'a model of the first read', KEPT),
     S('model', 'claude-haiku-5-5', 'the extraction passes and the merge review', KEPT),
     # ---- fare searches (pipeline/fares.py, kept in pipeline/fare_offers/)
-    S('fare_mode', 'any', 'any flight, the cheapest first: a festival weekend to its nearest airport', KEPT),
-    S('fare_mode', 'direct', 'direct flights alone: a festival weekend to an airport beside its nearest', KEPT),
+    S('fare_mode', 'any', 'any flight, the cheapest first: every festival weekend', KEPT),
+    S(
+        'fare_mode',
+        'direct',
+        'direct flights alone: kept from when an airport beside a festival’s nearest was searched so, which says no '
+        'flight of no weekend (fare_weekends taught)',
+        KEPT,
+    ),
     S('fare_vendor', 'google', "Google Flights' outbound page, through fli (pipeline/fli_page.py)", KEPT),
     S(
         'fare_vendor',
@@ -1025,6 +1037,45 @@ ROWS = (
         VIEW,
         'self-transfer, separate tickets',
     ),
+    # ---- a festival weekend's fare (pipeline/fare_weekends.py standing): its latest search from home that says one of
+    # the first three, with the reseller's search asked with it, else whether it was searched; the card says the last
+    # four's words when no airport of its festival is priced
+    S(
+        'fare_standing',
+        'priced',
+        "an offer on one ticket: Google's page priced a way out, or, where it priced none, the reseller's search asked "
+        'with it found a trip on one ticket',
+        CARD,
+    ),
+    S(
+        'fare_standing',
+        'listed',
+        "flights, none priced on one ticket: Google's page listed flights with no price, or listed none and the "
+        "reseller's search asked with it found self-transfers alone",
+        NOTE,
+        'no price found',
+        forms={'card': 'no flight price yet'},
+    ),
+    S(
+        'fare_standing',
+        'no_flight',
+        "no flight: Google's page, for any flight, listed none, and the reseller's search asked with it found none, "
+        'for a weekend near enough that airlines have its flights on sale (fare_weekends.SCHEDULED_DAYS): one further '
+        'on may lack a flight that will fly',
+        NOTE,
+        'no flight that weekend',
+    ),
+    S(
+        'fare_standing',
+        'unanswered',
+        "searched from home, and no search said any of the above: each failed, or Google's page listed no flight and "
+        "the reseller's search asked with it failed, was never made (as for every no price kept before the fare "
+        'history was), or found none on a search for direct flights alone or for a weekend further ahead than '
+        'airlines have its flights on sale',
+        NOTE,
+        'no flight price yet',
+    ),
+    S('fare_standing', 'not_asked', 'never searched from home', NOTE, 'no flight price yet'),
     # ---- a festival city's decision (claims.CityClaim): the airports dancers fly to
     S('city_tier', 'big', 'a big city: its main airports, every one dancers fly to', KEPT),
     S(
@@ -1229,6 +1280,7 @@ SITE_POINTS: tuple[PointName, ...] = (
     'plan',
     'fare_vendor',
     'fare_ticket',
+    'fare_standing',
 )  # the site's
 
 

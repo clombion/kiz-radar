@@ -7,11 +7,12 @@ from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 
 import pytest
+from fli.models import FlightSearchFilters, MaxStops
 from pydantic import BaseModel
 
 from pipeline import fare_store, fare_weekends, fares, fli_page, web
 from pipeline.calls import Declined
-from pipeline.enums import CallCause, FareMode, FareOutcome, FareTicket, FareVendor
+from pipeline.enums import CallCause, FareMode, FareOutcome, FareStanding, FareTicket, FareVendor
 from pipeline.records import Offer, Search, digest, now, today
 from tests.fakes import no_wait
 
@@ -55,6 +56,7 @@ def kept(
     mode: FareMode = FareMode.ANY,
     vendor: FareVendor = FareVendor.GOOGLE,
     origin: str = HOME,
+    asked_with: str | None = None,
 ) -> Search:
     """A search of the history."""
     found = (offer(80),) if offers is None and outcome == FareOutcome.OFFERS else offers or ()
@@ -69,12 +71,28 @@ def kept(
         outcome=outcome,
         note='refused' if outcome == FareOutcome.FAILED else None,
         offers=found,
+        asked_with=asked_with,
     )
 
 
 def copied(airport: str, friday: dt.date, at: dt.datetime) -> Search:
     """A no price kept before the fare history was."""
     return kept(airport, friday, at, FareOutcome.NONE).model_copy(update={'backfill': BACKFILL})
+
+
+def resold(google: Search, outcome: FareOutcome = FareOutcome.NONE, *offers: Offer) -> Search:
+    """The reseller's search asked with this search of Google's, a few seconds on: its offers, or none."""
+    return kept(
+        google.airport,
+        google.depart,
+        google.at + dt.timedelta(seconds=fares.KIWI_PAUSE),
+        FareOutcome.OFFERS if offers else outcome,
+        offers=offers,
+        mode=google.mode,
+        vendor=FareVendor.KIWI,
+        origin=google.origin,
+        asked_with=google.id,
+    )
 
 
 def one_weekend(today: dt.date) -> dict[tuple[str, dt.date], bool]:
@@ -104,62 +122,238 @@ def test_due_again_on_its_own_weekday_only(monkeypatch: pytest.MonkeyPatch) -> N
     assert due(its_day + dt.timedelta(days=8))  # past twice the interval: no longer waits for its day
 
 
-def test_a_weekend_due_only_as_unsettled_waits_for_those_due_on_their_interval(monkeypatch: pytest.MonkeyPatch) -> None:
+# ----- a weekend's standing: what its searches from home say of its fare
+AT = dt.datetime(2026, 10, 27, 6, tzinfo=dt.UTC)  # when a fare was found
+ONE, SPLIT = offer(300), offer(250, FareTicket.SELF_TRANSFER)
+
+
+@pytest.mark.parametrize(
+    ('google', 'kiwi', 'expected'),
+    [
+        (FareOutcome.OFFERS, None, FareStanding.PRICED),
+        (FareOutcome.OFFERS, FareOutcome.FAILED, FareStanding.PRICED),
+        (FareOutcome.LISTED, (ONE,), FareStanding.PRICED),
+        (FareOutcome.LISTED, FareOutcome.NONE, FareStanding.LISTED),
+        (FareOutcome.LISTED, FareOutcome.FAILED, FareStanding.LISTED),
+        (FareOutcome.LISTED, None, FareStanding.LISTED),
+        (FareOutcome.NONE, (ONE, SPLIT), FareStanding.PRICED),
+        (FareOutcome.NONE, (SPLIT,), FareStanding.LISTED),
+        (FareOutcome.NONE, FareOutcome.NONE, FareStanding.NO_FLIGHT),
+        (FareOutcome.NONE, FareOutcome.FAILED, FareStanding.UNANSWERED),
+        (FareOutcome.NONE, None, FareStanding.UNANSWERED),
+        (FareOutcome.FAILED, None, FareStanding.UNANSWERED),
+    ],
+    ids=[
+        'priced by Google',
+        'priced by Google, the reseller failing',
+        "listed, priced by the reseller's one ticket",
+        'listed, the reseller with none',
+        'listed, the reseller failing',
+        'listed, the reseller not asked',
+        "empty, priced by the reseller's one ticket",
+        "empty, the reseller's self-transfers alone",
+        'empty, and the reseller with none: no flight',
+        'empty, the reseller failing',
+        'empty, the reseller not asked (a no price kept before the history)',
+        'failed',
+    ],
+)
+def test_a_search_and_the_reseller_s_asked_with_it_give_their_weekend_s_standing(
+    google: FareOutcome, kiwi: FareOutcome | tuple[Offer, ...] | None, expected: FareStanding
+) -> None:
+    g = kept('LYS', FRIDAY, AT, google)
+    history = (
+        [g]
+        if kiwi is None
+        else [g, resold(g, FareOutcome.OFFERS, *kiwi) if isinstance(kiwi, tuple) else resold(g, kiwi)]
+    )
+    st = fare_weekends.standings(history)[('LYS', FRIDAY)]
+    assert st.state == expected
+    assert st.searched == (None if expected == FareStanding.UNANSWERED else g)  # checked by the search that taught
+    fare = fare_weekends.current(history, {('LYS', FRIDAY): True})[('LYS', FRIDAY)].fare
+    assert (fare is not None) == (expected == FareStanding.PRICED)  # a fare exactly when priced
+
+
+def test_an_empty_page_and_the_reseller_s_none_say_no_flight_only_of_a_weekend_airlines_have_on_sale() -> None:
+    """Airlines have their flights on sale SCHEDULED_DAYS ahead: a weekend further on may lack one that will fly."""
+
+    def taught(days: int) -> FareStanding | None:
+        g = kept('NBJ', AT.date() + dt.timedelta(days=days), AT, FareOutcome.NONE)
+        return fare_weekends.taught(fare_weekends.Ask(g, resold(g)))
+
+    on_sale = fare_weekends.SCHEDULED_DAYS
+    assert [taught(on_sale), taught(on_sale + 1)] == [FareStanding.NO_FLIGHT, None]
+    # further on, it teaches nothing: an earlier fare stays the weekend's, and a weekend with none is unanswered
+    far = AT.date() + dt.timedelta(days=178)
+    first, none = kept('NBJ', far, AT - dt.timedelta(days=7)), kept('NBJ', far, AT, FareOutcome.NONE)
+    st = fare_weekends.standings([first, none, resold(none)])[('NBJ', far)]
+    assert (st.state, st.searched, st.since) == (FareStanding.PRICED, first, (none,))
+    alone = fare_weekends.standings([none, resold(none)])[('NBJ', far)]
+    assert (alone.state, alone.since) == (FareStanding.UNANSWERED, (none,))
+
+
+@pytest.mark.parametrize(
+    ('google', 'kiwi', 'expected'),
+    [
+        (FareOutcome.OFFERS, None, FareStanding.PRICED),
+        (FareOutcome.LISTED, FareOutcome.NONE, FareStanding.LISTED),
+        (FareOutcome.NONE, (SPLIT,), FareStanding.LISTED),
+        (FareOutcome.NONE, FareOutcome.NONE, None),
+    ],
+    ids=['priced', 'listed', "the reseller's self-transfers alone", 'empty, and the reseller with none: nothing'],
+)
+def test_a_search_for_direct_flights_alone_teaches_priced_or_listed_and_never_no_flight(
+    google: FareOutcome, kiwi: FareOutcome | tuple[Offer, ...] | None, expected: FareStanding | None
+) -> None:
+    """The history's searches of an extra for direct flights alone: a flight with stops may fly a weekend that has no
+    direct one."""
+    g = kept('ABZ', FRIDAY, AT, google, mode=FareMode.DIRECT)
+    k = None if kiwi is None else resold(g, FareOutcome.OFFERS, *kiwi) if isinstance(kiwi, tuple) else resold(g, kiwi)
+    assert fare_weekends.taught(fare_weekends.Ask(g, k)) == expected
+
+
+def test_a_weekend_never_searched_is_not_asked() -> None:
+    st = fare_weekends.current([], {('LYS', FRIDAY): True})[('LYS', FRIDAY)].standing
+    assert (st.state, st.answer, st.since, st.searched) == (FareStanding.NOT_ASKED, None, (), None)
+    assert fare_weekends.standing([]) == fare_weekends.NOT_ASKED
+
+
+def test_a_weekend_stands_at_its_latest_search_that_taught_one_with_those_since_that_taught_nothing() -> None:
+    first = kept('LYS', FRIDAY, AT)
+    empty = kept('LYS', FRIDAY, AT + dt.timedelta(days=1), FareOutcome.NONE)
+    failed = kept('LYS', FRIDAY, AT + dt.timedelta(days=2), FareOutcome.FAILED)
+    history = [first, empty, resold(empty, FareOutcome.FAILED), failed]
+    st = fare_weekends.standings(history)[('LYS', FRIDAY)]
+    assert (st.state, st.since, st.searched) == (FareStanding.PRICED, (empty, failed), first)
+    # an empty page with the reseller's none says no flight, and so it stands
+    none = kept('LYS', FRIDAY, AT + dt.timedelta(days=3), FareOutcome.NONE)
+    later = fare_weekends.standings([*history, none, resold(none)])[('LYS', FRIDAY)]
+    assert (later.state, later.since) == (FareStanding.NO_FLIGHT, ())
+    fare = fare_weekends.current([*history, none, resold(none)], {('LYS', FRIDAY): True})[('LYS', FRIDAY)].fare
+    assert fare is None  # its fare is that of the search it stands at
+    # searched from another city, it is no search of this weekend; for direct flights alone, one with none teaches
+    # nothing, and one with a fare prices it
+    oslo = kept('LYS', FRIDAY, AT + dt.timedelta(days=4), origin='OSL')
+    assert fare_weekends.standings([*history, oslo])[('LYS', FRIDAY)] == st
+    direct = kept('LYS', FRIDAY, AT + dt.timedelta(days=4), FareOutcome.NONE, mode=FareMode.DIRECT)
+    known = fare_weekends.standings([*history, direct, resold(direct)])[('LYS', FRIDAY)]
+    assert (known.state, known.since, known.searched) == (FareStanding.PRICED, (empty, failed, direct), first)
+    alone = fare_weekends.standings([direct, resold(direct)])[('LYS', FRIDAY)]
+    assert (alone.state, alone.since, alone.searched) == (FareStanding.UNANSWERED, (direct,), None)
+    flown = kept('LYS', FRIDAY, AT + dt.timedelta(days=5), offers=(offer(120, stops=0),), mode=FareMode.DIRECT)
+    lyon = fare_weekends.current([direct, resold(direct), flown], {('LYS', FRIDAY): False})[('LYS', FRIDAY)]
+    assert (lyon.standing.state, lyon.fare and lyon.fare.offer.price) == (FareStanding.PRICED, 120)
+
+
+def test_an_empty_page_takes_the_reseller_s_fare_on_one_ticket_asked_with_it() -> None:
+    """Bergen to Lyon, 18 to 21 December: Google's page, as read, listed no flight; a browser was shown flights."""
+    empty = kept('LYS', FRIDAY, AT, FareOutcome.NONE).model_copy(update={'nearby': 8})
+    history = [empty, resold(empty, FareOutcome.OFFERS, offer(333), offer(290, FareTicket.SELF_TRANSFER))]
+    lyon = fare_weekends.current(history, {('LYS', FRIDAY): True})[('LYS', FRIDAY)]
+    assert lyon.fare is not None
+    assert lyon.transfer is not None
+    assert (lyon.standing.state, lyon.fare.offer.price, lyon.fare.search.vendor) == (
+        FareStanding.PRICED,
+        333,
+        FareVendor.KIWI,
+    )
+    assert lyon.transfer.offer.price == 290
+
+
+# ----- when a weekend is searched again
+def test_a_weekend_whose_latest_searches_taught_nothing_waits_a_doubling_wait_up_to_its_interval(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    day = dt.date(2026, 10, 26)  # GLA on 6 Nov is weekly
+
+    def tried(n: int, answered: bool) -> list[Search]:
+        """n searches with no answer, a day apart, the last the day before day; one that answered a week before."""
+        before = [kept('GLA', FRIDAY, dt.datetime.combine(day - dt.timedelta(days=8), dt.time(6), dt.UTC))]
+        return [
+            *(before if answered else []),
+            *(
+                kept(
+                    'GLA',
+                    FRIDAY,
+                    dt.datetime.combine(day - dt.timedelta(days=n - i), dt.time(6), dt.UTC),
+                    FareOutcome.FAILED,
+                )
+                for i in range(n)
+            ),
+        ]
+
+    def waits(n: int, *, answered: bool = False) -> int:
+        """The days after its latest search the weekend is first due."""
+        history = tried(n, answered)
+        last = history[-1].at.date()
+        w = next(d for d in range(1, 30) if first_in_queue(monkeypatch, history, last + dt.timedelta(days=d)).due)
+        assert first_in_queue(monkeypatch, history, last + dt.timedelta(days=w)).again
+        return w
+
+    assert [waits(n) for n in (1, 2, 3, 4, 5, 9)] == [1, 2, 4, 7, 7, 7]  # doubling, at most its interval: weekly
+    assert [waits(n, answered=True) for n in (1, 2, 3)] == [1, 2, 4]  # since its latest answer
+    assert fares.backoff(3, 28) == 4
+    # the wait is in days of the calendar: a search that failed late in a day's run is due in the next day's, earlier
+    late = kept('GLA', FRIDAY, dt.datetime.combine(day, dt.time(7, 10), dt.UTC), FareOutcome.FAILED)
+    next_run = dt.datetime.combine(day + dt.timedelta(days=1), dt.time(5, 41), dt.UTC)
+    assert fares.queue(next_run, [late])[0].due
+    assert not fares.queue(next_run - dt.timedelta(days=1), [late])[0].due  # not the same day
+    # an answer ends the wait: due on its interval again, on its weekday
+    its_day = day + dt.timedelta(days=fares.weekday_of('GLA', FRIDAY))
+    answer = kept('GLA', FRIDAY, dt.datetime.combine(its_day - dt.timedelta(days=7), dt.time(6), dt.UTC))
+    failures = [s.model_copy(update={'at': s.at - dt.timedelta(days=10)}) for s in tried(3, answered=False)]
+    w = first_in_queue(monkeypatch, [*failures, answer], its_day)
+    assert (w.due, w.again, w.tries) == (True, False, 0)
+    assert not first_in_queue(monkeypatch, [*failures, answer], its_day + dt.timedelta(days=1)).due
+
+
+def test_a_weekend_google_does_not_sell_yet_is_not_due_whatever_its_searches(monkeypatch: pytest.MonkeyPatch) -> None:
+    far = dt.date(2026, 10, 27) + dt.timedelta(days=fares.SELLS_DAYS + 10)
+    monkeypatch.setattr(fare_weekends, 'weekends', only({('GLA', far): True}))
+    failed = kept('GLA', far, dt.datetime(2026, 10, 20, 6, tzinfo=dt.UTC), FareOutcome.FAILED)
+    for history in ([], [failed]):
+        assert not fares.queue(dt.datetime(2026, 10, 27, 6, tzinfo=dt.UTC), history)[0].due
+
+
+def test_the_nearest_airports_weekends_go_first_due_on_their_interval_then_after_their_wait_then_the_extras(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     day = dt.date(2026, 10, 26) + dt.timedelta(days=fares.weekday_of('GLA', FRIDAY))  # GLA's weekday
     assert fares.weekday_of('BCN', FRIDAY) != day.weekday()
     at = dt.datetime.combine(day, dt.time(6), dt.UTC)
     history = [
         kept('GLA', FRIDAY, at - dt.timedelta(days=7)),  # due on its weekday
         kept('BCN', FRIDAY, at - dt.timedelta(days=13)),  # the more overdue, not by twice its interval
-        copied('BCN', FRIDAY, at - dt.timedelta(days=1)),
+        kept('BCN', FRIDAY, at - dt.timedelta(days=1), FareOutcome.FAILED),  # due after its wait
+        copied('OPO', FRIDAY, at - dt.timedelta(days=1)),  # a no price kept before the history: due after its wait
+        kept('PIK', FRIDAY, at - dt.timedelta(days=1), FareOutcome.FAILED),  # an extra due after its wait
     ]
-    monkeypatch.setattr(fare_weekends, 'weekends', only({('BCN', FRIDAY): True, ('GLA', FRIDAY): True}))
+    monkeypatch.setattr(
+        fare_weekends,
+        'weekends',
+        only(
+            {
+                ('BCN', FRIDAY): True,
+                ('GLA', FRIDAY): True,
+                ('OPO', FRIDAY): True,
+                ('ABZ', FRIDAY): False,
+                ('PIK', FRIDAY): False,
+                ('LIS', FRIDAY): True,
+            }
+        ),
+    )
     q = fares.queue(at, history)
-    assert [(w.airport, w.due, w.again) for w in q] == [('GLA', True, False), ('BCN', True, True)]
-
-
-def test_a_weekend_never_answered_waits_for_those_due_on_their_interval(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    day = dt.date(2026, 10, 26) + dt.timedelta(days=fares.weekday_of('GLA', FRIDAY))  # GLA's weekday
-    at = dt.datetime.combine(day, dt.time(6), dt.UTC)
-    history = [
-        kept('GLA', FRIDAY, at - dt.timedelta(days=7)),  # due on its weekday
-        copied('BCN', FRIDAY, at - dt.timedelta(days=1)),  # its only search
+    assert [(w.airport, w.due, w.again, w.nearest) for w in q] == [
+        ('LIS', True, False, True),  # never searched
+        ('GLA', True, False, True),
+        ('OPO', True, True, True),
+        ('BCN', True, True, True),
+        ('ABZ', True, False, False),  # an extra, never searched
+        ('PIK', True, True, False),
     ]
-    monkeypatch.setattr(fare_weekends, 'weekends', only({('BCN', FRIDAY): True, ('GLA', FRIDAY): True}))
-    q = fares.queue(at, history)
-    assert [(w.airport, w.due, w.again, w.age) for w in q] == [('GLA', True, False, 7), ('BCN', True, True, None)]
-    # one never searched still goes first
-    three = {('BCN', FRIDAY): True, ('GLA', FRIDAY): True, ('LIS', FRIDAY): True}
-    monkeypatch.setattr(fare_weekends, 'weekends', only(three))
-    assert [w.airport for w in fares.queue(at, history)] == ['LIS', 'GLA', 'BCN']
+    assert [(w.airport, w.age, w.tries) for w in q[2:4]] == [('OPO', None, 1), ('BCN', 13, 1)]
 
 
-def test_no_price_kept_before_this_history_is_no_answer_and_its_weekend_is_due(monkeypatch: pytest.MonkeyPatch) -> None:
-    day = dt.date(2026, 10, 27)
-    at = dt.datetime.combine(day - dt.timedelta(days=2), dt.time(6), dt.UTC)
-    copied_ = copied('GLA', FRIDAY, at)
-    alone = first_in_queue(monkeypatch, [copied_], day)
-    assert (alone.due, alone.again, alone.age) == (True, True, None)  # after those due on their interval
-    assert fare_weekends.current([copied_], {('GLA', FRIDAY)}) == {}
-    older = kept('GLA', FRIDAY, at - dt.timedelta(days=3)).model_copy(update={'backfill': 'pipeline/fares.csv@abc123'})
-    fare = fare_weekends.current([older, copied_], {('GLA', FRIDAY)})[('GLA', FRIDAY)].fare
-    assert fare is not None
-    assert fare.search == older  # the fare of the answer before it
-    assert first_in_queue(monkeypatch, [older, copied_], day).again  # due at once, not on its weekday
-    live = kept('GLA', FRIDAY, at, FareOutcome.NONE)
-    assert fare_weekends.current([live], {('GLA', FRIDAY)})[('GLA', FRIDAY)].fare is None  # a no price of this run's
-
-
-def test_a_failed_search_is_no_search_of_its_weekend(monkeypatch: pytest.MonkeyPatch) -> None:
-    day = dt.date(2026, 10, 27)
-    failed = kept('GLA', FRIDAY, dt.datetime.combine(day, dt.time(5), dt.UTC), FareOutcome.FAILED)
-    assert first_in_queue(monkeypatch, [failed], day).age is None
-    assert fare_weekends.current([failed], {('GLA', FRIDAY)}) == {}
-
-
-AT = dt.datetime(2026, 10, 27, 6, tzinfo=dt.UTC)  # when a fare was found
 SOON = today() + dt.timedelta(days=10)  # due, weekly, never searched
 
 
@@ -195,6 +389,8 @@ def answering(found: Mapping[str, tuple[Offer, ...] | Declined | str]) -> Google
         f = found[asked.airport]
         if isinstance(f, Declined):
             return f
+        if f == ():
+            return fares.search(asked, FareVendor.GOOGLE, (), nearby=0)  # an empty page, as google() keeps it
         listed = f == 'listed'
         return fares.search(asked, FareVendor.GOOGLE, () if isinstance(f, str) else f, listed=listed)
 
@@ -230,7 +426,7 @@ def test_a_search_with_no_answer_is_kept_as_failed_and_named_and_fails_no_run(
     found = {s.airport: s for s in kept_now() if s.vendor == FareVendor.GOOGLE}
     assert (found['LIS'].outcome, found['LIS'].note) == (FareOutcome.FAILED, broke.why)
     assert weekends == ['GLA']  # the reseller is not asked of a search Google gave no answer to
-    assert [w.airport for w in fares.queue() if w.due] == ['LIS']  # tried again on the next run
+    assert [w.airport for w in fares.queue(now() + dt.timedelta(days=1)) if w.due] == ['LIS']  # tried the next run
 
 
 @pytest.mark.usefixtures('weekends')
@@ -240,8 +436,13 @@ def test_a_run_fails_when_google_gives_no_page_to_any_of_its_searches(monkeypatc
     with pytest.raises(SystemExit, match=r'2 searches gave no answer \(transient 2\)'):
         fares.refresh(budget=5, max_seconds=60)  # two in a row, fewer than stop a run
     # a run whose every page is empty fails nothing: each is an answer of Google's server
-    monkeypatch.setattr(fares, 'google', answering({'GLA': (), 'LIS': ()}))
+    monkeypatch.setattr(fare_weekends, 'weekends', only({('AMS', SOON): True, ('BCN', SOON): True}))
+    monkeypatch.setattr(fares, 'google', answering({'AMS': (), 'BCN': ()}))
     fares.refresh(budget=5, max_seconds=60)
+    assert {(s.vendor, s.outcome) for s in kept_now() if s.airport in {'AMS', 'BCN'}} == {
+        (FareVendor.GOOGLE, FareOutcome.NONE),
+        (FareVendor.KIWI, FareOutcome.NONE),
+    }
     monkeypatch.setattr(fare_weekends, 'weekends', only({}))
     fares.refresh(budget=5, max_seconds=60)  # nor does a run with nothing due
 
@@ -251,7 +452,7 @@ def test_a_run_fails_when_google_gives_no_page_to_any_of_its_searches(monkeypatc
     ('declined', 'tries'),
     [
         (Declined(CallCause.TRANSIENT, fli_page.REFUSED), 2),
-        (Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload'), fares.MOST_UNANSWERED),
+        (Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload'), fares.MOST_DECLINED),
         (Declined(CallCause.STRUCTURAL, 'fli gave a price in SEK, not the EUR it was asked'), 1),
     ],
     ids=['refused twice', 'no answer in a row', 'can never succeed'],
@@ -301,8 +502,8 @@ def test_a_refused_search_is_tried_once_more_then_the_rest_waits(monkeypatch: py
 
 @pytest.mark.usefixtures('weekends')
 def test_a_run_stops_after_google_gives_no_answer_to_a_few_searches_in_a_row(monkeypatch: pytest.MonkeyPatch) -> None:
-    """Google's empty page (blocked, 2026-11-16) counts in no budget: the run stops after MOST_UNANSWERED in a row
-    rather than asking for its whole queue."""
+    """A page fli finds no flights' data in is no answer, and counts in no budget: the run stops after MOST_DECLINED
+    in a row rather than asking for its whole queue."""
     due = ['GLA', 'LIS', 'OSL', 'CDG', 'MAD', 'ROM']
 
     def weekends(_: dt.date) -> fare_weekends.Weekends:
@@ -318,7 +519,7 @@ def test_a_run_stops_after_google_gives_no_answer_to_a_few_searches_in_a_row(mon
     monkeypatch.setattr(fares, 'google', blank)
     with pytest.raises(SystemExit, match='no ds:1 payload'):
         fares.refresh(budget=5, max_seconds=60)
-    assert len(tries) == fares.MOST_UNANSWERED < len(due)
+    assert len(tries) == fares.MOST_DECLINED < len(due)
 
 
 class KilledError(Exception):
@@ -352,24 +553,36 @@ def test_the_plan_lists_the_weekends_due(capsys: pytest.CaptureFixture[str]) -> 
     assert f'GLA {SOON}: 10 days away, every 7 days, never searched' in out
 
 
+def test_the_plan_names_an_extra_after_the_nearest(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    monkeypatch.setattr(fare_weekends, 'weekends', only({('ABZ', SOON): False, ('GLA', SOON): True}))
+    fares.plan()
+    assert capsys.readouterr().out.splitlines()[1:] == [
+        f'GLA {SOON}: 10 days away, every 7 days, never searched',
+        f'ABZ {SOON}: 10 days away, every 14 days, an extra, never searched',
+    ]
+
+
 @pytest.mark.usefixtures('weekends')
-def test_the_plan_says_a_weekend_whose_latest_search_held_no_answer_has_none_yet(
+def test_the_plan_says_how_many_of_a_weekend_s_latest_searches_taught_nothing(
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    answered = now() - dt.timedelta(days=3)
+    answered = now() - dt.timedelta(days=4)
     fare_store.write(
         fare_store.run_file(answered),
         [
             kept('LIS', SOON, answered),
             copied('LIS', SOON, answered + dt.timedelta(days=1)),
+            kept('LIS', SOON, answered + dt.timedelta(days=2), FareOutcome.FAILED),
             copied('GLA', SOON, answered + dt.timedelta(days=1)),
         ],
     )
     fares.plan()
     out = capsys.readouterr().out.splitlines()
     assert out[1:] == [
-        f'GLA {SOON}: 10 days away, every 7 days, no answer yet',
-        f'LIS {SOON}: 10 days away, every 7 days, answered 3 days ago, no answer since',
+        f'GLA {SOON}: 10 days away, every 7 days, 1 search that taught nothing, none that taught one',
+        f'LIS {SOON}: 10 days away, every 7 days, taught 4 days ago, 2 searches that taught nothing since',
     ]
 
 
@@ -401,8 +614,8 @@ def page(rows: Page) -> Callable[..., Page]:
     """fli_page.page, as it reads Google's page for GLA on FRIDAY, back NIGHTS later; asked anything else, the test
     fails."""
 
-    def read(origin: str, airport: str, friday: dt.date, back: dt.date, *, direct: bool) -> Page:
-        assert (origin, airport, friday, back, direct) == (HOME, 'GLA', FRIDAY, FRIDAY + dt.timedelta(days=3), False)
+    def read(origin: str, airport: str, friday: dt.date, back: dt.date) -> Page:
+        assert (origin, airport, friday, back) == (HOME, 'GLA', FRIDAY, FRIDAY + dt.timedelta(days=3))
         return rows
 
     return read
@@ -426,7 +639,7 @@ def test_a_search_keeps_each_way_out_priced_as_an_offer_on_one_ticket(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setattr(fli_page, 'page', page(rows))
-    found = fares.google(fares.Asked(HOME, 'GLA', FRIDAY, FareMode.ANY))
+    found = fares.google(fares.Asked(HOME, 'GLA', FRIDAY))
     assert isinstance(found, Search)
     assert (found.outcome, [(o.price, o.stops_out, o.stops_back) for o in found.offers]) == expected
     assert {o.ticket for o in found.offers} <= {FareTicket.ONE_TICKET}
@@ -435,22 +648,43 @@ def test_a_search_keeps_each_way_out_priced_as_an_offer_on_one_ticket(
 def test_a_page_google_would_not_give_is_no_answer(monkeypatch: pytest.MonkeyPatch) -> None:
     refused = Declined(CallCause.TRANSIENT, fli_page.REFUSED)
     monkeypatch.setattr(fli_page, 'page', page(refused))
-    assert fares.google(fares.Asked(HOME, 'GLA', FRIDAY, FareMode.ANY)) == refused
+    assert fares.google(fares.Asked(HOME, 'GLA', FRIDAY)) == refused
 
 
 def test_an_empty_page_is_kept_as_no_flight_listed_with_the_nearby_dates_it_priced(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setattr(fli_page, 'page', page(fli_page.Empty(nearby=8)))
-    found = fares.google(fares.Asked(HOME, 'GLA', FRIDAY, FareMode.ANY))
+    found = fares.google(fares.Asked(HOME, 'GLA', FRIDAY))
     assert isinstance(found, Search)
     assert (found.outcome, found.offers, found.nearby, found.note) == (FareOutcome.NONE, (), 8, None)
     assert fares.said(fares.Searched((found,))) == 'no flight listed, 8 nearby dates priced'
 
 
+@pytest.mark.parametrize(
+    ('google', 'expected'),
+    [
+        (kept('GLA', FRIDAY, AT, offers=(offer(95), offer(80))), '80 EUR, 2 offers'),
+        (kept('GLA', FRIDAY, AT, FareOutcome.LISTED), 'flights with no price'),
+        (kept('GLA', FRIDAY, AT, FareOutcome.NONE).model_copy(update={'nearby': 0}), 'no flight listed'),
+        (kept('GLA', FRIDAY, AT, FareOutcome.FAILED), 'no answer: refused'),
+    ],
+    ids=['priced', 'listed', 'empty, no nearby date priced', 'failed'],
+)
+def test_the_run_s_log_says_what_a_search_found(google: Search, expected: str) -> None:
+    assert fares.said(fares.Searched((google,))) == expected
+    with_kiwi = fares.Searched((google, resold(google, FareOutcome.OFFERS, offer(438)), resold(google)))
+    assert fares.said(with_kiwi) == f'{expected}; the reseller: 438 EUR; the reseller: none'
+
+
 def test_a_failed_search_says_why_in_its_note() -> None:
     with pytest.raises(ValueError, match='outcome is failed says why'):
         _ = Search.model_validate({**kept('GLA', FRIDAY, AT, FareOutcome.FAILED).model_dump(), 'note': None})
+
+
+def test_a_reseller_s_search_lists_no_flight_without_a_price() -> None:
+    with pytest.raises(ValueError, match='lists no flight without a price'):
+        _ = kept('GLA', FRIDAY, AT, FareOutcome.LISTED, vendor=FareVendor.KIWI)
 
 
 @pytest.mark.parametrize(
@@ -468,7 +702,7 @@ def test_only_an_empty_page_of_google_s_prices_nearby_dates(vendor: FareVendor, 
         _ = Search.model_validate({**kept('GLA', FRIDAY, AT, outcome, vendor=vendor).model_dump(), 'nearby': 3})
 
 
-def test_empty_pages_count_in_the_budget_and_not_as_unanswered(
+def test_empty_pages_count_in_the_budget_and_not_among_the_searches_in_a_row_with_no_page(
     weekends: list[str], monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
     asked = pairing(monkeypatch)
@@ -484,7 +718,10 @@ def test_empty_pages_count_in_the_budget_and_not_as_unanswered(
     home = [a.airport for a in asked if a.origin == HOME]
     assert home == ['AMS', 'BCN', 'GLA', 'LIS']  # three empty in a row, and the run goes on to its budget
     assert weekends == home  # the reseller asked of each page Google gave
-    assert capsys.readouterr().out.splitlines()[-1].startswith('4 searches, 3 of them listing no flight, and 2 pairs;')
+    assert capsys.readouterr().out.splitlines()[-1] == (
+        '4 searches, 3 of them listing no flight, and 2 pairs; '
+        'of 5 festival weekends, 1 priced, 0 listed, 3 no_flight, 0 unanswered, 1 not_asked'
+    )
 
 
 # ----- pairs: a weekend searched from home searched from another city too
@@ -509,7 +746,7 @@ def pairing(monkeypatch: pytest.MonkeyPatch) -> list[fares.Asked]:
     return []
 
 
-def test_pairs_take_a_quarter_of_the_budget_after_the_searches_from_home_in_their_mode(
+def test_pairs_take_a_quarter_of_the_budget_after_the_searches_from_home(
     weekends: list[str], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     asked = pairing(monkeypatch)
@@ -526,9 +763,7 @@ def test_pairs_take_a_quarter_of_the_budget_after_the_searches_from_home_in_thei
     home = [a for a in asked if a.origin == HOME]
     assert [a.airport for a in home] == ['AMS', 'BCN', 'GLA', 'LIS', 'PRG']  # all there were
     day = now().date()
-    assert asked[len(home) :] == [
-        fares.Asked(fares.pair_origin(a, day), a.airport, a.friday, a.mode) for a in home[1:3]
-    ]
+    assert asked[len(home) :] == [fares.Asked(fares.pair_origin(a, day), a.airport, a.friday) for a in home[1:3]]
     assert weekends == ['BCN', 'GLA', 'LIS', 'PRG']  # the reseller asked of home's alone
     kept = [s for s in kept_now() if s.origin != HOME]
     assert [(s.airport, s.outcome) for s in kept] == [('BCN', FareOutcome.OFFERS), ('GLA', FareOutcome.OFFERS)]
@@ -548,27 +783,34 @@ def test_pairs_take_a_quarter_of_the_budget_after_the_searches_from_home_in_thei
         (True, 'NCE'),
         (False, 'MAD'),
     ]
-    assert fare_weekends.current(kept_now(), five_weekends(day))[('BCN', SOON)].searched.origin == HOME
+    searched = fare_weekends.current(kept_now(), five_weekends(day))[('BCN', SOON)].standing.searched
+    assert searched is not None
+    assert searched.origin == HOME
 
 
-def test_a_pair_of_an_extra_airport_is_searched_for_direct_flights_too(
+def test_an_extra_airport_and_its_pair_are_searched_for_any_flight(
     weekends: list[str], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     monkeypatch.setattr(fares, 'PAIR_SHARE', 0.25)
     monkeypatch.setattr(fare_weekends, 'weekends', only({('ABZ', SOON): False}))
-    monkeypatch.setattr(fares, 'google', answering({'ABZ': 'listed'}))
+
+    def read(asked: FlightSearchFilters) -> Page:
+        assert asked.stops == MaxStops.ANY  # any flight, from home and from the pair's city
+        return (fli_page.Row(90.0, 1, ('KLM',)),)
+
+    monkeypatch.setattr(fli_page, 'read', read)
     fares.refresh(budget=4, max_seconds=60)
-    assert [(s.origin != HOME, s.vendor, s.mode) for s in kept_now()] == [
-        (False, FareVendor.GOOGLE, FareMode.DIRECT),
-        (False, FareVendor.KIWI, FareMode.DIRECT),
-        (True, FareVendor.GOOGLE, FareMode.DIRECT),
+    assert [(s.origin != HOME, s.vendor, s.mode, s.outcome) for s in kept_now()] == [
+        (False, FareVendor.GOOGLE, FareMode.ANY, FareOutcome.OFFERS),
+        (False, FareVendor.KIWI, FareMode.ANY, FareOutcome.NONE),
+        (True, FareVendor.GOOGLE, FareMode.ANY, FareOutcome.OFFERS),
     ]
 
 
 def test_pairs_are_mostly_from_oslo_and_a_few_from_stavanger_and_trondheim() -> None:
     day = dt.date(2026, 11, 9)
     origins = [
-        fares.pair_origin(fares.Asked(HOME, a, SOON + dt.timedelta(weeks=w), FareMode.ANY), day)
+        fares.pair_origin(fares.Asked(HOME, a, SOON + dt.timedelta(weeks=w)), day)
         for a in ('GLA', 'LIS', 'BCN', 'PRG', 'AMS')
         for w in range(20)
     ]
@@ -583,7 +825,7 @@ def test_a_weekend_to_the_city_a_pair_would_leave_from_is_not_paired(
     friday = next(
         f
         for f in (SOON + dt.timedelta(weeks=w) for w in range(50))
-        if fares.pair_origin(fares.Asked(HOME, 'OSL', f, FareMode.ANY), day) == 'OSL'
+        if fares.pair_origin(fares.Asked(HOME, 'OSL', f), day) == 'OSL'
     )
     monkeypatch.setattr(fares, 'PAIR_SHARE', 0.25)
     monkeypatch.setattr(fare_weekends, 'weekends', only({('OSL', friday): True}))
@@ -598,32 +840,25 @@ def three_airports(_: dt.date) -> dict[tuple[str, dt.date], bool]:
     return {('GLA', SOON): True, ('PIK', SOON): False, ('ABZ', SOON): False, ('LIS', SOON): True}
 
 
-def aberdeen_nearest(_: dt.date) -> dict[tuple[str, dt.date], bool]:
-    """ABZ the nearest airport of a festival that weekend."""
-    return {('ABZ', SOON): True}
-
-
 @pytest.mark.usefixtures('weekends')
 def test_the_other_airports_are_searched_less_often_and_after_every_nearest_due(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     assert [fares.interval(d, nearest=False) for d in (4, 36, 120, 200, 331)] == [14, 28, 56, 84, None]
     monkeypatch.setattr(fare_weekends, 'weekends', three_airports)
-    asked: list[tuple[str, FareMode]] = []
+    asked: list[str] = []
 
     def google(a: fares.Asked) -> Search:
-        asked.append((a.airport, a.mode))
-        return fares.search(a, FareVendor.GOOGLE, (offer(90, stops=0),))
+        asked.append(a.airport)
+        return fares.search(a, FareVendor.GOOGLE, (offer(90),))
 
     monkeypatch.setattr(fares, 'google', google)
     fares.refresh(budget=3, max_seconds=60)
-    # the two nearest first, then one extra, for direct flights alone, within the budget of three
-    assert asked == [('GLA', FareMode.ANY), ('LIS', FareMode.ANY), ('ABZ', FareMode.DIRECT)]
-    assert {s.airport: fare_weekends.direct_found(s) for s in kept_now() if s.vendor == FareVendor.GOOGLE} == {
-        'GLA': None,
-        'LIS': None,
-        'ABZ': True,
-    }
+    assert asked == ['GLA', 'LIS', 'ABZ']  # the two nearest first, then one extra, within the budget of three
+    known = fare_weekends.standings(kept_now())
+    assert {k: st.state for k, st in known.items()} == dict.fromkeys(
+        [('GLA', SOON), ('LIS', SOON), ('ABZ', SOON)], FareStanding.PRICED
+    )
 
 
 def two_aberdeen_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
@@ -632,60 +867,48 @@ def two_aberdeen_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
     return {('GLA', SOON): True, ('ABZ', SOON): False, ('GLA', nxt): True, ('ABZ', nxt): False}
 
 
-@pytest.mark.usefixtures('weekends')
-def test_an_other_airport_with_no_direct_flight_is_not_searched_again_for_any_weekend_for_a_season(
+def test_an_extra_s_weekend_with_no_flight_is_searched_again_on_its_interval_and_its_other_weekends_too(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    far = SOON + dt.timedelta(days=30)  # 40 days away: every 14 days for a nearest, 28 for an extra
+    none = kept('ABZ', far, now(), FareOutcome.NONE)
+    history = [none, resold(none)]
+    monkeypatch.setattr(fare_weekends, 'weekends', only({('ABZ', far): False, ('ABZ', SOON): False}))
+    assert fare_weekends.standings(history)[('ABZ', far)].state == FareStanding.NO_FLIGHT
+
+    def due(days: int) -> dict[dt.date, bool]:
+        return {w.friday: w.due for w in fares.queue(now() + dt.timedelta(days=days), history)}
+
+    assert due(1) == {far: False, SOON: True}  # stood at, as any answer is; its other weekend never searched
+    its_day = next(d for d in range(28, 35) if (now() + dt.timedelta(days=d)).weekday() == fares.weekday_of('ABZ', far))
+    assert (due(its_day - 1)[far], due(its_day)[far]) == (False, True)  # on its weekday once 28 days have passed
+    # an airport that becomes a festival's nearest is searched as the nearest
+    monkeypatch.setattr(fare_weekends, 'weekends', only({('ABZ', far): True}))
+    assert [(w.airport, w.nearest, w.every) for w in fares.queue(now(), history)] == [('ABZ', True, 14)]
+
+
+def test_an_extra_s_search_for_direct_flights_alone_that_found_none_is_a_try_and_its_fare_stays(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A weekend the history searched for direct flights alone: one with none taught nothing, so it is due after its
+    wait, after the nearest, and an earlier fare stays the card's."""
+    earlier = kept('ABZ', SOON, now() - dt.timedelta(days=20), offers=(offer(240),))
+    direct = kept('ABZ', SOON, now() - dt.timedelta(days=1), FareOutcome.NONE, mode=FareMode.DIRECT)
+    history = [earlier, direct, resold(direct)]
     monkeypatch.setattr(fare_weekends, 'weekends', two_aberdeen_weekends)
-    asked: list[tuple[str, dt.date, FareMode]] = []
-
-    def google(a: fares.Asked) -> Search:
-        asked.append((a.airport, a.friday, a.mode))
-        return fares.search(a, FareVendor.GOOGLE, ())
-
-    monkeypatch.setattr(fares, 'google', google)
-    fares.refresh(budget=9, max_seconds=60)
-    # ABZ's first weekend has no direct flight, so its second is not searched, in this run or the next ones
-    assert [(a, m) for a, _, m in asked] == [('GLA', FareMode.ANY), ('GLA', FareMode.ANY), ('ABZ', FareMode.DIRECT)]
-    later = now() + dt.timedelta(days=60)  # every weekend due again by then
-    assert {w.airport for w in fares.queue(later)} == {'GLA'}
-    # a season on, the airport is tried again
-    assert 'ABZ' in {w.airport for w in fares.queue(now() + dt.timedelta(days=fares.NO_DIRECT_DAYS + 1))}
-    # an airport that becomes a festival's nearest is searched again, for any flight
-    monkeypatch.setattr(fare_weekends, 'weekends', aberdeen_nearest)
-    assert [(w.airport, w.nearest) for w in fares.queue(later)] == [('ABZ', True)]
-
-
-def test_an_airport_with_a_direct_flight_one_weekend_is_searched_on_its_other_weekends(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    nxt, third = SOON + dt.timedelta(days=7), SOON + dt.timedelta(days=14)
-    history = [
-        kept('ABZ', SOON, now(), FareOutcome.NONE, mode=FareMode.DIRECT),
-        kept('ABZ', nxt, now(), FareOutcome.LISTED, mode=FareMode.DIRECT),
+    abz = fare_weekends.current(history, two_aberdeen_weekends(today()))[('ABZ', SOON)]
+    assert (abz.standing.state, abz.standing.since, abz.fare and abz.fare.offer.price) == (
+        FareStanding.PRICED,
+        (direct,),
+        240,
+    )
+    q = fares.queue(now(), history)
+    assert [(w.airport, w.due, w.again) for w in q if w.due] == [
+        ('GLA', True, False),
+        ('GLA', True, False),
+        ('ABZ', True, False),  # its other weekend, never searched
+        ('ABZ', True, True),
     ]
-
-    def three_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
-        return {('ABZ', SOON): False, ('ABZ', nxt): False, ('ABZ', third): False}
-
-    monkeypatch.setattr(fare_weekends, 'weekends', three_weekends)
-    later = now() + dt.timedelta(days=60)
-    # all but the weekend found with none, the one never searched among them
-    assert sorted(w.friday for w in fares.queue(later, history)) == [nxt, third]
-
-
-def test_a_weekend_further_ahead_than_flights_are_on_sale_rules_out_that_weekend_alone(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    far = SOON + dt.timedelta(days=fares.SCHEDULED_DAYS)
-    history = [kept('ABZ', far, now(), FareOutcome.NONE, mode=FareMode.DIRECT)]
-
-    def near_and_far(_: dt.date) -> dict[tuple[str, dt.date], bool]:
-        return {('ABZ', SOON): False, ('ABZ', far): False}
-
-    monkeypatch.setattr(fare_weekends, 'weekends', near_and_far)
-    assert fares.no_direct(history, now()) == set()
-    assert [w.friday for w in fares.queue(now() + dt.timedelta(days=60), history)] == [SOON]
 
 
 # ----- the reseller
@@ -779,19 +1002,18 @@ def test_a_reseller_is_asked_each_weekend_the_same_and_priced_where_google_lists
     monkeypatch.setattr(fares, 'google', answering({'GLA': (), 'LIS': (), 'PIK': (), 'ABZ': 'listed'}))
     monkeypatch.setattr(web, 'post', post)
     fares.refresh(budget=9, max_seconds=60)
-    # the reseller asked of each weekend searched, the same: ABZ for direct flights alone, Friday to Monday
+    # the reseller asked of each weekend searched, the same, an extra's too: any flight, Friday to Monday
     monday = SOON + dt.timedelta(days=fare_weekends.NIGHTS)
-    assert [a['flyTo'] for a in sent] == ['GLA', 'LIS', 'ABZ', 'PIK']
-    assert sent[2:3] == [
+    assert sent == [
         {
             'flyFrom': HOME,
-            'flyTo': 'ABZ',
+            'flyTo': airport,
             'departureDate': SOON.strftime('%d/%m/%Y'),
             'returnDate': monday.strftime('%d/%m/%Y'),
             'currency': 'EUR',
             'sort': 'price',
-            'max_sector_stopovers': 0,
         }
+        for airport in ('GLA', 'LIS', 'ABZ', 'PIK')
     ]
     live = fare_weekends.current(kept_now(), three_airports(today()))
     abz = live[('ABZ', SOON)]
@@ -801,7 +1023,7 @@ def test_a_reseller_is_asked_each_weekend_the_same_and_priced_where_google_lists
         FareVendor.KIWI,
         ('Widerøe', 'Widerøe'),
     )
-    assert fare_weekends.direct_found(abz.searched) is True
+    assert abz.standing.state == FareStanding.PRICED
 
 
 @pytest.mark.usefixtures('weekends')
@@ -826,48 +1048,56 @@ def test_the_card_s_fare_is_the_cheapest_on_one_ticket_of_the_weekend_s_latest_s
         kept('LIS', FRIDAY, AT, offers=(offer(100),)),
         kept('LIS', FRIDAY, later, offers=(offer(150), offer(140, FareTicket.SELF_TRANSFER))),
         kept('GLA', FRIDAY, AT, offers=(offer(90),)),
-        kept('GLA', FRIDAY, later, FareOutcome.NONE),  # the price is gone
+        gone := kept('GLA', FRIDAY, later, FareOutcome.NONE),  # no flight now: the price is gone
+        resold(gone),
+        kept('PRG', FRIDAY, AT, offers=(offer(95),)),
+        kept('PRG', FRIDAY, later, FareOutcome.NONE),  # an empty page alone: the price stays
         kept('OSL', FRIDAY, later, FareOutcome.FAILED),
         kept('BCN', FRIDAY, AT, offers=(offer(70),)),  # a weekend no festival has any more
         kept('LIS', FRIDAY, later + dt.timedelta(hours=1), origin='OSL', offers=(offer(60),)),  # not from home
     ]
-    live = fare_weekends.current(history, {('LIS', FRIDAY), ('GLA', FRIDAY), ('OSL', FRIDAY)})
-    assert {k[0]: c.fare and c.fare.offer.price for k, c in live.items()} == {'LIS': 150, 'GLA': None}
+    live = fare_weekends.current(
+        history, dict.fromkeys([('LIS', FRIDAY), ('GLA', FRIDAY), ('PRG', FRIDAY), ('OSL', FRIDAY)], True)
+    )
+    assert {k[0]: c.fare and c.fare.offer.price for k, c in live.items()} == {
+        'LIS': 150,
+        'GLA': None,
+        'PRG': 95,
+        'OSL': None,
+    }
 
 
 def test_the_flights_add_a_reseller_s_self_transfer_only_when_it_is_cheaper_than_the_fare() -> None:
-    def with_resold(google: tuple[Offer, ...], resold: tuple[Offer, ...]) -> float | None:
-        history = [
-            kept('LIS', FRIDAY, AT, offers=google or None, outcome=FareOutcome.OFFERS if google else FareOutcome.NONE),
-            kept('LIS', FRIDAY, AT, offers=resold, vendor=FareVendor.KIWI),
-        ]
-        t = fare_weekends.current(history, {('LIS', FRIDAY)})[('LIS', FRIDAY)].transfer
+    def with_resold(google: tuple[Offer, ...], trips: tuple[Offer, ...]) -> float | None:
+        g = kept('LIS', FRIDAY, AT, offers=google or None, outcome=FareOutcome.OFFERS if google else FareOutcome.NONE)
+        history = [g, resold(g, FareOutcome.OFFERS, *trips)]
+        t = fare_weekends.current(history, {('LIS', FRIDAY): True})[('LIS', FRIDAY)].transfer
         return t and t.offer.price
 
     split = (offer(300, FareTicket.SELF_TRANSFER), offer(180, FareTicket.SELF_TRANSFER), offer(150))
     assert with_resold((offer(200),), split) == 180  # the cheapest self-transfer, a one-ticket one cheaper aside
     assert with_resold((offer(170),), split) is None  # dearer than the fare
-    assert with_resold((), split) == 180  # no fare: any
+    assert with_resold((offer(180),), split) is None  # as dear as the fare
+    assert with_resold((), split) is None  # an empty page: the reseller's one ticket the fare, dearer
+    assert with_resold((), split[:2]) == 180  # no fare: any
 
 
 def test_a_reseller_s_fare_is_taken_only_with_the_google_search_it_was_asked_with() -> None:
     later = AT + dt.timedelta(days=7)
-    resold = (offer(438), offer(300, FareTicket.SELF_TRANSFER))
-    history = [
-        kept('ABZ', FRIDAY, AT, FareOutcome.LISTED, mode=FareMode.DIRECT),
-        kept('ABZ', FRIDAY, AT, offers=resold, mode=FareMode.DIRECT, vendor=FareVendor.KIWI),
-    ]
-    found = fare_weekends.current(history, {('ABZ', FRIDAY)})[('ABZ', FRIDAY)]
+    g = kept('ABZ', FRIDAY, AT, FareOutcome.LISTED, mode=FareMode.DIRECT)
+    history = [g, resold(g, FareOutcome.OFFERS, offer(438), offer(300, FareTicket.SELF_TRANSFER))]
+    found = fare_weekends.current(history, {('ABZ', FRIDAY): False})[('ABZ', FRIDAY)]
     assert found.fare is not None
     assert found.fare.offer.price == 438  # on one ticket
     newer = [*history, kept('ABZ', FRIDAY, later, FareOutcome.LISTED, mode=FareMode.DIRECT)]
-    assert fare_weekends.current(newer, {('ABZ', FRIDAY)})[('ABZ', FRIDAY)].fare is None  # the reseller's is older
+    found = fare_weekends.current(newer, {('ABZ', FRIDAY): False})[('ABZ', FRIDAY)]
+    assert (found.standing.state, found.fare) == (FareStanding.LISTED, None)  # the reseller's asked with the older
 
 
 def test_a_reseller_s_search_is_paired_with_the_search_it_names_else_by_time() -> None:
     later = AT + dt.timedelta(minutes=1)
     first, second = kept('ABZ', FRIDAY, AT, FareOutcome.LISTED), kept('ABZ', FRIDAY, later, FareOutcome.LISTED)
-    named = kept('ABZ', FRIDAY, later, vendor=FareVendor.KIWI).model_copy(update={'asked_with': first.id})
+    named = kept('ABZ', FRIDAY, later, vendor=FareVendor.KIWI, asked_with=first.id)
     assert fare_weekends.resellers([first, second, named]) == {first.id: named}  # not the latest before it
     # one kept before a reseller's search named its: Google's made last before it, from and to the same, alike
     timed = kept('ABZ', FRIDAY, later + dt.timedelta(seconds=3), vendor=FareVendor.KIWI)
@@ -886,7 +1116,7 @@ def test_only_a_reseller_s_search_is_asked_with_another(monkeypatch: pytest.Monk
         return resold_answer().encode()
 
     monkeypatch.setattr(web, 'post', post)
-    resold = fares.kiwi(fares.Asked(HOME, 'ABZ', FRIDAY, FareMode.ANY), google)
+    resold = fares.kiwi(fares.Asked(HOME, 'ABZ', FRIDAY), google)
     assert (resold.vendor, resold.asked_with) == (FareVendor.KIWI, google.id)
     with pytest.raises(ValueError, match='asked_with'):  # checked as the search is made
-        _ = fares.kiwi(fares.Asked(HOME, 'ABZ', FRIDAY, FareMode.ANY), google.model_copy(update={'id': 'no hash'}))
+        _ = fares.kiwi(fares.Asked(HOME, 'ABZ', FRIDAY), google.model_copy(update={'id': 'no hash'}))

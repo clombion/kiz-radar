@@ -30,6 +30,8 @@ class FlightSearchFilters:
         stops: MaxStops,
         sort_by: SortBy,
     ) -> None: ...
+    stops: MaxStops
+    def model_copy(self, *, update: dict[str, object]) -> FlightSearchFilters: ...
 
 class FlightLeg:
     airline: Airline

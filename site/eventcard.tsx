@@ -7,7 +7,7 @@ import { createMemo, createSignal, flush, For, Show } from 'solid-js';
 import { type Classes, own } from './bits.ts';
 import { today } from './days.ts';
 import { cardDetails, traitItems } from './details.tsx';
-import { type Fare, resoldSaid } from './fares.ts';
+import { cardUnpricedSaid, type Fare, resoldSaid } from './fares.ts';
 import { type Festival, styleLine } from './festivals.ts';
 import { flightsButton } from './flights.tsx';
 import { artistHint } from './hints.ts';
@@ -74,28 +74,52 @@ const unpriced = (words: string | null, more: JSX.Element = null) => (
     {more}
   </p>
 );
+// What a card's flight line says: that its flight is not to take (its listing gone, started, or its phase's words);
+// that it is still to take with no fare, and why (unpriced: too far for our flight prices when the festival flies to no
+// airport, else what its airports' searches say, fares.ts cardUnpricedSaid), the words the map's legend names a city's
+// bubble by; that no flight is needed; or the fare.
+export type FlightLine =
+  | { readonly kind: 'left'; readonly words: string | null }
+  | { readonly kind: 'unpriced'; readonly words: string }
+  | { readonly kind: 'home' }
+  | { readonly kind: 'flown'; readonly e: Flown };
+// what a card says of a festival that flies to no airport, after its ✈
+export const tooFarSaid = (): string => `too far from ${home().city} for our flight prices`;
+export function flightLine(e: Festival): FlightLine {
+  if (e.phase === KEY.phase.GONE) return { kind: 'left', words: text('listing', e.listing) };
+  if (e.begun) return { kind: 'left', words: `✈ ${STARTED}` };
+  if (e.phase !== KEY.phase.AHEAD) return { kind: 'left', words: text('phase', e.phase) };
+  if (e.fare?.home === true) return { kind: 'home' };
+  if (flown(e)) return { kind: 'flown', e };
+  const [first, ...rest] = e.options;
+  return {
+    kind: 'unpriced',
+    words:
+      e.airport === null || e.airport === '' || first === undefined ? tooFarSaid() : cardUnpricedSaid([first, ...rest]),
+  };
+}
 // "✈ ~5 150 kr to Brussels, then 104 km · Flights · 3": a Fri→Mon return from home to the best of the festival's
 // airports (fares.ts best), and how far the festival is from it; the price links to Google Flights for that weekend,
 // and Flights lists every airport it can fly to.
 function flight(e: Festival): JSX.Element {
-  if (e.phase === KEY.phase.GONE) return unpriced(text('listing', e.listing));
-  if (e.begun) return unpriced(`✈ ${STARTED}`);
-  if (e.phase !== KEY.phase.AHEAD) return unpriced(text('phase', e.phase));
-  if (e.airport === null || e.airport === '') return unpriced(`✈ too far from ${home().city} for our flight prices`);
-  if (e.fare?.home === true) return <p class={['flight', 'easy']}>{`In ${home().city}, no flight needed`}</p>;
-  if (!flown(e)) return unpriced('✈ flight not checked yet', options(e));
+  const line = flightLine(e);
+  if (line.kind === 'left') return unpriced(line.words);
+  if (line.kind === 'unpriced') return unpriced(`✈ ${line.words}`, options(e));
+  if (line.kind === 'home') return <p class={['flight', 'easy']}>{`In ${home().city}, no flight needed`}</p>;
   return (
-    <p class={['flight', cheap(e) && 'easy']}>
+    <p class={['flight', cheap(line.e) && 'easy']}>
       {'✈ '}
-      {flightLink(e, money(e.fare.price, 'EUR', { approx: true }))}
-      {after(e)}
-      {options(e)}
+      {flightLink(line.e, money(line.e.fare.price, 'EUR', { approx: true }))}
+      {after(line.e)}
+      {options(line.e)}
     </p>
   );
 }
 
-// what a card says of the flight once its weekend's Friday-to-Monday return has left (Festival begun)
-const STARTED = 'already started, no flight priced';
+// what a card says of the flight once its weekend's Friday-to-Monday return has left (Festival begun); its start what
+// the map's legend says of a city whose festivals' flights are not to take
+export const ALREADY_STARTED = 'already started';
+const STARTED = `${ALREADY_STARTED}, no flight priced`;
 
 // The foot's prices. With a pass price and a flight, the total first:
 //   Cost ~4 130 kr, without accommodation · price goes up 15 Dec

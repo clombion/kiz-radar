@@ -137,7 +137,7 @@ class NotServed(Record):
 
 class CityClaim(Record):
     """Which airports dancers fly to for a city, by its key (records.City), each ordered by the time from it into the
-    city, the first to be searched for any flight and the others for direct ones; or that none is. The review dashboard
+    city, the first searched as its festivals' nearest and the others less often; or that none is. The review dashboard
     lists the cities no admin decision is of, with the research session's proposal."""
 
     field: Literal['city']

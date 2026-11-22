@@ -7,7 +7,7 @@ import type { GeometryCollection, Topology } from 'topojson-specification';
 import { asElement, debounced, styled } from './bits.ts';
 import { choices, dropdown, leftOut, paged, searchField } from './controls.tsx';
 import { needs, q, sql } from './db.ts';
-import { eventCard } from './eventcard.tsx';
+import { ALREADY_STARTED, eventCard, flightLine, tooFarSaid } from './eventcard.tsx';
 import { type Festival, withDetails } from './festivals.ts';
 import { Drawing } from './icons.ts';
 import { currency, money, step, within } from './money.ts';
@@ -16,8 +16,9 @@ import { get } from './net.ts';
 import { done } from './report.ts';
 import { changed, cityOf, cityOnMapHref, eventOnMapHref, mapHref, readState, showInAddressBar } from './routes.ts';
 import { EVENT } from './rows.ts';
+import { KEY } from './states.ts';
 import { countryName, flag, home } from './ui.ts';
-import { plural } from './wording.ts';
+import { plural, text } from './wording.ts';
 
 const WORLD = new URL(/* @vite-ignore */ '../vendor/countries-50m.json', import.meta.url); // world-atlas, copied by the build
 type Land = FeatureCollection<Polygon | MultiPolygon, { name: string }>;
@@ -52,11 +53,15 @@ interface City {
   readonly popular: number;
   readonly minFare: number | null;
   readonly home: boolean; // a festival there is in the home city
+  readonly unpriced: ReadonlySet<string>; // what the cards of its festivals still to fly to with no fare say why
 }
 // the festivals in view, by city, with what each city's bubble shows
 function citiesOf(events: readonly Placed[]): City[] {
   // each city as its festivals are added, built in place (City is read-only)
-  const groups = new Map<string, Omit<City, 'events' | 'n' | 'popular' | 'minFare' | 'home'> & { events: Placed[] }>();
+  const groups = new Map<
+    string,
+    Omit<City, 'events' | 'n' | 'popular' | 'minFare' | 'home' | 'unpriced'> & { events: Placed[] }
+  >();
   for (const e of events) {
     const k = e.city_key;
     const g = groups.get(k) ?? { key: k, city: e.city, cc: e.country_code, lat: e.lat, lon: e.lon, events: [] };
@@ -71,18 +76,25 @@ function citiesOf(events: readonly Placed[]): City[] {
       n: c.events.length,
       popular: c.events.reduce((sum, e) => sum + e.popular_artists, 0),
       minFare: fares.length > 0 ? Math.min(...fares) : null,
+      unpriced: new Set(
+        c.events.flatMap((e) => {
+          const line = flightLine(e);
+          return line.kind === 'unpriced' ? [line.words] : [];
+        }),
+      ),
     };
   });
 }
 type Band = readonly [string, (c: City) => boolean, string];
-type Scheme = { readonly title: () => string; readonly bands: readonly Band[] };
+// its bands made as they are drawn, as their words may read the site's data
+type Scheme = { readonly title: () => string; readonly bands: () => readonly Band[] };
 // a city's bubble: its size the festivals there, its colour the scheme's band for it
 const bubble = (c: City, scheme: Scheme) =>
   L.circleMarker([c.lat, c.lon], {
     radius: 4 + 3.2 * Math.sqrt(c.n),
     weight: 1.5,
     color: css('--bubble-stroke'),
-    fillColor: css(scheme.bands.find((b) => b[1](c))?.[2] ?? '--none'),
+    fillColor: css(scheme.bands().find((b) => b[1](c))?.[2] ?? '--none'),
     fillOpacity: 0.85,
     bubblingMouseEvents: false,
   }).bindTooltip(
@@ -97,7 +109,7 @@ type Color = (typeof COLORS)[number][0];
 const COLOR_BY: Readonly<Record<Color, Scheme>> = {
   fare: {
     title: () => `Cheapest flight from ${home().city}`,
-    bands: [
+    bands: () => [
       [
         `under ${money(step('flight', 'cheap'), currency)}`,
         (c) => c.home || (c.minFare != null && within(c.minFare, 'flight', 'cheap')), // home: no flight needed
@@ -109,12 +121,21 @@ const COLOR_BY: Readonly<Record<Color, Scheme>> = {
         '--mid',
       ],
       [`over ${money(step('flight', 'fair'), currency)}`, (c) => c.minFare != null, '--bad'],
-      ['not checked', () => true, '--none'],
+      // with none, what a card of the city says of a flight still to take, the most hopeful first; else its flights
+      // are not to take
+      ...(
+        [
+          [text('fare_standing', KEY.fare_standing.NOT_ASKED), '--none'],
+          [text('fare_standing', KEY.fare_standing.NO_FLIGHT), '--muted'],
+          [tooFarSaid(), '--map-border'],
+        ] as const
+      ).map(([words, color]): Band => [words, (c) => c.unpriced.has(words), color]),
+      [ALREADY_STARTED, () => true, '--surface-2'],
     ],
   },
   popular: {
     title: () => 'Bookings of well-known artists',
-    bands: [
+    bands: () => [
       ['10 or more', (c) => c.popular >= 10, '--good'],
       ['1–9', (c) => c.popular > 0, '--mid'],
       ['none', () => true, '--none'],
@@ -240,7 +261,7 @@ export function map({ sub, qs }: ViewProps): JSX.Element {
   const legendEl = asElement(
     <div class="map-legend">
       <strong>{scheme().title()}</strong>
-      <For each={scheme().bands}>
+      <For each={scheme().bands()}>
         {(b) => (
           <span>
             <i ref={styled({ background: css(b[2]) })} />

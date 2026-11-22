@@ -310,19 +310,28 @@ export function flies(db: Database, event: number, airports: readonly (readonly 
   }
 }
 
-// What a search of an airport found for a weekend: when it ran, whether it found a direct flight (null: not said),
-// the return fare it found (its price in euros, its stops out, and the airlines a reseller's price is theirs), and a
-// cheaper trip on separate tickets.
+// A festival near an airport that flies to none: its city decided not served, or its decided airports none the data
+// has.
+export function fliesToNone(db: Database, event: number, near: string): void {
+  db.run('UPDATE events SET airport = ?, airport_km = 30 WHERE id = ?', [near, event]);
+  wrote(db, 1, `festival ${event} near ${near}`);
+  db.run('DELETE FROM event_airports WHERE event_id = ?', [event]);
+}
+
+// What the searches of an airport say of a weekend, as the build writes it: its standing (pipeline/fare_weekends.py),
+// when the search that says it ran (null when none says one: not asked, or asked with no answer), the return fare it
+// found (its price in euros, its stops out, and the airlines a reseller's price is theirs), and a cheaper trip on
+// separate tickets.
 export interface Searched {
   readonly airport: string;
-  readonly at: string;
-  readonly direct: boolean | null;
+  readonly at: string | null;
+  readonly standing: Key<'fare_standing'>;
   readonly fare?: { readonly price: number; readonly stops: number; readonly resold?: string };
   readonly transfer?: { readonly price: number; readonly airlines: string };
 }
 
 // A weekend's flights, by its Friday, at the airports named: every fare, search and self-transfer there replaced by
-// the searches given (none: never searched), each returning on the Monday. The Friday is a festival's weekend Friday,
+// the searches given, each returning on the Monday. The Friday is a festival's weekend Friday,
 // else no page shows the flights.
 export function weekend(
   db: Database,
@@ -343,14 +352,18 @@ export function weekend(
   if (known !== airports.length) throw new Error(`the airports ${airports.join(', ')}: ${known} of them in the data`);
   for (const table of ['fares', 'fare_searches', 'fare_transfers'])
     db.run(`DELETE FROM ${table} WHERE depart = ? AND airport IN (SELECT value FROM json_each(?))`, [depart, codes]);
-  for (const { airport: code, at, direct, fare, transfer } of searched) {
+  for (const { airport: code, at, standing, fare, transfer } of searched) {
     const what = `the search of ${code} for the weekend of ${depart}`;
     if (!airports.includes(code)) throw new Error(`${what}: ${code} is none of the airports named`);
-    db.run('INSERT INTO fare_searches (airport, depart, searched_at, direct) VALUES (?, ?, ?, ?)', [
+    if ((fare !== undefined) !== (standing === KEY.fare_standing.PRICED))
+      throw new Error(`${what}: a fare exactly when it stands priced`);
+    const taught = standing !== KEY.fare_standing.NOT_ASKED && standing !== KEY.fare_standing.UNANSWERED;
+    if ((at !== null) !== taught) throw new Error(`${what}: a time exactly when a search said its standing`);
+    db.run('INSERT INTO fare_searches (airport, depart, standing, searched_at) VALUES (?, ?, ?, ?)', [
       code,
       depart,
+      standing,
       at,
-      direct === null ? null : Number(direct),
     ]);
     wrote(db, 1, what);
     if (fare !== undefined) {

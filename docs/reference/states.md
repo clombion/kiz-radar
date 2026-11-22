@@ -51,6 +51,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | **fare_vendor**, each fare search, by whom it asks | `google`, `kiwi` | fares |
 | **fare_outcome**, each fare search, by what it found | `offers`, `none`, `listed`, `failed` | fares |
 | **fare_ticket**, each offer of a fare search, by the tickets it is booked on | `one_ticket`, `self_transfer` | fares |
+| **fare_standing**, each festival weekend (an airport and its Friday), by what its searches from home say of its fare | `priced`, `listed`, `no_flight`, `unanswered`, `not_asked` | fare_weekends standing |
 | **fare_family**, each pair of searches (home's and another city's of one weekend), by the flight home's fare takes | `direct`, `connecting` | fare_accuracy |
 | **city_tier**, each festival city, by the airports its decision says it flies to (a city claim) | `big`, `small`, `not_served` | claims |
 | **ground_mode**, each vehicle a trip by public transport from an airport into a festival city takes, as Transitous names it | `tram`, `subway`, `ferry`, `bus`, `coach`, `highspeed_rail`, `long_distance`, `night_rail`, `regional_rail`, `suburban`, `funicular`, `aerial_lift`, `other` | measure |
@@ -255,8 +256,8 @@ Every data point and every state it can be in; why the world is closed is in [St
 | model · `claude-opus-5-5` | kept | — | — | a model of the first read |
 | model · `claude-sonnet-5-5` | kept | — | — | a model of the first read |
 | model · `claude-haiku-5-5` | kept | — | — | the extraction passes and the merge review |
-| fare_mode · `any` | kept | — | — | any flight, the cheapest first: a festival weekend to its nearest airport |
-| fare_mode · `direct` | kept | — | — | direct flights alone: a festival weekend to an airport beside its nearest |
+| fare_mode · `any` | kept | — | — | any flight, the cheapest first: every festival weekend |
+| fare_mode · `direct` | kept | — | — | direct flights alone: kept from when an airport beside a festival’s nearest was searched so, which says no flight of no weekend (fare_weekends taught) |
 | fare_vendor · `google` | kept | — | — | Google Flights' outbound page, through fli (pipeline/fli_page.py) |
 | fare_vendor · `kiwi` | view | reseller’s price | — | Kiwi.com's flight search, a reseller selling at its own prices |
 | fare_outcome · `offers` | kept | — | — | one offer or more with a price |
@@ -265,6 +266,11 @@ Every data point and every state it can be in; why the world is closed is in [St
 | fare_outcome · `failed` | kept | — | — | no answer: the vendor refused the search, or failed (its words in the note); never read as no price |
 | fare_ticket · `one_ticket` | kept | — | — | every flight out on one ticket, and every flight back on one |
 | fare_ticket · `self_transfer` | view | self-transfer, separate tickets | — | a way out or back on more than one ticket, so a missed connection is the traveller’s to pay for (Kiwi: its flights of one direction in more than one fare component) |
+| fare_standing · `priced` | card | — | — | an offer on one ticket: Google's page priced a way out, or, where it priced none, the reseller's search asked with it found a trip on one ticket |
+| fare_standing · `listed` | note | no price found | — | flights, none priced on one ticket: Google's page listed flights with no price, or listed none and the reseller's search asked with it found self-transfers alone |
+| fare_standing · `no_flight` | note | no flight that weekend | — | no flight: Google's page, for any flight, listed none, and the reseller's search asked with it found none, for a weekend near enough that airlines have its flights on sale (fare_weekends.SCHEDULED_DAYS): one further on may lack a flight that will fly |
+| fare_standing · `unanswered` | note | no flight price yet | — | searched from home, and no search said any of the above: each failed, or Google's page listed no flight and the reseller's search asked with it failed, was never made (as for every no price kept before the fare history was), or found none on a search for direct flights alone or for a weekend further ahead than airlines have its flights on sale |
+| fare_standing · `not_asked` | note | no flight price yet | — | never searched from home |
 | fare_family · `direct` | kept | — | — | home's cheapest fare on one ticket flies direct out |
 | fare_family · `connecting` | kept | — | — | home's cheapest fare on one ticket stops on the way out, or its stops are not known |
 | city_tier · `big` | kept | — | — | a big city: its main airports, every one dancers fly to |

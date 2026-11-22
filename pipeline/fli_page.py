@@ -96,9 +96,8 @@ def items(value: object) -> list[object]:
     return cast('list[object]', value) if isinstance(value, list) else []
 
 
-def filters(origin: str, airport: str, friday: dt.date, back: dt.date, *, direct: bool) -> FlightSearchFilters:
-    """The search: one adult, out on the Friday and back on the day given, the cheapest first, direct flights alone
-    when asked."""
+def filters(origin: str, airport: str, friday: dt.date, back: dt.date) -> FlightSearchFilters:
+    """The search: one adult, out on the Friday and back on the day given, for any flight, the cheapest first."""
     segments, trip = build_flight_segments(
         resolve_airport(origin), resolve_airport(airport), friday.isoformat(), back.isoformat()
     )
@@ -106,23 +105,26 @@ def filters(origin: str, airport: str, friday: dt.date, back: dt.date, *, direct
         trip_type=trip,
         passenger_info=PassengerInfo(adults=1),
         flight_segments=segments,
-        stops=MaxStops.NON_STOP if direct else MaxStops.ANY,
+        stops=MaxStops.ANY,
         sort_by=SortBy.CHEAPEST,
     )
 
 
-def page(
-    origin: str, airport: str, friday: dt.date, back: dt.date, *, direct: bool
-) -> tuple[Row, ...] | Empty | Declined:
-    """The page's ways out, cheapest first, each priced in EUR or listed with no price; a page with none, Empty; or
-    why there is no page (pipeline/calls.py): refused, or fli failing, is
-    transient; a price in another currency is structural."""
+def page(origin: str, airport: str, friday: dt.date, back: dt.date) -> tuple[Row, ...] | Empty | Declined:
+    """The page of the search (filters) as read (read)."""
+    return read(filters(origin, airport, friday, back))
+
+
+def read(asked: FlightSearchFilters) -> tuple[Row, ...] | Empty | Declined:
+    """The page fli gets for a search: its ways out, cheapest first, each priced in EUR or listed with no price; a page
+    with none, Empty; or why there is no page (pipeline/calls.py): refused, or fli failing, is transient; a price in
+    another currency is structural."""
     search = SearchFlights()
     search.client = kept = Kept()
     try:
         # the one call that reads the outbound page alone (the module's docstring)
         found = search._fetch_flights(
-            filters(origin, airport, friday, back, direct=direct),
+            asked,
             currency='EUR',
             language=None,
             country=None,

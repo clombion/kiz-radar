@@ -14,9 +14,9 @@ A decision is a `city` claim (`pipeline/claims.py`, `CityClaim`) on a city's key
 | `small` | its practical gateways, at most `states.MOST_GATEWAYS` (Glasgow: GLA, EDI, PIK) | any other served city |
 | `not_served` | none | no airport is near enough to be worth a flight from home |
 
-Airports are listed the quickest into the city first: the first is the one searched for any flight, the others for
-direct flights. Each airport must be in `pipeline/airports.csv` and the key in `pipeline/cities.csv`, or
-`mise run audit` names the claim. The note says why: the time into the city, how dancers get there.
+Airports are listed the quickest into the city first: the first is searched as its festivals' nearest, the others less
+often. Each airport must be in `pipeline/airports.csv` and the key in `pipeline/cities.csv`, or `mise run audit` names
+the claim. The note says why: the time into the city, how dancers get there.
 
 ## The evidence
 

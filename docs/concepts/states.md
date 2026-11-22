@@ -72,8 +72,9 @@ The same rows carry the mapping:
   over fails.
 - **The SQL checks** are built from the table, in the source database, where every coded column has one; the site's
   database copies those rows and checks the columns of its own tables (`price_status`, `plans`,
-  `artist_stats.home_basis`). They are enforced on insert, which skips only a duplicate row (`ON CONFLICT DO NOTHING`),
-  never a value outside the table, and a load runs in one transaction, so a refused value leaves the database as it was.
+  `artist_stats.home_basis`, `fare_searches.standing`). They are enforced on insert, which skips only a duplicate row
+  (`ON CONFLICT DO NOTHING`), never a value outside the table, and a load runs in one transaction, so a refused value
+  leaves the database as it was.
 - **The site** reads its words, forms, icons and links from `site/states.ts`, which `pipeline/generate.py` writes from
   the table next to the database, with every state's key by name (`KEY.price.PRICED`) and the links' (`LINK.PAGE`).
   `site/wording.ts` says them. The table types them: a point, a state or a form it doesn't have fails to compile, a key

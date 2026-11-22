@@ -6,13 +6,19 @@
 // 1 240 kr on sale and a fare for its weekend.
 import { expect, test } from 'vitest';
 import { festivalsHref } from '../../site/routes.ts';
+import { KEY } from '../../site/states.ts';
 import { startSite } from './app.ts';
 import { CLOUDKIZ, GLASGOW, KUOF, KWANZA, PARIS, pinFestival, titleOf } from './community.fixture.ts';
 import { flies, movedAway, priced, type Searched, unpriced, weekend } from './planted.ts';
 import { cardTitled, cardTitles, mapCardOf, said } from './seen.ts';
 
 const AT = '2026-10-30T06:00:00+00:00';
-const fare = (code: string): Searched => ({ airport: code, at: AT, direct: true, fare: { price: 120, stops: 0 } });
+const fare = (code: string): Searched => ({
+  airport: code,
+  at: AT,
+  standing: KEY.fare_standing.PRICED,
+  fare: { price: 120, stops: 0 },
+});
 const SATURDAY = PARIS;
 const app = await startSite({
   now: '2026-11-06',

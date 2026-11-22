@@ -9,7 +9,7 @@ import { convert, rounded } from './money.ts';
 import { priceToday } from './passes.tsx';
 import { type Goer, goersOf } from './plans.tsx';
 import type { PriceLine } from './pricing.ts';
-import { EVENT, type EventRow, num, opt, str } from './rows.ts';
+import { EVENT, type EventRow, num, opt, state, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { home } from './ui.ts';
 import { type Key, text } from './wording.ts';
@@ -75,10 +75,10 @@ function details() {
         transfer_airlines: opt(str),
         fetched: opt(str),
         checked: opt(str),
-        direct: opt(num),
+        standing: opt(state('fare_standing')),
       },
       sql`SELECT ea.event_id, ea.airport, a.name, a.city, ea.km, f.price, f.return AS back, f.stops_out, f.stops_back,
-        f.resold, f.fetched_at AS fetched, s.searched_at AS checked, s.direct, t.price AS transfer_price,
+        f.resold, f.fetched_at AS fetched, s.searched_at AS checked, s.standing, t.price AS transfer_price,
         t.airlines AS transfer_airlines
       FROM event_airports ea JOIN events e ON e.id = ea.event_id JOIN airports a ON a.code = ea.airport
         LEFT JOIN fares f ON f.airport = ea.airport AND f.depart = e.weekend_friday
@@ -86,8 +86,8 @@ function details() {
         LEFT JOIN fare_transfers t ON t.airport = ea.airport AND t.depart = e.weekend_friday
       WHERE a.home = 0 ORDER BY ea.event_id, ea.km, ea.airport`,
     )) {
-      const { event_id, price, back, stops_out, stops_back, resold, fetched, direct, transfer_price, ...rest } = r;
-      const { transfer_airlines, ...at } = rest;
+      const { event_id, price, back, stops_out, stops_back, resold, fetched, standing, ...rest } = r;
+      const { transfer_price, transfer_airlines, ...at } = rest;
       const transfer =
         transfer_price === null || transfer_airlines === null
           ? null
@@ -96,7 +96,9 @@ function details() {
       const fare = price === null || back === null || fetched === null ? null : { price, back, stops, resold, fetched };
       options.set(event_id, [
         ...(options.get(event_id) ?? []),
-        { ...at, fare, transfer, direct: direct === null ? null : direct === 1 },
+        // the build writes a row for every weekend to come of a festival listed and not cancelled; one with none (its
+        // flight has left, or its festival is unlisted or cancelled) has no standing to say: not asked
+        { ...at, fare, transfer, standing: standing ?? KEY.fare_standing.NOT_ASKED },
       ]);
     }
     const promos = new Map(

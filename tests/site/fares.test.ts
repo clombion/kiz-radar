@@ -3,6 +3,7 @@ import { expect, test } from 'vitest';
 import { isCurrency, pricesIn, written } from '../../site/currency.ts';
 import {
   best,
+  cardUnpricedSaid,
   cheapestFlights,
   checkedAgo,
   FAR_KM,
@@ -13,8 +14,11 @@ import {
   type Option,
   stopsSaid,
   tripOf,
+  unpricedSaid,
   WORTH_EUR,
 } from '../../site/fares.ts';
+import { KEY } from '../../site/states.ts';
+import type { Key } from '../../site/wording.ts';
 
 // the euro's rates: a krone is a tenth of a euro, a dollar a little less than one
 const RATES: ReadonlyMap<string, number> = new Map([
@@ -78,7 +82,8 @@ test('a flight is within a step in the visitor’s currency, and one with no rat
 });
 
 const HOME = 'XHM'; // the airport marked home, whichever it is
-// an airport a festival can fly to, this far from it, with a fare at this price (none: null), checked on 1 Nov
+// an airport a festival can fly to, this far from it, with a fare at this price checked on 1 Nov (none: null, never
+// searched with an answer, so checked by no search)
 const option = (airport: string, km: number, price: number | null, out: number | null = 0): Option => ({
   airport,
   name: `${airport} Airport`,
@@ -89,8 +94,8 @@ const option = (airport: string, km: number, price: number | null, out: number |
       ? null
       : { price, back: '2026-11-09', stops: { out, back: null }, resold: null, fetched: '2026-11-01T06:00:00+00:00' },
   transfer: null,
-  checked: '2026-11-01T06:00:00+00:00',
-  direct: null,
+  standing: price === null ? KEY.fare_standing.UNANSWERED : KEY.fare_standing.PRICED,
+  checked: price === null ? null : '2026-11-01T06:00:00+00:00',
 });
 const chosen = (options: readonly Option[]) => best(options)?.airport ?? null;
 
@@ -109,6 +114,32 @@ test('a festival at home takes no flight, and one elsewhere the best fare of its
   });
   expect(fareOf({ airport: 'LIS' }, HOME, [option('LIS', 8, null)])).toBeNull();
   expect(fareOf({ airport: null }, HOME, [])).toBeNull();
+});
+
+const { LISTED, NO_FLIGHT, NOT_ASKED, UNANSWERED } = KEY.fare_standing;
+// an airport with no fare that stands so, checked by the search that says it, when one does
+const standing = (k: Key<'fare_standing'>): Option => ({
+  ...option('GLA', 12, null),
+  standing: k,
+  checked: k === NOT_ASKED || k === UNANSWERED ? null : '2026-11-01T06:00:00+00:00',
+});
+
+test('an airport with no fare says what its searches say', () => {
+  expect([NOT_ASKED, UNANSWERED, LISTED, NO_FLIGHT].map((k) => unpricedSaid(standing(k)))).toEqual([
+    'no flight price yet',
+    'no flight price yet',
+    'no price found',
+    'no flight that weekend',
+  ]);
+});
+
+test('a card with no fare says no flight only when every airport stands at no flight, else no price yet', () => {
+  const said = (k: Key<'fare_standing'>, ...ks: readonly Key<'fare_standing'>[]) =>
+    cardUnpricedSaid([standing(k), ...ks.map((other) => standing(other))]);
+  expect(said(NO_FLIGHT, NO_FLIGHT)).toBe('no flight that weekend');
+  expect(said(NO_FLIGHT, LISTED)).toBe('no flight price yet');
+  expect(said(NO_FLIGHT, UNANSWERED)).toBe('no flight price yet');
+  expect(said(NOT_ASKED, NO_FLIGHT)).toBe('no flight price yet');
 });
 
 test('the best airport is the cheapest within reach; one far away only when it saves more than the way costs', () => {

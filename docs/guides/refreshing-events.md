@@ -65,32 +65,45 @@ priced as the cheapest return that leaves by it, the price Google's booking page
 checked whose booking page gave one), with its stops on the way out; the ways back are not read, so the site says the
 stops "out". Every search is kept, with every offer it saw, in the fare history: a Parquet file per run in
 `pipeline/fare_offers/`, never written again once the run is over (`mise run fares -- show` lists them, the latest
-first). The site's fares are derived from it in the build: each festival weekend's latest search from home that did not
-fail, and its cheapest offer on one ticket. Home is the airport marked `home` in `pipeline/airports.csv`; a festival's
-airports are its city's decided ones, the first its nearest ([The airports a city flies to](city-airports.md)), else
-every one within 250 km of its city. Its nearest is searched for any flight, on the intervals below. The others are
-worth it only by a direct flight: they are searched for direct flights alone, half as often (`EXTRA_SLOWER`), and only
-after every nearest airport's weekend due that day, within the run's searches. One with no direct flight that weekend is
-marked so (its search found none) and not searched again for it, unless it becomes a festival's nearest; and when that
-weekend is within 91 days (`SCHEDULED_DAYS`, as far ahead as airlines surely have their flights on sale), the airport is
-not searched as an extra for any weekend for 182 days (`NO_DIRECT_DAYS`), unless another of its weekends has one. A
-route from home runs most weeks of a season or not at all, and most of the airports within reach of a festival have none
-from Bergen. Each weekend Google answered is asked of a reseller too, three seconds later and the same (direct flights
-alone for an extra): Kiwi.com's flight search, open to all, no key. Its search keeps the id of Google's it was asked
-with (`asked_with`); one kept before it did is paired by time, with Google's made last before it from and to the same
-airports for the same Friday and flights. Each of its trips is kept with its stops each way, the airlines flying it and
-the tickets it is booked on: a way out or back whose flights are in more than one of Kiwi's fare components (the part of
-each flight's id before its last `_`) is a self-transfer, on separate tickets. The weekend's Flights add its cheapest
-self-transfer when it is cheaper than the fare, or there is none ("self-transfer, separate tickets · reseller's price");
-it is never the card's. Google lists some direct flights with no price: Widerøe's, to anyone searching from outside
-Norway, as GitHub's runners are. For those the card takes the reseller's cheapest on one ticket, and says it is a
-reseller's price, likely cheaper from the airlines. With none there either, the weekend counts as a direct flight with
-no fare. A reseller that fails is kept as failed, and fails no run; a trip of its answer that cannot be read (an id
-whose parts cannot be matched to its flights) is left out, and the answer's other trips kept. The fares kept before the
-history was (every version of `fares.csv`, `fare_jobs.csv` and the older `docs/data/fares.csv` on main) are in it too,
-each search tagged with the file and commit it comes from (`backfill`); their stops are known only when there were none.
-A "no price" among them is no answer, as there it also meant a timeout, an answer that could not be read or a sweep that
-failed: its weekend is due at once, with the fare of an answer before it, if any.
+first). What a festival weekend's searches from home say of its fare is its standing (below), which the queue, the build
+and the site read; the card's fare is the cheapest offer on one ticket of the search its standing is of. Home is the
+airport marked `home` in `pipeline/airports.csv`; a festival's airports are its city's decided ones, the first its
+nearest ([The airports a city flies to](city-airports.md)), else every one within 250 km of its city. Every weekend is
+searched for any flight. Its nearest is searched on the intervals below; the others (extras) half as often
+(`EXTRA_SLOWER`), and only after every nearest airport's weekend due that day, within the run's searches. Each weekend
+Google answered is asked of a reseller too, three seconds later and the same: Kiwi.com's flight search, open to all, no
+key. Its search keeps the id of Google's it was asked with (`asked_with`); one kept before it did is paired by time,
+with Google's made last before it from and to the same airports for the same Friday and flights. Each of its trips is
+kept with its stops each way, the airlines flying it and the tickets it is booked on: a way out or back whose flights
+are in more than one of Kiwi's fare components (the part of each flight's id before its last `_`) is a self-transfer, on
+separate tickets. The weekend's Flights add its cheapest self-transfer when it is cheaper than the fare, or there is
+none ("self-transfer, separate tickets · reseller's price"); it is never the card's. Google lists some direct flights
+with no price: Widerøe's, to anyone searching from outside Norway, as GitHub's runners are. For those, and for a page
+that lists no flight, the card takes the reseller's cheapest on one ticket, and says it is a reseller's price, likely
+cheaper from the airlines. A reseller that fails is kept as failed, and fails no run; a trip of its answer that cannot
+be read (an id whose parts cannot be matched to its flights) is left out, and the answer's other trips kept. The fares
+kept before the history was (every version of `fares.csv`, `fare_jobs.csv` and the older `docs/data/fares.csv` on main)
+are in it too, each search tagged with the file and commit it comes from (`backfill`); their stops are known only when
+there were none. A "no price" among them was asked of no reseller (and there also meant a timeout, an answer that could
+not be read or a sweep that failed), so, as for any empty page with no reseller's answer, it says nothing of its
+weekend.
+
+A weekend's standing (`fare_weekends.standing`, the `fare_standing` states of the
+[States table](../reference/states.md)) is that of its latest search from home that says one of these, with the
+reseller's search asked with it:
+
+- `priced`: Google priced a way out, or, where it priced none, the reseller found a trip on one ticket;
+- `listed`: Google listed flights with no price, or listed none and the reseller found self-transfers alone;
+- `no_flight`: Google's page listed no flight, and the reseller found none, for a weekend within 91 days of the search
+  (`SCHEDULED_DAYS`): airlines have their flights on sale that far ahead, and a weekend further on may lack a flight
+  that will fly.
+
+A search that says none of them teaches nothing: it failed, or Google's page listed no flight and the reseller failed,
+was not asked, or found none for a weekend further ahead than that. The history keeps searches for direct flights alone,
+made when an extra was searched so: one teaches `priced` or `listed` as any search does, and no flight never, as a
+flight with stops may fly that weekend. A weekend searched whose searches all taught nothing is `unanswered`; one never
+searched, `not_asked`. The site says "no flight price yet" for both, and "no flight that weekend" for `no_flight`; when
+"checked" a weekend was is the search its standing is of, and none when no search taught one.
 
 To add the airports festivals to come can fly to, download OurAirports' `airports.csv` (ourairports.com/data, public
 domain) and run `mise run airports -- <its path>`: it adds every large or medium airport with scheduled service and an
@@ -107,13 +120,12 @@ place, and names each; then `mise run build:data`.
 
 Each run searches Google 20 times (`FARE_BUDGET`, below), and keeps a quarter of them (`PAIR_SHARE`) for pairs: weekends
 it searched from home are searched from another city too, Oslo the most and Stavanger or Trondheim on a few
-(`PAIR_ORIGINS`), the same day and for the same flights, Google alone. They are for measuring how well Bergen's price
-predicts those cities', and the site shows none of them: its fares are home's. Each run then writes
-`pipeline/fare_accuracy.md` (`mise run fares -- accuracy`): for each city and family (whether Bergen's fare flies direct
-out), the pairs, the offset to Bergen's price (the median of the city's price less Bergen's), and how far that offset,
-fitted on earlier weeks' pairs alone, misses each later week's, with how many were scored. A city and family is fit to
-be shown on the site, once visitors can pick their city, when at least 20 pairs are scored and 80% of them are within
-€40.
+(`PAIR_ORIGINS`), the same day, Google alone. They are for measuring how well Bergen's price predicts those cities', and
+the site shows none of them: its fares are home's. Each run then writes `pipeline/fare_accuracy.md`
+(`mise run fares -- accuracy`): for each city and family (whether Bergen's fare flies direct out), the pairs, the offset
+to Bergen's price (the median of the city's price less Bergen's), and how far that offset, fitted on earlier weeks'
+pairs alone, misses each later week's, with how many were scored. A city and family is fit to be shown on the site, once
+visitors can pick their city, when at least 20 pairs are scored and 80% of them are within €40.
 
 Google refused after 22 requests 10 seconds apart, so the budget starts at 20 searches a run (one request each, and a
 second for a refused one). The admin raises it with the repository variable `FARE_BUDGET` (Settings → Secrets and
@@ -121,22 +133,28 @@ variables → Actions → Variables): to 30 after a week of runs with no 429, th
 hand takes its own (`budget`).
 
 Each weekend has its own weekday, so each day's run checks about a seventh of them; one never searched, or overdue by
-twice its interval, doesn't wait for its day. A weekend with no price on Google loses its fare; a search Google refuses
-is tried once more after a minute, and refused again stops the run, which keeps what it found; so do three searches in a
-row Google gives no answer to (`MOST_UNANSWERED`: a page fli finds no flights' data in, which, once Google gives it, it
-goes on giving for the rest of the run). A search that failed (refused, or fli failing) is kept as failed, never as no
-price, and is no search of its weekend, which is due as if it had not been made; the run names it at its end. The run
-fails (the workflow marked failed after the searches are pushed) only when Google stopped it so, or gave no page to any
-of its searches: a search with no answer now and then fails no run. Its summary line says how many pages Google gave,
-and how many of them listed no flight.
+twice its interval, doesn't wait for its day. A weekend whose latest searches taught nothing (each failed, or said none
+of the three) waits instead a day after the first of them, then two, four, doubling with each, never longer than its
+interval, counted in days of the calendar from its latest search and on no weekday. A no price kept before the history
+was is such a search, so a weekend with nothing else waits a day, not its interval. The nearest airports' weekends due
+on their interval go first, then theirs due after a wait, then the extras' the same: a failed search comes back the next
+run, and one that keeps teaching nothing costs a search an interval at most. Its fare, if any, stays that of its latest
+search that taught one. A search Google refuses is tried once more after a minute, and refused again stops the run,
+which keeps what it found; so do three searches in a row Google gives no answer to (`MOST_DECLINED`: a page fli finds no
+flights' data in, which, once Google gives it, it goes on giving for the rest of the run). A search that failed
+(refused, or fli failing) is kept as failed, never as no price, and teaches its weekend nothing; the run names it at its
+end. The run fails (the workflow marked failed after the searches are pushed) only when Google stopped it so, or gave no
+page to any of its searches: a search with no answer now and then fails no run. Its summary line says how many pages
+Google gave, how many of them listed no flight, and how many festival weekends stand at each standing.
 
 A page is kept as it lists: offers, flights with no price (`listed`), or none (`none`, an empty page), with how many
 nearby dates an empty page priced (`nearby`, Google's box of flexible dates). An empty page is no proof of no flight: a
 browser was shown flights for a search whose page, as read, listed none. Nothing else on it is a sign either way: the
 nearby dates are on the page of a route with no flight that weekend too, and its filters name every airline flying the
-route with any stops, on a direct search's page too; so `nearby` is a fact read, which decides nothing. Every page is an
-answer of Google's server: it counts in the run's searches, and is not one of the searches in a row Google gives no
-answer to.
+route with any stops; so `nearby` is a fact read, which decides nothing, and the reseller's answer to the same search is
+what tells no flight, for a weekend airlines have on sale, from a page that teaches nothing. Every page is an answer of
+Google's server: it counts in the run's searches, and is not one of the searches in a row Google gives no answer to, so
+a run whose every page is empty fails nothing.
 
 ## Running the steps locally
 

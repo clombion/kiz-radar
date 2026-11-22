@@ -268,13 +268,13 @@ create table fare_transfers (
     airlines text not null,   -- the airlines flying it, by the reseller's names: "Norwegian Air Shuttle and easyJet"
     primary key (airport, depart)
 ) strict, without rowid;
--- each festival weekend's latest search from home (fare_weekends current): when, and for an airport beside a
--- festival's nearest, searched for direct flights alone, whether it found one (0: none; null for a nearest's)
+-- each festival weekend still to come (fare_weekends current): what its searches from home say of its fare
+-- (fare_weekends standing), and when the search its standing is of ran (null: no search said one)
 create table fare_searches (
     airport text not null,
     depart text not null,
-    searched_at text not null,
-    direct integer check (direct in (0, 1)),
+    standing text not null check (standing in ({fare_standing})),
+    searched_at text,
     primary key (airport, depart)
 ) strict, without rowid;
 create table artist_origin (
@@ -747,8 +747,8 @@ def places(x: Transaction, index: cities.Cities) -> None:
 
 def fares(x: Transaction) -> None:
     """The festival weekends' fares as the site shows them, derived from the fare history (fare_weekends.current):
-    for each weekend still to come of the export's festivals, its latest search from home, and its fare with the day
-    it flies back (fare_weekends.NIGHTS after the Friday), which event_fares joins to the events. Refresh fares starts
+    for each weekend still to come of the export's festivals, its standing, and its fare with the day it flies back
+    (fare_weekends.NIGHTS after the Friday), which event_fares joins to the events. Refresh fares starts
     Publish once it has pushed, so the site has the latest."""
     back = dt.timedelta(days=fare_weekends.NIGHTS)
     listed = x.rows(fare_weekends.Listed, fare_weekends.LISTED.format(events='src.events'), (enums.Listing.LISTED,))
@@ -757,10 +757,10 @@ def fares(x: Transaction) -> None:
         'fare_searches',
         (
             {
-                'airport': c.searched.airport,
-                'depart': c.searched.depart.isoformat(),
-                'searched_at': c.searched.at.isoformat(),
-                'direct': None if (d := fare_weekends.direct_found(c.searched)) is None else int(d),
+                'airport': c.airport,
+                'depart': c.friday.isoformat(),
+                'standing': c.standing.state,
+                'searched_at': None if (s := c.standing.searched) is None else s.at.isoformat(),
             }
             for c in found
         ),
@@ -769,9 +769,9 @@ def fares(x: Transaction) -> None:
         'fares',
         (
             {
-                'airport': c.searched.airport,
-                'depart': c.searched.depart.isoformat(),
-                'return': (c.searched.depart + back).isoformat(),
+                'airport': c.airport,
+                'depart': c.friday.isoformat(),
+                'return': (c.friday + back).isoformat(),
                 'price': c.fare.offer.price,
                 'fetched_at': c.fare.search.at.isoformat(),
                 'stops_out': c.fare.offer.stops_out,
@@ -786,8 +786,8 @@ def fares(x: Transaction) -> None:
         'fare_transfers',
         (
             {
-                'airport': c.searched.airport,
-                'depart': c.searched.depart.isoformat(),
+                'airport': c.airport,
+                'depart': c.friday.isoformat(),
                 'price': c.transfer.offer.price,
                 'fetched_at': c.transfer.search.at.isoformat(),
                 'airlines': airlines(c.transfer.offer),
@@ -1401,18 +1401,17 @@ DOCS = {
     'airports': 'Airports a festival can fly to, with the city they serve; a festival can fly to any within '
     'max_airport_km (event_airports), the nearest first. home = 1 is where flights leave from.',
     'fares': 'Round-trip economy fares from home (airports.home = 1), one adult, Friday out (depart), Monday back '
-    '(return), in euros: the cheapest on one ticket of the latest search (fare_searches), Google\u2019s (stops_out '
-    'alone), or a reseller\u2019s where Google had no price (resold: its airlines).',
+    '(return), in euros: the cheapest on one ticket of the search its standing is of (fare_searches), Google\u2019s '
+    '(stops_out alone), or a reseller\u2019s where Google priced none (resold: its airlines).',
     'event_airports': 'Each festival\u2019s airports: its city\u2019s decided ones, else all within max_airport_km, '
     'with km from the city; events.airport is the nearest. The site shows each with its fare (a festival\u2019s '
     'Flights) and flies to the best (site/fares.ts).',
     'fare_transfers': 'Each festival weekend\u2019s cheapest self-transfer at a reseller (separate tickets), when '
     'cheaper than its fare (fares) or it has none, which its Flights add; airlines: those flying it.',
-    'fare_searches': 'Each festival weekend\u2019s (airport, depart) latest search from home that answered: when '
-    '(searched_at), and, for an airport beside a festival\u2019s nearest, searched for direct flights alone, whether '
-    'it has one then (direct 0: none, not searched again; null for a nearest airport\u2019s).',
-    'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest '
-    'fare that month to the same airport.',
+    'fare_searches': 'Each festival weekend to come (airport, depart): what its searches from home say of its fare '
+    '(standing, in states), and when the search that says it ran (searched_at, null when none said one).',
+    'event_fares': 'Each event joined to the fare for its weekend (null when its standing is not priced), plus the '
+    'cheapest fare that month to the same airport.',
     'artist_stats': 'Per artist with bookings of their own: bookings (as '
     f'{", ".join(BOOKED_ROLES)} at distinct events; a couple’s bookings count for the couple, not its members), the '
     'events booked in each of these roles (one event can count in two), first_date and last_date (of their first and '

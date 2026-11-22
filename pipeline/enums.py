@@ -49,6 +49,7 @@ type Point = Literal[
     'fare_vendor',
     'fare_outcome',
     'fare_ticket',
+    'fare_standing',
     'fare_family',
     'city_tier',
     'ground_mode',
@@ -517,6 +518,17 @@ class FareTicket(StrEnum):
 
     ONE_TICKET = 'one_ticket'
     SELF_TRANSFER = 'self_transfer'
+
+
+@unique
+class FareStanding(StrEnum):
+    """the fare_standing states"""
+
+    PRICED = 'priced'
+    LISTED = 'listed'
+    NO_FLIGHT = 'no_flight'
+    UNANSWERED = 'unanswered'
+    NOT_ASKED = 'not_asked'
 
 
 @unique

@@ -43,18 +43,21 @@ Oslo, then 37 km" (the airport priced, and the distance on). A festival flies to
 is the best of their fares (`best` in `site/fares.ts`, which the trip, the price filter and the order by price read
 too): the cheapest of the airports within 100 km (`FAR_KM`), the nearer at one price, unless one farther away is cheaper
 by more than €40 (`WORTH_EUR`, in euros as the fares are, about the train or bus on and the time); with no fare within
-100 km, the cheapest of the others. "Flights · 3" after the flight opens them all over the page (a dialog: Escape, × or
-a tap outside closes it, and the focus goes back to the button): each airport, how far it is from the festival, its fare
-(or "not checked yet", "no direct flight that weekend", "direct, no price on Google", "no price found"; a reseller's
-price says so, and that it is likely cheaper from the airlines flying it), its stops each way known ("direct out", "1
-stop out": Google's price is the return's, its stops the way out's; a reseller's "1 stop out, direct back"; "stops not
-known"), when it was last checked, a reseller's cheaper trip on separate tickets under it ("self-transfer, separate
-tickets · reseller's price, likely cheaper from Norwegian Air Shuttle and easyJet"), never the card's, and a link to
-Google Flights; the card's marked "on the card". Opening a card shows the full line-up, the other highlights, the venue
-and the organisers. A festival in Bergen needs no flight; its card says so. A festival on now has a small "On now" tag
-before its place (and before its name in the Friends lists and a person's plans), as a community's trip under way has
-"Now"; once its weekend's flight has left, its cost leaves the flight out: "1 240 kr full pass · already started, no
-flight priced".
+100 km, the cheapest of the others. With no fare at any of them, the card says "✈ no flight that weekend" when every one
+stands at no flight, else "✈ no flight price yet"; a festival that flies to no airport (its city not served, or none of
+its decided airports in the data) says "✈ too far from Bergen for our flight prices". "Flights · 3" after the flight
+opens them all over the page (a dialog: Escape, × or a tap outside closes it, and the focus goes back to the button):
+each airport, how far it is from the festival, its fare (or, by its standing, "no flight price yet" when it is not
+searched yet or its searches taught nothing, "no flight that weekend", or "no price found" when it lists flights with
+none; a reseller's price says so, and that it is likely cheaper from the airlines flying it), its stops each way known
+("direct out", "1 stop out": Google's price is the return's, its stops the way out's; a reseller's "1 stop out, direct
+back"; "stops not known"), when the search that says it was made, a reseller's cheaper trip on separate tickets under it
+("self-transfer, separate tickets · reseller's price, likely cheaper from Norwegian Air Shuttle and easyJet"), never the
+card's, and a link to Google Flights; the card's marked "on the card". Opening a card shows the full line-up, the other
+highlights, the venue and the organisers. A festival in Bergen needs no flight; its card says so. A festival on now has
+a small "On now" tag before its place (and before its name in the Friends lists and a person's plans), as a community's
+trip under way has "Now"; once its weekend's flight has left, its cost leaves the flight out: "1 240 kr full pass ·
+already started, no flight priced".
 
 Which pass a card prices is the pipeline's choice (the per-person full pass; at a festival of several dance styles its
 Kizomba full pass when it sells one; else a package with a hotel for one); its price on the day is the browser's, from
@@ -76,8 +79,11 @@ sides only.
   Explore opens on it.
 
 - **Map:** one bubble per city (`pipeline/cities.csv`, however the listings spell it), coloured by the cheapest flight
-  (or by well-known artists), beside the festivals in view; a city's address is its key (`#map/city/munich-de`). A
-  festival is in its city's country. A link from Countries narrows it to a country, which Filters shows and can clear.
+  (or by well-known artists), beside the festivals in view. A city with no fare is coloured by what a card there says
+  why, in its words, the most hopeful first ("no flight price yet", "no flight that weekend", "too far from Bergen for
+  our flight prices"), else "already started": its festivals' flights have left, or they are over. A city's address is
+  its key (`#map/city/munich-de`). A festival is in its city's country. A link from Countries narrows it to a country,
+  which Filters shows and can clear.
 
 - **Artists:** each teacher and DJ, how often and where they are booked, and their page leading with what is coming up.
   "Next festival soonest" orders everyone, those with nothing coming last.

@@ -56,8 +56,9 @@ def flown(
     city: City, to: Sequence[Airport], gateways: Sequence[str] | None, near: Sequence[Candidate]
 ) -> list[Candidate]:
     """The airports a festival in city flies to: its decision's gateways (claims.gateways) when it has one, in its
-    order, each with how far it is; else every airport near enough (near), the nearest first. The first is searched
-    for any flight, the others for direct flights (fare_weekends); the site lists them the nearest first."""
+    order, each with how far it is; else every airport near enough (near), the nearest first. Each is searched for
+    any flight, the first as the festival's nearest, the others less often (fare_weekends); the site lists them the
+    nearest first."""
     if gateways is None:
         return list(near)
     by_code = {a.code: a for a in to}

@@ -1,19 +1,23 @@
 """The festival weekends, and what the fare history (pipeline/fare_store.py) says of each: the weekends a trip from
-home leaves on, to the airports a festival can fly to (weekends_of), and each one's latest search from home and the fare
-the site shows for it (current). What the build reads of the fares, apart from the searching (pipeline/fares.py), whose
+home leaves on, to the airports a festival can fly to (weekends_of); each one's standing, the one rule of what its
+searches from home say of its fare, which the searching (pipeline/fares.py), the build and the site read (standing);
+and the fare the site shows for it (current). What the build reads of the fares, apart from the searching, whose
 dependency group the build has not.
 """
 
 import datetime as dt
 import functools
-from collections.abc import Collection, Iterable, Mapping, Sequence
+from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 
 from pipeline import airports, cities, claims, export
-from pipeline.enums import FareMode, FareOutcome, FareTicket, FareVendor, Listing
+from pipeline.enums import FareMode, FareOutcome, FareStanding, FareTicket, FareVendor, Listing
 from pipeline.records import Offer, Record, Search, day_of
 
 NIGHTS = 3  # a weekend's flight is out on the Friday and back on the Monday, the one place this is said
+# airlines have their flights on sale this far ahead: a weekend further on may lack a flight that will fly, so a search
+# made further ahead that finds none teaches no flight of it (taught)
+SCHEDULED_DAYS = 91
 
 type Weekends = Mapping[tuple[str, dt.date], bool]
 
@@ -43,7 +47,8 @@ def weekends(today: dt.date) -> Weekends:
 def weekends_of(listed: Iterable[Listed], today: dt.date) -> Weekends:
     """(airport, Friday) of every festival still listed and not cancelled, a trip to which leaves after today, to each
     of its airports other than home (airports.flown: its city's decided ones, else every one near enough), and whether
-    it is the first of any festival then, searched for any flight; the others are searched for direct flights."""
+    it is the first of any festival then, its nearest (an extra otherwise, searched less often and after the nearest:
+    pipeline/fares.py)."""
     index, to, home, decided = cities.index(), airports.known(), airports.home(), claims.gateways()
     out: dict[tuple[str, dt.date], bool] = {}
     for e in listed:
@@ -59,33 +64,15 @@ def weekends_of(listed: Iterable[Listed], today: dt.date) -> Weekends:
 
 
 def paged(s: Search) -> bool:
-    """Whether the vendor gave the search a page or an answer it could read (it did not fail), whether or not it holds
-    an answer a fare can be of (answered)."""
+    """Whether the vendor gave the search a page or an answer it could read: it did not fail. What a page says of its
+    weekend is its standing's to say (taught)."""
     return s.outcome != FareOutcome.FAILED
-
-
-def answered(s: Search) -> bool:
-    """Whether a search holds an answer its weekend's fare can be of: it did not fail (paged), and it is no "no price"
-    kept before this history was (backfill), which there also meant a timeout, an answer that could not be read, or a
-    sweep that failed."""
-    return paged(s) and not (s.backfill is not None and s.outcome == FareOutcome.NONE)
 
 
 def from_home(history: Iterable[Search]) -> list[Search]:
     """Google's searches from home, in the order they were made."""
     home = airports.home()
     return [s for s in sorted(history, key=lambda s: s.at) if s.origin == home and s.vendor == FareVendor.GOOGLE]
-
-
-def latest(history: Iterable[Search]) -> dict[tuple[str, dt.date], Search]:
-    """Each weekend's latest search of Google from home that holds an answer (answered): the one its fare is of."""
-    return {(s.airport, s.depart): s for s in from_home(history) if answered(s)}
-
-
-def direct_found(s: Search) -> bool | None:
-    """For a search of direct flights alone that holds an answer (answered), whether it found one (priced or not); None
-    for any flight's, and for one that holds no answer."""
-    return None if s.mode == FareMode.ANY or not answered(s) else s.outcome != FareOutcome.NONE
 
 
 def resellers(history: Iterable[Search]) -> dict[str, Search]:
@@ -107,6 +94,88 @@ def resellers(history: Iterable[Search]) -> dict[str, Search]:
 
 
 @dataclass(frozen=True)
+class Ask:
+    """A search of Google from home, and the reseller's asked with it: none when it was not asked (Google gave no page,
+    the search was kept before the fare history was, or the reseller's search was lost)."""
+
+    google: Search
+    resold: Search | None
+
+
+def on_one_ticket(s: Search | None) -> bool:
+    return s is not None and any(o.ticket == FareTicket.ONE_TICKET for o in s.offers)
+
+
+def priced_by(ask: Ask) -> Search | None:
+    """The search of the two whose cheapest offer on one ticket is the weekend's fare: Google's when its page priced a
+    way out, else the reseller's when it found a trip on one ticket; none when neither did."""
+    if ask.google.outcome == FareOutcome.OFFERS:
+        return ask.google
+    return ask.resold if on_one_ticket(ask.resold) else None
+
+
+def taught(ask: Ask) -> FareStanding | None:
+    """What one search says of its weekend's fare: priced (priced_by), listed or no flight, by those states' criteria
+    (pipeline/states.py); None when it says none of them. Google's empty page alone says nothing: a browser was shown
+    flights for a search whose page, as read, listed none (pipeline/fli_page.py). With the reseller's none, it says no
+    flight of a weekend within SCHEDULED_DAYS of the search alone. A search for direct flights alone, which the history
+    keeps from when an extra was searched so, says no flight of no weekend: a flight with stops may fly it."""
+    g, k = ask.google, ask.resold
+    if g.outcome == FareOutcome.FAILED:
+        return None
+    if priced_by(ask) is not None:
+        return FareStanding.PRICED
+    if g.outcome == FareOutcome.LISTED or (k is not None and k.outcome == FareOutcome.OFFERS):
+        return FareStanding.LISTED
+    scheduled = (g.depart - g.at.date()).days <= SCHEDULED_DAYS
+    none = k is not None and k.outcome == FareOutcome.NONE and g.mode != FareMode.DIRECT and scheduled
+    return FareStanding.NO_FLIGHT if none else None
+
+
+@dataclass(frozen=True)
+class Standing:
+    """A festival weekend's fare as its searches from home say it (standing): its state; the search it is of, its
+    latest that taught one (none when none did); and the searches of Google made since that taught nothing, in the
+    order made (all of them when none taught one)."""
+
+    state: FareStanding
+    answer: Ask | None
+    since: tuple[Search, ...]
+
+    @property
+    def searched(self) -> Search | None:
+        """The search of Google's its state is of, which the site says the weekend was checked by; none when no search
+        taught one."""
+        return self.answer.google if self.answer is not None else None
+
+
+NOT_ASKED = Standing(FareStanding.NOT_ASKED, None, ())
+
+
+def standing(asks: Sequence[Ask]) -> Standing:
+    """A weekend's standing from its searches from home, in the order made: that of the latest that taught one
+    (taught); unanswered when it was searched and none did; not asked when it never was."""
+    for i in range(len(asks) - 1, -1, -1):
+        if (state := taught(asks[i])) is not None:
+            return Standing(state, asks[i], tuple(a.google for a in asks[i + 1 :]))
+    return Standing(FareStanding.UNANSWERED, None, tuple(a.google for a in asks)) if asks else NOT_ASKED
+
+
+type Key = tuple[str, dt.date]  # a festival weekend: its airport and its Friday
+
+
+def standings(history: Iterable[Search]) -> dict[Key, Standing]:
+    """The standing of every weekend searched from home (standing), of its searches for any flight and for direct
+    flights alone together (taught)."""
+    history = list(history)
+    resold = resellers(history)
+    asks: dict[Key, list[Ask]] = {}
+    for g in from_home(history):
+        asks.setdefault((g.airport, g.depart), []).append(Ask(g, resold.get(g.id)))
+    return {key: standing(a) for key, a in asks.items()}
+
+
+@dataclass(frozen=True)
 class Priced:
     """An offer, and the search that saw it."""
 
@@ -116,11 +185,13 @@ class Priced:
 
 @dataclass(frozen=True)
 class Current:
-    """A festival weekend as the site shows it: its latest search from home (searched); the card's fare, the cheapest
-    offer on one ticket of that search, or of the reseller's asked with it when Google listed no price; and the
-    reseller's cheapest self-transfer, when it is cheaper than that fare or there is none, which its Flights add."""
+    """A festival weekend as the site shows it: where and when, its standing; the card's fare, the cheapest offer on
+    one ticket of the search its standing is of (priced_by); and the reseller's cheapest self-transfer asked with that
+    search, when it is cheaper than that fare or there is none, which its Flights add."""
 
-    searched: Search
+    airport: str
+    friday: dt.date
+    standing: Standing
     fare: Priced | None
     transfer: Priced | None
 
@@ -130,19 +201,14 @@ def cheapest(s: Search | None, ticket: FareTicket) -> Priced | None:
     return Priced(min(offers, key=lambda o: o.price), s) if s and offers else None
 
 
-def current(history: Sequence[Search], live: Collection[tuple[str, dt.date]]) -> dict[tuple[str, dt.date], Current]:
-    """Each festival weekend still to come that has been searched from home, with its fare (Current); the reseller's
-    search is the one asked with Google's (resellers)."""
-    resold = resellers(history)
-    out: dict[tuple[str, dt.date], Current] = {}
-    for key, s in latest(history).items():
-        if key not in live:
-            continue
-        k = resold.get(s.id)
-        # the reseller's on the card only where Google listed flights with no price
-        priced = {FareOutcome.OFFERS: s, FareOutcome.LISTED: k}.get(s.outcome)
-        fare = cheapest(priced, FareTicket.ONE_TICKET)
-        transfer = cheapest(k, FareTicket.SELF_TRANSFER)
+def current(history: Sequence[Search], live: Weekends) -> dict[Key, Current]:
+    """Each festival weekend still to come, with its standing and its fare (Current)."""
+    known = standings(history)
+    out: dict[Key, Current] = {}
+    for key in live:
+        st = known.get(key, NOT_ASKED)
+        fare = cheapest(priced_by(st.answer), FareTicket.ONE_TICKET) if st.answer is not None else None
+        transfer = cheapest(st.answer.resold, FareTicket.SELF_TRANSFER) if st.answer is not None else None
         cheaper = transfer is not None and (fare is None or transfer.offer.price < fare.offer.price)
-        out[key] = Current(s, fare, transfer if cheaper else None)
+        out[key] = Current(*key, st, fare, transfer if cheaper else None)
     return out

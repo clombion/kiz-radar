@@ -1501,6 +1501,8 @@ class Search(Record):
             raise ValueError(f"a search of {self.vendor}'s whose outcome is {self.outcome} prices no nearby date")
         if self.asked_with is not None and self.vendor != FareVendor.KIWI:
             raise ValueError(f"a search of {self.vendor}'s is asked with no other search")
+        if (self.vendor, self.outcome) == (FareVendor.KIWI, FareOutcome.LISTED):
+            raise ValueError(f"a search of {self.vendor}'s lists no flight without a price: each of its trips has one")
         return self
 
 
