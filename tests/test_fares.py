@@ -430,6 +430,22 @@ def test_a_search_with_no_answer_is_kept_as_failed_and_named_and_fails_no_run(
 
 
 @pytest.mark.usefixtures('weekends')
+def test_a_search_google_gave_no_page_counts_in_no_budget(monkeypatch: pytest.MonkeyPatch) -> None:
+    broke = Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
+    monkeypatch.setattr(fare_weekends, 'weekends', five_weekends)
+    found = {'AMS': broke, 'BCN': (offer(80),), 'GLA': broke, 'LIS': (offer(90),), 'PRG': (offer(95),)}
+    monkeypatch.setattr(fares, 'google', answering(found))
+    fares.refresh(budget=3, max_seconds=60)
+    assert [(s.airport, s.outcome) for s in kept_now() if s.vendor == FareVendor.GOOGLE] == [
+        ('AMS', FareOutcome.FAILED),
+        ('BCN', FareOutcome.OFFERS),
+        ('GLA', FareOutcome.FAILED),
+        ('LIS', FareOutcome.OFFERS),
+        ('PRG', FareOutcome.OFFERS),  # the third page, which ends the budget
+    ]
+
+
+@pytest.mark.usefixtures('weekends')
 def test_a_run_fails_when_google_gives_no_page_to_any_of_its_searches(monkeypatch: pytest.MonkeyPatch) -> None:
     broke = Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
     monkeypatch.setattr(fares, 'google', answering({'GLA': broke, 'LIS': broke}))
@@ -711,16 +727,19 @@ def test_empty_pages_count_in_the_budget_and_not_among_the_searches_in_a_row_wit
         asked.append(a)
         if a.airport == 'LIS':
             return fares.search(a, FareVendor.GOOGLE, (offer(100),))
-        return fares.search(a, FareVendor.GOOGLE, (), nearby=8)
+        return fares.search(
+            a, FareVendor.GOOGLE, (), listed=a.airport == 'BCN', nearby=None if a.airport == 'BCN' else 8
+        )
 
     monkeypatch.setattr(fares, 'google', google)
-    fares.refresh(budget=6, max_seconds=60)  # four from home, two pairs; no search failed
+    fares.refresh(budget=6, max_seconds=60)  # four from home, two kept for pairs; no search failed
     home = [a.airport for a in asked if a.origin == HOME]
-    assert home == ['AMS', 'BCN', 'GLA', 'LIS']  # three empty in a row, and the run goes on to its budget
+    assert home == ['AMS', 'BCN', 'GLA', 'LIS']  # three with no price in a row, and the run goes on to its budget
     assert weekends == home  # the reseller asked of each page Google gave
+    assert [a.airport for a in asked if a.origin != HOME] == ['LIS']  # a pair is of a page Google priced alone
     assert capsys.readouterr().out.splitlines()[-1] == (
-        '4 searches, 3 of them listing no flight, and 2 pairs; '
-        'of 5 festival weekends, 1 priced, 0 listed, 3 no_flight, 0 unanswered, 1 not_asked'
+        '4 searches, 2 of them listing no flight, and 1 pairs; '
+        'of 5 festival weekends, 1 priced, 1 listed, 2 no_flight, 0 unanswered, 1 not_asked'
     )
 
 

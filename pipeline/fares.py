@@ -74,8 +74,8 @@ RETRY_AFTER = 60  # seconds to wait before trying a refused search once more
 # no page counts in no budget, so the run would otherwise go on through its whole queue)
 MOST_DECLINED = 3
 KIWI_PAUSE = 3  # seconds between a weekend's search of Google and the reseller's
-# A share of each run's budget goes to searching weekends searched from home that day from another city as well, so
-# that a report (mise run fares -- accuracy) can tell how well home's price predicts theirs: Oslo
+# A share of each run's budget goes to searching weekends Google priced from home that day from another city as well,
+# so that a report (mise run fares -- accuracy) can tell how well home's price predicts theirs: Oslo
 # the most, Stavanger and Trondheim on a few, by weight.
 PAIR_SHARE = 0.25
 PAIR_ORIGINS = (('OSL', 4), ('SVG', 1), ('TRD', 1))
@@ -438,24 +438,31 @@ class Run:
         return self.stopped or (bool(google) and not any(fare_weekends.paged(s) for s in google))
 
 
-def from_home(run: Run, history: Sequence[Search], budget: int) -> list[Weekend]:
+class Paged(NamedTuple):
+    """A weekend searched from home this run that Google gave a page for, and that search of Google's."""
+
+    weekend: Weekend
+    google: Search
+
+
+def from_home(run: Run, history: Sequence[Search], budget: int) -> list[Paged]:
     """Search the weekends due today, in the queue's order, within the budget, which each page Google gave counts in:
-    those Google gave a page for (fare_weekends.paged), for pairs."""
-    pages: list[Weekend] = []
+    those Google gave a page for (fare_weekends.paged)."""
+    pages: list[Paged] = []
     for item in queue(history=history):
         if not item.due or len(pages) >= budget or run.over:
             break
         found = run.search(Asked(airports.home(), item.airport, item.friday), resold=True, days_away=item.days_away)
         if fare_weekends.paged(found.searches[0]):
-            pages.append(item)
+            pages.append(Paged(item, found.searches[0]))
         time.sleep(PAUSE)
     return pages
 
 
-def paired(run: Run, paged: Sequence[Weekend], pairs: int, day: dt.date) -> None:
-    """Search as many weekends as pairs of those searched from home this run, in their order, each from its other city
-    (pair_origin): Google alone."""
-    for item in paged[:pairs]:
+def paired(run: Run, paged: Sequence[Paged], pairs: int, day: dt.date) -> None:
+    """Search as many weekends as pairs of those searched from home this run that make one (fare_accuracy.pairable),
+    in their order, each from its other city (pair_origin): Google alone."""
+    for item, _ in [p for p in paged if fare_accuracy.pairable(p.google)][:pairs]:
         if run.over:
             break
         origin = pair_origin(Asked(airports.home(), item.airport, item.friday), day)
@@ -466,8 +473,8 @@ def paired(run: Run, paged: Sequence[Weekend], pairs: int, day: dt.date) -> None
 
 
 def refresh(budget: int, max_seconds: int) -> None:
-    """Search the weekends due today, then pair a share of those searched (PAIR_SHARE of the budget, kept for them)
-    with a search from another city, writing the run's file after each, and says how many pages Google gave,
+    """Search the weekends due today, then pair a share of those Google priced (PAIR_SHARE of the budget, kept for
+    them) with a search from another city, writing the run's file after each, and says how many pages Google gave,
     how many of them listed no flight, and how many festival weekends stand at each standing. It names the searches
     Google gave no answer to, a refusal or a stop first, and exits 1 when the run failed at its work (Run.failed): a
     search with no answer now and then is tried again in a later run, and fails none."""

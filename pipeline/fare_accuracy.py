@@ -48,11 +48,16 @@ class Pair:
         return year, week
 
 
+def pairable(s: Search) -> bool:
+    """Whether a search can be of a pair: Google's, with a fare."""
+    return s.vendor == FareVendor.GOOGLE and s.outcome == FareOutcome.OFFERS
+
+
 def pairs(history: Iterable[Search]) -> list[Pair]:
     """The pairs of the history: each search from another city with a fare, and the search from home of its weekend,
-    flights and day, with a fare too (the latest that day)."""
+    flights and day, with a fare too (the latest that day): both pairable."""
     home = airports.home()
-    priced = [s for s in history if s.vendor == FareVendor.GOOGLE and s.outcome == FareOutcome.OFFERS]
+    priced = [s for s in history if pairable(s)]
     from_home = {
         (s.airport, s.depart, s.mode, s.at.date()): s for s in sorted(priced, key=lambda s: s.at) if s.origin == home
     }

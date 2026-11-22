@@ -120,12 +120,13 @@ place, and names each; then `mise run build:data`.
 
 Each run searches Google 20 times (`FARE_BUDGET`, below), and keeps a quarter of them (`PAIR_SHARE`) for pairs: weekends
 it searched from home are searched from another city too, Oslo the most and Stavanger or Trondheim on a few
-(`PAIR_ORIGINS`), the same day, Google alone. They are for measuring how well Bergen's price predicts those cities', and
-the site shows none of them: its fares are home's. Each run then writes `pipeline/fare_accuracy.md`
-(`mise run fares -- accuracy`): for each city and family (whether Bergen's fare flies direct out), the pairs, the offset
-to Bergen's price (the median of the city's price less Bergen's), and how far that offset, fitted on earlier weeks'
-pairs alone, misses each later week's, with how many were scored. A city and family is fit to be shown on the site, once
-visitors can pick their city, when at least 20 pairs are scored and 80% of them are within €40.
+(`PAIR_ORIGINS`), the same day, Google alone: of those Google priced from home, as a pair is of two fares. They are for
+measuring how well Bergen's price predicts those cities', and the site shows none of them: its fares are home's. Each
+run then writes `pipeline/fare_accuracy.md` (`mise run fares -- accuracy`): for each city and family (whether Bergen's
+fare flies direct out), the pairs, the offset to Bergen's price (the median of the city's price less Bergen's), and how
+far that offset, fitted on earlier weeks' pairs alone, misses each later week's, with how many were scored. A city and
+family is fit to be shown on the site, once visitors can pick their city, when at least 20 pairs are scored and 80% of
+them are within €40.
 
 Google refused after 22 requests 10 seconds apart, so the budget starts at 20 searches a run (one request each, and a
 second for a refused one). The admin raises it with the repository variable `FARE_BUDGET` (Settings → Secrets and
