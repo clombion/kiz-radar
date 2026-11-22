@@ -984,6 +984,14 @@ export const STATES = {
    "link": null,
    "counts": null
   },
+  "google_chrome": {
+   "disposition": "kept",
+   "wording": null,
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
   "kiwi": {
    "disposition": "view",
    "wording": "reseller’s price",
@@ -1213,6 +1221,7 @@ export const KEY = {
  },
  "fare_vendor": {
   "GOOGLE": "google",
+  "GOOGLE_CHROME": "google_chrome",
   "KIWI": "kiwi"
  },
  "fare_ticket": {

@@ -499,6 +499,7 @@ class FareVendor(StrEnum):
     """the fare_vendor states"""
 
     GOOGLE = 'google'
+    GOOGLE_CHROME = 'google_chrome'
     KIWI = 'kiwi'
 
 

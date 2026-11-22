@@ -1458,7 +1458,7 @@ Stops = Annotated[int, Field(ge=0)]  # the stops a flight makes, 0 when it is di
 
 class Offer(Record):
     """An option a fare search saw: the Friday-to-Monday return's price in euros, the tickets it is booked on, its
-    stops each way (out alone from Google's outbound page, whose price is the return's; none when not known) and the
+    stops each way (out alone from Google's, whose price is the return's; none when not known) and the
     airlines flying it, out then back, by the vendor's names for them."""
 
     price: Positive
@@ -1472,10 +1472,11 @@ class Search(Record):
     """A fare search, the unit of the fare history (pipeline/fare_offers/, pipeline/fare_store.py): who was asked
     (vendor), when, from where (origin) to which airport for which Friday, for which flights (mode), what it found
     (outcome) and the offers it saw, a price each. note: the vendor's words, or why it failed; backfill: the file and
-    commit a search kept before this history was, read back from; nearby: how many nearby dates an empty page of
-    Google's priced, as read (pipeline/fli_page.py Empty), none for any other search and for one kept before it was
-    read; asked_with: the id of the search of Google's a reseller's search was asked with, none for one kept before it
-    was (pipeline/fare_weekends.py resellers pairs those by time)."""
+    commit a search kept before this history was, read back from; nearby: how many nearby dates an outbound page of
+    Google's (the google vendor's) that listed no flight priced, a fact read that decided nothing, kept from when that
+    page was read, none for any other search and for one kept before it was read; asked_with: the id of the search of
+    Google's a reseller's search was asked with, none for one kept before it was (pipeline/fare_weekends.py resellers
+    pairs those by time)."""
 
     id: Hash
     at: Stamp

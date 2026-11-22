@@ -2,9 +2,10 @@ name: Refresh fares
 
 # Once a day, search the festival weekends due today (see pipeline/fares.py) and commit the run's searches, a file of the
 # fare history (pipeline/fare_offers/), with the report of how well home's fare predicts other cities'
-# (pipeline/fare_accuracy.md). If Google stops the run (a search refused twice, three in a row with no answer) or gives
-# no page to any of its searches, the run keeps what it found, then is marked failed; the next run carries on. Publish
-# runs once the searches are pushed.
+# (pipeline/fare_accuracy.md). Google is read in a headless Chromium, Patchright's, as uv.lock pins it. If Google stops
+# the run (a search refused twice, three in a row with no answer), no browser starts, or Google answers none of its
+# searches, the run keeps what it found, then is marked failed; the next run carries on. Publish runs once the searches
+# are pushed.
 on:
   schedule:
     - cron: '41 5 * * *'
@@ -21,8 +22,9 @@ permissions:
 env:
   UV_LOCKED: 1   # uv.lock as committed, or the step fails
   PYTHONUNBUFFERED: 1   # each line a step prints is in the log as it goes, not all at its end
-  # a run's searches: the input when started by hand, else the repository variable FARE_BUDGET, which the admin raises
-  # to 30 and then 40 after a week each with no 429 (docs/guides/refreshing-events.md), else 20
+  # a run's searches: the input when started by hand, else the repository variable FARE_BUDGET, else 20; one above 24
+  # needs --max-seconds below and timeout-minutes raised with it, or the run searches nothing
+  # (docs/guides/refreshing-events.md)
   BUDGET: ${{ inputs.budget || vars.FARE_BUDGET || '20' }}
 
 concurrency:
@@ -36,6 +38,8 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0  # zizmor: ignore[artipacked] this job pushes, and uploads no artifact
       - uses: ./.github/actions/steps
+      - name: Install the browser Google is read in
+        run: uv run -q --group browser patchright install --with-deps --no-shell chromium
       - name: Search the festival weekends due today
         id: search
         continue-on-error: true

@@ -18,6 +18,9 @@ NIGHTS = 3  # a weekend's flight is out on the Friday and back on the Monday, th
 # airlines have their flights on sale this far ahead: a weekend further on may lack a flight that will fly, so a search
 # made further ahead that finds none teaches no flight of it (taught)
 SCHEDULED_DAYS = 91
+# the vendors whose searches are Google's: its outbound page as a plain request got it, kept from before, and its answer
+# read in a browser (pipeline/google_search.py); every reader of Google's searches reads them through this
+GOOGLE = frozenset({FareVendor.GOOGLE, FareVendor.GOOGLE_CHROME})
 
 type Weekends = Mapping[tuple[str, dt.date], bool]
 
@@ -72,7 +75,7 @@ def paged(s: Search) -> bool:
 def from_home(history: Iterable[Search]) -> list[Search]:
     """Google's searches from home, in the order they were made."""
     home = airports.home()
-    return [s for s in sorted(history, key=lambda s: s.at) if s.origin == home and s.vendor == FareVendor.GOOGLE]
+    return [s for s in sorted(history, key=lambda s: s.at) if s.origin == home and s.vendor in GOOGLE]
 
 
 def resellers(history: Iterable[Search]) -> dict[str, Search]:
@@ -84,7 +87,7 @@ def resellers(history: Iterable[Search]) -> dict[str, Search]:
     out: dict[str, Search] = {}
     last: dict[tuple[str, str, dt.date, FareMode], Search] = {}
     for s in ordered:
-        if s.vendor == FareVendor.GOOGLE:
+        if s.vendor in GOOGLE:
             last[(s.origin, s.airport, s.depart, s.mode)] = s
         elif s.asked_with is not None:
             out[s.asked_with] = s
@@ -116,10 +119,11 @@ def priced_by(ask: Ask) -> Search | None:
 
 def taught(ask: Ask) -> FareStanding | None:
     """What one search says of its weekend's fare: priced (priced_by), listed or no flight, by those states' criteria
-    (pipeline/states.py); None when it says none of them. Google's empty page alone says nothing: a browser was shown
-    flights for a search whose page, as read, listed none (pipeline/fli_page.py). With the reseller's none, it says no
-    flight of a weekend within SCHEDULED_DAYS of the search alone. A search for direct flights alone, which the history
-    keeps from when an extra was searched so, says no flight of no weekend: a flight with stops may fly it."""
+    (pipeline/states.py); None when it says none of them. Google's none alone, of either reader (GOOGLE), says
+    nothing: the outbound page a plain request got, kept from before, listed none for most weekends a browser found
+    priced. With the reseller's none, it says no flight of a weekend within SCHEDULED_DAYS of the search alone. A
+    search for direct flights alone, which the history keeps from when an extra was searched so, says no flight of no
+    weekend: a flight with stops may fly it."""
     g, k = ask.google, ask.resold
     if g.outcome == FareOutcome.FAILED:
         return None

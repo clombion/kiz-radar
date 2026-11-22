@@ -1,5 +1,6 @@
 class SearchClientError(Exception): ...
 
-class SearchHTTPError(SearchClientError):
-    status_code: int | None
-    def __init__(self, message: str, *, status_code: int | None = None) -> None: ...
+class SearchRejectedError(SearchClientError):
+    """Google answered with an error (a gRPC code) and no data."""
+
+    code: int | None

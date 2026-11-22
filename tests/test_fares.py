@@ -5,12 +5,13 @@ import json
 import re
 from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
+from typing import cast
 
 import pytest
 from fli.models import FlightSearchFilters, MaxStops
 from pydantic import BaseModel
 
-from pipeline import fare_store, fare_weekends, fares, fli_page, web
+from pipeline import ROOT, fare_accuracy, fare_store, fare_weekends, fares, google_search, web
 from pipeline.calls import Declined
 from pipeline.enums import CallCause, FareMode, FareOutcome, FareStanding, FareTicket, FareVendor
 from pipeline.records import Offer, Search, digest, now, today
@@ -158,10 +159,12 @@ ONE, SPLIT = offer(300), offer(250, FareTicket.SELF_TRANSFER)
         'failed',
     ],
 )
+@pytest.mark.parametrize('vendor', sorted(fare_weekends.GOOGLE))
 def test_a_search_and_the_reseller_s_asked_with_it_give_their_weekend_s_standing(
-    google: FareOutcome, kiwi: FareOutcome | tuple[Offer, ...] | None, expected: FareStanding
+    google: FareOutcome, kiwi: FareOutcome | tuple[Offer, ...] | None, expected: FareStanding, vendor: FareVendor
 ) -> None:
-    g = kept('LYS', FRIDAY, AT, google)
+    """Alike for each reader of Google's: the outbound page kept from before, and the browser's answer."""
+    g = kept('LYS', FRIDAY, AT, google, vendor=vendor)
     history = (
         [g]
         if kiwi is None
@@ -172,6 +175,29 @@ def test_a_search_and_the_reseller_s_asked_with_it_give_their_weekend_s_standing
     assert st.searched == (None if expected == FareStanding.UNANSWERED else g)  # checked by the search that taught
     fare = fare_weekends.current(history, {('LYS', FRIDAY): True})[('LYS', FRIDAY)].fare
     assert (fare is not None) == (expected == FareStanding.PRICED)  # a fare exactly when priced
+
+
+def test_google_s_searches_are_its_two_readers_and_no_other_vendor_s() -> None:
+    assert set(FareVendor) - {FareVendor.KIWI} == fare_weekends.GOOGLE
+
+
+@pytest.mark.parametrize('vendor', sorted(fare_weekends.GOOGLE))
+def test_either_reader_s_search_is_google_s_wherever_google_s_searches_are_read(vendor: FareVendor) -> None:
+    """From home, the reseller's search asked with it (named, or paired by time when kept before it was named), a
+    pair's search, and whether a run got an answer: each reads both readers' searches as Google's."""
+    g = kept('GLA', FRIDAY, AT, FareOutcome.NONE, vendor=vendor)
+    named, timed = resold(g), resold(g).model_copy(update={'asked_with': None})
+    assert fare_weekends.from_home([named, g]) == [g]
+    assert fare_weekends.resellers([g, named]) == {g.id: named}
+    assert fare_weekends.resellers([g, timed]) == {g.id: timed}
+    assert fare_accuracy.pairable(kept('GLA', FRIDAY, AT, vendor=vendor))
+    assert not fare_accuracy.pairable(kept('GLA', FRIDAY, AT, vendor=FareVendor.KIWI))
+
+    def failed(*searches: Search) -> bool:
+        return fares.Run(google_search.Reader(), Path('unused.parquet'), 0, list(searches)).failed
+
+    assert not failed(g, named)  # an answer listing no flight is an answer
+    assert failed(kept('GLA', FRIDAY, AT, FareOutcome.FAILED, vendor=vendor), named)
 
 
 def test_an_empty_page_and_the_reseller_s_none_say_no_flight_only_of_a_weekend_airlines_have_on_sale() -> None:
@@ -355,6 +381,10 @@ def test_the_nearest_airports_weekends_go_first_due_on_their_interval_then_after
 
 
 SOON = today() + dt.timedelta(days=10)  # due, weekly, never searched
+# a search Google gave no answer to, as the run's browser says it (pipeline/google_search.py answered)
+NO_ANSWER = Declined(
+    CallCause.TRANSIENT, 'no GetShoppingResults answer within 45 s (HTTP 200): https://www.google.com/travel/flights'
+)
 
 
 @pytest.fixture
@@ -378,21 +408,19 @@ def two_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
     return {('GLA', SOON): True, ('LIS', SOON): True}
 
 
-type Google = Callable[[fares.Asked], Search | Declined]
+type Google = Callable[[google_search.Reader, fares.Asked], Search | Declined]
 
 
 def answering(found: Mapping[str, tuple[Offer, ...] | Declined | str]) -> Google:
     """fares.google, as it answers for each airport, from wherever: its offers (none: no price; 'listed': flights
     with none), or why there is no page."""
 
-    def google(asked: fares.Asked) -> Search | Declined:
+    def google(reader: google_search.Reader, asked: fares.Asked) -> Search | Declined:
         f = found[asked.airport]
         if isinstance(f, Declined):
             return f
-        if f == ():
-            return fares.search(asked, FareVendor.GOOGLE, (), nearby=0)  # an empty page, as google() keeps it
         listed = f == 'listed'
-        return fares.search(asked, FareVendor.GOOGLE, () if isinstance(f, str) else f, listed=listed)
+        return fares.search(asked, FareVendor.GOOGLE_CHROME, () if isinstance(f, str) else f, listed=listed)
 
     return google
 
@@ -408,7 +436,7 @@ def test_a_refresh_keeps_every_search_with_its_offers_in_the_run_s_file(
     monkeypatch.setattr('sys.argv', ['fares', 'refresh'])
     fares.main()
     assert weekends == ['GLA', 'LIS']  # the reseller asked of each weekend Google answered
-    found = {s.airport: s for s in kept_now() if s.vendor == FareVendor.GOOGLE}
+    found = {s.airport: s for s in kept_now() if s.vendor == FareVendor.GOOGLE_CHROME}
     assert len(fare_store.kept()) == 1  # the run's file
     assert [o.price for o in found['GLA'].offers] == [80, 95]
     assert found['LIS'].outcome == FareOutcome.NONE
@@ -419,11 +447,11 @@ def test_a_refresh_keeps_every_search_with_its_offers_in_the_run_s_file(
 def test_a_search_with_no_answer_is_kept_as_failed_and_named_and_fails_no_run(
     weekends: list[str], monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    broke = Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
+    broke = NO_ANSWER
     monkeypatch.setattr(fares, 'google', answering({'GLA': (offer(80),), 'LIS': broke}))
-    fares.refresh(budget=5, max_seconds=60)
+    fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)
     assert capsys.readouterr().out.splitlines()[-1].startswith('1 searches gave no answer (transient 1): BGO→LIS')
-    found = {s.airport: s for s in kept_now() if s.vendor == FareVendor.GOOGLE}
+    found = {s.airport: s for s in kept_now() if s.vendor == FareVendor.GOOGLE_CHROME}
     assert (found['LIS'].outcome, found['LIS'].note) == (FareOutcome.FAILED, broke.why)
     assert weekends == ['GLA']  # the reseller is not asked of a search Google gave no answer to
     assert [w.airport for w in fares.queue(now() + dt.timedelta(days=1)) if w.due] == ['LIS']  # tried the next run
@@ -431,12 +459,12 @@ def test_a_search_with_no_answer_is_kept_as_failed_and_named_and_fails_no_run(
 
 @pytest.mark.usefixtures('weekends')
 def test_a_search_google_gave_no_page_counts_in_no_budget(monkeypatch: pytest.MonkeyPatch) -> None:
-    broke = Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
+    broke = NO_ANSWER
     monkeypatch.setattr(fare_weekends, 'weekends', five_weekends)
     found = {'AMS': broke, 'BCN': (offer(80),), 'GLA': broke, 'LIS': (offer(90),), 'PRG': (offer(95),)}
     monkeypatch.setattr(fares, 'google', answering(found))
-    fares.refresh(budget=3, max_seconds=60)
-    assert [(s.airport, s.outcome) for s in kept_now() if s.vendor == FareVendor.GOOGLE] == [
+    fares.refresh(budget=3, max_seconds=fares.MAX_SECONDS)
+    assert [(s.airport, s.outcome) for s in kept_now() if s.vendor == FareVendor.GOOGLE_CHROME] == [
         ('AMS', FareOutcome.FAILED),
         ('BCN', FareOutcome.OFFERS),
         ('GLA', FareOutcome.FAILED),
@@ -447,31 +475,41 @@ def test_a_search_google_gave_no_page_counts_in_no_budget(monkeypatch: pytest.Mo
 
 @pytest.mark.usefixtures('weekends')
 def test_a_run_fails_when_google_gives_no_page_to_any_of_its_searches(monkeypatch: pytest.MonkeyPatch) -> None:
-    broke = Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
+    broke = NO_ANSWER
     monkeypatch.setattr(fares, 'google', answering({'GLA': broke, 'LIS': broke}))
     with pytest.raises(SystemExit, match=r'2 searches gave no answer \(transient 2\)'):
-        fares.refresh(budget=5, max_seconds=60)  # two in a row, fewer than stop a run
+        fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)  # two in a row, fewer than stop a run
     # a run whose every page is empty fails nothing: each is an answer of Google's server
     monkeypatch.setattr(fare_weekends, 'weekends', only({('AMS', SOON): True, ('BCN', SOON): True}))
     monkeypatch.setattr(fares, 'google', answering({'AMS': (), 'BCN': ()}))
-    fares.refresh(budget=5, max_seconds=60)
+    fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)
     assert {(s.vendor, s.outcome) for s in kept_now() if s.airport in {'AMS', 'BCN'}} == {
-        (FareVendor.GOOGLE, FareOutcome.NONE),
+        (FareVendor.GOOGLE_CHROME, FareOutcome.NONE),
         (FareVendor.KIWI, FareOutcome.NONE),
     }
     monkeypatch.setattr(fare_weekends, 'weekends', only({}))
-    fares.refresh(budget=5, max_seconds=60)  # nor does a run with nothing due
+    fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)  # nor does a run with nothing due
 
 
 @pytest.mark.usefixtures('weekends')
 @pytest.mark.parametrize(
     ('declined', 'tries'),
     [
-        (Declined(CallCause.TRANSIENT, fli_page.REFUSED), 2),
-        (Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload'), fares.MOST_DECLINED),
-        (Declined(CallCause.STRUCTURAL, 'fli gave a price in SEK, not the EUR it was asked'), 1),
+        (Declined(CallCause.TRANSIENT, google_search.REFUSED), 2),
+        (NO_ANSWER, fares.MOST_DECLINED),
+        (Declined(CallCause.TRANSIENT, google_search.UNKNOWN), fares.MOST_DECLINED),
+        (Declined(CallCause.TRANSIENT, google_search.INTERNAL), 2 * fares.MOST_DECLINED),
+        (Declined(CallCause.STRUCTURAL, 'Google gave a price in SEK, not the EUR it was asked'), 1),
+        (Declined(CallCause.STRUCTURAL, "no browser would start: Executable doesn't exist"), 1),
     ],
-    ids=['refused twice', 'no answer in a row', 'can never succeed'],
+    ids=[
+        'refused twice',
+        'no answer in a row',
+        'answers of a shape not known in a row',
+        'error 13 in a row, each tried twice',
+        'never in EUR',
+        'no browser',
+    ],
 )
 def test_a_run_google_stopped_fails_though_a_search_answered(
     declined: Declined, tries: int, monkeypatch: pytest.MonkeyPatch
@@ -480,14 +518,15 @@ def test_a_run_google_stopped_fails_though_a_search_answered(
     monkeypatch.setattr(fare_weekends, 'weekends', only({(a, SOON): True for a in due}))
     asked: list[str] = []
 
-    def google(a: fares.Asked) -> Search | Declined:
+    def google(reader: google_search.Reader, a: fares.Asked) -> Search | Declined:
         asked.append(a.airport)
-        return fares.search(a, FareVendor.GOOGLE, (offer(80),)) if a.airport == 'AMS' else declined
+        return fares.search(a, FareVendor.GOOGLE_CHROME, (offer(80),)) if a.airport == 'AMS' else declined
 
     monkeypatch.setattr(fares, 'google', google)
     with pytest.raises(SystemExit, match=re.escape(declined.why)):
-        fares.refresh(budget=10, max_seconds=60)
-    assert len(asked) == 1 + tries < len(due)
+        fares.refresh(budget=10, max_seconds=fares.MAX_SECONDS)
+    assert len(asked) == 1 + tries
+    assert len(set(asked)) < len(due)  # the rest waits
 
 
 @pytest.mark.usefixtures('weekends')
@@ -497,7 +536,7 @@ def test_the_reseller_is_asked_a_few_seconds_after_google_and_the_next_search_wa
     waits: list[float] = []
     monkeypatch.setattr('time.sleep', waits.append)
     monkeypatch.setattr(fares, 'google', answering({'GLA': (offer(80),), 'LIS': (offer(90),)}))
-    fares.refresh(budget=5, max_seconds=60)
+    fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)
     assert waits == [fares.KIWI_PAUSE, fares.PAUSE] * 2
 
 
@@ -505,21 +544,21 @@ def test_the_reseller_is_asked_a_few_seconds_after_google_and_the_next_search_wa
 def test_a_refused_search_is_tried_once_more_then_the_rest_waits(monkeypatch: pytest.MonkeyPatch) -> None:
     tries: list[str] = []
 
-    def refused(asked: fares.Asked) -> Declined:
+    def refused(reader: google_search.Reader, asked: fares.Asked) -> Declined:
         tries.append(asked.airport)
-        return Declined(CallCause.TRANSIENT, fli_page.REFUSED)
+        return Declined(CallCause.TRANSIENT, google_search.REFUSED)
 
     monkeypatch.setattr(fares, 'google', refused)
     with pytest.raises(SystemExit, match='Google refused the search'):
-        fares.refresh(budget=5, max_seconds=60)
+        fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)
     assert len(tries) == 2  # the first weekend, twice; the second waits
     assert [s.outcome for s in kept_now()] == [FareOutcome.FAILED]
 
 
 @pytest.mark.usefixtures('weekends')
 def test_a_run_stops_after_google_gives_no_answer_to_a_few_searches_in_a_row(monkeypatch: pytest.MonkeyPatch) -> None:
-    """A page fli finds no flights' data in is no answer, and counts in no budget: the run stops after MOST_DECLINED
-    in a row rather than asking for its whole queue."""
+    """A search Google gives no answer to counts in no budget: the run stops after MOST_DECLINED in a row rather than
+    asking for its whole queue."""
     due = ['GLA', 'LIS', 'OSL', 'CDG', 'MAD', 'ROM']
 
     def weekends(_: dt.date) -> fare_weekends.Weekends:
@@ -528,14 +567,158 @@ def test_a_run_stops_after_google_gives_no_answer_to_a_few_searches_in_a_row(mon
     monkeypatch.setattr(fare_weekends, 'weekends', weekends)
     tries: list[str] = []
 
-    def blank(asked: fares.Asked) -> Declined:
+    def blank(reader: google_search.Reader, asked: fares.Asked) -> Declined:
         tries.append(asked.airport)
-        return Declined(CallCause.TRANSIENT, 'fli: Search page carried no ds:1 payload')
+        return NO_ANSWER
 
     monkeypatch.setattr(fares, 'google', blank)
-    with pytest.raises(SystemExit, match='no ds:1 payload'):
-        fares.refresh(budget=5, max_seconds=60)
+    with pytest.raises(SystemExit, match=re.escape(NO_ANSWER.why)):
+        fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)
     assert len(tries) == fares.MOST_DECLINED < len(due)
+
+
+@pytest.mark.usefixtures('weekends')
+def test_google_s_error_13_is_tried_once_more_after_the_pause_and_then_kept_as_failed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Error 13 comes and goes whatever the search: the second try of GLA is answered; LIS's is not, and is kept as
+    failed, once."""
+    waits: list[float] = []
+    monkeypatch.setattr('time.sleep', waits.append)
+    tries: list[str] = []
+    error_13 = Declined(CallCause.TRANSIENT, google_search.INTERNAL)
+
+    def google(reader: google_search.Reader, a: fares.Asked) -> Search | Declined:
+        tries.append(a.airport)
+        return fares.search(a, FareVendor.GOOGLE_CHROME, (offer(80),)) if tries == ['GLA', 'GLA'] else error_13
+
+    monkeypatch.setattr(fares, 'google', google)
+    fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)
+    assert tries == ['GLA', 'GLA', 'LIS', 'LIS']
+    assert waits == [fares.PAUSE, fares.KIWI_PAUSE, fares.PAUSE, fares.PAUSE, fares.PAUSE]
+    google_s = [(s.airport, s.outcome, s.note) for s in kept_now() if s.vendor == FareVendor.GOOGLE_CHROME]
+    assert google_s == [('GLA', FareOutcome.OFFERS, None), ('LIS', FareOutcome.FAILED, google_search.INTERNAL)]
+
+
+@pytest.mark.usefixtures('weekends')
+@pytest.mark.parametrize(
+    ('third', 'stopped'),
+    [(Declined(CallCause.TRANSIENT, google_search.REFUSED), True), (None, False)],
+    ids=['refused again, which stops the run', 'answered'],
+)
+def test_a_refusal_after_error_13_has_its_minute_and_its_second_try(
+    third: Declined | None, *, stopped: bool, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """GLA's first try is error 13, its second refused: it is tried a third time, a minute later, and the run stops only
+    when that one is refused too."""
+    waits: list[float] = []
+    monkeypatch.setattr('time.sleep', waits.append)
+    tries: list[str] = []
+    answers = [
+        Declined(CallCause.TRANSIENT, google_search.INTERNAL),
+        Declined(CallCause.TRANSIENT, google_search.REFUSED),
+    ]
+
+    def google(reader: google_search.Reader, a: fares.Asked) -> Search | Declined:
+        tries.append(a.airport)
+        got = answers[len(tries) - 1] if len(tries) <= len(answers) else third
+        return fares.search(a, FareVendor.GOOGLE_CHROME, (offer(80),)) if got is None else got
+
+    monkeypatch.setattr(fares, 'google', google)
+    if stopped:
+        with pytest.raises(SystemExit, match='Google refused the search'):
+            fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)
+        assert (tries, waits) == (['GLA'] * 3, [fares.PAUSE, fares.RETRY_AFTER, fares.PAUSE])
+    else:
+        fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)
+        assert tries[:4] == ['GLA', 'GLA', 'GLA', 'LIS']
+        assert waits[:3] == [fares.PAUSE, fares.RETRY_AFTER, fares.KIWI_PAUSE]
+
+
+@pytest.mark.parametrize(
+    ('declined', 'wait'),
+    [
+        (Declined(CallCause.TRANSIENT, google_search.REFUSED), fares.RETRY_AFTER),
+        (Declined(CallCause.TRANSIENT, google_search.INTERNAL), fares.PAUSE),
+        (Declined(CallCause.TRANSIENT, google_search.rejected(3)), None),
+        (NO_ANSWER, None),
+        (Declined(CallCause.TRANSIENT, google_search.UNKNOWN), None),
+        (Declined(CallCause.STRUCTURAL, "no browser would start: Executable doesn't exist"), None),
+    ],
+    ids=['refused', 'error 13', 'another error', 'no answer', 'a shape not known', 'no browser'],
+)
+def test_only_a_refusal_and_error_13_are_tried_again(declined: Declined, wait: int | None) -> None:
+    assert fares.retry_after(declined) == wait
+
+
+def test_a_run_s_budget_fits_in_the_time_it_may_take() -> None:
+    """The schedule's budget fits in its cap; a budget raised without the cap does not, and the run says so before it
+    searches anything."""
+    assert fares.budget_fits(fares.BUDGET, fares.MAX_SECONDS)
+    assert fares.BUDGET * fares.SEARCH_SECONDS <= fares.MAX_SECONDS
+    assert not fares.budget_fits(30, fares.MAX_SECONDS)
+    assert fares.budget_fits(30, 30 * fares.SEARCH_SECONDS)
+    assert not fares.budget_fits(30, 30 * fares.SEARCH_SECONDS - 1)
+    # searches are at least as far apart as those Google refused none of: 20 s, where it refused a plain request after
+    # 22 made 10 s apart
+    assert fares.PAUSE >= 20
+    # a search answered at its first try: its pause, Google's answer (within 20 s on every search measured on the
+    # runner) and the browser's context, and the reseller's search
+    assert fares.SEARCH_SECONDS >= fares.PAUSE + 20 + 1 + fares.KIWI_PAUSE
+
+
+def test_the_workflow_s_schedule_runs_the_budget_and_cap_that_fit() -> None:
+    workflow = (ROOT / '.github' / 'workflows' / 'fares.yml').read_text()
+    cap = re.search(r'refresh --budget "\$BUDGET" --max-seconds (\d+)', workflow)
+    budget = re.search(r"BUDGET: \$\{\{ inputs\.budget \|\| vars\.FARE_BUDGET \|\| '(\d+)' \}\}", workflow)
+    assert cap is not None
+    assert budget is not None
+    assert (int(budget.group(1)), int(cap.group(1))) == (fares.BUDGET, fares.MAX_SECONDS)
+
+
+def test_the_last_search_a_run_starts_ends_within_the_job_s_time(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A search's longest: Google's error 13, then its refusal, then its answer, each try taking all of its wait and its
+    context's second, and the reseller's call all of its timeout; with the pause after it, within WORST_SECONDS. The run
+    starts no search after MAX_SECONDS, so with the job's other steps, which took 40 s on the runner (its checkout and
+    setup, the browser's install, the report and the push), it ends within the job's timeout."""
+    took: list[float] = []
+    monkeypatch.setattr('time.sleep', took.append)
+    tries = [
+        Declined(CallCause.TRANSIENT, google_search.INTERNAL),
+        Declined(CallCause.TRANSIENT, google_search.REFUSED),
+    ]
+
+    def google(reader: google_search.Reader, a: fares.Asked) -> Search | Declined:
+        took.append(google_search.WAIT_SECONDS + 1)
+        return tries.pop(0) if tries else fares.search(a, FareVendor.GOOGLE_CHROME, (offer(80),))
+
+    def post(*_: object) -> Declined:
+        took.append(web.TIMEOUT)
+        return Declined(CallCause.TRANSIENT, 'timed out')
+
+    monkeypatch.setattr(fares, 'google', google)
+    monkeypatch.setattr(web, 'post', post)
+    found = fares.searched(cast('google_search.Reader', None), fares.Asked(HOME, 'GLA', SOON), resold=True)
+    assert [s.outcome for s in found.searches] == [FareOutcome.OFFERS, FareOutcome.FAILED]
+    assert sum(took) + fares.PAUSE <= fares.WORST_SECONDS
+    workflow = (ROOT / '.github' / 'workflows' / 'fares.yml').read_text()
+    timeout = re.search(r'refresh:\n    runs-on: [\w-]+\n    timeout-minutes: (\d+)', workflow)
+    assert timeout is not None
+    other_steps = 180
+    assert fares.MAX_SECONDS + fares.WORST_SECONDS + other_steps <= int(timeout.group(1)) * 60
+
+
+def test_a_budget_that_does_not_fit_searches_nothing(monkeypatch: pytest.MonkeyPatch) -> None:
+    asked: list[fares.Asked] = []
+
+    def google(reader: google_search.Reader, a: fares.Asked) -> Search:
+        asked.append(a)
+        return fares.search(a, FareVendor.GOOGLE_CHROME, (offer(80),))
+
+    monkeypatch.setattr(fares, 'google', google)
+    with pytest.raises(SystemExit, match=r'30 searches take about 1500 s, more than the 1200 s the run may take'):
+        fares.refresh(budget=30, max_seconds=fares.MAX_SECONDS)
+    assert asked == []
 
 
 class KilledError(Exception):
@@ -546,17 +729,17 @@ class KilledError(Exception):
 def test_a_run_stopped_half_way_keeps_the_searches_it_made(monkeypatch: pytest.MonkeyPatch) -> None:
     asked: list[str] = []
 
-    def google(a: fares.Asked) -> Search:
+    def google(reader: google_search.Reader, a: fares.Asked) -> Search:
         if asked:
             raise KilledError
         asked.append(a.airport)
-        return fares.search(a, FareVendor.GOOGLE, (offer(80),))
+        return fares.search(a, FareVendor.GOOGLE_CHROME, (offer(80),))
 
     monkeypatch.setattr(fares, 'google', google)
     with pytest.raises(KilledError):
-        fares.refresh(budget=5, max_seconds=60)
+        fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)
     assert [(s.airport, s.vendor, s.offers[0].price if s.offers else None) for s in kept_now()] == [
-        (asked[0], FareVendor.GOOGLE, 80),
+        (asked[0], FareVendor.GOOGLE_CHROME, 80),
         (asked[0], FareVendor.KIWI, None),
     ]
 
@@ -623,58 +806,48 @@ def test_show_lists_the_searches_kept_the_latest_first(capsys: pytest.CaptureFix
 
 
 # ----- what a search of Google keeps
-type Page = tuple[fli_page.Row, ...] | fli_page.Empty | Declined
+type Answer = tuple[google_search.Row, ...] | Declined
 
 
-def page(rows: Page) -> Callable[..., Page]:
-    """fli_page.page, as it reads Google's page for GLA on FRIDAY, back NIGHTS later; asked anything else, the test
-    fails."""
+def answer(monkeypatch: pytest.MonkeyPatch, rows: Answer) -> google_search.Reader:
+    """The run's browser, answering the search for GLA on FRIDAY, back NIGHTS later, with these ways out; asked
+    anything else, the test fails."""
 
-    def read(origin: str, airport: str, friday: dt.date, back: dt.date) -> Page:
+    def search(_reader: google_search.Reader, origin: str, airport: str, friday: dt.date, back: dt.date) -> Answer:
         assert (origin, airport, friday, back) == (HOME, 'GLA', FRIDAY, FRIDAY + dt.timedelta(days=3))
         return rows
 
-    return read
+    monkeypatch.setattr(google_search.Reader, 'search', search)
+    return google_search.Reader()
 
 
 @pytest.mark.parametrize(
     ('rows', 'expected'),
     [
         (
-            (fli_page.Row(221.0, 1, ('KLM', 'KLM')), fli_page.Row(None, 0, ('Widerøe',))),
+            (google_search.Row(221.0, 1, ('KLM', 'KLM')), google_search.Row(None, 0, ('Widerøe',))),
             (FareOutcome.OFFERS, [(221.0, 1, None)]),
         ),
-        ((fli_page.Row(None, 0, ('Widerøe',)),), (FareOutcome.LISTED, list[tuple[float, int, None]]())),
+        ((google_search.Row(None, 0, ('Widerøe',)),), (FareOutcome.LISTED, list[tuple[float, int, None]]())),
         ((), (FareOutcome.NONE, list[tuple[float, int, None]]())),
     ],
     ids=['priced, the unpriced left out', 'listed with no price', 'no flight'],
 )
 def test_a_search_keeps_each_way_out_priced_as_an_offer_on_one_ticket(
-    rows: tuple[fli_page.Row, ...],
+    rows: tuple[google_search.Row, ...],
     expected: tuple[FareOutcome, list[tuple[float, int, None]]],
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    monkeypatch.setattr(fli_page, 'page', page(rows))
-    found = fares.google(fares.Asked(HOME, 'GLA', FRIDAY))
+    found = fares.google(answer(monkeypatch, rows), fares.Asked(HOME, 'GLA', FRIDAY))
     assert isinstance(found, Search)
     assert (found.outcome, [(o.price, o.stops_out, o.stops_back) for o in found.offers]) == expected
     assert {o.ticket for o in found.offers} <= {FareTicket.ONE_TICKET}
+    assert (found.vendor, found.nearby, found.note) == (FareVendor.GOOGLE_CHROME, None, None)
 
 
-def test_a_page_google_would_not_give_is_no_answer(monkeypatch: pytest.MonkeyPatch) -> None:
-    refused = Declined(CallCause.TRANSIENT, fli_page.REFUSED)
-    monkeypatch.setattr(fli_page, 'page', page(refused))
-    assert fares.google(fares.Asked(HOME, 'GLA', FRIDAY)) == refused
-
-
-def test_an_empty_page_is_kept_as_no_flight_listed_with_the_nearby_dates_it_priced(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    monkeypatch.setattr(fli_page, 'page', page(fli_page.Empty(nearby=8)))
-    found = fares.google(fares.Asked(HOME, 'GLA', FRIDAY))
-    assert isinstance(found, Search)
-    assert (found.outcome, found.offers, found.nearby, found.note) == (FareOutcome.NONE, (), 8, None)
-    assert fares.said(fares.Searched((found,))) == 'no flight listed, 8 nearby dates priced'
+def test_a_search_google_gave_no_answer_to_is_no_answer(monkeypatch: pytest.MonkeyPatch) -> None:
+    refused = Declined(CallCause.TRANSIENT, google_search.REFUSED)
+    assert fares.google(answer(monkeypatch, refused), fares.Asked(HOME, 'GLA', FRIDAY)) == refused
 
 
 @pytest.mark.parametrize(
@@ -682,10 +855,11 @@ def test_an_empty_page_is_kept_as_no_flight_listed_with_the_nearby_dates_it_pric
     [
         (kept('GLA', FRIDAY, AT, offers=(offer(95), offer(80))), '80 EUR, 2 offers'),
         (kept('GLA', FRIDAY, AT, FareOutcome.LISTED), 'flights with no price'),
-        (kept('GLA', FRIDAY, AT, FareOutcome.NONE).model_copy(update={'nearby': 0}), 'no flight listed'),
+        (kept('GLA', FRIDAY, AT, FareOutcome.NONE, vendor=FareVendor.GOOGLE_CHROME), 'no flight listed'),
+        (kept('GLA', FRIDAY, AT, FareOutcome.NONE).model_copy(update={'nearby': 8}), 'no flight listed'),
         (kept('GLA', FRIDAY, AT, FareOutcome.FAILED), 'no answer: refused'),
     ],
-    ids=['priced', 'listed', 'empty, no nearby date priced', 'failed'],
+    ids=['priced', 'listed', 'none', 'an outbound page with nearby dates', 'failed'],
 )
 def test_the_run_s_log_says_what_a_search_found(google: Search, expected: str) -> None:
     assert fares.said(fares.Searched((google,))) == expected
@@ -708,10 +882,11 @@ def test_a_reseller_s_search_lists_no_flight_without_a_price() -> None:
     [
         (FareVendor.GOOGLE, FareOutcome.OFFERS),
         (FareVendor.GOOGLE, FareOutcome.LISTED),
+        (FareVendor.GOOGLE_CHROME, FareOutcome.NONE),
         (FareVendor.KIWI, FareOutcome.NONE),
     ],
 )
-def test_only_an_empty_page_of_google_s_prices_nearby_dates(vendor: FareVendor, outcome: FareOutcome) -> None:
+def test_only_an_empty_outbound_page_of_google_s_prices_nearby_dates(vendor: FareVendor, outcome: FareOutcome) -> None:
     empty = kept('GLA', FRIDAY, AT, FareOutcome.NONE).model_copy(update={'nearby': 3})
     assert Search.model_validate(empty.model_dump()).nearby == 3
     with pytest.raises(ValueError, match='prices no nearby date'):
@@ -723,16 +898,14 @@ def test_empty_pages_count_in_the_budget_and_not_among_the_searches_in_a_row_wit
 ) -> None:
     asked = pairing(monkeypatch)
 
-    def google(a: fares.Asked) -> Search:
+    def google(reader: google_search.Reader, a: fares.Asked) -> Search:
         asked.append(a)
         if a.airport == 'LIS':
-            return fares.search(a, FareVendor.GOOGLE, (offer(100),))
-        return fares.search(
-            a, FareVendor.GOOGLE, (), listed=a.airport == 'BCN', nearby=None if a.airport == 'BCN' else 8
-        )
+            return fares.search(a, FareVendor.GOOGLE_CHROME, (offer(100),))
+        return fares.search(a, FareVendor.GOOGLE_CHROME, (), listed=a.airport == 'BCN')
 
     monkeypatch.setattr(fares, 'google', google)
-    fares.refresh(budget=6, max_seconds=60)  # four from home, two kept for pairs; no search failed
+    fares.refresh(budget=6, max_seconds=fares.MAX_SECONDS)  # four from home, two kept for pairs; no search failed
     home = [a.airport for a in asked if a.origin == HOME]
     assert home == ['AMS', 'BCN', 'GLA', 'LIS']  # three with no price in a row, and the run goes on to its budget
     assert weekends == home  # the reseller asked of each page Google gave
@@ -769,16 +942,16 @@ def test_pairs_take_a_quarter_of_the_budget_after_the_searches_from_home(
     weekends: list[str], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     asked = pairing(monkeypatch)
-    broke = Declined(CallCause.TRANSIENT, 'fli: no page')
+    broke = NO_ANSWER
 
-    def google(a: fares.Asked) -> Search | Declined:
+    def google(reader: google_search.Reader, a: fares.Asked) -> Search | Declined:
         asked.append(a)
         if a.airport == 'AMS' and a.origin == HOME:
             return broke  # a weekend Google gave no answer to from home is paired with nothing
-        return fares.search(a, FareVendor.GOOGLE, (offer(100),))
+        return fares.search(a, FareVendor.GOOGLE_CHROME, (offer(100),))
 
     monkeypatch.setattr(fares, 'google', google)
-    fares.refresh(budget=8, max_seconds=60)  # six answered from home, two pairs
+    fares.refresh(budget=8, max_seconds=fares.MAX_SECONDS)  # six answered from home, two pairs
     home = [a for a in asked if a.origin == HOME]
     assert [a.airport for a in home] == ['AMS', 'BCN', 'GLA', 'LIS', 'PRG']  # all there were
     day = now().date()
@@ -794,8 +967,8 @@ def test_pairs_take_a_quarter_of_the_budget_after_the_searches_from_home(
         only({(a, SOON + dt.timedelta(days=7)): True for a in ('MAD', 'NCE', 'OPO', 'MUC')}),
     )
     monkeypatch.setattr(fares, 'google', answering(dict.fromkeys(('MAD', 'NCE', 'OPO', 'MUC'), (offer(100),))))
-    fares.refresh(budget=4, max_seconds=60)
-    later = [s for s in kept_now() if s.vendor == FareVendor.GOOGLE and s.depart > SOON]
+    fares.refresh(budget=4, max_seconds=fares.MAX_SECONDS)
+    later = [s for s in kept_now() if s.vendor == FareVendor.GOOGLE_CHROME and s.depart > SOON]
     assert [(s.origin == HOME, s.airport) for s in later] == [
         (True, 'MAD'),
         (True, 'MUC'),
@@ -813,16 +986,20 @@ def test_an_extra_airport_and_its_pair_are_searched_for_any_flight(
     monkeypatch.setattr(fares, 'PAIR_SHARE', 0.25)
     monkeypatch.setattr(fare_weekends, 'weekends', only({('ABZ', SOON): False}))
 
-    def read(asked: FlightSearchFilters) -> Page:
+    def address(asked: FlightSearchFilters) -> str:
         assert asked.stops == MaxStops.ANY  # any flight, from home and from the pair's city
-        return (fli_page.Row(90.0, 1, ('KLM',)),)
+        return 'https://www.google.com/travel/flights'
 
-    monkeypatch.setattr(fli_page, 'read', read)
-    fares.refresh(budget=4, max_seconds=60)
+    def answer(_reader: google_search.Reader, url: str) -> bytes:
+        return (PAGES / 'google-bgo-lys-priced.txt').read_bytes()
+
+    monkeypatch.setattr(google_search, 'address', address)
+    monkeypatch.setattr(google_search.Reader, 'answer', answer)
+    fares.refresh(budget=4, max_seconds=fares.MAX_SECONDS)
     assert [(s.origin != HOME, s.vendor, s.mode, s.outcome) for s in kept_now()] == [
-        (False, FareVendor.GOOGLE, FareMode.ANY, FareOutcome.OFFERS),
+        (False, FareVendor.GOOGLE_CHROME, FareMode.ANY, FareOutcome.OFFERS),
         (False, FareVendor.KIWI, FareMode.ANY, FareOutcome.NONE),
-        (True, FareVendor.GOOGLE, FareMode.ANY, FareOutcome.OFFERS),
+        (True, FareVendor.GOOGLE_CHROME, FareMode.ANY, FareOutcome.OFFERS),
     ]
 
 
@@ -849,8 +1026,8 @@ def test_a_weekend_to_the_city_a_pair_would_leave_from_is_not_paired(
     monkeypatch.setattr(fares, 'PAIR_SHARE', 0.25)
     monkeypatch.setattr(fare_weekends, 'weekends', only({('OSL', friday): True}))
     monkeypatch.setattr(fares, 'google', answering({'OSL': (offer(60),)}))
-    fares.refresh(budget=4, max_seconds=60)
-    assert [s.origin for s in kept_now() if s.vendor == FareVendor.GOOGLE] == [HOME]
+    fares.refresh(budget=4, max_seconds=fares.MAX_SECONDS)
+    assert [s.origin for s in kept_now() if s.vendor == FareVendor.GOOGLE_CHROME] == [HOME]
 
 
 # ----- a festival's other airports
@@ -867,12 +1044,12 @@ def test_the_other_airports_are_searched_less_often_and_after_every_nearest_due(
     monkeypatch.setattr(fare_weekends, 'weekends', three_airports)
     asked: list[str] = []
 
-    def google(a: fares.Asked) -> Search:
+    def google(reader: google_search.Reader, a: fares.Asked) -> Search:
         asked.append(a.airport)
-        return fares.search(a, FareVendor.GOOGLE, (offer(90),))
+        return fares.search(a, FareVendor.GOOGLE_CHROME, (offer(90),))
 
     monkeypatch.setattr(fares, 'google', google)
-    fares.refresh(budget=3, max_seconds=60)
+    fares.refresh(budget=3, max_seconds=fares.MAX_SECONDS)
     assert asked == ['GLA', 'LIS', 'ABZ']  # the two nearest first, then one extra, within the budget of three
     known = fare_weekends.standings(kept_now())
     assert {k: st.state for k, st in known.items()} == dict.fromkeys(
@@ -1020,7 +1197,7 @@ def test_a_reseller_is_asked_each_weekend_the_same_and_priced_where_google_lists
     monkeypatch.setattr(fare_weekends, 'weekends', three_airports)
     monkeypatch.setattr(fares, 'google', answering({'GLA': (), 'LIS': (), 'PIK': (), 'ABZ': 'listed'}))
     monkeypatch.setattr(web, 'post', post)
-    fares.refresh(budget=9, max_seconds=60)
+    fares.refresh(budget=9, max_seconds=fares.MAX_SECONDS)
     # the reseller asked of each weekend searched, the same, an extra's too: any flight, Friday to Monday
     monday = SOON + dt.timedelta(days=fare_weekends.NIGHTS)
     assert sent == [
@@ -1052,7 +1229,7 @@ def test_a_reseller_that_fails_is_kept_as_failed_and_the_run_goes_on(monkeypatch
 
     monkeypatch.setattr(fares, 'google', answering({'GLA': 'listed', 'LIS': (offer(120),)}))
     monkeypatch.setattr(web, 'post', down)
-    fares.refresh(budget=9, max_seconds=60)  # no exit: the reseller's failure fails no run
+    fares.refresh(budget=9, max_seconds=fares.MAX_SECONDS)  # no exit: the reseller's failure fails no run
     kiwi = sorted((s for s in kept_now() if s.vendor == FareVendor.KIWI), key=lambda s: s.airport)
     assert [(s.airport, s.outcome, s.note) for s in kiwi] == [
         (a, FareOutcome.FAILED, 'mcp.kiwi.com: HTTP 503') for a in ('GLA', 'LIS')

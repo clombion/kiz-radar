@@ -59,11 +59,15 @@ failed, and run what the commit job runs (`mise run load`, `mise run resolve`) b
 ## Fares
 
 Only festival weekends are searched: the Friday-to-Monday return from home to each upcoming festival's airports, one
-search per airport and weekend. A search reads Google's outbound page, one request (`pipeline/fli_page.py`, through
-fli's private call that reads that page alone, at the commit `pyproject.toml`'s `fares` group pins): each way out is
-priced as the cheapest return that leaves by it, the price Google's booking page asks (equal on each of the 7 weekends
-checked whose booking page gave one), with its stops on the way out; the ways back are not read, so the site says the
-stops "out". Every search is kept, with every offer it saw, in the fare history: a Parquet file per run in
+search per airport and weekend. A search loads Google Flights' search page in a headless Chromium (Patchright's full
+Chromium, which `fares.yml` installs without its headless shell), one browser a run (`pipeline/google_search.py`), and
+reads the answer the page's scripts receive (its `GetShoppingResults` call, which Google serves only to a request the
+page itself signs) through fli, at the commit `pyproject.toml`'s `fares` group pins: each way out is priced as the
+cheapest return that leaves by it ("From N euros round trip total"), with its stops on the way out; the ways back are
+not read, so the site says the stops "out". The page a plain request gets lists no flight for most weekends the browser
+finds priced, so the browser is the one reader; the history's searches of it are kept as `google_chrome`'s, and its
+`google` rows are the outbound page's that a plain request got, read before (with fli's private call that read that page
+alone). Every search is kept, with every offer it saw, in the fare history: a Parquet file per run in
 `pipeline/fare_offers/`, never written again once the run is over (`mise run fares -- show` lists them, the latest
 first). What a festival weekend's searches from home say of its fare is its standing (below), which the queue, the build
 and the site read; the card's fare is the cheapest offer on one ticket of the search its standing is of. Home is the
@@ -85,8 +89,8 @@ be read (an id whose parts cannot be matched to its flights) is left out, and th
 kept before the history was (every version of `fares.csv`, `fare_jobs.csv` and the older `docs/data/fares.csv` on main)
 are in it too, each search tagged with the file and commit it comes from (`backfill`); their stops are known only when
 there were none. A "no price" among them was asked of no reseller (and there also meant a timeout, an answer that could
-not be read or a sweep that failed), so, as for any empty page with no reseller's answer, it says nothing of its
-weekend.
+not be read or a sweep that failed), so, as for any search of Google's listing no flight with no reseller's answer, it
+says nothing of its weekend.
 
 A weekend's standing (`fare_weekends.standing`, the `fare_standing` states of the
 [States table](../reference/states.md)) is that of its latest search from home that says one of these, with the
@@ -128,10 +132,16 @@ far that offset, fitted on earlier weeks' pairs alone, misses each later week's,
 family is fit to be shown on the site, once visitors can pick their city, when at least 20 pairs are scored and 80% of
 them are within €40.
 
-Google refused after 22 requests 10 seconds apart, so the budget starts at 20 searches a run (one request each, and a
-second for a refused one). The admin raises it with the repository variable `FARE_BUDGET` (Settings → Secrets and
-variables → Actions → Variables): to 30 after a week of runs with no 429, then to 40 after another. A run started by
-hand takes its own (`budget`).
+Searches are 20 seconds apart (`PAUSE`): Google refused none of the browser's searches made that far apart, and refused
+a plain request after 22 made 10 seconds apart. A search answered at its first try takes about 50 seconds on GitHub's
+runner (`SEARCH_SECONDS`: the pause, Google's answer, the browser's context and the reseller's search), so a run's
+budget is bound by its time: 20 searches fit in the 1200 seconds the run may take (`--max-seconds`, `MAX_SECONDS`). A
+slower run ends on its time instead: it starts no search after it, and the last it started ends within `WORST_SECONDS`
+(271 seconds: three tries waiting 45 seconds each, the waits between them, the reseller's search and the pause after
+it), so the run's step and the job's other steps end within its 30 minutes, which a test holds. A budget that does not
+fit searches nothing, and the run says so. The admin sets the budget with the repository variable `FARE_BUDGET`
+(Settings → Secrets and variables → Actions → Variables); one above 24 needs `--max-seconds` and the job's
+`timeout-minutes` in `fares.yml` raised with it. A run started by hand takes its own (`budget`).
 
 Each weekend has its own weekday, so each day's run checks about a seventh of them; one never searched, or overdue by
 twice its interval, doesn't wait for its day. A weekend whose latest searches taught nothing (each failed, or said none
@@ -140,22 +150,27 @@ interval, counted in days of the calendar from its latest search and on no weekd
 was is such a search, so a weekend with nothing else waits a day, not its interval. The nearest airports' weekends due
 on their interval go first, then theirs due after a wait, then the extras' the same: a failed search comes back the next
 run, and one that keeps teaching nothing costs a search an interval at most. Its fare, if any, stays that of its latest
-search that taught one. A search Google refuses is tried once more after a minute, and refused again stops the run,
-which keeps what it found; so do three searches in a row Google gives no answer to (`MOST_DECLINED`: a page fli finds no
-flights' data in, which, once Google gives it, it goes on giving for the rest of the run). A search that failed
-(refused, or fli failing) is kept as failed, never as no price, and teaches its weekend nothing; the run names it at its
-end. The run fails (the workflow marked failed after the searches are pushed) only when Google stopped it so, or gave no
-page to any of its searches: a search with no answer now and then fails no run. Its summary line says how many pages
-Google gave, how many of them listed no flight, and how many festival weekends stand at each standing.
+search that taught one. A search Google refuses (HTTP 429, or its sorry page) is tried once more after a minute, however
+its earlier try ended, and refused again stops the run, which keeps what it found. Google's error 13 (INTERNAL) comes
+and goes whatever the search, on about a fifth of the searches measured, so a search it answers so is tried once more
+after the pause. Three searches in a row Google gives no answer to, each after its second try where it has one, stop the
+run (`MOST_DECLINED`: Google is blocking the run, or its search page has changed), and so does a browser that does not
+start. A search that failed (refused, error 13 twice, its consent page, no whole answer within 45 seconds, an answer of
+a shape not known, a price whose currency cannot be read, or the browser failing) is kept as failed, with why in its
+note, never as no price, and teaches its weekend nothing; the run names it at its end. The run fails (the workflow
+marked failed after the searches are pushed) only when it was stopped so, or Google answered none of its searches: a
+search with no answer now and then fails no run. Its first line names the browser's version, and its summary line says
+how many answers Google gave, how many of them listed no flight, and how many festival weekends stand at each standing.
 
-A page is kept as it lists: offers, flights with no price (`listed`), or none (`none`, an empty page), with how many
-nearby dates an empty page priced (`nearby`, Google's box of flexible dates). An empty page is no proof of no flight: a
-browser was shown flights for a search whose page, as read, listed none. Nothing else on it is a sign either way: the
-nearby dates are on the page of a route with no flight that weekend too, and its filters name every airline flying the
-route with any stops; so `nearby` is a fact read, which decides nothing, and the reseller's answer to the same search is
-what tells no flight, for a weekend airlines have on sale, from a page that teaches nothing. Every page is an answer of
-Google's server: it counts in the run's searches, and is not one of the searches in a row Google gives no answer to, so
-a run whose every page is empty fails nothing.
+An answer is kept as it lists: offers, flights with no price (`listed`), or none (`none`), and `none` is only ever an
+answer that lists no way out and says so itself (the tokens of the airports it suggests nearby name it `noresults`); an
+answer with no way out that does not say so is of a shape not known, and `failed`, as are an error, a refusal or no
+answer. A refusal or its consent page is known from the page's own document, so the search waits for no answer then.
+Google's none, of either reader, teaches nothing alone: the reseller's answer to the same search is what tells no
+flight, for a weekend airlines have on sale. The outbound page's searches kept from before also hold how many nearby
+dates an empty page priced (`nearby`), a fact read that decided nothing; no search of the browser's has it. Every answer
+is one of Google's server: it counts in the run's searches, and is not one of the searches in a row Google gives no
+answer to, so a run whose every answer lists no flight fails nothing.
 
 ## Running the steps locally
 

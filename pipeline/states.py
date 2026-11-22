@@ -999,7 +999,19 @@ ROWS = (
         'flight of no weekend (fare_weekends taught)',
         KEPT,
     ),
-    S('fare_vendor', 'google', "Google Flights' outbound page, through fli (pipeline/fli_page.py)", KEPT),
+    S(
+        'fare_vendor',
+        'google',
+        "Google Flights' outbound page as a plain request got it, through fli: kept from when it was read so; its none "
+        'was no proof of no flight, as it listed none for most weekends a browser found priced',
+        KEPT,
+    ),
+    S(
+        'fare_vendor',
+        'google_chrome',
+        "Google Flights' answer to its search page, read in a headless Chromium (pipeline/google_search.py)",
+        KEPT,
+    ),
     S(
         'fare_vendor',
         'kiwi',
@@ -1012,8 +1024,9 @@ ROWS = (
     S(
         'fare_outcome',
         'none',
-        "the vendor listed no flight: Google's page no way out (the nearby dates it priced kept, deciding nothing), "
-        "Kiwi's answer no trip; Google's empty page is no proof of no flight (pipeline/fli_page.py)",
+        "the vendor listed no flight: Google an answer saying it has no way out, Kiwi's answer no trip; Google's none "
+        "alone is no proof of no flight (fare_weekends taught); an outbound page's none keeps the nearby dates it "
+        'priced, deciding nothing',
         KEPT,
     ),
     S(

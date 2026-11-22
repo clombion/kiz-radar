@@ -1,4 +1,3 @@
-import datetime as dt
 from enum import Enum
 
 class Airport(Enum): ...
@@ -10,7 +9,6 @@ class Airline(Enum):
 
 class MaxStops(Enum):
     ANY = 0
-    NON_STOP = 1
 
 class SortBy(Enum):
     CHEAPEST = 2
@@ -31,11 +29,9 @@ class FlightSearchFilters:
         sort_by: SortBy,
     ) -> None: ...
     stops: MaxStops
-    def model_copy(self, *, update: dict[str, object]) -> FlightSearchFilters: ...
 
 class FlightLeg:
     airline: Airline
-    departure_datetime: dt.datetime
 
 class FlightResult:
     legs: list[FlightLeg]

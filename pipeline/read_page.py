@@ -11,8 +11,9 @@ On Linux without a display, --visible restarts itself under xvfb-run.
     mise run read-page -- URL --visible               # for a page behind a browser check
     mise run read-page -- URL --screenshot page.png   # and a full-page screenshot
 
-One page per run, for a person's one-off question; never in a scheduled job or a loop of one's own. The one
-scheduled reader is pipeline/tickets.py, which reads ticket pages through rows() below, by a site recipe.
+One page per run, for a person's one-off question; never in a scheduled job or a loop of one's own. The scheduled
+readers are pipeline/tickets.py, which reads ticket pages through rows() below, by a site recipe, and
+pipeline/google_search.py, which reads Google Flights' search page in the browsers of Browsers below.
 Finding the Chromium: --browser, else the Playwright browsers in /opt/pw-browsers, else Patchright's own
 (`uv run --group browser patchright install --no-shell chromium`).
 """

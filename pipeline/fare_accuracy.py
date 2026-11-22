@@ -20,9 +20,9 @@ from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 
 from pipeline import airports, data, files
-from pipeline.enums import FareFamily, FareOutcome, FareTicket, FareVendor
+from pipeline.enums import FareFamily, FareOutcome, FareTicket
 from pipeline.fare_store import FOLDER
-from pipeline.fare_weekends import cheapest
+from pipeline.fare_weekends import GOOGLE, cheapest
 from pipeline.records import Search
 from pipeline.reference import table
 
@@ -50,7 +50,7 @@ class Pair:
 
 def pairable(s: Search) -> bool:
     """Whether a search can be of a pair: Google's, with a fare."""
-    return s.vendor == FareVendor.GOOGLE and s.outcome == FareOutcome.OFFERS
+    return s.vendor in GOOGLE and s.outcome == FareOutcome.OFFERS
 
 
 def pairs(history: Iterable[Search]) -> list[Pair]:

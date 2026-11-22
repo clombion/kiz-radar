@@ -48,7 +48,7 @@ Every data point and every state it can be in; why the world is closed is in [St
 | **claim**, each claim, by whether it decides its subject | `applied`, `overridden`, `orphaned` | resolve_artists |
 | **model**, each Claude model the pipeline asks, which spend.PRICES prices | `claude-fable-5-1`, `claude-opus-5-5`, `claude-sonnet-5-5`, `claude-haiku-5-5` | ask; tickets; merge review |
 | **fare_mode**, each fare search, by the flights it asks for | `any`, `direct` | fares |
-| **fare_vendor**, each fare search, by whom it asks | `google`, `kiwi` | fares |
+| **fare_vendor**, each fare search, by whom it asks | `google`, `google_chrome`, `kiwi` | fares |
 | **fare_outcome**, each fare search, by what it found | `offers`, `none`, `listed`, `failed` | fares |
 | **fare_ticket**, each offer of a fare search, by the tickets it is booked on | `one_ticket`, `self_transfer` | fares |
 | **fare_standing**, each festival weekend (an airport and its Friday), by what its searches from home say of its fare | `priced`, `listed`, `no_flight`, `unanswered`, `not_asked` | fare_weekends standing |
@@ -258,10 +258,11 @@ Every data point and every state it can be in; why the world is closed is in [St
 | model · `claude-haiku-5-5` | kept | — | — | the extraction passes and the merge review |
 | fare_mode · `any` | kept | — | — | any flight, the cheapest first: every festival weekend |
 | fare_mode · `direct` | kept | — | — | direct flights alone: kept from when an airport beside a festival’s nearest was searched so, which says no flight of no weekend (fare_weekends taught) |
-| fare_vendor · `google` | kept | — | — | Google Flights' outbound page, through fli (pipeline/fli_page.py) |
+| fare_vendor · `google` | kept | — | — | Google Flights' outbound page as a plain request got it, through fli: kept from when it was read so; its none was no proof of no flight, as it listed none for most weekends a browser found priced |
+| fare_vendor · `google_chrome` | kept | — | — | Google Flights' answer to its search page, read in a headless Chromium (pipeline/google_search.py) |
 | fare_vendor · `kiwi` | view | reseller’s price | — | Kiwi.com's flight search, a reseller selling at its own prices |
 | fare_outcome · `offers` | kept | — | — | one offer or more with a price |
-| fare_outcome · `none` | kept | — | — | the vendor listed no flight: Google's page no way out (the nearby dates it priced kept, deciding nothing), Kiwi's answer no trip; Google's empty page is no proof of no flight (pipeline/fli_page.py) |
+| fare_outcome · `none` | kept | — | — | the vendor listed no flight: Google an answer saying it has no way out, Kiwi's answer no trip; Google's none alone is no proof of no flight (fare_weekends taught); an outbound page's none keeps the nearby dates it priced, deciding nothing |
 | fare_outcome · `listed` | kept | — | — | flights listed, none with a price (Widerøe's, which Google leaves to the airline) |
 | fare_outcome · `failed` | kept | — | — | no answer: the vendor refused the search, or failed (its words in the note); never read as no price |
 | fare_ticket · `one_ticket` | kept | — | — | every flight out on one ticket, and every flight back on one |

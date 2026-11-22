@@ -36,6 +36,7 @@ export const STATE_KEYS: readonly string[] = [
   'going',
   'gone',
   'google',
+  'google_chrome',
   'group',
   'group_deals',
   'in_tier',

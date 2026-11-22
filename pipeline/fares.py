@@ -23,20 +23,23 @@ decided one, else the nearest within MAX_AIRPORT_KM, fare_weekends) is searched 
 within the run's budget: the nearest due on their interval first, then those due after their wait, then the extras the
 same. An airport that is the nearest of any festival that weekend is searched as the nearest.
 
-Google is read on its outbound page, one request a search (pipeline/fli_page.py): its price is the return's, its stops
-those out. Google sometimes refuses a search (HTTP 429), so a refused search is tried once more after a minute; refused
-again, it stops the run, as do MOST_DECLINED searches in a row Google gives no answer to. A search with no answer is
-kept as failed, teaches its weekend nothing, and is named at the run's end. A page Google gave is kept as it lists:
-offers, flights with no price, or none, an empty page with how many nearby dates it priced, which decides nothing
-(pipeline/fli_page.py). Every page is an answer of Google's server: it counts in the run's budget, and not among the
-searches in a row Google gave no answer to. The run fails only when it was stopped so, or when Google gave no page to
-any search it made: a search with no answer now and then is a later run's to make. Each weekend Google gave a page for
-is asked of Kiwi.com's flight search the same (kiwi), its trips kept with the airlines flying them and the tickets they
-are booked on (ticket), and the search of Google's it was asked with: its cheapest self-transfer, when cheaper, is added
-to the weekend's Flights; its cheapest on one ticket is the card's where Google priced none (flights listed with no
-price, Widerøe's, which it leaves to the airline, or an empty page); and with Google's empty page, its answer of no trip
-is what makes the standing of a weekend near enough no flight (fare_weekends.SCHEDULED_DAYS). Its price is a
-reseller's, and the site says so; its failure fails no run.
+Google is read through a headless Chromium, one search page a search, one browser a run (pipeline/google_search.py): its
+price is the return's, its stops those out, and its searches are kept as google_chrome's (the history's google rows are
+the outbound page's that a plain request got, read before). Google sometimes refuses a search (HTTP 429), so a refused
+search is tried once more after a minute, however its earlier try ended; refused again, it stops the run. Its error 13
+comes and goes whatever the search, so a search it answers so is tried once more after PAUSE. MOST_DECLINED searches in
+a row Google gives no answer to stop the run, as does a browser that does not start. A search with no answer is kept as
+failed, teaches its weekend nothing, and is named at the run's end. An answer Google gave is kept as it lists: offers,
+flights with no price, or none. Every answer counts in the run's budget, and not among the searches in a row Google gave
+no answer to. The run fails only when it was stopped so, or when Google answered none of its searches: a search with no
+answer now and then is a later run's to make. A search takes about SEARCH_SECONDS, so a run's budget of searches fits in
+its MAX_SECONDS (budget_fits); a slower run ends on its time, and the search it started last within WORST_SECONDS. Each
+weekend Google answered is asked of Kiwi.com's flight search the same (kiwi), its trips kept with the airlines flying
+them and the tickets they are booked on (ticket), and the search of Google's it was asked with: its cheapest
+self-transfer, when cheaper, is added to the weekend's Flights; its cheapest on one ticket is the card's where Google
+priced none (flights listed with no price, Widerøe's, which it leaves to the airline, or none); and with Google's none,
+its answer of no trip is what makes the standing of a weekend near enough no flight (fare_weekends.SCHEDULED_DAYS). Its
+price is a reseller's, and the site says so; its failure fails no run.
 
     mise run fares -- refresh --budget 20      # what the GitHub Action runs
     mise run fares -- plan                     # show what is due, without searching
@@ -58,22 +61,42 @@ from typing import NamedTuple, Self
 
 from pydantic import BaseModel, ConfigDict, Field, JsonValue, ValidationError, model_validator
 
-from pipeline import airports, calls, fare_accuracy, fare_store, fare_weekends, fli_page, web
+from pipeline import airports, calls, fare_accuracy, fare_store, fare_weekends, google_search, web
 from pipeline.calls import Declined
 from pipeline.enums import FareMode, FareOutcome, FareStanding, FareTicket, FareVendor
-from pipeline.fare_weekends import NIGHTS, NOT_ASKED, Standing, current, standings
+from pipeline.fare_weekends import GOOGLE, NIGHTS, NOT_ASKED, Standing, current, standings
 from pipeline.records import Offer, Search, digest, now
 
 SELLS_DAYS = 330  # Google sells about 11 months ahead
 # (days until the Friday, days between searches): weekly when it is close, every six weeks when it is far
 WEEKS_APART = [(35, 7), (91, 14), (182, 28), (SELLS_DAYS, 42)]
 EXTRA_SLOWER = 2  # an extra airport's weekend is searched this many times less often than a nearest airport's
-PAUSE = 10  # seconds between searches; Google refused after 22 requests 10 seconds apart (2026-11-08)
+# seconds between searches: Google refused none of the searches made this far apart (and refused a plain request
+# after 22 made 10 seconds apart)
+PAUSE = 20
 RETRY_AFTER = 60  # seconds to wait before trying a refused search once more
-# Google gives no page to this many searches in a row: the run stops, as Google is likely blocking it (a search with
-# no page counts in no budget, so the run would otherwise go on through its whole queue)
+# the seconds to wait before a search Google gave no answer is tried once more, by why: a minute after a refusal, PAUSE
+# after its error 13, which comes and goes whatever the search; a search is tried again once for each (searched)
+RETRIED = {google_search.REFUSED: RETRY_AFTER, google_search.INTERNAL: PAUSE}
+# Google gives no answer to this many searches in a row, each tried again where it is tried again (searched): the run
+# stops, as Google is blocking it or its search page has changed (a search with no answer counts in no budget, so the
+# run would otherwise go on through its whole queue)
 MOST_DECLINED = 3
 KIWI_PAUSE = 3  # seconds between a weekend's search of Google and the reseller's
+# about what a search takes on GitHub's runner, answered at its first try: PAUSE, Google's answer (within 20 s of the
+# page starting to load on every search measured there), a second for the browser's context, and the reseller's
+# search, KIWI_PAUSE and its call; a run's budget of searches is planned with it (budget_fits)
+SEARCH_SECONDS = 50
+# the longest a search can take: Google tried once and once more for each why it is tried again (RETRIED), each try
+# waiting up to google_search.WAIT_SECONDS with a second for its context, the waits before them, the reseller's search
+# (KIWI_PAUSE, and its call's web.TIMEOUT), and the PAUSE after it; the last search a run starts ends within it
+WORST_SECONDS = (
+    (1 + len(RETRIED)) * (google_search.WAIT_SECONDS + 1) + sum(RETRIED.values()) + KIWI_PAUSE + web.TIMEOUT + PAUSE
+)
+BUDGET = 20  # searches of Google a run makes, unless told otherwise (fares.yml's FARE_BUDGET, or its input)
+# a run starts no search after this long, so that with WORST_SECONDS and the job's other steps it ends within the
+# timeout-minutes of fares.yml
+MAX_SECONDS = 1200
 # A share of each run's budget goes to searching weekends Google priced from home that day from another city as well,
 # so that a report (mise run fares -- accuracy) can tell how well home's price predicts theirs: Oslo
 # the most, Stavanger and Trondheim on a few, by weight.
@@ -237,11 +260,9 @@ class Asked(NamedTuple):
     friday: dt.date
 
 
-def search(
-    asked: Asked, vendor: FareVendor, found: tuple[Offer, ...] | str, *, listed: bool = False, nearby: int | None = None
-) -> Search:
-    """A search made now, for any flight: its offers (none when the vendor listed no flight, then with the nearby
-    dates Google's page priced, or listed when flights were, with no price), or the words of its failure."""
+def search(asked: Asked, vendor: FareVendor, found: tuple[Offer, ...] | str, *, listed: bool = False) -> Search:
+    """A search made now, for any flight: its offers (none when the vendor listed no flight, or listed when flights
+    were, with no price), or the words of its failure."""
     at = now()
     failed = isinstance(found, str)
     outcome = (
@@ -264,26 +285,23 @@ def search(
         outcome=outcome,
         note=found[:NOTE_LENGTH] if failed else None,
         offers=() if failed else found,
-        nearby=nearby,
     )
 
 
-def google(asked: Asked) -> Search | Declined:
-    """Google's outbound page for a Friday-to-Monday return (pipeline/fli_page.py): each way out priced, an offer on
-    one ticket with its stops out; flights with no price listed; an empty page none, with the nearby dates it priced;
-    or why there is no page."""
+def google(reader: google_search.Reader, asked: Asked) -> Search | Declined:
+    """Google's answer to a Friday-to-Monday return, read in the run's browser (pipeline/google_search.py): each way
+    out priced, an offer on one ticket with its stops out; flights with no price listed; none when it lists no way out;
+    or why there is no answer."""
     origin, airport, friday = asked
-    page = fli_page.page(origin, airport, friday, friday + dt.timedelta(days=NIGHTS))
-    if isinstance(page, Declined):
-        return page
-    if isinstance(page, fli_page.Empty):
-        return search(asked, FareVendor.GOOGLE, (), nearby=page.nearby)
+    rows = reader.search(origin, airport, friday, friday + dt.timedelta(days=NIGHTS))
+    if isinstance(rows, Declined):
+        return rows
     offers = tuple(
         Offer(price=r.price, ticket=FareTicket.ONE_TICKET, stops_out=r.stops, stops_back=None, airlines=r.airlines)
-        for r in page
+        for r in rows
         if r.price
     )
-    return search(asked, FareVendor.GOOGLE, offers, listed=bool(page))
+    return search(asked, FareVendor.GOOGLE_CHROME, offers, listed=bool(rows))
 
 
 def kiwi(asked: Asked, google: Search) -> Search:
@@ -352,17 +370,27 @@ class Searched:
     declined: Declined | None = None
 
 
-def searched(asked: Asked, *, resold: bool) -> Searched:
-    """A weekend's search, tried once more after a minute when Google refuses it, kept as failed when it gives no
-    answer; and when Google answered and resold is asked (a search from home), the reseller's search of it too,
-    KIWI_PAUSE later: its self-transfers for the weekend's Flights, and its fare on one ticket where Google priced
-    none (fare_weekends.priced_by). The reseller's failure is kept, and fails nothing."""
-    found = google(asked)
-    if isinstance(found, Declined) and found.why == fli_page.REFUSED:
-        time.sleep(RETRY_AFTER)
-        found = google(asked)
+def retry_after(declined: Declined) -> int | None:
+    """The seconds to wait before a search Google gave no answer is tried once more (RETRIED); None when it is not
+    tried again."""
+    return RETRIED.get(declined.why)
+
+
+def searched(reader: google_search.Reader, asked: Asked, *, resold: bool) -> Searched:
+    """A weekend's search, tried once more each time Google refuses it or answers its error 13 for the first time in
+    it (retry_after), so a refusal always has its minute's wait and its second try, and a search kept as refused was
+    refused twice; kept as failed when it gives no answer; and when Google answered and resold is asked (a search from
+    home), the reseller's search of it too, KIWI_PAUSE later: its self-transfers for the weekend's Flights, and its
+    fare on one ticket where Google priced none (fare_weekends.priced_by). The reseller's failure is kept, and fails
+    nothing."""
+    found = google(reader, asked)
+    tried: set[str] = set()
+    while isinstance(found, Declined) and found.why not in tried and (wait := retry_after(found)) is not None:
+        tried.add(found.why)
+        time.sleep(wait)
+        found = google(reader, asked)
     if isinstance(found, Declined):
-        return Searched((search(asked, FareVendor.GOOGLE, found.why),), found)
+        return Searched((search(asked, FareVendor.GOOGLE_CHROME, found.why),), found)
     if not resold:
         return Searched((found,))
     time.sleep(KIWI_PAUSE)
@@ -380,7 +408,7 @@ def said(found: Searched) -> str:
         case FareOutcome.LISTED:
             words = 'flights with no price'
         case FareOutcome.NONE:
-            words = 'no flight listed' + (f', {g.nearby} nearby dates priced' if g.nearby else '')
+            words = 'no flight listed'
     for k in rest:
         priced = f'{min(o.price for o in k.offers):.0f} EUR' if k.offers else str(k.outcome)
         words += f'; the reseller: {priced}' + (f' ({k.note})' if k.note else '')
@@ -396,9 +424,11 @@ def pair_origin(asked: Asked, day: dt.date) -> str:
 
 @dataclass
 class Run:
-    """A refresh under way: its file, when it stops starting searches (until, by time.time()), the searches it made,
-    those Google gave no answer to (no page), and how many it gave none to in a row, the last ones."""
+    """A refresh under way: the browser it reads Google with, its file, when it stops starting searches (until, by
+    time.time()), the searches it made, those Google gave no answer to, and how many it gave none to in a row, the last
+    ones."""
 
+    reader: google_search.Reader
     path: Path
     until: float
     kept: list[Search] = field(default_factory=list[Search])
@@ -407,7 +437,7 @@ class Run:
 
     def search(self, asked: Asked, *, resold: bool, days_away: int) -> Searched:
         """One weekend's searches, kept in the run's file at once, and said."""
-        found = searched(asked, resold=resold)
+        found = searched(self.reader, asked, resold=resold)
         self.kept += found.searches
         fare_store.write(self.path, self.kept)
         where = f'{asked.origin}→{asked.airport} {asked.friday}'
@@ -419,10 +449,11 @@ class Run:
 
     @property
     def stopped(self) -> bool:
-        """Whether Google or fli stopped the run: Google refused the last search twice or gave no answer to
-        MOST_DECLINED in a row, or a search can never succeed as made."""
+        """Whether Google or the browser stopped the run: Google refused the last search twice or gave no answer to
+        MOST_DECLINED in a row, or a search can never succeed as made (no browser starts, a price in another
+        currency)."""
         last = self.declined[-1][1] if self.declined else None
-        refused = last is not None and (last.stops or last.why == fli_page.REFUSED)
+        refused = last is not None and (last.stops or last.why == google_search.REFUSED)
         return refused or self.declined_in_a_row >= MOST_DECLINED
 
     @property
@@ -432,22 +463,23 @@ class Run:
 
     @property
     def failed(self) -> bool:
-        """Whether the run failed at its work: it was stopped, or it searched Google and got no page for any search
-        (fare_weekends.paged): an empty page is an answer of Google's server as much as one that lists flights."""
-        google = [s for s in self.kept if s.vendor == FareVendor.GOOGLE]
+        """Whether the run failed at its work: it was stopped, or it searched Google and got no answer to any search
+        (fare_weekends.paged): an answer listing no flight is an answer of Google's server as much as one that lists
+        flights."""
+        google = [s for s in self.kept if s.vendor in GOOGLE]
         return self.stopped or (bool(google) and not any(fare_weekends.paged(s) for s in google))
 
 
 class Paged(NamedTuple):
-    """A weekend searched from home this run that Google gave a page for, and that search of Google's."""
+    """A weekend searched from home this run that Google answered, and that search of Google's."""
 
     weekend: Weekend
     google: Search
 
 
 def from_home(run: Run, history: Sequence[Search], budget: int) -> list[Paged]:
-    """Search the weekends due today, in the queue's order, within the budget, which each page Google gave counts in:
-    those Google gave a page for (fare_weekends.paged)."""
+    """Search the weekends due today, in the queue's order, within the budget, which each answer Google gave counts
+    in: those Google answered (fare_weekends.paged)."""
     pages: list[Paged] = []
     for item in queue(history=history):
         if not item.due or len(pages) >= budget or run.over:
@@ -472,16 +504,30 @@ def paired(run: Run, paged: Sequence[Paged], pairs: int, day: dt.date) -> None:
         time.sleep(PAUSE)
 
 
-def refresh(budget: int, max_seconds: int) -> None:
-    """Search the weekends due today, then pair a share of those Google priced (PAIR_SHARE of the budget, kept for
-    them) with a search from another city, writing the run's file after each, and says how many pages Google gave,
-    how many of them listed no flight, and how many festival weekends stand at each standing. It names the searches
-    Google gave no answer to, a refusal or a stop first, and exits 1 when the run failed at its work (Run.failed): a
-    search with no answer now and then is tried again in a later run, and fails none."""
+def budget_fits(budget: int, max_seconds: int) -> bool:
+    """Whether a run's budget of searches, each taking about SEARCH_SECONDS, fits in the time it may take."""
+    return budget * SEARCH_SECONDS <= max_seconds
+
+
+def refresh(budget: int, max_seconds: int, browser: str | None = None) -> None:
+    """Search the weekends due today in one browser (browser: the Chromium to run, read_page's notes), then pair a
+    share of those Google priced (PAIR_SHARE of the budget, kept for them) with a search from another city, writing
+    the run's file after each, and says how many answers Google gave, how many of them listed no flight, and how many
+    festival weekends stand at each standing. It names the searches Google gave no answer to, a refusal or a stop
+    first, and exits 1 when the run failed at its work (Run.failed): a search with no answer now and then is tried
+    again in a later run, and fails none. A budget that does not fit in max_seconds (budget_fits) searches nothing."""
+    if not budget_fits(budget, max_seconds):
+        took = budget * SEARCH_SECONDS
+        sys.exit(
+            f'{budget} searches take about {took} s, more than the {max_seconds} s the run may take: raise '
+            "--max-seconds with the budget, and the job's timeout-minutes with it (.github/workflows/fares.yml)"
+        )
     history, today = fare_store.read(), now().date()
-    run, pairs = Run(fare_store.run_file(now()), time.time() + max_seconds), round(budget * PAIR_SHARE)
-    paged = from_home(run, history, budget - pairs)
-    paired(run, paged, pairs, today)
+    pairs = round(budget * PAIR_SHARE)
+    with google_search.Reader(browser) as reader:
+        run = Run(reader, fare_store.run_file(now()), time.time() + max_seconds)
+        paged = from_home(run, history, budget - pairs)
+        paired(run, paged, pairs, today)
     live = fare_weekends.weekends(today)
     pages = [s for s in fare_weekends.from_home(run.kept) if fare_weekends.paged(s)]
     empty = sum(s.outcome == FareOutcome.NONE for s in pages)
@@ -492,7 +538,7 @@ def refresh(budget: int, max_seconds: int) -> None:
     )
     why = calls.failed('searches', run.declined)
     if run.failed:
-        sys.exit(why or 'Google gave no page to any search')
+        sys.exit(why or 'Google answered none of the searches')
     if why:
         print(why)
 
@@ -538,8 +584,9 @@ def show(airport: str | None, origin: str | None, limit: int) -> None:
 
 class Args(argparse.Namespace):
     cmd: str = ''
-    budget: int = 20
-    max_seconds: int = 1200
+    budget: int = BUDGET
+    max_seconds: int = MAX_SECONDS
+    browser: str | None = None
     airport: str | None = None
     origin: str | None = None
     limit: int = 20
@@ -549,8 +596,9 @@ def main() -> None:
     ap = argparse.ArgumentParser(description='Search Friday-to-Monday fares for festival weekends that are due.')
     sub = ap.add_subparsers(dest='cmd', required=True)
     r = sub.add_parser('refresh', help='search the weekends due today and keep the searches')
-    _ = r.add_argument('--budget', type=int, default=20, help='most searches of Google in this run')
-    _ = r.add_argument('--max-seconds', type=int, default=1200, help='stop starting searches after this long')
+    _ = r.add_argument('--budget', type=int, default=BUDGET, help='most searches of Google in this run')
+    _ = r.add_argument('--max-seconds', type=int, default=MAX_SECONDS, help='stop starting searches after this long')
+    _ = r.add_argument('--browser', help='the Chromium to run (default: see pipeline/read_page.py)')
     _ = sub.add_parser('plan', help='list the weekends due today, without searching')
     _ = sub.add_parser('accuracy', help=f"write {fare_accuracy.REPORT}: how well home's fare predicts other cities'")
     s = sub.add_parser('show', help='list the searches kept, the latest first')
@@ -559,7 +607,7 @@ def main() -> None:
     _ = s.add_argument('--limit', type=int, default=20, help='how many to list')
     a = ap.parse_args(namespace=Args())
     if a.cmd == 'refresh':
-        refresh(a.budget, a.max_seconds)
+        refresh(a.budget, a.max_seconds, a.browser)
     elif a.cmd == 'show':
         show(a.airport, a.origin, a.limit)
     elif a.cmd == 'accuracy':
