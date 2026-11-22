@@ -1,107 +1,91 @@
-# Lint rules: Biome to oxlint and stylelint
+# Lint rules
 
-Biome linted the site's TypeScript until Phase 2 of the move to the Oxc toolchain handed that to oxlint (the refactor
-plan's task 2.3). This page maps every rule Biome ran on the TypeScript to oxlint's, with the settings to carry, the
-rules that have no equivalent and what the owner decided of them. `.oxlintrc.json` (task 2.4) is built from it, rule by
-rule, with no category turned on, so a rule not listed as mapped is not enabled. The brief, the questions (Q2) and the
-tasks this page names were the move's own documents, removed when it ended; each is in the commit before:
-`git show bce372d:refactor-plan.md` is the plan, with each phase's report and its commits task by task,
-`git show bce372d:refactor-brief.md` the brief and its questions, and `git show bce372d:refactor-task-<n>.md` a task's
-record (`refactor-task-2.6c.md`).
+What lints the site's code, the rules each tool runs with their settings and reasons, the rules deliberately off or not
+carried, the per-folder exceptions, and the house rules with how each is proven.
 
-Measured on 19 November 2026, Biome 2.6.3 and oxlint 1.94.0 (the version task 2.4 pins). The 8 accepted losses are the
-brief's; the owner decided the rest on 19 November (below): of the 22 unmapped rules, 5 became house rules and 17
-accepted losses; the rules for frameworks the site does not use are losses but Solid's, on since task 4.2; the 33
-type-aware rules new in oxlint are on; Q2, the info-level rules, is answered.
+| What | Tool | Config | Task |
+| -- | -- | -- | -- |
+| the site's TypeScript (`site/`), its tests (`tests/`), the house rules (`lint/`), `vite.config.ts`, `vitest.config.ts` | oxlint, type-aware (`oxlint-tsgolint`), with `eslint-plugin-solid` and the house plugin | `.oxlintrc.json` | `lint:oxlint` |
+| the stylesheet (`public/css/`) | stylelint, with the house rule `house/baseline` | `.stylelintrc.yaml` | `lint:stylelint` |
+| the JSON configs at the root | `tests/test_configs.py` | (the test) | `lint:configs` |
+| the layout of all of these, and the order of the import statements | oxfmt | `.oxfmtrc.jsonc` | `format:site` |
 
-**In oxlint since task 2.4** (`.oxlintrc.json`, `mise run lint:oxlint`): every mapped rule, with the settings and
-exceptions below, as an error: those of Biome's `error` and `warn` rules, the info-level ones as Q2 decides, and the JSX
-rules mapped from Biome's `error` and `warn` (the JSX ones Biome reports as `info` stay off). Off: every accepted loss
-and the rules Biome turned off. **On since task 2.6c:** the 33 type-aware rules new in oxlint (below). **On since task
-4.2:** `eslint-plugin-solid`'s `v2-strict` rules and nine house rules for JSX ([Solid's rules](#solids-rules), the house
-rules' table). Biome ran all of its rules beside it until task 2.7; from then it read only the stylesheet and the JSON
-configs, until issue #23 removed it ([The stylesheet](#the-stylesheet-biome-to-stylelint),
-[The JSON configs](#the-json-configs-after-biome)). The findings the rules' oxlint versions made on the code were fixed,
-or suppressed on their line with the reason in [oxlint's suppressed findings](../lint-false-positives.md).
+A warning fails each: oxlint's `denyWarnings`, stylelint's `--max-warnings 0`. tsc (strict, `erasableSyntaxOnly`) and
+knip hold some checks a lint rule would otherwise hold; where a rule is off or not carried for that reason, the tables
+below say so. A suppression is one line's, names its rules and gives its reason; `tests/test_suppressions.py` lists
+each, and [Suppressed findings](../lint-false-positives.md) explains each.
 
-## Counts
+The rule set is Biome's `preset: all`, each rule carried by its equivalent in oxlint or stylelint, or by a house rule,
+or knowingly not carried; and, beyond it, the type-aware rules oxlint adds, `eslint-plugin-solid`'s rules and
+stylelint's stricter ones. The tables keep the Biome rule each rule holds, in one column, so that a rule's settings and
+its reach can be read against the rule it carries. An oxlint or stylelint rule is a Biome rule's equivalent when Biome's
+own metadata names it as the rule's source (what `biome migrate eslint` and `biome migrate stylelint` apply, "inspired
+by" included), or when the two rules' documentation describes the same check. Biome itself is not installed.
 
-|  | Rules |
-| -- | -- |
-| Enabled in Biome (`biome rage --linter`) | 484 |
-| of which for TypeScript and JavaScript | 431 |
-| for today's code (no JSX, no framework) | 291 |
-| mapped | 261: 202 by Biome's source metadata, 39 "inspired by", 20 by the rules' docs |
-| accepted losses | 8 of the brief's 11 (three have an equivalent) |
-| unmapped, decided by the owner (19 November) | 22: 5 become house rules (task 2.6b), 17 accepted losses |
-| for JSX (Phase 4's `.tsx`) | 48: 46 mapped (38 on, 8 info-level off); `noSuspiciousSemicolonInJsx` the house rule `semicolons`; `noSvgWithoutTitle` held by construction and `svgs` (task 4.2) |
-| for frameworks the site does not use | 92: 88 accepted losses; Solid's four on since 4.2 (three from `eslint-plugin-solid`, `noDuplicatedSpreadProps` the house rule `spreads`) |
-| for CSS, JSON, GraphQL, HTML or YAML | 53: the CSS ones to stylelint ([The stylesheet](#the-stylesheet-biome-to-stylelint)), the JSON ones [held by a test or dropped](#the-json-configs-after-biome) |
-| Off in Biome (`biome.jsonc`), staying off | 22: 19 for TypeScript, 3 for CSS (now stylelint's, [below](#the-stylesheet-biome-to-stylelint)); and 3 off in one folder |
-| Info-level rules among today's (report, never fail) | 96, 9 of them with findings (Q2) |
-| Type-aware oxlint rules with no Biome equivalent | 33, all on (task 2.6c) |
+## oxlint
 
-How each figure was taken:
+`.oxlintrc.json` turns no category on: each rule is named, so a rule not listed is off. Its options: `typeAware` (the
+type-aware rules, through `oxlint-tsgolint` in `node_modules`, so oxlint runs from the repository's root),
+`denyWarnings`, and `reportUnusedDisableDirectives: "error"`, so a suppression with nothing to suppress fails. Every
+rule on is an error.
 
-- **Enabled**: the 484 rules `pnpm exec biome rage --linter` lists. A rule is for TypeScript when the examples of
-  `biome explain <rule>` are JavaScript, TypeScript or JSX (three more by their description: `noRestrictedTypes`,
-  `useFilenamingConvention`, `noEmptySource`); for JSX alone when they are JSX only; for a framework when its "Domains"
-  are React, Next, Vue, Qwik, Solid, React Native, Playwright, Drizzle or Turborepo.
-- **Mapped by source metadata**: Biome records each rule's ESLint-family source, and `biome migrate eslint` applies it.
-  For each of oxlint's 872 rules (`oxlint --rules -f json`), a one-rule ESLint config was migrated, with
-  `--include-nursery`, then with `--include-inspired`: the Biome rule it yields is that oxlint rule's equivalent. Every
-  oxlint name here is in `--rules`.
-- **Mapped by docs**: where Biome's metadata names no ESLint source (its own rules, Clippy's, nursery rules), the oxlint
-  rule whose own documentation describes the same check, or cites the same upstream rule.
-- **Findings**: `biome lint --reporter=json`, and oxlint on a copy of `site/` and `tests/site/` with `oxlint-tsgolint`
-  7.0.2007 (`--type-aware`), default options.
+The plugins: `typescript`, `unicorn`, `import`, `oxc`, `vitest`, `jest` (two test rules oxlint has only as jest's, which
+it runs on Vitest files too), `node`, `promise`, `react` (its JSX rules and `button-has-type`), `jsx-a11y` and `nextjs`
+(`google-font-display`); and two JS plugins (`jsPlugins`), `eslint-plugin-solid` and the house rules' `lint/plugin.ts`.
+The files the house rules' test lints with a config of its own, `lint/fixtures/`, are ignored (`ignorePatterns`), since
+some break a rule on purpose.
 
-## Settings to port
+### Settings
 
-Biome's options and defaults where oxlint's differ. Without them the bare mapping fails on code that passes Biome.
+Where a rule's defaults differ from the Biome rule it holds, the setting keeps Biome's reach; without it the rule would
+refuse code the rule set allows.
 
 | oxlint rule | Setting | Why |
 | -- | -- | -- |
-| `eslint/no-use-before-define` | `{"functions": false, "classes": false, "variables": false}` | `noInvalidUseBeforeDeclaration` ignores function declarations, and a use inside a function of a name declared after it (its examples); `functions: false` alone left 66 findings, each a closure reading a later `const` |
-| `eslint/eqeqeq` | `["always", {"null": "ignore"}]` | `noDoubleEquals` allows `== null`; `noEqualsToNull` is off: "== null is null or undefined, both absent" |
-| `eslint/max-params` | `{"max": 4}`, error | `useMaxParams`'s default; its `warn` fails under `--error-on-warnings` |
-| `typescript/explicit-member-accessibility` | `{"accessibility": "no-public"}` | `useConsistentMemberAccessibility`'s default |
-| `vitest/consistent-test-it` | `{"fn": "test", "withinDescribe": "it"}`, in `tests/**` | `biome.jsonc` set `function: "test"`; Biome's `withinDescribe` default was `it`, which `tests/site/roster.test.ts` uses inside `describe` |
-| `eslint/max-nested-callbacks` | `{"max": 5}` | `noExcessiveNestedCallbacks`'s default (ESLint's is 10) |
-| `eslint/no-labels` | `{"allowLoop": true}` | `noConfusingLabels` allows a loop's label |
-| `eslint/no-else-return` | `{"allowElseIf": false}` | `noUselessElse` reports an `else if` after a return |
-| `typescript/ban-ts-comment` | `{"ts-ignore": true, "ts-nocheck": false, "ts-check": false, "ts-expect-error": false}` | `noTsIgnore` refuses `@ts-ignore` alone |
-| `unicorn/filename-case` | `{"cases": {"camelCase": true, "kebabCase": true, "snakeCase": true}}` | `useFilenamingConvention`'s default cases |
-| `import/extensions` | `["always", {"ignorePackages": true}]` | `useImportExtensions`: the imports name the `.ts` file |
-| `eslint/no-unused-vars` | `{"args": "all", "argsIgnorePattern": "^_", "varsIgnorePattern": "^_", "caughtErrorsIgnorePattern": "^_", "destructuredArrayIgnorePattern": "^_"}` | `noUnusedFunctionParameters` reports any unused parameter; `noUnusedVariables` passes a name starting with `_` (the bare run found six: `for (const _ of …)`, `{ sort: _order, ...rest }`) |
-| `unicorn/no-useless-undefined` | `{"checkArguments": false, "checkArrowFunctionBody": false}` | `noUselessUndefined` reports an initialiser, a default, a `return` or `yield` of `undefined`, not an argument (`isCurrency(undefined)`) or an arrow's body (`() => undefined`) |
-| `oxc/no-barrel-file` | `{"threshold": 0}` | `noBarrelFile` refuses any barrel; oxlint's counts modules |
+| `eslint/no-use-before-define` | `{"functions": false, "classes": false, "variables": false}` | a use the code reaches before the declaration is refused, not a function declaration used before it, nor a closure reading a later `const` |
+| `eslint/eqeqeq` | `["always", {"null": "ignore"}]` | `== null` is null or undefined, both absent (`eslint/no-eq-null` is off) |
+| `eslint/max-params` | `{"max": 4}` | Biome's `useMaxParams` default |
+| `typescript/explicit-member-accessibility` | `{"accessibility": "no-public"}` | Biome's `useConsistentMemberAccessibility` default |
+| `vitest/consistent-test-it` | `{"fn": "test", "withinDescribe": "it"}`, in `tests/**` and `vitest.config.ts` | a test is `test()`; inside a `describe`, `it`, as `tests/site/roster.test.ts` writes it |
+| `eslint/max-nested-callbacks` | `{"max": 5}` | Biome's `noExcessiveNestedCallbacks` default (ESLint's is 10) |
+| `eslint/no-labels` | `{"allowLoop": true}` | a loop's label is allowed, as Biome's `noConfusingLabels` allows it |
+| `eslint/no-else-return` | `{"allowElseIf": false}` | an `else if` after a return is refused too, as Biome's `noUselessElse` refuses it |
+| `typescript/ban-ts-comment` | `{"ts-ignore": true, "ts-nocheck": false, "ts-check": false, "ts-expect-error": false}` | `@ts-ignore` alone is refused (Biome's `noTsIgnore`); a `@ts-expect-error` gives its reason (`tests/test_suppressions.py`) |
+| `unicorn/filename-case` | `{"cases": {"camelCase": true, "kebabCase": true, "snakeCase": true}}` | Biome's `useFilenamingConvention` default cases |
+| `import/extensions` | `["always", {"ignorePackages": true}]` | the imports name the `.ts` file (`allowImportingTsExtensions`; Vite resolves them) |
+| `eslint/no-unused-vars` | `{"args": "all", "argsIgnorePattern": "^_", "varsIgnorePattern": "^_", "caughtErrorsIgnorePattern": "^_", "destructuredArrayIgnorePattern": "^_"}` | any unused parameter is refused (Biome's `noUnusedFunctionParameters`), and a name starting with `_` is meant unused (`for (const _ of …)`, `{ sort: _order, ...rest }`) |
+| `unicorn/no-useless-undefined` | `{"checkArguments": false, "checkArrowFunctionBody": false}` | an initialiser, a default, a `return` or a `yield` of `undefined` is refused, not an argument (`isCurrency(undefined)`) or an arrow's body (`() => undefined`), as Biome's `noUselessUndefined` reads it |
+| `oxc/no-barrel-file` | `{"threshold": 0}` | any barrel is refused, as Biome's `noBarrelFile` refuses it; oxlint's counts modules |
+| `eslint/sort-imports` | `{"ignoreDeclarationSort": true, "ignoreCase": true}` | the names inside an import's braces in one order; the statements are oxfmt's ([Import order](#import-order)) |
+| `typescript/no-confusing-void-expression`, `typescript/prefer-readonly-parameter-types`, `typescript/return-await` | (below) | [Type-aware rules](#type-aware-rules) |
 
-Plugins the mapping needs in `.oxlintrc.json`: `typescript`, `unicorn`, `import`, `oxc`, `vitest`, `jest` (two test
-rules oxlint has only as jest's, run on Vitest files too), `node`, `promise`, `react` (`button-has-type`), and for the
-JSX rules `jsx-a11y`.
+### Per-folder exceptions
 
-## Per-folder exceptions
-
-From `biome.jsonc`'s `overrides`, each with its reason; oxlint took them as `overrides` too.
+`.oxlintrc.json`'s `overrides`, by globs from the repository's root:
 
 | Files | Rule | Setting | Reason |
 | -- | -- | -- | -- |
-| `site/report.ts` | `eslint/no-console` | off | "the one place the site writes to the console: what went wrong, with where" |
-| `tests/**`, `vitest.config.ts` | `import/no-nodejs-modules` | off | "the tests and their config run in Node" |
-| `tests/**`, `vitest.config.ts` | `vitest/consistent-test-it` | above | "a test is test() wherever it is" |
-| `tests/**`, `vitest.config.ts` | `useTopLevelRegex` | (none) | "an assertion's pattern, matched once"; moot, the rule is an accepted loss |
-| `tests/**`, `vitest.config.ts` | `eslint/no-await-in-loop` | off | Q2: a test drives the page step by step |
-| `site/roster.ts` | `eslint/prefer-destructuring` | off | Q2: the findings in the site's code were left until a task rewrote their file (`friends.ts`'s went as task 4.7 rewrote it, `sources.ts`'s and `tables.ts`'s as task 4.8 did); the move to Solid rewrote none of the pure modules, and one finding is left here |
-| `site/db.ts` | `eslint/max-classes-per-file` | off | Q2: the same, `SiteUpdating` and `Sql` |
-| `lint/plugin.ts` | `import/no-default-export` | off | new (task 2.5): oxlint loads a JS plugin from its module's default export, as ESLint does |
-| `lint/privates.ts` | `import/no-nodejs-modules` | off | new (task 2.6b): `house/privates` reads the module an import names from disk, oxlint showing a rule one file |
-| `vitest.config.ts`, `vite.config.ts` | `import/no-default-export` | off (owner, 19 November: Vitest reads only a default export) | new: Biome never linted the file (not in `files.includes`); Vitest reads its default export, which the rule refuses; off in `.oxlintrc.json` since 2.4, its comment naming the owner's decision; `vite.config.ts`, which Vite reads the same way, since 3.2 |
+| `site/report.ts` | `eslint/no-console` | off | the one place the site writes to the console: what went wrong, with where |
+| `**/*.tsx` | `eslint/no-unassigned-vars`, `solid/no-unassigned-vars` | off, on | Solid's counts `ref={el}` as an assignment, as `v2-strict` has it ([Solid's rules](#solids-rules)) |
+| `tests/**`, `vitest.config.ts` | `import/no-nodejs-modules` | off | the tests and their config run in Node |
+| `tests/**`, `vitest.config.ts` | `vitest/consistent-test-it` | on, [Settings](#settings) | a test is `test()` wherever it is |
+| `tests/**`, `vitest.config.ts` | `eslint/no-await-in-loop` | off | a test drives the page step by step; in the site's code the rule holds |
+| `site/roster.ts` | `eslint/prefer-destructuring` | off | the rule's one finding in the site's code, written as it is |
+| `site/db.ts` | `eslint/max-classes-per-file` | off | the module's two classes, `SiteUpdating` and `Sql` |
+| `lint/plugin.ts` | `import/no-default-export` | off | oxlint loads a JS plugin from its module's default export, as ESLint does |
+| `lint/privates.ts` | `import/no-nodejs-modules` | off | `house/privates` reads the module an import names from disk, since oxlint shows a rule one file |
+| `lint/stylelint/*.ts` | `import/no-nodejs-modules` | off | the house's stylelint rules run in Node: `house/baseline` reads `package.json`'s `browserslist` |
+| `vite.config.ts`, `vitest.config.ts` | `import/no-default-export` | off | Vite and Vitest read their configs from the default export |
 
-The house rules (`lint/plugin.ts`, run as `house/<rule>`, each with its fixtures: [Contributing](../../CONTRIBUTING.md),
-"House rules") are scoped by `.oxlintrc.json`'s overrides too, by the files' paths from the root, never by a rule
-reading the path: a path tested in the rule matches the folders above the checkout as well (task 1.8: a checkout under a
-folder named `tests` made the view-import rule lint the site). Each rule, where it is on and the files it spares:
+The house rules' own overrides are in the next section's table.
+
+### The house rules
+
+`lint/plugin.ts` is one oxlint JS plugin, each rule a module beside it (`lint/<rule>.ts`, ESLint's rule API), run as
+`house/<rule>`. A rule is scoped by `.oxlintrc.json`'s overrides, by the files' paths from the root, never by reading
+the path itself: a path tested in the rule would match the folders above the checkout as well, so that a checkout under
+a folder named `tests` would change what a rule sees. Where each rule is on and the files it spares
+(`tests/site/rules.test.ts` holds this table to `.oxlintrc.json`):
 
 | Rule | On | Off |
 | -- | -- | -- |
@@ -134,805 +118,695 @@ folder named `tests` made the view-import rule lint the site). Each rule, where 
 | `tests` | `tests/**` | the entries (`site/main.ts`, `site/review.ts`) loaded by `tests/site/app.ts`, and the shell's seam (`placed`) imported by `tests/site/placed.browser.test.tsx`: the rule's options in each file's override |
 | `thens` | `*.tsx` | (none) |
 
-The 28 house rules: the 13 that were Grit's, moved to oxlint's plugin (`session` in task 2.5, the twelve others in task
-2.6), the 5 unmapped rules the owner kept (task 2.6b) and `env`, `node/no-process-env`'s reach for a `process` imported
-from `node:process` (task 2.6b); Biome runs no plugin. Task 4.2 added nine for Solid's `.tsx`: the brief's four
-migration rules (`thens`, `flags`, `mirrors`, `legacy`, on `.tsx` alone), `styles`, `focuses`, and the owner's three of
-19 November (`semicolons`, `spreads`, `svgs`); and it taught `states`, `buttons` and `markup` the JSX form of what they
-refuse. Task 4.10, the move's last, kept the four that were Grit's for the `h()` views (`markup`, `classes`, `buttons`,
-`clicks`), each checked on its own fixtures against what now refuses the same: `solid/no-innerhtml` refuses 2 of the 29
-lines `markup` refuses (a bare `innerHTML` prop given an expression or nothing); `react/button-has-type`, even told to
-refuse `submit` and `reset`, lets a spread after the type through; nothing refuses `classList`, `className` or
-`stopPropagation()`. Their messages name JSX, where they named `dom.ts`'s `h()`, `toggle()` and `button()`.
+What each refuses, and what it lets through (each module's header says it in full):
 
-## Accepted losses
-
-The brief's eleven, checked against the mapping. Eight have no oxlint equivalent and are dropped knowingly, as the brief
-lists them:
-
-- `noStringCaseMismatch` (correctness, error)
-- `noVoidTypeReturn` (correctness, error)
-- `noMisleadingReturnType` (nursery, error)
-- `useTopLevelRegex` (performance, warn)
-- `noShoutyConstants` (style, info)
-- `noUnusedTemplateLiteral` (style, warn)
-- `noEvolvingTypes` (suspicious, warn)
-- `noImplicitAnyLet` (suspicious, error)
-
-Three on the brief's list have an equivalent and are mapped instead: `noFlatMapIdentity` (`unicorn/prefer-array-flat`),
-`noParametersOnlyUsedInRecursion` (`oxc/only-used-in-recursion`) and `noMisrefactoredShorthandAssign`
-(`oxc/misrefactored-assign-op`), the last two from the same Clippy rules as Biome's.
-
-## Unmapped, decided by the owner
-
-Rules with no oxlint equivalent that are not on the brief's list: dropping one needs the owner's approval (brief, "Stop
-and ask before"). Each with what holds the check without it, and the recommendation.
-
-**Answered by the owner, 19 November:** `noThisInStatic`, `noPrivateImports`, `useJsonImportAttributes` and
-`useNodeAssertStrict`, which nothing else holds, and `noProcessGlobal` for the tests become house rules of the oxlint
-plugin, each with its fixtures, before Biome stopped linting TypeScript (task 2.7); the six style rules and the ten held
-by tsc, the parser, knip or a mapped rule are accepted losses.
-
-| Biome rule | Level | What holds it |
+| Rule | Refuses | Lets through |
 | -- | -- | -- |
-| `complexity/noEmptyTypeParameters` | warn | tsc refuses `<>` with no parameter. Accept. |
-| `complexity/noRedundantDefaultExport` | warn | No default export, and `import/no-default-export` (mapped) refuses one. Accept. |
-| `complexity/noThisInStatic` | warn | No static member uses `this` today (`Sql`, `Drawing`). Kept: house rule `house/statics` (task 2.6b). |
-| `complexity/noUselessContinue` | info | A style rule with no oxlint twin; `eslint/no-continue` refuses every `continue` (`noContinue` is off). Accept. |
-| `complexity/noUselessStringRaw` | info | A style rule with no oxlint twin. Accept. |
-| `complexity/useSimpleNumberKeys` | warn | A style rule with no oxlint twin. Accept. |
-| `complexity/useSimplifiedLogicExpression` | info | A style rule with no oxlint twin. Accept. |
-| `complexity/useWhile` | warn | A style rule (sonarjs `prefer-while`) with no oxlint twin. Accept. |
-| `correctness/noPrivateImports` | warn | Keys on `@private`/`@package` JSDoc tags, which no file writes. Kept: house rule `house/privates` (task 2.6b). |
-| `correctness/noProcessGlobal` | info | The site has no `process` (tsconfig `types: []`); tests may use it. Kept for the tests: house rule `house/process` (task 2.6b). |
-| `correctness/noUndeclaredDependencies` | error | knip reports an unlisted dependency (`mise run knip`). Accept. |
-| `correctness/useJsonImportAttributes` | info | No module imports JSON: the data is fetched. Kept: house rule `house/json` (task 2.6b). |
-| `correctness/useSingleJsDocAsterisk` | info | A comment-style rule. Accept. |
-| `performance/noDynamicNamespaceImportAccess` | warn | No namespace import, and `import/no-namespace` (mapped) refuses one. Accept. |
-| `performance/noReExportAll` | warn | No module re-exports (`export *`); `oxc/no-barrel-file` with `threshold: 0` refuses a barrel. Accept. |
-| `style/noEnum` | warn | tsc's `erasableSyntaxOnly` refuses an enum. Accept. |
-| `style/noInlineStyles` | info | The CSP refuses inline styles at run time; `house/styles` refuses the `style` prop in JSX (task 4.2). Accept, held by `styles`. |
-| `style/useNodeAssertStrict` | warn | No file imports `node:assert`; tests assert with Vitest's `expect`. Kept: house rule `house/asserts` (task 2.6b). |
-| `suspicious/noDuplicateParameters` | error | A syntax error in a module (every file here is one): oxc's parser and tsc refuse it. Accept. |
-| `suspicious/noOctalEscape` | warn | A syntax error in strict mode, which every module is: the parser refuses it. Accept. |
-| `suspicious/noRedundantUseStrict` | warn | Every file is a module, so strict already; no file says `"use strict"`. Accept. |
-| `suspicious/useStrictMode` | warn | The same: modules are strict. Accept. |
+| `house/asserts` | `node:assert` named as a module anywhere (an import, a type's, an export from it, `import()`, `require()`, `import = require()`): assertions come from `node:assert/strict`, whose `equal()` and `deepEqual()` compare strictly (Biome's `useNodeAssertStrict`) | the bare `'assert'`, which is `unicorn/prefer-node-protocol`'s |
+| `house/buttons` | a JSX `<button>` whose `type` is not the string `button`, is given twice, or may be given again by a spread after it; a button built by a call of `h()` with the tag `'button'` | (`react/button-has-type`, even told to refuse `submit` and `reset`, lets a spread after the type through) |
+| `house/classes` | an element's `classList` or `className`, read anywhere, a test's too: classes are set by JSX's `class`, which tsc holds to the stylesheet's (`ClassName`, `site/jsx-runtime.d.ts`) |  |
+| `house/clicks` | `stopPropagation()`: a control inside a card keeps its click from the card with `bits.ts`'s `own()`, and `swipe.ts` alone keeps a swipe from the map |  |
+| `house/env` | `env` read from a `process` imported from `node:process`: a default or namespace binding's `.env`, written or destructured, and `env` imported by name (Biome's `noProcessEnv`, which reads both forms) | the global's, which is `node/no-process-env`'s; a type's `typeof process.env` |
+| `house/fetch` | the global `fetch`, called or not, and `window`'s, `globalThis`'s or `self`'s: every request goes through `net.ts`'s `get()` (a deadline, the view's signal, a failure for an answer that is no success) |  |
+| `house/flags` | a component's own loading or failure state: a name `loading`, `pending`, `busy`, `fetching`, `error` or `failed` (any case, with or without `is`, and its setter's) declared as a variable, a function or a class's field; a component shows them with `<Loading>`, `isPending` and `<Errored>` | an import, a parameter, a property, a store's key, a loop's variable |
+| `house/focuses` | `autofocus` in JSX in any spelling (`autofocus`, `autoFocus`, `prop:autofocus`, `attr:autofocus`) and as a key of an object spread: focus moves when the visitor moves it |  |
+| `house/formats` | `Intl.DateTimeFormat` named, `toLocaleDateString()` or `toLocaleTimeString()` called, and a string holding `google.com/travel`: dates are worded, and flight searches linked, by `ui.ts` alone |  |
+| `house/home` | a string or a template's text naming Bergen or BGO: the home city is the data's (`site.json`'s `home`) |  |
+| `house/json` | an import or an export of a module ending in `.json` without `{ type: 'json' }` (Biome's `useJsonImportAttributes`) | a type's import or export, which is erased |
+| `house/legacy` | `replaceChildren`, `createElement` and `createElementNS` wherever read, and an import of a relative `dom` module (hand-built elements' helpers): a Solid file renders with JSX alone | a package's `dom` (`@testing-library/dom`) |
+| `house/markup` | `innerHTML` or `outerHTML` read or written however, a call of a method that parses markup, and the `innerHTML` or `outerHTML` prop in JSX, bare, in a namespace or spread: the site's code puts markup in an element through `icons.ts`'s `Drawing.into` alone | Solid's own templates, which hold no value of the data's (`solid/no-innerhtml` refuses only a bare prop given an expression or nothing) |
+| `house/mirrors` | an effect whose apply half is a setter, or only calls setters given what the effect read: a derived value is a `createMemo` | a setter given anything else (a reaction), an apply half that does other work |
+| `house/privates` | an import of a name its JSDoc marks `@private` from outside its module, or `@package` from outside its folder (Biome's `noPrivateImports`); the imported module is read from disk, and one found but not read is refused | an export from, an `import()`, a package |
+| `house/process` | a value read of the global `process`, or `globalThis`'s: the code that runs in Node imports it from `node:process` (Biome's `noProcessGlobal`) | a type's `typeof process`, a binding of that name |
+| `house/promises` | `.then` with two arguments, however called: a failure goes to `.catch` (or `report.ts`'s `done`) |  |
+| `house/routes` | a string or a template's text starting with the hash of a route the site writes (`routes.ts`'s `HASH_ROUTES`): links are built by `routes.ts` |  |
+| `house/semicolons` | JSX text that starts with a semicolon and then the line's end (`<div />;`), which shows as text (Biome's `noSuspiciousSemicolonInJsx`) | a semicolon on a line of its own, after spaces, or followed by more text on its line |
+| `house/session` | `sessionStorage` named anywhere, as a property, a binding or a type's query: what the site remembers for the tab is `kept.ts`'s |  |
+| `house/spreads` | an element spreading the same name or member of names twice (`{...props}`, `{...props.a}`), each repeat (Biome's `noDuplicatedSpreadProps`) | a call (`{...f()}`), which may give another object each time |
+| `house/states` | a key of the states the site shows (`lint/state-keys.ts`, generated) in quotes where a value is compared or passed, a component's prop included: a state is `KEY.<point>.<NAME>` (`site/states.ts`), which the compiler holds to the table | an element's attribute; `plural()`'s words |
+| `house/statics` | `this` or `super` in a static method, accessor or block, arrow functions and nested classes' fields included: there they are the class itself (Biome's `noThisInStatic`) | a static field's initializer; a function of another kind, which has a `this` of its own |
+| `house/storage` | `localStorage` named anywhere: what the site remembers on the device is `kept.ts`'s |  |
+| `house/styles` | the `style` prop in JSX, whatever it is given, and a `style:` prop: Solid's compiler writes a constant style as a `style` attribute, which the page's Content-Security-Policy refuses; a style is a class of the stylesheet, or `bits.ts`'s `styled` ref |  |
+| `house/svgs` | a JSX `<svg>`, `<Dynamic component="svg">` and `dynamic(() => 'svg')`: an SVG is a drawing of `pipeline/drawings.py`'s, put in by `icons.ts`'s `Drawing`, which hides each from assistive technology (Biome's `noSvgWithoutTitle`, held by construction) |  |
+| `house/tests` | a test's import of a value from a site module `lint/tests.ts` does not list (the pure modules, those that use a browser API but draw nothing, `icons`, `media`, `owner`), a new module too: a test reaches a view through the page | a type from any module, with `import type` |
+| `house/thens` | a promise's `then`, called, handed on or destructured, in a `.tsx` file: a component reads async data from a memo under `<Loading>` | the modules that draw nothing (`site/net.ts` among them), which are `.ts` |
 
-## Reported as information by Biome (Q2)
+`thens`, `flags`, `mirrors` and `legacy` hold the views to Solid's way, and are on in `.tsx` files alone. No rule of
+oxlint's or Solid's refuses what `classes` and `clicks` refuse.
 
-`"preset": "all"` keeps each rule's default severity, and 96 of the rules above are `info`: they report and never fail
-`biome check --error-on-warnings`. oxlint has no info level, so each is an error or off. Nine have findings, 43 in all
-(Biome checked 134 files on 19 November); the other 87 have none.
+**How they are proven.** Each rule ships with fixtures in `lint/fixtures/<rule>/`, at the paths from the root the
+overrides read: a file it refuses, each refused line ending `// refused` (`// refused: <rule>` for another house rule's
+finding; in JSX's text, `{/* refused */}`), a `good.ts` (or `good.tsx`) written the intended way, in a file it is on for
+with no exemption, and, where it has exemptions, the forbidden form in an exempt file. `tests/site/rules.test.ts` lints
+the fixtures with the house rules as `.oxlintrc.json` sets them and fails on a finding on an unmarked line, a marked
+line not found, a rule without fixtures or a folder without a rule; it also checks that `.oxlintrc.json` turns each rule
+of the plugin on and no other `house/` name, and that the table above matches the overrides.
+[Contributing](../../CONTRIBUTING.md), "House rules", says how to add one.
 
-**Answered by the owner, 19 November (Q2: B):** rule by rule, each enforced or off, none left reporting without failing.
-In oxlint (Biome kept its settings until task 2.7, when it stopped reading the TypeScript):
+### Solid's rules
 
-- `noBitwiseOperators` (`eslint/no-bitwise`): off everywhere; every use is a deliberate hash or random number
-  (`site/ink.ts`, `tests/site/roster.test.ts`).
-- `noAwaitInLoops` (`eslint/no-await-in-loop`): an error in `site/` (no finding), off in `tests/**`, which drive the
-  page step by step.
-- `noExcessiveCognitiveComplexity` (`eslint/complexity`, another measure): off; fixing it means reworking six of the
-  site's functions, and Phase 2 changes no code.
-- `useDestructuring`, `useDomQuerySelector`, `useShorthandAssign`, `useNamedCaptureGroup`,
-  `useConsistentBuiltinInstantiation` and `noExcessiveClassesPerFile`: errors; the findings in the tests were fixed (one
-  suppressed: `Date()` in `app.browser.test.ts` is one of the forms of the clock the test reads); those in the site's
-  code stay, the rule off for those files until Phase 4 (Per-folder exceptions).
-- The other 87: errors, with the settings above. Their oxlint versions found what Biome's do not (16, all in task 2.4's
-  fixes or suppressions): `no-useless-undefined` 9 (arguments and arrow bodies, which Biome does not check: a setting),
-  `jest/no-done-callback` 4 (`test.for`, suppressed), `prefer-response-static-json` 2, `prefer-template` 1,
-  `numeric-separators-style` 1 (suppressed while Biome wanted the other grouping, then written as oxlint wants in task
-  2.7), `no-process-env` 1 (`vitest.config.ts`, new to linting).
+`eslint-plugin-solid` 0.20.0, loaded through `.oxlintrc.json`'s `jsPlugins` (ESLint is not installed: its peer is
+optional). oxlint loads a plugin's rules, not its configs, so its `v2-strict` config is written out rule by rule,
+everywhere oxlint lints: its errors and its warnings as errors, the rules it turns off as off, and its setting of
+Solid's version (`settings.solid.version: 2`), which nine of its rules read. In a `.tsx` file ESLint's
+`no-unassigned-vars` gives way to Solid's, as `v2-strict` has it: Solid's counts `ref={el}` as an assignment.
+`tests/site/rules.test.ts` holds the config to the plugin's own preset. Where a Solid rule and another refuse the same
+thing (`jsx-no-duplicate-props`, `jsx-no-script-url`), both are on.
 
-| Biome rule | Findings: site / tests | Where | oxlint | oxlint's findings: all (site) | Options |
-| -- | -- | -- | -- | -- | -- |
-| `suspicious/noBitwiseOperators` | 8 / 11 | the hash and the random numbers of `site/ink.ts`, and `tests/site/roster.test.ts` | `eslint/no-bitwise` | 19 (8) | site only: 8; everywhere: 19; off |
-| `performance/noAwaitInLoops` | 0 / 7 | tests that drive the page step by step | `eslint/no-await-in-loop` | 13 (0) | site only: 0; everywhere: 7; off |
-| `complexity/noExcessiveCognitiveComplexity` | 6 / 0 | `site/roster.ts` 3, `site/months.ts` 2, `site/festivals.ts` 1 | `eslint/complexity` | 3 (1) | site only: 6; everywhere: 6; off |
-| `style/useDestructuring` | 3 / 2 | `site/` 3, tests 2 | `eslint/prefer-destructuring` | 6 (4) | site only: 3; everywhere: 5; off |
-| `style/useDomQuerySelector` | 0 / 2 | tests | `unicorn/prefer-query-selector` | 2 (0) | site only: 0; everywhere: 2; off |
-| `style/useShorthandAssign` | 0 / 1 | a test | `eslint/operator-assignment` | 1 (0) | site only: 0; everywhere: 1; off |
-| `style/useNamedCaptureGroup` | 0 / 1 | a test | `eslint/prefer-named-capture-group` | 1 (0) | site only: 0; everywhere: 1; off |
-| `style/useConsistentBuiltinInstantiation` | 0 / 1 | `Date()` without `new` in `app.browser.test.ts:97`, which the test means (it checks the clock); oxlint's `unicorn/new-for-builtins` reports it (1) | `eslint/no-new-wrappers` | 0 (0) | site only: 0; everywhere: 1; off |
-| `style/noExcessiveClassesPerFile` | 1 / 0 | `site/db.ts` (`SiteUpdating`, `Sql`) | `eslint/max-classes-per-file` | 1 (1) | site only: 1; everywhere: 1; off |
+Biome's four Solid rules are held by `solid/no-destructure`, `solid/prefer-for`, `solid/no-react-specific-props` and the
+house rule `spreads`.
 
-The options: enforce in `site/` only (an override turning the rule off in `tests/**`), enforce everywhere, or off; the
-counts are the findings to fix or suppress first, by Biome's count. oxlint's versions count differently:
-`no-await-in-loop` reports 13 where Biome reports 7, and `complexity` measures cyclomatic, not cognitive, complexity (3
-findings over ESLint's default of 20; Biome's limit is 15).
+`jsx-a11y` reads Solid's `for` as a label's control (`settings["jsx-a11y"].attributes`); its `no-autofocus` reads
+`autoFocus` alone, not Solid's `autofocus`, which its `attributes` setting does not reach: `house/focuses` refuses
+autofocus in any spelling. The click rules (`click-events-have-key-events`, `no-static-element-interactions`) read
+`onClick` and its kin; Solid 2's compiler refuses the `on:` and `oncapture:` namespaces, so no handler escapes them that
+way and no rule is added for it.
 
-## New in oxlint: type-aware rules Biome has no equivalent of
+### Rules for JSX
 
-oxlint has 61 type-aware rules; 25 are mapped above. Of the rest, `dot-notation` stays off (`useLiteralKeys` is off),
-and `only-throw-error` and `require-await` are the type-aware forms of mapped rules. The 33 below are new. Adding one
-drops nothing, but it changes the gate. **Decided by the owner, 19 November:** all 33 on, in task 2.6c, their findings
-fixed: `no-confusing-void-expression` with `ignoreArrowShorthand` (an arrow's short body is how a handler is written
-here: no finding); `prefer-readonly-parameter-types` with `treatMethodsAsReadonly`, `ignoreInferredTypes` (an inferred
-parameter takes its type from a declaration the rule checks) and `allow` for the DOM, Node and sql.js types the site
-cannot make read-only, the site's own record types made read-only at their definitions. The earlier recommendation was
-Recommended: on for the ones with no finding (they cost nothing), off for `prefer-readonly-parameter-types`, and the
-others rule by rule with the findings of task 2.4.
-
-**State: on since task 2.6c**, each as an error, with zero findings (task 2.6c). Beyond the settings above,
-`prefer-readonly-parameter-types`'s `allow` also names Leaflet's `LayerGroup`, GeoJSON's `Feature`, the syntax-tree
-types of oxlint's plugin API the house rules take, and JSX's list of elements (`ArrayElement`, `solid-js`'s and
-`@solidjs/web`'s), which a Solid component's `children` may be (task 4.5's dialog host; none of them the site's own),
-and `return-await` is `error-handling-correctness-only`: a function made async that hands a promise on awaits it, as
-Biome's `useAwait` and `require-await` want an await in it, which the default `in-try-catch` refuses. One line keeps a
-suppression (`tests/site/main.browser.test.ts`, [oxlint's suppressed findings](../lint-false-positives.md)).
-
-| oxlint rule | Findings: all (site / tests) |  |
-| -- | -- | -- |
-| `typescript/prefer-readonly-parameter-types` | 1151 (736 / 415) | nearly every parameter |
-| `typescript/no-confusing-void-expression` | 82 (60 / 22) | each an arrow's short body that returns a `void` call |
-| `typescript/promise-function-async` | 41 (8 / 33) | a function that returns a promise without `async` (`site/net.ts`, `site/db.ts`, `tests/site/app.ts`) |
-| `typescript/no-unsafe-assignment` | 21 (0 / 21) | 16 of them in `recipes.browser.test.ts` |
-| `typescript/strict-void-return` | 9 (2 / 7) |  |
-| `typescript/consistent-return` | 4 (2 / 2) |  |
-| `typescript/no-redundant-type-constituents` | 2 (1 / 1) |  |
-| `typescript/no-unsafe-argument` | 2 (1 / 1) |  |
-| `typescript/no-unsafe-member-access` | 2 (0 / 2) |  |
-| `typescript/prefer-promise-reject-errors` | 2 (0 / 2) |  |
-| `typescript/restrict-template-expressions` | 2 (2 / 0) |  |
-| `typescript/no-misused-spread` | 1 (1 / 0) |  |
-| `typescript/no-unnecessary-boolean-literal-compare` | 1 (1 / 0) |  |
-| `typescript/no-unsafe-call` | 1 (0 / 1) |  |
-
-No finding today (19): `no-array-delete`, `no-duplicate-type-constituents`, `no-generated-empty-object-type`,
-`no-implied-eval`, `no-meaningless-void-operator`, `no-unnecessary-qualifier`, `no-unnecessary-type-arguments`,
-`no-unnecessary-type-assertion`, `no-unnecessary-type-parameters`, `no-unsafe-enum-assignment`,
-`no-unsafe-enum-comparison`, `no-unsafe-unary-minus`, `no-useless-default-assignment`,
-`non-nullable-type-assertion-style`, `prefer-return-this-type`, `related-getter-setter-pairs`, `return-await`,
-`unbound-method`, `use-unknown-in-catch-callback-variable`.
-
-**Stricter than Biome's.** Mapped rules whose oxlint versions find what Biome's pass (task 2.4 fixed each or suppressed
-it with its reason; at 2.4's first run with the settings above, 92 of them, `no-unsafe-return` 2 not 3):
-`strict-boolean-expressions` 47, `no-unnecessary-condition` 23, `no-base-to-string` 10, `no-unnecessary-type-conversion`
-4, `no-unsafe-type-assertion` 4, `no-unsafe-return` 3, `no-misused-promises` 1, `prefer-nullish-coalescing` 1, 93 in
-all. The four of `no-unsafe-type-assertion` are the lines Biome's suppressions covered. These are not new rules:
-`strict-boolean-expressions`, `no-unnecessary-condition` and `no-base-to-string` are Biome's nursery
-`useStrictBooleanExpressions`, `noUnnecessaryConditions` and `noBaseToString`.
-
-## Off in Biome, staying off
-
-`biome.jsonc` turned these off, each with its reason, while it read the TypeScript; the reason carries over, and none is
-enabled in oxlint. The three for CSS stayed off in Biome from task 2.7 until stylelint took the stylesheet (issue #23),
-and stay off there ([The stylesheet](#the-stylesheet-biome-to-stylelint)).
-
-| Biome rule | oxlint equivalent | Reason |
-| -- | -- | -- |
-| `style/noTernary` | `eslint/no-ternary` | a conditional value is a ternary here, not a statement |
-| `style/noNestedTernary` | `eslint/no-nested-ternary` | the same, for a choice between more than two values |
-| `style/useNamingConvention` | (none) | a row's keys are its database columns (start_date, card_pass) |
-| `style/noMagicNumbers` | `eslint/no-magic-numbers` | geometry, timings and limits are named where they mean something |
-| `style/useBlockStatements` | `eslint/curly` | a guard is one line: if (!x) return; |
-| `style/useSingleVarDeclarator` | `eslint/one-var` | values computed together are declared together |
-| `style/noIncrementDecrement` | `eslint/no-plusplus` | (no reason given in `biome.jsonc`) |
-| `style/noContinue` | `eslint/no-continue` | (no reason given in `biome.jsonc`) |
-| `style/useExportsLast` | `import/exports-last` | an export sits beside the code it belongs to |
-| `style/noHexColors` | (CSS: stylelint's `color-no-hex`, off) | the design tokens are hex colours |
-| `style/noExcessiveLinesPerFile` | `eslint/max-lines` | a module is one concern however long; states.ts is generated |
-| `style/noDescendingSpecificity` | (CSS: stylelint's `no-descending-specificity`, off) | site.css is ordered by component; specificity decides between weights |
-| `style/useDefaultSwitchClause` | `eslint/default-case` | a switch over a union names every case (useExhaustiveSwitchCases) |
-| `style/useConsistentTypeDefinitions` | `typescript/consistent-type-definitions` | a shape that must fit a Record is a type: an interface has no index signature |
-| `complexity/useLiteralKeys` | `eslint/no-useless-computed-key`<br>`typescript/dot-notation` | tsconfig's noPropertyAccessFromIndexSignature wants dataset['nav'] |
-| `complexity/noExcessiveLinesPerFunction` | `eslint/max-lines-per-function` | a view is one closure over its state; complexity is bounded instead |
-| `suspicious/noEqualsToNull` | `eslint/no-eq-null` | == null is null or undefined, both absent |
-| `suspicious/useBaseline` | (CSS: the house stylelint rule `house/baseline`, [on](#the-browser-check-housebaseline)) | newer CSS is progressive enhancement: backdrop-filter, @starting-style; the stylesheet is checked against the declared browsers instead |
-| `correctness/noUndeclaredVariables` | `eslint/no-undef` | tsc rejects an undeclared name, and knows globals.d.ts's |
-| `correctness/noUnresolvedImports` | `import/named` | tsc resolves every import, against the types as well |
-| `correctness/useQwikValidLexicalScope` | (none) | no Qwik here |
-| `security/noSecrets` | (none) | the site holds no secret; its long strings are SVG and selectors |
-
-## organizeImports
-
-`biome check` also enforced an assist, `organizeImports`, which no rule of the mapping names. It held three things, and
-each has its own holder since Biome stopped reading the TypeScript (task 2.7):
-
-- **The order of import statements:** oxfmt's `sortImports`, on every `.ts` it lays out (`.oxfmtrc.jsonc`'s override),
-  with `newlinesBetween: false`: like Biome, it sorts across a blank line and adds none between groups, so it changed no
-  file of `site/`, `tests/` or `lint/` (72 with its defaults). The house rules' fixtures are left out (`excludeFiles`):
-  seven would move, and their refused lines are marked where they stand.
-- **Two imports of one module merged:** `import/no-duplicates`, no finding.
-- **The names inside an import's braces:** no oxfmt option sorts them. `eslint/sort-imports`, with
-  `ignoreDeclarationSort` (the statements are oxfmt's) and `ignoreCase`, holds one order since task 2.7, which reordered
-  the 25 imports where it differs from Biome's (`TRAITS, type Trait` became `type Trait, TRAITS`). Biome's order could
-  not stay beside it while Biome read the TypeScript, and no rule copies it; which order matters to no reader.
-
-## The mapping
-
-Every rule for today's TypeScript. **Level** is Biome's: `error` and `warn` fail the check, `info` only reports (Q2).
-**Fit**: `source`, Biome's metadata names the oxlint rule's upstream as its source; `inspired`, Biome's metadata says
-"inspired by" (the note says how they differ, where they do); `docs`, matched by the two rules' documentation.
-
-### a11y
-
-| Biome rule | Level | oxlint | Fit | Status, note |
-| -- | -- | -- | -- | -- |
-| `noPositiveTabindex` | error | `jsx_a11y/tabindex-no-positive` | source | mapped |
-| `useButtonType` | error | `react/button-has-type` | source | mapped: it lets a spread after the type through, which `house/buttons` refuses (`lint/buttons.ts`) |
-
-### complexity
-
-| Biome rule | Level | oxlint | Fit | Status, note |
-| -- | -- | -- | -- | -- |
-| `noAdjacentSpacesInRegex` | warn | `eslint/no-regex-spaces` | source | mapped |
-| `noArguments` | warn | `eslint/prefer-rest-params` | source | mapped |
-| `noBannedTypes` | warn | `typescript/ban-types` | source | mapped |
-| `noCommaOperator` | warn | `eslint/no-sequences` | source | mapped |
-| `noDivRegex` | info | `eslint/no-div-regex` | source | mapped |
-| `noEmptyTypeParameters` | warn | (none) |  | accepted loss (owner, 19 November) |
-| `noExcessiveCognitiveComplexity` | info | `eslint/complexity` | inspired | mapped: another measure: cyclomatic, not cognitive (Q2) |
-| `noExcessiveNestedCallbacks` | info | `eslint/max-nested-callbacks` | source | mapped: `{"max": 5}`, Biome's default (ESLint's is 10) |
-| `noExcessiveNestedTestSuites` | info | `vitest/max-nested-describe` | source | mapped |
-| `noExtraBooleanCast` | info | `eslint/no-extra-boolean-cast` | source | mapped |
-| `noFlatMapIdentity` | info | `unicorn/prefer-array-flat` | docs | mapped: broader: also `reduce`/`concat` flattening; on the brief's loss list, but mappable |
-| `noForEach` | warn | `unicorn/no-array-for-each` | source | mapped |
-| `noImplicitCoercions` | info | `eslint/no-implicit-coercion` | source | mapped |
-| `noRedundantDefaultExport` | warn | (none) |  | accepted loss (owner, 19 November) |
-| `noStaticOnlyClass` | warn | `typescript/no-extraneous-class`<br>`unicorn/no-static-only-class` | source | mapped |
-| `noThisInStatic` | warn | (none) |  | house rule `house/statics` |
-| `noUnnecessaryTemplateExpression` | info | `typescript/no-unnecessary-template-expression` | inspired | mapped: type-aware |
-| `noUselessCatch` | info | `eslint/no-useless-catch` | source | mapped |
-| `noUselessCatchBinding` | info | `unicorn/prefer-optional-catch-binding` | docs | mapped |
-| `noUselessConstructor` | info | `eslint/no-useless-constructor` | source | mapped |
-| `noUselessContinue` | info | (none) |  | accepted loss (owner, 19 November) |
-| `noUselessEmptyExport` | info | `typescript/no-useless-empty-export` | source | mapped |
-| `noUselessEscapeInRegex` | info | `eslint/no-useless-escape` | source | mapped |
-| `noUselessLabel` | info | `eslint/no-extra-label` | source | mapped |
-| `noUselessLoneBlockStatements` | info | `eslint/no-lone-blocks` | source | mapped |
-| `noUselessRename` | info | `eslint/no-useless-rename` | source | mapped |
-| `noUselessReturn` | info | `eslint/no-useless-return` | inspired | mapped |
-| `noUselessStringConcat` | info | `eslint/no-useless-concat` | source | mapped |
-| `noUselessStringRaw` | info | (none) |  | accepted loss (owner, 19 November) |
-| `noUselessSwitchCase` | info | `unicorn/no-useless-switch-case` | source | mapped |
-| `noUselessTernary` | info | `eslint/no-unneeded-ternary` | source | mapped |
-| `noUselessThisAlias` | info | `typescript/no-this-alias` | inspired | mapped |
-| `noUselessTypeConstraint` | info | `typescript/no-unnecessary-type-constraint` | source | mapped |
-| `noUselessUndefined` | info | `unicorn/no-useless-undefined` | source | mapped |
-| `noUselessUndefinedInitialization` | info | `unicorn/no-useless-undefined` | docs | mapped: broader (also `return undefined`, arguments); the same oxlint rule as `noUselessUndefined` |
-| `noVoid` | warn | `eslint/no-void` | source | mapped |
-| `useArrayFind` | info | `typescript/prefer-find` | source | mapped: type-aware |
-| `useArraySome` | info | `unicorn/prefer-array-some` | inspired | mapped |
-| `useArrowFunction` | warn | `eslint/prefer-arrow-callback` | inspired | mapped: narrower: callbacks only |
-| `useDateNow` | warn | `unicorn/prefer-date-now` | source | mapped |
-| `useFlatMap` | info | `unicorn/prefer-array-flat-map` | source | mapped |
-| `useIndexOf` | info | `unicorn/prefer-array-index-of` | source | mapped |
-| `useMathMinMax` | warn | `unicorn/prefer-math-min-max` | source | mapped |
-| `useMaxParams` | warn | `eslint/max-params` | source | mapped: `{"max": 4}`, Biome's default; `warn` in Biome, an error under `--error-on-warnings` |
-| `useNumericLiterals` | warn | `eslint/prefer-numeric-literals` | source | mapped |
-| `useOptionalChain` | warn | `typescript/prefer-optional-chain` | source | mapped: type-aware |
-| `useRegexLiterals` | warn | `eslint/prefer-regex-literals` | source | mapped |
-| `useRegexpTest` | info | `unicorn/prefer-regexp-test` | source | mapped |
-| `useSimpleNumberKeys` | warn | (none) |  | accepted loss (owner, 19 November) |
-| `useSimplifiedLogicExpression` | info | (none) |  | accepted loss (owner, 19 November) |
-| `useWhile` | warn | (none) |  | accepted loss (owner, 19 November) |
-
-### correctness
-
-| Biome rule | Level | oxlint | Fit | Status, note |
-| -- | -- | -- | -- | -- |
-| `noConstantCondition` | error | `eslint/no-constant-condition` | source | mapped |
-| `noConstantMathMinMaxClamp` | error | `oxc/bad-min-max-func` | docs | mapped: Clippy's `min_max`: the same clamp check |
-| `noConstAssign` | error | `eslint/no-const-assign` | source | mapped |
-| `noConstructorReturn` | error | `eslint/no-constructor-return` | source | mapped |
-| `noEmptyCharacterClassInRegex` | error | `eslint/no-empty-character-class` | source | mapped |
-| `noEmptyPattern` | error | `eslint/no-empty-pattern` | source | mapped |
-| `noGlobalDirnameFilename` | info | `unicorn/prefer-module` | inspired | mapped: broader: all CommonJS forms and `"use strict"` |
-| `noGlobalObjectCalls` | error | `eslint/no-obj-calls` | source | mapped |
-| `noInnerDeclarations` | error | `eslint/no-inner-declarations` | source | mapped |
-| `noInvalidBuiltinInstantiation` | error | `eslint/no-new-native-nonconstructor`<br>`unicorn/new-for-builtins` | source | mapped |
-| `noInvalidConstructorSuper` | error | `eslint/constructor-super` | source | mapped |
-| `noInvalidUseBeforeDeclaration` | error | `eslint/no-use-before-define` | source | mapped: `{"functions": false}`: Biome ignores function declarations |
-| `noNodejsModules` | warn | `import/no-nodejs-modules` | source | mapped: off in `tests/**` and `vitest.config.ts` |
-| `noNonoctalDecimalEscape` | error | `eslint/no-nonoctal-decimal-escape` | source | mapped |
-| `noPrecisionLoss` | error | `eslint/no-loss-of-precision` | source | mapped |
-| `noPrivateImports` | warn | (none) |  | house rule `house/privates` |
-| `noProcessGlobal` | info | (none) |  | house rule `house/process` |
-| `noSelfAssign` | error | `eslint/no-self-assign` | source | mapped |
-| `noSetterReturn` | error | `eslint/no-setter-return` | source | mapped |
-| `noStringCaseMismatch` | error | (none) |  | accepted loss |
-| `noSwitchDeclarations` | error | `eslint/no-case-declarations` | source | mapped |
-| `noUndeclaredDependencies` | error | (none) |  | accepted loss (owner, 19 November) |
-| `noUnreachable` | error | `eslint/no-unreachable` | source | mapped |
-| `noUnreachableSuper` | error | `eslint/no-this-before-super` | source | mapped |
-| `noUnsafeFinally` | error | `eslint/no-unsafe-finally` | source | mapped |
-| `noUnsafeOptionalChaining` | error | `eslint/no-unsafe-optional-chaining` | source | mapped |
-| `noUnusedFunctionParameters` | warn | `eslint/no-unused-vars` | docs | mapped: `args: "all"`, `argsIgnorePattern: "^_"`, checked against a bare run in 2.4; tsc's `noUnusedParameters` holds it too |
-| `noUnusedImports` | warn | `eslint/no-unused-vars` | docs | mapped: imports are variables to it; tsc's `noUnusedLocals` holds it too |
-| `noUnusedInstantiation` | error | `eslint/no-new` | source | mapped |
-| `noUnusedLabels` | warn | `eslint/no-unused-labels` | source | mapped |
-| `noUnusedPrivateClassMembers` | warn | `eslint/no-unused-private-class-members` | inspired | mapped: narrower: `#private` only, not TypeScript's `private` |
-| `noUnusedVariables` | warn | `eslint/no-unused-vars` | source | mapped |
-| `noVoidElementsWithChildren` | error | `react/void-dom-elements-no-children` | source | mapped |
-| `noVoidTypeReturn` | error | (none) |  | accepted loss |
-| `useImportExtensions` | warn | `import/extensions` | inspired | mapped: the imports name `.ts` files (`allowImportingTsExtensions`; Vite resolves them): `["always", {"ignorePackages": true}]` |
-| `useIsNan` | error | `eslint/use-isnan` | source | mapped |
-| `useJsonImportAttributes` | info | (none) |  | house rule `house/json` |
-| `useParseIntRadix` | info | `eslint/radix` | source | mapped |
-| `useSingleJsDocAsterisk` | info | (none) |  | accepted loss (owner, 19 November) |
-| `useValidForDirection` | error | `eslint/for-direction` | source | mapped |
-| `useValidTypeof` | error | `eslint/valid-typeof` | source | mapped |
-| `useYield` | error | `eslint/require-yield` | source | mapped |
-
-### nursery
-
-| Biome rule | Level | oxlint | Fit | Status, note |
-| -- | -- | -- | -- | -- |
-| `noBaseToString` | error | `typescript/no-base-to-string` | source | mapped: type-aware; stricter than Biome's (below) |
-| `noFloatingPromises` | error | `typescript/no-floating-promises` | source | mapped: type-aware |
-| `noMisleadingReturnType` | error | (none) |  | accepted loss |
-| `noMisusedPromises` | error | `typescript/no-misused-promises` | source | mapped: type-aware |
-| `noObjectConstructor` | error | `eslint/no-object-constructor` | source | mapped |
-| `noUnmodifiedLoopCondition` | error | `eslint/no-unmodified-loop-condition` | source | mapped |
-| `noUnsafePlusOperands` | error | `typescript/restrict-plus-operands` | source | mapped: type-aware |
-| `noUnsafeReturn` | error | `typescript/no-unsafe-return` | source | mapped: type-aware |
-| `noUnsafeTypeAssertion` | error | `typescript/no-unsafe-type-assertion` | docs | mapped: type-aware |
-| `noUselessAssignment` | error | `eslint/no-useless-assignment` | source | mapped |
-| `noUselessCall` | error | `eslint/no-useless-call` | source | mapped |
-| `noUselessTypeConversion` | error | `typescript/no-unnecessary-type-conversion` | source | mapped: type-aware |
-| `useAwaitThenable` | error | `typescript/await-thenable` | docs | mapped: type-aware |
-| `useExhaustiveSwitchCases` | error | `typescript/switch-exhaustiveness-check` | source | mapped: type-aware |
-| `useIncludes` | error | `typescript/prefer-includes`<br>`unicorn/prefer-includes` | inspired | mapped: one of the two (`unicorn/prefer-includes` is not type-aware) |
-| `useNullishCoalescing` | error | `typescript/prefer-nullish-coalescing` | inspired | mapped: type-aware |
-| `useRegexpExec` | error | `typescript/prefer-regexp-exec` | source | mapped: type-aware |
-| `useStrictBooleanExpressions` | error | `typescript/strict-boolean-expressions` | inspired | mapped: type-aware; stricter than Biome's (below) |
-| `useStringStartsEndsWith` | error | `typescript/prefer-string-starts-ends-with` | inspired | mapped: type-aware |
-
-### performance
-
-| Biome rule | Level | oxlint | Fit | Status, note |
-| -- | -- | -- | -- | -- |
-| `noAccumulatingSpread` | warn | `oxc/no-accumulating-spread` | docs | mapped |
-| `noAwaitInLoops` | info | `eslint/no-await-in-loop` | source | mapped: Q2 |
-| `noBarrelFile` | warn | `oxc/no-barrel-file` | docs | mapped: oxlint counts modules: set `threshold: 0` to refuse any barrel, as Biome does |
-| `noDelete` | warn | `eslint/no-delete-var` | source | mapped |
-| `noDynamicNamespaceImportAccess` | warn | (none) |  | accepted loss (owner, 19 November) |
-| `noNamespaceImport` | warn | `import/no-namespace` | docs | mapped: both from eslint-plugin-barrel-files' `avoid-namespace-import` |
-| `noReExportAll` | warn | (none) |  | accepted loss (owner, 19 November) |
-| `useDomNodeTextContent` | warn | `unicorn/prefer-dom-node-text-content` | source | mapped |
-| `useTopLevelRegex` | warn | (none) |  | accepted loss |
-
-### security
-
-| Biome rule | Level | oxlint | Fit | Status, note |
-| -- | -- | -- | -- | -- |
-| `noGlobalEval` | error | `eslint/no-eval` | source | mapped |
-| `noScriptUrl` | error | `eslint/no-script-url`<br>`react/jsx-no-script-url` | source | mapped |
-
-### style
-
-| Biome rule | Level | oxlint | Fit | Status, note |
-| -- | -- | -- | -- | -- |
-| `noCommonJs` | warn | `import/no-commonjs`<br>`typescript/no-require-imports`<br>`typescript/no-var-requires` | source | mapped |
-| `noDefaultExport` | warn | `import/no-default-export` | source | mapped |
-| `noDoneCallback` | info | `jest/no-done-callback` | source | mapped |
-| `noEnum` | warn | (none) |  | accepted loss (owner, 19 November) |
-| `noExcessiveClassesPerFile` | info | `eslint/max-classes-per-file` | source | mapped: Q2; `{"max": 1}`, both defaults |
-| `noExportedImports` | info | `unicorn/prefer-export-from` | docs | mapped |
-| `noInferrableTypes` | info | `typescript/no-inferrable-types` | source | mapped |
-| `noInlineStyles` | info | (none) |  | accepted loss (owner, 19 November) |
-| `noMultiAssign` | info | `eslint/no-multi-assign` | inspired | mapped |
-| `noMultilineString` | info | `eslint/no-multi-str` | source | mapped |
-| `noNamespace` | warn | `typescript/no-namespace` | source | mapped |
-| `noNegationElse` | info | `eslint/no-negated-condition`<br>`unicorn/no-negated-condition` | source | mapped |
-| `noNonNullAssertion` | warn | `typescript/no-non-null-assertion` | source | mapped |
-| `noParameterAssign` | warn | `eslint/no-param-reassign` | source | mapped |
-| `noParameterProperties` | warn | `typescript/parameter-properties` | inspired | mapped |
-| `noProcessEnv` | info | `node/no-process-env` | source | mapped: `node/no-process-env` reads the global `process` alone; `house/env` refuses `process.env` through a `process` imported from `node:process` (as `house/process` has the tests do), so the two read both, as Biome's does |
-| `noRestrictedGlobals` | warn | `eslint/no-restricted-globals` | source | mapped: restricts nothing without options, in both |
-| `noRestrictedImports` | warn | `eslint/no-restricted-imports` | source | mapped: restricts nothing without options, in both |
-| `noRestrictedTypes` | warn | `typescript/no-restricted-types` | source | mapped: restricts nothing without options, in both |
-| `noShoutyConstants` | info | (none) |  | accepted loss |
-| `noSubstr` | info | `unicorn/prefer-string-slice` | source | mapped |
-| `noUnusedTemplateLiteral` | warn | (none) |  | accepted loss |
-| `noUselessElse` | info | `eslint/no-else-return` | inspired | mapped: `allowElseIf: false`, as Biome reports an `else if` after a return |
-| `noYodaExpression` | info | `eslint/yoda` | source | mapped |
-| `useArrayLiterals` | info | `eslint/no-array-constructor` | source | mapped |
-| `useAsConstAssertion` | info | `typescript/prefer-as-const` | source | mapped |
-| `useAtIndex` | info | `unicorn/prefer-at` | inspired | mapped |
-| `useCollapsedElseIf` | info | `eslint/no-lonely-if` | source | mapped |
-| `useCollapsedIf` | info | `unicorn/no-lonely-if` | source | mapped |
-| `useConsistentArrayType` | info | `typescript/array-type` | source | mapped |
-| `useConsistentArrowReturn` | info | `eslint/arrow-body-style` | source | mapped |
-| `useConsistentBuiltinInstantiation` | info | `eslint/no-new-wrappers` | source | mapped: Q2; Biome also wants `new Date()` for `Date()`, which oxlint's `unicorn/new-for-builtins` (mapped from `noInvalidBuiltinInstantiation`) reports |
-| `useConsistentEnumValueType` | info | `typescript/no-mixed-enums` | source | mapped: type-aware |
-| `useConsistentMemberAccessibility` | info | `typescript/explicit-member-accessibility` | source | mapped: `{"accessibility": "no-public"}`, Biome's default |
-| `useConsistentMethodSignatures` | info | `typescript/method-signature-style` | source | mapped |
-| `useConsistentObjectDefinitions` | warn | `eslint/object-shorthand` | inspired | mapped |
-| `useConsistentTestIt` | error (tests) | `vitest/consistent-test-it` | inspired | mapped: in `tests/**`: `{"fn": "test", "withinDescribe": "it"}` (Biome's `withinDescribe` default; `roster.test.ts` uses `it` inside `describe`) |
-| `useConst` | warn | `eslint/prefer-const` | source | mapped |
-| `useDefaultParameterLast` | warn | `eslint/default-param-last` | source | mapped |
-| `useDestructuring` | info | `eslint/prefer-destructuring` | inspired | mapped: Q2 |
-| `useDomQuerySelector` | info | `unicorn/prefer-query-selector` | inspired | mapped: Q2 |
-| `useEnumInitializers` | warn | `typescript/prefer-enum-initializers` | source | mapped |
-| `useErrorCause` | info | `eslint/preserve-caught-error` | source | mapped |
-| `useExplicitLengthCheck` | info | `unicorn/explicit-length-check` | inspired | mapped |
-| `useExponentiationOperator` | info | `eslint/prefer-exponentiation-operator` | source | mapped |
-| `useExportType` | warn | `typescript/consistent-type-exports` | inspired | mapped: type-aware |
-| `useFilenamingConvention` | info | `unicorn/filename-case` | inspired | mapped: Biome allows camelCase, kebab-case, snake_case or the export's name: `{"cases": {"camelCase": true, "kebabCase": true, "snakeCase": true}}` |
-| `useForOf` | info | `typescript/prefer-for-of` | source | mapped |
-| `useGlobalThis` | warn | `unicorn/prefer-global-this` | source | mapped |
-| `useGroupedAccessorPairs` | info | `eslint/grouped-accessor-pairs` | source | mapped |
-| `useImportsFirst` | info | `import/first` | source | mapped |
-| `useImportType` | warn | `typescript/consistent-type-imports` | inspired | mapped |
-| `useLiteralEnumMembers` | warn | `typescript/prefer-literal-enum-member` | source | mapped |
-| `useNamedCaptureGroup` | info | `eslint/prefer-named-capture-group` | source | mapped: Q2 |
-| `useNodeAssertStrict` | warn | (none) |  | house rule `house/asserts` |
-| `useNodejsImportProtocol` | info | `unicorn/prefer-node-protocol` | source | mapped |
-| `useNumberNamespace` | info | `unicorn/prefer-number-properties` | source | mapped |
-| `useNumericSeparators` | info | `unicorn/numeric-separators-style` | source | mapped |
-| `useObjectSpread` | info | `eslint/prefer-object-spread` | source | mapped |
-| `useReadonlyClassProperties` | info | `typescript/prefer-readonly` | source | mapped: type-aware |
-| `useReduceTypeParameter` | info | `typescript/prefer-reduce-type-parameter` | inspired | mapped: type-aware |
-| `useShorthandAssign` | info | `eslint/operator-assignment` | source | mapped: Q2 |
-| `useShorthandFunctionType` | info | `typescript/prefer-function-type` | source | mapped |
-| `useSpreadOverApply` | info | `eslint/prefer-spread` | source | mapped |
-| `useSymbolDescription` | info | `eslint/symbol-description` | source | mapped |
-| `useTemplate` | info | `eslint/prefer-template` | source | mapped |
-| `useTestHooksInOrder` | info | `vitest/prefer-hooks-in-order` | source | mapped |
-| `useTestHooksOnTop` | info | `vitest/prefer-hooks-on-top` | source | mapped |
-| `useThisInClassMethods` | info | `eslint/class-methods-use-this` | source | mapped |
-| `useThrowNewError` | info | `unicorn/throw-new-error` | source | mapped |
-| `useThrowOnlyError` | warn | `eslint/no-throw-literal` | inspired | mapped: `eslint/no-throw-literal`; `typescript/only-throw-error` is its type-aware form |
-| `useTrimStartEnd` | info | `unicorn/prefer-string-trim-start-end` | source | mapped |
-| `useUnicodeRegex` | info | `eslint/require-unicode-regexp` | source | mapped |
-| `useUnifiedTypeSignatures` | info | `typescript/unified-signatures` | source | mapped |
-| `useVarsOnTop` | info | `eslint/vars-on-top` | source | mapped |
-
-### suspicious
-
-| Biome rule | Level | oxlint | Fit | Status, note |
-| -- | -- | -- | -- | -- |
-| `noAlert` | info | `eslint/no-alert` | source | mapped |
-| `noApproximativeNumericConstant` | warn | `oxc/approx-constant` | docs | mapped: both from Clippy's `approx_constant` |
-| `noAssignInExpressions` | error | `eslint/no-cond-assign` | inspired | mapped: narrower: conditions only (`eslint/no-return-assign` is mapped from `noReturnAssign`) |
-| `noAsyncPromiseExecutor` | error | `eslint/no-async-promise-executor` | source | mapped |
-| `noBitwiseOperators` | info | `eslint/no-bitwise` | source | mapped: Q2 |
-| `noCatchAssign` | warn | `eslint/no-ex-assign` | source | mapped |
-| `noClassAssign` | error | `eslint/no-class-assign` | source | mapped |
-| `noCompareNegZero` | error | `eslint/no-compare-neg-zero` | source | mapped |
-| `noConditionalExpect` | warn | `vitest/no-conditional-expect` | source | mapped |
-| `noConfusingLabels` | warn | `eslint/no-labels` | inspired | mapped: broader: every label; Biome allows labels on loops, so `{"allowLoop": true}` |
-| `noConfusingVoidType` | warn | `typescript/no-invalid-void-type` | source | mapped |
-| `noConsole` | warn | `eslint/no-console` | source | mapped: off in `site/report.ts` |
-| `noConstantBinaryExpressions` | info | `eslint/no-constant-binary-expression` | source | mapped |
-| `noConstEnum` | warn | `oxc/no-const-enum` | docs | mapped: tsc's `erasableSyntaxOnly` refuses it too |
-| `noControlCharactersInRegex` | error | `eslint/no-control-regex` | source | mapped |
-| `noDebugger` | error | `eslint/no-debugger` | source | mapped |
-| `noDeprecatedImports` | warn | `typescript/no-deprecated` | inspired | mapped: type-aware; broader (every use of a deprecated name) |
-| `noDocumentCookie` | warn | `unicorn/no-document-cookie` | source | mapped |
-| `noDoubleEquals` | error | `eslint/eqeqeq` | source | mapped: `["always", {"null": "ignore"}]`: `== null` stays (`noEqualsToNull` is off) |
-| `noDuplicateCase` | error | `eslint/no-duplicate-case` | source | mapped |
-| `noDuplicateClassMembers` | error | `eslint/no-dupe-class-members` | source | mapped |
-| `noDuplicateElseIf` | error | `eslint/no-dupe-else-if` | source | mapped |
-| `noDuplicateEnumValues` | warn | `typescript/no-duplicate-enum-values` | source | mapped |
-| `noDuplicateObjectKeys` | error | `eslint/no-dupe-keys` | source | mapped |
-| `noDuplicateParameters` | error | (none) |  | accepted loss (owner, 19 November) |
-| `noDuplicateTestHooks` | error | `vitest/no-duplicate-hooks` | inspired | mapped |
-| `noEmptyBlockStatements` | warn | `eslint/no-empty`<br>`eslint/no-empty-function`<br>`eslint/no-empty-static-block` | source | mapped |
-| `noEmptyInterface` | error | `typescript/no-empty-interface` | inspired | mapped |
-| `noEmptySource` | warn | `unicorn/no-empty-file` | source | mapped |
-| `noEvolvingTypes` | warn | (none) |  | accepted loss |
-| `noExplicitAny` | warn | `typescript/no-explicit-any` | source | mapped |
-| `noExportsInTest` | error | `jest/no-export` | inspired | mapped: a jest rule; oxlint runs its jest rules on Vitest files |
-| `noExtraNonNullAssertion` | warn | `typescript/no-extra-non-null-assertion` | source | mapped |
-| `noFallthroughSwitchClause` | error | `eslint/no-fallthrough` | source | mapped |
-| `noFocusedTests` | warn | `vitest/no-focused-tests` | inspired | mapped |
-| `noForIn` | warn | `typescript/no-for-in-array` | inspired | mapped: type-aware; narrower: `for…in` over arrays only (`eslint/guard-for-in` is mapped from `useGuardForIn`) |
-| `noFunctionAssign` | error | `eslint/no-func-assign` | source | mapped |
-| `noGlobalAssign` | error | `eslint/no-global-assign` | source | mapped |
-| `noGlobalIsFinite` | warn | `unicorn/prefer-number-properties` | docs | mapped: broader (also `parseInt`, `NaN`, `Infinity`); the same oxlint rule as `useNumberNamespace` |
-| `noGlobalIsNan` | warn | `unicorn/prefer-number-properties` | docs | mapped: the same |
-| `noIdenticalTestTitle` | warn | `vitest/no-identical-title` | source | mapped |
-| `noImplicitAnyLet` | error | (none) |  | accepted loss |
-| `noImportAssign` | error | `eslint/no-import-assign` | source | mapped |
-| `noImportCycles` | warn | `import/no-cycle` | source | mapped |
-| `noIrregularWhitespace` | warn | `eslint/no-irregular-whitespace` | source | mapped |
-| `noLabelVar` | error | `eslint/no-label-var` | source | mapped |
-| `noLoopFunc` | warn | `eslint/no-loop-func` | source | mapped |
-| `noMisleadingCharacterClass` | error | `eslint/no-misleading-character-class` | source | mapped |
-| `noMisleadingInstantiator` | error | `typescript/no-misused-new` | source | mapped |
-| `noMisplacedAssertion` | warn | `vitest/no-standalone-expect` | inspired | mapped |
-| `noMisrefactoredShorthandAssign` | error | `oxc/misrefactored-assign-op` | docs | mapped: both from Clippy's `misrefactored_assign_op`; on the brief's loss list, but mappable |
-| `noNestedPromises` | warn | `promise/no-nesting` | source | mapped |
-| `noNonNullAssertedOptionalChain` | error | `typescript/no-non-null-asserted-optional-chain` | source | mapped |
-| `noOctalEscape` | warn | (none) |  | accepted loss (owner, 19 November) |
-| `noParametersOnlyUsedInRecursion` | warn | `oxc/only-used-in-recursion` | docs | mapped: both from Clippy's `only_used_in_recursion`; on the brief's loss list, but mappable |
-| `noProto` | warn | `eslint/no-proto` | source | mapped |
-| `noPrototypeBuiltins` | warn | `eslint/no-prototype-builtins`<br>`eslint/prefer-object-has-own` | source | mapped |
-| `noRedeclare` | error | `eslint/no-redeclare` | source | mapped |
-| `noRedundantUseStrict` | warn | (none) |  | accepted loss (owner, 19 November) |
-| `noReturnAssign` | error | `eslint/no-return-assign` | source | mapped |
-| `noSelfCompare` | error | `eslint/no-self-compare` | source | mapped |
-| `noShadow` | warn | `eslint/no-shadow` | source | mapped |
-| `noShadowRestrictedNames` | error | `eslint/no-shadow-restricted-names` | source | mapped |
-| `noSkippedTests` | warn | `vitest/no-disabled-tests` | inspired | mapped |
-| `noSparseArray` | error | `eslint/no-sparse-arrays` | source | mapped |
-| `noTemplateCurlyInString` | warn | `eslint/no-template-curly-in-string` | source | mapped |
-| `noThenProperty` | error | `unicorn/no-thenable` | source | mapped |
-| `noTsIgnore` | warn | `typescript/ban-ts-comment` | inspired | mapped: broader: `{"ts-ignore": true, "ts-nocheck": false, "ts-check": false, "ts-expect-error": false}` to match |
-| `noUnassignedVariables` | info | `eslint/no-unassigned-vars` | source | mapped |
-| `noUnnecessaryConditions` | warn | `typescript/no-unnecessary-condition` | inspired | mapped: type-aware; stricter than Biome's (below) |
-| `noUnsafeDeclarationMerging` | error | `typescript/no-unsafe-declaration-merging` | source | mapped |
-| `noUnsafeNegation` | error | `eslint/no-unsafe-negation` | source | mapped |
-| `noUnusedExpressions` | warn | `eslint/no-unused-expressions` | source | mapped |
-| `noUselessEscapeInString` | warn | `eslint/no-useless-escape` | docs | mapped: it checks strings and regexes: the same oxlint rule as `noUselessEscapeInRegex` |
-| `noUselessRegexBackrefs` | warn | `eslint/no-useless-backreference` | source | mapped |
-| `noVar` | warn | `eslint/no-var` | source | mapped |
-| `noWith` | error | `eslint/no-with` | source | mapped |
-| `useAdjacentOverloadSignatures` | warn | `typescript/adjacent-overload-signatures` | source | mapped |
-| `useArraySortCompare` | warn | `typescript/require-array-sort-compare` | source | mapped: type-aware |
-| `useAwait` | warn | `eslint/require-await` | source | mapped: `eslint/require-await`; `typescript/require-await` is its type-aware form |
-| `useDefaultSwitchClauseLast` | warn | `eslint/default-case-last` | source | mapped |
-| `useErrorMessage` | warn | `unicorn/error-message` | source | mapped |
-| `useExpect` | warn | `vitest/expect-expect` | source | mapped |
-| `useGetterReturn` | error | `eslint/getter-return` | source | mapped |
-| `useGuardForIn` | warn | `eslint/guard-for-in` | source | mapped |
-| `useIsArray` | warn | `unicorn/no-instanceof-array` | source | mapped |
-| `useIterableCallbackReturn` | error | `eslint/array-callback-return` | source | mapped |
-| `useNamespaceKeyword` | error | `typescript/prefer-namespace-keyword` | source | mapped |
-| `useNumberToFixedDigitsArgument` | warn | `unicorn/require-number-to-fixed-digits-argument` | source | mapped |
-| `useStaticResponseMethods` | info | `unicorn/prefer-response-static-json` | docs | mapped: narrower: `Response.json()` only, not `Response.redirect()` |
-| `useStrictMode` | warn | (none) |  | accepted loss (owner, 19 November) |
-
-## Rules for JSX
-
-They report on JSX, which no file of the site has until Phase 4's `.tsx`. Mapped so the first `.tsx` file is held from
-the start; the two unmapped ones are decided below. Since task 4.2 they are seen reporting on `.tsx`, but
-`jsx_a11y/no-autofocus`, which reads React's `autoFocus` and not Solid's `autofocus`: `house/focuses` refuses either
-([Solid's rules](#solids-rules)).
-
-**Decided by the owner, 19 November:** `noSuspiciousSemicolonInJsx` is a house rule, `semicolons` (task 4.2).
-`noSvgWithoutTitle` is held by construction instead: `Drawing` (`site/icons.ts`), the one maker of an SVG, takes only
-the drawings `pipeline/drawings.py` writes (`site/drawings.ts`), each hidden from assistive technology, and `house/svgs`
-(task 4.2) refuses `<svg>` in JSX outside it.
+The JSX rules are on everywhere oxlint lints, and report on the `.tsx` views. Two of Biome's have no oxlint equivalent:
+`noSuspiciousSemicolonInJsx` is the house rule `semicolons`, and `noSvgWithoutTitle` is held by construction: `Drawing`
+(`site/icons.ts`), the one maker of an SVG, takes only the drawings `pipeline/drawings.py` writes (`site/drawings.ts`),
+each hidden from assistive technology, and `house/svgs` refuses `<svg>` in JSX.
 
 `react/jsx-no-target-blank` asks for `noreferrer` on a link to a new tab only where it reads the address: an external
-literal one or a bare name (`href={x}`), not a member, a call or a template (`href={e.url}`, measured with oxlint
-1.94.0). So it does not hold the review page's convention, each of its links to a new tab `noopener noreferrer`:
+literal one or a bare name (`href={x}`), not a member, a call or a template (`href={e.url}`). So it does not hold the
+review page's convention, each of its links to a new tab `noopener noreferrer`:
 `tests/site/review-links.browser.test.ts` holds it for the three links it draws. The site's links out (a festival's
 page, its tickets, Google Flights) are `noopener` alone, which the rule does not see.
 
-| Biome rule | oxlint | Fit |
+Off: the JSX rules Biome reports as information only, never failing, which the rule set carries as off:
+`react/jsx-no-useless-fragment`, `react/forbid-elements`, `react/jsx-boolean-value`, `react/jsx-no-literals`,
+`react/jsx-curly-brace-presence`, `react/jsx-fragments`, `react/self-closing-comp` (`solid/self-closing-comp` is on) and
+`jsx-a11y/no-noninteractive-element-interactions`.
+
+### Type-aware rules
+
+oxlint's type-aware rules are on, those that hold a Biome rule and the 33 that have no Biome equivalent (the tables
+below, Biome's "(none)"), each an error. Three have settings:
+
+- `no-confusing-void-expression`, with `ignoreArrowShorthand`: an arrow's short body is how a handler is written here,
+  whatever its call returns.
+- `prefer-readonly-parameter-types`, with `treatMethodsAsReadonly`, `ignoreInferredTypes` (an inferred parameter takes
+  its type from a declaration the rule checks) and `allow`: the site's own record types are read-only where they are
+  defined, and `allow` names the types that cannot be: the DOM's, Node's, sql.js's `BindParams`, Leaflet's `LayerGroup`,
+  GeoJSON's `Feature`, JSX's list of elements (`ArrayElement`, `solid-js`'s and `@solidjs/web`'s), which a Solid
+  component's `children` may be, PostCSS's nodes, which `house/baseline` reads, and the syntax-tree types of oxlint's
+  plugin API the house rules take.
+- `return-await`, `error-handling-correctness-only`: a function made async (`promise-function-async`) that hands a
+  promise on awaits it, as `eslint/require-await` wants an await in it; the default, `in-try-catch`, would refuse that
+  await.
+
+`typescript/dot-notation` is off (`eslint/no-useless-computed-key`'s row in [Rules off](#rules-off)).
+`typescript/only-throw-error` and `typescript/require-await` are the type-aware forms of `eslint/no-throw-literal` and
+`eslint/require-await`, which are on in their place.
+
+Some of oxlint's versions are stricter than Biome's: `strict-boolean-expressions`, `no-unnecessary-condition` and
+`no-base-to-string` (Biome's `useStrictBooleanExpressions`, `noUnnecessaryConditions`, `noBaseToString`),
+`no-unnecessary-type-conversion`, `no-unsafe-type-assertion`, `no-unsafe-return`, `no-misused-promises` and
+`prefer-nullish-coalescing` refuse code Biome's pass.
+
+### Import order
+
+Biome's `organizeImports` assist has three holders:
+
+- **The order of import statements:** oxfmt's `sortImports`, on every `.ts` and `.tsx` it lays out (`.oxfmtrc.jsonc`'s
+  override), with `newlinesBetween: false`: it sorts across a blank line and adds none between groups. The house rules'
+  fixtures are left out (`excludeFiles`): their refused lines are marked where they stand.
+- **Two imports of one module merged:** `import/no-duplicates`.
+- **The names inside an import's braces:** no oxfmt option sorts them; `eslint/sort-imports`, with
+  `ignoreDeclarationSort` (the statements are oxfmt's) and `ignoreCase`, holds one order (`type Trait, TRAITS`), which
+  differs from Biome's in places; which order matters to no reader.
+
+### Rules off
+
+Each with its reason; none is enabled.
+
+| oxlint rule | Biome's | Reason |
 | -- | -- | -- |
-| `a11y/noAccessKey` | `jsx_a11y/no-access-key` | source |
-| `a11y/noAmbiguousAnchorText` | `jsx_a11y/anchor-ambiguous-text` | source |
-| `a11y/noAriaHiddenOnFocusable` | `jsx_a11y/no-aria-hidden-on-focusable` | source |
-| `a11y/noAriaUnsupportedElements` | `jsx_a11y/aria-unsupported-elements` | source |
-| `a11y/noAutofocus` | `jsx_a11y/no-autofocus` | source |
-| `a11y/noDistractingElements` | `jsx_a11y/no-distracting-elements` | source |
-| `a11y/noHeaderScope` | `jsx_a11y/scope` | source |
-| `a11y/noInteractiveElementToNoninteractiveRole` | `jsx_a11y/no-interactive-element-to-noninteractive-role` | source |
-| `a11y/noLabelWithoutControl` | `jsx_a11y/label-has-associated-control` | source |
-| `a11y/noNoninteractiveElementInteractions` | `jsx_a11y/no-noninteractive-element-interactions` | source |
-| `a11y/noNoninteractiveElementToInteractiveRole` | `jsx_a11y/no-noninteractive-element-to-interactive-role` | source |
-| `a11y/noNoninteractiveTabindex` | `jsx_a11y/no-noninteractive-tabindex` | source |
-| `a11y/noRedundantAlt` | `jsx_a11y/img-redundant-alt` | source |
-| `a11y/noRedundantRoles` | `jsx_a11y/no-redundant-roles` | source |
-| `a11y/noStaticElementInteractions` | `jsx_a11y/no-static-element-interactions` | source |
-| `a11y/noSvgWithoutTitle` | (none): held by construction (`Drawing`, task 2.6d; `house/svgs`, task 4.2) |  |
-| `a11y/useAltText` | `jsx_a11y/alt-text` | source |
-| `a11y/useAnchorContent` | `jsx_a11y/anchor-has-content` | source |
-| `a11y/useAriaActivedescendantWithTabindex` | `jsx_a11y/aria-activedescendant-has-tabindex` | source |
-| `a11y/useAriaPropsForRole` | `jsx_a11y/role-has-required-aria-props` | source |
-| `a11y/useAriaPropsSupportedByRole` | `jsx_a11y/role-supports-aria-props` | source |
-| `a11y/useFocusableInteractive` | `jsx_a11y/interactive-supports-focus` | source |
-| `a11y/useHeadingContent` | `jsx_a11y/heading-has-content` | source |
-| `a11y/useHtmlLang` | `jsx_a11y/html-has-lang` | source |
-| `a11y/useIframeTitle` | `jsx_a11y/iframe-has-title` | source |
-| `a11y/useKeyWithClickEvents` | `jsx_a11y/click-events-have-key-events` | source |
-| `a11y/useKeyWithMouseEvents` | `jsx_a11y/mouse-events-have-key-events` | source |
-| `a11y/useMediaCaption` | `jsx_a11y/media-has-caption` | source |
-| `a11y/useSemanticElements` | `jsx_a11y/prefer-tag-over-role` | source |
-| `a11y/useValidAnchor` | `jsx_a11y/anchor-is-valid` | source |
-| `a11y/useValidAriaProps` | `jsx_a11y/aria-props` | source |
-| `a11y/useValidAriaRole` | `jsx_a11y/aria-role` | source |
-| `a11y/useValidAriaValues` | `jsx_a11y/aria-proptypes` | source |
-| `a11y/useValidAutocomplete` | `jsx_a11y/autocomplete-valid` | source |
-| `a11y/useValidLang` | `jsx_a11y/lang` | source |
-| `complexity/noUselessFragments` | `react/jsx-no-useless-fragment` | source |
-| `correctness/noRestrictedElements` | `react/forbid-elements` | source |
-| `security/noBlankTarget` | `react/jsx-no-target-blank` | inspired |
-| `security/useIframeSandbox` | `react/iframe-missing-sandbox` | source |
-| `style/noImplicitBoolean` | `react/jsx-boolean-value` | inspired |
-| `style/noJsxLiterals` | `react/jsx-no-literals` | source |
-| `style/useConsistentCurlyBraces` | `react/jsx-curly-brace-presence` | inspired |
-| `style/useFragmentSyntax` | `react/jsx-fragments` | source |
-| `style/useSelfClosingElements` | `react/self-closing-comp` | source |
-| `suspicious/noCommentText` | `react/jsx-no-comment-textnodes` | source |
-| `suspicious/noDuplicateJsxProps` | `react/jsx-no-duplicate-props` | source |
-| `suspicious/noSuspiciousSemicolonInJsx` | `house/semicolons` (task 4.2) |  |
-| `suspicious/useGoogleFontDisplay` | `nextjs/google-font-display` | source |
+| `eslint/no-ternary` | `noTernary` | a conditional value is a ternary here, not a statement |
+| `eslint/no-nested-ternary` | `noNestedTernary` | the same, for a choice between more than two values |
+| (none) | `useNamingConvention` | a row's keys are its database columns (`start_date`, `card_pass`) |
+| `eslint/no-magic-numbers` | `noMagicNumbers` | geometry, timings and limits are named where they mean something |
+| `eslint/curly` | `useBlockStatements` | a guard is one line: `if (!x) return;` |
+| `eslint/one-var` | `useSingleVarDeclarator` | values computed together are declared together |
+| `eslint/no-plusplus` | `noIncrementDecrement` | (no reason recorded) |
+| `eslint/no-continue` | `noContinue` | (no reason recorded) |
+| `import/exports-last` | `useExportsLast` | an export sits beside the code it belongs to |
+| `eslint/max-lines` | `noExcessiveLinesPerFile` | a module is one concern however long; `site/states.ts` is generated |
+| `eslint/default-case` | `useDefaultSwitchClause` | a switch over a union names every case (`typescript/switch-exhaustiveness-check`) |
+| `typescript/consistent-type-definitions` | `useConsistentTypeDefinitions` | a shape that must fit a `Record` is a type: an interface has no index signature |
+| `eslint/no-useless-computed-key`, `typescript/dot-notation` | `useLiteralKeys` | tsconfig's `noPropertyAccessFromIndexSignature` wants `dataset['nav']` |
+| `eslint/max-lines-per-function` | `noExcessiveLinesPerFunction` | a view is one closure over its state |
+| `eslint/no-eq-null` | `noEqualsToNull` | `== null` is null or undefined, both absent |
+| `eslint/no-undef` | `noUndeclaredVariables` | tsc rejects an undeclared name, and knows `globals.d.ts`'s |
+| `import/named` | `noUnresolvedImports` | tsc resolves every import, against the types as well |
+| (none) | `useQwikValidLexicalScope` | no Qwik here |
+| (none) | `noSecrets` | the site holds no secret; its long strings are SVG and selectors |
+| `eslint/no-bitwise` | `noBitwiseOperators` | every use is a deliberate hash or random number (`site/ink.ts`, `tests/site/roster.test.ts`) |
+| `eslint/complexity` | `noExcessiveCognitiveComplexity` | another measure (cyclomatic, where Biome's is cognitive), which the site's functions are not held to |
 
-## Rules for frameworks the site does not use
+The JSX rules off are under [Rules for JSX](#rules-for-jsx); the stylesheet's under [The stylesheet](#the-stylesheet).
 
-92 rules that `"preset": "all"` enables but that report only on React, Next, Vue, Qwik, React Native, Drizzle, Turborepo
-or Playwright code (the tests drive the page through Vitest's browser API, not Playwright's), and four of Solid's
-domain. None reports today and none is ported. **Decided by the owner, 19 November:** the 88 of other frameworks are
-accepted losses (no code of theirs exists; adding a framework is a decision of its own). Solid's four are task 4.2's:
-three have an `eslint-plugin-solid` 0.20.0 rule (`solid/no-destructure`, `solid/prefer-for`,
-`solid/no-react-specific-props`), which oxlint loads as a JS plugin, not in `--rules`, and which are on since 4.2
-(below); `noDuplicatedSpreadProps` has none and is the house rule `spreads` (task 4.2).
+### Rules not carried
 
-The 92: `noPlaywrightUselessAwait`, `noBeforeInteractiveScriptOutsideDocument`, `noChildrenProp`,
-`noComponentHookFactories`, `noJsxNamespace`, `noNestedComponentDefinitions`, `noNextAsyncClientComponent`,
-`noPlaywrightMissingAwait`, `noQwikUseVisibleTask`, `noReactNativeRawText`, `noReactPropAssignments`,
-`noRenderReturnValue`, `noSolidDestructuredProps`, `noVueDataObjectDeclaration`, `noVueDuplicateKeys`,
-`noVueImportCompilerMacros`, `noVueRefAsOperand`, `noVueReservedKeys`, `noVueReservedProps`,
-`noVueSetupPropsReactivityLoss`, `noVueVIfWithVFor`, `noVueVOnNumberValues`, `useExhaustiveDependencies`,
-`useHookAtTopLevel`, `useImageSize`, `useInlineScriptId`, `useJsxKeyInIterable`, `usePlaywrightValidDescribeCallback`,
-`useQwikClasslist`, `useQwikLoaderLocation`, `useQwikMethodUsage`, `useReactAsyncServerFunction`,
-`useReactNativePlatformComponents`, `useUniqueElementIds`, `useVueValidTemplateRoot`, `useVueValidVBind`,
-`useVueValidVCloak`, `useVueValidVElse`, `useVueValidVElseIf`, `useVueValidVFor`, `useVueValidVHtml`, `useVueValidVIf`,
-`useVueValidVOn`, `useVueValidVOnce`, `useVueValidVPre`, `useVueValidVText`, `useVueVForKey`, `noImgElement`,
-`noJsxPropsBind`, `noSyncScripts`, `noUnwantedPolyfillio`, `useGoogleFontPreconnect`, `useSolidForComponent`,
-`useVueVapor`, `noDangerouslySetInnerHtml`, `noDangerouslySetInnerHtmlWithChildren`, `noHeadElement`,
-`noPlaywrightElementHandle`, `noPlaywrightEval`, `noPlaywrightWaitForSelector`, `noReactNativeLiteralColors`,
-`noVueOptionsApi`, `useComponentExportOnlyModules`, `useReactFunctionComponents`,
-`useVueConsistentDefinePropsDeclaration`, `useVueConsistentVBindStyle`, `useVueConsistentVOnStyle`,
-`useVueDefineMacrosOrder`, `useVueHyphenatedAttributes`, `useVueMultiWordComponentNames`, `useVueNextTickPromise`,
-`noArrayIndexKey`, `noDocumentImportInPage`, `noDrizzleDeleteWithoutWhere`, `noDrizzleUpdateWithoutWhere`,
-`noDuplicatedSpreadProps`, `noHeadImportInDocument`, `noJsxLeakedDollar`, `noLeakedRender`, `noPlaywrightForceOption`,
-`noPlaywrightNetworkidle`, `noPlaywrightPagePause`, `noPlaywrightWaitForNavigation`, `noPlaywrightWaitForTimeout`,
-`noReactForwardRef`, `noReactNativeDeepImports`, `noReactSpecificProps`, `noReactStringRefs`, `noUndeclaredEnvVars`,
-`noUnknownAttribute`, `noVueArrowFuncInWatch`, `useScopedStyles`.
+Biome rules with no oxlint equivalent, and no house rule: each with what holds the check without it, where something
+does.
 
-## Solid's rules
+| Biome rule | What holds it |
+| -- | -- |
+| `noStringCaseMismatch`, `noVoidTypeReturn`, `noMisleadingReturnType`, `useTopLevelRegex`, `noShoutyConstants`, `noUnusedTemplateLiteral`, `noEvolvingTypes`, `noImplicitAnyLet` | nothing: no equivalent |
+| `noEmptyTypeParameters` | tsc refuses `<>` with no parameter |
+| `noRedundantDefaultExport` | `import/no-default-export` refuses a default export |
+| `noUselessContinue` | nothing (`eslint/no-continue`, which would refuse every `continue`, is off) |
+| `noUselessStringRaw`, `useSimpleNumberKeys`, `useSimplifiedLogicExpression`, `useWhile` | nothing: style rules with no equivalent |
+| `noUndeclaredDependencies` | knip reports an unlisted dependency (`mise run knip`) |
+| `useSingleJsDocAsterisk` | nothing: a comment-style rule |
+| `noDynamicNamespaceImportAccess` | `import/no-namespace` refuses a namespace import |
+| `noReExportAll` | `oxc/no-barrel-file` with `threshold: 0` refuses a barrel; no module re-exports with `export *` |
+| `noEnum` | tsc's `erasableSyntaxOnly` refuses an enum |
+| `noInlineStyles` | the Content-Security-Policy refuses inline styles at run time, and `house/styles` the `style` prop in JSX |
+| `noDuplicateParameters`, `noOctalEscape` | a syntax error in a module, which every file is: oxc's parser and tsc refuse it |
+| `noRedundantUseStrict`, `useStrictMode` | every file is a module, so strict already |
 
-On since task 4.2: `eslint-plugin-solid` 0.20.0, loaded through `.oxlintrc.json`'s `jsPlugins` (ESLint is not installed:
-its peer is optional). oxlint loads a plugin's rules, not its configs, so its `v2-strict` config is written out rule by
-rule, everywhere oxlint lints: its 26 errors and its 6 warnings as errors (as every rule here is; `denyWarnings` would
-fail a warning anyway), its 5 off as off, and its setting of Solid's version (`settings.solid.version: 2`), which nine
-of its rules read. In a `.tsx` file ESLint's `no-unassigned-vars` gives way to Solid's, as `v2-strict` has it: Solid's
-counts `ref={el}` as an assignment. `tests/site/rules.test.ts` holds the config to the plugin's own preset. Where a
-Solid rule and one mapped from Biome refuse the same thing (`jsx-no-duplicate-props`, `jsx-no-script-url`), both are on.
-`jsx-a11y` reads Solid's `for` as a label's control (`settings["jsx-a11y"].attributes`); its `no-autofocus` reads
-`autoFocus` alone, not Solid's `autofocus`, which its `attributes` setting does not reach: `house/focuses` refuses
-autofocus in any spelling in a `.tsx` file (task 4.2). The click rules (`click-events-have-key-events`,
-`no-static-element-interactions`) read `onClick` and its kin; Solid 2's compiler refuses the `on:` and `oncapture:`
-namespaces ("removed in Solid 2.0"), so no handler escapes them that way and no rule is added for it.
+The rules Biome has for React, Next, Vue, Qwik, React Native, Drizzle, Turborepo and Playwright (the tests drive the
+page through Vitest's browser API, not Playwright's) are not carried: the site has no code of theirs, and adding a
+framework is a decision of its own, with its rules.
 
-## Other languages
+## Every rule on, with the Biome rule it holds
 
-53 enabled rules lint CSS, JSON, GraphQL, HTML or YAML. From task 2.7 Biome read the stylesheet and the JSON configs
-alone, until issue #23 removed it: stylelint took the stylesheet ([below](#the-stylesheet-biome-to-stylelint)), and the
-JSON rules worth keeping are a test ([below](#the-json-configs-after-biome)). One of the 53 was among the twenty nursery
-rules `biome.jsonc` turned on until task 2.7: `noDuplicateMapKeys` checks YAML maps, not JavaScript, and Biome was given
-no YAML, so it never reported.
+By plugin; a note says where the two differ. "(none)" is a rule with no Biome equivalent. Solid's rules are its
+`v2-strict` config's ([Solid's rules](#solids-rules)), the house rules [above](#the-house-rules).
 
-## The stylesheet: Biome to stylelint
+### eslint
 
-stylelint lints the stylesheet (`public/css/`, `mise run lint:stylelint`, `.stylelintrc.yaml`), a warning failing the
-check, since issue #23; Biome read it from task 2.7 until then, and was removed with the JSON configs' rules
-([below](#the-json-configs-after-biome)). Measured on 20 November 2026, Biome 2.6.3 and stylelint 18.0.0. Each rule is
-turned on by name, with no shared config extended (`stylelint-config-standard` or `-recommended`), so a rule not named
-in `.stylelintrc.yaml` is off.
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `eslint/array-callback-return` | `useIterableCallbackReturn` |  |
+| `eslint/arrow-body-style` | `useConsistentArrowReturn` |  |
+| `eslint/class-methods-use-this` | `useThisInClassMethods` |  |
+| `eslint/constructor-super` | `noInvalidConstructorSuper` |  |
+| `eslint/default-case-last` | `useDefaultSwitchClauseLast` |  |
+| `eslint/default-param-last` | `useDefaultParameterLast` |  |
+| `eslint/eqeqeq` | `noDoubleEquals` | `== null` allowed ([Settings](#settings)) |
+| `eslint/for-direction` | `useValidForDirection` |  |
+| `eslint/getter-return` | `useGetterReturn` |  |
+| `eslint/grouped-accessor-pairs` | `useGroupedAccessorPairs` |  |
+| `eslint/guard-for-in` | `useGuardForIn` |  |
+| `eslint/max-classes-per-file` | `noExcessiveClassesPerFile` | one class a module, the default of both; off in `site/db.ts` |
+| `eslint/max-nested-callbacks` | `noExcessiveNestedCallbacks` | [Settings](#settings) |
+| `eslint/max-params` | `useMaxParams` | [Settings](#settings) |
+| `eslint/no-alert` | `noAlert` |  |
+| `eslint/no-array-constructor` | `useArrayLiterals` |  |
+| `eslint/no-async-promise-executor` | `noAsyncPromiseExecutor` |  |
+| `eslint/no-await-in-loop` | `noAwaitInLoops` |  |
+| `eslint/no-case-declarations` | `noSwitchDeclarations` |  |
+| `eslint/no-class-assign` | `noClassAssign` |  |
+| `eslint/no-compare-neg-zero` | `noCompareNegZero` |  |
+| `eslint/no-cond-assign` | `noAssignInExpressions` | narrower: conditions only; `eslint/no-return-assign` holds Biome's `noReturnAssign` |
+| `eslint/no-console` | `noConsole` | off in `site/report.ts` |
+| `eslint/no-const-assign` | `noConstAssign` |  |
+| `eslint/no-constant-binary-expression` | `noConstantBinaryExpressions` |  |
+| `eslint/no-constant-condition` | `noConstantCondition` |  |
+| `eslint/no-constructor-return` | `noConstructorReturn` |  |
+| `eslint/no-control-regex` | `noControlCharactersInRegex` |  |
+| `eslint/no-debugger` | `noDebugger` |  |
+| `eslint/no-delete-var` | `noDelete` |  |
+| `eslint/no-div-regex` | `noDivRegex` |  |
+| `eslint/no-dupe-class-members` | `noDuplicateClassMembers` |  |
+| `eslint/no-dupe-else-if` | `noDuplicateElseIf` |  |
+| `eslint/no-dupe-keys` | `noDuplicateObjectKeys` |  |
+| `eslint/no-duplicate-case` | `noDuplicateCase` |  |
+| `eslint/no-else-return` | `noUselessElse` | [Settings](#settings) |
+| `eslint/no-empty-character-class` | `noEmptyCharacterClassInRegex` |  |
+| `eslint/no-empty-function` | `noEmptyBlockStatements` |  |
+| `eslint/no-empty-pattern` | `noEmptyPattern` |  |
+| `eslint/no-empty-static-block` | `noEmptyBlockStatements` |  |
+| `eslint/no-empty` | `noEmptyBlockStatements` |  |
+| `eslint/no-eval` | `noGlobalEval` |  |
+| `eslint/no-ex-assign` | `noCatchAssign` |  |
+| `eslint/no-extra-boolean-cast` | `noExtraBooleanCast` |  |
+| `eslint/no-extra-label` | `noUselessLabel` |  |
+| `eslint/no-fallthrough` | `noFallthroughSwitchClause` |  |
+| `eslint/no-func-assign` | `noFunctionAssign` |  |
+| `eslint/no-global-assign` | `noGlobalAssign` |  |
+| `eslint/no-implicit-coercion` | `noImplicitCoercions` |  |
+| `eslint/no-import-assign` | `noImportAssign` |  |
+| `eslint/no-inner-declarations` | `noInnerDeclarations` |  |
+| `eslint/no-irregular-whitespace` | `noIrregularWhitespace` |  |
+| `eslint/no-label-var` | `noLabelVar` |  |
+| `eslint/no-labels` | `noConfusingLabels` | [Settings](#settings) |
+| `eslint/no-lone-blocks` | `noUselessLoneBlockStatements` |  |
+| `eslint/no-lonely-if` | `useCollapsedElseIf` |  |
+| `eslint/no-loop-func` | `noLoopFunc` |  |
+| `eslint/no-loss-of-precision` | `noPrecisionLoss` |  |
+| `eslint/no-misleading-character-class` | `noMisleadingCharacterClass` |  |
+| `eslint/no-multi-assign` | `noMultiAssign` |  |
+| `eslint/no-multi-str` | `noMultilineString` |  |
+| `eslint/no-negated-condition` | `noNegationElse` |  |
+| `eslint/no-new-native-nonconstructor` | `noInvalidBuiltinInstantiation` |  |
+| `eslint/no-new-wrappers` | `useConsistentBuiltinInstantiation` | `Date()` without `new`, which Biome's also reports, is `unicorn/new-for-builtins`'s |
+| `eslint/no-new` | `noUnusedInstantiation` |  |
+| `eslint/no-nonoctal-decimal-escape` | `noNonoctalDecimalEscape` |  |
+| `eslint/no-obj-calls` | `noGlobalObjectCalls` |  |
+| `eslint/no-object-constructor` | `noObjectConstructor` |  |
+| `eslint/no-param-reassign` | `noParameterAssign` |  |
+| `eslint/no-proto` | `noProto` |  |
+| `eslint/no-prototype-builtins` | `noPrototypeBuiltins` |  |
+| `eslint/no-redeclare` | `noRedeclare` |  |
+| `eslint/no-regex-spaces` | `noAdjacentSpacesInRegex` |  |
+| `eslint/no-restricted-globals` | `noRestrictedGlobals` | restricts nothing without options, as Biome's |
+| `eslint/no-restricted-imports` | `noRestrictedImports` | restricts nothing without options, as Biome's |
+| `eslint/no-return-assign` | `noReturnAssign` |  |
+| `eslint/no-script-url` | `noScriptUrl` |  |
+| `eslint/no-self-assign` | `noSelfAssign` |  |
+| `eslint/no-self-compare` | `noSelfCompare` |  |
+| `eslint/no-sequences` | `noCommaOperator` |  |
+| `eslint/no-setter-return` | `noSetterReturn` |  |
+| `eslint/no-shadow-restricted-names` | `noShadowRestrictedNames` |  |
+| `eslint/no-shadow` | `noShadow` |  |
+| `eslint/no-sparse-arrays` | `noSparseArray` |  |
+| `eslint/no-template-curly-in-string` | `noTemplateCurlyInString` |  |
+| `eslint/no-this-before-super` | `noUnreachableSuper` |  |
+| `eslint/no-throw-literal` | `useThrowOnlyError` | `typescript/only-throw-error`, its type-aware form, is not on |
+| `eslint/no-unassigned-vars` | `noUnassignedVariables` |  |
+| `eslint/no-unmodified-loop-condition` | `noUnmodifiedLoopCondition` |  |
+| `eslint/no-unneeded-ternary` | `noUselessTernary` |  |
+| `eslint/no-unreachable` | `noUnreachable` |  |
+| `eslint/no-unsafe-finally` | `noUnsafeFinally` |  |
+| `eslint/no-unsafe-negation` | `noUnsafeNegation` |  |
+| `eslint/no-unsafe-optional-chaining` | `noUnsafeOptionalChaining` |  |
+| `eslint/no-unused-expressions` | `noUnusedExpressions` |  |
+| `eslint/no-unused-labels` | `noUnusedLabels` |  |
+| `eslint/no-unused-private-class-members` | `noUnusedPrivateClassMembers` | narrower: `#private` only, not TypeScript's `private` |
+| `eslint/no-unused-vars` | `noUnusedFunctionParameters`, `noUnusedImports`, `noUnusedVariables` | [Settings](#settings); tsc's `noUnusedLocals` and `noUnusedParameters` hold the same |
+| `eslint/no-use-before-define` | `noInvalidUseBeforeDeclaration` | [Settings](#settings) |
+| `eslint/no-useless-assignment` | `noUselessAssignment` |  |
+| `eslint/no-useless-backreference` | `noUselessRegexBackrefs` |  |
+| `eslint/no-useless-call` | `noUselessCall` |  |
+| `eslint/no-useless-catch` | `noUselessCatch` |  |
+| `eslint/no-useless-concat` | `noUselessStringConcat` |  |
+| `eslint/no-useless-constructor` | `noUselessConstructor` |  |
+| `eslint/no-useless-escape` | `noUselessEscapeInRegex`, `noUselessEscapeInString` | strings and regular expressions |
+| `eslint/no-useless-rename` | `noUselessRename` |  |
+| `eslint/no-useless-return` | `noUselessReturn` |  |
+| `eslint/no-var` | `noVar` |  |
+| `eslint/no-void` | `noVoid` |  |
+| `eslint/no-with` | `noWith` |  |
+| `eslint/object-shorthand` | `useConsistentObjectDefinitions` |  |
+| `eslint/operator-assignment` | `useShorthandAssign` |  |
+| `eslint/prefer-arrow-callback` | `useArrowFunction` | narrower: callbacks only |
+| `eslint/prefer-const` | `useConst` |  |
+| `eslint/prefer-destructuring` | `useDestructuring` |  |
+| `eslint/prefer-exponentiation-operator` | `useExponentiationOperator` |  |
+| `eslint/prefer-named-capture-group` | `useNamedCaptureGroup` |  |
+| `eslint/prefer-numeric-literals` | `useNumericLiterals` |  |
+| `eslint/prefer-object-has-own` | `noPrototypeBuiltins` |  |
+| `eslint/prefer-object-spread` | `useObjectSpread` |  |
+| `eslint/prefer-regex-literals` | `useRegexLiterals` |  |
+| `eslint/prefer-rest-params` | `noArguments` |  |
+| `eslint/prefer-spread` | `useSpreadOverApply` |  |
+| `eslint/prefer-template` | `useTemplate` |  |
+| `eslint/preserve-caught-error` | `useErrorCause` |  |
+| `eslint/radix` | `useParseIntRadix` |  |
+| `eslint/require-await` | `useAwait` | `typescript/require-await`, its type-aware form, is not on |
+| `eslint/require-unicode-regexp` | `useUnicodeRegex` |  |
+| `eslint/require-yield` | `useYield` |  |
+| `eslint/sort-imports` | `organizeImports` (an assist) | the names inside an import's braces ([Import order](#import-order)) |
+| `eslint/symbol-description` | `useSymbolDescription` |  |
+| `eslint/use-isnan` | `useIsNan` |  |
+| `eslint/valid-typeof` | `useValidTypeof` |  |
+| `eslint/vars-on-top` | `useVarsOnTop` |  |
+| `eslint/yoda` | `noYodaExpression` |  |
+
+### typescript
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `typescript/adjacent-overload-signatures` | `useAdjacentOverloadSignatures` |  |
+| `typescript/array-type` | `useConsistentArrayType` |  |
+| `typescript/await-thenable` | `useAwaitThenable` | type-aware |
+| `typescript/ban-ts-comment` | `noTsIgnore` | `@ts-ignore` alone ([Settings](#settings)) |
+| `typescript/ban-types` | `noBannedTypes` |  |
+| `typescript/consistent-return` | (none) | type-aware |
+| `typescript/consistent-type-exports` | `useExportType` | type-aware |
+| `typescript/consistent-type-imports` | `useImportType` |  |
+| `typescript/explicit-member-accessibility` | `useConsistentMemberAccessibility` | [Settings](#settings) |
+| `typescript/method-signature-style` | `useConsistentMethodSignatures` |  |
+| `typescript/no-array-delete` | (none) | type-aware |
+| `typescript/no-base-to-string` | `noBaseToString` | type-aware; stricter than Biome's |
+| `typescript/no-confusing-void-expression` | (none) | type-aware ([Type-aware rules](#type-aware-rules)) |
+| `typescript/no-deprecated` | `noDeprecatedImports` | type-aware; broader (every use of a deprecated name) |
+| `typescript/no-duplicate-enum-values` | `noDuplicateEnumValues` |  |
+| `typescript/no-duplicate-type-constituents` | (none) | type-aware |
+| `typescript/no-empty-interface` | `noEmptyInterface` |  |
+| `typescript/no-explicit-any` | `noExplicitAny` |  |
+| `typescript/no-extra-non-null-assertion` | `noExtraNonNullAssertion` |  |
+| `typescript/no-extraneous-class` | `noStaticOnlyClass` |  |
+| `typescript/no-floating-promises` | `noFloatingPromises` | type-aware |
+| `typescript/no-for-in-array` | `noForIn` | type-aware; narrower: `for…in` over arrays only (`eslint/guard-for-in` holds Biome's `useGuardForIn`) |
+| `typescript/no-generated-empty-object-type` | (none) | type-aware |
+| `typescript/no-implied-eval` | (none) | type-aware |
+| `typescript/no-inferrable-types` | `noInferrableTypes` |  |
+| `typescript/no-invalid-void-type` | `noConfusingVoidType` |  |
+| `typescript/no-meaningless-void-operator` | (none) | type-aware |
+| `typescript/no-misused-new` | `noMisleadingInstantiator` |  |
+| `typescript/no-misused-promises` | `noMisusedPromises` | type-aware |
+| `typescript/no-misused-spread` | (none) | type-aware |
+| `typescript/no-mixed-enums` | `useConsistentEnumValueType` | type-aware |
+| `typescript/no-namespace` | `noNamespace` |  |
+| `typescript/no-non-null-asserted-optional-chain` | `noNonNullAssertedOptionalChain` |  |
+| `typescript/no-non-null-assertion` | `noNonNullAssertion` |  |
+| `typescript/no-redundant-type-constituents` | (none) | type-aware |
+| `typescript/no-require-imports` | `noCommonJs` |  |
+| `typescript/no-restricted-types` | `noRestrictedTypes` | restricts nothing without options, in both |
+| `typescript/no-this-alias` | `noUselessThisAlias` |  |
+| `typescript/no-unnecessary-boolean-literal-compare` | (none) | type-aware |
+| `typescript/no-unnecessary-condition` | `noUnnecessaryConditions` | type-aware; stricter than Biome's |
+| `typescript/no-unnecessary-qualifier` | (none) | type-aware |
+| `typescript/no-unnecessary-template-expression` | `noUnnecessaryTemplateExpression` | type-aware |
+| `typescript/no-unnecessary-type-arguments` | (none) | type-aware |
+| `typescript/no-unnecessary-type-assertion` | (none) | type-aware |
+| `typescript/no-unnecessary-type-constraint` | `noUselessTypeConstraint` |  |
+| `typescript/no-unnecessary-type-conversion` | `noUselessTypeConversion` | type-aware |
+| `typescript/no-unnecessary-type-parameters` | (none) | type-aware |
+| `typescript/no-unsafe-argument` | (none) | type-aware |
+| `typescript/no-unsafe-assignment` | (none) | type-aware |
+| `typescript/no-unsafe-call` | (none) | type-aware |
+| `typescript/no-unsafe-declaration-merging` | `noUnsafeDeclarationMerging` |  |
+| `typescript/no-unsafe-enum-assignment` | (none) | type-aware |
+| `typescript/no-unsafe-enum-comparison` | (none) | type-aware |
+| `typescript/no-unsafe-member-access` | (none) | type-aware |
+| `typescript/no-unsafe-return` | `noUnsafeReturn` | type-aware |
+| `typescript/no-unsafe-type-assertion` | `noUnsafeTypeAssertion` | type-aware |
+| `typescript/no-unsafe-unary-minus` | (none) | type-aware |
+| `typescript/no-useless-default-assignment` | (none) | type-aware |
+| `typescript/no-useless-empty-export` | `noUselessEmptyExport` |  |
+| `typescript/no-var-requires` | `noCommonJs` |  |
+| `typescript/non-nullable-type-assertion-style` | (none) | type-aware |
+| `typescript/parameter-properties` | `noParameterProperties` |  |
+| `typescript/prefer-as-const` | `useAsConstAssertion` |  |
+| `typescript/prefer-enum-initializers` | `useEnumInitializers` |  |
+| `typescript/prefer-find` | `useArrayFind` | type-aware |
+| `typescript/prefer-for-of` | `useForOf` |  |
+| `typescript/prefer-function-type` | `useShorthandFunctionType` |  |
+| `typescript/prefer-includes` | `useIncludes` | type-aware; `unicorn/prefer-includes`, the other equivalent, is not on |
+| `typescript/prefer-literal-enum-member` | `useLiteralEnumMembers` |  |
+| `typescript/prefer-namespace-keyword` | `useNamespaceKeyword` |  |
+| `typescript/prefer-nullish-coalescing` | `useNullishCoalescing` | type-aware |
+| `typescript/prefer-optional-chain` | `useOptionalChain` | type-aware |
+| `typescript/prefer-promise-reject-errors` | (none) | type-aware |
+| `typescript/prefer-readonly-parameter-types` | (none) | type-aware ([Type-aware rules](#type-aware-rules)) |
+| `typescript/prefer-readonly` | `useReadonlyClassProperties` | type-aware |
+| `typescript/prefer-reduce-type-parameter` | `useReduceTypeParameter` | type-aware |
+| `typescript/prefer-regexp-exec` | `useRegexpExec` | type-aware |
+| `typescript/prefer-return-this-type` | (none) | type-aware |
+| `typescript/prefer-string-starts-ends-with` | `useStringStartsEndsWith` | type-aware |
+| `typescript/promise-function-async` | (none) | type-aware |
+| `typescript/related-getter-setter-pairs` | (none) | type-aware |
+| `typescript/require-array-sort-compare` | `useArraySortCompare` | type-aware |
+| `typescript/restrict-plus-operands` | `noUnsafePlusOperands` | type-aware |
+| `typescript/restrict-template-expressions` | (none) | type-aware |
+| `typescript/return-await` | (none) | type-aware ([Type-aware rules](#type-aware-rules)) |
+| `typescript/strict-boolean-expressions` | `useStrictBooleanExpressions` | type-aware; stricter than Biome's |
+| `typescript/strict-void-return` | (none) | type-aware |
+| `typescript/switch-exhaustiveness-check` | `useExhaustiveSwitchCases` | type-aware |
+| `typescript/unbound-method` | (none) | type-aware |
+| `typescript/unified-signatures` | `useUnifiedTypeSignatures` |  |
+| `typescript/use-unknown-in-catch-callback-variable` | (none) | type-aware |
+
+### unicorn
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `unicorn/error-message` | `useErrorMessage` |  |
+| `unicorn/explicit-length-check` | `useExplicitLengthCheck` |  |
+| `unicorn/filename-case` | `useFilenamingConvention` | [Settings](#settings) |
+| `unicorn/new-for-builtins` | `noInvalidBuiltinInstantiation` |  |
+| `unicorn/no-array-for-each` | `noForEach` |  |
+| `unicorn/no-document-cookie` | `noDocumentCookie` |  |
+| `unicorn/no-empty-file` | `noEmptySource` |  |
+| `unicorn/no-instanceof-array` | `useIsArray` |  |
+| `unicorn/no-lonely-if` | `useCollapsedIf` |  |
+| `unicorn/no-negated-condition` | `noNegationElse` |  |
+| `unicorn/no-static-only-class` | `noStaticOnlyClass` |  |
+| `unicorn/no-thenable` | `noThenProperty` |  |
+| `unicorn/no-useless-switch-case` | `noUselessSwitchCase` |  |
+| `unicorn/no-useless-undefined` | `noUselessUndefined`, `noUselessUndefinedInitialization` | not an argument or an arrow's body ([Settings](#settings)) |
+| `unicorn/numeric-separators-style` | `useNumericSeparators` |  |
+| `unicorn/prefer-array-flat-map` | `useFlatMap` |  |
+| `unicorn/prefer-array-flat` | `noFlatMapIdentity` | broader: also `reduce` and `concat` flattening |
+| `unicorn/prefer-array-index-of` | `useIndexOf` |  |
+| `unicorn/prefer-array-some` | `useArraySome` |  |
+| `unicorn/prefer-at` | `useAtIndex` |  |
+| `unicorn/prefer-date-now` | `useDateNow` |  |
+| `unicorn/prefer-dom-node-text-content` | `useDomNodeTextContent` |  |
+| `unicorn/prefer-export-from` | `noExportedImports` |  |
+| `unicorn/prefer-global-this` | `useGlobalThis` |  |
+| `unicorn/prefer-math-min-max` | `useMathMinMax` |  |
+| `unicorn/prefer-module` | `noGlobalDirnameFilename` | broader: all CommonJS forms and `"use strict"` |
+| `unicorn/prefer-node-protocol` | `useNodejsImportProtocol` |  |
+| `unicorn/prefer-number-properties` | `useNumberNamespace`, `noGlobalIsFinite`, `noGlobalIsNan` | broader: also `parseInt`, `NaN` and `Infinity` |
+| `unicorn/prefer-optional-catch-binding` | `noUselessCatchBinding` |  |
+| `unicorn/prefer-query-selector` | `useDomQuerySelector` |  |
+| `unicorn/prefer-regexp-test` | `useRegexpTest` |  |
+| `unicorn/prefer-response-static-json` | `useStaticResponseMethods` | narrower: `Response.json()` only, not `Response.redirect()` |
+| `unicorn/prefer-string-slice` | `noSubstr` |  |
+| `unicorn/prefer-string-trim-start-end` | `useTrimStartEnd` |  |
+| `unicorn/require-number-to-fixed-digits-argument` | `useNumberToFixedDigitsArgument` |  |
+| `unicorn/throw-new-error` | `useThrowNewError` |  |
+
+### import
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `import/extensions` | `useImportExtensions` | [Settings](#settings) |
+| `import/first` | `useImportsFirst` |  |
+| `import/no-commonjs` | `noCommonJs` |  |
+| `import/no-cycle` | `noImportCycles` |  |
+| `import/no-default-export` | `noDefaultExport` |  |
+| `import/no-duplicates` | `organizeImports` (an assist) | two imports of one module merged ([Import order](#import-order)) |
+| `import/no-namespace` | `noNamespaceImport` | both from eslint-plugin-barrel-files' `avoid-namespace-import` |
+| `import/no-nodejs-modules` | `noNodejsModules` | off in `tests/**`, `vitest.config.ts`, `lint/privates.ts` and `lint/stylelint/*.ts` |
+
+### oxc
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `oxc/approx-constant` | `noApproximativeNumericConstant` | both from Clippy's `approx_constant` |
+| `oxc/bad-min-max-func` | `noConstantMathMinMaxClamp` | Clippy's `min_max`: the same clamp check |
+| `oxc/misrefactored-assign-op` | `noMisrefactoredShorthandAssign` | both from Clippy's `misrefactored_assign_op` |
+| `oxc/no-accumulating-spread` | `noAccumulatingSpread` |  |
+| `oxc/no-barrel-file` | `noBarrelFile` | [Settings](#settings) |
+| `oxc/no-const-enum` | `noConstEnum` | tsc's `erasableSyntaxOnly` refuses it too |
+| `oxc/only-used-in-recursion` | `noParametersOnlyUsedInRecursion` | both from Clippy's `only_used_in_recursion` |
+
+### node
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `node/no-process-env` | `noProcessEnv` | the global `process` alone; `house/env` reads a `process` imported from `node:process` |
+
+### promise
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `promise/no-nesting` | `noNestedPromises` |  |
+
+### vitest
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `vitest/consistent-test-it` | `useConsistentTestIt` | in `tests/**` and `vitest.config.ts` ([Settings](#settings)) |
+| `vitest/expect-expect` | `useExpect` |  |
+| `vitest/max-nested-describe` | `noExcessiveNestedTestSuites` |  |
+| `vitest/no-conditional-expect` | `noConditionalExpect` |  |
+| `vitest/no-disabled-tests` | `noSkippedTests` |  |
+| `vitest/no-duplicate-hooks` | `noDuplicateTestHooks` |  |
+| `vitest/no-focused-tests` | `noFocusedTests` |  |
+| `vitest/no-identical-title` | `noIdenticalTestTitle` |  |
+| `vitest/no-standalone-expect` | `noMisplacedAssertion` |  |
+| `vitest/prefer-hooks-in-order` | `useTestHooksInOrder` |  |
+| `vitest/prefer-hooks-on-top` | `useTestHooksOnTop` |  |
+
+### jest
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `jest/no-done-callback` | `noDoneCallback` | a jest rule, which oxlint runs on Vitest files |
+| `jest/no-export` | `noExportsInTest` | a jest rule, which oxlint runs on Vitest files |
+
+### jsx-a11y
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `jsx-a11y/alt-text` | `useAltText` |  |
+| `jsx-a11y/anchor-ambiguous-text` | `noAmbiguousAnchorText` |  |
+| `jsx-a11y/anchor-has-content` | `useAnchorContent` |  |
+| `jsx-a11y/anchor-is-valid` | `useValidAnchor` |  |
+| `jsx-a11y/aria-activedescendant-has-tabindex` | `useAriaActivedescendantWithTabindex` |  |
+| `jsx-a11y/aria-props` | `useValidAriaProps` |  |
+| `jsx-a11y/aria-proptypes` | `useValidAriaValues` |  |
+| `jsx-a11y/aria-role` | `useValidAriaRole` |  |
+| `jsx-a11y/aria-unsupported-elements` | `noAriaUnsupportedElements` |  |
+| `jsx-a11y/autocomplete-valid` | `useValidAutocomplete` |  |
+| `jsx-a11y/click-events-have-key-events` | `useKeyWithClickEvents` |  |
+| `jsx-a11y/heading-has-content` | `useHeadingContent` |  |
+| `jsx-a11y/html-has-lang` | `useHtmlLang` |  |
+| `jsx-a11y/iframe-has-title` | `useIframeTitle` |  |
+| `jsx-a11y/img-redundant-alt` | `noRedundantAlt` |  |
+| `jsx-a11y/interactive-supports-focus` | `useFocusableInteractive` |  |
+| `jsx-a11y/label-has-associated-control` | `noLabelWithoutControl` |  |
+| `jsx-a11y/lang` | `useValidLang` |  |
+| `jsx-a11y/media-has-caption` | `useMediaCaption` |  |
+| `jsx-a11y/mouse-events-have-key-events` | `useKeyWithMouseEvents` |  |
+| `jsx-a11y/no-access-key` | `noAccessKey` |  |
+| `jsx-a11y/no-aria-hidden-on-focusable` | `noAriaHiddenOnFocusable` |  |
+| `jsx-a11y/no-autofocus` | `noAutofocus` | reads React's `autoFocus` alone; `house/focuses` refuses Solid's `autofocus` |
+| `jsx-a11y/no-distracting-elements` | `noDistractingElements` |  |
+| `jsx-a11y/no-interactive-element-to-noninteractive-role` | `noInteractiveElementToNoninteractiveRole` |  |
+| `jsx-a11y/no-noninteractive-element-to-interactive-role` | `noNoninteractiveElementToInteractiveRole` |  |
+| `jsx-a11y/no-noninteractive-tabindex` | `noNoninteractiveTabindex` |  |
+| `jsx-a11y/no-redundant-roles` | `noRedundantRoles` |  |
+| `jsx-a11y/no-static-element-interactions` | `noStaticElementInteractions` |  |
+| `jsx-a11y/prefer-tag-over-role` | `useSemanticElements` |  |
+| `jsx-a11y/role-has-required-aria-props` | `useAriaPropsForRole` |  |
+| `jsx-a11y/role-supports-aria-props` | `useAriaPropsSupportedByRole` |  |
+| `jsx-a11y/scope` | `noHeaderScope` |  |
+| `jsx-a11y/tabindex-no-positive` | `noPositiveTabindex` |  |
+
+### react
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `react/button-has-type` | `useButtonType` | lets a spread after the type through, which `house/buttons` refuses |
+| `react/iframe-missing-sandbox` | `useIframeSandbox` |  |
+| `react/jsx-no-comment-textnodes` | `noCommentText` |  |
+| `react/jsx-no-duplicate-props` | `noDuplicateJsxProps` |  |
+| `react/jsx-no-script-url` | `noScriptUrl` |  |
+| `react/jsx-no-target-blank` | `noBlankTarget` | reads the address only when it is a literal or a bare name ([Rules for JSX](#rules-for-jsx)) |
+| `react/void-dom-elements-no-children` | `noVoidElementsWithChildren` |  |
+
+### nextjs
+
+| oxlint rule | Biome's | Note |
+| -- | -- | -- |
+| `nextjs/google-font-display` | `useGoogleFontDisplay` |  |
+
+## The stylesheet
+
+stylelint 18.0.0 lints the stylesheet (`public/css/`, `mise run lint:stylelint`, `.stylelintrc.yaml`), a warning failing
+the check. Each rule is turned on by name, with no shared config extended (`stylelint-config-standard` or
+`-recommended`), so a rule not named in `.stylelintrc.yaml` is off; each of stylelint's core rules and the candidate
+plugins was considered, and is on or off with its reason below. The config's `reportDescriptionlessDisables`,
+`reportNeedlessDisables` and `reportInvalidScopeDisables` make a suppression give its reason, be needed and name a rule
+that is on; `tests/test_suppressions.py` counts each.
+
+**How they are proven.** `tests/site/stylelint.test.ts` lints the fixtures in `tests/site/stylelint/` with the
+repository's config: each rule on refuses a line written for it (an empty sheet and a string over two lines, which no
+marked line holds, are CSS of the test's own), the suppressions' settings refuse a disable with no reason, one not
+needed and one of a rule not on, and a sheet written the intended way passes.
 
 ### Biome's CSS rules
 
-Biome ran 29 rules on the stylesheet (`preset: all`, its CSS rules being those whose `biome explain` examples are CSS).
-Each is mapped by Biome's own metadata: `biome migrate stylelint --include-inspired --include-nursery`, run on a
-one-rule config for each of stylelint's core rules, yields the Biome rule a stylelint rule is the source of. Biome found
-nothing on the stylesheet but the line it suppressed, and stylelint, with the rules below, finds the same.
+Each of Biome's CSS rules has its stylelint equivalent, by Biome's own metadata (`biome migrate stylelint`); the
+`*-no-unknown` rules of both read the same data (CSSTree's).
 
-| Biome rule | stylelint rule | Findings |
+| stylelint rule | Biome's |
+| -- | -- |
+| `font-family-no-missing-generic-family-keyword` | `useGenericFontNames` |
+| `declaration-no-important` | `noImportantStyles` (the `[hidden]` rule is suppressed, [suppressed findings](../lint-false-positives.md)) |
+| `selector-max-class` | `noExcessiveSelectorClasses`, given the limit it has no default for: 4 ([below](#the-stricter-rules)) |
+| `function-linear-gradient-no-nonstandard-direction` | `noInvalidDirectionInLinearGradient` |
+| `named-grid-areas-no-invalid` | `noInvalidGridAreas` |
+| `no-invalid-position-at-import-rule` | `noInvalidPositionAtImportRule` |
+| `custom-property-no-missing-var-function` | `noMissingVarFunction` |
+| `function-no-unknown` | `noUnknownFunction` |
+| `media-feature-name-no-unknown` | `noUnknownMediaFeatureName` |
+| `property-no-unknown` | `noUnknownProperty` |
+| `selector-pseudo-class-no-unknown` | `noUnknownPseudoClass` |
+| `selector-pseudo-element-no-unknown` | `noUnknownPseudoElement` |
+| `selector-type-no-unknown` | `noUnknownTypeSelector` |
+| `unit-no-unknown` | `noUnknownUnit` |
+| `selector-anb-no-unmatchable` | `noUnmatchableAnbSelector` |
+| `at-rule-no-unknown` | `noUnknownAtRules`, and `noValueAtRule` (CSS Modules' `@value`, which is no CSS at-rule) |
+| `media-type-no-deprecated` | `noDeprecatedMediaType` |
+| `no-duplicate-at-import-rules` | `noDuplicateAtImportRules` |
+| `declaration-block-no-duplicate-custom-properties` | `noDuplicateCustomProperties` |
+| `font-family-no-duplicate-names` | `noDuplicateFontNames` |
+| `declaration-block-no-duplicate-properties` | `noDuplicateProperties` |
+| `no-duplicate-selectors` | `noDuplicateSelectors` |
+| `keyframe-block-no-duplicate-selectors` | `noDuplicateSelectorsKeyframeBlock` |
+| `block-no-empty` | `noEmptyBlock` |
+| `no-empty-source` | `noEmptySource` |
+| `keyframe-declaration-no-important` | `noImportantInKeyframe` |
+| `no-irregular-whitespace` | `noIrregularWhitespace` |
+| `declaration-block-no-shorthand-property-overrides` | `noShorthandPropertyOverrides` |
+| stylelint's own parser: a `CssSyntaxError` fails the run; oxfmt (`format:site`) parses the file too | Biome's CSS parser |
+
+### The stricter rules
+
+| Rule (setting) | On or off | Reason |
 | -- | -- | -- |
-| `a11y/useGenericFontNames` | `font-family-no-missing-generic-family-keyword` | 0 |
-| `complexity/noImportantStyles` | `declaration-no-important` | 1, the `[hidden]` rule, suppressed in both ([suppressed findings](../lint-false-positives.md)) |
-| `complexity/noExcessiveSelectorClasses` | `selector-max-class` | none: Biome's has no default for `maxClasses`, so it checked nothing; stylelint's is on at 4 among the stricter rules |
-| `correctness/noInvalidDirectionInLinearGradient` | `function-linear-gradient-no-nonstandard-direction` | 0 |
-| `correctness/noInvalidGridAreas` | `named-grid-areas-no-invalid` | 0 |
-| `correctness/noInvalidPositionAtImportRule` | `no-invalid-position-at-import-rule` | 0 |
-| `correctness/noMissingVarFunction` | `custom-property-no-missing-var-function` | 0 |
-| `correctness/noUnknownFunction` | `function-no-unknown` | 0 |
-| `correctness/noUnknownMediaFeatureName` | `media-feature-name-no-unknown` | 0 |
-| `correctness/noUnknownProperty` | `property-no-unknown` | 0 |
-| `correctness/noUnknownPseudoClass` | `selector-pseudo-class-no-unknown` | 0 |
-| `correctness/noUnknownPseudoElement` | `selector-pseudo-element-no-unknown` | 0 |
-| `correctness/noUnknownTypeSelector` | `selector-type-no-unknown` | 0 |
-| `correctness/noUnknownUnit` | `unit-no-unknown` | 0 |
-| `correctness/noUnmatchableAnbSelector` | `selector-anb-no-unmatchable` | 0 |
-| `style/noValueAtRule` | dropped: CSS Modules' `@value`, which is no CSS at-rule, so `at-rule-no-unknown` refuses it already | 0 |
-| `suspicious/noDeprecatedMediaType` | `media-type-no-deprecated` | 0 |
-| `suspicious/noDuplicateAtImportRules` | `no-duplicate-at-import-rules` | 0 |
-| `suspicious/noDuplicateCustomProperties` | `declaration-block-no-duplicate-custom-properties` | 0 |
-| `suspicious/noDuplicateFontNames` | `font-family-no-duplicate-names` | 0 |
-| `suspicious/noDuplicateProperties` | `declaration-block-no-duplicate-properties` | 0 |
-| `suspicious/noDuplicateSelectors` | `no-duplicate-selectors` | 0 |
-| `suspicious/noDuplicateSelectorsKeyframeBlock` | `keyframe-block-no-duplicate-selectors` | 0 |
-| `suspicious/noEmptyBlock` | `block-no-empty` | 0 |
-| `suspicious/noEmptySource` | `no-empty-source` | 0 |
-| `suspicious/noImportantInKeyframe` | `keyframe-declaration-no-important` | 0 |
-| `suspicious/noIrregularWhitespace` | `no-irregular-whitespace` | 0 |
-| `suspicious/noShorthandPropertyOverrides` | `declaration-block-no-shorthand-property-overrides` | 0 |
-| `suspicious/noUnknownAtRules` | `at-rule-no-unknown` | 0 |
-| (Biome's CSS parser, which fails a file it cannot read) | stylelint's own: a `CssSyntaxError` fails the run; oxfmt (`format:site`) parses the file too | 0 |
+| The validity rules with no Biome twin: `annotation-no-unknown`, `at-charset-rule-no-invalid`, `at-rule-descriptor-no-unknown`, `at-rule-descriptor-value-no-unknown`, `at-rule-no-deprecated`, `at-rule-prelude-no-invalid`, `block-no-redundant-nested-style-rules`, `color-no-invalid-hex`, `comment-no-empty`, `declaration-property-value-keyword-no-deprecated`, `declaration-property-value-no-unknown`, `function-calc-no-unspaced-operator`, `media-feature-name-value-no-unknown`, `media-query-no-invalid`, `nesting-selector-no-missing-scoping-root`, `no-invalid-double-slash-comments`, `no-invalid-position-declaration`, `no-unknown-animations`, `no-unknown-custom-media`, `property-no-deprecated`, `selector-no-deprecated`, `selector-no-invalid`, `selector-no-unmatchable`, `string-no-newline`, `syntax-string-no-invalid`, `value-no-invalid` | on | each refuses CSS a browser drops or misreads: a value a property cannot take, an invalid prelude, an animation name no `@keyframes` defines |
+| `selector-max-compound-selectors` (4) | on | the stylesheet's deepest is 4 (`.sentence-hero .live .friends b`); it stops descendant chains growing |
+| `selector-max-class` (4) | on | the stylesheet's most is 4 |
+| `max-nesting-depth` (0) | on | the stylesheet is flat, and `styles.test.ts`'s rules and `pipeline/generate.py`'s class reader read flat rules |
+| `color-named` (`never`, `mask*` properties exempt) | on | a named colour would pass `styles.test.ts`, whose colours are hex and colour functions; `black` in a `mask-image` gradient is an opacity, not a colour |
+| `color-hex-length` (`short`), `font-weight-notation` (`numeric`) | on | one spelling |
+| Notations: `alpha-value-notation` (number), `color-function-notation` (modern), `color-function-alias-notation` (without-alpha), `hue-degree-notation` (angle), `lightness-notation` (percentage), `import-notation` (string), `selector-not-notation` (complex), `selector-pseudo-element-colon-notation` (double), `selector-attribute-quotes` (always), `display-notation` (short), `keyframe-selector-notation`, `length-zero-no-unit`, `number-max-precision` (4), `selector-type-case` (lower), `function-name-case` (lower), `comment-whitespace-inside` (always), `function-url-quotes` (never) | on | one spelling each, as the stylesheet writes it |
+| `media-feature-range-notation` (`prefix`) | on | `media.ts`'s queries must be the stylesheet's own spelling (`styles.test.ts`), and prefix is the stylesheet's |
+| `declaration-block-no-redundant-longhand-properties`, `shorthand-property-no-redundant-values` | on | a shorthand where it says the same (`flex-flow: row wrap`, `0.5rem` for `0.5rem 0.5rem`) |
+| `selector-class-pattern` (kebab case: `^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$`) | on | `site/classes.ts` is generated from these names (`pipeline/generate.py` reads any `[\w-]`): the rule holds them to the form JSX's `class` is written in; Leaflet's are kebab case too |
+| `custom-property-pattern`, `keyframes-name-pattern` (kebab case) | on | the tokens and the animations, in the same form |
+| `function-url-scheme-allowed-list` (`data`) | on | the page's Content-Security-Policy refuses a remote `url()` as the page runs; this refuses it as it is written |
+| `time-min-milliseconds` (100) | on | a duration under 100 ms is a typo for seconds; reduced motion's `0ms` is the rule's own exception |
+| `at-rule-no-vendor-prefix`, `media-feature-name-no-vendor-prefix`, `property-no-vendor-prefix`, `selector-no-vendor-prefix`, `value-no-vendor-prefix` | on | the supported browsers are the latest; `-webkit-text-size-adjust`, iOS Safari's only form, is suppressed with its reason |
+| `no-descending-specificity` | off | the stylesheet is ordered by component; specificity decides between weights (Biome's `noDescendingSpecificity` is off for the same reason) |
+| `color-no-hex` | off | the design tokens are hex colours (Biome's `noHexColors`, off) |
+| `selector-max-specificity` | off | a ceiling fitted to the stylesheet's worst selector holds nothing; with descending specificity off, specificity is how the stylesheet weighs rules |
+| `selector-max-id` (0) | off | the one id is `#main:focus`, the skip link's target: a cap of 0 would suppress it for nothing gained |
+| `selector-no-qualifying-type` | off | `button.link`, `dialog.search`, `input[type]` qualify on purpose: a class styles one kind of element |
+| `selector-max-type`, `-universal`, `-attribute`, `-pseudo-class`, `-combinators` | off | a cap would only fit the stylesheet as it is; the compound and class caps bound a selector already |
+| `unit-allowed-list` | off | each unit in use is meant (`fr`, `dvh`, `svh`, `deg`, `ms`); a list of the units in use refuses nothing wrong |
+| `declaration-property-unit-allowed-list` | off | fluid type is `clamp(rem, vw, rem)` by design; Leaflet's attribution is `10px`; one `line-height` is in rem |
+| `selector-id-pattern`, `container-name-pattern`, `layer-name-pattern`, `custom-media-pattern` | off | nothing to hold (no id but `#main`, no container name, no layer or custom media); to turn on with the first |
+| `no-unknown-custom-properties` | off | `--w` (`artists.tsx`'s `styled`) and `--header-h` (`main.ts`) are set by the code, which stylelint cannot see; `styles.test.ts` checks each token read is defined by a rule or the code |
+| `value-keyword-case` (`lower`) | off | case only, and it misreads `Roboto` inside `--font` and `currentColor` |
+| `font-family-name-quotes` | off | quotes only; it skips `--font`, which quotes the same names, so the sheet would spell one font two ways |
+| `declaration-property-value-disallowed-list`, as a copy of `styles.test.ts`'s token rule | off | it would state `styles.test.ts`'s token rule (hex and colour functions outside the tokens, `cubic-bezier`, literal durations and `z-index`) twice; moving that rule to stylelint is a change of its own |
+| `property-layout-mappings`, `unit-layout-mappings`, `value-keyword-layout-mappings` (`flow-relative`: logical properties) | off | the site has no right-to-left or vertical text: some 350 rewrites for no visitor. Core rules, so no plugin is needed if that changes |
+| Layout: `rule-empty-line-before`, `comment-empty-line-before`, `at-rule-empty-line-before`, `declaration-empty-line-before`, `custom-property-empty-line-before` | off | layout is oxfmt's (`format:site`) |
+| The list rules (each `*-allowed-list` and `*-disallowed-list` but those above, `comment-word-disallowed-list`, `rule-selector-property-disallowed-list`, `declaration-property-max-values`, `rule-nesting-at-rule-required-list`, `at-rule-property-required-list`, `declaration-property-custom-property-allowed-list`, `value-type-custom-property-required-list`) | off | each needs a list the house has no rule for |
 
-No rule is lost: the `*-no-unknown` rules of both read the same data (CSSTree's), and each finds nothing today.
+Biome's `noExcessiveLinesPerFile` has no stylelint equivalent, and is not needed: the stylesheet is one file, ordered by
+component. Its `useBaseline` is the house rule `house/baseline` ([below](#the-browser-check-housebaseline)).
 
-Off in Biome, staying off:
+The plugins considered, each a new dependency; none is used:
 
-| Biome rule | stylelint rule | Reason |
-| -- | -- | -- |
-| `style/noHexColors` | `color-no-hex` | the design tokens are hex colours (18 findings) |
-| `style/noDescendingSpecificity` | `no-descending-specificity` | site.css is ordered by component; specificity decides between weights (61 findings: stylelint's rule is the same check) |
-| `style/noExcessiveLinesPerFile` | (none) | the stylesheet is one file, ordered by component |
-| `suspicious/useBaseline` | `house/baseline`, the house's | **on** (owner, 20 November: no third-party browser plugin): a CSS feature must have been in every browser `package.json`'s `browserslist` declares for at least 12 months, by `web-features` (Baseline's data); [The browser check](#the-browser-check-housebaseline) |
-
-### Stricter than Biome
-
-Parity is the floor: each of stylelint's core rules and the candidate plugins was considered and is on or off with its
-reason, rather than taken from a shared config's defaults. Findings are those on the stylesheet before this change, the
-rule alone (stylelint 18.0.0; 17.16.0 finds the same). Where a rule is on with findings, the stylesheet was changed to
-what it asks, rendering the same, or the line is suppressed with its reason
-([suppressed findings](../lint-false-positives.md)). `tests/site/stylelint.test.ts` lints the fixtures in
-`tests/site/stylelint/` with the repository's config: each rule on refuses a line written for it (an empty sheet and a
-string over two lines, which no marked line holds, are CSS of the test's own), the suppressions' settings refuse a
-disable with no reason, one not needed and one of a rule not on, and a sheet written the intended way passes.
-
-| Rule (setting) | Findings | On or off | Reason |
-| -- | -- | -- | -- |
-| The validity rules with no Biome twin: `annotation-no-unknown`, `at-charset-rule-no-invalid`, `at-rule-descriptor-no-unknown`, `at-rule-descriptor-value-no-unknown`, `at-rule-no-deprecated`, `at-rule-prelude-no-invalid`, `block-no-redundant-nested-style-rules`, `color-no-invalid-hex`, `comment-no-empty`, `declaration-property-value-keyword-no-deprecated`, `declaration-property-value-no-unknown`, `function-calc-no-unspaced-operator`, `media-feature-name-value-no-unknown`, `media-query-no-invalid`, `nesting-selector-no-missing-scoping-root`, `no-invalid-double-slash-comments`, `no-invalid-position-declaration`, `no-unknown-animations`, `no-unknown-custom-media`, `property-no-deprecated`, `selector-no-deprecated`, `selector-no-invalid`, `selector-no-unmatchable`, `string-no-newline`, `syntax-string-no-invalid`, `value-no-invalid` | 0 each | on | each refuses CSS a browser drops or misreads that Biome's rules do not see: a value a property cannot take, an invalid prelude, an animation name no `@keyframes` defines |
-| `no-descending-specificity` | 61 | off | the stylesheet is ordered by component; specificity decides between weights (Biome's reason, the same check) |
-| `selector-max-specificity` (`0,4,0`; `0,5,2`) | 3; 1 | off | a ceiling fitted to today's worst selector holds nothing; with descending specificity off, specificity is how the stylesheet weighs rules |
-| `selector-max-compound-selectors` (3; **4**) | 2; 0 | on, 4 | today's deepest is 4 (`.sentence-hero .live .friends b`); it stops descendant chains growing |
-| `selector-max-class` (3; **4**) | 3; 0 | on, 4 | Biome's `noExcessiveSelectorClasses` given the option it lacked; today's most is 4 |
-| `selector-max-id` (0) | 1 | off | the one id is `#main:focus`, the skip link's target: a cap of 0 would suppress it for nothing gained |
-| `selector-no-qualifying-type` | 77 (0 ignoring class and attribute) | off | `button.link`, `dialog.search`, `input[type]` qualify on purpose: a class styles one kind of element |
-| `max-nesting-depth` (0) | 0 | on, 0 | the stylesheet is flat, and `styles.test.ts`'s rules and `pipeline/generate.py`'s class reader read flat rules |
-| `selector-max-type` (2), `-universal` (1), `-attribute` (2), `-pseudo-class` (3), `-combinators` (3) | 0 each | off | caps chosen only to fit today; the compound and class caps bound a selector already |
-| `unit-allowed-list` (`px rem em %`) | 68 (0 with the 15 units in use) | off | each unit in use is meant (`fr`, `dvh`, `svh`, `deg`, `ms`); a list of today's units refuses nothing wrong |
-| `declaration-property-unit-allowed-list` (`font-size` in `rem em %`, unitless `line-height`, no unit on transitions) | 6 | off | fluid type is `clamp(rem, vw, rem)` by design; Leaflet's attribution is `10px`; one `line-height` is in rem |
-| `color-named` (`never`, `mask*` properties exempt) | 6 (0 with the exemption) | on | the 6 are `black` in `mask-image` gradients, an opacity, not a colour; elsewhere a named colour would pass `styles.test.ts`, whose colours are hex and colour functions: this closes that gap |
-| `color-hex-length` (`short`) | 1 | on, fixed | `--accent-ink: #ffffff` is `#fff` |
-| `font-weight-notation` (`numeric`) | 0 | on | one spelling |
-| `selector-class-pattern` (kebab case: `^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$`) | 0 | on | `site/classes.ts` is generated from these names (`pipeline/generate.py` reads any `[\w-]`): the rule holds them to the form JSX's `class` is written in; Leaflet's are kebab case too |
-| `custom-property-pattern`, `keyframes-name-pattern` (kebab case) | 0; 0 | on | the tokens and the animations, in the same form |
-| `selector-id-pattern`, `container-name-pattern`, `layer-name-pattern`, `custom-media-pattern` | 0 | off | nothing to hold (no id but `#main`, no container name, no layer or custom media); to turn on with the first |
-| Notations: `alpha-value-notation` (number), `color-function-notation` (modern), `color-function-alias-notation` (without-alpha), `hue-degree-notation` (angle), `lightness-notation` (percentage), `import-notation` (string), `selector-not-notation` (complex), `selector-pseudo-element-colon-notation` (double), `selector-attribute-quotes` (always), `display-notation` (short), `keyframe-selector-notation`, `length-zero-no-unit`, `number-max-precision` (4), `selector-type-case` (lower), `function-name-case` (lower), `comment-whitespace-inside` (always) | 0 each | on | one spelling each, as written today |
-| `media-feature-range-notation` (`prefix`; `context`) | 0; 12 | on, prefix | `media.ts`'s queries must be the stylesheet's own spelling (`styles.test.ts`), and prefix is today's |
-| `function-url-quotes` (`never`; `always`) | 0; 4 | on, never | today's spelling |
-| `function-url-scheme-allowed-list` (`data`) | 0 | on | the page's Content-Security-Policy refuses a remote `url()` as the page runs; this refuses it as it is written |
-| `time-min-milliseconds` (100) | 0 | on | a duration under 100 ms is a typo for seconds; reduced motion's `0ms` is the rule's own exception |
-| `at-rule-no-vendor-prefix`, `media-feature-name-no-vendor-prefix`, `selector-no-vendor-prefix`, `value-no-vendor-prefix` | 0 each | on | the supported browsers are the latest |
-| `property-no-vendor-prefix` | 4 | on: 3 fixed, 1 suppressed | `-webkit-appearance` three times beside `appearance`, which the latest browsers take unprefixed: deleted; `-webkit-text-size-adjust` is iOS Safari's only form: kept, suppressed with its reason |
-| `declaration-block-no-redundant-longhand-properties` | 1 | on, fixed | `flex-direction: row; flex-wrap: wrap` is `flex-flow: row wrap` |
-| `shorthand-property-no-redundant-values` | 2 | on, fixed | `0.4rem 0 0.4rem` is `0.4rem 0`; `0.5rem 0.5rem` is `0.5rem` |
-| `no-unknown-custom-properties` | 3 | off | `--w` (`artists.tsx`'s `styled`) and `--header-h` (`main.ts`) are set by the code, which stylelint cannot see; `styles.test.ts` checks each token read is defined by a rule or the code |
-| `value-keyword-case` (`lower`) | 2 | off | case only, and it misreads `Roboto` inside `--font`; the other is `currentColor` |
-| `font-family-name-quotes` (`always-where-recommended`) | 5 | off | quotes only; it skips `--font`, which quotes the same names, so the sheet would spell one font two ways |
-| `color-no-hex` | 18 | off | the design tokens are hex colours (Biome's `noHexColors`, off) |
-| `declaration-property-value-disallowed-list`, as a copy of `styles.test.ts`'s token rule (hex and colour functions outside the tokens, `cubic-bezier`, literal durations and `z-index`) | 0; 8 of 8 planted lines refused | off | it would state `styles.test.ts`'s token rule twice, which the issue keeps unchanged: moving the rule to stylelint is a change of its own |
-| `property-layout-mappings`, `unit-layout-mappings`, `value-keyword-layout-mappings` (`flow-relative`: logical properties) | 320; 24; 7 | off | the site has no right-to-left or vertical text: 351 rewrites for no visitor. Core rules, so no plugin is needed if that changes |
-| Layout: `rule-empty-line-before` (564), `comment-empty-line-before` (46), `at-rule-empty-line-before` (18), `declaration-empty-line-before` (3), `custom-property-empty-line-before` (2) |  | off | layout is oxfmt's (`format:site`) |
-| The list rules (each `*-allowed-list` and `*-disallowed-list` but those above, `comment-word-disallowed-list`, `rule-selector-property-disallowed-list`, `declaration-property-max-values`, `rule-nesting-at-rule-required-list`, `at-rule-property-required-list`, `declaration-property-custom-property-allowed-list`, `value-type-custom-property-required-list`) |  | off | each needs a list the house has no rule for |
-| `reportDescriptionlessDisables`, `reportNeedlessDisables`, `reportInvalidScopeDisables` (the config's) | 0 | on | a suppression gives its reason, is needed and names a rule that is on; `tests/test_suppressions.py` counts each |
-
-The plugins considered, each a new dependency; none is added:
-
-| Plugin | Findings | Decision |
-| -- | -- | -- |
-| `stylelint-browser-compat` (MDN's browser-compat-data, reads `browserslist`) | 2: `-webkit-text-size-adjust` (desktop Safari, Firefox), `forced-color-adjust` (Safari) | rejected (owner, 20 November): a perpetual beta from one maintainer, whose MDN data is a year old and which needs a `packageExtensions` entry to load under pnpm; the browser check is the house rule on `web-features`, `house/baseline` (Biome's `useBaseline`, [below](#the-browser-check-housebaseline)) |
-| `stylelint-no-unsupported-browser-features` (doiuse, caniuse) | 19 (partial-support notes), 1 ignoring partial support | rejected: blind to the CSS the site uses (`@starting-style`, view transitions, `@scope`, `text-wrap`, anchor positioning, `field-sizing`, …), even against older browsers |
-| `stylelint-plugin-use-baseline` | 31 (widely available), 7 (newly) | rejected: Baseline, not the declared browsers, and no stylelint 18 support |
-| `@double-great/stylelint-a11y` | 26 `media-prefers-reduced-motion`, 36 `no-display-none`, and others | rejected: its two main rules misread the design: reduced motion zeroes the duration tokens in `:root`, and colour schemes swap tokens, so each animated or coloured rule is reported; the rest is noise or meant (`#main:focus`'s outline, Leaflet's attribution) |
-| `stylelint-declaration-strict-value` | 5 (`ease` in transitions), 0 allowing keywords | rejected: it lets any function through (`rgb()`, `oklch()`, `cubic-bezier()`), which `styles.test.ts` catches; core `declaration-property-value-disallowed-list` would do it with no dependency (above) |
-| `stylelint-use-logical`, `stylelint-plugin-logical-css`, `stylelint-use-logical-spec` | 307 (`use-logical`) | not needed: logical properties are off, and the core layout-mapping rules would hold them |
-| `stylelint-high-performance-animation` | 14 (9 of them `display` in `allow-discrete` transitions, the `@starting-style` pattern) | not taken: its main finding misreads `display` transitions |
+| Plugin | Why not |
+| -- | -- |
+| `stylelint-browser-compat` (MDN's browser-compat-data, reads `browserslist`) | a perpetual beta from one maintainer, whose MDN data lags a year and which needs a `packageExtensions` entry to load under pnpm; the browser check is `house/baseline`, on `web-features` |
+| `stylelint-no-unsupported-browser-features` (doiuse, caniuse) | blind to the CSS the site uses (`@starting-style`, view transitions, `@scope`, `text-wrap`, anchor positioning, `field-sizing`, …), even against older browsers |
+| `stylelint-plugin-use-baseline` | Baseline, not the declared browsers, and no stylelint 18 support |
+| `@double-great/stylelint-a11y` | its two main rules misread the design: reduced motion zeroes the duration tokens in `:root`, and colour schemes swap tokens, so each animated or coloured rule is reported; the rest is noise or meant (`#main:focus`'s outline, Leaflet's attribution) |
+| `stylelint-declaration-strict-value` | it lets any function through (`rgb()`, `oklch()`, `cubic-bezier()`), which `styles.test.ts` catches; core `declaration-property-value-disallowed-list` would do it with no dependency |
+| `stylelint-use-logical`, `stylelint-plugin-logical-css`, `stylelint-use-logical-spec` | logical properties are off, and the core layout-mapping rules would hold them |
+| `stylelint-high-performance-animation` | its main finding misreads `display` transitions, the `@starting-style` pattern |
 
 ### The browser check: house/baseline
 
 `house/baseline` (`lint/stylelint/baseline.ts`, `.stylelintrc.yaml`'s `plugins`, set `months: 12` and an `allowed` list)
 refuses a CSS feature of the stylesheet that has not been in every declared browser for at least 12 months. It is the
-house's own stylelint plugin, no third-party one (owner, 20 November): TypeScript, which stylelint loads by `import()`
-and Node 22 runs by stripping its types (the house writes erasable syntax only, `tsconfig.json`'s `erasableSyntaxOnly`);
-tsc checks it with the house rules (`tests/site/tsconfig.json` includes `lint/`) and oxlint lints it, with one override
-of its own, Node's modules allowed (`.oxlintrc.json`), and PostCSS's nodes in `prefer-readonly-parameter-types`'
-`allow`. It exports `ruleName` and `rule`, which stylelint takes for the plugin of a module with no default export.
+house's own stylelint plugin: TypeScript, which stylelint loads by `import()` and Node 22 runs by stripping its types
+(the house writes erasable syntax only, `tsconfig.json`'s `erasableSyntaxOnly`); tsc checks it with the house rules
+(`tests/site/tsconfig.json` includes `lint/`) and oxlint lints it, with one override of its own, Node's modules allowed
+(`.oxlintrc.json`), and PostCSS's nodes in `prefer-readonly-parameter-types`' `allow`. It exports `ruleName` and `rule`,
+which stylelint takes for the plugin of a module with no default export.
 
-- **Data:** `web-features` 3.45.0 (2 November 2026, the newest release at least two weeks old on 22 November, Q6), the
-  WebDX group's Baseline data, one dev dependency pinned exactly; each piece of CSS is looked up by its BCD key in
-  `status.by_compat_key`, the status of that key (a keyword can be newer than its property).
+- **Data:** `web-features` 3.45.0, the WebDX group's Baseline data, one dev dependency pinned exactly; each piece of CSS
+  is looked up by its BCD key in `status.by_compat_key`, the status of that key (a keyword can be newer than its
+  property).
 - **Browsers:** `package.json`'s `browserslist`, the one place they are declared: `last 1 <browser> version` of Chrome,
   Edge, Firefox, Safari, iOS Safari, Chrome Android and Firefox Android (`chrome`, `edge`, `firefox`, `safari`,
   `ios_saf`, `and_chr`, `and_ff`), which is Baseline's core browser set. The rule reads the list (a query in any case,
@@ -941,10 +815,10 @@ of its own, Node's modules allowed (`.oxlintrc.json`), and PostCSS's nodes in `p
   it.
 - **The date:** the day a feature reached every declared browser is the latest of the releases its support names in each
   (`status.support` and `browsers.<browser>.releases`); for the core set that is `web-features`' own
-  `baseline_low_date`, the same for each of the data's 16,001 keys. A feature passes when that day is at least `months`
-  (12) months before today, the clock's: the tests pin the clock (`tests/site/stylelint.test.ts`, 14 October 2026). A
-  feature missing from a declared browser, or which the data gives no Baseline (`baseline: false`, a discouraged feature
-  among them), is refused whatever its date.
+  `baseline_low_date`, the same for each of the data's keys. A feature passes when that day is at least `months` (12)
+  months before today, the clock's: the tests pin the clock (`tests/site/stylelint.test.ts`, 14 October 2026). A feature
+  missing from a declared browser, or which the data gives no Baseline (`baseline: false`, a discouraged feature among
+  them), is refused whatever its date.
 - **The message** names the CSS as written, the feature and its key, and either the day it reached every browser and the
   latest day allowed
   (`at-rule "@scope" (web-features' "@scope", css.at-rules.scope) reached every declared browser on 2026-03-24, after 2025-10-14, 12 months before today`),
@@ -952,13 +826,13 @@ of its own, Node's modules allowed (`.oxlintrc.json`), and PostCSS's nodes in `p
   none (`discouraged` where it is). It stands at the start of its declaration, rule or at-rule, the line a suppression
   on the line before covers however a value or a list of selectors is laid out.
 - **`allowed`:** BCD keys the rule lets through wherever they are used, each with its reason as a comment beside it in
-  `.stylelintrc.yaml` (owner, 22 November), for a lack no visitor meets: `css.properties.cursor.pointer` and
-  `css.properties.cursor.default`, since a touch screen draws no cursor, so iOS Safari's lack of cursor keywords is
-  harmless. The list cannot rot: a key the data does not have, one nothing would refuse (in every declared browser for
-  `months` months), and one that let nothing of the stylesheet through (its CSS gone) are each refused on their own, as
-  `reportNeedlessDisables` refuses a suppression with nothing to suppress. The last is sound because `lint:stylelint`
-  lints one stylesheet, `public/css/site.css`; a second would need its keys of its own. The options are validated:
-  `months` is required, and `allowed` is a list.
+  `.stylelintrc.yaml`, for a lack no visitor meets: `css.properties.cursor.pointer` and `css.properties.cursor.default`,
+  since a touch screen draws no cursor, so iOS Safari's lack of cursor keywords is harmless. The list cannot rot: a key
+  the data does not have, one nothing would refuse (in every declared browser for `months` months), and one that let
+  nothing of the stylesheet through (its CSS gone) are each refused on their own, as `reportNeedlessDisables` refuses a
+  suppression with nothing to suppress. The last is sound because `lint:stylelint` lints one stylesheet,
+  `public/css/site.css`; a second would need its keys of its own. The options are validated: `months` is required, and
+  `allowed` is a list.
 
 What it reads, ported from `@eslint/css`'s `use-baseline` (2.0.1, read from its package, not a dependency):
 
@@ -996,44 +870,44 @@ animation's name), a custom property's name and value keywords (its functions an
 `@container` and `@supports`, and a selector's combinators and attribute forms. Unknown syntax is let through rather
 than refused: the validity rules refuse what no browser knows, and this rule refuses only what the data dates.
 
-On the stylesheet, at 22 November 2026, it found 33 lines. Two were too recent: `text-decoration: underline dotted …`
-(`.goer-name`, `.trait-link`), the shorthand with a style or colour, which reached every declared browser on 12 December
-2025 (Safari 26.2); each is written as its longhands instead, `text-decoration-line`, `-style` and `-color`, each in
-every browser for years, which Chromium draws the same (every computed style of the elements they style, in light, dark
-and forced colours). The other 31 are each in a browser's fallback by design: `cursor: pointer` (20) and
-`cursor: default` (3), not in iOS Safari, let through by `allowed`; and eight suppressed on their line with the reason
+On the stylesheet, what it would refuse is each in a browser's fallback by design. `cursor: pointer` and
+`cursor: default`, not in iOS Safari, are let through by `allowed`; eight lines are suppressed with their reason
 ([suppressed findings](../lint-false-positives.md)): `overscroll-behavior: contain` (4), which Safari applies only to a
 panel that overflows, a partial support this data counts as none; `ui-monospace` (2, a `font-family` and a `font`),
 Safari's alone, first in a font stack; `text-wrap: pretty` (1), not in Firefox; `forced-color-adjust: none` (1), not in
-Safari, inside `@media (forced-colors: active)`. The newest features it passes are view transitions (14 October 2025),
-`backdrop-filter` (16 September 2024) and `@starting-style` (6 August 2024). Because `reportNeedlessDisables` refuses a
-suppression with nothing to suppress, an upgrade of `web-features` that puts one of these in every browser for 12 months
-fails the check until its suppression is deleted; a suppression of a feature only too recent would fail it on the day
-the feature turns 12 months, with no change to the repository. Its fixtures are `tests/site/stylelint/`'s: a refused
-line for a property, a keyword (a shorthand's among them), a value's shape, an at-rule, a selector, a function (a
-property's own, a custom one), a unit, a media feature, a descriptor, a property nested in `@media`, and what an
-`@supports` does not guard (an untested keyword of a tested property, a `not` test, `not selector()`, one side of an
-`or`), each too recent on the tests' day or missing from a browser; in `good.css` a feature of each kind it passes, one
-12 months to the day, what an `@supports` tests for (a keyword, a function, a unit, a selector, both sides of an `and`),
-a string's words, and the allowed cursor keywords; `stylelint.test.ts` also reads the messages, a key of each kind at 60
-months, a nested `@supports`, the month's end, an allowed key refused once not allowed and once unused, one nothing
-would refuse, one the data lacks, and options without `months` or with `allowed` not a list.
+Safari, inside `@media (forced-colors: active)`. A dotted underline is written as its longhands, `text-decoration-line`,
+`-style` and `-color`, each in every browser for years: the `text-decoration` shorthand with a style or colour reached
+every declared browser on 12 December 2025 (Safari 26.2). The newest features it passes are view transitions (14 October
+2025), `backdrop-filter` (16 September 2024) and `@starting-style` (6 August 2024).
 
-## The JSON configs after Biome
+Because `reportNeedlessDisables` refuses a suppression with nothing to suppress, an upgrade of `web-features` that puts
+one of these in every browser for 12 months fails the check until its suppression is deleted; a suppression of a feature
+only too recent would fail it on the day the feature turns 12 months, with no change to the repository.
 
-Biome also read the seven JSON configs at the root (`.jscpd.json`, `.oxfmtrc.jsonc`, `.oxlintrc.json`, `biome.jsonc`,
-`knip.jsonc`, `package.json`, `tsconfig.json`) until issue #23 removed it. The rules that acted on them (checked by
-planting each violation in a copy), and what holds each since; `tests/test_configs.py` runs in `check:fast`, before each
-commit as Biome did, through `lint:configs`, and in `test:py`:
+Its fixtures are `tests/site/stylelint/`'s: a refused line for a property, a keyword (a shorthand's among them), a
+value's shape, an at-rule, a selector, a function (a property's own, a custom one), a unit, a media feature, a
+descriptor, a property nested in `@media`, and what an `@supports` does not guard (an untested keyword of a tested
+property, a `not` test, `not selector()`, one side of an `or`), each too recent on the tests' day or missing from a
+browser; in `good.css` a feature of each kind it passes, one 12 months to the day, what an `@supports` tests for (a
+keyword, a function, a unit, a selector, both sides of an `and`), a string's words, and the allowed cursor keywords;
+`stylelint.test.ts` also reads the messages, a key of each kind at 60 months, a nested `@supports`, the month's end, an
+allowed key refused once not allowed and once unused, one nothing would refuse, one the data lacks, and options without
+`months` or with `allowed` not a list.
 
-| Biome rule | Level | Since Biome |
+## The JSON configs
+
+The JSON configs at the root (`.jscpd.json`, `.oxfmtrc.jsonc`, `.oxlintrc.json`, `knip.jsonc`, `package.json`,
+`tsconfig.json`) have no linter: `tests/test_configs.py` holds what one would, and runs in `check:fast`, before each
+commit, through `lint:configs`, and in `test:py`.
+
+| Check | Held by | Biome's |
 | -- | -- | -- |
-| (its JSON parser: a config that does not parse) | error | held: oxfmt (`format:site`) refuses it, as each tool reading the file does (pnpm, tsc, oxlint, oxfmt, knip, jscpd) |
-| `suspicious/noDuplicateObjectKeys` | error | held by `tests/test_configs.py`: no key written twice in one object, comments skipped as the tools skip them (oxfmt lays a duplicate out without a word, and every reader takes the last value) |
-| `suspicious/noEmptyObjectKeys` | warn | held by the same test |
-| `suspicious/noDuplicateDependencies` | warn | held by the same test: a package written twice in one group is a key written twice, and one in both `dependencies` and `devDependencies` is refused |
-| `style/noTopLevelLiterals` | info, never failing | dropped: each config's reader wants an object (the test reads each as one) |
-| `suspicious/noEmptySource` | warn | held by the readers: an empty `.json` is a parse error to pnpm, tsc and oxlint |
-| `suspicious/noBiomeFirstException`, `suspicious/useBiomeIgnoreFolder` | error, warn | moot: they read `biome.jsonc`, which went |
-| `suspicious/noQuickfixBiome` | info | moot: it reads editor settings, none of them committed |
-| `suspicious/useRequiredScripts` | warn | dropped: a no-op without `requiredScripts` |
+| the file parses | oxfmt (`format:site`) refuses a config that does not, as each tool reading it does (pnpm, tsc, oxlint, knip, jscpd) | its JSON parser |
+| no key written twice in one object | `tests/test_configs.py`, comments skipped as the tools skip them (oxfmt lays a duplicate out without a word, and every reader takes the last value) | `noDuplicateObjectKeys` |
+| no empty key | `tests/test_configs.py` | `noEmptyObjectKeys` |
+| no package written twice in one group of dependencies, nor in both `dependencies` and `devDependencies` | `tests/test_configs.py` | `noDuplicateDependencies` |
+| no empty file | the readers: an empty `.json` is a parse error to pnpm, tsc and oxlint | `noEmptySource` |
+
+Not held: a config whose top level is not an object (Biome's `noTopLevelLiterals`, information only; each reader wants
+an object, and the test reads each as one), and `package.json`'s required scripts (`useRequiredScripts`, which checks
+nothing without a list of them).
