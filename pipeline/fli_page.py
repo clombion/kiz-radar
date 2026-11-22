@@ -8,10 +8,10 @@ ways back for each way out it expands, so the page is read through its private S
 commit pinned, and the contract test (tests/test_fli_page.py) reads recorded pages through it.
 
 What can go wrong is kept apart, never read as no price: Google refusing the search (HTTP 429), and fli failing (an
-error, a page it can't read). A page with no flight is no price, unless it prices nearby dates (Withheld): there the
-flights a browser is shown reach it by the page's scripts, through an RPC fli cannot sign, and the page as read holds
-none of them. The airlines a page names are no such sign: its filters name those flying the route with any stops,
-whatever the search asks. One with flights and none priced is listed.
+error, a page it can't read). A page with no flight is no price, unless it prices nearby dates (Withheld): a browser
+was shown flights for such a search, likely fetched by the page's scripts through an RPC fli cannot sign, and the page
+as read holds none of them. The airlines a page names are no such sign: its filters name those flying the route with
+any stops, whatever the search asks. One with flights and none priced is listed.
 """
 
 import datetime as dt

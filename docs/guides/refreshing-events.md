@@ -130,13 +130,13 @@ failed, or its page was `withheld`): a search with no answer, or a withheld page
 line says how many searches it made, and how many of them were withheld.
 
 A page with no flight that still prices nearby dates is kept as `withheld`, with what it priced in its note: a browser
-shown the same search gets its flights from the page's scripts, through a request fli cannot sign, and the page as read
-holds none. The airlines a page names are no sign of it: its filters name every airline flying the route with any stops,
-on a direct search's page too. It is no answer: the weekend keeps the fare of its latest search that answered, if any,
-and is searched again on the next run (`unsettled`), after the weekends due on their interval, even one never answered,
-and before the extras. Being a page Google gave, it counts in the run's searches, is not paired, and is not one of the
-searches in a row Google gives no answer to. A page that prices no nearby date is no flight, as for a route with none;
-for an extra, no direct flight.
+was shown flights for such a search, likely fetched by the page's scripts through a request fli cannot sign, and the
+page as read holds none. The airlines a page names are no sign of it: its filters name every airline flying the route
+with any stops, on a direct search's page too. It is no answer: the weekend keeps the fare of its latest search that
+answered, if any, and is searched again on the next run (`unsettled`), after the weekends due on their interval, even
+one never answered, and before the extras. Being a page Google gave, it counts in the run's searches, is not paired, and
+is not one of the searches in a row Google gives no answer to. A page that prices no nearby date is no flight, as for a
+route with none; for an extra, no direct flight.
 
 ## Running the steps locally
 
