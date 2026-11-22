@@ -1,0 +1,3 @@
+def extract_payload(html: str) -> object:
+    """A search page's ds:1 payload, the JSON fli reads its flights from; None when it has none."""
+    ...

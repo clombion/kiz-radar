@@ -1468,11 +1468,14 @@ class Offer(Record):
     airlines: tuple[str, ...]
 
 
+NO_ANSWER = frozenset({FareOutcome.FAILED, FareOutcome.WITHHELD})  # a search with no answer, which says why in its note
+
+
 class Search(Record):
     """A fare search, the unit of the fare history (pipeline/fare_offers/, pipeline/fare_store.py): who was asked
     (vendor), when, from where (origin) to which airport for which Friday, for which flights (mode), what it found
-    (outcome) and the offers it saw, a price each. note: the vendor's words, or why it failed; backfill: the file and
-    commit a search kept before this history was, read back from."""
+    (outcome) and the offers it saw, a price each. note: the vendor's words, or why it holds no answer; backfill: the
+    file and commit a search kept before this history was, read back from."""
 
     id: Hash
     at: Stamp
@@ -1490,8 +1493,8 @@ class Search(Record):
     def offers_as_found(self) -> Self:
         if (self.outcome == FareOutcome.OFFERS) != bool(self.offers):
             raise ValueError(f'a search whose outcome is {self.outcome} has {len(self.offers)} offers')
-        if self.outcome == FareOutcome.FAILED and not self.note:
-            raise ValueError('a failed search says why in its note')
+        if self.outcome in NO_ANSWER and not self.note:
+            raise ValueError(f'a search whose outcome is {self.outcome} says why in its note')
         return self
 
 

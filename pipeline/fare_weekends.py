@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 from pipeline import airports, cities, claims, export
 from pipeline.enums import FareMode, FareOutcome, FareTicket, FareVendor, Listing
-from pipeline.records import Offer, Record, Search, day_of
+from pipeline.records import NO_ANSWER, Offer, Record, Search, day_of
 
 NIGHTS = 3  # a weekend's flight is out on the Friday and back on the Monday, the one place this is said
 
@@ -58,19 +58,34 @@ def weekends_of(listed: Iterable[Listed], today: dt.date) -> Weekends:
     return out
 
 
-def latest(history: Iterable[Search], vendor: FareVendor = FareVendor.GOOGLE) -> dict[tuple[str, dt.date], Search]:
-    """Each weekend's latest search from home of the vendor's that did not fail: the one its fare is of."""
+def paged(s: Search) -> bool:
+    """Whether the vendor gave the search a page or an answer it could read (it did not fail), whether or not it holds
+    an answer a fare can be of (answered)."""
+    return s.outcome != FareOutcome.FAILED
+
+
+def answered(s: Search) -> bool:
+    """Whether a search holds an answer its weekend's fare can be of: it did not fail, and its page did not withhold
+    its flights."""
+    return s.outcome not in NO_ANSWER
+
+
+def from_home(history: Iterable[Search], vendor: FareVendor = FareVendor.GOOGLE) -> list[Search]:
+    """The vendor's searches from home, in the order they were made."""
     home = airports.home()
-    out: dict[tuple[str, dt.date], Search] = {}
-    for s in sorted(history, key=lambda s: s.at):
-        if s.origin == home and s.vendor == vendor and s.outcome != FareOutcome.FAILED:
-            out[(s.airport, s.depart)] = s
-    return out
+    return [s for s in sorted(history, key=lambda s: s.at) if s.origin == home and s.vendor == vendor]
+
+
+def latest(history: Iterable[Search], vendor: FareVendor = FareVendor.GOOGLE) -> dict[tuple[str, dt.date], Search]:
+    """Each weekend's latest search from home of the vendor's that holds an answer (answered): the one its fare is
+    of."""
+    return {(s.airport, s.depart): s for s in from_home(history, vendor) if answered(s)}
 
 
 def direct_found(s: Search) -> bool | None:
-    """For a search of direct flights alone, whether it found one (priced or not); None for any flight's."""
-    return None if s.mode == FareMode.ANY else s.outcome != FareOutcome.NONE
+    """For a search of direct flights alone that holds an answer (answered), whether it found one (priced or not); None
+    for any flight's, and for one that holds no answer."""
+    return None if s.mode == FareMode.ANY or not answered(s) else s.outcome != FareOutcome.NONE
 
 
 @dataclass(frozen=True)

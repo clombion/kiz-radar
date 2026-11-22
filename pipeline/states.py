@@ -1000,6 +1000,13 @@ ROWS = (
     S('fare_outcome', 'none', 'no flight of those asked for', KEPT),
     S(
         'fare_outcome',
+        'withheld',
+        "no flight on Google's page, which still prices nearby dates: the flights a browser is shown did not reach "
+        'the page as read (the dates priced in the note); never read as no price',
+        KEPT,
+    ),
+    S(
+        'fare_outcome',
         'listed',
         "flights listed, none with a price (Widerøe's, which Google leaves to the airline)",
         KEPT,

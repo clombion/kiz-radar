@@ -2,7 +2,10 @@
 on, held by pages Google sent (tests/pages/: the script of each page that holds its flights, the rest cut)."""
 
 import datetime as dt
+import json
+import re
 from pathlib import Path
+from typing import cast
 
 import pytest
 from fli.models import FlightResult, FlightSearchFilters
@@ -20,6 +23,13 @@ PAGES = Path(__file__).parent / 'pages'
 LISBON = (
     'https://www.google.com/travel/flights?tfs=CBwQAhoeEgoyMDI2LTEyLTExagcIARIDQkdPcgcIARIDTElTGh4SCjIwMjYtMTItMTRqBwgB'
     'EgNMSVNyBwgBEgNCR09AAUgBcAGYAQE&hl=en&gl=US&curr=EUR'
+)
+# Bergen to Lyon, 18 to 21 December 2026, for any flight: a page with no flight row that names the route's airlines and
+# prices nearby dates, sent alike twice and a third time with gl=NO, within 13 minutes, while a browser showed flights
+# for the search from €333
+LYON = (
+    'https://www.google.com/travel/flights?tfs=CBwQAhoeEgoyMDI2LTEyLTE4agcIARIDQkdPcgcIARIDTFlTGh4SCjIwMjYtMTItMjFqBwgB'
+    'EgNMWVNyBwgBEgNCR09AAUgBcAGYAQE&hl=en&gl=US&curr=EUR'
 )
 ABERDEEN = (
     'https://www.google.com/travel/flights?tfs=CBwQAhogEgoyMDI2LTExLTIwKABqBwgBEgNCR09yBwgBEgNBQloaIBIKMjAyNi0xMS0yMygAag'
@@ -84,11 +94,63 @@ def test_flights_google_lists_with_no_price_are_ways_out_with_none(monkeypatch: 
     assert rows == (fli_page.Row(None, 0, ('Widerøe',)), fli_page.Row(None, 0, ('Widerøe',)))
 
 
-def test_a_page_with_no_flight_is_no_way_out(monkeypatch: pytest.MonkeyPatch) -> None:
-    def none(*_args: object, **_kwargs: object) -> list[FlightResult] | None:
-        return None  # fli's answer for a page with no flight row
+def lyon(monkeypatch: pytest.MonkeyPatch, page: str) -> tuple[fli_page.Row, ...] | fli_page.Withheld | Declined:
+    served(monkeypatch, LYON, page)
+    return fli_page.page('BGO', 'LYS', dt.date(2026, 12, 18), dt.date(2026, 12, 21), direct=False)
 
-    monkeypatch.setattr(SearchFlights, '_fetch_flights', none)
+
+WITHHELD = (PAGES / 'google-bgo-lys-withheld.html').read_text()
+
+
+def test_a_page_with_no_flight_that_prices_nearby_dates_is_withheld(monkeypatch: pytest.MonkeyPatch) -> None:
+    assert lyon(monkeypatch, WITHHELD) == fli_page.Withheld(dates=8)
+
+
+def payload_of(page: str) -> list[object]:
+    """A page's ds:1 payload, to be changed and sent again (sent)."""
+    data = re.search(r'data:(.*), sideChannel', page, re.DOTALL)
+    assert data is not None
+    return cast('list[object]', json.loads(data.group(1)))
+
+
+def sent(payload: object) -> str:
+    """A page holding this ds:1 payload, as Google sends it."""
+    return f"<script>AF_initDataCallback({{key: 'ds:1', hash: '9', data:{json.dumps(payload)}, sideChannel: {{}}}});"
+
+
+def synthetic(*, airlines: bool, dates: bool) -> str:
+    """The withheld page with its airlines, its nearby dates or both taken out, made from the one Google sent."""
+    payload = payload_of(WITHHELD)
+    if not airlines:
+        cast('list[object]', fli_page.at(payload, 7, 1))[1] = []
+    if not dates:
+        cast('list[object]', fli_page.at(payload, 6, 0, 4))[0] = []
+    return sent(payload)
+
+
+@pytest.mark.parametrize(
+    ('airlines', 'dates', 'read'),
+    [
+        (False, False, ()),
+        (True, False, ()),
+        (False, True, fli_page.Withheld(dates=8)),
+    ],
+    ids=['neither: no flight', 'airlines alone: no flight', 'nearby dates alone'],
+)
+def test_a_page_with_no_flight_that_prices_no_nearby_date_is_no_way_out_whatever_airlines_it_names(
+    airlines: bool, dates: bool, read: object, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    assert lyon(monkeypatch, synthetic(airlines=airlines, dates=dates)) == read
+
+
+def test_a_direct_search_s_page_names_airlines_that_only_connect_so_with_no_row_it_is_no_way_out(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    payload = payload_of((PAGES / 'google-bgo-abz-direct.html').read_text())
+    named = {cast('list[object]', a)[0] for a in fli_page.items(fli_page.at(payload, 7, 1, 1))}
+    assert {'AF', 'AY', 'KL'} <= named  # Air France, Finnair and KLM fly no direct flight from Bergen to Aberdeen
+    payload[3] = None  # its two rows, Widerøe's, taken out: the page of a direct search with no direct flight
+    served(monkeypatch, ABERDEEN, sent(payload))
     assert fli_page.page('BGO', 'ABZ', dt.date(2026, 11, 20), dt.date(2026, 11, 23), direct=True) == ()
 
 

@@ -3,7 +3,7 @@
 Every search is kept with the offers it saw in the fare history (pipeline/fare_offers/, pipeline/fare_store.py): the
 run's file is written after each search, so a run stopped half way keeps what it found. The site's fares are derived
 from it in the build (pipeline/fare_weekends.py current): for each festival weekend still to come, the latest search
-from home that did not fail gives the card its fare, the cheapest offer on one ticket. A search that found no price
+from home that holds an answer gives the card its fare, the cheapest offer on one ticket. A search that found no price
 drops the weekend's fare; one that failed is no search of it.
 
 Only festival weekends are searched: the Friday-to-Monday return from home to the airports of each upcoming festival
@@ -23,11 +23,15 @@ festival have none. An airport that is the nearest of any festival that weekend 
 
 Google is read on its outbound page, one request a search (pipeline/fli_page.py): its price is the return's, its stops
 those out. Google sometimes refuses a search (HTTP 429), so a refused search is tried once more after a minute; refused
-again, it stops the run. A search fli fails on is kept as failed, and the run fails at its end naming it. Each weekend
-Google answered is asked of Kiwi.com's flight search the same (kiwi), its trips kept with the airlines flying them and
-the tickets they are booked on (ticket): its cheapest self-transfer, when cheaper, is added to the weekend's Flights,
-and its cheapest on one ticket is the card's where Google lists flights with no price (Widerøe's, which it leaves to the
-airline). Its price is a reseller's, and the site says so; its failure fails no run.
+again, it stops the run. A search fli fails on is kept as failed, and the run fails at its end naming it. A page with no
+flight that still prices nearby dates is kept as withheld: it holds no answer, so the weekend keeps the fare of its
+latest search that did, if any, and is searched again on the next run (unsettled), after the weekends due on their
+interval, even one never answered, and before the extras. Such a page is an answer of Google's, never a refusal: it
+counts in the run's budget, and not among the searches in a row Google gave no answer to (MOST_UNANSWERED). Each
+weekend Google gave a page for is asked of Kiwi.com's flight search the same (kiwi), its trips kept with the airlines
+flying them and the tickets they are booked on (ticket): its cheapest self-transfer, when cheaper, is added to the
+weekend's Flights, and its cheapest on one ticket is the card's where Google lists flights with no price (Widerøe's,
+which it leaves to the airline). Its price is a reseller's, and the site says so; its failure fails no run.
 
     mise run fares -- refresh --budget 20      # what the GitHub Action runs
     mise run fares -- plan                     # show what is due, without searching
@@ -160,7 +164,8 @@ class Weekend:
     nearest: bool  # the nearest airport of a festival that weekend; else an extra, searched for direct flights alone
     days_away: int
     every: int | None  # None: further ahead than Google sells
-    age: float | None  # in days; None when it was never searched
+    age: float | None  # in days since the latest search that answered; None when none did
+    again: bool  # Google's page for its latest search from home held no answer (unsettled): due, after the others
     due: bool
 
     @property
@@ -185,10 +190,12 @@ def weekday_of(airport: str, friday: dt.date) -> int:
 
 def queue(t: dt.datetime | None = None, history: Sequence[Search] | None = None) -> list[Weekend]:
     """Every festival weekend with its interval and whether it is due today: the nearest airports' due first, the most
-    overdue first, then the extras'. An extra is in it no more while its airport has no direct flight (no_direct)."""
+    overdue first and the unsettled after the others, even one never answered, then the extras' the same. An extra is
+    in it no more while its airport has no direct flight (no_direct)."""
     t = t or now()
     today = t.date()
-    last = latest(fare_store.read() if history is None else history)
+    history = fare_store.read() if history is None else history
+    last, again = latest(history), unsettled(history)
     none = no_direct(last.values(), t)
     q: list[Weekend] = []
     for (airport, friday), nearest in fare_weekends.weekends(today).items():
@@ -199,9 +206,18 @@ def queue(t: dt.datetime | None = None, history: Sequence[Search] | None = None)
         every = interval(days_away, nearest=nearest)
         age = (t - s.at).total_seconds() / DAY if s is not None else None
         on_day = weekday_of(airport, friday) == today.weekday()
-        due = every is not None and (age is None or (age >= every and on_day) or age >= 2 * every)
-        q.append(Weekend(airport, friday, nearest, days_away, every, age, due))
-    return sorted(q, key=lambda w: (not w.due, not w.nearest, -w.overdue, w.friday, w.airport))
+        retry = every is not None and (airport, friday) in again
+        on_interval = every is not None and (age is None or (age >= every and on_day) or age >= 2 * every)
+        q.append(Weekend(airport, friday, nearest, days_away, every, age, retry, on_interval or retry))
+    return sorted(q, key=lambda w: (not w.due, not w.nearest, w.again, -w.overdue, w.friday, w.airport))
+
+
+def unsettled(history: Iterable[Search]) -> set[tuple[str, dt.date]]:
+    """The weekends whose latest search of Google from home that got a page (fare_weekends.paged) holds no answer
+    (fare_weekends.answered): their fare is still an older answer's, if any, and each is searched again on the next
+    run."""
+    last = {(s.airport, s.depart): s for s in fare_weekends.from_home(history) if fare_weekends.paged(s)}
+    return {k for k, s in last.items() if not fare_weekends.answered(s)}
 
 
 def no_direct(searches: Iterable[Search], t: dt.datetime) -> set[str]:
@@ -226,9 +242,11 @@ class Asked(NamedTuple):
     mode: FareMode
 
 
-def search(asked: Asked, vendor: FareVendor, found: tuple[Offer, ...] | str, *, listed: bool = False) -> Search:
-    """A search made now: its offers (none when there is no price, listed when flights were, with none), or the
-    words of its failure."""
+def search(
+    asked: Asked, vendor: FareVendor, found: tuple[Offer, ...] | str, *, listed: bool = False, withheld: str = ''
+) -> Search:
+    """A search made now: its offers (none when there is no price, listed when flights were, with none, withheld
+    with what the page said when its flights did not reach it), or the words of its failure."""
     at = now()
     failed = isinstance(found, str)
     outcome = (
@@ -238,6 +256,8 @@ def search(asked: Asked, vendor: FareVendor, found: tuple[Offer, ...] | str, *, 
         if found
         else FareOutcome.LISTED
         if listed
+        else FareOutcome.WITHHELD
+        if withheld
         else FareOutcome.NONE
     )
     return Search(
@@ -249,18 +269,21 @@ def search(asked: Asked, vendor: FareVendor, found: tuple[Offer, ...] | str, *, 
         mode=asked.mode,
         vendor=vendor,
         outcome=outcome,
-        note=found[:NOTE_LENGTH] if failed else None,
+        note=found[:NOTE_LENGTH] if failed else withheld[:NOTE_LENGTH] or None,
         offers=() if failed else found,
     )
 
 
 def google(asked: Asked) -> Search | Declined:
     """Google's outbound page for a Friday-to-Monday return (pipeline/fli_page.py): each way out priced, an offer on
-    one ticket with its stops out; flights with no price listed; or why there is no page."""
+    one ticket with its stops out; flights with no price listed; a page whose flights did not reach it withheld; or
+    why there is no page."""
     origin, airport, friday, mode = asked
     page = fli_page.page(origin, airport, friday, friday + dt.timedelta(days=NIGHTS), direct=mode == FareMode.DIRECT)
     if isinstance(page, Declined):
         return page
+    if isinstance(page, fli_page.Withheld):
+        return search(asked, FareVendor.GOOGLE, (), withheld=page.why)
     offers = tuple(
         Offer(price=r.price, ticket=FareTicket.ONE_TICKET, stops_out=r.stops, stops_back=None, airlines=r.airlines)
         for r in page
@@ -365,6 +388,8 @@ def said(found: Searched) -> str:
             words = 'direct, no price' if direct else 'flights with no price'
         case FareOutcome.NONE:
             words = 'no direct flight' if direct else 'no price'
+        case FareOutcome.WITHHELD:
+            words = f'withheld: {g.note}'
     for k in rest:
         priced = f'{min(o.price for o in k.offers):.0f} EUR' if k.offers else str(k.outcome)
         words += f'; the reseller: {priced}' + (f' ({k.note})' if k.note else '')
@@ -411,16 +436,21 @@ class Run:
 
 
 def from_home(run: Run, history: Sequence[Search], budget: int) -> list[Weekend]:
-    """Search the weekends due today, most overdue first, within the budget: those Google answered."""
+    """Search the weekends due today, in the queue's order, within the budget, which each page Google gave counts in:
+    those whose page answered (fare_weekends.answered), for pairs."""
+    pages = 0
     answered: list[Weekend] = []
     for item in queue(history=history):
-        if not item.due or len(answered) >= budget or run.over:
+        if not item.due or pages >= budget or run.over:
             break
         if not item.nearest and item.airport in no_direct(latest([*history, *run.kept]).values(), now()):
             continue  # found with no direct flight earlier in this run
         asked = Asked(airports.home(), item.airport, item.friday, item.mode)
-        if run.search(asked, resold=True, days_away=item.days_away).declined is None:
-            answered.append(item)
+        found = run.search(asked, resold=True, days_away=item.days_away)
+        if fare_weekends.paged(found.searches[0]):
+            pages += 1
+            if fare_weekends.answered(found.searches[0]):
+                answered.append(item)
         time.sleep(PAUSE)
     return answered
 
@@ -447,9 +477,14 @@ def refresh(budget: int, max_seconds: int) -> None:
     answered = from_home(run, history, budget - pairs)
     paired(run, answered, pairs, today)
     live = fare_weekends.weekends(today)
+    pages = [s for s in fare_weekends.from_home(run.kept) if fare_weekends.paged(s)]
+    withheld = sum(s.outcome == FareOutcome.WITHHELD for s in pages)
     pairs_made = sum(s.origin != airports.home() for s in run.kept)
     searched_now = len(current([*history, *run.kept], live))
-    print(f'{len(answered)} searches and {pairs_made} pairs; {searched_now} of {len(live)} festival weekends searched')
+    print(
+        f'{len(pages)} searches, {withheld} of them withheld, and {pairs_made} pairs; '
+        f'{searched_now} of {len(live)} festival weekends searched'
+    )
     if why := calls.failed('searches', run.declined):
         sys.exit(why)
 
@@ -459,7 +494,13 @@ def plan() -> None:
     due = [x for x in q if x.due]
     print(f'{len(due)} of {len(q)} festival weekends due today')
     for x in due:
-        seen = f'searched {x.age:.0f} days ago' if x.age is not None else 'never searched'
+        seen = (
+            ('no answer yet' if x.age is None else f'answered {x.age:.0f} days ago, no answer since')
+            if x.again
+            else 'never searched'
+            if x.age is None
+            else f'searched {x.age:.0f} days ago'
+        )
         kind = '' if x.nearest else ', direct flights'
         print(f'{x.airport} {x.friday}: {x.days_away} days away, every {x.every} days{kind}, {seen}')
 
