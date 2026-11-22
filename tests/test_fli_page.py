@@ -27,6 +27,17 @@ ABERDEEN = (
 )
 
 
+# The day the pages were captured: fli refuses a travel date before yesterday by its clock, and reads that clock through
+# one function, which it names as the seam for tests (fli.models.google_flights.base.utc_today). The searches' dates are
+# the pages' own, in their addresses, so the clock is pinned instead of the dates moved.
+CAPTURED = dt.date(2026, 11, 19)
+
+
+@pytest.fixture(autouse=True)
+def captured_day(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr('fli.models.google_flights.base.utc_today', lambda: CAPTURED)
+
+
 class Sent:
     """A page as fli's client gives it: sent with a 200."""
 
