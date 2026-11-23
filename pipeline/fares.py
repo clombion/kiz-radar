@@ -28,18 +28,19 @@ price is the return's, its stops those out, and its searches are kept as google_
 the outbound page's that a plain request got, read before). Google sometimes refuses a search (HTTP 429), so a refused
 search is tried once more after a minute, however its earlier try ended; refused again, it stops the run. Its error 13
 comes and goes whatever the search, so a search it answers so is tried once more after PAUSE. MOST_DECLINED searches in
-a row Google gives no answer to stop the run, as does a browser that does not start. A search with no answer is kept as
-failed, teaches its weekend nothing, and is named at the run's end. An answer Google gave is kept as it lists: offers,
-flights with no price, or none. Every answer counts in the run's budget, and not among the searches in a row Google gave
-no answer to. The run fails only when it was stopped so, or when Google answered none of its searches: a search with no
-answer now and then is a later run's to make. A search takes about SEARCH_SECONDS, so a run's budget of searches fits in
-its MAX_SECONDS (budget_fits); a slower run ends on its time, and the search it started last within WORST_SECONDS. Each
-weekend Google answered is asked of Kiwi.com's flight search the same (kiwi), its trips kept with the airlines flying
-them and the tickets they are booked on (ticket), and the search of Google's it was asked with: its cheapest
-self-transfer, when cheaper, is added to the weekend's Flights; its cheapest on one ticket is the card's where Google
-priced none (flights listed with no price, Widerøe's, which it leaves to the airline, or none); and with Google's none,
-its answer of no trip is what makes the standing of a weekend near enough no flight (fare_weekends.SCHEDULED_DAYS). Its
-price is a reseller's, and the site says so; its failure fails no run.
+a row Google gives no answer to stop the run, as does a browser that does not start; an error 13 is an answer of
+Google's server, which says it neither blocks the run nor changed its page, so it is not counted among them, and ends no
+streak. A search with no answer is kept as failed, teaches its weekend nothing, and is named at the run's end. An answer
+Google gave is kept as it lists: offers, flights with no price, or none. Every answer counts in the run's budget, and
+not among the searches in a row Google gave no answer to. The run fails only when it was stopped so, or when Google
+answered none of its searches: a search with no answer now and then is a later run's to make. A search takes about
+SEARCH_SECONDS, so a run's budget of searches fits in its MAX_SECONDS (budget_fits); a slower run ends on its time, and
+the search it started last within WORST_SECONDS. Each weekend Google answered is asked of Kiwi.com's flight search the
+same (kiwi), its trips kept with the airlines flying them and the tickets they are booked on (ticket), and the search of
+Google's it was asked with: its cheapest self-transfer, when cheaper, is added to the weekend's Flights; its cheapest on
+one ticket is the card's where Google priced none (flights listed with no price, Widerøe's, which it leaves to the
+airline, or none); and with Google's none, its answer of no trip is what makes the standing of a weekend near enough no
+flight (fare_weekends.SCHEDULED_DAYS). Its price is a reseller's, and the site says so; its failure fails no run.
 
     mise run fares -- refresh --budget 20      # what the GitHub Action runs
     mise run fares -- plan                     # show what is due, without searching
@@ -80,7 +81,8 @@ RETRY_AFTER = 60  # seconds to wait before trying a refused search once more
 RETRIED = {google_search.REFUSED: RETRY_AFTER, google_search.INTERNAL: PAUSE}
 # Google gives no answer to this many searches in a row, each tried again where it is tried again (searched): the run
 # stops, as Google is blocking it or its search page has changed (a search with no answer counts in no budget, so the
-# run would otherwise go on through its whole queue)
+# run would otherwise go on through its whole queue until MAX_SECONDS). A search its error 13 ended is not counted, and
+# ends no streak (Run.search): its server answered, so the page and the run's access to it work (streaked)
 MOST_DECLINED = 3
 KIWI_PAUSE = 3  # seconds between a weekend's search of Google and the reseller's
 # about what a search takes on GitHub's runner, answered at its first try: PAUSE, Google's answer (within 20 s of the
@@ -422,11 +424,19 @@ def pair_origin(asked: Asked, day: dt.date) -> str:
     return weights[zlib.crc32(f'{asked.airport} {asked.friday} {day}'.encode()) % len(weights)]
 
 
+def streaked(in_a_row: int, declined: Declined | None) -> int:
+    """How many searches in a row Google gave no answer to, after a search that ended so (declined: why; none when it
+    answered): an answer ends the streak, error 13 leaves it as it was (MOST_DECLINED), any other no answer adds one."""
+    if declined is None:
+        return 0
+    return in_a_row if declined.why == google_search.INTERNAL else in_a_row + 1
+
+
 @dataclass
 class Run:
     """A refresh under way: the browser it reads Google with, its file, when it stops starting searches (until, by
     time.time()), the searches it made, those Google gave no answer to, and how many it gave none to in a row, the last
-    ones."""
+    ones, its error 13 not counted (streaked)."""
 
     reader: google_search.Reader
     path: Path
@@ -444,7 +454,7 @@ class Run:
         print(f'{where} ({days_away} days away): {said(found)}', flush=True)
         if found.declined is not None:
             self.declined.append((where, found.declined))
-        self.declined_in_a_row = 0 if found.declined is None else self.declined_in_a_row + 1
+        self.declined_in_a_row = streaked(self.declined_in_a_row, found.declined)
         return found
 
     @property

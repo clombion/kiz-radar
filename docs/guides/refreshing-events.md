@@ -155,12 +155,14 @@ its earlier try ended, and refused again stops the run, which keeps what it foun
 and goes whatever the search, on about a fifth of the searches measured, so a search it answers so is tried once more
 after the pause. Three searches in a row Google gives no answer to, each after its second try where it has one, stop the
 run (`MOST_DECLINED`: Google is blocking the run, or its search page has changed), and so does a browser that does not
-start. A search that failed (refused, error 13 twice, its consent page, no whole answer within 45 seconds, an answer of
-a shape not known, a price whose currency cannot be read, or the browser failing) is kept as failed, with why in its
-note, never as no price, and teaches its weekend nothing; the run names it at its end. The run fails (the workflow
-marked failed after the searches are pushed) only when it was stopped so, or Google answered none of its searches: a
-search with no answer now and then fails no run. Its first line names the browser's version, and its summary line says
-how many answers Google gave, how many of them listed no flight, and how many festival weekends stand at each standing.
+start. A search its error 13 ended is not one of them, and ends no streak: Google's server answered, so the run's access
+and the page work, and the run goes on, within its time. A search that failed (refused, error 13 twice, its consent
+page, no whole answer within 45 seconds, an answer of a shape not known, a price whose currency cannot be read, or the
+browser failing) is kept as failed, with why in its note, never as no price, and teaches its weekend nothing; the run
+names it at its end. The run fails (the workflow marked failed after the searches are pushed) only when it was stopped
+so, or Google answered none of its searches: a search with no answer now and then fails no run. Its first line names the
+browser's version, and its summary line says how many answers Google gave, how many of them listed no flight, and how
+many festival weekends stand at each standing.
 
 An answer is kept as it lists: offers, flights with no price (`listed`), or none (`none`), and `none` is only ever an
 answer that lists no way out and says so itself (the tokens of the airports it suggests nearby name it `noresults`); an

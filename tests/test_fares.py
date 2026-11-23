@@ -498,7 +498,6 @@ def test_a_run_fails_when_google_gives_no_page_to_any_of_its_searches(monkeypatc
         (Declined(CallCause.TRANSIENT, google_search.REFUSED), 2),
         (NO_ANSWER, fares.MOST_DECLINED),
         (Declined(CallCause.TRANSIENT, google_search.UNKNOWN), fares.MOST_DECLINED),
-        (Declined(CallCause.TRANSIENT, google_search.INTERNAL), 2 * fares.MOST_DECLINED),
         (Declined(CallCause.STRUCTURAL, 'Google gave a price in SEK, not the EUR it was asked'), 1),
         (Declined(CallCause.STRUCTURAL, "no browser would start: Executable doesn't exist"), 1),
     ],
@@ -506,7 +505,6 @@ def test_a_run_fails_when_google_gives_no_page_to_any_of_its_searches(monkeypatc
         'refused twice',
         'no answer in a row',
         'answers of a shape not known in a row',
-        'error 13 in a row, each tried twice',
         'never in EUR',
         'no browser',
     ],
@@ -575,6 +573,66 @@ def test_a_run_stops_after_google_gives_no_answer_to_a_few_searches_in_a_row(mon
     with pytest.raises(SystemExit, match=re.escape(NO_ANSWER.why)):
         fares.refresh(budget=5, max_seconds=fares.MAX_SECONDS)
     assert len(tries) == fares.MOST_DECLINED < len(due)
+
+
+@pytest.mark.usefixtures('weekends')
+def test_error_13_stops_no_run_and_ends_no_streak_of_searches_with_no_answer(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Error 13 says Google's server answered: a run whose searches it ends after an answer goes on through its queue,
+    and fails nothing."""
+    due = ['AMS', 'GLA', 'LIS', 'OSL', 'PRG', 'ROM']
+    monkeypatch.setattr(fare_weekends, 'weekends', only({(a, SOON): True for a in due}))
+    error_13 = Declined(CallCause.TRANSIENT, google_search.INTERNAL)
+    asked: list[str] = []
+
+    def google(reader: google_search.Reader, a: fares.Asked) -> Search | Declined:
+        asked.append(a.airport)
+        return fares.search(a, FareVendor.GOOGLE_CHROME, (offer(80),)) if a.airport == 'AMS' else error_13
+
+    monkeypatch.setattr(fares, 'google', google)
+    fares.refresh(budget=10, max_seconds=fares.MAX_SECONDS)  # AMS answered: the run fails nothing
+    assert asked == ['AMS', *[a for a in due[1:] for _ in range(2)]]  # each of the rest tried twice, none left
+
+
+@pytest.mark.usefixtures('weekends')
+def test_searches_with_no_answer_between_error_13_make_a_streak(monkeypatch: pytest.MonkeyPatch) -> None:
+    """No answer, error 13, no answer, error 13, no answer: three in a row, and the run stops before ROM."""
+    due = ['AMS', 'GLA', 'LIS', 'OSL', 'PRG', 'ROM']
+    monkeypatch.setattr(fare_weekends, 'weekends', only({(a, SOON): True for a in due}))
+    error_13 = Declined(CallCause.TRANSIENT, google_search.INTERNAL)
+    asked: list[str] = []
+    answers = answering(
+        {
+            'AMS': NO_ANSWER,
+            'GLA': error_13,
+            'LIS': NO_ANSWER,
+            'OSL': error_13,
+            'PRG': NO_ANSWER,
+            'ROM': (offer(80),),
+        }
+    )
+
+    def tracked(reader: google_search.Reader, a: fares.Asked) -> Search | Declined:
+        asked.append(a.airport)
+        return answers(reader, a)
+
+    monkeypatch.setattr(fares, 'google', tracked)
+    with pytest.raises(SystemExit, match=re.escape(NO_ANSWER.why)):
+        fares.refresh(budget=10, max_seconds=fares.MAX_SECONDS)
+    assert asked == ['AMS', 'GLA', 'GLA', 'LIS', 'OSL', 'OSL', 'PRG']
+
+
+@pytest.mark.parametrize(
+    ('in_a_row', 'declined', 'after'),
+    [
+        (2, None, 0),
+        (2, Declined(CallCause.TRANSIENT, google_search.INTERNAL), 2),
+        (2, Declined(CallCause.TRANSIENT, google_search.UNKNOWN), 3),
+        (0, Declined(CallCause.TRANSIENT, google_search.REFUSED), 1),
+    ],
+    ids=['an answer ends it', 'error 13 leaves it', 'a shape not known adds one', 'a refusal adds one'],
+)
+def test_a_streak_of_searches_with_no_answer(in_a_row: int, declined: Declined | None, after: int) -> None:
+    assert fares.streaked(in_a_row, declined) == after
 
 
 @pytest.mark.usefixtures('weekends')
