@@ -1066,7 +1066,8 @@ def two_aberdeen_weekends(_: dt.date) -> dict[tuple[str, dt.date], bool]:
 def test_an_extra_s_weekend_with_no_flight_is_searched_again_on_its_interval_and_its_other_weekends_too(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    far = SOON + dt.timedelta(days=30)  # 40 days away: every 14 days for a nearest, 28 for an extra
+    # 75 days away: every 14 days for a nearest, 28 for an extra, and still so 34 days later, its weekday's latest
+    far = SOON + dt.timedelta(days=65)
     none = kept('ABZ', far, now(), FareOutcome.NONE)
     history = [none, resold(none)]
     monkeypatch.setattr(fare_weekends, 'weekends', only({('ABZ', far): False, ('ABZ', SOON): False}))
